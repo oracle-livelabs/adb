@@ -1,0 +1,1 @@
+Image showing where to check status of provisioned database.

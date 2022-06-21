@@ -1,0 +1,1 @@
+Finds information about actors who have worked with more than 15 different directors 

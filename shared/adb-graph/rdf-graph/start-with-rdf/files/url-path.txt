@@ -1,0 +1,1 @@
+Image showing where to find the URL path to the object in the Bucket

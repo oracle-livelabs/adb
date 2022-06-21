@@ -1,0 +1,1 @@
+The database actions SQL page highlighting the Navigator tab and selected user from the dropdown menu

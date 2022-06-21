@@ -1,0 +1,52 @@
+{
+    "workshoptitle": "Boost Database Performance with Oracle Auto Partitioning",
+    "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "About the Auto Partition Workshop",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an Autonomous Database Instance",
+            "description": "Provision an Autonomous Database Instance",
+            "type": "livelabs",
+            "filename": "../../provision-adw/provision-adw.md"
+        },
+        {
+            "title": "Lab 2: Create a Non-partitioned Table",
+            "description": "Create a table for auto partitioning to work on",
+            "filename": "../../create-table/create-table.md"
+        },
+        {
+            "title": "Lab 3: Validate the Table",
+            "description": "Validate that the table is suitable for auto partitioning",
+            "filename": "../../validate-table-1/validate-table-1.md"
+        },
+        {
+            "title": "Lab 4: Execute Recommend Task",
+            "description": "Test partitioning scheme and validate SQL performance improvements",
+            "filename": "../../recommend/recommend.md"
+        },
+        {
+            "title": "Lab 5: View Recommendation",
+            "description": "View the details of the recommendation",
+            "filename": "../../view-recommendation/view-recommendation.md"
+        },
+        {
+            "title": "Lab 6: Apply the Recommendation",
+            "description": "Execute Apply API to Apply the Recommendation",
+            "filename": "../../apply/apply.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

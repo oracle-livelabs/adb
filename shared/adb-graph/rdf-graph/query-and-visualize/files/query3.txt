@@ -1,0 +1,1 @@
+Finds Genres of movies starring Tom Hanks, the number of movies of each genre, and the average gross revenue in each genre

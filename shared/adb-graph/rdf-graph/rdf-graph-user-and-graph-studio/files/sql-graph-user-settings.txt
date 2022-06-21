@@ -1,0 +1,1 @@
+Successful execution of SQL query resulting in the creation of a user's ADB_GRAPH_SETTINGS table

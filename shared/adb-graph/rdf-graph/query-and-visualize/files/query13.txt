@@ -1,0 +1,2 @@
+    - Uses `|` property path syntax to express the query more concisely. Note that this query is same as Query 9. 
+

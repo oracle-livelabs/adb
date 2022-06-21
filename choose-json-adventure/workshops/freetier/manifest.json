@@ -1,0 +1,51 @@
+{
+  "workshoptitle": "Choose your Own JSON Adventure: Relational or Document Store",
+    "help": "LIVELABS-HELP-DB_US@ORACLE.COM",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Choose your Own JSON Adventure: Relational or Document Store Introduction",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Get a Free Trial",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an Autonomous Database",
+            "description": "Provision an Autonomous Database - ATP or ADW",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/data-management-library/autonomous-database/shared/adb-provision/adb-provision.md"
+        },
+        {
+            "title": "Lab 2: Connect to ADB with SQL Dev Web",
+            "description": "Connect to an Autonomous Database with SQL Developer Web",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/sqldevweb-login/sqldevweb-login.md"
+        },
+        {
+            "title": "Lab 3: Setups for the Choose your Own JSON Adventure: Relational or Document Store LiveLab",
+            "description": "Setups for the Choose your Own JSON Adventure: Relational or Document Store LiveLab",
+            "filename": "../../user-setups/json_setups.md"
+        },
+        {
+            "title": "Lab 4: Choose your Own JSON Adventure: Relational or Document Store: Relational",
+            "description": "Choose your Own JSON Adventure: Relational or Document Store: Relational",
+            "filename": "../../data-load-rdbms/data_load_rdbms.md"
+        },
+        {
+            "title": "Lab 5: Choose your Own JSON Adventure: Relational or Document Store: JSON Documents and SODA",
+            "description": "Choose your Own JSON Adventure: Relational or Document Store: JSON Documents and SODA",
+            "filename": "../../data-load-soda/data_load_soda.md"
+        },
+        {
+            "title": "Lab 6: Choose your Own JSON Adventure: Relational or Document Store: Exposing the Data for Applications",
+            "description": "Choose your Own JSON Adventure: Relational or Document Store: Exposing the Data for Applications",
+            "filename": "../../expose-data/expose_data.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

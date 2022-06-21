@@ -1,0 +1,26 @@
+{
+    "workshoptitle": "A handy guide to the MovieStream Universe",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+          "title": "A handy guide to the MovieStream Universe - Introduction to the series",
+          "filename": "../../workshop-intro/workshop-intro.md"
+        },
+        {
+          "title": "Autonomous Data Warehouse: Loading and updating large data",
+          "filename": "../../workshop-intro/workshop-intro2.md"
+        },
+        {
+          "title": "Autonomous Data Warehouse: Analyzing large data volumes using SQL",
+          "filename": "../../workshop-intro/workshop-intro3.md"
+        },
+        {
+          "title": "Action! MovieStream Analytics Produce the Best Picture with Oracle Cloud - Shorts",
+          "filename": "../../workshop-intro/workshop-intro3.md"
+        },
+        {
+          "title": "Action! MovieStream Analytics Produce the Best Picture with Oracle Cloud - The epic",
+          "filename": "../../workshop-intro/workshop-intro3.md"
+        }
+     ]
+}

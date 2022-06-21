@@ -1,0 +1,45 @@
+{
+    "workshoptitle": "Access the Data Lake using Autonomous Database and Data Catalog",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+         "title": "Get Started with LiveLabs",
+         "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Introduction",
+            "type":"livelabs",
+            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "filename": "./../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Review the Workshop Environment (Optional)",
+            "type":"livelabs",
+            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
+            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
+        },
+        {
+            "title": "Lab 2: Harvest Metadata from Oracle Object Storage",
+            "type":"livelabs",
+            "description": "This lab walks you through how to harvest technical metadata from Oracle Object Storage.",
+            "filename": "./../../harvest-metadata-os/harvest-metadata-os.md"
+        },
+        {
+            "title": "Lab 3: Synchronize Autonomous Database with Data Catalog",
+            "type":"livelabs",
+            "description": "This lab shows you how to synchronize ADB and Data Catalog.",
+            "filename": "./../../sync-adb-dcat/sync-adb-dcat.md"
+        },
+        {
+            "title": "Lab 4: Query Data Across Autonomous Database and the Data Lake",
+            "type":"livelabs",
+            "description": "This lab shows you how to query data from ADB and Object Storage.",
+            "filename": "./../../query-data/query-data.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}

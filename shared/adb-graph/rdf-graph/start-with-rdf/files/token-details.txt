@@ -1,0 +1,1 @@
+Image showing how to copy the generated Auth Token

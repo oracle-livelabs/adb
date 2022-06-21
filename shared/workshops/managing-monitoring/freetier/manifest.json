@@ -1,0 +1,37 @@
+{
+    "workshoptitle": "Managing and Monitoring",
+    "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "./../../../intro/intro-ziplab.md"
+        },
+        {
+            "title": "Get Started",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an ADW Instance",
+            "type": "freetier",
+            "filename": "./../../../adb-provision/adb-provision-conditional.md"
+        },
+        {
+            "title": "Lab 2: Explore SQL Developer Web",
+            "filename": "./../../../adb-sqldevweb/adb-sqldevweb.md"
+        },
+        {
+            "title": "Lab 3: Load Data",
+            "type": "freetier",
+            "filename": "./../../../adb-loading/adb-loading-conditional.md"
+        },
+        {
+            "title": "Lab 4: Manage and Monitor",
+            "filename": "./../../../adw-managing-monitoring/adw-managing-monitoring.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

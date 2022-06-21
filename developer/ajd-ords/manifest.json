@@ -1,0 +1,40 @@
+{
+    "workshoptitle": "Using REST and APEX with Autonomous JSON Database",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Using REST and APEX with Autonomous JSON Database",
+            "filename": "./introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Development Project Resources",
+            "description": "Development Project Resources",
+            "filename": "./resources/resources.md"
+        },
+        {
+            "title": "Lab 2: Retrieve Data from Web Service",
+            "description": "Retrieve Data from Web Service",
+            "filename": "./http-request/http-request.md"
+        },
+        {
+            "title": "Lab 3: Process JSON Documents",
+            "description": "Process JSON Documents",
+            "filename": "./json-data/json-data.md"
+        },
+        {
+            "title": "Lab 4: Oracle REST Data Services",
+            "description": "Oracle REST Data Services",
+            "filename": "./ords/ords.md"
+        },
+        {
+            "title": "Lab 5: User Authentication for ORDS",
+            "description": "User Authentication for ORDS",
+            "filename": "./authentication/authentication.md"
+        },
+        {
+            "title": "Lab 6: Submit Form Data using ORDS",
+            "description": "Submit Form Data using ORDS",
+            "filename": "./post/post.md"
+        }
+    ]
+}

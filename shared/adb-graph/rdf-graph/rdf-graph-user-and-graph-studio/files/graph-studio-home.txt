@@ -1,0 +1,1 @@
+﻿The ‘Get Started’ page for Graph Studio. On the left-hand navigation bar, the button for ‘Graphs’ is highlighted

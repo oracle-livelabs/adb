@@ -1,0 +1,49 @@
+{
+    "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to ADB on Shared Infrastructure",
+            "filename": "./intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Get a Free Trial",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an Autonomous Database",
+            "description": "Provision Autonomous Database",
+            "type": "freetier",
+            "filename": "./../../adb-provision/adb-provision-conditional.md"
+        },
+        {
+            "title": "Lab 2: Work with Free Sample Data Sets",
+            "description": "Explore SQL Developer Web",
+            "filename": "./../../adb-sqldevweb/adb-sqldevweb.md"
+        },
+        {
+            "title": "Lab 3: Load Data",
+            "description": "Load data into ADB",
+            "type": "freetier",
+            "filename": "./../../adb-loading/adb-loading-conditional.md"
+        },
+        {
+            "title": "Lab 4: Query External Data",
+            "description": "Query Data in External Files",
+            "filename": "./../../adb-query/adb-query.md"
+        },
+        {
+            "title": "Lab 5: Visualize Your Data",
+            "description": "Visualizing Your Data",
+            "filename": "./../../adw-visualizations-using-oad6pt3/adw-visualizations.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+        }
+        
+    ]
+}

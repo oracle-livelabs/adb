@@ -1,0 +1,62 @@
+{
+  "workshoptitle": "Skillset Tracker Application",
+  "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Introduction to Skillset Tracker Application",
+      "filename": "../../intro/intro.md"
+    },
+    {
+      "title": "Get Started",
+      "description":   "Getting Started",
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+    },
+    {
+      "title": "Lab 1: Generate SSH Keys",
+      "description": "Generate SSH Keys",
+      "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/generate-ssh-key/generate-ssh-keys.md"
+    },
+    {
+      "title": "Lab 2: Install and Prepare Prerequisites",
+      "description": "This lab walks you through the required and optional tasks to set up the GitHub Development Environment, and install GitHub Desktop.",
+      "filename": "../../prerequisites/prerequisites.md"
+    },
+    {
+      "title": "Lab 3: Autonomous JSON Database & SODA Collections",
+      "description": "This lab walks you through the required and optional tasks to set up the GitHub Development Environment, and install GitHub Desktop.",
+      "filename": "../../autonomous-json-db/autonomous-json-db.md"
+    },
+    {
+      "title": "Lab 4: Build an OracleJET Web Application",
+      "description": "This lab describes the prescribed folder structure that we need follow for developing labs and workshops.",
+      "filename": "../../ojet/ojet.md"
+    },
+    {
+      "title": "Lab 5: Build NodeJS APIs to Make Calls to the Database",
+      "description": "This lab shows you how to develop your lab (markdown) content using an editor, such as **Atom** and starting the atom-live-server.",
+      "filename": "../../nodejs-api/nodejs-api.md"
+    },
+    {
+      "title": "Lab 6: Integration with Oracle Digital Assistant and Slack",
+      "description": "This lab shows you how to integrate Slack and Oracle Digital Assistant into your application.",
+      "filename": "../../oda/oda.md"
+    },
+    {
+      "title": "Lab 7: Deploy the Application on OKE",
+      "description": "This lab shows you how to deploy the application using OKE.",
+      "filename": "../../oke/oke.md"
+    },
+    {
+      "title": "Lab 8: Put it All Together in One Single Application",
+      "description": "Put it all together in one single application.",
+      "filename": "../../wrap-up/wrap-up.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+    }
+    
+  ]
+}

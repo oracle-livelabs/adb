@@ -1,0 +1,1 @@
+Image showing how to access Auth Tokens from the Resources menu of User Settings

@@ -1,0 +1,1 @@
+﻿Autonomous database details showing the link to graph studio, accessible under ‘Tools’

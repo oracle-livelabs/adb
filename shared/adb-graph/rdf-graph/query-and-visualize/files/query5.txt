@@ -1,0 +1,1 @@
+Shows the RDF properties defined in this dataset and their counts

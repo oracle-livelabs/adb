@@ -1,0 +1,42 @@
+{
+    "workshoptitle": "Load and update MovieStream data in Oracle Autonomous Data Warehouse using Data Tools",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Get Started",
+            "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Introduction",
+            "description": "Introduction to this workshop",
+            "filename": "../../workshop-intro/workshop-intro.md"
+        },
+        {
+            "title": "Lab 1: Provision an Autonomous Database",
+            "description": "Provisioning an Autonomous Database",
+            "type": "livelabs",
+            "filename": "../../adb-provision-8ocpu/adb-provision-8ocpu.md"
+        },
+        {
+            "title": "Lab 2: Load Movie Sales Data",
+            "description": "Loading Movie Sales Data",
+            "filename": "../../loading-movie-sales-data/loading-movie-sales-data.md"
+        },
+        {
+            "title": "Lab 3: Enable Data Integrity",
+            "description": "Enabling Data Integrity",
+            "filename": "../../enabling-data-integrity/enabling-data-integrity.md"
+        },
+        {
+            "title": "Lab 4: Update the Sales Data",
+            "description": "Finding Our Most Important Customers",
+            "filename": "../../updating-sales-data/updating-sales-data.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}

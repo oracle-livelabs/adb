@@ -1,0 +1,1 @@
+﻿The screen of the database actions launchpad, highlighting the database users page under Administration

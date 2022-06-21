@@ -1,0 +1,1 @@
+The Oracle cloud autonomous database screen showing the autonomous database for graph studio

@@ -1,0 +1,34 @@
+{
+    "workshoptitle": "Autonomous Database 15 minute quick start",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+      {
+          "title": "Get Started",
+          "description": "Login to Oracle Cloud",
+          "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login-livelabs2.md"
+      },
+      {
+        "title": "Introduction to MovieStream",
+        "type": "odbw",
+        "filename": "../../introduction/introduction.md"
+      },
+      {
+        "title": "Lab 1: Provision an ADB Instance",
+        "type": "livelabs",
+        "filename": "../../provision-database/adb-provision-moviestream.md"
+      },
+      {
+        "title": "Lab 2: Use Data Tools to create a user and load data",
+        "filename": "../../load-data/load-data.md"
+      },
+      {
+        "title": "Lab 3: Use SQL to analyze movie sales data",
+        "filename": "../../analyzing-movie-sales-data/analyzing-movie-sales-data.md"
+      },    
+      {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+      }
+    ]
+}
