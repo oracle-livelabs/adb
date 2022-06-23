@@ -1,14 +1,14 @@
 {
     "workshoptitle": "LiveLabs Building Blocks",
     "include": {
-      "provision-console-body.md":"/shared/building-blocks/tasks/adb/provision-body.md",
-      "sql-tools-worksheet-body.md":"/shared/building-blocks/tasks/adb/sql-tools-worksheet-body.md",
-      "compartment-create-body.md":"/shared/building-blocks/tasks/iam/compartment-create-body.md",
-      "provision-body.md":"/shared/building-blocks/tasks/adb/provision-body.md",
-      "goto-service-body.md":"/shared/building-blocks/tasks/adb/goto-service-body.md",
-      "connect-with-sql-worksheet-body.md":"/shared/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"   
+      "provision-console-body.md":"/building-blocks/tasks/adb/provision-body.md",
+      "sql-tools-worksheet-body.md":"/building-blocks/tasks/adb/sql-tools-worksheet-body.md",
+      "compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md",
+      "provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+      "goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+      "connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"   
     },
-    "variables": ["/shared/building-blocks/variables/variables.json"],
+    "variables": ["/building-blocks/variables/variables.json"],
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -19,13 +19,13 @@
         {
           "title": "Provisioning ADB using the Console",
           "type": "freetier",      
-          "filename": "/shared/building-blocks/adb/provision-database/provision.md",
+          "filename": "/building-blocks/adb/provision-database/provision.md",
           "tocstyle":"color: blue;"
         },  
         {
           "title": "Connecting to ADB",
           "type": "livelabs",        
-          "filename": "/shared/building-blocks/adb/connect/connect-sql-worksheet.md"
+          "filename": "/building-blocks/adb/connect/connect-sql-worksheet.md"
         },          
         {
           "title": "Need Help?",

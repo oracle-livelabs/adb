@@ -1,6 +1,6 @@
 {
-    "db_name": "YOURDBNAME",
-    "db_display_name":"YOURDISPLAYNAME",
+    "db_name": "MYQUICKSTART",
+    "db_display_name":"My Quick Start ADB",
     "db_ocpu": "1 OCPU",
     "db_storage": "1 TB",
     "db_name_livelabs": "MOVIE+your user id",

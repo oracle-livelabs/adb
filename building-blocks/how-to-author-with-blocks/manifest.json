@@ -1,0 +1,29 @@
+{
+ "workshoptitle":"LiveLabs Building Blocks",
+ "include": {
+     "connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+     "goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+     "provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+     "compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
+ },
+ "help": "livelabs-help-db_us@oracle.com",
+ "variables": ["/building-blocks/variables/variables.json"],
+ "tutorials": [  
+
+     {
+         "title": "Authoring using Blocks and Tasks",
+         "type": "freetier",
+         "filename": "/building-blocks/how-to-author-with-blocks/how-to-author-with-blocks.md"
+     },
+     {
+         "title": "ADB Tasks",
+         "type": "freetier",
+         "filename": "/building-blocks/how-to-author-with-blocks/adb.md"
+     },
+     {
+         "title": "IAM Tasks",
+         "type": "freetier",
+         "filename": "/building-blocks/how-to-author-with-blocks/iam.md"
+     }
+  ]
+}

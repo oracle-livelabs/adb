@@ -17,7 +17,7 @@ As an author, there are two types of components you may want to take advantage o
 
 Just as a lab is comprised of multiple tasks, a Block is comprised of multiple Tasks.
 
-For example: ADB provisioning has two tasks:
+For example: ADB provisioning has two tasks:  
 * Selecting the ADB Service from the OCI menu
 * Creating the ADB instance
 
@@ -80,16 +80,16 @@ The manifest.json file describes the content of your workshop. It also contains 
  {
     "workshoptitle": "LiveLabs Building Blocks",
     "include": {
-      "provision-body.md":"/shared/building-blocks/tasks/adb/provision-body.md",
-      "goto-service-body.md":"/shared/building-blocks/tasks/adb/goto-service-body.md"
+      "provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+      "goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md"
     },
-    "variables": ["/shared/building-blocks/variables/variables.json"],
+    "variables": ["/building-blocks/variables/variables.json"],
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
           "title": "Authoring using Blocks", 
           "type":"freetier",        
-          "filename": "/shared/building-blocks/how-to-author-with-blocks/how-to-author-with-blocks.md"
+          "filename": "/building-blocks/how-to-author-with-blocks/how-to-author-with-blocks.md"
         }
     ]
 }

@@ -3,7 +3,7 @@
 **Manifest:**
 ```
 "include": {
-     "connect-with-sql-worksheet-body.md":"/shared/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+     "connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
 }
 ```
 
@@ -20,7 +20,7 @@
 **Manifest:**
 ```
 "include": {
-     "goto-service-body.md":"/shared/building-blocks/tasks/adb/goto-service-body.md"
+     "goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md"
 }
 ```
 
@@ -37,7 +37,7 @@
 **Manifest:**
 ```
 "include": {
-     "provision-body.md":"/shared/building-blocks/tasks/adb/provision-body.md"
+     "provision-body.md":"/building-blocks/tasks/adb/provision-body.md"
 }
 ```
 

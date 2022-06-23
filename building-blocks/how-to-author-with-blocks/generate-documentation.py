@@ -7,11 +7,13 @@ import glob
 from datetime import date
 
 # Initialize
-path_area_start = os.path.dirname(os.path.realpath(__file__)) + "/"
-blocks_path = "shared/building-blocks/tasks"
-service_list_path = "shared/building-blocks/tasks/services"
+path_current   = os.path.dirname(os.path.realpath(__file__))
+path_tasks     = path_current[:path_current.rfind("/")] + "/tasks"
+relpath_blocks = "/building-blocks"
+manifest_file  = path_current + "/manifest.json"
+
 output = None
-files = sorted(filter( os.path.isfile, glob.glob(path_area_start + '**/*.md', recursive=True)))
+files = sorted(filter( os.path.isfile, glob.glob(path_tasks + '/**/*.md', recursive=True)))
 
 services = []
 
@@ -31,14 +33,11 @@ def write (s):
 
 # Populate list of services
 for f in files:
-    a = f.find(service_list_path)
-    if f.find(service_list_path) >= 0:
-        continue
 
     c = Service()
     c.name = f[f.rfind("/")+1:]
-    c.path = f[f.rfind(blocks_path):]
-    c.area = f[len(path_area_start):f.rfind("/")]
+    c.path = f[f.rfind(relpath_blocks):]
+    c.area = c.path[len(relpath_blocks + "/tasks/"):c.path.rfind("/")]
     services.append(c)
     
 
@@ -49,26 +48,26 @@ write("{")
 write(' "workshoptitle":"LiveLabs Building Blocks",')
 write(' "include": {')
 for c in services:
-    write('     "' + c.name + '":"/' + c.path + '",')
+    write('     "' + c.name + '":"' + c.path + '",')
 
 output = output[:len(output)-1]
 
 write(' },') # include
 write(' "help": "livelabs-help-db_us@oracle.com",')
-write(' "variables": ["/shared/building-blocks/variables/variables.json"],')
+write(' "variables": ["' + relpath_blocks + '/variables/variables.json"],')
 write(' "tutorials": [  ')
 write('')
 write('     {')
 write('         "title": "Authoring using Blocks and Tasks",' )
 write('         "type": "freetier",' )
-write('         "filename": "/shared/building-blocks/how-to-author-with-blocks/how-to-author-with-blocks.md"' )
+write('         "filename": "' + relpath_blocks + '/how-to-author-with-blocks/how-to-author-with-blocks.md"' )
 write('     },')
 
 current_area = None
 for c in services:
     if c.area != current_area:
         current_area = c.area
-        filename = "/" + service_list_path + "/" + c.area + ".md"
+        filename = relpath_blocks + "/how-to-author-with-blocks/" + c.area + ".md"
         write('     {')
         write('         "title": "' + c.area.upper() + ' Tasks",' )
         write('         "type": "freetier",' )
@@ -79,10 +78,13 @@ output = output[:len(output)-1]
 write('  ]')
 write('}')
 print(output)
-
-h_manifest = open(path_area_start + "/services/manifest.json", "w")
-h_manifest.write(output)
-h_manifest.close
+try:    
+    h_manifest = open(manifest_file, "w")
+    h_manifest.write(output)
+    h_manifest.close
+except Exception as e:
+    print (type(e))
+    print (str(e))
 
 ###########
 # write the markdown files
@@ -101,7 +103,7 @@ for c in services:
             output = None
 
         #Initialize the new markdown file
-        h_mdfile = open(path_area_start + "/services/" + c.area + ".md", "w")       
+        h_mdfile = open(path_current + "/" + c.area + ".md", "w")       
         current_area = c.area
         
         write('# Block services: ' + c.area.upper())
@@ -110,7 +112,7 @@ for c in services:
     write('**Manifest:**')
     write("```")
     write('"include": {')
-    write('     "' + c.name + '":"/' + c.path + '"')
+    write('     "' + c.name + '":"' + c.path + '"')
     write('}')
     write("```")
     write("")
