@@ -19,13 +19,12 @@
         {
           "title": "Provisioning ADB using the Console",
           "type": "freetier",      
-          "filename": "/building-blocks/adb/provision-database/provision.md",
-          "tocstyle":"color: blue;"
+          "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
         },  
         {
           "title": "Connecting to ADB",
           "type": "livelabs",        
-          "filename": "/building-blocks/adb/connect/connect-sql-worksheet.md"
+          "filename": "/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
         },          
         {
           "title": "Need Help?",

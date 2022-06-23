@@ -55,13 +55,13 @@ See below for how the markdown was rendered
 ### variables.json
 Workshops have different requirements. Database names, OCPUs and other options may differ. LiveLabs uses variables to allow authors to update content. It may be that you need to make updates to the Task in order to make it more flexible; please share any required updates with the LiveLabs team.
 
-The master list of all variables used in Blocks are stored in the ```/blocks/variables/variables.json``` file. You can copy this variables.json file to your own workshop if the default variable values need changing:
+The master list of all variables used in Blocks are stored in the ```/building-blocks/variables/variables.json``` file. You can copy this variables.json file to your own workshop if the default variable values need changing:
 
 variables.json
 ```
 {
-    "db_name": "YOURDBNAME",
-    "db_display_name":"YOURDISPLAYNAME",
+    "db_name": "MYQUICKSTART",
+    "db_display_name":"My Quick Start ADB",
     "db_ocpu": "1 OCPU",
     "db_storage": "1 TB",
     "db_name_livelabs": "MOVIE+your user id",
@@ -98,5 +98,5 @@ The manifest.json file describes the content of your workshop. It also contains 
 ## List of Building Blocks and Tasks
 The remaining sections describe the Tasks that are available to you broken out by service. The documentation provides snippets of how to include the Task in both the ``manifest.json`` and your markdown file. 
 
-[Go here to view the list of Building Blocks](/blocks/freetier/index.html).
+[Go here to view the list of Building Blocks](/building-blocks/workshop/freetier/index.html).
 
