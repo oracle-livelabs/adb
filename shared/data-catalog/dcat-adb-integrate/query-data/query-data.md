@@ -277,7 +277,7 @@ You can use this drop-down list to do the following:
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, April 2022
+* **Last Updated By/Date:** Lauran Serhal, June 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 
