@@ -14,5 +14,5 @@
 
 **Markdown Output &#8595;&#8595;:**
  
-[](include:compartment-create-body.md)
+[](include:iam-compartment-create-body.md)
  

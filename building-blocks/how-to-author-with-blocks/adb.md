@@ -14,7 +14,7 @@
 
 **Markdown Output &#8595;&#8595;:**
  
-[](include:connect-with-sql-worksheet-body.md)
+[](include:adb-connect-with-sql-worksheet-body.md)
  
 ## goto-service-body.md
 **Manifest:**
@@ -31,7 +31,7 @@
 
 **Markdown Output &#8595;&#8595;:**
  
-[](include:goto-service-body.md)
+[](include:adb-goto-service-body.md)
  
 ## goto-sql-worksheet.md
 **Manifest:**
@@ -48,7 +48,7 @@
 
 **Markdown Output &#8595;&#8595;:**
  
-[](include:goto-sql-worksheet.md)
+[](include:adb-goto-sql-worksheet.md)
  
 ## provision-body.md
 **Manifest:**
@@ -65,5 +65,5 @@
 
 **Markdown Output &#8595;&#8595;:**
  
-[](include:provision-body.md)
+[](include:adb-provision-body.md)
  

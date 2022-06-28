@@ -1,11 +1,11 @@
 {
  "workshoptitle":"LiveLabs Building Blocks",
  "include": {
-    "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
-    "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
-    "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
-    "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
-    "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
+     "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+     "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+     "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
+     "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+     "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
  },
  "help": "livelabs-help-db_us@oracle.com",
  "variables": ["/building-blocks/variables/variables.json"],

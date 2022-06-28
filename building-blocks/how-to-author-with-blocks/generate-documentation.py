@@ -125,7 +125,8 @@ for c in services:
     write("")
     write('**Markdown Output &#8595;&#8595;:**')
     write(" ")
-    write("[](include:" + c.name + ")")
+    # [](include:adb-goto-sql-worksheet.md)
+    write("[](include:" + c.include_name + ")")
     write(" ")
 
 h_mdfile.write(output)
