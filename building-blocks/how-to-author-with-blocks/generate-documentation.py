@@ -19,6 +19,7 @@ services = []
 
 class Service:
     name = None
+    include_name = None
     path = None
     area = None
 
@@ -38,6 +39,7 @@ for f in files:
     c.name = f[f.rfind("/")+1:]
     c.path = f[f.rfind(relpath_blocks):]
     c.area = c.path[len(relpath_blocks + "/tasks/"):c.path.rfind("/")]
+    c.include_name = c.area + "-" + c.name
     services.append(c)
     
 
@@ -48,7 +50,7 @@ write("{")
 write(' "workshoptitle":"LiveLabs Building Blocks",')
 write(' "include": {')
 for c in services:
-    write('     "' + c.name + '":"' + c.path + '",')
+    write('     "' + c.include_name + '":"' + c.path + '",')
 
 output = output[:len(output)-1]
 
@@ -112,7 +114,7 @@ for c in services:
     write('**Manifest:**')
     write("```")
     write('"include": {')
-    write('     "' + c.name + '":"' + c.path + '"')
+    write('     "' + c.include_name + '":"' + c.path + '",')
     write('}')
     write("```")
     write("")

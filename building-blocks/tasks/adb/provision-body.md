@@ -5,7 +5,7 @@
 2.  This brings up the **Create Autonomous Database** screen where you will specify the configuration of the instance.
 
 
-    ![](images/adb-create-screen-freetier-default.png " ")
+    ![Create Autonomous Database](images/adb-create-screen-freetier-default.png " ")
 
 
 3. Give basic information for the autonomous database:

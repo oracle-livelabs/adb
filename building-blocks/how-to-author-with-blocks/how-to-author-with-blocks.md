@@ -34,10 +34,10 @@ Let's take a look at the markdown for Provisioning an Autonomous Database:
 
 ```
 ## Task 1: Choose Autonomous Database from the services menu
-[]&lpar;include:goto-service-body.md)
+[]&lpar;include:adb-goto-service-body.md)
 
 ## Task 2: Create the Autonomous Database instance
-[]&lpar;include:provision-console-body.md)
+[]&lpar;include:adb-provision-console-body.md)
 ```
 
 As you can see, the markdown for this block is pretty simple. It is including two Tasks: 1) go to the service and 2) provision using the console. It may be that the format of this Block does not meet your workshop requirements. No problem. Your workshop markdown can use these Tasks in a similar way to the Building Block. Simply include the Task within your markdown. 
@@ -46,10 +46,10 @@ See below for how the markdown was rendered
 
 ## Example: Provision using the OCI Console
 ### Task 1: Choose Autonomous Database from the services menu
-[](include:goto-service-body.md)
+[](include:adb-goto-service-body.md)
 
 ### Create the Autonomous Database instance
-[](include:provision-body.md)
+[](include:adb-provision-body.md)
 
 ## The workshop manifest and variables
 ### variables.json
@@ -61,7 +61,7 @@ variables.json
 ```
 {
     "db_name": "MYQUICKSTART",
-    "db_display_name":"My Quick Start ADB",
+    "db_display_name":"MyQuickStart",
     "db_ocpu": "1 OCPU",
     "db_storage": "1 TB",
     "db_name_livelabs": "MOVIE+your user id",
@@ -80,8 +80,8 @@ The manifest.json file describes the content of your workshop. It also contains 
  {
     "workshoptitle": "LiveLabs Building Blocks",
     "include": {
-      "provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
-      "goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md"
+      "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+      "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md"
     },
     "variables": ["/building-blocks/variables/variables.json"],
     "help": "livelabs-help-db_us@oracle.com",
