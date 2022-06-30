@@ -40,8 +40,8 @@
             "filename": "./../../adw-visualizations-using-oad6pt3/adw-visualizations.md"
         },
         {
-            "title": "Lab 6: Use Wallets for Secure Connections",
-            "description": "Connecting Securely with a Connection Wallet",
+            "title": "Lab 6: Connect Securely With or Without a Connection Wallet",
+            "description": "Connecting Securely with or without a Connection Wallet",
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {
@@ -79,6 +79,6 @@
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
         }
-       
+
     ]
 }
