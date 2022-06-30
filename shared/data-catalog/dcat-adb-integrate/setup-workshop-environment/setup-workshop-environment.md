@@ -196,7 +196,7 @@ In this task, you create a new and empty business glossary in the newly created 
 
   ![The Proceed button is highlighted.](./images/note-proceed.png " ")
 
-6. In the **Open** dialog box for your local system, copy and enter the following URL that represents a glossary that was exported from a different Data Catalog instance in the **File name** text box. Select **All Files** from the second drop-down list, and then click **Open**.
+6. In the **Open** dialog box for your local system, copy and enter the following URL that represents a glossary that was exported from a different Data Catalog instance in the **File name** text box. The **Custom Files (*.csv;.xlsx)** should be selected in the second drop-down list, if not, select it. Click **Open**.
 
     ```
     <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_scripts/o/dcat/MovieStream%20ApplicationExport.xlsx</copy>
@@ -324,7 +324,7 @@ After you have created a dynamic group, you need to create a policy to permit th
 
 4. In the **Provide basic information for the Autonomous Database** section, specify the following:
        * **Compartment:** **`training-dcat-compartment`**.
-       * **Display Name:** **`DB-DCAT Integration`**.
+       * **Display Name:** **`DB-DCAT-Integration`**.
        * **Database Name:** **`TrainingADB`**.
 
        ![The completed "Provide basic information for the Autonomous Database" section is diaplyed.](./images/adb-basic-info.png " ")
@@ -340,10 +340,11 @@ After you have created a dynamic group, you need to create a policy to permit th
 7. In the **Configure the database** section, specify the following:
 
        * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
-       * **Choose Database version:** **`19c`**.
+       * **Choose database version:** **`19c`**.
        * **OCPU count:** **`1`**.   
-       * **Auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
-       * **Storage:** **`1`** (TB).
+       * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
+       * **Storage (TB):** **`1`** (TB).
+       * **Storage auto scaling:** Leave the checkbox unchecked.
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
 
@@ -363,7 +364,10 @@ After you have created a dynamic group, you need to create a policy to permit th
 
     ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
-10. In the **Choose a license type** section, accept the default __Bring Your Own License (BYOL)__. Select this type when your organization has existing database licenses.
+10. In the **Choose a License and Oracle Database Edition** section, specify the following:
+
+    * **Choose a license type:** Accept the default __Bring Your Own License (BYOL)__. Select this type when your organization has existing database licenses.
+    * **Choose an Oracle Database Edition:** Select the __Oracle Database Enterprise Edition (EE)__.
 
     ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
 
@@ -399,7 +403,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, June 2022
+* **Last Updated By/Date:** Lauran Serhal, July 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

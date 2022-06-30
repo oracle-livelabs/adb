@@ -47,7 +47,7 @@ Register your Oracle Object Storage data sources with Data Catalog as a data ass
 
 3. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog instance where you want to create your data asset.
 
-    ![In the Name column, the training-dcat-instance link is highlighted.](./images/dcat-instance.png " ")
+    ![In the Name column, the training-dcat-instance link is highlighted.](./images/click-data-catalog.png " ")
 
 4. On the **`training-dcat-instance`** **Home** page, in the **Quick Actions** tile, click **Create Data Asset**.
 
@@ -241,6 +241,8 @@ Create a filename pattern as follows:
 
     When you harvest the data asset, the filename pattern is used to derive logical data entities. The names of the files in the Object Storage bucket are matched to the pattern expression and the logical data entities are formed.
 
+11. Close the **Data Assets** and **Filename Patterns** tabs. Don't close the **Data Lake** tab as you will use it in the next step.     
+
 >**Note:**    
 When you assign a new filename pattern to a data asset, the status of any harvested logical data entities is set to **Inactive**. You need to harvest the data asset again to derive the valid logical data entities again.
 
@@ -324,11 +326,11 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
         ![The completed Create Job wizard step shows the Incremental Harvest and Include matched files only check boxes selected. The Run job now option is selected and the Create Job button is highlighted.](./images/harvest-landing-step-3-1.png " ")
 
-15. Click **Create Job**. A message is briefly displayed about the job execution starting. The **Jobs** tab is displayed and the job is displayed in the list of jobs. If the harvest is successful, the harvest job **Last run status** column displays **Succeeded**. To display the job details, click the job name link in the **Name** column.
+15. Click **Create Job**. A message is briefly displayed about the job execution starting. The **Jobs** tab is displayed and the job is displayed in the list of jobs. If you have left the **Jobs** tab open from the previous step, click **Refresh** to display the new **`Harvest_Data_Lake_Landing`** submitted job. If the harvest is successful, the harvest job **Last run status** column displays **Succeeded**. To display the job details, click the job name link in the **Name** column.
 
     ![The newly created Landing bucket harvest job is displayed on the Jobs tab with the status Succeeded.](./images/landing-harvest-completed.png " ")
 
-    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, refresh your browser to display the **`Harvest_Data_Lake_Landing`** job.
+    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, click **Refresh** to display the **`Harvest_Data_Lake_Landing`** job.
 
 16. The harvest job name tab is displayed. On the **Jobs** tab, you can track the status of your job and view the job details. The **Logical data entities harvested** field shows **11** as the number of logical entities that were harvested using the filename pattern that you assigned to this Object Storage asset. This number represents the number of sub-folders under the **`moviestream_landing`** root bucket. There are **57** corresponding files under the sub-folders under the root bucket. You can drill-down on the **Log Messages** icon to display the job log. Close this tab
 
@@ -359,7 +361,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
     ![The newly created Gold bucket harvest job is displayed on the Jobs tab with the status Succeeded.](./images/harvest-gold-completed.png " ")
 
-    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, refresh your browser to display the **`Harvest_Data_Lake_Gold`** job.
+    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, click **Refresh** to display the **`Harvest_Data_Lake_Gold`** job.
 
 23. The harvest job name tab is displayed. On the **Jobs** tab, you can track the status of your job and view the job details.  The **Logical data entities harvested** field shows **4** as the number of logical entities that were harvested using the filename pattern that you assigned to this Object Storage asset. This number represents the number of sub-folders under the **`moviestream_gold`** root bucket. There are **27** corresponding files under the sub-folders under this root bucket.
 
@@ -375,7 +377,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
 1. On the Data Catalog instance **Home** tab, click **Data Entities**.
 
-    ![On the selected Data Catalog instance Home page, the Data Entities (19) link is highlighted.](./images/click-data-entities.png " ")
+    ![On the selected Data Catalog instance Home page, the Data Entities link is highlighted.](./images/click-data-entities.png " ")
 
     > **Note:** The number of **Data Entities** shown in the above image might not match your results.
 
@@ -403,7 +405,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
 1. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog instance link.
 
-    ![The training-dcat-instance Data Catalog instance link is highlighted.](./images/dcat-instance.png " ")
+    ![The training-dcat-instance Data Catalog instance link is highlighted.](./images/click-data-catalog.png " ")
 
 2. On the **`training-dcat-instance`** **Home** page, click **Browse Data Assets** in the **Quick Actions** tile.
 
@@ -425,7 +427,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
 7. Close the **Bucket: moviestream_gold** details tab. The **Oracle Object Storage: Data Lake** page is displayed.
 
-    >**Note:** If the new name, Gold, is not displayed, refresh your browser, and then click the **Buckets** tab.
+    >**Note:** If the new name, Gold, is not displayed, click **Refresh**.
 
     ![The bucket's new business name, Gold, is displayed in the Buckets tab.](./images/gold-data-lake-page.png " ")
 
@@ -441,8 +443,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
     ![The bucket's new business name, Landing, is displayed in the Buckets tab.](./images/landing-data-lake-page.png " ")
 
-
-    >**Note:** If the new name, Landing, is not displayed, refresh your browser, and then click the **Buckets** tab.
+    >**Note:** If the new name, Landing, is not displayed, click **Refresh**.
 
 ### Repeat the same above steps to rename the **`moviestream_sandbox`** bucket to **`Sandbox`**
 
@@ -456,7 +457,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
     ![The bucket's new business name, Sandbox, is displayed in the Buckets tab.](./images/sandbox-data-lake-page.png " ")
 
-    >**Note:** If the new name, Sandbox, is not displayed, refresh your browser, and then click the **Buckets** tab.
+    >**Note:** If the new name, Sandbox, is not displayed, click **Refresh**.
 
     </if>
 
@@ -1069,7 +1070,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, June 2022
+* **Last Updated By/Date:** Lauran Serhal, July 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

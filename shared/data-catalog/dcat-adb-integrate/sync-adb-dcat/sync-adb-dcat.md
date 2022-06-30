@@ -38,7 +38,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-click-db-dcat.png " ")
 </if>
     <if type="freetier">
-3. On the **Autonomous Databases** page, click your **DB-DCAT Integration** ADB instance.
+3. On the **Autonomous Databases** page, click your **DB-DCAT-Integration** ADB instance.
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/click-db-dcat.png " ")
     </if>
 
@@ -60,7 +60,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ![The Workshop Details section of the Launch Workshop LiveLabs page is displayed. This section displays information that you will need in the workshop such as the workshop's URL, username, initial password, and so on.](./images/ll-workshop-details.png " ")
     </if>
 
-    A **Data Loading** box is displayed. Close it. The **SQL Worksheet** is displayed.    
+    The **SQL Worksheet** is displayed.    
 
     ![The ADMIN user is selected in the Navigator tab on the left on the worksheet. The ADMIN user is also displayed and highlighted in the worksheet's banner.](./images/start-sql-worksheet.png " ")
 
@@ -179,10 +179,7 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
     ![The result of running the query in the code section of the worksheet is displayed in the Script Output tab at the bottom of the worksheet. ](./images/ll-log-output.png " ")
 
-    >**Note:** Make sure that the log displays the above highlighted output (at the end of the log) about resetting the password before you proceed to the next step. Once your output is displayed, you can close the new browser tab. In addition, the prerequisites to initialize the lab is complete only when you see the following highlighted message _You can not log in until you set a password ..._ in the **Script Output** tab of the first SQL worksheet as follows:
-
-    ![](./images/code-execution-complete.png " ")
-
+    >**Note:** Make sure that the log displays the above highlighted output (at the end of the log) about resetting the password before you proceed to the next step. Once your output is displayed, you can close the new browser tab. In addition, the prerequisites to initialize the lab is complete only when you see the following highlighted message _You can not log in until you set a password ..._ in the **Script Output** tab.
 
 4. In the original browser tab, set the password for the **`MOVIESTREAM`** user. You will log in as this user to run queries. Click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -284,7 +281,7 @@ In this task (in a later step), you will create a connection to your Data Catalo
 
     ![The result of running the query in the code section of the worksheet is displayed in the Query Result tab. Some of the columns displayed are the catalog_id and catalog_region.](./images/query-region-id-ocid.png " ")
 
-2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the pencil icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
+2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the eye icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
 
 ### **Find the Data Catalog Instance Region Identifier and OCID Using the UI**
 
@@ -439,7 +436,7 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
 
 2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the pencil icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
 
-### **Find the Data Catalog Instance Region Identifier Using the UI**
+### **Find the Data Catalog Instance Region Identifier Using the UI (Optional)**
 
 There are several ways to find the region identifier that is associated with your region name using the UI.
 
@@ -588,12 +585,12 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
 
     To copy a key value, double-click the cell to highlight the value, and then copy and paste it into a text editor of your choice. Copy the values for both `folder_key` and `data_asset_key` which you will need in the next command. In our example, the two key values from the previous query are as follows:
 
-    * **`folder_key`:** `7023125c-5dfb-4d28-ad6f-d184a508cee2`
-    * **`data_asset_key`:** `509c3c9f-79f9-42e9-9320-2e02e2e177b7`
+    * **`folder_key`:** `b013156e-1c4d-4bec-9e97-8d240122ff9d`
+    * **`data_asset_key`:** `8275a489-ad63-4dc7-a97e-b50836a09537`
 
     ![The folder_key and data_asset_key columns along with their values are displayed. The Edit (pencil) icon to the right of the folder_key value is highlighted.](./images/ll-copy-folder-key-value.png " ")  
 
-    > **Note:** In later steps, you will synchronize all of the available Object Storage buckets.
+    > **Note:** In later steps, you will synchronize **all** of the available Object Storage buckets.
 
 2. Copy and paste the following code into your SQL Worksheet. Replace the **`asset_id`** key value shown with your `data_asset_key` value and the **`folder_list`** key value with your `folder_key` value that you copied in the previous step.     
 
@@ -606,8 +603,8 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
     dbms_dcat.run_sync(synced_objects =>
         '{"asset_list": [
             {
-                "asset_id":"509c3c9f-79f9-42e9-9320-2e02e2e177b7",
-                "folder_list":["7023125c-5dfb-4d28-ad6f-d184a508cee2"]
+                "asset_id":"8275a489-ad63-4dc7-a97e-b50836a09537",
+                "folder_list":["b013156e-1c4d-4bec-9e97-8d240122ff9d"]
             }   
         ]}', grant_read => 'dwrole');                    
     end;
@@ -631,14 +628,14 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
 
     ![The result of running the query is displayed in the Query Result tab. The highlighted type column shows the value DCAT_SYNC. The highlighted logfile_table column shows the value "DBMS_DCAT$1_LOG".](./images/view-log.png " ")
 
-    Your **logfile_table** name might not match the result shown in the above image. If you have more than one log file generated, query the most recent log file table. Using the `order by start_time desc` clause displays the most recent log file first. In our example, there is only one log table name, `DBMS_DCAT$1_LOG`.
+    Your **logfile_table** name might not match the result shown in the above image. If you have more than one log file generated, query the most recent log file table. Using the `order by start_time desc` clause displays the most recent log file first. In our example, there is only one log table name, `DBMS_DCAT$3_LOG`.
 
-4. Review the full log. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the log table name with your own log table name that you identified in the previous step.
+4. Review the full sync log. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the log table name with your own log table name that you identified in the previous step.
 
     ```
     <copy>
     select *
-    from DBMS_DCAT$1_LOG
+    from DBMS_DCAT$3_LOG
     order by log_timestamp desc;
     </copy>
     ```
@@ -775,20 +772,20 @@ So far in this lab, you synchronized only the **`moviestream_sandbox`** Object S
 
     When the full sync is completed successfully, a **PL/SQL procedure successfully completed** message is displayed in the **Script Output** tab. If you are using a LiveLabs environment, the output might look different.
 
-    ![The result of running the sync code is displayed.](./images/synch-result.png " ")
+    ![The result of running the sync code is displayed.](./images/sync-result.png " ")
 
-2.  Copy and paste the following code into your SQL Worksheet to query the **`user_load_operations`** table to find the name of the logfile table name that contains information about the sync operation. Click the **Run Script (F5)** icon in the Worksheet toolbar. Note the name of the **`logfile_table`**. The **`order by 1`** clause displays the most recent **DCAT_SYNC** operation if there were more than one performed. In our example, the most recent logfile table name is **`DBMS_DCAT$1_LOG`**
+2.  Copy and paste the following code into your SQL Worksheet to query the **`user_load_operations`** table to find the name of the logfile table name that contains information about the sync operation. Click the **Run Script (F5)** icon in the Worksheet toolbar. Note the name of the **`logfile_table`**. The **`order by 3`** clause displays the most recent **DCAT_SYNC** operation based on start time if there were more than one performed. In our example, the most recent logfile table name is **`DBMS_DCAT$4_LOG`**
 
     ```
     <copy>
-    select type, status, logfile_table
+    select type, status, start_time, logfile_table
     from USER_LOAD_OPERATIONS
     where type = 'DCAT_SYNC'
-    order by 1;
+    order by 3 desc;
     </copy>
     ```
 
-      ![The result of running the query is displayed in the Query Result tab. The first row is highlighted and it shows the type, status, and logfile_table columns. The name of the logfile_table in this example is DBMS_DCAT$1_LOG.](./images/find-logfile-name.png " ")
+      ![The result of running the query is displayed in the Query Result tab.](./images/find-logfile-name.png " ")
 
 
 3.  Copy and paste the following code into your SQL Worksheet to query your **`logfile_table`** table that you identified in the previous to view the synchronization process information. Click the **Run Script (F5)** icon in the Worksheet toolbar. Substitute the logfile table name in the following query with your own logfile table name that you identified in the previous step.
@@ -796,7 +793,7 @@ So far in this lab, you synchronized only the **`moviestream_sandbox`** Object S
     ```
     <copy>
     select *
-    from DBMS_DCAT$1_LOG;
+    from DBMS_DCAT$4_LOG;
     </copy>
     ```
 
@@ -846,7 +843,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data     
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, June 2022
+* **Last Updated By/Date:** Lauran Serhal, July 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -26,7 +26,7 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 3. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 <if type="freetier">
-4. On the **Autonomous Databases** page, make sure that the **`training-dcat-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section, and then click your **DB-DCAT Integration** ADB that you provisioned earlier.
+4. On the **Autonomous Databases** page, make sure that the **`training-dcat-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section, and then click your **DB-DCAT-Integration** ADB that you provisioned earlier.
 </if>
 
 <if type="livelabs">
@@ -252,7 +252,7 @@ You can use this drop-down list to do the following:
 
     ![The Bar Chart icon is shown as clicked and the bar chart output is displayed.](./images/top-sales-bar-chart.png " ")
 
-6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run all paragraphs** icon on the notebook toolbar.
+6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run all paragraphs** icon on the notebook toolbar. A **Run all** confirmation message box is displayed. Click **OK**. 
 
     ![The code and result sections of all paragraphs are displayed.](./images/run-notebook.png " ")
 
@@ -277,7 +277,7 @@ You can use this drop-down list to do the following:
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, June 2022
+* **Last Updated By/Date:** Lauran Serhal, July 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 
