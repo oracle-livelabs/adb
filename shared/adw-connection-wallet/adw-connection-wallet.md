@@ -1,23 +1,89 @@
-# Connect Securely Using SQL Developer with a Connection Wallet
+# Connect SQL Developer Securely With or Without a Connection Wallet
 
 ## Introduction
 
-This lab walks you through the steps to download and configure a *connection wallet* to connect securely to an Autonomous Database (Autonomous Data Warehouse [ADW] or Autonomous Transaction Processing [ATP]). You will use this connection wallet to connect to the database using **Oracle SQL Developer**. (Previous labs in this workshop used **SQL Developer Web** from a web browser, to access an autonomous database directly from the cloud console without a connection wallet. SQL Developer Web is a convenient browser-based tool, offering a subset of the features and functions in Oracle SQL Developer.)
+Oracle Autonomous Data Warehouse (ADW) and Autonomous Transaction Processing (ATP) accept only secure connections to Oracle Autonomous Databases. This lab walks you through the steps to connect Oracle SQL Developer desktop client securely to your autonomous database, both with and without a **connection wallet**. First, you will learn how to securely connect SQL Developer without a wallet using TLS connections. Then, you will  download and configure a connection wallet as another method to securely connect SQL Developer to your autonomous database.
+
+(Previous labs in this workshop used **SQL Worksheet** from **Database Actions**, to access an autonomous database directly from the cloud console without a connection wallet. SQL Worksheet is a convenient browser-based tool, offering a subset of the features and functions in Oracle SQL Developer.)
 
 *Note: While this lab uses ADW, the steps are identical for connecting to an autonomous database in ATP.*
 
-Watch a video demonstration of connecting to an autonomous database instance using SQL Developer.
-
-[](youtube:PHQqbUX4T50)
-
 ### Objectives
 
--   Learn how to download and configure a connection wallet
--   Learn how to connect to your Autonomous Data Warehouse with Oracle SQL Developer
+- Learn how to connect to your Autonomous Data Warehouse with Oracle SQL Developer, with and without using a connection wallet
+- Learn how to connect SQL Developer without a wallet using TLS connections
+- Learn how to download and configure a connection wallet
+- Query your autonomous database with Oracle SQL Developer
 
-## Task 1: Download the Connection Wallet
+## Task 1: Connect SQL Developer to Database Securely Without Wallet
 
-As ADW and ATP accept only secure connections to the database, you need to download a wallet file containing your credentials first. The wallet can be downloaded either from the instance's details page or from the ADW or ATP service console.
+The first of two methods we'll learn for establishing a secure SQL Developer connection to an autonomous database is to connect securely without a wallet, using TLS authentication.
+
+When you provisioned your autonomous database instance with a network access type of "Secure access from everywhere", by default, mTLS authentication was required, and the only ways to enable TLS in addition to mTLS are either to define an access control list (ACL) or to use a private endpoint. For this lab, you will configure an **IP ACL** (access control list). Then you will be able to uncheck the "Require mutual TLS" checkbox, which in turn will enable TLS for connecting without a wallet.
+
+  >**Note**: See the documentation [Update your Autonomous Database Instance to Allow both TLS and mTLS Authentication] (https://docs.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud/cswgs&id=ADBSA-GUID-6A34B30A-3692-4D1F-8458-FD8F32736199) for detailed information on allowing TLS connections.
+
+To create a new TLS connection to Autonomous Database:
+
+1. First, define an **IP ACL** (access control list). In the **Autonomous Database Details** page, in the **Network** section, click the **Edit** button next to **Access Control List**.
+
+    ![](./images/click-edit-to-create-acl.png " ")
+
+2. In the **Edit Access Control List** dialog, click **Add My IP Address**. Your computer's IP address will be added as a value. Click **Save Changes**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
+
+    ![](./images/click-add-my-ip-address.png " ")
+
+3. In the **Autonomous Database Details** page, in the **Network** section, note that the **Access Type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) Authentication**.
+
+    ![](./images/click-edit-to-uncheck-mtls.png " ")
+
+4. In the **Edit Mutual TLS Authentication** dialog, deselect the checkbox that requires mutual TLS (mTLS) authentication and and click **Save Changes**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
+
+    ![](./images/deselect-mtls-checkbox.png " ")
+
+Next, perform the following steps to obtain the **TLS connection string**.
+
+5. In the **Autonomous Database Details** page, click the **DB Connection** button.
+
+    The **Database Connection** dialog pops up. In the **Connection Strings** section, change the **TLS Authentication** selection from Mutual TLS to **TLS**. This will enable SQL Developer and other applications to connect to your autonomous database securely without a wallet.
+
+    Choose one of the connection strings, such as *adwfinance_high*, and optionally click **Show** to see the contents of the connection string. Then click **Copy** to copy that connection string. Paste the connection string to a notepad for use in a next step. Then click **Close** to close the Database Connection dialog.
+
+    ![](./images/obtain-tls-connect-string.png " ")
+
+    See the documentation [View TNS Names and Connection Strings for an Autonomous Database Instance] (https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/cswgs/autonomous-connection-strings-view.html#GUID-BE884A1B-034D-4CD6-9B71-83A4CCFDE9FB) for more information on viewing and copying connection strings.
+
+6. Start Oracle SQL Developer and in the connections panel, click the **New Connection....** button.
+
+    ![](./images/click-new-database-connection.png " ")
+
+7. Enter the following information:
+- **Name**: Enter a name for this connection, such as **connection without wallet using TLS**.
+- **Username**: Enter the database username. You can either use the default administrator database account ADMIN provided as part of the service or create a new schema, and use it.
+- **Password**: Enter the password you created for the database user.
+- **Connection Type**: Select **Custom JDBC**.
+- **Custom JDBC URL**: Enter the following:
+
+    **jdbc:oracle:thin:@ followed by the connection string you copied in Step 5.**
+
+    ![](./images/sql-dev-connection-dialog.png " ")
+
+    For example, the value for the **Custom JDBC URL** field might look something like this (where we masked some values with XXXXXXXXXXXXXX):
+
+    ````
+    jdbc:oracle:thin:@(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)
+    (port=1521)(host=XXXXXXXXXXXXXX.us-phoenix-1.oraclecloud.com))(connect_data=(service_name=XXXXXXXXXXXXXX_databasename_high.adb.oraclecloud.com))
+    (security=(ssl_server_cert_dn="CN=adwc-XXXXXXXXXXXXXX.region.oraclecloud.com, OU=Oracle BMCS US, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
+    ````
+
+    When you copy the connection string, the values for **region** and **databasename** are for your Oracle Autonomous Database instance.
+
+8. Click **Connect** to connect to the database.
+
+## Task 2: Download the Connection Wallet
+
+In addition to connecting SQL Developer securely without a wallet using TLS, we'll now learn how to connect securely using a connection wallet containing your credentials.
+You can download the wallet either from the instance's details page or from the ADW or ATP service console.
 
 1.  If you are not logged in to Oracle Cloud Console, login and select Autonomous Data Warehouse from the hamburger menu and navigate into your ADW Finance Mart instance.
 
@@ -45,7 +111,7 @@ As ADW and ATP accept only secure connections to the database, you need to downl
 
 5.  Once the wallet is downloaded, click **Close** to close the Database Connection dialog.
 
-## Task 2: Connect to the database using SQL Developer
+## Task 3: Connect SQL Developer to Database Securely with Wallet
 
 Start SQL Developer and create a connection for your database using the default administrator account "ADMIN" by following these steps.
 
@@ -68,7 +134,7 @@ Start SQL Developer and create a connection for your database using the default 
 
 4.  If you are behind a VPN or Firewall and this Test fails, make sure you have <a href="https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html" target="\_blank">SQL Developer 18.3</a> or higher. This version and above will allow you to select the "Use HTTP Proxy Host" option for a Cloud Wallet type connection. While creating your new ADW connection here, provide your proxy's Host and Port. If you are unsure where to find this, you may look at your computer's connection settings or contact your Network Administrator.
 
-## Task 3: Querying Your Autonomous Database with SQL Developer
+## Task 4: Query Your Autonomous Database with SQL Developer
 
 The SH schema provides a small data set that you can use to run the sample queries in the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/sql-analysis-reporting-data-warehouses.html#GUID-1D8E3429-735B-409C-BD16-54004964D89B" target="\_blank">Database Data Warehousing Guide</a>. For example, the following query shows you how the SQL function RANK() works:
 
@@ -93,10 +159,14 @@ The SH schema provides a small data set that you can use to run the sample queri
 
 ## Want to Learn More?
 
-Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) for documentation on other methods to securely connect to an autonomous database in Autonomous Data Warehouse.
+View the documentation for [connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) in Autonomous Database Shared.
+
+View the documentation for [network configuration options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-network-access.html#GUID-D2D468C3-CA2D-411E-92BC-E122F795A413) in Autonomous Database Shared.
+
+View the blog post ["Connecting to Your Autonomous Database Has Never Been Easier"](https://blogs.oracle.com/datawarehousing/post/connecting-your-autonomous-database-has-never-been-easier) to learn how to use one-way Transport Layer Security (TLS) authentication for connecting your client tools securely to an autonomous database without a wallet.
 
 ## **Acknowledgements**
 
-- **Author** - Richard Green, DB Docs Team
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Author** - Richard Green, Principal Developer, Database User Assistance
+- **Adapted for Cloud by** - Richard Green
+- **Last Updated By/Date** - Richard Green, June 2022
