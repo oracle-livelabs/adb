@@ -475,17 +475,17 @@ If you already launched the workshop and logged in to the Console using the inst
 
     ![The My Reservations tab and the Launch Workshop link for a sample workshop are highlighted.](./images/my-reservations.png " ")
 
-    The **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page is displayed in a new browser tab named **Run Workshop**. Click the **View Login Info** link in the banner to display the **Reservation Information** panel for important information that you will need throughout this workshop.  
+    The workshop is displayed in a new tab named **Run Workshop - Launch Access the Data Lake using Autonomous Database and Data Catalog**. Click the **View Login Info** link in the banner to display the **Reservation Information** panel for important information that you will need throughout this workshop.  
 
-    ![The Launch Workshop page which contains the Workshop Details section (among other sections) is displayed.](./images/ll-workshop-details-section.png " ")
+    ![The Workshop is displayed.](./images/ll-workshop-details-section.png " ")
 
 2. In the **Reservation Information** panel, click **Copy Password** to copy your initial password, and then click **Launch OCI**.
 
-3. On the Sign In page, your assigned username is already entered in the **User Name** field. Paste your password in the **Password** field, and then click **Sign In**.
+3. On the Sign In page, your assigned username is already displayed in the **User Name** field. Paste your password in the **Password** field, and then click **Sign In**.
 
     ![The Oracle Cloud Infrastructure Direct Sign-In section with the populated username and password is displayed. The Sign In button is highlighted.](./images/ll-signin.png " ")
 
-4. The **Change Password** dialog box is displayed.   Enter your assigned password in the **Current Password**, **New Password**, and **Confirm New Password** fields, and then click **Save New Password**.
+4. The **Change Password** dialog box is displayed. Paste your assigned password that you copied in the **Current Password**. Enter a new password in the **New Password** and **Confirm New Password** fields, and then click **Save New Password**. Make a note of your new password as you will need it in this workshop.
 
     ![The completed Change Password dialog box is displayed. The Save New Password button is highlighted.](./images/ll-change-password.png " ")
 
@@ -493,7 +493,7 @@ If you already launched the workshop and logged in to the Console using the inst
 
     ![The Oracle Cloud Console Home page is displayed with the LiveLabs assigned region highlighted.](images/console-home.png)
 
-    >**Note:** Bookmark the **Run Workshop Access the Data Lake using Autonomous Database and Data Catalog** page for quicker access.
+    >**Note:** Bookmark the workshop page for quicker access.
 
 ## Task 2: Create and Import a Glossary
 
