@@ -475,40 +475,25 @@ If you already launched the workshop and logged in to the Console using the inst
 
     ![The My Reservations tab and the Launch Workshop link for a sample workshop are highlighted.](./images/my-reservations.png " ")
 
-    The **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page is displayed in a new browser tab named **Attend the Workshop**. The **Workshop Details** section contains important information that you will need throughout this workshop.  
+    The **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page is displayed in a new browser tab named **Run Workshop**. Click the **View Login Info** link in the banner to display the **Reservation Information** panel for important information that you will need throughout this workshop.  
 
     ![The Launch Workshop page which contains the Workshop Details section (among other sections) is displayed.](./images/ll-workshop-details-section.png " ")
 
-    > **Note:** The **Let's Get Started - Log in to Oracle Cloud** section on the page displays helpful information on how to log in to the Console using your reserved environment.
+2. In the **Reservation Information** panel, click **Copy Password** to copy your initial password, and then click **Launch OCI**.
 
-    ![The Let's Get Started - Log in to Oracle Cloud section is displayed.](./images/ll-lets-get-started.png " ")
-
-2. In the **Workshop Details** section, click **Copy Password** to copy your initial password, and then click **Launch Console** or click the **Login URL**.
-
-    ![The Login URL (includes the Launch Console button) field and the Copy Password button are highlighted.](./images/workshop-details-section-2.png " ")
-
-3. On the Sign In page, scroll-down to the **Oracle Cloud Infrastructure Direct Sign-In** section, and click the down arrow to expand that section.
-
-    ![In the Oracle Cloud Infrastructure Direct Sign-In section, the down arrow to expand this section is highlighted.](./images/ll-expand-direct-signin.png " ")
-
-4. Paste your password in the **Password** field, and then click **Sign In**.
+3. On the Sign In page, your assigned username is already entered in the **User Name** field. Paste your password in the **Password** field, and then click **Sign In**.
 
     ![The Oracle Cloud Infrastructure Direct Sign-In section with the populated username and password is displayed. The Sign In button is highlighted.](./images/ll-signin.png " ")
 
-5. The **Change Password** dialog box is displayed.   Enter your assigned password in the **Current Password**, **New Password**, and **Confirm New Password** fields, and then click **Save New Password**.
+4. The **Change Password** dialog box is displayed.   Enter your assigned password in the **Current Password**, **New Password**, and **Confirm New Password** fields, and then click **Save New Password**.
 
     ![The completed Change Password dialog box is displayed. The Save New Password button is highlighted.](./images/ll-change-password.png " ")
 
-    When you log in and the **Oracle Cloud Console** Home page is displayed, make sure that the displayed region is the same that was assigned to you in the **Workshop Details** section of the **Launch *workshop-name* Workshop** page, **US East (Ashburn)** in this example.
+    When you log in and the **Oracle Cloud Console** Home page is displayed, make sure that the displayed region is the same that was assigned to you in the **Reservation Information** panel of the **Run Workshop *workshop-name*** page, **US West (Phoenix)** in this example.
 
     ![The Oracle Cloud Console Home page is displayed with the LiveLabs assigned region highlighted.](images/console-home.png)
 
-6. Scroll-down to the bottom of the **Launch *workshop-name* Workshop** page. Click the **Click here to open the next part of the workshop** box to proceed to the next lab in the workshop. In addition, it is recommended that you click the **Open the workshop instructions in a new tab** link for better viewing of the workshop.
-
-    ![The Open the workshop instructions in a new tab link is highlighted.](images/bottom-page.png)
-
-
-    >**Note:** Bookmark the **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page for quicker access. You will refer to the resources listed on this page several time in this workshop.
+    >**Note:** Bookmark the **Run Workshop Access the Data Lake using Autonomous Database and Data Catalog** page for quicker access.
 
 ## Task 2: Create and Import a Glossary
 
@@ -524,9 +509,13 @@ In this task, you create a new and empty business glossary in your Data Catalog 
 
     ![Warning that you might get if you are in the root compartment and not in your own LiveLabs assigned compartment.](./images/wrong-compartment.png " ")
 
-3. To select your assigned LiveLabs compartment, click the **Compartment** drop-down list in the **List Scope** section on the left. Enter your LiveLabs assigned compartment name in the **Compartment** text field to search for it which should look something like **LL#####-COMPARTMENT** where the **#####** is a unique five-digit number. Alternatively, you can drill-down on the **Livelabs** node and select your assigned compartment. When your assigned compartment is displayed in the list of compartments, select it. In addition, make sure that your LiveLabs assigned region from the **Launch Workshop** page is selected in Console's banner, **US East (Ashburn)** in our example.
+3. To select your assigned LiveLabs compartment, click the **Compartment** drop-down list in the **List Scope** section on the left. Enter your LiveLabs assigned compartment name in the **Compartment** text field to search for it which should look something like **LL#####-COMPARTMENT** where the **#####** is a unique five-digit number. Alternatively, you can drill-down on the **Livelabs** node and select your assigned compartment. When your assigned compartment is displayed in the list of compartments, select it. In addition, make sure that your LiveLabs assigned region from the **Run Workshop *workshop-name*** page is selected in Console's banner, **US West (Phoenix)** in our example.
 
     ![The Data Catalogs page in your assigned LiveLabs compartment is displayed. The training-dcat-instance Data Catalog instance provided for your is displayed on this page.](./images/ll-select-compartment.png " ")
+
+    >**Note:** Refer to the **Reservation Information** panel that you can access from the **Run Workshop *workshop-name*** tab for information about your assigned resources.
+
+    ![The LL assigned resources are displayed in the **Reservation Information** panel.](./images/ll-resources.png " ")
 
 4. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog in the **Name** column.
 
@@ -587,12 +576,12 @@ Register your Oracle Object Storage data sources with Data Catalog as a data ass
     * **Name:** **`Data Lake`**.
     * **Description:** **`Data Asset to access Oracle Object Storage buckets in a different tenancy than yours using public PARs`**.
     * **Type:** Select **Oracle Object Storage** from the drop-down list.
-    * **URL:** This is the swift URL for the OCI Object Storage resource that you will use in this lab. The URL field is automatically populated using your own **Home Region**, `us-ashburn-1` in this example. If the Oracle Object Storage buckets that you are harvesting from a different tenancy has a different **Home Region** which it does not in this case, then make sure to edit this URL to reflect that home region.
+    * **URL:** This is the swift URL for the OCI Object Storage resource that you will use in this lab. The URL field is automatically populated using your own **Home Region**. In this workshop, the buckets that we will use are in the `us-ashburn-1`. If the **URL** that is automatically doesn't show this region, edit it to show the following URL.
 
         ```
         https://swiftobjectstorage.us-ashburn-1.oraclecloud.com
         ```
-        >**Note:** In this lab, you will be accessing three Oracle Object Storage buckets that contain the data using three public pre-authenticated requests (PARs) that are provided for you. The three buckets are located in the **c4u04** tenancy in the **us-ashburn-1** region in our example. In the next step, you'll add three data connections to this data asset using the three pre-authenticated requests (PARs). Note that if you were using an Oracle Object Storage data asset type instead of PAR, you would only need one data connection instead of three. For information on PARs, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
+        >**Note:** In this lab, you will be accessing three Oracle Object Storage buckets that contain the data using three public pre-authenticated requests (PARs) that are provided for you. The three buckets are located in the **c4u04** tenancy in the **us-ashburn-1** region. In the next step, you'll add three data connections to this data asset using the three pre-authenticated requests (PARs). Note that if you were using an Oracle Object Storage data asset type instead of PAR, you would only need one data connection instead of three. For information on PARs, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
 
     * **Namespace:** Enter **c4u04**. This is tenancy where the three Oracle Object Storage buckets that you will harvest are located.
 
