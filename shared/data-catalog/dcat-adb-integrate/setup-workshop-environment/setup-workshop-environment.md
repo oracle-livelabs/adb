@@ -7,10 +7,6 @@ Since you are using the LiveLabs environment, you **don't** have administrative 
 
 If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs: [Access the Data Lake using Autonomous Database and Data Catalog](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=877)
 
-When your workshop reservation is available, the **Launch *workshop-name* Workshop** page is displayed in a new browser tab named **Attend the Workshop**. The **Workshop Details** section contains important information about your allocated resources that you will need throughout this workshop such as the login URL, tenancy name, user name and password, compartment name and OCID, and so on. This is all explained in detail in the next lab.   
-
-![The Workshop Details section of the Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop page is displayed.](./images/ll-workshop-details-section.png " ")
-
 > **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new Data Catalog administrator user and a Data Catalog administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage a Data Catalog and Autonomous Database instances.
 
 Estimated Time: 5 minutes
