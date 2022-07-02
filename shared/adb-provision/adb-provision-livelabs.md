@@ -3,7 +3,7 @@
   "title": "Lab 1: Provision an ADB Instance",
   "description": "Provisioning an Autonomous Database Instance",
   "type": "livelabs",
-  "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/data-management-library/autonomous-database/shared/adb-provision/adb-provision-conditional.md"
+  "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
 },
 */
 # Provision an Autonomous Database (ADW and ATP)
@@ -31,7 +31,7 @@ Estimated time: 5 minutes
 
 3. The following steps apply similarly to either Autonomous Data Warehouse or Autonomous Transaction Processing. This lab shows provisioning of an Autonomous Data Warehouse database, so click **Autonomous Data Warehouse**.
 
-    ![Click Autonomous Data Warehouse.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 4. Make sure your workload type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select a compartment. Enter the first part of your user name, for example `LL185` in the Search Compartments field to quickly locate your compartment.
 
