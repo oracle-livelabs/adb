@@ -3,7 +3,7 @@
     "title": "Lab 3: Load Data",
     "description": "Load data into ADB",
     "type": "livelabs",
-    "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/data-management-library/autonomous-database/shared/adb-loading/adb-loading-conditional.md"
+    "filename": "https://oracle-livelabs.github.io/adb/shared/adb-loading/adb-loading-conditional.md"
 },
 */# Load Data into an Autonomous Database Instance
 

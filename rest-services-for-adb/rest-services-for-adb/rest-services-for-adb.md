@@ -225,7 +225,7 @@ We need to load some data into the database so that we can create some REST serv
 
     or you can copy the cURL command and run it where curl is available. If you are unsure if you have cURL installed locally or do not want to install it, you can use the OCI cloud shell. While logged into the OCI console, you can click the Cloud Shell icon in the upper right of the page.
 
-    ![In the OCI Web Console, click the Cloud Shell icon in the upper right of the page](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/cloud-shell.png)
+    ![In the OCI Web Console, click the Cloud Shell icon in the upper right of the page](https://oracle-livelabs.github.io/common/images/console/cloud-shell.png)
 
     This will open a console where you can run the cURL command.
 

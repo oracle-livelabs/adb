@@ -34,7 +34,7 @@ workshop, you will use this same wallet mechanism to make a connection from OAC 
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 
-	![Oracle Console SignIn](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+	![Oracle Console SignIn](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     You can see all the **ADW** instances that you have **created**.
     **Select** the instance that we created before.
@@ -66,7 +66,7 @@ workshop, you will use this same wallet mechanism to make a connection from OAC 
     **Return** to the **Oracle Cloud Infrastructure console** and click on the menu icon on the left.
     **Navigate** to **Analytics** and then **Analytics Cloud**.
 
-    ![OAC Web Console](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/analytics-oac.png " ")
+    ![OAC Web Console](https://oracle-livelabs.github.io/common/images/console/analytics-oac.png " ")
 
 7. **Open** the Cloud Analytics **URL** associated with your instance (the one that we created in Lab 2) by using the dots menu button on the right-hand side of your instance information and selecting **Open URL**.
 

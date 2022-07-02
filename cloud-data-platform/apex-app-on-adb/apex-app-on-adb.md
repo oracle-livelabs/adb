@@ -37,7 +37,7 @@ Watch this video to learn more about Autonomous Database.
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Data Warehouse**.
 	
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 3. Click **Create Autonomous Database**.
 
