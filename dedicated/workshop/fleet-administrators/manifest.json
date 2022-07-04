@@ -1,0 +1,132 @@
+{
+    "tutorials": [
+        {
+            "title": "Introduction to ADB Dedicated for Fleet Administrators",
+            "description": "Introduction to ADB Dedicated for Fleet Administrators",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/10/2020",
+            "contentid": "12nnnn",
+            "filename": "./intro.md"
+        },
+        {
+            "title": "Lab 1: Prepare Private Network for OCI Implementation",
+            "description": "Preparing your private network in the Oracle Cloud Infrastructure",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/26/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-network-prepare/adb-network-prepare.md"
+        },
+        {
+            "title": "Lab 2: Provisioning a Cloud Exadata Infrastructure for ADB on Dedicated Infrastructure",
+            "description": "Provisioning Cloud Exadata Infrastructure for Autonomous DB in OCI",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "02/05/2022",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-provisioning-exadata/adb-provisioning-exadata.md"
+        },
+        {
+            "title": "Lab 3: Provisioning a Cloud Autonomous Exadata VM Cluster for ADB on Dedicated Infrastructure",
+            "description": "Provisioning Cloud Autonomous Exadata VM Cluster for Autonomous DB in OCI",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "02/05/2022",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-prov-cloud-vmc/adb-prov-cloud-vmc.md"
+        },
+        {
+            "title": "Lab 4: Provisioning Exadata Infrastructure for ADB on Exadata Cloud@Customer",
+            "description": "Provisioning Exadata Infrastructure for Autonomous DB on ExaC@C",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/03/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-prov-exacc/adb-prov-exacc.md"
+        },
+        {
+            "title": "Lab 5: Provisioning an Autonomous VM Cluster for ADB on Exadata Cloud@Customer",
+            "description": "Provisioning an Autonomous VM Cluster for Autonomous DB on ExaC@C",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/03/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-prov-vmc/adb-prov-vmc.md"
+        },
+        {
+            "title": "Lab 6: Provisioning an Autonomous Container Database",
+            "description": "Provisioning an Autonomous Container Database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/26/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-provisioning-autonomous-container/adb-provisioning-autonomous-container.md"
+        },
+        {
+            "title": "Lab 7: Configure VPN Connectivity in your Exadata Network",
+            "description": "Configuring VPN connectivity into your private ATP network",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/27/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../atp-configuring-vpn/atp-configuring-vpn.md"
+        },
+        {
+            "title": "Lab 8: Autonomous Data Guard",
+            "description": "Enabling and using Autonomous Data Guard",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "12/7/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-data-guard/adb-data-guard.md"
+        },
+        {
+            "title": "Lab 9: Migrate with Data Pump",
+            "description": "Migrating to Dedicated ATP using Data Pump",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/30/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../atp-data-pump-migration/atp-data-pump-migration.md"
+        },
+        {
+            "title": "Lab 10: Oracle GoldenGate Replication",
+            "description": "Live migration to ATP-Dedicated using Oracle GoldenGate replication",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/31/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../atp-goldengate-replication/atp-goldengate-replication.md"
+        },
+        {
+            "title": "Lab 11: OCI Notification Service",
+            "description": "Setting up DB event notifications using OCI Notification service",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/01/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-event-notifications/adb-event-notifications.md"
+        },
+        {
+            "title": "Lab 12: Deploy OEM and connect ADB to OEM",
+            "description": "Deploy OEM and connect ADB to OEM",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "09/15/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-oem/adb-deploy-oem.md"
+        },
+        {
+            "title": "Lab 13: Download AWR report from OEM",
+            "description": "Automatic Indexing",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "06/16/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-oem/awr-with-oem.md"
+        },
+        {
+            "title": "Lab 14: Oracle Standard Tags",
+            "description": "Oracle Standard Tags",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/21/2022",
+            "contentid": "12nnnn",
+            "filename": "./../../oracle-standard-tags/oracle-standard-tags.md"
+        },
+        {
+            "title": "Appendix",
+            "description": "Common tools for windows Users Finding the IP address of your AEI Cluster.",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/01/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-appendix/adb-appendix.md"
+        }
+    ]
+}
