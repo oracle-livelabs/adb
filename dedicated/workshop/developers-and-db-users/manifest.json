@@ -1,0 +1,132 @@
+{
+    "tutorials": [
+        {
+            "title": "Introduction to ADB Dedicated for Developers and Database Users",
+            "description": "Introduction to ADB Dedicated for Developers and Database Users",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/10/2020",
+            "contentid": "12nnnn",
+            "filename": "./intro.md"
+        },
+        {
+            "title": "Lab 1: Provisioning Databases",
+            "description": "Provisioning databases on your dedicated Autonomous Infrastructure",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/27/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-provisioning-databases/adb-provisioning-databases.md"
+        },
+        {
+            "title": "Lab 2: Configure a Development System",
+            "description": "Configuring a development system for use with your dedicated autonomous database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/27/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-configure-dev-client/adb-configure-dev-client.md"
+        },
+        {
+            "title": "Lab 3: Build and Deploy Node.js Application",
+            "description": "Building and deploying node.js application stacks on dedicated autonomous infrastructure",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/27/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-build-and-deploy-nodejs/adb-build-and-deploy-nodejs.md"
+        },
+        {
+            "title": "Lab 4: Build Python Application Stacks",
+            "description": "Building and deploying Python application stacks on dedicated autonomous infrastructure",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/30/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-build-python-apps/adb-build-python-apps.md"
+        },
+        {
+            "title": "Lab 5: Build Java Application Stacks",
+            "description": "Building and deploying Java application stacks on dedicated autonomous infrastructure",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/30/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-build-java-apps/adb-build-java-apps.md"
+        },
+        {
+            "title": "Lab 6: Using CLI commands",
+            "description": "Using CLI commands to work with your Autonomous databases",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/30/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-using-cli-commands/adb-using-cli-commands.md"
+        },
+        {
+            "title": "Lab 7: Database Actions Console",
+            "description": "Using Database Actions console",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/30/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-sql-developer-web/adb-sql-developer-web.md"
+        },
+        {
+            "title": "Lab 8: Build Apex Application",
+            "description": "Building Apex application on dedicated autonomous database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/30/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-build-apex-apps/adb-build-apex-apps.md"
+        },
+        {
+            "title": "Lab 9: Build Always On Applications",
+            "description": "Building Always-On applications on the autonomous database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "03/31/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-build-always-on-apps/adb-build-always-on-apps.md"
+        },
+        {
+            "title": "Lab 10: Managing Database Performance",
+            "description": "Managing database performance with Performance Hub",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/01/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-performance-hub/adb-performance-hub.md"
+        },
+        {
+            "title": "Lab 11: Zero Downtime Scaling",
+            "description": "Zero downtime scaling",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/01/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-scaling/adb-scaling.md"
+        },
+        {
+            "title": "Lab 12: Recover Errors Using Flashback Recovery",
+            "description": "Recovering from user errors using flashback recovery",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/01/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-flashback-recovery/adb-flashback-recovery.md"
+        },
+        {
+            "title": "Lab 13: Oracle Analytics Cloud",
+            "description": "Connect OAC with Dedicated database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "05/19/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-connect-oac/adb-connect-oac.md"
+        },
+        {
+            "title": "Lab 14: Automatic Indexing",
+            "description": "Automatic Indexing",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "06/16/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-automatic-indexing/adb-automatic-indexing.md"
+        },
+        {
+            "title": "Appendix",
+            "description": "Common tools for windows Users Finding the IP address of your AEI Cluster.",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/01/2020",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-appendix/adb-appendix.md"
+        }
+    ]
+}
