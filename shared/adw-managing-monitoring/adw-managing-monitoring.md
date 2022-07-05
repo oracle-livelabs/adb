@@ -25,7 +25,7 @@ The first facility that we will look at for monitoring your autonomous database 
 
 1. If you are not logged in to Oracle Cloud Console, log in and select Autonomous Database from the hamburger menu and navigate into your ADB Finance Mart instance.
 
-    ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     ![](images/select-adw-finance-mart.jpg " ")
 

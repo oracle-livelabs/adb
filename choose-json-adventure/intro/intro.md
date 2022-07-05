@@ -49,8 +49,8 @@ This workshop will provide a walkthrough on how the Oracle Database can not only
 
 ### Prerequisites
 This lab assumes you have completed the following labs:
-* Lab: [Login to Oracle Cloud](https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md)
-* Lab: [Provision an Autonomous Database](https://raw.githubusercontent.com/oracle/learning-library/master/data-management-library/autonomous-database/shared/adb-provision/adb-provision.md)
+* Lab: [Login to Oracle Cloud](https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md)
+* Lab: [Provision an Autonomous Database](https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision.md)
 
 ## Choose your Own JSON Adventure: Relational or Document Store
 

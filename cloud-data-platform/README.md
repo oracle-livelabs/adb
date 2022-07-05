@@ -5,7 +5,7 @@ Welcome to the workshop on Oracle's Cloud Data Platform.
 To execute this workshop, click on the link below.
 
 ## Workshops
-Click [here](http://bit.ly/golivelabs) to access this workshop on LiveLabs.
+Click [here](http://developer.oracle.com/livelabs) to access this workshop on LiveLabs.
 
 ### Workshop Highlights
 - Provision an Autonomous Data Warehouse (ADW) Instance
