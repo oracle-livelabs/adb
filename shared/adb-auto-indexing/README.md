@@ -9,5 +9,5 @@ Automatic partitioning uses a single-column partition key combined with single-l
 [Run a workshop now!](http://bit.ly/golivelabs)
 
 ## Documentation
-- [Oracle Auto Partitioning](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/mdw-managing-automatic-partitioning-autonomous-database.html)
+- [Oracle DBMS_AUTO_INDEX](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_AUTO_INDEX.html)
 - [Oracle Database 19c](https://www.oracle.com/database/)
