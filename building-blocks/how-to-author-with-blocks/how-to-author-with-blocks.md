@@ -33,6 +33,10 @@ Hope it's clear - Blocks and Tasks will simplify your workshop authoring and on-
 Let's take a look at the markdown for Provisioning an Autonomous Database:
 
 ```
+Here is markdown specific to my workshop. 
+
+Let's create an ADB instance.
+
 ## Task 1: Choose Autonomous Database from the services menu
 []&lpar;include:adb-goto-service-body.md)
 
@@ -45,10 +49,14 @@ As you can see, the markdown for this block is pretty simple. It is including tw
 See below for how the markdown was rendered
 
 ## Example: Provision using the OCI Console
+Here is markdown specific to my workshop. 
+
+Let's create an ADB instance.
+
 ### Task 1: Choose Autonomous Database from the services menu
 [](include:adb-goto-service-body.md)
 
-### Create the Autonomous Database instance
+###  Task 2: Create the Autonomous Database instance
 [](include:adb-provision-body.md)
 
 ## The workshop manifest and variables
