@@ -1,0 +1,52 @@
+{
+    "workshoptitle": "Autotatic Indexing for Oracle Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "About the Auto Indexing Workshop",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an Autonomous Database Instance",
+            "description": "Provision an Autonomous Database instance",
+            "type": "livelabs",
+            "filename": "../../provision-adw/provision-adw.md"
+        },
+        {
+            "title": "Lab 2: Create and Application Schema and Prepare for Auto Indexing",
+            "description": "Create a simple schema to auto index",
+            "filename": "../../create-schema/create-schema.md"
+        },
+        {
+            "title": "Lab 3: Execute an Application Workload",
+            "description": "Execute an application workload",
+            "filename": "../../execute-workload/execute-workload.md"
+        },
+        {
+            "title": "Lab 4: View the Auto Index Report",
+            "description": "View the automatic index report",
+            "filename": "../../report/report.md"
+        },
+        {
+            "title": "Lab 5: View Auto Index Details",
+            "description": "Viewing auto indexing details",
+            "filename": "../../view-details/view-details.md"
+        },       
+        {
+            "title": "Lab 6: Controlling and Configuring Automatic Indexing",
+            "description": "How to control and configure autmatic indexing.",
+            "filename": "../../configure/configure.md"
+        },                       
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}
