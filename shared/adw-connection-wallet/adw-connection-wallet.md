@@ -87,7 +87,7 @@ You can download the wallet either from the instance's details page or from the 
 
 1.  If you are not logged in to Oracle Cloud Console, login and select Autonomous Data Warehouse from the hamburger menu and navigate into your ADW Finance Mart instance.
 
-    ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     ![](images/step1.1-adb.png " ")
 

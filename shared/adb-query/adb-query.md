@@ -19,7 +19,7 @@ Estimated Time: 10 minutes
 
 1.  If you are not already logged in to Oracle Cloud Console, log in and select Autonomous Data Warehouse from the navigation menu and navigate into your ADW Finance Mart instance.
 
-    ![Select autonomous Data Warehouse on the left navigation menu in the Oracle Cloud homepage.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Select autonomous Data Warehouse on the left navigation menu in the Oracle Cloud homepage.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     ![Select your database instance.](images/step1.1-adb.png " ")
 

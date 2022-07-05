@@ -55,7 +55,7 @@ A compartment is a collection of cloud assets, like compute instances, load bala
 
 3. Click **Autonomous Data Warehouse**.
 
-    ![Click Autonomous Data Warehouse.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 4. Make sure your workload type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. <if type="freetier">Use the __List Scope__ drop-down menu to select the compartment you just created.</if><if type="livelabs">In the __List Scope__, enter the first part of the LiveLabs compartment assigned to you, then select the compartment from the list.</if>
 

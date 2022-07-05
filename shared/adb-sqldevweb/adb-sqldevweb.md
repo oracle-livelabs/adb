@@ -32,7 +32,7 @@ Although you can connect to your Oracle Autonomous Database using local PC deskt
 
 1.  If you are not logged in to Oracle Cloud Console, log in and select **Autonomous Data Warehouse** from the navigation menu, make sure you are in the right compartment where you ADW is provisioned and navigate into your ADW Finance Mart instance.
 
-    ![Oracle Home page left navigation menu.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Oracle Home page left navigation menu.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 
     ![Autonomous Databases homepage.](images/step1.1-adb.png " ")

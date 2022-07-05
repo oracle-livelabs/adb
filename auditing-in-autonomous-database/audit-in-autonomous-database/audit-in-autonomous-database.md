@@ -25,7 +25,7 @@ In this lab, you will:
     ![](images/cloud.png " ")
 
 3. Click the navigation menu at the upper left, and select **Autonomous Transaction Processing** under Oracle Database.
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-atp.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
 4. Select your compartment. <if type="livelabs">Your compartment should begin with the username you logged in with. Do not select the root compartment.
 </if>Leave Transaction Processing selected. Click **Create Autonomous Database**.
