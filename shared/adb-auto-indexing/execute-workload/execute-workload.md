@@ -54,7 +54,7 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
     
-## Task 2: Wait for the Application Workload to be Captured
+## Task 2: Wait for Workload Capture
 
 The Oracle Autonomous Database collects workload SQL periodically (every 15 minutes). The _Auto STS Capture Task_ stores workload statements in a SQL tuning set called SYS\_AUTO\_STS. This is the _automatic SQL tuning set_ (ASTS). The whole process is self-managing, so all we have to do now is sit back and wait for our new indexes to appear! However, for the sake of this lab, we can take a closer look at what happens once a workload has been executed.
 
@@ -78,7 +78,7 @@ The Oracle Autonomous Database collects workload SQL periodically (every 15 minu
 
 2. Keep running the query, and monitior the LAST\_SCHEDULE\_TIME Wait for the time to change. Alternatively, look at the "AGO" column value and wait for it to show that the task ran a few seconds ago. The interval is 900 seconds, so you will need to wait for up to 15 minutes.
 
-![Auto STS task execution](./images/auto-sts.png)
+    ![Auto STS task execution](./images/auto-sts.png)
 
 3. After about 15 minutes, the Autonomous Database will have captured the workload queries. You can confirm that this by inspecting the automatic SQL tuning set. If you have run this lab before, you will see the latest and previous workload SQL statements.
 
@@ -90,7 +90,7 @@ The Oracle Autonomous Database collects workload SQL periodically (every 15 minu
      and    sqlset_name = 'SYS_AUTO_STS';
     </copy>
     ````
-![Auto STS queries](./images/auto-sts-2.png)
+    ![Auto STS queries](./images/auto-sts-2.png)
 
 You may now **proceed to the next lab**.
 

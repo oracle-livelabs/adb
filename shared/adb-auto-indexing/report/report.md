@@ -16,7 +16,7 @@ This lab assumes you have completed the following labs:
 - Create and Application Schema and Prepare for Auto Indexing
 - Execute an Application Workload
 
-## Task 1: Wait for automatic indexing to kick in
+## Task 1: Wait for Automatic Indexing to Complete
 
 1. This task is optional since you can skip to Task 2 and see if a new auto index report is available. Alternatively, you can use the following query to check if the auto indexing task has executed recently. We need to wait until it has executed _after_ the workload queries were captured. This will take up to 15 minutes.
 
@@ -37,7 +37,7 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
     
-## Task 2: Run the Auto Index Report   
+## Task 2: Generate the Automatic Indexing Report   
 
 1. If the auto indexing task has just completed dealing with your workload, you can view the most recent report. In this example, we will generate ALL sections of the report to the maximum level of detail.
 
@@ -74,11 +74,11 @@ This lab assumes you have completed the following labs:
     </copy>
     ````
 
-## Task 2: View the Auto Index Report   
+## Task 2: View the Automatic Indexing Report   
 
 1. The summary section of the report will look something like this.
 
-![Report summary](./images/summary.png)
+    ![Report summary](./images/summary.png)
 
 You might see some differences in your report because the results depend on measured workload performance and performance may change over time (for example, due to ADB patches).
 
@@ -93,18 +93,18 @@ In the report above, we can see:
 
 2. The indexes created are listed in the report (invisible ones are asterisked):
 
-![Created indexes](./images/index-list.png)
+    ![Created indexes](./images/index-list.png)
 
 3. In a detailed report, individual SQL performance improvements are listed, including SQL execution plans:
 
-![Performance differences](./images/verification-details1.png)
+    ![Performance differences](./images/verification-details1.png)
 
-![Plan differences](./images/verification-details2.png)
+    ![Plan differences](./images/verification-details2.png)
 
 
 3. The report includes details of SQL plan baselines and an error section. It is common to see _ORA-00942: table or view does not exist_ errors in the final section if you are testing on a volatile environment. This is normal and indicative of captured workload queries for tables or views that have subsequently been dropped.
 
-![Plan differences](./images/plan-baseline.png)
+    ![Plan differences](./images/plan-baseline.png)
 
 You may now **proceed to the next lab**.
 

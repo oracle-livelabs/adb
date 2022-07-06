@@ -1,4 +1,4 @@
-# View Details
+# View Automatic Indexing Details
 
 ## Introduction
 
@@ -17,7 +17,7 @@ This lab assumes you have completed the following labs:
 - Execute an Application Workload
 - View the Auto Index Report
 
-## Task 1: Look for Auto Indexes
+## Task 1: Identify Automatic Indexes
 
 1. Use the following query to identify auto indexes. We can conclude from the listing that the columns F8, F9, F7 and F10 were used in predicates, but the optimizer decided that the captured application queries will not use them. Indexes on columns F6 and F2 would be used by application queries, but the performance enhancement is insufficient to warrant exposure to the application workload (so they remain INVISIBLE). F6 and F2 will be marked INVISIBLE UNUSABLE after 24 hours. The other indexes were found to be beneficial to the performance of the captured workload.
 
@@ -39,7 +39,7 @@ This lab assumes you have completed the following labs:
     ````
 	![Auto indexes](./images/view-indexes.png)
 
-## Task 2: Finding more Detailed Information
+## Task 2: Locate Information in Data Dictionary
 
 1. Use the following query to see auto index actions. You can see indexes being CREATEd (they will be _unusable_ at first). Indexes that the optimzier decides will be used by application SQL are rebuilt to make them _usable_. Indexes that definitively improve performance (for the captured workload) are made _visible_.
 

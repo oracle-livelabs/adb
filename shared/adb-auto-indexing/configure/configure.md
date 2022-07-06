@@ -18,7 +18,7 @@ This lab assumes you have completed the following lab:
 - View the Auto Index Report
 - View Auto Index Details
 
-## Task 1: Specifying Schemas for Auto Indexing
+## Task 1: Specify Schemas for Automatic Indexing
 
 1. You can add schemas to an inclusion or exclustion list by setting ALLOW to TRUE or FALSE. The schemas are specified using _parameter\_value_ and NULL means 'all'.
 	
@@ -106,7 +106,7 @@ This lab assumes you have completed the following lab:
     </copy>
     ```
 
-## Task 2: Dropping Automatic Indexes
+## Task 2: Drop Automatic Indexes
 
 1. Use the following query and choose an index to drop.
 	
@@ -154,7 +154,7 @@ This lab assumes you have completed the following lab:
 	</copy>
 	```
 
-## Task 3: Disabling Auto Indexing
+## Task 3: Disable Automatic Indexing
 
 1. Disable automatic indexing.
 	

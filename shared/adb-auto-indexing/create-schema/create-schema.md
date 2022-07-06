@@ -1,4 +1,4 @@
-# Create and Application Schema and Prepare for Auto Indexing
+# Create an Application Schema and Prepare for Auto Indexing
 
 ## Introduction
 
@@ -15,7 +15,7 @@ This lab assumes you have completed the following lab:
 - Provision an ADB Instance (19c)
 
 
-## Task 1: Invoking Cloud Shell from the Oracle OCI 
+## Task 1: Invoke a Cloud Shell from the Oracle OCI 
 
 During this part of the workshop we will use OCI Cloud Shell, a web browser-based terminal accessible from the Oracle Cloud Console. Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI, and other useful pre-installed tools like SQL command line. We are going to use SQL command line in Cloud Shell for this workshop. 
 
@@ -55,7 +55,7 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 	![Successful connection with sqlcl](./images/cloud-console-step-3.png)
 
 
-## Task 2: Prepare or Reset the Lab
+## Task 2: Reset the Lab
 
 1. Using Cloud Shell, connect with user **ADMIN** in sqlcl. Use the "\_low" service.
 	
@@ -75,9 +75,9 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 	</copy>
 	```
 
-## Task 3: Create and populate an application table
+## Task 3: Create and Populate an Application Table
 
-1. Using Cloud Shell connect with user **ADMIN** in sqlcl. Use the "\_low" service.
+1. Using Cloud Shell connect with user **ADMIN** in sqlcl. Use the "\_low" service. All remaining steps in this lab will assume you are connected to this user account.
 	
 	```
 	sql /nolog

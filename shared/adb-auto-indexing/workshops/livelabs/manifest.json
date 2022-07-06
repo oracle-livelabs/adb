@@ -34,10 +34,10 @@
             "filename": "../../report/report.md"
         },
         {
-            "title": "Lab 5: View Auto Index Details",
-            "description": "Viewing auto indexing details",
+            "title": "Lab 5: View Automatic Indexing Details",
+            "description": "View internal details of the automatic indexing process",
             "filename": "../../view-details/view-details.md"
-        },       
+        },   
         {
             "title": "Lab 6: Controlling and Configuring Automatic Indexing",
             "description": "How to control and configure autmatic indexing.",
