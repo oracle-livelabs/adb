@@ -27,7 +27,7 @@ Tempo estimado: 5 minutos
 
 3. Os seguintes passos se aplicam tanto para Autonomous Data Warehouse quanto Autonomous Transaction Processing. Este lab demonstra o provisionamento de uma base Autonomous Data Warehouse, então clique em **Autonomous Data Warehouse**.
 
-    ![Clique em Autonomous Data Warehouse.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/pt_BR-database-adw.png " ")
+    ![Clique em Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/pt_BR-database-adw.png " ")
 
 4. Certifique-se que o tipo de carga de trabalho seja __Data Warehouse__ ou __All__ para visualizar as instâncias de Autonomous Data Warehouse. Utilize o menu __Escopo da Lista__ para selecionar um compartimento. Se você estiver usando um ambiente de LiveLabs, selecione o compartimento fornecido pelo mesmo.
 

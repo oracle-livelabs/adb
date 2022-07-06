@@ -35,7 +35,7 @@ Estimated Lab Time: 20 minutes
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Analytics & AI**, and select **Digital Assistant**.
 
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/analytics-assist.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/analytics-assist.png " ")
 
 3. On the Digital Assistant Instances screen, find the **Compartment** drop down on the left, and select the compartment of your choice from the drop down list.  Here, I am choosing the CloudDataWorkshop compartment.
 
