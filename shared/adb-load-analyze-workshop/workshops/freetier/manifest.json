@@ -12,8 +12,8 @@
 	"tutorials": [
         {
             "title": "Introduction",
-            "description": "Introduction to ADB on Shared Infrastructure",
-            "filename": "./intro.md"
+            "description": "Introduction to Autonomous Database",
+            "filename": "../intro/intro.md"
         },
         {
             "title": "Get Started",
@@ -24,13 +24,13 @@
             "title": "Lab 1: Provision an Analytics Cloud Instance",
             "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
             "type": "freetier",
-            "filename": "/buildingblocks/adb-provision/adb-provision-blocks.md"
+            "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
         },        
         {
             "title": "Lab 2: Provision an Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "/buildingblocks/adb-provision/adb-provision-blocks.md"
+            "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 3: Load Data from Public Object Storage Buckets",
