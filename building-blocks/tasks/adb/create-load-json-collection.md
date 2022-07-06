@@ -1,4 +1,14 @@
-### What is JSON
+<!---
+{
+    "name":"Create and load JSON Collection from object storage",
+    "description":
+    "* Loads data using DBMS_CLOUD.COPY_COLLECTION
+     * Introduces JSON_SERIALIZE, JSON_VALUE and JSON_QUERY (minimal)
+     * Creates a view over JSON data
+     * Performs basic JSON queries"
+}
+--->
+### What is JSON?
 JSON provides a language independent, flexible and powerful data model. It was derived from JavaScript, but many modern programming languages include code to generate and parse JSON-format data. For more information see here: [https://en.wikipedia.org/wiki/JSON](https://en.wikipedia.org/wiki/JSON). No wonder that it is such a popular storage format for developers. 
 
 Oracle SQL allows you to analyze JSON data - including complex data types like arrays - in combination with structured tabular data.

@@ -21,25 +21,31 @@
             "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Provision an Autonomous Database",
+            "title": "Lab 1: Provision an Analytics Cloud Instance",
+            "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
+            "type": "freetier",
+            "filename": "/buildingblocks/adb-provision/adb-provision-blocks.md"
+        },        
+        {
+            "title": "Lab 2: Provision an Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "./../../adb-provision/adb-provision-blocks.md"
+            "filename": "/buildingblocks/adb-provision/adb-provision-blocks.md"
         },
         {
-            "title": "Lab 2: Load Data from Public Object Storage Buckets",
+            "title": "Lab 3: Load Data from Public Object Storage Buckets",
             "description": "Load customer contact, movie genre and pizza location data into ADB from public object storage buckets using the Database Actions tools",
             "type": "freetier",
             "filename": "./../../adb-loading/adb-loading-conditional.md"
         },
         {
-            "title": "Lab 3: Load Local and Private Object Storage Data",
+            "title": "Lab 4: Load Local and Private Object Storage Data",
             "description": "Load additional customer details into ADB from local files and private object storage buckets using the Database Actions tools",
             "type": "freetier",
             "filename": "./../../adb-loading/adb-loading-conditional.md"
         },
         {
-            "title": "Lab 4: Access and Load Partitioned Object Storage Data",
+            "title": "Lab 5: Access and Load Partitioned Object Storage Data",
             "description": "Examine the power of partitioning for querying and loading customer sales data sourced from object storage",
             "type": "freetier",
             "filename": "./../../adb-loading/adb-loading-conditional.md"

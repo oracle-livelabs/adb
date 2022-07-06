@@ -101,7 +101,7 @@ where to_char(day_id, 'YYYY-MM') = '2019-01';
     The query executed in a bit over a minute. Remember this number - we'll compare it next to a query that uses a partitioned external table.
 
 ## Task 4: Create and query a partitioned external table over Parquet data files
-[](include:adb-create-partitioned-external-table.md)
+[](include:adb-use-partitioned-external-table-body.md)
 
 ## Task 5: Create, load and query the an Oracle table from the object storage source
 
