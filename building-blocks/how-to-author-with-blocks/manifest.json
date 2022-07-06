@@ -7,6 +7,7 @@
      "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
      "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
      "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
+     "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
      "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
      "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
      "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
