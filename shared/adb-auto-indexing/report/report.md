@@ -12,7 +12,7 @@ Estimated Time: 20mins
 ### Prerequisites
 This lab assumes you have completed the following labs:
 
-- Provision an ADB Instance (19c)
+- Provision an Autonomous Database Instance
 - Create and Application Schema and Prepare for Auto Indexing
 - Execute an Application Workload
 
@@ -80,12 +80,12 @@ This lab assumes you have completed the following labs:
 
     ![Report summary](./images/summary.png)
 
-You might see some differences in your report because the results depend on measured workload performance and performance may change over time (for example, due to ADB patches).
+You might see some differences in your report because the results depend on measured workload performance and relative SQL performance may change over time.
 
 In the report above, we can see:
 
-- Ten index candidates were identified. Auto indexing identifies table columns used in query predicates. These columns are candidates for indexing. In general, auto indexing will identify a large number of candidates.
-- Six indexes were created. In most cases, a _subset_ of candidates will be deemed potentially useful by the Oracle Optimizer. Auto indexing test parses the workload SQL to see which indexes are likely to be useful. These candidates are built and internal workload performance testing will decide which ones are _sufficiently_ useful to be made visible to the workload.
+- Ten index candidates were identified. Auto indexing identifies table columns used in query predicates. These columns are candidates for indexing. In general, auto indexing will identify a many candidates.
+- Six indexes were created. Usually, a _subset_ of candidates will be deemed potentially useful by the Oracle Optimizer. Auto indexing test parses the workload SQL to see which indexes are likely to be useful. These candidates are built and internal workload performance testing will decide which ones are _sufficiently_ useful to be made visible to the workload.
 - Four indexes were made visible. These indexes were found to improve the performance of the workload (above a threshold value).
 - Two indexes remain invisible because, when tested using the workload, they did not improve workload sufficiently to be made visible to the workload. If no new workload queries are found that benefit from these indexes, they will remain INVISIBLE and the auto index task will make them INVALID after a period of 24 hours.
 - Four queries in the workload we found to have improved performance with the new indexes.

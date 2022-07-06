@@ -1,4 +1,4 @@
-# Provisioning a new Autonomous Data Database
+# Provision an Autonomous Database Instance
 
 ## Introduction
 

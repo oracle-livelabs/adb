@@ -8,7 +8,7 @@ Creating indexes manually requires deep knowledge of the data model, application
 
 Automatic indexing enables Autonomous Database users to benefit from indexing without the risks inherent in making changes without analyzing the effect changes will make to the application workload.
 
-The workshop is designed to be used in a 19c Autonomous Database (ADB) instance.
+The workshop is designed to be used in a 19c Autonomous Database instance.
 
 Estimated time for the entire workshop: 60 minutes
 

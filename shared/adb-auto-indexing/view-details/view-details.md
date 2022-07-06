@@ -12,7 +12,7 @@ Estimated Time: 10mins
 ### Prerequisites
 This lab assumes you have completed the following labs:
 
-- Provision an ADB Instance (19c)
+- Provision an Autonomous Database Instance
 - Create and Application Schema and Prepare for Auto Indexing
 - Execute an Application Workload
 - View the Auto Index Report

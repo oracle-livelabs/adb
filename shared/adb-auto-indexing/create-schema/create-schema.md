@@ -12,10 +12,10 @@ Estimated Time: 10mins
 ### Prerequisites
 This lab assumes you have completed the following lab:
 
-- Provision an ADB Instance (19c)
+- Provision an Autonomous Database Instance
 
 
-## Task 1: Invoke a Cloud Shell from the Oracle OCI 
+## Task 1: Invoke a Cloud Shell from the Oracle Cloud Infrastructure (OCI) 
 
 During this part of the workshop we will use OCI Cloud Shell, a web browser-based terminal accessible from the Oracle Cloud Console. Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI, and other useful pre-installed tools like SQL command line. We are going to use SQL command line in Cloud Shell for this workshop. 
 
