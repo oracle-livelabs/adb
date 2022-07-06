@@ -101,6 +101,23 @@
  
 [](include:adb-query-json-arrays.md)
  
+## query-json-simple.md
+**Manifest:**
+```
+"include": {
+     "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
+}
+```
+
+**Markdown:**
+```
+[]&lpar;query-json-simple.md)
+```
+
+**Markdown Output &#8595;&#8595;:**
+ 
+[](include:adb-query-json-simple.md)
+ 
 ## query-object-store-contents-with-sql.md
 **Manifest:**
 ```
