@@ -39,7 +39,7 @@ In the _SkillsetTrackerApplicationCode_ directory you can find two folders:
 2. After your VCN is properly set up, you can proceed creating and configuring a new Linux Instance as described in **Lab 5: Build NodeJS APIs to make calls to the database** -> **STEPS 1, 2, and 3**.
 
 3. Now, before copying the code to the instance and running it, let's understand what all the files in this project are. Note that some of them were already explained in more detail in **Lab 5: Build NodeJS APIs to make calls to the database**.
-    * **package.json** file - This file contains all the needed NodeJS packages that will be downloaded & installed by the ``npm install`` command.
+    * **package.json** file - This file contains all the needed NodeJS packages that will be downloaded & installed by the ``npm install`` command. Change ``oracledb>=5.4.0`` in **package.json** file.
     * **config** folder - The two files in the _config_ folder are meant to set up the default configuration for the entire application.
         * **database.js** - Sets up the configuration for making the connection to the database. Here the database user and password, as well as the connection string used, and the database name are all set. Notice that the values for these variables are not hardcoded and they are read from the _.env_ file.
         * **web-server.js** - sets up the port on which the web server would run on. In this case, 8000, but any other port can be used.
