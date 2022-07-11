@@ -65,7 +65,7 @@
             "title": "Lab 7: Load and Analyze the News from REST Endpoints",
             "description": "Load news and analyze the sentiment about actors from the newsapi.org",
             "type": "freetier",
-            "filename": "../../load-analyze-rest/load-analyze-rest.md"
+            "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
         },
         {
             "title": "Lab 8: Develop Self-Service Analytics Cloud Dashboards",

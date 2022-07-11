@@ -17,7 +17,7 @@ In this lab, you will:
 
 - This lab requires completion of Lab 1, **Provision an ADB Instance**, in the Contents menu on the left.
 
-## Task 1: Create and load JSON movie collection and
+## Task 1: Create and load JSON movie collection
 [](include:adb-create-load-json-collection.md)
 
 ## Task 2: Analyze simple JSON fields to find Meryl Streep movies

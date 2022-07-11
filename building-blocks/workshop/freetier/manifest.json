@@ -32,7 +32,11 @@
           "type": "livelabs",        
           "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
         },        
-        
+        {
+          "title": "Load and Analyze Data from a REST endpoint",
+          "type": "livelabs",        
+          "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
+        },         
         {
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",
