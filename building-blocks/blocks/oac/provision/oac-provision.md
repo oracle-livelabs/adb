@@ -63,7 +63,7 @@ Access the Oracle Cloud Infrastructure Console from the **Oracle Home Page** (ww
 
     - **Compartment**: Select a valid compartment in your tenancy
 
-    - **Instance Name**: `WORKSHOPADWOAC`
+    - **Instance Name**: [](var:oac_instance_name)
 
     - **Description**: `Analytics Instance for the cloud`
 
