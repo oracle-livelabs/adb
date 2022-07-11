@@ -1,16 +1,21 @@
 # Introduction
 
-The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**.
+The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. You will create an Oracle Autonomous Database instance, practice several methods for loading and querying data, and develop analytics dashboards using Oracle Analytics Cloud.
+
+Estimated Workshop Time: 1.5 hours
 
 <if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/otS5PvJcxMQ).
 </if>
 
 ## **Workshop Objectives**
 - Provision a new Autonomous Database instance on Shared Infrastructure
-- Run Queries on the sample data sets
-- Upload files to the Oracle Cloud Infrastructure (OCI) Object Storage, create sample tables, load data into them from files on the OCI Object Storage
-- Query files on the OCI Object Storage directly without loading them to your database
-- Visualize your data using Oracle Analytics Desktop
+- Provision an Oracle Analytics Cloud instance
+- Upload Local and Private Object Storage Data to Oracle Cloud Infrastructure (OCI) Object Storage Buckets
+- Access and Load Partitioned Object Storage Data
+- Examine the Query Performance Benefits of Partitioned Data
+- Load and Analyze JSON Data
+- Load and Analyze the News from REST Endpoints
+- Visualize your data using Oracle Analytics Cloud
 
 ### **Workshop Prerequisites**
 
@@ -25,5 +30,5 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 
 ## Acknowledgements
 
-- **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance; Marty Gubar, ADB Product Management
+- **Last Updated By/Date** - Richard Green, July 2022

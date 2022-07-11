@@ -4,16 +4,21 @@
 
 Learn how to provision Autonomous Database using the OCI console.
 
+Estimated Time: 5 minutes
+
+### Objectives
+
+In this lab, you will:
+- Learn how to provision a new OracleAutonomous Database
 ### Prerequisites
 
 -   This lab requires completion of the Get Started section in the Contents menu on the left.
 
-
 ## Task 1: Choose ADW or ATP from the services menu
-[](include:goto-service-body.md)
+[](include:adb-goto-service-body.md)
 
 ## Task 2: Create the Autonomous Database instance
-[](include:provision-console-body.md)
+[](include:adb-provision-body.md)
 
 Please *proceed to the next lab*.
 
@@ -26,5 +31,5 @@ Please *proceed to the next lab*.
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marty Gubar, ADB PM
+- **Last Updated By/Date** - Marty Gubar, ADB PM, July 2022
 - **Built with Blocks**
