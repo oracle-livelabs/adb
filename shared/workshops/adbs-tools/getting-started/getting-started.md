@@ -82,7 +82,7 @@ For this workshop, we need to create one new user.
 
   ![ALT text is not available for this image](images/create-user-dialog.png)
 
-7.  Click on the **Granted Roles** banner at the top of the form and add the role **DWROLE** by checking the box in the first column.
+7.  Click on the **Granted Roles** banner at the top of the form and add the role **DWROLE** by checking the boxes in the first and third columns.
 
   ![ALT text is not available for this image](images/dwrole.png)
 
