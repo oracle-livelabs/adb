@@ -1,14 +1,6 @@
 {
     "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
-    "include": {
-        "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
-        "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
-        "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
-        "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
-        "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"  
-      },
-      "variables": ["./variables.json"],
 	"tutorials": [
         {
             "title": "Introduction",
@@ -24,43 +16,28 @@
             "title": "Lab 1: Provision an Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "./../../adb-provision/adb-provision-blocks.md"
+            "filename": "./../../adb-provision/adb-provision-conditional.md"
         },
         {
-            "title": "Lab 2: Load Data from Public Object Storage Buckets",
-            "description": "Load customer contact, movie genre and pizza location data into ADB from public object storage buckets using the Database Actions tools",
+            "title": "Lab 2: Work with Free Sample Data Sets",
+            "description": "Explore SQL Developer Web",
+            "filename": "./../../adb-sqldevweb/adb-sqldevweb.md"
+        },
+        {
+            "title": "Lab 3: Load Data",
+            "description": "Load data into ADB",
             "type": "freetier",
             "filename": "./../../adb-loading/adb-loading-conditional.md"
         },
         {
-            "title": "Lab 3: Load Local and Private Object Storage Data",
-            "description": "Load additional customer details into ADB from local files and private object storage buckets using the Database Actions tools",
-            "type": "freetier",
-            "filename": "./../../adb-loading/adb-loading-conditional.md"
+            "title": "Lab 4: Query External Data",
+            "description": "Query Data in External Files",
+            "filename": "./../../adb-query/adb-query.md"
         },
         {
-            "title": "Lab 4: Access and Load Partitioned Object Storage Data",
-            "description": "Examine the power of partitioning for querying and loading customer sales data sourced from object storage",
-            "type": "freetier",
-            "filename": "./../../adb-loading/adb-loading-conditional.md"
-        },
-        {
-            "title": "Lab 5: Load and Analyze JSON Data",
-            "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
-            "type": "freetier",
-            "filename": "./../../adb-loading/adb-loading-conditional.md"
-        },
-        {
-            "title": "Lab 6: Load and Analyze the News from REST Endpoints",
-            "description": "Load news and analyze the sentiment about actors from the newsapi.org",
-            "type": "freetier",
-            "filename": "./../../adb-loading/adb-loading-conditional.md"
-        },
-        {
-            "title": "Lab 7: Develop Self-Service Analytics Cloud Dashboards",
-            "description": "Use Analytics Cloud for interactive dashboards",
-            "type": "freetier",
-            "filename": "./../../adb-loading/adb-loading-conditional.md"
+            "title": "Lab 5: Visualize Your Data",
+            "description": "Visualizing Your Data",
+            "filename": "./../../adw-visualizations-using-oad6pt3/adw-visualizations.md"
         },
         {
             "title": "Need Help?",
