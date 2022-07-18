@@ -49,8 +49,8 @@
     - **Choose database version** - Select 19c as the database version.
     - **OCPU count** - Number of OCPUs for your service. For this lab, specify **[](var:db_ocpu)**. If you choose an Always Free database, it comes with 1 OCPU.
     - **Storage (TB)** - Select your storage capacity in terabytes. For this lab, specify **[](var:db_storage)** of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
-    - **Auto Scaling** - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more OCPU and IO resources to meet workload demand.
-    - **New Database Preview** - If a checkbox is available to preview a new database version, do NOT select it.
+    - **OCPU auto Scaling** - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more OCPU and IO resources to meet workload demand.
+    - **Storage auto scaling** - For this lab, there is no need to enable storage auto scaling, which would allow the system to expand up to three times the reserved storage.
 
     > **Note:** You cannot scale up/down an Always Free autonomous database.
 
@@ -93,7 +93,7 @@
 
 11. Click **Create Autonomous Database**.
 
-12.  Your instance will begin provisioning. 
+12.  Your instance will begin provisioning.
 
     ![Database Provisioning message.](./images/adb-create-provisioning-message.png " ")
 

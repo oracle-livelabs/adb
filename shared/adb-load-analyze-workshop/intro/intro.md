@@ -7,15 +7,30 @@ Estimated Workshop Time: 1.5 hours
 <if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/otS5PvJcxMQ).
 </if>
 
+**Oracle MovieStream** is a fictitious movie streaming service - similar to those that you currently subscribe to. They face challenges that are typical to many organizations across industries. MovieStream must:
+* Gain a better understanding of their customers to ensure that they love the service  
+* Offer the right products to the right customers at the right price  
+* Grow the business to become a dominant player in the streaming business
+* and much, much more
+
+Oracle Cloud provides an amazing platform to productively deliver secure, insightful, scalable and performant solutions. MovieStream designed their solution leveraging the world class Oracle Autonomous Database and Oracle Cloud Infrastructure (OCI) Data Lake services. Their data architecture is following the Oracle Reference Architecture [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2) - which is used by Oracle customers around the world. It's worthwhile to review the architecture so you can understand the value of integrating the **data lake** and **data warehouse** - as it enables you to answer more complex questions using all your data.
+
+In this workshop, we'll start with two key components of MovieStream's architecture. MovieStream is storing their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
+
+![architecture](images/architecture.png)
+
 ## **Workshop Objectives**
 - Provision a new Autonomous Database instance on Shared Infrastructure
 - Provision an Oracle Analytics Cloud instance
-- Upload Local and Private Object Storage Data to Oracle Cloud Infrastructure (OCI) Object Storage Buckets
+- Load data from a file on your local computer
+- Load data from object storage public and private buckets
 - Access and Load Partitioned Object Storage Data
 - Examine the Query Performance Benefits of Partitioned Data
 - Load and Analyze JSON Data
 - Load and Analyze the News from REST Endpoints
 - Visualize your data using Oracle Analytics Cloud
+
+![variety of data loading methods](images/graphic-showing-loading-methods.png)
 
 ### **Workshop Prerequisites**
 
@@ -32,3 +47,13 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 
 - **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance; Marty Gubar, ADB Product Management
 - **Last Updated By/Date** - Richard Green, July 2022
+
+Data about movies in this workshop were sourced from Wikipedia.
+
+Copyright (C) Oracle Corporation.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

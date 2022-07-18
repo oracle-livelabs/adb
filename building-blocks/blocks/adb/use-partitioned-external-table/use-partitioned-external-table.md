@@ -1,4 +1,4 @@
-# Access and load Partitioned Object Storage Data
+# Access and Load Partitioned Object Storage Data
 
 ## Introduction
 
@@ -113,7 +113,7 @@ You can query the list of files available in object storage using SQL. Simply pa
 ## Task 4: Create and query a partitioned external table over Parquet data files
 [](include:adb-use-partitioned-external-table-body.md)
 
-## Task 5: Create, load and query the an Oracle table from the object storage source
+## Task 5: Create, load and query an Oracle table from the object storage source
 
 1. Now that we have the external table, it's easy to create and load an Oracle Database table from the object storage source:
     ```
