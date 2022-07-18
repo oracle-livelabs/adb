@@ -20,9 +20,9 @@ We'll create an Autonomous JSON Database, and connect to it using the standard "
 
 We'll then explore the same data using "Database Actions" in Oracle's Cloud Infrastructure.
 
-You can complete this entire workshop using your web browser. There is no need to install any extra software. For simplicity, we will run the command-line MongoDB shell program from Oracle's Cloud Shell.
+You can complete this entire workshop using your web browser. As part of the lab we will install MongoDB Shell, a command-line tool for accessing MongoDB and MongoDB-compatible databases.
 
-If you have MongoDB tools such as MongoDB Shell or MongoDB Atlas installed on your own machine, you could run the MongoDB commands from there instead. However, the workshop will assume at all times that you are following the provided instructions.
+If you have MongoDB tools such as MongoDB Shell or MongoDB Atlas already installed on your own machine, you could run the MongoDB commands from there instead. However, the workshop will assume at all times that you are following the provided instructions.
 
 This workshop consists of multiple 'labs' - each describing one aspect or feature. This lab has been designed for 19c AJD database but should also work on 21c AJD database and these concepts are also applicable to on-premise versions.
 
@@ -34,15 +34,16 @@ Watch this quick video to know why JSON in Oracle Autonomous Database is awesome
 
 <if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/uvlhnG-bjnY).</if>
 
-### About JSON
+#### About JSON
 
 Before we get started let's take a brief look at JSON (you may skip this step if you're already familiar with it)
 
-#### What is JSON?
+##### What is JSON?
 
 JSON is a human-readable, self-describing format to represent data in a hierarchical format. This is best illustrated by an example - a JSON object with information about a person:
 
 ```
+<copy>
 {
 	"id":100,
 	"firstName":"John",
@@ -60,6 +61,7 @@ JSON is a human-readable, self-describing format to represent data in a hierarch
 	"bankruptcies":null,
 	"lastUpdated":"2019-05-13T13:03:35+0000"
 }
+</copy>
 ```
 
 Objects consist of key-value pairs: the key "id" has the value 100. Keys are always strings (identified by double quotes). Scalar values can be numeric (like 100), strings ("John"), Boolean (true, false) or null. The ordering of key-value pairs in an object is not relevant but keys have to be unique per object. Keys can also point to a non-scalar value, namely another object (like address) or array (phoneNumbers). A JSON array is an ordered list of values. You can think of objects and arrays both being containers with values; in an object, the key identifies the value whereas in an array it is the position that identifies the value.
@@ -76,7 +78,7 @@ JSON also avoids normalization of a business object into multiple tables. Look a
 
 Now you know what JSON is and also why so many people love it. Enough theory for now - time to code!
 
-### Objectives
+#### Objectives
 
 In this workshop, you will explore: 
 *	How to provision an Oracle Autonomous (JSON) Database,
@@ -84,13 +86,13 @@ In this workshop, you will explore:
 *   How to connect to Autonomous Database from MongoDB Shell and create a collection
 *   How to access the MongoDB collection from JSON Workshop and SQL
 
-## Prerequisites
+#### Prerequisites
 
 * An Oracle Cloud Account
 
 You may now proceed to the next lab.
 
-## Learn More
+#### Learn More
 
 * [Overview of JSON](https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/json-data.html#GUID-B2D82ED4-B007-4019-8B53-9D0CDA81C4FA)
 
