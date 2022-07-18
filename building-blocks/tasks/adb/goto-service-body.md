@@ -1,12 +1,12 @@
-1. Once logged into Oracle Cloud, click the navigation menu in the upper left to show top level navigation choices: 
+1. Once logged into Oracle Cloud, click the navigation menu in the upper left to show top level navigation choices:
 
     ![Click OCI navigation menu.](images/oci-navigation-invoke.png " ")
 
     Then, select **Oracle Database -> [](var:db_workload_type)**:   
-    
+
     ![Click Autonomous Database (ATP or ADW).](images/oci-navigation-adb.png " ")
 
-2. Use the List Scope fields on the left to control the list of Autonomous Databases that are displayed. This is useful when you are managing many Autonomous Databases:
+2. You can use the List Scope fields on the left to control the list of Autonomous Databases that are displayed. This is useful when you are managing many Autonomous Databases:
 
     ![Database list.](images/oci-adb-list.png " ")
 

@@ -1,4 +1,4 @@
- # Load and Analyze JSON Data
+# Load and Analyze JSON Data
 
 ## Introduction
 
@@ -25,3 +25,10 @@ In this lab, you will:
 
 ## Task 3: Analyze complex JSON arrays to find top actors
 [](include:adb-query-json-arrays.md)
+
+Please *proceed to the next lab*.
+
+## Acknowledgements
+
+* **Author** - Marty Gubar, Autonomous Database Product Management
+* **Last Updated By/Date** - Marty Gubar, July 2022
