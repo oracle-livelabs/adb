@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Go to Autonomous Database Service",
+        "description":"Navigate to ADB using the OCI menu. AUTHORS: For expediency, this task uses the ADMIN user/password to open Database Actions. In your workshop, you might want to substitue a different user/password to open Database Actions."
+    }
+-->
 1. Once logged into Oracle Cloud, click the navigation menu in the upper left to show top level navigation choices:
 
     ![Click OCI navigation menu.](images/oci-navigation-invoke.png " ")

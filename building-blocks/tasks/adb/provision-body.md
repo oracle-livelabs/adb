@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Provision Autonomous Database",
+        "description":"Provision an ADB. Use the `variables.json` file to update provisioning parameters, including database name, OCPUs, storage and more."
+    }
+-->
 1. Click **Create Autonomous Database** to start the instance creation process.
 
     ![Click Create Autonomous Database.](images/adb-click-create-adb.png " ")

@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Using Partitoned External Tables",
+        "description":"Create partitioned external tables over object storage data using a single, simple API call. Then, load that data. Compare performance of external tables and partitioned external tables."
+    }
+-->
 With Oracle Partitioning, a single logical object in the database is subdivided into multiple smaller physical objects, known as partitions. The knowledge about this physical partitioning enables the database to improve the performance when querying external data. Autonomous Database makes it easy to create partitioned external tables over sources that use common data lake organizational patterns. 
 
 ![Data Lake storage](images/obj-organization.png)

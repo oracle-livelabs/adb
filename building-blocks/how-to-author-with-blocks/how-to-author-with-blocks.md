@@ -102,9 +102,3 @@ The manifest.json file describes the content of your workshop. It also contains 
     ]
 }
 ```
-
-## List of Building Blocks and Tasks
-The remaining sections describe the Tasks that are available to you broken out by service. The documentation provides snippets of how to include the Task in both the ``manifest.json`` and your markdown file. 
-
-[Go here to view the list of Building Blocks](/building-blocks/workshop/freetier/index.html).
-

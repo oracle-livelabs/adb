@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Query Object Storage contents with SQL",
+        "description":"Use SQL to see listing of object storage files and folders."
+    }
+-->
 You can query the list of files available in object storage using SQL. Simply pass the location of the source data to the ``dbms_cloud.list_objects`` function. You can [learn more about this function in the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-52801F96-8280-4FE0-8782-E194F4360E6F). 
 
 > Because the files used in this exercise are in a public bucket, a credential is not required to access OCI Object Storage

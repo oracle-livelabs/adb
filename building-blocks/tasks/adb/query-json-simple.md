@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Query simple JSON attributes",
+        "description":"Use dot notation and JSON_VALUE to query JSON documents. Creates a view to simplify subsequent access."
+    }
+-->
 Oracle Database offers a wide range of SQL functions that help you analyze JSON data ([see documentation](https://docs.oracle.com/en/database/oracle/oracle-database/19/adjsn/query-json-data.html#GUID-119E5069-77F2-45DC-B6F0-A1B312945590) for details). The SQL capabilities include simple extraction of JSON attributes using dot notation, array and object manipulation, JSON aggregations and more.  
 
 1. Use simple dot notation to extract fields in tabular format. 

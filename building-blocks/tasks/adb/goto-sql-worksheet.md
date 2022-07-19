@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Go to SQL Worksheet in Database Actions",
+        "description":"Navigate to SQL Worksheet from the OCI service console. "
+    }
+-->
 1. Navigate to the SQL worksheet. From the Autonomous Database service console, select **Database Actions**:
     ![Go to Database Actions](images/adb-dbactions-goto.png)
 

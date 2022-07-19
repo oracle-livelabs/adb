@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Query JSON arrays",
+        "description":"Use JSON_TABLE to convert arrays into rows."
+    }
+-->
 ### Query JSON arrays
 An array of cast members is stored for each movie. Here, you can see that Tom Hanks, Elizabeth Perkins, Robert Loggia were all a part of the cast for the movie "Big":
 
