@@ -10,8 +10,8 @@
 Most workshops focus on teaching you about a cloud service or performing a series of tasks. This workshop is different. You will learn how to deliver high value solutions using Oracle Cloud data platform services. And, the workshop will do this in the context of a company that we all can relate to and understand.
 
 There are two versions of this workshop:
-* [**Produce Your Company's Best Picture with Converged Database Analytics (Epic)**](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=865&clear=180&session=12485882445561) - dives into details of setting up the solution and analyzing data. Will take several hours to complete.
-* **Produce Your Company's Best Picture with Converged Database Analytics** - this workshop!  A one hour version that performs much of the setup for you.
+* [**Integrate, Analyze and Act on All data using Autonomous Database (Epic)**](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=865&clear=180&session=12485882445561) - dives into details of setting up the solution and analyzing data. Will take several hours to complete.
+* **Integrate, Analyze and Act on All data using Autonomous Database** - this workshop!  A one hour version that performs much of the setup for you.
 
 <if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/z2Er2yTP2BU).</if>
 
@@ -47,7 +47,7 @@ The workshop will continue to evolve and highlight more capabilities that will h
 
 * [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2)
 * [Autonomous Database Workshops](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?p100_product=82&me=65&clear=100)
-*[Autonomous Database web site](https://www.oracle.com/autonomous-database/)
+* [Autonomous Database web site](https://www.oracle.com/autonomous-database/)
 * [Autonmous Data Warehouse Videos](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/videos.html)
 
 ## Acknowledgements

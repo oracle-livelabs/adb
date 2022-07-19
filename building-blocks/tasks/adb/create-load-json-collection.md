@@ -1,11 +1,7 @@
 <!---
 {
     "name":"Create and load JSON Collection from object storage",
-    "description":
-    "* Loads data using DBMS_CLOUD.COPY_COLLECTION
-     * Introduces JSON_SERIALIZE, JSON_VALUE and JSON_QUERY (minimal)
-     * Creates a view over JSON data
-     * Performs basic JSON queries"
+    "description":"<ul><li>Loads data using DBMS_CLOUD.COPY_COLLECTION</li><li>Introduces JSON_SERIALIZE, JSON_VALUE and JSON_QUERY (minimal)</li><li>Creates a view over JSON data</li><li>Performs basic JSON queries</li></ul>"
 }
 --->
 ### What is JSON?

@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Connect with SQL Worksheet",
+        "description":"Connect to Autonomous Database using the SQL Worksheet in Database Actions"
+    }
+-->
 Although you can connect to your Oracle Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your ADW or ATP console.
 
 1.  If you are not logged in to Oracle Cloud Console, log in and select **[](var:db_workload_type)** from the navigation menu, make sure you are in the right compartment where you ADB is provisioned and navigate into your [](var:db_display_name) instance.

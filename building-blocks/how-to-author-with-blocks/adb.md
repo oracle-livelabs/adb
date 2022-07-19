@@ -33,6 +33,23 @@
  
 [](include:adb-create-load-json-collection.md)
  
+## goto-data-load-utility.md
+**Manifest:**
+```
+"include": {
+     "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md",
+}
+```
+
+**Markdown:**
+```
+[]&lpar;goto-data-load-utility.md)
+```
+
+**Markdown Output &#8595;&#8595;:**
+ 
+[](include:adb-goto-data-load-utility.md)
+ 
 ## goto-service-body.md
 **Manifest:**
 ```
