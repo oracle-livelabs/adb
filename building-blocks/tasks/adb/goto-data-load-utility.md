@@ -13,7 +13,7 @@ Navigate to the Data Load utility of Database Actions.
 
 2.  A sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - admin**, and click **Next**. Enter the administrator **Password** you specified when creating the database. Click **Sign in**.
 
-    ![Enter the admin password.](./images/Picture100-16-password.png " ")
+    ![Enter the admin password.](./images/admin-username-and-password.png " ")
 
 3. On the Database Actions home page, under **Data Tools**, click **DATA LOAD**.
 
