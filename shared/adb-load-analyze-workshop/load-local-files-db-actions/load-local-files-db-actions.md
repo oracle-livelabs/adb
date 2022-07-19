@@ -49,21 +49,21 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
 1. Leave the default selections, **LOAD DATA** and **LOCAL FILE**, and click **Next**.
 
-    ![Select LOAD DATA and LOCAL FILE and click Next.](./images/datatools-dataload-2.png " ")
+    ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png " ")
 
-2. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the *channels.csv* file from the directory where you downloaded onto the Drag and Drop target. Or select *channels.csv* using the Select Files pop-up dialog.
+2. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the *customer\_segment.csv* file from the directory where you downloaded onto the Drag and Drop target. Or select *customer\_segment.csv* using the Select Files pop-up dialog.
 
-    ![Drag and drop or select the file.](./images/datatools-dataload-drop-target.png " ")
+    ![Drag and drop or select the file.](./images/datatools-dataload-load-local-file.png " ")
 
-3. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the **Settings** button labeled with a pencil symbol.
+3. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but let's examine the data load job. Click the **Settings** button labeled with a pencil symbol.
 
-    ![Modify the data load job settings.](./images/click-settings-to-modify-data-load-job.png " ")
+    ![Examine the data load job settings.](./images/click-settings-to-examine-data-load-job.png " ")
 
-4. A page opens for the local channels.csv file that you will be loading. Take a moment to examine the preview information and loading options. Change the target table name from *CHANNELS* to *CHANNELS_LOCAL*. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types. Click **Close** in the lower right corner of the page.
+4. A page opens for the local *customer\_segment.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties. We will not change any of these defaults. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types. Click **Close** in the lower right corner of the page.
 
-    ![Change the target table name.](./images/change-target-table-name.png " ")
+    ![Examine the editor of the data load job.](./images/examine-data-load-job-editor.png " ")
 
-5. Notice that the target table name has changed to *CHANNELS_LOCAL*. Click **Start**, and then click **Run** in the confirmation dialog.
+5. Click the green arrow **Start** button, and then click **Run** in the confirmation dialog.
 
     ![Run the data load.](./images/run-the-data-load.png " ")
 
@@ -75,7 +75,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Click EXPLORE in the Data Load page.](./images/click-explore-in-data-load-page.png " ")
 
-8. The Catalog shows the *CHANNELS_LOCAL* table has been successfully created. You can click the table name to see the data.
+8. The Catalog shows the *CUSTOMER\_SEGMENT* table has been successfully created. You can click the table name to see the data.
 
     ![View the new table in the Catalog.](./images/view-new-table.png " ")
 

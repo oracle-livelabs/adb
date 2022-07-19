@@ -15,6 +15,6 @@ Navigate to the Data Load utility of Database Actions.
 
     ![Enter the admin password.](./images/admin-username-and-password.png " ")
 
-3. On the Database Actions home page, under **Data Tools**, click **DATA LOAD**.
+3. On the Database Actions Launchpad page, under **Data Tools**, click **DATA LOAD**.
 
     ![Click DATA LOAD](images/dataload.png)
