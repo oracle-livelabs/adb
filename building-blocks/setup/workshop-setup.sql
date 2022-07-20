@@ -1,7 +1,7 @@
 /*    Creates the workshop log and dataset table */
 declare
     l_format varchar2(1000) := '{"skipheaders":"0", "delimiter":"\n", "ignoreblanklines":"true"}';
-    l_uri    varchar2(1000) := 'https://raw.githubusercontent.com/martygubar/adb-get-started/master/setup/datasets.json';    
+    l_uri    varchar2(1000) := 'https://raw.githubusercontent.com/martygubar/adb/main/building-blocks/setup/datasets.json';    
 begin
    -- drop tables if they exist
    for rec in (  
