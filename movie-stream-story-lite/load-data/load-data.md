@@ -218,7 +218,7 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 
     ![Click on Development - SQL](images/gotosql.png)
 
-2. Copy and paste the following script into the Worksheet. This script will create PL/SQL procedures based on the lab_setup.sql file found in github.
+2. Copy and paste the following script into the Worksheet. This script will create PL/SQL procedures based on the lab-setup.sql file found in github.
 
 ```
 <copy>
@@ -226,7 +226,7 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 declare
     l_owner     varchar2(100) := 'oracle-livelabs';
     l_repo_name varchar2(100) := 'adb';
-    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab_setup.sql';
+    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab-setup.sql';
 BEGIN
     dbms_cloud_repo.install_file(
         repo => dbms_cloud_repo.init_github_repo(                 

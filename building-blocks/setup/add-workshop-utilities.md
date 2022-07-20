@@ -44,7 +44,7 @@ You will automatically log in as the ADMIN user.
 
 3. In the SQL Worksheet, paste in this code and run it using the **Run Script** button:
 
-    ```sql
+    ```
     <copy>
     declare
         l_git varchar2(4000);
@@ -73,19 +73,21 @@ Click the **Run Script** button to run the script.
 ## Try this
 There's a lot more the the [DBMS\_CLOUD\_REPO package](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-repo-package.html). You can create a repository, manage files, and more. You can also query your repo using SQL:
 
-    ```sql
-    <copy>
-    select name,bytes
-    from table(
-        dbms_cloud_repo.list_files(
-                repo   => dbms_cloud_repo.init_github_repo(
-                            repo_name       => 'adb-get-started',
-                            owner           => 'martygubar' ),
-                path   => 'setup/')
-        )
-    order by 1;    
-    </copy>
-    ```
+```
+<copy>
+select 
+    name,
+    bytes
+from table(
+    dbms_cloud_repo.list_files(
+            repo   => dbms_cloud_repo.init_github_repo(
+                        repo_name       => 'adb-get-started',
+                        owner           => 'martygubar' ),
+            path   => 'setup/')
+    )
+order by 1;    
+</copy>
+```
 
 
 ## Acknowledgements

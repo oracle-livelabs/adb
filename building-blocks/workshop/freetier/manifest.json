@@ -16,7 +16,11 @@
           "title": "Get Started",
           "description": "Get a Free Trial",
           "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
-        },      
+        },  
+        {
+          "title": "Add Workshop Utilities",            
+          "filename": "/building-blocks/setup/add-workshop-utilities.md"
+        },             
         {
           "title": "Provision ADB using the Console",
           "type": "freetier",      
