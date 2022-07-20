@@ -14,7 +14,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;connect-with-sql-worksheet-body.md)
+[]&lpar;include:connect-with-sql-worksheet-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -36,7 +36,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;create-load-json-collection.md)
+[]&lpar;include:create-load-json-collection.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -58,7 +58,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;goto-data-load-utility.md)
+[]&lpar;include:goto-data-load-utility.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -80,7 +80,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;goto-service-body.md)
+[]&lpar;include:goto-service-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -102,7 +102,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;goto-sql-worksheet.md)
+[]&lpar;include:goto-sql-worksheet.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -124,7 +124,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;provision-body.md)
+[]&lpar;include:provision-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -146,7 +146,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;query-json-arrays.md)
+[]&lpar;include:query-json-arrays.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -168,7 +168,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;query-json-simple.md)
+[]&lpar;include:query-json-simple.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -190,7 +190,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;query-object-store-contents-with-sql.md)
+[]&lpar;include:query-object-store-contents-with-sql.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -212,7 +212,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;use-partitioned-external-table-body.md)
+[]&lpar;include:use-partitioned-external-table-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**

@@ -46,7 +46,7 @@ In this section we will perform some simple data loading tasks, to load in CSV f
 
 3. You will need to set up a cloud storage location. A cloud storage location is an object storage bucket that contains your source data. Click **Done** to set up a location.
 
-    ![Add Cloud Storage location](images/goto_addcloudstorage.png)
+    ![Add Cloud Storage location](images/goto-addcloudstorage.png)
 
 4. Fill in the cloud location details:
 
@@ -74,7 +74,7 @@ In this section we will perform some simple data loading tasks, to load in CSV f
 
 7. Click on the pencil icon for the **customer_contact** task to view the settings for this load task.
 
-    ![View settings for customer_contact load task](images/cc_viewsettings.png)
+    ![View settings for customer_contact load task](images/cc-viewsettings.png)
 
 8. Here we can see the list of columns and data types that will be created from the csv file. They all look correct, so click **Close** to close the settings viewer.
 
