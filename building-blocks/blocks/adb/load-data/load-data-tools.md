@@ -26,20 +26,15 @@ In this step, you will set up access to a bucket on Oracle Cloud Infrastructure 
 
     ![Details page of your Autonomous Database](images/service-details.png " ")
 
-2. Enter ADMIN for the username and click **Next**. On the next form, enter the ADMIN password - which is the one you entered when creating your Autonomous Data Warehouse. Click **Sign in**.
-
-    ![Log in dialog for Database Actions](images/2878884336.png " ")
-
-
-1. On the Database Actions home page, under **Data Tools**, click **DATA LOAD**.
+2. On the Database Actions home page, under **Data Tools**, click **DATA LOAD**.
 
     ![Click DATA LOAD](images/dataload.png)
 
-2. In the **Explore and Connect** section, click **CLOUD LOCATIONS** to set up the connection from your autonomous database to object storage.
+3. In the **Explore and Connect** section, click **CLOUD LOCATIONS** to set up the connection from your autonomous database to object storage.
 
     ![Click CLOUD LOCATIONS](images/cloudlocations.png)
 
-3. To access source files in the data lake's landing zone, click **+Add Cloud Storage** in the top right of your screen.
+4. To access source files in the data lake's landing zone, click **+Add Cloud Storage** in the top right of your screen.
 
     - In the **Name** field, enter 'MovieStreamLanding'.
 
@@ -58,7 +53,7 @@ In this step, you will set up access to a bucket on Oracle Cloud Infrastructure 
     - Select **No Credential** as this is a public bucket.
     - Click on the **Test** button to test the connection. Then click **Create**.
 
-4. The page now shows the newly created Cloud Location.
+5. The page now shows the newly created Cloud Location.
 
     ![Click CLOUD LOCATIONS](images/cloudlocations2.png)
 
@@ -84,9 +79,9 @@ In this step, we will load both csv and partitioned parquet files from object st
 
     ![Update table name to custsales](images/update-sales-sample-name.png)
 
-5. We will create tables and load two more sources. Next, drag the **genre** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
+6. We will create tables and load two more sources. Next, drag the **genre** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
 
-5. Finally, drag the **customer** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
+7. Finally, drag the **customer** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
 
 8. Now click on the Play button to run the data load job.
 

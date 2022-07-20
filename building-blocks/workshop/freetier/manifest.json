@@ -31,7 +31,12 @@
           "title": "Use Partitioned External Tables",
           "type": "livelabs",        
           "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
-        },        
+        },  
+        {
+          "title": "Use Data Tools to Load Data",
+          "type": "livelabs",        
+          "filename": "/building-blocks/blocks/adb/load-data/load-data-tools.md"
+        },                 
         {
           "title": "Load and Analyze Data from a REST endpoint",
           "type": "livelabs",        
