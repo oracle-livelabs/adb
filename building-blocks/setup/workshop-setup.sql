@@ -64,7 +64,7 @@ declare
     l_git varchar2(4000);
     l_repo_name varchar2(100) := 'adb-get-started';
     l_owner varchar2(100) := 'martygubar';
-    l_package_file varchar2(200) := 'setup/workshop_package.sql';
+    l_package_file varchar2(200) := 'setup/workshop-package.sql';
 begin
     -- get a handle to github
     l_git := dbms_cloud_repo.init_github_repo(

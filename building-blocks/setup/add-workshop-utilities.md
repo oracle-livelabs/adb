@@ -39,7 +39,7 @@ You will automatically log in as the ADMIN user.
 
     This will open up a new window that should look something like the screenshot below. The first time you open SQL Worksheet, a series of pop-up informational boxes introduce you to the main features. Click Next to take a tour through the informational boxes.
 
-    ![Screenshot of initial SQL Worksheet](images/Picture100-sql-worksheet.png "SQL Worksheet")
+    ![Screenshot of initial SQL Worksheet](images/sql-worksheet.png "SQL Worksheet")
 
 
 3. In the SQL Worksheet, paste in this code and run it using the **Run Script** button:
