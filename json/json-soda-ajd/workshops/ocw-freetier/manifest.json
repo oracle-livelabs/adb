@@ -24,15 +24,11 @@
             "filename": "../../json-collection/json-collection.md"
         },
         {
-            "title": "Lab 3: SODA for REST",
-            "filename": "../../soda/soda.md"
-        },
-        {
-            "title": "Lab 4: Using SQL to work with JSON",
+            "title": "Lab 3: Using SQL to work with JSON",
             "filename": "../../sql-json/sql-json.md"
         },
         {
-            "title": "Lab 5: Terminate Oracle Autonomous Database",
+            "title": "Lab 4: Terminate Oracle Autonomous Database",
             "filename": "https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
         },
         {
