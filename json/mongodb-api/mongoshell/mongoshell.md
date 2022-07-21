@@ -1,8 +1,8 @@
-# Using Mongo Shell with Autonomous Database
+# Use Mongo Shell with Autonomous Database
 
 ## Introduction
 
-In this lab, we are going to connect to the Autonomous Database we provisioned in Lab 2, from the MongoDB shell tool that we installed into our Compute node in Lab 1.
+In this lab, we are going to connect to the Autonomous Database we provisioned in Lab 2, from the MongoDB shell tool that we installed onto our local machine in Lab 1.
 
 Watch this video for an overview of how to connect the MongoDB shell tool to the Autonomous Database.
 
@@ -14,8 +14,6 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-* Start up Cloud Shell
-* Connect to our Compute Node
 * Attach __mongosh__ to your Autonomous JSON Database
 * Create a collection
 * Add some simple documents to that collection
@@ -28,35 +26,14 @@ In this lab, you will:
 You will need the following information, saved from previous labs:
 
 * The URLs for the MongoDB API
-* The IP address of your Compute Node
 
-## Task 1: Start Cloud Shell
+## Task 1: Locate or Open Terminal or Command Prompt
 
-Cloud Shell is a Linux command prompt provided for your user. You can upload files to it and run commands from it.
+1.  If your terminal or command prompt window is still open from Lab 1, navigate to it.
 
-1. Go to the main Oracle Cloud page (you may need to close any Service Console or Database Actions tabs that you have open). Click on the square icon with ">" in it at the top right.
+2.	If you closed the window, then repeat the instructions from Lab 1 to open a terminal or command prompt, change directory to the 'mongosh' directory you created then, and set the PATH variable again according to the instructions there.
 
-	![open console](./images/open-console.png)
-
-2. The console will open at the bottom of your screen. You should see a Linux command prompt. If you wish, you can expand the console window to fill your browser screen by clicking on the diagonal double-arrow. You can resize the font if needed using your browser's normal zoom operation (e.g. CMD-+ on a Mac)
-
-	![cloud shell](./images/cloud-shell.png)
-
-## Task 2: Connect to your Compute Node
-
-1. The key file should be in your current directory.
-
-    As before, we will use ssh to connect to our Compute Node. We will need to know the name of the ssh file we just uploaded, and the IP address of the 
-    Compute Node that we saved earlier. Run the following command, altering the file name and IP address (shown as 11.22.33.44) as necessary. 
-    "opc" is the pre-installed username for the node and should not be changed. You may find that the necessary 'ssh' command is saved in your command history, accessed by the up-arrow key. 
-
-    ```
-    <copy>
-    ssh -i ssh-key-YYYY-MM-DD.key opc@11.22.33.44
-    </copy>
-    ```
-
-## Task 3: Edit the connection URL
+## Task 2: Edit the connection URL
 
 1. Find the URL you saved earlier and edit it in a text editor
 
@@ -90,13 +67,13 @@ Cloud Shell is a Linux command prompt provided for your user. You can upload fil
 
 ## Task 4: Connect MongoDB shell to Autonomous Database
 
-1. In the ssh shell prompt, enter "mongosh" followed by a space followed the edited URL from the previous task in **single-quotes**.
+1. In the terminal or command prompt, enter "mongosh" followed by a space followed the edited URL from the previous task in **single-quotes** on a **Mac** or **Double-quotes** on **Windows**.
 
 	![mongo shell login](./images/mongosh-login.png)
 
 	If all goes well you will see an "admin>" prompt. If not, check your URL carefully:
 
-	* Is it enclosed in single quotes?
+	* Is it enclosed in single quotes (Mac) or double quotes (Windows)?
 	* Is your password correct, with any special characters quoted as above?
 	* Did you leave any [ square brackets ] in the URL where they should have been removed?
 	* Do you have the : sign between the user and password, and the @ sign after the password? 
@@ -104,7 +81,7 @@ Cloud Shell is a Linux command prompt provided for your user. You can upload fil
 
 ## Task 5: Create, populate and search a collection
 
-You should now be in Mongo Shell. This is a command-line utility to interact with MongoDB databases (and, by extension, any other database which implements the MongoDB API). Other tools are available such as the graphical Compass tool, but we will stick with the command line to avoid complexities of installing a GUI-based tool.
+You should now be in Mongo Shell. This is a command-line utility to interact with MongoDB databases (and, by extension, any other database which implements the MongoDB API). Other tools are available such as the graphical Compass tool, but we will stick with the command line to avoid the complexities of installing a GUI-based tool.
 
 1.  Create a collection.
 
@@ -131,7 +108,7 @@ You should now be in Mongo Shell. This is a command-line utility to interact wit
 	</copy>
 	```
 
-	That created a single employee record documemt. Now we'll create another two. Notice that the second one has an email address, which the first doesn't. With JSON we can change the schema at will.
+	That created a single employee record document. Now we'll create another two. Notice that the second one has an email address, which the first doesn't. With JSON we can change the schema at will.
 
 	```
 	<copy>
@@ -171,7 +148,7 @@ You should now be in Mongo Shell. This is a command-line utility to interact wit
 	<copy>
 	```
 
-	will find all documents where the salary field is numeric, and contains a value greater than 50,000.
+	will find all documents where the salary field is numeric and contains a value greater than 50,000.
 
     ![QBE to find salary greater than 50000](./images/find-salary.png)
 
@@ -189,7 +166,7 @@ You should now be in Mongo Shell. This is a command-line utility to interact wit
 
 5.	Updates
 
-	We can use the updateOne or updateMany commands to make changes to one, or a number, of documents. They both take a first argument which is a QBE specifying which documents to update, and a second argument which is the changes to be made to the document. For example the following will add an email address to our "Miller" employer.
+	We can use the updateOne or updateMany commands to make changes to one, or a number, of documents. They both take a first argument which is a QBE specifying which documents to update, and a second argument which is the changes to be made to the document. For example, the following will add an email address to our "Miller" employer.
 
 	```
 	<copy>
