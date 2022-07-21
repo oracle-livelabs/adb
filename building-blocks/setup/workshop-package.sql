@@ -2,8 +2,9 @@ create or replace package workshop authid current_user
 as
     
     /* Specify constants for the utility */
-    repo varchar2(100)       := 'adb-get-started';
+    repo varchar2(100)       := 'adb';
     repo_owner varchar2(100) := 'martygubar';
+    install_path varchar2(100) := 'building-blocks/setup/scripts';
     
     procedure install_prerequisites;
     
@@ -336,7 +337,7 @@ create or replace package body workshop as
     from table(
         dbms_cloud_repo.list_files (
                 repo   => l_git,
-                path   => 'setup/scripts/'
+                path   => install_path
             ) -- list_files
           ); -- table
           
@@ -347,7 +348,7 @@ create or replace package body workshop as
         from table(
             dbms_cloud_repo.list_files (
                     repo   => l_git,
-                    path   => 'setup/scripts/'
+                    path   => install_path
                 ) -- list_files
               ) -- table
     ) 
