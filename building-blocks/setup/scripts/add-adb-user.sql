@@ -27,6 +27,7 @@ as
         workshop.exec('grant graph_developer to ' || user_name);
         workshop.exec('grant dcat_sync to ' || user_name);
         workshop.exec('grant soda_app to ' || user_name || ' with delegate option');
+        workshop.exec('alter user ' || user_name || ' quota unlimited on data');
 /*
         workshop.exec('grant unlimited tablespace to ' || user_name);
         workshop.exec('grant create table to ' || user_name);

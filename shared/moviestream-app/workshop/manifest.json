@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
+    "workshoptitle": "Install and Run MovieStream Application",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",

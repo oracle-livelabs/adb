@@ -1,4 +1,15 @@
 # Install application
+## Introduction
+This installs the moviestream application
+1. Sign in as ADMIN
+2. Add workshop utilities
+2. Create MOVIESTREAM using common script
+3. Add moviestream data using common script
+4. Add collections and other objects required by the app 
+5. Get the ORDS link and update the config
+
+## Download and install the application code
+
 ```
 git clone \
   --depth 1  \
@@ -9,21 +20,12 @@ git clone \
 cd adb
 git sparse-checkout init --cone
 git sparse-checkout set shared/moviestream-app
-```
 
-(https://github.com/ashrithamalli/MovieStream.git)
-
-# run locally in the MovieStream project folder
+cd MovieStream
 npm install
 npm run dev
 
-## Steps
-1. Sign in as ADMIN
-2. Add workshop utilities
-2. Create MOVIESTREAM using common script
-3. Add moviestream data using common script
-4. Add collections and other objects required by the app 
-5. Get the ORDS link and update the config
+```
 
 ## install workshop utilities
   ```
@@ -45,6 +47,41 @@ npm run dev
           file_path   => l_package_file,
           stop_on_error => false);
 
+  end;
+  /
+  </copy>
+  ```
+
+## Create MOVIESTREAM USER
+  ```
+  <copy>  
+  begin
+    add_adb_user('moviestream', 'bigdataPM2019#');
+  end;
+  /
+
+  </copy>
+  ```
+
+## Login as MOVIESTREAM and add datasets
+
+  ```
+  <copy>
+  begin
+    workshop.ADD_DATASET(table_names => 'MOVIE,                  
+      MOVIESTREAM_CHURN,      
+      EXT_POTENTIAL_CHURNERS, 
+      GENRE,                  
+      CUSTOMER_EXTENSION,     
+      TIME,                   
+      PIZZA_LOCATION,         
+      CUSTOMER_CONTACT,       
+      CUSTSALES,              
+      CUSTOMER,               
+      CUSTOMER_PROMOTIONS,    
+      CUSTOMER_SEGMENT,       
+      CUSTSALES_PROMOTIONS,   
+      JSON_MOVIE_DATA_EXT');
   end;
   /
   </copy>
