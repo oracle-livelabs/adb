@@ -82,7 +82,7 @@ begin
     execute immediate 'create or replace public synonym workshop for workshop';
 
     execute immediate 'alter package workshop compile package';
-    execute immediate 'alter package workshop compile bodY';
+    execute immediate 'alter package workshop compile body';
 
 end;
 /

@@ -133,7 +133,7 @@ create or replace package body workshop as
     write('debug=' || case when debug_on then 'true' else 'false' end, 2);
     
     -- upper case, no spaces, no newline
-    l_table_names := replace(table_names, '\n', '')
+    l_table_names := replace(table_names, '\n', '');
     l_table_names := replace(trim(upper(table_names)), ' ', '');
     
 
@@ -355,10 +355,18 @@ create or replace package body workshop as
               ) -- table
     ) 
    loop 
-      write('installing ' || rec.name, 2);
-      dbms_cloud_repo.install_file(
-        repo        => l_git,
-        file_path   => rec.name);
+        begin
+    
+            write('installing ' || rec.name, 2);
+            dbms_cloud_repo.install_file(
+                repo        => l_git,
+                file_path   => rec.name);
+            
+            exception
+                when others then
+                    write(sqlerrm);    
+                    
+        end;
    end loop; 
    
    write('Done installing scripts', 1);
