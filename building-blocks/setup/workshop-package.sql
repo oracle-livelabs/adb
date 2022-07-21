@@ -132,8 +132,10 @@ create or replace package body workshop as
     write('begin adding data sets', 1);
     write('debug=' || case when debug_on then 'true' else 'false' end, 2);
     
-    -- upper case, no spaces
+    -- upper case, no spaces, no newline
+    l_table_names := replace(table_names, '\n', '')
     l_table_names := replace(trim(upper(table_names)), ' ', '');
+    
 
     -- Check for ALL tables    
     if l_table_names  = 'ALL' then
