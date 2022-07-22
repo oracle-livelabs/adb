@@ -40,7 +40,7 @@
         },
         {
             "title": "Lab 3: Load Data from Local Files",
-            "description": "Load additional customer details into ADB from local files using the Database Actions tools",
+            "description": "Load customer details into ADB from a local file using the Database Actions tools",
             "type": "freetier",
             "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
         },
