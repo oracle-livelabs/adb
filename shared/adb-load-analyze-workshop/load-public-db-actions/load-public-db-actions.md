@@ -62,9 +62,9 @@ You will see a list of folders on the left side from which you can drag and drop
 
 5. Now, drag the **pizza\_location** folder over to the right hand pane. Again, click **Yes** to load all files into a single table.
 
-6. Click the pencil icon for the **customer\_contact** task to view the settings for this load task.
+6. Click the pencil icon for the **customer\_contact** load task to view the settings for this task.
 
-    ![Click the pencil icon to open settings viewer for customer_contact load task](images/cc_viewsettings.png)
+    ![Click the pencil icon to open settings viewer for customer_contact load task](images/cc-viewsettings.png)
 
 7. In the settings viewer, you can see the list of columns and data types that will be created from the csv file. They all look correct, so click **Close** to close the settings viewer.
 
@@ -84,7 +84,7 @@ You will see a list of folders on the left side from which you can drag and drop
 
     ![Check the job is completed](images/loadcompleted.png)
 
-This completes the first data loading lab using public object storage data. In the next lab, we will load local and private object storage data.
+This completes the data loading lab using public object storage data. In the next lab, we will load data using private object storage data.
 
 Please *proceed to the next lab*.
 
