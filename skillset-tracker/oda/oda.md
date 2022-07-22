@@ -132,6 +132,7 @@ Once you have provisioned an instance, you can access it from the **Infrastructu
 7. Open a terminal an go in the **package** folder. Run the command:
 
       ```
+      npm install --save @oracle/bots-node-sdk
       npm pack
       ```
 

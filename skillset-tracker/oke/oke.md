@@ -70,7 +70,7 @@ As a prerequisite for this step you should have available the code from **Lab 5:
 
       ```
       <copy>
-      docker run --env-file=.env  -p 8000:8000 -v <path_to_the_wallet_folder>:/opt/oracle/instantclient_21_1/network/admin  -d skillset/ojetoraclelinux
+      docker run --env-file=.env  -p 8000:8000 -v <path_to_the_wallet_folder>:/opt/oracle/instantclient_21_6/network/admin  -d skillset/ojetoraclelinux
       </copy>
       ```
 
@@ -133,7 +133,7 @@ As a prerequisite for this step you should have available the code from **Lab 5:
               image: <your_docker_image>
               volumeMounts:
               - name: oracledb-secret
-                mountPath: /opt/oracle/instantclient_21_1/network/admin
+                mountPath: /opt/oracle/instantclient_21_6/network/admin
                 readOnly: true
 
               ports:
