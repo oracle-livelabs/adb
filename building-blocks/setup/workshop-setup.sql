@@ -1,41 +1,41 @@
 /*    Creates the workshop log and dataset table */
 declare
     l_format varchar2(1000) := '{"skipheaders":"0", "delimiter":"\n", "ignoreblanklines":"true"}';
-    l_uri    varchar2(1000) := 'https://raw.githubusercontent.com/martygubar/adb/main/building-blocks/setup/datasets.json';    
+    l_uri    varchar2(1000) := 'https://raw.githubusercontent.com/martygubar/adb/main/building-blocks/setup/datasets.json';
 begin
    -- drop tables if they exist
-   for rec in (  
-    select table_name 
+   for rec in (
+    select table_name
     from user_tables
     where table_name in ('WORKSHOP_LOG','EXT_DATASETS')
-    ) 
-   loop 
+    )
+   loop
       execute immediate 'drop table ' || rec.table_name;
-   end loop; 
-   
+   end loop;
+
    -- Create the table pointing to data sets
    dbms_cloud.create_external_table(
             table_name => 'EXT_DATASETS',
             file_uri_list => l_uri,
             format => l_format,
             column_list => 'doc varchar2(30000)'
-            );       
+            );
 end;
 /
 
 -- Table used for logging operations
-create table workshop_log 
-   (	execution_time timestamp (6), 
+create table workshop_log
+   (	execution_time timestamp (6),
 	    message varchar2(32000 byte),
         session_id number,
         username   varchar2(30)
-   ) 
+   )
 /
 
 -- Data set listing based on config file on github
 
 create or replace view workshop_datasets as
-    select 
+    select
         a.doc.table_name as table_name,
         to_number(a.doc.seq) as seq,
         a.doc.source_uri as source_uri,
@@ -45,7 +45,7 @@ create or replace view workshop_datasets as
         a.doc.constraints as constraints,
         a.doc.description as description,
         a.doc.dependencies as dependencies
-    from ext_datasets a 
+    from ext_datasets a
 /
 
 begin
@@ -55,10 +55,10 @@ begin
     execute immediate 'grant all on workshop_log to public' ;
 
     execute immediate 'create or replace public synonym workshop_datasets for workshop_datasets' ;
-    execute immediate 'create or replace public synonym workshop_log for workshop_log' ;  
+    execute immediate 'create or replace public synonym workshop_log for workshop_log' ;
 end;
 /
-    
+
 -- Install the workshop base package
 declare
     l_git varchar2(4000);

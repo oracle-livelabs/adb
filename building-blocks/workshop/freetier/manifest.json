@@ -16,36 +16,36 @@
           "title": "Get Started",
           "description": "Get a Free Trial",
           "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
-        },  
+        },
         {
-          "title": "Add Workshop Utilities",            
+          "title": "Add Workshop Utilities",
           "filename": "/building-blocks/setup/add-workshop-utilities.md"
-        },             
+        },
         {
           "title": "Provision ADB using the Console",
-          "type": "freetier",      
+          "type": "freetier",
           "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
-        },  
+        },
         {
           "title": "Connect to ADB",
-          "type": "livelabs",        
+          "type": "livelabs",
           "filename": "/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
-        },   
+        },
         {
           "title": "Use Partitioned External Tables",
-          "type": "livelabs",        
+          "type": "livelabs",
           "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
-        },  
+        },
         {
           "title": "Use Data Tools to Load Data",
-          "type": "livelabs",        
+          "type": "livelabs",
           "filename": "/building-blocks/blocks/adb/load-data/load-data-tools.md"
-        },                 
+        },
         {
           "title": "Load and Analyze Data from a REST endpoint",
-          "type": "livelabs",        
+          "type": "livelabs",
           "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
-        },         
+        },
         {
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",

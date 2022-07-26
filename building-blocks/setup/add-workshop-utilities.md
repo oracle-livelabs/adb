@@ -75,7 +75,7 @@ There's a lot more the the [DBMS\_CLOUD\_REPO package](https://docs.oracle.com/e
 
 ```
 <copy>
-select 
+select
     name,
     bytes
 from table(

@@ -193,12 +193,11 @@ These will be needed in later labs.
 
 4. Also under **Related Services**, you'll see a card for __RESTFUL SERVICES AND SODA__. Click on that card.
 
-    ![Card for REST](!/images/rest-card.png " ")
+    ![Card for REST](./images/rest-card.png " ")
 
 5. Save the URL for RESTful Services and SODA in your text editor. Close the pop-up windows when done.
 
     ![Copy REST URL](./images/rest-url.png " ")
-
 
 
 ## Task 4: Connect to your Autonomous Database using "JSON Workshop" UI
