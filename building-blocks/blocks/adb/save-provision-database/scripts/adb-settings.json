@@ -1,0 +1,16 @@
+{
+    "oci-config":"DEFAULT",
+    "compartment-name":"dbworld-mg",
+    "compartment-id":"",
+    "adb-is-free-tier":false,
+    "adb-db-name":"frompy",
+    "adb-display-name":"frompy",
+    "comment-workload":"valid values: OLTP,DW,AJD,APEX",
+    "adb-db-workload":"DW",
+    "adb-ocpu-core-count":1,
+    "adb-data-storage-size-in-tbs":1,
+    "comment-license-model":"valid license models: 'BRING_YOUR_OWN_LICENSE','LICENSE_INCLUDED'", 
+    "adb-license-model":"LICENSE_INCLUDED",
+    "adb-admin-password":"TomHanksBig123#"
+    
+}

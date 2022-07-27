@@ -15,28 +15,28 @@ In this lab, you will:
 
 ### Prerequisites
 
-* Logged into your Oracle Cloud Account
+* Be logged in to your Oracle Cloud Account
 
 ## Task 1: Choose AJD from the Services Menu
 
-1. Login to the Oracle Cloud.
+1. Log in to the Oracle Cloud.
 
 <if type="freetier">
 
-2. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **Region** in the top, right hand corner of the page.
+2. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **Region** in the top, right-hand corner of the page.
 
     ![Select region on the far upper-right corner of the page.](./images/region.png " ")
 
 </if>
 <if type="livelabs">
 
-2. If you are using a LiveLabs account, you need to be in the region your account was provisioned in. You can see your current default **Region** in the top, right hand corner of the page. Make sure that it matches the region on the LiveLabs Launch page.
+2. If you are using a LiveLabs account, you need to be in the region your account was provisioned in. You can see your current default **Region** in the top, right-hand corner of the page. Make sure that it matches the region on the LiveLabs Launch page.
 
     ![Select region on the far upper-right corner of the page.](./images/region.png " ")
 
 </if>
 
-3. Click the navigation menu in the upper left to show top level navigation choices.
+3. Click the navigation menu in the upper left to show top-level navigation choices.
 
     ![Oracle home page.](./images/navigation.png " ")
 
@@ -81,7 +81,7 @@ In this lab, you will:
     ![Enter the required details.](./images/adb-info.png " ")
 </if>
 <if type="livelabs">
-    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __JSONDB__ and append you LiveLabs user id. For example, __JSONDB7199__.
+    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __JSONDB__ and append your LiveLabs user id. For example, __JSONDB7199__.
 
     ![Supply a database name](./images/adb-info-livelabs.png)
 </if>
@@ -185,7 +185,7 @@ These will be needed in later labs.
 
 3. Save the URL for __Oracle Database API for MongoDB__
 
-    Once you've clicked on the card, a window will pop-up with two URLs listed.
+    Once you've clicked on the card, a window will pop up with two URLs listed.
 
     Copy the first one (containing port number 27017) and save it with a text editor for later use in lab 3. Close the pop-up window when done.
 
@@ -193,12 +193,11 @@ These will be needed in later labs.
 
 4. Also under **Related Services**, you'll see a card for __RESTFUL SERVICES AND SODA__. Click on that card.
 
-    ![Card for REST](!/images/rest-card.png " ")
+    ![Card for REST](./images/rest-card.png " ")
 
 5. Save the URL for RESTful Services and SODA in your text editor. Close the pop-up windows when done.
 
     ![Copy REST URL](./images/rest-url.png " ")
-
 
 
 ## Task 4: Connect to your Autonomous Database using "JSON Workshop" UI
