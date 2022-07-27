@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Automatic indexing is designed to require minimal configuration but there are some settings that are useful to know.
+Automatic indexing is designed to require minimal configuration, but some settings that are useful to know.
 
 Estimated Time: 10mins
 
@@ -13,14 +13,14 @@ Estimated Time: 10mins
 This lab assumes you have completed the following lab:
 
 - Provision an Autonomous Database Instance
-- Create and Application Schema and Prepare for Auto Indexing
+- Create an Application Schema and Prepare for Auto Indexing
 - Execute an Application Workload
 - View the Auto Index Report
 - View Auto Index Details
 
 ## Task 1: Specify Schemas for Automatic Indexing
 
-1. You can add schemas to an inclusion or exclustion list by setting ALLOW to TRUE or FALSE. The schemas are specified using _parameter\_value_ and NULL means 'all'.
+1. Schemas can be added to an inclusion or exclustion list by setting ALLOW to TRUE or FALSE. Schema names are specified using _parameter\_value_ and NULL means 'all'.
 	
 	```
     <copy>
@@ -47,7 +47,7 @@ This lab assumes you have completed the following lab:
     </copy>
     ```
 
-3. The easiest way to understand the inclusion and exclusion logic is to experiment with some combinations and inspect the AUTO\_INDEX\_SCHEMA parameter value. For example, in the example below, you will simple see _schema NOT IN (ADMIN)_.
+3. The easiest way to understand the inclusion and exclusion logic is to experiment with some combinations and inspect the AUTO\_INDEX\_SCHEMA parameter value. For example, in the example below, you will simply see _schema NOT IN (ADMIN)_.
 
 	```
     <copy>
@@ -167,8 +167,3 @@ This lab assumes you have completed the following lab:
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jul 2022
 * **Last Updated By/Date** - Nigel Bayliss, Jul 2022
-
-## Need Help?
-Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
-
-If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.

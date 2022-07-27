@@ -4,7 +4,7 @@
 
 Automatic partitioning in Autonomous Database analyzes your application workload and automatically manages indexes to improve performance.
 
-Creating indexes manually requires deep knowledge of the data model, application, and data distribution. In the past, DBAs were responsible for making choices about which indexes to create, and then sometimes the DBAs did not revise their choices or maintain indexes as the conditions changed. As a result, opportunities for improvement were lost, and the use of unnecessary indexes could become a performance liability.
+Manually creating indexes requires deep knowledge of the data model, how applications behave, and the characteristics of the data in the database. In the past, DBAs were responsible for making choices about which indexes to create, and then sometimes the DBAs did not revise their choices or maintain indexes as the conditions changed. As a result, opportunities for improvement were lost, and the use of unnecessary indexes could become a performance liability.
 
 Automatic indexing enables Autonomous Database users to benefit from indexing without the risks inherent in making changes without analyzing the effect changes will make to the application workload.
 
@@ -42,8 +42,3 @@ Workload information collected in an Autonomous Database for analysis. Indexes a
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jun 2022 
 * **Last Updated By/Date** - Nigel Bayliss, Jul 2022
-
-## Need Help?
-Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
-
-If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.

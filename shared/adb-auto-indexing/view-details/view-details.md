@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The best place to find information on auto indexes is to use the auto index report. For the sake of this lab, we will take a look at a couple of the underlying dictionary views.
+The best place to find information on auto indexes is to use the auto index report. For the sake of this lab, we will look at a couple of the underlying dictionary views.
 
 Estimated Time: 10mins
 
@@ -10,16 +10,16 @@ Estimated Time: 10mins
 - Take a closer look at the actions taken by automatic indexing.
 
 ### Prerequisites
-This lab assumes you have completed the following labs:
+This lab assumes you have completed the following:
 
 - Provision an Autonomous Database Instance
-- Create and Application Schema and Prepare for Auto Indexing
+- Create an Application Schema and Prepare for Auto Indexing
 - Execute an Application Workload
 - View the Auto Index Report
 
 ## Task 1: Identify Automatic Indexes
 
-1. Use the following query to identify auto indexes. We can conclude from the listing that the columns F8, F9, F7 and F10 were used in predicates, but the optimizer decided that the captured application queries will not use them. Indexes on columns F6 and F2 would be used by application queries, but the performance enhancement is insufficient to warrant exposure to the application workload (so they remain INVISIBLE). F6 and F2 will be marked INVISIBLE UNUSABLE after 24 hours. The other indexes were found to be beneficial to the performance of the captured workload.
+1. Use the following query to identify auto indexes. We can conclude from the listing that the columns F8, F9, F7 and F10 were used in predicates, but the optimizer decided that the captured application queries will not use them. Application queries would use indexes on columns F6 and F2, but the performance enhancement is insufficient to warrant exposure to the application workload (so they remain INVISIBLE). F6 and F2 will be marked INVISIBLE UNUSABLE after 24 hours. The other indexes were found to be beneficial to the performance of the captured workload.
 
     ````
     <copy>
@@ -64,8 +64,3 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jun 2022
 * **Last Updated By/Date** - Nigel Bayliss, Jun 2022
-
-## Need Help?
-Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
-
-If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.

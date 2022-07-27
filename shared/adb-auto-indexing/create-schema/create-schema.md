@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this Lab, you will create a test schema and enable automatic indexing.
+In this lab you will create a test schema and enable automatic indexing.
 
 Estimated Time: 10mins
 
@@ -10,27 +10,26 @@ Estimated Time: 10mins
 - Create a test schema for auto indexing.
 
 ### Prerequisites
-This lab assumes you have completed the following lab:
+This lab assumes you have completed the following:
 
 - Provision an Autonomous Database Instance
 
-
 ## Task 1: Invoke a Cloud Shell from the Oracle Cloud Infrastructure (OCI) 
 
-During this part of the workshop we will use OCI Cloud Shell, a web browser-based terminal accessible from the Oracle Cloud Console. Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI, and other useful pre-installed tools like SQL command line. We are going to use SQL command line in Cloud Shell for this workshop. 
+We will now use OCI Cloud Shell, a web browser-based terminal accessible from the Oracle Cloud Console. Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI, and other useful pre-installed tools like SQL command line. 
 
 
 1. From your Autonomous Database Details page, click the OCI Cloud Shell button (top right, circled in red):
 
 	![Invoke OCI Cloud Shell](./images/cloud-console-step-1.png)
 
-2. When the shell has started we need to download the wallet into Cloud Shell to connect to your autonomous database. 
+2. When the shell has started, we need to download the wallet into Cloud Shell to connect to your autonomous database. 
    First, we need to copy the OCID of your newly created autonomous database. That is the unique identifier of your database. Select "Copy" (circled in red).	
 
 	![Copy the DB OCID](./images/cloud-console-step-2.png)
 
 
-3. 	In Cloud Shell, execute the following to connect to your database. You need to insert your copied **autonomous database OCID** into the code below. For the database connection you are using ADMIN with the admin password you set up when provisioning your autonomous database.
+3. 	In Cloud Shell, execute the following to connect to your database. You need to insert your copied **autonomous database OCID** into the code below. For the database connection, you are using ADMIN with the admin password you set up when provisioning your autonomous database.
 
 	The name of your service is your database name with suffix "\_high", "\_medium", or "\_low". You can get this information also from the DB Connections button on your **Autonomous Database Details** screen. For the purposes of this lab, we will use the "\_low" service.
 	
@@ -153,8 +152,3 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jun 2022
 * **Last Updated By/Date** - Nigel Bayliss, Jun 2022
-
-## Need Help?
-Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
-
-If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.

@@ -10,15 +10,15 @@ Estimated Time: 20mins
 - View and understand the auto index report.
 
 ### Prerequisites
-This lab assumes you have completed the following labs:
+This lab assumes you have completed the following:
 
 - Provision an Autonomous Database Instance
-- Create and Application Schema and Prepare for Auto Indexing
+- Create an Application Schema and Prepare for Auto Indexing
 - Execute an Application Workload
 
 ## Task 1: Wait for Automatic Indexing to Complete
 
-1. This task is optional since you can skip to Task 2 and see if a new auto index report is available. Alternatively, you can use the following query to check if the auto indexing task has executed recently. We need to wait until it has executed _after_ the workload queries were captured. This will take up to 15 minutes.
+1. This task is optional since you can skip to Task 2 and see if a new auto index report is available. Alternatively, you can use the following query to check if the auto indexing task has executed recently. We need to wait until it has executed _after_ the workload queries have been captured. This will take up to 15 minutes.
 
     ````
     <copy>
@@ -39,7 +39,7 @@ This lab assumes you have completed the following labs:
     
 ## Task 2: Generate the Automatic Indexing Report   
 
-1. If the auto indexing task has just completed dealing with your workload, you can view the most recent report. In this example, we will generate ALL sections of the report to the maximum level of detail.
+1. If the auto indexing task has _just_ completed dealing with your workload, you can view the most recent report. In this example, we will generate ALL sections of the report to the maximum level of detail.
 
     ````
     <copy>
@@ -80,7 +80,7 @@ This lab assumes you have completed the following labs:
 
     ![Report summary](./images/summary.png)
 
-You might see some differences in your report because the results depend on measured workload performance and relative SQL performance may change over time.
+You might see some differences in your report because the results depend on measured workload performance, and relative SQL performance may change over time.
 
 In the report above, we can see:
 
@@ -111,8 +111,3 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jul 2022
 * **Last Updated By/Date** - Nigel Bayliss, Jul 2022
-
-## Need Help?
-Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
-
-If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This workshop walks you through the steps to get started using the Oracle Autonomous Database. For this workshop we're going to use an **Autonomous Database optimized for Analytics and Warehousing (ADW)**, but you can also Autonomous Database optimized for Transaction Process (ATP). You will provision a new database in just a few minutes.
+This workshop walks you through the steps to get started using the Oracle Autonomous Database. For this workshop, we're going to use an **Autonomous Database optimized for Analytics and Warehousing (ADW)**, but you can also Autonomous Database optimized for Transaction Process (ATP). You will provision a new database in just a few minutes.
 
 Oracle Autonomous Databases have the following characteristics:
 
@@ -25,7 +25,7 @@ Watch our short video that explains how to provision your Autonomous Database in
 
 [](youtube:IfWJhnodAxk)
 
-Estimated Lab Time: 15 minutes.
+Estimated Time: 15 minutes.
 
 ### Objectives 
 - Create an Autonomous Database with the latest features of Oracle Databases
@@ -34,7 +34,7 @@ Estimated Lab Time: 15 minutes.
 
 1. Click on the navigation menu at the upper left corner of the page.
 
-    This will produce a drop-down menu, click **Oracle Database** and then select **Autonomous Data Warehouse**.
+    This will produce a drop-down menu. Click **Oracle Database** and then select **Autonomous Data Warehouse**.
 
     ![Oracle Cloud Web Console](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
 
@@ -57,7 +57,7 @@ Estimated Lab Time: 15 minutes.
 
     - **Compartment:** Verify that a compartment ( &lt;tenancy_name&gt; ) is selected.
 
-        By default, any OCI tenancy has a default ***root*** compartment, named after the tenancy itself. The tenancy administrator (default root compartment administrator) is any user who is a member of the default Administrators group. For the workshop purpose, you can use ***root***.
+        By default, any OCI tenancy has a default ***root*** compartment named after the tenancy itself. The tenancy administrator (default root compartment administrator) is any user who is a member of the default Administrators group. For the workshop purpose, you can use ***root***.
 
     - **Display Name:** Enter the display name for your ADW Instance. For this demo purpose, I have called my database `ADW_OAC`.
     
@@ -129,8 +129,3 @@ You have just created an Autonomous Database with the latest features of Oracle 
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
 - **Last Updated By/Date** - Nigel Bayliss, June 2022
-
-## Need Help?
-Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.
-
-If you do not have an Oracle Account, click [here](https://profile.oracle.com/myprofile/account/create-account.jspx) to create one.
