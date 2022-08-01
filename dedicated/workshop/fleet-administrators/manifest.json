@@ -121,6 +121,14 @@
             "filename": "./../../oracle-standard-tags/oracle-standard-tags.md"
         },
         {
+            "title": "Lab 15: Operator Access Control",
+            "description": "Operator Access Control",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "01/08/2022",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-operator-access-control/operatorcontrol.md"
+        },
+        {
             "title": "Appendix",
             "description": "Common tools for windows Users Finding the IP address of your AEI Cluster.",
             "partnumber": "Ennnnn_01",
