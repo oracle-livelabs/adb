@@ -1,0 +1,90 @@
+{
+    "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+        "adb-create-load-json-collection.md":"/building-blocks/tasks/adb/create-load-json-collection.md",
+        "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
+        "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+        "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
+        "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
+        "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+        "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+        "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md",
+        "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
+      },
+      "variables": ["./variables.json"],
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to Autonomous Database",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Get a Free Trial",
+            "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an Analytics Cloud Instance",
+            "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
+            "type": "freetier",
+            "filename": "/building-blocks/blocks/oac/provision/oac-provision.md"
+        },
+        {
+            "title": "Lab 2: Provision an Autonomous Database",
+            "description": "Provision Autonomous Database",
+            "type": "freetier",
+            "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
+        },
+        {
+            "title": "Lab 3: Load Data from Local Files",
+            "description": "Load additional customer details into ADB from local files using the Database Actions tools",
+            "type": "freetier",
+            "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
+        },
+        {
+            "title": "Lab 4: Load Data from Object Storage Public Buckets",
+            "description": "Load customer contact, movie genre and pizza location data into ADB from public object storage buckets using the Database Actions tools",
+            "type": "freetier",
+            "filename": "../../load-public-db-actions/load-public-db-actions.md"
+        },
+        {
+            "title": "Lab 5: Load Data from Object Storage Private Buckets",
+            "description": "Load additional customer details into ADB from private object storage buckets using the Database Actions tools",
+            "type": "freetier",
+            "filename": "../../load-private-db-actions/load-private-db-actions.md"
+        },
+        {
+            "title": "Lab 6: Access and Load Partitioned Object Storage Data",
+            "description": "Examine the power of partitioning for querying and loading customer sales data sourced from object storage",
+            "type": "freetier",
+            "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
+        },
+        {
+            "title": "Lab 7: Load and Analyze JSON Data",
+            "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
+            "type": "freetier",
+            "filename": "../../load-analyze-json/load-analyze-json.md"
+        },
+        {
+            "title": "Lab 8: Load and Analyze the News from REST Endpoints",
+            "description": "Load news and analyze the sentiment about actors from the newsapi.org",
+            "type": "freetier",
+            "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
+        },
+        {
+            "title": "Lab 9: Develop Self-Service Analytics Cloud Dashboards",
+            "description": "Use Analytics Cloud for interactive dashboards",
+            "type": "freetier",
+            "filename": "../../develop-dashboards/develop-dashboards.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common//labs/need-help/need-help-freetier.md"
+        }
+
+    ]
+}

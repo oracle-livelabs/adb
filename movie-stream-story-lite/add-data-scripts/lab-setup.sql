@@ -17,7 +17,7 @@ begin
     -- create the tables
     dbms_output.put_line('create table moviestream_labs');
     dbms_cloud.create_external_table(table_name => 'moviestream_labs',
-                file_uri_list => 'https://raw.githubusercontent.com/martygubar/learning-library/master/data-management-library/autonomous-database/shared/movie-stream-story-lite/add-data-scripts/moviestream-lite-labs.json',
+                file_uri_list => 'https://raw.githubusercontent.com/martygubar/adb/main/movie-stream-story-lite/add-data-scripts/moviestream-lite-labs.json',
                 format => json_object('skipheaders' value '0', 'delimiter' value '\n','ignoreblanklines' value 'true'),
                 column_list => 'doc varchar2(30000)'
             );
@@ -80,7 +80,7 @@ end moviestream_exec;
 **/
 declare
     l_owner     varchar2(100) := 'martygubar';
-    l_repo_name varchar2(100) := 'learning-library';
+    l_repo_name varchar2(100) := 'adb';
 BEGIN
   -- Loop over the list of labs and install the script
   for rec in (

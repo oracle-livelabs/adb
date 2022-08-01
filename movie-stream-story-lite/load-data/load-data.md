@@ -224,9 +224,9 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 <copy>
 -- Install the setup file from github 
 declare
-    l_owner     varchar2(100) := 'oracle';
-    l_repo_name varchar2(100) := 'learning-library';
-    l_file_path varchar2(200) := 'data-management-library/autonomous-database/shared/movie-stream-story-lite/add-data-scripts/lab_setup.sql';
+    l_owner     varchar2(100) := 'oracle-livelabs';
+    l_repo_name varchar2(100) := 'adb';
+    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab_setup.sql';
 BEGIN
     dbms_cloud_repo.install_file(
         repo => dbms_cloud_repo.init_github_repo(                 
