@@ -399,7 +399,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, July 2022
+* **Last Updated By/Date:** Lauran Serhal, August 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 
