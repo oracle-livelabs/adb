@@ -44,13 +44,13 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 4. On the **Autonomous Database Details** page, click **Database Actions**.
     <if type="livelabs">
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/ll-db-actions-new.png " ")
     </if>
     <if type="freetier">
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
     </if>
 
-5. A **Launch DB Actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions Launchpad** Home page is displayed. In the **Development** section, click the **SQL** card.
+5. A **Launch DB Actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed. In the **Development** section, click the **SQL** card.
 
     ![The Database Actions Launchpad Home page is displayed. The SQL card in the Development section is highlighted.](./images/ll-launchpad.png " ")
 
@@ -794,7 +794,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data     
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, July 2022
+* **Last Updated By/Date:** Lauran Serhal, August 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

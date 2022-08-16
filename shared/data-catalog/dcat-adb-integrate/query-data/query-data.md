@@ -34,26 +34,21 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 </if>
 
 <if type="freetier">
-5. On the **Autonomous Database Details** page, click the **Service Console** button.
-
-   ![The Service Console button is highlighted.](./images/service-console.png " ")
+5. On the **Autonomous Database Details** page, click the **Database Actions** button. A **Launch DB Actions** message box is displayed.
+   ![The Service Console button is highlighted.](./images/database-actions-new.png " ")
 </if>
 
 <if type="livelabs">
-5. On the **Autonomous Database Details** page, click the **Service Console** button.
+5. On the **Autonomous Database Details** page, click the **Database Actions** button. A **Launch DB Actions** message box is displayed.
 
-    ![The Service Console button is highlighted.](./images/ll-service-console.png " ")   
+    ![The Service Console button is highlighted.](./images/ll-db-actions-new.png " ")   
 </if>
 
-6. On the **Service Console** page, click the **Development** link on the left.
+6. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **ORACLE MACHINE LEARNING** card.
 
-    ![The Autonomous Data Warehouse section on the left is highlighted. The Development link is highlighted.](./images/development-link.png " ")
+    ![From the partial list of displayed cards, the Oracle Machine Learning card is highlighted.](./images/oml-card.png " ")
 
-7. Scroll-down the **Development** page, and then click the **Oracle Machine Learning User Interface** card.
-
-    ![From the partial list of displayed cards, the Oracle Machine Learning User Interface card is highlighted.](./images/oml-card.png " ")
-
-8. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, your password that you chose in **Lab 3 > Task 2** such as **`Training4ADB`** in the **Password** field, and then click **Sign In**.
+7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, your password that you chose in **Lab 3 > Task 2** such as **`Training4ADB`** in the **Password** field, and then click **Sign In**.
 
     >**Note:** You specified the password for the `moviestream` user that was created when you ran the PL/SQL script in **Lab 3**, **Task 2: Initialize the Lab**.
 
@@ -252,7 +247,7 @@ You can use this drop-down list to do the following:
 
     ![The Bar Chart icon is shown as clicked and the bar chart output is displayed.](./images/top-sales-bar-chart.png " ")
 
-6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run all paragraphs** icon on the notebook toolbar. A **Run all** confirmation message box is displayed. Click **OK**. 
+6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run all paragraphs** icon on the notebook toolbar. A **Run all** confirmation message box is displayed. Click **OK**.
 
     ![The code and result sections of all paragraphs are displayed.](./images/run-notebook.png " ")
 
@@ -277,7 +272,7 @@ You can use this drop-down list to do the following:
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, July 2022
+* **Last Updated By/Date:** Lauran Serhal, August 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 
