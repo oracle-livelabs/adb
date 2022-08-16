@@ -1,4 +1,4 @@
-# Working with JSON collections using the SODA (Simple Oracle Document Access) API
+# Work with JSON collections
 
 ## Introduction
 
@@ -360,7 +360,7 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 	curl https://fastdl.mongodb.org/tools/db/mongodb-database-tools-rhel70-x86_64-100.5.4.tgz -o mongotools.tgz
 	tar xvf mongosh.tgz
 	tar xvf mongotools.tgz
-	export PATH="`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.2/bin/:`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.4/bin/:$PATH"
+	export PATH="`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.2/bin/:`pwd`/mongosh-1.5.1-linux-x64/bin/:$PATH"
 	</copy>
 	```
 
