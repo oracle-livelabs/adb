@@ -2,7 +2,7 @@
 
 ## About this Workshop ##
 
-Automatic partitioning in Autonomous Database analyzes your application workload and automatically manages indexes to improve performance.
+Automatic indexing in Autonomous Database analyzes your application workload and automatically manages indexes to improve performance.
 
 Manually creating indexes requires deep knowledge of the data model, how applications behave, and the characteristics of the data in the database. In the past, DBAs were responsible for making choices about which indexes to create, and then sometimes the DBAs did not revise their choices or maintain indexes as the conditions changed. As a result, opportunities for improvement were lost, and the use of unnecessary indexes could become a performance liability.
 
