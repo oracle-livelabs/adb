@@ -1,4 +1,4 @@
-# Provisioning an Autonomous JSON Database
+# Provision an Autonomous JSON Database
 
 ## Introduction
 
