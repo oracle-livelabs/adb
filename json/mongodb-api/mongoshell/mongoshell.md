@@ -21,11 +21,11 @@ In this lab, you will:
 ### Prerequisites
 
 * Have provisioned an Autonomous JSON Database instance and saved the URLs for Database API for MongoDB.
-* Have provisioned a Compute Node and installed the MongoDB Shell
+* Have installed the MongoDB Shell
 
 You will need the following information, saved from previous labs:
 
-* The URLs for the MongoDB API
+* The URL for the MongoDB API
 
 ## Task 1: Locate or Open Terminal or Command Prompt
 

@@ -1,4 +1,4 @@
-# Using SQL to work with JSON
+# Use SQL to work with JSON
 
 ## Introduction
 
