@@ -9,9 +9,9 @@ Data lakes typically organize data files in object storage using a particular fo
 ![Tables and partitions in object store](images/obj-organization.png)
 
 In the example above:
-* Tables map to folders (`customer_contact`, `custsales`)
+* Tables map to folders (`customer_contact`, `custsales`).
 * Partitions map to subfolders. `month=201901` is equivalent to a month partition column with the value `201901`. There are often multiple levels of subfolders.
-* Data is found in files at the leaf
+* Data is found in files at the leaf.
 
 Autonomous Database understands common data lake organization patterns and makes it easy to create and synchronize partitioned external tables with these sources. Queries against these sources benefit from Oracle Database partition pruning query optimization - minimizing the amount of data scanned and improving performance.
 
@@ -27,7 +27,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires that you have provisioned an Autonomous Database instance.
+- This lab requires completion of the lab, **Provision an Autonomous Database**, in the Contents menu on the left.
 
 ## Task 1: Navigate to SQL worksheet
 [](include:adb-goto-sql-worksheet.md)
@@ -37,7 +37,7 @@ In this lab, you will:
 
 You can query the list of files available in object storage using SQL. Simply pass the location of the source data to the ``DBMS_CLOUD.LIST_OBJECTS`` function. You can [learn more about this function in the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-52801F96-8280-4FE0-8782-E194F4360E6F).
 
-> Because the files used in this exercise are in a public bucket, a credential is not required to access OCI Object Storage
+> Because the files used in this exercise are in a public bucket, a credential is not required to access OCI Object Storage.
 
 1. Query MovieStream's public bucket to see the target files that you will access. Copy and paste the following query into the worksheet. Run the query by pressing [control-enter] or by clicking the play button in the toolbar.
 
@@ -115,10 +115,10 @@ You can query the list of files available in object storage using SQL. Simply pa
 
 ## Task 5: Create, load and query an Oracle table from the object storage source
 
-1. Now that we have the external table, it's easy to create and load an Oracle Database table from the object storage source:
+1. Now that we have the external table, it's easy to create and load an Oracle Database table from the object storage source. Let's use the power of SQL and partition pruning by selecting only 6 months in the year 2020:
     ```
     <copy>create table custsales as
-select * from ext_custsales_part;
+select * from ext_custsales_part where month in ('2020-07', '2020-08', '2020-09', '2020-10', '2020-11', '2020-12');
     </copy>
     ```
     ``CREATE TABLE AS SELECT``, or CTAS, is a shortcut for both creating and populating a table.

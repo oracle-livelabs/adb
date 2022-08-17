@@ -26,7 +26,7 @@ In this lab, you will:
 ## Task 1: Create an account on News API and retrieve an API key
 The News API provides a simple REST API to retrive news from various sources. Get started by creating a News API account:
 
-1. Register for an API key from the [News API](https://newsapi.org/register). 
+1. Register for an API key from the [News API](https://newsapi.org/register).
 2. Complete the fields on the registration page, including your name, email and password. Agree to the terms and click **Submit**.
 3. You will receive an email from News API that includes your API key. You will need the API key to make REST calls against the service.
 4. We will use the [`Everything` News API endpoint (`https://newsapi.org/v2/everything`) ](https://newsapi.org/docs/endpoints/everything) The key parameters for the REST endpoint are:
@@ -42,8 +42,8 @@ The News API provides a simple REST API to retrive news from various sources. Ge
 
 ## Task 2: Create a PLSQL function that retrieves news for an actor
 Now that you have the API key, create a PLSQL function that queries the REST endpoint using the parameters above.
-1. Go to SQL Worksheet
-2. Ensure that the public REST endpoint is accessible by our PLSQL function. Copy and paste the following API call into SQL Worksheet to update the access control list. Click **Run Script**. This will allow the ADMIN user to call out to any public host.
+1. Go to SQL Worksheet.
+2. Ensure that the public REST endpoint is accessible by our PL/SQL function. Copy and paste the following API call into SQL Worksheet to update the access control list. Click **Run Script**. This will allow the ADMIN user to call out to any public host.
     ```
     <copy>
     begin
@@ -58,40 +58,40 @@ Now that you have the API key, create a PLSQL function that queries the REST end
     /
     </copy>
     ```
-3. Create the function that queries the News API REST endpoint. Copy and paste the function below into the SQL worksheet. Replace **`<your api key>`** with the API key that the News API sent to you. After replacing the API key, click **Run Script**
+3. Create the function that queries the News API REST endpoint. Copy and paste the function below into the SQL worksheet. Replace **`<your api key>`** with the API key that the News API sent to you. After replacing the API key, click **Run Script**.
 
     ```
     <copy>
     set define off;  -- turns off prompting for parameter values
 
-    create or replace function get_news ( 
+    create or replace function get_news (
                                 news_search in varchar2 default '+"Tom Hanks"',
-                                from_date in varchar2 default to_char(sysdate-7, 'YYYY-MM-DD'), 
+                                from_date in varchar2 default to_char(sysdate-7, 'YYYY-MM-DD'),
                                 end_date in varchar2 default to_char(sysdate, 'YYYY-MM-DD')
                                 )    
         return clob is
-            
+
             result_row      clob;
-        
+
             -- REST management
             req             varchar2(1000);
             resp            dbms_cloud_types.resp;            
             params          varchar2(1000);
             apikey          varchar2(100) := '<your api key>';
             endpoint        varchar2(100) := 'https://newsapi.org/v2/everything';
-        
-        
+
+
         begin        
             -- Create the URL based on the parameters, API Key and rest endpoint
-            params      :=  '?q=' || news_search 
+            params      :=  '?q=' || news_search
                             || '&apikey=' ||apikey
-                            || '&from=' || from_date 
+                            || '&from=' || from_date
                             || '&to=' || end_date
                             || '&sortBy=publishedAt&language=en&searchIn=title,description';
-        
-        
+
+
             req := utl_url.escape(endpoint || params);
-        
+
             -- send the request and process the result
             resp := dbms_cloud.send_request(
                 credential_name => null,
@@ -100,27 +100,27 @@ Now that you have the API key, create a PLSQL function that queries the REST end
                 method          => DBMS_CLOUD.METHOD_GET,
                 cache           => true
             );
-        
+
             -- Get the response. This is in JSON format
             result_row := dbms_cloud.get_response_text(resp);
-        
+
             -- Return the result
             return result_row;
-        
+
         end;
-    / 
+    /
     </copy>
     ```
-    **`DBMS_CLOUD.SEND_REQUEST`** is the key function; it queries the endpoint and returns a resoponse object. This response object is then passed to **`BMS_CLOUD.GET_RESPONSE_TEXT`** to retrieve the news articles in JSON format.
+    **`DBMS_CLOUD.SEND_REQUEST`** is the key function; it queries the endpoint and returns a response object. This response object is then passed to **`BMS_CLOUD.GET_RESPONSE_TEXT`** to retrieve the news articles in JSON format.
 
 4. Query the News API for the top 20 actors. The result of the query is saved into a table.
 
     ```
     <copy>
-    create table news as 
+    create table news as
     with top_actors as (
         select  
-            jt.actor, 
+            jt.actor,
             sum(gross)
         from movie m,
             json_table(m.cast,'$[*]' columns (actor path '$')) jt    
@@ -129,29 +129,29 @@ Now that you have the API key, create a PLSQL function that queries the REST end
         order by 2 desc nulls last
         fetch first 20 rows only
     )
-    select 
+    select
         actor,
         get_news(actor) as json_document
     from top_actors
-    ; 
+    ;
     </copy>
     ```
- 
+
     This query is broken into two parts:
-        * A subquery - select the top 20 actors based on box office revenue
-        * For each of those top actors, get the latest news by calling the `get_news` function.
-    
+    - A subquery - select the top 20 actors based on box office revenue.
+    - For each of those top actors, get the latest news by calling the `get_news` function.
+
     5. Let's see the news for Johnny Depp. Note, because this is querying a live news feed, your results will definitely be different!!
         ```
         <copy>
-        select 
+        select
             actor,
             json_query(json_document, '$' returning clob pretty) as news_articles
         from news
         where actor = 'Johnny Depp';
         </copy>
         ```
-    Lots of news - 251 articles across publications. Unfortunately, the news is not all good. 
+    Lots of news - 251 articles across publications. Unfortunately, the news is not all good.
 
         ![News results](images/adb-query-news.png)
 
@@ -163,12 +163,12 @@ Now that you have the API key, create a PLSQL function that queries the REST end
         select
             actor,
             json_value(json_document, '$.totalResults' returning number) as buzz,
-            author, 
-            source, 
-            title, 
+            author,
+            source,
+            title,
             description
         from news n,
-            json_table(n.json_document, '$.articles[*]' 
+            json_table(n.json_document, '$.articles[*]'
                 columns (
                     source      varchar2(100)    path '$.source.name',
                     author      varchar2(100)    path '$.author',
@@ -179,7 +179,7 @@ Now that you have the API key, create a PLSQL function that queries the REST end
             ) jt;
         </copy>
         ```
-    
+
     7. Let's review the results:
         ```
         <copy>
@@ -206,9 +206,9 @@ Now that we have the latest news for each actor, let's derive the sentiment of t
 2. Create the sentiment index:
     ```
     <copy>
-    create index news_sentiment_idx 
-    on news_buzz(description) 
-    indextype is ctxsys.context 
+    create index news_sentiment_idx
+    on news_buzz(description)
+    indextype is ctxsys.context
     parameters ('lexer newsautolexer stoplist ctxsys.default_stoplist');
     </copy>
     ```
@@ -217,9 +217,9 @@ Now that we have the latest news for each actor, let's derive the sentiment of t
 3. Let's look at the sentiment of some of Johnny Depp's news:
     ```
     <copy>
-    select 
+    select
         actor,
-        ctx_doc.sentiment_aggregate('news_sentiment_idx', rowid) as sentiment, 
+        ctx_doc.sentiment_aggregate('news_sentiment_idx', rowid) as sentiment,
         description     
     from news_buzz
     where actor = 'Johnny Depp'
@@ -227,14 +227,14 @@ Now that we have the latest news for each actor, let's derive the sentiment of t
     ;
     </copy>
     ```
-    As to be expected, the computed sentiment isn't great. However, it's not all bad; as you scroll thru the results, there are some positive articles. Also, the description field is fairly small. A richer text field would likely produce even better results.
+    As to be expected, the computed sentiment isn't great. However, it's not all bad; as you scroll through the results, there are some positive articles. Also, the description field is fairly small. A richer text field would likely produce even better results.
 
     ![](images/adb-sentiment-analysis.png)
 
 4. MovieStream will want to consider which movies to promote on the site. Actors that are generating buzz and the type of news will likely have some influence on their recommendations. Below are the rankings for our actors:
     ```
     <copy>
-    select 
+    select
         actor,
         round(avg(ctx_doc.sentiment_aggregate('news_sentiment_idx', rowid)), 1) as avg_sentiment,
         max(buzz)
@@ -243,10 +243,10 @@ Now that we have the latest news for each actor, let's derive the sentiment of t
     order by 3 desc;
     </copy>
     ```
-    
+
     ![Ranking by buzz](images/adb-ranking-by-buzz.png)
 
-This completes this lab. You now know how integrate and analyze data coming from REST endpoints in Autonomous Database.
+This completes this lab. You now know how to integrate and analyze data coming from REST endpoints in Autonomous Database.
 
 ## Acknowledgements
 
