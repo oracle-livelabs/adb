@@ -44,14 +44,11 @@ Estimated Time: 15 minutes.
     
 2.  Make sure your Workload Type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select a compartment. <if type="livelabs">Enter the first part of your user name, for example `LL185` in the Search Compartments field to quickly locate your compartment.
 
-    ![Check the workload type on the left.](images/task1-4.png " ")
-    </if>
-    <if type="freetier">
-    ![Check the workload type on the left.](images/task1-4.png " ")
+    ![Check the workload type on the left.](images/adb.png)
 
 3. To create a new instance, click the blue **Create Autonomous Database** button.
 
-    ![Create ADB](./images/lab100_2.png)
+    ![Create ADB](./images/create-adb.png)
 
     Enter the required information and click the **Create Autonomous Database** button at the bottom of the form. For the purposes of this workshop, use the information below:
 
@@ -70,9 +67,9 @@ Estimated Time: 15 minutes.
 
     If "On," you will see the Always Free logo next to the name of your database:
 
-    ![Always Free Logo](./images/always_free_logo.png)
+    ![Always Free Logo](./images/always-free-logo.png)
 
-    ![Create ADB](./images/lab100_3_2.png)
+    ![Create ADB](./images/create-adb-2.png)
 
     - **Choose Database version:** 19c
     
@@ -82,7 +79,7 @@ Estimated Time: 15 minutes.
 
     - **Auto scaling:** Off
 
-        ![ADB Creation Storage](./images/lab100_4.png)
+        ![ADB Creation Storage](./images/adb-storage.png)
 
 4. Under **Create administration credentials** section:
 
@@ -94,33 +91,33 @@ Estimated Time: 15 minutes.
 
     - Select **Secure access from everywhere**
 
-        ![ADB Creation Password](./images/secureaccess.png)
+        ![ADB Creation Password](./images/secure-access.png)
 
 5. Under **Choose a license type** section, choose **License Type: Licence Included**.
 
     When you have completed the required fields, scroll down and click on the blue **Create Autonomous Database** button at the bottom of the form:
 
-    ![ADB Creation](./images/lab100_6.png)
+    ![ADB Creation](./images/adb-creation.png)
 
 6. The Autonomous Database **Details** page will show information about your new instance. You should notice the various menu buttons that help you manage your new instance - because the instance is currently being provisioned all the management buttons are greyed out.
 
-    ![ADB Creation Provisioning](./images/lab100_7.png)
+    ![ADB Creation Provisioning](./images/create-provisioning.png)
 
 7. A summary of your instance status is shown in the large box on the left. In this example, the color is amber and the status is **Provisioning**.
 
-    ![ADB Creation Provisioning Amber](./images/lab100_8.png)
+    ![ADB Creation Provisioning Amber](./images/create-provisioning-amber.png)
 
     The provisioning process should take **under 5 minutes**.
 
 8. After a short while, the status will change to **Available** and the "ADW" box will change color to green:
 
-    ![ADB Creation Provisioning Green](./images/lab100_9.png)
+    ![ADB Creation Provisioning Green](./images/create-provisioning-green.png)
 
 9. Once the Lifecycle Status is **Available**, additional summary information about your instance is populated, including workload type and other details.
 
     This page is known as the **Autonomous Database Details Page**. It provides you with status information about your database, and its configuration. Get **familiar** with the buttons and tabs on this page.
 
-    ![ADB Creation Details](./images/lab100_adw_ready.png)
+    ![ADB Creation Details](./images/adw-ready.png)
 
 You have just created an Autonomous Database with the latest features of Oracle Databases.
 
