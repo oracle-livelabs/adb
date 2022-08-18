@@ -26,6 +26,7 @@
       {
           "title": "Lab 3: Use Autonomous Database Tools",
           "description": "Using Autonomous Database Tools",
+          "type": "usewebtransforms",
           "filename": "../using-adb-tools/ocw-using-adb-tools.md"
       },
       {
