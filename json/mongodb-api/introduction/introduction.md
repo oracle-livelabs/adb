@@ -12,6 +12,8 @@ In the workshop, you will create an Autonomous JSON Database, and connect to it 
 
 This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
 
+**Estimated Time: 1 hour**
+
 ### Workshop Scenario
 
 In this workshop, we'll implement a very simple employee database. 
@@ -82,11 +84,11 @@ Now you know what JSON is and also why so many people love it. Enough theory for
 
 In this workshop, you will explore: 
 *	How to provision an Oracle Autonomous (JSON) Database,
-*	How to install MongoDB Shell in Oracle Cloud Shell
+*	How to install MongoDB Shell on your own system
 *   How to connect to Autonomous Database from MongoDB Shell and create a collection
 *   How to access the MongoDB collection from JSON Workshop and SQL
 
-#### Prerequisites
+### Prerequisites
 
 * An Oracle Cloud Account
 
