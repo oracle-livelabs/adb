@@ -236,12 +236,14 @@ Identify a Cloud Storage location (URI + Bucket) that is closest to you from th
 ### Inspect Data In Table MOVIE\_SALES\_2020
 
 22. Navigate to the **Data Load** main page and click the **Explore** card, this launches the **Catalog** tool. You'll now see table MOVIE\_SALES\_2020 has been loaded into your Autonomous Data Warehouse.
-23. Click the card for this table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table. In this case, this data presents a nice simple way to characterize the data you've just loaded. 
+  ![Movie Sales Fact Catalog Card](images/MovieSalesFact2020CatalogCard.png)
+23. Click the **MOVIE\_SALES\_2020** name on the card for the table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table. In this case, this data presents a nice simple way to characterize the data you've just loaded. 
   ![ALT text is not available for this image](images/explore-sales.png)
 
 ### Identify Data Problems
 
 24. Expand the **DAY** card to review stats of that column. You can see that there are 14 distinct values - which looks odd. The low value is **FRIDAY** (i.e. it's all uppercase) and the high value is **Wednesday**, which is in title case. The distribution of these values is shown in the bar chart at the bottom of the form (see the image above). As you move your mouse across these bars, you can see there are two separate bars for each day: one in uppercase and the other in title case.
+  ![Movie Sales Fact DAY column issue](images/salesDayIssue.png)
 25. You can also see that you have data for twelve months. This should not be a surprise, since the data extract you loaded in the previous step was for 2020. However, for your quarterly reporting project, it's obvious that you have too many months: your mission here is to analyze data only for Q2. 
 26. Right now, simply take a note of these issues. You will address these issues in a later stage of the workshop. 
 
@@ -269,17 +271,17 @@ This section is provided in case your workshop environment does not allow you to
 
 ### Clean Up Data Load Log Tables
 
-During data load from Object Storage, Autonomous Data Warehouse creates a number of ancillary tables for logging purposes.
+During data load from Object Storage, Autonomous Data Warehouse creates an ancillary table for logging purposes.
 
 32. Following data load from Object Storage, if you click the **Explore** card on the **Data Load** main page, it may look like this: 
   ![ALT text is not available for this image](images/explore.png)
-33. Three such logging tables are highlighted above. There may be more than one table with names beginning with COPY$. Following the successful load operations, these tables are no longer required, and can safely be dropped. You'll do this using a SQL Worksheet. Navigate to this tool directly from the hamburger menu at the top left, open the Development menu if necessary, and press **SQL**.
+33. A logging table **CLOUD_INGEST_LOG** is highlighted above. Following the successful load operations, this table is no longer required, and can safely be dropped. You'll do this using a SQL Worksheet. Navigate to this tool directly from the hamburger menu at the top left, open the Development menu if necessary, and press **SQL**.
   ![ALT text is not available for this image](images/sql.png)
-34. Drop the tables as follows:
+34. Drop the table as follows:
 
-    a. Click the **refresh** button (circular arrows) to see the full list of tables in the schema and identify the logging tables.
+    a. Click the **refresh** button (circular arrows) to see the full list of tables in the schema and identify the logging table.
 
-    b. For each table type, drop table {TABLE NAME} in the SQL Worksheet.
+    b. For the table enter, drop table **CLOUD_INGEST_LOG** in the SQL Worksheet.
 
     c. Click the green **Run** button.
 
@@ -312,6 +314,7 @@ Watch a video demonstration of the Data Transforms tool of Autonomous Database:
 [] (youtube:Xg5VK_R4-IM)
 > **Note:** Interfaces in this video may look different from the interfaces you will see.
 
+<if type != "usewebtransforms">
 That’s something to look forward to, but is not currently covered in this lab.
 
 ### Use SQL 
@@ -333,12 +336,126 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     , PURCHASES
     FROM MOVIE_SALES_2020
     where month in ('April','May','June'); -- only want data from Q2
-    exec dbms_stats.gather_table_stats(user, 'MOVIE_SALES_2020Q2');
     </copy>
     ````
 
 2. Select the entire text in the Worksheet and press the **green** button to run these two statements. You should see that both statements have executed successfully. Having completed this step you now have a table MOVIE\_SALES\_2020Q2, with data for just April, May, and June. The days have all been changed to title case. Refresh to see the new table created.
 ![ALT text is not available for this image](images/data-transforms.png)
+
+</if>
+<if type = "usewebtransforms">
+### Use Web based DATA TRANSFORMS
+
+1. Navigate to the **Database Actions** home page by clicking the top link. Under **Data Tools** click the **DATA TRANSFORMS** card.
+  ![Launch Data Transforms](images/dataTransformsLaunch.png)
+
+2. On the **SIGN IN** page, provide your credentials, click **Sign In**.
+  ![Sign In Data Transforms](images/dataTransformsSignIn.png)
+
+3. On the home page click the **Connections** on the left navigation to update the connection to the current user.
+  ![Launch Connections](images/dataTLaunchConnections.png)
+
+4. Select the existing connection that defaults to the Autonomous Database we are working on to edit it.
+  ![Launch Edit Connection to ADW](images/dtLaunchEditConn.png)
+
+5. Update the **User** and **Password** fields with the **QTEAM** user credentials. **Test Connection** and then click **Update**.
+  ![Update Connection](images/dtUpdateConn.png)
+
+6. Now we will update the **Data Entities**, to fetch the existing tables in the **QTEAM** schema. Follow the steps below.
+    1. Click the **Data Entities** on the left navigation pane.
+    2. Click **Import Data Entities** button.
+    3. On the **Import Data Entities** pop-up, select the **Connection** you just updated.
+    4. Choose the **QTEAM** as the **Schema**
+    5. Under **Type** remove the **View** as we do not want to import any database views.
+    6. Click **Start**
+  ![Import Data Entities from QTEAM](images/dtImportDataEntities.png)
+
+7. A new job is created to import the data entities from **QTEAM** Schema. Click on the link for the job name on the pop-up window, to launch the **Job Details** page.
+  ![Import Data Entities job popup](images/dtImportDataEntitiesjobPopUp.png)
+
+8. On the **Job Details** page, click **refresh** button on the right to check job status. Once the job completes, you should see some details as highlighted below and then click **Home** navigation link on the top left.
+ ![Import Data Entities job details](images/dtImportDataEntitiesjobDetails.png)
+
+9. We are now ready to create a **Data Flow**. On the home page, click the **Transform Data** card. This launches the **Create Data Flow** wizard.
+    1. Provide **Name** as **loadQ2CleanseDay**
+    2. Click the **+** icon next to **Project Name**.
+    3. Provide a **Description** as follows: Data Flow to load Q2 data and fix the DAY column.
+    4. On the pop-up screen, provide the **Name** as **MOVIE_SALES** and click **Create**.
+      ![Create Dataflow Step 1](images/dtCreateDFStep1.png)
+    5. Click **Next**.
+    6. Select the **Connection** that was edited in a previous step.
+    7. Select the **Schema** as **QTEAM**.
+    8. Click **Save**.
+      ![Create Dataflow Step 2](images/dtCreateDFStep2.png)
+
+10. This launches the **Data Flow Details** page. Let's reivew this page. The left navigate pane lists the **Data Entities** we are working with. The middle section is the canvas that shows the different transformations used in the data flow. The right pane, provides details of the selected object in the middle section where the properties are shown which can be edited.
+ ![Data Flow Details Page](images/dtDataFlowDetailsOverview.png)
+
+11. Perform the following steps to setup the data flow to filter data for **Q2**.
+    1. Drag the **MOVIE\_SALES\_2022** table from the QTEAM schema on the left navigation pane to the canvas. This is our source table.
+    2. Drag the **Filter** transformation from the top of the middle section on the canvas.
+    3. Link the **MOVIE\_SALES\_2022** table to the **Filter**.
+    4. Select the **Filter** transformation and change the **Name** on the right navigation pane to **filQ2Data**.
+    5. Choose the **filQ2Data** properties option
+    6. Optionally expand the properties pane.
+      ![Data Flow drag source fact table](images/dtDataFlowDragSourceFilter.png)
+    7. Click on the edit icon to define the filter.
+    8. On the **Expression Editor** pop-up, type the following expression:
+        ````
+        <copy>
+        MOVIE_SALES_2020.MONTH IN ('April','May','June')
+        </copy>
+        ````
+    9. Click **OK**.
+      ![Data Flow setup filter expression](images/dtDataFlowSetupFilterExpression.png)
+    10. Minimize the filter property pane.
+
+12. Perform the following steps to fix the DAY field:
+    1. Click the **DATA PREPARATION** tab on the transforms section in the middle
+    2. Drag the **Data Cleanse** transformation on the canvas.
+    3. Link the **filQ2Data** output to the input of the **DataCleanse** transformation.
+    4. Select the DataCleanse transformation and rename to **fixDAY**.
+    5. Add the **Description** as **Fix DAY to be initcap and remove leading and trailing spaces**.
+    6. Choose the **fixDAY** properties option
+    7. Expand the properties pane
+      ![Data Flow add Cleanse](images/dtDataFlowAddCleanse.png)
+    8. On the **fixDAY** transformation properties window, select the **DAY** column from the **MOVIE\_SALES\_2022** source.
+    9. In the **Choose the cleansing options** section, select the **Leading and Trailing Whitespace** option under **Remove Unwanted Characters**
+    10. For the **Modify Case** choose the option **Title Case**.
+    11. Minimize the properties window.
+      ![Data Flow set Cleanse properties](images/dtDataFlowSetCleanseProperties.png)
+
+13. Perform the following steps to create a new target table **MOVIE\_SALES\_2020\_Q2**
+    1. Select the **fixDAY** transformation.
+    2. Click the **Add Target** icon on the top right of the transformation.
+      ![Data Flow Add Target table icon](images/dtDataFlowAddTargetTableIcon.png)
+    3. On the **Add Data Entity** pop-up set **Name** as **MOVIE\_SALES\_2020\_Q2**, **Schema** as **QTEAM**
+    4. Click **Next**
+      ![Data Flow Create Target Step 1](images/dtDataFlowCreateTargetStep1.png)
+    5. select all the columns.
+      ![Data Flow Create Target Step 2](images/dtDataFlowCreateTargetStep2.png)
+    6. Click **Next**
+    7. Click **Save**
+      ![Data Flow Create Target Step 3](images/dtDataFlowCreateTargetStep3.png)
+    
+14. The final data flow should look like the following screen.
+    1. **Validate** the data flow
+    2. **Save** the data flow
+    3. **Run** the data flow.
+      ![Final data flow and run](images/dtDataFlowFinalDataFlow.png)
+    4. On the **Start Data Flow** pop-up, click **Start**.
+    5. The data flow execution starts. Click the blue link on the **Start Data Flow** pop-up to track the execution progress.
+      ![Final data flow execution start](images/dtDataFlowStartExec.png)
+
+15. After successfull execution, a new table **MOVIE\_SALES\_2020Q2** is created and the details are as shown below. Click **Refresh** icon to update execution status.
+  ![data flow execution details](images/dtDataFlowExecDetails.png)
+
+16. Having completed this step you now have a table **MOVIE\_SALES\_2020Q2**, with data for just April, May, and June. The days have all been changed to title case. 
+
+17. From the Autonomous Database **Tools** home page, access a SQL worksheet by clicking the **SQL** card on the **Database Actions** page. Refresh to see the new table created.
+  ![New Fact table with Q2 data](images/movieSalesQ2DataTable.png)
+
+</if>
 
 ## Task 4: Analyze Data
 
