@@ -1,10 +1,10 @@
 ﻿
-# Use Autonomous Database Tools
+# Use Autonomous Database Data Tools
 
 ## Introduction
-This lab introduces the suite of data tools built into the Oracle Autonomous Data Warehouse.
+This lab introduces the suite of **Data Tools** built into the Oracle Autonomous Data Warehouse.
 
-Estimated Time: 1 hour, 15 minutes
+Estimated Time: 1 hour, 30 minutes
 
 Watch the video below for a quick walk through of the lab.
 
@@ -12,12 +12,13 @@ Watch the video below for a quick walk through of the lab.
 
 ### Objectives
 In this lab, you will:
-- Familiarize with the suite of built-in database tools of the Oracle Autonomous Data Warehouse
+- Familiarize with the suite of built-in **Data Tools** of the Oracle Autonomous Data Warehouse
 - Load data
 - Learn how to use the Data Transforms tool to correct data errors
 - Create an analytic view
 - Generate data insights
 - Use the Catalog tool
+- Use the Excel Add-in to query data from Autonomous Database
 
 ### Prerequisites
 
@@ -275,13 +276,13 @@ During data load from Object Storage, Autonomous Data Warehouse creates an ancil
 
 32. Following data load from Object Storage, if you click the **Explore** card on the **Data Load** main page, it may look like this: 
   ![ALT text is not available for this image](images/explore.png)
-33. A logging table **CLOUD_INGEST_LOG** is highlighted above. Following the successful load operations, this table is no longer required, and can safely be dropped. You'll do this using a SQL Worksheet. Navigate to this tool directly from the hamburger menu at the top left, open the Development menu if necessary, and press **SQL**.
+33. A logging table **CLOUD\_INGEST\_LOG** is highlighted above. Following the successful load operations, this table is no longer required, and can safely be dropped. You'll do this using a SQL Worksheet. Navigate to this tool directly from the hamburger menu at the top left, open the Development menu if necessary, and press **SQL**.
   ![ALT text is not available for this image](images/sql.png)
 34. Drop the table as follows:
 
     a. Click the **refresh** button (circular arrows) to see the full list of tables in the schema and identify the logging table.
 
-    b. For the table enter, drop table **CLOUD_INGEST_LOG** in the SQL Worksheet.
+    b. For the table enter, drop table **CLOUD\_INGEST\_LOG** in the SQL Worksheet.
 
     c. Click the green **Run** button.
 
@@ -314,7 +315,7 @@ Watch a video demonstration of the Data Transforms tool of Autonomous Database:
 [] (youtube:Xg5VK_R4-IM)
 > **Note:** Interfaces in this video may look different from the interfaces you will see.
 
-<if type != "usewebtransforms">
+<if type="SQL">
 That’s something to look forward to, but is not currently covered in this lab.
 
 ### Use SQL 
@@ -343,7 +344,7 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
 ![ALT text is not available for this image](images/data-transforms.png)
 
 </if>
-<if type = "usewebtransforms">
+<if type="GUI">
 ### Use Web based DATA TRANSFORMS
 
 1. Navigate to the **Database Actions** home page by clicking the top link. Under **Data Tools** click the **DATA TRANSFORMS** card.
@@ -388,13 +389,15 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     8. Click **Save**.
       ![Create Dataflow Step 2](images/dtCreateDFStep2.png)
 
+> **Hint:** Save the data flow from time to time by clicking the **save** button often.
+
 10. This launches the **Data Flow Details** page. Let's reivew this page. The left navigate pane lists the **Data Entities** we are working with. The middle section is the canvas that shows the different transformations used in the data flow. The right pane, provides details of the selected object in the middle section where the properties are shown which can be edited.
  ![Data Flow Details Page](images/dtDataFlowDetailsOverview.png)
 
 11. Perform the following steps to setup the data flow to filter data for **Q2**.
-    1. Drag the **MOVIE\_SALES\_2022** table from the QTEAM schema on the left navigation pane to the canvas. This is our source table.
+    1. Drag the **MOVIE\_SALES\_2020** table from the QTEAM schema on the left navigation pane to the canvas. This is our source table.
     2. Drag the **Filter** transformation from the top of the middle section on the canvas.
-    3. Link the **MOVIE\_SALES\_2022** table to the **Filter**.
+    3. Link the **MOVIE\_SALES\_2020** table to the **Filter**.
     4. Select the **Filter** transformation and change the **Name** on the right navigation pane to **filQ2Data**.
     5. Choose the **filQ2Data** properties option
     6. Optionally expand the properties pane.
@@ -425,11 +428,11 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     11. Minimize the properties window.
       ![Data Flow set Cleanse properties](images/dtDataFlowSetCleanseProperties.png)
 
-13. Perform the following steps to create a new target table **MOVIE\_SALES\_2020\_Q2**
+13. Perform the following steps to create a new target table **MOVIE\_SALES\_2020Q2**
     1. Select the **fixDAY** transformation.
     2. Click the **Add Target** icon on the top right of the transformation.
       ![Data Flow Add Target table icon](images/dtDataFlowAddTargetTableIcon.png)
-    3. On the **Add Data Entity** pop-up set **Name** as **MOVIE\_SALES\_2020\_Q2**, **Schema** as **QTEAM**
+    3. On the **Add Data Entity** pop-up set **Name** as **MOVIE\_SALES\_2020Q2**, **Schema** as **QTEAM**
     4. Click **Next**
       ![Data Flow Create Target Step 1](images/dtDataFlowCreateTargetStep1.png)
     5. select all the columns.
@@ -437,7 +440,7 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     6. Click **Next**
     7. Click **Save**
       ![Data Flow Create Target Step 3](images/dtDataFlowCreateTargetStep3.png)
-    
+
 14. The final data flow should look like the following screen.
     1. **Validate** the data flow
     2. **Save** the data flow
@@ -450,7 +453,10 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
 15. After successfull execution, a new table **MOVIE\_SALES\_2020Q2** is created and the details are as shown below. Click **Refresh** icon to update execution status.
   ![data flow execution details](images/dtDataFlowExecDetails.png)
 
-16. Having completed this step you now have a table **MOVIE\_SALES\_2020Q2**, with data for just April, May, and June. The days have all been changed to title case. 
+16. Having completed this step you now have a table **MOVIE\_SALES\_2020Q2**, with data for just April, May, and June. The days have all been changed to title case.
+
+> **Note:** The Web Transforms page does not have the link to the **Database Actions** home page. You can use the URL from the **ADMIN** login to the **QTEAM** users **Database Actions** page.
+  ![ALT text is not available for this image](images/2879073226.png)
 
 17. From the Autonomous Database **Tools** home page, access a SQL worksheet by clicking the **SQL** card on the **Database Actions** page. Refresh to see the new table created.
   ![New Fact table with Q2 data](images/movieSalesQ2DataTable.png)
@@ -471,19 +477,16 @@ In this section of the workshop, you'll create an analytic view over the table M
 
 1. Start by clicking the **Data Analysis** card in the ADB **Database Actions** page. The page on which you'll land has some text explaining the Data Analysis utility in some detail, but let's dive straight in.
 
-2. Click the drop down button on the **Select Schema** selection and choose the **QTEAM** schema.
-
-    > **Hint:** you can search for the schema by typing QTEAM in the search area.
-
-  ![ALT text is not available for this image](images/select-qteam-schema.png)
+2. The **QTEAM** schema should be selected. Click the **Create** button to start creating the first Analytic View.
+  ![ALT text is not available for this image](images/DataAnalysisHomePage.png)
 
 3. This launches the Create Analytic View dialog. If **MOVIE\_SALES\_2020Q2** is not already identified as the *Fact Table*, select it from the pick list. (Be sure to select table MOVIE\_SALES\_2020**Q2**, which has just the data for April, May, June, and not table MOVIE\_SALES\_2020, which has data for the full year!)
-  ![ALT text is not available for this image](images/create-analytic-view.png)
+  ![ALT text is not available for this image](images/SelectFactTable.png)
 
 ### Create a New Analytic View
 
 4. Now, press **Generate Hierarchies and Measures** to start the *Auto AV* utility. This will take several seconds to complete, after which you'll see a dialog such as this.
-  ![ALT text is not available for this image](images/dialog-from-starting-auto-av-utility.png)
+  ![ALT text is not available for this image](images/create-analytic-view.png)
 
 ### Expand Data Sources
 
@@ -562,9 +565,7 @@ In this section of the workshop, you'll create an analytic view over the table M
 
 25. You can add filters. Perform the following:
 
-    - Expand the *MONTHS* hierarchy and drag the *MONTH* level to the **Filters** section.
-    - Select *April* by clicking it.
-    - Click the “X” icon on the filter pop-up menu.
+    - On the *MONTHS* hierarchy and the *MONTH* level under the **Filters** section, check *April* month.
 
   ![ALT text is not available for this image](images/add-filters-to-data-summary.png)
 
@@ -605,7 +606,7 @@ Watch a video demonstration of the Data Insights tool of Autonomous Database:
 
 3. In this exercise, you're going to follow a procedure exactly as laid out in these tool tips, thus:
 
-    a. Under *Analytic View/Table*, select Analytic View **MOVIE\_SALES\_2020Q2\_MODEL\_AV** (which is the basis for the Analytic View you created in Task 4). 
+    a. Under *Analytic View/Table*, select Analytic View **MOVIE\_SALES\_2020Q2\_AV** (which is the basis for the Analytic View you created in Task 4). 
 
     b. Under *Column*, select **PURCHASES**.
 
@@ -664,11 +665,12 @@ Data is capital and the built-in Catalog tool allows you to maximize its value. 
 
 1. From the **Database Actions** page, select the **Catalog** card. You'll land on a page looking like this. 
   ![ALT text is not available for this image](images/catalog.png)
-2. To understand this screen, glance at the upper left to notice that for the current schema, entities of type **TABLE** are currently shown, with a card for each. On the upper right, you'll notice that the third icon from the right (card view) is selected. Click the button to its right to show the information in grid view:
+2. To understand this screen, glance at the upper navigation bar that for the current schema, entities of type **TABLE,VIEW,HIERARCHY,ANALYTIC_VIEW,CLOUD_STORAGE_LINK,LIVE_TABLE_FEED,BUSINESSMODEL,INSIGHT_REQUEST** that have been **updated in the last 30 days** are currently shown, with a card for each. On the upper right, you'll notice that the third icon from the right (card view) is selected. Click the button to its right to show the information in grid view:
   ![ALT text is not available for this image](images/grid-view.png)
 3. Click the icon on the far right for list view:
   ![ALT text is not available for this image](images/list-view.png)
-4. Personal preference and different use cases may dictate which viewing option is preferable. For the purposes of this section of the workshop, click the **Card View** icon to return to that layout.
+4. Personal preference and different use cases may dictate which viewing option is preferable. For the purposes of this section of the workshop, click the **Card View** icon to return to that layout. Also, click the **x** icon on the top right of the search bar to clear the current search criteria.
+  ![Start new search](images/newSearch.png)
 
 ### Search The Catalog
 
@@ -697,7 +699,7 @@ Data is capital and the built-in Catalog tool allows you to maximize its value. 
 
 An important consideration in understanding the reliability of data is its source, or lineage. This capability is built into the Catalog.
 
-11. Click the three dots on the upper right of the card for table **DEVICES**, and select **View Details**. On the left of the panel that appears, you'll see tabs for *Preview, Lineage, Impact, Statistics* and *Data Definition*. Here you'll notice the consistency of the widgets used between the various tools that you've explored in this lab. Preview is the default selection. You've seen Statistics and Data Definition elsewhere in this workshop.
+11. Click the three dots on the upper right of the card for table **DEVICES**, and select **View Details**. On the left of the panel that appears, you'll see tabs for *Preview, Lineage, Impact, Statistics, Data Load Jobs* and *Data Definition*. Here you'll notice the consistency of the widgets used between the various tools that you've explored in this lab. Preview is the default selection. You've seen Statistics and Data Definition elsewhere in this workshop.
 12. For this exercise, click **Lineage**. Various different levels of information are accessible by expanding the various cards as required. To do this, click the three dots to the right of the card and select **Expand***.* Even more information is visible by hovering the mouse pointer over specific areas of the screen. An example is shown below. 
   ![ALT text is not available for this image](images/lineage.png)
 13. Click **Close** in the lower right of the screen (or click the **Esc** button on your keyboard) to return to the main catalog view. 
@@ -708,7 +710,7 @@ You may think of impact analysis as the inverse of lineage. It shows which other
 
 14. Click the three dots for that card, select **View Details** and then select the **Impact** tab on the left of the screen that appears. You should spend some time exploring the Impact Analysis for this table. Depending on how you drill down (Expand), you may see a screen like this.
   ![ALT text is not available for this image](images/impact.png)It's worth pausing here to reflect on quite how extensive the impact analysis is for this simple exercise. Here you have a single table, on which you built a business model. This is implemented as an analytic view, including a number of Attribute Dimensions. Against this, you ran an Data Insights job, which resulted in a large number of Insights queries.
-15. If you **Expand** on **REQUEST\_INSIGHT_1** (on the right of the screen), you'll see some of the many queries that were executed as part of the Data Insights job, perhaps while you were sipping your coffee! Tip: You can return to a lower-resolution of data by selecting *Collapse* for an entity that had previously been *Expand*ed. 
+15. If you **Expand** on **REQUEST\_INSIGHT_1** (on the right of the screen), you'll see some of the many queries that were executed as part of the Data Insights job, perhaps while you were sipping your coffee! Tip: You can return to a lower-resolution of data by selecting *Collapse* for an entity that had previously been *Expanded*. 
 16. **RECAP** - This concludes the brief guided tour of the **Catalog** tool. In this section, you have seen:
 
     a. How to view data in card view, grid view, and list view

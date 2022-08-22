@@ -35,9 +35,7 @@ For this workshop, we need to create one new user.
 
   ![ALT text is not available for this image](images/click-database-actions-button.png)
 
-2. In the login form, enter ADMIN for the username and click **Next**. On the next form, enter the ADMIN password - which is the one you entered when creating your Autonomous Data Warehouse.
-
-  ![ALT text is not available for this image](images/admin.png)
+2. This will take you to the Database Actions page, logged in as the ADMIN user.
 
 3. On the Database Actions launchpad page, under Administration, click the **Database Users** card.
 
@@ -82,7 +80,9 @@ For this workshop, we need to create one new user.
 
   ![ALT text is not available for this image](images/create-user-dialog.png)
 
-7.  Click on the **Granted Roles** banner at the top of the form and add the role **DWROLE** by checking the boxes in the first and third columns.
+7.  Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first and third columns:
+    1. **DWROLE**
+    2. **DATA_TRANSFORM_USER**
 
   ![ALT text is not available for this image](images/dwrole.png)
 
@@ -116,5 +116,5 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 ## Acknowledgements
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
-- Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews
-- Last Updated By - Rick Green, November 2021
+- Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
+- Last Updated By - Ashish Jain, Rick Green, August 2022
