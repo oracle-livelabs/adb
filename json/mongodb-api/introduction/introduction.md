@@ -12,8 +12,6 @@ In the workshop, you will create an Autonomous JSON Database, and connect to it 
 
 This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
 
-**Estimated Time: 1 hour**
-
 ### Workshop Scenario
 
 In this workshop, we'll implement a very simple employee database. 
@@ -28,7 +26,7 @@ If you have MongoDB tools such as MongoDB Shell or MongoDB Atlas already install
 
 This workshop consists of multiple 'labs' - each describing one aspect or feature. This lab has been designed for 19c AJD database but should also work on 21c AJD database and these concepts are also applicable to on-premise versions.
 
-Estimated Lab Time: 75-90 minutes
+Estimated Lab Time: 60 minutes
 
 Watch this quick video to know why JSON in Oracle Autonomous Database is awesome.
 
@@ -36,7 +34,7 @@ Watch this quick video to know why JSON in Oracle Autonomous Database is awesome
 
 <if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/uvlhnG-bjnY).</if>
 
-#### About JSON
+### About JSON
 
 Before we get started let's take a brief look at JSON (you may skip this step if you're already familiar with it)
 
@@ -80,7 +78,7 @@ JSON also avoids normalization of a business object into multiple tables. Look a
 
 Now you know what JSON is and also why so many people love it. Enough theory for now - time to code!
 
-#### Objectives
+### Objectives
 
 In this workshop, you will explore: 
 *	How to provision an Oracle Autonomous (JSON) Database,
@@ -94,7 +92,7 @@ In this workshop, you will explore:
 
 You may now proceed to the next lab.
 
-#### Learn More
+## Learn More
 
 * [Overview of JSON](https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/json-data.html#GUID-B2D82ED4-B007-4019-8B53-9D0CDA81C4FA)
 
