@@ -12,6 +12,8 @@ In the workshop, you will create an Autonomous JSON Database, and connect to it 
 
 This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
 
+**Estimated Time: 1 hour**
+
 ### Workshop Scenario
 
 In this workshop, we'll implement a very simple employee database. 

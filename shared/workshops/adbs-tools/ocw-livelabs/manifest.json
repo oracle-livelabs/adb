@@ -1,0 +1,38 @@
+{
+    "workshoptitle": "Important Tools for Everyone Using Oracle Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Getting Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+          "title": "Workshop Introduction",
+          "description": "Inroduction to this workshop",
+          "filename": "../workshop-intro/workshop-intro.md"
+        },
+        {
+          "title": "Lab 1: Provision an ADB Instance",
+          "description": "Provisioning an Autonomous Database Instance",
+          "type": "livelabs",
+          "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
+        },
+        {
+            "title": "Lab 2: Create a Database User",
+            "description": "Intro to MovieStream and Creating a Database User",
+            "filename": "../getting-started/getting-started.md"
+        },
+        {
+            "title": "Lab 3: Use Autonomous Database Tools",
+            "description": "Using Autonomous Database Tools",
+            "filename": "../using-adb-tools/ocw-using-adb-tools.md",
+            "type": "GUI"
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
