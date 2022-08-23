@@ -82,7 +82,7 @@ For this workshop, we need to create one new user.
 
 7.  Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first and third columns:
     1. **DWROLE**
-    2. **DATA_TRANSFORM_USER**
+    2. **DATA\_TRANSFORM\_USER**
 
   ![ALT text is not available for this image](images/dwrole.png)
 

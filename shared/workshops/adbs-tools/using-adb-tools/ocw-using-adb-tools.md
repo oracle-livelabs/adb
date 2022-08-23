@@ -665,7 +665,7 @@ Data is capital and the built-in Catalog tool allows you to maximize its value. 
 
 1. From the **Database Actions** page, select the **Catalog** card. You'll land on a page looking like this. 
   ![ALT text is not available for this image](images/catalog.png)
-2. To understand this screen, glance at the upper navigation bar that for the current schema, entities of type **TABLE,VIEW,HIERARCHY,ANALYTIC_VIEW,CLOUD_STORAGE_LINK,LIVE_TABLE_FEED,BUSINESSMODEL,INSIGHT_REQUEST** that have been **updated in the last 30 days** are currently shown, with a card for each. On the upper right, you'll notice that the third icon from the right (card view) is selected. Click the button to its right to show the information in grid view:
+2. To understand this screen, glance at the upper navigation bar that for the current schema, entities of type **TABLE,VIEW,HIERARCHY,ANALYTIC\_VIEW,CLOUD\_STORAGE\_LINK,LIVE\_TABLE\_FEED,BUSINESSMODEL,INSIGHT\_REQUEST** that have been **updated in the last 30 days** are currently shown, with a card for each. On the upper right, you'll notice that the third icon from the right (card view) is selected. Click the button to its right to show the information in grid view:
   ![ALT text is not available for this image](images/grid-view.png)
 3. Click the icon on the far right for list view:
   ![ALT text is not available for this image](images/list-view.png)
