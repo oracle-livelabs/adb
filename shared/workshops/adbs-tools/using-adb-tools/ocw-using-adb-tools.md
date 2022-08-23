@@ -226,25 +226,25 @@ Identify a Cloud Storage location (URI + Bucket) that is closest to you from th
 17. Navigate back to the main **Data Load** page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store **and then click the blue **Next** button. 
   ![ALT text is not available for this image](images/2879071251.png)
 18. In the box below **Select Cloud Store Link or enter public URL** enter the URI+Bucket location that is closest to you and press **enter**.
-  ![Cloud Store public URL](images/CloudStoragePublicURL.png)
+  ![Cloud Store public URL](images/cloud-storage-public-url.png)
 19. Now you see a file browser-like view of your Object Store. Locate the file **Movie\_Sales\_2020.csv** in the left part of the screen. Click and drag this file onto the canvas on the right. 
-  ![Load Data from Object Store csv file](images/Load2020FactData.png)
+  ![Load Data from Object Store csv file](images/load-fact-data.png)
 20. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. 
-  ![ALT text is not available for this image](images/EditPropertiesofFactData.png)
+  ![ALT text is not available for this image](images/edit-properties-of-fact-data.png)
 21. You can use this page to quickly review the properties sheet and make any changes to column names or data types. As soon as you are satisfied with the format, you can close the form and then click the **green arrow** button to start your data load job. 
   ![ALT text is not available for this image](images/load-movie-sales.png)
 
 ### Inspect Data In Table MOVIE\_SALES\_2020
 
 22. Navigate to the **Data Load** main page and click the **Explore** card, this launches the **Catalog** tool. You'll now see table MOVIE\_SALES\_2020 has been loaded into your Autonomous Data Warehouse.
-  ![Movie Sales Fact Catalog Card](images/MovieSalesFact2020CatalogCard.png)
+  ![Movie Sales Fact Catalog Card](images/moviesales-fact-catalog-card.png)
 23. Click the **MOVIE\_SALES\_2020** name on the card for the table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table. In this case, this data presents a nice simple way to characterize the data you've just loaded. 
   ![ALT text is not available for this image](images/explore-sales.png)
 
 ### Identify Data Problems
 
 24. Expand the **DAY** card to review stats of that column. You can see that there are 14 distinct values - which looks odd. The low value is **FRIDAY** (i.e. it's all uppercase) and the high value is **Wednesday**, which is in title case. The distribution of these values is shown in the bar chart at the bottom of the form (see the image above). As you move your mouse across these bars, you can see there are two separate bars for each day: one in uppercase and the other in title case.
-  ![Movie Sales Fact DAY column issue](images/salesDayIssue.png)
+  ![Movie Sales Fact DAY column issue](images/sales-day-issue.png)
 25. You can also see that you have data for twelve months. This should not be a surprise, since the data extract you loaded in the previous step was for 2020. However, for your quarterly reporting project, it's obvious that you have too many months: your mission here is to analyze data only for Q2. 
 26. Right now, simply take a note of these issues. You will address these issues in a later stage of the workshop. 
 
@@ -348,19 +348,19 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
 ### Use Web based DATA TRANSFORMS
 
 1. Navigate to the **Database Actions** home page by clicking the top link. Under **Data Tools** click the **DATA TRANSFORMS** card.
-  ![Launch Data Transforms](images/dataTransformsLaunch.png)
+  ![Launch Data Transforms](images/data-transforms-launch.png)
 
 2. On the **SIGN IN** page, provide your credentials, click **Sign In**.
-  ![Sign In Data Transforms](images/dataTransformsSignIn.png)
+  ![Sign In Data Transforms](images/data-transforms-sign-in.png)
 
 3. On the home page click the **Connections** on the left navigation to update the connection to the current user.
-  ![Launch Connections](images/dataTLaunchConnections.png)
+  ![Launch Connections](images/data-t-launch-connections.png)
 
 4. Select the existing connection that defaults to the Autonomous Database we are working on to edit it.
-  ![Launch Edit Connection to ADW](images/dtLaunchEditConn.png)
+  ![Launch Edit Connection to ADW](images/dt-launch-edit-conn.png)
 
 5. Update the **User** and **Password** fields with the **QTEAM** user credentials. **Test Connection** and then click **Update**.
-  ![Update Connection](images/dtUpdateConn.png)
+  ![Update Connection](images/dt-update-conn.png)
 
 6. Now we will update the **Data Entities**, to fetch the existing tables in the **QTEAM** schema. Follow the steps below.
     1. Click the **Data Entities** on the left navigation pane.
@@ -369,30 +369,30 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     4. Choose the **QTEAM** as the **Schema**
     5. Under **Type** remove the **View** as we do not want to import any database views.
     6. Click **Start**
-  ![Import Data Entities from QTEAM](images/dtImportDataEntities.png)
+  ![Import Data Entities from QTEAM](images/dt-import-data-entities.png)
 
 7. A new job is created to import the data entities from **QTEAM** Schema. Click on the link for the job name on the pop-up window, to launch the **Job Details** page.
-  ![Import Data Entities job popup](images/dtImportDataEntitiesjobPopUp.png)
+  ![Import Data Entities job popup](images/dt-import-data-entities-job-pop-up.png)
 
 8. On the **Job Details** page, click **refresh** button on the right to check job status. Once the job completes, you should see some details as highlighted below and then click **Home** navigation link on the top left.
- ![Import Data Entities job details](images/dtImportDataEntitiesjobDetails.png)
+ ![Import Data Entities job details](images/dt-import-data-entities-job-details.png)
 
 9. We are now ready to create a **Data Flow**. On the home page, click the **Transform Data** card. This launches the **Create Data Flow** wizard.
     1. Provide **Name** as **loadQ2CleanseDay**
     2. Click the **+** icon next to **Project Name**.
     3. Provide a **Description** as follows: Data Flow to load Q2 data and fix the DAY column.
     4. On the pop-up screen, provide the **Name** as **MOVIE_SALES** and click **Create**.
-      ![Create Dataflow Step 1](images/dtCreateDFStep1.png)
+      ![Create Dataflow Step 1](images/dt-create-df-step-1.png)
     5. Click **Next**.
     6. Select the **Connection** that was edited in a previous step.
     7. Select the **Schema** as **QTEAM**.
     8. Click **Save**.
-      ![Create Dataflow Step 2](images/dtCreateDFStep2.png)
+      ![Create Dataflow Step 2](images/dt-create-df-step-2.png)
 
 > **Hint:** Save the data flow from time to time by clicking the **save** button often.
 
 10. This launches the **Data Flow Details** page. Let's reivew this page. The left navigate pane lists the **Data Entities** we are working with. The middle section is the canvas that shows the different transformations used in the data flow. The right pane, provides details of the selected object in the middle section where the properties are shown which can be edited.
- ![Data Flow Details Page](images/dtDataFlowDetailsOverview.png)
+ ![Data Flow Details Page](images/dt-data-flow-details-overview.png)
 
 11. Perform the following steps to setup the data flow to filter data for **Q2**.
     1. Drag the **MOVIE\_SALES\_2020** table from the QTEAM schema on the left navigation pane to the canvas. This is our source table.
@@ -401,7 +401,7 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     4. Select the **Filter** transformation and change the **Name** on the right navigation pane to **filQ2Data**.
     5. Choose the **filQ2Data** properties option
     6. Optionally expand the properties pane.
-      ![Data Flow drag source fact table](images/dtDataFlowDragSourceFilter.png)
+      ![Data Flow drag source fact table](images/dt-data-flow-drag-source-filter.png)
     7. Click on the edit icon to define the filter.
     8. On the **Expression Editor** pop-up, type the following expression:
         ````
@@ -410,7 +410,7 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
         </copy>
         ````
     9. Click **OK**.
-      ![Data Flow setup filter expression](images/dtDataFlowSetupFilterExpression.png)
+      ![Data Flow setup filter expression](images/dt-data-flow-setup-filter-expression.png)
     10. Minimize the filter property pane.
 
 12. Perform the following steps to fix the DAY field:
@@ -421,37 +421,37 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     5. Add the **Description** as **Fix DAY to be initcap and remove leading and trailing spaces**.
     6. Choose the **fixDAY** properties option
     7. Expand the properties pane
-      ![Data Flow add Cleanse](images/dtDataFlowAddCleanse.png)
+      ![Data Flow add Cleanse](images/dt-data-flow-add-cleanse.png)
     8. On the **fixDAY** transformation properties window, select the **DAY** column from the **MOVIE\_SALES\_2022** source.
     9. In the **Choose the cleansing options** section, select the **Leading and Trailing Whitespace** option under **Remove Unwanted Characters**
     10. For the **Modify Case** choose the option **Title Case**.
     11. Minimize the properties window.
-      ![Data Flow set Cleanse properties](images/dtDataFlowSetCleanseProperties.png)
+      ![Data Flow set Cleanse properties](images/dt-data-flow-set-cleanse-properties.png)
 
 13. Perform the following steps to create a new target table **MOVIE\_SALES\_2020Q2**
     1. Select the **fixDAY** transformation.
     2. Click the **Add Target** icon on the top right of the transformation.
-      ![Data Flow Add Target table icon](images/dtDataFlowAddTargetTableIcon.png)
+      ![Data Flow Add Target table icon](images/dt-data-flow-add-target-table-icon.png)
     3. On the **Add Data Entity** pop-up set **Name** as **MOVIE\_SALES\_2020Q2**, **Schema** as **QTEAM**
     4. Click **Next**
-      ![Data Flow Create Target Step 1](images/dtDataFlowCreateTargetStep1.png)
+      ![Data Flow Create Target Step 1](images/dt-data-flow-create-target-step-1.png)
     5. select all the columns.
-      ![Data Flow Create Target Step 2](images/dtDataFlowCreateTargetStep2.png)
+      ![Data Flow Create Target Step 2](images/dt-data-flow-create-target-step-2.png)
     6. Click **Next**
     7. Click **Save**
-      ![Data Flow Create Target Step 3](images/dtDataFlowCreateTargetStep3.png)
+      ![Data Flow Create Target Step 3](images/dt-data-flow-create-target-step-3.png)
 
 14. The final data flow should look like the following screen.
     1. **Validate** the data flow
     2. **Save** the data flow
     3. **Run** the data flow.
-      ![Final data flow and run](images/dtDataFlowFinalDataFlow.png)
+      ![Final data flow and run](images/dt-data-flow-final-data-flow.png)
     4. On the **Start Data Flow** pop-up, click **Start**.
     5. The data flow execution starts. Click the blue link on the **Start Data Flow** pop-up to track the execution progress.
-      ![Final data flow execution start](images/dtDataFlowStartExec.png)
+      ![Final data flow execution start](images/dt-data-flow-start-exec.png)
 
 15. After successfull execution, a new table **MOVIE\_SALES\_2020Q2** is created and the details are as shown below. Click **Refresh** icon to update execution status.
-  ![data flow execution details](images/dtDataFlowExecDetails.png)
+  ![data flow execution details](images/dt-data-flow-exec-details.png)
 
 16. Having completed this step you now have a table **MOVIE\_SALES\_2020Q2**, with data for just April, May, and June. The days have all been changed to title case.
 
@@ -459,7 +459,7 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
   ![ALT text is not available for this image](images/2879073226.png)
 
 17. From the Autonomous Database **Tools** home page, access a SQL worksheet by clicking the **SQL** card on the **Database Actions** page. Refresh to see the new table created.
-  ![New Fact table with Q2 data](images/movieSalesQ2DataTable.png)
+  ![New Fact table with Q2 data](images/movie-sales-data-table.png)
 
 </if>
 
@@ -478,10 +478,10 @@ In this section of the workshop, you'll create an analytic view over the table M
 1. Start by clicking the **Data Analysis** card in the ADB **Database Actions** page. The page on which you'll land has some text explaining the Data Analysis utility in some detail, but let's dive straight in.
 
 2. The **QTEAM** schema should be selected. Click the **Create** button to start creating the first Analytic View.
-  ![ALT text is not available for this image](images/DataAnalysisHomePage.png)
+  ![ALT text is not available for this image](images/data-analysis-home-page.png)
 
 3. This launches the Create Analytic View dialog. If **MOVIE\_SALES\_2020Q2** is not already identified as the *Fact Table*, select it from the pick list. (Be sure to select table MOVIE\_SALES\_2020**Q2**, which has just the data for April, May, June, and not table MOVIE\_SALES\_2020, which has data for the full year!)
-  ![ALT text is not available for this image](images/SelectFactTable.png)
+  ![ALT text is not available for this image](images/select-fact-table.png)
 
 ### Create a New Analytic View
 
@@ -670,7 +670,7 @@ Data is capital and the built-in Catalog tool allows you to maximize its value. 
 3. Click the icon on the far right for list view:
   ![ALT text is not available for this image](images/list-view.png)
 4. Personal preference and different use cases may dictate which viewing option is preferable. For the purposes of this section of the workshop, click the **Card View** icon to return to that layout. Also, click the **x** icon on the top right of the search bar to clear the current search criteria.
-  ![Start new search](images/newSearch.png)
+  ![Start new search](images/new-search.png)
 
 ### Search The Catalog
 
@@ -747,17 +747,17 @@ Watch a video demonstration of the Excel Add-in to query Autonomous Database:
 ### Connect to Autonomous Database
 
 1. When the Add-In has loaded, notice a new ribbon item, **Autonomous Database**.
-  ![Autonomous Database ribbon in Excel](images/ADBExcelRibbon.png)
+  ![Autonomous Database ribbon in Excel](images/adb-excel-ribbon.png)
 2. Click on **Sign In** icon (as shown above) to connect to using the QTEAM user.
 
-  ![Sign in to ADW from Excel](images/ADBSignInExcel.png)You are now connected to the Autonomous Database and ready to run native SQL and use the Analytic View Query wizard.
+  ![Sign in to ADW from Excel](images/adb-sign-in-excel.png)You are now connected to the Autonomous Database and ready to run native SQL and use the Analytic View Query wizard.
 
 ### Run Native SQL on Autonomous Database
 
 Users may want to run a native SQL query to export data to excel. Here we run a SQL query on the fact table to fetch sales data for the weekend and North America. This query may be provided to you from your data analyst which can be run directly against the Autonomous Database.
 
 3. Click the **Native Sql** button to launch a panel on the right to write a SQL. Next click the **Write a query** button on the panel as shown below.
-  ![Excel Run Native SQL Panel](images/NativeSQL_WriteQueryExcel.png)
+  ![Excel Run Native SQL Panel](images/native-sql-write-query-excel.png)
 
 4. Copy and paste the following SQL statement into the box on the panel. Check the **Pivot table** option and then click **Execute**.
 
@@ -770,13 +770,13 @@ Users may want to run a native SQL query to export data to excel. Here we run a 
     </copy>
     ````
 
-  ![Run Native SQL Excel with Pivot](images/ExecuteNativeSQLwithPivot.png)
+  ![Run Native SQL Excel with Pivot](images/execute-native-sql-with-pivot.png)
 
 5. The SQL query is executed and a new sheet **Sheet2** with an Excel Pivot is automatically created.
-  ![Excel Pivot Analyze](images/ExcelPivotAnalyze.png)
+  ![Excel Pivot Analyze](images/excel-pivot-analyze.png)
 
 6. Navigate to the **Sheet1** worksheet to view the **Result Data**. This sheet also provides details about the time when SQL was run, user that ran the query and the SQL query itself under the **Query Info** section.
-  ![Native SQL Resultset Excel](images/ExcelNativeSQLResultData.png)
+  ![Native SQL Resultset Excel](images/excel-native-sql-result-data.png)
 Users can now leverage the Excel capabilites to work with data. They can conditionally format data, create their own calculations, etc. The data is now natively available in Excel with the pivot table linked to the results retrieved in **Sheet1**.
 
 ### Query Analytic View using the Query Wizard
@@ -784,42 +784,42 @@ Users can now leverage the Excel capabilites to work with data. They can conditi
 Apart from running native SQL, users can also query the Analytic View **MOVIE\_SALES\_2020Q2\_AV** created in Task 4 above. The wizard allows users to select levels within hierarchies and filter data from the Analytic View to export the data in Excel.
 
 7. On the **Autonomous Database** ribbon, click the **Query Wizard** button. This launches a panel on the right.
-  ![Excel Ribbon Query Wizard](images/QueryWizardExcelRibbon.png)
+  ![Excel Ribbon Query Wizard](images/query-wizard-excel-ribbon.png)
 
 8. Click the **Choose Analytic View** button on the panel. Select the **MOVIE\_SALES\_2020Q2\_AV** Analytic View from the list.
-  ![Query Wizard Panel Choose AV](images/ExcelPanelChooseAV.png)
+  ![Query Wizard Panel Choose AV](images/excel-panel-choose-av.png)
 
 9. Click the **Edit query** button on the Panel and make the following selections:
     1. Select the **SALES** and **PURCHASES** measures from the **Select measures:** section
     2. Select the **MOVIE\_SALES\_2020Q2\_AV\_CUSTOMER\_SEGMENT\_HIER**, **MOVIE\_SALES\_2020Q2\_AV\_GENRE\_HIER**, **MOVIE\_SALES\_2020Q2\_AV\_GEOGRAPHY\_HIER** and **MOVIE\_SALES\_2020Q2\_AV\_MONTHS\_HIER** from the **Select hierarchies:** section.
     3. Select the **CUSTOMER\_SEGMENT**, **GENRE**, **CONTINENT**, **COUNTRY** and **MONTH** levels from the **Select Levels** section.
-  ![Query Wizard Panel select levels](images/QueryWizardPanelSelectLevels.png)
+  ![Query Wizard Panel select levels](images/query-wizard-panel-select-levels.png)
 
 10. Click **Next**. This launces the **Filter** tab of the wizard as shown.
-  ![Query Wizard Panel Filter tab](images/QueryWizardFilterTab.png)
+  ![Query Wizard Panel Filter tab](images/query-wizard-filter-tab.png)
 
 11. On the **Filter** tab do the following:
     1. Click the **Add/Edit filter conditions**
     2. Under **Column Name**, select the **MOVIE\_SALES\_2020Q2\_AV\_MONTHS\_HIER : MONTH** column.
     3. Type **5** in the **x Values (: seperated):** section.
     4. click the **+ Add** button to add the filter.
-  ![Query Wizard Panel Filter selections](images/QueryWizardFilterSelections.png)
+  ![Query Wizard Panel Filter selections](images/query-wizard-filter-selections.png)
 
 12. Click **Next**
 
 13. The **Query Result** tab of the wizard provides summary of the selections made. In this tab do the following:
     1. Under **Select Worksheet**, click the **+** button.
-      ![Query Wizard Add Sheet](images/QueryWizardAddSheet.png)
+      ![Query Wizard Add Sheet](images/query-wizard-add-sheet.png)
     2. Provide the name of the new sheet as **AVQueryMay**
     3. Click the **Check** icon/button to save the name.
-      ![Query wizard new sheet name](images/QueryWizardSheetName.png)
+      ![Query wizard new sheet name](images/query-wizard-sheet-name.png)
     4. Click **Execute**
 
-  ![Query wizard Execute](images/QueryWizardExecute.png)
+  ![Query wizard Execute](images/query-wizard-execute.png)
 
 14. A new sheet with **AVQueryMay** is created and the data is exported in the **Result Data** section of the sheet. Also note the **Query Info** section that provides detailed information about the query that was generated and run.
 
-  ![Query Wizard Result data](images/QueryWizardResultData.png)
+  ![Query Wizard Result data](images/query-wizard-result-data.png)
 
 ### RECAP
 
