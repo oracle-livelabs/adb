@@ -27,10 +27,7 @@
           "title": "Lab 3: Use Autonomous Database Tools",
           "description": "Using Autonomous Database Tools",
           "filename": "../using-adb-tools/ocw-using-adb-tools.md",
-          "type": {
-            "GUI" : "GUI",
-            "SQL" : "SQL"
-          }
+          "type": "GUI"
       },
       {
           "title": "Need Help?",
