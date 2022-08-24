@@ -1,4 +1,4 @@
-# Use Mongo Shell with Autonomous Database
+# Connect to Autonomous Database with Mongo Shell
 
 ## Introduction
 
