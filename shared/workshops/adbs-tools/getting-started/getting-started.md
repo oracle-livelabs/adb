@@ -48,6 +48,8 @@ For this workshop, we need to create one new user.
     </copy>
     ````
   ![ALT text is not available for this image](images/database-create-adpbeta-role.png)
+
+5. Click on the **Database Actions** link to navigate back to the home page.
   </if>
 
 3. On the Database Actions launchpad page, under Administration, click the **Database Users** card.
