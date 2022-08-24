@@ -37,8 +37,20 @@ For this workshop, we need to create one new user.
 
 2. This will take you to the Database Actions page, logged in as the ADMIN user.
 
-3. On the Database Actions launchpad page, under Administration, click the **Database Users** card.
+  <if type="BETA">
+3. On the Database Actions launchpad page, under Development, click the **SQL** card.
+  ![ALT text is not available for this image](images/database-adpbeta-role.png)
 
+4. Paste the following SQL statement and execute it.
+    ````
+    <copy>
+    CREATE ROLE ADPBETA;
+    </copy>
+    ````
+  ![ALT text is not available for this image](images/database-create-adpbeta-role.png)
+  </if>
+
+3. On the Database Actions launchpad page, under Administration, click the **Database Users** card.
   ![ALT text is not available for this image](images/database-users.png)
 
 4.  You can see that your ADMIN user is listed as the current user.  On the right-hand side, click the "+ **Create User**" button.
@@ -83,6 +95,9 @@ For this workshop, we need to create one new user.
 7.  Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first and third columns:
     1. **DWROLE**
     2. **DATA\_TRANSFORM\_USER**
+    <if type="BETA">
+    3. **ADPBETA**
+    </if>
 
   ![ALT text is not available for this image](images/dwrole.png)
 

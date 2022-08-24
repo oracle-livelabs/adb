@@ -22,13 +22,13 @@
             "title": "Lab 2: Create a Database User",
             "description": "Intro to MovieStream and Creating a Database User",
             "filename": "../getting-started/getting-started.md",
-            "type": "SQL"
+            "type": "BETA"
         },
         {
             "title": "Lab 3: Use Autonomous Database Tools",
             "description": "Using Autonomous Database Tools",
             "filename": "../using-adb-tools/ocw-using-adb-tools.md",
-            "type": "SQL"
+            "type": "BETA"
         },
         {
           "title": "Need Help?",

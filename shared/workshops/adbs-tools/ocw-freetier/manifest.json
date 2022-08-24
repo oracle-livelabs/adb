@@ -21,7 +21,8 @@
         {
           "title": "Lab 2: Create a Database User",
           "description": "Intro to MovieStream and Creating a Database User",
-          "filename": "../getting-started/getting-started.md"
+          "filename": "../getting-started/getting-started.md",
+          "type": "GUI"
       },
       {
           "title": "Lab 3: Use Autonomous Database Tools",
