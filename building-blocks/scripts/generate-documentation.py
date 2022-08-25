@@ -358,6 +358,7 @@ def write_toc():
         this_description = t.description if t.description else " "
         output = add_line(output, "| " + t.cloud_service + " | " + this_anchor + " | " + t.path + " | " + this_description + " |")
 
+    output = add_line(output, "")
     output = add_line(output, "## manifest.json Template")
     output = add_line(output, "The manifest.json template below includes all the tasks that are currently available. You can remove those that you do not plan to use - either directly or thru a Block")
     output = add_line(output, "")

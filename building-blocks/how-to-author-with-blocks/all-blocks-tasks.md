@@ -33,6 +33,7 @@ Listed below are the tasks that you can incorporate into your markdown. You can 
 | adb | [Analyze Spatial Data with SQL](/building-blocks/how-to-author-with-blocks/index.html?lab=adb#AnalyzeSpatialDatawithSQL) | /building-blocks/tasks/adb/query-spatial.md | Oracle provides rich support for querying and analyzing spatial data. Run queries to find pizza shops closest to customers. |
 | adb | [Using Partitoned External Tables](/building-blocks/how-to-author-with-blocks/index.html?lab=adb#UsingPartitonedExternalTables) | /building-blocks/tasks/adb/use-partitioned-external-table-body.md | Create partitioned external tables over object storage data using a single, simple API call. Then, load that data. Compare performance of external tables and partitioned external tables. |
 | iam | [Create an OCI Compartment](/building-blocks/how-to-author-with-blocks/index.html?lab=iam#CreateanOCICompartment) | /building-blocks/tasks/iam/compartment-create-body.md | Create a new compartment using the OCI service console |
+
 ## manifest.json Template
 The manifest.json template below includes all the tasks that are currently available. You can remove those that you do not plan to use - either directly or thru a Block
 
