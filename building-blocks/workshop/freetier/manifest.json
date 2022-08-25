@@ -13,7 +13,7 @@
      "adb-query-spatial.md":"/building-blocks/tasks/adb/query-spatial.md",
      "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
      "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
- },
+  },
  "help": "livelabs-help-db_us@oracle.com",
  "variables": ["/building-blocks/variables/variables.json"],
  "tutorials": [  
@@ -43,14 +43,14 @@
          "filename": "/building-blocks/blocks/adb/load-data/load-data-tools.md"
      },
      {
+         "title": "[adb] Provision ADB using Python API",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/provision-python-api/provision-python-api.md"
+     },
+     {
          "title": "[adb] Create an Oracle Autonomous Database (ADW and ATP)",
          "type": "freetier",
          "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
-     },
-     {
-         "title": "[adb] Provision ADB using Python API",
-         "type": "freetier",
-         "filename": "/building-blocks/blocks/adb/save-provision-database/provision-api.md"
      },
      {
          "title": "[adb] Access and Load Partitioned Object Storage Data",

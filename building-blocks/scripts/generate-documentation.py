@@ -188,9 +188,42 @@ def get_manifest_include():
 
     include = include[:len(include)-2]
 
-    include = include + ('\n },') # include
+    include = include + ('\n  },') # include
 
     return include
+
+# Return a manifest template that can be copied and pasted
+def get_manifest_template():
+
+    output = '''{
+  "workshoptitle":"LiveLabs Workshop Template",'''
+    output = add_line(output, " " + get_manifest_include())
+    output = output + '''\n  "help": "livelabs-help-db_us@oracle.com",
+  "variables": ["./variables.json"],
+  "tutorials": [  
+    {
+        "title": "Get Started",
+        "description": "Get a Free Trial",
+        "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+    },
+    {
+        "title": "Add Workshop Utilities",
+        "filename": "/building-blocks/setup/add-workshop-utilities.md"
+    },
+    {
+        "title": "Provision Autonomous Database",
+        "type": "freetier",
+        "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
+    },
+    {
+        "title": "Your lab goes here",
+        "type": "freetier",
+        "filename": "/../../yourlab.md"
+    }
+  ]
+}''' 
+
+    return output  
 
 
 #######
@@ -214,7 +247,7 @@ def write_task_manifest():
     output = add_line(output, '     {')
     output = add_line(output, '         "title": "List of Building Blocks and Tasks",' )
     output = add_line(output, '         "type": "freetier",' )
-    output = add_line(output, '         "filename": "' + relpath_blocks + '/how-to-author-with-blocks/all-tasks.md"' )
+    output = add_line(output, '         "filename": "' + relpath_blocks + '/how-to-author-with-blocks/all-blocks-tasks.md"' )
     output = add_line(output, '     },')
 
     current_cloud_service = None
@@ -313,7 +346,7 @@ def write_toc():
     output = add_line(output, "[Go here for the customer view of Building Blocks](/building-blocks/workshop/freetier/index.html)")
     output = add_line(output, "## List of Tasks")
     output = add_line(output, "")
-    output = add_line(output, "List below are the tasks that you can incorporate into your markdown. You can also use the navigation tree on the left to view the tasks. Again, contribute to the list of tasks!")
+    output = add_line(output, "Listed below are the tasks that you can incorporate into your markdown. You can also use the navigation tree on the left to view the tasks. Again, contribute to the list of tasks!")
     output = add_line(output, "| Cloud Service | Task |  File | Description |")
     output = add_line(output, "|---------------| ---- |  ---- |------------ |")
 
@@ -325,8 +358,17 @@ def write_toc():
         this_description = t.description if t.description else " "
         output = add_line(output, "| " + t.cloud_service + " | " + this_anchor + " | " + t.path + " | " + this_description + " |")
 
+    output = add_line(output, "## manifest.json Template")
+    output = add_line(output, "The manifest.json template below includes all the tasks that are currently available. You can remove those that you do not plan to use - either directly or thru a Block")
+    output = add_line(output, "")
+    output = add_line(output, "```")
+    output = add_line(output, "<copy>")
+    output = add_line(output, get_manifest_template())
+    output = add_line(output, "</copy>")
+    output = add_line(output, "```")
+
     h_mdfile = None
-    h_mdfile = open(path_howto + "/all-tasks.md", "w")
+    h_mdfile = open(path_howto + "/all-blocks-tasks.md", "w")
     h_mdfile.write(output)
     h_mdfile.close
 
