@@ -48,7 +48,7 @@
          "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
      },
      {
-         "title": "[adb] Not Found. Fix markdown file /building-blocks/blocks/adb/save-provision-database/provision-api.md",
+         "title": "[adb] Provision ADB using Python API",
          "type": "freetier",
          "filename": "/building-blocks/blocks/adb/save-provision-database/provision-api.md"
      },
