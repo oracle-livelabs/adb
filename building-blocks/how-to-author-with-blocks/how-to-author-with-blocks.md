@@ -104,5 +104,3 @@ The manifest.json file describes the content of your workshop. It also contains 
 }
 ```
 
-## manifest.json Template
-You can copy this manifest.json as a template for your workshop. The include section is up to date with every available task. You can remove those tasks that are not required by your workshop.
