@@ -1,4 +1,4 @@
-# Block services: ADB
+# Tasks for OCI Service: ADB
 ## Connect with SQL Worksheet
 **Markdown file location:**
 ```
@@ -196,6 +196,28 @@
 **Markdown Output &#8595;&#8595;:**
  
 [](include:adb-query-object-store-contents-with-sql.md)
+ 
+## Analyze Spatial Data with SQL
+**Markdown file location:**
+```
+/building-blocks/tasks/adb/query-spatial.md
+```
+
+**Add to your manifest.json:**
+```
+"include": {
+     "adb-query-spatial.md":"/building-blocks/tasks/adb/query-spatial.md",
+}
+```
+
+**Add to your workshop markdown:**
+```
+[]&lpar;include:query-spatial.md)
+```
+
+**Markdown Output &#8595;&#8595;:**
+ 
+[](include:adb-query-spatial.md)
  
 ## Using Partitoned External Tables
 **Markdown file location:**

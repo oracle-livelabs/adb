@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Use Database Actions Data Loading for Object Store data",
+        "description":"Use the Database Actions tooling to easily load data from object storage."
+    }
+-->
 # Use Data Tools to load data
 
 ## Introduction

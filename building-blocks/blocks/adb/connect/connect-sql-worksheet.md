@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Connect with SQL Worksheet",
+        "description":"Connect to Autonomous Database using the SQL Worksheet in Database Actions"
+    }
+-->
 # Connect with SQL Worksheet
 
 ## Introduction

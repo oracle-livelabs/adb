@@ -37,11 +37,12 @@ Here is markdown specific to my workshop.
 
 Let's create an ADB instance.
 
-## Task 1: Choose Autonomous Database from the services menu
+&num;# Task 1: Choose Autonomous Database from the services menu
 []&lpar;include:adb-goto-service-body.md)
 
-## Task 2: Create the Autonomous Database instance
+&num;# Task 2: Create the Autonomous Database instance
 []&lpar;include:adb-provision-console-body.md)
+
 ```
 
 As you can see, the markdown for this block is pretty simple. It is including two Tasks: 1) go to the service and 2) provision using the console. It may be that the format of this Block does not meet your workshop requirements. No problem. Your workshop markdown can use these Tasks in a similar way to the Building Block. Simply include the Task within your markdown. 
