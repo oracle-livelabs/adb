@@ -330,6 +330,9 @@ def write_toc():
     output = add_line(output, "| Cloud Service | Block |  File | Description |")
     output = add_line(output, "|---------------| ---- |  ---- |------------ |")
 
+    # Add the workshop utilities (hard code)
+    output = add_line(output, "| setup | [Add Workshop Utilities](/building-blocks/workshop/freetier/index.html?lab=add-workshop-utilities.md) |  /building-blocks/setup/add-workshop-utilities.md | Utilities for adding data sets and users |")
+    
     for t in blocks:
         this_name = t.md_name if not t.name else t.name
         #this_anchor = relpath_blocks + '/workshop/freetier/index.html?lab=' + t.cloud_service + '#' + re.sub('[^0-9a-zA-Z]+','', this_name)

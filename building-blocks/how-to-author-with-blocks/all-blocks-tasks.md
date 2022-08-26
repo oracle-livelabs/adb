@@ -7,6 +7,7 @@ Review the list of Building Blocks and Tasks that are currently available. Becom
 Building Blocks are exposed to customers. You can use these same blocks in your own workshop by adding the block to your manifest.json file.
 | Cloud Service | Block |  File | Description |
 |---------------| ---- |  ---- |------------ |
+| setup | [Add Workshop Utilities](/building-blocks/workshop/freetier/index.html?lab=add-workshop-utilities.md) |  /building-blocks/setup/add-workshop-utilities.md | Utilities for adding data sets and users |
 | adb | [Connect with SQL Worksheet](/building-blocks/workshop/freetier/index.html?lab=connect-sql-worksheet.md) | /building-blocks/blocks/adb/connect/connect-sql-worksheet.md | Connect to Autonomous Database using the SQL Worksheet in Database Actions |
 | adb | [Load and Analyze Data from REST Services](/building-blocks/workshop/freetier/index.html?lab=load-analyze-rest.md) | /building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md | Analyze data sourced from REST services. Using the News API as an example.<ul><li>Create an Account on newsapi.org</li><li>Create a PLSQL function that retrieves news for actors</li><li>Perform a sentiment analysis on the article descriptions</li><li>Find which actors are generating buzz - both good and bad</li></ul> |
 | adb | [Use Database Actions Data Loading for Object Store data](/building-blocks/workshop/freetier/index.html?lab=load-data-tools.md) | /building-blocks/blocks/adb/load-data/load-data-tools.md | Use the Database Actions tooling to easily load data from object storage. |
