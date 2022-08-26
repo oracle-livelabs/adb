@@ -344,7 +344,7 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
 ![ALT text is not available for this image](images/data-transforms.png)
 
 </if>
-<if type="GUI">
+<if type=="GUI" or type=="BETA">
 ### Use Web based DATA TRANSFORMS
 
 1. Navigate to the **Database Actions** home page by clicking the top link. Under **Data Tools** click the **DATA TRANSFORMS** card.
