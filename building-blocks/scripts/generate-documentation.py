@@ -207,10 +207,6 @@ def get_manifest_template():
         "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
     },
     {
-        "title": "Add Workshop Utilities",
-        "filename": "/building-blocks/setup/add-workshop-utilities.md"
-    },
-    {
         "title": "Provision Autonomous Database",
         "type": "freetier",
         "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
