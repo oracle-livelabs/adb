@@ -14,7 +14,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:connect-with-sql-worksheet-body.md)
+[]&lpar;include:adb-connect-with-sql-worksheet-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -36,7 +36,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:create-load-json-collection.md)
+[]&lpar;include:adb-create-load-json-collection.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -58,7 +58,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:goto-data-load-utility.md)
+[]&lpar;include:adb-goto-data-load-utility.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -80,7 +80,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:goto-service-body.md)
+[]&lpar;include:adb-goto-service-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -102,7 +102,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:goto-sql-worksheet.md)
+[]&lpar;include:adb-goto-sql-worksheet.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -124,7 +124,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:provision-body.md)
+[]&lpar;include:adb-provision-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -146,7 +146,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:query-json-arrays.md)
+[]&lpar;include:adb-query-json-arrays.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -168,7 +168,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:query-json-simple.md)
+[]&lpar;include:adb-query-json-simple.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -190,7 +190,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:query-object-store-contents-with-sql.md)
+[]&lpar;include:adb-query-object-store-contents-with-sql.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -212,7 +212,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:query-spatial.md)
+[]&lpar;include:adb-query-spatial.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**
@@ -234,7 +234,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:use-partitioned-external-table-body.md)
+[]&lpar;include:adb-use-partitioned-external-table-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**

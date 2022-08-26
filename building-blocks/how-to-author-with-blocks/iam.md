@@ -14,7 +14,7 @@
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:compartment-create-body.md)
+[]&lpar;include:iam-compartment-create-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**

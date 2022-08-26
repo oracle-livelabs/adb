@@ -414,7 +414,7 @@ def write_cloud_service_tasks():
         output = add_line(output, "")
         output = add_line(output, "**Add to your workshop markdown:**")
         output = add_line(output, "```")
-        output = add_line(output, "[]&lpar;include:" + t.md_name + ")")
+        output = add_line(output, "[]&lpar;include:" + t.include_name + ")")
         output = add_line(output, "```")
         output = add_line(output, "")
         output = add_line(output, '**Markdown Output &#8595;&#8595;:**')
