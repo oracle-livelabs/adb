@@ -409,7 +409,7 @@ def write_cloud_service_tasks():
         output = add_line(output, '**Add to your manifest.json:**')
         output = add_line(output, "```")
         output = add_line(output, '"include": {')
-        output = add_line(output, '     "' + t.include_name + '":"' + t.path + '",')
+        output = add_line(output, '     "' + t.include_name + '":"' + t.path)
         output = add_line(output, '}')
         output = add_line(output, "```")
         output = add_line(output, "")

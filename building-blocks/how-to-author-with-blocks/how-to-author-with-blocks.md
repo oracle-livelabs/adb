@@ -64,7 +64,7 @@ Let's create an ADB instance.
 ### variables.json
 Workshops have different requirements. Database names, OCPUs and other options may differ. LiveLabs uses variables to allow authors to update content. It may be that you need to make updates to the Task in order to make it more flexible; please share any required updates with the LiveLabs team.
 
-The master list of all variables used in Blocks are stored in the ```/building-blocks/variables/variables.json``` file. You can copy this variables.json file to your own workshop if the default variable values need changing:
+The master list of all variables used in Blocks are stored in the [/building-blocks/variables/variables.json](../variables/variables.json) file. Copy this variables.json file to your own workshop directory if the default variable values need changing:
 
 variables.json
 ```
@@ -103,4 +103,3 @@ The manifest.json file describes the content of your workshop. It also contains 
     ]
 }
 ```
-

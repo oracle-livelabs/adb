@@ -8,7 +8,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md",
+     "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md
 }
 ```
 

@@ -8,7 +8,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+     "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md
 }
 ```
 
@@ -30,7 +30,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-create-load-json-collection.md":"/building-blocks/tasks/adb/create-load-json-collection.md",
+     "adb-create-load-json-collection.md":"/building-blocks/tasks/adb/create-load-json-collection.md
 }
 ```
 
@@ -52,7 +52,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md",
+     "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md
 }
 ```
 
@@ -74,7 +74,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+     "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md
 }
 ```
 
@@ -96,7 +96,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
+     "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md
 }
 ```
 
@@ -118,7 +118,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+     "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md
 }
 ```
 
@@ -140,7 +140,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
+     "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md
 }
 ```
 
@@ -162,7 +162,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
+     "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md
 }
 ```
 
@@ -184,7 +184,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+     "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md
 }
 ```
 
@@ -206,7 +206,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-query-spatial.md":"/building-blocks/tasks/adb/query-spatial.md",
+     "adb-query-spatial.md":"/building-blocks/tasks/adb/query-spatial.md
 }
 ```
 
@@ -228,7 +228,7 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+     "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md
 }
 ```
 
