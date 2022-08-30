@@ -52,31 +52,31 @@ In this step, you will install an Informatica Secure Agent from the OCI Marketpl
 
 7. On this page you will be entering the variables used in creating the stack.  On your screen the compartment will be filled with the value you entered in the previous step.  If this is the first time creating you can leave the default values.  You will need to hit the drop down in the **Availability Domain** and choose one from the available option.  After choosing your preferred Availability Domain scroll down to enter additional variables.
 
-   ![Click Data Load](images/stack01.png)
+   ![Click Data Load](images/stack_compute.png)
 
 8. One of the prerequisites was to create a Virtual Cloud Network (VCN).  Enter the **Network Compartment** where you created the VCN and choose **Use Existing VCN and Subnet** as your Network Strategy.  For the rest of the required **VCN and Subnet** variables use the drop down to choose from the components of the **VCN** you created.  For this Live Lab the recommendation is to use the Public Subnet for simplicity purposes, if required by your organization a private subnet can be used.  If a **Private Subnet** is used you will need to make sure a Nat Gateway has been enabled and an egress policy for Port 443 created.
 
-   ![Click Data Load](images/stack02.png)
+   ![Click Data Load](images/stack_vcn.png)
 
 9. The following variable will be gathered from the IDMC credential and the IDMC user interface.  The **IDMC User Name** was given to you when you created your Informatica IDMC instance.  The next image shows you an example of where to get your token form the IDMC user interface.  Once all of your variables are entered click **Next**.
 
-   ![Click Data Load](images/stack03.png)
+   ![Click Data Load](images/stack_idmc.png)
 
 10. To acquire token log into IDMC and choose the **Administrator** tile.  Then choose the **Runtime Environments** option.  In Runtime Environment screen click on the option to **Generate Install Token**.  Copy the token and past in IDMC Secure Agent Installation Variable when building your image in OCI.  The token is valid for 24 hours so you can generate and keep it ready for when you start your install.
 
-    ![Click Data Load](images/stack05.png)
+    ![Click Data Load](images/idmc_ui_runtime.png)
 
 11. Review your variables and make sure everything looks complete.  Then click **Create**.
 
-    ![Click Data Load](images/stack04.png)
+    ![Click Data Load](images/stack_review.png)
 
 12. After you click create you will be taken to the **Resource Manager** screen where you can monitor the progress of the Secure Agent Compute Instance build.
 
-    ![Click Data Load](images/stack06.png)
+    ![Click Data Load](images/rsm_progress.png)
 
 13. When the process completes successfully you will see an image similar to below.  If an error is encountered review the available logs correct the issue and rerun.
 
-    ![Click Data Load](images/stack07.png)
+    ![Click Data Load](images/rsm_succeed.png)
 
 14. If successful you should be able to view the new instance in the Compute Instances screen in the OCI Console.  If your **Secure Agent** registered correctly it should be visible in the **Runtime Environments** section of the IDMC Console.  If your secure agent did not register, please proceed to the third task (Due to POD locations this is a possible occurrence) .   If your secure agent did register correctly please proceed to the next task which is configuring a Wallet file. 
 
@@ -87,7 +87,7 @@ In this task we will perform steps to configure an ADB wallet file on the Secure
 
 1. Log into your Oracle ADB Console UI and download the Wallet file.  Please note the password you used when you downloaded the file as this will be used in a future Lab when you are setting up your connections.  The Wallet file can be found under the DB Connection selection.
 
-   ![View settings for LINEITEM load task](images/dbconnect01.png)
+   ![View settings for LINEITEM load task](images/db_connection.png)
 
 2. Log on to the Compute Instance you created to house the Secure Agent.  If you don't know how to access your Compute Instance please click on the **Accessing a Compute Instance** link in the **Learn More** section of this module.
 
@@ -131,7 +131,7 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
 5. If the **InfaAgent.MasterUrl** does not match the URL you use to logon to IDMC you will need to change the **InfaAgent.MasterUrl**.  For example you may see something similar when you view the results of the infaagent.ini 
 
-   ![View settings for LINEITEM load task](images/tasktwo01.png)
+   ![View settings for LINEITEM load task](images/infaagent_ini.png)
 
 6. The URL you use to logon to IDMC may be https://**dm-us.informaticacloud.com/identity-service/home**
 
