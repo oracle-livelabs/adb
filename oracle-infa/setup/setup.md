@@ -78,7 +78,7 @@ In this step, you will install an Informatica Secure Agent from the OCI Marketpl
 
     ![Click Data Load](F:\GitHub\partner-solutions\oracle-infa\setup\images\Stack7.png)
 
-14. If successful you should be able to view the new instance in the Compute Instances screen in the OCI Console.  If your **Secure Agent** registered correctly it should be visible in the **Runtime Environments** section of the IDMC Console.  If your secure agent did not register, please proceed to the next task(add quick sentence explain) .   If your secure agent did register correctly please proceed to the third task which is configuring a Wallet file. (add quick sentence explain)
+14. If successful you should be able to view the new instance in the Compute Instances screen in the OCI Console.  If your **Secure Agent** registered correctly it should be visible in the **Runtime Environments** section of the IDMC Console.  If your secure agent did not register, please proceed to the third task (Due to POD locations this is a possible occurrence) .   If your secure agent did register correctly please proceed to the next task which is configuring a Wallet file. 
 
 
 ## Task 2: Configuring an Oracle ADB Wallet file on the Secure Agent
