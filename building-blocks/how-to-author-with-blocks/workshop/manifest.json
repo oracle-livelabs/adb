@@ -1,0 +1,42 @@
+{
+ "workshoptitle":"LiveLabs Building Blocks",
+ "include": {
+     "adb-connect-with-sql-worksheet-body.md":"/adb/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+     "adb-create-load-json-collection.md":"/adb/building-blocks/tasks/adb/create-load-json-collection.md",
+     "adb-goto-data-load-utility.md":"/adb/building-blocks/tasks/adb/goto-data-load-utility.md",
+     "adb-goto-service-body.md":"/adb/building-blocks/tasks/adb/goto-service-body.md",
+     "adb-goto-sql-worksheet.md":"/adb/building-blocks/tasks/adb/goto-sql-worksheet.md",
+     "adb-provision-body.md":"/adb/building-blocks/tasks/adb/provision-body.md",
+     "adb-query-json-arrays.md":"/adb/building-blocks/tasks/adb/query-json-arrays.md",
+     "adb-query-json-simple.md":"/adb/building-blocks/tasks/adb/query-json-simple.md",
+     "adb-query-object-store-contents-with-sql.md":"/adb/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+     "adb-query-spatial.md":"/adb/building-blocks/tasks/adb/query-spatial.md",
+     "adb-use-partitioned-external-table-body.md":"/adb/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+     "iam-compartment-create-body.md":"/adb/building-blocks/tasks/iam/compartment-create-body.md"
+  },
+ "help": "livelabs-help-db_us@oracle.com",
+ "variables": ["/adb/building-blocks/variables/variables.json"],
+ "tutorials": [  
+
+     {
+         "title": "Authoring using Blocks and Tasks",
+         "type": "freetier",
+         "filename": "/adb/building-blocks/how-to-author-with-blocks/how-to-author-with-blocks.md"
+     },
+     {
+         "title": "List of Building Blocks and Tasks",
+         "type": "freetier",
+         "filename": "/adb/building-blocks/how-to-author-with-blocks/all-blocks-tasks.md"
+     },
+     {
+         "title": "ADB Tasks",
+         "type": "freetier",
+         "filename": "/adb/building-blocks/how-to-author-with-blocks/adb.md"
+     },
+     {
+         "title": "IAM Tasks",
+         "type": "freetier",
+         "filename": "/adb/building-blocks/how-to-author-with-blocks/iam.md"
+     }
+  ]
+}

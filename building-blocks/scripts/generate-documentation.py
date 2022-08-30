@@ -17,7 +17,7 @@ path_tasks     = path_root + "/tasks"
 path_blocks    = path_root + "/blocks"
 
 # relative path used for forming URLs
-relpath_blocks = "/building-blocks"
+relpath_blocks = "/adb/building-blocks"
 
 tasks = []
 blocks = []
@@ -209,7 +209,7 @@ def get_manifest_template():
     {
         "title": "Provision Autonomous Database",
         "type": "freetier",
-        "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
+        "filename": "/adb/building-blocks/blocks/adb/provision/provision-console.md"
     },
     {
         "title": "Your lab goes here",
@@ -262,7 +262,7 @@ def write_task_manifest():
     output = add_line(output, '}')
     print(output)
     try:    
-        h_manifest = open(path_howto + "/manifest.json", "w")
+        h_manifest = open(path_howto + "/workshop/manifest.json", "w")
         h_manifest.write(output)
         h_manifest.close
     except Exception as e:
@@ -289,7 +289,7 @@ def write_blocks_manifest():
     output = add_line(output, '     },')
     output = add_line(output, '     {')
     output = add_line(output, '         "title": "Add Workshop Utilities",' )
-    output = add_line(output, '         "filename": "/building-blocks/setup/add-workshop-utilities.md"' )
+    output = add_line(output, '         "filename": "' + relpath_blocks + '/setup/add-workshop-utilities.md"' )
     output = add_line(output, '     },')
 
     for t in blocks:
@@ -331,7 +331,7 @@ def write_toc():
     output = add_line(output, "|---------------| ---- |  ---- |------------ |")
 
     # Add the workshop utilities (hard code)
-    output = add_line(output, "| setup | [Add Workshop Utilities](/building-blocks/workshop/freetier/index.html?lab=add-workshop-utilities.md) |  /building-blocks/setup/add-workshop-utilities.md | Utilities for adding data sets and users |")
+    output = add_line(output, '| setup | [Add Workshop Utilities](' + relpath_blocks + '/workshop/freetier/index.html?lab=add-workshop-utilities) |  ' + relpath_blocks + ' /setup/add-workshop-utilities.md| Utilities for adding data sets and users |')
     
     for t in blocks:
         this_name = t.md_name if not t.name else t.name
@@ -352,14 +352,24 @@ def write_toc():
 
     for t in tasks:
         this_name = t.md_name if not t.name else t.name
-        this_anchor = relpath_blocks + '/how-to-author-with-blocks/index.html?lab=' + t.cloud_service + '#' + re.sub('[^0-9a-zA-Z]+','', this_name)
+        this_anchor = relpath_blocks + '/how-to-author-with-blocks/workshop/index.html?lab=' + t.cloud_service + '#' + re.sub('[^0-9a-zA-Z]+','', this_name)
         this_anchor = "[" + this_name + "](" + this_anchor + ")"
         this_description = t.description if t.description else " "
         output = add_line(output, "| " + t.cloud_service + " | " + this_anchor + " | " + t.path + " | " + this_description + " |")
 
     output = add_line(output, "")
+    output = add_line(output, "## Variable Defaults")
+    output = add_line(output, "You can use the default variables or copy the default file to your project and override the settings. See the **Authoring using Blocks and Tasks** topic for details.")
+    output = add_line(output, "")
+    output = add_line(output, '[View default variable values](' + relpath_blocks + '/variables/variables.json)')
+    output = add_line(output, "")
+
+
+    output = add_line(output, "")
     output = add_line(output, "## manifest.json Template")
     output = add_line(output, "The manifest.json template below includes all the tasks that are currently available. You can remove those that you do not plan to use - either directly or thru a Block")
+    output = add_line(output, "")
+    output = add_line(output, "The template assumes you copied the default **variables.json** to the same directory as the **manifest.json** file.")    
     output = add_line(output, "")
     output = add_line(output, "```")
     output = add_line(output, "<copy>")

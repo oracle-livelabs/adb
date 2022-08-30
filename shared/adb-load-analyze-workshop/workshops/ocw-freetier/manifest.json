@@ -27,49 +27,43 @@
             "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Provision an Analytics Cloud Instance",
-            "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
-            "type": "freetier",
-            "filename": "/building-blocks/blocks/oac/provision/oac-provision.md"
-        },
-        {
-            "title": "Lab 2: Provision an Autonomous Database",
+            "title": "Lab 1: Provision an Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
+            "filename": "/adb/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
-            "title": "Lab 3: Load Data from Local Files",
+            "title": "Lab 2: Load Data from Local Files",
             "description": "Load additional customer details into ADB from local files using the Database Actions tools",
             "type": "freetier",
             "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
         },
         {
-            "title": "Lab 4: Load Data from Object Storage Public Buckets",
+            "title": "Lab 3: Load Data from Object Storage Public Buckets",
             "description": "Load customer contact, movie genre and pizza location data into ADB from public object storage buckets using the Database Actions tools",
             "type": "freetier",
             "filename": "../../load-public-db-actions/load-public-db-actions.md"
         },
         {
-            "title": "Lab 5: Load Data from Object Storage Private Buckets",
+            "title": "Lab 4: Load Data from Object Storage Private Buckets",
             "description": "Load additional customer details into ADB from private object storage buckets using the Database Actions tools",
             "type": "freetier",
             "filename": "../../load-private-db-actions/load-private-db-actions.md"
         },
         {
-            "title": "Lab 6: Access and Load Partitioned Object Storage Data",
+            "title": "Lab 5: Access and Load Partitioned Object Storage Data",
             "description": "Examine the power of partitioning for querying and loading customer sales data sourced from object storage",
             "type": "freetier",
             "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
         },
         {
-            "title": "Lab 7: Load and Analyze JSON Data",
+            "title": "Lab 6: Load and Analyze JSON Data",
             "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
             "type": "freetier",
             "filename": "../../load-analyze-json/load-analyze-json.md"
         },
         {
-            "title": "Lab 8: Load and Analyze the News from REST Endpoints",
+            "title": "Lab 8 (optional): Load and Analyze the News from REST Endpoints",
             "description": "Load news and analyze the sentiment about actors from the newsapi.org",
             "type": "freetier",
             "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
