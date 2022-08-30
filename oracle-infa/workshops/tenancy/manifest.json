@@ -1,0 +1,41 @@
+{
+    "workshoptitle": "Integrate Oracle and Infa",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers.",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision an ADW Instance",
+            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/data-management-library/autonomous-database/shared/adb-provision/adb-provision-conditional.md",
+            "type": "freetier"
+        },
+        {
+            "title": "Lab 2: Configure Secure Agent to Connect with ADW",
+            "filename": "../../setup/setup.md"
+        },
+        {
+            "title": "Lab 3: Load Data into ADW Instance",
+            "filename": "../../data-load/data-load.md"
+        },
+        {
+            "title": "Lab 4: Run Scripts",
+            "filename": "../../query/query.md"
+        },
+        {
+            "title": "Lab 5: Clean Up",
+            "filename": "../../clean-up/clean-up.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
