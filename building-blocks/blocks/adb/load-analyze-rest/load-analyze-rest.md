@@ -1,3 +1,9 @@
+<!---
+{
+    "name":"Load and Analyze Data from REST Services",
+    "description":"Analyze data sourced from REST services. Using the News API as an example.<ul><li>Create an Account on newsapi.org</li><li>Create a PLSQL function that retrieves news for actors</li><li>Perform a sentiment analysis on the article descriptions</li><li>Find which actors are generating buzz - both good and bad</li></ul>"
+}
+--->
 # Load and Analyze the News from REST Endpoints
 
 ## Introduction

@@ -35,12 +35,24 @@ For this workshop, we need to create one new user.
 
   ![ALT text is not available for this image](images/click-database-actions-button.png)
 
-2. In the login form, enter ADMIN for the username and click **Next**. On the next form, enter the ADMIN password - which is the one you entered when creating your Autonomous Data Warehouse.
+2. This will take you to the Database Actions page, logged in as the ADMIN user.
 
-  ![ALT text is not available for this image](images/admin.png)
+  <if type="BETA">
+3. On the Database Actions launchpad page, under Development, click the **SQL** card.
+  ![ALT text is not available for this image](images/database-adpbeta-role.png)
+
+4. Paste the following SQL statement and execute it.
+    ````
+    <copy>
+    CREATE ROLE ADPBETA;
+    </copy>
+    ````
+  ![ALT text is not available for this image](images/database-create-adpbeta-role.png)
+
+5. Click on the **Database Actions** link to navigate back to the home page.
+  </if>
 
 3. On the Database Actions launchpad page, under Administration, click the **Database Users** card.
-
   ![ALT text is not available for this image](images/database-users.png)
 
 4.  You can see that your ADMIN user is listed as the current user.  On the right-hand side, click the "+ **Create User**" button.
@@ -82,7 +94,12 @@ For this workshop, we need to create one new user.
 
   ![ALT text is not available for this image](images/create-user-dialog.png)
 
-7.  Click on the **Granted Roles** banner at the top of the form and add the role **DWROLE** by checking the boxes in the first and third columns.
+7.  Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first and third columns:
+    1. **DWROLE**
+    2. **DATA\_TRANSFORM\_USER**
+    <if type="BETA">
+    3. **ADPBETA**
+    </if>
 
   ![ALT text is not available for this image](images/dwrole.png)
 
@@ -116,5 +133,5 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 ## Acknowledgements
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
-- Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews
-- Last Updated By - Rick Green, November 2021
+- Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
+- Last Updated By - Ashish Jain, Rick Green, August 2022
