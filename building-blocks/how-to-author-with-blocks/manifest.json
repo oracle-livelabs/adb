@@ -10,9 +10,10 @@
      "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
      "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
      "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+     "adb-query-spatial.md":"/building-blocks/tasks/adb/query-spatial.md",
      "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
      "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
- },
+  },
  "help": "livelabs-help-db_us@oracle.com",
  "variables": ["/building-blocks/variables/variables.json"],
  "tutorials": [  
@@ -25,7 +26,7 @@
      {
          "title": "List of Building Blocks and Tasks",
          "type": "freetier",
-         "filename": "/building-blocks/how-to-author-with-blocks/all-tasks.md"
+         "filename": "/building-blocks/how-to-author-with-blocks/all-blocks-tasks.md"
      },
      {
          "title": "ADB Tasks",

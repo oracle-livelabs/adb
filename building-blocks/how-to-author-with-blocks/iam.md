@@ -1,4 +1,4 @@
-# Block services: IAM
+# Tasks for OCI Service: IAM
 ## Create an OCI Compartment
 **Markdown file location:**
 ```
@@ -8,13 +8,13 @@
 **Add to your manifest.json:**
 ```
 "include": {
-     "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md",
+     "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md
 }
 ```
 
 **Add to your workshop markdown:**
 ```
-[]&lpar;include:compartment-create-body.md)
+[]&lpar;include:iam-compartment-create-body.md)
 ```
 
 **Markdown Output &#8595;&#8595;:**

@@ -1,51 +1,66 @@
 {
-    "workshoptitle": "LiveLabs Building Blocks",
-    "include": {
-      "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
-      "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
-      "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
-      "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
-      "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
-      "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
-      "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
-    },
-    "variables": ["/building-blocks/variables/variables.json"],
-    "help": "livelabs-help-db_us@oracle.com",
-    "tutorials": [
-        {
-          "title": "Get Started",
-          "description": "Get a Free Trial",
-          "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
-        },      
-        {
-          "title": "Provision ADB using the Console",
-          "type": "freetier",      
-          "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
-        },  
-        {
-          "title": "Connect to ADB",
-          "type": "livelabs",        
-          "filename": "/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
-        },   
-        {
-          "title": "Use Partitioned External Tables",
-          "type": "livelabs",        
-          "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
-        },  
-        {
-          "title": "Use Data Tools to Load Data",
-          "type": "livelabs",        
-          "filename": "/building-blocks/blocks/adb/load-data/load-data-tools.md"
-        },                 
-        {
-          "title": "Load and Analyze Data from a REST endpoint",
-          "type": "livelabs",        
-          "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
-        },         
-        {
-          "title": "Need Help?",
-          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-          "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
-        }
-    ]
+ "workshoptitle":"LiveLabs Building Blocks",
+ "include": {
+     "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+     "adb-create-load-json-collection.md":"/building-blocks/tasks/adb/create-load-json-collection.md",
+     "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md",
+     "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+     "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
+     "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+     "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
+     "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
+     "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+     "adb-query-spatial.md":"/building-blocks/tasks/adb/query-spatial.md",
+     "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+     "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
+  },
+ "help": "livelabs-help-db_us@oracle.com",
+ "variables": ["/building-blocks/variables/variables.json"],
+ "tutorials": [  
+
+     {
+         "title": "Get Started",
+         "description": "Get a Free Trial",
+         "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login.md"
+     },
+     {
+         "title": "Add Workshop Utilities",
+         "filename": "/building-blocks/setup/add-workshop-utilities.md"
+     },
+     {
+         "title": "[adb] Connect with SQL Worksheet",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
+     },
+     {
+         "title": "[adb] Load and Analyze Data from REST Services",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
+     },
+     {
+         "title": "[adb] Use Database Actions Data Loading for Object Store data",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/load-data/load-data-tools.md"
+     },
+     {
+         "title": "[adb] Provision ADB using Python API",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/provision-python-api/provision-python-api.md"
+     },
+     {
+         "title": "[adb] Create an Oracle Autonomous Database (ADW and ATP)",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
+     },
+     {
+         "title": "[adb] Access and Load Partitioned Object Storage Data",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
+     },
+     {
+         "title": "[oac] Provision Your Oracle Analytics Cloud (OAC) Instance",
+         "type": "freetier",
+         "filename": "/building-blocks/blocks/oac/provision/oac-provision.md"
+     }
+  ]
 }

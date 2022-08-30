@@ -34,29 +34,15 @@ In this lab, you will:
 
 ## Task 2: Load data from files in public Object Storage buckets using Database Actions tools
 
-In this section we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
+In this section we will perform some simple data loading tasks, to load in CSV files from public object storage buckets into tables in our autonomous database.
 
-1. Under **What do you want to do with your data?** select **LOAD DATA**, and under **Where is your data?** select **CLOUD STORAGE**, then click **Next**
+1. Under **What do you want to do with your data?** select **LOAD DATA**, and under **Where is your data?** select **CLOUD STORE**, then click **Next**
 
-    ![Select Load Data, then Cloud Storage](images/loadfromstorage.png)
+    ![Select Load Data, then Cloud Store](images/select-load-data-from-cloud-store.png)
 
-2. This is your first time loading data. Click **Done** on the help tip to set up access to a bucket on Oracle Cloud Infrastructure Object Storage.
+2. The **Load Cloud Object** page appears. Use this page to drag and drop tables from the public object storage bucket to the data loading job.
 
-    ![Click on Cloud Loactions](images/add-cloud-storage.png)
-
-3. You will need to set up a cloud storage location. A cloud storage location is an object storage bucket that contains your source data. Click **Done** to set up a location.
-
-    ![Add Cloud Storage location](images/goto-addcloudstorage.png)
-
-4. Fill in the cloud location details:
-
-    - In the **Name** field, enter 'MovieStreamLanding'.
-
-      **Note:** Take care not to use spaces in the name.
-
-    - Select **No Credential** as this is a public bucket.
-
-    - Copy and paste the following URI into the URI + Bucket field:
+> **Note:** Your browser might have cached the URL of the public object storage bucket that you accessed in the previous lab, when you downloaded the `customer_segment.csv` file. If so, the URL will automatically appear filled in, and you will see a list of folders containing files. However, if the URL field is blank and there is no list of folders, copy and paste the following link into the URL field, after which the folders will appear:
 
     ```
     <copy>
@@ -64,33 +50,41 @@ In this section we will perform some simple data loading tasks, to load in CSV f
     </copy>
     ```
 
-    ![Add Cloud Storage location](images/addcloudstorage-details.png)
+You will see a list of folders on the left side from which you can drag and drop to the data loading job.
 
-    - Then click **Create**. This will return you to the **Load Cloud Object** page.
+![The Load Cloud Object page appears](images/load-cloud-object-page-appears.png)
 
-5. From the MOVIESTREAMLANDING location, drag the **customer_contact** folder over to the right hand pane. Note that a dialog box appears asking if we want to load all the files in this folder to a single target table. In this case, we only have a single file, but we do want to load this into a single table. Click **OK**.
+3. You will select three folders. First, drag the **customer\_contact** folder over to the right hand pane. Note that a dialog box appears asking if you want to load all the files in this folder to a single target table. In this case, the folder has only a single file, `customer-contact.csv`. However, you do want to load this into a single table, so click **Yes**.
 
-6. Next, drag the **genre** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
+    ![Drag the customer_contact folder](images/drag-customer-contact-folder.png)
 
-7. Click on the pencil icon for the **customer_contact** task to view the settings for this load task.
+4. Next, drag the **genre** folder over to the right hand pane. Again, click **Yes** to load all files into a single table.
 
-    ![View settings for customer_contact load task](images/cc-viewsettings.png)
+5. Now, drag the **pizza\_location** folder over to the right hand pane. Again, click **Yes** to load all files into a single table.
 
-8. Here we can see the list of columns and data types that will be created from the csv file. They all look correct, so click **Close** to close the settings viewer.
+6. Click the pencil icon for the **customer\_contact** load task to view the settings for this task.
 
-9. Click on the pencil icon for the **genre** task to view its settings. This should show just two columns to be created - **GENRE_ID** and **NAME**. Click **Close** to close the settings viewer.
+    ![Click the pencil icon to open settings viewer for customer_contact load task](images/cc-viewsettings.png)
 
-10. Now click on the Play button to run the data load job.
+7. In the settings viewer, you can see the list of columns and data types that will be created from the csv file. They all look correct, so click **Close** to close the settings viewer.
+
+    ![View the settings for customer_contact load task](images/settings-viewer-for-customer-contact.png)
+
+8. Click the pencil icon for the **genre** task to view its settings. This should show just two columns to be created - **GENRE\_ID** and **NAME**. Click **Close** to close the settings viewer.
+
+9. Click the pencil icon for the **pizza\_location** task to view its settings. This should show ten columns to be created, starting with **PIZZA\_LOC\_ID**. Click **Close** to close the settings viewer.
+
+10. Now click the **Start** button to run the data load job.
 
     ![Run the data load job](images/rundataload.png)
 
     The job should take about 20 seconds to run.
 
-11. Check that all 3 data load cards have green tick marks in them, indicating that the data load tasks have completed successfully.
+11. Check that all 3 data load cards have green tick marks in them, indicating that the data load tasks have completed successfully. Then click **Done** to exit the DATA LOAD tool and return to the Database Actions Launchpad.
 
     ![Check the job is completed](images/loadcompleted.png)
 
-This completes the first data loading lab using public object storage data. In the next lab, we will load local and private object storage data.
+This completes the data loading lab using public object storage data. In the next lab, we will load data using private object storage data.
 
 Please *proceed to the next lab*.
 

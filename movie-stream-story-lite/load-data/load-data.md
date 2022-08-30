@@ -178,7 +178,7 @@ In this step we will perform some simple data loading tasks, to load in CSV file
     ```
 
     ![Add Cloud Storage location](images/addcloudstorage-details.png)
-    
+
     - Then click **Create**. This will return you to the **Load Cloud Object** page.
 
 3. From the MOVIESTREAMGOLD location, drag the **customer_contact** folder over to the right hand pane. Note that a dialog box appears asking if we want to load all the files in this folder to a single target table. In this case, we only have a single file, but we do want to load this into a single table. Click **OK**.
@@ -218,15 +218,15 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 
     ![Click on Development - SQL](images/gotosql.png)
 
-2. Copy and paste the following script into the Worksheet. This script will create PL/SQL procedures based on the lab_setup.sql file found in github.
+2. Copy and paste the following script into the Worksheet. This script will create PL/SQL procedures based on the lab-setup.sql file found in github.
 
 ```
 <copy>
--- Install the setup file from github 
+-- Install the setup file from github
 declare
     l_owner     varchar2(100) := 'oracle-livelabs';
     l_repo_name varchar2(100) := 'adb';
-    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab_setup.sql';
+    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab-setup.sql';
 BEGIN
     dbms_cloud_repo.install_file(
         repo => dbms_cloud_repo.init_github_repo(                 
