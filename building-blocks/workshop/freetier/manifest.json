@@ -16,7 +16,7 @@
   },
  "help": "livelabs-help-db_us@oracle.com",
  "variables": ["/adb/building-blocks/variables/variables.json"],
- "tutorials": [  
+ "tutorials": [
 
      {
          "title": "Get Started",
