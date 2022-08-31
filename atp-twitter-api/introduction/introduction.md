@@ -2,38 +2,40 @@
 
 ## Introduction
 
-In this lab, we will import a Machine Learning model that was previously trained using Python and converted into an Open Neural Network Exchange (ONNX) format.  
-Estimated Time: 15 minutes
+This workshop is to educate users on the interoperability of Twitter API, Oracle APEX, and Machine learning to extract the sentiment of tweets. By specifying particular keywords to collect, metadata, such as geo-location and hashtag frequency, are used to generate dynamic and embedded analytics. Using APEX's low code development platform and Twitter API, cx_Oracle is used to create a connection from the user's local execution of the Python library, Tweepy, and a Autonomous Transaction Processing (ATP) database. This data is processed and fed through a machine learning algorithm to capture the sentiment (positive, neutral, or negative) of specific tweets. 
 
+Customers are continuously asking for solutions that utilize data from popular social media platforms (such as Twitter) to analyze their marketing campaigns and overall sentiment of their organizations. In this example, Mexico City's government is interested in what it's people are saying about them.  Using APEX, we can deliver a insightful web application that can give a quick analysis of the general sentiment of the people using word maps, statistics, and even a heat map to illustrate how the people are feeling towards the city.
+
+Estimated Time: 90 minutes
+
+![Lab Architecture](images/roadmap.png)
 
 ### Objectives
 
 In this lab, you will complete the following tasks:
 
-- Verify Database Connection
-- Oracle AutoML experiment
-- Explore AutoML Model Results
-- Select a Machine Learning Mode
+- Create Schema
+- Extract API
+- Review Data Processing
+- Review Machine Learning
+- Review ATP Storage
+- Explore APEX
 
 ### Prerequisites
 
 This lab assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
+- Familiarity with Twitter is desirable, but not required
+- Some understanding of cloud and database terms is helpful
+- Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
+- Basic familiarity with Oracle APEX
+- Python 3.9 installed on your computer (Lab won't run properly with newer versions of Python)
+- Basic familiarity with Python and SQL language
+- IDE of your choice installed on your computer (EX: VSCode or Atom)
 
-## Task 1: Create Predictive Model
-
-1. With the GGSA Catalog open, select **Create New Item** and from the drop down menu, select **Predictive Model**. 
-
-![Create new predictive model item](images/predictive-model.png) 
-
-2. In the new window that opens, add a name to the model and select Predictive Model Type **ONNX**. Select **Next** to proceed to updating the rest of the details.
-
-![Select predictive model type](images/select-model-type.png) 
-
-3. Upload the Predictive Model URL and select a model version. 
-
-![Update model details](images/model-details.png) 
-
+## Want to learn more about Autonomous Database?
+- [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
+- [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
 
