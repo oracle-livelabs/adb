@@ -122,7 +122,7 @@ As ADW and ATP accept only secure connections to the database, you need to downl
 
     ![Wait for the Sales Dashboard to load.](./images/oac-sales-dashboard.png " ")
 
-10. Note the 2 tabs at the bottom of the dashboard. The dashboard opens by default in the **Join Diagram** tab. Click the **SALES\_DASHBOARD** tab to see the dashboard with the ability to filter and choose from an options menu for each card in the dashboard. **MARTY, I DON'T UNDERSTAND WHY IT STARTS FROM "Join Diagram" TAB, AND NOT JUST SHOW THE "SALES\_DASHBOARD" TAB**.
+10. Note the 2 tabs at the bottom of the dashboard. The dashboard opens by default in the **Join Diagram** tab. Click the **SALES\_DASHBOARD** tab to see the dashboard with the ability to filter and choose from an options menu for each card in the dashboard. 
 
     ![Click the SALES_DASHBOARD tab to see the editable dashboard.](./images/oac-update-dataset.png " ")
 
