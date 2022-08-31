@@ -1,2 +1,0 @@
-{"lab_num":4,"title":"Add data sets required for workshop","script":"data-management-library/autonomous-database/shared/movie-stream-story-lite/add-data-scripts/add_datasets.sql"}
-{"lab_num":5,"title":"Create graph","script":"data-management-library/autonomous-database/shared/movie-stream-story-lite/add-data-scripts/add_graph.sql"}
