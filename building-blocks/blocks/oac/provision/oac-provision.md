@@ -61,25 +61,25 @@ Access the Oracle Cloud Infrastructure Console from the **Oracle Home Page** (ww
 
     Complete the form using the following information:
 
-    - **Compartment**: Select a valid compartment in your tenancy
+    - **Name**: [](var:oac_instance_name)
 
-    - **Instance Name**: [](var:oac_instance_name)
+    - **Description**: `Analytics instance for the cloud`
 
-    - **Description**: `Analytics Instance for the cloud`
+    - **Create in Compartment**: Select a valid compartment in your tenancy
 
-    - **Feature Set**: Enterprise Analytics (important)
+    - **Capacity Type - OCPU**: OCPU Count: 1 (Non Production)
 
-    - **Capacity**: 1 - Non Production
+    - **Capacity Type - Users**: User Count: 10
 
-    - **License Type**: "Subscribe to a new Analytics Cloud software > license and the Analytics Cloud." (You will use this service as part of the free Oracle Cloud trial that you requested for this workshop).
+    - **License**: License Included
 
-4. Select **Create**.
+    - **Edition**: Enterprise Edition
+
+4. Click **Create**.
 
     ![OAC Instance Creation](./images/oac-creation-details-new.png)
 
-5. On the **Confirmation** screen, select **Create**.
-
-    The Analytics instance page will be displayed with a status of **CREATING**.
+5. The Analytics instance page will be displayed with a status of **CREATING**.
 
     ![OAC Instance Creating](./images/oac-creating.png)
 
@@ -96,4 +96,4 @@ Please proceed to the next lab.
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
 - **Updated By/Date** - Priscila Iruela, June 2022
-- **Last Updated By/Date** - Rick Green, Principal Developer, Database User Assistance, July 2022
+- **Last Updated By/Date** - Rick Green, Principal Developer, Database User Assistance, August 2022
