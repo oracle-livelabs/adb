@@ -78,7 +78,7 @@ You can register an Autonomous Database from its Console in Oracle Cloud Infrast
 
 3. Click the **Navigation Menu** in the upper left, navigate to **Oracle Database**, and select **Autonomous Transaction Processing**.
 
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-atp.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/database-atp.png " ")
 
 4. From the **COMPARTMENT** drop-down list, select the compartment that contains your Autonomous Database.
 

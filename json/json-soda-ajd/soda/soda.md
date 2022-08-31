@@ -1,8 +1,8 @@
-# Using SODA for REST
+# Use SODA for REST
 
 ## Introduction
 
-So far, all collection operations have been issued from a UI in the browser. In a real application these operations would be called directly from a programming language (for example using the open-source SODA drivers for Java, Python or NodeJS). Another option is to use REST.
+So far, all collection operations have been issued from a UI in the browser. In a real application, these operations would be called directly from a programming language (for example using the open-source SODA drivers for Java, Python or NodeJS). Another option is to use REST.
 
 This lab is optional for those that wish to understand how to access Autonomous JSON Database through raw REST calls. 
 
@@ -17,13 +17,13 @@ In this lab, you will:
 
 ### Prerequisites
 
-* Have successfully created a JSON collection in Autonomous JSON Database and have inserted few documents
+* Have successfully created a JSON collection in Autonomous JSON Database and have inserted a few documents
 
 ## Task 1: Perform Simple REST Operations in Oracle Cloud Shell
 
 1. In lab 3, you saved the REST and ORDS URL. It should end with */ords/*.
 
-	In this lab, we refer *your URL* in code snippets where your URL is similar to `ppkenzghg74avsq-atp19cdb.adb.eu-frankfurt-1.oraclecloudapps.com`. Replace *your URL* with the part of your URL before *ords/* in all the code snippets wherever mentioned.
+	In this lab, we refer to *your URL* in code snippets where your URL is similar to `ppkenzghg74avsq-atp19cdb.adb.eu-frankfurt-1.oraclecloudapps.com`. Replace *your URL* with the part of your URL before *ords/* in all the code snippets wherever mentioned.
 
 2. First, take your full REST URL and append */admin/soda/latest*.
 
@@ -54,9 +54,9 @@ In this lab, you will:
 	```
 	![access URL](./images/documents-1.png)
 
-5. The browser is limited to GET requests. For further operations we need to also perform other requests. For this we switch to use the 'curl' command in the Oracle Cloud Shell. If you are familiar with other REST tools like Postman you can also use them for the following examples.
+5. The browser is limited to GET requests. For further operations, we need to also perform other requests. For this, we switch to using the 'curl' command in the Oracle Cloud Shell. If you are familiar with other REST tools like Postman you can also use them for the following examples.
 
-	Navigate to Oracle Cloud Console and click on Cloud Shell icon.
+	Navigate to Oracle Cloud Console and click on the Cloud Shell icon.
 
 	![Start cloud shell](./images/ocshell.png)
 

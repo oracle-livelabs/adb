@@ -38,29 +38,28 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-click-db-dcat.png " ")
 </if>
     <if type="freetier">
-3. On the **Autonomous Databases** page, click your **DB-DCAT Integration** ADB instance.
+3. On the **Autonomous Databases** page, click your **DB-DCAT-Integration** ADB instance.
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/click-db-dcat.png " ")
     </if>
 
 4. On the **Autonomous Database Details** page, click **Database Actions**.
     <if type="livelabs">
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/ll-db-actions-new.png " ")
     </if>
     <if type="freetier">
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
     </if>
 
-5. A **Launch DB Actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions Launchpad** Home page is displayed. In the **Development** section, click the **SQL** card.
+5. A **Launch DB Actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed. In the **Development** section, click the **SQL** card.
 
     ![The Database Actions Launchpad Home page is displayed. The SQL card in the Development section is highlighted.](./images/ll-launchpad.png " ")
 
     <if type="livelabs">
-    >**Note:** If you are prompted for a username and password, enter the LiveLabs username and password that were provided for you in **Workshop Details** section of the **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page.
+    >**Note:** If you are prompted for a username and password, enter the LiveLabs username and password that were provided for you in **Reservation Information** panel that is accessed from the **Run Workshop Access the Data Lake using Autonomous Database and Data Catalog** tab.
 
-    ![The Workshop Details section of the Launch Workshop LiveLabs page is displayed. This section displays information that you will need in the workshop such as the workshop's URL, username, initial password, and so on.](./images/ll-workshop-details.png " ")
     </if>
 
-    A **Data Loading** box is displayed. Close it. The **SQL Worksheet** is displayed.    
+    The **SQL Worksheet** is displayed.    
 
     ![The ADMIN user is selected in the Navigator tab on the left on the worksheet. The ADMIN user is also displayed and highlighted in the worksheet's banner.](./images/start-sql-worksheet.png " ")
 
@@ -179,10 +178,7 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
     ![The result of running the query in the code section of the worksheet is displayed in the Script Output tab at the bottom of the worksheet. ](./images/ll-log-output.png " ")
 
-    >**Note:** Make sure that the log displays the above highlighted output (at the end of the log) about resetting the password before you proceed to the next step. Once your output is displayed, you can close the new browser tab. In addition, the prerequisites to initialize the lab is complete only when you see the following highlighted message _You can not log in until you set a password ..._ in the **Script Output** tab of the first SQL worksheet as follows:
-
-    ![](./images/code-execution-complete.png " ")
-
+    >**Note:** Make sure that the log displays the above highlighted output (at the end of the log) about resetting the password before you proceed to the next step. Once your output is displayed, you can close the new browser tab. In addition, the prerequisites to initialize the lab is complete only when you see the following highlighted message _You can not log in until you set a password ..._ in the **Script Output** tab.
 
 4. In the original browser tab, set the password for the **`MOVIESTREAM`** user. You will log in as this user to run queries. Click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -284,39 +280,17 @@ In this task (in a later step), you will create a connection to your Data Catalo
 
     ![The result of running the query in the code section of the worksheet is displayed in the Query Result tab. Some of the columns displayed are the catalog_id and catalog_region.](./images/query-region-id-ocid.png " ")
 
-2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the pencil icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
+2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the eye icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
 
-### **Find the Data Catalog Instance Region Identifier and OCID Using the UI**
+>**Notes:**
+* For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
+* For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
 
-There are several ways to find the region identifier that is associated with your region name using the UI.
-
-* Examine your URL for your environment. It contains the region identifier. In the following example, the region name in the banner is
-**US West (Phoenix)**. You can find the region identifier that is associated with this region name in the URL which is **us-phoenix-1**.
-
-    ![The region id in this example is displayed and highlighted in the Console banner, US West (Phoenix). The URL in the Address bar shows the region identifier for this region name, us-phoenix-1.](./images/region-id-url-method-ll.png " ")
-
-* Click the displayed region drop-down list on the banner to display the **Regions** drop-down menu. Click **Manage Regions**. On the **Infrastructure Regions** page, find and copy the region identifies that is associated with the region displayed on the banner which is **us-ashburn-1** in our example.
-
-    ![The region in this example is displayed and highlighted in the Console banner. On the Infrastructure Regions page, the region Identifier that is associated with the region displayed on the banner is highlighted.](./images/ll-regions-identifies.png " ")
-
-    > **Note:** If your region identifier that is associated with the region name displayed in the banner is not displayed on the above **Infrastructure Regions** page, see the [Regions and Availability Domains documentation](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm).
-
-    ![The partial Regions and Availability Domains documentation is displayed. The US East (Ashburn) region name and its associated region id, us-ashburn-1, are highlighted.](./images/regions-doc.png " ")
-
-You can now paste your copied region identifier anywhere you need it.    
-
-### **Find the Data Catalog Instance OCID Using the UI**
-
-From the **Oracle Cloud Console**, open the **Navigation** menu and click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**. On the **Data Catalog Overview** page, click **Go to Data Catalogs**. On the **Data Catalogs** page, in the row for your **training-dcat-instance** Data Catalog instance, click the **Actions** button (three vertical dots), and then select **Copy OCID** from the context menu.
-
-
-![On the Data Catalogs page, the Data Catalog instance is highlighted and labeled as 1. The Actions button, labeled as 2, is clicked to display the context menu. The Copy OCID menu option, labeled as 3, is selected.](./images/ll-dcat-ocid.png " ")
-
-6. Paste your region identifier and Data Catalog OCID that you copied in the _`region`_ and _`catalog_id`_ arguments respectively.
+3. Paste your region identifier and Data Catalog OCID that you copied in the _`region`_ and _`catalog_id`_ arguments respectively.
 
     ![The pasted code is displayed in the code section of the Worksheet.](./images/ll-populated-connect.png " ")
 
-7. Click the **Run Script (F5)** icon in the Worksheet toolbar. This could take a couple of minutes.
+4. Click the **Run Script (F5)** icon in the Worksheet toolbar. This could take a couple of minutes.
 
     ![The result of running the code in the code section of the worksheet is displayed in the Script Output tab with the message "PL/SQL procedure successfully completed."](./images/ll-connect-dcat.png " ")
 
@@ -326,7 +300,7 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
     exec dbms_dcat.unset_data_catalog_conn;
     ```
 
-8. Query your current Data Catalog connections and review the the DCAT ocid, its compartment, and the credentials that are used to access Oracle Object Storage and Data Catalog. Click **Copy** to copy the following code, and then paste it into the SQL Worksheet. Click the **Run Statement** icon in the Worksheet toolbar. The result is displayed in the **Query Result** tab at the bottom of the worksheet. For detailed information, see [Managing the Data Catalog Connection](https://docs-uat.us.oracle.com/en/cloud/paas/exadata-express-cloud/adbst/ref-managing-data-catalog-connection.html#GUID-BC3357A1-6F0E-4AEC-814E-71DB3E7BB63D).
+5. Query your current Data Catalog connections and review the the DCAT ocid, its compartment, and the credentials that are used to access Oracle Object Storage and Data Catalog. Click **Copy** to copy the following code, and then paste it into the SQL Worksheet. Click the **Run Statement** icon in the Worksheet toolbar. The result is displayed in the **Query Result** tab at the bottom of the worksheet. For detailed information, see [Managing the Data Catalog Connection](https://docs-uat.us.oracle.com/en/cloud/paas/exadata-express-cloud/adbst/ref-managing-data-catalog-connection.html#GUID-BC3357A1-6F0E-4AEC-814E-71DB3E7BB63D).
 
     ```
     <copy>
@@ -435,45 +409,19 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
     </copy>
     ```
 
-    ![The result of running the query in the code section of the worksheet is displayed in the Query Result tab. Some of the columns displayed are the catalog_id and catalog_region.](./images/query-region-id-ocid.png " ")
+    ![The result of running the query in the code section of the worksheet is displayed in the Query Result tab. Some of the columns displayed are the catalog_id and catalog_region.](./images/ll-query-region-id-ocid.png " ")
 
-2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the pencil icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
+2.  To copy the **`catalog_id`** (OCID) or the **`catalog_region`** (region identifier) values, double-click the appropriate cell to highlight the value, and then copy it using **[Ctrl+C]** in MS-Windows. You can also click the eye icon to copy the value in a cell. Paste the copied value into a text editor of your choice or wherever you need it.
 
-### **Find the Data Catalog Instance Region Identifier Using the UI**
+>**Notes:**
+* For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
+* For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
 
-There are several ways to find the region identifier that is associated with your region name using the UI.
-
-* Examine your URL for your environment. It contains the region identifier. In the following example, the region name in the banner is
-**US West (Phoenix)**. You can find the region identifier that is associated with this region name in the URL which is **us-phoenix-1**.
-
-    ![The region id in this example is displayed and highlighted in the Console banner, US West (Phoenix). The URL in the Address bar shows the region identifier for this region name, us-phoenix-1.](./images/region-id-url-method-ll.png " ")
-
-* Click the displayed region drop-down list on the banner to display the **Regions** drop-down menu. Click **Manage Regions**. On the **Infrastructure Regions** page, find and copy the region identifies that is associated with the region displayed on the banner which is **us-ashburn-1** in our example.
-
-    ![The region in this example is displayed and highlighted in the Console banner. On the Infrastructure Regions page, the region Identifier that is associated with the region displayed on the banner is highlighted.](./images/ll-regions-identifies.png " ")
-
-    > **Note:** If your region identifier that is associated with the region name displayed in the banner is not displayed on the above **Infrastructure Regions** page, see the [Regions and Availability Domains documentation](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm).
-
-    ![The partial Regions and Availability Domains documentation is displayed. The US East (Ashburn) region name and its associated region id, us-ashburn-1, are highlighted.](./images/regions-doc.png " ")
-
-* If you are running your workshop using a LiveLabs reservation, on the **Launch _workshop name_ Workshop** page, in the **Workshop Details** section, the **Region** row lists your region name and identifier. Copy the region identifier next to your assigned region name, **us-phoenix-1** in the following example.
-
-    ![On the Launch workshop name page, the Workshop Details section, region name, and region identifier are highlighted.](./images/ll-region-id.png " ")
-
-You can now paste your copied region identifier anywhere you need it.    
-
-### **Find the Data Catalog Instance OCID Using the UI**
-
-From the **Oracle Cloud Console**, open the **Navigation** menu and click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**. On the **Data Catalog Overview** page, click **Go to Data Catalogs**. On the **Data Catalogs** page, in the row for your **training-dcat-instance** Data Catalog instance, click the **Actions** button (three vertical dots), and then select **Copy OCID** from the context menu.
-
-
-![On the Data Catalogs page, the Data Catalog instance is highlighted and labeled as 1. The Actions button, labeled as 2, is clicked to display the context menu. The Copy OCID menu option, labeled as 3, is selected.](./images/ll-dcat-ocid.png " ")
-
-6. Paste your region identifier and Data Catalog OCID that you copied in the _`region`_ and _`catalog_id`_ arguments respectively.
+3. Paste your region identifier and Data Catalog OCID that you copied in the _`region`_ and _`catalog_id`_ arguments respectively.
 
     ![The pasted code is displayed in the code section of the Worksheet.](./images/ll-populated-connect.png " ")
 
-7. Click the **Run Script (F5)** icon in the Worksheet toolbar. This could take a couple of minutes.
+4. Click the **Run Script (F5)** icon in the Worksheet toolbar. This could take a couple of minutes.
 
     ![The result of running the code in the code section of the worksheet is displayed in the Script Output tab with the message "PL/SQL procedure successfully completed."](./images/ll-connect-dcat.png " ")
 
@@ -483,7 +431,7 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
     exec dbms_dcat.unset_data_catalog_conn;
     ```
 
-8. Query your current Data Catalog connections and review the DCAT OCID, its compartment, and the credentials that are used to access Oracle Object Storage and Data Catalog. Click **Copy** to copy the following code, and then paste it into the SQL Worksheet. Click the **Run Statement** icon in the Worksheet toolbar. The result is displayed in the **Query Result** tab at the bottom of the worksheet. For detailed information, see [Managing the Data Catalog Connection](https://docs-uat.us.oracle.com/en/cloud/paas/exadata-express-cloud/adbst/ref-managing-data-catalog-connection.html#GUID-BC3357A1-6F0E-4AEC-814E-71DB3E7BB63D).
+5. Query your current Data Catalog connections and review the DCAT OCID, its compartment, and the credentials that are used to access Oracle Object Storage and Data Catalog. Click **Copy** to copy the following code, and then paste it into the SQL Worksheet. Click the **Run Statement** icon in the Worksheet toolbar. The result is displayed in the **Query Result** tab at the bottom of the worksheet. For detailed information, see [Managing the Data Catalog Connection](https://docs-uat.us.oracle.com/en/cloud/paas/exadata-express-cloud/adbst/ref-managing-data-catalog-connection.html#GUID-BC3357A1-6F0E-4AEC-814E-71DB3E7BB63D).
 
     ```
     <copy>
@@ -494,7 +442,7 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
 
     The connection to your `training-dcat-instance` Data Catalog instance that you created in this workshop is displayed.
 
-    ![The result of running the query in the code section of the worksheet is displayed in the Query Result tab. Some of the columns displayed are compartment_id, instance_id, and region. The name column displays the training-dcat-instance instance.](./images/query-dcat-connection.png " ")
+    ![The result of running the query in the code section of the worksheet is displayed in the Query Result tab.](./images/ll-query-dcat-connection.png " ")
 
     You can use the `describe` SQL*Plus command to get familiar with the columns in the `all_dcat_connections` Data Catalog table:
 
@@ -588,12 +536,12 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
 
     To copy a key value, double-click the cell to highlight the value, and then copy and paste it into a text editor of your choice. Copy the values for both `folder_key` and `data_asset_key` which you will need in the next command. In our example, the two key values from the previous query are as follows:
 
-    * **`folder_key`:** `7023125c-5dfb-4d28-ad6f-d184a508cee2`
-    * **`data_asset_key`:** `509c3c9f-79f9-42e9-9320-2e02e2e177b7`
+    * **`folder_key`:** `b013156e-1c4d-4bec-9e97-8d240122ff9d`
+    * **`data_asset_key`:** `8275a489-ad63-4dc7-a97e-b50836a09537`
 
     ![The folder_key and data_asset_key columns along with their values are displayed. The Edit (pencil) icon to the right of the folder_key value is highlighted.](./images/ll-copy-folder-key-value.png " ")  
 
-    > **Note:** In later steps, you will synchronize all of the available Object Storage buckets.
+    > **Note:** In later steps, you will synchronize **all** of the available Object Storage buckets.
 
 2. Copy and paste the following code into your SQL Worksheet. Replace the **`asset_id`** key value shown with your `data_asset_key` value and the **`folder_list`** key value with your `folder_key` value that you copied in the previous step.     
 
@@ -606,8 +554,8 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
     dbms_dcat.run_sync(synced_objects =>
         '{"asset_list": [
             {
-                "asset_id":"509c3c9f-79f9-42e9-9320-2e02e2e177b7",
-                "folder_list":["7023125c-5dfb-4d28-ad6f-d184a508cee2"]
+                "asset_id":"8275a489-ad63-4dc7-a97e-b50836a09537",
+                "folder_list":["b013156e-1c4d-4bec-9e97-8d240122ff9d"]
             }   
         ]}', grant_read => 'dwrole');                    
     end;
@@ -631,14 +579,14 @@ From the **Oracle Cloud Console**, open the **Navigation** menu and click **Anal
 
     ![The result of running the query is displayed in the Query Result tab. The highlighted type column shows the value DCAT_SYNC. The highlighted logfile_table column shows the value "DBMS_DCAT$1_LOG".](./images/view-log.png " ")
 
-    Your **logfile_table** name might not match the result shown in the above image. If you have more than one log file generated, query the most recent log file table. Using the `order by start_time desc` clause displays the most recent log file first. In our example, there is only one log table name, `DBMS_DCAT$1_LOG`.
+    Your **logfile_table** name might not match the result shown in the above image. If you have more than one log file generated, query the most recent log file table. Using the `order by start_time desc` clause displays the most recent log file first. In our example, there is only one log table name, `DBMS_DCAT$3_LOG`.
 
-4. Review the full log. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the log table name with your own log table name that you identified in the previous step.
+4. Review the full sync log. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the log table name with your own log table name that you identified in the previous step.
 
     ```
     <copy>
     select *
-    from DBMS_DCAT$1_LOG
+    from DBMS_DCAT$3_LOG
     order by log_timestamp desc;
     </copy>
     ```
@@ -775,20 +723,20 @@ So far in this lab, you synchronized only the **`moviestream_sandbox`** Object S
 
     When the full sync is completed successfully, a **PL/SQL procedure successfully completed** message is displayed in the **Script Output** tab. If you are using a LiveLabs environment, the output might look different.
 
-    ![The result of running the sync code is displayed.](./images/synch-result.png " ")
+    ![The result of running the sync code is displayed.](./images/sync-result.png " ")
 
-2.  Copy and paste the following code into your SQL Worksheet to query the **`user_load_operations`** table to find the name of the logfile table name that contains information about the sync operation. Click the **Run Script (F5)** icon in the Worksheet toolbar. Note the name of the **`logfile_table`**. The **`order by 1`** clause displays the most recent **DCAT_SYNC** operation if there were more than one performed. In our example, the most recent logfile table name is **`DBMS_DCAT$1_LOG`**
+2.  Copy and paste the following code into your SQL Worksheet to query the **`user_load_operations`** table to find the name of the logfile table name that contains information about the sync operation. Click the **Run Script (F5)** icon in the Worksheet toolbar. Note the name of the **`logfile_table`**. The **`order by 3`** clause displays the most recent **DCAT_SYNC** operation based on start time if there were more than one performed. In our example, the most recent logfile table name is **`DBMS_DCAT$4_LOG`**
 
     ```
     <copy>
-    select type, status, logfile_table
+    select type, status, start_time, logfile_table
     from USER_LOAD_OPERATIONS
     where type = 'DCAT_SYNC'
-    order by 1;
+    order by 3 desc;
     </copy>
     ```
 
-      ![The result of running the query is displayed in the Query Result tab. The first row is highlighted and it shows the type, status, and logfile_table columns. The name of the logfile_table in this example is DBMS_DCAT$1_LOG.](./images/find-logfile-name.png " ")
+      ![The result of running the query is displayed in the Query Result tab.](./images/find-logfile-name.png " ")
 
 
 3.  Copy and paste the following code into your SQL Worksheet to query your **`logfile_table`** table that you identified in the previous to view the synchronization process information. Click the **Run Script (F5)** icon in the Worksheet toolbar. Substitute the logfile table name in the following query with your own logfile table name that you identified in the previous step.
@@ -796,7 +744,7 @@ So far in this lab, you synchronized only the **`moviestream_sandbox`** Object S
     ```
     <copy>
     select *
-    from DBMS_DCAT$1_LOG;
+    from DBMS_DCAT$4_LOG;
     </copy>
     ```
 
@@ -846,7 +794,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data     
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, April 2022
+* **Last Updated By/Date:** Lauran Serhal, August 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

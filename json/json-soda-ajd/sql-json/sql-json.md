@@ -1,4 +1,4 @@
-# Using SQL to work with JSON
+# Use SQL to work with JSON
 
 ## Introduction
 
@@ -8,7 +8,7 @@ SQL is a very mature query language. Oracle added new operators to work with JSO
 
 A key characteristic of a JSON collection (like 'products') is that it is backed by a table - a table then gets auto-created when you create a collection so that you do not have to specify columns and data types.
 
-In the following we show you how you can use SQL to work with the JSON data in a collection.
+In the following, we show you how you can use SQL to work with the JSON data in a collection.
 
 Estimated Time: 30 minutes
 
@@ -33,7 +33,7 @@ In this lab, you will:
 
     ![View products table](./images/products-table.png)
 
-    You see that the table 'PRODUCTS' has 5 columns: an 'ID' which is a unique identifier for the document (and in the case of MongoDB-compatible collections, is taken from the "_id" field in the JSON), a column 'DATA' which holds the JSON document, 2 metadata columns to keep track of creation and update timestamps and 'VERSION' which is typically a hash value for the document and allows to keep caches in sync (similar to an eTag). None of this is really important at this point as we will only use the DATA column in the following examples.
+    You see that the table 'PRODUCTS' has 5 columns: an 'ID' which is a unique identifier for the document (and in the case of MongoDB-compatible collections, is taken from the "_id" field in the JSON), a column 'DATA' which holds the JSON document, 2 metadata columns to keep track of creation and update timestamps and 'VERSION' which is typically a hash value for the document and allows us to keep caches in sync (similar to an eTag). None of this is really important at this point as we will only use the DATA column in the following examples.
 
     *Learn more -* [Use Oracle Database Actions with JSON Collections](https://docs.oracle.com/en/cloud/paas/autonomous-json-database/ajdug/use-oracle-database-actions-json-collections1.html) and [Use SQL With JSON Data](https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/json-in-oracle-database.html#GUID-04377B36-654B-47C4-A480-535E00E46D1F)
 
@@ -41,7 +41,7 @@ In this lab, you will:
 
 1. Because the JSON data is stored in a binary representation (for query and update efficiency) we need to convert it to a human-readable string using JSON_Serialize.
 
-    Copy and paste this query in SQL Developer Web worksheet and run it. It returns 9 (random) documents from the table/collection.
+    Copy and paste this query into SQL Developer Web worksheet and run it. It returns 9 (random) documents from the table/collection.
 
     ```
     <copy>
@@ -68,7 +68,7 @@ In this lab, you will:
 
     We use a trailing function like 'string()' or 'number()' to map a selected JSON scalar value to a SQL value.
 
-3. You can also extract values this way in the `select` part. Copy and paste the query in SQL Developer Web worksheet and run it.
+3. You can also extract values this way in the `select` part. Copy and paste the query into SQL Developer Web worksheet and run it.
 
     ```
     <copy>
@@ -115,7 +115,7 @@ All above examples extracted singleton values from the JSON data - values that o
 
     As you can see we're extracting the '_id', the 'title' and the 'year' from each document. Instead of a trailing function we can specify an optional SQL data type like NUMBER - the default (used for the title) is a VARCHAR2(4000). Note that since _id starts with an underscore character it's necessary to put it in quotes.
 
-2.  We could have written this query with the simple dot notation, as well, because we do not drill into any JSON array yet. Let's do that in  this query, by using the NESTED clause also in the COLUMNS clause.
+2.  We could have written this query with the simple dot notation, as well, because we do not drill into any JSON array yet. Let's do that in  this query, by using the NESTED clause also in the *COLUMNS* clause.
 
     ```
     <copy>
@@ -125,7 +125,7 @@ All above examples extracted singleton values from the JSON data - values that o
     ```
     ![nested data with drill into JSON array](./images/sql3-2.png " ")
 
-    The second 'nested' acts over the JSON array called 'starring'. The '[*]' means that we want to select every item of the array; [0] would only select the first one, for example. Then the second columns clause defines which value we want to extract from inside the array. The 'starring' array consists only of string values; we therefore need to select the entire value. This is done with the path expression '$'. We give selected values the column name 'actor'. You will learn more about path expressions in the next step.
+    The second 'nested' acts over the JSON array called 'starring'. The '[*]' means that we want to select every item of the array; [0] would only select the first one, for example. Then the second *columns* clause defines which value we want to extract from inside the array. The 'starring' array consists only of string values; we therefore need to select the entire value. This is done with the path expression '$'. We give selected values the column name 'actor'. You will learn more about path expressions in the next step.
 
 3.  It is also possible to directly access the actors ('starring' array) as the following query shows: here we only select the actor names.
 
@@ -153,7 +153,7 @@ All above examples extracted singleton values from the JSON data - values that o
 
 ## Task 4: Queries over JSON data
 
-The 'simple dot notation' as shown in the previous steps is a syntax simplification of the SQL/JSON operators. Compared to the 'simple dot notation' they're a bit more verbose but also allow for more customization. These operators are part of the SQL standard.
+The "simple dot notation" as shown in the previous steps is a syntax simplification of the SQL/JSON operators. Compared to the 'simple dot notation' they're a bit more verbose but also allow for more customization. These operators are part of the SQL standard.
 
 ### SQL/JSON Path Expression
 
@@ -175,7 +175,7 @@ Now let's look at the different SQL/JSON operators step by step:
 
 JSON_VALUE takes one scalar value from the JSON data and returns it as a SQL scalar value.
 
-1.  The first argument is the input, the column 'data' from the products collection/table. This is followed by a path expression, in this case we select the value for field 'format'. The optional 'returning' clause allows to specify the return type, in this case a varchar2 value of length 10. Because not every product has a 'format' value (only the movies do) there are cases where no value can be selected. By default NULL is returned in this case. The optional ON EMPTY clause allows to specify a default value (like 'none') or to raise an error - with ERROR ON EMPTY. 
+1.  The first argument is the input, the column 'data' from the products collection/table. This is followed by a path expression, in this case, we select the value for field 'format'. The optional 'returning' clause allows us to specify the return type, in this case, a varchar2 value of length 10. Because not every product has a 'format' value (only the movies do) there are cases where no value can be selected. By default NULL is returned in this case. The optional ON EMPTY clause allows us to specify a default value (like 'none') or to raise an error - with ERROR ON EMPTY. 
 
     NOTE: there's a bug in SQL Developer Web which means it does not parse this query correctly, if you see the error: "ORA-00923: FROM keyword not found where expected" then just make sure the whole query is selected before you attempt to run it.
 
@@ -293,7 +293,7 @@ JSON_Exists is used to filter rows, therefore you find it in the WHERE clause. I
 
 ### JSON_Table
 
-JSON\_Table is used to 'flatten' hierarchical JSON data to a table consisting of rows and columns. It is commonly used for analytics or reporting over JSON data. Similarly to the 'nested' clause in the simple dot notation JSON\_Table allows to unnest an embedded JSON array. JSON\_Table consists of 'row' path expressions (which define the rows) and column path expressions (which extract a value and map it to a column with a given data type). Each row can have JSON\_Value, JSON\_Query and JSON\_Exists semantics (meaning that each row can act like JSON_Value, JSON_Query or JSON_Exists). This allows you to combine a set of these operations into one single JSON\_Table expression.
+JSON\_Table is used to 'flatten' hierarchical JSON data to a table consisting of rows and columns. It is commonly used for analytics or reporting over JSON data. Similarly to the 'nested' clause in the simple dot notation JSON\_Table allows us to unnest an embedded JSON array. JSON\_Table consists of 'row' path expressions (which define the rows) and column path expressions (which extract a value and map it to a column with a given data type). Each row can have JSON\_Value, JSON\_Query and JSON\_Exists semantics (meaning that each row can act like JSON_Value, JSON_Query or JSON_Exists). This allows you to combine a set of these operations into one single JSON\_Table expression.
 
 1.  In this example, let's combine a set of these operations into one single JSON_Table expression.
 
@@ -313,17 +313,17 @@ JSON\_Table is used to 'flatten' hierarchical JSON data to a table consisting of
     ```
     ![flatten hierachy with JSON table](./images/sql6-1.png " ")
 
-2.  Like the other SQL/JSON operators the first input is the JSON data - the column 'data' from the products collection/table. The first path expressions, '$', is the row path expression - in this case we select the entire document. It would be possible to directly access an embedded object or array here, for example '$.starring[*]' would then generate a row for each actor.
+2.  Like the other SQL/JSON operators the first input is the JSON data - the column 'data' from the products collection/table. The first path expressions, '$', is the row path expression - in this case, we select the entire document. It would be possible to directly access an embedded object or array here, for example '$.starring[*]' would then generate a row for each actor.
 
-    The columns clause then lists each column. Let's go over this line by line:
+    The *columns* clause then lists each column. Let's go over this line by line:
     *	The '_id' column is defined to be a number instead of the default VARCHAR2(4000).
-    *	The next column is called 'ProductName' which is not a field name in the JSON data, we therefore need to tell which field name we want to use. This is done by providing title column path expression, '$.title', which targets field 'title'.. We also set the data type to be a VARCHAR2 of length 50.
-    *	The column 'type' uses the same name as the field in the JSON, therefore we do not need to provide a path expression. Also we accept the default datatype.
-    *	Field 'actors' does not exists, so we map the actors, which are elements of array 'starring', to column 'actors' using path expression '$.starring'. We use FORMAT JSON to specify JSON\_Table that this column has JSON\_Query  semantics and the returned value is JSON itself - in this case we extract the embedded array.
+    *	The next column is called 'ProductName' which is not a field name in the JSON data, we therefore need to tell which field name we want to use. This is done by providing a title column path expression, '$.title', which targets field 'title'. We also set the data type to be a VARCHAR2 of length 50.
+    *	The column 'type' uses the same name as the field in the JSON, therefore we do not need to provide a path expression. Also, we accept the default datatype.
+    *	Field 'actors' does not exist, so we map the actors, which are elements of array 'starring', to column 'actors' using path expression '$.starring'. We use FORMAT JSON to specify JSON\_Table that this column has JSON\_Query  semantics and the returned value is JSON itself - in this case, we extract the embedded array.
     *	Similarly, we use the keyword 'EXISTS' to specify that the next column ('year') or JSON_Exists semantics. We're not interested in the actual year value - only if a value exists or not. You will therefore see true|false values for this column (or 1|0 if you change the return type to NUMBER).
-    *	The last column 'numGenres' is an example of using a path item method (or trailing function), in this case we call 'size()' on an array to count the number of values in the array. There are many other trailing functions that can be used.
+    *	The last column 'numGenres' is an example of using a path item method (or trailing function), in this case, we call 'size()' on an array to count the number of values in the array. There are many other trailing functions that can be used.
 
-    Multiple JSON arrays on the same level can also be projected out by using 'nested paths' on the same level, as the following example shows with the array of actors and genres. The values of the sibling arrays are returned in separate rows instead of merging them into the same row, for two reasons: The arrays could be of different sizes and there is no clear rule how to combine values from different arrays. In this example, 'genres' and 'actors' have nothing to do with each other. Why should the first actor name be place in the same row as the first genre? This is why you see the NULL values in the result. This is a UNION join.
+    Multiple JSON arrays on the same level can also be projected out by using 'nested paths' on the same level, as the following example shows with the array of actors and genres. The values of the sibling arrays are returned in separate rows instead of merging them into the same row, for two reasons: The arrays could be of different sizes and there is no clear rule on how to combine values from different arrays. In this example, 'genres' and 'actors' have nothing to do with each other. Why should the first actor name be placed in the same row as the first genre? This is why you see the NULL values in the result. This is a UNION join.
 
     ```
     <copy>
@@ -388,7 +388,7 @@ JSON\_Table is used to 'flatten' hierarchical JSON data to a table consisting of
 
 ### JSON_Mergepatch
 
-Besides replacing an old JSON document with an new one there are two operators which allow you to perform updates - JSON_Mergepatch and JSON_Transform.
+Besides replacing an old JSON document with a new one there are two operators which allow you to perform updates - JSON_Mergepatch and JSON_Transform.
 
 JSON_Mergepatch follows RFC 7386 [https://datatracker.ietf.org/doc/html/rfc7386](https://datatracker.ietf.org/doc/html/rfc7386). It lets you update a JSON instance with a so-called 'patch' which is a JSON document. The simplest way to think about this is that you merge the patch into the JSON instance.
 
@@ -445,7 +445,7 @@ JSON\_Transform, like the other SQL/JSON operators, relies on path expressions t
     ```
     ![JSON transform - initial search](./images/sql7-4.png " ")
 
-2.  We want to add a new fields (duration), calculate a new price (10% higher) and append a new genre (thriller) to the array.
+2.  We want to add a new field (duration), calculate a new price (10% higher) and append a new genre (thriller) to the array.
 
     ```
     <copy>
@@ -466,7 +466,7 @@ JSON\_Transform, like the other SQL/JSON operators, relies on path expressions t
 
 SQL/JSON has 4 operators to generate JSON objects and arrays: 2 are per-row operators that generate one object/array per input row, and 2 are aggregate operators that generate one object/array for all input rows. These operators come in handy when you want to generate JSON data from existing tables or you want to bring JSON data into a different shape.
 
-1.  Let's first look at a simple example first. We create the following simple table:
+1.  Let's look at a simple example first. We create the following simple table:
 
     ```
     <copy>
@@ -490,7 +490,7 @@ SQL/JSON has 4 operators to generate JSON objects and arrays: 2 are per-row oper
     ```
     ![inserts into emp table](./images/sql8-12.png " ")
 
-2.  With JSON_Object we can convert each row to a JSON object. The names are picked from the column names and are typically upper cased.
+2.  With JSON_Object we can convert each row to a JSON object. The names are picked from the column names and are typically upper-cased.
 
     ```
     <copy>
@@ -516,7 +516,7 @@ SQL/JSON has 4 operators to generate JSON objects and arrays: 2 are per-row oper
     ```
     ![JSON object agg](./images/sql8-4.png " ")
 
-5.  Similary, we use JSON\_Array and JSON\_ArrayAgg to build arrays:
+5.  Similarly, we use JSON\_Array and JSON\_ArrayAgg to build arrays:
 
     ```
     <copy>
@@ -608,7 +608,7 @@ SQL/JSON has 4 operators to generate JSON objects and arrays: 2 are per-row oper
 
 Often, you do not know all the fields that occur in a collection of JSON data, especially if it is from a third party. JSON\_Dataguide lets you retrieve a JSON schema for this data. It tells you all occurring field names, their data types and the paths to access them. It can even automate the generation of a JSON\_Table-based view.
 
-1.  Let's assume for a second that we do not know anything about the JSON data in the products collection.
+1.  Let's assume for a second that we do not know anything about the JSON data in the *products* collection.
 
     ```
     <copy>
@@ -639,7 +639,7 @@ Often, you do not know all the fields that occur in a collection of JSON data, e
 
     ```
 
-2.  The output is a JSON document itself - a JSON schema which tells us that our data consists of objects which have fields 'id', 'note', etc . For every field the corresponding data type is shown, together with a length of the largest values (rounded up to the next power of 2). The JSON schema also tells us a default column name that would be used when creating a view. In many cases this default column name is a good choice but you may want to customize it. There are two column names  "scalar\_string" that we want to rename. We use our JSON\_Transform skills to rename them. We do this by temporarily storing the data guide in a new table (using an IS JSON check constraint) :
+2.  The output is a JSON document itself - a JSON schema which tells us that our data consists of objects which have fields 'id', 'note', etc. For every field the corresponding data type is shown, together with a length of the largest values (rounded up to the next power of 2). The JSON schema also tells us a default column name that would be used when creating a view. In many cases, this default column name is a good choice but you may want to customize it. There are two column names  "scalar\_string" that we want to rename. We use our JSON\_Transform skills to rename them. We do this by temporarily storing the data guide in a new table (using an IS JSON check constraint) :
 
     ```
     <copy>
@@ -657,7 +657,7 @@ Often, you do not know all the fields that occur in a collection of JSON data, e
     ```
     ![insert dataguide](./images/sql9-22.png " ")
 
-3.  We can find all the default column names using the following JSON_Query statement, which uses the '..' descendant path step. The descendant step is similar to the normal '.' object step, but it  also scans all descendants of the current object.
+3.  We can find all the default column names using the following JSON_Query statement, which uses the '..' descendant path step. The descendant step is similar to the normal '.' object step, but it also scans all descendants of the current object.
 
     ```
     <copy>

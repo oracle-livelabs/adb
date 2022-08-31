@@ -35,7 +35,7 @@
 
 3. 次の手順は、Autonomous DataWarehouseまたはAutonomousTransactionProcessingのいずれにも同様に適用されます。このラボでは、Autonomous Data Warehouseデータベースのプロビジョニングについて説明しているので、** Autonomous Data Warehouse **　をクリックします
 
-    ![Click Autonomous Data Warehouse.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 4. Autonomous Data Warehouseインスタンスを表示するには、ワークロードタイプが　__データ・ウェアハウス__　または　__All__　であることを確認してください。 __リスト範囲__　ドロップダウンメニューを使用して、コンパートメントを選択します。 LiveLabs環境を使用している場合は、環境によって提供されるコンパートメントを必ず選択してください
 

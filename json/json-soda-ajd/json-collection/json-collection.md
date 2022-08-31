@@ -1,10 +1,10 @@
-# Working with JSON collections using the SODA (Simple Oracle Document Access) API
+# Work with JSON collections
 
 ## Introduction
 
-Oracle is a relational database, meaning it typically stores data in rows and column of tables and JSON can be stored as a column value. For this lab though we first focus on the Document Store API SODA (Simple Oracle Document Access) which allows to store JSON data in a so-called collection. A JSON collection stores JSON documents alongside some metadata like the time of creation or update. Collections offer operations like inserts, deletes, index creation or queries.
+Oracle is a relational database, meaning it typically stores data in rows and columns of tables and JSON can be stored as a column value. For this lab though, we first focus on the Document Store API SODA (Simple Oracle Document Access) which allows us to store JSON data in a so-called collection. A JSON collection stores JSON documents alongside some metadata like the time of creation or update. Collections offer operations like inserts, deletes, index creation or queries.
 
-In order to create a collection all you have to specify is the collection's name. Unlike a relational table you do not have to provide any schema information. So, lets create a collection for the products we want to sell in the store.
+To create a collection all you have to specify is the collection's name. Unlike a relational table, you do not have to provide any schema information. So, let's create a collection for the products we want to sell in the store.
 
 Estimated Time: 15 minutes
 
@@ -21,6 +21,7 @@ In this lab, you will:
 ### Prerequisites
 
 * Have provisioned an Autonomous JSON Database instance and logged into the JSON
+* Be working with a Mac OS/X (Intel Silicon) machine, a Linux x86 machine or a Windows PC
 
 ## Task 1: Create Collection
 
@@ -32,11 +33,11 @@ In this lab, you will:
 
 	![New collection: products](./images/new-products.png)
 
-3. A notification pops up that displays `products` collections is created.
+3. A notification pops up that displays **products** collections has been created.
 
 	![New collection notification](./images/popup.png)
 
-4. Click the refresh button to verify `products` collection is created.
+4. Click the refresh button to verify the *products** collection has been created.
 
 	![Refresh button](./images/refreshed.png)
 
@@ -46,11 +47,11 @@ In this lab, you will:
 
 	![products worksheet](./images/double-clicked.png)
 
-2. Click New JSON Document button.
+2. Click the *New JSON Document* button.
 
 	![new document button](./images/new-document.png)
 
-3. A New JSON Document panel displays. Copy the following JSON object, paste it in the worksheet and click **Create**.
+3. A **New JSON Document** panel displays. Copy the following JSON object, paste it in the worksheet and click **Create**.
 
 	```
 	<copy>
@@ -77,7 +78,7 @@ In this lab, you will:
 
 5. Let's repeat this with the following documents:
 
-	Click New JSON Document button, copy the following JSON objects one by one, paste it in the worksheet and click **Create**.
+	Click the *New JSON Document* button, copy the following JSON objects one by one, paste it into the worksheet and click **Create**.
 
     ```
 	<copy>
@@ -137,15 +138,15 @@ In this lab, you will:
 
 ## Task 3: Find JSON documents in a collection
 
-Documents can be selected based on filter conditions - we call them 'Queries By Example' or 'QBE' for short. A QBE is a JSON document itself and it contains the fields and filter conditions that a JSON document in the collection must satisfy in order to be selected. QBEs are used with SODA (only); you can use SQL functions as an alternative.
+Documents can be selected based on filter conditions - we call them 'Queries By Example' or 'QBE' for short. A QBE is a JSON document itself and it contains the fields and filter conditions that a JSON document in the collection must satisfy, in order to be selected. QBEs are used with SODA (only); you can use SQL functions as an alternative.
 
 The simplest form of a QBE just contains a key-value pair. Any selected document in the collection must have the same key with the same value. More complex QBEs can contain multiple filter conditions or operators like 'negation' or 'and', etc.
 
-The following are examples for QBEs. You can copy them into the corresponding window (see screenshot) and execute them. Obviously, in a real application those QBE-expressions would be issued directly from the programming language - the SODA drivers have APIs for common application programming languages: Python, etc.
+The following are examples of QBEs. You can copy them into the corresponding window (see screenshot) and execute them. Obviously, in a real application, those QBE-expressions would be issued directly from the programming language - the SODA drivers have APIs for common application programming languages: Python, etc.
 
 Now let's issue some simple queries on the *products* collection we just created.
 
-1. Copy and paste the following queries in the worksheet and click Run Query button to run a query.
+1. Copy and paste the following queries into the worksheet and click the *Run Query* button to run a query.
 
 2.  Lookup by one value:
 
@@ -161,7 +162,7 @@ Now let's issue some simple queries on the *products* collection we just created
 
 3.	Find all DVDs:
 
-	Running the query will displays two documents with format DVD.
+	Running the query will display two documents with format DVD.
 
 	```
 	<copy>
@@ -201,7 +202,7 @@ Now let's issue some simple queries on the *products* collection we just created
 	```
 	![results for price less than 5](./images/less5.png)
 
-7. Tighten previous query to choose only movie documents:
+7. Tighten the previous query to choose only movie documents:
 
 	This query displays the documents whose ids are 100, 102 as those documents have price less than 5 and not the type - book.
 
@@ -216,7 +217,7 @@ Now let's issue some simple queries on the *products* collection we just created
 
 JSON data is "schema flexible", you can add whatever data you like to a JSON document. But sometimes you will wish to impose some required structure on that data. That can be done through SQL by creating indexes and/or constraints on the JSON collection.
 
-An index will aid fast access to an item (for example speeding up access via the "title" field), but can also be used to impose uniqueness (a unique index or primary key constraint), or to enforce particular datatypes (by triggering an error if the datatype is not what is expected).
+An index will aid fast access to an item (for example speeding up access via the "title" field), but can also be used to impose uniqueness (a unique index or primary key constraint) or to enforce particular datatypes (by triggering an error if the datatype is not what is expected).
 
 More generally, constraints can be used to check the data being entered for various aspects.
 
@@ -228,7 +229,7 @@ More generally, constraints can be used to check the data being entered for vari
 
 	Add a constraint to make sure that every item has at least a title and the price. We want the price to be a non-negative number and title to be a string.
 
-	Copy and paste the query below in the worksheet and click Run query button to run the SQL query to alter products table and add constraints.
+	Copy and paste the query below in the worksheet and click the *Run query* button to run the SQL query to alter the **products** table and add constraints.
 
 	```
 	<copy>
@@ -246,11 +247,11 @@ More generally, constraints can be used to check the data being entered for vari
 
 	![JSON navigation](./images/nav2-json.png)
 
-10. Validate that the following documents cannot get inserted as fields are missing or of wrong type.
+10. Validate that the following documents cannot get inserted, since fields are missing or are of wrong type.
 
-	Click New JSON Document icon, copy and paste the following query in the worksheet and click **Create**.
+	Click the *New JSON Document* icon, copy and paste the following query in the worksheet and click *Create*.
 
-	Throws the error "Unable to add new JSON document" since the following document has missing fields while trying to insert.
+	This throws the error "Unable to add new JSON document" since the following document has missing fields while trying to insert.
 
 	```
 	<copy>
@@ -282,38 +283,92 @@ More generally, constraints can be used to check the data being entered for vari
 	</copy>
 	```
 
-## Task 5: Using the Database API for MongoDB
+## Task 5: Install MongoDB tools on your local machine
 
-In this task we will use the Oracle Database API for MongoDB. That allows standard MongoDB tools and drivers to connect to Autonomous Database as though it were a MongoDB database. We will use the mongoimport tool to bulk-load some data, then use mongosh to connect and do some interactive commands.
+In this task, we will use the Oracle Database API for MongoDB. That allows standard MongoDB tools and drivers to connect to Autonomous Database as though it were a MongoDB database. We will use the mongoimport tool to bulk-load some data, then use mongosh to connect and do some interactive commands.
 
-1.  Start Cloud Shell
+1.  (Mac machines only) Determine the type of hardware
 
-	Go back to the main Cloud menu page (you may need to close the Database Actions tab).
+	If you know already whether your Mac uses Intel or Apple Silicon you can skip this step. Otherwise:
 
-	On the top row, click the "Command Prompt" button.
+    Click on the Apple menu in the top left-hand corner of your screen and go to "About this Mac". 
 
-	![start cloud shell](./images/start-shell.png " ")
+    !["about this mac" menu item](./images/about-this-mac.png " ")
 
-	That will bring up the Cloud Shell (it may take a minute or so to start). You can maximize the cloud shell window using the "double arrow" button at the top right.
+    That will open a "details" panel. Intel Mac will show a line with *Processor:* and the name of an Intel processor. Apple Silicon Macs will show a line saying *Chip"* and a line such as "Apple M1 Pro".  If you have an Apple Silicon machine, you will NOT be able to run the rest of this lab.
 
-	![maximize cloud shell](./images/shell-maximize.png " ")
+    ![processor details](./images/about-mac-details.png " ")
 
-	We're now going to download and install the MongoDB shell tool. We will download this from MongoDB's own website using 'wget' and install it directly in Cloud Shell.
+2.	Open a command prompt or terminal window
 
-	Copy these commands into the cloud shell (make sure you press "Enter" after the final command as the paste doesn't include it).
+	On a Mac:
 
+	Open the Launchpad icon in the Dock (or press Command-space) and start typing "terminal" in the search box. Press enter to start terminal.
+
+    ![open terminal in launchpad](./images/terminal.png " ")
+
+	On a Windows PC:
+
+    Press "Run" (Windows-R) and type "cmd.exe". Press enter or click "OK".
+
+    ![open command prompt](./images/cmd-exe.png " ")
+
+	On a Linux machine, we'll assume you know how to open a terminal as this will vary with the distribution.
+
+3.  Create and enter a suitable directory. We'll create a directory 'mongosh' under the default home directory, but you can choose to create it elsewhere. For **Mac. Windows or Linux**, enter the following commands:
+
+    ```
+    <copy>
+    mkdir mongotools
+    cd mongotools
+    </copy>
+    ```
+
+4.	Copy **ONE** of the following set of commands, depending on your machine type:
+
+	For **Mac with Intel processor**:
+
+    ```
+    <copy>
+    curl https://downloads.mongodb.com/compass/mongosh-1.5.0-darwin-x64.zip -o mongosh.zip
+	curl https://fastdl.mongodb.org/tools/db/mongodb-database-tools-macos-x86_64-100.5.4.zip -o mongotools.zip
+	tar xvf mongosh.zip
+	tar xvf mongotools.zip
+    export PATH=`pwd`/mongosh-1.5.0-darwin-x64/bin/:`pwd`/mongodb-database-tools-macos-x86_64-100.5.4/bin/:$PATH
+	</copy>
+    ```
+
+	For **Windows**:
+
+    ```
+    <copy>
+    curl https://downloads.mongodb.com/compass/mongosh-1.5.0-win32-x64.zip -o mongosh.zip
+	curl https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-100.5.4.zip -o mongotools.zip
+	tar xvf mongosh.zip
+	tar xvf mongotools.zip
+    set path=%cd%\mongosh-1.5.0-win32-x64\bin\;%cd%\mongodb-database-tools-windows-x86_64-100.5.4\bin;%path%
+    </copy>
+    ```
+
+	For **Linux x86**:
+
+	Go to [https://www.mongodb.com/try/download/database-tools](https://www.mongodb.com/try/download/database-tools) and copy the correct URmongoL for your distribution. That will be used for the SECOND URL in the code snippet below. The example URL works for Oracle Linux 7.0 and above. You will need to use a different PATH command as well if you a different distribution.
+	
 	```
 	<copy>
-	wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-rhel70-x86_64-100.5.2.tgz
-	tar -xvf mongodb-database-tools-rhel70-x86_64-100.5.2.tgz
-	export PATH="`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.2/bin/:$PATH"
+	curl https://downloads.mongodb.com/compass/mongosh-1.5.1-linux-x64.tgz -o mongosh.tgz
+	curl https://fastdl.mongodb.org/tools/db/mongodb-database-tools-rhel70-x86_64-100.5.4.tgz -o mongotools.tgz
+	tar xvf mongosh.tgz
+	tar xvf mongotools.tgz
+	export PATH="`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.2/bin/:`pwd`/mongosh-1.5.1-linux-x64/bin/:$PATH"
 	</copy>
 	```
 
-	Note that if you close and reopen the Cloud Shell before running mongoimport, you will need to run that last PATH setting command again.
+	Note that if you close and reopen the terminal/command shell window before running mongoimport, you will need to run the PATH setting command again.
 
-	![install mongo tools](./images/install-mongosh.png " ")
+	![install mongo tools](./images/mongo
 
+## Task 6: Using the Database API for MongoDB
 
 1.	Edit the URI for the MongoDB API to include the correct username and password.
 
@@ -327,14 +382,12 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	You would change it to 
 
 	```
-	<copy>
 	mongodb://admin:Password123@MACHINE-JSONDB.oraclecloudapps.com:27017/admin?authMechanism=PLAIN&authSource=$external&ssl=true&retryWrites=false&loadBalanced=true
-    </copy>
 	```
 
 	Make sure you've changed both strings, and have not left any square brackets in there.
 
-	**IMPORTANT NOTE:** if your password contains any special characters in the set / : ? # [ ] @, you will need to escape them as follows:
+	**IMPORTANT NOTE:** if your password contains any special characters in the set / : ? # [ ] @, you will need to escape them as follows:s
 
 	| Character | Escape Sequence |
 	| :---:     | :---: |
@@ -349,7 +402,9 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 
 2.  Store the MongoDB URI in an environment variable
 
-	Copy the following into Cloud Shell, making sure that you replace <yourURI> with the edited URI from the previous step. Make sure you keep the single quote characters either side of the URI.
+	Copy the following into Cloud Shell, making sure that you replace <yourURI> with the edited URI from the previous step. Make sure you keep the *single* or *double* quote characters (**Mac/Linux** or **Windows**) either side of the URI.
+
+    For **Mac** or **Linux**:
 
 	```
 	<copy>
@@ -357,9 +412,16 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	</copy>
 	```
 
+	For **Windows**:
+	```
+	<copy>
+	set URI="<yourURI>"
+	</copy>
+	```
+
 	![set URI variable](./images/set-uri.png " ")
 
-	If you close Cloud Shell and open it again before running the following commands, you will need to re-run this step.
+	If you close the terminal or command window and open it again before running the following commands, you will need to re-run this step.
 
 3. 	Bulk load the data using mongoimport
 
@@ -369,6 +431,8 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 
 	Copy this into Cloud Shell, being sure to press "Enter" afterwards.
 
+	For **Mac** or **Linux**:
+
 	```
 	<copy>
 	curl -s https://objectstorage.us-ashburn-1.oraclecloud.com/n/idaqt8axawdx/b/products/o/products.ndjson | \
@@ -376,25 +440,23 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	</copy>
 	```
 
-	![mongo import command](./images/mongo-import.png " ")
+	For **Windows**:
 	
-4.	Optional step: Download and run Mongo Shell
-
-	Copy these commands into Cloud Shell, being sure to press "Enter" after the last:
-
 	```
 	<copy>
-	wget https://downloads.mongodb.com/compass/mongosh-1.3.1-linux-x64.tgz
-	tar -xvf mongosh-1.3.1-linux-x64.tgz
-	export PATH="`pwd`/mongosh-1.3.1-linux-x64/bin/:$PATH"
+	curl -s https://objectstorage.us-ashburn-1.oraclecloud.com/n/idaqt8axawdx/b/products/o/products.ndjson -o products.json
+    mongoimport products.json --collection products --uri %URI%
 	</copy>
 	```
 
-	(as before you will need to run that PATH expression again if you leave Cloud Shell)
-
-	![install mongo shell](./images/install-mongosh-2.png " ")
+	![mongo import command](./images/mongo-import.png " ")
+	
+4.	Optional (but recommended) step: Run Mongo Shell
 
 	Then run mongosh providing the URI to connect to your Autononous Database:
+
+
+	For **Mac** or **Linux**:
 
 	```
 	<copy>
@@ -402,11 +464,19 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	</copy>
 	```
 
+	For **Windows**:
+
+	```
+	<copy>
+	mongosh %URI%
+	</copy>
+	```
+
 	That will bring you to the Mongo Shell prompt.
 
 	![mongo shell prompt](./images/mongosh.png " ")
 
-	From here you can run MongoDB commands against the data in your Autonomous Database. Here's a few suggested commands.
+	From here you can run MongoDB commands against the data in your Autonomous Database. Here are a few suggested commands.
 
 	Show collections in the database:
 
@@ -424,7 +494,7 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	</copy>
 	```
 
-	Find product with _id = 100
+	Find the product with _id = 100
 
 	```
 	<copy>
@@ -440,16 +510,16 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	</copy>
 	```
 
-	When done in Mongo Shell, you can type "quit" to exit to Cloud Shell.
+	When done in Mongo Shell, you can type "quit" to exit Mongo Shell.
 
 You may now proceed to the next lab.
 
 ## Learn More
 
-* [Creating B-Tree Indexes for JSON_VALUE](https://docs.oracle.com/en/database/oracle/oracle-database/21/adjsn/indexes-for-json-data.html#GUID-FEE83855-780A-424B-9916-B899BFF2077B)
+* [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
 
 ## Acknowledgements
 
 - **Author** - Beda Hammerschmidt, Architect
-- **Contributors** - Anoosha Pilli, Product Manager, Oracle Database
+- **Contributors** - Roger Ford, Principal Product Manager; Anoosha Pilli, Product Manager, Oracle Database
 - **Last Updated By/Date** - Anoosha Pilli, Brianna Ambler, June 2021

@@ -32,7 +32,7 @@ This lab assumes you have:
 
 3. This lab shows provisioning of an Autonomous Data Warehouse database, so click **Oracle Database** and then click **Autonomous Data Warehouse**.
 
-    ![Click Autonomous Data Warehouse.](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
 4. Make sure your workload type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select a compartment. If you are using a LiveLabs environment, be sure to select the compartment provided by the environment.
 

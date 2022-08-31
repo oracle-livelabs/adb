@@ -1,0 +1,3 @@
+{"lab_num":4,"title":"Add data sets required for workshop","script":"movie-stream-story-lite/add-data-scripts/add-datasets.sql"}
+{"lab_num":5,"title":"Create graph","script":"movie-stream-story-lite/add-data-scripts/add-graph.sql"}
+{"lab_num":100,"title":"Movie app demo scripts","script":"movie-stream-story-lite/add-data-scripts/movieapp-package.sql"}

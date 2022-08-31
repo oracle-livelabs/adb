@@ -29,7 +29,7 @@ Estimated Lab Time: 75 minutes
 
 2.   Click the **Navigation Menu** in the upper left, navigate to **Analytics & AI**, and select **Analytics Cloud**.
 
-   ![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/analytics-oac.png " ")
+   ![](https://oracle-livelabs.github.io/common/images/console/analytics-oac.png " ")
 
 3.   Make sure you are in the correct compartment by selecting your compartment from the dropdown on the lefthand side (hint: use the same compartment as your ADW instance).  Then, click on **Create Instance**.
 
@@ -57,7 +57,7 @@ Estimated Lab Time: 75 minutes
 
 2. Click the **Navigation Menu** in the upper left, navigate to **Analytics & AI**, and select **Analytics Cloud**.
 
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/analytics-oac.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/analytics-oac.png " ")
 
 3. Make sure that you are in the correct compartment by using the dropdown menu on the lefthand side of your screen.  Then, find your OAC instance that you will be using. For example, we are using the OAC instance **OACDEMO** shown below.  In order to access your instance, click on the **menu icon**, denoted by triple dots, on the right side of your instance. Then, click on **Analytics Home Page**. Save this web page link for future use.
 

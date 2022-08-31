@@ -47,7 +47,7 @@ Register your Oracle Object Storage data sources with Data Catalog as a data ass
 
 3. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog instance where you want to create your data asset.
 
-    ![In the Name column, the training-dcat-instance link is highlighted.](./images/dcat-instance.png " ")
+    ![In the Name column, the training-dcat-instance link is highlighted.](./images/click-data-catalog.png " ")
 
 4. On the **`training-dcat-instance`** **Home** page, in the **Quick Actions** tile, click **Create Data Asset**.
 
@@ -241,6 +241,8 @@ Create a filename pattern as follows:
 
     When you harvest the data asset, the filename pattern is used to derive logical data entities. The names of the files in the Object Storage bucket are matched to the pattern expression and the logical data entities are formed.
 
+11. Close the **Data Assets** and **Filename Patterns** tabs. Don't close the **Data Lake** tab as you will use it in the next step.     
+
 >**Note:**    
 When you assign a new filename pattern to a data asset, the status of any harvested logical data entities is set to **Inactive**. You need to harvest the data asset again to derive the valid logical data entities again.
 
@@ -324,11 +326,11 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
         ![The completed Create Job wizard step shows the Incremental Harvest and Include matched files only check boxes selected. The Run job now option is selected and the Create Job button is highlighted.](./images/harvest-landing-step-3-1.png " ")
 
-15. Click **Create Job**. A message is briefly displayed about the job execution starting. The **Jobs** tab is displayed and the job is displayed in the list of jobs. If the harvest is successful, the harvest job **Last run status** column displays **Succeeded**. To display the job details, click the job name link in the **Name** column.
+15. Click **Create Job**. A message is briefly displayed about the job execution starting. The **Jobs** tab is displayed and the job is displayed in the list of jobs. If you have left the **Jobs** tab open from the previous step, click **Refresh** to display the new **`Harvest_Data_Lake_Landing`** submitted job. If the harvest is successful, the harvest job **Last run status** column displays **Succeeded**. To display the job details, click the job name link in the **Name** column.
 
     ![The newly created Landing bucket harvest job is displayed on the Jobs tab with the status Succeeded.](./images/landing-harvest-completed.png " ")
 
-    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, refresh your browser to display the **`Harvest_Data_Lake_Landing`** job.
+    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, click **Refresh** to display the **`Harvest_Data_Lake_Landing`** job.
 
 16. The harvest job name tab is displayed. On the **Jobs** tab, you can track the status of your job and view the job details. The **Logical data entities harvested** field shows **11** as the number of logical entities that were harvested using the filename pattern that you assigned to this Object Storage asset. This number represents the number of sub-folders under the **`moviestream_landing`** root bucket. There are **57** corresponding files under the sub-folders under the root bucket. You can drill-down on the **Log Messages** icon to display the job log. Close this tab
 
@@ -359,7 +361,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
     ![The newly created Gold bucket harvest job is displayed on the Jobs tab with the status Succeeded.](./images/harvest-gold-completed.png " ")
 
-    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, refresh your browser to display the **`Harvest_Data_Lake_Gold`** job.
+    >**Note:** If the **Jobs** tab was already displayed from the previous harvesting job, click **Refresh** to display the **`Harvest_Data_Lake_Gold`** job.
 
 23. The harvest job name tab is displayed. On the **Jobs** tab, you can track the status of your job and view the job details.  The **Logical data entities harvested** field shows **4** as the number of logical entities that were harvested using the filename pattern that you assigned to this Object Storage asset. This number represents the number of sub-folders under the **`moviestream_gold`** root bucket. There are **27** corresponding files under the sub-folders under this root bucket.
 
@@ -375,7 +377,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
 1. On the Data Catalog instance **Home** tab, click **Data Entities**.
 
-    ![On the selected Data Catalog instance Home page, the Data Entities (19) link is highlighted.](./images/click-data-entities.png " ")
+    ![On the selected Data Catalog instance Home page, the Data Entities link is highlighted.](./images/click-data-entities.png " ")
 
     > **Note:** The number of **Data Entities** shown in the above image might not match your results.
 
@@ -403,7 +405,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
 1. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog instance link.
 
-    ![The training-dcat-instance Data Catalog instance link is highlighted.](./images/dcat-instance.png " ")
+    ![The training-dcat-instance Data Catalog instance link is highlighted.](./images/click-data-catalog.png " ")
 
 2. On the **`training-dcat-instance`** **Home** page, click **Browse Data Assets** in the **Quick Actions** tile.
 
@@ -425,7 +427,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
 7. Close the **Bucket: moviestream_gold** details tab. The **Oracle Object Storage: Data Lake** page is displayed.
 
-    >**Note:** If the new name, Gold, is not displayed, refresh your browser, and then click the **Buckets** tab.
+    >**Note:** If the new name, Gold, is not displayed, click **Refresh**.
 
     ![The bucket's new business name, Gold, is displayed in the Buckets tab.](./images/gold-data-lake-page.png " ")
 
@@ -441,8 +443,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
     ![The bucket's new business name, Landing, is displayed in the Buckets tab.](./images/landing-data-lake-page.png " ")
 
-
-    >**Note:** If the new name, Landing, is not displayed, refresh your browser, and then click the **Buckets** tab.
+    >**Note:** If the new name, Landing, is not displayed, click **Refresh**.
 
 ### Repeat the same above steps to rename the **`moviestream_sandbox`** bucket to **`Sandbox`**
 
@@ -456,7 +457,7 @@ When you later perform the synchronization process between your ADB and Data Cat
 
     ![The bucket's new business name, Sandbox, is displayed in the Buckets tab.](./images/sandbox-data-lake-page.png " ")
 
-    >**Note:** If the new name, Sandbox, is not displayed, refresh your browser, and then click the **Buckets** tab.
+    >**Note:** If the new name, Sandbox, is not displayed, click **Refresh**.
 
     </if>
 
@@ -474,40 +475,25 @@ If you already launched the workshop and logged in to the Console using the inst
 
     ![The My Reservations tab and the Launch Workshop link for a sample workshop are highlighted.](./images/my-reservations.png " ")
 
-    The **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page is displayed in a new browser tab named **Attend the Workshop**. The **Workshop Details** section contains important information that you will need throughout this workshop.  
+    The workshop is displayed in a new tab named **Run Workshop - Launch Access the Data Lake using Autonomous Database and Data Catalog**. Click the **View Login Info** link in the banner to display the **Reservation Information** panel for important information that you will need throughout this workshop.  
 
-    ![The Launch Workshop page which contains the Workshop Details section (among other sections) is displayed.](./images/ll-workshop-details-section.png " ")
+    ![The Workshop is displayed.](./images/ll-workshop-details-section.png " ")
 
-    > **Note:** The **Let's Get Started - Log in to Oracle Cloud** section on the page displays helpful information on how to log in to the Console using your reserved environment.
+2. In the **Reservation Information** panel, click **Copy Password** to copy your initial password, and then click **Launch OCI**.
 
-    ![The Let's Get Started - Log in to Oracle Cloud section is displayed.](./images/ll-lets-get-started.png " ")
-
-2. In the **Workshop Details** section, click **Copy Password** to copy your initial password, and then click **Launch Console** or click the **Login URL**.
-
-    ![The Login URL (includes the Launch Console button) field and the Copy Password button are highlighted.](./images/workshop-details-section-2.png " ")
-
-3. On the Sign In page, scroll-down to the **Oracle Cloud Infrastructure Direct Sign-In** section, and click the down arrow to expand that section.
-
-    ![In the Oracle Cloud Infrastructure Direct Sign-In section, the down arrow to expand this section is highlighted.](./images/ll-expand-direct-signin.png " ")
-
-4. Paste your password in the **Password** field, and then click **Sign In**.
+3. On the Sign In page, your assigned username is already displayed in the **User Name** field. Paste your password in the **Password** field, and then click **Sign In**.
 
     ![The Oracle Cloud Infrastructure Direct Sign-In section with the populated username and password is displayed. The Sign In button is highlighted.](./images/ll-signin.png " ")
 
-5. The **Change Password** dialog box is displayed.   Enter your assigned password in the **Current Password**, **New Password**, and **Confirm New Password** fields, and then click **Save New Password**.
+4. The **Change Password** dialog box is displayed. Paste your assigned password that you copied in the **Current Password**. Enter a new password in the **New Password** and **Confirm New Password** fields, and then click **Save New Password**. Make a note of your new password as you will need it in this workshop.
 
     ![The completed Change Password dialog box is displayed. The Save New Password button is highlighted.](./images/ll-change-password.png " ")
 
-    When you log in and the **Oracle Cloud Console** Home page is displayed, make sure that the displayed region is the same that was assigned to you in the **Workshop Details** section of the **Launch *workshop-name* Workshop** page, **US East (Ashburn)** in this example.
+    When you log in and the **Oracle Cloud Console** Home page is displayed, make sure that the displayed region is the same that was assigned to you in the **Reservation Information** panel of the **Run Workshop *workshop-name*** page, **US West (Phoenix)** in this example.
 
     ![The Oracle Cloud Console Home page is displayed with the LiveLabs assigned region highlighted.](images/console-home.png)
 
-6. Scroll-down to the bottom of the **Launch *workshop-name* Workshop** page. Click the **Click here to open the next part of the workshop** box to proceed to the next lab in the workshop. In addition, it is recommended that you click the **Open the workshop instructions in a new tab** link for better viewing of the workshop.
-
-    ![The Open the workshop instructions in a new tab link is highlighted.](images/bottom-page.png)
-
-
-    >**Note:** Bookmark the **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page for quicker access. You will refer to the resources listed on this page several time in this workshop.
+    >**Note:** Bookmark the workshop page for quicker access.
 
 ## Task 2: Create and Import a Glossary
 
@@ -523,9 +509,13 @@ In this task, you create a new and empty business glossary in your Data Catalog 
 
     ![Warning that you might get if you are in the root compartment and not in your own LiveLabs assigned compartment.](./images/wrong-compartment.png " ")
 
-3. To select your assigned LiveLabs compartment, click the **Compartment** drop-down list in the **List Scope** section on the left. Enter your LiveLabs assigned compartment name in the **Compartment** text field to search for it which should look something like **LL#####-COMPARTMENT** where the **#####** is a unique five-digit number. Alternatively, you can drill-down on the **Livelabs** node and select your assigned compartment. When your assigned compartment is displayed in the list of compartments, select it. In addition, make sure that your LiveLabs assigned region from the **Launch Workshop** page is selected in Console's banner, **US East (Ashburn)** in our example.
+3. To select your assigned LiveLabs compartment, click the **Compartment** drop-down list in the **List Scope** section on the left. Enter your LiveLabs assigned compartment name in the **Compartment** text field to search for it which should look something like **LL#####-COMPARTMENT** where the **#####** is a unique five-digit number. Alternatively, you can drill-down on the **Livelabs** node and select your assigned compartment. When your assigned compartment is displayed in the list of compartments, select it. In addition, make sure that your LiveLabs assigned region from the **Run Workshop *workshop-name*** page is selected in Console's banner, **US West (Phoenix)** in our example.
 
     ![The Data Catalogs page in your assigned LiveLabs compartment is displayed. The training-dcat-instance Data Catalog instance provided for your is displayed on this page.](./images/ll-select-compartment.png " ")
+
+    >**Note:** Refer to the **Reservation Information** panel that you can access from the **Run Workshop *workshop-name*** tab for information about your assigned resources.
+
+    ![The LL assigned resources are displayed in the **Reservation Information** panel.](./images/ll-resources.png " ")
 
 4. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog in the **Name** column.
 
@@ -586,12 +576,12 @@ Register your Oracle Object Storage data sources with Data Catalog as a data ass
     * **Name:** **`Data Lake`**.
     * **Description:** **`Data Asset to access Oracle Object Storage buckets in a different tenancy than yours using public PARs`**.
     * **Type:** Select **Oracle Object Storage** from the drop-down list.
-    * **URL:** This is the swift URL for the OCI Object Storage resource that you will use in this lab. The URL field is automatically populated using your own **Home Region**, `us-ashburn-1` in this example. If the Oracle Object Storage buckets that you are harvesting from a different tenancy has a different **Home Region** which it does not in this case, then make sure to edit this URL to reflect that home region.
+    * **URL:** This is the swift URL for the OCI Object Storage resource that you will use in this lab. The URL field is automatically populated using your own **Home Region**. In this workshop, the buckets that we will use are in the `us-ashburn-1`. If the **URL** that is automatically doesn't show this region, edit it to show the following URL.
 
         ```
         https://swiftobjectstorage.us-ashburn-1.oraclecloud.com
         ```
-        >**Note:** In this lab, you will be accessing three Oracle Object Storage buckets that contain the data using three public pre-authenticated requests (PARs) that are provided for you. The three buckets are located in the **c4u04** tenancy in the **us-ashburn-1** region in our example. In the next step, you'll add three data connections to this data asset using the three pre-authenticated requests (PARs). Note that if you were using an Oracle Object Storage data asset type instead of PAR, you would only need one data connection instead of three. For information on PARs, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
+        >**Note:** In this lab, you will be accessing three Oracle Object Storage buckets that contain the data using three public pre-authenticated requests (PARs) that are provided for you. The three buckets are located in the **c4u04** tenancy in the **us-ashburn-1** region. In the next step, you'll add three data connections to this data asset using the three pre-authenticated requests (PARs). Note that if you were using an Oracle Object Storage data asset type instead of PAR, you would only need one data connection instead of three. For information on PARs, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
 
     * **Namespace:** Enter **c4u04**. This is tenancy where the three Oracle Object Storage buckets that you will harvest are located.
 
@@ -1069,7 +1059,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, February 2022
+* **Last Updated By/Date:** Lauran Serhal, August 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

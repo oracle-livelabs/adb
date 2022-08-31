@@ -3,9 +3,9 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
-            "title": "Getting Started",
+            "title": "Get Started",
             "description": "Login to Oracle Cloud",
-            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/cloud-login-livelabs2.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
             "title": "Introduction",
@@ -19,21 +19,25 @@
             "type": "livelabs"
         },
         {
-            "title": "Lab 2: Introduction to JSON Collections",
+            "title": "Lab 2: Work with JSON collections",
             "filename": "../../json-collection/json-collection.md"
         },
         {
-            "title": "Lab 3: SODA for REST",
+            "title": "Lab 3: Use SODA for REST",
             "filename": "../../soda/soda.md"
         },
         {
-            "title": "Lab 4: Using SQL to work with JSON",
+            "title": "Lab 4: Use SQL to work with JSON",
             "filename": "../../sql-json/sql-json.md"
+        },
+        {
+            "title": "Lab 4: Clean up Oracle Autonomous Database",
+            "filename": "https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
         },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }

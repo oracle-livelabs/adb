@@ -23,7 +23,7 @@ Estimated Lab Time: 20 minutes.
 
 1. Click the **Navigation Menu** in the upper left, navigate to **Networking**, and select **Virtual Cloud Networks**.
 
-	![](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/networking-vcn.png " ")
+	![](https://oracle-livelabs.github.io/common/images/console/networking-vcn.png " ")
 
 2. Make sure you are in the desired compartment of choice to create resources (such as **CloudDataWorkshop**) and proceed by selecting the **Start VCN Wizard** option.
 

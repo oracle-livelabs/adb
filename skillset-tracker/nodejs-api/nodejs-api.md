@@ -137,7 +137,7 @@ To complete this lab, you must have:
     ```
     <copy>
     sudo yum install libaio
-    sudo sh -c "echo /opt/oracle/instantclient_21_1 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+    sudo sh -c "echo /opt/oracle/instantclient_21_6 > /etc/ld.so.conf.d/oracle-instantclient.conf"
     sudo ldconfig
     </copy>
     ```
@@ -145,7 +145,7 @@ To complete this lab, you must have:
     ```
     <copy>
     sudo su
-    export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_1:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_6:$LD_LIBRARY_PATH
     exit
     </copy>
     ```
@@ -169,23 +169,23 @@ To complete this lab, you must have:
     </copy>
     ```
 
-8. Navigate to the Instant Client directory (**/opt/oracle/instantclient\_21\_1/**) and check if there is a directory **./network/admin**. If not, you will need to create these two directories so that you will be able to access the following path: **/opt/oracle/instantclient\_21\_1/network/admin/**. Use the following commands to do this (only if it is needed).
+8. Navigate to the Instant Client directory (**/opt/oracle/instantclient\_21\_6/**) and check if there is a directory **./network/admin**. If not, you will need to create these two directories so that you will be able to access the following path: **/opt/oracle/instantclient\_21\_6/network/admin/**. Use the following commands to do this (only if it is needed).
 
     ```
     <copy>
-    cd /opt/oracle/instantclient_21_1/
+    cd /opt/oracle/instantclient_21_6/
     sudo mkdir network
     cd network
     sudo mkdir admin
     </copy>
     ```
 
-9. Navigate to the wallet directory and copy all its content to **/opt/oracle/instantclient\_21\_1/network/admin/**
+9. Navigate to the wallet directory and copy all its content to **/opt/oracle/instantclient\_21\_6/network/admin/**
 
     ```
     <copy>
     cd /home/opc/<wallet_folder_name>
-    sudo cp * /opt/oracle/instantclient_21_1/network/admin/
+    sudo cp * /opt/oracle/instantclient_21_6/network/admin/
     </copy>
     ```
 
@@ -223,7 +223,7 @@ The structure of the project you are going to create will look like the followin
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "morgan": "^1.10.0",
-        "oracledb": "^4.2.0"
+        "oracledb": ">=5.4.0"
       },
       "devDependencies": {},
       "engines": {
