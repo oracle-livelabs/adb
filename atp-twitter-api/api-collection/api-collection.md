@@ -4,7 +4,7 @@
 
 In this lab, we will use Visual Studio Code (VSCode) IDE to initiate a connection to the database and Twitter API using cx_Oracle and the Python library, Tweepy.  
 
-Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/It8_qDL-KaTa6-YSKNiA0PMGpKReBPg7yr9Yw_IVH4lphvL9NufXbRIpm1Uel34x/n/orasenatdpltsecitom03/b/Twitter_LL/o/Lab%20FilesTwitter_LL2.zip)
+Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Eu65t2enK53_frfgAx-w3obXQrCob5qWhBuhSLisqfCaeAsnRsBw2YUHDIkNkQ9r/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip)
 
 Estimated Time: 40 minutes
 
@@ -40,7 +40,7 @@ This lab assumes you have:
 
     ![Edit Environment Variables](images/environment-variables.png)
 
-4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/It8_qDL-KaTa6-YSKNiA0PMGpKReBPg7yr9Yw_IVH4lphvL9NufXbRIpm1Uel34x/n/orasenatdpltsecitom03/b/Twitter_LL/o/Lab%20FilesTwitter_LL2.zip) .
+4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Eu65t2enK53_frfgAx-w3obXQrCob5qWhBuhSLisqfCaeAsnRsBw2YUHDIkNkQ9r/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip) .
 
     -Extract and open the folder in VSCode.  
 
