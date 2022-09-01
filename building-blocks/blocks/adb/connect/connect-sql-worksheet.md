@@ -1,3 +1,9 @@
+<!--
+    {
+        "name":"Connect with SQL Worksheet",
+        "description":"Connect to Autonomous Database using the SQL Worksheet in Database Actions"
+    }
+-->
 # Connect with SQL Worksheet
 
 ## Introduction
@@ -18,7 +24,7 @@ In this lab, you will:
 -   This lab requires completion of the Provision an Autonomous Database section in the Contents menu on the left.
 
 ## Task 1: Connect with SQL Worksheet
-[](include:connect-with-sql-worksheet-body.md)
+[](include:adb-connect-with-sql-worksheet-body.md)
 
 
 Please *proceed to the next lab*.

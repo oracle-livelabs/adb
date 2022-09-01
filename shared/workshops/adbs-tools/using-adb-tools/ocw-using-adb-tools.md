@@ -1,10 +1,10 @@
 ﻿
-# Use Autonomous Database Tools
+# Use Autonomous Database Data Tools
 
 ## Introduction
-This lab introduces the suite of data tools built into the Oracle Autonomous Data Warehouse.
+This lab introduces the suite of **Data Tools** built into the Oracle Autonomous Data Warehouse.
 
-Estimated Time: 1 hour, 15 minutes
+Estimated Time: 1 hour, 30 minutes
 
 Watch the video below for a quick walk through of the lab.
 
@@ -12,12 +12,13 @@ Watch the video below for a quick walk through of the lab.
 
 ### Objectives
 In this lab, you will:
-- Familiarize with the suite of built-in database tools of the Oracle Autonomous Data Warehouse
+- Familiarize with the suite of built-in **Data Tools** of the Oracle Autonomous Data Warehouse
 - Load data
 - Learn how to use the Data Transforms tool to correct data errors
 - Create an analytic view
 - Generate data insights
 - Use the Catalog tool
+- Use the Excel Add-in to query data from Autonomous Database
 
 ### Prerequisites
 
@@ -49,6 +50,7 @@ In this section of the workshop, you are going to work through some common data 
 4. Run the Data Insights tool to identify anomalies and outliers in your data set
 5. Use the built-in Catalog to understand the origins of the data within your data warehouse (this is called  ***Data Lineage***)
 6. Use the built-in Catalog to understand the impact of making changes to your data model (this is called  ***Impact Analysis***)
+7. Connect to your ADW schema and run custom SQL and query Analytic Views directly from Microsoft Excel
 
 **Let's get started!**
 
@@ -212,50 +214,39 @@ In this part of the workshop, you used the new data loading tool to quickly load
 
 In a few clicks, you were able to define and load data into four new tables without having to write any SQL code. It was all done with a few mouse clicks.
 
-### Load Data from Object Store
+### Load Data from Object Store Location
 
-In the previous exercise, you loaded data from files that you located on your local computer. In this part of the lab, you are going to load some more data, but this time using a file which is in the Oracle Object Store. There are two parts to this process, and the first part only needs to be performed once. The two parts are:
+In the previous exercise, you loaded data from files that you located on your local computer. In this part of the lab, you are going to load some more data, but this time using a file which is in the Oracle Object Store. For this, we are connecting to an Object Store location that is public (No credentials required to connect).
 
-1. Set up connection to the Oracle Object Store.
-2. Load the file.
+Identify a Cloud Storage location (URI + Bucket) that is closest to you from the table below:
 
-### Set Up Cloud Location
+<table class="wrapped relative-table confluenceTable" style="width: 100.0%;"><colgroup> <col style="width: 24.0%;"/> <col style="width: 76.0%;"/> </colgroup><tbody><tr><th colspan="1" class="confluenceTh">Your Region</th><th colspan="1" class="confluenceTh">URI + Bucket</th></tr><tr><td colspan="1" class="confluenceTd">Europe, Middle East, Africa</td><td class="confluenceTd">https://objectstorage.uk-london-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr><tr><td colspan="1" class="confluenceTd">Americas</td><td colspan="1" class="confluenceTd">https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr><tr><td colspan="1" class="confluenceTd">Japan</td><td colspan="1" class="confluenceTd">https://objectstorage.ap-tokyo-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr><tr><td colspan="1" class="confluenceTd">Asia &amp; Oceania</td><td colspan="1" class="confluenceTd">https://objectstorage.ap-mumbai-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr></tbody>
+</table>
 
-17. To begin this process, you need to navigate back to the **Data Load** page. From the **Explore** page, click the **Data Load** breadcrumb at the top left corner of the page:
-  ![ALT text is not available for this image](images/goto-data-load.png)
-18. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your object store.
-  ![ALT text is not available for this image](images/cloud-locations.png)
-19. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location as follows:
-
-    <table class="wrapped relative-table confluenceTable" style="width: 100.0%;"><colgroup> <col style="width: 9.19509%;"/> <col style="width: 12.019421%;"/> <col style="width: 45.07344%;"/> <col style="width: 33.71451%;"/> </colgroup><tbody><tr><th colspan="1" class="confluenceTh">Field</th><th colspan="1" class="confluenceTh">Your Region</th><th colspan="1" class="confluenceTh">Value</th><th colspan="1" class="confluenceTh">Notes</th></tr><tr><td class="confluenceTd">Name</td><td colspan="1" class="confluenceTd"></td><td class="confluenceTd">MOVIE_SALES</td><td colspan="1" class="confluenceTd">Lower case names not currently supported</td></tr><tr><td class="confluenceTd">Description</td><td colspan="1" class="confluenceTd"></td><td class="confluenceTd">Movie Sales</td><td colspan="1" class="confluenceTd"></td></tr><tr><td rowspan="4" class="confluenceTd">URI + Bucket</td><td colspan="1" class="confluenceTd">Europe, Middle East, Africa</td><td class="confluenceTd">https://objectstorage.uk-london-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td><td rowspan="4" class="confluenceTd">Choose the closest location </td></tr><tr><td colspan="1" class="confluenceTd">Americas</td><td colspan="1" class="confluenceTd">https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr><tr><td colspan="1" class="confluenceTd">Japan</td><td colspan="1" class="confluenceTd">https://objectstorage.ap-tokyo-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr><tr><td colspan="1" class="confluenceTd">Asia &amp; Oceania</td><td colspan="1" class="confluenceTd">https://objectstorage.ap-mumbai-1.oraclecloud.com/n/dwcsprod/b/MovieStream/o/</td></tr><tr><td class="confluenceTd">Credential</td><td colspan="1" class="confluenceTd"></td><td class="confluenceTd">No credential</td><td colspan="1" class="confluenceTd">Make sure the radio button is switched on to indicate the no credential is needed</td></tr></tbody>
-    </table>
-
-    ![ALT text is not available for this image](images/cloud-storage.png)
-
-  Your completed form should look like the one above. When you have completed these details, click **Create**.
-
-### Load Data Files from A Cloud Storage Location
-
-20. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Storage **and then click the blue **Next** button. 
+17. Navigate back to the main **Data Load** page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store **and then click the blue **Next** button. 
   ![ALT text is not available for this image](images/2879071251.png)
-21. Now you see a file browser-like view of your Object Store. Locate the file **Movie\_Sales\_2020.csv** in the left part of the screen. Click and drag this file onto the canvas on the right. 
-  ![ALT text is not available for this image](images/2879071252.png)
-22. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. 
-  ![ALT text is not available for this image](images/sales-data.png)
-23. You can use this page to quickly review the properties sheet and make any changes to column names or data types. As soon as you are satisfied with the format, you can close the form and then click the **green arrow** button to start your data load job. 
+18. In the box below **Select Cloud Store Link or enter public URL** enter the URI+Bucket location that is closest to you and press **enter**.
+  ![Cloud Store public URL](images/cloud-storage-public-url.png)
+19. Now you see a file browser-like view of your Object Store. Locate the file **Movie\_Sales\_2020.csv** in the left part of the screen. Click and drag this file onto the canvas on the right. 
+  ![Load Data from Object Store csv file](images/load-fact-data.png)
+20. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. 
+  ![ALT text is not available for this image](images/edit-properties-of-fact-data.png)
+21. You can use this page to quickly review the properties sheet and make any changes to column names or data types. As soon as you are satisfied with the format, you can close the form and then click the **green arrow** button to start your data load job. 
   ![ALT text is not available for this image](images/load-movie-sales.png)
 
 ### Inspect Data In Table MOVIE\_SALES\_2020
 
-24. Navigate to the **Data Load** main page and click the **Explore** card. You'll now see table MOVIE\_SALES\_2020 has been loaded into your Autonomous Data Warehouse.
-25. Click this table and then click **Source Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table. In this case, this data presents a nice simple way to characterize the data you've just loaded. 
+22. Navigate to the **Data Load** main page and click the **Explore** card, this launches the **Catalog** tool. You'll now see table MOVIE\_SALES\_2020 has been loaded into your Autonomous Data Warehouse.
+  ![Movie Sales Fact Catalog Card](images/moviesales-fact-catalog-card.png)
+23. Click the **MOVIE\_SALES\_2020** name on the card for the table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table. In this case, this data presents a nice simple way to characterize the data you've just loaded. 
   ![ALT text is not available for this image](images/explore-sales.png)
 
 ### Identify Data Problems
 
-26. Click on the word **DAY** in the first column. You can see that there are 14 distinct values - which looks odd. The low value is **FRIDAY** (i.e. it's all uppercase) and the high value is **Wednesday**, which is in title case. The distribution of these values is shown in the bar chart at the bottom of the form (see the image above). As you move your mouse across these bars, you can see there are two separate bars for each day: one in uppercase and the other in title case.
-27. You can also see that you have data for twelve months. This should not be a surprise, since the data extract you loaded in the previous step was for 2020. However, for your quarterly reporting project, it's obvious that you have too many months: your mission here is to analyze data only for Q2. 
-28. Right now, simply take a note of these issues. You will address these issues in a later stage of the workshop. 
+24. Expand the **DAY** card to review stats of that column. You can see that there are 14 distinct values - which looks odd. The low value is **FRIDAY** (i.e. it's all uppercase) and the high value is **Wednesday**, which is in title case. The distribution of these values is shown in the bar chart at the bottom of the form (see the image above). As you move your mouse across these bars, you can see there are two separate bars for each day: one in uppercase and the other in title case.
+  ![Movie Sales Fact DAY column issue](images/sales-day-issue.png)
+25. You can also see that you have data for twelve months. This should not be a surprise, since the data extract you loaded in the previous step was for 2020. However, for your quarterly reporting project, it's obvious that you have too many months: your mission here is to analyze data only for Q2. 
+26. Right now, simply take a note of these issues. You will address these issues in a later stage of the workshop. 
 
 ### Load Reference Data from Object Store
 
@@ -263,15 +254,15 @@ In the previous exercise, you loaded data from files that you located on your lo
 
 This section is provided in case your workshop environment does not allow you to download files to your local machine. If you're unable to do this, of course you will have been unable to complete the previous section, **Load Data from Local Files**. You still need the reference data for subsequent tasks of the lab, and if you are in this situation, you should complete the following steps.
 
-29. To load the reference tables from object storage, navigate to the **Data Load** main page. Select the cards for **Load Data** from **Cloud Storage** and click **Next**.
+27. To load the reference tables from object storage, navigate to the **Data Load** main page. Select the cards for **Load Data** from **Cloud Storage** and click **Next**.
   ![ALT text is not available for this image](images/2879071251.png)
-30. Select the four files: **Countries.csv**, **Days.csv**, **Devices.csv** and **Months.csv**. Drag-and-drop them on the **Data Loading** area, as shown below.
+28. Select the four files: **Countries.csv**, **Days.csv**, **Devices.csv** and **Months.csv**. Drag-and-drop them on the **Data Loading** area, as shown below.
   ![ALT text is not available for this image](images/2879071256.png)
-31. Four cards will appear on the data loading area: one for each source file / target table combination. Click the green **Start** button. 
+29. Four cards will appear on the data loading area: one for each source file / target table combination. Click the green **Start** button. 
   ![ALT text is not available for this image](images/2879071257.png)
-32. Then click **Run** in the dialog that appears.
+30. Then click **Run** in the dialog that appears.
   ![ALT text is not available for this image](images/2879071258.png)
-33. When the job has completed, you'll see check marks on the left of each card to indicate that the data has loaded successfully.
+31. When the job has completed, you'll see check marks on the left of each card to indicate that the data has loaded successfully.
   ![ALT text is not available for this image](images/2879071259.png)
 
 ### **Notes**:
@@ -281,17 +272,17 @@ This section is provided in case your workshop environment does not allow you to
 
 ### Clean Up Data Load Log Tables
 
-During data load from Object Storage, Autonomous Data Warehouse creates a number of ancillary tables for logging purposes.
+During data load from Object Storage, Autonomous Data Warehouse creates an ancillary table for logging purposes.
 
-34. Following data load from Object Storage, if you click the **Explore** card on the **Data Load** main page, it may look like this: 
+32. Following data load from Object Storage, if you click the **Explore** card on the **Data Load** main page, it may look like this: 
   ![ALT text is not available for this image](images/explore.png)
-35. Three such logging tables are highlighted above. There may be more than one table with names beginning with COPY$. Following the successful load operations, these tables are no longer required, and can safely be dropped. You'll do this using a SQL Worksheet. Navigate to this tool directly from the hamburger menu at the top left, open the Development menu if necessary, and press **SQL**.
+33. A logging table **CLOUD\_INGEST\_LOG** is highlighted above. Following the successful load operations, this table is no longer required, and can safely be dropped. You'll do this using a SQL Worksheet. Navigate to this tool directly from the hamburger menu at the top left, open the Development menu if necessary, and press **SQL**.
   ![ALT text is not available for this image](images/sql.png)
-36. Drop the tables as follows:
+34. Drop the table as follows:
 
-    a. Click the **refresh** button (circular arrows) to see the full list of tables in the schema and identify the logging tables.
+    a. Click the **refresh** button (circular arrows) to see the full list of tables in the schema and identify the logging table.
 
-    b. For each table type, drop table {TABLE NAME} in the SQL Worksheet.
+    b. For the table enter, drop table **CLOUD\_INGEST\_LOG** in the SQL Worksheet.
 
     c. Click the green **Run** button.
 
@@ -324,6 +315,7 @@ Watch a video demonstration of the Data Transforms tool of Autonomous Database:
 [] (youtube:Xg5VK_R4-IM)
 > **Note:** Interfaces in this video may look different from the interfaces you will see.
 
+<if type="SQL">
 That’s something to look forward to, but is not currently covered in this lab.
 
 ### Use SQL 
@@ -345,12 +337,21 @@ As an alternative to using the Data Transforms Tool, you can perform the necessa
     , PURCHASES
     FROM MOVIE_SALES_2020
     where month in ('April','May','June'); -- only want data from Q2
-    exec dbms_stats.gather_table_stats(user, 'MOVIE_SALES_2020Q2');
     </copy>
     ````
 
 2. Select the entire text in the Worksheet and press the **green** button to run these two statements. You should see that both statements have executed successfully. Having completed this step you now have a table MOVIE\_SALES\_2020Q2, with data for just April, May, and June. The days have all been changed to title case. Refresh to see the new table created.
 ![ALT text is not available for this image](images/data-transforms.png)
+
+</if>
+
+<if type="GUI">
+[](include:webtransforms)
+</if>
+
+<if type="BETA">
+[](include:webtransforms)
+</if>
 
 ## Task 4: Analyze Data
 
@@ -366,19 +367,16 @@ In this section of the workshop, you'll create an analytic view over the table M
 
 1. Start by clicking the **Data Analysis** card in the ADB **Database Actions** page. The page on which you'll land has some text explaining the Data Analysis utility in some detail, but let's dive straight in.
 
-2. Click the drop down button on the **Select Schema** selection and choose the **QTEAM** schema.
-
-    > **Hint:** you can search for the schema by typing QTEAM in the search area.
-
-  ![ALT text is not available for this image](images/select-qteam-schema.png)
+2. The **QTEAM** schema should be selected. Click the **Create** button to start creating the first Analytic View.
+  ![ALT text is not available for this image](images/data-analysis-home-page.png)
 
 3. This launches the Create Analytic View dialog. If **MOVIE\_SALES\_2020Q2** is not already identified as the *Fact Table*, select it from the pick list. (Be sure to select table MOVIE\_SALES\_2020**Q2**, which has just the data for April, May, June, and not table MOVIE\_SALES\_2020, which has data for the full year!)
-  ![ALT text is not available for this image](images/create-analytic-view.png)
+  ![ALT text is not available for this image](images/select-fact-table.png)
 
 ### Create a New Analytic View
 
 4. Now, press **Generate Hierarchies and Measures** to start the *Auto AV* utility. This will take several seconds to complete, after which you'll see a dialog such as this.
-  ![ALT text is not available for this image](images/dialog-from-starting-auto-av-utility.png)
+  ![ALT text is not available for this image](images/create-analytic-view.png)
 
 ### Expand Data Sources
 
@@ -457,9 +455,7 @@ In this section of the workshop, you'll create an analytic view over the table M
 
 25. You can add filters. Perform the following:
 
-    - Expand the *MONTHS* hierarchy and drag the *MONTH* level to the **Filters** section.
-    - Select *April* by clicking it.
-    - Click the “X” icon on the filter pop-up menu.
+    - On the *MONTHS* hierarchy and the *MONTH* level under the **Filters** section, check *April* month.
 
   ![ALT text is not available for this image](images/add-filters-to-data-summary.png)
 
@@ -500,7 +496,7 @@ Watch a video demonstration of the Data Insights tool of Autonomous Database:
 
 3. In this exercise, you're going to follow a procedure exactly as laid out in these tool tips, thus:
 
-    a. Under *Analytic View/Table*, select Analytic View **MOVIE\_SALES\_2020Q2\_MODEL\_AV** (which is the basis for the Analytic View you created in Task 4). 
+    a. Under *Analytic View/Table*, select Analytic View **MOVIE\_SALES\_2020Q2\_AV** (which is the basis for the Analytic View you created in Task 4). 
 
     b. Under *Column*, select **PURCHASES**.
 
@@ -559,11 +555,12 @@ Data is capital and the built-in Catalog tool allows you to maximize its value. 
 
 1. From the **Database Actions** page, select the **Catalog** card. You'll land on a page looking like this. 
   ![ALT text is not available for this image](images/catalog.png)
-2. To understand this screen, glance at the upper left to notice that for the current schema, entities of type **TABLE** are currently shown, with a card for each. On the upper right, you'll notice that the third icon from the right (card view) is selected. Click the button to its right to show the information in grid view:
+2. To understand this screen, glance at the upper navigation bar that for the current schema, entities of type **TABLE,VIEW,HIERARCHY,ANALYTIC\_VIEW,CLOUD\_STORAGE\_LINK,LIVE\_TABLE\_FEED,BUSINESSMODEL,INSIGHT\_REQUEST** that have been **updated in the last 30 days** are currently shown, with a card for each. On the upper right, you'll notice that the third icon from the right (card view) is selected. Click the button to its right to show the information in grid view:
   ![ALT text is not available for this image](images/grid-view.png)
 3. Click the icon on the far right for list view:
   ![ALT text is not available for this image](images/list-view.png)
-4. Personal preference and different use cases may dictate which viewing option is preferable. For the purposes of this section of the workshop, click the **Card View** icon to return to that layout.
+4. Personal preference and different use cases may dictate which viewing option is preferable. For the purposes of this section of the workshop, click the **Card View** icon to return to that layout. Also, click the **x** icon on the top right of the search bar to clear the current search criteria.
+  ![Start new search](images/new-search.png)
 
 ### Search The Catalog
 
@@ -592,7 +589,7 @@ Data is capital and the built-in Catalog tool allows you to maximize its value. 
 
 An important consideration in understanding the reliability of data is its source, or lineage. This capability is built into the Catalog.
 
-11. Click the three dots on the upper right of the card for table **DEVICES**, and select **View Details**. On the left of the panel that appears, you'll see tabs for *Preview, Lineage, Impact, Statistics* and *Data Definition*. Here you'll notice the consistency of the widgets used between the various tools that you've explored in this lab. Preview is the default selection. You've seen Statistics and Data Definition elsewhere in this workshop.
+11. Click the three dots on the upper right of the card for table **DEVICES**, and select **View Details**. On the left of the panel that appears, you'll see tabs for *Preview, Lineage, Impact, Statistics, Data Load Jobs* and *Data Definition*. Here you'll notice the consistency of the widgets used between the various tools that you've explored in this lab. Preview is the default selection. You've seen Statistics and Data Definition elsewhere in this workshop.
 12. For this exercise, click **Lineage**. Various different levels of information are accessible by expanding the various cards as required. To do this, click the three dots to the right of the card and select **Expand***.* Even more information is visible by hovering the mouse pointer over specific areas of the screen. An example is shown below. 
   ![ALT text is not available for this image](images/lineage.png)
 13. Click **Close** in the lower right of the screen (or click the **Esc** button on your keyboard) to return to the main catalog view. 
@@ -603,7 +600,7 @@ You may think of impact analysis as the inverse of lineage. It shows which other
 
 14. Click the three dots for that card, select **View Details** and then select the **Impact** tab on the left of the screen that appears. You should spend some time exploring the Impact Analysis for this table. Depending on how you drill down (Expand), you may see a screen like this.
   ![ALT text is not available for this image](images/impact.png)It's worth pausing here to reflect on quite how extensive the impact analysis is for this simple exercise. Here you have a single table, on which you built a business model. This is implemented as an analytic view, including a number of Attribute Dimensions. Against this, you ran an Data Insights job, which resulted in a large number of Insights queries.
-15. If you **Expand** on **REQUEST\_INSIGHT_1** (on the right of the screen), you'll see some of the many queries that were executed as part of the Data Insights job, perhaps while you were sipping your coffee! Tip: You can return to a lower-resolution of data by selecting *Collapse* for an entity that had previously been *Expand*ed. 
+15. If you **Expand** on **REQUEST\_INSIGHT_1** (on the right of the screen), you'll see some of the many queries that were executed as part of the Data Insights job, perhaps while you were sipping your coffee! Tip: You can return to a lower-resolution of data by selecting *Collapse* for an entity that had previously been *Expanded*. 
 16. **RECAP** - This concludes the brief guided tour of the **Catalog** tool. In this section, you have seen:
 
     a. How to view data in card view, grid view, and list view
@@ -617,6 +614,106 @@ You may think of impact analysis as the inverse of lineage. It shows which other
     e. How to view Impact Analysis
 
 17. Feel free to explore more of its capabilities, or else click **Close** and return to the Autonomous Database Actions Home Page from the hamburger menu at the top left of your screen.
+
+## Task 7: Use Excel Add-in to query Autonomous Database
+
+### Overview
+
+Excel is a tool used for quickly analyzing a dataset and sharing results with other teams and decision-makers. It works well across all the different types of users — from those needing only the basic levels of calculations (SUM, AVG, etc) to the more sophisticated users that want to build pivot tables and write their own macros. Consequently, there are many users that need access to Autonomous Database through Excel.
+
+The Excel Add-in enables users to run native SQL queries and a wizard to query Analytic Views created by the Data Analysis tool. All this without having to install any database client software or fiddling with wallet files. 
+
+### Prerequisite
+
+In order to setup the Add-in refer to [the documentation](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/data-analysis-tool.html#GUID-11A2DCCE-4778-4F16-AA47-773009543957) or [this blog](https://blogs.oracle.com/datawarehousing/post/using-the-excel-add-in-to-query-autonomous-database) post.
+
+#### Video Preview
+
+Watch a video demonstration of the Excel Add-in to query Autonomous Database:
+
+[] (youtube:qi7HxiVyfOc)
+> **Note:** Interfaces in this video may look different from the interfaces you will see.
+
+### Connect to Autonomous Database
+
+1. When the Add-In has loaded, notice a new ribbon item, **Autonomous Database**.
+  ![Autonomous Database ribbon in Excel](images/adb-excel-ribbon.png)
+2. Click on **Sign In** icon (as shown above) to connect to using the QTEAM user.
+
+  ![Sign in to ADW from Excel](images/adb-sign-in-excel.png)You are now connected to the Autonomous Database and ready to run native SQL and use the Analytic View Query wizard.
+
+### Run Native SQL on Autonomous Database
+
+Users may want to run a native SQL query to export data to excel. Here we run a SQL query on the fact table to fetch sales data for the weekend and North America. This query may be provided to you from your data analyst which can be run directly against the Autonomous Database.
+
+3. Click the **Native Sql** button to launch a panel on the right to write a SQL. Next click the **Write a query** button on the panel as shown below.
+  ![Excel Run Native SQL Panel](images/native-sql-write-query-excel.png)
+
+4. Copy and paste the following SQL statement into the box on the panel. Check the **Pivot table** option and then click **Execute**.
+
+    ````
+    <copy>
+    select a.* from MOVIE_SALES_2020Q2 a
+    left outer join days b on a.DAY = b.DAY
+    left outer join countries c on a.COUNTRY = c.COUNTRY
+    where b.DAY_NUM_USA in (1, 7) and c.continent = 'North America';
+    </copy>
+    ````
+
+  ![Run Native SQL Excel with Pivot](images/execute-native-sql-with-pivot.png)
+
+5. The SQL query is executed and a new sheet **Sheet2** with an Excel Pivot is automatically created.
+  ![Excel Pivot Analyze](images/excel-pivot-analyze.png)
+
+6. Navigate to the **Sheet1** worksheet to view the **Result Data**. This sheet also provides details about the time when SQL was run, user that ran the query and the SQL query itself under the **Query Info** section.
+  ![Native SQL Resultset Excel](images/excel-native-sql-result-data.png)
+Users can now leverage the Excel capabilites to work with data. They can conditionally format data, create their own calculations, etc. The data is now natively available in Excel with the pivot table linked to the results retrieved in **Sheet1**.
+
+### Query Analytic View using the Query Wizard
+
+Apart from running native SQL, users can also query the Analytic View **MOVIE\_SALES\_2020Q2\_AV** created in Task 4 above. The wizard allows users to select levels within hierarchies and filter data from the Analytic View to export the data in Excel.
+
+7. On the **Autonomous Database** ribbon, click the **Query Wizard** button. This launches a panel on the right.
+  ![Excel Ribbon Query Wizard](images/query-wizard-excel-ribbon.png)
+
+8. Click the **Choose Analytic View** button on the panel. Select the **MOVIE\_SALES\_2020Q2\_AV** Analytic View from the list.
+  ![Query Wizard Panel Choose AV](images/excel-panel-choose-av.png)
+
+9. Click the **Edit query** button on the Panel and make the following selections:
+    1. Select the **SALES** and **PURCHASES** measures from the **Select measures:** section
+    2. Select the **MOVIE\_SALES\_2020Q2\_AV\_CUSTOMER\_SEGMENT\_HIER**, **MOVIE\_SALES\_2020Q2\_AV\_GENRE\_HIER**, **MOVIE\_SALES\_2020Q2\_AV\_GEOGRAPHY\_HIER** and **MOVIE\_SALES\_2020Q2\_AV\_MONTHS\_HIER** from the **Select hierarchies:** section.
+    3. Select the **CUSTOMER\_SEGMENT**, **GENRE**, **CONTINENT**, **COUNTRY** and **MONTH** levels from the **Select Levels** section.
+  ![Query Wizard Panel select levels](images/query-wizard-panel-select-levels.png)
+
+10. Click **Next**. This launces the **Filter** tab of the wizard as shown.
+  ![Query Wizard Panel Filter tab](images/query-wizard-filter-tab.png)
+
+11. On the **Filter** tab do the following:
+    1. Click the **Add/Edit filter conditions**
+    2. Under **Column Name**, select the **MOVIE\_SALES\_2020Q2\_AV\_MONTHS\_HIER : MONTH** column.
+    3. Type **5** in the **x Values (: seperated):** section.
+    4. click the **+ Add** button to add the filter.
+  ![Query Wizard Panel Filter selections](images/query-wizard-filter-selections.png)
+
+12. Click **Next**
+
+13. The **Query Result** tab of the wizard provides summary of the selections made. In this tab do the following:
+    1. Under **Select Worksheet**, click the **+** button.
+      ![Query Wizard Add Sheet](images/query-wizard-add-sheet.png)
+    2. Provide the name of the new sheet as **AVQueryMay**
+    3. Click the **Check** icon/button to save the name.
+      ![Query wizard new sheet name](images/query-wizard-sheet-name.png)
+    4. Click **Execute**
+
+  ![Query wizard Execute](images/query-wizard-execute.png)
+
+14. A new sheet with **AVQueryMay** is created and the data is exported in the **Result Data** section of the sheet. Also note the **Query Info** section that provides detailed information about the query that was generated and run.
+
+  ![Query Wizard Result data](images/query-wizard-result-data.png)
+
+### RECAP
+
+With the data now in Autonomous Database with good quality, users want to analyze it, export it and share with downstream systems. The Excel Add-in provides Excel power users the ability to run native SQL queries or use the Query Wizard to run a query against the Analytic Views in the database. They can then use Excel capabilities to share their analysis with data locally stored in Excel.
 
 ## Want To Learn More
 
