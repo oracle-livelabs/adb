@@ -23,6 +23,11 @@
               "filename": "../../api-collection/api-collection.md"
            },
            {
+            "title": "Review ATP Storage",
+            "description": "",
+            "filename": "../../review-atp-storage/review-atp-storage.md"
+           },
+           {
               "title": "Review Data Processing",
               "description": "",
               "filename": "../../review-data-preprocessing/review-data-processing.md"
@@ -31,11 +36,6 @@
               "title": "Review Machine Learning",
               "description": "",
               "filename": "../../review-machine-learning/review-machine-learning.md"
-           },
-           {
-              "title": "Review ATP Storage",
-              "description": "",
-              "filename": "../../review-atp-storage/review-atp-storage.md"
            },
            {
               "title": "Explore APEX",
