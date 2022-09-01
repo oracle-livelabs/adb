@@ -28,9 +28,9 @@ This lab assumes you have:
 
     ![Select ATP from OCI menu](images/select-atp-menu.png) 
 
-1. Select **Create Autonomous Database.**
+2. Select **Create Autonomous Database.**
 
-    ![Select Create Autonomous Database](images/select-create-atp.png) 
+    ![Select Create Autonomous Database](images/create-autonomous-database.png) 
 
 3. (optional) Enter a display name and database name.  
 
