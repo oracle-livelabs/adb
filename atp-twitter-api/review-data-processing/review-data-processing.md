@@ -1,9 +1,10 @@
-# Create OML model
+# Review Data Processing
 
 ## Introduction
 
-In this lab, we will install cx_Oracle along with instant client to allow for a connection from the local computer to the ATP to enable the Python script to upload the Tweepy 
-Estimated Time: 15 minutes
+In this lab, we will explore the processing required to analyze the tweet collected by the API. By reviewing the tables and the code, you should have a good understanding of how this is accomplished.
+
+Estimated Time: 5 minutes
 
 
 ### Objectives
@@ -11,6 +12,7 @@ Estimated Time: 15 minutes
 In this lab, you will complete the following tasks:
 
 - Analyze data in ADB
+- Analyze code
 
 ### Prerequisites
 
@@ -19,17 +21,29 @@ This lab assumes you have:
 
 ## Task 1: Analyze data in ADB
 
-1. With the GGSA Catalog open, select **Create New Item** and from the drop down menu, select **Predictive Model**. 
+1. With cloud SQL Developer still open, copy and paste the following again to review the processing required for analysis.
 
-![Create new predictive model item](images/predictive-model.png) 
+    ```
+    <copy>
+    SELECT * FROM WKSP_TWITTERLL.MODEL
+    </copy>
+    ```
+Select the **play** button to run the script
 
-2. In the new window that opens, add a name to the model and select Predictive Model Type **ONNX**. Select **Next** to proceed to updating the rest of the details.
+![Comparison of raw tweet and clean tweet](images/clean-tweet.png) 
 
-![Select predictive model type](images/select-model-type.png) 
+2. Notice all of the special characters are removed to ensure the correct data is being analyzed. 
+- RT = Retweet (removed for redundancy)
+- Hashtags are removed and logged in separate column
+- Punctuations are removed to allow the ML model to run correctly and logged in separate column
 
-3. Upload the Predictive Model URL and select a model version. 
+![Columns logging tweet statistics](images/tweet-statistics.png) 
 
-![Update model details](images/model-details.png) 
+## Task 2: Analyze code
+
+1. Open the TwitterExtract.py file to explore the lines of code (112) that processes the data. Pysentimeinto is the Python library that runs the clean tweets through the ML model. We will cover this in the next lab. 
+
+![Clean tweet code](images/limpieza-code.png) 
 
 
 ## Acknowledgements

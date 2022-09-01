@@ -1,36 +1,42 @@
-# Create OML model
+# Review Machine Learning 
 
 ## Introduction
 
-In this lab, we will import a Machine Learning model that was previously trained using Python and converted into an Open Neural Network Exchange (ONNX) format.  
-Estimated Time: 15 minutes
+In this lab, we will analyze the code and review the scoring used to assess sentiment for each tweet. By reviewing the tables and the code, you should have a good understanding of how this is accomplished.
+
+Estimated Time: 5 minutes
 
 
 ### Objectives
 
 In this lab, you will complete the following tasks:
 
-- Review ML data
+- Review Machine Learning Model
 
 ### Prerequisites
 
 This lab assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
 
-## Task 1: Create Predictive Model
+## Task 1: Review Machine Learning Model
 
-1. With the GGSA Catalog open, select **Create New Item** and from the drop down menu, select **Predictive Model**. 
+1. With cloud SQL Developer still open, notice the columns for the **MODEL** table. You might need to scroll the table over to see the additional columns.
 
-![Create new predictive model item](images/predictive-model.png) 
+![Model table for sentiment](images/sentiment.png) 
 
-2. In the new window that opens, add a name to the model and select Predictive Model Type **ONNX**. Select **Next** to proceed to updating the rest of the details.
+2. Notice the **SENTIMENT** that is assessed from the scoring. In this example **NEU** is the highest score; therefore, it is assigned a Neutral sentiment. Hate speech is also analyzed in the columns **HATEFUL, TARGETED, and AGGRESSIVE,** which can be further used for analysis.
 
-![Select predictive model type](images/select-model-type.png) 
+3. Scroll more to observe the emotions declared for each tweet.
 
-3. Upload the Predictive Model URL and select a model version. 
+![Model table for emotions](images/emotion.png) 
 
-![Update model details](images/model-details.png) 
+4. Notice the highest scored emotion are assigned an emotion for the tweet. In this example, the first tweet has a high score for **OTHERS**, therefore, none of the other emotions are used to assess the tweet.
 
+## Task 2: Analyze code
+
+1. Open the TwitterExtract.py file to explore the lines of code (214)used to score the sentiment, hate speech, and emotions. Pysentimiento is used to analyze the cleantweets. ES (Spanish) is declared as the scoring language, which can be changed to EN (English) to expand on the topic.
+
+![Code for Sentiment](images/code.png)
 
 ## Acknowledgements
 

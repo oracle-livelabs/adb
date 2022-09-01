@@ -45,7 +45,48 @@ This lab assumes you have:
     ```
 Select the **play** button to run the script
 
-![worksheet for model](images/select-star-model.png) 
+![worksheet for model](images/select-star-model.png)
+
+6. Notice the output indexes the table by **Model ID.** We will analyze this data in the next labs: Data processing and Machine Learning.
+
+![Model table output](images/model-output.png)
+
+7. Copy and paste the following into the worksheet:
+
+    ```
+    <copy>
+    SELECT * FROM WKSP_TWITTERLL.PLACE
+    </copy>
+    ```
+Select the **play** button to run the script
+
+![Output for PLACE table](images/place-output.png)
+
+Notice the indexed metadata from tweets. Here we have four tweets from Mexico and Canada.
+
+8. Copy and paste the following into the worksheet:
+
+    ```
+    <copy>
+    SELECT * FROM WKSP_TWITTERLL.TWEET
+    </copy>
+    ```
+Select the **play** button to run the script
+
+![Output for TWEET table](images/tweet-output.png)
+
+9. Copy and paste the following into the worksheet:
+
+    ```
+    <copy>
+    SELECT * FROM WKSP_TWITTERLL.USERS
+    </copy>
+    ```
+Select the **play** button to run the script
+
+![Output for USERS table](images/users-output.png)
+
+10. Notice all of the data that was extracted from Twitter. This will be helpful for analytics, which will be covered in the lab **Explore APEX.**
 
 ## Acknowledgements
 
