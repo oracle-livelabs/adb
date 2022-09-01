@@ -12,15 +12,10 @@ The workshop is designed to be used in a 19c Autonomous Database instance.
 
 Estimated time for the entire workshop: 60 minutes
 
-<<<<<<< HEAD
 ### Workshop Objectives
 The aim of this workshop is to become familiar with automatic indexing and the automated tasks executed by it. The steps are:
-=======
-### Objectives
-The aim of this workshop is to become familiar with automatic indexing and the automated tasks executed by it. 
 
 The steps are:
->>>>>>> a018cc9f104bbed582ed765f303e03c7bdfa08d6
 
 - Prepare a database user and create a simple application schema
 - Enable automatic indexing
@@ -30,7 +25,6 @@ The steps are:
 - Explore details of the automatic indexing process
 - Learn basic configuration options
 
-<<<<<<< HEAD
 ### Lab Breakdown
 
 - Lab 1: Provision an Autonomous Database Instance
@@ -40,8 +34,6 @@ The steps are:
 - Lab 5: View Automatic Indexing Details
 - Lab 6: Configuring and Controlling Automatic Indexing
 
-=======
->>>>>>> a018cc9f104bbed582ed765f303e03c7bdfa08d6
 ### Prerequisites
 - An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported.
 
@@ -58,4 +50,4 @@ Workload information collected in an Autonomous Database for analysis. Indexes a
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jun 2022 
-* **Last Updated By/Date** - Nigel Bayliss, Jul 2022
+* **Last Updated By/Date** - Nigel Bayliss, Sep 2022
