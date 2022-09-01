@@ -25,7 +25,20 @@ In this lab, you will:
 
 <if type="freetier">
 ## Task 1: Create a compartment
-[](include:iam-compartment-create-body.md)
+
+A compartment is a collection of cloud assets, like compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (that is, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
+
+1. Click the three-line menu, which is on the top left of the console. Scroll down till the bottom of the menu, click **Identity & Security -> Compartments**. Click the blue **Create Compartment** button to create a sub-compartment.
+
+    ![Click Identity & Security then Compartments.](images/click-identity-and-security-then-compartments.png " ")
+
+    ![Click the Create Compartment button.](images/click-create-compartment.png " ")
+
+2. Give the compartment a name and description. Be sure your root compartment appears as the parent compartment. Press the blue **Create Compartment** button.
+
+    ![Click the Create Compartment button.](images/click-create-compartment-button.png " ")
+
+    The compartment is created, in which you will create an Autonomous Database instance in the next steps.
 
 ## Task 2: Choose Autonomous Data Warehouse from the Services Menu
 </if>
@@ -33,8 +46,44 @@ In this lab, you will:
 ## Task 1: Choose Autonomous Data Warehouse from the Services Menu
 </if>
 
-[](include:adb-goto-service-body.md)
+1. Log in to the Oracle Cloud Interface.
+2. Once you log in, you arrive at the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
+     > **Note:** You can also directly access your Autonomous Data Warehouse service in the __Quick Actions__ section of the dashboard.
+
+    ![Oracle home page.](./images/navigation.png " ")
+
+3. Click **Autonomous Data Warehouse**.
+
+    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+
+4. Make sure your workload type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. <if type="freetier">Use the __List Scope__ drop-down menu to select the compartment you just created.</if><if type="livelabs">In the __List Scope__, enter the first part of the LiveLabs compartment assigned to you, then select the compartment from the list.</if>
+
+<if type="freetier">
+    ![Check the workload type on the left.](images/list-scope-freetier.png " ")
+
+   > **Note:** Avoid the use of the `ManagedCompartmentforPaaS` compartment as this is an Oracle default used for Oracle Platform Services.
+
+</if>
+<if type="livelabs">
+    ![](images/livelabs-listscope.png)
+</if>
+
+
+5. This console shows that no databases yet exist. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, for example). You can also sort by __Workload Type__. Here, the __Data Warehouse__ workload type is selected.
+
+<if type="freetier">
+    ![Autonomous Databases console.](./images/no-adb-freetier.png " ")
+</if>
+<if type="livelabs">
+    ![](images/livelabs-nodb.png)
+</if>
+
+<if type="freetier">
+6. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page.
+
+    ![Select region on the far upper-right corner of the page.](./images/Region.png " ")
+</if>
 
 <if type="freetier">
 ## Task 3: Create the Autonomous Database instance

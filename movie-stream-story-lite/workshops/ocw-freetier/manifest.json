@@ -1,6 +1,10 @@
 {
     "workshoptitle": "Integrate, Analyze and Act on All data using Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+    },
     "tutorials": [
         {
           "title": "Introduction to MovieStream",
@@ -26,38 +30,28 @@
 
         },
         {
-            "title": "Lab 4: Working with JSON data",
-            "filename": "../../working-with-semi-structured-data/working-with-semi-structured-data.md"
-
-        },
-        {
-            "title": "Lab 5: Use OML to predict customer churn",
+            "title": "Lab 4: Use OML to predict customer churn",
             "type": "freetier",
             "filename": "../../predict-churn/predict-churn.md"
         },
         {
-            "title": "Lab 6: Find the closest pizza shops with Oracle Spatial",
+            "title": "Lab 5: Find the closest pizza shops with Oracle Spatial",
             "filename": "../../apply-spatial/apply-spatial.md"
         },
         {
-            "title": "Lab 7: Use Graph analytics for product recommendations",
+            "title": "Lab 6: Use Graph analytics for product recommendations",
             "filename": "../../apply-graph/apply-graph.md"
         },
         {
-          "title": "Lab 8: Terminate your Autonomous Database instance",
+          "title": "Lab 7: Terminate your Autonomous Database instance",
           "description": "Free up some resources by terminating your instance.",
           "type": "freetier",
           "filename": "https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
         },        
         {
-            "title": "CloudWorld Support & Info",
+            "title": "Oracle CloudWorld 2022 - Get Help",
             "description": "Everything you need to know to get started",
             "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
-        },          
-        {
-          "title": "Need Help?",
-          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }
