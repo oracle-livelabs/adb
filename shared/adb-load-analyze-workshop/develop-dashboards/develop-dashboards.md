@@ -181,7 +181,7 @@ Let's build the dashboard!
 
     The Workbook attempts to create the best presentation using **Auto Visualization**. Here, the total number of views is displayed as a tile.
 
-4. Next drag and drop **CUSTOMER\_SEGMENT** onto the canvas. You can drop the attribute right on top of the number of views.
+4. Next drag and drop **CUSTOMER\_SEGMENT** onto any clear white area of the canvas.
 
     ![Drag and drop GENRE onto the palette.](./images/oac-simple-chart.png " ")
 
