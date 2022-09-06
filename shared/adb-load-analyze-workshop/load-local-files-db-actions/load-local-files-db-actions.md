@@ -30,11 +30,11 @@ In this lab, you will:
 ## Task 1: Download CSV files from the MovieStream data lake to your local computer
 
 1. Right-click on the links below and click **Save Link As...** to download the files to your computer.
-    
-    * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
-    * [Download customer\_extentsion.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
 
-    
+    * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
+    * [Download customer\_extension.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
+
+
 2. Make note of the folder location - you will be using these files in just a minute!
 
 ## Task 2: Navigate to Database Actions and open the Data Load utility
@@ -57,7 +57,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Update the data load job settings.](./images/click-settings-to-examine-data-load-job.png " ")
 
-4. A page opens for the local *customer\_extension.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties.  Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types. 
+4. A page opens for the local *customer\_extension.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties.  Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types.
 
     Update the table name to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
 
@@ -67,7 +67,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Run the data load.](./images/run-the-data-load.png " ")
 
-6. When the load job finishes, a green check mark appears. Click **Data Load** in the breadcrumb in the upper left corner, to return to the **Data Load** page.
+6. When the load job finishes, a green check mark appears for each table. Click **Data Load** in the breadcrumb in the upper left corner, to return to the **Data Load** page.
 
     ![Click Data Load in the breadcrumb.](./images/click-data-load-in-breadcrumb.png " ")
 
@@ -81,7 +81,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![See the new table's data.](./images/see-new-table-data.png " ")
 
-This completes the first data loading lab using a CSV file on your local computer. In the next lab, we will load data from object storage public buckets.
+This completes the first data loading lab using two CSV files on your local computer. In the next lab, we will load data from object storage public buckets.
 
 Please *proceed to the next lab*.
 

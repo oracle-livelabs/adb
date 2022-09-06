@@ -16,7 +16,7 @@ Estimated Time: 20 minutes
 
 ## Task 1: Create a view by executing this script in SQL Worksheet
 
-Run a sql script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance. 
+Run a SQL script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance.
 
 Next, the script creates a `SALES_DASHBOARD` view that you will use to create your analytic dashboard. This simplifies the usability for analytics users; they can simply use the one view for all of their queries. You can conveniently access the browser-based SQL Worksheet directly from your Autonomous Database console.
 
@@ -39,14 +39,14 @@ Next, the script creates a `SALES_DASHBOARD` view that you will use to create yo
                 constraint fk_custsales_genre_id foreign key("GENRE_ID") references genre("GENRE_ID")
                 );
 
-                
+
     create or replace view sales_dashboard as
     select
     ce.last_name,
     ce.first_name,
     cs.short_name as customer_segment,
     ce.income_level,
-    case 
+    case
         when age > 75 then 'Silent Generation'
         when age between 57 and 75 then 'Boomer'
         when age between 41 and 56 then 'Gen X'
@@ -139,11 +139,11 @@ You will need to download your wallet credentials file in order for Analytics Cl
 
     ![Wait for the Sales Dashboard to load.](./images/oac-sales-dashboard.png " ")
 
-10. Note the 2 tabs at the bottom of the dashboard. The dashboard opens by default in the **Join Diagram** tab. Click the **SALES\_DASHBOARD** to make updates to how the columns are displayed in the Analytics Cloud Workbook. 
+10. Note the 2 tabs at the bottom of the dashboard. The dashboard opens by default in the **Join Diagram** tab. Click the **SALES\_DASHBOARD** to make updates to how the columns are displayed in the Analytics Cloud Workbook.
 
     ![Click the SALES_DASHBOARD tab to see the editable dashboard.](./images/oac-update-dataset.png " ")
 
-11. On the right side of the dashboard, note the list of recommended columns to enrich the data. We will keep it very simple and make two updates. First, scroll right to the **DAY\_ID** columun. Double click the card's DAY_ID and rename **DAY\_ID** to **DAY**.
+11. On the right side of the dashboard, note the list of recommended columns to enrich the data. We will keep it very simple and make two updates. First, scroll right to the **DAY\_ID** column. Double click the card's DAY_ID and rename **DAY\_ID** to **DAY**.
 
     ![Rename the DAY_ID column](./images/oac-rename-day.png " ")
 
@@ -181,11 +181,11 @@ Let's build the dashboard!
 
     The Workbook attempts to create the best presentation using **Auto Visualization**. Here, the total number of views is displayed as a tile.
 
-4. Next drag and drop **CUSTOMER\_SEGMENT** onto the canvas. You can drop the attribute right on top of the number of views. 
+4. Next drag and drop **CUSTOMER\_SEGMENT** onto the canvas. You can drop the attribute right on top of the number of views.
 
     ![Drag and drop GENRE onto the palette.](./images/oac-simple-chart.png " ")
 
-    The workbook displayed the number of views as a bar chart. 
+    The workbook displayed the number of views as a bar chart.
 
 5. Let's now break out each customer segment's views by genre. Drag GENRE to the **Color** field in the grammar panel. Then, update the visualization type to **Stacked Bar**.
 
@@ -198,11 +198,11 @@ Let's build the dashboard!
     Again, the number of views is displayed as a tile.
 
 7. Drag and drop **INCOME_LEVEL** to the view. Change its visualization to **Tree Map**:
-    
+
     ![Pick Tree Map from the menu](images/oac-worksheet-pick-treemap.png)
-    
+
     The new visualization should look like the following:
-    
+
     ![Tree Map in green](images/oac-worksheet-treemap-green.png)    
 
 8. Make the Tree Map a bit more colorful. Drag and Drop INCOME_LEVEL to the **Color** field:
