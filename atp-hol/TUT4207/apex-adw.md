@@ -6,12 +6,11 @@
 
 This lab walks you through the steps to quickly provision an Autonomous Transaction Processing instance on Oracle Cloud. In this lab we will create web application which will take medical documents and store them in the Autonomous Database. Further we will also use Oracle Text to allow users to filter, search, and view those documents with one-click.
 
-Estimated Time: 2 hours
+Estimated Time: 90 minutes
 
 ## Get Started 
 ### Objectives
 
-- Create Compartment
 - Create a new APEX workspace 
 - Build a web application
 - Explore Oracle Text 
@@ -21,11 +20,6 @@ Estimated Time: 2 hours
 - Access to an OCI tenancy
 
 
-##  Instructor Content 
-
-Please reference the below Presentation for the Instructor's Material
-
-[Class Lecture PowerPoint](./files/instructor-content.pptx)
 
 ## Task 1: Access The OCI console
 
@@ -151,7 +145,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Object Browser](./images/task-5/object-browser.png " ")
 
-4. Go to SQL Scripts and upload the contents of the <a href="files/Create_Tables.sql">Create\_Tables.sql</a> file. This will build the table structure of the tables required. 
+4. Go to SQL Scripts and upload the contents of the [file](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql). This will build the table structure of the tables required. 
 
 
     
@@ -176,7 +170,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-9. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set can be found <a href="files/CareClinicData.zip">here.</a>
+9. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set can be found [here].(https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
 
     
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-1.png " ")
@@ -285,7 +279,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Run the application to view changes](./images/task-6/view-application-changes.png " ")
 
-12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found <a href="files/Patient_Documents.zip">here.</a>
+12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip)
 
     
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
@@ -363,7 +357,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Navigate to SQL Web Developer](./images/task-7/navigate-sql-web-developer.png " ")
 
-11. Enable REST on both **PATIENT** and **PATIENT\_INSURANCE** tables by right clicking them. Leave all settings as defult!
+11. Enable REST on both **PATIENT** and **PATIENT\_INSURANCE** tables by right clicking them. Leave all settings as default!
 
     
     ![Enable REST for Tables](./images/task-7/enable-rest-1.png " ")
@@ -435,7 +429,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Fuzzy Search](./images/task-7/fuzzy-search.png " ")
 
-19. Soundex Search on a term, giving the ability to find words that sound like the term provided, in this case "pressure". !
+19. Soundex Search on a term, giving the ability to find words that sound like the term provided, in this case "pressure". 
 
      ```
      <copy>
@@ -446,7 +440,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Soundex Search](./images/task-7/soundex-search.png " ")
 
-20. Stem search on a term. For example if we are looking for documents with that stem of Journal, then it will return words like Journaling
+20. Stem search on a term. For example if we are looking for documents with that stem of Journal, then it will return words like "journaling"
 
      ```
      <copy>
@@ -637,12 +631,12 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Hide Page Unwanted Page Items](./images/task-8/page-7-gist-2.png " ")
 
-5. Save and return to page 5 by using the page navigation. Right-Click Columns and **Create Virual Column** on your report
+5. Save and return to page 5 by using the page navigation. Right-Click Columns and **Create Virtual Column** on your report
 
     
     ![Create a Virtual Column](./images/task-8/create-virtual-column.png " ")
 
-6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectivly. Note: Use the menu to the right of the text box makes this easier.
+6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively. Note: Use the menu to the right of the text box makes this easier.
 
     
     ![Creating Column Link](./images/task-8/gist-column-link.png " ")
@@ -693,7 +687,7 @@ Please reference the below Presentation for the Instructor's Material
     
     ![Create a Virtual Column](./images/task-8/second-virtual-column.png " ")
 
-15. Make changes similar to before in step 6. Set the link to page 8. Under Set Items, ensure you add both **P8\_Query\_ID** and **P8\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectivly.
+15. Make changes similar to before in step 6. Set the link to page 8. Under Set Items, ensure you add both **P8\_Query\_ID** and **P8\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively.
 
     
     ![Create Column Link](./images/task-8/virtual-column-link.png " ")
@@ -719,52 +713,10 @@ Congratulations! You have successfully completed this lab.
 ## Need Help?
 
 
-## Homework: Create a calendar page 
-1. Create a new Calendar page to display patient appointments. Create a new navigation menu entry for this page, and select appropriate columns for Display column and Start Data column.
-You will need to use to following query as the source. This will join 3 tables to ensure the relevant information is displayed.
-
-    ``` 
-    <copy>
-    select 
-        PATIENT_VISIT.DATE_TIME as DATE_TIME,
-        PATIENT.FIRST_NAME as FIRST_NAME,
-        PATIENT.LAST_NAME as LAST_NAME,
-        PRACTITIONER.PRACTITIONER_NAME as PRACTITIONER_NAME,
-        HEALTHCARE_FACILITY.FACILITY_NAME as FACILITY_NAME 
-    from 
-        HEALTHCARE_FACILITY HEALTHCARE_FACILITY,
-        PRACTITIONER PRACTITIONER,
-        PATIENT PATIENT,
-        PATIENT_VISIT PATIENT_VISIT 
-    where 
-    PATIENT_VISIT.PATIENT_VISIT_ID=PATIENT.PATIENT_ID
-    and PATIENT_VISIT.PRACTITIONER_ID=PRACTITIONER.PRACTITIONER_ID
-    and PATIENT_VISIT.HEALTHCARE_FACILITY_ID=HEALTHCARE_FACILITY.HEALTHCARE_FACILITY_ID
-    </copy>
-    ```
-
-2. Lastly you can use the following code to add supplemental information to your page
-
-    ```
-    <copy>
-    <html>
-    <body>
-    <p>PATIENT: &FIRST_NAME. &LAST_NAME.</p>  
-    <p>PRACTITIONER: &PRACTITIONER_NAME.</p>
-    <p>FACILITY: &FACILITY_NAME.</p>
-    </body>
-    </html> 
-    </copy>
-    ```
-
-    
-
-    **Note:** Use this navigation to return to the end of 2021/start of 2022 where data already exist in out tables. You can hover over the appointments to view the supplemental information that was added about each one.
 
     
     ![Completed Lab](./images/Homework/lab-complete.png " ")
 
-    Congratulations! You have successfully completed the homework
 
 
 
