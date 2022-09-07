@@ -2,8 +2,11 @@
 
 # Low code development with advanced textual analysis in ATP
 
+## Introduction
 
-## Task 2: Create a compartment
+This lab walks you through the steps to quickly provision an Autonomous Transaction Processing instance on Oracle Cloud. In this lab we will create web application which will take medical documents and store them in the Autonomous Database. Further we will also use Oracle Text to allow users to filter, search, and view those documents with one-click.
+
+## Task 1: Create a compartment
 
 1. Compartments are the primary means to organize, segregate, and manage access to OCI resources.  Every tenancy has a root compartment under which you create additional sub-compartments and sub-sub compartments (maximum six levels deep).  Compartments are tenancy-wide across regions. When you create a compartment, it is available in every region that your tenancy is subscribed to. You can get a cross-region view of your resources in a specific compartment with the tenancy explorer. See [Viewing All Resources in a Compartment](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/compartmentexplorer.htm#Viewing_All_Resources_in_a_Compartment).  We will create a compartment called **CareClinics** for this course/workshop and create all related services in this compartment.  Navigate to the menu in the upper left and select Identity and Security, and then Compartments.
 
@@ -18,7 +21,7 @@
     ![Name the new Compartment and Create](./images/task-2/compartment-name.png " ")
 
 
-## Task 3: Create autonomous transaction processing database
+## Task 2: Provision ATP database
 1.  Login to your Oracle Cloud Tenancy and open the side menu
 
     
@@ -56,7 +59,7 @@
     
     ![Database Provisioning](./images/task-3/database-provisioning.png " ")
 
-## Task 4: Create an APEX workspace
+## Task 3: Create an APEX workspace
 1.  Under Tools, click **Oracle APEX**
 
     
@@ -84,7 +87,7 @@
     
     ![Sign out of Admin Workspace](./images/task-4/navigate-new-workspace.png " ")
 
-## Task 5: Upload sample data 
+## Task 4: Upload sample data 
 
 1. Enter password for new database user (Ex: CareClinic) and sign into the workspace
 
@@ -94,7 +97,7 @@
 2. This is the oracle apex workspace running on the database you created earlier. Let's visit the SQL Workshop!
 
     
-    ![Navigate to SQL Workshop](./images/task-45/workspace-home.png " ")
+    ![Navigate to SQL Workshop](./images/task-5/workspace-home.png " ")
 
 3. Inside the SQL Workshop > Object Browser to view any objects in the database. 
 
@@ -164,7 +167,7 @@
     
     ![Default Application Pages](./images/task-5/default-pages.png " ")
 
-## Task 6: Add pages to application
+## Task 5: Add pages to application
 
 1. Create new Page!
 
@@ -237,7 +240,7 @@
     
     ![Run the application to view changes](./images/task-6/view-application-changes.png " ")
 
-12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip)
+12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip).
 
     
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
@@ -257,7 +260,7 @@
     
     ![View Table in Object Browser](./images/task-6/view-data-object-browser.png " ")
 
-## Task 7: Explore Oracle Text
+## Task 6: Explore Oracle Text
 
 1. Return to the Cloud Console, and inside the ATP DB you created, click **Database Actions**
 
@@ -289,7 +292,7 @@
     
     ![Navigate into SQL Web Developer](./images/task-7/sql-developer.png " ")
 
-7. Execute the following query, ensuring to change the statement to match your database user that was created in Task 2 
+7. Execute the following query, ensuring to change the statement to match your database user that was created in Task 1
 
     ```
      <copy>
@@ -300,37 +303,13 @@
     
     ![Execute SQL Query](./images/task-7/execute-sql-query.png " ")
 
-8. Return to **Database Actions**, and click into **Database Users**. Enable REST on the Database User you created by clicking the more actions and enabling rest
 
-    
-    ![Enabling Rest for new Users](./images/task-7/enable-rest-1.png " ")
-
-9. Open a new window by clicking below and sign in with the user that was created (Step 11)
-
-    
-    ![Switch Database Users](./images/task-7/switching-db-users.png " ")
-
-10. Open SQL Web Developer
-
-    
-    ![Navigate to SQL Web Developer](./images/task-7/navigate-sql-web-developer.png " ")
-
-11. Enable REST on both **PATIENT** and **PATIENT\_INSURANCE** tables by right clicking them. Leave all settings as default!
-
-    
-    ![Enable REST for Tables](./images/task-7/enable-rest-1.png " ")
-
-12. Ensure are both tables now have REST Enables, you will need this later for the other labs
-
-    
-    ![Verify Last Step](./images/task-7/verify-rest-enabled.png " ")
-
-13. Now visit the APEX workspace. Go to **SQL Commands** under SQL Workshop
+8. Now visit the APEX workspace. Go to **SQL Commands** under SQL Workshop
 
     
     ![Visit SQL Commands](./images/task-7/sql-commands.png " ")
 
-14. Create an Index on the Patient\_Documents Table, where the visit summaries are stored
+9. Create an Index on the Patient\_Documents Table, where the visit summaries are stored
 
     ```
      <copy>
@@ -341,7 +320,7 @@
     
     ![Index Patient Document Table](./images/task-7/create-auto-index.png " ")
 
-15. Run the following query utilizing Oracle Text. Oracle Text returns all documents (previously indexed) that satisfy the expression along with a relevance score for each document. You can use the scores to order the documents in the result set. If you would like to read more about Oracle Text, more information can be found <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/ccapp/understanding-oracle-text-application-development.html#GUID-CF13C01A-F5E6-4EF5-839B-C09CF0024D5E">here</a>
+10. Run the following query utilizing Oracle Text. Oracle Text returns all documents (previously indexed) that satisfy the expression along with a relevance score for each document. You can use the scores to order the documents in the result set. If you would like to read more about Oracle Text, more information can be found <a href="https://docs.oracle.com/en/database/oracle/oracle-database/21/ccapp/understanding-oracle-text-application-development.html#GUID-CF13C01A-F5E6-4EF5-839B-C09CF0024D5E">here</a>
 
     In this first example we are looking for all documents who have the work MRN inside the after visit summary. The CONTAINS operator must always be followed by the > 0 syntax, which specifies that the score value returned by the CONTAINS operator must be greater than zero for the row to be returned.
 
@@ -354,7 +333,7 @@
     
     ![Run Basic Query](./images/task-7/base-query.png " ")
 
-16. Find all documents that have the word ABC with a score \> 1 and also contains the word Medical Center.
+11. Find all documents that have the word ABC with a score \> 1 and also contains the word Medical Center.
 
     ```
      <copy>
@@ -365,7 +344,7 @@
     
     ![Document Query - Double Word Search](./images/task-7/abc-medicalcenter.png " ")
 
-17. This is a proximity search to look for the word ADULT near the word EXERCISES
+12. This is a proximity search to look for the word ADULT near the word EXERCISES
 
     ```
      <copy>
@@ -376,7 +355,7 @@
     
     ![Proximity Search](./images/task-7/proximity-search.png " ")
 
-18. Fuzzy Search on a term, this gives the ability to find the work medications in the document without correct spelling. !
+13. Fuzzy Search on a term, this gives the ability to find the work medications in the document without correct spelling. !
 
     ```
      <copy>
@@ -387,7 +366,7 @@
     
     ![Fuzzy Search](./images/task-7/fuzzy-search.png " ")
 
-19. Soundex Search on a term, giving the ability to find words that sound like the term provided, in this case "pressure". 
+14. Soundex Search on a term, giving the ability to find words that sound like the term provided, in this case "pressure". 
 
      ```
      <copy>
@@ -398,7 +377,7 @@
     
     ![Soundex Search](./images/task-7/soundex-search.png " ")
 
-20. Stem search on a term. For example if we are looking for documents with that stem of Journal, then it will return words like "journaling"
+15. Stem search on a term. For example if we are looking for documents with that stem of Journal, then it will return words like "journaling"
 
      ```
      <copy>
@@ -409,7 +388,7 @@
     
     ![Stem Search](./images/task-7/stem-search.png " ")
 
-21. Accumulation Search on two or more terms. This is looking for both terms in the document and assigning a score. Higher if both terms are present.!
+16. Accumulation Search on two or more terms. This is looking for both terms in the document and assigning a score. Higher if both terms are present.!
 
      ```
      <copy>
@@ -420,7 +399,7 @@
     
     ![Accumulation Search](./images/task-7/accumulation-search.png " ")
 
-22. You can also weight each term as seen here. The word physical carries 3x the weight of the work exercises. 
+17. You can also weight each term as seen here. The word physical carries 3x the weight of the work exercises. 
 
     ```
      <copy>
@@ -431,7 +410,7 @@
     
     ![Weighted Accumulation Search](./images/task-7/weighted-accumulation-search.png " ")
 
-23. Those are some of the basic queries within Oracle Text. 
+18. Those are some of the basic queries within Oracle Text. 
 
     Construct Themes Tables: To build themes for your documents you will first need to create a table to hold the themes. Run each statement individually by highlighting the the statement then click Run.
 
@@ -443,7 +422,7 @@
   
    ![Creating Themes Table](./images/task-7/themes-table.png " ")
 
-24. Create Themes index for the documents currently in the PATIENT\_DOCUMENTS table
+19. Create Themes index for the documents currently in the PATIENT\_DOCUMENTS table
 
     ```
     <copy>
@@ -458,7 +437,7 @@
     
     ![Create Themes Index](./images/task-7/themes-index.png " ")
 
-25. Query all themes. Show all themes with weight over 25
+20. Query all themes. Show all themes with weight over 25
 
     ```
      <copy>
@@ -471,7 +450,7 @@
     
     ![Query Themes Table](./images/task-7/query-themes.png " ")
 
-26. Repeat for the Gist Table. 
+21. Repeat for the Gist Table. 
 
     **Note:** Run each of the 3 statements individually
 
@@ -497,7 +476,7 @@
     
     ![Create Gist Table and Index](./images/task-7/gist-table.png " ")
 
-27. Repeat for the Filtered Docs Table
+22. Repeat for the Filtered Docs Table
 
     **Note:** Run each of the 3 statements individually
 
@@ -525,7 +504,7 @@
     
     ![Create Filtered Docs Table and Index](./images/task-7/filtered-docs.png " ")
 
-28. Finally repeat for the Full Themes tables
+23. Finally repeat for the Full Themes tables
     
     **Note:** Run each of the 3 statements individually
 
@@ -554,12 +533,12 @@
     
     ![Create Full Themes Table and Index](./images/task-7/full-themes.png " ")
 
-29. We can verify all 4 tables were created by visiting the Object Browser
+24. We can verify all 4 tables were created by visiting the Object Browser
 
     
     ![Verify Tables in object browser](./images/task-7/verify-tables-created.png " ")
 
-## Task 8: Implement Oracle Text for End Users
+## Task 7: Implement Oracle Text for End Users
 
 1. Now let's create a new page to let end users view document gists with 1 click. Create Page, and select **Classic Report**
 
