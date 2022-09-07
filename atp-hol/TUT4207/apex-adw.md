@@ -1,48 +1,6 @@
-<!-- Updated June 15, 2022 -->
+<!-- Updated September 11th, 2022 -->
 
 # Low code development with advanced textual analysis in ATP
-
-## Introduction
-
-This lab walks you through the steps to quickly provision an Autonomous Transaction Processing instance on Oracle Cloud. In this lab we will create web application which will take medical documents and store them in the Autonomous Database. Further we will also use Oracle Text to allow users to filter, search, and view those documents with one-click.
-
-Estimated Time: 90 minutes
-
-## Get Started 
-### Objectives
-
-- Create a new APEX workspace 
-- Build a web application
-- Explore Oracle Text 
-
-### Prerequisites
-
-- Access to an OCI tenancy
-
-
-
-## Task 1: Access The OCI console
-
-1. Log in to the Oracle Cloud.  
-    
-    At the time this workshop was being created OCI was updating it's support for federated identity management, and so the log-in screens will be different from these screen shots.  This [blog](https://blogs.oracle.com/cloudsecurity/post/oci-federation-with-oci-iam-identity-domains) and this [whitepaper](https://www.oracle.com/a/ocom/docs/security/what-oci-iam-customers-should-expect.pdf) explains the current (June 2022) and near future approach to federating OCI users and groups, which most developer customers will likely adopt.
-
-    ![Login to your Cloud Tenancy](./images/task-1/tenancy-login.png " ")
-
-    ![Enter User Credentials](./images/task-1/tenancy-login-2.png " ")
-
-2. Once you are logged in, you are taken to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.  Note you can search for a service across all the menu items and also pin your favorites.  When you're done reviewing the menu items click the X to close the window.
-
-    ![Welcome to Oracle Cloud Tenancy](./images/task-1/tenancy-home.png " ")
-
-    ![Quickly Navigate through your Tenancy](./images/task-1/tenancy-navigation.png " ")   
-     
-3. Navigate to the Region drop down.  You will have a default region and can subscribe to others, depending on the initial regions assigned to you.  Note that Oracle has many regions around the world.  You can use these regions to co-locate applications and their user communities, and implement disaster recovery strategies.
-
-    ![Oracle Regions](./images/task-1/oracle-regions.png " ")
-
-    [Oracle Regions](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm)
-
 
 
 ## Task 2: Create a compartment
@@ -704,18 +662,7 @@ Estimated Time: 90 minutes
 
 Congratulations! You have successfully completed this lab.
 
-## Acknowledgements
-* **Author** - Shayne Jayawardene, Staff Cloud Engineer
-* **Contributors**:
-    * Chip Baber, Director, Cloud Engineering
 
-* **Last Updated By/Date** - Shayne Jayawardene, Aug 2022
-## Need Help?
-
-
-
-    
-    ![Completed Lab](./images/Homework/lab-complete.png " ")
 
 
 

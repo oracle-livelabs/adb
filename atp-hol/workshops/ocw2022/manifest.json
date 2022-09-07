@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Dynamic Scaling Autonomous Transacation Processing Cloud Service",
+    "workshoptitle": "Low code development with advanced textual analysis in ATP",
     "help": "livelabs-help-oci_us@oracle.com",
 	"tutorials": [
         {
@@ -8,15 +8,12 @@
         },
         {
             "title": "Introduction",
+            "filename": "./../../TUT4207/intro.md"
+        },
+       
+        {
+            "title": "Lab: Utilizing Oracle Text with APEX applications",
             "filename": "./../../TUT4207/apex-adw.md"
-        },
-        {
-            "title": "Lab 1: Generate SSH Keys",
-            "filename": "https://oracle-livelabs.github.io/common/labs/generate-ssh-key-local/generate-ssh-keys-local.md"
-        },
-        {
-            "title": "Lab 2: Configuring Dynamic CPU Scaling in Autonomous Transaction Processing Service",
-            "filename": "./../../atp-hol/atp-hol.md"
         },
         {
             "title": "Need Help?",
