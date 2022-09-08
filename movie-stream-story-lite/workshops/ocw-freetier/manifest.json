@@ -3,8 +3,15 @@
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
-      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+      "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+      "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
+   
     },
+    "variables": ["../variables/variables-free.json"],
     "tutorials": [
         {
           "title": "Introduction to MovieStream",
@@ -26,8 +33,7 @@
         },
         {
           "title": "Lab 3: Use SQL to analyze movie sales data",
-          "filename": "../../analyzing-movie-sales-data/analyzing-movie-sales-data.md"
-
+          "filename": "../../analyzing-movie-sales-data/analyze-sales-converged.md"
         },
         {
             "title": "Lab 4: Use OML to predict customer churn",
@@ -35,15 +41,11 @@
             "filename": "../../predict-churn/predict-churn.md"
         },
         {
-            "title": "Lab 5: Find the closest pizza shops with Oracle Spatial",
-            "filename": "../../apply-spatial/apply-spatial.md"
-        },
-        {
-            "title": "Lab 6: Use Graph analytics for product recommendations",
+            "title": "Lab 5: Use Graph analytics for product recommendations",
             "filename": "../../apply-graph/apply-graph.md"
         },
         {
-          "title": "Lab 7: Terminate your Autonomous Database instance",
+          "title": "Lab 6: Terminate your Autonomous Database instance",
           "description": "Free up some resources by terminating your instance.",
           "type": "freetier",
           "filename": "https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"

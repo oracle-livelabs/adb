@@ -76,33 +76,6 @@ You learned how to use the Create User dialog to create a new user. You can also
     </copy>
     ```
 
-4. Next, install the LiveLabs workshop utilities. These utilities make it easy to add data sets, which you will do in the next task. In the SQL Worksheet, paste in this code and run it using the **Run Script** button::
-
-    ```
-    <copy>
-    declare
-        l_git varchar2(4000);
-        l_repo_name varchar2(100) := 'common';
-        l_owner varchar2(100) := 'martygubar';
-        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
-    begin
-        -- get a handle to github
-        l_git := dbms_cloud_repo.init_github_repo(
-                    repo_name       => l_repo_name,
-                    owner           => l_owner );
-
-        -- install the package header
-        dbms_cloud_repo.install_file(
-            repo        => l_git,
-            file_path   => l_package_file,
-            stop_on_error => false);
-
-    end;
-    /
-    </copy>
-    ```
-
-    The script above is showcasing Autonomous Database's integration with GitHub. The **dbms\_cloud\_repo.install\_file** procedure allows you to easily install database code from GitHub repositories into your schema.
 
 ## Task 3: Log in as the MOVIESTREAM user
 
@@ -110,22 +83,21 @@ Now you need to switch from the ADMIN user to the [](var:db_user_name) user, bef
 
 1. In the upper right corner of the page, click the drop-down menu for ADMIN, and click **Sign Out**.
 
-    ![Drop down menu to sign out](images/sign-out-from-admin.png "Sign out")
+    ![Drop down menu to sign out](images/sign-out-from-admin.png " ")
 
 2. On the next screen, click **Sign in**.
 
-    ![Sign in dialog](images/click-sign-in.png "Sign in")
+    ![Sign in dialog](images/click-sign-in.png " ")
 
 3. Enter the username [](var:db_user_name) and the password you defined when you created this user.
 
-    ![Sign in dialog filled with username and password](images/db-actions-user-login.png "Log in")
+    ![Sign in dialog filled with username and password](images/db-actions-user-login.png " ")
 
 4. This will launch the Database Actions home page.
 
-    ![The Database Actions home page](images/dbactions-home.png "Database Actions")
+    ![The Database Actions home page](images/dbactions-home.png " ")
 
-    In this example, the database name in the top right should say [](var:db_user_name).
-    
+
 ## Task 4: Load data from files in Object Storage using Data Tools
 
 In this step we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
@@ -147,13 +119,38 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 
     ![Click on Development - SQL](images/gotosql.png)
 
-3. When you updated the user privileges, you installed LiveLab workshop utlities that make it easy to install data sets. Copy and paste the following script to install the rest of the required data sets:
+2. Copy and paste the following script into the Worksheet. This script will create PL/SQL procedures based on the lab-setup.sql file found in github.
 
+```
+<copy>
+-- Install the setup file from github
+declare
+    l_owner     varchar2(100) := 'oracle-livelabs';
+    l_repo_name varchar2(100) := 'adb';
+    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab-setup.sql';
+BEGIN
+    dbms_cloud_repo.install_file(
+        repo => dbms_cloud_repo.init_github_repo(                 
+                 repo_name       => l_repo_name,
+                 owner           => l_owner
+                ),
+        file_path     =>     l_file_path,
+        stop_on_error => false
+  );
+END;
+/
+</copy>
+```
+
+Click the **Run Script** button to run the script.
+
+
+3. A PL/SQL procedure called add_datasets was installed by the previous step.  Run that procedure to load the rest of the data.
 ```
 <copy>
 -- Run the PLSQL procedure that loads the rest of the dataset
 BEGIN
-    workshop.add_dataset('ALL');
+    add_datasets;
 END;
 /
 </copy>
