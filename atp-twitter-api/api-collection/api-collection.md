@@ -110,7 +110,8 @@ This lab assumes you have:
 
     ![installation of modules](images/python-path.png)
 
-    - if you have 3.10 version of python installed, be sure to install 3.9 now. If you have both, that is no problem for VSCode as you can change the Python Interpreter. Use **CMD+Shift+P** to type **Python: Select Interpreter**
+    - if you have 3.10 version of python installed, be sure to install 3.9 now. Use this [link](https://www.python.org/downloads/release/python-390/) to install (Select the version that matches your computer).
+    - If you have both, that is no problem for VSCode as you can change the Python Interpreter. Use **CMD+Shift+P** to type **Python: Select Interpreter**
 
     ![VSCode search bar](images/python-interpreter.png)
 
@@ -132,14 +133,14 @@ This lab assumes you have:
 
     ![Table error](images/table-error.png)
 
-20. Notice the following:
+4.  Notice the following:
     - **Model insert success**
     - **Successful user insert**
     - **Successful tweet insert**
 
     ![Successful terminal output](images/success.png)
 
-21. Let this script run for at least 20 minutes for approximately 100 inserts (longer is better). Press **CTRL+C** in the terminal to end the script.
+5.  Let this script run for at least 20 minutes for approximately 100 inserts (longer is better). Press **CTRL+C** in the terminal to end the script.
 
 ## Learn more
 - [cx_Oracle installation](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html)
