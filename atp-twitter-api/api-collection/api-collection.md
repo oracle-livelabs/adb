@@ -37,16 +37,25 @@ This lab assumes you have:
 
     ![Package selection](images/basic-package.png)
 
-2. Extract the zip file to root (C:\). 
-
-    - In this example, I have made a folder **instant_client** to extract the zip into.
+2. Extract the zip file to a location that best works for yourself. In this example, I extracted to root (C:\) and made a folder **instant_client** to extract the zip into.
 
     ![root file explorer](images/root.png)
 
 3. Make note of the path (C:\instant_client\instantclient_21_6), as you will place this in environment variables.
-    - Search **Environment Variables** in windows or mac and edit the **Path** variable to paste the path.
+    - For windows, search **Environment Variables** and edit the **Path** variable to paste the path.
 
     ![Edit Environment Variables](images/environment-variables.png)
+
+    - For macOS, you will need to use a CLI. For oldermacOS versions (before Catalina), use **bash** shell. For macOS Catalina and later, use **zsh** (z shell).
+      - For bash: 
+            
+            ```
+            <copy>nano ~/.bash_profile</copy>
+            ```  
+
+      - For zsh:
+            ```
+            <copy>
 
 4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/WvD2F0Cb533ApmtHNBXotz9VRD2BhwP7wR_qrGGhTs1Md6dtur3xrHew9UawNXSG/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip) .
 
@@ -77,7 +86,7 @@ This lab assumes you have:
 
     ![Network admin wallet information](images/admin-wallet.png)
 
-## Review Twitter API
+## Task 2: Review Twitter API
 
 1. Open the **TwitterExtract.py** file and make note of the following variables (**APIkey** & **APIsecret**). We will fill this out in the following steps.
 
@@ -95,7 +104,7 @@ This lab assumes you have:
 
 6. Notice the generated **API Key** and **Secret**. Copy these variables and paste in the **TwitterExtract.py** file.
 
-## Run the Extract
+## Task 3: Run the Extract
 
 1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install "module name"**. Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, find the path to 3.9 and declare that prior to using pip install.
 
