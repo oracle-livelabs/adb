@@ -64,7 +64,7 @@ This lab assumes you have:
 
 4. Select **New Schema.**
 
-    ![Options for schema](images/new-schema.png) 
+    ![Options for schema](images/new-schema.png)   
 
 5. Enter a workspace name (Schema), username, and password.
    
@@ -74,7 +74,13 @@ This lab assumes you have:
     Password: <password>
     ```
 
-     ![Open APEX workspace](images/login-apex.png) 
+    **Alternatively** if you run into an error, such as shown below you can go back to step 4 and select **Existing Schema** to enter the same schema as step 5, **TWITTER_LL.** 
+
+    ![Options for schema](images/error-schema.png)   
+
+    Afterwards, you will be instructed in sign in. Alternatively, you can select **Workspace Sign-In** to skip ahead to step 8.
+
+    ![Open APEX workspace](images/login-apex.png) 
 
 6. Sign out by clicking the **admin icon** in the top right, which will open a menu to sign out. Click **Sign out.**   
 
