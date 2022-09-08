@@ -4,7 +4,7 @@
 
 In this lab, we will create a ATP to import a schema for the data. We will review the process for creating the Autonomous Transaction Processing (ATP) instance, Schema for the APEX workspace, and import the APEX app, along with the DDL.
 
-Download the SQL files for the lab: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/c05qc1I_EZ-pvXve6Fzla7LTbmdprMenxIMEolBMyxYPCZVLoa1Ir_u9wvaChkKF/n/orasenatdpltsecitom03/b/Twitter_LL/o/Lab%20FilesTwitter_LL1.zip)
+Download the SQL files for the lab: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/vmkYRTjFDKT14aBgppExmxjWXNForfovxySRrgqJGlWMacsc6mMtClQY1a6foD3c/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL1.zip)
 
 Estimated Time: 20 minutes
 
@@ -26,7 +26,7 @@ This lab assumes you have:
 
 1. With OCI open, we will navigate to the ATP portal by selecting the hamburger menu in the top left corner, which will allow for you to select **Oracle Database** and then, **Autonomous Transaction Processing.**
 
-    ![Select ATP from OCI menu](images/select-atp-menu.png) 
+![Select ATP from OCI menu](images/select-atp-menu.png) 
 
 2. Select **Create Autonomous Database.**
 
@@ -104,9 +104,9 @@ This lab assumes you have:
 
      ![Open SQL scripts from menu](images/sql-scripts.png) 
 
-3. Select **Upload** to browse and upload the sql files.
+3. Select **Upload** to browse and upload the sql files (Except for the apexApplicationHackathon.sql script - that will be used for task 4).
 
-    - Download the lab files if you haven't already: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/c05qc1I_EZ-pvXve6Fzla7LTbmdprMenxIMEolBMyxYPCZVLoa1Ir_u9wvaChkKF/n/orasenatdpltsecitom03/b/Twitter_LL/o/Lab%20FilesTwitter_LL1.zip)
+    - Download the lab files if you haven't already: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/vmkYRTjFDKT14aBgppExmxjWXNForfovxySRrgqJGlWMacsc6mMtClQY1a6foD3c/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL1.zip)
 
      ![Upload SQL scripts from menu](images/upload-scripts.png) 
 
@@ -122,7 +122,7 @@ This lab assumes you have:
 
      ![App Builder Menu options](images/app-builder.png) 
 
-## Task 3: Import APEX APP
+## Task 4: Import APEX APP
 
 1. Select **Import App** to begin uploading the APEX app.
 
