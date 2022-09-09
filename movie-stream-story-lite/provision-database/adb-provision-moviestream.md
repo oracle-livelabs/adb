@@ -27,10 +27,10 @@ In this lab, you will:
 ## Task 1: Create a compartment
 [](include:iam-compartment-create-body.md)
 
-## Task 2: Choose Autonomous Data Warehouse from the Services Menu
+## Task 2: Choose Autonomous Database from the OCI services menu
 </if>
 <if type="livelabs">
-## Task 1: Choose Autonomous Data Warehouse from the Services Menu
+## Task 1: Choose Autonomous Database from the OCI services menu
 </if>
 
 [](include:adb-goto-service-body.md)
