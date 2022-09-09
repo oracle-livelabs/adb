@@ -81,7 +81,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![See the new table's data.](./images/see-new-table-data.png " ")
 
-This completes the first data loading lab using two CSV files on your local computer. In the next lab, we will load data from object storage public buckets.
+This completes the lab on loading CSV files from your local computer. 
 
 Please *proceed to the next lab*.
 
