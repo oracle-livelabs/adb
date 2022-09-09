@@ -1,6 +1,6 @@
 <!-- Updated September 11th, 2022 -->
 
-# Low code development with advanced textual analysis in ATP
+# Utilizing Oracle Text with APEX
 
 ## Introduction
 
@@ -23,7 +23,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 ## Task 2: Provision ATP database
 1.  Login to your Oracle Cloud Tenancy and open the side menu
-
+ 
     
     ![Welcome to the OCI Dashboard](./images/task-3/oci-dashboard.png  " ")
 
@@ -131,7 +131,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-9. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set can be found [here].(https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
+9. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set can be found [here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
 
     
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-1.png " ")
