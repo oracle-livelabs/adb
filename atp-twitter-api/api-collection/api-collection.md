@@ -133,6 +133,16 @@ This lab assumes you have:
 
     ![Table error](images/table-error.png)
 
+    -If you receive an error, **Cannot locate a 64-bit Oracle Client library,** then you will need to add the following to the TwitterExtract.py file:
+
+    ```
+    <copy>cx_Oracle.init_oracle_client('<PATH_NAME_INSERT_HERE>')</copy>
+    ```
+
+    ![cx_Oracle insert line to code](images/error-cx-oracle.png)
+
+    You will need to declare the path in which you installed the python library.
+
 4.  Notice the following:
     - **Model insert success**
     - **Successful user insert**
