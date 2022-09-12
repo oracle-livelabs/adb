@@ -363,7 +363,8 @@ Let's break the query into multiple parts:
     MovieStream will feed these results into their web application - providing a tailored page to each customer.
 
 6. Close your Oracle Database Actions tab
-    Now that you're done running queries with the SQL Worksheet, click the **x** to close your Oracle Database Actions tab.
+
+    Now that you're done running queries with SQL Worksheet, close your Database Actions browser tab by clicking the **x** next to the tab name.
 
 ## Summary
 We answered a lot of questions in this lab. The power to use analytic functions across different data types dramatically simplifies the process. Instead of using specialized database engines for relational, spatial and JSON data - you and your applications are able to use SQL against a single, converged Autonomous Database.

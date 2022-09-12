@@ -26,7 +26,7 @@ In this lab, you will:
 ## Task 3: Analyze complex JSON arrays to find top actors
 [](include:adb-query-json-arrays.md)
 
-Please *proceed to the next lab*.
+Please [*proceed to the next lab*](#next).
 
 ## Acknowledgements
 

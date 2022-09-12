@@ -23,29 +23,16 @@ In this lab, you will:
 
 -   This lab requires completion of the Get Started section in the Contents menu on the left.
 
-<if type="freetier">
-## Task 1: Create a compartment
+## Task 1: Create or select a compartment
 [](include:iam-compartment-create-body.md)
 
 ## Task 2: Choose Autonomous Database from the OCI services menu
-</if>
-<if type="livelabs">
-## Task 1: Choose Autonomous Database from the OCI services menu
-</if>
-
 [](include:adb-goto-service-body.md)
 
-
-<if type="freetier">
 ## Task 3: Create the Autonomous Database instance
-</if>
-<if type="livelabs">
-## Task 2: Create the Autonomous Database instance
-</if>
-
 [](include:adb-provision-body.md)
 
-Please *proceed to the next lab*.
+Please [*proceed to the next lab*](#next).
 
 ## Learn more
 

@@ -38,8 +38,10 @@ In this lab, you will:
 2. Make note of the folder location - you will be using these files in just a minute!
 
 ## Task 2: Navigate to Database Actions and open the Data Load utility
+Navigate back to the Data Load main page by clicking the menu at the top left and selecting **Data Tools -> Data Load**. If you closed Database Actions, then you'll need to navigate to the Data Load utility following the steps found in the previous lab *Load Data from Object Storage Public Buckets*.
 
-[](include:adb-goto-data-load-utility.md)
+![Go to DB Actions](/common/building-blocks/tasks/adb/images/generic/db-actions-tools-menu.png)
+
 
 ## Task 3: Load data from the CSV files using the Data Load utility
 
@@ -83,7 +85,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
 This completes the lab on loading CSV files from your local computer. 
 
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 ## Acknowledgements
 

@@ -1,4 +1,4 @@
-# Use Oracle Machine Learning AutoML UI to predict customer churn
+# Use Oracle Machine Learning to predict customer churn
 
 ## Introduction
 
@@ -36,91 +36,76 @@ In this lab, you will:
 - This lab requires completion of Labs 1–2 in the Contents menu on the left.
 
 ## Defining customer churn for MovieStream
-To understand customer behavior, we need to look into their geo-demographic information, but also their transactional behavior. For transactional data, we need to summarize number of transactions and aggregate values per month for each type of transaction that we would like to explore. This is because the algorithms need to receive as input a single row per customer, with their attributes provided in database table columns.
+To understand customer behavior, we need to look at both geo-demographic information and transactional patterns. For transactional data, we need to summarize customers' transactions by month for each type of transaction that we would like to explore. This type of summarization is required because machine learning algorithms need a single input row per customer, with each attribute reflected in a table column.
 
 A Data Engineer and a Data Scientist worked together to process and transform the data that exists in the **CUSTSALES** Oracle Database table. This table contains historical customer transactions for every movie streamed, including payment and discounts, and can help us identify customer preferences and usage of the service. To aggregate the data, with *one customer per row* (which is a data layout required by Machine Learning), they worked with the *date* information of the transactions to determine the customer behavior over time.
 
-Defining what *customer churn* means can be very complex, but for our example the agreement of the Business team with the Data Scientist was:
-- A customer will considered "churned" if they had *no (zero) streams in the last available month of data*, while having streamed movies during 12 months continuously before a *buffer* month (detailed below).
-- In contrast to those customers, the customers that will be compared to those (and considered "non-churners") are the customers that have been *streaming movies for 12 months continuously as well as on the last available month of data*.
+Defining what *customer churn* means can be very complex. For our example, the agreement between the business team and the data scientist was:
+- A customer has "churned" if they had 1) *zero movie streams in the last available month of data* and 2) streamed movies every month during 12 months before a *buffer* month (detailed below).
+- In contrast to churners, "non-churners" are customers that have *streamed movies for 12 consecutive months including the last available month of data*.
 
 The following diagram shows the process we will use, including a *buffer* month that represents the time needed to be able to *act* on the knowledge that a customer is about to leave. Predicting the *probability that a customer is going to leave exactly right now* does not help preparing a customer retention campaign, since there is a lot of processing involved in updating customer data at the end of a day before one can do scoring, excluding customers that have a *DO NOT CONTACT* exception. Also, processing offers and other processes in sync with all other divisions of the enterprise will always take time.  
 
 ![Diagram of the Data on ML Churn Process](images/oml-customer-churn-concepts.png " ")
 
-In addition to that, *a customer churning today probably made that decision a while ago*, so our machine learning model needs to be able to detect any change in behavior from at least a month ago. This is the reason for the buffer of 1 month in the process.
+In addition, *a customer churning today probably made that decision a while ago*. This means that our machine learning model needs to be able to detect any change in behavior from at least a month ago. This is the reason for the buffer of 1 month in the process.
 
 ## Task 1: Navigate to OML AutoML
-You will need to access OML from the Autonomous Database service console. 
+Access OML from the Autonomous Database OCI service console. 
 
-1. If the service console tab is not open, then log into your Oracle Cloud account and select **Autonomous Database** from the services menu (see Provision Autonomous Database in the menu on the right if you need a reminder).
+1. Go to Autonomous Database in the OCI service console. It should be an opened browser tab if you previously used Databae Actions.
+
+    If your service console browser tab is not open, then log into your Oracle Cloud account and select **Autonomous Database** from the services menu (see Provision Autonomous Database in the menu on the left if you need a reminder). Then, click your Autonomous Database instance from the list of instances.
 
 2. Click **Database Actions** to take you to the Launchpad
 
     ![Go to Database actions](images/adb-goto-database-actions.png "Database Actions")
 
+    Logging into Database Actions from the OCI service console expects you to be the ADMIN user. Log in as ADMIN if you are not automatically logged into Database Actions.
+
 3. In the Launchpad, click **Oracle Machine Learning**:
 
     ![Go to OML](images/adb-goto-oml.png "Go to OML")
 
-4.    
-
-
-1. Access OML AutoML as the Oracle Autonomous Database (ADB) user **MOVIESTREAM**.
-
-    You can access Oracle Machine Learning notebooks from Autonomous Database.
-
-    From the tab on your browser with your Oracle Autonomous Data Warehouse (ADW) instance, click **Service Console.**
-
-    ![Service Console](images/adw-moviestream-main-short.png "")
-
-    Once in the Service Console, select **Development** from the menu on the left.
-
-    ![Development tab in Service Console](images/adw-service-console-menu.png " ")
-
-    From the cards that are available in the Development section, click the **Oracle Machine Learning Notebooks** card.
-
-    ![Oracle Machine Learning Notebooks option in Development tab in Oracle ADW](images/adw-service-console-oml-card.png " ")
-
-    <if type="livelabs">Sign in with ``MOVIESTREAM`` using the password you created in "Lab 3: Create a Database User", Task 1, Step 5. </if><if type="freetier">Enter your Autonomous Database user credentials and click **Sign in.**
-
-    Please note that your user must have the proper credentials for Oracle Machine Learning, described under "**Lab 3:** Create a Database user", at "**Task 2:** Update the user's profile to grant additional roles."</if>
-
+    Login in as MOVIESTREAM
+  
     ![Oracle Machine Learning Notebooks sign-in page](images/oml-login-page.png " ")
 
-    Click **AutoML** on the Quick Actions menu.
+4. You are now in the OML landing page. This page takes you to tutorials, model creation, noteboks and more. We'll now create a new machine learning model using **AutoML**:  
+
+    Click **AutoML** on the Quick Actions menu:
 
     ![Churn AutoML Step 1 home menu](images/oml-churn-automl-home-menu.png " ")
 
-2. Create a new AutoML Experiment
+5. Create a new AutoML Experiment
 
-   An AutoML Experiment will generate a machine learning model. Let's create a **new experiment** by clicking the **Create** button as indicated below.
+   An AutoML Experiment will generate a machine learning model. Let's create a new experiment by clicking the **Create** button as indicated below.
 
     ![Churn AutoML Step 2 main menu](images/oml-churn-automl-main-menu.png " ")
 
-3. Name the experiment    
+6. Name the experiment    
 
     Give the new experiment a **name** and an optional a description
 
-4. Select the experiment's data source
+7. Select the experiment's data source
 
     Previously, we prepared a `MOVIESTREAM_CHURN` table containing numerous attributes that should be helpful in predicting churn. Click the **magnifying glass icon** at the right of the **Data Source**:
 
     ![Churn AutoML Step 2 open data source](images/oml-churn-automl-open-data.png " ")
 
-    In the **Select Table** menu that opens, leave the `SCHEMA` selection as it is, and on the right side scroll down to search for the `MOVIESTREAM_CHURN` table. Alternatively, you can start typing `CHURN` in the search box at the bottom of the list, and it should appear. Select the `MOVIESTREAM_CHURN` table and click the **OK** button.
+    In the **Select Table** menu, leave the `SCHEMA` selection as `MOVIESTREAM`, and on the right side scroll down to search for the `MOVIESTREAM_CHURN` table. Alternatively, type `CHURN` in the search box at the bottom of the list to filter the table list. Select the `MOVIESTREAM_CHURN` table and click the **OK** button.
 
     ![Churn AutoML Step 2 select data source](images/oml-churn-automl-select-data.png " ")
 
-    Back on the **Experiment** page, the **Data Source** name is populated with our selection, and OML AutoML UI will display several statistics for each attribute of the table.
+    Back on the **Experiment** page, the **Data Source** name is populated with our selection, and OML AutoML will display several statistics for each attribute of the table.
 
     Scroll down in the **Experiment** page until you see the **Features** section. A list of the attributes available in the table is displayed. Please note that there is a **scroll bar** for the list itself at the right, next to the **Std Dev** statistic.
 
     ![Churn AutoML Step 2 features list](images/oml-churn-automl-features-list.png " ")
 
-5. Define the Prediction Target, Case ID and Experiment Settings.
+8. Define the Prediction Target, Case ID and Experiment Settings.
 
-    Scroll to the top-right part of the **Experiments** page to identify the field that what we want to predict. Click the drop-down in the **Predict** field. Click the down-arrow and select the target attribute named `IS_CHURNER`. You can also start typing the target attribute in the `Search` box to quickly filter the values.
+    Scroll to the top-right part of the **Experiments** page to identify the field that what we want to predict. Click the drop-down in the **Predict** field. Scroll to and select the target attribute named `IS_CHURNER`. You can also start typing the target attribute in the `Search` box to quickly filter the values.
 
     ![Churn AutoML Step 3 target search](images/oml-churn-automl-target-search.png " ")
 
@@ -128,15 +113,15 @@ You will need to access OML from the Autonomous Database service console.
 
     ![Churn AutoML Step 3 target selection](images/oml-churn-automl-target-selection.png " ")
 
-    On the left side, just under **Data Source**, you'll find that **Classification** is the selected **Prediction Type**. This is because OML AutoML detected that our **Predict** column, or `TARGET` attribute, has only two distinct values and as such this is a binary classification problem. The other option is **Regression**, which is not appropriate for our problem.
+    On the left side, just under **Data Source**, you'll find that **Classification** is the selected **Prediction Type**. This is selected because AutoML detected that our **Predict** column, or `TARGET` attribute, has only two distinct values and therefore is a binary classification problem. The other prediction type, **Regression**, is not appropriate for our problem.
 
-6. Use Additional Settings to customize processing
+9. Use Additional Settings to customize processing
 
-    Expand the **Additional Settings** section by clicking the triangle next to its name. The default values for **Maximum Top Models** is **5**, but we will reduce that to **2** to make it a bit faster for this workshop. Also, we will increase the **Database Service Level** to **HIGH**. Read more about Service Levels with OML AutoML UI in [this Blog Post](https://blogs.oracle.com/machinelearning/oml-automl-ui-4-things-you-can-do-that-affect-performance).
+    Expand the **Additional Settings** section by clicking the triangle next to its name. The default values for **Maximum Top Models** is **5**, but we will reduce that to **2** in order to make processing a bit faster for this workshop. Also, increase the **Database Service Level** to **HIGH**. Read more about Service Levels with OML AutoML UI in [this Blog Post](https://blogs.oracle.com/machinelearning/oml-automl-ui-4-things-you-can-do-that-affect-performance).
 
-    We are going to leave the **Algorithms** selections as is, which means that OML AutoML will try each of these algorithms to find the best one for us.
+    We are going to leave the **Algorithms** selections as is, which means that OML AutoML will try each of these algorithms to find the best one for our situation.
 
-    Here's what our selections look like.
+    Make sure your selections look like the following:
 
     ![Churn AutoML Step 3 additional settings](images/oml-churn-automl-additional-settings.png " ")
 

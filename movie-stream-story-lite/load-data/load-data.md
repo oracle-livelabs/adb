@@ -173,7 +173,7 @@ Click the **Run Script** button to run the script.
 
 This completes the Data Load lab. We now have a full set of structured tables loaded into the Autonomous Database from the MovieStream data lake. We will be working with these tables in later labs.
 
-Please *proceed to the next lab*.
+Please [*proceed to the next lab*](#next).
 
 ## Acknowledgements
 

@@ -38,7 +38,7 @@ This step will create and load the following tables into Autonomous Database: ge
 
 [](include:adb-load-public-db-actions.md)
 
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 ## Acknowledgements
 
