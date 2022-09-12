@@ -55,7 +55,10 @@ This lab assumes you have:
 
       - For zsh:
             ```
-            <copy>
+            To set the value of an environment variable, use the appropriate shell command to associate a variable name with a value. For example, to set the variable PATH to the value /bin:/sbin:/user/bin:/user/sbin:/system/Library/, you would enter the following command in a Terminal window:
+            <copy>PATH=/bin:/sbin:/user/bin:/user/sbin:/system/Library/ export PATH</copy>
+            **Note the correct path for your extracted instant client for this step**
+            ```
 
 4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/WvD2F0Cb533ApmtHNBXotz9VRD2BhwP7wR_qrGGhTs1Md6dtur3xrHew9UawNXSG/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip) .
 
@@ -155,6 +158,7 @@ This lab assumes you have:
 ## Learn more
 - [cx_Oracle installation](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html)
 - [Twitter API documentation](https://developer.twitter.com/en/docs/twitter-api)
+- [Use environment variables in Terminal on Mac](https://support.apple.com/guide/terminal/use-environment-variables-apd382cc5fa-4f58-4449-b20a-41c53c006f8f/mac)
 
 ## Acknowledgements
 
