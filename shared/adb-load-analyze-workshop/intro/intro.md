@@ -1,6 +1,6 @@
 # Introduction
 
-The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. First, you will create an Oracle Autonomous Database instance. Then, you will practice several methods for loading data from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the data with SQL and build analytics dashboards using Oracle Analytics Cloud.
+The labs in this workshop walk you through all the steps to get started using **Oracle Autonomous Database**. First, you will create an Oracle Autonomous Database instance. Then, you will practice several methods for loading data from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the data with SQL and build analytics dashboards using Oracle Analytics Cloud.
 
 Estimated Workshop Time: 1.5 hours
 
