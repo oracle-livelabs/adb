@@ -255,7 +255,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Verify Documents Uploaded Properly](./images/task-6/documents-uploaded.png " ")
 
-15. This will also be reflected in the SQL Workshop -\> Object Browser -\> Patient\_Document !
+15. This will also be reflected in the SQL Workshop -\> Object Browser -\> Patient\_Document
 
     
     ![View Table in Object Browser](./images/task-6/view-data-object-browser.png " ")
@@ -538,7 +538,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Verify Tables in object browser](./images/task-7/verify-tables-created.png " ")
 
-## Task 7: Implement Oracle Text for End Users
+## Task 7: Implement Oracle Text
 
 1. Now let's create a new page to let end users view document gists with 1 click. Create Page, and select **Classic Report**
 
@@ -641,6 +641,11 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 Congratulations! You have successfully completed this lab.
 
+## Acknowledgements
+
+* **Author** - Shayne Jayawardene, Staff Cloud Engineer
+* **Contributors** - Chip Baber, Director, Cloud Engineering
+* **Last Updated By/Date** - Shayne Jayawardene, August 2022
 
 
 
