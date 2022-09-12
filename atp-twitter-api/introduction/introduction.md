@@ -16,9 +16,9 @@ In this lab, you will complete the following tasks:
 
 - Create Schema
 - Extract API
+- Review ATP Storage
 - Review Data Preprocessing
 - Review Machine Learning
-- Review ATP Storage
 - Explore APEX
 
 ### Prerequisites

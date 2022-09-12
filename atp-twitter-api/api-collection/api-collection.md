@@ -41,7 +41,7 @@ This lab assumes you have:
 
     ![root file explorer](images/root.png)
 
-3. Make note of the path (C:\instant_client\instantclient_21_6), as you will place this in environment variables.
+3. Make note of the path ("C:\instant_client\instantclient_21_6"), as you will place this in environment variables.
     - For windows, search **Environment Variables** and edit the **Path** variable to paste the path.
 
     ![Edit Environment Variables](images/environment-variables.png)

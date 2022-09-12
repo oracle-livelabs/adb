@@ -114,7 +114,7 @@ This lab assumes you have:
 
      ![Run SQL scripts menu](images/run-ddl.png) 
 
-5. Observe that the statements were successfully processed. Click the back arrow to return to the SQL Scripts homepage and run each individual script like before.
+5. Observe that the statements were successfully processed. Click the **back arrow** to return to the SQL Scripts homepage and run each individual script like before.
 
      ![Metrics for running a SQL script](images/successful-run.png) 
 
