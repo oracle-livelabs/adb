@@ -16,7 +16,7 @@ In this lab, you will complete the following tasks:
 
 - Create Schema
 - Extract API
-- Review Data Processing
+- Review Data Preprocessing
 - Review Machine Learning
 - Review ATP Storage
 - Explore APEX
@@ -39,6 +39,6 @@ This lab assumes you have:
 
 ## Acknowledgements
 
-- **Author**- Nicholas Cusato, Santa Monica Specialists Hub, August 22, 2022
+- **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, August 22, 2022
+- **Last Updated By/Date** - Nicholas Cusato, September 2022
