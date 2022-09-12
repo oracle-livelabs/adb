@@ -140,7 +140,7 @@ This lab assumes you have:
 
      ![Install app page](images/run-and-build.png)
 
-5. Select **Run Application** at the bottom to view the app homepage.
+5. Select **Run Application** at the bottom to view the app homepage. We will review the app with the data in the Explore APEX lab at the end.
 
      ![Run the App](images/run-app.png)
 
