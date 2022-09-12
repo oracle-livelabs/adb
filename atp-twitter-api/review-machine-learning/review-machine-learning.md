@@ -12,6 +12,7 @@ Estimated Time: 5 minutes
 In this lab, you will complete the following tasks:
 
 - Review Machine Learning Model
+- Analyze code
 
 ### Prerequisites
 
@@ -22,21 +23,21 @@ This lab assumes you have:
 
 1. With cloud SQL Developer still open, notice the columns for the **MODEL** table. You might need to scroll the table over to see the additional columns.
 
-![Model table for sentiment](images/sentiment.png) 
+    ![Model table for sentiment](images/sentiment.png) 
 
-2. Notice the **SENTIMENT** that is assessed from the scoring. In this example **NEU** is the highest score; therefore, it is assigned a Neutral sentiment. Hate speech is also analyzed in the columns **HATEFUL, TARGETED, and AGGRESSIVE,** which can be further used for analysis.
+2. Notice the **SENTIMENT** that is assessed from the scoring. In this first row example, **NEU** is the highest score; therefore, it is assigned a Neutral sentiment. Hate speech is also analyzed in the columns **HATEFUL, TARGETED, and AGGRESSIVE,** which can be further used for analysis.
 
 3. Scroll more to observe the emotions declared for each tweet.
 
-![Model table for emotions](images/emotion.png) 
+    ![Model table for emotions](images/emotion.png) 
 
-4. Notice the highest scored emotion are assigned an emotion for the tweet. In this example, the first tweet has a high score for **OTHERS**, therefore, none of the other emotions are used to assess the tweet.
+4. Notice the highest scored emotion are assigned an emotion for the tweet. In this first row example, the first tweet has a high score for **OTHERS**, therefore, none of the other emotions are used to assess the tweet.
 
 ## Task 2: Analyze code
 
-1. Open the TwitterExtract.py file to explore the lines of code (214)used to score the sentiment, hate speech, and emotions. Pysentimiento is used to analyze the cleantweets. ES (Spanish) is declared as the scoring language, which can be changed to EN (English) to expand on the topic.
+1. Open the TwitterExtract.py file to explore the lines of code (staring at line 214) used to score the sentiment, hate speech, and emotions. Pysentimiento is used to analyze the cleantweets. ES (Spanish) is declared as the scoring language, which can be changed to EN (English) to expand on the topic on lines 214-216.
 
-![Code for Sentiment](images/code.png)
+    ![Code for Sentiment](images/code.png)
 
 ## Acknowledgements
 

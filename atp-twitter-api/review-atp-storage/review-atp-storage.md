@@ -4,7 +4,7 @@
 
 In this lab, we will view the storage of the tweets collected by the API.
 
-Estimated Time: 15 minutes
+Estimated Time: 5 minutes
 
 
 ### Objectives

@@ -31,7 +31,7 @@ This lab assumes you have:
 - Basic familiarity with Oracle APEX
 - Python 3.9 installed on your computer (Lab won't run properly with newer versions of Python)
 - Basic familiarity with Python and SQL language
-- IDE of your choice installed on your computer (EX: VSCode or Atom)
+- IDE of your choice installed on your computer (All examples in this lab will use VSCode)
 
 ## Want to learn more about Autonomous Database?
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)

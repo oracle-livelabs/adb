@@ -29,20 +29,20 @@ This lab assumes you have:
     </copy>
     ```
     
-    Select the **play** button to run the script
+    Select the **play** button to run the script.
 
     ![Comparison of raw tweet and clean tweet](images/clean-tweet.png) 
 
 2. Notice all of the special characters are removed to ensure the correct data is being analyzed. 
-- RT = Retweet (removed for redundancy)
-- Hashtags are removed and logged in separate column
-- Punctuations are removed to allow the ML model to run correctly and logged in separate column
+- RT = Retweet (removed for redundancy).
+- Hashtags are removed and logged in separate column.
+- Punctuations are removed to allow the ML model to run correctly and logged in separate column.
 
     ![Columns logging tweet statistics](images/tweet-statistics.png) 
 
 ## Task 2: Analyze code
 
-1. Open the TwitterExtract.py file to explore the lines of code (112) that processes the data. Pysentimeinto is the Python library that runs the clean tweets through the ML model. We will cover this in the next lab. 
+1. Open the TwitterExtract.py file to explore the lines of code (starting at line 112) that processes the data. Pysentimeinto is the Python library that runs the clean tweets through the ML model. We will cover this in the next lab. 
 
     ![Clean tweet code](images/limpieza-code.png) 
 

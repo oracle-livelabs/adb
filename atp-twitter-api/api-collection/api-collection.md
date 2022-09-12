@@ -21,7 +21,7 @@ In this lab, you will complete the following tasks:
 
 This lab assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
-- An IDE of your choosing (VSCode)
+- An IDE of your choosing (All examples in this lab will use VSCode)
 - Installed Python 3.9 (Newest version will not work as of writing)
 
 ## Task 1: Install cx_Oracle
@@ -114,15 +114,15 @@ This lab assumes you have:
     ![installation of modules](images/python-path.png)
 
     - if you have 3.10 version of python installed, be sure to install 3.9 now. Use this [link](https://www.python.org/downloads/release/python-390/) to install (Select the version that matches your computer).
-    - If you have both, that is no problem for VSCode as you can change the Python Interpreter. Use **CMD+Shift+P** to type **Python: Select Interpreter**
+    - If you have both, that is no problem for VSCode as you can change the Python Interpreter. Use **CMD+Shift+P** to type **Python: Select Interpreter.**
 
     ![VSCode search bar](images/python-interpreter.png)
 
-    - Select the 3.9 Version of Python to run the code correctly.
+    - Select the 3.9 version of Python to run the code correctly.
 
     ![Python interpreter options](images/python39.png)
 
-2. Select the **Play button** in the top right to run the code in terminal from VSCode.
+2. Run the code in the IDE of choice. In this example, select the **Play button** in the top right to run the code in terminal from VSCode.
 
     ![VSCode run terminal button](images/run-terminal.png)
 
@@ -132,11 +132,11 @@ This lab assumes you have:
 
     ![TNS error](images/tns-error.png)
 
-    -Also, be sure your **Schema name** matches the code for the INSERT statements.
+    - Be sure your **Schema name** matches the code for the INSERT statements.
 
     ![Table error](images/table-error.png)
 
-    -If you receive an error, **Cannot locate a 64-bit Oracle Client library,** then you will need to add the following to the TwitterExtract.py file:
+    - If you receive an error, **Cannot locate a 64-bit Oracle Client library,** then you will need to add the following to the TwitterExtract.py file:
 
     ```
     <copy>cx_Oracle.init_oracle_client('<PATH_NAME_INSERT_HERE>')</copy>
