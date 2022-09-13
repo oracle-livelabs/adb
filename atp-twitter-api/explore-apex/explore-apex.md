@@ -73,7 +73,7 @@ This lab assumes you have:
 
     ![Word map for hashtags](images/word-map.png) 
 
-Thank you for completing this lab.
+Thank you for completing this lab!
 
 ## Acknowledgements
 
