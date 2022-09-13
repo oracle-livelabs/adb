@@ -1,6 +1,7 @@
 {
     "workshoptitle": "Important Tools for Everyone Using Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {"webtransforms": "../using-adb-tools/ocw-web-transforms.md"},
     "tutorials": [
         {
             "title": "Getting Started",
@@ -21,7 +22,8 @@
         {
             "title": "Lab 2: Create a Database User",
             "description": "Intro to MovieStream and Creating a Database User",
-            "filename": "../getting-started/getting-started.md"
+            "filename": "../getting-started/getting-started.md",
+            "type": "SQL"
         },
         {
             "title": "Lab 3: Use Autonomous Database Tools",

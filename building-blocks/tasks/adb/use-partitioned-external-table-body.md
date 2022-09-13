@@ -4,13 +4,13 @@
         "description":"Create partitioned external tables over object storage data using a single, simple API call. Then, load that data. Compare performance of external tables and partitioned external tables."
     }
 -->
-With Oracle Partitioning, a single logical object in the database is subdivided into multiple smaller physical objects, known as partitions. The knowledge about this physical partitioning enables the database to improve the performance when querying external data. Autonomous Database makes it easy to create partitioned external tables over sources that use common data lake organizational patterns. 
+With Oracle Partitioning, a single logical object in the database is subdivided into multiple smaller physical objects, known as partitions. The knowledge about this physical partitioning enables the database to improve the performance when querying external data. Autonomous Database makes it easy to create partitioned external tables over sources that use common data lake organizational patterns.
 
 ![Data Lake storage](images/obj-organization.png)
 
 Let's create an external table ``EXT_CUSTSALES_PART`` with 24 monthly partitions.
 
-1. Create a partitioned external table using the the ``DBMS_CLOUD.CREATE_EXTERNAL_PART_TABLE`` procedure. Similar to the ``DBMS_CLOUD.CREATE_EXTERNAL_TABLE`` procedure, ``DBMS_CLOUD.CREATE_EXTERNAL_PART_TABLE`` takes the table_name and the source URI (again, this data is stored in a public bucket, so the credential parameter is not required). Notice that the format parameter also includes a ``PARTITION_COLUMNS`` attribute. The attribute's name must match the partition column name found in the object storage path. The data type is the Oracle data type that maps to the column. The result will be a partitioned tables whose values come from the file paths:
+1. Create a partitioned external table using the the ``DBMS_CLOUD.CREATE_EXTERNAL_PART_TABLE`` procedure. Similar to the ``DBMS_CLOUD.CREATE_EXTERNAL_TABLE`` procedure, ``DBMS_CLOUD.CREATE_EXTERNAL_PART_TABLE`` takes the table_name and the source URI (again, this data is stored in a public bucket, so the credential parameter is not required). Notice that the format parameter also includes a ``PARTITION_COLUMNS`` attribute. The attribute's name must match the partition column name found in the object storage path. The data type is the Oracle data type that maps to the column. The result will be a partitioned table whose values come from the file paths:
 
     ```
     <copy>--==============================
@@ -28,7 +28,7 @@ Let's create an external table ``EXT_CUSTSALES_PART`` with 24 monthly partitions
     ```
     Copy and paste this code snippet into the SQL worksheet and run the command.
 
-2. Let's review the new external table. Click the refresh button in the SQL worksheet **Navigator**. Then, right-click **EXT\_CUSTSALES\_PART** and select **Open**
+2. Let's review the new external table. Click the refresh button in the SQL worksheet **Navigator**. Then, right-click **EXT\_CUSTSALES\_PART** and select **Open**.
 
     ![Table columns](images/adb-sql-view-ptable-columns.png)
 
@@ -45,7 +45,7 @@ Let's create an external table ``EXT_CUSTSALES_PART`` with 24 monthly partitions
 4. How are customers watching movies? Find out which operating systems are used most frequently. Copy and paste the following SQL into the SQL worksheet and click run. Notice you query partitioned tables in exactly the same way you query unpartitioned tables:
     ```
     <copy>select os, count(*)
-from ext_custsales_part 
+from ext_custsales_part
 where month='2020-12'
 group by os
 order by 2 desc;
@@ -57,7 +57,7 @@ order by 2 desc;
 
 5. Re-execute the ``count(*)`` query and compare performance to an unpartitioned table. Copy and paste the SQL below into the SQL worksheet and click run:
     ```
-    <copy>select count(*) 
+    <copy>select count(*)
 from ext_custsales_part
 where month='2019-01';
     </copy>
@@ -65,4 +65,3 @@ where month='2019-01';
     ![Faster partition query](images/adb-simple-ptable-query-count.png)
 
     The query returns in a couple of seconds. Partitioning narrowed the data scan to a single month - approximately 20x faster than a similar non-partitioned table query.  
-

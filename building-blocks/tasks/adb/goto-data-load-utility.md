@@ -1,7 +1,7 @@
 <!--
     {
         "name":"Go to Data Load Utility Database Action",
-        "description":"Navigate to data loader. AUTHORS: For expediency, this task uses the ADMIN user/password to open Database Actions. In your workshop, you might want to substitue a different user/password to open Database Actions."
+        "description":"Navigate to data loader. AUTHORS: For expediency, this task uses the ADMIN user/password to open Database Actions. In your workshop, you might want to substitute a different user/password to open Database Actions."
     }
 -->
 
