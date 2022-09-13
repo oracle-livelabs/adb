@@ -58,8 +58,8 @@ This lab assumes you have:
             ```
             To set the value of an environment variable, use the appropriate shell command to associate a variable name with a value. For example, to set the variable PATH to the value /bin:/sbin:/user/bin:/user/sbin:/system/Library/, you would enter the following command in a Terminal window:
             <copy>PATH=/bin:/sbin:/user/bin:/user/sbin:/system/Library/ export PATH</copy>
-            **Note the correct path for your extracted instant client for this step**
             ```
+            **Note: Insert the correct path for your extracted instant client for this step**
 
 4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/tVAwp-XWRsm1oouSHDzzZwyUQ5TErSPpPNhuYPMTbSJOZlC-Pvsed-caGfHYrkV5/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip) .
 
