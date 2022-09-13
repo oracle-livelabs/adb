@@ -114,7 +114,7 @@ Copy **ONE** of the following commands and paste it to the command or terminal w
 
     ```
     <copy>
-    set path=%HOMEDRIVE%%HOMEPATH%\mongosh\mongosh-1.5.0-win32-x64\bin\;%PATH%
+    set path=%cd%\mongosh-1.5.0-win32-x64\bin\;%PATH%
     </copy>
     ```
 

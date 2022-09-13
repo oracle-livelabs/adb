@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Use Oracle Database API for MongoDB",
+    "workshoptitle": "Using the Database API for MongoDB",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -29,12 +29,16 @@
             "filename": "../../mongoshell/mongoshell.md"
         },
         {
-            "title": "Lab 4: Use Database Actions",
+            "title": "Lab 4: Interact with JSON Documents through Database Actions",
             "filename": "../../dbactions/dbactions.md"
         },
         {
-            "title": "Lab 5: Terminate Oracle Autonomous Database",
+            "title": "Lab 5: Cleanup Oracle Autonomous Database",
             "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+        },
+        {
+            "title": "Oracle CloudWorld 2022 - Get Help",
+            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         },
         {
             "title": "Need Help?",

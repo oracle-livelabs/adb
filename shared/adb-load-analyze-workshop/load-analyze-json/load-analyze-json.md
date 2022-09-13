@@ -9,7 +9,7 @@ Estimated Time: 10 minutes
 ### Objectives
 
 In this lab, you will:
-* Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` API
+* Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` procedure
 * Use SQL to analyze both simple and complex JSON attributes
 
 

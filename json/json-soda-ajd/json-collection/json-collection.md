@@ -1,10 +1,10 @@
-# Working with JSON collections using the SODA (Simple Oracle Document Access) API
+# Work with JSON collections
 
 ## Introduction
 
-Oracle is a relational database, meaning it typically stores data in rows and column of tables and JSON can be stored as a column value. For this lab though we first focus on the Document Store API SODA (Simple Oracle Document Access) which allows to store JSON data in a so-called collection. A JSON collection stores JSON documents alongside some metadata like the time of creation or update. Collections offer operations like inserts, deletes, index creation or queries.
+Oracle is a relational database, meaning it typically stores data in rows and columns of tables and JSON can be stored as a column value. For this lab though, we first focus on the Document Store API SODA (Simple Oracle Document Access) which allows us to store JSON data in a so-called collection. A JSON collection stores JSON documents alongside some metadata like the time of creation or update. Collections offer operations like inserts, deletes, index creation or queries.
 
-In order to create a collection all you have to specify is the collection's name. Unlike a relational table you do not have to provide any schema information. So, lets create a collection for the products we want to sell in the store.
+To create a collection all you have to specify is the collection's name. Unlike a relational table, you do not have to provide any schema information. So, let's create a collection for the products we want to sell in the store.
 
 Estimated Time: 15 minutes
 
@@ -33,11 +33,11 @@ In this lab, you will:
 
 	![New collection: products](./images/new-products.png)
 
-3. A notification pops up that displays `products` collections is created.
+3. A notification pops up that displays **products** collections has been created.
 
 	![New collection notification](./images/popup.png)
 
-4. Click the refresh button to verify `products` collection is created.
+4. Click the refresh button to verify the *products** collection has been created.
 
 	![Refresh button](./images/refreshed.png)
 
@@ -47,11 +47,11 @@ In this lab, you will:
 
 	![products worksheet](./images/double-clicked.png)
 
-2. Click New JSON Document button.
+2. Click the *New JSON Document* button.
 
 	![new document button](./images/new-document.png)
 
-3. A New JSON Document panel displays. Copy the following JSON object, paste it in the worksheet and click **Create**.
+3. A **New JSON Document** panel displays. Copy the following JSON object, paste it in the worksheet and click **Create**.
 
 	```
 	<copy>
@@ -78,7 +78,7 @@ In this lab, you will:
 
 5. Let's repeat this with the following documents:
 
-	Click New JSON Document button, copy the following JSON objects one by one, paste it in the worksheet and click **Create**.
+	Click the *New JSON Document* button, copy the following JSON objects one by one, paste it into the worksheet and click **Create**.
 
     ```
 	<copy>
@@ -138,15 +138,15 @@ In this lab, you will:
 
 ## Task 3: Find JSON documents in a collection
 
-Documents can be selected based on filter conditions - we call them 'Queries By Example' or 'QBE' for short. A QBE is a JSON document itself and it contains the fields and filter conditions that a JSON document in the collection must satisfy in order to be selected. QBEs are used with SODA (only); you can use SQL functions as an alternative.
+Documents can be selected based on filter conditions - we call them 'Queries By Example' or 'QBE' for short. A QBE is a JSON document itself and it contains the fields and filter conditions that a JSON document in the collection must satisfy, in order to be selected. QBEs are used with SODA (only); you can use SQL functions as an alternative.
 
 The simplest form of a QBE just contains a key-value pair. Any selected document in the collection must have the same key with the same value. More complex QBEs can contain multiple filter conditions or operators like 'negation' or 'and', etc.
 
-The following are examples for QBEs. You can copy them into the corresponding window (see screenshot) and execute them. Obviously, in a real application those QBE-expressions would be issued directly from the programming language - the SODA drivers have APIs for common application programming languages: Python, etc.
+The following are examples of QBEs. You can copy them into the corresponding window (see screenshot) and execute them. Obviously, in a real application, those QBE-expressions would be issued directly from the programming language - the SODA drivers have APIs for common application programming languages: Python, etc.
 
 Now let's issue some simple queries on the *products* collection we just created.
 
-1. Copy and paste the following queries in the worksheet and click Run Query button to run a query.
+1. Copy and paste the following queries into the worksheet and click the *Run Query* button to run a query.
 
 2.  Lookup by one value:
 
@@ -162,7 +162,7 @@ Now let's issue some simple queries on the *products* collection we just created
 
 3.	Find all DVDs:
 
-	Running the query will displays two documents with format DVD.
+	Running the query will display two documents with format DVD.
 
 	```
 	<copy>
@@ -202,7 +202,7 @@ Now let's issue some simple queries on the *products* collection we just created
 	```
 	![results for price less than 5](./images/less5.png)
 
-7. Tighten previous query to choose only movie documents:
+7. Tighten the previous query to choose only movie documents:
 
 	This query displays the documents whose ids are 100, 102 as those documents have price less than 5 and not the type - book.
 
@@ -217,7 +217,7 @@ Now let's issue some simple queries on the *products* collection we just created
 
 JSON data is "schema flexible", you can add whatever data you like to a JSON document. But sometimes you will wish to impose some required structure on that data. That can be done through SQL by creating indexes and/or constraints on the JSON collection.
 
-An index will aid fast access to an item (for example speeding up access via the "title" field), but can also be used to impose uniqueness (a unique index or primary key constraint), or to enforce particular datatypes (by triggering an error if the datatype is not what is expected).
+An index will aid fast access to an item (for example speeding up access via the "title" field), but can also be used to impose uniqueness (a unique index or primary key constraint) or to enforce particular datatypes (by triggering an error if the datatype is not what is expected).
 
 More generally, constraints can be used to check the data being entered for various aspects.
 
@@ -229,7 +229,7 @@ More generally, constraints can be used to check the data being entered for vari
 
 	Add a constraint to make sure that every item has at least a title and the price. We want the price to be a non-negative number and title to be a string.
 
-	Copy and paste the query below in the worksheet and click Run query button to run the SQL query to alter products table and add constraints.
+	Copy and paste the query below in the worksheet and click the *Run query* button to run the SQL query to alter the **products** table and add constraints.
 
 	```
 	<copy>
@@ -247,11 +247,11 @@ More generally, constraints can be used to check the data being entered for vari
 
 	![JSON navigation](./images/nav2-json.png)
 
-10. Validate that the following documents cannot get inserted as fields are missing or of wrong type.
+10. Validate that the following documents cannot get inserted, since fields are missing or are of wrong type.
 
-	Click New JSON Document icon, copy and paste the following query in the worksheet and click **Create**.
+	Click the *New JSON Document* icon, copy and paste the following query in the worksheet and click *Create*.
 
-	Throws the error "Unable to add new JSON document" since the following document has missing fields while trying to insert.
+	This throws the error "Unable to add new JSON document" since the following document has missing fields while trying to insert.
 
 	```
 	<copy>
@@ -285,7 +285,7 @@ More generally, constraints can be used to check the data being entered for vari
 
 ## Task 5: Install MongoDB tools on your local machine
 
-In this task we will use the Oracle Database API for MongoDB. That allows standard MongoDB tools and drivers to connect to Autonomous Database as though it were a MongoDB database. We will use the mongoimport tool to bulk-load some data, then use mongosh to connect and do some interactive commands.
+In this task, we will use the Oracle Database API for MongoDB. That allows standard MongoDB tools and drivers to connect to Autonomous Database as though it were a MongoDB database. We will use the mongoimport tool to bulk-load some data, then use mongosh to connect and do some interactive commands.
 
 1.  (Mac machines only) Determine the type of hardware
 
@@ -360,7 +360,7 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	curl https://fastdl.mongodb.org/tools/db/mongodb-database-tools-rhel70-x86_64-100.5.4.tgz -o mongotools.tgz
 	tar xvf mongosh.tgz
 	tar xvf mongotools.tgz
-	export PATH="`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.2/bin/:`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.4/bin/:$PATH"
+	export PATH="`pwd`/mongodb-database-tools-rhel70-x86_64-100.5.2/bin/:`pwd`/mongosh-1.5.1-linux-x64/bin/:$PATH"
 	</copy>
 	```
 
@@ -476,7 +476,7 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 
 	![mongo shell prompt](./images/mongosh.png " ")
 
-	From here you can run MongoDB commands against the data in your Autonomous Database. Here's a few suggested commands.
+	From here you can run MongoDB commands against the data in your Autonomous Database. Here are a few suggested commands.
 
 	Show collections in the database:
 
@@ -494,7 +494,7 @@ In this task we will use the Oracle Database API for MongoDB. That allows standa
 	</copy>
 	```
 
-	Find product with _id = 100
+	Find the product with _id = 100
 
 	```
 	<copy>
