@@ -8,7 +8,6 @@ Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclec
 
 Estimated Time: 40 minutes
 
-
 ### Objectives
 
 In this lab, you will complete the following tasks:
@@ -25,6 +24,8 @@ This lab assumes you have:
 - Installed Python 3.9 (Newest version of Python will not work with the current version of Pysentimiento)
 
 ## Task 1: Install cx_Oracle
+
+> **Note:** All screenshots will be using Windows OS.
 
 1. Visit this site to download instant client:
     - [Oracle Instant Client Downloads](https://www.oracle.com/database/technologies/instant-client/downloads.html)
@@ -154,6 +155,8 @@ This lab assumes you have:
     ![Successful terminal output](images/success.png)
 
 5.  Let this script run for at least 20 minutes for approximately 100 inserts (longer is better). Press **CTRL+C** in the terminal to end the script.
+
+You may now **proceed to the next lab.**
 
 ## Learn more
 - [cx_Oracle installation](https://cx-oracle.readthedocs.io/en/latest/user_guide/installation.html)

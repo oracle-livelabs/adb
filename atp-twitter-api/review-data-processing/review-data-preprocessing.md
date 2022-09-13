@@ -46,6 +46,7 @@ This lab assumes you have:
 
     ![Clean tweet code](images/limpieza-code.png) 
 
+You may now **proceed to the next lab.**
 
 ## Acknowledgements
 

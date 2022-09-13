@@ -144,6 +144,8 @@ This lab assumes you have:
 
      ![Run the App](images/run-app.png)
 
+You may now **proceed to the next lab.**
+
 ## Acknowledgements
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub

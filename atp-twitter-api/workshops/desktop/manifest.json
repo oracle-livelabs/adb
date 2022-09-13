@@ -3,41 +3,50 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
       {
+         "title": "Getting Started",
+         "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+        {
          "title": "Introduction",
          "description": "",
          "filename": "../../introduction/introduction.md"
-      },
+        },
         {
-           "title": "Create Schema",
+           "title": "Lab 1: Create Schema",
            "description": "",
            "filename": "../../create-schema/create-schema.md"
         },
         {
-           "title": "Extract API",
+           "title": "Lab 2: Extract API",
            "description": "",
            "filename": "../../api-collection/api-collection.md"
         },
         {
-         "title": "Review ATP Storage",
+         "title": "Lab 3: Review ATP Storage",
          "description": "",
          "filename": "../../review-atp-storage/review-atp-storage.md"
         },
         {
-           "title": "Review Data Preprocessing",
+           "title": "Lab 4: Review Data Preprocessing",
            "description": "",
            "filename": "../../review-data-processing/review-data-preprocessing.md"
         },
         {
-           "title": "Review Machine Learning",
+           "title": "Lab 5: Review Machine Learning",
            "description": "",
            "filename": "../../review-machine-learning/review-machine-learning.md"
         },
         {
-           "title": "Explore APEX",
+           "title": "Lab 6: Explore APEX",
            "description": "",
            "filename": "../../explore-apex/explore-apex.md"
-        }
-
+        },
+        {
+         "title": "Need Help?",
+         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+         "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+     }
     ],
     "task_type": "Sections",
     "hide_button": "true"

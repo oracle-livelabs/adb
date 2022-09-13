@@ -73,7 +73,7 @@ This lab assumes you have:
 
     ![Word map for hashtags](images/word-map.png) 
 
-Thank you for completing this lab!
+Congratulations! You have successfully learned how to create an APEX application for sentiment analysis using Twitter API and some best practices around it.
 
 ## Acknowledgements
 

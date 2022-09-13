@@ -88,6 +88,8 @@ Select the **play** button to run the script
 
 10. Notice all of the data that was extracted from Twitter. This will be helpful for analytics, which will be covered in the lab **Explore APEX.**
 
+You may now **proceed to the next lab.**
+
 ## Acknowledgements
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub

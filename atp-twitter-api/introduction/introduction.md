@@ -1,4 +1,4 @@
-# Create OML model
+# Create an APEX application for sentiment analysis using Twitter API
 
 ## Introduction
 

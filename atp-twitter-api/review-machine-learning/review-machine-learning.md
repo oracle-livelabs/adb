@@ -39,6 +39,8 @@ This lab assumes you have:
 
     ![Code for Sentiment](images/code.png)
 
+You may now **proceed to the next lab.**
+
 ## Acknowledgements
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
