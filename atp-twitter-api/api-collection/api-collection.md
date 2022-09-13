@@ -1,4 +1,4 @@
-# API Collection
+# Extract API
 
 ## Introduction
 
@@ -15,14 +15,14 @@ In this lab, you will complete the following tasks:
 
 - Install cx_Oracle
 - Review Twitter API
-- Run the Extract
+- Run the extract
 
 ### Prerequisites
 
 This lab assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
 - An IDE of your choosing (All examples in this lab will use VSCode)
-- Installed Python 3.9 (Newest version will not work as of writing)
+- Installed Python 3.9 (Newest version of Python will not work with the current version of Pysentimiento)
 
 ## Task 1: Install cx_Oracle
 
@@ -41,12 +41,12 @@ This lab assumes you have:
 
     ![root file explorer](images/root.png)
 
-3. Make note of the path ("C:\instant_client\instantclient_21_6"), as you will place this in environment variables.
+3. Make note of the path (C:\instant\_client\instantclient\_21\_6), as you will place this in environment variables.
     - For windows, search **Environment Variables** and edit the **Path** variable to paste the path.
 
     ![Edit Environment Variables](images/environment-variables.png)
 
-    - For macOS, you will need to use a CLI. For oldermacOS versions (before Catalina), use **bash** shell. For macOS Catalina and later, use **zsh** (z shell).
+    - For macOS, you will need to use a CLI. For older macOS versions (before Catalina), use **bash** shell. For macOS Catalina and later, use **zsh** (z shell).
       - For bash: 
             
             ```
@@ -66,8 +66,8 @@ This lab assumes you have:
 
 5. Open the ConnectionInfo.py file to paste the path for the Instant Client.
 
-    - Paste the path for **TNS_ADMIN** appending the following endpoint: **\network\admin** .
-    - Paste the path (C:\instant_client\instantclient_21_6) for the **LD_LIBRARY_PATH** . 
+    - Paste the path for **TNS\_ADMIN** appending the following endpoint: **\network\admin** .
+    - Paste the path (C:\instant\_client\instantclient\_21\_6) for the **LD\_LIBRARY\_PATH** . 
 
     ![Connection Info Python file](images/path.png)
 
@@ -107,7 +107,7 @@ This lab assumes you have:
 
 6. Notice the generated **API Key** and **Secret**. Copy these variables and paste in the **TwitterExtract.py** file.
 
-## Task 3: Run the Extract
+## Task 3: Run the extract
 
 1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install "module name"**. Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, find the path to 3.9 and declare that prior to using pip install.
 

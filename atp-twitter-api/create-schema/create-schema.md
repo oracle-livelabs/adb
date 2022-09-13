@@ -1,4 +1,4 @@
-# Create Schema
+# Create schema
 
 ## Introduction
 

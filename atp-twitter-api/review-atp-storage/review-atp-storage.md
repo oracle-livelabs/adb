@@ -1,4 +1,4 @@
-# Review ATP Storage
+# Review ATP storage
 
 ## Introduction
 
@@ -11,14 +11,14 @@ Estimated Time: 5 minutes
 
 In this lab, you will complete the following tasks:
 
-- Review Storage
+- Review storage
   
 ### Prerequisites
 
 This lab assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
 
-## Task 1: Review Storage
+## Task 1: Review storage
 
 1. Navigate to the ATP homepage of the instance you created in the first lab. Select **Database Actions** to open the cloud SQL Developer.
 

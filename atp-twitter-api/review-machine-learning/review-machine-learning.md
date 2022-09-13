@@ -1,4 +1,4 @@
-# Review Machine Learning 
+# Review machine learning 
 
 ## Introduction
 
@@ -11,7 +11,7 @@ Estimated Time: 5 minutes
 
 In this lab, you will complete the following tasks:
 
-- Review Machine Learning Model
+- Review machine learning model
 - Analyze code
 
 ### Prerequisites
@@ -19,7 +19,7 @@ In this lab, you will complete the following tasks:
 This lab assumes you have:
 - An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
 
-## Task 1: Review Machine Learning Model
+## Task 1: Review machine learning model
 
 1. With cloud SQL Developer still open, notice the columns for the **MODEL** table. You might need to scroll the table over to see the additional columns.
 
