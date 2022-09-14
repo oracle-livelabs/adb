@@ -9,11 +9,7 @@
 
 Analyzing past performance lets you know customers that have already been lost. Lets get in front of this problem and predict those that are at risk using in database analytics.
 
-In this lab, you will use the Oracle Machine Learning (OML) Notebooks and the OML4SQL interface provided with Autonomous Database, and the OML AutoML UI and its features to identify customers with a higher likelihood of churning from **Oracle MovieStream** streaming services to a different movie streaming company.
-
-There are two parts to this Lab:
-- Quick preview of the data that was prepared by the Data Engineer in conjunction with the Data Scientist
-- Use of the Oracle Machine Learning AutoML UI to build a model that can predict churn, and score current customers
+In this lab, you will use Oracle Machine Learning (OML) in Autonomous Database to identify customers with a higher likelihood of churning from **Oracle MovieStream** streaming services. You will first use OML AutoML to create a customer churn model. Then, you will use OML Notebooks to score customers using both OML4SQL and OML4Py.
 
 Estimated Time: 10 minutes
 
