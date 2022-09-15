@@ -108,7 +108,7 @@ This lab assumes you have:
 
     - Download the lab files if you haven't already: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/vmkYRTjFDKT14aBgppExmxjWXNForfovxySRrgqJGlWMacsc6mMtClQY1a6foD3c/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL1.zip)
 
-     ![Upload SQL scripts from menu](images/upload-scripts.png) 
+    ![Upload SQL scripts from menu](images/upload-scripts.png) 
 
 4. Starting with the **HackathonDDL** file, select the **play button (Run)** to run the individual sql files.
 
