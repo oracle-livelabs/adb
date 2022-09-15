@@ -43,7 +43,7 @@ This lab assumes you have:
     SELECT * FROM WKSP_TWITTERLL.MODEL
     </copy>
     ```
-Select the **play** button to run the script
+    Select the **play** button to run the script
 
     ![worksheet for model](images/select-star-model.png)
 
@@ -58,11 +58,11 @@ Select the **play** button to run the script
     SELECT * FROM WKSP_TWITTERLL.PLACE
     </copy>
     ```
-Select the **play** button to run the script
+    Select the **play** button to run the script
 
     ![Output for PLACE table](images/place-output.png)
 
-Notice the indexed metadata from tweets. Here we have four tweets from Mexico and Canada.
+    Notice the indexed metadata from tweets. Here we have four tweets from Mexico and Canada.
 
 8. Copy and paste the following into the worksheet:
 
@@ -71,9 +71,11 @@ Notice the indexed metadata from tweets. Here we have four tweets from Mexico an
     SELECT * FROM WKSP_TWITTERLL.TWEET
     </copy>
     ```
-Select the **play** button to run the script
+    Select the **play** button to run the script
 
     ![Output for TWEET table](images/tweet-output.png)
+
+    Notice the tweets are indexed by retweets and likes also. This would be help for a quick glance at which tweets are most popular.
 
 9. Copy and paste the following into the worksheet:
 
@@ -82,11 +84,13 @@ Select the **play** button to run the script
     SELECT * FROM WKSP_TWITTERLL.USERS
     </copy>
     ```
-Select the **play** button to run the script
+    Select the **play** button to run the script
 
     ![Output for USERS table](images/users-output.png)
 
-10. Notice all of the data that was extracted from Twitter. This will be helpful for analytics, which will be covered in the lab **Explore APEX.**
+    Notice the users are  indexed by followers and tweet counts, which is helpful to see what accounts are real and which are actually bots.
+
+10. Notice all of the data that was extracted from Twitter. This will be helpful for analytics, which will be covered in the last lab **Explore APEX.**
 
 You may now **proceed to the next lab.**
 

@@ -46,6 +46,10 @@ This lab assumes you have:
 
     ![Clean tweet code](images/limpieza-code.png) 
 
+2. Scrolling down to the end of the file (line 309), you can view the API search parameters. These key words can be edited to adjust the context of your project. If you change these words, you will need replace the lines 135-146 to better fit your project context. These words are commonly found in our tweets but don't actually help the sentiment analysis and are replaced with empty spaces, which helps filter our results.
+
+    ![Python extract search parameters code](images/search-parameters.png) 
+
 You may now **proceed to the next lab.**
 
 ## Acknowledgements

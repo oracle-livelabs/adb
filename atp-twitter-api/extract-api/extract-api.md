@@ -4,6 +4,8 @@
 
 In this lab, we will use Visual Studio Code (VSCode) IDE to initiate a connection to the database and Twitter API using cx_Oracle and the Python library, Tweepy.  
 
+> **Note:** Creating a Twitter Developer account may take up to a few days to get approved, depending on your responses to the questions.
+
 **Download VSCode Here:** [Link](https://code.visualstudio.com/download)
 
 **Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/tVAwp-XWRsm1oouSHDzzZwyUQ5TErSPpPNhuYPMTbSJOZlC-Pvsed-caGfHYrkV5/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip)
@@ -84,7 +86,7 @@ This lab assumes you have:
 
     ![DB Connection](images/db-connection.png)
 
-8. Download the wallet and copy the first TNS Name in the popup window and paste in the **dsn**. Save the **ConnectionInfo.py** file.
+8. Download the wallet and copy the first TNS Name in the popup window and paste the **TNS Name** into the section **dsn** of the ConnectionInfo.py files. Save the **ConnectionInfo.py** file.
 
     ![TNS Name popup window](images/connection-string.png)
 
@@ -96,9 +98,11 @@ This lab assumes you have:
 
 1. Open the **TwitterExtract.py** file and make note of the following variables (**APIkey** & **APIsecret**). We will fill this out in the following steps.
 
+    ![API variables in python file](images/api-variables.png)
+
 2. Open the browser and access the following [Link](https://developer.twitter.com/en/docs/twitter-api) to open the Twitter API documentation.
 
-3. Select **Sign Up** if you do not have previous access to Twitter API.
+3. Select **Sign Up** if you do not have previous access to Twitter API, otherwise, **login with your credentials.** The sign up process may take up to a couple days to get approved depending on your responses, but most of the time, it is pretty quick. 
 
 4. After completing the information to sign up (if you haven't done so already), you can create an app by selecting **Create app**.
 
@@ -109,6 +113,8 @@ This lab assumes you have:
     ![Name for API app](images/name-app.png)
 
 6. Notice the generated **API Key** and **Secret**. Copy these variables and paste in the **TwitterExtract.py** file.
+
+    ![API variables in python file](images/api-variables.png)
 
 ## Task 3: Run the extract
 

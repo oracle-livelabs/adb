@@ -37,6 +37,7 @@ Download the lab files here:
 [SQL Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/vmkYRTjFDKT14aBgppExmxjWXNForfovxySRrgqJGlWMacsc6mMtClQY1a6foD3c/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL1.zip)
 [Python Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/tVAwp-XWRsm1oouSHDzzZwyUQ5TErSPpPNhuYPMTbSJOZlC-Pvsed-caGfHYrkV5/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip)
 
+>**Note:** Creating a Twitter Developer account may take up to a couple days to be approved depending on your responses to the questions. It is recommended to skip ahead to Lab 2: Task 3 if you want to get a head start on the process.
 
 ## Want to learn more about Autonomous Database?
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)

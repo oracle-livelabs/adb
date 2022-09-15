@@ -13,27 +13,27 @@
          "filename": "../../introduction/introduction.md"
         },
         {
-           "title": "Lab 1: Create Schema",
+           "title": "Lab 1: Create schema",
            "description": "",
            "filename": "../../create-schema/create-schema.md"
         },
         {
            "title": "Lab 2: Extract API",
            "description": "",
-           "filename": "../../api-collection/api-collection.md"
+           "filename": "../../extract-api/extract-api.md"
         },
         {
-         "title": "Lab 3: Review ATP Storage",
+         "title": "Lab 3: Review ATP storage",
          "description": "",
          "filename": "../../review-atp-storage/review-atp-storage.md"
         },
         {
-           "title": "Lab 4: Review Data Preprocessing",
+           "title": "Lab 4: Review data preprocessing",
            "description": "",
-           "filename": "../../review-data-processing/review-data-preprocessing.md"
+           "filename": "../../review-data-preprocessing/review-data-preprocessing.md"
         },
         {
-           "title": "Lab 5: Review Machine Learning",
+           "title": "Lab 5: Review machine learning",
            "description": "",
            "filename": "../../review-machine-learning/review-machine-learning.md"
         },
