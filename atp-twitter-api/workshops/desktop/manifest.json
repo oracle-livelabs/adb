@@ -23,24 +23,24 @@
            "filename": "../../extract-api/extract-api.md"
         },
         {
-         "title": "Lab 3: Review ATP storage",
+         "title": "Lab 3: View tweets in ATP",
          "description": "",
-         "filename": "../../review-atp-storage/review-atp-storage.md"
+         "filename": "../../view-tweets-in-atp/view-tweets-in-atp.md"
         },
         {
-           "title": "Lab 4: Review data preprocessing",
+           "title": "Lab 4: Prep tweet data",
            "description": "",
-           "filename": "../../review-data-preprocessing/review-data-preprocessing.md"
+           "filename": "../../prep-tweet-data/prep-tweet-data.md"
         },
         {
-           "title": "Lab 5: Review machine learning",
+           "title": "Lab 5: Analyze tweet sentiment with ML.md",
            "description": "",
-           "filename": "../../review-machine-learning/review-machine-learning.md"
+           "filename": "../../analyze-tweet-sentiment-with-ml/analyze-tweet-sentiment-with-ml.md"
         },
         {
            "title": "Lab 6: Explore APEX",
            "description": "",
-           "filename": "../../explore-apex/explore-apex.md"
+           "filename": "../../use-low-code-to-perform-analytics/use-low-code-to-perform-analytics.md"
         },
         {
          "title": "Need Help?",
