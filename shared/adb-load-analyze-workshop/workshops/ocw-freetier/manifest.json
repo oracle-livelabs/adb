@@ -35,7 +35,7 @@
         },
         {
             "title": "Lab 2: Load Data from Object Storage Public Buckets",
-            "description": "Load customer contact, movie genre, customer sales and pizza location data into ADB from public object storage buckets using the Database Actions tools",
+            "description": "Load customer contact, movie genre, customer sales and pizza location data into ADB from public object storage buckets using the Database Tools",
             "type": "freetier",
             "filename": "../../load-public-db-actions/load-public-db-actions.md"
         },
