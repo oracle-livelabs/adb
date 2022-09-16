@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Want to know how to people feel about a topic? Twitter is a haven for people's opinions. When you are limited to 280 characters and blessed with such a big soapbox, people are able to say how they really feel about things. The metadata is a treasure trove of analytics data and influencing is a big part of pop culture. Learn who is speaking out on topics and organize a strategy to help your company's public relations! 
+Want to know how people feel about a topic? Twitter is a haven for people's opinions. When you are limited to 280 characters and are fortunate with such a big soapbox, people are able to say how they really feel about things. The metadata is a treasure trove of insights with analytics data and influencing is a big part of pop culture. Learn who is speaking out on topics and organize a strategy to help your company's public relations! 
 
 ![Oracle Twitter](https://media.giphy.com/media/jxIwOlTpqJ0iOL159d/giphy.gif)
 
