@@ -199,8 +199,8 @@ This Lab is now complete you can now go to the next lab.
 * [Creating a VCN in OCI](https://github.com/enabling-cloud/oci-learning/blob/master/manual/CreatingVCN.md)
 * [Registering a Secure Agent](https://knowledge.informatica.com/s/article/573195?language=en_US)
 * [Secure Agent Documentation](https://knowledge.informatica.com/s/article/573195?language=en_US)
-* [Accessing a Compute Instance]([https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm)
-* [Oracle ADB Wallet File]([[https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/cswgs/autonomous-connect-download-credentials.html#GUID-B06202D2-0597-41AA-9481-3B174F75D4B1)
+* [Accessing a Compute Instance](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm)
+* [Oracle ADB Wallet File](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/cswgs/autonomous-connect-download-credentials.html#GUID-B06202D2-0597-41AA-9481-3B174F75D4B1)
 
 ## Acknowledgements
 
