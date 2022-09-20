@@ -2,13 +2,19 @@
 
 ## Introduction
 
-Want to know how people feel about a topic? Twitter is a haven for people's opinions. When you are limited to 280 characters and are fortunate with such a big soapbox, people are able to say how they really feel about things. The metadata is a treasure trove of insights from analyzing this data, and influencing is a big part of pop culture. Learn who is speaking out on topics and organize a strategy to help your company's public relations! 
+Want to know how people feel about a topic? Twitter is a haven for people's opinions. Even though you are limited to 280 characters, with such a big & easy-to-use soapbox, folks can quickly & effortlessly share what they think about things. 
 
 <img src="https://media.giphy.com/media/jxIwOlTpqJ0iOL159d/giphy.gif" width="1000" height="500" />
 
-This workshop is to educate users on the interoperability of Twitter API, Oracle APEX, and Machine learning to extract the sentiment of tweets. By specifying particular keywords to collect, metadata, such as geo-location and hashtag frequency, are used to generate dynamic and embedded analytics. Using APEX's low code development platform and Twitter API, cx_Oracle is used to create a connection from the user's local execution of the Python library, Tweepy, and a Autonomous Transaction Processing (ATP) database. This data is processed and fed through a machine learning algorithm to capture the sentiment (positive, neutral, or negative) of specific tweets. 
-
-Customers are continuously asking for solutions that utilize data from popular social media platforms (such as Twitter) to analyze their marketing campaigns and overall sentiment of their organizations. In this example, Mexico City's government is interested in what it's people are saying about them.  Using APEX, we can deliver a insightful web application that can give a quick analysis of the general sentiment of the people using word maps, statistics, and even a heat map to illustrate how the people are feeling towards the city.
+The metadata contains a treasure trove of insights but is challenging to dissect, making it hard to market & influence, which is a big part of pop culture. 
+ 
+Learn who is speaking on topics & organize a strategy to help your organization's public relations!
+ 
+This workshop shows users how to use Oracle APEX, Twitter API, and Machine learning to extract the sentiment of tweets. 
+ 
+You will generate dynamic and embedded analytics by specifying keywords & metadata, such as geolocation and hashtag frequency. Using Oracle APEX, Oracle's low-code development platform, and Twitter API, cx_Oracle creates a connection from your local execution of the Python library, Tweepy, and an Oracle Autonomous Database. This data is processed and fed through a machine learning algorithm to capture distinct tweets' sentiments (positive, neutral, or negative).
+ 
+Institutions need simple yet powerful solutions to leverage data from popular social media platforms (such as Twitter) to analyze their PR campaigns and better understand their constituents' sentiments. In this example, Mexico City's government is interested in what its people say. You will build an insightful web application that can quickly discern the general sentiment of the citizens using word clouds, statistics, and even a heat map to illustrate how the people are feeling towards the city.
 
 Estimated Time: 90 minutes
 
