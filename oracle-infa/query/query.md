@@ -317,7 +317,7 @@ sum(l_extendedprice * (1-l\_discount) * (1+l\_tax))
 ### Rename fields 
 Add an expression to rename the fields so that they look better and are in the order we want in the Oracle Autonomous Database table.  This is an optional transformation.
 
-1.	From the transformation palette, drag **Expression** transform and drop it over the line between the agg_item_count_and_order_total and target transforms.  The expression should now be linked to the aggregator and Target transforms.  If not, manually link them.
+1.	From the transformation palette, drag **Expression** transform and drop it over the line between the agg\_item\_count\_and\_order\_total and target transforms.  The expression should now be linked to the aggregator and Target transforms.  If not, manually link them.
 
 2.	Click align icon to align transformations in the mapping canvas.
 

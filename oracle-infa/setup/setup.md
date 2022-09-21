@@ -93,11 +93,11 @@ In this task we will perform steps to configure an ADB wallet file on the Secure
 
 3. Once you log on to the Compute Instance make a directory where **WalletName** is the name of the Wallet File you downloaded without the .Filetype.
 
-   ```
-   <copy>
-   mkdir /home/opc/oracle/WalletName
-   </copy>
-   ```
+    ```
+    <copy>
+    mkdir /home/opc/oracle/WalletName
+    </copy>
+    ```
 
 4. Use your favorite tool to copy the downloaded Wallet File to the directory you just created on the Secure Agent Instance.
 
@@ -105,11 +105,11 @@ In this task we will perform steps to configure an ADB wallet file on the Secure
 
 5. unzip the file
 
-   ```
-   <copy>
-   unzip WalletName.zip
-   </copy>
-   ```
+    ```
+    <copy>
+    unzip WalletName.zip
+    </copy>
+    ```
 
 6. Edit the sqlnet.ora file using your favorite Linux editor and update the directory path to match the path of the directory where your Wallet file exists.  Below is an example using nano.
 
@@ -130,19 +130,19 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
 2. Once you log on to the Compute Instance change your directory to the following:
 
-   ```
-   <copy>
-   cd /infa-install/sa-agent/apps/agentcore/conf
-   </copy>
-   ```
+    ```
+    <copy>
+    cd /infa-install/sa-agent/apps/agentcore/conf
+    </copy>
+    ```
 
 3. Display the outputs of the infaagent.ini file.
 
-   ```
-   <copy>
-   cat infaagent.ini
-   </copy>
-   ```
+    ```
+    <copy>
+    cat infaagent.ini
+    </copy>
+    ```
 
 
 5. If the **InfaAgent.MasterUrl** does not match the URL you use to logon to IDMC you will need to change the **InfaAgent.MasterUrl**.  For example you may see something similar when you view the results of the infaagent.ini 
@@ -155,19 +155,19 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
 8. Once the infaagent.ini file is updated you will need to stop the agent. to do this you will need to change your directory to:
 
-   ```
-   <copy>
-   cd /infa-install/sa-agent/apps/agentcore/
-   </copy>
-   ```
+    ```
+    <copy>
+    cd /infa-install/sa-agent/apps/agentcore/
+    </copy>
+    ```
 
 9. Then stop the agent
 
-   ```
-   <copy>
-   ./infaagent shutdown
-   </copy>
-   ```
+    ```
+    <copy>
+    ./infaagent shutdown
+    </copy>
+    ```
 
    Wait about 5 minutes for the agent to completely shutdown
 
@@ -182,7 +182,7 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 11. In the final step you will need to manually register the Secure Agent using the following command and format.
 
     ```
-    </copy>
+    <copy>
     ./consoleAgentManager.sh configureToken IDMC-User-Name Generated-Install-Token
     </copy>
     ```
