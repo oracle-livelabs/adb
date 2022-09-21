@@ -32,7 +32,7 @@ This lab assumes you have:
 
     ![Select Create Autonomous Database](images/create-autonomous-database.png) 
 
-3. (optional) Enter a display name and database name.  
+3. (optional) Enter a display name and database name. Select a **database version** (19c), whichever default version will work also.  
 
     ![Enter database name](images/name-database.png) 
 

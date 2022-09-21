@@ -102,7 +102,7 @@ This lab assumes you have:
 
 2. Open the browser and access the following [Link](https://developer.twitter.com/en/docs/twitter-api) to open the Twitter API documentation.
 
-3. Select **Sign Up** if you do not have previous access to Twitter API, otherwise, **login with your credentials.** The sign up process may take up to a couple days to get approved depending on your responses, but most of the time, it is pretty quick. 
+3. Select **Sign Up** if you do not have previous access to Twitter API, otherwise, **login with your credentials.** The sign up process may take up to a couple days to get approved depending on your responses. 
 
 4. After completing the information to sign up (if you haven't done so already), you can create an app by selecting **Create app**.
 
