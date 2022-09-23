@@ -118,7 +118,19 @@ This lab assumes you have:
 
 ## Task 3: Run the extract
 
-1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install "module name"**. Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, find the path to 3.9 and declare that prior to using pip install.
+1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install \<module name>** for the following modules:
+   
+    ```
+    tweepy: <copy>pip install tweepy</copy>
+    regex: <copy>pip install regex</copy>
+    pandas: <copy>pip install pandas</copy>
+    numpy: <copy>pip install numpy</copy>
+    textstat: <copy>pip install textstat</copy>
+    pysentimiento: <copy>pip install pysentimiento</copy>
+    cx_Oracle: <copy>pip install cx_Oracle</copy>
+    ```
+
+    Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, **find the path to 3.9** and declare that prior to using pip install. The path can be located at the end of this step.
 
     ![installation of modules](images/python-path.png)
 
@@ -127,7 +139,7 @@ This lab assumes you have:
 
     ![VSCode search bar](images/python-interpreter.png)
 
-    - Select the 3.9 version of Python to run the code correctly.
+    - Select the 3.9 version of Python to run the code correctly. Note the path in order to correctly install the modules.
 
     ![Python interpreter options](images/python39.png)
 
@@ -137,15 +149,17 @@ This lab assumes you have:
 
 3. If you run into errors, Check the following:
 
-    - TNS error: Wallet/ instant client path or dns value does not match the correctly - repeat previous section.
-
-    ![TNS error](images/tns-error.png)
-
-    - Be sure your **Schema name** matches the code for the INSERT statements.
+    - **Table or view does not exist:** Be sure your **Schema name** matches the code for the INSERT statements.
 
     ![Table error](images/table-error.png)
 
-    - If you receive an error, **Cannot locate a 64-bit Oracle Client library,** then you will need to add the following to the TwitterExtract.py file:
+    - **TNS error:** Wallet/ instant client path or dns value does not match the correctly - repeat previous section (Task 1).
+
+    ![TNS error](images/tns-error.png)
+
+    - If you receive an error, **Cannot locate a 64-bit Oracle Client library,** then you will need to add the following to the TwitterExtract.py file (including your path to the instant client):
+
+    ![Instant Client Error](images/error-cx-oracle-instant-client.png)
 
     ```
     <copy>cx_Oracle.init_oracle_client('<PATH_NAME_INSERT_HERE>')</copy>
@@ -153,7 +167,13 @@ This lab assumes you have:
 
     ![cx_Oracle insert line to code](images/error-cx-oracle.png)
 
-    You will need to declare the path in which you installed the python library.
+    - If this error persists, the reinstall the instant client, ensuring you have the correct version for your OS.
+
+    - **Elevated Access for Twitter:** Required after creating a developer account. Sign Up and request access here: [Link for Twitter Developer Sign up.](https://developer.twitter.com/en/docs/developer-portal/overview)
+
+    ![Elevated access error](images/elevated-access.png)
+
+    - **Module not found:** Open a terminal or use the terminal in VSCode to run the command: pip install -u module name
 
 4.  Notice the following:
     - **Model insert success**
