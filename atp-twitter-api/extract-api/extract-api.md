@@ -119,16 +119,13 @@ This lab assumes you have:
 ## Task 3: Run the extract
 
 1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install \<module name>** for the following modules:
-   
-    ```
-    tweepy: <copy>pip install tweepy</copy>
-    regex: <copy>pip install regex</copy>
-    pandas: <copy>pip install pandas</copy>
-    numpy: <copy>pip install numpy</copy>
-    textstat: <copy>pip install textstat</copy>
-    pysentimiento: <copy>pip install pysentimiento</copy>
-    cx_Oracle: <copy>pip install cx_Oracle</copy>
-    ```
+    - tweepy: **pip install tweepy**
+    - regex: **pip install regex**
+    - pandas: **pip install pandas**
+    - numpy: **pip install numpy**
+    - textstat: **pip install textstat**
+    - pysentimiento: **pip install pysentimiento**
+    - cx_Oracle: **pip install cx_Oracle**
 
     Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, **find the path to 3.9** and declare that prior to using pip install. The path can be located at the end of this step.
 
