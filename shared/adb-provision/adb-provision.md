@@ -1,3 +1,5 @@
+# Provision an Autonomous Database (ADW and ATP)
+
 ## Introduction
 
 This lab walks you through the steps to get started using the Oracle Autonomous Database (Autonomous Data Warehouse [ADW] and Autonomous Transaction Processing [ATP]) on Oracle Cloud. In this lab, you provision a new ADW instance.
@@ -53,7 +55,7 @@ To complete this lab, you need to have the following:
 
 2.  This brings up the __Create Autonomous Database__ screen where you will specify the configuration of the instance.
 
-    ![](./images/create-adb-screen-freetier-default.png " ")
+    ![Create Autonomous Database screen.](./images/create-adb-screen-freetier-default.png " ")
 
 3. Provide basic information for the autonomous database:
 
@@ -107,14 +109,14 @@ To complete this lab, you need to have the following:
     - If the "Require mutual TLS (mTLS) authentication" option is selected, mTLS will be required to authenticate connections to your Autonomous Database. TLS connections allow you to connect to your Autonomous Database without a wallet, if you use a JDBC thin driver with JDK8 or above. See the [documentation for network options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/support-tls-mtls-authentication.html#GUID-3F3F1FA4-DD7D-4211-A1D3-A74ED35C0AF5) for options to allow TLS, or to require only mutual TLS (mTLS) authentication.
 
 
-    ![](./images/Picture100-26e.png " ")
+    ![Choose network access.](./images/Picture100-26e.png " ")
 
 9. Choose a license type. For this lab, choose __License Included__. The two license types are:
 
     - __Bring Your Own License (BYOL)__ - Select this type when your organization has existing database licenses.
     - __License Included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
-    ![](./images/license.png " ")
+    ![Choose a license type.](./images/license.png " ")
 
 10. For this lab, do not provide a contact email address. The "Contact Email" field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
 
@@ -139,4 +141,4 @@ Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-clo
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager Intern)
-- **Last Updated By/Date** - Richard Green, September 2021
+- **Last Updated By/Date** - Richard Green, September 2022

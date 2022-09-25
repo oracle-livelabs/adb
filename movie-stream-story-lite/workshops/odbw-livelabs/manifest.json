@@ -1,6 +1,16 @@
 {
     "workshoptitle": "Produce Your Company's Best Picture with Converged Database Analytics",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+      "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+      "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
+   
+    },
     "tutorials": [
       {
           "title": "Get Started",
