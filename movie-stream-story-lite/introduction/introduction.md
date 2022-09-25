@@ -9,6 +9,8 @@
 
 Most workshops focus on teaching you about a cloud service or performing a series of tasks. This workshop is different. You will learn how to deliver high value solutions using Oracle Cloud data platform services. And, the workshop will do this in the context of a company that we all can relate to and understand.
 
+Estimated Workshop Time: 1 hour
+
 There are two versions of this workshop:
 * [**Integrate, Analyze and Act on All data using Autonomous Database (Epic)**](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=865&clear=180&session=12485882445561) - dives into details of setting up the solution and analyzing data. Will take several hours to complete.
 * **Integrate, Analyze and Act on All data using Autonomous Database** - this workshop!  A one hour version that performs much of the setup for you.
@@ -19,10 +21,10 @@ There are two versions of this workshop:
 There are also other workshops that focus on specific feature areas that also use the same business scenario.
 
 Oracle MovieStream is a fictitious movie streaming service - similar to those that you currently subscribe to. They face challenges that are typical to many organizations across industries. MovieStream must:
-* Gain a better understanding of their customers to ensure that they love the service  
+* Gain a better understanding of their cus  tomers to ensure that they love the service  
 * Offer the right products to the right customers at the right price  
 * Grow the business to become a dominant player in the streaming business
-* and much, much more
+* And much, much more
 
 Oracle Cloud provides an amazing platform to productively deliver secure, insightful, scalable and performant solutions. MovieStream designed their solution leveraging the world class Oracle Autonomous Database and Oracle Cloud Infrastructure (OCI) Data Lake services. Their data architecture is following the Oracle Reference Architecture [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2) - which is used by Oracle customers around the world. It's worthwhile to review the architecture so you can understand the value of integrating the data lake and data warehouse - as it enables you to answer more complex questions using all your data.
 
@@ -51,8 +53,8 @@ The workshop will continue to evolve and highlight more capabilities that will h
 * [Autonmous Data Warehouse Videos](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/videos.html)
 
 ## Acknowledgements
-* **Author** - Marty Gubar, Product Manager
-* **Last Updated By/Date** - Richard Green, Database User Assistance, November 2021
+* **Author** - Marty Gubar, Autonomous Database Product Management
+* **Last Updated By/Date** - Marty Gubar, September 2022
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
