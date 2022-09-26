@@ -104,7 +104,7 @@ Copy **ONE** of the following commands and paste it to the command or terminal w
 
     ```
     <copy>
-    export PATH=$(dirname `find \`pwd\` -name mongosh`):$PATH
+    export PATH=$(dirname `find \`pwd\` -name mongosh -type f`):$PATH
     </copy>
     ```
 
