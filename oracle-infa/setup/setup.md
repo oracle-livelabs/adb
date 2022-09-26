@@ -93,7 +93,11 @@ In this task we will perform steps to configure an ADB wallet file on the Secure
 
 3. Once you log on to the Compute Instance make a directory where **WalletName** is the name of the Wallet File you downloaded without the .Filetype.
 
-   ```mkdir /home/opc/oracle/WalletName```
+    ```
+    <copy>
+    mkdir /home/opc/oracle/WalletName
+    </copy>
+    ```
 
 4. Use your favorite tool to copy the downloaded Wallet File to the directory you just created on the Secure Agent Instance.
 
@@ -101,7 +105,11 @@ In this task we will perform steps to configure an ADB wallet file on the Secure
 
 5. unzip the file
 
-   ```unzip WalletName.zip```
+    ```
+    <copy>
+    unzip WalletName.zip
+    </copy>
+    ```
 
 6. Edit the sqlnet.ora file using your favorite Linux editor and update the directory path to match the path of the directory where your Wallet file exists.  Below is an example using nano.
 
@@ -122,11 +130,19 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
 2. Once you log on to the Compute Instance change your directory to the following:
 
-   ```cd /infa-install/sa-agent/apps/agentcore/conf```
+    ```
+    <copy>
+    cd /infa-install/sa-agent/apps/agentcore/conf
+    </copy>
+    ```
 
 3. Display the outputs of the infaagent.ini file.
 
-   ```cat infaagent.ini```
+    ```
+    <copy>
+    cat infaagent.ini
+    </copy>
+    ```
 
 
 5. If the **InfaAgent.MasterUrl** does not match the URL you use to logon to IDMC you will need to change the **InfaAgent.MasterUrl**.  For example you may see something similar when you view the results of the infaagent.ini 
@@ -139,21 +155,37 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
 8. Once the infaagent.ini file is updated you will need to stop the agent. to do this you will need to change your directory to:
 
-   ```cd /infa-install/sa-agent/apps/agentcore/```
+    ```
+    <copy>
+    cd /infa-install/sa-agent/apps/agentcore/
+    </copy>
+    ```
 
 9. Then stop the agent
 
-   ```./infaagent shutdown```
+    ```
+    <copy>
+    ./infaagent shutdown
+    </copy>
+    ```
 
    Wait about 5 minutes for the agent to completely shutdown
 
 10. The next step is to restart the agent
 
-    ```./infaagent startup```
+    ```
+    <copy>
+    ./infaagent startup
+    </copy>
+    ```
 
 11. In the final step you will need to manually register the Secure Agent using the following command and format.
 
-    ```./consoleAgentManager.sh configureToken IDMC-User-Name Generated-Install-Token```
+    ```
+    <copy>
+    ./consoleAgentManager.sh configureToken IDMC-User-Name Generated-Install-Token
+    </copy>
+    ```
 
     For more information on manually registering your token please refer to the **Registering a Secure Agent** link below.
 
@@ -166,9 +198,9 @@ This Lab is now complete you can now go to the next lab.
 * [Creating an ADB Instance](https://oracle.github.io/learning-library/data-management-library/autonomous-database/shared/adb-quickstart-workshop/freetier/?lab=adb-provision-conditional)
 * [Creating a VCN in OCI](https://github.com/enabling-cloud/oci-learning/blob/master/manual/CreatingVCN.md)
 * [Registering a Secure Agent](https://knowledge.informatica.com/s/article/573195?language=en_US)
-* [Secure Agent Documentation]([Registering a Secure Agent](https://knowledge.informatica.com/s/article/573195?language=en_US))
-* [Accessing a Compute Instance]([https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm)
-* [Oracle ADB Wallet File]([[https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/cswgs/autonomous-connect-download-credentials.html#GUID-B06202D2-0597-41AA-9481-3B174F75D4B1)
+* [Secure Agent Documentation](https://knowledge.informatica.com/s/article/573195?language=en_US)
+* [Accessing a Compute Instance](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/accessinginstance.htm)
+* [Oracle ADB Wallet File](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/cswgs/autonomous-connect-download-credentials.html#GUID-B06202D2-0597-41AA-9481-3B174F75D4B1)
 
 ## Acknowledgements
 

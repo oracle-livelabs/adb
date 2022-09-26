@@ -58,11 +58,11 @@ In this step, you will set up access to the a bucket on Oracle Cloud Infrastruct
 -   Select **Public Bucket** as this is a public bucket
 -   Select **Bucket URI** 
 -   Copy and paste the following URI into the URI + Bucket field:
-```
-<copy>
-https://objectstorage.us-ashburn-1.oraclecloud.com/n/oradbclouducm/b/INFALab/o
-</copy>
-```
+    ```
+    <copy>
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/informatica/o
+    </copy>
+    ```
 -   Then click **Create**.
 
 7. The page now invites us to load data from this area. 
