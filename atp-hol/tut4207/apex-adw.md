@@ -14,7 +14,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
     ![Navigate to Compartments](./images/task-2/compartments.png " ")
 
-    Create the new compartment.
+    Enter a Compartment name and description and create the new compartment.
 
     ![Create new Compartment](./images/task-2/new-compartment.png " ")
 
@@ -77,7 +77,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![New Schema](./images/task-4/new-schema.png " ")
 
 
-4. Create a Database User and new password for this user (Ex: CareClinic)
+4. Create a Database User and new password for this user (Ex: CareClinic). Create Workspace.
 
     **Note:** Make sure to save this database user/password, you will need it later
 
@@ -108,7 +108,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Object Browser](./images/task-5/object-browser.png " ")
 
-4. Go to SQL Scripts and upload the contents of the [file](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql) This will build the table structure of the tables required. 
+4. Go to SQL Scripts and upload the [contents of this file](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql). This will build the table structure of the tables required. 
 
 
     
@@ -133,14 +133,17 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-9. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set can be found [here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
+9. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). After each load, verify that all columns were mapped correctly (as shown in step 10), and  click "View Table" once complete to return to object browser.
+
+     **Note:** Do not create application - return to object browser
+
 
     
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-1.png " ")
 
 10. Repeat this step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
 
-    **Note:** After each load, click view table to return to the object browser
+    **Note:** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
 
     ![Loading Data into Tables](./images/task-5/load-data-2.png " ")­­
 
@@ -195,7 +198,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Set Primary Key](./images/task-6/set-primary-key.png " ")
 
-5. Let's hide some columns we do not want showing in the report. You can Ctrl/Cmd+Click these columns and change their type to Hidden Column
+5. Let's hide some columns we do not want showing in the report. Expand the columns list under the report. Hide the MIMETYPE, CREATED, and CREATED_BY columns by selecting and changing the "Type" on the right.  You can Ctrl/Cmd+Click these columns and change their type to Hidden Column in one step.
 
     
     ![Hide Report Columns](./images/task-6/hide-report-columns.png " ")
@@ -224,7 +227,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Change type to Popup LOV](./images/task-6/create-popup-lov.png " ")
 
-10. Scroll down and change the Type to **SQL Query** and add this query under. 
+10. Scroll down and change the Type to **SQL Query** and add this query under. Save the application.
  
     ```
     <copy>
@@ -247,7 +250,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
 
-13. Upload all 6 PDF documents ensuring that the **Patient Visit ID** matches the document name that is being uploaded
+13. Upload all 6 PDF documents ensuring that the **Patient Visit ID** matches the document name that is being uploaded. Repeat this step for all 6 PDF documents. 
 
     
     ![Upload all 6 sample documents](./images/task-6/upload-samples.png " ")
@@ -257,7 +260,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Verify Documents Uploaded Properly](./images/task-6/documents-uploaded.png " ")
 
-15. This will also be reflected in the SQL Workshop -\> Object Browser -\> Patient\_Document
+15. Return to workspace. This will also be reflected in the SQL Workshop -\> Object Browser -\> Patient\_Document
 
     
     ![View Table in Object Browser](./images/task-6/view-data-object-browser.png " ")
@@ -542,7 +545,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 ## Task 7: Implement Oracle Text
 
-1. Now let's create a new page to let end users view document gists with 1 click. Create Page, and select **Classic Report**
+1. Return to the application page overview. Now let's create a new page to let end users view document gists with 1 click. Create Page, and select **Classic Report**
 
     
     ![Create Classic New Report for Gist ](./images/task-8/create-classic-report.png " ")
