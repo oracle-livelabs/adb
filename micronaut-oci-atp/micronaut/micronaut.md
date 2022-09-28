@@ -428,6 +428,19 @@ If you're using Maven use the `test` goal:
 
 When running tests a Docker container will automatically be started to run [Oracle XE container images](https://hub.docker.com/r/gvenzl/oracle-xe) for the application using the [Micronaut Test Resources](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/) for [Testcontainers](https://www.testcontainers.org/).
 
+Since the container image can take a while to download, if you receive a read time out consider altering the configuration for the test resources client in `build.gradle`:
+
+```groovy
+<copy>
+micronaut {
+    ...
+    testResources {
+        clientTimeout = 360
+    }
+}
+</copy>
+```
+
 Note that to improve productivity when running tests you can start a shared test resources server by running the Gradle `startTestResourcesService` command which can later by stopped with `stopTestResourcesService`:
 
 ```bash
