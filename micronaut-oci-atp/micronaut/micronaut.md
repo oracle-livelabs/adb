@@ -36,12 +36,11 @@ In this lab you will:
 In the previous lab Flyway was used to setup the following schema:
 
     CREATE TABLE "PET" ("ID" VARCHAR(36),"OWNER_ID" NUMBER(19) NOT NULL,"NAME" VARCHAR(255) NOT NULL,"TYPE" VARCHAR(255) NOT NULL);
-    CREATE TABLE "OWNER" ("ID" NUMBER(19) PRIMARY KEY NOT NULL,"AGE" NUMBER(10) NOT NULL,"NAME" VARCHAR(255) NOT NULL);
-    CREATE SEQUENCE "OWNER_SEQ" MINVALUE 1 START WITH 1 NOCACHE NOCYCLE;
+    CREATE TABLE "OWNER" ("ID" NUMBER GENERATED ALWAYS AS IDENTITY,"AGE" NUMBER(10) NOT NULL,"NAME" VARCHAR(255) NOT NULL);
 
 As you can see a table called `OWNER` and a table called `PET` were created.
 
-1. The first step is to define entity classes that can be used to read data from the database tables.
+1. The first step is to define entity records that can be used to read data from the database tables.
 
     Using your favorite IDE create a `Owner.java` file under `src/main/java/example/atp/domain` which will represent the `Owner` class and looks like the following:
 
@@ -49,58 +48,33 @@ As you can see a table called `OWNER` and a table called `PET` were created.
     <copy>
     package example.atp.domain;
 
-    import io.micronaut.core.annotation.Creator;
+    import io.micronaut.core.annotation.Nullable;
     import io.micronaut.data.annotation.GeneratedValue;
+    import io.micronaut.data.annotation.GeneratedValue.Type;
     import io.micronaut.data.annotation.Id;
     import io.micronaut.data.annotation.MappedEntity;
 
     @MappedEntity
-    public class Owner {
-
-      // The ID of the class uses a generated sequence value
-      @Id
-      @GeneratedValue
-      private Long id;
-
-      private final String name;
-
-      private int age;
-
-      // the constructor reads column values by the name of each constructor argument
-      @Creator
-      public Owner(String name) {
-          this.name = name;
-      }
-
-      // each property of the class maps to a database column
-      public int getAge() {
-          return age;
-      }
-
-      public void setAge(int age) {
-          this.age = age;
-      }
-
-      public String getName() {
-          return name;
-      }
-
-      public Long getId() {
-          return id;
-      }
-
-      public void setId(Long id) {
-          this.id = id;
-      }
+    public record Owner(
+        // The ID of the class uses a generated sequence value
+        @Id @GeneratedValue(Type.IDENTITY) @Nullable Long id, 
+        // Each component of the record maps to a database column
+        String name, 
+        int age) {
+        // A secondary constructor makes it easier to instantiate 
+        // new instances without an ID
+        public Owner(String name, int age) {
+            this(null, name, age);
+        }
     }
     </copy>
     ```
 
     The `@MappedEntity` annotation indicates that the entity is mapped to a database table. By default, this will be a table using the same name as the class (in this case `owner`).
 
-    The columns of the table are represented by each Java property. In the above case an `id` column will be used to represent the primary key and by using `@GeneratedValue` this sets up the mapping to assume the use of an `identity` column in Autonomous Database.
+    The columns of the table are represented by each Java record component. In the above case an `id` column will be used to represent the primary key and by using `@GeneratedValue` this sets up the mapping to assume the use of an `identity` column in Autonomous Database.
 
-    The `@Creator` annotation is used on the constructor that will be used to instantiate the mapped entity and is also used to express required columns. In this case the `name` column is required and immutable whilst the `age` column is not and can be set independently using the `setAge` setter.
+    A seconary constructor is also defined to make it easier to construct instances of `Owner` without an `id` assigned (which will be assigned later by the database).
 
 2.  Now define a `Pet.java` file that will represent the `Pet` entity to model a `pet` table under `src/main/java/example/atp/domain`:
 
@@ -108,67 +82,48 @@ As you can see a table called `OWNER` and a table called `PET` were created.
     <copy>
     package example.atp.domain;
 
-    import io.micronaut.core.annotation.Creator;
+    import java.util.UUID;
+
     import io.micronaut.core.annotation.Nullable;
     import io.micronaut.data.annotation.AutoPopulated;
     import io.micronaut.data.annotation.Id;
     import io.micronaut.data.annotation.MappedEntity;
     import io.micronaut.data.annotation.Relation;
 
-    import java.util.UUID;
-
     @MappedEntity
-    public class Pet {
+    public record Pet(
+        // This class uses an auto populated UUID for the primary key
+        @Id @AutoPopulated @Nullable UUID id, 
+        String name, 
+        // A relation is defined between Pet and Owner
+        @Relation(Relation.Kind.MANY_TO_ONE)
+        Owner owner, 
+        // Optional columns can be defined by specifying Nullable
+        @Nullable
+        PetType type) {
+            
+        // Default values can be set with the Record initializer
+        public Pet {
+            if (type == null) {
+                type = PetType.DOG;
+            }
+        }
 
-      // This class uses an auto populated UUID for the primary key
-      @Id
-      @AutoPopulated
-      private UUID id;
+        // Secondary record constructors make it easier to construct instances
+        public Pet(String name, Owner owner) {
+            this(null, name, owner, null);
+        }
 
-      private final String name;
+        public Pet(String name, Owner owner, PetType type) {
+            this(null, name, owner, type);
+        }
 
-      // A relation is defined between Pet and Owner
-      @Relation(Relation.Kind.MANY_TO_ONE)
-      private final Owner owner;
-
-      private PetType type = PetType.DOG;
-
-      // The constructor defines the columns to be read
-      @Creator
-      public Pet(String name, @Nullable Owner owner) {
-          this.name = name;
-          this.owner = owner;
-      }
-
-      public Owner getOwner() {
-          return owner;
-      }
-
-      public String getName() {
-          return name;
-      }
-
-      public UUID getId() {
-          return id;
-      }
-
-      public void setId(UUID id) {
-          this.id = id;
-      }
-
-      public PetType getType() {
-          return type;
-      }
-
-      public void setType(PetType type) {
-          this.type = type;
-      }
-
-      public enum PetType {
-          DOG,
-          CAT
-      }
+        public enum PetType {
+            DOG,
+            CAT
+        }
     }
+
     </copy>
     ```
 
@@ -224,33 +179,21 @@ For more information on query methods and the types of queries you can define se
 
 With the `OwnerRepository` in place let's create another repository and this time using a data transfer object (DTO) to perform an optimized query.
 
-First create the DTO class in a file called `NameDTO.java` under `src/main/java/example/atp/domain`:
+First create the DTO record in a file called `NameDTO.java` under `src/main/java/example/atp/domain`:
 
 ```java
 <copy>
 package example.atp.domain;
 
-import io.micronaut.core.annotation.Creator;
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected
-public class NameDTO {
-
-    private final String name;
-
-    @Creator
-    public NameDTO(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
+public record NameDTO(String name) {
 }
 </copy>
 ```
 
-A DTO is a simple POJO that allows you to select only the columns a particular query needs, thus producing a more optimized query. Define another repository called `PetRepository` in a file called `PetRepository.java` for the `Pet` entity that uses the DTO under `src/main/java/example/atp/repositories`:
+A DTO is a simple record that allows you to select only the columns a particular query needs, thus producing a more optimized query. Define another repository called `PetRepository` in a file called `PetRepository.java` for the `Pet` entity that uses the DTO under `src/main/java/example/atp/repositories`:
 
 ```java
 <copy>
@@ -307,7 +250,7 @@ import java.util.Optional;
 
 @Controller("/owners")
 @ExecuteOn(TaskExecutors.IO)
-class OwnerController {
+final class OwnerController {
 
     private final OwnerRepository ownerRepository;
 
@@ -356,7 +299,7 @@ import java.util.Optional;
 
 @ExecuteOn(TaskExecutors.IO)
 @Controller("/pets")
-class PetController {
+final class PetController {
 
     private final PetRepository petRepository;
 
@@ -421,20 +364,26 @@ public class Application {
         // clear out any existing data
         petRepository.deleteAll();
         ownerRepository.deleteAll();
+        
+        // create the data
+        Iterable<Owner> owners = ownerRepository.saveAll(List.of(
+                new Owner("Fred", 45),  new Owner("Barney", 40)
+        ));
+        List<Pet> pets = new ArrayList<>();
+        for(Owner person : owners) {
+            // Use Java 17 switch expressions to simplify logic
+            switch(person.name()) {
+                case "Fred" -> {
+                    var dino = new Pet("Dino", person);
+                    var bp = new Pet("Baby Puss", person, PetType.CAT);
+                    pets.addAll(List.of(dino, bp));
+                }
+                case "Barney" -> 
+                    pets.add(new Pet("Hoppy", person));
+            }
+        }
 
-        // create data
-        Owner fred = new Owner("Fred");
-        fred.setAge(45);
-        Owner barney = new Owner("Barney");
-        barney.setAge(40);
-        ownerRepository.saveAll(Arrays.asList(fred, barney));
-
-        Pet dino = new Pet("Dino", fred);
-        Pet bp = new Pet("Baby Puss", fred);
-        bp.setType(Pet.PetType.CAT);
-        Pet hoppy = new Pet("Hoppy", barney);
-
-        petRepository.saveAll(Arrays.asList(dino, bp, hoppy));
+        petRepository.saveAll(pets);
     }
 }
 </copy>
@@ -477,15 +426,49 @@ If you're using Maven use the `test` goal:
 </copy>
 ```
 
-## Task 6: Run the Micronaut application locally
+When running tests a Docker container will automatically be started to run [Oracle XE container images](https://hub.docker.com/r/gvenzl/oracle-xe) for the application using the [Micronaut Test Resources](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/) for [Testcontainers](https://www.testcontainers.org/).
 
-To run the application locally if you are using Gradle using the `run` task to start the application:
+Since the container image can take a while to download, if you receive a read time out consider altering the configuration for the test resources client in `build.gradle`:
+
+```groovy
+<copy>
+micronaut {
+    ...
+    testResources {
+        clientTimeout = 360
+    }
+}
+</copy>
+```
+
+Note that to improve productivity when running tests you can start a shared test resources server by running the Gradle `startTestResourcesService` command which can later by stopped with `stopTestResourcesService`:
 
 ```bash
 <copy>
-./gradlew run
+./gradlew startTestResourcesService
+</copy>
+```
+
+If you are using Maven you can use `mvn mn:start-test-resources-service`:
+
+
+```bash
+<copy>
+./mvnw mn:start-test-resources-service
+</copy>
+```
+
+## Task 6: Run the Micronaut application locally
+
+To run the application locally if you are using Gradle use the `run` task to start the application:
+
+```bash
+<copy>
+./gradlew run -t
 </copy>
  ```
+
+ Note that the `-t` flag activates continuous build mode for Gradle which will automatically restart the server whne you make changes to the application source code.
 
 Alternatively if you are using Maven use the `mn:run` goal:
 
@@ -494,6 +477,8 @@ Alternatively if you are using Maven use the `mn:run` goal:
 ./mvnw mn:run
 </copy>
  ```
+
+In both cases like with testing a Docker container will automatically be started to run [Oracle XE container images](https://hub.docker.com/r/gvenzl/oracle-xe) for the application using the [Micronaut Test Resources](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/) for [Testcontainers](https://www.testcontainers.org/). 
 
 You can now access [http://localhost:8080/pets](http://localhost:8080/pets) for the `/pet` endpoint and [http://localhost:8080/owners](http://localhost:8080/owners) for the `/owners` endpoint. For example:
 
@@ -507,6 +492,26 @@ connection: keep-alive
 
 [{"name":"Dino"},{"name":"Baby Puss"},{"name":"Hoppy"}]
 ```
+
+## Task 6: Run the Micronaut application with Autonomous Database
+
+To run the application and connect to the previously configured Autonomous Database instance you need to active the `oraclecloud` environment locally first by setting the `MICRONAUT_ENVIRONMENTS` environment variable, for example:
+
+```bash
+<copy>
+MICRONAUT_ENVIRONMENTS=oracecloud ./gradlew run -t
+</copy>
+ ```
+
+ Or for Maven:
+
+ ```bash
+<copy>
+MICRONAUT_ENVIRONMENTS=oracecloud ./mvnw mn:run
+</copy>
+ ```
+
+ This will result in the configuration defined in `src/main/resources/application-oraclecloud.yml` loading and the application connecting to the instance of Autonomous Database instead of a locally running Docker container.
 
 ## Learn More
 * [Micronaut Documentation](https://micronaut.io/documentation.html)
