@@ -5,6 +5,7 @@
 ## Introduction
 
 This lab walks you through the steps to quickly provision an Autonomous Transaction Processing instance on Oracle Cloud. In this lab we will create web application which will take medical documents and store them in the Autonomous Database. Further we will also use Oracle Text to allow users to filter, search, and view those documents with one-click.
+    [Video Tutorial](youtube:XRwbswu0jEk)
 
 ## Task 1: Create a compartment
 
