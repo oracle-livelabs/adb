@@ -1,6 +1,6 @@
 # Introduction
 
-The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. First, you will create an Oracle Autonomous Database instance. Then, you will practice several methods for loading data from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the data with SQL and build analytics dashboards using Oracle Analytics Cloud.
+The labs in this workshop walk you through all the steps to get started using **Oracle Autonomous Database**. First, you will create an Oracle Autonomous Database instance. Then, you will practice several methods for loading data from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the data with SQL and build analytics dashboards using Oracle Analytics Cloud.
 
 Estimated Workshop Time: 1.5 hours
 
@@ -20,15 +20,12 @@ In this workshop, we'll start with two key components of MovieStream's architect
 ![architecture](images/architecture.png)
 
 ## **Workshop Objectives**
-- Provision a new Oracle Autonomous Database instance on shared infrastructure
-- Provision an Oracle Analytics Cloud instance
-- Load data from a file on your local computer
-- Load data from object storage public and private buckets
-- Access and load partitioned object storage data
-- Examine the query performance benefits of partitioned data
+- Provision a new Oracle Autonomous Database instance 
+- Load data from files on your local computer
+- Load data from object storage buckets
+- Use Oracle Analytics Cloud to create compelling dashboards from your data set
 - Load and analyze JSON collections
 - Load the latest news from a public REST service and run a sentiment analysis of that news
-- Use Oracle Analytics Cloud to create compelling dashboards from your data set
 
 ![variety of data loading methods](images/graphic-showing-loading-methods.png)
 

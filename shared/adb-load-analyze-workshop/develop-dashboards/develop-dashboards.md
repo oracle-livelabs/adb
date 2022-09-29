@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab will walk you through the steps to create data visualizations using Oracle Analytics Cloud (OAC). You will learn how to immediately gain insights and create beautiful data visualizations.
+This lab walks you through the steps to create data visualizations using Oracle Analytics Cloud (OAC). You will learn how to immediately gain insights and share powerful dashboards to analyze data in your autonomous database.
 
 Estimated Time: 20 minutes
 
@@ -16,170 +16,211 @@ Estimated Time: 20 minutes
 
 ## Task 1: Create a view by executing this script in SQL Worksheet
 
-Create a `SALES_DASHBOARD` view that you will use to create your analytic dashboard. You can conveniently access the browser-based SQL Worksheet directly from your ADW or ATP console.
+Run a SQL script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance.
+
+Next, the script creates a `SALES_DASHBOARD` view that you will use to create your analytic dashboard. This simplifies the usability for analytics users; they can simply use the one view for all of their queries. You can conveniently access the browser-based SQL Worksheet directly from your Autonomous Database console.
 
 [](include:adb-goto-sql-worksheet.md)
 
 3. In a SQL Worksheet, copy and execute the following script.  
 
     ```
+    <copy>
+    -- Add constraints that ensure data integrity and improve performance
+    alter table genre add constraint pk_genre_id primary key("GENRE_ID");
+    alter table customer_extension add constraint pk_custextension_cust_id primary key("CUST_ID");
+    alter table customer_contact add (
+                constraint pk_custcontact_cust_id primary key("CUST_ID"),
+                constraint fk_custcontact_cust_id foreign key("CUST_ID") references customer_extension("CUST_ID")
+                );
+    alter table customer_segment add constraint pk_custsegment_id primary key("SEGMENT_ID");
+    alter table custsales add (
+                constraint fk_custsales_cust_id foreign key("CUST_ID") references customer_contact("CUST_ID"),
+                constraint fk_custsales_genre_id foreign key("GENRE_ID") references genre("GENRE_ID")
+                );
+
+
     create or replace view sales_dashboard as
     select
-      ce.last_name,
-      ce.first_name,
-      cs.short_name as customer_segment,
-      c.day_id,
-      g.name genre,
-      m.title,
-      m.budget,
-      m.gross,
-      m.year as released,
-      m.cast,
-      m.crew,
-      m.awards,
-      m.nominations,
-      1 as views,
-      actual_price as sales        
-    from customer_extension ce, custsales c, genre g, movie m, customer_segment cs
+    ce.last_name,
+    ce.first_name,
+    cs.short_name as customer_segment,
+    ce.income_level,
+    case
+        when age > 75 then 'Silent Generation'
+        when age between 57 and 75 then 'Boomer'
+        when age between 41 and 56 then 'Gen X'
+        when age between 25 and 40 then 'Millenials'
+        when age between 9 and 24 then 'Gen Z'
+        end as age_range,
+    cc.country,
+    cc.city,
+    cc.loc_lat as latitutde,
+    cc.loc_long as longitude,
+    c.day_id,
+    g.name genre,
+    1 as views,
+    actual_price as sales        
+    from customer_extension ce, custsales c, genre g, customer_segment cs, customer_contact cc
     where ce.cust_id = c.cust_id
+    and ce.cust_id = cc.cust_id
     and g.genre_id = c.genre_id
-      and m.movie_id = c.movie_id
-      and ce.segment_id = cs.segment_id;
-
+    and ce.segment_id = cs.segment_id;
+    </copy>
     ```
 
    ![Paste the code and click Run Script.](./images/execute-script-in-sql-worksheet-to-create-view.png " ")
 
-## Task 2: Create a connection to your Oracle Autonomous Database from Oracle Analytics Cloud
+## Task 2: Create credentials to connect Oracle Analytics Cloud to your Autonomous Database
 
-As ADW and ATP accept only secure connections to the database, you need to download a wallet file containing your credentials first. The wallet can be downloaded either from the instance's Details page, or from the ADW or ATP service console.
+You will need to download your wallet credentials file in order for Analytics Cloud to connect to Autonomous Database. The wallet will enable both the server and client to verify each other. The wallet can be downloaded from the database instance's **Database Details** page.
 
-1. In your database's instance Details page, click **DB Connection**.
+1. In your database's instance Database Details page, click **DB Connection**.
 
-    ![Click DB Connection on your database instance page.](./images/dbconnection.png " ")
+    ![Click DB Connection on your database instance Database Details page.](./images/click-db-connection.png " ")
 
-2. Use the Database Connection dialog to download client credentials.
+2. Use the **Database Connection** dialog to download client credentials.
     - Select a wallet type. For this lab, select **Instance Wallet**. This wallet type is for a single database only; this provides a database-specific wallet.
-    - Click **Download Wallet**.
+    - Click **Download wallet**.
 
     ![Click Download Wallet.](./images/download-instance-wallet.png " ")
 
-    > **Note:** Oracle recommends that you provide a database-specific wallet, using Instance Wallet, to end users and for application use whenever possible. Regional wallets should only be used for administrative purposes that require potential access to all Autonomous Databases within a region.
 
-3. Specify a password of your choice for the wallet. You will need this password when connecting Oracle Analytics Desktop to the database in the next step. Click **Download** to download the wallet file to your client machine.
+3. Specify a password of your choice for the wallet. You will need this password when connecting Oracle Analytics Cloud to the database in the next step. Click **Download** to download the wallet file to your client machine.
 
     > **Note:** If you are prevented from downloading your Connection Wallet, it may be due to your browser's pop-up window blocker. Please disable it or create an exception for Oracle Cloud domains.
 
     ![Enter password and confirm password.](./images/password-download-wallet.png " ")
 
-    Click **Close** when the download is complete.
-## Task 3: Create a Dataset
+    In the **Save As** dialog, select a folder on your local PC, and make note of the name and location of the zip file you are downloading. Click **Save** to download the zip file. The Database Connection dialog reappears. Click **Close**.
 
-4. Start **Oracle Analytics Desktop**. When Oracle Analytics Desktop opens, click **Connect to Oracle Autonomous Data Warehouse**.
+## Task 3: Create a dataset in OAC
 
-   ![Click Oracle Autonomous Data Warehouse in Oracle Analytics Desktop application.](./images/click-connect-to-oracle-autonomous-data-warehouse.png " ")
+1. Go to the **Instance Details** page of the **Oracle Analytics Cloud** (OAC) instance that you created or that was provided to you. In the **Access Information** section, click the URL to open the OAC application.
 
-5. In the **Create Connection** dialog, enter the following information:
+    ![Click the URL to open the OAC application.](./images/click-the-url.png " ")
 
+2. The initial OAC page appears in your browser. Click **Create** in the upper right corner.
+
+    ![Click Create in Oracle Analytics Cloud initial screen.](./images/click-create.png " ")
+
+3. In the **Create** pop-up window, click **Dataset**.
+
+    ![Click Dataset in the Create pop-up window.](./images/oac-create-dataset.png " ")
+
+4. In the **Create Dataset** dialog, click **Create Connection**.
+
+    ![Click Create Connection in the Create Dataset dialog.](./images/oac-create-connection.png " ")
+
+5. In the **Create Connection** dialog, click **Oracle Autonomous Data Warehouse**.
+
+    ![Click Oracle Autonomous Data Warehouse in the Create Connection dialog.](./images/oac-connect-to-adb-pick-type.png " ")
+
+6. In the next **Create Connection** dialog, enter the following information:
 
    | Connection Info       | Entry                                             |  
    | --------------------- | :--------------------------------------------- |
-   | Connection Name:      | Type in '**SALES_HISTORY**'                             |
-   | Client Credentials:   | Click '**Select...**' and select the wallet zip file that you downloaded in Task 3.3. A file with .sso extension will appear in the field.   |
-   | Username:             | Insert username created in previous labs, likely **ADMIN**. Same username as SQL Worksheet and SQL Developer credentials. |                                            
-   | Password              | Insert password created in previous labs. Same password as SQL Worksheet and SQL Developer credentials. |
-   |Service Name:         | Scroll the drop-down field and select **adwfinance_high**, or the **high** service level of the database name you specified in Lab 1. |
+   | Connection Name:      | Type in '**MovieStream**'                             |
+   | Description:          | Type in '**MovieStream dashboard**'                   |
+   | Client Credentials:   | Click '**Select...**' and select the wallet zip file that you downloaded in Task 2.3. A file with .sso extension will appear in the field.   |
+   | Username:             | Insert username created in previous labs, likely **admin**. Same username as SQL Worksheet and SQL Developer credentials. |                                            
+   | Password              | Insert password created in previous labs. Same password as SQL Worksheet credentials. |
+   |Service Name:          | Scroll the drop-down field and select **myquickstart_low**, or the **low** service level of the database name you specified in the Provision an Autonomous Database lab. |
 
-6. After completing the fields, click **Save**.
+7. After completing the fields, click **Save**.
 
-   ![Click Save.](./images/create-connection-dialog.png " ")
+    ![Click Save.](./images/oac-create-connection-dialog.png " ")
 
-    > **Note:** If the connection fails to save because you are behind a firewall or on a VPN, you may need to use an alias or shut down the VPN to connect to your ADW database.*
+8. In the **New Dataset** page, expand **Schemas > ADMIN** and drag and drop the **SALES_DASHBOARD** view that you previously created onto the palette to add it to the dataset.
 
-7. Click **Close** when the Save is complete.
+    ![Drag and drop SALES_DASHBOARD view onto the palette.](./images/oac-drag-and-drop-sales-dashboard.png " ")
 
-8. Upon success of creating a new connection to the Autonomous Data Warehouse, click __Create__ in the upper right-hand corner, and click __Dataset__.  
+9. The data is profiled and the following thumbnails are created for each column:
 
-    ![Click Create and select Data Set.](./images/click-create-data-set.png " ")
+    ![Wait for the Sales Dashboard to load.](./images/oac-sales-dashboard.png " ")
 
-9. You will now choose the sales data you want to analyze and visualize in your first project. Select the connection you just created named __SALES_HISTORY__.
+10. Note the 2 tabs at the bottom of the dashboard. The dashboard opens by default in the **Join Diagram** tab. Click the **SALES\_DASHBOARD** to make updates to how the columns are displayed in the Analytics Cloud Workbook.
 
-   ![Select SALES_HISTORY.](./images/choose_sales_history_connection.jpg " ")
+    ![Click the SALES_DASHBOARD tab to see the editable dashboard.](./images/oac-update-dataset.png " ")
 
-10. In the Untitled Dataset page, expand the __ADMIN__ schema in the Data Warehouse. You will see the DV\_SH\_VIEW table that you defined.
+11. On the right side of the dashboard, note the list of recommended columns to enrich the data. We will keep it very simple and make two updates. First, scroll right to the **DAY\_ID** column. Double click the card's DAY_ID and rename **DAY\_ID** to **DAY**.
 
-    > **Note:** If you do not see schemas because you are behind a firewall or on a VPN, you may need to use an alias or shut down the VPN to connect to your ADW database.*
+    ![Rename the DAY_ID column](./images/oac-rename-day.png " ")
 
-   ![Select Admin.](./images/select-admin-schema.png " ")
+13. Next, update the number format for **SALES**. Select the **SALES** column and then click the **#** property to update its format. Change the **Number Format** to **Currency**.
 
-11. Drag and drop or double click the __DV\_SH\_VIEW__ table to add it to the dataset.
+    ![Use Properties to update the number format.](./images/oac-format-sales.png " ")
 
-   ![Select DV\_SH\_VIEW.](./images/select-dv-sh-view-from-admin.png " ")
+15. When you are done setting up filters and other options, save the dataset using the **Save** icon in the upper right corner.
 
-12. Right-click the blue DV\_SH\_VIEW button and select **Edit Definition** from the menu.
-
-   ![Right click blue button and select Edit Definition.](./images/right-click-button-and-select-edit-definition.png " ")
-
-13. First click the __Add All__ button in the left column. You may click __Get Preview Data__ at the bottom to see some example records. Click the __OK__ button to add the dataset.
-
-   ![Click Add All on the left and then click OK on the right.](./images/add-all-data-to-data-set.png " ")
-
-14. Click the **Save Dataset** icon in the upper right corner of the toolbar to save the dataset. In the **Save Dataset As** pop-up dialog, name the dataset **SALES\_HISTORY**. Click **OK**.
-
-    > **Note:** It is important to use the new name of __SALES_HISTORY__, as the rest of the lab steps will reference that name.
-
-   ![Click the Save Dataset icon in upper right corner.](./images/click-save-dataset-icon.png " ")
-
-15. Once the __SALES_HISTORY__ dataset has successfully been created, click the **Go back** arrow on the top left.
-
-   ![Click on the data icon on the upper left.](./images/data-set-results-click-go-back-arrow.png " ")
-
-16. You are returned to the OAD home page; this may take a number of seconds. In the Datasets area at the bottom of your screen, click your new __SALES_HISTORY__ dataset to open it up as a **Project**.
-
-   ![Click SALES\_HISTORY dataset to open as project.](./images/click-sales-history-data-set-to-open-as-project.png " ")
-
-17. By default, the project opens in the **Visualize** tab. Click the **Data** tab to enable overriding the settings of some columns.
-
-   ![Change from the Visualize tab to the Data tab.](./images/change-from-visualize-tab-to-data-tab.png " ")
-
-18. In the middle of the palette, right-click the SALES_HISTORY dataset and select **Open** from the pop-up menu.
-
-   ![Right-click the dataset and select Open.](./images/right-click-dataset-and-open.png " ")
-
-19. This opens a new window filled with data for each column. Notice how easy it is to browse the data elements to see what is available for you to further explore. In the upper left corner, hover your mouse over the icons to see that by default you are in the **Preparation Script** tab. Click the **Data** tab.
-
-    ![By default you are in the Preparation Script tab.](./images/preparation-script-tab.png " ")
-
-    ![Change from the Preparation Script tab to the Data tab.](./images/change-from-preparation-script-tab-to-data-tab.png " ")
-
-20. You are going to override the data types for two columns recognized as measures (i.e. numeric), and correct them to be treated as attributes -- __CALENDAR\_YEAR__ and __CUST\_YEAR\_OF\_BIRTH__. Click the __CALENDAR\_YEAR__ column name in the upper left navigation panel. Details of this column appear in the lower left panel. Change the __‘Treat As’__ field to an __‘Attribute’__. Repeat for the column, __CUST\_YEAR\_OF\_BIRTH__.
-
-   ![Change the data elements appropriately on the left column.](./images/change-treat-as-from-measure-to-attribute.png " ")
-
-21. Click the **Save Dataset** button in the upper right corner. Select **Save** from the pop-up menu. After you receive a message that the dataset was successfully saved, close this dataset window. The untitled project window should still be open.
-
-   ![Click the Save Dataset button and select Save.](./images/click-save-dataset-button.png " ")
+    ![Save the dataset.](./images/oac-save-dataset.png " ")
 
 ## Task 4: Create a workbook and explore the data in your dataset
 
-No matter what your role is in the organization, access to data timely can provide greater insights to improve the performance of your business. Whether you’re creating a data warehouse or a data mart for yourself or others, Autonomous Data Warehouse is making it far simpler than ever before. Easy, fast, and elastic. This small project demonstrates this. This is how business users would interact with the Autonomous Data Warehouse.
+Analytics Cloud provides a very intuitive experience for analyzing your data and creating interactive dashboards. Follow these steps to create a very simple, yet highly visual Workbook. And, feel free to explore MovieStream data in many more ways than what's listed here!
 
-1. We will now create a very simple visualization project to finish this part of the lab. Multi-select (ctrl+click) the 5 Data Elements within __SALES\_HISTORY__, including __PROD\_NAME__, __AMOUNT\_SOLD__, __CALENDAR\_YEAR__, __PROD\_CATEGORY__, and __QUANTITY\_SOLD__.  
+The final dashboard is depicted below:
 
-2. Drag the five selected data elements to the middle of the screen.
-   ![Drag the elements to the middle of the screen.](./images/drag-five-columns-to-middle.png " ")
+![](images/oac-final-dashboard.png)
 
-3. Based upon this data, Oracle Analytics Desktop will choose a default visualization. In this example, Oracle Analytics Desktop chose **Scatter** as the Auto Visualization. You can choose among several dozen other diagram types from the Auto Visualization drop-down menu.
+The tree map on the left describes the MovieStream customers broken out by income level. The size of the boxes is indicative of the number of customers within that income level. Clicking on one of the income levels will filter the chart on the right to summarize the number of movie views for that income level. The chart shows the breakdown of views by customer segment across movie genres.
 
-   ![Select Scatter on the left column and click Save.](./images/first-visualization-scatter-chart.png " ")
+Let's build the dashboard!
 
-4. You may save this project if you need. Click the **Save** button in the upper right corner. Select **Save** from the drop-down menu. In the **Save Project** dialog, provide a project name and click **Save**. You will receive a message that the project was saved.
+1.  When you saved the dataset, a **Create Workbook** button appeared in the upper right corner. Click **Create Workbook**.
 
-    ![Click the Save button and select Save.](./images/click-save-project-button.png " ")
+    ![Click the Create Workbook button.](./images/oac-goto-create-workbook.png " ")  
 
-    ![Name the project and click Save.](./images/name-the-project-and-save.png " ")
+2. The **New Workbook** page appears, on which you can drag and drop measures and attributes.
 
- At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous Database in ADW or ATP is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
+    ![The New Workbook page appears.](./images/oac-begin-dashboard.png " ")  
+
+3. Drag and drop **VIEWS** onto the canvas. **VIEWS** represents the number of times a movie was viewed.
+
+    ![Drag and drop VIEWS onto the palette.](./images/oac-drag-views.png " ")  
+
+    The Workbook attempts to create the best presentation using **Auto Visualization**. Here, the total number of views is displayed as a tile.
+
+4. Next drag and drop **CUSTOMER\_SEGMENT** onto any clear white area of the canvas.
+
+    ![Drag and drop GENRE onto the palette.](./images/oac-simple-chart.png " ")
+
+    The workbook displayed the number of views as a bar chart.
+
+5. Let's now break out each customer segment's views by genre. Drag GENRE to the **Color** field in the grammar panel. Then, update the visualization type to **Stacked Bar**.
+
+    ![Finish creating your workbook.](./images/oac-stacked-bar-genre-segment.png " ")
+
+6. Great! Let's now add the tree map. Create a new visualization by dragging and dropping **VIEWS** to the left of the stacked bar chart. Drop the measure when you see a green vertical bar running the length of the stacked bar chart:
+
+    ![Add second view to the worksheet](images/oac-worksheet-add-second-view.png)
+
+    Again, the number of views is displayed as a tile.
+
+7. Drag and drop **INCOME_LEVEL** to the view. Change its visualization to **Tree Map**:
+
+    ![Pick Tree Map from the menu](images/oac-worksheet-pick-treemap.png)
+
+    The new visualization should look like the following:
+
+    ![Tree Map in green](images/oac-worksheet-treemap-green.png)    
+
+8. Make the Tree Map a bit more colorful. Drag and Drop INCOME_LEVEL to the **Color** field:
+    ![Colorful Tree Map](images/oac-worksheet-treemap-colorful.png)
+
+9. Finally, use the income level tree map to filter the genre views by customer segment stacked bar. Right click on the tree map and select **Use as Filter**:
+
+    ![Use tree map to filter other visualizations by income level](images/oac-worksheet-filter-setup.png)
+
+9. Analyze views by income level, customer segment and genre:
+
+    ![Analyze views by income level, customer segment and genre](images/oac-worksheet-final.png)
+
+10. Now that you've seen how to create dashboards, create more pages and visualizations!
+
+11. When you are done building your workbook, click **Save** in the upper right corner.
+
+At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous Database is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
 
 ## Want to learn more?
 
@@ -187,5 +228,5 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 ## **Acknowledgements**
 
-- **Author** - Richard Green, Principal Developer, Database User Assistance
+- **Author** - Richard Green, Principal Developer, Database User Assistance; Marty Gubar, ADB Product Management
 - **Last Updated By/Date** - Richard Green, August 2022

@@ -15,7 +15,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of Lab 1, **Provision an ADB Instance**, in the Contents menu on the left.
+- This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
 
 ## Task 1: Create and load JSON movie collection
 [](include:adb-create-load-json-collection.md)
@@ -26,7 +26,7 @@ In this lab, you will:
 ## Task 3: Analyze complex JSON arrays to find top actors
 [](include:adb-query-json-arrays.md)
 
-Please *proceed to the next lab*.
+Please [*proceed to the next lab*](#next).
 
 ## Acknowledgements
 

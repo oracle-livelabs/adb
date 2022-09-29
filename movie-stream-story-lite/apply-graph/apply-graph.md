@@ -6,14 +6,12 @@
 
 [](youtube:6ik6ahjmYQQ)
 
-Use Oracle Graph analytics to create customer communities based on movie viewing behavior. Once you've created communities - make recommendations based on what your community members have watched.
-
-In this lab you will use graph analytics to identify movies to recommend to customers who are at risk of leaving.
+In this lab, you will use Oracle Graph analytics to detect and create customer communities based on movie viewing behavior. Once you've created communities - make recommendations based on what your community members have watched.
 
 Estimated Time: 10 minutes
 
 ### About graph
-When you model your data as a graph, you can run graph algorithms on your data to analyze your data based on the connections and relationships in your data. You can also use graph queries to find patterns in your data, such as cycles, paths between vertices, anomalous patterns, and others. Graph algorithms are invoked using a Java or Python API, and graph queries are run using PGQL (Property Graph Query Language, see [pgql-lang.org](https://pgql-lang.org)).
+When you model your data as a graph, you can run graph algorithms to analyze connections and relationships in your data. You can also use graph queries to find patterns in your data, such as cycles, paths between vertices, anomalous patterns, and others. Graph algorithms are invoked using a Java or Python API, and graph queries are run using PGQL (Property Graph Query Language, see [pgql-lang.org](https://pgql-lang.org)).
 
 In this lab you will use a graph created from the tables MOVIE, CUSTOMER\_PROMOTIONS, and CUSTSALES\_PROMOTIONS. MOVIE and CUSTOMER\_PROMOTIONS are vertex tables (every row in these tables becomes a vertex). CUSTSALES\_PROMOTIONS connects the two tables, and is the edge table. Every time a customer in CUSTOMER\_PROMOTIONS rents a movie in the table MOVIE, that is an edge in the graph. This graph has been created for you for use in this lab.  
 
@@ -47,15 +45,17 @@ Graph Studio is a feature of Autonomous Database. It is available as an option u
 
 2. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
 
-    ![Use the credentials for database user MOVIESTREAM](images/task1step2.png " ")
+    ![Use the credentials for database user MOVIESTREAM](images/graph-login.png " ")
 
 ## Task 2: Load a graph into memory
 
 The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOMER\_PROMOTIONS, CUSTSALES\_PROMOTIONS, and MOVIE (as explained earlier).  You will now load this graph from the database into the in-memory graph server.  
 
-1. Click on the graphs icon.  You will see that the MOVIE_RECOMMENDATIONS graph is available.
+1. Click on the graphs icon. 
 
     ![Click on the graphs icon](images/task2step1.png " ")
+
+    You will see that the MOVIE_RECOMMENDATIONS graph is available.
 
     ![See the list of graphs](images/task2step2.png " ")
 
@@ -63,11 +63,15 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 
     ![Expand the 3 dots on the right](images/task2step3.png " ")
 
-3. Select **Yes**.  Next see that the load into memory is in progress.  About two minutes later the load job has completed.
+3. Accept the defaults and select **Yes**.  
 
     ![Select Yes](images/task2step4.png " ")
 
+    Next see that the load into memory is in progress:  
+
     ![See the load into memory In Progress](images/task2step5.png " ")
+
+    About two minutes later the load job should complete successfully.
 
     ![See the load job completed](images/task2step6.png " ")
 

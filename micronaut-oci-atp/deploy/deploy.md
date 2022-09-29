@@ -71,7 +71,7 @@ The following values should be supplied:
     </copy>
     ```
 
-2. To keep things simple, we'll revert to hardcoded passwords and explicit wallet configuration for the deployed instance. Ensure that your `datasources` block in `application.yml` looks like this (replace __XXXXXXXX__ with the user password):
+2. To keep things simple, we'll revert to hardcoded passwords and explicit wallet configuration for the deployed instance. Ensure that your `datasources` block in `application-oraclecloud.yml` looks like this (replace __XXXXXXXX__ with the user password):
 
         <copy>
         datasources:
@@ -81,10 +81,6 @@ The following values should be supplied:
             username: mnocidemo
             password: XXXXXXXX
             dialect: ORACLE
-            data-source-properties:
-              oracle:
-                jdbc:
-                  fanEnabled: false
         </copy>
 
 3. Before deploying, ensure the wallet exists on the VM by running the following snippet replacing [YOUR IP] with the public IP from the previous section:
@@ -152,7 +148,7 @@ Open up the firewall to port 8080:
 Finally start the application:
 
     <copy>
-    java -jar application.jar
+    MICRONAUT_ENVIRONMENTS=oraclecloud java -jar application.jar
     </copy>
 
 ## Task 3:  Verify Application

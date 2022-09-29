@@ -110,7 +110,7 @@ In this lab, you will create a mapping to read two tables (Orders and Lineitem) 
 
    ![New Mapping](images/picture8.png)
 
-5. Under properties, enter **m_Orders_Lineitem_PDO** in Name field.
+5. Under properties, enter **m\_Orders\_Lineitem\_PDO** in Name field.
 
 6. Ensure that Location is **LiveLabs**. If not, click **Browse** and select it.
 
@@ -119,11 +119,11 @@ In this lab, you will create a mapping to read two tables (Orders and Lineitem) 
 7. Click **Save**
 
 ### Configure Orders source
-Let's configure the Orders data source from S3.
+Let's configure the Orders data source from ADB.
 
 1.	Click the **Source** transform in the mapping canvas to assign its properties.
 
-2.	In the General tab, enter **src_Orders** in the Name field.<BR>
+2.	In the General tab, enter **src\_Orders** in the Name field.<BR>
 
 	![src1](images/picture10.png)
 
@@ -161,7 +161,7 @@ Let's configure the Orders data source from S3.
 
 14. Click **Save**.
 
-15.	Select **o_totalprice** field.  Click **Options** dropdown, select **Edit Metadata** to change type to decimal.
+15.	Select **o\_totalprice** field.  Click **Options** dropdown, select **Edit Metadata** to change type to decimal.
 
 	![srcOrdersEditField](images/picture17.png)
 
@@ -182,7 +182,7 @@ Add Lineitem table as another data source.
 
    ![Config LineItem](images/picture19.png)
 
-2. In the General tab, enter **src_Lineitem** in the Name field.
+2. In the General tab, enter **src\_Lineitem** in the Name field.
 
 3. In the Source tab, select the connection created in Task 1 in the Connection dropdown field.
 
@@ -192,13 +192,13 @@ Add Lineitem table as another data source.
 
 6. Click **OK**. <BR>
 
-7. In the Fields tab, remove all fields except **l_orderkey**, **l_extendedprice**, **l_discount**, **l_tax**.
+7. In the Fields tab, remove all fields except **l\_orderkey**, **l\_extendedprice**, **l\_discount**, **l\_tax**.
 
 8. Click **Yes**. <BR>
 
    ![Remove Fields](images/picture20.png)
 
-9. Now, edit the metadata and change the data type for **l_extendedprice**, **l_discount**, **l_tax** to decimal.
+9. Now, edit the metadata and change the data type for **l\_extendedprice**, **l\_discount**, **l\_tax** to decimal.
 
    ![Extend Price](images/picture21.png)
 
@@ -214,17 +214,17 @@ Add Lineitem table as another data source.
 
 3.	Click the plus icon above the Joiner to expand.  
 
-4.	Link **src_Lineitem** to the Detail of Joiner transform.
+4.	Link **src\_Lineitem** to the Detail of Joiner transform.
 
 	![joinerdetail](images/picture23.png)
 
 5.	Let’s assign the Joiner properties.
 
-6.	In the General tab, enter **jnr_orders_lineitem** in the Name field.
+6.	In the General tab, enter **jnr\_orders\_lineitem** in the Name field.
 
 7.	In the Join Condition tab, click the plus icon to add a new condition.
 
-8.	Select **o_orderkey** for Master and **l_orderkey** for Detail.
+8.	Select **o\_orderkey** for Master and **l\_orderkey** for Detail.
 
 	![joinercondition](images/picture24.png)
 
@@ -236,7 +236,7 @@ Add Lineitem table as another data source.
 
 ### Calculate number of items per order and order total
 
-1.	From the transformation palette, select **Aggregator** transformation, drag and drop between the jnr_orders_lineitem and Target in mapping canvas window.
+1.	From the transformation palette, select **Aggregator** transformation, drag and drop between the jnr\_orders\_lineitem and Target in mapping canvas window.
 
 2.	Click align icon to align transformations in the mapping canvas.
 
@@ -244,17 +244,17 @@ Add Lineitem table as another data source.
 
 3.	Let’s assign the properties.
 
-4.	In the General tab, enter **agg_item_count_and_order_total** in the Name field.
+4.	In the General tab, enter **agg\_item\_count\_and\_order\_total** in the Name field.
 
 5.	In the Group By tab, click the plus icon to add new fields.
 
 6.	Add the following fields:
-	* **o_orderkey**
-	* **o_custkey**
-	* **o_orderstatus**
-	* **o_totalprice**
-	* **o_orderdate**
-	* **o_orderpriority**
+	* **o\_orderkey**
+	* **o\_custkey**
+	* **o\_orderstatus**
+	* **o\_totalprice**
+	* **o\_orderdate**
+	* **o\_orderpriority**
 
 7.	When completed, the Group By tab properties should look like this:
 
@@ -286,7 +286,7 @@ Add Lineitem table as another data source.
 
 18.	Click the plus icon to add another new field.
 
-19.	Enter **total_calc** in the Name field.
+19.	Enter **total\_calc** in the Name field.
 
 20.	Select **decimal** in the Type dropdown field.
 
@@ -301,7 +301,7 @@ Add Lineitem table as another data source.
 25.	Enter the following in the Expression field.  This function will add the total of all items in an order.
 
 ```SQL
-sum(l_extendedprice * (1-l_discount) * (1+l_tax))
+sum(l_extendedprice * (1-l\_discount) * (1+l\_tax))
 ```
 
 26.	Click **Validate**.
@@ -317,13 +317,13 @@ sum(l_extendedprice * (1-l_discount) * (1+l_tax))
 ### Rename fields 
 Add an expression to rename the fields so that they look better and are in the order we want in the Oracle Autonomous Database table.  This is an optional transformation.
 
-1.	From the transformation palette, drag **Expression** transform and drop it over the line between the agg_item_count_and_order_total and target transforms.  The expression should now be linked to the aggregator and Target transforms.  If not, manually link them.
+1.	From the transformation palette, drag **Expression** transform and drop it over the line between the agg\_item\_count\_and\_order\_total and target transforms.  The expression should now be linked to the aggregator and Target transforms.  If not, manually link them.
 
 2.	Click align icon to align transformations in the mapping canvas.
 
 	![expr](images/picture31.png)
 
-3.	In the General tab, enter **exp_rename_fields** in the Name field.
+3.	In the General tab, enter **exp\_rename\_fields** in the Name field.
 
 4.	In the Expression tab, click the plus icon to add the following fields:
 
@@ -346,7 +346,7 @@ Add an expression to rename the fields so that they look better and are in the o
 
 1.	Click **Target** to set a target properties.
 
-2.	In the General tab, enter **tgt_OrdersLineitem** in the Name field.
+2.	In the General tab, enter **tgt\_OrdersLineitem** in the Name field.
 
 3.	In the Incoming Fields tab, click plus icon to add a field rule.
 
@@ -400,7 +400,7 @@ Let’s configure Pushdown Optimization (PDO) in the Mapping Task and execute it
 
 	![mct](images/picture38.png)
 
-3.	In the New mapping task window, enter **mct_Orders_Lineitem_PDO** in the Name field.
+3.	In the New mapping task window, enter **mct\_Orders\_Lineitem\_PDO** in the Name field.
 
 4.	Select **LiveLabs** for Location if not already selected.
 
