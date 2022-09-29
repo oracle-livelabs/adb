@@ -3,14 +3,13 @@
     "help": "livelabs-help-oci_us@oracle.com",
 	"tutorials": [
         {
-            "title": "Get Started",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
-        },
-        {
             "title": "Introduction",
             "filename": "./../../tut4207/intro.md"
         },
-       
+        {
+            "title": "Get Started",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
         {
             "title": "Utilizing Oracle Text with APEX",
             "filename": "./../../tut4207/apex-adw.md"
