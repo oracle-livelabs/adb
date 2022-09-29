@@ -109,11 +109,6 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Object Browser](./images/task-5/object-browser.png " ")
 
-4. Go to SQL Scripts and upload the [contents of this file](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql). This will build the table structure of the tables required. 
-
-
-    
-    ![Navigate to SQL Scripts](./images/task-5/sql-scripts.png " ")
 
 5. Upload the script
 
