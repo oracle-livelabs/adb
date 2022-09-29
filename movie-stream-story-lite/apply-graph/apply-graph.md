@@ -87,13 +87,17 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 
   [Click here to download the notebook](files/movie_recommendations_psalsa.dsnb) and save it to a folder on your local computer.  This notebook includes graph queries and analytics for the MOVIE_RECOMMENDATIONS graph.
 
- 1. Import a notebook by clicking on the notebook icon on the left, and then clicking on the **import notebook** icon on the far right.
+ 1. Import a notebook by clicking on the notebook icon on the left, and then clicking on the **Import** icon on the far right.
 
-     ![Click the notebook icon and import the notebook](images/task3step1.png " ")
+    ![Click the notebook icon and import the notebook](images/task3step1.png " ")
 
  Click on the + sign and navigate to the folder where you just downloaded the notebook.  Select the notebook and click **Import**.
 
-     ![Select the notebook to import and click on Import](images/task3step2.png " ")
+    ![Select the notebook to import and click on Import](images/task3step2.png " ")
+
+ A dialog pops up named **Environment Attaching"**. It will disappear when the compute environment finishes attaching, usuallly in less than one minute. Or you can click **Dismiss** to close the dialog and start working on your environment. Note that you will not be able to run any paragraph until the environment finishes attaching.
+
+    ![Click Dismiss to cloes the Environment Attaching dialog](images/click-dismiss.png " ")
 
  2. Review the description before each paragraph.   Review the graph queries and analytics.   You can then run the query by clicking on the triangle on the top right if you would like to do so.  Below is an example of running a query in a paragraph.  
 
