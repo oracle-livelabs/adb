@@ -22,7 +22,7 @@ We'll create an Autonomous JSON Database, and connect to it using the standard "
 
 We'll then explore the same data using "Database Actions" in Oracle's Cloud Infrastructure.
 
-You can complete this entire workshop using your web browser. As part of the lab we will install MongoDB Shell, a command-line tool for accessing MongoDB and MongoDB-compatible databases.
+You can complete this entire workshop using your web browser and a command or shell window. As part of the lab we will install MongoDB Shell, a command-line tool for accessing MongoDB and MongoDB-compatible databases.
 
 If you have MongoDB tools such as MongoDB Shell or MongoDB Atlas already installed on your own machine, you could run the MongoDB commands from there instead. However, the workshop will assume at all times that you are following the provided instructions.
 
