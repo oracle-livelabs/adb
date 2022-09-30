@@ -441,6 +441,14 @@ micronaut {
 </copy>
 ```
 
+Or alternatively try pull the Oracle XE container image prior to running your tests using the `docker` command from a terminal window:
+
+```
+<copy>
+docker pull gvenzl/oracle-xe:latest
+</copy>
+```
+
 Note that to improve productivity when running tests you can start a shared test resources server by running the Gradle `startTestResourcesService` command which can later by stopped with `stopTestResourcesService`:
 
 ```bash
