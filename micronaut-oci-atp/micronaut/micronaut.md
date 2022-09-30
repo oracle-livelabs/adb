@@ -493,7 +493,7 @@ connection: keep-alive
 [{"name":"Dino"},{"name":"Baby Puss"},{"name":"Hoppy"}]
 ```
 
-## Task 6: Run the Micronaut application with Autonomous Database
+## Task 7: Run the Micronaut application with Autonomous Database
 
 To run the application and connect to the previously configured Autonomous Database instance you need to active the `oraclecloud` environment locally first by setting the `MICRONAUT_ENVIRONMENTS` environment variable, for example:
 
