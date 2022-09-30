@@ -8,7 +8,7 @@ In this lab, we will use Visual Studio Code (VSCode) IDE to initiate a connectio
 
 **Download VSCode Here:** [Link](https://code.visualstudio.com/download)
 
-**Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/tVAwp-XWRsm1oouSHDzzZwyUQ5TErSPpPNhuYPMTbSJOZlC-Pvsed-caGfHYrkV5/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip)
+**Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip)
 
 Estimated Time: 40 minutes
 
@@ -65,7 +65,7 @@ This lab assumes you have:
             ```
             **Note: Insert the correct path for your extracted instant client for this step**
 
-4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/tVAwp-XWRsm1oouSHDzzZwyUQ5TErSPpPNhuYPMTbSJOZlC-Pvsed-caGfHYrkV5/n/orasenatdpltsecitom03/b/Twitter_LL/o/Twitter_LL2.zip) .
+4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip) .
 
     -Extract and open the folder in VSCode.  
 
@@ -164,13 +164,14 @@ This lab assumes you have:
 
     ![cx_Oracle insert line to code](images/error-cx-oracle.png)
 
-    - If this error persists, the reinstall the instant client, ensuring you have the correct version for your OS.
+    - If this error persists, the reinstall the instant client, ensuring you have the correct version for your OS. Otherwise, review this documentation on how to proceed: 
+    [Initialization Guide](https://cx-oracle.readthedocs.io/en/latest/user_guide/initialization.html)
 
     - **Elevated Access for Twitter:** Required after creating a developer account. Sign Up and request access here: [Link for Twitter Developer Sign up.](https://developer.twitter.com/en/docs/developer-portal/overview)
 
     ![Elevated access error](images/elevated-access.png)
 
-    - **Module not found:** Open a terminal or use the terminal in VSCode to run the command: pip install -u module name
+    - **Module not found:** See Task 3, Step 1 for information how to install.
 
 4.  Notice the following:
     - **Model insert success**
