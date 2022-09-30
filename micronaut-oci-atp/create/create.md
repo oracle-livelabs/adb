@@ -194,7 +194,7 @@ If you created a Vault with secrets for the user and admin passwords in the prev
         </dependency>
         </copy>
 
-2. Create `src/main/resources/bootstrap.yml` with the following content:
+2. Create `src/main/resources/bootstrap-oraclecloud.yml` with the following content:
 
         <copy>
         micronaut:
@@ -280,7 +280,7 @@ If you created a Vault with secrets for the user and admin passwords in the prev
 
 ## Task 8: Configure OCI authentication (Optional)
 
-If you already have the [Oracle Cloud CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and you have run __oci setup config__ to configure local access, then you should be all set. If you are using a profile in __~/.oci/config__ other than __DEFAULT__, change the profile name in `bootstrap.yml`:
+If you already have the [Oracle Cloud CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and you have run __oci setup config__ to configure local access, then you should be all set. If you are using a profile in __~/.oci/config__ other than __DEFAULT__, change the profile name in `bootstrap-oraclecloud.yml`:
 
         oci:
           config:
