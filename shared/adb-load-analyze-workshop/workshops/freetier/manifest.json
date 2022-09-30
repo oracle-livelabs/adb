@@ -2,17 +2,17 @@
     "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
-        "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
-        "adb-create-load-json-collection.md":"/building-blocks/tasks/adb/create-load-json-collection.md",
-        "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
-        "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
-        "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
-        "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
-        "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
-        "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
-        "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
-        "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md",
-        "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
+        "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+        "adb-create-load-json-collection.md":"/common/building-blocks/tasks/adb/create-load-json-collection.md",
+        "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-goto-sql-worksheet.md":"/common/building-blocks/tasks/adb/goto-sql-worksheet.md",
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "adb-query-json-arrays.md":"/common/building-blocks/tasks/adb/query-json-arrays.md",
+        "adb-query-json-simple.md":"/common/building-blocks/tasks/adb/query-json-simple.md",
+        "adb-query-object-store-contents-with-sql.md":"/common/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+        "adb-use-partitioned-external-table-body.md":"/common/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+        "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+        "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md"
       },
       "variables": ["./variables.json"],
 	"tutorials": [
@@ -30,13 +30,13 @@
             "title": "Lab 1: Provision an Analytics Cloud Instance",
             "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
             "type": "freetier",
-            "filename": "/building-blocks/blocks/oac/provision/oac-provision.md"
+            "filename": "/common/building-blocks/blocks/oac/provision/oac-provision.md"
         },
         {
             "title": "Lab 2: Provision an Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "/building-blocks/blocks/adb/provision/provision-console.md"
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 3: Load Data from Local Files",
@@ -60,7 +60,7 @@
             "title": "Lab 6: Access and Load Partitioned Object Storage Data",
             "description": "Examine the power of partitioning for querying and loading customer sales data sourced from object storage",
             "type": "freetier",
-            "filename": "/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
+            "filename": "/common/building-blocks/blocks/adb/use-partitioned-external-table/use-partitioned-external-table.md"
         },
         {
             "title": "Lab 7: Load and Analyze JSON Data",
@@ -83,7 +83,7 @@
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common//labs/need-help/need-help-freetier.md"
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
 
     ]
