@@ -256,7 +256,7 @@ If you created a Vault with secrets for the user and admin passwords in the prev
         </dependency>
         </copy>
 
-2. Comment out the current __datasources__ section in `src/main/resources/application-oraclecloud.yml` by adding a `%` character to the start of each line (you'll need this version when deploying), and add the following:
+2. Comment out the current __datasources__ section in `src/main/resources/application-oraclecloud.yml` by adding a `#` character to the start of each line (you'll need this version when deploying), and add the following:
 
         <copy>
         datasources:
