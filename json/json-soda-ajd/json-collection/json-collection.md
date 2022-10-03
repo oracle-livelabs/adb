@@ -416,7 +416,7 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 2.  Store the MongoDB URI in an environment variable
 
-	Copy the following into Cloud Shell, making sure that you replace <yourURI> with the edited URI from the previous step. Make sure you keep the *single* or *double* quote characters (**Mac/Linux** or **Windows**) either side of the URI.
+	Copy the following into the terminal or command window, making sure that you replace <yourURI> with the edited URI from the previous step. Make sure you keep the *single* or *double* quote characters (**Mac/Linux** or **Windows**) either side of the URI.
 
     For **Mac** or **Linux**:
 
@@ -439,11 +439,11 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 3. 	Bulk load the data using mongoimport
 
-	mongoimport is a standard MongoDB tool which takes a file full of JSON documents and loads it to a MongoDB compatible database. Here we will use the tool to load a file currently situated on Object Storage into Autonomous Database. We could download the file to Cloud Shell, then upload it to the database using mongoimport, but we might as well do pipe it directly into mongoimport using standard output.
+	mongoimport is a standard MongoDB tool which takes a file full of JSON documents and loads it to a MongoDB compatible database. Here we will use the tool to load a file currently situated on Object Storage into Autonomous Database. We could download the file to our machine, then upload it to the database using mongoimport, but we might as well do pipe it directly into mongoimport using standard output.
 
 	The following command using 'curl -s' to fetch the file from object storage and send it to stdout. mongoimport then reads the data from stdin, connects to the database specified by $URI, and inserts the data into the collection 'products'.
 
-	Copy this into Cloud Shell, being sure to press "Enter" afterwards.
+	Copy this into your terminal or command window, being sure to press "Enter" afterwards.
 
 	For **Mac** or **Linux**:
 
