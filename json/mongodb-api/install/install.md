@@ -60,7 +60,7 @@ In this lab, you will:
 
 On both Mac and Windows, you can use the built-in 'curl' command to access a URL and download a file from it. The URL to use will vary according to the machine involved.
 
-Copy **ONE** of the following commands and paste it to the command or terminal window:
+Copy **ONE** of the following *curl* commands and paste it to the command or terminal window:
 
 1. For **Mac with Intel processor**:
 
