@@ -21,7 +21,7 @@ There are two versions of this workshop:
 There are also other workshops that focus on specific feature areas that also use the same business scenario.
 
 Oracle MovieStream is a fictitious movie streaming service - similar to those that you currently subscribe to. They face challenges that are typical to many organizations across industries. MovieStream must:
-* Gain a better understanding of their cus  tomers to ensure that they love the service  
+* Gain a better understanding of their customers to ensure that they love the service  
 * Offer the right products to the right customers at the right price  
 * Grow the business to become a dominant player in the streaming business
 * And much, much more

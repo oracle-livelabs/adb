@@ -151,23 +151,36 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 
 2. When you updated the user privileges, you installed LiveLab workshop utilities that make it easy to install data sets. Copy and paste the following script to install the rest of the required data sets:
 
-```
-<copy>
--- Run the PLSQL procedure that loads the rest of the dataset
-BEGIN
-    workshop.add_dataset('ALL');
-END;
-/
-</copy>
-```  
+    ```
+    <copy>
+    -- Run the PLSQL procedure that loads the rest of the dataset
+    BEGIN
+        workshop.add_dataset('ALL');
+    END;
+    /
+    </copy>
+    ```  
 
-Click the **Run Script** button to run the script.
+    Click the **Run Script** button to run the script.
 
-> **Note** The script should take around 4-5 minutes to run as it uses a number of scripts to load and links a number of data files, and to generate additional views and tables used in later analysis steps.
+    > **Note** The script should take around 4-5 minutes to run as it uses a number of scripts to load and links a number of data files, and to generate additional views and tables used in later analysis steps.
 
-3. When the script has completed, you should see a message like this in the Script Output window:
+3.  Monitor the data load by running the following query:
 
-    ![Script ran successfully](images/scriptcomplete.png)
+    ```
+    <copy>
+    select *
+    from workshop_log 
+    order by 1 asc;
+    </copy>
+    ```  
+    
+    Click **Run Script** to see the status:
+
+    ![Monitor the data load](images/load-data-review-log.png)
+
+    You can continue once the spatial index creation is complete. After creating the spatial index, the script will continue building a graph using a database job.
+
 
 4. In the left hand pane, next to the Search box, click on the Refresh button to refresh the set of tables and views in the [](var:db_user_name) user's schema. You should see a list of tables and views including **CUSTOMER**, **CUSTSALES** and **TIME** amongst others:
 

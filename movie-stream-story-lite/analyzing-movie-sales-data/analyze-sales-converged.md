@@ -197,7 +197,7 @@ It doesn't make sense to make a promotional offer if the pizza shop is too far a
 
 To accomplish this task, we'll take advantage of two of the many Autonomous Database spatial functions that are offered: **nearest neighbor** and **nearest neighbor distance**. You can check out the [Oracle Spatial and Graph Developer's Guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/spatl/index.html) for more details about spatial analytics.
 
-1. Use spatial SQL analytic functions to find the nearest pizza locations and their distance for selected important customers. CCopy and paste the following SQL into the worksheet and click **Run**:
+1. Use spatial SQL analytic functions to find the nearest pizza locations and their distance for selected important customers. Copy and paste the following SQL into the worksheet and click **Run**:
 
     ```
     <copy>
