@@ -574,7 +574,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Create a Virtual Column](./images/task-8/create-virtual-column.png " ")
 
-6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively. Note: Use the menu to the right of the text box makes this easier.
+6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively. 
+
+    **Note:** Use the menu to the right of the text box makes this easier.
 
     
     ![Creating Column Link](./images/task-8/gist-column-link.png " ")
