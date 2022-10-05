@@ -68,7 +68,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Navigate to Oracle APEX](./images/task-4/open-apex.png " ")
 
-2.  Enter ADMIN password (Step 5) and sign in
+2.  Enter ADMIN password (Task 2 Step 5) and sign in
 
     
     ![Open the Admin Console](./images/task-4/admin-console.png " ")
@@ -170,7 +170,8 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 13. Give your application a name, delete dashboard page by clicking edit and deleting that entry. You can leave everything else as default. Click create application!
 
-    
+     >***Note:*** Delete the dashboard page to ensure page numbers align with lab
+
     ![Name your application](./images/task-5/application-name.png " ")
 
 14. Run the application and sign in with your database user (Step 11)!
