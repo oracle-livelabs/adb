@@ -581,9 +581,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
     ![Document Gist Creation](./images/task-8/document-gist-creation.png " ")
 
-3. On the new page, rename the Title of the content body on the right pane to 
+3. On the new page, rename the Title of the body on the right pane to 
     **&P7_Title. Gist**.
-    Create two page items, **P7\_QUERY\_ID** and **P7\_TITLE**, by right-clicking on the content body region, and selecting **Create Page Item**
+    Create two page items, **P7\_QUERY\_ID** and **P7\_TITLE**, by right-clicking on the body region, and selecting **Create Page Item**
 
     
     ![Adding Page New Items](./images/task-8/page-7-gist-1.png " ")
@@ -651,7 +651,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Create a Virtual Column](./images/task-8/second-virtual-column.png " ")
 
-15. Make changes similar to before in step 6. Set the link to page 8. Under Set Items, ensure you add both **P8\_Query\_ID** and **P8\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively.
+15. Make changes similar to before in step 6. Change heading to "Full Text". Set the link to page 8. Under Set Items, ensure you add both **P8\_Query\_ID** and **P8\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively.
 
     
     ![Create Column Link](./images/task-8/virtual-column-link.png " ")
