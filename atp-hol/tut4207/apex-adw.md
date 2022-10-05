@@ -214,9 +214,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Hide Report Columns](./images/task-6/hide-report-columns.png " ")
 
-6. Select the DOCUMENT Column and in the right side panel change the **Mime Type**, **Filename Column**, and **Last Updated Column** to match the columns in our **Patient\_Documents** table!
+6. Select the DOCUMENT Column and in the right side panel change the **Mime Type**, **Filename Column**, and **Last Updated Column** to match the columns in our **Patient\_Documents** table
 
-    >***Note:*** Don't forget to save!
+    >***Note:*** You can use the filter under "Save" to filter for "BLOB Attributes" and don't forget to save!
 
     
     ![Update Document Column for Report](./images/task-6/update-document-column.png " ")
@@ -226,7 +226,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Change Page](./images/task-6/change-page.png " ")
     ![Hide Form Columns](./images/task-6/hide-form-columns.png " ")
 
-8. Select the **P6\_Documents** page item, and change the **MIME Type Column**, **Filename Column**, and **BLOB Last Updated Column**, and Save. 
+8. Select the **P6\_Documents** page item, and change the **MIME Type Column**, **Filename Column**, and **BLOB Last Updated Column**, and Save. Again, you can filter for "Settings" in the right pane.
 
     >***Note:*** You will need to type these out to match exactly to the database columns.
 
@@ -262,6 +262,15 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
 
 13. Upload all 6 PDF documents ensuring that the **Patient Visit ID** matches the document name that is being uploaded. Repeat this step for all 6 PDF documents. 
+
+    | Patient Visit Id | File to upload |
+    | -----------|-----------|
+    | 651 - Bettye Wartnaby	 | Bettye\_Wartnaby\_Visit.pdf |
+    | 430 - Shelli Purslow | Shelli\_Purslow\_Visit.pdf |
+    | 757 - Christye McCarrick | Christye\_McCarrick\_Visit.pdf |
+    | 292 - Vilma Marciek | Vilma\_Mariek\_Visit.pdf |
+    | 553 - Oralla Gemlbett	 | Oralla\_Gemlbett\_Visit.pdf |
+    | 3 - Pascale Greendale | Pascale\_Greendale\_Visit.pdf |
 
     
     ![Upload all 6 sample documents](./images/task-6/upload-samples.png " ")
