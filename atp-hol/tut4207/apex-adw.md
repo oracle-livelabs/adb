@@ -7,14 +7,7 @@
 This lab walks you through the steps to quickly provision an Autonomous Transaction Processing instance on Oracle Cloud. In this lab we will create web application which will take medical documents and store them in the Autonomous Database. Further we will also use Oracle Text to allow users to filter, search, and view those documents with one-click.
     [Video Tutorial](youtube:XRwbswu0jEk)
 
-## Prerequisite 
-Download the three files needed to complete this lab
 
-[Create Tables SQL](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql)
-
-[CareClinic Data Zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
-
-[Sample Patient Documents Zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip)
 ## Task 1: Create a compartment
 
 1. Compartments are the primary means to organize, segregate, and manage access to OCI resources.  Every tenancy has a root compartment under which you create additional sub-compartments and sub-sub compartments (maximum six levels deep).  Compartments are tenancy-wide across regions. When you create a compartment, it is available in every region that your tenancy is subscribed to. You can get a cross-region view of your resources in a specific compartment with the tenancy explorer. See [Viewing All Resources in a Compartment](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/compartmentexplorer.htm#Viewing_All_Resources_in_a_Compartment).  We will create a compartment called **CareClinics** for this course/workshop and create all related services in this compartment.  Navigate to the menu in the upper left and select Identity and Security, and then Compartments.
@@ -54,7 +47,7 @@ Download the three files needed to complete this lab
 
 5.  Create the ADMIN password for the DB, following the database password requirements. Leave everything else as default
 
-    ***Note:*** Make sure to save this password, you will need it later in this lab
+    >***Note:*** Make sure to save this password, you will need it later in this lab
 
     
     ![Set Admin Password](./images/task-3/set-password.png  " ")
@@ -89,7 +82,7 @@ Download the three files needed to complete this lab
 
 4. Create a Database User and new password for this user (Ex: CareClinic). Create Workspace.
 
-    ***Note:*** Make sure to save this database user/password, you will need it later
+    >***Note:*** Make sure to save this database user/password, you will need it later
 
     
     ![Create a new Database User](./images/task-4/create-database-user.png " ")
@@ -113,51 +106,58 @@ Download the three files needed to complete this lab
 
 3. Inside the SQL Workshop > Object Browser to view any objects in the database. 
 
-    ***Note:*** It should be empty i.e no tables currently in the database. Uploading a DDL script will create the table structure you need, and then you can inset the data from .csv files
+    >***Note:*** It should be empty i.e no tables currently in the database. Uploading a DDL script will create the table structure you need, and then you can inset the data from .csv files
 
     
     ![Object Browser](./images/task-5/object-browser.png " ")
 
 
-5. Upload the script [found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
+4. Upload the script [found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
 
     
     ![Upload the SQL Script](./images/task-5/upload-sql-script.png " ")
 
-6. Once uploaded, run the script
+5. Once uploaded, run the script
 
     
     ![Run the SQL Script](./images/task-5/run-script.png " ")
 
-7. Ensure the statements are processed with no errors 
+6. Ensure the statements are processed with no errors 
     
     ![Script Processed](./images/task-5/script-processed.png " ")
 
-8. Return to the object browser. You are now able to view all 8 tables that were just created in the object browser. Now you will need to upload the data into them
+7. Return to the object browser. You are now able to view all 8 tables that were just created in the object browser. Now you will need to upload the data into them
 
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-9. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). After each load, verify that all columns were mapped correctly (as shown in step 10), and  click "View Table" once complete to return to object browser.
+8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). After each load, verify that all columns were mapped correctly (as shown in step 10), and  click "View Table" once complete to return to object browser.
 
-     ***Note:*** Do not create application - return to object browser
+     >***Note:*** Do not create application - return to object browser
 
+    
+
+
+    | Table name | File to upload |
+    | -----------|-----------|
+    | Healthcare Facilities | HEALTHCARE_FACILITY_DATA_TABLE.csv |
+    | PATIENT_INSURANCE | donot upload |
 
     
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-1.png " ")
 
-10. Repeat this step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
+9. Repeat this step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
 
-    ***Note:*** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
+    >***Note:*** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
 
     ![Loading Data into Tables](./images/task-5/load-data-2.png " ")­­
 
-11. There should now be data in 6/8 tables
+10. There should now be data in 6/8 tables
 
     
     ![View Data](./images/task-5/view-data.png " ")
 
-12. Let's create a new application using the Healthcare\_Facility Table
+11. Let's create a new application using the Healthcare\_Facility Table
 
     
     ![Create new application](./images/task-5/create-new-application.png " ")
@@ -181,7 +181,7 @@ Download the three files needed to complete this lab
 
 1. Create new Page!
 
-    ***Note:*** This is on version APEX 22.1, it may look slightly different to the current version
+    >***Note:*** This is on version APEX 22.1, it may look slightly different to the current version
 
     
     ![Create new application page](./images/task-6/new-page.png " ") 
@@ -193,7 +193,7 @@ Download the three files needed to complete this lab
 
 3. Select **Include Form Page** and give both the classic report and form page unique names. Select the source for this report as the **PATIENT\_DOCUMENTS** table
 
-    ***Note:*** Its important to note that the report and form are being created on pages 5 and 6 respectively. These will be referenced later in this lab.
+    >***Note:*** Its important to note that the report and form are being created on pages 5 and 6 respectively. These will be referenced later in this lab.
 
     
     ![Set Classic Report Attributes](./images/task-6/classic-report-attributes.png " ")
@@ -210,7 +210,7 @@ Download the three files needed to complete this lab
 
 6. Select the DOCUMENT Column and in the right side panel change the **Mime Type**, **Filename Column**, and **Last Updated Column** to match the columns in our **Patient\_Documents** table!
 
-    ***Note:*** Don't forget to save!
+    >***Note:*** Don't forget to save!
 
     
     ![Update Document Column for Report](./images/task-6/update-document-column.png " ")
@@ -222,7 +222,7 @@ Download the three files needed to complete this lab
 
 8. Select the **P6\_Documents** page item, and change the **MIME Type Column**, **Filename Column**, and **BLOB Last Updated Column**, and Save. 
 
-    ***Note:*** You will need to type these out to match exactly to the database columns.
+    >***Note:*** You will need to type these out to match exactly to the database columns.
 
     
     ![Update Document Column for Form](./images/task-6/update-document-column-form.png " ")
@@ -245,7 +245,7 @@ Download the three files needed to complete this lab
 
 11. Go back to Page 5 and run the application 
 
-    ***Note:*** Modal Pages cannot be run directly from the page designer, for example Page 6
+    >***Note:*** Modal Pages cannot be run directly from the page designer, for example Page 6
 
     
     ![Run the application to view changes](./images/task-6/view-application-changes.png " ")
@@ -462,7 +462,7 @@ Download the three files needed to complete this lab
 
 21. Repeat for the Gist Table. 
 
-    ***Note:*** Run each of the 3 statements individually
+    >***Note:*** Run each of the 3 statements individually
 
     ```
      <copy>
@@ -488,7 +488,7 @@ Download the three files needed to complete this lab
 
 22. Repeat for the Filtered Docs Table
 
-    ***Note:*** Run each of the 3 statements individually
+    >***Note:*** Run each of the 3 statements individually
 
     ```
      <copy>
@@ -516,7 +516,7 @@ Download the three files needed to complete this lab
 
 23. Finally repeat for the Full Themes tables
     
-    ***Note:*** Run each of the 3 statements individually
+    >***Note:*** Run each of the 3 statements individually
 
     ```
     <copy>
@@ -562,7 +562,7 @@ Download the three files needed to complete this lab
 	select * from gists where query_id = :P7_QUERY_ID;
     </copy>
     ```
-    ***Note:*** Ensure that this new page is page number 7 in-order for the query to populate properly
+    >***Note:*** Ensure that this new page is page number 7 in-order for the query to populate properly
 
     ![Document Gist Creation](./images/task-8/document-gist-creation.png " ")
 
@@ -585,7 +585,7 @@ Download the three files needed to complete this lab
 
 6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively. 
 
-    ***Note:*** Use the menu to the right of the text box makes this easier.
+    >***Note:*** Use the menu to the right of the text box makes this easier.
 
     
     ![Creating Column Link](./images/task-8/gist-column-link.png " ")
