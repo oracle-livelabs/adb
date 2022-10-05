@@ -380,7 +380,7 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 	Note that if you close and reopen the terminal/command shell window before running mongoimport, you will need to run the PATH setting command again.
 
-	![install mongo tools](./images/mongo
+	![install mongo tools](./images/mongo-install.png " ")
 
 ## Task 6: Using the Database API for MongoDB
 
