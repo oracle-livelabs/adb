@@ -31,10 +31,8 @@ We will also learn how to exercise features of the DBMS\_CLOUD package to link a
 In this lab, you will:
 * Create a database user and update the user's profile to grant more privileges
 * Log in as the user
-* Learn how to define object storage credentials for your autonomous database
 * Learn how to load data from object storage using Data Tools
 * Load data using a script
-
 
 ### Prerequisites
 
@@ -42,72 +40,23 @@ In this lab, you will:
 
 ## Task 1: Create a database user
 
-When you create a new data warehouse, you automatically get an account called ADMIN that is your super administrator user. In the real world, you will definitely want to keep your data warehouse data separate from the administration processes. Therefore, you will need to know how to create separate new users and grant them access to your data warehouse. This section will guide you through this process using the "New User" wizard within the Database Actions set of tools.
-
-For this workshop we need to create one new user.
-
-1. Navigate to the Details page of the Autonomous Database you provisioned in the "Provision an ADW Instance" lab. In this example, the database name is "My Quick Start ADW." Click the **Database Actions** button.
-
-    ![Click Database Actions](images/launchdbactions.png " ")
-
-You will automatically log in as the ADMIN user.
-
-2. On the Database Actions home page, click the **Database Users** card.
-
-    ![Database Users card of the Database Actions home page](images/2878884369.png " ")
-
-3.  You can see that your ADMIN user appears as the current user.  On the right-hand side, click the **+ Create User** button.
-
-    ![Create User button highlighted on the Database Users page](images/2878884398.png " ")
-
-5. The **Create User**  form will appear on the right-hand side of your browser window. Use the settings below to complete the form:
-
- - username: **MOVIESTREAM**
- - password: create a suitably strong password, and make note of it, as you will need to provide it in an upcoming step.
-
-    >**Note:** Rules for User Passwords: Autonomous Database requires strong passwords. User passwords user must meet the following default password complexity rules:
-
-    - Password must be between 12 and 30 characters long
-
-    - Must include at least one uppercase letter, one lowercase letter, and one numeric character
-
-    - Limit passwords to a maximum of 30 characters
-
-    - Cannot contain the username
-
-    - Cannot be one of the last four passwords used for the same username
-
-    - Cannot contain the double quote (") or exclamation (!) characters
-
-    There is more information available in the documentation about password rules and how to create your own password rules; see here: [Create Users on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-users-create.html#GUID-B5846072-995B-4B81-BDCB-AF530BC42847)
-
-- Toggle the **Graph** button to **On**.
-- Toggle the **Web Access** button to **On**.
-- Toggle the **OML** button to **On**.
-- In the upper right section of the Create User dialog, select **UNLIMITED** from the drop down menu for Quota on tablespace DATA.
-
-- Leave the **Password Expired** toggle button as off (Note: this controls whether the user is prompted to change their password when they next log in).
-- Leave the **Account is Locked** toggle button as off. 
-
-- Click **Create User** at the bottom of the form.
-
-    ![The Create User dialog](images/createuser2.png " ")
+[](include:adb-create-user.md)
 
 Now that you have created a user with several roles, let's see how easy it is to grant some more roles.
 
 ## Task 2: Update the user's profile to grant more privileges
 
-You learned how to use the Create User dialog to create a new user. You can also create and modify users using SQL. This is useful when you don't have access to the user interface or you want to run scripts to create/alter many users. Open the SQL worksheet as the ADMIN user to update the MOVIESTREAM user you just created.
+You learned how to use the Create User dialog to create a new user. You can also create and modify users using SQL. This is useful when you don't have access to the user interface or you want to run scripts to create/alter many users. Next, you will open the SQL worksheet as the ADMIN user to update the [](var:db_user_name) user you just created.
 
-1. The Database Users page now shows your new MOVIESTREAM user in addition to the ADMIN user. Click **Database Actions** in the upper left corner of the page, to return to the Database Actions launch page.
+1. The Database Users page now shows your new [](var:db_user_name) user in addition to the ADMIN user. Click **Database Actions** in the upper left corner of the page, to return to the Database Actions launch page.
 
-    ![Database Users page showing your new MOVIESTREAM user](images/see-new-moviestream-user.png " ")
+    ![Database Users page showing your new [](var:db_user_name) user](images/see-new-moviestream-user.png " ")
 
-2.  In the Development section of the Database Actions page, click the **SQL** card to open a new SQL worksheet:
+2.  In the **Development** section of the Database Actions page, click the **SQL** card to open a new SQL worksheet:
 
-    ![Click the SQL card.](images/3054194715.png " ")
+    ![Click the SQL card.](images/db-actions-click-sql-card.png " ")
 
-    This will open up a new window that should look something like the screenshot below. The first time you open SQL Worksheet, a series of pop-up informational boxes introduce you to the main features. Click Next to take a tour through the informational boxes.
+    This will open up a new window that should look something like the screenshot below. The first time you open SQL Worksheet, a series of pop-up informational boxes introduce you to the main features. Click **Next** to take a tour through the informational boxes.
 
     ![Screenshot of initial SQL Worksheet](images/Picture100-sql-worksheet.png " ")
 
@@ -127,81 +76,63 @@ You learned how to use the Create User dialog to create a new user. You can also
     </copy>
     ```
 
+    ![SQL Worksheet with code to grant more privileges and Run Script button highlighted](images/sql-worksheet-grant-more-privileges.png " ")
+
+4. Next, install the LiveLabs workshop utilities. These utilities make it easy to add data sets, which you will do in the next task. In the SQL Worksheet, paste in this code and run it using the **Run Script** button:
+
+    ```
+    <copy>
+    declare
+        l_git varchar2(4000);
+        l_repo_name varchar2(100) := 'common';
+        l_owner varchar2(100) := 'martygubar';
+        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
+    begin
+        -- get a handle to github
+        l_git := dbms_cloud_repo.init_github_repo(
+                    repo_name       => l_repo_name,
+                    owner           => l_owner );
+
+        -- install the package header
+        dbms_cloud_repo.install_file(
+            repo        => l_git,
+            file_path   => l_package_file,
+            stop_on_error => false);
+
+    end;
+    /
+    </copy>
+    ```
+
+    The script above is showcasing Autonomous Database's integration with GitHub. The **dbms\_cloud\_repo.install\_file** procedure allows you to easily install database code from GitHub repositories into your schema.
 
 ## Task 3: Log in as the MOVIESTREAM user
 
-Now you need to switch from the ADMIN user to the MOVIESTREAM user, before starting the next lab on data loading.
+Now you need to switch from the ADMIN user to the [](var:db_user_name) user, before starting the next task on data loading.
 
 1. In the upper right corner of the page, click the drop-down menu for ADMIN, and click **Sign Out**.
 
-    ![Drop down menu to sign out](images/sign-out-from-admin.png " ")
+    ![Drop down menu to sign out](images/sign-out-from-admin.png "Sign out")
 
 2. On the next screen, click **Sign in**.
 
-    ![Sign in dialog](images/click-sign-in.png " ")
+    ![Sign in dialog](images/click-sign-in.png "Sign in")
 
-3. Enter the username MOVIESTREAM and the password you defined when you created this user.
+3. Enter the username [](var:db_user_name) and the password you defined when you created this user.
 
-    ![Sign in dialog filled with username and password](images/2878885088.png " ")
+    ![Sign in dialog filled with username and password](images/db-actions-user-login.png "Log in")
 
-4. This will launch the Database Actions home page.
+4. This will launch the Database Actions Launchpad home page.
 
-    ![The Database Actions home page](images/dbactions-home.png " ")
+    ![The Database Actions Launchpad home page](images/dbactions-home.png "Database Actions")
 
+    In this example, the database name in the top right should say [](var:db_user_name).
 
 ## Task 4: Load data from files in Object Storage using Data Tools
 
 In this step we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
 
-1. Under **What do you want to do with your data?** select **LOAD DATA**, and under **Where is your data?** select **CLOUD STORAGE**, then click **Next**
-
-    ![Select Load Data, then Cloud Storage](images/loadfromstorage.png)
-
-2. You will need to set up a cloud storage location. A cloud storage location is an object storage bucket that contains your source data. Click **Done** to set up a location.
-
-    ![Add Cloud Storage location](images/goto_addcloudstorage.png)
-
-3. Fill in the cloud location details:
-
-    - In the **Name** field, enter 'MovieStreamGold'.
-
-        **Note:** Take care not to use spaces in the name.
-
-    - Select **No Credential** as this is a public bucket.
-
-    - Copy and paste the following URI into the URI + Bucket field:
-
-    ```
-    <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o
-    </copy>
-    ```
-
-    ![Add Cloud Storage location](images/addcloudstorage-details.png)
-
-    - Then click **Create**. This will return you to the **Load Cloud Object** page.
-
-3. From the MOVIESTREAMGOLD location, drag the **customer_contact** folder over to the right hand pane. Note that a dialog box appears asking if we want to load all the files in this folder to a single target table. In this case, we only have a single file, but we do want to load this into a single table. Click **OK**.
-
-4. Next, drag the **genre** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
-
-5. Click on the pencil icon for the **customer_contact** task to view the settings for this load task.
-
-    ![View settings for customer_contact load task](images/cc_viewsettings.png)
-
-6. Here we can see the list of columns and data types that will be created from the csv file. They all look correct, so click **Close** to close the settings viewer.
-
-7. Click on the pencil icon for the **genre** task to view its settings. This should show just two columns to be created - **GENRE_ID** and **NAME**. Click **Close** to close the settings viewer.
-
-8. Now click on the Play button to run the data load job.
-
-    ![Run the data load job](images/rundataload.png)
-
-    The job should take about 20 seconds to run.
-
-9. Check that both data load cards have green tick marks in them, indicating that the data load tasks have completed successfully.
-
-    ![Check the job is completed](images/loadcompleted.png)
+[](include:adb-load-public-db-actions-no-sales.md)
 
 
 ## Task 5: Load and link more data using SQL scripting
@@ -218,61 +149,49 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 
     ![Click on Development - SQL](images/gotosql.png)
 
-2. Copy and paste the following script into the Worksheet. This script will create PL/SQL procedures based on the lab-setup.sql file found in github.
+2. When you updated the user privileges, you installed LiveLab workshop utilities that make it easy to install data sets. Copy and paste the following script to install the rest of the required data sets:
 
-```
-<copy>
--- Install the setup file from github
-declare
-    l_owner     varchar2(100) := 'oracle-livelabs';
-    l_repo_name varchar2(100) := 'adb';
-    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab-setup.sql';
-BEGIN
-    dbms_cloud_repo.install_file(
-        repo => dbms_cloud_repo.init_github_repo(                 
-                 repo_name       => l_repo_name,
-                 owner           => l_owner
-                ),
-        file_path     =>     l_file_path,
-        stop_on_error => false
-  );
-END;
-/
-</copy>
-```
+    ```
+    <copy>
+    -- Run the PLSQL procedure that loads the rest of the dataset
+    BEGIN
+        workshop.add_dataset('ALL');
+    END;
+    /
+    </copy>
+    ```  
 
-Click the **Run Script** button to run the script.
+    Click the **Run Script** button to run the script.
+
+    > **Note** The script should take around 4-5 minutes to run as it uses a number of scripts to load and links a number of data files, and to generate additional views and tables used in later analysis steps.
+
+3.  Monitor the data load by running the following query:
+
+    ```
+    <copy>
+    select *
+    from workshop_log 
+    order by 1 asc;
+    </copy>
+    ```  
+    
+    Click **Run Script** to see the status:
+
+    ![Monitor the data load](images/load-data-review-log.png)
+
+    You can continue once the spatial index creation is complete. After creating the spatial index, the script will continue building a graph using a database job.
 
 
-3. A PL/SQL procedure called add_datasets was installed by the previous step.  Run that procedure to load the rest of the data.
-```
-<copy>
--- Run the PLSQL procedure that loads the rest of the dataset
-BEGIN
-    add_datasets;
-END;
-/
-</copy>
-```  
-
-Click the **Run Script** button to run the script.
-
-> **Note** The script should take around 4-5 minutes to run as it uses a number of scripts to load and links a number of data files, and to generate additional views and tables used in later analysis steps.
-
-10. When the script has completed, you should see a message like this in the Script Output window:
-
-    ![Script ran successfully](images/scriptcomplete.png)
-
-11. In the left hand pane, next to the Search box, click on the Refresh button to refresh the set of tables and views in the MOVIESTREAM user's schema. You should see a list of tables and views including **CUSTOMER**, **CUSTSALES** and **TIME** amongst others:
+4. In the left hand pane, next to the Search box, click on the Refresh button to refresh the set of tables and views in the [](var:db_user_name) user's schema. You should see a list of tables and views including **CUSTOMER**, **CUSTSALES** and **TIME** amongst others:
 
     ![Full list of tables and views](images/tablelist.png)
 
 This completes the Data Load lab. We now have a full set of structured tables loaded into the Autonomous Database from the MovieStream data lake. We will be working with these tables in later labs.
 
-Please *proceed to the next lab*.
+Please [*proceed to the next lab*](#next).
 
 ## Acknowledgements
 
 * **Author** - Mike Matthews, Autonomous Database Product Management
 * **Contributors** -  Rick Green, Principal Developer, Database User Assistance, Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Marty Gubar, March 2022
+* **Last Updated By/Date** - Marty Gubar, September 2022

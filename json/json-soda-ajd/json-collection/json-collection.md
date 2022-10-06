@@ -295,13 +295,13 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
     !["about this mac" menu item](./images/about-this-mac.png " ")
 
-    That will open a "details" panel. Intel Mac will show a line with *Processor:* and the name of an Intel processor. Apple Silicon Macs will show a line saying *Chip"* and a line such as "Apple M1 Pro".  If you have an Apple Silicon machine, you will NOT be able to run the rest of this lab.
+    That will open a "details" panel. Intel Mac will show a line with *Processor:* and the name of an Intel processor. Apple Silicon Macs will show a line saying *Chip"* and a line such as "Apple M1 Pro".  If you have an Apple Silicon machine, you will configure a terminal window with Rosetta to continue.
 
     ![processor details](./images/about-mac-details.png " ")
 
 2.	Open a command prompt or terminal window
 
-	On a Mac:
+	On a Mac with Intel Processor:
 
 	Open the Launchpad icon in the Dock (or press Command-space) and start typing "terminal" in the search box. Press enter to start terminal.
 
@@ -312,6 +312,20 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
     Press "Run" (Windows-R) and type "cmd.exe". Press enter or click "OK".
 
     ![open command prompt](./images/cmd-exe.png " ")
+
+	On a Mac with Apple Silicon (Open terminal using Rosetta):
+
+	Open the "Utilities" folder in Finder (Macintosh HD > Applications > Utilities). Right click on "Terminal" and choose "Duplicate". 
+	
+	![duplicate "terminal" in Utilities folder](./images/duplicate-terminal.png " ")
+
+	Rename the duplicate to "Rosetta Terminal". Now right-click on it and choose "Get Info".
+
+	!["get info" on terminal](./images/terminal-get-info.png " ")
+
+	In the info panel, check the box labelled "Open using Rosetta". Close the panel and double-click on the Rosetta Terminal to launch.
+
+	!["info panel with Rosetta check box](./images/rosetta-checkbox.png " ")
 
 	On a Linux machine, we'll assume you know how to open a terminal as this will vary with the distribution.
 
@@ -326,7 +340,7 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 4.	Copy **ONE** of the following set of commands, depending on your machine type:
 
-	For **Mac with Intel processor**:
+	For **Mac** with **Intel Processor** *or* **Apple Silicon**:
 
     ```
     <copy>
@@ -366,7 +380,7 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 	Note that if you close and reopen the terminal/command shell window before running mongoimport, you will need to run the PATH setting command again.
 
-	![install mongo tools](./images/mongo
+	![install mongo tools](./images/mongo-install.png " ")
 
 ## Task 6: Using the Database API for MongoDB
 
@@ -402,7 +416,7 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 2.  Store the MongoDB URI in an environment variable
 
-	Copy the following into Cloud Shell, making sure that you replace <yourURI> with the edited URI from the previous step. Make sure you keep the *single* or *double* quote characters (**Mac/Linux** or **Windows**) either side of the URI.
+	Copy the following into the terminal or command window, making sure that you replace <yourURI> with the edited URI from the previous step. Make sure you keep the *single* or *double* quote characters (**Mac/Linux** or **Windows**) either side of the URI.
 
     For **Mac** or **Linux**:
 
@@ -425,11 +439,11 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 
 3. 	Bulk load the data using mongoimport
 
-	mongoimport is a standard MongoDB tool which takes a file full of JSON documents and loads it to a MongoDB compatible database. Here we will use the tool to load a file currently situated on Object Storage into Autonomous Database. We could download the file to Cloud Shell, then upload it to the database using mongoimport, but we might as well do pipe it directly into mongoimport using standard output.
+	mongoimport is a standard MongoDB tool which takes a file full of JSON documents and loads it to a MongoDB compatible database. Here we will use the tool to load a file currently situated on Object Storage into Autonomous Database. We could download the file to our machine, then upload it to the database using mongoimport, but we might as well do pipe it directly into mongoimport using standard output.
 
 	The following command using 'curl -s' to fetch the file from object storage and send it to stdout. mongoimport then reads the data from stdin, connects to the database specified by $URI, and inserts the data into the collection 'products'.
 
-	Copy this into Cloud Shell, being sure to press "Enter" afterwards.
+	Copy this into your terminal or command window, being sure to press "Enter" afterwards.
 
 	For **Mac** or **Linux**:
 
