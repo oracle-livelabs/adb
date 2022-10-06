@@ -6,10 +6,6 @@
 
 This lab walks you through the steps to quickly provision an Autonomous Transaction Processing instance on Oracle Cloud. In this lab we will create web application which will take medical documents and store them in the Autonomous Database. Further we will also use Oracle Text to allow users to filter, search, and view those documents with one-click.
     [Video Tutorial](youtube:XRwbswu0jEk)
-<<<<<<< HEAD
-
-=======
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
 
 ## Task 1: Create a compartment
 
@@ -82,11 +78,6 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Create a new Workspace](./images/task-4/create-workspace.png " ")
     ![New Schema](./images/task-4/new-schema.png " ")
 
-<<<<<<< HEAD
-=======
-
-4. Create a Database User and new password for this user (Ex: CareClinic). Create Workspace.
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
 
 4. Create a Database User and new password for this user (Ex: CareClinic). Create Workspace.
 
@@ -120,15 +111,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Object Browser](./images/task-5/object-browser.png " ")
 
 
-<<<<<<< HEAD
 4. Upload the script [found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
 
     ![Navigate to SQL Scripts](./images/task-5/sql-scripts.png " ")
-=======
-5. Upload the script
-
-    
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
     ![Upload the SQL Script](./images/task-5/upload-sql-script.png " ")
 
 5. Once uploaded, run the script
@@ -145,30 +130,17 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-<<<<<<< HEAD
 8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). 
  After each load, verify that all columns were mapped correctly, and  click "View Table" once complete to return to object browser.
 
      >***Note:*** Do not create application - return to object browser
-=======
-9. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). After each load, verify that all columns were mapped correctly (as shown in step 10), and  click "View Table" once complete to return to object browser.
-
-     **Note:** Do not create application - return to object browser
-
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
 
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-1.png " ")
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-2.png " ")
 
-<<<<<<< HEAD
     ![Loading Data into Tables](./images/task-5/load-data-3.png " ")­­
     ![Loading Data into Tables](./images/task-5/data-load-complete.png " ")­­
 
-=======
-10. Repeat this step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
-
-    **Note:** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
 
 9. Repeat the previous step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
 
@@ -196,11 +168,8 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Create new application](./images/task-5/create-new-application.png " ")
 
 13. Give your application a name, delete dashboard page by clicking edit and deleting that entry. You can leave everything else as default. Click create application!
-<<<<<<< HEAD
 
      >***Note:*** Delete the dashboard page to ensure page numbers align with lab
-=======
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
 
     ![Name your application](./images/task-5/application-name.png " ")
 
@@ -293,7 +262,6 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
 
 13. Upload all 6 PDF documents ensuring that the **Patient Visit ID** matches the document name that is being uploaded. Repeat this step for all 6 PDF documents. 
-<<<<<<< HEAD
 
     | Patient Visit Id | File to upload |
     | -----------|-----------|
@@ -303,8 +271,6 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     | 292 - Vilma Marciek | Vilma\_Mariek\_Visit.pdf |
     | 553 - Oralla Gemlbett	 | Oralla\_Gemlbett\_Visit.pdf |
     | 3 - Pascale Greendale | Pascale\_Greendale\_Visit.pdf |
-=======
->>>>>>> 8f9b6bcd612968cc2929ff7af09c0ac63b73c96a
 
     
     ![Upload all 6 sample documents](./images/task-6/upload-samples.png " ")
