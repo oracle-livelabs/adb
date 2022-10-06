@@ -580,7 +580,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ```
     >***Note:*** Ensure that this new page is page number 7 in-order for the query to populate properly
 
-    ![Document Gist Creation](./images/task-8/document-gist-creation.png " ")
+    ![Document Gist Creation](./images/task-8/document-gist-create.png " ")
 
 3. On the new page, rename the Title of the body on the right pane to 
     **&P7_Title. Gist**.
