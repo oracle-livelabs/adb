@@ -441,6 +441,14 @@ micronaut {
 </copy>
 ```
 
+Or alternatively try pull the Oracle XE container image prior to running your tests using the `docker` command from a terminal window:
+
+```
+<copy>
+docker pull gvenzl/oracle-xe:latest
+</copy>
+```
+
 Note that to improve productivity when running tests you can start a shared test resources server by running the Gradle `startTestResourcesService` command which can later by stopped with `stopTestResourcesService`:
 
 ```bash
@@ -493,7 +501,7 @@ connection: keep-alive
 [{"name":"Dino"},{"name":"Baby Puss"},{"name":"Hoppy"}]
 ```
 
-## Task 6: Run the Micronaut application with Autonomous Database
+## Task 7: Run the Micronaut application with Autonomous Database
 
 To run the application and connect to the previously configured Autonomous Database instance you need to active the `oraclecloud` environment locally first by setting the `MICRONAUT_ENVIRONMENTS` environment variable, for example:
 

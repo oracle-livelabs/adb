@@ -32,14 +32,14 @@ Watch the video below for a quick walk through of the lab.
 - Find important customers with binning
 - Save queries as database views
 - Find local pizza shops using spatial analytics
-- Query complex JSON files 
+- Query complex JSON files
 - Combine all of the above!
 
 ### Prerequisites
 - This lab requires completion of Labs 1 and 2 in the Contents menu on the left.
 
 ## Task 1: Log into the SQL Worksheet
-Make sure you are logged into the SQL Worksheet as the [](var:db_user_name) user. If you are not logged in as [](var:db_user_name), then [follow these steps](/adb/movie-stream-story-lite/workshops/ocw-freetier/index.html?lab=load-data#Task3:LoginastheMOVIESTREAMuser) from the previous lab. 
+Make sure you are logged into the SQL Worksheet as the [](var:db_user_name) user. If you are not logged in as [](var:db_user_name), then [follow these steps](/adb/movie-stream-story-lite/workshops/ocw-freetier/index.html?lab=load-data#Task3:LoginastheMOVIESTREAMuser) from the previous lab.
 
 
 ## Task 2: Use filters and joins
@@ -50,8 +50,10 @@ You will use filters and joins in nearly every query you run. Let's take a look 
 
     To answer this question, the SQL query requires a *join* and *filters*:
     * The **GENRE** table is combined with the **CUSTSALES** table using an inner join. An inner join requires a match between columns across tables in order for a row to return ([check out the documentation](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/Joins.html#GUID-39081984-8D38-4D64-A847-AA43F515D460) for more information about joins). Here, the genre name is selected from the GENRE table when the genre_id's match across the **GENRE** and **CUSTSALES** tables.
-    * The **COUNT** function is used to accumulate the number of rows that match the condition
+    * The **COUNT** function is used to accumulate the number of rows that match the condition.
     * A filter is applied to the **DAY\_ID** column to only retrieve rows for *2020*. Because **DAY\_ID** field is a date field, the year is extracted using the **TO\_CHAR** function. Oracle SQL provides hundreds of useful functions for operating on data.
+
+    Copy this code snippet:
 
     ```
     <copy>SELECT
@@ -64,14 +66,14 @@ You will use filters and joins in nearly every query you run. Let's take a look 
     ORDER BY 1;</copy>
     ```
 
-    The result will look like this:
+    In the SQL Worksheet, paste in this code and run it using the **Run Statement** button. The result will look like this:
 
     ![inner join query](images/sql-views-by-genre.png "Views by genre")
 
     *elapsed: 1.427s*  (your time may vary)
-    
 
-2. Now simply run the query again
+
+2. Now simply run the query again.
 
     ![repeat inner join query](images/sql-views-by-genre-repeat.png "Views by genre")
 
@@ -94,7 +96,7 @@ There are certain queries that you will execute frequently. It can be really use
         ce.first_name,
         cs.short_name as customer_segment,
         ce.income_level,
-        case 
+        case
             when age > 75 then 'Silent Generation'
             when age between 57 and 75 then 'Boomer'
             when age between 41 and 56 then 'Gen X'
@@ -117,11 +119,11 @@ There are certain queries that you will execute frequently. It can be really use
     </copy>
     ```
 
-2. Let's look at sales across our customer segments. Copy and paste the following SQL into the worksheet and click **Run**:
+2. Let's look at sales across our customer segments. Copy and paste the following SQL into the worksheet and click **Run Script**:
 
     ```
     <copy>
-    select 
+    select
         customer_segment,
         round(sum(sales), 0)
     from sales_dashboard
@@ -130,7 +132,7 @@ There are certain queries that you will execute frequently. It can be really use
     </copy>
     ```
 
-    Notice that the complexity of the underlying view is abstracted to the user. 
+    Notice that the complexity of the underlying view is abstracted to the user.
 
     ![Customer Segment sales](images/sql-query-dashboard-view.png "Customer segment sales")
 
@@ -138,7 +140,7 @@ There are certain queries that you will execute frequently. It can be really use
 
 ## Task 4: Find our most important customers
 
-Let's now enrich our existing understanding of customer behavior by utilizing an *RFM analysis*. RFM is a very commonly used method for analyzing customer value. You will find it applied in general customer marketing, direct marketing, and retail sectors. 
+Let's now enrich our existing understanding of customer behavior by utilizing an *RFM analysis*. RFM is a very commonly used method for analyzing customer value. You will find it applied in general customer marketing, direct marketing, and retail sectors.
 
 An RFM analysis combines the following key metrics:
 
@@ -148,7 +150,7 @@ An RFM analysis combines the following key metrics:
 
 Customers will be categorized into 5 buckets measured (using the **NTILE** function) in increasing importance. For example, an RFM combined score of *551* indicates that the customer is in the highest tier of customers in terms of recent visits (*R=5*) and activity on the site (*F=5*), however the customer is in the lowest tier in terms of spend (M=1). Perhaps this is a customer that performs research on the site, but then decides to buy movies elsewhere!
 
-1. Let's use RFM to find customers in a High Spend and Frequency quintile and Low Recency quintile. In other words, let's find important customers (spend a lot and frequently come to the site) that haven't been around for a while. Copy and paste the following SQL into the worksheet and click **Run**:
+1. Let's use RFM to find customers in a High Spend and Frequency quintile and Low Recency quintile. In other words, let's find important customers (spend a lot and frequently come to the site) that haven't been around for a while. Copy and paste the following SQL into the worksheet and click **Run Script**:
 
     ```
     <copy>
@@ -175,10 +177,10 @@ Customers will be categorized into 5 buckets measured (using the **NTILE** funct
     )
     select *
     from rfm
-    where 
+    where
       rfm_monetary = 5
       and rfm_frequency = 5
-      and rfm_recency <= 2 
+      and rfm_recency <= 2
     order by rfm_monetary desc, rfm_recency asc
     fetch first 20 rows only;
     </copy>
@@ -189,24 +191,24 @@ Customers will be categorized into 5 buckets measured (using the **NTILE** funct
     These are customers that require some tender loving care :).
 
 ## Task 5: Find pizza shops near our important customers
-One of the ways to take care of our important customers is to make them a specialized offer. Everyone loves pizza, so MovieStream has partnered with pizza shops as part of a promotion. 
+One of the ways to take care of our important customers is to make them a specialized offer. Everyone loves pizza, so MovieStream has partnered with pizza shops as part of a promotion.
 
-It doesn't make sense to make a promotional offer if the pizza shop is too far away. We'll Autonomous Database spatial analytics to not only find the nearest pizza shop but also the distance to the shop's location. 
+It doesn't make sense to make a promotional offer if the pizza shop is too far away. We'll use Autonomous Database spatial analytics to not only find the nearest pizza shop but also the distance to the shop's location.
 
 To accomplish this task, we'll take advantage of two of the many Autonomous Database spatial functions that are offered: **nearest neighbor** and **nearest neighbor distance**. You can check out the [Oracle Spatial and Graph Developer's Guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/spatl/index.html) for more details about spatial analytics.
 
-1. Use spatial SQL analytic functions to find the nearest pizza locations and their distance for selected important customers. CCopy and paste the following SQL into the worksheet and click **Run**:
+1. Use spatial SQL analytic functions to find the nearest pizza locations and their distance for selected important customers. Copy and paste the following SQL into the worksheet and click **Run**:
 
     ```
     <copy>
-    SELECT 
-        a.cust_id, 
+    SELECT
+        a.cust_id,
         a.first_name,
         a.city as customer_city,
         a.state_province customer_state,
-        b.chain, 
-        b.address as pizza_address, 
-        b.city as pizza_city, 
+        b.chain,
+        b.address as pizza_address,
+        b.city as pizza_city,
         b.state as pizza_state,
         round( sdo_nn_distance(1), 1 ) distance_km
     FROM customer_contact a, pizza_location  b
@@ -222,35 +224,36 @@ To accomplish this task, we'll take advantage of two of the many Autonomous Data
 
     The **sdo\_nn** Nearest Neighbor function takes a few parameters:
     * a geometry object for both the customer and pizza location (*latlon\_to\_geometry* is a custom function that returns a geometry for a latitude and longitude)
-    * the number of results to return (e.g. 1) 
+    * the number of results to return (e.g. 1)
     * the unit of measure to return (e.g. kilometers)
     * an identifier for the nearest neighbor (e.g. 1)
 
     The **sdo\_nn\_distance** function returns the distance for that nearest neighbor. The value "1" points to the identifier used by the nearest neighbor function.
 
     You will see a result similar to the following:
-    
+
     ![Nearby Pizza Shops](images/sql-query-nearest-pizza.png "Nearby pizza shops")
 
-    Notice a couple of things. First, the nearest pizza location is not necessarily in the same city; the nearest neighbor is using the actual distance. Second, it's clear that this is not the right promotion for all customers. Unless Reba wants to travel over 200km for a slice! 
+    Notice a couple of things. First, the nearest pizza location is not necessarily in the same city; the nearest neighbor is using the actual distance. Second, it's clear that this is not the right promotion for all customers. Unless Reba wants to travel over 200km for a slice!
 
 ## Task 6: What movies are people watching near me?
 In the MovieStream application, there is a shelf that lists movies watched by people near you. In order to answer this question, three types of data will be combined:
 
-* JSON data - the movie data is in JSON format stored on Oracle Object Storage. The movie data contains complex fields like lists of genres, cast members and awards.
-* Spatial data - customer locations are used to find people who are nearby
-* Sales data - fact table that captures every movie watched by each customer
+* JSON data - The movie data is in JSON format stored on Oracle Object Storage. The movie data contains complex fields like lists of genres, cast members and awards.
+* Spatial data - Customer locations are used to find people who are nearby.
+* Sales data - Fact table that captures every movie watched by each customer.
 
 Let's break the query into multiple parts:
 
-1. Review movie JSON document
-    MovieStream's movie data is stored on Oracle Object Storage in a semi-structured format known as *JSON*. JSON's major benefit is that it is a self-describing, open and flexible format. Each JSON record (or document) has a set of attributes which can be both simple (basic key value pairs) or complex (e.g. arrays of objects). Not all JSON records need to have identical schemas - a feature that simplifies extensibility. It was derived from JavaScript, but many modern programming languages include code to generate and parse JSON-format data. 
+1. Review movie JSON document:
 
-    Let's take a look at a movie document. Each movie has simple fields like "title", "opening_date" and "budget. Movie documents also have complex fields: a crew associated with it and that crew is comprised of jobs, such as "producer," "director," "writer," along with the names of the individuals. Each movie also has a list of award nominations and wins. An example of how this information is organized is shown below:
+    MovieStream's movie data is stored on Oracle Object Storage in a semi-structured format known as *JSON*. JSON's major benefit is that it is a self-describing, open and flexible format. Each JSON record (or document) has a set of attributes which can be both simple (basic key value pairs) or complex (e.g. arrays of objects). Not all JSON records need to have identical schemas - a feature that simplifies extensibility. It was derived from JavaScript, but many modern programming languages include code to generate and parse JSON-format data.
+
+    Let's take a look at a movie document. Each movie has simple fields like "title", "opening_date" and "budget". Movie documents also have complex fields: a crew associated with it and that crew is comprised of jobs, such as "producer," "director," "writer," along with the names of the individuals. Each movie also has a list of award nominations and wins. An example of how this information is organized is shown below:
 
     ![JSON document](images/json-movie-doc.png "Movie JSON document example")
-    
-2. An Autonomous Database external table **JSON\_MOVIE\_DATA\_EXT** was defined over the movie file on object storage. The data is not stored in Autonomous Database; the data is retrieved at query time from object storage. 
+
+2. An Autonomous Database external table **JSON\_MOVIE\_DATA\_EXT** was defined over the movie file on object storage. The data is not stored in Autonomous Database; the data is retrieved at query time from object storage.
 
     Query the movie data using simple SQL by copying and pasting the following in SQL worksheet:
 
@@ -261,18 +264,18 @@ Let's break the query into multiple parts:
     where rownum < 10;
     </copy>
     ```
-    
-    Your results will look similar to the following:
+
+    Your results will look similar to the following, after you drag the **doc** column header wider to see more data:
 
     ![Query JSON doc](images/json-query-doc.png "Query JSON doc")
 
     As you can see, the data is shown in its native JSON format; that is, there are no columns in the table for each identifier (movie_id, sku, list price, and more). So how can we query this table if there is only one column?
 
-3. Use the dot notation within Oracle SQL query to convert the content above into a more normal looking table containing columns and rows. This approach is known as Simple Dot Notation and it looks very similar to the way we have constructed previous queries. 
+3. Use the dot notation within Oracle SQL query to convert the content above into a more normal looking table containing columns and rows. This approach is known as Simple Dot Notation and it looks very similar to the way we have constructed previous queries.
 
     ```
     <copy>
-    select 
+    select
         j.doc.movie_id,
         j.doc.title,
         j.doc.year,
@@ -282,7 +285,7 @@ Let's break the query into multiple parts:
     where rownum < 10;
     </copy>
     ```
-    
+
     The structured result is much easier to read and analyze:
 
     ![Using dot notation](images/json-query-dot-notation.png "Using dot notation")
@@ -296,13 +299,13 @@ Let's break the query into multiple parts:
 
     ```
     <copy>
-    SELECT 
+    SELECT
         a.cust_id,
         a.first_name,
         a.city,
-        b.cust_id as neighbor, 
+        b.cust_id as neighbor,
         b.first_name as neighbor_name,
-        b.city as neighbor_city, 
+        b.city as neighbor_city,
         b.state_province as neighbor_state,
         round( sdo_nn_distance(1), 1 ) distance_km
     FROM customer_contact a, customer_contact  b
@@ -319,12 +322,12 @@ Let's break the query into multiple parts:
 
     ![Nearest 20 customers](images/sql-query-nearest-20-customers.png "Nearest 20 customers")
 
-5. Find the movies that our neighbors are watching! Combine the movie details (JSON) for our nearest neighbors (spatial) with sales activity to get the 20 most popular movies. Copy and paste the following SQL into the SQL Worksheet and click **Run**:
+5. Find the movies that our neighbors are watching! Combine the movie details (JSON) for our nearest neighbors (spatial) with sales activity to get the 20 most popular movies. Copy and paste the following SQL into the SQL Worksheet and click **Run Statement**:
 
     ```
     <copy>
     with neighbors as (
-        SELECT 
+        SELECT
             b.cust_id -- the neighbor
         FROM customer_contact a, customer_contact  b
         WHERE a.cust_id = 1059376
@@ -336,7 +339,7 @@ Let's break the query into multiple parts:
             1 ) = 'TRUE'
     ),
     neighbors_movies as (
-        select 
+        select
             movie_id,
             count(*) as popularity    
         from custsales c, neighbors n -- combine sales activity with neighbors' movies
@@ -357,12 +360,12 @@ Let's break the query into multiple parts:
     </copy>
     ```
     Your result should look similar to the following:
-    
+
     ![Query across data types](images/sql-query-spatial-json-sales.png "Query across data types")
 
     MovieStream will feed these results into their web application - providing a tailored page to each customer.
 
-6. Close your Oracle Database Actions tab
+6. Close your Oracle Database Actions tab.
 
     Now that you're done running queries with SQL Worksheet, close your Database Actions browser tab by clicking the **x** next to the tab name.
 
@@ -374,4 +377,4 @@ You may now [proceed to the next lab](#next).
 ## **Acknowledgements**
 
 - **Authors** - Marty Gubar, Oracle Autonomous Database Product Management
-- **Last Updated By/Date** - September 2022
+- **Last Updated By/Date** - Marty Gubar, September 2022
