@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Important Tools for Everyone Using Oracle Autonomous Database",
+    "workshoptitle": "Self-service Tools for Everyone Using Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {"webtransforms": "../using-adb-tools/ocw-web-transforms.md"},
     "tutorials": [

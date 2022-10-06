@@ -186,7 +186,8 @@ Below are the four files that you will be using during this part of the workshop
 9. This has allowed the data loading wizard to discover that your data file contains two columns of data: **COUNTRY** and **CONTINENT**. The default table name has based derived from the filename. Click the drop-down menu under **Option.**
   ![Table options](images/option.png)
 10. Notice that various operations are supported. For this part of the lab, accept the default option,  **Create Table**.
-  > **Note:**  If you look back at the previous section where you loaded the movie sales data for 2020, you will remember that you had to create your movie\_sales\_fact table before you could load your data files. This wizard creates the table for you during the data load process! Notice also that the wizard has automatically mapped the columns. Column mapping looks sensible, both in terms of column names and data types.
+
+  > **Note:**  This wizard creates the table for you during the data load process! Notice also that the wizard has automatically mapped the columns. Column mapping looks sensible, both in terms of column names and data types.
 
 11. Click **Close**  in the bottom right to return to the Data Load card and then click the **green button** in the menu panel to start the Data Load job.
   ![Run data load job](images/green-button.png)
@@ -197,9 +198,8 @@ Now let's inspect the tables that were automatically created during the data loa
 
 ### Inspect Your New Data
 
-12. To access the data explorer tool, click the **Data Load** breadcrumb at the upper left of your screen:
-  ![Navigate to Data Load home page](images/click-data-load.png)
-13. Click the **Catalog** button on the left navigation pane. Then click the **EXPLORE** card on the main data loading page.
+12. You can use the Catalog tool to view the entities in your schema. You can use the navigation menu on the left side to switch between the various Data tools available.
+13. Click the **Catalog** button on the left navigation pane.
   ![Launch the Catalog tool](images/launch-catalog.png)
 14. This brings up a list of Entities in this schema of the Autonomous Database. At this stage, locate the **COUNTRIES** table you just loaded.
   ![Data Catalog explore tables](images/explore-tables.png)
