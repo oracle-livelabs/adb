@@ -186,6 +186,7 @@ Below are the four files that you will be using during this part of the workshop
 9. This has allowed the data loading wizard to discover that your data file contains two columns of data: **COUNTRY** and **CONTINENT**. The default table name has based derived from the filename. Click the drop-down menu under **Option.**
   ![Table options](images/option.png)
 10. Notice that various operations are supported. For this part of the lab, accept the default option,  **Create Table**.
+
   > **Note:**  This wizard creates the table for you during the data load process! Notice also that the wizard has automatically mapped the columns. Column mapping looks sensible, both in terms of column names and data types.
 
 11. Click **Close**  in the bottom right to return to the Data Load card and then click the **green button** in the menu panel to start the Data Load job.
