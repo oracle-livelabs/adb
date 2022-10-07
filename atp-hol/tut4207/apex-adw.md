@@ -42,10 +42,11 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
     
     ![Give new Database a preferred Display Name](./images/task-3/input-display-name.png " ")
+    ![Configure Database](./images/task-3/configure-db.png " ")
 
 5.  Create the ADMIN password for the DB, following the database password requirements. Leave everything else as default
 
-    **Note:** Make sure to save this password, you will need it later in this lab
+    >***Note:*** Make sure to save this password, you will need it later in this lab
 
     
     ![Set Admin Password](./images/task-3/set-password.png  " ")
@@ -66,7 +67,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Navigate to Oracle APEX](./images/task-4/open-apex.png " ")
 
-2.  Enter ADMIN password (Step 5) and sign in
+2.  Enter ADMIN password (Task 2 Step 5) and sign in
 
     
     ![Open the Admin Console](./images/task-4/admin-console.png " ")
@@ -80,7 +81,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 4. Create a Database User and new password for this user (Ex: CareClinic). Create Workspace.
 
-    **Note:** Make sure to save this database user/password, you will need it later
+    >***Note:*** Make sure to save this database user/password, you will need it later
 
     
     ![Create a new Database User](./images/task-4/create-database-user.png " ")
@@ -104,58 +105,72 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 3. Inside the SQL Workshop > Object Browser to view any objects in the database. 
 
-    **Note:** It should be empty i.e no tables currently in the database. Uploading a DDL script will create the table structure you need, and then you can inset the data from .csv files
+    >***Note:*** It should be empty i.e no tables currently in the database. Uploading a DDL script will create the table structure you need, and then you can inset the data from .csv files
 
     
     ![Object Browser](./images/task-5/object-browser.png " ")
 
 
-5. Upload the script
+4. Upload the script [found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
 
-    
+    ![Navigate to SQL Scripts](./images/task-5/sql-scripts.png " ")
     ![Upload the SQL Script](./images/task-5/upload-sql-script.png " ")
 
-6. Once uploaded, run the script
+5. Once uploaded, run the script
 
     
     ![Run the SQL Script](./images/task-5/run-script.png " ")
 
-7. Ensure the statements are processed with no errors 
+6. Ensure the statements are processed with no errors 
     
     ![Script Processed](./images/task-5/script-processed.png " ")
 
-8. Return to the object browser. You are now able to view all 8 tables that were just created in the object browser. Now you will need to upload the data into them
+7. Return to the object browser. You are now able to view all 8 tables that were just created in the object browser. Now you will need to upload the data into them
 
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-9. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). After each load, verify that all columns were mapped correctly (as shown in step 10), and  click "View Table" once complete to return to object browser.
+8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). 
+ After each load, verify that all columns were mapped correctly, and  click "View Table" once complete to return to object browser.
 
-     **Note:** Do not create application - return to object browser
+     >***Note:*** Do not create application - return to object browser
 
-
-    
     ![Load Data into HealthCare Facility Table](./images/task-5/load-data-1.png " ")
+    ![Load Data into HealthCare Facility Table](./images/task-5/load-data-2.png " ")
 
-10. Repeat this step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
+    ![Loading Data into Tables](./images/task-5/load-data-3.png " ")­­
+    ![Loading Data into Tables](./images/task-5/data-load-complete.png " ")­­
 
-    **Note:** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
 
-    ![Loading Data into Tables](./images/task-5/load-data-2.png " ")­­
+9. Repeat the previous step for 5 more tables. You must first select the table from the left pane, then choose load data. All settings can be left as default. (Exclude the **PATIENT\_DOCUMENTS** and the **PATIENT\_INSURANCE** tables)
 
-11. There should now be data in 6/8 tables
+    >***Note:*** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
+
+    | Table name | File to upload |
+    | -----------|-----------|
+    | Healthcare Facilities | HEALTHCARE\_FACILITY\_DATA\_TABLE.csv |
+    | LAB | LAB\_DATA\_TABLE.csv |
+    | PATIENT | PATIENT\_DATA\_TABLE.csv |
+    | PATIENT_DOCUMENTS | Do not upload |
+    | PATIENT_INSURANCE | Do not upload |
+    | PATIENT_LAB | PATIENT\_LAB\_DATA\_TABLE.csv |
+    | PATIENT_VISIT | PATIENT\_VISIT\_DATA\_TABLE.csv |
+    | PRACTITIONER | PRACTITIONER\_DATA\_TABLE.csv |
+    
+10. There should now be data in 6/8 tables
 
     
     ![View Data](./images/task-5/view-data.png " ")
 
-12. Let's create a new application using the Healthcare\_Facility Table
+11. Let's create a new application using the Healthcare\_Facility Table
 
     
     ![Create new application](./images/task-5/create-new-application.png " ")
 
 13. Give your application a name, delete dashboard page by clicking edit and deleting that entry. You can leave everything else as default. Click create application!
 
-    
+     >***Note:*** Delete the dashboard page to ensure page numbers align with lab
+
     ![Name your application](./images/task-5/application-name.png " ")
 
 14. Run the application and sign in with your database user (Step 11)!
@@ -172,7 +187,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 1. Create new Page!
 
-    **Note:** This is on version APEX 22.1, it may look slightly different to the current version
+    >***Note:*** This is on version APEX 22.1, it may look slightly different to the current version
 
     
     ![Create new application page](./images/task-6/new-page.png " ") 
@@ -184,7 +199,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 3. Select **Include Form Page** and give both the classic report and form page unique names. Select the source for this report as the **PATIENT\_DOCUMENTS** table
 
-    **Note:** Its important to note that the report and form are being created on pages 5 and 6 respectively. These will be referenced later in this lab.
+    >***Note:*** Its important to note that the report and form are being created on pages 5 and 6 respectively. These will be referenced later in this lab.
 
     
     ![Set Classic Report Attributes](./images/task-6/classic-report-attributes.png " ")
@@ -199,9 +214,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Hide Report Columns](./images/task-6/hide-report-columns.png " ")
 
-6. Select the DOCUMENT Column and in the right side panel change the **Mime Type**, **Filename Column**, and **Last Updated Column** to match the columns in our **Patient\_Documents** table!
+6. Select the DOCUMENT Column and in the right side panel change the **Mime Type**, **Filename Column**, and **Last Updated Column** to match the columns in our **Patient\_Documents** table
 
-    **Note:** Don't forget to save!
+    >***Note:*** You can use the filter under "Save" to filter for "BLOB Attributes" and don't forget to save!
 
     
     ![Update Document Column for Report](./images/task-6/update-document-column.png " ")
@@ -211,9 +226,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Change Page](./images/task-6/change-page.png " ")
     ![Hide Form Columns](./images/task-6/hide-form-columns.png " ")
 
-8. Select the **P6\_Documents** page item, and change the **MIME Type Column**, **Filename Column**, and **BLOB Last Updated Column**, and Save. 
+8. Select the **P6\_Documents** page item, and change the **MIME Type Column**, **Filename Column**, and **BLOB Last Updated Column**, and Save. Again, you can filter for "Settings" in the right pane.
 
-    **Note:** You will need to type these out to match exactly to the database columns.
+    >***Note:*** You will need to type these out to match exactly to the database columns.
 
     
     ![Update Document Column for Form](./images/task-6/update-document-column-form.png " ")
@@ -236,7 +251,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 11. Go back to Page 5 and run the application 
 
-    **Note:** Modal Pages cannot be run directly from the page designer, for example Page 6
+    >***Note:*** Modal Pages cannot be run directly from the page designer, for example Page 6
 
     
     ![Run the application to view changes](./images/task-6/view-application-changes.png " ")
@@ -247,6 +262,15 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
 
 13. Upload all 6 PDF documents ensuring that the **Patient Visit ID** matches the document name that is being uploaded. Repeat this step for all 6 PDF documents. 
+
+    | Patient Visit Id | File to upload |
+    | -----------|-----------|
+    | 651 - Bettye Wartnaby	 | Bettye\_Wartnaby\_Visit.pdf |
+    | 430 - Shelli Purslow | Shelli\_Purslow\_Visit.pdf |
+    | 757 - Christye McCarrick | Christye\_McCarrick\_Visit.pdf |
+    | 292 - Vilma Marciek | Vilma\_Mariek\_Visit.pdf |
+    | 553 - Oralla Gemlbett	 | Oralla\_Gemlbett\_Visit.pdf |
+    | 3 - Pascale Greendale | Pascale\_Greendale\_Visit.pdf |
 
     
     ![Upload all 6 sample documents](./images/task-6/upload-samples.png " ")
@@ -453,7 +477,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 21. Repeat for the Gist Table. 
 
-    **Note:** Run each of the 3 statements individually
+    >***Note:*** Run each of the 3 statements individually
 
     ```
      <copy>
@@ -479,7 +503,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 22. Repeat for the Filtered Docs Table
 
-    **Note:** Run each of the 3 statements individually
+    >***Note:*** Run each of the 3 statements individually
 
     ```
      <copy>
@@ -507,7 +531,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 23. Finally repeat for the Full Themes tables
     
-    **Note:** Run each of the 3 statements individually
+    >***Note:*** Run each of the 3 statements individually
 
     ```
     <copy>
@@ -553,13 +577,13 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 	select * from gists where query_id = :P7_QUERY_ID;
     </copy>
     ```
-    **Note:** Ensure that this new page is page number 7 in-order for the query to populate properly
+    >***Note:*** Ensure that this new page is page number 7 in-order for the query to populate properly
 
-    ![Document Gist Creation](./images/task-8/document-gist-creation.png " ")
+    ![Document Gist Creation](./images/task-8/document-gist-create.png " ")
 
-3. On the new page, rename the Title of the content body on the right pane to 
+3. On the new page, rename the Title of the body on the right pane to 
     **&P7_Title. Gist**.
-    Create two page items, **P7\_QUERY\_ID** and **P7\_TITLE**, by right-clicking on the content body region, and selecting **Create Page Item**
+    Create two page items, **P7\_QUERY\_ID** and **P7\_TITLE**, by right-clicking on the body region, and selecting **Create Page Item**
 
     
     ![Adding Page New Items](./images/task-8/page-7-gist-1.png " ")
@@ -574,7 +598,9 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Create a Virtual Column](./images/task-8/create-virtual-column.png " ")
 
-6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively. Note: Use the menu to the right of the text box makes this easier.
+6. While Selecting the new virtual column you created, change the Heading to **Document Gist**. Under Link, click **No Link Defined** to define a new link for this virtual column. Set the link to page 7. Under Set Items, ensure you add both **P7\_Query\_ID** and **P7\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively. 
+
+    >***Note:*** Use the menu to the right of the text box makes this easier.
 
     
     ![Creating Column Link](./images/task-8/gist-column-link.png " ")
@@ -625,7 +651,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Create a Virtual Column](./images/task-8/second-virtual-column.png " ")
 
-15. Make changes similar to before in step 6. Set the link to page 8. Under Set Items, ensure you add both **P8\_Query\_ID** and **P8\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively.
+15. Make changes similar to before in step 6. Change heading to "Full Text". Set the link to page 8. Under Set Items, ensure you add both **P8\_Query\_ID** and **P8\_TITLE**, with values of **\#ID\#** and **\#TITLE\#** respectively.
 
     
     ![Create Column Link](./images/task-8/virtual-column-link.png " ")
