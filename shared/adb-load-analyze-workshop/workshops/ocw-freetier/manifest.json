@@ -31,7 +31,7 @@
             "title": "Lab 1: Provision an Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
+            "filename": "../../provision-database/adb-provision-moviestream.md"
         },
         {
             "title": "Lab 2: Load Data from Object Storage Public Buckets",
