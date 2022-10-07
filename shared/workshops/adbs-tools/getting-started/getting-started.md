@@ -89,11 +89,11 @@ For this workshop, we need to create one new user.
 7.  Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first (Granted) and third columns (Default):
   > **Note:** Ensure that for each role the **Granted** and **Default** options are selected.
 
-    1. **DWROLE**
-    2. **DATA\_TRANSFORM\_USER**
-    <if type="BETA">
-    3. **ADPBETA**
-    </if>
+  <if type=“BETA”>
+  - ADPBETA
+  </if>
+  - DATA\_TRANSFORM\_USER
+  - DWROLE
 
   ![Grant roles to user](images/dwrole.png)
 
