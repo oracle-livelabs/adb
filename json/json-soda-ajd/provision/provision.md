@@ -6,6 +6,9 @@ This lab walks you through the steps to get started using the Oracle Autonomous 
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Provision an Autonomous JSON Database](videohub:1_50xsm121)
+
 ### Objectives
 
 In this lab, you will:
