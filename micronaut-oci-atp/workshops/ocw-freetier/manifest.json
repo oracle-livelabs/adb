@@ -1,0 +1,45 @@
+{
+    "workshoptitle": "Building Java Cloud Applications with Micronaut and OCI",
+    "help": "livelabs-help-oci_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to building Micronaut applications with Autonomous database.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Getting Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Setup Oracle Autonomous Database",
+            "description": "Setup Autonomous Database",
+            "filename": "../../provision/provision.md"
+        },
+        {
+            "title": "Lab 2: Create the Micronaut Application",
+            "filename": "../../create/create.md"
+        },
+        {
+            "title": "Lab 3: Build the Micronaut Application",
+            "filename": "../../micronaut/micronaut.md"
+        },
+        {
+            "title": "Lab 4: Build a GraalVM Native Image",
+            "filename": "../../graalvm/nativeimage.md"
+        },
+        {
+            "title": "Lab 5: Deploy to Oracle Cloud (Optional)",
+            "filename": "../../deploy/deploy.md"
+        },
+        {
+            "title": "Lab 6: Terminate and Destroy the OCI Resources (Optional)",
+            "filename": "../../destroy/destroy.md"
+        },
+        {
+            "title": "Oracle CloudWorld 2022 - Get Help",
+            "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
+    ]
+}
