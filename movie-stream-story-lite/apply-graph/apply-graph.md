@@ -4,11 +4,14 @@
 
 #### Video Preview
 
-[](youtube:6ik6ahjmYQQ)
+<!--[](youtube:6ik6ahjmYQQ)-->
 
 In this lab, you will use Oracle Graph analytics to detect and create customer communities based on movie viewing behavior. Once you've created communities - make recommendations based on what your community members have watched.
 
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Use graph analytics to recommend movies](videohub:1_ret5ywcn)
 
 ### About graph
 When you model your data as a graph, you can run graph algorithms to analyze connections and relationships in your data. You can also use graph queries to find patterns in your data, such as cycles, paths between vertices, anomalous patterns, and others. Graph algorithms are invoked using a Java or Python API, and graph queries are run using PGQL (Property Graph Query Language, see [pgql-lang.org](https://pgql-lang.org)).
