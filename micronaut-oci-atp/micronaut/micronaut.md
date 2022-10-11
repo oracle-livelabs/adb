@@ -17,6 +17,9 @@ If you were unable to setup the Autonomous Database and necessary cloud resource
 
 Estimated Lab Time: 30 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build a Micronaut Application](videohub:1_xbozsv9k)
+
 ### Objectives
 
 In this lab you will:
