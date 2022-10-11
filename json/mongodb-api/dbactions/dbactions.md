@@ -1,14 +1,13 @@
-# Interacting with JSON Documents through Database Actions
+# Interact with JSON Documents through Database Actions
 
 ## Introduction
 
 This lab will use JSON and SQL in Database Actions from the Autonomous JSON Database page. It shows how we can swap between a document-centric model (MongoDB and Oracle's JSON tool in Database Actions), and a relational model using Oracle's SQL tool in Database Actions.
 
-Watch this video for an overview of how to interact with JSON Documents through database actions.
-
-[This video shows an overview of the steps in this lab.](youtube:pk7YAD-OZBQ)
-
 Estimated Time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Interact with JSON Documents through Database Actions](videohub:1_725rhrqf)
 
 ### Objectives
 
@@ -54,7 +53,7 @@ In this lab, you will:
 <if type="freetier">
     ![Check the workload type on the left.](./images/compartments.png " ")
 </if>
-    ![](./images/workload-type.png " ")
+    ![set workload type](./images/workload-type.png " ")
 
 <if type="freetier">
    > **Note:** Avoid the use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services.
@@ -62,12 +61,12 @@ In this lab, you will:
 
 6. You should see your database **JSONDB** listed in the center. Click on the database name "JSONDB".
 
-    ![](./images/database-name.png " ")
+    ![database name](./images/database-name.png " ")
 
 
 7.  On the database page, choose __Database Actions__.
 
-    ![](./images/dbactions-button.png " ")
+    ![choose database actions from the menu](./images/dbactions-button.png " ")
 
 8.  You are now in Database Actions.
 
@@ -77,20 +76,20 @@ In this lab, you will:
     * SQL - allows you to work with a relational, **SQL-based** view of your data
     * Charts - generate charts over data in Autonomous Database
 
-    ![](./images/dbactions-menu.png " ")
+    ![menu for database actions](./images/dbactions-menu.png " ")
 
 
 ## Task 2: JSON in Database Actions
 
 1. You should be in the Database Actions panel. Click on the **JSON** card
 
-    ![](./images/dbactions-menu-json.png " ")
+    ![choose JSON](./images/dbactions-menu-json.png " ")
 
     When you first enter JSON, you will get a tour of the features. We recommend you step through it, but you can skip the tour by clicking on the "X". The tour is available at any time by clicking the tour button.
 
-    ![](./images/json-tour-2.png " ")
+    ![JSON tour](./images/json-tour-2.png " ")
 
-    After the tour, you should see the 'emp' collection you created in Mongo Shell on the left. If it's not shown, click the refresh circle.
+    After the tour, you should see the 'emp' collection you created in Mongo Shell on the left. If it's not shown, click the refresh circle. Then click on the 'emp' collection.
 
     The left-hand side shows collections. The upper right allows us to run queries, and the lower right shows the documents found by that query. An empty search - {} - will show all documents, which is what you should be looking at now. You can confirm using the scroll bar that there are three documents for Blake (Intern), Smith and Miller (Programmers).
 
@@ -102,19 +101,19 @@ In this lab, you will:
     </copy>
     ```
 
-    ![](./images/job-programmer.png " ")
+    ![query for job is programmer](./images/job-programmer.png " ")
 
     We can see only two records are fetched as a result of that search. Let's give Miller a pay rise. Click on the "Edit" button to the right of the Miller document:
 
-    ![](./images/edit-miller.png " ")
+    ![edit Miller document](./images/edit-miller.png " ")
 
     That drops us into a JSON editor. In the JSON Document Content, change Miller's salary to 80000 and click the "Save" button. If you make an error which would produce invalid JSON, the editor will not let you save the content.
 
-    ![](./images/miller-salary.png " ")
+    ![update salary for Miller](./images/miller-salary.png " ")
 
     We can now see that Miller's salary is 80000. Let's add another document to the collection. Click on the "New JSON Document" button immediately below the collection name on the top panel.
 
-    ![](./images/new-document-button.png " ")
+    ![add a new document](./images/new-document-button.png " ")
 
 
     That will bring up the JSON editor again, this time with an empty document. Copy the following document in:
@@ -131,17 +130,19 @@ In this lab, you will:
 
     Since there's already an empty document in there, make sure you don't end up with two sets of braces (curly brackets) around the JSON. Click "Create" when done.
 
-    ![](./images/new-jones.png)
+    ![add a new document - details](./images/new-jones.png)
 
     Click the "Clear" button for the existing search, then run another empty search to see all documents.
 
     **Caution:** the same "trashcan" icon is used in two places in the JSON workshop. To the right of "add clause", it means "Clear the current search". On the top row, it means "Delete all documents found by the current query". Don't delete your documents by accident!
 
+    ![clear button and delete documents button](./images/empty-search.png " ")
+
     Finally, let's sort the results of our query, in descending order of salary (so highest first).
 
     On the right, click "Add Clause" and choose "$orderby". This will guide us through adding an order-by clause to our (currently empty) query.
 
-    ![](./images/order-by.png " ")
+    ![choose order by from the dropdown](./images/order-by.png " ")
 
     That will change our query to have two parts - a $query part and a $orderby part. The $query part is the default if neither is specified.
 
@@ -149,13 +150,13 @@ In this lab, you will:
 
     We need to complete some details for the $orderby. We want to sort by salary, so change the path to "salary". It's a number, so change datatype from "varchar2" to "number". And finally, change the order from "asc" (ascending) to "desc" (descending), so we get largest first. 
 
-    ![](./images/orderby-edit.png " ")
+    ![order by details](./images/orderby-edit.png " ")
 
     Use the scrollbar to confirm that we have fetched back the records in descending order of salary.
 
     Before we leave JSON, let's just create a new collection. On the left side, click the "New Collection" button. 
 
-    ![](./images/new-col-button.png " ")
+    ![create a new collection](./images/new-col-button.png " ")
 
     On the right, give our collection the name "newcollection" and check the "MongoDB Compatible" box. 
     
