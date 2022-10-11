@@ -7,9 +7,8 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:het5eBAOa3E)
+Watch the video below for a quick walk-through of the lab.
+[Provision an ADB Instance](videohub:1_8mxwwm7q)
 
 ### Objectives
 

@@ -8,6 +8,9 @@ This lab walks you through the steps to get started using the Oracle Autonomous 
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Provision an ADB Instance](videohub:1_22f82n6x)
+
 ### Objectives
 
 In this lab, you will:

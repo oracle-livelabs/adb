@@ -6,9 +6,8 @@ This lab introduces the suite of **Data Tools** built into the Oracle Autonomous
 
 Estimated Time: 1 hour, 30 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:OL_zq2UqYSI)
+Watch the video below for a quick walk-through of the lab.
+[Use Autonomous Database Data Tools](videohub:1_roa5nds1)
 
 ### Objectives
 In this lab, you will:
@@ -115,13 +114,6 @@ You've taken a brief tour of the **Database Actions** home page, with its card i
 ### Overview
 
 In this section, you are going to explore how to load spreadsheets stored on your local computer and combine that data with another data set which is stored in the Oracle Object Store. As you load these various data files, you are going to discover that some of your data is not correctly formatted. Sometimes it can be very hard to spot issues hidden within a data set, but as you will see, Autonomous Data Warehouse has unique tools to help you spot the typical data errors you find in most data warehouse projects.
-
-#### Video Preview
-
-Watch a video demonstration of the Data Load tool of Autonomous Database:
-
-[] (youtube:SJUw4wIvkS4)
-> **Note:** Interfaces in this video may look different from the interfaces you will see.
 
 ### Launch Your Data Load Workflow
 
@@ -306,13 +298,6 @@ You will correct these data problems in the next task of the workshop. 
 ### Overview
 
 In this section of the lab, you'll correct the data errors identified in the previous section of the lab. There are a couple of ways this can be done. First, is the sql way and the second is using the new drag-and-drop techniques via the Data Transforms Tool. Below you will find instructions to both the ways. You can use either one based on availability of the Data Transforms tool in your tenancy.
-
-#### Video Preview
-
-Watch a video demonstration of the Data Transforms tool of Autonomous Database:
-
-[] (youtube:Xg5VK_R4-IM)
-> **Note:** Interfaces in this video may look different from the interfaces you will see.
 
 <if type="SQL">
 That’s something to look forward to, but is not currently covered in this lab.
@@ -503,13 +488,6 @@ In this section of the workshop, you'll create an analytic view over the table M
 
 If the sales analyst's job can be likened to looking for a needle in a haystack, the Data Insights tool can be thought of as an electromagnet. Swing it over the haystack and turn on the power. Anything made of ferrous metals will be pulled on to the electromagnet. There may be all sorts of junk here -  rusty old nails and screws and nuts and bolts - but there are going to be a few needles as well. It's far easier to pick the needles out of these few bits of metal than go rummaging around in all that hay - especially if you have hay fever! That's more or less how our Insights tool works, as you shall see in this section of the workshop.
 
-#### Video Preview
-
-Watch a video demonstration of the Data Insights tool of Autonomous Database:
-
-[] (youtube:pLaZnCQk3Vs)
-> **Note:** Interfaces in this video may look different from the interfaces you will see.
-
 ### Generate New Insights
 
 1. From the Autonomous Database **Tools** home page, click the **Data Insights** card. If this is the first time you've accessed this tool (or any other in the Built-In Tool Suite), you'll see a series of tool tips to show you how to use it.
@@ -566,13 +544,6 @@ Historically, data analysts would pore over data sets, slicing and dicing, looki
 ### MovieStream Critics Corner: Catalog
 
 *True fans of period dramas on MovieStream study [Burke’s Peerage](https://www.burkespeerage.com/) in their spare time. They know that impeccable lineage is a non-negotiable quality in a suitable love-match for an aristocrat. They are just as keenly aware that a clear line of succession is an essential consideration. The untimely demise of a principal character could have profound implications for the continuity of a great family’s line. These people will have an instinctive appreciation for Autonomous Database’s Catalog tool, which shows both Lineage and Impact Analysis clearly for any entity in the system, be it a table, view, business model, or whatever.*
-
-#### Video Preview
-
-Watch a video demonstration of the Catalog tool of Autonomous Database:
-
-[] (youtube:qi7HxiVyfOc)
-> **Note:** Interfaces in this video may look different from the interfaces you will see.
 
 Data is capital and the built-in Catalog tool allows you to maximize its value. Data Lineage and Impact Analysis are now at your fingertips in this integrated tool, which you explore in this part of the workshop.
 
@@ -650,13 +621,6 @@ The Excel Add-in enables users to run native SQL queries and a wizard to query A
 ### Prerequisite
 
 In order to setup the Add-in refer to [the documentation](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/data-analysis-tool.html#GUID-11A2DCCE-4778-4F16-AA47-773009543957) or [this blog](https://blogs.oracle.com/datawarehousing/post/using-the-excel-add-in-to-query-autonomous-database) post.
-
-#### Video Preview
-
-Watch a video demonstration of the Excel Add-in to query Autonomous Database:
-
-[] (youtube:qi7HxiVyfOc)
-> **Note:** Interfaces in this video may look different from the interfaces you will see.
 
 ### Connect to Autonomous Database
 
