@@ -4,7 +4,7 @@
 
 #### Video Preview
 
-[](youtube:0_BOgvJw4N0)
+<!--[](youtube:0_BOgvJw4N0)-->
 
 In this lab, you will create a new database user, then load and link data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into an Oracle Autonomous Database instance in preparation for exploration and analysis.
 
@@ -19,6 +19,9 @@ You can also leave data in place in cloud object storage, and link to it from yo
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
 Estimated Time: 15 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Use Data Tools to create a user and load data](videohub:1_i5dtdsa4)
 
 ### About product
 

@@ -22,9 +22,10 @@ You will use Oracle SQL to seamlessly blend these sources and apply specialized 
 
 Estimated time: 10 minutes
 
-Watch the video below for a quick walk through of the lab.
+Watch the video below for a quick walk-through of the lab.
 
-[](youtube:lgug4o8qqB8)
+<!--[](youtube:lgug4o8qqB8)-->
+[Use Data Tools to create a user and load data](videohub:1_bgf4qczp)
 
 ### Objectives
 
