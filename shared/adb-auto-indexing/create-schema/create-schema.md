@@ -98,7 +98,7 @@ We will now use OCI Cloud Shell, a web browser-based terminal accessible from th
 	</copy>
 	```
 
-2. Create an application table and prepare it for auto indexing. This will take around three minutes.
+3. Create an application table and prepare it for auto indexing. This will take around three minutes.
 
 	```
 	<copy>
@@ -141,7 +141,7 @@ We will now use OCI Cloud Shell, a web browser-based terminal accessible from th
 
 	```
 
-3.  Enable automatic indexing by setting the auto index mode to IMPLEMENT.
+4.  Enable automatic indexing by setting the auto index mode to IMPLEMENT.
 	
 	```
 	<copy>
@@ -149,6 +149,14 @@ We will now use OCI Cloud Shell, a web browser-based terminal accessible from th
 	</copy>
 	```    	
 
+5.  Set the result cache mode to MANUAL. The database result cache is enabled by default in ADW. In this lab we want to clearly see before vs after performance, so we'll set it to manual-only for now.
+	
+	```
+	<copy>
+	alter system set result_cache_mode = manual;
+	</copy>
+	```    	
+	
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jun 2022
 * **Last Updated By/Date** - Nigel Bayliss, Jun 2022
