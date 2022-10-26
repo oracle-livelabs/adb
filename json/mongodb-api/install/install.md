@@ -6,8 +6,10 @@ This lab walks you through the installation of the Mongo Shell tool on your own 
 
 **NOTE**: Mongo Shell is a tool provided by MongoDB Inc. Oracle is not associated with MongoDB Inc, and has no control over the software. These instructions are provided simply to help you learn about Mongo Shell. Links may change without notice.
 
-
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Install Mongo Shell](videohub:1_b7deqo67)
 
 ### Objectives
 
@@ -60,7 +62,7 @@ In this lab, you will:
 
 On both Mac and Windows, you can use the built-in 'curl' command to access a URL and download a file from it. The URL to use will vary according to the machine involved.
 
-Copy **ONE** of the following commands and paste it to the command or terminal window:
+Copy **ONE** of the following *curl* commands and paste it to the command or terminal window:
 
 1. For **Mac with Intel processor**:
 
@@ -104,7 +106,7 @@ Copy **ONE** of the following commands and paste it to the command or terminal w
 
     ```
     <copy>
-    echo PATH=$(dirname `find \`pwd\` -name mongosh`):$PATH
+    export PATH=$(dirname `find \`pwd\` -name mongosh -type f`):$PATH
     </copy>
     ```
 
