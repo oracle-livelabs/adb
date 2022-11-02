@@ -45,4 +45,4 @@ You may now **proceed to the next lab.**
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, September 2022
+- **Last Updated By/Date** - Nicholas Cusato, November 2022
