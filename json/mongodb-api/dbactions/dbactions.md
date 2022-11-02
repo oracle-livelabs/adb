@@ -4,11 +4,10 @@
 
 This lab will use JSON and SQL in Database Actions from the Autonomous JSON Database page. It shows how we can swap between a document-centric model (MongoDB and Oracle's JSON tool in Database Actions), and a relational model using Oracle's SQL tool in Database Actions.
 
-Watch this video for an overview of how to interact with JSON Documents through database actions.
-
-[This video shows an overview of the steps in this lab.](youtube:pk7YAD-OZBQ)
-
 Estimated Time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Interact with JSON Documents through Database Actions](videohub:1_725rhrqf)
 
 ### Objectives
 

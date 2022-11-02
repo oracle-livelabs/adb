@@ -5,6 +5,9 @@ In this lab you will provision the Oracle Cloud instances needed to run a Micron
 
 Estimated Lab Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Provision Oracle Autonomous Database](videohub:1_hje5bm9g)
+
 ### Objectives
 
 In this lab you will:

@@ -6,6 +6,9 @@ This lab walks you through the steps to create data visualizations using Oracle 
 
 Estimated Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Develop Self-Service Analytics Cloud Dashboards](videohub:1_6lsehv31)
+
 ### Objectives
 - Learn how to create a simple data visualization project with Oracle Analytics Cloud
 - Learn how to access and gain insights from data in the Autonomous Database

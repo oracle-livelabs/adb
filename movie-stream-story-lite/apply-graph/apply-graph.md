@@ -4,11 +4,14 @@
 
 #### Video Preview
 
-[](youtube:6ik6ahjmYQQ)
+<!--[](youtube:6ik6ahjmYQQ)-->
 
 In this lab, you will use Oracle Graph analytics to detect and create customer communities based on movie viewing behavior. Once you've created communities - make recommendations based on what your community members have watched.
 
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Use graph analytics to recommend movies](videohub:1_ret5ywcn)
 
 ### About graph
 When you model your data as a graph, you can run graph algorithms to analyze connections and relationships in your data. You can also use graph queries to find patterns in your data, such as cycles, paths between vertices, anomalous patterns, and others. Graph algorithms are invoked using a Java or Python API, and graph queries are run using PGQL (Property Graph Query Language, see [pgql-lang.org](https://pgql-lang.org)).
@@ -31,17 +34,17 @@ In this lab, you will use the Graph Studio feature of Autonomous Database to:
 
 ## Task 1: Log into Graph Studio
 
-Graph Studio is a feature of Autonomous Database. It is available as an option under the **Tools** tab. You need a graph-enabled user to log into Graph Studio. When you created the MOVIESTREAM user in Lab 2 you had graph-enabled that user.
+Graph Studio is a feature of Autonomous Database. It is available as an option on the Database Actions Launchpad. You need a graph-enabled user to log into Graph Studio. When you created the MOVIESTREAM user in Lab 2, you had graph-enabled that user.
 
-1. In your Autonomous Database Details page, click the **Tools** tab and then **Graph Studio**.
+1. In your **Autonomous Database Details** page, click the **Tools** tab.
 
-    Click **Tools**.
+    **Note:** Graph Studio is also accessible by clicking **Database Actions** on the Autonomous Database Details page.
 
-    ![Click Tools](images/toolstab.png " ")    
+    ![Click the Tools tab](images/click-tools-tab.png " ")    
 
-    Scroll down and click **Graph Studio**.
+2. On the Tools panel, click **Open Graph Studio**.
 
-    ![Scroll down and click Graph Studio](images/graphstudiofixed.png " ")
+    ![Click Open Graph Studio](images/graphstudiofixed.png " ")
 
 2. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
 
@@ -51,21 +54,21 @@ Graph Studio is a feature of Autonomous Database. It is available as an option u
 
 The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOMER\_PROMOTIONS, CUSTSALES\_PROMOTIONS, and MOVIE (as explained earlier).  You will now load this graph from the database into the in-memory graph server.  
 
-1. Click on the graphs icon. 
+1. Click the **Graphs** icon.
 
-    ![Click on the graphs icon](images/task2step1.png " ")
+    ![Click the Graphs icon](images/task2step1.png " ")
 
     You will see that the MOVIE_RECOMMENDATIONS graph is available.
 
     ![See the list of graphs](images/task2step2.png " ")
 
-2. Click on the 3 dots on the right and select **Load Graph Into Memory**.
+2. Click the **3 dots** on the right and click **Load Graph Into Memory**.
 
     ![Expand the 3 dots on the right](images/task2step3.png " ")
 
-3. Accept the defaults and select **Yes**.  
+3. Accept the defaults and click **Yes**.  
 
-    ![Select Yes](images/task2step4.png " ")
+    ![Click Yes](images/task2step4.png " ")
 
     Next see that the load into memory is in progress:  
 
@@ -75,7 +78,9 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 
     ![See the load job completed](images/task2step6.png " ")
 
- Click on the Graphs icon again to see that the graph is now in memory.  
+    **Note:** If the load into memory fails, retry Steps 2 and 3.
+
+ Click the Graphs icon again to see that the graph is now in memory.  
 
     ![See the graph loaded into memory](images/task2step7.png " ")
 
@@ -85,13 +90,17 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 
   [Click here to download the notebook](files/movie_recommendations_psalsa.dsnb) and save it to a folder on your local computer.  This notebook includes graph queries and analytics for the MOVIE_RECOMMENDATIONS graph.
 
- 1. Import a notebook by clicking on the notebook icon on the left, and then clicking on the **import notebook** icon on the far right.
+ 1. Import a notebook by clicking on the notebook icon on the left, and then clicking on the **Import** icon on the far right.
 
-     ![Click the notebook icon and import the notebook](images/task3step1.png " ")
+    ![Click the notebook icon and import the notebook](images/task3step1.png " ")
 
- Click on the + sign and navigate to the folder where you just downloaded the notebook.  Select the notebook and click on **Import**.
+ Click on the + sign and navigate to the folder where you just downloaded the notebook.  Select the notebook and click **Import**.
 
-     ![Select the notebook to import and click on Import](images/task3step2.png " ")
+    ![Select the notebook to import and click on Import](images/task3step2.png " ")
+
+ A dialog pops up named **Environment Attaching"**. It will disappear when the compute environment finishes attaching, usuallly in less than one minute. Or you can click **Dismiss** to close the dialog and start working on your environment. Note that you will not be able to run any paragraph until the environment finishes attaching.
+
+    ![Click Dismiss to cloes the Environment Attaching dialog](images/click-dismiss.png " ")
 
  2. Review the description before each paragraph.   Review the graph queries and analytics.   You can then run the query by clicking on the triangle on the top right if you would like to do so.  Below is an example of running a query in a paragraph.  
 
@@ -113,4 +122,4 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 ## Acknowledgements
 * **Author** - Melli Annamalai, Product Manager, Oracle Spatial and Graph
 * **Contributors** -  Jayant Sharma
-* **Last Updated By/Date** - Rick Green, Database User Assistance, November 2021
+* **Last Updated By/Date** - Rick Green, Database User Assistance, September 2022

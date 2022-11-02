@@ -17,6 +17,9 @@ If you were unable to setup the Autonomous Database and necessary cloud resource
 
 Estimated Lab Time: 30 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build a Micronaut Application](videohub:1_xbozsv9k)
+
 ### Objectives
 
 In this lab you will:
@@ -441,6 +444,14 @@ micronaut {
 </copy>
 ```
 
+Or alternatively try pull the Oracle XE container image prior to running your tests using the `docker` command from a terminal window:
+
+```
+<copy>
+docker pull gvenzl/oracle-xe:latest
+</copy>
+```
+
 Note that to improve productivity when running tests you can start a shared test resources server by running the Gradle `startTestResourcesService` command which can later by stopped with `stopTestResourcesService`:
 
 ```bash
@@ -493,13 +504,13 @@ connection: keep-alive
 [{"name":"Dino"},{"name":"Baby Puss"},{"name":"Hoppy"}]
 ```
 
-## Task 6: Run the Micronaut application with Autonomous Database
+## Task 7: Run the Micronaut application with Autonomous Database
 
 To run the application and connect to the previously configured Autonomous Database instance you need to active the `oraclecloud` environment locally first by setting the `MICRONAUT_ENVIRONMENTS` environment variable, for example:
 
 ```bash
 <copy>
-MICRONAUT_ENVIRONMENTS=oracecloud ./gradlew run -t
+MICRONAUT_ENVIRONMENTS=oraclecloud ./gradlew run -t
 </copy>
  ```
 
@@ -507,7 +518,7 @@ MICRONAUT_ENVIRONMENTS=oracecloud ./gradlew run -t
 
  ```bash
 <copy>
-MICRONAUT_ENVIRONMENTS=oracecloud ./mvnw mn:run
+MICRONAUT_ENVIRONMENTS=oraclecloud ./mvnw mn:run
 </copy>
  ```
 

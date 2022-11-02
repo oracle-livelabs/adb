@@ -6,8 +6,10 @@ This lab walks you through the installation of the Mongo Shell tool on your own 
 
 **NOTE**: Mongo Shell is a tool provided by MongoDB Inc. Oracle is not associated with MongoDB Inc, and has no control over the software. These instructions are provided simply to help you learn about Mongo Shell. Links may change without notice.
 
-
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Install Mongo Shell](videohub:1_b7deqo67)
 
 ### Objectives
 
