@@ -8,7 +8,7 @@ In this lab, we will use Visual Studio Code (VSCode) IDE to initiate a connectio
 
 **Download VSCode Here:** [Link](https://code.visualstudio.com/download)
 
-**Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip)
+**Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
 
 Estimated Time: 40 minutes
 
@@ -65,7 +65,7 @@ This lab assumes you have:
             ```
             **Note: Insert the correct path for your extracted instant client for this step**
 
-4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip) .
+4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip) .
 
     -Extract and open the folder in VSCode.  
 
@@ -193,4 +193,4 @@ You may now **proceed to the next lab.**
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, September 2022
+- **Last Updated By/Date** - Nicholas Cusato, November 2022
