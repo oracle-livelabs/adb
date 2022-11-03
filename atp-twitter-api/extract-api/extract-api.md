@@ -118,7 +118,7 @@ This lab assumes you have:
 
 ## Task 3: Run the extract
 
-1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install \<module name\>** for the following modules:
+1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install &lt; module name &gt;** for the following modules:
     - tweepy: **pip install tweepy**
     - regex: **pip install regex**
     - pandas: **pip install pandas**
