@@ -23,7 +23,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
+- An Oracle Cloud Account
 - An IDE of your choosing (All examples in this lab will use VSCode)
 - Installed Python 3.9 (Newest version of Python will not work with the current version of Pysentimiento)
 
@@ -125,7 +125,7 @@ This lab assumes you have:
     - numpy: **pip install numpy**
     - textstat: **pip install textstat**
     - pysentimiento: **pip install pysentimiento**
-    - cx_Oracle: **pip install cx_Oracle**
+    - cx\_Oracle: **pip install cx\_Oracle**
 
     Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, **find the path to 3.9** and declare that prior to using pip install. The path can be located at the end of this step.
 
