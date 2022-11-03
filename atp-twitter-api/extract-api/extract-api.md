@@ -125,7 +125,7 @@ This lab assumes you have:
     - numpy: **pip install numpy**
     - textstat: **pip install textstat**
     - pysentimiento: **pip install pysentimiento**
-    - cx\_Oracle: **pip install cx_\Oracle**
+    - cx\_Oracle: **pip install cx_Oracle**
 
     Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, **find the path to 3.9** and declare that prior to using pip install. The path can be located at the end of this step.
 
