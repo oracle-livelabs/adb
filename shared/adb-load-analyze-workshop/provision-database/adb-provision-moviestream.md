@@ -43,6 +43,6 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 ## Acknowledgements
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marty Gubar, Sept 2022
+- **Adapted for Cloud by** - Rick Green, Principal Developer, Database User Assistance
+- **Last Updated By/Date** - Rick Green, November 2022
 - **Built with Blocks**
