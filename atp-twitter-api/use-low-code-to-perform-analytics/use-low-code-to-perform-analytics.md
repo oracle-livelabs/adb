@@ -19,7 +19,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
+- An Oracle Cloud Account
 
 ## Task 1: Review Daily Report
 
@@ -80,4 +80,4 @@ Congratulations! You have successfully learned how to create an APEX application
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, September 2022
+- **Last Updated By/Date** - Nicholas Cusato, November 2022

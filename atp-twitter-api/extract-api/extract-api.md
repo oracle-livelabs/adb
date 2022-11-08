@@ -8,7 +8,7 @@ In this lab, we will use Visual Studio Code (VSCode) IDE to initiate a connectio
 
 **Download VSCode Here:** [Link](https://code.visualstudio.com/download)
 
-**Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip)
+**Download the Python lab files:** [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
 
 Estimated Time: 40 minutes
 
@@ -23,7 +23,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
+- An Oracle Cloud Account
 - An IDE of your choosing (All examples in this lab will use VSCode)
 - Installed Python 3.9 (Newest version of Python will not work with the current version of Pysentimiento)
 
@@ -65,7 +65,7 @@ This lab assumes you have:
             ```
             **Note: Insert the correct path for your extracted instant client for this step**
 
-4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip) .
+4. Download the Python lab files: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip) .
 
     -Extract and open the folder in VSCode.  
 
@@ -118,14 +118,14 @@ This lab assumes you have:
 
 ## Task 3: Run the extract
 
-1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install \<module name>** for the following modules:
+1. Using VSCode terminal, we are ready to run the code. **Make sure you have installed all of the python libraries** or else you will run into errors. Use **pip install &lt; module name &gt;** for the following modules:
     - tweepy: **pip install tweepy**
     - regex: **pip install regex**
     - pandas: **pip install pandas**
     - numpy: **pip install numpy**
     - textstat: **pip install textstat**
     - pysentimiento: **pip install pysentimiento**
-    - cx_Oracle: **pip install cx_Oracle**
+    - cx\_Oracle: **pip install cx_Oracle**
 
     Be sure to install to the correct version of Python (if 3.9 is not default). In order to install to a specific version of python, **find the path to 3.9** and declare that prior to using pip install. The path can be located at the end of this step.
 
@@ -193,4 +193,4 @@ You may now **proceed to the next lab.**
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, September 2022
+- **Last Updated By/Date** - Nicholas Cusato, November 2022

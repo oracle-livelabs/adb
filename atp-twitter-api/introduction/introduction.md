@@ -34,7 +34,7 @@ In this lab, you will complete the following tasks:
 ### Prerequisites
 
 This lab assumes you have:
-- An Oracle Always Free/Free Tier, Paid or LiveLabs Cloud Account
+- An Oracle Cloud Account
 - Familiarity with Twitter is desirable, but not required
 - Some understanding of cloud and database terms is helpful
 - Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
@@ -45,8 +45,8 @@ This lab assumes you have:
 - An **Elevated Twitter Developer account** [Link to sign up](https://developer.twitter.com/en/docs/twitter-api)
 
 Download the lab files here: 
-[SQL Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/RxU0JrmIW5IAvgKlfNiL1yw6ShtTT_dULYYLLXL_KNLP_o-kCg6ghhqtVjHXF4bZ/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL1_sql.zip)
-[Python Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5KGNCEuTOTW3qBCnzBcvtYJr_Q8f8prIr8AnXsMFLnQGQqLgh_ns20Vo0jjsiVXb/n/c4u04/b/livelabsfiles/o/labfiles/Twitter_LL2_python.zip)
+[SQL Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+[Python Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
 
 >**Note:** Creating an **Elevated** Twitter Developer account may take up to a couple days to be approved depending on your responses to the questions. It is recommended to start this process before beginning the lab. Click the link to get started: [Link to sign up](https://developer.twitter.com/en/docs/twitter-api).
 
@@ -58,4 +58,4 @@ Download the lab files here:
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, September 2022
+- **Last Updated By/Date** - Nicholas Cusato, November 2022
