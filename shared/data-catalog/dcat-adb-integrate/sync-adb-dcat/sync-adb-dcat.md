@@ -106,8 +106,6 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
     </copy>
     ```
 
-    >**Note:** It may take a few minutes to run this script as it is performing many initialization steps. When the script execution completes, if you see a Code Execution Failed message on the Status bar at the bottom of the SQL Worksheet, ignore it.
-
     ![The script is displayed in the Worksheet code section. The Run Script (F5) icon in the Worksheet toolbar is highlighted.](./images/initialize-output.png " ")
 
 <!-- Comments -->
@@ -123,7 +121,7 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
 2. Create the **`MOVIESTREAM`** user. You will login to Oracle Machine Learning (OML) in the next lab using this new user to perform many queries. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-    >**Note:** Substitute the **``enter-a-secure-password``>** place holder below with your own secured password that you will remember for later use such as **`Training4ADB`**.
+    >**Note:** Substitute the **<``enter-a-secure-password``>** place holder below with your own secured password that you will remember for later use such as **`Training4ADB`**. _Remember the password - you will use it later_.
 
     ```
     <copy>
