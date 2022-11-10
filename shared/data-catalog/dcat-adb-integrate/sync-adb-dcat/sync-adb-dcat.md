@@ -72,7 +72,10 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2: Initialize the Lab
 
-Create and run the PL/SQL procedures to initialize the lab before you synchronize ADB and Data Catalog.
+Create and run the PL/SQL procedures to initialize the lab before you synchronize ADB and Data Catalog. These initialization procedures will:
+* Install the workshop utlities
+* Add a database user named **moviestream**
+* Create and populate several tables
 
 1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -122,7 +125,7 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
     >**Note:** Substitute the **``enter-a-secure-password``>** place holder below with your own secured password that you will remember for later use such as **`Training4ADB`**.
 
-    ```md
+    ```
     <copy>
     exec add_adb_user('moviestream','enter-a-secure-password')
 
@@ -154,7 +157,7 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
     ![Sign in as the analyst user."](./images/signin-analyst.png " ")
 
-5. Add data to all tables. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+5. Create and populate the **moviestream** user tables. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
