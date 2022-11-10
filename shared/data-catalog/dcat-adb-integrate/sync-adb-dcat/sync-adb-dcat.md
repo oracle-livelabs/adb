@@ -175,7 +175,7 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
     ![Sign out of moviestream user.](./images/signout-moviestream.png " ")
 
-7. Sign in to your SQL Worksheet as the **ADMIN** user. You will run the commands in the next task as the **ADMIN** user.On the **Oracle REST Data Services** page, click **Sign in**. On the **Database Actions** page, sign in as the **admin** user. Enter the username and password, and then click **Sign in**. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display your SQL Worksheet.
+7. Sign in to your SQL Worksheet as the **ADMIN** user. You will run the commands in the next task as the **ADMIN** user. On the **Oracle REST Data Services** page, click **Sign in**. On the **Database Actions** page, sign in as the **admin** user. Enter the username and password, and then click **Sign in**. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display your SQL Worksheet.
 
     ![Sign in as the admin user."](./images/signed-in-as-admin.png " ")
 
