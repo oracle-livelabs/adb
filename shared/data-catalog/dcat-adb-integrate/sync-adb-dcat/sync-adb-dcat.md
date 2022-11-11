@@ -11,13 +11,14 @@ Estimated Time: 30 minutes
 ### Objectives
 
 In this lab, you will:
+
 * Access the ADB SQL Worksheet
 * Initialize the lab
 * Connect your ADB instance to your Data Catalog instance
 * Synchronize your ADB instance with your Data Catalog instance
 * Query the generated log, schemas, and external tables
 
-### Prerequisites  
+### Prerequisites
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
 
 
@@ -71,86 +72,41 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2: Initialize the Lab
 
-Create and run the PL/SQL procedures to initialize the lab before you synchronize ADB and Data Catalog.  
+Create and run the PL/SQL procedures to initialize the lab before you synchronize ADB and Data Catalog. These initialization procedures will:
+* Install the workshop utlities
+* Add a database user named **moviestream**
+* Create and populate several tables
 
 1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-    ```
+    ```markdown
     <copy>
     -- Click F5 to run all the scripts at once
-    -- drop this table with the lab listings
 
-    drop table moviestream_labs; -- may fail if hasn't been defined
-
-    -- Create the MOVIESTREAM_LABS table that allows you to query all of the labs and their associated scripts
-
-    begin
-    dbms_cloud.create_external_table(table_name => 'moviestream_labs',
-                file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_scripts/o/prerequisites/dcat-labs.json',                
-                format => '{"skipheaders":"0", "delimiter":"\n", "ignoreblanklines":"true"}',
-                column_list => 'doc varchar2(30000)'
-    );
-    end;
-    /
-
-    -- Define the scripts found in the labs table.
     declare
-    b_plsql_script blob;            -- binary object
-    v_plsql_script varchar2(32000); -- converted to varchar
-    uri_scripts varchar2(2000) := 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_scripts/o/prerequisites'; -- location of the scripts
-    uri varchar2(2000);
+        l_git varchar2(4000);
+        l_repo_name varchar2(100) := 'common';
+        l_owner varchar2(100) := 'oracle-livelabs';
+        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
+    
     begin
+    -- get a handle to github
+        l_git := dbms_cloud_repo.init_github_repo(
+        repo_name       => l_repo_name,
+        owner           => l_owner );
 
-    -- Run a query to get each lab and then create the procedures that generate the output
-    for lab_rec in (
-      select  json_value (doc, '$.lab_num' returning number) as lab_num,
-        json_value (doc, '$.title' returning varchar2(500)) as title,
-        json_value (doc, '$.script' returning varchar2(100)) as proc        
-        from moviestream_labs ml
-        where json_value (doc, '$.script' returning varchar2(100))  is not null
-        order by 1 asc
-        )
-    loop
-    -- The plsql procedure DDL is contained in a file in object store
-    -- Create the procedure
-    dbms_output.put_line(lab_rec.title);
-    dbms_output.put_line('....downloading plsql procedure ' || lab_rec.proc);
+    -- install the package header
+        dbms_cloud_repo.install_file(
+            repo        => l_git,
+            file_path   => l_package_file,
+            stop_on_error => false);
 
-    -- download the script into this binary variable        
-    uri := uri_scripts || '/' || lab_rec.proc || '.sql';
-
-    dbms_output.put_line('....the full uri is ' || uri);        
-    b_plsql_script := dbms_cloud.get_object(object_uri => uri);
-
-    dbms_output.put_line('....creating plsql procedure ' || lab_rec.proc);
-    -- convert the blob to a varchar2 and then create the procedure
-    v_plsql_script :=  utl_raw.cast_to_varchar2( b_plsql_script );
-
-    -- generate the procedure
-    execute immediate v_plsql_script;
-
-    end loop lab_rec;  
-
-    execute immediate 'grant execute on moviestream_write to public';
-
-    exception
-        when others then
-            dbms_output.put_line('Unable to setup prequisite scripts.');
-            dbms_output.put_line('You will need to run thru each of the labs');
-            dbms_output.put_line('');
-            dbms_output.put_line(sqlerrm);
-    end;
-    /
-    begin
-      run_lab_prereq(10);
     end;
     /
     </copy>
     ```
 
-    >**Note:** It may take a few minutes to run this script as it is performing many initialization steps. When the script execution completes, if you see a Code Execution Failed message on the Status bar at the bottom of the SQL Worksheet, ignore it. You will check the script execution status and results using a logfile in the next step. Once the script completes successfully, the **`MOVIESTREAM`** user is created and initialized. You will login to Oracle Machine Learning (OML) in the next lab using this new user to perform many queries. Wait for at least a couple of minutes before you run the next step to check the status of the code execution.
-
-    ![The script is displayed in the Worksheet code section. The Run Script (F5) icon in the Worksheet toolbar is highlighted.](./images/initialize.png " ")
+    ![The script is displayed in the Worksheet code section. The Run Script (F5) icon in the Worksheet toolbar is highlighted.](./images/initialize-output.png " ")
 
 <!-- Comments -->
 <!-- Comments
@@ -163,33 +119,64 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
     ![](./images/code-execution-complete.png " ")
 -->
 
-2. Copy your SQL Worksheet URL and paste it into a new browser tab. As the initialize script is running in the original worksheet, you'll check the status of the script execution in a new SQL Worksheet in the new browser tab.
+2. Create the **`MOVIESTREAM`** user. You will login to Oracle Machine Learning (OML) in the next lab using this new user to perform many queries. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-    ![The URL on the current tab in Chrome is highlighted and copied. Next, the New tab icon (plus icon) is highlighted and clicked to create a new tab.](./images/copy-worksheet-url.png " ")
-
-3. View the status of the script execution in the new browser tab. Copy and paste the following code into your new SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar. You might need to re-run the following command few times before you can see the output if the script execution is not completed.
+    >**Note:** Substitute the **<``enter-a-secure-password``>** place holder below with your own secured password that you will remember for later use such as **`Training4ADB`**. _Remember the password - you will use it later_.
 
     ```
     <copy>
-    select *
-    from moviestream_log order by 1;
+    exec add_adb_user('moviestream','enter-a-secure-password')
+
+    -- Run the command below in order to allow the new user (in this case "moviestream") using ORDS.
+    -- This includes connecting via the ADB SQL Tools
+    begin
+        ords_admin.enable_schema (
+            p_enabled               => TRUE,
+            p_schema                => 'moviestream',
+            p_url_mapping_type      => 'BASE_PATH',
+            p_auto_rest_auth        => TRUE
+        );
+    end;
+    /
     </copy>
     ```
 
-    ![The result of running the query in the code section of the worksheet is displayed in the Script Output tab at the bottom of the worksheet. ](./images/ll-log-output.png " ")
+    ![Create the "MOVIESTREAM" user."](./images/create-moviestream-user.png " ")
 
-    >**Note:** Make sure that the log displays the above highlighted output (at the end of the log) about resetting the password before you proceed to the next step. Once your output is displayed, you can close the new browser tab. In addition, the prerequisites to initialize the lab is complete only when you see the following highlighted message _You can not log in until you set a password ..._ in the **Script Output** tab.
+    The output is displayed in the **Script Output** tab.
 
-4. In the original browser tab, set the password for the **`MOVIESTREAM`** user. You will log in as this user to run queries. Click the **Run Script (F5)** icon in the Worksheet toolbar.
+    ![Create the "MOVIESTREAM" user output."](./images/create-moviestream-user-output.png " ")
 
-    >**Note:** Substitute **``<secure password``>** with your own secured password that you will remember for later use such as **`Training4ADB`**.
+3. Sign out of the **ADMIN** user. Click the **ADMIN** drop-down list in the Worksheet banner, and then click **Sign Out**.
+
+    ![Sign out of the admin user."](./images/signout-admin.png " ")
+
+4. On the **Oracle REST Data Services** page, click **Sign in**. On the **Database Actions** page, sign in as the new **moviestream** user. Enter the username and password, and then click **Sign in**. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display your SQL Worksheet.
+
+    ![Sign in as the analyst user."](./images/signin-analyst.png " ")
+
+5. Create and populate the **moviestream** user tables. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
-    alter user moviestream identified by "<secure password>";
+    exec workshop.add_dataset('ALL')
     </copy>
     ```
-    ![The result of running the query in the code section of the worksheet is displayed in the Script Output tab with the message "User MOVIESTREAM altered."](./images/ll-change-password.png " ")
+    
+    ![The add data script displayed for the moviestream user.](./images/add-data-moviestream.png " ")
+
+    It may take around five minutes for the script to complete as it is populating all of the tables. The output is displayed in the **Script Output** section.
+
+    ![The partial result of running the query is displayed in the Script Output tab.](./images/add-data.png " ")
+
+6. Sign out of the **moviestream** user. Click the **moviestream** drop-down list in the Worksheet banner, and then click **Sign Out**.
+
+    ![Sign out of moviestream user.](./images/signout-moviestream.png " ")
+
+7. Sign in to your SQL Worksheet as the **ADMIN** user. You will run the commands in the next task as the **ADMIN** user. On the **Oracle REST Data Services** page, click **Sign in**. On the **Database Actions** page, sign in as the **admin** user. Enter the username and password, and then click **Sign in**. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display your SQL Worksheet.
+
+    ![Sign in as the admin user."](./images/signed-in-as-admin.png " ")
+
 
 ## Task 3: Connect to Data Catalog
 
@@ -794,7 +781,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data     
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, July 2022
+* **Last Updated By/Date:** Lauran Serhal, August 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

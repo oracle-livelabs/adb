@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Using Oracle Database API for MongoDB",
+    "workshoptitle": "Using the Database API for MongoDB",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -10,12 +10,12 @@
         {
             "title": "Get Started",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.mdd"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
         },
         {
-            "title": "Lab 1: Provision a Compute Node",
+            "title": "Lab 1: Install Mongo Shell",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
-            "filename": "../../compute/compute.md",
+            "filename": "../../install/install.md",
             "type": "freetier"
         },
         {
@@ -25,12 +25,16 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 3: Connecting to Autonomous Database with Mongo Shell",
+            "title": "Lab 3: Connect to Autonomous Database with Mongo Shell",
             "filename": "../../mongoshell/mongoshell.md"
         },
         {
-            "title": "Lab 4: Database Actions",
+            "title": "Lab 4: Interact with JSON Documents through Database Actions",
             "filename": "../../dbactions/dbactions.md"
+        },
+        {
+            "title": "Lab 5: Cleanup Oracle Autonomous Database",
+            "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
         },
         {
             "title": "Need Help?",

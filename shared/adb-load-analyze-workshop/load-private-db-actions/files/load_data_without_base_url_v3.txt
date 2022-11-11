@@ -1,0 +1,14 @@
+/* In this code snippet, after define file_uri_base =, replace <bucket URI> below with the URL you copied from your file in OCI Object Storage at runtime.
+*/
+set define on
+define file_uri_base = '<bucket URI>'
+
+begin
+ dbms_cloud.copy_data(
+    table_name =>'CUSTOMER_EXTENSION',
+    credential_name =>'OBJ_STORE_CRED',
+    file_uri_list =>'&file_uri_base/customer-extension.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+end;
+/

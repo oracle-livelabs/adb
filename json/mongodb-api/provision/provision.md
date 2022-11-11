@@ -4,11 +4,10 @@
 
 This lab walks you through the steps to get started using the Oracle Autonomous JSON Database [AJD] on Oracle Cloud. In this lab, you will provision a new AJD instance and connect to the Autonomous Database using JSON.
 
-Watch this video for an overview of how to provision an Oracle Autonomous JSON Database.
-
-[This video shows an overview of the steps in this lab.](youtube:Hgyg5VJEfk0)
-
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Provision an Autonomous JSON Database](videohub:1_13lbdo9h)
 
 ### Objectives
 
@@ -56,7 +55,7 @@ In this lab, you will:
 <if type="freetier">
     ![Check the workload type on the left.](./images/compartments.png " ")
 </if>
-    ![](./images/workload-type.png " ")
+    ![choose workload type](./images/workload-type.png " ")
 
 <if type="freetier">
    > **Note:** Avoid the use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services.
@@ -87,7 +86,7 @@ In this lab, you will:
 <if type="livelabs">
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __JSONDB__ and append you LiveLabs user id. For example, __JSONDB7199__.
 
-    ![](./images/adb-info-livelabs.png)
+    ![add a database name](./images/adb-info-livelabs.png)
 </if>
 
 4. Choose a workload type: Select the workload type for your database from the choices:
@@ -142,14 +141,7 @@ In this lab, you will:
 
     You can then click "Add My IP Address" to allow access from your current IP address. You should avoid any VPN or proxy server access which may mask or change your actual IP address. 
 
-    ![](./images/network-access.png " ")
-
-    Then you must also add the IP address for the Compute Node we set up in the previous lab (which you should have saved!)
-    To do that, click __+ Access Control Rule__ button and enter the IP address of your Compute Node in the "Values" field.
-
-    ![](./images/add-access-rule.png " ")
-
-    ![](./images/network-add-ip.png " ")
+    ![add your IP address](./images/network-access.png " ")
 
 9. Choose a license type:
 
@@ -157,7 +149,7 @@ In this lab, you will:
     - __Bring Your Own License (BYOL)__ - Select this type when your organization has existing database licenses.
     - __License Included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
-    ![](./images/license-type.png " ")
+    ![select license type](./images/license-type.png " ")
 
 10. Click __Create Autonomous Database__.
 
@@ -169,20 +161,27 @@ In this lab, you will:
 
 ## Task 3: Check the URL for the Database API for MongoDB
 
+1. Open Database Actions
 
-1. On the Autonomous Database Details page, click on the Service Console button.
+    On the Autonomous Database Information page, click on the Database Actions button
 
-    ![](./images/service-console.png)
+    ![Database Actions button](./images/db-actions.png " ")
 
-2. On the Service Console, click on __Development__ on the left-hand side
+    The Database Actions Console will open in a new browser tab.
 
-    ![](./images/service-console-dev.png)
+2. Find ORACLE DATABASE API FOR MONGODB under Related Services
 
-3. Scroll down to the bottom of the Development page, and you should see a card titled Oracle Database API for MongoDB (if you don't, it's possible you didn't set up secure access to your database). There are two URLs listed, copy the first one and save it in a text file somewhere for later use.
+    Scroll down until you find the **Related Services** section. There should be a card for __ORACLE DATABASE API FOR MONGODB__. Click on that card (if the card is not present, most likely you did not correctly configure your database for secure access).
 
-    ![](./images/mongo-urls.png)
+    ![Card for MongoDB API](./images/mongo-card.png " ")
 
-Again, make sure you have saved these URLs for the next lab.
+3. Save the URL for __Oracle Database API for MongoDB__
+
+    Once you've clicked on the card, a window will pop-up with two URLs listed.
+
+    Copy the first one (containing port number 27017) and save it with a text editor for later use in lab 3. Close the pop-up window when done.
+
+    ![Copy MongoDB API URL](./images/mongodb-url.png " ")
 
 You may now **proceed to the next lab**.
 

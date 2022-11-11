@@ -7,9 +7,8 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:het5eBAOa3E)
+Watch the video below for a quick walk-through of the lab.
+[Provision an ADB Instance](videohub:1_8mxwwm7q)
 
 ### Objectives
 
@@ -33,19 +32,32 @@ For this workshop, we need to create one new user.
 
 1. Navigate to the **Details** page of the Autonomous Database you provisioned in the "Provision an ADB Instance" lab. In this example, the database is named "ADW Finance Mart." Click the **Database Actions** button.
 
-  ![ALT text is not available for this image](images/click-database-actions-button.png)
+  ![Click Database Actions](images/click-database-actions-button.png)
 
-2. In the login form, enter ADMIN for the username and click **Next**. On the next form, enter the ADMIN password - which is the one you entered when creating your Autonomous Data Warehouse.
+2. This will take you to the Database Actions page, logged in as the ADMIN user.
 
-  ![ALT text is not available for this image](images/admin.png)
+  <if type="BETA">
+3. On the Database Actions launchpad page, under Development, click the **SQL** card.
+  ![Launch Web SQL](images/database-adpbeta-role.png)
+> Note: Close the Warning pop-up indicating that you are logged in as ADMIN user.
+
+4. Paste the following SQL statement and execute it.
+    ````
+    <copy>
+    CREATE ROLE ADPBETA;
+    </copy>
+    ````
+  ![Create ADPBETA role](images/database-create-adpbeta-role.png)
+
+5. Click on the **Database Actions** link to navigate back to the home page.
+  </if>
 
 3. On the Database Actions launchpad page, under Administration, click the **Database Users** card.
-
-  ![ALT text is not available for this image](images/database-users.png)
+  ![Launch Database Users admin page](images/database-users.png)
 
 4.  You can see that your ADMIN user is listed as the current user.  On the right-hand side, click the "+ **Create User**" button.
 
-  ![ALT text is not available for this image](images/create-user.png)
+  ![Click Create User](images/create-user.png)
 
 5. The **Create User** form will appear on the right-hand side of your browser window. Use the settings below to complete the form:
 
@@ -58,33 +70,31 @@ For this workshop, we need to create one new user.
 
     - Must include at least one uppercase letter, one lowercase letter, and one numeric character
 
-    - Limit passwords to a maximum of 30 characters
-
     - Cannot contain the username
-
-    - Cannot be one of the last four passwords used for the same username
 
     - Cannot contain the double quote (") character
 
     There is more information available in the documentation about password rules and how to create your own password rules. See here: [Create Users on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-users-create.html#GUID-B5846072-995B-4B81-BDCB-AF530BC42847)
 
-  - Leave the Graph button turned off.
   - Toggle the **Web Access** button to **On** and expand **Web access advanced features**.
-  - Leave the **Authorization required** toggle button as on/blue.
-  - Accept the default alias which is automatically set to qteam - this allows the user access to our new data warehouse using the Database Actions tools.
-  - Select **UNLIMITED** from the drop down menu for Quota on tablespace DATA
-  - Leave the **Password Expired** toggle button as off (note this controls whether the user will be prompted to change their password when they next login).
-  - Leave the **Account is Locked** toggle button as off. 
+  - Select **UNLIMITED** from the drop down menu for **Quota on tablespace DATA**
 
   Next you will examine the form.
 
 6. When you examine the form, it should look like this:
 
-  ![ALT text is not available for this image](images/create-user-dialog.png)
+  ![Create user selections](images/create-user-dialog.png)
 
-7.  Click on the **Granted Roles** banner at the top of the form and add the role **DWROLE** by checking the boxes in the first and third columns.
+7.  Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first (Granted) and third columns (Default):
+  > **Note:** Ensure that for each role the **Granted** and **Default** options are selected.
 
-  ![ALT text is not available for this image](images/dwrole.png)
+  <if type=“BETA”>
+  - ADPBETA
+  </if>
+  - DATA\_TRANSFORM\_USER
+  - DWROLE
+
+  ![Grant roles to user](images/dwrole.png)
 
   Notice that two additional roles have already been automatically assigned: **CONNECT** and **RESOURCE**.  
 
@@ -96,15 +106,15 @@ Now you need to switch to working as the user QTEAM, so you can start the next l
 
 1. Find the card for the user QTEAM and click on the box with the upward pointing arrow at the bottom of the card.
 
-  ![ALT text is not available for this image](images/click-qteam.png)
+  ![Launch QTEAM Database Actions](images/click-qteam.png)
 
 2. Enter the username QTEAM and the password you defined in Task 1 when you created this user.
 
-  ![ALT text is not available for this image](images/qteam-login.png)
+  ![Login as QTEAM](images/qteam-login.png)
 
 3. This will launch the Database Actions Launchpad page.
 
-  ![ALT text is not available for this image](images/database-actions-launchpad.png)
+  ![Database Actions page for QTEAM](images/database-actions-launchpad.png)
 
 
 Now you have connected to your Autonomous Data Warehouse with your new user. You are ready to go to the next lab!
@@ -116,5 +126,5 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 ## Acknowledgements
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
-- Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews
-- Last Updated By - Rick Green, November 2021
+- Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
+- Last Updated By - Ashish Jain, Rick Green, August 2022
