@@ -1,14 +1,13 @@
-# Use Mongo Shell with Autonomous Database
+# Connect to Autonomous Database with Mongo Shell
 
 ## Introduction
 
 In this lab, we are going to connect to the Autonomous Database we provisioned in Lab 2, from the MongoDB shell tool that we installed onto our local machine in Lab 1.
 
-Watch this video for an overview of how to connect the MongoDB shell tool to the Autonomous Database.
-
-[This video shows an overview of the steps in this lab.](youtube:zsGEVvtA4us)
-
 Estimated Time: 15 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Connect to Autonomous Database with Mongo Shell](videohub:1_0dg383er)
 
 ### Objectives
 
@@ -21,11 +20,11 @@ In this lab, you will:
 ### Prerequisites
 
 * Have provisioned an Autonomous JSON Database instance and saved the URLs for Database API for MongoDB.
-* Have provisioned a Compute Node and installed the MongoDB Shell
+* Have installed the MongoDB Shell
 
 You will need the following information, saved from previous labs:
 
-* The URLs for the MongoDB API
+* The URL for the MongoDB API
 
 ## Task 1: Locate or Open Terminal or Command Prompt
 

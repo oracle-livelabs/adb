@@ -4,11 +4,10 @@
 
 This lab will use JSON and SQL in Database Actions from the Autonomous JSON Database page. It shows how we can swap between a document-centric model (MongoDB and Oracle's JSON tool in Database Actions), and a relational model using Oracle's SQL tool in Database Actions.
 
-Watch this video for an overview of how to interact with JSON Documents through database actions.
-
-[This video shows an overview of the steps in this lab.](youtube:pk7YAD-OZBQ)
-
 Estimated Time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Interact with JSON Documents through Database Actions](videohub:1_725rhrqf)
 
 ### Objectives
 
@@ -90,7 +89,7 @@ In this lab, you will:
 
     ![JSON tour](./images/json-tour-2.png " ")
 
-    After the tour, you should see the 'emp' collection you created in Mongo Shell on the left. If it's not shown, click the refresh circle.
+    After the tour, you should see the 'emp' collection you created in Mongo Shell on the left. If it's not shown, click the refresh circle. Then click on the 'emp' collection.
 
     The left-hand side shows collections. The upper right allows us to run queries, and the lower right shows the documents found by that query. An empty search - {} - will show all documents, which is what you should be looking at now. You can confirm using the scroll bar that there are three documents for Blake (Intern), Smith and Miller (Programmers).
 
@@ -136,6 +135,8 @@ In this lab, you will:
     Click the "Clear" button for the existing search, then run another empty search to see all documents.
 
     **Caution:** the same "trashcan" icon is used in two places in the JSON workshop. To the right of "add clause", it means "Clear the current search". On the top row, it means "Delete all documents found by the current query". Don't delete your documents by accident!
+
+    ![clear button and delete documents button](./images/empty-search.png " ")
 
     Finally, let's sort the results of our query, in descending order of salary (so highest first).
 

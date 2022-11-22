@@ -6,16 +6,19 @@ Load movie data that is stored in JSON format into an Autonomous Database collec
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Load and Analyze JSON Data](videohub:1_9hugohpd)
+
 ### Objectives
 
 In this lab, you will:
-* Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` API
+* Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` procedure
 * Use SQL to analyze both simple and complex JSON attributes
 
 
 ### Prerequisites
 
-- This lab requires completion of Lab 1, **Provision an ADB Instance**, in the Contents menu on the left.
+- This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
 
 ## Task 1: Create and load JSON movie collection
 [](include:adb-create-load-json-collection.md)
@@ -26,7 +29,7 @@ In this lab, you will:
 ## Task 3: Analyze complex JSON arrays to find top actors
 [](include:adb-query-json-arrays.md)
 
-Please *proceed to the next lab*.
+Please [*proceed to the next lab*](#next).
 
 ## Acknowledgements
 

@@ -1,4 +1,4 @@
-# Using SQL to work with JSON
+# Use SQL to work with JSON
 
 ## Introduction
 
@@ -11,6 +11,9 @@ A key characteristic of a JSON collection (like 'products') is that it is backed
 In the following, we show you how you can use SQL to work with the JSON data in a collection.
 
 Estimated Time: 30 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Use SQL to work with JSON](videohub:1_mu4tx1rz)
 
 ### Objectives
 

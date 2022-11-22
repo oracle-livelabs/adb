@@ -14,85 +14,34 @@ You can also leave data in place in cloud object storage, and link to it from yo
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
-This workshop explores six methods for loading data into an Oracle Autonomous Database. In this 2nd data loading lab, we practice loading data from public object storage buckets.
+This workshop explores several methods for loading data into an Oracle Autonomous Database. In this first data loading lab, we practice loading data from public object storage buckets.
 
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Load Data from Object Storage Public Buckets](videohub:1_skl03gxs)
 
 ### Objectives
 
 In this lab, you will:
 * Navigate to the Data Load utility of Oracle Autonomous Database Data Tools
-* Learn how to load data from public object storage buckets using Data Tools built-in to Oracle Autonomous Database
+* Learn how to create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous Database
 
 ### Prerequisites
 
-- This lab requires completion of Lab 2, **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
 
 ## Task 1: Navigate to Database Actions and open the Data Load utility
 
 [](include:adb-goto-data-load-utility.md)
 
-## Task 2: Load data from files in public Object Storage buckets using Database Actions tools
+## Task 2: Create tables and load data from files in public Object Storage buckets using Database Actions tools
 
-In this section we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
+This step will create and load the following tables into Autonomous Database: genre, customer_contact, custsales and pizza\_locations.
 
-1. Under **What do you want to do with your data?** select **LOAD DATA**, and under **Where is your data?** select **CLOUD STORAGE**, then click **Next**
+[](include:adb-load-public-db-actions.md)
 
-    ![Select Load Data, then Cloud Storage](images/loadfromstorage.png)
-
-2. This is your first time loading data. Click **Done** on the help tip to set up access to a bucket on Oracle Cloud Infrastructure Object Storage.
-
-    ![Click on Cloud Loactions](images/add-cloud-storage.png)
-
-3. You will need to set up a cloud storage location. A cloud storage location is an object storage bucket that contains your source data. Click **Done** to set up a location.
-
-    ![Add Cloud Storage location](images/goto-addcloudstorage.png)
-
-4. Fill in the cloud location details:
-
-    - In the **Name** field, enter 'MovieStreamLanding'.
-
-      **Note:** Take care not to use spaces in the name.
-
-    - Select **No Credential** as this is a public bucket.
-
-    - Copy and paste the following URI into the URI + Bucket field:
-
-    ```
-    <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
-    </copy>
-    ```
-
-    ![Add Cloud Storage location](images/addcloudstorage-details.png)
-
-    - Then click **Create**. This will return you to the **Load Cloud Object** page.
-
-5. From the MOVIESTREAMLANDING location, drag the **customer_contact** folder over to the right hand pane. Note that a dialog box appears asking if we want to load all the files in this folder to a single target table. In this case, we only have a single file, but we do want to load this into a single table. Click **OK**.
-
-6. Next, drag the **genre** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
-
-7. Click on the pencil icon for the **customer_contact** task to view the settings for this load task.
-
-    ![View settings for customer_contact load task](images/cc-viewsettings.png)
-
-8. Here we can see the list of columns and data types that will be created from the csv file. They all look correct, so click **Close** to close the settings viewer.
-
-9. Click on the pencil icon for the **genre** task to view its settings. This should show just two columns to be created - **GENRE_ID** and **NAME**. Click **Close** to close the settings viewer.
-
-10. Now click on the Play button to run the data load job.
-
-    ![Run the data load job](images/rundataload.png)
-
-    The job should take about 20 seconds to run.
-
-11. Check that all 3 data load cards have green tick marks in them, indicating that the data load tasks have completed successfully.
-
-    ![Check the job is completed](images/loadcompleted.png)
-
-This completes the first data loading lab using public object storage data. In the next lab, we will load local and private object storage data.
-
-Please *proceed to the next lab*.
+Please [proceed to the next lab](#next).
 
 ## Acknowledgements
 

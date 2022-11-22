@@ -1,6 +1,6 @@
 # Introduction
 
-The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. You will create an Oracle Autonomous Database instance, practice several methods for loading and querying data, and develop analytics dashboards using Oracle Analytics Cloud.
+The labs in this workshop walk you through all the steps to get started using **Oracle Autonomous Database**. First, you will create an Oracle Autonomous Database instance. Then, you will practice several methods for loading data from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the data with SQL and build analytics dashboards using Oracle Analytics Cloud.
 
 Estimated Workshop Time: 1.5 hours
 
@@ -20,15 +20,12 @@ In this workshop, we'll start with two key components of MovieStream's architect
 ![architecture](images/architecture.png)
 
 ## **Workshop Objectives**
-- Provision a new Autonomous Database instance on Shared Infrastructure
-- Provision an Oracle Analytics Cloud instance
-- Load data from a file on your local computer
-- Load data from object storage public and private buckets
-- Access and Load Partitioned Object Storage Data
-- Examine the Query Performance Benefits of Partitioned Data
-- Load and Analyze JSON Data
-- Load and Analyze the News from REST Endpoints
-- Visualize your data using Oracle Analytics Cloud
+- Provision a new Oracle Autonomous Database instance
+- Load data from files on your local computer
+- Load data from object storage buckets
+- Use Oracle Analytics Cloud to create compelling dashboards from your data set
+- Load and analyze JSON collections
+- Load the latest news from a public REST service and run a sentiment analysis of that news
 
 ![variety of data loading methods](images/graphic-showing-loading-methods.png)
 
@@ -46,7 +43,7 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 ## Acknowledgements
 
 - **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance; Marty Gubar, ADB Product Management
-- **Last Updated By/Date** - Richard Green, July 2022
+- **Last Updated By/Date** - Richard Green, November 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

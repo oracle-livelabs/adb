@@ -1,4 +1,4 @@
-# Using SODA for REST
+# Use SODA for REST
 
 ## Introduction
 

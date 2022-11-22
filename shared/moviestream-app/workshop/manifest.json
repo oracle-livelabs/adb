@@ -1,0 +1,26 @@
+{
+    "workshoptitle": "Install and Run MovieStream Application",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-connect-with-sql-worksheet-body.md":"/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+        "adb-create-load-json-collection.md":"/building-blocks/tasks/adb/create-load-json-collection.md",
+        "adb-goto-service-body.md":"/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-goto-sql-worksheet.md":"/building-blocks/tasks/adb/goto-sql-worksheet.md",
+        "adb-provision-body.md":"/building-blocks/tasks/adb/provision-body.md",
+        "adb-query-json-arrays.md":"/building-blocks/tasks/adb/query-json-arrays.md",
+        "adb-query-json-simple.md":"/building-blocks/tasks/adb/query-json-simple.md",
+        "adb-query-object-store-contents-with-sql.md":"/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+        "adb-use-partitioned-external-table-body.md":"/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+        "adb-goto-data-load-utility.md":"/building-blocks/tasks/adb/goto-data-load-utility.md",
+        "iam-compartment-create-body.md":"/building-blocks/tasks/iam/compartment-create-body.md"
+      },
+      "variables": ["./variables.json"],
+	"tutorials": [
+        {
+            "title": "Lab 1: Install Demo",
+            "description": "Install MovieStream demo application",
+            "type": "freetier",
+            "filename": "/shared/moviestream-app/readme.md"
+        }
+    ]
+}
