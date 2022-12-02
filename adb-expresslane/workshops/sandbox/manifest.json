@@ -1,0 +1,43 @@
+{
+    "workshoptitle": "Autonmous Database ExpressLane",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "How to use ExpressLane",
+            "filename": "../../expresslane/expresslane.md"
+        },
+        {
+            "title": "Focus Area - ADB",
+            "filename": "../../focus-adb/focus-adb.md"
+        },
+        {
+            "title": "Focus Area - Machine Learning",
+            "filename": "../../focus-ml/focus-ml.md"
+        },
+        {
+            "title": "Focus Area - APEX",
+            "filename": "../../focus-apex/focus-apex.md"
+        },
+        {
+            "title": "Focus Area - Graph & Spatial",
+            "filename": "../../focus-graph/focus-graph.md"
+        },
+        {
+            "title": "Focus Area - Even More",
+            "filename": "../../focus-more/focus-more.md"
+        },
+        {
+            "title": "Clean Up - Terminate ADB",
+            "filename": "https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+    ]
+}
