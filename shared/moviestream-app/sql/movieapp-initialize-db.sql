@@ -9,7 +9,7 @@
 declare
     l_git varchar2(4000);
     l_repo_name varchar2(100) := 'common';
-    l_owner varchar2(100) := 'oracle-livelabs';
+    l_owner varchar2(100) := 'martygubar';
     l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
 begin
     -- get a handle to github
