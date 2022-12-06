@@ -15,7 +15,22 @@ Oracle Autonomous Data Warehouse (ADW) and Autonomous Transaction Processing (AT
 - Learn how to download and configure a connection wallet
 - Query your autonomous database with Oracle SQL Developer
 
-## Task 1: Connect SQL Developer to Database Securely Without Wallet
+### Prerequisites
+This lab assumes you have:
+
+- Performed the previous lab on provisioning an Oracle Autonomous Database
+
+## Task 1: Download and Install Latest Version of SQL Developer
+
+Use the latest version of Oracle SQL Developer (version 22.2.1 as of writing of this workshop). This task will walk you through downloading and installing Oracle SQL Developer in a Windows environment.
+
+1. Download the latest version of Oracle SQL Developer from **[this link](https://www.oracle.com/tools/downloads/sqldev-downloads.html)** for your appropriate platform. In this example, we'll choose Windows 64-bit with JDK 8 included.
+
+2. To install and start SQL Developer, simply download its ZIP file and unzip it into a desired parent directory or folder, and then double-click the executable file named **`sqldeveloper.exe`** to open.
+
+3. When you launch SQL Developer the first time, it will ask you if you want to import a project. Select **No**.
+
+## Task 2: Connect SQL Developer to Database Securely Without Wallet
 
 The first of two methods we'll learn for establishing a secure SQL Developer connection to an autonomous database is to connect securely without a wallet, using TLS authentication.
 
@@ -80,7 +95,7 @@ Next, perform the following steps to obtain the **TLS connection string**.
 
 8. Click **Connect** to connect to the database.
 
-## Task 2: Download the Connection Wallet
+## Task 3: Download the Connection Wallet
 
 In addition to connecting SQL Developer securely without a wallet using TLS, we'll now learn how to connect securely using a connection wallet containing your credentials.
 You can download the wallet either from the instance's details page or from the ADW or ATP service console.
@@ -111,7 +126,7 @@ You can download the wallet either from the instance's details page or from the 
 
 5.  Once the wallet is downloaded, click **Close** to close the Database Connection dialog.
 
-## Task 3: Connect SQL Developer to Database Securely with Wallet
+## Task 4: Connect SQL Developer to Database Securely with Wallet
 
 Start SQL Developer and create a connection for your database using the default administrator account "ADMIN" by following these steps.
 
@@ -134,7 +149,7 @@ Start SQL Developer and create a connection for your database using the default 
 
 4.  If you are behind a VPN or Firewall and this Test fails, make sure you have <a href="https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html" target="\_blank">SQL Developer 18.3</a> or higher. This version and above will allow you to select the "Use HTTP Proxy Host" option for a Cloud Wallet type connection. While creating your new ADW connection here, provide your proxy's Host and Port. If you are unsure where to find this, you may look at your computer's connection settings or contact your Network Administrator.
 
-## Task 4: Query Your Autonomous Database with SQL Developer
+## Task 5: Query Your Autonomous Database with SQL Developer
 
 The SH schema provides a small data set that you can use to run the sample queries in the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/sql-analysis-reporting-data-warehouses.html#GUID-1D8E3429-735B-409C-BD16-54004964D89B" target="\_blank">Database Data Warehousing Guide</a>. For example, the following query shows you how the SQL function RANK() works:
 
@@ -169,4 +184,4 @@ View the blog post ["Connecting to Your Autonomous Database Has Never Been Easie
 
 - **Author** - Richard Green, Principal Developer, Database User Assistance
 - **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, June 2022
+- **Last Updated By/Date** - Richard Green, December 2022
