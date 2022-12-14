@@ -24,55 +24,44 @@
             "filename": "./../../adb-sqldevweb/adb-sqldevweb.md"
         },
         {
-            "title": "Lab 3: Load Data",
-            "description": "Load data into ADB",
-            "type": "freetier",
-            "filename": "./../../adb-loading/adb-loading-conditional.md"
-        },
-        {
-            "title": "Lab 4: Query External Data",
-            "description": "Query Data in External Files",
-            "filename": "./../../adb-query/adb-query.md"
-        },
-        {
-            "title": "Lab 5: Visualize Your Data",
-            "description": "Create Rich Data Visualizations",
-            "filename": "./../../adw-visualizations-using-oad6pt3/adw-visualizations.md"
-        },
-        {
-            "title": "Lab 6: Connect Securely With or Without a Connection Wallet",
+            "title": "Lab 3: Connect Securely With or Without a Connection Wallet",
             "description": "Connecting Securely with or without a Connection Wallet",
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {
-            "title": "Lab 7: Monitor and Manage",
+            "title": "Lab 4: Monitor and Manage",
             "description": "Managing and Monitoring Your Autonomous Database Instance using the Cloud Console",
             "filename": "./../../adw-managing-monitoring/adw-managing-monitoring.md"
         },
         {
-            "title": "Lab 8: Scale for Performance",
+            "title": "Lab 5: Scale for Performance",
             "description": "Scaling and Performance in Your Autonomous Database",
             "filename": "./../../adw-scaling-performance/adw-scaling-performance.md"
         },
         {
-            "title": "Lab 9: Apply Auto Scaling",
+            "title": "Lab 6: Apply Auto Scaling",
             "description": "Auto Scaling an Autonomous Database",
             "filename": "./../../adb-auto-scaling/adb-auto-scaling.md"
         },
         {
-            "title": "Lab 10: Enable Disaster Recovery",
+            "title": "Lab 7: Enable Disaster Recovery",
             "description": "Enable Autonomous Data Guard",
             "filename": "./../../adb-autonomous-data-guard/adb-autonomous-data-guard.md"
         },
         {
-            "title": "Lab 11: Create Refreshable Clones",
+            "title": "Lab 8: Create Refreshable Clones",
             "description": "Creating Refreshable Clones",
             "filename": "./../../adb-refreshable-clones/adb-refreshable-clones.md"
         },
         {
-            "title": "Lab 12: Set Event and Alarm Notifications",
+            "title": "Lab 9: Set Event and Alarm Notifications",
             "description": "Setting Event and Alarm Notifications for an Autonomous Database",
             "filename": "./../../adb-event-alarm/adb-event-alarm.md"
+        },
+        {
+            "title": "Lab 10: Secure Your Data Using Oracle Data Safe",
+            "description": "Become familiar with the features of Oracle Data Safe",
+            "filename": "./../../adb-data-safe/adb-data-safe.md"
         },
         {
             "title": "Need Help?",

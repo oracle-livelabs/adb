@@ -24,13 +24,13 @@ You will run a basic query on the `SSB` data set which is a 1 terabyte data set 
 
 ### Prerequisites
 
-- This lab requires completion of the Provision Autonomous Database lab in the Contents menu on the left.
+- This lab requires completion of the Provision an Autonomous Database lab in the Contents menu on the left.
 
 ## Task 1: Connect with SQL Worksheet
 
 Although you can connect to your Oracle Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your ADW or ATP console.
 
-1.  If you are not logged in to Oracle Cloud Console, log in and select **Autonomous Data Warehouse** from the navigation menu, make sure you are in the right compartment where you ADW is provisioned and navigate into your ADW Finance Mart instance.
+1.  If you are not logged in to Oracle Cloud Console, log in and select **Autonomous Data Warehouse** from the navigation menu, make sure you are in the right compartment where your autonomous database is provisioned and navigate into your ADW Finance Mart instance.
 
     ![Oracle Home page left navigation menu.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
@@ -91,4 +91,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-datab
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Arabella Yao, Product Manager Intern | Ayden Smith, QA Intern)
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Last Updated By/Date** - Richard Green, December 2022
