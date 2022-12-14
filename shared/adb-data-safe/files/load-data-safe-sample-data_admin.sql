@@ -855,6 +855,379 @@ grant select on HCM1.EMP_EXTENDED to APP_USER;
 
 /*************************************************************************************************/
 
+/* BEGIN: SetupTicketProcedure */
+
+alter session set current_schema=admin;
+
+-- Drop existing, if any, custom package, synonym, and context objects. These statements will cause error the first time you run the script. That is acceptable.
+
+drop package TICKETINFO_PKG;
+drop public synonym TICKETINFO_PKG;
+drop context TICKETINFO;
+
+
+select null as "SetupTicketProcedure" from dual;
+
+--
+-- This section creates our Change Control Ticketing Package, Procedure, and Context.
+-- We audit this data with our custom auditing policies.
+--
+
+grant execute on dbms_ldap to SECURE_STEVE with grant option;
+
+create context TICKETINFO using TICKETINFO_PKG;
+
+create or replace package TICKETINFO_PKG as
+    procedure set_value_in_context(p_value in varchar2);
+end TICKETINFO_PKG;
+/
+
+commit;
+
+create or replace package body TICKETINFO_PKG as
+    procedure set_value_in_context(p_value in varchar2) is
+    begin
+         dbms_session.set_context('TICKETINFO', 'TICKET_ID', p_value);
+      end set_value_in_context;
+ end TICKETINFO_PKG;
+ /
+
+commit;
+
+grant execute on ticketinfo_pkg to public;
+
+create public synonym TICKETINFO_PKG for TICKETINFO_PKG;
+
+AUDIT CONTEXT NAMESPACE TICKETINFO ATTRIBUTES TICKET_ID;
+
+
+/*************************************************************************************************/
+
+/* BEGIN: SetupAuditPolicies */
+
+
+-- Create 3 audit policies
+select null as "SetupAuditPolicies" from dual;
+
+-- Create audit policy app_user_not_app_server
+-- The CLIENT_PROGRAM_NAME will not be useful in this example unless you change it to meet your environment.
+-- The concept still works as all users connecting as "HCM_USER" will not meet this criteria and ALL actions will be audited
+-- This policy is purposely not enabled. Students enable it during workshop.
+
+
+-- The following 2 statements will error the first time you run this script. This is expected.
+NOAUDIT POLICY app_user_not_app_server;
+DROP AUDIT POLICY app_user_not_app_server;
+
+CREATE AUDIT POLICY app_user_not_app_server
+  ACTIONS ALL
+     WHEN 'SYS_CONTEXT(''USERENV'', ''SESSION_USER'') in (''APP_USER'',''HCM1'') AND SYS_CONTEXT(''USERENV'', ''CLIENT_PROGRAM_NAME'') != ''AppServer@slc11wwu (TNS V1-V3)'''
+ EVALUATE PER SESSION;
+
+-- Create a second sample Unified Audit Policy to audit whenever PU_PETE SELECTs data from an "HCM" table called "EMPLOYEES"
+-- The following 2 statements will error the first time you run this script. This is expected.
+NOAUDIT POLICY EMPSEARCH_SELECT_USAGE_BY_PETE;
+DROP AUDIT POLICY EMPSEARCH_SELECT_USAGE_BY_PETE;
+
+CREATE AUDIT POLICY EMPSEARCH_SELECT_USAGE_BY_PETE
+     ACTIONS SELECT ON HCM1.EMPLOYEES
+        WHEN 'SYS_CONTEXT(''USERENV'',''SESSION_USER'') = ''PU_PETE'''
+    EVALUATE PER SESSION;
+--AUDIT POLICY EMPSEARCH_SELECT_USAGE_BY_PETE;
+
+-- Create a third sample Unified Audit Policy to audit employee record changes
+-- The following 2 statements will error the first time you run this script. This is expected.
+NOAUDIT POLICY EMP_RECORD_CHANGES;
+DROP AUDIT POLICY EMP_RECORD_CHANGES;
+
+create audit policy EMP_RECORD_CHANGES
+  ACTIONS INSERT ON HCM1.EMPLOYEES
+        , INSERT ON HCM1.EMP_EXTENDED
+        , update ON HCM1.EMPLOYEES
+        , update ON HCM1.EMP_EXTENDED
+	    , DELETE ON HCM1.EMPLOYEES
+        , DELETE ON HCM1.EMP_EXTENDED
+     WHEN 'SYS_CONTEXT(''USERENV'', ''SESSION_USER'') != ''HCM1'''
+ EVALUATE PER SESSION;
+--AUDIT POLICY EMP_RECORD_CHANGES;
+
+-- Enable other audit policies on Autonomous Data Warehouse.
+
+--AUDIT POLICY ORA_DV_AUDPOL2;
+--AUDIT POLICY ORA_CIS_RECOMMENDATIONS;
+--AUDIT POLICY ORA_ACCOUNT_MGMT;
+--AUDIT POLICY ORA_DATABASE_PARAMETER;
+--AUDIT POLICY ORA_LOGON_FAILURES;
+--AUDIT POLICY ORA_DV_AUDPOL;
+--AUDIT POLICY ORA_SECURECONFIG;
+--AUDIT POLICY ORA_RAS_SESSION_MGMT;
+--AUDIT POLICY ORA_RAS_POLICY_MGMT;
+
+
+
+
+/***********************************************************/
+-- ADMIN user activities for Activity Auditing
+/***********************************************************/
+
+select null as "Admin activities" from dual;
+
+
+-- Switch logfile is an example of an action a DBA might take.
+
+alter system switch logfile;
+--ERROR: insufficent privileges (This is expected and can be used for auditing practice)
+
+-- Count sessions
+select count(*) From v$session;
+
+-- Query instance name
+select * from gv$instance;
+
+-- Query processes
+select count(*) from v$process;
+
+-- Query current session information
+select sessions_max, sessions_current, sessions_highwater, users_max from v$license;
+
+-- another query
+select b.paddr , b.name nme, b.description descr, to_char(b.error) cerror from  v$bgprocess b, v$process p where  b.paddr = p.addr;
+
+-- query log information
+select sequence#, group#, first_change#, first_time, archived, bytes from v$log order by sequence#, group#;
+
+-- another query
+select count(*)
+from sys.dba_segments a
+where a.tablespace_name not like 'T%MP%'
+   and nvl(a.next_extent,a.initial_extent) * 1 >
+    (select max(b.bytes) from dba_free_space b where a.tablespace_name = b.tablespace_name);
+
+-- another query
+SELECT count(*)
+FROM (SELECT tablespace_name, SUM (blocks) ublocks
+        FROM dba_segments
+        GROUP BY tablespace_name) s,
+     (SELECT tablespace_name, SUM (blocks) fblocks
+        FROM dba_free_space
+        GROUP BY tablespace_name) f,
+     (SELECT tablespace_name, SUM(blocks) ablocks
+        FROM dba_data_files
+        GROUP BY tablespace_name) a
+WHERE s.tablespace_name = f.tablespace_name and
+      s.tablespace_name = a.tablespace_name and
+      s.tablespace_name not in ('SYSTEM','SYSAUX','TOOLS','UNDO01') and
+      ((s.ublocks/a.ablocks)*100) > 50;
+
+
+
+select null as "Rebuilding Indexes..." from dual;
+
+-- Rebuilding indexes is an example of action a DBA might take
+
+begin
+for x in (select owner, index_name from dba_indexes where owner = 'HCM1') loop
+
+begin
+dbms_output.put_line('rebuilding '||x.owner||'.'||x.index_name||'...');
+execute immediate 'alter index '||x.owner||'.'||x.index_name||' rebuild';
+exception when others then
+ null;
+end;
+
+end loop;
+end;
+/
+
+
+select null as "Grant privileges to PU_PETE..." from dual;
+-- granting selects to users
+
+grant select on HCM1.SUPPLEMENTAL_DATA to PU_PETE;
+grant select on HCM1.EMPLOYEES to PU_PETE;
+grant select on HCM1.EMP_EXTENDED to PU_PETE;
+grant select on HCM1.LOCATIONS to PU_PETE;
+
+
+
+select null as "Show initialization parameter for Optimizer Indexes..." from dual;
+-- ADMIN activities
+
+--show parameter processes
+
+select * from v$parameter where name like '%optimizer_index%';
+
+-- the following statements produce errors (insufficient privileges). This is expected and can be used for auditing practice
+alter system set OPTIMIZER_INDEX_COST_ADJ = 40;
+alter system set timed_statistics = TRUE scope=memory;
+
+select null as "Alter EMPLOYEES table..." from dual;
+
+alter table HCM1.employees modify phone_number varchar2(20);
+
+
+
+-- Drop users
+
+select null as "DROP USERS..." from dual;
+
+drop user MALFOY cascade;
+drop user APP_USER cascade;
+
+-- The following statements will cause an error  the first time you run this script. This is expected.
+drop user VOLDEMORT cascade;
+drop user GRINDELWALD cascade;
+drop user WEASLEY;
+drop user LESTRANGE cascade;
+drop user SKEETER cascade;
+drop user APP_USER cascade;
+
+
+
+-- Create users
+
+select null as "CREATE USERS..." from dual;
+
+-- creating POWERUSERS PROFILE
+-- The following statement will cause an error the first time you run this script. This is expected.
+drop profile POWERUSERS;
+
+create profile POWERUSERS limit
+   FAILED_LOGIN_ATTEMPTS 5
+   PASSWORD_LIFE_TIME 60
+   PASSWORD_REUSE_TIME 60
+   PASSWORD_REUSE_MAX 5
+   PASSWORD_VERIFY_FUNCTION null
+   PASSWORD_LOCK_TIME 1/24
+   PASSWORD_GRACE_TIME 10;
+
+
+create user MALFOY identified by Oracle123_Oracle123;
+
+create user VOLDEMORT identified by Oracle123_Oracle123 profile POWERUSERS password EXPIRE;
+-- ERROR: profile POWERUSERS does not exist  (try creating the profile. if not, take out; remove everything after profile)
+
+create user GRINDELWALD identified by Oracle123_Oracle123;
+
+-- Will get privileges to be flagged as Non-Privileged, Medium Risk
+create user WEASLEY identified by Oracle123_Oracle123;
+create user LESTRANGE identified by Oracle123_Oracle123;
+create user SKEETER identified by Oracle123_Oracle123;
+
+
+create user APP_USER identified by Oracle123_Oracle123;
+
+
+-- User APPX will show up on User Assessment as "Schema" and with Status "Expired and Locked"
+create user APPX identified by Oracle123_Oracle123 account lock password expire;
+-- ERROR: user name 'APPX' conflicts with another user or role name. This is expected.
+
+--
+-- grants
+--
+select null as "Run Grants..." from dual;
+
+grant connect to DBA_HARVEY, MALFOY, PU_PETE, APP_USER, LESTRANGE, SKEETER, VOLDEMORT;
+grant AUDIT_ADMIN to SKEETER;
+grant SYSDBA to LESTRANGE;
+-- ERROR: insufficient privileges (more audit activity)
+
+grant SYSDG to MALFOY;
+-- ERROR: insufficient privileges (more audit activity)
+
+grant SYSKM to VOLDEMORT;
+-- ERROR: insufficient privileges (more audit activity)
+
+grant PDB_DBA to PUBLIC;
+
+grant PDB_DBA to MALFOY;
+
+grant PDB_DBA to PU_PETE;
+
+grant PDB_DBA to DBA_DEBRA;
+
+
+select null as "Grant Roles and System Privileges..." from dual;
+
+grant CAPTURE_ADMIN to DBA_DEBRA;
+
+grant SELECT ANY TABLE to VOLDEMORT;
+
+grant ALTER DATABASE LINK to WEASLEY;
+-- ERROR: ORA-01031: insufficient privileges (good for auditing)
+
+grant CREATE ANY OPERATOR to WEASLEY;
+grant ALTER RESOURCE COST to WEASLEY;
+grant CREATE ROLLBACK SEGMENT to WEASLEY;
+grant SELECT ANY TABLE to WEASLEY;
+
+
+grant update ANY TABLE to WEASLEY;
+
+--The following statement is expected to cause an error (good for auditing)
+grant EXPORT FULL DATABASE to WEASLEY;
+grant SELECT ANY TABLE to HCM1;
+grant update ANY TABLE to HCM1;
+
+select null as "Create Database Directories..." from dual;
+
+create directory BENIGN as '/tmp';
+-- ERROR: ORA-65254: invalid path specified for the directory (create audit info)
+
+create directory TRUSTME as '/tmp';
+-- ERROR: ORA-65254: invalid path specified for the directory (create audit info)
+
+-- To raise 'Directory Objects' finding to High Risk
+grant write, execute on directory BENIGN to GRINDELWALD;
+-- ERROR: ORA-04042: procedure, function, package, or package body does not exist (create audit info)
+
+select null as "Highlight Indirect Grant Privileges..." from dual;
+
+-- To highlight indirect privileges
+-- The following three statements will cause an error the first time you run this script. This is expected.
+drop role approle1;
+drop role approle2;
+drop role approle3;
+
+
+create role approle1;
+create role approle2;
+create role approle3;
+grant create session to approle1;
+grant resource to approle1;
+grant select any table to approle2;
+grant PDB_DBA to approle3;
+grant approle3 to approle2;
+grant approle2 to approle1;
+grant approle1 to GRINDELWALD;
+grant EXECUTE on SYS.DBMS_BACKUP_RESTORE to GRINDELWALD;
+-- ERROR: ORA-00942: table or view does not exist (creates audit info)
+
+
+select null as "Try to grant access to Database Link Passwords..." from dual;
+
+-- To turn "Access to Password Verifier Tables" Evaluate
+grant select on sys.link$ to GRINDELWALD;
+-- ERROR: ORA-00942: table or view does not exist (creates audit info)
+
+drop directory BENIGN;
+-- ERROR: ORA-04043: object BENIGN does not exist (creates audit info)
+
+drop directory TRUSTME;
+-- ERROR: ORA-04043: object TRUSTME does not exist (creates audit info)
+
+
+select null as "Run an Explain Plan on EMPLOYEES..." from dual;
+--
+-- This section is is an example of normal DBA, Application, End-user activity.
+-- These queries should return successful. Queries might fail in ADB.
+--
+
+explain plan for
+select FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, SALARY,COMMISSION_PCT,MANAGER_ID from HCM1.EMPLOYEES where department_id = 80 order by manager_id;
+
+
+
 /***************************************************/
 -- verify that the sample data loaded successfully
 /***************************************************/
