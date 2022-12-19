@@ -1,10 +1,10 @@
 
-drop user moviestream cascade;
-create user moviestream identified by "ironMan_3_pg";
+drop user moviestream cascade; 
+create user moviestream identified by "your-password-#";
 grant unlimited tablespace to moviestream ;
 
 -- Grant roles/privileges to user
-grant dwrole to moviestream ;
+grant dwrole to moviestream;
 grant oml_developer to moviestream ;
 grant graph_developer to moviestream ;
 grant console_developer to moviestream ;

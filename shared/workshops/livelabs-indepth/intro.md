@@ -20,8 +20,10 @@ Oracle’s Autonomous Database is the perfect quick-start service for fast data 
 - Load data from the object store
 - Query external data from the object store
 - Scale an ADB instance
-- Create Oracle Machine Learning SQL notebooks
-- Use the in-database DBMS\_PREDICTIVE\_ANALYTICS functionality
+- Apply auto scaling
+- Enable disaster recovery
+- Create refreshable clones
+- Set event and alarm notifications
 
 **Let's begin! Proceed to the next lab.**
 
@@ -39,6 +41,6 @@ Use these links to get more information about Oracle Autonomous Database:
 
 ## Acknowledgements
 
-- **Author** - Nilay Panchal, ADB Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Madhusudhan Rao, Apr 2022
+- **Author** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance
+- **Adapted for Cloud by** - Richard Green
+- **Last Updated By/Date** - Richard Green, December 2022
