@@ -43,28 +43,28 @@ In this lab, you will:
 
 <if type="freetier">
     - __Choose a compartment__ - You can simply use the default compartment or pick a different one. See [the documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) if you want to learn more about compartments.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __My Quick Start ADB__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __MYQUICKSTART_ADB_.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __MYQUICKSTART__.
 
     ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
 </if>
 <if type="livelabs">
     - __Choose a compartment__ - Use the default compartment created for you.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __My Quick Start ADB__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __MYQUICKSTART_ADB__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __MOVIE+your user id__, for example, __MOVIE9352__.
 
     ![Enter the required details.](./images/livelabs-adwname.png " ")
 </if>
 
-4. Choose __Data Warehouse__ workload type:
+1. Choose __Data Warehouse__ workload type:
 
     ![Choose a workload type.](./images/adb-workload-type.png " ")
 
-5. Choose __Shared Infrastructure__ deployment type:
+2. Choose __Shared Infrastructure__ deployment type:
 
     ![Choose a deployment type.](./images/adb-deployment-type.png " ")
 
-6. Configure the database:
+3. Configure the database:
 
     - __Always Free__ - If your Cloud Account is an Always Free account, you can select this option to create an always free autonomous database. An always free database comes with 1 CPU and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
     - __Choose database version__ - Select 19c as the database version.
@@ -77,7 +77,7 @@ In this lab, you will:
 
     ![Choose the remaining parameters.](./images/adb-configure.png " ")
 
-7. Create administrator credentials:
+4. Create administrator credentials:
 
     - __Password and Confirm Password__ - Specify the password for ADMIN user of the service instance. The password must meet the following requirements:
     - The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character.
@@ -89,7 +89,7 @@ In this lab, you will:
 
     ![Enter password and confirm password.](./images/admin-credential.png " ")
 
-8. Choose network access:
+5. Choose network access:
     - For this lab, accept the default, "Secure access from everywhere."
     - If you want to allow traffic only from the IP addresses and VCNs you specify - where access to the database from all public IPs or VCNs is blocked, select "Secure access from allowed IPs and VCNs only" in the Choose network access area.
     - If you want to restrict access to a private endpoint within an OCI VCN, select "Private endpoint access only" in the Choose network access area.
