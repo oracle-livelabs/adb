@@ -43,7 +43,7 @@ In this lab, you will:
 
 <if type="freetier">
     - __Choose a compartment__ - You can simply use the default compartment or pick a different one. See [the documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) if you want to learn more about compartments.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __MYQUICKSTART_ADB_.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __MYQUICKSTART\_ADB__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __MYQUICKSTART__.
 
     ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
