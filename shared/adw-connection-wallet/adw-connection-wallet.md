@@ -40,7 +40,7 @@ When you provisioned your autonomous database instance with a network access typ
 
 To create a new TLS connection to Autonomous Database:
 
-1. First, define an **IP ACL** (access control list). In the **Autonomous Database Details** page, in the **Network** section, click the **Edit** button next to **Access Control List**.
+1. First, define an **IP ACL** (access control list). In the **Autonomous Database Details** page, in the **Network** section, click the **Edit** button next to **Access control list**.
 
     ![](./images/click-edit-to-create-acl.png " ")
 
@@ -48,7 +48,7 @@ To create a new TLS connection to Autonomous Database:
 
     ![](./images/click-add-my-ip-address.png " ")
 
-3. In the **Autonomous Database Details** page, in the **Network** section, note that the **Access Type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) Authentication**.
+3. In the **Autonomous Database Details** page, in the **Network** section, note that the **Access type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) authentication**.
 
     ![](./images/click-edit-to-uncheck-mtls.png " ")
 
@@ -56,9 +56,11 @@ To create a new TLS connection to Autonomous Database:
 
     ![](./images/deselect-mtls-checkbox.png " ")
 
+    When the update finishes, note that the Mutual TLS (mTLS) Authentication field has changed from Required to Not Required.
+
 Next, perform the following steps to obtain the **TLS connection string**.
 
-5. In the **Autonomous Database Details** page, click the **DB Connection** button.
+5. In the **Autonomous Database Details** page, click the **Database connection** button.
 
     The **Database Connection** dialog pops up. In the **Connection Strings** section, change the **TLS Authentication** selection from Mutual TLS to **TLS**. This will enable SQL Developer and other applications to connect to your autonomous database securely without a wallet.
 
@@ -106,13 +108,13 @@ You can download the wallet either from the instance's details page or from the 
 
     ![](images/step1.1-adb.png " ")
 
-2.  In your database's instance Details page, click on **DB Connection**.
+2.  In your database's instance Details page, click on **Database Connection**.
 
     ![](./images/dbconnection.png " ")
 
 3.  Use the Database Connection dialog to download client credentials.
     - Wallet Type - For this lab, select **Instance Wallet**. This wallet type is for a single database only. This provides a database-specific wallet.
-    - Click **Download Wallet**.
+    - Click **Download wallet**.
 
     ![](./images/Picture100-15.png " ")
 
