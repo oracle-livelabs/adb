@@ -11,9 +11,9 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 ## Task 1: Scaling your Autonomous Database Instance
 
-1. Go back to the Cloud Console you used during the provisioning exercise and open the database instance's Details page. From the **action menu**, click the **More Actions** drop-down menu and select **Manage Scaling**.
+1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage scaling** button.
 
-    ![Click Manage Scaling from More Actions drop down menu.](./images/click-manage-scaling.png " ")
+    ![Click Manage scaling button.](./images/click-manage-scaling.png " ")
 
 2.  Fill in the Manage scaling dialog with the following information:
 
@@ -57,4 +57,4 @@ Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-clo
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - LiveLabs QA Team (Jeffrey Malcolm Jr, Ayden Smith, Arabella Yao)
-- **Last Updated By/Date** - Richard Green, March 2022
+- **Last Updated By/Date** - Richard Green, January 2023
