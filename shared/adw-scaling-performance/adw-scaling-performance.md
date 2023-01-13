@@ -36,7 +36,7 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 5.  When scaling finishes, the message will change to **AVAILABLE**. You may need to refresh the page to see the result of the scale operation.
 
-    ![A refreshed database console page with updated OCPU count and storage.](./images/updated-OCPU-and-storage.png " ")
+    ![A refreshed database console page with updated OCPU count and storage.](./images/updated-ocpu-and-storage.png " ")
 
 ## Task 2: Performance and Concurrency Benefits of Dynamic Scaling
 
