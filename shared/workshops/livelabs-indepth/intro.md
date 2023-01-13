@@ -1,6 +1,6 @@
 # Introduction
 
-The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. You will provision a new ADB instance, load data from the object store and troubleshoot data loads, query external data residing on the object store, manage an ADB instance, scale an ADB instance, and use Oracle Machine Learning notebooks.
+The labs in this workshop show you a variety of ways to manage and monitor your **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. You will provision a new ADB instance, practice connecting to the database securely with and without a connection wallet, examine a variety of ways to monitor database performance and other metrics, apply scaling and auto scaling, enable disaster recovery using Autonomous Data Guard, create refreshable database clones, set event and alarm notifications, and secure your data using Oracle Data Safe.
 
 With Oracle Autonomous Database we make it quick and easy for you to create a secure, fully managed database service in the Oracle Cloud which allows you to start loading and analyzing your data immediately.
 
@@ -24,8 +24,14 @@ Oracle’s Autonomous Database is the perfect quick-start service for fast data 
 - Enable disaster recovery
 - Create refreshable clones
 - Set event and alarm notifications
+- Secure your data using Oracle Data Safe
 
-**Let's begin! Proceed to the next lab.**
+## Workshop Prerequisites
+This workshop requires an Oracle Cloud account. You may use your own cloud account, a cloud account that you obtained through a trial, a Free Tier account, or a training account whose details were given to you by an Oracle instructor.
+
+*Note: If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)***
+
+**You are all set; let's begin! Click Getting Started in the Contents menu on the left.**
 
 ## Learn More
 
@@ -43,4 +49,4 @@ Use these links to get more information about Oracle Autonomous Database:
 
 - **Author** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance
 - **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, December 2022
+- **Last Updated By/Date** - Richard Green, January 2023
