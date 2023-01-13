@@ -42,19 +42,19 @@ To create a new TLS connection to Autonomous Database:
 
 1. First, define an **IP ACL** (access control list). In the **Autonomous Database Details** page, in the **Network** section, click the **Edit** button next to **Access control list**.
 
-    ![](./images/click-edit-to-create-acl.png " ")
+    ![Click the Edit button next to Access control list](./images/click-edit-to-create-acl.png " ")
 
 2. In the **Edit Access Control List** dialog, click **Add My IP Address**. Your computer's IP address will be added as a value. Click **Save Changes**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
 
-    ![](./images/click-add-my-ip-address.png " ")
+    ![Click Add My IP Address and click Save Changes](./images/click-add-my-ip-address.png " ")
 
 3. In the **Autonomous Database Details** page, in the **Network** section, note that the **Access type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) authentication**.
 
-    ![](./images/click-edit-to-uncheck-mtls.png " ")
+    ![Click the Edit button next to Mutual TLS authentication](./images/click-edit-to-uncheck-mtls.png " ")
 
 4. In the **Edit Mutual TLS Authentication** dialog, deselect the checkbox that requires mutual TLS (mTLS) authentication and and click **Save Changes**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
 
-    ![](./images/deselect-mtls-checkbox.png " ")
+    ![Deselect mutual TLS](./images/deselect-mtls-checkbox.png " ")
 
     When the update finishes, note that the Mutual TLS (mTLS) Authentication field has changed from Required to Not Required.
 
@@ -66,24 +66,24 @@ Next, perform the following steps to obtain the **TLS connection string**.
 
     Choose one of the connection strings, such as *adwfinance_high*, and optionally click **Show** to see the contents of the connection string. Then click **Copy** to copy that connection string. Paste the connection string to a notepad for use in a next step. Then click **Close** to close the Database Connection dialog.
 
-    ![](./images/obtain-tls-connect-string.png " ")
+    ![Copy the connection string](./images/obtain-tls-connect-string.png " ")
 
     See the documentation [View TNS Names and Connection Strings for an Autonomous Database Instance] (https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/cswgs/autonomous-connection-strings-view.html#GUID-BE884A1B-034D-4CD6-9B71-83A4CCFDE9FB) for more information on viewing and copying connection strings.
 
 6. Start Oracle SQL Developer and in the connections panel, click the **New Connection....** button.
 
-    ![](./images/click-new-database-connection.png " ")
+    ![Click the New Connection button](./images/click-new-database-connection.png " ")
 
 7. Enter the following information:
-- **Name**: Enter a name for this connection, such as **connection without wallet using TLS**.
-- **Username**: Enter the database username. You can either use the default administrator database account ADMIN provided as part of the service or create a new schema, and use it.
-- **Password**: Enter the password you created for the database user.
-- **Connection Type**: Select **Custom JDBC**.
-- **Custom JDBC URL**: Enter the following:
+  - **Name**: Enter a name for this connection, such as **connection without wallet using TLS**.
+  - **Username**: Enter the database username. You can either use the default administrator database account ADMIN provided as part of the service or create a new schema, and use it.
+  - **Password**: Enter the password you created for the database user.
+  - **Connection Type**: Select **Custom JDBC**.
+  - **Custom JDBC URL**: Enter the following:
 
     **jdbc:oracle:thin:@ followed by the connection string you copied in Step 5.**
 
-    ![](./images/sql-dev-connection-dialog.png " ")
+    ![Enter information in the New Connection dialog](./images/sql-dev-connection-dialog.png " ")
 
     For example, the value for the **Custom JDBC URL** field might look something like this (where we masked some values with XXXXXXXXXXXXXX):
 
@@ -93,7 +93,7 @@ Next, perform the following steps to obtain the **TLS connection string**.
     (security=(ssl_server_cert_dn="CN=adwc-XXXXXXXXXXXXXX.region.oraclecloud.com, OU=Oracle BMCS US, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
     ````
 
-    When you copy the connection string, the values for **region** and **databasename** are for your Oracle Autonomous Database instance.
+When you copy the connection string, the values for **region** and **databasename** are for your Oracle Autonomous Database instance.
 
 8. Click **Connect** to connect to the database.
 
@@ -104,19 +104,19 @@ You can download the wallet either from the instance's details page or from the 
 
 1.  If you are not logged in to Oracle Cloud Console, login and select Autonomous Data Warehouse from the hamburger menu and navigate into your ADW Finance Mart instance.
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+    ![Navigate to your ADW Finance Mart database](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
-    ![](images/step1.1-adb.png " ")
+    ![Select your database](images/select-your-database.png " ")
 
-2.  In your database's instance Details page, click on **Database Connection**.
+2.  In your database's instance Details page, click **Database connection**.
 
-    ![](./images/dbconnection.png " ")
+    ![Click the Database connection button](./images/dbconnection.png " ")
 
 3.  Use the Database Connection dialog to download client credentials.
     - Wallet Type - For this lab, select **Instance Wallet**. This wallet type is for a single database only. This provides a database-specific wallet.
     - Click **Download wallet**.
 
-    ![](./images/Picture100-15.png " ")
+    ![Download the wallet](./images/download-the-wallet.png " ")
 
     *Note: Oracle recommends that you provide a database-specific wallet, using Instance Wallet, to end users and for application use whenever possible. Regional wallets should only be used for administrative purposes that require potential access to all Autonomous Databases within a region.*
 
@@ -124,7 +124,7 @@ You can download the wallet either from the instance's details page or from the 
 
     *Note: If you are prevented from downloading your Connection Wallet, it may be due to your browser's pop-up blocker. Please disable it or create an exception for Oracle Cloud domains.*
 
-    ![](./images/Picture100-16.png " ")
+    ![Specify a password for the wallet](./images/specify-wallet-password.png " ")
 
 5.  Once the wallet is downloaded, click **Close** to close the Database Connection dialog.
 
@@ -134,7 +134,7 @@ Start SQL Developer and create a connection for your database using the default 
 
 1.  Click the **New Connection** icon in the Connections toolbox on the top left of the SQL Developer homepage.
 
-    ![](./images/snap0014653.jpg " ")
+    ![Click the New Connection icon](./images/click-new-connection-icon.jpg " ")
 
 2.  In **New / Select Database Connection** dialog, Fill in the connection details as below:
 
@@ -145,7 +145,7 @@ Start SQL Developer and create a connection for your database using the default 
     -   **Configuration File:** Enter the full path for the wallet file you downloaded before, or click **Browse...** to point to the location of the file.
     -   **Service:** There are 3 pre-configured database services for each database. Pick **<*databasename*>\_high** for this lab. For example, if the database you created was named adwfinance, select **adwfinance_high** as the service.
 
-    ![](./images/Picture100-18.jpg " ")
+    ![Fill in the connection details](./images/fill-connection-details.jpg " ")
 
 3.  Test your connection by clicking the **Test** button. If it succeeds, you will see *Status: Success*, you can save your connection information by clicking **Save**, then connect to your database by clicking the **Connect** button. An entry for the new connection will appear under Connections.
 
@@ -172,7 +172,7 @@ The SH schema provides a small data set that you can use to run the sample queri
     </copy>
     ````
 
-    ![](./images/sh-query-results.jpg " ")
+    ![Results of performing a query against SH](./images/sh-query-results.jpg " ")
 
 ## Want to Learn More?
 
