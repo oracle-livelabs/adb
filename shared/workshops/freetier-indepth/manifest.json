@@ -29,8 +29,8 @@
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {
-            "title": "Lab 4: Monitor and Manage",
-            "description": "Managing and Monitoring Your Autonomous Database Instance using the Cloud Console",
+            "title": "Lab 4: Monitor Your Database",
+            "description": "Monitoring Your Autonomous Database Instance using the Cloud Console",
             "filename": "./../../adw-managing-monitoring/adw-managing-monitoring.md"
         },
         {

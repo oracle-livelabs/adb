@@ -40,7 +40,7 @@ In this lab, you'll:
 
 ## Task 1: Create a Table in the Source Database
 
-1. Navigate to your existing **ADW Finance Mart** database instance that you created in this workshop's "Provision Autonomous Database" lab. (Alternatively, create a new database as your source.) Insert a line of data into this source database before you clone it, by opening a Database Actions worksheet via the **Tools** tab in the Autonomous Database Details page of the OCI console. Connect to Database Actions as the user named **admin** with the password you created for the admin user in the Getting Started lab. On the Database Actions **Launchpad**, under the **Development** heading, click **SQL**.
+1. Navigate to your existing **ADW Finance Mart** database instance that you created in this workshop's "Provision Autonomous Database" lab. (Alternatively, create a new database as your source.) Insert a line of data into this source database before you clone it, by opening a Database Actions worksheet via the **Tools** tab in the Autonomous Database Details page of the OCI console. Connect to Database Actions as the user named **admin** with the password you created for the admin user in the Provision Autonomous Database lab. On the Database Actions **Launchpad**, under the **Development** heading, click **SQL**.
 
   ![ALT text is not available for this image](images/database-actions-launchpad-click-sql.png)
 
@@ -59,7 +59,7 @@ In this lab, you'll:
 
 Now that you have created a table in the source database and populated it with a row of data, you will create a refreshable clone from the source database.
 
-1. Return to the Autonomous Database Details page of your source database. From the **More Actions** drop-down menu, select **Create Clone**.
+1. Return to the Autonomous Database details page of your source database. From the **More actions** drop-down menu, select **Create clone**.
   ![ALT text is not available for this image](images/select-create-clone.png)
 
 2. Select the **Refreshable Clone** option. Note the text describing it; a refreshable clone must be refreshed every 7 days or less, otherwise it falls too far out of sync from the source and can no longer be refreshed.
