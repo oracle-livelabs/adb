@@ -24,10 +24,10 @@
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 3: Load data from local files",
+          "title": "Lab 3: Loading data from local files",
           "description": "Load data into ADB from local files",
           "type": "livelabs",
-          "filename": "./../../updatepathtomd"
+          "filename": "./../../3-loadlocal.md"
       },
       {
           "title": "Lab 4: Load data from cloud storage",
