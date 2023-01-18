@@ -4,8 +4,6 @@
 
 ### Preparation
 
-...
-
 Below are the files that you will be using during this part of the workshop. Before you can begin, you need to download these files to your local computer and make a note of where they are stored, because you will need to use them later in this section. Click each of the links below to download the files.
 
 - Click **[here](https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream-QTEAM-Download/o/Days_Months.xlsx)** to download the **Days\_Months.xlsx** Excel file to your local computer.
