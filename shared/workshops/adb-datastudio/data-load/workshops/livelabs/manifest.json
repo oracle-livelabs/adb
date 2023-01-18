@@ -1,0 +1,53 @@
+{
+  "workshoptitle": "Loading the Autonomous Database with Data Studio",
+    "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+      {
+          "title": "Get Started",
+          "description": "Login to Oracle Cloud",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+      },
+    {
+        "title": "Introduction",
+        "description": "Introduction to ADB on Shared Infrastructure",
+        "filename": "./intro.md"
+    },
+      {
+          "title": "Lab 1: Provision an Autonomous Database",
+          "description": "Provision Autonomous Database",
+          "type": "livelabs",
+          "filename": "./../../adb-provision/adb-provision-conditional.md"
+      },
+      {
+          "title": "Lab 2: Create a User",
+          "description": "Create a database user",
+          "filename": "./../../updatepathtomd"
+      },
+      {
+          "title": "Lab 3: Load data from local files",
+          "description": "Load data into ADB from local files",
+          "type": "livelabs",
+          "filename": "./../../updatepathtomd"
+      },
+      {
+          "title": "Lab 4: Load data from cloud storage",
+          "description": "Load data into the ADB from cloud storage",
+          "filename": "./../../updatepathtomd"
+      },
+      {
+          "title": "Lab 5: Link to data in cloud storage",
+          "description": "Link to files in cloud storage",
+          "filename": "./../../updatepathtomd"
+      },
+      {
+          "title": "Lab 6: Feed data from cloud storage",
+          "description": "Create a regularly scheduled feed of data from cloud storage",
+          "filename": "./../../updatepathtomd"
+      },
+      {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+      }
+    ]
+}
