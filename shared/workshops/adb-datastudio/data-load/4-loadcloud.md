@@ -15,29 +15,57 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/go-to-dataload.png)
 2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
   ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
-3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location using the following URI:
+3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMLANDING**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
+ ```
+    $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o</copy>
+ ```
 
-    ![ALT text is not available for this image](images/cloudstorage1.png)
+  ![Cloud Location configuration showing complete URI](images/cloudstorage1.png)
 
   Your completed form should look like the one above. When you have completed these details, click **Next**.
 
-  4. The **Cloud Data** page allows you to verify your cloud storage connection by showing a preview of the files contained in it. This is useful to ensure the location is set up correctly.
+ 4. The **Cloud Data** page allows you to verify your cloud storage connection by showing a preview of the available objects contained in it. This is useful to ensure the location is set up correctly. In this case, this should look as below:
+
+   ![Contents of moviestream landing area](images/cloudstorage2.png)
+
+ 5. Click the **Create** button to complete the registration of this cloud location.
 
 ### Load Data Files from A Cloud Storage Location
 
-4. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Storage **and then click the blue **Next** button. 
-  ![ALT text is not available for this image](images/2879071251.png)
-21. Now you see a file browser-like view of your Object Store. Locate the file **Movie\_Sales\_2020.csv** in the left part of the screen. Click and drag this file onto the canvas on the right. 
-  ![ALT text is not available for this image](images/2879071252.png)
-22. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. 
-  ![ALT text is not available for this image](images/sales-data.png)
-23. You can use this page to quickly review the properties sheet and make any changes to column names or data types. As soon as you are satisfied with the format, you can close the form and then click the **green arrow** button to start your data load job. 
-  ![ALT text is not available for this image](images/load-movie-sales.png)
+ 6. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store** and then click the blue **Next** button. 
+  ![The Data Load page with Load Data and Cloud Store selected](images/loadcloud1.png)
 
-### Inspect Data In Table MOVIE\_SALES\_2020
+ 7. Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer_extension**, **customer_segment** and **pizza_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
+  ![The Data Load page with a card created for each file we want to load](images/loadcloud2.png)
 
-24. Navigate to the **Data Load** main page and click the **Explore** card. You'll now see table MOVIE\_SALES\_2020 has been loaded into your Autonomous Data Warehouse.
-25. Click this table and then click **Source Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table. In this case, this data presents a nice simple way to characterize the data you've just loaded. 
-  ![ALT text is not available for this image](images/explore-sales.png)
+**Note**: The selection of a folder allows the loading of multiple files that are in the same structure into a single table. If you drag and drop a folder, rather than a file, a prompt appears to confirm that you want to load all files in this folder into a single table. In this case, all our folders contain a single file, so you can just say Yes to the prompt. If you have a folder containing files in different structures and you want to load many of them, you should drag across each file separately so that separate tables can be created, each with the correct columns and data.
+
+8. As before, you can edit the properties of each of the data loading tasks by opening the menu on the right-hand side of each card and selecting **Settings**. Do this for the **activity** load task: 
+  ![Accessing the settings for the data load task for activities](images/activity-settings.png)
+
+9. On this page, we can check the properties of the load task, and make any changes to column names or data types. 
+
+  ![Properties of the data load task for activities](images/activity-columns.png)
+
+Note that the Data Type for three of the columns (cust_id, genre_id and movie_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length/Precision yourself so that this analysis is avoided.
+
+In this case there is no need to make any changes. You can close the form and then click the **green arrow** button to start your data load job. 
+
+  ![The toolbar with the Start button selected](images/cloudload-start.png)
+
+The job should take less than a minute to complete. You can see the number of rows loaded into each table.
+
+  ![All cloud data load tasks completed, with row counts](images/cloudload-complete.png)
+
+### Inspect the newly loaded tables
+
+10. Click on **Catalog** from the Data Studio navigation menu on the left hand side. 
+
+  ![The Data Studio menu with Catalog selected](images/launch-catalog.png)
+
+Under **Saved Searches** on the right hand side, click on **Tables, views and analytic views owned by QTEAM** to see a list of the tables you have created in this and previous labs.
+
+11. Click the **ACTIVITY** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly.
+
+  ![ALT text is not available for this image](images/explore-activity.png)
