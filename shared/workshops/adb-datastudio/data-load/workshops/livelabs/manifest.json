@@ -9,8 +9,8 @@
       },
     {
         "title": "Introduction",
-        "description": "Introduction to ADB on Shared Infrastructure",
-        "filename": "./intro.md"
+        "description": "Introduction to this workshop",
+        "filename": "./../../0-introduction.md"
     },
       {
           "title": "Lab 1: Provision an Autonomous Database",
@@ -24,23 +24,28 @@
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 3: Loading data from local files",
-          "description": "Load data into ADB from local files",
+          "title": "Lab 3: Introduction to Data Studio",
+          "description": "Introduction to Data Studio",
           "type": "livelabs",
-          "filename": "./../../3-loadlocal.md"
+          "filename": "./../../3-studio-overview"
       },
       {
-          "title": "Lab 4: Load data from cloud storage",
-          "description": "Load data into the ADB from cloud storage",
+          "title": "Lab 4: Load data from local files",
+          "description": "Load data into the database from local files",
+          "filename": "./../../4-loadlocal.md"
+      },
+      {
+          "title": "Lab 5: Load data from cloud storage",
+          "description": "Load data into the database from cloud storage",
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 5: Link to data in cloud storage",
-          "description": "Link to files in cloud storage",
+          "title": "Lab 6: Link to data in cloud storage",
+          "description": "Create external tables linking to data in cloud storage",
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 6: Feed data from cloud storage",
+          "title": "Lab 7: Feed data from cloud storage",
           "description": "Create a regularly scheduled feed of data from cloud storage",
           "filename": "./../../updatepathtomd"
       },

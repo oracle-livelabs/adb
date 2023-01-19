@@ -176,6 +176,6 @@ In a few clicks, you were able to define and load data into four new tables with
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews Product Management, Autonomous Database, March 2021
+- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
 - Last Updated By - Mike Matthews, January 2023
