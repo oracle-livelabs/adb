@@ -6,7 +6,7 @@ This lab introduces the Data Studio application built into the Oracle Autonomous
 
 This lab, and the full functionality of Data Studio, is applicable to both Autonomous Data Warehouse (ADW) and Autonomous Transaction Processing (ATP) databases. 
 
-Estimated Time: 1 hour, 15 minutes
+Estimated Time: 10 minutes
 
 Watch the video below for a quick walk through of the lab.
 
@@ -18,11 +18,6 @@ In this lab, you will:
 
 - Familiarize yourself with the Data Studio application
 - Load data from local files
-- Load data from cloud storage
-- Learn how to resolve errors in a data loading process
-- Link to data in cloud storage
-- Set up a regularly scheduled feed of data from cloud storage
-- Load data from another database
 
 ### Prerequisites
 

@@ -1,5 +1,7 @@
 {
   "workshoptitle": "Loading the Autonomous Database with Data Studio",
+  "variables": ["../../variables/variables.json",
+                 "../../variables/variables-in-another-file.json"],
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
@@ -24,28 +26,23 @@
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 3: Introduction to Data Studio",
-          "description": "Introduction to Data Studio",
+          "title": "Lab 3: Load data from local files",
+          "description": "Introducing Data Studio and how to load data from local files",
           "type": "livelabs",
-          "filename": "./../../3-studio-overview"
+          "filename": "./../../3-loadlocal.md"
       },
       {
-          "title": "Lab 4: Load data from local files",
-          "description": "Load data into the database from local files",
-          "filename": "./../../4-loadlocal.md"
-      },
-      {
-          "title": "Lab 5: Load data from cloud storage",
+          "title": "Lab 4: Load data from cloud storage",
           "description": "Load data into the database from cloud storage",
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 6: Link to data in cloud storage",
+          "title": "Lab 5: Link to data in cloud storage",
           "description": "Create external tables linking to data in cloud storage",
           "filename": "./../../updatepathtomd"
       },
       {
-          "title": "Lab 7: Feed data from cloud storage",
+          "title": "Lab 6: Feed data from cloud storage",
           "description": "Create a regularly scheduled feed of data from cloud storage",
           "filename": "./../../updatepathtomd"
       },
