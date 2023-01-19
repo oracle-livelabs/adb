@@ -38,7 +38,7 @@ The first facility that we will look at for monitoring your autonomous database 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
 ## Task 2: Examine Database Metrics
-The Metrics section displays an initial set of 6 graphs to examine database metrics. There are links to drill down to many additional graphs.
+The Metrics section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
 
 1. Scroll through the 8 initial graphs: CPU Utilization, Storage Utilization, Sessions, Execute Count, Running Statements, Queued Statements, Database Availability, and Failed Connections.
 
