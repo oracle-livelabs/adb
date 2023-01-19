@@ -1,7 +1,16 @@
 {
   "workshoptitle": "Loading the Autonomous Database with Data Studio",
-  "variables": ["../../variables/variables.json",
-                 "../../variables/variables-in-another-file.json"],
+  "include": 
+  {
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+    "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+    "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
+    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+    "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
+  },
+  "variables": ["../../variables/variables.json"],
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
@@ -18,7 +27,7 @@
           "title": "Lab 1: Provision an Autonomous Database",
           "description": "Provision Autonomous Database",
           "type": "livelabs",
-          "filename": "./../../adb-provision/adb-provision-conditional.md"
+          "filename": "./../../../../adb-provision/adb-provision-conditional.md"
       },
       {
           "title": "Lab 2: Create a User",
@@ -34,7 +43,7 @@
       {
           "title": "Lab 4: Load data from cloud storage",
           "description": "Load data into the database from cloud storage",
-          "filename": "./../../updatepathtomd"
+          "filename": "./../../4-loadcloud.md"
       },
       {
           "title": "Lab 5: Link to data in cloud storage",

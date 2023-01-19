@@ -34,7 +34,7 @@
       {
           "title": "Lab 4: Load data from cloud storage",
           "description": "Load data into the database from cloud storage",
-          "filename": "./../../updatepathtomd"
+          "filename": "./../../4-loadcloud.md"
       },
       {
           "title": "Lab 5: Link to data in cloud storage",
