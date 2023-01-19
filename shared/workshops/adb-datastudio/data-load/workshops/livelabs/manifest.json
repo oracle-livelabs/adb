@@ -1,16 +1,5 @@
 {
   "workshoptitle": "Loading the Autonomous Database with Data Studio",
-  "include": 
-  {
-    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
-    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
-    "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
-    "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
-    "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
-    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
-    "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
-  },
-  "variables": ["../../variables/variables.json"],
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
@@ -27,12 +16,12 @@
           "title": "Lab 1: Provision an Autonomous Database",
           "description": "Provision Autonomous Database",
           "type": "livelabs",
-          "filename": "./../../../../adb-provision/adb-provision-conditional.md"
+          "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
       },
       {
           "title": "Lab 2: Create a User",
           "description": "Create a database user",
-          "filename": "./../../updatepathtomd"
+          "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
       },
       {
           "title": "Lab 3: Load data from local files",
