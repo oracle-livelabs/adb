@@ -1,4 +1,33 @@
-### Load Data from Cloud Storage
+# Using Data Studio to load data from Cloud Storage
+
+## Introduction
+
+This lab shows how to connect your Autonomous Database to a cloud storage system so that it can load data from it, and link to data in it.
+
+Estimated Time: 20 minutes
+
+Watch the video below for a quick walk through of the lab.
+
+[](youtube:youtubeid)
+
+### Objectives
+
+In this lab, you will:
+
+- Connect your Autonomous Database to a cloud storage system
+- Load data into new tables in the database from cloud storage
+- Learn how to review and resolve common issues when loading data
+
+### Prerequisites
+
+To complete this lab, you need to have completed Labs 1 and 2 in this workshop, so that you have:
+
+- Created an Autonomous Data Warehouse instance
+- Created a new QTEAM user
+
+You do not need to have completed Lab 3.
+
+## Task 1: Connect to Cloud Storage
 
 In the previous lab, you loaded data from files that you located on your local computer. In this lab, you are going to load some more data, but this time using files on cloud storage.
 
@@ -9,7 +38,7 @@ There are two parts to this process, and the first part only needs to be perform
 
 Note that in this example, we will be using files on Oracle Cloud Infrastructure Object Storage. However, the process is the same for loading files from other cloud storage systems, such as Amazon Web Services S3, Azure Storage, and Google Cloud Platform Storage.
 
-### Set Up Cloud Location
+### Set Up a Cloud Location
 
 1. To begin this process, you need to navigate to the **Data Load** page in Data Studio. 
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/go-to-dataload.png)
@@ -31,20 +60,20 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
  5. Click the **Create** button to complete the registration of this cloud location.
 
-### Load Data Files from A Cloud Storage Location
+## Task 2: Load Data Files from a Cloud Location
 
- 6. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store** and then click the blue **Next** button. 
+1. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store** and then click the blue **Next** button. 
   ![The Data Load page with Load Data and Cloud Store selected](images/loadcloud1.png)
 
- 7. Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer_extension**, **customer_segment** and **pizza_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
+2. Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer_extension**, **customer_segment** and **pizza_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
   ![The Data Load page with a card created for each file we want to load](images/loadcloud2.png)
 
 **Note**: The selection of a folder allows the loading of multiple files that are in the same structure into a single table. If you drag and drop a folder, rather than a file, a prompt appears to confirm that you want to load all files in this folder into a single table. In this case, all our folders contain a single file, so you can just say Yes to the prompt. If you have a folder containing files in different structures and you want to load many of them, you should drag across each file separately so that separate tables can be created, each with the correct columns and data.
 
-8. As before, you can edit the properties of each of the data loading tasks by opening the menu on the right-hand side of each card and selecting **Settings**. Do this for the **activity** load task: 
+3. As before, you can edit the properties of each of the data loading tasks by opening the menu on the right-hand side of each card and selecting **Settings**. Do this for the **activity** load task: 
   ![Accessing the settings for the data load task for activities](images/activity-settings.png)
 
-9. On this page, we can check the properties of the load task, and make any changes to column names or data types. 
+4. On this page, we can check the properties of the load task, and make any changes to column names or data types. 
 
   ![Properties of the data load task for activities](images/activity-columns.png)
 
@@ -58,7 +87,21 @@ The job should take less than a minute to complete. You can see the number of ro
 
   ![All cloud data load tasks completed, with row counts](images/cloudload-complete.png)
 
-### Inspect the newly loaded tables
+## Task 3: Review and resolve data loading issues
+
+In this task, we are going to load a file that contains a few minor data issues that will stop it from loading fully. We will learn how to resolve the loading issues so that we load the data fully. Note that the data issues themselves can then be fixed using the built-in **Data Transforms** component of Data Studio, though we will not do this in the lab.
+
+### Add another cloud location
+
+First, we need to add another cloud location. In this case, we are going to download a file directly from Github. 
+
+1. Go back to Cloud Locations under Data Load, in the Data Studio interface:
+
+  ![Screenshot showing the navigation to Data Load, Cloud Locations](images/go-to-cloudlocations.png)
+
+2.  
+
+## Inspect the newly loaded tables
 
 10. Click on **Catalog** from the Data Studio navigation menu on the left hand side. 
 
@@ -69,3 +112,9 @@ Under **Saved Searches** on the right hand side, click on **Tables, views and an
 11. Click the **ACTIVITY** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly.
 
   ![ALT text is not available for this image](images/explore-activity.png)
+
+## Acknowledgements
+
+- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
+- Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
+- Last Updated By - Mike Matthews, January 2023
