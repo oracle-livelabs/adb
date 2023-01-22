@@ -23,7 +23,7 @@ Watch a video demonstration of monitoring an Oracle Autonomous Database.
 In this lab, you'll
 -   Examine the charts in the Metrics section of the Autonomous Database details Page
 -   Explore the charts in the Database dashboard
--   Explore more charts in the Performane hub
+-   Explore more charts in the Performance hub
 -   Examine the database monitoring charts in the OCI Monitoring Console
 
 ### Prerequisites
@@ -38,6 +38,7 @@ The first facility that we will look at for monitoring your autonomous database 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
 ## Task 2: Examine Database Metrics
+
 The Metrics section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
 
 1. Scroll through the 8 initial graphs: CPU Utilization, Storage Utilization, Sessions, Execute Count, Running Statements, Queued Statements, Database Availability, and Failed Connections.
