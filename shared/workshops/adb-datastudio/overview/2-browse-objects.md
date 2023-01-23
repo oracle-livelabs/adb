@@ -101,6 +101,7 @@ use the Catalog tool to browse the objects and find what we need.
     This will search for all the columns with "AGE" in the column name.
     
     We can explicitly search for GROUP as well but we don't see any.
+    It means we don't have any tables or columns with text GROUP in the name.
     
 
 ![Screenshot of searcing for column names](images/image7_catalog_search_cols.png)

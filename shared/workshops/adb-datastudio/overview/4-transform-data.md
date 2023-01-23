@@ -60,10 +60,10 @@ Now you are ready to go through rest of the labs in this workshop.
 For this lab we will try to find high value customers. We can use sales data to assign
 customer value. We can rank the customers into five quintiles based on
 how much they have paid for movies and load into a new
-**CUSTOMER_SALES_ANALYSIS** table.
+**CUSTOMER\_SALES\_ANALYSIS** table.
 
 We will also denormalized this table with interesting customer
-attributes for analysis from **CUSTOMER_CA, AGE_GROUP** and **GENRE**
+attributes for analysis from **CUSTOMER\_CA, AGE\_GROUP** and **GENRE**
 table.
 
 This is an example of preparing data for an intended purpose. Our
@@ -168,8 +168,8 @@ Now we are ready to prepare the data.
 ![Screenshot of data flow name](images/image22_transform_name.png)
 
 3.  Select the only connection from the dropdown list and pick **QTEAM**
-    from the schema drop down list.\
-    \
+    from the schema drop down list.
+    
     Click on **Save**.
 
 ![Screenshot of data flow source connection](images/image23_transform_source.png)
@@ -240,8 +240,8 @@ You can also refresh the data entities any time with the refresh icon.
     right-side properties panel. You should also expand the properties
     panel by clicking on the extreme right corner icon.
 
-Use this process to edit properties for the transforms for the remaining
-of the workshop.
+    Use this process to edit properties for the transforms for the remaining
+    of the workshop.
 
 ![Screenshot of aggregate attributes](images/image28_agg_attr.png)
 
@@ -275,20 +275,20 @@ of the workshop.
 13. This will open the expression editor. You can drag source attributes
     from the left side in the editor and write a suitable expression.
 
-Enter the following expression: **SUM ( MOVIESALES_CA.TOTAL_SALES )**
+    Enter the following expression: **SUM ( MOVIESALES_CA.TOTAL_SALES )**
 
-Click **OK**
+    Click **OK**
 
 ![Screenshot of mapping expression editor](images/image33_agg_map_exp_edit_ui.png)
 
 14. Review the screenshot below. **CUST_SALES** attribute is mapped to
     the sum of **TOTAL_SALES** grouped by **CUST_ID**.
 
-Now collapse the properties panel by clicking on icon on the right
-corner.
+    Now collapse the properties panel by clicking on icon on the right
+    corner.
 
-You will follow similar process for editing the properties in the rest
-of the workshop.
+    You will follow similar process for editing the properties in the rest
+    of the workshop.
 
 ![Screenshot of closing property page](images/image34_agg_prop_collapse.png)
 
@@ -300,10 +300,10 @@ of the workshop.
 
 16. In the Attribute section, click on the **OUTPUT1**.
 
-Change the name **Return** to **CUST_VALUE**. QuintileBinning output
-will go into **CUST_VALUE** attribute.
+    Change the name **Return** to **CUST_VALUE**. QuintileBinning output
+    will go into **CUST_VALUE** attribute.
 
-Confirm that you have changed the name.
+    Confirm that you have changed the name.
 
 ![Screenshot of binning output name change](images/image36_binning_output.png)
 
@@ -373,7 +373,7 @@ Confirm that you have changed the name.
 ![Screenshot of movie sales and genre join](images/image40_sales_genre_join.png)
 
 21. We have completed the data flow. It may look complex, but one can
-    visualize it step by step transformations. Now we need to write it
+    visualize it's step by step transformations. Now we need to write it
     to a new **CUSTOMER_SALES_ANALYSIS** table.
 
     Click on the tiny grid at the corner to the end of the data flow (last
@@ -414,7 +414,7 @@ Confirm that you have changed the name.
     manually if you know the name and data type, or you can cancel it
     and redo the process again.
 
-Click **Save**
+    Click **Save**
 
 ![Screenshot of reviewing target columns](images/image44_target_review.png)
 
@@ -457,6 +457,10 @@ Click **Save**
     and validate it by clicking on the validate icon (looks like small
     check mark).
 
+    It should show no errors. If you do get an error then go back to your data 
+    flow steps and fix it. Most probably errors are due to unmapped attributes 
+    or incorrect expressions.
+
 ![Screenshot of validating data flow](images/image48_transform_validate.png)
 
 29. Now execute it by clicking on the small triangle in the circle.
@@ -493,7 +497,7 @@ ANYSIS** tool to analyze this data and find many interesting patterns.
 We have scratched only the surface of possibilities in Data Transforms.
 Other features are:
 
--   Verity of data sources: Databases, Object Store, REST API and Fusion
+-   Variety of data sources: Databases, Object Store, REST API and Fusion
     Application
 
 -   Load Data: Loading multiple tables in a schema from another data

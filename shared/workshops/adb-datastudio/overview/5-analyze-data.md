@@ -24,6 +24,29 @@ in the first lab and then create remaining objets by running the following scrip
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
 
 ```
+DROP TABLE AGE_GROUP
+;
+
+CREATE TABLE AGE_GROUP 
+    ( 
+     MIN_AGE   NUMBER , 
+     MAX_AGE   NUMBER , 
+     AGE_GROUP VARCHAR2 (4000) 
+    ) 
+;
+
+set define on
+define file_uri_base = 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/lJD1-iabPDW-vrGBhPFf3JJJtYi67BhcBD-2iykgWjy6oir05QuBSIe7Ffva9i4a/n/adwc4pm/b/bucket-data-studio-overview-demo-data/o'
+
+begin
+ dbms_cloud.copy_data(
+    table_name =>'AGE_GROUP',
+    file_uri_list =>'&file_uri_base/AGE_GROUP.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+end;
+/
+
 drop table CUSTOMER_SALES_ANALYSIS;
 
 create table CUSTOMER_SALES_ANALYSIS
@@ -253,7 +276,7 @@ First let's learn how to navigate in the analysis tool.
 
 2.  Now we can start doing our first analysis.
 
-    **Analysis: show me \"SALES_AMOUNT\" by \"AGE_GROUP\"**
+    Analysis: show me SALES_AMOUNT by AGE_GROUP
     
     Select chart mode. Clear all hierarchies from X-Axis and drag **Age
     group** to X-Axis and **Total Sales** to Y-Axis.

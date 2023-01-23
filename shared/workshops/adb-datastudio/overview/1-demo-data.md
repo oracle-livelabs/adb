@@ -43,7 +43,7 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 3. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
 
-  ![The Database Actions home page](images/db_actions.png)
+  ![The Database Actions home page](images/image_db_action.png)
 
 
 ## Task 2: Execute script in SQL Worksheet to load demo data

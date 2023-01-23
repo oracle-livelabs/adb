@@ -16,19 +16,19 @@
           "title": "Lab 1: Provision an Autonomous Database",
           "description": "Provision Autonomous Database",
           "type": "livelabs",
-          "filename": "./../../adb-provision/adb-provision-conditional.md"
+          "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
       },
       {
           "title": "Lab 2: Create a User",
           "description": "Create a database user",
           "type": "livelabs",
-          "filename": "../../creat-user-UPDATE-PATH.md"
+          "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
       },
       {
           "title": "Lab 3: Demo Data",
           "description": "Load demo data for the Data Studio overview workshop",
           "type": "livelabs",
-          "filename": "../../1-demo_data.md"
+          "filename": "../../1-demo-data.md"
       },
       {
           "title": "Lab 4: Browse Database Objects",
@@ -55,7 +55,7 @@
         "description": "Use Data Insight to find hidden patterns",
         "filename": "../../insight-in-data.md"
       },
-{
+      {
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",
           "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"

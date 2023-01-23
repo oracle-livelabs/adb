@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-This is an introductory workshop for the tools in Data Studio. It goes through “a day in the life of a data analyst” and shows how to use the tools to browse, load, transforms and analyze the data in the Autonomous Database.
+This is an introductory workshop for the Data Studio. It goes through “a day in the life of a data analyst” and shows how to use it to browse, load, transforms and analyze the data in the Autonomous Database.
 
 Estimated Workshop Duration: 1 hour, 30 minutes
 
@@ -17,10 +17,10 @@ Let's start with the Monday morning team meeting.
 Date: Monday 1-09-2023
 Attendees: All team members
 
-Patrick wants to send discount offers to high value customers every
-week. He also wants movie genre preference based on age groups and
-marital status. It is also interesting to know whether these preferences
-are different across high value and low value customers.
+Patrick wants to send discount offers to **high value** customers. 
+He also wants movie genre preference based on age groups and
+marital status. He also to know **whether movie genre preferences
+are different across high value and low value customers**.
 
 ### Brainstorming:
 
@@ -35,18 +35,18 @@ Everyone agreed it is the right strategy.
 Everyday sales data is being loaded to the object store bucket. Ashish
 is going to setup a live feed from object store to **MOVIESALES_CA**
 table. This table will have timestamped sales data. There are tables for
-customer and movie genre as well.\
+customer and movie genre as well.
 (note to myself: confirm the table name. Also livefeed sounds
 interesting. Learn how he sets it up in the future).
 
-## TODO:
+## Action Items:
 
-### Data load:
+### Load data:
 
 Check for **MOVIESALES_CA** and other tables needed for this analysis and 
 load any additional data needed.
 
-### Data Prep:
+### Prepare data:
 
 Create data flow to aggregate movie sales and
 populate quintile column. Schedule this to load every Sunday 9pm.
@@ -57,7 +57,7 @@ analysis.
 
 ### Analyze:
 
-Create Analytic View to analyze sales data by various dimensions such as
+ Create Analytic View to analyze sales data by various dimensions such as
 age group, genre, marital status etc.
 
 ### Insight:
@@ -70,7 +70,7 @@ Is there anything more we learn from the data?
 
 In this workshop, you will learn:
 -	How to browse the catalog to find the data you need
--	How to load data from your laptop
+-	How to load data from your local file
 -	How to prepare your data for analysis
 -	How to analyze the data (involves creating a simple dimensional model)
 -	How to find hidden insights
