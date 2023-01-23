@@ -13,7 +13,7 @@ checked.
 Data Studio has a collection of tools for various needs. We will start
 with Data Catalog to look for the data we need.
 
-**Task 1 -- Launch Database Action**
+## Task 1: Launch Database Action
 
 1.  Login to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
@@ -36,7 +36,7 @@ Since it is a workshop, there are limited objects in the list. There
 will be many objects and only the recent objects are shown here. We will
 use the Catalog tool to browse the objects and find what we need.
 
-**Task 2 -- Explore Catalog**
+## Task 2: Explore Catalog
 
 1.  Click on the Catalog link on the left panel.
 
@@ -127,7 +127,7 @@ top left button and use Load Data tool.
 ![Screenshot of...](images/image8.png){width="6.432541557305337in"
 height="3.060416666666667in"}
 
-**Task 1 -- Create local data file for AGE_GROUP**
+## Task 1: Create local data file for AGE_GROUP
 
 1.  We need to create a local data file for AGE_GROUP. Launch Excel on
     your desktop to create this dataset. Note that you can also use a
@@ -138,8 +138,7 @@ Save this as AGE_GROUP Excel workbook.
     If you don't have Excel then create a csv file with the data as below
     and save it as AGE_GROUP.csv.
     
-    \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
-
+ 
 \"MIN_AGE\",\"MAX_AGE\",\"AGE_GROUP\",
 
 0,20,\"00-20\",
@@ -158,12 +157,11 @@ Save this as AGE_GROUP Excel workbook.
 
 81,200,\"Older than 81\",
 
-    \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
-
+ 
 ![Screenshot of...](images/image9.png){width="2.741903980752406in"
 height="2.275196850393701in"}
 
-**Task 2 -- Load data file for AGE_GROUP**
+## Task 2: Load data file for AGE_GROUP
 
 1.  Launch Data Load from Database Actions page by clicking on **DATA
     LOAD** card.
@@ -213,7 +211,7 @@ sales data by analyzing it.
 
 Transform Data tool makes such data preparation tasks easy.
 
-**Task 1 -- Launch Data Transforms**
+## Task 1: Launch Data Transforms
 
 1.  Click on DATA TRANSFORMS card to launch the tool.
 
@@ -242,7 +240,7 @@ Transform Data tool makes such data preparation tasks easy.
 
 ![Screenshot of...](images/image16.png){width="6.5in" height="2.8256944444444443in"}
 
-**Task 2 -- Setup Connection**
+## Task 1: Setup Connection
 
 1.  Click on **Connections** on the left side to look at available
     connections.
@@ -285,7 +283,7 @@ very selective on giving out this role.
 
 Now we are ready to prepare the data.
 
-**Task 3 -- Create data flow to load customer sales analysis table**
+## Task 1: Create data flow to load customer sales analysis table
 
 1.  Click on the **Home** button on the left side to go back to the home
     screen. You have wizards to load data from other sources (as defined
@@ -654,7 +652,7 @@ Other features are:
 
 -   Schedule: In built scheduler for periodic execution.
 
-**Task 4 -- For Advanced users: How to debug**
+## Task 4: For Advanced users: How to debug
 
 **Note: skip if you don't have any errors and you want to straight go to
 the next task.**
@@ -713,7 +711,7 @@ We need to analyze our customer sales data along with age group, genre,
 and customer value dataset. We will use **DATA ANALYSIS** tool for this
 task.
 
-**Task 1 -- Create AV for data analysis**
+## Task 1: Create AV for data analysis
 
 1.  Navigate to Database Actions page and launch DATA ANALYSIS tool.
 
@@ -811,7 +809,7 @@ height="3.1858070866141732in"}
 ![Screenshot of...](images/image68.png){width="6.452022090988627in"
 height="3.1095231846019247in"}
 
-**Task 2 -- Analyze data**
+## Task 1: Analyze data
 
 Now the fun part starts. All this time we were preparing the data and
 creating dimensional model in AV. We will start creating reports, charts
@@ -935,7 +933,7 @@ complexity of the data set and available compute resources. Our data set
 is small enough that it will complete in reasonable time. But you might
 see the insight list being refreshed while it is executing.
 
-**Task 1 -- Use Data Insights**
+## Task 1: Use Data Insights
 
 1.  Launch Data Insights by clicking on the Database Actions link on the
     top and then click on the **DATA INSIGHTS** card.
@@ -1045,7 +1043,7 @@ started this workshop!
 Now all the assigned tasks from our Monday meeting have been completed
 successfully. Ready for the next meeting.
 
-**Task 2 -- Advanced users: Peeling the layers for Data Insights**
+## Task 2: Advanced users: Peeling the layers for Data Insights
 
 This section is an attempt to explain the insights by manually running
 queries and correlating them with what we can see in insights.
