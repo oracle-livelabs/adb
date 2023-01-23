@@ -23,14 +23,13 @@ with Data Catalog to look for the data we need.
     
     Click on **DATA STUDIO OVERVIEW** card.
 
-![Screenshot of...](images/image1.png)
+![Screenshot of data studio overview](images/image1_datastudio_overview.png)
 
 2.  It shows the list of recent objects in the middle. On the left, it
     has links to individual tools and on the right, link to
     documentation.
 
-![Screenshot of...](images/image2.png){width="6.444933289588802in"
-height="3.0479166666666666in"}
+![Screenshot of sT atusio recent object list](images/image2_datastudio_overview_list.png)
 
 Since it is a workshop, there are limited objects in the list. There
 will be many objects and only the recent objects are shown here. We will
@@ -53,8 +52,7 @@ use the Catalog tool to browse the objects and find what we need.
     
     4: Search bar where you can type in advanced search query
 
-![Screenshot of...](images/image3.png){width="6.455540244969379in"
-height="3.057638888888889in"}
+![Screenshot of catalog page](images/image3_catalog_ui_zones.png)
 
 2.  Note that catalog shows all types of objects. We are interested in
     only the tables for now. Click on "Tables, views and analytic views
@@ -69,8 +67,7 @@ height="3.057638888888889in"}
     the table in the search bar but in our case, it is clearly visible in
     the grid view in the middle.
 
-![Screenshot of...](images/image4.png){width="6.466951006124234in"
-height="3.027083333333333in"}
+![Screenshot of listing only tables and views](images/image4_catalog_tables.png)
 
 3.  Click on the MOVIESALES_CA table.
 
@@ -86,16 +83,14 @@ height="3.027083333333333in"}
     
     Now close this view by clicking on the bottom right **Close** button.
 
-![Screenshot of...](images/image5.png){width="6.3258027121609794in"
-height="3.060416666666667in"}
+![Screenshot of data preview](images/image5_catalog_data_preview.png)
 
 4.  Look for the other tables of our interest in the main catalog page.
     If you remember the meeting notes in introductory section of this
     workshop, we are also interested in CUSTOMER_CA and GENRE tables.
     Find and click on these tables to do a data preview.
 
-![Screenshot of...](images/image6.png){width="6.457644356955381in"
-height="3.021725721784777in"}
+![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
 
 5.  We also need to find out whether age group information is present.
 
@@ -109,8 +104,7 @@ height="3.021725721784777in"}
     
     Looks like we need to load a new table for age group.
 
-![Screenshot of...](images/image7.png){width="6.448788276465442in"
-height="3.040277777777778in"}
+![Screenshot of searcing for column names](images/image7_catalog_search_cols.png)
 
 # Lab 4: Load data
 
@@ -124,8 +118,7 @@ new table for age group.
 For this we will go back to our database actions page by clicking on the
 top left button and use Load Data tool.
 
-![Screenshot of...](images/image8.png){width="6.432541557305337in"
-height="3.060416666666667in"}
+![Screenshot of data load card](images/image8_load_card.png)
 
 ## Task 1: Create local data file for AGE_GROUP
 
@@ -158,8 +151,7 @@ Save this as AGE_GROUP Excel workbook.
 81,200,\"Older than 81\",
 
  
-![Screenshot of...](images/image9.png){width="2.741903980752406in"
-height="2.275196850393701in"}
+![Screenshot of age group data in Excel](images/image9_data_excel.png)
 
 ## Task 2: Load data file for AGE_GROUP
 
@@ -176,11 +168,11 @@ height="2.275196850393701in"}
     In this lab we are loading data from the local file created in earlier
     task. Selected **LOCAL FILE** and press **Next**.
 
-![Screenshot of...](images/image10.png){width="6.5in" height="4.054166666666666in"}
+![Screenshot of load data options](images/image10_load_option.png)
 
 2.  Drag your local file AGE_GROUP.xlsx to the load window.
 
-![Screenshot of...](images/image11.png){width="6.5in" height="3.05in"}
+![Screenshot of pick file for load](images/image11_load_file.png)
 
 3.  Press on the green triangle button to start the load.
 
@@ -189,7 +181,7 @@ height="2.275196850393701in"}
     
     Now we all the data sets that we need to complete our assignment.
 
-![Screenshot of...](images/image12.png){width="6.5in" height="2.2840277777777778in"}
+![Screenshot of start loading file](images/image12_load_file_start.png)
 
 # Lab 5: Transform data
 
@@ -219,15 +211,15 @@ Transform Data tool makes such data preparation tasks easy.
     missing DATA_TRANSFORM_USER role for your user. Login as ADMIN and
     grant the role (make sure this role is marked "Default" as well).
 
-![Screenshot of...](images/image13.png){width="6.5in" height="3.65625in"}
+![Screenshot of data transforms card](images/image13_transform_card.png)
 
 2.  Provide username and password for the database user QTEAM.
 
-![Screenshot of...](images/image14.png){width="6.5in" height="3.1006944444444446in"}
+![Screenshot of data transforms login](images/image14_transform_login.png)
 
 3.  You will see a provisioning screen like below.
 
-![Screenshot of...](images/image15.png){width="6.5in" height="3.1145833333333335in"}
+![Screenshot of data transforms service start](images/image15_transform_start.png)
 
 4.  It will take up to 3 minutes for the service to be provisioned. Once
     provisioned you will see the following home screen.
@@ -238,36 +230,33 @@ Transform Data tool makes such data preparation tasks easy.
     again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
 
-![Screenshot of...](images/image16.png){width="6.5in" height="2.8256944444444443in"}
+![Screenshot of transforms home page](images/image16_transform_home.png)
 
 ## Task 1: Setup Connection
 
 1.  Click on **Connections** on the left side to look at available
     connections.
 
-![Screenshot of...](images/image17.png){width="6.5in" height="2.790277777777778in"}
+![Screenshot of connection menu](images/image17_transform_conn.png)
 
 2.  You will notice that there is one connection already defined. Click
     on the connection to establish the connection. This is one time
     activity.
 
-![Screenshot of...](images/image18.png){width="6.158562992125984in"
-height="3.4756944444444446in"}
+![Screenshot of connection configuration](images/image18_transform_adb_conn.png)
 
 3.  Enter username and password and click on Test Connection. After
     successful connection (notification message will appear on top
     right).
 
-![Screenshot of...](images/image19.png){width="6.40924321959755in"
-height="3.167030839895013in"}
+![Screenshot of connection user and password](images/image19_transform_conn_usrpwd.png)
 
 4.  If the notification message disappears then you can get it back by
     clicking on the bell icon on the top right. Throughout this tool you
     will have notification messages available by clicking on the bell
     icon.
 
-![Screenshot of...](images/image20.png){width="6.456453412073491in"
-height="3.157638888888889in"}
+![Screenshot of connection test](images/image20_transform_conn_test.png)
 
 Note: In this workshop we are working with only the data available in
 our Autonomous Database, but you can create connections to other
@@ -291,7 +280,7 @@ Now we are ready to prepare the data.
     loaded in our Autonomous Database in the previous lab, we will click
     on the **Transform Data** wizard.
 
-![Screenshot of...](images/image21.png){width="6.5in" height="3.176388888888889in"}
+![Screenshot of transforms wizard](images/image21_transform_home_wiz.png)
 
 2.  Enter name and description of data flow.
 
@@ -309,15 +298,14 @@ Now we are ready to prepare the data.
     
     Click **Next**.
 
-![Screenshot of...](images/image22.png){width="6.5in" height="3.4783169291338583in"}
+![Screenshot of data flow name](images/image22_transform_name.png)
 
 3.  Select the only connection from the dropdown list and pick **QTEAM**
     from the schema drop down list.\
     \
     Click on **Save**.
 
-![Screenshot of...](images/image23.png){width="6.481306867891513in"
-height="4.952083333333333in"}
+![Screenshot of data flow source connection](images/image23_transform_source.png)
 
 4.  This will bring up data flow editing screen. On the left side you
     will see message as "Importing Data Entities" next to **QTEAM**
@@ -326,7 +314,7 @@ height="4.952083333333333in"}
 
 You can also refresh the data entities any time with the refresh icon.
 
-![Screenshot of...](images/image24.png){width="6.475527121609799in" height="3.15in"}
+![Screenshot of data flow edit page](images/image24_transform_entity.png)
 
 5.  Now let us learn how to navigate in the data flow editing screen.
     Refer to the numbered zones in the screenshot.
@@ -355,8 +343,7 @@ You can also refresh the data entities any time with the refresh icon.
     6: When you click on the empty part of the main canvas then it gives
     you execution status of the data flow.
 
-![Screenshot of...](images/image25.png){width="6.445417760279965in"
-height="3.145138888888889in"}
+![Screenshot of data flow edit page zones](images/image25_transform_zones.png)
 
 6.  Now we are ready to build the data flow. We want to aggregate the
     sales per customer to create 5 quintile buckets to determine
@@ -372,14 +359,14 @@ height="3.145138888888889in"}
     
     This should like below.
 
-![Screenshot of...](images/image26.png){width="6.5in" height="3.0292180664916883in"}
+![Screenshot of bring source table and transforms](images/image26_transform_drag_source.png)
 
 7.  Click on **MOVIESALES_CA,** and Link it to the **Aggregate**
     transform by dragging the little arrow on top of the **Aggregate**
     transforms. Follow this process to link transform steps in the rest
     of the workshop.
 
-![Screenshot of...](images/image27.png){width="6.5in" height="3.4340277777777777in"}
+![Screenshot of linking transform steps](images/image27_transform_link.png)
 
 8.  Now let's edit the properties of the aggregate transform. Click on
     the aggregate transform and then click on the attribute icon on the
@@ -389,26 +376,26 @@ height="3.145138888888889in"}
 Use this process to edit properties for the transforms for the remaining
 of the workshop.
 
-![Screenshot of...](images/image28.png){width="6.5in" height="3.2423611111111112in"}
+![Screenshot of aggregate attributes](images/image28_agg_attr.png)
 
 9.  Click on Attributes on the left side. You can edit this attribute
     list. We will remove everything except **CUST_ID** and
     **TOTAL_SALES**. Click on the checkbox and click delete icon on the
     right side.
 
-![Screenshot of...](images/image29.png){width="6.5in" height="3.2526531058617674in"}
+![Screenshot of aggregate attribute edit](images/image29_agg_edit.png)
 
 10. Now change the name of **TOTAL_SALES** to **CUST_SALES** to make it
     more meaningful. This will be aggregated sales for the customer. It
     should look like below.
 
-![Screenshot of...](images/image30.png){width="6.5in" height="2.0416666666666665in"}
+![Screenshot of aggregate attribute name edit](images/image30_agg_edit_name.png)
 
 11. Now click on Column mapping on the left side to define aggregate
     expression. You can populate these expressions by **Auto Map** and
     edit it as needed. Click on **Auto Map** to populate it by name.
 
-![Screenshot of...](images/image31.png){width="6.5in" height="1.3138888888888889in"}
+![Screenshot of aggregate mapping expression](images/image31_agg_map_exp.png)
 
 12. Auto Map populated only the CUST_ID and could not find a match for
     CUST_SALES since we had changed the attribute name. We can either
@@ -416,7 +403,7 @@ of the workshop.
     the expression editor on the right side. Click on the expression
     edition icon.
 
-![Screenshot of...](images/image32.png){width="6.5in" height="1.5805555555555555in"}
+![Screenshot of aggregate mapping expression edit](images/image32_agg_map_exp_edit.png)
 
 13. This will open the expression editor. You can drag source attributes
     from the left side in the editor and write a suitable expression.
@@ -425,7 +412,7 @@ Enter the following expression: **SUM ( MOVIESALES_CA.TOTAL_SALES )**
 
 Click **OK**
 
-![Screenshot of...](images/image33.png){width="6.5in" height="3.167361111111111in"}
+![Screenshot of mapping expression editor](images/image33_agg_map_exp_edit_ui.png)
 
 14. Review the screenshot below. **CUST_SALES** attribute is mapped to
     the sum of **TOTAL_SALES** grouped by **CUST_ID**.
@@ -436,13 +423,13 @@ corner.
 You will follow similar process for editing the properties in the rest
 of the workshop.
 
-![Screenshot of...](images/image34.png){width="6.5in" height="2.438888888888889in"}
+![Screenshot of closing property page](images/image34_agg_prop_collapse.png)
 
 15. Now link the aggregate transform to the QuintileBinning transform,
     click on the QuintileBinning transform and open the properties
     panel.
 
-![Screenshot of...](images/image35.png){width="6.5in" height="2.6215277777777777in"}
+![Screenshot of binning tranform](images/image35_binning.png)
 
 16. In the Attribute section, click on the **OUTPUT1**.
 
@@ -451,7 +438,7 @@ will go into **CUST_VALUE** attribute.
 
 Confirm that you have changed the name.
 
-![Screenshot of...](images/image36.png){width="6.5in" height="1.8083333333333333in"}
+![Screenshot of binning output name change](images/image36_binning_output.png)
 
 17. Click on the Column Mapping and enter 5 for the **number of
     buckets** expression. Drag **CUST_SALES** from aggregate into the
@@ -460,7 +447,7 @@ Confirm that you have changed the name.
     **It means that aggregate customer sales will be used to divide
     customers into 5 buckets. This will be used as customer value.**
 
-![Screenshot of...](images/image37.png){width="6.5in" height="2.154166666666667in"}
+![Screenshot of binning mapping expression](images/image37_binning_mapping.png)
 
 18. Close the property panel by clicking on the right corner and come to
     the main canvas.
@@ -475,10 +462,12 @@ Confirm that you have changed the name.
     
     Make sure the join is: **Aggregate.CUST_ID=CUSTOMER_CA.CUST_ID**
 
-![Screenshot of...](images/image38.png){width="6.5in" height="2.329861111111111in"}
+![Screenshot of joining with customer](images/image38_cust_join.png)
 
-19. Now bring in AGE_GROUP table and use Lookup transform. Link it as
+19. Now bring in **AGE_GROUP** table and use Lookup transform. Link it as
     below.
+
+    First link the end of the data flow to Lookup and then link **AGE_GROUP** to lookup.
 
     Make sure lookup expression is: **CUSTOMER_CA.AGE between
     AGE_GROUP.MIN_AGE and AGE_GROUP.MAX_AGE**
@@ -490,7 +479,7 @@ Confirm that you have changed the name.
     using UI to define a complete data preparation task which could be
     quite complex.**
 
-![Screenshot of...](images/image39.png){width="6.5in" height="3.373611111111111in"}
+![Screenshot of age group lookup](images/image39_agegroup_lookup.png)
 
 20. Now we need to bring in the transaction data again which will be
     used for analysis later. Drag **MOVIESALES_CA** into the canvas and
@@ -514,11 +503,11 @@ Confirm that you have changed the name.
     It is good practice to keep saving it by clicking on the **Save** icon
     on the top left.
 
-![Screenshot of...](images/image40.png){width="6.5in" height="3.2801377952755906in"}
+![Screenshot of movie sales and genre join](images/image40_sales_genre_join.png)
 
 21. We have completed the data flow. It may look complex, but one can
     visualize it step by step transformations. Now we need to write it
-    to a new **CUSTOMER_SALES \_ANALYSIS** table.
+    to a new **CUSTOMER_SALES_ANALYSIS** table.
 
     Click on the tiny grid at the corner to the end of the data flow (last
     Join transform) to open the target table property dialog. Note that if
@@ -526,7 +515,7 @@ Confirm that you have changed the name.
     to complete the flow. But in our case, the target table doesn't exist
     yet.
 
-![Screenshot of...](images/image41.png){width="6.5in" height="3.386111111111111in"}
+![Screenshot of creating target table entity](images/image41_create_target.png)
 
 22. Enter the name and connection properties.
 
@@ -534,13 +523,13 @@ Confirm that you have changed the name.
     
     Alias: **CUSTOMER_SALES_ANALYSIS**
     
-    Connection:\<your connection name\    
+    Connection:your connection name    
     
     Schema:**QTEAM**
     
     Click **Next** for **Add Data Entity** dialog
 
-![Screenshot of...](images/image42.png){width="6.5in" height="3.8493055555555555in"}
+![Screenshot of adding entity](images/image42_add_entity.png)
 
 23. Now you can edit the target column names. The initial list is
     populated by the columns in all the tables in the data flow.
@@ -551,8 +540,7 @@ Confirm that you have changed the name.
     
     Click **Next**
 
-![Screenshot of...](images/image43.png){width="6.489390857392826in"
-height="3.8555555555555556in"}
+![Screenshot of entity column edit](images/image43_target_edit.png)
 
 24. Review the columns. You can go back to make any changes. If you
     accidently removed a column and want it back then you can add it
@@ -561,8 +549,7 @@ height="3.8555555555555556in"}
 
 Click **Save**
 
-![Screenshot of...](images/image44.png){width="6.471868985126859in"
-height="3.8506944444444446in"}
+![Screenshot of reviewing target columns](images/image44_target_review.png)
 
 25. You can see that the target table is added to the end of the data
     flow.
@@ -576,7 +563,7 @@ height="3.8506944444444446in"}
     the target table in the canvas and expand the property panel by
     clicking on the top right corner.
 
-![Screenshot of...](images/image45.png){width="6.5in" height="2.8012139107611547in"}
+![Screenshot of target properties](images/image45_target_property.png)
 
 26. Click on Attributes mapping and verify the expressions. Notice that
     all have been populated properly. You can also edit them manually if
@@ -584,7 +571,7 @@ height="3.8506944444444446in"}
     can also use auto mapping functionality if you have create new
     attributes.
 
-![Screenshot of...](images/image46.png){width="6.5in" height="3.692361111111111in"}
+![Screenshot of target mapping](images/image46_target_mapping.png)
 
 27. Now to the final step. Click of **Options**.
 
@@ -597,39 +584,39 @@ height="3.8506944444444446in"}
     modes. For now we will simply drop and create the table in every
     execution.
 
-![Screenshot of...](images/image47.png){width="6.5in" height="3.701388888888889in"}
+![Screenshot of target options](images/image47_target_option.png)
 
 28. Collapse the property panel and go back to the main canvas. Save it
     and validate it by clicking on the validate icon (looks like small
     check mark).
 
-![Screenshot of...](images/image48.png){width="6.5in" height="3.1486111111111112in"}
+![Screenshot of validating data flow](images/image48_transform_validate.png)
 
 29. Now execute it by clicking on the small triangle in the circle.
     Confirm **Start**.
 
-![Screenshot of...](images/image49.png){width="6.5in" height="4.6305555555555555in"}
+![Screenshot of executing data flow](images/image49_transform_start.png)
 
 30. Data flow execution status is on the bottom right-side panel. Click
     anywhere on the empty canvas to make it visible. Now we need to look
     at the data.
 
-![Screenshot of...](images/image50.png){width="6.5in" height="3.327777777777778in"}
+![Screenshot of execution status](images/image50_transform_status.png)
 
 31. Click on the target table and do the data preview by clicking on
     small eye icon. Expand the panel to see more.
 
-![Screenshot of...](images/image51.png){width="6.5in" height="3.178472222222222in"}
+![Screenshot of target data preview](images/image51_transform_datapreview.png)
 
 32. Check that all columns are populated. If some columns are blank,
     then it means some mapping expression in the data flow was blank or
     incorrect. Go back and fix it and re-execute it.
 
-![Screenshot of...](images/image52.png){width="6.5in" height="3.7444444444444445in"}
+![Screenshot of transformed and loaded data](images/image52_transform_data.png)
 
 33. Also check the **Statistics** tab for quick data profile.
 
-![Screenshot of...](images/image53.png){width="6.5in" height="3.8618055555555557in"}
+![Screenshot of data statistics](images/image53_transform_stats.png)
 
 For now, it is just a cursory data glance. Next, we will use **DATA
 ANYSIS** tool to analyze this data and find many interesting patterns.
@@ -661,33 +648,32 @@ the next task.**
     canvas. On the top there is Code Simulation icon. Click on it. This
     will show you the code to be generated.
 
-![Screenshot of...](images/image54.png){width="6.5in" height="3.0805555555555557in"}
+![Screenshot of data flow simulation](images/image54_transform_simul.png)
 
 2.  Look at the generated SQL. Imagine writing this SQL without the
     graphical interface. Still some advanced users might find this
     useful for debugging purposes.
 
-![Screenshot of...](images/image55.png){width="6.5in" height="4.299305555555556in"}
+![data flow simulation SQL](images/image55_transform_simul_code.png)
 
 3.  Now look at the **Data flow Status** on the right side. If there are
     any errors, then you can click on the **Execution Job** in the
     **Data Flow Status** panel to debug. It will take you to the jobs
     screen where you can look at the executed steps, processed row
-    counts and corresponding SQL.\
-    \
-    ![Screenshot of...](images/image56.png){width="6.135285433070866in"
-    height="2.894002624671916in"}
+    counts and corresponding SQL.
+
+![Screenshot of data flow execution job log](images/image56_transform_log.png)
 
 4.  Notice different steps in the execution. You can also get the
     executed SQL (as opposed to simulated SQL seen earlier) by clicking
     on the step.
+    
+    To go back to your data flow, click on the **Design Object** link.
+    
+    From anywhere in the UI, you can go back to Home screen by clicking on
+    the top left link.
 
-To go back to your data flow, click on the **Design Object** link.
-
-From anywhere in the UI, you can go back to Home screen by clicking on
-the top left link.
-
-![Screenshot of...](images/image57.png){width="6.5in" height="2.264576771653543in"}
+![Screenshot of job log details](images/image57_transform_log_detail.png)
 
 There are many more features to explore for the advanced users. In this
 workshop we are limiting to creating a data flow and executing it on
@@ -715,14 +701,14 @@ task.
 
 1.  Navigate to Database Actions page and launch DATA ANALYSIS tool.
 
-![Screenshot of...](images/image58.png){width="6.5in" height="3.0548611111111112in"}
+![Screenshot of data analysis card](images/image58_analysis_card.png)
 
 2.  First time when you access data analysis tool, you will see a
     guiding wizard that will describe various parts of the UI. Since you
     are doing this lab anyways, click on X to cancel it and start using
     the tool right away.
 
-![Screenshot of...](images/image59.png){width="6.5in" height="3.229861111111111in"}
+![Screenshot of data analysis home page](images/image59_analysis_home.png)
 
 3.  To Analyze your data, create an Analytic View (AV) first. Analytic
     Views organize data using a dimensional model, allowing you to
@@ -733,8 +719,7 @@ task.
     
     Select your schema QTEAM and click on **Create** button.
 
-![Screenshot of...](images/image60.png){width="6.449922353455818in"
-height="2.3208333333333333in"}
+![Screenshot of create analytic view](images/image60_av_create.png)
 
 4.  Default AV name is derived by the fact table. Enter various fields
     as follows:
@@ -758,47 +743,41 @@ height="2.3208333333333333in"}
     analysis attributes are in one table. We don't need to run this
     automated process.
 
-![Screenshot of...](images/image61.png){width="5.853778433945757in"
-height="2.8946784776902885in"}
+![Screenshot of select fact table](images/image61_av_table.png)
 
 5.  Now click on Data Sources on left side to verify that
     CUSTOMER_SALES_ANALYSIS is the data source.
 
-![Screenshot of...](images/image62.png){width="6.246150481189852in"
-height="3.0593383639545055in"}
+![Screenshot of data sources](images/image62_av_datasource.png)
 
 6.  Now click on the Hierarchies on the left side and add the attributes
     we want in our analysis. We want to add **AGE_GROUP, CUST_VALUE,
     DEVICE, MARITAL_STATUS, GENRE,** and **PET**. It will be interesting
     to do movie preference analysis with pets.
+    
+    NOTE: These are all single level hierarchies. Adding multiple level
+    hierarchies is advanced topic and will not be covered. However, we will
+    see that even with single level hierarchies, we can do interesting
+    analysis.
 
-NOTE: These are all single level hierarchies. Adding multiple level
-hierarchies is advanced topic and will not be covered. However, we will
-see that even with single level hierarchies, we can do interesting
-analysis.
-
-![Screenshot of...](images/image63.png){width="5.914523184601925in"
-height="4.138888888888889in"}
+![Screenshot of adding hierarchies](images/image63_av_hier.png)
 
 7.  If you don't see your column, then click on More columns at the end
     at search for your columns. Then add it by clicking on it.
 
-![Screenshot of...](images/image64.png){width="5.1216338582677166in"
-height="3.2381944444444444in"}
+![Screenshot of adding hierarchies by searching](images/image64_av_hier_pick.png)
 
 8.  After you add all, it should look like below.
 
-![Screenshot of...](images/image65.png){width="6.338054461942257in"
-height="3.176388888888889in"}
+![Screenshot of hierarchy preview](images/image65_av_hier_list.png)
 
 9.  Now click on Measures and add a measure with TOTAL_SALES column
 
-![Screenshot of...](images/image66.png){width="6.302256124234471in"
-height="3.1858070866141732in"}
+![Screenshot of adding measure](images/image66_av_measure.png)
 
 10. We have completed our AV. Click on **Create** it and confirm OK.
 
-![Screenshot of...](images/image67.png){width="6.5in" height="3.204861111111111in"}
+![Screenshot of create analytic view](images/image67_av_create.png)
 
 11. Our AV is ready now and we can start analyzing data. You can see
     that there are no errors. By clicking on the Data Quality tab.
@@ -806,8 +785,7 @@ height="3.1858070866141732in"}
     You can also go back and edit the AV by clicking on three vertical
     dots.
 
-![Screenshot of...](images/image68.png){width="6.452022090988627in"
-height="3.1095231846019247in"}
+![Screenshot of analytic view review](images/image68_av_quality.png)
 
 ## Task 1: Analyze data
 
@@ -835,8 +813,7 @@ First let's learn how to navigate in the analysis tool.
     is the topic of our last lab. For now, we will click on the right side
     bar to collapse it.
 
-![Screenshot of...](images/image69.png){width="6.419293525809274in"
-height="3.064391951006124in"}
+![Screenshot of analysis home page](images/image69_av_analyze_home.png)
 
 2.  Now we can start doing our first analysis.
 
@@ -849,8 +826,7 @@ height="3.064391951006124in"}
     conclude that seniors (71-80) are not watching many movies whereas age
     group 21-30 and 31-40 are watching most.
 
-![Screenshot of...](images/image70.png){width="6.479812992125984in"
-height="3.1179615048118987in"}
+![Screenshot of analyze sales by age group](images/image70_sales_agegroup.png)
 
 3.  Next let us analyze sales by marital status.
 
@@ -861,19 +837,19 @@ height="3.1179615048118987in"}
     
     We can see that singles are watching more movies than married people.
 
-![Screenshot of...](images/image71.png){width="6.3939479440069995in"
-height="3.0579757217847767in"}
+![Screenshot of analyze sales by marital status](images/image71_sales_maritalstatus.png)
 
 4.  Now we can mix two hierarchies. Drag **Age group** above **Marital
-    status** in X-Axis.
+    status** in X-Axis. 
+
+    Make sure **Age group** is on top of **Marital status**.
 
     We notice that although singles watch overall more movies, married
     people watch more than singles in young age group (21-30, 31-40).
     
     This was not obvious before.
 
-![Screenshot of...](images/image72.png){width="6.417255030621172in"
-height="3.1113965441819773in"}
+![Screenshot of analyze sales by marital status and age group](images/image72_sales_maritalstatus_age.png)
 
 5.  Now we are curious to know which genre sells most.
 
@@ -881,19 +857,21 @@ height="3.1113965441819773in"}
     
     Drama Sells! Followed by Action.
 
-![Screenshot of...](images/image73.png){width="6.406935695538058in" height="3.10625in"}
+![Screenshot of analyze sales by movie genre](images/image73_sales_genre.png)
 
 6.  We had earlier ranked our customers in high and low value buckets.
     It will be interesting to find out whether there is a movie genre
     preference of high value customers.
 
-    Clear X-Axis and drag **GENRE** and **CUST_VALUE**.
+    Clear X-Axis and drag **Genre** and **Cust value**. Make sure **Cust value** is 
+    on the top.
     
     The chart is very wide, and you can't see all the way to the right. To
     fit the entire width you can drag the right edge of lower window
-    towards right till all customer values are visible in one page.
+    towards right till all customer values are visible in one page. If 
+    you don't see the lower window then zoom out on the browser with CTRL -.
 
-![Screenshot of...](images/image74.png){width="6.5in" height="3.120833333333333in"}
+![Screenshot of analyze sales by movie genre and customer value](images/image74_sales_genre_custvalue.png)
 
 7.  Let's look at this chart. We can see that Drama is very popular with
     high value (Cust value=5) customers, whereas Action is more popular
@@ -902,7 +880,7 @@ height="3.1113965441819773in"}
     Of course, most of the bars are taller for high value customers
     because overall they spend more.
 
-![Screenshot of...](images/image75.png){width="6.4224453193350834in" height="3.10625in"}
+![Screenshot of analyze sales by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
 
 Go ahead and see if you can find any other interesting pattern. What
 movie genre are popular in different age groups?
@@ -938,17 +916,16 @@ see the insight list being refreshed while it is executing.
 1.  Launch Data Insights by clicking on the Database Actions link on the
     top and then click on the **DATA INSIGHTS** card.
 
-![Screenshot of...](images/image76.png){width="6.5in" height="3.057638888888889in"}
+![Screenshot of Insigts card](images/image76_inst_card.png)
 
 2.  On the insight page click on the top right icon to get a tour of the
     tool.
 
-![Screenshot of...](images/image77.png){width="6.469770341207349in" height="3.1in"}
+![Screenshot of Insights home page](images/image77_inst_home.png)
 
 3.  Click Next to go through each area and learn about it.
 
-![Screenshot of...](images/image78.png){width="6.169071522309712in"
-height="3.022222222222222in"}
+![Screenshot of Insights tour](images/image78_inst_tour.png)
 
 4.  you can pick AV or any table to run insights on. In case of AV, you
     can pick any measure to run insight against whereas if you want to
@@ -976,8 +953,7 @@ height="3.022222222222222in"}
     insights may vary if data is different or the insight is still
     running, therefore refer to the labels on each tile to identify it.**
 
-![Screenshot of...](images/image79.png){width="6.1465693350831145in"
-height="3.0428565179352582in"}
+![Screenshot of list of insights](images/image79_inst_list.png)
 
 5.  Click on the tile marked **S** on the top and **Genre** at the
     bottom. It shows
@@ -1000,17 +976,17 @@ height="3.0428565179352582in"}
     
     WOW! That is quite an insight.
 
-![Screenshot of...](images/image80.png){width="6.5in" height="3.0145833333333334in"}
+![Screenshot of insights on singles and genre](images/image80_inst_maritalstatus_genre.png)
 
 6.  Now to the next insight.
 
     Click on the tile marked **61-70** on the top and **Cust value** at
     the bottom. It shows
     
-    It shows that seniors 61-70 overrepresented in 4^th^ customer value
+    It shows that seniors 61-70 overrepresented in 4th customer value
     bucket. Probably they have lots of disposable income!
 
-![Screenshot of...](images/image81.png){width="6.5in" height="2.897222222222222in"}
+![Screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
 
 7.  Now, just for fun lets look at pet ownership and movie purchase
     relationship.
@@ -1026,8 +1002,7 @@ height="3.0428565179352582in"}
     Interesting. Isn't it! Insight tool has discovered all these hidden
     patterns just by crawling through the data.
 
-![Screenshot of...](images/image82.png){width="6.193623140857393in"
-height="2.9879024496937885in"}
+![Screenshot of insights on pet owenership and customer value](images/image82_inst_pet_custvalue.png)
 
 **Concluding thought**: If we are doing manual analysis in **DATA
 ANALYSIS** tool, then we must actively look at and compare the data for
@@ -1048,11 +1023,11 @@ successfully. Ready for the next meeting.
 This section is an attempt to explain the insights by manually running
 queries and correlating them with what we can see in insights.
 
-1.  Let's go back and look at the 1^st^ insight again.
+1.  Let's go back and look at the first insight again.
 
 Click on the tile marked **S** on the top and **Genre** at the bottom
 
-![Screenshot of...](images/image83.png){width="6.5in" height="2.8618055555555557in"}
+![Screenshot of insight on simgles by genre](images/image83_inst_single_genre.png)
 
 2.  We can go back to DATA ANALYSIS tool in another tab to confirm this
     insight. Go back to the data analysis and analyze by Genre and
@@ -1061,12 +1036,12 @@ Click on the tile marked **S** on the top and **Genre** at the bottom
     Drag Genre on X-Axis (you will have to expand the tree on the left)
     and Marital Status on Filters. Pick M in the filter box.
 
-![Screenshot of...](images/image84.png){width="6.466311242344707in" height="3.1375in"}
+![Screenshot of applying filter for marital status](images/image84_analyze_filter.png)
 
 3.  Married people are watching **Drama** a lot and not much
     **Adventure** and **Comedy**.
 
-![Screenshot of...](images/image85.png){width="6.5in" height="3.123611111111111in"}
+![Screenshot of analyze sales to married people by genre](images/image85_analyze_married_genre.png)
 
 4.  Now let's compare it by changing the filter to S (singles).
 
@@ -1074,6 +1049,6 @@ Click on the tile marked **S** on the top and **Genre** at the bottom
     **Comedy** genre by singles and not much **Drama** (compared to
     married people).
 
-![Screenshot of...](images/image86.png){width="6.5in" height="3.1066174540682416in"}
+![Screenshot of analyze sales to singles by genre](images/image86_analyze_single_genre.png)
 
 **Isn't that what our insight told us!!**
