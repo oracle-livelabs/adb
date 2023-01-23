@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This lab shows how to connect your Autonomous Database to a cloud storage system so that it can load data from it, and link to data in it.
+This lab shows how to connect your Autonomous Database to a cloud storage system so that it can load data from it, and also how to resolve issues that you may encounter when loading data from files.
 
-Estimated Time: 20 minutes
+Estimated Time: 25 minutes
 
 Watch the video below for a quick walk through of the lab.
 
@@ -89,19 +89,66 @@ The job should take less than a minute to complete. You can see the number of ro
 
 ## Task 3: Review and resolve data loading issues
 
-In this task, we are going to load a file that contains a few minor data issues that will stop it from loading fully. We will learn how to resolve the loading issues so that we load the data fully. Note that the data issues themselves can then be fixed using the built-in **Data Transforms** component of Data Studio, though we will not do this in the lab.
+In this task, we are going to load a file that contains a few minor data issues that will stop it from loading completely. We will learn how to resolve the loading issues so that we load the data fully and without errors. Note that the data issues themselves can then be fixed using the built-in **Data Transforms** component of Data Studio, though we will not do this in the workshop.
 
-### Add another cloud location
+### Load directly from URI
 
-First, we need to add another cloud location. In this case, we are going to download a file directly from Github. 
+Where you want to download and load data from a file from a cloud location that you do not need to save, and which does not require credentials, you can simply paste the URI into the cloud location screen when loading data. 
 
-1. Go back to Cloud Locations under Data Load, in the Data Studio interface:
+1. On the Data Load screen, select **Load Data** and **Cloud Store** again, and click **Next**
 
-  ![Screenshot showing the navigation to Data Load, Cloud Locations](images/go-to-cloudlocations.png)
+2. This time, rather than using the saved cloud store, we are going to paste the following URI into the cloud location bar:
 
-2.  
+ ```
+    $ <copy>https://objectstorage.us-phoenix-1.oraclecloud.com/n/adwc4pm/b/MovieStreamData/o</copy>
+ ```
 
-## Inspect the newly loaded tables
+  ![Load from Cloud Location directly from URI](images/load-from-uri.png)
+
+2. Drag over the file **customer-contact-issues.csv** to the right hand side.
+
+3. Click on the menu of the load task and select **Settings**
+
+4. The settings look reasonable. Note that some of the columns, including **YRS_CUSTOMER** have been detected as numbers. Click **Close** to close the settings screen and then click the green run button to run the load job.
+
+5. In this case, when the task completes, it shows a warning icon, and indicates that there were 4 rejected rows:
+
+  ![Warning icon on completed load task](images/load-warning.png)
+
+6. The name of the file on the completed load task is a link to see more information about the completed task. Click this, then click the **Errors** option on the left hand side to review the errors:
+
+  ![Reviewing loading errors](images/load-errors2.png)
+
+7. We can see a very clear indication of why these 4 rows failed. In all cases there was an error processing the column **YRS_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
+
+  ![The data column with the errored values highlighted](images/load-errors3.png)
+
+  Click **Close** to close the task view.
+
+8. We have options here as to what to do. In some cases, we might decide it is acceptable to keep the table without these rows in it, but in this case we want to get a complete load of all rows, as we know we can fix the data using the built-in **Data Transforms** part of Data Studio. To correct the issues in the data load, we can use the **Reload Cart** option in the bottom right hand corner of the Data Load screen to change and rerun the data load:
+
+  ![The Reload Cart option](images/reload-cart.png)
+
+9. After reloading the cart, click on the file name of the load task to review the settings. Note that an error message appears warning us that the load task is currently attempting to create a table that already exists, as we have already loaded it. 
+
+  ![Error message indicating a clashing table name](images/reload-error.png)
+
+10. In this case, we want to drop and recreate the table with the same name, so what we need to do is change the **Option** drop down to **Drop table and create new table**, and then re-select the table **CUSTOMERCONTACTISSUES** under **Name**, as follows:
+
+  ![Change option to drop and recreate the CUSTOMERCONTACTISSUES table](images/reload-changeoption.png)
+
+11. Next, we know that the **YRS_CUSTOMER** column actually contains some strings, so we should change its data type to **VARCHAR2** in the **Mapping** section:
+
+  ![The YRS_CUSTOMER column changed to VARCHAR2](images/change-column.png)
+
+12. Now we can click **Close** to close the settings for the load task, and rerun it by clicking the green run button.
+
+This time, when the task completes, it shows no errors, and that all rows were loaded correctly! 
+
+  ![The completed load task with no errors](images/load-noerrors.png)
+
+
+## Inspect the newly loaded table
 
 10. Click on **Catalog** from the Data Studio navigation menu on the left hand side. 
 
@@ -109,9 +156,19 @@ First, we need to add another cloud location. In this case, we are going to down
 
 Under **Saved Searches** on the right hand side, click on **Tables, views and analytic views owned by QTEAM** to see a list of the tables you have created in this and previous labs.
 
-11. Click the **ACTIVITY** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly.
+11. Click the **CUSTOMERCONTACTISSUES** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly. In some cases, the Statistics may not be gathered yet. In this case, click on the **Gather Statistics** button. After about 30 seconds, click on the **Refresh** button, and the statistics should be available.
 
-  ![ALT text is not available for this image](images/explore-activity.png)
+12. Scroll down to find the card relating to the **YRS_CUSTOMER** column. Notice that its icon denotes that it is a text (VARCHAR) column. Click on the Expand button to view the statistics in more detail.
+
+  ![The statistics for the YRS_CUSTOMER column with the expand button highlighted](images/show-stats-column.png)
+
+13. This now shows the distribution of values for the **YRS_CUSTOMER** column. Find the small scroll bar to the left of the graph and scroll down. You will see the captured values "eight", "six" and "unknown" that we have now loaded:
+
+  ![Graph showing value distribution of the YRS_CUSTOMER column](images/stats-graph.png)
+
+## RECAP
+
+In this lab, you used Data Studio's data loading tool to load data from cloud storage. First, we set up a cloud storage location that we want to use regularly, and loaded some files from it in a few easy steps. Then, we learnt how to load directly from a URI, and how to resolve common types of issue with data loading - in this case, where we had a handful of rows with mismatched data types.
 
 ## Acknowledgements
 

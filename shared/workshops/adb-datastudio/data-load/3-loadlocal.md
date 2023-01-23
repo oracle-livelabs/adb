@@ -1,5 +1,5 @@
 
-# Using Data Studio in the Autonomous Database
+# Using Data Studio to load data from local files
 
 ## Introduction
 This lab introduces the Data Studio application built into the Oracle Autonomous Database and shows the various ways it can load data into the database.
