@@ -167,6 +167,8 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 6. Refresh Database Actions: Refresh the _browser's_ page and then verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
 
+    >- **Note**: It is important that you refresh the **browser page**, not just click the refresh circular arrow icon in the SQL Worksheet, to see the new schemas like `HCMI` that were just created.
+
 7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
 ## Task 5: Register Your Autonomous Database With Oracle Data Safe

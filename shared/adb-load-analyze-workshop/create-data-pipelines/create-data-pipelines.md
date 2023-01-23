@@ -72,16 +72,84 @@ Next, you will set the right attributes for the data pipelines, such as the type
 
 2. **DO I REFERENCE THE LABS IN LOAD AND ANALYZE TO CREATE BUCKET WITH DATA FILES IN IT AND A CREDENTIAL PARAMETER TO ACCESS IT FROM THIS WORKSHOP'S DATABASE? OR DO I COPY/PASTE THE TASKS FROM THAT WORKSHOP INTO HERE?**
 
+    We have defined the attributes for the data pipeline below - Importing all data files of **JSON type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name)
 
+    In a previous lab, you created an object storage bucket and credentials to access that bucket from your autonomous database. Now you will set up continuous data loading using the object storage URL of your bucket.
 
+    **Note**: For the credential, you may also setup [Resource Principles](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/resource-principal-use.html#GUID-EE5C24AD-34A5-4474-9B6A-9F606AABBA98) for the various different object store cloud providers to simplify access, if needed.
+
+    Run the following code snippet in your SQL worksheet:
+
+    ```
+    <copy>
+    BEGIN
+     DBMS_CLOUD_PIPELINE.SET_ATTRIBUTE(
+       pipeline_name => 'MY_FIRST_PIPELINE',
+       attributes => JSON_OBJECT(
+                    'credential_name' VALUE 'OBJECT_STORE_CRED',
+                    'location' VALUE 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/namespace-string/b/mybucket/o/',
+                    'table_name' VALUE 'EMPLOYEE',
+                    'format' VALUE '{"type": "json"}',
+                    'priority' VALUE 'HIGH', 'interval' VALUE '30') );
+
+    END;
+    /
+    </copy>
+    ```
 
 ## Task 3: Test the data pipeline
 
-Introductory text
+Before we activate your configured pipeline, let's test that it works. Call the `DBMS\_CLOUD\_PIPELINE.RUN\_PIPELINE\_ONCE` procedure to run your pipeline once, on-demand. This will not create a repeating scheduled job.
 
-1. text
+1. Run the following code snippet in your SQL worksheet:
 
-## Task 4: Start the data pipelines
+    ```
+    <copy>
+    BEGIN
+    DBMS_CLOUD_PIPELINE.RUN_PIPELINE_ONCE(
+            pipeline_name => 'MY_FIRST_PIPELINE'
+    );
+    END;
+    /
+    </copy>
+    ```
+2. You can monitor and troubleshoot your pipeline's running job by examining the `user\_cloud\_pipeline\_history` view or by querying the `status\_table` for each file in the pipeline via the `user\_cloud\_pipelines` view.
+
+    Run the following code snippet in your SQL worksheet:
+
+    ```
+    <copy>
+    SELECT pipeline_id, pipeline_name, status, error_message  
+    FROM user_cloud_pipeline_history
+    WHERE pipeline_name = 'MY_FIRST_PIPELINE';
+    </copy>
+    ```
+    ![Monitor the running pipeline using queries](images/monitor-pipeline-running-job.png " ")
+
+3. If something did go wrong causing your pipeline's file load to fail, you may query the database table `USER\_LOAD\_OPERATIONS` along with the operation IDs of your pipeline to get the related LOG and BAD files for the data load. This will provide insight into which lines in the data file cause a problem in the load.
+
+    Run the following code snippets in your SQL worksheet:
+
+    ```
+    <copy>
+    -- More details about the load operation in USER_LOAD_OPERATIONS.
+    SELECT   owner_name, type, status, start_time, update_time, status_table, rows_loaded, logfile_table, badfile_table
+        FROM user_load_operations
+        WHERE id = (SELECT operation_id
+                   FROM user_cloud_pipelines
+                   WHERE pipeline_name = 'MY_PIPELINE1');
+    </copy>
+    ```
+
+    ```
+    <copy>
+    --Query the relevant LOG and BAD files
+    SELECT * FROM PIPELINE$4$21_LOG;
+    SELECT * FROM PIPELINE$4$21_BAD;
+    </copy>
+    ```
+
+## Task 4: Start the data pipeline
 
 Introductory Text
 
@@ -93,7 +161,7 @@ Introductory Text
 
 1. text
 
-Please [proceed to the next lab](#next).
+Data Pipelines greatly simplify the repetitive nature of loading or exporting new data of similar structure, as it is being populated within a specified location or table. In addition to configuring your own data pipeline, we also provide [Oracle-maintained data pipelines mentioned here](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/pipelines-about.html#GUID-4CC0E833-DD11-4972-B959-508C4EC45A63) out of the box, that are preconfigured to export database logs to a selected object store location.
 
 ## Learn More
 
