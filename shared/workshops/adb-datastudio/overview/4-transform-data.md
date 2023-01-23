@@ -17,17 +17,37 @@ To complete this lab, you need to have completed the previous labs, so that you 
 ### Demo data for this lab
 **NOTE**: Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed previous labs then make sure you have loaded the demo data
+If you have not completed previous labs then make sure **you have loaded the demo data**
 in the first lab and then create remaining objets by running the following script in SQL Worksheet.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
 
 ```
-My SQL line 1;
-SQL line 2;
+DROP TABLE AGE_GROUP
+;
+
+CREATE TABLE AGE_GROUP 
+    ( 
+     MIN_AGE   NUMBER , 
+     MAX_AGE   NUMBER , 
+     AGE_GROUP VARCHAR2 (4000) 
+    ) 
+;
+
+set define on
+define file_uri_base = 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/lJD1-iabPDW-vrGBhPFf3JJJtYi67BhcBD-2iykgWjy6oir05QuBSIe7Ffva9i4a/n/adwc4pm/b/bucket-data-studio-overview-demo-data/o'
+
+begin
+ dbms_cloud.copy_data(
+    table_name =>'AGE_GROUP',
+    file_uri_list =>'&file_uri_base/AGE_GROUP.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+end;
+/
 ```
 
-Paste the sql statements in SQL worksheet and run the scripts
+Paste the sql statements in SQL worksheet and run the scripts.
 
 Now you are ready to go through rest of the labs in this workshop.
 

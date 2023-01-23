@@ -7,11 +7,11 @@
           "description": "Login to Oracle Cloud",
           "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
       },
-    {
+      {
         "title": "Introduction",
-        "description": "Introduction to ADB on Shared Infrastructure",
-        "filename": "./intro.md"
-    },
+        "description": "Introduction to Data Studio",
+        "filename": "../../0-introduction.md"
+      },
       {
           "title": "Lab 1: Provision an Autonomous Database",
           "description": "Provision Autonomous Database",
@@ -21,30 +21,41 @@
       {
           "title": "Lab 2: Create a User",
           "description": "Create a database user",
-          "filename": "./../../updatepathtomd"
-      },
-      {
-          "title": "Lab 3: TBD",
-          "description": "TBD",
           "type": "livelabs",
-          "filename": "./../../updatepathtomd"
+          "filename": "../../creat-user-UPDATE-PATH.md"
       },
       {
-          "title": "Lab 4: TBD",
-          "description": "TBD",
-          "filename": "./../../updatepathtomd"
+          "title": "Lab 3: Demo Data",
+          "description": "Load demo data for the Data Studio overview workshop",
+          "type": "livelabs",
+          "filename": "../../1-demo_data.md"
       },
       {
-          "title": "Lab 5: TBD",
-          "description": "TBD",
-          "filename": "./../../updatepathtomd"
+          "title": "Lab 4: Browse Database Objects",
+          "description": "Use Data Catalog to browse database objects",
+          "filename": "../../2-browse-objects.md"
       },
       {
-          "title": "Lab 6: TBD",
-          "description": "TBD",
-          "filename": "./../../updatepathtomd"
+        "title": "Lab 5: Load Data",
+        "description": "Use Load Data to load additional data sets",
+        "filename": "../../3-load-data.md"
+    },
+    {
+        "title": "Lab 6: Prepare Data",
+        "description": "Use Data Catalog to browse database objects",
+        "filename": "../../4-transform-data.md"
       },
       {
+        "title": "Lab 7: Analyze Data",
+        "description": "Use Data Analysis to analyze data",
+        "filename": "../../5-analyze-data.md"
+      },
+      {
+        "title": "Lab 8: Data Insights",
+        "description": "Use Data Insight to find hidden patterns",
+        "filename": "../../insight-in-data.md"
+      },
+{
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",
           "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
