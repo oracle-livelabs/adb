@@ -17,12 +17,115 @@ To complete this lab, you need to have completed the previous labs, so that you 
 ### Demo data for this lab
 **NOTE**: Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed previous labs then make sure **you have loaded the demo data**
-in the first lab and then create remaining objets by running the following script in SQL Worksheet.
+If you have not completed previous labs then run the following script in SQL Worksheet to load all necessary objects.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
 
 ```
+DROP TABLE CUSTOMER_CA
+;
+ 
+CREATE TABLE CUSTOMER_CA 
+    ( 
+     CUST_ID        NUMBER , 
+     AGE            NUMBER , 
+     EDUCATION      VARCHAR2 (40) , 
+     GENDER         VARCHAR2 (20) , 
+     INCOME_LEVEL   VARCHAR2 (20) , 
+     MARITAL_STATUS VARCHAR2 (8) , 
+     PET            VARCHAR2 (40) 
+    ) 
+;
+
+DROP TABLE MOVIESALES_CA
+;
+ 
+CREATE TABLE MOVIESALES_CA 
+    ( 
+     DAY_ID           DATE , 
+     GENRE_ID         NUMBER , 
+     MOVIE_ID         NUMBER , 
+     CUST_ID          NUMBER , 
+     APP              VARCHAR2 (100) , 
+     DEVICE           VARCHAR2 (100) , 
+     OS               VARCHAR2 (100) , 
+     PAYMENT_METHOD   VARCHAR2 (100) , 
+     LIST_PRICE       NUMBER , 
+     DISCOUNT_TYPE    VARCHAR2 (100) , 
+     DISCOUNT_PERCENT NUMBER , 
+     TOTAL_SALES      NUMBER 
+    ) 
+;
+
+DROP TABLE GENRE
+;
+
+CREATE TABLE GENRE 
+    ( 
+     GENRE_ID NUMBER , 
+     GENRE    VARCHAR2 (30) 
+    ) 
+;
+
+
+CREATE UNIQUE INDEX PK_GENRE_ID ON GENRE 
+    ( 
+     GENRE_ID ASC 
+    ) 
+;
+
+ALTER TABLE GENRE 
+    ADD CONSTRAINT PK_GENRE_ID PRIMARY KEY ( GENRE_ID ) 
+    USING INDEX PK_GENRE_ID 
+;
+
+DROP TABLE MOVIE
+;
+
+CREATE TABLE MOVIE 
+    ( 
+     MOVIE_ID     NUMBER , 
+     TITLE        VARCHAR2 (200) , 
+     BUDGET       NUMBER , 
+     GROSS        NUMBER , 
+     LIST_PRICE   NUMBER , 
+     GENRES       VARCHAR2 (4000) , 
+     SKU          VARCHAR2 (30) , 
+     YEAR         NUMBER , 
+     OPENING_DATE DATE , 
+     VIEWS        NUMBER , 
+     CAST         VARCHAR2 (4000) , 
+     CREW         VARCHAR2 (4000) , 
+     STUDIO       VARCHAR2 (4000) , 
+     MAIN_SUBJECT VARCHAR2 (4000) , 
+     AWARDS       VARCHAR2 (4000) , 
+     NOMINATIONS  VARCHAR2 (4000) , 
+     RUNTIME      NUMBER , 
+     SUMMARY      VARCHAR2 (16000) 
+    ) 
+;
+
+DROP TABLE TIME
+;
+
+CREATE TABLE TIME 
+    ( 
+     DAY_ID           DATE , 
+     DAY_NAME         VARCHAR2 (36) , 
+     DAY_OF_WEEK      NUMBER , 
+     DAY_OF_MONTH     NUMBER , 
+     DAY_OF_YEAR      NUMBER , 
+     WEEK_OF_MONTH    NUMBER , 
+     WEEK_OF_YEAR     NUMBER , 
+     MONTH_OF_YEAR    NUMBER , 
+     MONTH_NAME       VARCHAR2 (36) , 
+     MONTH_SHORT_NAME VARCHAR2 (12) , 
+     QUARTER_NAME     VARCHAR2 (7) , 
+     QUARTER_OF_YEAR  NUMBER , 
+     YEAR_NAME        NUMBER 
+    ) 
+;
+
 DROP TABLE AGE_GROUP
 ;
 
@@ -34,10 +137,34 @@ CREATE TABLE AGE_GROUP
     ) 
 ;
 
-set define on
 define file_uri_base = 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/lJD1-iabPDW-vrGBhPFf3JJJtYi67BhcBD-2iykgWjy6oir05QuBSIe7Ffva9i4a/n/adwc4pm/b/bucket-data-studio-overview-demo-data/o'
 
 begin
+ dbms_cloud.copy_data(
+    table_name =>'CUSTOMER_CA',
+    file_uri_list =>'&file_uri_base/CUSTOMER_CA.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+ dbms_cloud.copy_data(
+    table_name =>'MOVIESALES_CA',
+    file_uri_list =>'&file_uri_base/MOVIESALES_CA.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+ dbms_cloud.copy_data(
+    table_name =>'GENRE',
+    file_uri_list =>'&file_uri_base/GENRE.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+ dbms_cloud.copy_data(
+    table_name =>'MOVIE',
+    file_uri_list =>'&file_uri_base/MOVIE.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+ dbms_cloud.copy_data(
+    table_name =>'TIME',
+    file_uri_list =>'&file_uri_base/TIME.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
  dbms_cloud.copy_data(
     table_name =>'AGE_GROUP',
     file_uri_list =>'&file_uri_base/AGE_GROUP.csv',

@@ -18,35 +18,11 @@ To complete this lab, you need to have completed the previous labs, so that you 
 ### Demo data for this lab
 **NOTE**: Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed previous labs then make sure **you have loaded the demo data**
-in the first lab and then create remaining objets by running the following script in SQL Worksheet.
+If you have not completed previous labs then run the following script in SQL Worksheet to load all necessary objects.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
 
 ```
-DROP TABLE AGE_GROUP
-;
-
-CREATE TABLE AGE_GROUP 
-    ( 
-     MIN_AGE   NUMBER , 
-     MAX_AGE   NUMBER , 
-     AGE_GROUP VARCHAR2 (4000) 
-    ) 
-;
-
-set define on
-define file_uri_base = 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/lJD1-iabPDW-vrGBhPFf3JJJtYi67BhcBD-2iykgWjy6oir05QuBSIe7Ffva9i4a/n/adwc4pm/b/bucket-data-studio-overview-demo-data/o'
-
-begin
- dbms_cloud.copy_data(
-    table_name =>'AGE_GROUP',
-    file_uri_list =>'&file_uri_base/AGE_GROUP.csv',
-    format =>'{"type" : "csv", "skipheaders" : 1}'
- );
-end;
-/
-
 drop table CUSTOMER_SALES_ANALYSIS;
 
 create table CUSTOMER_SALES_ANALYSIS
@@ -73,71 +49,17 @@ CUST_VALUE NUMBER,
 CUST_SALES NUMBER(38)
 );
 
-INSERT 
-  /*+  APPEND PARALLEL  */ 
-  INTO CUSTOMER_SALES_ANALYSIS
-  (
-    MIN_AGE ,
-    GENRE ,
-    AGE_GROUP ,
-    GENDER ,
-    APP ,
-    DEVICE ,
-    OS ,
-    PAYMENT_METHOD ,
-    LIST_PRICE ,
-    DISCOUNT_TYPE ,
-    DISCOUNT_PERCENT ,
-    TOTAL_SALES ,
-    MAX_AGE ,
-    AGE ,
-    EDUCATION ,
-    INCOME_LEVEL ,
-    MARITAL_STATUS ,
-    PET ,
-    CUST_VALUE ,
-    CUST_SALES 
-  ) 
-SELECT 
-  AGE_GROUP.MIN_AGE ,
-  GENRE_1.GENRE ,
-  AGE_GROUP.AGE_GROUP ,
-  CUSTOMER_CA.GENDER ,
-  MOVIESALES_CA1.APP ,
-  MOVIESALES_CA1.DEVICE ,
-  MOVIESALES_CA1.OS ,
-  MOVIESALES_CA1.PAYMENT_METHOD ,
-  MOVIESALES_CA1.LIST_PRICE ,
-  MOVIESALES_CA1.DISCOUNT_TYPE ,
-  MOVIESALES_CA1.DISCOUNT_PERCENT ,
-  MOVIESALES_CA1.TOTAL_SALES ,
-  AGE_GROUP.MAX_AGE ,
-  CUSTOMER_CA.AGE ,
-  CUSTOMER_CA.EDUCATION ,
-  CUSTOMER_CA.INCOME_LEVEL ,
-  CUSTOMER_CA.MARITAL_STATUS ,
-  CUSTOMER_CA.PET ,
-  MOVIESALES_CA_1.COL ,
-  MOVIESALES_CA_1.CUST_SALES  
-FROM 
-  ((((
-SELECT 
-  MOVIESALES_CA.CUST_ID AS CUST_ID ,
-  SUM ( MOVIESALES_CA.TOTAL_SALES ) AS CUST_SALES ,
-  NTILE(5) OVER ( ORDER BY (SUM ( MOVIESALES_CA.TOTAL_SALES ))) AS COL   
-FROM 
-  MOVIESALES_CA MOVIESALES_CA  
-GROUP BY
-  MOVIESALES_CA.CUST_ID 
-  ) MOVIESALES_CA_1  INNER JOIN  CUSTOMER_CA CUSTOMER_CA  
-    ON  MOVIESALES_CA_1.CUST_ID=CUSTOMER_CA.CUST_ID
-     )  LEFT OUTER JOIN  AGE_GROUP AGE_GROUP  
-    ON  CUSTOMER_CA.AGE between  AGE_GROUP.MIN_AGE and  AGE_GROUP.MAX_AGE
-     )  INNER JOIN  MOVIESALES_CA MOVIESALES_CA1  
-    ON  MOVIESALES_CA_1.CUST_ID=MOVIESALES_CA1.CUST_ID
-     )  INNER JOIN  GENRE GENRE_1  
-    ON  MOVIESALES_CA1.GENRE_ID=GENRE_1.GENRE_ID
-;
+set define on
+define file_uri_base = 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/lJD1-iabPDW-vrGBhPFf3JJJtYi67BhcBD-2iykgWjy6oir05QuBSIe7Ffva9i4a/n/adwc4pm/b/bucket-data-studio-overview-demo-data/o'
+
+begin
+ dbms_cloud.copy_data(
+    table_name =>'CUSTOMER_SALES_ANALYSIS',
+    file_uri_list =>'&file_uri_base/CUSTOMER_SALES_ANALYSIS.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+end;
+/
 
 ```
 
@@ -280,6 +202,12 @@ First let's learn how to navigate in the analysis tool.
     
     Select chart mode. Clear all hierarchies from X-Axis and drag **Age
     group** to X-Axis and **Total Sales** to Y-Axis.
+
+    **Note:** You need to expand the hierarchy tree to eveal the level. 
+    Only the level can be dragged to the analysis area. In our workshop 
+    there is only one level to all hierarchy and hence, they are named 
+    the same. In more complex model you may have multiple levels inside a 
+    hierarchy.
     
     This chart is showing you total sales across age group. We can
     conclude that seniors (71-80) are not watching many movies whereas age
