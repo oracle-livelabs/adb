@@ -4,6 +4,8 @@
 
 In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Autonomous Transaction Processing (ATP) service to have more CPUs. You will also watch a demo that shows the performance and concurrency impacts of scaling your service online.
 
+Estimated Time: 10 minutes
+
 ### Objectives
 
 -   Learn how to scale up an ADW or ATP service
