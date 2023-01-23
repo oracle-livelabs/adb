@@ -31,7 +31,7 @@ You will need to load the demo data for this lab.
 >>
 >> Click on **DATA STUDIO OVERVIEW** card.
 
-![Screenshot of...](/images/image1.png)
+![Screenshot of...](images/image1.png)
 
 2.  It shows the list of recent objects in the middle. On the left, it
     has links to individual tools and on the right, link to
