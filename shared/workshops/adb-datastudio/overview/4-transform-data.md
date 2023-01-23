@@ -461,7 +461,7 @@ Click **Save**
 
 ![Screenshot of data statistics](images/image53_transform_stats.png)
 
-For now, it is just a cursory data glance. Next, we will use **DATA
+For now, it is just a cursory data glance. We will need to use **DATA
 ANYSIS** tool to analyze this data and find many interesting patterns.
 
 **Important note on this lab:**
@@ -481,6 +481,12 @@ Other features are:
     execution flow.
 
 -   Schedule: In built scheduler for periodic execution.
+
+This completes Data Transforms overview lab. For the Data Studio overview workshop,
+go to the next lab.
+
+Also note that there are many more features in the Transforms tool, which are not covered here. 
+These details will be covered in some other in-depth workshops.
 
 ## Task 4: For Advanced users: How to debug
 
@@ -521,4 +527,5 @@ the next task.**
 There are many more features to explore for the advanced users. In this
 workshop we are limiting to creating a data flow and executing it on
 demand.
+
 

@@ -102,7 +102,11 @@ use the Catalog tool to browse the objects and find what we need.
     
     We can explicitly search for GROUP as well but we don't see any.
     
-    Looks like we need to load a new table for age group.
 
 ![Screenshot of searcing for column names](images/image7_catalog_search_cols.png)
 
+This completes Data Catalog overview lab. For the Data Studio overview workshop,
+go to the next lab.
+
+Also note that there are many more features in the Catalog tool, which are not covered here. 
+These details will be covered in some other in-depth workshops.

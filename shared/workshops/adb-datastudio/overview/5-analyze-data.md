@@ -326,3 +326,9 @@ display mode to see how it works. Advanced uses can access the data in
 this AV from Excel or from Googlesheet. This is out of scope for this
 lab.
 
+This completes Data Analysis overview lab. For the Data Studio overview workshop,
+go to the next lab.
+
+Also note that there are many more features in the Analysis tool, which are not covered here. 
+These details will be covered in some other in-depth workshops.
+

@@ -87,3 +87,8 @@ top left button and use Load Data tool.
 
 ![Screenshot of start loading file](images/image12_load_file_start.png)
 
+This completes data load overview lab. For the Data Studio overview workshop,
+go to the next lab.
+
+Also note that there are many more features in the data load tool, which are not covered here. 
+These details will be covered in some other in-depth workshops.

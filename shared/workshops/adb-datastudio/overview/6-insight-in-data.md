@@ -518,3 +518,4 @@ Click on the tile marked **S** on the top and **Genre** at the bottom
 
 **Isn't that what our insight told us!!**
 
+This completes Data Insights overview lab.
