@@ -1,4 +1,5 @@
-# Loading demo data for Data studio overview workshop
+# Loading demo data for Data Studio overview workshop
+
 
 ## Introduction
 
