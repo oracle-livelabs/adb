@@ -30,31 +30,31 @@ top left button and use Load Data tool.
 
 ![Screenshot of age group data in Excel](images/image9_data_excel.png)
 
-    Save this as AGE_GROUP Excel workbook.
+Save this as AGE_GROUP Excel workbook.
 
-    If you don't have Excel then create a csv file with the data as below
-    and save it as AGE_GROUP.csv.
+If you don't have Excel then create a csv file with the data as below
+and save it as AGE_GROUP.csv.
 
-    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
+*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
     
 ```
-\"MIN_AGE\",\"MAX_AGE\",\"AGE_GROUP\",
+"MIN_AGE","MAX_AGE","AGE_GROUP",
 
-0,20,\"00-20\",
+0,20,"00-20",
 
-21,30,\"21-30\",
+21,30,"21-30",
 
-31,40,\"31-40\",
+31,40,"31-40",
 
-41,50,\"41-50\",
+41,50,"41-50",
 
-51,60,\"51-60\",
+51,60,"51-60",
 
-61,70,\"61-70\",
+61,70,"61-70",
 
-71,80,\"71-80\",
+71,80,"71-80",
 
-81,200,\"Older than 81\",
+81,200,"Older than 81",
 ```
 
 ## Task 2: Load data file for AGE_GROUP

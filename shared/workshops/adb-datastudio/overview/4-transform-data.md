@@ -47,7 +47,11 @@ end;
 /
 ```
 
-Paste the sql statements in SQL worksheet and run the scripts.
+Paste the sql statements in worksheet. Click on **Run Script** icon.
+
+**Note**: Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+
+![Alt text](images/image_sql_worksheet.png)
 
 Now you are ready to go through rest of the labs in this workshop.
 

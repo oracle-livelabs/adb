@@ -354,7 +354,9 @@ CREATE OR REPLACE FORCE EDITIONABLE ATTRIBUTE DIMENSION
   
 ```
 
-Paste the sql statements in SQL worksheet and run the scripts.
+Paste the sql statements in worksheet. Click on **Run Script** icon.
+
+![Alt text](images/image_sql_worksheet.png)
 
 Now you are ready to go through rest of the labs in this workshop.
 

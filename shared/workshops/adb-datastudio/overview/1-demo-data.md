@@ -52,6 +52,9 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet, and all subsequent code snippets*: 
 
+![Screenshot of copy icon](images/image_copy_icon.png)
+
+
 ```
 DROP TABLE CUSTOMER_CA
 ;
@@ -194,7 +197,7 @@ end;
 
 **Note**: Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
-![Alt text](images/image_sql_worksheet.png)
+![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
 
 Now you are ready to go through rest of the labs in this workshop.
 
