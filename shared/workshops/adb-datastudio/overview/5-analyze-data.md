@@ -18,7 +18,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 ### Demo data for this lab
 **NOTE**: Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed previous labs then make sure you have loaded the demo data
+If you have not completed previous labs then make sure **you have loaded the demo data**
 in the first lab and then create remaining objets by running the following script in SQL Worksheet.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
@@ -118,7 +118,7 @@ GROUP BY
 
 ```
 
-Paste the sql statements in SQL worksheet and run the scripts
+Paste the sql statements in SQL worksheet and run the scripts.
 
 Now you are ready to go through rest of the labs in this workshop.
 
