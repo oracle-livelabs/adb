@@ -26,6 +26,11 @@ You will need to load the demo data for this lab.
     Login to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
 
+    Note: Bookmark the Database Actions page so that it is easier to come
+    back to this later in the workshop.
+    
+    Click on **DATA STUDIO OVERVIEW** card.
+
 >> Note: Bookmark the Database Actions page so that it is easier to come
 >> back to this later in the workshop.
 >>

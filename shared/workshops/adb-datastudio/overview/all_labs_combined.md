@@ -1,373 +1,3 @@
-# Using Data Studio to load, prepare and analyze data in the Autonomous Database
-
-# Workshop Request
-
-+----------------+-----------------------------------------------------+
-| Workshop Title | Using Data Studio to load, prepare and analyze data |
-|                | in the Autonomous Database                          |
-+================+=====================================================+
-| Short          | A day in the life of a data analyst. Learn how to   |
-| Description    | use different tools in Data Studio for your data    |
-|                | analysis needs that involves loading, transforming, |
-|                | and analyzing data                                  |
-+----------------+-----------------------------------------------------+
-| Long           | This workshop will teach you how to use the         |
-| Description    | following tools in Data Studio for your data        |
-|                | analysis need:                                      |
-|                |                                                     |
-|                | -   Data Catalog                                    |
-|                |                                                     |
-|                | -   Data Load                                       |
-|                |                                                     |
-|                | -   Data Transforms                                 |
-|                |                                                     |
-|                | -   Data Analysis                                   |
-|                |                                                     |
-|                | -   Data Insight                                    |
-+----------------+-----------------------------------------------------+
-| Stakeholder    |                                                     |
-+----------------+-----------------------------------------------------+
-| Abstract       | >> **Workshop Elevator Pitch/Messaging**: Data       |
-|                | >> Studio provides all the tools needed to help in   |
-|                | >> the job of data analyst under one roof. These are |
-|                | >> built-in Autonomous Database with rich capability |
-|                | >> in loading, transforming, and analyzing any data. |
-|                | >> It addresses the need of citizen data scientist   |
-|                | >> looking for easy to use tools with no code        |
-|                | >> environment.                                      |
-|                | >>                                                   |
-|                | >> **Workshop Description**: Learn how to use        |
-|                | >> different tools in Data Studio for your data      |
-|                | >> analysis needs that involves loading,             |
-|                | >> transforming, and analyzing data                  |
-|                | >>                                                   |
-|                | >> **Why is this workshop needed?** We need an       |
-|                | >> overview/introductory workshop for Data Studio.   |
-|                | >>                                                   |
-|                | >> **What products/technologies are used?** ADB,     |
-|                | >> Data Transforms, Analytic Views, and Data Studio  |
-|                | >> Analysis application.                             |
-|                | >>                                                   |
-|                | >> **Is there a primary Oracle product/technology    |
-|                | >> being showcased? If so, what is it?** Data        |
-|                | >> Transforms, Analytic Views and Data Studio        |
-|                | >> Analysis application.                             |
-+----------------+-----------------------------------------------------+
-| Workshop       | Lab 1: Create an Oracle Autonomous Database         |
-| Outline        |                                                     |
-|                | Lab 2: Create user                                  |
-|                |                                                     |
-|                | Lab 3: Browse data                                  |
-|                |                                                     |
-|                | Lab 4: Load Data                                    |
-|                |                                                     |
-|                | Lab 5: Transform data                               |
-|                |                                                     |
-|                | Lab 6: Data analysis                                |
-|                |                                                     |
-|                | Lab 7: Data insights                                |
-+----------------+-----------------------------------------------------+
-|                |                                                     |
-+----------------+-----------------------------------------------------+
-|                |                                                     |
-+----------------+-----------------------------------------------------+
-
-# Introduction
-
-## About This Workshop
-
-This is an introductory workshop for the tools in Data Studio. It goes
-through "a day in the life of a data analyst" and shows how to use the
-tools to browse, load, transforms and analyze the data.
-
-Workshops starts with the fictious weekly marketing team meeting and
-follows along a team member who is assigned a task. For next one hour
-this team member uses different tools to complete his assigned task.
-
-## Meeting notes from the weekly marketing team meeting
-
-Date: Monday 1-09-2023
-
-Patrick wants to send discount offers to high value customers every
-week. He also wants movie genre preference based on age groups and
-marital status. It is also interesting to know whether these preferences
-are different across high value and low value customers.
-
-Brainstorming:
-
-Bud suggested creating quintiles for customers based on 2022 movie
-sales. We should send offers only to top quintile customers.
-
-Everyone agreed it is the right strategy.
-
-Where is the data?
-
-Everyday sales data is being loaded to the object store bucket. Ashish
-is going to setup a live feed from object store to **MOVIESALES_CA**
-table. This table will have timestamped sales data. There are tables for
-customer and movie genre as well.\
-(note to myself: confirm the table name. Also livefeed sounds
-interesting. Learn how he sets it up in the future).
-
-TODO:
-
-Data Prep:
-
-Create data flow to aggregate rolling 3 months of movie sales and
-populate quintile column. Schedule this to load every Sunday 9pm.
-
-Also add denormalized columns needed for analysis to this table for
-analyzing data. This table should have all the attributes needed for
-analysis.
-
-Analyze:
-
-Create Analytic View to analyze sales data by various dimensions such as
-age group, genre, marital status etc.
-
-Insight:
-
-Is there anything more we learn from the data?
-
-## Objectives
-
-In this workshop, you will:
-
--   Browse the catalog to find the data you need
-
--   Load data from your laptop
-
--   Transform data to create new tables for analysis
-
--   Analyze the data (involves creating a simple dimensional model)
-
--   Find hidden insights
-
-# About the Data
-
-The data set used in this Live Lab is a variation of the MovieStream
-data set used by many other Autonomous Database labs. MovieStream is a
-fictious video streaming service. The version of the data set used by
-this lab is slightly modified to suit this workshop.
-
-The tables used are:
-
--   CUSTOMER_CA
-
--   MOVIESALES_CA
-
--   GENRE
-
-Loaded from laptop during workshop:
-
--   AGE_GROUP
-
-**Steps to create sample data:**
-
--   **Login as ADMIN**
-
--   Install workshop utility using following lab.
-
-    -   https://oracle-livelabs.github.io/common/building-blocks/how-to-author-with-blocks/workshop/index.html?lab=data-sets#Accessingthedata
-
--   **Login as QTEAM**
-
--   Use SQL Web and run the following
-
-exec workshop.add_dataset(\'CUSTSALES, CUSTOMER, GENRE, TIME\');
-
-\-- wait for the utility to finish. It will take around 5 minutes
-
-\--Create 2021 and 2022 rows
-
-insert into TIME (DAY_ID)
-
-SELECT
-
-DAY_ID+2\*365+1
-
-FROM
-
-TIME;
-
-\--Create 2023 rows
-
-insert into TIME (DAY_ID)
-
-SELECT
-
-DAY_ID+365
-
-FROM
-
-TIME where DAY_ID \>> to_date(\'01-JAN-2022\');
-
-\--Create MOVIESALES_CA
-
-DROP TABLE MOVIESALES_CA;
-
-CREATE TABLE MOVIESALES_CA
-
-(
-
-DAY_ID DATE ,
-
-GENRE_ID NUMBER ,
-
-MOVIE_ID NUMBER ,
-
-CUST_ID NUMBER ,
-
-APP VARCHAR2 (100) ,
-
-DEVICE VARCHAR2 (100) ,
-
-OS VARCHAR2 (100) ,
-
-PAYMENT_METHOD VARCHAR2 (100) ,
-
-LIST_PRICE NUMBER ,
-
-DISCOUNT_TYPE VARCHAR2 (100) ,
-
-DISCOUNT_PERCENT NUMBER ,
-
-TOTAL_SALES NUMBER
-
-);
-
-INSERT
-
-/\*+ APPEND PARALLEL \*/
-
-INTO MOVIESALES_CA
-
-( DAY_ID,
-
-GENRE_ID,
-
-MOVIE_ID,
-
-CUST_ID,
-
-APP,
-
-DEVICE,
-
-OS,
-
-PAYMENT_METHOD,
-
-LIST_PRICE,
-
-DISCOUNT_TYPE,
-
-DISCOUNT_PERCENT,
-
-TOTAL_SALES
-
-)
-
-SELECT
-
-DAY_ID+3\*365 DAY_ID,
-
-GENRE_ID,
-
-MOVIE_ID,
-
-CUST_ID,
-
-APP,
-
-DEVICE,
-
-OS,
-
-PAYMENT_METHOD,
-
-LIST_PRICE,
-
-DISCOUNT_TYPE,
-
-DISCOUNT_PERCENT,
-
-ACTUAL_PRICE
-
-from CUSTSALES T1
-
-where exists (select \'x\' from CUSTOMER T2 where T1.CUST_ID =
-T2.CUST_ID and T2.STATE_PROVINCE = \'California\' );
-
-\--Create CUSTOMER_CA
-
-CREATE TABLE CUSTOMER_CA
-
-(
-
-CUST_ID,
-
-AGE,
-
-EDUCATION,
-
-GENDER,
-
-INCOME_LEVEL,
-
-MARITAL_STATUS,
-
-PET
-
-) AS
-
-(SELECT
-
-CUST_ID,
-
-AGE,
-
-EDUCATION,
-
-GENDER,
-
-INCOME_LEVEL,
-
-MARITAL_STATUS,
-
-PET
-
-FROM
-
-CUSTOMER
-
-where STATE_PROVINCE = \'California\');
-
-\--rename columns
-
-ALTER TABLE GENRE RENAME COLUMN NAME TO GENRE;
-
-\--Drop unwanted tables
-
-DROP TABLE CUSTSALES;
-
-DROP TABLE CUSTOMER;
-
-DROP TABLE CUSTOMER_CONTACT;
-
-DROP TABLE CUSTOMER_EXTENSION;
-
-\--Check row count
-
-SELECT COUNT(\*) FROM MOVIESALES_CA;
-
-\--Should be 901582
-
-\--Check row count
-
-SELECT COUNT(\*) FROM CUSTOMER_CA;
-
-\--Should be 5261
 
 # Lab 1: Create an Oracle Autonomous Database 
 
@@ -388,10 +18,10 @@ with Data Catalog to look for the data we need.
 1.  Login to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
 
->> Note: Bookmark the Database Actions page so that it is easier to come
->> back to this later in the workshop.
->>
->> Click on **DATA STUDIO OVERVIEW** card.
+    Note: Bookmark the Database Actions page so that it is easier to come
+    back to this later in the workshop.
+    
+    Click on **DATA STUDIO OVERVIEW** card.
 
 ![Screenshot of...](images/image1.png)
 
@@ -410,18 +40,18 @@ use the Catalog tool to browse the objects and find what we need.
 
 1.  Click on the Catalog link on the left panel.
 
->> In a typical database there will be many objects and you need various
->> ways to search and display objects. Various ways to navigate a catalog
->> is shown by marked numbers in the above screenshot. These are:
->>
->> 1: Saved searches. You can filter objects easily with one click and
->> then refine the search further as per need.
->>
->> 2: Filters to narrow down your search.
->>
->> 3: Various display modes. Card/Grid/List view.
->>
->> 4: Search bar where you can type in advanced search query
+    In a typical database there will be many objects and you need various
+    ways to search and display objects. Various ways to navigate a catalog
+    is shown by marked numbers in the above screenshot. These are:
+    
+    1: Saved searches. You can filter objects easily with one click and
+    then refine the search further as per need.
+    
+    2: Filters to narrow down your search.
+    
+    3: Various display modes. Card/Grid/List view.
+    
+    4: Search bar where you can type in advanced search query
 
 ![Screenshot of...](images/image3.png){width="6.455540244969379in"
 height="3.057638888888889in"}
@@ -430,31 +60,31 @@ height="3.057638888888889in"}
     only the tables for now. Click on "Tables, views and analytic views
     owned by..." on the right zone 1.
 
->> You can see the MOVIESALES_CA in this list. We are interested in this
->> table since we were told that this table contains movie sales
->> transaction data. (Referring to the meeting notes in introductory
->> section of this workshop).
->>
->> You could explicitly search for MOVIESALES_CA by typing the name of
->> the table in the search bar but in our case, it is clearly visible in
->> the grid view in the middle.
+    You can see the MOVIESALES_CA in this list. We are interested in this
+    table since we were told that this table contains movie sales
+    transaction data. (Referring to the meeting notes in introductory
+    section of this workshop).
+    
+    You could explicitly search for MOVIESALES_CA by typing the name of
+    the table in the search bar but in our case, it is clearly visible in
+    the grid view in the middle.
 
 ![Screenshot of...](images/image4.png){width="6.466951006124234in"
 height="3.027083333333333in"}
 
 3.  Click on the MOVIESALES_CA table.
 
->> You can see the data preview. You can scroll right to see more columns
->> and scroll down to see more rows. You can also sort the columns by
->> right clicking on the columns. Using the data view, you can be sure
->> that this is the data you want.
->>
->> Note that you also have other information such as
->> lineage/impact/statistics/data definitions etc. This workshop is not
->> going into the details. In-depth catalog will be explored in other
->> workshops.
->>
->> Now close this view by clicking on the bottom right **Close** button.
+    You can see the data preview. You can scroll right to see more columns
+    and scroll down to see more rows. You can also sort the columns by
+    right clicking on the columns. Using the data view, you can be sure
+    that this is the data you want.
+    
+    Note that you also have other information such as
+    lineage/impact/statistics/data definitions etc. This workshop is not
+    going into the details. In-depth catalog will be explored in other
+    workshops.
+    
+    Now close this view by clicking on the bottom right **Close** button.
 
 ![Screenshot of...](images/image5.png){width="6.3258027121609794in"
 height="3.060416666666667in"}
@@ -469,15 +99,15 @@ height="3.021725721784777in"}
 
 5.  We also need to find out whether age group information is present.
 
->> Clear search bar and enter the following search string:
->>
->> **(type: COLUMN) AGE**
->>
->> This will search for all the columns with "AGE" in the column name.
->>
->> We can explicitly search for GROUP as well but we don't see any.
->>
->> Looks like we need to load a new table for age group.
+    Clear search bar and enter the following search string:
+    
+    **(type: COLUMN) AGE**
+    
+    This will search for all the columns with "AGE" in the column name.
+    
+    We can explicitly search for GROUP as well but we don't see any.
+    
+    Looks like we need to load a new table for age group.
 
 ![Screenshot of...](images/image7.png){width="6.448788276465442in"
 height="3.040277777777778in"}
@@ -505,10 +135,10 @@ height="3.060416666666667in"}
 
 Save this as AGE_GROUP Excel workbook.
 
->> If you don't have Excel then create a csv file with the data as below
->> and save it as AGE_GROUP.csv.
->>
->> \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
+    If you don't have Excel then create a csv file with the data as below
+    and save it as AGE_GROUP.csv.
+    
+    \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 \"MIN_AGE\",\"MAX_AGE\",\"AGE_GROUP\",
 
@@ -528,7 +158,7 @@ Save this as AGE_GROUP Excel workbook.
 
 81,200,\"Older than 81\",
 
->> \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
+    \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
 ![Screenshot of...](images/image9.png){width="2.741903980752406in"
 height="2.275196850393701in"}
@@ -538,15 +168,15 @@ height="2.275196850393701in"}
 1.  Launch Data Load from Database Actions page by clicking on **DATA
     LOAD** card.
 
->> Note that you have various modes for loading data. You can either
->> directly load data or leave it in place simply linking it. You can
->> also create ongoing feed to load data to Autonomous Database.
->>
->> You can also load data from either your local file, database or from a
->> cloud storage.
->>
->> In this lab we are loading data from the local file created in earlier
->> task. Selected **LOCAL FILE** and press **Next**.
+    Note that you have various modes for loading data. You can either
+    directly load data or leave it in place simply linking it. You can
+    also create ongoing feed to load data to Autonomous Database.
+    
+    You can also load data from either your local file, database or from a
+    cloud storage.
+    
+    In this lab we are loading data from the local file created in earlier
+    task. Selected **LOCAL FILE** and press **Next**.
 
 ![Screenshot of...](images/image10.png){width="6.5in" height="4.054166666666666in"}
 
@@ -556,10 +186,10 @@ height="2.275196850393701in"}
 
 3.  Press on the green triangle button to start the load.
 
->> After the load is complete, click on the Database Actions link on top
->> of the page to go back to the main menu.
->>
->> Now we all the data sets that we need to complete our assignment.
+    After the load is complete, click on the Database Actions link on top
+    of the page to go back to the main menu.
+    
+    Now we all the data sets that we need to complete our assignment.
 
 ![Screenshot of...](images/image12.png){width="6.5in" height="2.2840277777777778in"}
 
@@ -587,9 +217,9 @@ Transform Data tool makes such data preparation tasks easy.
 
 1.  Click on DATA TRANSFORMS card to launch the tool.
 
->> NOTE: If you don't see the DATA TRANSFORMS card then it means you are
->> missing DATA_TRANSFORM_USER role for your user. Login as ADMIN and
->> grant the role (make sure this role is marked "Default" as well).
+    NOTE: If you don't see the DATA TRANSFORMS card then it means you are
+    missing DATA_TRANSFORM_USER role for your user. Login as ADMIN and
+    grant the role (make sure this role is marked "Default" as well).
 
 ![Screenshot of...](images/image13.png){width="6.5in" height="3.65625in"}
 
@@ -604,11 +234,11 @@ Transform Data tool makes such data preparation tasks easy.
 4.  It will take up to 3 minutes for the service to be provisioned. Once
     provisioned you will see the following home screen.
 
->> Note: Data Transforms tool is provisioned based on demand. If there is
->> inactivity for 15 minutes, then it goes into sleep mode and needs to
->> be provisioned again. Clicking on any part of the UI will provision it
->> again if it has gone into sleep mode. If you get any error, then
->> refresh your browser.
+    Note: Data Transforms tool is provisioned based on demand. If there is
+    inactivity for 15 minutes, then it goes into sleep mode and needs to
+    be provisioned again. Clicking on any part of the UI will provision it
+    again if it has gone into sleep mode. If you get any error, then
+    refresh your browser.
 
 ![Screenshot of...](images/image16.png){width="6.5in" height="2.8256944444444443in"}
 
@@ -667,19 +297,19 @@ Now we are ready to prepare the data.
 
 2.  Enter name and description of data flow.
 
->> Name: **load_customer_sales_analysis**
->>
->> Description: **Load customer sales table with quintiles and other
->> attributes**
->>
->> A good description helps you understand the objective of the data
->> flow.
->>
->> Since we are working on this tool for the first time, we don't have a
->> project. Click on + to create a project. Accept the default name for
->> project name.
->>
->> Click **Next**.
+    Name: **load_customer_sales_analysis**
+    
+    Description: **Load customer sales table with quintiles and other
+    attributes**
+    
+    A good description helps you understand the objective of the data
+    flow.
+    
+    Since we are working on this tool for the first time, we don't have a
+    project. Click on + to create a project. Accept the default name for
+    project name.
+    
+    Click **Next**.
 
 ![Screenshot of...](images/image22.png){width="6.5in" height="3.4783169291338583in"}
 
@@ -703,29 +333,29 @@ You can also refresh the data entities any time with the refresh icon.
 5.  Now let us learn how to navigate in the data flow editing screen.
     Refer to the numbered zones in the screenshot.
 
->> 1: Main editing canvas to create data flow by combining various
->> transforms
->>
->> 2: Data Entity browser. Data Entities can be used as a source or
->> target for the data flow. You can add more connections by clicking on
->> the + icon (we don't need to) and filter entities by name or tag if
->> the list is big. Entities are dragged into the main canvas to build a
->> data flow.
->>
->> 3: List of transformations grouped under various buckets. Click on
->> different buckets to see what kind of transforms are available. Basic
->> transforms are under **DATA TRANSFORM** and **DATA PREPARATION**
->> bucket. These transforms are dragged into the main canvas to build a
->> data flow.
->>
->> 4: Properties: By clicking on any source/target entity or on a
->> transform step, you can view and edit various properties.
->>
->> 5: Save, validate, and execute. We can also schedule the execution
->> from in built scheduler.
->>
->> 6: When you click on the empty part of the main canvas then it gives
->> you execution status of the data flow.
+    1: Main editing canvas to create data flow by combining various
+    transforms
+    
+    2: Data Entity browser. Data Entities can be used as a source or
+    target for the data flow. You can add more connections by clicking on
+    the + icon (we don't need to) and filter entities by name or tag if
+    the list is big. Entities are dragged into the main canvas to build a
+    data flow.
+    
+    3: List of transformations grouped under various buckets. Click on
+    different buckets to see what kind of transforms are available. Basic
+    transforms are under **DATA TRANSFORM** and **DATA PREPARATION**
+    bucket. These transforms are dragged into the main canvas to build a
+    data flow.
+    
+    4: Properties: By clicking on any source/target entity or on a
+    transform step, you can view and edit various properties.
+    
+    5: Save, validate, and execute. We can also schedule the execution
+    from in built scheduler.
+    
+    6: When you click on the empty part of the main canvas then it gives
+    you execution status of the data flow.
 
 ![Screenshot of...](images/image25.png){width="6.445417760279965in"
 height="3.145138888888889in"}
@@ -734,15 +364,15 @@ height="3.145138888888889in"}
     sales per customer to create 5 quintile buckets to determine
     customer value.
 
->> First, we will drag **MOVIESALES_CA** into the canvas and drag
->> **Aggregate** transform from above under **DATA TRANSFORM** bucket.
->> Also drag **QuintileBinning** transform into the canvas. This
->> transform is in **DATA PREPARATION** bucket above.
->>
->> There are many transforms available under different buckets to build
->> the desired data flow. For this workshop, we will use few of them.
->>
->> This should like below.
+    First, we will drag **MOVIESALES_CA** into the canvas and drag
+    **Aggregate** transform from above under **DATA TRANSFORM** bucket.
+    Also drag **QuintileBinning** transform into the canvas. This
+    transform is in **DATA PREPARATION** bucket above.
+    
+    There are many transforms available under different buckets to build
+    the desired data flow. For this workshop, we will use few of them.
+    
+    This should like below.
 
 ![Screenshot of...](images/image26.png){width="6.5in" height="3.0292180664916883in"}
 
@@ -829,38 +459,38 @@ Confirm that you have changed the name.
     buckets** expression. Drag **CUST_SALES** from aggregate into the
     **order** expression.
 
->> **It means that aggregate customer sales will be used to divide
->> customers into 5 buckets. This will be used as customer value.**
+    **It means that aggregate customer sales will be used to divide
+    customers into 5 buckets. This will be used as customer value.**
 
 ![Screenshot of...](images/image37.png){width="6.5in" height="2.154166666666667in"}
 
 18. Close the property panel by clicking on the right corner and come to
     the main canvas.
 
->> Now you have the basic skills to add data sources, add transforms, and
->> edit its properties. Now bring **Join** transform into the canvas,
->> drag **CUSTOMER_CA** table and join it with previous flow as below.
->>
->> Click on the Attribute property of the Join and notice that it has
->> populated the join automatically. You can also edit it manually if it
->> is not what you expect.
->>
->> Make sure the join is: **Aggregate.CUST_ID=CUSTOMER_CA.CUST_ID**
+    Now you have the basic skills to add data sources, add transforms, and
+    edit its properties. Now bring **Join** transform into the canvas,
+    drag **CUSTOMER_CA** table and join it with previous flow as below.
+    
+    Click on the Attribute property of the Join and notice that it has
+    populated the join automatically. You can also edit it manually if it
+    is not what you expect.
+    
+    Make sure the join is: **Aggregate.CUST_ID=CUSTOMER_CA.CUST_ID**
 
 ![Screenshot of...](images/image38.png){width="6.5in" height="2.329861111111111in"}
 
 19. Now bring in AGE_GROUP table and use Lookup transform. Link it as
     below.
 
->> Make sure lookup expression is: **CUSTOMER_CA.AGE between
->> AGE_GROUP.MIN_AGE and AGE_GROUP.MAX_AGE**
->>
->> Note that you can also optionally use the expression editor.
->>
->> **Take a moment to notice that we are building the data flow step by
->> step and this way it is easy to understand. This is an advantage of
->> using UI to define a complete data preparation task which could be
->> quite complex.**
+    Make sure lookup expression is: **CUSTOMER_CA.AGE between
+    AGE_GROUP.MIN_AGE and AGE_GROUP.MAX_AGE**
+    
+    Note that you can also optionally use the expression editor.
+    
+    **Take a moment to notice that we are building the data flow step by
+    step and this way it is easy to understand. This is an advantage of
+    using UI to define a complete data preparation task which could be
+    quite complex.**
 
 ![Screenshot of...](images/image39.png){width="6.5in" height="3.373611111111111in"}
 
@@ -868,23 +498,23 @@ Confirm that you have changed the name.
     used for analysis later. Drag **MOVIESALES_CA** into the canvas and
     join it.
 
->> Make sure the join is: **Aggregate.CUST_ID=MOVIESALES_CA1.CUST_ID**
->>
->> **NOTE: Notice that the display name for this is MOVIESALES_CA1
->> (suffixed by 1). This is because this table is used twice in the data
->> flow. First for calculating the quintile and the second time to bring
->> individual sales transaction data.**
->>
->> Also bring in movie GENRE table and join it.
->>
->> Make sure the join is: **MOVIESALES_CA1.GENRE_ID=GENRE.GENRE_ID**
->>
->> The above join expression should be populated automatically.
->>
->> It should look like below.
->>
->> It is good practice to keep saving it by clicking on the **Save** icon
->> on the top left.
+    Make sure the join is: **Aggregate.CUST_ID=MOVIESALES_CA1.CUST_ID**
+    
+    **NOTE: Notice that the display name for this is MOVIESALES_CA1
+    (suffixed by 1). This is because this table is used twice in the data
+    flow. First for calculating the quintile and the second time to bring
+    individual sales transaction data.**
+    
+    Also bring in movie GENRE table and join it.
+    
+    Make sure the join is: **MOVIESALES_CA1.GENRE_ID=GENRE.GENRE_ID**
+    
+    The above join expression should be populated automatically.
+    
+    It should look like below.
+    
+    It is good practice to keep saving it by clicking on the **Save** icon
+    on the top left.
 
 ![Screenshot of...](images/image40.png){width="6.5in" height="3.2801377952755906in"}
 
@@ -892,36 +522,36 @@ Confirm that you have changed the name.
     visualize it step by step transformations. Now we need to write it
     to a new **CUSTOMER_SALES \_ANALYSIS** table.
 
->> Click on the tiny grid at the corner to the end of the data flow (last
->> Join transform) to open the target table property dialog. Note that if
->> we already had a target table then we could simply drag that table in
->> to complete the flow. But in our case, the target table doesn't exist
->> yet.
+    Click on the tiny grid at the corner to the end of the data flow (last
+    Join transform) to open the target table property dialog. Note that if
+    we already had a target table then we could simply drag that table in
+    to complete the flow. But in our case, the target table doesn't exist
+    yet.
 
 ![Screenshot of...](images/image41.png){width="6.5in" height="3.386111111111111in"}
 
 22. Enter the name and connection properties.
 
->> Name: **CUSTOMER_SALES_ANALYSIS**
->>
->> Alias: **CUSTOMER_SALES_ANALYSIS**
->>
->> Connection:\<your connection name\>>
->>
->> Schema:**QTEAM**
->>
->> Click **Next** for **Add Data Entity** dialog
+    Name: **CUSTOMER_SALES_ANALYSIS**
+    
+    Alias: **CUSTOMER_SALES_ANALYSIS**
+    
+    Connection:\<your connection name\    
+    
+    Schema:**QTEAM**
+    
+    Click **Next** for **Add Data Entity** dialog
 
 ![Screenshot of...](images/image42.png){width="6.5in" height="3.8493055555555555in"}
 
 23. Now you can edit the target column names. The initial list is
     populated by the columns in all the tables in the data flow.
 
->> Remove the columns ending with \_ID. They don't help in any meaningful
->> analysis. The attributes are always denormalized by the joins. Click
->> on the checkbox and then click on the delete icon on top right.
->>
->> Click **Next**
+    Remove the columns ending with \_ID. They don't help in any meaningful
+    analysis. The attributes are always denormalized by the joins. Click
+    on the checkbox and then click on the delete icon on top right.
+    
+    Click **Next**
 
 ![Screenshot of...](images/image43.png){width="6.489390857392826in"
 height="3.8555555555555556in"}
@@ -939,14 +569,14 @@ height="3.8506944444444446in"}
 25. You can see that the target table is added to the end of the data
     flow.
 
->> Also note that the target table definition has been stored in
->> transforms and if you want to recreate/edit the data flow then it will
->> be available on the left side for drag and drop, instead of going
->> through **Add Data Entity** dialog.
->>
->> Now we need to make sure target load properties are correct. Click on
->> the target table in the canvas and expand the property panel by
->> clicking on the top right corner.
+    Also note that the target table definition has been stored in
+    transforms and if you want to recreate/edit the data flow then it will
+    be available on the left side for drag and drop, instead of going
+    through **Add Data Entity** dialog.
+    
+    Now we need to make sure target load properties are correct. Click on
+    the target table in the canvas and expand the property panel by
+    clicking on the top right corner.
 
 ![Screenshot of...](images/image45.png){width="6.5in" height="2.8012139107611547in"}
 
@@ -960,14 +590,14 @@ height="3.8506944444444446in"}
 
 27. Now to the final step. Click of **Options**.
 
->> Make sure you have the **Drop and create target table** is **true**.
->>
->> This makes sure that you always have the correct definition.
->>
->> You can also choose to load data into existing table with or without
->> truncating. Data can also be loaded incrementally. These are advanced
->> modes. For now we will simply drop and create the table in every
->> execution.
+    Make sure you have the **Drop and create target table** is **true**.
+    
+    This makes sure that you always have the correct definition.
+    
+    You can also choose to load data into existing table with or without
+    truncating. Data can also be loaded incrementally. These are advanced
+    modes. For now we will simply drop and create the table in every
+    execution.
 
 ![Screenshot of...](images/image47.png){width="6.5in" height="3.701388888888889in"}
 
@@ -1101,9 +731,9 @@ task.
     easily add aggregations and calculations to data sets and present
     data in views that can be queried with relatively simple SQL.
 
->> We don't have any AV yet, therefore we are going to create one.
->>
->> Select your schema QTEAM and click on **Create** button.
+    We don't have any AV yet, therefore we are going to create one.
+    
+    Select your schema QTEAM and click on **Create** button.
 
 ![Screenshot of...](images/image60.png){width="6.449922353455818in"
 height="2.3208333333333333in"}
@@ -1111,24 +741,24 @@ height="2.3208333333333333in"}
 4.  Default AV name is derived by the fact table. Enter various fields
     as follows:
 
->> Name: **CUSTOMER_SALES_ANALYSIS_AV**
->>
->> Caption: **Customer sales analysis av**
->>
->> Description: **Customer sales analysis av**
->>
->> Schema: **QTEAM**
->>
->> Fact Table: Pick **CUSTOMER_SALES_ANALYSIS** from the list
->>
->> You can find related tables and hierarchies by clicking on **Generate
->> Hierarchy and Measures** button. This will scan your schema and find
->> all the tables related to CUSTOMER_SALES_ANALYSIS and give you a
->> starting point.
->>
->> However, in our case, we have prepared the data in such a way that all
->> analysis attributes are in one table. We don't need to run this
->> automated process.
+    Name: **CUSTOMER_SALES_ANALYSIS_AV**
+    
+    Caption: **Customer sales analysis av**
+    
+    Description: **Customer sales analysis av**
+    
+    Schema: **QTEAM**
+    
+    Fact Table: Pick **CUSTOMER_SALES_ANALYSIS** from the list
+    
+    You can find related tables and hierarchies by clicking on **Generate
+    Hierarchy and Measures** button. This will scan your schema and find
+    all the tables related to CUSTOMER_SALES_ANALYSIS and give you a
+    starting point.
+    
+    However, in our case, we have prepared the data in such a way that all
+    analysis attributes are in one table. We don't need to run this
+    automated process.
 
 ![Screenshot of...](images/image61.png){width="5.853778433945757in"
 height="2.8946784776902885in"}
@@ -1175,8 +805,8 @@ height="3.1858070866141732in"}
 11. Our AV is ready now and we can start analyzing data. You can see
     that there are no errors. By clicking on the Data Quality tab.
 
->> You can also go back and edit the AV by clicking on three vertical
->> dots.
+    You can also go back and edit the AV by clicking on three vertical
+    dots.
 
 ![Screenshot of...](images/image68.png){width="6.452022090988627in"
 height="3.1095231846019247in"}
@@ -1191,47 +821,47 @@ First let's learn how to navigate in the analysis tool.
 
 1.  Select your AV and click on **Analyze**.
 
->> These zones are:
->>
->> 1: Hierarchies and measures
->>
->> 2: Columns, Rows, Values and Filters where you can drag components
->> from the zone 1 to slice and dice the data.
->>
->> 3: Main area for displaying reports and charts.
->>
->> 4: Table/Pivot/Chart view. For remainder of the lab we will use chart
->> view.
->>
->> 5: Insights. Automated algorithm to search for hidden patterns. This
->> is the topic of our last lab. For now, we will click on the right side
->> bar to collapse it.
+    These zones are:
+    
+    1: Hierarchies and measures
+    
+    2: Columns, Rows, Values and Filters where you can drag components
+    from the zone 1 to slice and dice the data.
+    
+    3: Main area for displaying reports and charts.
+    
+    4: Table/Pivot/Chart view. For remainder of the lab we will use chart
+    view.
+    
+    5: Insights. Automated algorithm to search for hidden patterns. This
+    is the topic of our last lab. For now, we will click on the right side
+    bar to collapse it.
 
 ![Screenshot of...](images/image69.png){width="6.419293525809274in"
 height="3.064391951006124in"}
 
 2.  Now we can start doing our first analysis.
 
->> **Analysis: show me \"SALES_AMOUNT\" by \"AGE_GROUP\"**
->>
->> Select chart mode. Clear all hierarchies from X-Axis and drag **Age
->> group** to X-Axis and **Total Sales** to Y-Axis.
->>
->> This chart is showing you total sales across age group. We can
->> conclude that seniors (71-80) are not watching many movies whereas age
->> group 21-30 and 31-40 are watching most.
+    **Analysis: show me \"SALES_AMOUNT\" by \"AGE_GROUP\"**
+    
+    Select chart mode. Clear all hierarchies from X-Axis and drag **Age
+    group** to X-Axis and **Total Sales** to Y-Axis.
+    
+    This chart is showing you total sales across age group. We can
+    conclude that seniors (71-80) are not watching many movies whereas age
+    group 21-30 and 31-40 are watching most.
 
 ![Screenshot of...](images/image70.png){width="6.479812992125984in"
 height="3.1179615048118987in"}
 
 3.  Next let us analyze sales by marital status.
 
->> Clear X-Axis and drag **Marital status**.
->>
->> You will have to expand the left side tree node to drag the level.
->> Level is under hierarchy node (with the same name for convenience).
->>
->> We can see that singles are watching more movies than married people.
+    Clear X-Axis and drag **Marital status**.
+    
+    You will have to expand the left side tree node to drag the level.
+    Level is under hierarchy node (with the same name for convenience).
+    
+    We can see that singles are watching more movies than married people.
 
 ![Screenshot of...](images/image71.png){width="6.3939479440069995in"
 height="3.0579757217847767in"}
@@ -1239,19 +869,19 @@ height="3.0579757217847767in"}
 4.  Now we can mix two hierarchies. Drag **Age group** above **Marital
     status** in X-Axis.
 
->> We notice that although singles watch overall more movies, married
->> people watch more than singles in young age group (21-30, 31-40).
->>
->> This was not obvious before.
+    We notice that although singles watch overall more movies, married
+    people watch more than singles in young age group (21-30, 31-40).
+    
+    This was not obvious before.
 
 ![Screenshot of...](images/image72.png){width="6.417255030621172in"
 height="3.1113965441819773in"}
 
 5.  Now we are curious to know which genre sells most.
 
->> Clear X-Axis and drag **Genre**.
->>
->> Drama Sells! Followed by Action.
+    Clear X-Axis and drag **Genre**.
+    
+    Drama Sells! Followed by Action.
 
 ![Screenshot of...](images/image73.png){width="6.406935695538058in" height="3.10625in"}
 
@@ -1259,11 +889,11 @@ height="3.1113965441819773in"}
     It will be interesting to find out whether there is a movie genre
     preference of high value customers.
 
->> Clear X-Axis and drag **GENRE** and **CUST_VALUE**.
->>
->> The chart is very wide, and you can't see all the way to the right. To
->> fit the entire width you can drag the right edge of lower window
->> towards right till all customer values are visible in one page.
+    Clear X-Axis and drag **GENRE** and **CUST_VALUE**.
+    
+    The chart is very wide, and you can't see all the way to the right. To
+    fit the entire width you can drag the right edge of lower window
+    towards right till all customer values are visible in one page.
 
 ![Screenshot of...](images/image74.png){width="6.5in" height="3.120833333333333in"}
 
@@ -1271,8 +901,8 @@ height="3.1113965441819773in"}
     high value (Cust value=5) customers, whereas Action is more popular
     with low value customers (Cust value=1).
 
->> Of course, most of the bars are taller for high value customers
->> because overall they spend more.
+    Of course, most of the bars are taller for high value customers
+    because overall they spend more.
 
 ![Screenshot of...](images/image75.png){width="6.4224453193350834in" height="3.10625in"}
 
@@ -1327,26 +957,26 @@ height="3.022222222222222in"}
     run insights against a single table then you can pick any column
     which you think is a measure.
 
->> In our case, AV built in the previous lab had only one measure
->> (TOTAL_SALES). Insight tool has gone through the data and discovered
->> many interesting behavioral patterns (of movie buying).
->>
->> NOTE: These insights are stored in the database and can be queried any
->> time for a review. You can also regenerate the analysis if the data in
->> underlying AV/table has changed.
->>
->> Let's look at few of such patterns. For this lab, we will look at 3
->> examples:
->>
->> 1: Purchasing pattern of singles across Genre
->>
->> 2: Representation of seniors (61-70) across customer value
->>
->> 3: Purchasing behavior of dog owners across age groups
->>
->> You can find them in the screenshot below. **Note that the order of
->> insights may vary if data is different or the insight is still
->> running, therefore refer to the labels on each tile to identify it.**
+    In our case, AV built in the previous lab had only one measure
+    (TOTAL_SALES). Insight tool has gone through the data and discovered
+    many interesting behavioral patterns (of movie buying).
+    
+    NOTE: These insights are stored in the database and can be queried any
+    time for a review. You can also regenerate the analysis if the data in
+    underlying AV/table has changed.
+    
+    Let's look at few of such patterns. For this lab, we will look at 3
+    examples:
+    
+    1: Purchasing pattern of singles across Genre
+    
+    2: Representation of seniors (61-70) across customer value
+    
+    3: Purchasing behavior of dog owners across age groups
+    
+    You can find them in the screenshot below. **Note that the order of
+    insights may vary if data is different or the insight is still
+    running, therefore refer to the labels on each tile to identify it.**
 
 ![Screenshot of...](images/image79.png){width="6.1465693350831145in"
 height="3.0428565179352582in"}
@@ -1354,49 +984,49 @@ height="3.0428565179352582in"}
 5.  Click on the tile marked **S** on the top and **Genre** at the
     bottom. It shows
 
->> 1: TOTAL_SALES (our measure driving the insight) in **blue** bars for
->> **Marital Status=S** across **Genre**
->>
->> 2: Each bar has a **green** horizontal line depicting average
->> **without Marital Status=S filter**. It is called **expected** value.
->> It can differ form the blue level if the data is skewed for the filter
->> on the top (**Marital Status=S**).
->>
->> 3: Few bars are surrounded by black border (pointed by arrows). These
->> are highlighted exceptions.
->>
->> Another way to read this is as:
->>
->> **Singles** are purchasing **Adventure** and **Comedy** more than
->> average and not much interested in **Drama**.
->>
->> WOW! That is quite an insight.
+    1: TOTAL_SALES (our measure driving the insight) in **blue** bars for
+    **Marital Status=S** across **Genre**
+    
+    2: Each bar has a **green** horizontal line depicting average
+    **without Marital Status=S filter**. It is called **expected** value.
+    It can differ form the blue level if the data is skewed for the filter
+    on the top (**Marital Status=S**).
+    
+    3: Few bars are surrounded by black border (pointed by arrows). These
+    are highlighted exceptions.
+    
+    Another way to read this is as:
+    
+    **Singles** are purchasing **Adventure** and **Comedy** more than
+    average and not much interested in **Drama**.
+    
+    WOW! That is quite an insight.
 
 ![Screenshot of...](images/image80.png){width="6.5in" height="3.0145833333333334in"}
 
 6.  Now to the next insight.
 
->> Click on the tile marked **61-70** on the top and **Cust value** at
->> the bottom. It shows
->>
->> It shows that seniors 61-70 overrepresented in 4^th^ customer value
->> bucket. Probably they have lots of disposable income!
+    Click on the tile marked **61-70** on the top and **Cust value** at
+    the bottom. It shows
+    
+    It shows that seniors 61-70 overrepresented in 4^th^ customer value
+    bucket. Probably they have lots of disposable income!
 
 ![Screenshot of...](images/image81.png){width="6.5in" height="2.897222222222222in"}
 
 7.  Now, just for fun lets look at pet ownership and movie purchase
     relationship.
 
->> Click on the tile marked **Dog** on the top and **Cust Value**.
->>
->> It shows that highest value (5) dog owners are purchasing more movies
->> than average compared to non-dog owners.
->>
->> It is just a correlation but you could use this data to offer dog
->> grooming products to high value customers!!
->>
->> Interesting. Isn't it! Insight tool has discovered all these hidden
->> patterns just by crawling through the data.
+    Click on the tile marked **Dog** on the top and **Cust Value**.
+    
+    It shows that highest value (5) dog owners are purchasing more movies
+    than average compared to non-dog owners.
+    
+    It is just a correlation but you could use this data to offer dog
+    grooming products to high value customers!!
+    
+    Interesting. Isn't it! Insight tool has discovered all these hidden
+    patterns just by crawling through the data.
 
 ![Screenshot of...](images/image82.png){width="6.193623140857393in"
 height="2.9879024496937885in"}
@@ -1430,8 +1060,8 @@ Click on the tile marked **S** on the top and **Genre** at the bottom
     insight. Go back to the data analysis and analyze by Genre and
     filter for Marital status=M and S alternately.
 
->> Drag Genre on X-Axis (you will have to expand the tree on the left)
->> and Marital Status on Filters. Pick M in the filter box.
+    Drag Genre on X-Axis (you will have to expand the tree on the left)
+    and Marital Status on Filters. Pick M in the filter box.
 
 ![Screenshot of...](images/image84.png){width="6.466311242344707in" height="3.1375in"}
 
@@ -1442,9 +1072,9 @@ Click on the tile marked **S** on the top and **Genre** at the bottom
 
 4.  Now let's compare it by changing the filter to S (singles).
 
->> This is what you get. Notice high purchases in **Adventure** and
->> **Comedy** genre by singles and not much **Drama** (compared to
->> married people).
+    This is what you get. Notice high purchases in **Adventure** and
+    **Comedy** genre by singles and not much **Drama** (compared to
+    married people).
 
 ![Screenshot of...](images/image86.png){width="6.5in" height="3.1066174540682416in"}
 
