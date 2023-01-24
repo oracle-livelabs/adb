@@ -65,8 +65,6 @@ As a tenancy administrator or an Oracle Data Safe administrator, enable Oracle D
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
-> **Note**: If you are performing this workshop in your own tenancy and not in an Oracle LiveLabs hosted environment, and you are a tenancy administrator who has already created a user group and added an Oracle Cloud account to the group, you can skip this task.
-
 1. From the navigation menu, select **Identity & Security**, and then **Groups**.
 
     The **Groups** page in IAM is displayed.
@@ -99,8 +97,6 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
 > **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
 
 As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous Database in the user's compartment.
-
-> **Note**: If you are performing this workshop in your own tenancy and not in an Oracle LiveLabs hosted environment, and you are a tenancy administrator who has already created an IAM policy for the user group, you can skip this task.
 
 1. From the navigation menu, select **Identity & Security**, and then **Policies**.
 
