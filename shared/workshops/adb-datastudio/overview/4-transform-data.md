@@ -137,7 +137,8 @@ CREATE TABLE AGE_GROUP
     ) 
 ;
 
-define file_uri_base = 'https://objectstorage.us-phoenix-1.oraclecloud.com/p/lJD1-iabPDW-vrGBhPFf3JJJtYi67BhcBD-2iykgWjy6oir05QuBSIe7Ffva9i4a/n/adwc4pm/b/bucket-data-studio-overview-demo-data/o'
+set define on
+define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/H5wUeWmMyZrKxj7889AaM4q7RsdQYTOc9AYw3TYThkgVKLOLojID5yu56Yif6871/n/c4u04/b/datastudio/o/prepareandanalyze'
 
 begin
  dbms_cloud.copy_data(
