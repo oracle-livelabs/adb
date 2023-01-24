@@ -10,7 +10,7 @@ If you are using the **Run on Your Tenancy** option, complete all of the tasks, 
 
 If you are using the **Run on LiveLabs Sandbox** option, you need to complete tasks 4, 5, and 6 only. In a LiveLabs sandbox, Oracle provides you with a tenancy where Oracle Data Safe is enabled, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
 
-Estimated Lab Time: 35 minutes
+Estimated Lab Time: 35 minutes (25 minutes if you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment)
 
 ### About Oracle Data Safe
 
@@ -42,9 +42,9 @@ This lab assumes you have:
 
 ## Task 1: Enable Oracle Data Safe in a region of your tenancy
 
-As a tenancy administrator or an Oracle Data Safe administrator, enable Oracle Data Safe in a tenancy region.
+> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
 
-> **Note**: If you are performing this workshop in your own tenancy and not in an Oracle LiveLabs hosted environment, and Oracle Data Safe is already enabled in the desired region of your tenancy, you can skip this task.
+As a tenancy administrator or an Oracle Data Safe administrator, enable Oracle Data Safe in a tenancy region.
 
 1. In Oracle Cloud Infrastructure, at the top of the page on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
 
@@ -60,6 +60,8 @@ As a tenancy administrator or an Oracle Data Safe administrator, enable Oracle D
 
 
 ## Task 2: Create a user group and add an Oracle Cloud account to the group
+
+> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
@@ -93,6 +95,8 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
 
 
 ## Task 3: Create an IAM policy for the user group
+
+> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
 
 As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous Database in the user's compartment.
 
@@ -234,7 +238,7 @@ Start by examining sensitive data in one of the tables on your target database b
 
 2. In the breadcrumb at the top of the page, click **Data Safe**.
 
-3. On the left under **Security Center**, and click **Data Discovery**.
+3. On the left under **Security Center**, click **Data Discovery**.
 
 4. From the **Compartment** drop-down list, select your compartment.
 
