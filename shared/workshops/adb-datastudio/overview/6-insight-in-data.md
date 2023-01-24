@@ -367,7 +367,7 @@ finding insights that are lurking out of sight in the data.
 
 Data insights process starts automatically when you use Data Analysis application, 
 therefore you may already have insights captured if you have completed 
-previous labs. Data insights can be started manually as you wil learn in this lab.
+previous labs. Data insights can also be started manually as you wil learn in this lab.
 
 In this lab we will investigate few sample insights produced by the tool.
 We will learn how to interpret it and will cross-check with manual
@@ -408,14 +408,16 @@ see the insight list being refreshed while it is executing.
     
     Let's look at few of such patterns. For this lab, we will look at 3
     examples:
-    
-    1: Purchasing pattern of singles across Genre
-    
-    2: Representation of seniors (61-70) across customer value
-    
-    3: Purchasing behavior of dog owners across age groups
-    
-    You can find them in the screenshot below. **Note that the order of
+
+      1: Purchasing pattern of singles across Genre
+
+      2: Representation of seniors (61-70) across customer value
+
+      3: Purchasing behavior of dog owners across age groups
+
+    You can see the list of insights in our workshop data below.
+        
+    **Note that the order of
     insights may vary if data is different or the insight is still
     running, therefore refer to the labels on each tile to identify it.**
 
@@ -470,28 +472,23 @@ see the insight list being refreshed while it is executing.
 
 ![Screenshot of insights on pet owenership and customer value](images/image82_inst_pet_custvalue.png)
 
-**Concluding thought**: If we are doing manual analysis in **DATA
-ANALYSIS** tool, then we must actively look at and compare the data for
-certain hierarchies. There are many combinations, but people use their
-experience to guide their analysis steps. In comparison, **DATA
-INSIGHTS** is hands off approach and it finds patterns without
-understanding what hierarchies mean.
+  Interesting. Isn't it! Insight tool has discovered all these hidden
+  patterns just by crawling through the data.
+  
+  There are many other insights in the list. Go back to the list and look at 
+  few others. See if you find any other interesting insight.
 
-We think that both are complimentary to each other and provide valuable
-tools to use in "a day in the life of a data analyst". That is how we
-started this workshop!
-
-Now all the assigned tasks from our Monday meeting have been completed
-successfully. Ready for the next meeting.
-
-## Task 2: Advanced users: Peeling the layers for Data Insights
+## Task 2: Peeling the layers of Data Insights
 
 This section is an attempt to explain the insights by manually running
 queries and correlating them with what we can see in insights.
 
 1.  Let's go back and look at the first insight again.
 
-Click on the tile marked **S** on the top and **Genre** at the bottom
+Click on the tile marked **S** on the top and **Genre** at the bottom. This 
+was the movie genre preference of singles. It showed singles are purchasing 
+adventure and comedy more than the average and purchasing less drama genre than 
+the average.
 
 ![Screenshot of insight on simgles by genre](images/image83_inst_single_genre.png)
 
@@ -517,6 +514,18 @@ Click on the tile marked **S** on the top and **Genre** at the bottom
 
 ![Screenshot of analyze sales to singles by genre](images/image86_analyze_single_genre.png)
 
-**Isn't that what our insight told us!!**
+**Isn't that what our insight told us!! It discovered that without any input from
+us!!**
 
-This completes Data Insights overview lab.
+In contrast, if we are doing manual analysis in **DATA ANALYSIS** tool, 
+then we must actively look at and compare the data for
+certain hierarchies. There are many combinations, but people use their
+experience to guide their analysis steps. In comparison, **DATA
+INSIGHTS** is hands off approach and it finds patterns without
+understanding what hierarchies mean.
+
+We think that both are complimentary to each other and provide valuable
+tools to use in "a day in the life of a data analyst".
+
+Now all the assigned tasks from our Monday meeting have been completed
+successfully. Ready for the next meeting.
