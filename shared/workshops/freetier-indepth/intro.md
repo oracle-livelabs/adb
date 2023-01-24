@@ -4,6 +4,8 @@ The labs in this workshop show you a variety of ways to manage and monitor your 
 
 With Oracle Autonomous Database we make it quick and easy for you to create a secure, fully managed database service in the Oracle Cloud which allows you to start loading and analyzing your data immediately.
 
+Estimated Workshop Time: 2 hours, 45 minutes
+
 ## What is an Autonomous Database?
 Oracle Autonomous Data Warehouse and Oracle Autonomous Transaction Processing are built around the market leading Oracle database and come with fully automated data warehouse and transaction processing specific features that deliver outstanding query performance. This environment is delivered as a fully managed cloud service running on optimized high-end Oracle hardware systems.  You don’t need to spend time thinking about how you should store your data, when or how to back it up or how to tune your queries. We take care of everything for you.
 
