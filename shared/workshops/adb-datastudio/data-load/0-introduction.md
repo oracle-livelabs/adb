@@ -27,6 +27,9 @@ Before you launch into this workshop, you will need the following:
 
 If you have any questions about the topics covered in this lab and the entire workshop, please contact us by posting on our public forum on  **[cloudcustomerconnect.oracle.com](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/)**  and we will respond as soon as possible.
 
+### How to use the Workshop
+
+Once you have completed labs 1 and 2 - that is, you have provisioned an Autonomous Database (or have one ready to use) and created a user, you can choose to complete any of the other labs, as they are designed to be independent from one another. For example, if you want to learn about setting up a notification-based live feed of data into the Autonomous Database from files on cloud storage, you can skip directly to lab 6. You can also choose to complete labs 3-6 in any order that you choose.
 
 ## Acknowledgements
 

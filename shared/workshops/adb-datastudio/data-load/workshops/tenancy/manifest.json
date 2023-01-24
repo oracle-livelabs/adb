@@ -37,12 +37,12 @@
       {
           "title": "Lab 5: Link to data in cloud storage",
           "description": "Create external tables linking to data in cloud storage",
-          "filename": "./../../updatepathtomd"
+          "filename": "./../../5-link.md"
       },
       {
           "title": "Lab 6: Feed data from cloud storage",
-          "description": "Create a regularly scheduled feed of data from cloud storage",
-          "filename": "./../../updatepathtomd"
+          "description": "Create a notification-based live feed of data from cloud storage",
+          "filename": "./../../6-feed.md"
       },
       {
           "title": "Need Help?",

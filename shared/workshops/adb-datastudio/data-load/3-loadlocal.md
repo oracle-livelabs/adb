@@ -2,6 +2,7 @@
 # Using Data Studio to load data from local files
 
 ## Introduction
+
 This lab introduces the Data Studio application built into the Oracle Autonomous Database and shows the various ways it can load data into the database.
 
 This lab, and the full functionality of Data Studio, is applicable to both Autonomous Data Warehouse (ADW) and Autonomous Transaction Processing (ATP) databases. 

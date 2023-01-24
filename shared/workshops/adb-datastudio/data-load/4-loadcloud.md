@@ -100,12 +100,12 @@ Where you want to download and load data from a file from a cloud location that 
 2. This time, rather than using the saved cloud store, we are going to paste the following URI into the cloud location bar:
 
  ```
-    $ <copy>https://objectstorage.us-phoenix-1.oraclecloud.com/n/adwc4pm/b/MovieStreamData/o</copy>
+    $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/datastudio/o/</copy>
  ```
 
   ![Load from Cloud Location directly from URI](images/load-from-uri.png)
 
-2. Drag over the file **customer-contact-issues.csv** to the right hand side.
+2. Expand the dataload folder and drag over the file **customer-contact-issues.csv** to the right hand side.
 
 3. Click on the menu of the load task and select **Settings**
 

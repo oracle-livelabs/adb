@@ -41,7 +41,7 @@
       },
       {
           "title": "Lab 6: Feed data from cloud storage",
-          "description": "Create a regularly scheduled feed of data from cloud storage",
+          "description": "Create a notification-based live feed of data from cloud storage",
           "filename": "./../../6-feed.md"
       },
       {
