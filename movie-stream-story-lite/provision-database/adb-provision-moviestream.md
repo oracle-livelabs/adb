@@ -4,13 +4,18 @@
 
 #### Video Preview
 
+<!--
 [](youtube:BvSkiWWhuN4)
+-->
 
 In just a few minutes, Autonomous Database lets you deploy a complete data warehousing platform that can scale to your requirements. And, you can use its Database Tools to easily populate that warehouse from the data lake.
 
 This lab walks you through the steps to get started using the Oracle Autonomous Database (Autonomous Data Warehouse [ADW] and Autonomous Transaction Processing [ATP]) on Oracle Cloud Interface. In this lab, you provision a new ADW instance.
 
 Estimated Time: 5 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Provision an ADB instance](videohub:1_qkrgpruu)
 
 ### Objectives
 

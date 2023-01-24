@@ -1,7 +1,7 @@
-/* In this code snippet, after define file_uri_base =, replace <bucket URI> below with the URL you copied from your file in OCI Object Storage at runtime.
+/* In this code snippet, after define file_uri_base =, replace the example 'https://objectstorage.me-dubai-1.oraclecloud.com/n/c4u04/b/LL6570-ADWLab/o' below with the real URL you copied from your file in OCI Object Storage at runtime.
 */
 set define on
-define file_uri_base = '<bucket URI>'
+define file_uri_base = 'https://objectstorage.me-dubai-1.oraclecloud.com/n/c4u04/b/LL6570-ADWLab/o'
 
 begin
  dbms_cloud.copy_data(

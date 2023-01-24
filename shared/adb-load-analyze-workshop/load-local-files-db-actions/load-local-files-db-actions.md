@@ -16,6 +16,9 @@ You can also leave data in place in cloud object storage, and link to it from yo
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Load Data from Local Files](videohub:1_q7r7bcp0)
+
 ### Objectives
 
 In this lab, you will:
@@ -38,9 +41,10 @@ In this lab, you will:
 2. Make note of the folder location - you will be using these files in just a minute!
 
 ## Task 2: Navigate to Database Actions and open the Data Load utility
-Navigate back to the Data Load main page by clicking the menu at the top left and selecting **Data Tools -> Data Load**. If you closed Database Actions, then you'll need to navigate to the Data Load utility following the steps found in the previous lab *Load Data from Object Storage Public Buckets*.
 
-![Go to DB Actions](/common/building-blocks/tasks/adb/images/generic/db-actions-tools-menu.png)
+1. Navigate back to the Data Load main page by returning to the Database Actions Launchpad and in the **Data Studio** section, click **DATA LOAD**. If you closed Database Actions, then you'll need to navigate to the Data Load utility following the steps found in the previous lab *Load Data from Object Storage Public Buckets*.
+
+    ![Go to DB Actions](./images/navigate-back-to-data-load.png)
 
 
 ## Task 3: Load data from the CSV files using the Data Load utility
@@ -73,9 +77,9 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Click Data Load in the breadcrumb.](./images/click-data-load-in-breadcrumb.png " ")
 
-7. In the **Data Load** page, click **EXPLORE**.
+7. In the Database Actions Launchpad, in the **Data Studio** section, click **CATALOG**.
 
-    ![Click EXPLORE in the Data Load page.](./images/click-explore-in-data-load-page.png " ")
+    ![Click CATALOG in the Data Studio section.](./images/click-catalog-in-data-studio-section.png " ")
 
 8. The Catalog shows the *CUSTOMER\_SEGMENT* table has been successfully created. You can click the table name to see the data.
 
@@ -83,7 +87,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![See the new table's data.](./images/see-new-table-data.png " ")
 
-This completes the lab on loading CSV files from your local computer. 
+This completes the lab on loading CSV files from your local computer.
 
 Please [proceed to the next lab](#next).
 

@@ -20,7 +20,7 @@ In this workshop, we'll start with two key components of MovieStream's architect
 ![architecture](images/architecture.png)
 
 ## **Workshop Objectives**
-- Provision a new Oracle Autonomous Database instance 
+- Provision a new Oracle Autonomous Database instance
 - Load data from files on your local computer
 - Load data from object storage buckets
 - Use Oracle Analytics Cloud to create compelling dashboards from your data set
@@ -43,7 +43,7 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 ## Acknowledgements
 
 - **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance; Marty Gubar, ADB Product Management
-- **Last Updated By/Date** - Richard Green, July 2022
+- **Last Updated By/Date** - Richard Green, November 2022
 
 Data about movies in this workshop were sourced from Wikipedia.
 

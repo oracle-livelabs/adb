@@ -29,26 +29,26 @@ You are now ready to start analyzing MovieStream's performance using SQL.
 
 ## Task 2: Explore sales data
 
-1. Let's use a very simple query to look at sales for the top 5 movie genres.
+1. Let's use a very simple query to look at sales by customer education level.
 
     ```
     <copy>select
-      name,
+      education,
       round(sum(actual_price),0) as sales
-    from custsales c, genre g
-    where c.genre_id = g.genre_id
-    group by name
+    from custsales cs, customer c
+    where cs.cust_id = c.cust_id
+    group by education
     order by sales desc
     fetch first 5 rows only
     </copy>
     ```
-   
-    Copy this SQL statement into the worksheet, and press the **run command** button to start the query. This returns a result similar to the following:
 
-    ![top 5 genres](images/t2-top5-genre.png " ")
+    Copy this SQL statement into the worksheet, and press the **Run command** button to start the query. This returns a result similar to the following:
 
-    
-    As you can see, the Drama and Action genres dominate MovieStream sales with Adventure, Comedy and Sci-Fi genres rounding out the top 5.
+    ![sales by education level](images/sales-by-education-level.png " ")
+
+
+    As you can see, most sales are to customers with a high school education, and the fewest sales are to customers with a masters degree. It is interesting that MovieStream has more sales to customers with a doctorate degree than customers with a masters degree!
 
 
 ## Task 3: Finding our most important customers
@@ -84,10 +84,10 @@ Customers will be categorized into 5 buckets measured (using the NTILE function)
     Below is a snapshot of the result (and your result may differ):
 
     ![binned customers by sales, last visit and frequency](images/t4-bin-rfm.png " ")
-    
-    
+
+
     The rfm\_* columns in the report shows the "bin" values based on the 5 quintiles described above.
-    
+
     For more information about using the `NTILE` function, see [the SQL documentation](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/NTILE.html#GUID-FAD7A986-AEBD-4A03-B0D2-F7F2148BA5E9).
 
 
@@ -127,7 +127,7 @@ Customers will be categorized into 5 buckets measured (using the NTILE function)
 
 
 ## Recap
-We accomplished alot in just 15 minutes! 
+We accomplished alot in just 15 minutes!
 
 * Deployed an Autonomous Database instance that is optimized for data warehousing workloads
 * Used Autonomous Database tools to load object storage sources

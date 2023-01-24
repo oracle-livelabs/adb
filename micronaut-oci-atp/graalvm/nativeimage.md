@@ -5,6 +5,9 @@ In this lab you will learn how to turn your application into a native executable
 
 Estimated Lab Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build a GraalVM Native Image](videohub:1_xp83wilj)
+
 ### Objectives
 
 In this lab you will:
@@ -36,7 +39,7 @@ After some time the native image executable will be built to `build/native-image
 You can now run the native executable from Terminal:
 
     <copy>
-    ./build/native/nativeCompile/example-atp
+    MICRONAUT_ENVIRONMENTS=oracecloud ./build/native/nativeCompile/example-atp
     </copy>
 
 ## Building a Native Image with Maven
@@ -54,7 +57,7 @@ After some time the native image executable with be built into the `target/nativ
 You can now run the native executable from Terminal:
 
     <copy>
-    ./target/example
+    MICRONAUT_ENVIRONMENTS=oracecloud ./target/example
     </copy>
 
 You may now *proceed to the next lab*.

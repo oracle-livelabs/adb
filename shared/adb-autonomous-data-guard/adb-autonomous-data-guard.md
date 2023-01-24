@@ -48,9 +48,9 @@ After a failover, a new standby for your primary will automatically be provision
 
 ## Task 1: Enable Autonomous Data Guard
 
-1. If you are not logged in to Oracle Cloud Console, log in and navigate to your Autonomous Database.
+1. If you are not logged in to Oracle Cloud Console, log in and navigate to your Autonomous Database details page.
 
-2. Under **Autonomous Data Guard** section, click **Enable** to enable the Data Guard feature.
+2. In the **Autonomous Data Guard** section, click **Enable** to enable the Data Guard feature.
 
     ![](./images/enable-adg.png)
 
@@ -184,4 +184,4 @@ In the rare case when your primary is down and automatic failover is unsuccessfu
 
 ## Acknowledgements
 * Authors - Vandanadevi Rajamani, Database User Assistance; Nilay Panchal, ADB Product Management; Rick Green, Database User Assistance
-* Last Updated By/Date - Rick Green, September 2021
+* Last Updated By/Date - Rick Green, January 2023

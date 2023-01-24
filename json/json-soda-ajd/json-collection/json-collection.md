@@ -8,6 +8,9 @@ To create a collection all you have to specify is the collection's name. Unlike 
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Work with JSON collections](videohub:1_7pnwwbm0)
+
 ### Objectives
 
 In this lab, you will:
