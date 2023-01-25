@@ -1,3 +1,0 @@
-# Create Autonomous Databas
-
-Placeholder

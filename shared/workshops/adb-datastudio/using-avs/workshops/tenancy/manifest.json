@@ -25,34 +25,25 @@
             "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
         },
         {
-            "title": "Get Started",
-            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
-        },
-        {
-            "title": "Lab 1: Provision an Instance",
-            "description": "Labs that follow the introduction are numbered, starting with Lab 1",
-            "filename": "../../provision/provision.md"
+            "title": "Lab 3: Create a Database User",
+            "filename": "../../3-create-user.md"
         },
         {
             "title": "Lab 2: Connect with SQL Worksheet",
-            "filename": "../../setup/2-connect-with-sql-worksheet.mdv"
+            "filename": "../../2-open-sql-worksheet.md"
         },
-        {
-            "title": "Lab 3: Create a Database User",
-            "filename": "../../data-load/create-user.md"
-        },
+
         {
             "title": "Lab 4: Install Sample Data",
-            "filename": "../../query.md"
+            "filename": "../../4-install-sample-data.md"
         },
         {
             "title": "Lab 5: Launch the Data Studio Analysis Tool",
-            "filename": "../../tables/tables.md"
+            "filename": "../../5-launch-analysis-tool.md"
         },
         {
             "title": "Lab 6: Create a New Analytic View",
-            "filename": "../../variables/variables.md"
+            "filename": "../../6-create-new-av.md"
         },
         {
             "title": "Lab 7: Create a Hierarchy",
@@ -60,27 +51,27 @@
         },
         {
             "title": "Lab 8: Create Join",
-            "filename": "../../8-create-join/8-create-join.md"
+            "filename": "../../8-create-join.md"
         },
         {
             "title": "Lab 9: Create a Measure",
-            "filename": "../../9-create-measure/9-create-measure.md"
+            "filename": "../../9-create-measure.md"
         },
         {
             "title": "Lab 10: Deploy the Analytic View",
-            "filename": "../../10-deploy-av/10-deploy-av.md"
+            "filename": "../../10-deploy-av.md"
         },
         {
             "title": "Lab 11: View Data in the Analytic View",
-            "filename": "../../11-view-data/11-view-data.md"
+            "filename": "../../11-view-data.md"
         },
         {
             "title": "Lab 12: Add More Hierarchies",
-            "filename": "../../12-add-hierarchies/12-add-hierarchies.md"
+            "filename": "../../12-add-hierarchies.md"
         },
         {
             "title": "Lab 13: Create a Calculated Measure",
-            "filename": "../../13-create-calculated-measures/13-create-calculated-measures.md"
+            "filename": "../../13-create-calculated-measures.md"
         },
         {
             "title": "Lab 14: Explore Data",

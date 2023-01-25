@@ -26,7 +26,7 @@ In this workshop, you will:
 
 The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous Database labs.  MovieStream is a fictitous video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports analysis of sales data by time, geography, and the genre used when searching for movies.
 
-### Prerequisites
+## Prerequisites
 
 Before you launch into this workshop, you will need the following:
 
@@ -35,7 +35,7 @@ Before you launch into this workshop, you will need the following:
 
 If you have any questions about the topics covered in this lab and the entire workshop, please contact us by posting on our public forum on **[cloudcustomerconnect.oracle.com](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/)**  and we will respond as soon as possible.
 
-## Acknowledgements
+## Acknowledgments
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
 - Last Updated By - William (Bud) Endress, January 2023
