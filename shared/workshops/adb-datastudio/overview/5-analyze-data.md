@@ -5,6 +5,16 @@
 
 This lab introduces the Data Analysis application built into the Oracle Autonomous Database and shows the various ways you can analyze your data.
 
+Estimated Time: 20 minutes
+
+Watch the video below for a quick walk through of the lab.
+[](youtube:youtubeid)
+
+## Objectives
+
+In this workshop, you will learn:
+-	How to create a dimensional model and analyze the data
+
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
@@ -12,15 +22,15 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - demo data loaded
-- Age group data loaded
-- Prepared data load into CUSTOMER_SALES_ANALYSIS
+- Age group data loaded into AGE_GROUP
+- Prepared data and loaded into CUSTOMER_SALES_ANALYSIS
 
 ### Demo data for this lab
-**NOTE**: Skip this section if you have demo data loaded and completed previous labs.
+**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed previous labs then run the following script in SQL Worksheet to load all necessary objects.
+If you have not completed **Transfrorm and prepare data lab** then run the following script in SQL Worksheet to load all necessary objects.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
+*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet. You need to hover your mouse at the upper right corner of the script box to see the copy icon.*: 
 
 ```
 drop table CUSTOMER_SALES_ANALYSIS;
@@ -65,13 +75,13 @@ end;
 
 Paste the sql statements in worksheet. Click on **Run Script** icon.
 
-**Note**: Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
 ![Alt text](images/image_sql_worksheet.png)
 
 Now you are ready to go through rest of the labs in this workshop.
 
-## Task 1: Create AV for data analysis
+## Task 1: Create dimensional model for data analysis
 
 We have movie sales, movie genre and age group data. We also have customer value 
 information. We will analyze this data set. 
@@ -136,7 +146,7 @@ preferences are different across high value and low value customers.
     DEVICE, MARITAL_STATUS, GENRE,** and **PET**. It will be interesting
     to do movie preference analysis with pets.
     
-    NOTE: These are all single level hierarchies. Adding multiple level
+    **NOTE:** These are all single level hierarchies. Adding multiple level
     hierarchies is advanced topic and will not be covered. However, we will
     see that even with single level hierarchies, we can do interesting
     analysis.
@@ -168,7 +178,7 @@ preferences are different across high value and low value customers.
 
 ![Screenshot of analytic view review](images/image68_av_quality.png)
 
-## Task 1: Analyze data
+## Task 2: Analyze data
 
 Now the fun part starts. All this time we were preparing the data and
 creating dimensional model in AV. We will start creating reports, charts
@@ -269,21 +279,19 @@ First let's learn how to navigate in the analysis tool.
 
 ![Screenshot of analyze sales by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
 
-Go ahead and see if you can find any other interesting pattern. What
-movie genre are popular in different age groups?
+Go ahead and see if you can find any other interesting pattern. 
+
+What movie genre are popular in different age groups?
 
 We can spend lots of time in the analysis tool visualizing the data with
 different combinations of attributes.
 
-So far, we are looking at only the charts, but this data can be
+**Note:** So far, we are looking at only the charts, but this data can be
 displayed in tabular format and in a pivot table as well. Switch the
 display mode to see how it works. Advanced uses can access the data in
-this AV from Excel or from Googlesheet. This is out of scope for this
-lab.
+this AV from Excel or from Googlesheet. 
 
-This completes Data Analysis overview lab. For the Data Studio overview workshop,
-go to the next lab.
+This completes Data Analysis overview lab. Note that there are many more features in the Analysis tool, which are not covered here. These details will be covered in some other in-depth workshop.
 
-Also note that there are many more features in the Analysis tool, which are not covered here. 
-These details will be covered in some other in-depth workshops.
+You may now **proceed to the next lab**.
 

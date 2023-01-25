@@ -5,14 +5,14 @@
 
 This lab will guide you through the steps to load demo data. 
 
+Estimated Time: 5 minutes
+
 ### Prerequisites
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 
-## Task 1: Access SQL Worksheet
-
-### Access SQL Worksheet
+## Task 1: Access SQL worksheet
 
 SQL worksheet is linked from the **Database Actions** home page.
 
@@ -46,11 +46,11 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
   ![The Database Actions home page](images/image_db_action.png)
 
 
-## Task 2: Execute script in SQL Worksheet to load demo data
+## Task 2: Execute script in SQL worksheet to load demo data
 
 1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet, and all subsequent code snippets*: 
+*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet. You need to hover your mouse at the upper right corner of the script box to see the copy icon.*: 
 
 ![Screenshot of copy icon](images/image_copy_icon.png)
 
@@ -195,9 +195,9 @@ end;
 ```
 2. Paste the sql statements in worksheet. Click on **Run Script** icon.
 
-**Note**: Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
 ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
 
-Now you are ready to go through rest of the labs in this workshop.
+You may now **proceed to the next lab**.
 

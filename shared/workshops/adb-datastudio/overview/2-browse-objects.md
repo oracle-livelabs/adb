@@ -5,6 +5,16 @@
 
 This lab introduces the Data Catalog application built into the Oracle Autonomous Database and shows the various ways you can browse and search for you obejcts.
 
+Estimated Time: 5 minutes
+
+Watch the video below for a quick walk through of the lab.
+[](youtube:youtubeid)
+
+## Objectives
+
+In this workshop, you will learn:
+-	How to browse the catalog and find the data you need
+
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
@@ -18,7 +28,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 1.  Login to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
 
-    Note: Bookmark the Database Actions page so that it is easier to come
+    **Note:** Bookmark the Database Actions page so that it is easier to come
     back to this later in the workshop.
     
     Click on **DATA STUDIO OVERVIEW** card.
@@ -35,7 +45,7 @@ Since it is a workshop, there are limited objects in the list. There
 will be many objects and only the recent objects are shown here. We will
 use the Catalog tool to browse the objects and find what we need.
 
-## Task 2: Explore Catalog
+## Task 2: Explore catalog
 
 1.  Click on the Catalog link on the left panel.
 
@@ -106,8 +116,6 @@ use the Catalog tool to browse the objects and find what we need.
 
 ![Screenshot of searcing for column names](images/image7_catalog_search_cols.png)
 
-This completes Data Catalog overview lab. For the Data Studio overview workshop,
-go to the next lab.
+This completes Data Catalog overview lab. Note that there are many more features in the Catalog tool, which are not covered here. These details will be covered in some other in-depth workshop.
 
-Also note that there are many more features in the Catalog tool, which are not covered here. 
-These details will be covered in some other in-depth workshops.
+You may now **proceed to the next lab**.

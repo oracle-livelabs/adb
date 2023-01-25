@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Autonomous Database Data Studio Overview",
+  "workshoptitle": "Using Data Studio to load, prepare and analyze data in the Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
@@ -25,35 +25,40 @@
           "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
       },
       {
-          "title": "Lab 3: Demo Data",
+          "title": "Lab 3: Load demo data",
           "description": "Load demo data for the Data Studio overview workshop",
           "type": "livelabs",
           "filename": "../../1-demo-data.md"
       },
       {
-          "title": "Lab 4: Browse Database Objects",
+          "title": "Lab 4: Browse database objects",
           "description": "Use Data Catalog to browse database objects",
           "filename": "../../2-browse-objects.md"
       },
       {
-        "title": "Lab 5: Load Data",
+        "title": "Lab 5: Load additional data",
         "description": "Use Load Data to load additional data sets",
         "filename": "../../3-load-data.md"
     },
     {
-        "title": "Lab 6: Prepare Data",
-        "description": "Use Data Catalog to browse database objects",
+        "title": "Lab 6: Transfrorm and prepare data",
+        "description": "Use Data Transforms to transform and prepare data",
         "filename": "../../4-transform-data.md"
       },
       {
-        "title": "Lab 7: Analyze Data",
+        "title": "Lab 7: Analyze data",
         "description": "Use Data Analysis to analyze data",
         "filename": "../../5-analyze-data.md"
       },
       {
-        "title": "Lab 8: Data Insights",
+        "title": "Lab 8: Explore data insights",
         "description": "Use Data Insight to find hidden patterns",
         "filename": "../../6-insight-in-data.md"
+      },
+      {
+        "title": "Lab 9: Clean demo data",
+        "description": "Clean demo data",
+        "filename": "../../7-clean-demo-data.md"
       },
       {
           "title": "Need Help?",

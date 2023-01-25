@@ -5,7 +5,15 @@
 
 This lab introduces the Load Data application built into the Oracle Autonomous Database and shows how to load new data set.
 
-### Prerequisites
+Estimated Time: 5 minutes
+
+Watch the video below for a quick walk through of the lab.
+[](youtube:youtubeid)
+
+## Objectives
+
+In this workshop, you will learn:
+-	How to load data from your local file
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
@@ -13,7 +21,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created a new QTEAM user with appropriate roles
 - demo data loaded
 
-## Task 1: Create local data file for AGE_GROUP
+## Task 1: Create local data file for age group
 
 We need to analyze the movie sales data by age group as well. While browsing catalog,
 we noticed that there is no age group information, and we need to load a
@@ -57,12 +65,12 @@ and save it as AGE_GROUP.csv.
 81,200,"Older than 81",
 ```
 
-## Task 2: Load data file for AGE_GROUP
+## Task 2: Load age group from local file
 
 1.  Launch Data Load from Database Actions page by clicking on **DATA
     LOAD** card.
 
-    Note that you have various modes for loading data. You can either
+    **Note:** that you have various modes for loading data. You can either
     directly load data or leave it in place simply linking it. You can
     also create ongoing feed to load data to Autonomous Database.
     
@@ -87,8 +95,6 @@ and save it as AGE_GROUP.csv.
 
 ![Screenshot of start loading file](images/image12_load_file_start.png)
 
-This completes data load overview lab. For the Data Studio overview workshop,
-go to the next lab.
+This completes data load overview lab. Note that there are many more features in the data load tool, which are not covered here. These details will be covered in some other in-depth workshop.
 
-Also note that there are many more features in the data load tool, which are not covered here. 
-These details will be covered in some other in-depth workshops.
+You may now **proceed to the next lab**.

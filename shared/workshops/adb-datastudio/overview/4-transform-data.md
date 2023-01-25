@@ -5,6 +5,16 @@
 
 This lab introduces the Data Transforms application built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
 
+Estimated Time: 25 minutes
+
+Watch the video below for a quick walk through of the lab.
+[](youtube:youtubeid)
+
+## Objectives
+
+In this workshop, you will learn:
+-	How to transform and prepare your data for analysis
+
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
@@ -12,14 +22,14 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - demo data loaded
-- Age group data loaded
+- Age group data loaded into AGE_GROUP
 
 ### Demo data for this lab
-**NOTE**: Skip this section if you have demo data loaded and completed previous labs.
+**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
 If you have not completed previous labs then run the following script in SQL Worksheet to load all necessary objects.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet*: 
+*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet. You need to hover your mouse at the upper right corner of the script box to see the copy icon.*: 
 
 ```
 DROP TABLE CUSTOMER_CA
@@ -177,7 +187,7 @@ end;
 
 Paste the sql statements in worksheet. Click on **Run Script** icon.
 
-**Note**: Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
 ![Alt text](images/image_sql_worksheet.png)
 
@@ -202,7 +212,7 @@ Transform Data tool makes such data preparation tasks easy.
 
 1.  Click on DATA TRANSFORMS card to launch the tool.
 
-    NOTE: If you don't see the DATA TRANSFORMS card then it means you are
+    **NOTE:** If you don't see the DATA TRANSFORMS card then it means you are
     missing DATA_TRANSFORM_USER role for your user. Login as ADMIN and
     grant the role (make sure this role is marked "Default" as well).
 
@@ -219,7 +229,7 @@ Transform Data tool makes such data preparation tasks easy.
 4.  It will take up to 3 minutes for the service to be provisioned. Once
     provisioned you will see the following home screen.
 
-    Note: Data Transforms tool is provisioned based on demand. If there is
+    **Note:** Data Transforms tool is provisioned based on demand. If there is
     inactivity for 15 minutes, then it goes into sleep mode and needs to
     be provisioned again. Clicking on any part of the UI will provision it
     again if it has gone into sleep mode. If you get any error, then
@@ -227,7 +237,7 @@ Transform Data tool makes such data preparation tasks easy.
 
 ![Screenshot of transforms home page](images/image16_transform_home.png)
 
-## Task 1: Setup Connection
+## Task 2: Setup connection
 
 1.  Click on **Connections** on the left side to look at available
     connections.
@@ -253,21 +263,15 @@ Transform Data tool makes such data preparation tasks easy.
 
 ![Screenshot of connection test](images/image20_transform_conn_test.png)
 
-Note: In this workshop we are working with only the data available in
+**Note:** In this workshop we are working with only the data available in
 our Autonomous Database, but you can create connections to other
 databases, object stores and applications as well and load and transform
 data from those sources to your Autonomous Database. Data Transforms is
 a complete tool for complex data integration projects.
 
-Note: Any database user who has DATA_TRANSFORM_USER role, can access the
-connection setup in this step (and any other connections or data flows
-created later). All the objects created in the Transforms are also
-shared with other users with this role. Because of this you need to be
-very selective on giving out this role.
-
 Now we are ready to prepare the data.
 
-## Task 1: Create data flow to load customer sales analysis table
+## Task 3: Create data flow to load customer sales analysis table
 
 1.  Click on the **Home** button on the left side to go back to the home
     screen. You have wizards to load data from other sources (as defined
@@ -469,10 +473,10 @@ You can also refresh the data entities any time with the refresh icon.
     
     Note that you can also optionally use the expression editor.
     
-    **Take a moment to notice that we are building the data flow step by
+    **Note:** Take a moment to notice that we are building the data flow step by
     step and this way it is easy to understand. This is an advantage of
     using UI to define a complete data preparation task which could be
-    quite complex.**
+    quite complex.
 
 ![Screenshot of age group lookup](images/image39_agegroup_lookup.png)
 
@@ -482,10 +486,10 @@ You can also refresh the data entities any time with the refresh icon.
 
     Make sure the join is: **Aggregate.CUST_ID=MOVIESALES_CA1.CUST_ID**
     
-    **NOTE: Notice that the display name for this is MOVIESALES_CA1
+    **NOTE:** Notice that the display name for this is MOVIESALES_CA1
     (suffixed by 1). This is because this table is used twice in the data
     flow. First for calculating the quintile and the second time to bring
-    individual sales transaction data.**
+    individual sales transaction data.
     
     Also bring in movie GENRE table and join it.
     
@@ -638,16 +642,10 @@ Other features are:
 
 -   Schedule: In built scheduler for periodic execution.
 
-This completes Data Transforms overview lab. For the Data Studio overview workshop,
-go to the next lab.
+## Task 4: How to debug
 
-Also note that there are many more features in the Transforms tool, which are not covered here. 
-These details will be covered in some other in-depth workshops.
-
-## Task 4: For Advanced users: How to debug
-
-**Note: skip if you don't have any errors and you want to straight go to
-the next task.**
+**Note:** This is for advanced users. Skip if you don't have any errors and you want 
+to straight go to the next lab.
 
 1.  Go back to data flow canvas and click on the empty space in the
     canvas. On the top there is Code Simulation icon. Click on it. This
@@ -680,8 +678,8 @@ the next task.**
 
 ![Screenshot of job log details](images/image57_transform_log_detail.png)
 
-There are many more features to explore for the advanced users. In this
-workshop we are limiting to creating a data flow and executing it on
-demand.
+This completes the transform and prepare overview lab. There are many more features to explore for the advanced users. These details will be covered in some other in-depth workshop.
+
+You may now **proceed to the next lab**.
 
 

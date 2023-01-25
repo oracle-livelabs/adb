@@ -39,40 +39,44 @@ customer and movie genre as well.
 (note to myself: confirm the table name. Also livefeed sounds
 interesting. Learn how he sets it up in the future).
 
-## Action Items:
+### Action Items:
 
-### Load data:
+1. Find relevant data:
 
-Check for **MOVIESALES_CA** and other tables needed for this analysis and 
-load any additional data needed.
+    Look for **MOVIESALES_CA** and other tables needed for this analysis. Makes 
+    sure all needed columns are available with data populated.
 
-### Prepare data:
+2. Load data:
 
-Create data flow to aggregate movie sales and
-populate quintile column. Schedule this to load every Sunday 9pm.
+    Load any additional data needed.
 
-Also add denormalized columns needed for analysis to this table for
-analyzing data. This table should have all the attributes needed for
-analysis.
+3. Transform and prepare data:
 
-### Analyze:
+    Create data flow to aggregate movie sales and
+    populate quintile column. Schedule this to load every Sunday 9pm.
 
- Create Analytic View to analyze sales data by various dimensions such as
+    Also add denormalized columns needed for analysis to this table for
+    analyzing data. This table should have all the attributes needed for
+    analysis.
+
+4. Analyze:
+
+    Create Analytic View to analyze sales data by various dimensions such as
 age group, genre, marital status etc.
 
-### Insight:
+5. Insight:
 
-Is there anything more we learn from the data?
+    Is there anything more we learn from the data?
 
- 
+
 
 ## Objectives
 
 In this workshop, you will learn:
 -	How to browse the catalog to find the data you need
 -	How to load data from your local file
--	How to prepare your data for analysis
--	How to analyze the data (involves creating a simple dimensional model)
+-	How to transform and prepare your data for analysis
+-	How to create a dimensional model and analyze the data
 -	How to find hidden insights
 
 
