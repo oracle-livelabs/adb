@@ -2,14 +2,14 @@
 
 ## Introduction
 
-This lab shows how you can use Data Studio to set up a live feed of data from cloud storage into the Autonomous Database. Feeding data into the database is a useful capability when you have large-scale, regularly updated data in cloud storage which is central to your data warehouse, and which will therefore benefit from the performance optimizations of being loaded into the database rather than simply linked from it.
+This lab shows how you can use Data Studio to set up a live feed of data from cloud storage into the Autonomous Database. Feeding data into the database is a useful capability when you have large-scale, regularly added or updated data in cloud storage which is central to your data warehouse, and which will therefore benefit from the performance optimizations of being loaded into the database rather than simply linked from it.
 
 There are two types of live feed:
 
 1. Scheduled, where a feed job runs on a schedule and loads any new or changed data from cloud storage
 2. Notification-based, where the addition or update of data in cloud storage triggers a notification to the database to run the feed job
 
-In this lab, we will set up a notification-based live feed. In the lab, we will use Oracle Cloud Infrastructure Object Storage as the cloud object storage system, but the same approach can be used with any other cloud storage system that supports URI-based notifications, including Amazon Web Services S3, Azure Storage, and Google Cloud Platform Storage.
+In this lab, we will set up a notification-based live feed. In the lab, we will use Oracle Cloud Infrastructure Object Storage as the cloud object storage system, but the same approach can be used with any other cloud storage system that supports URL-based notifications, including Amazon Web Services S3, Azure Storage, and Google Cloud Platform Storage.
 
 The diagram below shows how a notification-based feed works:
 
@@ -25,9 +25,9 @@ Watch the video below for a quick walk through of the lab.
 
 In this lab, you will:
 
-- Set up a new bucket in your cloud storage system, and configure it for send events when objects are changed
+- Set up a new bucket in your cloud storage system, and configure it to send events when objects are changed
 - Use the Autonomous Database's built-in Data Studio application to set up a Data Feed job
-- Configure notification rules in your cloud storage system to trigger the Data Feed job when data in the bucket is added or updated
+- Configure notification rules in your cloud storage system to trigger the Data Feed job to check for and load data whenever data in the bucket is added
 
 ### Prerequisites
 
@@ -40,7 +40,7 @@ You do not need to have completed Labs 3, 4 or 5.
 
 You will also need login information for Oracle Cloud Infrastructure so that you can set up a new cloud storage bucket and notification rules.
 
-## Task 1: Create a new Cloud Storage bucket and configure it to send events
+## Task 1: Create a new cloud storage bucket and configure it to send events
 
 1. Log in to Oracle Cloud Infrastructure (OCI) at https://cloud.oracle.com 
 
@@ -56,7 +56,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 4. Under **Compartment**, select a suitable compartment for the new storage bucket. 
 
-**Note**: If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. This example uses a compartment named 'sandbox'.
+**Note**: If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous Database has been created. This example uses a compartment named 'sandbox'.
 
 5. With a suitable compartment selected, click the **Create Bucket** button to set up a new bucket
 
@@ -66,7 +66,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![The Create Bucket screen with the Emit Object Events option ticked](images/create-bucket.png)
 
-7. We will need a URI to access the bucket. Click the menu to the right of the bucket, and select **Create Pre-Authenticated Request**
+7. We will need a URL so that Data Studio can read the contents of the bucket. Click the menu to the right of the bucket, and select **Create Pre-Authenticated Request**
 
   ![The bucket menu, with the Create Pre-Authenticated Request option selected](images/create-par.png)
 
@@ -125,13 +125,13 @@ Click the **Create** button to complete the initial setup of the live table feed
 
 1. If you are not already logged in, log in to the OCI Console at https://cloud.oracle.com
 
-2. Search for 'notif' in the menu and click the result for **Notifications - Application Integration**
+2. Search for 'notif' in the menu and click the result for **Notifications - Application Integration**.
 
   ![Search for 'notif' to find Notifications in the OCI Console](images/notif-search.png)
 
-3. Select the same **Compartment** you selected when setting up the cloud storage bucket in Task 1. Then click **Create Topic**
+3. Select the same **Compartment** you selected when setting up the cloud storage bucket in Task 1. Then click **Create Topic**.
 
-4. Name the topic 'Movie\_sales\_events' as below, and click **Create**
+4. Name the topic 'Movie\_sales\_events' as below, and click **Create**.
 
   ![The Create Topic window](images/create-topic.png)
 
@@ -143,7 +143,7 @@ Click the **Create** button to complete the initial setup of the live table feed
 
 The subscription is now created. It will show as **Pending** for a couple of minutes, then **Active** once it is live.
 
-7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for 'events', and click the 'Rules - Event Service' link:
+7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for 'events', and click the 'Rules - Events Service' link:
 
   ![The OCI Console search window, searching, for events, with Rules - Event Service highlighted](images/search-events.png)
 
@@ -155,7 +155,7 @@ The subscription is now created. It will show as **Pending** for a couple of min
 
   ![Creation of a rule to notify the OCI topic when an object is created](images/create-rule.png)
 
-This has now created a rule that will send a notification message to the OCI Topic when an object is created in the bucket, for example a new file arrives. As the Live Table Feed we set up early is subscribed to that topic, it will run when this message is sent.
+This has now created a rule that will send a notification message to the OCI Topic when an object is created in the bucket, for example when a new file arrives. As the Live Table Feed we set up earlier is subscribed to that topic, it will run when this message is sent, check for any files named *.csv, and load them into the MOVIE\_SALES table.
 
 If required, we can set up another rule for object update. This should be specified in exactly the same way, but with 'Object - Update' selected as the Event Type, and with a display name such as 'Updated\_moviesales\_object'.
 
@@ -163,7 +163,7 @@ This completes the configuration steps needed to trigger the live table feed job
 
 ## Task 4: Test the live feed
 
-To trigger the live table feed, all we need to do is upload a new csv file into the **feedlab** bucket that we created at the very beginning of the lab. 
+To trigger the live table feed, we simply need to upload a new csv file into the **feedlab** bucket that we created at the very beginning of the lab. 
 
 1. To do this, first download the following example file to your local machine:
 
@@ -179,7 +179,7 @@ https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4b
 
 4. Under **Objects**, click the **Upload** button.
 
-5. Select the 'custsales-2020-10.csv' file you just downloaded, and click the **Upload** button to upload it.
+5. Find the 'custsales-2020-10.csv' file you just downloaded to your local machine, and click the **Upload** button to upload it.
 
 6. Now go back to the Database Actions launchpad, click the **Data Load** card, select **Feed Data** and **Next** to view the details of your live feed.
 
@@ -197,13 +197,13 @@ Here we can see that a job has just run to load the MOVIE\_SALES table with the 
 
   ![The Logs option for the live feed](images/feed-logs.png)
 
-This view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none!
+This view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none, so we know the data has been loaded completely.
 
-This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in cloud object storage, they will automatically be loaded into the Autonomous Database, to facilitate fast data analysis. 
+This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in the cloud object storage bucket, they will automatically be loaded into the MOVIE\_SALES table in the Autonomous Database, to facilitate fast data analysis. 
 
 ## RECAP
 
-In this lab, you used Data Studio to set up a continuous feed of data into the Autonomous Database from cloud storage. This is a very useful option where you have large volumes of data arriving into cloud object storage as files but which you need to participate in performance-critical analysis in the database.
+In this lab, you used Data Studio to set up a notification-based feed of data into the Autonomous Database from cloud storage. This is a very useful option where you have large volumes of data arriving into cloud object storage as files but which you need to participate in performance-critical analysis in the database.
 
 
 ## Acknowledgements
