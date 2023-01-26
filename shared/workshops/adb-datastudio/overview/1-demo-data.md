@@ -50,12 +50,10 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet. You need to hover your mouse at the upper right corner of the script box to see the copy icon.*: 
-
-![Screenshot of copy icon](images/image_copy_icon.png)
-
+*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
 ```
+<copy>
 DROP TABLE CUSTOMER_CA
 ;
  
@@ -191,6 +189,7 @@ begin
  );
 end;
 /
+</copy>
 ```
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
