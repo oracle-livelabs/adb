@@ -1,4 +1,4 @@
-# Loading demo data for Data Studio overview workshop
+# Load demo data for the Data Studio overview workshop
 
 
 ## Introduction
@@ -12,7 +12,7 @@ Estimated Time: 5 minutes
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 
-## Task 1: Access SQL worksheet
+## Task 1: Access the SQL worksheet
 
 SQL worksheet is linked from the **Database Actions** home page.
 
@@ -35,7 +35,7 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
     Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
 
-    ![Link to open Database Actions from users page](images/image_user_login.png)
+    ![Link to open Database Actions from the user login page](images/image_user_login.png)
 
 2. Once you have launched the Database Actions page, sign in as user QTEAM, with the password assigned previously, and click **Sign In**.
 
@@ -46,7 +46,7 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
   ![The Database Actions home page](images/image_db_action.png)
 
 
-## Task 2: Execute script in SQL worksheet to load demo data
+## Task 2: Execute the script
 
 1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
 
@@ -193,7 +193,7 @@ end;
 /
 
 ```
-2. Paste the sql statements in worksheet. Click on **Run Script** icon.
+2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
 **Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
@@ -201,3 +201,11 @@ end;
 
 You may now **proceed to the next lab**.
 
+## Acknowledgments
+
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
+- Last Updated By - Jayant Mahto, January 2023
+
+
+Copyright (C)  Oracle Corporation.

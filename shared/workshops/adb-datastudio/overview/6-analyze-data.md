@@ -7,7 +7,7 @@ This lab introduces the Data Analysis application built into the Oracle Autonomo
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walk through of the lab.
+Watch the video below for a quick walkthrough of the lab.
 [](youtube:youtubeid)
 
 ## Objectives
@@ -23,12 +23,12 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created a new QTEAM user with appropriate roles
 - demo data loaded
 - Age group data loaded into AGE_GROUP
-- Prepared data and loaded into CUSTOMER_SALES_ANALYSIS
+- Prepared data and loaded it into CUSTOMER_SALES_ANALYSIS
 
 ### Demo data for this lab
 **NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed **Transfrorm and prepare data lab** then run the following script in SQL Worksheet to load all necessary objects.
+If you have not completed the **Transform and prepare data lab** then run the following script in SQL Worksheet to load all necessary objects.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet. You need to hover your mouse at the upper right corner of the script box to see the copy icon.*: 
 
@@ -73,28 +73,28 @@ end;
 
 ```
 
-Paste the sql statements in worksheet. Click on **Run Script** icon.
+Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
 **Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
 ![Alt text](images/image_sql_worksheet.png)
 
-Now you are ready to go through rest of the labs in this workshop.
+Now you are ready to go through the rest of the labs in this workshop.
 
-## Task 1: Create dimensional model for data analysis
+## Task 1: Create a dimensional model for data analysis
 
 We have movie sales, movie genre and age group data. We also have customer value 
 information. We will analyze this data set. 
 
-We will go through few examples such as movie genre 
+We will go through a few examples such as movie genre 
 preference based on age groups and marital status and whether these
-preferences are different across high value and low value customers.
+preferences are different across high-value and low-value customers.
 
-1.  Navigate to Database Actions page and launch DATA ANALYSIS tool.
+1.  Navigate to the Database Actions page and launch the **DATA ANALYSIS** tool.
 
 ![Screenshot of data analysis card](images/image58_analysis_card.png)
 
-2.  First time when you access data analysis tool, you will see a
+2.  The first time when you access the data analysis tool, you will see a
     guiding wizard that will describe various parts of the UI. Since you
     are doing this lab anyways, click on X to cancel it and start using
     the tool right away.
@@ -110,9 +110,9 @@ preferences are different across high value and low value customers.
     
     Select your schema QTEAM and click on **Create** button.
 
-![Screenshot of create analytic view](images/image60_av_create.png)
+![Screenshot of creating the analytic view](images/image60_av_create.png)
 
-4.  Default AV name is derived by the fact table. Enter various fields
+4.  The default AV name is derived from the fact table. Enter various fields
     as follows:
 
     Name: **CUSTOMER_SALES_ANALYSIS_AV**
@@ -127,16 +127,16 @@ preferences are different across high value and low value customers.
     
     You can find related tables and hierarchies by clicking on **Generate
     Hierarchy and Measures** button. This will scan your schema and find
-    all the tables related to CUSTOMER_SALES_ANALYSIS and give you a
+    all the tables related to **CUSTOMER_SALES_ANALYSIS** and give you a
     starting point.
     
     However, in our case, we have prepared the data in such a way that all
     analysis attributes are in one table. We don't need to run this
     automated process.
 
-![Screenshot of select fact table](images/image61_av_table.png)
+![Screenshot of selecting fact table](images/image61_av_table.png)
 
-5.  Now click on Data Sources on left side to verify that
+5.  Now click on Data Sources on the left side to verify that
     CUSTOMER_SALES_ANALYSIS is the data source.
 
 ![Screenshot of data sources](images/image62_av_datasource.png)
@@ -144,34 +144,34 @@ preferences are different across high value and low value customers.
 6.  Now click on the Hierarchies on the left side and add the attributes
     we want in our analysis. We want to add **AGE_GROUP, CUST_VALUE,
     DEVICE, MARITAL_STATUS, GENRE,** and **PET**. It will be interesting
-    to do movie preference analysis with pets.
+    to do a movie preference analysis with pets.
     
-    **NOTE:** These are all single level hierarchies. Adding multiple level
-    hierarchies is advanced topic and will not be covered. However, we will
-    see that even with single level hierarchies, we can do interesting
-    analysis.
+    **NOTE:** These are all single-level hierarchies. Adding multiple-level
+    hierarchies is an advanced topic and will not be covered. However, we will
+    see that even with single-level hierarchies, we can do many interesting
+    analyses.
 
 ![Screenshot of adding hierarchies](images/image63_av_hier.png)
 
-7.  If you don't see your column, then click on More columns at the end
-    at search for your columns. Then add it by clicking on it.
+7.  If you don't see your column, then click on **More columns** at the end of the list
+    and search for your columns. Then add it by clicking on it.
 
 ![Screenshot of adding hierarchies by searching](images/image64_av_hier_pick.png)
 
-8.  After you add all, it should look like below.
+8.  After you add all, it should look like the below screenshot.
 
 ![Screenshot of hierarchy preview](images/image65_av_hier_list.png)
 
-9.  Now click on Measures and add a measure with TOTAL_SALES column
+9.  Now click on Measures and add a measure using the **TOTAL_SALES** column
 
-![Screenshot of adding measure](images/image66_av_measure.png)
+![Screenshot of adding a measure](images/image66_av_measure.png)
 
-10. We have completed our AV. Click on **Create** it and confirm OK.
+10. We have completed our AV. Click on **Create** it and confirm **OK**.
 
-![Screenshot of create analytic view](images/image67_av_create.png)
+![Screenshot of creating an analytic view](images/image67_av_create.png)
 
 11. Our AV is ready now and we can start analyzing data. You can see
-    that there are no errors. By clicking on the Data Quality tab.
+    that there are no errors. By clicking on the **Data Quality** tab.
 
     You can also go back and edit the AV by clicking on three vertical
     dots.
@@ -181,10 +181,10 @@ preferences are different across high value and low value customers.
 ## Task 2: Analyze data
 
 Now the fun part starts. All this time we were preparing the data and
-creating dimensional model in AV. We will start creating reports, charts
+creating a dimensional model in AV. We will start creating reports, and charts
 and start finding hidden patterns in the data.
 
-First let's learn how to navigate in the analysis tool.
+Next, let's learn how to navigate the analysis tool.
 
 1.  Select your AV and click on **Analyze**.
 
@@ -193,16 +193,16 @@ First let's learn how to navigate in the analysis tool.
     1: Hierarchies and measures
     
     2: Columns, Rows, Values and Filters where you can drag components
-    from the zone 1 to slice and dice the data.
+    from zone 1 to slice and dice the data.
     
-    3: Main area for displaying reports and charts.
+    3: Area for displaying reports and charts.
     
-    4: Table/Pivot/Chart view. For remainder of the lab we will use chart
-    view.
+    4: Table/Pivot/Chart view. For the remainder of the lab, we will use chart
+    view. It is much easier to visualize the information through charts.
     
     5: Insights. Automated algorithm to search for hidden patterns. This
-    is the topic of our last lab. For now, we will click on the right side
-    bar to collapse it.
+    is the topic of our last lab. For now, we will click on the right-side
+    divider bar to collapse it.
 
 ![Screenshot of analysis home page](images/image69_av_analyze_home.png)
 
@@ -213,40 +213,40 @@ First let's learn how to navigate in the analysis tool.
     Select chart mode. Clear all hierarchies from X-Axis and drag **Age
     group** to X-Axis and **Total Sales** to Y-Axis.
 
-    **Note:** You need to expand the hierarchy tree to eveal the level. 
-    Only the level can be dragged to the analysis area. In our workshop 
-    there is only one level to all hierarchy and hence, they are named 
-    the same. In more complex model you may have multiple levels inside a 
+    **Note:** You need to expand the hierarchy tree to reveal the level. 
+    Only the level can be dragged to the analysis area. In our workshop, there 
+    is only one level to all hierarchies and hence, they are named 
+    the same. In a more complex model, you may have multiple levels inside a 
     hierarchy.
     
-    This chart is showing you total sales across age group. We can
+    This chart is showing total sales across age groups. We can
     conclude that seniors (71-80) are not watching many movies whereas age
-    group 21-30 and 31-40 are watching most.
+    groups 21-30 and 31-40 are watching most.
 
-![Screenshot of analyze sales by age group](images/image70_sales_agegroup.png)
+![Screenshot of sales analysis by age group](images/image70_sales_agegroup.png)
 
-3.  Next let us analyze sales by marital status.
+3.  Next, let us analyze sales by marital status.
 
     Clear X-Axis and drag **Marital status**.
     
     You will have to expand the left side tree node to drag the level.
-    Level is under hierarchy node (with the same name for convenience).
+    A Level is under the hierarchy node (with the same name for convenience).
     
     We can see that singles are watching more movies than married people.
 
-![Screenshot of analyze sales by marital status](images/image71_sales_maritalstatus.png)
+![Screenshot of sales analysis by marital status](images/image71_sales_maritalstatus.png)
 
 4.  Now we can mix two hierarchies. Drag **Age group** above **Marital
     status** in X-Axis. 
 
-    Make sure **Age group** is on top of **Marital status**.
+    Make sure the **Age group** is on top of **Marital status**.
 
     We notice that although singles watch overall more movies, married
-    people watch more than singles in young age group (21-30, 31-40).
+    people watch more than singles in the young age group (21-30, 31-40).
     
     This was not obvious before.
 
-![Screenshot of analyze sales by marital status and age group](images/image72_sales_maritalstatus_age.png)
+![Screenshot of sales analysis by marital status and age group](images/image72_sales_maritalstatus_age.png)
 
 5.  Now we are curious to know which genre sells most.
 
@@ -254,44 +254,53 @@ First let's learn how to navigate in the analysis tool.
     
     Drama Sells! Followed by Action.
 
-![Screenshot of analyze sales by movie genre](images/image73_sales_genre.png)
+![Screenshot of sales analysis by movie genre](images/image73_sales_genre.png)
 
-6.  We had earlier ranked our customers in high and low value buckets.
+6.  We had earlier ranked our customers in high and low-value buckets.
     It will be interesting to find out whether there is a movie genre
-    preference of high value customers.
+    preference for high-value customers.
 
-    Clear X-Axis and drag **Genre** and **Cust value**. Make sure **Cust value** is 
+    Clear X-Axis and drag **Genre** and **Cust value**. Make sure the **Cust value** is 
     on the top.
     
-    The chart is very wide, and you can't see all the way to the right. To
-    fit the entire width you can drag the right edge of lower window
-    towards right till all customer values are visible in one page. If 
+    The chart is very wide, and you can't see to the right. To
+    fit the entire width you can drag the right edge of the lower window
+    towards the right till all customer values are visible on one page. If 
     you don't see the lower window then zoom out on the browser with CTRL -.
 
-![Screenshot of analyze sales by movie genre and customer value](images/image74_sales_genre_custvalue.png)
+![Screenshot of sales analysis by movie genre and customer value](images/image74_sales_genre_custvalue.png)
 
 7.  Let's look at this chart. We can see that Drama is very popular with
-    high value (Cust value=5) customers, whereas Action is more popular
-    with low value customers (Cust value=1).
+    high-value (**Cust value**=5) customers, whereas Action is more popular
+    with low-value customers (**Cust value**=1).
 
-    Of course, most of the bars are taller for high value customers
-    because overall they spend more.
+    Of course, most of the bars are taller for high-value customers
+    because overall they spend more. We are talking about relative genre 
+    preference within the same customer value group.
 
-![Screenshot of analyze sales by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
+![Screenshot of sales analysis by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
 
-Go ahead and see if you can find any other interesting pattern. 
+Go ahead and see if you can find any other interesting patterns. 
 
-What movie genre are popular in different age groups?
+What movie genres are popular in different age groups?
 
 We can spend lots of time in the analysis tool visualizing the data with
 different combinations of attributes.
 
 **Note:** So far, we are looking at only the charts, but this data can be
-displayed in tabular format and in a pivot table as well. Switch the
-display mode to see how it works. Advanced uses can access the data in
-this AV from Excel or from Googlesheet. 
+displayed in tabular format and a pivot table as well. Switch the
+display mode to see how it works. Advanced users can access the data in
+this AV from Excel or Google Sheets. 
 
-This completes Data Analysis overview lab. Note that there are many more features in the Analysis tool, which are not covered here. These details will be covered in some other in-depth workshop.
+This completes the data analysis overview lab. Note that there are many more features in the analysis tool, which are not covered here. These details will be covered in other in-depth workshops.
 
 You may now **proceed to the next lab**.
 
+## Acknowledgments
+
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
+- Last Updated By - Jayant Mahto, January 2023
+
+
+Copyright (C)  Oracle Corporation.

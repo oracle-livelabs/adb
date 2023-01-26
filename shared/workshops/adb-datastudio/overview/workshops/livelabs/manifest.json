@@ -5,11 +5,12 @@
       {
           "title": "Get Started",
           "description": "Login to Oracle Cloud",
-          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
       },
       {
         "title": "Introduction",
         "description": "Introduction to Data Studio",
+        "type": "odbw",
         "filename": "../../0-introduction.md"
       },
       {
@@ -25,40 +26,52 @@
           "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
       },
       {
-          "title": "Lab 3: Load demo data",
-          "description": "Load demo data for the Data Studio overview workshop",
-          "type": "livelabs",
-          "filename": "../../1-demo-data.md"
+        "title": "Lab 3: Load demo data",
+        "description": "Load demo data for the Data Studio overview workshop",
+        "type": "livelabs",
+        "filename": "../../1-demo-data.md"
+     },
+     {
+        "title": "Lab 4: Understand data analysis requirements",
+        "description": "Look at a fictitious data analysis project for requirements",
+        "type": "livelabs",
+        "filename": "../../2-understand-requirements.md"
       },
       {
-          "title": "Lab 4: Browse database objects",
+          "title": "Lab 5: Browse database objects",
           "description": "Use Data Catalog to browse database objects",
-          "filename": "../../2-browse-objects.md"
+          "type": "livelabs",
+          "filename": "../../3-browse-objects.md"
       },
       {
-        "title": "Lab 5: Load additional data",
+        "title": "Lab 6: Load additional data",
         "description": "Use Load Data to load additional data sets",
-        "filename": "../../3-load-data.md"
+        "type": "livelabs",
+        "filename": "../../4-load-data.md"
     },
     {
-        "title": "Lab 6: Transfrorm and prepare data",
+        "title": "Lab 7: Transform and prepare data",
         "description": "Use Data Transforms to transform and prepare data",
-        "filename": "../../4-transform-data.md"
+        "type": "livelabs",
+        "filename": "../../5-transform-data.md"
       },
       {
-        "title": "Lab 7: Analyze data",
+        "title": "Lab 8: Analyze data",
         "description": "Use Data Analysis to analyze data",
-        "filename": "../../5-analyze-data.md"
+        "type": "livelabs",
+        "filename": "../../6-analyze-data.md"
       },
       {
-        "title": "Lab 8: Explore data insights",
+        "title": "Lab 9: Explore data insights",
         "description": "Use Data Insight to find hidden patterns",
-        "filename": "../../6-insight-in-data.md"
+        "type": "livelabs",
+        "filename": "../../7-insight-in-data.md"
       },
       {
-        "title": "Lab 9: Clean demo data",
+        "title": "Lab 10: Clean demo data",
         "description": "Clean demo data",
-        "filename": "../../7-clean-demo-data.md"
+        "type": "livelabs",
+        "filename": "../../8-clean-demo-data.md"
       },
       {
           "title": "Need Help?",

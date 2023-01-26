@@ -1,11 +1,11 @@
-# Cleaning demo data for Data Studio overview workshop
+# Cleaning demo data for the Data Studio overview workshop
 
 
 ## Introduction
 
 This lab will guide you through the steps to clean demo data. 
 
-## Task 1: Execute script in SQL Worksheet to clean demo data
+## Task 1: Execute the script
 
 1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
 
@@ -44,7 +44,7 @@ DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV
 
 
 ```
-2. Paste the sql statements in worksheet. Click on **Run Script** icon.
+2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
 **Note:** Expect to receive "ORA-00942 table or view does not exist" or "ORA-18307: analytic view XYZ does not exist" errors during the DROP command if objects are already dropped, but you should not see any other errors.
 
@@ -52,3 +52,11 @@ DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV
 
 Now you have cleaned the tables and analytic view created in this workshop.
 
+## Acknowledgments
+
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
+- Last Updated By - Jayant Mahto, January 2023
+
+
+Copyright (C)  Oracle Corporation.
