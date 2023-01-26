@@ -1,4 +1,4 @@
-# Using Data Studio to load data from Cloud Storage
+# Load data from cloud storage
 
 ## Introduction
 
@@ -169,6 +169,8 @@ Under **Saved Searches** on the right hand side, click on **Tables, views and an
 ## RECAP
 
 In this lab, you used Data Studio's data loading tool to load data from cloud storage. First, we set up a cloud storage location that we want to use regularly, and loaded some files from it in a few easy steps. Then, we learnt how to load directly from a URI, and how to resolve common types of issue with data loading - in this case, where we had a handful of rows with mismatched data types.
+
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

@@ -1,4 +1,4 @@
-# Using Data Studio to set up a notification-based feed of data from Cloud Storage
+# Feed data from cloud storage
 
 ## Introduction
 
@@ -44,7 +44,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 1. Log in to Oracle Cloud Infrastructure (OCI) at https://cloud.oracle.com 
 
-**Note**: See the **Get Started** lab at the beginning of this workshop for instructions to log in to OCI if you are using an Oracle Live Labs account. Otherwise, use your normal OCI credentials to log in to your tenancy.
+  >**Note:** See the **Get Started** lab at the beginning of this workshop for instructions to log in to OCI if you are using an Oracle Live Labs account. Otherwise, use your normal OCI credentials to log in to your tenancy.
 
 2. Click the menu in the top left of your screen, and select **Storage**
 
@@ -56,7 +56,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 4. Under **Compartment**, select a suitable compartment for the new storage bucket. 
 
-**Note**: If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous Database has been created. This example uses a compartment named 'sandbox'.
+  >**Note:** If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous Database has been created. This example uses a compartment named 'sandbox'.
 
 5. With a suitable compartment selected, click the **Create Bucket** button to set up a new bucket
 
@@ -167,7 +167,7 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
 1. To do this, first download the following example file to your local machine:
 
-https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-10.csv
+  https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-10.csv
 
 2. Then navigate back to **Object Storage - Buckets** in the OCI Console as you did in the first few steps in the lab:
 
@@ -191,7 +191,7 @@ https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4b
 
   ![The Data Load jobs option for the live feed](images/feed-load-jobs.png)
 
-Here we can see that a job has just run to load the MOVIE\_SALES table with the 1,019,901 rows that were present in the uploaded csv file.
+  Here we can see that a job has just run to load the MOVIE\_SALES table with the 1,019,901 rows that were present in the uploaded csv file.
 
 9. Now click the **Logs** view on the left to see a summary of this job run.
 

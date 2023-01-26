@@ -1,5 +1,5 @@
 
-# Using Data Studio to load data from local files
+# Load data from local files
 
 ## Introduction
 
@@ -100,9 +100,9 @@ Supported file types for loading locally include:
 - .json (JSON) files
 - .xml (XML) files
 
-For more information on the specific supported format of JSON, AVRO and XML files see the ![Link to online help explaining file format support](https://docs.oracle.com/pls/topic/lookup?ctx=en/database/oracle/sql-developer-web/sdwad&id=SDWAD-GUID-44B34EA1-41AC-4C76-945F-81CBBA5E6CA1) online help. 
+For more information on the specific supported format of JSON, AVRO and XML files see the **[online help](https://https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/loading-data.html#GUID-44B34EA1-41AC-4C76-945F-81CBBA5E6CA1)**
 
-**Important: **  Your computer may not support downloading files to your local disk. If you are in this situation, please skip forward to next main section **Load Data from Object Store.**
+>**Important:**Your computer may not support downloading files to your local disk. If you are in this situation, please skip forward to next main section **Load Data from Object Store.**
 
 ### Preparation
 
@@ -112,7 +112,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 - Click **[here](https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream-QTEAM-Download/o/Devices.xlsx)** to download the **Devices.xlsx** Excel file to your local computer.
 - Click **[here](https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream-QTEAM-Download/o/Countries.csv)** to download the **Countries.csv** CSV file to your local computer.
 
-    > **Note:** This file might just appear as new tab in your browser rather than just simply downloading. Please use the Save or Save As feature in your browser's File menu to save the file as **Countries.csv**, and *make a note of where you saved it*!
+    > **Note:** This file might just appear as new tab in your browser rather than just simply downloading. Please use the Save or Save As feature in your browser's File menu to save the file as **Countries.csv**, and make a note of where you saved it.
 
 **Before you proceed -**  be sure to take note of the location of the three files that you downloaded to your local computer.
 
@@ -127,6 +127,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 3. This is where you need to locate the three files (Countries.csv, Days_Months.xlsx and Devices.xlsx) that you downloaded earlier! If they are easily accessible, then you can simply drag **ALL THREE** files at one time, and drop them onto to canvas as stated in the text on the screen.
 
 4. An alternative approach is to click **Select Files** button in the middle of the screen, which will open the file explorer on your local computer where you can locate your data files: Countries.csv, Days\_Months.xlsx, and Devices.xlsx. You can select all the files in a single operation.
+
     >**Note:** Even though you only picked three files, four cards will appear for the data TARGETS to be loaded.
 
   ![Data load cards for files](images/loadlocal-fourcards.png)
@@ -163,12 +164,13 @@ Below are the files that you will be using during this part of the workshop. Bef
 
 Normally, we would then check that the data has been correctly loaded by examining the new tables in the **Catalog**. However, in this case we will do this after loading some more data.
 
-### RECAP: Loading Data from Local Files
+### RECAP: Loading Data from local files
 
 In this part of the workshop, you used the new data loading tool to quickly load data into your data warehouse from three local data files simply by dragging and dropping them onto the Data Load canvas. One file was in CSV format and the other two were Excel spreadsheets. One of the spreadsheets contained two worksheets and each one was loaded into its own table. The data loading process automatically created a target table containing the appropriate column structures based on the data within each file.
 
 In a few clicks, you were able to define and load data into four new tables without having to write any SQL code. It was all done with a few mouse clicks.
 
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

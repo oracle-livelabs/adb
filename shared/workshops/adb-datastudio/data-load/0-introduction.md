@@ -6,7 +6,7 @@ The purpose of this workshop is to provide details about the many ways in which 
 
 The workshop is designed to be used alongside your own cloud account (paid or Bring-Your-Own-License) or you can register and claim free trial credits which provides up to 3,300 hours of cloud time, and 2 TB of storage, which is more than enough time and storage space to run this workshop. 
 
-Estimated Workshop Duration: 1 hour, 40 minutes
+Estimated Workshop Duration: 1 hour, 20 minutes
 
 If you would like to watch us do the workshop, click [here](add link).
 
@@ -30,6 +30,8 @@ If you have any questions about the topics covered in this lab and the entire wo
 ### How to use the Workshop
 
 Once you have completed labs 1 and 2 - that is, you have provisioned an Autonomous Database (or have one ready to use) and created a user, you can choose to complete any of the other labs, as they are designed to be independent from one another. For example, if you want to learn about setting up a notification-based live feed of data into the Autonomous Database from files on cloud storage, you can skip directly to lab 6. You can also choose to complete labs 3-6 in any order that you choose.
+
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

@@ -1,4 +1,4 @@
-# Using Data Studio to link to data in Cloud Storage
+# Link to data in cloud storage
 
 ## Introduction
 
@@ -60,6 +60,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 ## Task 2: Link to data files in a Cloud Location
 
 1. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Link Data**  from  **Cloud Store** and then click the blue **Next** button. 
+
   ![The Data Load page with Link Data and Cloud Store selected](images/linkcloud.png)
 
 2. Make sure the **MOVIESTREAMGOLD** cloud location is selected in the top dropdown box. Now you see a file browser-like view of your Object Store. Expand the **custsales** folder in the browser. We can see that there is a subfolder for each month of data, and the folder for each month contains a Parquet file. What we want to do here is to link all this data into a single external table, so that as the data for additional months are added, the external table will always be up-to-date. To do this, we can simply drag across the **custsales** folder to the right hand side:
@@ -102,7 +103,7 @@ Now that we have linked to the directory of parquet files, we are set up to quer
 
   ![Link to SQL on Database Actions](images/goto-sql.png)
 
-Note: If the **Data Loading** prompt appears, close it by clicking the x on the message box.
+  >**Note:** If the **Data Loading** prompt appears, close it by clicking the x on the message box.
 
 3. Copy and paste the following SQL excerpt into the worksheet and click the green button to run the statement. This will add up all the values in all the records for the **ACTUAL_PRICE** column:
 
@@ -116,10 +117,11 @@ The query will likely take a little bit of time to return, depending on how many
 
   ![Result of query of total sales](images/sum-sales.png)
 
-
 ## RECAP
 
 In this lab, you used Data Studio to link to data in cloud storage. Linking to data is a good option where you have large volumes of data being updated regularly on cloud storage, you need your queries always to reflect the latest data, and you do not necessarily need to load the data into database storage as well. 
+
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
