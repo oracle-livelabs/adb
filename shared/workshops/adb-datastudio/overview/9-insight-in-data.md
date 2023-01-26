@@ -156,12 +156,12 @@ queries and correlating them with what we can see in insights.
 
 1.  Let's go back and look at the first insight again.
 
-Click on the tile marked **S** on the top and **Genre** at the bottom. This 
-was the movie genre preference of singles. It showed singles are purchasing 
-adventure and comedy more than the average and purchasing less drama genre than 
-the average.
+    Click on the tile marked **S** on the top and **Genre** at the bottom. This 
+    was the movie genre preference of singles. It showed singles are purchasing 
+    adventure and comedy more than the average and purchasing less drama genre than 
+    the average.
 
-    ![screenshot of insight on singles by genre](images/image83_inst_single_genre.png)
+    ![screenshot of singles by genre insight](images/image83_inst_single_genre.png)
 
 2.  We can go back to the **DATA ANALYSIS** tool to confirm this
     insight. Go back to the data analysis and analyze **sales** by **Genre** and
