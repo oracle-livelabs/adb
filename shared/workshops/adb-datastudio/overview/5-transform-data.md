@@ -335,7 +335,7 @@ Now we are ready to prepare the data.
     the list is big. Entities are dragged into the main canvas to build a
     data flow.
     
-    3: List of transformations grouped under various groups. Click on
+    3: List of transformations are grouped under various categories. Click on
     different groups to see what kinds of transforms are available. Basic
     transforms are under the **DATA TRANSFORM** and **DATA PREPARATION**
     groups. These transforms are dragged into the main canvas to build a
