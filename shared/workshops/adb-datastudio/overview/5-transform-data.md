@@ -29,9 +29,10 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 If you have not completed previous labs then run the following script in SQL Worksheet to load all necessary objects.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet. You need to hover your mouse at the upper right corner of the script box to see the copy icon.*: 
+*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
 ```
+<copy>
 DROP TABLE CUSTOMER_CA
 ;
  
@@ -183,6 +184,7 @@ begin
  );
 end;
 /
+</copy>
 ```
 
 Paste the SQL statements in the worksheet. Click on the **Run Script** icon.

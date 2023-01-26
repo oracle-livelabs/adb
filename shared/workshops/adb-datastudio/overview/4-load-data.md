@@ -46,6 +46,7 @@ and save it as AGE_GROUP.csv.
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
     
 ```
+<copy>
 "MIN_AGE","MAX_AGE","AGE_GROUP",
 
 0,20,"00-20",
@@ -63,6 +64,7 @@ and save it as AGE_GROUP.csv.
 71,80,"71-80",
 
 81,200,"Older than 81",
+</copy>
 ```
 
 ## Task 2: Load age group from local file
