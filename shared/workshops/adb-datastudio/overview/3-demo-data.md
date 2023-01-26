@@ -39,18 +39,18 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 2. Once you have launched the Database Actions page, sign in as user QTEAM, with the password assigned previously, and click **Sign In**.
 
-![Database Actions Log-in screen with the user name](images/image_user_uri.png)
+    ![Database Actions Log-in screen with the user name](images/image_user_uri.png)
 
 3. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
 
-  ![The Database Actions home page](images/image_db_action.png)
+    ![The Database Actions home page](images/image_db_action.png)
 
 
 ## Task 2: Execute the script
 
 1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
+    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
 ```
 <copy>
@@ -193,9 +193,9 @@ end;
 ```
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
-**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+    >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
-![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
+    ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
 
 You may now **proceed to the next lab**.
 

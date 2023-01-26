@@ -40,7 +40,7 @@ In this lab, we will investigate a few sample insights produced by the tool.
 We will learn how to interpret it and will cross-check it with manual
 analysis.
 
-**Note:** The insight process can run for some time depending on the
+>**Note:** The insight process can run for some time depending on the
 complexity of the data set and available compute resources. Our data set
 is small enough that it will complete in a reasonable time. But you might
 see the insight list being refreshed while it is executing.
@@ -49,16 +49,16 @@ see the insight list being refreshed while it is executing.
 1.  Launch Data Insights by clicking on the Database Actions link on the
     top and then click on the **DATA INSIGHTS** card.
 
-![Screenshot of the Data Insights card](images/image76_inst_card.png)
+    ![screenshot of the Data Insights card](images/image76_inst_card.png)
 
 2.  On the **Data Insights** page click on the top right icon to get a tour of the
     tool.
 
-![Screenshot of Insights home page](images/image77_inst_home.png)
+    ![screenshot of Insights home page](images/image77_inst_home.png)
 
 3.  Click Next to go through each area and learn about it.
 
-![Screenshot of Insights tour](images/image78_inst_tour.png)
+    ![screenshot of Insights tour](images/image78_inst_tour.png)
 
 4.  you can pick AV or any table to run insights on. In the case of AV, you
     can pick any measure to run insight against whereas if you want to
@@ -73,7 +73,7 @@ see the insight list being refreshed while it is executing.
     A list of various insights will appear on the page. Insight tool has gone through the data and discovered
     many interesting behavioral patterns based on the movie sales data.
     
-    **NOTE:** These insights are stored in the database and can be queried at any
+    >**NOTE:** These insights are stored in the database and can be queried at any
     time for review. You can also regenerate the analysis if the data in
     the underlying AV/table has changed.
     
@@ -87,11 +87,11 @@ see the insight list being refreshed while it is executing.
 
     You can see the list of insights in our workshop data below.
         
-    **Note:** The order of
+    >**Note:** The order of
     insights may vary if the data is different or the insight is still
     running, therefore refer to the labels on each tile to identify it.
 
-![Screenshot of the list of insights](images/image79_inst_list.png)
+    ![screenshot of the list of insights](images/image79_inst_list.png)
 
 5.  Click on the tile marked **S** on the top and **Genre** at the
     bottom. It shows
@@ -114,7 +114,7 @@ see the insight list being refreshed while it is executing.
     
     WOW! That is quite an insight.
 
-![Screenshot of insights on singles and genre](images/image80_inst_maritalstatus_genre.png)
+    ![screenshot of insights on singles and genre](images/image80_inst_maritalstatus_genre.png)
 
 6.  Now to the next insight.
 
@@ -124,7 +124,7 @@ see the insight list being refreshed while it is executing.
     It shows that seniors 61-70 are overrepresented in the 4th customer value
     bucket. Probably they have lots of disposable income!
 
-![Screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
+    ![screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
 
 7.  Now, just for fun let's look at the pet ownership and movie purchase
     relationship.
@@ -140,7 +140,7 @@ see the insight list being refreshed while it is executing.
     Interesting. Isn't it? Insight tool has discovered all these hidden
     patterns just by crawling through the data.
 
-![Screenshot of insights on pet ownership and customer value](images/image82_inst_pet_custvalue.png)
+    ![screenshot of insights on pet ownership and customer value](images/image82_inst_pet_custvalue.png)
 
   WOW! Quite an insight!! 
   
@@ -161,7 +161,7 @@ was the movie genre preference of singles. It showed singles are purchasing
 adventure and comedy more than the average and purchasing less drama genre than 
 the average.
 
-![Screenshot of insight on singles by genre](images/image83_inst_single_genre.png)
+    ![screenshot of insight on singles by genre](images/image83_inst_single_genre.png)
 
 2.  We can go back to the **DATA ANALYSIS** tool to confirm this
     insight. Go back to the data analysis and analyze **sales** by **Genre** and
@@ -170,12 +170,12 @@ the average.
     Drag **Genre** on X-Axis (you will have to expand the tree on the left)
     and **Marital Status** on Filters. Pick **M** in the filter box.
 
-![Screenshot of applying the filter for marital status](images/image84_analyze_filter.png)
+    ![screenshot of applying the filter for marital status](images/image84_analyze_filter.png)
 
 3.  Married people are watching **Drama** a lot and not much
     **Adventure** and **Comedy**.
 
-![Screenshot of sales analysis to married people by genre](images/image85_analyze_married_genre.png)
+    ![screenshot of sales analysis to married people by genre](images/image85_analyze_married_genre.png)
 
 4.  Now let's compare it by changing the filter to **S** (singles).
 
@@ -183,13 +183,10 @@ the average.
     **Comedy** genre by singles and not much **Drama** (compared to
     married people).
 
-![Screenshot of sales analysis to singles by genre](images/image86_analyze_single_genre.png)
+    ![screenshot of sales analysis to singles by genre](images/image86_analyze_single_genre.png)
 
 **Isn't that what our insight told us!! It discovered that without any input from
 us!!** 
-
-But we had to manually find this in the **Data analysis** tool whereas **Data Insights**
-discovered it automatically.
 
 While doing manual analysis in the **DATA ANALYSIS** tool, 
 we must actively look at and compare the data for
@@ -201,8 +198,15 @@ understanding what hierarchies mean.
 We think that both are complimentary to each other and provide valuable
 tools to use in "a day in the life of a data analyst".
 
-Now all the assigned tasks from our Monday meeting have been completed
-successfully. Ready for the next meeting.
+## RECAP
+
+In this lab, we examined various insights discovered by the Data Insights tool. 
+They were interesting insights and not very obvious without digging into the data.
+
+We also compared the results with the Data Analysis tool by doing manual analysis, illustrating 
+the value of automated insights.
+
+Now all the assigned tasks have been completed successfully. 
 
 ## Acknowledgments
 

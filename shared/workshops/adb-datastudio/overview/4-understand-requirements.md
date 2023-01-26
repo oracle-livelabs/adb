@@ -54,7 +54,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
     For our project, we can use these tables. If some data is missing then we can load it from
     an external source too.
 
-    **Note:** live feed sounds interesting. Learn how he sets it up in some other workshop.
+    **Note to myself:** live feed sounds interesting. Learn how he sets it up in some other workshop.
 
 3.  Action Items:
 

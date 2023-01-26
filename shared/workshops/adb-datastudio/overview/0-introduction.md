@@ -13,7 +13,7 @@ If you would like to watch us do the workshop, click [here](add link).
 
 This workshop is useful for anyone who needs to have a working knowledge of loading, transforming and doing data analysis in the Autonomous Data Warehouse. 
 
-## Objectives
+### Objectives
 
 In this workshop, you will learn:
 -	How to browse the catalog to find the data you need
@@ -22,14 +22,14 @@ In this workshop, you will learn:
 -	How to create a dimensional model and analyze the data
 -	How to find hidden insights
 
-## Prerequisites
+### Prerequisites
 
 Before you launch into this workshop, you will need the following:
 
 - Basic knowledge of Oracle Cloud
 - Basic level of understanding of SQL query language
 
-## How to use the Workshop
+### How to use the Workshop
 
 Once you have completed labs 1, 2, and 3 - that is, you have provisioned an Autonomous Database (or have one ready to use), created a user and loaded demo data, you have an option to sequentially complete all the labs or jump to any other lab. These labs are designed to be independent of one another. For example, if you want to learn about analyzing data in the Autonomous Database, you can skip directly to lab 8.
 

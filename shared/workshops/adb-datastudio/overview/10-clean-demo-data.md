@@ -46,7 +46,7 @@ DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV
 ```
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
-**Note:** Expect to receive "ORA-00942 table or view does not exist" or "ORA-18307: analytic view XYZ does not exist" errors during the DROP command if objects are already dropped, but you should not see any other errors.
+>**Note:** Expect to receive "ORA-00942 table or view does not exist" or "ORA-18307: analytic view XYZ does not exist" errors during the DROP command if objects are already dropped, but you should not see any other errors.
 
 ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
 

@@ -29,23 +29,23 @@ We need to analyze the movie sales data by age group as well. While browsing the
 we noticed that there is no age group information, and we need to load a
 new table for the age groups.
 
-For this, we will go back to our database actions page by clicking on the
-top left button and using the Load Data tool.
+1.  Go back to our database actions page by clicking on the
+    top left button and using the Load Data tool.
 
-![Screenshot of data load card](images/image8_load_card.png)
+    ![Screenshot of data load card](images/image8_load_card.png)
 
-1.  We need to create a local data file for AGE_GROUP. Launch Excel on
+2.  We need to create a local data file for AGE_GROUP. Launch Excel on
     your desktop to create this dataset. Note that you can also use a
     text editor to create this data set since it is small.
 
-![Screenshot of age group data in Excel](images/image9_data_excel.png)
+    ![Screenshot of age group data in Excel](images/image9_data_excel.png)
 
-Save this as an Excel workbook and name it AGE_GROUP.
+    Save this as an Excel workbook and name it AGE_GROUP.
 
-If you don't have Excel then create a CSV file with the data below
-and save it as AGE_GROUP.csv.
+    If you don't have Excel then create a CSV file with the data below
+    and save it as AGE_GROUP.csv.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
+    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
     
 ```
 <copy>
@@ -73,21 +73,21 @@ and save it as AGE_GROUP.csv.
 
 1.  Launch Data Load from the Database Actions page by clicking on the **DATA LOAD** card.
     
-    **Note:** that you have various modes for loading data. You can either
+    >**Note:** that you have various modes for loading data. You can either
     directly load data or leave it in place by linking it. You can
     also create an ongoing feed to load data to Autonomous Database.
     
-    You can also load data from either your local file or database or
+    >You can also load data from either your local file or database or
     cloud storage.
     
     In this lab, we are loading data from the local file created in the earlier
     task. Select **LOCAL FILE** and press **Next**.
 
-![Screenshot of load data options](images/image10_load_option.png)
+    ![Screenshot of load data options](images/image10_load_option.png)
 
 2.  Drag your local file AGE_GROUP.xlsx to the load window.
 
-![Screenshot of pick file for load](images/image11_load_file.png)
+    ![Screenshot of pick file for load](images/image11_load_file.png)
 
 3.  Click the green triangle button to start the load.
 
@@ -96,9 +96,11 @@ and save it as AGE_GROUP.csv.
     
     Now we have all the data sets that we need to complete our assignment.
 
-![Screenshot of start loading file](images/image12_load_file_start.png)
+    ![Screenshot of start loading file](images/image12_load_file_start.png)
 
-This completes the data load overview lab. Note that there are many more features in the data load tool, which are not covered here. These details will be covered in other in-depth workshops.
+## RECAP
+
+In this lab, we used Data Load to load a local file. Note that there are many ways to load data, such as loading from the object store, linking files, live feed etc., which are not covered here. These details will be covered in another in-depth workshop.
 
 You may now **proceed to the next lab**.
 

@@ -28,18 +28,18 @@ To complete this lab, you need to have completed the previous labs, so that you 
 1.  Login to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
 
-    **Note:** Bookmark the Database Actions page so that it is easier to come
+    >**Note:** Bookmark the Database Actions page so that it is easier to come
     back to this later in the workshop.
     
     Click on the **DATA STUDIO OVERVIEW** card.
 
-![Screenshot of data studio overview](images/image1_datastudio_overview.png)
+    ![Screenshot of data studio overview](images/image1_datastudio_overview.png)
 
 2.  It shows the list of recent objects in the middle. On the left, it
     has links to individual tools and on the right, links to
     the documentation.
 
-![Screenshot of the recent object list](images/image2_datastudio_overview_list.png)
+    ![Screenshot of the recent object list](images/image2_datastudio_overview_list.png)
 
 Since it is a workshop, there are limited objects on the list. There
 will be many objects and only the recent objects are shown here. We will
@@ -62,7 +62,7 @@ use the Catalog tool to browse the objects and find what we need.
     
     4: Search bar where you can type in the advanced search query
 
-![Screenshot of the catalog page](images/image3_catalog_ui_zones.png)
+    ![Screenshot of the catalog page](images/image3_catalog_ui_zones.png)
 
 2.  Note that the catalog shows all types of objects. We are interested in
     only the tables for now. Click on "Tables, views and analytic views
@@ -77,7 +77,7 @@ use the Catalog tool to browse the objects and find what we need.
     the table in the search bar but in our case, it is visible in
     the grid view in the middle.
 
-![Screenshot of listing only tables and views](images/image4_catalog_tables.png)
+    ![Screenshot of listing only tables and views](images/image4_catalog_tables.png)
 
 3.  Click on the MOVIESALES_CA table.
 
@@ -100,7 +100,7 @@ use the Catalog tool to browse the objects and find what we need.
     workshop, we are also interested in CUSTOMER_CA and GENRE tables.
     Find and click on these tables to do a data preview.
 
-![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
+    ![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
 
 5.  We also need to find out whether age group information is present.
 
@@ -114,9 +114,12 @@ use the Catalog tool to browse the objects and find what we need.
     It means we don't have any tables or columns with the text GROUP in the name.
     
 
-![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
+    ![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
 
-This completes the Data Catalog overview lab. Note that there are many more features in the Catalog tool, which are not covered here. These details will be covered in other in-depth workshops.
+## RECAP
+
+In this lab, we used Data Catalog to search for the desired objects in the database. There are different 
+ways to search for an object and display the search results. We also learned how to do data preview. There are many more features in the Catalog tool, which are not covered here. These details will be covered in another in-depth workshop.
 
 You may now **proceed to the next lab**.
 
