@@ -6,10 +6,6 @@ This lab shows how to connect your Autonomous Database to a cloud storage system
 
 Estimated Time: 25 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this lab, you will:

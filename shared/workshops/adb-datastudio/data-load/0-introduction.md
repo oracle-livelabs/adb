@@ -8,8 +8,6 @@ The workshop is designed to be used alongside your own cloud account (paid or Br
 
 Estimated Workshop Duration: 1 hour, 20 minutes
 
-If you would like to watch us do the workshop, click [here](add link).
-
 ### Who should use this Workshop?
 
 This workshop is useful for anyone who needs to load data into the Autonomous Data Warehouse. 

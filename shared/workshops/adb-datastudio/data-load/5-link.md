@@ -6,10 +6,6 @@ This lab shows how you can link your Autonomous Database to data in a cloud stor
 
 Estimated Time: 15 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this lab, you will:

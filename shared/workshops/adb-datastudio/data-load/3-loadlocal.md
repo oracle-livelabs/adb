@@ -9,10 +9,6 @@ This lab, and the full functionality of Data Studio, is applicable to both Auton
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this lab, you will:

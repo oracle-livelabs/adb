@@ -17,10 +17,6 @@ The diagram below shows how a notification-based feed works:
 
 Estimated Time: 30 minutes
 
-Watch the video below for a quick walk through of the lab.
-
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this lab, you will:
