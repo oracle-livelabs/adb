@@ -335,7 +335,7 @@ Now we are ready to prepare the data.
     the list is big. Entities are dragged into the main canvas to build a
     data flow.
     
-    3: List of transformations grouped under various buckets. Click on
+    3: List of transformations grouped under various groups. Click on
     different groups to see what kinds of transforms are available. Basic
     transforms are under the **DATA TRANSFORM** and **DATA PREPARATION**
     groups. These transforms are dragged into the main canvas to build a
@@ -357,11 +357,11 @@ Now we are ready to prepare the data.
     customer value.
 
     First, we will drag **MOVIESALES_CA** into the canvas and drag
-    **Aggregate** transform from above under the **DATA TRANSFORM** bucket.
+    **Aggregate** transform from above under the **DATA TRANSFORM** group.
     Next, drag **QuintileBinning** transform into the canvas. This
     transform is in the **DATA PREPARATION** group above.
     
-    There are many transforms available under different buckets to build
+    There are many transforms available under different groups to build
     the desired data flow. For this workshop, we will use a few of them.
     
     This should look like the below screenshot.
