@@ -96,7 +96,7 @@ Supported file types for loading locally include:
 - .json (JSON) files
 - .xml (XML) files
 
-For more information on the specific supported format of JSON, AVRO and XML files see the **[online help](https://https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/loading-data.html#GUID-44B34EA1-41AC-4C76-945F-81CBBA5E6CA1)**
+For more information on the specific supported format of JSON, AVRO and XML files see the **[online help](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/loading-data.html#GUID-44B34EA1-41AC-4C76-945F-81CBBA5E6CA1)**
 
 >**Important:**Your computer may not support downloading files to your local disk. If you are in this situation, please skip forward to next main section **Load Data from Object Store.**
 
