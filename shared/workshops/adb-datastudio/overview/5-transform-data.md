@@ -10,7 +10,7 @@ Estimated Time: 25 minutes
 Watch the video below for a quick walkthrough of the lab.
 [](youtube:youtubeid)
 
-## Objectives
+### Objectives
 
 In this workshop, you will learn:
 -	How to transform and prepare your data for analysis

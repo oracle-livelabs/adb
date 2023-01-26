@@ -10,7 +10,7 @@ Estimated Time: 20 minutes
 Watch the video below for a quick walkthrough of the lab.
 [](youtube:youtubeid)
 
-## Objectives
+### Objectives
 
 In this workshop, you will learn:
 -	How to create a dimensional model and analyze the data

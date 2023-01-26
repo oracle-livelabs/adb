@@ -10,10 +10,12 @@ Estimated Time: 5 minutes
 Watch the video below for a quick walkthrough of the lab.
 [](youtube:youtubeid)
 
-## Objectives
+### Objectives
 
 In this workshop, you will learn:
 -	How to load data from your local file
+
+### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 

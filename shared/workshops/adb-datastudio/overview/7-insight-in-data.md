@@ -10,7 +10,7 @@ Estimated Time: 15 minutes
 Watch the video below for a quick walkthrough of the lab.
 [](youtube:youtubeid)
 
-## Objectives
+### Objectives
 
 In this workshop, you will learn:
 -	How to find hidden insights in your data

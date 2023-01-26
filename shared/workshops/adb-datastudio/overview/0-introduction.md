@@ -29,7 +29,7 @@ Before you launch into this workshop, you will need the following:
 - Basic knowledge of Oracle Cloud
 - Basic level of understanding of SQL query language
 
-### How to use the Workshop
+## How to use the Workshop
 
 Once you have completed labs 1, 2, and 3 - that is, you have provisioned an Autonomous Database (or have one ready to use), created a user and loaded demo data, you have an option to sequentially complete all the labs or jump to any other lab. These labs are designed to be independent of one another. For example, if you want to learn about analyzing data in the Autonomous Database, you can skip directly to lab 8.
 
