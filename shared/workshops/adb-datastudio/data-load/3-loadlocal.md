@@ -147,7 +147,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   Click **Done** in the bottom right corner of the screen to close the load job.
 
-Normally, we would then check that the data has been correctly loaded by examining the new tables in the **Catalog**. However, in this case we will do this after loading some more data.
+  Normally, we would then check that the data has been correctly loaded by examining the new tables in the **Catalog**. However, in this case we will do this after loading some more data.
 
 ### RECAP: Loading Data from local files
 

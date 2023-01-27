@@ -80,13 +80,13 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![Properties of the data load task for activities](images/activity-columns.png)
 
-Note that the Data Type for three of the columns (cust_id, genre_id and movie_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length/Precision yourself so that this analysis is avoided.
+  Note that the Data Type for three of the columns (cust_id, genre_id and movie_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length/Precision yourself so that this analysis is avoided.
 
-In this case there is no need to make any changes. You can close the form and then click the **green arrow** button to start your data load job. 
+  In this case there is no need to make any changes. You can close the form and then click the **green arrow** button to start your data load job. 
 
   ![The toolbar with the Start button selected](images/cloudload-start.png)
 
-The job should take less than a minute to complete. You can see the number of rows loaded into each table.
+  The job should take less than a minute to complete. You can see the number of rows loaded into each table.
 
   ![All cloud data load tasks completed, with row counts](images/cloudload-complete.png)
 
@@ -146,7 +146,7 @@ Where you want to download and load data from a file from a cloud location that 
 
 12. Now we can click **Close** to close the settings for the load task, and rerun it by clicking the green run button.
 
-This time, when the task completes, it shows no errors, and that all rows were loaded correctly! 
+  This time, when the task completes, it shows no errors, and that all rows were loaded correctly! 
 
   ![The completed load task with no errors](images/load-noerrors.png)
 

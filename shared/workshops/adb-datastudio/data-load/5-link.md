@@ -40,12 +40,12 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
  ```
-    $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o</copy>
+    <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o</copy>
  ```
 
-  ![Cloud Location configuration showing complete URI](images/cloudstoragelink.png)
+    ![Cloud Location configuration showing complete URI](images/cloudstoragelink.png)
 
-  Your completed form should look like the one above. When you have completed these details, click **Next**.
+    Your completed form should look like the one above. When you have completed these details, click **Next**.
 
  4. The **Cloud Data** page allows you to verify your cloud storage connection by showing a preview of the available objects contained in it. This is useful to ensure the location is set up correctly. In this case, this should look as below:
 
@@ -73,23 +73,23 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![The SQL that will be used to create the external table](images/linksql.png)
 
-Here, we can see that the external table will be created linking to the following URI, which encompasses all parquet files (*.parquet) that exist in the custsales folder:
+  Here, we can see that the external table will be created linking to the following URI, which encompasses all parquet files (*.parquet) that exist in the custsales folder:
 
 ```
 https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/custsales/*.parquet
 ```
 
-Click **Close** to close the settings window.
+  Click **Close** to close the settings window.
 
 5. Click the green run button to start the data linking job.
 
   ![Start the data linking job](images/startlink.png)
 
-The job should take less than a minute to complete. You can see the number of rows (1m) linked into the table.
+  The job should take less than a minute to complete. You can see the number of rows (1m) linked into the table.
 
   ![Cloud link task complete, with row count](images/linkcomplete.png)
 
-Click the **Done** option in the bottom right of the screen.
+  Click the **Done** option in the bottom right of the screen.
 
 ## Task 3: Query the new external table
 
@@ -111,7 +111,7 @@ Now that we have linked to the directory of parquet files, we are set up to quer
     $ <copy>select sum(actual_price) as total_sales from custsales;</copy>
 ```
 
-The query will likely take a little bit of time to return, depending on how many CPUs your database has been provisioned with.
+  The query will likely take a little bit of time to return, depending on how many CPUs your database has been provisioned with.
 
 4. The result should be as below:
 

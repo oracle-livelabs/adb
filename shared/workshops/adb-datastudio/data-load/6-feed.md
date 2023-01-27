@@ -70,7 +70,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![The Create Pre-Authenticated Request window, with the option to enable object listing ticked](images/create-par-options.png)
 
-Click the **Create Pre-Authenticated Request** button.
+  Click the **Create Pre-Authenticated Request** button.
 
 9. Copy the generated URL of the pre-authenticated request, and paste it into a note or other file, and save it. You will need this later in the lab.
 
@@ -93,7 +93,7 @@ Click the **Create Pre-Authenticated Request** button.
 
   ![The Cloud Location screen, with the Public Bucket selected and the URL pasted in](images/add-feed-location.png)
 
-Click **Create** to save the location.
+  Click **Create** to save the location.
 
 5. Click **Data Load** from the menu on the left, or from the breadcrumbs at the top of the screen.
 
@@ -195,9 +195,9 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
   ![The Logs option for the live feed](images/feed-logs.png)
 
-This view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none, so we know the data has been loaded completely.
+  This view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none, so we know the data has been loaded completely.
 
-This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in the cloud object storage bucket, they will automatically be loaded into the MOVIE\_SALES table in the Autonomous Database, to facilitate fast data analysis. 
+  This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in the cloud object storage bucket, they will automatically be loaded into the MOVIE\_SALES table in the Autonomous Database, to facilitate fast data analysis. 
 
 ## RECAP
 
