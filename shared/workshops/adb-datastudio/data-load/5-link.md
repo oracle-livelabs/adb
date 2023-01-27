@@ -74,15 +74,11 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![The SQL that will be used to create the external table](images/linksql.png)
 
-  Here, we can see that the external table will be created linking to the following URI, which encompasses all parquet files (*.parquet) that exist in the custsales folder:
+  Here, we can see that the external table will be created linking to a URI ending in *\*.parquet*, so it will encompass all parquet files that exist in the custsales folder.
 
-```
-https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/custsales/*.parquet
-```
+5. Click **Close** to close the settings window.
 
-  Click **Close** to close the settings window.
-
-5. Click the green run button to start the data linking job.
+6. Click the green run button to start the data linking job.
 
   ![Start the data linking job](images/startlink.png)
 
