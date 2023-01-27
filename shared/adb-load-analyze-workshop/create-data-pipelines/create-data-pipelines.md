@@ -33,6 +33,8 @@ In this lab, you will:
 * Configure the data pipeline attributes
 * Test the data pipeline
 * Start the data pipeline
+* Upload data to your object storage bucket
+* Check that the data pipeline loaded the data into the database
 * Reset the pipeline's state and history
 
 ### Prerequisites
@@ -155,7 +157,19 @@ Introductory Text
 
 1. text
 
-## Task 5: Optionally reset the pipeline's state and history
+## Task 5: Upload data to your object storage bucket
+
+Introductory Text
+
+1. text
+
+## Task 6: Check that the data pipeline loaded the data into the database
+
+Introductory Text
+
+1. text
+
+## Task 7: Optionally reset the pipeline's state and history
 
 Introductory Text
 
