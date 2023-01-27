@@ -40,18 +40,19 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
  ```
-    <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o</copy>
+  $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o</copy>
+ 
  ```
 
-    ![Cloud Location configuration showing complete URI](images/cloudstoragelink.png)
+4. Your completed form should look as below. When you have completed these details, click **Next**.
 
-    Your completed form should look like the one above. When you have completed these details, click **Next**.
+  ![Cloud Location configuration showing complete URI](images/cloudstoragelink.png)
 
- 4. The **Cloud Data** page allows you to verify your cloud storage connection by showing a preview of the available objects contained in it. This is useful to ensure the location is set up correctly. In this case, this should look as below:
+5. The **Cloud Data** page allows you to verify your cloud storage connection by showing a preview of the available objects contained in it. This is useful to ensure the location is set up correctly. In this case, this should look as below:
 
    ![Contents of moviestream gold area](images/cloudstoragelink2.png)
 
- 5. Click the **Create** button to complete the registration of this cloud location.
+6. Click the **Create** button to complete the registration of this cloud location.
 
 ## Task 2: Link to data files in a Cloud Location
 
