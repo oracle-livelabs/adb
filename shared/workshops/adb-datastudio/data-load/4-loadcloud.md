@@ -36,7 +36,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 ### Set Up a Cloud Location
 
-1. To begin this process, you need to navigate to the **Data Load** page in Data Studio. 
+1. To begin this process, you need to navigate to the **Data Load** page in Data Studio, from the Database Actions home page.
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/go-to-dataload.png)
 2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
   ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
@@ -59,14 +59,21 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 ## Task 2: Load Data Files from a Cloud Location
 
 1. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store** and then click the blue **Next** button. 
+
   ![The Data Load page with Load Data and Cloud Store selected](images/loadcloud1.png)
 
-2. Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer_extension**, **customer_segment** and **pizza_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
+2. Make sure the **MOVIESTREAMLANDING** cloud location is selected. If it does not appear, click the **Refresh** button on the far right of the toolbar, then select it.
+
+  ![The Refresh button the toolbar](images/refresh.png)
+
+  Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer_extension**, **customer_segment** and **pizza_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
+
+  >**Note**: The selection of a folder allows the loading of multiple files that are in the same structure into a single table. If you drag and drop a folder, rather than a file, a prompt appears to confirm that you want to load all files in this folder into a single table. In this case, all our folders contain a single file, so click **Yes** on the prompt. If you have a folder containing files in different structures and you want to load many of them, you should drag across each file separately so that separate tables can be created, each with the correct columns and data.
+
   ![The Data Load page with a card created for each file we want to load](images/loadcloud2.png)
 
-**Note**: The selection of a folder allows the loading of multiple files that are in the same structure into a single table. If you drag and drop a folder, rather than a file, a prompt appears to confirm that you want to load all files in this folder into a single table. In this case, all our folders contain a single file, so you can just say Yes to the prompt. If you have a folder containing files in different structures and you want to load many of them, you should drag across each file separately so that separate tables can be created, each with the correct columns and data.
+3. You can edit the properties of each of the data loading tasks by opening the menu on the right-hand side of each card and selecting **Settings**. Do this for the **activity** load task: 
 
-3. As before, you can edit the properties of each of the data loading tasks by opening the menu on the right-hand side of each card and selecting **Settings**. Do this for the **activity** load task: 
   ![Accessing the settings for the data load task for activities](images/activity-settings.png)
 
 4. On this page, we can check the properties of the load task, and make any changes to column names or data types. 
@@ -93,7 +100,7 @@ Where you want to download and load data from a file from a cloud location that 
 
 1. On the Data Load screen, select **Load Data** and **Cloud Store** again, and click **Next**
 
-2. This time, rather than using the saved cloud store, we are going to paste the following URI into the cloud location bar:
+2. This time, rather than using the saved cloud store, we are going to paste the following URI into the **Select Cloud Store Location or enter public URL** bar. To do this, select the default contents of the bar and delete them to clear the bar. Then copy and paste the below URI:
 
  ```
     $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/datastudio/o/</copy>
@@ -111,7 +118,7 @@ Where you want to download and load data from a file from a cloud location that 
 
   ![Warning icon on completed load task](images/load-warning.png)
 
-6. The name of the file on the completed load task is a link to see more information about the completed task. Click this, then click the **Errors** option on the left hand side to review the errors:
+6. Click the name of the file on the completed load task, then click the **Errors** option on the left hand side to review the errors:
 
   ![Reviewing loading errors](images/load-errors2.png)
 
@@ -144,21 +151,21 @@ This time, when the task completes, it shows no errors, and that all rows were l
   ![The completed load task with no errors](images/load-noerrors.png)
 
 
-## Inspect the newly loaded table
+## Task 4: Inspect the newly loaded table
 
-10. Click on **Catalog** from the Data Studio navigation menu on the left hand side. 
+1. Click on **Catalog** from the Data Studio navigation menu on the left hand side. 
 
   ![The Data Studio menu with Catalog selected](images/launch-catalog.png)
 
-Under **Saved Searches** on the right hand side, click on **Tables, views and analytic views owned by QTEAM** to see a list of the tables you have created in this and previous labs.
+  Under **Saved Searches** on the right hand side, click on **Tables, views and analytic views owned by QTEAM** to see a list of the tables you have created in this and previous labs.
 
-11. Click the **CUSTOMERCONTACTISSUES** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly. In some cases, the Statistics may not be gathered yet. In this case, click on the **Gather Statistics** button. After about 30 seconds, click on the **Refresh** button, and the statistics should be available.
+2. Click the **CUSTOMERCONTACTISSUES** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly. In some cases, the Statistics may not be gathered yet. In this case, click on the **Gather Statistics** button. After about 30 seconds, click on the **Refresh** button, and the statistics should be available.
 
-12. Scroll down to find the card relating to the **YRS_CUSTOMER** column. Notice that its icon denotes that it is a text (VARCHAR) column. Click on the Expand button to view the statistics in more detail.
+3. Scroll down to find the card relating to the **YRS_CUSTOMER** column. Notice that its icon denotes that it is a text (VARCHAR) column. Click on the Expand button to view the statistics in more detail.
 
   ![The statistics for the YRS_CUSTOMER column with the expand button highlighted](images/show-stats-column.png)
 
-13. This now shows the distribution of values for the **YRS_CUSTOMER** column. Find the small scroll bar to the left of the graph and scroll down. You will see the captured values "eight", "six" and "unknown" that we have now loaded:
+4. This now shows the distribution of values for the **YRS_CUSTOMER** column. Find the small scroll bar to the left of the graph and scroll down. You will see the captured values "eight", "six" and "unknown" that we have now loaded:
 
   ![Graph showing value distribution of the YRS_CUSTOMER column](images/stats-graph.png)
 

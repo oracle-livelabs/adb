@@ -59,7 +59,11 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![The Data Load page with Link Data and Cloud Store selected](images/linkcloud.png)
 
-2. Make sure the **MOVIESTREAMGOLD** cloud location is selected in the top dropdown box. Now you see a file browser-like view of your Object Store. Expand the **custsales** folder in the browser. We can see that there is a subfolder for each month of data, and the folder for each month contains a Parquet file. What we want to do here is to link all this data into a single external table, so that as the data for additional months are added, the external table will always be up-to-date. To do this, we can simply drag across the **custsales** folder to the right hand side:
+2. Make sure the **MOVIESTREAMGOLD** cloud location is selected in the top dropdown box. If it does not appear, click the **Refresh** button on the far right of the toolbar, then select it.
+
+  ![The Refresh button the toolbar](images/refresh.png)
+
+  Now you see a file browser-like view of your Object Store. Expand the **custsales** folder in the browser. We can see that there is a subfolder for each month of data, and the folder for each month contains a Parquet file. What we want to do here is to link all this data into a single external table, so that as the data for additional months are added, the external table will always be up-to-date. To do this, we can simply drag across the **custsales** folder to the right hand side, and click **Yes** on the prompt to confirm that we want to load a single table.
 
   ![The Data Load page with the custsales folder selected for linking](images/linkcustsales.png)
 
@@ -72,7 +76,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 Here, we can see that the external table will be created linking to the following URI, which encompasses all parquet files (*.parquet) that exist in the custsales folder:
 
 ```
-    $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/custsales/*.parquet</copy>
+https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/custsales/*.parquet
 ```
 
 Click **Close** to close the settings window.
@@ -87,7 +91,7 @@ The job should take less than a minute to complete. You can see the number of ro
 
 Click the **Done** option in the bottom right of the screen.
 
-## Query the new external table
+## Task 3: Query the new external table
 
 Now that we have linked to the directory of parquet files, we are set up to query and use the data in the Autonomous Database, even though the data is still resident on cloud storage. Let's run a simple query on the data.
 

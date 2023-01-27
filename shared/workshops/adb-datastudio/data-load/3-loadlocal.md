@@ -72,17 +72,6 @@ Click the **Open in new tab** icon to open a new tab. This URL may be used to a
 
   ![Screenshot of the online help system, and the icon to close it](images/help.png)
 
-### RECAP
-
-In this section of the workshop, you are playing the role of a different user of your Autonomous Data Warehouse: a departmental analyst whose database username is **QTEAM**. 
-
-You have seen two different ways of navigating to the Database Actions home page, which is the launchpad for Data Studio and other built-in tools:
-
-- Navigating to **Database Actions** from the ADW console
-- Using a URL to access **Database Actions** directly
-
-You've taken a brief tour of the **Database Actions** home page, with its card interface and ready access to documentation and other useful resources. The next task is to use Data Studio's Data Load tool to load data into the database from files.
-
 ## Task 2: Load Data from Local Files
 
 In this task, you will learn how to load data into Autonomous Database tables from files on your local machine. In this case, we will load two Excel spreadsheets and a csv file, but the process is much the same for any supported type of file that you may have locally, for example because you downloaded it from a public data site, or because it was emailed to you.
@@ -98,7 +87,7 @@ Supported file types for loading locally include:
 
 For more information on the specific supported format of JSON, AVRO and XML files see the **[online help](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/loading-data.html#GUID-44B34EA1-41AC-4C76-945F-81CBBA5E6CA1)**
 
->**Important:**Your computer may not support downloading files to your local disk. If you are in this situation, please skip forward to next main section **Load Data from Object Store.**
+>**Important:**Your computer may not support downloading files to your local disk. If you are in this situation, you may be able to access other files of the types listed above that will allow you to proceed through the lab. If not, please skip to the next lab to learn how to load data from cloud storage.
 
 ### Preparation
 
@@ -108,7 +97,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 - Click **[here](https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream-QTEAM-Download/o/Devices.xlsx)** to download the **Devices.xlsx** Excel file to your local computer.
 - Click **[here](https://objectstorage.us-phoenix-1.oraclecloud.com/n/dwcsprod/b/MovieStream-QTEAM-Download/o/Countries.csv)** to download the **Countries.csv** CSV file to your local computer.
 
-    > **Note:** This file might just appear as new tab in your browser rather than just simply downloading. Please use the Save or Save As feature in your browser's File menu to save the file as **Countries.csv**, and make a note of where you saved it.
+    > **Note:** The **Countries.csv** file might appear as new tab in your browser rather than simply downloading. Please use the Save or Save As feature in your browser's File menu to save the file as **Countries.csv**, and make a note of where you saved it. Note that if you have previously run other similar workshops, you may have these files already in your download folder. If this is the case, the above files will save with different names, such as **Days\_Months.xlsx(2)**. If you encounter this issue, use the original files rather than the ones you have just downloaded.
 
 **Before you proceed -**  be sure to take note of the location of the three files that you downloaded to your local computer.
 
@@ -134,13 +123,13 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   ![Edit data load properties for countries](images/loadlocal-countries.png)
 
-6. In the bar on the left, there are links for Settings, File, Table, and an Error Log. This screenshot shows the **Settings** page. Observe that this shows the structural information and intelligent default values that data wizard has created from simply looking at the file.
+6. In the bar on the left, there are links for Settings, Preview, Table, SQL and Errors. This screenshot shows the **Settings** page. Observe that this shows the structural information and intelligent default values that data wizard has created from simply looking at the file.
 
   ![Data load settings for countries](images/countries-settings.png)
 
 7. How does it do this? Most csv files contain structural information about the data within the file in the first row. Notice that there is a tick box selected, **Column header row**.
 
-8. This has allowed the data loading wizard to discover that your data file contains two columns of data: **COUNTRY** and **CONTINENT**. The default table name has based derived from the filename. Click the drop-down menu under **Option**
+8. This has allowed the data loading wizard to discover that your data file contains two columns of data: **COUNTRY** and **CONTINENT**. The default table name has based derived from the filename. Click the drop-down menu under **Option**.
 
   ![Table options](images/load-options.png)
 
@@ -156,7 +145,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   ![Data load progress](images/local-load-finished.png)
 
-  Click **Done** to close the load job.
+  Click **Done** in the bottom right corner of the screen to close the load job.
 
 Normally, we would then check that the data has been correctly loaded by examining the new tables in the **Catalog**. However, in this case we will do this after loading some more data.
 

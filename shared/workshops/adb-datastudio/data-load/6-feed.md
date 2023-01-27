@@ -58,7 +58,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![The Create Bucket option](images/create-bucket-button.png)
 
-6. On the **Create Bucket** screen, set up a bucket with the name 'feedlab' and be sure to tick the option to **Emit Object Events**. Keep the other options to the default values. Click on the **Create** button.
+6. On the **Create Bucket** screen, set up a bucket with the name **feedlab** and be sure to tick the option to **Emit Object Events**. Keep the other options to the default values. Click on the **Create** button.
 
   ![The Create Bucket screen with the Emit Object Events option ticked](images/create-bucket.png)
 
@@ -89,7 +89,7 @@ Click the **Create Pre-Authenticated Request** button.
 
 3. In the top right, click **Add Cloud Store Location**
 
-4. Set up a new cloud location named 'MovieSalesData'. Select the **Public Bucket** option, and paste in the URL of the pre-authenticated request you created in Task 1.
+4. Set up a new cloud location named **MovieSalesData**. Select the **Public Bucket** option, and paste in the URL of the pre-authenticated request you created in Task 1.
 
   ![The Cloud Location screen, with the Public Bucket selected and the URL pasted in](images/add-feed-location.png)
 
@@ -105,11 +105,11 @@ Click **Create** to save the location.
 
   ![The Create Live Table Feed button](images/create-live-feed.png)
 
-8. Set up the Live Table Feed as shown below, with the **Live Table Feed Name** set to 'FEED\_MOVIE\_DATA', the **Target Table Name** set to 'MOVIE\_SALES', and the **Object Filter** set to '*.csv'. Then tick the **Enable for Notifications** box, and untick the **Enable for Scheduling** box.
+8. Set up the Live Table Feed as shown below, with the **Live Table Feed Name** set to **FEED\_MOVIE\_DATA**, the **Target Table Name** set to **MOVIE\_SALES**, and the **Object Filter** set to **\*.csv**. Then tick the **Enable for Notifications** box, and untick the **Enable for Scheduling** box.
 
   ![The details of the live feed configuration](images/live-feed-details.png)
 
-Click the **Create** button to complete the initial setup of the live table feed. 
+  Click the **Create** button to complete the initial setup of the live table feed. 
 
 9. With the live table feed now set up, a URL is generated which we can use to link up to the OCI event generation mechanism. To see and copy the URL, click the menu of the newly created Live Table Feed, and select **Show Notification URL**. 
 
@@ -121,13 +121,13 @@ Click the **Create** button to complete the initial setup of the live table feed
 
 1. If you are not already logged in, log in to the OCI Console at https://cloud.oracle.com
 
-2. Search for 'notif' in the menu and click the result for **Notifications - Application Integration**.
+2. Search for **notif** in the menu and click the result for **Notifications - Application Integration**.
 
   ![Search for 'notif' to find Notifications in the OCI Console](images/notif-search.png)
 
 3. Select the same **Compartment** you selected when setting up the cloud storage bucket in Task 1. Then click **Create Topic**.
 
-4. Name the topic 'Movie\_sales\_events' as below, and click **Create**.
+4. Name the topic **Movie\_sales\_events** as below, and click **Create**.
 
   ![The Create Topic window](images/create-topic.png)
 
@@ -139,23 +139,23 @@ Click the **Create** button to complete the initial setup of the live table feed
 
 The subscription is now created. It will show as **Pending** for a couple of minutes, then **Active** once it is live.
 
-7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for 'events', and click the 'Rules - Events Service' link:
+7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for **events**, and click the **Rules - Events Service** link:
 
   ![The OCI Console search window, searching, for events, with Rules - Event Service highlighted](images/search-events.png)
 
 8. Click the **Create Rule** button.
 
-9. Set the **Display Name** to 'New\_moviesales\_object'. Then in the **Rule Conditions** section, under **Service Name**, select 'Object Storage', and under **Event Type** select 'Object - Create'.
+9. Set the **Display Name** to 'New\_moviesales\_object'. Then in the **Rule Conditions** section, under **Service Name**, select 'Object Storage', and under **Event Type** select **Object - Create**.
 
-10. In the **Actions** section, under **Action Type** select 'Notifications'. The Notifications Compartment should be set to the same compartment you have been using throughout the lab. Select the **Topic** as 'Movie\_sales\_events'. The final screen should look as below. Click the **Create Rule** button to confirm the rule addition.
+10. In the **Actions** section, under **Action Type** select **Notifications**. The Notifications Compartment should be set to the same compartment you have been using throughout the lab. Select the **Topic** as **Movie\_sales\_events**. The final screen should look as below. Click the **Create Rule** button to confirm the rule addition.
 
   ![Creation of a rule to notify the OCI topic when an object is created](images/create-rule.png)
 
-This has now created a rule that will send a notification message to the OCI Topic when an object is created in the bucket, for example when a new file arrives. As the Live Table Feed we set up earlier is subscribed to that topic, it will run when this message is sent, check for any files named *.csv, and load them into the MOVIE\_SALES table.
+  This has now created a rule that will send a notification message to the OCI Topic when an object is created in the bucket, for example when a new file arrives. As the Live Table Feed we set up earlier is subscribed to that topic, it will run when this message is sent, check for any files named *.csv, and load them into the MOVIE\_SALES table.
 
-If required, we can set up another rule for object update. This should be specified in exactly the same way, but with 'Object - Update' selected as the Event Type, and with a display name such as 'Updated\_moviesales\_object'.
+  If required, we can set up another rule for object update. This should be specified in exactly the same way, but with **Object - Update** selected as the Event Type, and with a display name such as **Updated\_moviesales\_object**.
 
-This completes the configuration steps needed to trigger the live table feed job to update the Autonomous Database when an object is added or updated in our cloud storage bucket. All we need to do now is test it!
+  This completes the configuration steps needed to trigger the live table feed job to update the Autonomous Database when an object is added or updated in our cloud storage bucket. All we need to do now is test it!
 
 ## Task 4: Test the live feed
 
@@ -165,17 +165,19 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
   https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-10.csv
 
+>**Important:** Your computer may not support downloading files to your local disk. If you are in this situation, you may be able to use another structured csv file with a header row, as this is just an example. 
+
 2. Then navigate back to **Object Storage - Buckets** in the OCI Console as you did in the first few steps in the lab:
 
   ![The Storage menu, with Buckets highlighted](images/buckets.png)
 
-3. Select your compartment, if not selected already, and click the 'feedlab' bucket
+3. Select your compartment, if not selected already, and click the **feedlab** bucket
 
   ![The 'feedlab' object storage bucket](images/feedlab-bucket.png)
 
 4. Under **Objects**, click the **Upload** button.
 
-5. Find the 'custsales-2020-10.csv' file you just downloaded to your local machine, and click the **Upload** button to upload it.
+5. Find the **custsales-2020-10.csv** file you just downloaded to your local machine, and click the **Upload** button to upload it.
 
 6. Now go back to the Database Actions launchpad, click the **Data Load** card, select **Feed Data** and **Next** to view the details of your live feed.
 
