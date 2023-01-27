@@ -45,6 +45,11 @@
           "filename": "./../../6-feed.md"
       },
       {
+          "title": "Lab 7: Clean up the loaded data",
+          "description": "Remove the tables you created and loaded during this workshop",
+          "filename": "./../../7-cleanup.md"
+      },
+      {
           "title": "Need Help?",
           "description": "Solutions to Common Problems and Directions for Receiving Live Help",
           "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"

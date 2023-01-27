@@ -203,6 +203,7 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
 In this lab, you used Data Studio to set up a notification-based feed of data into the Autonomous Database from cloud storage. This is a very useful option where you have large volumes of data arriving into cloud object storage as files but which you need to participate in performance-critical analysis in the database.
 
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
