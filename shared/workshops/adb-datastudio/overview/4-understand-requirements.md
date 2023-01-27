@@ -99,7 +99,7 @@ be worried about is which tool to use for the job at hand and where to get them 
 
 You may now **proceed to the next lab**.
 
-## Acknowledgments
+## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green

@@ -50,7 +50,7 @@ DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV
 
 Now you have cleaned the tables and analytic view created in this workshop.
 
-## Acknowledgments
+## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green

@@ -104,7 +104,7 @@ In this lab, we used Data Load to load a local file. Note that there are many wa
 
 You may now **proceed to the next lab**.
 
-## Acknowledgments
+## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green

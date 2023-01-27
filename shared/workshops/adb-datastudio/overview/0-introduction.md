@@ -37,7 +37,7 @@ However, for new users, the recommended option is to complete all the labs in th
 
 If you have any questions about the topics covered in this lab and the entire workshop, please contact us by posting on our public forum on  **[cloudcustomerconnect.oracle.com](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/)**  and we will respond as soon as possible.
 
-## Acknowledgments
+## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green

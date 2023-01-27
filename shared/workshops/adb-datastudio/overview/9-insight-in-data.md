@@ -208,7 +208,7 @@ the value of automated insights.
 
 Now all the assigned tasks have been completed successfully. 
 
-## Acknowledgments
+## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green

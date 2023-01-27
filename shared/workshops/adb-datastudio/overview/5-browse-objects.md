@@ -123,7 +123,7 @@ ways to search for an object and display the search results. We also learned how
 
 You may now **proceed to the next lab**.
 
-## Acknowledgments
+## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green

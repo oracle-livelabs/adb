@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Use Data Studio to load, prepare and analyze data in the Autonomous Database",
+  "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
@@ -23,7 +23,7 @@
           "title": "Lab 2: Create a User",
           "description": "Create a database user",
           "type": "livelabs",
-          "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
+          "filename": "../../../common/create-user.md"
       },
       {
         "title": "Lab 3: Load demo data",
