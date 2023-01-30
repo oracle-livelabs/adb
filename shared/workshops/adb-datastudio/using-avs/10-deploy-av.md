@@ -2,15 +2,15 @@
 
 Your Analytic View definition now includes one hierarchy, joined to the fact table, and a measure. The Analytic View can be created in the database.
 
-## Creating the Analytic View
+## Task 1 - Creating the Analytic View Database Object
 
-This step is very simple.
+You've worked hard to define your first analytic view (well, not really, because the tool makes it easy).  Give that Create button good smash!
 
-1. Smash (press) the Create button!
+1. Press the **Create** button!
 
-Congratulations, you now have an Analytic View deployed in the database! There is also an Attribute Dimension and Hierarchy.
+Congratulations, you now have an analytic view deployed in the database! There is also an Attribute Dimension and Hierarchy.
 
-The Analysis tool will automatically switch out of Analytic View design to the Data Quality tab.  This tab will let you know if there are certain types of errors found in the tables.  Since this is a Live Lab, there are no errors!
+The Analysis tool will automatically switch out of the Analytic View design to the Data Quality tab.  This tab will let you know if there are certain types of errors found in the tables.  Since this is a Live Lab, there are no errors!
 
 ![Data Quality Tab](images/10-data-quality-tab-1.png)
 

@@ -12,29 +12,27 @@ The analytic view includes an expression language used for calculated
 measures. You can also use any SQL single row function in the definition
 of a calculated measure.
 
-## Create a Calculated Measure
+## Task 1  Create a Calculated Measure
 
 Create a calculated measure that returns the Percent Change in Sales
-from the current time period as compared to the prior time period.
+from the current period as compared to the prior period.
 
-1. Right click Calculations
-2. Choose Create Calculated Measure
+1. Right click **Calculations**
+2. Choose **Create Calculated Measure**
 
 ![Add Calculated Measure](images/13-add-calculated-measure.png)
 
-3. Enter the measure name **SALES_PCT_CHANGE_PRIOR_PERIOD**.
+3. Enter the measure name **SALES\_PCT\_CHANGE\_PRIOR\_PERIOD**.
 4. Choose the Calculation Category **Prior and Future Period**.
 5. Choose the Calculation Template **Percent Difference From Prior Period**.
 6. Choose the measure **SALES**.
 7. Choose the **TIME** hierarchy.
-8. Select the **Percent Difference From Prior Period calculation template**.
 
 The measure settings should look like this.
 
 ![Sales Percent Change Prior Period measure](images/13-sales-pct-chg-calc-meas.png)
 
-You can now update the Analytic View to deploy these additional to the
-database objects.
+You can now update the Analytic View objects in the database.
 
 1.  Press the **Update** button on the lower right.
 

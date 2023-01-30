@@ -1,19 +1,20 @@
 # Introduction
 
 Congratulations, you are more than halfway to your first Analytic View. You have a fact table and a hierarchy, now you just need to specify the join between the hierarchy table the fact table and add at least one measure.
+
 If you press the Show DDL button the tool will let you know that these elements are missing.
 
 If you press the **Show DDL** button the tool will let you know that these elements are missing.
 
 ![Missing Join](images/8-missing-join.png)
 
-## Specify the Join
+## Task 1 - Specify the Join
 
-When hierarchies are mapped to dimension (hierarchy) tables rather than directly to the fact table, the hierarchy must be joined to the fact table.  This is just as dimension and fact tables much be *joined* in a SQL query.
+When hierarchies are mapped to dimension (hierarchy) tables rather than directly to the fact table, the hierarchy must be joined (matched) to the fact table.  This is just as dimension and fact tables much be *joined* in a SQL query.
 
-With an Analytic View, the join is part of the metadata. As a result, joins are not required in queries selecting from an Analytic View.
+With an Analytic View, the join is part of the metadata. As a result, joins are not required in queries that SELECT from an Analytic View.
 
-1. Choose Data Sources and select DAY_ID for both the Hierarch Column and the SALES_FACT Fact Column.
+1. Choose **Data Sources** and select **DAY\_ID** for both the **Hierarchy Column** and the **MOVIE\_SALES\_FACT** Fact Column.
 
 ![Join Time Dim](images/8-join-time-dim.png)
 

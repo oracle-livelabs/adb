@@ -2,33 +2,27 @@
 
 You will need to connect to Autonomous Database and run SQL commands to create a user, add workshop utilities, and load sample data.  This lab provides instructions for connecting to SQL Worksheet using your browser. If you use a different tool such as SQL Developer desktop, you can use that tool.
 
-# Task 1 - Connecting to the Database Actions tool set
+Estimated Time:  5 Minutes.
 
-You will use the Data Studio Analysis tool to create your Analytic View.  Data Studio is part of the Database Actions tool set, which contains many different types tools.
+## Task 1 - Connecting to the Database Actions Tool Set
 
-You can connect to Database Actions using the Autonomous Database Service Console or using a URL provided by your Autonomous database administrator.
+You will use the Data Studio Analysis tool to create your Analytic View.  Data Studio is part of the Database Actions tool set, which contains many different types of tools.
+
+You can connect to Database Actions using the Autonomous Database Service Console or using a URL provided by your Autonomous Database administrator.
 
 1. If you are connecting via the Autonomous Database Service Console, choose the Database Actions button.
 
 ![Open Database Actions](images/5-adb-console-access-db-actions.png)
 
-# Task 2 - Connect to SQL Worksheet
+## Task 2 - Connect to SQL Worksheet
 
-SQL Worksheet allows you to run SQL commands in the Oracle Database. You will run SQL commands to create a databaser user and to load sample data.
+SQL Worksheet allows you to run SQL commands in the Oracle Database. You will run SQL commands to create a database user and load sample data.
 
 1. Choose the SQL button.
 
-![Open Database Actions](images/2-start-sql-worksheet.png){width=30%}
+![Open Database Actions](images/2-start-sql-worksheet.png)
 
-
-
-
-
-# Task 2 - Connecting with SQL Worksheet
-
-Is there a building block for this?
-
-## Acknowledgements
+## Acknowledgments
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
 - Last Updated By - William (Bud) Endress, January 2023

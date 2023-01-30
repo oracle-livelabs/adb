@@ -2,7 +2,7 @@
 
 This lab uses the Database Actions Data Studio Analysis tool to design the Analytic view.
 
-#  Access Database Actions
+##  Task 1 - Access Database Actions
 
 The Database Actions tools can be accessed directly using a URL or through the Autonomous Database console.
 
@@ -16,13 +16,15 @@ If you are running this lab in your own tenancy and do now have access to the Au
 
 ![Log out of Database Actions](images/5-db-actions-logout.png)
 
-3. Sign in as our database user.
+3. Sign in as your database user (for example, MOVIESTREAM).
 
-![Log out of Database Actions](images/5-db-actions-login.png)
+![Log into Database Actions](images/5-db-actions-login.png)
 
 4. Open the Data Analysis application.
 
-![Open Data Analysis application](images/5-open-data-analysis.png)
+The first time you open the Analysis Application, introductory cards might be displayed.  You can choose to review the cards or simply close them.
+
+![Open Data Analysis application](images/5-hopscotch.png)
 
 ## Acknowledgements
 

@@ -20,11 +20,11 @@ In this workshop, you will:
 - Learn about the main features of the analytic view.
 - Create dimensions, hierarchies, and fact measures.
 - Add calculated measures.
-- View the analytic view in a reporting application.
+- View the analytic view in the Data Studio Analysis application.
 
 ## About the Data
 
-The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous Database labs.  MovieStream is a fictitous video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports analysis of sales data by time, geography, and the genre used when searching for movies.
+The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous Database labs.  MovieStream is a fictitious video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports the analysis of sales data by time, geography, and genre used when searching for movies.
 
 ## Prerequisites
 

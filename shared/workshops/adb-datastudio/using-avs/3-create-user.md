@@ -2,24 +2,27 @@
 
 This lab can be run by any database user providing that the user has the required privileges.  A user can be creating with a few simple commands.
 
-# Create Database User
+## Task 1 - Create Database User
 
 To create the database user for this lab.
 
-1. Using SQL Worksheet, connect to the database using the  **ADMIN** user.
-2. Run the following commands. You may make substitutions for the user name and password.
+1. Using SQL Worksheet, connect to the database using the **ADMIN** user.
+2. Run the following commands. You may make substitutions for the username and password.
 
 ~~~
+<copy>
 CREATE USER moviestream IDENTIFIED BY Welcome#1234 QUOTA UNLIMITED ON DATA;
 GRANT dwrole TO moviestream;
 BEGIN
     ords.enable_schema(p_schema => 'MOVIESTREAM');
 END;
 /
+</copy>
 ~~~
-The dwrole role is a standard role given to all users.  Enabling the user (schema) for ORDS allows that user to access the Database Actions tools.
 
-## Acknowledgements
+The DWROLE role is a standard role given to all users.  Enabling the user (schema) for ORDS allows that user to access the Database Actions tools.
+
+## Acknowledgments
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
 - Last Updated By - William (Bud) Endress, January 2023

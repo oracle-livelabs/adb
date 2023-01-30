@@ -1,32 +1,28 @@
 # Introduction
 
-The Analysis Application includes a simple Analytic View data viewer.  You can use this viewer to review the Analytic View and check the data.
+The Analysis Application includes a Analytic View data viewer.  You can use this viewer to review the Analytic View and check the data.
 
-## Analyze
+## Task 1 - Review Data in the Analytic View
 
 To view the data in the Analytic View, choose the Analyze tab and define a query in a report or graph.
 
-1. Choose the Analyze tab.
+1. Choose the **Analyze** tab.
 
 The application chooses a level (Year in this case) and a measure (sales), and displays a report.
 
 ![Analyze Tab](images/11-analyze-tab-1.png)
 
-2. Switch to a chart by pressing the bar chart button in the upper, right corner of the application.
+2. Switch to a chart by pressing the **bar chart** button in the upper, right corner of the application.
 
 ![Chart Button](images/11-chart-button.png)
 
-A bar chart with Years is displayed. Add Months to the Chart.
+A bar chart with Years is displayed. Add **Months** to the Chart.
 
 3.	Expand the **Time** hierarchy, select **Month**, and drag it under **Year** in the **X-Axis** position.
 
-![Chart Button](images/11-month-to-x-axis.png)
-
 The chart now displays Month within Year.
 
-![Chart Button](images/11-sales-by-month-chart.png)
-
-
+![Chart Button](images/11-month-to-x-axis.png)
 
 ## Acknowledgements
 
