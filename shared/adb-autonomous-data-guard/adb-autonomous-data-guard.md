@@ -72,11 +72,13 @@ After a failover, a new standby for your primary will automatically be provision
 
 5. You can create a total of two standby databases, one local and the other cross-region. You just enabled Autonomous Data Guard to create a local standby database. If your Oracle Cloud account has at least two regions, you can optionally create a second standby database that is cross-region. In the **Resources** section at the bottom left corner of the Autonomous Database Details page, click **Autonomous Data Guard (1)**.
 
-    **Note:** Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. You cannot create a cross region standby database for a database that you provisioned in a LiveLabs hosted environment, nor in an Always Free Database.
+    **Note:** Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. **You cannot create a cross region standby database for a database that you provisioned in a LiveLabs hosted sandbox environment**, nor in an Always Free Database.
 
     ![](./images/navigate-to-define-remote-standby.png)
 
 6. To perform this **optional step** of adding a second standby database that is cross-region, click **Add Standby Database**.
+
+    **Note:** Again, please skip these optional steps if you are running this workshop in a LiveLabs hosted sandbox environment. Cross region standby databases are not yet supported in LiveLabs environments.
 
     ![](./images/click-add-standby-database.png)
 
@@ -138,9 +140,12 @@ To perform a switchover to the **local standby** database, do the following:
 
 3. You can also **optionally** switch over to your remote cross-region standby database if you created one, but in that case you'll switch over from the **remote standby**, rather than from the **primary**. Once your remote standby is provisioned, you will see a "Switchover" option on your remote standby database's console. Clicking the Switchover button **from the remote standby database**, while both your primary and standby are healthy (that is, in the Available or Stopped states), performs a role change - Switching from the primary database to the remote standby database.
 
+    **Note:** Again, please note that if you are running this workshop in a LiveLabs hosted sandbox environment, cross region standby databases are not yet supported in LiveLabs environments.
+
     ![](./images/switchover-to-remote-standby.png)
 
-## Task 3: (Optional) Disable Autonomous Data Guard
+## Task 3: Disable Autonomous Data Guard
+If you are running this workshop in a hosted LiveLabs sandbox, you must perform this task to free up resources for the next lab on creating refreshable clones. If you are running this workshop on your own tenancy and have sufficient resources, you can skip this task.
 
 1. If you are not logged in to Oracle Cloud Console, log in and navigate into your Autonomous Database.
 
