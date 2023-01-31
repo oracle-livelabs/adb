@@ -44,7 +44,7 @@ Graph Studio is a feature of Autonomous Database. It is available as an option o
 
     ![Click Open Graph Studio](images/graphstudiofixed.png " ")
 
-2. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
+3. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
 
     ![Use the credentials for database user MOVIESTREAM](images/graph-login.png " ")
 
