@@ -24,7 +24,7 @@ Now that we understand what a data pipeline is in ADB, let's walk through how to
 
     ![Diagram of the lifecycle of cloud data pipeline](images/pipeline-lifecycle.png " ")
 
-Estimated Time: 10 minutes
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
