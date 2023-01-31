@@ -22,19 +22,18 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
-- Age group data loaded into AGE_GROUP
+- Loaded Age group data into AGE_GROUP
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed previous labs then run the following script in SQL Worksheet to load all necessary objects.
+If you have not completed the previous labs then run the following script in SQL Worksheet to load all necessary objects.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
 ```
 <copy>
-DROP TABLE CUSTOMER_CA
-;
+DROP TABLE CUSTOMER_CA;
  
 CREATE TABLE CUSTOMER_CA 
     ( 
@@ -48,8 +47,7 @@ CREATE TABLE CUSTOMER_CA
     ) 
 ;
 
-DROP TABLE MOVIESALES_CA
-;
+DROP TABLE MOVIESALES_CA;
  
 CREATE TABLE MOVIESALES_CA 
     ( 
@@ -68,8 +66,7 @@ CREATE TABLE MOVIESALES_CA
     ) 
 ;
 
-DROP TABLE GENRE
-;
+DROP TABLE GENRE;
 
 CREATE TABLE GENRE 
     ( 
@@ -90,8 +87,7 @@ ALTER TABLE GENRE
     USING INDEX PK_GENRE_ID 
 ;
 
-DROP TABLE MOVIE
-;
+DROP TABLE MOVIE;
 
 CREATE TABLE MOVIE 
     ( 
@@ -116,8 +112,7 @@ CREATE TABLE MOVIE
     ) 
 ;
 
-DROP TABLE TIME
-;
+DROP TABLE TIME;
 
 CREATE TABLE TIME 
     ( 
@@ -137,8 +132,7 @@ CREATE TABLE TIME
     ) 
 ;
 
-DROP TABLE AGE_GROUP
-;
+DROP TABLE AGE_GROUP;
 
 CREATE TABLE AGE_GROUP 
     ( 
@@ -209,9 +203,9 @@ This is an example of preparing data for an intended purpose. Our
 purpose is to find high-value customers and find any patterns in the
 sales data by data analysis.
 
-Transform Data tool makes such data preparation tasks easy.
+The **Data Transforms** tool makes such data preparation tasks easy.
 
-1.  Click on **the DATA TRANSFORMS** card to launch the tool.
+1.  Click on the **DATA TRANSFORMS** card to launch the tool.
 
     >**NOTE:** If you don't see the **DATA TRANSFORMS** card then it means you are
     missing the **DATA_TRANSFORM_USER** role for your user. Login as ADMIN and
@@ -230,7 +224,7 @@ Transform Data tool makes such data preparation tasks easy.
 4.  It will take up to 3 minutes for the service to be provisioned. Once
     provisioned you will see the following home screen.
 
-    >**Note:** Data Transforms tool is provisioned based on demand. After 15 minutes of 
+    >**Note:** The Data Transforms tool is provisioned based on demand. After 15 minutes of 
     inactivity, it will go into sleep mode and needs to
     be provisioned again. Clicking on any part of the UI will provision it
     again if it has gone into sleep mode. If you get any error, then
@@ -238,22 +232,22 @@ Transform Data tool makes such data preparation tasks easy.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
 
-## Task 2: Setup connection
+## Task 2: Setup a connection
 
 1.  Click on **Connections** on the left side to look at available
     connections.
 
     ![screenshot of the connection menu](images/image17_transform_conn.png)
 
-2.  You will notice that there is one connection already defined. Click
-    on the connection to establish the connection. This is a one-time
-    activity.
+2.  You will notice that there is one connection already defined – this connection 
+    is to your Autonomous Database. Click on the connection to complete its configuration. 
+    This is a one-time activity.
 
     ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
 
 3.  Enter the user name and password and click on Test Connection. After
-    a successful connection (a notification message will appear on the top
-    right).
+    a successful connection a notification message will appear on the top
+    right.
 
     ![screenshot of the connection for the user and password](images/image19_transform_conn_usrpwd.png)
 
@@ -272,7 +266,7 @@ a complete tool for complex data integration projects.
 
 Now we are ready to prepare the data.
 
-## Task 3: Create data flow to load customer sales analysis table
+## Task 3: Create a data flow to load a new table to analyze customer sales
 
 1.  Click on the **Home** button on the left side to go back to the home
     screen. You have wizards to load data from other sources (as defined
@@ -326,9 +320,9 @@ Now we are ready to prepare the data.
     ![screenshot of data flow edit page](images/image24_transform_entity.png)
 
 5.  Now let us learn how to navigate in the data flow editing screen.
-    Refer to the numbered zones in the screenshot.
+    Refer to the numbered zones in the screenshot below.
 
-    1: Main editing canvas to create data flow by combining various
+    1: Main editing canvas to create data flows by combining various
     transforms
     
     2: Data Entity browser. Data Entities can be used as a source or
@@ -363,8 +357,8 @@ Now we are ready to prepare the data.
     customer value.
 
     First, we will drag **MOVIESALES_CA** into the canvas and drag
-    **Aggregate** transform from above under the **DATA TRANSFORM** group.
-    Next, drag **QuintileBinning** transform into the canvas. This
+    the **Aggregate** transform from above under the **DATA TRANSFORM** group.
+    Next, drag the **QuintileBinning** transform into the canvas. This
     transform is in the **DATA PREPARATION** group above.
     
     There are many transforms available under different groups to build
@@ -381,13 +375,10 @@ Now we are ready to prepare the data.
 
     ![screenshot of linking transform steps](images/image27_transform_link.png)
 
-8.  Now let's edit the properties of the aggregate transform. Click on
-    the aggregate transform and then click on the attribute icon on the
+8.  Now let's edit the properties of the Aggregate transform. Click on
+    the Aggregate transform and then click on the attribute icon on the
     right-side properties panel. You should also expand the properties
     panel by clicking on the extreme right corner icon.
-
-    Use this process to edit properties for the transform component for the remaining
-    lab.
 
     ![screenshot of aggregate attributes](images/image28_agg_attr.png)
 
@@ -404,7 +395,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of aggregate attribute name edit](images/image30_agg_edit_name.png)
 
-11. Now click on Column mapping on the left side to define the aggregate
+11. Now click on Column Mapping on the left side to define the aggregate
     expression. You can populate these expressions by **Auto Map** and
     edit them as needed. Click on **Auto Map** to populate it by name.
 
@@ -438,7 +429,7 @@ Now we are ready to prepare the data.
 
     ![screenshot for closing the property page](images/image34_agg_prop_collapse.png)
 
-15. Now link the aggregate transform to the QuintileBinning transform,
+15. Now link the Aggregate transform to the QuintileBinning transform,
     click on the QuintileBinning transform and open the properties
     panel.
 
@@ -458,15 +449,16 @@ Now we are ready to prepare the data.
     **order** expression.
 
     It means that aggregate customer sales will be used to divide
-    customers into 5 buckets. This will be used as customer value.
+    customers into 5 buckets. This will be used to indicate the value of customers.
 
     ![screenshot of binning mapping expression](images/image37_binning_mapping.png)
 
 18. Close the property panel by clicking on the right corner and come to
     the main canvas.
 
-    Now you have the basic skills to add data sources, add transforms, and
-    edit its properties. Now bring the **Join** transform into the canvas,
+    Now you have the basic skills to add data sources and transforms, and edit their properties.
+    
+    Next, bring the **Join** transform into the canvas,
     drag the **CUSTOMER_CA** table and join it with the previous flow as below.
     
     Click on the Attribute property of the Join and notice that it has
@@ -477,7 +469,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of joining with customer](images/image38_cust_join.png)
 
-19. Now bring in the **AGE_GROUP** table and use Lookup transform. Link it as
+19. Now bring in the **AGE_GROUP** table and use the Lookup transform. Link it as
     described below.
 
     First link the end of the data flow to Lookup and then link **AGE_GROUP** to lookup.
@@ -572,7 +564,7 @@ Now we are ready to prepare the data.
     flow.
 
     Please note that the target table definition has been stored in
-    the entity list and if you want to recreate/edit the data flow then it will
+    the entity list and if you want to recreate or edit the data flow then it will
     be available on the left side entity list for drag and drop, instead of going
     through **Add Data Entity** dialog.
     
@@ -582,7 +574,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of target properties](images/image45_target_property.png)
 
-26. Click on Attributes mapping and verify the expressions. Notice that
+26. Click on Column Mapping and verify the expressions. Notice that
     all have been populated properly. You can also edit them manually if
     you want to make changes. Make sure all the columns are mapped. You
     can also use auto-mapping functionality if you create new
@@ -627,7 +619,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of execution status](images/image50_transform_status.png)
 
-31. Click on the target table and do the data preview by clicking on
+31. Click on the target table and see a data preview by clicking on
     the small eye icon. Expand the panel to see more.
 
     ![screenshot of target data preview](images/image51_transform_datapreview.png)
@@ -662,7 +654,7 @@ to straight go to the next lab.
 
 ![data flow simulation SQL](images/image55_transform_simul_code.png)
 
-3.  Next, look at the **Data flow Status** on the right side. If there are
+3.  Next, look at the **Data Flow Status** on the right side. If there are
     any errors, then you can click on the **Execution Job** in the
     **Data Flow Status** panel to debug. It will take you to the jobs
     screen where you can look at the executed steps, processed row
@@ -687,23 +679,19 @@ In this lab, we used the Data Transforms tool to calculate customer value from s
 with the customer, age group and movie genre information to load into a target table to be 
 used for data analysis. 
 
-Note that we scratched only the surface of possibilities in Data Transforms.
-Other features are:
+Note that we scratched only the surface. Other features are:
 
 -   **Variety of data sources**: Databases, Object Store, REST API and Fusion
     Application
 
 -   **Load Data:** Load multiple tables in a schema from another data
-    source. It also integrates optionally with Golden Gate data service for advanced
+    source. It can also integrate with Oracle Golden Gate Cloud Service for advanced
     replication. This complements the Data Load tool explored in the earlier
     lab.
 
--   **Workflow:** Combine various data flows in the sequential or parallel
-    execution flow.
+-   **Workflow:** Combine several data flows to run sequentially or in parallel.
 
 -   **Schedule:** In-built scheduler for periodic execution.
-
-There are many more features to explore for advanced users. These details will be covered in another in-depth workshop.
 
 You may now **proceed to the next lab**.
 

@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Data Insights application built into the Oracle Autonomous Database and shows how to search for and interpret data insights.
+This lab introduces Data Studio’s Data Insights tool built into the Oracle Autonomous Database and shows how to search for and interpret data insights.
 
 Estimated Time: 15 minutes
 
@@ -22,19 +22,15 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
-- Age group data loaded into AGE_GROUP
+- Loaded Age group data into AGE_GROUP
 - Prepared data and loaded it into CUSTOMER_SALES_ANALYSIS
-- Analytic view CUSTOMER_SALES_ANALYSIS_AV created
+- Created Analytic view CUSTOMER_SALES_ANALYSIS_AV
 
 ## Task 1: Use Data Insights
 
 Data Studio's insights process runs in the background
 finding interesting patterns in the data. This is a hands-off approach to
 finding insights that are lurking out of sight in the data.
-
-The data insights process starts automatically when you use the Data Analysis application, 
-therefore you may already have insights captured if you have completed 
-previous labs. Data insights can also be started manually as you will learn in this lab.
 
 In this lab, we will investigate a few sample insights produced by the tool.
 We will learn how to interpret it and will cross-check it with manual
@@ -60,9 +56,9 @@ see the insight list being refreshed while it is executing.
 
     ![screenshot of Insights tour](images/image78_inst_tour.png)
 
-4.  you can pick AV or any table to run insights on. In the case of AV, you
-    can pick any measure to run insight against whereas if you want to
-    run insights against a single table then you can pick any column
+4.  You can pick AV or any table to run insights on. 
+    If you are using an AV, you can pick any measure to run insights against,
+    whereas if you want to run insights against a single table then you can pick any column
     which you think is a measure.
 
     Pick **CUSTOMER_SALES_ANALYSIS_AV** for the analytic view, and **TOTAL_SALES**
@@ -70,10 +66,10 @@ see the insight list being refreshed while it is executing.
     
     Click **Search**
     
-    A list of various insights will appear on the page. Insight tool has gone through the data and discovered
+    A list of various insights will appear on the page. The Data Insights tool has gone through the data and discovered
     many interesting behavioral patterns based on the movie sales data.
     
-    >**NOTE:** These insights are stored in the database and can be queried at any
+    >**NOTE:** These insights are stored in the database and can be accessed at any
     time for review. You can also regenerate the analysis if the data in
     the underlying AV/table has changed.
     
@@ -104,24 +100,22 @@ see the insight list being refreshed while it is executing.
     It can differ from the blue level if the data is skewed for the filter
     on the top (**Marital Status=S**).
     
-    3: Few bars are surrounded by a black border (pointed by arrows). These
+    3: A few bars are surrounded by a black border (pointed by arrows). These
     are highlighted exceptions.
     
     Another way to read this is as:
     
     **Singles** are purchasing **Adventure** and **Comedy** more than
-    average and are not much interested in **Drama**.
+    average and are not very interested in **Drama**.
     
     WOW! That is quite an insight.
 
     ![screenshot of insights on singles and genre](images/image80_inst_maritalstatus_genre.png)
 
-6.  Now to the next insight.
+6.  Click on the tile marked **61-70** on the top and the **Cust value** at
+    the bottom.
 
-    Click on the tile marked **61-70** on the top and the **Cust value** at
-    the bottom. It shows
-    
-    It shows that seniors 61-70 are overrepresented in the 4th customer value
+    It shows that people aged 61-70 are over-represented in the 4th customer value
     bucket. Probably they have lots of disposable income!
 
     ![screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
@@ -135,16 +129,16 @@ see the insight list being refreshed while it is executing.
     than average compared to non-dog owners.
     
     It is just a correlation but you could use this data to offer dog
-    grooming products to high-value customers!!
+    grooming products to high-value customers!
     
-    Interesting. Isn't it? Insight tool has discovered all these hidden
+    Interesting. Isn't it? The Data Insights tool has discovered all these hidden
     patterns just by crawling through the data.
 
     ![screenshot of insights on pet ownership and customer value](images/image82_inst_pet_custvalue.png)
 
   WOW! Quite an insight!! 
   
-  Insight tool has discovered all these hidden patterns just by crawling through the data.
+  The Data Insight tool has discovered all these hidden patterns just by crawling through the data.
   
   There are many other insights in the list. Go back to the list and look at 
   a few others. See if you find any other interesting insight.
@@ -185,8 +179,7 @@ queries and correlating them with what we can see in insights.
 
     ![screenshot of sales analysis to singles by genre](images/image86_analyze_single_genre.png)
 
-**Isn't that what our insight told us!! It discovered that without any input from
-us!!** 
+**Isn’t that what Data Insights told us?! It discovered that without any input from us!**
 
 While doing manual analysis in the **DATA ANALYSIS** tool, 
 we must actively look at and compare the data for

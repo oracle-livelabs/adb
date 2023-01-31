@@ -5,40 +5,31 @@
 
 This lab will guide you through the steps to clean demo data. 
 
+>**Note:** This lab is optional. If you want to keep the demo data then skip it.
+
 ## Task 1: Execute the script
 
-1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
+1. To remove the tables and views create during this workshop from your database simply copy and paste this code into your SQL Worksheet.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
 ```
 <copy>
-DROP TABLE CUSTOMER_CA
-;
+DROP TABLE CUSTOMER_CA;
 
-DROP TABLE MOVIESALES_CA
-;
- 
+DROP TABLE MOVIESALES_CA;
 
-DROP TABLE GENRE
-;
+DROP TABLE GENRE;
 
+DROP TABLE MOVIE;
 
-DROP TABLE MOVIE
-;
+DROP TABLE TIME;
 
+DROP TABLE AGE_GROUP;
 
-DROP TABLE TIME
-;
+DROP TABLE CUSTOMER_SALES_ANALYSIS;
 
-DROP TABLE AGE_GROUP
-;
-
-DROP TABLE CUSTOMER_SALES_ANALYSIS
-;
-
-DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV
-;
+DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV;
 
 </copy>
 ```

@@ -22,7 +22,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
-- Age group data loaded into AGE_GROUP
+- Loaded Age group data into AGE_GROUP
 - Prepared data and loaded it into CUSTOMER_SALES_ANALYSIS
 
 ### Demo data for this lab
@@ -95,14 +95,13 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of data analysis card](images/image58_analysis_card.png)
 
-2.  The first time when you access the data analysis tool, you will see a
-    guiding wizard that will describe various parts of the UI. Since you
-    are doing this lab anyways, click on X to cancel it and start using
-    the tool right away.
+2.  The first time when you access the Data Analysis tool, you will see a
+    guiding wizard that will describe various parts of the UI. 
+    Click on X to cancel it and start using the tool right away.
 
     ![screenshot of data analysis home page](images/image59_analysis_home.png)
 
-3.  To Analyze your data, create an Analytic View (AV) first. Analytic
+3.  We don’t have any Analytic Views (AV) yet. Analytic
     Views organize data using a dimensional model, allowing you to
     easily add aggregations and calculations to data sets and present
     data in views that can be queried with relatively simple SQL.
@@ -159,7 +158,7 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of adding hierarchies by searching](images/image64_av_hier_pick.png)
 
-8.  After you add all, it should look like the below screenshot.
+8.  After you add all the hierarchy columns, it should look like the below screenshot.
 
     ![screenshot of hierarchy preview](images/image65_av_hier_list.png)
 
@@ -172,7 +171,7 @@ preferences are different across high-value and low-value customers.
     ![screenshot of creating an analytic view](images/image67_av_create.png)
 
 11. Our AV is ready now and we can start analyzing data. You can see
-    that there are no errors. By clicking on the **Data Quality** tab.
+    that there are no errors by clicking on the **Data Quality** tab.
 
     You can also go back and edit the AV by clicking on three vertical
     dots.
@@ -189,7 +188,7 @@ Next, let's learn how to navigate the analysis tool.
 
 1.  Select your AV and click on **Analyze**.
 
-    These zones are:
+    The Data Analysis UI is divided into multiple zones. These zones are:
     
     1: Hierarchies and measures
     
@@ -201,18 +200,14 @@ Next, let's learn how to navigate the analysis tool.
     4: Table/Pivot/Chart view. For the remainder of the lab, we will use chart
     view. It is much easier to visualize the information through charts.
     
-    5: Insights. Automated algorithm to search for hidden patterns. This
-    is the topic of our last lab. For now, we will click on the right-side
-    divider bar to collapse it.
-
     ![screenshot of the analysis home page](images/image69_av_analyze_home.png)
 
 2.  Now we can start doing our first analysis.
 
     Analysis: show me SALES_AMOUNT by AGE_GROUP
     
-    Select chart mode. Clear all hierarchies from X-Axis and drag **Age
-    group** to X-Axis and **Total Sales** to Y-Axis.
+    Select chart mode by clicking on the top-right chart icon. Clear all hierarchies from X-Axis and 
+    drag **Age group** to X-Axis and **Total Sales** to Y-Axis.
 
     >**Note:** You need to expand the hierarchy tree to reveal the level. 
     Only the level can be dragged to the analysis area. In our workshop, there 
@@ -238,7 +233,7 @@ Next, let's learn how to navigate the analysis tool.
     ![screenshot of sales analysis by marital status](images/image71_sales_maritalstatus.png)
 
 4.  Now we can mix two hierarchies. Drag **Age group** above **Marital
-    status** in X-Axis. 
+    status** in the X-Axis. 
 
     Make sure the **Age group** is on top of **Marital status**.
 
@@ -257,7 +252,7 @@ Next, let's learn how to navigate the analysis tool.
 
     ![screenshot of sales analysis by movie genre](images/image73_sales_genre.png)
 
-6.  We had earlier ranked our customers in high and low-value buckets.
+6.  We had earlier ranked our customers in high and low-value quintiles.
     It will be interesting to find out whether there is a movie genre
     preference for high-value customers.
 
@@ -295,14 +290,11 @@ this AV from Excel or Google Sheets.
 
 ## RECAP
 
-In this lab, we used the Data Analysis tool to first create a dimensional model (Analytic View) on
+In this lab, we used the Data Analysis tool to create a dimensional model (Analytic View) on
 the sales analysis table and then analyze movie sales across various dimensions such as age groups, 
-marital status, movie genre etc. 
+marital status and movie genre.
 
 We found many interesting patterns in customer purchasing behavior. 
-
-Note that there are many more features in the analysis tool, which are not covered here. 
-These details will be covered in another in-depth workshop.
 
 You may now **proceed to the next lab**.
 

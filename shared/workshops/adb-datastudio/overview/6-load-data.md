@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Load Data application built into the Oracle Autonomous Database and shows how to load a new data set.
+This lab introduces the Data Load tool of Data Studio built into the Oracle Autonomous Database and shows how to load a new data set.
 
 Estimated Time: 5 minutes
 
@@ -25,12 +25,12 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 ## Task 1: Create a local data file for the age groups
 
-We need to analyze the movie sales data by age group as well. While browsing the catalog,
-we noticed that there is no age group information, and we need to load a
+We need to analyze the movie sales data by age group. While browsing the catalog,
+we noticed that there is no age group information, so we need to load a
 new table for the age groups.
 
-1.  Go back to our database actions page by clicking on the
-    top left button and using the Load Data tool.
+1.  Go back to the Database Actions home page by clicking on **Database Actions** 
+    in the title bar in the top left, then click **Data Load**
 
     ![Screenshot of data load card](images/image8_load_card.png)
 
@@ -69,13 +69,12 @@ new table for the age groups.
 </copy>
 ```
 
-## Task 2: Load age group from local file
+## Task 2: Load age groups from local file
 
 1.  Launch Data Load from the Database Actions page by clicking on the **DATA LOAD** card.
     
-    >**Note:** that you have various modes for loading data. You can either
-    directly load data or leave it in place by linking it. You can
-    also create an ongoing feed to load data to Autonomous Database.
+    >**Note:** You can load data from local files, other databases, or from cloud storage.
+    You can also create an ongoing feed to load data to Autonomous Database.
     
     >You can also load data from either your local file or database or
     cloud storage.
@@ -91,12 +90,14 @@ new table for the age groups.
 
 3.  Click the green triangle button to start the load.
 
+    ![Screenshot of start loading file](images/image12_load_file_start.png)
+    
     After the load is complete, click on the Database Actions link at the top
     of the page to go back to the main menu.
     
     Now we have all the data sets that we need to complete our assignment.
 
-    ![Screenshot of start loading file](images/image12_load_file_start.png)
+    
 
 ## RECAP
 
