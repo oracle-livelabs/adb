@@ -186,7 +186,7 @@ These will be needed in later labs.
     
     ![URL for MongoDB API](./images/mdb-api-url.png " ")
 
-    Now scroll further down the page until you find the section __MongoDB API__. For Autonomous JSON databases, it should be enabled by default. For Autonomous Transaction Processing or Autonomous Data Warehouse, it will be disabled by default and you will need to click __Edit Tool Configuration__ at the top of the page to enable it. If you have not correctly set __Secure access from allowed IPs and VCNs only__ in the previous Task, you will not be able to enable to the MongoDB API.
+    Now scroll further down the page until you find the section __MongoDB API__. For Autonomous JSON databases, it should be enabled by default. For Autonomous Transaction Processing or Autonomous Data Warehouse, it will be disabled by default and you will need to click __Edit Tool Configuration__ at the top of the page to enable it. If you have not correctly set __Secure access from allowed IPs and VCNs only__ in the previous Task, you will not be able to enable the MongoDB API.
 
     ![URL for MongoDB API](./images/mdb-api-url.png " ")
 
