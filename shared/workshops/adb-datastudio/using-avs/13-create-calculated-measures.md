@@ -2,15 +2,15 @@
 
 In the Analytic View, there are two types of measures:
 
--   **Fact measures** are from the fact table. Fact measures access data
-    from the fact table include aggregation operators.
+-   **Fact measures** are from the fact table. Fact measures are mapped to the fact table and include aggregation operators.
 
--   **Calculated measures** are created using expression. Calculated
-    measure reference fact measures or other calculated measures.
+-   **Calculated measures** are created using expression. Calculated measures reference fact measures or other calculated measures, and do not include aggregation operators.
 
 The analytic view includes an expression language used for calculated
-measures. You can also use any SQL single row function in the definition
+measures. You can also use any SQL single-row function in the definition
 of a calculated measure.
+
+Estimated Time:  5 minutes.
 
 ## Task 1  Create a Calculated Measure
 

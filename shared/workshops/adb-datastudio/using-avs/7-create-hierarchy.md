@@ -1,5 +1,7 @@
 # Introduction
 
+Estimated Time:  10 minutes.
+
 Every Analytic View must reference at least one hierarchy.  A hierarchy can have one or more levels, where a level is a collection of hierarchy members at the same level of aggregation. For example, Months, Years, Cities, and Countries might be levels or Time and Geography hierarchies
 
 A hierarchy organizes levels into aggregation paths. For example, Days aggregate to Months, Months aggregate to Quarters, and Quarters aggregation to Years.
@@ -54,7 +56,7 @@ Whether you like the name YEAR for this hierarchy is a matter of personal opinio
 
 ![Rename Hierarchy to Time](images/7-rename-hier-to-time.png)
 
-You might notice the choice of Standard and Time. This is metadata that gets added to the dimension which can be used by applications. There is no difference in functionality of the Analytic View based on this setting. It is not required that a hierarchy be of type Time to use time series calculations such as lags and leads.
+You might notice the choice of Standard and Time. This is metadata that gets added to the dimension which can be used by applications. There is no difference in the functionality of the Analytic View based on this setting. It is not required that a hierarchy be set to Time to use time series calculations such as leads and lag.  Leads and lags are calculated using the order of members within the hierarchy as set by the Sort By property in the Analysis design tool (which sets the ORDER BY property of a level in the attribute dimension SQL DDL).
 
 ## Task 3 - Add Quarter, Month, and Day Levels
 
@@ -74,8 +76,8 @@ A hierarchy such as DAY\_ID \> MONTH\_OF\_YEAR > QUARTER > YEAR does not fit the
 
 2. Press the **Close** button to close the preview.
 
-3.	Click on **Add Level** and choose the **QUARTER** column.
- 
+3. Click on **Add Level** and choose the **QUARTER** column.
+
 ![Preview Time Table](images/7-add-quarter-level.png)
 
 4  Repeat for the **MONTH** and **DAY** levels.
@@ -84,7 +86,7 @@ A hierarchy such as DAY\_ID \> MONTH\_OF\_YEAR > QUARTER > YEAR does not fit the
 
 ## Task 4 - Examine Level Properties
 
-1.	Select the YEAR level.
+1. Select the YEAR level.
 
 ![Year Level Properties](images/7-year-level-properties.png)
 
@@ -93,14 +95,16 @@ Notes about level properties:
 - By default, the level and all properties use the column selected when creating the level.  Because YEAR is a good name for the level, the level name does not need to be changed.
 - Values in the top section (Level Name, Caption and Description) are identifiers. These are names and descriptors in the model.
 - Values in the bottom section (Level Key, Member Name, etc.) map the column to data elements of the hierarchy.
-    - **Level Key** is the unique identifier of the hierarchy members.
-    - **Member Name**, **Member Caption**, and **Member Description** are all ‘slots’ in the hierarchy where properties of the hierarchy member can be included. Member Caption is almost always used as a friendly name for the Level Key. This is important when the Level Key value is not a user-readable value.
-    - If any of the columns used as Member Name, Member Caption, and Member description have a 1:1 relationship with the Level Key, that column can be used as an **Alternate Key**.  Alternate Keys useful in some cases, but that is more advanced topic.
-    - Hierarchies have a default sort order. This is determined by the values in the column mapped to **Sort By**.  The default order is important because it is used in some lead and lag calculations.  Applications can also use that column to order hierarchy values in a query.
+  - **Level Key** is the unique identifier of the hierarchy members.
+  - **Member Name**, **Member Caption**, and **Member Description** are all ‘slots’ in the hierarchy where properties of the hierarchy member can be included. Member Caption is almost always used as a friendly name for the Level Key. This is important when the Level Key value is not a user-readable value.
+  - If any of the columns used as Member Name, Member Caption, and Member description have a 1:1 relationship with the Level Key, that column can be used as an **Alternate Key**.  Alternate Keys useful in some cases, but that is a more advanced topic.
+  - Hierarchies have a default sort order. This is determined by the values in the column mapped to **Sort By**.  The default order is important because it is used in some lead and lag calculations.  Applications can also use that column to order hierarchy values in a query.
 
 In this data, a single column can be used for all properties of a level. As a result, you do not need to make any changes.
 
-**Pro tip**:  Easy analytic view design starts with good column names in tables.
+It is common for different columns in a table to be used for different properties of a level. For example, if the unique key of a level is an integer value or some other code (for example, a product code) you would probably use a different column for the Caption and Sort By properties   This is most common for the lowest level of a hierarchy when the lookup table is joined to the fact table.
+
+**Pro tip**:  Easy analytic view design starts with good column names in tables.  The Analysis design tool will use column names as the default for hierarchy, level and measure names (replacing underscores with spaces in Captions).
 
 Feel free to examine the properties of each level.
 

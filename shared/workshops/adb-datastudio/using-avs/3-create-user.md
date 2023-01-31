@@ -1,6 +1,8 @@
 # Introduction
 
-This lab can be run by any database user providing that the user has the required privileges.  A user can be creating with a few simple commands.
+This lab can be run by any database user providing that the user has the required privileges.  A user can be created with a few simple commands.
+
+Estimated Time:  5 Minutes.
 
 ## Task 1 - Create Database User
 

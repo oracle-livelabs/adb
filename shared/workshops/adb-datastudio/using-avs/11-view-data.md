@@ -2,13 +2,15 @@
 
 The Analysis Application includes a Analytic View data viewer.  You can use this viewer to review the Analytic View and check the data.
 
+Estimated Time:  10 minutes.
+
 ## Task 1 - Review Data in the Analytic View
 
 To view the data in the Analytic View, choose the Analyze tab and define a query in a report or graph.
 
 1. Choose the **Analyze** tab.
 
-The application chooses a level (Year in this case) and a measure (sales), and displays a report.
+The application chooses a level (Year in this case) and a measure (sales) and displays a report.
 
 ![Analyze Tab](images/11-analyze-tab-1.png)
 

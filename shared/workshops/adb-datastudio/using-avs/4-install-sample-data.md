@@ -4,7 +4,7 @@ This lab uses sample data that is loaded into the Autonomous Database from Oracl
 
 **Author's note.  Before publication, replace PAR with PAR to final bucket.**
 
-
+Estimated Time:  5 Minutes.
 
 ## Task 1 - Load Sample Data
 

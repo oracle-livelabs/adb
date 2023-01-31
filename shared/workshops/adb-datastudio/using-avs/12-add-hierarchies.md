@@ -2,9 +2,11 @@
 
 The Analytic View is functional, but not very interesting, with just a single hierarchy and a few measures. The data supports additional hierarchies for geography, and the movie genre that was used to search for movies to view.  It’s time to add more hierarchies.  In the real world, analytic views often use many hierarchies,
 
+Estimated Time:  10 Minutes
+
 ## Task 1 - Return to Analytic View Editor
 
-You can add hierarchies using the same methods that you added the Time hierarchy. First, you need to switch back the Analytic View editor.
+You can add hierarchies using the same methods that you added the Time hierarchy. First, you need to switch back to the Analytic View editor.
 
 1. Choose the **Edit Analytic View** command.
 
@@ -16,13 +18,13 @@ You are returned to the editor.
 
 Add new Data Sources for the hierarchies. Repeat the following steps for the CUSTOMER\_DIM and SEARCH\_GENRE\_DIM views.
 
-1.	Select **Data Sources**.
+1. Select **Data Sources**.
 
 ![Add Hierarchy Sources](images/12-add-hierarchy-sources-1.png)
 
-2.	Select both **CUSTOMER\_DIM** and **SEARCH\_GENRE\_DIM**.
-3.	Leave **Generate and Add Hierarchy from Source** off (disabled).
-4.	Press the **OK** button
+2. Select both **CUSTOMER\_DIM** and **SEARCH\_GENRE\_DIM**.
+3. Leave **Generate and Add Hierarchy from Source** off (disabled).
+4. Press the **OK** button
 
 ![Add Hierarchy Sources](images/12-add-hierarchy-sources-2.png)
 
@@ -30,7 +32,7 @@ When you are done your screen should look like this.
 
 ![New Hierarchy Sources](images/12-add-hierarchy-sources-3.png)
 
-## Task 3 - Add Customer and Search Genre Hierarcies
+## Task 3 - Add Customer and Search Genre Hierarchies
 
 Now you can add hierarchies.  For each table, create hierarchies using the columns as described in the table below. Be sure to sort the levels according to the Level Order column in the table.
 
@@ -44,13 +46,12 @@ Now you can add hierarchies.  For each table, create hierarchies using the colum
 |SEARCH\_GENRE_DIM      |GENRE_NAME             | 1          |
 |                       |                       |            |
 
-
 For example, to add a hierarchy:
 
-1.  Right click **Hierarchies**
-2.  Choose **Add Hierarchy**
-3.  Choose **CUSTOMER_DIM**
-4.  Choose **CONTINENT**
+1. Right click **Hierarchies**
+2. Choose **Add Hierarchy**
+3. Choose **CUSTOMER_DIM**
+4. Choose **CONTINENT**
 
 ![Add Continent](images/12-add-continent-hierarchy.png)
 
@@ -75,8 +76,7 @@ Use the same steps to create the Search Genre hierarchy.
 
 2. Rename the hierarchy and level to "Genre".
 
-The Search Genre hierarchy includes only a single level. A hierarchy is
-valid with a single level.
+The Search Genre hierarchy includes only a single level. A hierarchy is valid with a single level.
 
 All hierarchies include the levels you define plus an ALL level. The ALL level includes a single, top-of-hierarchy member (value).
 

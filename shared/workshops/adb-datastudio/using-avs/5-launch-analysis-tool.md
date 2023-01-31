@@ -6,13 +6,13 @@ This lab uses the Database Actions Data Studio Analysis tool to design the Analy
 
 The Database Actions tools can be accessed directly using a URL or through the Autonomous Database console.
 
-If you are running this lab in your own tenancy and do now have access to the Autonomous Database console,  ask  the administrator of the database to provide you with the URL.
+If you are running this lab in your tenancy and do not have access to the Autonomous Database console,  ask the administrator of the database to provide you with the URL.
 
 1. If you have access to the Autonomous Database console, choose Database Actions.
 
 ![Open Database Actions](images/5-adb-console-access-db-actions.png)
 
-2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions.
+2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions of you are logged in as ADMIN.
 
 ![Log out of Database Actions](images/5-db-actions-logout.png)
 

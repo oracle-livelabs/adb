@@ -3,6 +3,8 @@
 The Analytic View now has several hierarchies and a time series
 calculation. It will be more interesting to analyze now.
 
+Estimated Time:  5 Minutes.
+
 ## Task 1 - Create a New Report
 
 The application will return to the Data Quality tab after the analytic
