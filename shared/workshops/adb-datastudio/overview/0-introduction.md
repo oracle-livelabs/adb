@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-This is an introductory workshop for the Data Studio. It goes through “a day in the life of a data analyst” and shows how to use it to browse, load, transform and analyze the data in the Autonomous Database.
+This is an introductory workshop for the Data Studio. It goes through “a day in the life" of a data analyst and shows how to use it to browse, load, transform and analyze the data in the Autonomous Database.
 
 Estimated Workshop Duration: 1 hour, 30 minutes
 

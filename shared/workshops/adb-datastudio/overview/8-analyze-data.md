@@ -21,7 +21,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- demo data loaded
+- Loaded the demo data
 - Age group data loaded into AGE_GROUP
 - Prepared data and loaded it into CUSTOMER_SALES_ANALYSIS
 
