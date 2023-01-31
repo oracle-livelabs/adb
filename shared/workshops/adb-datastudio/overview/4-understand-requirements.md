@@ -31,67 +31,68 @@ To complete this lab, you need to have completed the previous labs, so that you 
     Date: Monday 1-09-2023
     Attendees: All team members
     
-    Patrick, VP of marketing, wants to send discount offers to **high-value** customers. 
-    He also wants movie genre preferences based on age groups and
-    marital status. He also wants to know **whether movie genre preferences
+    John, VP of marketing, wants to send discount offers to **high-value** customers. 
+    He wants to know which genres of movies are preferred by different age and marital status groups.
+    He also wants to know **whether movie genre preferences
     are different across high-value and low-value customers**.
     
     **Brainstorming:**
 
-    Our team member Bud suggested creating five equal quintiles for customers based on movie
-    purchases made by a customer. We could then send offers only to top quintile customers.
+    Our team member Shaun suggested creating five equal quintiles of customers based on 
+    the number of movie purchases they have made. We could then send offers only to the top 
+    quintile – the customers that buy the most movies.
     
     Everyone agreed it is the right strategy.
 
 2.  Where is my data?
     
     Our next step is to look for available data in our database. We find that
-    Sales data is loaded into the object store bucket every day. Another team member, Ashish
+    Sales data is loaded into the object store bucket every day. Another team member, Shelly,
     is going to set up a live feed from the object store to the **MOVIESALES_CA**
     table. This table will have timestamped sales data. There are tables for
     customer and movie genres as well and we can look for them in the database.
 
     For our project, we can use these tables. If some data is missing then we can load it from
-    an external source too.
+    an external source.
 
-    **Note to myself:** live feed sounds interesting. Learn how he sets it up in some other workshop.
+    **Note:** We will assume that live feed is setup to load **MOVIESALES_CA** table.
 
 3.  Action Items:
 
     **Find relevant data**
 
-    Look for **MOVIESALES_CA** and other tables needed for this analysis. Makes 
+    Look for **MOVIESALES_CA** and other tables needed for this analysis. Make 
     sure all needed columns are available with data populated.
 
-    Use the data catalog for browsing and searching.
+    Use 'Catalog' tool for browsing and searching.
     
     **Load data**
 
-    Load any additional data needed. we have a data load tool for this.
+    Load any additional data needed. We have a 'Data Load' tool for this.
     
     **Transform and prepare data**
 
-    Create data flow to aggregate movie sales and populate the column containing quintile value. 
+    Create a data flow to aggregate movie sales and populate the column containing the quintile value. 
     Schedule this to load every Sunday at 9 pm.
 
     Next, add denormalized columns needed for analysis to this table for
     analyzing data. This table should have all the attributes needed for
     analysis.
 
-    This can be done by using the data transforms tool.
+    This can be done by using the 'Data Transforms' tool.
     
     **Analyze**
 
     We need to create a dimensional model for data analysis.
-    Create an Analytic View to analyze sales data by various dimensions such as age group, genre, marital status etc 
-    using the data analysis tool.
+    Create an Analytic View to analyze sales data by various dimensions such as age group, genre and marital status 
+    using the 'Data Analysis' tool.
 
-    Is there anything more we learn from the data? We have a data insights tool to automatically
+    Is there anything more we learn from the data? We have a 'Data Insights' tool to automatically
     scan the data for hidden patterns. It will be interesting to see what this tool finds.
 
 
 **Data Studio** in Autonomous Database provides a set of tools to help in such projects, all under one umbrella. There
-is no need to install and manage any additional tool. It makes the job of a data analyst easy. They 
+is no need to install and manage any additional software. It makes the job of a data analyst easy. They 
 already have their hands full in dealing with data and finding value in it. The least they should
 be worried about is which tool to use for the job at hand and where to get them from.
 
