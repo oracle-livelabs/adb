@@ -23,7 +23,7 @@ Watch a video demonstration of monitoring an Oracle Autonomous Database.
 In this lab, you'll
 -   Examine the charts in the Metrics section of the Autonomous Database details Page
 -   Explore the charts in the Database dashboard
--   Explore more charts in the Performane hub
+-   Explore more charts in the Performance hub
 -   Examine the database monitoring charts in the OCI Monitoring Console
 
 ### Prerequisites
@@ -38,7 +38,8 @@ The first facility that we will look at for monitoring your autonomous database 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
 ## Task 2: Examine Database Metrics
-The Metrics section displays an initial set of 6 graphs to examine database metrics. There are links to drill down to many additional graphs.
+
+The Metrics section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
 
 1. Scroll through the 8 initial graphs: CPU Utilization, Storage Utilization, Sessions, Execute Count, Running Statements, Queued Statements, Database Availability, and Failed Connections.
 
@@ -110,11 +111,11 @@ You can view real-time and historical performance data from the Performance Hub.
 
 6. In the **Generate Automatic Workload Repository Report** dialog, select the Start Snapshot and End Snapshot time range. After you select the time range, click **Download**.
 
-    ![](images/generate-awr-report.png " ")
+    ![Select a time range and generate the report](images/generate-awr-report.png " ")
 
 7. Use the **Save As** dialog to specify where to download the report's HTML file to your local computer. Click the downloaded HTML file to view the lengthy, detailed report.
 
-    ![](images/view-amr-report.png " ")
+    ![Download and view the report](images/view-amr-report.png " ")
 
 ## Task 5: Examine the OCI Monitoring Console
 
@@ -122,19 +123,19 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
 
 1. Go back to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
-    ![](images/click-navigation-menu.png " ")
+    ![Go to OCI dashboard navigation menu](images/click-navigation-menu.png " ")
 
 2. Scroll down the navigation menu. Click **Observability & Management**, click **Service Metrics**.
 
-    ![](images/click-service-metrics.png " ")
+    ![Navigate to OCI service metrics](images/click-service-metrics.png " ")
 
 3. Choose a **Compartment** that you have permission to work in. Choose a **Metric Namespace** in the drop-down menu to the right of the compartment. If you're not sure which compartment and namespace to use, contact an administrator. Click the **edit** symbol next to **Dimensions**.
 
-    ![](images/click-edit-dimensions-icon.png " ")
+    ![Click the edit button for dimensions](images/click-edit-dimensions-icon.png " ")
 
 4. In the **Edit dimensions** pop-up dialog, select a **Deployment Type**. Click **Done**.
 
-    ![](images/select-a-deployment-type.png " ")
+    ![Select a deployment type](images/select-a-deployment-type.png " ")
 
 5. The page updates to display only the resources in that compartment and namespace. Scroll down this very long page. It shows the following metrics:
     -   CPU Utilization
@@ -153,15 +154,15 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
     -   Query Latency
     -   CPU Time
 
-    ![](images/scroll-down-service-metrics-page.jpg " ")
+    ![Scroll down the service metrics page](images/scroll-down-service-metrics-page.jpg " ")
 
 6.  In addition to these service metrics, you can also perform queries on the metrics by using **Metrics Explorer**, creating **Alarms**, and creating **Health Checks**, to ensure that users will become immediately aware of any availability issues.
 
-    ![](images/metrics-explorer-alarms-health-checks.jpg " ")
+    ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.jpg " ")
 
 ## Want to Learn More?
 
-Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) for documentation on managing and monitoring an autonomous database.
+Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) on managing and monitoring an autonomous database.
 
 ## **Acknowledgements**
 
