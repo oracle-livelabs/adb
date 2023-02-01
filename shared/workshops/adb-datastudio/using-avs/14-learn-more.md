@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This lab introduced you to creating analytic views using the Data Studio Analysis tool.  You created a complete system of attribute dimensions, hierarchy views, and an analytic view. The analytic view included fact measures and a calculated measure.  You still have a lot to discover about Analytic Views, but you know know that basic structure.  You can build on this knowledge to build Analytic Views using your own data.  It is usually good to start with a small model and add additional hierarchies and measures as needed.
+This lab introduced you to creating analytic views using the Data Studio Analysis tool.  You created a complete system of attribute dimensions, hierarchy views, and an analytic view. The analytic view included fact measures and a calculated measure.  You still have a lot to discover about Analytic Views, but you now know that basic structure.  You can build on this knowledge to build Analytic Views using your own data.  It is usually good to start with a small model and add additional hierarchies and measures as needed.
 
-In this lab, you defined the Analytic View using data in a star schema, with dimension lookup tables and a fact table.  Analytic views always use a single fact table.  You can create hierarchies from lookup tables, as in this lab, or directly from the fact table.
+In this lab, you defined the Analytic View using data in a star schema, with dimension lookup tables and a fact table.  Analytic views always use a single fact table.  You can create hierarchies from lookup tables, as in this lab, directly from the fact table, or both.
 
 ## Learn More at Live SQL
 
