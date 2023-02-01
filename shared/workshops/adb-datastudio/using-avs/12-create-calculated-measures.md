@@ -1,3 +1,5 @@
+# Create a Calculated Measure
+
 ## Introduction
 
 In the Analytic View, there are two types of measures:
@@ -18,9 +20,9 @@ Create a calculated measure that returns the Percent Change in Sales
 from the current period as compared to the prior period.
 
 1. Right click **Calculations**
-2. Choose **Create Calculated Measure**
+2. Choose **Add Calculated Measure**
 
-![Add Calculated Measure](images/13-add-calculated-measure.png)
+![Add Calculated Measure](images/12-add-calculated-measure.png)
 
 3. Enter the measure name **SALES\_PCT\_CHANGE\_PRIOR\_PERIOD**.
 4. Choose the Calculation Category **Prior and Future Period**.
@@ -30,7 +32,7 @@ from the current period as compared to the prior period.
 
 The measure settings should look like this.
 
-![Sales Percent Change Prior Period measure](images/13-sales-pct-chg-calc-meas.png)
+![Sales Percent Change Prior Period measure](images/12-sales-pct-chg-calc-meas.png)
 
 You can now update the Analytic View objects in the database.
 

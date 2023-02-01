@@ -1,4 +1,6 @@
-# Introduction
+# Create a Database User
+
+## Introduction
 
 This lab can be run by any database user providing that the user has the required privileges.  A user can be created with a few simple commands.
 
@@ -21,6 +23,7 @@ END;
 /
 </copy>
 ~~~
+
 
 The DWROLE role is a standard role given to all users.  Enabling the user (schema) for ORDS allows that user to access the Database Actions tools.
 

@@ -1,6 +1,8 @@
-# Introduction
+# Create a Measure
 
-You are almost ready to create the analytic view in the Database!  A least one measure is required.
+## Introduction
+
+You are almost ready to create the Analytic View! However, at least one measure is required.
 
 Estimated Time:  10 minutes.
 

@@ -19,7 +19,7 @@
             "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
         },
         {
-            "title": "Lab 2: Connect with SQL Worksheet",
+            "title": "Lab 2: Open SQL Worksheet",
             "filename": "../../2-open-sql-worksheet.md"
         },
         {
@@ -43,7 +43,7 @@
             "filename": "../../7-create-hierarchy.md"
         },
         {
-            "title": "Lab 8: Create Join",
+            "title": "Lab 8: Define Joins",
             "filename": "../../8-create-join.md"
         },
         {
@@ -51,24 +51,20 @@
             "filename": "../../9-create-measure.md"
         },
         {
-            "title": "Lab 10: Deploy the Analytic VieW",
+            "title": "Lab 10: Deploy the Analytic View",
             "filename": "../../10-deploy-av.md"
         },
         {
-            "title": "Lab 11: View Data in the Analytic View",
-            "filename": "../../11-view-data.md"
+            "title": "Lab 11: Add More Hierarchies",
+            "filename": "../../11-add-hierarchies.md"
         },
         {
-            "title": "Lab 12: Add More Hierarchies",
-            "filename": "../../12-add-hierarchies.md"
+            "title": "Lab 12: Create a Calculated Measure",
+            "filename": "../../12-create-calculated-measures.md"
         },
         {
-            "title": "Lab 13: Create a Calculated Measure",
-            "filename": "../../13-create-calculated-measures.md"
-        },
-        {
-            "title": "Lab 14: Explore Data",
-            "filename": "../../14-explore-data.md"
+            "title": "Lab 13: Explore Data",
+            "filename": "../../13-explore-data.md"
         },
         {
             "title": "Need Help?",

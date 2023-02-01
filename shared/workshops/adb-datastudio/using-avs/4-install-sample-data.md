@@ -1,10 +1,12 @@
-# Introduction
+# Install Sample Data
 
-This lab uses sample data that is loaded into the Autonomous Database from Oracle Cloud Infrastructure Object Store.  You will create four tables and load data from Object Store using the DBMS\_CLOUD.COPY\_DATA procedure.  
+## Introduction
+
+This lab uses sample data that is loaded into the Autonomous Database from Oracle Cloud Infrastructure Object Store.  You will create four tables and load data from Object Storage using the DBMS\_CLOUD.COPY\_DATA procedure. 
+
+Estimated Time:  10 minutes with 1 ocpu.
 
 **Author's note.  Before publication, replace PAR with PAR to final bucket.**
-
-Estimated Time:  5 Minutes.
 
 ## Task 1 - Load Sample Data
 
@@ -100,7 +102,7 @@ BEGIN
   );
 END;
 /
-/copy>
+</copy>
 ~~~
 
 
@@ -109,6 +111,7 @@ END;
 You can view using in the tables you just created using the following commands in SQL Worksheet.
 
 ~~~
+<copy>
 SELECT * FROM time_dim;
 
 SELECT * FROM search_genre_dim;
@@ -116,8 +119,8 @@ SELECT * FROM search_genre_dim;
 SELECT * FROM customer_dim;
 
 SELECT * FROM movie_sales_fact;
+</copy>
 ~~~
-
 
 ## Acknowledgements
 

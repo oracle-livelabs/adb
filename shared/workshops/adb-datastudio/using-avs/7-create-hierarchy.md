@@ -1,6 +1,6 @@
-# Introduction
+# Create a Hierarchy
 
-Estimated Time:  10 minutes.
+## Introduction
 
 Every Analytic View must reference at least one hierarchy.  A hierarchy can have one or more levels, where a level is a collection of hierarchy members at the same level of aggregation. For example, Months, Years, Cities, and Countries might be levels or Time and Geography hierarchies
 
@@ -15,6 +15,8 @@ To create a hierarchy, you will:
 - Add a new table to the Analytic View.
 - Create levels.
 - Specify the joins between the hierarchy table and the fact table.
+
+Estimated Time:  10 minutes.
 
 ## Task 1 - Add a New Table
 
@@ -50,17 +52,19 @@ A hierarchy named YEAR with a single level, YEAR, will be created.
 
 Whether you like the name YEAR for this hierarchy is a matter of personal opinion (or more importantly, the end user's opinions).  Because this hierarchy will have additional levels, rename the hierarchy to Time.
 
+4. Select the **YEAR** hierarchy (as shown above).
+
 4. Enter **TIME** in the Hierarchy Name field.
 
 5. Enter **Time** in the Caption field.  You can also enter **Time** in the Description.
 
 ![Rename Hierarchy to Time](images/7-rename-hier-to-time.png)
 
-You might notice the choice of Standard and Time. This is metadata that gets added to the dimension which can be used by applications. There is no difference in the functionality of the Analytic View based on this setting. It is not required that a hierarchy be set to Time to use time series calculations such as leads and lag.  Leads and lags are calculated using the order of members within the hierarchy as set by the Sort By property in the Analysis design tool (which sets the ORDER BY property of a level in the attribute dimension SQL DDL).
+You can choose to set the hierarchy to Time. Some applications might benefit from knowing that the hierarchy is Time, but that is not required for time series calculations such as LEAD and LAG.  xLeads and lags are calculated using the order of members within the hierarchy as set by the Sort By property in the Analysis design tool (which sets the ORDER BY property of a level in the attribute dimension SQL DDL).
 
 ## Task 3 - Add Quarter, Month, and Day Levels
 
-Next, you will the Quarter, Month and Day levels to the Time hierarchy.
+Next, you will add the Quarter, Month and Day levels to the Time hierarchy.
 
 Viewing data in the TIME_DIM table may help you understand what additional levels can be added to the hierarchy.
 
@@ -80,7 +84,7 @@ A hierarchy such as DAY\_ID \> MONTH\_OF\_YEAR > QUARTER > YEAR does not fit the
 
 ![Preview Time Table](images/7-add-quarter-level.png)
 
-4  Repeat for the **MONTH** and **DAY** levels.
+4  Repeat for the **MONTH** and **DAY** levels using the **MONTH** and **DAY_ID** columns.
 
 ![All Time Levels](images/7-all-time-levels-sorted.png)
 
@@ -97,8 +101,8 @@ Notes about level properties:
 - Values in the bottom section (Level Key, Member Name, etc.) map the column to data elements of the hierarchy.
   - **Level Key** is the unique identifier of the hierarchy members.
   - **Member Name**, **Member Caption**, and **Member Description** are all ‘slots’ in the hierarchy where properties of the hierarchy member can be included. Member Caption is almost always used as a friendly name for the Level Key. This is important when the Level Key value is not a user-readable value.
-  - If any of the columns used as Member Name, Member Caption, and Member description have a 1:1 relationship with the Level Key, that column can be used as an **Alternate Key**.  Alternate Keys useful in some cases, but that is a more advanced topic.
-  - Hierarchies have a default sort order. This is determined by the values in the column mapped to **Sort By**.  The default order is important because it is used in some lead and lag calculations.  Applications can also use that column to order hierarchy values in a query.
+  - If any of the columns used as Member Name, Member Caption, and Member description have a 1:1 relationship with the Level Key, that column can be used as an **Alternate Key**.  Alternate Level Keys are useful in some cases, but that is a more advanced topic.
+  - Hierarchies have a default sort order. This is determined by the values in the column mapped to **Sort By**.  The default order is important because it is used in some LEAD and LAG calculations.  Applications can also use that column to order hierarchy values in a query.
 
 In this data, a single column can be used for all properties of a level. As a result, you do not need to make any changes.
 

@@ -1,6 +1,12 @@
-# Introduction
+# Launch the Data Studio Analysis Tool
+
+## Introduction
+
+Estimated Time:  10 minutes with 1 ocpu.
 
 This lab uses the Database Actions Data Studio Analysis tool to design the Analytic view.
+
+Estimated Time:  Less than 5 minutes.
 
 ##  Task 1 - Access Database Actions
 

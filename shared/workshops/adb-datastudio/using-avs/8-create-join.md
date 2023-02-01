@@ -1,16 +1,22 @@
-# Introduction
+# Define Joins
+
+## Introduction
 
 Congratulations, you are more than halfway to your first Analytic View. You have a fact table and a hierarchy, now you just need to specify the join between the hierarchy table the fact table and add at least one measure.
 
-If you press the Show DDL button the tool will let you know that these elements are missing.
+Estimated Time:  Less than 5 minutes.
+
+## Task 1 - View the DDL
 
 If you press the **Show DDL** button the tool will let you know that these elements are missing.
 
 ![Missing Join](images/8-missing-join.png)
 
-## Task 1 - Specify the Join
+## Task 2 - Specify the Join
 
-When hierarchies are mapped to dimension (hierarchy) tables rather than directly to the fact table, the hierarchy must be joined (matched) to the fact table.  This is just as dimension and fact tables much be *joined* in a SQL query.
+When hierarchies are mapped to dimension (hierarchy) tables rather than directly to the fact table, the hierarchy must be joined (matched) to the fact table.  This is just as dimension and fact tables must be *joined* in a SQL query.
+
+Analytic views and hierarchies are separate objects in the Database. Joining the hierarchy to the analytic view allows the analytic view to reference (use) the hierarchy.  Because the joins are specified in the analytic views, joined are not needed in queries that SELECT from the analytic view.  This is one of the features of the analytic view that make it easy to query.
 
 With an Analytic View, the join is part of the metadata. As a result, joins are not required in queries that SELECT from an Analytic View.
 

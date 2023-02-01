@@ -1,8 +1,10 @@
-# Introduction
+# Open SQL Worksheet
+
+## Introduction
 
 You will need to connect to Autonomous Database and run SQL commands to create a user, add workshop utilities, and load sample data.  This lab provides instructions for connecting to SQL Worksheet using your browser. If you use a different tool such as SQL Developer desktop, you can use that tool.
 
-Estimated Time:  5 Minutes.
+Estimated Time:  Less than 5 minutes.
 
 ## Task 1 - Connecting to the Database Actions Tool Set
 

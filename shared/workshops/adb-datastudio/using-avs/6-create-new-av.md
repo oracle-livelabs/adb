@@ -1,4 +1,8 @@
-# Introduction
+# Create a New Analytic View
+
+## Introduction
+
+Estimated Time:  5 minutes
 
 Analytic Views are a collection of database objects that are used together to present a business model to applications.  Analytic Views may be queried with SQL.   These objects are:
 
@@ -13,6 +17,8 @@ To create an Analytic View in this tool, you will:
 - Identify the tables that the Analytic View objects will reference. In this lab, there are two tables, a customer lookup table and a fact table.
 - Create hierarchies. When you create hierarchies, the tool will create both an Attribute Dimension object and a Hierarchy View object.
 - Create fact measures (measures from the fact table) and calculated measures. The tool will create the Analytic View object for you using this information.
+
+Estimated Time:  5 minutes.
 
 ## Task 1 - Create a New Analytic View
 
@@ -30,7 +36,7 @@ Start the design process by creating a new Analytic View. Depending on how you e
 
 5. Enter a user-friendly name in the Caption field. For example, Movie Sales Data.  Also enter a Description such as “Daily sales data by customer, and search genre”.
 
-**Do not press the Create button yet.**  At this point, you have created a new Analytic View in the tool, but not in the database. The Analytic View database objects will be created later after you have created hierarchies and measures.
+**Do not press the Create button yet.**  The Analytic View database objects will be created later after you have created hierarchies and measures.
 
 **Do not press the Generate Hierarchies and Measures button.**   The tool has a feature that can attempt to automatically create hierarchies and measures. In some cases, this might offer a useful head start. In this lab, you will learn how to create hierarchies and measures yourself.  Because you know your data best, and you know your business requirements, you will usually create hierarchies and measures as shown in this lab.
 

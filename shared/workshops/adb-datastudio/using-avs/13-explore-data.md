@@ -1,19 +1,21 @@
-# Introduction
+# Explore Data
+
+## Introduction
 
 The Analytic View now has several hierarchies and a time series
-calculation. It will be more interesting to analyze now.
+calculation. It will be more interesting to analyze with this additional content.
 
 Estimated Time:  5 Minutes.
 
 ## Task 1 - Create a New Report
 
 The application will return to the Data Quality tab after the analytic
-view has been updated. As before, there are not errors.
+view has been updated. As before, there are no errors.
 
 1. Choose the **Analyze** tab.
 2. Choose the **Report** icon (be sure to choose the middle icon).
 
-![Format Measure](images/14-report-1.png)
+![Format Measure](images/13-report-1.png)
 
 3. Expand the Time hierarchy and move **MONTH** to the **Columns**
     position.
@@ -21,18 +23,17 @@ view has been updated. As before, there are not errors.
     **Values** position.
 5. When prompted, choose Format Type **Percentage** and **Save**.
 
-
 The first month has Sales data, but because it is the first month the
 prior period values are null.
 
 7. Scroll the report to the right to see prior period values.
 
-![Report Prior Period](images/14-report-2.png)
+![Report Prior Period](images/13-report-2.png)
 
 8. Break the data out by Search Genre by dragging Genre under Continent in
 the Row position.
 
-![Report Prior Period](images/14-report-3.png)
+![Report Prior Period](images/13-report-3.png)
 
 ## Task 2 - Explore On Your Own
 

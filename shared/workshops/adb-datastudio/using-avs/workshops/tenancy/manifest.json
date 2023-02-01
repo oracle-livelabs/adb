@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Getting Started With Analytic Views using Data Studio",
+    "workshoptitle": "Get Started With Analytic Views using Data Studio",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -55,20 +55,20 @@
             "filename": "../../10-deploy-av.md"
         },
         {
-            "title": "Lab 11: View Data in the Analytic View",
-            "filename": "../../11-view-data.md"
-        },
-        {
-            "title": "Lab 12: Add More Hierarchies",
+            "title": "Lab 11: Add Hierarchies",
             "filename": "../../12-add-hierarchies.md"
         },
         {
-            "title": "Lab 13: Create a Calculated Measure",
+            "title": "Lab 12: Create a Calculated Measure",
             "filename": "../../13-create-calculated-measures.md"
         },
         {
-            "title": "Lab 14: Explore Data",
+            "title": "Lab 13: Explore Data",
             "filename": "../../14-explore-data.md"
+        },
+        {
+            "title": "Lab 14: Learn More",
+            "filename": "../../14-learn-more.md"
         },
         {
             "title": "Need Help?",
