@@ -184,7 +184,7 @@ begin
  );
 end;
 /
-</copy>
+<\copy>
 ```
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
