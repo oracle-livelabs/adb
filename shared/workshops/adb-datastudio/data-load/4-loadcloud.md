@@ -66,7 +66,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![The Refresh button the toolbar](images/refresh.png)
 
-  Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer_extension**, **customer_segment** and **pizza_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
+  Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer\_extension**, **customer\_segment** and **pizza\_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
 
   >**Note**: The selection of a folder allows the loading of multiple files that are in the same structure into a single table. If you drag and drop a folder, rather than a file, a prompt appears to confirm that you want to load all files in this folder into a single table. In this case, all our folders contain a single file, so click **Yes** on the prompt. If you have a folder containing files in different structures and you want to load many of them, you should drag across each file separately so that separate tables can be created, each with the correct columns and data.
 
