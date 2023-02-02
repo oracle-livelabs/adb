@@ -197,6 +197,12 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
   This view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none, so we know the data has been loaded completely.
 
+10. To see detailed information about all actions related to the Data Feed, change the selection under **Live Table Run Log Details** from **Loaded Files** to **Log**
+
+  ![Detailed logs for the live feed](images/feed-logs-detail.png)
+
+  This view shows details of all the actions taken for this live feed, including when the OCI subscription was confirmed, when the new file was detected in the bucket, and when the ingest job was triggered. This is also a very useful view to use if something has gone wrong in any of the steps!
+  
   This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in the cloud object storage bucket, they will automatically be loaded into the MOVIE\_SALES table in the Autonomous Database, to facilitate fast data analysis. 
 
 ## RECAP
