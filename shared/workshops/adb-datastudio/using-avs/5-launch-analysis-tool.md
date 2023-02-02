@@ -8,6 +8,16 @@ This lab uses the Database Actions Data Studio Analysis tool to design the Analy
 
 Estimated Time:  Less than 5 minutes.
 
+### Objectives
+
+In this lab you will:
+
+- Launch the Data Studio Analysis tool.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 ##  Task 1 - Access Database Actions
 
 The Database Actions tools can be accessed directly using a URL or through the Autonomous Database console.
@@ -31,6 +41,8 @@ If you are running this lab in your tenancy and do not have access to the Autono
 The first time you open the Analysis Application, introductory cards might be displayed.  You can choose to review the cards or simply close them.
 
 ![Open Data Analysis application](images/5-hopscotch.png)
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

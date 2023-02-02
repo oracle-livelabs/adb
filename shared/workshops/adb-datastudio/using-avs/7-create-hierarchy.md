@@ -16,6 +16,16 @@ To create a hierarchy, you will:
 - Create levels.
 - Specify the joins between the hierarchy table and the fact table.
 
+### Objectives
+
+In this lab you will:
+
+- Create a hierarchy.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 Estimated Time:  10 minutes.
 
 ## Task 1 - Add a New Table
@@ -111,6 +121,8 @@ It is common for different columns in a table to be used for different propertie
 **Pro tip**:  Easy analytic view design starts with good column names in tables.  The Analysis design tool will use column names as the default for hierarchy, level and measure names (replacing underscores with spaces in Captions).
 
 Feel free to examine the properties of each level.
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

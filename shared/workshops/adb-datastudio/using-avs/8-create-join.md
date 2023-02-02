@@ -6,6 +6,16 @@ Congratulations, you are more than halfway to your first Analytic View. You have
 
 Estimated Time:  Less than 5 minutes.
 
+### Objectives
+
+In this lab you will:
+
+- Join the hierarchy to the fact table.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 ## Task 1 - View the DDL
 
 If you press the **Show DDL** button the tool will let you know that these elements are missing.
@@ -23,6 +33,8 @@ With an Analytic View, the join is part of the metadata. As a result, joins are 
 1. Choose **Data Sources** and select **DAY\_ID** for both the **Hierarchy Column** and the **MOVIE\_SALES\_FACT** Fact Column.
 
 ![Join Time Dim](images/8-join-time-dim.png)
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

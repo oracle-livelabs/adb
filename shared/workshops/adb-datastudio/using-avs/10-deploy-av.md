@@ -6,6 +6,16 @@ Your Analytic View definition now includes one hierarchy, joined to the fact tab
 
 Estimated Time:  Less than 10 minutes.
 
+### Objectives
+
+In this lab you will:
+
+- Create the Analytic View objects in the Database.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 ## Task 1 - Creating the Analytic View Database Object
 
 You've worked hard to define your first analytic view (well, not really, because the tool makes it easy).  Give that Create button a good smash!
@@ -40,6 +50,7 @@ The chart now displays Month within Year.
 
 ![Chart Button](images/10-month-to-x-axis.png)
 
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

@@ -6,6 +6,18 @@ You will need to connect to Autonomous Database and run SQL commands to create a
 
 Estimated Time:  Less than 5 minutes.
 
+### Objectives
+
+In this lab you will:
+
+- Open SQL Worksheet.
+
+### Prerequisites:
+
+- Access to the Autonomous Database Console or a URL to Autonomous Database Actions.
+
+- None.
+
 ## Task 1 - Connecting to the Database Actions Tool Set
 
 You will use the Data Studio Analysis tool to create your Analytic View.  Data Studio is part of the Database Actions tool set, which contains many different types of tools.
@@ -24,7 +36,9 @@ SQL Worksheet allows you to run SQL commands in the Oracle Database. You will ru
 
 ![Open Database Actions](images/2-start-sql-worksheet.png)
 
-## Acknowledgments
+You may now **proceed to the next lab**
+
+## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
 - Last Updated By - William (Bud) Endress, January 2023

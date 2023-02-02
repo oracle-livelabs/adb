@@ -14,6 +14,16 @@ of a calculated measure.
 
 Estimated Time:  5 minutes.
 
+### Objectives
+
+In this lab you will:
+
+- Create a calculated measure.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 ## Task 1  Create a Calculated Measure
 
 Create a calculated measure that returns the Percent Change in Sales
@@ -37,6 +47,8 @@ The measure settings should look like this.
 You can now update the Analytic View objects in the database.
 
 1.  Press the **Update** button on the lower right.
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

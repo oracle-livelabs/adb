@@ -6,6 +6,16 @@ The Analytic View is functional, but not very interesting, with just a single hi
 
 Estimated Time:  10 Minutes
 
+### Objectives
+
+In this lab you will:
+
+- Add additional hierarchies to the Analytic View
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 ## Task 1 - Return to Analytic View Editor
 
 You can add hierarchies using the same methods that you added the Time hierarchy. First, you need to switch back to the Analytic View editor.
@@ -107,6 +117,8 @@ The completed joins will look like this.
 Now would be a good time to save your work and update the analytic view.
 
 1. Press the **Update** button.
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

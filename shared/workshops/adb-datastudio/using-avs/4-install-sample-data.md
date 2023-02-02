@@ -6,6 +6,16 @@ This lab uses sample data that is loaded into the Autonomous Database from Oracl
 
 Estimated Time:  10 minutes with 1 ocpu.
 
+### Objectives
+
+In this lab you will:
+
+- Install sample data.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 **Author's note.  Before publication, replace PAR with PAR to final bucket.**
 
 ## Task 1 - Load Sample Data
@@ -16,7 +26,7 @@ To load sample data in this lab.
 2. Run the following commands in SQL Worksheet.  They can be run all at once as a script or individually, as you prefer.
 
 
-~~~
+~~~SQL
 <copy>
  -- -------------------------------------------------------------------------------
  -- Table:  TIME_DIM
@@ -110,7 +120,7 @@ END;
 
 You can view using in the tables you just created using the following commands in SQL Worksheet.
 
-~~~
+~~~SQL
 <copy>
 SELECT * FROM time_dim;
 
@@ -121,6 +131,8 @@ SELECT * FROM customer_dim;
 SELECT * FROM movie_sales_fact;
 </copy>
 ~~~
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

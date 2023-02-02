@@ -2,8 +2,6 @@
 
 ## Introduction
 
-Estimated Time:  5 minutes
-
 Analytic Views are a collection of database objects that are used together to present a business model to applications.  Analytic Views may be queried with SQL.   These objects are:
 
 - One or more *Attribute Dimensions* define metadata with attributes and levels, which are the building blocks for hierarchies.
@@ -19,6 +17,16 @@ To create an Analytic View in this tool, you will:
 - Create fact measures (measures from the fact table) and calculated measures. The tool will create the Analytic View object for you using this information.
 
 Estimated Time:  5 minutes.
+
+### Objectives
+
+In this lab you will:
+
+- Create a new Analytic View.
+
+### Prerequisites:
+
+- Complete the previous lab.
 
 ## Task 1 - Create a New Analytic View
 
@@ -46,7 +54,9 @@ You will want to provide user-friendly names to objects in the Analytic View.  U
 
 You are now off to a good start!
 
-## Acknowledgments
+You may now **proceed to the next lab**
+
+## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
 - Last Updated By - William (Bud) Endress, January 2023

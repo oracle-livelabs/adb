@@ -7,6 +7,16 @@ calculation. It will be more interesting to analyze with this additional content
 
 Estimated Time:  5 Minutes.
 
+### Objectives
+
+In this lab you will:
+
+- Use the Analysis Viewer tool to explore data in the Analytic View.
+
+### Prerequisites:
+
+- Complete the previous lab.
+
 ## Task 1 - Create a New Report
 
 The application will return to the Data Quality tab after the analytic
@@ -39,6 +49,8 @@ the Row position.
 
 Feel free to add new calculations and explore the data on your own.
 After all, that's what this is all about.
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 

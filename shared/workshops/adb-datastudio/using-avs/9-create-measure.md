@@ -1,10 +1,20 @@
-# Create a Measure
+# Create Measures
 
 ## Introduction
 
 You are almost ready to create the Analytic View! However, at least one measure is required.
 
 Estimated Time:  10 minutes.
+
+### Objectives
+
+In this lab you will:
+
+- Create a database user.
+
+### Prerequisites:
+
+- Create measures in the Analytic View.
 
 ## Task 1 - Create a Fact Measure
 
@@ -50,7 +60,9 @@ Does it make sense to aggregate DISCOUNT\_PERCENT by SUM? Probably not. It rarel
 
 In the case of the Discount Percent measure, we can average because each row represents a single sale (quantity = 1).  We also need to consider the meaning of 0 and null values.  In this data set, there are null values where there is no discount. Therefore, the average of Discount Percent is the average of when a discount was given.  If the quantity was anything other than 1, a weighted average would probably be needed.  See [Live SQL tutorial Aggregating Data using Weighted Averages in Analytic Views](https://livesql.oracle.com/apex/livesql/file/tutorial_G4EG6JY9E0U6TFT2RCCLT3F1V.html)
 
-The bottom line is that you must be thoughtful when aggregating rations using average.
+The bottom line is that you must be thoughtful when aggregating rations using averages.
+
+You may now **proceed to the next lab**
 
 ## Acknowledgements
 
