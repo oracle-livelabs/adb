@@ -12,7 +12,7 @@ You can learn a lot about Analytic Views by reviewing the DDL used to create the
 
 ## Analytic Views and Oracle Analytic Cloud
 
-Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Cloud can import Analytic Views into Subject Areas and query them using advanced Analytic View features.  You can learn more at **ADD LINKS FROM PETE M**
+Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Cloud can import Analytic Views into Subject Areas and query them using advanced Analytic View features.  You can learn more by watching this short video:  [Oracle Analytics Native Connection to Analytic Views in Database](https://www.youtube.com/watch?v=pmhVGvEB98k&t=53s)
 
 ## Acknowledgements
 
