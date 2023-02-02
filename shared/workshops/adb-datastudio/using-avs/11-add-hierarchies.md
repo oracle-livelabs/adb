@@ -101,7 +101,7 @@ Joins for each of the new hierarchies can now be added.
 1. Choose **Data Sources**
 2. Set Joins as listed in the table below.
 
-|Hierarchy Sourcw       |Hierarchy Column       |Fact Column  |
+|Hierarchy Source       |Hierarchy Column       |Fact Column  |
 |-----------------------|-----------------------|-------------|
 |TIME_DIM               |DAY_ID                 | DAY_ID      |
 |CUSTOMER_DIM           |CUSTOMER_ID            | CUST_ID     |
