@@ -38,7 +38,7 @@ If you have any questions about the topics covered in this lab and the entire wo
 ## Acknowledgments
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
-- Special thanks to Mike Matthews, ADB Product Management, for his excellent editing
+- Special thanks to Mike Matthews, ADB Product Management, for his excellent editing.
 - Last Updated By - William (Bud) Endress, January 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
