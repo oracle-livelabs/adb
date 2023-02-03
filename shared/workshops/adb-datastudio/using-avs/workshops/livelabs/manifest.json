@@ -3,14 +3,14 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
-            "title": "Get Started",
-            "description": "Login to Oracle Cloud",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
-        },
-        {
             "title": "Introduction",
             "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
             "filename": "../../0-introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
         },
         {
             "title": "Lab 1: Provision an Autonomous Database",
