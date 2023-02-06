@@ -35,7 +35,7 @@ In this lab, you will:
 1. Right-click on the links below and click **Save Link As...** to download the files to your computer.
 
     * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
-    * [Download customer\_extension.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
+    * [Download customer-extension.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
 
 
 2. Make note of the folder location - you will be using these files in just a minute!
@@ -59,11 +59,11 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Drag and drop or select the file.](./images/datatools-dataload-load-local-file.png " ")
 
-3. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but we want to make a small update to the table name for file name *customer\_extension.csv*. Click the **Settings** button labeled with a pencil symbol.
+3. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but we want to make a small update to the table name for file name *customer-extension.csv*. Click the 3-dot ellipsis menu to the right of *customer-extension.csv* and click the **Settings** button labeled with a pencil symbol.
 
     ![Update the data load job settings.](./images/click-settings-to-examine-data-load-job.png " ")
 
-4. A page opens for the local *customer\_extension.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties.  Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types.
+4. A page opens for the local *customer-extension.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties.  Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types.
 
     Update the table name to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
 
@@ -73,15 +73,11 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Run the data load.](./images/run-the-data-load.png " ")
 
-6. When the load job finishes, a green check mark appears for each table. Click **Data Load** in the breadcrumb in the upper left corner, to return to the **Data Load** page.
+6. When the load job finishes, a green check mark appears for each table. Click **Catalog** in the menu on the left.
 
-    ![Click Data Load in the breadcrumb.](./images/click-data-load-in-breadcrumb.png " ")
+    ![Click Catalog in the menu on the left.](./images/click-catalog.png " ")
 
-7. In the Database Actions Launchpad, in the **Data Studio** section, click **CATALOG**.
-
-    ![Click CATALOG in the Data Studio section.](./images/click-catalog-in-data-studio-section.png " ")
-
-8. The Catalog shows the *CUSTOMER\_SEGMENT* table has been successfully created. You can click the table name to see the data.
+7. The Catalog shows the *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION* tables have been successfully created. You can click a table name to see the data.
 
     ![View the new table in the Catalog.](./images/view-new-table.png " ")
 
@@ -94,7 +90,7 @@ Please [proceed to the next lab](#next).
 ## Acknowledgements
 
 * **Author** - Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Rick Green, July 2022
+* **Last Updated By/Date** - Rick Green, February 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

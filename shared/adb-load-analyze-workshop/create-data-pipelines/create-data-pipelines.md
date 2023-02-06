@@ -153,7 +153,7 @@ Before we activate your configured pipeline, let's test that it works. Call the 
 
 ## Task 4: Start the data pipeline
 
-Introductory Text
+>>>> USE THE 2 MOVIESTREAM FILES MARTY GAVE ME TO UPLOAD: CUSTSALES-2021-11.CSV AND CUSTSALES-2020-12.CSV THAT I SAVED TO MY MAIN DOWNLOADS FOLDER
 
 1. text
 
@@ -187,7 +187,7 @@ The following link provides more information about Oracle Data Pipelines:
 
 * **Author** - Rick Green, Principal Developer, Database User Assistance
 * **Contributor** Nilay Panchal, Principal Product Manager, Autonomous Database
-* **Last Updated By/Date** - Rick Green, January 2023
+* **Last Updated By/Date** - Rick Green, February 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
