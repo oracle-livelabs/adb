@@ -18,7 +18,7 @@ In this lab you will:
 
 - None.
 
-## Task 1 - Connecting to the Database Actions Tool Set
+## Task 1 - Connect to the Database Actions Tool Set
 
 You will use the Data Studio Analysis tool to create your Analytic View.  Data Studio is part of the Database Actions tool set, which contains many different types of tools.
 

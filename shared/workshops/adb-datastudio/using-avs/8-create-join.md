@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Congratulations, you are more than halfway to your first Analytic View. You have a fact table and a hierarchy, now you just need to specify the join between the hierarchy table the fact table and add at least one measure.
+Congratulations, you are more than halfway to your first Analytic View. You have a fact table and a hierarchy, now you just need to specify the join between the hierarchy table and fact table, and add at least one measure.
 
 Estimated Time:  Less than 5 minutes.
 
