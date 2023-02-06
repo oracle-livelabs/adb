@@ -16,8 +16,8 @@ Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Clo
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, January 2023
-- Last Updated By - William (Bud) Endress, January 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
+- Last Updated By - William (Bud) Endress, February 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
