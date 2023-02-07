@@ -7,9 +7,6 @@ This lab introduces the Data Analysis application built into the Oracle Autonomo
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walkthrough of the lab.
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this workshop, you will learn:
@@ -22,8 +19,8 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
-- Loaded Age group data into AGE_GROUP
-- Prepared data and loaded it into CUSTOMER_SALES_ANALYSIS
+- Loaded Age group data into AGE\_GROUP
+- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
@@ -92,7 +89,7 @@ We will go through a few examples such as movie genre
 preference based on age groups and marital status and whether these
 preferences are different across high-value and low-value customers.
 
-1.  Navigate to the Database Actions page and launch the **DATA ANALYSIS** tool.
+1.  Navigate to the Database Actions page and launch the **Data Analysis** tool.
 
     ![screenshot of data analysis card](images/image58_analysis_card.png)
 
@@ -116,7 +113,7 @@ preferences are different across high-value and low-value customers.
 4.  The default AV name is derived from the fact table. Enter various fields
     as follows:
 
-    Name: **CUSTOMER_SALES_ANALYSIS_AV**
+    Name: **CUSTOMER\_SALES\_ANALYSIS\_AV**
     
     Caption: **Customer sales analysis av**
     
@@ -124,11 +121,11 @@ preferences are different across high-value and low-value customers.
     
     Schema: **QTEAM**
     
-    Fact Table: Pick **CUSTOMER_SALES_ANALYSIS** from the list
+    Fact Table: Pick **CUSTOMER\_SALES\_ANALYSIS** from the list
     
     You can find related tables and hierarchies by clicking on **Generate
     Hierarchy and Measures** button. This will scan your schema and find
-    all the tables related to **CUSTOMER_SALES_ANALYSIS** and give you a
+    all the tables related to **CUSTOMER\_SALES\_ANALYSIS** and give you a
     starting point.
     
     However, in our case, we have prepared the data in such a way that all
@@ -138,12 +135,12 @@ preferences are different across high-value and low-value customers.
     ![screenshot of selecting the fact table](images/image61_av_table.png)
 
 5.  Now click on Data Sources on the left side to verify that
-    CUSTOMER_SALES_ANALYSIS is the data source.
+    CUSTOMER\_SALES\_ANALYSIS is the data source.
 
     ![screenshot of data sources](images/image62_av_datasource.png)
 
 6.  Now click on the Hierarchies on the left side and add the attributes
-    we want in our analysis. We want to add **AGE_GROUP, CUST_VALUE,
+    we want in our analysis. We want to add **AGE\_GROUP, CUST\_VALUE,
     DEVICE, MARITAL_STATUS, GENRE,** and **PET**. It will be interesting
     to do a movie preference analysis with pets.
     
@@ -163,7 +160,7 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of hierarchy preview](images/image65_av_hier_list.png)
 
-9.  Now click on Measures and add a measure using the **TOTAL_SALES** column
+9.  Now click on Measures and add a measure using the **TOTAL\_SALES** column
 
     ![screenshot of adding a measure](images/image66_av_measure.png)
 
@@ -205,7 +202,7 @@ Next, let's learn how to navigate the analysis tool.
 
 2.  Now we can start doing our first analysis.
 
-    Analysis: show me SALES_AMOUNT by AGE_GROUP
+    Analysis: show me sales amount by age group
     
     Select chart mode by clicking on the top-right chart icon. Clear all hierarchies from X-Axis and 
     drag **Age group** to X-Axis and **Total Sales** to Y-Axis.

@@ -7,9 +7,6 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 25 minutes
 
-Watch the video below for a quick walkthrough of the lab.
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this workshop, you will learn:
@@ -22,7 +19,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
-- Loaded Age group data into AGE_GROUP
+- Loaded Age group data into AGE\_GROUP
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
@@ -194,10 +191,10 @@ Now you are ready to go through the rest of the labs in this workshop.
 For this lab, we will try to find high-value customers. We can use sales data to assign
 customer value. We can rank the customers into five quintiles based on
 how much they have paid for movies and load them into a new
-**CUSTOMER_SALES_ANALYSIS** table.
+**CUSTOMER\_SALES\_ANALYSIS** table.
 
 We will also denormalize this table with interesting customer
-attributes for analysis from the **CUSTOMER_CA, AGE_GROUP** and **GENRE** tables.
+attributes for analysis from the **CUSTOMER\_CA, AGE\_GROUP** and **GENRE** tables.
 
 This is an example of preparing data for an intended purpose. Our
 purpose is to find high-value customers and find any patterns in the
@@ -205,10 +202,10 @@ sales data by data analysis.
 
 The **Data Transforms** tool makes such data preparation tasks easy.
 
-1.  Click on the **DATA TRANSFORMS** card to launch the tool.
+1.  Click on the **Data Transforms** card to launch the tool.
 
-    >**NOTE:** If you don't see the **DATA TRANSFORMS** card then it means you are
-    missing the **DATA_TRANSFORM_USER** role for your user. Login as ADMIN and
+    >**NOTE:** If you don't see the **Data Transforms** card then it means you are
+    missing the **DATA\_TRANSFORM\_USER** role for your user. Login as ADMIN and
     grant the role (make sure this role is marked "Default" as well).
 
     ![screenshot of the data transform card](images/image13_transform_card.png)
@@ -232,14 +229,14 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
 
-## Task 2: Setup a connection
+## Task 2: Set up a connection
 
 1.  Click on **Connections** on the left side to look at available
     connections.
 
     ![screenshot of the connection menu](images/image17_transform_conn.png)
 
-2.  You will notice that there is one connection already defined – this connection 
+2.  You will notice that there is one connection already defined. This connection 
     is to your Autonomous Database. Click on the connection to complete its configuration. 
     This is a one-time activity.
 
@@ -278,7 +275,7 @@ Now we are ready to prepare the data.
 
 2.  Enter the name and description of the data flow.
 
-    Name: **load_customer_sales_analysis**
+    Name: **load_customer\_sales\_analysis**
     
     Description: **Load customer sales table with quintiles and other
     attributes**
@@ -333,7 +330,7 @@ Now we are ready to prepare the data.
     
     3: Transformations are grouped under various categories. Click on
     different groups to see what kinds of transforms are available. Basic
-    transforms are under the **DATA TRANSFORM** and **DATA PREPARATION**
+    transforms are under the **Data Transform** and **Data Preparation**
     groups. These transforms are dragged into the main canvas to build a
     data flow.
     
@@ -356,10 +353,10 @@ Now we are ready to prepare the data.
     sales per customer to create 5 quintile buckets to determine
     customer value.
 
-    First, we will drag **MOVIESALES_CA** into the canvas and drag
-    the **Aggregate** transform from above under the **DATA TRANSFORM** group.
+    First, we will drag **MOVIESALES\_CA** into the canvas and drag
+    the **Aggregate** transform from above under the **Data Transform** group.
     Next, drag the **QuintileBinning** transform into the canvas. This
-    transform is in the **DATA PREPARATION** group above.
+    transform is in the **Data Preparation** group above.
     
     There are many transforms available under different groups to build
     the desired data flow. For this workshop, we will use a few of them.
@@ -368,7 +365,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of bring source table and transforms](images/image26_transform_drag_source.png)
 
-7.  Click on **MOVIESALES_CA,** and Link it to the **Aggregate**
+7.  Click on **MOVIESALES\_CA,** and Link it to the **Aggregate**
     transform by dragging the little arrow on top of the **Aggregate**
     transforms. Follow this process to link transform steps in the rest
     of the workshop.
@@ -383,13 +380,13 @@ Now we are ready to prepare the data.
     ![screenshot of aggregate attributes](images/image28_agg_attr.png)
 
 9.  Click on Attributes on the left side. You can edit this attribute
-    list. We will remove everything except **CUST_ID** and
-    **TOTAL_SALES**. Click on the checkbox and click the delete icon on the
+    list. We will remove everything except **CUST\_ID** and
+    **TOTAL\_SALES**. Click on the checkbox and click the delete icon on the
     right side.
 
     ![screenshot of aggregate attribute edit](images/image29_agg_edit.png)
 
-10. Now change the name of **TOTAL_SALES** to **CUST_SALES** to make it
+10. Now change the name of **TOTAL\_SALES** to **CUST\_SALES** to make it
     more meaningful. This will be aggregated sales for the customer. It
     should look like the below screenshot.
 
@@ -401,8 +398,8 @@ Now we are ready to prepare the data.
 
     ![screenshot of aggregate mapping expression](images/image31_agg_map_exp.png)
 
-12. Auto Map populated only the **CUST_ID** and could not find a match for
-    **CUST_SALES** since we had changed the attribute name. We can either
+12. Auto Map populated only the **CUST\_ID** and could not find a match for
+    **CUST\_SALES** since we had changed the attribute name. We can either
     type in the aggregate expression directly in the blank space or use
     the expression editor on the right side. Click on the expression
     edition icon.
@@ -412,14 +409,14 @@ Now we are ready to prepare the data.
 13. This will open the expression editor. You can drag source attributes
     from the left side in the editor and write a suitable expression.
 
-    Enter the following expression: **SUM ( MOVIESALES_CA.TOTAL_SALES )**
+    Enter the following expression: **SUM ( MOVIESALES\_CA.TOTAL\_SALES )**
 
     Click **OK**
 
     ![screenshot of the mapping expression editor](images/image33_agg_map_exp_edit_ui.png)
 
-14. Review the screenshot below. The **CUST_SALES** attribute is mapped to
-    the sum of **TOTAL_SALES** grouped by **CUST_ID**.
+14. Review the screenshot below. The **CUST\_SALES** attribute is mapped to
+    the sum of **TOTAL\_SALES** grouped by **CUST\_ID**.
 
     Now collapse the properties panel by clicking on the icon in the right
     corner.
@@ -437,15 +434,15 @@ Now we are ready to prepare the data.
 
 16. In the attribute section, click on **OUTPUT1**.
 
-    Change the name **Return** to **CUST_VALUE**. QuintileBinning output
-    will go into the **CUST_VALUE** attribute.
+    Change the name **Return** to **CUST\_VALUE**. QuintileBinning output
+    will go into the **CUST\_VALUE** attribute.
 
     Confirm that you have changed the name.
 
     ![screenshot of binning output name change](images/image36_binning_output.png)
 
 17. Click on the Column Mapping and enter 5 for the **number of
-    buckets** expression. Drag **CUST_SALES** from the aggregate into the
+    buckets** expression. Drag **CUST\_SALES** from the aggregate into the
     **order** expression.
 
     It means that aggregate customer sales will be used to divide
@@ -459,27 +456,27 @@ Now we are ready to prepare the data.
     Now you have the basic skills to add data sources and transforms, and edit their properties.
     
     Next, bring the **Join** transform into the canvas,
-    drag the **CUSTOMER_CA** table and join it with the previous flow as below.
+    drag the **CUSTOMER\_CA** table and join it with the previous flow as below.
     
     Click on the Attribute property of the Join and notice that it has
     populated the join automatically. You can also edit it manually if it
     is not what you expect.
     
-    Make sure the join is: **Aggregate.CUST_ID=CUSTOMER_CA.CUST_ID**
+    Make sure the join is: **Aggregate.CUST\_ID=CUSTOMER\_CA.CUST\_ID**
 
     ![screenshot of joining with customer](images/image38_cust_join.png)
 
-19. Now bring in the **AGE_GROUP** table and use the Lookup transform. Link it as
+19. Now bring in the **AGE\_GROUP** table and use the Lookup transform. Link it as
     described below.
 
-    First link the end of the data flow to Lookup and then link **AGE_GROUP** to lookup.
+    First link the end of the data flow to Lookup and then link **AGE\_GROUP** to lookup.
 
-    >**Note:** The order of linking matters for lookup transform. **AGE_GROUP**
+    >**Note:** The order of linking matters for lookup transform. **AGE\_GROUP**
     Should be the lookup source. Check the property panel on the right. If it is not correct
     then remove the links and link it again.
 
-    Make sure the lookup expression is: **CUSTOMER_CA.AGE between
-    AGE_GROUP.MIN_AGE and AGE_GROUP.MAX_AGE**
+    Make sure the lookup expression is: 
+    **CUSTOMER\_CA.AGE between AGE\_GROUP.MIN\_AGE and AGE\_GROUP.MAX_AGE**
     
     Note that you can also optionally use the expression editor.
     
@@ -491,19 +488,19 @@ Now we are ready to prepare the data.
     ![screenshot of age group lookup](images/image39_agegroup_lookup.png)
 
 20. Now we need to bring in the transaction data again which will be
-    used for analysis later. Drag **MOVIESALES_CA** into the canvas and
+    used for analysis later. Drag **MOVIESALES\_CA** into the canvas and
     join it.
 
-    Make sure the join is: **Aggregate.CUST_ID=MOVIESALES_CA1.CUST_ID**
+    Make sure the join is: **Aggregate.CUST\_ID=MOVIESALES\_CA1.CUST\_ID**
     
-    >**NOTE:** Notice that the display name for this is MOVIESALES_CA1
+    >**NOTE:** Notice that the display name for this is MOVIESALES\_CA1
     (suffixed by 1). This is because this table is used twice in the data
     flow. First for calculating the quintile and the second time to bring
     individual sales transaction data.
     
     Next, bring in the movie GENRE table and join it.
     
-    Make sure the join is: **MOVIESALES_CA1.GENRE_ID=GENRE.GENRE_ID**
+    Make sure the join is: **MOVIESALES\_CA1.GENRE_ID=GENRE.GENRE\_ID**
     
     The above join expression should be populated automatically.
     
@@ -516,7 +513,7 @@ Now we are ready to prepare the data.
 
 21. We have completed the data flow. It may look complex, but one can
     visualize the step-by-step transformations. Now we need to write it
-    to a new **CUSTOMER_SALES_ANALYSIS** table.
+    to a new **CUSTOMER\_SALES\_ANALYSIS** table.
 
     Click on the tiny grid at the corner to the end of the data flow (last
     Join transform) to open the target table property dialog. Note that if
@@ -528,9 +525,9 @@ Now we are ready to prepare the data.
 
 22. Enter the name and connection properties.
 
-    Name: **CUSTOMER_SALES_ANALYSIS**
+    Name: **CUSTOMER\_SALES\_ANALYSIS**
     
-    Alias: **CUSTOMER_SALES_ANALYSIS**
+    Alias: **CUSTOMER\_SALES\_ANALYSIS**
     
     Connection: your connection name    
     
@@ -543,7 +540,7 @@ Now we are ready to prepare the data.
 23. Now you can edit the target column names. The initial list is
     populated by the columns in all the tables in the data flow.
 
-    Remove the columns ending with **_ID**. They don't help in any meaningful
+    Remove the columns ending with **\_ID**. They don't help in any meaningful
     analysis. The attributes are always denormalized by the joins. Click
     on the checkbox and then click on the delete icon in the top right corner.
     
@@ -634,7 +631,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of data statistics](images/image53_transform_stats.png)
 
-For now, it is just a cursory data glance. We will need to use the **DATA ANALYSIS** 
+For now, it is just a cursory data glance. We will need to use the **Data Analysis** 
 tool to analyze this data and find many interesting patterns.
 
 ## Task 4: How to debug

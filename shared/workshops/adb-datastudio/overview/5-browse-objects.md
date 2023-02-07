@@ -1,14 +1,11 @@
-# Using Data Catalog to browse for your objects
+# Using Catalog to browse for your objects
 
 
 ## Introduction
 
-This lab introduces the Data Catalog application built into the Oracle Autonomous Database and shows the various ways you can browse and search for your objects.
+This lab introduces the Catalog application built into the Oracle Autonomous Database and shows the various ways you can browse and search for your objects.
 
 Estimated Time: 5 minutes
-
-Watch the video below for a quick walkthrough of the lab.
-[](youtube:youtubeid)
 
 ### Objectives
 
@@ -25,13 +22,13 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 ## Task 1: Launch Database Action
 
-1.  Login to the Autonomous Database created earlier with your user and
+1.  Log in to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
 
     >**Note:** Bookmark the Database Actions page so that it is easier to come
     back to this later in the workshop.
     
-    Click on the **DATA STUDIO OVERVIEW** card.
+    Click on the **Data Studio Overview** card.
 
     ![Screenshot of data studio overview](images/image1_datastudio_overview.png)
 
@@ -41,8 +38,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
     ![Screenshot of the recent object list](images/image2_datastudio_overview_list.png)
 
-Since it is a workshop, there are limited objects on the list. There
-will be many objects and only the recent objects are shown here. We will
+Since it is a workshop, there are limited objects on the list. We will
 use the Catalog tool to browse the objects and find what we need.
 
 ## Task 2: Explore the catalog
@@ -68,18 +64,18 @@ use the Catalog tool to browse the objects and find what we need.
     only the tables for now. Click on "Tables, views and analytic views
     owned by..." on the right zone 1.
 
-    You can see the MOVIESALES_CA in this list. We are interested in this
+    You can see the MOVIESALES\_CA in this list. We are interested in this
     table since we were told that this table contains movie sales
     transaction data. (Referring to the meeting notes in the introductory
     section of this workshop).
     
-    You could explicitly search for MOVIESALES_CA by typing the name of
+    You could explicitly search for MOVIESALES\_CA by typing the name of
     the table in the search bar but in our case, it is visible in
     the grid view in the middle.
 
     ![Screenshot of listing only tables and views](images/image4_catalog_tables.png)
 
-3.  Click on the MOVIESALES_CA table.
+3.  Click on the MOVIESALES\_CA table.
 
     You can see the data preview. You can scroll right to see more columns
     and scroll down to see more rows. You can also sort the columns by
@@ -97,7 +93,7 @@ use the Catalog tool to browse the objects and find what we need.
 
 4.  Look for the other tables of interest on the main catalog page.
     If you remember the meeting notes in the introductory section of this
-    workshop, we are also interested in CUSTOMER_CA and GENRE tables.
+    workshop, we are also interested in CUSTOMER\_CA and GENRE tables.
     Find and click on these tables to do a data preview.
 
     ![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
@@ -118,8 +114,8 @@ use the Catalog tool to browse the objects and find what we need.
 
 ## RECAP
 
-In this lab, we used Data Catalog to search for the desired objects in the database. There are different 
-ways to search for an object and display the search results. We also learned how to do data preview. There are many more features in the Catalog tool, which are not covered here. These details will be covered in another in-depth workshop.
+In this lab, we used Catalog to search for the desired objects in the database. There are different 
+ways to search for an object and display the search results. We learned how to see a preview of the data in a table. There are many more features in the Catalog tool, which are not covered here. These details will be covered in another in-depth workshop.
 
 You may now **proceed to the next lab**.
 

@@ -1,93 +1,81 @@
 {
-    "workshoptitle": "The Title of the Workshop is Defined in the Manifest File",
-    "include": {"starter-file.sql":"../../data-load/files/starter-file.sql",
-                "sample.json":"../../data-load/files/sample.json",
-                "step2.md":"../../data-load/files/step2.md"},
-    "variables": ["../../variables/variables.json",
-                 "../../variables/variables-in-another-file.json"],
-    "help": "livelabs-help-**enterarea**_us@oracle.com",
+  "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
-        {
-          "title": "Introduction",
-          "description": "Introduction to Data Studio",
-          "type": "odbw",
-          "filename": "../../0-introduction.md"
-        },
-        {
-            "title": "Get Started",
-            "description": "Login to Oracle Cloud",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
-        },
-        {
-            "title": "Lab 1: Provision an Autonomous Database",
-            "description": "Provision Autonomous Database",
-            "type": "livelabs",
-            "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
-        },
-        {
-            "title": "Lab 2: Create a User",
-            "description": "Create a database user",
-            "type": "livelabs",
-            "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started-X.md"
-        },
-        {
-          "title": "Lab 2-2: Create a User",
-          "description": "Create a database user",
-          "type": "livelabs",
-          "filename": "../../../../adbs-tools/getting-started/getting-started.md"
-        },
-        {
-          "title": "Lab 3: Load demo data",
-          "description": "Load demo data for the Data Studio overview workshop",
-          "type": "livelabs",
-          "filename": "../../3-demo-data.md"
-       },
-       {
-          "title": "Lab 4: Understand data analysis requirements",
-          "description": "Look at a fictitious data analysis project for requirements",
-          "type": "livelabs",
-          "filename": "../../4-understand-requirements.md"
-        },
-        {
-            "title": "Lab 5: Browse database objects",
-            "description": "Use Data Catalog to browse database objects",
-            "type": "livelabs",
-            "filename": "../../5-browse-objects.md"
-        },
-        {
-          "title": "Lab 6: Load additional data",
-          "description": "Use Load Data to load additional data sets",
-          "type": "livelabs",
-          "filename": "../../6-load-data.md"
+      {
+        "title": "Introduction",
+        "description": "Introduction to Data Studio",
+        "filename": "../../0-introduction.md"
       },
       {
-          "title": "Lab 7: Transform and prepare data",
-          "description": "Use Data Transforms to transform and prepare data",
+        "title": "Get Started",
+        "description": "Login to Oracle Cloud",
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+      },
+      {
+          "title": "Lab 1: Provision an Autonomous Database",
+          "description": "Provision Autonomous Database",
           "type": "livelabs",
-          "filename": "../../7-transform-data.md"
-        },
-        {
-          "title": "Lab 8: Analyze data",
-          "description": "Use Data Analysis to analyze data",
+          "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
+      },
+      {
+          "title": "Lab 2: Create a User",
+          "description": "Create a database user",
           "type": "livelabs",
-          "filename": "../../8-analyze-data.md"
-        },
-        {
-          "title": "Lab 9: Explore data insights",
-          "description": "Use Data Insight to find hidden patterns",
+          "filename": "../../../common/create-user.md"
+      },
+      {
+        "title": "Lab 3: Load demo data",
+        "description": "Load demo data for the Data Studio overview workshop",
+        "type": "livelabs",
+        "filename": "../../3-demo-data.md"
+      },
+      {
+        "title": "Lab 4: Understand data analysis requirements",
+        "description": "Look at a fictitious data analysis project for requirements",
+        "type": "livelabs",
+        "filename": "../../4-understand-requirements.md"
+      },
+      {
+          "title": "Lab 5: Browse database objects",
+          "description": "Use Data Catalog to browse database objects",
           "type": "livelabs",
-          "filename": "../../9-insight-in-data.md"
-        },
-        {
-          "title": "Lab 10: Clean demo data",
-          "description": "Clean demo data",
-          "type": "livelabs",
-          "filename": "../../10-clean-demo-data.md"
-        },
-        {
-            "title": "Need Help?",
-            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
-        }
-      ]  
+          "filename": "../../5-browse-objects.md"
+      },
+      {
+        "title": "Lab 6: Load additional data",
+        "description": "Use Load Data to load additional data sets",
+        "type": "livelabs",
+        "filename": "../../6-load-data.md"
+      },
+      {
+        "title": "Lab 7: Transform and prepare data",
+        "description": "Use Data Transforms to transform and prepare data",
+        "type": "livelabs",
+        "filename": "../../7-transform-data.md"
+      },
+      {
+        "title": "Lab 8: Analyze data",
+        "description": "Use Data Analysis to analyze data",
+        "type": "livelabs",
+        "filename": "../../8-analyze-data.md"
+      },
+      {
+        "title": "Lab 9: Explore data insights",
+        "description": "Use Data Insight to find hidden patterns",
+        "type": "livelabs",
+        "filename": "../../9-insight-in-data.md"
+      },
+      {
+        "title": "Lab 10: Clean demo data",
+        "description": "Clean demo data",
+        "type": "livelabs",
+        "filename": "../../10-clean-demo-data.md"
+      },
+      {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+      }
+    ]
 }

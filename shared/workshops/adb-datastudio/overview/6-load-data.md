@@ -7,13 +7,10 @@ This lab introduces the Data Load tool of Data Studio built into the Oracle Auto
 
 Estimated Time: 5 minutes
 
-Watch the video below for a quick walkthrough of the lab.
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this workshop, you will learn:
--	How to load data from your local file
+-	How to load data from a local file
 
 ### Prerequisites
 
@@ -30,20 +27,20 @@ we noticed that there is no age group information, so we need to load a
 new table for the age groups.
 
 1.  Go back to the Database Actions home page by clicking on **Database Actions** 
-    in the title bar in the top left, then click **Data Load**
+    in the title bar in the top left, then click on **Data Load**
 
     ![Screenshot of data load card](images/image8_load_card.png)
 
-2.  We need to create a local data file for AGE_GROUP. Launch Excel on
+2.  We need to create a local data file for AGE\_GROUP. Launch Excel on
     your desktop to create this dataset. Note that you can also use a
     text editor to create this data set since it is small.
 
     ![Screenshot of age group data in Excel](images/image9_data_excel.png)
 
-    Save this as an Excel workbook and name it AGE_GROUP.
+    Save this as an Excel workbook and name it AGE\_GROUP.xlsx.
 
     If you don't have Excel then create a CSV file with the data below
-    and save it as AGE_GROUP.csv.
+    and save it as AGE\_GROUP.csv.
 
     *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
     
@@ -71,7 +68,7 @@ new table for the age groups.
 
 ## Task 2: Load age groups from local file
 
-1.  Launch Data Load from the Database Actions page by clicking on the **DATA LOAD** card.
+1.  Launch Data Load from the Database Actions page by clicking on the **Data Load** card.
     
     >**Note:** You can load data from local files, other databases, or from cloud storage.
     You can also create an ongoing feed to load data to Autonomous Database.
@@ -80,11 +77,11 @@ new table for the age groups.
     cloud storage.
     
     In this lab, we are loading data from the local file created in the earlier
-    task. Select **LOCAL FILE** and press **Next**.
+    task. Select **Local File** and press **Next**.
 
     ![Screenshot of load data options](images/image10_load_option.png)
 
-2.  Drag your local file AGE_GROUP.xlsx to the load window.
+2.  Drag your local file AGE\_GROUP.xlsx or AGE\_GROUP.csv to the load window.
 
     ![Screenshot of pick file for load](images/image11_load_file.png)
 

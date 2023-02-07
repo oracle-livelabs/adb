@@ -23,11 +23,11 @@ In this lab, you will:
 
 To complete this lab, you need to have the following:
 
-- All previous labs successfully completed
+- Completed Autonomous Database
 
-## Task 1: Create New Database Users
+## Task 1: Create New Database User
 
-When you create a new data warehouse, you automatically get an account called ADMIN that is your super administrator user. In the real world, you will definitely want to keep your data warehouse data completely separate from the administration processes. Therefore, you will need to know how to create separate new users and grant them access to your data warehouse. This section will guide you through this process using the "New User" wizard within the SQL Worksheet (one of the built-in tools in Autonomous Data Warehouse).
+When you create a new Autonomous Database, you automatically get an account called ADMIN which is your super administrator user. In the real world, you will want to keep your data completely separate from the administration processes. Therefore, you will need to know how to create separate new users and grant them access to your data warehouse. This section will guide you through this process using the "New User" wizard within the SQL Worksheet (one of the built-in tools in Autonomous Data Warehouse).
 
 For this workshop, we need to create one new user.
 
@@ -68,19 +68,14 @@ For this workshop, we need to create one new user.
 
 7.  You need the following user roles to enable tools:
 
-    **DWROLE:** to grant access to load and store data
-    **DATA_TRANSFORM_USER:** to grant access to transform data
+    - **DWROLE:** to grant access to load and store data
+    - **DATA\_TRANSFORM\_USER:** to grant access to transform data
 
-    > **Note:** Access to the data transform tool may give you visibility to other user's data since
-    data access in the data transforms tool are shared between users. Please be aware of this and 
-    enable this role selectively.
+    > **Note:** Access to the Data Transforms tool may grant the user visibility to other users' data since the tool allows you to import and view data from any schema. Please be aware of this and enable this role selectively.
 
     Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first (Granted) and third columns (Default):
 
     > **Note:** Ensure that for each role the **Granted** and **Default** options are selected.
-
-    - DWROLE
-    - DATA\_TRANSFORM\_USER
  
     ![Grant roles to the user](images/dwrole.png)
 
@@ -117,4 +112,4 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
 - Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
-- Last Updated By - Ashish Jain, Rick Green, August 2022
+- Last Updated By - Jayant Mahto, February 2023

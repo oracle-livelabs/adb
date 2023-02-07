@@ -7,9 +7,6 @@ This lab introduces Data Studio’s Data Insights tool built into the Oracle Aut
 
 Estimated Time: 15 minutes
 
-Watch the video below for a quick walkthrough of the lab.
-[](youtube:youtubeid)
-
 ### Objectives
 
 In this workshop, you will learn:
@@ -22,9 +19,9 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
-- Loaded Age group data into AGE_GROUP
-- Prepared data and loaded it into CUSTOMER_SALES_ANALYSIS
-- Created Analytic view CUSTOMER_SALES_ANALYSIS_AV
+- Loaded Age group data into AGE\_GROUP
+- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS
+- Created Analytic view CUSTOMER\_SALES\_ANALYSIS\_AV
 
 ## Task 1: Use Data Insights
 
@@ -43,7 +40,7 @@ see the insight list being refreshed while it is executing.
 
 
 1.  Launch Data Insights by clicking on the Database Actions link on the
-    top and then click on the **DATA INSIGHTS** card.
+    top and then click on the **Data Insights** card.
 
     ![screenshot of the Data Insights card](images/image76_inst_card.png)
 
@@ -61,7 +58,7 @@ see the insight list being refreshed while it is executing.
     whereas if you want to run insights against a single table then you can pick any column
     which you think is a measure.
 
-    Pick **CUSTOMER_SALES_ANALYSIS_AV** for the analytic view, and **TOTAL_SALES**
+    Pick **CUSTOMER\_SALES\_ANALYSIS\_AV** for the analytic view, and **TOTAL\_SALES**
     for the column. 
     
     Click **Search**
@@ -157,7 +154,7 @@ queries and correlating them with what we can see in insights.
 
     ![screenshot of singles by genre insight](images/image83_inst_single_genre.png)
 
-2.  We can go back to the **DATA ANALYSIS** tool to confirm this
+2.  We can go back to the **Data Analysis** tool to confirm this
     insight. Go back to the data analysis and analyze **sales** by **Genre** and
     filter for married and singles alternately.
 
@@ -181,11 +178,11 @@ queries and correlating them with what we can see in insights.
 
 **Isn’t that what Data Insights told us?! It discovered that without any input from us!**
 
-While doing manual analysis in the **DATA ANALYSIS** tool, 
+While doing manual analysis in the **Data Analysis** tool, 
 we must actively look at and compare the data for
 certain hierarchies. There are many combinations, but people use their
-experience to guide their analysis steps. In comparison, **DATA
-INSIGHTS** is a hands-off approach and it finds patterns without
+experience to guide their analysis steps. In comparison, **Data
+Insights** is a hands-off approach and it finds patterns without
 understanding what hierarchies mean.
 
 We think that both are complimentary to each other and provide valuable

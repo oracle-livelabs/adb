@@ -3,7 +3,7 @@
 
 ## Introduction
 
-We will go through "a life in a day" of a data analyst. We will start with the Monday morning of a fictitious team. This team is assigned a task and can use your help in completing it.
+We will go through a day in the life of a Data Analyst. We will start with the Monday morning of a fictitious team. This team is assigned a task and can use your help in completing it.
 
 Estimated Time: 5 minutes
 
@@ -19,7 +19,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- demo data loaded
+- Loaded the demo data for the workshop
 
 
 ## Task 1: Help a fictitious team in a data analysis project
@@ -31,10 +31,10 @@ To complete this lab, you need to have completed the previous labs, so that you 
     Date: Monday 1-09-2023
     Attendees: All team members
     
-    John, VP of marketing, wants to send discount offers to **high-value** customers. 
+    John, VP of marketing, wants to send discount offers to high value customers.
     He wants to know which genres of movies are preferred by different age and marital status groups.
-    He also wants to know **whether movie genre preferences
-    are different across high-value and low-value customers**.
+    He also wants to know whether movie genre preferences
+    are different across high-value and low-value customers.
     
     **Brainstorming:**
 
@@ -48,20 +48,20 @@ To complete this lab, you need to have completed the previous labs, so that you 
     
     Our next step is to look for available data in our database. We find that
     Sales data is loaded into the object store bucket every day. Another team member, Shelly,
-    is going to set up a live feed from the object store to the **MOVIESALES_CA**
+    is going to set up a live feed from the object store to the **MOVIESALES\_CA**
     table. This table will have timestamped sales data. There are tables for
     customer and movie genres as well and we can look for them in the database.
 
     For our project, we can use these tables. If some data is missing then we can load it from
     an external source.
 
-    **Note:** We will assume that live feed is setup to load **MOVIESALES_CA** table.
+    **Note:** We will assume that live feed is setup to load **MOVIESALES\_CA** table.
 
 3.  Action Items:
 
     **Find relevant data**
 
-    Look for **MOVIESALES_CA** and other tables needed for this analysis. Make 
+    Look for **MOVIESALES\_CA** and other tables needed for this analysis. Make 
     sure all needed columns are available with data populated.
 
     Use 'Catalog' tool for browsing and searching.
@@ -92,7 +92,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 
 **Data Studio** in Autonomous Database provides a set of tools to help in such projects, all under one umbrella. There
-is no need to install and manage any additional software. It makes the job of a data analyst easy. They 
+is no need to install and manage any additional software. It makes the job of a Data Analyst easy. They 
 already have their hands full in dealing with data and finding value in it. The least they should
 be worried about is which tool to use for the job at hand and where to get them from.
 
