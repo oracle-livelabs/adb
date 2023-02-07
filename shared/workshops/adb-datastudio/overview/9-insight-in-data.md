@@ -1,4 +1,4 @@
-# Using Data Insights to explore hidden patterns
+# Explore hidden patterns in your data
 
 
 ## Introduction
@@ -18,9 +18,6 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- Loaded the demo data
-- Loaded Age group data into AGE\_GROUP
-- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS
 - Created Analytic view CUSTOMER\_SALES\_ANALYSIS\_AV
 
 ## Task 1: Use Data Insights

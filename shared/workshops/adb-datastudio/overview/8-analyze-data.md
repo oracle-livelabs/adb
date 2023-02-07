@@ -1,4 +1,4 @@
-# Using Data Analysis to analyze your data
+# Analyze your data
 
 
 ## Introduction
@@ -18,9 +18,9 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- Loaded the demo data
-- Loaded Age group data into AGE\_GROUP
-- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS
+- Loaded the demo data (optional)
+- Loaded Age group data into AGE\_GROUP (optional)
+- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS (optional)
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.

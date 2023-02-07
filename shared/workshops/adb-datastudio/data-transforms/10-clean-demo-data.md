@@ -1,4 +1,4 @@
-# Clean demo data for the Data Studio overview workshop
+# Cleaning demo data for the Data Studio overview workshop
 
 
 ## Introduction

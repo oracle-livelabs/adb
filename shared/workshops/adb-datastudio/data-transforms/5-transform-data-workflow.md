@@ -1,4 +1,4 @@
-# Transform your data for analysis
+# Using Data Transforms to prepare data for analysis
 
 
 ## Introduction
@@ -18,8 +18,8 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- Loaded the demo data (optional)
-- Loaded Age group data into AGE\_GROUP (optional)
+- Loaded the demo data
+- Loaded Age group data into AGE\_GROUP
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.

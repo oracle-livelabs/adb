@@ -1,4 +1,4 @@
-# Using Catalog to browse for your objects
+# Browse for your objects
 
 
 ## Introduction
