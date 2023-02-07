@@ -1,16 +1,18 @@
-# Using Data Transforms to prepare data for analysis
+# Import data entity definition
 
 
 ## Introduction
 
-This lab introduces the Data Transforms application built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
+This lab guides you to import the data entity definitions from various connections. These will be used as source or target 
+in data flow and data load processes.
 
-Estimated Time: 25 minutes
+Estimated Time: ?? minutes
 
 ### Objectives
 
 In this workshop, you will learn:
--	How to transform and prepare your data for analysis
+-   How to create a connection
+-	How to import your data entity definition
 
 ### Prerequisites
 
