@@ -36,17 +36,15 @@ In this lab, you will use the Graph Studio feature of Autonomous Database to:
 
 Graph Studio is a feature of Autonomous Database. It is available as an option on the Database Actions Launchpad. You need a graph-enabled user to log into Graph Studio. When you created the MOVIESTREAM user in Lab 2, you had graph-enabled that user.
 
-1. In your **Autonomous Database Details** page, click the **Tools** tab.
+1. In your **Autonomous Database Details page** page, click the **Database Actions**.
 
-    **Note:** Graph Studio is also accessible by clicking **Database Actions** on the Autonomous Database Details page.
+    ![Click the Database Actions button](images/click-database-actions.png " ")    
 
-    ![Click the Tools tab](images/click-tools-tab.png " ")    
-
-2. On the Tools panel, click **Open Graph Studio**.
+2. On the Database Actions panel, click **Graph Studio**.
 
     ![Click Open Graph Studio](images/graphstudiofixed.png " ")
 
-2. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
+3. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
 
     ![Use the credentials for database user MOVIESTREAM](images/graph-login.png " ")
 

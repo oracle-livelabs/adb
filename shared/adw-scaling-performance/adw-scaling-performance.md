@@ -40,6 +40,8 @@ Estimated Time: 10 minutes
 
     ![A refreshed database console page with updated OCPU count and storage.](./images/the-result-of-scaling.png " ")
 
+6. **IMPORTANT**: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 1 OCPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. If you are running this workshop in your own tenancy and you have sufficient OCPUs and storage, you can skip this step.
+
 ## Task 2: Performance and Concurrency Benefits of Dynamic Scaling
 
 1.  Watch a demo of the performance impact of scaling up your instance. It shows how you can dynamically scale up a database while the workload is running, to increase transaction throughput. Scaling up can also provide more concurrency for your users.

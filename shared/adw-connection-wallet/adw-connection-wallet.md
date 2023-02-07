@@ -38,7 +38,7 @@ The first of two methods we'll learn for establishing a secure SQL Developer con
 
 When you provisioned your autonomous database instance with a network access type of "Secure access from everywhere", by default, mTLS authentication was required, and the only ways to enable TLS in addition to mTLS are either to define an access control list (ACL) or to use a private endpoint. For this lab, you will configure an **IP ACL** (access control list). Then you will be able to uncheck the "Require mutual TLS" checkbox, which in turn will enable TLS for connecting without a wallet.
 
-  >**Note**: See the documentation [Update your Autonomous Database Instance to Allow both TLS and mTLS Authentication] (https://docs.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud/cswgs&id=ADBSA-GUID-6A34B30A-3692-4D1F-8458-FD8F32736199) for detailed information on allowing TLS connections.
+>**Note**: See the documentation [Update your Autonomous Database Instance to Allow both TLS and mTLS Authentication] (https://docs.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud/cswgs&id=ADBSA-GUID-6A34B30A-3692-4D1F-8458-FD8F32736199) for detailed information on allowing TLS connections.
 
 To create a new TLS connection to Autonomous Database:
 
@@ -46,7 +46,7 @@ To create a new TLS connection to Autonomous Database:
 
     ![Click the Edit button next to Access control list](./images/click-edit-to-create-acl.png " ")
 
-2. In the **Edit Access Control List** dialog, click **Add My IP Address**. Your computer's IP address will be added as a value. Click **Save Changes**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
+2. In the **Edit Access Control List** dialog, click **Add My IP Address**. Your computer's IP address will be added as a value. Click **Save**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
 
     ![Click Add My IP Address and click Save Changes](./images/click-add-my-ip-address.png " ")
 
@@ -54,7 +54,7 @@ To create a new TLS connection to Autonomous Database:
 
     ![Click the Edit button next to Mutual TLS authentication](./images/click-edit-to-uncheck-mtls.png " ")
 
-4. In the **Edit Mutual TLS Authentication** dialog, deselect the checkbox that requires mutual TLS (mTLS) authentication and and click **Save Changes**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
+4. In the **Edit Mutual TLS Authentication** dialog, deselect the checkbox that requires mutual TLS (mTLS) authentication and and click **Save**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
 
     ![Deselect mutual TLS](./images/deselect-mtls-checkbox.png " ")
 
@@ -64,7 +64,7 @@ Next, perform the following steps to obtain the **TLS connection string**.
 
 5. In the **Autonomous Database Details** page, click the **Database connection** button.
 
-    The **Database Connection** dialog pops up. In the **Connection Strings** section, change the **TLS Authentication** selection from Mutual TLS to **TLS**. This will enable SQL Developer and other applications to connect to your autonomous database securely without a wallet.
+    The **Database connection** dialog pops up. In the **Connection Strings** section, change the **TLS Authentication** selection from Mutual TLS to **TLS**. This will enable SQL Developer and other applications to connect to your autonomous database securely without a wallet.
 
     Choose one of the connection strings, such as *adwfinance_high*, and optionally click **Show** to see the contents of the connection string. Then click **Copy** to copy that connection string. Paste the connection string to a notepad for use in a next step. Then click **Close** to close the Database Connection dialog.
 

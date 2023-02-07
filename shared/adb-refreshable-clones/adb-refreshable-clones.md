@@ -83,7 +83,7 @@ Now that you have created a table in the source database and populated it with a
 
 You have proven that the refreshable clone contains the source database's table with one row of data. Now add a second row of data to the source, and see how to refresh the clone to pick up that second row.
 
-1. Switch back to the **source database's**  Database Actions SQL worksheet. (This will be the **ADW Finance Mart** database instance that you created in this workshop's &quot;Getting Started&quot; lab, or another database you are using as the source.)  Insert and commit an additional row into the source database. You now have 2 rows in the source but only a single row in the refreshable clone. Make note of the time when you inserted the second row.
+1. Switch back to the **source database's**  Database Actions SQL worksheet. (This will be the **ADW\_Finance\_ Mart** database instance that you created in this workshop's **Provision an Autonomous Database** lab, or another database you are using as the source.)  Insert and commit an additional row into the source database. You now have 2 rows in the source but only a single row in the refreshable clone. Make note of the time when you inserted the second row.
 
     ```
     <copy>insert into refreshclonetests (testcol) values ('You can refresh whenever you need!');
