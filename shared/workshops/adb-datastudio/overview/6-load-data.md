@@ -44,27 +44,19 @@ new table for the age groups.
 
     *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following data text*: 
     
-```
-<copy>
+    ```
+    <copy>
 "MIN_AGE","MAX_AGE","AGE_GROUP",
-
 0,20,"00-20",
-
 21,30,"21-30",
-
 31,40,"31-40",
-
 41,50,"41-50",
-
 51,60,"51-60",
-
 61,70,"61-70",
-
 71,80,"71-80",
-
 81,200,"Older than 81",
-</copy>
-```
+    </copy>
+    ```
 
 ## Task 2: Load age groups from local file
 

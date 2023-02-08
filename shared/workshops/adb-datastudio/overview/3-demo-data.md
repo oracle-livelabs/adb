@@ -52,10 +52,9 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
     *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
-```
-<copy>
+    ```
+    <copy>
 DROP TABLE CUSTOMER_CA;
- 
 CREATE TABLE CUSTOMER_CA 
     ( 
      CUST_ID        NUMBER , 
@@ -67,9 +66,7 @@ CREATE TABLE CUSTOMER_CA
      PET            VARCHAR2 (40) 
     ) 
 ;
-
 DROP TABLE MOVIESALES_CA;
- 
 CREATE TABLE MOVIESALES_CA 
     ( 
      DAY_ID           DATE , 
@@ -86,30 +83,23 @@ CREATE TABLE MOVIESALES_CA
      TOTAL_SALES      NUMBER 
     ) 
 ;
-
 DROP TABLE GENRE;
-
 CREATE TABLE GENRE 
     ( 
      GENRE_ID NUMBER , 
      GENRE    VARCHAR2 (30) 
     ) 
 ;
-
-
 CREATE UNIQUE INDEX PK_GENRE_ID ON GENRE 
     ( 
      GENRE_ID ASC 
     ) 
 ;
-
 ALTER TABLE GENRE 
     ADD CONSTRAINT PK_GENRE_ID PRIMARY KEY ( GENRE_ID ) 
     USING INDEX PK_GENRE_ID 
 ;
-
 DROP TABLE MOVIE;
-
 CREATE TABLE MOVIE 
     ( 
      MOVIE_ID     NUMBER , 
@@ -132,9 +122,7 @@ CREATE TABLE MOVIE
      SUMMARY      VARCHAR2 (16000) 
     ) 
 ;
-
 DROP TABLE TIME;
-
 CREATE TABLE TIME 
     ( 
      DAY_ID           DATE , 
@@ -152,10 +140,8 @@ CREATE TABLE TIME
      YEAR_NAME        NUMBER 
     ) 
 ;
-
 set define on
 define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/prepareandanalyze'
-
 begin
  dbms_cloud.copy_data(
     table_name =>'CUSTOMER_CA',
@@ -184,8 +170,9 @@ begin
  );
 end;
 /
-</copy>
-```
+    </copy>
+    ```
+
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
     >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
