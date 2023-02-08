@@ -107,7 +107,7 @@ CREATE TABLE movie_sales_fact (
 BEGIN
   DBMS_CLOUD.COPY_DATA (
   table_name => 'MOVIE_SALES_FACT',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/av-getting-started-data-studio/table=CUSTOMER_SALES_FACT/*.csv',
+    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/av-getting-started-data-studio/table=MOVIE_SALES_FACT/*.csv',
   format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
   );
 END;
