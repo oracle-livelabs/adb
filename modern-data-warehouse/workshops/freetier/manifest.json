@@ -8,7 +8,7 @@
             "filename": "./../../intro/intro.md"
         },
           {
-            "title": "Getting started",
+            "title": "Get started",
              "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
           },
           {
@@ -22,7 +22,7 @@
             "filename": "./../../json/json.md"
         },
         {
-            "title": "Lab 3: sentiment analysis with Oracle Text",
+            "title": "Lab 3: Sentiment analysis with Oracle Text",
             "description": "In this Lab you will analyse sentiment with Oracle Text.",
             "filename": "./../../text/text.md"
         },
