@@ -58,7 +58,7 @@ new table for the age groups.
     </copy>
     ```
 
-## Task 2: Load age groups from local file
+## Task 2: Load age groups from the local file
 
 1.  Launch Data Load from the Database Actions page by clicking on the **Data Load** card.
     
@@ -92,7 +92,7 @@ new table for the age groups.
 
 In this lab, we used Data Load to load a local file. Note that there are many ways to load data, such as loading from the object store, linking files, live feed etc., which are not covered here. These details will be covered in another in-depth workshop.
 
-You may now **proceed to the next lab**.
+You may now **proceed to the next lab.**
 
 ## Acknowledgements
 

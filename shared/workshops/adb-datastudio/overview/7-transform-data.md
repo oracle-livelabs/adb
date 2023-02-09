@@ -466,6 +466,9 @@ Now we are ready to prepare the data.
 
     ![screenshot of joining with customer](images/image38_cust_join.png)
 
+    It is good practice to keep saving it by clicking on the **Save** icon
+    on the top left (floppy disk icon).
+
 19. Now bring in the **AGE\_GROUP** table and use the Lookup transform. Link it as
     described below.
 
