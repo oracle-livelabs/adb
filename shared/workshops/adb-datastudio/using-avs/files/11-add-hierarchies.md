@@ -22,7 +22,7 @@ You can add hierarchies using the same methods that you added the Time hierarchy
 
 1. Choose the **Edit Analytic View** command.
 
-![Edit Analytic View](images/11-edit-analytic-view.png)
+![Edit Analytic View](../images/11-edit-analytic-view.png)
 
 You are returned to the editor.
 
@@ -32,7 +32,7 @@ Add new Data Sources for the hierarchies. Repeat the following steps for the CUS
 
 1. Select **Data Sources**.
 
-![Add Hierarchy Sources](images/11-add-hierarchy-sources-1.png)
+![Add Hierarchy Sources](../images/11-add-hierarchy-sources-1.png)
 
 2. Select both **CUSTOMER\_DIM** and **SEARCH\_GENRE\_DIM**.
 3. Leave **Generate and Add Hierarchy from Source** off (disabled).
@@ -40,11 +40,11 @@ Add new Data Sources for the hierarchies. Repeat the following steps for the CUS
 
 If you leave **Generate and Add Hierarchy from Source** on, which is easy to do, just close the dialog and carry on with the lab.
 
-![Add Hierarchy Sources](images/11-add-hierarchy-sources-2.png)
+![Add Hierarchy Sources](../images/11-add-hierarchy-sources-2.png)
 
 When you are done your screen should look like this.
 
-![New Hierarchy Sources](images/11-add-hierarchy-sources-3.png)
+![New Hierarchy Sources](../images/11-add-hierarchy-sources-3.png)
 
 ## Task 3 - Add Customer and Search Genre Hierarchies
 
@@ -67,11 +67,11 @@ For example, to add a hierarchy:
 3. Choose **CUSTOMER_DIM**
 4. Choose **CONTINENT**
 
-![Add Continent](images/11-add-continent-hierarchy.png)
+![Add Continent](../images/11-add-continent-hierarchy.png)
 
 After creating the hierarchy, your screen will look like this:
 
-![Continent Hierarchy](images/11-edit-continent-hierarchy-2.png)
+![Continent Hierarchy](../images/11-edit-continent-hierarchy-2.png)
 
 Next, add levels. For example:
 
@@ -82,7 +82,7 @@ Next, add levels. For example:
 
 When you are done with this hierarchy your screen should look like this.
 
-![Continent Hierarchy](images/11-edit-continent-hierarchy-3.png)
+![Continent Hierarchy](../images/11-edit-continent-hierarchy-3.png)
 
 Use the same steps to create the Search Genre hierarchy.
 
@@ -110,7 +110,7 @@ Joins for each of the new hierarchies can now be added.
 
 The completed joins will look like this.
 
-![Three Table Joins](images/11-completed_joins.png)
+![Three Table Joins](../images/11-completed_joins.png)
 
 ## Task 5 - Update the Analytic View
 

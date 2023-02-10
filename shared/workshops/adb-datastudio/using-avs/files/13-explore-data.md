@@ -25,7 +25,7 @@ view has been updated. As before, there are no errors.
 1. Choose the **Analyze** tab.
 2. Choose the **Report** icon (be sure to choose the middle icon).
 
-![Format Measure](images/13-report-1.png)
+![Format Measure](../images/13-report-1.png)
 
 3. Expand the Time hierarchy and move **MONTH** to the **Columns**
     position.
@@ -38,12 +38,12 @@ prior period values are null.
 
 7. Scroll the report to the right to see prior period values.
 
-![Report Prior Period](images/13-report-2.png)
+![Report Prior Period](../images/13-report-2.png)
 
 8. Break the data out by Search Genre by dragging Genre under Continent in
 the Row position.
 
-![Report Prior Period](images/13-report-3.png)
+![Report Prior Period](../images/13-report-3.png)
 
 ## Task 2 - Explore On Your Own
 

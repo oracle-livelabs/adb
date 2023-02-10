@@ -26,21 +26,21 @@ If you are running this lab in your tenancy and do not have access to the Autono
 
 1. If you have access to the Autonomous Database console, choose Database Actions.
 
-![Open Database Actions](images/5-adb-console-access-db-actions.png)
+![Open Database Actions](../images/5-adb-console-access-db-actions.png)
 
 2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions of you are logged in as ADMIN.
 
-![Log out of Database Actions](images/5-db-actions-logout.png)
+![Log out of Database Actions](../images/5-db-actions-logout.png)
 
 3. Sign in as your database user (for example, MOVIESTREAM).
 
-![Log into Database Actions](images/5-db-actions-login.png)
+![Log into Database Actions](../images/5-db-actions-login.png)
 
 4. Open the Data Analysis application.
 
 The first time you open the Analysis Application, introductory cards might be displayed.  You can choose to review the cards or simply close them.
 
-![Open Data Analysis application](images/5-hopscotch.png)
+![Open Data Analysis application](../images/5-hopscotch.png)
 
 You may now **proceed to the next lab**
 

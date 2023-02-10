@@ -34,7 +34,7 @@ Start the design process by creating a new Analytic View. Depending on how you e
 
 1. Press the Create button or choose to Create Analytic View from the menu.
 
-![Create Analytic View](images/6-create-analytic-view.png)
+![Create Analytic View](../images/6-create-analytic-view.png)
 
 2. Choose the fact table. The fact table contains measures such as Sales or Units Sold. In this example, choose MOVIE\_SALES_FACT.
 
@@ -50,7 +50,7 @@ Start the design process by creating a new Analytic View. Depending on how you e
 
 You will want to provide user-friendly names to objects in the Analytic View.  User-friendly names may be used by an application to represent the Analytic View to end users. User-friendly names are entered into Captions. You may also provide a description of the object in the Description field.
 
-![Choose Fact Table and Preview the Data](images/6-choose-fact-table.png)
+![Choose Fact Table and Preview the Data](../images/6-choose-fact-table.png)
 
 You are now off to a good start!
 

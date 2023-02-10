@@ -24,7 +24,7 @@ You can connect to Database Actions using the Autonomous Database Service Consol
 
 1. If you are connecting via the Autonomous Database Service Console, choose the Database Actions button.
 
-![Open Database Actions](images/5-adb-console-access-db-actions.png)
+![Open Database Actions](../images/5-adb-console-access-db-actions.png)
 
 ## Task 2 - Connect to SQL Worksheet
 
@@ -32,7 +32,7 @@ SQL Worksheet allows you to run SQL commands in the Oracle Database. You will ru
 
 1. Choose the SQL button.
 
-![Open Database Actions](images/2-start-sql-worksheet.png)
+![Open Database Actions](../images/2-start-sql-worksheet.png)
 
 You may now **proceed to the next lab**
 

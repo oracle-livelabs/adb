@@ -32,15 +32,15 @@ Estimated Time:  10 minutes.
 
 Right-click on Data Sources and Choose Add Hierarchy Sources.
 
-![Add Hierarchy Sources](images/7-add-hierarchy-sources-1.png)
+![Add Hierarchy Sources](../images/7-add-hierarchy-sources-1.png)
 
 2. **Turn off Generate and Add Hierarchy from Source** (you will do that yourself) and choose the TIME_DIM table.
 
-![Add Hierarchy Sources](images/7-add-time-dim-hier-source.png)
+![Add Hierarchy Sources](../images/7-add-time-dim-hier-source.png)
 
 The table will be added to the sources.  You will specify the join between this table and the fact table after you create levels in the hierarchy.
 
-![Data Sources](images/7-data-sources.png)
+![Data Sources](../images/7-data-sources.png)
 
 ## Task 2 - Create a Time Hierarchy
 
@@ -54,11 +54,11 @@ A hierarchy is created by choosing a column of a hierarchy table. A level in the
 
 **Pro-tip:** Add levels from the highest level to the lowest level and you will not need to sort the levels later.
 
-![Add Hierarchy Sources](images/7-add-time-hierarchy.png)
+![Add Hierarchy Sources](../images/7-add-time-hierarchy.png)
 
 A hierarchy named YEAR with a single level, YEAR, will be created.
 
-![New Time Hierarchy](images/7-new-time-hierarchy.png)
+![New Time Hierarchy](../images/7-new-time-hierarchy.png)
 
 Whether you like the name YEAR for this hierarchy is a matter of personal opinion (or more importantly, the end user's opinions).  Because this hierarchy will have additional levels, rename the hierarchy to Time.
 
@@ -68,7 +68,7 @@ Whether you like the name YEAR for this hierarchy is a matter of personal opinio
 
 5. Enter **Time** in the Caption field.  You can also enter **Time** in the Description.
 
-![Rename Hierarchy to Time](images/7-rename-hier-to-time.png)
+![Rename Hierarchy to Time](../images/7-rename-hier-to-time.png)
 
 You can choose to set the hierarchy to Time. Some applications might benefit from knowing that the hierarchy is Time, but that is not required for time series calculations such as LEAD and LAG.  xLeads and lags are calculated using the order of members within the hierarchy as set by the Sort By property in the Analysis design tool (which sets the ORDER BY property of a level in the attribute dimension SQL DDL).
 
@@ -80,7 +80,7 @@ Viewing data in the TIME_DIM table may help you understand what additional level
 
 1. Press the **Preview Data** button.
 
-![Preview Time Table](images/7-preview-time-table.png)
+![Preview Time Table](../images/7-preview-time-table.png)
 
 Hierarchies include one or more levels where each member of a child (lower) level has a single parent value in the parent (upper) level. For example, each day belongs to a single month, each month belongs to a single quarter, and each quarter belongs to a single year. Some people call this a *natural hierarchy*.
 
@@ -92,17 +92,17 @@ A hierarchy such as DAY\_ID \> MONTH\_OF\_YEAR > QUARTER > YEAR does not fit the
 
 3. Click on **Add Level** and choose the **QUARTER** column.
 
-![Preview Time Table](images/7-add-quarter-level.png)
+![Preview Time Table](../images/7-add-quarter-level.png)
 
 4  Repeat for the **MONTH** and **DAY** levels using the **MONTH** and **DAY_ID** columns.
 
-![All Time Levels](images/7-all-time-levels-sorted.png)
+![All Time Levels](../images/7-all-time-levels-sorted.png)
 
 ## Task 4 - Examine Level Properties
 
 1. Select the YEAR level.
 
-![Year Level Properties](images/7-year-level-properties.png)
+![Year Level Properties](../images/7-year-level-properties.png)
 
 Notes about level properties:
 
