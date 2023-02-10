@@ -137,7 +137,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   > **Note:**  This wizard creates the table for you during the data load process! Notice also that the wizard has automatically mapped the columns. The column mappings looks sensible, both in terms of column names and data types.
 
-10. Click **Close**  in the bottom right to return to the Data Load card and then click the **green button** in the menu panel to start the Data Load job.
+10. Click **Close**  in the bottom right to return to the Data Load card and then click the **Start** button in the menu panel to start the Data Load job, then click **Run** in the pop-up box to confirm.
 
   ![Run data load job](images/run-local.png)
 
@@ -160,5 +160,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
-- Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
+- Contributors - Patrick Wheeler, Ashish Jain, Rick Green
 - Last Updated By - Mike Matthews, January 2023

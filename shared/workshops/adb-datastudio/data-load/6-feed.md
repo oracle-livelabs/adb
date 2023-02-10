@@ -72,6 +72,8 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   Click the **Create Pre-Authenticated Request** button.
 
+  >>**Note:** Pre-authenticated Requests have a default expiry date set a week after creation. For the purposes of this lab, this is fine. However, when you set up a real live feed, you may want to set this well into the future so that the feed continues to work for a while. Alternatively, you can set up the live feed with credentials to the bucket (or use a public bucket) rather than use a pre-authenticated request. If a pre-authenticted request does expire, you can simply create a new one and update the live feed URL in Data Studio.
+
 9. Copy the generated URL of the pre-authenticated request, and paste it into a note or other file, and save it. You will need this later in the lab.
 
   ![Screen showing the generated URL of the Pre-Authenticated Request, with the copy button highlighted](images/par-uri.png)
@@ -81,7 +83,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 1. From the **Database Actions** launchpad, click the Data Studio's **Data Load** card.
 
-  ![The Database Actions page, with the Data Load card selected](images/go-to-dataload.png)
+  ![The Database Actions page, with the Data Load card selected](images/launch-data-load.png)
 
 2. Click **Cloud Locations** to set up access to your new storage bucket.
 
@@ -138,6 +140,8 @@ You will also need login information for Oracle Cloud Infrastructure so that you
   ![The Create Subscription window](images/create-sub.png)
 
 The subscription is now created. It will show as **Pending** for a couple of minutes, then **Active** once it is live.
+
+>> **Note:** There is no need to wait for the subscription to become active before continuing the lab. It will become active while we do the next steps.
 
 7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for **events**, and click the **Rules - Events Service** link:
 

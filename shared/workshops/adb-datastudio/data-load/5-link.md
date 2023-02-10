@@ -34,7 +34,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 ### Set Up a Cloud Location
 
 1. To begin this process, you need to navigate to the **Data Load** page in Data Studio. 
-  ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/go-to-dataload.png)
+  ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/launch-data-load.png)
 2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
   ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
 3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
@@ -74,11 +74,11 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![The SQL that will be used to create the external table](images/linksql.png)
 
-  Here, we can see that the external table will be created linking to a URI ending in *\*.parquet*, so it will encompass all parquet files that exist in the custsales folder.
+  Here, we can see that the external table will be created linking to a URI ending in *\*.parquet*, so it will encompass all parquet files that exist, or may exist in future, in the custsales folder.
 
 5. Click **Close** to close the settings window.
 
-6. Click the green run button to start the data linking job.
+6. Click the **Start** button to start the data linking job.
 
   ![Start the data linking job](images/startlink.png)
 
