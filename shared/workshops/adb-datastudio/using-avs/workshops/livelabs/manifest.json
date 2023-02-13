@@ -20,55 +20,55 @@
         },
         {
             "title": "Lab 2: Open SQL Worksheet",
-            "filename": "../../2-open-sql-worksheet.md"
+            "filename": "../2-open-sql-worksheet.md"
         },
         {
             "title": "Lab 3: Create a Database User",
-            "filename": "../../3-create-user.md"
+            "filename": "../3-create-user.md"
         },
         {
             "title": "Lab 4: Install Sample Data",
-            "filename": "../../4-install-sample-data.md"
+            "filename": "../4-install-sample-data.md"
         },
         {
             "title": "Lab 5: Launch the Data Studio Analysis Tool",
-            "filename": "../../5-launch-analysis-tool.md"
+            "filename": "../5-launch-analysis-tool.md"
         },
         {
             "title": "Lab 6: Create a New Analytic View",
-            "filename": "../../6-create-new-av.md"
+            "filename": "../6-create-new-av.md"
         },
         {
             "title": "Lab 7: Create a Hierarchy",
-            "filename": "../../7-create-hierarchy.md"
+            "filename": "../7-create-hierarchy.md"
         },
         {
             "title": "Lab 8: Define Joins",
-            "filename": "../../8-create-join.md"
+            "filename": "../8-create-join.md"
         },
         {
             "title": "Lab 9: Create a Measure",
-            "filename": "../../9-create-measure.md"
+            "filename": "../9-create-measure.md"
         },
         {
             "title": "Lab 10: Deploy the Analytic View",
-            "filename": "../../10-deploy-av.md"
+            "filename": "../10-deploy-av.md"
         },
         {
             "title": "Lab 11: Add More Hierarchies",
-            "filename": "../../11-add-hierarchies.md"
+            "filename": "../11-add-hierarchies.md"
         },
         {
             "title": "Lab 12: Create a Calculated Measure",
-            "filename": "../../12-create-calculated-measures.md"
+            "filename": "../12-create-calculated-measures.md"
         },
         {
             "title": "Lab 13: Explore Data",
-            "filename": "../../13-explore-data.md"
+            "filename": "../13-explore-data.md"
         },
         {
             "title": "Lab 14: Learn More",
-            "filename": "../../14-learn-more.md"
+            "filename": "../14-learn-more.md"
         },
         {
             "title": "Need Help?",
