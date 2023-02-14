@@ -1,4 +1,4 @@
-# Load additional data set
+# Load the additional data set
 
 
 ## Introduction
@@ -32,8 +32,21 @@ new table for the age groups.
     ![Screenshot of data load card](images/image8_load_card.png)
 
 2.  We need to create a local data file for AGE\_GROUP. Launch Excel on
-    your desktop to create this dataset. Note that you can also use a
-    text editor to create this data set since it is small.
+    your desktop to create this dataset. You can either copy from the following table
+    and paste it into a blank Excel sheet or manually type it in.
+
+    | MIN\_AGE      | MAX\_AGE | AGE\_GROUP |
+| ----------- | ----------- | ----------- |
+| 0 | 20 |  00-20  | 
+| 21 | 30 |  21-30  | 
+| 31 | 40 |  31-40  | 
+| 41 | 50 |  41-50  | 
+| 51 | 60 |  51-60  | 
+| 61 | 70 |  61-70  | 
+| 71 | 80 |  71-80  | 
+| 81 | 200 |  Older than 81  | 
+
+    Your Excel sheet should look like this.
 
     ![Screenshot of age group data in Excel](images/image9_data_excel.png)
 
@@ -92,7 +105,7 @@ new table for the age groups.
 
 In this lab, we used Data Load to load a local file. Note that there are many ways to load data, such as loading from the object store, linking files, live feed etc., which are not covered here. These details will be covered in another in-depth workshop.
 
-You may now **proceed to the next lab.**
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

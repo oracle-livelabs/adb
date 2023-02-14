@@ -102,7 +102,7 @@ see the insight list being refreshed while it is executing.
     **Singles** are purchasing **Adventure** and **Comedy** more than
     average and are not very interested in **Drama**.
     
-    WOW! That is quite an insight.
+    That is an interesting insight.
 
     ![screenshot of insights on singles and genre](images/image80_inst_maritalstatus_genre.png)
 
@@ -113,6 +113,8 @@ see the insight list being refreshed while it is executing.
     bucket. Probably they have lots of disposable income!
 
     ![screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
+
+    Click on the **Back** button to go back to the list.
 
 7.  Now, just for fun let's look at the pet ownership and movie purchase
     relationship.
@@ -129,6 +131,8 @@ see the insight list being refreshed while it is executing.
     patterns just by crawling through the data.
 
     ![screenshot of insights on pet ownership and customer value](images/image82_inst_pet_custvalue.png)
+
+    Click on the **Back** button to go back to the list.
 
   WOW! Quite an insight!! 
   
@@ -193,7 +197,9 @@ They were interesting insights and not very obvious without digging into the dat
 We also compared the results with the Data Analysis tool by doing manual analysis, illustrating 
 the value of automated insights.
 
-Now all the assigned tasks have been completed successfully. 
+Now all the assigned tasks have been completed successfully.
+
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

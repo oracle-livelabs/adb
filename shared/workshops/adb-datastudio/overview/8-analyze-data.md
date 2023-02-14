@@ -99,19 +99,21 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of data analysis home page](images/image59_analysis_home.png)
 
-3.  We don’t have any Analytic Views (AV) yet. Analytic
-    Views organize data using a dimensional model, allowing you to
+3.  In this lab, we are going to create an Analytic View of the movie sales data so we can start to analyze it 
+    and understand our customers’ purchasing patterns. Analytic
+    Views organizes data using a dimensional model, allowing you to
     easily add aggregations and calculations to data sets and present
     data in views that can be queried with relatively simple SQL.
-
-    We don't have any AV yet, therefore we are going to create one.
     
     Select your schema QTEAM and click on **Create** button.
 
+    You can also use three vertical dots to access the create menu.
+
     ![screenshot of creating the analytic view](images/image60_av_create.png)
 
-4.  The default AV name is derived from the fact table. Enter various fields
-    as follows:
+4.  Fact Table: Pick **CUSTOMER\_SALES\_ANALYSIS** from the list
+    
+    The default AV name is derived from the fact table. 
 
     Name: **CUSTOMER\_SALES\_ANALYSIS\_AV**
     
@@ -121,7 +123,6 @@ preferences are different across high-value and low-value customers.
     
     Schema: **QTEAM**
     
-    Fact Table: Pick **CUSTOMER\_SALES\_ANALYSIS** from the list
     
     You can find related tables and hierarchies by clicking on **Generate
     Hierarchy and Measures** button. This will scan your schema and find
@@ -202,10 +203,11 @@ Next, let's learn how to navigate the analysis tool.
 
 2.  Now we can start doing our first analysis.
 
-    Analysis: show me sales amount by age group
+    Analysis: show me the sales amount by age group
     
-    Select chart mode by clicking on the top-right chart icon. Clear all hierarchies from X-Axis and 
-    drag **Age group** to X-Axis and **Total Sales** to Y-Axis.
+    Select chart mode by clicking on the top-right chart icon. By default, X-Axis is populated with 
+    the first hierarchy. If it is not **Age group** then 
+    clear all hierarchies from X-Axis and drag **Age group** to X-Axis and **Total Sales** to Y-Axis.
 
     >**Note:** You need to expand the hierarchy tree to reveal the level. 
     Only the level can be dragged to the analysis area. In our workshop, there 
@@ -254,8 +256,8 @@ Next, let's learn how to navigate the analysis tool.
     It will be interesting to find out whether there is a movie genre
     preference for high-value customers.
 
-    Clear X-Axis and drag **Genre** and **Cust value**. Make sure the **Cust value** is 
-    on the top.
+    Drag **Cust value** to the X-Axis. Make sure the **Cust value** is 
+    on the top of **Genre**.
     
     The chart is very wide, and you can't see to the right. To
     fit the entire width you can drag the right edge of the lower window
@@ -290,9 +292,9 @@ this AV from Excel or Google Sheets.
 
 In this lab, we used the Data Analysis tool to create a dimensional model (Analytic View) on
 the sales analysis table and then analyze movie sales across various dimensions such as age groups, 
-marital status and movie genre.
+marital status and movie genre. We found many interesting patterns in customer purchasing behavior. 
 
-We found many interesting patterns in customer purchasing behavior. 
+Analytic view not only makes the analysis easy in the Data Analysis tool in Data Studio but also in dedicated reporting tools such as OAC or Tableau. As the hierarchies and measures are defined in the database, analysis of this data is always simple to do, and performance-optimized, regardless of the choice of the analysis tool.
 
 You may now **proceed to the next lab**.
 

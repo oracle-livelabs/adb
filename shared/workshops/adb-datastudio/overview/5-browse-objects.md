@@ -20,7 +20,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
 
-## Task 1: Launch Database Action
+## Task 1: Launch Database Actions
 
 1.  Log in to the Autonomous Database created earlier with your user and
     password. You can see various tools under Data Studio.
@@ -107,8 +107,9 @@ use the Catalog tool to browse the objects and find what we need.
     This will search for all the columns with "AGE" in the column name.
     
     We can explicitly search for GROUP as well but we don't see any.
-    It means we don't have any tables or columns with the text GROUP in the name.
-    
+    It means we don't have any tables or columns with the text GROUP in the name. For our workshop, 
+    we needed a table about various age groups. Since we could not find it in the catalog, we will have
+    to load it into the database in the next lab.
 
     ![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
 

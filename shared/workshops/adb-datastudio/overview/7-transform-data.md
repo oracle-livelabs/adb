@@ -253,6 +253,8 @@ The **Data Transforms** tool makes such data preparation tasks easy.
     will have notification messages available by clicking on the bell
     icon.
 
+    After successful test, click on the **Update** to save the connection configuration. 
+
     ![screenshot of the connection test](images/image20_transform_conn_test.png)
 
 >**Note:** In this workshop, we are working with only the data available in
@@ -284,7 +286,7 @@ Now we are ready to prepare the data.
     flow.
     
     Since we are working on this tool for the first time, we don't have a
-    project. Click on + to create a project. Accept the default name for
+    project. Click on + to create a project. Type in **SalesData** for
     the project name.
     
     Click **Next**.
@@ -337,7 +339,7 @@ Now we are ready to prepare the data.
     4: Properties: By clicking on any source/target entity or on a
     transform step, you can view and edit various properties.
     
-    5: Save, validate, and execute.
+    5: Save, execute, and validate.
     
     6: When you click on the empty part of the main canvas then it gives
     you the execution status of the data flow.
@@ -379,9 +381,12 @@ Now we are ready to prepare the data.
     ![screenshot of aggregate attributes](images/image28_agg_attr.png)
 
 9.  Click on Attributes on the left side. You can edit this attribute
-    list. We will remove everything except **CUST\_ID** and
-    **TOTAL\_SALES**. Click on the checkbox and click the delete icon on the
-    right side.
+    list. By default all the columns from previous step have been brought in. 
+    Since we need to aggregate total sales values by customer id, we will remove everything 
+    except **CUST\_ID** and **TOTAL\_SALES**. 
+    
+    Click on the checkboxes against the attributes to be removed (as shown in the screenshot below)
+    and click the delete icon on the right side to remove them.
 
     ![screenshot of aggregate attribute edit](images/image29_agg_edit.png)
 
@@ -431,13 +436,11 @@ Now we are ready to prepare the data.
 
     ![screenshot of binning transform](images/image35_binning.png)
 
-16. In the attribute section, click on **OUTPUT1**.
+16. In the attributes section, click on **OUTPUT1**.
 
     Change the name **Return** to **CUST\_VALUE**. QuintileBinning output
     will go into the **CUST\_VALUE** attribute.
-
-    Confirm that you have changed the name.
-
+    
     ![screenshot of binning output name change](images/image36_binning_output.png)
 
 17. Click on the Column Mapping and enter 5 for the **number of
@@ -477,7 +480,7 @@ Now we are ready to prepare the data.
     Should be the lookup source. Check the property panel on the right. If it is not correct
     then remove the links and link it again.
 
-    Make sure the lookup expression is: 
+    The default lookup condition is blank. Copy the following expression into the lookup condition window.: 
     **CUSTOMER\_CA.AGE between AGE\_GROUP.MIN\_AGE and AGE\_GROUP.MAX_AGE**
     
     Note that you can also optionally use the expression editor.
@@ -490,7 +493,7 @@ Now we are ready to prepare the data.
     ![screenshot of age group lookup](images/image39_agegroup_lookup.png)
 
 20. Now we need to bring in the transaction data again which will be
-    used for analysis later. Drag **MOVIESALES\_CA** into the canvas and
+    used for analysis later. Drag **MOVIESALES\_CA** from the left side entity browser into the canvas again and
     join it.
 
     Make sure the join is: **Aggregate.CUST\_ID=MOVIESALES\_CA1.CUST\_ID**
