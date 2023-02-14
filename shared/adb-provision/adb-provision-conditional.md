@@ -109,8 +109,8 @@ In this lab, you will:
     - __Choose database version__ - Select a database version from the available versions.
     - __OCPU count__ - Number of CPUs for your service. For this lab, specify __1 CPU__. If you choose an Always Free database, it comes with 1 CPU.
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
-    - __Auto Scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
-    - __New Database Preview__ - If a checkbox is available to preview a new database version, do NOT select it.
+    - __OCPU auto scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+    - __Storage auto scaling__ - For this lab, there is no need to enable storage auto scaling, which would allow the system to expand up to three times the reserved storage.
 
     > **Note:** You cannot scale up/down an Always Free autonomous database.
 
@@ -177,4 +177,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager)
-- **Last Updated By/Date** - Arabella Yao, November 2022
+- **Last Updated By/Date** - Richard Green, December 2022

@@ -159,29 +159,27 @@ In this lab, you will:
 
     ![Database instance homepage.](./images/provisioning.png " ")
 
-## Task 3: Check the URL for the Database API for MongoDB
+## Task 3: Find MongoDB API Connection URL
 
-1. Open Database Actions
+These will be needed in later labs.
 
-    On the Autonomous Database Information page, click on the Database Actions button
+1. Go to Tool Configuration
 
-    ![Database Actions button](./images/db-actions.png " ")
+    On the Autonomous Database Information page, click on the __Tool configuration__ tab.
+
+    ![Database Actions button](./images/tool-configuration-tab.png " ")
 
     The Database Actions Console will open in a new browser tab.
 
-2. Find ORACLE DATABASE API FOR MONGODB under Related Services
+2. Find MongoDB API
 
-    Scroll down until you find the **Related Services** section. There should be a card for __ORACLE DATABASE API FOR MONGODB__. Click on that card (if the card is not present, most likely you did not correctly configure your database for secure access).
+    Scroll down the page until you find the section __MongoDB API__. For Autonomous JSON databases, it should be enabled by default. For Autonomous Transaction Processing or Autonomous Data Warehouse, it will be disabled by default and you will need to click __Edit Tool Configuration__ at the top of the page to enable it. If you have not correctly set __Secure access from allowed IPs and VCNs only__ in the previous Task, you will not be able to enable the MongoDB API.
 
-    ![Card for MongoDB API](./images/mongo-card.png " ")
+    ![URL for MongoDB API](./images/mdb-api-url.png " ")
 
 3. Save the URL for __Oracle Database API for MongoDB__
 
-    Once you've clicked on the card, a window will pop-up with two URLs listed.
-
-    Copy the first one (containing port number 27017) and save it with a text editor for later use in lab 3. Close the pop-up window when done.
-
-    ![Copy MongoDB API URL](./images/mongodb-url.png " ")
+    Click on the __Copy__ button to copy the access URL, and save it to a text file for later use.
 
 You may now **proceed to the next lab**.
 

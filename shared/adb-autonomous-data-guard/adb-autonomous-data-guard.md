@@ -27,7 +27,7 @@ Estimated lab time: 15 minutes
 **Recovery Time Object (RTO)**: An organization's tolerance for the unavailability (or downtime) of a service after which business operations can be severely impacted, usually expressed in minutes. This should be as low as possible.
 
 ### How does Autonomous Data Guard Function?
-![](./images/primary-standby-db.png)
+![Diagram showing promary and standby](./images/primary-standby-db.png)
 Autonomous Data Guard monitors the primary database and if the Autonomous Database instance goes down, then the standby instance assumes the role of the primary instance.
 
 Unforeseen database failures due to disasters can happen at any time. Autonomous Data Guard offers the highest level of protection for an enterprise's data availability and system performance requirements.
@@ -44,39 +44,41 @@ After a failover, a new standby for your primary will automatically be provision
 
 * A cross-region standby database can also be created in a **remote region**, different from the local region of your primary database.
 
-    ![](./images/cross-region-data-guard-diagram.jpg)
+    ![Diagram showing cross-region primary and standby databases](./images/cross-region-data-guard-diagram.jpg)
 
 ## Task 1: Enable Autonomous Data Guard
 
-1. If you are not logged in to Oracle Cloud Console, log in and navigate to your Autonomous Database.
+1. If you are not logged in to Oracle Cloud Console, log in and navigate to your Autonomous Database details page.
 
-2. Under **Autonomous Data Guard** section, click **Enable** to enable the Data Guard feature.
+2. In the **Autonomous Data Guard** section, click **Enable** to enable the Data Guard feature.
 
-    ![](./images/enable-adg.png)
+    ![Click Enable under Autonomous Data Guard](./images/enable-adg.png)
 
 3. In the Enable Autonomous Data Guard dialog, in the **Region** drop-down menu, select the same local region where your primary database resides. Click **Enable Autonomous Data Guard**.
 
-    ![](./images/confirm-adg.png)
+    ![Click Enable Autonomous Data Guard](./images/confirm-adg.png)
 
 4. The Autonomous Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
 
-    ![](./images/adw-updating.png)
+    ![Status indicator showing the database is updating](./images/adw-updating.png)
 
     When the standby database is being provisioned, the primary database status becomes available and all database activities can continue as enabling Autonomous Data Guard is non-blocking.
 
-    ![](./images/adw-available.png)
+    ![Status indicator showing the database is available](./images/adw-available.png)
 
     When provisioning completes, the **Status** field indicates Autonomous Data Guard is enabled, and the **Role** field indicates that this database is the primary.
 
-    ![](./images/peer-available.png)
+    ![Indicators showing the status in Enabled and role is Primary](./images/peer-available.png)
 
 5. You can create a total of two standby databases, one local and the other cross-region. You just enabled Autonomous Data Guard to create a local standby database. If your Oracle Cloud account has at least two regions, you can optionally create a second standby database that is cross-region. In the **Resources** section at the bottom left corner of the Autonomous Database Details page, click **Autonomous Data Guard (1)**.
 
-    **Note:** Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. You cannot create a cross region standby database for a database that you provisioned in a LiveLabs hosted environment, nor in an Always Free Database.
+    **Note:** Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. **You cannot create a cross region standby database for a database that you provisioned in a LiveLabs hosted sandbox environment**, nor in an Always Free Database.
 
     ![](./images/navigate-to-define-remote-standby.png)
 
 6. To perform this **optional step** of adding a second standby database that is cross-region, click **Add Standby Database**.
+
+    **Note:** Again, please skip these optional steps if you are running this workshop in a LiveLabs hosted sandbox environment. Cross region standby databases are not yet supported in LiveLabs environments.
 
     ![](./images/click-add-standby-database.png)
 
@@ -138,9 +140,12 @@ To perform a switchover to the **local standby** database, do the following:
 
 3. You can also **optionally** switch over to your remote cross-region standby database if you created one, but in that case you'll switch over from the **remote standby**, rather than from the **primary**. Once your remote standby is provisioned, you will see a "Switchover" option on your remote standby database's console. Clicking the Switchover button **from the remote standby database**, while both your primary and standby are healthy (that is, in the Available or Stopped states), performs a role change - Switching from the primary database to the remote standby database.
 
+    **Note:** Again, please note that if you are running this workshop in a LiveLabs hosted sandbox environment, cross region standby databases are not yet supported in LiveLabs environments.
+
     ![](./images/switchover-to-remote-standby.png)
 
-## Task 3: (Optional) Disable Autonomous Data Guard
+## Task 3: Disable Autonomous Data Guard
+If you are running this workshop in a hosted LiveLabs sandbox, you must perform this task to free up resources for the next lab on creating refreshable clones. If you are running this workshop on your own tenancy and have sufficient resources, you can skip this task.
 
 1. If you are not logged in to Oracle Cloud Console, log in and navigate into your Autonomous Database.
 
@@ -184,4 +189,4 @@ In the rare case when your primary is down and automatic failover is unsuccessfu
 
 ## Acknowledgements
 * Authors - Vandanadevi Rajamani, Database User Assistance; Nilay Panchal, ADB Product Management; Rick Green, Database User Assistance
-* Last Updated By/Date - Rick Green, September 2021
+* Last Updated By/Date - Rick Green, January 2023

@@ -4,6 +4,8 @@
 
 In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Autonomous Transaction Processing (ATP) service to have more CPUs. You will also watch a demo that shows the performance and concurrency impacts of scaling your service online.
 
+Estimated Time: 10 minutes
+
 ### Objectives
 
 -   Learn how to scale up an ADW or ATP service
@@ -11,9 +13,9 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 ## Task 1: Scaling your Autonomous Database Instance
 
-1. Go back to the Cloud Console you used during the provisioning exercise and open the database instance's Details page. From the **action menu**, click the **More Actions** drop-down menu and select **Manage Scaling**.
+1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage scaling** button.
 
-    ![Click Manage Scaling from More Actions drop down menu.](./images/click-manage-scaling.png " ")
+    ![Click Manage scaling button.](./images/click-manage-scaling.png " ")
 
 2.  Fill in the Manage scaling dialog with the following information:
 
@@ -36,7 +38,9 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 5.  When scaling finishes, the message will change to **AVAILABLE**. You may need to refresh the page to see the result of the scale operation.
 
-    ![A refreshed database console page with updated OCPU count and storage.](./images/updated-OCPU-and-storage.png " ")
+    ![A refreshed database console page with updated OCPU count and storage.](./images/the-result-of-scaling.png " ")
+
+6. **IMPORTANT**: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 1 OCPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. If you are running this workshop in your own tenancy and you have sufficient OCPUs and storage, you can skip this step.
 
 ## Task 2: Performance and Concurrency Benefits of Dynamic Scaling
 
@@ -57,4 +61,4 @@ Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-clo
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - LiveLabs QA Team (Jeffrey Malcolm Jr, Ayden Smith, Arabella Yao)
-- **Last Updated By/Date** - Richard Green, March 2022
+- **Last Updated By/Date** - Richard Green, January 2023

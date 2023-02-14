@@ -1,0 +1,1 @@
+Screenshot of the Target Databases page in Oracle Cloud Infrastructure showing the ad01 target database registered.
