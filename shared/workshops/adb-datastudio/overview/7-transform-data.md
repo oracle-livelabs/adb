@@ -337,8 +337,7 @@ Now we are ready to prepare the data.
     4: Properties: By clicking on any source/target entity or on a
     transform step, you can view and edit various properties.
     
-    5: Save, validate, and execute. We can also schedule the execution
-    from an in-built scheduler.
+    5: Save, validate, and execute.
     
     6: When you click on the empty part of the main canvas then it gives
     you the execution status of the data flow.
@@ -466,7 +465,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of joining with customer](images/image38_cust_join.png)
 
-    It is good practice to keep saving it by clicking on the **Save** icon
+    >**Note:** It is good practice to keep saving. Click on the **Save** icon
     on the top left (floppy disk icon).
 
 19. Now bring in the **AGE\_GROUP** table and use the Lookup transform. Link it as
