@@ -101,7 +101,7 @@ preferences are different across high-value and low-value customers.
 
 3.  In this lab, we are going to create an Analytic View of the movie sales data so we can start to analyze it 
     and understand our customers’ purchasing patterns. Analytic
-    Views organizes data using a dimensional model, allowing you to
+    Views organize data using a dimensional model, allowing you to
     easily add aggregations and calculations to data sets and present
     data in views that can be queried with relatively simple SQL.
     
