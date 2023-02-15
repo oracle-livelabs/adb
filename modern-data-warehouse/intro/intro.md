@@ -20,7 +20,7 @@ During this workshop, we are going to use these capabilities: JSON, Oracle Text,
 
 **Estimated Workshop Time: 2 hours.**
 
-## Objectives
+### Objectives
 
 The aim of this workshop is to explore how Autonomous Data Warehouse can support the types of everyday business operations that are needed for real-world data analysis. At the end of this workshop, you will have learned how to do the following:
 
@@ -34,7 +34,7 @@ The aim of this workshop is to explore how Autonomous Data Warehouse can support
 * Easily create an application using Oracle APEX to get business insights and visualize data
 
 
-## Prerequisites
+### Prerequisites
 
 * [An Oracle Free Tier](https://bit.ly/free-tier-1207), Always Free, Paid or LiveLabs Cloud Account - You can check Getting Started section for more information.
 
