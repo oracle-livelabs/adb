@@ -24,7 +24,7 @@ Now that we understand what a data pipeline is in ADB, let's walk through how to
 
     ![Diagram of the lifecycle of cloud data pipeline](images/pipeline-lifecycle.png " ")
 
-Estimated Time: 10 minutes
+Estimated Lab Time: 10 minutes
 
 ### Objectives
 
@@ -33,6 +33,8 @@ In this lab, you will:
 * Configure the data pipeline attributes
 * Test the data pipeline
 * Start the data pipeline
+* Upload data to your object storage bucket
+* Check that the data pipeline loaded the data into the database
 * Reset the pipeline's state and history
 
 ### Prerequisites
@@ -151,11 +153,23 @@ Before we activate your configured pipeline, let's test that it works. Call the 
 
 ## Task 4: Start the data pipeline
 
+>>>> USE THE 2 MOVIESTREAM FILES MARTY GAVE ME TO UPLOAD: CUSTSALES-2021-11.CSV AND CUSTSALES-2020-12.CSV THAT I SAVED TO MY MAIN DOWNLOADS FOLDER
+
+1. text
+
+## Task 5: Upload data to your object storage bucket
+
 Introductory Text
 
 1. text
 
-## Task 5: Optionally reset the pipeline's state and history
+## Task 6: Check that the data pipeline loaded the data into the database
+
+Introductory Text
+
+1. text
+
+## Task 7: Optionally reset the pipeline's state and history
 
 Introductory Text
 
@@ -173,7 +187,7 @@ The following link provides more information about Oracle Data Pipelines:
 
 * **Author** - Rick Green, Principal Developer, Database User Assistance
 * **Contributor** Nilay Panchal, Principal Product Manager, Autonomous Database
-* **Last Updated By/Date** - Rick Green, January 2023
+* **Last Updated By/Date** - Rick Green, February 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
