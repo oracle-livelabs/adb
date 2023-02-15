@@ -107,9 +107,11 @@ preferences are different across high-value and low-value customers.
     
     Select your schema QTEAM and click on **Create** button.
 
+    ![screenshot of creating the analytic view](images/image60_av_create-1.png)
+
     You can also use three vertical dots to access the create menu.
 
-    ![screenshot of creating the analytic view](images/image60_av_create.png)
+    ![screenshot of creating the analytic view](images/image60_av_create-2.png)
 
 4.  Fact Table: Pick **CUSTOMER\_SALES\_ANALYSIS** from the list
     

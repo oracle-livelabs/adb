@@ -89,7 +89,7 @@ use the Catalog tool to browse the objects and find what we need.
     
     Now close this view by clicking on the bottom right **Close** button.
 
-![Screenshot of data preview](images/image5_catalog_data_preview.png)
+    ![Screenshot of data preview](images/image5_catalog_data_preview.png)
 
 4.  Look for the other tables of interest on the main catalog page.
     If you remember the meeting notes in the introductory section of this
@@ -105,13 +105,13 @@ use the Catalog tool to browse the objects and find what we need.
     **(type: COLUMN) AGE**
     
     This will search for all the columns with "AGE" in the column name.
-    
+
+    ![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
+
     We can explicitly search for GROUP as well but we don't see any.
     It means we don't have any tables or columns with the text GROUP in the name. For our workshop, 
     we needed a table about various age groups. Since we could not find it in the catalog, we will have
     to load it into the database in the next lab.
-
-    ![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
 
 ## RECAP
 

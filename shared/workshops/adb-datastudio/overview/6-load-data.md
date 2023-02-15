@@ -90,7 +90,7 @@ new table for the age groups.
 
     ![Screenshot of pick file for load](images/image11_load_file.png)
 
-3.  Click the green triangle button to start the load.
+3.  Click the **Start** button to start the load.
 
     ![Screenshot of start loading file](images/image12_load_file_start.png)
     

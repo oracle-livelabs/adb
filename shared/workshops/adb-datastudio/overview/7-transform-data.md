@@ -521,10 +521,10 @@ Now we are ready to prepare the data.
     to a new **CUSTOMER\_SALES\_ANALYSIS** table.
 
     Click on the tiny grid at the corner to the end of the data flow (last
-    Join transform) to open the target table property dialog. Note that if
-    we already had a target table then we could simply drag that table in
-    to complete the flow. But in our case, the target table doesn't exist
-    yet.
+    Join transform) to open the target table property dialog. 
+    
+    >**Note:** If we already had a target table then we could simply drag that table in
+    to complete the flow. But in our case, the target table doesn't exist yet.
 
     ![screenshot of creating target table entity](images/image41_create_target.png)
 
@@ -565,10 +565,15 @@ Now we are ready to prepare the data.
 25. You can see that the target table is added to the end of the data
     flow.
 
-    Please note that the target table definition has been stored in
-    the entity list and if you want to recreate or edit the data flow then it will
-    be available on the left side entity list for drag and drop, instead of going
-    through **Add Data Entity** dialog.
+    >**Note:** The target table definition has now been stored in
+    the entity list on the left side. This target table definition is only in the Transforms
+    repository at this point. It will be created in the database after you execute the
+    data flow. 
+    
+    >**Note:** If you want to recreate or edit the data flow at a subsequent time, then you
+    can drag it from the entity list, instead of going
+    through **Add Data Entity** dialog. You can also import/edit/delete the entity definitions in the
+    Entity menu from home page. We are not covering it in this workshop. 
     
     Now we need to make sure the target load properties are correct. Click on
     the target table in the canvas and expand the property panel by

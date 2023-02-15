@@ -7,9 +7,6 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Provision an Autonomous Database Instance](videohub:1_8mxwwm7q)
-
 ### Objectives
 
 In this lab, you will:
@@ -81,8 +78,12 @@ For this workshop, we need to create one new user.
 
     Notice that two additional roles have already been automatically assigned: **CONNECT** and **RESOURCE**.  
 
-8.  Finally, click the **Create User** button at the bottom of the form.
+    Search for **DATA\_TRANSFORM\_USER** role and click on **Granted** and **Default** options.
 
+    ![Grant roles to the user](images/transformsrole.png)
+    
+    Finally, click the **Create User** button at the bottom of the form.
+    
 ## Task 2: Login as User QTEAM
 
 Now you need to switch to working as the user QTEAM, so you can start the next lab on data loading.
