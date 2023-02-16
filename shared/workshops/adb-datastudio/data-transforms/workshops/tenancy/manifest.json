@@ -10,7 +10,7 @@
       {
         "title": "Get Started",
         "description": "Login to Oracle Cloud",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
       },
       {
           "title": "Lab 1: Provision an Autonomous Database",
@@ -67,15 +67,15 @@
         "filename": "../../9-insight-in-data.md"
       },
       {
-        "title": "Lab 10: Wrap up",
-        "description": "Wrap up and clean demo data",
+        "title": "Lab 10: Clean demo data",
+        "description": "Clean demo data",
         "type": "livelabs",
-        "filename": "../../10-wrap-up.md"
+        "filename": "../../10-clean-demo-data.md"
       },
       {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
       }
     ]
 }
