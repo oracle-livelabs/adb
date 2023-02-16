@@ -43,7 +43,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/click-db-dcat.png " ")
     </if>
 
-4. On the **Autonomous Database Details** page, click **Database Actions**.
+4. On the **Autonomous Database details** page, click **Database actions**.
     <if type="livelabs">
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/ll-db-actions-new.png " ")
     </if>
@@ -51,7 +51,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
     </if>
 
-5. A **Launch DB Actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed. In the **Development** section, click the **SQL** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
 
     ![The Database Actions Launchpad Home page is displayed. The SQL card in the Development section is highlighted.](./images/ll-launchpad.png " ")
 
@@ -60,7 +60,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     </if>
 
-    The **SQL Worksheet** is displayed.    
+    The **SQL Worksheet** is displayed. A warning message box about you being logged in as ADMIN user is displayed, close the message box.
 
     ![The ADMIN user is selected in the Navigator tab on the left on the worksheet. The ADMIN user is also displayed and highlighted in the worksheet's banner.](./images/start-sql-worksheet.png " ")
 
@@ -68,7 +68,6 @@ This lab assumes that you have successfully completed all of the preceding labs 
     * Initialize the lab to create the necessary structures such as the `moviestream` schema.
     * Connect to your Data Catalog instance from ADB and query its assets.
     * Synchronize your ADB instance with your Data Catalog instance.
-
 
 ## Task 2: Initialize the Lab
 
@@ -79,53 +78,34 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
 
 1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-    ```markdown
+    ```
     <copy>
     -- Click F5 to run all the scripts at once
 
     declare
-        l_git varchar2(4000);
-        l_repo_name varchar2(100) := 'common';
-        l_owner varchar2(100) := 'oracle-livelabs';
-        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
-    
+    l_uri varchar2(500) := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/adwc4pm/b/workshop_utilities/o/setup/workshop-setup.sql';
     begin
-    -- get a handle to github
-        l_git := dbms_cloud_repo.init_github_repo(
-        repo_name       => l_repo_name,
-        owner           => l_owner );
-
-    -- install the package header
-        dbms_cloud_repo.install_file(
-            repo        => l_git,
-            file_path   => l_package_file,
-            stop_on_error => false);
-
+        dbms_cloud_repo.install_sql(
+        content => to_clob(dbms_cloud.get_object(object_uri => l_uri))
+    );
     end;
     /
     </copy>
     ```
 
+    The output is displayed in the **Script Output** tab at the bottom of the SQL Worksheet.
+
     ![The script is displayed in the Worksheet code section. The Run Script (F5) icon in the Worksheet toolbar is highlighted.](./images/initialize-output.png " ")
 
 <!-- Comments -->
-<!-- Comments
-    The output is displayed in the **Script Output** section at the bottom of the SQL Worksheet.
-
-    ![](./images/ll-initialize-output.png " ")
-
-    >**Note:** The prerequisites to initialize the lab is complete only when you see the message "You can not log in until you set a password ..." in the script's output and in the **moviestream_log** log (in the next step). In addition, make sure that the **Status** bar at the bottom of the SQL Worksheet shows **Code execution finished** with no errors.
-
-    ![](./images/code-execution-complete.png " ")
--->
 
 2. Create the **`MOVIESTREAM`** user. You will login to Oracle Machine Learning (OML) in the next lab using this new user to perform many queries. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-    >**Note:** Substitute the **<``enter-a-secure-password``>** place holder below with your own secured password that you will remember for later use such as **`Training4ADB`**. _Remember the password - you will use it later_.
+    >**Note:** You can substitute the **<``Training4ADB``>** password that we used below with your own secured password. _Remember and save the password - you will use it later_.
 
     ```
     <copy>
-    exec add_adb_user('moviestream','enter-a-secure-password')
+    exec workshop.add_adb_user('moviestream','Training4ADB')
 
     -- Run the command below in order to allow the new user (in this case "moviestream") using ORDS.
     -- This includes connecting via the ADB SQL Tools
@@ -140,8 +120,6 @@ Create and run the PL/SQL procedures to initialize the lab before you synchroniz
     /
     </copy>
     ```
-
-    ![Create the "MOVIESTREAM" user."](./images/create-moviestream-user.png " ")
 
     The output is displayed in the **Script Output** tab.
 
@@ -779,9 +757,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data     
+* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, August 2022
+* **Last Updated By/Date:** Lauran Serhal, February 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
