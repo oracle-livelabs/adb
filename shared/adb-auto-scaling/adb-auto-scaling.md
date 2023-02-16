@@ -48,7 +48,7 @@ In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Develo
 
 2. On the Autonomous Database details page, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** button. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click the **SQL** card. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
 
-    ![Click SQL card in Database Actions Launchpad.](./images/database-actions-launchpad.png)
+    ![Click SQL card in Database Actions Launchpad.](./images/database-actions-launchpad.png " ")
 
 3. Create and save 4 SQL Developer Web worksheets. In SQL Developer Web worksheets, you choose the consumer group from the drop-down menu in the upper-right corner.:
     - Save the first worksheet with the name **Setup**. You will use this worksheet with the LOW consumer group in Task 2, to run the setup that creates a procedure for running test queries. The LOW consumer group is appropriate for non-CPU-intensive tasks such as this creation of a procedure.
