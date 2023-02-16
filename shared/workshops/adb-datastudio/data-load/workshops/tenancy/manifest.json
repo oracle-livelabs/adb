@@ -21,7 +21,7 @@
       {
           "title": "Lab 2: Create a database user",
           "description": "Create a database user",
-          "filename": "https://oracle-livelabs.github.io/adb/shared/workshops/adbs-tools/getting-started/getting-started.md"
+          "filename": "../../../common/create-user.md"
       },
       {
           "title": "Lab 3: Load data from local files",
