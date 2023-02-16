@@ -40,7 +40,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 1. Log in to Oracle Cloud Infrastructure (OCI) at https://cloud.oracle.com 
 
-  >**Note:** See the **Get Started** lab at the beginning of this workshop for instructions to log in to OCI if you are using an Oracle Live Labs account. Otherwise, use your normal OCI credentials to log in to your tenancy.
+>**Note:** See the **Get Started** lab at the beginning of this workshop for instructions to log in to OCI if you are using an Oracle Live Labs account. Otherwise, use your normal OCI credentials to log in to your tenancy.
 
 2. Click the menu in the top left of your screen, and select **Storage**
 
@@ -52,7 +52,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 4. Under **Compartment**, select a suitable compartment for the new storage bucket. 
 
-  >**Note:** If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous Database has been created. This example uses a compartment named 'sandbox'.
+>**Note:** If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous Database has been created. This example uses a compartment named 'sandbox'.
 
 5. With a suitable compartment selected, click the **Create Bucket** button to set up a new bucket
 
@@ -72,7 +72,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   Click the **Create Pre-Authenticated Request** button.
 
-  >>**Note:** Pre-authenticated Requests have a default expiry date set a week after creation. For the purposes of this lab, this is fine. However, when you set up a real live feed, you may want to set this well into the future so that the feed continues to work for a while. Alternatively, you can set up the live feed with credentials to the bucket (or use a public bucket) rather than use a pre-authenticated request. If a pre-authenticted request does expire, you can simply create a new one and update the live feed URL in Data Studio.
+>**Note:** Pre-authenticated Requests have a default expiry date set a week after creation. For the purposes of this lab, this is fine. However, when you set up a real live feed, you may want to set this well into the future so that the feed continues to work for a while. Alternatively, you can set up the live feed with credentials to the bucket (or use a public bucket) rather than use a pre-authenticated request. If a pre-authenticted request does expire, you can simply create a new one and update the live feed URL in Data Studio.
 
 9. Copy the generated URL of the pre-authenticated request, and paste it into a note or other file, and save it. You will need this later in the lab.
 
@@ -141,7 +141,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 The subscription is now created. It will show as **Pending** for a couple of minutes, then **Active** once it is live.
 
->> **Note:** There is no need to wait for the subscription to become active before continuing the lab. It will become active while we do the next steps.
+> **Note:** There is no need to wait for the subscription to become active before continuing the lab. It will become active while we do the next steps.
 
 7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for **events**, and click the **Rules - Events Service** link:
 
