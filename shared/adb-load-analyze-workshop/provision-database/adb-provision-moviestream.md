@@ -4,7 +4,9 @@
 
 #### Video Preview
 
-[](youtube:BvSkiWWhuN4)
+<!--[](youtube:BvSkiWWhuN4)-->
+
+[Provision an Autonomous Database](videohub:1_o5aynk24)
 
 In just a few minutes, Autonomous Database lets you deploy a complete data warehousing platform that can scale to your requirements. And, you can use its Database Tools to easily populate that warehouse from the data lake.
 
@@ -41,6 +43,6 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 ## Acknowledgements
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marty Gubar, Sept 2022
+- **Adapted for Cloud by** - Rick Green, Principal Developer, Database User Assistance
+- **Last Updated By/Date** - Rick Green, February 2023
 - **Built with Blocks**

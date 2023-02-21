@@ -57,11 +57,11 @@ Click in **View Account** and **Sign in to Cloud**.
 
 3. Select **Create Instance**.
 
-    Complete the form using the following information:
+    ![Create Instance](./images/create-oac-instance.png)
 
-    - **Compartment**: Select a valid compartment in your tenancy
+    Complete the form using the following information:
     
-    - **Instance Name**: `WORKSHOPADWOAC`
+    - **Name**: `WORKSHOPADWOAC`
         ```
         <copy>WORKSHOPADWOAC</copy>
         ```
@@ -69,15 +69,20 @@ Click in **View Account** and **Sign in to Cloud**.
         ```
         <copy>Analytics Instance for the cloud</copy>
         ```
-    - **Feature Set**: Enterprise Analytics (important)
-    
-    - **Capacity**: 1 - Non Production
-    
+    - **Compartment**: Select a valid compartment in your tenancy
+
+    - **Capacity Type**: OCPU
+
+    - **OCPU Count**: 1 - Non Production
+
     - **License Type**: "Subscribe to a new Analytics Cloud software > license and the Analytics Cloud." (You will use this service as part of the free Oracle Cloud trial that you requested for this workshop).
+
+    - **Feature Set**: Enterprise Analytics (important)
 
 4. Select **Create**.
 
-    ![OAC Instance Creation](./images/oac-creation-details-new.png)
+    ![OAC Instance Creation Capacity](./images/oac-creation-details-capacity.png)
+    ![OAC Instance Creation License](./images/oac-creation-details-license.png)
 
 5. On the **Confirmation** screen, select **Create**.
 
@@ -85,7 +90,7 @@ Click in **View Account** and **Sign in to Cloud**.
 
     ![OAC Instance Creating](./images/oac-creating.png)
 
-    ***Reminder***: Provisioning an Oracle Analytics Cloud instance can take over **40 minutes**.
+    ***Reminder***: Provisioning an Oracle Analytics Cloud instance can take over **10 minutes**.
 
 6. The Analytics instance page will be displayed with a status of **ACTIVE**.
 
