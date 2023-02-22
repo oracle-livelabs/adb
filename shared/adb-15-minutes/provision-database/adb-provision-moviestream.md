@@ -19,10 +19,13 @@ In this lab, you will:
 
 ## Task 1: Choose Autonomous Database from the Services Menu
 
-1. Log in to the Oracle Cloud Interface.
-2. Once you log in, you arrive at the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices and then click **Autonomous Database**.
+1. Log in to the Oracle Cloud Interface. Once you log in, you arrive at the Oracle Cloud dashboard where you can see all the services available to you. Click the navigation menu in the upper left corner to show top level navigation choices.
 
-    ![Oracle home page.](./images/navigation.png " ")
+    ![Oracle Cloud Service dashboard.](./images/cloud-service-dashboard.png " ")
+
+2. Click **Oracle Database** and then click **Autonomous Database**.
+
+    ![Choose Autonomous Database from navigation menu.](./images/navigation.png " ")
 
 ## Task 2: Create the Autonomous Database instance
 
