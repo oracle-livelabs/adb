@@ -18,9 +18,9 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- Loaded the demo data (optional)
-- Loaded Age group data into AGE\_GROUP (optional)
-- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS (optional)
+- Loaded the demo data 
+- Loaded Age group data into AGE\_GROUP 
+- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS 
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
@@ -67,12 +67,18 @@ begin
     file_uri_list =>'&file_uri_base/CUSTOMER_SALES_ANALYSIS.csv',
     format =>'{"type" : "csv", "skipheaders" : 1}'
  );
+ FOR TNAME IN (SELECT table_name FROM user_tables  where table_name like 'COPY$%') LOOP
+ EXECUTE IMMEDIATE ('DROP TABLE ' || TNAME.table_name || ' CASCADE CONSTRAINTS PURGE');
+ END LOOP;
 end;
 /
 </copy>
 ```
 
 Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+
+While the script is running, you will see the message "Executing code" at the bottom of the window. 
+The message will change to "SQL executed by QTEAM" when in finishes. There should not be any errors.
 
 >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
@@ -89,15 +95,20 @@ We will go through a few examples such as movie genre
 preference based on age groups and marital status and whether these
 preferences are different across high-value and low-value customers.
 
-1.  Navigate to the Database Actions page and launch the **Data Analysis** tool.
+1.  Navigate to the Data Studio page and launch the **Data Analysis** tool.
 
     ![screenshot of data analysis card](images/image58_analysis_card.png)
 
-2.  The first time when you access the Data Analysis tool, you will see a
-    guiding wizard that will describe various parts of the UI. 
-    Click on X to cancel it and start using the tool right away.
+2.  When you access the Data Analysis tool for the first time, you are presented with a set of 
+    tool tips that explain how to use various features of the tool. You may wish to step through 
+    this brief tutorial, or press X in the top right of any highlighted box to exit at any time. 
 
     ![screenshot of data analysis home page](images/image59_analysis_home.png)
+
+    You can relaunch the tutorial by pressing the binoculars icon in the upper-right corner.
+
+    ![screenshot of data analysis tutorial page](images/image59_analysis_tutorial.png)
+
 
 3.  In this lab, we are going to create an Analytic View of the movie sales data so we can start to analyze it 
     and understand our customers’ purchasing patterns. Analytic
@@ -167,7 +178,7 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of adding a measure](images/image66_av_measure.png)
 
-10. We have completed our AV. Click on **Create** it and confirm **OK**.
+10. We have completed the definition of our Analytic View (AV). Click on **Create** it and confirm **OK**.
 
     ![screenshot of creating an analytic view](images/image67_av_create.png)
 
@@ -182,7 +193,7 @@ preferences are different across high-value and low-value customers.
 ## Task 2: Analyze data
 
 Now the fun part starts. All this time we were preparing the data and
-creating a dimensional model in AV. We will start creating reports, and charts
+creating a dimensional model in the form of an Analytic View (AV). We will start creating reports, and charts
 and start finding hidden patterns in the data.
 
 Next, let's learn how to navigate the analysis tool.
@@ -200,6 +211,9 @@ Next, let's learn how to navigate the analysis tool.
     
     4: Table/Pivot/Chart view. For the remainder of the lab, we will use chart
     view. It is much easier to visualize the information through charts.
+
+    5: Related Insights: Close this section by clicking on the middle of the bar. See screenshot.
+    We won't be needing this for this lab.
     
     ![screenshot of the analysis home page](images/image69_av_analyze_home.png)
 
@@ -240,7 +254,7 @@ Next, let's learn how to navigate the analysis tool.
     Make sure the **Age group** is on top of **Marital status**.
 
     We notice that although singles watch overall more movies, married
-    people watch more than singles in the young age group (21-30, 31-40).
+    people watch more than singles in the younger age group (21-30, 31-40).
     
     This was not obvious before.
 
@@ -265,6 +279,9 @@ Next, let's learn how to navigate the analysis tool.
     fit the entire width you can drag the right edge of the lower window
     towards the right till all customer values are visible on one page. If 
     you don't see the lower window then zoom out on the browser with CTRL -.
+
+    >**Note:** Since the chart is big, you can expand the chart area by collapsing the 
+    left side Data Studio menu and the hierarchy browser window. 
 
     ![screenshot of sales analysis by movie genre and customer value](images/image74_sales_genre_custvalue.png)
 
@@ -293,10 +310,10 @@ this AV from Excel or Google Sheets.
 ## RECAP
 
 In this lab, we used the Data Analysis tool to create a dimensional model (Analytic View) on
-the sales analysis table and then analyze movie sales across various dimensions such as age groups, 
+the sales analysis table and then analyzed movie sales across various dimensions such as age group, 
 marital status and movie genre. We found many interesting patterns in customer purchasing behavior. 
 
-Analytic view not only makes the analysis easy in the Data Analysis tool in Data Studio but also in dedicated reporting tools such as OAC or Tableau. As the hierarchies and measures are defined in the database, analysis of this data is always simple to do, and performance-optimized, regardless of the choice of the analysis tool.
+Analytic Views make analysis easy, not only in Data Studio's Data Analysis tool, but also in tools such as Oracle Analytics, Tableau and PowerBI; even Excel and Google Sheets! As the business model is defined in the database, analysis of this data is always consistent across these tools, as well as being simple and performant. 
 
 You may now **proceed to the next lab**.
 
