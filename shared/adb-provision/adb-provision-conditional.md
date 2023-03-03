@@ -22,14 +22,12 @@ In this lab, you will:
 - This lab requires completion of the Get Started section in the Contents menu on the left.
 
 ## Task 1: Choose ADW or ATP from the services menu
-[](include:goto-service-body.md)
-
-
+    ![Choose ADW or ATP from the services menu](include:goto-service-body.md)
 
 1. Log in to the Oracle Cloud.
 2. Once you log in, the cloud services dashboard shows all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
-    > **Note:** You can also directly access your Autonomous Data Warehouse or Autonomous Transaction Processing service in the **Launch Resources** section of the dashboard.
+    > **Note:** You can also directly access your Autonomous Data Warehouse or Autonomous Transaction Processing service in the **Launch resources** section of the dashboard.
 
     ![Oracle home page.](./images/navigation.png " ")
     ![Launch Resources](./images/launch-resources.png " ")
@@ -67,10 +65,10 @@ In this lab, you will:
 2.  This brings up the __Create Autonomous Database__ screen where you will specify the configuration of the instance.
 
     <if type="livelabs">
-    ![](./images/task2-2.png " ")
+    ![The Create Autonomous Database screen for configuring the instance](./images/task2-2.png " ")
     </if>
     <if type="freetier">
-    ![](./images/task2-2.png " ")
+    ![The Create Autonomous Database screen for configuring the instance](./images/task2-2.png " ")
     </if>
 
 3. Specify basic information for the autonomous database:
@@ -150,7 +148,7 @@ In this lab, you will:
     ![Click Create Autonomous Database.](./images/task2-9.png " ")
 </if>
 <if type="freetier">
-    ![](./images/task2-9.png " ")
+    ![Click Create Autonomous Database.](./images/task2-9.png " ")
 </if>
 
 10. For this lab, do not provide a contact email address. The **Contact Email** field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
@@ -160,7 +158,7 @@ In this lab, you will:
 
 11. Click __Create Autonomous Database__. If you see an error *Authorization failed or requested resource not found*, it means you are not in the compartment assigned to you. To solve this error, refer to Task 1 -> Step 4 to choose the correct compartment assigned to you, as shown on your *Reservation Information* page.
 
-    ![](./images/task2-10.png " ")
+    ![Click Create Autonomous Database.](./images/task2-10.png " ")
 
 12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
 
@@ -177,4 +175,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager)
-- **Last Updated By/Date** - Richard Green, December 2022
+- **Last Updated By/Date** - Richard Green, February 2023
