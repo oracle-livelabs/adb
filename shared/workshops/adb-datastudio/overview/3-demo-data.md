@@ -50,25 +50,8 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 ## Task 2: Execute the script
 
-1. Go to the next step if you are first time loading the demo data. Use this script to cleanup your previously loaded demo data.
-
-    Simply copy and paste this code into your SQL Worksheet.
-
-    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*:
-    ```
-    <copy>
-DROP TABLE CUSTOMER_CA;
-DROP TABLE MOVIESALES_CA;
-DROP TABLE GENRE;
-DROP TABLE MOVIE;
-DROP TABLE TIME;
-    </copy>
-    ```
-    >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command if you run this on an empty schema.
-
-    ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
-
-2. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
+1. Execute the script below to load demo data. Simply copy and paste this code into your SQL Worksheet. If you are
+    trying to re-load the data then you will have to clean it first. Go to step 3 for cleanup script.
 
     *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
@@ -191,12 +174,28 @@ end;
     </copy>
     ```
 
-3. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
     While the script is running, you will see the message "Executing code" at the bottom of the window. 
     The message will change to "SQL executed by QTEAM" when in finishes. There should not be any errors.
 
     ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
+
+3. Use this script to cleanup your previously loaded demo data.
+
+    Simply copy and paste this code into your SQL Worksheet.
+
+    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*:
+    ```
+    <copy>
+DROP TABLE CUSTOMER_CA;
+DROP TABLE MOVIESALES_CA;
+DROP TABLE GENRE;
+DROP TABLE MOVIE;
+DROP TABLE TIME;
+    </copy>
+    ```
+    >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command if you run this on an empty schema.
 
 You may now **proceed to the next lab**.
 
