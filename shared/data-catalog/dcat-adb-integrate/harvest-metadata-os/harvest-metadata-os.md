@@ -1051,8 +1051,8 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, February 2023
+* **Contributor:** Marty Gubar, Product Manager, Server Technologies
+* **Last Updated By/Date:** Lauran Serhal, March 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
