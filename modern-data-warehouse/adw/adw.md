@@ -36,11 +36,11 @@ Estimated Lab Time: 15 minutes.
 
     This will produce a drop-down menu, where you should select **Autonomous Data Warehouse**.
 
-    ![Select Autonomous Data Warehouse](./images/select-autonomous.png)
+    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     This will take you to the management console page.
     
-2. To create a new instance, click the blue **Create Autonomous Database** button.
+2. To create a new instance, click the **Create Autonomous Database** button.
 
     ![Create ADB](./images/create-adb.png)
 
@@ -72,7 +72,7 @@ Estimated Lab Time: 15 minutes.
 
     ![Always Free Logo](./images/always-free-logo.png)
 
-    We have selected 'Always Free Tier On'. 
+    We have selected 'Always Free Tier On'. If you are running this workshop using the **Run on LiveLabs Sandbox** button, leave the 'Always Free Tier On' button unchecked.
 
     To learn more about Always Free check the following [link](https://www.oracle.com/uk/cloud/free/#always-free).
 
@@ -109,7 +109,7 @@ Estimated Lab Time: 15 minutes.
 
 4. Under **Choose a license type** section, choose **License Type: License Included**.
 
-    When you have completed the required fields, scroll down and click on the blue **Create Autonomous Database** button at the bottom of the form:
+    When you have completed the required fields, scroll down and click on the **Create Autonomous Database** button at the bottom of the form:
 
     ![ADB Creation](./images/adb-creation4.png)
 
@@ -117,7 +117,7 @@ Estimated Lab Time: 15 minutes.
 
     ![ADB Creation Provisioning](./images/adb-provisioning.png)
 
-6. A summary of your instance status is shown in the large box on the left. In this example, the color is amber and the status is **Provisioning**.
+6. A summary of your instance status is shown in the large box on the left. In this example, the color is orange and the status is **Provisioning**.
 
     ![ADB Creation Provisioning Amber](./images/provisioning.png)
 
@@ -174,11 +174,10 @@ You have just created an Autonomous Database with the latest features of Oracle 
 
     - **OML:** Enabled
 
+5. Click the **Create User** button.
+
     ![ADB Database User detail](./images/adb-user-details.png)
 
-5. Click the **Create User** button:
-
-    ![ADB Database User detail](./images/adb-user-creation.png)
 
 6. **CNVG** user has been created.
     
