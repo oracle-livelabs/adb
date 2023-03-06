@@ -28,7 +28,7 @@ Let's go through the action items again.
 
 4. Analyze data
 
-    Finally, we analyzed the data. We created an analytic view (AV), which is a dimensional model and learned how to analyze 
+    Finally, we analyzed the data. We created an analytic view (AV), which is a dimensional model, and learned how to analyze 
     the data across various dimension hierarchies. We also found interesting results unearthed by the Insights process. 
 
 Various tools of Data Studio worked seamlessly with each other, helping us complete all the action items successfully.
