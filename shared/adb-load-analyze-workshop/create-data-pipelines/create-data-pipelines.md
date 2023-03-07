@@ -4,7 +4,7 @@
 
 Oracle Data Pipelines provide a continuous, incremental and fault-tolerant way to export and import data into ADB. With data pipelines, you can quickly and automatically load data into your database such as from your object store, as your ETL jobs and other data sources bring in new, clean data into your object store.
 
-If you are loading data into or exporting out of ADB today, you are likely familiar with the `DBMS\_CLOUD` package that provides the ability to load data into your database from the object store with `DBMS\_CLOUD.COPY\_DATA` or export data to your object store using `DBMS\_CLOUD.EXPORT\_DATA`. You may find yourself performing these operations repeatedly (you may even have scheduled jobs) to work with new data that is flowing into your object store or tables. This new Data Pipeline feature introduces the package `DBMS\_CLOUD\_PIPELINE` to simplify and automate this process, providing a unified solution of scheduled jobs for periodic data load and export of new data files with intuitive configurable knobs, legible troubleshooting outputs and default parallelism for optimal scalability.
+If you are loading data into or exporting out of ADB today, you are likely familiar with the **`DBMS_CLOUD`** package that provides the ability to load data into your database from the object store with `DBMS_CLOUD.COPY_DATA` or export data to your object store using `DBMS_CLOUD.EXPORT_DATA`. You may find yourself performing these operations repeatedly (you may even have scheduled jobs) to work with new data that is flowing into your object store or tables. The new Data Pipeline feature introduces the package **`DBMS_CLOUD_PIPELINE`** to simplify and automate this process, providing a unified solution of scheduled jobs for periodic data load and export of new data files with intuitive configurable knobs, legible troubleshooting outputs and default parallelism for optimal scalability.
 
 The two types of data pipelines available are:
 
@@ -17,10 +17,10 @@ The two types of data pipelines available are:
 
 Now that we understand what a data pipeline is in ADB, let's walk through how to create and set up a pipeline, to understand how it works. The steps you will follow to create and use a data pipeline are:
 
-  1. Create a new data pipeline to either load data into the database or export data from the database
-  2. Configure your data pipeline by setting the right attributes as it relates to your data
-  3. Test that the data pipeline loads or exports some sample data as expected
-  4. Start a pipeline to continuously load or export your data
+  1. Create a new data pipeline to either load data into the database or export data from the database.
+  2. Configure your data pipeline by setting the right attributes as it relates to your data.
+  3. Test that the data pipeline loads or exports some sample data as expected.
+  4. Start a pipeline to continuously load or export your data.
 
     ![Diagram of the lifecycle of cloud data pipeline](images/pipeline-lifecycle.png " ")
 
@@ -39,7 +39,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab **Provision an Autonomous Database** found in the Contents menu on the left.
+- This lab requires completion of the labs **Provision an Autonomous Database** and **Load Data from Object Storage Private Buckets** found in the Contents menu on the left.
 
 ## Task 1: Create a data pipeline
 
@@ -53,7 +53,7 @@ Begin by creating a data pipeline to either load data or export data continuousl
      DBMS_CLOUD_PIPELINE.CREATE_PIPELINE(
         pipeline_name => 'MY_FIRST_PIPELINE',
         pipeline_type => 'LOAD',
-        description   => 'Load employee data from object store into a table'
+        description   => 'Load customer sales data from object store into a table'
     );
     END;
     /
@@ -62,25 +62,15 @@ Begin by creating a data pipeline to either load data or export data continuousl
 
 ## Task 2: Configure the data pipeline attributes
 
-Next, you will set the right attributes for the data pipelines, such as the type of data files (for example JSON, CSV) and the location where the data files will lie (for example an object store bucket or file folder), as well as create the destination table in the database that your pipeline will load data into.
+Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a custsales CSV file that you will download and then upload to your object storage bucket. **CUSTSALES** will be the destination table in your autonomous database that your pipeline will load data into.
 
-1. In this example, we are considering employee data so let's create the destination table **EMPLOYEE**:
+1. Define the attributes for the data pipeline. The pipeline will import all data files of **CSV type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name).
 
-    ```
-    <copy>
-    CREATE TABLE EMPLOYEE (name VARCHAR2(128), age NUMBER, salary NUMBER);
-    </copy>
-    ```
+    In **Lab 6: Load Data from Object Storage Private Buckets**, you created an object storage bucket and credentials to access that bucket from your autonomous database. Now you will set up continuous data loading using the object storage URL of your bucket.
 
-2. **DO I REFERENCE THE LABS IN LOAD AND ANALYZE TO CREATE BUCKET WITH DATA FILES IN IT AND A CREDENTIAL PARAMETER TO ACCESS IT FROM THIS WORKSHOP'S DATABASE? OR DO I COPY/PASTE THE TASKS FROM THAT WORKSHOP INTO HERE?**
+    Run the following code snippet in your SQL worksheet.
 
-    We have defined the attributes for the data pipeline below - Importing all data files of **JSON type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name)
-
-    In a previous lab, you created an object storage bucket and credentials to access that bucket from your autonomous database. Now you will set up continuous data loading using the object storage URL of your bucket.
-
-    **Note**: For the credential, you may also setup [Resource Principles](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/resource-principal-use.html#GUID-EE5C24AD-34A5-4474-9B6A-9F606AABBA98) for the various different object store cloud providers to simplify access, if needed.
-
-    Run the following code snippet in your SQL worksheet:
+    **Note**: For the **credential name** value, use the name of the credential you created in Lab 6, Task 6. For the **location** value, swap in the base URL path you identified in Lab 6, Task 4.:
 
     ```
     <copy>
@@ -88,9 +78,9 @@ Next, you will set the right attributes for the data pipelines, such as the type
      DBMS_CLOUD_PIPELINE.SET_ATTRIBUTE(
        pipeline_name => 'MY_FIRST_PIPELINE',
        attributes => JSON_OBJECT(
-                    'credential_name' VALUE 'OBJECT_STORE_CRED',
+                    'credential_name' VALUE 'OBJ_STORE_CRED',
                     'location' VALUE 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/namespace-string/b/mybucket/o/',
-                    'table_name' VALUE 'EMPLOYEE',
+                    'table_name' VALUE 'CUSTSALES',
                     'format' VALUE '{"type": "json"}',
                     'priority' VALUE 'HIGH', 'interval' VALUE '30') );
 
@@ -101,7 +91,7 @@ Next, you will set the right attributes for the data pipelines, such as the type
 
 ## Task 3: Test the data pipeline
 
-Before we activate your configured pipeline, let's test that it works. Call the `DBMS\_CLOUD\_PIPELINE.RUN\_PIPELINE\_ONCE` procedure to run your pipeline once, on-demand. This will not create a repeating scheduled job.
+Before we activate your configured pipeline, let's test that it works. Call the `DBMS_CLOUD_PIPELINE.RUN_PIPELINE_ONCE` procedure to run your pipeline once, on-demand. This will not create a repeating scheduled job.
 
 1. Run the following code snippet in your SQL worksheet:
 
@@ -115,7 +105,7 @@ Before we activate your configured pipeline, let's test that it works. Call the 
     /
     </copy>
     ```
-2. You can monitor and troubleshoot your pipeline's running job by examining the `user\_cloud\_pipeline\_history` view or by querying the `status\_table` for each file in the pipeline via the `user\_cloud\_pipelines` view.
+2. You can monitor and troubleshoot your pipeline's running job by examining the `user_cloud_pipeline_history` view or by querying the `status_table` for each file in the pipeline via the `user_cloud_pipelines` view.
 
     Run the following code snippet in your SQL worksheet:
 
@@ -128,7 +118,7 @@ Before we activate your configured pipeline, let's test that it works. Call the 
     ```
     ![Monitor the running pipeline using queries](images/monitor-pipeline-running-job.png " ")
 
-3. If something did go wrong causing your pipeline's file load to fail, you may query the database table `USER\_LOAD\_OPERATIONS` along with the operation IDs of your pipeline to get the related LOG and BAD files for the data load. This will provide insight into which lines in the data file cause a problem in the load.
+3. If something did go wrong causing your pipeline's file load to fail, you may query the database table `USER_LOAD_OPERATIONS` along with the operation IDs of your pipeline to get the related LOG and BAD files for the data load. This will provide insight into which lines in the data file cause a problem in the load.
 
     Run the following code snippets in your SQL worksheet:
 
@@ -151,33 +141,86 @@ Before we activate your configured pipeline, let's test that it works. Call the 
     </copy>
     ```
 
-## Task 4: Start the data pipeline
+## Task 4: Optionally reset the pipeline's state and history
 
->>>> USE THE 2 MOVIESTREAM FILES MARTY GAVE ME TO UPLOAD: CUSTSALES-2021-11.CSV AND CUSTSALES-2020-12.CSV THAT I SAVED TO MY MAIN DOWNLOADS FOLDER
+Before proceeding to Start your pipeline, you may use the `DBMS_CLOUD_PIPELINE.RESET_PIPELINE` procedure to reset the pipeline's state and history of loaded files. As below, you may also optionally purge the data in database or object store. A data pipeline must be in stopped state to reset it.
 
-1. text
+1. Run the following code snippet in your SQL worksheet:
 
-## Task 5: Upload data to your object storage bucket
+    ```
+    <copy>
+    BEGIN  
+    DBMS_CLOUD_PIPELINE.RESET_PIPELINE(
+         pipeline_name => 'MY_FIRST_PIPELINE',
+         purge_data => TRUE
+    );
+    END;
+    /
+    </copy>
+    ```
 
-Introductory Text
+## Task 5: Start the data pipeline
 
-1. text
+Now that you have tested that your data pipeline is successfully configured, all you have left to do is simply start the pipeline.
 
-## Task 6: Check that the data pipeline loaded the data into the database
+Once your pipeline has been started, it is now running and since it is a load data pipeline, it will pick up new data files to load that have not been successfully processed yet, as they are moved into your object storage bucket.
 
-Introductory Text
+It is important to note here that the load pipeline identifies, loads and keeps track of new data files by their filename; updating or deleting data from an existing filename that had already been loaded successfully in the past will not affect data in the database. The pipeline will also retry loading a previously failed file several times.
 
-1. text
+1. Run the following code snippet in your SQL worksheet:
 
-## Task 7: Optionally reset the pipeline's state and history
+    ```
+    <copy>
+    BEGIN
+          DBMS_CLOUD_PIPELINE.START_PIPELINE(
+          pipeline_name => 'MY_FIRST_PIPELINE'
+       );
+    END;
+    /
+    </copy>
+    ```
 
-Introductory Text
+## Task 6: Download data that you will later upload to object storage
 
-1. text
+For this example, download a .CSV file containing customer sales information. In the next task, you will upload the data to your object storage bucket and test whether the pipeline automatically adds the data to your CUSTSALES table.
 
-Data Pipelines greatly simplify the repetitive nature of loading or exporting new data of similar structure, as it is being populated within a specified location or table. In addition to configuring your own data pipeline, we also provide [Oracle-maintained data pipelines mentioned here](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/pipelines-about.html#GUID-4CC0E833-DD11-4972-B959-508C4EC45A63) out of the box, that are preconfigured to export database logs to a selected object store location.
+1. Copy and paste the following URL to your browser and press the **Enter** key on your keyboard. In the pop-up dialog, click **Save Link As…** to download the file to your computer.
+
+    ```
+    <copy>
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-12.csv
+    </copy>
+    ```
+
+2. Make note of the folder location - you will be using this file in the next task.
+
+## Task 7: Upload the data to your object storage bucket
+
+Now you upload the data to your object storage bucket. The pipeline should detect this new data, and automatically load it into your autonomous database.
+
+1. Upload the `custsales-2020-12.csv` file to your storage bucket. For guidance, look back at the steps that you performed in Lab 4, Tasks 2 and 3 to upload a local file to your bucket.
+
+## Task 8: Check that the data pipeline loaded the data into the database
+
+When you uploaded your new customer sales data to your object store, the pipeline should have detected the new data and loaded it to your target autonomous database.
+
+1. Check that your new data from December of 2020 was loaded from your object store to the CUSTSALES table in your database. In a SQL Worksheet, run the following query to show 10 rows of data where the DAY_ID is the first day of December 2020:
+
+    ```
+    <copy>
+    SELECT *
+    from
+    (SELECT *
+      from CUSTSALES
+      WHERE DAY_ID = "12/1/2020")
+    WHERE ROWNUM <=10;
+    /
+    </copy>
+    ```
 
 ## Learn More
+
+Data Pipelines greatly simplify the repetitive nature of loading or exporting new data of similar structure, as it is being populated within a specified location or table. In addition to configuring your own data pipeline, we also provide [Oracle-maintained data pipelines mentioned here](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/pipelines-about.html#GUID-4CC0E833-DD11-4972-B959-508C4EC45A63) out of the box, that are preconfigured to export database logs to a selected object store location.
 
 The following link provides more information about Oracle Data Pipelines:
 

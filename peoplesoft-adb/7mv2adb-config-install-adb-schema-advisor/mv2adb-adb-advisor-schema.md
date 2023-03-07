@@ -46,7 +46,7 @@ In this lab, you will:
         ```
      * Edit the configuration file under /opt/mv2adb/conf/ or add a new one with syntax “name.cfg”.A configuration file with name psftatp.cfg has been created and the file is edited with only the required fields for the one click MV2ADB run. Sample configuration file is posted  below for reference.The tablespaces filtered out earlier in **Lab 5 : Getting Tablespace information from On-premise PeopleSoft database** are remapped in the MV2ADB configuration file
 
-     ![](./images/config_masked.png "")
+     ![MV2ADB configuration file with data](./images/config_masked.png "")
      
 
 ## Task 2: Installing and running ADB Schema Advisor
@@ -72,7 +72,7 @@ The Advisor discovers the schema objects and performs deep analysis to highlight
 
 3. Analyze the output and count of objects from the ADB Advisor job. After a successful run, output of the job will be available under ‘/opt/mv2adb/out/log’ folder
 
-    ![](./images/analyser_output.png "")
+    ![Output from the ADB Advisor job](./images/analyser_output.png "")
 
 
 You may now **proceed to the next lab.**
@@ -80,4 +80,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023
