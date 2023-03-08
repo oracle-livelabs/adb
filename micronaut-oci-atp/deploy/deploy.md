@@ -92,7 +92,7 @@ The following values should be supplied:
     </copy>
     ```
 
-> *NOTE:* that the command above refers to the directory where you extracted the wallet to (in this case `/tmp/wallet`). If you extracted to a different location you will need to alter the command appropriately.
+> *NOTE:* The command above refers to the directory where you extracted the wallet to (in this case `/tmp/wallet`). If you extracted to a different location you will need to alter the command appropriately.
 
 4. If you are using Gradle, build a runnable JAR file with:
 
@@ -135,7 +135,7 @@ Then install GraalVM 22:
 
     <copy>
     yum check-update
-    sudo yum install graalvm22-ee-11.x86_64
+    sudo yum install graalvm22-ee-17.x86_64
     </copy>
 
 Open up the firewall to port 8080:

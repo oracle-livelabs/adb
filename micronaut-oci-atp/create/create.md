@@ -79,13 +79,14 @@ To configure the Micronaut application to work with Autonomous Database, create 
     </copy>
 
 > **NOTE**: The password you enter should be the Schema user password not the Admin password for the Autonomous Database instance.
+> **NOTE**: If you extracted the wallet to a different location other than `/tmp/wallet`, you need to update the URL accordingly.
 
 ## Task 3: Configure Oracle Autonomous Database JDBC Drivers
 
 If you are using Gradle add the following dependencies to the `build.gradle` file in the root of your project inside the `dependencies` block:
 
     <copy>
-    implementation(platform("com.oracle.database.jdbc:ojdbc-bom:21.7.0.0"))
+    implementation(platform("com.oracle.database.jdbc:ojdbc-bom:21.9.0.0"))
     runtimeOnly("com.oracle.database.security:oraclepki")
     runtimeOnly("com.oracle.database.security:osdt_cert")
     runtimeOnly("com.oracle.database.security:osdt_core")
@@ -99,7 +100,7 @@ Alternatively if you are using Maven, add the following dependencies to your `po
         <dependency>
           <groupId>com.oracle.database.jdbc</groupId>
           <artifactId>ojdbc-bom</artifactId>
-          <version>21.7.0.0</version>
+          <version>21.9.0.0</version>
           <type>pom</type>
           <scope>import</scope>
         </dependency>
@@ -151,7 +152,7 @@ To enable Flyway to run on startup, add the following configuration to your `app
           enabled: true
     </copy>
 
-Replace the contents of the file `src/main/resources/application-test.yml` with the following entry for flyway which will contain your test configuration and set Flyway to clean the schema when the application starts, to ensure tests run with fresh data:
+Create `src/main/resources/application-test.yml` with the following entry for flyway which will contain your test configuration and set Flyway to clean the schema when the application starts, to ensure tests run with fresh data:
 
     <copy>
     flyway:
@@ -164,7 +165,7 @@ Replace the contents of the file `src/main/resources/application-test.yml` with 
 
 ## Task 5: Defining a SQL Migration Script
 
-The next step is to define a SQL migration script that will create the application's initial schema. To do that create a new SQL script in a file called `src/main/resources/db/migration/V1__create-schema.sql` and add the following SQL:
+The next step is to define a SQL migration script that will create the application's initial schema. To do that create a new SQL script in a file called `src/main/resources/db/migration/V1__create-schema.sql` (two underscores after V1) and add the following SQL:
 
     <copy>
     CREATE TABLE "PET" ("ID" VARCHAR(36),"OWNER_ID" NUMBER(19) NOT NULL,"NAME" VARCHAR(255) NOT NULL,"TYPE" VARCHAR(255) NOT NULL);
