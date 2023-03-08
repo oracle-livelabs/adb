@@ -17,7 +17,7 @@ In this lab, you will:
 * SQL Access using ADMIN user on the PeopleSoft ADB-S database.
 
 
-## Task 1: Source On-Premise Peoplesoft Objects count
+## Task 1: Source On-Premise PeopleSoft Objects count
 
 1. Login as Oracle user and connect to the sqlplus prompt by entering the below SQL command
 
@@ -41,7 +41,7 @@ In this lab, you will:
     ```
     Output of the above command from on-premise Peoplesoft database is below
 
-    ![](./images/source-db.png "")
+    ![Output from the PeopleSoft database](./images/source-db.png "")
 
 
 ## Task 2: Peoplesoft Schema objects count on ADB-S
@@ -66,7 +66,7 @@ In this lab, you will:
     ```
     Output of the above command from an ADB-S Peoplesoft database is below
 
-    ![](./images/target-db.png "")
+    ![Output from ADB-S PeopleSoft database](./images/target-db.png "")
 
 
 
@@ -75,4 +75,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023

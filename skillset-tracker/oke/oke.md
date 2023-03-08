@@ -133,11 +133,27 @@ As a prerequisite for this step you should have available the code from **Lab 5:
               image: <your_docker_image>
               volumeMounts:
               - name: oracledb-secret
-                mountPath: /opt/oracle/instantclient_21_6/network/admin
+                mountPath: /opt/oracle/instantclient_21_9/network/admin
                 readOnly: true
 
               ports:
               - containerPort: 8000
+              env:
+              - name: NODE_ORACLEDB_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: oracle-db-connection
+                    key: NODE_ORACLEDB_USER
+              - name: NODE_ORACLEDB_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: oracle-db-connection
+                    key: NODE_ORACLEDB_PASSWORD
+              - name: NODE_ORACLEDB_CONNECTIONSTRING
+                valueFrom:
+                  secretKeyRef:
+                    name: oracle-db-connection
+                    key: NODE_ORACLEDB_CONNECTIONSTRING
             imagePullSecrets:
               - name: ocir
             volumes:

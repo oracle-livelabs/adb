@@ -62,32 +62,26 @@ Estimated Lab Time: 15 minutes.
     - **Workload Type:** Autonomous Data Warehouse  
     
     - **Deployment Type:** Shared Infrastructure
-    
-    - **Always Free:** On
 
     You can select Always Free configuration to start enjoying your Free Autonomous Database. You will have see the Always Free logo next to the name of your database:
 
     ![Always Free Logo](./images/always-free-logo.png)
 
-    We have selected 'Always Free Tier On'. 
-
     To learn more about Always Free check the following [link](https://www.oracle.com/uk/cloud/free/#always-free).
 
     ![ADB Creation Details](./images/adw-creation-details.png)
 
-    - **Choose Database version:** 19c
+    - **Choose database version:** 19c
     
-    - **CPU Count:** 1
-    
-    - **Storage Capacity (TB):** 1
+    - **OCPU count:** 1
+        
+    - **OCPU auto scaling:** Off
 
-    - **CPU Count and Storage Capacity (TB)** are defined by default for the Always Free Tier.
+    - **Storage (TB):** 1
     
-    - **OCPU Auto scaling:** Off
-    
-    - **Storage Auto scaling:** Off
+    - **Storage auto scaling:** Off
 
-    ![ADB Creation Storage](./images/adw-db-version-new.png)
+    ![ADB Creation Storage](./images/adw-db-version.png)
 
 3. Under **Create administration credentials** section:
 
@@ -99,9 +93,9 @@ Estimated Lab Time: 15 minutes.
 
     - Select **'Secure access from everywhere'**: *On*
     
-    ![ADB Creation Password](./images/adw-db-password-new.png)
+    ![ADB Creation Password](./images/adw-db-password.png)
 
-4. Under **Choose a license type** section, choose **License Type: Licence Included**.
+4. Under **Choose a license type** section, choose **License Type: Licence included**.
 
     When you have completed the required fields, scroll down and click on the blue **Create Autonomous Database** button at the bottom of the form:
 
@@ -139,7 +133,7 @@ You have just created an Autonomous Database with the latest features of Oracle 
 
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
-- **Last Updated By/Date** - Priscila Iruela, June 2022
+- **Last Updated By/Date** - Priscila Iruela, Feb 2023
 
 ## Need Help?
 Please submit feedback or ask for help using our [LiveLabs Support Forum](https://community.oracle.com/tech/developers/categories/livelabsdiscussions). Please click the **Log In** button and login using your Oracle Account. Click the **Ask A Question** button to the left to start a *New Discussion* or *Ask a Question*.  Please include your workshop name and lab name.  You can also include screenshots and attach files.  Engage directly with the author of the workshop.

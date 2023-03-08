@@ -24,7 +24,7 @@ In this lab, you will:
 
 1. On the PeopleSoft  machine, download the MV2ADB rpm file [here](https://support.oracle.com/epmos/faces/DocContentDisplay?_afrLoop=291097898074822&id=2463574.1&_afrWindowMode=0&_adf.ctrl-state=v0102jx12_4). Platform specific rpm can be downloaded under the History Tab.
 
-    ![](./images/MOS_history.png)
+    ![Download ADB RPM from the support link](./images/MOS_history.png)
 
 2. Login as root and place the MV2ADB rpm file on /tmp path and install the rpm
 
@@ -40,11 +40,11 @@ In this lab, you will:
 
 1. Click on your **Profile** in the top right, and then click your **Username**.
 
-  ![](./images/authtoken_1.png)
+  ![Click on the OCI profile at the top right and the username](./images/authtoken_1.png)
 
 2. Click on **Auth Token**, and click **Generate**.
 
-  ![](./images/authtoken_2.png)
+  ![Click on Auth token tab and click generate](./images/authtoken_2.png)
   *Note: Copy your Auth Token to a notepad, as you cannot see it once you close the window.*
 
   
@@ -53,15 +53,15 @@ In this lab, you will:
 
 1.  Click on the **Menu** in top left and select **Storage** > **Buckets**.
 
-  ![](./images/object_storage.png)
+  ![Click on the Menu from top left, select storage and then bucket](./images/object_storage.png)
 
 2. Verify you are in the correct **Compartment** and click **Create Bucket**.
 
-  ![](./images/create_bucket.png)
+  ![check the compartment name and hit the create button](./images/create_bucket.png)
 
 3. Enter a **Name** for your bucket, then hit **Create Bucket** again.
 
-  ![](./images/final_create_button.png)
+  ![Enter the name of the bucket to be created](./images/final_create_button.png)
   *Take note of your region, bucket name, and tenancy name for later.*
 
 You may now **proceed to the next lab.**
@@ -69,4 +69,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023
