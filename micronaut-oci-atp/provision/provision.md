@@ -41,27 +41,19 @@ In this lab you will:
 
 ## Task 2: Creating an Autonomous Database Schema User
 
-1. On the "Autonomous Database Details" page click the "Service Console" button.
+1. On the "Autonomous Database Details" page click the "Database Actions" button.
 
 ![Opening Service Console](images/db6.png)
 
 2. Enter "ADMIN" for the username and the password you defined in the previous section.
 
-![Logging into Service Console](images/db6b.png)
-
-3. Click "Development" on the left, then click the "Database Actions" tab on the right.
-
-![Opening Database Actions](images/db6c.png)
-
-4. Enter "ADMIN" for the username and the password you defined in the previous section.
-
 ![Logging into Database Actions](images/db7.png)
 
-5. Under "Development" click the "SQL" button to open the SQL console.
+3. Under "Development" click the "SQL" button to open the SQL console.
 
 ![Accessing the SQL console](images/db8.png)
 
-6. Create a user password (must be at least 12 characters and contain a number and an uppercase letter), then within the worksheet paste the following SQL which will create a schema user with a username of "mnocidemo", replacing the text XXXXXXXXX with the user password:
+4. Create a user password (must be at least 12 characters and contain a number and an uppercase letter), then within the worksheet paste the following SQL which will create a schema user with a username of "mnocidemo", replacing the text XXXXXXXXX with the user password:
 
     ```
     <copy>

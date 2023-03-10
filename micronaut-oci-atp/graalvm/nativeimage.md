@@ -1,4 +1,4 @@
-# Building Native Images with Micronaut & GraalVM
+# Building Native Executables with Micronaut & GraalVM
 
 ## Introduction
 In this lab you will learn how to turn your application into a native executable with GraalVM Native Image.
@@ -22,11 +22,11 @@ In this lab you will:
 
 [GraalVM Native Image](https://www.graalvm.org/reference-manual/native-image/) is a technology that allows performing a closed world static analysis of a Java application and turning the Java application into a native executable designed to execute on a specific target environment.
 
-Whilst building a native image can take some time, the benefits include a dramatic reduction in startup time and reduced overall memory consumption, both of which can significantly reduce the cost of running Cloud applications over time.
+Whilst building a native executable can take some time, the benefits include a dramatic reduction in startup time and reduced overall memory consumption, both of which can significantly reduce the cost of running Cloud applications over time.
 
-## Building a Native Image with Gradle
+## Building a Native Executable with Gradle
 
-If you are using Gradle and the GraalVM SDK with Native Image installed (Native Image is an optional component installable via `gu install native-image`), then building a native image is trivial.
+If you are using Gradle and the GraalVM SDK with Native Image installed (Native Image is an optional component installable via `gu install native-image`), then building a native executable is trivial.
 
 Open up the Terminal pane and run the following command:
 
@@ -34,17 +34,17 @@ Open up the Terminal pane and run the following command:
     ./gradlew nativeCompile
     </copy>
 
-After some time the native image executable will be built to `build/native-image/application`.
+After some time the native executable will be built to `build/native-image/application`.
 
 You can now run the native executable from Terminal:
 
     <copy>
-    MICRONAUT_ENVIRONMENTS=oracecloud ./build/native/nativeCompile/example-atp
+    MICRONAUT_ENVIRONMENTS=oraclecloud ./build/native/nativeCompile/example-atp
     </copy>
 
-## Building a Native Image with Maven
+## Building a Native Executable with Maven
 
-If you are using Maven and the GraalVM SDK with Native Image installed (Native Image is an optional component installable via `gu install native-image`), then building a native image is trivial.
+If you are using Maven and the GraalVM SDK with Native Image installed (Native Image is an optional component installable via `gu install native-image`), then building a native executable is trivial.
 
 Open up the Terminal pane and run the following command:
 
@@ -52,12 +52,12 @@ Open up the Terminal pane and run the following command:
     ./mvnw clean package -Dpackaging=native-image
     </copy>
 
-After some time the native image executable with be built into the `target/native-image` directory.
+After some time the native executable with be built into the `target/native-image` directory.
 
 You can now run the native executable from Terminal:
 
     <copy>
-    MICRONAUT_ENVIRONMENTS=oracecloud ./target/example
+    MICRONAUT_ENVIRONMENTS=oraclecloud ./target/example
     </copy>
 
 You may now *proceed to the next lab*.
