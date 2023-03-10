@@ -3,7 +3,7 @@
 
 ## Introduction
 
-We will go through a day in the life of a Data Analyst. We will start with the Monday morning of a fictitious team. This team is assigned a task and can use your help in completing it.
+We will go through a day in the life of a Data Analyst in a movie streaming business company. We will start with the Monday morning meeting of a fictitious team. This team is assigned a task and can use your help in completing it.
 
 Estimated Time: 5 minutes
 
