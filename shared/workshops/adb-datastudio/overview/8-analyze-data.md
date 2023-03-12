@@ -7,6 +7,9 @@ This lab introduces the Data Analysis application built into the Oracle Autonomo
 
 Estimated Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_kascwyxq)
+
 ### Objectives
 
 In this workshop, you will learn:
