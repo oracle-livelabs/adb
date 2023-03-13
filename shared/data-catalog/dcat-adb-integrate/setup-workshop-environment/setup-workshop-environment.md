@@ -98,9 +98,9 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
     The pinned item is displayed in the **Pinned** section of the **Home** tab the next time you use the Navigation menu.
 
     ![An example that shows the Compartment item pinned.](./images/pinned-item.png " ")
-    
-    The **Recently visited** section of the **Home** tab shows recently used navigation items. 
-    
+
+    The **Recently visited** section of the **Home** tab shows recently used navigation items.
+
     To quickly find navigation menu items, use the **Search** box.
 
 2. On the **Compartments** page, click **Create Compartment**.
@@ -226,7 +226,6 @@ In this task, you create a new and empty business glossary in the newly created 
 
 9. Close the **Glossaries** and **MovieStream Application** tabs.
 
-
 ## Task 5: Create a Dynamic Group
 Dynamic groups allow you to group Oracle Cloud Infrastructure compute instances as "principal" actors (similar to user groups). You can then create policies to permit instances to make API calls against Oracle Cloud Infrastructure services. When you create a dynamic group, rather than adding members explicitly to the group, you instead define a set of matching rules to define the group members. For example, a rule could specify that all instances in a particular compartment are members of the dynamic group. The members can change dynamically as instances are launched and terminated in that compartment.
 
@@ -269,7 +268,6 @@ In this task, you create a dynamic group that includes the specific compartment 
 
     ![The completed Create Dynamic Group dialog box is displayed. Rule 1 field and the Create button are highlighted.](./images/moviestream-dynamic-group-db.png " ")
 
-
 9. The **Dynamic Group Details** page is displayed. Click **Dynamic Groups** in the breadcrumbs to re-display the **Dynamic Groups** page.
 
     ![On the Dynamic Group Details page, the breadcrumbs are displayed at the top of the page. The Dynamic Group Information and Matching Rules sections are displayed.](./images/dynamic-group-details.png " ")
@@ -277,7 +275,6 @@ In this task, you create a dynamic group that includes the specific compartment 
     The newly created dynamic group is displayed.
 
     ![The new dynamic group is displayed on the Dynamic Groups page.](./images/dynamic-group-created.png " ")
-
 
 ## Task 6: Create Access Policy for Dynamic Group
 After you have created a dynamic group, you need to create a policy to permit the dynamic group to access Oracle Cloud Infrastructure services. In this task, you create a policy to allow any resource in the dynamic group to access and manage your Data Catalog in the `training-dcat-compartment` using the aggregate resource-type **`data-catalog-family`** as follows:

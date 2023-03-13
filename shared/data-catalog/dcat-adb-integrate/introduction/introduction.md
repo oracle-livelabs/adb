@@ -4,7 +4,13 @@
 
 The labs in this workshop walk you through all the steps to access the Data Lake using Autonomous Database (ADB) and Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to Synchronize ADB and Data Catalog so that you can query Oracle Object Storage buckets from ADB.
 
+<if type="freetier">
 Estimated Time: 3 hours
+</if>
+
+<if type="livelabs">
+Estimated Time: 2 hours
+</if>
 
 ### What is Data Catalog?
 OCI Data Catalog is a fully managed, self-service data discovery and governance solution for your enterprise data. With Data Catalog, you get a single collaborative environment to manage technical, business, and operational metadata. You can collect, organize, find, access, understand, enrich, and activate this metadata.
