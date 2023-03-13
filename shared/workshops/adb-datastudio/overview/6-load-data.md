@@ -7,6 +7,9 @@ This lab introduces the Data Load tool of Data Studio built into the Oracle Auto
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_o5j922rh)
+
 ### Objectives
 
 In this workshop, you will learn:

@@ -7,6 +7,9 @@ This lab will guide you through the steps to load demo data.
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_3tt5hsic)
+
 ### Prerequisites
 
 - Created an Autonomous Data Warehouse instance
