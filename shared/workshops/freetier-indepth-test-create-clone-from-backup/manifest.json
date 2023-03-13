@@ -49,24 +49,24 @@
             "filename": "./../../adb-autonomous-data-guard/adb-autonomous-data-guard.md"
         },
         {
-            "title": "Lab 8: Create Refreshable Clones",
+            "title": "Lab 8: Create a Clone Database",
+            "description": "Create a Clone Database",
+            "filename": "./../../adb-create-clone-from-backup/adb-create-clone-from-backup.md"
+        },
+        {
+            "title": "Lab 9: Create Refreshable Clones",
             "description": "Creating Refreshable Clones",
             "filename": "./../../adb-refreshable-clones/adb-refreshable-clones.md"
         },
         {
-            "title": "Lab 9: Set Event and Alarm Notifications",
+            "title": "Lab 10: Set Event and Alarm Notifications",
             "description": "Setting Event and Alarm Notifications for an Autonomous Database",
             "filename": "./../../adb-event-alarm/adb-event-alarm.md"
         },
         {
-            "title": "Lab 10: Secure Your Data Using Oracle Data Safe",
+            "title": "Lab 11: Secure Your Data Using Oracle Data Safe",
             "description": "Become familiar with the features of Oracle Data Safe",
             "filename": "./../../adb-data-safe/adb-data-safe.md"
-        },
-        {
-            "title": "Lab 11: Create a Clone from Backup",
-            "description": "Create a Clone from a Backup Database",
-            "filename": "./../../adb-create-clone-from-backup/adb-create-clone-from-backup.md"
         },
         {
             "title": "Need Help?",
