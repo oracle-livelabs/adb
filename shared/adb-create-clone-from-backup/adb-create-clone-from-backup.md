@@ -22,6 +22,7 @@ In this lab, you'll:
 - Create a clone from the currently running primary database.
 - Create a clone from a backup database.
 - Examine how to create a clone from backup as a cross-region clone.
+- Create a long-term backup.
 
 ## Task 1: Navigate to Clone Creation
 
@@ -135,7 +136,8 @@ It is essential to have a database backup plan that covers both short-term and l
 
 ## Learn More
 
-- ADW Documentation: [Clone an Autonomous Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8) 
+- ADW Documentation: [Clone an Autonomous Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8)
+- ADW Documentation: [Create a Long-Term Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/backup-long-term.html)
 
 ## Acknowledgements
 
