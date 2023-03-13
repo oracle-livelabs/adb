@@ -132,7 +132,7 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
     ```
     <copy>
-    cd /infa-install/sa-agent/apps/agentcore/conf
+    cd /opt/infaagent/apps/agentcore/conf
     </copy>
     ```
 
@@ -149,7 +149,7 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
    ![View settings for LINEITEM load task](images/infaagent_ini.png)
 
-6. The URL you use to logon to IDMC may be https://**dm-us.informaticacloud.com/identity-service/home**
+6. The URL you use to logon to IDMC may be https://dm-us.informaticacloud.com/identity-service/home
 
 7. If this is the case you will need to update the **infaagent.ini** file to reflect the correct URL using your favorite Linux editor.
 
@@ -157,7 +157,7 @@ In this step we will perform steps to set up the Oracle ADB Wallet file.
 
     ```
     <copy>
-    cd /infa-install/sa-agent/apps/agentcore/
+    cd /opt/infaagent/apps/agentcore/
     </copy>
     ```
 
@@ -205,4 +205,4 @@ This Lab is now complete you can now go to the next lab.
 ## Acknowledgements
 
 * **Author** - Larry Fumagalli,  Outbound Product Management
-* **Last Updated By/Date** - Larry Fumagalli, Outbound Product Management, September 2022
+* **Last Updated By/Date** - Larry Fumagalli, Outbound Product Management, March 2023
