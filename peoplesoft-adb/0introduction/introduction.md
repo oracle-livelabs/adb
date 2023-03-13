@@ -26,13 +26,13 @@ In Labs 1-11, you will :
 * MV2ADB Configuration and ADB Schema Advisor Installation
 * MV2ADB Database migration for PeopleSoft
 * PeopleSoft post import scripts for ADB-S
-* Validating Peoplesoft Schema Objects on ADB-S
-* PeopleSoft Middle Tier Setup & Configuration and Test Peoplesoft login in OCI
+* Validating PeopleSoft Schema Objects on ADB-S
+* PeopleSoft Middle Tier Setup & Configuration and Test PeopleSoft login in OCI
 
 ### Prerequisites
 * An OCI tenancy with administrator user access. 
 * My Oracle Support (MOS) credentials. Please make sure that you can successfully login to [Oracle Support](https://support.oracle.com). 
-* PeopleSoft Source Database already created on an on-premise system with the following server specifications: Oracle Linux 7, PeopleSoft Campus Solution 9.2 PI 20 with PeopleTools 8.58.10 and Oracle Database version on 19.10. (Note: Peoplesoft Marketplcae images for HR system, Financials, Campus Solution etc can also be used in place of an on-premise PeopleSoft application,Refer to link [here](https://docs.oracle.com/en/applications/peoplesoft/peoplesoft-common/tutorial-deploy-demo-image/index.html#before_you_begin) for creation of new environment on OCI) 
+* PeopleSoft Source Database already created on an on-premise system with the following server specifications: Oracle Linux 7, PeopleSoft Campus Solution 9.2 PI 20 with PeopleTools 8.58.10 and Oracle Database version on 19.10. (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premise PeopleSoft application,Refer to link [here](https://docs.oracle.com/en/applications/peoplesoft/peoplesoft-common/tutorial-deploy-demo-image/index.html#before_you_begin) for creation of new environment on OCI) 
 * The following should be installed:
     * A different web browser (i.e. Chrome) to connect to OCI web console. 
     * If you have a windows machine, please download:
@@ -43,7 +43,7 @@ In Labs 1-11, you will :
 
 *Terminology*
 
-The following terms are commonly employed in Peoplesoft cloud operations and used throughout our documentation:
+The following terms are commonly employed in PeopleSoft cloud operations and used throughout our documentation:
 
 **Availability Domain** – One or more data centers located within a region.
 
@@ -51,7 +51,7 @@ The following terms are commonly employed in Peoplesoft cloud operations and use
 
 **Compartments** – Allows you to organize and control access to your cloud resources. A compartment is a collection of related resources (such as instances, virtual cloud networks, block volumes) that can be accessed only by certain groups.
 
-**Virtual Cloud Network (VCN)** – Networking and compute resources required to run PSFT on Oracle Cloud Infrastructure. The PSFT VCN includes the recommended networking resources (VCN, subnets routing tables, internet gateway, security lists, and security rules) to run Oracle Peoplesoft on OCI.
+**Virtual Cloud Network (VCN)** – Networking and compute resources required to run PSFT on Oracle Cloud Infrastructure. The PSFT VCN includes the recommended networking resources (VCN, subnets routing tables, internet gateway, security lists, and security rules) to run Oracle PeopleSoft on OCI.
 
 **Oracle Cloud Infrastructure (OCI)** – Combines the elasticity and utility of public cloud with the granular control, security, and predictability of on-premises infrastructure to deliver high-performance, high availability, and cost-effective infrastructure services.
 
@@ -68,5 +68,5 @@ The following terms are commonly employed in Peoplesoft cloud operations and use
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023
 
