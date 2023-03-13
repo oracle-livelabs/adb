@@ -42,13 +42,13 @@ In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Develo
 
 ## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your ADW Database
 
-1. You created an Autonomous Data Warehouse database **ADW Finance Mart** in the earlier lab named *Provision Autonomous Database*. Go to the details page for the database, click the **More Actions** button and select **Manage Scaling**. In the Manage scaling dialog, deselect the **OCPU auto scaling** checkbox to disable auto scaling if you have not done so already. Click **Apply**, which will close the dialog and return you to the details page for the database.
+1. You created an Autonomous Data Warehouse database **ADW\_Finance\_Mart** in the earlier lab named *Provision Autonomous Database*. Go to the Autonomous Database details page for the database, and click **Manage scaling**. In the Manage scaling dialog, deselect the **OCPU auto scaling** checkbox to disable auto scaling if you have not done so already. Click **Apply**, which will close the dialog and return you to the details page for the database.
 
     ![Remove the checkbox for OCPU auto scaling.](images/disable-auto-scaling.png " ")
 
-2. On the Details page for your autonomous database, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** button. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click the **SQL** card. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
+2. On the Autonomous Database details page, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** button. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click the **SQL** card. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
 
-    ![Click SQL card in Database Actions Launchpad.](./images/database-actions-launchpad.png)
+    ![Click SQL card in Database Actions Launchpad.](./images/database-actions-launchpad.png " ")
 
 3. Create and save 4 SQL Developer Web worksheets. In SQL Developer Web worksheets, you choose the consumer group from the drop-down menu in the upper-right corner.:
     - Save the first worksheet with the name **Setup**. You will use this worksheet with the LOW consumer group in Task 2, to run the setup that creates a procedure for running test queries. The LOW consumer group is appropriate for non-CPU-intensive tasks such as this creation of a procedure.
@@ -234,7 +234,7 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
 ## Task 4: Enable Auto Scaling
 
-1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go to the details page for the database, click the **More Actions** drop-down menu and select  **Manage Scaling**, and select the **Auto Scaling** checkbox to **re-enable** auto scaling.
+1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous Database details page, click **Manage scaling**, and select the **OCPU auto scaling** checkbox to **re-enable** auto scaling.
 
     ![Click the checkbox to re-enable auto scaling.](images/enable-auto-scaling.png " ")
 

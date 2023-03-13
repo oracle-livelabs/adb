@@ -12,27 +12,37 @@
 
 */
 
+-- Add the log table
+create table moviestream_log
+   (    execution_time timestamp (6),
+        message varchar2(32000 byte)
+   );
+
 -- Install base moviestream
 -- Install the setup file from github 
-declare
-    l_owner     varchar2(100) := 'oracle-livelabs';
-    l_repo_name varchar2(100) := 'adb';
-    l_file_path varchar2(200) := 'movie-stream-story-lite/add-data-scripts/lab_setup.sql';
-BEGIN
-    dbms_cloud_repo.install_file(
-        repo => dbms_cloud_repo.init_github_repo(                 
-                 repo_name       => l_repo_name,
-                 owner           => l_owner
-                ),
-        file_path     =>     l_file_path,
-        stop_on_error => false
-  );
-END;
-/
+    declare
+        l_git varchar2(4000);
+        l_repo_name varchar2(100) := 'common';
+        l_owner varchar2(100) := 'oracle-livelabs';
+        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
+    begin
+        -- get a handle to github
+        l_git := dbms_cloud_repo.init_github_repo(
+                    repo_name       => l_repo_name,
+                    owner           => l_owner );
+
+        -- install the package header
+        dbms_cloud_repo.install_file(
+            repo        => l_git,
+            file_path   => l_package_file,
+            stop_on_error => false);
+
+    end;
+    /
 
 -- Run the PLSQL procedure that loads the rest of the dataset
 BEGIN
-    add_datasets;
+    workshop.add_dataset('ALL');
 END;
 /
 
@@ -205,7 +215,7 @@ create table movie as
                 cast(m.doc.gross as number) gross,
                 cast(m.doc.rating as number) rating,
                 cast(m.doc.list_price as number) as list_price,
-                cast(m.doc.genres as varchar2(4000)) as genres,
+                cast(m.doc.genre as varchar2(4000)) as genres,
                 cast(m.doc.sku as varchar2(30 byte)) as sku,   
                 cast(m.doc.year as number) as year,
                 to_date(m.doc.opening_date, 'YYYY-MM-DD') as opening_date,

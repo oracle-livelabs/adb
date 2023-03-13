@@ -3,6 +3,8 @@
 
 ## Introduction
 
+> **Note:** the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps.
+
 The Oracle Cloud Infrastructure (OCI) Notifications service broadcasts messages to distributed components through a publish-subscribe pattern, delivering secure, highly reliable, low latency and durable messages for applications hosted on OCI and externally.
 
 The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions . When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
@@ -37,6 +39,8 @@ OCI Notifications service enables you to set up communication channels for publ
 In Tasks 1 through 7, you create a notification topic with an email subscription, then create a rule that triggers a message (email) when a database is stopped.
 
 ## Task 1: Sign in to OCI Console and Create a Notification Topic
+
+> **Note:** Again, please note that the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps.
 
 1. First, you will create a Notification topic. From OCI Services menu, click **Developer Services** -> **Notifications**
   ![ALT text is not available for this image](images/2570118073.png)

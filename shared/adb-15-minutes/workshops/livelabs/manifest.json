@@ -2,7 +2,7 @@
     "workshoptitle": "Autonomous Database 15 minute quick start",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
-      "adb-load-public-db-actions.md":"/common/building-blocks/tasks/adb/load-public-db-actions.md",
+      "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
       "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md"
     },
     "tutorials": [
@@ -27,8 +27,8 @@
       {
         "title": "Lab 3: Use SQL to analyze movie sales data",
         "filename": "../../analyzing-movie-sales-data/analyzing-movie-sales-data.md"
-        
-      },      
+
+      },
       {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",

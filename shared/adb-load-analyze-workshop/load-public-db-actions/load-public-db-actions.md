@@ -18,6 +18,9 @@ This workshop explores several methods for loading data into an Oracle Autonomou
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Load Data from Object Storage Public Buckets](videohub:1_skl03gxs)
+
 ### Objectives
 
 In this lab, you will:

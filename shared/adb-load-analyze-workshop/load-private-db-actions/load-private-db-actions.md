@@ -22,27 +22,27 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of Lab 2, **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of the lab, **Provision an Autonomous Database**, in the Contents menu on the left.
 
-## Task 1: Download movie data for staging to an object store
+## Task 1: Download customer data for staging to an object store
 
-First, download a CSV file containing a simulation of sensitive customer data. Later, you will stage the file to a private **OCI Object Store** bucket, to populate a table in later tasks.
+First, download a CSV file containing a simulation of sensitive customer retention data. Later, you will stage the file to a private **OCI Object Store** bucket, to populate a table in later tasks.
 
 1. Copy and paste this URL into your browser, and press **ENTER**:
 
     ```
     <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_sandbox/o/potential_churners/potential_churners.csv
     </copy>
     ```
 
-2. The browser page will prompt you to download the `customer-extension.csv` file. Choose a folder to save the file and click **Save**.
+2. The browser page will prompt you to download the `potential_churners.csv` file. This file contains customers who will stop or might stop being repeat customers. Choose a folder to save the file and click **Save**.
 
-  ![Download the customer-extension.csv file to your local computer.](images/save-the-customer-extension-csv-file.png " ")
+  ![Download the potential_churners.csv file to your local computer.](images/save-the-potential-churners-csv-file.png " ")
 
     Make note of where you download the file, as you will upload it to the object store that you define in the next task.
 
-## Task 2: Navigate to OCI Object Storage and create bucket
+## Task 2: Navigate to OCI Object Storage and create private bucket
 
 In OCI Object Storage, a bucket is the terminology for a container of files.
 
@@ -96,7 +96,7 @@ Normally, you would likely upload multiple files to an OCI Object Storage bucket
     ![Click Upload under Objects section.](images/click-upload.png " ")
 </if>
 
-3. Drag and drop, or click **select files**, to select the `customer-extension.csv` file you downloaded in Task 1. Click **Upload** and wait for the upload to complete:
+3. Drag and drop, or click **select files**, to select the `potential_churners.csv` file you downloaded in Task 1. Click **Upload** and wait for the upload to complete:
 
     ![Upload file by drag and drop or manually select file in the wizard and click upload.](images/select-file-and-upload.png " ")
 
@@ -110,7 +110,7 @@ Normally, you would likely upload multiple files to an OCI Object Storage bucket
 
     ![Select View Object Details from the ellipsis on the right of any uploaded file.](images/view-object-details.png " ")
 
-2.  In the **Object Details** page, copy the base URL that points to the location of your files staged in the OCI Object Storage. *Do not include the trailing slash.* Save the base URL in a text notepad. You  will use the base URL in the upcoming tasks. When you are done copying the base URL, click **Cancel** to close the Object Details page.
+2.  In the **Object Details** page, copy the base URL that points to the location of your files staged in the OCI Object Storage. **Do not include the trailing slash.** Save the base URL in a text notepad. You  will use the base URL in the upcoming tasks. When you are done copying the base URL, click **Cancel** to close the Object Details page.
 
     ![Copy the base URL.](images/copy-base-url.png " ")
 
@@ -124,11 +124,11 @@ Normally, you would likely upload multiple files to an OCI Object Storage bucket
 
 To load data from the Oracle Cloud Infrastructure (OCI) Object Storage, you will need an OCI user with the appropriate privileges to read data (or upload) data to the Object Store. The communication between the database and the object store relies on the native URI, and the OCI user Auth Token.
 
-1. In the menu bar at the top, click the **person icon** at the far right. From the drop-down menu, click your **OCI user's name** (this username might have a prefix followed by an email address).
+1. In the menu bar at the top, click the **person icon** at the far right. From the drop-down menu, click your **OCI user's name**. This username might have a prefix followed by an email address, for example: `oracleidentitycloudservice/xxxxxxx.xxxxx@xxxxxx.com`.
 
     ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
 
-2. Make note of this username, as you will need it in an upcoming task. At the bottom left side of the page, in the **Resources** section, click **Auth Tokens**.
+2. In the Identity > Users > User Details page, make note of this username, as you will need it in an upcoming task. At the bottom left side of the page, in the **Resources** section, click **Auth Tokens**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-auth-tokens.png " ")
 
@@ -150,7 +150,7 @@ To load data from the Oracle Cloud Infrastructure (OCI) Object Storage, you will
 
 ## Task 6: Define a cloud location and create credential using Database Actions DATA LOAD tool
 
-You will load data from the `customer-extension.csv` file you uploaded to your private Oracle Object Store, using the DBMS_CLOUD PL/SQL package. There are two parts to this process and you must perform the first part only once. The two parts are:
+You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store, using the DBMS_CLOUD PL/SQL package. There are two parts to this process and you must perform the first part only once. The two parts are:
 
 + Set up connection to the Oracle Object Store by defining a cloud location with credential.
 + Load the file using the DBMS_CLOUD PL/SQL package.
@@ -196,7 +196,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 + **copy_data**: Loads the specified source file to a table. The table must already exist in ADW.
     + You will use this procedure to load tables to your admin schema with data from data files staged in the Oracle Cloud Infrastructure Object Storage cloud service.
 
-1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `customer-extension.csv` file from your bucket. Navigate back to the main Database Actions Launchpad using the breadcrumb link in the upper left corner.
+1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main Database Actions Launchpad using the breadcrumb link in the upper left corner.
 
     ![Navigate back to Database Actions Launchpad and click SQL card.](./images/click-database-actions-button.png " ")
 
@@ -208,38 +208,16 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
 3. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
 
-    Connected as your ADMIN user in SQL Worksheet, copy and paste this code snippet to the worksheet, to create the required `customer_extension` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Then click the **Run Script** button to run it.
+    Connected as your ADMIN user in SQL Worksheet, copy and paste this code snippet to the worksheet, to create the required `potential_churners` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Then click the **Run Script** button to run it.
 
     ```
     <copy>
-    DROP TABLE customer_extension;
-    CREATE TABLE customer_extension (
+    DROP TABLE potential_churners;
+    CREATE TABLE potential_churners (
     cust_id                 NUMBER NOT NULL,
-    last_name               VARCHAR2(200),
-    first_name              VARCHAR2(200),
-    email                   VARCHAR2(500),
-    age                     NUMBER,
-    commute_distance        NUMBER,
-    credit_balance          NUMBER,
-    education               VARCHAR2(40),
-    full_time               VARCHAR2(40),
-    gender                  VARCHAR2(20),
-    household_size          NUMBER,
-    income                  NUMBER,
-    income_level            VARCHAR2(20),
-    insuff_funds_incidents  NUMBER,
-    job_type                VARCHAR2(200),
-    late_mort_rent_pmts     NUMBER,
-    marital_status          VARCHAR2(8),
-    mortgage_amt            NUMBER,
-    num_cars                NUMBER,
-    num_mortgages           NUMBER,
-    pet                     VARCHAR2(40),
-    rent_own                VARCHAR2(40),
-    segment_id              NUMBER NOT NULL,
-    work_experience         NUMBER,
-    yrs_current_employer    NUMBER,
-    yrs_residence           NUMBER);
+    will_churn              VARCHAR2(200),
+    prob_churn              VARCHAR2(200)
+    );
     </copy>
     ```
 
@@ -249,21 +227,21 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     > **Note:** You do not need to specify anything other than the list of columns when creating tables in the SQL scripts. You can use primary keys and foreign keys if you want, but they are not required.*
 
-4. Download <a href="./files/load_data_without_base_url_v3.txt" target="\_blank">**this code snippet**</a> to a text editor, for copying the data in the `customer-extension.csv` file you uploaded to the object store bucket, to the target `customer_extension` table you just created in your autonomous database.
+4. Download <a href="./files/load_data_without_base_url_v3.txt" target="\_blank">**this code snippet**</a> to a text editor, for copying the data in the `potential_churners.csv` file you uploaded to the object store bucket, to the target `potential_churners` table you just created in your autonomous database.
 
-5. In the code snippet, after `define file_uri_base =`, replace `<bucket_URI>` with the object store base URL you copied in Task 4.  The top of the file should look similar to the example below:
+5. In the code snippet, after `define file_uri_base =`, replace the example URL with the real object store base URL you copied in Task 4. The top of the file should look similar to the example below:
 
     ```
-    /* In this code snippet, after define file_uri_base =, replace <bucket_URI> below with the URL you copied from your file in OCI Object Storage at runtime.
+    /* In this code snippet, after define file_uri_base =, replace the example URL below with the URL you copied from your file in OCI Object Storage at runtime.
     */
     set define on
     define file_uri_base = 'https://objectstorage.me-dubai-1.oraclecloud.com/n/c4u04/b/LL6570-ADWLab/o'
 
     begin
      dbms_cloud.copy_data(
-        table_name =>'CUSTOMER_EXTENSION',
+        table_name =>'POTENTIAL_CHURNERS',
         credential_name =>'OBJ_STORE_CRED',
-        file_uri_list =>'&file_uri_base/customer-extension.csv',
+        file_uri_list =>'&file_uri_base/potential_churners.csv',
         format =>'{"type" : "csv", "skipheaders" : 1}'
      );
     end;
@@ -276,15 +254,15 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     ![Click Run Script.](./images/run-data-loading-script.png " ")
 
-8. You have successfully loaded the `CUSTOMER_EXTENSION` table. While in the SQL Worksheet, you can do a simple query against the table you just loaded. For example, to see the customers under age 24 with 5 late mortgage or rental payments, run this query:
+8. You have successfully loaded the `POTENTIAL_CHURNERS` table. While in the SQL Worksheet, you can do a simple query against the table you just loaded. For example, to see the customers who have a greater than 0.8 likelihood of no longer remaining as MovieStream customers, run this query:
 
     ```
     <copy>
-    SELECT * from CUSTOMER_EXTENSION WHERE LATE_MORT_RENT_PMTS = 5 and AGE < 24;
+    SELECT * from POTENTIAL_CHURNERS WHERE PROB_CHURN >= 0.8 and WILL_CHURN = 1;
     </copy>
     ```
 
-    ![Query customers under age 24 with 5 late payments](./images/query-late-payments.png " ")
+    ![Query probable churners greater than 0.8 likelihood.](./images/query-probable-churners.png " ")
 
 ## Task 8: Troubleshoot DBMS_CLOUD data loads
 
@@ -294,30 +272,40 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
     ```
     *Notice how this table lists the past and current load operations in your schema. Any data copy and data validation operation will have backed-up records in your Cloud.*
 
-2. For an example of how to troubleshoot a data load, we will try to re-load the `customer-extension.csv` data file using the wrong format (using a format for JSON, instead of the correct format for CSV). Expect to see "Reject limit" errors when loading your data this time. Copy and paste this snippet into your SQL Worksheet and run the snippet:
+2. For an example of how to troubleshoot a data load, we will create and try to load a version of the GENRE table, GENRE_DEBUG, that we know will fail because the loading script uses the wrong delimiter. Copy and paste this snippet into your SQL Worksheet and run the snippet:
 
     ```
     <copy>
-    /* In this code snippet, after define file_uri_base =, replace <bucket_URI> below with the URL you copied from your file in OCI Object Storage at runtime.
-    */
-    set define on
-    define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/adwctraining5/b/ADWCLab/o'
+    create table genre_debug
+       (
+         genre_id  number,
+         name      varchar2(50)
+       );
 
-    begin
-     dbms_cloud.copy_data(
-       table_name =>'CUSTOMER_EXTENSION',
-       credential_name =>'OBJ_STORE_CRED',
-       file_uri_list =>'&file_uri_base/customer-extension.csv',
-       format => json_object('ignoremissingcolumns' value 'true', 'removequotes' value 'true')
-     );
-    end;
-    /
+     begin   
+         dbms_cloud.copy_data(
+             table_name => 'genre_debug',
+             file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/genre/genre.csv',
+             format => '{
+             			"delimiter":"|",
+             			"dateformat":"YYYY-MM-DD",
+             			"skipheaders":"1",
+             			"ignoreblanklines":"true",
+             			"removequotes":"true",
+             			"blankasnull":"true",
+             			"trimspaces":"lrtrim",
+             			"truncatecol":"true",
+             			"ignoremissingcolumns":"true"
+             			}'
+             );
+     end;
+     /    
     </copy>
     ```
 
     ![Paste the code and click Run Script.](images/query-results-intentionally-using-wrong-format.png " ")
 
-3. Run the following query to see the load that errored out.
+3. If you run select * from genre_debug; the result will show that no rows were loaded. What happened? Run the following query to see the load that errored out.
     ```
     <copy>select * from user_load_operations where status='FAILED';</copy>
     ```
@@ -326,11 +314,61 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     A load or external table validation that errors out is indicated by *status=FAILED* in this table. Get the names of the log and bad files for the failing load operation from the column **logfile\_table** and **badfile\_table**. The `logfile_table` column shows the name of the table you can query to look at the *log* of a load operation. The column `badfile_table` shows the name of the table you can query to look at the *rows that got errors* during loading.
 
-4. Query the log and bad tables to see detailed information about an individual load. In this example, the names are `copy$18_log` and `copy$18_bad` respectively.
+4. Query the log and bad tables to see detailed information about an individual load. In this example, the names are `copy$33_log` and `copy$33_bad` respectively.
 
     ![Type the query and click Run Script.](./images/query-log-and-bad-files-result.png " ")    
 
-5. To learn more about how to specify file formats, delimiters, reject limits, and more, review the <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html" target="\_blank"> Autonomous Database Supplied Package Reference </a> and <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703" target="\_blank"> DBMS_CLOUD Package Format Options </a>
+5. The fields delimiter were specified as "|".
+
+    format => '{
+
+    "delimiter":"|",
+
+    But you can see that the fields are actually terminated by ",". As a result, the load step tried to load the entire line into the genre_id field.
+    Let's update the PLSQL call - change the delimiter to a comma:
+
+    format => '{
+
+    "delimiter":",",
+
+6. In the SQL Worksheet, run this corrected version of the load, which uses the comma delimiter:
+
+    ```
+    <copy>
+    begin   
+    dbms_cloud.copy_data(
+        table_name => 'genre_debug',
+        file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/genre/genre.csv',
+        format => '{
+        			"delimiter":",",
+        			"dateformat":"YYYY-MM-DD",
+        			"skipheaders":"1",
+        			"ignoreblanklines":"true",
+        			"removequotes":"true",
+        			"blankasnull":"true",
+        			"trimspaces":"lrtrim",
+        			"truncatecol":"true",
+        			"ignoremissingcolumns":"true"
+        			}',
+        );
+    end;
+    /
+    </copy>
+    ```
+
+7. The PL/SQL procedure will successfully complete.
+
+    ![Successful load after using the correct comma delimiter.](./images/successful-load-using-comma-delimiter.png " ")
+
+8. View the results by running this query:
+
+    `select * from genre_debug;`
+
+    The GENRE_ID table will now have the loaded data:
+
+    ![View the results of successful load.](./images/view-data-loaded-in-genre-debug.png " ")
+
+9. To learn more about how to specify file formats, delimiters, reject limits, and more, review the <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html" target="\_blank"> Autonomous Database Supplied Package Reference </a> and <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703" target="\_blank"> DBMS_CLOUD Package Format Options </a>
 
 Please *proceed to the next lab*.
 

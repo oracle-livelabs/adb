@@ -41,4 +41,4 @@ Estimated Workshop Time: 120 minutes.
 
 - **Author** - Priscila Iruela, Technology Product Strategy Director, Juan Antonio Martin Pedro, Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
-- **Last Updated By/Date** - Priscila Iruela, June 2022
+- **Last Updated By/Date** - Priscila Iruela, Feb 2023

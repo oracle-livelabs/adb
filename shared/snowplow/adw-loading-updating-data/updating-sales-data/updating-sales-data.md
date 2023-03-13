@@ -11,7 +11,7 @@ Estimated Lab Time: 15 minutes
 In this lab, you will:
 
 *   Determine how much space the movie sales table is consuming.
-*   Update the movie sales data using Data Tools to merge in data from adjustment files.
+*   Update the movie sales data using Data Studio to merge in data from adjustment files.
 *   Confirm the very small increase in space usage after updating the data.
 
 ### Prerequisites
@@ -49,7 +49,7 @@ MovieStream is a global business with finance departments distributed around the
 
 In this task, we will merge in all the country-specific adjustment files into our fact table.
 
-1. Open the menu in the top left of the screen, and click **Data Load** in the **Data Tools** section.
+1. Open the menu in the top left of the screen, and click **Data Load** in the **Data Studio** section.
 
     ![Go to the Data Load tool](images/menudataload.png)
 
@@ -57,21 +57,21 @@ In this task, we will merge in all the country-specific adjustment files into ou
 
 3. From the **MOVIEDATA** bucket, drag the **adjustments** folder into the right-hand pane and click **Yes** to load all 47 objects into a single target table.
 
-4. Click the pencil icon to edit the settings for the load task:
+4. Click the menu for the load task, and select **Settings**:
 
     ![Edit the settings for the load task](images/editmerge.png)
 
 5. In this case, we do not want to create a new table, but to merge all these adjustments into our current fact table. Change the Option from **Create Table** to **Merge into Table**. Then, under **Name**, select the **MOVIE\_SALES\_FACT** table.
 
-6. In the **Mapping** section, check the **Merge Key** box for the column **ORDER\_NUM** as this column will be the key column for the merge. This means that any records in the table with the same **ORDER\_NUM** value as one of the records in the adjustment file will be updated, and any adjustment file records with new **ORDER\_NUM** values will be added as new records in the table. The final settings should look like this:
+6. In the **Mapping** section, make sure the **Merge Key** box for the column **ORDER\_NUM** is ticked, as this column will be the key column for the merge. This means that any records in the table with the same **ORDER\_NUM** value as one of the records in the adjustment file will be updated, and any adjustment file records with new **ORDER\_NUM** values will be added as new records in the table. The final settings should look like this:
 
     ![Settings to merge in adjustment files](images/mergeconfig.png)
 
 Click the **Close** icon when you have the settings as above.
 
-7. Click the **Play** icon to start the data load job, and click **Run** in the dialog box.
+7. Click the **Start** button to start the data load job, and click **Run** in the dialog box.
 
-The job should take less than 2 minutes to run. Note that the primary key that we created earlier helps the database to quickly and efficiently locate the records that need to be updated by each MERGE statement.
+The job should take less than 2 minutes to run, and should merge in 48692 adjustment rows. Note that the primary key that we created earlier helps the database quickly and efficiently to locate the records that need to be updated by each MERGE statement.
 
 ## Task 3: Verify the results
 
@@ -120,7 +120,7 @@ Oracle Autonomous Database automatically manages the data storage process for yo
 
 ## Next Steps
 
-- Experiment with using the Data Tools with your own data.
+- Experiment with using Data Studio with your own data.
 
 - Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
 
@@ -132,4 +132,4 @@ Oracle Autonomous Database automatically manages the data storage process for yo
 
 * **Authors** - Keith Laker and Mike Matthews, ADB Product Management
 * **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Anoosha Pilli, April 2022
+* **Last Updated By/Date** - Mike Matthews, March 2023

@@ -8,6 +8,9 @@ This lab walks you through the steps to get started using the Oracle Autonomous 
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Provision an ADB Instance](videohub:1_22f82n6x)
+
 ### Objectives
 
 In this lab, you will:
@@ -19,25 +22,24 @@ In this lab, you will:
 - This lab requires completion of the Get Started section in the Contents menu on the left.
 
 ## Task 1: Choose ADW or ATP from the services menu
-[](include:goto-service-body.md)
-
-
+    ![Choose ADW or ATP from the services menu](include:goto-service-body.md)
 
 1. Log in to the Oracle Cloud.
 2. Once you log in, the cloud services dashboard shows all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
-    > **Note:** You can also directly access your Autonomous Data Warehouse or Autonomous Transaction Processing service in the **Launch Resources** section of the dashboard.
+    > **Note:** You can also directly access your Autonomous Data Warehouse or Autonomous Transaction Processing service in the **Launch resources** section of the dashboard.
 
     ![Oracle home page.](./images/navigation.png " ")
+    ![Launch Resources](./images/launch-resources.png " ")
 
 3. The following steps apply similarly to either Autonomous Data Warehouse or Autonomous Transaction Processing. This lab shows provisioning of an Autonomous Data Warehouse database, so click **Oracle Database**, then **Autonomous Data Warehouse**.
 
     ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
-4. Make sure your Workload Type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select a compartment. <if type="livelabs">Enter the first part of your user name, for example `LL185` in the Search Compartments field to quickly locate your compartment.
+4. Make sure your Workload Type is __Data Warehouse__ or __All__ to see your Autonomous Data Warehouse instances. Use the __List Scope__ drop-down menu to select a compartment. If you are running the workshop using the Green Button (on a sandbox environment), find the compartment assigned to you shown on your *Reservation Information* page and go to that compartment. Enter the first part of your user name, for example `LL185` in the Search Compartments field to quickly locate your compartment.
 
     ![Check the workload type on the left.](images/task1-4.png " ")
-    </if>
+
     <if type="freetier">
     ![Check the workload type on the left.](images/task1-4.png " ")
 
@@ -63,15 +65,15 @@ In this lab, you will:
 2.  This brings up the __Create Autonomous Database__ screen where you will specify the configuration of the instance.
 
     <if type="livelabs">
-    ![](./images/task2-2.png " ")
+    ![The Create Autonomous Database screen for configuring the instance](./images/task2-2.png " ")
     </if>
     <if type="freetier">
-    ![](./images/task2-2.png " ")
+    ![The Create Autonomous Database screen for configuring the instance](./images/task2-2.png " ")
     </if>
 
 3. Specify basic information for the autonomous database:
 
-    - __Compartment__ - Leave the default compartment.
+    - __Compartment__ - Choose the compartment assigned to you.
     - __Display Name__ - Enter a memorable name for the database for display purposes. For example, use __ADW\_Finance\_Mart__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.)
     <if type="livelabs">For example, use __ADWFINANCE__ and **append your user id**. For example, if your user id is **LL-185**, then enter __ADWFINANCE185__
@@ -101,12 +103,12 @@ In this lab, you will:
 
 6. Configure the database:
 
-    - __Always Free__ - If your Cloud Account is an Always Free account, you can select this option to create an always free autonomous database. An always free database comes with 1 CPU and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
+    - __Always Free__ - If your Cloud Account is an Always Free account, or your Cloud Account is a paid account but want to avoid any charges, you can select this option to create an *Always Free autonomous database*. An always free database comes with 1 CPU and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
     - __Choose database version__ - Select a database version from the available versions.
     - __OCPU count__ - Number of CPUs for your service. For this lab, specify __1 CPU__. If you choose an Always Free database, it comes with 1 CPU.
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
-    - __Auto Scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
-    - __New Database Preview__ - If a checkbox is available to preview a new database version, do NOT select it.
+    - __OCPU auto scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+    - __Storage auto scaling__ - For this lab, there is no need to enable storage auto scaling, which would allow the system to expand up to three times the reserved storage.
 
     > **Note:** You cannot scale up/down an Always Free autonomous database.
 
@@ -146,7 +148,7 @@ In this lab, you will:
     ![Click Create Autonomous Database.](./images/task2-9.png " ")
 </if>
 <if type="freetier">
-    ![](./images/task2-9.png " ")
+    ![Click Create Autonomous Database.](./images/task2-9.png " ")
 </if>
 
 10. For this lab, do not provide a contact email address. The **Contact Email** field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
@@ -154,9 +156,9 @@ In this lab, you will:
     ![Do not provide a contact email address.](images/contact-email-field.png)
 
 
-11. Click __Create Autonomous Database__.
+11. Click __Create Autonomous Database__. If you see an error *Authorization failed or requested resource not found*, it means you are not in the compartment assigned to you. To solve this error, refer to Task 1 -> Step 4 to choose the correct compartment assigned to you, as shown on your *Reservation Information* page.
 
-    ![](./images/task2-10.png " ")
+    ![Click Create Autonomous Database.](./images/task2-10.png " ")
 
 12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
 
@@ -172,5 +174,5 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager Intern)
-- **Last Updated By/Date** - Arabella Yao, March 2022
+- **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager)
+- **Last Updated By/Date** - Richard Green, February 2023

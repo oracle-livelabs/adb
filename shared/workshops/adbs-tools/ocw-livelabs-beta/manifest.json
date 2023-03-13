@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Important Tools for Everyone Using Oracle Autonomous Database",
+    "workshoptitle": "Self-service Tools for Everyone Using Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {"webtransforms": "../using-adb-tools/ocw-web-transforms.md"},
     "tutorials": [
@@ -32,9 +32,8 @@
             "type": "BETA"
         },
         {
-          "title": "Need Help?",
-          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+          "title": "Oracle CloudWorld 2022 - Get Help",
+          "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
         }
     ]
 }

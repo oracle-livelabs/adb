@@ -1,4 +1,4 @@
-# PeopleSoft Middle Tier Setup & Configuration and Test Peoplesoft login in OCI
+# PeopleSoft Middle Tier Setup & Configuration and Test PeopleSoft login in OCI
 
 ## Introduction
 
@@ -10,11 +10,11 @@ Estimated Time: 3 hours
 
 In this lab, you will:
 * Create an OCI compute system for the PeopleSoft Middle Tier setup
-* Transfer files from on-premise Peoplesoft system to the OCI compute system
+* Transfer files from on-premise PeopleSoft system to the OCI compute system
 * Install Oracle client 19c on the OCI compute system
 * Test connectivity from OCI compute system to ADB-S
-* Configure Peoplesoft Application domains
-* Configure Peoplesoft Integration Broker and Report Node
+* Configure PeopleSoft Application domains
+* Configure PeopleSoft Integration Broker and Report Node
 * Login and Test the PeopleSoft system on OCI
 
 ### Prerequisites
@@ -38,15 +38,15 @@ In this lab, you will:
 
 * There are a number of ways to setup the Middle-Tier system for PeopleSoft, using PUM DPK images downloaded and installed on the target system or doing a Tar of the source Mid-Tier and moving off to target system.
 
-*  Here we would be doing a tar of the source Peoplesoft application binary files and moving to a new OCI compute system.
+*  Here we would be doing a tar of the source PeopleSoft application binary files and moving to a new OCI compute system.
 
 * As an example, provision a new compute system on OCI for the Middle-Tier and attach a block volume.
     
-    ![](./images/compute.png "")
+    ![Compute provision for PSFT](./images/compute.png "")
 
-## Task 2: Transfer files from on-premise Peoplesoft system to the OCI compute system
+## Task 2: Transfer files from on-premise PeopleSoft system to the OCI compute system
 
-1. Login as opc and sudo as root to the OCI compute system and create users,groups and directory for Peoplesoft similar to the on-premise peoplesoft system
+1. Login as opc and sudo as root to the OCI compute system and create users,groups and directory for PeopleSoft similar to the on-premise PeopleSoft system
     
     Create users, groups, directories
     ```
@@ -69,8 +69,8 @@ In this lab, you will:
     </copy>
 
     ```  
-    Files Tar and transfer from on-premise Peoplesoft system to OCI compute system
-    ![](./images/files_tar.png "")
+    Files Tar and transfer from on-premise PeopleSoft system to OCI compute system
+    ![Files tar and transfer to OCI](./images/files_tar.png "")
 
 2. Update the $HOME for PeopleSoft users to be in compatible to source.
     ```
@@ -156,59 +156,59 @@ In this lab, you will:
     </copy>
     ```
 
-## Task 5: Configure Peoplesoft Application domains
+## Task 5: Configure PeopleSoft Application domains
 
 1. Configure PeopleSoft Application Server:
   
   Use PSADMIN to configure the Application Server Domain, APPDOM1, and start that.
-  ![](./images/app-server.png "")
+  ![Application server configuration](./images/app-server.png "")
 
 2. Configure Process Scheduler:
 
   Use PSADMIN to configure the Process Scheduler domain, PRCS01.
-  ![](./images/batch.png "")
+  ![Process scheduler configuration](./images/batch.png "")
 
 3. Configure Web Server:
   
   Use PSADMIN to configure a new Web Server Domain, WEBSERVER01, and start that.
-  ![](./images/web.png "")
+  ![Webserver configuration](./images/web.png "")
 
 
-## Task 6: Configure Peoplesoft Integration Broker and Report Node
+## Task 6: Configure PeopleSoft Integration Broker and Report Node
 
 1. Configure Report Node:
  
-  Login to the Peoplesoft PIA portal and configure the Report Node link [here](https://docs.oracle.com/cd/E92519_02/pt856pbr3/eng/pt/tprs/task_DefiningReportNodes-dc07e7.html?pli=ul_d56e97_tprs)
+  Login to the PeopleSoft PIA portal and configure the Report Node link [here](https://docs.oracle.com/cd/E92519_02/pt856pbr3/eng/pt/tprs/task_DefiningReportNodes-dc07e7.html?pli=ul_d56e97_tprs)
 
-  ![](./images/report.png "")
+  ![Configure the Report Node for PIA](./images/report.png "")
 
 2. Configure Integration Broker 
   
-  Login to the Peoplesoft PIA portal and configure the Integration Broker [here](https://docs.oracle.com/cd/F44947_01/pt858pbr3/eng/pt/tiba/task_DefiningIntegrationGatewaysandLoadingConnectors-947f5e.html?pli=ul_d76e34_tiba)
+  Login to the PeopleSoft PIA portal and configure the Integration Broker [here](https://docs.oracle.com/cd/F44947_01/pt858pbr3/eng/pt/tiba/task_DefiningIntegrationGatewaysandLoadingConnectors-947f5e.html?pli=ul_d76e34_tiba)
 
-  ![](./images/ib.png "")
+  ![Configure the Integration broker for the new environment](./images/ib.png "")
 
-  ![](./images/ib-1.png "")
+  ![Configure the Integration broker for the new environment](./images/ib-1.png "")
 
 ## Task 7: Login and Test the PeopleSoft system on OCI
 
 1. To login to the newly created PeopleSoft system use the system name or IP address and append with port number 8000
   
   For example you would type: 111.111.111.11:8000 into you browser search bar
-  ![](./images/PIA.png "")
+  ![Type the server name or IP and port number](./images/PIA.png "")
 
 2. Click on the * Please click here to PeopleSoft logon page* and provide the credentials of your  PeopleSoft system to login
-  ![](./images/PIA-login.png "")
+  ![lick on the * Please click here to PeopleSoft logon page](./images/PIA-login.png "")
 
 3. Navigate over to the console page and verify if everything is working fine
-  ![](./images/pia1.png "")
+  ![Navigation with the PSFT environment](./images/pia1.png "")
 
 You may now **proceed to the next lab.**
 
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023
 
 
 
