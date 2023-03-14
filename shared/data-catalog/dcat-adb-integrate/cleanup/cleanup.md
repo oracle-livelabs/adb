@@ -54,7 +54,6 @@ You can terminate your ADW instance that you created in this workshop as follows
 
 3. In the **Dynamic Groups** page, click **Policies** in the **Identity** section on the left. The **Policies** page is displayed. In the **List Scope** section, search for and select your **training-dcat-compartment** from the **Compartment** drop-down list, if not already selected. Click the **Actions** button associated with the **moviestream-object-storage-policy**, and then select **Delete** from the context menu.  A confirmation message box is displayed, click **Delete**.
 
-
 ## Task 3: Delete Your Compartment
 
 To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. In this workshop, you created all of the resources in the **`training-dcat-compartment`**; therefore, if you want to re-run this entire workshop from the beginning, you can must delete all of the resources in the compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
@@ -65,7 +64,7 @@ To delete a compartment, it must be empty of all resources. Before you initiate 
 
 3. A confirmation message box is displayed. Click **Delete**. The state of the deleted compartment changes from **Active** to **Deleting** until the compartment is successfully deleted. You can click on the compartment name link in the **Name** column to display the status of this operation.
 
-This concludes the workshop.
+This concludes the workshop!
 
 ## Want to Learn More?
 
