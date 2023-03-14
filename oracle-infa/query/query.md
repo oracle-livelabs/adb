@@ -300,8 +300,10 @@ Add Lineitem table as another data source.
 
 25.	Enter the following in the Expression field.  This function will add the total of all items in an order.
 
-```SQL
+```sql
+<copy>
 sum(l_extendedprice * (1- l_discount) * (1+l_tax))
+</copy>
 ```
 
 26.	Click **Validate**.
