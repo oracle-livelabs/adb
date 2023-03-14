@@ -1,6 +1,6 @@
 # Apply Auto Scaling on an Autonomous Database
 
-## **Introduction**
+### **Introduction**
 
 In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query twice. You will be running this procedure from 3 SQL Developer Web worksheet sessions concurrently to see how CPU is utilized with and without auto scaling.
 
@@ -14,7 +14,7 @@ When you enable auto scaling, if your workload requires additional CPU and IO re
 
 **Note**: You don't need to perform a "triggering action" after which your database can start to scale; the additional CPU and IO are **always** available to you.
 
-![](./images/auto-scaling-symbol.jpg " ")
+![Conceptual illustration of auto scaling](./images/auto-scaling-symbol.jpg " ")
 
 When you create an Autonomous Database, the auto scaling checkbox is enabled by default. After the database is created, you can use **Scale Up/Down** on the Oracle Cloud Infrastructure console to disable or enable auto scaling.
 
@@ -32,7 +32,7 @@ The customer is charged only for the actual average number of OCPUs used per hou
 
 ### How You Will Test a Real-World Auto Scaling Example in this Lab
 
-The **business case** we want to answer here is to **summarize orders by month and city, for customers in the US, in the Fall of 1992** over our benchmark <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B" target="\_blank">SSB dataset</a> containing 1 TB of data.
+The **business case** we want to answer here is to **summarize orders by month and city, for customers in the US, in the Fall of 1992** over our [benchmark SSB dataset](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B) containing 1 TB of data.
 
 - **Test 1**: With auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
 - **Test 2**: You will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more OCPUs, reducing your execution times significantly.
@@ -181,9 +181,9 @@ In this task, you run a script that will:
 
 2. **Make sure that each of the 3 worksheets are set to the HIGH consumer group.** Enter - but do not immediately execute - the following execute command in each worksheet. After you have entered the command into all 3 worksheets, quickly execute the command in each worksheet so that they begin at nearly the same time.
 
-    ````
+    ```
     exec test_proc;
-    ````
+    ```
 
 3. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 1 OCPU system (you may see different execution times), go to your Autonomous Database's console page and click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and look at the Monitored SQL to see that each worksheet is running your procedure.
 
@@ -242,9 +242,9 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
 1. Once again, go to your 3 SQL Developer Web **"Query"** worksheet instances (re-open 3 instances if you closed the tabs from before) which are using the HIGH consumer group. Enter - but do not immediately execute - the following execute command in each worksheet. After you have entered the command into all 3 worksheets, quickly execute the command in each worksheet so that they begin at nearly the same time.
 
-    ````
+    ```
     exec test_proc;
-    ````
+    ```
 
 2. While the procedures are running, the monitored SQL in Performance Hub shows 3 queries executing. In the previous test, before you enabled Auto Scaling, the procedure's 3 query sessions averaged 4.5 minutes to run. After enabling Auto Scaling and immediately getting access to 3x the amount of CPU and IO, the queries now require approximately 3x less time; we see below less than 2 minutes to run.
 
@@ -319,4 +319,4 @@ For more information about auto scaling, see the documentation [Use Auto Scaling
 
 - **Authors** - Rick Green, Database User Assistance; Nilay Panchal, ADB Product Management
 - **Contributors** - John Zimmerman, Real World Performance Team; Keith Laker, ADB Product Management
-- **Last Updated By/Date** - Rick Green, March 2022
+- **Last Updated By/Date** - Rick Green, March 2023
