@@ -7,7 +7,9 @@ One of the most widely used features in Autonomous Database on Shared Infrastruc
 
   ![ALT text is not available for this image](images/2673172546.jpg)
 
-A refreshable clone is a **read-only** clone that stays &quot;connected&quot; to, and has the ability to pull in (refresh data from), its **source** database with a simple click of a button. Until now, if you needed to update your clone's data from its source, you had two options:
+The previous lab showed how to create a full clone from the currently running database or from a backup timestamp of that database. This lab shows how to create a refreshable read-only clone that **automatically refreshes** when the data in its source database changes.
+
+A refreshable clone is a **read-only** clone that stays **connected to**, and has the ability to pull in (refresh data from), its **source** database with a simple click of a button. Until now, if you needed to update your clone's data from its source, you had two options:
 
 1. Move new data from the source database to the clone (via data pump, database links etc.)
 2. Create a new clone from the source database
@@ -125,9 +127,9 @@ Now see how easy it is to refresh the clone with the new data you just added to 
 
   With the Refreshable Clones feature, you can now keep cloned databases updated without any tedious manual export process. As new data comes into your source database each day, it can easily be refreshed into all its connected refreshable clones with a few button clicks.
 
-You may now proceed to the next lab.
+You may now **proceed to the next lab**.
 
-## Learn More
+## Want to Learn More?
 
 - ADW Documentation: [Using Refreshable Clones with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-refreshable-clone.html#GUID-C49DA251-D347-491B-9C50-3D42EB3F93D9) 
 

@@ -217,9 +217,9 @@ Check the email account you specified to verify that a notification email was se
 
   ![ALT text is not available for this image](images/2619005579.png)
 
-You have finished this lab.
+You may now **proceed to the next lab**.
 
-## Learn More
+## Want to Learn More?
 
 - ADW Documentation: [Use Autonomous Database Events](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/notification-critical-and-informational-events.html#GUID-7D1E3455-CD54-495B-BAE5-46B4CBB002B1)
 - OCI Documentation: [Getting Started with Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsgetstarted.htm)

@@ -63,14 +63,14 @@ Run a query on a sample Oracle Autonomous Database data set.
 
 1.  Copy and paste the code snippet below to your SQL Worksheet. This query will run on the Star Schema Benchmark (ssb.customer), one of the two ADW sample data sets that you can access  from any ADW instance. Take a moment to examine the script. Make sure you click the **Run Statement** button to run it in SQL Worksheet so that all the rows display on the screen.
 
-    ````
+    ```
     <copy>
     select /* low */ c_city,c_region,count(*)
     from ssb.customer c_low
     group by c_region, c_city
     order by count(*);
     </copy>
-    ````
+    ```
 
     ![Paste the code and click Run Script.](./images/ssb-query-low-results-sql-worksheet.png " ")
 
@@ -78,9 +78,9 @@ Run a query on a sample Oracle Autonomous Database data set.
 
 3.  When possible, ADW also *caches* the results of a query for you. If you run identical queries more than once, you will notice a much shorter response time when your results have been cached.
 
-4.  You can find more sample queries to run <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html" target="\_blank">in the ADW documentation</a>.
+4.  You can find [more sample queries to run](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html) in the ADW documentation.
 
-Please *proceed to the next lab*.
+You may now **proceed to the next lab**.
 
 ## Learn more
 

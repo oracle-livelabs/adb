@@ -52,6 +52,8 @@ Estimated Time: 10 minutes
 
     ![An example of increased throughput after scaling up the number of CPUs.](./images/screenshot-of-increased-transaction-throughput.png " ")
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 
 Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-add-resources.html#GUID-DA72422A-5A70-42FA-A363-AB269600D4B0) for documentation on enabling auto scaling.
