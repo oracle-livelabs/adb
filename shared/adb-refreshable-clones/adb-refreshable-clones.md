@@ -127,9 +127,9 @@ Now see how easy it is to refresh the clone with the new data you just added to 
 
   With the Refreshable Clones feature, you can now keep cloned databases updated without any tedious manual export process. As new data comes into your source database each day, it can easily be refreshed into all its connected refreshable clones with a few button clicks.
 
-You may now proceed to the next lab.
+You may now **proceed to the next lab**.
 
-## Learn More
+## Want to Learn More?
 
 - ADW Documentation: [Using Refreshable Clones with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-refreshable-clone.html#GUID-C49DA251-D347-491B-9C50-3D42EB3F93D9) 
 

@@ -134,7 +134,9 @@ It is essential to have a database backup plan that covers both short-term and l
 
     ![View scheduled long-term backups on the Autonomous Database details page](images/view-scheduled-long-term-backups.png)
 
-## Learn More
+You may now **proceed to the next lab**.
+
+## Want to Learn More?
 
 - ADW Documentation: [Clone an Autonomous Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8)
 - ADW Documentation: [Create a Long-Term Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/backup-long-term.html)

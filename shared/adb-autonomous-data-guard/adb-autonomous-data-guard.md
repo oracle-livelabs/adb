@@ -181,6 +181,8 @@ In the rare case when your primary is down and automatic failover is unsuccessfu
 * After you enable Autonomous Data Guard with a remote standby, download a new wallet. The wallet file you download from the primary database contains connection strings for both the primary region and the remote region database. The same wallet works after you switchover or failover to the remote region standby.
 * When you enable Autonomous Data Guard with both a local and a cross-region standby, Autonomous Data Guard does not provide a local standby while the remote region instance operates in the Primary role. Using the remote region in the Primary role is intended for use while the primary region is unavailable or for testing (a temporary scenario). After the primary region database returns to the Primary role, the local Standby will be available.
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 * For more information about Standby Databases, see the documentation [About Standby Databases](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-about.html#GUID-045AD017-8120-4BDC-AF58-7430FFE28D2B).
 * To use OCI REST APIs to enable and use Autonomous Data Guard, see [Use the API](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-api.html#GUID-3E4C0FA6-DE04-4F7F-A7AF-4C270870DCFF).

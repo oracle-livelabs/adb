@@ -176,6 +176,8 @@ The SH schema provides a small data set that you can use to run the sample queri
 
     ![Results of performing a query against SH](./images/sh-query-results.jpg " ")
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 
 View the documentation for [connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) in Autonomous Database Shared.
