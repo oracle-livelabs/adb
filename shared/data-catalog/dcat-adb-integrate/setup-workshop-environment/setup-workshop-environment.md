@@ -79,10 +79,9 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 
    ![The partial Oracle Cloud Console Home Page is displayed.](./images/oracle-cloud-console-home.png "Partial Oracle Cloud Console is displayed.")
 
->**Note:** To zoom in (magnify) a displayed image in this workshop, hover over the image to display the magnifying glass icon, and then then click the image.
+    >**Note:** To zoom in (magnify) a displayed image in this workshop, hover over the image to display the magnifying glass icon, and then then click the image.
 
    ![An example of magnifying an image. The magnifying glass icon with a plus sign is shown as hoovering over a sample image.](./images/magnify-image.png "Click an image to magnify it.")
-
 
 ## Task 2: (Optional) Create a Compartment
 
@@ -92,9 +91,17 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 	 ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
 
-    >**Note:** For faster navigation, you can pin items to make them appear in the **Pinned Links** section of the **Home** tab. To pin an item, hover over the menu item and then click the pin to the left of the item name. The **Recent** section of the **Home** tab shows recently used navigation items. To quickly find navigation menu items, use the **Search** box.
+    For faster navigation, you can pin items that you use frequently. To pin an item, hover over the menu item and then click pin to the left of the item name.
 
-   ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png " ")
+    ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png " ")
+
+    The pinned item is displayed in the **Pinned** section of the **Home** tab the next time you use the Navigation menu.
+
+    ![An example that shows the Compartment item pinned.](./images/pinned-item.png " ")
+
+    The **Recently visited** section of the **Home** tab shows recently used navigation items.
+
+    To quickly find navigation menu items, use the **Search** box.
 
 2. On the **Compartments** page, click **Create Compartment**.
 
@@ -145,19 +152,19 @@ Create a Data Catalog instance using the following steps.
 
 2. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
 
-   ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")    
+   ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")
 
-3. On the **Data Catalogs** page, click **Create Data Catalog**.
+3. On the **Data Catalogs** page, click **Create data catalog**.
 
    ![The Create Data Catalog button in the training-dcat-compartment is highlighted.](./images/data-catalog-page.png " ")
 
-4. Select the **`training-dcat-compartment`** compartment from the **Create In Compartment** drop-down list, if not already selected.
+4. Select the **`training-dcat-compartment`** compartment from the **Create in compartment** drop-down list, if not already selected.
 
 5. Enter **`training-dcat-instance`** in the **Name** field.
 
    ![The completed Create Data Catalog dialog box is displayed. The Create Data Catalog button is highlighted.](./images/create-data-catalog.png " ")
 
-6. Click **Create Data Catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
+6. Click **Create data catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
 
    ![The newly created Data Catalog instance is displayed with an Active state.](./images/click-data-catalog.png " ")
 
@@ -200,7 +207,7 @@ In this task, you create a new and empty business glossary in the newly created 
 
     ![The populated File name text field and Open button are highlighted.](./images/specify-url.png " ")
 
-    >**Note:**     
+    >**Note:**
     If you are using an Apple Macintosh computer, you cannot use a URL to import a glossary; instead, download the [moviestream-application.xlsx](files/moviestream-application.xlsx?download=1) glossary file to your local machine first. Next, click **Import**. In the **Open** dialog box, navigate to the folder that contains the glossary file, select it, and then click **Open**.
 
 7. An import job is triggered and a message is displayed. You can click the **View Job** link in the message to view the details of this job.
@@ -218,7 +225,6 @@ In this task, you create a new and empty business glossary in the newly created 
     >**Note:** The categories and terms created within a glossary are displayed in the **Glossary Hierarchy** tree navigation list. Expand each category to view terms created within that category. The summary information changes as you click different nodes in the glossary tree. You can use Expand All or Collapse All to expand or collapse all the nodes available in the glossary respectively. You can also use the search bar to search for categories and terms. If the glossary children are not displayed, click **Refresh glossary**.
 
 9. Close the **Glossaries** and **MovieStream Application** tabs.
-
 
 ## Task 5: Create a Dynamic Group
 Dynamic groups allow you to group Oracle Cloud Infrastructure compute instances as "principal" actors (similar to user groups). You can then create policies to permit instances to make API calls against Oracle Cloud Infrastructure services. When you create a dynamic group, rather than adding members explicitly to the group, you instead define a set of matching rules to define the group members. For example, a rule could specify that all instances in a particular compartment are members of the dynamic group. The members can change dynamically as instances are launched and terminated in that compartment.
@@ -244,7 +250,7 @@ In this task, you create a dynamic group that includes the specific compartment 
         <copy>resource.compartment.id='your-compartment-ocid'</copy>
         ```
 
-4. To find your _Compartment OCID_, copy the URL in the address bar of your current browser tab where the **Create Dynamic Group** page is displayed. Open a new browser tab. For example, in Chrome, you click the **New tab** icon.
+4. To find your _Compartment OCID_, copy the URL in the address bar of your current browser tab where the **Create Dynamic Group** page is displayed. Open a new browser tab. For example, in Chrome, you click the **New tab** (plus sign) icon.
 
     ![The URL on the current tab in Chrome is highlighted and copied and labeled as 1. Next, the New tab icon (plus icon) is clicked to create a new tab and labeled as 2.](./images/copy-url-new-tab.png " ")
 
@@ -252,16 +258,15 @@ In this task, you create a dynamic group that includes the specific compartment 
 
     ![The copied URL is pasted in the new tab's address bar.](./images/paste-url-new-tab.png " ")
 
-6. In the new tab, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**. On the **Compartments** page, in the row for your **training-dcat-compartment**, hover over the **OCID link** in the **OCID** column, and then click **Copy** to copy the OCID for the **training-dcat-compartment**.
+6. In the new tab, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**. On the **Compartments** page, in the row for your **training-dcat-compartment**, hover over the **OCID link** in the **OCID** column, and then click **Copy** to copy the OCID for the **training-dcat-compartment**. You can close this tab.
 
     ![In the row for the training-dcat-compartment, hover over the OCID link in the OCID column, and then click the Copy link.](./images/copy-compartment-ocid.png " ")
 
-7. Click the original tab where you were creating the dynamic group policy. Paste the copied compartment OCID value to replace the **'your-compartment-ocid'** placeholder in the **Rule 1** text box.
+7. Click the original tab in your web browser where you were creating the dynamic group policy. Paste the copied compartment OCID value to replace the **'your-compartment-ocid'** placeholder in the **Rule 1** text box.
 
 8. Click **Create**.
 
     ![The completed Create Dynamic Group dialog box is displayed. Rule 1 field and the Create button are highlighted.](./images/moviestream-dynamic-group-db.png " ")
-
 
 9. The **Dynamic Group Details** page is displayed. Click **Dynamic Groups** in the breadcrumbs to re-display the **Dynamic Groups** page.
 
@@ -271,13 +276,12 @@ In this task, you create a dynamic group that includes the specific compartment 
 
     ![The new dynamic group is displayed on the Dynamic Groups page.](./images/dynamic-group-created.png " ")
 
-
-## Task 6: Create Access Policy for Dynamic Group         
+## Task 6: Create Access Policy for Dynamic Group
 After you have created a dynamic group, you need to create a policy to permit the dynamic group to access Oracle Cloud Infrastructure services. In this task, you create a policy to allow any resource in the dynamic group to access and manage your Data Catalog in the `training-dcat-compartment` using the aggregate resource-type **`data-catalog-family`** as follows:
 
 1. If you are still on the **Dynamic Groups** page from the previous task, click **Policies** in the **Identity** section on the left; otherwise, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, select **Policies**.
 
-2. On the **Policies** page, make sure that your **`training-dcat-compartment`** compartment is selected, and then click **Create Policy**.  
+2. On the **Policies** page, make sure that your **`training-dcat-compartment`** compartment is selected, and then click **Create Policy**.
 
     ![The Create Policy button is highlighted. The List Scope section shows the training-dcat-compartment selected in the compartment drop-down list.](./images/create-os-policy.png " ")
 
@@ -296,9 +300,9 @@ After you have created a dynamic group, you need to create a policy to permit th
 
         ![On the completed Create Policy dialog box, the policy in the Policy Builder field and the Create button are highlighted.](./images/dynamic-group-instances-os-policy.png " ")
 
-    + Click **Create**. The **Policy Detail** page is displayed Click **Policies** in the breadcrumbs to return to the **Dynamic Groups** page.
+    + Click **Create**. The **Policy Detail** page is displayed Click **Policies** in the breadcrumbs to return to the **Policies** page.
 
-          ![The new policy details page is displayed. The Policies link in the breadcrumbs is highlighted.](./images/object-storage-policy-detail.png " ")
+          ![The new policy details page is displayed. The Policies link in the breadcrumbs is highlighted.](./images/dcat-policy-detail.png " ")
 
           The newly created policy is displayed in the **Policies** page.
 
@@ -337,7 +341,7 @@ After you have created a dynamic group, you need to create a policy to permit th
 
        * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
        * **Choose database version:** **`19c`**.
-       * **OCPU count:** **`1`**.   
+       * **OCPU count:** **`1`**.
        * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
        * **Storage (TB):** **`1`** (TB).
        * **Storage auto scaling:** Leave the checkbox unchecked.
@@ -348,24 +352,24 @@ After you have created a dynamic group, you need to create a policy to permit th
 
 8. In the **Create administrator credentials** section, specify the following:
 
-       * **Username _Read-Only_:** This read-only field displays the default username, **`ADMIN`**.     
+       * **Username _Read-Only_:** This read-only field displays the default username, **`ADMIN`**.
        **Important:** Make a note of this _username_ as you will need it to perform later tasks.
-       * **Password:** Enter a password for the **`ADMIN`** user of your choice such as **`Training4ADB`**.        
+       * **Password:** Enter a password for the **`ADMIN`** user of your choice such as **`Training4ADB`**.
        **Important:** Make a note of this _password_ as you will need it to perform later tasks.
        * **Confirm password:** Confirm your password.
 
        ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
 
-9. In the **Choose network access** section, select the **Secure access from everywhere** access type.     
+9. In the **Choose network access** section, select the **Secure access from everywhere** access type.
 
     ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
 10. In the **Choose a License and Oracle Database Edition** section, specify the following:
 
-    * **Choose a license type:** Accept the default __Bring Your Own License (BYOL)__. Select this type when your organization has existing database licenses.
+    * **Choose a license type:** Select the __Bring Your Own License (BYOL)__ option. Select this type when your organization has existing database licenses.
     * **Choose an Oracle Database Edition:** Select the __Oracle Database Enterprise Edition (EE)__.
 
-    ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
+        ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
 
 11. Click __Create Autonomous Database__.
 
@@ -398,8 +402,8 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, August 2022
+* **Contributor:** Marty Gubar, Product Manager, Server Technologies
+* **Last Updated By/Date:** Lauran Serhal, March 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
