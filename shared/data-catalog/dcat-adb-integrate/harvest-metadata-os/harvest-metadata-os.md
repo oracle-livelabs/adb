@@ -47,8 +47,6 @@ Register your Oracle Object Storage data sources with Data Catalog as a data ass
 
     ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")
 
-    <!-- ![ALT text for screen readers](./images/data-catalog-overview.png "Title - tooltip text") -->
-
 3. On the **Data Catalogs** page, click the **`training-dcat-instance`** Data Catalog instance where you want to create your data asset.
 
     ![In the Name column, the training-dcat-instance link is highlighted.](./images/click-data-catalog.png " ")
@@ -175,7 +173,7 @@ If an Object Storage file is matched with multiple filename patterns, it can be 
 
 Create a filename pattern as follows:
 
-1. On the **training-dcat-instance** page from the previous task, click the ![Plus sign tab](./images/context-menu-icon.png>) (the plus sign) tab, and then select **Filename Patterns** from the **Context** menu.
+1. On the **training-dcat-instance** page from the previous task, click the plus sign tab, and then select **Filename Patterns** from the **Context** menu.
 
     ![The Plus tab is clicked to display the context menu. The Filename Patterns menu option is highlighted.](./images/click-filename-patterns.png " ")
 
@@ -269,11 +267,11 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
     ![Step 1 of the Harvest wizard, Select a Connection, is displayed. The Sandbox connection is selected and the Next button is highlighted.](./images/harvest-sandbox-step-1.png " ")
 
-6. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream_sandbox`** bucket is already displayed in the **Available Bucket** section. Click the ![Plus](./images/add-entity-icon.png>) icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
+6. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream_sandbox`** bucket is already displayed in the **Available Bucket** section. Click the **Plus** icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
 
     ![Step 2 of the Harvest wizard, Select Data Entities, is displayed. The moviestream_sandbox bucket is selected and the Next button is highlighted.](./images/harvest-sanding-step-2-1.png " ")
 
-    >**Note:** You can use this page to view and add the bucket(s) and/or data entities you want to harvest from the **Available Buckets** section. Click the ![](./images/add-entity-icon.png>) icon for each data entity you want to include in the harvest job. Click a bucket link to display its nested data entities. Click the ![](./images/add-entity-icon.png>) icon next to each data entity that you want to include in the harvest job. You can also search for a bucket or entity using the **Filter Bucket** and **Filter Bucket / data entities** search boxes.
+    >**Note:** You can use this page to view and add the bucket(s) and/or data entities you want to harvest from the **Available Buckets** section. Click the **Plus** icon for each data entity you want to include in the harvest job. Click a bucket link to display its nested data entities. Click the **Plus** icon next to each data entity that you want to include in the harvest job. You can also search for a bucket or entity using the **Filter Bucket** and **Filter Bucket / data entities** search boxes.
 
 7. Click **Next**. The **Create Job** page of the **Harvest** wizard (Step 3 of 3) is displayed. Specify the following for the job details:
 
@@ -310,7 +308,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
 12. Click **Harvest**. The **Select a Connection** page of the **Harvest** wizard (Step 1 of 3) is displayed in the **Harvest Data Entities** tab. Select the **`Landing`** connection from the **Select a connection for the data asset you want to harvest** drop-down list. Click **Next**.
 
-13. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream_landing`** bucket is already displayed in the **Available Bucket** section. Click the ![Plus](./images/add-entity-icon.png>) icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
+13. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream_landing`** bucket is already displayed in the **Available Bucket** section. Click the **Plus** icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
 
     ![Step 2 of the Harvest wizard, Select Data Entities, is displayed. The moviestream_landing bucket is selected and the Next button is highlighted.](./images/harvest-landing-step-2-1.png " ")
 
@@ -343,7 +341,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
 19. Click **Harvest**. The **Select a Connection** page of the **Harvest** wizard (Step 1 of 3) is displayed in the **Harvest Data Entities** tab. Select the **`Gold`** connection from the **Select a connection for the data asset you want to harvest** drop-down list. Click **Next**.
 
-20. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-gold`** bucket is already displayed in the **Available Bucket** section. Click the ![](./images/add-entity-icon.png>) icon to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
+20. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-gold`** bucket is already displayed in the **Available Bucket** section. Click the **Plus** icon to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
 
 21. Click **Next**. The **Create Job** page of the **Harvest** wizard (Step 3 of 3) is displayed. Specify the following for the job details:
 
@@ -592,65 +590,6 @@ Register your Oracle Object Storage data sources with Data Catalog as a data ass
 
     ![The Default Properties section of the Summary tab in the Data Lake tab shows the data asset details such as URL, Namespace, and Data asset key.](./images/ll-data-lake-tab.png " ")
 
-<!-- Comments -->
-
-<!-- ## Task 3: Gather Information About your Assigned Data Catalog Instance and Resources
-
-In this lab and in several later labs, you'll use the information about the resources that you will use in this workshop some of which are provided for you in this LiveLabs version of the workshop on the **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page that you already bookmarked. You will save all the provided information such as your _Compartment OCID_ in a text file that is provided for you in this workshop so that you can easily copy and paste this information whenever you need it. This will save you extra steps and time later.
-
-1. Download the [live-labs-workshop-resources.txt](files/ll-workshop-resources.txt?download=1) file folder. This file contains several placeholders for different resources that you will use in this workshop. Once you identify a resource value such as your _Compartment OCID_, you can paste it in your `ll-workshop-resources.txt` file so that you can easily retrieve it anytime you need it. In addition, to simplify things for you, you can copy the resources that you will need in this workshop from the **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page, and then paste them in the `ll-workshop-resources.txt` file.
-
-2. Navigate to your local folder where you downloaded the `ll-workshop-resources.txt` file, `Downloads` folder in MS-Windows, and then open it.
-
-    ![](./images/ll-workshop-resources.png " ")
-
-3. Copy your assigned _Compartment OCID_ from the **Workshop Details** section of the **Launch Access the Data Lake using Autonomous Database and Data Catalog Workshop** page.
-
-    ![](./images/ll-copy-compartment-ocid.png " ")
-
-4. Paste the copied OCID value in the **training-dcat-compartment Compartment OCID** row in the **`ll-workshop-resources`** text file, and then save the file.
-
-    >**Note:** Keep the `workshop-resources.txt` text file open as you work on the workshop.
-
-    ![](./images/ll-paste-compartment-ocid.png " ")
-
-5. On the **Data Lake** tab that you are currently on from the previous task, in the **Default Properties** section, copy the value for the **Data asset key** field, and then paste it in the **Data Catalog Data Lake (data asset) Key** section in your local **`ll-workshop-resources.txt`** text file. Save the file.
-
-    ![](./images/ll-paste-data-asset-key.png " ")
-
-6. Find your _Tenancy's OCID_. From the **Oracle Cloud Console** banner, click the **Profile** icon. From the drop-down menu, click the **Tenancy** menu item. The **Tenancy Details** page for your tenancy is displayed. In the **Tenancy Information** tab, click the **Copy** link for the **OCID** field. The **Copy** link text changes briefly to **Copied** and then back to **Copy**.
-
-    ![](./images/ll-find-tenancy-ocid.png " ")
-
-7. Paste the copied tenancy OCID value in the **Tenancy OCID** section in your local **`workshop-resources.txt`** text file. Save the file.
-
-    ![](./images/paste-tenancy-ocid.png " ")
-
-8. Find your _Region-Identifier_. From **Oracle Cloud Console** banner, click the **Regions** drop-down list, and then click **Manage Regions**.
-
-    ![](./images/ll-click-regions.png " ")
-
-9. On the **Infrastructure Regions** page, in the **Region** section, your Home Region to which you are subscribed is displayed along with your **Region Identifier**, `us-ashburn-1`, in our example. Copy your region identifier.
-
-    ![](./images/region-identifier.png " ")
-
-10. Paste the copied region identifier value in the **Region-Identifier** section in your local **`ll-workshop-resources.txt`** text file. Save the file.
-
-    ![](./images/ll-paste-region-identifier.png " ")
-
-11. Find your _User OCID_. From **Oracle Cloud Console** banner, click the **Profile** icon, and then click **User Settings** from the drop-down list.
-
-    ![](./images/ll-user-settings.png " ")
-
-12. On the **User Details** page, in the **User Information** tab, click the **Copy** link for the **OCID** field. The **Copy** link text changes briefly to **Copied** and then back to **Copy**. Paste the copied OCID to your text editor and label it as the **User OCID** to easily identify it later.
-
-    ![](./images/ll-user-details.png " ")
-
-13. Paste the copied user OCID value in the **User OCID** section in your local **`ll-workshop-resources.txt`** text file. Save the file.
-
-    ![](./images/ll-paste-user-ocid.png " ")
--->
-
 ## Task 4: Add Three Data Asset Connections to the Oracle Object Storage Buckets
 
 After you register a data source as a data asset in your data catalog, you create data connections to your data asset to be able to harvest it. You can create multiple connections to your data source. At least one connection is needed to be able to harvest a data asset. In this lab, you will create three data connections to access the **moviestream\_sandbox**, **moviestream\_landing**, and **moviestream\_gold** Oracle Object Storage buckets that contain the data. The three buckets are located in the **c4u04** tenancy; therefore, you will use three provided public pre-authenticated requests (PARs), one for each bucket. For information on PAR, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
@@ -753,7 +692,7 @@ If an Object Storage file is matched with multiple filename patterns, it can be 
 
 Create a filename pattern as follows:
 
-1. On the **Data Lake** tab from the previous task, click the ![Plus tab.](./images/context-menu-icon.png>) tab and select **Filename Patterns** from the **Context** menu.
+1. On the **Data Lake** tab from the previous task, click the **Plus** tab, and then select **Filename Patterns** from the **Context** menu.
 
     ![The Plus tab is clicked to display the context menu. The Filename Patterns menu option is highlighted.](./images/ll-click-filename-patterns.png " ")
 
@@ -835,11 +774,11 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
     ![Step 1 of the Harvest wizard, Select a Connection, is displayed. The Sandbox connection is selected and the Next button is highlighted.](./images/harvest-sandbox-step-1.png " ")
 
-4. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-sandbox`** bucket is already displayed in the **Available Bucket** section. Click the ![](./images/add-entity-icon.png>) icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
+4. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-sandbox`** bucket is already displayed in the **Available Bucket** section. Click the **Plus** icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
 
     ![Step 2 of the Harvest wizard, Select Data Entities, is displayed. The moviestream_sandbox bucket is selected and the Next button is highlighted.](./images/harvest-sanding-step-2-1.png " ")
 
-    >**Note:** You can use this page to view and add the bucket(s) and/or data entities you want to harvest from the **Available Buckets** section. Click the ![](./images/add-entity-icon.png>) icon for each data entity you want to include in the harvest job. Click a bucket link to display its nested data entities. Click the ![](./images/add-entity-icon.png>) icon next to each data entity that you want to include in the harvest job. You can also search for a bucket or entity using the **Filter Bucket** and **Filter Bucket / data entities** search boxes.  
+    >**Note:** You can use this page to view and add the bucket(s) and/or data entities you want to harvest from the **Available Buckets** section. Click the **Plus** icon for each data entity you want to include in the harvest job. Click a bucket link to display its nested data entities. Click the **Plus** icon next to each data entity that you want to include in the harvest job. You can also search for a bucket or entity using the **Filter Bucket** and **Filter Bucket / data entities** search boxes.
 
 5. Click **Next**. The **Create Job** page of the **Harvest** wizard (Step 3 of 3) is displayed. Specify the following for the job details:
 
@@ -876,7 +815,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
 9. Click **Harvest**. The **Select a Connection** page of the **Harvest** wizard (Step 1 of 3) is displayed in the **Harvest Data Entities** tab. Select **`Landing`** from the **Select a connection for the data asset you want to harvest** drop-down list. Click **Next**.
 
-10. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-landing`** bucket is already displayed in the **Available Bucket** section. Click the ![Plus tab](./images/add-entity-icon.png>) icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
+10. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-landing`** bucket is already displayed in the **Available Bucket** section. Click the **Plus** icon next it to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
 
     ![Step 2 of the Harvest wizard, Select Data Entities, is displayed. The moviestream_landing bucket is selected and the Next button is highlighted.](./images/harvest-landing-step-2-1.png " ")
 
@@ -907,7 +846,7 @@ After you create a data asset in the Data Catalog repository, you harvest it to 
 
 15. Click **Harvest**. The **Select a Connection** page of the **Harvest** wizard (Step 1 of 3) is displayed in the **Harvest Data Entities** tab. Select **`Gold`** from the **Select a connection for the data asset you want to harvest** drop-down list. Click **Next**.
 
-16. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-gold`** bucket is already displayed in the **Available Bucket** section. Click the ![](./images/add-entity-icon.png>) icon to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
+16. The **Select Data Entities** page of the **Harvest** wizard (Step 2 of 3) is displayed. The **`moviestream-gold`** bucket is already displayed in the **Available Bucket** section. Click the **Plus** icon to add it to the **Selected Bucket / Data Entities** section to include it in the harvest job.
 
 17. Click **Next**. The **Create Job** page of the **Harvest** wizard (Step 3 of 3) is displayed. Specify the following for the job details:
 

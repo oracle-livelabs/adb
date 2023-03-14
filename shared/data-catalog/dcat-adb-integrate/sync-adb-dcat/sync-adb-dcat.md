@@ -674,7 +674,6 @@ You will do one last customization to shorten the generated schemas' names a bit
 
     ![In the DBMS_DCAT section, the obj prefix is now displayed next to the Oracle-Db-Schema-Prefix field.](./images/dbms-dcat-dialog-edited.png " ")
 
-
 ## Task 7: Synchronize All Data Assets in Data Catalog
 
 So far in this lab, you synchronized only the **`moviestream_sandbox`** Object Storage Bucket. In this task, you will synchronize all of the data asset folders, namely, **`moviestream_landing`** and **`moviestream_gold`** Object Storage Buckets. You will also grant **`READ`** access on the Data Catalog sourced tables to the **`dwrole`** role. See [RUN_SYNC Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/ref-running-synchronizations.html#GUID-C94171B4-6C57-4707-B2D4-51BE0100F967).
