@@ -164,7 +164,7 @@ Analytics Cloud provides a very intuitive experience for analyzing your data and
 
 The final dashboard is depicted below:
 
-![](images/oac-final-dashboard.png)
+![Final dashboard](images/oac-final-dashboard.png)
 
 The tree map on the left describes the MovieStream customers broken out by income level. The size of the boxes is indicative of the number of customers within that income level. Clicking on one of the income levels will filter the chart on the right to summarize the number of movie views for that income level. The chart shows the breakdown of views by customer segment across movie genres.
 
@@ -224,6 +224,8 @@ Let's build the dashboard!
 11. When you are done building your workbook, click **Save** in the upper right corner.
 
 At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous Database is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
+
+You may now **proceed to the next lab**.
 
 ## Want to learn more?
 
