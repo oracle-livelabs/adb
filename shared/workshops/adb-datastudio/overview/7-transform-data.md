@@ -7,6 +7,9 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 25 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_g5x49pk2)
+
 ### Objectives
 
 In this workshop, you will learn:

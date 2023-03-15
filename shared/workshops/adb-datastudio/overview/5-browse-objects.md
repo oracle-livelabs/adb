@@ -7,6 +7,9 @@ This lab introduces the Catalog application built into the Oracle Autonomous Dat
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_mnozgu6c)
+
 ### Objectives
 
 In this workshop, you will learn:
