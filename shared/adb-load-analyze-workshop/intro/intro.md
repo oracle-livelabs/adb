@@ -37,13 +37,13 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 
 ## Want to Learn More About Autonomous Database?
 
-- <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html" target="\_blank">Oracle Autonomous Data Warehouse Documentation</a>
-- <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html" target="\_blank">Additional Autonomous Data Warehouse Tutorials</a>
+- [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
+- [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
 
 - **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance; Marty Gubar, ADB Product Management
-- **Last Updated By/Date** - Richard Green, November 2022
+- **Last Updated By/Date** - Richard Green, March 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

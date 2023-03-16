@@ -12,7 +12,7 @@ In this lab, you will:
 * Establish connectivity between source on-premise PeopleSoft system and ADB-S
 
 ### Prerequisites
-* PeopleSoft on-premise system or Oracle Marketplace PeopleSoft image (Note: Peoplesoft Marketplcae images for HR system,Financials,Campus Solution etc can also be used in place of an on-premise PeopleSoft application,Refer to link [here](https://docs.oracle.com/en/applications/peoplesoft/peoplesoft-common/tutorial-deploy-demo-image/index.html#before_you_begin) for creation of new environment on OCI) 
+* PeopleSoft on-premise system or Oracle Marketplace PeopleSoft image (Note: PeopleSoft Marketplace images for HR system,Financial,Campus Solution etc can also be used in place of an on-premise PeopleSoft application,Refer to link [here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3208) for creation of new environment on OCI) 
 
 * ADB-S wallet file to be downloaded to on-premise PeopleSoft database system or Oracle Marketplace PeopleSoft image
 * Root or admin login privileges for the on-premise PeopleSoft database system
@@ -101,6 +101,6 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023
 
 

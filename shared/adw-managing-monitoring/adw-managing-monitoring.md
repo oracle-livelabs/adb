@@ -2,77 +2,120 @@
 
 ## Introduction
 
-In this lab, you will explore the monitoring capabilities available for your Autonomous Database (ADB).
+In this lab, you will explore the monitoring capabilities available for your Oracle Autonomous Database (ADB).
 
 Oracle provides several facilities for monitoring the performance and activity of your autonomous database. Among them are:
--   **Database Service Console** (targeted towards database administrators, developers, data scientists)
--   **OCI Monitoring Console** (targeted to cloud administrators and business users)
--   **Performance Hub**
--   **Autonomous Database Metrics**
+-   **Autonomous Database Metrics** (at bottom of Autonomous Database details page)
+-   **Database Actions - Database Dashboard** (accessible from Database Actions Launchpad)
+-   **Performance Hub** (accessible on Autonomous Database details page or from Database Actions Launchpad)
+-   **OCI Monitoring Console** (accessible from Oracle Cloud Interface (OCI) navigation menu)
 
-This lab covers using the Database Service Console, OCI Monitoring Console, and the Performance Hub to monitor an ADB.
+The ADB user interface provides dashboards to monitor the real-time and historical CPU and storage utilization, as well as database activity, like the number of running or queued statements. It also provides Real-Time SQL Monitoring to look at current and past long-running SQL statements in your instance and allows you to cancel long-running queries or set thresholds for ADW or ATP to automatically cancel them for you.
 
-The ADB Service Console provides dashboards to monitor the real-time and historical CPU and storage utilization, as well as database activity, like the number of running or queued statements. It also provides Real-Time SQL Monitoring to look at current and past long-running SQL statements in your instance and allows you to cancel long-running queries or set thresholds for ADW or ATP to automatically cancel them for you.
+Estimated Lab Time: 10 minutes
 
 ### Video Preview
-Watch a video demonstration of monitoring ADB cloud service.
+Watch a video demonstration of monitoring an Oracle Autonomous Database.
 
-[](youtube:Imxl2JiYicQ)
+[](youtube:uA6X7bnvaFs)
 
-## Task 1: Navigate to the Service Console
+### Objectives
+In this lab, you'll
+-   Examine the charts in the Metrics section of the Autonomous Database details Page
+-   Explore the charts in the Database dashboard
+-   Explore more charts in the Performance hub
+-   Examine the database monitoring charts in the OCI Monitoring Console
 
-The first facility that we will look at for monitoring your autonomous database is the Database Service Console.
+### Prerequisites
+-   This lab requires completion of the Provision an Autonomous Database lab in the Contents menu on the left.
 
-1. If you are not logged in to Oracle Cloud Console, log in and select Autonomous Database from the hamburger menu and navigate into your ADB Finance Mart instance.
+## Task 1: Navigate to Database Metrics
 
-    ![](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+The first facility that we will look at for monitoring your autonomous database is the Database Metrics display located conveniently at the bottom of the Autonomous Database details page.
 
-    ![](images/select-adw-finance-mart.jpg " ")
+1. In your ADW\_Finance\_Mart **Database Details** page, scroll down to the **Metrics** section.
 
-2. In your ADW Finance Mart **Database Details** page, click the **Service Console** button.
+    ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
-    ![](images/click-service-console.png " ")
+## Task 2: Examine Database Metrics
 
-## Task 2: Examine the Console Overview Page
-The **Overview** and **Activity** tabs show real-time and historical information about the service's utilization. The Service Console opens on the Overview tab by default.
+The Metrics section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
 
-1. Examine the components of the Overview page: Storage used, CPU utilization, Running SQL statements, Number of OCPUs allocated, SQL statement response times.
+1. Scroll through the 8 initial graphs: CPU Utilization, Storage Utilization, Sessions, Execute Count, Running Statements, Queued Statements, Database Availability, and Failed Connections.
 
-    ![](images/examine-console-overview-page.jpg " ")
+    The time period displayed on the metrics screen can also be easily changed to reflect your desired time period.
 
-## Task 3: Examine the Console Activity Page
+    ![Scroll down to Metrics eight initial graphs](images/scroll-down-to-metrics-eight-initial-graphs.png " ")
 
-1. To access detailed information about the service's performance, click the **Activity** tab in the Service Console.
+2. Click the **View all database metrics** link to examine many additional graphs of database metrics: Transaction Count, Current Logons, User Calls, Parse Count, Failed Logons, Failed Connections, Connection Latency, Query Latency, CPU Time, User Commits, User Rollbacks, Redo Size, Session Logical Reads, DB Block Changes, Physical Reads, Physical Writes, Physical Read Total Bytes, Physical Write Total Bytes, Parse Count (Hard), Parse Count (Failures), Bytes Received via SQL\*Net from DBLink, Bytes Sent via SQL\*Net to DBLink, Bytes Received via SQL\*Net from Client, Bytes Sent via SQL\*Net to Client, APEX Page Events, and APEX Page Load Time.
 
-    ![](images/click-activity-tab.jpg " ")
+    ![Click View all database metrics](images/click-view-all-database-metrics.png " ")
 
-2. Examine the components of the Activity page: Database Activity, CPU Utilization, Running Statements, Queued Statements.
+## Task 3: Examine the Database Actions Database Dashboard
+You can also view this monitoring information with more detailed tools provided in the Database Actions Launchpad.
 
-    ![](images/examine-activity-page.jpg " ")
+1. Go back to your ADW\_Finance\_Mart database's **Autonomous Database details** page, and click the **Database actions** button. The sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, Username - **admin**, and click **Next**. Enter the admin password you specified when creating the database. Click **Sign in**. The **Database Actions Launchpad** opens.
 
-3. To see earlier data, click **Time period**. The default retention period for performance data is eight days. So, this view shows information about the last eight days by default.
+    In the **Monitoring** section, click **Database Dashboard**.
 
-    ![](images/click-time-period.jpg " ")
+    ![In Database Actions Launchpad Monitoring section click Database Dashboard](images/click-database-dashboard.png " ")
 
-4. In the Time period view, you can use the **calendar** to look at a specific time period in the past eight days. You can also use the **time slider** to change the period for which performance data is shown.
+2. The Database Dashboard opens in the **Overview** tab. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated OCPUs, and SQL statement response time.
 
-    ![](images/calendar-and-time-slider.jpg " ")
+    ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png =50%x*)
 
-## Task 4: Monitor SQL Statements
+3. By selecting the **Monitor** tab at the top of the page, you can also view this information in real time or in a specific time period. The Monitor tab opens initially in the **Real time** view.
 
-1. Click the **Monitored SQL** tab to see information about current and past monitored SQL statements.
+    ![Examine the components of Database Dashboard Monitor tab in real time](images/database-actions-monitor-tab-real-time.png " ")
 
-    ![](images/click-monitored-sql.jpg " ")
+4. When you click the **Time period** view, you can use the **calendar** to look at a specific time period. You can also use the **time slider** to change the period for which performance data is shown.
 
-2. To see the detailed SQL Monitor report for a statement, select the statement and click **Show Details**. The **Overview** tab in the pop-up shows General information, Time and Wait Statistics, and IO Statistics for that statement.
+    ![Examine the components of Database Dashboard Monitor tab in a time period](images/database-actions-monitor-tab-time-period.png " ")
 
-    ![](images/click-show-details.jpg " ")
+## Task 4: View Performance Data from the Performance Hub
+You can view real-time and historical performance data from the Performance Hub. Performance Hub shows information about Active Session History (ASH) analytics and SQL monitoring.
 
-    ![](images/overview-tab-of-details-pop-up.jpg " ")
+1. On the **Database Actions Launchpad**, in the **Monitoring** section, click **Performance Hub**.
 
-3. The **Metrics** tab in the pop-up shows CPU Used, Memory, IO Throughput, and IO Requests for that statement.
+    ![Access Performance Hub from the Database Actions Launchpad Monitoring section](images/click-performance-hub-in-database-actions.png " ")
 
-    ![](images/metrics-tab-of-details-pop-up.jpg " ")
+    (Note that you can also access the Performance Hub from you ADW\_Finance\_Mart **Autonomous Database details** page.)
+
+    ![Access Performance Hub from the Autonomous Database details](images/click-performance-hub-in-details-page.png " ")
+
+2. The Performance Hub page displays. At the top of the page you can select the time range to display, followed by the Activity Summary, which is displayed in Database Time in units of average active sessions.
+
+    ![Examine the top of the Performance hub page](images/top-of-performance-hub-page.png " ")
+
+3. Continuing down the page, you can view Active sessions history analytics and SQL monitoring.
+
+    The **ASH Analytics** tab shows average active sessions.
+
+    ![Examine the ASH Analytics tab](images/performance-hub-ash-analytics.png " ")
+
+4. Click the **SQL Monitoring** tab. Each SQL statement can be inspected for further details. Here you can see the status, duration, SQL ID, SQL Plan Hash, and the user who created the statement. You can also see if parallelism was used, the resources consumed, and the SQL text.
+
+    You can select the link in the **SQL ID** column to go to the corresponding **Real-time SQL Monitoring** page. This page provides additional details to help you tune the selected SQL statement.
+
+    To terminate a running or queued SQL statement, click **Kill Session**.
+
+    ![Examine the SQL Monitoring tab](images/performance-hub-sql-monitoring.png " ")
+
+5. If you open the Performance Hub from the **Autonomous Database details** page rather than from the **Database Actions Launchpad**, some additional information is available.
+
+    The Automatic Workload Repository (AWR) collects, processes, and maintains performance statistics for problem detection and self-tuning purposes. This data is stored in both memory and the database. From the Performance Hub, you can generate and download a report of the gathered data.
+
+    From the **Reports** drop-down list, select **Automatic Workload Repository**.
+
+    ![Select Automatic Workload Repository from Reports drop-down list](images/select-awr-from-reports-menu.png " ")
+
+6. In the **Generate Automatic Workload Repository Report** dialog, select the Start Snapshot and End Snapshot time range. After you select the time range, click **Download**.
+
+    ![Select a time range and generate the report](images/generate-awr-report.png " ")
+
+7. Use the **Save As** dialog to specify where to download the report's HTML file to your local computer. Click the downloaded HTML file to view the lengthy, detailed report.
+
+    ![Download and view the report](images/view-amr-report.png " ")
 
 ## Task 5: Examine the OCI Monitoring Console
 
@@ -80,19 +123,19 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
 
 1. Go back to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
 
-    ![](images/click-navigation-menu.png " ")
+    ![Go to OCI dashboard navigation menu](images/click-navigation-menu.png " ")
 
 2. Scroll down the navigation menu. Click **Observability & Management**, click **Service Metrics**.
 
-    ![](images/click-service-metrics.png " ")
+    ![Navigate to OCI service metrics](images/click-service-metrics.png " ")
 
 3. Choose a **Compartment** that you have permission to work in. Choose a **Metric Namespace** in the drop-down menu to the right of the compartment. If you're not sure which compartment and namespace to use, contact an administrator. Click the **edit** symbol next to **Dimensions**.
 
-    ![](images/click-edit-dimensions-icon.png " ")
+    ![Click the edit button for dimensions](images/click-edit-dimensions-icon.png " ")
 
 4. In the **Edit dimensions** pop-up dialog, select a **Deployment Type**. Click **Done**.
 
-    ![](images/select-a-deployment-type.png " ")
+    ![Select a deployment type](images/select-a-deployment-type.png " ")
 
 5. The page updates to display only the resources in that compartment and namespace. Scroll down this very long page. It shows the following metrics:
     -   CPU Utilization
@@ -111,58 +154,19 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
     -   Query Latency
     -   CPU Time
 
-    ![](images/scroll-down-service-metrics-page.jpg " ")
+    ![Scroll down the service metrics page](images/scroll-down-service-metrics-page.jpg " ")
 
 6.  In addition to these service metrics, you can also perform queries on the metrics by using **Metrics Explorer**, creating **Alarms**, and creating **Health Checks**, to ensure that users will become immediately aware of any availability issues.
 
-    ![](images/metrics-explorer-alarms-health-checks.jpg " ")
+    ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.jpg " ")
 
-## Task 6: View Performance Data from the Performance Hub
-You can view real-time and historical performance data from the Performance Hub. Performance Hub shows information about Active Session History (ASH) analytics, SQL monitoring, and workload.
-
-1. In your ADW Finance Mart **Database Details** page, click **Performance Hub**.
-
-    ![](images/click-performance-hub.png " ")
-
-2. The Performance Hub page is displayed. This page has the following sections:
-    -   The time selector.
-    -   The Reports drop-down list, containing the option to create and download an AWR (Automatic Workload Repository) report.
-    -   The tabbed data area, with the tabs ASH Analytics, SQL Monitoring, and Workload.
-
-    ![](images/performance-hub-page.jpg " ")
-
-3. The Automatic Workload Repository (AWR) collects, processes, and maintains performance statistics for problem detection and self-tuning purposes. This data is stored in both memory and the database. From the Performance Hub, you can generate and download a report of the gathered data.
-From the **Reports** drop-down list, select **AWR**.
-
-    ![](images/select-awr-from-reports-menu.jpg " ")
-
-4. In the Generate AWR Report dialog, select the time range. You can either select **the two snapshots closest to** the current time, or you can create a **custom** time range. After you select the time range, click **Download**.
-
-    ![](images/generate-awr-report.jpg " ")
-
-5. Use the **Save As** dialog to specify where to download the report's HTML file to your local computer. Click the downloaded HTML file to view the lengthy, detailed report. The report is arranged with the following sections:
-    - Report Summary
-    - Time Model Statistics
-    - Wait Events Statistics
-    - Global Cache and Enqueue Statistics Summary
-    - Global CR Server Statistics
-    - Global Cache Transfer Statistics
-    - SQL Statistics
-    - Global Activity Statistics
-    - I/O Statistics
-    - Library Cache Statistics
-    - Memory Statistics
-    - Supplemental Information
-    - Active Session History(ASH) Report
-    - ADDM Reports
-
-    ![](images/view-amr-report.jpg " ")
+You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) for documentation on managing and monitoring an autonomous database.
+Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) on managing and monitoring an autonomous database.
 
 ## **Acknowledgements**
 
-- **Author** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Author** - Rick Green, Principal Developer, Database User Assistance
+- **Last Updated By/Date** - Rick Green, January 2023

@@ -7,7 +7,9 @@ One of the most widely used features in Autonomous Database on Shared Infrastruc
 
   ![ALT text is not available for this image](images/2673172546.jpg)
 
-A refreshable clone is a **read-only** clone that stays &quot;connected&quot; to, and has the ability to pull in (refresh data from), its **source** database with a simple click of a button. Until now, if you needed to update your clone's data from its source, you had two options:
+The previous lab showed how to create a full clone from the currently running database or from a backup timestamp of that database. This lab shows how to create a refreshable read-only clone that **automatically refreshes** when the data in its source database changes.
+
+A refreshable clone is a **read-only** clone that stays **connected to**, and has the ability to pull in (refresh data from), its **source** database with a simple click of a button. Until now, if you needed to update your clone's data from its source, you had two options:
 
 1. Move new data from the source database to the clone (via data pump, database links etc.)
 2. Create a new clone from the source database
@@ -40,7 +42,7 @@ In this lab, you'll:
 
 ## Task 1: Create a Table in the Source Database
 
-1. Navigate to your existing **ADW Finance Mart** database instance that you created in this workshop's "Provision Autonomous Database" lab. (Alternatively, create a new database as your source.) Insert a line of data into this source database before you clone it, by opening a Database Actions worksheet via the **Tools** tab in the Autonomous Database Details page of the OCI console. Connect to Database Actions as the user named **admin** with the password you created for the admin user in the Getting Started lab. On the Database Actions **Launchpad**, under the **Development** heading, click **SQL**.
+1. Navigate to your existing **ADW Finance Mart** database instance that you created in this workshop's "Provision Autonomous Database" lab. (Alternatively, create a new database as your source.) Insert a line of data into this source database before you clone it, by opening a Database Actions worksheet via the **Tools** tab in the Autonomous Database Details page of the OCI console. Connect to Database Actions as the user named **admin** with the password you created for the admin user in the Provision Autonomous Database lab. On the Database Actions **Launchpad**, under the **Development** heading, click **SQL**.
 
   ![ALT text is not available for this image](images/database-actions-launchpad-click-sql.png)
 
@@ -59,7 +61,7 @@ In this lab, you'll:
 
 Now that you have created a table in the source database and populated it with a row of data, you will create a refreshable clone from the source database.
 
-1. Return to the Autonomous Database Details page of your source database. From the **More Actions** drop-down menu, select **Create Clone**.
+1. Return to the Autonomous Database details page of your source database. From the **More actions** drop-down menu, select **Create clone**.
   ![ALT text is not available for this image](images/select-create-clone.png)
 
 2. Select the **Refreshable Clone** option. Note the text describing it; a refreshable clone must be refreshed every 7 days or less, otherwise it falls too far out of sync from the source and can no longer be refreshed.
@@ -83,7 +85,7 @@ Now that you have created a table in the source database and populated it with a
 
 You have proven that the refreshable clone contains the source database's table with one row of data. Now add a second row of data to the source, and see how to refresh the clone to pick up that second row.
 
-1. Switch back to the **source database's**  Database Actions SQL worksheet. (This will be the **ADW Finance Mart** database instance that you created in this workshop's &quot;Getting Started&quot; lab, or another database you are using as the source.)  Insert and commit an additional row into the source database. You now have 2 rows in the source but only a single row in the refreshable clone. Make note of the time when you inserted the second row.
+1. Switch back to the **source database's**  Database Actions SQL worksheet. (This will be the **ADW\_Finance\_ Mart** database instance that you created in this workshop's **Provision an Autonomous Database** lab, or another database you are using as the source.)  Insert and commit an additional row into the source database. You now have 2 rows in the source but only a single row in the refreshable clone. Make note of the time when you inserted the second row.
 
     ```
     <copy>insert into refreshclonetests (testcol) values ('You can refresh whenever you need!');
@@ -125,9 +127,9 @@ Now see how easy it is to refresh the clone with the new data you just added to 
 
   With the Refreshable Clones feature, you can now keep cloned databases updated without any tedious manual export process. As new data comes into your source database each day, it can easily be refreshed into all its connected refreshable clones with a few button clicks.
 
-You may now proceed to the next lab.
+You may now **proceed to the next lab**.
 
-## Learn More
+## Want to Learn More?
 
 - ADW Documentation: [Using Refreshable Clones with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-refreshable-clone.html#GUID-C49DA251-D347-491B-9C50-3D42EB3F93D9) 
 

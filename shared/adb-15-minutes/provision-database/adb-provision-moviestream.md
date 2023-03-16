@@ -19,10 +19,13 @@ In this lab, you will:
 
 ## Task 1: Choose Autonomous Database from the Services Menu
 
-1. Log in to the Oracle Cloud Interface.
-2. Once you log in, you arrive at the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices and then click **Autonomous Database**.
+1. Log in to the Oracle Cloud Interface. Once you log in, you arrive at the Oracle Cloud dashboard where you can see all the services available to you. Click the navigation menu in the upper left corner to show top level navigation choices.
 
-    ![Oracle home page.](./images/navigation.png " ")
+    ![Oracle Cloud Service dashboard.](./images/cloud-service-dashboard.png " ")
+
+2. Click **Oracle Database** and then click **Autonomous Database**.
+
+    ![Choose Autonomous Database from navigation menu.](./images/navigation.png " ")
 
 ## Task 2: Create the Autonomous Database instance
 
@@ -43,14 +46,14 @@ In this lab, you will:
 
 <if type="freetier">
     - __Choose a compartment__ - You can simply use the default compartment or pick a different one. See [the documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) if you want to learn more about compartments.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __My Quick Start ADB__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __MYQUICKSTART\_ADB__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __MYQUICKSTART__.
 
     ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
 </if>
 <if type="livelabs">
     - __Choose a compartment__ - Use the default compartment created for you.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __My Quick Start ADB__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __MYQUICKSTART_ADB__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __MOVIE+your user id__, for example, __MOVIE9352__.
 
     ![Enter the required details.](./images/livelabs-adwname.png " ")
@@ -95,12 +98,12 @@ In this lab, you will:
     - If you want to restrict access to a private endpoint within an OCI VCN, select "Private endpoint access only" in the Choose network access area.
     - If the "Require mutual TLS (mTLS) authentication" option is selected, mTLS will be required to authenticate connections to your Autonomous Database. TLS connections allow you to connect to your Autonomous Database without a wallet, if you use a JDBC thin driver with JDK8 or above. See the [documentation for network options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/support-tls-mtls-authentication.html#GUID-3F3F1FA4-DD7D-4211-A1D3-A74ED35C0AF5) for options to allow TLS, or to require only mutual TLS (mTLS) authentication.
 
-    ![Choose the network access type.](./images/Picture100-26e.png " ")
+    ![Choose the network access type.](./images/choose-network-access.png " ")
 
 
-9. Choose a license type. <if type="freetier">For this lab, choose __License Included__.</if><if type="livelabs">For this lab, choose __Bring Your Own License (BYOL)__.</if> The two license types are:
-    - __Bring Your Own License (BYOL)__ - Select this type when your organization has existing database licenses.
-    - __License Included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
+9. Choose a license type. <if type="freetier">For this lab, choose __License included__.</if><if type="livelabs">For this lab, choose __Bring your own license (BYOL)__.</if> The two license types are:
+    - __Bring your own license (BYOL)__ - Select this type when your organization has existing database licenses.
+    - __License included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
 <if type="freetier">
     ![](./images/license.png " ")
@@ -133,4 +136,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Marty Gubar, November 2021
+- **Last Updated By/Date** - Richard Green, February 2023

@@ -28,7 +28,7 @@ Since there are restrictions in creating the tablespaces on ADB-S, the process w
      spool off; </copy>
       ```
     
-    ![](./images/table1.png "")
+    ![Query the sql for the list of tablespaces](./images/table1.png "")
 
 2. The following SQL commands will provide the list of Temporary Tablespaces needed to map with ‘TEMP’ Tablespace:
 
@@ -42,7 +42,7 @@ Since there are restrictions in creating the tablespaces on ADB-S, the process w
      spool off; </copy>
       ```
 
-    ![](./images/table2.png "")
+    ![Query the sql for the list of temporary tablespaces](./images/table2.png "")
 
 ## Task 2: Sorting the list and mapping to DATA and TEMP for MV2ADB configuration
 
@@ -61,4 +61,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, PeopleSoft Architect
 * **Contributors** - Deepak Kumar M, PeopleSoft Architect
-* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Aug 2021
+* **Last Updated By/Date** - Deepak Kumar M, PeopleSoft Architect, Feb 2023

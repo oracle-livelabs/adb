@@ -24,13 +24,13 @@ You will run a basic query on the `SSB` data set which is a 1 terabyte data set 
 
 ### Prerequisites
 
-- This lab requires completion of the Provision Autonomous Database lab in the Contents menu on the left.
+- This lab requires completion of the Provision an Autonomous Database lab in the Contents menu on the left.
 
 ## Task 1: Connect with SQL Worksheet
 
 Although you can connect to your Oracle Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your ADW or ATP console.
 
-1.  If you are not logged in to Oracle Cloud Console, log in and select **Autonomous Data Warehouse** from the navigation menu, make sure you are in the right compartment where you ADW is provisioned and navigate into your ADW Finance Mart instance.
+1.  If you are not logged in to Oracle Cloud Console, log in and select **Autonomous Data Warehouse** from the navigation menu, make sure you are in the right compartment where your autonomous database is provisioned and navigate into your ADW Finance Mart instance.
 
     ![Oracle Home page left navigation menu.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
@@ -63,14 +63,14 @@ Run a query on a sample Oracle Autonomous Database data set.
 
 1.  Copy and paste the code snippet below to your SQL Worksheet. This query will run on the Star Schema Benchmark (ssb.customer), one of the two ADW sample data sets that you can access  from any ADW instance. Take a moment to examine the script. Make sure you click the **Run Statement** button to run it in SQL Worksheet so that all the rows display on the screen.
 
-    ````
+    ```
     <copy>
     select /* low */ c_city,c_region,count(*)
     from ssb.customer c_low
     group by c_region, c_city
     order by count(*);
     </copy>
-    ````
+    ```
 
     ![Paste the code and click Run Script.](./images/ssb-query-low-results-sql-worksheet.png " ")
 
@@ -78,9 +78,9 @@ Run a query on a sample Oracle Autonomous Database data set.
 
 3.  When possible, ADW also *caches* the results of a query for you. If you run identical queries more than once, you will notice a much shorter response time when your results have been cached.
 
-4.  You can find more sample queries to run <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html" target="\_blank">in the ADW documentation</a>.
+4.  You can find [more sample queries to run](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html) in the ADW documentation.
 
-Please *proceed to the next lab*.
+You may now **proceed to the next lab**.
 
 ## Learn more
 
@@ -91,4 +91,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-datab
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Arabella Yao, Product Manager Intern | Ayden Smith, QA Intern)
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Last Updated By/Date** - Richard Green, December 2022
