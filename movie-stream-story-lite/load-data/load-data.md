@@ -85,29 +85,18 @@ You learned how to use the Create User dialog to create a new user. You can also
 
     ```
     <copy>
-    declare
-        l_git varchar2(4000);
-        l_repo_name varchar2(100) := 'common';
-        l_owner varchar2(100) := 'martygubar';
-        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
+    declare 
+        l_uri varchar2(500) := 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/setup/workshop-setup.sql';
     begin
-        -- get a handle to github
-        l_git := dbms_cloud_repo.init_github_repo(
-                    repo_name       => l_repo_name,
-                    owner           => l_owner );
-
-        -- install the package header
-        dbms_cloud_repo.install_file(
-            repo        => l_git,
-            file_path   => l_package_file,
-            stop_on_error => false);
-
+        dbms_cloud_repo.install_sql(
+            content => to_clob(dbms_cloud.get_object(object_uri => l_uri))
+        );
     end;
     /
     </copy>
     ```
 
-    The script above is showcasing Autonomous Database's integration with GitHub. The **dbms\_cloud\_repo.install\_file** procedure allows you to easily install database code from GitHub repositories into your schema.
+    The script above is showcasing Autonomous Database's integration with external repositories. The **dbms\_cloud\_repo.install\_file** procedure allows you to easily install database code from object storage or GitHub repositories into your schema. Here, we are installing pl/sql packages, procedures, tables and views from the `workshop-setup.sql` file found in an object storage bucket.
 
 ## Task 3: Log in as the MOVIESTREAM user
 
@@ -131,7 +120,7 @@ Now you need to switch from the ADMIN user to the [](var:db_user_name) user, bef
 
     In this example, the database name in the top right should say [](var:db_user_name).
 
-## Task 4: Load data from files in Object Storage using Data Tools
+## Task 4: Load data from files in Object Storage using Data Studio
 
 In this step we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
 
@@ -158,7 +147,7 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
     <copy>
     -- Run the PLSQL procedure that loads the rest of the dataset
     BEGIN
-        workshop.add_dataset('ALL');
+        workshop.add_dataset(tag => 'end-to-end');
     END;
     /
     </copy>

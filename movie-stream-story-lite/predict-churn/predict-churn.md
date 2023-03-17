@@ -158,10 +158,8 @@ Access OML from the Autonomous Database OCI service console.
 
     ![Churn AutoML Task 2 Step 3 Features importance](images/oml-churn-automl-features-importance.png " ")
 
-    In this **Experiment**, the attributes with the highest **overall importance** are:
-    ```
-    AGE, AVG_DISC_M3_11 (average discounts for the 9 months before the current quarter), GENDER, CREDIT_BALANCE, AVG_NTRANS_M3_5 (average number of transactions in the previous quarter), YRS_RESIDENCE, GENRE_THRILLER, GENRE_COMEDY, and GENRE_WAR
-    ```
+    In this **Experiment**, the attributes with the highest **overall importance** are:  AGE, AVG_DISC_M3_11 (average discounts for the 9 months before the current quarter), GENDER, CREDIT_BALANCE, AVG_NTRANS_M3_5 (average number of transactions in the previous quarter), YRS_RESIDENCE, GENRE_THRILLER, GENRE_COMEDY, and GENRE_WAR
+    
 4. Understand model performance.
     Scrolling up to the **Leader Board** section, we can click the **Decision Tree** unique model name to open the diagnostics. Click on the Decision Tree **Model Name** link in blue.
 
@@ -171,7 +169,7 @@ Access OML from the Autonomous Database OCI service console.
 
     The first screen that shows up is the **Prediction Impacts**. This time the attributes are listed in order of impact that this specific model uses in its formulation to predict churn.
 
-    It includes the following geo-demographic attributes like AGE, GENDER, EDUCATION, YRS\_RESIDENCE and MARITAL\_STATUS.
+    It includes the following geo-demographic attributes like AGE, GENDER, GENRE\_THRILLER and EDUCATION.
 
     From the customer product behavior point of view, it includes AVG\_DISC\_M3\_11 (the average discounts for the 9 months before the current quarter) and the counts for total number of movies of several different types of genres (GENRE\_xxx).
 
