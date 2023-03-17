@@ -171,7 +171,7 @@ Access OML from the Autonomous Database OCI service console.
 
     The first screen that shows up is the **Prediction Impacts**. This time the attributes are listed in order of impact that this specific model uses in its formulation to predict churn.
 
-    It includes the following geo-demographic attributes like AGE, GENDER, EDUCATION, YRS\_RESIDENCE and MARITAL\_STATUS.
+    It includes the following geo-demographic attributes like AGE, GENDER, GENRE\_THRILLER and EDUCATION.
 
     From the customer product behavior point of view, it includes AVG\_DISC\_M3\_11 (the average discounts for the 9 months before the current quarter) and the counts for total number of movies of several different types of genres (GENRE\_xxx).
 
