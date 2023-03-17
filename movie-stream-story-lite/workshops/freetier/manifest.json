@@ -11,6 +11,7 @@
       "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
    
     },
+    "variables": ["/adb/movie-stream-story-lite/workshops/variables/variables-free.json"],
     "tutorials": [
         {
           "title": "Introduction to MovieStream",
@@ -18,8 +19,9 @@
           "filename": "../../introduction/introduction.md"
         },
         {
-          "title": "Get started",
-          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+          "title": "Get Started",
+          "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for the Prerequisite lab. This lab is always second.",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
           "title": "Lab 1: Provision an ADB instance",

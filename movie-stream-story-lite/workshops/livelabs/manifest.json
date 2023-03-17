@@ -11,6 +11,7 @@
       "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
    
     },    
+    "variables": ["/adb/movie-stream-story-lite/workshops/variables/variables-livelabs.json"],
     "tutorials": [
       {
           "title": "Get Started",
