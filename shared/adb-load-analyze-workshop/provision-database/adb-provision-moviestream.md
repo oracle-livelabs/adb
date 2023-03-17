@@ -26,13 +26,13 @@ In this lab, you will:
 -   This lab requires completion of the Get Started section in the Contents menu on the left.
 
 ## Task 1: Create or select a compartment
-[Create or select a compartment](include:iam-compartment-create-body.md)
+[](include:iam-compartment-create-body.md)
 
 ## Task 2: Choose Autonomous Database from the OCI services menu
-[Choose Autonomous Database from the OCI services menu](include:adb-goto-service-body.md)
+[](include:adb-goto-service-body.md)
 
 ## Task 3: Create the Autonomous Database instance
-[Create the Autonomous Database Instance](include:adb-provision-body.md)
+[](include:adb-provision-body.md)
 
 You may now **proceed to the next lab**.
 
