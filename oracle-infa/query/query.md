@@ -300,8 +300,10 @@ Add Lineitem table as another data source.
 
 25.	Enter the following in the Expression field.  This function will add the total of all items in an order.
 
-```SQL
-sum(l_extendedprice * (1-l\_discount) * (1+l\_tax))
+```sql
+<copy>
+sum(l_extendedprice * (1- l_discount) * (1+l_tax))
+</copy>
 ```
 
 26.	Click **Validate**.
@@ -359,7 +361,7 @@ Add an expression to rename the fields so that they look better and are in the o
 6.	Select all fields except the following:
 	* custkey
 	* itemcount
-	* *orderdate
+	* orderdate
 	* orderkey
 	* orderpriority
 	* orderstatus
@@ -455,4 +457,4 @@ You have successfully completed this LiveLabs.
 ## Acknowledgements
 * **Author** - Eddy Widjaja, Solutions Director, Informatica
 * **Contributors** -  Larry Fumagalli, Outbound Product Management
-* **Last Updated By/Date** - Larry Fumagalli, August 2022
+* **Last Updated By/Date** - Larry Fumagalli, March 2023

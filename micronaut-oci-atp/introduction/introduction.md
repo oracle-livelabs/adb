@@ -27,8 +27,8 @@ This 2-hour lab walks you through the steps to use the Micronaut framework, Micr
 ### Prerequisites
 - An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported
 - Understanding of the Java programming language
-- [Micronaut 3.7](https://micronaut.io/download/)
-- [GraalVM 22.2 for JDK 17](https://www.graalvm.org/docs/getting-started/)
+- [Micronaut 3.8](https://micronaut.io/download/)
+- [GraalVM 22.3.1 for JDK 17](https://www.graalvm.org/docs/getting-started/)
 - An IDE such as [VS Code](https://code.visualstudio.com/) or [IntelliJ](https://www.jetbrains.com/idea/download/)
 - A working installation of [Docker](https://www.docker.com/)
 

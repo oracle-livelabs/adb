@@ -301,7 +301,7 @@ Start by examining sensitive data in one of the tables on your target database b
 
     ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
 
-## Learn More
+## Want to Learn More?
 
 The following links provide more information about Oracle Data Safe:
 
