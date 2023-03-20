@@ -45,7 +45,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of the data transform card](images/image13_transform_card.png)
 
-2.  Provide QTEAM for username and the password for the database user QTEAM.
+2.  Enter QTEAM for user name and the password "AAbbcc123456" for the password.
 
     ![screenshot of data transform login](images/image14_transform_login.png)
 
@@ -101,6 +101,8 @@ a complete tool for complex data integration projects.
 Now we are ready to prepare the data.
 
 ## Task 3: Create a data flow to load a new table to analyze customer sales
+
+>**Note:** In this environment, a Data Transforms project and an empty data flow have been pre-created. You will update the existing data flow to perform the data transformations required.
 
 1.  Click on the **Projects** button on the left side
 
