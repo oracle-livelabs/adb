@@ -5,12 +5,12 @@
         {
           "title": "Introduction",
           "description": "Introduction to Data Studio",
-          "filename": "../../0-introduction.md"
+          "filename": "../../0-introduction-short.md"
         },
         {
           "title": "Get Started",
           "description": "Login to Oracle Cloud",
-          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
+          "filename": "../../cloud-login-livelabs-short.md"
         },
         {
           "title": "Lab 1: Understand data analysis requirements",

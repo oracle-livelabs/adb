@@ -17,12 +17,9 @@ In this workshop, you will learn:
 
 ### Prerequisites
 
-To complete this lab, you need to have completed the previous labs, so that you have:
+In this version of the workshop, all the pre-requisite steps have been done for you so you can get started learning how to transform and analyze your data.
 
-- Created an Autonomous Data Warehouse instance
-- Created a new QTEAM user with appropriate roles
-- Loaded the demo data 
-- Loaded Age group data into AGE\_GROUP 
+This Live Labs environment includes a pre-provisioned Autonomous Data Warehouse, with a user QTEAM, and loaded demo data.
 
 ## Task 1: Launch Data Transforms
 
@@ -66,45 +63,58 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
 
-## Task 2: Create a data flow to load a new table to analyze customer sales
+## Task 2: Update the connection to your Autonomous Database
+
+1.  Click on **Connections** on the left side to look at the available connections.
+    
+    ![screenshot of the connection menu](images/image17_transform_conn.png) 
+
+2.  You will notice that there is one connection already defined. Click on the connection to complete its configuration. 
+
+    ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
+
+3.  Under the **JDBC URL**, paste in the name of your autonomous database into the string between the @ symbol and the "\_low". The name of your database will be 'adwNNNNN', that is 'adw' followed by five numbers. You will be able to see the database name in the URL being accessed by your browser. For example, in the screenshot below, the string needs to be updated to "adw45989":
+
+    ![screenshot of the browser window showing where to get the database name](images/connection-short.png)
+
+4.  Enter QTEAM for user name and the password "AAbbcc123456" and click on Test Connection. After
+    a successful connection a notification message will appear on the top
+    right.
+
+    ![screenshot of the connection for the user and password](images/image19_transform_conn_usrpwd.png)
+
+4.  If the notification message disappears then you can get it back by
+    clicking on the bell icon on the top right. Throughout this tool, you
+    will have notification messages available by clicking on the bell
+    icon.
+
+    After successful test, click on the **Update** to save the connection configuration. 
+
+    ![screenshot of the connection test](images/image20_transform_conn_test.png)
+
+>**Note:** In this workshop, we are working with only the data available in
+our Autonomous Database, but you can create connections to other
+databases, object stores and applications as well as load and transform
+data from those sources to your Autonomous Database. Data Transforms is
+a complete tool for complex data integration projects.
+
+Now we are ready to prepare the data.
+
+## Task 3: Create a data flow to load a new table to analyze customer sales
 
 1.  Click on the **Projects** button on the left side
 
     ![The Data Transforms menu with Projects selected](images/dtshort-projects.png)
 
-2.  Click the **SalesData** project and then the **load_customer_sales_analysis** data flow
+2.  Click the **SalesData** project and then the **load\_customer\_sales\_analysis** data flow
 
     ![A list of data flows in the SalesData project](images/dtshort-dataflow.png)
 
-3.  Now let us learn how to navigate in the data flow editing screen.
-    Refer to the numbered zones in the screenshot below.
+3.  A window will pop up to **Add a Schema**. Make sure the Schema is set to **QTEAM** and click OK. The schema will then appear under **Data Entities**. Expand the schema to show the tables.
 
-    1: Main editing canvas to create data flows by combining various
-    transforms
-    
-    2: Data Entity browser. Data Entities can be used as a source or
-    target for the data flow. You can add more connections by clicking on
-    the + icon (we don't need to) and filter entities by name or tag if
-    the list is big. Entities are dragged into the main canvas to build a
-    data flow.
-    
-    3: Transformations are grouped under various categories. Click on
-    different groups to see what kinds of transforms are available. Basic
-    transforms are under the **Data Transform** and **Data Preparation**
-    groups. These transforms are dragged into the main canvas to build a
-    data flow.
-    
-    4: Properties: By clicking on any source/target entity or on a
-    transform step, you can view and edit various properties.
-    
-    5: Save, execute, and validate.
-    
-    6: When you click on the empty part of the main canvas then it gives
-    you the execution status of the data flow.
+    ![Expand the schema to show the data entities](images/expand-schema-short.png)
 
-    ![screenshot of data flow edit page zones](images/image25_transform_zones.png)
-
-6.  Now we are ready to build the data flow. 
+4.  Now we are ready to build the data flow. 
     
     We want to aggregate the
     sales per customer to create 5 quintile buckets to determine
