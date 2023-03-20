@@ -7,6 +7,9 @@ This lab introduces Data Studio’s Data Insights tool built into the Oracle Aut
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_6angdk6o)
+
 ### Objectives
 
 In this workshop, you will learn:
@@ -22,8 +25,8 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 ## Task 1: Use Data Insights
 
-Data Studio's insights process runs in the background
-finding interesting patterns in the data. This is a hands-off approach to
+Data Studio's insights process runs in the background, finding interesting patterns 
+in the data. This is a hands-off approach to
 finding insights that are lurking out of sight in the data.
 
 In this lab, we will investigate a few sample insights produced by the tool.
@@ -97,20 +100,26 @@ see the insight list being refreshed while it is executing.
     3: A few bars are surrounded by a black border (pointed by arrows). These
     are highlighted exceptions.
     
-    Another way to read this is as:
+    Another way to read this is:
     
     **Singles** are purchasing **Adventure** and **Comedy** more than
     average and are not very interested in **Drama**.
     
-    That is an interesting insight.
-
+    That is an interesting insight.  
+    
     ![screenshot of insights on singles and genre](images/image80_inst_maritalstatus_genre.png)
+
+    Click on the **Back** button to go back to the list.
 
 6.  Click on the tile marked **61-70** on the top and the **Cust value** at
     the bottom.
 
     It shows that people aged 61-70 are over-represented in the 4th customer value
     bucket. Probably they have lots of disposable income!
+
+    We also note that 61-70 age group is hardly showing up in 5th customer value group (highest value). 
+    This raises new questions and will require further analysis. This is not covered in the workshop but 
+    you are welcome to explore the data yourself at the end of this workshop.
 
     ![screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
 
@@ -121,25 +130,18 @@ see the insight list being refreshed while it is executing.
 
     Click on the tile marked **Dog** on the top and **Cust Value**.
     
-    It shows that the highest value (5) dog owners are purchasing more movies
-    than average compared to non-dog owners.
-    
-    It is just a correlation but you could use this data to offer dog
-    grooming products to high-value customers!
+    It shows that the highest value (5) dog owners are purchasing far more movies than average compared to non-dog owners. It may be just a correlation but perhaps you could use this data to offer dog grooming products to high-value customers!
     
     Interesting. Isn't it? The Data Insights tool has discovered all these hidden
     patterns just by crawling through the data.
 
     ![screenshot of insights on pet ownership and customer value](images/image82_inst_pet_custvalue.png)
 
+    Wow! That's quite an insight!! 
+
     Click on the **Back** button to go back to the list.
 
-  WOW! Quite an insight!! 
-  
-  The Data Insight tool has discovered all these hidden patterns just by crawling through the data.
-  
-  There are many other insights in the list. Go back to the list and look at 
-  a few others. See if you find any other interesting insight.
+There are many other insights in the list. Go back to the list and look at a few others. See if you find any other interesting insight. The Data Insight tool has discovered all these hidden patterns just by crawling through the data.
 
 ## Task 2: Peeling the layers of Data Insights
 
@@ -186,7 +188,7 @@ experience to guide their analysis steps. In comparison, **Data
 Insights** is a hands-off approach and it finds patterns without
 understanding what hierarchies mean.
 
-We think that both are complimentary to each other and provide valuable
+We think that both are complementary to each other and provide valuable
 tools to use in "a day in the life of a data analyst".
 
 ## RECAP

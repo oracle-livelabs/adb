@@ -7,6 +7,9 @@ This lab introduces the Catalog application built into the Oracle Autonomous Dat
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_mnozgu6c)
+
 ### Objectives
 
 In this workshop, you will learn:
@@ -20,14 +23,16 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
 
-## Task 1: Launch Database Actions
+## Task 1: Data Studio overview
 
-1.  Log in to the Autonomous Database created earlier with your user and
-    password. You can see various tools under Data Studio.
+1.  If you are already logged in then click on the **Database Actions** link on the top left. If not, then log in to the
+    Autonomous Database created earlier with your user and password. You can see various tools under Data Studio.
 
     >**Note:** Bookmark the Database Actions page so that it is easier to come
     back to this later in the workshop.
     
+    Look at the various tools under Data Studio section. We will go through all these tools in this overview workshop and learn how to use them in our day today job.
+
     Click on the **Data Studio Overview** card.
 
     ![Screenshot of data studio overview](images/image1_datastudio_overview.png)
@@ -47,7 +52,7 @@ use the Catalog tool to browse the objects and find what we need.
 
     A typical database will have many objects and you need various
     ways to search and display objects. Various ways to navigate a catalog
-    are shown by marked numbers in the above screenshot. These are:
+    are shown by marked numbers in the screenshot. These are:
     
     1: Saved searches. You can filter objects easily with one click and
     then refine the search further as per need.
@@ -92,8 +97,7 @@ use the Catalog tool to browse the objects and find what we need.
     ![Screenshot of data preview](images/image5_catalog_data_preview.png)
 
 4.  Look for the other tables of interest on the main catalog page.
-    If you remember the meeting notes in the introductory section of this
-    workshop, we are also interested in CUSTOMER\_CA and GENRE tables.
+    Recall from the meeting notes in the workshop's introduction that we are also interested in CUSTOMER\_CA and GENRE tables.
     Find and click on these tables to do a data preview.
 
     ![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
@@ -104,14 +108,10 @@ use the Catalog tool to browse the objects and find what we need.
     
     **(type: COLUMN) AGE**
     
-    This will search for all the columns with "AGE" in the column name.
+    This will search for all the columns with "AGE" in the column name. We find one column named "AGE" but there is no age group column found. For our workshop, we needed a table about various age groups. Since we could not find it in the catalog, we will have to load it into the database in the next lab.
 
     ![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
 
-    We can explicitly search for GROUP as well but we don't see any.
-    It means we don't have any tables or columns with the text GROUP in the name. For our workshop, 
-    we needed a table about various age groups. Since we could not find it in the catalog, we will have
-    to load it into the database in the next lab.
 
 ## RECAP
 

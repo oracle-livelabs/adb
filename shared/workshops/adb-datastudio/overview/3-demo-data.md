@@ -7,6 +7,9 @@ This lab will guide you through the steps to load demo data.
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_3tt5hsic)
+
 ### Prerequisites
 
 - Created an Autonomous Data Warehouse instance
@@ -42,19 +45,38 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
     ![Database Actions Log-in screen with the user name](images/image_user_uri.png)
 
 3. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
+    
+    Click on the **SQL** card.
 
     ![The Database Actions home page](images/image_db_action.png)
 
 
 ## Task 2: Execute the script
 
-1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
+1. Go to the next step if you are first time loading the demo data. Use this script to cleanup your previously loaded demo data.
+
+    Simply copy and paste this code into your SQL Worksheet.
+
+    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*:
+    ```
+    <copy>
+DROP TABLE CUSTOMER_CA;
+DROP TABLE MOVIESALES_CA;
+DROP TABLE GENRE;
+DROP TABLE MOVIE;
+DROP TABLE TIME;
+    </copy>
+    ```
+    >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command if you run this on an empty schema.
+
+    ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
+
+2. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
 
     *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
     ```
     <copy>
-DROP TABLE CUSTOMER_CA;
 CREATE TABLE CUSTOMER_CA 
     ( 
      CUST_ID        NUMBER , 
@@ -66,7 +88,6 @@ CREATE TABLE CUSTOMER_CA
      PET            VARCHAR2 (40) 
     ) 
 ;
-DROP TABLE MOVIESALES_CA;
 CREATE TABLE MOVIESALES_CA 
     ( 
      DAY_ID           DATE , 
@@ -83,7 +104,6 @@ CREATE TABLE MOVIESALES_CA
      TOTAL_SALES      NUMBER 
     ) 
 ;
-DROP TABLE GENRE;
 CREATE TABLE GENRE 
     ( 
      GENRE_ID NUMBER , 
@@ -99,7 +119,6 @@ ALTER TABLE GENRE
     ADD CONSTRAINT PK_GENRE_ID PRIMARY KEY ( GENRE_ID ) 
     USING INDEX PK_GENRE_ID 
 ;
-DROP TABLE MOVIE;
 CREATE TABLE MOVIE 
     ( 
      MOVIE_ID     NUMBER , 
@@ -122,7 +141,6 @@ CREATE TABLE MOVIE
      SUMMARY      VARCHAR2 (16000) 
     ) 
 ;
-DROP TABLE TIME;
 CREATE TABLE TIME 
     ( 
      DAY_ID           DATE , 
@@ -168,14 +186,18 @@ begin
     file_uri_list =>'&file_uri_base/TIME.csv',
     format =>'{"type" : "csv", "skipheaders" : 1}'
  );
+ FOR TNAME IN (SELECT table_name FROM user_tables  where table_name like 'COPY$%') LOOP
+ EXECUTE IMMEDIATE ('DROP TABLE ' || TNAME.table_name || ' CASCADE CONSTRAINTS PURGE');
+ END LOOP;
 end;
 /
     </copy>
     ```
 
-2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+3. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
-    >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+    While the script is running, you will see the message "Executing code" at the bottom of the window. 
+    The message will change to "SQL executed by QTEAM" when in finishes. There should not be any errors.
 
     ![Screenshot of SQL worksheet](images/image_sql_worksheet.png)
 

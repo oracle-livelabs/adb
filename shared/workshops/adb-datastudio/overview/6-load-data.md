@@ -7,6 +7,9 @@ This lab introduces the Data Load tool of Data Studio built into the Oracle Auto
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_o5j922rh)
+
 ### Objectives
 
 In this workshop, you will learn:
@@ -26,12 +29,7 @@ We need to analyze the movie sales data by age group. While browsing the catalog
 we noticed that there is no age group information, so we need to load a
 new table for the age groups.
 
-1.  Go back to the Database Actions home page by clicking on **Database Actions** 
-    in the title bar in the top left, then click on **Data Load**
-
-    ![Screenshot of data load card](images/image8_load_card.png)
-
-2.  We need to create a local data file for AGE\_GROUP. Launch Excel on
+1.  We need to create a local data file for AGE\_GROUP. Launch Excel on
     your desktop to create this dataset. You can either copy from the following table
     and paste it into a blank Excel sheet or manually type it in.
 
@@ -50,7 +48,7 @@ new table for the age groups.
 
     ![Screenshot of age group data in Excel](images/image9_data_excel.png)
 
-    Save this as an Excel workbook and name it AGE\_GROUP.xlsx.
+    Rename the sheet AGE\_GROUP and save the Excel workbook as AGE\_GROUP.xlsx.
 
     If you don't have Excel then create a CSV file with the data below
     and save it as AGE\_GROUP.csv.
@@ -73,7 +71,12 @@ new table for the age groups.
 
 ## Task 2: Load age groups from the local file
 
-1.  Launch Data Load from the Database Actions page by clicking on the **Data Load** card.
+1.  Go back to the Data Studio tools page by clicking on **Database Actions** 
+    in the title bar in the top left, then click on **Data Load**
+
+    ![Screenshot of data load card](images/image8_load_card.png)
+
+2.  Launch Data Load by clicking on the **Data Load** card.
     
     >**Note:** You can load data from local files, other databases, or from cloud storage.
     You can also create an ongoing feed to load data to Autonomous Database.
@@ -86,11 +89,11 @@ new table for the age groups.
 
     ![Screenshot of load data options](images/image10_load_option.png)
 
-2.  Drag your local file AGE\_GROUP.xlsx or AGE\_GROUP.csv to the load window.
+3.  Drag your local file AGE\_GROUP.xlsx or AGE\_GROUP.csv to the load window.
 
     ![Screenshot of pick file for load](images/image11_load_file.png)
 
-3.  Click the **Start** button to start the load.
+4.  Click the **Start** button to start the load.
 
     ![Screenshot of start loading file](images/image12_load_file_start.png)
     

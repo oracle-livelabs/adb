@@ -7,6 +7,9 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_tfp0sgen)
+
 ### Objectives
 
 In this lab, you will:
@@ -54,7 +57,6 @@ For this workshop, we need to create one new user.
 
     There is more information available in the documentation about password rules and how to create your own password rules. See here: [Create Users on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/manage-users-create.html#GUID-B5846072-995B-4B81-BDCB-AF530BC42847)
   
-    - Toggle the **Web Access** button to **On** and expand **Web access advanced features**.
     - Select **UNLIMITED** from the drop-down menu for **Quota on tablespace DATA**
   
     Next, you will examine the form.

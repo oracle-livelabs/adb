@@ -7,6 +7,9 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 25 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_g5x49pk2)
+
 ### Objectives
 
 In this workshop, you will learn:
@@ -18,8 +21,8 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- Loaded the demo data (optional)
-- Loaded Age group data into AGE\_GROUP (optional)
+- Loaded the demo data 
+- Loaded Age group data into AGE\_GROUP 
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
@@ -173,12 +176,18 @@ begin
     file_uri_list =>'&file_uri_base/AGE_GROUP.csv',
     format =>'{"type" : "csv", "skipheaders" : 1}'
  );
+ FOR TNAME IN (SELECT table_name FROM user_tables  where table_name like 'COPY$%') LOOP
+ EXECUTE IMMEDIATE ('DROP TABLE ' || TNAME.table_name || ' CASCADE CONSTRAINTS PURGE');
+ END LOOP;
 end;
 /
 </copy>
 ```
 
 Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+
+While the script is running, you will see the message "Executing code" at the bottom of the window. 
+The message will change to "SQL executed by QTEAM" when in finishes. There should not be any errors.
 
 >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
@@ -210,7 +219,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of the data transform card](images/image13_transform_card.png)
 
-2.  Provide username and password for the database user QTEAM.
+2.  Provide QTEAM for username and the password for the database user QTEAM.
 
     ![screenshot of data transform login](images/image14_transform_login.png)
 
@@ -218,13 +227,12 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of data transform service start](images/image15_transform_start.png)
 
-4.  It will take up to 3 minutes for the service to be provisioned. Once
+4.  It will take up to 6 minutes for the service to be started for the first time. Once
     provisioned you will see the following home screen.
 
-    >**Note:** The Data Transforms tool is provisioned based on demand. After 15 minutes of 
+    >**Note:** The Data Transforms tool is provisioned based on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be provisioned again. Clicking on any part of the UI will provision it
-    again if it has gone into sleep mode. If you get any error, then
+    be started again. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
@@ -242,7 +250,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
 
-3.  Enter the user name and password and click on Test Connection. After
+3.  Enter QTEAM for user name and the password and click on Test Connection. After
     a successful connection a notification message will appear on the top
     right.
 
@@ -302,19 +310,19 @@ Now we are ready to prepare the data.
 
 4.  This will bring up the data flow editing screen. On the left side, you
     will see the message "Importing Data Entities" next to the **QTEAM**
-    user. It will take approximately 2-3 minutes to import all data
+    user. It will take approximately 4-5 minutes to import all data
     entity definitions and then the message will disappear.
 
-    You can also refresh the data entities at any time with the refresh icon.
-
-    >**Note:** Import of data entities takes place as part of data flow creation only for 
+    >**Note:** Import of data entities takes place automatically as part of data flow creation only for 
     the first time you are using the connection. Other times you need to 
     explicitly import the data entity definitions from your connection before 
-    creating the data flow. The **Data Entity** menu is accessed from the Home page. 
+    creating the data flow. You can also import the QTEAM entities manually by right click and import 
+    entities menu. 
 
     While the import is taking place, you can go to the next step to learn 
     navigation on the data flow editor page.
 
+    When the import is finished, you can expand QTEAM to see all the tables in the schema. You can also refresh the data entities at any time with the refresh icon.
 
     ![screenshot of data flow edit page](images/image24_transform_entity.png)
 
@@ -356,7 +364,7 @@ Now we are ready to prepare the data.
 
     First, we will drag **MOVIESALES\_CA** into the canvas and drag
     the **Aggregate** transform from above under the **Data Transform** group.
-    Next, drag the **QuintileBinning** transform into the canvas. This
+    Next, drag the **Quantile Binning** transform into the canvas. This
     transform is in the **Data Preparation** group above.
     
     There are many transforms available under different groups to build
@@ -376,7 +384,7 @@ Now we are ready to prepare the data.
 8.  Now let's edit the properties of the Aggregate transform. Click on
     the Aggregate transform and then click on the attribute icon on the
     right-side properties panel. You should also expand the properties
-    panel by clicking on the extreme right corner icon.
+    panel by clicking on the top right corner icon.
 
     ![screenshot of aggregate attributes](images/image28_agg_attr.png)
 
@@ -406,7 +414,7 @@ Now we are ready to prepare the data.
     **CUST\_SALES** since we had changed the attribute name. We can either
     type in the aggregate expression directly in the blank space or use
     the expression editor on the right side. Click on the expression
-    edition icon.
+    editor icon.
 
     ![screenshot of aggregate mapping expression edit](images/image32_agg_map_exp_edit.png)
 
@@ -430,15 +438,15 @@ Now we are ready to prepare the data.
 
     ![screenshot for closing the property page](images/image34_agg_prop_collapse.png)
 
-15. Now link the Aggregate transform to the QuintileBinning transform,
-    click on the QuintileBinning transform and open the properties
+15. Now link the Aggregate transform to the Quantile Binning transform,
+    click on the Quantile Binning transform and open the properties
     panel.
 
     ![screenshot of binning transform](images/image35_binning.png)
 
 16. In the attributes section, click on **OUTPUT1**.
 
-    Change the name **Return** to **CUST\_VALUE**. QuintileBinning output
+    Change the name **Return** to **CUST\_VALUE**. Quantile Binning output
     will go into the **CUST\_VALUE** attribute.
     
     ![screenshot of binning output name change](images/image36_binning_output.png)
@@ -457,7 +465,7 @@ Now we are ready to prepare the data.
 
     Now you have the basic skills to add data sources and transforms, and edit their properties.
     
-    Next, bring the **Join** transform into the canvas,
+    Next, bring the **Join** transform from "DATA TRANSFORMS" grouping into the canvas,
     drag the **CUSTOMER\_CA** table and join it with the previous flow as below.
     
     Click on the Attribute property of the Join and notice that it has
@@ -478,7 +486,7 @@ Now we are ready to prepare the data.
 
     >**Note:** The order of linking matters for lookup transform. **AGE\_GROUP**
     Should be the lookup source. Check the property panel on the right. If it is not correct
-    then remove the links and link it again.
+    then remove the links by hovering and hitting the red X and link it again.
 
     The default lookup condition is blank. Copy the following expression into the lookup condition window.: 
     **CUSTOMER\_CA.AGE between AGE\_GROUP.MIN\_AGE and AGE\_GROUP.MAX_AGE**
@@ -493,21 +501,27 @@ Now we are ready to prepare the data.
     ![screenshot of age group lookup](images/image39_agegroup_lookup.png)
 
 20. Now we need to bring in the transaction data again which will be
-    used for analysis later. Drag **MOVIESALES\_CA** from the left side entity browser into the canvas again and
-    join it.
+    used for analysis later. Drag **MOVIESALES\_CA** from the left side entity browser into the canvas again.
 
-    Make sure the join is: **Aggregate.CUST\_ID=MOVIESALES\_CA1.CUST\_ID**
-    
     >**NOTE:** Notice that the display name for this is MOVIESALES\_CA1
     (suffixed by 1). This is because this table is used twice in the data
     flow. First for calculating the quintile and the second time to bring
     individual sales transaction data.
+
+    Join this table with the output of lookup using the join transform. The join expression should be populated 
+    automatically Look at the screenshot for how they need to be linked. Click on the join transform.
+
+    Make sure the join is: **Aggregate.CUST\_ID=MOVIESALES\_CA1.CUST\_ID**
+        
+    >**NOTE:** Join conditions are automatically populated if a matching column name is found. 
+    If there are multiple tables with the same column name then it guesses which table need 
+    to be in the join. If you notice that your join condition is different 
+    than above then replace it by copy and paste form here.
     
-    Next, bring in the movie GENRE table and join it.
+    Next, bring in the movie GENRE table and join it. The join expression should be populated automatically.
+    Look at the screenshot.
     
-    Make sure the join is: **MOVIESALES\_CA1.GENRE_ID=GENRE.GENRE\_ID**
-    
-    The above join expression should be populated automatically.
+    Click on the join and make sure the join is: **MOVIESALES\_CA1.GENRE_ID=GENRE.GENRE\_ID**
     
     It should look like the below screenshot.
     
@@ -615,10 +629,12 @@ Now we are ready to prepare the data.
 
     ![screenshot of validating data flow](images/image48_transform_validate.png)
 
-29. Now execute it by clicking on the small triangle in the circle.
-    Confirm **Start**.
+29. Now execute it by clicking on the small green triangle in the circle.
+    Confirm **Start**. 
 
     ![screenshot of executing data flow](images/image49_transform_start.png)
+
+    You will get a job info dialog. Click **OK**.
 
 30. Our data flow execution status is on the bottom right-side panel. Click
     anywhere on the empty canvas to make it visible. Now we need to look
