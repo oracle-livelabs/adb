@@ -17,12 +17,9 @@ In this workshop, you will learn:
 
 ### Prerequisites
 
-To complete this lab, you need to have completed the previous labs, so that you have:
+In this version of the workshop, all the pre-requisite steps have been done for you so you can get started learning how to transform and analyze your data.
 
-- Created an Autonomous Data Warehouse instance
-- Created a new QTEAM user with appropriate roles
-- Loaded the demo data 
-- Loaded Age group data into AGE\_GROUP 
+This Live Labs environment includes a pre-provisioned Autonomous Data Warehouse, with a user QTEAM, and loaded demo data.
 
 ## Task 1: Launch Data Transforms
 
@@ -48,7 +45,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of the data transform card](images/image13_transform_card.png)
 
-2.  Provide QTEAM for username and the password for the database user QTEAM.
+2.  Enter QTEAM for user name and the password "AAbbcc123456" for the password.
 
     ![screenshot of data transform login](images/image14_transform_login.png)
 
@@ -66,45 +63,60 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
 
-## Task 2: Create a data flow to load a new table to analyze customer sales
+## Task 2: Update the connection to your Autonomous Database
+
+1.  Click on **Connections** on the left side to look at the available connections.
+    
+    ![screenshot of the connection menu](images/image17_transform_conn.png) 
+
+2.  You will notice that there is one connection already defined. Click on the connection to complete its configuration. 
+
+    ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
+
+3.  Under the **JDBC URL**, paste in the name of your autonomous database into the string between the @ symbol and the "\_low". The name of your database will be 'adwNNNNN', that is 'adw' followed by five numbers. You will be able to see the database name in the URL being accessed by your browser. For example, in the screenshot below, the string needs to be updated to "adw45989":
+
+    ![screenshot of the browser window showing where to get the database name](images/connection-short.png)
+
+4.  Enter QTEAM for user name and the password "AAbbcc123456" and click on Test Connection. After
+    a successful connection a notification message will appear on the top
+    right.
+
+    ![screenshot of the connection for the user and password](images/image19_transform_conn_usrpwd.png)
+
+4.  If the notification message disappears then you can get it back by
+    clicking on the bell icon on the top right. Throughout this tool, you
+    will have notification messages available by clicking on the bell
+    icon.
+
+    After successful test, click on the **Update** to save the connection configuration. 
+
+    ![screenshot of the connection test](images/image20_transform_conn_test.png)
+
+>**Note:** In this workshop, we are working with only the data available in
+our Autonomous Database, but you can create connections to other
+databases, object stores and applications as well as load and transform
+data from those sources to your Autonomous Database. Data Transforms is
+a complete tool for complex data integration projects.
+
+Now we are ready to prepare the data.
+
+## Task 3: Create a data flow to load a new table to analyze customer sales
+
+>**Note:** In this environment, a Data Transforms project and an empty data flow have been pre-created. You will update the existing data flow to perform the data transformations required.
 
 1.  Click on the **Projects** button on the left side
 
     ![The Data Transforms menu with Projects selected](images/dtshort-projects.png)
 
-2.  Click the **SalesData** project and then the **load_customer_sales_analysis** data flow
+2.  Click the **SalesData** project and then the **load\_customer\_sales\_analysis** data flow
 
     ![A list of data flows in the SalesData project](images/dtshort-dataflow.png)
 
-3.  Now let us learn how to navigate in the data flow editing screen.
-    Refer to the numbered zones in the screenshot below.
+3.  A window will pop up to **Add a Schema**. Make sure the Schema is set to **QTEAM** and click OK. The schema will then appear under **Data Entities**. Expand the schema to show the tables.
 
-    1: Main editing canvas to create data flows by combining various
-    transforms
-    
-    2: Data Entity browser. Data Entities can be used as a source or
-    target for the data flow. You can add more connections by clicking on
-    the + icon (we don't need to) and filter entities by name or tag if
-    the list is big. Entities are dragged into the main canvas to build a
-    data flow.
-    
-    3: Transformations are grouped under various categories. Click on
-    different groups to see what kinds of transforms are available. Basic
-    transforms are under the **Data Transform** and **Data Preparation**
-    groups. These transforms are dragged into the main canvas to build a
-    data flow.
-    
-    4: Properties: By clicking on any source/target entity or on a
-    transform step, you can view and edit various properties.
-    
-    5: Save, execute, and validate.
-    
-    6: When you click on the empty part of the main canvas then it gives
-    you the execution status of the data flow.
+    ![Expand the schema to show the data entities](images/expand-schema-short.png)
 
-    ![screenshot of data flow edit page zones](images/image25_transform_zones.png)
-
-6.  Now we are ready to build the data flow. 
+4.  Now we are ready to build the data flow. 
     
     We want to aggregate the
     sales per customer to create 5 quintile buckets to determine
@@ -122,21 +134,21 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of bring source table and transforms](images/image26_transform_drag_source.png)
 
-7.  Click on **MOVIESALES\_CA,** and Link it to the **Aggregate**
+5.  Click on **MOVIESALES\_CA,** and Link it to the **Aggregate**
     transform by dragging the little arrow on top of the **Aggregate**
     transforms. Follow this process to link transform steps in the rest
     of the workshop.
 
     ![screenshot of linking transform steps](images/image27_transform_link.png)
 
-8.  Now let's edit the properties of the Aggregate transform. Click on
+6.  Now let's edit the properties of the Aggregate transform. Click on
     the Aggregate transform and then click on the attribute icon on the
     right-side properties panel. You should also expand the properties
     panel by clicking on the top right corner icon.
 
     ![screenshot of aggregate attributes](images/image28_agg_attr.png)
 
-9.  Click on Attributes on the left side. You can edit this attribute
+7.  Click on Attributes on the left side. You can edit this attribute
     list. By default all the columns from previous step have been brought in. 
     Since we need to aggregate total sales values by customer id, we will remove everything 
     except **CUST\_ID** and **TOTAL\_SALES**. 
@@ -146,19 +158,19 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of aggregate attribute edit](images/image29_agg_edit.png)
 
-10. Now change the name of **TOTAL\_SALES** to **CUST\_SALES** to make it
+8. Now change the name of **TOTAL\_SALES** to **CUST\_SALES** to make it
     more meaningful. This will be aggregated sales for the customer. It
     should look like the below screenshot.
 
     ![screenshot of aggregate attribute name edit](images/image30_agg_edit_name.png)
 
-11. Now click on Column Mapping on the left side to define the aggregate
+9. Now click on Column Mapping on the left side to define the aggregate
     expression. You can populate these expressions by **Auto Map** and
     edit them as needed. Click on **Auto Map** to populate it by name.
 
     ![screenshot of aggregate mapping expression](images/image31_agg_map_exp.png)
 
-12. Auto Map populated only the **CUST\_ID** and could not find a match for
+10. Auto Map populated only the **CUST\_ID** and could not find a match for
     **CUST\_SALES** since we had changed the attribute name. We can either
     type in the aggregate expression directly in the blank space or use
     the expression editor on the right side. Click on the expression
@@ -166,7 +178,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of aggregate mapping expression edit](images/image32_agg_map_exp_edit.png)
 
-13. This will open the expression editor. You can drag source attributes
+11. This will open the expression editor. You can drag source attributes
     from the left side in the editor and write a suitable expression.
 
     Enter the following expression: **SUM ( MOVIESALES\_CA.TOTAL\_SALES )**
@@ -175,7 +187,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of the mapping expression editor](images/image33_agg_map_exp_edit_ui.png)
 
-14. Review the screenshot below. The **CUST\_SALES** attribute is mapped to
+12. Review the screenshot below. The **CUST\_SALES** attribute is mapped to
     the sum of **TOTAL\_SALES** grouped by **CUST\_ID**.
 
     Now collapse the properties panel by clicking on the icon in the right
@@ -186,20 +198,20 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot for closing the property page](images/image34_agg_prop_collapse.png)
 
-15. Now link the Aggregate transform to the Quantile Binning transform,
+13. Now link the Aggregate transform to the Quantile Binning transform,
     click on the Quantile Binning transform and open the properties
     panel.
 
     ![screenshot of binning transform](images/image35_binning.png)
 
-16. In the attributes section, click on **OUTPUT1**.
+14. In the attributes section, click on **OUTPUT1**.
 
     Change the name **Return** to **CUST\_VALUE**. Quantile Binning output
     will go into the **CUST\_VALUE** attribute.
     
     ![screenshot of binning output name change](images/image36_binning_output.png)
 
-17. Click on the Column Mapping and enter 5 for the **number of
+15. Click on the Column Mapping and enter 5 for the **number of
     buckets** expression. Drag **CUST\_SALES** from the aggregate into the
     **order** expression.
 
@@ -208,7 +220,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of binning mapping expression](images/image37_binning_mapping.png)
 
-18. Close the property panel by clicking on the right corner and come to
+16. Close the property panel by clicking on the right corner and come to
     the main canvas.
 
     Now you have the basic skills to add data sources and transforms, and edit their properties.
@@ -227,7 +239,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
     >**Note:** It is good practice to keep saving. Click on the **Save** icon
     on the top left (floppy disk icon).
 
-19. Now bring in the **AGE\_GROUP** table and use the Lookup transform. Link it as
+17. Now bring in the **AGE\_GROUP** table and use the Lookup transform. Link it as
     described below.
 
     First link the end of the data flow to Lookup and then link **AGE\_GROUP** to lookup.
@@ -248,7 +260,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of age group lookup](images/image39_agegroup_lookup.png)
 
-20. Now we need to bring in the transaction data again which will be
+18. Now we need to bring in the transaction data again which will be
     used for analysis later. Drag **MOVIESALES\_CA** from the left side entity browser into the canvas again.
 
     >**NOTE:** Notice that the display name for this is MOVIESALES\_CA1
@@ -278,7 +290,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of movie sales and genre join](images/image40_sales_genre_join.png)
 
-21. We have completed the data flow. It may look complex, but one can
+19. We have completed the data flow. It may look complex, but one can
     visualize the step-by-step transformations. Now we need to write it
     to a new **CUSTOMER\_SALES\_ANALYSIS** table.
 
@@ -290,7 +302,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of creating target table entity](images/image41_create_target.png)
 
-22. Enter the name and connection properties.
+20. Enter the name and connection properties.
 
     Name: **CUSTOMER\_SALES\_ANALYSIS**
     
@@ -304,7 +316,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of adding entity](images/image42_add_entity.png)
 
-23. Now you can edit the target column names. The initial list is
+21. Now you can edit the target column names. The initial list is
     populated by the columns in all the tables in the data flow.
 
     Remove the columns ending with **\_ID**. They don't help in any meaningful
@@ -315,7 +327,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of entity column edit](images/image43_target_edit.png)
 
-24. Review the columns. You can go back to make any changes. If you
+22. Review the columns. You can go back to make any changes. If you
     accidentally removed a column and want it back then you can add it
     manually if you know the name and data type, or you can cancel it
     and redo the process again.
@@ -324,7 +336,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of reviewing target columns](images/image44_target_review.png)
 
-25. You can see that the target table is added to the end of the data
+23. You can see that the target table is added to the end of the data
     flow.
 
     >**Note:** The target table definition has now been stored in
@@ -343,7 +355,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of target properties](images/image45_target_property.png)
 
-26. Click on Column Mapping and verify the expressions. Notice that
+24. Click on Column Mapping and verify the expressions. Notice that
     all have been populated properly. You can also edit them manually if
     you want to make changes. Make sure all the columns are mapped. You
     can also use auto-mapping functionality if you create new
@@ -354,7 +366,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of target mapping](images/image46_target_mapping.png)
 
-27. Now to the final step. Click on **Options**.
+25. Now to the final step. Click on **Options**.
 
     Make sure the property **Drop and create target table** is **true**.
     
@@ -367,7 +379,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of target options](images/image47_target_option.png)
 
-28. Collapse the property panel and go back to the main canvas. Save it
+26. Collapse the property panel and go back to the main canvas. Save it
     and validate it by clicking on the validate icon (looks like a small
     check mark).
 
@@ -377,31 +389,31 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of validating data flow](images/image48_transform_validate.png)
 
-29. Now execute it by clicking on the small green triangle in the circle.
+27. Now execute it by clicking on the small green triangle in the circle.
     Confirm **Start**. 
 
     ![screenshot of executing data flow](images/image49_transform_start.png)
 
     You will get a job info dialog. Click **OK**.
 
-30. Our data flow execution status is on the bottom right-side panel. Click
+28. Our data flow execution status is on the bottom right-side panel. Click
     anywhere on the empty canvas to make it visible. Now we need to look
     at the data.
 
     ![screenshot of execution status](images/image50_transform_status.png)
 
-31. Click on the target table and see a data preview by clicking on
+29. Click on the target table and see a data preview by clicking on
     the small eye icon. Expand the panel to see more.
 
     ![screenshot of target data preview](images/image51_transform_datapreview.png)
 
-32. Check that all columns are populated. If some columns are blank,
+30. Check that all columns are populated. If some columns are blank,
     then it means some mapping expression in the data flow was blank or
     incorrect. Go back and fix it and re-execute it.
 
     ![screenshot of transformed and loaded data](images/image52_transform_data.png)
 
-33. Next, check the **Statistics** tab for a quick data profile.
+31. Next, check the **Statistics** tab for a quick data profile.
 
     ![screenshot of data statistics](images/image53_transform_stats.png)
 
