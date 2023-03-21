@@ -27,37 +27,37 @@ Creating an Oracle account can be summarized in the following two simple steps.
 
 1. Navigate to [oracle.com](http://www.oracle.com), Click on *View Accounts*, and Select *Create an Account*
 
-  ![Create an Account](./images/create-account-oracle-1.png " ")
+  ![Create an Account](https://oracle-livelabs.github.io/common/labs/cloud-login/images/create-account-oracle-1.png " ")
 
 2. Fill out the form and click *Create Account*
 
-  ![Fill out form](./images/create-account-oracle-2.png " ")
+  ![Fill out form](https://oracle-livelabs.github.io/common/labs/cloud-login/images/create-account-oracle-2.png " ")
 
 ## Task 2: Request Workshop Reservation
 
 1. Using your *Oracle Account Login* go to [LiveLabs](https://developer.oracle.com/livelabs). Open a workshop, click **Start**, and then **Run on LiveLabs Sandbox** to request a reservation for this workshop.
-  ![Run on LiveLabs](./images/run-on-livelabs.png " ")
+  ![Run on LiveLabs](https://oracle-livelabs.github.io/common/labs/cloud-login/images/run-on-livelabs.png " ")
 
 2. Fill out the information on the *Reserve Workshop* page. Check **I consent to receive emails from LiveLabs for my reservation**. Click **Submit Reservation**.
-  ![Submit Reservation](./images/submit-reservation.png " ")
+  ![Submit Reservation](https://oracle-livelabs.github.io/common/labs/cloud-login/images/submit-reservation.png " ")
 
 3. After creating a reservation for a LiveLab Workshop, you will receive an e-mail indicating that your reservation is being processed, followed by an e-mail indicating that your environment has been created.
 
-  ![Reservation email](./images/livelab-env-created-email.png " ")
+  ![Reservation email](https://oracle-livelabs.github.io/common/labs/cloud-login/images/livelab-env-created-email.png " ")
 
   >**Note:** You will receive the second created e-mail just before your selected reservation time.
 
 4. Log into LiveLabs. Click your username, and click **My Reservations**. Then click the **Launch Workshop** link for the Workshop environment you'd like to use. Note that you may have several Workshops listed.
 
-  ![My reservations](./images/ll-reservations.png " ")
+  ![My reservations](https://oracle-livelabs.github.io/common/labs/cloud-login/images/ll-reservations.png " ")
 
 5. Click **View Login Info** and click **Launch OCI**.
 
-  ![Launch OCI](./images/launch-oci.png " ")
+  ![Launch OCI](https://oracle-livelabs.github.io/common/labs/cloud-login/images/launch-oci.png " ")
 
 6. Follow the instructions provided to log in to your Oracle Cloud account, change your password, and complete your login to Oracle Cloud.
 
-  ![Login information](../need-help/images/login-demo1.png " ")
+  ![Login information](https://oracle-livelabs.github.io/common/labs/need-help/images/login-demo1.png " ")
 
 7. Now, click **View Login Info** again to see your Reservation Information. This time, under **Terraform Values** click the link to **Autonomous Database Actions**.
 
