@@ -120,6 +120,7 @@ You can learn how to create Autonomous Database in the **Provisioning an Autonom
 
 Click [this documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/myyyc/index.html) to learn more about Tagging.
 
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
