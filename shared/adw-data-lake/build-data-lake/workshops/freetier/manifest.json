@@ -38,13 +38,13 @@
             "filename": "./../../load-os-data-private/load-os-data-private.md"
         },
         {
-            "title": "Lab 3: Query Data Across Autonomous Database and the Data Lake",
+            "title": "Lab : Query Data Across Autonomous Database and the Data Lake",
             "type":"freetier",
             "description": "This lab shows you how to query data from ADB and Object Storage.",
             "filename": "./../../query-data/query-data.md"
         },
         {
-            "title": "Lab 4: Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab : Clean up Resources Used in the Workshop (Optional)",
             "type":"freetier",
             "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
             "filename": "./../../cleanup/cleanup.md"
