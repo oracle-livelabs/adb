@@ -1,4 +1,4 @@
-# Choose your Own JSON Adventure: Relational or Document Store: Exposing the Data for Applications
+# Choose your Own JSON Adventure: Relational or Document Store: Expose the Data for Applications
 
 ## Introduction
 
@@ -20,15 +20,15 @@ This lab assumes you have:
 
 1. REST-enabling a relational table couldn't be easier. To do this, find the table we created named **AIRPORTDELAYS** in the navigator on the left of the SQL Worksheet.
 
-    ![Using the navigator on the left of the SQL Worksheet, find the AIRPORTDELAYS Table](./images/find-the-AIRPORTDELAYS-Table.png " ")
+    ![Using the navigator on the left of the SQL Worksheet, find the AIRPORTDELAYS Table](./images/find-the-airportdelays-table.png " ")
 
 2. Right click on the table name (AIRPORTDELAYS) and select **REST** in the pop up menu then **Enable**.
 
-    ![Right click on the table name and select REST in the pop up menu then Enable](./images/select-REST-in-the-pop-up.png " ")
+    ![Right click on the table name and select REST in the pop up menu then Enable](./images/select-rest-in-the-pop-up.png " ")
 
 3. The REST Enable Object slider will appear from the right side of the page. Keep the default values and when ready, click the **Enable** button in the lower right of the slider.
 
-    ![The REST Enable Object Slider, view the Preview URL](./images/REST-Enable-Object-Slider.png " ")
+    ![The REST Enable Object Slider, view the Preview URL](./images/rest-enable-object-slider.png " ")
 
 4. Thats it! Your table is REST-enabled. We can work with the REST endpoints by using cURL commands that the SQL Worksheet can provide to us. To get to these endpoints, again right click the table name (AIRPORTDELAYS) as we did in the previous step, select **REST**, then **cURL Command**.
 
@@ -36,11 +36,11 @@ This lab assumes you have:
 
     On the right of the page, we see the **cURL for the table AIRPORTDELAYS** side out panel.
 
-    ![the cURL for the table AIRPORTDELAYS side out panel](./images/the-cURL-for-the-table.png " ")
+    ![the cURL for the table AIRPORTDELAYS side out panel](./images/the-curl-for-the-table.png " ")
 
 5. Here we can work with the various REST endpoints. To try one, click the copy icon ![copy icon](./images/copy-copy-icon.png) for the **GET ALL** endpoint. (**NOTE: your URL hostname will be different than the below image**)
 
-    ![Click the copy icon for GET ALL](./images/Click-the-copy-icon.png " ")
+    ![Click the copy icon for GET ALL](./images/click-the-copy-icon.png " ")
 
 6. You can use this cURL command we just copied in the OCI Cloud Shell or on your local compute if cURL is installed.(**NOTE: your URL hostname will be different than the below command**)
 
@@ -91,4 +91,5 @@ In this lab you learned how to expose data to applications via RESTful APIs.
 - **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
 - **Contributor** - Brian Spendolini
 - **Last Updated By/Date** - Chris Hoina/March 2023
+
 

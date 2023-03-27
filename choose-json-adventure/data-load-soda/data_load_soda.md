@@ -30,33 +30,33 @@ Simple Oracle Document Access (SODA) is a set of NoSQL-style APIs that let you c
 
 1. The first step here is to create a **collection** for our JSON Documents. We can do this in one of two ways. The first method is to use the UI in Database Actions. We can start by selecting **JSON** in the **Database Actions Menu**.
 
-    ![JSON in the Database Actions Menu](./images/JSON-in-Database-Actions.png " ")
+    ![JSON in the Database Actions Menu](./images/json-in-database-actions.png " ")
 
 2. On the JSON worksheet, left click the **Create Collection** button in the middle of the page.
 
-    ![left click the Create Collection button](./images/left-click-the-Create-Collection.png " ")
+    ![left click the Create Collection button](./images/left-click-the-create-collection.png " ")
 
 3. Using the **New Collection** slider
 
-    ![New Collection slider](./images/New-Collection-slider.png " ")
+    ![New Collection slider](./images/new-collection-slider.png " ")
 
     enter **airportdelayscollection** in the **Collection Name** field
 
-    ![Collection Name field](./images/Collection-Name-field.png " ")
+    ![Collection Name field](./images/collection-name-field.png " ")
 
 4. When your **New Collection** slider looks like the below image, left click the **Create** button.
 
-    ![left click the Create button](./images/left-click-the-Create-button.png " ")
+    ![left click the Create button](./images/left-click-the-create-button.png " ")
 
 ### Create a Collection using the SODA for REST APIs
 
 1. We can create a collection with the **SODA for REST APIs** as well. To do this, open an **OCI Cloud Shell**. We can do this by clicking the Cloud Shell icon in the upper right of the OCI web console.
 
-    ![Cloud Console Link in OCI Web Console](./images/Cloud-Console-Link.png " ")
+    ![Cloud Console Link in OCI Web Console](./images/cloud-console-link.png " ")
 
 2. We can now use the **OCI Cloud Shell** that appears on the bottom of the OCI Web Console Page.
 
-    ![OCI Cloud Shell](./images/OCI-Cloud-Shell.png " ")
+    ![OCI Cloud Shell](./images/oci-cloud-shell.png " ")
 
 3. To use the SODA for REST APIs, we need to construct the URL. To start, we use cURL and pass in the username/password combination. Be sure to use the password that you set for our user back in the User Setups lab.
 
@@ -96,7 +96,7 @@ Simple Oracle Document Access (SODA) is a set of NoSQL-style APIs that let you c
 
 4. We now can take this cURL command and run it in the OCI Cloud Shell. **REMEMBER to use your password in place of PASSWORD**
 
-    ![OCI Cloud Shell with cURL command](./images/Shell-with-cURL-command.png " ")
+    ![OCI Cloud Shell with cURL command](./images/shell-with-curl-command.png " ")
 
     ```curl
     curl -u "gary:PASSWORD" -i -X PUT https://coolrestlab-adb21.adb.eu-frankfurt-1.oraclecloudapps.com/ords/gary/soda/latest/airportdelayscollection
@@ -223,15 +223,15 @@ A filter specification is also called a query-by-example (QBE), or simply a filt
 
 1. Let's start working with our documents in the `airportdelayscollection` collection. We will be using the **JSON worksheet** in Database Actions. In the worksheet, we have the main canvas area; similar to what we would see with the SQL Worksheet or SQL Developer.
 
-    ![JSON Worksheet main canvas](./images/JSON-Worksheet-main.png " ")
+    ![JSON Worksheet main canvas](./images/json-worksheet-main.png " ")
 
     Once you find the main canvas, click the **Run Query** button on the toolbar.
 
-    ![Run Query Button](./images/Run-Query-Button.png " ")
+    ![Run Query Button](./images/run-query-button.png " ")
 
     This returns all the documents in our collection on the bottom section of the page because we issued an empty QBE indicated by **{}**. This is where we will see the results of the follwing QBE's we will be executing.
 
-    ![QBE Results](./images/QBE-Results.png " ")
+    ![QBE Results](./images/qbe-results.png " ")
 
 2. To start, we can make a similar query as we did when we were working with relational data. If you remember, the first SQL statement retrieved records where airportcode = 'SFO'. We can issue a QBE that does the exact same search. Copy and paste the below code into the JSON worksheet and run the query.
 
@@ -245,7 +245,7 @@ A filter specification is also called a query-by-example (QBE), or simply a filt
 
     You can see that all the results on the bottom on the page have the Airport Code of `SFO`. At any point, you can double click a result on the bottom of the page to bring up the **JSON Document Content** slider. Here you can see the full JSON document.
 
-   ![JSON Document Content slider](./images/Collection-Navigator-slider.png " ")
+   ![JSON Document Content slider](./images/collection-navigator-slider.png " ")
 
 3. We can add to the QBE like we did with the SQL and further filter the results down to all documents who also have the month name of June and the Year of 2010. Copy and paste this QBE into the worksheet and run the query
 
@@ -475,7 +475,7 @@ $startsWith — whether a string field value starts with a given substring
 
 2. Updating this JSON is as easy as clicking into this slider and changing a value. Find the **Names** node under **Statistics** then **Carriers**. Just left click the beginning of the value and add **Oracle Airlines,** (remember the comma). When done, click the **save** button on the bottom of the slider. Thats it, the JSON document has been updated.
 
-   ![Updated Collection Navigator](./images/Collection%20Navigator-updated.png " ")
+   ![Updated Collection Navigator](./images/collection%20navigator-updated.png " ")
 
 3. We can also update one or multiple documents via the SODA-for-REST APIs. For this, we use the **$patch** operator when writing the JSON to update the document. For this example, we will be using a method that could update one or multiple documents; its dependent on the query we include. The JSON we will use is as follows:
 
@@ -573,23 +573,23 @@ $startsWith — whether a string field value starts with a given substring
 
 1. We can index all the text in our JSON collection/documents by adding an index. Adding this index is as simple as a single click of the mouse. To start, in the JSON worksheet, navigate to the **Collection Navigator** on the left of the page.
 
-   ![Collection Navigator on left](./images/Collection-Navigator-on-left.png " ")
+   ![Collection Navigator on left](./images/collection-navigator-on-left.png " ")
 
 2. Find the airportdelayscollection collection and right click on it. This will bring up a menu where we can select **Search Index** and then left click **Create**.
 
-   ![JSON Document Content slider](./images/JSON-Document-Content-slider.png " ")
+   ![JSON Document Content slider](./images/json-document-content-slider.png " ")
 
     This will bring up the **Create Search Index** modal.
 
-   ![Create Search Index modal](./images/Create-Search-Index.png " ")
+   ![Create Search Index modal](./images/create-search-index.png " ")
 
 3. Using the **Create Search Index** find the **Index Name** field. Enter **jsonindex** into this field.
 
-   ![Index Name field](./images/Index-Name-field.png " ")
+   ![Index Name field](./images/index-name-field.png " ")
 
 4. Once your **Create Search Index** looks like the below image, left click the **OK** button.
 
-   ![Click OK Search Index modal](./images/Click-OK-Search-Index-modal.png " ")
+   ![Click OK Search Index modal](./images/click-ok-search-index-modal.png " ")
 
 5. We can now use the **$contains** operator in our QBEs. Lets try something. In the updating section of this lab, we added Oracle Airlines to a document. We can now directly find this record by just using the contains operator on the Statistics.Carriers.Names node. Copy and paste it into your JSON worksheet and run the QBE.
 
@@ -611,11 +611,11 @@ $startsWith — whether a string field value starts with a given substring
 
 2. Use the **Add Clause** dropdown and select **$orderby**
 
-   ![Add Clause dropdown and select $orderby](./images/Add-Clause-dropdown.png " ")
+   ![Add Clause dropdown and select $orderby](./images/add-clause-dropdown.png " ")
 
 3. Our QBE is reformatted and the **$orderby** clause is added
 
-   ![reformatted QBE](./images/reformatted-QBE.png " ")
+   ![reformatted QBE](./images/reformatted-qbe.png " ")
 
 4. In the **$orderby** JSON
 
@@ -664,3 +664,4 @@ This concludes this lab. You may now **proceed to the next lab**.
 - **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
 - **Contributor** - Brian Spendolini
 - **Last Updated By/Date** - Chris Hoina/March 2023
+
