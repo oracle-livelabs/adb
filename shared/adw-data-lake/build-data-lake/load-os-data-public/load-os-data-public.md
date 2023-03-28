@@ -1,14 +1,14 @@
-# Load Data from Object Storage Public Buckets
+# Load to Data in Public Object Storage Buckets
 
 ## Introduction
 
-In this lab, you will load and link data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into an Oracle Autonomous Database instance in preparation for exploration and analysis.
+In this lab, you will link from your ADB instance to data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) in preparation for exploration and analysis.
 
-You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the built-in tools as in this lab, or you can use other Oracle and third party data integration tools. With the built-in tools, you can load data:
+You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in tools. Alternatively, you can use other Oracle and third party data integration tools. With the built-in tools, you can link to and load data from:
 
-+ from files in your local device
-+ from tables in remote databases
-+ from files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, Google Cloud Storage)
++ Files on your local machine.
++ Tables in remote databases.
++ Files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, Google Cloud Storage).
 
 You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
 
@@ -29,7 +29,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
+This lab requires completion of the lab **Provision an Autonomous Database**, in the **Contents** menu on the left.
 
 ## Task 1: Navigate to Database Actions and Open the Data Load Utility
 
@@ -48,17 +48,19 @@ In this lab, you will:
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
-## Task 2: Create tables and load data from files in public Object Storage buckets using Database Actions tools
+## Task 2: Link to Data in Public Object Storage Buckets and Create Tables
 
-In this task, you will create and load the following tables into your Autonomous Database instance: **genre**, **customer_contact**, **custsales** and **pizza\_locations**.
+In this task, you will link to data and create the following external tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
 
-1. In the **What do you want to do with your data?** section, accept the default selection, **LOAD DATA**.
+1. In the **What do you want to do with your data?** section, click **LINK DATA**.
 
 2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
 
-    ![Select Load Data and Cloud Store.](images/select-load-data-from-cloud-store.png)
+    ![Select Link Data and Cloud Store.](images/select-link-data-from-cloud-store.png)
 
-3. The **Load Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data loading job. Copy the following object storage URL to the **Select Cloud Store Location or enter public URL** field:
+3. The **Link Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following _public_ pre-authenticated request (PAR) to access this bucket. For information on PAR, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
+
+    Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field:
 
     ```
     <copy>
@@ -70,15 +72,15 @@ In this task, you will create and load the following tables into your Autonomous
 
     ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
 
-4. Drag the **customer\_contact** folder and drop it onto the data loading job section.
+4. Drag the **customer\_contact** folder and drop it onto the data linking job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
-5. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
+5. A dialog box is displayed to prompt you whether or not if you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
-    ![Click yes to load objects to a single table.](images/load-to-single-table.png)
+    ![Click yes to load objects to a single table.](images/link-to-single-table.png)
 
-    The **customer\_contact** target table to be created for the selected .csv file is displayed in the data loading job section.
+    The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data linking job section.
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png)
 
@@ -86,17 +88,15 @@ In this task, you will create and load the following tables into your Autonomous
 
     ![Drag and drop three more folders.](images/drag-drop-3-folders.png)
 
-7. Click the **Actions** icon (3-dot vertical ellipsis) for the **customer\_contact** load task, and then select **Settings** from the context menu to view the settings for this task.
+7. Click the **Actions** icon (3-dot vertical ellipsis) for the **customer\_contact** link task, and then select **Settings** from the context menu to view the settings for this task.
 
     ![Click the pencil icon to open settings viewer for customer_contact load task](images/customer-contact-settings.png)
 
-    The **Load Data from Cloud Store Location customer_contact/ (23MB)** settings viewer panel is displayed.
+    The **Link Data from Cloud Store Location customer_contact** settings panel is displayed.
 
-8. The **Database Actions** load job will create a **CUSTOMER_CONTACT** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
+8. The **Database Actions** link job will create a **CUSTOMER_CONTACT** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
     ![View the settings for customer_contact load task](images/preview-create-table.png)
-
-    >**Note:** The available options for creating the target table are: **Create Table**, **Insert into Table**, **Replace Data**, **Drop Table and Create New Table**, and **Merge into Table**.
 
 9. Click the **Actions** icon (3-dot vertical ellipsis) for the **sales\_sample** load task, and then select **Settings** from the context menu to view its settings.
 
@@ -106,21 +106,98 @@ In this task, you will create and load the following tables into your Autonomous
 
     ![Update table name](images/change-target-table-name.png)
 
-11. Click **Start** to run the data load job. In the **Run Data Load Job** dialog box, click **Run**.
+11. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
 
-    ![Run the data load job](images/run-data-load.png)
+    ![Run the data load job](images/run-data-link.png)
 
     > **Note:** The load job can take about 2 minutes to complete.
 
-12. After the load job is completed, make sure that all of the data load cards have green check marks next to them. This indicates that your data load tasks have completed successfully. Click the **Actions** icon (3-dot vertical ellipsis) for the **genre** load task, and then select **Settings** from the context menu to view its settings.
+12. After the load job is completed, make sure that all of the data link cards have green check marks next to them. This indicates that your data link tasks have completed successfully.
 
-    ![Load job tasks completed. View the genre load task settings.](images/click-genre-settings.png)
+    ![Load job tasks completed. View the genre load task settings.](images/link-completed.png)
 
-13. Let's do a quick review of the loaded data. Click the **Table** tab to view the **genre** data.
+13. Click the **Actions** icon (3-dot vertical ellipsis) for the **genre** load task, and then select **Settings** from the context menu to view its settings.
+
+14. Review some of the linked data. Click the **Table** tab to view the **genre** data.
 
     ![View genre data](images/preview-genre-table.png)
 
-    The data looks good! Click **Close** to exit the **genre** task preview, and then click **Done** to exit the Data Load tool and return to the **Database Actions Launchpad**.
+15. Click **Close** to exit the **genre** task preview, and then click **Done** to exit the Data Load tool and return to the **Database Actions Launchpad**.
+
+     ![Click Done.](images/click-done.png)
+
+## Task 3: Create and Populate an External Table Using the DBMS_CLOUD Package
+
+As an alternative to using the Database Actions data load utility that you used in the previous labs, you can use the PL/SQL package `DBMS_CLOUD` directly. This is the preferred method for any load automation. You can also use this package to create and populate external tables.
+
+The `DBMS_CLOUD` package supports loading data files from the following Cloud sources:
+* Oracle Cloud Infrastructure Object Storage
+* Oracle Cloud Infrastructure Object Storage Classic
+* Amazon AWS S3
+* Microsoft Azure Cloud Storage
+* Google Cloud Storage.
+
+Use the `DBMS_CLOUD` package to create an external table and to also load it with the public Object Storage Parquet file data.
+
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+
+2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+
+3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+
+4. On the **Autonomous Database details** page, click **Database actions**.
+
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
+
+6. Create an external table and load it with data from a Parquet file in a _public_ OCI Object Storage bucket. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table. You can access the Object Storage Parquet file using the OCI Object Storage Native URI format as follows:
+
+    ```
+    https://objectstorage.region.oraclecloud.com/n/namespace-string/b/bucket/o/filename
+    ```
+    > **Note:** The **moviestream\_landing** Object Storage bucket that contains the Parquet data file is located in a public tenancy named **c4u04**.
+
+    The **`credential_name =>'OBJ_STORE_CRED'`** argument in the following code is not used since we are using a Parquet file in a public Object Storage bucket; otherwise, you must use the argument.
+
+    Copy and paste the following script into your SQL Worksheet, and then click the Run Script (F5) icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    -- The credential_name =>'OBJ_STORE_CRED' argument is not required in this example.
+    -- the Parquet file is in a public Object Storage bucket; otherwise, you must use it.
+
+    BEGIN
+    DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
+        table_name =>'custsales_2020_10',
+        file_uri_list =>'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample/month=2020-10/custsales-2020-10.parquet',
+        format =>  '{"type":"parquet", "schema": "first"}');
+    END;
+    /
+    </copy>
+    ```
+
+    The external **custsales\_2020\_10** table is created.
+
+    ![Click Run Script.](./images/parquet-table-created.png " ")
+
+7. To view the data in the new external table, run the following query.
+
+    ```
+    <copy>
+    SELECT *
+    from custsales_2020_10;
+    </copy>
+    ```
+
+    ![Select all external table data.](./images/query-custsales.png " ")
+
+    You can also use the **Navigator** tab to view the table. You might need to click the **Refresh** icon before you can see the table.
+
+You may now proceed to the next lab.
+
+## Learn more
+
+* [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
+* [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
 
 You may now proceed to the next lab.
 
@@ -130,7 +207,8 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran Serhal, March 2023
+    * Rick Green, Principal Developer, Database User Assistance
+* **Last Updated By/Date:** Lauran Serhal, April 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

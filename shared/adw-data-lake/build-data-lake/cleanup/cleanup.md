@@ -66,7 +66,7 @@ This concludes the workshop.
 ## Acknowledgements
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, March 2023
+* **Last Updated By/Date:** Lauran Serhal, April 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

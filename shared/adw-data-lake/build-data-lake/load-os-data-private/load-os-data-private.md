@@ -1,9 +1,9 @@
-# Load Data from Private Object Storage Buckets
+# Link Data from Private Object Storage Buckets
 
 ## Introduction
-In this lab, you will load more data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into your Oracle Autonomous Database instance, in preparation for exploration and analysis.
+In this lab, you will link to data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into your Oracle Autonomous Database instance, in preparation for exploration and analysis.
 
-You will practice loading data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store. Instead of using the wizard-driven data loading tools of Database Actions, you practice loading data using the **DBMS_CLOUD** PL/SQL package, the preferred method for load automation.
+You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store. Instead of using the wizard-driven data loading tools of Database Actions, you practice loading data using the **DBMS_CLOUD** PL/SQL package, the preferred method for load automation.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
@@ -17,8 +17,8 @@ In this lab, you will:
 - Upload the .csv file to the OCI private bucket
 - Create an object store auth token
 - Define object store credentials for your autonomous database to communicate with the bucket
-- Load data from the object store using the DBMS_CLOUD PL/SQL package
-- Troubleshoot the data load
+- Link to data from the object store using the DBMS_CLOUD PL/SQL package
+- Troubleshoot the data link
 
 ### Prerequisites
 
@@ -28,7 +28,7 @@ In this lab, you will:
 
 Download a **.csv** file that contains a simulation of sensitive customer retention data. Later, you will stage the file on a private **OCI Object Storage** bucket, to populate a table in later tasks.
 
-1. Copy and paste the following URL into a new tab in your web browser, and then press **[ENTER]**:
+1. Copy and paste the following URL into a new tab in your web browser, and then press [ENTER]. The **moviestream\_sandbox** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**.
 
     ```
     <copy>
@@ -65,7 +65,7 @@ Create a private Object Storage bucket to store your data. For more information 
 
   ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 
-## Task 3: Upload your *.csv File to your Private Object Storage Bucket
+## Task 3: Upload a File to Your Private Object Storage Bucket
 
 Upload the **`potential_churners.csv`** file that you downloaded earlier in this lab to your newly created private Object Storage bucket.
 
@@ -194,211 +194,20 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 
     ![The cloud store location is created.](./images/cloud-store-location-created.png " ")
 
-## Task 7: Load data from the object store using the PL/SQL package, DBMS_CLOUD
-
-As an alternative to the wizard-guided data load that you used in the previous labs, you can use the PL/SQL package `DBMS_CLOUD` directly. This is the preferred choice for any load automation.
-
-The `DBMS_CLOUD` package supports loading data files from the following Cloud sources: Oracle Cloud Infrastructure Object Storage, Oracle Cloud Infrastructure Object Storage Classic, Amazon AWS S3, Microsoft Azure Cloud Storage, and Google Cloud Storage.
-
-This task shows how to load data from Oracle Cloud Infrastructure Object Storage using two of the procedures in the `DBMS_CLOUD` package:
-
-+ **create_credential**: Stores the object store credentials in your Autonomous Data Warehouse schema.
-    + You will use this procedure to create object store credentials in your ADW admin schema.
-+ **copy_data**: Loads the specified source file to a table. The table must already exist in ADW.
-    + You will use this procedure to load tables to your admin schema with data from data files staged in the Oracle Cloud Infrastructure Object Storage cloud service.
-
-1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main Database Actions Launchpad using the breadcrumb link in the upper left corner.
-
-    ![Navigate back to Database Actions Launchpad and click SQL card.](./images/click-database-actions-button.png " ")
-
-    If you are prompted for username and password, enter the username `admin` and the password you created for `admin` when you created your autonomous database.
-
-2. Under **Development**, click the **SQL** tile to open SQL Worksheet.
-
-  ![Open SQL Worksheet](images/open-sql-worksheet.png)
-
-3. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
-
-    Connected as your ADMIN user in SQL Worksheet, copy and paste this code snippet to the worksheet, to create the required `potential_churners` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Then click the **Run Script** button to run it.
-
-    ```
-    <copy>
-    DROP TABLE potential_churners;
-    CREATE TABLE potential_churners (
-    cust_id                 NUMBER NOT NULL,
-    will_churn              VARCHAR2(200),
-    prob_churn              VARCHAR2(200)
-    );
-    </copy>
-    ```
-
-    > **Note:** Expect to receive *ORA-00942 table or view does not exist* errors during the `DROP TABLE` command for the first execution of the script, but you should not see any other errors.
-
-    ![Click Run Script.](./images/table-creation-results-sql-worksheet.png " ")
-
-    > **Note:** You do not need to specify anything other than the list of columns when creating tables in the SQL scripts. You can use primary keys and foreign keys if you want, but they are not required.*
-
-4. Download <a href="./files/load_data_without_base_url_v3.txt" target="\_blank">**this code snippet**</a> to a text editor, for copying the data in the `potential_churners.csv` file you uploaded to the object store bucket, to the target `potential_churners` table you just created in your autonomous database.
-
-5. In the code snippet, after `define file_uri_base =`, replace the example URL with the real object store base URL you copied in Task 4. The top of the file should look similar to the example below:
-
-    ```
-    /* In this code snippet, after define file_uri_base =, replace the example URL below with the URL you copied from your file in OCI Object Storage at runtime.
-    */
-    set define on
-    define file_uri_base = 'https://objectstorage.me-dubai-1.oraclecloud.com/n/c4u04/b/LL6570-ADWLab/o'
-
-    begin
-     dbms_cloud.copy_data(
-        table_name =>'POTENTIAL_CHURNERS',
-        credential_name =>'OBJ_STORE_CRED',
-        file_uri_list =>'&file_uri_base/potential_churners.csv',
-        format =>'{"type" : "csv", "skipheaders" : 1}'
-     );
-    end;
-    /
-    ```
-
-6. Copy and paste your edited file to a SQL Worksheet. This script uses the **copy\_data** procedure of the **DBMS\_CLOUD** package to copy the data from the source file to the target table you created before.
-
-7. Run the script.
-
-    ![Click Run Script.](./images/run-data-loading-script.png " ")
-
-8. You have successfully loaded the `POTENTIAL_CHURNERS` table. While in the SQL Worksheet, you can do a simple query against the table you just loaded. For example, to see the customers who have a greater than 0.8 likelihood of no longer remaining as MovieStream customers, run this query:
-
-    ```
-    <copy>
-    SELECT * from POTENTIAL_CHURNERS WHERE PROB_CHURN >= 0.8 and WILL_CHURN = 1;
-    </copy>
-    ```
-
-    ![Query probable churners greater than 0.8 likelihood.](./images/query-probable-churners.png " ")
-
-## Task 8: Troubleshoot DBMS_CLOUD data loads
-
-1. Connected as your user in SQL Worksheet, run the following query to look at past and current data loads.
-    ```
-    $ <copy>select * from user_load_operations;</copy>
-    ```
-    *Notice how this table lists the past and current load operations in your schema. Any data copy and data validation operation will have backed-up records in your Cloud.*
-
-2. For an example of how to troubleshoot a data load, we will create and try to load a version of the GENRE table, GENRE_DEBUG, that we know will fail because the loading script uses the wrong delimiter. Copy and paste this snippet into your SQL Worksheet and run the snippet:
-
-    ```
-    <copy>
-    create table genre_debug
-       (
-         genre_id  number,
-         name      varchar2(50)
-       );
-
-     begin
-         dbms_cloud.copy_data(
-             table_name => 'genre_debug',
-             file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/genre/genre.csv',
-             format => '{
-             			"delimiter":"|",
-             			"dateformat":"YYYY-MM-DD",
-             			"skipheaders":"1",
-             			"ignoreblanklines":"true",
-             			"removequotes":"true",
-             			"blankasnull":"true",
-             			"trimspaces":"lrtrim",
-             			"truncatecol":"true",
-             			"ignoremissingcolumns":"true"
-             			}'
-             );
-     end;
-     /
-    </copy>
-    ```
-
-    ![Paste the code and click Run Script.](images/query-results-intentionally-using-wrong-format.png " ")
-
-3. If you run select * from genre_debug; the result will show that no rows were loaded. What happened? Run the following query to see the load that errored out.
-    ```
-    <copy>select * from user_load_operations where status='FAILED';</copy>
-    ```
-
-    ![Paste the query and click Run Script.](./images/user-load-operations-where-status-equals-failed.png " ")
-
-    A load or external table validation that errors out is indicated by *status=FAILED* in this table. Get the names of the log and bad files for the failing load operation from the column **logfile\_table** and **badfile\_table**. The `logfile_table` column shows the name of the table you can query to look at the *log* of a load operation. The column `badfile_table` shows the name of the table you can query to look at the *rows that got errors* during loading.
-
-4. Query the log and bad tables to see detailed information about an individual load. In this example, the names are `copy$33_log` and `copy$33_bad` respectively.
-
-    ![Type the query and click Run Script.](./images/query-log-and-bad-files-result.png " ")    
-
-5. The fields delimiter were specified as "|".
-
-    format => '{
-
-    "delimiter":"|",
-
-    But you can see that the fields are actually terminated by ",". As a result, the load step tried to load the entire line into the genre_id field.
-    Let's update the PLSQL call - change the delimiter to a comma:
-
-    format => '{
-
-    "delimiter":",",
-
-6. In the SQL Worksheet, run this corrected version of the load, which uses the comma delimiter:
-
-    ```
-    <copy>
-    begin   
-    dbms_cloud.copy_data(
-        table_name => 'genre_debug',
-        file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/genre/genre.csv',
-        format => '{
-        			"delimiter":",",
-        			"dateformat":"YYYY-MM-DD",
-        			"skipheaders":"1",
-        			"ignoreblanklines":"true",
-        			"removequotes":"true",
-        			"blankasnull":"true",
-        			"trimspaces":"lrtrim",
-        			"truncatecol":"true",
-        			"ignoremissingcolumns":"true"
-        			}',
-        );
-    end;
-    /
-    </copy>
-    ```
-
-7. The PL/SQL procedure will successfully complete.
-
-    ![Successful load after using the correct comma delimiter.](./images/successful-load-using-comma-delimiter.png " ")
-
-8. View the results by running this query:
-
-    `select * from genre_debug;`
-
-    The GENRE_ID table will now have the loaded data:
-
-    ![View the results of successful load.](./images/view-data-loaded-in-genre-debug.png " ")
-
-9. To learn more about how to specify file formats, delimiters, reject limits, and more, review the <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html" target="\_blank"> Autonomous Database Supplied Package Reference </a> and <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703" target="\_blank"> DBMS_CLOUD Package Format Options </a>
-
-Please *proceed to the next lab*.
-
 ## Learn more
 
-For more information about loading data, see the documentation [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
-
-See the documentation [Loading Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E) for more methods for loading data with Autonomous Data Warehouse.
+* [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
+* [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
 
 You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Authors:** 
-    * Rick Green, Principal Developer, Database User Assistance
+* **Author:**
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributors:**
-
-* **Last Updated By/Date:** Lauran Serhal, March 2023
+    * Rick Green, Principal Developer, Database User Assistance
+* **Last Updated By/Date:** Lauran Serhal, April 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

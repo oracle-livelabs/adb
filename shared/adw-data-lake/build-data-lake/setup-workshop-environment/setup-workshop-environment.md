@@ -75,7 +75,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png " ")
 
-## Task 3: Create an Autonomous Warehouse Instance
+## Task 3: Create an Autonomous Data Warehouse Instance
 
 1. Log in to the **Oracle Cloud Console** as the Cloud Administrator, if you are not already logged in. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
@@ -143,6 +143,24 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
+## Task 4: (Optional) Create a Data Catalog Instance
+
+OCI Data Catalog is a fully managed, self-service data discovery and governance solution for your enterprise data. With Data Catalog, you get a single collaborative environment to manage technical, business, and operational metadata. You can collect, organize, find, access, understand, enrich, and activate this metadata.
+
+* Harvest technical metadata from a wide range of supported data sources that are accessible using public or private IPs.
+* Create and manage a common enterprise vocabulary with a business glossary.
+* Build a hierarchy of categories, subcategories, and terms with detailed rich text descriptions.
+* Enrich the harvested technical metadata with annotations by linking data entities and attributes to the business terms or adding free-form tags.
+* Find the information you need by exploring the data assets, browsing the data catalog, or using the quick search bar.
+* Automate and manage harvesting jobs using schedules.
+* Integrate the enterprise class capabilities of your data catalog with other applications using REST APIs and SDKs.
+
+Watch our short overview video that explains key features in Data Catalog.
+
+[](youtube:nY7mG2u6-Ew)
+
+To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops.
+
 You may now proceed to the next lab.
 
 ## Learn More
@@ -155,7 +173,7 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, March 2023
+* **Last Updated By/Date:** Lauran Serhal, April 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
