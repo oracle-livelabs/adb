@@ -22,17 +22,23 @@
         {
             "title": "Lab 2: Load Local Data into ADW",
             "type":"freetier",
-            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 3: Link to Data in Public Object Storage Buckets",
+            "title": "Lab 3: Load and Analyze JSON Data into ADW",
+            "type":"freetier",
+            "description": "This lab walks you through the tasks to load JSON data into your ADW instance.",
+            "filename": "./../../load-analyze-json/load-analyze-json.md"
+        },
+        {
+            "title": "Lab 4: Link to Data in Public Object Storage Buckets",
             "type":"freetier",
             "description": "This lab walks you through how to link data in public object storage buckets.",
             "filename": "./../../load-os-data-public/load-os-data-public.md"
         },
         {
-            "title": "Lab 4: Link to Data from Private Object Storage Buckets",
+            "title": "Lab 5: Link to Data from Private Object Storage Buckets",
             "type":"freetier",
             "description": "This lab walks you through how to link data from private object storage buckets.",
             "filename": "./../../load-os-data-private/load-os-data-private.md"
