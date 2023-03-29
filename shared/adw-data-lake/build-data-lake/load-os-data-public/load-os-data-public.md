@@ -139,17 +139,11 @@ The `DBMS_CLOUD` package supports loading data files from the following Cloud so
 
 Use the `DBMS_CLOUD` package to create an external table and to also load it with the public Object Storage Parquet file data.
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged in. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+1. From the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![Click the SQL card.](./images/click-sql-card.png " ")
 
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
-
-6. Create an external table and load it with data from a Parquet file in a _public_ OCI Object Storage bucket. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table. You can access the Object Storage Parquet file using the OCI Object Storage Native URI format as follows:
+2. Create an external table and load it with data from a Parquet file in a _public_ OCI Object Storage bucket. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table. You can access the Object Storage Parquet file using the OCI Object Storage Native URI format as follows:
 
     ```
     https://objectstorage.region.oraclecloud.com/n/namespace-string/b/bucket/o/filename
@@ -179,7 +173,7 @@ Use the `DBMS_CLOUD` package to create an external table and to also load it wit
 
     ![Click Run Script.](./images/parquet-table-created.png " ")
 
-7. To view the data in the new external table, run the following query.
+3. To view the data in the new external table, run the following query.
 
     ```
     <copy>
@@ -190,7 +184,7 @@ Use the `DBMS_CLOUD` package to create an external table and to also load it wit
 
     ![Select all external table data.](./images/query-custsales.png " ")
 
-    You can also use the **Navigator** tab to view the table. You might need to click the **Refresh** icon before you can see the table.
+    You can also use the **Navigator** tab to view the table. You might need to click the **Refresh** icon before you can see the newly created table.
 
 You may now proceed to the next lab.
 
