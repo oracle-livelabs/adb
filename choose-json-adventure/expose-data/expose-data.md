@@ -1,4 +1,4 @@
-# Choose your Own JSON Adventure: Relational or Document Store: Exposing the Data for Applications
+# Choose your Own JSON Adventure: Relational or Document Store: Expose the Data for Applications
 
 ## Introduction
 
@@ -12,44 +12,41 @@ Estimated Lab Time: 10 minutes
 
 ### Prerequisites
 
-- The following lab requires an <a href="https://www.oracle.com/cloud/free/" target="\_blank">Oracle Cloud account</a>. You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
-- This lab assumes you have successfully provisioned Oracle Autonomous database an connected to ADB with SQL Developer web.
-- You have completed the user setups steps.
-- You have completed the Relational Lab
-- You have completed the JSON Collections Lab
+This lab assumes you have:
 
+- All previous labs successfully completed
 
 ## Task 1: RESTful Services on Relational Tables
 
-1. REST enabling a relational table couldn't be easier. To do this, find the table we created named **AIRPORTDELAYS** in the navigator on the left of the SQL Worksheet.
+1. REST-enabling a relational table couldn't be easier. To do this, find the table we created named **AIRPORTDELAYS** in the navigator on the left of the SQL Worksheet.
 
-    ![Using the navigator on the left of the SQL Worksheet, find the AIRPORTDELAYS Table](./images/ex-1.png)
+    ![Using the navigator on the left of the SQL Worksheet, find the AIRPORTDELAYS Table](./images/find-the-airportdelays-table.png " ")
 
 2. Right click on the table name (AIRPORTDELAYS) and select **REST** in the pop up menu then **Enable**.
 
-    ![Right click on the table name and select REST in the pop up menu then Enable](./images/ex-2.png)
+    ![Right click on the table name and select REST in the pop up menu then Enable](./images/select-rest-in-the-pop-up.png " ")
 
 3. The REST Enable Object slider will appear from the right side of the page. Keep the default values and when ready, click the **Enable** button in the lower right of the slider.
 
-    ![The REST Enable Object Slider, view the Preview URL](./images/ex-3.png)
+    ![The REST Enable Object Slider, view the Preview URL](./images/rest-enable-object-slider.png " ")
 
-4. Thats it! Your table is REST enabled. We can work with the REST endpoints by using cURL commands that the SQL Worksheet can provide to us. To get to these endpoints, again right click the table name (AIRPORTDELAYS) as we did in the previous step, select **REST**, then **cURL Command**.
+4. Thats it! Your table is REST-enabled. We can work with the REST endpoints by using cURL commands that the SQL Worksheet can provide to us. To get to these endpoints, again right click the table name (AIRPORTDELAYS) as we did in the previous step, select **REST**, then **cURL Command**.
 
-    ![right click the table name in the navigator, select REST, then cURL Command](./images/ex-4.png)
+    ![right click the table name in the navigator, select REST, then cURL Command](./images/right-click-the-table-name.png " ")
 
     On the right of the page, we see the **cURL for the table AIRPORTDELAYS** side out panel.
 
-    ![the cURL for the table AIRPORTDELAYS side out panel](./images/ex-5.png)
+    ![the cURL for the table AIRPORTDELAYS side out panel](./images/the-curl-for-the-table.png " ")
 
-5. Here we can work with the various REST endpoints. To try one, click the copy icon ![copy icon](./images/copy-copy.png) for the **GET ALL** endpoint. (**NOTE: your URL hostname will be different than the below image**)
+5. Here we can work with the various REST endpoints. To try one, click the copy icon ![copy icon](./images/copy-copy-icon.png) for the **GET ALL** endpoint. (**NOTE: your URL hostname will be different than the below image**)
 
-    ![Click the copy icon for GET ALL](./images/ex-6.png)
+    ![Click the copy icon for GET ALL](./images/click-the-copy-icon.png " ")
 
 6. You can use this cURL command we just copied in the OCI Cloud Shell or on your local compute if cURL is installed.(**NOTE: your URL hostname will be different than the below command**)
 
     Here is the command running:
 
-    ```
+    ```curl
     >curl --location \
     'https://cooljsonlab-adb21.adb.eu-frankfurt-1.oraclecloudapps.com/ords/gary/airportdelays/'
 
@@ -70,21 +67,20 @@ Estimated Lab Time: 10 minutes
     {\"Label\":\"2003/06\",\"Month\":6,\"Month Name\":\"June\",\"Year\":2003}","statistics":"{\"# of Delays\":{\"Carrier\":830,\"Late Aircraft\":765,
     \"National Aviation System\":842,\"Security\":37,\"Weather\":97}.......
     ```
+
     These REST APIs can now be secured and exposed to applications to query, insert, update or delete data.
 
 ## Task 2: REST for SODA on Collections
 
 We actually worked with the SODA APIs in our previous lab. The SODA APIs take on the format:
 
-```
+```na
 https://coolrestlab-adb21.adb.eu-frankfurt-1.oraclecloudapps.com/ords/gary/soda/latest/airportdelayscollection?action=XXXX
 ```
 
-where we can define the action of query, insert, update or delete. We can even use the patch action as we saw in the previous lab. These SODA APIs are already secure needing authentication
+Here we can define the action of query, insert, update or delete. We can even use the patch action as we saw in the previous lab. These SODA APIs are already secure, no need for authentication.
 
-More on SODA for REST using ORDS can be found here.
-
-[SODA for REST](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/rest/index.html)
+More on SODA for REST using ORDS can be found [here](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/rest/index.html).
 
 ## Conclusion
 
@@ -92,5 +88,8 @@ In this lab you learned how to expose data to applications via RESTful APIs.
 
 ## Acknowledgements
 
-- **Authors** - Jeff Smith, Beda Hammerschmidt and Brian Spendolini
-- **Last Updated By/Date** - Anoosha Pilli, April 2021
+- **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
+- **Contributor** - Brian Spendolini
+- **Last Updated By/Date** - Chris Hoina/March 2023
+
+

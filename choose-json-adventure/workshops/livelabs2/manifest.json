@@ -25,7 +25,7 @@
         {
             "title": "Lab 3: Setups for the Choose your Own JSON Adventure: Relational or Document Store LiveLab",
             "description": "Setups for the Choose your Own JSON Adventure: Relational or Document Store LiveLab",
-            "filename": "../../user-setups/json_setups.md"
+            "filename": "../../user-setups/json-setups.md"
         },
         {
             "title": "Lab 4: Choose your Own JSON Adventure: Relational or Document Store: Relational",
@@ -38,9 +38,9 @@
             "filename": "../../data-load-soda/data_load_soda.md"
         },  
         {
-            "title": "Lab 6: Choose your Own JSON Adventure: Relational or Document Store: Exposing the Data for Applications",
-            "description": "Choose your Own JSON Adventure: Relational or Document Store: Exposing the Data for Applications",
-            "filename": "../../expose-data/expose_data.md"
+            "title": "Lab 6: Choose your Own JSON Adventure: Relational or Document Store: Expose the Data for Applications",
+            "description": "Choose your Own JSON Adventure: Relational or Document Store: Expose the Data for Applications",
+            "filename": "../../expose-data/expose-data.md"
         }, 
         {
             "title": "Need Help?",
