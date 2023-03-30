@@ -2,7 +2,19 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to load (and link) data into your ADW instance and then query Oracle Object Storage buckets from ADW.
+The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to load (and link) data into your ADW instance using different from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the linked and loaded data with SQL and also query Oracle Object Storage buckets from within ADW.
+
+**Oracle MovieStream** is a fictitious movie streaming service - similar to those that to which you currently subscribe. They face challenges that are typical to many organizations across industries. MovieStream must:
+* Gain a better understanding of their customers to ensure that they love the service
+* Offer the right products to the right customers at the right price
+* Grow the business to become a dominant player in the streaming business
+* and much, much more
+
+Oracle Cloud provides an amazing platform to productively deliver secure, insightful, scalable and performant solutions. MovieStream designed their solution leveraging the world class Oracle Autonomous Database and Oracle Cloud Infrastructure (OCI) Data Lake services. Their data architecture is following the Oracle Reference Architecture [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2) - which is used by Oracle customers around the world. It's worthwhile to review the architecture so you can understand the value of integrating the **data lake** and **data warehouse** - as it enables you to answer more complex questions using all your data.
+
+In this workshop, we'll start with two key components of MovieStream's architecture. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a **landing** zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a **gold** zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
+
+![architecture](images/architecture.png)
 
 Estimated Time: 1.5 hours
 
@@ -23,10 +35,9 @@ In this workshop, you will:
 * Set up the workshop environment.
 * Provision an ADW instance.
 * Load data from local files.
-* Load data from public Object Storage buckets.
-* Load data from private Object Storage buckets.
+* Load and analyze JSON data.
+* Link to data from public and private Object Storage buckets.
 * Query both the Data Warehouse and the Data Lake (Oracle Object Storage buckets) from within ADW.
-* _Use Oracle Machine Learning Notebooks to view and analyze the data from ADW and the Data Lake ????_.
 
 ### Prerequisites
 
@@ -48,7 +59,11 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Contributor:** Alexey Filanovskiy, Senior Product Manager
+* **Contributors:**
+    * Nilay Panchal, ADB Product Management
+    * Richard Green, Database User Assistance
+    * Marty Gubar, ADB Product Management
+    * Alexey Filanovskiy, Senior Product Manager
 * **Last Updated By/Date:** Lauran Serhal, April 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
