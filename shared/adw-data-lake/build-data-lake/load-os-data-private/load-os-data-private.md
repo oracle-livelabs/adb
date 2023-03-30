@@ -109,11 +109,13 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
     ![Copy the base URL.](images/url-path.png " ")
 
-3. Let's review the URL in our example. The **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `training-data-lake`.
-
-    ![The URL highlighted.](images/url.png " ")
+3. The format of the URL is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
+
+    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `training-data-lake`.
+
+    ![The URL highlighted.](images/url.png " ")
 
 ## Task 5: Create an Object Storage Auth Token
 
