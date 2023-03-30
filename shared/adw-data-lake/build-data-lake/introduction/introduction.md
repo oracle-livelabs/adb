@@ -33,10 +33,9 @@ For additional information, see [What is the difference between a Data Lake, Dat
 
 In this workshop, you will:
 * Set up the workshop environment.
-* Provision an ADW instance.
 * Load data from local files.
 * Load and analyze JSON data.
-* Link to data from public and private Object Storage buckets.
+* Link to data in public and private Object Storage buckets.
 * Query both the Data Warehouse and the Data Lake (Oracle Object Storage buckets) from within ADW.
 
 ### Prerequisites
