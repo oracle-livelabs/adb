@@ -24,7 +24,7 @@ In this lab, you will:
 
 - This lab requires completion of the lab, **Provision an Autonomous Database**, in the Contents menu on the left.
 
-## Task 1: Download Customer Data for Staging to Object Storage
+## Task 1: Download Customer Data from a Public Bucket
 
 Download a **.csv** file that contains a simulation of sensitive customer retention data. Later, you will stage the file on a private **OCI Object Storage** bucket, to populate a table in later tasks.
 
@@ -65,7 +65,7 @@ Create a private Object Storage bucket to store your data. For more information 
 
   ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 
-## Task 3: Upload a File to Your Private Object Storage Bucket
+## Task 3: Upload Customer Data to the Private Object Storage Bucket
 
 Upload the **`potential_churners.csv`** file that you downloaded earlier in this lab to your newly created private Object Storage bucket.
 
@@ -105,7 +105,7 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
     ![Select View Object Details from the ellipsis on the right of any uploaded file.](images/view-object-details.png " ")
 
-3.  In the **Object Details** panel, copy the **URL Path (URI)** that points to the location of the file in your private Object Storage bucket up to the **`/o`** part. **_Do not include the trailing slash_**. Save the base URL in a text editor of your choice such as Notepad in MS-Windows. You will use this URL in the upcoming tasks. Next, click **Cancel** to close the **Object Details** page.
+3.  In the **Object Details** panel, copy the **URL Path (URI)** that points to the location of the file in your private Object Storage bucket up to the **`/o`** part. **_Do not include the trailing slash;otherwise, you will get an error message when you use the URL_**. Save the base URL in a text editor of your choice such as Notepad in MS-Windows. You will use this URL in the upcoming tasks. Next, click **Cancel** to close the **Object Details** page.
 
     ![Copy the base URL.](images/url-path.png " ")
 
@@ -117,35 +117,66 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
     ![The URL highlighted.](images/url.png " ")
 
-## Task 5: Create an Object Storage Auth Token
+## Task 5: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
-To load data from the Oracle Cloud Infrastructure (OCI) Object Storage, you will need an OCI user with the appropriate privileges to read data (or upload) data to the Object Store. The communication between the database and the object store relies on the native URI, and the OCI user Auth Token.
+In this task, you will need to get the following items in preparation for creating a Cloud location in the next task.
+_If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**_.
 
-1. In the Console banner, click the **person icon**. From the drop-down menu, click your **OCI user's name**. This username might have a prefix followed by an email address such as: `oracleidentitycloudservice/xxxxxxx.xxxxx@xxxxxx.com`.
++ An RSA key pair in PEM format (minimum 2048 bits). See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).
++ The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
++ The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
+
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **OCI user's name** or **User settings**. This username might have a prefix followed by an email address such as: `oracleidentitycloudservice/username@domainname.com`.
 
     ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
 
-2. The **User Details** page is displayed. Make a note of this username as you will need it in a later task. Scroll down the page to the **Resources** section and then click **Auth Tokens**. The **Auth Tokens** section is displayed. Click **Generate Token**.
+2. The **User Details** page is displayed. Make a note of this username as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
-    ![Click Auth Tokens under Resources at the bottom left.](./images/click-auth-tokens.png " ")
+    ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
-3. In the **Generate Token** dialog box, enter a meaningful description, and then click **Generate Token**.
+3. In the **API Keys** section, click **Add API Key**. The **Add API Key** dialog box is displayed.
 
-    ![Enter Description and click Generate Token.](./images/click-generate-token.png " ")
+    ![Click Add API Key.](./images/click-add-api-key.png " ")
 
-4. In the **Generated Token** section of the **Generate Token** dialog box, click **Copy** to copy the Auth Token to a text editor of your choice such as Notepad in MS-Windows. You will use it in the next tasks.
+4. Click **Download Private Key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Private Key**.
 
-    > **Note:** You can't retrieve the Auth Token again after closing the dialog box.
+    ![Download private key.](./images/download-private-key.png " ")
 
-    ![Copy the Auth Token to clipboard.](./images/copy-the-generated-token.png " ")
+    The name of the downloaded private key is usually as follows:
 
-5. Click **Close** to close the **Generate Token** dialog box.
+    **`oraclecloudidentityservice_username-date.pem`**
 
-## Task 6: Define a Cloud Location and Create Credential
+    Rename your downloaded private key to something shorter such as:
+
+    **`oci-api-private-key.pem`**
+
+5. In most cases, you do not need to download the public key; however, you will download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
+
+    ![Download public key.](./images/download-public-key.png " ")
+
+    The name of the downloaded public key is usually as follows:
+
+    **`oraclecloudidentityservice_username-date_public.pem`**
+
+    Rename your downloaded private key to something shorter such as:
+
+    **`oci-api-public-key.pem`**
+
+6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+
+    ![Configuration file preview.](./images/config-file-preview.png " ")
+
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+
+    ![Credentials items.](./images/credentials-items.png " ")
+
+7. Click **Close**.
+
+## Task 6: Define a Cloud Location and Create a Credential
 
 You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store in an earlier task using the `DBMS_CLOUD` PL/SQL package. There are two parts to this process:
 
-+ Set up a connection to Oracle Object Storage by defining a cloud location with credential. You do this step only once.
++ Set up a connection to Oracle Object Storage by defining a cloud location with a credential. You perform this step only once.
 + Load the file using the `DBMS_CLOUD` PL/SQL package.
 
 In this task, you define a **Cloud Location** to connect to Oracle Object Storage. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
@@ -175,14 +206,19 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 7. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`training-data-lake`**.
     + **Description:** Enter an optional description.
-    + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and Auth Token. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + **Cloud Store:** Select **Oracle** from the drop-down list since you will be loading from your private Oracle Object Storage bucket.
-    + **Credential Name:** Enter **OBJ\_STORE\_CRED**.
-      **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-    + Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
-    + **Auth Token:** Enter Copy the **Auth Token** that you generated in **Task 5** and saved in a text file.
+    + Select the **Create Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
+    + In the **Credential** section, specify the following:
+        + **Credential Type:** Select the **Oracle Cloud Infrastructure Signing Keys** option.
+        + **Credential Name:** Enter **OBJ\_STORAGE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
+        + **Fingerprint:** Enter the fingerprint for your RSA key pair that you copied earlier to a text file.
+        + **Private Key:** Paste your unencrypted private key in the RSA key pair.
+        Open the private key file in a text editor, and then copy the entire content from the (and including) **-----BEGIN PRIVATE KEY-----** line to (and including) the **-----END PRIVATE KEY-----** line.
+        ![Private key.](./images/private-key-value.png " ")
+
+        + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
+        + **Oracle Cloud Infrastructure User Name:** Enter your username OCID that you copied earlier to a text file.
     + Select the **Bucket URI** option.
-    + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values:
+    + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
 
       `https://objectstorage.region name.oraclecloud.com/n/namespace name/b/bucket name/o`
 
