@@ -200,6 +200,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributors:**
+    * Alexey Filanovskiy, Senior Principal Product Manager
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
