@@ -244,7 +244,8 @@ You may now proceed to the next lab.
 * **Author:**
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributors:**
-    * Rick Green, Principal Developer, Database User Assistance
+    + Alexey Filanovskiy, Senior Principal Product Manager
+    + Rick Green, Principal Developer, Database User Assistance
 * **Last Updated By/Date:** Lauran Serhal, April 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
