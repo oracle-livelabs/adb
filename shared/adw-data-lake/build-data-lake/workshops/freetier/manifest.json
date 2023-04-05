@@ -20,13 +20,13 @@
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
         },
         {
-            "title": "Lab 2: Load Local Data into ADW",
+            "title": "Lab 2: Load Local Data",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 3: Load and Analyze JSON Data into ADW",
+            "title": "Lab 3: Load and Analyze JSON Data",
             "type":"freetier",
             "description": "This lab walks you through the tasks to load JSON data into your ADW instance.",
             "filename": "./../../load-analyze-json/load-analyze-json.md"

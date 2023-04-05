@@ -119,8 +119,9 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 ## Task 5: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
-In this task, you will need to get the following items in preparation for creating a Cloud location in the next task.
-_If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**_.
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five)._
+
+In this task, you will get the following items that are required to create a Cloud location in the next task.
 
 + An RSA key pair in PEM format (minimum 2048 bits). See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).
 + The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
