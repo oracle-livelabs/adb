@@ -241,6 +241,8 @@ In order to find the top grossing actors across movies, the arrays for each movi
 
     ![Top box office actors](images/adb-json-top-actors.png)
 
+    You may now proceed to the next lab.
+
 ## Learn more
 
 * [DBMS_CLOUD Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-package.html#GUID-CE359BEA-51EA-4DE2-88DB-F21A9FC10721)

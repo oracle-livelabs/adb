@@ -44,6 +44,12 @@
             "filename": "./../../load-os-data-private/load-os-data-private.md"
         },
         {
+            "title": "Lab 6: Load and Analyze Data from REST Endpoints",
+            "type":"freetier",
+            "description": "This lab shows you how to load and analyze data from REST endpoints.",
+            "filename": "./../../load-analyze-rest/load-analyze-rest.md"
+        },
+        {
             "title": "Lab : Query Data Across Autonomous Database and the Data Lake",
             "type":"freetier",
             "description": "This lab shows you how to query data from ADB and Object Storage.",
