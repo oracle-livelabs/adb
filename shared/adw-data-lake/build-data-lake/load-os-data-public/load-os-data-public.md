@@ -1,4 +1,4 @@
-# Load to Data in Public Object Storage Buckets
+# Link to Data in Public Object Storage Buckets
 
 ## Introduction
 
@@ -31,7 +31,7 @@ In this lab, you will:
 
 This lab requires completion of the lab **Provision an Autonomous Database**, in the **Contents** menu on the left.
 
-## Task 1: Navigate to Database Actions and Open the Data Load Utility
+## Task 1: Navigate to the Data Load Page
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
@@ -156,9 +156,6 @@ Use the `DBMS_CLOUD` package to create an external table and to also load it wit
 
     ```
     <copy>
-    -- The credential_name =>'OBJ_STORE_CRED' argument is not required in this example.
-    -- the Parquet file is in a public Object Storage bucket; otherwise, you must use it.
-
     BEGIN
     DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
         table_name =>'custsales_2020_10',

@@ -50,13 +50,13 @@
             "filename": "./../../load-analyze-rest/load-analyze-rest.md"
         },
         {
-            "title": "Lab : Query Data Across Autonomous Database and the Data Lake",
+            "title": "Lab 7: Query Data Across Multi-Cloud Data Lakes",
             "type":"freetier",
-            "description": "This lab shows you how to query data from ADB and Object Storage.",
-            "filename": "./../../query-data/query-data.md"
+            "description": "This lab shows you how to query data from OCI and AWS S3.",
+            "filename": "./../../query-data-lakes/query-data-lakes.md"
         },
         {
-            "title": "Lab : Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab 8: Clean up Resources Used in the Workshop (Optional)",
             "type":"freetier",
             "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
             "filename": "./../../cleanup/cleanup.md"

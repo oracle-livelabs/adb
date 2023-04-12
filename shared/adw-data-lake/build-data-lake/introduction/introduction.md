@@ -5,10 +5,10 @@
 The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to load (and link) data into your ADW instance using different from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the linked and loaded data with SQL and also query Oracle Object Storage buckets from within ADW.
 
 **Oracle MovieStream** is a fictitious movie streaming service - similar to those that to which you currently subscribe. They face challenges that are typical to many organizations across industries. MovieStream must:
+
 * Gain a better understanding of their customers to ensure that they love the service
 * Offer the right products to the right customers at the right price
 * Grow the business to become a dominant player in the streaming business
-* and much, much more
 
 Oracle Cloud provides an amazing platform to productively deliver secure, insightful, scalable and performant solutions. MovieStream designed their solution leveraging the world class Oracle Autonomous Database and Oracle Cloud Infrastructure (OCI) Data Lake services. Their data architecture is following the Oracle Reference Architecture [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2) - which is used by Oracle customers around the world. It's worthwhile to review the architecture so you can understand the value of integrating the **data lake** and **data warehouse** - as it enables you to answer more complex questions using all your data.
 
@@ -32,11 +32,14 @@ For additional information, see [What is the difference between a Data Lake, Dat
 ### Objectives
 
 In this workshop, you will:
+
 * Set up the workshop environment.
-* Load data from local files.
-* Load and analyze JSON data.
+* Load local data files into your ADB instance.
+* Load JSON data into your ADB instance and then and analyze that data.
 * Link to data in public and private Object Storage buckets.
 * Query both the Data Warehouse and the Data Lake (Oracle Object Storage buckets) from within ADW.
+* Load and analyze the news from REST endpoints.
+* Query data from Multi-Cloud Data Lakes (OCI and AWS S3).
 
 ### Prerequisites
 

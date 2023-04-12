@@ -33,7 +33,7 @@ In this lab, you will:
 
     >**Note:** Make a note of your folder location as you will use the two downloaded files in a later task in this lab.
 
-## Task 2: Navigate to Database Actions and Open the Data Load Utility
+## Task 2: Navigate to the Data Load Page
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
@@ -50,7 +50,7 @@ In this lab, you will:
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
-## Task 3: Load data from the CSV files using the Data Load utility
+## Task 3: Load Data from the CSV Files Using the LOAD DATA Tool
 
 In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous Database instance.
 
