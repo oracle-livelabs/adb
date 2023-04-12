@@ -125,7 +125,7 @@ In this task, we will load data and create the **customer\_contact** and table i
 
 ## Task 4: Define an Amazon S3 Cloud Location
 
-In this task, we define a **Cloud Location** to connect to our **`moviestream-churn`** AWS S3 bucket that contains the `potential_churners.csv` file that we will use in this demo to identify potential customers who will churn.
+In this task, we define a **Cloud Location** to connect to our **`moviestream-churn`** AWS S3 bucket that contains the `potential_churners.csv` file. We will use this file in our demo to identify potential customers who might churn.
 
 ![The potential_churners.csv file in the S3 bucket.](images/aws-s3-bucket.png)
 
