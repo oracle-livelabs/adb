@@ -14,7 +14,7 @@ In this lab, we will show you how to do the following:
 
 * Create an OCI Object Storage bucket cloud location and load customers data from this location into ADB and create database tables.
 * Create an Amazon S3 bucket cloud location and link to potential customers churners and create an external table.
-* Create a new table that joins the three created tables to show customers data and churners. The tables data originated from the OCI and S3 buckets.
+* Create a new table that joins the three created tables to show customers data and churners. The tables data originated from the OCI and Amazon S3 buckets.
 
 ### Prerequisites
 None.
@@ -32,7 +32,7 @@ _**This is not a hands-on lab; instead, it is a demo of how to query data from d
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **Data Load** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
 ## Task 2: Define an OCI Oracle Cloud Location
 

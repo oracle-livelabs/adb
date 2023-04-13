@@ -37,9 +37,8 @@ In this workshop, you will:
 * Load local data files into your ADB instance.
 * Load JSON data into your ADB instance and then and analyze that data.
 * Link to data in public and private Object Storage buckets.
-* Query both the Data Warehouse and the Data Lake (Oracle Object Storage buckets) from within ADW.
 * Load and analyze the news from REST endpoints.
-* Query data from Multi-Cloud Data Lakes (OCI and AWS S3).
+* Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
 
 ### Prerequisites
 
