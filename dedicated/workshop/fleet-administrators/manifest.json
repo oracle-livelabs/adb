@@ -1,11 +1,10 @@
 {
+    "workshoptitle": "Introduction to ADB Dedicated for Fleet Administrators",
+    "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
-        {
-            "title": "Introduction to ADB Dedicated for Fleet Administrators",
-            "description": "Introduction to ADB Dedicated for Fleet Administrators",
-            "partnumber": "Ennnnn_01",
-            "publisheddate": "03/10/2020",
-            "contentid": "12nnnn",
+                {
+            "title": "Introduction",
+            "description": "Introduction of the workshop.",
             "filename": "./intro.md"
         },
         {

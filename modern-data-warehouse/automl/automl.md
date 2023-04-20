@@ -40,29 +40,10 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 ## Task 2: Create the model
 
-1. As we have our data ready, let's create our **Machine Learning Model**. Go to your **Autonomous Database** dashboard and click on **Tools** and then **Oracle ML User Administration**. Click finally on **Open Oracle ML User Administration** to open the ML development environment.
-
+1. As we have our data ready, let's create our **Machine Learning Model**. Go to your **Autonomous Database** dashboard and click on **Tool Configuration** and then copy the Access URL for **Oracle Machine Learning User Interface**. Paste the link into your browser.
     ![Create Warehouse](./images/open-ml.png)
 
-2. Log in with the **ADMIN** user.
-
-    - **Username:** ADMIN
-        ```
-            <copy>ADMIN</copy>
-        ```
-    
-    - **Password:** Password123##
-        ```
-            <copy>Password123##</copy>
-        ```
-
-    ![Create Warehouse](./images/log-in.png)
-
-3. You will see that the **CNVG** user is already there. Click the **Home** button to sign in into the AutoML page.
-
-    ![Create Warehouse](./images/go-home.png)
-
-4. Now we can **Sign In** with the **CNVG** user.
+2. **Sign In** with the **CNVG** user.
 
     - **Username:** CNVG
         ```
@@ -76,15 +57,15 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Create Warehouse](./images/login-automl.png)
 
-5. Click on the **Home** menu of the ML page. Select **AutoML Experiments**.
+3. Click on the **Home** menu of the ML page. Select **AutoML Experiments**.
 
     ![Create Warehouse](./images/select-automl.png)
 
-6. Click on **Create** button.
+4. Click on the **Create** button.
 
   ![Create Warehouse](./images/create-experiment.png)
 
-7. Let's define our experiment. Fill the following information:
+5. Let's define our experiment. Fill the following information:
 
     - **Name:** Predict Churn
         ```
@@ -99,11 +80,11 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
   ![Create Warehouse](./images/prepare-model.png)
 
-8. We don't need to fill more information, click on **Start** and select **Faster Results**.
+6. We don't need to fill more information, click on **Start** and select **Faster Results**.
 
     ![Create Warehouse](./images/faster-results.png)
 
-9. Once it is finished, we can see which are the columns or features that have bigger impact in our model. **The prediction will take a few minutes, be patience!**. **We can see that emotion is very important**.
+7. Once it is finished, we can see which are the columns or features that have bigger impact in our model. **The prediction will take a few minutes, be patient!** **We can see that emotion is very important**.
 
     ![Create Warehouse](./images/importance.png)
 
@@ -151,10 +132,11 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Create Warehouse](./images/query-model.png)
 
+    > Note: Be sure the model has being executed completed, otherwise, you will get an error runing the query.
+
 _Congratulations! Well done!_
 
 ## Acknowledgements
-* **Author** - Javier de la Torre, Principal Data Management Specialist
-* **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, February 2023 
-
+* **Author** - Javier de la Torre - Principal Data Management Specialist
+* **Contributors** - Priscila Iruela - Technology Product Strategy Director, John Craig - Technology Strategy Program Manager
+* **Last Updated By/Date** - Priscila Iruela, March 2023

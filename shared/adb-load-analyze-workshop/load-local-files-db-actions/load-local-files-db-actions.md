@@ -85,7 +85,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
 This completes the lab on loading CSV files from your local computer.
 
-Please [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

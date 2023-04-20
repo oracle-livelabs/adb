@@ -144,11 +144,11 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Query 3](./images/query3.png)
 
+    > Note: If you get an error on this query, please check that the table sentiment_results has the column emotion that we created on Lab 3, Task 3, Step 3, otherwise, the query can't be executed.
 
 You can **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Javier de la Torre, Principal Data Management Specialist
-* **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, February 2023 
-
+* **Author** - Javier de la Torre - Principal Data Management Specialist
+* **Contributors** - Priscila Iruela - Technology Product Strategy Director
+* **Last Updated By/Date** - Priscila Iruela, March 2023

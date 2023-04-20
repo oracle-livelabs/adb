@@ -37,23 +37,19 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
     ![Test Query](./images/test-query.png)
 
-4. **Copy** the view definition.
+4. **Copy** the view definition and click **Close**.
 
     ![Copy Query](./images/copy-query.png)
 
-5. Click **Close**.
-
-    ![Click Close](./images/click-close.png)
-
-6. Go back to **SQL**.
+5. Go back to **SQL**.
 
     ![Click Close](./images/back-to-sql.png)
 
-7. **Paste** the SQL we got from JSON.
+6. **Paste** the SQL we got from JSON.
 
     ![Click Close](./images/paste-sql.png)
 
-8. **Add the create materialized view statement** at the beginning of the query, like in the screenshot:
+7. **Add the create materialized view statement** at the beginning of the query, like in the screenshot:
 
     ```
         <copy> 
@@ -63,13 +59,13 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
     ![Select count](./images/create-view.png)
 
-9. Click on the **Run** button to create the materialized view.
+8. Click on the **Run** button to create the materialized view.
 
-    Check that the **MV_TWEETS Materialized view has being created**.
+    Check that the **MV_TWEETS Materialized view has been created**.
 
     ![Select count](./images/run-view.png)
 
-10. Let's create a **primary key over our materialized view**. We will need it for our Oracle Text index. Click on the **Run** button to alter the table.
+9. Let's create a **primary key over our materialized view**. We will need it for our Oracle Text index. Click on the **Run** button to alter the table.
 
     ```
         <copy> 
@@ -175,7 +171,6 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 You can **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Javier de la Torre, Principal Data Management Specialist
-* **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, February 2023 
-
+* **Author** - Javier de la Torre - Principal Data Management Specialist
+* **Contributors** - Priscila Iruela - Technology Product Strategy Director
+* **Last Updated By/Date** - Priscila Iruela, March 2023

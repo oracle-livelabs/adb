@@ -160,6 +160,8 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
 
     ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.jpg " ")
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 
 Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) on managing and monitoring an autonomous database.

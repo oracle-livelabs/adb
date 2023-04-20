@@ -24,7 +24,7 @@ This lab assumes you have done all the other labs.
 
 ## Task 1: Create workspace
 
-1. Let's create a new workspace in **APEX** before we create an application. In your **Autonomous Database**, go to **Tools** and then **Oracle APEX**. Finally click on **Open APEX** button.
+1. Let's create a new workspace in **APEX** before we create an application. In your **Autonomous Database**, go to **Tool Configuration** and then Copy the Access URL for **Oracle APEX**. Paste this URL into your browser.
 
     ![Select SQL](./images/go-to-apex.png)
 
@@ -69,7 +69,7 @@ This lab assumes you have done all the other labs.
 
     ![Select SQL](./images/define-workspace.png)
 
-6. Click over **CNVG** to go to the new **workspace**.
+6. Click on **CNVG** to go to the new **workspace**.
 
     ![Select SQL](./images/new-workspace.png)
 
@@ -221,7 +221,6 @@ This lab assumes you have done all the other labs.
 _Congratulations! Well done!_
 
 ## Acknowledgements
-* **Author** - Javier de la Torre, Principal Data Management Specialist
-* **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, February 2023 
-
+* **Author** - Javier de la Torre - Principal Data Management Specialist
+* **Contributors** - Priscila Iruela - Technology Product Strategy Director
+* **Last Updated By/Date** - Priscila Iruela, March 2023

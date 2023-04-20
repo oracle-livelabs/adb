@@ -40,14 +40,9 @@
           "filename": "./../../5-link.md"
       },
       {
-          "title": "Lab 6: Feed data from cloud storage",
-          "description": "Create a notification-based live feed of data from cloud storage",
-          "filename": "./../../6-feed.md"
-      },
-      {
-        "title": "Lab 7: Clean up the loaded data",
-        "description": "Remove the tables you created and loaded during this workshop",
-        "filename": "./../../7-cleanup.md"
+          "title": "Lab 6: Clean up the loaded data",
+          "description": "Remove the tables you created and loaded during this workshop",
+          "filename": "./../../7-cleanup.md"
       },
       {
           "title": "Need Help?",
