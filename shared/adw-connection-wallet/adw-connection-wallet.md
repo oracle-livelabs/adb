@@ -46,9 +46,15 @@ To create a new TLS connection to Autonomous Database:
 
     ![Click the Edit button next to Access control list](./images/click-edit-to-create-acl.png " ")
 
-2. In the **Edit Access Control List** dialog, click **Add My IP Address**. Your computer's IP address will be added as a value. Click **Save**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
+2. In the **Edit access control list** dialog, you might normally accept the default IP notation type of **IP Address** and click **Add My IP Address**, and your computer's IP address would be added as a value. However, for this lab that you might be running in any one of a variety of different environments, let's make a different selection.
 
     ![Click Add My IP Address and click Save Changes](./images/click-add-my-ip-address.png " ")
+
+    For this lab, open the **IP notation type** drop-down menu and select **CIDR Block**. In the **Values** field, enter this value: *0.0.0.0/0*
+
+    ![Use the CIDR Block IP notation type with zero values and click Save](./images/use-cidr-block-ip-notation-type.png " ")
+
+    Click **Save**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
 
 3. In the **Autonomous Database Details** page, in the **Network** section, note that the **Access type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) authentication**.
 
@@ -190,4 +196,4 @@ View the blog post ["Connecting to Your Autonomous Database Has Never Been Easie
 
 - **Author** - Richard Green, Principal Developer, Database User Assistance
 - **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, March 2023
+- **Last Updated By/Date** - Richard Green, April 2023

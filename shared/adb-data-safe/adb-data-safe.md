@@ -37,7 +37,7 @@ This lab assumes you have:
 
 ## Task 1: Create a user group and add an Oracle Cloud account to the group
 
-> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.
+*Note: If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.*
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
