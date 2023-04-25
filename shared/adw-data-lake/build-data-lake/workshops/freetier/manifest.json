@@ -56,7 +56,13 @@
             "filename": "./../../query-data-lakes/query-data-lakes.md"
         },
         {
-            "title": "Lab 8: Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab 8: Performance Best Practices",
+            "type":"freetier",
+            "description": "This lab shows you how to improve query performance.",
+            "filename": "./../../query-performance/query-performance.md"
+        },
+        {
+            "title": "Lab 9: Clean up Resources Used in the Workshop (Optional)",
             "type":"freetier",
             "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
             "filename": "./../../cleanup/cleanup.md"

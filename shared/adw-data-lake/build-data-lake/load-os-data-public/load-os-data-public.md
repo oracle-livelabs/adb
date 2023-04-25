@@ -58,7 +58,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![Select Link Data and Cloud Store.](images/select-link-data-from-cloud-store.png)
 
-3. The **Link Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following _public_ pre-authenticated request (PAR) to access this bucket. For information on PAR, see [Using Pre-Authenticated Requests](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingpreauthenticatedrequests.htm) in the _Oracle Cloud Infrastructure_ documentation.
+3. The **Link Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following public URL.
 
     Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field:
 
