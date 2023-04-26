@@ -49,4 +49,4 @@ Oracle MovieStream is a fictitious on-line movie streaming company. Customers lo
 
 - **Contributors** - Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress
 
-- **Last Updated By** - Keith Laker, July 2021
+- **Last Updated By** - Sarika Surampudi, Principal User Assitance Developer, Database Documentation; April 2023

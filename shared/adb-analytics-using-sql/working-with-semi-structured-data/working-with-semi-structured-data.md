@@ -1,4 +1,4 @@
-﻿# Working with Semi-Structured Movie Data
+﻿# Work with Semi-Structured Movie Data
 
 ## Introduction
 
@@ -48,7 +48,7 @@ This is in a format known as JSON and you can see that it is organized very diff
 Let's build a query for the marketing team that ranks each writer based on the amount of revenue for each film where they were involved, and look for writers who have suddenly had big hits in 2020 compared to other years. This would allow us to create promotion campaigns to bring attention to their earlier movies.
 
 
-## Task 1:  - Loading JSON Movie Data
+## Task 1: Loading JSON Movie Data
 
 In the previous labs of this workshop, we have loaded the data we want to use into our data warehouse. Autonomous Data Warehouse also allows you to leave your data in the Object Store and query it directly without having to load it first. This uses a feature called an External Table. There is a whole chapter on this topic in the documentation, [see here](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/query-external.html#GUID-ABF95242-3E04-42FF-9361-52707D14E833), which explains all the different types of file formats (including JSON) that are supported. 
 
@@ -153,7 +153,7 @@ Although queries on external data will not be as fast as queries on database tab
     FROM json_movie_data_ext;</copy>
     ```
 
-6. which should return a result something like this:
+6. The above query should return a result something like this:
 
     ![Result of querying external table](images/analytics-lab-2-step-1-substep-6.png)
 
@@ -173,7 +173,7 @@ Although queries on external data will not be as fast as queries on database tab
 
 ## Task 2: A Simple Query Over JSON Data
 
-1. As a first step, let's show you how to query  JSON data using SQL. We can use special notation within our SQL query to convert the content above into a more normal looking table containing columns and rows. This approach is known as Simple Dot Notation and it looks very similar to the way we have constructed previous queries. Here is our first query which you can run in your SQL Worksheet:
+1. As a first step, let's show you how to query JSON data using SQL. We can use special notation within our SQL query to convert the content above into a more normal looking table containing columns and rows. This approach is known as Simple Dot Notation and it looks very similar to the way we have constructed previous queries. Here is our first query which you can run in your SQL Worksheet:
 
     ```
     <copy>SELECT
@@ -184,7 +184,7 @@ Although queries on external data will not be as fast as queries on database tab
     FROM json_movie_data_ext m;</copy>
     ```
 
-2. It should return a result set that looks similar to this:
+2. The above query should return a result set that looks similar to this:
 
     ![Result of query using Simple Dot Notation](images/analytics-lab-2-step-2-substep-2.png)
 
@@ -209,7 +209,7 @@ Although queries on external data will not be as fast as queries on database tab
     FROM json_movie_data_ext m;</copy>
     ```
 
-4. It will return the following output:
+4. The above qury will return the following output:
 
     ![Query result of looping to get lists of multiple values](images/analytics-lab-2-step-2-substep-4.png)
 
@@ -257,7 +257,7 @@ Your Autonomous Data Warehouse includes a number of helper packages that can s
     FROM json_movie_view;</copy>
     ```
 
-3. This should return the following:
+3. The query should return the following:
 
     ![ALT text is not available for this image](images/analytics-lab-2-step-3-substep-3.png)
 
@@ -335,7 +335,7 @@ In this query, we are using the **JSON_TABLE** function again, to convert our JS
     ORDER BY 6 desc;</copy>
     ```
 
-3. the output will be shown in the Query Result window:
+3. The output will be shown in the Query Result window:
 
     ![Query result of combining queries](images/sql-analytics-lab5-step5-substep3.png)
 
@@ -412,4 +412,4 @@ Please *proceed to the next lab*.
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; April 2023

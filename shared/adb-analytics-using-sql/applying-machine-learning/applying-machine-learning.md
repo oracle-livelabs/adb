@@ -1,5 +1,5 @@
 ﻿
-# Applying Machine Learning to Customer Demographics
+# Apply Machine Learning to Customer Demographics
 
 ## Introduction
 
@@ -9,7 +9,7 @@ Estimated Lab Time: 10 minutes
 
 ### Objectives
 
-- Learn how to use the  `DBMS_PREDICTIVE_ANALYTICS.EXPLAIN` procedure
+- Learn how to use the  `DBMS_DATA_MINING.CREATE_MODEL2` procedure
 
 - Learn how to interpret the results that are automatically generated
 
@@ -18,7 +18,7 @@ Estimated Lab Time: 10 minutes
 
 Autonomous Data Warehouse contains built-in machine learning algorithms. There is a separate workshop that can guide you through creating machine learning models to solve common business problems. In this short lab, the objective is to use one of these built-in algorithms to help us understand the demographic factors that can explain why a customer triggers an "insufficient funds" event against their account. If we can find a way to identify the key demographic attributes associated with this type of event, we can target customers to help them better manage their account and therefore have a better experience on MovieStream.
 
-To do this analysis, we are going to use a package called **`DBMS_PREDICTIVE_ANALYTICS`**. This package contains routines that perform an automated form of machine learning known as **predictive analytics**. With predictive analytics, we do not need to be aware of typical machine learning steps such as model building or model scoring. All machine learning activities are handled internally by the procedure. This makes it really easy for everyone to benefit from the power of machine learning-driven analytics.
+To do this analysis, we are going to use a package called **`DBMS_DATA_MINING`**. This package helps in creating, evaluating, and querying Oracle Machine Learning for SQL models. This makes it really easy for everyone to benefit from the power of machine learning-driven analytics.
 
 
 ## Task 1: Preparing Our customer Data Set
@@ -93,22 +93,46 @@ To do this analysis, we are going to use a package called **`DBMS_PREDICTIVE_ANA
 
 ### Overview
 
-In this case, we will use the **EXPLAIN** procedure to help us understand which demographic attributes can explain the likelihood of a customer incurring an insufficient funds event. The EXPLAIN procedure uses an Attribute importance that computes a Minimum Description Length algorithm to determine the relative importance of attributes in predicting the column to be explained.
+In this case, we will use the **CREATE\_MODEL2** procedure to help us understand which demographic attributes can explain the likelihood of a customer incurring an insufficient funds event. The CREATE\_MODEL2 procedure uses an Attribute importance that computes a Minimum Description Length algorithm to determine the relative importance of attributes in predicting the column to be explained.
 
 To run this analysis we need to provide the following information:
 
-- Name of the input table - our customer demographic view
+- `DBMS_DATA_MINING.SETTING_LIST`: defines model settings or hyperparameters for your model
+- `v_setlst`: variable to store the setting list
+- `ALGO_NAME`:  specifies the algorithm name. In this case, it is `ALGO_AI_MDL` indicating Minimum Description Legth.
 
-- Name of the column to be explained - the column for insufficient funds events
+Then, the `CREATE_MODEL2` procedure takes the following parameters:
 
-- Name of the output table - this gets created automatically by the procedure so just needs a name of table that doesn't exist
+- `MODEL_NAME`:  A unique model name that you will give to the model. The name of the model is in the form [schema\_name.]model\_name. If you do not specify a schema, then your own schema is used. Here, the model name is `AI_OUTPUT`. 
+
+- `MINING_FUNCTION`:  Specifies the machine learning function. Since it is a feature selection problem in this case, select `ATTRIBUTE_IMPORTANCE`.  
+
+- `DATA_QUERY`: A query that provides training data for building the model. Here, the query is `select * from vw_cust_funds`. This is the name of the input table - our customer demographic view.
+
+- `SET_LIST`: Specifies `SETTING_LIST`.
+
+- `TARGET_COLUMN_NAME`:  For a supervised model, the target column in the build data. In this case, it is the column for insufficient funds events. 
+
+These settings are described in [`DBMS_DATA_MINING.CREATE_MODEL2 Procedure`.](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/DBMS_DATA_MINING.html#GUID-560517E9-646A-4C20-8814-63FDA763BFD9)
+
 
 **NOTE:**  The input table contains the column `CUSTOMER_ID` to make the data easier to validate once we get a final result. However, under normal circumstances this column would not be included as an input to the machine learning model, since every row is unique. Fortunately, the machine learning features in Autonomous Data Warehouse are smart enough to automatically ignore these types of columns and focus on the other more "interesting" columns.
 
 1. Now that we understand the required inputs, let's run the model:
 
     ```
-    <copy>EXEC DBMS_PREDICTIVE_ANALYTICS.EXPLAIN('vw_cust_funds', 'insuff_funds_incidents', 'customer_explain_result');</copy>
+    <copy>DECLARE
+  v_setlst DBMS_DATA_MINING.SETTING_LIST;
+BEGIN
+  v_setlst('ALGO_NAME') := 'ALGO_AI_MDL';
+ 
+  DBMS_DATA_MINING.CREATE_MODEL2
+(MODEL_NAME        => 'AI_EXPLAIN_OUTPUT',
+   MINING_FUNCTION    => 'ATTRIBUTE_IMPORTANCE',
+   DATA_QUERY         => 'select * from vw_cust_funds',
+   SET_LIST           => v_setlst,
+   TARGET_COLUMN_NAME => 'insuff_funds_incidents');
+END;</copy>
     ```
 
 2. The package will return a "PL/SQL procedure successfully completed" message to the log window once it has finished processing - which should take around 20 seconds.
@@ -117,49 +141,35 @@ To run this analysis we need to provide the following information:
 
 ## Task 3: Reviewing The Output
 
-1. To view the results from our model, we simply need to view the result table -> customer\_explain\_result:
+1. To view the results from our model, we simply need to query the model detail view `DM$VA`:
 
     ```
-    <copy>SELECT * FROM customer_explain_result;</copy>
+    <copy>SELECT ATTRIBUTE_NAME, ATTRIBUTE_IMPORTANCE_VALUE, ATTRIBUTE_RANK FROM
+DM$VAAI_OUTPUT;</copy>
     ```
+
 
 2. This should return the following results:
 
-    ![Query results from the model](images/3038282311.png)
+    ![Query results from the model](images/output_of_attribute_importance.png)
 
 What do the above columns mean?
 
-### Explanatory Value
+### ATTRIBUTE\_IMPORTANCE\_VALUE
 
-This column contains a value that indicates how useful the column is for determining the value of the explained column (insufficient funds). Higher values indicate greater explanatory power. Value can range from 0 to 1.
+This column contains a value that indicates how useful the column is for determining the value of the target column (insufficient funds). Higher values indicate greater atrribute importance value. Value can range from 0 to 1.
 
-An individual column's explanatory value is independent of other columns in the input table. The values are based on how strong each individual column correlates with the explained column. The value is affected by the number of records in the input table, and the relations of the values of the column to the values of the explain column.
+An individual column's attribute importance value is independent of other columns in the input table. The values are based on how strong each individual column correlates with the target column. The value is affected by the number of records in the input table, and the relations of the values of the column to the values of the target column.
 
-An explanatory power value of 0 implies there is no useful correlation between the column's values and the explain column's values. An explanatory power of 1 implies perfect correlation; such columns should be eliminated from consideration for PREDICT. In practice, an explanatory power equal to 1 is rarely returned.
+An attribute importance value of 0 implies there is no useful correlation between the column's values and the target column's values. An attribute importance value of 1 implies perfect correlation; such columns should be eliminated from consideration for prediction. In practice, an attribute importance equal to 1 is rarely returned.
 
-### Rank
+### ATTRIBUTE\_RANK
 
-Simply shows the ranking of explanatory power. Rows with equal values for explanatory_value have the same rank. Rank values are not skipped in the event of ties.
+Simply shows the ranking of attribute importance value. Rows with equal values for attribute\_importance\_value have the same rank. Rank values are not skipped in the event of ties.
 
 ## Task 4: Interpreting The Results
 
-1. Let's use some of the techniques from earlier parts of this workshop to enhance the output:
-
-    ```
-    <copy>SELECT
-    attribute_name,
-    round(explanatory_value, 6) explanatory_value,
-    round(sum(explanatory_value) over (order BY rank), 4) running_total,
-    rank
-    FROM customer_explain_result
-    ORDER BY RANK;</copy>
-    ```
-
-2. The output from the above query should look something like this:
-
-    ![Query results showing enhanced output](images/3038282310.png)
-
-What do the results tell us? The above results tell us that to understand why an insufficient funds event occurs, we need to examine the occurrence of late mortgage payments by a customer, their segment name and the mortgage amount. Note that the analysis doesn't focus on specific attribute values. The analysis shows that by using the top four attributes we could expect a better-than-average (53%) ability to predict the likelihood of an insufficient funds event based on the top three attributes identified by the EXPLAIN procedure.
+What do the results tell us? The above results tell us that to understand why an insufficient funds event occurs, we need to examine the occurrence of late mortgage payments by a customer, their segment name and the mortgage amount. Note that the analysis doesn't focus on specific attribute values. The analysis shows that we could predict the likelihood of an insufficient funds event based on the top three attributes identified by the CREATE\_MODEL2 procedure.
 
 Conversely, we can say that demographic attributes such as job\_type, marital\_status and education have no impact on whether a customer is likely to incur an insufficient funds event.
 
@@ -169,8 +179,8 @@ This lab has introduced you to the built-in capabilities of machine learning wit
 
 Within this lab we have examined:
 
-- How to use the `DBMS_PREDICTIVE_ANALYTICS.EXPLAIN` procedure and how to interpret the results that are automatically generated.
-- How this built-in feature helps us understand the demographic factors that can explain why a customer might trigger an "insufficient funds" event.
+- How to use the `DBMS_DATA_MINING.CREATE_MODEL2` procedure and how to interpret the results that are automatically generated.
+- How this feature helps us understand the demographic factors that can explain why a customer might trigger an "insufficient funds" event.
 
 Now that we identified these key demographic attributes, we can do more analysis using SQL to go deeper. This type of analysis can allow us to identify and guide customers in better ways to manage their account and, therefore, have a better experience on our MovieStream platform.
 
@@ -178,4 +188,4 @@ Now that we identified these key demographic attributes, we can do more analysis
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, April 2023
