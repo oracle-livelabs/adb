@@ -1,0 +1,40 @@
+{
+    "workshoptitle": "Using the Database API for MongoDB",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started with NoVNC",
+            "description": "Verify Setup of compute instance",
+            "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+        },
+        {
+            "title": "Lab 1: Setup User and ORDS",
+            "description": "Setup User",
+            "filename": "./../../introduction/change-pw-json-enhancements.md"
+        },
+        {
+            "title": "Lab 3: Use Mongo API to interact with Oracle Database",
+            "description": "Use Mongo API to interact with Oracle Database",
+            "filename": "./../../json-mongo/json-mongo.md"
+        },
+        {
+            "title": "Lab 4: Interact with JSON Documents through Database Actions",
+            "filename": "../../dbactions/dbactions.md"
+        },
+        {
+            "title": "Lab 5: Cleanup Oracle Autonomous Database",
+            "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+        
+    ]
+}
