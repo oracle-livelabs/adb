@@ -144,6 +144,14 @@
             "filename": "./../../adb-kms/adb-kms.md"
         },
         {
+            "title": "Lab 18: Configure SCAN Listener port and Bring your own certificates",
+            "description": "Configure SCAN Listener port and Bring your own certificates",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "04/25/2023",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-tls-cert/adb-tls-cert.md"
+        },
+        {
             "title": "Appendix",
             "description": "Common tools for windows Users Finding the IP address of your AEI Cluster.",
             "partnumber": "Ennnnn_01",
