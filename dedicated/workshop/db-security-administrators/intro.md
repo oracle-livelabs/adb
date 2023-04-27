@@ -43,6 +43,7 @@ Lab 14: Provision Audit and Alert Policies and Configure an Audit Trail in Data 
 Lab 15: Analyze Audit Data with Reports and Alerts in Data Safe  
 Lab 16: Custom Audit Policies Audit Data in Data Safe  
 Lab 17: Customer Controlled Database Encryption Keys  
+Lab 18: Configure SCAN Listener port and Bring your own certificates
 
 ## A Private Database Cloud in the Oracle Public Cloud and on premises
 With Autonomous Database Dedicated, customers get their own Exadata infrastructure in the Oracle Cloud and on-premise. The customers administrator simply specifies the size, region and availability domain where they want their dedicated Exadata infrastructure provisioned.  They also get to determine the update or patching schedule if they wish. Oracle automatically manages all patching activity but with Autonomous Database Dedicated service, customers have the option to customize the patching schedule.
