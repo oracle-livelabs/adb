@@ -127,10 +127,10 @@ BEGIN
   v_setlst('ALGO_NAME') := 'ALGO_AI_MDL';
  
   DBMS_DATA_MINING.CREATE_MODEL2
-(MODEL_NAME        => 'AI_EXPLAIN_OUTPUT',
-   MINING_FUNCTION    => 'ATTRIBUTE_IMPORTANCE',
-   DATA_QUERY         => 'select * from vw_cust_funds',
-   SET_LIST           => v_setlst,
+  (MODEL_NAME           => 'AI_EXPLAIN_OUTPUT',
+   MINING_FUNCTION      => 'ATTRIBUTE_IMPORTANCE',
+   DATA_QUERY           => 'select * from vw_cust_funds',
+   SET_LIST             => v_setlst,
    TARGET_COLUMN_NAME => 'insuff_funds_incidents');
 END;</copy>
     ```
