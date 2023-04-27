@@ -280,7 +280,7 @@ Let's quickly recap what has been covered in this lab:
 
 - Sharing results with other data warehouse users
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 

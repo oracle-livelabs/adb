@@ -224,7 +224,7 @@ Let's quickly recap what has been covered in this lab:
 - Learned how to combine spreadsheet-like operations with other SQL features such as PIVOT
 
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 

@@ -103,7 +103,7 @@ To run this analysis we need to provide the following information:
 
 Then, the `CREATE_MODEL2` procedure takes the following parameters:
 
-- `MODEL_NAME`:  A unique model name that you will give to the model. The name of the model is in the form [schema\_name.]model\_name. If you do not specify a schema, then your own schema is used. Here, the model name is `AI_OUTPUT`. 
+- `MODEL_NAME`:  A unique model name that you will give to the model. The name of the model is in the form [schema\_name.]model\_name. If you do not specify a schema, then your own schema is used. Here, the model name is `AI_EXPLAIN_OUTPUT`. 
 
 - `MINING_FUNCTION`:  Specifies the machine learning function. Since it is a feature selection problem in this case, select `ATTRIBUTE_IMPORTANCE`.  
 
@@ -113,7 +113,7 @@ Then, the `CREATE_MODEL2` procedure takes the following parameters:
 
 - `TARGET_COLUMN_NAME`:  For a supervised model, the target column in the build data. In this case, it is the column for insufficient funds events. 
 
-These settings are described in [`DBMS_DATA_MINING.CREATE_MODEL2 Procedure`.](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/DBMS_DATA_MINING.html#GUID-560517E9-646A-4C20-8814-63FDA763BFD9)
+These settings are described in [`DBMS_DATA_MINING.CREATE_MODEL2 Procedure`](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/DBMS_DATA_MINING.html#GUID-560517E9-646A-4C20-8814-63FDA763BFD9).
 
 
 **NOTE:**  The input table contains the column `CUSTOMER_ID` to make the data easier to validate once we get a final result. However, under normal circumstances this column would not be included as an input to the machine learning model, since every row is unique. Fortunately, the machine learning features in Autonomous Data Warehouse are smart enough to automatically ignore these types of columns and focus on the other more "interesting" columns.
@@ -147,7 +147,7 @@ END;</copy>
     <copy>SELECT ATTRIBUTE_NAME, ATTRIBUTE_IMPORTANCE_VALUE, ATTRIBUTE_RANK FROM
 DM$VAAI_OUTPUT;</copy>
     ```
-
+Learn more about [model detail views](https://docs.oracle.com/en/database/oracle/machine-learning/oml4sql/23/dmprg/model-detail-views.html#GUID-58E2B8C6-0329-43B2-9CDE-7F3B34E6B304).
 
 2. This should return the following results:
 

@@ -406,7 +406,7 @@ In this lab, we have covered the following topics:
 
 - How SQL's analytic functions can be used in queries that also contain JSON data
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 

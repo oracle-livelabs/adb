@@ -137,7 +137,7 @@ Let's quickly recap what has been covered in this lab:
 
 - How to create a Recency Frequency Monetary query
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 
