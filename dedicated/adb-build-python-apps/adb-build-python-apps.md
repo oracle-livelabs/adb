@@ -85,7 +85,7 @@ As an application developer,
 - Login to Oracle Cloud Infrastructure account and select **Autonomous Transaction Processing** from menu.
     ![This image shows the result of performing the above step.](./images/atpd1.png " ")
 
-- Click **Autonomous Database* and select your previously created database.
+- Click **Autonomous Database** and select your previously created database.
     ![This image shows the result of performing the above step.](./images/atpd2.png " ")
 
 - Click *DB Connection* and under Download Client Credential(Wallet) click **Download**.

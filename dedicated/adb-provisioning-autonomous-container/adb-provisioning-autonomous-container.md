@@ -30,9 +30,13 @@ Watch the video below for an overview of creating an Autonomous Container Databa
 
     ![This image shows the result of performing the above step.](./images/create-acd1.png " ")
 
-- On the **Create Autonomous Container Database** dialog box you can choose / modify the compartment to create your ACD. You also need to select the compartment hosting your AEI and the AEI instance as highlighted below.
+- On the **Create Autonomous Container Database** dialog box you can choose / modify the compartment to create your ACD. Select the compartment hosting your Exadata Infrastructure and Autonomous Exadata VM Cluster.
 
     ![This image shows the result of performing the above step.](./images/create-acd2.png " ")
+
+- Choose Container Database software Version from the dropdwon.
+
+    ![This image shows the result of performing the above step.](./images/create-acd10.png " ")
 
 - To configure Autonomous Data Guard, select the **Enable Autonomous Data Guard** checkbox and select your standby region, standby Exadata Infrastructure and Standby Autonomous VM Cluster. You also have the option to change the protection and enable Automatic Failover. To learn more about Autonomous Data Guard, head to our **Autonomous Data Guard** lab in this workshop.
 
@@ -40,13 +44,9 @@ Watch the video below for an overview of creating an Autonomous Container Databa
 
 - As you scroll down the form you will see an option to modify your ACD's maintenance schedule and the type of update you wish to apply to the container.
 
-- You may choose to apply a Release Update (RU) or simply apply any revisions (fixes and security updates) to the current Release Update (RUR).
+- You may choose to configure container database maintenance version to either Next RU or Latest RU. And also, specify your ACD's maintenance schedule, picking a month, week, day and time in each quarter when a maintenance operation can be carried out on that container.
 
     ![This image shows the result of performing the above step.](./images/create-acd4.png " ")
-
-- Specify your ACD's maintenance schedule, picking a month, week, day and time in each quarter when a maintenance operation can be carried out on that container.
-
-    ![This image shows the result of performing the above step.](./images/create-acd5.png " ")
 
 - If creating the Autonomous Container Database on Exadata Cloud@Customer, configure the backup destination to be used for backups of Autonomous Databases created in the Autonomous Container Database. Select a Backup Destination Type and then specify options based on the selected type.
 
@@ -75,7 +75,7 @@ You may now **proceed to the next lab**.
 
 - **Author** - Ranganath S R, Tejus S. & Kris Bhanushali
 - **Adapted by** -  Yaisah Granillo, Cloud Solution Engineer
-- **Last Updated By/Date** - Kris Bhanushali, March 2022
+- **Last Updated By/Date** - Tejus S, March 2023
 
 ## See an issue or have feedback?
 Please submit feedback [here](https://apexapps.oracle.com/pls/apex/f?p=133:1:::::P1_FEEDBACK:1).   Select 'Autonomous DB on Dedicated Exadata' as workshop name, include Lab name and issue / feedback details. Thank you!
