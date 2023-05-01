@@ -39,6 +39,7 @@ In this workshop, you will:
 * Link to data in public and private Object Storage buckets.
 * Load and analyze the news from REST endpoints.
 * Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
+* Improve query performance by using different techniques.
 
 ### Prerequisites
 
