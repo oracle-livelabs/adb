@@ -50,7 +50,7 @@ As a database user, DBA or application developer:
 
 ***Maximum Availability: Provides the highest level of data protection that is possible without compromising the availability of a primary database.***
 
-  ![This image shows the result of performing the above step.](./images/Create_AuDG_new.png " ")
+  ![This image shows the result of performing the above step.](./images/createaudgnew.png " ")
 
 ***Note: If you select modify maintenance and click custom schedule you will see that it is possible to have the standby ACD patched up to 7 days before the primary for an extra buffer of patch verification time.***
 
@@ -180,7 +180,7 @@ As a database user, DBA or application developer:
 
 - Log on to the cloud console and navigate to your standby ACD. On the standby ACD details page you will see an option to "Convert to standby". Click on it.
 
-![This image shows the result of performing the above step.](./images/snapshot_standby1.png " ")
+![This image shows the result of performing the above step.](./images/snapshotstandby1.png " ")
 
 - You will be presented with two options while converting the database to snapshot mode. 
 
@@ -189,21 +189,21 @@ As a database user, DBA or application developer:
         - Use primary database services: Databases services that are active on primary ACD will be enabled on the snapshot standby ACD also. Extreme caution must be taken while using the primary services.
     Select your option and click convert. 
 
-![This image shows the result of performing the above step.](./images/snapshot_standby2.png " ")
+![This image shows the result of performing the above step.](./images/snapshotstandby2.png " ")
 
 - Once the standby database is converted to snapshot standby database, you will see a new pill at the top of the ACD details page highlighting the database mode. You will also see a warning message about snapshot standby database reverting to physical standby after 7 days. 
 
-![This image shows the result of performing the above step.](./images/snapshot_standby3.png " ")
+![This image shows the result of performing the above step.](./images/snapshotstandby3.png " ")
 
 ## Task 8: Convert to physical standby
 
 - Log on to the cloud console and navigate to your standby ACD. If your standby ACD is in snapshot standby mode, then you will see an option to "Convert to physical standby". Click on it.
 
-![This image shows the result of performing the above step.](./images/snapshot_standby3.png " ")
+![This image shows the result of performing the above step.](./images/snapshotstandby3.png " ")
 
 - You will receive a warning that converting your snapshot standby to a physical standby will discards all local updates to your snapshot standby, and applies data from your primary database. Click on Convert.
 
-![This image shows the result of performing the above step.](./images/snapshot_standby4.png " ")
+![This image shows the result of performing the above step.](./images/snapshotstandby4.png " ")
 
 Once the conversion to physical standby is complete, the pill at the top of the ACD will change back to standby mode. 
 
