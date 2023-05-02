@@ -39,7 +39,8 @@ In this workshop, you will:
 * Link to data in public and private Object Storage buckets.
 * Load and analyze the news from REST endpoints.
 * Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
-* Improve query performance by using different techniques.
+* Improve query performance by creating a materialized view over an external table.
+* Create and manage partitioned external tables to improve performance.
 
 ### Prerequisites
 
@@ -66,7 +67,7 @@ You may now proceed to the next lab.
     * Richard Green, Database User Assistance
     * Marty Gubar, ADB Product Management
     * Alexey Filanovskiy, Senior Product Manager
-* **Last Updated By/Date:** Lauran Serhal, April 2023
+* **Last Updated By/Date:** Lauran Serhal, May 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
