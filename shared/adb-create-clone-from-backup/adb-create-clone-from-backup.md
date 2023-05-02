@@ -42,7 +42,12 @@ Create a full clone database from your currently running primary database.
 
     ![Choose Clone from database instance](images/choose-clone-from-database-instance.png)
 
-3. Provide the required information to create the clone database. The preferred region by default is your current region. Provide a display name and database name. Fill the other sections of this screen as you did in the earlier lab on provisioning an autonomous database:
+3. Provide the required information to create the clone database.
+    - In the **Choose your preferred region** field, accept the default, which is your current region.
+    - In the **Create in compartment** field, select a compartment to which you have access, *or if you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
+    - Provide a display name and database name.
+
+    Fill the other sections of this screen as you did in the earlier lab on provisioning an autonomous database:
     - Configure the Database
     - Create administrator credentials
     - Choose network access
