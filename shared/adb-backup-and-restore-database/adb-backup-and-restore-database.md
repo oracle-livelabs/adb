@@ -101,6 +101,7 @@ You may now **proceed to the next lab**.
 
 - ADW Documentation: [Backing Up and Restoring Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/backup-restore.html#GUID-9035DFB8-4702-4CEB-8281-C2A303820809)
 - ADW Documentation: [Create Long-Term Backups on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/backup-long-term.html)
+- Product Management Blog: [Keep backups long-term (up to 10 years!) on Autonomous Database](https://blogs.oracle.com/datawarehousing/post/long-term-backups-autonomous-database)
 
 ## Acknowledgements
 
