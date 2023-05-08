@@ -13,8 +13,8 @@ Estimated Time: 30 minutes
 ### Objectives
 
 In this lab, you will:
+
 * (Optional) Create a compartment for your Data Catalog resources.
-* Create the access policy to allow the dynamic group to access Oracle Cloud Infrastructure services such as ADW and Oracle Object Storage buckets.
 * Create an Autonomous Warehouse instance.
 
 ### Prerequisites
