@@ -6,6 +6,10 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Scale Your Autonomous Database](videohub:1_ls8fjm2p)
+
 ### Objectives
 
 -   Learn how to scale up an ADW or ATP service

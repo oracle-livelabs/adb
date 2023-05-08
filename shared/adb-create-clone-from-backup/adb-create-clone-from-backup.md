@@ -15,6 +15,9 @@ In addition, you will see how to create that clone from backup as a **cross-regi
 
 Estimated Lab Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a Clone Database](videohub:1_ucxwam14)
+
 ### Objectives
 
 In this lab, you'll:
