@@ -8,13 +8,13 @@ You can load data into your Autonomous Database (either Oracle Autonomous Data W
 
 + Files on your local machine.
 + Tables in remote databases.
-+ Files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, Google Cloud Storage).
++ Files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, and Google Cloud Storage).
 
 You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
-This workshop explores several methods for loading data into an Oracle Autonomous Database. In this first data loading lab, we practice loading data from public object storage buckets.
+This workshop explores several methods for loading and linking data to an Oracle Autonomous Database. In this first data loading lab, we practice loading data from public object storage buckets.
 
 Estimated Time: 10 minutes
 
@@ -24,12 +24,13 @@ Watch the video below for a quick walk-through of the lab.
 ### Objectives
 
 In this lab, you will:
-* Navigate to the Data Load utility of Oracle Autonomous Database Data Tools
-* Learn how to create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous Database
+
+* Navigate to the Data Load page.
+* Create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous Database
 
 ### Prerequisites
 
-This lab requires completion of the lab **Provision an Autonomous Database**, in the **Contents** menu on the left.
+This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Navigate to the Data Load Page
 

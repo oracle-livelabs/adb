@@ -22,7 +22,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-* This lab requires completion of the **Provision an Autonomous Database** lab from the **Contents** menu on the left.
+This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Download .csv Files from the MovieStream Data Lake to your Local Computer
 

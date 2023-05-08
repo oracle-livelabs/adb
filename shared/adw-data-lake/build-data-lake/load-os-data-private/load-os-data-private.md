@@ -22,7 +22,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab, **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Download Customer Data from a Public Bucket
 

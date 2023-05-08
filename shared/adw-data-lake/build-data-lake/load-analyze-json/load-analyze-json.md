@@ -17,7 +17,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab **Provision an Autonomous Database**, as explained in **Lab 1: Set Up the Workshop Environment** in the Contents menu on the left.
+- This lab requires completion of the This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Create and Load JSON Movie Collection
 <!---
