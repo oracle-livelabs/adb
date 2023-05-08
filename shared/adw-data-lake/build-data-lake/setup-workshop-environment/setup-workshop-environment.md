@@ -16,6 +16,7 @@ In this lab, you will:
 
 * (Optional) Create a compartment for your Data Catalog resources.
 * Create an Autonomous Warehouse instance.
+* (Optional) Create an OCI Data Catalog Instance
 
 ### Prerequisites
 
@@ -47,7 +48,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 1. Open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**.
 
-	 ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
+       ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
 
     For faster navigation, you can pin items that you use frequently. To pin an item, hover over the menu item and then click pin to the left of the item name.
 
