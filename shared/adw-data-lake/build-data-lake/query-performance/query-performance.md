@@ -15,7 +15,7 @@ Estimated Time: 10 minutes
 In this lab, we will show you how to do the following:
 
 * Create a materialized view on top of an external table to improve query response time.
-* Create and manage partitoned external tables.
+* Create and manage partitioned external tables to improve the database performance.
 
 ### Prerequisites
 None.
