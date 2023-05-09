@@ -1,14 +1,19 @@
 # Enable Disaster Recovery Using Autonomous Data Guard or Backup-Based Disaster Recovery
+
+## Introduction
+
 In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database on Shared Infrastructure (ADB-S).
 - You will practice enabling Autonomous Data Guard (AuDG), using a standby database.
 - You will learn about Backup-Based Disaster Recovery, which uses a backup copy of your primary database.
 
-## Introduction
 Every enterprise today needs to protect its data with high availability, data protection, and disaster recovery. Businesses need a comprehensive set of services that create, maintain, manage, and monitor one or more standby databases to enable production databases to survive disasters and data corruption. While ADB already runs on highly available Exadata infrastructure, this feature further protects your databases against unforeseen disaster scenarios like earthquakes, fires, floods, major network outages etc. by automatically switching to a standby database when the primary database goes down.
 
 You can set up an Autonomous Data Guard standby database or use a backup database in the **same region** as the primary source database, or set up **cross-region** disaster recovery, running in a **different (remote) region** than the region of the primary source database.
 
 Estimated lab time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Enable Disaster Recovery Using Autonomous Data Guard or Backup-Based Disaster Recovery](videohub:1_gw8nupuq)
 
 ### Objectives
 
