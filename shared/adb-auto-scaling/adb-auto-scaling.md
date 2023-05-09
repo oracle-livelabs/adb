@@ -6,6 +6,9 @@ In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Da
 
 Estimated time: 30 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Apply Auto Scaling on an Autonomous Database](videohub:1_bj3lzbp8)
+
 **What is Auto Scaling and How Does It Work?**
 
 With auto scaling enabled, the database can use up to **three times** more CPU and IO resources than specified by the number of base OCPUs currently shown in the **Scale Up/Down** dialog.
