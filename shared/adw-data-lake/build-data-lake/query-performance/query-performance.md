@@ -195,13 +195,9 @@ For example, you will have to:
 
 Let's just have a quick look at what all of this means for a relatively small partitioned table with an example.
 
-A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents my sales for two years.
+1. A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents sales data for two years. The data is in the **sales\_sample** folder in the **moviestream\_landing** Object Storage bucket that you used in the previous task. There are **24** `parquet` data files in this folder. Each file represents a month's worth of data for the years **2019** and **2020**.
 
-1. Let's look at the content of the **sales\_sample** folder in the **moviestream\_landing** Oracle Object Storage bucket that you used in the previous task.There are **24** parquet data files in the **sales_sample** folder. Each file represents a month's worth of data for the years **2019** and **2020**.
-
-    ![The parquet files in the specified folder are displayed.](./images/parquet-files.png " ")
-
-2.  Let's create a monthly partitioned external table on top of these files, using the traditional **DBMS\_CLOUD** PL/SQL package and the **CREATE\_EXTERNAL\_PART\_TABLE** procedure. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+2. Let's create a monthly partitioned external table on top of these `parquet` files, using the traditional **DBMS\_CLOUD** PL/SQL package and the **CREATE\_EXTERNAL\_PART\_TABLE** procedure. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
