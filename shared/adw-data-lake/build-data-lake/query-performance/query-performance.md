@@ -34,27 +34,32 @@ None.
 
 ## Task 2: Create a Materialized View for an External Table
 
-In this task, you will create a materialized view on top of the external table to improve query response time.
+In this task, you will create a materialized view on top of the **custsales** external table that you created in **Lab 4: Task 2** based on **sales\_sample** to improve the query response time.
 
-1. In **Lab 4: Link to Data in Public Object Storage Buckets > Task 2: Link to Data in Public Object Storage Buckets and Create Tables**, you created the **CUSTSALES** external table. The source data for this table was the **moviestream_landing** Oracle Object Storage bucket which is located in the **c4u04** public tenancy. Here's the location of the public Oracle Object Storage bucket:
+1. To view the contents of the **sales\_sample** folder in the **moviestream\_landing** bucket, run the following query.
 
     ```
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
+    <copy>
+    SELECT object_name
+    FROM DBMS_CLOUD.LIST_OBJECTS('OBJ_STORAGE_CRED',
+    'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample');
+    </copy>
     ```
-    
-    This bucket contains the **sales\_sample** data set in `parquet` format. When you linked to this bucket in **Lab 4**, a **sales\_sample** external table was generated; however, you changed the name of this table to **custsales**. This data set contains monthly partitioned customers sales data for years **2019** and **2020** as shown in the following partial screen capture. Each folder contains a single `.parquet` file such as **custsales-2019-1.parquet**.
 
-    ![custsales bucket content.](./images/sample-sale-content.png " ")
+    ![query the sales_sample folder.](./images/query-sales_sample.png " ")
 
-    To query the table in the SQL Worksheet, drag and drop **CUSTSALES** from the Navigator pane onto the worksheet.
+    The **sales\_sample** folder contains 24 monthly partitioned customers sales data for the years **2019** and **2020** in `.parquet` file format such as **custsales-2019-1.parquet**.
 
-    ![Drag and drop custsales.](./images/drag-drop-custsales.png " ")
+2. Describe the structure of the **custsales** external table.
 
-    A **Choose the type of insertion** dialog box is displayed. Choose the **Select** option, and then click **Apply**. The query is displayed. To run the query, click the **Run Statement** icon in the Worksheet toolbar.
+    ```
+    <copy>
+    describe custsales
+    </copy>
+    ```
+    ![Describe custsales.](./images/describe-custsales.png " ")
 
-    ![Query custsales.](./images/query-custsales.png " ")
-
-2. Let's find out the sum of the actual price that is associated with movie_id 19. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+3. Let's find out the sum of the actual price that is associated with **movie\_id 19**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -70,7 +75,7 @@ In this task, you will create a materialized view on top of the external table t
 
     ![Run query without materialized view.](./images/run-query.png " ")
 
-3. Create a materialized view over the **custsales** external table to improve the query response time. In data warehouses, you can use materialized views to pre-compute and store aggregated data such as the sum of **custsales**. Materialized views in these environments are often referred to as summaries, because they store summarized data. They can also be used to pre-compute joins with or without aggregations. A materialized view eliminates the overhead associated with expensive joins and aggregations for a large or important class of queries. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about materialized views, see [Basic Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/basic-materialized-views.html#GUID-A7AE8E5D-68A5-4519-81EB-252EAAF0ADFF).
+4. Create a materialized view over the **custsales** external table to improve the query response time. In data warehouses, you can use materialized views to pre-compute and store aggregated data such as the sum of **custsales**. Materialized views in these environments are often referred to as summaries, because they store summarized data. They can also be used to pre-compute joins with or without aggregations. A materialized view eliminates the overhead associated with expensive joins and aggregations for a large or important class of queries. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about materialized views, see [Basic Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/basic-materialized-views.html#GUID-A7AE8E5D-68A5-4519-81EB-252EAAF0ADFF).
 
     ```
     <copy>
@@ -103,7 +108,7 @@ In this task, you will create a materialized view on top of the external table t
     /
     ```
 
-4. Gather some statistics for the query optimizer. This is an optional step since ADB will automatically gather statistics. In this lab, we will gather the optimizer statistics manually to show how it is done. The query optimizer (simply called the optimizer) is a built-in database software that determines the most efficient method for a SQL statement to access requested data. Use the **DBMS\_STATS** package to manipulate optimizer statistics. You can gather statistics on objects and columns at various levels of granularity: object, schema, and database. Use the **GATHER\_TABLE_STATS** procedure to collect statistics on the **CUSTSALES** table and the **SALES\_SUMMARY\_MV** materialized view. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about the optimizer, see [Query Optimizer Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgsql/query-optimizer-concepts.html#GUID-06129ACE-36B2-4534-AE68-EDFCAEBB3B5D).
+5. Gather some statistics for the query optimizer. This is an optional step since ADB will automatically gather statistics. In this lab, we will gather the optimizer statistics manually to show how it is done. The query optimizer (simply called the optimizer) is a built-in database software that determines the most efficient method for a SQL statement to access requested data. Use the **DBMS\_STATS** package to manipulate optimizer statistics. You can gather statistics on objects and columns at various levels of granularity: object, schema, and database. Use the **GATHER\_TABLE_STATS** procedure to collect statistics on the **CUSTSALES** table and the **SALES\_SUMMARY\_MV** materialized view. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about the optimizer, see [Query Optimizer Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgsql/query-optimizer-concepts.html#GUID-06129ACE-36B2-4534-AE68-EDFCAEBB3B5D).
 
     ```
     <copy>
@@ -121,7 +126,7 @@ In this task, you will create a materialized view on top of the external table t
 
     ![Gather statistics.](./images/gather-statistics.png " ")
 
-5. Let's run the same query again. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+6. Let's run the same query again. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -137,7 +142,7 @@ In this task, you will create a materialized view on top of the external table t
 
     ![Run query with materialized view.](./images/run-query-mv.png " ")
 
-6. Let's look at the execution plan to see if the query was re-written to use the materialized view. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+7. Let's look at the execution plan to see if the query was re-written to use the materialized view. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -150,19 +155,19 @@ In this task, you will create a materialized view on top of the external table t
 
     ![Run query with materialized view.](./images/monitor-query.png " ")
 
-7. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
+8. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
 
     ![Click Database Actions in the banner.](images/click-database-actions.png)
 
-8. Scroll-down the page to the **Monitoring** section, and then click **PERFORMANCE HUB**.
+9. Scroll-down the page to the **Monitoring** section, and then click **PERFORMANCE HUB**.
 
     ![Click Performance hub.](images/click-performance-hub.png)
 
-9. Click the **SQL Monitoring** tab. Re-size the timeline border as needed to show the queries you ran. Click the link for the latest monitoring query that you ran.
+10. Click the **SQL Monitoring** tab. Re-size the timeline border as needed to show the queries you ran. Click the link for the latest monitoring query that you ran.
 
     ![Click the SQL Monitoring tab.](images/click-sql-monitoring-tab.png)
 
-10. In the **Real-time SQL Monitoring for SQL** page for the selected query, the execution plan shows that the query was re-written to use the materialized view. The data was obtained using the **`sales_summary_mv`** materialized view and not the **`custsales`** detailed table.
+11. In the **Real-time SQL Monitoring for SQL** page for the selected query, the execution plan shows that the query was re-written to use the materialized view. The data was obtained using the **`sales_summary_mv`** materialized view and not the **`custsales`** detailed table.
 
     ![The query is re-written.](images/query-rewrite.png)
 
