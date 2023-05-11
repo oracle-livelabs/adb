@@ -327,7 +327,7 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
 
 ### **Create a partitioned external table the new way**
 
-1. Let's now use the new simplified way to create the same partitioned external table with a fraction of code. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+6. Let's now use the new simplified way to create the same partitioned external table with a fraction of code. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -345,7 +345,7 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
 
     ![Create new partitioned external table.](./images/sales-sample-new-api-ext-table.png " ")
 
-    Describe the structure of the newly created table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+7. Describe the structure of the newly created table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
