@@ -36,19 +36,23 @@ None.
 
 In this task, you will create a materialized view on top of the **custsales** external table that you created in **Lab 4: Task 2** based on **sales\_sample** to improve the query response time.
 
-1. To view the contents of the **sales\_sample** folder in the **moviestream\_landing** bucket, run the following query.
+1. Let's look at the content of the **sales\_sample** folder in the **moviestream\_landing** Oracle Object Storage bucket. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
-    SELECT object_name
-    FROM DBMS_CLOUD.LIST_OBJECTS('OBJ_STORAGE_CRED',
-    'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample');
+    SELECT OBJECT_NAME, BYTES
+    FROM DBMS_CLOUD.LIST_OBJECTS(CREDENTIAL_NAME => 'OBJ_STORAGE_CRED',
+    LOCATION_URI => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample');
     </copy>
     ```
 
-    ![query the sales_sample folder.](./images/query-sales_sample.png " ")
+    ![List the files in the sales_sample folder.](./images/list-parquet-files.png " ")
 
-    The **sales\_sample** folder contains 24 monthly partitioned customers sales data for the years **2019** and **2020** in `.parquet` file format such as **custsales-2019-1.parquet**.
+    >**Note:** In **Lab 5 > Task 6**, you created a credential named **`OBJ_STORAGE_CRED`** that you used in the above query.
+
+    There are **24** parquet data files in the **sales_sample** folder. Each file represents a month's worth of data for the years **2019** and **2020**.
+
+    ![The parquet files in the specified folder are displayed.](./images/parquet-files.png " ")
 
 2. Describe the structure of the **custsales** external table.
 
@@ -193,21 +197,7 @@ Let's just have a quick look at what all of this means for a relatively small pa
 
 A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents my sales for two years.
 
-1. Let's look at the content of the **sales\_sample** folder in the **moviestream\_landing** Oracle Object Storage bucket that you used in the previous task. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    SELECT OBJECT_NAME, BYTES
-    FROM DBMS_CLOUD.LIST_OBJECTS(CREDENTIAL_NAME => 'OBJ_STORAGE_CRED',
-    LOCATION_URI => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample');
-    </copy>
-    ```
-
-    ![List the files in the sales_sample folder.](./images/list-parquet-files.png " ")
-
-    >**Note:** In **Lab 5 > Task 6**, you created a credential named **`OBJ_STORAGE_CRED`** that you used in the above query.
-
-    There are **24** parquet data files in the **sales_sample** folder. Each file represents a month's worth of data for the years **2019** and **2020**.
+1. Let's look at the content of the **sales\_sample** folder in the **moviestream\_landing** Oracle Object Storage bucket that you used in the previous task.There are **24** parquet data files in the **sales_sample** folder. Each file represents a month's worth of data for the years **2019** and **2020**.
 
     ![The parquet files in the specified folder are displayed.](./images/parquet-files.png " ")
 
