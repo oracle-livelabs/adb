@@ -302,19 +302,23 @@ Let's just have a quick look at what all of this means for a relatively small pa
 
     ![Run explain plan for the query.](./images/display-explain-plan.png " ")
 
+    Partition pruning is an essential performance feature for data warehouses. The optimizer analyzes the `FROM` and `WHERE` clauses in SQL statements to eliminate unneeded partitions when building the partition access list. This functionality enables Oracle Database to perform operations only on those partitions that are relevant to the SQL statement. In this example, the **PARTITION LIST SINGLE** row in the explain plan indicates that the predicate in the query was smartly used by the database. Partition pruning was used to access only the necessary partition to satisfy the query. Only partition **p11** out of **24** partitions (see the definition of the partitioned external table) containing the data for **2019-11** was used to satisfy the query request as specified in the `WHERE` clause of the query from step **3**. Mission accomplished!
+
 5. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
     SELECT day_id, month
     FROM sales_sample_old_api
-    WHERE rownum <3;
+    FETCH FIRST TWO ROWS ONLY;
     </copy>
     ```
 
     ![Run query.](./images/run-query-2.png " ")
 
-    It looks like the predicate in the query was smartly used by the database where it was pruned down to only the necessary partition to satisfy the query request. Mission accomplished! However, the process to get here was quite cumbersome and long even with only 24 partitions! Let's see how we can simplify creating a new partitioned table.
+    The above example demonstrates how you can see the partition structure in a query.  **`day_id`** is a column in the files whereas **`month`** is a virtual column that is derived from the directory structure that you saw in **Task 2 > Step 2**. We use the FETCH clause to limit the number of rows returned so that it's more readable.
+
+    The process to get here was quite cumbersome and long even with only 24 partitions! Let's see how we can simplify creating a new partitioned table.
 
 ### **Create a partitioned external table the new way**
 
