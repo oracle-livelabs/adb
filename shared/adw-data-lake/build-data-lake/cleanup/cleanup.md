@@ -22,7 +22,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 > **Note:**
 If you want to list the resources in your compartment, you can use the **Tenancy Explorer** page. From the **Navigation** menu, navigate to **Governance & Administration**. In the  **Governance** section, click **Tenancy Explorer**. On the **Tenancy Explorer** page, in the **Search compartments** field, type your compartment's name, and then select the compartment from the list of compartments. The resources in this compartment are displayed.
 
-## (Optional) Task 1: Delete Your Data Catalog Instance
+## Task 1 (Optional): Delete Your Data Catalog Instance
 
 If you created an optional Data Catalog instance in this workshop, you can terminate the instance as follows:
 
@@ -46,7 +46,7 @@ You can terminate your ADW instance that you created in this workshop as follows
 
     The **State** of the Autonomous Database instance goes into **Terminating**. When the ADB is deleted, the **State** changes to **Terminated**.
 
-## (Optional) Task 3: Delete Your Compartment
+## Task 3 (Optional): Delete Your Compartment
 
 If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you can must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
 
