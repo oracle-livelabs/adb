@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to load (and link) data into your ADW instance using different from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the linked and loaded data with SQL and also query Oracle Object Storage buckets and Amazon S3 (Simple Storage Service) from within ADW.
+The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to load (and link) data into your ADW instance from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the linked and loaded data with SQL and also query Oracle Object Storage buckets and Amazon S3 (Simple Storage Service) from within ADW.
 
 **Oracle MovieStream** is a fictitious movie streaming service - similar to those that to which you currently subscribe. They face challenges that are typical to many organizations across industries. MovieStream must:
 
