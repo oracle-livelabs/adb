@@ -184,7 +184,7 @@ NOTE: Log Group is a logical container of Logs. You can use Log Groups to stream
 
 ![This image shows the result of performing the above step.](./images/op25.png)
 
-
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 *Congratulations! You successfully enabled Operator Access Control to your Infrastructure and Database.*

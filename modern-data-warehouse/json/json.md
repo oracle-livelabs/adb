@@ -145,7 +145,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
     ![Select sql](./images/select-sql.png)
 
 18. Run the following **SQL** for creating the credential, replacing username and password for the information that we already copied before.
-    - **username**, it is your **Oracle Cloud user name** that we copied on step number 1 of this task. It should be your your email address.
+    - **username**, it is your **Oracle Cloud user name** that we copied on step number 1 of this task. **It should be your email address**.
     - **password**, it is the **Auth token** that we copied on step number 6 of this task.
 
     ```
@@ -188,7 +188,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Create Document](./images/create-document.png)
 
-5. Copy and paste the following tweet. Then click on the **Create** button.
+5. Copy and paste the following tweet. Then click on the **Create** button. Be sure you have just **one pair of {}**, otherwise, you will see and error.
     
     ```
         <copy>
@@ -323,7 +323,6 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 You can **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Javier de la Torre, Principal Data Management Specialist
-* **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, February 2023 
-
+* **Author** - Javier de la Torre - Principal Data Management Specialist
+* **Contributors** - Priscila Iruela - Technology Product Strategy Director
+* **Last Updated By/Date** - Priscila Iruela, March 2023

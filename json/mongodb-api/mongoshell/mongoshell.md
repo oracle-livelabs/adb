@@ -190,6 +190,11 @@ That's all we're going to cover in MongoDB Shell, but there are some important p
 
 In the next lab we'll cover Autonomous Database tools, including JSON Workshop and SQL.
 
+## Learn More
+
+* [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
+* [Simple example to test your MongoDB connection using a node.js application](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/mongo-using-oracle-database-api-mongodb.html#GUID-935C72EB-5ECF-4663-9BCA-860708EFAE2A__SUBSTEPS_BQL_R2Y_BRB)
+
 ## Acknowledgements
 
 - **Author** - Roger Ford, Principal Product Manager
