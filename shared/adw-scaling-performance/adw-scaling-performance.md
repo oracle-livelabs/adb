@@ -6,6 +6,10 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Scale Your Autonomous Database](videohub:1_ls8fjm2p)
+
 ### Objectives
 
 -   Learn how to scale up an ADW or ATP service
@@ -39,8 +43,6 @@ Estimated Time: 10 minutes
 5.  When scaling finishes, the message will change to **AVAILABLE**. You may need to refresh the page to see the result of the scale operation.
 
     ![A refreshed database console page with updated OCPU count and storage.](./images/the-result-of-scaling.png " ")
-
-6. **IMPORTANT**: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 1 OCPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. If you are running this workshop in your own tenancy and you have sufficient OCPUs and storage, you can skip this step.
 
 ## Task 2: Performance and Concurrency Benefits of Dynamic Scaling
 

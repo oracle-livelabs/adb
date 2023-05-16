@@ -1,14 +1,19 @@
 # Enable Disaster Recovery Using Autonomous Data Guard or Backup-Based Disaster Recovery
+
+## Introduction
+
 In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database on Shared Infrastructure (ADB-S).
 - You will practice enabling Autonomous Data Guard (AuDG), using a standby database.
 - You will learn about Backup-Based Disaster Recovery, which uses a backup copy of your primary database.
 
-## Introduction
 Every enterprise today needs to protect its data with high availability, data protection, and disaster recovery. Businesses need a comprehensive set of services that create, maintain, manage, and monitor one or more standby databases to enable production databases to survive disasters and data corruption. While ADB already runs on highly available Exadata infrastructure, this feature further protects your databases against unforeseen disaster scenarios like earthquakes, fires, floods, major network outages etc. by automatically switching to a standby database when the primary database goes down.
 
 You can set up an Autonomous Data Guard standby database or use a backup database in the **same region** as the primary source database, or set up **cross-region** disaster recovery, running in a **different (remote) region** than the region of the primary source database.
 
 Estimated lab time: 20 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Enable Disaster Recovery Using Autonomous Data Guard or Backup-Based Disaster Recovery](videohub:1_gw8nupuq)
 
 ### Objectives
 
@@ -85,13 +90,15 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
 ## Task 1: Enable Autonomous Data Guard
 
-1. If you are not logged in to Oracle Cloud Console, log in and navigate to your **Autonomous Database details** page.
+1. *IMPORTANT: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 1 OCPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient OCPUs and storage, you can skip this step.*
 
-2. Scroll down to the **Resources** section and click **Disaster recovery**.
+2. If you are not logged in to Oracle Cloud Console, log in and navigate to your **Autonomous Database details** page.
+
+3. Scroll down to the **Resources** section and click **Disaster recovery**.
 
     ![Click Disaster recovery](./images/click-disaster-recovery.png)
 
-3. Note the display of the local backup copy that is one of your database's automatic daily backups. This is not a physical standby database, but simply a **backup copy** stored from the source (primary) database, which can be used to instantiate a new database at the time of switchover or failover. Backup-Based Disaster Recovery is examined in a later task. However, we want to enable Autonomous Data Guard, which will create a **standby database**, a replica of the primary database which will constantly and passively refresh (that is, replicate) data from the primary, which can be used in case of failure of the primary.
+4. Note the display of the local backup copy that is one of your database's automatic daily backups. This is not a physical standby database, but simply a **backup copy** stored from the source (primary) database, which can be used to instantiate a new database at the time of switchover or failover. Backup-Based Disaster Recovery is examined in a later task. However, we want to enable Autonomous Data Guard, which will create a **standby database**, a replica of the primary database which will constantly and passively refresh (that is, replicate) data from the primary, which can be used in case of failure of the primary.
 
     ![Note the listed backup copy](./images/note-the-backup-copy.png)
 
@@ -99,13 +106,13 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
     ![Click the 3-dot ellipsis symbol](./images/click-3-dot-ellipsis-symbol.png)
 
-4. The **Update disaster recovery type** dialog appears. The **Backup-based disaster recovery** button is selected by default. Instead, select the **Autonomous Data Guard** button and click **Submit**.
+5. The **Update disaster recovery type** dialog appears. The **Backup-based disaster recovery** button is selected by default. Instead, select the **Autonomous Data Guard** button and click **Submit**.
 
     >**Note**: Read the information about recovery time and recovery point objectives, and the informational note.
 
     ![Select the Autonomous Data Guard button and click Submit](./images/select-autonomous-data-guard-and-submit.png)
 
-5. The Autonomous Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
+6. The Autonomous Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
 
     >**Note**: While you provision a new standby database, the primary database is available for read/write operations. Enabling Autonomous Data Guard is non-blocking; there is no downtime on the primary database.
 
@@ -119,11 +126,11 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
     ![Examine the disaster recovery status after AuDG standby finishes provisioning](./images/disaster-recovery-status-of-audg-standby.png)
 
-6. You can create a total of two standby databases, one local and the other cross-region. You just enabled Autonomous Data Guard to create a local standby database. If your Oracle Cloud account has at least two regions, you can optionally create a second standby database that is cross-region.
+7. You can create a total of two standby databases, one local and the other cross-region. You just enabled Autonomous Data Guard to create a local standby database. If your Oracle Cloud account has at least two regions, you can optionally create a second standby database that is cross-region.
+
+    *Note: Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. Please skip these optional steps if you are running this workshop in a LiveLabs hosted sandbox environment or in an Always Free Database. Cross region standby databases are not yet supported in LiveLabs environments.*
 
     To perform this **optional step** of adding a second standby database that is cross-region, click **Add peer database**.
-
-    **Note:** Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. **Please skip these optional steps if you are running this workshop in a LiveLabs hosted sandbox environment or in an Always Free Database**. Cross region standby databases are not yet supported in LiveLabs environments.
 
     ![Click Add peer database](./images/click-add-peer-database.png)
 

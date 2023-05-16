@@ -53,7 +53,7 @@ Begin by creating a data pipeline to either load data or export data continuousl
      DBMS_CLOUD_PIPELINE.CREATE_PIPELINE(
         pipeline_name => 'MY_FIRST_PIPELINE',
         pipeline_type => 'LOAD',
-        description   => 'Load customer sales data from object store into a table'
+        description   => 'Load weather data from object store into a table'
     );
     END;
     /
@@ -62,7 +62,7 @@ Begin by creating a data pipeline to either load data or export data continuousl
 
 ## Task 2: Configure the data pipeline attributes
 
-Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a custsales CSV file that you will download and then upload to your object storage bucket. **CUSTSALES** will be the destination table in your autonomous database that your pipeline will load data into.
+Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a weather CSV file that you will download and then upload to your object storage bucket. **WEATHER** will be the destination table that you create in your autonomous database that your pipeline will load data into.
 
 1. Define the attributes for the data pipeline. The pipeline will import all data files of **CSV type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name).
 
@@ -80,8 +80,8 @@ Next, you will set the appropriate attributes for the data pipeline, such as the
        attributes => JSON_OBJECT(
                     'credential_name' VALUE 'OBJ_STORE_CRED',
                     'location' VALUE 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/namespace-string/b/mybucket/o/',
-                    'table_name' VALUE 'CUSTSALES',
-                    'format' VALUE '{"type": "json"}',
+                    'table_name' VALUE 'WEATHER',
+                    'format' VALUE '{"type": "csv"}',
                     'priority' VALUE 'HIGH', 'interval' VALUE '30') );
 
     END;
@@ -125,7 +125,7 @@ Before we activate your configured pipeline, let's test that it works. Call the 
     ```
     <copy>
     -- More details about the load operation in USER_LOAD_OPERATIONS.
-    SELECT   owner_name, type, status, start_time, update_time, status_table, rows_loaded, logfile_table, badfile_table
+    SELECT owner_name, type, status, start_time, update_time, status_table, rows_loaded, logfile_table, badfile_table
         FROM user_load_operations
         WHERE id = (SELECT operation_id
                    FROM user_cloud_pipelines
@@ -159,9 +159,21 @@ Before proceeding to Start your pipeline, you may use the `DBMS_CLOUD_PIPELINE.R
     </copy>
     ```
 
-## Task 5: Start the data pipeline
+## Task 5: Create the WEATHER table in the target Autonomous database
 
-Now that you have tested that your data pipeline is successfully configured, all you have left to do is simply start the pipeline.
+Before starting the data pipeline, create the WEATHER table in your target autonomous database that the data pipeline will load, when it detects data that you upload  to your object store.
+
+1. Run the following code snippet in your SQL worksheet:
+
+    ```
+    <copy>
+    CREATE TABLE WEATHER (location VARCHAR2(20), zipcode VARCHAR2(20), reported_date DATE, wind_avg NUMBER, precipitation NUMBER, snow NUMBER, snowdepth NUMBER, temp_max NUMBER, temp_min NUMBER);
+    </copy>
+    ```
+
+## Task 6: Start the data pipeline
+
+Now that you have tested that your data pipeline is successfully configured, and you have created the target WEATHER table in your autonomous database, all you have left to do is simply start the pipeline.
 
 Once your pipeline has been started, it is now running and since it is a load data pipeline, it will pick up new data files to load that have not been successfully processed yet, as they are moved into your object storage bucket.
 
@@ -180,39 +192,74 @@ It is important to note here that the load pipeline identifies, loads and keeps 
     </copy>
     ```
 
-## Task 6: Download data that you will later upload to object storage
+## Task 7: Download data that you will upload to object storage
 
-For this example, download a .CSV file containing customer sales information. In the next task, you will upload the data to your object storage bucket and test whether the pipeline automatically adds the data to your CUSTSALES table.
+For this example, download a .CSV file containing weather information. In the next task, you will upload the data to your object storage bucket and test whether the pipeline automatically adds the data to your WEATHER table.
 
 1. Copy and paste the following URL to your browser and press the **Enter** key on your keyboard. In the pop-up dialog, click **Save Link As…** to download the file to your computer.
 
     ```
     <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-12.csv
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/weather/weather-newark-airport.csv
     </copy>
     ```
 
 2. Make note of the folder location - you will be using this file in the next task.
 
-## Task 7: Upload the data to your object storage bucket
+## Task 8: Upload the data to your object storage bucket
 
-Now you upload the data to your object storage bucket. The pipeline should detect this new data, and automatically load it into your autonomous database.
+Now you upload the `weather-newark-airport.csv` file to your object storage bucket. The pipeline should detect this new data, and automatically load it into your autonomous database.
 
-1. Upload the `custsales-2020-12.csv` file to your storage bucket. For guidance, look back at the steps that you performed in Lab 4, Tasks 2 and 3 to upload a local file to your bucket.
+1. Navigate back to the Data Load main page by returning to the Database Actions Launchpad and in the **Data Studio** section, click **DATA LOAD**.
 
-## Task 8: Check that the data pipeline loaded the data into the database
+    ![Go to DB Actions](./images/navigate-back-to-data-load.png)
 
-When you uploaded your new customer sales data to your object store, the pipeline should have detected the new data and loaded it to your target autonomous database.
+2. Leave the default selections, **LOAD DATA** and **LOCAL FILE**, and click **Next**.
 
-1. Check that your new data from December of 2020 was loaded from your object store to the CUSTSALES table in your database. In a SQL Worksheet, run the following query to show 10 rows of data where the DAY_ID is the first day of December 2020:
+    ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png " ")
+
+3. The Local Files page enables you to drag and drop files to upload, or you can select files. Click **Select Files** and select `weather-newark-airport.csv` from the directory where you downloaded it.
+
+    ![Drag and drop or select the file.](./images/datatools-dataload-load-local-file.png " ")
+
+4. When the upload is complete, do not simply click the green arrow **Start** button to run the data load job, because we need to associate this file with
+
+
+
+
+Click the 3-dot ellipsis menu to the right of *customer-extension.csv* and click the **Settings** button labeled with a pencil symbol.
+
+    ![Update the data load job settings.](./images/click-settings-to-examine-data-load-job.png " ")
+
+5. A page opens for the local *customer-extension.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties.  Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types.
+
+    Update the table name to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
+
+    ![Examine the editor of the data load job.](./images/examine-data-load-job-editor.png " ")
+
+6. Click the green arrow **Start** button, and then click **Run** in the confirmation dialog.
+
+    ![Run the data load.](./images/run-the-data-load.png " ")
+
+7. When the load job finishes, a green check mark appears for each table. Click **Catalog** in the menu on the left.
+
+    ![Click Catalog in the menu on the left.](./images/click-catalog.png " ")
+
+8. The Catalog shows the *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION* tables have been successfully created. You can click a table name to see the data.
+
+    ![View the new table in the Catalog.](./images/view-new-table.png " ")
+
+    ![See the new table's data.](./images/see-new-table-data.png " ")
+
+## Task 9: Check that the data pipeline loaded the data into the database
+
+When you uploaded your new weather data to your object store, the pipeline should have detected the new data and loaded it to your target autonomous database.
+
+1. Check that your weather data was loaded from your object store to the WEATHER table in your database. In a SQL Worksheet, run the following query to show 10 rows of data in the WEATHER table:
 
     ```
     <copy>
-    SELECT *
-    from
-    (SELECT *
-      from CUSTSALES
-      WHERE DAY_ID = "12/1/2020")
+    SELECT * from WEATHER
     WHERE ROWNUM <=10;
     /
     </copy>
@@ -230,7 +277,7 @@ The following link provides more information about Oracle Data Pipelines:
 
 * **Author** - Rick Green, Principal Developer, Database User Assistance
 * **Contributor** Nilay Panchal, Principal Product Manager, Autonomous Database
-* **Last Updated By/Date** - Rick Green, February 2023
+* **Last Updated By/Date** - Rick Green, May 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

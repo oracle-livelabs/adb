@@ -17,6 +17,8 @@ Watch the video below for a quick walk-through of the lab.
 - This lab requires creation of an Oracle Analytics Cloud instance, or the use of an OAC instance provided by your instructor.
 - This lab requires completion of the Provision Autonomous Database lab in the Contents menu on the left.
 
+> **Note**: Oracle Analytics Cloud (OAC) is not available with Oracle Cloud Free Tier (Always Free), nor is it supported in Oracle LiveLabs Sandbox hosted environments. If you run this workshop using an Always Free database or LiveLabs Sandbox environment, you can view Labs 1 and 5 on provisioning and using OAC, and later practice these steps on Oracle Autonomous Databases in your organization's tenancy.
+
 ## Task 1: Create a view by executing this script in SQL Worksheet
 
 Run a SQL script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance.

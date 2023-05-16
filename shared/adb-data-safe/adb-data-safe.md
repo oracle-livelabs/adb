@@ -8,6 +8,9 @@ You can do this lab in Oracle's free tier with trial credits, in your own tenanc
 
 Estimated Lab Time: 35 minutes (25 minutes if you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment)
 
+Watch the video below for a quick walk-through of the lab.
+[Secure Your Data Using Oracle Data Safe](videohub:1_ylchywlp)
+
 ### About Oracle Data Safe
 
 Oracle Data Safe is Oracle’s platform for securing data in databases. As a native Oracle Cloud Infrastructure service, Oracle Data Safe lets you assess the security of your database configurations, find your sensitive data, mask that data in non-production environments, discover the risks associated with database users, and monitor database activity.
@@ -37,7 +40,7 @@ This lab assumes you have:
 
 ## Task 1: Create a user group and add an Oracle Cloud account to the group
 
-> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.
+*Note: If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.*
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 

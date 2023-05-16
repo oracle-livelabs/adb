@@ -14,7 +14,12 @@ The ADB user interface provides dashboards to monitor the real-time and historic
 
 Estimated Lab Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Monitor Your Autonomous Database Instance using the Cloud Console](videohub:1_q9gd2fnw)
+
 ### Video Preview
+
 Watch a video demonstration of monitoring an Oracle Autonomous Database.
 
 [](youtube:uA6X7bnvaFs)
