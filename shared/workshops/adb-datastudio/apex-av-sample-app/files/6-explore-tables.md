@@ -52,7 +52,7 @@ FROM
 </copy>
 ~~~
 
-The SEARCH\_GENRE\_DIM table contains a list of movie genre.  In the MovieStream data set, this was the genre that user searched on while browsing for movies.
+The SEARCH\_GENRE\_DIM table contains a list of movie genre.  In the MovieStream data set, this was the genre that the user searched on while browsing for movies.
 
 ~~~SQL
 <copy>
