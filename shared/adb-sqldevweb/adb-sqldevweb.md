@@ -6,6 +6,9 @@ In this lab, you will explore the provided sample data sets that come with your 
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Connect an ADB Instance SQL Worksheet](videohub:1_28r1706y)
+
 ### Before you begin
 
 This lab uses SQL Worksheet, one of the features of the Database Actions web-based interface for Oracle Autonomous Database.

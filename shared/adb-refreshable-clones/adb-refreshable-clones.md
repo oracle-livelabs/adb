@@ -28,6 +28,10 @@ This lab shows you how to create a refreshable clone and refresh it with updated
 
 Estimated Lab Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Create Refreshable Clones in Autonomous Database](videohub:1_f2xmkhp9)
+
 ### Objectives
 
 In this lab, you'll:
