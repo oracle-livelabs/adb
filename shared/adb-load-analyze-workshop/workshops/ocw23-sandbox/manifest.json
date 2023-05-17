@@ -74,6 +74,12 @@
         "filename": "/common/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
     },
     {
+        "title": "Lab 9 (optional): Create Data Pipelines for Continuous Data Import and Export",
+        "description": "Create Oracle Data Pipelines for continuous data import and export",
+        "type": "livelabs",
+        "filename": "../../create-data-pipelines/create-data-pipelines.md"
+    },
+    {
     "title": "Need Help?",
     "description": "Solutions to Common Problems and Directions for Receiving Live Help",
     "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
