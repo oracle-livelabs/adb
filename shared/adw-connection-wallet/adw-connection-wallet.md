@@ -10,6 +10,9 @@ Estimated Time: 20 minutes
 
 *Note: While this lab uses ADW, the steps are identical for connecting to an autonomous database in ATP.*
 
+Watch the video below for a quick walk-through of the lab.
+[Connect SQL Developer Securely With or Without a Connection Wallet](videohub:1_jszjfjm1)
+
 ### Objectives
 
 - Learn how to connect to your Autonomous Data Warehouse with Oracle SQL Developer, with and without using a connection wallet
