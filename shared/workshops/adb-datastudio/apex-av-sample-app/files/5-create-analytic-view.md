@@ -138,10 +138,14 @@ CREATE OR REPLACE ANALYTIC VIEW movie_sales_av
 You can view the analytic view in the Database Actions Analysis application.
 
 1.  Return to the Database Actions Launchpad
-1. Choose  **DATA ANALYSIS** application in the **Data Studio** section.
-1.  Using the virtual ellipsis (...)  choose Analyze.
+1. Choose **DATA ANALYSIS** application in the **Data Studio** section.
+1.  Using the vertical ellipsis (...)  choose Analyze.
+
+![Start Analysis](../images/5-start-analyze.png)
 
 The basic structure of the analytic view is displayed in the tree on the left side.  You will see three hierarchies, columns in the hierarchies, and four measures.  A report is displayed on the right side.
+
+![Start Analysis](../images/5-analysis-report.png)
 
 Feel free to experiment with the Analysis application for a few minutes.
 
@@ -151,6 +155,8 @@ You can also view the analytic view in the editor.
 1.  Using the virtual ellipsis (...)  choose Edit.
 
 **Do not make changes to the analytic view.**
+
+![Analytic View editor](../images/5-analysis-edit.png)
 
 You may now **proceed to the next lab**
 
