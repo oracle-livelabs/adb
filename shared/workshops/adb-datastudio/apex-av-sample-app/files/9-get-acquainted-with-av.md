@@ -33,7 +33,7 @@ FROM
 ORDER BY
   hier_order;
   </copy>
-  ~~~
+~~~
 
 ## Task 2 - Select Attribute Columns at the Day Level
 
@@ -116,7 +116,7 @@ These columns a very useful for navigating hierarchies and creating lists of val
 - PARENT\_UNIQUE\_NAME returns the primary key of the member parent.
 - PARENT\_LEVEL returns the level name of the member's parent.
 
-## Important - Do not SELECT * FROM Analytic Views
+**Important - Do not SELECT * FROM Analytic Views**
 
 Your first thought might be to SELECT * the analytic view.  Resist that thought!
 

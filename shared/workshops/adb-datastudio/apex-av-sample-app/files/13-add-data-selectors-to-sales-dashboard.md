@@ -30,14 +30,14 @@ In this task, you will add a Popup LOV that allows the user to select time perio
 - **Region:  No Parent**
 - **Position:  Body**
 - **Column Span: 3**
-1. In the **Default** section set:
+5. In the **Default** section set:
 - **Type**:  **Static**
 - **Static Value**:  **MONTH**
 
 ![P1_TIME_LEVEL item](../images/13-p1-time-level-position.png)
 
-5.  In **List of Values** choose **SQL Query**.
-5.  Replace the **SQL Query** with the following query.
+6.  In **List of Values** choose **SQL Query**.
+6.  Replace the **SQL Query** with the following query. Note that this query selected from a data dictionary view. This view will return the levels of all hierarchies in the current schema.
 
 ~~~SQL
 <copy>
@@ -53,9 +53,9 @@ ORDER BY
 </copy>
 ~~~
 
-4. In the **Settings** section set **Display Extra Values** to **off**..
-4. Set **Display Null Value** to **off**.
-4.  To enable viewing the session state of this item,  **Store value encrypted in session state** to **off**.
+8. In the **Settings** section set **Display Extra Values** to **off**..
+8. Set **Display Null Value** to **off**.
+8.  To enable viewing the session state of this item,  **Store value encrypted in session state** to **off**.
 
 ### Task 3 - Add a Dynamic Action to the P2_TIME_LEVEL item.
 
@@ -78,7 +78,7 @@ In this task, you will add a Popup LOV that allows the user to choose a geograph
 - **Region:  No Parent**
 - **Position:  Body**
 - **Column Span: 3***
-1. In the **Default** section set:
+4. In the **Default** section set:
 - **Type**:  **Static**
 - **Static Value**:  **[ALL].[ALL]**
 
@@ -86,9 +86,9 @@ Note: **[ALL].[ALL]** is the key (MEMBER_UNIQUE_NAME) of the grant total hierarc
 
 ![P1_GEOGRAPHY item](../images/13-p1-geography-position.png)
 
-The query selects the hierarchy member-friendly name (MEMBER\_NAME) and primary key value (MEMBER\_UNIQUE\_NAME) at the  ALL, CONTINENT, and COUNTRY levels.
+The query selects the hierarchy member-friendly name (MEMBER\_NAME) and primary key value (MEMBER\_UNIQUE\_NAME) at the  ALL, CONTINENT, and COUNTRY levels. This query can be used with any hierarchy.
 
-4.  Enter the following **SQL Query**.
+5.  Enter the following **SQL Query**.
 
 ~~~SQL
 <copy>
@@ -104,9 +104,9 @@ ORDER BY
 </copy>
 ~~~
 
-5. In the **Settings** section set **Display Extra Values** to **off**..
-5. Set **Display Null Value** to **off**.
-5.  To enable viewing the session state of this item,  **Store value encrypted in session state** to **off**.
+6. In the **Settings** section set **Display Extra Values** to **off**..
+6. Set **Display Null Value** to **off**.
+6.  To enable viewing the session state of this item,  **Store value encrypted in session state** to **off**.
 
 Feel free to run the page and test the Geography selector.
 
@@ -120,7 +120,7 @@ A dynamic action will submit and refresh the page.
 
 ## Task 6 - Update the Sales Chart Query
 
-Update the query used by the Sales chart to use the Time Level and Geography selectors.  The query will select time periods at the chosen level and geography for the chosen geography member.
+Update the query used by the Sales chart to use the Time Level and Geography selectors.  The query will select time periods at the chosen level and geography for the chosen geography member. Note that this query follows the familary SELECT ... FROM ... WHERE pattern.  Joins and GROUP BY are replaced by the HIERARCHIES clause.
 
 1.  Replace the SQL Query used by the Sales chart with the following query:
 
@@ -147,7 +147,7 @@ ORDER BY
 
 ## Task 7 - Update the Sales Change Prior Period Chart Query
 
-The query to the Sales Change Prior Period chart will also use the Time Level and Geography selections.
+The query to the Sales Change Prior Period chart will also use the Time Level and Geography selections.  Note that this query following the same pattern as the previous pattern, but uses the USING form of FROM and ADD MEASURES.
 
 1.  Replace the SQL Query used by the Sales chart with the following query:
 
@@ -177,7 +177,7 @@ ORDER BY
 
 ## Task 8 - Update the Sales Percent Change Year Ago Chart Query
 
-The query to the Sales Percent Change Year Ago chart will also use the Time Level and Geography selections.  The geography value is used to select the children of the selected geography.  Note that the filter uses the PARENT_UNIQUE_NAME column.
+The query to the Sales Percent Change Year Ago chart will also use the Time Level and Geography selections.  The geography value is used to select the children of the selected geography.  Again, the same query pattern is used.  The filter uses the PARENT_UNIQUE_NAME column which will result in the query returning the children of the parent hieararchy member.
 
 1.  Replace the SQL Query used by the Update the Sales Percent Change Year Ago chart with the following query:
 
@@ -209,7 +209,7 @@ ORDER BY
 
 ## Task 9 - Update the Genre Share Chart Query
 
-The query to the Genre Share chart will also use the Time Level and Geography selections.  The geography value is used to select the children of the selected geography.  Note that the filter uses the PARENT_UNIQUE_NAME column.
+The query to the Genre Share chart will also use the Time Level and Geography selections.  The geography value is used to select the children of the selected geography.  This query includes a SHARE calculation. SHARE calculations return the ration of the current member to another member, in this case the ALL member (that is, the grand total).
 
 1.  Replace the SQL Query used by the Genre Share chart with the following query:
 

@@ -66,27 +66,33 @@ In this task, you will create a new application.  Feel free to choose a differen
 1. Choose **New Application**
 1. Choose **Add Page**.
 1. Choose **Dashboard**.
-1. Set up the dashboard as follows.
+
+![Choose Dashboard Page](../images/11-add-page-dashboard.png)
+
+6. Set up the dashboard as follows.
 - Provide a **Page Name**, for example _Sales Dashboard_
 - Choose **Advanced** and **Set as home page**
 - Chart 1: **Name: Sales, Type:  Line**
 - Chart 2: **Name: Sales Change Prior Period, Type: Bar**
 - Chart 3: **Name: Sales Percent Change Year Ago, Type: Bar**
 - Chart 4: **Name: Sales Share of Genre**
-![Choose Dashboard Page](../images/11-add-page-dashboard.png)
-1. Press **Add Page**
-1. Choose an Icon and press **Save Icon**.
-1. Provide a **Name** for the application, for example _MovieStream_.
-1. Choose an appearance. The example in this lab uses:
+
+![Add Dashboard Page](../images/11-add-dashboard-page.png)
+
+7. Press **Add Page**
+7. Choose an Icon and press **Save Icon**.
+7. Provide a **Name** for the application, for example _MovieStream_.
+7. Choose an appearance. The example in this lab uses:
 - **Redwood Light**
 - **Top Menu**
-12. Press **Save Changes**.
-12. Press the **Create Application** button.
-12. **Run Application**
+11. Press **Save Changes**.
+11. Press the **Create Application** button.
+11. **Run Application**
 
 Congratulations, you are now the proud owner of four generic graphs!
 
-![New Dashboard PAge](../images/11-new-dashboard-page.png)
+![New Dashboard Page](../images/11-new-dashboard-page.png)
+
 
 You may now **proceed to the next lab** and start making the graphs come to life!
 

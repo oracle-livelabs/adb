@@ -59,19 +59,19 @@ Feel free to set any other attributes according to your preferences.
 
 Next, map the series to the data source.
 
-1. Select **Series 1** within this chart.
-1. As the **Source** choose **Location:  Region Source**.
-1.  Set Column Mappings
+4. Select **Series 1** within this chart.
+4 As the **Source** choose **Location:  Region Source**.
+4.  Set Column Mappings
 - Label: **TIME**
 - Value: **SALES** 
 
 To ensure that all time periods will be displayed:
 
-1. In the **Performance** section set the **Maximum Rows to Process** to **1000**.
+7. In the **Performance** section set the **Maximum Rows to Process** to **1000**.
 
 View the result:
 
-1. **Run** the page.
+8. **Run** the page.
 
 ![Sales Chart](../images/12-sales-chart.png)
 
@@ -114,19 +114,19 @@ Feel free to set any other attributes according to your preferences.
 
 Next, map the series to the data source.
 
-1. Select **Series 1** within this chart.
-1. As the **Source** choose **Location:  Region Source**.
-1.  Set Column Mappings
+4. Select **Series 1** within this chart.
+4. As the **Source** choose **Location:  Region Source**.
+4.  Set Column Mappings
 - Label: **TIME**
-- Value: **SALES_CHG_PRIOR_PERIOD** 
+- Value: **SALES\_CHG\_PRIOR_PERIOD** 
 
 To ensure that all time periods will be displayed:
 
-1. In the **Performance** section set the **Maximum Rows to Process** to **1000**.
+7. In the **Performance** section set the **Maximum Rows to Process** to **1000**.
 
 View the result:
 
-1. **Run** the page.
+8. **Run** the page.
 
 ![Sales Change Prior Chart](../images/12-sales-change-prior-period-chart.png)
 
@@ -173,25 +173,25 @@ Feel free to set any other attributes according to your preferences.
 
 Next, map the series to the data source.
 
-1. Select **Series 1** within this chart.
-1. As the **Source** choose **Location:  Region Source**.
-1.  Set Column Mappings.
+4. Select **Series 1** within this chart.
+4. As the **Source** choose **Location:  Region Source**.
+4.  Set Column Mappings.
 - Label: **TIME**
 - Value: **SALES\_PCT\_CHG\_YEAR\_AGO** 
 
 To ensure that all time periods will be displayed:
 
-1. In the **Performance** section set the **Maximum Rows to Process** to **1000**.
+7. In the **Performance** section set the **Maximum Rows to Process** to **1000**.
 
 Format the y-axis.
 
-1. In **Value** section, set:
+8. In **Value** section, set:
 - **Format** to **Decimal**.
-- **Decimal Places** to **2*.
+- **Decimal Places** to **2**.
 
 View the result:
 
-1. **Run** the page.
+9. **Run** the page.
 
 ![Sales Percent Change Year Ago](../images/12-sales-percent-change-year-ago.png)
 
@@ -237,21 +237,21 @@ Feel free to set any other attributes according to your preferences.
 
 Next, map the series to the data source.
 
-1. Select **Series 1** within this chart.
-1. As the **Source** choose **Location:  Region Source**.
-1.  Set Column Mappings
+4. Select **Series 1** within this chart.
+4. As the **Source** choose **Location:  Region Source**.
+4.  Set Column Mappings
 - Label: **GENRE**
 - Value: **SALES\_SHARE\_GENRE** 
 
 Format the y-axis.
 
-1. In **Value** section, set:
+7. In **Value** section, set:
 - **Format** to **Decimal**.
-- **Decimal Places** to **2*.
+- **Decimal Places** to **2**.
 
 View the result:
 
-1. **Run** the page.
+8. **Run** the page.
 
 ![Sales Share of Genre](../images/12-sales-share-of-genre.png)
 

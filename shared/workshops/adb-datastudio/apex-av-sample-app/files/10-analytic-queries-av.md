@@ -58,7 +58,7 @@ ORDER BY
   , search_genre.hier_order;
 
 </copy>
-~~~~
+~~~
 
 ## Task 2 - Aggregate Data to Quarter, Country, and Search Genre
 
@@ -89,7 +89,7 @@ ORDER BY
   , geography.hier_order
   , search_genre.hier_order;
   </copy>
-  ~~~
+~~~
 
 The query same query template can return data at multiple levels of aggregation.  In this example, YEAR and QUARTER.  Once again, notice that the same query template is used.
 
