@@ -23,14 +23,13 @@
             "filename": "./../../json-mongo/json-mongo-ocw23.md"
         },
         {
-            "title": "Lab 3: Interact with JSON Documents through Database Actions",
+            "title": "Lab 3: Interact with your Mongo collections interchangeably through Mongo APIs and Oracle",
             "filename": "../../dbactions/dbactions-ocw23.md"
         },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-        }
-        
+        }        
     ]
 }

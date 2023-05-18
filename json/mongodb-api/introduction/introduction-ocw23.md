@@ -26,7 +26,6 @@ You can complete this entire workshop using your web browser and a command or sh
 
 This workshop consists of multiple 'labs' - each describing one aspect or feature. This lab has been designed for 19c AJD database but should also work on 21c AJD database and these concepts are also applicable to on-premise versions.
 
-Estimated Lab Time: 60 minutes
 
 Watch this quick video to know why JSON in Oracle Autonomous Database is awesome.
 
@@ -81,7 +80,7 @@ Now you know what JSON is and also why so many people love it. Enough theory for
 In this workshop, you will explore: 
 *	How to use our sandbox environment with a pre-installed Oracle Database 23c Free environment
 *	How to install MongoDB Shell and Mongo tools on a linux environment
-*   How to connect to Oracle Database 23c Free from MongoDB Shell and create a collection
+*   How to connect to Oracle Database 23c Free from MongoDB Shell and work with collections
 *   How to access the MongoDB collection from JSON Workshop and SQL
 
 ### Prerequisites
