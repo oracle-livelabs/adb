@@ -20,7 +20,7 @@ This lab requires the completion of the following labs/task from the **Contents*
 
 * **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**.
 * **Lab 4: Link to Data in Public Object Storage Buckets > Task 2: Link to Data in Public Object Storage Buckets and Create Tables**.
-* An Oracle Object Storage bucket. If you don't have one, see [Putting Data into Object Storage](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/addingbuckets.htm#Putting_Data_into_Object_Storage).
+* An Oracle Object Storage bucket. If you don't have one, see [Putting Data into Object Storage](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/addingbuckets.htm#Putting_Data_into_Object_Storage) on how to create a bucket.
 
 ## Task 1: Navigate to the SQL Worksheet
 
