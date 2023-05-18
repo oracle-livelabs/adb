@@ -14,7 +14,12 @@ The ADB user interface provides dashboards to monitor the real-time and historic
 
 Estimated Lab Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Monitor Your Autonomous Database Instance using the Cloud Console](videohub:1_q9gd2fnw)
+
 ### Video Preview
+
 Watch a video demonstration of monitoring an Oracle Autonomous Database.
 
 [](youtube:uA6X7bnvaFs)
@@ -159,6 +164,8 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
 6.  In addition to these service metrics, you can also perform queries on the metrics by using **Metrics Explorer**, creating **Alarms**, and creating **Health Checks**, to ensure that users will become immediately aware of any availability issues.
 
     ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.jpg " ")
+
+You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 

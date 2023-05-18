@@ -1,0 +1,51 @@
+{
+    "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle Autonomous Database",
+      "help": "livelabs-help-db_us@oracle.com",
+      "tutorials": [
+        {
+          "title": "Introduction",
+          "description": "Introduction to Data Studio",
+          "filename": "../../0-introduction-short.md"
+        },
+        {
+          "title": "Get Started",
+          "description": "Login to Oracle Cloud",
+          "filename": "../../cloud-login-livelabs-short.md"
+        },
+        {
+          "title": "Lab 1: Understand data analysis requirements",
+          "description": "Look at a fictitious data analysis project for requirements",
+          "type": "livelabs",
+          "filename": "../../4-understand-requirements-short.md"
+        },
+        {
+          "title": "Lab 2: Transform and prepare data",
+          "description": "Use Data Transforms to transform and prepare data",
+          "type": "livelabs",
+          "filename": "../../7-transform-data-short.md"
+        },
+        {
+          "title": "Lab 3: Analyze data",
+          "description": "Use Data Analysis to analyze data",
+          "type": "livelabs",
+          "filename": "../../8-analyze-data.md"
+        },
+        {
+          "title": "Lab 4: Explore data insights",
+          "description": "Use Data Insight to find hidden patterns",
+          "type": "livelabs",
+          "filename": "../../9-insight-in-data.md"
+        },
+        {
+          "title": "Lab 5: Wrap up",
+          "description": "Wrap up and clean demo data",
+          "type": "livelabs",
+          "filename": "../../10-wrap-up-short.md"
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+      ]
+  }

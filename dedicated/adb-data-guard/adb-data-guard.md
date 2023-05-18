@@ -8,18 +8,19 @@ Estimated Time: 45 minutes
 ### Objectives:
 
 As a fleet administrator:
-1.  Deploy an Autonomous Container Database (ACD) onto an Cloud Exadata Infrastructure (CEI) with Autonomous Data Guard (AuDG) enabled.
+1.  Deploy an Autonomous Container Database (ACD) onto an Autnomous VM Cluster (AVMC) with Autonomous Data Guard (AuDG) enabled.
 2.  Review the AuDG setup and understand options and monitoring available.
 
 As a database user, DBA or application developer:
 1.  Deploy an autonomous transaction processing database inside of the Autonomous Data Guard enabled ACD.
 2.  Build and configure Swingbench on the primary ADB and test switchover and failover scenarios.
 3.  Reinstate a failed over AuDG database.
+4.  Convert a physical standby to snapshot standby and vice versa.
 
 
 ### Required Artifacts
 
-- An Oracle Cloud Infrastructure account with two Cloud Exadata Infrastructure (CEI) created in the tenancy (primary and standby)
+- An Oracle Cloud Infrastructure account with two AVMCs created in the tenancy (primary and standby)
 
 
 ## Task 1: Create an ADG enabled ACD
@@ -43,11 +44,13 @@ As a database user, DBA or application developer:
     - In the Maximum availability mode, automatic failover guarantees zero data loss.
     - In the Maximum performance mode, automatic failover ensures that the standby database does not fall behind the primary database beyond the value specified for Fast Start failover lag limit. By default, Fast Start failover lag limit is set to 30 seconds and is applicable only to the Maximum performance mode. In this case, automatic failover is only possible when the configured data loss guarantee can be upheld.
 
+- Edit the Fast Start failover lag limit value as needed. 19.18 and higher ACD versions support lag limit from 5 seconds to 3600 seconds. Older versions support a minimum value of 30 seconds.
+
 ***Maximum Performance: Provides the highest level of data protection that is possible without affecting the performance of a primary database. This is the default protection mode.***
 
 ***Maximum Availability: Provides the highest level of data protection that is possible without compromising the availability of a primary database.***
 
-  ![This image shows the result of performing the above step.](./images/create-audg-acd2.png " ")
+  ![This image shows the result of performing the above step.](./images/createaudgnew.png " ")
 
 ***Note: If you select modify maintenance and click custom schedule you will see that it is possible to have the standby ACD patched up to 7 days before the primary for an extra buffer of patch verification time.***
 
@@ -173,13 +176,44 @@ As a database user, DBA or application developer:
 
     ![This image shows the result of performing the above step.](./images/reinstate3.png " ")
 
+## Task 7: Convert to snapshot standby
+
+- Log on to the cloud console and navigate to your standby ACD. On the standby ACD details page you will see an option to "Convert to standby". Click on it.
+
+![This image shows the result of performing the above step.](./images/snapshotstandby1.png " ")
+
+- You will be presented with two options while converting the database to snapshot mode. 
+
+        - Use new database services: New snapshot standby services will be created in your standby database that you will use to connect to it.
+        
+        - Use primary database services: Databases services that are active on primary ACD will be enabled on the snapshot standby ACD also. Extreme caution must be taken while using the primary services.
+    Select your option and click convert. 
+
+![This image shows the result of performing the above step.](./images/snapshotstandby2.png " ")
+
+- Once the standby database is converted to snapshot standby database, you will see a new pill at the top of the ACD details page highlighting the database mode. You will also see a warning message about snapshot standby database reverting to physical standby after 7 days. 
+
+![This image shows the result of performing the above step.](./images/snapshotstandby3.png " ")
+
+## Task 8: Convert to physical standby
+
+- Log on to the cloud console and navigate to your standby ACD. If your standby ACD is in snapshot standby mode, then you will see an option to "Convert to physical standby". Click on it.
+
+![This image shows the result of performing the above step.](./images/snapshotstandby3.png " ")
+
+- You will receive a warning that converting your snapshot standby to a physical standby will discards all local updates to your snapshot standby, and applies data from your primary database. Click on Convert.
+
+![This image shows the result of performing the above step.](./images/snapshotstandby4.png " ")
+
+Once the conversion to physical standby is complete, the pill at the top of the ACD will change back to standby mode. 
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 *Congratulations! You successfully built and tested using the switchover and failover functionality of Autonomous Data Guard!*
 
-- **Author** - Jeffrey Cowen
-- **Last Updated By/Date** - Jeffrey Cowen, March 2022
+- **Author** - Jeffrey Cowen, Ranganath S R
+- **Last Updated By/Date** - Ranganath S R, Feb 2023
 
 ## See an issue or have feedback?
 Please submit feedback [here](https://apexapps.oracle.com/pls/apex/f?p=133:1:::::P1_FEEDBACK:1).   Select 'Autonomous DB on Dedicated Exadata' as workshop name, include Lab name and issue / feedback details. Thank you!

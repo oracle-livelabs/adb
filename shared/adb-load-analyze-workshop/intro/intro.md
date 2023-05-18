@@ -33,17 +33,19 @@ In this workshop, we'll start with two key components of MovieStream's architect
 
 This workshop requires an Oracle Cloud account. You may use your existing account or create one in the following lab.
 
+> **Note**: Oracle Analytics Cloud (OAC) is not available with Oracle Cloud Free Tier (Always Free), nor is it supported in Oracle LiveLabs Sandbox hosted environments. If you run this workshop using an Always Free database or LiveLabs Sandbox environment, you can view Labs 1 and 5 on provisioning and using OAC, and later practice these steps on Oracle Autonomous Databases in your organization's tenancy.
+
 **Let's begin! If you need to create an account, please click Get Started in the Contents menu on the left. Otherwise, if you have an existing account, click "Lab 1: Provision Autonomous Database".**
 
 ## Want to Learn More About Autonomous Database?
 
-- <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html" target="\_blank">Oracle Autonomous Data Warehouse Documentation</a>
-- <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html" target="\_blank">Additional Autonomous Data Warehouse Tutorials</a>
+- [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
+- [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
 
 - **Authors** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance; Marty Gubar, ADB Product Management
-- **Last Updated By/Date** - Richard Green, November 2022
+- **Last Updated By/Date** - Richard Green, March 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

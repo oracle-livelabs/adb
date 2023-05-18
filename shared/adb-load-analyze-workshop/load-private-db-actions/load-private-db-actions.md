@@ -53,7 +53,7 @@ In OCI Object Storage, a bucket is the terminology for a container of files.
 
     ![Select Storage and then Buckets from the left navigation window in the Oracle Cloud homepage.](images/select-storage-then-buckets.png " ")
 
-    To learn more about the OCI Object Storage, refer to its <a href="https://docs.us-phoenix-1.oraclecloud.com/Content/GSG/Tasks/addingbuckets.htm" target="\_blank">documentation</a>.
+    To learn more about the OCI Object Storage, refer to its [its documentation](https://docs.us-phoenix-1.oraclecloud.com/Content/GSG/Tasks/addingbuckets.htm).
 
 2. You should now be on the **Object Storage & Archive Storage** page. <if type="livelabs">Choose the LiveLabs compartment you were assigned, and click **Create Bucket**:</if><if type="freetier">Choose any compartment to which you have access. In this example, a **training** compartment is chosen. Click **Create Bucket**:</if>
 
@@ -227,7 +227,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     > **Note:** You do not need to specify anything other than the list of columns when creating tables in the SQL scripts. You can use primary keys and foreign keys if you want, but they are not required.*
 
-4. Download <a href="./files/load_data_without_base_url_v3.txt" target="\_blank">**this code snippet**</a> to a text editor, for copying the data in the `potential_churners.csv` file you uploaded to the object store bucket, to the target `potential_churners` table you just created in your autonomous database.
+4. Download [this code snippet](./files/load_data_without_base_url_v3.txt) to a text editor, for copying the data in the `potential_churners.csv` file you uploaded to the object store bucket, to the target `potential_churners` table you just created in your autonomous database.
 
 5. In the code snippet, after `define file_uri_base =`, replace the example URL with the real object store base URL you copied in Task 4. The top of the file should look similar to the example below:
 
@@ -306,6 +306,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
     ![Paste the code and click Run Script.](images/query-results-intentionally-using-wrong-format.png " ")
 
 3. If you run select * from genre_debug; the result will show that no rows were loaded. What happened? Run the following query to see the load that errored out.
+
     ```
     <copy>select * from user_load_operations where status='FAILED';</copy>
     ```
@@ -368,7 +369,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     ![View the results of successful load.](./images/view-data-loaded-in-genre-debug.png " ")
 
-9. To learn more about how to specify file formats, delimiters, reject limits, and more, review the <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html" target="\_blank"> Autonomous Database Supplied Package Reference </a> and <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703" target="\_blank"> DBMS_CLOUD Package Format Options </a>
+9. To learn more about how to specify file formats, delimiters, reject limits, and more, review the [Autonomous Database Supplied Package Reference](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html) and [DBMS_CLOUD Package Format Options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703).
 
 Please *proceed to the next lab*.
 
