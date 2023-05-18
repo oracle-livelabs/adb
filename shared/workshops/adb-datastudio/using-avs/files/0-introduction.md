@@ -10,7 +10,7 @@ The Data Studio Analysis tool generates all the DDL needed to create Analytic Vi
 
 ### About Analytic Views
 
-An Analytic View is a type of view in the Oracle Database that allows users to perform complex queries and calculations on data stored in one or more tables. These views provide a higher level of abstraction over the underlying data, allowing users to access and analyze the data in a more meaningful way. They are typically used in business intelligence and data warehousing applications, and can be based on a single table or multiple tables joined together.
+An Analytic View is a type of view in the Oracle Database that allows users to perform complex queries and calculations on data stored in one or more tables. These views provide a higher level of abstraction over the underlying data, allowing users to access and analyze the data in a more meaningful way. They are typically used in business intelligence and data warehousing applications. For the application developers, analytic views can simplify SQL generation and calculation expressions.
 
 ### Objectives
 
