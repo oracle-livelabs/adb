@@ -19,7 +19,10 @@ In this lab, we will show you how to do the following:
 
 ### Prerequisites
 
-* The completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab requires the completion of the following labs/task from the **Contents** menu on the left:
+
+* **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**.
+* **Lab 5: Link Data from Private Object Storage Buckets > Task 6: Define a Cloud Location and Create a Credential**.
 
 ## Task 1: Navigate to the SQL Worksheet
 

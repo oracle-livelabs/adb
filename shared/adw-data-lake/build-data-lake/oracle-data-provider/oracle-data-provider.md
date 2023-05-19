@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table (internal or external) from your ADW instance to a **Parquet** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
+In this lab, you will use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table (internal or external) from your ADW instance to a **`Parquet`** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
 
 Estimated Time: 5 minutes
 
@@ -12,11 +12,11 @@ In this lab, you will:
 
 * Navigate to the SQL Worksheet.
 * Use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table from your ADW instance to your Oracle Object Storage bucket.
-* Navigate to the Object Storage bucket to view the newly exported Parquet file.
+* Navigate to the Object Storage bucket to view the newly exported `Parquet` file.
 
 ### Prerequisites
 
-This lab requires the completion of the following labs/task from the **Contents** menu on the left:
+This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
 * **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**.
 * **Lab 4: Link to Data in Public Object Storage Buckets > Task 2: Link to Data in Public Object Storage Buckets and Create Tables**.
@@ -36,13 +36,13 @@ This lab requires the completion of the following labs/task from the **Contents*
 
 ## Task 2: Export a Table as a Parquet File to an Object Storage Bucket
 
-1. Export the **PIZZA\_LOCATIONS** table from your ADW instance to a **Parquet** file in a private (or public) Object Storage bucket of your choice. Provide the location of your OCI Object Storage bucket using the Native URI format as follows. _**Note:** You need to use your own **`region name`**, **`tenancy name` (namespace)**, **`Object Storage bucket name`**, and the **`filename`** that will be created_.
+1. Export the **`PIZZA_LOCATIONS`** table from your ADW instance to a **`Parquet`** file in a private (or public) Object Storage bucket of your choice. Provide the location of your OCI Object Storage bucket using the Native URI format as follows. _**Note:** You need to use your own **`region`** name, **`tenancy (namespace)`** name, **`bucket`** name, and the **`filename`** that will be created_.
 
     ```
     https://objectstorage.region.oraclecloud.com/n/namespace-string/b/bucket/o/filename
     ```
 
-2. Copy and paste the following code into your SQL Worksheet. Replace the values of the _**`credential_name`**_ and _**`file_uri_list`**_ with your own values. The **`credential_name`** is the name of the credential to access the Cloud Object Storage bucket. You created this credential in **Lab 5 > Task 6**. The **`format`** parameter specifies to export the results of the query specified in the `query` parameter as Parquet file. Don't provide the extension of the Parquet file, **`.parquet`**, in the **URI**. It will be automatically appended to the file name when it gets created. Next, click the **Run Script** icon in the Worksheet toolbar.
+2. Copy and paste the following code into your SQL Worksheet. The **`credential_name`** is the name of the credential to access your Cloud Object Storage bucket where the file will be exported. You created this credential in **Lab 5 > Task 6**. Replace the **`file_uri_list`** value with your own value. The **`format`** parameter values indicates that the results of the query you specify in the **`query`** parameter will be exported as a `Parquet` file. Don't provide the **`.parquet`** extension for the file in the **URI**. It will be automatically appended to the file name when it gets created. Next, click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
