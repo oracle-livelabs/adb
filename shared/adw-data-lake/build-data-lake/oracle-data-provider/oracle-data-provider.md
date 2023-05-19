@@ -42,7 +42,7 @@ This lab requires the completion of the following labs/tasks from the **Contents
     https://objectstorage.region.oraclecloud.com/n/namespace-string/b/bucket/o/filename
     ```
 
-2. Copy and paste the following code into your SQL Worksheet. The **`credential_name`** is the name of the credential to access your Cloud Object Storage bucket where the file will be exported. You created this credential in **Lab 5 > Task 6**. Replace the **`file_uri_list`** value with your own value. The **`format`** parameter values indicates that the results of the query you specify in the **`query`** parameter will be exported as a `Parquet` file. Don't provide the **`.parquet`** extension for the file in the **URI**. It will be automatically appended to the file name when it gets created. Next, click the **Run Script** icon in the Worksheet toolbar.
+2. Copy and paste the following code into your SQL Worksheet. The **`credential_name`** is the name of the credential to access your Cloud Object Storage bucket where the file will be exported. You created this credential in **Lab 5 > Task 6**. Replace the **`file_uri_list`** value with your own value. The **`format`** parameter values indicates that the results of the query you specify in the **`query`** parameter will be exported as a `Parquet` file to your bucket. Don't provide the **`.parquet`** extension for the file in the **URI**. It will be automatically appended to the file name when it gets created. Next, click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
