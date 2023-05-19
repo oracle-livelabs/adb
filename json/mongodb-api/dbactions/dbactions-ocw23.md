@@ -95,11 +95,9 @@ The data is stored in a single location - the Oracle database - and transactiona
 
 ## Task 2: Use Mongo Compass to build an aggregation pipeline
 
-With Oracle MongoDB API in the newest ORDS and Oracle Database 23c, the compatibility of Oracle MongoDB API and MongoDB have significantly increased. The two major enhancements are:
-- Support for Aggregation Pipelines
-- Transparent index creation through MongoDB APIs
+With Oracle MongoDB API in the newest ORDS and Oracle Database 23c, the compatibility of Oracle MongoDB API and MongoDB have significantly increased. The most notable enhancement is the support for Aggregation Pipelines. 
 
-The following section will illustrate the aggregation pipeline functionality and give a view under the hood of how you use the power of Oracle's database JSON processing capabilities to speed up MongoDB requests.
+The following lab will focus on aggregation pipelines, illustrate its functionality and give a view under the hood of how you use the power of Oracle's database JSON processing capabilities to speed up MongoDB requests.
 
 1. Let's install Mongo Compass to use Mongo's UI for creating an aggregation pipeline. This step is optional, you can decide to do the following exercises in Mongo Shell. While the workshop will focus on Compass, it will provide the code for command line as well.
 
@@ -112,7 +110,7 @@ The following section will illustrate the aggregation pipeline functionality and
     </copy>
     ```
 
-	![Installation of Mongo Compass](./images/mongo-compass-install.png)  **HB: needs to be created after publication of LL**
+	![Installation of Mongo Compass](./images/mongo-compass-install.png)  _**HB: screenshot to be made after publication of LL**_
 
 2. Start Mongo Compass and connect with your MongoDB connect string. 
 
@@ -181,17 +179,24 @@ The following section will illustrate the aggregation pipeline functionality and
     ```
     ![Mongo Compass - second stage code](./images/mongo-agg-stage2b.png)
 
-    Last but not least, we only want to return the top ten years. We do this with the **$limit** expression:
+    Last but not least, we only want to return the top ten years. We nned to add another stage using the **$limit** expression. Please select this expression and enter the number 10 to only get the top 10:
 
     ![Mongo Compass - build third stage](./images/mongo-agg-stage3.png)
 
-    You can now run your aggregation pipeline and see the results. Press the green 'Run' button:
+    You can now run your aggregation pipeline and see the results within Mongo Compass. Press the green 'Run' button:
 
     ![Mongo Compass - run aggregation](./images/mongo-agg-output.png)
 
-    Oracle execution plan:
+    Oracle is mapping the aggregation pipeline stages into Oracle SQL to formulate the equivalent operation using SQL and SQL/JSON. For the example aggregation pipeline we just built we can see the execution planby pressing the 'Explain' button and traversing down to the 'winningPlan' attribute:
+
+    ![Mongo Compass - sql stmt](./images/mongo-agg-sql.png)
+
+    You can also see the execution plan in this information:
 
     ![Mongo Compass - execution plan](./images/mongo-agg-exec-plan.png)
+
+
+    While this is a rather simple SQL statement, this is the point where Oracle uses the power of its SQL engine and the Oracle Optimizer to find the most optimal execution plan for processing the request.
 
     To run the same aggregation pipeline in mongoshell, copy the following code snippet:
     ```
@@ -210,16 +215,34 @@ The following section will illustrate the aggregation pipeline functionality and
         ]);
 </copy>
     ```
-## Task 3: Speed up your data access in MongoDB using indexes
+    ![Mongoshell - agg pipeline](./images/mongosh-agg.png)
 
-- we want to show indexes and an explain plan in Mongo to talk about the Mongo-to-SQL translation. Ideally the indexes are created with Mongoshell and not in SDW. That is TBD, based on the implementation
+    You can also see the SQL statement and execution plan in mongoshell:
+    ```
+    <copy>
+    db.movies.aggregate( 
+        [ { $group: 
+            { "_id": "$year" , 
+              "cnt_movies": 
+                   { $count: {} }
+            }
+          }, 
+          { $sort: 
+            { "cnt_movies": -1 } 
+          }, 
+          { $limit: 10}
+        ]).explain();
+</copy>
+    ```
+    ![Mongoshell - execution plan](./images/mongosh-agg-explain.png)
+    
 
-
-
-
+There's more to cover for the Oracle Database API for MongoDB that goes beyond this introductory lab. Stay tuned for more and check out the link below to learn more.
 ## Learn More
 
 * [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
+* [Oracle Database API for MongoDB - Documentation](https://docs.oracle.com/en/database/oracle/mongodb-api/index.html)
+* [Oracle Database API for MongoDB - YouTube](https://www.youtube.com/watch?v=EVDn4b6u628&ab_channel=Oracle)
 
 ## Acknowledgements
 
