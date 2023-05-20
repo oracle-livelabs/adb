@@ -1,30 +1,33 @@
-# Use Oracle as a Data Provider
+# Integrate ADW with Centrally Managed Data Catalogs
 
 ## Introduction
 
-In this lab, you will use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table (internal or external) from your ADW instance to a **`Parquet`** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
+In this lab, you will learn how to connect an OCI Data Catalog instance to ADW and then load some tables from your Data Catalog into your ADW.
 
-Estimated Time: 5 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-* Navigate to the SQL Worksheet.
-* Use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table from your ADW instance to your Oracle Object Storage bucket.
-* Navigate to the Object Storage bucket to view the newly exported `Parquet` file.
+* Navigate to your OCI Data Catalog and review data assets and logical entities.
 
 ### Prerequisites
 
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
-* **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance.
-* **Lab 4**: Link to Data in Public Object Storage Buckets > **Task 2**: Link to Data in Public Object Storage Buckets and Create Tables.
-* An Oracle Object Storage bucket. If you don't have one, see [Putting Data into Object Storage](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/addingbuckets.htm#Putting_Data_into_Object_Storage) on how to create a bucket.
+* **Lab 1**: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance.
+* **Lab 1**: Set up the Workshop Environment > Task 4: (Optional) Create a Data Catalog Instance. If you don't have a Data Catalog instance installed, you can simply follow the instructions in this lab.
+* **Lab 4**: Link to Data in Public Object Storage Buckets > Task 2: Link to Data in Public Object Storage Buckets and Create Tables.
 
-## Task 1: Navigate to the SQL Worksheet
+## Task 1: Navigate to the Data Catalog Page
 
-1. Log in to the **Oracle Cloud Console**.
+1. Log in to the **Oracle Cloud Console**. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+
+
+## Task 2: Navigate to the Data Load Page
+
+1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -32,7 +35,25 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+
+6. In the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+
+    ![Click the Cloud Locations card.](./images/click-cloud-locations.png " ")
+
+7. On the **Manage Cloud Store** page, click **Register Data Catalog**.
+
+    ![Click Register Data Catalog.](./images/click-register-data-catalog.png " ")
+
+8. In the **Register Data Catalog** panel, specify the following:
+
+    * **Catalog Name:** Enter a meaningful name.
+    * **Description:** Enter an optional description.
+    * **Select Credential:** Select this check box (default). Select your credential that you created in **Lab 5 > Task 6**.
+    * **Region:** Your region should be already selected.
+    * **Data Catalog ID:** If you have several Data Catalog instances, select the Data Catalog instance that you want to register from the drop-down list.
+
+    ![The completed Register Data Catalog panel is displayed.](./images/register-data-catalog-panel.png " ")
 
 ## Task 2: Export a Table as a Parquet File to an Object Storage Bucket
 
