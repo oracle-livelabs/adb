@@ -49,7 +49,7 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
-## Task 2: Link to Data in Public Object Storage Buckets and Create Tables
+## Task 2: Link to Data in Public Object Storage Buckets and Create External Tables
 
 In this task, you will link to data and create the following external tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
 
