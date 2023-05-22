@@ -105,7 +105,7 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 
 ## Task 3: Link to Data Assets in the Registered Data Catalog and Create External Tables
 
-In this task, you will link to data assets from the registered Data Catalog and create the following external tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
+In this task, you will link to data assets from the registered Data Catalog and create two external tables in your Autonomous Database instance based on those data assets.
 
 1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page.
 
@@ -123,15 +123,15 @@ In this task, you will link to data assets from the registered Data Catalog and 
 
     ![Drag the data assets from the Data Catalog bucket onto the linking job section.](images/drag-and-drop-assets.png)
 
-6. Drag the **customer\_promotions** and **moviestream\_churn** data assets from the **moviestream\_sandbox** bucket in our Data Catalog instance, and drop them onto the data linking job section.
+6. Drag the **`customer_promotions`** and **`moviestream_churn`** data assets from the **moviestream\_sandbox** bucket in our Data Catalog instance, and drop them onto the data linking job section.
 
      ![Click the pencil icon to open settings viewer for customer_contact load task](images/customer-promotions-settings.png)
 
-7. Let's change the default name for the **customer\_promotions** external table that will be created. Click the **Actions** icon (3-dot vertical ellipsis) for the **customer\_promotions** link task, and then select **Settings** from the context menu. The **Link Data from Cloud Store Location customer\_promotions** settings panel is displayed. Change the external table name to **CUSTOMER\_PROMOTIONS\_DCAT**, and then click **Close**.
+7. Let's change the default name for the **`customer_promotions`** external table that will be created. Click the **Actions** icon (3-dot vertical ellipsis) for the **`customer_promotions`** link task, and then select **Settings** from the context menu. The **Link Data from Cloud Store Location customer\_promotions** settings panel is displayed. Change the external table name to **`CUSTOMER_PROMOTIONS_DCAT`**, and then click **Close**.
 
     ![Change name of the external table.](images/customer-promotions-dcat.png)
 
-8. Let's change the default name for the **moviestream\_churn** external table that will be created. Click the **Actions** icon (3-dot vertical ellipsis) for the **moviestream\_churn** link task, and then select **Settings** from the context menu to view the settings for this task. The **Link Data from Cloud Store Location moviestream\_churn** settings panel is displayed. Change the name of the external table name to **MOVIESTREAM\_CHURN\_DCAT**, and then click **Close**.
+8. Let's change the default name for the **`moviestream_churn`** external table that will be created. Click the **Actions** icon (3-dot vertical ellipsis) for the **`moviestream_churn`** link task, and then select **Settings** from the context menu to view the settings for this task. The **Link Data from Cloud Store Location moviestream\_churn** settings panel is displayed. Change the name of the external table name to **`MOVIESTREAM_CHURN_DCAT`**, and then click **Close**.
 
 9. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
 
@@ -143,7 +143,7 @@ In this task, you will link to data assets from the registered Data Catalog and 
 
 11. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Development** section, click **SQL** to display your SQL Worksheet.
 
-12. From the **Navigator** pane, drag and drop the newly created **CUSTOMERS_PROMOTIONS_DCAT** external table onto the Worksheet. In the **Choose Type of insertion**, click **Select**, and then click **Apply**.
+12. From the **Navigator** pane, drag and drop the newly created **`CUSTOMERS_PROMOTIONS_DCAT`** external table onto the Worksheet. In the **Choose Type of insertion**, click **Select**, and then click **Apply**.
 
     ![Drag and drop the external table onto the worksheet.](images/drag-drop-external-table.png)
 
@@ -151,7 +151,7 @@ In this task, you will link to data assets from the registered Data Catalog and 
 
     ![Run the query.](images/run-query.png)
 
-    You can also query the **MOVIESTREAM\_CHURN\_DCAT** external table.
+    You can also query the **`MOVIESTREAM_CHURN_DCAT`** external table.
 
  You may now proceed to the next lab.
 
