@@ -11,6 +11,8 @@ Estimated Time: 10 minutes
 In this lab, you will:
 
 * Navigate to your OCI Data Catalog and review data assets and logical entities.
+* Register your Data Catalog instance in ADW.
+* Link to data assets in the registered Data Catalog and create external tables.
 
 ### Prerequisites
 

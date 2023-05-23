@@ -2,12 +2,12 @@
 
 ## Introduction
 
-Delta Sharing is an open protocol for secure real-time data sharing across multiple platforms. It allows sharing both static and dynamic data. There are two parties involved: Data Providers and Recipients. Delta Sharing is designed to be easy for both providers and consumers to use with their existing data and workflows. The design goals are:
+Delta Sharing is an open protocol for secure real-time data sharing across multiple platforms. It allows sharing both static and dynamic data and is designed to be easy for both providers and consumers to use with their existing data and workflows. The Delta Sharing protocol is based on Parquet, which most tools already support. The protocol design goals are:
 
 * Share live data directly without copying it.
-* Support a wide range of clients. Recipients can directly consume data from their tools of choice without installing a new platform. The Delta Sharing protocol is based on Parquet, which most tools already support.
-* Strong security, auditing and governance: The protocol is designed to help you meet privacy and compliance requirements. Delta Sharing lets you grant, track and audit access to shared data from a single point of enforcement.
-* Scale to massive datasets: Data sharing increasingly needs to support terabyte-scale datasets.
+* Support a wide range of clients. Recipients can directly consume data from their tools of choice without installing a new platform.
+* Strong security, auditing and governance. It enables you to grant, track, and audit access to shared data from a single point of enforcement.
+* Scale to terabyte-scale datasets.
 
 Autonomous Database supports the Delta Sharing protocol.
 
@@ -17,16 +17,14 @@ Estimated Time: 10 minutes
 
 In this lab, you will:
 
-* Access the Delta Sharing Public Examples on GitHub
+* Access the Delta Sharing public examples on GitHub
 * Navigate to the SQL Worksheet
-* Create a Database Credential and List the Available Schemas and Tables in the Delta Share
-* Create a Parquet External Table Based on a Table in the Delta Share and query the table
+* Create a database credential and list the available schemas and tables in the Delta Share
+* Create a Parquet external table based on a table in the Delta Share and query the table
 
 ### Prerequisites
 
-This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
-
-* **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance.
+This lab requires the completion of **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance from the **Contents** menu on the left.
 
 ## Task 1: Access the Delta Sharing Public Examples on GitHub
 

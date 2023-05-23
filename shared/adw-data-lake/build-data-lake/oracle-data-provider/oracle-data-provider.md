@@ -62,9 +62,7 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
     ![List the files in the sales_sample folder.](./images/export-table.png " ")
 
-    > **Note:**
-
-    * If your target Object Storage bucket is **private** like in our example, then you must use **`credential_name => OBJ_STORAGE_CRED`** argument. If you use a **public** Object Storage bucket, the argument is optional.
+    > **Note:** If your target Object Storage bucket is **private** like in our example, then you must use **`credential_name => OBJ_STORAGE_CRED`** argument. If you use a **public** Object Storage bucket, the argument is optional.
 
 ## Task 3: View the Exported Parquet File in the Object Storage Bucket
 
