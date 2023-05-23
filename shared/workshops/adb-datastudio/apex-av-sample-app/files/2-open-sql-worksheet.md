@@ -2,7 +2,7 @@
 
 ## Introduction
 
-You will connect to Autonomous Database and run SQL commands to create a user, add workshop utilities, and load sample data.  This lab provides instructions for connecting to SQL Worksheet using your browser.  You may use a different tool, such as SQL Developer Desktop.
+You will connect to Autonomous Database and run SQL commands to create a user, add workshop utilities, and load sample data.  This lab provides instructions for connecting to SQL Worksheet using your browser.  You may use a different tool, such as SQL Developer Desktop, it you prefer.
 
 Estimated Time:  Less than 5 minutes.
 
@@ -31,3 +31,5 @@ You can connect to Database Actions using the Autonomous Database Service Consol
 SQL Worksheet allows you to run SQL commands in the Oracle Database.  You will run SQL commands to create a database user and load sample data.
 
 1.  Choose the SQL button.
+
+![Open Database Actions](../images/2-start-sql-worksheet.png)
