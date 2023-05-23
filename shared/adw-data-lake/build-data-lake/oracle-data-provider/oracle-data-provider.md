@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table (internal or external) from your ADW instance to a **`Parquet`** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
+In this lab, you will use the **`EXPORT_DATA`** procedure in the **`DBMS_CLOUD`** PL/SQL package to export a table (internal or external) from your ADW instance to a **`Parquet`** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
 
 Estimated Time: 5 minutes
 
@@ -11,7 +11,7 @@ Estimated Time: 5 minutes
 In this lab, you will:
 
 * Navigate to the SQL Worksheet.
-* Use the **EXPORT\_DATA** procedure in the **DBMS\_CLOUD** PL/SQL package to export a table from your ADW instance to your Oracle Object Storage bucket.
+* Use the **`EXPORT_DATA`** procedure in the **`DBMS_CLOUD`** PL/SQL package to export a table from your ADW instance to your Oracle Object Storage bucket.
 * Navigate to the Object Storage bucket to view the newly exported `Parquet` file.
 
 ### Prerequisites
