@@ -140,7 +140,7 @@ END;
     ```
 The PL/SQL block is executed successfully and the new **`BOSTONHOUSING`** external table is created and populated.
 
-![Create external table.](./images/create-external-table.png " ")
+  ![Create external table.](./images/create-external-table.png " ")
 
 2. Query the **`BOSTONHOUSING`** external table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
