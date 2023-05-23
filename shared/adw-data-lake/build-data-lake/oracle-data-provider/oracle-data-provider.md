@@ -32,7 +32,7 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
 
 ## Task 2: Export a Table as a Parquet File to an Object Storage Bucket
 
