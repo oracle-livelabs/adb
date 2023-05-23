@@ -50,6 +50,12 @@
             "filename": "./../../load-analyze-rest/load-analyze-rest.md"
         },
         {
+            "title": "Lab 6a: Create and Query External Tables Using Delta Sharing Protocol",
+            "type":"freetier",
+            "description": "This lab shows you how ADW supports Public Data Share.",
+            "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+        },
+        {
             "title": "Lab 7: Query Data Across Multi-Cloud Data Lakes",
             "type":"freetier",
             "description": "This lab shows you how to query data from OCI and AWS S3.",
