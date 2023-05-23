@@ -12,7 +12,7 @@ In the workshop, you will use Oracle Database 23c Free and a local ORDS installa
 
 This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
 
-**Estimated Time: 1 hour**
+**Estimated Workshop Time: 1.5 hours**
 
 ### Workshop Scenario
 
@@ -83,11 +83,8 @@ In this workshop, you will explore:
 *   How to connect to Oracle Database 23c Free from MongoDB Shell and work with collections
 *   How to access the MongoDB collection from JSON Workshop and SQL
 
-### Prerequisites
 
-* No prerequisites are required.
-
-You may now proceed to the next lab.
+**Proceed to the next lab.**
 
 ## Learn More
 

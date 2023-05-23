@@ -126,8 +126,7 @@ You have verified that your database user is ready for the workshop.
 
     ![Start ORDS](images/ords-with-mongo-enabled.png " ")
 
-
-2. You may now proceed to the next lab.
+**Proceed to the next lab.**
 
 ## Learn More
 
