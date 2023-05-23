@@ -1,4 +1,4 @@
-# Add Data to Graphs using the Analytic View 
+# Add Queries that Select from the Analytic View 
 
 ## Introduction
 

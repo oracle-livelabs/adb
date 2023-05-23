@@ -39,7 +39,7 @@
             "filename": "../../files/5-create-analytic-view.md"
         },
         {
-            "title": "Lab 7: Analytic Queries Selecting from Tables",
+            "title": "Lab 7: Analytic Queries that Select from Tables",
             "filename": "../../files/7-analytic-queries.md"
         },
         {
@@ -51,7 +51,7 @@
             "filename": "../../files/9-get-acquainted-with-av.md"
         },
         {
-            "title": "Lab 10: Analytic Queries Selecting from the Analytic View",
+            "title": "Lab 10: Analytic Queries that Select from the Analytic View",
             "filename": "../../files/10-analytic-queries-av.md"
         },
         {
@@ -59,7 +59,7 @@
             "filename": "../../files/11-create-new-apex-app.md"
         },
         {
-            "title": "Lab 12: Add Data to Graphs using the Analytic View",
+            "title": "Lab 12: Add Queries that Select from the Analytic View",
             "filename": "../../files/12-create-dashboard.md"
         },
         {

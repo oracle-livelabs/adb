@@ -1,4 +1,4 @@
-# Analytic Queries Selecting from the Analytic View
+# Analytic Queries that Select from the Analytic View
 
 
 ## Introduction

@@ -1,4 +1,4 @@
-# Analytic Queries Selecting from Tables
+# Analytic Queries that Select from Tables
 
 
 ## Introduction
