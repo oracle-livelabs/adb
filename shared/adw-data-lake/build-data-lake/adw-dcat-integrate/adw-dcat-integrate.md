@@ -59,7 +59,7 @@ This is not a hands-on task. In this task, you will navigate to an OCI Data Cata
 
 ## Task 2: Register your Data Catalog Instance in ADW
 
-In this task, you will learn how to register an OCI Data Catalog instance in ADW in order connect to that instance and link to the data asset's entities to create external tables in ADW.
+In this task, you will learn how to register an OCI Data Catalog instance in ADW in order to connect to that instance and link to the data asset's entities to create external tables in ADW.
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
 
