@@ -16,7 +16,7 @@ In this workshop, we'll start with two key components of MovieStream's architect
 
 ![architecture](images/architecture.png)
 
-Estimated Time: 1.5 hours
+Estimated Time: 2 hours
 
 ### What is a Data Lake?
 A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will harvest in Data Catalog and query in ADB.
@@ -38,6 +38,7 @@ In this workshop, you will:
 * Load JSON data into your ADB instance and then and analyze that data.
 * Link to data in public and private Object Storage buckets.
 * Load and analyze the news from REST endpoints.
+* Create external tables using the Delta Sharing protocol
 * Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
 * Improve query performance by creating a materialized view over an external table.
 * Create and manage partitioned external tables to improve performance.
