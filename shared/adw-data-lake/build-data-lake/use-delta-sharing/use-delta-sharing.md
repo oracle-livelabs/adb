@@ -6,7 +6,7 @@ Delta Sharing is an open protocol for secure real-time data sharing across multi
 
 * Share live data directly without copying it.
 * Support a wide range of clients. Recipients can directly consume data from their tools of choice without installing a new platform.
-* Strong security, auditing and governance. It enables you to grant, track, and audit access to shared data from a single point of enforcement.
+* Provide strong security, auditing, and governance. It enables you to grant, track, and audit access to shared data from a single point of enforcement.
 * Scale to terabyte-scale datasets.
 
 Autonomous Database supports the Delta Sharing protocol.
