@@ -60,7 +60,7 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 Create a new database credential that you will use in this task as follows:
 
-1. Copy and paste the following code into your SQL Worksheet. You can substitute ute the `credential_name` and `user_name` with your own values. The `password` value is the **`bearerToken`** value from the Delta Sharing profile. Click the **Run Script** icon in the Worksheet toolbar.
+1. Use the **`CREATE_CREDENTIAL`** procedure in the **`DBMS_CLOUD`** PL/SQL package to create and store the cloud service credentials in the Autonomous Database. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation. Copy and paste the following code into your SQL Worksheet. You can substitute the `credential_name` and `user_name` with your own values. The `password` value is the **`bearerToken`** value from the public Delta Sharing profile. Click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
