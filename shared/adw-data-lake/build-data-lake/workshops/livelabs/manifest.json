@@ -1,11 +1,7 @@
 {
-    "workshoptitle": "Access the Data Lake using Autonomous Database and Data Catalog",
+    "workshoptitle": "Build a Data Lake with Autonomous Warehouse",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
-        {
-         "title": "Get Started with LiveLabs",
-         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
-        },
         {
             "title": "Introduction",
             "type":"livelabs",
@@ -13,28 +9,81 @@
             "filename": "./../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Review the Workshop Environment (Optional)",
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Set up the Workshop Environment",
             "type":"livelabs",
             "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
         },
         {
-            "title": "Lab 2: Harvest Metadata from Oracle Object Storage",
+            "title": "Lab 2: Load Local Data",
             "type":"livelabs",
-            "description": "This lab walks you through how to harvest technical metadata from Oracle Object Storage.",
-            "filename": "./../../harvest-metadata-os/harvest-metadata-os.md"
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 3: Synchronize Autonomous Database with Data Catalog",
+            "title": "Lab 3: Load and Analyze JSON Data",
             "type":"livelabs",
-            "description": "This lab shows you how to synchronize ADB and Data Catalog.",
-            "filename": "./../../sync-adb-dcat/sync-adb-dcat.md"
+            "description": "This lab walks you through the tasks to load JSON data into your ADW instance.",
+            "filename": "./../../load-analyze-json/load-analyze-json.md"
         },
         {
-            "title": "Lab 4: Query Data Across Autonomous Database and the Data Lake",
+            "title": "Lab 4: Link to Data in Public Object Storage Buckets",
             "type":"livelabs",
-            "description": "This lab shows you how to query data from ADB and Object Storage.",
-            "filename": "./../../query-data/query-data.md"
+            "description": "This lab walks you through how to link data in public object storage buckets.",
+            "filename": "./../../load-os-data-public/load-os-data-public.md"
+        },
+        {
+            "title": "Lab 5: Link to Data from Private Object Storage Buckets",
+            "type":"livelabs",
+            "description": "This lab walks you through how to link data from private object storage buckets.",
+            "filename": "./../../load-os-data-private/load-os-data-private.md"
+        },
+        {
+            "title": "Lab 6: Load and Analyze Data from REST Endpoints",
+            "type":"livelabs",
+            "description": "This lab shows you how to load and analyze data from REST endpoints.",
+            "filename": "./../../load-analyze-rest/load-analyze-rest.md"
+        },
+        {
+            "title": "Lab 7: Create and Query External Tables Using Delta Sharing Protocol",
+            "type":"livelabs",
+            "description": "This lab shows you how ADW supports Public Data Share.",
+            "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+        },
+        {
+            "title": "Lab 8: Query Data Across Multi-Cloud Data Lakes",
+            "type":"livelabs",
+            "description": "This lab shows you how to query data from OCI and AWS S3.",
+            "filename": "./../../query-data-lakes/query-data-lakes.md"
+        },
+        {
+            "title": "Lab 9: Use Oracle as a Data Provider",
+            "type":"livelabs",
+            "description": "This lab shows you how to use Oracle as a Data Provider.",
+            "filename": "./../../oracle-data-provider/oracle-data-provider.md"
+        },
+        {
+            "title": "Lab 10: Integrate ADW with Centrally Managed Data Catalogs",
+            "type":"livelabs",
+            "description": "This lab shows ADW integration with Data Catalogs.",
+            "filename": "./../../adw-dcat-integrate/adw-dcat-integrate.md"
+        },
+        {
+            "title": "Lab 11: Performance Best Practices",
+            "type":"livelabs",
+            "description": "This lab shows you how to improve query performance.",
+            "filename": "./../../query-performance/query-performance.md"
+        },
+        {
+            "title": "Lab 12: Clean up Resources Used in the Workshop (Optional)",
+            "type":"livelabs",
+            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
+            "filename": "./../../cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",

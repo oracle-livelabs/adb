@@ -18,7 +18,11 @@ In this lab, we will show you how to do the following:
 * Create and manage partitioned external tables to improve the database performance.
 
 ### Prerequisites
-None.
+
+This lab requires the completion of the following labs/task from the **Contents** menu on the left:
+
+* **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**.
+* **Lab 5: Link Data from Private Object Storage Buckets > Task 6: Define a Cloud Location and Create a Credential**.
 
 ## Task 1: Navigate to the SQL Worksheet
 
@@ -30,7 +34,7 @@ None.
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the In the **Development** section, click the **SQL** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
 
 ## Task 2: Create a Materialized View for an External Table
 

@@ -8,7 +8,7 @@ You can also leave data in place in cloud object storage, and link to it from yo
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
-Estimated Time: 30 minutes
+Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
 [Load Data from Local Files](videohub:1_q7r7bcp0)

@@ -141,100 +141,101 @@ The following lab will focus on aggregation pipelines, illustrate its functional
 
     ![Mongo Compass - collection movies](./images/mongo-collection-movies.png)
 
-    Go to the aggregation screeen in Compass. We're now starting to build an aggregation pipeline. Select the green 'Add Stage' button at the bottom
+    - Go to the aggregation screeen in Compass. We're now starting to build an **aggregation pipeline**. Select the green 'Add Stage' button at the bottom
 
-    ![Mongo Compass - initial aggregation screen](./images/mongo-agg-init.png)
+        ![Mongo Compass - initial aggregation screen](./images/mongo-agg-init.png)
 
-    Select the **$group** expression.
+        Select the **$group** expression.
 
-    ![Mongo Compass - build first stage](./images/mongo-agg-stage1.png)
+        ![Mongo Compass - build first stage](./images/mongo-agg-stage1.png)
 
-    Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block:
-    ```
-    <copy>
-    { $group: 
-        { "_id": "$year" , 
-          "cnt_movies": 
-                { $count: {} 
-                }
+        Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block:
+        ```
+        <copy>
+        { $group: 
+            { "_id": "$year" , 
+            "cnt_movies": 
+                    { $count: {} 
+                    }
+            }
         }
-    }
+        </copy>
+        ```
+        If you typed it correctly, you will see a sample partial output on the right side pane
+
+        ![Mongo Compass - first stage code](./images/mongo-agg-stage1b.png)
+
+    -   We are now building our **second stage**. We want to sort our results by the number of movies released in a given year in descending order. Select the **$sort** expression.
+
+        ![Mongo Compass - build second stage](./images/mongo-agg-stage2.png)
+
+        Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block:
+        ```
+        <copy>
+        { $sort: 
+            { _id: 1 
+            } 
+        }
+        </copy>
+        ```
+        ![Mongo Compass - second stage code](./images/mongo-agg-stage2b.png)
+
+    -   Last but not least, we only want to return the top ten years. We nned to add another stage using the **$limit** expression. Please select this expression and enter the number 10 to only get the top 10:
+
+        ![Mongo Compass - build third stage](./images/mongo-agg-stage3.png)
+
+        You can now run your aggregation pipeline and see the results within Mongo Compass. Press the green 'Run' button:
+
+        ![Mongo Compass - run aggregation](./images/mongo-agg-output.png)
+
+    -   Oracle is mapping the aggregation pipeline stages into Oracle SQL to formulate the equivalent operation using SQL and SQL/JSON. For the example aggregation pipeline we just built we can see the execution planby pressing the 'Explain' button and traversing down to the 'winningPlan' attribute:
+
+        ![Mongo Compass - sql stmt](./images/mongo-agg-sql.png)
+
+        You can also see the execution plan in this information:
+
+        ![Mongo Compass - execution plan](./images/mongo-agg-exec-plan.png)
+
+
+        While this is a rather simple SQL statement, this is the point where Oracle uses the power of its SQL engine and the Oracle Optimizer to find the most optimal execution plan for processing the request.
+
+    -   To run the same aggregation pipeline in mongoshell, copy the following code snippet:
+        ```
+        <copy>
+        db.movies.aggregate( 
+            [ { $group: 
+                { "_id": "$year" , 
+                "cnt_movies": 
+                    { $count: {} }
+                }
+            }, 
+            { $sort: 
+                { "cnt_movies": -1 } 
+            }, 
+            { $limit: 10}
+            ]);
     </copy>
-    ```
-    If you typed it correctly, you will see a sample partial output on the right side pane
-    ![Mongo Compass - first stage code](./images/mongo-agg-stage1b.png)
+        ```
+        ![Mongoshell - agg pipeline](./images/mongosh-agg.png)
 
-    We are now building our second stage. We want to sort our results by the number of movies released in a given year in descending order. Select the **$sort** expression.
-
-    ![Mongo Compass - build second stage](./images/mongo-agg-stage2.png)
-
-    Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block:
-    ```
-    <copy>
-    { $sort: 
-        { _id: 1 
-        } 
-    }
+        You can also see the SQL statement and execution plan in mongoshell:
+        ```
+        <copy>
+        db.movies.aggregate( 
+            [ { $group: 
+                { "_id": "$year" , 
+                "cnt_movies": 
+                    { $count: {} }
+                }
+            }, 
+            { $sort: 
+                { "cnt_movies": -1 } 
+            }, 
+            { $limit: 10}
+            ]).explain();
     </copy>
-    ```
-    ![Mongo Compass - second stage code](./images/mongo-agg-stage2b.png)
-
-    Last but not least, we only want to return the top ten years. We nned to add another stage using the **$limit** expression. Please select this expression and enter the number 10 to only get the top 10:
-
-    ![Mongo Compass - build third stage](./images/mongo-agg-stage3.png)
-
-    You can now run your aggregation pipeline and see the results within Mongo Compass. Press the green 'Run' button:
-
-    ![Mongo Compass - run aggregation](./images/mongo-agg-output.png)
-
-    Oracle is mapping the aggregation pipeline stages into Oracle SQL to formulate the equivalent operation using SQL and SQL/JSON. For the example aggregation pipeline we just built we can see the execution planby pressing the 'Explain' button and traversing down to the 'winningPlan' attribute:
-
-    ![Mongo Compass - sql stmt](./images/mongo-agg-sql.png)
-
-    You can also see the execution plan in this information:
-
-    ![Mongo Compass - execution plan](./images/mongo-agg-exec-plan.png)
-
-
-    While this is a rather simple SQL statement, this is the point where Oracle uses the power of its SQL engine and the Oracle Optimizer to find the most optimal execution plan for processing the request.
-
-    To run the same aggregation pipeline in mongoshell, copy the following code snippet:
-    ```
-    <copy>
-    db.movies.aggregate( 
-        [ { $group: 
-            { "_id": "$year" , 
-              "cnt_movies": 
-                   { $count: {} }
-            }
-          }, 
-          { $sort: 
-            { "cnt_movies": -1 } 
-          }, 
-          { $limit: 10}
-        ]);
-</copy>
-    ```
-    ![Mongoshell - agg pipeline](./images/mongosh-agg.png)
-
-    You can also see the SQL statement and execution plan in mongoshell:
-    ```
-    <copy>
-    db.movies.aggregate( 
-        [ { $group: 
-            { "_id": "$year" , 
-              "cnt_movies": 
-                   { $count: {} }
-            }
-          }, 
-          { $sort: 
-            { "cnt_movies": -1 } 
-          }, 
-          { $limit: 10}
-        ]).explain();
-</copy>
-    ```
-    ![Mongoshell - execution plan](./images/mongosh-agg-explain.png)
+        ```
+        ![Mongoshell - execution plan](./images/mongosh-agg-explain.png)
     
 
 There's more to cover for the Oracle Database API for MongoDB that goes beyond this introductory lab. Stay tuned for more and check out the link below to learn more.

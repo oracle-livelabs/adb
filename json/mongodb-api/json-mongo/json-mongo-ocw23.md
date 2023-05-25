@@ -109,7 +109,7 @@ A MongoDB "database" is mapped to an Oracle schema when using Oracle Database wi
     ```
     ![Query result count for after 2019](images/mongo-2019-cnt.png " ")
 
-You can now proceed to the next Lab which will look a little bit under the hood.
+**Proceed to the next Lab where we will look a little bit under the hood.**
 ## Learn More
 
 * [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
