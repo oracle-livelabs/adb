@@ -21,10 +21,10 @@ In this lab, you will:
 
 Run queries that select from the dimension tables to become familiar with the data.
 
-1.  Using SQL Worksheet, connect to the database using the  **MOVIESTREAM** (or other) user created in Lab 3.
-2.  Run the following commands in SQL Worksheet.
+1.  You should already be connected to SQL Worksheet as the **MOVIESTREAM** users.  If you are not, connect to the database using the  **MOVIESTREAM** (or other) user created in Lab 3.
+1.  Run the following commands in SQL Worksheet.
 
-The TIME_DIM tables contain data at the Day, Month Query, and Year levels for two years.
+The TIME_DIM tables contain data at the Day, Month, Quarter, and Year levels over two years.
 
 ~~~SQL
 <copy>
@@ -81,7 +81,7 @@ FROM
 WHERE
     discount_percent IS NOT NULL
 ORDER BY
-    sales DESC;
+    cust_id DESC;
 
 </copy>
 ~~~

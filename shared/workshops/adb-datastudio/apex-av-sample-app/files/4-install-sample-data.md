@@ -22,8 +22,9 @@ In this lab, you will:
 
 To load sample data in this lab.
 
-1.  Using SQL Worksheet, connect to the database using the  **MOVIESTREAM** user created in Lab 3.
-2.  Run the following commands in SQL Worksheet.  They can be run all at once as a script or individually, as you prefer.
+1.  Log out of Database Actions/SQL Worksheet as the ADMIN user.
+1.  Using SQL Worksheet, connect to the database using the **MOVIESTREAM** user created in Lab 3.
+1.  Run the following commands in SQL Worksheet.  They can be run all at once as a script or individually, as you prefer.
 
 
 ~~~SQL

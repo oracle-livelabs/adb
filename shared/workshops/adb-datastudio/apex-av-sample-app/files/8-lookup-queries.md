@@ -23,8 +23,8 @@ You may need a list of all geographies from the CUSTOMER_DIM table for a pop-up 
 ~~~SQL
 <copy>
 SELECT
-  DISTINCT continent AS display_value,
-  continent AS return_value
+  DISTINCT continent AS d,
+  continent AS r
 FROM
   customer_dim
 ORDER BY
@@ -37,8 +37,8 @@ You need another query if you need a list for a different level.  For example:
 ~~~SQL
 <copy>
 SELECT
-  DISTINCT country AS display_value,
-  country return_value
+  DISTINCT country AS d,
+  country r
 FROM
   customer_dim
 ORDER BY
@@ -46,41 +46,41 @@ ORDER BY
   </copy>
 ~~~
 
-## Task 2 - A list of Geographies with Multiple Levels
+## Task 2 - A List of Geographies with Multiple Levels
 
 If you need a list with more than one level, you might use a query such as this:
 
 ~~~SQL
 <copy>
 SELECT DISTINCT
-    continent AS AS display_value
-  , continent AS return_value
+    continent AS d
+  , continent AS r
 FROM
     customer_dim
 UNION
 SELECT DISTINCT
-    country AS AS display_value
-  , country AS return_value
+    country AS d
+  , country AS r
 FROM
     customer_dim
 UNION
 SELECT DISTINCT
-    state_province AS display_value
-  , state_province AS return_value
+    state_province AS d
+  , state_province AS r
 FROM
     customer_dim;
 </copy>
 ~~~
 
-## Task 3 - A list of Geographies with Multiple Levels and Hierarchical Metadata
+## Task 3 - A List of Geographies with Multiple Levels and Hierarchical Metadata
 
 Including hierarchical metadata enriches the list of geographies, allowing for filters using levels or hierarchy depth.  You might use a query such as this.
 
 ~~~SQL
 <copy>
 SELECT DISTINCT
-    continent   AS display_value
-  , continent   AS return_value
+    continent   AS d
+  , continent   AS r
   , 'Continent' AS "LEVEL"
   , 1           AS depth
   , continent   AS continent
@@ -89,8 +89,8 @@ FROM
     customer_dim
 UNION
 SELECT DISTINCT
-    country   AS display_value
-  , country   AS return_value
+    country   AS d
+  , country   AS r
   , 'Country' AS "LEVEL"
   , 2         AS depth
   , continent AS continent
@@ -99,8 +99,8 @@ FROM
     customer_dim
 UNION
 SELECT DISTINCT
-    state_province   AS display_value
-  , state_province   AS return_value
+    state_province   AS d
+  , state_province   AS r
   , 'State/Province' AS "LEVEL"
   , 3                AS depth
   , continent        AS continent
@@ -111,7 +111,7 @@ ORDER BY
     depth
   , continent
   , country
-  , display_value;
+  , d;
   </copy>
   ~~~
 
@@ -120,8 +120,8 @@ You could create a similar query for time periods.
 ~~~SQL
 <copy>
 SELECT DISTINCT
-    year   AS display_value
-  , year   AS return_value
+    year   AS d
+  , year   AS r
   , 'Year' AS "LEVEL"
   , 1      AS depth
   , year   AS year
@@ -131,8 +131,8 @@ FROM
     time_dim
 UNION
 SELECT DISTINCT
-    quarter   AS display_value
-  , quarter   AS return_value
+    quarter   AS d
+  , quarter   AS r
   , 'Quarter' AS "LEVEL"
   , 2         AS depth
   , year      AS year
@@ -142,8 +142,8 @@ FROM
     time_dim
 UNION
 SELECT DISTINCT
-    month   AS display_value
-  , month   AS return_value
+    month   AS d
+  , month   AS r
   , 'Month' AS "LEVEL"
   , 3       AS depth
   , year    AS year
@@ -153,8 +153,8 @@ FROM
     time_dim
 UNION
 SELECT DISTINCT
-    to_char(day_id, 'DD-MON-YYYY') AS display_value
-  , to_char(day_id, 'DD-MON-YYYY') AS return_value
+    to_char(day_id, 'DD-MON-YYYY') AS d
+  , to_char(day_id, 'DD-MON-YYYY') AS r
   , 'Day'                          AS "LEVEL"
   , 5                              AS depth
   , year                           AS year
@@ -167,7 +167,7 @@ ORDER BY
   , year
   , quarter
   , month
-  , display_value;
+  , d;
 </copy>
 ~~~
 

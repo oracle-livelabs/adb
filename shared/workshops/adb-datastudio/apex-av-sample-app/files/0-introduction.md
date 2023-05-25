@@ -23,7 +23,8 @@ The bottom line is that APEX developers can simplify application development, pr
 In this workshop, you will:
 
 - Learn essential concepts about analytic views.
-- Learn how to query hierarchy views and analytic viewers using sample queries.
+- Learn about the types of analytic views.
+- Learn how to query analytic views using sample queries.
 - Create an application using a predefined analytic view.
 
 ### Questions

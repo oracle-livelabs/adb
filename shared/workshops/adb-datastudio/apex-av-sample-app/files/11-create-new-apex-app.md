@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Now that you know the basics about querying hierarchies and analytic views, it is time to put that knowledge to work.  This lab guides you down the path of building an application that allows the user make their own data selections, choose measures, and apply transformations to those measures using analytic view expressions.
+Now that you know the basics about querying hierarchies and analytic views, it is time to put that knowledge to work.  You will now start building a dashboard application that selects from hierarchies and analytic view. This application will allow users to make interactive data selections. Queries will include time series and other calculations using analytic view expressions.
 
 The application as shown in this lab will have a certain layout and appearance.  It is not important that your application look exactly like this sample application. As an APEX developer, you know that APEX makes it very easy to change the layout and appearance of an application.  What is important is that you learn how items and regions can use analytic views.
 
@@ -13,31 +13,20 @@ Estimated Time:  10 minutes.
 
 In this lab, you will:
 
-- Create a new APEX workspace
-- Create new APEX application
+- Create new APEX application.
+- Add a dashboard page to the application.
 
 ### Prerequisites:
 
 - Complete the previous lab.
 
-### Task Outline
-
-Depending on whether you using a Live Lab tenancy, your own tenancy, or even an on-premise instance, the exact steps required to create a new APEX application will vary.  This lab will provide the steps for an Oracle Live Lab tenancy.  
-
-The task outline follows:
-
-1. Login into the Autonomous Database console as the ADMIN user.
-1. Access Database Actions
-1. Access APEX WORKSPACES in the Administration section.
-1. Create a new workspace
-1. Log into the workspace as the MOVIESTREAM user.
-1. Create a new APEX application.
-
 ##  Task 1 - Login to APEX
 
-The Database Actions tools can be accessed directly using a URL or through the Autonomous Database console.
+If you are running APEX on a platform other than Autonomous Database, login into APEX as you normally would.  Use the database user (e.g., MOVIESTREAM) and APEX workspace (again, MOVIESTREAM) that was created early in this Live Lab.
 
-If you are running this lab in your tenancy and do not have access to the Autonomous Database console,  ask the administrator of the database to provide you with the URL.
+If you are running this lab in your tenancy and do not have access to the Autonomous Database console,  ask the administrator of the database to provide you with the APEX URL.
+
+If you are running APEX on Autonomous Database, and have access to the Autonomous Database Console follow the steps below.
 
 1. If you have access to the Autonomous Database console, access it now..
 
@@ -75,7 +64,7 @@ In this task, you will create a new application.  Feel free to choose a differen
 - Chart 1: **Name: Sales, Type:  Line**
 - Chart 2: **Name: Sales Change Prior Period, Type: Bar**
 - Chart 3: **Name: Sales Percent Change Year Ago, Type: Bar**
-- Chart 4: **Name: Sales Share of Genre**
+- Chart 4: **Name: Sales Share of Genre, Type: Bar**
 
 ![Add Dashboard Page](../images/11-add-dashboard-page.png)
 
@@ -87,7 +76,7 @@ In this task, you will create a new application.  Feel free to choose a differen
 - **Top Menu**
 11. Press **Save Changes**.
 11. Press the **Create Application** button.
-11. **Run Application**
+11. **Run Application** as the **MOVIESTREAM** user.
 
 Congratulations, you are now the proud owner of four generic graphs!
 

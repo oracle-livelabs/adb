@@ -13,10 +13,10 @@ Estimated Time:  5 minutes.
 
 In this lab, you will observe how queries selecting from an analytic view:
 
-- Use hierarchical columns
-- Aggregate data
-- Add calculated measures to queries
-- Compare to queries that select from tables
+- Use hierarchical columns.
+- Aggregate data.
+- Add calculated measures to queries.
+- Compare to queries that select from tables.
 
 ### Prerequisites:
 
@@ -28,7 +28,7 @@ Queries that select from analytic views follow the typical SELECT ... FROM ... W
 
 Note that hierarchy columns are qualified with the hierarchy name.  For example, TIME.MEMBER_NAME.
 
-Filtering on the LEVEL\_NAME column is a simple method of requesting data at specific levels of aggregation.  Selecting the MEMBER\_NAME columns eliminates the need to change column names when for different levels of aggregation.
+Filtering on the LEVEL\_NAME column is a simple method of requesting data at specific levels of aggregation.  Selecting the MEMBER\_NAME columns eliminates the need to change column names when selecting data at different levels of aggregation.
 
 This query returns data from the Year, Continent, and Search Genre levels.
 
@@ -62,7 +62,7 @@ ORDER BY
 
 ## Task 2 - Aggregate Data to Quarter, Country, and Search Genre
 
-The following query selects quarterly, country, and search genre data.  The only changes required to the query are the LEVEL\_NAME values.  Using the hierarchical columns (MEMBER\_NAME, LEVEL\_NAME, and HIER\_ORDER) allows the query to be reusable across different levels of aggregation with only minor changes.  In an APEX application, pass into the query as bind variables from an APEX item such as a list box.
+The following query selects quarter, country, and search genre level data.  The only changes required to the query are the LEVEL\_NAME values.  Using the hierarchical columns (MEMBER\_NAME, LEVEL\_NAME, and HIER\_ORDER) allows the query to be reusable across different levels of aggregation with only minor changes.  In an APEX application, you would pass the level values into the query as bind variables from an APEX item such as a list box.
 
 ~~~SQL
 <copy>
@@ -124,7 +124,7 @@ ORDER BY
 
 Calculations can be defined as part of the analytic view or be expressed dynamically in queries that select from an analytic view.  Calculation expressions can use analytic view expressions, SQL single-row functions, or reference PL/SQL functions.  Analytic view expressions reference elements of the analytic view, such as hierarchies and levels.  Because calculation expressions do not usually reference column names, they do not need to be changed as hierarchies are added or removed from the query or levels of aggregation change.
 
-A query with a dynamic calculated measure expression uses the USING form of the FROM clause.  The next query uses the USING form of the FROM clause and the ADD MEASURE clause to include a calculation expression.
+A query with a dynamic calculated measure expression uses the USING form of the FROM clause.  The next query uses the USING form of the FROM clause and the ADD MEASURE clause to include a calculation expression.  The ability to express calculations in the query provides the APEX developer with many opportunities to enhance applications.
 
 ~~~SQL
 <copy>
@@ -199,7 +199,7 @@ ORDER BY
 Let's summarize some of the advantages of using analytic views in APEX.
 
 - The physical implementation is hidden from the application.  The physical model can change without affecting the application querying the analytic view.
-- Joins and group by are not needed.
+- Joins and GROUP BY are not needed.
 - Calculations are easily added to queries.
 - Queries are easily generated from reusable templates.
 

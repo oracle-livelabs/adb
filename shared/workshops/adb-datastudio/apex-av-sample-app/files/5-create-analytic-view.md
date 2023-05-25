@@ -4,6 +4,8 @@
 
 This lab uses three hierarchy views and an analytic view that reference the tables created in the previous lab.  You will create these objects using a script.
 
+This analytic view could be created using the Database Actions Data Studio Analysis tool.  To learn how, see the [Get Started With Analytic Views using Data Studio](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3594) Live Lab.
+
 Estimated Time:  5 minutes.
 
 ### Objectives
@@ -154,9 +156,15 @@ You can also view the analytic view in the editor.
 1.  Return to the Analysis application home screen.
 1.  Using the virtual ellipsis (...)  choose Edit.
 
-**Do not make changes to the analytic view.**
+![Start Analytic View editor](../images/5-start-analysis-edit.png)
+
+Feel free to explore the editor.
 
 ![Analytic View editor](../images/5-analysis-edit.png)
+
+ When you are done exploring the editor:
+
+1. Press the **Cancel** button to exit out. **Do not make changes to the analytic view or press the Update button.**
 
 You may now **proceed to the next lab**
 

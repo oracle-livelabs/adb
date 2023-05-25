@@ -35,6 +35,8 @@ ORDER BY
   </copy>
 ~~~
 
+Wow, there is a lot to work with!
+
 ## Task 2 - Select Attribute Columns at the Day Level
 
 Selecting attribute columns from the hierarchy at the DAY level returns the original rows and columns from the TIME_DIM table.
@@ -57,7 +59,7 @@ ORDER BY
 
 ## Task 3 - Select Primary Key, Attribute, and LEVEL_NAME Columns
 
-The next query adds the MEMBER\_UNIQUE\_NAME and LEVEL_NAME columns and selects all rows.
+The next query adds the MEMBER\_UNIQUE\_NAME and LEVEL_NAME columns and selects all rows.  MEMBER\_UNIQUE\_NAME is the primary key of the hierarchy.
 
 ~~~SQL
 <copy>
@@ -74,8 +76,6 @@ ORDER BY
   hier_order;
 </copy>
 ~~~
-
-MEMBER\_UNIQUE\_NAME is the primary key of the hierarchy view.  In this example, the MEMBER\_UNIQUE\_NAME is the level name and level key value.
 
 The attribute columns - DAY_ID, MONTH, QUARTER, and YEAR - will return values for the current level and ancestor levels.  They will return NULL for descendant levels.
 
@@ -118,7 +118,7 @@ These columns a very useful for navigating hierarchies and creating lists of val
 
 **Important - Do not SELECT * FROM Analytic Views**
 
-Your first thought might be to SELECT * the analytic view.  Resist that thought!
+Your first thought might be to SELECT * from the analytic view.  Resist that thought!
 
 Analytic views return rows for all detail and aggregate rows.  The potential number of rows is the Cartesian product of all hierarchy members.  An analytic view that uses four hierarchies with 1000 members each can potentially return 1000^4 or 1,000,0000,000 rows.  Data is likely to be sparse, so the actual number of rows is expected to be smaller.
 
@@ -130,7 +130,7 @@ Recommendations:
 
 ## Task 5 - Take a First Look at the Analytic View
 
-Analytic views include all columns of each hierarchy and measure columns.  The hierarchical columns for each hierarchy are the same.  The attribute columns will vary by hierarchy.  
+Analytic views include all columns of each hierarchy and measure columns.  The hierarchical columns for each hierarchy have the name.  The attribute columns will vary by hierarchy.
 
 You can get a list of all columns of the analytic view with the following query:
 
@@ -148,7 +148,7 @@ ORDER BY
   </copy>
 ~~~
 
-This will probably be the only time you will SELECT * FROM an analytic view.
+Select all of the columns of the analytic view.
 
 ~~~SQL
 <copy>
@@ -166,6 +166,8 @@ WHERE
     AND search_genre.level_name = 'SEARCH_GENRE';
 </copy>
 ~~~
+
+That that attribute columns that are below the selected levels of aggregation return NULL. This is to be expected.
 
 As you can see, there are a lot of columns to work with.
 

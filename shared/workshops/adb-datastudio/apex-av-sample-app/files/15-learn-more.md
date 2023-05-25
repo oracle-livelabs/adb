@@ -2,19 +2,21 @@
 
 ## Introduction
 
-This lab introduced you to creating analytic views using the Data Studio Analysis tool.  You created a complete system of attribute dimensions, hierarchy views, and an analytic view. The analytic view included fact measures and a calculated measure.  You still have a lot to discover about Analytic Views, but you now know that basic structure.  You can build on this knowledge to build Analytic Views using your own data.  It is usually good to start with a small model and add additional hierarchies and measures as needed.
+Must of what you need to learn has to do with designing and querying analytic views. Start simple and work towards more complex use cases.
 
-In this lab, you defined the Analytic View using data in a star schema, with dimension lookup tables and a fact table.  Analytic views always use a single fact table.  You can create hierarchies from lookup tables, as in this lab, directly from the fact table, or both.
+### Oracle Autonomous Database Data Studio
 
-## Learn More at Live SQL
+The Oracle Autonomous Database Data Studio includes tools for designing and querying analytic views. Learn more at this Oracle Live Lab:  [Get Started With Analytic Views using Data Studio](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3594)
+
+### Learn More at Live SQL
 
 You can learn a lot about Analytic Views by reviewing the DDL used to create them.  [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:49:::NO:RP,49:P49_SEARCH:analytic%20views) has many Analytic View tutorials and is a great place to learn more.
 
-## Analytic Views and Oracle Analytic Cloud
+### Analytic Views and Oracle Analytic Cloud
 
 Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Cloud can import Analytic Views into Subject Areas and query them using advanced Analytic View features.  You can learn more by watching this short video:  [Oracle Analytics Native Connection to Analytic Views in Database](https://www.youtube.com/watch?v=pmhVGvEB98k&t=53s)
 
-## Acknowledgements
+### Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
 - Last Updated By - William (Bud) Endress, May 2023

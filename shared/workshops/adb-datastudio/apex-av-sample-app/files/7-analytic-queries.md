@@ -51,7 +51,7 @@ ORDER BY
   , c.continent
   , sg.genre_name;
 </copy>
-~~~~
+~~~
 
 ## Task 2 - Aggregate Data to Quarter, Country, and Search Genre
 

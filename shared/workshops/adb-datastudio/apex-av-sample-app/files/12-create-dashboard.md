@@ -23,7 +23,7 @@ In this lab, you will:
 
 - Complete the previous lab.
 
-### Task 1 - Provide a Data Source to the Sales Chart
+## Task 1 - Provide a Data Source to the Sales Chart
 
 In this task, you will add a SQL Query as the Source to the Sales by Time chart.
 
@@ -60,7 +60,7 @@ Feel free to set any other attributes according to your preferences.
 Next, map the series to the data source.
 
 4. Select **Series 1** within this chart.
-4 As the **Source** choose **Location:  Region Source**.
+4. For the series **Source** choose **Location:  Region Source**.
 4.  Set Column Mappings
 - Label: **TIME**
 - Value: **SALES** 
@@ -75,7 +75,7 @@ View the result:
 
 ![Sales Chart](../images/12-sales-chart.png)
 
-### Task 2 - Provide a Data Source to the Sales Change Prior Period Chart
+## Task 2 - Provide a Data Source to the Sales Change Prior Period Chart
 
 In this task, you will add a SQL Query as the Source to the Sales by Time chart.
 
@@ -92,7 +92,7 @@ This query selects sales change from the prior period at the Month level.  This 
 <copy>
 SELECT
     time.member_name  AS time
-  , sales_chg_prior_period
+  , sales_change_prior_period
 FROM
   analytic view (
     USING movie_sales_av
@@ -100,7 +100,7 @@ FROM
         time
     )
     ADD MEASURES (
-      sales_chg_prior_period AS (LAG_DIFF(sales) OVER (HIERARCHY time OFFSET 1 WITHIN LEVEL))
+      sales_change_prior_period AS (LAG_DIFF(sales) OVER (HIERARCHY time OFFSET 1 WITHIN LEVEL))
     )
   )
 WHERE
@@ -115,7 +115,7 @@ Feel free to set any other attributes according to your preferences.
 Next, map the series to the data source.
 
 4. Select **Series 1** within this chart.
-4. As the **Source** choose **Location:  Region Source**.
+4. For the series **Source** choose **Location:  Region Source**.
 4.  Set Column Mappings
 - Label: **TIME**
 - Value: **SALES\_CHG\_PRIOR_PERIOD** 
@@ -130,7 +130,7 @@ View the result:
 
 ![Sales Change Prior Chart](../images/12-sales-change-prior-period-chart.png)
 
-### Task 3 - Provide a Data Source to the Sales Percent Change Year Ago Chart
+## Task 3 - Provide a Data Source to the Sales Percent Change Year Ago Chart
 
 In this task, you will add a SQL Query as the Source to the Sales by Time chart.
 
@@ -157,7 +157,7 @@ FROM
         , geography
     )
     ADD MEASURES (
-      sales_pct_chg_year_ago AS (LAG_DIFF(sales) OVER (HIERARCHY time OFFSET 1 ACROSS ANCESTOR AT LEVEL YEAR))
+      sales_pct_change_year_ago AS (LAG_DIFF_PERCENT(sales) OVER (HIERARCHY time OFFSET 1 ACROSS ANCESTOR AT LEVEL YEAR))
     )
   )
 WHERE
@@ -174,9 +174,9 @@ Feel free to set any other attributes according to your preferences.
 Next, map the series to the data source.
 
 4. Select **Series 1** within this chart.
-4. As the **Source** choose **Location:  Region Source**.
+4. For the series **Source** choose **Location:  Region Source**.
 4.  Set Column Mappings.
-- Label: **TIME**
+- Label: **GEGRAPHY**
 - Value: **SALES\_PCT\_CHG\_YEAR\_AGO** 
 
 To ensure that all time periods will be displayed:
@@ -185,22 +185,23 @@ To ensure that all time periods will be displayed:
 
 Format the y-axis.
 
+8. Select **y** axis.
 8. In **Value** section, set:
 - **Format** to **Decimal**.
 - **Decimal Places** to **2**.
 
 View the result:
 
-9. **Run** the page.
+10. **Run** the page.
 
 ![Sales Percent Change Year Ago](../images/12-sales-percent-change-year-ago.png)
 
-### Task 4 - Provide a Data Source to the Sales Share of Genre Chart
+## Task 4 - Provide a Data Source to the Sales Share of Genre Chart
 
 In this task, you will add a SQL Query as the Source to the Sales Share of Genre chart. 
 
 1. Select the **Sales Dashboard** page in the APEX App Builder.
-1. Select the **Sales Share of GenrePercent Change Year Ago** chart.
+1. Select the **Sales Share of Genre** chart.
 1.  For the chart's **Source** choose:
 - **Location:  Local Database**
 - **Type:  SQL Query**
@@ -238,34 +239,34 @@ Feel free to set any other attributes according to your preferences.
 Next, map the series to the data source.
 
 4. Select **Series 1** within this chart.
-4. As the **Source** choose **Location:  Region Source**.
+4. For the series **Source** choose **Location:  Region Source**.
 4.  Set Column Mappings
 - Label: **GENRE**
 - Value: **SALES\_SHARE\_GENRE** 
 
 Format the y-axis.
 
+7. Select **y** axis.
 7. In **Value** section, set:
 - **Format** to **Decimal**.
 - **Decimal Places** to **2**.
 
 View the result:
 
-8. **Run** the page.
+9. **Run** the page.
 
 ![Sales Share of Genre](../images/12-sales-share-of-genre.png)
-
-
 
 ## Summary
 
 In this lab you created four charts and in interactive grid.  The query for each chart and the report selects from the analytic view using the same query template, with calculated measures added using the ADD MEASURES clause.
 
 You may now **proceed to the next lab**.
+
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, February 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
+- Last Updated By - William (Bud) Endress, May 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

@@ -23,7 +23,7 @@ Oracle Database Actions provides GUI tools for creating and managing database us
 
 ## Task 1 - Create a Database User and APEX Workspace
 
-As the ADMIN user in SQL Worksheet, create a new database user.
+As the ADMIN user in SQL Worksheet, create a new database user and grant the required privileges. To allow access to the Database Actions tool set the user is also enabled for Oracle REST Data Services (ORDS).
 
 1.  Run the following commands.
 
@@ -83,6 +83,8 @@ END;
 /
 </copy>
 ~~~
+
+You database user and APEX workspace are now ready to use.
 
 You may now **proceed to the next lab**
 
