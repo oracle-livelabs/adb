@@ -1,7 +1,5 @@
 # Learn More
 
-## Introduction
-
 Most of what you need to learn has to do with designing and querying analytic views. Start simple and work towards more complex use cases.  APEX developers will find it important to understand the semantic model, analytic view DDL statements, and more details about querying analytic views using SQL.
 
 ### Learn More at Live SQL
@@ -28,7 +26,7 @@ The Oracle Autonomous Database Data Studio includes tools for designing and quer
 
 Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Cloud can import Analytic Views into Subject Areas and query them using advanced Analytic View features.  You can learn more by watching this short video:  [Oracle Analytics Native Connection to Analytic Views in Database](https://www.youtube.com/watch?v=pmhVGvEB98k&t=53s)
 
-### Acknowledgements
+## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
 - Last Updated By - William (Bud) Endress, May 2023

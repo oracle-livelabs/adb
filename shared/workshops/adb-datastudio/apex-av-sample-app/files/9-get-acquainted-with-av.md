@@ -1,4 +1,4 @@
-# Get Acquainted with Hierarchies and Analytic Views
+# Run Hierarchies and Analytic Views
 
 ## Introduction
 
