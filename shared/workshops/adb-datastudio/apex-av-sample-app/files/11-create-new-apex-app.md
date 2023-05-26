@@ -60,23 +60,22 @@ In this task, you will create a new application.  Feel free to choose a differen
 
 6. Set up the dashboard as follows.
 - Provide a **Page Name**, for example _Sales Dashboard_
-- Choose **Advanced** and **Set as home page**
 - Chart 1: **Name: Sales, Type:  Line**
 - Chart 2: **Name: Sales Change Prior Period, Type: Bar**
 - Chart 3: **Name: Sales Percent Change Year Ago, Type: Bar**
 - Chart 4: **Name: Sales Share of Genre, Type: Bar**
+- Choose **Advanced** and **Set as home page**
 
 ![Add Dashboard Page](../images/11-add-dashboard-page.png)
 
 7. Press **Add Page**
-7. Choose an Icon and press **Save Icon**.
 7. Provide a **Name** for the application, for example _MovieStream_.
 7. Choose an appearance. The example in this lab uses:
 - **Redwood Light**
 - **Top Menu**
-11. Press **Save Changes**.
-11. Press the **Create Application** button.
-11. **Run Application** as the **MOVIESTREAM** user.
+10. Press **Save Changes**.
+10. Press the **Create Application** button.
+10. **Run Application** as the **MOVIESTREAM** user.
 
 Congratulations, you are now the proud owner of four generic graphs!
 

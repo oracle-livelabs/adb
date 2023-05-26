@@ -2,15 +2,27 @@
 
 ## Introduction
 
-Must of what you need to learn has to do with designing and querying analytic views. Start simple and work towards more complex use cases.
+Most of what you need to learn has to do with designing and querying analytic views. Start simple and work towards more complex use cases.  APEX developers will find it important to understand the semantic model, analytic view DDL statements, and more details about querying analytic views using SQL.
+
+### Learn More at Live SQL
+
+Analytic View Quick Start tutorials on Oracle Live SQL are a great place to start.
+
+- [Analytic View Quick Start Part 1 - Create AVs using Simple DDL](https://livesql.oracle.com/apex/livesql/file/tutorial_OXFYP3OODMIZICXPSZ71O58UG.html)
+- [Analytic View Quick Start Part 2 - Simple Query Templates for Developers](https://livesql.oracle.com/apex/livesql/file/tutorial_OXRHLW558R6D9PTUNCNPB96OZ.html)
+
+The deep dives provide more detail and include the descriptive metadata used by applications such as Oracle Analytic Cloud.
+
+- [Creating Analytic Views - Getting Started Deep Dive](https://livesql.oracle.com/apex/livesql/file/tutorial_EDVE861IID1QUD1NIUPU5ALEW.html)
+- [Querying Analytic Views - Getting Started Deep Dive](https://livesql.oracle.com/apex/livesql/file/tutorial_EDVE861H8YZ72TOBQQ4KS6EH0.html)
+
+[Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:49:::NO:RP,49:P49_SEARCH:analytic%20views) has many more Analytic View tutorials.
+
+Additional learning opportunities can be found as the [Analytic View Collateral Library](https://xcsvu3mx9d9bvet-adppm.adb.uk-london-1.oraclecloudapps.com/ords/r/av_demo/bud-s-collateral-library/)
 
 ### Oracle Autonomous Database Data Studio
 
 The Oracle Autonomous Database Data Studio includes tools for designing and querying analytic views. Learn more at this Oracle Live Lab:  [Get Started With Analytic Views using Data Studio](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3594)
-
-### Learn More at Live SQL
-
-You can learn a lot about Analytic Views by reviewing the DDL used to create them.  [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:49:::NO:RP,49:P49_SEARCH:analytic%20views) has many Analytic View tutorials and is a great place to learn more.
 
 ### Analytic Views and Oracle Analytic Cloud
 
