@@ -1,4 +1,4 @@
-# Run Queries that Select from the Analytic View
+# Examine Queries that Select from the Analytic View
 
 
 ## Introduction

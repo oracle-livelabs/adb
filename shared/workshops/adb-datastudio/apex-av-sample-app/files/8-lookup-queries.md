@@ -1,4 +1,4 @@
-# Run Lookup Queries
+# Examine Lookup Queries
 
 ## Introduction
 

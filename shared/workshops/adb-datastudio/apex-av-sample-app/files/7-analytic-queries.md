@@ -1,4 +1,4 @@
-# Run Analytic Queries that Select from Tables
+# Examine Analytic Queries that Select from Tables
 
 
 ## Introduction
