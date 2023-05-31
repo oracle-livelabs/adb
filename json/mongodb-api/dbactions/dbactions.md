@@ -355,9 +355,10 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
 
     ![final chart display](./images/chart-display.png " ")
 
+You may now proceed to the next lab to clean up your lab environment.
 
 ## Acknowledgements
 
 - **Author** - Roger Ford, Principal Product Manager
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Roger Ford, March 2022
+- **Last Updated By/Date** - Hermann Baer, June 2023
