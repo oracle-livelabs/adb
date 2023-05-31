@@ -16,6 +16,9 @@ In this lab, you will:
 
 ### Prerequisites
 
+>_**Note:**
+This is not a hands-on lab; instead, it is a demo of how integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the **Access the Data Lake using Autonomous Database and Data Catalog** LiveLabs workshop._
+
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
 * **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance and **Task 4**: (Optional) Create a Data Catalog Instance. If you don't have a Data Catalog instance installed, you can simply follow the instructions in this lab.
@@ -172,7 +175,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

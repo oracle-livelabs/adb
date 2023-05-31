@@ -1,5 +1,21 @@
 <!--- This is a comment. --->
 
+<if type="livelabs">
+# Review the Workshop Environment Setup (Optional)
+
+## Introduction
+
+Since you are using the LiveLabs environment, you **don't** have administrative privileges to create any OCI resources; therefore, all of the OCI resources that you need in this workshop are already created for you with your LiveLabs reservation.
+
+If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs: [Build a Data Lake with Autonomous Warehouse](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=877).
+
+> **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new ADW administrator user and a ADW administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage an ADW and Data Catalog instances.
+
+Estimated Time: 5 minutes
+
+</if>
+
+<if type="freetier">
 # Set Up the Workshop Environment
 
 ## Introduction
@@ -162,6 +178,8 @@ Watch our short overview video that explains key features in Data Catalog.
 
 To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops.
 
+</if>
+
 You may now proceed to the next lab.
 
 ## Learn More
@@ -174,7 +192,7 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

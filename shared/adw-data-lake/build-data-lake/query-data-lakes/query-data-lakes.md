@@ -17,9 +17,9 @@ In this lab, we will show you how to do the following:
 * Create a new table that joins the three created tables to show customers data and churners. The tables data originated from the OCI and Amazon S3 buckets.
 
 ### Prerequisites
-None.
+Access to an ADW and Data Catalog instances, if you choose to perform the steps.
 
->**Note:**    
+>**Note:**
 _**This is not a hands-on lab; instead, it is a demo of how to query data from different clouds: OCI Object Storage and Amazon S3 buckets.**_
 
 ## Task 1: Navigate to the Data Load Page
@@ -279,7 +279,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

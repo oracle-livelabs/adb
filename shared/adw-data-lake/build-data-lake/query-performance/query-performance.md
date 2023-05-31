@@ -372,7 +372,13 @@ Let's just have a quick look at what all of this means for a relatively small pa
 * [Create Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-MATERIALIZED-VIEW.html#GUID-EE262CA4-01E5-4618-B659-6165D993CA1B).
 * [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
 
-You may now proceed to the next lab.
+<if type="freetier">
+    You may now proceed to the next lab.
+</if>
+
+<if type="livelabs">
+**This concludes the lab and the workshop**.
+</if>
 
 ## Acknowledgements
 
@@ -380,7 +386,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
