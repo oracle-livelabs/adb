@@ -26,6 +26,7 @@ In this workshop, we'll start with two key components of MovieStream's architect
 - Use Oracle Analytics Cloud to create compelling dashboards from your data set
 - Load and analyze JSON collections
 - Load the latest news from a public REST service and run a sentiment analysis of that news
+- Create data pipelines for continuous data import and export
 
 ![variety of data loading methods](images/graphic-showing-loading-methods.png)
 
