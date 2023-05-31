@@ -2,19 +2,20 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog. You will learn how to load (and link) data into your ADW instance from a variety of locations and in different formats, using Autonomous Database tools and APIs. You will analyze the linked and loaded data with SQL and also query Oracle Object Storage buckets and Amazon S3 (Simple Storage Service) from within ADW.
+The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog and Amazon Simple Storage Service (S3).
 
-**Oracle MovieStream** is a fictitious movie streaming service - similar to those that to which you currently subscribe. They face challenges that are typical to many organizations across industries. MovieStream must:
+In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle ADW has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
 
-* Gain a better understanding of their customers to ensure that they love the service
-* Offer the right products to the right customers at the right price
-* Grow the business to become a dominant player in the streaming business
+Traditionally, there were two main paths for creating data lake architectures: The database-centric and the object store-centric approach. Each offers unique strengths. The database-centric model excels in performance, concurrency, governance, and security. The object store-centric approach provides instant data access, multiple-engine compatibility, and multi-cloud support.
 
-Oracle Cloud provides an amazing platform to productively deliver secure, insightful, scalable and performant solutions. MovieStream designed their solution leveraging the world class Oracle Autonomous Database and Oracle Cloud Infrastructure (OCI) Data Lake services. Their data architecture is following the Oracle Reference Architecture [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2) - which is used by Oracle customers around the world. It's worthwhile to review the architecture so you can understand the value of integrating the **data lake** and **data warehouse** - as it enables you to answer more complex questions using all your data.
+There are scenarios where an object store-centric approach shines. ADW supports a wide range of file formats and is compatible across multiple cloud platforms. It even facilitates seamless collaboration and data sharing with the Delta Sharing Protocol, and robust data governance through Data Catalogs integration.
+
+The focus of this workshop is on the process of building an object store-centric data lake with ADW. Whether you're an organization seeking superior performance, secure governance, or versatile support for diverse data formats and cloud platforms, this workshop is designed to equip you with the practical skills to leverage the full potential of your data with Oracle ADW. ADW provides an efficient, cost-effective, and robust data management solutions.
 
 In this workshop, we'll start with two key components of MovieStream's architecture. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a **landing** zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a **gold** zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
 
-![architecture](images/architecture.png)
+
+  ![The architecture diagram.](images/architecture-diagram.png)
 
 Estimated Time: 2 hours
 
@@ -40,6 +41,8 @@ In this workshop, you will:
 * Load and analyze the news from REST endpoints.
 * Create external tables using the Delta Sharing protocol
 * Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
+* Use Oracle as a data provider.
+* Integrate ADW with centrally managed Data Catalogs.
 * Improve query performance by creating a materialized view over an external table.
 * Create and manage partitioned external tables to improve performance.
 
@@ -49,7 +52,7 @@ In this workshop, you will:
 
   *Note: If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)***
 
-* At least one Data Catalog user in your tenancy. This user must be created in Oracle Cloud Infrastructure Identity and Access Management (IAM).
+* This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
 You may now proceed to the next lab.
 
