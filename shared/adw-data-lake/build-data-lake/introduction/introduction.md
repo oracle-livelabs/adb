@@ -67,10 +67,9 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributors:**
-    * Nilay Panchal, ADB Product Management
-    * Richard Green, Database User Assistance
-    * Marty Gubar, ADB Product Management
+
     * Alexey Filanovskiy, Senior Product Manager
+    * Marty Gubar, ADB Product Management
 * **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
