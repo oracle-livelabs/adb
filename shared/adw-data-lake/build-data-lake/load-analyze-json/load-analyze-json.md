@@ -81,8 +81,7 @@ JSON data is organized very differently than typical warehouse data. There is a 
     <copy>
     select json_serialize(json_document) as json
     from movie_collection
-    where rownum < 10
-    ;
+    where rownum < 10;
     </copy>
     ```
 
@@ -109,8 +108,7 @@ Oracle Database offers a wide range of SQL functions that help you analyze JSON 
         m.json_document.title,
         m.json_document.year
     from movie_collection m
-    where m.json_document.cast like '%Meryl Streep%'
-    ;
+    where m.json_document.cast like '%Meryl Streep%';
     </copy>
     ```
 

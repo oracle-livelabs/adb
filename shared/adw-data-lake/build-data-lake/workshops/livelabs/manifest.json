@@ -2,6 +2,12 @@
     "workshoptitle": "Build a Data Lake with Autonomous Warehouse",
     "help": "livelabs-help-db_us@oracle.com",
         "tutorials": [
+        {    
+            "title": "Introduction",
+            "type":"freetier",
+            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "filename": "./../../introduction/introduction.md"
+        },
         {
             "title": "Get Started with LiveLabs",
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"

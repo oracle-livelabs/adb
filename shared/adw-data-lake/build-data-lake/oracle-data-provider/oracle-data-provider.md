@@ -49,7 +49,8 @@ This lab requires the completion of the following labs/tasks from the **Contents
     BEGIN
     DBMS_CLOUD.EXPORT_DATA(
         credential_name => 'OBJ_STORAGE_CRED',
-        file_uri_list => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/use-your-namespace/b/training-data-lake/o/pizza_locations',
+        file_uri_list =>
+        'https://objectstorage.ca-toronto-1.oraclecloud.com/n/use-your-namespace/b/training-data-lake/o/pizza_locations',
         format => json_object('type' value 'parquet'),
         query => 'select * from PIZZA_LOCATION'
     );

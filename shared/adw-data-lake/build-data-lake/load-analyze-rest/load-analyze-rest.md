@@ -313,7 +313,7 @@ Now that you have the latest news for each actor, you will derive the sentiment 
 
     ![Query sentiment](images/query-sentiment.png)
 
-    As to be expected, the computed sentiment isn't great. However, it's not all bad; as you scroll through the results, there are some positive articles. Also, the description field is fairly small. A richer text field would likely produce even better results.
+    The Total Results is 54 in our example; however, your results might be different. Scroll to the right tio view the complete results. The description field is fairly small. A richer text field would likely produce even better results.
 
 4. MovieStream needs to decide which movies to promote on their site. Actors that are generating more buzz and the type of news will likely have some influence on their recommendations. Query the ranking for the actors. Copy and paste the following code into the SQL Worksheet, and then click **Run Statement** in the Worksheet toolbar.
 

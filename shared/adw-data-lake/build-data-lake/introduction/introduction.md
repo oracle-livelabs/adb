@@ -12,9 +12,6 @@ There are scenarios where an object store-centric approach shines. ADW supports 
 
 The focus of this workshop is on the process of building an object store-centric data lake with ADW. Whether you're an organization seeking superior performance, secure governance, or versatile support for diverse data formats and cloud platforms, this workshop is designed to equip you with the practical skills to leverage the full potential of your data with Oracle ADW. ADW provides an efficient, cost-effective, and robust data management solutions.
 
-In this workshop, we'll start with two key components of MovieStream's architecture. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a **landing** zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a **gold** zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
-
-
   ![The architecture diagram.](images/architecture-diagram.png)
 
 Estimated Time: 2 hours
@@ -24,9 +21,6 @@ A data lake enables an enterprise to store all of its data in a cost effective, 
 
 ### What is a Data Warehouse?
 With a data warehouse, you perform data transformation and cleansing before you commit the data to the warehouse. With a data lake, you ingest data quickly and prepare it on the fly as people access it. A data lake supports operational reporting and business monitoring that require immediate access to data and flexible analysis to understand what is happening in the business while it happening. See [Cloud data lake house - process enterprise and streaming data for analysis and machine learning](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2).
-
-### What is a Lakehouse?
-The Lakehouse combines the abilities of a data lake and a data warehouse to process a broad range of enterprise and streaming data for business analysis and machine learning. It offers an architecture that eliminates data silos – allowing you to analyze data across your data estate.
 
 For additional information, see [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf) and the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://apexapps.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
@@ -46,6 +40,12 @@ In this workshop, you will:
 * Improve query performance by creating a materialized view over an external table.
 * Create and manage partitioned external tables to improve performance.
 
+You can create a table on top of Parquet files, using **Database Actions** in ADB and then run SQL and REST queries. You can also create a table on top of JSON files using a PL/SQL API and then run SQL, JSON API, and MongoDB API queries. You can create a table on top of CSV files using a PL/SQL API and then run SQL queries. Finally, you can create external tables on top of public REST endpoints and Delta Sharing.
+
+ ![The diagram shows the sources for creating tables.](images/table-sources-diagram.png)
+
+
+
 ### Prerequisites
 
 * An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported. You may use your own cloud account or you can get a Free Trial account as described in the **Get Started** lab in the **Contents** menu.
@@ -63,6 +63,7 @@ You may now proceed to the next lab.
 * [Using Oracle Autonomous Database on Shared Exadata Infrastructure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [What Is a Data Catalog and Why Do You Need One?](https://www.oracle.com/big-data/what-is-a-data-catalog/)
+* [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf) and the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://apexapps.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data

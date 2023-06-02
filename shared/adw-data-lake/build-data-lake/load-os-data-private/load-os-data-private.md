@@ -44,6 +44,36 @@ Download a **.csv** file that contains a simulation of sensitive customer retent
 
 Create a private Object Storage bucket to store your data. For more information about Oracle Object Storage, see [Explore more about Object Storage in Oracle Cloud.](https://docs.oracle.com/en-us/iaas/Content/Object/home.htm)
 
+<if type="livelabs">
+
+1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click the **Launch OCI** button.
+
+    ![Click the Launch OCI button.](images/click-launch-oci.png " ")
+
+2. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
+
+3. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
+
+4. Click **Create Bucket**.
+
+5. In the **Create Bucket** panel, specify the following:
+    - **Bucket Name:** Enter a meaningful name for the bucket.
+    - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
+    - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
+
+    >**Note:** Bucket names must be unique per tenancy and region.
+
+6. Click **Create** to create the bucket.
+
+  ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
+
+7. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
+
+  ![The new bucket is displayed on the Buckets page.](./images/ll-bucket-created.png " ")
+</if>
+
+<if type="freetier">
+
 1. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
 2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
@@ -64,6 +94,8 @@ Create a private Object Storage bucket to store your data. For more information 
 6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
 
   ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
+
+  </if>
 
 ## Task 3: Upload Customer Data to the Private Object Storage Bucket
 
@@ -192,7 +224,7 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-4. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **Data Load** card.
+4. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
@@ -200,7 +232,7 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 
     ![Click the Cloud Locations card.](./images/click-cloud-locations.png " ")
 
-6. On the **Manage Cloud Store** page, click **Add Cloud Storage**.
+6. On the **Manage Cloud Store** page, click **Add Cloud Store Location**.
 
     ![Click Add Cloud Storage.](./images/click-add-cloud-store-location.png " ")
 
@@ -217,7 +249,7 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
         ![Private key.](./images/private-key-value.png " ")
 
         + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
-        + **Oracle Cloud Infrastructure User Name:** Enter your username OCID that you copied earlier to a text file.
+        + **Oracle Cloud Infrastructure User Name:** Enter your _**user's OCID**_ (and not the actual username).  _**Note:** If you did complete the optional **Task 5**, then the you should have already saved the user's OCID (and not the actual username) in a text file of your choice. If you didn't perform the optional **Task 5**, you can find the user's OCID as follows: Navigate to the **Oracle Cloud Console**. Click the **User's** drop-down list, and then select **User settings**. In the **User Details** page, in the **User Information** tab, click **Copy** next to the **OCID** field. Save this user OCID in your text file._
     + Select the **Bucket URI** option.
     + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
 

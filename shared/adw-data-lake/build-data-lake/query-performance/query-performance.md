@@ -314,7 +314,7 @@ Let's just have a quick look at what all of this means for a relatively small pa
     <copy>
     SELECT day_id, month
     FROM sales_sample_old_api
-    FETCH FIRST TWO ROWS ONLY;
+    FETCH FIRST 5 ROWS ONLY;
     </copy>
     ```
 

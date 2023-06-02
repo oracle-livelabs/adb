@@ -34,7 +34,7 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
 ## Task 1: Navigate to the Data Load Page
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator, `ADMIN`. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -45,7 +45,7 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **Data Load** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
@@ -140,11 +140,15 @@ The `DBMS_CLOUD` package supports loading data files from the following Cloud so
 
 Use the `DBMS_CLOUD` package to create an external table and to also load it with the public Object Storage Parquet file data.
 
-1. From the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card.
+1. Click the **Database Actions | Launchpad** banner to display the Home page.
+
+    ![Click the banner.](./images/click-banner.png " ")
+
+2. In the **Development** section, click the **SQL** card.
 
     ![Click the SQL card.](./images/click-sql-card.png " ")
 
-2. Create an external table and load it with data from a Parquet file in a _public_ OCI Object Storage bucket. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table. You can access the Object Storage Parquet file using the OCI Object Storage Native URI format as follows:
+3. Create an external table and load it with data from a Parquet file in a _public_ OCI Object Storage bucket. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table. You can access the Object Storage Parquet file using the OCI Object Storage Native URI format as follows:
 
     ```
     https://objectstorage.region.oraclecloud.com/n/namespace-string/b/bucket/o/filename
@@ -171,7 +175,7 @@ Use the `DBMS_CLOUD` package to create an external table and to also load it wit
 
     ![Click Run Script.](./images/parquet-table-created.png " ")
 
-3. To view the data in the new external table, run the following query.
+4. To view the data in the new external table, run the following query.
 
     ```
     <copy>
