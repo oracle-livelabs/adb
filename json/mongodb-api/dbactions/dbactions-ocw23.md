@@ -110,14 +110,14 @@ The following lab will focus on aggregation pipelines, illustrate its functional
     </copy>
     ```
 
-	![Installation of Mongo Compass](./images/mongo-compass-install.png)  _**HB: screenshot to be made after publication of LL**_
+	![Installation of Mongo Compass](./images/mongo-compass-install.png)
 
 2. Start Mongo Compass and connect with your MongoDB connect string. 
 
     Just start Mongo Compass from the command line:
 
     ```
-    $ <copy>mongo-compass</copy>
+    $ <copy>mongodb-compass</copy>
     ```
     The connect string is in the form of the following, with your username and password, shown also with our example user hol23c and its password.
     ```
