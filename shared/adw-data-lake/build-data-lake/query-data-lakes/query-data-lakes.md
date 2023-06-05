@@ -28,7 +28,13 @@ _**This is not a hands-on lab; instead, it is a demo of how to query data from d
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
@@ -71,6 +77,8 @@ In this task, we define a **Cloud Location** to connect to a public Oracle Objec
 
     ![The cloud store location is created.](./images/oci-cloud-location-created.png " ")
 
+6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
+
 ## Task 3: Load Data from the OCI Cloud Location and Create a Table
 
 In this task, we will load data and create the **customer\_contact** and table in your Autonomous Database instance.
@@ -101,7 +109,7 @@ In this task, we will load data and create the **customer\_contact** and table i
 
     ![Click yes to load objects to a single table.](images/load-to-single-table.png)
 
-    The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data linking job section. Again, since we already have linked to the **customer\_contact** file in a previous lab, the data load utility changed the name of the newly created external table to **customer\_contact_1**. 
+    The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data linking job section. Again, since we already have linked to the **customer\_contact** file in a previous lab, the data load utility changed the name of the newly created external table to **customer\_contact_1**.
 
     >**Note:** You can click the **customer\_contact (23 MB)** link to display the settings for the table that will be created. You can preview the external table and change its name, data type, and so on.
 
@@ -133,7 +141,7 @@ In this task, we define a **Cloud Location** to connect to our **`moviestream-ch
 
 ![The potential_churners.csv file in the S3 bucket.](images/aws-s3-bucket.png)
 
-1. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, click the **DATA LOAD** card. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
 
 2. On the **Manage Cloud Store** page, click **Add Cloud Store Location**.
 
@@ -164,6 +172,8 @@ In this task, we define a **Cloud Location** to connect to our **`moviestream-ch
 5. Click **Create**. The **aws-s3-data-lake** cloud location is displayed in the **Manage Cloud Store** page.
 
     ![The cloud store location is created.](./images/aws-cloud-location-created.png " ")
+
+6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
 
 ## Task 5: Link to Data from the AWS S3 Cloud Location and Create an External Table
 

@@ -36,7 +36,7 @@ _If you already launched the workshop and logged in to the Console using the ins
 
     ![The My Reservations tab and the Launch Workshop link for a sample workshop are highlighted.](./images/my-reservations.png " ")
 
-    The workshop is displayed in a new tab named **Run Workshop - Access the Data Lake using Autonomous Database and Data Catalog**. Click the **View Login Info** link in the banner.
+    The workshop is displayed in a new tab named **Run Workshop - Build a Data Lake with Autonomous Database**. Click the **View Login Info** link in the banner.
 
     ![Click View Login Info.](./images/ll-view-login-info.png " ")
 
@@ -62,6 +62,8 @@ _If you already launched the workshop and logged in to the Console using the ins
 
 ## Task 2: Download .csv Files from the MovieStream Data Lake to your Local Computer
 
+Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
+
 1. Right-click on each of the links below, and then click **Save link as...** from the context menu to download the files to a folder on your local computer.
 
     * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
@@ -73,16 +75,18 @@ _If you already launched the workshop and logged in to the Console using the ins
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
+    >**Note:** If you are using a **LiveLabs reservation** (aka Sandbox or green button), follow the instructions in **Task 1** on how to log in to the Console.
+
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **Data Load** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
@@ -139,10 +143,9 @@ In this task you will load the two .csv files that you downloaded earlier into t
 This completes the lab on loading .csv files from your local computer to new tables in your ADB instance.
 
 </if>
-<!-- End LiveLabs section of lab -->
+<!-- End of LiveLabs section -->
 
 <if type="freetier">
-
 ## Task 1: Download .csv Files from the MovieStream Data Lake to your Local Computer
 
 1. Right-click on each of the links below, and then click **Save link as...** from the context menu to download the files to a folder on your local computer.
@@ -159,13 +162,13 @@ This completes the lab on loading .csv files from your local computer to new tab
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
+    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **Data Load** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 

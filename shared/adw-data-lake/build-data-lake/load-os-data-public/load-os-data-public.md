@@ -34,16 +34,31 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
 ## Task 1: Navigate to the Data Load Page
 
+If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the **Database Actions | Launchpad** Home page. In the **Data Studio** section, click the **DATA LOAD** card. Next, skip to **Task 2**; otherwise, start with **step 1** below.
+
+![Click the banner.](./images/click-banner.png " ")
+
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator, `ADMIN`. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
+</if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+<if type="livelabs">
+    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
+    </if>
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    <if type="freetier">
+    ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    </if>
 
 5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
@@ -142,7 +157,7 @@ Use the `DBMS_CLOUD` package to create an external table and to also load it wit
 
 1. Click the **Database Actions | Launchpad** banner to display the Home page.
 
-    ![Click the banner.](./images/click-banner.png " ")
+    ![Click the banner.](./images/click-banner-3.png " ")
 
 2. In the **Development** section, click the **SQL** card.
 

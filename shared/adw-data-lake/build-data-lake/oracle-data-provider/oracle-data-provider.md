@@ -28,7 +28,13 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
@@ -71,9 +77,15 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 1. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region that contains your bucket.
+2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. You can always access the **Reservation Information** panel to view your assigned compartment name. Make sure you are in the region that contains your bucket.
 
+    <if type="livelabs">
+    ![The buckets page is displayed.](./images/ll-bucket-created.png " ")
+    </if>
+
+    <if type="freetier">
     ![The buckets page is displayed.](./images/buckets-page.png " ")
+    </if>
 
 3. Click your bucket's name link in the **Name** column. The **Bucket Details** page is displayed. Scroll-down the page to the **Objects** section. The exported **Parquet** file is displayed.
 

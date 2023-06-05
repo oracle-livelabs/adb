@@ -30,7 +30,13 @@ This lab requires the completion of the following labs/task from the **Contents*
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
@@ -199,7 +205,9 @@ For example, you will have to:
 
 Let's just have a quick look at what all of this means for a relatively small partitioned table with an example.
 
-1. A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents sales data for two years. The data is in the **sales\_sample** folder in the **moviestream\_landing** Object Storage bucket that you used in the previous task. There are **24** `parquet` data files in this folder. Each file represents a month's worth of data for the years **2019** and **2020**.
+A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents sales data for two years. The data is in the **sales\_sample** folder in the **moviestream\_landing** Object Storage bucket that you used in the previous task. There are **24** `parquet` data files in this folder. Each file represents a month's worth of data for the years **2019** and **2020**.
+
+1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Development** section, click the **SQL** card.
 
 2. Let's create a monthly partitioned external table on top of these `parquet` files, using the traditional **DBMS\_CLOUD** PL/SQL package and the **CREATE\_EXTERNAL\_PART\_TABLE** procedure. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 

@@ -74,7 +74,7 @@ Create a private Object Storage bucket to store your data. For more information 
 
 <if type="freetier">
 
-1. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
+1. In the **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
 2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
 
@@ -101,17 +101,11 @@ Create a private Object Storage bucket to store your data. For more information 
 
 Upload the **`potential_churners.csv`** file that you downloaded earlier in this lab to your newly created private Object Storage bucket.
 
-1. If you are already on the **Buckets** page, skip to step 3; otherwise, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
-
-2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where your bucket was created.
-
-3. On the **Buckets** page, click the bucket's name link to which you want to upload the *.csv file. The **Bucket Details** page is displayed.
+1. On the **Buckets** page, click the new bucket name link. On the **Bucket Details** page, scroll down the page to the **Objects** section, and then click **Upload**.
 
   ![The Bucket Details page is displayed.](./images/bucket-details.png " ")
 
-4. Scroll down the page to the **Objects** section, and then click **Upload**.
-
-5. In the **Upload Objects** panel, you can drag and drop a single or multiple files into the **Choose Files from your Computer** field or click **select files** to choose the file(s) that you want to upload from your computer. In this example, we used the drag-and-drop method to select the **`potential_churners.csv`** file from our **Downloads** folder.
+2. In the **Upload Objects** panel, you can drag and drop a single or multiple files into the **Choose Files from your Computer** field or click **select files** to choose the file(s) that you want to upload from your computer. In this example, we used the drag-and-drop method to select the **`potential_churners.csv`** file from our **Downloads** folder.
 
   ![The Upload Objects panel is displayed.](./images/select-file.png " ")
 
@@ -125,19 +119,15 @@ Upload the **`potential_churners.csv`** file that you downloaded earlier in this
 
     ![The Upload file is displayed.](./images/uploaded-file-displayed.png " ")
 
-8. To return to the **Buckets** page, click the **Object Storage** link in the breadcrumbs.
-
 ## Task 4: Locate the Base URL for the Object Storage File
 
 Find the base URL of the object you just uploaded to your private Object Storage bucket.
 
-1. On the **Buckets** page, click the bucket's name link that contains the object.
-
-2. The **Bucket Details** page is displayed. Scroll down to the **Objects** section. In the row for the **`potential_churners.csv`** file, click the 3-dot ellipsis icon, and then select **View Object Details** from the context menu.
+1. On the **Bucket Details** page, scroll down to the **Objects** section. In the row for the **`potential_churners.csv`** file, click the 3-dot ellipsis icon, and then select **View Object Details** from the context menu.
 
     ![Select View Object Details from the ellipsis on the right of any uploaded file.](images/view-object-details.png " ")
 
-3.  In the **Object Details** panel, copy the **URL Path (URI)** that points to the location of the file in your private Object Storage bucket up to the **`/o`** part. **_Do not include the trailing slash;otherwise, you will get an error message when you use the URL_**. Save the base URL in a text editor of your choice such as Notepad in MS-Windows. You will use this URL in the upcoming tasks. Next, click **Cancel** to close the **Object Details** page.
+2. In the **Object Details** panel, copy the **URL Path (URI)** that points to the location of the file in your private Object Storage bucket up to the **`/o`** part. **_Do not include the trailing slash;otherwise, you will get an error message when you use the URL_**. Save the base URL in a text editor of your choice such as Notepad in MS-Windows. You will use this URL in the upcoming tasks. Next, click **Cancel** to close the **Object Details** page.
 
     ![Copy the base URL.](images/url-path.png " ")
 
@@ -149,9 +139,9 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
     ![The URL highlighted.](images/url.png " ")
 
-## Task 5: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
+## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five)._
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys    ._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
 
@@ -159,11 +149,11 @@ In this task, you will get the following items that are required to create a Clo
 + The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
 + The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
 
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **OCI user's name** or **User settings**. This username might have a prefix followed by an email address such as: `oracleidentitycloudservice/username@domainname.com`.
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
 
     ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
 
-2. The **User Details** page is displayed. Make a note of this username as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
+2. The **User Details** page is displayed. In the **User Information** tab, click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
@@ -216,13 +206,19 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 
 1. On the **Oracle Cloud Console** Home page, open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+
+    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
+</if>
+
+<if type="freetier">
 2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
+</if>
 
 3. On the **Autonomous Database details** page, click **Database actions**.
-
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
 4. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
