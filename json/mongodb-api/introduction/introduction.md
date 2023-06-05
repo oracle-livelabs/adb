@@ -101,4 +101,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author** - Roger Ford, Principal Product Manager
-* **Last Updated By/Date** - Roger Ford, March 2022
+* **Last Updated By/Date** - Hermann Baer, June 2023
