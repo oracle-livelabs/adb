@@ -65,9 +65,11 @@ To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This packag
 3. What does the data set in our table look like? Let's run another simple query:
 
     ```
-    <copy>SELECT *
+    <copy>
+    SELECT *
     FROM vw_cust_funds
-    ORDER BY 1;</copy>
+    ORDER BY 1;
+    </copy>
     ```
 
 4. This will return something like the following output:
@@ -76,24 +78,45 @@ To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This packag
 
     **NOTE:** Unlike the movie sales data, we now have a single row per customer and you can see that in the column **insufficient\_funds\_incidents** there are single numeric values that indicates how many times the customer ran out of funds in their account.
 
-5. Run the following query to show that the column contains only four values:
+5. Run the following query to create a vw\_cust\_funds2 view with a condition to check insufficient funds incidents. When the condition insufficient funds incident is true, the value is 1 and when there is no incident, the value is 0. 
 
     ```
-    <copy>SELECT
-    DISTINCT insuff_funds_incidents
-    FROM vw_cust_funds
-    order by 1;</copy>
+    <copy>
+    CREATE OR REPLACE VIEW vw_cust_funds2 AS
+    SELECT
+    customer_id,
+    segment_name,
+    credit_balance,
+    education,
+    full_time,
+    gender,
+    household_size,
+    job_type,
+    late_mort_rent_pmts,
+    marital_status,
+    mortgage_amt,
+    num_cars,
+    num_mortgages,
+    pet,
+    rent_own,
+    years_current_employer_band,
+    years_customer,
+    years_residence_band,
+    commute_distance,
+    commute_distance_band,
+        CASE insuff_funds_incidents WHEN 0 THEN 0 ELSE 1 END insuff_funds_indicator
+    FROM vw_cust_funds;
+    </copy>
     ```
 
-    ![Query result showing the column contains only four values](images/3038282313.png)
-
-    Obviously we are interested in all the values in this column, not just the non-zero values. From a machine learning perspective, it is important for this type of analysis to have situations where an event did occur, as well as situations where an event does not occur - we need data to cover both sides of the story. Now that we know we have the right data set in place, we can proceed to build our model.
+    
+    Obviously,  we are interested in the values of the insuff\_funds\_indicator. From a machine learning perspective, it is important for this type of analysis to have situations where an event did occur, as well as situations where an event does not occur - we need data to cover both sides of the story. Now that we know we have the right data set in place, we can proceed to build our model.
 
 ## Task 2: Building the Model
 
 ### Overview
 
-In this case, we will use the **CREATE\_MODEL2** procedure to help us understand which demographic attributes have the most impact to predict if a customers is likely to incur an insufficient funds event. The CREATE\_MODEL2 procedure uses an Attribute Importance algorithm - Minimum Description Length to determine the relative importance of attributes in predicting the column to be explained, in tihs case, `insuff\_funds\_incidents`.
+In this case, we will use the **CREATE\_MODEL2** procedure to help us understand which demographic attributes have the most impact to predict if a customers is likely to incur an insufficient funds event. The CREATE\_MODEL2 procedure uses an Attribute Importance algorithm - Minimum Description Length to determine the relative importance of attributes in predicting the column to be explained, in this case, `insuff_funds_indicator`.
 
 To run this analysis, we need to provide the following information:
 
@@ -103,7 +126,7 @@ To run this analysis, we need to provide the following information:
 
 Then, the `CREATE_MODEL2` procedure takes the following parameters:
 
-- `MODEL_NAME`:  A unique model name that you will give to the model. The name of the model is in the form [schema\_name.]model\_name. If you do not specify a schema, your own schema is used. Here, the model name is `AI_EXPLAIN_OUTPUT`. 
+- `MODEL_NAME`:  A unique model name that you will give to the model. The name of the model is in the form [schema\_name.]model\_name. If you do not specify a schema, your own schema is used. Here, the model name is `AI_OUTPUT`. 
 
 - `MINING_FUNCTION`:  Specifies the machine learning function or technique. Since this is an attribute importance ranking problem, specify `ATTRIBUTE_IMPORTANCE`.  
 
@@ -111,7 +134,7 @@ Then, the `CREATE_MODEL2` procedure takes the following parameters:
 
 - `SET_LIST`: Specifies `SETTING_LIST`.
 
-- `TARGET_COLUMN_NAME`:  For a supervised model, that is, where we have a known outcome. the target column in the build data. In this case, it is the column for insufficient funds events. 
+- `TARGET_COLUMN_NAME`:  For a supervised model, that is, where we have a known outcome. This is the target column in the build data. In this case, it is the column for insufficient funds events. 
 
 These settings are described in [`DBMS_DATA_MINING.CREATE_MODEL2 Procedure`](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/DBMS_DATA_MINING.html#GUID-560517E9-646A-4C20-8814-63FDA763BFD9).
 
@@ -125,12 +148,12 @@ BEGIN
   v_setlst('ALGO_NAME') := 'ALGO_AI_MDL';
  
   DBMS_DATA_MINING.CREATE_MODEL2
-  (MODEL_NAME           => 'AI_EXPLAIN_OUTPUT',
+  (MODEL_NAME           => 'AI_OUTPUT',
    MINING_FUNCTION      => 'ATTRIBUTE_IMPORTANCE',
-   DATA_QUERY           => 'select * from vw_cust_funds',
+   DATA_QUERY           => 'select * from vw_cust_funds2',
    SET_LIST             => v_setlst,
-   CASE_ID_COLUMN_NAME  => customer_id,
-   TARGET_COLUMN_NAME => 'insuff_funds_incidents');
+   CASE_ID_COLUMN_NAME  => 'customer_id',
+   TARGET_COLUMN_NAME => 'insuff_funds_indicator');
 END;</copy>
     ```
 
@@ -150,7 +173,7 @@ Learn more about [model detail views](https://docs.oracle.com/en/database/oracle
 
 2. This should return the following results:
 
-    ![Query results from the model](images/output_of_attribute_importance.png)
+    ![Query results from the model](images/output_attribute_importance.png)
 
 What do the above columns mean?
 
@@ -187,4 +210,4 @@ Now that we have identified these key demographic attributes, we can do more ana
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Sarika Surampudi, April 2023
+- **Last Updated By/Date** - Sarika Surampudi, May 2023
