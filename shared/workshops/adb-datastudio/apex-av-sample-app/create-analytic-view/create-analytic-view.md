@@ -143,11 +143,11 @@ You can view the analytic view in the Database Actions Analysis application.
 1. Choose **DATA ANALYSIS** application in the **Data Studio** section.
 1.  Using the vertical ellipsis (...)  choose Analyze.
 
-![Start Analysis](../images/5-start-analyze.png)
+![Start Analysis](images/start-analyze.png)
 
 The basic structure of the analytic view is displayed in the tree on the left side.  You will see three hierarchies, columns in the hierarchies, and four measures.  A report is displayed on the right side.
 
-![Start Analysis](../images/5-analysis-report.png)
+![Start Analysis](images/analysis-report.png)
 
 Feel free to experiment with the Analysis application for a few minutes.
 
@@ -156,11 +156,11 @@ You can also view the analytic view in the editor.
 1.  Return to the Analysis application home screen.
 1.  Using the virtual ellipsis (...)  choose Edit.
 
-![Start Analytic View editor](../images/5-start-analysis-edit.png)
+![Start Analytic View editor](images/start-analysis-edit.png)
 
 Feel free to explore the editor.
 
-![Analytic View editor](../images/5-analysis-edit.png)
+![Analytic View editor](images/5-analysis-edit.png)
 
  When you are done exploring the editor:
 
@@ -170,8 +170,9 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
-- Last Updated By - William (Bud) Endress, May 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Last Updated By - William (Bud) Endress, June
+ 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

@@ -73,7 +73,7 @@ View the result:
 
 8. **Run** the page.
 
-![Sales Chart](../images/12-sales-chart.png)
+![Sales Chart](images/sales-chart.png)
 
 ## Task 2 - Provide a Data Source to the Sales Change Prior Period Chart
 
@@ -128,7 +128,7 @@ View the result:
 
 8. **Run** the page.
 
-![Sales Change Prior Chart](../images/12-sales-change-prior-period-chart.png)
+![Sales Change Prior Chart](images/sales-change-prior-period-chart.png)
 
 ## Task 3 - Provide a Data Source to the Sales Percent Change Year Ago Chart
 
@@ -194,7 +194,7 @@ View the result:
 
 10. **Run** the page.
 
-![Sales Percent Change Year Ago](../images/12-sales-percent-change-year-ago.png)
+![Sales Percent Change Year Ago](images/sales-percent-change-year-ago.png)
 
 ## Task 4 - Provide a Data Source to the Sales Share of Genre Chart
 
@@ -255,7 +255,7 @@ View the result:
 
 9. **Run** the page.
 
-![Sales Share of Genre](../images/12-sales-share-of-genre.png)
+![Sales Share of Genre](images/sales-share-of-genre.png)
 
 ## Summary
 
@@ -265,8 +265,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
-- Last Updated By - William (Bud) Endress, May 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Last Updated By - William (Bud) Endress, June 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

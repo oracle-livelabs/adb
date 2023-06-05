@@ -5,7 +5,7 @@
         {
             "title": "Introduction",
             "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
-            "filename": "../../files/0-introduction.md"
+            "filename": "../../introduction/introduction.md"
         },
         {
             "title": "Get Started",
@@ -20,55 +20,55 @@
         },
         {
             "title": "Lab 2: Open SQL Worksheet",
-            "filename": "../../files/2-open-sql-worksheet.md"
+            "filename": "../../open-sql-worksheet/open-sql-worksheet.md"
         },
         {
             "title": "Lab 3: Create a Database User",
-            "filename": "../../files/3-create-user.md"
+            "filename": "../../create-db-user/create-db-user.md"
         },
         {
             "title": "Lab 4: Install Sample Data",
-            "filename": "../../files/4-install-sample-data.md"
+            "filename": "../../install-sample-data/install-sample-data.md"
         },
         {
             "title": "Lab 5: Explore the Data Tables",
-            "filename": "../../files/6-explore-tables.md"
+            "filename": "../../explore-tables/explore-tables.md"
         },
         {
             "title": "Lab 6: Create an Analytic View",
-            "filename": "../../files/5-create-analytic-view.md"
+            "filename": "../../create-analytic-view/create-analytic-view.md"
         },
         {
             "title": "Lab 7: Examine Analytic Queries that Select from Tables",
-            "filename": "../../files/7-analytic-queries.md"
+            "filename": "../../analytic-queries/analytic-queries.md"
         },
         {
             "title": "Lab 8: Examine Lookup Queries",
-            "filename": "../../files/8-lookup-queries.md"
+            "filename": "../../lookup-queries/lookup-queries.md"
         },
         {
             "title": "Lab 9: Examine Hierarchies and Analytic Views",
-            "filename": "../../files/9-get-acquainted-with-av.md"
+            "filename": "../../get-acquainted-with-av/get-acquainted-with-av.md"
         },
         {
             "title": "Lab 10: Examine Analytic Queries that Select from the Analytic View",
-            "filename": "../../files/10-analytic-queries-av.md"
+            "filename": "../../analytic-queries-av/analytic-queries-av.md"
         },
         {
             "title": "Lab 11: Create a New APEX Application",
-            "filename": "../../files/11-create-new-apex-app.md"
+            "filename": "../../create-new-apex-app/create-new-apex-app.md"
         },
         {
             "title": "Lab 12: Add Queries that Select from the Analytic View",
-            "filename": "../../files/12-create-dashboard.md"
+            "filename": "../../add-av-queries-to-dashboard/add-av-queries-to-dashboard.md"
         },
         {
             "title": "Lab 13: Add Data Selectors to the Sales Dashboard",
-            "filename": "../../files/13-add-data-selectors-to-sales-dashboard.md"
+            "filename": "../../add-data-selectors-to-sales-dashboard/add-data-selectors-to-sales-dashboard.md"
         },
         {
             "title": "Lab 14: Learn More",
-            "filename": "../../files/15-learn-more.md"
+            "filename": "../../learn-more/learn-more.md"
         },
         {
             "title": "Need Help?",

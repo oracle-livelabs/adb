@@ -30,19 +30,19 @@ If you are running APEX on Autonomous Database, and have access to the Autonomou
 
 1. If you have access to the Autonomous Database console, access it now..
 
-![Autonomous Database Console](../images/11-adb-console.png)
+![Autonomous Database Console](images/adb-console.png)
 
 2. Scroll down until you see APEX instance.  Click on the **Instance name** link.
 
-![APEX instance link](../images/11-adb-console-apex-instance-link.png)
+![APEX instance link](images/adb-console-apex-instance-link.png)
 
 3. Launch APEX.  It would be a good idea to bookmark this link.
 
-![Launch APEX](../images/11-adb-console-launch-apex.png)
+![Launch APEX](images/adb-console-launch-apex.png)
 
 3. Sign into the MovieStream workspace as the MovieStream user.  (The password was Welcome#1234 the script used to create the user earlier in this Workshop.)
 
-![APEX Workspace Login](../images/11-apex-workspace-login.png)
+![APEX Workspace Login](images/apex-workspace-login.png)
 
 You should now be at the APEX main page.
 
@@ -56,7 +56,7 @@ In this task, you will create a new application.  Feel free to choose a differen
 1. Choose **Add Page**.
 1. Choose **Dashboard**.
 
-![Choose Dashboard Page](../images/11-add-page-dashboard.png)
+![Choose Dashboard Page](images/add-page-dashboard.png)
 
 6. Set up the dashboard as follows.
 - Provide a **Page Name**, for example _Sales Dashboard_
@@ -66,7 +66,7 @@ In this task, you will create a new application.  Feel free to choose a differen
 - Chart 4: **Name: Sales Share of Genre, Type: Bar**
 - Choose **Advanced** and **Set as home page**
 
-![Add Dashboard Page](../images/11-add-dashboard-page.png)
+![Add Dashboard Page](images/add-dashboard-page.png)
 
 7. Press **Add Page**
 7. Provide a **Name** for the application, for example _MovieStream_.
@@ -79,15 +79,14 @@ In this task, you will create a new application.  Feel free to choose a differen
 
 Congratulations, you are now the proud owner of four generic graphs!
 
-![New Dashboard Page](../images/11-new-dashboard-page.png)
-
+![New Dashboard Page](images/new-dashboard-page.png)
 
 You may now **proceed to the next lab** and start making the graphs come to life!
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
-- Last Updated By - William (Bud) Endress, May 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Last Updated By - William (Bud) Endress, June 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

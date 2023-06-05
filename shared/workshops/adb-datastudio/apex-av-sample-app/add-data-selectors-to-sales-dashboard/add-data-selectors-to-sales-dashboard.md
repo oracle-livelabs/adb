@@ -28,7 +28,7 @@ In this task, you will add a Popup LOV that allows the user to select time perio
 1. The **Label** should default to **Time Level**.
 1. In the **Layout** section, set **Column Span** to **3**.
 
-![P1_TIME_LEVEL item](../images/13-p1-time-level-position.png)
+![P1_TIME_LEVEL item](images/p1-time-level-position.png)
 
 5.  In **List of Values** choose **SQL Query**.
 5.  Replace the **SQL Query** with the following query. Note that this query selects from a data dictionary view.  All analytic view metadata is available in data dictionary views.  This view will return the levels of the TIME hierarchy.
@@ -76,7 +76,7 @@ In this task, you will add a Popup LOV that allows the user to choose a Geograph
 1. The **Label** should default to **Geography**.
 1. If the **P1_GEOGRAPHY** is correctly positioned, **Start New Row** and **New Column** will be **off** in the **Settings** section. If not, try to reposition it but do not worry it is not perfect.
 
-![P1_GEOGRAPHY item](../images/13-p1-geography-position.png)
+![P1_GEOGRAPHY item](images/p1-geography-position.png)
 
 5. In the **List of Values** section, choose **Type:  SQL Query**.
 5. Enter the following **SQL Query**.
@@ -254,7 +254,7 @@ The charts now allow interactive selections of the time periods.  If the queries
 
 The completed Sales Dashboard will look like this.
 
-![Completed Sales Dashboard](../images/13-completed-sales_dashboard.png)
+![Completed Sales Dashboard](images/completed-sales_dashboard.png)
 
 ## Summary
 
@@ -268,8 +268,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, May 2023
-- Last Updated By - William (Bud) Endress, May 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Last Updated By - William (Bud) Endress, June 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
