@@ -148,12 +148,12 @@ BEGIN
   v_setlst('ALGO_NAME') := 'ALGO_AI_MDL';
  
   DBMS_DATA_MINING.CREATE_MODEL2
-  (MODEL_NAME           => 'AI_OUTPUT',
+  (MODEL_NAME          => 'AI_OUTPUT',
    MINING_FUNCTION      => 'ATTRIBUTE_IMPORTANCE',
    DATA_QUERY           => 'select * from vw_cust_funds2',
    SET_LIST             => v_setlst,
    CASE_ID_COLUMN_NAME  => 'customer_id',
-   TARGET_COLUMN_NAME => 'insuff_funds_indicator');
+   TARGET_COLUMN_NAME   => 'insuff_funds_indicator');
 END;</copy>
     ```
 
