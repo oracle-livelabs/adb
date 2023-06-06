@@ -16,6 +16,9 @@ In this lab, you will:
 
 ### Prerequisites
 
+>_**Note:**
+This is not a hands-on lab; instead, it is a demo of how integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the **Access the Data Lake using Autonomous Database and Data Catalog** LiveLabs workshop._
+
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
 * **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance and **Task 4**: (Optional) Create a Data Catalog Instance. If you don't have a Data Catalog instance installed, you can simply follow the instructions in this lab.
@@ -65,11 +68,23 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-3. On the **Autonomous Databases** page, make sure that you are in the correct compartment, and then click your **ADW-Data-Lake** ADB instance.
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
+3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+</if>
 
     **Note:** If your Data Catalog and ADW instances are in different compartments like in our example, you must select the correct compartment for your ADW instance; otherwise, you won't see the resources that you created in this workshop such as the credential and cloud store locations.
 
+    <if type="livelabs">
+    ![Verify compartment and then click the ADW instance.](./images/ll-adb-page.png " ")
+    </if>
+
+    <if type="freetier">
     ![Verify compartment and then click the ADW instance.](./images/select-compartment.png " ")
+    </if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
@@ -172,7 +187,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

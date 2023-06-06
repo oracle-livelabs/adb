@@ -50,7 +50,13 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
