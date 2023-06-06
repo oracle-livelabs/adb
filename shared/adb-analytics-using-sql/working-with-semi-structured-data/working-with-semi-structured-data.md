@@ -41,7 +41,7 @@ Oracle's SQL language contains specific keywords that help you process JSON data
 
 The marketing team would like to create themed bundles of movies based on the scriptwriters. Our movie data set contains a series of columns that contain more detailed information. Each movie has a **crew** associated with it and that crew is comprised of jobs, such as "producer", "director", "writer", along with the names of the individuals. An example of how this information is organized is shown below:
 
-![An example of data in JSON format](images/3038282398.png)
+![An example of data in JSON format](images/data-in-json.png)
 
 This is in a format known as JSON and you can see that it is organized very differently from some of the other data that you have loaded into your new data warehouse. There is a single entry for "producer" but the corresponding key "names" actually has multiple values. This is referred to as an **array** - specifically a JSON array. Fortunately, the Autonomous Data Warehouse allows you to query this type of data (JSON arrays) using normal SQL as you will see below.
 
@@ -142,7 +142,7 @@ Although queries on external data will not be as fast as queries on database tab
 
 4. You should see a message "PL/SQL procedure successfully completed" in the script output window, something similar to the following:
 
-    ![Script output window showing message PL/SQL procedure successfully completed](images/sql-analytics-lab5-step1-substep2.png)
+    ![Script output window showing message PL/SQL procedure successfully completed](images/success-message.png)
 
     **Note:** The procedure completed very quickly (milliseconds), because we did not move any data from the Object Store into the data warehouse. The data is still sitting in the Object Store.
 
@@ -155,11 +155,11 @@ Although queries on external data will not be as fast as queries on database tab
 
 6. The above query should return a result something like this:
 
-    ![Result of querying external table](images/analytics-lab-2-step-1-substep-6.png)
+    ![Result of querying external table](images/row-count.png)
 
 7. If we now refresh the Navigator panel again, we should see the new table in the tree (**note** your navigation tree may look slightly different to the one shown below in terms of the number of tables shown). Click the arrow to the left of the name, **JSON\_MOVIE\_DATA\_EXT**, to show the list of columns in our table:
 
-    ![See the new table in the tree](images/3038282401.png)
+    ![See the new table in the tree](images/new-table-in-tree.png)
 
 8. You can see that our table contains only one column! Let's run a simple query to show the rows in the table:
 
@@ -167,7 +167,7 @@ Although queries on external data will not be as fast as queries on database tab
     <copy>select * from json_movie_data_ext;</copy>
     ```
 
-    ![Results of query showing the rows in the table](images/analytics-lab-2-step-1-substep-8.png)
+    ![Results of query showing the rows in the table](images/view-table.png)
 
     As you can see, the data is shown in its native JSON format, i.e. there are no columns in the table for each identifier (movie_id, sku, list price, and so on). So how can we query this table if there is only one column? 
 
@@ -186,7 +186,7 @@ Although queries on external data will not be as fast as queries on database tab
 
 2. The above query should return a result set that looks similar to this:
 
-    ![Result of query using Simple Dot Notation](images/analytics-lab-2-step-2-substep-2.png)
+    ![Result of query using Simple Dot Notation](images/dot-notation-result.png)
 
     **Note:** Each column has three components:
 
@@ -211,7 +211,7 @@ Although queries on external data will not be as fast as queries on database tab
 
 4. The above qury will return the following output:
 
-    ![Query result of looping to get lists of multiple values](images/analytics-lab-2-step-2-substep-4.png)
+    ![Query result of looping to get lists of multiple values](images/extract-multiple-entries.png)
 
 Now let's try using some more advanced features that will allow us to convert the list of cast members and crew members into rows and columns of data. These can then be joined with our movie sales data, allowing us to combine unstructured movie JSON data with our structured movie sales data.
 
@@ -259,7 +259,7 @@ Your Autonomous Data Warehouse includes a number of helper packages that can s
 
 3. The query should return the following:
 
-    ![ALT text is not available for this image](images/analytics-lab-2-step-3-substep-3.png)
+    ![ALT text is not available for this image](images/query-result-after-table-join.png)
 
  **NOTE**: The number of records has increased compared with our source table (JSON\_MOVIE\_DATA\_EXT): 3,491 to 56,9427. The reason is that we have something called an "array" of data within the JSON document that contains the cast members and crew members associated with each movie. Essentially, this means that each movie has to be translated into multiple rows.
 
@@ -279,7 +279,7 @@ Your Autonomous Data Warehouse includes a number of helper packages that can s
 
 5. This should return 12 rows as follows, where you can see individual rows for each member of the cast, crew members and genre:
 
-    ![Query result showing columns of data containing arrays](images/sql-analytics-lab5-step3-substep5.png)
+    ![Query result showing columns of data containing arrays](images/individual-rows.png)
 
 We can now use this view as the launch point for doing more analysis!
 
@@ -302,7 +302,7 @@ In this query, we are using the **JSON_TABLE** function again, to convert our JS
 
 2. This should return the following results:
 
-    ![Query results showing directors for each movie](images/sql-analytics-lab5-step4-substep2.png)
+    ![Query results showing directors for each movie](images/query-result-after-filter.png)
 
 ## Task 5: Combining JSON Data And Relational Data
 
@@ -337,7 +337,7 @@ In this query, we are using the **JSON_TABLE** function again, to convert our JS
 
 3. The output will be shown in the Query Result window:
 
-    ![Query result of combining queries](images/sql-analytics-lab5-step5-substep3.png)
+    ![Query result of combining queries](images/combined-result.png)
 
 ## Task 6: Ranking Directors Based On Quarterly Movie Revenue
 
@@ -363,7 +363,7 @@ In this query, we are using the **JSON_TABLE** function again, to convert our JS
 
 2. The results should show that our top grossing directors in Q1 were Jennifer Lee and Chris Buck with the film Frozen II:
 
-    ![Query result showing top grossing directors](images/sql-analytics-lab5-step6-substep2.png)
+    ![Query result showing top grossing directors](images/ranking.png)
 
 ## Task 7: Finding The Top 5 Directors Based On Revenue
 
@@ -394,7 +394,7 @@ In this query, we are using the **JSON_TABLE** function again, to convert our JS
 
 2. This should return the following results:
 
-    ![Query result returning top 5 directors in each year](images/sql-analytics-lab5-step7-substep2.png)
+    ![Query result returning top 5 directors in each year](images/top-directors.png)
 
 ## Recap
 
@@ -412,4 +412,4 @@ You may now *proceed to the next lab*.
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; April 2023
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; May 2023

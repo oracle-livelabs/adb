@@ -60,7 +60,7 @@ To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This packag
 
     You should see that there are 4,845 unique customer rows:
 
-    ![Query result showing 4,845 unique customer rows](images/3038282315.png)
+    ![Query result showing 4,845 unique customer rows](images/count_of_rows.png)
 
 3. What does the data set in our table look like? Let's run another simple query:
 
@@ -74,7 +74,7 @@ To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This packag
 
 4. This will return something like the following output:
 
-    ![Query result showing what the table data set looks like](images/analytics-lab-6-step-1-substep-4.png)
+    ![Query result showing what the table data set looks like](images/insufficient_funds_number.png)
 
     **NOTE:** Unlike the movie sales data, we now have a single row per customer and you can see that in the column **insufficient\_funds\_incidents** there are single numeric values that indicates how many times the customer ran out of funds in their account.
 
@@ -159,7 +159,7 @@ END;</copy>
 
 2. The package will return a "PL/SQL procedure successfully completed" message to the log window once it has finished processing - which should take around 20 seconds.
 
-    ![Query results showing procedure completed successfully](images/3038282312.png)
+    ![Query results showing procedure completed successfully](images/query_results_completed.png)
 
 ## Task 3: Reviewing the Output
 
@@ -210,4 +210,4 @@ Now that we have identified these key demographic attributes, we can do more ana
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Sarika Surampudi, May 2023
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; May 2023
