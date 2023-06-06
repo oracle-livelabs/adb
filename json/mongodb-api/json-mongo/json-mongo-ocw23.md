@@ -2,9 +2,9 @@
 
 ## Introduction
 
-With our JSON Collection created in the Oracle Database, we can use Mongo APIs to interact with the collection as if we were interacting with a Mongo Database. In this lab, we will download Mongo tools and then use a Mongo connection string -- which was configured as a part of the Oracle REST Data Service (ORDS) configuration -- to connect to the Oracle Database using Mongo Shell. From there, we can interact with Mongo tools or SQL Developer Web interchangeably to access our data using document store APIs.
+With our JSON Collection created in the Oracle Database, we can use Mongo APIs to interact with the collection as if we were interacting with a Mongo Database. In this lab, we will download Mongo tools and then use a Mongo connection string -- which was configured as a part of the Oracle REST Data Service (ORDS) configuration -- to connect to the Oracle Database using Mongo Shell. We will use the Mongo tools against the Oracle database transparently and natively.
 
-Estimated Time: 10 minutes
+Estimated Time: 15 minutes
  
 
 ### Objectives
@@ -12,14 +12,14 @@ Estimated Time: 10 minutes
 In this lab, you will:
 
 - Install Mongo Shell and Mongo Database Tools
-- Load more data through the Database API for MongoDB
-- Use Mongo Shell to interact with Oracle Database
+- Load more data into the Oracle Database using MongoDB tools
+- Use Mongo Shell to interact transparently with the Oracle Database
 
 ### Prerequisites
 
 - Oracle Database 23c Free Developer Release
 - ORDS started with MongoDB API enabled
-- Password of database user hol23c known
+- Password of database user hol23c is set and known
 
 
 ## Task 1: Download Mongo Shell and Mongo Database Tools
@@ -40,7 +40,7 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
     Your screen will look similar to this after running the commands.
  	![End of mongo install](./images/mongo-install.png)
 
-## Task 2: Interact with Oracle Database using Mongo API
+## Task 2: Basic interaction with Oracle Database using Mongo API
 
 1. First, you must set the URI to the Mongo API running in ORDS on your machine. Copy and paste in the username, password, and host for your database and schema user. If you are using the green button, those values will be as follows: hol23c, Welcome123, and localhost.
 
@@ -62,6 +62,8 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
     ```
     ![Populate the database](images/populate-mongo-db.png " ")
 
+    **Note**: Note that we need to use the option to allow tls communication with invalid Certificates. This is because the ORDS setup in this lab is a simple local install without CA certificate registration. The communication is nevertheless encrypted and safe.
+
 3. Now with the URI set and the Mongo tools installed and the data inserted, we can connect to Mongo Shell. Run the command below to connect.
 
     ```
@@ -69,16 +71,20 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
     ```
     ![Connect to the Mongo Shell](images/mongo-shell.png " ")
 
-4. Within the Mongo Shell, you can begin running commands to interact with the data in your database as if you were using a Mongo Database. To show the **movie** collection we created and the count of documents we imported, run the following commands.
+4. Within the Mongo Shell, you can begin running commands to interact with the data in your database as if you were using a Mongo Database.
+A MongoDB "database" is mapped to an Oracle schema when using Oracle Database with MongoDB API. A "collection" is mapped to a table.
+
+    To show what collections exist in my database (schema hol23c) and to count the number of documents we imported in the **movie** collection, or look at a sample document in your collection, run the following commands.
 
     ```
     hol23c> <copy>show collections</copy>
-    hol23c> <copy>db.movies.countDocuments()
-    </copy>
+    hol23c> <copy>db.movies.countDocuments()</copy>
+    hol23c> <copy>db.movies.findOne()</copy>
     ```
+
     ![Query result for count](images/mongo-count.png " ")
 
-5. You can also query for specific documents. Run this query to find the document with title "Zootopia."
+5. You are using the Oracle Database transparently like a MongoDB. So for example, you can query for specific documents. Run this query to find the document with title "Zootopia."
 
     ```
     hol23c> <copy>db.movies.find( {"title": "Zootopia"} )
@@ -94,77 +100,16 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
     ```
     ![Query result for after 2020](images/mongo-2020.png " ")
 
-## Task 3: Interact interchangeably with Mongo API and SQL Worksheet in Database Actions
-
-Let's take some time to demonstrate the interactivity between the Oracle and Mongo tools we have installed on our machine.
-
-1. Use the Mongo Shell to insert 2 documents to our movie collection.
+6. Your filter criteria can obviously become more complex, and you can leverage other functionality of MongoDB or mongosh, like projections, or counting the documents of a filtered search
 
     ```
-    hol23c> <copy>db.movies.insertMany( [{
-    "title": "Love Everywhere",
-    "summary": "Plucky Brit falls in love with American actress",
-    "year": 2023,
-    "genre": "Romance"
-    }
-    ,
-    {
-    "title": "SuperAction Mars",
-    "summary": "A modern day action thriller",
-    "year": 2023,
-    "genre": [
-        "Action",
-        "Sci-Fi"
-    ],
-    "cast": [
-        "Arnold Schwarzenegger",
-        "Tom Cruise"
-    ]
-    } ])
+    hol23c> <copy>db.movies.find({"$and": [{"year": {"$gt": 2019}}, {"views": {"$lt": 500} }]},{"year":1, "title":1, "views":1, "budget":1, "awards":1, "_id":0})</copy>
+    <copy>db.movies.find({"$and": [{"year": {"$gt": 2019}}, {"views": {"$lt": 500} }]},{"year":1, "title":1, "views":1, "budget":1, "awards":1, "_id":0}).count()
     </copy>
     ```
-    ![Mongo inserts two docs](images/mongo-insert.png " ")
+    ![Query result count for after 2019](images/mongo-2019-cnt.png " ")
 
-2. Now check for movies again that were released after 2020 and you will see these two movies popping up as well:
-
-    ```
-    hol23c> <copy>db.movies.find ( { "year": {"$gt": 2020} } )
-    </copy>
-    ```
-    ![New result for after 2020](images/mongo-2020-new.png " ")
-
-3. Open a browser window to access SQL Worksheet in Database Actions.
-
-	```
-    <copy>http://localhost:8080/ords/hol23c/_sdw</copy>
-    ```
-
-	![Open Browser](./images/open-browser.png)
-
-4. Sign in with the username and password of the schema with ORDS enabled. If you are using the green button, this user has already been created for you. Replace the `<new_password>` with the one you entered in Lab 1: Setup User.
-
-    ```
-    username: hol23c
-    password: <new_password>
-    ```
-
-	![User Sign In](./images/ords-sign-in.png)
-
-5. We will query for the same movies using the JSON tool. Navigate to the JSON tool using the menu in the top left corner of the webpage if you are not there already.
-	![Homepage Development JSON](./images/homepage-json.png)
-
-6. Let's edit the entries in SQL Developer Web and see the changes in Mongo Shell. First, double click on the document referencing the movie "SuperAction Mars," or click the "Edit Document" icon next to it. In the dialog page, change the year to 2025 and then save the document.
-	![Find SuperAction Mars](./images/find-superaction-mars.png)
-	![Edit SuperAction Mars](./images/edit-superaction-mars.png)
-
-7. Finally, return the to Terminal window and using the Mongo Shell instance running, query for movies released after 2020 again. You will see the updated information for the "SuperAction Mars" movie.
-
-    ```
-    hol23c> <copy>db.movies.find ( { "year": {"$gt": 2020} } )
-    </copy>
-    ```
-	![New result for after 2020 edit](./images/mongo-2020-edited.png)
-
+**Proceed to the next Lab where we will look a little bit under the hood.**
 ## Learn More
 
 * [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
@@ -173,4 +118,4 @@ Let's take some time to demonstrate the interactivity between the Oracle and Mon
 
 * **Author** - William Masdon, Kaylien Phan, Hermann Baer
 * **Contributors** -  David Start, Ranjan Priyadarshi
-* **Last Updated By/Date** - William Masdon, Database Product Manager, April 2023
+* **Last Updated By/Date** - Hermann Baer, May 2023

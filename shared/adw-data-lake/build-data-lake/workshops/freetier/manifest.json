@@ -50,19 +50,37 @@
             "filename": "./../../load-analyze-rest/load-analyze-rest.md"
         },
         {
-            "title": "Lab 7: Query Data Across Multi-Cloud Data Lakes",
+            "title": "Lab 7: Create and Query External Tables Using Delta Sharing Protocol",
+            "type":"freetier",
+            "description": "This lab shows you how ADW supports Public Data Share.",
+            "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+        },
+        {
+            "title": "Lab 8: Query Data Across Multi-Cloud Data Lakes",
             "type":"freetier",
             "description": "This lab shows you how to query data from OCI and AWS S3.",
             "filename": "./../../query-data-lakes/query-data-lakes.md"
         },
         {
-            "title": "Lab 8: Performance Best Practices",
+            "title": "Lab 9: Use Oracle as a Data Provider",
+            "type":"freetier",
+            "description": "This lab shows you how to use Oracle as a Data Provider.",
+            "filename": "./../../oracle-data-provider/oracle-data-provider.md"
+        },
+        {
+            "title": "Lab 10: Integrate ADW with Centrally Managed Data Catalogs",
+            "type":"freetier",
+            "description": "This lab shows ADW integration with Data Catalogs.",
+            "filename": "./../../adw-dcat-integrate/adw-dcat-integrate.md"
+        },
+        {
+            "title": "Lab 11: Performance Best Practices",
             "type":"freetier",
             "description": "This lab shows you how to improve query performance.",
             "filename": "./../../query-performance/query-performance.md"
         },
         {
-            "title": "Lab 9: Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab 12: Clean up Resources Used in the Workshop (Optional)",
             "type":"freetier",
             "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
             "filename": "./../../cleanup/cleanup.md"

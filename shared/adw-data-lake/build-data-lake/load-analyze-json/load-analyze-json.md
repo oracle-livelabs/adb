@@ -12,6 +12,7 @@ Watch the video below for a quick walk-through of the lab.
 ### Objectives
 
 In this lab, you will:
+
 * Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` procedure
 * Use SQL to analyze both simple and complex JSON attributes
 
@@ -38,16 +39,33 @@ Our movie data set has a series of columns that contain different types of detai
 
 JSON data is organized very differently than typical warehouse data. There is a single entry for **producer** but the corresponding key **names** actually has multiple values. This is referred to as an **array** - specifically a JSON array.
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | Launchpad** banner to display the **Database Actions | Launchpad** Home page. In the **Development** section, click the **SQL** card. Next, skip to **step 6**; otherwise, start with **step 1** below.
+
+![Click the banner.](./images/click-banner.png " ")
+
+1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    <if type="livelabs">
+    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
+    </if>
+
+    <if type="freetier">
+    ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    </if>
 
 5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
 
@@ -81,8 +99,7 @@ JSON data is organized very differently than typical warehouse data. There is a 
     <copy>
     select json_serialize(json_document) as json
     from movie_collection
-    where rownum < 10
-    ;
+    where rownum < 10;
     </copy>
     ```
 
@@ -109,8 +126,7 @@ Oracle Database offers a wide range of SQL functions that help you analyze JSON 
         m.json_document.title,
         m.json_document.year
     from movie_collection m
-    where m.json_document.cast like '%Meryl Streep%'
-    ;
+    where m.json_document.cast like '%Meryl Streep%';
     </copy>
     ```
 
@@ -260,4 +276,4 @@ You may now proceed to the next lab.
 * **Author** - Marty Gubar, Autonomous Database Product Management
 * **Contributors:**
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
