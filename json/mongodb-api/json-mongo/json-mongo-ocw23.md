@@ -1,4 +1,4 @@
-# Use Mongo API to interact with Oracle Database
+# Use Mongo API to interact transparently with Oracle Database
 
 ## Introduction
 
@@ -24,11 +24,12 @@ In this lab, you will:
 
 ## Task 1: Download Mongo Shell and Mongo Database Tools
 
+_If you closed your terminal window from the previous labs, you need to re-open a terminal window and restart ORDS. Please see Lab 1 for instructions_
+
 This lab has you download software from the YUM repo at repo.mongodb.org. This software is free. If you agree to their terms of use please continue on with this portion of the lab.
 
 1. Open your terminal window.
 
-    _If you closed your terminal window from the previous labs, please see steps in Lab 1 to reconnect to the host._
 
     Run the following commands to download and install Mongo Shell and Mongo Database Tools.
 
@@ -42,7 +43,7 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
 
 ## Task 2: Basic interaction with Oracle Database using Mongo API
 
-1. First, you must set the URI to the Mongo API running in ORDS on your machine. Copy and paste in the username, password, and host for your database and schema user. If you are using the green button, those values will be as follows: hol23c, Welcome123, and localhost.
+1. First, you must set the URI to the Mongo API running in ORDS on your machine. Copy and paste in the username, password, and host for your database and schema user. If you are using the green button, those values will be as follows: hol23c, Welcome123 (or the password you have chosen), and localhost.
 
     ```
     $ <copy>export URI='mongodb://<user>:<password>@<host>:27017/<user>?authMechanism=PLAIN&authSource=$external&tls=true&retryWrites=false&loadBalanced=true'</copy>
@@ -54,7 +55,7 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
 
     If you aren't using the green button environment and you have different values for those fields, you may need to escape some characters. Please click [this link](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/mongo-using-oracle-database-api-mongodb.html#ADBSA-GUID-44088366-81BF-4090-A5CF-09E56BB2ACAB) to learn how to escape characters in the URL. 
 
-2. Before we connect to the Mongo Shell, let's populate our database using the Mongo Tools. You will use a document from Object Storage to seed the data in your **movie** collection.
+2. Before we connect to the Mongo Shell, let's populate our database using the Mongo Tools. You will use a document from Object Storage to seed the data in your **movies** collection.
 
     ```
     $ <copy>curl -s https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o/movie/movies.json | mongoimport --collection movies --drop --tlsInsecure --uri $URI
@@ -67,7 +68,8 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
 3. Now with the URI set and the Mongo tools installed and the data inserted, we can connect to Mongo Shell. Run the command below to connect.
 
     ```
-    $ <copy>mongosh  --tlsAllowInvalidCertificates $URI</copy>
+    $ <copy>mongosh  --tlsAllowInvalidCertificates $URI
+    </copy>
     ```
     ![Connect to the Mongo Shell](images/mongo-shell.png " ")
 
@@ -79,7 +81,8 @@ A MongoDB "database" is mapped to an Oracle schema when using Oracle Database wi
     ```
     hol23c> <copy>show collections</copy>
     hol23c> <copy>db.movies.countDocuments()</copy>
-    hol23c> <copy>db.movies.findOne()</copy>
+    hol23c> <copy>db.movies.findOne()
+    </copy>
     ```
 
     ![Query result for count](images/mongo-count.png " ")
@@ -100,7 +103,7 @@ A MongoDB "database" is mapped to an Oracle schema when using Oracle Database wi
     ```
     ![Query result for after 2020](images/mongo-2020.png " ")
 
-6. Your filter criteria can obviously become more complex, and you can leverage other functionality of MongoDB or mongosh, like projections, or counting the documents of a filtered search
+6. Your filter criteria can obviously become more complex, and you can leverage other functionality of MongoDB or mongosh, like projections, or counting the documents of a filtered search:
 
     ```
     hol23c> <copy>db.movies.find({"$and": [{"year": {"$gt": 2019}}, {"views": {"$lt": 500} }]},{"year":1, "title":1, "views":1, "budget":1, "awards":1, "_id":0})</copy>
@@ -108,6 +111,8 @@ A MongoDB "database" is mapped to an Oracle schema when using Oracle Database wi
     </copy>
     ```
     ![Query result count for after 2019](images/mongo-2019-cnt.png " ")
+
+Feel free to use your Mongo skills and play with the movies collection to experience the transparency of Oracle's MongoDB API for your Mongo applications. 
 
 **Proceed to the next Lab where we will look a little bit under the hood.**
 ## Learn More

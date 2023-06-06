@@ -65,24 +65,14 @@ This lab assumes you have:
 
 5. To change the password for the user hol23c use the "alter user <username> identified by <new password" command. The syntax below for the hol23c user, make sure to replace new\_password\_here to your new password. Throughout this workshop we will use the Welcome123 password.
     ```
-		<copy>alter user hol23c identified by </copy>new_password_here;
+		SQL> <copy>alter user hol23c identified by </copy>new_password_here;
 		```
-    ```
-    SQL> alter user hol23c identified by Welcome123;
-
-    User altered.
-
-    SQL>
-    ```
     ![Change password](images/change-password1.png " ")
 
 6. Once the password has been changed you can exit SQL Plus.
 
     ```
 		SQL> <copy>exit</copy>
-Disconnected from Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
-Version 23.2.0.0.0
-[FREE:oracle@hol23cfdr:~]$
 		```
 
     ![Exit](images/exit1.png " ")
@@ -91,20 +81,8 @@ Version 23.2.0.0.0
 
     ```
 		[FREE:oracle@hol23cfdr:~]$ <copy>sqlplus hol23c/<your_password>@freepdb1</copy>
-
-    SQL*Plus: Release 23.0.0.0.0 - Developer-Release on Wed Apr 5 13:38:14 2023
-    Version 23.2.0.0.0
-
-    Copyright (c) 1982, 2023, Oracle.  All rights reserved.
-
-
-    Connected to:
-    Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
-    Version 23.2.0.0.0
-
-    SQL>
-		```
-  The following shows a successful connection with hol23c using our Welcome123 as password.
+    ```
+    The following shows a successful connection with hol23c using our Welcome123 as password.
     ![Connect to the database](images/connect-hol23c.png " ")
 
 You have verified that your database user is ready for the workshop.
@@ -125,6 +103,10 @@ You have verified that your database user is ready for the workshop.
   If ORDS started successfully and the MongoDB API is successfully enabled, then you will see an output similar to the following:
 
     ![Start ORDS](images/ords-with-mongo-enabled.png " ")
+
+  Note: **DO NOT CLOSE THIS TERMINAL WINDOW.** If you are closing this window you will kill the ords process, and you will not be able to connect with the MongoDB API or Database Actions to the database.
+  
+  You can use the same terminal window later on in the workshop or alternatively open a second window for using the mongo tools.
 
 **Proceed to the next lab.**
 
