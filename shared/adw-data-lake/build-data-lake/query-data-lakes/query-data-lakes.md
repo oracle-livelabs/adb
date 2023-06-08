@@ -81,7 +81,7 @@ In this task, we define a **Cloud Location** to connect to a public Oracle Objec
 
 ## Task 3: Load Data from the OCI Cloud Location and Create a Table
 
-In this task, we will load data and create the **customer\_contact** and table in your Autonomous Database instance.
+In this task, we will load data and create the **customer\_contact** table in your Autonomous Database instance.
 
 >**Note:** In **Lab 3: Load Data from Local Files**, we already loaded the **customer-extension.csv** file into our ADB instance; therefore, we won't perform this step. In addition, in **Lab 4: Link to Data in Public Object Storage Buckets**, we already linked to the **customer\_contact** file and created the external table; however, in this task, we will load the same **customer\_contact** data into our ADB instance and create a new database table under a new name. Querying data stored inside the database is much faster than querying data that is stored in external tables outside the database.
 
@@ -152,12 +152,13 @@ In this task, we define a **Cloud Location** to connect to our **`moviestream-ch
     + **Cloud Username and Password:** Select this option, if not already selected.
     + **Cloud Store:** Select **Amazon S3** option from the drop-down list.
     + **Credential Name:** Enter **aws_credential**.
-    + The **Bucket URI** option is selected by default.
-
+    
     Provide the values for the next three fields, if you have them:
     + **Amazon access key ID**
     + **Amazon secret access key**
     + **Amazon Bucket URI**. This is your Amazon S3 bucket endpoint.The format is:
+
+    + The **Bucket URI** option is selected by default. The URL format is as follows:
 
         `https://<bucket-name>.s3.<region>.amazonaws.com/`
 
@@ -183,11 +184,11 @@ In this task, we will link to the `potential_churners.csv` data from the AWS S3 
 
 2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
 
-3. The **Link Cloud Object** page is displayed. Select the **`aws-s3-data-lake`** from the **Select Cloud Store Location or enter public URL** drop-down list. Next, drag and drop the `potential_churners` table from the Amazon S3 public bucket to the data linking job.
+3. The **Link Cloud Object** page is displayed. Select the **`aws-s3-data-lake`** from the **Select Cloud Store Location or enter public URL** drop-down list, if not already selected. Next, drag and drop the `potential_churners` table from the Amazon S3 public bucket to the data linking job.
 
     ![Drag and drop the potential_churners folder](images/drag-drop-potential-churners.png)
 
-4. Click **Start**. A dialog box is displayed to prompt you whether or not if you want to link all objects in this folder matching **.csv** to a single target table. Click **Yes**.
+4. Click **Start** and then click **Run**.
 
     ![Click Start to start the link job.](images/start-link-job.png)
 

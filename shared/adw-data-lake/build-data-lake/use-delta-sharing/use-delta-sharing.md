@@ -73,7 +73,7 @@ Create a new database credential that you will use in this task as follows:
     BEGIN
         dbms_cloud.create_credential(
         credential_name=>'PUBLIC_DELTA',
-        username => 'guest',
+        username => 'bearer_token',
         password => 'faaie590d541265bcab1f2de9813274bf233');
     end;
     </copy>
@@ -172,7 +172,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -24,6 +24,8 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 ## Task 1: Navigate to the SQL Worksheet
 
+If your SQL Worksheet is still displayed from the previous task, skip over to **Task 2**.
+
 1. Log in to the **Oracle Cloud Console**.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
