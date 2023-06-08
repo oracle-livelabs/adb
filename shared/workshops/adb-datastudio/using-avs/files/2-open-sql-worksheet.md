@@ -32,7 +32,7 @@ SQL Worksheet allows you to run SQL commands in the Oracle Database. You will ru
 
 1. Choose the SQL button.
 
-![Open Database Actions](../images/2-start-sql-worksheet.png)
+![Open SQL Worksheet](../images/2-start-sql-worksheet.png)
 
 You may now **proceed to the next lab**
 
