@@ -46,6 +46,8 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 ## Task 2: Navigate to the SQL Worksheet
 
+If you already accessed the SQL Worksheet from the previous lab, you can skip over to **Task 3**; otherwise, navigate to SQL Worksheet as follows:
+
 1. Log in to the **Oracle Cloud Console**.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
@@ -60,7 +62,7 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. In the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
+5. In the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
 ## Task 3: Create a Database Credential and List the Available Schemas and Tables
 

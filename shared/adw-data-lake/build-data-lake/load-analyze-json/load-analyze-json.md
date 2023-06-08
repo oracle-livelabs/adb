@@ -39,7 +39,8 @@ Our movie data set has a series of columns that contain different types of detai
 
 JSON data is organized very differently than typical warehouse data. There is a single entry for **producer** but the corresponding key **names** actually has multiple values. This is referred to as an **array** - specifically a JSON array.
 
-If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | Launchpad** banner to display the **Database Actions | Launchpad** Home page. In the **Development** section, click the **SQL** card. Next, skip to **step 6**; otherwise, start with **step 1** below.
+>**Note:**    
+If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | Launchpad** banner to display the **Database Actions | Launchpad** Home page. In the **Development** section, click the **SQL** card to display the SQL Worksheet. Next, skip to **step 6**; otherwise, start with **step 1** below.
 
 ![Click the banner.](./images/click-banner.png " ")
 
@@ -67,7 +68,7 @@ If you already have the **Oracle Database Actions** browser tab open from the pr
     ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
     </if>
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
     ![Click the SQL card.](./images/click-sql-card.png " ")
 
