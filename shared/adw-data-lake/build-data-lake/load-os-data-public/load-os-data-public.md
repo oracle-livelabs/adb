@@ -52,15 +52,7 @@ If you already have the **Oracle Database Actions** browser tab open from the pr
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
 </if>
 
-<if type="livelabs">
-    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
-    </if>
-
-    <if type="freetier">
-    ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
-    </if>
-
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+4. The **Database Actions | Launchpad** Home page is displayed in a _**new tab**_ in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 

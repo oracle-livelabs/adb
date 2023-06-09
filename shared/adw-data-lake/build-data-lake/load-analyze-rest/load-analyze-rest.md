@@ -97,7 +97,7 @@ Now that you have the API key, create a PL/SQL function that queries the REST en
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
+5. The **Database Actions | Launchpad** Home page is displayed in a **_new tab_** in your browser. In the **Development** section, click the **SQL** card.
 
     ![Click the SQL card.](./images/click-sql-card.png " ")
 

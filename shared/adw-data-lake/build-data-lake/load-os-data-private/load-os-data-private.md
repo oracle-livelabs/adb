@@ -28,7 +28,7 @@ In this lab, you will:
 
 Download a **.csv** file that contains a simulation of sensitive customer retention data. Later, you will stage the file on a private **OCI Object Storage** bucket, to populate a table in later tasks.
 
-1. Copy and paste the following URL into a new tab in your web browser, and then press [ENTER]. The **moviestream\_sandbox** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**.
+1. Copy and paste the following URL into a _**new tab**_ in your web browser, and then press **[ENTER]**. The **moviestream\_sandbox** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**.
 
     ```
     <copy>
@@ -208,19 +208,15 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 
 <if type="livelabs">
 2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-
-    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
 </if>
 
 <if type="freetier">
 2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
 </if>
 
 3. On the **Autonomous Database details** page, click **Database actions**.
 
-4. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+4. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
