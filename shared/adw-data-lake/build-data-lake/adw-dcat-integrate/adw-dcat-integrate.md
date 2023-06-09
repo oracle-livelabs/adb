@@ -17,7 +17,7 @@ In this lab, you will:
 ### Prerequisites
 
 >_**Note:**
-This is not a hands-on lab; instead, it is a demo of how integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops._
+This is not a hands-on lab; instead, it is a demo of how to integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops._
 
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
