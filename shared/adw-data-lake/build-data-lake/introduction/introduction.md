@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog and Amazon Simple Storage Service (S3).
+The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Data Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog and Amazon Simple Storage Service (S3).
 
 In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle ADW has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
 
@@ -14,7 +14,7 @@ The focus of this workshop is on the process of building an object store-centric
 
   ![The architecture diagram.](images/architecture-diagram.png)
 
-Estimated Time: 2 hours
+Estimated Time: 2.5 hours
 
 ### What is a Data Lake?
 A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will harvest in Data Catalog and query in ADB.
@@ -44,8 +44,6 @@ You can create a table on top of Parquet files, using **Database Actions** in AD
 
  ![The diagram shows the sources for creating tables.](images/table-sources-diagram.png)
 
-
-
 ### Prerequisites
 
 * An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported. You may use your own cloud account or you can get a Free Trial account as described in the **Get Started** lab in the **Contents** menu.
@@ -60,17 +58,17 @@ You may now proceed to the next lab.
 
 * [Get Started with Data Catalog](https://docs.oracle.com/en-us/iaas/data-catalog/using/index.htm)
 * [Data Catalog Overview](https://docs.oracle.com/en-us/iaas/data-catalog/using/overview.htm)
-* [Using Oracle Autonomous Database on Shared Exadata Infrastructure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [What Is a Data Catalog and Why Do You Need One?](https://www.oracle.com/big-data/what-is-a-data-catalog/)
 * [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf) and the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://apexapps.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Contributors:**
+* **Contributor:**
 
     * Alexey Filanovskiy, Senior Product Manager
-    * Marty Gubar, ADB Product Management
+
 * **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
