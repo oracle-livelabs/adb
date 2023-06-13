@@ -87,14 +87,17 @@ Now that you have the API key, create a PL/SQL function that queries the REST en
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
-
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
+5. The **Database Actions | Launchpad** Home page is displayed in a **_new tab_** in your browser. In the **Development** section, click the **SQL** card.
 
     ![Click the SQL card.](./images/click-sql-card.png " ")
 
@@ -313,7 +316,7 @@ Now that you have the latest news for each actor, you will derive the sentiment 
 
     ![Query sentiment](images/query-sentiment.png)
 
-    As to be expected, the computed sentiment isn't great. However, it's not all bad; as you scroll through the results, there are some positive articles. Also, the description field is fairly small. A richer text field would likely produce even better results.
+    The Total Results is 54 in our example; however, your results might be different. Scroll to the right to view the complete results. The description field is fairly small. A richer text field would likely produce even better results.
 
 4. MovieStream needs to decide which movies to promote on their site. Actors that are generating more buzz and the type of news will likely have some influence on their recommendations. Query the ranking for the actors. Copy and paste the following code into the SQL Worksheet, and then click **Run Statement** in the Worksheet toolbar.
 
@@ -341,11 +344,11 @@ You may now proceed to the next lab.
 * [DBMS_CLOUD Subprograms and REST APIs](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37)
 * [Oracle Text](https://docs.oracle.com/en/database/oracle/oracle-database/19/ccref/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database on Shared Exadata Infrastructure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Authors:**
     * Marty Gubar, Autonomous Database Product Management
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023

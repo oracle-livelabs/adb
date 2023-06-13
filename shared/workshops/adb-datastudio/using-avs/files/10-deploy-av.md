@@ -48,7 +48,7 @@ A bar chart with Years is displayed. Add **Months** to the Chart.
 
 The chart now displays Month within Year.
 
-![Chart Button](images/10-month-to-x-axis.png)
+![Move month to x-axis](images/10-month-to-x-axis.png)
 
 You may now **proceed to the next lab**
 

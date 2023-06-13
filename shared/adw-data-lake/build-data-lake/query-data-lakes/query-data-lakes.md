@@ -17,9 +17,9 @@ In this lab, we will show you how to do the following:
 * Create a new table that joins the three created tables to show customers data and churners. The tables data originated from the OCI and Amazon S3 buckets.
 
 ### Prerequisites
-None.
+Access to an ADW and Data Catalog instances, if you choose to perform the steps.
 
->**Note:**    
+>**Note:**
 _**This is not a hands-on lab; instead, it is a demo of how to query data from different clouds: OCI Object Storage and Amazon S3 buckets.**_
 
 ## Task 1: Navigate to the Data Load Page
@@ -28,21 +28,27 @@ _**This is not a hands-on lab; instead, it is a demo of how to query data from d
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+</if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+5. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
 ## Task 2: Define an OCI Oracle Cloud Location
 
 In this task, we will get some customers information from a public OCI Object Storage bucket.
 
-In this task, we define a **Cloud Location** to connect to a public Oracle Object Storage bucket in order to load data from the `customer-contact.csv` and `customer-extension.csv` files to create detailed customers tables.
+In this task, we define a **Cloud Location** to connect to a public Oracle Object Storage bucket in order to load data from the **`customer-contact.csv`** and **`customer-extension.csv`** files to create detailed customers tables.
 
 1. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
 
-    ![Click the Cloud Locations card.](./images/click-add-cloud-store-location.png " ")
+    ![Click the Cloud Locations card.](./images/click-cloud-locations.png " ")
 
 2. On the **Manage Cloud Store** page, click **Add Cloud Storage**.
 
@@ -56,7 +62,9 @@ In this task, we define a **Cloud Location** to connect to a public Oracle Objec
     + **Bucket URI:** Enter the URI for the public Object Storage bucket.
 
         ```
+        <copy>
         https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
+        </copy>
         ```
 
         ![Complete the Add Cloud Store Location.](./images/oci-cloud-settings.png " ")
@@ -69,11 +77,13 @@ In this task, we define a **Cloud Location** to connect to a public Oracle Objec
 
     ![The cloud store location is created.](./images/oci-cloud-location-created.png " ")
 
+6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
+
 ## Task 3: Load Data from the OCI Cloud Location and Create a Table
 
-In this task, we will load data and create the **customer\_contact** and table in your Autonomous Database instance.
+In this task, we will load data and create the **customer\_contact** table in your Autonomous Database instance.
 
->**Note:** In **Lab 3: Load Data from Local Files**, we already loaded the **customer-extension.csv** file into our ADB instance; therefore, we won't perform this step. In addition, in **Lab 4: Link to Data in Public Object Storage Buckets**, we already linked to the **customer\_contact** file and created the external table; however, in this task, we will load the same **customer\_contact** data into our ADB instance and create a new database table under a new name. Querying data stored inside the database is much faster than querying data that is stored in external tables outside the database.
+>**Note:** In **Lab 3: Load Data from Local Files**, we already loaded the **customer-extension.csv** file into our ADB instance; therefore, we won't perform this step. In addition, in **Lab 4: Link to Data in Public Object Storage Buckets**, we already linked to the **`customer_contact`** file and created the external table; however, in this task, we will load the same **`customer_contact`** data into our ADB instance and create a new database table under a new name. Querying data stored inside the database is much faster than querying data that is stored in external tables outside the database.
 
 1. In the **What do you want to do with your data?** section, click **LOAD DATA**.
 
@@ -91,17 +101,18 @@ In this task, we will load data and create the **customer\_contact** and table i
 
     Click **[ENTER]** on your keyboard. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
 
-4. Drag the **customer\_contact** folder and drop it onto the data linking job section.
+4. Drag the **`customer_contact`** folder and drop it onto the data linking job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
-5. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
+5. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, **`customer_contact.csv`**. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
     ![Click yes to load objects to a single table.](images/load-to-single-table.png)
 
-    The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data linking job section. Again, since we already have linked to the **customer\_contact** file in a previous lab, the data load utility changed the name of the newly created external table to **customer\_contact_1**. 
+    The **`customer_contact`** target table to be created for the selected 
+    **`.csv`** file is displayed in the data linking job section. Again, since we already have linked to the **`customer_contact`** file in a previous lab, the data load utility changed the name of the newly created external table to **`customer_contact_1`**.
 
-    >**Note:** You can click the **customer\_contact (23 MB)** link to display the settings for the table that will be created. You can preview the external table and change its name, data type, and so on.
+    >**Note:** You can click the **`customer_contact (23 MB)`** link to display the settings for the table that will be created. You can preview the external table and change its name, data type, and so on.
 
     ![The customer_contact target table is displayed.](images/customer-contact-1-created.png)
 
@@ -109,7 +120,7 @@ In this task, we will load data and create the **customer\_contact** and table i
 
     ![Run the load job.](images/click-run.png)
 
-    The load job is completed successfully.
+    If the load job completes successfully, a green checkmark with the status **Complete** is displayed next to the file's name.
 
     ![Load job completed.](images/potential-churners-job-created.png)
 
@@ -119,49 +130,52 @@ In this task, we will load data and create the **customer\_contact** and table i
 
 8. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
-    The two tables that we created and will use in this demo are displayed in the **Navigator** tab, namely, **CUSTOMER\_CONTACT_1** and **CUSTOMER\_EXTENSION**.
+    The two tables that we created and will use in this demo are displayed in the **Navigator** tab, namely, **`CUSTOMER_CONTACT_1`** and **`CUSTOMER_EXTENSION`**.
 
     ![The two tables are displayed.](images/two-tables-displayed.png)
 
 ## Task 4: Define an Amazon S3 Cloud Location
 
-In this task, we define a **Cloud Location** to connect to our **`moviestream-churn`** AWS S3 bucket that contains the `potential_churners.csv` file. We will use this file in our demo to identify potential customers who might churn.
+_**Note:** This is not a hands-on task; instead, it is a demo of how to define an Amazon S3 location._
+
+In this task, we define a **Cloud Location** to connect to our **`moviestream-churn`** AWS S3 bucket that contains the **`potential_churners.csv`** file. We will use this file in our demo to identify potential customers who might churn.
 
 ![The potential_churners.csv file in the S3 bucket.](images/aws-s3-bucket.png)
 
-1. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, click the **DATA LOAD** card. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
 
-2. On the **Manage Cloud Store** page, click **Add Cloud Storage**.
+2. On the **Manage Cloud Store** page, click **Add Cloud Store Location**.
 
 3. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`aws-s3-data-lake`**.
     + **Description:** Enter an optional description.
+    + **Create Credential:** Select this option, if not already selected.
+    + **Cloud Username and Password:** Select this option, if not already selected.
     + **Cloud Store:** Select **Amazon S3** option from the drop-down list.
     + **Credential Name:** Enter **aws_credential**.
-    + The **Bucket URI** option is selected by default.
 
-    Provide the values for the next three fields:
+    Provide the values for the next three fields, if you have them:
     + **Amazon access key ID**
     + **Amazon secret access key**
     + **Amazon Bucket URI**. This is your Amazon S3 bucket endpoint.The format is:
+
+    + The **Bucket URI** option is selected by default. The URL format is as follows:
 
         `https://<bucket-name>.s3.<region>.amazonaws.com/`
 
         ![The Amazon S3 information.](images/aws-cloud-info.png)
 
-        ```
-        http://moviestream-churn.s3.us-west-2.amazonaws.com/
-        ```
-
         ![Complete the Add Cloud Store Location.](./images/complete-add-aws-cloud-location.png " ")
 
-4. Click **Next** to see the available objects in the bucket that you specified. We will only use the `potential_churners.csv` file.
+4. Click **Next** to see the available objects in the bucket that you specified. We will only use the **`potential_churners.csv`** file.
 
     ![Click Next to see the objects in the bucket.](./images/cloud-data.png " ")
 
 5. Click **Create**. The **aws-s3-data-lake** cloud location is displayed in the **Manage Cloud Store** page.
 
     ![The cloud store location is created.](./images/aws-cloud-location-created.png " ")
+
+6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
 
 ## Task 5: Link to Data from the AWS S3 Cloud Location and Create an External Table
 
@@ -171,15 +185,15 @@ In this task, we will link to the `potential_churners.csv` data from the AWS S3 
 
 2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
 
-3. The **Link Cloud Object** page is displayed. Drag and drop the `potential_churners` table from the Amazon S3 public bucket to the data linking job.
+3. The **Link Cloud Object** page is displayed. Select the **`aws-s3-data-lake`** from the **Select Cloud Store Location or enter public URL** drop-down list, if not already selected from the previous task. Next, drag and drop the **`potential_churners`** table from the Amazon S3 public bucket to the data linking job.
 
     ![Drag and drop the potential_churners folder](images/drag-drop-potential-churners.png)
 
-4. Click **Start**. A dialog box is displayed to prompt you whether or not if you want to link all objects in this folder matching **.csv** to a single target table. Click **Yes**.
+4. Click **Start** and then click **Run**.
 
     ![Click Start to start the link job.](images/start-link-job.png)
 
-    The **potential_churners** link job is completed successfully.
+    If the **`potential_churners`** link job completes successfully, a green checkmark with the status **Complete** is displayed next to the file's name.
 
     ![The potential_churners target table is displayed.](images/link-job-completed.png)
 
@@ -193,7 +207,7 @@ We now have the needed tables to analyze the data and identify the potential cus
 
 2. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
-3. Let's query the `POTENTIAL_CHURNERS` table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+3. Let's query the **`POTENTIAL_CHURNERS`** table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -202,11 +216,11 @@ We now have the needed tables to analyze the data and identify the potential cus
     </copy>
     ```
 
-    The output shows whether or not the customer will churn and the probability of the churn by `CUST_ID`.
+    The output shows whether or not the customer will churn and the probability of the churn by **`CUST_ID`**.
 
     ![Query potential_churners.](./images/query-potential-churners.png " ")
 
-4. Let's query the `CUSTOMER_EXTENSION` table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+4. Let's query the **`CUSTOMER_EXTENSION`** table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -228,11 +242,11 @@ We now have the needed tables to analyze the data and identify the potential cus
     </copy>
     ```
 
-    The output shows the customers geographical contact information by `CUST_ID`.
+    The output shows the customers geographical contact information by **`CUST_ID`**.
 
     ![Query customer_contact_1.](./images/query-customer-contact-1.png " ")
 
-6. Create a new table that joins all three tables that originated from the OCI and AWS S3 data lakes based on the **`cust_id`** column. This table will show the customers that will churn (from the `POTENTIAL_CHURNERS` table), the detailed customer information (from the `customer_extension` table), and the geographical customers information (from the `CUSTOMER_CONTACT_1` table). Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+6. Create a new table that joins all three tables that originated from the OCI and AWS S3 data lakes based on the **`cust_id`** column. This table will show the customers that will churn (from the **`POTENTIAL_CHURNERS`** table), the detailed customer information (from the **`customer_extension`** table), and the geographical customers information (from the **`CUSTOMER_CONTACT_1`** table). Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -250,7 +264,8 @@ We now have the needed tables to analyze the data and identify the potential cus
         cc.YRS_CUSTOMER,
         cc.PROMOTION_RESPONSE,
         cc.LOC_LAT,
-        cc.LOC_LONG from POTENTIAL_CHURNERS pc, CUSTOMEREXTENSION e, CUSTOMERCONTACT cc
+        cc.LOC_LONG
+        from POTENTIAL_CHURNERS pc, CUSTOMER_EXTENSION e, CUSTOMER_CONTACT_1 cc
         where
         pc.cust_id=e.cust_id
         and cc.cust_id=pc.cust_id
@@ -279,7 +294,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, May 2023
+* **Last Updated By/Date:** Lauran Serhal, June 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

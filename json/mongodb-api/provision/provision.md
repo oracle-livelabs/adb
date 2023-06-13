@@ -39,11 +39,7 @@ In this lab, you will:
 
 </if>
 
-3. Click the navigation menu in the upper left to show top level navigation choices.
-
-    ![Oracle home page.](./images/navigation.png " ")
-
-4. Click on **Oracle Database** and choose **Autonomous JSON Database**.
+3. Click the navigation menu in the upper left to show top level navigation choices. Click on **Oracle Database** and choose **Autonomous JSON Database**.
 
     ![Click Autonomous JSON Database](./images/adb-json.png " ")
 
@@ -191,4 +187,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Roger Ford, Principal Product Manager, Oracle Database
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Roger Ford, March 2022
+- **Last Updated By/Date** - Hermann Baer, June 2023
