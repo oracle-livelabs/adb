@@ -15,7 +15,7 @@ Always select, **Run on Your Tenancy** when starting a workshop.
 
 ## Autonomous Database 1: Autonomous Database 15 Minute Quick Start
 
-In just 15 minutes, deploy an Autonomous Database optimized for data warehousing workloads, integrate that warehouse with a data lake, and then gain meaningful business insights.
+In just 15 minutes, deploy an Autonomous Database optimized for data warehousing workloads, integrate that warehouse with a data lake, and then gain meaninserverlessgful business insights.
 
 <a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=928" class="tryit-button">Try it!</a>
 
@@ -35,7 +35,7 @@ In this workshop, you will create a simple webshop using JSON and SODA with the 
 
 ## Autonomous Database 4: Load and Analyze Your Data with Autonomous Database
 
-In this workshop, you will go through the steps to get started using the Oracle Autonomous Database on Shared Infrastructure (ADB-S). You will provision a new ADB instance, load data from the object store and troubleshoot data loads, query external data residing on the object store, and visualize your data using Oracle Analytics Desktop.
+In this workshop, you will go through the steps to get started using the Oracle Autonomous Database Serverless (ADB-S). You will provision a new ADB instance, load data from the object store and troubleshoot data loads, query external data residing on the object store, and visualize your data using Oracle Analytics Desktop.
 
 <a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=582" class="tryit-button">Try it!</a>
 

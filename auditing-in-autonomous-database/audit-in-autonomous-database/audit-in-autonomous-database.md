@@ -35,7 +35,7 @@ In this lab, you will:
     - Display name: Provide a name <if type="livelabs">- to ensure you have create a unique name, prepend the name with you username, for example "LL-234-DB"</if>
     - Database name: Provide a name <if type="livelabs">- to ensure you have create a unique name, prepend the name with you username, without any hyphens, for example "LL234DB"</if>
     - Choose a workload type: Transaction Processing
-    - Choose a deployment type: Shared Infrastructure
+    - Choose a deployment type: Serverless
 
     ![](images/atp-create-1.png)
 
