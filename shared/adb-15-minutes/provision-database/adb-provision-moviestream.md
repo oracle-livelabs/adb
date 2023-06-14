@@ -63,7 +63,7 @@ In this lab, you will:
 
     ![Choose a workload type.](./images/adb-workload-type.png " ")
 
-5. Choose __Shared Infrastructure__ deployment type:
+5. Choose __Serverless__ deployment type:
 
     ![Choose a deployment type.](./images/adb-deployment-type.png " ")
 
@@ -136,4 +136,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, February 2023
+- **Last Updated By/Date** - Richard Green, June 2023

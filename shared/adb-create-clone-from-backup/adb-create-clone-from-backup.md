@@ -3,7 +3,7 @@
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database on Shared Infrastructure (ADB-S) is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
 This lab shows how to create a **full** clone from the **currently running** database or from a **backup** timestamp of that database.
 
@@ -148,4 +148,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date**  - Rick Green, March 2023
+- **Last Updated By/Date**  - Rick Green, June 2023

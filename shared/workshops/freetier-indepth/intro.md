@@ -1,6 +1,6 @@
 # Introduction
 
-The labs in this workshop show you a variety of ways to manage and monitor your **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**. You will provision a new ADB instance, practice connecting to the database securely with and without a connection wallet, examine a variety of ways to monitor database performance and other metrics, apply scaling and auto scaling, enable disaster recovery using Autonomous Data Guard, create refreshable database clones, set event and alarm notifications, and secure your data using Oracle Data Safe.
+The labs in this workshop show you a variety of ways to manage and monitor your **Oracle Autonomous Database Serverless**. You will provision a new ADB instance, practice connecting to the database securely with and without a connection wallet, examine a variety of ways to monitor database performance and other metrics, apply scaling and auto scaling, enable disaster recovery using Autonomous Data Guard, create refreshable database clones, set event and alarm notifications, and secure your data using Oracle Data Safe.
 
 With Oracle Autonomous Database we make it quick and easy for you to create a secure, fully managed database service in the Oracle Cloud which allows you to start loading and analyzing your data immediately.
 
@@ -16,7 +16,7 @@ Watch our short video that explains key features in Oracle's Autonomous Database
 Oracle’s Autonomous Database is the perfect quick-start service for fast data loading and sophisticated data reporting and analysis. Oracle manages everything for you so you can focus on your data.
 
 ## Workshop Objectives
-- Provision a new Autonomous Database instance on Shared Infrastructure
+- Provision a new Oracle Autonomous Database Serverless instance
 - Run sample queries against the sample data sets
 - Load data from the object store
 - Query external data from the object store
@@ -50,4 +50,4 @@ Use these links to get more information about Oracle Autonomous Database:
 
 - **Author** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance
 - **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, January 2023
+- **Last Updated By/Date** - Richard Green, June 2023
