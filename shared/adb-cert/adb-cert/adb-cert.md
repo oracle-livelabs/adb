@@ -89,7 +89,7 @@ In this lab, you will:
 
 10. Choose a deployment type. Select the deployment type for your database from the choices:
 
-    - Serverless Infrastructure__ - For this lab, choose __Serverless Infrastructure__ as the deployment type.
+    - **Serverless** - For this lab, choose **Serverless** as the deployment type.
     - __Dedicated Infrastructure__ - Or, you could have chosen Dedicated Infrastructure as the deployment type.
 
     ![Choose a deployment type.](./images/task2-5.png " ")
