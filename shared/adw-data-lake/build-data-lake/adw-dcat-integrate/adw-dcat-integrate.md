@@ -17,7 +17,7 @@ In this lab, you will:
 ### Prerequisites
 
 >_**Note:**
-This is not a hands-on lab; instead, it is a demo of how integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the **Access the Data Lake using Autonomous Database and Data Catalog** LiveLabs workshop._
+This is not a hands-on lab; instead, it is a demo of how to integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops._
 
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
@@ -27,6 +27,7 @@ This lab requires the completion of the following labs/tasks from the **Contents
 ## Task 1: Navigate to the OCI Data Catalog Page
 
 This is not a hands-on task. In this task, you will navigate to an OCI Data Catalog instance and explore a data asset named Data Lake. This data asset contains entities that were harvested from three Oracle Object Storage buckets. In the next task, you will connect to this Data Catalog instance from within ADW and link to some data assets to create external tables.
+>**Note:** If you are using a LiveLabs reservation, an OCI Data Catalog instance is provided for you; however, this instance doesn't contain any harvested data assets.
 
 1. Log in to the **Oracle Cloud Console**. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
@@ -77,14 +78,6 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 </if>
 
     **Note:** If your Data Catalog and ADW instances are in different compartments like in our example, you must select the correct compartment for your ADW instance; otherwise, you won't see the resources that you created in this workshop such as the credential and cloud store locations.
-
-    <if type="livelabs">
-    ![Verify compartment and then click the ADW instance.](./images/ll-adb-page.png " ")
-    </if>
-
-    <if type="freetier">
-    ![Verify compartment and then click the ADW instance.](./images/select-compartment.png " ")
-    </if>
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 

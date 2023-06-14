@@ -40,7 +40,7 @@ This lab requires the completion of the following labs/task from the **Contents*
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
+5. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
 
 ## Task 2: Create a Materialized View for an External Table
 
