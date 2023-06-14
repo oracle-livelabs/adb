@@ -15,7 +15,7 @@ Always select, **Run on Your Tenancy** when starting a workshop.
 
 ## Autonomous Database 1: Autonomous Database 15 Minute Quick Start
 
-In just 15 minutes, deploy an Autonomous Database optimized for data warehousing workloads, integrate that warehouse with a data lake, and then gain meaninserverlessgful business insights.
+In just 15 minutes, deploy an Autonomous Database optimized for data warehousing workloads, integrate that warehouse with a data lake, and then gain meaningful business insights.
 
 <a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=928" class="tryit-button">Try it!</a>
 
