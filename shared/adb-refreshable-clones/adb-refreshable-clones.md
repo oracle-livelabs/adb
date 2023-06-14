@@ -3,7 +3,7 @@
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database on Shared Infrastructure (ADB-S) is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
   ![ALT text is not available for this image](images/2673172546.jpg)
 
