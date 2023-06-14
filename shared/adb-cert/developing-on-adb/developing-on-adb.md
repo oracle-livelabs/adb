@@ -8,7 +8,7 @@ Oracle Autonomous JSON Database is an Oracle Cloud service that is specialized f
 
 Like other Oracle Autonomous Database services, it delivers automated patching, upgrading, and tuning. It performs all routine database maintenance tasks while the system is running, without human intervention.
 
-Oracle Autonomous JSON Database is a feature-scoped service for storing and retrieving JSON document collections using SQL or Document APIs. Development which requires a significant amount of non-JSON data must use Autonomous Database for Transaction Processing and Mixed Workloads on either Shared or Dedicated Infrastructure.
+Oracle Autonomous JSON Database is a feature-scoped service for storing and retrieving JSON document collections using SQL or Document APIs. Development which requires a significant amount of non-JSON data must use Autonomous Database for Transaction Processing and Mixed Workloads on either Serverless or Dedicated Infrastructure.
 
 Development of NoSQL-style, document-centric applications is particularly flexible because the applications use schemaless data. This lets you quickly react to changing application requirements. There's no need to normalize the data into relational tables, and no impediment to changing data structure or organization at any time, in any way. A JSON document has internal structure, but no relation is imposed on separate JSON documents.
 
@@ -338,4 +338,4 @@ This statement returns every title and associated actor **in their own relationa
 ## Acknowledgements
 
 - **Author**- Roger Ford, Principal Product Manager, Ethan Shmargad, Santa Monica Specialists Hub
-- **Last Updated By/Date** - Kamryn Vinson, February 2023
+- **Last Updated By/Date** - Kamryn Vinson, June 2023
