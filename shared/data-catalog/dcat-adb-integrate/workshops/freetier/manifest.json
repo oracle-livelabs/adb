@@ -14,7 +14,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Setup the Workshop Environment",
+            "title": "Lab 1: Set up the Workshop Environment",
             "type":"freetier",
             "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
