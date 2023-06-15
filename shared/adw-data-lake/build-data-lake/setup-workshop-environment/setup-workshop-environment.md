@@ -113,7 +113,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The selected Data Warehouse option of the "Choose a workload type" section is displayed and highlighted.](./images/adb-workload-type.png " ")
 
-6. In the **Choose a deployment type** section, accept the **Shared Infrastructure** default selection.
+6. In the **Choose a deployment type** section, accept the **Serverless** default selection.
 
        ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
 

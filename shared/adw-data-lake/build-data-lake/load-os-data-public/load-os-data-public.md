@@ -44,12 +44,10 @@ If you already have the **Oracle Database Actions** browser tab open from the pr
 
 <if type="livelabs">
 3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
 </if>
 
 <if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
 </if>
 
 4. The **Database Actions | Launchpad** Home page is displayed in a _**new tab**_ in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
