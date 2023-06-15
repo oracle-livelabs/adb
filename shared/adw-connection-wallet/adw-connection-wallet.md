@@ -189,9 +189,9 @@ You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-View the documentation for [connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) in Autonomous Database Shared.
+View the documentation for [connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) in Autonomous Database Serverless.
 
-View the documentation for [network configuration options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-network-access.html#GUID-D2D468C3-CA2D-411E-92BC-E122F795A413) in Autonomous Database Shared.
+View the documentation for [network configuration options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-network-access.html#GUID-D2D468C3-CA2D-411E-92BC-E122F795A413) in Autonomous Database Serverless.
 
 View the blog post ["Connecting to Your Autonomous Database Has Never Been Easier"](https://blogs.oracle.com/datawarehousing/post/connecting-your-autonomous-database-has-never-been-easier) to learn how to use one-way Transport Layer Security (TLS) authentication for connecting your client tools securely to an autonomous database without a wallet.
 
@@ -199,4 +199,4 @@ View the blog post ["Connecting to Your Autonomous Database Has Never Been Easie
 
 - **Author** - Richard Green, Principal Developer, Database User Assistance
 - **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, April 2023
+- **Last Updated By/Date** - Richard Green, June 2023
