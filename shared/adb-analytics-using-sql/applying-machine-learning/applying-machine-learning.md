@@ -16,12 +16,12 @@ Estimated Lab Time: 10 minutes
 
 ## Overview
 
-Autonomous Data Warehouse contains built-in machine learning algorithms. There is a separate workshop that can guide you through creating machine learning models to solve common business problems. In this short lab, the objective is to use one of these built-in algorithms to help us understand the demographic factors that can explain why a customer triggers an "insufficient funds" event against their account. If we can identify the key demographic attributes associated with this type of event, we can ensure data collected to support subsequent predictive machine learning is targeted for higher data quality.
+Autonomous Data Warehouse contains built-in machine learning algorithms. There is a separate workshop that can guide you through creating machine learning models to solve common business problems: [See here] (https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=560). In this short lab, the objective is to use one of these built-in algorithms to help us understand the demographic factors that can explain why a customer triggers an "insufficient funds" event against their account. . If we can identify the key demographic attributes associated with this type of event, we strive to improve data quality of those attributes in support of subsequent predictive machine learning efforts.
 
-To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This package helps in creating, evaluating, and querying Oracle Machine Learning for SQL (OML4SQL) machine learning models.In-database machine learning makes it easy for you to benefit from the power of machine learning-driven analytics.
+To do this analysis, we use a package called `DBMS_DATA_MINING`. This package helps in creating, evaluating, and querying Oracle Machine Learning for SQL (OML4SQL) machine learning models. In-database machine learning makes it easy for you to benefit from the power of machine learning-driven analytics.
 
 
-## Task 1: Preparing Our customer Data Set
+## Task 1: Preparing Our Customer Data Set
 
 1. The first step is to create a view that contains the main customer demographic attributes. This means removing the time attributes, transaction attributes and movie attributes from our movie sales data.  Copy and paste the following code into the SQL worksheet window:
 
@@ -76,9 +76,9 @@ To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This packag
 
     ![Query result showing what the table data set looks like](images/insufficient_funds_number.png)
 
-    **NOTE:** Unlike the movie sales data, we now have a single row per customer and you can see that in the column **insufficient\_funds\_incidents** there are single numeric values that indicates how many times the customer ran out of funds in their account.
+    **NOTE:** Unlike the movie sales data, we now have a single row per customer and you can see that in the column `insufficient_funds_incidents` there are single numeric values which indicate how many times the customer ran out of funds in their account.
 
-5. Run the following query to create a vw\_cust\_funds2 view with a condition to check insufficient funds incidents. When the condition insufficient funds incident is true, the value is 1 and when there is no incident, the value is 0. 
+5. Run the following query to create a **vw\_cust\_funds2** view with a condition to check insufficient funds incidents. When the condition insufficient funds incident is true, the value is 1 and when there is no incident, the value is 0. 
 
     ```
     <copy>
@@ -110,13 +110,13 @@ To do this analysis, we use a package called **`DBMS_DATA_MINING`**. This packag
     ```
 
     
-    Obviously,  we are interested in the values of the insuff\_funds\_indicator. From a machine learning perspective, it is important for this type of analysis to have situations where an event did occur, as well as situations where an event does not occur - we need data to cover both sides of the story. Now that we know we have the right data set in place, we can proceed to build our model.
+    Obviously,  we are interested in the values of the `insuff_funds_indicator`. From a machine learning perspective, it is important to have both positive and negative examples, that is, when the event did occur, as well as when the event does not occur. Now that we know we have the right data set in place, we can proceed to build our model.
 
 ## Task 2: Building the Model
 
 ### Overview
 
-In this case, we will use the **CREATE\_MODEL2** procedure to help us understand which demographic attributes have the most impact to predict if a customers is likely to incur an insufficient funds event. The CREATE\_MODEL2 procedure uses an Attribute Importance algorithm - Minimum Description Length to determine the relative importance of attributes in predicting the column to be explained, in this case, `insuff_funds_indicator`.
+In this case, we will use the `CREATE_MODEL2` procedure to help us understand which demographic attributes have the most impact to predict if a customer is likely to incur an insufficient funds event. The `CREATE_MODEL2` procedure uses the Attribute Importance algorithm Minimum Description Length to determine the relative importance of attributes in predicting the column to be explained, in this case, the target, `insuff_funds_indicator`.
 
 To run this analysis, we need to provide the following information:
 
@@ -179,25 +179,25 @@ What do the above columns mean?
 
 ### ATTRIBUTE\_IMPORTANCE\_VALUE
 
-This column contains a value that indicates how useful the column is for determining the value of the target column (insufficient funds). Higher values indicate the atrribute has great impact on the target for prediction. Value can range from 0 to 1.
+The `attribute_importance_value` column contains a value that indicates how useful the column is for determining the value of the target column (insufficient funds). Higher values indicate the attribute has a greater impact on the target for prediction. The value can range from 0 to 1.
 
-An individual column's attribute importance value is independent of other columns in the input table. The values are based on how strongly each individual column correlates with the target column.
+An individual column's attribute importance value is independent of other predictor columns in the input table. The values are based on how strongly each individual column correlates with the target column.
 
-An attribute importance value of 0 implies there is no useful correlation between the column's values and the target column's values. Such columns could be removed from the data set. An attribute importance value of 1 implies perfect correlation; such columns should be eliminated from consideration for prediction. In practice, an attribute importance equal to 1 is rarely returned.
+An attribute importance value of 0 implies there is no useful correlation between the column's values and the target column's values. Such columns could be removed from the data set. An attribute importance value of 1 implies perfect correlation; such columns should be eliminated from consideration when building classification or regression models. In practice, an attribute importance equal to 1 is rarely returned.
 
 ### ATTRIBUTE\_RANK
 
-This simply shows the ranking of attribute importance value. Rows with equal values for attribute\_importance\_value have the same rank. Rank values are not skipped in the event of ties.
+The `attribute_rank` column simply shows the ranking of attribute importance value. Rows with equal values for `attribute_importance_value` have the same rank. Rank values are not skipped in the event of ties.
 
 ## Task 4: Interpreting the Results
 
-What do the results tell us? The above results tell us that to understand why an insufficient funds event occurs, we need to examine the occurrence of late mortgage payments by a customer, their segment name and the mortgage amount. Note that the analysis doesn't focus on specific attribute values. The analysis shows that we could predict the likelihood of an insufficient funds event based on the top three attributes identified by the CREATE\_MODEL2 procedure.
+What do the results tell us? The results above tell us that the top predictor columns that impact our ability to predict an insufficient funds event are late mortgage payments by a customer, their segment name and the mortgage amount. Note that the analysis doesn't focus on specific attribute values. When selecting columns to build a classification model to predict the likelihood of an insufficient funds event, we might start by including the top N columns, here, we might choose the top 10.  
 
-Conversely, we can say that demographic attributes such as job\_type, marital\_status and education have no impact on whether a customer is likely to incur an insufficient funds event.
+The results show that demographic attributes such as `job_type`, `marital_status` and `education` have no impact on whether a customer is likely to incur an insufficient funds event.
 
 ## Recap
 
-This lab has introduced you to the built-in capabilities of machine learning within Autonomous Data Warehouse. There are additional workshops in this series that will take you deeper into these unique capabilities. 
+This lab has introduced you to the built-in capabilities of machine learning within Autonomous Data Warehouse. There are additional workshops in this series that will take you deeper into these unique capabilities: See [here](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=560).
 
 Within this lab we have examined:
 
@@ -210,4 +210,4 @@ Now that we have identified these key demographic attributes, we can do more ana
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; May 2023
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; June 2023
