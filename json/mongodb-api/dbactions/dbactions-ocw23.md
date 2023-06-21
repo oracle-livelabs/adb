@@ -161,46 +161,46 @@ The following lab will focus on aggregation pipelines, illustrate its functional
 
     ![Mongo Compass - initial aggregation screen](./images/mongo-agg-init.png)
 
-    Select the **$group** expression.
+    - Select the **$group** expression.
 
-    ![Mongo Compass - build first stage](./images/mongo-agg-stage1.png)
+        ![Mongo Compass - build first stage](./images/mongo-agg-stage1.png)
 
-    Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block in the window below your selection of **$group**:
-    ```
-    <copy>
+        Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block in the window below your selection of **$group**:
+        ```
+        <copy>
         {
             _id: "$year",
             "cnt_movies": {
                 $count: {}}
         }        
-    </copy>
-    ```
-    If you typed it correctly, you will see a sample partial output on the right side pane
+        </copy>
+        ```
+        If you typed it correctly, you will see a sample partial output on the right side pane
 
-    ![Mongo Compass - first stage code](./images/mongo-agg-stage1b.png)
+        ![Mongo Compass - first stage code](./images/mongo-agg-stage1b.png)
 
-    We are now building our **second stage**. We want to sort our results by the number of movies released in a given year in descending order. Select the **$sort** expression.
+    - We are now building our **second stage**. We want to sort our results by the number of movies released in a given year in descending order. Select the **$sort** expression.
 
-    ![Mongo Compass - build second stage](./images/mongo-agg-stage2.png)
+        ![Mongo Compass - build second stage](./images/mongo-agg-stage2.png)
 
-    Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block under the code window below the **sort** selection:
-    ```
-    <copy>
+        Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block under the code window below the **sort** selection:
+        ```
+        <copy>
         { _id: 1 
         } 
-    </copy>
-    ```
-    ![Mongo Compass - second stage code](./images/mongo-agg-stage2b.png)
+        </copy>
+        ```
+        ![Mongo Compass - second stage code](./images/mongo-agg-stage2b.png)
 
-    Last but not least, we only want to return the top ten years. We nned to add another stage using the **$limit** expression. Please select this expression and enter the number 10 to only get the top 10:
+    - Last but not least, we only want to return the top ten years. We nned to add another stage using the **$limit** expression. Please select this expression and enter the number 10 to only get the top 10:
 
-    ![Mongo Compass - build third stage](./images/mongo-agg-stage3.png)
+        ![Mongo Compass - build third stage](./images/mongo-agg-stage3.png)
 
-    You can now run your aggregation pipeline and see the results within Mongo Compass. Press the green **'Run'** button:
+    - You can now run your aggregation pipeline and see the results within Mongo Compass. Press the green **'Run'** button:
 
-    ![Mongo Compass - run aggregation](./images/mongo-agg-output.png)
+        ![Mongo Compass - run aggregation](./images/mongo-agg-output.png)
 
-    Oracle is mapping the aggregation pipeline stages into Oracle SQL to formulate the equivalent operation using SQL and SQL/JSON. For the example aggregation pipeline we just built we can see the execution plan by pressing the 'Explain' button and traversing down to the 'winningPlan' attribute:
+4.  Oracle is mapping the aggregation pipeline stages into Oracle SQL to formulate the equivalent operation using SQL and SQL/JSON. For the example aggregation pipeline we just built we can see the execution plan by pressing the 'Explain' button and traversing down to the 'winningPlan' attribute:
 
     ![Mongo Compass - sql stmt](./images/mongo-agg-sql.png)
 
@@ -211,9 +211,11 @@ The following lab will focus on aggregation pipelines, illustrate its functional
 
     While this is a rather simple SQL statement, this is the point where Oracle uses the power of its SQL engine and the Oracle Optimizer to find the most optimal execution plan for processing the request.
 
-    To run the same aggregation pipeline in mongoshell, copy the following code snippet:
-    ```
-    <copy>
+## Task 3: Run the aggregation pipeline in mongoshell
+
+To run the same aggregation pipeline in mongoshell, copy the following code snippet:
+```
+<copy>
         db.movies.aggregate( 
             [ { $group: 
                 { "_id": "$year" , 
@@ -226,13 +228,13 @@ The following lab will focus on aggregation pipelines, illustrate its functional
             }, 
             { $limit: 10}
             ]);
-    </copy>
+</copy>
     ```
-    ![Mongoshell - agg pipeline](./images/mongosh-agg.png)
+![Mongoshell - agg pipeline](./images/mongosh-agg.png)
 
-    You can also see the SQL statement and execution plan in mongoshell:
-    ```
-        <copy>
+You can also see the SQL statement and execution plan in mongoshell:
+```
+<copy>
         db.movies.aggregate( 
             [ { $group: 
                 { "_id": "$year" , 
@@ -245,11 +247,11 @@ The following lab will focus on aggregation pipelines, illustrate its functional
             }, 
             { $limit: 10}
             ]).explain();
-    </copy>
-    ```
-    ![Mongoshell - execution plan](./images/mongosh-agg-explain.png)
+</copy>
+```
+![Mongoshell - execution plan](./images/mongosh-agg-explain.png)
     
-## Task 3: Using analytical SQL with your collections in two minutes
+## Task 4: Using analytical SQL with your collections in two minutes
 
 Last but not least, we are going to briefly use SQL to analyze our movies collection with SQL/JSON. While your documents are stored in native binary JSON format, the data is readily accessible via SQL/JSON.
 
