@@ -155,7 +155,7 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
 
 After registering an Autonomous Database, you can grant and revoke roles from the Oracle Data Safe service account on your Autonomous Database to control which Oracle Data Safe features you can use with the database. You need to register your Autonomous Database before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account on your target database. Keep in mind that the roles for Autonomous Databases are different than those for non-Autonomous Databases. For non-Autonomous Databases, you can grant roles before or after registering your database.
-- For an **Autonomous Database on Shared Exadata Infrastructure**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+- For an **Oracle Autonomous Database Serverless**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
 
 **Assumption**: Your data values are most likely different than those shown in the screenshots.
 
@@ -296,4 +296,4 @@ The following links provide more information about Oracle Data Safe:
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Adapted by** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Rick Green, January, 2023
+- **Last Updated By/Date** - Rick Green, June, 2023

@@ -62,13 +62,15 @@ In this lab, you will:
 
 On both Mac and Windows, you can use the built-in 'curl' command to access a URL and download a file from it. The URL to use will vary according to the machine involved.
 
+**Note:** If you encounter any issues with the download or the version listed here, then please visit https://www.mongodb.com/try/download/shell to download the most recent shell for your operating system.
+
 Copy **ONE** of the following *curl* commands and paste it to the command or terminal window:
 
 1. For **Mac with Intel processor**:
 
     ```
     <copy>
-    curl https://downloads.mongodb.com/compass/mongosh-1.5.0-darwin-x64.zip -o mongosh.zip
+    curl https://downloads.mongodb.com/compass/mongosh-1.9.1-darwin-x64.zip -o mongosh.zip
     </copy>
     ```
 
@@ -76,7 +78,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
 
     ```
     <copy>
-    curl https://downloads.mongodb.com/compass/mongosh-1.5.0-darwin-arm64.zip -o mongosh.zip
+    curl https://downloads.mongodb.com/compass/mongosh-1.9.1-darwin-arm64.zip -o mongosh.zip
     </copy>
     ```
 
@@ -84,7 +86,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
 
     ```
     <copy>
-    curl https://downloads.mongodb.com/compass/mongosh-1.5.0-win32-x64.zip -o mongosh.zip
+    curl https://downloads.mongodb.com/compass/mongosh-1.9.1-win32-x64.zip -o mongosh.zip
     </copy>
     ```
 
@@ -110,7 +112,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
     </copy>
     ```
 
-    If that fails, you'll have to set your path manually to include the 'bin' directory from the files you just downloaded. If you close and reopen your terminal window, you will need to re-run this comamnd.
+    If that fails, you'll have to set your path manually to include the 'bin' directory from the files you just downloaded. If you close and reopen your terminal window, you will need to re-run this comamnd. Alternatively, you can always navigate to the directory where you have extracted the software and run the shell with the relative path.
 
 2. On **Windows** you can use the following command, assuming you created the 'mongosh' directory in your home directory. If you created it elsewhere, you'll need to edit the path command appropriately.
 
@@ -130,4 +132,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Roger Ford, Principal Product Manager, Oracle Database
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Roger Ford, March 2022
+- **Last Updated By/Date** - Hermann Baer, June 2023

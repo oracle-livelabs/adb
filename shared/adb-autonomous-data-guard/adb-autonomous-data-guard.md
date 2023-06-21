@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database on Shared Infrastructure (ADB-S).
+In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database Serverless.
 - You will practice enabling Autonomous Data Guard (AuDG), using a standby database.
 - You will learn about Backup-Based Disaster Recovery, which uses a backup copy of your primary database.
 
@@ -272,4 +272,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * Authors - Vandanadevi Rajamani, Database User Assistance; Nilay Panchal, ADB Product Management; Rick Green, Database User Assistance
-* Last Updated By/Date - Rick Green, April 2023
+* Last Updated By/Date - Rick Green, June 2023

@@ -18,12 +18,12 @@
             "filename": "./../../introduction/change-pw-json-enhancements-ocw23.md"
         },
         {
-            "title": "Lab 2: Use Mongo API to interact with Oracle Database",
+            "title": "Lab 2: Use Mongo API to interact transparently with Oracle Database",
             "description": "Use Mongo API to interact with Oracle Database",
             "filename": "./../../json-mongo/json-mongo-ocw23.md"
         },
         {
-            "title": "Lab 3: Interact with your Mongo collections interchangeably through Mongo APIs and Oracle",
+            "title": "Lab 3: Work with your Mongo collections interchangeably through Mongo APIs and Oracle JSON and SQL",
             "filename": "../../dbactions/dbactions-ocw23.md"
         },
         {

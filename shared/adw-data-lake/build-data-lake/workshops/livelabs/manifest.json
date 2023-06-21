@@ -1,20 +1,19 @@
 {
-    "workshoptitle": "Build a Data Lake with Autonomous Warehouse",
+    "workshoptitle": "Build a Data Lake with Autonomous Data Warehouse",
     "help": "livelabs-help-db_us@oracle.com",
-    "tutorials": [
-        {
+        "tutorials": [
+        {    
             "title": "Introduction",
-            "type":"livelabs",
+            "type":"freetier",
             "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
             "filename": "./../../introduction/introduction.md"
         },
         {
-            "title": "Get Started",
-            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+            "title": "Get Started with LiveLabs",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 1: Set up the Workshop Environment",
+            "title": "Lab 1: Review the Workshop Environment (Optional)",
             "type":"livelabs",
             "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
@@ -80,10 +79,10 @@
             "filename": "./../../query-performance/query-performance.md"
         },
         {
-            "title": "Lab 12: Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab 12: ADW Multi-language Support",
             "type":"livelabs",
-            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
-            "filename": "./../../cleanup/cleanup.md"
+            "description": "This lab shows you how ADW supports multiple languages",
+            "filename": "./../../adw-multi-language/adw-multi-language.md"
         },
         {
             "title": "Need Help?",
