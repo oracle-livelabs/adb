@@ -7,9 +7,7 @@
 
 Since you are using the LiveLabs environment, you **don't** have administrative privileges to create any OCI resources; therefore, all of the OCI resources that you need in this workshop are already created for you with your LiveLabs reservation.
 
-If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Build a Data Lake with Autonomous Warehouse**. Your LiveLabs reservation includes an OCI Data Catalog instance.
-
-To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops.
+If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Build a Data Lake with Autonomous Warehouse**.
 
 > **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new ADW administrator user and a ADW administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage an ADW and Data Catalog instances.
 
@@ -34,7 +32,8 @@ In this lab, you will:
 
 * (Optional) Create a compartment for your Data Catalog resources.
 * Create an Autonomous Warehouse instance.
-* (Optional) Create an OCI Data Catalog Instance
+* Create a role and grant the role to the `ADMIN` user.
+* Create a user and grant the appropriate privileges to the user.
 
 ### Prerequisites
 
@@ -162,24 +161,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
-## Task 4: (Optional) Create a Data Catalog Instance
-
-OCI Data Catalog is a fully managed, self-service data discovery and governance solution for your enterprise data. With Data Catalog, you get a single collaborative environment to manage technical, business, and operational metadata. You can collect, organize, find, access, understand, enrich, and activate this metadata.
-
-* Harvest technical metadata from a wide range of supported data sources that are accessible using public or private IPs.
-* Create and manage a common enterprise vocabulary with a business glossary.
-* Build a hierarchy of categories, subcategories, and terms with detailed rich text descriptions.
-* Enrich the harvested technical metadata with annotations by linking data entities and attributes to the business terms or adding free-form tags.
-* Find the information you need by exploring the data assets, browsing the data catalog, or using the quick search bar.
-* Automate and manage harvesting jobs using schedules.
-* Integrate the enterprise class capabilities of your data catalog with other applications using REST APIs and SDKs.
-
-Watch our short overview video that explains key features in Data Catalog.
-
-[](youtube:nY7mG2u6-Ew)
-
-To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops.
-
 </if>
 
 You may now proceed to the next lab.
@@ -193,8 +174,9 @@ You may now proceed to the next lab.
 * [Get Started with Data Catalog](https://docs.oracle.com/en-us/iaas/data-catalog/using/index.htm)
 
 ## Acknowledgements
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran Serhal, July 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

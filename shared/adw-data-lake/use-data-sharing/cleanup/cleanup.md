@@ -11,8 +11,7 @@ Estimated Time: 5 minutes
 
 ### Objectives
 
-* (optional) If you created an optional Data Catalog instance, delete it. This also deletes all of the resources in this instance.
-* Delete the Autonomous Database instance.
+* Delete the Autonomous Data Warehouse instance.
 * Delete any resources that you created in your compartment as part of this workshop.
 * Delete your entire compartment if you don't need it.
 
@@ -22,19 +21,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 > **Note:**
 If you want to list the resources in your compartment, you can use the **Tenancy Explorer** page. From the **Navigation** menu, navigate to **Governance & Administration**. In the  **Governance** section, click **Tenancy Explorer**. On the **Tenancy Explorer** page, in the **Search compartments** field, type your compartment's name, and then select the compartment from the list of compartments. The resources in this compartment are displayed.
 
-## Task 1 (Optional): Delete Your Data Catalog Instance
-
-If you created an optional Data Catalog instance in this workshop, you can terminate the instance as follows:
-
-1. Open the **Navigation** menu and click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
-
-2. On the **Data Catalogs** page, in the row for the **`training-dcat-instance`** Data Catalog instance, click the **Actions** icon (three dots), and then select **Terminate** from the context menu.
-
-3. A **Terminate** dialog box is displayed. Enter **delete** in the **TYPE "DELETE" TO CONFIRM DELETE** field, and then click **Terminate**. The Data Catalog instance goes into a **Deleting** state. When the delete is completed, the instance is no longer displayed, and all of the resources in the deleted instance are permanently deleted.
-
-    >**Note:** You might need to refresh your browser to confirm the deletion of the Data Catalog instance.
-
-## Task 2: Delete Your Autonomous Database Instance
+## Task 1: Delete Your Autonomous Data Warehouse Instance
 
 You can terminate your ADW instance that you created in this workshop as follows:
 
@@ -46,7 +33,7 @@ You can terminate your ADW instance that you created in this workshop as follows
 
     The **State** of the Autonomous Database instance goes into **Terminating**. When the ADB is deleted, the **State** changes to **Terminated**.
 
-## Task 3 (Optional): Delete Your Compartment
+## Task 2 (Optional): Delete Your Compartment
 
 If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you can must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
 

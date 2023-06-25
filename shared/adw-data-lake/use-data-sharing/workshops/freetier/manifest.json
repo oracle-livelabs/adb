@@ -1,0 +1,46 @@
+{
+    "workshoptitle": "Use Data Sharing to Provide Unlimited ADB Data-driven Collaboration",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "type":"freetier",
+            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "filename": "./../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Set up the Workshop Environment",
+            "type":"freetier",
+            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
+            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
+        },
+        {
+            "title": "Lab 2: Create User, Cloud Storage, and Credential",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
+        },
+        {
+            "title": "Lab 3: Create and Populate a Data Share",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../create-data-share/create-data-share.md"
+        },
+        {
+            "title": "Lab: Clean up Resources Used in the Workshop (Optional)",
+            "type":"freetier",
+            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
+            "filename": "./../../cleanup/cleanup.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
