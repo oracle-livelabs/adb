@@ -74,8 +74,8 @@
             "filename": "./../../adb-data-safe/adb-data-safe.md"
         },
         {
-            "title": "Lab 13: Control Autonomous Database Network Access Using Private Endpoints",
-            "description": "Control Autonomous Database Network Access Using Private Endpoints",
+            "title": "Lab 13: Public and Private Network Access in Autonomous Database",
+            "description": "Public and Private Network Access in Autonomous Database",
             "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
         },
         {
