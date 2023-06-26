@@ -1,22 +1,25 @@
-# Create User, Role, Cloud Storage, and Credential
+# Create User, Role, Object Storage Bucket, and OCI Credential
 
 ## Introduction
 
-In this lab, you will ...
+In this lab, you will create a user who will be the data share recipient and grant this user the necessary privileges to consume the data in the share. You will also create an Oracle Object Storage bucket that where the shared data will be stored. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's OCID, and the fingerprint which you will need to create the OCI credential. Finally, you'll create the OCI credential.
 
-> **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
-
-Estimated Time: 10 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-* Navigate to the SQL Worksheet utility in Oracle Autonomous Database Data Tools.
+* Navigate to the SQL Worksheet utility.
+* Create a user that will be the recipient for data in the data share tables.
+* Grant the recipient the necessary privileges to access the data share.
+* Create an Oracle Object Storage bucket (if you don't have one) where you'll store the shared data.
+* Generate an RSA key pair (if you don't have a private key in PEM format) to generate a private key and a fingerprint and the user's OCID which you'll need to create an OCI native credential, if you don't have one.
+* Create an OCI native credential and associate the buckets' URL with the credential.
 
 ### Prerequisites
 
-This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
 ## Task 1: Navigate to the SQL Worksheet
 
@@ -75,7 +78,9 @@ For the LA release only, the stage database must be **whietelisted**. As the `In
 
 ## Task 3: Create a User and Grant Privileges to the User
 
-Create a user that will be a **data provider**. A user that will share the data needs to have certain privileges. You will also grant this user the required roles, and enable REST and data sharing.
+Create a user that will be a **data share provider**. A user that will share the data needs to have certain privileges. You will also grant this user the required roles, and enable REST and data sharing.
+
+>**Note:** Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
 1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -119,9 +124,11 @@ Create a user that will be a **data provider**. A user that will share the data 
 
     ![View the script results](images/script-results.png)
 
-## Task 4: Create Oracle Object Storage Bucket
+## Task 4: Create an Oracle Object Storage Bucket
 
-You must store Shared data somewhere. Object Store is the place where you should store that data. You have to create a link to Cloud Storage (bucket URL) and associate the access credentials with it.
+You should store the data share data in Object Storage. You will have to create a link to your Object Storage bucket and (bucket's URL) and then associate the access credentials with that bucket.
+
+>**Note:** If you already have an Object Storage bucket, you don't need to create a new one.
 
 1. In the **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
@@ -148,7 +155,7 @@ You must store Shared data somewhere. Object Store is the place where you should
 
 ## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys    ._
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through this entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
 
@@ -212,13 +219,10 @@ To access data in the Object Store, you need to enable your database user to aut
 
     In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`.
 
-    Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+2. Create a storage link that points to your Object Store URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the URI value in the following code with your own URI.
 
     ```
     <copy>
-    -- Create Storage Link that points to an Object Store URI
-    -- Make sure the user has WRITE privileges to the specified bucket
-
     BEGIN
         DBMS_SHARE.CREATE_CLOUD_STORAGE_LINK(
             STORAGE_LINK_NAME => 'data_share_storage_3',
@@ -231,7 +235,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Create a cloud storage link.](images/create-storage-link.png)
 
-2. Create an OCI native credential. Copy and paste the following script into your SQL Worksheet. Substitute the values for the `user_ocid`, `tenancy_ocid`, `private_key`, and `fingerprint` in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
+3. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the values for the `user_ocid`, `tenancy_ocid`, `private_key`, and `fingerprint` in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
 
     >**Note:** To find your unencrypted **private_key** value that you downloaded in the previous task: Open the private key file in a text editor, and then copy the entire key value but don't include the **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----** lines. Next, paste the copied value in the following code.
 
@@ -257,15 +261,15 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Create an OCI credential.](images/create-credential.png)
 
-3. Verify that you can access the **`data-share-bucket`** with the **`SHARE_BUCKET_CREDENTIAL`** credential that you just created. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+4. Verify that you can access the **`data-share-bucket`** with the **`SHARE_BUCKET_CREDENTIAL`** credential that you just created. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the LOCATION_URI value in the following code with your own URI value.
 
     ```
     <copy>
     SELECT OBJECT_NAME, BYTES
     FROM
     DBMS_CLOUD.LIST_OBJECTS(
-    credential_name=>'SHARE_BUCKET_CREDENTIAL',
-    LOCATION_URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/adwc4pm/b/data-share-bucket/o/');
+        credential_name=>'SHARE_BUCKET_CREDENTIAL',
+        LOCATION_URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/adwc4pm/b/data-share-bucket/o/');
     </copy>
     ```
 
@@ -273,7 +277,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Access bucket.](images/access-bucket.png)
 
-4. Associate the storage link that you created in step 1 with your OCI native credential that you created in step 2. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+5. Associate the storage link that you created in step 1 with your OCI native credential that you created in step 2. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -288,7 +292,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Associate storage link with credential name.](images/associate-link-credential.png)
 
-5. To query the existing cloud stores, copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+6. To query the existing cloud stores, copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -299,7 +303,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Query cloud stores.](images/query-cloud-stores.png)
 
-6. To query existing credentials, copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+7. To query existing credentials, copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>

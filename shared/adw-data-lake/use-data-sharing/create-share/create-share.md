@@ -1,24 +1,27 @@
-# Create and Populate a Data Share
+# Create, Populate, and Publish a Data Share
 
 ## Introduction
 
-A share is the logical container that will be filled up with objects such as tables. A share recipient will get assess to a share and all the tables within the share. It also implements security mechanism and this is less granular entity to grant security.
+A share is the logical container that will be filled up with objects such as tables. An authorized share recipient will get assess to the share and all the tables in it. A share also implements security mechanism and this is less granular entity to grant security.
 
-In this lab, you will ...
+In this lab, you will create a share and add a table to it. Next, you will publish the share to make it available to recipients that you will define in the next lab.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
-Estimated Time: 10 minutes
+Estimated Time: 20 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-* Navigate to the SQL Worksheet utility in Oracle Autonomous Database Data Tools.
+* Create a new data share.
+* Create two tables.
+* Add objects (tables) to the data share.
+* Publish the data share to make it available to recipients.
 
 ### Prerequisites
 
-This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
 ## Task 1: Navigate to the SQL Worksheet
 
@@ -100,11 +103,11 @@ This lab requires the completion of **Lab 1: Set up the Workshop Environment > T
     ```
     <copy>
     BEGIN
-    dbms_share.add_to_share(
-                share_name=>'demo_share',
-                owner=> 'ADMIN',
-                table_name=> 'custsales',
-                share_table_name=> 'custsales');
+    DBMS_SHARE.ADD_TO_SHARE(
+        share_name=>'demo_share',
+        owner=> 'ADMIN',
+        table_name=> 'custsales',
+        share_table_name=> 'custsales');
     END;
     /
     </copy>
@@ -123,6 +126,49 @@ This lab requires the completion of **Lab 1: Set up the Workshop Environment > T
     ```
 
     ![Verify table addition.](images/verify-table-added.png)
+
+    >**Note:** To remove a table from a share, use the following script:
+
+    ```
+    BEGIN
+    DBMS_SHARE.REMOVE_FROM_SHARE(
+        share_name=>'demo_share',
+        share_table_name => 'custsales'
+    );
+    END;
+    ```
+
+## Task 5: Publish the Share
+
+Up to this point, the share and its tables is stored in the database and not yet available to anyone. In this task, you will call the `PUBLISH` API which offloads data to the Cloud Store and make it accessible.
+
+1. Publish the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    BEGIN
+    DBMS_SHARE.PUBLISH_SHARE(share_name=>'demo_share');
+    END;
+    /
+    </copy>
+    ```
+
+    ![Publish the share.](images/publish-share.png)
+
+2. Use the `user_share_versions` view to track the state of the export
+
+    ```
+    <copy>
+    SELECT SHARE_NAME, SHARE_VERSION, STATUS
+    FROM user_share_versions v
+    WHERE v.share_name = 'DEMO_SHARE'
+    order by share_version desc;
+    </copy>
+    ```
+
+    ![Track the data export.](images/track-export.png)
+
+You may now proceed to the next lab.
 
 ## Learn More
 

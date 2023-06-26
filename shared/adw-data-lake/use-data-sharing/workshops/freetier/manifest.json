@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Use Data Sharing to Provide Unlimited ADB Data-driven Collaboration",
+    "workshoptitle": "Use Data Sharing to Provide Unlimited ADB Data-Driven Collaboration",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -20,19 +20,31 @@
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
         },
         {
-            "title": "Lab 2: Create User, Cloud Storage, and Credential",
+            "title": "Lab 2: Create a User, an Object Storage Bucket, and an OCI Credential",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
         },
         {
-            "title": "Lab 3: Create and Populate a Data Share",
+            "title": "Lab 3: Create, Populate, and Publish a Data Share",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
-            "filename": "./../../create-data-share/create-data-share.md"
+            "filename": "./../../create-share/create-share.md"
         },
         {
-            "title": "Lab: Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab 4: Create and Authorize the Data Share Recipient",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../create-share-recipients/create-share-recipients.md"
+        },
+        {
+            "title": "Lab 5: Consume the Data Share",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../consume-share/consume-share.md"
+        },
+        {
+            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
             "type":"freetier",
             "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
             "filename": "./../../cleanup/cleanup.md"
