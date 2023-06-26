@@ -35,13 +35,13 @@ In this workshop, you will create a simple webshop using JSON and SODA with the 
 
 ## Workshop 4: Load and Analyze Your Data with Autonomous Database
 
-In this workshop, you will go through the steps to get started using the Oracle Autonomous Database on Shared Infrastructure (ADB-S). You will provision a new ADB instance, load data from the object store and troubleshoot data loads, query external data residing on the object store, and visualize your data using Oracle Analytics Desktop.
+In this workshop, you will go through the steps to get started using the Oracle Autonomous Database Serverless (ADB-S). You will provision a new ADB instance, load data from the object store and troubleshoot data loads, query external data residing on the object store, and visualize your data using Oracle Analytics Desktop.
 
 <a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=582" class="tryit-button">Try it!</a>
 
 ## Workshop 5: Load and update Moviestream data in Oracle ADW using Data Tools
 
-This workshop is part of a series of workshops based around a movie streaming company called Oracle MovieStream In this workshop, you will go through the steps to load movie sales data into an Oracle Autonomous Data Warehouse on Shared Infrastructure (ADB-S). You will load data from the object store, enable data integrity checks and finally apply updates to the sales data.
+This workshop is part of a series of workshops based around a movie streaming company called Oracle MovieStream In this workshop, you will go through the steps to load movie sales data into an Oracle Autonomous Data Warehouse Serverless (ADB-S). You will load data from the object store, enable data integrity checks and finally apply updates to the sales data.
 
 <a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=901" class="tryit-button">Try it!</a>
 
