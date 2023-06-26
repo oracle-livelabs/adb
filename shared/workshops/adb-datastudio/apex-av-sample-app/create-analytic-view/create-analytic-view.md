@@ -160,7 +160,7 @@ You can also view the analytic view in the editor.
 
 Feel free to explore the editor.
 
-![Analytic View editor](images/5-analysis-edit.png)
+![Analytic View editor](images/analysis-edit.png)
 
  When you are done exploring the editor:
 

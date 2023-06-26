@@ -79,6 +79,12 @@
             "filename": "./../../query-performance/query-performance.md"
         },
         {
+            "title": "Lab 12: ADW Multi-language Support",
+            "type":"livelabs",
+            "description": "This lab shows you how ADW supports multiple languages",
+            "filename": "./../../adw-multi-language/adw-multi-language.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
