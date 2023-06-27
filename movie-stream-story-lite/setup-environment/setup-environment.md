@@ -14,42 +14,50 @@ Estimated Time: 5 minutes.
 ### Objectives
 
 Learn how to
-- Run the stack to create an Autonomous Database, Graph user, and upload dataset
-- Login to Graph Studio
+* Run the stack to perform all the prerequisites required to analyze data. 
 
 ## Task 1: Create OCI compartment
 [](include:iam-compartment-create-body.md)
 
-## Task 2: Run Stack
+## Task 2: Provision ADB and load data using an OCI Cloud Stack
 
-The instructions below will show you how to run a stack that will automatically create an Autonomous Database containing a graph user and the dataset needed for the property graph queries.
+The following steps will set up everything you need to run the analytics for the workshop. Labs 2 and 3 show you how you can perform the tasks manually.
 
-1. Login to the Oracle Cloud.
 
-2.  Once logged in, use this [link](https://cloud.oracle.com/resourcemanager/stacks/create?zipUrl=https://objectstorage.us-ashburn-1.oraclecloud.com/p/0kMdD7Vnv0J1st_2cU-S5PYNWT4SKzOOA04XbhwltUVXnOQ7vec1JJBEGk1eOxPS/n/oradbclouducm/b/moviestream_livelab/o/MovieStream_live_lab_7_AnD.zip) to create and run the Stack.
-  > Note: the link will open in a new tab or window.
+1. Create and run the stack by clicking on the following: [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;end-to-end&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;})
 
-3. You will be directed to this page:
+2. You will be directed to the page below: 
 
   ![The create stack page](./images/create-stack.png "")
 
-4.  Check the "I have reviewed and accept the Oracle Terms of Use" box and choose your **compartment**. Leave the rest as default. Click **Next**.
+    Check **I have reviewed and accept the Oracle Terms of Use** box and choose your **compartment**. Leave the default values for the rest of the fields. 
+    
+    Click **Next**.
 
-  ![Option to have reviewed and accept the Oracle Terms of Use checked](./images/oracle-terms.png "")
+3. Select the target **compartment** and **region** for your Autonomous Database. 
 
-5. Select the **compartment** to create the Autonomous Database and the **region** you are currenlty creating the stack on to create all resources. Click **Next**. After that you will be taken to the Review page, click **Create**.
+    ![The create stack page](./images/stack-info.png "")
 
-  ![The create stack page](./images/configure-variables.png "")
+    Click **Next**. 
 
-6. You will be taken to a Job Details page with an initial status shown in orange. The icon will become green once the job has successfully completed.
+  **Note:** If clicking **Next** does not take you to the next page, check the **Region** field. It may have been reset.
 
-    ![Job has been successful](./images/successful-job.png "")
+4. It's time to create and apply your stack. Ensure **Run apply** is checked and then click **Create**.
 
-    To see information about your application click on **Application Information**. Save the Graph username and password since you will be using it to login to Graph Studio.
+    ![The create stack page](./images/click-create.png "")
 
-    ![How to see the graph username and password](./images/graph-username-password.png "")
+5. You will be taken to a Job Details page with an initial status shown in orange. The icon will become green once the job has successfully completed. This will take 5 to 10 minutes.
+
+    ![Job has been successful](./images/stack-success.png "")
+
+6. Go to the Job Details **Resources -> Outputs** section. Make note of the user and password details. You will need this informationu later:
+    * adb\_admin\_password
+    * adb\_user\_name
+    * adb\_user\_password
+
+    ![User details](./images/output.png "")
 
 ## Acknowledgements
-  * **Author** - Jayant Sharma, Ramu Murakami Gutierrez, Product Management
-  * **Contributors** -  Rahul Tasker, Jayant Sharma, Ramu Murakami Gutierrez, Product Management
-* **Last Updated By/Date** - Ramu Murakami Gutierrez, Product Manager, February 2023
+  * **Author** - Marty Gubar, Product Management
+  * **Contributors** -  Marty Gubar, Product Management
+* **Last Updated By/Date** - Marty Gubar, Product Management, June 2023
