@@ -20,7 +20,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
-1. If you still have your SQL Worksheet open, skip over to step **Task: 2**; otherwise, to navigate to the SQL Worksheet, log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+1. If you still have your SQL Worksheet open, skip over to step **Task: 2**; otherwise, continue to step 2 to navigate to the SQL Worksheet.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -28,25 +28,25 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Data Studio** section, click the **SQL** card to display the SQL Worksheet.
+5. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
-## Task 2: Create a Recipient
+## Task 2: Create a Data Share Recipient
 
-1. Create a new recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Create a new recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
         DBMS_SHARE.CREATE_RECIPIENT(
-            recipient_name => 'live_lab_user',
-            email => 'live_lab_user@oracle.com');
+            recipient_name => 'training_user',
+            email => 'training_user@oracle.com');
     END;
     </copy>
     ```
 
     ![Create recipient.](images/create-recipient.png)
 
-2. Query the available recipients. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+2. Query the available recipients. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
     ```
     <copy>
@@ -59,14 +59,14 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 3: Grant the Recipient Access Privileges to the Share
 
-1. Grant the new recipient access to the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Grant the new recipient access to the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
         DBMS_SHARE.GRANT_TO_RECIPIENT(
             share_name=>'demo_share',
-            recipient_name=> 'live_lab_user',
+            recipient_name=> 'training_user',
             AUTO_COMMIT=>true);
     END;
     /
@@ -75,13 +75,13 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Grant access to share.](images/grant-recipient-access.png)
 
-2. Check the access privileges for the recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+2. Check the access privileges for the recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     SELECT recipient_name, share_name
     FROM user_share_recipient_grants
-    WHERE recipient_name = 'LIVE_LAB_USER';
+    WHERE recipient_name = 'TRAINING_USER';
     </copy>
     ```
 
@@ -89,17 +89,19 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 4: Generate the Activation Link
 
-There are two type of APIs to create the Delta share profile. 
+There are two API types that you can use to create the Delta share profile.
 
 ### **Method 1**
 
-Use an API that generates the activation link's URL which the recipient can use to download a `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+_**Note to self: The following generated activation link didn't work for me on June 27. Alexey thinks it's a bug that will be fixed next week._**
+
+Use an API that generates the activation link's URL which the recipient can use to download a `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
 ```
 <copy>
 BEGIN
     DBMS_OUTPUT.PUT_LINE(dbms_share.get_activation_link
-        (recipient_name=>'LIVE_LAB_USER'));
+        (recipient_name=>'TRAINING_USER'));
 END;
 /
 </copy>
@@ -109,16 +111,21 @@ END;
 
 ### **Method 2**
 
+_**Note to self: The following code generated an error for me but Alexey was able to run
+it on his machine. It might be an issue with adwc4pm. Here's the output from him running the same code._**
+
+![Alexey running the code.](images/alexey-code-1.png)
+
 The second method directly generates the `JSON` config file which you can share with recipient using any method you desire.
 
-1. Generate the Delta Share `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Generate the Delta Share `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     DECLARE
     profile SYS.JSON_OBJECT_T;
     BEGIN
-        DBMS_SHARE.POPULATE_SHARE_PROFILE('LIVE_LAB_USER', profile);
+        DBMS_SHARE.POPULATE_SHARE_PROFILE('TRAINING_USER', profile);
         SYS.DBMS_OUTPUT.PUT_LINE(CHR(10)||JSON_QUERY(profile.to_string, '$' PRETTY));
     END;
     /
@@ -131,6 +138,29 @@ The second method directly generates the `JSON` config file which you can share 
 
     ![A sample generated JSON config file.](images/sample-generated-file.png)
 
+## Task 5: Download the Recipient JSON Config File (Profile)
+
+To access the recipient's activation link using the UI, perform the following steps:
+
+1. In your SQL Worksheet, click the **Oracle Database Actions | Launchpad** in the banner.
+
+2. In the **Data Studio** section, click the **DATA SHARE** tile.
+
+3. On the **Provider and Consumer** page, drill-down (expand) the **Data Share** on the left, and then click **Consume Share**.
+
+    ![Click Consume Share.](images/consume-share.png)
+
+    ![UI screen 1.](images/screen-1.png)
+
+    ![UI screen 2.](images/screen-2.png)
+
+    ![UI screen 3.](images/screen-3.png)
+
+    ![Delta share profile.](images/delta-share-profile.png)
+
+    You will need the **`endpoint`** and **`tokenEndpoint`** values in the next lab to create the required credential to access the data share.
+
+You may now proceed to the next lab.
 
 ## Learn More
 

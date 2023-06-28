@@ -25,7 +25,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -33,7 +33,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Data Studio** section, click the **SQL** card to display the SQL Worksheet.
+5. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
 ## Task 2: Create a Data Share
 
@@ -45,7 +45,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     DBMS_SHARE.CREATE_SHARE(
          share_name=>'demo_share',
          share_type=>'VERSIONED',
-         storage_link_name=>'data_share_storage');
+         storage_link_name=>'DATA_SHARE_STORAGE');
     END;
     /
     </copy>
@@ -53,7 +53,18 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Create data share.](images/create-data-share.png)
 
-2. Verify the newly created data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+    >**Note:**
+
+    To drop a share, use the `DBMS_SHARE.DROP_SHARE` procedure as follows:
+
+    ```
+    BEGIN
+        DBMS_SHARE.DROP_SHARE('demo_share');
+    END;
+    /
+    ```
+
+2. Verify the creation of the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -67,15 +78,15 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 3: Create Tables to Add to the Data Share
 
-1. Create an external table from a public dataset that you will add to the data share. The **moviestream_landing** Oracle Object Storage public bucket that contains the data is located in a different tenancy than yours, **`c4u04`**; therefore, you will use the following public URL. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Create an external table from a public dataset that you will add to the data share. The **moviestream_landing** Oracle Object Storage public bucket that contains some `Parquet` data is located in a different tenancy than yours, **`c4u04`**; therefore, you will use the following public URL. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     BEGIN
-    DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
-    table_name =>'custsales_external',
-    file_uri_list =>'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample/*.parquet',
-    format =>  '{"type":"parquet", "schema": "first"}');
+        DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
+        table_name =>'custsales_external',
+        file_uri_list =>'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/sales_sample/*.parquet',
+        format =>  '{"type":"parquet", "schema": "first"}');
     END;
     /
     </copy>
@@ -83,22 +94,22 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Create external table.](images/create-external-table.png)
 
-2. Create a heap Oracle table that you will add to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+2. Create a table based on the external table which you will add to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     CREATE TABLE custsales
     AS
         SELECT *
-        FROM from custsales_external;
+        FROM custsales_external;
     </copy>
     ```
 
     ![Create heap table.](images/create-heap-table.png)
 
-## Task 4: Add Objects to the Data Share
+## Task 4: Add a Table to the Data Share
 
-1. Add the two newly create external and Oracle heap tables to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Add the `custsales` table to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -115,7 +126,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Add table to share.](images/add-table-share.png)
 
-2. Verify the addition of the table to to the share.
+2. Verify the addition of the table to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
     ```
     <copy>
@@ -138,16 +149,16 @@ This lab assumes that you have successfully completed all of the preceding labs 
     END;
     ```
 
-## Task 5: Publish the Share
+## Task 5: Publish the Data Share
 
 Up to this point, the share and its tables is stored in the database and not yet available to anyone. In this task, you will call the `PUBLISH` API which offloads data to the Cloud Store and make it accessible.
 
-1. Publish the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Publish the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
-    DBMS_SHARE.PUBLISH_SHARE(share_name=>'demo_share');
+        DBMS_SHARE.PUBLISH_SHARE(share_name=>'demo_share');
     END;
     /
     </copy>
@@ -155,7 +166,7 @@ Up to this point, the share and its tables is stored in the database and not yet
 
     ![Publish the share.](images/publish-share.png)
 
-2. Use the `user_share_versions` view to track the state of the export
+2. Use the `user_share_versions` view to track the state of the export. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
     ```
     <copy>
@@ -167,6 +178,8 @@ Up to this point, the share and its tables is stored in the database and not yet
     ```
 
     ![Track the data export.](images/track-export.png)
+
+    >**Note:** If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for few minutes for the pulishing to finish.
 
 You may now proceed to the next lab.
 

@@ -1,8 +1,8 @@
-# Create User, Role, Object Storage Bucket, and OCI Credential
+# Create a User, an Object Storage Bucket, and an OCI Credential
 
 ## Introduction
 
-In this lab, you will create a user who will be the data share recipient and grant this user the necessary privileges to consume the data in the share. You will also create an Oracle Object Storage bucket that where the shared data will be stored. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's OCID, and the fingerprint which you will need to create the OCI credential. Finally, you'll create the OCI credential.
+In this lab, you will create a user who will be the data share recipient and grant this user the necessary privileges to consume the data in the share. You will also create an Oracle Object Storage bucket where the shared data will be stored. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCID, and the fingerprint which you will need to create the OCI credential. Finally, you'll create the OCI credential.
 
 Estimated Time: 15 minutes
 
@@ -12,7 +12,7 @@ In this lab, you will:
 
 * Navigate to the SQL Worksheet utility.
 * Create a user that will be the recipient for data in the data share tables.
-* Grant the recipient the necessary privileges to access the data share.
+* Grant the recipient the necessary role and privileges to access the data share.
 * Create an Oracle Object Storage bucket (if you don't have one) where you'll store the shared data.
 * Generate an RSA key pair (if you don't have a private key in PEM format) to generate a private key and a fingerprint and the user's OCID which you'll need to create an OCI native credential, if you don't have one.
 * Create an OCI native credential and associate the buckets' URL with the credential.
@@ -23,7 +23,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -34,49 +34,11 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Data Studio** section, click the **SQL** card to display the SQL Worksheet.
+5. The **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-sql-card.png " ")
 
-## Task 2: For Limited Availability (LA) Only
-
-For the LA release only, the stage database must be **whietelisted**. As the `In order to whitelist, `ADMIN` user, run the following code.
-
-1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    -- create a new role and grant the role to the admin user.
-
-    CREATE ROLE adpbeta;
-    GRANT ADPBETA TO admin;
-    COMMIT;
-    </copy>
-    ```
-
-    ![Create a new role](images/create-role.png)
-
-2. Query the ADP version and the whitelisting status. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    -- Check the ADP version and whitelisting status.
-
-    SELECT
-    json_value(get_adp_status,'$.ADPVersion') version,
-    json_value(get_adp_status,'$.operationalState') operational_state,
-    JSON_QUERY(get_adp_status,'$.packageState[*]?(@.sharing=="VALID")' PRETTY) share_status
-    FROM dual;
-    </copy>
-    ```
-
-    ![Check ADP version and whitelisting status](images/check-version-state.png)
-
-3. Confirm that the Data Sharing tile is now visible in the **Data Studio** section on the **DATA LOAD** page. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, the **Data Sharing** tile should be displayed.
-
-    ![The Data Sharing tile is displayed.](images/data-sharing-tile.png)
-
-## Task 3: Create a User and Grant Privileges to the User
+## Task 2: Create a User and Grant Privileges to the User
 
 Create a user that will be a **data share provider**. A user that will share the data needs to have certain privileges. You will also grant this user the required roles, and enable REST and data sharing.
 
@@ -124,7 +86,7 @@ Create a user that will be a **data share provider**. A user that will share the
 
     ![View the script results](images/script-results.png)
 
-## Task 4: Create an Oracle Object Storage Bucket
+## Task 3: Create an Oracle Object Storage Bucket
 
 You should store the data share data in Object Storage. You will have to create a link to your Object Storage bucket and (bucket's URL) and then associate the access credentials with that bucket.
 
@@ -153,7 +115,7 @@ You should store the data share data in Object Storage. You will have to create 
 
   ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 
-## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
+## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
 _**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through this entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
@@ -209,7 +171,7 @@ In this task, you will get the following items that are required to create a Clo
 
 7. Click **Close**.
 
-## Task 6: Create an OCI Native Credential
+## Task 5: Create an OCI Native Credential
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
@@ -225,7 +187,7 @@ To access data in the Object Store, you need to enable your database user to aut
     <copy>
     BEGIN
         DBMS_SHARE.CREATE_CLOUD_STORAGE_LINK(
-            STORAGE_LINK_NAME => 'data_share_storage_3',
+            STORAGE_LINK_NAME => 'data_share_storage',
             URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/adwc4pm/b/data-share-bucket/o/'
         );
     END;
@@ -235,7 +197,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Create a cloud storage link.](images/create-storage-link.png)
 
-3. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the values for the `user_ocid`, `tenancy_ocid`, `private_key`, and `fingerprint` in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
+3. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the placeholders values for the `user_ocid`, `tenancy_ocid`, `private_key`, and `fingerprint` in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
 
     >**Note:** To find your unencrypted **private_key** value that you downloaded in the previous task: Open the private key file in a text editor, and then copy the entire key value but don't include the **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----** lines. Next, paste the copied value in the following code.
 
@@ -283,7 +245,7 @@ To access data in the Object Store, you need to enable your database user to aut
     <copy>
     BEGIN
     DBMS_SHARE.set_storage_credential
-        (storage_link_name=>'data_share_storage_3',
+        (storage_link_name=>'data_share_storage',
          credential_name=>'SHARE_BUCKET_CREDENTIAL');
     END;
     /

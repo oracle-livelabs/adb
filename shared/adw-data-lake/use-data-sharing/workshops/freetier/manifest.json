@@ -44,7 +44,13 @@
             "filename": "./../../consume-share/consume-share.md"
         },
         {
-            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
+            "title": "Lab 6: Data Share Using the Database Actions",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../share-db-actions/share-db-actions.md"
+        },
+        {
+            "title": "Lab 7: Clean up Resources Used in the Workshop (Optional)",
             "type":"freetier",
             "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
             "filename": "./../../cleanup/cleanup.md"

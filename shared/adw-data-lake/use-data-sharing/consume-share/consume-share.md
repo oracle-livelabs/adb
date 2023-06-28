@@ -1,18 +1,16 @@
-# Consume the Data Share
+# Consume the Data Share by the Recipient
 
 ## Introduction
 
-A recipient is the user who will consume the share. This is part of the security functionality. The recipient's email is required because, the activation link will be send to the the user's email address.
+In this lab you will learn how to consume the data in your available data share as a recipient.
 
-In this lab, you will ...
-
-Estimated Time: 20 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-* Create a new share recipient.
+* Access the data in your authorized data share.
 
 ### Prerequisites
 
@@ -20,7 +18,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
-1. If you still have your SQL Worksheet open, skip over to step **Task: 2**; otherwise, to navigate to the SQL Worksheet, log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+1. If you still have your SQL Worksheet open, skip over to step **Task: 2**; otherwise, to navigate to the SQL Worksheet, log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -28,109 +26,240 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 4. On the **Autonomous Database details** page, click **Database actions**.
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Data Studio** section, click the **SQL** card to display the SQL Worksheet.
+5. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
-## Task 2: Create a Recipient
+## Task 2:  Grant Required Privileges and Review Prerequisites
 
-1. Create a new recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. To consume a data share, a user must set up an ACL to the data share's provider's machine using **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** as user **`ADMIN`** or some other privileged user. This enables a user or a role to access the data share through the Internet. This must be done before the going through the **Add Share Provider** wizard. For example, if you want to grant role `DWROLE` access on host `acme.com`, you can grant the access as follows:
 
     ```
-    <copy>
     BEGIN
-        DBMS_SHARE.CREATE_RECIPIENT(
-            recipient_name => 'live_lab_user',
-            email => 'live_lab_user@oracle.com');
+    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+        host => 'acme.com',
+        lower_port => 443,
+        upper_port => 443,
+        ace => xs$ace_type(
+        privilege_list => xs$name_list('http', 'http_proxy'),
+        principal_name => upper('DWROLE'),
+        principal_type => xs_acl.ptype_db));
     END;
-    </copy>
+    /
     ```
 
-    ![Create recipient.](images/create-recipient.png)
-
-2. Query the available recipients. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+    In our example, the **`endpoint`** value from our downloaded JSON config file from the previous lab was as follows:
 
     ```
-    <copy>
-    SELECT recipient_name, updated
-    FROM user_share_recipients;
-    </copy>
+    https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing
     ```
 
-    ![Query recipients.](images/query-recipients.png)
-
-## Task 3: Grant the Recipient Access Privileges to the Share
-
-1. Grant the new recipient access to the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+    Substitute the **`endpoint`** value in the **host** parameter. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
-        DBMS_SHARE.GRANT_TO_RECIPIENT(
-            share_name=>'demo_share',
-            recipient_name=> 'live_lab_user',
-            AUTO_COMMIT=>true);
+    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing',
+        lower_port => 443,
+        upper_port => 443,
+        ace => xs$ace_type(
+        privilege_list => xs$name_list('http', 'http_proxy'),
+        principal_name => upper('DWROLE'),
+        principal_type => xs_acl.ptype_db));
     END;
     /
     </copy>
     ```
 
-    ![Grant access to share.](images/grant-recipient-access.png)
+    ![Set ACLs.](images/set-acls.png)
 
-2. Check the access privileges for the recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+    You can apply the acls to all ADWs domains.
 
     ```
     <copy>
-    SELECT recipient_name, share_name
-    FROM user_share_recipient_grants
-    WHERE recipient_name = 'LIVE_LAB_USER';
+    begin
+    dbms_network_acl_admin.append_host_ace(
+        host => '*.oraclecloudapps.com',
+        lower_port => 443,
+        upper_port => 443,
+        ace => xs$ace_type( privilege_list => xs$name_list('http', 'http_proxy'),
+        principal_name => upper('DWROLE'),
+        principal_type => xs_acl.ptype_db));
+    end;
+    /
     </copy>
     ```
 
-    ![Check recipient access privileges.](images/query-privileges.png)
+    ![Set ACLs to all ADW domains.](images/set-acls-all.png)
 
-## Task 4: Generate the Activation Link
+## Task 3: Create Access Credential to the Data Share
 
-There are two type of APIs to create the Delta share profile. 
+In this task, you will need the **`endpoint`** and **`tokenEndpoint`** values from your download config file from the previous lab to create the required credential to access the data share.
 
-### **Method 1**
-
-Use an API that generates the activation link's URL which the recipient can use to download a `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
-
-```
-<copy>
-BEGIN
-    DBMS_OUTPUT.PUT_LINE(dbms_share.get_activation_link
-        (recipient_name=>'LIVE_LAB_USER'));
-END;
-/
-</copy>
-```
-
-![Generate the activation link URL.](images/method-1.png)
-
-### **Method 2**
-
-The second method directly generates the `JSON` config file which you can share with recipient using any method you desire.
-
-1. Generate the Delta Share `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. For this step, copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
-    DECLARE
-    profile SYS.JSON_OBJECT_T;
+    declare
+    delta_profile CLOB :=
+    '{
+    "shareCredentialsVersion": 1,
+    "endpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing",
+    "tokenEndpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/oauth/token",
+    "bearerToken": "bleGndmeT6lAoaUB6gAm8A",
+    "expirationTime": "2023-06-27T12:36:04.372Z",
+    "clientID": "OXNsUiQcims58lQ7RvQftg..",
+    "clientSecret": "28puy4ISZgdYNwyvwiTIRQ.."
+    }';
+
+    -- A local name to represent the share provider
+    credential_base_name VARCHAR2(4000) := 'DEMO_PROVIDER';
+
+    -- Space for credentials
+    credential_names CLOB;
     BEGIN
-        DBMS_SHARE.POPULATE_SHARE_PROFILE('LIVE_LAB_USER', profile);
-        SYS.DBMS_OUTPUT.PUT_LINE(CHR(10)||JSON_QUERY(profile.to_string, '$' PRETTY));
+    -- Create credential object(s)
+    credential_names := dbms_share.create_credentials(
+    credential_base_name => credential_base_name,
+    delta_profile => delta_profile);
     END;
     /
     </copy>
     ```
 
-    ![Generate the activation link URL.](images/method-2.png)
+    ![Create credential.](images/create-credential.png)
 
-    The procedure **`DBMS_SHARE.POPULATE_SHARE_PROFILE`** returns a `JSON` config file similar to the following format:
+    ![Create credential results.](images/create-credential-result.png)
 
-    ![A sample generated JSON config file.](images/sample-generated-file.png)
+2. Find the name of the newly created credential. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
+    ```
+    <copy>
+    SELECT credential_name
+    FROM all_credentials
+    WHERE credential_name LIKE 'DEMO_PROVIDER%';
+    </copy>
+    ```
+
+    ![Query credentials.](images/query-credentials.png)
+
+## Task 4: Discover Available Data Shares and Tables in the Share (Unnamed Option)
+
+To create a table on top of the data share share object, the recipient needs to get the list of the schemas and tables being shared. If this is a single time operation (provider will be used once), then it's easier to run the table function to get this list.
+
+1. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the value of the `endpoint` parameter with your own value.
+
+    ```
+    <copy>
+    SELECT SHARE_NAME, SCHEMA_NAME, TABLE_NAME
+    FROM dbms_share.discover_available_tables(
+        endpoint=>'https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing',
+        credential_name=>'DEMO_PROVIDER$SHARE_CRED');
+    </copy>
+    ```
+
+    ![Query data share, unnamed option.](images/query-share-unnamed.png)
+
+## Task 5: Discover Available Data Shares and Tables in the Share (Named Option)
+
+If the recipient plans to fetch the table names multiple times, it would be easier to create a named provider once and use it going forward.
+
+1. Create a share provider. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_SHARE.CREATE_SHARE_PROVIDER(
+        provider_name=> 'DEMO_PROVIDER',
+        endpoint=>'https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing');
+    END;
+    </copy>
+    ```
+
+    ![Create a share provider.](images/create-share-provider.png)
+
+2. Set a credential to the newly created share provider. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_SHARE.SET_SHARE_PROVIDER_CREDENTIAL(
+            provider_name=>'DEMO_PROVIDER',
+            share_credential=>'DEMO_PROVIDER$SHARE_CRED');
+    END;
+    ```
+    </copy>
+
+    ![Set a credential.](images/set-credential.png)
+
+3. Query the available data shares for this provider. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
+
+    ```
+    <copy>
+    SELECT *
+    FROM DBMS_SHARE.DISCOVER_AVAILABLE_SHARES('DEMO_PROVIDER');
+    </copy>
+    ```
+
+    ![Query data shares.](images/query-data-shares.png)
+
+4. Query the available tables in the data share. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
+
+    ```
+    <copy>
+    SELECT schema_name, table_name
+    FROM DBMS_SHARE.DISCOVER_AVAILABLE_TABLES(
+        share_provider=>'DEMO_PROVIDER',
+        share_name=>'DEMO_SHARE');
+    </copy>
+    ```
+
+    ![Query available tables in data share.](images/query-tables-share.png)
+
+## Task 6: Create a View Using the Data Share Table
+
+1. Create a new share link. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+
+    ```
+    <copy>
+    BEGIN
+    DBMS_SHARE.CREATE_OR_REPLACE_SHARE_LINK(
+        share_link_name => 'SALES_DATA',
+        share_provider => 'DEMO_PROVIDER',
+        share_name => 'DEMO_SHARE');
+    END;
+    </copy>
+    ```
+
+    ![Create a share link.](images/create-share-link.png)
+
+2. Use the new share link to create a view over the shared table. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+
+    ```
+    <copy>
+    BEGIN
+    dbms_share.create_share_link_view(
+        view_name=>'CUSTSALES_SHARE_V',
+        share_link_name=>'SALES_DATA',
+        share_schema_name=>'ADMIN',
+        share_table_name=>'CUSTSALES');
+    END;
+    </copy>
+    ```
+
+    ![Create a view.](images/create-view.png)
+
+3. Query the view. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
+
+    ```
+    <copy>
+    SELECT *
+    FROM CUSTSALES_SHARE_V;
+    </copy>
+    ```
+
+    ![Query the view.](images/query-view.png)
+
+You may now proceed to the next lab.
 
 ## Learn More
 

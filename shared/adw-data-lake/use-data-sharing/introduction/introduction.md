@@ -1,6 +1,6 @@
 # Introduction
 
-Data sharing is making the same data available to one or many consumers. Nowadays, the ever-growing amount of data has become a strategic asset for any company. Sharing data - within your organization or externally - is an enabling technology for new business opportunities. Sharing data and consuming data from external sources allows to collaborate with partners, establish new partnerships and generate new revenue streams with data monetization.
+Data sharing is making the same data available to one or more consumers. Nowadays, the ever-growing amount of data has become a strategic asset for any company. Sharing data - within your organization or externally - is an enabling technology for new business opportunities. Sharing data and consuming data from external sources allows to collaborate with partners, establish new partnerships and generate new revenue streams with data monetization.
 
 ## Why Use Data Sharing?
 

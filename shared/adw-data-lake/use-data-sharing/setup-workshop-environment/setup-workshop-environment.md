@@ -159,6 +159,61 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
+## Task 4: Navigate to the SQL Worksheet
+
+1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+
+2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+
+3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+
+4. On the **Autonomous Database details** page, click **Database actions**.
+
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+
+5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+
+    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-sql-card.png " ")
+
+## Task 5: Add Data Share to the Limited Availability (LA) Version (Remove for GA)
+
+For the LA release only, the stage database must be **whitelisted** as follows:
+
+1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    -- create a new role and grant the role to the admin user.
+
+    CREATE ROLE adpbeta;
+    GRANT ADPBETA TO admin;
+    COMMIT;
+    </copy>
+    ```
+
+    ![Create a new role](images/create-role.png)
+
+2. Query the ADP version and the whitelisting status. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    -- Check the ADP version and whitelisting status.
+
+    SELECT
+    json_value(get_adp_status,'$.ADPVersion') version,
+    json_value(get_adp_status,'$.operationalState') operational_state,
+    JSON_QUERY(get_adp_status,'$.packageState[*]?(@.sharing=="VALID")' PRETTY) share_status
+    FROM dual;
+    </copy>
+    ```
+
+    ![Check ADP version and whitelisting status](images/check-version-state.png)
+
+3. Confirm that the Data Sharing tile is now visible in the **Data Studio** section on the **DATA LOAD** page. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, the **Data Sharing** tile should be displayed.
+
+    ![The Data Sharing tile is displayed.](images/data-sharing-tile.png)
+
 </if>
 
 You may now proceed to the next lab.
