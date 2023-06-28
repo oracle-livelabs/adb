@@ -2,7 +2,7 @@
 
 Data sharing is making the same data available to one or more consumers. Nowadays, the ever-growing amount of data has become a strategic asset for any company. Sharing data - within your organization or externally - is an enabling technology for new business opportunities. Sharing data and consuming data from external sources allows to collaborate with partners, establish new partnerships and generate new revenue streams with data monetization.
 
-## Why Use Data Sharing?
+### Why Use Data Sharing?
 
 Data Sharing allows customers to improve their business and open up new opportunities. Examples of Data Sharing scenarios:
 
@@ -10,7 +10,7 @@ Data Sharing allows customers to improve their business and open up new opportun
 * Business to Business (B2B) where a retailer shares regional sales and inventory data with a supplier to help improve the supplier's production line and locations.
 * Business to Customers (B2C) where a restaurant shares historical time-based pattern of busyness to allow customers to plan for their reservations.
 
-## About this Workshop
+### About this Workshop
 
 The labs in this workshop walk you through all the steps to ...
 
@@ -18,13 +18,36 @@ The labs in this workshop walk you through all the steps to ...
 
 Estimated Time: 1.5 hours
 
-### What is a Data Lake?
-A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will harvest in Data Catalog and query in ADB.
+### Traditional ways to share data
 
-### What is a Data Warehouse?
-With a data warehouse, you perform data transformation and cleansing before you commit the data to the warehouse. With a data lake, you ingest data quickly and prepare it on the fly as people access it. A data lake supports operational reporting and business monitoring that require immediate access to data and flexible analysis to understand what is happening in the business while it happening.
+Sharing data is nothing new and users did this before. Some examples of how users used to do data sharing in the past are:
 
-For additional information, see [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf).
+* Send data via email
+* Share data through an FTP server
+* Use application-specific APIs for data extraction
+* Leverage vendor specific tools to copy relevant data
+
+While these methods work in general, they come with certain drawbacks:
+
+* Managing separate processes for data extraction, preparation or remote access are labor-intensive.
+* Extracting and duplicating data is prone to data staleness.
+* Architectures and processes can become very difficult to maintain and hard to scale.
+* Redundant data extraction can introduce format compatibility issues.
+* Data extraction and preparation must handle sensitive information properly.
+
+### The modern way of sharing data
+
+Modern data sharing must be open, secure, real-time, vendor-agnostic, and avoid the pitfalls of extracting and duplicating data for individual consumers of data in a collaborative environment. Delta Sharing is an open protocol for secure real-time data exchange of large datasets that satisfies all these criteria, supported by multiple clients and program languages, and vendor agnostic.
+
+The open Delta Sharing protocol is aimed to solve the following problems:
+
+* Share data without copying it to another system
+* Producer controls the state of data (version of data)
+* Be an open cross-platform solution
+* Support a wide range of clients such as Power BI, Tableau, Apache Spark, pandas and Java
+* Provide flexibility to consume data using the tools of choice for BI, machine learning and AI use cases
+* Provide strong security, auditing, and governance
+* Scale to massive data sets
 
 ### Objectives
 

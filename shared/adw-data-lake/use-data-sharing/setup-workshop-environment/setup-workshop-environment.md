@@ -32,11 +32,11 @@ In this lab, you will:
 
 * (Optional) Create a compartment for your Data Catalog resources.
 * Create an Autonomous Warehouse instance.
+* Add the Data Share feature to the Limited Availability (LA) Version. This is not required in the GA Release.
 
 ### Prerequisites
 
 * An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported.
-* At least one user in your tenancy who wants to work with Data Catalog.
 
 > **Note:** If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. [Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)
 
@@ -178,7 +178,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 ## Task 5: Add Data Share to the Limited Availability (LA) Version (Remove for GA)
 
-For the LA release only, the stage database must be **whitelisted** as follows:
+Support for Data Sharing is not automatically enabled in **Database Actions** in the Limited Availability (LA) release. You must enable the Data Sharing feature by performing the prerequisites described in this task. **Data Share** is a part of the **Data Studio** suite of tools built into Oracle Autonomous Database. You must access the **Database Actions** as the **ADMIN** user and have the **ADPBETA** role assigned to this user.
 
 1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -210,7 +210,7 @@ For the LA release only, the stage database must be **whitelisted** as follows:
 
     ![Check ADP version and whitelisting status](images/check-version-state.png)
 
-3. Confirm that the Data Sharing tile is now visible in the **Data Studio** section on the **DATA LOAD** page. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, the **Data Sharing** tile should be displayed.
+3. Confirm that the Data Sharing tile is now visible in the **Data Studio** section on the **DATA LOAD** page. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, the **Data Sharing** tile should be displayed. If the tile doesn't appear, refresh your Web browser.
 
     ![The Data Sharing tile is displayed.](images/data-sharing-tile.png)
 

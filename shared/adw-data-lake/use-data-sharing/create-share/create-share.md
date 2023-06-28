@@ -2,11 +2,9 @@
 
 ## Introduction
 
-A share is the logical container that will be filled up with objects such as tables. An authorized share recipient will get assess to the share and all the tables in it. A share also implements security mechanism and this is less granular entity to grant security.
+A data share is the logical container that contain objects such as tables that you will share with recipients. An authorized data share recipient will get assess to the share and all the tables in it. A share also implements security mechanism and this is less granular entity to grant security.
 
-In this lab, you will create a share and add a table to it. Next, you will publish the share to make it available to recipients that you will define in the next lab.
-
-> **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
+In this lab, you will create a data share and add a table to it. Next, you will publish the data share to make it available to the recipients that you will define in the next lab.
 
 Estimated Time: 20 minutes
 
@@ -16,8 +14,8 @@ In this lab, you will:
 
 * Create a new data share.
 * Create two tables.
-* Add objects (tables) to the data share.
-* Publish the data share to make it available to recipients.
+* Add one of the newly created tables to the data share.
+* Publish the data share to make it available to authorized recipients.
 
 ### Prerequisites
 

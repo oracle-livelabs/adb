@@ -10,11 +10,10 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-* Navigate to the SQL Worksheet utility.
-* Create a user that will be the recipient for data in the data share tables.
-* Grant the recipient the necessary role and privileges to access the data share.
-* Create an Oracle Object Storage bucket (if you don't have one) where you'll store the shared data.
-* Generate an RSA key pair (if you don't have a private key in PEM format) to generate a private key and a fingerprint and the user's OCID which you'll need to create an OCI native credential, if you don't have one.
+* Create a user that will be the data share provider.
+* Grant the data share provider the necessary role and privileges.
+* Create an Oracle Object Storage bucket where you'll store the shared data.
+* Generate an RSA key pair to generate a private key and a fingerprint.
 * Create an OCI native credential and associate the buckets' URL with the credential.
 
 ### Prerequisites
@@ -42,7 +41,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 Create a user that will be a **data share provider**. A user that will share the data needs to have certain privileges. You will also grant this user the required roles, and enable REST and data sharing.
 
->**Note:** Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
+Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
 1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -80,6 +79,8 @@ Create a user that will be a **data share provider**. A user that will share the
     </copy>
     ```
 
+    >**Note:** Although you are creating the new **`share_provider`** user, for the initial release of the workshop, you will be using the **`admin`** user to perform the tasks in this workshop.
+
     ![Run the script](images/run-script.png)
 
     The results are displayed in the **Script Output** tab.
@@ -88,11 +89,11 @@ Create a user that will be a **data share provider**. A user that will share the
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
-You should store the data share data in Object Storage. You will have to create a link to your Object Storage bucket and (bucket's URL) and then associate the access credentials with that bucket.
+You should store the data share data in Object Storage. You will then create a link to your Object Storage bucket and associate the access credentials with that bucket.
 
 >**Note:** If you already have an Object Storage bucket, you don't need to create a new one.
 
-1. In the **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
+1. In your **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
 2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
 
@@ -101,7 +102,7 @@ You should store the data share data in Object Storage. You will have to create 
 3. Click **Create Bucket**.
 
 4. In the **Create Bucket** panel, specify the following:
-    - **Bucket Name:** Enter a meaningful name for the bucket.
+    - **Bucket Name:** Enter **data-share-bucket**.
     - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
     - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
 
@@ -129,7 +130,7 @@ In this task, you will get the following items that are required to create a Clo
 
     ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
 
-2. The **User Details** page is displayed. In the **User Information** tab, click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
+2. The **User Details** page is displayed. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
@@ -149,7 +150,7 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-private-key.pem`**
 
-5. In most cases, you do not need to download the public key; however, you will download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
+5. In most cases, you do not need to download the public key; however, you can download the public key for future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
 
     ![Download public key.](./images/download-public-key.png " ")
 
@@ -181,7 +182,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`.
 
-2. Create a storage link that points to your Object Store URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the URI value in the following code with your own URI.
+2. Create a storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the URI value in the following code with your own bucket's URI.
 
     ```
     <copy>
@@ -239,7 +240,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Access bucket.](images/access-bucket.png)
 
-5. Associate the storage link that you created in step 1 with your OCI native credential that you created in step 2. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+5. Associate the storage link that you created in step 2 with your OCI native credential that you created in step 3. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>

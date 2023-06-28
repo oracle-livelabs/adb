@@ -93,7 +93,7 @@ There are two API types that you can use to create the Delta share profile.
 
 ### **Method 1**
 
-_**Note to self: The following generated activation link didn't work for me on June 27. Alexey thinks it's a bug that will be fixed next week._**
+_**Note to self: The following generated activation link didn't work for me on June 27. Alexey thinks it's a bug that will be fixed next week.He said that once I copy the generated link and paste in my web browser, I should get to the page with the blue Get Profile Information which you can download only once._**
 
 Use an API that generates the activation link's URL which the recipient can use to download a `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
@@ -111,8 +111,8 @@ END;
 
 ### **Method 2**
 
-_**Note to self: The following code generated an error for me but Alexey was able to run
-it on his machine. It might be an issue with adwc4pm. Here's the output from him running the same code._**
+_**Note to self: The preceding code generated an error for me but Alexey was able to run
+it on his machine. It might be an issue with the adwc4pm tenancy not containing the latest code. Here's the output from him running the same code. With this method, when Alexey ran the script, the config file was displayed in the Script output. You then would share the config file with your recipient via email, slack, etc._**
 
 ![Alexey running the code.](images/alexey-code-1.png)
 
@@ -151,6 +151,8 @@ To access the recipient's activation link using the UI, perform the following st
     ![Click Consume Share.](images/consume-share.png)
 
     ![UI screen 1.](images/screen-1.png)
+
+    ![UI screen 1.2.](images/screen-1_2.png)
 
     ![UI screen 2.](images/screen-2.png)
 

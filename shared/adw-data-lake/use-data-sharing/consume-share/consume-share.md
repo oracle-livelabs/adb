@@ -30,7 +30,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2:  Grant Required Privileges and Review Prerequisites
 
-1. To consume a data share, a user must set up an ACL to the data share's provider's machine using **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** as user **`ADMIN`** or some other privileged user. This enables a user or a role to access the data share through the Internet. This must be done before the going through the **Add Share Provider** wizard. For example, if you want to grant role `DWROLE` access on host `acme.com`, you can grant the access as follows:
+1. To consume a data share, a user must set up an ACL to the data share's provider's machine to allow them to connect to the specified host as user **`ADMIN`** (or some other privileged user) from ADW over the public internet. This must be done before the going through the **Add Share Provider** wizard. For example, if you want to grant role `DWROLE` access on host `acme.com`, you can grant the access as follows:
 
     ```
     BEGIN
