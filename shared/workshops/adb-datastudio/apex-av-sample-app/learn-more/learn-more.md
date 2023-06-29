@@ -16,7 +16,7 @@ The deep dives provide more detail and include the descriptive metadata used by 
 
 [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:49:::NO:RP,49:P49_SEARCH:analytic%20views) has many more Analytic View tutorials.
 
-Additional learning opportunities can be found as the [Analytic View Collateral Library](https://xcsvu3mx9d9bvet-adppm.adb.uk-london-1.oraclecloudapps.com/ords/r/av_demo/bud-s-collateral-library/)
+Additional learning opportunities can be found as the @BudsOracleAV Library[@BudsOracleAV Collateral Library](https://xcsvu3mx9d9bvet-adppm.adb.uk-london-1.oraclecloudapps.com/ords/r/av_demo/bud-s-collateral-library/)
 
 ### Oracle Autonomous Database Data Studio
 
