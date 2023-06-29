@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Using the Database API for MongoDB",
+    "workshoptitle": "Use the Database API for MongoDB",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -29,7 +29,12 @@
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-        }        
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        },
+        {
+            "title": "Oracle CloudWorld Support Lab ",
+            "description": "Get help right away at CloudWorld",
+            "filename":"https://github.com/oracle-livelabs/common/blob/main/support/ocwsupportlab/ocwsupportlab.md"
+        }
     ]
 }
