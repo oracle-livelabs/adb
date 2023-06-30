@@ -76,7 +76,7 @@ To do this analysis, we use a package called `DBMS_DATA_MINING`. This package he
 
     ![Query result showing what the table data set looks like](images/insufficient_funds_number.png)
 
-    **NOTE:** Unlike the movie sales data, we now have a single row per customer and you can see that in the column `insufficient_funds_incidents` there are single numeric values which indicate how many times the customer ran out of funds in their account.
+    **NOTE:** Unlike the movie sales data, we now have a single row per customer and you can see that in the column `insufficient_funds_incidents` there are single numeric values, which indicate how many times the customer ran out of funds in their account.
 
 5. Run the following query to create a **vw\_cust\_funds2** view with a condition to check insufficient funds incidents. When the condition insufficient funds incident is true, the value is 1 and when there is no incident, the value is 0. 
 
