@@ -16,7 +16,7 @@ Estimated Lab Time: 10 minutes
 
 ## Overview
 
-Autonomous Data Warehouse contains built-in machine learning algorithms. There is a separate workshop that can guide you through creating machine learning models to solve common business problems: [see here] (https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=560). In this short lab, the objective is to use one of these built-in algorithms to help us understand the demographic factors that can explain why a customer triggers an "insufficient funds" event against their account. . If we can identify the key demographic attributes associated with this type of event, we strive to improve data quality of those attributes in support of subsequent predictive machine learning efforts.
+Autonomous Data Warehouse contains built-in machine learning algorithms. There is a separate workshop that can guide you through creating machine learning models to solve common business problems: [see here] (https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=560). In this short lab, the objective is to use one of these built-in algorithms to help us understand the demographic factors that can explain why a customer triggers an "insufficient funds" event against their account. If we can identify the key demographic attributes associated with this type of event, we strive to improve data quality of those attributes in support of subsequent predictive machine learning efforts.
 
 To do this analysis, we use a package called `DBMS_DATA_MINING`. This package helps in creating, evaluating, and querying Oracle Machine Learning for SQL (OML4SQL) machine learning models. In-database machine learning makes it easy for you to benefit from the power of machine learning-driven analytics.
 
