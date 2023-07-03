@@ -53,7 +53,7 @@ Customers will be categorized into 5 buckets measured (using the NTILE function)
 
 2. This should take approximately 3-4 seconds to run.
 
-    ![Result of query to segment customers into bins](images/analytics-lab-5-step-1-substep-2.png)
+    ![Result of query to segment customers into bins](images/segmenting-customers.png)
 
     The last column in the report shows the "Bin" value. A value of 1 in this column indicates that a customer is a low spending customer and a value of 5 indicates that a customer is a high spending customer. To see more information about using the `NTILE` function in the SQL documentation, click [here](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/NTILE.html#GUID-FAD7A986-AEBD-4A03-B0D2-F7F2148BA5E9).
 
@@ -72,7 +72,7 @@ Customers will be categorized into 5 buckets measured (using the NTILE function)
 
 2. This should take around 1-2 seconds to complete.
 
-    ![Query result showing how frequently customers watch movies](images/analytics-lab-5-step-2-substep-2.png)
+    ![Query result showing how frequently customers watch movies](images/movie-watching-frequency.png)
 
     Now we can identify those customers, based on when they last watched a movie, that watch the fewest number of movies, where the rfm\_frequency is 1, versus those customers that watch the most number of movies, where the rfm\_frequency is 5.
 
@@ -125,7 +125,7 @@ Customers will be categorized into 5 buckets measured (using the NTILE function)
 
 2. The result only shows customers who have significant spend (>= 4) but have not visited the site recently (<= 2).
 
-    ![Query result showing customers with significant spend and having not visited site recently](images/analytics-lab-5-step-3-substep-2.png)
+    ![Query result showing customers with significant spend and having not visited site recently](images/customers-spend.png)
 
 ## Recap
 
@@ -137,10 +137,10 @@ Let's quickly recap what has been covered in this lab:
 
 - How to create a Recency Frequency Monetary query
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; June 2023
