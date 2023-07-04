@@ -1,8 +1,10 @@
-# Create a User, an Object Storage Bucket, and an OCI Credential
+# Create a Share Provider User, an Object Storage Bucket, and an OCI Credential
 
 ## Introduction
 
 In this lab, you will create a user who will be the data share recipient and grant this user the necessary privileges to consume the data in the share. You will also create an Oracle Object Storage bucket where the shared data will be stored. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCID, and the fingerprint which you will need to create the OCI credential. Finally, you'll create the OCI credential.
+
+![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
 
 Estimated Time: 15 minutes
 
@@ -37,9 +39,13 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-sql-card.png " ")
 
-## Task 2: Create a User and Grant Privileges to the User
+## Task 2: Create a Share Provider User and Grant Privileges to the User
 
 Create a user that will be a **data share provider**. A user that will share the data needs to have certain privileges. You will also grant this user the required roles, and enable REST and data sharing.
+
+### **The Data Share Provider**
+
+Oracle Autonomous Database Serverless enables the data share provider to share existing objects such as tables. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
 
 Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
@@ -73,13 +79,19 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
         SCHEMA_NAME => 'SHARE_PROVIDER',
         ENABLED => TRUE
         );
+
+    -- ENABLE DATA SHARING
+        DBMS_SHARE.ENABLE_SCHEMA(
+        SCHEMA_NAME => 'admin',
+        ENABLED => TRUE
+        );
         commit;
     END;
     /
     </copy>
     ```
 
-    >**Note:** Although you are creating the new **`share_provider`** user, for the initial release of the workshop, you will be using the **`admin`** user to perform the tasks in this workshop.
+    >**Note:** Although you are creating the new **`share_provider`** user, for the initial release of this workshop, you will be using the default **`admin`** user to perform the tasks in this workshop; therefore, we had to enable the data sharing for the `admin` user (in addition to the **`share_provider`** user) in the preceding code.
 
     ![Run the script](images/run-script.png)
 
@@ -182,7 +194,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`.
 
-2. Create a storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the URI value in the following code with your own bucket's URI.
+2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the URI value in the following code with your own bucket's URI.
 
     ```
     <copy>
@@ -236,7 +248,7 @@ To access data in the Object Store, you need to enable your database user to aut
     </copy>
     ```
 
-    >**Note:** In our example below, we uploaded a `customer-extension.csv` file to the **`data-share-bucket`** bucket to show the following result. You didn't upload any files to the **`data-share-bucket`** bucket that you created earlier.
+    >**Note:** In our example below, after we created the **`data-share-bucket`** bucket, we uploaded a local file named `customer-extension.csv` to the bucket to show the following result. When you created the bucket, you didn't upload any files to it; therefore, in your case, you will be able to access your bucket, but you won't see any files in it.
 
     ![Access bucket.](images/access-bucket.png)
 

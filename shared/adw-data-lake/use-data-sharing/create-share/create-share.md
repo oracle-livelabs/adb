@@ -2,9 +2,11 @@
 
 ## Introduction
 
-A data share is the logical container that contain objects such as tables that you will share with recipients. An authorized data share recipient will get assess to the share and all the tables in it. A share also implements security mechanism and this is less granular entity to grant security.
+A data share is a named entity in the provider’s instance. It can be a group of datasets shared as a single entity. The share is the logical container that contains objects such as tables that you will share with recipients. An authorized data share recipient can  access the share and all the tables in it.
 
-In this lab, you will create a data share and add a table to it. Next, you will publish the data share to make it available to the recipients that you will define in the next lab.
+In this lab, as a share provider, you will create a data share and add a table to it. Next, you will publish the data share to make it available to the authorized recipient that you will define in the next lab.
+
+ ![Create a data share diagram.](images/data-share-diagram.png)
 
 Estimated Time: 20 minutes
 
@@ -51,6 +53,11 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Create data share.](images/create-data-share.png)
 
+    When you create a share using the `versioned` share type, when you publish it later, the tool generates and stores the data share as `parquet` files in the specified bucket. Any authenticated data share recipient can directly access the share in the object store.
+
+    ![Versioned share type.](images/versioned-share-type.png)
+
+
     >**Note:**
 
     To drop a share, use the `DBMS_SHARE.DROP_SHARE` procedure as follows:
@@ -73,6 +80,8 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ```
 
     ![Query new data share.](images/query-data-share.png)
+
+    Before you publish the data share, the **Current Version** column shows **`(null)`**. After you publish the data share, the the **Current Version** column will show **`1`**.
 
 ## Task 3: Create Tables to Add to the Data Share
 
@@ -177,7 +186,7 @@ Up to this point, the share and its tables is stored in the database and not yet
 
     ![Track the data export.](images/track-export.png)
 
-    >**Note:** If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for few minutes for the pulishing to finish.
+    >**Note:** If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for few minutes for the publishing to finish. Don't proceed to the next lab until the **STATUS** shows **CURRENT**.
 
 You may now proceed to the next lab.
 

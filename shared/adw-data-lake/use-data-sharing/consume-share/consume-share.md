@@ -16,49 +16,28 @@ In this lab, you will:
 
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
-## Task 1: Navigate to the SQL Worksheet
+## Task 1:  Grant Required Privileges
 
-1. If you still have your SQL Worksheet open, skip over to step **Task: 2**; otherwise, to navigate to the SQL Worksheet, log in to the **Oracle Cloud Console**, if you are not already logged in.
-
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
-
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
-
-## Task 2:  Grant Required Privileges and Review Prerequisites
-
-1. To consume a data share, a user must set up an ACL to the data share's provider's machine to allow them to connect to the specified host as user **`ADMIN`** (or some other privileged user) from ADW over the public internet. This must be done before the going through the **Add Share Provider** wizard. For example, if you want to grant role `DWROLE` access on host `acme.com`, you can grant the access as follows:
-
-    ```
-    BEGIN
-    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'acme.com',
-        lower_port => 443,
-        upper_port => 443,
-        ace => xs$ace_type(
-        privilege_list => xs$name_list('http', 'http_proxy'),
-        principal_name => upper('DWROLE'),
-        principal_type => xs_acl.ptype_db));
-    END;
-    /
-    ```
+1. To consume a data share, a recipient user must set up an access control list (ACL) to the data share on the provider's machine. This enables the recipient to connect to the specified host as user **`ADMIN`** (or some other privileged user) from ADW over the public internet. This must be done before the going through the **Add Share Provider** wizard. For example, if you want to grant role `DWROLE` access on host `acme.com`, you can grant the access as follows:
 
     In our example, the **`endpoint`** value from our downloaded JSON config file from the previous lab was as follows:
 
     ```
     https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing
     ```
+    For the next code that you will run, _copy your own endpoint URL up to only the **`oraclecloudapps.com`** and remove everything after that, namely `/ords/admin/_delta_sharing`. In addition, don't include the `https://` at the beginning of the URL_. Paste the final edited URL in the **host** parameter. So, in our example, this is what we will use for the host value in the next code example:
 
-    Substitute the **`endpoint`** value in the **host** parameter. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+    ```
+    ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com
+    ```
+
+    Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
     DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing',
+        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
         lower_port => 443,
         upper_port => 443,
         ace => xs$ace_type(
@@ -91,24 +70,27 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Set ACLs to all ADW domains.](images/set-acls-all.png)
 
-## Task 3: Create Access Credential to the Data Share
+## Task 2: Create Access Credential to the Data Share
 
 In this task, you will need the **`endpoint`** and **`tokenEndpoint`** values from your download config file from the previous lab to create the required credential to access the data share.
 
-1. For this step, copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. For this step, you will need to copy the complete content of your downloaded **`delta_share_profile.json`** file.
+
+    ![Copy profile content.](images/copy-profile-content.png)
+
+2. Copy and paste the following script into your SQL Worksheet. Replace everything from (and including) the opening braces to the end braces with the value of your **`delta_share_profile.json`** file that you copied in step 1. Pay attention to not remove the single quotes. Next, click the **Run Script** icon.
 
     ```
     <copy>
     declare
     delta_profile CLOB :=
-    '{
-    "shareCredentialsVersion": 1,
+    '{"shareCredentialsVersion": 1,
     "endpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing",
     "tokenEndpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/oauth/token",
-    "bearerToken": "bleGndmeT6lAoaUB6gAm8A",
-    "expirationTime": "2023-06-27T12:36:04.372Z",
-    "clientID": "OXNsUiQcims58lQ7RvQftg..",
-    "clientSecret": "28puy4ISZgdYNwyvwiTIRQ.."
+    "bearerToken": "LodEidRMDmnWHTVsSkJaOg",
+    "expirationTime": "2023-06-29T18:11:11.150Z",
+    "clientID": "VpCtBHNgRReUyxjr1Rc79g..",
+    "clientSecret": "IZhuQW5pEiPDBFGkS-2H-A.."
     }';
 
     -- A local name to represent the share provider
@@ -142,7 +124,7 @@ In this task, you will need the **`endpoint`** and **`tokenEndpoint`** values fr
 
     ![Query credentials.](images/query-credentials.png)
 
-## Task 4: Discover Available Data Shares and Tables in the Share (Unnamed Option)
+## Task 3: Discover Available Data Shares and Tables in the Share (Unnamed Option)
 
 To create a table on top of the data share share object, the recipient needs to get the list of the schemas and tables being shared. If this is a single time operation (provider will be used once), then it's easier to run the table function to get this list.
 
@@ -159,7 +141,7 @@ To create a table on top of the data share share object, the recipient needs to 
 
     ![Query data share, unnamed option.](images/query-share-unnamed.png)
 
-## Task 5: Discover Available Data Shares and Tables in the Share (Named Option)
+## Task 4: Discover Available Data Shares and Tables in the Share (Named Option)
 
 If the recipient plans to fetch the table names multiple times, it would be easier to create a named provider once and use it going forward.
 
@@ -215,7 +197,7 @@ If the recipient plans to fetch the table names multiple times, it would be easi
 
     ![Query available tables in data share.](images/query-tables-share.png)
 
-## Task 6: Create a View Using the Data Share Table
+## Task 5: Create a Share Link and a View Using the Data Share Table
 
 1. Create a new share link. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
 
