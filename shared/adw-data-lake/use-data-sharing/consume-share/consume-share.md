@@ -4,6 +4,8 @@
 
 In this lab you will learn how to consume the data in your available data share as a recipient.
 
+![Recipient diagram.](images/recipient-diagram.png)
+
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -18,20 +20,25 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1:  Grant Required Privileges
 
-1. To consume a data share, a recipient user must set up an access control list (ACL) to the data share on the provider's machine. This enables the recipient to connect to the specified host as user **`ADMIN`** (or some other privileged user) from ADW over the public internet. This must be done before the going through the **Add Share Provider** wizard. For example, if you want to grant role `DWROLE` access on host `acme.com`, you can grant the access as follows:
+To consume a data share, a recipient user must have access control list (ACL) set to the share provider's machine that contains the data share. This enables the recipient to connect to the specified host as user **`ADMIN`** (or some other privileged user or even copy and paste the code and pass it along to your `ADMIN` user) from ADW over the public internet. In order to set the ACL on the host machine, you will need the host machine **`endpoint`** value which you can find in the downloaded `JSON` profile file from the previous lab.
 
-    In our example, the **`endpoint`** value from our downloaded JSON config file from the previous lab was as follows:
+![Endpoint example.](images/endpoint.png)
 
-    ```
-    https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing
-    ```
-    For the next code that you will run, _copy your own endpoint URL up to only the **`oraclecloudapps.com`** and remove everything after that, namely `/ords/admin/_delta_sharing`. In addition, don't include the `https://` at the beginning of the URL_. Paste the final edited URL in the **host** parameter. So, in our example, this is what we will use for the host value in the next code example:
+_**Note to Reviewers:** Can an admin user set the acls for the recipient? It will be confusing to have the recipient log in as an admin to perform this step, please advise._
 
-    ```
-    ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com
-    ```
+In our example, the **`endpoint`** value where the data share is located is as follows:
 
-    Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+```
+https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing
+```
+
+For the next code that you will run, _copy your own endpoint URL up to only the **`oraclecloudapps.com`** and remove everything after that, namely `/ords/admin/_delta_sharing`. In addition, don't include the `https://` at the beginning of the URL_. Paste the final edited URL in the **host** parameter. So, in our example, this is what we will use for the host value in the next code example:
+
+```
+ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com
+```
+
+1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -51,7 +58,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Set ACLs.](images/set-acls.png)
 
-    You can apply the acls to all ADWs domains.
+    **Note:** You can apply the acls to all ADWs domains as follows:
 
     ```
     <copy>
@@ -72,13 +79,9 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2: Create Access Credential to the Data Share
 
-In this task, you will need the **`endpoint`** and **`tokenEndpoint`** values from your download config file from the previous lab to create the required credential to access the data share.
+In this task, you will need the entire content of the **`delta_share_profile.json`** file that you downloaded in the previous lab in order to create the required credential to access the data share.
 
-1. For this step, you will need to copy the complete content of your downloaded **`delta_share_profile.json`** file.
-
-    ![Copy profile content.](images/copy-profile-content.png)
-
-2. Copy and paste the following script into your SQL Worksheet. Replace everything from (and including) the opening braces to the end braces with the value of your **`delta_share_profile.json`** file that you copied in step 1. Pay attention to not remove the single quotes. Next, click the **Run Script** icon.
+1. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_
 
     ```
     <copy>
@@ -108,6 +111,13 @@ In this task, you will need the **`endpoint`** and **`tokenEndpoint`** values fr
     </copy>
     ```
 
+2. Replace everything from (and including) the opening braces "**`{`**" to the end braces "**`}`**" that are enclosed between the single quotes " **`'`** " with the entire content of your downloaded **`delta_share_profile.json`** file from the previous lab. Pay attention to not remove the single quotes.
+
+    ![Copy profile content.](images/copy-profile-content.png)
+
+2. Next, click the **Run Script** icon.
+
+
     ![Create credential.](images/create-credential.png)
 
     ![Create credential results.](images/create-credential-result.png)
@@ -126,7 +136,7 @@ In this task, you will need the **`endpoint`** and **`tokenEndpoint`** values fr
 
 ## Task 3: Discover Available Data Shares and Tables in the Share (Unnamed Option)
 
-To create a table on top of the data share share object, the recipient needs to get the list of the schemas and tables being shared. If this is a single time operation (provider will be used once), then it's easier to run the table function to get this list.
+To create a table on top of the data share share object, the recipient needs to get the list of the schemas and tables being shared. If this is a single time operation (provider will be used once), then it's easier to run the `discover_available_tables` table function to get this list.
 
 1. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the value of the `endpoint` parameter with your own value.
 
@@ -145,7 +155,7 @@ To create a table on top of the data share share object, the recipient needs to 
 
 If the recipient plans to fetch the table names multiple times, it would be easier to create a named provider once and use it going forward.
 
-1. Create a share provider. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+1. Subscribe to the data share provider by creating a new share provider name that we called `demo_provider` in our example. It points to the data share provider's endpoint. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -159,7 +169,7 @@ If the recipient plans to fetch the table names multiple times, it would be easi
 
     ![Create a share provider.](images/create-share-provider.png)
 
-2. Set a credential to the newly created share provider. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+2. Specify the credential needed to access the data share endpoint. Set the credential name to be used by the current user when he or she attempts to access the given share provider.Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>

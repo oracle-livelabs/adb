@@ -65,7 +65,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Grant access to share.](images/grant-recipient-access.png)
 
-2. Check the data shares access privileges for the `training_user` recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+2. Query the data shares access privileges for the `training_user` recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -77,11 +77,11 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Check recipient access privileges.](images/query-privileges.png)
 
-    The `training_user` recipient has only access privileges to the `demo_share` data share.
+    The `training_user` recipient has access privileges to only one data share, `demo_share`.
 
 ## Task 3: Generate the Activation Link and Get Profile Information
 
-As the share provider user (`admin`), you need to provide the `training_user` recipient user with the activation link needed to download the configuration file; alternatively, you can pass along the actual configuration file itself that the user will use to create access credential in the next lab. There are two methods that you can use to provide the recipient with the configuration file:
+As the `share_provider` user (`admin`), you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file; alternatively, you, as the share provider (`admin`), you can generate the `delta_share_profile.json` file directly and then share with the recipient user. The recipient user will need the `delta_share_profile.json` file to create an access credential in the next lab. The above two methods are described next.
 
 ### **Method 1**
 
@@ -103,7 +103,7 @@ _**Note to Reviewers:** The following generated activation link is not yet worki
 
     ![Generate the activation link URL.](images/method-1.png)
 
-2. Copy the generated URL to a text editor of your choice. Replace the beginning of the URL after the `https://` with the URL part that you see in your browser's address bar. In our example, we will replace the **`dwcsseed`** string with the following from the URL in our browser: **`ukgyxp2x0rqadss-trainingadw`**.  Share this edited URL with the recipient user.
+2. Copy the generated URL to a text editor of your choice. Replace the beginning of the URL after the `https://` part with the URL's beginning part that you see in your browser's address bar. In our example, we will replace the **`dwcsseed`** string with the following from the URL in our browser: **`ukgyxp2x0rqadss-trainingadw`**.  Share this edited URL with the recipient user.
 
     ![The edited activation link.](images/edited-activation-url.png)
 
