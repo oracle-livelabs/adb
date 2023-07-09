@@ -45,7 +45,7 @@ Create a user that will be a **data share provider**. A user that will share the
 
 ### **The Data Share Provider**
 
-Oracle Autonomous Database Serverless enables the data share provider to share existing objects such as tables. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
+Oracle Autonomous Database Serverless enables the data share provider to share existing objects such as tables with authorized recipients. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
 
 Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 

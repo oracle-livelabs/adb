@@ -12,6 +12,9 @@ Estimated Time: 10 minutes
 
 In this lab, you will:
 
+* Request ACL privileges to the share provider's host that contains the share.
+* Create access credential to the share.
+* Subscribe to the data share provider.
 * Access the data in your authorized data share.
 
 ### Prerequisites
@@ -153,7 +156,7 @@ To create a table on top of the data share share object, the recipient needs to 
 
 ## Task 4: Discover Available Data Shares and Tables in the Share (Named Option)
 
-If the recipient plans to fetch the table names multiple times, it would be easier to create a named provider once and use it going forward.
+If the recipient plans to access the table name several times, it would be easier to create a named provider once and use it going forward.
 
 1. Subscribe to the data share provider by creating a new share provider name that we called `demo_provider` in our example. It points to the data share provider's endpoint. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
 
@@ -191,6 +194,8 @@ If the recipient plans to fetch the table names multiple times, it would be easi
     FROM DBMS_SHARE.DISCOVER_AVAILABLE_SHARES('DEMO_PROVIDER');
     </copy>
     ```
+
+    `DEMO_PROVIDER` has access to only the `DEMO_SHARE` data share that was created by the `admin` share provider user in our example.
 
     ![Query data shares.](images/query-data-shares.png)
 
