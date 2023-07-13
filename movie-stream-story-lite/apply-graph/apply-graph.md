@@ -34,21 +34,13 @@ In this lab, you will use the Graph Studio feature of Autonomous Database to:
 
 ## Task 1: Log into Graph Studio
 
-Graph Studio is a feature of Autonomous Database. It is available as an option on the Database Actions Launchpad. You need a graph-enabled user to log into Graph Studio. When you created the MOVIESTREAM user in Lab 2, you had graph-enabled that user.
+[](include:adb-goto-graph-studio.md)
 
-1. In your **Autonomous Database Details page** page, click the **Database Actions**.
+## Task 2: Create a Movie Recommendations graph
 
-    ![Click the Database Actions button](images/click-database-actions.png " ")    
+[](include:adb-create-graph.md)
 
-2. On the Database Actions panel, click **Graph Studio**.
-
-    ![Click Open Graph Studio](images/graphstudiofixed.png " ")
-
-3. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
-
-    ![Use the credentials for database user MOVIESTREAM](images/graph-login.png " ")
-
-## Task 2: Load a graph into memory
+## Task 3: Load a graph into memory
 
 The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOMER\_PROMOTIONS, CUSTSALES\_PROMOTIONS, and MOVIE (as explained earlier).  You will now load this graph from the database into the in-memory graph server.  
 
@@ -82,7 +74,7 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 
     ![See the graph loaded into memory](images/task2step7.png " ")
 
-## Task 3: Use a notebook to run graph queries and graph analytics
+## Task 4: Use a notebook to run graph queries and graph analytics
 
  You can import a notebook that has the graph queries and analytics. Each paragraph in the notebook has an explanation.  You can review the explanation, and then run the query or analytics algorithm.   
 
