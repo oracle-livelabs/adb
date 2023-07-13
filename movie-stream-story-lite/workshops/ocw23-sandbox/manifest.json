@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Produce Your Company's Best Picture with Converged Database Analytics",
+    "workshoptitle": "Build More Intelligence Into Your Applications with Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
