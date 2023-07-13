@@ -186,7 +186,7 @@ The following lab will focus on aggregation pipelines, illustrate its functional
         Modify the code block for this stage either by typing what you see in the screenshot or by copying the following code block under the code window below the **sort** selection:
         ```
         <copy>
-        { _id: 1 
+        { "cnt_movies"": -1 
         } 
         </copy>
         ```
