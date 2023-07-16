@@ -30,9 +30,8 @@ Estimated Time: 10 minutes
 
 In this lab, you will:
 
-* (Optional) Create a compartment for your Data Catalog resources.
+* (Optional) Create a compartment for your resources.
 * Create an Autonomous Warehouse instance.
-* Add the Data Share feature to the Limited Availability (LA) Version. This is not required in the GA Release.
 
 ### Prerequisites
 
@@ -59,7 +58,7 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 
 ## Task 2: (Optional) Create a Compartment
 
-A Cloud Administrator can optionally create a compartment in your tenancy to help organize the Data Catalog resources. In this lab, as a Cloud Administrator, you will create a new compartment that will group all of your Data Catalog resources that you will use in the workshop.
+A Cloud Administrator can optionally create a compartment in your tenancy to help organize your resources. In this lab, as a Cloud Administrator, you will create a new compartment that will group all of your resources that you will use in the workshop.
 
 1. Open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**.
 
