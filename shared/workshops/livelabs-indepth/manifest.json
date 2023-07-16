@@ -74,6 +74,11 @@
             "filename": "./../../adb-data-safe/adb-data-safe.md"
         },
         {
+            "title": "Lab 13: Public and Private Network Access in Autonomous Database",
+            "description": "Public and Private Network Access in Autonomous Database",
+            "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
