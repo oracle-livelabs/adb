@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will create a user who will be the data share recipient and grant this user the necessary privileges to consume the data in the share. You will also create an Oracle Object Storage bucket where the shared data will be stored. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCID, and the fingerprint which you will need to create the OCI credential. Finally, you'll create the OCI credential.
+In this lab, you will create a **data share provider** user and grant this user the necessary role and privileges. You will also create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
 ![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
 
@@ -41,15 +41,15 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
-Create a user that will be a **data share provider**. A user that will share the data needs to have certain privileges. You will also grant this user the required roles, and enable REST and data sharing.
+As the **`admin`** user, create a **share_provider** user and grant this user the required role and privileges and enable REST and data sharing.
 
 ### **The Data Share Provider**
 
 Oracle Autonomous Database Serverless enables the data share provider to share existing objects such as tables with authorized recipients. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
 
-Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
+Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The DWROLE role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
-1. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+1. Create a **share_provider** user and grant this user the required role and privileges and enable REST and data sharing. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -57,16 +57,17 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     CREATE USER share_provider IDENTIFIED BY DataShare4ADW;
 
-    -- Grant the new user the required roles.
+    -- Grant the new user the required role and privileges.
 
     GRANT CONNECT TO share_provider;
     GRANT DWROLE TO share_provider;
     GRANT RESOURCE TO share_provider;
+    GRANT UNLIMITED TABLESPACE TO share_provider;
 
     -- Enable REST.
 
     BEGIN
-        ORDS.ENABLE_SCHEMA(
+        ORDS_ADMIN.ENABLE_SCHEMA(
             p_enabled => TRUE,
             p_schema => 'SHARE_PROVIDER',
             p_url_mapping_type => 'BASE_PATH',
@@ -74,30 +75,34 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
             p_auto_rest_auth=> TRUE
         );
 
-    -- ENABLE DATA SHARING
+    -- Enable data sharing.
         DBMS_SHARE.ENABLE_SCHEMA(
         SCHEMA_NAME => 'SHARE_PROVIDER',
         ENABLED => TRUE
         );
-
-    -- ENABLE DATA SHARING
-        DBMS_SHARE.ENABLE_SCHEMA(
-        SCHEMA_NAME => 'admin',
-        ENABLED => TRUE
-        );
-        commit;
+       commit;
     END;
     /
     </copy>
     ```
-
-    >**Note:** Although you are creating the new **`share_provider`** user, for the initial release of this workshop, you will be using the default **`admin`** user to perform the tasks in this workshop; therefore, we had to enable the data sharing for the `admin` user (in addition to the **`share_provider`** user) in the preceding code.
 
     ![Run the script](images/run-script.png)
 
     The results are displayed in the **Script Output** tab.
 
     ![View the script results](images/script-results.png)
+
+2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`ADMIN`** user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
+
+    ![Log out of admin](images/logout-admin.png)
+
+3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
+
+    ![Log in as share_provider](images/login-share-provider.png)
+
+    You are now logged in as the newly created **`share_provider`** user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+
+    ![Logged in as share_provider](images/logged-share-provider.png)
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
@@ -122,11 +127,23 @@ You should store the data share data in Object Storage. You will then create a l
 
 5. Click **Create** to create the bucket.
 
-  ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
+    ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
 
 6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
 
-  ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
+    ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
+
+7. Change the bucket type to **Public**. In the row for the **data-share-bucket**, click the **Actions** icon, and then click **Edit Visibility** from the context menu.
+
+    ![Select Edit Visibility from the context menu.](./images/edit-visibility.png " ")
+
+8. In the **Edit Visibility** dialog box, select the **Public** visibility option, and then click **Save Changes**.
+
+    ![Edit Visibility dialog box.](./images/public-option.png " ")
+
+    The **Buckets** page is re-displayed. The bucket type is now **Public**.
+
+    ![The Buckets page is displayed.](./images/buckets-page.png " ")
 
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
@@ -184,11 +201,11 @@ In this task, you will get the following items that are required to create a Clo
 
 7. Click **Close**.
 
-## Task 5: Create an OCI Native Credential
+## Task 5: Create an OCI Native Credential as the share_provider User
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
-1. Return to the browser tab that contains the SQL Worksheet. Create a storage link that points to an the Object Storage bucket URI that you created in the previous task. The format of the URL is as follows:
+1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to an the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
@@ -200,7 +217,7 @@ To access data in the Object Store, you need to enable your database user to aut
     <copy>
     BEGIN
         DBMS_SHARE.CREATE_CLOUD_STORAGE_LINK(
-            STORAGE_LINK_NAME => 'data_share_storage',
+            STORAGE_LINK_NAME => 'data_share_storage_link',
             URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/adwc4pm/b/data-share-bucket/o/'
         );
     END;
@@ -236,7 +253,7 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Create an OCI credential.](images/create-credential.png)
 
-4. Verify that you can access the **`data-share-bucket`** with the **`SHARE_BUCKET_CREDENTIAL`** credential that you just created. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the LOCATION_URI value in the following code with your own URI value.
+4. Verify that you can access the **`data-share-bucket`** with the **`SHARE_BUCKET_CREDENTIAL`** credential that you just created. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the **LOCATION_URI** value in the following code with your own bucket's URI value.
 
     ```
     <copy>
@@ -248,7 +265,11 @@ To access data in the Object Store, you need to enable your database user to aut
     </copy>
     ```
 
-    >**Note:** In our example below, after we created the **`data-share-bucket`** bucket, we uploaded a local file named `customer-extension.csv` to the bucket to show the following result. When you created the bucket, you didn't upload any files to it; therefore, in your case, you will be able to access your bucket, but you won't see any files in it.
+    You are able to access the bucket but since you have not uploaded any files to it, no rows are returned.
+
+    ![Access user bucket.](images/access-user-bucket.png)
+
+    >**Note:** In our example below, after we created the **`data-share-bucket`** bucket, we uploaded a local file named `customer-extension.csv` to the bucket to show the following result.
 
     ![Access bucket.](images/access-bucket.png)
 
@@ -258,7 +279,7 @@ To access data in the Object Store, you need to enable your database user to aut
     <copy>
     BEGIN
     DBMS_SHARE.set_storage_credential
-        (storage_link_name=>'data_share_storage',
+        (storage_link_name=>'data_share_storage_link',
          credential_name=>'SHARE_BUCKET_CREDENTIAL');
     END;
     /

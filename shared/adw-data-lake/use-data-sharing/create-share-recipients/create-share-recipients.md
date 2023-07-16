@@ -4,17 +4,19 @@
 
 A data share recipient is an entity such as an individual, an institution, or a software system that receives a data share from a data share provider.A recipient can access the data in the share. A recipient can have access to multiple shares. If you remove a recipient, that recipient loses access to all shares it could previously access.
 
-In this lab, as a data share provider, you will create and authorize a new recipient that will access the data share and the `custsales` table in the share. You will then provide the new recipient with the activation link to access the data share.
+In this lab, as a data share provider, you will create and authorize a new recipient that will access the data share and the `custsales` table in the share. You will then provide the new recipient with the activation link or the JSON config file that is needed to create a credential to access the data share.
 
 ![Recipient flow.](images/recipient-diagram.png)
 
-Estimated Time: 20 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-* Create a new share recipient.
+* Create a new share delta share recipient.
+* Grant the recipient access privileges to the data share.
+* Obtain the activation link from your share provider user, and then download the `delta_share_profile.json` configuration file; alternatively, the share provider user can provide you with the `delta_share_profile.json` configuration file.
 
 ### Prerequisites
 
@@ -22,14 +24,15 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Create a Data Share Recipient
 
-1. Create a new data share recipient user named `training_user`. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. As the **`share_provider`** user, create a new data share recipientxx named **`training_user`**. The `token_lifetime` parameter specifies for how long the generated token will be valid. In this example, we specified **90 days**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
         DBMS_SHARE.CREATE_RECIPIENT(
             recipient_name => 'training_user',
-            email => 'training_user@oracle.com');
+            email => 'training_user@oracle.com',
+            token_lifetime=>'90 00:00:00');
     END;
     </copy>
     ```
@@ -49,7 +52,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2: Grant the Recipient Access Privileges to the Data Share
 
-1. Grant the new `training_user` recipient access to the `demo_share` data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. As the **`share_provider`** user, grant the new `training_user` recipient access to the `demo_share` data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -79,17 +82,15 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     The `training_user` recipient has access privileges to only one data share, `demo_share`.
 
-## Task 3: Generate the Activation Link and Get Profile Information
+## Task 3: Share the Activation Link or the Profile Information with the Recipient
 
-As the `share_provider` user (`admin`), you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file; alternatively, you, as the share provider (`admin`), you can generate the `delta_share_profile.json` file directly and then share with the recipient user. The recipient user will need the `delta_share_profile.json` file to create an access credential in the next lab. The above two methods are described next.
+As the `share_provider` user, you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file. This is described in the **Method 1** section below; alternatively, you can generate the `delta_share_profile.json` file directly as the `share_provider` user, and then share it with the `training_user` recipient. This is described in the **Method 2** section below.
 
-### **Method 1**
+The recipient user will need the `delta_share_profile.json` file to create an access credential in the next lab.
 
-_**Note to Reviewers:** The following generated activation link is not yet working as I would get a Page not found error when I use it in a browser tab. The issue is that the generated URL contains the wrong string at the beginning. The fix is to simply replace the highlighted part of the generated url with the highlighted part in the address bar_
+### **Method 1: The `share_provider` user provides the recipient with the activation link (used in this workshop)**
 
-![Method 1.](images/method-1-fix.png)
-
-1. As the share provider admin user, generate the activation link's URL which you can forward to the recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. As the  **`share_provider`** user, generate the activation link's URL that will enable the authorized recipient to download the `delta_share_profile.json` configuration file. _We will use this method in this workshop_. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -101,13 +102,29 @@ _**Note to Reviewers:** The following generated activation link is not yet worki
     </copy>
     ```
 
-    ![Generate the activation link URL.](images/method-1.png)
+    The activation link is generated.
 
-2. Copy the generated URL to a text editor of your choice. Replace the beginning of the URL after the `https://` part with the URL's beginning part that you see in your browser's address bar. In our example, we will replace the **`dwcsseed`** string with the following from the URL in our browser: **`ukgyxp2x0rqadss-trainingadw`**.  Share this edited URL with the recipient user.
+    ![Generate the activation link URL using method 1.](images/method-1.png)
 
-    ![The edited activation link.](images/edited-activation-url.png)
+2. Save the result of the script so that you can save a copy of the activation link locally. In the **Script Output** tab, click the **Download script output** icon.
 
-3. The recipient user can use this URL to download the `JSON` config file (delta profile) which contains the required credentials he or she needs to connect to the data share and access its tables. Press **[Enter]**. The **Autonomous Database Data Sharing** page is displayed. To download the config file, click **Get Profile Information**.
+    ![Click the download script output icon.](images/click-download-script-output.png)
+
+    The output of the script is downloaded as a text file to your **Downloads** folder.
+
+    ![The script output is downloaded.](images/script-output-downloaded.png)
+
+3. Open the text file to view its content. Copy the activation link and share it with your authorized `training_user` recipient using email, slack, or any other method. This enables this user to download the **`delta_share_profile.json`** configuration file.
+
+    ![Open the text file and share the activation link with the recipient.](images/share-activation-link.png)
+
+### **The recipient downloads the `delta_share_profile.json` configuration file**
+
+As the `training_user` recipient user, you can use the activation link URL that was provided to you by your `share_provider` user to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to  connect to the data share and access its tables.
+
+>**Note:** For the recipient to download the `.json` file, it doesn't matter what user you are logged in as. All you need is a Web browser.
+
+1. Copy the activation link URL that was provided to you by your share provider and paste it in your web browser's address bar, and then press **[Enter]**. The **Autonomous Database Data Sharing** page is displayed. To download the config file, click **Get Profile Information**.
 
     ![Click Get Profile Information.](images/click-get-profile.png)
 
@@ -117,7 +134,7 @@ _**Note to Reviewers:** The following generated activation link is not yet worki
 
     ![Profile file downloaded.](images/screen-2.png)
 
-4. The **`delta_share_profile`.json** file is downloaded to your browser's download directory. Open the file.
+2. The **`delta_share_profile`.json** file is downloaded to your browser's Downloads directory. Open the file.
 
     ![The downloaded file is displayed.](images/downloaded-file.png)
 
@@ -125,13 +142,50 @@ _**Note to Reviewers:** The following generated activation link is not yet worki
 
     ![Open the delta share profile file.](images/open-profile.png)
 
-### **Method 2**
 
-**_Note to Reviewers:** The following code generated an error for me but Alexey was able to run it on his machine. It might be an issue with the adwc4pm tenancy not containing the latest code. With this method, the config file content is displayed in the **Script output** tab. As a share provider admin user, you would share this config file with your recipient via email, slack, and so on._
+### **Method 2: The `share_provider` user generates the `delta_share_profile.json` configuration file and shares it with the Recipient**
 
-The second method directly generates the `JSON` config file which you can share with recipient using any method you desire.
+As a share provider user, you can use this second method to directly generate the `JSON` config file which you can then share with recipient using any method you desire.
 
-1. Generate the Delta Share `JSON` config file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. For this step, you need to log in to your SQL Worksheet as the **`admin`** user. Log out of the **`share_provider`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`SHARE_PROVIDER`** user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
+
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`ADMIN`** as the username and **`Training4ADW`** as the password, and then click **Sign in**. You are now logged in as the **`ADMIN`** user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+
+    ![Logged in as user admin](images/logged-admin.png)
+
+3. Grant the `http` and `http_proxy` privileges for the specified host to the `DWROLE` role. Use the `DBMS_NETWORK_ACL_ADMIN` package and the `APPEND_HOST_ACE` procedure. For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation. This is explained in more detail in the next lab. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+
+    >**Note:** Substitute the host value below with your own host value which you can copy from your browser's address bar.
+
+    ![Find the host URL.](images/host-url.png)
+
+    In our example, the host value is the following portion of the URL shown in the address bar:
+
+    **`ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com`**
+
+    ```
+    <copy>
+    BEGIN
+    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
+        lower_port => 443,
+        upper_port => 443,
+        ace => xs$ace_type(
+        privilege_list => xs$name_list('http', 'http_proxy'),
+        principal_name => upper('DWROLE'),
+        principal_type => xs_acl.ptype_db));
+    END;
+    /
+    </copy>
+    ```
+
+    ![Set ACLs.](images/set-acls.png)
+
+4. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
+
+5. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+
+6. Generate the Delta Share `JSON` config file for your `training_user` recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -145,13 +199,15 @@ The second method directly generates the `JSON` config file which you can share 
     </copy>
     ```
 
-    The profile information is displayed in the **Script Output** tab. Save the profile information on your machine as you'll need to share it with the recipient.
-
-    The procedure **`DBMS_SHARE.POPULATE_SHARE_PROFILE`** returns a `JSON` config file similar to the following format:
+7. The **`delta_share_profile.json`** configuration file information is displayed in the **Script Output** tab.
 
     ![A sample generated JSON config file.](images/sample-generated-file.png)
 
-    As the recipient user, you will need all of the values in this file in the next lab to create the required credential to access your authorized data share.
+8. Save the script output (profile information) to a text editor of your choice on your local machine (using the copy and paste method) so that you can have a record of it. You'll need this file with the recipient.
+
+    ![Save the generated JSON config file locally.](images/save-json-file.png)
+
+9. As the recipient user, you will need all of the values from the previous step in the next lab to create the required credential to access your authorized data share.
 
 You may now proceed to the next lab.
 

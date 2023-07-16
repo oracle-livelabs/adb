@@ -8,7 +8,7 @@ In this lab, as a share provider user, you will create a data share and add a ta
 
  ![Create a data share diagram.](images/data-share-diagram.png)
 
-Estimated Time: 20 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
@@ -23,21 +23,9 @@ In this lab, you will:
 
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
-## Task 1: Navigate to the SQL Worksheet
+## Task 1: Create a Data Share
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
-
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
-
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
-
-## Task 2: Create a Data Share
-
-1. Create a new data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. As the **`share_provider`** user, create a new data share named **`demo_share`**. The **`DATA_SHARE_STORAGE_LINK`** value refers to the storage link that you created in **Lab 2** which points to your Object Storage bucket's URI. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -45,7 +33,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     DBMS_SHARE.CREATE_SHARE(
          share_name=>'demo_share',
          share_type=>'VERSIONED',
-         storage_link_name=>'DATA_SHARE_STORAGE');
+         storage_link_name=>'DATA_SHARE_STORAGE_LINK');
     END;
     /
     </copy>
@@ -53,9 +41,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Create data share.](images/create-data-share.png)
 
-    >**Note:**
-
-    To drop a share, use the `DBMS_SHARE.DROP_SHARE` procedure as follows:
+    >**Note:** To drop a share, use the `DBMS_SHARE.DROP_SHARE` procedure as follows:
 
     ```
     BEGIN
@@ -78,7 +64,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     Before you publish the data share, the **Current Version** column shows **`(null)`**. After you publish the data share, the the **Current Version** column will show **`1`**.
 
-## Task 3: Create Tables to Add to the Data Share
+## Task 2: Create Tables to Add to the Data Share
 
 1. Create an external table from a public dataset that you will add to the data share. The **moviestream_landing** Oracle Object Storage public bucket that contains some `Parquet` data is located in a different tenancy than yours, **`c4u04`**; therefore, you will use the following public URL. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
@@ -109,16 +95,16 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Create heap table.](images/create-heap-table.png)
 
-## Task 4: Add a Table to the Data Share
+## Task 3: Add a Table to the Data Share
 
-1. Add the `custsales` table to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Add the `custsales` table to the `demo_share` data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     BEGIN
     DBMS_SHARE.ADD_TO_SHARE(
         share_name=>'demo_share',
-        owner=> 'ADMIN',
+        owner=> 'share_provider',
         table_name=> 'custsales',
         share_table_name=> 'custsales');
     END;
@@ -151,11 +137,11 @@ This lab assumes that you have successfully completed all of the preceding labs 
     END;
     ```
 
-## Task 5: Publish the Data Share
+## Task 4: Publish the Data Share
 
-Up to this point, the share and its tables is stored in the database and not yet available to anyone. In this task, you will call the `PUBLISH` API which offloads data to the Cloud Store and make it accessible.
+Up to this point, the share and its table are stored in the database and therefore are not yet available to anyone. In this task, you will call the `PUBLISH_SHARE` API which offloads data to the Cloud Store and makes it accessible to recipients that you define and authorize in a later lab.
 
-1. Publish the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. Publish the `demo_share` data share to make it visible to authorized recipients. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon. It could take few minutes for the publishing process (export) to complete.
 
     ```
     <copy>
@@ -167,6 +153,15 @@ Up to this point, the share and its tables is stored in the database and not yet
     ```
 
     ![Publish the share.](images/publish-share.png)
+
+    >**Note:** To ensure that the publishing job is complete before you move on to the next lab, you can use the `PUBLISH_SHARE_WAIT` procedure. It also makes a share visible to authorized recipients; however, it waits for publishing task to complete.
+
+    ```
+    BEGIN
+    DBMS_SHARE.PUBLISH_SHARE_WAIT(share_name=>'demo_share');
+    END;
+    /
+    ```
 
 2. Use the `user_share_versions` view to track the state of the export. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -181,7 +176,7 @@ Up to this point, the share and its tables is stored in the database and not yet
 
     ![Track the data export.](images/track-export.png)
 
-    If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for few minutes for the publishing to finish. Don't proceed to the next lab until the **STATUS** shows **CURRENT**.
+    If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for a few minutes for the publishing to finish. Don't proceed to the next lab until the **STATUS** shows **CURRENT**.
 
     >**Note:**
     When you publish a `versioned` share type, the tool generates and stores the data share as `parquet` files in the specified bucket such as `data-share-bucket` in our example. Any authenticated data share recipient can directly access the share in that bucket.

@@ -1,14 +1,19 @@
 # Introduction
 
-Data sharing enables you to share the same data with one or more consumers. Nowadays, the ever-growing amount of data has become a strategic asset for any company. Sharing data - within your organization or externally - is an enabling technology for new business opportunities. Sharing data and consuming data from external sources enables collaboration with partners, establishes new partnerships, and generates new revenue streams with data monetization. The Oracle Data Sharing for general recipients is based on the open _delta sharing standard protocol_, providing a simple REST-based API to share data in parquet format.
+<!--- comment --->
+
+Data sharing enables you to share the same data with one or more consumers. Sharing data and consuming data from external sources enables collaboration with partners, establishes new partnerships, and generates new revenue streams with data monetization. The Oracle Data Sharing for general recipients is based on the open _delta sharing standard protocol_, providing a simple REST-based API to share data in `Parquet` format.
+
+Data is made accessible by the data sharing provider (such as Oracle Autonomous Database) to the data sharing recipient (such as Microsoft Power BI) at query time in `Parquet` format. The provider can only share data which they have access to when they log into an ADB instance. The parquet files are physically stored in an OCI bucket or use the bucket to store live share parquet files to cache them and improve performance.
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps on how to set up and consume data sharing using:
+There are several methods to set up and consume data sharing using:
 
-* PL/SQL
-* Database Actions in Autonomous Data Warehouse (ADW)
-* Cloud links
+* PL/SQL scripts using delta sharing protocol (this workshop)
+* PL/SQL scripts using Cloud links
+* Database Actions in Autonomous Database (ADB) using delta sharing protocol
+* Database Actions in Autonomous Database (ADB) using Cloud links
 
 Estimated Time: 1.5 hours
 
@@ -22,7 +27,7 @@ In this workshop, you will:
 * Create an OCI credential and associate it with the Object Storage bucket
 * Create, populate, and publish a data share
 * Create and authorize a data share recipient
-* Consume the data as a recipient
+* Create a data share consumer and consume the data as a recipient
 
 ### Prerequisites
 
@@ -37,7 +42,7 @@ Some examples of how users traditionally shared data are:
 * Use application-specific APIs for data extraction
 * Leverage vendor specific tools to copy relevant data
 
-While the traditional methods work in general, they come with certain drawbacks:
+While the traditional methods work in general, they come with certain _drawbacks_:
 
 * Managing separate processes for data extraction, preparation or remote access are labor-intensive.
 * Extracting and duplicating data is prone to data staleness.
@@ -59,13 +64,23 @@ The open Delta Sharing protocol is aimed to solve the following problems:
 * Provide strong security, auditing, and governance
 * Scale to massive data sets
 
+In this workshop, you will assume the responsibility of several users. For example, you will initially log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. In various labs, you log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
+
+**_In real use cases, there will be different users performing different responsibilities._**
+
+  ![The workshop users.](images/users-diagram.png)
+
 ### How Does Delta Sharing Work?
 
-At the high level, when a user consumes data made available through delta sharing protocol, the following happens:
+At the high level, the delta sharing protocol works as follows:
 
-* The Delta Sharing client issues a request to the Delta Sharing Server and provides a bearer token.
-* If the token is valid, the Delta Sharing server authenticates the user and provides pre-authenticated links for the Delta Sharing client.
-* The Delta Sharing client directly accesses the shared data - files in the object store – that correspond to the shared data such as a table.
+* The share provider user creates and publishes a data share that can be shared with one or more recipients.
+* The share provider user creates and authorizes recipients.
+* Every recipient will get a personal activation link to download their own `.JSON` profile with the necessary information to access their data share.
+* The recipient subscribes to the data share provider by using the .JSON configuration profile.
+* The recipient retrieves data from the share.
+
+  ![The data sharing overview.](images/data-sharing-diagram.png)
 
 You may now proceed to the next lab.
 
