@@ -22,7 +22,7 @@ Estimated Time: 5 minutes
 
 This lab walks you through the steps to set up the workshop environment.
 
-> **Note:** This workshop is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new Data Catalog administrator user and a Data Catalog administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM)    policies that are required to create and manage a Data Catalog and Autonomous Database instances.
+> **Note:** This workshop is directed at administrator users because they are granted the required access permissions.
 
 Estimated Time: 10 minutes
 
