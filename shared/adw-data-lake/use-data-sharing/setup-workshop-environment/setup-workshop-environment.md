@@ -24,7 +24,7 @@ This lab walks you through the steps to set up the workshop environment.
 
 > **Note:** This workshop is directed at administrator users because they are granted the required access permissions.
 
-Estimated Time: 10 minutes
+Estimated Time: 5 minutes
 
 ### Objectives
 
