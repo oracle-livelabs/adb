@@ -28,7 +28,7 @@ will help you.
 
 The easiest way to set up these 2 components of your architecture will be to use the [DRAGON Stack manager](https://bit.ly/DRAGONStackManager). 
 
-The DRAGON Stack manager is an open-source project which provides the fastest way to build and run applications connected to an Autonomous Database shared infrastructure. It can indeed:
+The DRAGON Stack manager is an open-source project which provides the fastest way to build and run applications connected to Autonomous Database Serverless. It can indeed:
 - provision and configure an Autonomous Database as well as load JSON and CSV data into collections and tables while taking care of the side resources such as Oracle Cloud Infrastructure Object Storage buckets
 - integrates SQL Developer Web and Oracle REST Data Services (ORDS) integration with standard application development frameworks such as React, Oracle JET, Spring-Boot...
 - generates project source code to start coding as soon as possible!  

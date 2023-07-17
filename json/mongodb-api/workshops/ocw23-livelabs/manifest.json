@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Using the Database API for MongoDB",
+    "workshoptitle": "Use the Database API for MongoDB",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -18,19 +18,23 @@
             "filename": "./../../introduction/change-pw-json-enhancements-ocw23.md"
         },
         {
-            "title": "Lab 2: Use Mongo API to interact with Oracle Database",
+            "title": "Lab 2: Use Mongo API to interact transparently with Oracle Database",
             "description": "Use Mongo API to interact with Oracle Database",
             "filename": "./../../json-mongo/json-mongo-ocw23.md"
         },
         {
-            "title": "Lab 3: Interact with JSON Documents through Database Actions",
+            "title": "Lab 3: Work with your Mongo collections interchangeably through Mongo APIs and Oracle JSON and SQL",
             "filename": "../../dbactions/dbactions-ocw23.md"
         },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        },
+        {
+            "title": "Oracle CloudWorld Support Lab ",
+            "description": "Get help right away at CloudWorld",
+            "filename":"https://github.com/oracle-livelabs/common/blob/main/support/ocwsupportlab/ocwsupportlab.md"
         }
-        
     ]
 }

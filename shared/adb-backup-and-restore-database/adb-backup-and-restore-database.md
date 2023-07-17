@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Data is one of the most important assets of any organization today. Whether you're a small business or a large enterprise, your data is critical to your success. In turn, data corruption or data loss that may be caused by disasters, hardware failures, human error or even malicious attacks can have a major impact. It is crucial to have an effective backup and recovery strategy in place. Autonomous Database (ADB-S) provides some of the best and most user-friendly backup and restore options, made reliable by being fully managed by Oracle automation.
+Data is one of the most important assets of any organization today. Whether you're a small business or a large enterprise, your data is critical to your success. In turn, data corruption or data loss that may be caused by disasters, hardware failures, human error or even malicious attacks can have a major impact. It is crucial to have an effective backup and recovery strategy in place. Autonomous Database Serverless provides some of the best and most user-friendly backup and restore options, made reliable by being fully managed by Oracle automation.
 
 This lab shows where to examine automatic backups, how to restore a backup, and how to configure a long-term backup schedule.
 
@@ -106,4 +106,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date**  - Rick Green, May 2023
+- **Last Updated By/Date**  - Rick Green, June 2023

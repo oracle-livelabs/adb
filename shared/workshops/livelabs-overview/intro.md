@@ -1,15 +1,17 @@
 # Introduction                                   
 
-The labs in this workshop walk you through all the steps to get started using the **Oracle Autonomous Database on Shared Infrastructure (ADB-S)**.
+## About this Workshop
 
-## **Workshop Objectives**
+The labs in this workshop walk you through all the steps to get started using **Oracle Autonomous Database Serverless**.
+
+## Objectives
 - Provision a new Autonomous Database instance on Shared Infrastructure
 - Run Queries on the sample data sets
 - Upload files to the Oracle Cloud Infrastructure (OCI) Object Storage, create sample tables, load data into them from files on the OCI Object Storage
 - Query files on the OCI Object Storage directly without loading them to your database
 - Visualize your data using Oracle Analytics Desktop
 
-## Workshop prerequisites
+## Prerequisites
 - This workshop requires an Oracle Cloud account. As a result of registering for LiveLabs, you will receive an email with instructions for accessing your account.
 - In the Contents menu on the left, find Lab 1: Login to Oracle Cloud, Task 2, Step 3 and follow the email instructions.
 

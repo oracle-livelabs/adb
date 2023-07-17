@@ -68,12 +68,14 @@ This lab has you download software from the YUM repo at repo.mongodb.org. This s
     ```
     ![Connect to the Mongo Shell](images/mongo-shell.png " ")
 
-4. Within the Mongo Shell, you can begin running commands to interact with the data in your database as if you were using a Mongo Database. To show the **movie** collection we created and the count of documents we imported, run the following commands.
+4. Within the Mongo Shell, you can begin running commands to interact with the data in your database as if you were using a Mongo Database.  
+    
+    To show what collections exist in my database (schema hol23c) and to count the number of documents we imported in the **movie** collection, or look at a sample document in your collection, run the following commands.
 
     ```
     hol23c> <copy>show collections</copy>
-    hol23c> <copy>db.movies.countDocuments()
-    </copy>
+    hol23c> <copy>db.movies.countDocuments()</copy>
+    hol23c> <copy>db.movies.findOne()</copy>
     ```
     ![Query result for count](images/mongo-count.png " ")
 
