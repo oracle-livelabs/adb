@@ -22,7 +22,7 @@ Estimated Time: 5 minutes
 
 This lab walks you through the steps to set up the workshop environment.
 
-> **Note:** This workshop is directed at administrator users because they are granted the required access permissions.
+> **Note:** This workshop is directed at administrator users because they are have the required privileges.
 
 Estimated Time: 5 minutes
 
@@ -30,6 +30,7 @@ Estimated Time: 5 minutes
 
 In this lab, you will:
 
+* Log in to the Oracle Cloud Console.
 * (Optional) Create a compartment for your resources.
 * Create an Autonomous Warehouse instance.
 
