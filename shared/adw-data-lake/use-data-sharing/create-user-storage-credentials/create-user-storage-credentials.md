@@ -211,14 +211,16 @@ To access data in the Object Store, you need to enable your database user to aut
 
     In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`.
 
-2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the URI value in the following code with your own bucket's URI.
+2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    >**Note:** Substitute the URI value in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`tenancy-name`** place holder for security.
 
     ```
     <copy>
     BEGIN
         DBMS_SHARE.CREATE_CLOUD_STORAGE_LINK(
             STORAGE_LINK_NAME => 'data_share_storage_link',
-            URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/adwc4pm/b/data-share-bucket/o/'
+            URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/tenancy-name/b/data-share-bucket/o/'
         );
     END;
     /
@@ -253,7 +255,9 @@ To access data in the Object Store, you need to enable your database user to aut
 
     ![Create an OCI credential.](images/create-credential.png)
 
-4. Verify that you can access the **`data-share-bucket`** with the **`SHARE_BUCKET_CREDENTIAL`** credential that you just created. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. **Note:** Substitute the **LOCATION_URI** value in the following code with your own bucket's URI value.
+4. Verify that you can access the **`data-share-bucket`** with the **`SHARE_BUCKET_CREDENTIAL`** credential that you just created. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. 
+
+    >**Note:** Substitute the **LOCATION_URI** value in the following code with your own bucket's URI value. In our example, we replaced the actual tenancy name in the URI value with the **`tenancy-name`** place holder for security.
 
     ```
     <copy>
@@ -261,7 +265,7 @@ To access data in the Object Store, you need to enable your database user to aut
     FROM
     DBMS_CLOUD.LIST_OBJECTS(
         credential_name=>'SHARE_BUCKET_CREDENTIAL',
-        LOCATION_URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/adwc4pm/b/data-share-bucket/o/');
+        LOCATION_URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/tenancy-name/b/data-share-bucket/o/');
     </copy>
     ```
 

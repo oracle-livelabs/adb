@@ -147,6 +147,8 @@ In this task, as the **`share_consumer`** user, you will need the entire content
 
 1. Log out of the `admin` user and log in as the **`share_consumer`** user. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_
 
+    >**Note:** We used place holders in the following code for security.
+
     ```
     <copy>
     declare
@@ -155,10 +157,10 @@ In this task, as the **`share_consumer`** user, you will need the entire content
   "shareCredentialsVersion": 1,
   "endpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing",
   "tokenEndpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/oauth/token",
-  "bearerToken": "_My-1Bk65lEV889YBcmCFw",
+  "bearerToken": "enter-your-own-bearerToken-value",
   "expirationTime": "2023-07-13T16:26:53.025Z",
-  "clientID": "aB5R1ZLmp6IP0fiIuiRzgg..",
-  "clientSecret": "q2LSaxgvAY7RjZQKxRnR4w.."
+  "clientID": "enter-your-own-clientID-value",
+  "clientSecret": "enter-your-own-clientSecret-value"
     }
     ';
 
