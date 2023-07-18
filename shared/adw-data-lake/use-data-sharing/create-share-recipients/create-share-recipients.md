@@ -94,7 +94,7 @@ As the `share_provider` user, you need to provide the `training_user` recipient 
 
 ### **The `share_provider` user provides the recipient with the activation link**
 
-1. As the  **`share_provider`** user, generate the activation link's URL that will enable the authorized recipient to download the `delta_share_profile.json` configuration file. _We will use this method in this workshop_. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. As the  **`share_provider`** user, generate the activation link's URL that will enable the authorized recipient to download the `delta_share_profile.json` configuration file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
