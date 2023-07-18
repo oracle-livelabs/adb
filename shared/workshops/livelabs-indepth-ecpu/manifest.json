@@ -36,7 +36,7 @@
         {
             "title": "Lab 5: Scale for Performance",
             "description": "Scaling and Performance in Your Autonomous Database",
-            "filename": "./../../adw-scaling-performance/adw-scaling-performance-pts.md"
+            "filename": "./../../adw-scaling-performance/adw-scaling-performance.md"
         },
         {
             "title": "Lab 6: Apply Auto Scaling",
