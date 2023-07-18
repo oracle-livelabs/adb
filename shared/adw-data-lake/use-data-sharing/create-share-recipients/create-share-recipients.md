@@ -84,14 +84,13 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 3: Share the Activation Link or the Profile Information with the Recipient
 
-<!--->
-Expose the following paragraph when method 2 bug is corrected.
-As the `share_provider` user, you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file. This is described in the **Method 1** section below; alternatively, you can generate the `delta_share_profile.json` file directly as the `share_provider` user, and then share it with the `training_user` recipient. This is described in the **Method 2** section below.
---->
-
 As the **`share_provider`** user, you need to provide the `training_user` recipient with the _activation link_ to download the **`delta_share_profile.json`** configuration file. The recipient will need the `delta_share_profile.json` file to create an access credential in the next lab.
 
-<!--- ### Use this task when method 2 is fixed. **Method 1: The `share_provider` user provides the recipient with the activation link (used in this workshop)** --->
+<!---
+Expose the following paragraph when method 2 bug is corrected.
+As the `share_provider` user, you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file. This is described in the **Method 1** section below; alternatively, you can generate the `delta_share_profile.json` file directly as the `share_provider` user, and then share it with the `training_user` recipient. This is described in the 
+
+**Method 2** section below. Use this task when method 2 is fixed. **Method 1: The `share_provider` user provides the recipient with the activation link (used in this workshop)** --->
 
 ### **The `share_provider` user provides the recipient with the activation link**
 
@@ -163,10 +162,9 @@ As the `training_user` recipient user, you can use the activation link URL that 
 
     ![Open the delta share profile file.](images/open-profile.png)
 
-<!--- July 18, 2023: Hiding the method 2 section until this is fixed since David slacked me that there 
-is no fix yet for this step.
+<!--- July 18, 2023: Hiding the method 2 section until this is fixed since David slacked me that there is no fix yet for this step.
 
-### **Method 2: The `share_provider` user generates the `delta_share_profile.json` configuration file and shares it with the Recipient**
+**Method 2: The `share_provider` user generates the `delta_share_profile.json` configuration file and shares it with the Recipient**
 
 As a share provider user, you can use this second method to directly generate the `JSON` config file which you can then share with recipient using any method you desire.
 
@@ -230,8 +228,7 @@ As a share provider user, you can use this second method to directly generate th
 
     ![Save the generated JSON config file locally.](images/save-json-file.png)
 
-9. As the recipient user, you will need all of the values from the previous step in the next lab to create the required credential to access your authorized data share.
---->
+9. As the recipient user, you will need all of the values from the previous step in the next lab to create the required credential to access your authorized data share.--->
 
 You may now proceed to the next lab.
 
