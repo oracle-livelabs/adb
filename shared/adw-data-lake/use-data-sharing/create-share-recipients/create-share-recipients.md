@@ -95,16 +95,32 @@ The recipient user will need the `delta_share_profile.json` file to create an ac
     ```
     <copy>
     BEGIN
+        DBMS_OUTPUT.PUT_LINE(
+        REPLACE(
+        DBMS_SHARE.GET_ACTIVATION_LINK('training_user'),
+        '/dwcsseed.',
+        '/' || REPLACE(LOWER(SYS_CONTEXT('USERENV','CON_NAME')),'_','-') || '.'));
+    END;
+    /
+     </copy>
+    ```
+
+    The activation link is generated.
+
+    ![Generate the activation link URL using method 1.](images/method-1-temp.png)
+
+<!--- July 18: The original activation link generation code. Will revert to this in 3 weeks when the fix makes it to production. --->
+
+<!---
+    ```
+    <copy>
+    BEGIN
         DBMS_OUTPUT.PUT_LINE(dbms_share.get_activation_link
             (recipient_name=>'TRAINING_USER'));
     END;
     /
     </copy>
-    ```
-
-    The activation link is generated.
-
-    ![Generate the activation link URL using method 1.](images/method-1.png)
+    ```--->
 
 2. Save the result of the script so that you can save a copy of the activation link locally. In the **Script Output** tab, click the **Download script output** icon.
 
@@ -134,14 +150,13 @@ As the `training_user` recipient user, you can use the activation link URL that 
 
     ![Profile file downloaded.](images/screen-2.png)
 
-2. The **`delta_share_profile`.json** file is downloaded to your browser's Downloads directory. Open the file.
+2. The **`delta_share_profile`.json** file is downloaded to your browser's Downloads directory.
 
     ![The downloaded file is displayed.](images/downloaded-file.png)
 
-    The file content is displayed. You will need this information in the next lab to connect and use the data share.
+3. Open the downloaded file. The file content is displayed. You will need this information in the next lab to connect and use the data share.
 
     ![Open the delta share profile file.](images/open-profile.png)
-
 
 ### **Method 2: The `share_provider` user generates the `delta_share_profile.json` configuration file and shares it with the Recipient**
 
@@ -183,7 +198,7 @@ As a share provider user, you can use this second method to directly generate th
 
 4. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
 
-5. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+5. Log in as the **`share_provider`** user. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
 6. Generate the Delta Share `JSON` config file for your `training_user` recipient. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
