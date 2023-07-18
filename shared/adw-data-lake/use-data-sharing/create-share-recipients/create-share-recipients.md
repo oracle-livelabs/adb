@@ -86,7 +86,6 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 <!--->
 Expose the following paragraph when method 2 bug is corrected.
-
 As the `share_provider` user, you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file. This is described in the **Method 1** section below; alternatively, you can generate the `delta_share_profile.json` file directly as the `share_provider` user, and then share it with the `training_user` recipient. This is described in the **Method 2** section below.
 --->
 
