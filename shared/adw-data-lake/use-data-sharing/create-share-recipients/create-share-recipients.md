@@ -231,7 +231,7 @@ As a share provider user, you can use this second method to directly generate th
 
     ![Save the generated JSON config file locally.](images/save-json-file.png)
 
-9. As the recipient user, you will need all of the values from the previous step in the next lab to create the required credential to access your authorized data share. 
+9. As the recipient user, you will need all of the values from the previous step in the next lab to create the required credential to access your authorized data share.
 --->
 
 You may now proceed to the next lab.
