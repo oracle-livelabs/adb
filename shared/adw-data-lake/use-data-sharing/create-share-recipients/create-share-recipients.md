@@ -16,7 +16,8 @@ In this lab, you will:
 
 * Create a new share delta share recipient.
 * Grant the recipient access privileges to the data share.
-* Obtain the activation link from your share provider user, and then download the `delta_share_profile.json` configuration file; alternatively, the share provider user can provide you with the `delta_share_profile.json` configuration file.
+* As the share provider user, generate and share the activation link with your recipient.
+* As the recipient, use the activation link to download the `delta_share_profile.json` configuration file.
 
 ### Prerequisites
 
