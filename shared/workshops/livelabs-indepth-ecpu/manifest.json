@@ -41,7 +41,7 @@
         {
             "title": "Lab 6: Apply Auto Scaling",
             "description": "Auto Scaling an Autonomous Database",
-            "filename": "./../../adb-auto-scaling/adb-auto-scaling.md"
+            "filename": "./../../adb-auto-scaling/adb-auto-scaling-pts.md"
         },
         {
             "title": "Lab 7: Backup and Restore Your Database",
