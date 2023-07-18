@@ -5,7 +5,9 @@
 With our JSON Collection created in the Oracle Database, we can use Mongo APIs to interact with the collection as if we were interacting with a Mongo Database. In this lab, we will download Mongo tools and then use a Mongo connection string -- which was configured as a part of the Oracle REST Data Service (ORDS) configuration -- to connect to the Oracle Database using Mongo Shell. We will use the Mongo tools against the Oracle database transparently and natively.
 
 Estimated Time: 15 minutes
- 
+
+Watch the video below for a quick walk through of the lab.
+[Watch the video](videohub:1_wv7tziay)
 
 ### Objectives
 
