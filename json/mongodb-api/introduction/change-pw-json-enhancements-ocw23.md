@@ -1,10 +1,13 @@
-# Prepare your environment for the workshop 
+# Setup User and ORDS
 
 ## Introduction
 
 In this section we will reset the password for the hol23c user in the Oracle Database and start up ORDS, which will be needed for the Oracle Database API for MongoDB.
 
 Estimated Time: 5 minutes
+
+Watch the video below for a quick walk through of the lab.
+[Watch the video](videohub:1_hcg0quuo)
 
 ### Objectives
 

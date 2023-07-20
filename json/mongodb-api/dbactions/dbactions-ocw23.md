@@ -1,10 +1,13 @@
-# WORK with your Mongo collections interchangeably through Mongo APIs and Oracle JSON and SQL
+# Work with your Mongo collections interchangeably through Mongo APIs and Oracle JSON and SQL
 
 ## Introduction
 
 This lab will use JSON and SQL in Database Actions. It shows how we can swap between a document-centric model (MongoDB and Oracle's JSON tool in Database Actions), and a relational model using Oracle's SQL tool in Database Actions. We will also have a closer look into how MongoDB collections are stored in Oracle Database, using Oracle's native JSON datatype which is stored in Oracle's binary JSON format, OSON.
 
 Estimated Time: 20 minutes
+
+Watch the video below for a quick walk through of the workshop.
+[Watch the video](videohub:1_swkxobmu)
 
 ### Objectives
 

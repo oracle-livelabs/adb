@@ -12,7 +12,10 @@ In the workshop, you will use Oracle Database 23c Free and a local ORDS installa
 
 This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
 
-**Estimated Workshop Time: 1.5 hours**
+Estimated Workshop Time: 1.5 hours
+
+Watch the video below for a quick walk through of the workshop.
+[Watch the video](videohub:1_0j7s8daf)
 
 ### Workshop Scenario
 
