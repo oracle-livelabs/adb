@@ -15,14 +15,9 @@
   },
   "variables": ["/adb/movie-stream-story-lite/workshops/variables/variables-tenancy.json"],
   "tutorials": [
-    {
-        "title": "Get Started",
-        "description": "Login to Oracle Cloud",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
-    },
+
     {
       "title": "Introduction to MovieStream",
-      "type": "odbw",
       "filename": "../../introduction/introduction.md"
     },
     {

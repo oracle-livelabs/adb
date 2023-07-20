@@ -8,8 +8,9 @@
       "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
       "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
       "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
-      "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md"
-   
+      "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md",
+      "adb-goto-graph-studio.md":"/common/building-blocks/tasks/adb/goto-graph-studio.md",
+      "adb-create-graph.md":"/common/building-blocks/tasks/adb/create-graph.md"
     },
     "variables": ["/adb/movie-stream-story-lite/workshops/variables/variables-livelabs.json"],
     "tutorials": [

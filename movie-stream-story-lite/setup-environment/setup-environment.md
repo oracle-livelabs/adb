@@ -24,7 +24,7 @@ Learn how to
 The following steps will set up everything you need to run the analytics for the workshop. Labs 2 and 3 show you how you can perform the tasks manually.
 
 
-1. Create and run the stack by clicking on the following: [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;end-to-end&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;})
+1. Create and run the stack by clicking on the following: [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;end-to-end&quot;,&quot;run\_post\_load_procedures&quot;:&quot;false&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;})
 
 2. You will be directed to the page below: 
 
