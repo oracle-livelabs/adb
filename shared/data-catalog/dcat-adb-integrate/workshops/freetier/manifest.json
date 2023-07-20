@@ -11,10 +11,10 @@
         {
             "title": "Get Started",
             "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Setup the Workshop Environment",
+            "title": "Lab 1: Set up the Workshop Environment",
             "type":"freetier",
             "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
@@ -46,7 +46,7 @@
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }

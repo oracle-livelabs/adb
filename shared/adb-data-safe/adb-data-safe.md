@@ -2,15 +2,14 @@
 
 ## Introduction
 
-This lab introduces you to the features of Oracle Data Safe. You will prepare your environment in Oracle Cloud Infrastructure for the lab, enable Oracle Data Safe, register your Autonomous Database with Oracle Data Safe, and discover sensitive data.
+This lab introduces you to the features of Oracle Data Safe. You will prepare your environment in Oracle Cloud Infrastructure for the lab, register your Autonomous Database with Oracle Data Safe, and discover sensitive data.
 
 You can do this lab in Oracle's free tier with trial credits, in your own tenancy using a paid Oracle Cloud account, or in an Oracle-provided environment, such as LiveLabs.
 
-If you are using the **Run on Your Tenancy** option, complete all of the tasks, except for task 4. If you are a regular user in your organization's tenancy, you need to enlist the help of your tenancy administrator to complete the tasks.
-
-If you are using the **Run on LiveLabs Sandbox** option, you need to complete tasks 4, 5, and 6 only. In a LiveLabs sandbox, Oracle provides you with a tenancy where Oracle Data Safe is enabled, a compartment, an Oracle Cloud account in the LiveLabs tenancy, and a pre-provisioned Autonomous Database.
-
 Estimated Lab Time: 35 minutes (25 minutes if you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment)
+
+Watch the video below for a quick walk-through of the lab.
+[Secure Your Data Using Oracle Data Safe](videohub:1_ylchywlp)
 
 ### About Oracle Data Safe
 
@@ -22,13 +21,12 @@ Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:U
 
 In this lab, you will:
 
-- Enable Oracle Data Safe in a region of your tenancy
 - Create a user group and add an Oracle Cloud account to the group
 - Create an IAM policy for the user group
 - (If using LiveLabs Sandbox reservation only) View your LiveLabs reservation information and sign in
 - Access Oracle Database Actions
 - Load sample data into your database
-- Register your database with Oracle Data safe
+- Register your database with Oracle Data Safe
 - Access Oracle Data Safe and view your list of registered target databases
 - Discover sensitive data in your target database using Data Discovery
 - Analyze the sensitive data model
@@ -40,28 +38,9 @@ This lab assumes you have:
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
 - Performed the previous lab on provisioning an Oracle Autonomous Database
 
-## Task 1: Enable Oracle Data Safe in a region of your tenancy
+## Task 1: Create a user group and add an Oracle Cloud account to the group
 
-> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
-
-As a tenancy administrator or an Oracle Data Safe administrator, enable Oracle Data Safe in a tenancy region.
-
-1. In Oracle Cloud Infrastructure, at the top of the page on the right, select the region of your tenancy in which you want to enable Oracle Data Safe. Usually, you leave your home region selected, for example, **US East (Ashburn)**.
-
-   ![Select Home region](images/select-region.png "Select Home region")
-
-2. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
-
-    The **Overview** page is displayed.
-
-3. Click **Enable Data Safe** and wait a couple of minutes for the service to enable. When it's enabled, a confirmation message is displayed in the upper-right corner.
-
-    ![Enable Data Safe button](images/enable-data-safe-button.png "Enable Data Safe button")
-
-
-## Task 2: Create a user group and add an Oracle Cloud account to the group
-
-> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
+*Note: If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.*
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
@@ -92,9 +71,9 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
     The user is listed as a group member.
 
 
-## Task 3: Create an IAM policy for the user group
+## Task 2: Create an IAM policy for the user group
 
-> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 through 3, as their steps have already been performed for you in the hosted environment.
+> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.
 
 As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous Database in the user's compartment.
 
@@ -129,7 +108,7 @@ As a tenancy administrator, create an IAM policy that grants the user permission
 
 9. Click **Create**.
 
-## Task 4: Load Sample Data Into Your Database
+## Task 3: Load Sample Data Into Your Database
 
 As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
@@ -171,12 +150,12 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
 
 7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
-## Task 5: Register Your Autonomous Database With Oracle Data Safe
+## Task 4: Register Your Autonomous Database With Oracle Data Safe
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
 
 After registering an Autonomous Database, you can grant and revoke roles from the Oracle Data Safe service account on your Autonomous Database to control which Oracle Data Safe features you can use with the database. You need to register your Autonomous Database before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account on your target database. Keep in mind that the roles for Autonomous Databases are different than those for non-Autonomous Databases. For non-Autonomous Databases, you can grant roles before or after registering your database.
-- For an **Autonomous Database on Shared Exadata Infrastructure**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+- For an **Oracle Autonomous Database Serverless**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
 
 **Assumption**: Your data values are most likely different than those shown in the screenshots.
 
@@ -199,7 +178,7 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
 
     ![Status reads registered](images/status-registered.png "Status reads registered" )
 
-## Task 6: Access Oracle Data Safe And View Your List Of Registered Target Databases
+## Task 5: Access Oracle Data Safe And View Your List Of Registered Target Databases
 
 1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
 
@@ -224,7 +203,7 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
 
     ![Target Database Details page](images/target-database-details-page.png "Target Database Details page")
 
-## Task 7: Discover Sensitive Data In Target Database Using Data Discovery
+## Task 6: Discover Sensitive Data In Target Database Using Data Discovery
 
 Data Discovery helps you find sensitive data in your target databases. You tell Data Discovery what kind of sensitive data to search for, and it inspects the actual data in your target database and its data dictionary, and then returns to you a list of sensitive columns. By default, Data Discovery can search for a wide variety of sensitive data pertaining to identification, biographic, IT, financial, healthcare, employment, and academic information.
 
@@ -269,7 +248,7 @@ Start by examining sensitive data in one of the tables on your target database b
 
 10. Wait for the sensitive data model to be created. The **Sensitive Data Model Details** page is displayed.
 
-## Task 8: Analyze The Sensitive Data Model
+## Task 7: Analyze The Sensitive Data Model
 
 1. Review the information on the **Sensitive Data Model Details** page.
 
@@ -301,7 +280,7 @@ Start by examining sensitive data in one of the tables on your target database b
 
     ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
 
-## Learn More
+## Want to Learn More?
 
 The following links provide more information about Oracle Data Safe:
 
@@ -317,4 +296,4 @@ The following links provide more information about Oracle Data Safe:
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
 - **Adapted by** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Rick Green, January, 2023
+- **Last Updated By/Date** - Rick Green, June, 2023

@@ -221,7 +221,6 @@ This lab assumes you have done all the other labs.
 _Congratulations! Well done!_
 
 ## Acknowledgements
-* **Author** - Javier de la Torre, Principal Data Management Specialist
-* **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, February 2023 
-
+* **Author** - Javier de la Torre - Principal Data Management Specialist
+* **Contributors** - Priscila Iruela - Technology Product Strategy Director
+* **Last Updated By/Date** - Priscila Iruela, March 2023

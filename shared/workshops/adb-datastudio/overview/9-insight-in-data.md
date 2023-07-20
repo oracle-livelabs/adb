@@ -7,6 +7,9 @@ This lab introduces Data Studio’s Data Insights tool built into the Oracle Aut
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Create a database user](videohub:1_6angdk6o)
+
 ### Objectives
 
 In this workshop, you will learn:

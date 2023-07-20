@@ -66,16 +66,19 @@
     {
         "title": "Lab 7 (optional): Load and Analyze JSON Data",
         "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
+        "type": "freetier",
         "filename": "../../load-analyze-json/load-analyze-json.md"
     },
     {
         "title": "Lab 8 (optional): Load and Analyze the News from REST Endpoints",
         "description": "Load news and analyze the sentiment about actors from the newsapi.org",
+        "type": "freetier",
         "filename": "/common/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
     },
     {
         "title": "Lab 9 (optional): Create Data Pipelines for Continuous Data Import and Export",
         "description": "Create Oracle Data Pipelines for continuous data import and export",
+        "type": "freetier",
         "filename": "../../create-data-pipelines/create-data-pipelines.md"
     },
     {

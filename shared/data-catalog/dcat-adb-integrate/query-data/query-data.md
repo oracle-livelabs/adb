@@ -12,7 +12,7 @@ In this lab, you will:
 - Access Oracle Machine Learning Notebooks provided with Oracle Autonomous Database
 - Import and review the imported notebook
 
-### Prerequisites  
+### Prerequisites
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
 
 ## Task 1: Access Oracle Machine Learning Notebooks
@@ -41,7 +41,7 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 <if type="livelabs">
 5. On the **Autonomous Database Details** page, click the **Database Actions** button. A **Launch DB Actions** message box is displayed.
 
-    ![The Service Console button is highlighted.](./images/ll-db-actions-new.png " ")   
+    ![The Service Console button is highlighted.](./images/ll-db-actions-new.png " ")
 </if>
 
 6. On the **Database Actions | Launchpad** Home page, in the **Development** section, click the **ORACLE MACHINE LEARNING** card.
@@ -65,7 +65,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
 1. Click the following link to download the [workshop-data-lake-accelerator.json](files/workshop-data-lake-accelerator.json?download=1) OML Notebook.
 
-2. On the **Oracle Machine Learning** Home page, in the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.    
+2. On the **Oracle Machine Learning** Home page, in the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
 
     ![On the Notebooks page, the Import button is highlighted.](./images/notebooks-page.png " ")
 
@@ -111,7 +111,7 @@ In this task, you'll review the UI and some of the basic functionality of OML No
 Oracle Machine Learning Notebooks is a web-based interface for data analysis, data discovery, and data visualization. A notebook is made up of one or more paragraphs. A paragraph is a notebook component where you can write SQL statements, run PL/SQL scripts, and run Python commands. A paragraph has an **code** (input) section and an **output** (result) section. In the input section, specify the interpreter to run along with the text and/or code. This information is sent to the interpreter to be run. In the output section, the results of the interpreter are displayed.
 When you create a new notebook, it opens automatically and it contains a single paragraph using the default **`%sql`** interpreter. You can change the interpreter by explicitly specifying other interpreters such as **`%script`**, **`%python`**, or **`%md`** (Markdown).
 
-### Notebook Toolbar      
+### Notebook Toolbar
 At the top of the notebook, you can find a toolbar which contains the following components:
 
 1. A Title.
@@ -157,12 +157,12 @@ On the far right of the notebook toolbar, you can use the following configuratio
     ![The four Configuration icons are shown. Callouts 1 and 3 are shown above icons 1 and 3 from left to right. Callouts 2 and 4 are shown below icons 2 and 4 from left to right.](./images/configuration-commands.png " ")
 
 
-### Paragraph    
+### Paragraph
 
 Each paragraph contains the following components:
 1. **Title**: Click the title to edit it.
 2. **Code section**: This is where you enter your source code.
-3. **Result section**: This is where you can see the result (output) of the code execution.      
+3. **Result section**: This is where you can see the result (output) of the code execution.
 4. **Paragraph Commands**: Contains command icons that are described below.
 
     ![The Customer Contact Information in Warehouse paragraphs is shown as an example. The title on top is labeled with callout 1. The Code section under the title is labeled with callout 2. The Result section (table format) is labeled with callout 3. The Paragraph Commands are labeled with callout 4.](./images/paragraph.png " ")
@@ -195,7 +195,7 @@ You can use this drop-down list to do the following:
 + Run all paragraphs above this paragraph
 + Run all paragraphs below this paragraph
 + Clone (duplicate) this paragraph
-+ Show/Hide the paragraph title  
++ Show/Hide the paragraph title
 + Change the paragraph title
 + Show/Hide line numbers in the code section
 + Disable the run icon for this paragraph
@@ -203,13 +203,13 @@ You can use this drop-down list to do the following:
 + Delete the paragraph
 
 
-## Task 5: Review and Run the Imported Notebook    
+## Task 5: Review and Run the Imported Notebook
 
 1. Display the code sections of all paragraphs in the notebook. On the notebook toolbar, click the **Show/hide the code** toggle icon.
 
     ![The Show/hide the code on the notebook toolbar is shown as clicked.](./images/show-code.png " ")
 
-    The code section of each paragraph is displayed. For example, paragraphs 1, 2, and 3 in the notebook use the **`%md`** (Markdown) interpreter while the paragraphs 4 and 5 use the **`%sql`** interpreter.
+    The code section of each paragraph is displayed. For example, paragraphs 1, 2, and 3 in the notebook use the **`%md`** (Markdown) interpreter while paragraphs 4 and 5 use the **`%sql`** interpreter.
 
     ![The first five paragraphs in the notebook are shown with a numbered callout next to each one (1 to 5). The interpreter type at the beginning of each paragraph is highlighted.](./images/code-displayed.png " ")
 
@@ -227,17 +227,17 @@ You can use this drop-down list to do the following:
 
 3. Hide the code sections for the first three **`%md`** paragraphs. Click **Hide editor** in each paragraph.
 
-    ![The Hide editor icon of the first paragraph is shown as clicked.](./images/hide-editor.png " ")  
+    ![The Hide editor icon of the first paragraph is shown as clicked.](./images/hide-editor.png " ")
 
     The code sections are hidden. It is a good practice to hide the code section of a **`%md`** paragraph since you are only interested in looking at the formatted output.
 
-    ![The code sections of the first three Markdown paragraphs are hidden.](./images/editor-hidden.png " ")  
+    ![The code sections of the first three Markdown paragraphs are hidden.](./images/editor-hidden.png " ")
 
-4. Run the **Top Sales by City** paragraph. Click **Run this paragraph**.  
+4. Run the **Top Sales by City** paragraph. Click **Run this paragraph**.
 
-    ![The Run this paragraph icon of the Top Sales by City %sql paragraph is highlighted.](./images/run-top-sales.png " ")  
+    ![The Run this paragraph icon of the Top Sales by City %sql paragraph is highlighted.](./images/run-top-sales.png " ")
 
-    The status of the paragraph goes from `READY` to `PENDING` to `RUNNING` to `FINISHED`. The output is displayed in the result section of the paragraph using the **Area Chart** graph format. You can change the output display format to **Table**, **Bar Chart**, **Pie Chart**, **Line Chart**, **Scatter Chart** formats. You can also use the **Download Data** command icon to download the output using **CSV** and **TSV** formats. Finally, you can use the **settings** link to change the layout of the displayed output.   
+    The status of the paragraph goes from `READY` to `PENDING` to `RUNNING` to `FINISHED`. The output is displayed in the result section of the paragraph using the **Area Chart** graph format. You can change the output display format to **Table**, **Bar Chart**, **Pie Chart**, **Line Chart**, **Scatter Chart** formats. You can also use the **Download Data** command icon to download the output using **CSV** and **TSV** formats. Finally, you can use the **settings** link to change the layout of the displayed output.
 
     ![The output is displayed in the result section of the paragraph using the **Area Chart** graph format. The output toolbar that enables you to select a different output format is highlighted.](./images/top-sales-output.png " ")
 
@@ -265,14 +265,14 @@ You can use this drop-down list to do the following:
 * [OML Notebooks documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Oracle Database documentation](https://docs.oracle.com/en/database/oracle/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database on Shared Exadata Infrastructure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 
 ## Acknowledgements
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, August 2022
+* **Contributor:** Marty Gubar, Product Manager, Server Technologies
+* **Last Updated By/Date:** Lauran Serhal, March 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

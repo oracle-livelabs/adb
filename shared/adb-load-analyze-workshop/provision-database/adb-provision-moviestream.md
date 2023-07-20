@@ -34,9 +34,9 @@ In this lab, you will:
 ## Task 3: Create the Autonomous Database instance
 [](include:adb-provision-body.md)
 
-Please [*proceed to the next lab*](#next).
+You may now **proceed to the next lab**.
 
-## Learn more
+## Want to Learn More?
 
 See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-workflow.html#GUID-5780368D-6D40-475C-8DEB-DBA14BA675C3) on the typical workflow for using Autonomous Data Warehouse.
 

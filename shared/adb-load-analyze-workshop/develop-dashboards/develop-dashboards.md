@@ -17,6 +17,8 @@ Watch the video below for a quick walk-through of the lab.
 - This lab requires creation of an Oracle Analytics Cloud instance, or the use of an OAC instance provided by your instructor.
 - This lab requires completion of the Provision Autonomous Database lab in the Contents menu on the left.
 
+> **Note**: Oracle Analytics Cloud (OAC) is not available with Oracle Cloud Free Tier (Always Free), nor is it supported in Oracle LiveLabs Sandbox hosted environments. If you run this workshop using an Always Free database or LiveLabs Sandbox environment, you can view Labs 1 and 5 on provisioning and using OAC, and later practice these steps on Oracle Autonomous Databases in your organization's tenancy.
+
 ## Task 1: Create a view by executing this script in SQL Worksheet
 
 Run a SQL script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance.
@@ -164,7 +166,7 @@ Analytics Cloud provides a very intuitive experience for analyzing your data and
 
 The final dashboard is depicted below:
 
-![](images/oac-final-dashboard.png)
+![Final dashboard](images/oac-final-dashboard.png)
 
 The tree map on the left describes the MovieStream customers broken out by income level. The size of the boxes is indicative of the number of customers within that income level. Clicking on one of the income levels will filter the chart on the right to summarize the number of movie views for that income level. The chart shows the breakdown of views by customer segment across movie genres.
 
@@ -224,6 +226,8 @@ Let's build the dashboard!
 11. When you are done building your workbook, click **Save** in the upper right corner.
 
 At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous Database is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
+
+You may now **proceed to the next lab**.
 
 ## Want to learn more?
 

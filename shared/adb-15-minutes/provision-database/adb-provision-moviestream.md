@@ -36,10 +36,10 @@ In this lab, you will:
 2.  This brings up the __Create Autonomous Database__ screen where you will specify the configuration of the instance.
 
 <if type="freetier">
-    ![](./images/create-adb-screen-freetier-default.png " ")
+    ![Create Autonomous Database screen](./images/create-adb-screen-freetier-default.png " ")
 </if>
 <if type="livelabs">
-    ![](./images/livelabs-adwconfig.png)
+    ![Create Autonomous Database screen](./images/livelabs-adwconfig.png)
 </if>
 
 3. Give basic information for the autonomous database:
@@ -63,7 +63,7 @@ In this lab, you will:
 
     ![Choose a workload type.](./images/adb-workload-type.png " ")
 
-5. Choose __Shared Infrastructure__ deployment type:
+5. Choose __Serverless__ deployment type:
 
     ![Choose a deployment type.](./images/adb-deployment-type.png " ")
 
@@ -106,10 +106,10 @@ In this lab, you will:
     - __License included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
 <if type="freetier">
-    ![](./images/license.png " ")
+    ![Choose a license type](./images/license.png " ")
 </if>
 <if type="livelabs">
-    ![](./images/livelabs-byol.png)
+    ![Choose a license type](./images/livelabs-byol.png)
 </if>
 
 10. For this lab, do not provide a contact email address. The "Contact Email" field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
@@ -136,4 +136,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, February 2023
+- **Last Updated By/Date** - Richard Green, June 2023
