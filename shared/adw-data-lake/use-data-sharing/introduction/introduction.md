@@ -10,7 +10,7 @@ Data is made accessible by the data sharing provider (such as Oracle Autonomous 
 
 There are several methods to set up and consume data sharing using:
 
-* PL/SQL scripts using delta sharing protocol (this workshop)
+* PL/SQL scripts using delta sharing protocol **(covered in this workshop)**
 * PL/SQL scripts using Cloud links
 * Database Actions in Autonomous Database (ADB) using delta sharing protocol
 * Database Actions in Autonomous Database (ADB) using Cloud links
@@ -64,7 +64,8 @@ The open Delta Sharing protocol is aimed to solve the following problems:
 * Provide strong security, auditing, and governance
 * Scale to massive data sets
 
-In this workshop, you will assume the responsibility of several users. For example, you will initially log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. The **`share_provider`** user creates a data share recipient named **`training_user`**. In various labs, you will log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
+**Important:**    
+In this workshop, you will assume the responsibilities of several users. Initially, you will log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. The **`share_provider`** user creates a data share recipient named **`training_user`**. In various labs, you will log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
 
 **_In real use cases, there will be different users performing different responsibilities._**
 

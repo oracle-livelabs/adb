@@ -25,7 +25,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Create a Data Share Recipient
 
-1. As the **`share_provider`** user, create a new data share recipientxx named **`training_user`**. The `token_lifetime` parameter specifies for how long the generated token will be valid. In this example, we specified **90 days**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. As the **`share_provider`** user, create a new data share recipient named **`training_user`**. The `token_lifetime` parameter specifies for how long the generated token will be valid. In this example, we specified **90 days**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
