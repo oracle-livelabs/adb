@@ -16,13 +16,14 @@ Watch the video below for a quick walk-through of the lab.
 ### About graph
 When you model your data as a graph, you can run graph algorithms to analyze connections and relationships in your data. You can also use graph queries to find patterns in your data, such as cycles, paths between vertices, anomalous patterns, and others. Graph algorithms are invoked using a Java or Python API, and graph queries are run using PGQL (Property Graph Query Language, see [pgql-lang.org](https://pgql-lang.org)).
 
-In this lab you will use a graph created from the tables MOVIE, CUSTOMER\_PROMOTIONS, and CUSTSALES\_PROMOTIONS. MOVIE and CUSTOMER\_PROMOTIONS are vertex tables (every row in these tables becomes a vertex). CUSTSALES\_PROMOTIONS connects the two tables, and is the edge table. Every time a customer in CUSTOMER\_PROMOTIONS rents a movie in the table MOVIE, that is an edge in the graph. This graph has been created for you for use in this lab.  
+In this lab you will create a graph from the tables MOVIE, CUSTOMER\_SAMPLE, and WATCHED. MOVIE and CUSTOMER\_SAMPLE are vertex tables (every row in these tables becomes a vertex). WATCHED connects the two tables, and is the edge table. Every time a customer in CUSTOMER\_SAMPLE watches a movie in the table MOVIE, that is an edge in the graph. 
 
 You have the choice of over 60 pre-built algorithms when analyzing a graph. In this lab you will use the **Personalized SALSA** algorithm, which is a good choice for product recommendations. Customer vertices map to *hubs* and movies map to *authorities*. Higher hub scores indicate a closer relationship between customers. Higher authority scores indicate that the vertex (or movie) is plays a more important role in establishing that closeness.
 
 ### Objectives
 
 In this lab, you will use the Graph Studio feature of Autonomous Database to:
+* Create a movie recommendations graph
 * Use a notebook
 * Run a few PGQL graph queries
 * Use python to run Personalized SALSA from the algorithm library
@@ -30,57 +31,15 @@ In this lab, you will use the Graph Studio feature of Autonomous Database to:
 
 ### Prerequisites
 
-- This lab requires completion of Lab 1 and Lab 2.
+- This lab requires completion of Lab 1 (or the optional Labs 2 & 3).
 
 ## Task 1: Log into Graph Studio
 
-Graph Studio is a feature of Autonomous Database. It is available as an option on the Database Actions Launchpad. You need a graph-enabled user to log into Graph Studio. When you created the MOVIESTREAM user in Lab 2, you had graph-enabled that user.
+[](include:adb-goto-graph-studio.md)
 
-1. In your **Autonomous Database Details page** page, click the **Database Actions**.
+## Task 2: Create a Movie Recommendations graph
 
-    ![Click the Database Actions button](images/click-database-actions.png " ")    
-
-2. On the Database Actions panel, click **Graph Studio**.
-
-    ![Click Open Graph Studio](images/graphstudiofixed.png " ")
-
-3. Log in to Graph Studio. Use the credentials for the database user MOVIESTREAM.
-
-    ![Use the credentials for database user MOVIESTREAM](images/graph-login.png " ")
-
-## Task 2: Load a graph into memory
-
-The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOMER\_PROMOTIONS, CUSTSALES\_PROMOTIONS, and MOVIE (as explained earlier).  You will now load this graph from the database into the in-memory graph server.  
-
-1. Click the **Graphs** icon.
-
-    ![Click the Graphs icon](images/task2step1.png " ")
-
-    You will see that the MOVIE_RECOMMENDATIONS graph is available.
-
-    ![See the list of graphs](images/task2step2.png " ")
-
-2. Click the **3 dots** on the right and click **Load Graph Into Memory**.
-
-    ![Expand the 3 dots on the right](images/task2step3.png " ")
-
-3. Accept the defaults and click **Yes**.  
-
-    ![Click Yes](images/task2step4.png " ")
-
-    Next see that the load into memory is in progress:  
-
-    ![See the load into memory In Progress](images/task2step5.png " ")
-
-    About two minutes later the load job should complete successfully.
-
-    ![See the load job completed](images/task2step6.png " ")
-
-    **Note:** If the load into memory fails, retry Steps 2 and 3.
-
- Click the Graphs icon again to see that the graph is now in memory.  
-
-    ![See the graph loaded into memory](images/task2step7.png " ")
+[](include:adb-create-graph.md)
 
 ## Task 3: Use a notebook to run graph queries and graph analytics
 
@@ -96,7 +55,7 @@ The MOVIE_RECOMMENDATIONS graph has been created for you from the tables CUSTOME
 
     ![Select the notebook to import and click on Import](images/task3step2.png " ")
 
- A dialog pops up named **Environment Attaching"**. It will disappear when the compute environment finishes attaching, usuallly in less than one minute. Or you can click **Dismiss** to close the dialog and start working on your environment. Note that you will not be able to run any paragraph until the environment finishes attaching.
+ A dialog pops up named **Environment Attaching**. It will disappear when the compute environment finishes attaching, usuallly in less than one minute. Or you can click **Dismiss** to close the dialog and start working on your environment. Note that you will not be able to run any paragraph until the environment finishes attaching.
 
     ![Click Dismiss to cloes the Environment Attaching dialog](images/click-dismiss.png " ")
 
