@@ -1,4 +1,4 @@
-﻿# Targeting Customers Based On Viewing Patterns
+﻿# Target Customers Based On Viewing Patterns
 
 ## Introduction
 
@@ -76,7 +76,7 @@ AND first(family.quarter_num_of_year) = last(family.quarter_num_of_year)
 
 3. The result should be similar to that shown below:
 
-    ![Query result showing the pattern](images/3038282323.png)
+    ![Query result showing the pattern](images/customer-count.png)
 
     This shows that we have over 1,013,572 customers that match this pattern. Before we refine our pattern, let's try and get a little bit more information about these customers by extending our query.
 
@@ -125,7 +125,7 @@ The pattern matching process can return information about the pattern it has dis
 
 2. This time we get a lot more information returned by our query. This expanded query shows a row for each occurrence of a customer watching a family movie and it shows the movie. As you scroll through the list of customers, you can see that in some cases each customer watches more than one family movie per month (see the column headed `FAMILY_MOVIES`):
 
-    ![Result of expanded query](images/3038282326.png)
+    ![Result of expanded query](images/expanded-query-result.png)
 
 ## Task 3: Searching For Family And Family-Related Movies
 
@@ -170,7 +170,7 @@ Now that we understand how our pattern matching query is working, we can extend 
 
 2. This returns around 180,631 customers:
 
-    ![Query result with additional family related genres](images/3038282324.png)
+    ![Query result with additional family related genres](images/movie-genre-pattern.png)
 
     Before we do any more work on this query, we should check-in with our marketing team to see if this number is within the range they were expecting.
 
@@ -215,7 +215,7 @@ How can you adapt the previous query to pick out those customers that really enj
 
 2. The answer is 278. This should be more in line with what the marketing team is expecting so they can run some test campaigns.
 
-    ![Query showing how many customers match the new pattern](images/3038282322.png)
+    ![Query showing how many customers match the new pattern](images/customer-matching-pattern.png)
 
 3. To help them validate this smaller list of customers, we will add some additional information into our results by showing whether a movie was matched by our pattern as a family or sci-fi movie (this is shown in the **`classifier`** column.)
 
@@ -258,13 +258,13 @@ How can you adapt the previous query to pick out those customers that really enj
 
 4. Now we have a much smaller list of customers for our marketing team to review, which should allow them to test out their new campaign.
 
-    ![Query result showing much smaller list of customers](images/3038282321.png)
+    ![Query result showing much smaller list of customers](images/smaller-list.png)
 
 ## Task 5: Job Done
 
 1. The marketing team is happy with this smaller list of customers, which means the last step is to share the results with our marketing team. We can simply send them a file by using the  **Download**  feature on the  **Query Result**  panel.
 
-    ![ALT text is not available for this image](images/3038282320.png)
+    ![ALT text is not available for this image](images/download-feature.png)
 
 ## Recap
 
@@ -280,10 +280,10 @@ Let's quickly recap what has been covered in this lab:
 
 - Sharing results with other data warehouse users
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; June 2023
