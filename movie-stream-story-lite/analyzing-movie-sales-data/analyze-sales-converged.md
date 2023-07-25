@@ -40,7 +40,6 @@ Watch the video below for a quick walk-through of the lab.
 - This lab requires completion of Labs 1 and 2 in the Contents menu on the left.
 
 ## Task 1: Log into the SQL Worksheet
-
 [](include:adb-connect-with-sql-worksheet-body.md)
 
 
