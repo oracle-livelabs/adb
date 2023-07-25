@@ -1,6 +1,6 @@
 {
     "db_name": "MYQUICKSTART",
-    "db_display_name":"MyQuickStart",
+    "db_display_name":"myquickstart",
     "db_ocpu": "1 OCPU",
     "db_storage": "1 TB",
     "db_workload_type":"Autonomous Data Warehouse",
