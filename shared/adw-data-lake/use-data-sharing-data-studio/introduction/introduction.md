@@ -10,9 +10,9 @@ Data is made accessible by the data sharing provider (such as Oracle Autonomous 
 
 There are several methods to set up and consume data sharing using:
 
-* PL/SQL scripts using delta sharing protocol **(covered in this workshop)**
+* PL/SQL scripts using delta sharing protocol
 * PL/SQL scripts using Cloud links
-* Database Actions in Autonomous Database (ADB) using delta sharing protocol
+* _Database Actions in Autonomous Database (ADB) using delta sharing protocol_ _**(covered in this workshop)**_
 * Database Actions in Autonomous Database (ADB) using Cloud links
 
 Estimated Time: 1 hour
