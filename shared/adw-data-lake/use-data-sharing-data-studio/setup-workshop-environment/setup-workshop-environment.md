@@ -114,7 +114,9 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
 
-7. In the **Configure the database** section, specify the following:
+<!--- This is a comment. --->
+
+<!---7. In the **Configure the database** section, specify the following:
 
        * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
        * **Choose database version:** **`19c`**.
@@ -125,9 +127,24 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
 
-       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page.
+       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page. --->
 
-8. In the **Create administrator credentials** section, specify the following:
+7. In the **Configure the database** section, accept the default selections as follows:
+
+       * **Choose database version:** Accept the default section.
+       * **ECPU count:** **`1`**.
+       * **Complete auto scaling:** Leave the checkbox checked (default).
+       * **Storage (TB):** **`1`** (TB).
+       * **Storage auto scaling:** Leave the checkbox unchecked (default).
+
+       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
+       
+<!--->
+       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page. -->
+
+8. In the **Backup retention** section, accept the default selections.
+
+9. In the **Create administrator credentials** section, specify the following:
 
        * **Username:** This read-only field displays the default administrator username, **`ADMIN`**.
        **Important:** Make a note of this _username_ as you will need it to perform later tasks.
@@ -137,17 +154,21 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
 
-9. In the **Choose network access** section, select the **Secure access from everywhere** option as the access type.
+10. In the **Choose network access** section, select the **Secure access from everywhere** option as the access type.
 
     ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
-10. In the **Choose a License and Oracle Database Edition** section, select the __Bring your own license (BYOL)__ option as the license type. The **Choose an Oracle Database Edition** section is displayed. Select the __Oracle Database Enterprise Edition (EE)__ option.
+11. In the **Choose a license and Oracle Database edition** section, click __Switch to Bring your own license (BYOL)__ option as the license type. 
+
+       ![Click Switch to Bring your own license (BYOL) option.](./images/click-byol.png " ")
+       
+       More options are displayed in this section. Select the __Oracle Database Enterprise Edition (EE)__ option.
 
        ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
 
-11. Click __Create Autonomous Database__.
+12. Click __Create Autonomous Database__.
 
-12. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
+13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
     ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
 
@@ -155,7 +176,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
 
-13. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
+14. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 

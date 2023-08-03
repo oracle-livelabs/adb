@@ -10,10 +10,10 @@ Data is made accessible by the data sharing provider (such as Oracle Autonomous 
 
 There are several methods to set up and consume data sharing using:
 
-* PL/SQL scripts using delta sharing protocol
-* PL/SQL scripts using Cloud links
-* _Database Actions in Autonomous Database (ADB) using delta sharing protocol_ _**(covered in this workshop)**_
-* Database Actions in Autonomous Database (ADB) using Cloud links
+* PL/SQL scripts in Autonomous Database (ADB) using delta sharing protocol
+* PL/SQL scripts in Autonomous Database (ADB) using Cloud links
+* _Data Studio in Autonomous Database (ADB) using delta sharing protocol_ _**(covered in this workshop)**_
+* Data Studio in Autonomous Database (ADB) using Cloud links
 
 Estimated Time: 1 hour
 
@@ -65,11 +65,11 @@ The open Delta Sharing protocol is aimed to solve the following problems:
 * Scale to massive data sets
 
 **Important:**    
-In this workshop, you will assume the responsibilities of several users. Initially, you will log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. The **`share_provider`** user creates a data share recipient named **`training_user`**. In various labs, you will log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
+In this workshop, you will assume the responsibilities of several users. Initially, you will log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. The **`share_provider`** user creates a data share recipient named **`training_recipient`**. In various labs, you will log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
 
 **_In real use cases, there will be different users performing different responsibilities._**
 
-  ![The workshop users.](images/users-diagram.png)
+   ![The data sharing overview.](images/data-sharing-diagram.png)
 
 ### How Does Delta Sharing Work?
 
@@ -81,14 +81,11 @@ At the high level, the delta sharing protocol works as follows:
 * The recipient subscribes to the data share provider by using the .JSON configuration profile.
 * The recipient retrieves data from the share.
 
-  ![The data sharing overview.](images/data-sharing-diagram.png)
-
 You may now proceed to the next lab.
 
 ## Learn More
 
 * [The Share Tool](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB)
-* [Using Oracle Database Actions for Oracle Cloud](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 
@@ -98,7 +95,7 @@ You may now proceed to the next lab.
 * **Contributor:**
   * Alexey Filanovskiy, Senior Product Manager
 
-* **Last Updated By/Date:** Lauran K. Serhal, July 2023
+* **Last Updated By/Date:** Lauran K. Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

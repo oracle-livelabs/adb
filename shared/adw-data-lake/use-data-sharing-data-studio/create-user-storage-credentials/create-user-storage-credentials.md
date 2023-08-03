@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will create a **data share provider** user and grant this user the necessary role and privileges. You will also create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
+In this lab, as the **`admin`** user, you will create a **data share provider** and a **data share consumer** users and grant the two users the necessary role and privileges. Next, as the new **`share_provider`** user, you will create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair, if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
 ![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
 
@@ -12,11 +12,13 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-* Create a user that will be the data share provider.
-* Grant the data share provider the necessary role and privileges.
-* Create an Oracle Object Storage bucket where you'll store the shared data.
-* Generate an RSA key pair to generate a private key and a fingerprint.
-* Create an OCI native credential and associate the buckets' URL with the credential.
+* As an **`admin`** user, you will do the following:
+    * create a data share provider user and grant this user the necessary role and privileges.
+    * Create a data share consumer user and grant this user the necessary role and privileges.
+* As the **`share_provider`** user, you will do the following:
+    * Create an Oracle Object Storage bucket (if you don't have one) where you'll store the shared data.
+    * Generate an RSA key pair to generate a private key and a fingerprint (if you need that)
+    * Create an OCI native credential and associate the buckets' URL with the credential.
 
 ### Prerequisites
 
@@ -41,7 +43,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
-As the **`admin`** user, create a **share_provider** user and grant this user the required role and privileges and enable REST and data sharing.
+As the **`admin`** user, create a **`share_provider`** user and grant this user the required role and privileges and enable REST and data sharing.
 
 ### **The Data Share Provider**
 
@@ -92,7 +94,7 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![View the script results](images/script-results.png)
 
-## Task 3: (Optional) Create a Share Consumer User
+## Task 3: (Optional) Create a Share Consumer User and Grant Privileges to the User
 
 1. Create a new consumer user named **`share_consumer`**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon.
 

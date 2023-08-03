@@ -21,17 +21,17 @@ In this lab, you will:
 
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
-## Task 1: Download the delta_share_profile.json Configuration File
+## Task 1: Download the .json Configuration File
 
-As the **`training_recipient`**, you can use the activation link URL that was sent to you by by the **`share_provider`** via email to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to connect to the data share and access the shared table.
+As the **`training_recipient`**, you can use the activation link URL that was sent to you by by the **`share_provider`** via email to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to connect to the data share and access the **`CUSTOMER_CONTACT_SHARE`** table in the share.
 
->**Note:** For the recipient to download the `.json` file, it doesn't matter what user you are logged in as. All you need is a Web browser.
+>**Note:** To download the `.json` file as the recipient, it doesn't matter what user you are logged in as. All you need is a web browser.
 
-1. Open the email that was sent to you which contains the activation link URL.
+1. Open the email message that was sent to you which contains the activation link URL.
 
     ![Open the email message.](images/open-email.png)
 
-2. Copy the activation link URL that was provided to you by your share provider and paste it in your web browser's address bar.
+2. Copy the activation link URL, and then paste it in your web browser's address bar. Alternatively, you can simply click the URL in the email message.
 
     ![Paste activation link in the browser.](images/paste-activation-url.png)
 
@@ -41,15 +41,15 @@ As the **`training_recipient`**, you can use the activation link URL that was se
 
     >**Note:** You can download this profile file only once; therefore, make sure you save it once it's downloaded.
 
-    The **Profile information downloaded** page is displayed and the downloaded file is displayed in a popup window.
+    The **Profile information downloaded** page is displayed and the name of the downloaded file, `delta_share_profile.json`, is displayed in a pop-up window. You can close this browser tab after the file is downloaded.
 
     ![Profile file downloaded.](images/screen-2.png)
 
-4. The **`delta_share_profile`.json** file is downloaded to your browser's Downloads directory.
+4. The **`delta_share_profile`.json** file is downloaded to your browser's **Downloads** directory.
 
     ![The downloaded file is displayed.](images/downloaded-file.png)
 
-5. Open the downloaded file. The file content is displayed. You will need this information to connect and use the data share.
+5. Open the downloaded file to display its content. You will need this file to connect and use the data share.
 
     ![Open the delta share profile file.](images/open-profile.png)
 
@@ -71,43 +71,52 @@ As the **`training_recipient`**, you can use the activation link URL that was se
 
     ![click the data share tile.](images/click-data-share.png)
 
+    The **Provider and Consumer** Home page is displayed.
+
 ## Task 3: Subscribe to Share Provider
 
-To consume a data share, a recipient must have the required network connection to access the `share_provider` user host machine that contains the data share using `Port 443`. This is a virtual port used for secure internet network traffic and connection purposes using the `HTTPS` secure protocol. In order to set the ACL on the host machine for the recipient, you as the `admin` user (or some other privileged user) will need the host machine **`endpoint`** value which you can find in the downloaded `JSON` profile file from the previous lab.
+To consume a data share, a recipient must have the required network connection to access the `share_provider` user host machine that contains the data share using `Port 443`. This is a virtual port used for secure internet network traffic and connection purposes using the `HTTPS` secure protocol. In order to set the ACL on the host machine for the recipient,  **`admin`** user (or some other privileged user with the `EXECUTE` privilege) will need the host machine **`endpoint`** value which you can find in the downloaded `JSON` profile file from the previous lab.
 
-1. On the **Provider and Consumer** page, click the **CONSUMER SHARE** tile to display the **Consume Share** page.
+1. On the **Provider and Consumer** page, click the **CONSUME SHARE** tile to display the **Consume Share** page.
 
     ![click the consume share tile.](images/click-consume-share.png)
 
 2. Click **+ Subscribe to Share Provider**.
 
-3. The **Network ACL Script** dialog box is displayed. Before you can access the data share to which the `share_provider` user gave you access, you need to be able to access the host machine. Accept the selected **Allow access to Host Only** option. Click the **Copy** icon to copy the script into your clipboard so that you can share it with your **`admin`** (or a privileged) user to run it on your behalf. The code is also available below. For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation.
+    ![click Subscribe to Share Provider.](images/click-subscribe-provider.png)
+
+3. The **Network ACL Script** dialog box is displayed. Before you can access the data share to which the `share_provider` user gave you access, you need to be able to access the `share_provider` user host machine. _**This is a task for an `admin` or a privileged user and will only need to be performed once**._ Accept the selected **Allow access to Host Only** option. Click the **Copy** icon to copy the script into your clipboard so that you can share it with your **`admin`** user that will run on your behalf. The same code is also available below for your convenience. You can choose to copy that code and share it with your admin. The host value in the script will be different than the one you will use. You can find your host value in the `.JSON profile` that you downloaded earlier.
+For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation.
 
     ![The Network ACL Script dialog box.](images/network-acl-script.png)
 
-    > **Note:** Make sure to replace the host value in the following code example with your own share provider's host machine that you can find in the `.JSON profile`.
+    > **Important:** Don't proceed with the next steps until your `admin` user grants you access to the `share_provider` user host machine.
 
-4. As an `admin` user, copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+### **The `admin` user grants the recipient access to the `share_provider` host machine**
 
-    ```
-    <copy>
-    BEGIN
-    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
-        lower_port => 443,
-        upper_port => 443,
-        ace => xs$ace_type(
-        privilege_list => xs$name_list('http', 'http_proxy'),
-        principal_name => upper('DWROLE'),
-        principal_type => xs_acl.ptype_db));
-    END;
-    /
-    </copy>
-    ```
+As an `admin` user, if you already received the script from your recipient, navigate to the SQL Worksheet, and then run the script. Alternatively, you can copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
-    ![Set ACLs.](images/set-acls.png)
+```
+<copy>
+BEGIN
+DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+    host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
+    lower_port => 443,
+    upper_port => 443,
+    ace => xs$ace_type(
+    privilege_list => xs$name_list('http', 'http_proxy'),
+    principal_name => upper('DWROLE'),
+    principal_type => xs_acl.ptype_db));
+END;
+/
+</copy>
+```
 
-5. After your `admin` user runs the above code, you can continue with the steps for **+ Subscribe to Share Provider**. In the **Subscribe to Share Provider** wizard, on the **Provider Settings** page, provide the following information:
+![Set ACLs.](images/set-acls.png)
+
+The `admin` user informs the recipient that he or she has access to the `share_provider`'s host machine; therefore, the recipient can now subscribe to the share provider.
+
+4. As the recipient, you can continue with the steps for **+ Subscribe to Share Provider**. In the **Subscribe to Share Provider** wizard, on the **Provider Settings** page, provide the following information:
 
     * **Share Provider JSON:** Accept the **From file** option.
     * **Delta Share Profile JSON:** Click this field to display the **Open** dialog box. Navigate to your **Downloads** directory where you downloaded the **`delta_share_profile.json`** file, and then click **Open**.
@@ -118,7 +127,7 @@ To consume a data share, a recipient must have the required network connection t
 
         ![Complete share panel.](images/completed-share-panel.png)
 
-6. Click **Next**. On the **Add Shares** page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
+5. Click **Next**. On the **Add Shares** page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
 
     ![Add shares page.](images/wizard-add-shares.png)
 
@@ -126,25 +135,49 @@ To consume a data share, a recipient must have the required network connection t
 
     ![Click subscribe to selected share.](images/click-subscribe.png)
 
-    The **Link Cloud Object** page is displayed. The **`CUSTOMER_CONTACT_SHARE`** table in the **TRAINING_SHARE** data share that the `share_provider` user had shared with you as a recipient is added as a link job to the page.
+    The **Link Cloud Object** page is displayed.
 
-    ![The Link Cloud Object page is displayed.](images/click-start.png)
+    ![The Link Cloud Object page is displayed.](images/link-object-page.png)
 
-7. Click **Start**. A **Run Data Load Job** dialog box is displayed. Click **Run**. When the job completes successfully, a **Complete** icon with a green checkmark is displayed. Click **Done**.
+## Task 4: Create an External Table over the Shared Table
+
+1. Expand the **TRAINING_SHARE** data share node to display the objects in it. Drag and drop the **`CUSTOMER_CONTACT_SHARE`** shared table to add it to the data link job.
+
+    ![Drag and drop the shared table onto the canvas.](images/drag-and-drop-share.png)
+
+2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT_SHARE`** external table will be created on top of the **`CUSTOMER_CONTACT_SHARE`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT_SHARE`** to **`CUSTOMER_SHARE`**. Click the ellipsis icon, and then click **Settings** from the context menu.
+
+    ![The Link Cloud Object page is displayed.](images/shared-table-added.png)
+
+3. In the **Link Data from Cloud Store Location SHARE_PROVIDER.CUSTOMER\_CONTACT\_SHARE** dialog box, change the name of the external table that will be generated to **`CUSTOMER_SHARE`**, and then click **Close**.
+
+    ![Change the table name.](images/change-table-name.png)
+
+    The **Link Cloud Object** page is re-displayed.
+
+    ![The changed table name is displayed.](images/table-name-changed.png)
+
+4. Click **Start**. A **Run Data Load Job** dialog box is displayed. Click **Run**. When the job completes successfully, a green **Complete** icon with a checkmark is displayed. The **`CUSTOMER_SHARE`** external table is created. Click **Done**.
 
     ![The link job is completed.](images/link-job-complete.png)
 
-8. Click the **Database Actions | Launchpad** banner, and then select the **SQL** tile from the **Development** section to display the SQL Worksheet.
+5. Click the **Database Actions | Launchpad** banner, and then select the **SQL** tile from the **Development** section to display the SQL Worksheet.
 
-9. From the **Navigator** tab, drag and drop the **CUSTOMER_CONTACT_SHARE** table onto the editor. A **Choose the type of insertion** dialog box is displayed. Click **Select** and then click **Apply**.
+    ![Click the banner.](images/click-banner.png)
 
-    ![Drag and drop table.](images/drag-and-drop.png)
+6. From the **Navigator** tab, drag and drop the **`CUSTOMER_SHARE`** table onto the canvas.
 
-    The query is displayed in the Worksheet.
+    ![Drag and drop table.](images/drag-drop-customer-share.png)
 
-10. Click the **Run Statement** icon in the toolbar. The query result is displayed in the **Query Result** tab.
+7. A **Choose the type of insertion** dialog box is displayed. Click **Select**, and then click **Apply**.
 
-    ![Query table share.](images/query-table-share.png)
+    ![Select and apply.](images/select-and-apply.png)
+
+    The automatically generated query is displayed in the Worksheet.
+
+5. Click the **Run Statement** icon in the Toolbar. The query result is displayed in the **Query Result** tab.
+
+    ![Query table share.](images/query-customer-share.png)
 
 You may now proceed to the next lab.
 
