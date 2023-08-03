@@ -7,8 +7,10 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
+<!---
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_tfp0sgen)
+-->
 
 ### Objectives
 
