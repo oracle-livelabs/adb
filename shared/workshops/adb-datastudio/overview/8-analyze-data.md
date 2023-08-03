@@ -7,8 +7,10 @@ This lab introduces the Data Analysis application built into the Oracle Autonomo
 
 Estimated Time: 20 minutes
 
+<!---
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_kascwyxq)
+-->
 
 ### Objectives
 
@@ -119,13 +121,9 @@ preferences are different across high-value and low-value customers.
     easily add aggregations and calculations to data sets and present
     data in views that can be queried with relatively simple SQL.
     
-    Select your schema QTEAM and click on **Create** button.
+    Select your schema QTEAM and click on **+** button below Analytic View.
 
     ![screenshot of creating the analytic view](images/image60_av_create-1.png)
-
-    You can also use three vertical dots to access the create menu.
-
-    ![screenshot of creating the analytic view](images/image60_av_create-2.png)
 
 4.  Fact Table: Pick **CUSTOMER\_SALES\_ANALYSIS** from the list
     
@@ -185,13 +183,9 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of creating an analytic view](images/image67_av_create.png)
 
-11. Our AV is ready now and we can start analyzing data. You can see
-    that there are no errors by clicking on the **Data Quality** tab.
+11. Our AV is ready now and we can start analyzing data. Click on the three dots next to the name of the AV and click **Analyze**.
 
-    You can also go back and edit the AV by clicking on three vertical
-    dots.
-
-    ![screenshot of analytic view review](images/image68_av_quality.png)
+    ![screenshot of analytic view review](images/image68_av_analyze.png)
 
 ## Task 2: Analyze data
 
@@ -201,7 +195,7 @@ and start finding hidden patterns in the data.
 
 Next, let's learn how to navigate the analysis tool.
 
-1.  Select your AV and click on **Analyze**.
+1.  Select your AV and click on **Analyze**. Click on the three dots next to the name of the AV and click **Analyze**.
 
     The Data Analysis UI is divided into multiple zones. These zones are:
     
@@ -210,17 +204,15 @@ Next, let's learn how to navigate the analysis tool.
     2: Columns, Rows, Values and Filters where you can drag components
     from zone 1 to slice and dice the data.
     
-    3: Area for displaying reports and charts.
+    3: Area for displaying reports and charts in the analysis dashboard.
     
-    4: Table/Pivot/Chart view. For the remainder of the lab, we will use chart
-    view. It is much easier to visualize the information through charts.
+    4: Table/Pivot/Chart report. You can have many reports in an analysis dashboard. For our workshop we will create only one. 
 
-    5: Related Insights: Close this section by clicking on the middle of the bar. See screenshot.
-    We won't be needing this for this lab.
+    5: Filtering by dimension hierarchy member values
     
     ![screenshot of the analysis home page](images/image69_av_analyze_home.png)
 
-2.  Now we can start doing our first analysis.
+2.  Now we can start doing our first analysis. Expand the report in the dashboard by dragging its bottom right corner and click on the bar chart. A bar chart makes it easier to visualize the data.
 
     Analysis: show me the sales amount by age group
     
@@ -235,8 +227,7 @@ Next, let's learn how to navigate the analysis tool.
     hierarchy.
     
     This chart is showing total sales across age groups. We can
-    conclude that seniors (71-80) are not watching many movies whereas age
-    groups 21-30 and 31-40 are watching most.
+    conclude that the silent generation is not watching many movies whereas millennials are watching most.
 
     ![screenshot of sales analysis by age group](images/image70_sales_agegroup.png)
 
@@ -257,7 +248,7 @@ Next, let's learn how to navigate the analysis tool.
     Make sure the **Age group** is on top of **Marital status**.
 
     We notice that although singles watch overall more movies, married
-    people watch more than singles in the younger age group (21-30, 31-40).
+    people watch more than singles in millennial age group.
     
     This was not obvious before.
 
@@ -296,19 +287,31 @@ Next, let's learn how to navigate the analysis tool.
     because overall they spend more. We are talking about relative genre 
     preference within the same customer value group.
 
-    ![screenshot of sales analysis by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
+    Go ahead and see if you can find any other interesting patterns. 
 
-Go ahead and see if you can find any other interesting patterns. 
+    What movie genres are popular in different age groups?
 
-What movie genres are popular in different age groups?
+    We can spend lots of time in the analysis tool visualizing the data with
+    different combinations of attributes.
 
-We can spend lots of time in the analysis tool visualizing the data with
-different combinations of attributes.
-
->**Note:** So far, we are looking at only the charts, but this data can be
+    >**Note:** So far, we are looking at only the charts, but this data can be
 displayed in tabular format and a pivot table as well. Switch the
 display mode to see how it works. Advanced users can access the data in
 this AV from Excel or Google Sheets. 
+
+    ![screenshot of sales analysis by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
+
+8. You can add more than one report and arrange them on the canvas by clicking on **Add Report** button. For our workshop we will only have one report. After you have completed the report, you can save it by clicking on the **Save** button on the top right corner. 
+
+    Click on the left arrow button on the top left corner to go back to Data Analysis main page.
+
+    ![screenshot of saving sales analysis by movie genre and customer value](images/image75_sales_genre_custvalue_save.png)
+
+    You can see your saved report on the main page.
+
+    ![screenshot of sales analysis main page](images/image75_data_analysis_main.png)
+
+
 
 ## RECAP
 

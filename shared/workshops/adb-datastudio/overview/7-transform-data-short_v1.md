@@ -104,19 +104,15 @@ Now we are ready to prepare the data.
 
 ## Task 3: Create a data flow to load a new table to analyze customer sales
 
->**Note:** In this environment, a Data Transforms project and an empty data flow and a partially created data flow has been pre-created. You will update the existing data flow to perform the data transformations required.
+>**Note:** In this environment, a Data Transforms project and an empty data flow have been pre-created. You will update the existing data flow to perform the data transformations required.
 
 1.  Click on the **Projects** button on the left side
 
     ![The Data Transforms menu with Projects selected](images/dtshort-projects.png)
 
-2.  Click the **SalesData** project. You will find the following data flows:
-   
-   1: **load\_customer\_sales\_analysis** : This is an empty data flow. Use this to go through all the transforms creation steps in this workshop.
+2.  Click the **SalesData** project and then the **load\_customer\_sales\_analysis** data flow
 
-   2: **load\_customer\_sales\_analysis\_partial** : This is a partially created data flow for a short workshop. This data flow already has aggregation, customer value calculation by binning and age group lookup transforms in the flow. If you want, you can review these steps by clicking on the transforms. Use this data flow to add transforms steps starting from step 18 in this workshop. Directly skip to step 18 and continue the workshop.
-
-    ![A list of data flows in the SalesData project](images/dtshort-dataflow_two.png)
+    ![A list of data flows in the SalesData project](images/dtshort-dataflow.png)
 
 3.  A window will pop up to **Add a Schema**. Make sure the Schema is set to **QTEAM** and click OK. The schema will then appear under **Data Entities**. Expand the schema to show the tables.
 
