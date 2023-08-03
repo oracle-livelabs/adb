@@ -138,9 +138,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
        * **Storage auto scaling:** Leave the checkbox unchecked (default).
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
-       
-<!--->
-       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page. -->
 
 8. In the **Backup retention** section, accept the default selections.
 
