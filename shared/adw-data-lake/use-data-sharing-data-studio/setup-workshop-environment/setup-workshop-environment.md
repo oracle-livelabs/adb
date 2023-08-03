@@ -139,7 +139,9 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
 
-8. In the **Backup retention** section, accept the default selections.
+8. In the **Backup retention** section, accept the default selection.
+
+       ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 
 9. In the **Create administrator credentials** section, specify the following:
 
@@ -153,17 +155,15 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 10. In the **Choose network access** section, select the **Secure access from everywhere** option as the access type.
 
-    ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
+       ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
-11. In the **Choose a license and Oracle Database edition** section, click __Switch to Bring your own license (BYOL)__ option as the license type. 
+11. In the **Choose a license and Oracle Database edition** section, accept the default selection, **This Database is provisioned with License included license type**.
 
-       ![Click Switch to Bring your own license (BYOL) option.](./images/click-byol.png " ")
-       
-       More options are displayed in this section. Select the __Oracle Database Enterprise Edition (EE)__ option.
-
-       ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
+       ![Accept the default license selection.](./images/license-default.png " ")
 
 12. Click __Create Autonomous Database__.
+
+       ![Click create autonmous database.](./images/click-create-adb.png " ")
 
 13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
