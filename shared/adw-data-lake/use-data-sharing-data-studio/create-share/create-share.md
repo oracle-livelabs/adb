@@ -82,7 +82,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![The recipient is created.](images/recipient-created.png)
 
-9. Click **Create** to create and publish the data share. The **Provide Share** page is displayed. Two information boxes are displayed briefly to indicate that the share is created and that publishing is in progress. The **training_share** is displayed along with its details such as the entity type, owner, shared objects, and the recipients. Note the status of the share is **Unpublished**. It will take few minutes to publish it depending on the size of the table in the share.
+9. Click **Create** to create and publish the data share. The **Provide Share** page is displayed. Two information boxes are displayed briefly to indicate that the share is created and that publishing is in progress. The **training_share** is displayed along with its details such as the entity type, owner, shared objects, and the recipients. Note the status of the share is **Unpublished**. It will take a few minutes to publish it depending on the size of the table in the share.
 
     ![The data share is created.](images/share-created.png)
 
