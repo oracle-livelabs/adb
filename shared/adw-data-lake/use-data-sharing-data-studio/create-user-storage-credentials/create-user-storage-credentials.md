@@ -22,7 +22,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
+* This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
 ## Task 1: Navigate to the SQL Worksheet
 

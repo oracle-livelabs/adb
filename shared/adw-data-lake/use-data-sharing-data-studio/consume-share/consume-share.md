@@ -19,7 +19,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
+* This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu on the left.
 
 ## Task 1: Download the .json Configuration File
 
@@ -92,33 +92,33 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
     ![The Network ACL Script dialog box.](images/network-acl-script.png)
 
-    > **Important:** Don't proceed with the next steps until your `admin` user grants you access to the `share_provider` user host machine.
+    > **Important:** Don't proceed with the next steps until your `admin` user grants you access to the `share_provider` user host machine; otherwise, you  get a permission error.
 
-### **The `admin` user grants the recipient access to the `share_provider` host machine**
+    **The `admin` user must grant the `training_recipient` consumer access to the `share_provider` host machine**
 
-As an `admin` user, if you already received the script from your recipient, navigate to the SQL Worksheet, and then run the script. Alternatively, you can copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+    As an `admin` user, if you already received the script from your recipient, navigate to the SQL Worksheet, and then run the script. Alternatively, you can copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
-```
-<copy>
-BEGIN
-DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-    host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
-    lower_port => 443,
-    upper_port => 443,
-    ace => xs$ace_type(
-    privilege_list => xs$name_list('http', 'http_proxy'),
-    principal_name => upper('DWROLE'),
-    principal_type => xs_acl.ptype_db));
-END;
-/
-</copy>
-```
+    ```
+    <copy>
+    BEGIN
+    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
+        lower_port => 443,
+        upper_port => 443,
+        ace => xs$ace_type(
+        privilege_list => xs$name_list('http', 'http_proxy'),
+        principal_name => upper('DWROLE'),
+        principal_type => xs_acl.ptype_db));
+    END;
+    /
+    </copy>
+    ```
 
-![Set ACLs.](images/set-acls.png)
+    ![Set ACLs.](images/set-acls.png)
 
-The `admin` user informs the recipient that he or she has access to the `share_provider`'s host machine; therefore, the recipient can now subscribe to the share provider.
+    The `admin` user informs the recipient that he or she has access to the `share_provider`'s host machine; therefore, the recipient can now subscribe to the share provider.
 
-4. As the recipient, you can continue with the steps for **+ Subscribe to Share Provider**. In the **Subscribe to Share Provider** wizard, on the **Provider Settings** page, provide the following information:
+4. As the **`share_consumer`** recipient, once your `admin` user grants you access to the `share_provider` user host machine, you can continue with the steps for **+ Subscribe to Share Provider**. In the **Subscribe to Share Provider** wizard, on the **Provider Settings** page, provide the following information:
 
     * **Share Provider JSON:** Accept the **From file** option.
     * **Delta Share Profile JSON:** Click this field to display the **Open** dialog box. Navigate to your **Downloads** directory where you downloaded the **`delta_share_profile.json`** file, and then click **Open**.

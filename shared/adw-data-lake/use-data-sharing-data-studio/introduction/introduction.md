@@ -1,11 +1,5 @@
 # Introduction
 
-<!--- comment --->
-
-Data sharing enables you to share the same data with one or more consumers. Sharing data and consuming data from external sources enables collaboration with partners, establishes new partnerships, and generates new revenue streams with data monetization. The Oracle Data Sharing for general recipients is based on the open _delta sharing standard protocol_, providing a simple REST-based API to share data in `Parquet` format.
-
-Data is made accessible by the data sharing provider (such as Oracle Autonomous Database) to the data sharing recipient (such as Microsoft Power BI) at query time in `Parquet` format. The provider can only share data which they have access to when they log into an ADB instance. The parquet files are physically stored in an OCI bucket or use the bucket to store live share parquet files to cache them and improve performance.
-
 ## About this Workshop
 
 There are several methods to set up and consume data sharing using:
@@ -15,7 +9,13 @@ There are several methods to set up and consume data sharing using:
 * _Data Studio in Autonomous Database (ADB) using delta sharing protocol_ _**(covered in this workshop)**_
 * Data Studio in Autonomous Database (ADB) using Cloud links
 
-Estimated Time: 1 hour
+<!--- comment --->
+
+Data sharing enables you to share the same data with one or more consumers. Sharing data and consuming data from external sources enables collaboration with partners, establishes new partnerships, and generates new revenue streams with data monetization. The Oracle Data Sharing for general recipients is based on the open _delta sharing standard protocol_, providing a simple REST-based API to share data in `Parquet` format.
+
+Data is made accessible by the data sharing provider (such as Oracle Autonomous Database) to the data sharing recipient (such as Microsoft Power BI) at query time in `Parquet` format. The provider can only share data which they have access to when they log into an ADB instance. The parquet files are physically stored in an OCI bucket or use the bucket to store live share parquet files to cache them and improve performance.
+
+Estimated Workshop Time: 1 hour
 
 ### Objectives
 
