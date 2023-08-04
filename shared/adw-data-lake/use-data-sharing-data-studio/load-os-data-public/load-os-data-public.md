@@ -17,7 +17,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the Data Load Page
 
-If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the **Database Actions | Launchpad** Home page. In the **Data Studio** section, click the **DATA LOAD** card. Next, skip to **Task 2**; otherwise, start with **step 1** below.
+Make sure you're still logged in as the **`share_provider`** user. If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the **Database Actions | Launchpad** Home page. In the **Data Studio** section, click the **DATA LOAD** card. Next, skip to **Task 2**; otherwise, start with **step 1** below.
 
 ![Click the banner.](./images/click-banner.png " ")
 
@@ -71,7 +71,7 @@ In this task, you will load the **sales\_sample** data into your Autonomous Data
 
     The **Link Data from Cloud Store Location customer_contact** settings panel is displayed.
 
-8. The **Database Actions** load job will create a **`CUSTOMER_CONTACT`** table with the listed columns and data types that are based on the selected **`.csv`** file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Change the table name that will be generated from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click **Close** to close the settings viewer panel.
+8. The **Database Actions** load job will create a **`CUSTOMER_CONTACT`** table with the listed columns and data types that are based on the selected **`.csv`** file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
     ![View the settings for customer_contact load task](images/preview-create-table.png)
 
@@ -91,11 +91,15 @@ In this task, you will load the **sales\_sample** data into your Autonomous Data
 
     ![View customer_contact data](images/preview-customer-contact-table.png)
 
-13. Click **Close** to exit the **`customer_contact`** task preview, and then click **Done** to exit the Data Load tool and return to the **Database Actions Launchpad**.
+    >**Note:** You can also use the **Navigator** tab in the SQL Worksheet to view the table. You might need to click the **Refresh** icon before you can see the newly created table.
+
+13. Click **Close** to exit the **`customer_contact`** task preview, and then click **Done** to exit the Data Load tool.
 
      ![Click Done.](images/click-done.png)
 
-    You can also use the **Navigator** tab to view the table. You might need to click the **Refresh** icon before you can see the newly created table.
+    The **Database Actions Launchpad** is displayed.
+
+     ![Launchpad is displayed.](images/launchpad.png)
 
 You may now proceed to the next lab.
 

@@ -73,6 +73,8 @@ As the **`training_recipient`**, you can use the activation link URL that was se
 
     The **Provider and Consumer** Home page is displayed.
 
+    ![The Provider and Consumer page is displayed.](images/provider-consumer-page.png)
+
 ## Task 3: Subscribe to Share Provider
 
 To consume a data share, a recipient must have the required network connection to access the `share_provider` user host machine that contains the data share using `Port 443`. This is a virtual port used for secure internet network traffic and connection purposes using the `HTTPS` secure protocol. In order to set the ACL on the host machine for the recipient,  **`admin`** user (or some other privileged user with the `EXECUTE` privilege) will need the host machine **`endpoint`** value which you can find in the downloaded `JSON` profile file from the previous lab.
@@ -122,7 +124,7 @@ The `admin` user informs the recipient that he or she has access to the `share_p
     * **Delta Share Profile JSON:** Click this field to display the **Open** dialog box. Navigate to your **Downloads** directory where you downloaded the **`delta_share_profile.json`** file, and then click **Open**.
 
         ![Select the download .json file.](images/open-json.png)
-    * **Provider Name:** Enter a name such as **`CUSTOMER_SHARE_PROVIDER`**.
+    * **Provider Name:** Enter a name such as **`CUSTOMER_CONTACT_SHARE`**.
     * **Description:** Enter an optional description.
 
         ![Complete share panel.](images/completed-share-panel.png)
@@ -135,21 +137,21 @@ The `admin` user informs the recipient that he or she has access to the `share_p
 
     ![Click subscribe to selected share.](images/click-subscribe.png)
 
-    The **Link Cloud Object** page is displayed.
+    A **`CUSTOMER_CONTACT_SHARE` share provider was created successfully**  informational message is displayed. You are directed to the **Link Cloud Object** page.
 
     ![The Link Cloud Object page is displayed.](images/link-object-page.png)
 
 ## Task 4: Create an External Table over the Shared Table
 
-1. Expand the **TRAINING_SHARE** data share node to display the objects in it. Drag and drop the **`CUSTOMER_CONTACT_SHARE`** shared table to add it to the data link job.
+1. Expand the **TRAINING_SHARE** data share node to display the objects in it. Drag and drop the **`CUSTOMER_CONTACT`** shared table to add it to the data link job.
 
     ![Drag and drop the shared table onto the canvas.](images/drag-and-drop-share.png)
 
-2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT_SHARE`** external table will be created on top of the **`CUSTOMER_CONTACT_SHARE`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT_SHARE`** to **`CUSTOMER_SHARE`**. Click the ellipsis icon, and then click **Settings** from the context menu.
+2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT`** external table will be created on top of the **`CUSTOMER_CONTACT`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click the ellipsis icon, and then click **Settings** from the context menu.
 
     ![The Link Cloud Object page is displayed.](images/shared-table-added.png)
 
-3. In the **Link Data from Cloud Store Location SHARE_PROVIDER.CUSTOMER\_CONTACT\_SHARE** dialog box, change the name of the external table that will be generated to **`CUSTOMER_SHARE`**, and then click **Close**.
+3. In the **Link Data from Cloud Store Location SHARE_PROVIDER.CUSTOMER\_CONTACT** dialog box, change the name of the external table that will be generated to **`CUSTOMER_CONTACT_SHARE`**, and then click **Close**.
 
     ![Change the table name.](images/change-table-name.png)
 
@@ -165,7 +167,7 @@ The `admin` user informs the recipient that he or she has access to the `share_p
 
     ![Click the banner.](images/click-banner.png)
 
-6. From the **Navigator** tab, drag and drop the **`CUSTOMER_SHARE`** table onto the canvas.
+6. From the **Navigator** tab, drag and drop the **`CUSTOMER_CONTACT_SHARE`** table onto the canvas.
 
     ![Drag and drop table.](images/drag-drop-customer-share.png)
 

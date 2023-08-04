@@ -86,7 +86,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![The data share is created.](images/share-created.png)
 
-10. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Click **Send** to send the email.
+10. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Click **Send** to send the email to the recipient.
 
     ![Click send email.](images/activation-email.png)
 
