@@ -139,7 +139,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
 
-8. In the **Backup retention** section, accept the default selection.
+8. In the **Backup retention** section, you can either accept the default or choose your preferred backup retention days.
 
        ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 

@@ -98,9 +98,9 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![Click the recipients tile.](images/click-recipients-tile.png)
 
-When you publish a `versioned` share type, the tool generates and stores the data share as `parquet` files in the specified bucket such as `data-share-bucket` in our example. Any authenticated data share recipient can directly access the share in that bucket.
+    When you publish a `versioned` share type, the tool generates and stores the data share as `parquet` files in the specified bucket such as `data-share-bucket` in our example. Any authenticated data share recipient can directly access the share in that bucket.
 
-![Versioned share type.](images/versioned-share-type.png)
+    ![Versioned share type.](images/versioned-share-type.png)
 
 13. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. If you are prompted to leave, click **Leave**.
 
