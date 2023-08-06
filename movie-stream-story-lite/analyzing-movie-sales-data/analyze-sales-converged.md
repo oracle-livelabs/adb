@@ -40,7 +40,7 @@ Watch the video below for a quick walk-through of the lab.
 - This lab requires completion of Labs 1 and 2 in the Contents menu on the left.
 
 ## Task 1: Log into the SQL Worksheet
-Make sure you are logged into the SQL Worksheet as the [](var:db_user_name) user. If you are not logged in as [](var:db_user_name), then [follow these steps](/adb/movie-stream-story-lite/workshops/ocw-freetier/index.html?lab=load-data#Task3:LoginastheMOVIESTREAMuser) from the previous lab.
+[](include:adb-connect-with-sql-worksheet-body.md)
 
 
 ## Task 2: Use filters and joins
