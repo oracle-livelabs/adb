@@ -163,7 +163,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 12. Click __Create Autonomous Database__.
 
-       ![Click create autonmous database.](./images/click-create-adb.png " ")
+       ![Click create autonomous database.](./images/click-create-adb.png " ")
 
 13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
