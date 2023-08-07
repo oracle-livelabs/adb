@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Implement Data Sharing with PL/SQL",
+    "workshoptitle": "Implement Data Sharing with ADB Data Studio",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -26,16 +26,16 @@
             "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
         },
         {
-            "title": "Lab 3: Create, Populate, and Publish a Data Share",
+            "title": "Lab 3: Load Data from Public Object Storage Bucket",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../load-os-data-public/load-os-data-public.md"
+        },
+        {
+            "title": "Lab 4: Create, Populate, and Publish a Data Share",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-share/create-share.md"
-        },
-        {
-            "title": "Lab 4: Create and Authorize the Data Share Recipient",
-            "type":"freetier",
-            "description": "This lab walks you through how to load local data into your ADW instance.",
-            "filename": "./../../create-share-recipients/create-share-recipients.md"
         },
         {
             "title": "Lab 5: Consume the Data Share",
