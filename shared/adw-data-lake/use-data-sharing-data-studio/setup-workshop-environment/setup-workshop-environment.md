@@ -139,7 +139,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
 
-8. In the **Backup retention** section, you can either accept the default or choose your preferred backup retention days.
+8. In the **Backup retention** section, you can either accept the default value or specify your preferred backup retention days.
 
        ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 
@@ -163,7 +163,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 12. Click __Create Autonomous Database__.
 
-       ![Click create autonmous database.](./images/click-create-adb.png " ")
+       ![Click create autonomous database.](./images/click-create-adb.png " ")
 
 13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
