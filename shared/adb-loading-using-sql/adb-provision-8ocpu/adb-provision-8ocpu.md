@@ -18,7 +18,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an <a href="https://www.oracle.com/cloud/free/" target="\_blank">Oracle Cloud account</a>. You may use your own cloud account, a cloud account that you obtained through a 30-day free trial, or a training account whose details were given to you by an Oracle instructor.
-- **Note:** The timings and screenshots in this workshop are based on using 8 OCPUs. If you obtain a 30-day trial license and opt to configure fewer OCPUs or opt for an “Always Free” instance with 1 OCPU, the response times and query times will be longer.
+- **Note:** The timings and screenshots in this workshop are based on using 16 ECPUs. If you obtain a 30-day trial license and opt to configure fewer ECPUs or opt for an “Always Free” instance with 2 ECPUs, the response times and query times will be longer.
 - Completed the steps in the **Getting Started** section seen in the Contents menu on the left.
 
 ## Task 1: Choosing ADW from the Services Menu
@@ -79,9 +79,9 @@ This lab assumes you have:
 
 6. Configure the database:
 
-    - __Always Free__ - **Note:** The timings and screenshots in this workshop are based on using 8 OCPUs. If you obtain a 30-day trial license and opt to configure fewer OCPUs or opt for an “Always Free” instance with one OCPU, the response times and query times will be longer.
+    - __Always Free__ - **Note:** The timings and screenshots in this workshop are based on using 16 ECPUs. If you obtain a 30-day trial license and opt to configure fewer ECPUs or opt for an “Always Free” instance with one OCPU, the response times and query times will be longer.
     - __Choose database version__ - Select a database version from the available versions.
-    - __OCPU count__ - Number of CPUs for your service. For this workshop, our example uses a database instance with __8 OCPUs__. If you obtain a 30-day trial license and opt to configure fewer OCPUs or opt for an “Always Free” instance with one OCPU, your response times and query times will be longer.
+    - __ECPU count__ - Number of CPUs for your service. For this workshop, our example uses a database instance with __16 ECPUs__. If you obtain a 30-day trial license and opt to configure fewer ECPUs or opt for an “Always Free” instance with 2 ECPUs, your response times and query times will be longer.
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage.
     - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
     - __New Database Preview__ - If a checkbox is available to preview a new database version, do NOT select it.
@@ -114,7 +114,7 @@ This lab assumes you have:
 
     ![Click Create Autonomous Database.](./images/Picture100-27.png " ")
 
-11.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
+11.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
 
     ![Database instance homepage.](./images/Picture100-32.png " ")
 

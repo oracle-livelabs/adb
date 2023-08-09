@@ -98,7 +98,6 @@ In this lab, you will:
     ![Choose a deployment type.](./images/task2-5.png " ")
 
 6. Configure the database:
-
     - __Always Free__ - If your Cloud Account is an Always Free account, or your Cloud Account is a paid account but want to avoid any charges, you can select this option to create an *Always Free autonomous database*. An always free database provides a maximum of 2 ECPUs and 20 GB of storage with Data Warehouse or Transaction Processing workloads. For this lab, we recommend you leave Always Free unchecked.
     - __Choose database version__ - Select a database version from the available versions.
     - __ECPU count__ - Number of CPUs for your service. For this lab, accept the default __2 ECPUs__. If you choose an Always Free database, it provisions always with 2 ECPUs.
@@ -164,7 +163,6 @@ In this lab, you will:
     ![Click Create Autonomous Database.](./images/task2-10.png " ")
 
 13.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
-
     ![Database instance homepage.](./images/task2-11.png " ")
 
 You may now **proceed to the next lab**.
