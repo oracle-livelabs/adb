@@ -39,9 +39,6 @@ In this lab, you will:
 
     ![Check the workload type on the left.](images/task1-4.png " ")
 
-    <if type="freetier">
-    ![Check the workload type on the left.](images/task1-4.png " ")
-
    > **Note:** Avoid the use of the `ManagedCompartmentforPaaS` compartment, as this is an Oracle default used for Oracle Platform Services.
    </if>
 
@@ -73,8 +70,8 @@ In this lab, you will:
 3. Specify basic information for the autonomous database:
 
     - __Compartment__ - Choose the compartment assigned to you.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For example, use __ADW\_Finance\_Mart__.
-    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.)
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For example, use __ADW\_Finance\_Mart__. (Spaces are not supported.)
+    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Spaces and underscores are not supported.)
     <if type="livelabs">For example, use __ADWFINANCE__ and **append your user id**. For example, if your user id is **LL-185**, then enter __ADWFINANCE185__
     </if><if type="freetier">For example, use __ADWFINANCE__.</if>
 
@@ -101,19 +98,25 @@ In this lab, you will:
     ![Choose a deployment type.](./images/task2-5.png " ")
 
 6. Configure the database:
-
-    - __Always Free__ - If your Cloud Account is an Always Free account, or your Cloud Account is a paid account but want to avoid any charges, you can select this option to create an *Always Free autonomous database*. An always free database comes with at least 2 CPUs and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
+    - __Always Free__ - If your Cloud Account is an Always Free account, or your Cloud Account is a paid account but want to avoid any charges, you can select this option to create an *Always Free autonomous database*. An always free database provides a maximum of 2 ECPUs and 20 GB of storage with Data Warehouse or Transaction Processing workloads. For this lab, we recommend you leave Always Free unchecked.
     - __Choose database version__ - Select a database version from the available versions.
-    - __ECPU count__ - Number of CPUs for your service. For this lab, specify __2 CPUS__. If you choose an Always Free database, it comes with at least 2 CPUs.
+    - __ECPU count__ - Number of CPUs for your service. For this lab, accept the default __2 ECPUs__. If you choose an Always Free database, it provisions always with 2 ECPUs.
+    > **Note:** ECPU is the default compute model. If you need to use the legacy OCPU compute model, you can click **Show advanced options**, then click **Change compute model**. See [the documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-compute-models.html) for more about the ECPU and OCPU compute models.
+
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
-    - __ECPU auto scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+    - __Compute auto scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more ECPUs and IO resources to meet workload demand.
     - __Storage auto scaling__ - For this lab, there is no need to enable storage auto scaling, which would allow the system to expand up to three times the reserved storage.
 
     > **Note:** You cannot scale up/down an Always Free autonomous database.
 
     ![Choose the remaining parameters.](./images/task2-6.png " ")
 
-7. Create administrator credentials:
+7. Backup retention:
+    - __Backup retention__ - For this lab, accept the default 60 days.
+
+    ![Choose the backup retention period.](./images/choose-backup-retention-period.png " ")
+
+8. Create administrator credentials:
 
     - __Password and Confirm Password__ - Specify the password for ADMIN user of the service instance. The password must meet the following requirements:
     - The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character.
@@ -125,7 +128,7 @@ In this lab, you will:
 
     ![Enter password and confirm password.](./images/task2-7.png " ")
 
-8. Choose network access:
+9. Choose network access:
     - For this lab, accept the default, **Secure access from everywhere**.
     - If you want to allow traffic only from the IP addresses and VCNs you specify - where access to the database from all public IPs or VCNs is blocked, select **Secure access from allowed IPs and VCNs only** in the Choose network access area.
     - If you want to restrict access to a private endpoint within an OCI VCN, select **Private endpoint access only** in the Choose network access area.
@@ -134,14 +137,14 @@ In this lab, you will:
     ![Choose the network access.](./images/task2-8.png " ")
 
 <if type="livelabs">
-9. Choose a license type. For this lab, choose __Bring Your Own License (BYOL)__. The two license types are:
+10. Choose a license type. For this lab, choose __Bring your own license (BYOL)__. The two license types are:
 </if>
 <if type="freetier">
-9. Choose a license type. For this lab, choose __License Included__. The two license types are:
+10. Choose a license type. For this lab, accept the default __License included__. The two license types are:
 </if>
 
-    - __Bring Your Own License (BYOL)__ - Select this type when your organization has existing database licenses.
-    - __License Included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
+    - __Bring your own license (BYOL)__ - Select this type when your organization has existing database licenses.
+    - __License included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
 <if type="livelabs">
     ![Click Create Autonomous Database.](./images/task2-9.png " ")
@@ -150,17 +153,16 @@ In this lab, you will:
     ![Click Create Autonomous Database.](./images/task2-9.png " ")
 </if>
 
-10. For this lab, do not provide a contact email address. The **Contact Email** field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
+11. For this lab, do not provide a contact email address. The **Contact Email** field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
 
     ![Do not provide a contact email address.](images/contact-email-field.png)
 
 
-11. Click __Create Autonomous Database__. If you see an error *Authorization failed or requested resource not found*, it means you are not in the compartment assigned to you. To solve this error, refer to Task 1 -> Step 4 to choose the correct compartment assigned to you, as shown on your *Reservation Information* page.
+12. Click __Create Autonomous Database__. If you see an error *Authorization failed or requested resource not found*, it means you are not in the compartment assigned to you. To solve this error, refer to Task 1 -> Step 4 to choose the correct compartment assigned to you, as shown on your *Reservation Information* page.
 
     ![Click Create Autonomous Database.](./images/task2-10.png " ")
 
-12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
-
+13.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
     ![Database instance homepage.](./images/task2-11.png " ")
 
 You may now **proceed to the next lab**.
@@ -174,4 +176,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager)
-- **Last Updated By/Date** - Richard Green, February 2023
+- **Last Updated By/Date** - Richard Green, August 2023

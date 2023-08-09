@@ -17,22 +17,22 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Task 1: Scaling your Autonomous Database Instance
 
-1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage scaling** button.
+1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage resource allocation** button.
 
-    ![Click Manage scaling button.](./images/click-manage-scaling.png " ")
+    ![Click Manage resource allocation.](./images/click-manage-resource-allocation.png " ")
 
-2.  Fill in the Manage scaling dialog with the following information:
+2.  Fill in the **Manage resource allocation** dialog with the following information:
 
-    -   **OCPU count:** 8
-    -   **OCPU auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
+    -   **ECPU count:** 16
+    -   **Compute auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
     -   **Storage (TB):** 2
     -   **Storage auto scaling:** Keep this checkbox deselected; by default the checkbox does not have a checkmark.
 
   *Note: You can scale up/down your autonomous database only if your autonomous database is NOT Always Free.*
 
-3.  Click **Apply** after filling in the Manage scaling dialog.
+3.  Click **Apply** after filling in the Manage resource allocation dialog.
 
-    ![Click Apply.](./images/click-apply-in-manage-scaling-dialog.png " ")
+    ![Click Apply.](./images/click-apply-in-manage-resource-allocation-dialog.png " ")
 
     *Note: Applications can continue running during the scale operation without downtime.*
 
@@ -65,4 +65,4 @@ Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-clo
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - LiveLabs QA Team (Jeffrey Malcolm Jr, Ayden Smith, Arabella Yao)
-- **Last Updated By/Date** - Richard Green, January 2023
+- **Last Updated By/Date** - Richard Green, August 2023
