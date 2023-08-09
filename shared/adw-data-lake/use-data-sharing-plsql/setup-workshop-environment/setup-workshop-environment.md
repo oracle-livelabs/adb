@@ -132,7 +132,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 7. In the **Configure the database** section, accept the default selections as follows:
 
        * **Choose database version:** Accept the default selection.
-       * **ECPU count:** **`1`**.
+       * **ECPU count:** **`2`**.
        * **Complete auto scaling:** Leave the checkbox checked (default).
        * **Storage (TB):** **`1`** (TB).
        * **Storage auto scaling:** Leave the checkbox unchecked (default).
