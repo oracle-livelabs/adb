@@ -371,7 +371,9 @@ After you have created a dynamic group, you need to create a policy to permit th
 
 12. Click __Create Autonomous Database__.
 
-13.  The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
+    ![Click create autonomous database.](./images/click-create-adb.png " ")
+
+13.  The **Autonomous Database details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
     ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
 
