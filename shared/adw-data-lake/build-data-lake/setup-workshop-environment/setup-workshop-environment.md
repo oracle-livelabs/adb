@@ -121,12 +121,12 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 <!---7. In the **Configure the database** section, specify the following:
 
-       * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
-       * **Choose database version:** **`19c`**.
-       * **OCPU count:** **`1`**.
-       * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
+       * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
+       * **Choose database version:** Accept the default selection.
+       * **ECPU count:** **`2`**.
+       * **Complete auto scaling:** Leave the checkbox checked (default).
        * **Storage (TB):** **`1`** (TB).
-       * **Storage auto scaling:** Leave the checkbox unchecked.
+       * **Storage auto scaling:** Leave the checkbox unchecked (default).
 
        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
 
