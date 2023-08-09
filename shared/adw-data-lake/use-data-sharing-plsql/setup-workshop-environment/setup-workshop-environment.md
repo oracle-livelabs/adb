@@ -131,6 +131,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 7. In the **Configure the database** section, accept the default selections as follows:
 
+       * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
        * **Choose database version:** Accept the default selection.
        * **ECPU count:** **`2`**.
        * **Complete auto scaling:** Leave the checkbox checked (default).
