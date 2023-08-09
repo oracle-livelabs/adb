@@ -1,4 +1,4 @@
- <!--- This is a comment. --->
+<!--- This is a comment. --->
 
 <if type="livelabs">
 # Review the Workshop Environment Setup (Optional)
@@ -131,9 +131,8 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 7. In the **Configure the database** section, accept the default selections as follows:
 
-       * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
        * **Choose database version:** Accept the default selection.
-       * **ECPU count:** **`2`**.
+       * **ECPU count:** **`1`**.
        * **Complete auto scaling:** Leave the checkbox checked (default).
        * **Storage (TB):** **`1`** (TB).
        * **Storage auto scaling:** Leave the checkbox unchecked (default).
@@ -166,15 +165,15 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![Click create autonomous database.](./images/click-create-adb.png " ")
 
-13. The **Autonomous Database details** page is displayed. The status of your ADB instance is **PROVISIONING**.
+13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
     ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
 
     A **Check database lifcycle state** informational box is displayed. You can navigate through this tour or choose to skip it. Click **Skip tour**. A **Skip guided tour** dialog box is displayed. Click **Skip**.
 
-    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, ECPU count, and storage size.
+    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, OCPU count, and storage size.
 
-    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adw-provisioned.png " ")
+    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
 
 14. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
