@@ -131,15 +131,15 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 7. In the **Configure the database** section, accept the default selections as follows:
 
-       * **Choose database version:** Accept the default section.
+       * **Choose database version:** Accept the default selection.
        * **ECPU count:** **`1`**.
        * **Complete auto scaling:** Leave the checkbox checked (default).
        * **Storage (TB):** **`1`** (TB).
        * **Storage auto scaling:** Leave the checkbox unchecked (default).
 
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
+       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-ecpu.png " ")
 
-8. In the **Backup retention** section, you can either accept the default value or specify your preferred backup retention days.
+8. In the **Backup retention** section, you can either accept the default value or specify your own preferred backup retention days value. Accept the default **60** days default value.
 
        ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 
@@ -168,6 +168,8 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
     ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
+
+    A **Check database lifcycle state** informational box is displayed. You can navigate through this tour or choose to skip it. Click **Skip tour**. A **Skip guided tour** dialog box is displayed. Click **Skip**.
 
     In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, OCPU count, and storage size.
 
