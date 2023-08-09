@@ -38,7 +38,7 @@ In this lab, you'll
 
 The first facility that we will look at for monitoring your autonomous database is the Database Metrics display located conveniently at the bottom of the Autonomous Database details page.
 
-1. In your ADW\_Finance\_Mart **Database Details** page, scroll down to the **Metrics** section.
+1. In your ADW\_Finance\_Mart **Database details** page, scroll down to the **Metrics** section.
 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
@@ -59,13 +59,13 @@ The Metrics section displays an initial set of 8 graphs to examine database metr
 ## Task 3: Examine the Database Actions Database Dashboard
 You can also view this monitoring information with more detailed tools provided in the Database Actions Launchpad.
 
-1. Go back to your ADW\_Finance\_Mart database's **Autonomous Database details** page, and click the **Database actions** button. The sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, Username - **admin**, and click **Next**. Enter the admin password you specified when creating the database. Click **Sign in**. The **Database Actions Launchpad** opens.
+1. Go back to your ADW\_Finance\_Mart database's **Autonomous Database details** page, and click the **Database actions** dropdown list. Select **View all database actions**. If you are brought to the sign-in dialog for Database Actions, simply use your database instance's default administrator account, Username - **admin**, and click **Next**. Enter the admin password you specified when creating the database. Click **Sign in**. The **Database Actions Launchpad** opens.
 
     In the **Monitoring** section, click **Database Dashboard**.
 
     ![In Database Actions Launchpad Monitoring section click Database Dashboard](images/click-database-dashboard.png " ")
 
-2. The Database Dashboard opens in the **Overview** tab. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated OCPUs, and SQL statement response time.
+2. The Database Dashboard opens in the **Overview** tab. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated ECPUs, and SQL statement response time.
 
     ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png =50%x*)
 
@@ -174,4 +174,4 @@ Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-
 ## **Acknowledgements**
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Rick Green, January 2023
+- **Last Updated By/Date** - Rick Green, August 2023
