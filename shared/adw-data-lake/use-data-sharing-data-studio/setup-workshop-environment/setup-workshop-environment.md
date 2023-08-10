@@ -1,4 +1,4 @@
-<!--- This is a comment. --->
+ <!--- This is a comment. --->
 
 <if type="livelabs">
 # Review the Workshop Environment Setup (Optional)
@@ -131,15 +131,16 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 7. In the **Configure the database** section, accept the default selections as follows:
 
-       * **Choose database version:** Accept the default section.
-       * **ECPU count:** **`1`**.
-       * **Complete auto scaling:** Leave the checkbox checked (default).
+       * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
+       * **Choose database version:** Accept the default selection.
+       * **ECPU count:** **`2`**.
+       * **Compute auto scaling:** Leave the checkbox checked (default).
        * **Storage (TB):** **`1`** (TB).
        * **Storage auto scaling:** Leave the checkbox unchecked (default).
 
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-new.png " ")
+       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-ecpu.png " ")
 
-8. In the **Backup retention** section, you can either accept the default or choose your preferred backup retention days.
+8. In the **Backup retention** section, you can either accept the default value or specify your own preferred backup retention days value. Accept the default **60** days default value.
 
        ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 
@@ -163,15 +164,17 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 12. Click __Create Autonomous Database__.
 
-       ![Click create autonmous database.](./images/click-create-adb.png " ")
+       ![Click create autonomous database.](./images/click-create-adb.png " ")
 
-13. The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
+13. The **Autonomous Database details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
     ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
 
-    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, OCPU count, and storage size.
+    A **Check database lifecycle state** informational box is displayed. You can navigate through this tour or choose to skip it. Click **Skip tour**. A **Skip guided tour** dialog box is displayed. Click **Skip**.
 
-    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
+    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, ECPU count, and storage size.
+
+    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adw-provisioned.png " ")
 
 14. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
