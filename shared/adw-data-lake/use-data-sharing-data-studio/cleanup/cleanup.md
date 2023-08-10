@@ -16,7 +16,7 @@ Estimated Time: 5 minutes
 * Delete your entire compartment if you don't need it.
 
 ### Prerequisites
-This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
+* This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
 
 > **Note:**
 If you want to list the resources in your compartment, you can use the **Tenancy Explorer** page. From the **Navigation** menu, navigate to **Governance & Administration**. In the  **Governance** section, click **Tenancy Explorer**. On the **Tenancy Explorer** page, in the **Search compartments** field, type your compartment's name, and then select the compartment from the list of compartments. The resources in this compartment are displayed.
@@ -53,7 +53,7 @@ This concludes the workshop.
 ## Acknowledgements
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, July 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
