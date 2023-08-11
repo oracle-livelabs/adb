@@ -71,16 +71,19 @@ Tempo estimado: 5 minutos
 
 6. Configure o banco de dados:
 
-    - __Always Free__ - Se a sua conta for de Uso Livre, você pode selecionar essa opção para criar um always free autonomous database. Um always free database possui 1 CPU e 20 GB de armazenamento. Para este lab, recomendamos deixar a opção Always Free desmarcada.
+    - __Always Free__ - Se a sua conta for de Uso Livre, você pode selecionar essa opção para criar um always free autonomous database. Um always free database possui 2 CPUs e 20 GB de armazenamento. Para este lab, recomendamos deixar a opção Always Free desmarcada.
     - __Escolher versão do banco de dados__ - Selecione uma das versões disponíveis de banco de dados.
-    - __Contagem de OCPUs__ - O número de núcleos de OCPU a ser ativado. Para este lab, especifique __1 CPU__. Se você escolher um banco de dados Always Free, já possuirá 1 CPU.
+    - __Contagem de ECPUs__ - O número de núcleos de ECPU a ser ativado. Para este lab, especifique __2 CPUs__. Se você escolher um banco de dados Always Free, já possuirá 2 CPUs.
     - __Armazenamento (TB)__ - Escolha e volume de armazenamento a ser alocado em terabytes. Para este lab, especifique __1 TB__ de armazenamento. Senão, caso vocês escolher um banco de dados Always Free, virá com 20 GB de armazenamento.
     - __Escalonamento automático__ - Para este lab, deixe o escalonamento automático ativado para que o sistema possa automaticamente utilizar até três vezes mais núcleos provisionados a fim de suportar a carga de trabalho exigida.
     - __New Database Preview__ - Se houver uma caixa de seleção para uso antecipado de uma nova versão, NÃO a deixe marcada.
 
     *Nota: Não é possível escalar para mais ou menos uma Always Free autonomous database.*
 
-    ![Escolha os parâmetros restantes.](./images/pt_BR-Picture100-26c.png " ")
+    <!-- ![Escolha os parâmetros restantes.](./images/pt_BR-Picture100-26c.png " ")
+     -->
+
+    ![Escolha os parâmetros restantes.](./images/pt_BR-task2-6.png " ")
 
 7. Crie credenciais de administrador:
 
@@ -109,7 +112,7 @@ Tempo estimado: 5 minutos
 
     ![Clique em Criar Autonomous Database.](./images/pt_BR-Picture100-27-byol.png " ")
 
-11.  Sua instância iniciará o provisionamento. Em poucos minutos o estado passará de Provisionando para Disponível. Nesse momento seu banco de dados Autonomous Data Warehouse está pronto para o uso! Veja alguns detalhes sobre sua instância, incluindo o nome, versão do banco de dados, contagem de OCPU e armazenamento.
+11.  Sua instância iniciará o provisionamento. Em poucos minutos o estado passará de Provisionando para Disponível. Nesse momento seu banco de dados Autonomous Data Warehouse está pronto para o uso! Veja alguns detalhes sobre sua instância, incluindo o nome, versão do banco de dados, contagem de ECPU e armazenamento.
 
     ![Homepage da instância de banco de dados.](./images/pt_BR-Picture100-32.png " ")
 
