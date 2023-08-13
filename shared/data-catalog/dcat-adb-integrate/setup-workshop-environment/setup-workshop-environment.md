@@ -186,7 +186,6 @@ In this task, you create a new and empty business glossary in the newly created 
 
    ![The Glossaries tab and the Create Glossary button are highlighted.](./images/click-create-glossary.png " ")
 
-
 4. Click **Create Glossary**. The **Create Glossary** panel is displayed. Enter **`MovieStream Application`** in the **Name** field and **`Describes the assets related to the MovieStream data`** in the **Description** field, and then click **Create**.
 
    ![The Create button on the completed Create Glossary panel is highlighted.](./images/ll-create-glossary-panel.png " ")
@@ -323,65 +322,68 @@ After you have created a dynamic group, you need to create a policy to permit th
 3. On the **Autonomous Databases** page, make sure **`training-dcat-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section. click **Create Autonomous Database**. The **Create Autonomous Database** page is displayed.
 
 4. In the **Provide basic information for the Autonomous Database** section, specify the following:
-       * **Compartment:** **`training-dcat-compartment`**.
-       * **Display Name:** **`DB-DCAT-Integration`**.
-       * **Database Name:** **`TrainingADB`**.
+    * **Compartment:** **`training-dcat-compartment`**.
+    * **Display Name:** **`DB-DCAT-Integration`**.
+    * **Database Name:** **`TrainingADB`**.
 
-       ![The completed "Provide basic information for the Autonomous Database" section is diaplyed.](./images/adb-basic-info.png " ")
+        ![The completed "Provide basic information for the Autonomous Database" section is diaplyed.](./images/adb-basic-info.png " ")
 
 5. In the **Choose a workload type** section, accept the **Data Warehouse** default selection.
 
-       ![The selected Data Warehouse option of the "Choose a workload type" section is displayed and highlighted.](./images/adb-workload-type.png " ")
+    ![The selected Data Warehouse option of the "Choose a workload type" section is displayed and highlighted.](./images/adb-workload-type.png " ")
 
 6. In the **Choose a deployment type** section, accept the **Serverless** default selection.
 
-       ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
+    ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
 
 7. In the **Configure the database** section, specify the following:
 
-       * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
-       * **Choose database version:** **`19c`**.
-       * **OCPU count:** **`1`**.
-       * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
-       * **Storage (TB):** **`1`** (TB).
-       * **Storage auto scaling:** Leave the checkbox unchecked.
+    * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
+    * **Choose database version:** Accept the default selection.
+    * **ECPU count:** **`2`**.
+    * **Compute auto scaling:** Leave the checkbox checked (default).
+    * **Storage (TB):** **`1`** (TB).
+    * **Storage auto scaling:** Leave the checkbox unchecked (default).
 
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
+        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-ecpu.png " ")
 
-       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page.
+8. In the **Backup retention** section, you can either accept the default value or specify your own preferred backup retention days value. Accept the default **60** days default value.
 
-8. In the **Create administrator credentials** section, specify the following:
+    ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 
-       * **Username _Read-Only_:** This read-only field displays the default username, **`ADMIN`**.
-       **Important:** Make a note of this _username_ as you will need it to perform later tasks.
-       * **Password:** Enter a password for the **`ADMIN`** user of your choice such as **`Training4ADB`**.
-       **Important:** Make a note of this _password_ as you will need it to perform later tasks.
-       * **Confirm password:** Confirm your password.
+9. In the **Create administrator credentials** section, specify the following:
 
-       ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
+    * **Username _Read-Only_:** This read-only field displays the default username, **`ADMIN`**.
+    **Important:** Make a note of this _username_ as you will need it to perform later tasks.
+    * **Password:** Enter a password for the **`ADMIN`** user of your choice such as **`Training4ADB`**.
+    **Important:** Make a note of this _password_ as you will need it to perform later tasks.
+    * **Confirm password:** Confirm your password.
 
-9. In the **Choose network access** section, select the **Secure access from everywhere** access type.
+        ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
+
+10. In the **Choose network access** section, select the **Secure access from everywhere** access type.
 
     ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
-10. In the **Choose a License and Oracle Database Edition** section, specify the following:
+11. In the **Choose a license and Oracle Database edition** section, accept the default selection, **This Database is provisioned with License included license type**.
 
-    * **Choose a license type:** Select the __Bring Your Own License (BYOL)__ option. Select this type when your organization has existing database licenses.
-    * **Choose an Oracle Database Edition:** Select the __Oracle Database Enterprise Edition (EE)__.
+    ![Accept the default license selection.](./images/license-default.png " ")
 
-        ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
+12. Click __Create Autonomous Database__.
 
-11. Click __Create Autonomous Database__.
+    ![Click create autonomous database.](./images/click-create-adb.png " ")
 
-12.  The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
+13.  The **Autonomous Database details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
-    ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adb-provisioning.png " ")
+    ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
 
-    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, OCPU count, and storage size.
+    A **Check database lifecycle state** informational box is displayed. You can navigate through this tour or choose to skip it. Click **Skip tour**. A **Skip guided tour** dialog box is displayed. Click **Skip**.
 
-    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
+    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, ECPU count, and storage size.
 
-13. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
+    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adw-provisioned.png " ")
+
+14. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
@@ -403,7 +405,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
