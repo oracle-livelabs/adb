@@ -36,23 +36,21 @@ _**This is not a hands-on lab; instead, it is a demo of how to query data from d
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
 
 ## Task 2: Define an OCI Oracle Cloud Location
 
 In this task, we will get some customers information from a public OCI Object Storage bucket.
 
-In this task, we define a **Cloud Location** to connect to a public Oracle Object Storage bucket in order to load data from the **`customer-contact.csv`** and **`customer-extension.csv`** files to create detailed customers tables.
+In this task, we define a **Connection** to connect to a public Oracle Object Storage bucket in order to load data from the **`customer-contact.csv`** and **`customer-extension.csv`** files to create detailed customers tables.
 
-1. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+1. On the **Data Load** page, in the **Administration** section, click **CONNECTIONS**.
 
-    ![Click the Cloud Locations card.](./images/click-cloud-locations.png " ")
+    ![Click the Cloud Locations card.](./images/click-connections-oci.png " ")
 
-2. On the **Manage Cloud Store** page, click **Add Cloud Storage**.
+2. On the **Connections** page, click the **Create** drop-down list and then select **New Cloud Store Location** from the list.
 
-    ![Click Add Cloud Storage.](./images/click-add-cloud-store-location.png " ")
+    ![Click Add Cloud Storage.](./images/click-oci-cloud-store-location.png " ")
 
 3. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`oci-data-lake`**.
@@ -73,9 +71,9 @@ In this task, we define a **Cloud Location** to connect to a public Oracle Objec
 
     ![Click Next to see the objects in the bucket.](./images/oci-cloud-data.png " ")
 
-5. Click **Create**. The **oci-data-lake** cloud location is displayed in the **Manage Cloud Store** page.
+5. Click **Create**. The **oci-data-lake** cloud location is displayed in the **Connections** page.
 
-    ![The cloud store location is created.](./images/oci-cloud-location-created.png " ")
+    ![The cloud store location is created.](./images/oci-connection-created.png " ")
 
 6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
 
@@ -122,11 +120,11 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
     If the load job completes successfully, a green checkmark with the status **Complete** is displayed next to the file's name.
 
-    ![Load job completed.](images/potential-churners-job-created.png)
+    ![Load job completed.](images/customer-contact-created.png)
 
 7. Navigate to the SQL Worksheet. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
 
-    ![Click Database Actions in the banner.](images/click-database-actions.png)
+    ![Click Database Actions in the banner.](images/click-database-actions-2.png)
 
 8. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
@@ -138,34 +136,36 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
 _**Note:** This is not a hands-on task; instead, it is a demo of how to define an Amazon S3 location._
 
-In this task, we define a **Cloud Location** to connect to our **`moviestream-churn`** AWS S3 bucket that contains the **`potential_churners.csv`** file. We will use this file in our demo to identify potential customers who might churn.
+In this task, we define a **Connection** to connect to our **`moviestream-churn`** AWS S3 bucket that contains the **`potential_churners.csv`** file. We will use this file in our demo to identify potential customers who might churn.
 
 ![The potential_churners.csv file in the S3 bucket.](images/aws-s3-bucket.png)
 
-1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, click the **DATA LOAD** card. On the **Data Load** card, in the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, click the **DATA LOAD** card. On the **Data Load** card, in the **Administration** section, click **CONNECTIONS**.
 
-2. On the **Manage Cloud Store** page, click **Add Cloud Store Location**.
+2. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
 
 3. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`aws-s3-data-lake`**.
     + **Description:** Enter an optional description.
-    + **Create Credential:** Select this option, if not already selected.
-    + **Cloud Username and Password:** Select this option, if not already selected.
-    + **Cloud Store:** Select **Amazon S3** option from the drop-down list.
-    + **Credential Name:** Enter **aws_credential**.
+    
+        Click **Create Credential**. The **Create Credential** dialog box is displayed. Specify the following:
+    
+        + **Cloud Username and Password:** Select this option, if not already selected.
+        + **Cloud Store:** Select **Amazon S3** option from the drop-down list.
+        + **Credential Name:** Enter **aws_credential**.
+        + **AWS access key ID:** Enter the access key id.
+        + **AWS secret access key:** Enter the secret access key.
+    
+            ![The Amazon S3 credential.](images/aws-credential.png)
 
-    Provide the values for the next three fields, if you have them:
-    + **Amazon access key ID**
-    + **Amazon secret access key**
-    + **Amazon Bucket URI**. This is your Amazon S3 bucket endpoint.The format is:
+        Click **Create Credential**. The **Add Cloud Store Location** panel is re-displayed. Specify the following: 
 
-    + The **Bucket URI** option is selected by default. The URL format is as follows:
+        + **Bucket URI:** Leave this option as selected which is the default.
+        + **Bucket URI:** Enter your AWS endpoint. The URL format is as follows:
 
-        `https://<bucket-name>.s3.<region>.amazonaws.com/`
+            `https://<bucket-name>.s3.<region>.amazonaws.com/`
 
-        ![The Amazon S3 information.](images/aws-cloud-info.png)
-
-        ![Complete the Add Cloud Store Location.](./images/complete-add-aws-cloud-location.png " ")
+        ![Complete the Add Cloud Store Location.](./images/complete-add-aws-connection.png " ")
 
 4. Click **Next** to see the available objects in the bucket that you specified. We will only use the **`potential_churners.csv`** file.
 
@@ -173,7 +173,7 @@ In this task, we define a **Cloud Location** to connect to our **`moviestream-ch
 
 5. Click **Create**. The **aws-s3-data-lake** cloud location is displayed in the **Manage Cloud Store** page.
 
-    ![The cloud store location is created.](./images/aws-cloud-location-created.png " ")
+    ![The cloud store location is created.](./images/aws-connection-created.png " ")
 
 6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
 
@@ -202,8 +202,6 @@ In this task, we will link to the `potential_churners.csv` data from the AWS S3 
 We now have the needed tables to analyze the data and identify the potential customers that might churn.
 
 1. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
-
-    ![Click Database Actions in the banner.](images/click-database-actions.png)
 
 2. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
@@ -279,8 +277,20 @@ We now have the needed tables to analyze the data and identify the potential cus
 
     ![Create a new potential_churn_customers .](./images/create-new-table.png " ")
 
-    You may now proceed to the next lab.
+7.  Query the table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
+    ```
+    <copy>
+    select *
+    from potential_churn_customers cc;
+    </copy>
+    ```
+
+    ![Query the potential_churn_customers table .](./images/query-potential_churn_customers.png " ")
+
+    
+    You may now proceed to the next lab.
+    
 ## Learn more
 
 * [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
@@ -294,7 +304,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
