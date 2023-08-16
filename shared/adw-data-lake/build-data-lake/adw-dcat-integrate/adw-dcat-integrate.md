@@ -79,37 +79,36 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 
     **Note:** If your Data Catalog and ADW instances are in different compartments like in our example, you must select the correct compartment for your ADW instance; otherwise, you won't see the resources that you created in this workshop such as the credential and cloud store locations.
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **Data Load**.
 
-5. In the **Database Actions | Launchpad** Home page, in the **Data Studio** section, click the **DATA LOAD** card.
+5. In the **Administration** section, click **CONNECTIONS** to display the **Connections** page.
 
-6. In the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+    ![Click the Connections card.](./images/click-connections.png " ")
 
-    ![Click the Cloud Locations card.](./images/click-cloud-locations.png " ")
-
-7. On the **Manage Cloud Store** page, click **Register Data Catalog**.
+6. On the **Connections** page, click the **Create** drop-down list and then select **Register Data Catalog**.
 
     ![Click Register Data Catalog.](./images/click-register-data-catalog.png " ")
 
-8. In the **Register Data Catalog** panel, in **Step 1** of the wizard, **Catalog Settings**, specify the following:
+7. In the **Register Data Catalog** panel, in **Step 1** of the wizard, **Catalog Settings**, specify the following:
 
     * **Catalog Name:** Enter a meaningful name. **Note:** The name must conform to the Oracle object naming conventions, which do not allow spaces or **hyphens**.
     * **Description:** Enter an optional description.
-    * **Select Credential:** Select this check box (default). Select your credential that you created in **Lab 5 > Task 6**, **`OBJ_STORAGE_CRED`**.
+    * **Register Data Catalog Connection:** Select this checkbox.
+    * **Select Credential:** Select this check box (default). Select your credential that you created in **Lab 5 > Task 6**, **`OBJ_STORAGE_CRED`**. This could take a minute.
     * **Region:** Your region should be already selected after you chose your credential.
     * **Data Catalog ID:** If you have several Data Catalog instances, select the Data Catalog instance that you want to register from the drop-down list.
 
         ![The completed Register Data Catalog panel is displayed.](./images/register-data-catalog-panel.png " ")
 
-9. Click **Next**. **Step 2** of the wizard, **Register Assets** is displayed. By default, all the buckets in your selected Data Catalog instance are selected, along with data assets they contain. Drill-down (expand) the **moviestream_sandbox** bucket. This bucket contains three data assets. Those are the same data entities that you saw earlier in the Data Catalog instance in **Task 1**.
+8. Click **Next**. **Step 2** of the wizard, **Register Assets** is displayed. By default, all the buckets in your selected Data Catalog instance are selected, along with data assets they contain. Drill-down (expand) the **moviestream_sandbox** bucket. This bucket contains three data assets. Those are the same data entities that you saw earlier in the Data Catalog instance in **Task 1**.
 
-    ![Step 2 of the wizard is displayed.](./images/register-assets-wizard-2.png " ")
+    ![Step 2 of the wizard is displayed.](./images/register-assets-panel.png " ")
 
-10. Keep the **moviestream\_sandbox** bucket checked; however, uncheck the **moviestream\_landing** and **moviestream\_gold** buckets, and then click **Create** to register the Data Catalog instance.
+9. Keep the **moviestream\_sandbox** bucket checked; however, uncheck the **moviestream\_landing** and **moviestream\_gold** buckets, and then click **Create** to register the Data Catalog instance.
 
     ![Click Create to register the Data Catalog instance.](./images/click-create.png " ")
 
-    The **Manage Cloud Store** page is re-displayed. The newly registered Data Catalog instance is displayed.
+    The **Connections** page is re-displayed. The newly registered Data Catalog instance is displayed.
 
     ![Click Create to register the Data Catalog instance.](./images/data-catalog-registered.png " ")
 
@@ -119,17 +118,13 @@ In this task, you will link to data assets from the registered Data Catalog and 
 
 1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page.
 
-    ![Click Oracle Database Actions.](images/click-database-actions.png)
-
 2. In the **Data Studio**, click **DATA LOAD**.
 
 3. In the **What do you want to do with your data?** section, click **LINK DATA**.
 
 4. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
 
-    ![Select Link Data and Cloud Store.](images/select-link-data-from-cloud-store.png)
-
-5. The **Link Cloud Object** page is displayed. Use this page to drag and drop tables from the registered Data Catalog instance to the data linking job area.
+5. The **Link Cloud Object** page is displayed. You will use this page to drag and drop tables from the registered Data Catalog instance to the data linking job area. Click the drop-down list. Under the **Catalog Locations** category, select the **`REGISTER_DCAT_INSTANCE`** that you created.
 
     ![Drag the data assets from the Data Catalog bucket onto the linking job section.](images/drag-and-drop-assets.png)
 
@@ -180,7 +175,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
