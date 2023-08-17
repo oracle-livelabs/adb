@@ -3,8 +3,10 @@
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
-      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md"
+      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
     },
+    "variables": ["./variables.json"],
     "tutorials": [
         {
           "title": "Introduction",

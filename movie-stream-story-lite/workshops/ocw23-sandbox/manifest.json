@@ -4,7 +4,7 @@
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
-      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-non-admin.md",
       "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
       "adb-load-public-db-actions-no-sales.md":"/common/building-blocks/tasks/adb/load-public-db-actions-no-sales.md",
       "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
@@ -36,7 +36,7 @@
       },
 
       {
-        "title": "(Optional) Lab 3: Use Data Tools to create a user and load data",
+        "title": "(Optional) Lab 3: Use Database Actions to create a user and load data",
         "filename": "../../load-data/load-data.md"
       },
       {
@@ -44,7 +44,7 @@
         "filename": "../../analyzing-movie-sales-data/analyze-sales-converged.md"
       },
       {
-          "title": "Lab 5: Working with JSON data",
+          "title": "Lab 5: Work with JSON data",
           "filename": "../../working-with-semi-structured-data/working-with-semi-structured-data.md"
 
       },

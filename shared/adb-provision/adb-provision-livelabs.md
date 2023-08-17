@@ -76,16 +76,18 @@ Estimated time: 5 minutes
 
 6. Configure the database:
 
-    - __Always Free__ - If your Cloud Account is an Always Free account, you can select this option to create an always free autonomous database. An always free database comes with 1 CPU and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
+    - __Always Free__ - If your Cloud Account is an Always Free account, you can select this option to create an always free autonomous database. An always free database comes with at least 2 CPUs and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
     - __Choose database version__ - Select a database version from the available versions.
-    - __OCPU count__ - Number of CPUs for your service. For this lab, specify __1 CPU__. If you choose an Always Free database, it comes with 1 CPU.
+    - __ECPU count__ - Number of CPUs for your service. For this lab, specify __2 CPUs__. If you choose an Always Free database, it comes with at least 2 CPUs.
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
     - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
     - __New Database Preview__ - If a checkbox is available to preview a new database version, do NOT select it.
 
     > **Note:** You cannot scale up/down an Always Free autonomous database.
 
-    ![Choose the remaining parameters.](./images/Picture100-26c.png " ")
+    <!-- ![Choose the remaining parameters.](./images/Picture100-26c.png " ") -->
+
+    ![Choose the remaining parameters.](./images/task2-6.png " ")
 
 7. Create administrator credentials:
 
@@ -121,7 +123,7 @@ Estimated time: 5 minutes
 
 11. Click __Create Autonomous Database__.
 
-12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
+12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
 
     ![Database instance homepage.](./images/Picture100-32.png " ")
 
