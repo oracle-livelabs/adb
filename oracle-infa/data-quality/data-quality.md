@@ -1,12 +1,11 @@
 # Cleanse Your Data Foundation
 
-## About this lab - Build Cloud Data Quaility Assets to Fix Data Anomalies
-
+## Introduction
 Informatica Cloud Data Quality empowers your company to take a holistic approach to managing data quality to quickly identify, fix, and monitor data quality problems in your business applications. The solution transforms your data quality processes to be a collaborative effort between business users and IT. This creates a true data-driven environment that accelerates cloud benefits through faster migrations and gains more trusted insights from cloud data warehouses, data lakes, and SaaS applications.
 
 In this lab, data anomalies discovered during the data profiling stage will be enriched or curated using advanced data quality transformations available in Cloud Data Quality.
 
-### **Duration: 10 minutes**
+Duration: 10 minutes
 
 ### Objectives
 

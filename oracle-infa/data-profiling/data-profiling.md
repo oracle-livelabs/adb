@@ -1,12 +1,12 @@
 # Perform Cloud Data Profiling on an Oracle ADB 
 
-## About this lab - Building Data Profiling Tasks Using the IDMC Data Profiling Service
+## Introduction
 
 Informatica Cloud Data Profiling is one of several services available in Informatica Data Management Cloud Services. Data Profiling is an on-demand service that you can use to create data profiling tasks. You can create and run a data profiling task on a data source to determine the quality of data and understand the completeness, conformity, and consistency of data.
 
 In this lab, we will profile RtlCustomer table and examine the profile results to understand the data content and discover data anomalies which may include non-standard patterns, non-standard values and inconsistent representation of data.
 
-### **Duration: 15 minutes**
+Duration: 15 minutes
 
 ### Objectives
 

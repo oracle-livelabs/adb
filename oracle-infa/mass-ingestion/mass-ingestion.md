@@ -1,12 +1,11 @@
-# Database Mass Ingestion 
+# Building Database Ingestion Tasks Using the IDMC Cloud Mass Ingestion 
 
-## About this lab - Building Database Ingestion Tasks Using the IDMC Cloud Mass Ingestion
-
+## Introduction
 Digital transformation is fueled by data, which is the key to accelerating your business and gaining competitive advantage. To get started, you must quickly ingest large volumes of data from a variety of sources onto cloud or on-premises repositories for processing and reporting, or onto messaging hubs for real-time analytics. 
 
 In this lab, you will learn how to migrate database tables and schemas from an MySQL database into Oracle Cloud Infrastructure (OCI) Object Storage table using Informatica’s Cloud Database Mass Ingestion. You will create a database ingestion task to migrate multiple datasets from a relational database into Oracle Cloud Object Storage.
 
-### **Duration: 10 minutes**
+Duration: 10 minutes
 
 ### Objectives
 

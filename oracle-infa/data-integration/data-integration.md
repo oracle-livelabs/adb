@@ -1,12 +1,12 @@
-# Enriching Your Data 
+# Use Cloud Data Integration and Cloud Data Quality to Enrich Your Data 
 
-## About this lab - Use Cloud Data Integration and Cloud Data Quality to Enrich Your Data
+## Introduction
 
 Informatica Cloud Data Integration is an on-demand subscription service that provides a complete platform for cloud integration and data management. Data Integration has the features you need to create a variety of data integration projects to fit your business needs.
 
 In this lab, we will learn how to build a Cloud Data Integration mappings using the Data Quality assets built in previous lab to enrich and curate data with business logic and load into Oracle Autonomous Database.
 
-### **Duration: 25 minutes**
+Duration: 25 minutes
 
 ### Objectives
 

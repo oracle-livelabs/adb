@@ -1,10 +1,10 @@
 # Pushdown Optimization With Cloud Data Integration 
 
-## About this lab - Processing data at Scale with advanced ELT (Advanced Pushdown Optimization)
+## Introduction
 
 In this lab, we will learn how to build a Cloud Data Integration mapping to move data from a staging table in Oracle Autonomous Database (ADB) to target in Oracle ADB using pushdown optimization. This will enhance and improve the data pipeline performance by converting and processing logic to native ecosystem commands and SQL queries for faster processing at lower cost while ensuring data stays within the ecosystem.
 
-### **Duration: 25 minutes**
+Duration: 25 minutes
 
 ### Objectives
 
