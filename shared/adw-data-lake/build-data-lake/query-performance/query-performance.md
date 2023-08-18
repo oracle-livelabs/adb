@@ -38,9 +38,7 @@ This lab requires the completion of the following labs/task from the **Contents*
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **SQL**. The SQL Worksheet is displayed.
 
 ## Task 2: Create a Materialized View for an External Table
 

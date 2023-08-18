@@ -28,56 +28,38 @@
             "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login.md"
         },
         {
-        "title": "Lab 1: Provision an Analytics Cloud Instance",
-        "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
-        "type": "freetier",
-        "filename": "/common/building-blocks/blocks/oac/provision/oac-provision.md"
-        },
-        {
-        "title": "Lab 2: Provision an Autonomous Database",
+        "title": "Lab 1: Provision an Autonomous Database",
         "description": "Provision Autonomous Database",
         "type": "freetier",
         "filename": "../../provision-database/adb-provision-moviestream.md"
     },
     {
-        "title": "Lab 3: Load Data from Object Storage Public Buckets",
+        "title": "Lab 2: Load Data from Object Storage Public Buckets",
         "description": "Load customer contact, movie genre, customer sales and pizza location data into ADB from public object storage buckets using the Database Tools",
         "type": "freetier",
         "filename": "../../load-public-db-actions/load-public-db-actions.md"
     },
     {
-        "title": "Lab 4: Load Data from Local Files",
+        "title": "Lab 3: Load Data from Local Files",
         "description": "Load additional customer details into ADB from local files using the Database Actions tools",
         "type": "freetier",
         "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
     },
     {
-        "title": "Lab 5: Develop Self-Service Analytics Cloud Dashboards",
+        "title": "Lab 4: Develop Self-Service Analytics Cloud Dashboards",
         "description": "Use Analytics Cloud for interactive dashboards",
         "type": "freetier",
         "filename": "../../develop-dashboards/develop-dashboards.md"
     },
     {
-        "title": "Lab 6: Load Data from Object Storage Private Buckets",
-        "description": "Load additional customer details into ADB from private object storage buckets using the Database Actions tools",
-        "type": "freetier",
-        "filename": "../../load-private-db-actions/load-private-db-actions.md"
-    },
-    {
-        "title": "Lab 7 (optional): Load and Analyze JSON Data",
+        "title": "Lab 5 (optional): Load and Analyze JSON Data",
         "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
         "filename": "../../load-analyze-json/load-analyze-json.md"
     },
     {
-        "title": "Lab 8 (optional): Load and Analyze the News from REST Endpoints",
+        "title": "Lab 6 (optional): Load and Analyze the News from REST Endpoints",
         "description": "Load news and analyze the sentiment about actors from the newsapi.org",
         "filename": "/common/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
-    },
-    {
-        "title": "Lab 9 (optional): Create Data Pipelines for Continuous Data Import and Export",
-        "description": "Create Oracle Data Pipelines for continuous data import and export",
-        "type": "freetier",
-        "filename": "../../create-data-pipelines/create-data-pipelines.md"
     },
     {
     "title": "Need Help?",

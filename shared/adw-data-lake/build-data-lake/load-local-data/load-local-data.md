@@ -79,7 +79,7 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
     * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
     * [Download customer-extension.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
 
-2. Make a note of your folder location as you will use the two downloaded files in a later task in this lab.
+2. Close the Excel files and make a note of your folder location as you will use the two downloaded files in a later task in this lab.
 
 ## Task 3: Navigate to the Data Load Page
 
@@ -101,13 +101,13 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 4. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
     ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
 
-5. On the **Autonomous Database details** page, click **Database actions**.
+5. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
 
     ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
 
-6. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Data Studio** section, click the **DATA LOAD** card.
+6. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
-    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
+    ![The Data Load Home page is displayed.](./images/data-load-home.png " ")
 </if>
 
 <if type="freetier">
@@ -119,13 +119,13 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Data Studio** section, click the **DATA LOAD** card.
+5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
-    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
+    ![The Data Load Home page is displayed.](./images/data-load-home.png " ")
 </if>
 
 ## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
@@ -192,7 +192,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

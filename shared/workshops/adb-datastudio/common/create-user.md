@@ -7,8 +7,10 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
+<!---
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_tfp0sgen)
+-->
 
 ### Objectives
 
@@ -31,7 +33,7 @@ When you create a new Autonomous Database, you automatically get an account call
 
 For this workshop, we need to create one new user.
 
-1.  Navigate to the **Details** page of the Autonomous Database you provisioned in the "Provision an ADB Instance" lab. Click the **Database Actions** button.
+1.  Navigate to the **Details** page of the Autonomous Database you provisioned in the "Provision an ADB Instance" lab. Click the **View all database actions** button from the pull down menu on **Database Actions**.
     ![Click Database Actions](images/click-database-actions-button.png)
 
 2.  This will take you to the Database Actions page, logged in as the ADMIN user.

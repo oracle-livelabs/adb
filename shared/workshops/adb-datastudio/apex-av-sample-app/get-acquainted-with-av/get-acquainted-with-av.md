@@ -148,30 +148,6 @@ ORDER BY
   </copy>
 ~~~
 
-Select all of the columns of the analytic view.
-
-~~~SQL
-<copy>
-SELECT
-  *
-FROM
-    movie_sales_av HIERARCHIES (
-        time
-    , geography
-    , search_genre
-    )
-WHERE
-    time.level_name = 'YEAR'
-    AND geography.level_name = 'CONTINENT' 
-    AND search_genre.level_name = 'SEARCH_GENRE';
-</copy>
-~~~
-
-That that attribute columns that are below the selected levels of aggregation return NULL. This is to be expected.
-
-As you can see, there are a lot of columns to work with.
-
-
 You may now **proceed to the next lab**
 
 ## Acknowledgements

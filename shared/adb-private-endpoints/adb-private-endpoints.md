@@ -82,4 +82,4 @@ The following links provide documentation about configuring network access with 
 ## Acknowledgements
 
 - **Author** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Rick Green, June, 2023
+- **Last Updated By/Date** - Rick Green, August 2023
