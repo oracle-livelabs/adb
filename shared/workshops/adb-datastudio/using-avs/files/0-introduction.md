@@ -8,11 +8,11 @@ The Analytic View that you will design is simple and easy to understand.  It int
 
 The Data Studio Analysis tool generates all the DDL needed to create Analytic Views. You can view the DDL in the tool.  If you would like to look more closely at Analytic View DDL, consider running the **[Oracle Live SQL Tutorial Creating Analytic Views – Getting Started tutorial](https://livesql.oracle.com/apex/livesql/file/tutorial_EDVE861IID1QUD1NIUPU5ALEW.html)**.
 
-## About Analytic Views
+### About Analytic Views
 
-An Analytic View is a type of view in the Oracle Database that allows users to perform complex queries and calculations on data stored in one or more tables. These views provide a higher level of abstraction over the underlying data, allowing users to access and analyze the data in a more meaningful way. They are typically used in business intelligence and data warehousing applications, and can be based on a single table or multiple tables joined together.
+An Analytic View is a type of view in the Oracle Database that allows users to perform complex queries and calculations on data stored in one or more tables. These views provide a higher level of abstraction over the underlying data, allowing users to access and analyze the data in a more meaningful way. They are typically used in business intelligence and data warehousing applications. For the application developers, analytic views can simplify SQL generation and calculation expressions.
 
-## Objectives
+### Objectives
 
 In this workshop, you will:
 
@@ -22,11 +22,11 @@ In this workshop, you will:
 - Add calculated measures.
 - View the analytic view in the Data Studio Analysis application.
 
-## About the Data
+### About the Data
 
 The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous Database labs.  MovieStream is a fictitious video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports the analysis of sales data by time, geography, and genre used when searching for movies.
 
-## Prerequisites
+### Prerequisites
 
 Before you launch into this workshop, you will need the following:
 
@@ -35,7 +35,7 @@ Before you launch into this workshop, you will need the following:
 
 If you have any questions about the topics covered in this lab and the entire workshop, please contact us by posting on our public forum on **[cloudcustomerconnect.oracle.com](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/)**  and we will respond as soon as possible.
 
-## Acknowledgements
+### Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
 - Special thanks to Mike Matthews, ADB Product Management, for his excellent editing.

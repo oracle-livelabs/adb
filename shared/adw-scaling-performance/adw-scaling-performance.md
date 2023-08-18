@@ -6,6 +6,10 @@ In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Au
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Scale Your Autonomous Database](videohub:1_ls8fjm2p)
+
 ### Objectives
 
 -   Learn how to scale up an ADW or ATP service
@@ -13,22 +17,22 @@ Estimated Time: 10 minutes
 
 ## Task 1: Scaling your Autonomous Database Instance
 
-1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage scaling** button.
+1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage resource allocation** button.
 
-    ![Click Manage scaling button.](./images/click-manage-scaling.png " ")
+    ![Click Manage resource allocation.](./images/click-manage-resource-allocation.png " ")
 
-2.  Fill in the Manage scaling dialog with the following information:
+2.  Fill in the **Manage resource allocation** dialog with the following information:
 
-    -   **OCPU count:** 8
-    -   **OCPU auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
+    -   **ECPU count:** 16
+    -   **Compute auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
     -   **Storage (TB):** 2
     -   **Storage auto scaling:** Keep this checkbox deselected; by default the checkbox does not have a checkmark.
 
   *Note: You can scale up/down your autonomous database only if your autonomous database is NOT Always Free.*
 
-3.  Click **Apply** after filling in the Manage scaling dialog.
+3.  Click **Apply** after filling in the Manage resource allocation dialog.
 
-    ![Click Apply.](./images/click-apply-in-manage-scaling-dialog.png " ")
+    ![Click Apply.](./images/click-apply-in-manage-resource-allocation-dialog.png " ")
 
     *Note: Applications can continue running during the scale operation without downtime.*
 
@@ -40,8 +44,6 @@ Estimated Time: 10 minutes
 
     ![A refreshed database console page with updated OCPU count and storage.](./images/the-result-of-scaling.png " ")
 
-6. **IMPORTANT**: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 1 OCPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. If you are running this workshop in your own tenancy and you have sufficient OCPUs and storage, you can skip this step.
-
 ## Task 2: Performance and Concurrency Benefits of Dynamic Scaling
 
 1.  Watch a demo of the performance impact of scaling up your instance. It shows how you can dynamically scale up a database while the workload is running, to increase transaction throughput. Scaling up can also provide more concurrency for your users.
@@ -52,6 +54,8 @@ Estimated Time: 10 minutes
 
     ![An example of increased throughput after scaling up the number of CPUs.](./images/screenshot-of-increased-transaction-throughput.png " ")
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 
 Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-add-resources.html#GUID-DA72422A-5A70-42FA-A363-AB269600D4B0) for documentation on enabling auto scaling.
@@ -61,4 +65,4 @@ Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-clo
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - LiveLabs QA Team (Jeffrey Malcolm Jr, Ayden Smith, Arabella Yao)
-- **Last Updated By/Date** - Richard Green, January 2023
+- **Last Updated By/Date** - Richard Green, August 2023

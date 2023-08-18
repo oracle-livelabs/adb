@@ -59,7 +59,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
     ![Drag and drop or select the file.](./images/datatools-dataload-load-local-file.png " ")
 
-3. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but we want to make a small update to the table name for file name *customer-extension.csv*. Click the 3-dot ellipsis menu to the right of *customer-extension.csv* and click the **Settings** button labeled with a pencil symbol.
+3. When the upload is complete, you could simply click the **Start** button and click **Run** to run the data load job, but we want to make a small update to the table name for file name *customer-extension.csv*. Click the 3-dot ellipsis menu to the right of *customer-extension.csv* and click the **Settings** button labeled with a pencil symbol.
 
     ![Update the data load job settings.](./images/click-settings-to-examine-data-load-job.png " ")
 
@@ -85,7 +85,7 @@ In this task you perform a simple data loading task, to load CSV file data into 
 
 This completes the lab on loading CSV files from your local computer.
 
-Please [proceed to the next lab](#next).
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

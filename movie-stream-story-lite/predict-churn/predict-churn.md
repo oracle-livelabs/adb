@@ -51,13 +51,9 @@ In addition, *a customer churning today probably made that decision a while ago*
 ## Task 1: Navigate to OML AutoML
 Access OML from the Autonomous Database OCI service console.
 
-1. Go to Autonomous Database in the OCI service console. It should be an opened browser tab if you previously used Database Actions.
+1. Go to the Database Actions Launchpad. If you are at the Autonomous Database in the OCI service console, the select **Database Actions -> View all database actions**:
 
-    If your service console browser tab is not open, then log into your Oracle Cloud account and select **Autonomous Database** from the services menu (see Provision Autonomous Database in the menu on the left if you need a reminder). Then, click your Autonomous Database instance from the list of instances.
-
-2. Click **Database Actions** to take you to the Launchpad.
-
-    ![Go to Database actions](images/adb-goto-database-actions.png "Database Actions")
+    ![Go to Database actions](/common/building-blocks/tasks/adb/images/adb-dbactions-goto.png "Database Actions")
 
     Logging into Database Actions from the OCI service console expects you to be the ADMIN user. Log in as ADMIN if you are not automatically logged into Database Actions.
 
@@ -158,20 +154,18 @@ Access OML from the Autonomous Database OCI service console.
 
     ![Churn AutoML Task 2 Step 3 Features importance](images/oml-churn-automl-features-importance.png " ")
 
-    In this **Experiment**, the attributes with the highest **overall importance** are:
-    ```
-    AGE, AVG_DISC_M3_11 (average discounts for the 9 months before the current quarter), GENDER, CREDIT_BALANCE, AVG_NTRANS_M3_5 (average number of transactions in the previous quarter), YRS_RESIDENCE, GENRE_THRILLER, GENRE_COMEDY, and GENRE_WAR
-    ```
+    In this **Experiment**, the attributes with the highest **overall importance** are:  AGE, AVG\_DISC\_M3\_11 (average discounts for the 9 months before the current quarter), GENDER, CREDIT\_BALANCE, AVG\_NTRANS\_M3\_5 (average number of transactions in the previous quarter), YRS\_RESIDENCE, GENRE\_THRILLER, GENRE\_COMEDY, and GENRE\_WAR
+    
 4. Understand model performance.
     Scrolling up to the **Leader Board** section, we can click the **Decision Tree** unique model name to open the diagnostics. Click on the Decision Tree **Model Name** link in blue.
 
-    > **NOTE**: The exact random model name is unique to your model, so it will not appear as *DT_312651AA64* like the one below.
+    > **NOTE**: The exact random model name is unique to your model, so it will not appear as *DT\_312651AA64* like the one below.
 
     ![Churn AutoML Task 2 Step 4 Leader Board select model](images/oml-churn-automl-leader-model.png " ")
 
     The first screen that shows up is the **Prediction Impacts**. This time the attributes are listed in order of impact that this specific model uses in its formulation to predict churn.
 
-    It includes the following geo-demographic attributes like AGE, GENDER, EDUCATION, YRS\_RESIDENCE and MARITAL\_STATUS.
+    It includes the following geo-demographic attributes like AGE, GENDER, GENRE\_THRILLER and EDUCATION.
 
     From the customer product behavior point of view, it includes AVG\_DISC\_M3\_11 (the average discounts for the 9 months before the current quarter) and the counts for total number of movies of several different types of genres (GENRE\_xxx).
 

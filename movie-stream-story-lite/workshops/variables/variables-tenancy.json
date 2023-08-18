@@ -1,0 +1,9 @@
+{
+    "db_name": "MYQUICKSTART",
+    "db_display_name":"myquickstart",
+    "db_ocpu": "2 ECPUs",
+    "db_storage": "1 TB",
+    "db_workload_type":"Autonomous Data Warehouse",
+    "db_user_name":"MOVIESTREAM",
+    "oac_instance_name": "WORKSHOPADWOAC"    
+ }

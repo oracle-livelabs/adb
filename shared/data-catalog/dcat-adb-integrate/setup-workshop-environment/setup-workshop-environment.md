@@ -42,7 +42,7 @@ You may now proceed to the next lab.
 
 ## Introduction
 
-This lab walks you through the steps to set up the workshop environment.  
+This lab walks you through the steps to set up the workshop environment.
 
 > **Note:** This workshop is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new Data Catalog administrator user and a Data Catalog administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage a Data Catalog and Autonomous Database instances.
 
@@ -79,10 +79,9 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 
    ![The partial Oracle Cloud Console Home Page is displayed.](./images/oracle-cloud-console-home.png "Partial Oracle Cloud Console is displayed.")
 
->**Note:** To zoom in (magnify) a displayed image in this workshop, hover over the image to display the magnifying glass icon, and then then click the image.
+    >**Note:** To zoom in (magnify) a displayed image in this workshop, hover over the image to display the magnifying glass icon, and then then click the image.
 
    ![An example of magnifying an image. The magnifying glass icon with a plus sign is shown as hoovering over a sample image.](./images/magnify-image.png "Click an image to magnify it.")
-
 
 ## Task 2: (Optional) Create a Compartment
 
@@ -92,9 +91,17 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 	 ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
 
-    >**Note:** For faster navigation, you can pin items to make them appear in the **Pinned Links** section of the **Home** tab. To pin an item, hover over the menu item and then click the pin to the left of the item name. The **Recent** section of the **Home** tab shows recently used navigation items. To quickly find navigation menu items, use the **Search** box.
+    For faster navigation, you can pin items that you use frequently. To pin an item, hover over the menu item and then click pin to the left of the item name.
 
-   ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png " ")
+    ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png " ")
+
+    The pinned item is displayed in the **Pinned** section of the **Home** tab the next time you use the Navigation menu.
+
+    ![An example that shows the Compartment item pinned.](./images/pinned-item.png " ")
+
+    The **Recently visited** section of the **Home** tab shows recently used navigation items.
+
+    To quickly find navigation menu items, use the **Search** box.
 
 2. On the **Compartments** page, click **Create Compartment**.
 
@@ -145,19 +152,19 @@ Create a Data Catalog instance using the following steps.
 
 2. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
 
-   ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")    
+   ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")
 
-3. On the **Data Catalogs** page, click **Create Data Catalog**.
+3. On the **Data Catalogs** page, click **Create data catalog**.
 
    ![The Create Data Catalog button in the training-dcat-compartment is highlighted.](./images/data-catalog-page.png " ")
 
-4. Select the **`training-dcat-compartment`** compartment from the **Create In Compartment** drop-down list, if not already selected.
+4. Select the **`training-dcat-compartment`** compartment from the **Create in compartment** drop-down list, if not already selected.
 
 5. Enter **`training-dcat-instance`** in the **Name** field.
 
    ![The completed Create Data Catalog dialog box is displayed. The Create Data Catalog button is highlighted.](./images/create-data-catalog.png " ")
 
-6. Click **Create Data Catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
+6. Click **Create data catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
 
    ![The newly created Data Catalog instance is displayed with an Active state.](./images/click-data-catalog.png " ")
 
@@ -179,7 +186,6 @@ In this task, you create a new and empty business glossary in the newly created 
 
    ![The Glossaries tab and the Create Glossary button are highlighted.](./images/click-create-glossary.png " ")
 
-
 4. Click **Create Glossary**. The **Create Glossary** panel is displayed. Enter **`MovieStream Application`** in the **Name** field and **`Describes the assets related to the MovieStream data`** in the **Description** field, and then click **Create**.
 
    ![The Create button on the completed Create Glossary panel is highlighted.](./images/ll-create-glossary-panel.png " ")
@@ -200,7 +206,7 @@ In this task, you create a new and empty business glossary in the newly created 
 
     ![The populated File name text field and Open button are highlighted.](./images/specify-url.png " ")
 
-    >**Note:**     
+    >**Note:**
     If you are using an Apple Macintosh computer, you cannot use a URL to import a glossary; instead, download the [moviestream-application.xlsx](files/moviestream-application.xlsx?download=1) glossary file to your local machine first. Next, click **Import**. In the **Open** dialog box, navigate to the folder that contains the glossary file, select it, and then click **Open**.
 
 7. An import job is triggered and a message is displayed. You can click the **View Job** link in the message to view the details of this job.
@@ -218,7 +224,6 @@ In this task, you create a new and empty business glossary in the newly created 
     >**Note:** The categories and terms created within a glossary are displayed in the **Glossary Hierarchy** tree navigation list. Expand each category to view terms created within that category. The summary information changes as you click different nodes in the glossary tree. You can use Expand All or Collapse All to expand or collapse all the nodes available in the glossary respectively. You can also use the search bar to search for categories and terms. If the glossary children are not displayed, click **Refresh glossary**.
 
 9. Close the **Glossaries** and **MovieStream Application** tabs.
-
 
 ## Task 5: Create a Dynamic Group
 Dynamic groups allow you to group Oracle Cloud Infrastructure compute instances as "principal" actors (similar to user groups). You can then create policies to permit instances to make API calls against Oracle Cloud Infrastructure services. When you create a dynamic group, rather than adding members explicitly to the group, you instead define a set of matching rules to define the group members. For example, a rule could specify that all instances in a particular compartment are members of the dynamic group. The members can change dynamically as instances are launched and terminated in that compartment.
@@ -244,7 +249,7 @@ In this task, you create a dynamic group that includes the specific compartment 
         <copy>resource.compartment.id='your-compartment-ocid'</copy>
         ```
 
-4. To find your _Compartment OCID_, copy the URL in the address bar of your current browser tab where the **Create Dynamic Group** page is displayed. Open a new browser tab. For example, in Chrome, you click the **New tab** icon.
+4. To find your _Compartment OCID_, copy the URL in the address bar of your current browser tab where the **Create Dynamic Group** page is displayed. Open a new browser tab. For example, in Chrome, you click the **New tab** (plus sign) icon.
 
     ![The URL on the current tab in Chrome is highlighted and copied and labeled as 1. Next, the New tab icon (plus icon) is clicked to create a new tab and labeled as 2.](./images/copy-url-new-tab.png " ")
 
@@ -252,16 +257,15 @@ In this task, you create a dynamic group that includes the specific compartment 
 
     ![The copied URL is pasted in the new tab's address bar.](./images/paste-url-new-tab.png " ")
 
-6. In the new tab, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**. On the **Compartments** page, in the row for your **training-dcat-compartment**, hover over the **OCID link** in the **OCID** column, and then click **Copy** to copy the OCID for the **training-dcat-compartment**.
+6. In the new tab, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**. On the **Compartments** page, in the row for your **training-dcat-compartment**, hover over the **OCID link** in the **OCID** column, and then click **Copy** to copy the OCID for the **training-dcat-compartment**. You can close this tab.
 
     ![In the row for the training-dcat-compartment, hover over the OCID link in the OCID column, and then click the Copy link.](./images/copy-compartment-ocid.png " ")
 
-7. Click the original tab where you were creating the dynamic group policy. Paste the copied compartment OCID value to replace the **'your-compartment-ocid'** placeholder in the **Rule 1** text box.
+7. Click the original tab in your web browser where you were creating the dynamic group policy. Paste the copied compartment OCID value to replace the **'your-compartment-ocid'** placeholder in the **Rule 1** text box.
 
 8. Click **Create**.
 
     ![The completed Create Dynamic Group dialog box is displayed. Rule 1 field and the Create button are highlighted.](./images/moviestream-dynamic-group-db.png " ")
-
 
 9. The **Dynamic Group Details** page is displayed. Click **Dynamic Groups** in the breadcrumbs to re-display the **Dynamic Groups** page.
 
@@ -271,13 +275,12 @@ In this task, you create a dynamic group that includes the specific compartment 
 
     ![The new dynamic group is displayed on the Dynamic Groups page.](./images/dynamic-group-created.png " ")
 
-
-## Task 6: Create Access Policy for Dynamic Group         
+## Task 6: Create Access Policy for Dynamic Group
 After you have created a dynamic group, you need to create a policy to permit the dynamic group to access Oracle Cloud Infrastructure services. In this task, you create a policy to allow any resource in the dynamic group to access and manage your Data Catalog in the `training-dcat-compartment` using the aggregate resource-type **`data-catalog-family`** as follows:
 
 1. If you are still on the **Dynamic Groups** page from the previous task, click **Policies** in the **Identity** section on the left; otherwise, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, select **Policies**.
 
-2. On the **Policies** page, make sure that your **`training-dcat-compartment`** compartment is selected, and then click **Create Policy**.  
+2. On the **Policies** page, make sure that your **`training-dcat-compartment`** compartment is selected, and then click **Create Policy**.
 
     ![The Create Policy button is highlighted. The List Scope section shows the training-dcat-compartment selected in the compartment drop-down list.](./images/create-os-policy.png " ")
 
@@ -296,9 +299,9 @@ After you have created a dynamic group, you need to create a policy to permit th
 
         ![On the completed Create Policy dialog box, the policy in the Policy Builder field and the Create button are highlighted.](./images/dynamic-group-instances-os-policy.png " ")
 
-    + Click **Create**. The **Policy Detail** page is displayed Click **Policies** in the breadcrumbs to return to the **Dynamic Groups** page.
+    + Click **Create**. The **Policy Detail** page is displayed Click **Policies** in the breadcrumbs to return to the **Policies** page.
 
-          ![The new policy details page is displayed. The Policies link in the breadcrumbs is highlighted.](./images/object-storage-policy-detail.png " ")
+          ![The new policy details page is displayed. The Policies link in the breadcrumbs is highlighted.](./images/dcat-policy-detail.png " ")
 
           The newly created policy is displayed in the **Policies** page.
 
@@ -319,65 +322,68 @@ After you have created a dynamic group, you need to create a policy to permit th
 3. On the **Autonomous Databases** page, make sure **`training-dcat-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section. click **Create Autonomous Database**. The **Create Autonomous Database** page is displayed.
 
 4. In the **Provide basic information for the Autonomous Database** section, specify the following:
-       * **Compartment:** **`training-dcat-compartment`**.
-       * **Display Name:** **`DB-DCAT-Integration`**.
-       * **Database Name:** **`TrainingADB`**.
+    * **Compartment:** **`training-dcat-compartment`**.
+    * **Display Name:** **`DB-DCAT-Integration`**.
+    * **Database Name:** **`TrainingADB`**.
 
-       ![The completed "Provide basic information for the Autonomous Database" section is diaplyed.](./images/adb-basic-info.png " ")
+        ![The completed "Provide basic information for the Autonomous Database" section is diaplyed.](./images/adb-basic-info.png " ")
 
 5. In the **Choose a workload type** section, accept the **Data Warehouse** default selection.
 
-       ![The selected Data Warehouse option of the "Choose a workload type" section is displayed and highlighted.](./images/adb-workload-type.png " ")
+    ![The selected Data Warehouse option of the "Choose a workload type" section is displayed and highlighted.](./images/adb-workload-type.png " ")
 
-6. In the **Choose a deployment type** section, accept the **Shared Infrastructure** default selection.
+6. In the **Choose a deployment type** section, accept the **Serverless** default selection.
 
-       ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
+    ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
 
 7. In the **Configure the database** section, specify the following:
 
-       * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
-       * **Choose database version:** **`19c`**.
-       * **OCPU count:** **`1`**.   
-       * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
-       * **Storage (TB):** **`1`** (TB).
-       * **Storage auto scaling:** Leave the checkbox unchecked.
+    * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
+    * **Choose database version:** Accept the default selection.
+    * **ECPU count:** **`2`**.
+    * **Compute auto scaling:** Leave the checkbox checked (default).
+    * **Storage (TB):** **`1`** (TB).
+    * **Storage auto scaling:** Leave the checkbox unchecked (default).
 
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
+        ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-ecpu.png " ")
 
-       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page.
+8. In the **Backup retention** section, you can either accept the default value or specify your own preferred backup retention days value. Accept the default **60** days default value.
 
-8. In the **Create administrator credentials** section, specify the following:
+    ![The Backup retention section is displayed.](./images/backup-retention.png " ")
 
-       * **Username _Read-Only_:** This read-only field displays the default username, **`ADMIN`**.     
-       **Important:** Make a note of this _username_ as you will need it to perform later tasks.
-       * **Password:** Enter a password for the **`ADMIN`** user of your choice such as **`Training4ADB`**.        
-       **Important:** Make a note of this _password_ as you will need it to perform later tasks.
-       * **Confirm password:** Confirm your password.
+9. In the **Create administrator credentials** section, specify the following:
 
-       ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
+    * **Username _Read-Only_:** This read-only field displays the default username, **`ADMIN`**.
+    **Important:** Make a note of this _username_ as you will need it to perform later tasks.
+    * **Password:** Enter a password for the **`ADMIN`** user of your choice such as **`Training4ADB`**.
+    **Important:** Make a note of this _password_ as you will need it to perform later tasks.
+    * **Confirm password:** Confirm your password.
 
-9. In the **Choose network access** section, select the **Secure access from everywhere** access type.     
+        ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
+
+10. In the **Choose network access** section, select the **Secure access from everywhere** access type.
 
     ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
-10. In the **Choose a License and Oracle Database Edition** section, specify the following:
+11. In the **Choose a license and Oracle Database edition** section, accept the default selection, **This Database is provisioned with License included license type**.
 
-    * **Choose a license type:** Accept the default __Bring Your Own License (BYOL)__. Select this type when your organization has existing database licenses.
-    * **Choose an Oracle Database Edition:** Select the __Oracle Database Enterprise Edition (EE)__.
+    ![Accept the default license selection.](./images/license-default.png " ")
 
-    ![The selected Bring Your Own License (BYOL) option of the "Choose a license type" section is displayed and highlighted. The Create Autonomous Database button is highlighted.](./images/adb-license-type.png " ")
+12. Click __Create Autonomous Database__.
 
-11. Click __Create Autonomous Database__.
+    ![Click create autonomous database.](./images/click-create-adb.png " ")
 
-12.  The **Autonomous Database Details** page is displayed. The status of your ADB instance is **PROVISIONING**.
+13.  The **Autonomous Database details** page is displayed. The status of your ADB instance is **PROVISIONING**.
 
-    ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adb-provisioning.png " ")
+    ![The breadcrumbs and PROVISIONING Status on the Autonomous Database Details page are highlighted.](./images/adw-provisioning.png " ")
 
-    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, OCPU count, and storage size.
+    A **Check database lifecycle state** informational box is displayed. You can navigate through this tour or choose to skip it. Click **Skip tour**. A **Skip guided tour** dialog box is displayed. Click **Skip**.
 
-    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
+    In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, ECPU count, and storage size.
 
-13. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
+    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adw-provisioned.png " ")
+
+14. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
@@ -394,12 +400,12 @@ You may now proceed to the next lab.
 * [Managing a Business Glossary](https://docs.oracle.com/en-us/iaas/data-catalog/using/manage-glossary.htm#create-glossary)
 * [Managing Dynamic Groups](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm#Managing_Dynamic_Groups)
 * [Writing Policies for Dynamic Groups](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/callingservicesfrominstances.htm#Writing)
-* [Using Oracle Autonomous Database on Shared Exadata Infrastructure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Contributor:** Marty Gubar, Product Manager, Server Technologies    
-* **Last Updated By/Date:** Lauran Serhal, August 2022
+* **Contributor:** Marty Gubar, Product Manager, Server Technologies
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

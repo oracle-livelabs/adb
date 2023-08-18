@@ -37,7 +37,7 @@ If you have any questions about the topics covered in this workshop, please cont
 
 To make this workshop as realistic as possible, let us introduce the business scenario you will use during this workshop - **Oracle MovieStream**.
 
-![ALT text is not available for this image](images/3038282309.jpeg)
+![Oracle Moviestream Banner](images/banner-moviestream.jpeg)
 
 ### Welcome to Oracle MovieStream
 
@@ -49,4 +49,4 @@ Oracle MovieStream is a fictitious on-line movie streaming company. Customers lo
 
 - **Contributors** - Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress
 
-- **Last Updated By** - Keith Laker, July 2021
+- **Last Updated By** - Sarika Surampudi, Principal User Assitance Developer, Database Documentation; June 2023

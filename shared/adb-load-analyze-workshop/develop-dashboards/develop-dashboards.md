@@ -17,6 +17,8 @@ Watch the video below for a quick walk-through of the lab.
 - This lab requires creation of an Oracle Analytics Cloud instance, or the use of an OAC instance provided by your instructor.
 - This lab requires completion of the Provision Autonomous Database lab in the Contents menu on the left.
 
+> **Note**: Oracle Analytics Cloud (OAC) is not available with Oracle Cloud Free Tier (Always Free), nor is it supported in Oracle LiveLabs Sandbox hosted environments. If you run this workshop using an Always Free database or LiveLabs Sandbox environment, you can view Labs 1 and 5 on provisioning and using OAC, and later practice these steps on Oracle Autonomous Databases in your organization's tenancy.
+
 ## Task 1: Create a view by executing this script in SQL Worksheet
 
 Run a SQL script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance.
@@ -74,22 +76,15 @@ Next, the script creates a `SALES_DASHBOARD` view that you will use to create yo
 
    ![Paste the code and click Run Script.](./images/execute-script-in-sql-worksheet-to-create-view.png " ")
 
-## Task 2: Create credentials to connect Oracle Analytics Cloud to your Autonomous Database
+## Task 2: Download a wallet to connect Oracle Analytics Cloud to your Autonomous Database
 
-You will need to download your wallet credentials file in order for Analytics Cloud to connect to Autonomous Database. The wallet will enable both the server and client to verify each other. The wallet can be downloaded from the database instance's **Database Details** page.
+You will need to download your wallet credentials file in order for Analytics Cloud to connect to Autonomous Database. The wallet will enable both the server and client to verify each other. 
 
-1. In your database's instance Database Details page, click **DB Connection**.
+1. Click the top left menu and then select **Download Client Credentials (Wallet)**:
 
-    ![Click DB Connection on your database instance Database Details page.](./images/click-db-connection.png " ")
+    ![Download Client Credentials.](./images/sql-go-to-download-client-credentials.png " ")
 
-2. Use the **Database Connection** dialog to download client credentials.
-    - Select a wallet type. For this lab, select **Instance Wallet**. This wallet type is for a single database only; this provides a database-specific wallet.
-    - Click **Download wallet**.
-
-    ![Click Download Wallet.](./images/download-instance-wallet.png " ")
-
-
-3. Specify a password of your choice for the wallet. You will need this password when connecting Oracle Analytics Cloud to the database in the next step. Click **Download** to download the wallet file to your client machine.
+2. Specify a password of your choice for the wallet. You will need this password when connecting Oracle Analytics Cloud to the database in the next step. Click **Download** to download the wallet file to your client machine.
 
     > **Note:** If you are prevented from downloading your Connection Wallet, it may be due to your browser's pop-up window blocker. Please disable it or create an exception for Oracle Cloud domains.
 
@@ -125,7 +120,8 @@ You will need to download your wallet credentials file in order for Analytics Cl
    | --------------------- | :--------------------------------------------- |
    | Connection Name:      | Type in '**MovieStream**'                             |
    | Description:          | Type in '**MovieStream dashboard**'                   |
-   | Client Credentials:   | Click '**Select...**' and select the wallet zip file that you downloaded in Task 2.3. A file with .sso extension will appear in the field.   |
+   | Encryption Type:      | Select '**Mutual TLS**'                   |
+   | Client Credentials:   | Click '**Select...**' and select the wallet zip file that you previously downloaded. A file with .sso extension will appear in the field.   |
    | Username:             | Insert username created in previous labs, likely **admin**. Same username as SQL Worksheet and SQL Developer credentials. |                                            
    | Password              | Insert password created in previous labs. Same password as SQL Worksheet credentials. |
    |Service Name:          | Scroll the drop-down field and select **myquickstart_low**, or the **low** service level of the database name you specified in the Provision an Autonomous Database lab. |
@@ -164,7 +160,7 @@ Analytics Cloud provides a very intuitive experience for analyzing your data and
 
 The final dashboard is depicted below:
 
-![](images/oac-final-dashboard.png)
+![Final dashboard](images/oac-final-dashboard.png)
 
 The tree map on the left describes the MovieStream customers broken out by income level. The size of the boxes is indicative of the number of customers within that income level. Clicking on one of the income levels will filter the chart on the right to summarize the number of movie views for that income level. The chart shows the breakdown of views by customer segment across movie genres.
 
@@ -190,7 +186,7 @@ Let's build the dashboard!
 
     The workbook displayed the number of views as a bar chart.
 
-5. Let's now break out each customer segment's views by genre. Drag GENRE to the **Color** field in the grammar panel. Then, update the visualization type to **Stacked Bar**.
+5. Let's now break out each customer segment's views by genre. Drag **GENRE** to the **Color** field in the grammar panel. Then, update the visualization type to **Stacked Bar**.
 
     ![Finish creating your workbook.](./images/oac-stacked-bar-genre-segment.png " ")
 
@@ -224,6 +220,8 @@ Let's build the dashboard!
 11. When you are done building your workbook, click **Save** in the upper right corner.
 
 At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous Database is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
+
+You may now **proceed to the next lab**.
 
 ## Want to learn more?
 

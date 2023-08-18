@@ -10,6 +10,9 @@ Estimated Time: 20 minutes
 
 *Note: While this lab uses ADW, the steps are identical for connecting to an autonomous database in ATP.*
 
+Watch the video below for a quick walk-through of the lab.
+[Connect SQL Developer Securely With or Without a Connection Wallet](videohub:1_jszjfjm1)
+
 ### Objectives
 
 - Learn how to connect to your Autonomous Data Warehouse with Oracle SQL Developer, with and without using a connection wallet
@@ -46,9 +49,15 @@ To create a new TLS connection to Autonomous Database:
 
     ![Click the Edit button next to Access control list](./images/click-edit-to-create-acl.png " ")
 
-2. In the **Edit Access Control List** dialog, click **Add My IP Address**. Your computer's IP address will be added as a value. Click **Save**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
+2. In the **Edit access control list** dialog, you might normally accept the default IP notation type of **IP Address** and click **Add My IP Address**, and your computer's IP address would be added as a value. However, for this lab that you might be running in any one of a variety of different environments, let's make a different selection.
 
     ![Click Add My IP Address and click Save Changes](./images/click-add-my-ip-address.png " ")
+
+    For this lab, open the **IP notation type** drop-down menu and select **CIDR Block**. In the **Values** field, enter this value: *0.0.0.0/0*
+
+    ![Use the CIDR Block IP notation type with zero values and click Save](./images/use-cidr-block-ip-notation-type.png " ")
+
+    Click **Save**. Wait a minute for the database status to change from UPDATING to AVAILABLE.
 
 3. In the **Autonomous Database Details** page, in the **Network** section, note that the **Access type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) authentication**.
 
@@ -89,11 +98,11 @@ Next, perform the following steps to obtain the **TLS connection string**.
 
     For example, the value for the **Custom JDBC URL** field might look something like this (where we masked some values with XXXXXXXXXXXXXX):
 
-    ````
+    ```
     jdbc:oracle:thin:@(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)
     (port=1521)(host=XXXXXXXXXXXXXX.us-phoenix-1.oraclecloud.com))(connect_data=(service_name=XXXXXXXXXXXXXX_databasename_high.adb.oraclecloud.com))
     (security=(ssl_server_cert_dn="CN=adwc-XXXXXXXXXXXXXX.region.oraclecloud.com, OU=Oracle BMCS US, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
-    ````
+    ```
 
 When you copy the connection string, the values for **region** and **databasename** are for your Oracle Autonomous Database instance.
 
@@ -151,15 +160,15 @@ Start SQL Developer and create a connection for your database using the default 
 
 3.  Test your connection by clicking the **Test** button. If it succeeds, you will see *Status: Success*, you can save your connection information by clicking **Save**, then connect to your database by clicking the **Connect** button. An entry for the new connection will appear under Connections.
 
-4.  If you are behind a VPN or Firewall and this Test fails, make sure you have <a href="https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html" target="\_blank">SQL Developer 18.3</a> or higher. This version and above will allow you to select the "Use HTTP Proxy Host" option for a Cloud Wallet type connection. While creating your new ADW connection here, provide your proxy's Host and Port. If you are unsure where to find this, you may look at your computer's connection settings or contact your Network Administrator.
+4.  If you are behind a VPN or Firewall and this Test fails, make sure you have [SQL Developer 18.3](https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html) or higher. This version and above will allow you to select the "Use HTTP Proxy Host" option for a Cloud Wallet type connection. While creating your new ADW connection here, provide your proxy's Host and Port. If you are unsure where to find this, you may look at your computer's connection settings or contact your Network Administrator.
 
 ## Task 5: Query Your Autonomous Database with SQL Developer
 
-The SH schema provides a small data set that you can use to run the sample queries in the <a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/sql-analysis-reporting-data-warehouses.html#GUID-1D8E3429-735B-409C-BD16-54004964D89B" target="\_blank">Database Data Warehousing Guide</a>. For example, the following query shows you how the SQL function RANK() works:
+The SH schema provides a small data set that you can use to run the sample queries in the [Database Data Warehousing Guide](https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/sql-analysis-reporting-data-warehouses.html#GUID-1D8E3429-735B-409C-BD16-54004964D89B). For example, the following query shows you how the SQL function RANK() works:
 
 1.  In a SQL Developer worksheet, perform the following `SH` query.
 
-    ````
+    ```
     <copy>
     SELECT channel_desc, TO_CHAR(SUM(amount_sold),'9,999,999,999') SALES$,
     RANK() OVER (ORDER BY SUM(amount_sold)) AS default_rank,
@@ -172,15 +181,17 @@ The SH schema provides a small data set that you can use to run the sample queri
     AND country_iso_code='US'
     GROUP BY channel_desc;
     </copy>
-    ````
+    ```
 
     ![Results of performing a query against SH](./images/sh-query-results.jpg " ")
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 
-View the documentation for [connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) in Autonomous Database Shared.
+View the documentation for [connectivity options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-data-warehouse.html#GUID-94719269-9218-4FAF-870E-6F0783E209FD) in Autonomous Database Serverless.
 
-View the documentation for [network configuration options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-network-access.html#GUID-D2D468C3-CA2D-411E-92BC-E122F795A413) in Autonomous Database Shared.
+View the documentation for [network configuration options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-network-access.html#GUID-D2D468C3-CA2D-411E-92BC-E122F795A413) in Autonomous Database Serverless.
 
 View the blog post ["Connecting to Your Autonomous Database Has Never Been Easier"](https://blogs.oracle.com/datawarehousing/post/connecting-your-autonomous-database-has-never-been-easier) to learn how to use one-way Transport Layer Security (TLS) authentication for connecting your client tools securely to an autonomous database without a wallet.
 
@@ -188,4 +199,4 @@ View the blog post ["Connecting to Your Autonomous Database Has Never Been Easie
 
 - **Author** - Richard Green, Principal Developer, Database User Assistance
 - **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, December 2022
+- **Last Updated By/Date** - Richard Green, June 2023

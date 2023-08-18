@@ -9,14 +9,7 @@
 
 Most workshops focus on teaching you about a cloud service or performing a series of tasks. This workshop is different. You will learn how to deliver high value solutions using Oracle Cloud data platform services. And, the workshop will do this in the context of a company that we all can relate to and understand.
 
-Estimated Workshop Time: 1 hour
-
-There are two versions of this workshop:
-* [**Integrate, Analyze and Act on All data using Autonomous Database (Epic)**](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=865&clear=180&session=12485882445561) - dives into details of setting up the solution and analyzing data. Will take several hours to complete.
-* **Integrate, Analyze and Act on All data using Autonomous Database** - this workshop!  A one hour version that performs much of the setup for you.
-
-<if type="odbw">If you would like to watch us do the workshop, click [here](https://youtu.be/z2Er2yTP2BU).</if>
-
+Estimated Workshop Time: 90 minutes
 
 There are also other workshops that focus on specific feature areas that also use the same business scenario.
 
@@ -35,15 +28,13 @@ In this workshop, we'll start with two key components of MovieStream's architect
 You will learn how they built their solution and performed sophisticated analytics through a series of labs that highlight the following:
 
 ### Objectives
-* Deploy an Autonomous Database instance
-* Integrate Autonomous Database with the Data Lake
+* Automatically deploy the database and data required for the workshop using Terraform and OCI Resource Manager. You can optionally run thru these deployment steps manually:
+    * Deploy an Autonomous Database instance
+    * Integrate Autonomous Database with the Data Lake
 * Use advanced SQL to uncover issues and possibilities
 * Predict customer churn using Machine Learning
 * Use spatial analyses to help provide localized promotions
 * Offer recommendations based on graph relationships
-
-### What's next
-The workshop will continue to evolve and highlight more capabilities that will has allowed MovieStream to improve their operations and profitability. Keep an eye on this space!
 
 ## Learn more
 
@@ -54,7 +45,7 @@ The workshop will continue to evolve and highlight more capabilities that will h
 
 ## Acknowledgements
 * **Author** - Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Marty Gubar, September 2022
+* **Last Updated By/Date** - Marty Gubar, August 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

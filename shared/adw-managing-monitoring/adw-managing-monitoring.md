@@ -14,7 +14,12 @@ The ADB user interface provides dashboards to monitor the real-time and historic
 
 Estimated Lab Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+
+[Monitor Your Autonomous Database Instance using the Cloud Console](videohub:1_q9gd2fnw)
+
 ### Video Preview
+
 Watch a video demonstration of monitoring an Oracle Autonomous Database.
 
 [](youtube:uA6X7bnvaFs)
@@ -33,7 +38,7 @@ In this lab, you'll
 
 The first facility that we will look at for monitoring your autonomous database is the Database Metrics display located conveniently at the bottom of the Autonomous Database details page.
 
-1. In your ADW\_Finance\_Mart **Database Details** page, scroll down to the **Metrics** section.
+1. In your ADW\_Finance\_Mart **Database details** page, scroll down to the **Metrics** section.
 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
@@ -54,13 +59,13 @@ The Metrics section displays an initial set of 8 graphs to examine database metr
 ## Task 3: Examine the Database Actions Database Dashboard
 You can also view this monitoring information with more detailed tools provided in the Database Actions Launchpad.
 
-1. Go back to your ADW\_Finance\_Mart database's **Autonomous Database details** page, and click the **Database actions** button. The sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, Username - **admin**, and click **Next**. Enter the admin password you specified when creating the database. Click **Sign in**. The **Database Actions Launchpad** opens.
+1. Go back to your ADW\_Finance\_Mart database's **Autonomous Database details** page, and click the **Database actions** dropdown list. Select **View all database actions**. If you are brought to the sign-in dialog for Database Actions, simply use your database instance's default administrator account, Username - **admin**, and click **Next**. Enter the admin password you specified when creating the database. Click **Sign in**. The **Database Actions Launchpad** opens.
 
     In the **Monitoring** section, click **Database Dashboard**.
 
     ![In Database Actions Launchpad Monitoring section click Database Dashboard](images/click-database-dashboard.png " ")
 
-2. The Database Dashboard opens in the **Overview** tab. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated OCPUs, and SQL statement response time.
+2. The Database Dashboard opens in the **Overview** tab. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated ECPUs, and SQL statement response time.
 
     ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png =50%x*)
 
@@ -160,6 +165,8 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
 
     ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.jpg " ")
 
+You may now **proceed to the next lab**.
+
 ## Want to Learn More?
 
 Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) on managing and monitoring an autonomous database.
@@ -167,4 +174,4 @@ Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-
 ## **Acknowledgements**
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Rick Green, January 2023
+- **Last Updated By/Date** - Rick Green, August 2023

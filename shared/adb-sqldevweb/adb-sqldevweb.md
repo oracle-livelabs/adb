@@ -6,6 +6,9 @@ In this lab, you will explore the provided sample data sets that come with your 
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Connect an ADB Instance SQL Worksheet](videohub:1_28r1706y)
+
 ### Before you begin
 
 This lab uses SQL Worksheet, one of the features of the Database Actions web-based interface for Oracle Autonomous Database.
@@ -37,7 +40,7 @@ Although you can connect to your Oracle Autonomous Database using local PC deskt
 
     ![Autonomous Databases homepage.](images/step1.1-adb.png " ")
 
-2. In your ADW Finance Mart database's details page, click the **Database Actions** button.
+2. In your ADW Finance Mart database's details page, click the **Database Actions** dropdown list. Select **View all database actions**.
 
     ![Click Database Actions button.](./images/click-database-actions-button.png " ")
 
@@ -63,14 +66,14 @@ Run a query on a sample Oracle Autonomous Database data set.
 
 1.  Copy and paste the code snippet below to your SQL Worksheet. This query will run on the Star Schema Benchmark (ssb.customer), one of the two ADW sample data sets that you can access  from any ADW instance. Take a moment to examine the script. Make sure you click the **Run Statement** button to run it in SQL Worksheet so that all the rows display on the screen.
 
-    ````
+    ```
     <copy>
     select /* low */ c_city,c_region,count(*)
     from ssb.customer c_low
     group by c_region, c_city
     order by count(*);
     </copy>
-    ````
+    ```
 
     ![Paste the code and click Run Script.](./images/ssb-query-low-results-sql-worksheet.png " ")
 
@@ -78,9 +81,9 @@ Run a query on a sample Oracle Autonomous Database data set.
 
 3.  When possible, ADW also *caches* the results of a query for you. If you run identical queries more than once, you will notice a much shorter response time when your results have been cached.
 
-4.  You can find more sample queries to run <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html" target="\_blank">in the ADW documentation</a>.
+4.  You can find [more sample queries to run](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html) in the ADW documentation.
 
-Please *proceed to the next lab*.
+You may now **proceed to the next lab**.
 
 ## Learn more
 
@@ -91,4 +94,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-datab
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Arabella Yao, Product Manager Intern | Ayden Smith, QA Intern)
-- **Last Updated By/Date** - Richard Green, December 2022
+- **Last Updated By/Date** - Richard Green, August 2023

@@ -1,28 +1,31 @@
 # Apply Auto Scaling on an Autonomous Database
 
-## **Introduction**
+### **Introduction**
 
 In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query twice. You will be running this procedure from 3 SQL Developer Web worksheet sessions concurrently to see how CPU is utilized with and without auto scaling.
 
 Estimated time: 30 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Apply Auto Scaling on an Autonomous Database](videohub:1_bj3lzbp8)
+
 **What is Auto Scaling and How Does It Work?**
 
-With auto scaling enabled, the database can use up to **three times** more CPU and IO resources than specified by the number of base OCPUs currently shown in the **Scale Up/Down** dialog.
+With auto scaling enabled, the database can use up to **three times** more CPU and IO resources than specified by the number of base ECPUs currently shown in the **Manage resource allocation** dialog.
 
 When you enable auto scaling, if your workload requires additional CPU and IO resources, the database automatically uses the resources without any manual intervention required.
 
 **Note**: You don't need to perform a "triggering action" after which your database can start to scale; the additional CPU and IO are **always** available to you.
 
-![](./images/auto-scaling-symbol.jpg " ")
+![Conceptual illustration of auto scaling](./images/auto-scaling-symbol.jpg " ")
 
-When you create an Autonomous Database, the auto scaling checkbox is enabled by default. After the database is created, you can use **Scale Up/Down** on the Oracle Cloud Infrastructure console to disable or enable auto scaling.
+When you create an Autonomous Database, the auto scaling checkbox is enabled by default. After the database is created, you can use the **Manage resource allocation** dialog on the Autonomous Database details page to disable or enable auto scaling.
 
 If your organization performs intensive queries at varied times, auto scaling will ramp up and ramp down CPU resources when needed.
 
-As in our lab example below, if a customer provisions an Autonomous Database with 1 base OCPU and enables auto scale, they will immediately have access to 3x the 1 base OCPU provisioned, therefore 3 OCPUs. They will also immediately have access to 3x the IO.
+As in our lab example below, if a customer provisions an Autonomous Database with 2 base ECPUs and enables auto scaling, they will immediately have access to 3x the 2 base ECPUs provisioned, therefore 6 ECPUs. They will also immediately have access to 3x the IO.
 
-The customer is charged only for the actual average number of OCPUs used per hour, between 1 and 3 OCPUs.
+The customer is charged only for the actual average number of ECPUs used per hour, between 2 and 6 ECPUs.
 
 ### Objectives
 
@@ -32,19 +35,19 @@ The customer is charged only for the actual average number of OCPUs used per hou
 
 ### How You Will Test a Real-World Auto Scaling Example in this Lab
 
-The **business case** we want to answer here is to **summarize orders by month and city, for customers in the US, in the Fall of 1992** over our benchmark <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B" target="\_blank">SSB dataset</a> containing 1 TB of data.
+The **business case** we want to answer here is to **summarize orders by month and city, for customers in the US, in the Fall of 1992** over our [benchmark SSB dataset](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B) containing 1 TB of data.
 
 - **Test 1**: With auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
-- **Test 2**: You will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more OCPUs, reducing your execution times significantly.
+- **Test 2**: You will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more ECPUs, reducing your execution times significantly.
 
 ## **Test 1 - Auto Scaling Disabled**
 In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
 
 ## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your ADW Database
 
-1. You created an Autonomous Data Warehouse database **ADW\_Finance\_Mart** in the earlier lab named *Provision Autonomous Database*. Go to the Autonomous Database details page for the database, and click **Manage scaling**. In the Manage scaling dialog, deselect the **OCPU auto scaling** checkbox to disable auto scaling if you have not done so already. Click **Apply**, which will close the dialog and return you to the details page for the database.
+1. You created an Autonomous Data Warehouse database **ADW\_Finance\_Mart** in the earlier lab named *Provision Autonomous Database*. In the previous lab named *Scale for Performance* you increased the ECPU count from 2 to 16 ECPUs. Let's bring the ECPU count back to 2 ECPUs, and disable Compute auto scaling. Go to the Autonomous Database details page for the database, and click **Manage resource allocation**. In the Manage resource allocation dialog, change the ECPU count from 16 back to 2. Then deselect the **Compute auto scaling** checkbox to disable auto scaling if you have not done so already. Click **Apply**, which will close the dialog and return you to the details page for the database.
 
-    ![Remove the checkbox for OCPU auto scaling.](images/disable-auto-scaling.png " ")
+    ![Remove the checkbox for ECPU auto scaling.](images/disable-auto-scaling.png " ")
 
 2. On the Autonomous Database details page, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** button. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click the **SQL** card. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
 
@@ -181,11 +184,11 @@ In this task, you run a script that will:
 
 2. **Make sure that each of the 3 worksheets are set to the HIGH consumer group.** Enter - but do not immediately execute - the following execute command in each worksheet. After you have entered the command into all 3 worksheets, quickly execute the command in each worksheet so that they begin at nearly the same time.
 
-    ````
+    ```
     exec test_proc;
-    ````
+    ```
 
-3. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 1 OCPU system (you may see different execution times), go to your Autonomous Database's console page and click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and look at the Monitored SQL to see that each worksheet is running your procedure.
+3. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 1 OCPU system (you will see different execution times using 2 ECPUs), go to your Autonomous Database's console page and click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and look at the Monitored SQL to see that each worksheet is running your procedure.
 
     ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-with-auto-scaling-disabled.png " ")
 
@@ -219,22 +222,22 @@ In this task, you run a script that will:
     </copy>
     ```
 
-6. Review the results of running the test. Notice that in our run:
+6. Review the results of running the test. Notice that in our run using a single OCPU:
     - The average time each query ran was 275.5 seconds.
     - The total time the test ran was 581.5 seconds.
 
-    (**Note**: The value CPU\_COUNT displays 2x the number of OCPUs available, as each OCPU has 2 CPU threads. Thus, for 1 OCPU we see the CPU_COUNT of 2.)
+    (**Note**: The value CPU\_COUNT displays 2x the number of ECPUs available, as each ECPU has 2 CPU threads. Thus, for this test's use of 1 single OCPU we see the CPU_COUNT of 2.)
 
     ![Screenshot shows the results of running the test.](./images/test-one-results.png " ")
 
   In the next tasks, let's see if auto scaling reduces query time and increases CPU and IO usage.
 
 ## **Test 2 - Auto Scaling Enabled, Providing 3x the Amount of CPU and IO Resources**
-In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more OCPUs, reducing your execution times significantly.
+In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more ECPUs, reducing your execution times significantly.
 
 ## Task 4: Enable Auto Scaling
 
-1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous Database details page, click **Manage scaling**, and select the **OCPU auto scaling** checkbox to **re-enable** auto scaling.
+1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous Database details page, click **Manage resource allocation**, and select the **Compute auto scaling** checkbox to **re-enable** auto scaling. Click **Apply** and wait for the database to update.
 
     ![Click the checkbox to re-enable auto scaling.](images/enable-auto-scaling.png " ")
 
@@ -242,9 +245,9 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
 1. Once again, go to your 3 SQL Developer Web **"Query"** worksheet instances (re-open 3 instances if you closed the tabs from before) which are using the HIGH consumer group. Enter - but do not immediately execute - the following execute command in each worksheet. After you have entered the command into all 3 worksheets, quickly execute the command in each worksheet so that they begin at nearly the same time.
 
-    ````
+    ```
     exec test_proc;
-    ````
+    ```
 
 2. While the procedures are running, the monitored SQL in Performance Hub shows 3 queries executing. In the previous test, before you enabled Auto Scaling, the procedure's 3 query sessions averaged 4.5 minutes to run. After enabling Auto Scaling and immediately getting access to 3x the amount of CPU and IO, the queries now require approximately 3x less time; we see below less than 2 minutes to run.
 
@@ -286,9 +289,9 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
     These numbers look great! After enabling auto scaling we see that:
 
-    - The number of OCPUs available to the database jumps by 3x; in our example, from 1 OCPU to 3 OCPU.
+    - The number of ECPUs available to the database jumps by 3x; in our example, from 2 ECPUs to 6 ECPUs.
 
-      (Note: The value CPU\_COUNT displays 2x the number of OCPUs available, as each OCPU has 2 CPU threads. Thus, we see the CPU_COUNT values displayed jump from 2 to 6.)
+      (Note: The value CPU\_COUNT displays 2x the number of ECPUs available, as each ECPU has 2 CPU threads. Thus, we see the CPU_COUNT values displayed jump from 4 to 8.)
 
     - All 3 running sessions now had access to 3x the amount of CPU and IO.
 
@@ -298,7 +301,7 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
     ![Screenshot of Performance Hub Activity panel showing ASH Analytics panel.](./images/drag-rectangle-to-cover-period-of-queries.png " ")
 
-4. Scroll down and view the **Average Active Sessions** chart. View the Average Active Sessions chart by Wait Class in the 2nd test after auto scaling is enabled.  Since there are 3 OCPUs available to the running queries, we now see:
+4. Scroll down and view the **Average Active Sessions** chart. View the Average Active Sessions chart by Wait Class in the 2nd test after auto scaling is enabled.  Since there are 6 OCPUs available to the running queries, we now see:
 - The **inflated I/O waits** (in blue) due to the unavailability of resources reduces significantly.
 - Consequently, the workload becomes more efficient (CPU-bound) and is able to utilize more CPU (in dark green) reducing the average time spent on running each query.
 - The **Scheduler waits** (in light green) on CPU/IO resources almost entirely disappears.
@@ -307,9 +310,11 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
     **Things to Note**
 
-- When auto scaling is enabled, IO is also scaled to 3X the OCPU allocation. So even if only one session is executing a SQL Statement, it benefits from the additional IO.
-- To see the average number of OCPUs used during an hour you can use the "Number of OCPUs allocated" graph on the Overview page on the Autonomous Data Warehouse service console. **Note**: These Overview graphs are updated **per hour**, so you will be able to see this data in the next hour.
-- When auto scaling is enabled, only the amount of OCPUs and IO available to the database increases by 3x. Other database parameters, including memory, concurrency and parallel statement queueing, do not automatically scale. Depending on where the bottlenecks in your business' query workloads are, you may see different lifts in performance.
+- When auto scaling is enabled, IO is also scaled to 3X the ECPU allocation. So even if only one session is executing a SQL Statement, it benefits from the additional IO.
+- To see the average number of ECPUs used during an hour you can use the "Number of ECPUs allocated" graph on the Overview page on the Autonomous Data Warehouse service console. **Note**: These Overview graphs are updated **per hour**, so you will be able to see this data in the next hour.
+- When auto scaling is enabled, only the amount of ECPUs and IO available to the database increases by 3x. Other database parameters, including memory, concurrency and parallel statement queueing, do not automatically scale. Depending on where the bottlenecks in your business' query workloads are, you may see different lifts in performance.
+
+You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
@@ -319,4 +324,4 @@ For more information about auto scaling, see the documentation [Use Auto Scaling
 
 - **Authors** - Rick Green, Database User Assistance; Nilay Panchal, ADB Product Management
 - **Contributors** - John Zimmerman, Real World Performance Team; Keith Laker, ADB Product Management
-- **Last Updated By/Date** - Rick Green, March 2022
+- **Last Updated By/Date** - Rick Green, August 2023

@@ -51,17 +51,13 @@ Now that you have created a user with several roles, let's see how easy it is to
 
 You learned how to use the Create User dialog to create a new user. You can also create and modify users using SQL. This is useful when you don't have access to the user interface or you want to run scripts to create/alter many users. Next, you will open the SQL worksheet as the ADMIN user to update the [](var:db_user_name) user you just created.
 
-1. The Database Users page now shows your new [](var:db_user_name) user in addition to the ADMIN user. Click **Database Actions** in the upper left corner of the page, to return to the Database Actions launch page.
+1. The Database Users page now shows your new [](var:db_user_name) user in addition to the ADMIN user. Click **Development -> SQL** in the upper left corner of the page, to go to the SQL Worksheet.
 
-    ![Database Users page showing your new [](var:db_user_name) user](images/see-new-moviestream-user.png " ")
+    ![Go to the SQL Worksheet](/common/building-blocks/tasks/adb/images/gotosql.png)
 
-2.  In the **Development** section of the Database Actions page, click the **SQL** card to open a new SQL worksheet:
+2. This will open up a new window that should look something like the screenshot below. The first time you open SQL Worksheet, a series of pop-up informational boxes appear. You can ignore the informational warning and dismiss that dialog. You can also take a tour to introduce you to the main features. Click **Next** to take a tour through the informational boxes or dismiss the dialog.
 
-    ![Click the SQL card.](images/db-actions-click-sql-card.png " ")
-
-    This will open up a new window that should look something like the screenshot below. The first time you open SQL Worksheet, a series of pop-up informational boxes introduce you to the main features. Click **Next** to take a tour through the informational boxes.
-
-    ![Screenshot of initial SQL Worksheet](images/Picture100-sql-worksheet.png " ")
+    ![Screenshot of initial SQL Worksheet](/common/building-blocks/tasks/adb/images/sql-worksheet-first-time.png " ")
 
 
 3. In the SQL Worksheet, paste in this code and run it using the **Run Script** button:
@@ -85,29 +81,18 @@ You learned how to use the Create User dialog to create a new user. You can also
 
     ```
     <copy>
-    declare
-        l_git varchar2(4000);
-        l_repo_name varchar2(100) := 'common';
-        l_owner varchar2(100) := 'martygubar';
-        l_package_file varchar2(200) := 'building-blocks/setup/workshop-setup.sql';
+    declare 
+        l_uri varchar2(500) := 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/setup/workshop-setup.sql';
     begin
-        -- get a handle to github
-        l_git := dbms_cloud_repo.init_github_repo(
-                    repo_name       => l_repo_name,
-                    owner           => l_owner );
-
-        -- install the package header
-        dbms_cloud_repo.install_file(
-            repo        => l_git,
-            file_path   => l_package_file,
-            stop_on_error => false);
-
+        dbms_cloud_repo.install_sql(
+            content => to_clob(dbms_cloud.get_object(object_uri => l_uri))
+        );
     end;
     /
     </copy>
     ```
 
-    The script above is showcasing Autonomous Database's integration with GitHub. The **dbms\_cloud\_repo.install\_file** procedure allows you to easily install database code from GitHub repositories into your schema.
+    The script above is showcasing Autonomous Database's integration with external repositories. The **dbms\_cloud\_repo.install\_file** procedure allows you to easily install database code from object storage or GitHub repositories into your schema. Here, we are installing pl/sql packages, procedures, tables and views from the `workshop-setup.sql` file found in an object storage bucket.
 
 ## Task 3: Log in as the MOVIESTREAM user
 
@@ -115,23 +100,19 @@ Now you need to switch from the ADMIN user to the [](var:db_user_name) user, bef
 
 1. In the upper right corner of the page, click the drop-down menu for ADMIN, and click **Sign Out**.
 
-    ![Drop down menu to sign out](images/sign-out-from-admin.png "Sign out")
+    ![Drop down menu to sign out](/common/building-blocks/tasks/adb/images/sign-out-from-admin.png "Sign out")
 
-2. On the next screen, click **Sign in**.
+2. Sign in using the username [](var:db_user_name) and the password you defined when you created this user. You will also need to click **Advanced** and specify the [](var:db_user_name).
 
-    ![Sign in dialog](images/click-sign-in.png "Sign in")
+    ![Sign in dialog filled with username and password](/common/building-blocks/tasks/adb/images/sign-back-in.png "Log in")
 
-3. Enter the username [](var:db_user_name) and the password you defined when you created this user.
+3. This will launch the Database Actions Launchpad home page.
 
-    ![Sign in dialog filled with username and password](images/db-actions-user-login.png "Log in")
-
-4. This will launch the Database Actions Launchpad home page.
-
-    ![The Database Actions Launchpad home page](images/dbactions-home.png "Database Actions")
+    ![The Database Actions Launchpad home page](/common/building-blocks/tasks/adb/images/dbactions-home.png "Database Actions")
 
     In this example, the database name in the top right should say [](var:db_user_name).
 
-## Task 4: Load data from files in Object Storage using Data Tools
+## Task 4: Load data from files in Object Storage using Data Studio
 
 In this step we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
 
@@ -150,7 +131,7 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
 
 1. Click on the menu in the very top left of your screen. In the **Development** section, click on **SQL** to open a SQL Worksheet.
 
-    ![Click on Development - SQL](images/gotosql.png)
+    ![Click on Development - SQL](/common/building-blocks/tasks/adb/images/gotosql.png)
 
 2. When you updated the user privileges, you installed LiveLab workshop utilities that make it easy to install data sets. Copy and paste the following script to install the rest of the required data sets:
 
@@ -158,7 +139,7 @@ In this step, we will use some additional features of the DBMS\_CLOUD APIs to lo
     <copy>
     -- Run the PLSQL procedure that loads the rest of the dataset
     BEGIN
-        workshop.add_dataset('ALL');
+        workshop.add_dataset(tag => 'end-to-end');
     END;
     /
     </copy>
