@@ -4,7 +4,7 @@
 
 This lab will provide a high level overview on the various aspects of Data in Data Governance & Catalog (CDGC). You will use CDGC quickly find data across your organization using powerful search feature, View attributes, profiling, and classification information for the data, understand the lineage of the data, creates links between technical objects and their business contexts, finds the stakeholders & collaborate with users by workflow when they want to create or modify assets.
 
-IIn this lab, we will explore how Business stewards & Analysts can use the Cloud Catalog to understand the technical & business details of asset quickly. Users can also see how the glossaries are associated with the technical assets and understand the upstream & downstream assets by seeing the Data Lineage.
+In this lab, we will explore how Business stewards & Analysts can use the Cloud Catalog to understand the technical & business details of asset quickly. Users can also see how the glossaries are associated with the technical assets and understand the upstream & downstream assets by seeing the Data Lineage.
 
 Duration: 15 minutes
 
