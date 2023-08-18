@@ -1,4 +1,4 @@
-# Understanding assets using Informatica Cloud Data Governance and Catalog service 
+# Cloud Data Catalog and Governance 
 
 ## Introduction
 
@@ -6,7 +6,7 @@ This lab will provide a high level overview on the various aspects of Data in Da
 
 In this lab, we will explore how Business stewards & Analysts can use the Cloud Catalog to understand the technical & business details of asset quickly. Users can also see how the glossaries are associated with the technical assets and understand the upstream & downstream assets by seeing the Data Lineage.
 
-Duration: 15 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 

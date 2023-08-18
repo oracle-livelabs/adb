@@ -6,7 +6,7 @@ Informatica Cloud Data Integration is an on-demand subscription service that pro
 
 In this lab, we will learn how to build a Cloud Data Integration mappings using the Data Quality assets built in previous lab to enrich and curate data with business logic and load into Oracle Autonomous Database.
 
-Duration: 25 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 
