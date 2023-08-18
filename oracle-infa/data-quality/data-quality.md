@@ -5,7 +5,7 @@ Informatica Cloud Data Quality empowers your company to take a holistic approach
 
 In this lab, data anomalies discovered during the data profiling stage will be enriched or curated using advanced data quality transformations available in Cloud Data Quality.
 
-Duration: 10 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 

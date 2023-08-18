@@ -1,4 +1,4 @@
-# Perform Cloud Data Profiling on an Oracle ADB 
+# Perform Cloud Data Profiling 
 
 ## Introduction
 
@@ -6,7 +6,7 @@ Informatica Cloud Data Profiling is one of several services available in Informa
 
 In this lab, we will profile RtlCustomer table and examine the profile results to understand the data content and discover data anomalies which may include non-standard patterns, non-standard values and inconsistent representation of data.
 
-Duration: 15 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
