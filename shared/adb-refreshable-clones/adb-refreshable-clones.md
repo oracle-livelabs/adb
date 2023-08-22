@@ -3,7 +3,7 @@
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database on Shared Infrastructure (ADB-S) is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
   ![ALT text is not available for this image](images/2673172546.jpg)
 
@@ -27,6 +27,10 @@ As with everything OCI, your refreshable clone can also be refreshed via simple
 This lab shows you how to create a refreshable clone and refresh it with updated data from its source database.
 
 Estimated Lab Time: 15 minutes
+
+Watch the video below for a quick walk-through of the lab.
+
+[Create Refreshable Clones in Autonomous Database](videohub:1_f2xmkhp9)
 
 ### Objectives
 
@@ -62,18 +66,18 @@ In this lab, you'll:
 Now that you have created a table in the source database and populated it with a row of data, you will create a refreshable clone from the source database.
 
 1. Return to the Autonomous Database details page of your source database. From the **More actions** drop-down menu, select **Create clone**.
-  ![ALT text is not available for this image](images/select-create-clone.png)
+  ![Select Create clone from the More actions menu](images/select-create-clone.png)
 
 2. Select the **Refreshable Clone** option. Note the text describing it; a refreshable clone must be refreshed every 7 days or less, otherwise it falls too far out of sync from the source and can no longer be refreshed.
 
   For this lab, name your clone's display name and database name **refreshclone**.
   ![ALT text is not available for this image](images/2676057383.png)
 
-3. Select the number of OCPUs for your refreshable clone; there is **no storage selection** necessary. Since this is a read-only clone that only brings in data from its source database, the amount of storage selected in TB is automatically the same as that of the source.
+3. Select the number of ECPUs for your refreshable clone; for this lab, accept the default of 2 ECPUs. There is **no storage selection** necessary. Since this is a read-only clone that only brings in data from its source database, the amount of storage selected in TB is automatically the same as that of the source.
 
-  There is also no Admin password option for the refreshable clone, as that is taken from the source when refreshed. Select the license type and click **Create Autonomous Database Clone**. 
+  There is also no Admin password option for the refreshable clone, as that is taken from the source when refreshed. Choose the network access type; for this lab, choose **Secure access from everywhere**. Select the license type; for this lab, accept the default of **License included**. Provide a contact email address to receive operational notifications and announcements. Click **Create Autonomous Database clone**.
 
-  ![ALT text is not available for this image](images/2676057553.png)
+  ![Finish filling the Create Autonomous Database clone dialog](images/finish-dialog-to-create-refreshable-clone.png)
 
 4. Once the clone is provisioned, you can see useful clone information on the OCI console, including the **source database** that the clone is attached to, and the **refresh point** timestamp of the source from which the clone was refreshed.
   ![ALT text is not available for this image](images/2676058014.png)
@@ -137,4 +141,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
 - **Contributor** - Nilay Panchal, ADB Product Management
-- **Last Updated By/Date**  - Rick Green, November 2021
+- **Last Updated By/Date**  - Rick Green, August 2023

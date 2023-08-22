@@ -1,4 +1,4 @@
-﻿# Managing Text Lists Using SQL
+﻿# Manage Text Lists Using SQL
 
 ## Introduction
 
@@ -28,7 +28,7 @@ Estimated time: 10 minutes
     ```
 2. This query should return relatively quickly, as shown below.
 
-    ![Initial query results grouping customer email addresses by level of education](images/3038282318.png)
+    ![Initial query results grouping customer email addresses by level of education](images/combine-strings.png)
 
 Next, we need to group the email addresses by each attribute value of our Education column. The `LISTAGG` function will do this for us. It will take the email address in each row and concatenate it into a string in a similar way to the PIVOT function we used in the previous section. Now as it builds the string of email addresses, we might end up with too many values for a specific level of education.
 
@@ -81,7 +81,7 @@ Our `LISTAGG` function looks like this:
 
 2. The results should look similar to the following:
 
-    ![Query result using LISTAGG](images/3038282317.png)
+    ![Query result using LISTAGG](images/create-report.png)
 
 ## Task 3: Finding Rows That Are Too Long 
 
@@ -104,7 +104,7 @@ Our `LISTAGG` function looks like this:
 
 2. Notice that there is now a `SUBSTR()` function wrapped around our `LISTAGG` function. This additional function returns the last 50 characters of each row, which allows us to see that we have a lot of customers who achieved **High School** or **Bachelor** levels of education. For **High School** customers, our list could contain a possible 484 additional email addresses; and where the education level is **Bachelor**, then our list could contain an additional 255 email addresses. 
 
-    ![Result of query with SUBSTR() function wrapped around LISTAGG function](images/3038282316.png)
+    ![Result of query with SUBSTR() function wrapped around LISTAGG function](images/query-result-substr-function.png)
 
 We can send this initial report to the marketing team and see if they want us to extract the additional email addresses for them. Fortunately, Autonomous Data Warehouse has the tools to do this and we will explore one of those tools (MATCH_RECOGNIZE) later in this workshop.
 
@@ -124,4 +124,4 @@ Please *proceed to the next lab*.
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; June 2023

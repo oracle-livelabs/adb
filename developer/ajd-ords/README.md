@@ -1,6 +1,6 @@
 # Using REST and APEX with Autonomous JSON Database
 
-**Oracle Autonomous JSON Database (AJD)** is a new service in Autonomous Database family for JSON-centric development. Autonomous JSON Database is built for developers who are looking for an easy to use, cost-effective JSON database with native Document API support. Autonomous JSON Database provides all the core capabilities of a document store along with high performance, simple elasticity, full ACID support and complete SQL functionality. Autonomous JSON Database is available only on Shared Infrastructure. Also, customers can one-click upgrade from Autonomous JSON Database (AJD) to full featured Autonomous Transaction Processing Database (ATP) any time.
+**Oracle Autonomous JSON Database (AJD)** is a new service in Autonomous Database family for JSON-centric development. Autonomous JSON Database is built for developers who are looking for an easy to use, cost-effective JSON database with native Document API support. Autonomous JSON Database provides all the core capabilities of a document store along with high performance, simple elasticity, full ACID support and complete SQL functionality. Autonomous JSON Database is available only on serverless infrastructure. Also, customers can one-click upgrade from Autonomous JSON Database (AJD) to full featured Autonomous Transaction Processing Database (ATP) any time.
 
 Run this hands-on workshop to learn how to develop applications faster with open-source document APIs and store JSON documents natively without worrying about data models.
 
@@ -14,7 +14,7 @@ Run this hands-on workshop to learn how to develop applications faster with open
 
 ## Access the Labs Using Our Web Interface
 
-**[Click here](https://oracle.github.io/learning-library/data-management-library/autonomous-database/developer/ajd-ords/index.html)** to use our easy to navigate HTML format.
+**[Click here](https://oracle-livelabs.github.io/adb/developer/ajd-ords/index.html)** to use our easy to navigate HTML format.
 
 ## Access the Labs on the Repo
 

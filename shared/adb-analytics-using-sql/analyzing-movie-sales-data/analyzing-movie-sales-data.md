@@ -1,4 +1,4 @@
-# Analyzing Movie Sales Data
+# Analyze Movie Sales Data
 
 ## Introduction
 
@@ -28,7 +28,7 @@ Estimated time: 15 minutes
 
 Before starting to run the code in this workshop, we need to manage the resources we are going to use to query our sales data. You will notice that when you open SQL Worksheet, it automatically defaults to using the LOW consumer group - this is shown in the top right section of your worksheet.
 
-![LOW consumer group shown in worksheet](images/3054194710.png)
+![LOW consumer group shown in worksheet](images/consumer-group.png)
 
 
 **NOTE**: Autonomous Data Warehouse comes complete with three built-in consumer groups for managing workloads. The three groups are: HIGH, MEDIUM and LOW. Each consumer group is based on predefined CPU/IO shares based on the number of OCPUs assigned to the ADW. The basic characteristics of these consumer groups are:
@@ -41,7 +41,7 @@ For more information about how to use consumer groups to manage concurrency and 
 
 Change the consumer group by simply clicking the downward pointing arrow next to the word LOW, and from the pulldown menu select **HIGH**.
 
-![Select the HIGH consumer group from the pulldown menu.](images/3054194709.png)    
+![Select the HIGH consumer group from the pulldown menu.](images/select-high.png)    
 
 
 ## Task 1: Exploring Sales Data
@@ -64,13 +64,13 @@ Change the consumer group by simply clicking the downward pointing arrow next to
 
 2. The result should look something like this:
 
-    ![The result of simple query should look like this.](images/analytics-lab-1-step-1-substep-2.png)
+    ![The result of simple query should look like this.](images/result-with-group-by.png)
 
     Note the time taken to run your query. In the above example, this was 1.315 seconds to run (*when you run your query the timing may vary slightly*).
 
 3. Now simply run the query again:
 
-    ![Run the query again.](images/analytics-lab-1-step-1-substep-2-after-note.png)
+    ![Run the query again.](images/result-takes-less-time.png)
 
 4. This time the query ran much faster, taking just 0.004 seconds! So what happened?
 
@@ -109,15 +109,15 @@ But, how do you know if the results from a query are returned from the **result 
 
 3. This query should return a result similar to this:
 
-    ![Worksheet showing query and result](images/analytics-lab-1-step-2-substep-3.png)
+    ![Worksheet showing query and result](images/query-with-hints.png)
 
 4. Click this icon at the top of the worksheet (the icon is in the menu bar just above your SQL statement):
 
-    ![Click this icon to run an Explain Plan.](images/analytics-lab-1-step-2-substep-4.png)
+    ![Click this icon to run an Explain Plan.](images/explain-plan.png)
 
 5. This will run an Explain Plan. This shows, in a tree-form, how Autonomous Data Warehouse executed our query. You read the tree from bottom to top so the last step is to put the result set into the result cache:
 
-    ![Explain Plan shown in a tree-form](images/3038282367.png)
+    ![Explain Plan shown in a tree-form](images/explain-plan-tree.png)
 
     **Note**: The plan above shows a lot of information that can be very helpful in terms of understanding how your query has been run by Autonomous Data Warehouse. However, at this point the information shown is not the main focus area for this workshop.
 
@@ -141,21 +141,21 @@ But, how do you know if the results from a query are returned from the **result 
 
 7. You can see that it runs significantly faster this time!
 
-    ![Query results with faster run time](images/analytics-lab-1-step-2-substep-7.png)
+    ![Query results with faster run time](images/query-with-faster-results.png)
 
 8. If you look at the explain plan again it will be the same explain plan as last time which is helpful in some ways but we want to dig a little deeper this time. To track the actual execution process, we need to switch over to the Autonomous Data Warehouse console. There should be a tab open in your browser which is labelled **Oracle Cloud Infrastructure**, or simply open a new tab and go to  **[cloud.oracle.com](http://cloud.oracle.com),**  then click on the card labeled **View all my resources **,  and find your data warehouse in the list of resources so that this page is now visible: 
 
-    ![Autonomous Database Details page, with Tools tab selected](images/3038282369.png)
+    ![Autonomous Database Details page, with Tools tab selected](images/tool-configuration.png)
 
 9. Click the **Performance Hub** button to open the monitoring window.
 
     **Note:** Your performance charts will look a little different because we have only just started using our new Autonomous Data Warehouse:
 
-    ![Monitoring window of Performance Hub](images/3038282370.png)
+    ![Monitoring window of Performance Hub](images/performance-hub.png)
 
 10. Now click the tab marked **SQL Monitoring** in the lower half of the screen:
 
-    ![Click the SQL Monitoing tab.](images/analytics-lab-1-step-2-substep-10.png)
+    ![Click the SQL Monitoing tab.](images/sql-monitoring.png)
 
     **Note:** The first two queries in the list will be the queries we just executed - (*you can identify them by looking at database times if the two queries are not grouped together*). The first execution of our query (row two in the table above) shows that we used 8 parallel execution servers to execute the query and this resulted in 2,470 I/O requests to retrieve data stored on disk. So it's clear that we had to use some database resources to run our query the first time. Now look at the performance monitoring data for the second execution (the first row in the table above) - no parallel resources were used, no I/O requests were made and the database time was insignificant. This tells us that the database was able to reuse the results from a previous execution of the same query. Essentially there was zero cost in running the same query a second time. 
 
@@ -184,7 +184,7 @@ Here we are using a built-in function, TO_CHAR, to convert the column 'day', whi
 
 3. This should return something similar to the following:
 
-    ![Result of query](images/analytics-lab-1-step-3-substep-3.png)
+    ![Result of query](images/convert-column.png)
 
     This shows that we have more customers buying movies on Fridays, Saturdays, Sundays and Mondays since these days show the highest revenue. The revenue for the days in the middle of week is still great, but definitely lower. But it's hard to see a clear pattern just by looking at the raw sales numbers.
 
@@ -229,7 +229,7 @@ We are going to extend the **```RATIO_TO_REPORT```** function a little further 
 
 2. The output from this query is shown below and the last column containing the contribution calculation is definitely a little challenging to read:
 
-    ![Output from query showing confusing values for contribution calculation](images/analytics-lab-1-step-4-substep-2.png)
+    ![Output from query showing confusing values for contribution calculation](images/contribution-calculation.png)
 
 3. In a spreadsheet, it's very easy to clean up this type of report by using the decimals button. SQL has a similar formatting option called **ROUND**, to manage the number of decimals displayed:
 
@@ -247,7 +247,7 @@ We are going to extend the **```RATIO_TO_REPORT```** function a little further 
     ```
 4. Now we can get a much clearer picture of the contribution each day is providing:
 
-    ![[Output from query showing more meaningful values for contribution calculation](images/analytics-lab-1-step-4-substep-4.png)
+    ![[Output from query showing more meaningful values for contribution calculation](images/each-day-contribution.png)
 
     We can see that Monday provides a significant contribution compared to the other weekdays, however, **Saturday**, **Sunday** and **Friday** are actually providing the highest levels of contribution across the whole week.  Now let's try to drill down and breakout the data across different dimensions to get some more insight. 
 
@@ -279,7 +279,7 @@ For each genre where we know how many movies of that type were watched, we inclu
     ```
 2. This should return something similar to the following:
 
-    ![Results using RATIO TO REPORT calculation](images/3038282361.png)
+    ![Results using RATIO TO REPORT calculation](images/ratio-to-report.png)
 
 From the data we can see that viewing of Reality-TV related movies is definitely more popular on Sundays compared to other days of the week. News is definitely more popular on Mondays, and Saturday is a good day to enjoy a crime movie!
 
@@ -306,7 +306,7 @@ It's most likely that when you are doing this type of analysis on your own data 
     ```
 2. The result should look similar to this:
 
-    ![Results with additional quarter_name column](images/3038282362.png)
+    ![Results with additional quarter_name column](images/result-with-additional-column.png)
 
 3. Take a look at the contribution column; the values are very low. This is because we are comparing each day's revenue with the grand total for revenue across all four quarters. What we really need to do is compute the contribution within each quarter. This is a very easy change to make by simply adding a **PARTITION BY** clause to our window function.
 
@@ -326,7 +326,7 @@ It's most likely that when you are doing this type of analysis on your own data 
 
 4. Now it's much easier to see that we have a same familiar pattern across Monday, Friday, Saturday and Sunday:
 
-    ![Results with addition of PARTITION BY clause](images/3038282363.png)
+    ![Results with addition of PARTITION BY clause](images/partition-by-clause.png)
 
 ## Task 7: Creating An Excel-Like Pivot Table
 
@@ -335,13 +335,14 @@ It's most likely that when you are doing this type of analysis on your own data 
 However, the challenge here is: it would be much easier if we could have a spreadsheet-like view of our result set, where the quarters are across the top of the report. Spreadsheets (along with many BI/data visualization tools) make this very easy to achieve through the use of pivot tables. Fortunately, SQL provides an almost identical feature:  **[PIVOT](https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/sql-analysis-reporting-data-warehouses.html#GUID-05BB22CD-0F53-4C90-AE84-CE3F88DBD591)** function (you may need to scroll down to find the section on PIVOT). In the code snippet below, we are telling SQL to break out the contribution column into separate columns for each quarter (where each column will be named as Q1, Q2, Q3 and Q4): 
 
 **Note:** You don't need to run this block of code:
-
+    
     ```
     PIVOT
     (
     SUM(CONTRIBUTION) contribution
     FOR QUARTER_NAME IN('Q1-2020' as "Q1", 'Q2-2020' as "Q2", 'Q3-2020' as "Q3", 'Q4-2020' as "Q4")
     )
+
     ```
 
 1. If we wrap a **PIVOT** operation around our previous query, this will allow us to swap rows for each quarter into columns so we can focus more easily on the contribution data:
@@ -366,7 +367,7 @@ However, the challenge here is: it would be much easier if we could have a sprea
     ```
 2. This now looks more like a spreadsheet and it's now a lot easier to visually analyze the data over two time dimensions.
 
-    ![Query results with PIVOT](images/3038282364.png)
+    ![Query results with PIVOT](images/pivot-reults.png)
 
 ### Wrapping It All Up
 
@@ -390,4 +391,4 @@ Please *proceed to the next lab*.
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; June 2023

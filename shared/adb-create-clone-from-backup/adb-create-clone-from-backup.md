@@ -3,7 +3,7 @@
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database on Shared Infrastructure (ADB-S) is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
 This lab shows how to create a **full** clone from the **currently running** database or from a **backup** timestamp of that database.
 
@@ -14,6 +14,9 @@ In addition, you will see how to create that clone from backup as a **cross-regi
 (The next lab will show you how to create a **refreshable** read-only clone that automatically refreshes when the data in its source database changes.)
 
 Estimated Lab Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Create a Clone Database](videohub:1_ucxwam14)
 
 ### Objectives
 
@@ -42,7 +45,12 @@ Create a full clone database from your currently running primary database.
 
     ![Choose Clone from database instance](images/choose-clone-from-database-instance.png)
 
-3. Provide the required information to create the clone database. The preferred region by default is your current region. Provide a display name and database name. Fill the other sections of this screen as you did in the earlier lab on provisioning an autonomous database:
+3. Provide the required information to create the clone database.
+    - In the **Choose your preferred region** field, accept the default, which is your current region.
+    - In the **Create in compartment** field, select a compartment to which you have access, *or if you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
+    - Provide a display name and database name.
+
+    Fill the other sections of this screen as you did in the earlier lab on provisioning an autonomous database:
     - Configure the Database
     - Create administrator credentials
     - Choose network access
@@ -140,4 +148,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date**  - Rick Green, March 2023
+- **Last Updated By/Date**  - Rick Green, June 2023

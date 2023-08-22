@@ -1,0 +1,71 @@
+{
+    "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+        "adb-create-load-json-collection.md":"/common/building-blocks/tasks/adb/create-load-json-collection.md",
+        "adb-load-public-db-actions.md":"/common/building-blocks/tasks/adb/load-public-db-actions.md",
+        "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-goto-sql-worksheet.md":"/common/building-blocks/tasks/adb/goto-sql-worksheet.md",
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "adb-query-json-arrays.md":"/common/building-blocks/tasks/adb/query-json-arrays.md",
+        "adb-query-json-simple.md":"/common/building-blocks/tasks/adb/query-json-simple.md",
+        "adb-query-object-store-contents-with-sql.md":"/common/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+        "adb-use-partitioned-external-table-body.md":"/common/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+        "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+        "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md"
+      },
+      "variables": ["./variables.json"],
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to Autonomous Database",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Get a Free Trial",
+            "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login.md"
+        },
+        {
+        "title": "Lab 1: Provision an Autonomous Database",
+        "description": "Provision Autonomous Database",
+        "type": "freetier",
+        "filename": "../../provision-database/adb-provision-moviestream.md"
+    },
+    {
+        "title": "Lab 2: Load Data from Object Storage Public Buckets",
+        "description": "Load customer contact, movie genre, customer sales and pizza location data into ADB from public object storage buckets using the Database Tools",
+        "type": "freetier",
+        "filename": "../../load-public-db-actions/load-public-db-actions.md"
+    },
+    {
+        "title": "Lab 3: Load Data from Local Files",
+        "description": "Load additional customer details into ADB from local files using the Database Actions tools",
+        "type": "freetier",
+        "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
+    },
+    {
+        "title": "Lab 4: Develop Self-Service Analytics Cloud Dashboards",
+        "description": "Use Analytics Cloud for interactive dashboards",
+        "type": "freetier",
+        "filename": "../../develop-dashboards/develop-dashboards.md"
+    },
+    {
+        "title": "Lab 5 (optional): Load and Analyze JSON Data",
+        "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
+        "filename": "../../load-analyze-json/load-analyze-json.md"
+    },
+    {
+        "title": "Lab 6 (optional): Load and Analyze the News from REST Endpoints",
+        "description": "Load news and analyze the sentiment about actors from the newsapi.org",
+        "filename": "/common/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
+    },
+    {
+    "title": "Need Help?",
+    "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+    "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+
+    ]
+}

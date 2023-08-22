@@ -6,6 +6,9 @@ In this lab, you will explore the provided sample data sets that come with your 
 
 Estimated Time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Connect an ADB Instance SQL Worksheet](videohub:1_28r1706y)
+
 ### Before you begin
 
 This lab uses SQL Worksheet, one of the features of the Database Actions web-based interface for Oracle Autonomous Database.
@@ -37,7 +40,7 @@ Although you can connect to your Oracle Autonomous Database using local PC deskt
 
     ![Autonomous Databases homepage.](images/step1.1-adb.png " ")
 
-2. In your ADW Finance Mart database's details page, click the **Database Actions** button.
+2. In your ADW Finance Mart database's details page, click the **Database Actions** dropdown list. Select **View all database actions**.
 
     ![Click Database Actions button.](./images/click-database-actions-button.png " ")
 
@@ -91,4 +94,4 @@ Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-datab
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Arabella Yao, Product Manager Intern | Ayden Smith, QA Intern)
-- **Last Updated By/Date** - Richard Green, December 2022
+- **Last Updated By/Date** - Richard Green, August 2023
