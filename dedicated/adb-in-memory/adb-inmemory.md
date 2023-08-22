@@ -1,4 +1,4 @@
-# Oracle In-Memory on Autonomous Database Dedicated
+# Database In-Memory on Autonomous Database Dedicated
 
 ## Introduction
 
@@ -23,7 +23,7 @@ As an Autonomous Database administrator:
     - minimum of 4 OCPU to enable IM option on ADB-D
 - Ability to connect to your In-Memory enabled ADB with SQLPlus/SQLcl.  If needed follow the lab **Configure a development system for use with your dedicated autonomous database**
 
-## Task 1: Enable IN-Memory
+## Task 1: Enable In-Memory
 
 **NOTE:** The below steps demonstrate enabling In-Memory on an existing ADB but this can also be configured during ADB creation, ADB live clone, and ADB clone from backup.  This is done in the create workflow under advanced options as shown in the following screenshot:
 

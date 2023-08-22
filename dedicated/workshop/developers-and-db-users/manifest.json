@@ -128,8 +128,8 @@
             "filename": "./../../adb-oci-api-gateway/adb-apex-apigateway.md"
         },
         {
-            "title": "Lab 16: Oracle In-Memory on Autonomous Database Dedicated",
-            "description": "Oracle In-Memory on Autonomous Database Dedicated",
+            "title": "Lab 16: Database In-Memory on Autonomous Database Dedicated",
+            "description": "Database In-Memory on Autonomous Database Dedicated",
             "partnumber": "Ennnnn_01",
             "publisheddate": "22/08/2023",
             "contentid": "12nnnn",
