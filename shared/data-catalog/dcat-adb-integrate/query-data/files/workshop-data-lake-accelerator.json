@@ -1,7 +1,7 @@
 ﻿{
   "paragraphs": [
     {
-      "text": "%md\n![MovieStream Logo](https://oracle.github.io/learning-library/data-management-library/autonomous-database/shared/movie-stream-story/introduction/images/moviestream.jpeg)",
+      "text": "%md\n![MovieStream Logo](https://oracle-livelabs.github.io/adb/shared/movie-stream-story/introduction/images/moviestream.jpeg)",
       "user": "MOVIESTREAM",
       "dateUpdated": "2022-01-21T14:57:32+0000",
       "progress": 0,
@@ -47,7 +47,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<p><img src=\"https://oracle.github.io/learning-library/data-management-library/autonomous-database/shared/movie-stream-story/introduction/images/moviestream.jpeg\" alt=\"MovieStream Logo\" /></p>\n"
+            "data": "<p><img src=\"https://oracle-livelabs.github.io/adb/shared/movie-stream-story/introduction/images/moviestream.jpeg\" alt=\"MovieStream Logo\" /></p>\n"
           }
         ]
       }
