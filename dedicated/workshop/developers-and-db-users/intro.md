@@ -40,6 +40,8 @@ Lab 11: Zero Downtime Scaling
 Lab 12: Recover Errors Using Flashback Recovery  
 Lab 13: Oracle Analytics Cloud  
 Lab 14: Automatic Indexing  
+Lab 15: API Gateway with Autonomous Database Dedicated  
+Lab 16: Database In-Memory on Autonomous Database Dedicated  
 
 ### *Also see our third Autonomous Database Dedicated workshop, Introduction to Oracle Autonomous Database Dedicated for Database Security Administrators*
 A Database security administrator is responsible for ensuring database environments are built with the right set of security controls and stay within corporate compliance requirements throughout their life-cycle. This function may be combined with the Fleet Admin function in many cases. Autonomous Dedicated is built with security at the forefront and automates most of the database security functions customers adhere to on-premises. The following labs address various database security aspects ranging from encryption key management, DB user security, auditing, sensitive data masking and privileged user access controls.

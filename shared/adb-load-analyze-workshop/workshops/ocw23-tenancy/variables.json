@@ -1,7 +1,7 @@
 {
     "db_name": "MYQUICKSTART",
     "db_display_name":"MyQuickStart",
-    "db_ocpu": "1 OCPU",
+    "db_ocpu": "2 ECPUs",
     "db_storage": "1 TB",
     "db_name_livelabs": "MOVIE+your user id",
     "db_name_livelabs_example": "MOVIE2252",

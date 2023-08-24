@@ -195,14 +195,14 @@ In this task, you will get the following items that are required to create a Clo
 
 7. Click **Close**.
 
-## Task 6: Define a Cloud Location and Create a Credential
+## Task 6: Define a Connection and Create a Credential
 
 You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store in an earlier task using the `DBMS_CLOUD` PL/SQL package. There are two parts to this process:
 
 + Set up a connection to Oracle Object Storage by defining a cloud location with a credential. You perform this step only once.
 + Load the file using the `DBMS_CLOUD` PL/SQL package.
 
-In this task, you define a **Cloud Location** to connect to Oracle Object Storage. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
+In this task, you define a connection to connect to an Oracle Object Storage bucket. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
 
 1. On the **Oracle Cloud Console** Home page, open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -214,25 +214,21 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-3. On the **Autonomous Database details** page, click **Database actions**.
+3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **Data Load**.
 
-4. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+4. On that **Data Load** page, in the **Administration** section, click **CONNECTIONS** to display the **Connections** page.
 
-    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
+    ![Click the Cloud Locations card.](./images/click-connections.png " ")
 
-5. In the **Administration** section, click **CLOUD LOCATIONS**, and then click **Next**.
+6. On the **Connections** page, click the **Create** drop-down list and then select **New Cloud Store Location** from the drop-down list.
 
-    ![Click the Cloud Locations card.](./images/click-cloud-locations.png " ")
-
-6. On the **Manage Cloud Store** page, click **Add Cloud Store Location**.
-
-    ![Click Add Cloud Storage.](./images/click-add-cloud-store-location.png " ")
+    ![Click Add Cloud Storage.](./images/click-new-cloud-store-location.png " ")
 
 7. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`training-data-lake`**.
     + **Description:** Enter an optional description.
-    + Select the **Create Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + In the **Credential** section, specify the following:
+    + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
+    + In the **Credential Credential** dialog box, specify the following:
         + **Credential Type:** Select the **Oracle Cloud Infrastructure Signing Keys** option.
         + **Credential Name:** Enter **OBJ\_STORAGE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
         + **Fingerprint:** Enter the fingerprint for your RSA key pair that you copied earlier to a text file.
@@ -242,20 +238,23 @@ In this task, you define a **Cloud Location** to connect to Oracle Object Storag
 
         + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
         + **Oracle Cloud Infrastructure User Name:** Enter your _**user's OCID**_ (and not the actual username).  _**Note:** If you did complete the optional **Task 5**, then the you should have already saved the user's OCID (and not the actual username) in a text file of your choice. If you didn't perform the optional **Task 5**, you can find the user's OCID as follows: Navigate to the **Oracle Cloud Console**. Click the **User's** drop-down list, and then select **User settings**. In the **User Details** page, in the **User Information** tab, click **Copy** next to the **OCID** field. Save this user OCID in your text file._
-    + Select the **Bucket URI** option.
-    + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
+        
+            The **Add Cloud Store Location** panel is re-displayed. Specify the following:
 
-      `https://objectstorage.region name.oraclecloud.com/n/namespace name/b/bucket name/o`
+        + Select the **Bucket URI** option.
+        + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
 
-        ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
+            `https://objectstorage.region name.oraclecloud.com/n/namespace name/b/bucket name/o`
+
+            ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
 
 8. Click **Next** to see the available objects in the bucket that you specified. There is only one file that you uploaded to your private Object Storage bucket, `potential_churners.csv`.
 
     ![Click Next to see the objects in the bucket.](./images/click-next.png " ")
 
-9. Click **Create**. The **training-data-lake** cloud location is displayed in the **Manage Cloud Store** page.
+9. Click **Create**. The **training-data-lake** connection is displayed in the **Connections** page.
 
-    ![The cloud store location is created.](./images/cloud-store-location-created.png " ")
+    ![The cloud store location is created.](./images/connection-created.png " ")
 
 ## Learn more
 
@@ -271,7 +270,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     + Alexey Filanovskiy, Senior Principal Product Manager
     + Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

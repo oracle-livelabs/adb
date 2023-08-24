@@ -104,20 +104,20 @@ In this lab, you will:
 
     Oracle now offers two billing metrics OCPU and ECPU for sizing Autonomous Databases. In addition to the OCPU metric,  ECPU base metric was made available from 31st January 2023 and is going to be default metric.  Existing customer can continue to use OCUP metric and dose not need any changes. Any new database creation request would give OCPU or ECPU based on the user tenancy setup.
 
-    For this workshop we would create a ADW instance with OCPU metric only. To change from ECPU to OCPU metric, click on the __Show advanced Options__ link as show in picture below
+    For this workshop we would create a ADW instance with ECPU metric only. 
 
     ![Choose show advanced option link to select between OCUP and ECUP metric.](./images/ecpu-metric.png " ")
 
-    Select OCPU option on the pop-up dialog-box that come in right side as shown in picture below
+    Select ECPU option on the pop-up dialog-box that come in right side as shown in picture below
 
-    ![Select OCPU metric option](./images/change-ecpu-to-ocpu.png " ")
+    ![Select ECPU metric option](./images/change-ecpu-to-ocpu.png " ")
 
 
-    - __Always Free__ - If your Cloud Account is an Always Free account, or your Cloud Account is a paid account but want to avoid any charges, you can select this option to create an *Always Free autonomous database*. An always free database comes with 1 CPU and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
+    - __Always Free__ - If your Cloud Account is an Always Free account, or your Cloud Account is a paid account but want to avoid any charges, you can select this option to create an *Always Free autonomous database*. An always free database comes with 2 CPUs and 20 GB of storage. For this lab, we recommend you leave Always Free unchecked.
     - __Choose database version__ - Select a database version from the available versions.
-    - __OCPU count__ - Number of CPUs for your service. For this lab, specify __1 CPU__. If you choose an Always Free database, it comes with 1 CPU.
+    - __ECPU count__ - Number of CPUs for your service. For this lab, specify __2 CPUs__. If you choose an Always Free database, it comes with 2 CPUs.
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
-    - __OCPU auto scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+    - __ECPU auto scaling__ - For this lab, keep auto scaling enabled, to enable the system to automatically use up to three times more CPU and IO resources to meet workload demand.
     - __Storage auto scaling__ - For this lab, there is no need to enable storage auto scaling, which would allow the system to expand up to three times the reserved storage.
 
     > **Note:** You cannot scale up/down an Always Free autonomous database.
@@ -172,7 +172,7 @@ In this lab, you will:
 
     ![Click Create Autonomous Database.](./images/task2-10.png " ")
 
-12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
+12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
 
     ![Database instance homepage.](./images/task2-11.png " ")
 
