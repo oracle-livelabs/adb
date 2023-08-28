@@ -90,7 +90,7 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
 ## Task 1: Enable Autonomous Data Guard
 
-1. *IMPORTANT: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 1 OCPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient OCPUs and storage, you can skip this step.*
+1. *IMPORTANT: If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 2 ECPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient ECPUs and storage, you can skip this step.*
 
 2. If you are not logged in to Oracle Cloud Console, log in and navigate to your **Autonomous Database details** page.
 
@@ -102,11 +102,11 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
     ![Note the listed backup copy](./images/note-the-backup-copy.png)
 
-    Click the 3-dot ellipsis symbol on the right side of the backup copy, and select **Update DR type**.
+    Click the 3-dot ellipsis symbol on the right side of the backup copy, and select **Update disaster recovery**.
 
     ![Click the 3-dot ellipsis symbol](./images/click-3-dot-ellipsis-symbol.png)
 
-5. The **Update disaster recovery type** dialog appears. The **Backup-based disaster recovery** button is selected by default. Instead, select the **Autonomous Data Guard** button and click **Submit**.
+5. The **Update disaster recovery** dialog appears. The **Backup-based disaster recovery** button is selected by default. Instead, select the **Autonomous Data Guard** button and click **Submit**.
 
     >**Note**: Read the information about recovery time and recovery point objectives, and the informational note.
 
@@ -152,16 +152,16 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 * Your **local standby** database, also named "adwfinance"
 * Your optional **cross-region** standby database, "adwfinance_Remote"
 
-    Go back to the **Autonomous Database details** page of your original database. In the **Autonomous Data Guard** section of the page, you now see a third field, **Region**. This page indicates you are in your original database, "adwfinance", with the role of primary database, in the primary region.
+    Go back to the **Autonomous Database details** page of your original database. In the **Disaster recovery** section of the page, the **Cross-region** field status has changed from **Not enabled** to **Autonomous Data Guard** with a link to perform a **Switchover**. This page indicates you are in your original database, "adwfinance", with the role of primary database, in the primary region.
 
-    ![See the new Region field on the Autonomous Database details page](./images/third-field-region.png)
+    ![See the changed Cross-region field on the Autonomous Database details page](./images/third-field-region.png)
 
 ## Task 2: Test Switchover to a Standby Database
 After Autonomous Data Guard is enabled, if you perform a switchover operation, the primary database becomes the standby database, and the standby database becomes the primary database, with no data loss. A switchover is typically done to test your application's failover procedures when Autonomous Data Guard is enabled.
 
-The Oracle Cloud Infrastructure console shows a switchover link in the **Role** field when both the primary database and the standby database are available. That is, the primary database **Lifecycle state** field shows Available or Stopped:
+The Oracle Cloud Infrastructure console shows a switchover link in the **Cross-region** field when both the primary database and the standby database are available. That is, the primary database **Lifecycle state** field shows Available or Stopped:
 
-  ![See the Lifecycle State is available and the switchover link in the Role field](./images/lifecycle-state-shows-available.png)
+  ![See the Lifecycle State is available and the switchover link in the Cross-regions field](./images/lifecycle-state-shows-available.png)
 
 And the standby database is available (in the **Resources** section at the bottom left of the Autonomous Database details page, the **State** field shows **Standby**):
 
@@ -169,11 +169,11 @@ And the standby database is available (in the **Resources** section at the botto
 
 To perform a switchover to the **local standby** database, do the following:
 
-1. On the Details page of your original primary database, under **Disaster recovery**, in the **Role** field, click **Switchover**.
+1. On the Details page of your original primary database, again scroll down to the **Resources** section and click **Disaster recovery**. Click the 3-dot ellipsis symbol on the right side of the local backup copy (your **local** standby, not the remote cross-region standby if you also created one), and select **Switchover**.
 
-    ![Click Switchover in the Role field](./images/adg-switchover.png)
+    ![Click Switchover in the pop-up menu](./images/adg-switchover.png)
 
-2. In the **Confirm switchover to peer** dialog, select your standby database (your **local** standby, not the remote cross-region standby if you also created one). Confirm the switchover to the standby database (enter the database name of your local standby). Click **Confirm switchover to peer**.
+2. In the **Confirm switchover to peer** dialog, confirm the switchover to the standby database (enter the database name of your local standby). Click **Confirm switchover to peer**.
 
     ![Click Confirm switchover to peer](./images/confirm-switchover.png)
 
@@ -258,12 +258,25 @@ In the rare case when your primary is down and automatic failover is unsuccessfu
 * If you have both local and cross-region standby databases, Oracle always recommends that if your local is available, switch over to that first. Only if the region is completely down, and you can't fail over to your local region standby, then fail over to your remote region standby.
 * We don't expect you to run in the standby region permanently. The expectation is that you will switch back to the primary side when it becomes available.  
 * The Recovery Time Object (RTO) is higher for cross region standby databases (15 minutes) than for local standby databases (2 minutes).
-* After you enable Autonomous Data Guard with a remote standby, download a new wallet. The wallet file you download from the primary database contains connection strings for both the primary region and the remote region database. The same wallet works after you switchover or failover to the remote region standby.
+* When you enable Autonomous Data Guard with a cross-region standby database, the wallets for the primary and the standby specify different database hostnames and use different connection strings. Oracle recommends that applications use the connection string or wallet downloaded from the same region as the primary database. If you need to use a single connection string or wallet containing both the primary and the standby database hostnames, you may construct this manually. To manually construct a wallet that contains both the primary and the remote database connections strings:
+
+    1. From the primary database's Oracle Cloud Infrastructure Console, click **Database connection** to download the primary's wallet.zip.
+
+    2. From the remote standby database's Oracle Cloud Infrastructure Console, click **Database connection** to download the standby's wallet.zip.
+
+    3. Unzip both wallet files and open the two tnsnames.ora files.
+
+    4. Copy the remote database's connect descriptor into the primary database's connection string in the primary's `tnsnames.ora` file using your preferred retry delays.
+
+    5. Zip the updated primary database wallet folder.
+
+    With this updated `tnsnames.ora`, your primary database connection strings in the updated wallet.zip will contain both the primary and the standby hostnames, to support failover. An application using the updated wallet attempts to connect and retries connecting to the first listed database hostname, and if that connection fails due to the database being Unavailable, the application then automatically attempts to connect to the second database hostname.
 * When you enable Autonomous Data Guard with both a local and a cross-region standby, Autonomous Data Guard does not provide a local standby while the remote region instance operates in the Primary role. Using the remote region in the Primary role is intended for use while the primary region is unavailable or for testing (a temporary scenario). After the primary region database returns to the Primary role, the local Standby will be available.
 
 You may now **proceed to the next lab**.
 
 ## Want to Learn More?
+* For more notes about Autonomous Data Guard standby databases, see the documentation [Autonomous Data Guard Notes](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-data-guard-notes.html#GUID-06514279-EB46-4BAE-A943-8F8B51C51817).
 * For more information about Standby Databases, see the documentation [About Standby Databases](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-about.html#GUID-045AD017-8120-4BDC-AF58-7430FFE28D2B).
 * To use OCI REST APIs to enable and use Autonomous Data Guard, see [Use the API](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-api.html#GUID-3E4C0FA6-DE04-4F7F-A7AF-4C270870DCFF).
 * For additional detail about Cross-Region Autonomous Data Guard, see [this blog](https://blogs.oracle.com/datawarehousing/post/cross-region-autonomous-data-guard-your-complete-autonomous-database-disaster-recovery-solution).
@@ -272,4 +285,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * Authors - Vandanadevi Rajamani, Database User Assistance; Nilay Panchal, ADB Product Management; Rick Green, Database User Assistance
-* Last Updated By/Date - Rick Green, June 2023
+* Last Updated By/Date - Rick Green, August 2023
