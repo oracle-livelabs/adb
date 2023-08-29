@@ -38,9 +38,7 @@ If your SQL Worksheet is still displayed from the previous task, skip over to **
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. The **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card. The SQL Worksheet is displayed.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
 ## Task 2: Export a Table as a Parquet File to an Object Storage Bucket
 
@@ -108,7 +106,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

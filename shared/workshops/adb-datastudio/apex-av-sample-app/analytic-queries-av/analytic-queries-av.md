@@ -81,8 +81,8 @@ FROM
     , search_genre
     )
 WHERE
-    time.level_name = 'YEAR'
-    AND geography.level_name = 'CONTINENT'
+    time.level_name = 'QUARTER'
+    AND geography.level_name = 'YEAR'
     AND search_genre.level_name = 'SEARCH_GENRE'
 ORDER BY
     time.hier_order
