@@ -60,9 +60,7 @@ If you already accessed the SQL Worksheet from the previous lab, you can skip ov
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. In the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**. The SQL Worksheet is displayed.
 
 ## Task 3: Create a Database Credential and List the Available Schemas and Tables
 
@@ -176,7 +174,7 @@ You may now proceed to the next lab.
     * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran Serhal, August 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
