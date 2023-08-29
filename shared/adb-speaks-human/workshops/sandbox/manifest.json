@@ -1,39 +1,42 @@
 {
-    "workshoptitle": "Autonomous Database 15 minute quick start",
+    "workshoptitle": "Chat with your data in Autonomous Database using generative AI",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
-      "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
-      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
-      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
     },
-    "variables": ["./variables.json"],    "tutorials": [
-      {
-        "title": "Introduction",
-        "type": "odbw",
-        "filename": "../../introduction/introduction.md"
-      },
-      {
-        "title": "Get started",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
-      },
-      {
-        "title": "Lab 1: Provision an ADB instance",
-        "type": "livelabs",
-        "filename": "../../provision-database/adb-provision-moviestream.md"
-      },
-      {
-          "title": "Lab 2: Use Data Tools to load data",
-          "filename": "../../load-data/load-data.md"
-      },
-      {
-        "title": "Lab 3: Use SQL to analyze movie sales data",
-        "filename": "../../analyzing-movie-sales-data/analyzing-movie-sales-data.md"
-
-      },
-      {
-        "title": "Need Help?",
-        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-      }
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+          "title": "Introduction",
+          "description":"Introduction to the workshop",
+          "filename": "../../introduction/introduction.md"
+        },
+        {
+          "title": "Get started",
+          "description":"Get started using Oracle Cloud Infrastructure",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+          "title": "Lab 1: Set up your environment",
+          "description":"Set up an Autonomous Database and an LLM account",
+          "filename": "../../setup-environment/setup-environment.md"
+        },     
+        {
+          "title": "Lab 2: Connect ADB to your LLM",
+          "description":"Connect Autonomous Database to your LLM",
+          "filename": "../../connect-to-ai-model/connect-to-ai-model.md"
+        },           
+        {
+          "title": "Lab 3: Use AI SQL for natural langugage queries",
+          "description":"Use AI SQL for natural langugage queries",
+          "filename": "../../use-AI-SQL-for-natural-language-queries/use-AI-SQL-for-natural-language-queries.md"
+        },   
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
     ]
 }

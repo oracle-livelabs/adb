@@ -10,12 +10,15 @@ This workshop will focus on learning how to setup and use generative AI to query
 
 The automation uses a predefined OCI Cloud Stack Template that contains all the resources you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects - [check out the documentation](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) for more details.
 
+Autonomous Database supports both OpenAI and Cohere models. In the second part of the lab, you will set up a developer account on OpenAI.
+
 Estimated Time: 5 minutes.
 
 ### Objectives
 
 Learn how to
-* Run the stack to perform all the prerequisites required to analyze data. 
+* Run the stack to perform all the prerequisites required to analyze data
+* Create a developer account with OpenAI
 
 ## Task 1: Create OCI compartment
 [](include:iam-compartment-create-body.md)
@@ -27,7 +30,7 @@ The following steps will set up everything required for the workshop:
 
 1. [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;gen-ai&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;}) using the OCI Resource Manager.
 
-2. You will be directed to the page below: 
+2. After logging into your cloud account, you will be directed to the page below: 
 
   ![The create stack page](./images/create-stack.png "")
 

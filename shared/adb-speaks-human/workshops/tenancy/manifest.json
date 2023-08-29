@@ -24,14 +24,14 @@
           "filename": "../../setup-environment/setup-environment.md"
         },     
         {
-          "title": "Lab 2: Connect ADB to your large learning model",
+          "title": "Lab 2: Connect ADB to your LLM",
           "description":"Connect Autonomous Database to your LLM",
           "filename": "../../connect-to-ai-model/connect-to-ai-model.md"
         },           
         {
           "title": "Lab 3: Use AI SQL for natural langugage queries",
           "description":"Use AI SQL for natural langugage queries",
-          "filename": "../../connect-to-ai-model/connect-to-ai-model.md"
+          "filename": "../../use-AI-SQL-for-natural-language-queries/use-AI-SQL-for-natural-language-queries.md"
         },   
         {
           "title": "Need Help?",

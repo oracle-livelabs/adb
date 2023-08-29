@@ -85,7 +85,7 @@
           "        dbms_cloud.create_credential (",
           "            credential_name  => 'OPENAI_CRED',",
           "            username         => 'OPENAI',",
-          "            password         => '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'",
+          "            password         => 'your-LLM-secret-goes-here'",
           "            );",
           "    exception",
           "        when others then",

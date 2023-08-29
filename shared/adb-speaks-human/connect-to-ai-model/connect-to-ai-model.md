@@ -1,16 +1,15 @@
-# Connect to your large language model
+# Allow users to connect to your LLM
 ## Introduction
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will connect Autonomous Database to the LLM that you set up in the previous lab.
+You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **MOVIESTREAM** to use the LLM that you set up in the previous lab.
 
 Estimated Time: 10 minutes.
 
 ### Objectives
 
 Learn how to
-* Enable connections to your LLM in Autonomous Database
-* Test your connection using an AI SQL plsql function
-* Grant other users the ability to use your LLM
+* As ADMIN, enable users to connect to the LLM REST endpoint
+* Grant users privileges to use the AI SQL APIs
 
 ### Prerequisites
 - This lab requires completion of the Setup Environment lab in the Contents menu on the left.

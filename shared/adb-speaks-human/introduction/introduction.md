@@ -17,29 +17,6 @@ In this workshop, you will:
 The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services that you currently subscribe to. You'll be able to ask questions about movies, customers who watch movies and the movies they decide to watch.
 
 
-OUTLINE:
-* Provision without requiring a wallet
-* Install data (TF)
-    * customer, segment, movie, genre, sales_sample, pizza_location
-    * remote data: churn prediction
-* Get your secret from you AI provider
-* Set up access
-* Run natural language queries
-    * runsql
-    * narrate
-    * chat
-    * showsql
-* Improve using COMMENTS -> ACTUAL_PRICE = SALES
-* Break it - change a column and table to something esoteric
-    * Fix it with comments
-* Import the APEX app (part of the TF script?)
-
-
-customer -> join with customer_segment -> create a view
-movie -> json -> create a view
-sales_sample -> 
-
-
 
 ## Learn more
 
