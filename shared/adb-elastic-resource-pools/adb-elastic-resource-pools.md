@@ -92,45 +92,48 @@ The first task for setting up an elastic resource pool is to create or modify an
 * The instance must be an Autonomous Database instance with the Transaction Processing workload type.
 * Auto scaling must be disabled.
 
-1. In the Oracle Cloud Infrastructure Console, navigate back to Oracle Database. On the Autonomous Databases page, click **Create Autonomous Database**. Select **Transaction Processing** as the workload type.
+1. In the Oracle Cloud Infrastructure Console, navigate back to Oracle Database. On the Autonomous Databases page, click **Create Autonomous Database**.
 
-    ![Select Transaction Processing* as the workload type](images/.png " ")
+2. Specify basic information for the autonomous database:
+
+    * **Compartment** - Choose the compartment in which you created your first autonomous database in the first lab.
+    * **Display Name** - Enter a memorable name for the database for display purposes. For example, use **Pool_Leader**. (Spaces are not supported.)  
+    * **Database Name** - Use letters and numbers only, starting with a letter. For example, use **POOLLEADER**. Maximum length is 14 characters. (Spaces and underscores are not supported.)
+    * **Workload type** - Select **Transaction Processing** as the workload type.
+
+    ![Start provisioning the pool leader database](images/start-provisioning-pool-leader-database.png " ")
 
 ## Task 2: Define the resource pool while provisioning the database
 As stated earlier, you can define a resource pool while provisioning a new database as the pool leader, or you can modify an existing autonomous database to serve as the pool leader of a new resource pool. In this lab, we continue to define the resource pool while provisioning a database.
 
-1. In the **Configure the database** area, click **Show advanced options** to show advanced options. Deselect **Compute auto scaling**. Select **Enable resource pool**. Select **Create a resource pool**. In the **Pool ECPU count** field, select a pool size from the list of pool shapes. For this lab, select **128** as the Pool ECPU count.
+1. In the **Configure the database** area, click **Show advanced options** to show advanced options.
 
-    ![Define the resource pool while configuring the database](./images/.png " ")
+    ![Click Show advanced options](./images/click-show-advanced-options.png " ")
 
-2. Complete the remaining provisioning steps, accepting the defaults.
+2. Deselect **Compute auto scaling**. For storage, in the **Storage unit size** drop-down menu, select **TB**. Then in the **Storage** field, specify 1 terabyte. Select **Enable resource pool**. Select **Create a resource pool**. In the **Pool ECPU count** field, select a pool size from the list of pool shapes. For this lab, select **128** as the Pool ECPU count.
+
+    ![Define the resource pool while configuring the database](./images/define-resource-pool.png " ")
+
+3. Complete the remaining provisioning steps, accepting the defaults. Create an ADMIN password. Click **Create Autonomous Database**.
 
 ## Task 3: Add your original database instance as a pool member
 Now that you have defined the resource pool, you can add pool members. Let's add the autonomous database that you provisioned in the first lab of this workshop.
 
-1. Navigate back to the  Autonomous Database details page of the database you defined in the first lab. Select **Manage resource allocation**.
+1. Navigate back to the  Autonomous Database details page of the database you defined in the first lab. You may have named it **ADW\_Finance\_Mart**.
 
-  Verify that **Compute auto scaling** is disabled. If Compute auto scaling is selected, disable Compute auto scaling:
+    ![Navigate back to the autonomous database you defined in the first lab](./images/navigate-back-to-first-database.png " ")
 
-    * In the **Manage resource allocation** area, deselect **Compute auto scaling**.
-    * Click **Apply**.
-    * The **Lifecycle state** changes to **Scaling in Progress**. After some time the Lifecycle state changes to **Available**.
-    * On the Autonomous Database details page, select **Manage resource allocation** to display the **Manage resource allocation** area.
+  Select the **Manage resource allocation** button on the Autonomous Database details page. The **Manage resource allocation** dialog appears. Verify that **Compute auto scaling** is disabled. If Compute auto scaling is selected, disable Compute auto scaling:
 
-2. In the **Manage resource allocation** area, click **Show advanced options** to show the advanced options.
+    * If **Compute auto scaling** is enabled, deselect it.
+    * In the **Resource pool** section, select **Enable resource pool**.
+    * Keep the default selection of **Join an existing resource pool**.
+    * In the **Select pool leader in (your compartment)** field, choose the **Pool_Leader** database you just created.
+    * Click **Apply** to add your **ADW\_Fiance\_Mart** database to your **Pool_Leader** resource pool.
 
-3. Select **Enable resource pool**.
+    ![Complete the Manage resource allocation dialog to add the database to the resource pool](./images/add-first-database-to-resource-pool.png " ")
 
-4. Select **Join an existing resource pool**.
-
-5. In the **Select pool leader in compartment** field, choose a pool leader in a compartment.
-
-    * Use the compartment shown or click **Change Compartment** to select a different compartment.
-    * Select a pool leader from the list of available pool leaders in the selected compartment.
-
-6. Click **Apply** to add the instance to the resource pool.
-
-  When you click Apply, the **Lifecycle state** changes to **Scaling in Progress**. After the Lifecycle state changes to **Available**, the changes apply immediately.
+  When you click Apply, the **Lifecycle state** changes to **Scaling in Progress**. After a number of minutes, when the Lifecycle state changes to **Available**, the changes apply immediately.
 
   After you create a resource pool, click **Manage resource allocation** to see the resource pool details. In the Manage resource allocations area, under Resource pool, the Resource pool field shows Enabled, the Pool role field shows Member, and the Resource pool leader field shows a link to the pool leader.
 
@@ -139,20 +142,28 @@ Now that you have added your original database from the first lab to the resourc
 
 1. On the resource pool leader's Autonomous Database details page, under **Resources**, click **Resource pool members**.
 
-2. The **Resource pool members** area shows a list of resource pool members. This shows the list of resource pool members for this **leader** Autonomous Database instance.
+    ![Click Resource pool members](./images/click-resource-pool-members.png " ")
 
-3. If you click the 3-dot **More actions** button at the end of any row in the list of pool members, you can select an action to perform for the member. The possible actions are:
+  The **Resource pool members** area shows a list of resource pool members for this **pool leader** Autonomous Database instance. For now, it shows that you have added one resource pool member, ADW\_Finance\_Mart.
+
+2. If you click the 3-dot **More actions** button at the end of any row in the list of pool members, you can select an action to perform for the member. The possible actions are:
 
   * **View details**: Shows the member's Oracle Cloud Infrastructure Console.
   * **Copy OCID**: Copies the member's Autonomous Database instance OCID.
   * **Remove from pool**: Brings up a dialog where you can confirm to remove the Autonomous Database instance from the pool.
+
+    ![Select action for a pool member](./images/select-action-for-pool-member.png " ")
 
 ## Task 5: Remove that resource pool member
 A resource pool leader can remove pool members from a resource pool. Pool members can remove themselves from a resource pool. As resource pool leader, let's remove the resource pool member we added.
 
 1. In the list of resource pool members, click the 3-dot **More actions** button at the end of the row for the pool member you added. In the pop-up menu, select **Remove from pool**.
 
-2. The **Remove from pool**  confirmation dialog appears. Click **Leave** to confirm. When you click Leave, the Lifecycle state changes to **Scaling in Progress**. After the Lifecycle state changes to **Available** the changes apply immediately.
+    ![Select Remove from pool](./images/select-remove-from-pool.png " ")
+
+2. The **Remove from pool**  confirmation dialog appears. Click **Remove** to confirm. Wait a minute or two for removal to finish.
+
+    ![Remove the member from the pool](./images/click-remove-to-remove-from-pool.png " ")
 
   * When a pool member or the leader leaves a resource pool, auto scaling is disabled. After leaving the resource pool you can enable auto-scaling for the instance.
 
@@ -166,6 +177,8 @@ A resource pool leader can remove pool members from a resource pool. Pool member
 2. Select **Terminate pool**.
 
 3. Click **Apply** to terminate the resource pool. When you click Apply, the **Lifecycle State** changes to **Scaling in Progress**. After the Lifecycle State changes to **Available**, the changes apply immediately.
+
+    ![Terminate the resource pool](./images/terminate-the-resource-pool.png " ")
 
 ## Want to Learn More?
 
