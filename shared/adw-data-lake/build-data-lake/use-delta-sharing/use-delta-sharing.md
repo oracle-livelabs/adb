@@ -66,9 +66,9 @@ If you already accessed the SQL Worksheet from the previous lab, you can skip ov
 
 Create a new database credential that you will use in this task as follows:
 
-1. Use the **`CREATE_CREDENTIAL`** procedure in the **`DBMS_CLOUD`** PL/SQL package to create and store the cloud service credentials in the Autonomous Database. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation. Copy and paste the following code into your SQL Worksheet. You can substitute the `credential_name` and `user_name` with your own values. The `password` value is the **`bearerToken`** value from the public Delta Sharing profile. Click the **Run Script** icon in the Worksheet toolbar.
+1. Use the **`CREATE_CREDENTIAL`** procedure in the **`DBMS_CLOUD`** PL/SQL package to create and store the cloud service credentials in the Autonomous Database. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation. Copy and paste the following code into your SQL Worksheet. You can substitute the `credential_name` with your own value. Click the **Run Script** icon in the Worksheet toolbar.
 
-    >**Note:** It is a requirement to use **`bearer_token`** as the **`password`**.
+    >**Note:** It is a requirement to use **`bearer_token`** as the **`username`**.
 
     ```
     <copy>
@@ -171,10 +171,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+    * Lauran Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran Serhal, September 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

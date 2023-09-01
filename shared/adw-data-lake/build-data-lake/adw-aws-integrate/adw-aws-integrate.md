@@ -103,32 +103,45 @@ In this task, you will create the required credentials in Autonomous Database th
 
     ![Create AWS credential](images/create-aws-credential.png)
 
-2. Associate the new credential with the target AWS Glue Data Catalog instance and the Amazon S3 object storage bucket that contains the dataset that you will use. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+2. Associate the new credential with the target AWS Glue Data Catalog instance and the Amazon S3 object storage bucket that contains the dataset that you will use. The `dcat_con_id` argument value is a user-defined string. It is a unique Data Catalog connection identifier. The default is `Null`. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     begin
-        dbms_dcat.set_data_catalog_credential('AWS_CREDENTIAL');
-        dbms_dcat.set_object_store_credential('AWS_CREDENTIAL');
+        dbms_dcat.set_data_catalog_credential('AWS_CREDENTIAL', dcat_con_id => 'AWS_GLUE_CONN');
+        dbms_dcat.set_object_store_credential('AWS_CREDENTIAL', dcat_con_id => 'AWS_GLUE_CONN');
     end;
     </copy>
     ```
 
     ![Set Glue Data Catalog and bucket credentials](images/set-glue-bucket-credentials.png)
 
-3. Set up a Data Catalog connection. You specify the region where your AWS Catalog is located and specify the catalog type as **AWS_Glue**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+3. Set up a connection to the AWS Glue Data Catalog. You specify the region where your AWS Catalog is located, the data catalog identifier, and the catalog type as **AWS_Glue**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     begin
-        dbms_dcat.set_data_catalog_conn(region => 'us-west-2', catalog_type=>'AWS_GLUE');
+        dbms_dcat.set_data_catalog_conn(region => 'us-west-2', dcat_con_id => 'AWS_GLUE_CONN', catalog_type => 'AWS_GLUE');
     end;
     </copy>
     ```
 
     ![Create a Glue connection](images/create-glue-connection.png)
 
-4. Once the association between AWS Glue and Autonomous Database is complete, you can use the **`all_glue_databases`** view to query the available databases in the AWS Glue Data Catalog. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+    >**Note:** You are only allowed to create one connection to either your OCI or AWS Data Catalog instances.
+
+4. Query the available Data Catalog connections. Remember, at this point you have two Data Catalog connections: An OCI Data Catalog connection and an AWS Glue Data Catalog connection. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    SELECT *
+    FROM all_dcat_connections;
+    </copy>
+    ```
+
+    ![Query Glue databases](images/query-dcat-connections.png)
+
+5. Once the association between AWS Glue and Autonomous Database is complete, you can use the **`all_glue_databases`** view to query the available databases in the AWS Glue Data Catalog. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -140,7 +153,7 @@ In this task, you will create the required credentials in Autonomous Database th
 
     ![Query Glue databases](images/query-glue-databases.png)
 
-5. Use the **`all_glue_tables`** view to get a list of tables available for synchronization. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+6. Use the **`all_glue_tables`** view to get a list of tables available for synchronization. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -169,6 +182,7 @@ In this task, you will create the required credentials in Autonomous Database th
             }
             ]
         }',
+        dcat_con_id => 'AWS_GLUE_CONN',
         error_semantics => 'STOP_ON_ERROR');
     end;
     /
@@ -177,9 +191,9 @@ In this task, you will create the required credentials in Autonomous Database th
 
     ![Synchronize ADB with AWS Glue](images/sync-adb-glue.png)
 
-2. Inspect the new protected schema in Autonomous Database that was created by the sync operation and the two external tables in that schema that were created on top of the two tables in the AWS S3 bucket. In the **Navigator** tab on the left, search for the schema with a name that starts with **`GLUE`** followed by the name of the AWS Glue database name, **`PARQ`** in this example. The generated schema name in this example is **`GLUE$PARQ_TPCDS_ORACLE_PARQ`**. This schema contains the **`ITEM`** and **`STORE`** external tables.
+2. Inspect the new protected schema in Autonomous Database that was created by the sync operation and the two external tables in that schema that were created on top of the two tables in the AWS S3 bucket. In the **Navigator** tab on the left, search for the schema with a name that starts with **`GLUE`**, **`$`**, the AWS Glue connection name, **`AWS_GLUE_CONN`**, the AWS Glue database name, **`PARQ`**, followed by other strings. The generated schema name in this example is **`GLUE$AWS_GLUE_CONN_PARQ_TPCDS_ORACLE_PARQ`**. This schema contains the **`ITEM`** and **`STORE`** external tables.
 
-    >**Note:** You might have to click the **Refresh** icon in the **Navigator** tab or select **Sign Out** from the **`ADMIN`** drop-down list, and then sign in again, before you can see the newly created protected schema.
+    >**Note:** You might have to click the **Refresh** icon in the **Navigator** tab before you can see the newly created protected schema. If the Refresh doesn't work, select **Sign Out** from the **`ADMIN`** drop-down list, and then click **Leave**. Next, on the **Sign-in** page, sign in as the **admin** user. On the **Launchpad**, in the **Development** section, click the **SQL** card.
 
     ![Explore protected schema](images/explore-protected-schema.png)
 
@@ -199,7 +213,7 @@ In this task, you will create the required credentials in Autonomous Database th
 
     ![Examine the Store external table](images/edit-store.png)
 
-7. In the **Table Properties** panel, click the **DDL** category.
+7. In the **Table Properties** panel, in the **External Table** tab, click the **DDL** category.
 
     ![Click DDL](images/click-ddl.png)
 

@@ -94,7 +94,7 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
     * **Catalog Name:** Enter a meaningful name. **Note:** The name must conform to the Oracle object naming conventions, which do not allow spaces or **hyphens**.
     * **Description:** Enter an optional description.
     * **Register Data Catalog Connection:** Select this checkbox.
-    * **Select Credential:** Select this check box (default). Select your credential that you created in **Lab 5 > Task 6**, **`OBJ_STORAGE_CRED`**. This could take a minute.
+    * **Select Credential:** Select your **`OBJ_STORAGE_CRED`** credential that you created in **Lab 5 > Task 6** from the drop-down list. This could take a minute.
     * **Region:** Your region should be already selected after you chose your credential.
     * **Data Catalog ID:** If you have several Data Catalog instances, select the Data Catalog instance that you want to register from the drop-down list.
 
