@@ -239,7 +239,9 @@ In this task, you define a connection to connect to an Oracle Object Storage buc
         + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
         + **Oracle Cloud Infrastructure User Name:** Enter your _**user's OCID**_ (and not the actual username).  _**Note:** If you did complete the optional **Task 5**, then the you should have already saved the user's OCID (and not the actual username) in a text file of your choice. If you didn't perform the optional **Task 5**, you can find the user's OCID as follows: Navigate to the **Oracle Cloud Console**. Click the **User's** drop-down list, and then select **User settings**. In the **User Details** page, in the **User Information** tab, click **Copy** next to the **OCID** field. Save this user OCID in your text file._
         
-            The **Add Cloud Store Location** panel is re-displayed. Specify the following:
+            ![The Create Credential dialog box.](./images/create-credential.png " ")
+
+            Click **Create Credential**. The **Add Cloud Store Location** panel is re-displayed. Specify the following:
 
         + Select the **Bucket URI** option.
         + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
