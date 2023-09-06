@@ -7,10 +7,9 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 25 minutes
 
-<!---
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_g5x49pk2)
--->
+[Create a database user](videohub:1_t22mdnao)
+
 
 ### Objectives
 
@@ -701,7 +700,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

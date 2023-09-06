@@ -19,25 +19,31 @@
             "filename": "../../4-understand-requirements-short.md"
           },
           {
-            "title": "Lab 2: Transform and prepare data",
+            "title": "Lab 2: Load demo data",
+            "description": "Load demo data for the Data Studio overview workshop",
+            "type": "livelabs",
+            "filename": "../../3-demo-data-short.md"
+          },
+          {
+            "title": "Lab 3: Transform and prepare data",
             "description": "Use Data Transforms to transform and prepare data",
             "type": "livelabs",
             "filename": "../../7-transform-data-short.md"
           },
           {
-            "title": "Lab 3: Analyze data",
+            "title": "Lab 4: Analyze data",
             "description": "Use Data Analysis to analyze data",
             "type": "livelabs",
             "filename": "../../8-analyze-data.md"
           },
           {
-            "title": "Lab 4: Explore data insights",
+            "title": "Lab 5: Explore data insights",
             "description": "Use Data Insight to find hidden patterns",
             "type": "livelabs",
             "filename": "../../9-insight-in-data.md"
           },
           {
-            "title": "Lab 5: Wrap up",
+            "title": "Lab 6: Wrap up",
             "description": "Wrap up and clean demo data",
             "type": "livelabs",
             "filename": "../../10-wrap-up-short.md"
