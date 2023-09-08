@@ -1,4 +1,5 @@
-# Use AI SQL for natural langugage queries
+# Use Natural Language Queries with ADB Select AI
+
 ## Introduction
 
 Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.
@@ -11,15 +12,17 @@ Estimated Time: 15 minutes.
 
 Learn how to
 * Create a credential that is used to sign LLM API requests
-* Create a profile that describes your LLM provider and the metadata (schemas, tables, views, etc.) that can be used for natural language queries. 
-* Ask natural language questions using an AI SQL extension
+* Create a profile that describes your LLM provider and the metadata (schemas, tables, views, etc.) that can be used for natural language queries.
+* Ask natural language questions using an **Select AI** extension
 * Tweak the configuration to improve natural language results
 
 
 ### Prerequisites
-- This lab requires completion of the first two labs in the Contents menu on the left.
+
+- This lab requires completion of the first two labs in the **Contents** menu on the left.
 
 ## Task 1: Log into OML Notebooks
+
 1. Go to the Database Actions Launchpad. If you are at the Autonomous Database in the OCI service console, then select **Database Actions -> View all database actions**:
 
     ![Go to Database actions](/common/building-blocks/tasks/adb/images/adb-dbactions-goto.png "Database Actions")
@@ -42,8 +45,8 @@ Learn how to
     
     ![Go to OML Notebooks EA](images/oml-goto-notebooks-ea.png "Go to OML Notebooks EA")
 
-
 ## Task 2: Import the ADB Speaks Human Notebook
+
 1. A notebook called ADB Speaks Human contains all the steps for setting up the AI profile and then running natural language queries. Download the notebook and remember its doenload location:
 
   [Download ADB Speaks Human notebook](../notebook/ADB%20Speaks%20Human.dsnb)
@@ -57,6 +60,7 @@ Learn how to
   ![Open the ADB Speaks Human notebook](images/oml-open-notebook.png)
 
 ## Task 3: Step thru the notebook paragraphs
+
 A notebook is comprised of paragraphs that use different languages: SQL, PLSQL, Python, R, markdown and more. The **ADB Speaks Human** notebook is well-document. Read thru the notebook, examine and execute the code. Feel free to run different types of queries!
 
 You'll see a series of buttons in the top right of each paragraph. The **play** button will execute the contents of that paragraph:
@@ -65,9 +69,23 @@ You'll see a series of buttons in the top right of each paragraph. The **play** 
 
 The results of the code execution is displayed under the paragraph code. For query result sets, you can view the data as a table or a variety of chart types.
 
+## Learn More
 
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 
 ## Acknowledgements
-  * **Author** - Marty Gubar, Product Management
-  * **Contributors** -  Marty Gubar, Product Management
-* **Last Updated By/Date** - Marty Gubar, Product Management, August 2023
+
+* **Author** - Marty Gubar, Product Management
+* **Contributors** -  Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, September 2023
+
+Data about movies in this workshop were sourced from **Wikipedia**.
+
+Copyright (C)  Oracle Corporation.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
