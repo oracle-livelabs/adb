@@ -17,7 +17,8 @@ Estimated Time: 5 minutes.
 
 ### Objectives
 
-Learn how to
+In this lab, you will:
+
 * Run the stack to perform all the prerequisites required to analyze data
 * Create a developer account with OpenAI
 
@@ -52,10 +53,10 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 Perform the following steps to set up your workshop environment by creating an ADB instance and upload the data.
 
 1. Deploy cloud resources using the OCI Resource Manager. Click the [Create and install stack] (https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;gen-ai&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;}) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will create the following:
-* A new Autonomous Database named **`MovieStreamWorkshop`**
-* A new user named **`moviestream`**
-* Movie related tables and views in the **`moviestream`** schema
-* The required privileges to perform various actions in the workshop
+    * A new Autonomous Database named **`MovieStreamWorkshop`**
+    * A new user named **`moviestream`**
+    * Movie related tables and views in the **`moviestream`** schema
+    * The required privileges to perform various actions in the workshop
 
     >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation. 
 
@@ -65,7 +66,7 @@ Perform the following steps to set up your workshop environment by creating an A
 
   ![The Stack information step 1 of the wizard](./images/create-stack.png "")
 
-3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be createdx, and then click **Next**.
+3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be created, and then click **Next**.
 
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png "")
 
@@ -75,11 +76,11 @@ Perform the following steps to set up your workshop environment by creating an A
 
     ![Click Create](./images/click-create.png "")
 
-5. The **Job details** page is displayed. The initial status (in orange) is **ACCEPTED** and then **IN PROGRESS**.
+5. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
 
   ![Job in progress](./images/in-progress.png "")
 
-  If the job completes successfully, the status changes to **SUCCEEDED** (green color). This process can take 5 to 10 minutes to complete.
+  If the job completes successfully, the status changes to **SUCCEEDED** (in green color). This process can take 5 to 10 minutes to complete.
 
   ![Job has been successful](./images/stack-success.png "")
 
@@ -147,7 +148,7 @@ Sign up for an **OpenAI** account as follows:
 
     ![Credit amount dialog box](images/credit-amount.png =75%x*"")
 
-    A successful purchase message is displayed briefly. The **Billing overview** page is re-displayed. The updated credit balance is displayed, $ 10. In our example, we had a free credit of $5 and we just purchased another $5.
+    A successful purchase message is displayed briefly. The **Billing overview** page is re-displayed. The updated credit balance is displayed. In our example the credit balance is now $10 because we had a free credit of $5 and we just purchased another $5.
 
     ![Credit balance dialog box](images/credit-balance.png " ")
 
@@ -168,7 +169,8 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
-* [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
+* [Oracle Cloud Infrastructure](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
+* [OpenAI API Get Started](https://platform.openai.com/docs/introduction)
 
 ## Acknowledgements
 

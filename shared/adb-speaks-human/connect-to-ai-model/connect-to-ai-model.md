@@ -8,7 +8,7 @@ Estimated Time: 10 minutes.
 
 ### Objectives
 
-Learn how to
+In this lab, you will:
 * As the `ADMIN` user, enable users to connect to the LLM REST endpoint
 * Grant users privileges to use the **Select AI** APIs
 
@@ -82,7 +82,7 @@ You may now proceed to the next lab.
 
 ## Learn More
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
-* [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
+* [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
 
 ## Acknowledgements
   * **Author** - Marty Gubar, Product Management

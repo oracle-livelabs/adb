@@ -4,60 +4,84 @@
 
 Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.
 
-You will use an Oracle Machine Learning notebook to learn how to ask natural language queries with Autonomous Database. There are many SQL tools that you can use; we are using the notebook because it's a great way to illustrate the examples.
+In this lab, you will use an Oracle Machine Learning (OML) notebook to learn how to ask natural language queries with Autonomous Database. Although there are many SQL tools that you can use, we are using the notebook because it's a great way to illustrate the examples.
 
 Estimated Time: 15 minutes.
 
 ### Objectives
 
-Learn how to
+In this lab, you will:
+
 * Create a credential that is used to sign LLM API requests
 * Create a profile that describes your LLM provider and the metadata (schemas, tables, views, etc.) that can be used for natural language queries.
 * Ask natural language questions using an **Select AI** extension
 * Tweak the configuration to improve natural language results
 
-
 ### Prerequisites
 
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
 
-## Task 1: Log into OML Notebooks
+## Task 1: Access Oracle Machine Learning (OML) Notebooks
 
-1. Go to the Database Actions Launchpad. If you are at the Autonomous Database in the OCI service console, then select **Database Actions -> View all database actions**:
+You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
-    ![Go to Database actions](/common/building-blocks/tasks/adb/images/adb-dbactions-goto.png "Database Actions")
+If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL banner** to display the Database **Actions | Launchpad** Home page. In the **Development** section, click the **Oracle Machine Learning** card to display the **Sign In** page. Continue with step **step 7** below.
 
-    Logging into Database Actions from the OCI service console expects you to be the ADMIN user. Log in as ADMIN if you are not automatically logged into Database Actions.
+   ![Click the banner](./images/click-banner.png " ")
 
-2. In the Launchpad, click **Oracle Machine Learning**:
+If you are no longer logged in to your Cloud account, start with **step 1** below.
 
-    ![Go to OML](images/adb-goto-oml.png "Go to OML")
+1. Log in to the **Oracle Cloud Console** as the Cloud Administrator.
 
-3. Log in in as MOVIESTREAM.
+    >**Note:** To access **Database Actions** from the Console, you must log in as an **`ADMIN`** user.
 
-    ![Oracle Machine Learning Notebooks sign-in page](images/oml-login-page.png " ")
+2. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
 
-4. You are now in the OML landing page. This page takes you to tutorials, model creation, notebooks and more. Go to the Early Adopter Notebooks. Click **Notebooks**:
+3. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-    ![Go to OML Notebooks](images/oml-goto-notebooks.png "Go to OML Notebooks")
+4. On the **Autonomous Databases** page, make sure that the **`your-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section, and then click your **`MovieStreamWorkshop`** ADB that you provisioned earlier.
 
-  And then select **Go to OML Notebooks EA**:
-    
-    ![Go to OML Notebooks EA](images/oml-goto-notebooks-ea.png "Go to OML Notebooks EA")
+5. On the **Autonomous Database Details** page, click the **Database Actions** drop-down list, and then select **View all database actions** from the list.
 
-## Task 2: Import the ADB Speaks Human Notebook
+   ![Select view all database actions](./images/view-all-database-actions.png " ")
 
-1. A notebook called ADB Speaks Human contains all the steps for setting up the AI profile and then running natural language queries. Download the notebook and remember its doenload location:
+6. On the **Database Actions | Launchpad** page, in the **Development** section, click the **ORACLE MACHINE LEARNING** card.
 
-  [Download ADB Speaks Human notebook](../notebook/ADB%20Speaks%20Human.dsnb)
+    ![Click the Oracle Machine Learning card](./images/oml-card.png " ")
 
-2. Next, import the notebook by clicking the **Import** button and selecting the notebook file you just downloaded:
-  
-  ![Import the ADB Speaks Human notebook](images/oml-import-notebook.png)
+7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 Step 6** in the **Password** field, and then click **Sign In**.
 
-3. Open the **ADB Speaks Human** Notebook and then proceed to the next task.
+    ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
 
-  ![Open the ADB Speaks Human notebook](images/oml-open-notebook.png)
+    The **Oracle Machine Learning** Home page is displayed. You can use this landing page to access tutorials, model creation, notebooks, and much more.
+
+    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page.png " ")
+
+8. In the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
+
+    ![The Notebooks page is displayed](./images/notebooks-page.png " ")
+
+## Task 2: Import a Notebook into OML
+
+You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **ADB Speaks Human** contains all the steps for setting up the **Select AI** profile and then run natural language queries. In this task, you will first download the **ADB Speaks Human** OML notebook to your local machine, and then import this notebook into OML.
+
+1. Click the following link to download the [ADB Speaks Human.dsnb](../notebook/ADB%20Speaks%20Human.dsnb) OML Notebook.
+
+2. Click **Go to OML Notebooks EA**. The **OML Notebooks EA (Early Adopter)** page is displayed.
+
+    ![The OML Notebooks EA page is displayed](./images/ea-page.png " ")
+
+3. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`ADB Speaks Human.dsnb`** notebook file. The file is displayed in the **File name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+
+    ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
+
+     If the import is successful, a notification is displayed and the **`ADB Speaks Human`** notebook is displayed in the list of available notebooks.
+
+    ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
+
+5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**.
+
+    ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
 
 ## Task 3: Step thru the notebook paragraphs
 
@@ -71,8 +95,9 @@ The results of the code execution is displayed under the paragraph code. For que
 
 ## Learn More
 
+* [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
-* [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
+* [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 
 ## Acknowledgements
 
