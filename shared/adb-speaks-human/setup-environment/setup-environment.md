@@ -52,7 +52,7 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
 Perform the following steps to set up your workshop environment by creating an ADB instance and upload the data.
 
-1. Deploy cloud resources using the OCI Resource Manager. Click the [Create and install stack] (https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;gen-ai&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;}) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will create the following:
+1. Deploy cloud resources using the OCI Resource Manager. Click the [Create and install stack] (https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={%22tag%22:%22gen-ai%22,%22run_post_load_procedures%22:%22true%22}) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will create the following:
     * A new Autonomous Database named **`myquickstart`** but you will change the database name with your own name
     * A new user named **`moviestream`**
     * Movie related tables and views in the **`moviestream`** schema
@@ -104,6 +104,10 @@ Perform the following steps to set up your workshop environment by creating an A
 
     ![Details page](./images/job-details.png "")
 
+    In the following failed job, we scrolled down to the **Logs** section, and then searched for text in red font color which describes the potential problem. In this example, we specified a database name with an underscore which does not meet the requirements for a database name.
+
+    ![Failed job](./images/failed-job.png =75%x*)
+
 9. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the compartment and region that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned with by the stack is displayed, **``MovieStreamWorkshop``**. In the scripts that we used in this workshop, we specified the ADB instance and display names to be **``MovieStreamWorkshop``**.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
@@ -142,11 +146,11 @@ Sign up for an **OpenAI** account as follows:
 
 6. Complete the **Set up payment plan** dialog box, and then **Continue**.
 
-    ![Complete the payment plan dialog box](images/complete-payment-dialog.png =75%x*"")
+    ![Complete the payment plan dialog box](images/complete-payment-dialog.png =75%x*)
 
 7. In the **Configure payment** dialog box, enter the dollar amount of the credit you want to purchase (between 5 and 50), and then click **Continue**. In this example, we chose **$ 5**.
 
-    ![Credit amount dialog box](images/credit-amount.png =75%x*"")
+    ![Credit amount dialog box](images/credit-amount.png =75%x*)
 
     A successful purchase message is displayed briefly. The **Billing overview** page is re-displayed. The updated credit balance is displayed. In our example the credit balance is now $10 because we had a free credit of $5 and we just purchased another $5.
 

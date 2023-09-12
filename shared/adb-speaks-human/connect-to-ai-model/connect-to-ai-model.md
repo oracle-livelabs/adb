@@ -43,7 +43,6 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
     ![The moviestream tables.](./images/moviestream-tables.png " ")
 
-
 ## Task 2: Grant the MOVIESTREAM User Permissions to Use Select AI
 
 The first thing you need to do is grant the **`moviestream`** user permissions to make REST calls to **api.open.com**. This is done by adding the user to the network Access Control List (ACL). For more details, see the [`DBMS_NETWORK_ACL_ADMIN` PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation.
