@@ -109,7 +109,7 @@ Now we are ready to prepare the data.
 
 2.  Clock on the **OK** for the import job. This job will run into the background and after few minutes you can refresh the list. You should be able to **CUSTOMER\_SALES\_ANALYSIS** table in the list.
     
-    ![screenshot of the connection menu](images/image17_import_entity_ok.png) 
+    ![screenshot of the connection menu](images/image17_import_entity_dialog.png) 
 
     ![screenshot of the connection menu](images/image17_view_entity.png) 
 
