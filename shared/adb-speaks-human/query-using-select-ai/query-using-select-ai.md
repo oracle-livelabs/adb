@@ -101,7 +101,7 @@ Let's look at a couple of examples:
 
     ![Query output](./images/output.png =50%x*)
 
-  This is great! We can see the total number of views for each moving where Tom Hanks was an actor. But, what if you expected movies where he was also a producer and director? This may not be what you expected.
+  We can see the total number of views for each moving where Tom Hanks was an actor; however, what if you expected movies that he also produced and directed? This may not be what you expected.
 
 _**In summary, using LLMs infer a lot from human language. It's always good to verify your results.**_
 
