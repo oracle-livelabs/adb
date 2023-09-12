@@ -159,7 +159,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
 
-     If the import is successful, a notification is displayed and the **`ADB Speaks Human`** notebook is displayed in the list of available notebooks.
+    If the import is successful, a notification is displayed and the **`ADB Speaks Human`** notebook is displayed in the list of available notebooks.
 
     ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
 
