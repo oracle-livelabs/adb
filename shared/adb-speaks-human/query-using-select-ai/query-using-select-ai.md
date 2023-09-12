@@ -85,7 +85,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
 ## Task 3: Review and Run the Imported Notebook
 
-A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL, Python, R, markdown and more. The **ADB Speaks Human** notebook is well-document. Read thru the notebook, examine and execute the code. Feel free to run different types of queries!
+A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL, Python, R, markdown and more. The **ADB Speaks Human** notebook is well-documented using markdown code. Examine the paragraphs in the notebook and then execute the code. Feel free to run different types of queries!
 
 You'll see a series of buttons in the top right of each paragraph. The **play** button will execute the contents of that paragraph:
 

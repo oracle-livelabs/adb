@@ -23,7 +23,7 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-3. On the **Autonomous Databases** page, click your **`MovieStreamWorkshop`** ADB instance.
+3. On the **Autonomous Databases** page, click your ADB instance name, **`MovieStreamWorkshop`** in our example.
 
     ![The Autonomous Database is displayed and highlighted.](./images/adb-instances.png " ")
 
@@ -31,11 +31,13 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
     ![From the Database Actions drop-down list, click SQL.](./images/click-db-actions-sql.png " ")
 
-    The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed. A **Logged in as ADMIN user** warning box is displayed, close this box. The first time you access the SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the Tour button (labeled with binoculars symbol) in the upper right corner. Click **Next** to take a tour through the informational boxes.
+
+    ![An information box is displayed.](./images/information-box.png " ")
+
+    In this example, close the **Data Loading** box.
 
     ![The SQL Worksheet is displayed.](./images/sql-worksheet.png " ")
-
-    >**Note:** The first time you access the SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the Tour button (labeled with binoculars symbol) in the upper right corner. Click **Next** to take a tour through the informational boxes.
 
 5. In the **Navigator** tab on the left, select the **`moviestream`** user from the drop-down list. This user was created when you created and ran the stack. The tables that were created for this user are displayed.
 

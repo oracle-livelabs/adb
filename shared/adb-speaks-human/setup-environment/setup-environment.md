@@ -53,12 +53,12 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 Perform the following steps to set up your workshop environment by creating an ADB instance and upload the data.
 
 1. Deploy cloud resources using the OCI Resource Manager. Click the [Create and install stack] (https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;gen-ai&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;}) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will create the following:
-    * A new Autonomous Database named **`MovieStreamWorkshop`**
+    * A new Autonomous Database named **`myquickstart`** but you will change the database name with your own name
     * A new user named **`moviestream`**
     * Movie related tables and views in the **`moviestream`** schema
     * The required privileges to perform various actions in the workshop
 
-    >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation. 
+    >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation.
 
 2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** step 1 of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** check box. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
 
@@ -66,7 +66,7 @@ Perform the following steps to set up your workshop environment by creating an A
 
   ![The Stack information step 1 of the wizard](./images/create-stack.png "")
 
-3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be created, and then click **Next**.
+3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be created. In our example, we chose the `ca-toronto-1` region and our own compartment. The **Database Name** field displays the default database name, **`myquickstart`**. Replace this database name with your own name. The name must be 12 to 30 alphanumeric characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character, space, underscore "_", or the username `admin`. In our example, we chose the database name to be **`MovieStreamWorkshop`**. Click **Next**.
 
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png "")
 
