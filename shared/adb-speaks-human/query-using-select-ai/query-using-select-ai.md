@@ -99,7 +99,7 @@ Let's look at a couple of examples:
     GROUP BY m.title;
     ```
 
-    ![Query output](./images/output.png =75%x*)
+    ![Query output](./images/output.png =50%x*)
 
   This is great! We can see the total number of views for each moving where Tom Hanks was an actor. But, what if you expected movies where he was also a producer and director? This may not be what you expected.
 
