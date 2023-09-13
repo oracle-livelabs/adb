@@ -66,7 +66,7 @@ Perform the following steps to set up your workshop environment by creating an A
 
   ![The Stack information step 1 of the wizard](./images/create-stack.png "")
 
-3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be created. In our example, we chose the `ca-toronto-1` region and our own compartment. The **Database Name** field displays the default database name, **`myquickstart`**. Replace this database name with your own name. The name must be 12 to 30 alphanumeric characters and contain at least one uppercase letter, one lowercase letter, and one number. The password cannot contain the double quote (") character, space, underscore "_", or the username `admin`. In our example, we chose the database name to be **`MovieStreamWorkshop`**. Click **Next**.
+3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be created. In our example, we chose the `ca-toronto-1` region and our own compartment. The **Database Name** field displays the default database name, **`myquickstart`**. Replace this name with your own name. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`. In our example, we chose the database name to be **`MovieStreamWorkshop`**. Click **Next**. 
 
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png "")
 
@@ -114,7 +114,7 @@ Perform the following steps to set up your workshop environment by creating an A
 
 ## Task 3: Sign up for Access to a Large Language Model (LLM)
 
-Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application, allowing you to leverage general models such as Cohere Command, OpenAI GPT-3.5, and so on as well as industry specific models or custom models that you may have deployed in your tenancy.
+Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
 
 Sign up for an **OpenAI** account as follows:
 

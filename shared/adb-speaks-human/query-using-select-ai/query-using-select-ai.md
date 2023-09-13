@@ -31,10 +31,12 @@ Profiles capture the properties of your LLM provider plus the tables and views y
 
 ### **Create an AI Profile**
 
+You can have multiple profiles where each one is pointing to different models or enabling different tables and views.
+
 To get started, you'll need to do the following:
 
 * Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package
-* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your LLM provider and the metadata such as schemas, tables, views, and so on. that can be used for natural language queries. You can have multiple profiles where each one is pointing to different models.
+* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your LLM provider and the metadata such as schemas, tables, views, and so on that can be used for natural language queries. You can have multiple profiles where each one is pointing to different models.
 * Set up the profile for your session. Because we're accessing a single LLM, create a **`LOGON`** trigger that sets the profile for your session.
 
 ### **Ask Natural Language Questions**
@@ -88,7 +90,7 @@ Let's look at a couple of examples:
 
     >**Note:** _LLMs are remarkable at inferring intent - and getting better all the time. But, they are not perfect! It is very important to verify the results._
 
-    For example, let's say you ask the question "What are our total streams for Tom Hanks movies this month?". The LLM will interpret the question and produce SQL that will provide the answer.
+    For example, let's say you ask the question "What are our total streams for Tom Hanks movies this month?". The LLM will interpret the question and produce SQL that will provide an answer.
 
     ```
     SELECT m.title AS movie_title, COUNT(s.views) AS total_streams
@@ -101,7 +103,7 @@ Let's look at a couple of examples:
 
     ![Query output](./images/output.png =50%x*)
 
-  We can see the total number of views for each moving where Tom Hanks was an actor; however, what if you expected movies that he also produced and directed? This may not be what you expected.
+  We can see the total number of views for each movie where Tom Hanks was an actor; however, what if you expected movies that he also produced and directed? This may not be what you expected.
 
 _**In summary, using LLMs infer a lot from human language. It's always good to verify your results.**_
 
@@ -142,6 +144,8 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
     ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page.png " ")
 
 8. In the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
+
+    >**Note:** In this workshop, we are using the Early Adopter version of the notebook.
 
     ![The Notebooks page is displayed](./images/notebooks-page.png " ")
 
@@ -193,7 +197,11 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     The code sections are hidden. It is a good practice to hide the code section of a **`%md`** paragraph since you are only interested in looking at the formatted output.
 
-4. To run a paragraph, click the **Run Paragraph** icon for the paragraph.
+4. If you plan on running the notebook, you must update the password value place holder, **`your-LLM-secret-key-goes-here`**, in the **Create credential and AI Profile** with your own secret key that you created in **Lab 1 > Task 3**.
+
+    ![Replace the password placeholder with your own secret key.](./images/secret-key.png " ")
+
+5. To run a paragraph, click the **Run Paragraph** icon for the paragraph.
 
     ![To run a paragraph, click the Run icon for the paragraph](./images/run-paragraph.png " ")
 
