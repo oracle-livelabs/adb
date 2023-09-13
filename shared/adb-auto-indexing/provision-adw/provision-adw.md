@@ -36,7 +36,7 @@ Estimated Time: 15 minutes.
 
     This will produce a drop-down menu. Click **Oracle Database** and then select **Autonomous Data Warehouse**.
 
-    ![Oracle Cloud Web Console](https://raw.githubusercontent.com/oracle/learning-library/master/common/images/console/database-adw.png " ")
+    ![Oracle Cloud Web Console](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
     This will take you to the management console page.
 
