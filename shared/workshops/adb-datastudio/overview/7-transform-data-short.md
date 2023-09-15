@@ -7,10 +7,9 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 20 minutes
 
-<!---
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_g5x49pk2)
--->
+[Create a database user](videohub:1_t22mdnao)
+
 
 ### Objectives
 
@@ -102,7 +101,19 @@ a complete tool for complex data integration projects.
 
 Now we are ready to prepare the data.
 
-## Task 3: Create a data flow to load a new table to analyze customer sales
+## Task 3: Import table definitions
+
+1.  Before you work on any project you need to have table definitions for the tables you will be working on. You can import the definitions from your connections. You can also manually create the definitions if you are creating new tables. In our lab we are simply working on the tables already present in our Autonomous database. Some entities are already present in our pre-provisioned environment but not all. Click on **Data Entities** on the left side to look at available tables. Then click on **Import Data Entities** and select connection and schema QTEAM. Click **Start**.
+    
+    ![screenshot of the connection menu](images/image17_import_entity.png) 
+
+2.  Clock on the **OK** for the import job. This job will run into the background and after few minutes you can refresh the list. You should be able to **CUSTOMER\_SALES\_ANALYSIS** table in the list.
+    
+    ![screenshot of the connection menu](images/image17_import_entity_dialog.png) 
+
+    ![screenshot of the connection menu](images/image17_view_entity.png) 
+
+## Task 4: Create a data flow to load a new table to analyze customer sales
 
 >**Note:** In this environment, a Data Transforms project and an empty data flow and a partially created data flow has been pre-created. You will update the existing data flow to perform the data transformations required.
 
@@ -110,15 +121,17 @@ Now we are ready to prepare the data.
 
     ![The Data Transforms menu with Projects selected](images/dtshort-projects.png)
 
-2.  Click the **SalesData** project. You will find the following data flows:
+2.  Click the **SalesData** project. You will find the following data flow:
    
-   1: **load\_customer\_sales\_analysis** : This is an empty data flow. Use this to go through all the transforms creation steps in this workshop.
-
-   2: **load\_customer\_sales\_analysis\_partial** : This is a partially created data flow for a short workshop. This data flow already has aggregation, customer value calculation by binning and age group lookup transforms in the flow. If you want, you can review these steps by clicking on the transforms. Use this data flow to add transforms steps starting from step 18 in this workshop. Directly skip to step 18 and continue the workshop.
+   **load\_customer\_sales\_analysis** : This is an empty data flow. Use this to go through all the transforms creation steps in this workshop.
 
     ![A list of data flows in the SalesData project](images/dtshort-dataflow_two.png)
 
+    >**Note:** In this environment, You also have a second project called **SalesData-Lazy**. This project has a partially created project. If you are running out of time then you can use it to study the data flow and complete it for saving time. You only need to connect the target table in this pre created data flow and configure it for execution. You can directly jump to step 19 to complete the flow.
+
 3.  A window will pop up to **Add a Schema**. Make sure the Schema is set to **QTEAM** and click OK. The schema will then appear under **Data Entities**. Expand the schema to show the tables.
+
+    ![Expand the schema to show the data entities](images/expand-schema-short_add.png)
 
     ![Expand the schema to show the data entities](images/expand-schema-short.png)
 
@@ -378,7 +391,7 @@ Now we are ready to prepare the data.
 For now, it is just a cursory data glance. We will need to use the **Data Analysis** 
 tool to analyze this data and find many interesting patterns.
 
-## Task 4: How to debug
+## Task 5: How to debug
 
 >**Note:** This is for advanced users. Skip if you don't have any errors and you want 
 to straight go to the next lab.
@@ -440,7 +453,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.
