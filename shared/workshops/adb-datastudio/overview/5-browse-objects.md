@@ -7,10 +7,9 @@ This lab introduces the Catalog application built into the Oracle Autonomous Dat
 
 Estimated Time: 5 minutes
 
-<!---
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_mnozgu6c)
--->
+[Browse Catalog](videohub:1_s2t3xdyj)
+
 
 ### Objectives
 
@@ -129,7 +128,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.
