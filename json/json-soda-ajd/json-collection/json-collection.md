@@ -32,7 +32,7 @@ In this lab, you will:
 
 	![Create Collection](./images/create-collection.png)
 
-2. Provide a name for your collection in the field **Collection Name - products** and click **Create**. MAKE SURE you check the **MongoDB Compatible** box. Note that the collection name is case-sensitive. You must enter products in all lower-case, don't use PRODUCTS or Products.
+2. Provide a name for your collection in the field **Collection Name - products** and click **Create**. MAKE SURE you check the **MongoDB Compatible** box. Note that the collection name is case-sensitive. it is highly recommended to use only lower cases, since this will be the collection name used later on. Do not used mixed capitalization, otherwise you will have to double-quote the table name for SQL access all the time (Oracle normalizes the collection names to upper case for the underlying table if you choose all lower or upper case names, but not for mixed capitalization). 
 
 	![New collection: products](./images/new-products.png)
 

@@ -31,7 +31,7 @@ In this lab, you will:
 	https://<your URL>/ords/admin/soda/latest/
 	```
 
-	Your URL should now look like this:
+	Your URL should now look like this. The output might vary, depending on installed extensions and the browser you have chosen for this lab:
 
 	```
 	https://ppkhnzjhg74axsq-bedasatpdb.adb.eu-frankfurt-1.oraclecloudapps.com/ords/admin/soda/latest
