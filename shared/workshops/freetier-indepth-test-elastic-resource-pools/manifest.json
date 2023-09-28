@@ -1,21 +1,21 @@
 {
-  "workshoptitle" : "Manage and Monitor Autonomous Database",
+    "workshoptitle" : "Manage and Monitor Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
-        {
-            "title": "Get Started",
-            "description": "Login to Oracle Cloud",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
-        },
         {
             "title": "Introduction",
             "description": "Introduction to ADB on Shared Infrastructure",
             "filename": "./intro.md"
         },
         {
-            "title": "Lab 1: Provision an Autonomous Database",
+            "title": "Get Started",
+            "description": "Get a Free Trial",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Provision Autonomous Database",
             "description": "Provision Autonomous Database",
-            "type": "livelabs",
+            "type": "freetier",
             "filename": "./../../adb-provision/adb-provision-conditional.md"
         },
         {
@@ -79,14 +79,20 @@
             "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
         },
         {
-            "title": "Lab 14: Elastic Resource Pools",
+            "title": "Lab 14: Flashback Time Travel",
+            "description": "Flashback Time Travel",
+            "filename": "./../../adb-flashback/adb-flashback.md"
+        },
+        {
+            "title": "Lab 15: Elastic Resource Pools",
             "description": "Elastic Resource Pools",
             "filename": "./../../adb-elastic-resource-pools/adb-elastic-resource-pools.md"
         },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
+
     ]
 }
