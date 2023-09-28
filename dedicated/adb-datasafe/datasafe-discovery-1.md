@@ -3,8 +3,6 @@
 ## Introduction
 Using Oracle Data Safe, discover sensitive data in your Autonomous database with the Data Discovery wizard and identify dictionary-based and non-dictionary referential relationships, in a sensitive data model, to modify and analyze results and reports.
 
-To log issues and view the Lab Guide source, go to the [GitHub Oracle Learning Library](https://github.com/oracle/learning-library/issues/new) repository.
-
 Estimated Time: 40 minutes
 
 ### Objectives
