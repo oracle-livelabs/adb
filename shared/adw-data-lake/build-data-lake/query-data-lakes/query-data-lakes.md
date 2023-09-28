@@ -89,7 +89,7 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
 3. The **Load Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job.
 
-    Copy the following public object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field:
+    Copy the following public object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. Alternatively, you can select it from the drop-down list.
 
     ```
     <copy>
@@ -107,8 +107,7 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
     ![Click yes to load objects to a single table.](images/load-to-single-table.png)
 
-    The **`customer_contact`** target table to be created for the selected 
-    **`.csv`** file is displayed in the data linking job section. Again, since we already have linked to the **`customer_contact`** file in a previous lab, the data load utility changed the name of the newly created external table to **`customer_contact_1`**.
+    The **`customer_contact`** target table to be created for the selected **`.csv`** file is displayed in the data linking job section. Again, since we already have linked to the **`customer_contact`** file in a previous lab, the data load utility changed the name of the newly created external table to **`customer_contact_1`**.
 
     >**Note:** You can click the **`customer_contact (23 MB)`** link to display the settings for the table that will be created. You can preview the external table and change its name, data type, and so on.
 
@@ -152,11 +151,11 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
     
         + **Cloud Username and Password:** Select this option, if not already selected.
         + **Cloud Store:** Select **Amazon S3** option from the drop-down list.
-        + **Credential Name:** Enter **aws_credential**.
+        + **Credential Name:** Enter **`aws_s3_credential`**.
         + **AWS access key ID:** Enter the access key id.
         + **AWS secret access key:** Enter the secret access key.
     
-            ![The Amazon S3 credential.](images/aws-credential.png)
+            ![The Amazon S3 credential.](images/aws-s3-credential.png)
 
         Click **Create Credential**. The **Add Cloud Store Location** panel is re-displayed. Specify the following: 
 
@@ -165,7 +164,7 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
             `https://<bucket-name>.s3.<region>.amazonaws.com/`
 
-        ![Complete the Add Cloud Store Location.](./images/complete-add-aws-connection.png " ")
+            ![Complete the Add Cloud Store Location.](./images/complete-add-aws-connection.png " ")
 
 4. Click **Next** to see the available objects in the bucket that you specified. We will only use the **`potential_churners.csv`** file.
 
