@@ -2,7 +2,19 @@
 
 ## Introduction
 
-Elastic resource pools allow a group of Autonomous Database instances that are members of a resource pool to share CPU resources (ECPUs).
+Use an elastic resource pool to consolidate your Autonomous Database instances, in terms of their allocation of compute resources, and to provide up to 8 times cost savings.
+
+Elastic resource pools help you improve operating efficiency and reduce costs by bringing all of your databases to the Cloud. This also supports consolidating resources and simplifying administration and operations by using Autonomous Database. When you need a large number of databases, that can scale up and down elastically without downtime, you can benefit by creating and using resource pools.
+
+Elastic resource pools:
+
+* Enable operating with a fixed budget for a group of databases, while delivering performance elasticity for each individual database.
+
+* Allow for easy migration from on-prem Oracle environments that include oversubscription, to provide a cost effective way to move to Autonomous Database.
+
+* Support SaaS vendors with a large number of individual customer databases.
+
+* Provide resources for using a microservices architecture, where the ability to supply of large number of databases is required.
 
 > **Note**: Elastic resource pools are only available for Autonomous Database instances that use the ECPU compute model and that are provisioned with the Transaction Processing or Data Warehouse workload types.
 
@@ -184,11 +196,9 @@ A resource pool leader can remove pool members from a resource pool. Pool member
 
 The following link provide documentation about using and managing elastic resource pools on Autonomous Database:
 
-- [Use and manage elastic resource pools](https://docs-uat.us.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/elastic-resource-pools-autonomous.html#GUID-FEA9B01D-BD76-40E9-9E72-7BAFBD694470)
-
-**>>>>>>> NOTE: When elastic resource pools are released, change this doc link to the production doc link**
+- [Use and manage elastic resource pools](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/elastic-resource-pools-autonomous.html#GUID-FEA9B01D-BD76-40E9-9E72-7BAFBD694470)
 
 ## Acknowledgements
 
 - **Author** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Rick Green, August 2023
+- **Last Updated By/Date** - Rick Green, September 2023
