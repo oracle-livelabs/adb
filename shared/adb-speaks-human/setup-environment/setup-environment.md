@@ -1,5 +1,9 @@
 # Set up the Workshop Environment
 
+<!---
+comments syntax
+--->
+
 ## Introduction
 
 This workshop will focus on teaching you how to setup and use generative AI to query your data using natural language from a SQL prompt and from an application. To fast track to using **Select AI**, you will learn how to deploy an environment that is ready to go in this lab using a terraform script that will:
@@ -8,6 +12,7 @@ This workshop will focus on teaching you how to setup and use generative AI to q
 * Create a user
 * Create tables and views
 * Load data from object storage
+* Install the **Autonomous Database Select AI** demo application
 
 The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure Documentation documentation.
 
@@ -48,17 +53,28 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
 
-## Task 2: Provision an ADB Instance and Load Data Using an OCI Cloud Stack
+## Task 2: Provision an ADB Instance, Load Data, and Download the Select AI Application
 
-Perform the following steps to set up your workshop environment by creating an ADB instance and upload the data.
+Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and download the ADB Select AI application.
 
-1. Deploy cloud resources using the OCI Resource Manager. Click the [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;gen-ai&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;}) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will create the following:
+1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/martygubar/adb-terraform/releases/download/v1.0/adb-select-ai-demo.zip) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
+    * Create a new Autonomous Database named **`MovieStreamWorkshop`** but you can replace the database name with your own name
+    * Create a new user named **`moviestream`**
+    * Create movie related tables and views in the **`moviestream`** schema
+    * Grant the required privileges to perform various actions in the workshop
+    * Download the **Autonomous Database Select AI** APEX application
+
+    >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation.
+
+<!--- original link
+1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-Autonomous-Database-and-the-MovieStream-data-sets-for-Oracle-LiveLabs-RM.zip&zipUrlVariables={&quot;tag&quot;:&quot;gen-ai&quot;,&quot;run\_post\_load_procedures&quot;:&quot;true&quot;,&quot;db\_name&quot;:&quot;myquickstart&quot;}) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will create the following:
     * A new Autonomous Database named **`myquickstart`** but you will change the database name with your own name
     * A new user named **`moviestream`**
     * Movie related tables and views in the **`moviestream`** schema
     * The required privileges to perform various actions in the workshop
 
     >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation.
+--->
 
 2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** step 1 of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** check box. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
 
@@ -66,9 +82,16 @@ Perform the following steps to set up your workshop environment by creating an A
 
   ![The Stack information step 1 of the wizard](./images/create-stack.png "")
 
-3. In the **Configure variables** step 2 of the wizard, select the target **compartment** and **region** where the new Autonomous Database instance will be created. In our example, we chose the `ca-toronto-1` region and our own compartment. The **Database Name** field displays the default database name, **`myquickstart`**. Replace this name with your own name. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`. In our example, we chose the database name to be **`MovieStreamWorkshop`**. Click **Next**. 
+3. In the **Configure variables** step 2 of the wizard, provide the following:
+    * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `ca-toronto-1` region.
+    * **Compartment:** Select the target compartment for the new Autonomous Database instance.
+    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
+    * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
+    * **Secret API key used to connect to AI model:** Enter your secret key. If you don't have one, follow the instructions in **Task 3** in this lab to obtain one.
+    
+        Click **Next**.
 
-    ![The Configure variables step 2 of the wizard](./images/configure-variables.png "")
+        ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)
 
     >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 
@@ -84,31 +107,37 @@ Perform the following steps to set up your workshop environment by creating an A
 
   ![Job has been successful](./images/stack-success.png "")
 
-6. Scroll-down to the **Resources** section at the bottom of **Job details** page, and then click **Outputs**. The keys and values are displayed in the **Outputs** section. Save the values for the following keys in a text editor of your choice as you will need this information later.
+6. Scroll-down to the **Resources** section at the bottom of **Job details** page, and then click **Outputs**. The keys and values are displayed in the **Outputs** section. Save the values for the following keys in a text editor of your choice as you will need this information later. For the **`select_ai_demo_url`** value, click the **Copy** button in that row to copy the value into the clipboard, and then paste it into your text editor. _This is the URL that you will use later to launch the **Autonomous Database Select AI** demo application._
 
-    * **`adb_admin_password`**
     * **`adb_user_name`**
     * **`adb_user_password`**
+    * **`select_ai_demo_url`**
 
-    ![User details](./images/output.png "")
+        ![User details](./images/output.png "")
 
-7. Let's view the completed job and the newly created stack. From the Console, open the **Navigation** menu and click **Developer Services**. Under **Resource Manager**, click **Jobs**.
+7. Let's view the completed the newly created stack and job. From the Console, open the **Navigation** menu and click **Developer Services**. Under **Resource Manager**, click **Stacks**.
 
-    ![Click Jobs](./images/click-jobs.png "")
+    ![Navigate to stacks](./images/navigate-stacks.png "")
 
-    The **Jobs** page is displayed. The completed job and stack are displayed on the page.
+    The newly created stack is displayed in the **Stacks** page.
+    
+    ![The stack is displayed](./images/stacks-page.png "")
+    
+8.  Click the stack name. The **Stack details** page is displayed.
 
-    ![Jobs page](./images/completed-job.png "")
+    ![Click Jobs](./images/stack-details-page.png "")
 
-8. Click the job link. The **Job details** page is displayed. You can use the **Logs** section to view the created resources such as the **moviestream** user. You can also use the **Resources** section to find out the values of different keys.
+9.  In the **Jobs** section, click the job name. The **Job details** page is displayed.
 
-    ![Details page](./images/job-details.png "")
+    ![Job details page](./images/job-details.png "")
 
-    In the following failed job, we scrolled down to the **Logs** section, and then searched for text in red font color which describes the potential problem. In this example, we specified a database name with an underscore which does not meet the requirements for a database name.
+    You can use the **Logs** section to view the created resources such as the **moviestream** user. You can also use the  **Output** link in the **Resources** section to find out the values of different keys.
 
-    ![Failed job](./images/failed-job.png =75%x*)
+    The **Logs** section is useful when you have a failed job and you try to find out why it failed. In the following failed job example, we scrolled down the log and then searched for text in red font color which describes the potential problem. In this specific example, we specified a database name with an underscore which does not meet the requirements for a database name.
 
-9. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the compartment and region that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned with by the stack is displayed, **``MovieStreamWorkshop``**. In the scripts that we used in this workshop, we specified the ADB instance and display names to be **``MovieStreamWorkshop``**.
+    ![Failed job](./images/failed-job.png "")
+
+9. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the compartment and region that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed, **``MovieStreamWorkshop``**.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
 
@@ -178,9 +207,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author** - Marty Gubar, Product Management
-* **Contributors** -  Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, September 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Marty Gubar, Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, October 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

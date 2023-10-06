@@ -18,7 +18,7 @@ In this workshop, you will:
 * Configure your Autonomous Database to leverage a generative AI model for querying data using natural language
 * Use AI SQL to query data using natural language
 * Learn about PL/SQL APIs that help integrate AI with your application
-* Use an APEX app that enables you chat with your data in your own language
+* Use the Autonomous Database Select AI demo application to chat with your data in your own language
 
 ### Oracle MovieStream Business Scenario
 The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to ask questions about movies, customers who watch movies, and the movies they decide to watch.
@@ -31,8 +31,9 @@ You may now proceed to the next lab.
 * [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
-* **Author** - Marty Gubar, Product Manager
-* **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, September 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Marty Gubar, Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, October 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

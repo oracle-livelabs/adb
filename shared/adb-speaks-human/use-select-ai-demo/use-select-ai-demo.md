@@ -1,8 +1,8 @@
-# Allow Users to Connect to Your LLM
+# Access the Select AI Demo Application
 
 ## Introduction
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
+In this lab, you will access and use the **Select AI demo application** that was installed when you ran the stack.
 
 Estimated Time: 10 minutes.
 
@@ -45,41 +45,9 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
 ## Task 2: Grant the MOVIESTREAM User Permissions to Use Select AI
 
-The first thing you need to do is grant the **`moviestream`** user permissions to make REST calls to **api.open.com**. This is done by adding the user to the network Access Control List (ACL). For more details, see the [`DBMS_NETWORK_ACL_ADMIN` PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation.
+The first thing you need to do is grant the **`moviestream`** user permissions to 
 
-Next, you will grant permissions to the **`moviestream`** user to use the **Select AI** by granting access to the `DBMS_CLOUD_AI` package.
 
-1. Open access to the LLM's rest endpoint. For this workshop, specify **`api.openai.com`** as the Host value and the **`moviestream`** as the principal_name. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    BEGIN
-    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE (
-      HOST         => 'api.openai.com',
-      LOWER_PORT   => 443,
-      UPPER_PORT   => 443,
-      ACE          => xs$ace_type(
-          PRIVILEGE_LIST => xs$name_list('http'),
-          PRINCIPAL_NAME => 'MOVIESTREAM',
-          PRINCIPAL_TYPE => xs_acl.ptype_db));
-    END;
-    /
-    </copy>
-    ```
-
-    ![Grant permission](./images/grant-permission.png " ")
-    
-2. Grant the **`moviestream`** user the required privileges to use the `DBMS_CLOUD_AI` PL/SQL package. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    GRANT EXECUTE ON DBMS_CLOUD_AI TO moviestream;
-    </copy>
-    ```
-
-    ![Grant access to package](./images/grant-access-package.png " ")
-
-You may now proceed to the next lab.
 
 ## Learn More
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)

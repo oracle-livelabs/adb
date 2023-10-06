@@ -35,9 +35,47 @@ You can have multiple profiles where each one is pointing to different models or
 
 To get started, you'll need to do the following:
 
-* Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package
-* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your LLM provider and the metadata such as schemas, tables, views, and so on that can be used for natural language queries. You can have multiple profiles where each one is pointing to different models.
-* Set up the profile for your session. Because we're accessing a single LLM, create a **`LOGON`** trigger that sets the profile for your session.
+* Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package as follows. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation.
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_CLOUD.CREATE_CREDENTIAL (credential_name => 'credential-name',
+		user_ocid => 'user-ocid',
+        tenancy_ocid => 'tenancy-ocid',
+		private_key =>  'private-key',
+		fingerprint => 'fingerprint-ocid');
+    END;
+    /
+    </copy>
+    ```
+
+* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your LLM provider and the metadata such as schemas, tables, views, and so on that can be used for natural language queries. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_CLOUD_AI.CREATE_PROFILE(
+        profile_name => 'OpenAI,
+        attributes => JSON_OBJECT('provider' value 'openai','credential_name' value 'openai_cred'),
+        description => 'AI profile to use OpenAI for SQL translation'
+     );
+   END;
+   /
+   </copy>
+    ```
+
+* Set up the profile for your session. Because we're accessing a single LLM, create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
+
+    ```
+    <copy>
+    CREATE OR REPLACE TRIGGER SET_AI_PROFILE AFTER LOGON ON SCHEMA
+        BEGIN
+            DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
+        END;
+    /
+    </copy>
+    ```
 
 ### **Ask Natural Language Questions**
 
@@ -222,9 +260,9 @@ The results of the code execution is displayed under the paragraph code. For que
 
 ## Acknowledgements
 
-* **Author** - Marty Gubar, Product Management
-* **Contributors** -  Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, September 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Marty Gubar, Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, October 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
