@@ -23,7 +23,7 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-3. On the **Autonomous Databases** page, click your ADB instance name, **`MovieStreamWorkshop`** in our example.
+3. On the **Autonomous Databases** page, click your ADB instance name, **`TrainingAIWorkshop`** in our example.
 
     ![The Autonomous Database is displayed and highlighted.](./images/adb-instances.png " ")
 

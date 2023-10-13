@@ -37,35 +37,46 @@ To get started, you'll need to do the following:
 
 * Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package as follows. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation.
 
+    >**Note:** Don't run the following code. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following credential.
+
     ```
-    <copy>
     BEGIN
-        DBMS_CLOUD.CREATE_CREDENTIAL (credential_name => 'credential-name',
-		user_ocid => 'user-ocid',
-        tenancy_ocid => 'tenancy-ocid',
-		private_key =>  'private-key',
-		fingerprint => 'fingerprint-ocid');
+        dbms_cloud.create_credential (
+            credential_name  => 'OPENAI_CRED',
+            username => 'OPENAI',
+            password => 'enter-your-LLM-secret-key-here'
+        );
     END;
     /
-    </copy>
     ```
 
-* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your LLM provider and the metadata such as schemas, tables, views, and so on that can be used for natural language queries. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _LLM provider_ and _the metadata such as schemas, tables, views, and so on that can be used for natural language queries_. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+
+    >**Note:** Don't run the following code. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following profile.
 
     ```
-    <copy>
     BEGIN
         DBMS_CLOUD_AI.CREATE_PROFILE(
-        profile_name => 'OpenAI,
-        attributes => JSON_OBJECT('provider' value 'openai','credential_name' value 'openai_cred'),
-        description => 'AI profile to use OpenAI for SQL translation'
-     );
-   END;
-   /
-   </copy>
+            profile_name => 'openai_gpt35',
+            attributes =>
+                '{"provider": "openai",
+                "credential_name": "OPENAI_CRED",
+                "object_list": [{"owner": "MOVIESTREAM", "name": "movies"},
+                                {"owner": "MOVIESTREAM", "name": "streams"},
+                                {"owner": "MOVIESTREAM", "name": "customer_extension"},
+                                {"owner": "MOVIESTREAM", "name": "pizza_shop"},
+                                {"owner": "MOVIESTREAM", "name": "actors"},
+                                {"owner": "MOVIESTREAM", "name": "genre"},
+                                {"owner": "MOVIESTREAM", "name": "customer_segment"},
+                                {"owner": "MOVIESTREAM", "name": "customer_contact"}
+                                ]
+                }'
+            );
+    END;
+    /
     ```
 
-* Set up the profile for your session. Because we're accessing a single LLM, create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
+* Create a logon trigger that will automatically set the profile for new connections session. In this workshop, we have only one LLM profile; therefore, you can create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
 
     ```
     <copy>
@@ -79,7 +90,7 @@ To get started, you'll need to do the following:
 
 ### **Ask Natural Language Questions**
 
-You can now ask questions using **`SELECT AI`**. **AI** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
+You can now ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
 
 Here are the actions:
 
@@ -101,7 +112,7 @@ Let's look at a couple of examples:
 
     `Tom Hanks is best known for his acting career, particularly for his roles in popular films such as "Forrest Gump," "Saving Private Ryan," "Cast Away," "Apollo 13," and "Toy Story" (as the voice of Woody). He is widely regarded as one of the greatest actors of his generation and has won numerous awards, including two Academy Awards for Best Actor.`
 
-2. The default for SELECT AI is `runsql`. This will run queries against your private data:
+2. The default for `SELECT AI` is `runsql`. This will run queries against your private data:
 
     ```
     SELECT AI
@@ -109,7 +120,7 @@ Let's look at a couple of examples:
     ```
     **Result:**
 
-    `91,893.77`
+    `70,318.23`
 
  3. View the SQL code that is generated by the following question:
 
@@ -205,7 +216,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
 
-5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**.
+5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
     ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
 
@@ -247,11 +258,13 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     >**Note:** If the status of one or more paragraphs shows **ERROR**, reset your notebook connection as follows: Click the **Navigation** menu on the Notebook banner, and then select **Notebook Sessions**. On the **Notebook Sessions** page, select your notebook, and then click **Stop**. Next, re-run the notebook.
 
-6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all** confirmation message box is displayed. Click **Confirm**.
+6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
 
   ![Run all paragraphs](images/run-all-paragraph.png)
 
 The results of the code execution is displayed under the paragraph code. For query result sets, you can view the data as a table or a variety of chart types.
+
+You may now proceed to the next lab.
 
 ## Learn More
 
