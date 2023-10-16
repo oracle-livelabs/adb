@@ -15,10 +15,11 @@ Generative AI enables users to quickly generate new content based on a variety o
 ### Objectives
 
 In this workshop, you will:
+
 * Configure your Autonomous Database to leverage a generative AI model for querying data using natural language
-* Use AI SQL to query data using natural language
+* Use **`Select AI`** to query data using natural language
 * Learn about PL/SQL APIs that help integrate AI with your application
-* Use the Autonomous Database Select AI demo application to chat with your data in your own language
+* Use the Select AI demo application to chat with your data in your own language
 
 ### Oracle MovieStream Business Scenario
 The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to ask questions about movies, customers who watch movies, and the movies they decide to watch.

@@ -4,7 +4,7 @@
 
 Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.
 
-In this lab, you will use an Oracle Machine Learning (OML) notebook to learn how to ask natural language queries with Autonomous Database. Although there are many SQL tools that you can use, we are using the notebook because it's a great way to illustrate the examples.
+As you can see from the previous labs, Select AI makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a demo app that was built using Oracle APEX. When you ran the scripts to set up your environment, the APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like), and manage conversations.
 
 Estimated Time: 15 minutes.
 
@@ -246,7 +246,7 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     The code sections are hidden. It is a good practice to hide the code section of a **`%md`** paragraph since you are only interested in looking at the formatted output.
 
-4. If you plan on running the notebook, you must update the password value place holder, **`your-LLM-secret-key-goes-here`**, in the **Create credential and AI Profile** with your own secret key that you created in **Lab 1 > Task 3**.
+4. The terraform setup script that you ran in Lab 1 created the credential you see in this paragraph. To create a credential, you must update the password value place holder, **`your-LLM-secret-key-goes-here`**, in the **Create credential and AI Profile** paragraph with your own secret key that you created in **Lab 1 > Task 3**.
 
     ![Replace the password placeholder with your own secret key.](./images/secret-key.png " ")
 

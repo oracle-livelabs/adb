@@ -6,13 +6,10 @@ comments syntax
 
 ## Introduction
 
-This workshop will focus on teaching you how to setup and use generative AI to query your data using natural language from a SQL prompt and from an application. To fast track to using **Select AI**, you will learn how to deploy an environment that is ready to go in this lab using a terraform script that will:
+This workshop focuses on teaching you how to setup and use generative AI to query your data using natural language from a SQL prompt and from an application. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
-* Provision your Autonomous Database instance
-* Create a user
-* Create tables and views
-* Load data from object storage
-* Install the **Autonomous Database Select AI** demo application
+* Provision your Autonomous Database instance with the required users and data
+* Install the Select AI demo application that was built using APEX
 
 The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure Documentation documentation.
 
@@ -55,7 +52,7 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
 ## Task 2: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
 
-Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and download the ADB Select AI application.
+Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and install the Select AI demo application that was built using APEX.
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the [Create and install stack](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-Select-AI-demonstration-RM.zip) link. The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
