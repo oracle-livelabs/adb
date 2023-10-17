@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with few. When you ran the scripts to set up your environment, The Select AI APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
+As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a few. When you ran the scripts to set up your environment, The Select AI APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
 
 >**Note:** Refer to lab 3 to review what you learned about creating profiles to specify what LLM provider and database schema/tables to use when answering your questions in the app.
 

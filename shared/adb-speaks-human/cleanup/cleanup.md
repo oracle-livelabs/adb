@@ -30,7 +30,7 @@ You can terminate your ADW instance that you created in this workshop as follows
 
 1. Open the **Navigation** menu and click **Oracle Databases**. Click **Autonomous Database**.
 
-2. On the **Autonomous Databases** page, in the **List Scope** section, select your compartment from the **Compartment** drop-down list. In the row for the your Autonomous Database instance, click the **Actions** icon (three dots), and then select **Terminate** from the context menu.
+2. On the **Autonomous Databases** page, in the **List Scope** section, select your compartment from the **Compartment** drop-down list. In the row for your Autonomous Database instance, click the **Actions** icon (three dots), and then select **Terminate** from the context menu.
 
 3. A **Terminate Autonomous Database** dialog box is displayed. Enter your ADB instance name in the **To confirm, enter the name of the database that you want to terminate** field, and then click **Terminate Autonomous Database**.
 
@@ -38,7 +38,7 @@ You can terminate your ADW instance that you created in this workshop as follows
 
 ## Task 3 (Optional): Delete Your Compartment
 
-If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you can must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
+If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
 
 1. Click the **Navigation** menu and click **Identity & Security**. Under **Identity**, select **Compartments**. From the list of available compartments, search for your compartment.
 

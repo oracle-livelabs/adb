@@ -30,7 +30,7 @@ Autonomous Database uses a large language model (LLM) to translate natural langu
 
 Sign up for an **OpenAI** account as follows:
 
-1. Click the following link to [create your OpenAI account](https://platform.openai.com/signup?launch). To create an account, you can use either an email address or a Google, Mircosoft, or Apple accounts. In this workshop, we created a new account using the  **Continue with Google** option, and then followed the prompts.
+1. Click the following link to [create your OpenAI account](https://platform.openai.com/signup?launch). To create an account, you can use either an email address or a Google, Microsoft, or Apple account. In this workshop, we created a new account using the  **Continue with Google** option, and then followed the prompts.
 
       _**Important:** Make sure you create a paid account. API calls will fail if you use a free account._
 
@@ -70,7 +70,7 @@ Sign up for an **OpenAI** account as follows:
 
 Create a secret key as follows:
 
-1. Click the following link to [create a new API secret](https://platform.openai.com/account/api-keys). The secret key is used to sign requests to OpenAI's API. You will need it when creating a credential later. On the **API keys** page, click **Create new secret key**.
+1. Click the following link to [create a new API secret key](https://platform.openai.com/account/api-keys). The secret key is used to sign requests to OpenAI's API. You will need it when creating a credential later. On the **API keys** page, click **Create new secret key**.
 
     ![Create a secret key](images/create-secret-key.png "")
 
