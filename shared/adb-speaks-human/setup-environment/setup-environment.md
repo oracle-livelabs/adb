@@ -21,10 +21,66 @@ Estimated Time: 5 minutes.
 
 In this lab, you will:
 
-* Run the stack to perform all the prerequisites required to analyze data
 * Create a developer account with OpenAI
+* Run the stack to perform all the prerequisites required to analyze data
 
-## Task 1: Create an OCI Compartment
+## Task 1: Sign up for Access to a Large Language Model (LLM)
+
+Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
+
+Sign up for an **OpenAI** account as follows:
+
+1. Click the following link to [create your OpenAI account](https://platform.openai.com/signup?launch). To create an account, you can use either an email address or a Google, Mircosoft, or Apple accounts. In this workshop, we created a new account using the  **Continue with Google** option, and then followed the prompts.
+
+      _**Important:** Make sure you create a paid account. API calls will fail if you use a free account._
+
+      ![Create a new account](images/create-openai-account.png =50%x*)
+
+    >**Note:** If you encounter problems creating a new account using an email address, then try using your Microsoft, Google, or Apple account instead of using an email address.
+
+    Each LLM will have its own process for enabling access to its API. This workshop will use the **OpenAI GPT-3.5** model. This model requires that you sign up for a _paid developer account_. The cost for using OpenAI for this workshop is minimal, less than $ 1.
+
+2. Create a **Paid developer account**. Navigate to the [Welcome to the OpenAI platform](https://platform.openai.com/) page. Click the account label, **Personal** in our example, and then select **Manage account** from the drop-down menu.
+
+    ![Manage account](images/manage-account.png "")
+
+3. On the **Organization settings** page, click **Billing**.
+
+    ![Click Billing](images/click-billing.png "")
+
+4. On the **Billing overview** page, click **Start payment plan**.
+
+    ![Start payment plan](images/start-payment-plan.png "")
+
+5. In the **What best describes you?** dialog box, click either **Individual** or **Company**. In this example, we will choose **Individual**.
+
+    ![Click individual plan](images/click-individual-plan.png =75%x*)
+
+6. Complete the **Set up payment plan** dialog box, and then **Continue**.
+
+    ![Complete the payment plan dialog box](images/complete-payment-dialog.png =75%x*)
+
+7. In the **Configure payment** dialog box, enter the dollar amount of the credit you want to purchase (between 5 and 50), and then click **Continue**. In this example, we chose **$ 5**.
+
+    ![Credit amount dialog box](images/credit-amount.png =75%x*)
+
+    A successful purchase message is displayed briefly. The **Billing overview** page is re-displayed. The updated credit balance is displayed. In our example the credit balance is now $10 because we had a free credit of $5 and we just purchased another $5.
+
+    ![Credit balance dialog box](images/credit-balance.png " ")
+
+Create a secret key as follows:
+
+1. Click the following link to [create a new API secret](https://platform.openai.com/account/api-keys). The secret key is used to sign requests to OpenAI's API. You will need it when creating a credential later. On the **API keys** page, click **Create new secret key**.
+
+    ![Create a secret key](images/create-secret-key.png "")
+
+3. The **Create new secret key** dialog box is displayed with the newly created secret key which is blurred in this example for security reasons. Click the **Copy** icon to copy the key to the clipboard (in MS-Windows) and then save it to a text editor of your choice as you'll need it when you set up your connection to the service. Next, click **Done**.
+
+    ![Create a new secret](images/create-secret-key-db.png "")
+
+    >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
+
+## Task 2: Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
@@ -50,7 +106,7 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
 
-## Task 2: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
+## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
 
 Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and install the Select AI demo application that was built using APEX.
 
@@ -132,62 +188,6 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 10. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed, **``TrainingAIWorkshop``**.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
-
-## Task 3: Sign up for Access to a Large Language Model (LLM)
-
-Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
-
-Sign up for an **OpenAI** account as follows:
-
-1. Click the following link to [create your OpenAI account](https://platform.openai.com/signup?launch). To create an account, you can use either an email address or a Google, Mircosoft, or Apple accounts. In this workshop, we created a new account using the  **Continue with Google** option, and then followed the prompts.
-
-      _**Important:** Make sure you create a paid account. API calls will fail if you use a free account._
-
-      ![Create a new account](images/create-openai-account.png =50%x*)
-
-    >**Note:** If you encounter problems creating a new account using an email address, then try using your Microsoft, Google, or Apple account instead of using an email address.
-
-    Each LLM will have its own process for enabling access to its API. This workshop will use the **OpenAI GPT-3.5** model. This model requires that you sign up for a _paid developer account_. The cost for using OpenAI for this workshop is minimal, less than $ 1.
-
-2. Create a **Paid developer account**. Navigate to the [Welcome to the OpenAI platform](https://platform.openai.com/) page. Click the account label, **Personal** in our example, and then select **Manage account** from the drop-down menu.
-
-    ![Manage account](images/manage-account.png "")
-
-3. On the **Organization settings** page, click **Billing**.
-
-    ![Click Billing](images/click-billing.png "")
-
-4. On the **Billing overview** page, click **Start payment plan**.
-
-    ![Start payment plan](images/start-payment-plan.png "")
-
-5. In the **What best describes you?** dialog box, click either **Individual** or **Company**. In this example, we will choose **Individual**.
-
-    ![Click individual plan](images/click-individual-plan.png =75%x*)
-
-6. Complete the **Set up payment plan** dialog box, and then **Continue**.
-
-    ![Complete the payment plan dialog box](images/complete-payment-dialog.png =75%x*)
-
-7. In the **Configure payment** dialog box, enter the dollar amount of the credit you want to purchase (between 5 and 50), and then click **Continue**. In this example, we chose **$ 5**.
-
-    ![Credit amount dialog box](images/credit-amount.png =75%x*)
-
-    A successful purchase message is displayed briefly. The **Billing overview** page is re-displayed. The updated credit balance is displayed. In our example the credit balance is now $10 because we had a free credit of $5 and we just purchased another $5.
-
-    ![Credit balance dialog box](images/credit-balance.png " ")
-
-Create a secret key as follows:
-
-1. Click the following link to [create a new API secret](https://platform.openai.com/account/api-keys). The secret key is used to sign requests to OpenAI's API. You will need it when creating a credential later. On the **API keys** page, click **Create new secret key**.
-
-    ![Create a secret key](images/create-secret-key.png "")
-
-3. The **Create new secret key** dialog box is displayed with the newly created secret key which is blurred in this example for security reasons. Click the **Copy** icon to copy the key to the clipboard (in MS-Windows) and then save it to a text editor of your choice as you'll need it when you set up your connection to the service. Next, click **Done**.
-
-    ![Create a new secret](images/create-secret-key-db.png "")
-
-    >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
 
 You may now proceed to the next lab.
 
