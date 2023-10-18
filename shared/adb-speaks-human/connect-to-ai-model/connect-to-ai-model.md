@@ -23,7 +23,7 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-3. On the **Autonomous Databases** page, click your ADB instance name, **`MovieStreamWorkshop`** in our example.
+3. On the **Autonomous Databases** page, click your ADB instance name, **`TrainingAIWorkshop`** in our example.
 
     ![The Autonomous Database is displayed and highlighted.](./images/adb-instances.png " ")
 
@@ -82,13 +82,14 @@ Next, you will grant permissions to the **`moviestream`** user to use the **Sele
 You may now proceed to the next lab.
 
 ## Learn More
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
+* [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
-  * **Author** - Marty Gubar, Product Management
-  * **Contributors** -  Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, September 2023
+  * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+  * **Contributors:** Marty Gubar, Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, October 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

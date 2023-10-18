@@ -4,7 +4,7 @@
 
 Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.
 
-In this lab, you will use an Oracle Machine Learning (OML) notebook to learn how to ask natural language queries with Autonomous Database. Although there are many SQL tools that you can use, we are using the notebook because it's a great way to illustrate the examples.
+As you can see from the previous labs, Select AI makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a demo app that was built using Oracle APEX. When you ran the scripts to set up your environment, the APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like), and manage conversations.
 
 Estimated Time: 15 minutes.
 
@@ -35,13 +35,62 @@ You can have multiple profiles where each one is pointing to different models or
 
 To get started, you'll need to do the following:
 
-* Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package
-* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your LLM provider and the metadata such as schemas, tables, views, and so on that can be used for natural language queries. You can have multiple profiles where each one is pointing to different models.
-* Set up the profile for your session. Because we're accessing a single LLM, create a **`LOGON`** trigger that sets the profile for your session.
+* Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package as follows. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation.
+
+    >**Note:** Don't run the following code. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following credential.
+
+    ```
+    BEGIN
+        dbms_cloud.create_credential (
+            credential_name  => 'OPENAI_CRED',
+            username => 'OPENAI',
+            password => 'enter-your-LLM-secret-key-here'
+        );
+    END;
+    /
+    ```
+
+* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _LLM provider_ and _the metadata such as schemas, tables, views, and so on that can be used for natural language queries_. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+
+    >**Note:** Don't run the following code. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following profile.
+
+    ```
+    BEGIN
+        DBMS_CLOUD_AI.CREATE_PROFILE(
+            profile_name => 'openai_gpt35',
+            attributes =>
+                '{"provider": "openai",
+                "credential_name": "OPENAI_CRED",
+                "object_list": [{"owner": "MOVIESTREAM", "name": "movies"},
+                                {"owner": "MOVIESTREAM", "name": "streams"},
+                                {"owner": "MOVIESTREAM", "name": "customer_extension"},
+                                {"owner": "MOVIESTREAM", "name": "pizza_shop"},
+                                {"owner": "MOVIESTREAM", "name": "actors"},
+                                {"owner": "MOVIESTREAM", "name": "genre"},
+                                {"owner": "MOVIESTREAM", "name": "customer_segment"},
+                                {"owner": "MOVIESTREAM", "name": "customer_contact"}
+                                ]
+                }'
+            );
+    END;
+    /
+    ```
+
+* Create a logon trigger that will automatically set the profile for new connections session. In this workshop, we have only one LLM profile; therefore, you can create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
+
+    ```
+    <copy>
+    CREATE OR REPLACE TRIGGER SET_AI_PROFILE AFTER LOGON ON SCHEMA
+        BEGIN
+            DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
+        END;
+    /
+    </copy>
+    ```
 
 ### **Ask Natural Language Questions**
 
-You can now ask questions using **`SELECT AI`**. **AI** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
+You can now ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
 
 Here are the actions:
 
@@ -63,7 +112,7 @@ Let's look at a couple of examples:
 
     `Tom Hanks is best known for his acting career, particularly for his roles in popular films such as "Forrest Gump," "Saving Private Ryan," "Cast Away," "Apollo 13," and "Toy Story" (as the voice of Woody). He is widely regarded as one of the greatest actors of his generation and has won numerous awards, including two Academy Awards for Best Actor.`
 
-2. The default for SELECT AI is `runsql`. This will run queries against your private data:
+2. The default for `SELECT AI` is `runsql`. This will run queries against your private data:
 
     ```
     SELECT AI
@@ -71,7 +120,7 @@ Let's look at a couple of examples:
     ```
     **Result:**
 
-    `91,893.77`
+    `70,318.23`
 
  3. View the SQL code that is generated by the following question:
 
@@ -167,7 +216,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
 
-5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**.
+5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
     ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
 
@@ -197,7 +246,7 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     The code sections are hidden. It is a good practice to hide the code section of a **`%md`** paragraph since you are only interested in looking at the formatted output.
 
-4. If you plan on running the notebook, you must update the password value place holder, **`your-LLM-secret-key-goes-here`**, in the **Create credential and AI Profile** with your own secret key that you created in **Lab 1 > Task 3**.
+4. The terraform setup script that you ran in Lab 1 created the credential you see in this paragraph. To create a credential, you must update the password value place holder, **`your-LLM-secret-key-goes-here`**, in the **Create credential and AI Profile** paragraph with your own secret key that you created in **Lab 1 > Task 3**.
 
     ![Replace the password placeholder with your own secret key.](./images/secret-key.png " ")
 
@@ -209,11 +258,13 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     >**Note:** If the status of one or more paragraphs shows **ERROR**, reset your notebook connection as follows: Click the **Navigation** menu on the Notebook banner, and then select **Notebook Sessions**. On the **Notebook Sessions** page, select your notebook, and then click **Stop**. Next, re-run the notebook.
 
-6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all** confirmation message box is displayed. Click **Confirm**.
+6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
 
   ![Run all paragraphs](images/run-all-paragraph.png)
 
 The results of the code execution is displayed under the paragraph code. For query result sets, you can view the data as a table or a variety of chart types.
+
+You may now proceed to the next lab.
 
 ## Learn More
 
@@ -222,9 +273,9 @@ The results of the code execution is displayed under the paragraph code. For que
 
 ## Acknowledgements
 
-* **Author** - Marty Gubar, Product Management
-* **Contributors** -  Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, September 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Marty Gubar, Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, October 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
