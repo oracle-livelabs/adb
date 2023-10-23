@@ -202,7 +202,9 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
 You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **ADB Speaks Human** contains all the steps for setting up the **Select AI** profile and then run natural language queries. In this task, you will first download the **ADB Speaks Human** OML notebook to your local machine, and then import this notebook into OML.
 
-1. Click the following link to download the [ADB Speaks Human.dsnb](../notebook/ADB%20Speaks%20Human.dsnb) OML Notebook.
+1. Click the button below to download the ADB Speaks Human OML notebook:
+
+    <a href="../notebook/ADB%20Speaks%20Human.dsnb" class="tryit-button">Download notebook</a>
 
 2. Click **Go to OML Notebooks EA**. The **OML Notebooks EA (Early Adopter)** page is displayed.
 
