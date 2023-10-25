@@ -129,7 +129,7 @@ You should store the data share data in Object Storage. You will then create a l
 
     ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
 
-6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
+6. The new bucket is displayed on the **Buckets** page.
 
     ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 
