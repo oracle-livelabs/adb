@@ -60,7 +60,7 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
     ![Drag and drop or select the file.](./images/datatools-dataload-drop-target.png " ")
 
-6. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the **Settings** button labeled with a pencil symbol.
+6. When the upload is complete, you could simply click the **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the 3-dotted ellipsis menu and click the **Settings** button labeled with a pencil symbol.
 
     ![Modify the data load job settings.](./images/click-settings-to-modify-data-load-job.png " ")
 
@@ -72,13 +72,13 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
     ![Run the data load.](./images/run-the-data-load.png " ")
 
-9. When the load job finishes, a green check mark appears. Click **Data Load** in the breadcrumb in the upper left corner, to return to the **Data Load** page.
+9. When the load job finishes, a green check mark appears. Click **Done**.
 
-    ![Click Data Load in the breadcrumb.](./images/click-data-load-in-breadcrumb.png " ")
+    ![A green check mark appears.](./images/load-finishes-green-check-mark.png " ")
 
-10. In the **Data Load** page, click **EXPLORE**.
+10. Return to the initial **Database Actions Launchpad**. In the **Data Studio** section, click **Catalog**.
 
-    ![Click EXPLORE in the Data Load page.](./images/click-explore-in-data-load-page.png " ")
+    ![Click Catalog in the Database Actions page.](./images/click-catalog.png " ")
 
 11. The Catalog shows the *CHANNELS_LOCAL* table has been successfully created. You can click the table name to see the data.
 
