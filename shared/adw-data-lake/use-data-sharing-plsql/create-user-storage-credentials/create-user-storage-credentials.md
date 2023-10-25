@@ -133,18 +133,6 @@ You should store the data share data in Object Storage. You will then create a l
 
     ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 
-7. Change the bucket type to **Public**. In the row for the **data-share-bucket**, click the **Actions** icon, and then click **Edit Visibility** from the context menu.
-
-    ![Select Edit Visibility from the context menu.](./images/edit-visibility.png " ")
-
-8. In the **Edit Visibility** dialog box, select the **Public** visibility option, and then click **Save Changes**.
-
-    ![Edit Visibility dialog box.](./images/public-option.png " ")
-
-    The **Buckets** page is re-displayed. The bucket type is now **Public**.
-
-    ![The Buckets page is displayed.](./images/buckets-page.png " ")
-
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
 _**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through this entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
