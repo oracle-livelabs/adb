@@ -31,13 +31,13 @@ This lab assumes that you have successfully completed all of the preceding labs 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. The **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+5. The SQL Worksheet is displayed.
 
-    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-sql-card.png " ")
+    ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
@@ -103,6 +103,17 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
     You are now logged in as the newly created **`share_provider`** user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
     ![Logged in as share_provider](images/logged-share-provider.png)
+
+4. Run the following query to determine if the user has the required privileges to share objects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon. A **`1`** result indicates that the user has the required privileges to share objects. A **`0`** result indicates that the user doesn't have the privileges to share objects. The user must revisit the previous steps.
+
+    ```
+    <copy>
+    SELECT dbms_share.can_create_share
+    FROM dual;
+    </copy>
+    ```
+
+    ![Determine if the user has the privilege to share](images/can-user-share.png)
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
@@ -193,7 +204,7 @@ In this task, you will get the following items that are required to create a Clo
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
-1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to an the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
+1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
@@ -313,7 +324,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2023
+* **Last Updated By/Date:** Lauran K. Serhal, October 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

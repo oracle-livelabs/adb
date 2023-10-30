@@ -12,6 +12,7 @@ Estimated Time: 20 minutes
 ### Objectives
 
 In this lab, you will:
+
 - Download to your local computer a comma-separated value (.csv) file containing a simulation of sensitive customer data
 - Create a private OCI Object Storage bucket
 - Upload the .csv file to the OCI private bucket
@@ -141,7 +142,7 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 ## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys    ._
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
 
@@ -185,7 +186,7 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-public-key.pem`**
 
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+6. A checkmark should appear next to each button. Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
@@ -228,7 +229,7 @@ In this task, you define a connection to connect to an Oracle Object Storage buc
     + **Name:** Enter **`training-data-lake`**.
     + **Description:** Enter an optional description.
     + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + In the **Credential Credential** dialog box, specify the following:
+    + In the **Create Credential** dialog box, specify the following:
         + **Credential Type:** Select the **Oracle Cloud Infrastructure Signing Keys** option.
         + **Credential Name:** Enter **OBJ\_STORAGE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
         + **Fingerprint:** Enter the fingerprint for your RSA key pair that you copied earlier to a text file.
