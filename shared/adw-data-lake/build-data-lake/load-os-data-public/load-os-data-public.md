@@ -84,6 +84,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
+
 6. A dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
     ![Click yes to load objects to a single table.](images/link-to-single-table.png)
