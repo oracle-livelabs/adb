@@ -204,7 +204,7 @@ In this task, you will get the following items that are required to create a Clo
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
-1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to an the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
+1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
