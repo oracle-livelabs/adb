@@ -16,7 +16,7 @@ Estimated Time: 5 minutes
 - This lab requires completion of Labs 1 and 2 in the Contents menu on the left.
 
 ## Task 1: Navigate to the SQL Worksheet
-1. From the Data Load tool, navigate to the SQL Worksheet by clicking the top-left hamburger menu and then selecting **Development -> SQL**.
+1. From the Data Load tool, navigate to the SQL Worksheet by clicking the top-left hamburger menu, navigate to **Development**, and then select **SQL**.
 
     ![Go to SQL worksheet](images/goto-sql.png " ")
 
@@ -142,4 +142,4 @@ We accomplished alot in just 15 minutes!
 ## **Acknowledgements**
 
 - **Authors** - Marty Gubar, Oracle Autonomous Database Product Management
-- **Last Updated By/Date** - Marty Gubar, November 2021
+- **Last Updated By/Date** - Katherine Wardhana, November 2023
