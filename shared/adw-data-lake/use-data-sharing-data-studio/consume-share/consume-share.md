@@ -87,7 +87,18 @@ To consume a data share, a recipient must have the required network connection t
 
     ![click Subscribe to Share Provider.](images/click-subscribe-provider.png)
 
-3. The **Network ACL Script** dialog box is displayed. Before you can access the data share to which the `share_provider` user gave you access, you need to be able to access the `share_provider` user host machine. _**This is a task for an `admin` or a privileged user and will only need to be performed once**._ Accept the selected **Allow access to Host Only** option. Click the **Copy** icon to copy the script into your clipboard so that you can share it with your **`admin`** user that will run on your behalf. The same code is also available below for your convenience. You can choose to copy that code and share it with your admin. The host value in the script will be different than the one you will use. You can find your host value in the `.JSON profile` that you downloaded earlier.
+3. In the **Subscribe to Share Provider** wizard, on the **Provider Settings** page, provide the following information:
+
+    * **Share Provider JSON:** Accept the **From file** option.
+    * **Delta Share Profile JSON:** Click this field to display the **Open** dialog box. Navigate to your **Downloads** directory where you downloaded the **`delta_share_profile.json`** file, and then click **Open**.
+
+        ![Select the download .json file.](images/open-json.png)
+    * **Provider Name:** Enter a name such as **`CUSTOMER_CONTACT_SHARE`**.
+    * **Description:** Enter an optional description.
+
+        ![Complete share panel.](images/completed-share-panel.png)
+
+4. Click **Next**. The **Network ACL Script** dialog box is displayed. Before you can access the data share to which the `share_provider` user gave you access, you need to be able to access the `share_provider` user host machine. _**This is a task for an `admin` or a privileged user and will only need to be performed once**._ Accept the selected **Allow access to Host Only** option. Click the **Copy** icon to copy the script into your clipboard so that you can share it with your **`admin`** user that will run on your behalf. The same code is also available below for your convenience. Once you copy the code, click **Close**. The host value in the script will be different than the one you will use. You can find your host value in the `.JSON profile` that you downloaded earlier.
 For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation.
 
     ![The Network ACL Script dialog box.](images/network-acl-script.png)
@@ -116,20 +127,13 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
     ![Set ACLs.](images/set-acls.png)
 
-    The `admin` user informs the recipient that he or she has access to the `share_provider`'s host machine; therefore, the recipient can now subscribe to the share provider.
+    The `admin` user informs the recipient that he or she has access to the **`share_provider`** host machine; therefore, the recipient can now subscribe to the share provider.
 
-4. As the **`share_consumer`** recipient, once your `admin` user grants you access to the `share_provider` user host machine, you can continue with the steps for **+ Subscribe to Share Provider**. In the **Subscribe to Share Provider** wizard, on the **Provider Settings** page, provide the following information:
+5. Now that you are subscribed to the **`share_provider`** host machine, as the **`share_consumer`** user, on the **Provider Settings** wizard page, click **Next** again.
 
-    * **Share Provider JSON:** Accept the **From file** option.
-    * **Delta Share Profile JSON:** Click this field to display the **Open** dialog box. Navigate to your **Downloads** directory where you downloaded the **`delta_share_profile.json`** file, and then click **Open**.
+    >**Note:** If you get an error and a **Session Expired** message while you were waiting for an `admin` user to run the above code, log in again to the **`share_consumer`** user and continue with the steps. You might have to repeat step 3 above again; however, you won't need to repeat the admin step.
 
-        ![Select the download .json file.](images/open-json.png)
-    * **Provider Name:** Enter a name such as **`CUSTOMER_CONTACT_SHARE`**.
-    * **Description:** Enter an optional description.
-
-        ![Complete share panel.](images/completed-share-panel.png)
-
-5. Click **Next**. On the **Add Shares** page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
+6. On the **Add Shares** wizard page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
 
     ![Add shares page.](images/wizard-add-shares.png)
 
@@ -193,7 +197,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

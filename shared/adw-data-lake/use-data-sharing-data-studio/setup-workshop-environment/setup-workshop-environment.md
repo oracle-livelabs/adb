@@ -22,7 +22,7 @@ Estimated Time: 5 minutes
 
 This lab walks you through the steps to set up the workshop environment.
 
-> **Note:** This workshop is directed at administrator users because they are have the required privileges.
+> **Note:** This workshop is directed at administrator users because they have the required privileges.
 
 Estimated Time: 5 minutes
 
@@ -48,6 +48,8 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 2. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**.
 
    ![The blurred username and masked password are displayed on the OCI Sign in screen. The tenancy's name and username are blurred. The Sign In button is highlighted.](./images/sign-in.png " ")
+   
+       >**Note:** Based on the Multi-factor authentication setup for your account, provide authentication to sign into the account. In our example, we clicked **Allow** on the iphone based on our authentication setup. For more details, refer to the [Managing Multifactor Authentication](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/usingmfa.htm) documentation.
 
    The **Oracle Cloud Console** Home page is displayed.
 
@@ -116,19 +118,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 <!--- This is a comment. --->
 
-<!---7. In the **Configure the database** section, specify the following:
-
-       * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
-       * **Choose database version:** **`19c`**.
-       * **OCPU count:** **`1`**.
-       * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
-       * **Storage (TB):** **`1`** (TB).
-       * **Storage auto scaling:** Leave the checkbox unchecked.
-
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
-
-       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page. --->
-
 7. In the **Configure the database** section, accept the default selections as follows:
 
        * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
@@ -190,7 +179,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
