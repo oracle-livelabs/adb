@@ -136,7 +136,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
         >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
-    * **Secret API key used to connect to AI model:** Enter your secret key. If you don't have one, follow the instructions in **Task 3** in this lab to obtain one.
+    * **Secret API key used to connect to AI model:** Enter your secret key. If you don't have one, follow the instructions in **Task 1** in this lab to obtain one.
     * For the other fields, accept the default selections.
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)
