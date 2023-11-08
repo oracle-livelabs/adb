@@ -131,7 +131,7 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
 5. Now that you are subscribed to the **`share_provider`** host machine, as the **`share_consumer`** user, on the **Provider Settings** wizard page, click **Next** again.
 
-    >**Note:** If you get an error and a **Session Expired** message while you were waiting for an `admin` user to run the above code, log in again to the **`share_consumer`** user and continue with the steps. You might have to repeat step 3 above again; however, you won't need to repeat the admin step.
+    >**Note:** If you get an error and a **Session Expired** message while you were waiting for an `admin` user to run the above code, log in again to the **`share_consumer`** user and continue with the steps. You might have to start with step 2 above again; however, you won't need to repeat the admin step.
 
 6. On the **Add Shares** wizard page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
 
