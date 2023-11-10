@@ -8,7 +8,8 @@ This lab introduces Data Studio’s Data Insights tool built into the Oracle Aut
 Estimated Time: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_6angdk6o)
+[Create a database user](videohub:1_0o150ib2)
+
 
 ### Objectives
 
@@ -63,27 +64,24 @@ see the insight list being refreshed while it is executing.
     
     Click **Search**
     
-    A list of various insights will appear on the page. The Data Insights tool has gone through the data and discovered
-    many interesting behavioral patterns based on the movie sales data.
-    
     >**NOTE:** These insights are stored in the database and can be accessed at any
     time for review. You can also regenerate the analysis if the data in
-    the underlying AV/table has changed.
-    
-    Let's look at a few such insights. For this lab, we will look at:
-
-      1: Purchasing pattern of singles across Genre
-
-      2: Representation of seniors (61-70) across customer value
-
-      3: Purchasing behavior of dog owners across age groups
-
-    You can see the list of insights in our workshop data below.
-        
-    >**Note:** The order of
+    the underlying AV/table has changed. The order of
     insights may vary if the data is different or the insight is still
     running, therefore refer to the labels on each tile to identify it.
 
+    A list of various insights will appear on the page. The Data Insights tool has gone through the data and discovered
+    many interesting behavioral patterns based on the movie sales data.
+    
+    
+    For our workshop we will focus on three insights labeled in the screenshot:
+
+      1: Purchasing pattern of singles across Genre
+
+      2: Interest in adventure genre across age group 
+
+      3: Purchasing behavior of dog owners across age groups
+        
     ![screenshot of the list of insights](images/image79_inst_list.png)
 
 5.  Click on the tile marked **S** on the top and **Genre** at the
@@ -111,17 +109,12 @@ see the insight list being refreshed while it is executing.
 
     Click on the **Back** button to go back to the list.
 
-6.  Click on the tile marked **61-70** on the top and the **Cust value** at
+6.  Click on the tile marked **Adventure** on the top and the **Age group** at
     the bottom.
 
-    It shows that people aged 61-70 are over-represented in the 4th customer value
-    bucket. Probably they have lots of disposable income!
+    It shows that gen-Z is above average interested in adventure genre. This might be an obvious insight but the data is confirming it.
 
-    We also note that 61-70 age group is hardly showing up in 5th customer value group (highest value). 
-    This raises new questions and will require further analysis. This is not covered in the workshop but 
-    you are welcome to explore the data yourself at the end of this workshop.
-
-    ![screenshot of insights on seniors and customer value](images/image81_inst_age_custvalue.png)
+    ![screenshot of insights on adventure and age group](images/image81_inst_adventure_age.png)
 
     Click on the **Back** button to go back to the list.
 
@@ -158,20 +151,23 @@ queries and correlating them with what we can see in insights.
     ![screenshot of singles by genre insight](images/image83_inst_single_genre.png)
 
 2.  We can go back to the **Data Analysis** tool to confirm this
-    insight. Go back to the data analysis and analyze **sales** by **Genre** and
-    filter for married and singles alternately.
+    insight. Go back to the data analysis tool and click on the previously created AV to create a new analysis.
 
-    Drag **Genre** on X-Axis (you will have to expand the tree on the left)
-    and **Marital Status** on Filters. Pick **M** in the filter box.
+    ![screenshot of applying the filter for marital status](images/image84_analyze_peeling_layer_home.png)
+
+3.  In this new report we will analyze **sales** by **Genre** for married and singles alternately.
+
+    Drag **Genre** on X-Axis (you will have to expand the tree on the left). 
+    Pick **M** in the filter box on the right for marital status.
 
     ![screenshot of applying the filter for marital status](images/image84_analyze_filter.png)
 
-3.  Married people are watching **Drama** a lot and not much
+4.  Married people are watching **Drama** a lot and not much
     **Adventure** and **Comedy**.
 
     ![screenshot of sales analysis to married people by genre](images/image85_analyze_married_genre.png)
 
-4.  Now let's compare it by changing the filter to **S** (singles).
+5.  Now let's compare it for singles. Deselect **M** and select **S** in the right hand side filter for marital status.
 
     This is what you get. Notice high purchases in the **Adventure** and
     **Comedy** genre by singles and not much **Drama** (compared to
@@ -207,7 +203,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

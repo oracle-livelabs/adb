@@ -8,7 +8,8 @@ This lab introduces the Data Load tool of Data Studio built into the Oracle Auto
 Estimated Time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_o5j922rh)
+[Create a database user](videohub:1_xnrr084w)
+
 
 ### Objectives
 
@@ -35,14 +36,11 @@ new table for the age groups.
 
     | MIN\_AGE      | MAX\_AGE | AGE\_GROUP |
 | ----------- | ----------- | ----------- |
-| 0 | 20 |  00-20  | 
-| 21 | 30 |  21-30  | 
-| 31 | 40 |  31-40  | 
-| 41 | 50 |  41-50  | 
-| 51 | 60 |  51-60  | 
-| 61 | 70 |  61-70  | 
-| 71 | 80 |  71-80  | 
-| 81 | 200 |  Older than 81  | 
+| 0 | 24 |  Gen Z  | 
+| 25 | 40 |  Millennials  | 
+| 41 | 56 |  Gen X  | 
+| 57 | 75 |  Boomer  | 
+| 76 | 200 |  Silent Generation  | 
 
     Your Excel sheet should look like this.
 
@@ -57,15 +55,12 @@ new table for the age groups.
     
     ```
     <copy>
-"MIN_AGE","MAX_AGE","AGE_GROUP",
-0,20,"00-20",
-21,30,"21-30",
-31,40,"31-40",
-41,50,"41-50",
-51,60,"51-60",
-61,70,"61-70",
-71,80,"71-80",
-81,200,"Older than 81",
+MIN_AGE,MAX_AGE,AGE_GROUP
+0,24,Gen Z
+25,40,Millennials
+41,56,Gen X
+57,75,Boomer
+76,200,Silent Generation
     </copy>
     ```
 
@@ -93,7 +88,7 @@ new table for the age groups.
 
     ![Screenshot of pick file for load](images/image11_load_file.png)
 
-4.  Click the **Start** button to start the load.
+4.  Click the **Start** button to start the load. Make sure that the target table name is AGE_GROUP. This name is picked up from the name of Excel sheet or the name of the csv data file.
 
     ![Screenshot of start loading file](images/image12_load_file_start.png)
     
@@ -114,7 +109,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

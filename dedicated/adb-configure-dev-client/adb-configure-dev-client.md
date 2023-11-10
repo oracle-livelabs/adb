@@ -220,13 +220,10 @@ First we shh into the dev client and invoke the VNC server that comes pre-instal
 
     ```
     <copy>
-    SQL> connect admin@atpd_high  (replace 'atpd_high' with an appropriate service for your instance)
+    SQL> connect admin@atpd_tp  (replace 'atpd_tp' with an appropriate service for your instance)
     </copy>
     ```
-    Provide your admin password and you are in!
-        ![This image shows the result of performing the above step.](./images/sqlclsuccess.png " ")
-
-
+    
 - Connect to ATP instance using Oracle SQL Plus.
 
     For SQL*Plus, you will need to unzip the wallet in your local folder and edit sqlnet.ora as follows:
@@ -258,7 +255,7 @@ First we shh into the dev client and invoke the VNC server that comes pre-instal
 
     ```
     <copy>
-    sqlplus admin@atpd_high
+    sqlplus admin@atpd_tp
     </copy>
     ```
 

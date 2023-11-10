@@ -1,0 +1,39 @@
+{
+    "workshoptitle": "Using the Database API for MongoDB with Oracle Database 23c",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction",
+            "filename": "../../introduction/introduction-ocw23.md"
+        },
+        {
+            "title": "Get Started with NoVNC",
+            "description": "Verify Setup of compute instance",
+            "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+        },
+        {
+            "title": "Lab 1: Setup User and ORDS",
+            "description": "Setup User",
+            "filename": "./../../introduction/change-pw-json-enhancements-ocw23.md"
+        },
+        {
+            "title": "Lab 2: Use Mongo API to interact transparently with Oracle Database",
+            "description": "Use Mongo API to interact with Oracle Database",
+            "filename": "./../../json-mongo/json-mongo-ocw23.md"
+        },
+        {
+            "title": "Lab 3: Work with your Mongo collections interchangeably through Mongo APIs and Oracle JSON and SQL",
+            "filename": "../../dbactions/dbactions-ocw23.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        },
+        {
+            "title": "Oracle CloudWorld 2023 - Support",
+             "filename": "https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+          }
+    ]
+}

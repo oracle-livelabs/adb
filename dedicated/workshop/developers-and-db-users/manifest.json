@@ -120,6 +120,22 @@
             "filename": "./../../adb-automatic-indexing/adb-automatic-indexing.md"
         },
         {
+            "title": "Lab 15: API Gateway with Autonomous Database Dedicated",
+            "description": "API Gateway with Autonomous Database Dedicated",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "06/27/2023",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-oci-api-gateway/adb-apex-apigateway.md"
+        },
+        {
+            "title": "Lab 16: Database In-Memory on Autonomous Database Dedicated",
+            "description": "Database In-Memory on Autonomous Database Dedicated",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "22/08/2023",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-in-memory/adb-inmemory.md"
+        },
+        {
             "title": "Appendix",
             "description": "Common tools for windows Users Finding the IP address of your AEI Cluster.",
             "partnumber": "Ennnnn_01",

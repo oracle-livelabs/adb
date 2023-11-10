@@ -1,0 +1,73 @@
+{
+    "workshoptitle": "Build Analytic Applications using APEX and Analytic Views",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
+        },
+        {
+            "title": "Lab 1: Open SQL Worksheet",
+            "filename": "../../open-sql-worksheet/open-sql-worksheet.md"
+        },
+        {
+            "title": "Lab 2: Create a Database User",
+            "filename": "../../create-db-user/create-db-user.md"
+        },
+        {
+            "title": "Lab 3: Install Sample Data",
+            "filename": "../../install-sample-data/install-sample-data.md"
+        },
+        {
+            "title": "Lab 4: Explore the Data Tables",
+            "filename": "../../explore-tables/explore-tables.md"
+        },
+        {
+            "title": "Lab 5: Create an Analytic View",
+            "filename": "../../create-analytic-view/create-analytic-view.md"
+        },
+        {
+            "title": "Lab 6: Examine Analytic Queries that Select from Tables",
+            "filename": "../../analytic-queries/analytic-queries.md"
+        },
+        {
+            "title": "Lab 7: Examine Lookup Queries",
+            "filename": "../../lookup-queries/lookup-queries.md"
+        },
+        {
+            "title": "Lab 8: Examine Hierarchies and Analytic Views",
+            "filename": "../../get-acquainted-with-av/get-acquainted-with-av.md"
+        },
+        {
+            "title": "Lab 9: Examine Analytic Queries that Select from the Analytic View",
+            "filename": "../../analytic-queries-av/analytic-queries-av.md"
+        },
+        {
+            "title": "Lab 10: Create a New APEX Application",
+            "filename": "../../create-new-apex-app/create-new-apex-app.md"
+        },
+        {
+            "title": "Lab 11: Add Queries that Select from the Analytic View",
+            "filename": "../../add-av-queries-to-dashboard/add-av-queries-to-dashboard.md"
+        },
+        {
+            "title": "Lab 12: Add Data Selectors to the Sales Dashboard",
+            "filename": "../../add-data-selectors-to-sales-dashboard/add-data-selectors-to-sales-dashboard.md"
+        },
+        {
+            "title": "Lab 13: Learn More",
+            "filename": "../../learn-more/learn-more.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

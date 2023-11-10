@@ -8,7 +8,7 @@ This lab will guide you through the steps to load demo data.
 Estimated Time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_3tt5hsic)
+[Create a database user](videohub:1_v0l1ljqo)
 
 ### Prerequisites
 
@@ -65,6 +65,7 @@ DROP TABLE MOVIESALES_CA;
 DROP TABLE GENRE;
 DROP TABLE MOVIE;
 DROP TABLE TIME;
+DROP TABLE CUSTOMER_SALES_ANALYSIS;
     </copy>
     ```
     >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command if you run this on an empty schema.
@@ -158,6 +159,29 @@ CREATE TABLE TIME
      YEAR_NAME        NUMBER 
     ) 
 ;
+CREATE TABLE CUSTOMER_SALES_ANALYSIS
+(
+  MIN_AGE NUMBER(38),
+GENRE VARCHAR2(30 CHAR),
+AGE_GROUP VARCHAR2(4000 CHAR),
+GENDER VARCHAR2(20 CHAR),
+APP VARCHAR2(100 CHAR),
+DEVICE VARCHAR2(100 CHAR),
+OS VARCHAR2(100 CHAR),
+PAYMENT_METHOD VARCHAR2(100 CHAR),
+LIST_PRICE NUMBER(38),
+DISCOUNT_TYPE VARCHAR2(100 CHAR),
+DISCOUNT_PERCENT NUMBER(38),
+TOTAL_SALES NUMBER(38),
+MAX_AGE NUMBER(38),
+AGE NUMBER(38),
+EDUCATION VARCHAR2(40 CHAR),
+INCOME_LEVEL VARCHAR2(20 CHAR),
+MARITAL_STATUS VARCHAR2(8 CHAR),
+PET VARCHAR2(40 CHAR),
+CUST_VALUE NUMBER,
+CUST_SALES NUMBER(38)
+);
 set define on
 define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/prepareandanalyze'
 begin
@@ -207,7 +231,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

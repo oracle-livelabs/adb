@@ -13,13 +13,13 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
       },
       {
-        "title": "Lab 1: Analyzing Movie Sales Data",
-        "description": "Analyzing Movie Sales Data",
+        "title": "Lab 1: Analyze Movie Sales Data",
+        "description": "Analyze Movie Sales Data",
         "filename": "../analyzing-movie-sales-data/analyzing-movie-sales-data.md"
       },
       {
-        "title": "Lab 2: Working With Semi-Structured Movie Data",
-        "description": "Working With Semi-Structured Movie Data",
+        "title": "Lab 2: Work With Semi-Structured Movie Data",
+        "description": "Work With Semi-Structured Movie Data",
         "filename": "../working-with-semi-structured-data/working-with-semi-structured-data.md"
       },
       {
@@ -28,22 +28,22 @@
         "filename": "../deeper-analysis-movie-sales-data/deeper-analysis-movie-sales-data.md"
       },
      {
-        "title": "Lab 4: Managing Text Lists Using SQL",
+        "title": "Lab 4: Manage Text Lists Using SQL",
         "description": "Managing Text Lists Using SQL",
         "filename": "../managing-text-lists/managing-text-lists.md"
       },
      {
-        "title": "Lab 5: Finding Our Most Important Customers",
-        "description": "Finding Our Most Important Customers",
+        "title": "Lab 5: Find Our Most Important Customers",
+        "description": "Find Our Most Important Customers",
         "filename": "../finding-most-important-customers/finding-most-important-customers.md"
       },
       {
-        "title": "Lab 6: Targeting Customers Based On Viewing Patterns",
-        "description": "Targeting Customers Based On Viewing Patterns",
+        "title": "Lab 6: Target Customers Based On Viewing Patterns",
+        "description": "Target Customers Based On Viewing Patterns",
         "filename": "../targeting-customers/targeting-customers.md"
       },
       {
-        "title": "Lab 7: Applying Machine Learning To Customer Demographics",
+        "title": "Lab 7: Apply Machine Learning To Customer Demographics",
         "description": "Applying Machine Learning To Customer Demographics",
         "filename": "../applying-machine-learning/applying-machine-learning.md"
       },

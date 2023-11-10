@@ -81,7 +81,7 @@ Estimated Lab Time: 45 minutes
     - Display name: [Your Initials]-ADW (e.g. VLT-ADW)
     - Database name: [Your Initials]ADW (e.g. VLTADW)
     - Choose a workload type: Data Warehouse
-    - Choose a deployment type: Shared Infrastructure
+    - Choose a deployment type: Serverless
     - Choose database version: 19c
     - OCPU count: 1
     - Storage (TB): 1
@@ -513,7 +513,3 @@ Estimated Lab Time: 45 minutes
     
 - **Author** - Valentin Leonard Tabacaru
 - **Last Updated By/Date** - Valentin Leonard Tabacaru, Principal Product Manager, DB Product Management, Sep 2020
-    
-See an issue? Please open up a request [here](https://github.com/oracle/learning-library/issues). Please include the workshop name and lab in your request.
-    
-    

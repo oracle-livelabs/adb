@@ -32,7 +32,7 @@ In this lab, you will:
 
 	![Create Collection](./images/create-collection.png)
 
-2. Provide a name for your collection in the field **Collection Name - products** and click **Create**. MAKE SURE you check the **MongoDB Compatible** box. Note that the collection name is case-sensitive. You must enter products in all lower-case, don't use PRODUCTS or Products.
+2. Provide a name for your collection in the field **Collection Name - products** and click **Create**. MAKE SURE you check the **MongoDB Compatible** box. Note that the collection name is case-sensitive. it is highly recommended to use only lower cases, since this will be the collection name used later on. Do not used mixed capitalization, otherwise you will have to double-quote the table name for SQL access all the time (Oracle normalizes the collection names to upper case for the underlying table if you choose all lower or upper case names, but not for mixed capitalization). 
 
 	![New collection: products](./images/new-products.png)
 
@@ -176,7 +176,9 @@ Now let's issue some simple queries on the *products* collection we just created
 
 4.	Find all non-movies:
 
-	This query displays the documents that are not of type - movies, which means just the document with id 103.
+	This query displays the documents that are not of type - movies, which means just the document with id 103. It is using MongoDB compatible QBE (Query By Example) syntax. The "$ne" is the **N**ot **E**qual operator.
+
+	As you can guess, there are more such operators, such as "$eq" (equal), "$lt" (less than), "$gt" (greater than), and so forth. For a more comprehensive list, see [the documentation](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/adsdi/overview-soda-filter-specifications-qbes.html#GUID-A19B0A93-0B17-4D0C-8362-4A7015C74842).
 
 	```
 	<copy>
@@ -207,7 +209,7 @@ Now let's issue some simple queries on the *products* collection we just created
 
 7. Tighten the previous query to choose only movie documents:
 
-	This query displays the documents whose ids are 100, 102 as those documents have price less than 5 and not the type - book.
+	This query displays the documents whose ids are 100, 102 as those documents have price less than 5 and not the type - book. This filter uses a more complex construct. If you are interested in how these constructs are built, see [the documentation](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/adsdi/overview-soda-filter-specifications-qbes.html#GUID-36420BAE-3BE0-43EA-9C4B-5F793BCCB3F5).
 
 	```
 	<copy>
@@ -429,12 +431,19 @@ In this task, we will use the Oracle Database API for MongoDB. That allows stand
 	</copy>
 	```
 
+	As an example, this command could look as follows:
+	```
+	export URI='mongodb://admin:Password123@MACHINE-JSONDB.oraclecloudapps.com:27017/admin?authMechanism=PLAIN&authSource=$external&ssl=true&retryWrites=false&loadBalanced=true'
+	```
+	Don't forget the single quotes for the string. If you are using a different shell on for example a Linux machine, you have to set the environment variable according to your shell.
+
 	For **Windows**:
 	```
 	<copy>
 	set URI="<yourURI>"
 	</copy>
 	```
+	Don't forget the double quotes on your windows machine.
 
 	![set URI variable](./images/set-uri.png " ")
 

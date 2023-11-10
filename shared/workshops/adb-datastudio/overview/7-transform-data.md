@@ -8,7 +8,8 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 Estimated Time: 25 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_g5x49pk2)
+[Create a database user](videohub:1_t22mdnao)
+
 
 ### Objectives
 
@@ -141,6 +142,32 @@ CREATE TABLE AGE_GROUP
      AGE_GROUP VARCHAR2 (4000) 
     ) 
 ;
+
+DROP TABLE CUSTOMER_SALES_ANALYSIS;
+
+CREATE TABLE CUSTOMER_SALES_ANALYSIS
+(
+  MIN_AGE NUMBER(38),
+GENRE VARCHAR2(30 CHAR),
+AGE_GROUP VARCHAR2(4000 CHAR),
+GENDER VARCHAR2(20 CHAR),
+APP VARCHAR2(100 CHAR),
+DEVICE VARCHAR2(100 CHAR),
+OS VARCHAR2(100 CHAR),
+PAYMENT_METHOD VARCHAR2(100 CHAR),
+LIST_PRICE NUMBER(38),
+DISCOUNT_TYPE VARCHAR2(100 CHAR),
+DISCOUNT_PERCENT NUMBER(38),
+TOTAL_SALES NUMBER(38),
+MAX_AGE NUMBER(38),
+AGE NUMBER(38),
+EDUCATION VARCHAR2(40 CHAR),
+INCOME_LEVEL VARCHAR2(20 CHAR),
+MARITAL_STATUS VARCHAR2(8 CHAR),
+PET VARCHAR2(40 CHAR),
+CUST_VALUE NUMBER,
+CUST_SALES NUMBER(38)
+);
 
 set define on
 define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/prepareandanalyze'
@@ -532,70 +559,21 @@ Now we are ready to prepare the data.
 
 21. We have completed the data flow. It may look complex, but one can
     visualize the step-by-step transformations. Now we need to write it
-    to a new **CUSTOMER\_SALES\_ANALYSIS** table.
+    to the target **CUSTOMER\_SALES\_ANALYSIS** table. This target table will be used for further analysis in subsequent labs.
 
-    Click on the tiny grid at the corner to the end of the data flow (last
-    Join transform) to open the target table property dialog. 
+    Drag the this table from the entity browser on the left side into the canvas.
+
+    >**Note:** It is possible to create a brand new target table in the data flow as well, however for simplicity we are using a pre-created table definition in this workshop.
     
-    >**Note:** If we already had a target table then we could simply drag that table in
-    to complete the flow. But in our case, the target table doesn't exist yet.
+    ![screenshot of creating target table entity](images/image45_target_drag_add.png)
 
-    ![screenshot of creating target table entity](images/image41_create_target.png)
-
-22. Enter the name and connection properties.
-
-    Name: **CUSTOMER\_SALES\_ANALYSIS**
-    
-    Alias: **CUSTOMER\_SALES\_ANALYSIS**
-    
-    Connection: your connection name    
-    
-    Schema: **QTEAM**
-    
-    Click **Next** for **Add Data Entity** dialog
-
-    ![screenshot of adding entity](images/image42_add_entity.png)
-
-23. Now you can edit the target column names. The initial list is
-    populated by the columns in all the tables in the data flow.
-
-    Remove the columns ending with **\_ID**. They don't help in any meaningful
-    analysis. The attributes are always denormalized by the joins. Click
-    on the checkbox and then click on the delete icon in the top right corner.
-    
-    Click **Next**
-
-    ![screenshot of entity column edit](images/image43_target_edit.png)
-
-24. Review the columns. You can go back to make any changes. If you
-    accidentally removed a column and want it back then you can add it
-    manually if you know the name and data type, or you can cancel it
-    and redo the process again.
-
-    Click **Save**
-
-    ![screenshot of reviewing target columns](images/image44_target_review.png)
-
-25. You can see that the target table is added to the end of the data
-    flow.
-
-    >**Note:** The target table definition has now been stored in
-    the entity list on the left side. This target table definition is only in the Transforms
-    repository at this point. It will be created in the database after you execute the
-    data flow. 
-    
-    >**Note:** If you want to recreate or edit the data flow at a subsequent time, then you
-    can drag it from the entity list, instead of going
-    through **Add Data Entity** dialog. You can also import/edit/delete the entity definitions in the
-    Entity menu from home page. We are not covering it in this workshop. 
-    
-    Now we need to make sure the target load properties are correct. Click on
+22. Now we need to make sure the target load properties are correct. Click on
     the target table in the canvas and expand the property panel by
     clicking on the top right corner.
 
     ![screenshot of target properties](images/image45_target_property.png)
 
-26. Click on Column Mapping and verify the expressions. Notice that
+23. Click on Column Mapping and verify the expressions. Notice that
     all have been populated properly. You can also edit them manually if
     you want to make changes. Make sure all the columns are mapped. You
     can also use auto-mapping functionality if you create new
@@ -606,7 +584,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of target mapping](images/image46_target_mapping.png)
 
-27. Now to the final step. Click on **Options**.
+24. Now to the final step. Click on **Options**.
 
     Make sure the property **Drop and create target table** is **true**.
     
@@ -619,7 +597,7 @@ Now we are ready to prepare the data.
 
     ![screenshot of target options](images/image47_target_option.png)
 
-28. Collapse the property panel and go back to the main canvas. Save it
+25. Collapse the property panel and go back to the main canvas. Save it
     and validate it by clicking on the validate icon (looks like a small
     check mark).
 
@@ -629,31 +607,31 @@ Now we are ready to prepare the data.
 
     ![screenshot of validating data flow](images/image48_transform_validate.png)
 
-29. Now execute it by clicking on the small green triangle in the circle.
+26. Now execute it by clicking on the small green triangle in the circle.
     Confirm **Start**. 
 
     ![screenshot of executing data flow](images/image49_transform_start.png)
 
     You will get a job info dialog. Click **OK**.
 
-30. Our data flow execution status is on the bottom right-side panel. Click
+27. Our data flow execution status is on the bottom right-side panel. Click
     anywhere on the empty canvas to make it visible. Now we need to look
     at the data.
 
     ![screenshot of execution status](images/image50_transform_status.png)
 
-31. Click on the target table and see a data preview by clicking on
+28. Click on the target table and see a data preview by clicking on
     the small eye icon. Expand the panel to see more.
 
     ![screenshot of target data preview](images/image51_transform_datapreview.png)
 
-32. Check that all columns are populated. If some columns are blank,
+29. Check that all columns are populated. If some columns are blank,
     then it means some mapping expression in the data flow was blank or
     incorrect. Go back and fix it and re-execute it.
 
     ![screenshot of transformed and loaded data](images/image52_transform_data.png)
 
-33. Next, check the **Statistics** tab for a quick data profile.
+30. Next, check the **Statistics** tab for a quick data profile.
 
     ![screenshot of data statistics](images/image53_transform_stats.png)
 
@@ -722,7 +700,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

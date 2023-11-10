@@ -10,7 +10,7 @@
         {
             "title": "Get Started",
             "description": "Get a Free Trial",
-            "filename": "https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/cloud-login/pre-register-free-tier-account.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
         },
         {
             "title": "Lab 1: Identity and Access Management (IAM) Service",
@@ -18,8 +18,8 @@
             "filename": "./../../adb-iam/adb-iam.md"
         },
         {
-            "title": "Lab 2: Autonomous Database on Shared Infrastructure",
-            "description": "Autonomous Database on Shared Infrastructure",
+            "title": "Lab 2: Autonomous Database on Serverless Infrastructure",
+            "description": "Autonomous Database on Serverless Infrastructure",
             "filename": "./../../adb-cert/adb-cert.md"
         },
         {
@@ -35,7 +35,7 @@
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://raw.githubusercontent.com/oracle/learning-library/master/common/labs/need-help/need-help-freetier.md"
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }

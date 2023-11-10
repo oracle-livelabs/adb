@@ -8,7 +8,8 @@ This lab introduces the Catalog application built into the Oracle Autonomous Dat
 Estimated Time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_mnozgu6c)
+[Browse Catalog](videohub:1_s2t3xdyj)
+
 
 ### Objectives
 
@@ -31,13 +32,13 @@ To complete this lab, you need to have completed the previous labs, so that you 
     >**Note:** Bookmark the Database Actions page so that it is easier to come
     back to this later in the workshop.
     
-    Look at the various tools under Data Studio section. We will go through all these tools in this overview workshop and learn how to use them in our day today job.
+    Look at the various tools under Data Studio section. We will go through some of these tools in this overview workshop and learn how to use them in our day today job.
 
     Click on the **Data Studio Overview** card.
 
     ![Screenshot of data studio overview](images/image1_datastudio_overview.png)
 
-2.  It shows the list of recent objects in the middle. On the left, it
+2.  It shows the list of recent objects. On the left and on top, it
     has links to individual tools and on the right, links to
     the documentation.
 
@@ -98,6 +99,9 @@ use the Catalog tool to browse the objects and find what we need.
 
 4.  Look for the other tables of interest on the main catalog page.
     Recall from the meeting notes in the workshop's introduction that we are also interested in CUSTOMER\_CA and GENRE tables.
+
+    You will also see CUSTOMER\_SALES\_ANALYSIS table which is empty. This table will be populated by the transforms tool later in this workshop.
+    
     Find and click on these tables to do a data preview.
 
     ![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
@@ -106,9 +110,9 @@ use the Catalog tool to browse the objects and find what we need.
 
     Clear the search bar and enter the following search string:
     
-    **(type: COLUMN) AGE**
+    **(type: TABLE) AGE\_GROUP**
     
-    This will search for all the columns with "AGE" in the column name. We find one column named "AGE" but there is no age group column found. For our workshop, we needed a table about various age groups. Since we could not find it in the catalog, we will have to load it into the database in the next lab.
+    This will search for all the tables with "AGE\_GROUP" in the name. We find no such table. For our workshop, we needed a table about various age groups. Since we could not find it in the catalog, we will have to load it into the database in the next lab.
 
     ![Screenshot of searching for column names](images/image7_catalog_search_cols.png)
 
@@ -124,7 +128,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

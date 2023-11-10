@@ -3,9 +3,11 @@
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "adb-load-public-db-actions.md":"/common/building-blocks/tasks/adb/load-public-db-actions.md",
-      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md"
-    }, 
-    "tutorials": [
+      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+    },
+    "variables": ["./variables.json"],    "tutorials": [
       {
           "title": "Get Started",
           "description": "Login to Oracle Cloud",
@@ -28,7 +30,7 @@
       {
         "title": "Lab 3: Use SQL to analyze movie sales data",
         "filename": "../../analyzing-movie-sales-data/analyzing-movie-sales-data.md"
-      },    
+      },
       {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",

@@ -49,7 +49,7 @@ Estimated Lab Time: 20 minutes
 
 3. It will return the following:
 
-    ![Query results showing week starting Sunday](images/3038282319.png)
+    ![Query results showing week starting Sunday](images/start_of_the_week.png)
 
 Now we know which day is the first day of the week we can move on. In spreadsheets, we can refer to values by referencing the row + column position such as A1 + B2. This would allow us to see more clearly the % contribution provided by each grouping so we can get some insight into the most heavily trafficked days for movie-watching. How can we do this?
 
@@ -92,7 +92,7 @@ Now we know which day is the first day of the week we can move on. In spreadshee
 
 5. This will generate the following output:
 
-    ![Result of query using MODEL clause](images/analytics-lab-3-step-1-substep-5.png)
+    ![Result of query using MODEL clause](images/weekday_longweekend.png)
 
 See how easy it is to build upon existing discoveries using SQL to extend our understanding of the data! The concept of being able to add new rows using a spreadsheet-like approach within SQL is unique to Oracle. The MODEL clause creates two new rows that we identify as **day 8** and **day 9**. These new rows are assigned names -  day\_name\[8\] = 'Weekday' and day\_name\[9\] = 'Long Weekend'. The calculation of revenue for these two new rows uses a similar approach to many spreadsheets: revenue for day \[8\] is derived from adding together revenue for day \[3\]+ revenue for \[4\] + revenue for day \[5\].
 
@@ -154,7 +154,7 @@ This statement calculates the contribution for Sunday (day 1) by taking the reve
 
 2. This will generate the following output:
 
-    ![Result of query using MODEL clause](images/3038282356.png)
+    ![Result of query using MODEL clause](images/revenue_each_day.png)
 
 
 3. As with earlier examples, we can pivot the results and the final pivoted version of our code looks like this:
@@ -212,7 +212,7 @@ This statement calculates the contribution for Sunday (day 1) by taking the reve
 
 4. The final output looks like this, where we can now see that over 60% of revenue is generated over those days within a Long Weekend! Conversely, the other three days in our week (Tuesday, Wednesday, Thursday) are generating nearly 40% of our weekly revenue, which means that on work/school nights we are still seeing strong demand for streaming movies. This type of information might be useful for our infrastructure team so they can manage their resources more effectively and our marketing team could use this information to help them drive new campaigns.
 
-    ![Final query output using Pivot](images/3038282357.png)
+    ![Final query output using Pivot](images/pivot_results.png)
 
 
 ### Recap
@@ -224,10 +224,10 @@ Let's quickly recap what has been covered in this lab:
 - Learned how to combine spreadsheet-like operations with other SQL features such as PIVOT
 
 
-Please *proceed to the next lab*.
+You may now *proceed to the next lab*.
 
 ## **Acknowledgements**
 
 - **Author** - Keith Laker, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, July 2021
+- **Last Updated By/Date** - Sarika Surampudi, Principal User Assistance Developer, Database Documentation; June 2023

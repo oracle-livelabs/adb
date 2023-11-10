@@ -3,7 +3,7 @@
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database on Shared Infrastructure (ADB-S) is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
 This lab shows how to create a **full** clone from the **currently running** database or from a **backup** timestamp of that database.
 
@@ -14,6 +14,9 @@ In addition, you will see how to create that clone from backup as a **cross-regi
 (The next lab will show you how to create a **refreshable** read-only clone that automatically refreshes when the data in its source database changes.)
 
 Estimated Lab Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Create a Clone Database](videohub:1_ucxwam14)
 
 ### Objectives
 
@@ -30,7 +33,7 @@ In this lab, you'll:
 
     ![Select Create clone from More actions](images/select-create-clone.png)
 
-## Task 2: Create a Clone Database from the Currently Running Primary database
+## Task 2: Clone a Database from the Currently Running Primary database
 
 Create a full clone database from your currently running primary database.
 
@@ -42,7 +45,12 @@ Create a full clone database from your currently running primary database.
 
     ![Choose Clone from database instance](images/choose-clone-from-database-instance.png)
 
-3. Provide the required information to create the clone database. The preferred region by default is your current region. Provide a display name and database name. Fill the other sections of this screen as you did in the earlier lab on provisioning an autonomous database:
+3. Provide the required information to create the clone database.
+    - In the **Choose your preferred region** field, accept the default, which is your current region.
+    - In the **Create in compartment** field, select a compartment to which you have access, *or if you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
+    - Provide a display name and database name.
+
+    Fill the other sections of this screen as you did in the earlier lab on provisioning an autonomous database:
     - Configure the Database
     - Create administrator credentials
     - Choose network access
@@ -53,11 +61,13 @@ Create a full clone database from your currently running primary database.
 
     ![Provide information and click Create Autonomous Database clone](images/provide-info-to-clone-from-database-instance.png)
 
+>**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
+
 4. When the clone finishes provisioning, check the clone information in the Autonomous Database details page.
 
     ![See clone information in Autonomous Database details page](images/see-clone-info-in-autonomous-details-page.png)
 
-## Task 3: Create a Clone Database from a Backup Timestamp of your Database
+## Task 3: Clone a Database from a Backup Timestamp of your Database
 
 Create a full clone database from a **backup timestamp** of your currently running primary database.
 
@@ -88,19 +98,13 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
     ![Provide information and click Create Autonomous Database clone](images/provide-information-to-create-clone.png)
 
+>**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
+
 5. When the clone finishes provisioning, check the clone information in the Autonomous Database details page.
 
     ![See clone information in Autonomous Database details page](images/see-clone-information-in-details-page.png)
 
-## Task 4: Examine How to Create a Clone from Backup in a Remote Region
-
-If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
-
-1. Let's take a look back at the **Create Autonomous Database clone** dialog. In the **Provide basic information for the Autonomous Database clone** section, the **Choose your preferred region** field defaults to your current region. To create a cross-region clone, simply open this field and choose among the regions to which your tenancy subscribes.
-
-    ![You can create clone from backup in any of your regions](images/choose-remote-region-to-create-clone.png)
-
-## Task 5: Create Long-term Backups
+## Task 4: Create Long-term Backups
 
 In today's world, regulations, audits, and compliance requirements often demand long-term retention of data. For instance, in the financial or healthcare sector, you may have to keep transactional and patient data for several years, if not decades. You may need long-term backups for compliance and regulatory requirements, legal and contractual obligations, historical analysis, or for business continuity in response to data loss.
 
@@ -144,4 +148,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date**  - Rick Green, March 2023
+- **Last Updated By/Date**  - Rick Green, June 2023

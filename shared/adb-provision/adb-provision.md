@@ -60,8 +60,8 @@ To complete this lab, you need to have the following:
 3. Provide basic information for the autonomous database:
 
     - __Choose a compartment__ - Select a compartment for the database from the drop-down list.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __ADW Finance Mart__.
-    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __ADWFINANCE__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __ADW\_Finance\_Mart__. (Spaces are not supported)
+    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Spaces and underscores not supported.) For this lab, use __ADWFINANCE__.
 
     ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
 
@@ -82,14 +82,16 @@ To complete this lab, you need to have the following:
 6. Configure the database:
 
     - __Choose database version__ - Select a database version from the available versions.
-    - __OCPU count__ - Number of CPUs for your service. For this lab, specify __1 CPU__. If you choose an Always Free database, it comes with 1 CPU.
+    - __ECPU count__ - Number of CPUs for your service. For this lab, specify __2 CPUs__. If you choose an Always Free database, it comes with at least 2 CPUs.
     - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, specify __1 TB__ of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
     - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
     - __New Database Preview__ - If a checkbox is available to preview a new database version, do NOT select it.
 
     *Note: You cannot scale up/down an Always Free autonomous database.*
 
-    ![Choose the remaining parameters.](./images/Picture100-26c.png " ")
+    <!-- ![Choose the remaining parameters.](./images/Picture100-26c.png " ") -->
+
+    ![Choose the remaining parameters.](./images/task2-6.png " ")
 
 7. Create administrator credentials:
 
@@ -126,7 +128,7 @@ To complete this lab, you need to have the following:
 
     ![Click Create Autonomous Database.](./images/Picture100-27.png " ")
 
-12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, OCPU count, and storage size.
+12.  Your instance will begin provisioning. In a few minutes, the state will turn from Provisioning to Available. At this point, your Autonomous Data Warehouse database is ready to use! Have a look at your instance's details here including its name, database version, ECPU count, and storage size.
 
     ![Database instance homepage.](./images/Picture100-32.png " ")
 
