@@ -35,9 +35,9 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 1. To begin this process, you need to navigate to the **Data Load** page in Data Studio. 
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/launch-data-load.png)
-2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
-  ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
-3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
+2. On the **Data Load** main page, click the **Connections** card so you can define a new connection to your cloud storage system.
+  ![The Connections card in Data Studio](images/cloudlocations.png)
+3. Click the **Create** button on the upper left and select **New Cloud Store Location**. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
  ```
   $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o</copy>

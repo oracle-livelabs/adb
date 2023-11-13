@@ -85,11 +85,11 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![The Database Actions page, with the Data Load card selected](images/launch-data-load.png)
 
-2. Click **Cloud Locations** to set up access to your new storage bucket.
+2. Click **Connections** to set up access to your new storage bucket.
 
-  ![The Cloud Locations card](images/cloudlocations.png)
+  ![The Connections card](images/cloudlocations.png)
 
-3. In the top right, click **Add Cloud Store Location**
+3. In the top left, click **Create** then select **New Cloud Store Location**
 
 4. Set up a new cloud location named **MovieSalesData**. Select the **Public Bucket** option, and paste in the URL of the pre-authenticated request you created in Task 1.
 
@@ -189,9 +189,9 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
   ![The live table feed menu with the Live Table Feed Run Details object selected](images/feed-run-details.png)
 
-8. You should now see a preview of the data that has been loaded from the uploaded csv file. Switch to the **Data Load Jobs** view from the list on the left. 
+8. You should now see a preview of the data that has been loaded from the uploaded csv file. Switch to the **Job Report** view from the list on the left. 
 
-  ![The Data Load jobs option for the live feed](images/feed-load-jobs.png)
+  ![The Job Report option for the live feed](images/feed-load-jobs.png)
 
   Here we can see that a job has just run to load the MOVIE\_SALES table with the 1,019,901 rows that were present in the uploaded csv file.
 
