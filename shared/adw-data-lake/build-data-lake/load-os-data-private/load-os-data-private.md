@@ -37,7 +37,7 @@ Download a **.csv** file that contains a simulation of sensitive customer retent
     </copy>
     ```
 
-2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file. This file contains customers who will stop or might stop being repeat customers.
+2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file which contains customers who will stop or might stop being repeat customers. The data in the downloaded file is also displayed in an Excel worksheet. Close the worksheet.
 
   ![Download the potential_churners.csv file to your local computer.](images/potential-churners-csv-file.png " ")
 
@@ -190,7 +190,7 @@ In this task, you will get the following items that are required to create a Clo
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Click the **Copy** link to copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to your clipboard and then paste it into a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
 
     ![Credentials items.](./images/credentials-items.png " ")
 
@@ -269,11 +269,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     + Alexey Filanovskiy, Senior Principal Product Manager
     + Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

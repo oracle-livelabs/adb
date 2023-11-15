@@ -208,13 +208,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

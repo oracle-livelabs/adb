@@ -174,7 +174,7 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![View the new table in the Catalog.](./images/display-new-tables.png " ")
 
-    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data. When done, click **Close**.
+    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data. When finished, click **Close**, and then click **Done**.
 
     ![Click customer_segment to display its data.](./images/customer-segment-data.png " ")
 
@@ -188,11 +188,12 @@ You may now proceed to the next lab.
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

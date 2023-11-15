@@ -173,10 +173,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, September 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

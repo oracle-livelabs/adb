@@ -271,6 +271,5 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
-* **Contributors:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
