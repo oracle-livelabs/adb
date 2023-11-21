@@ -13,6 +13,7 @@ In this lab, you will:
  
 
 ### Prerequisites
+
 * zdm user login to the on-premise system and connected to ADB-S database using ADB wallet
 
 
