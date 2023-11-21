@@ -1,4 +1,4 @@
-# Configuring OCI ADB-S Database for PeopleSoft
+# Configure OCI ADB-S Database for PeopleSoft
 
 ## Introduction
 
