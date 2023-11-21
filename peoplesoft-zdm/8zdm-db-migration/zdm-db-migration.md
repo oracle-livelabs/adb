@@ -45,7 +45,7 @@ In this lab, you will:
 
 
     ZDM migration job successful completion
-    ![ZDM migration is successful](./images/mv2adb-auto5.png "")
+    ![ZDM migration is successful](./images/zdm-migration2.png "")
 
 
 
