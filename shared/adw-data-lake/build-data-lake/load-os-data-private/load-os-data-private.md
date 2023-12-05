@@ -3,7 +3,7 @@
 ## Introduction
 In this lab, you will link to data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into your Oracle Autonomous Database instance, in preparation for exploration and analysis.
 
-You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store. Instead of using the wizard-driven data loading tools of Database Actions, you practice loading data using the **DBMS_CLOUD** PL/SQL package, the preferred method for load automation.
+You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
@@ -12,6 +12,7 @@ Estimated Time: 20 minutes
 ### Objectives
 
 In this lab, you will:
+
 - Download to your local computer a comma-separated value (.csv) file containing a simulation of sensitive customer data
 - Create a private OCI Object Storage bucket
 - Upload the .csv file to the OCI private bucket
@@ -36,7 +37,7 @@ Download a **.csv** file that contains a simulation of sensitive customer retent
     </copy>
     ```
 
-2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file. This file contains customers who will stop or might stop being repeat customers.
+2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file which contains customers who will stop or might stop being repeat customers. The data in the downloaded file is also displayed in an Excel worksheet. Close the worksheet.
 
   ![Download the potential_churners.csv file to your local computer.](images/potential-churners-csv-file.png " ")
 
@@ -141,7 +142,7 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 ## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys    ._
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
 
@@ -185,11 +186,11 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-public-key.pem`**
 
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+6. A checkmark should appear next to each button. Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Click the **Copy** link to copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to your clipboard and then paste it into a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
 
     ![Credentials items.](./images/credentials-items.png " ")
 
@@ -228,7 +229,7 @@ In this task, you define a connection to connect to an Oracle Object Storage buc
     + **Name:** Enter **`training-data-lake`**.
     + **Description:** Enter an optional description.
     + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + In the **Credential Credential** dialog box, specify the following:
+    + In the **Create Credential** dialog box, specify the following:
         + **Credential Type:** Select the **Oracle Cloud Infrastructure Signing Keys** option.
         + **Credential Name:** Enter **OBJ\_STORAGE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
         + **Fingerprint:** Enter the fingerprint for your RSA key pair that you copied earlier to a text file.
@@ -268,11 +269,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     + Alexey Filanovskiy, Senior Principal Product Manager
     + Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

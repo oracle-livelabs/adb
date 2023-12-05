@@ -288,7 +288,7 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
     ![Click Create Credential.](./images/click-create-credential.png " ")
     
-    The **Add Cloud Store Location** panel is re-displayed. The newly created credential is displayed. If you already have a bucket, select it from the **Select Bucket** drop-down list; otherwise, select the **Bucket URI** option, and then enter your bucket's URI in the **Bucket URI** text box. You identified your bucket's URI in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_. 
+    The **Add Cloud Store Location** panel is re-displayed. The newly created credential is displayed. If you already have a bucket, select it from the **Select Bucket** drop-down list. This populates the **Bucket URI** text box; otherwise, select the **Bucket URI** option, and then enter your bucket's URI in the **Bucket URI** text box. You identified your bucket's URI in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_. 
     
     >**Note:** Substitute the URI value in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`namespace  name`** place holder for security.
 
@@ -298,7 +298,7 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
     ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
 
-8. Click **Next** to see the available objects in the bucket that you specified. There is only one file that you uploaded to your private Object Storage bucket, `customer_promotions.csv`.
+8. Click **Next** to see the available objects in the bucket that you specified. Our selected bucket is empty.
 
     ![Click Next to see the objects in the bucket.](./images/click-next.png " ")
 
@@ -318,7 +318,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

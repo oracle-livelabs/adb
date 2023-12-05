@@ -71,7 +71,7 @@ In this task, you will first create the `DEPARTMENTS` table and then enable the 
 
 
     ```
-    <copy>CREATE TABLE departments (DEPNO NUMBER(4) PRIMARY KEY, DNAME VARCHAR2(10), MGR NUMBER(4), LOC_ID NUMBER(4)) FLASHBACK ARCHIVE;</copy>
+    <copy>CREATE TABLE departments (DEPNO NUMBER(4) PRIMARY KEY, DNAME VARCHAR2(10), MGR NUMBER(4), LOC_ID NUMBER(4));</copy>
     ```
 
     ![Create DEPARTMENTS table](images/fda-create-dept-table.png "Create DEPARTMENTS table")
@@ -174,44 +174,54 @@ The dropped table is restored from recycle bin, along with all possible dependen
 In this task, you will drop the `DEPARTMENTS` table and then restore it back using the `FLASHBACK TABLE` command.
 
 > **Note:** You must first disable `FLASHBACK ARCHIVE` for a table to drop the table that has `FLASHBACK ARCHIVE` enabled for it.
+
 1. Disable Flashback Time Travel for the `DEPARTMENTS` table.
 
     ```
-    <copy> ALTER TABLE departments NO fFLASHBACK ARCHIVE;/copy>
+    <copy>
+    ALTER TABLE departments NO FLASHBACK ARCHIVE;
+    </copy>
     ```
     ![Disable Flashback Time Travel for the departments table](images/fda-dept-noftt.png  "Disable Flashback Time Travel for the departments table")
      This disables the `Flashback Time Travel` on the `DEPARTMENTS` table.
 
-
 2. Drop the `DEPARTMENTS` table using the following command:
 
-   ```
-    <copy>DROP TABLE departments;</copy>
-   ```
+    ```
+    <copy>
+    DROP TABLE departments;
+    </copy>
+    ```
     ![Drop the departments table](images/fda-drop-dept.png  "Drop the departments table")
     The table is dropped and now a part of the recycle bin and has a system-generated name.
 
 3. Query the `RECYCLEBIN` to view the dropped `DEPARTMENTS` table.
 
-   ```
-    <copy>SELECT object_name, original_name FROM RECYCLEBIN;</copy>
-   ```
-   ![Query the recycle bin to view the dropped departments table](images/fda-recyclebin.png  "Query the recycle bin to view the dropped departments table")
+    ```
+    <copy>
+    SELECT object_name, original_name FROM RECYCLEBIN;
+    </copy>
+    ```
+    ![Query the recycle bin to view the dropped departments table](images/fda-recyclebin.png  "Query the recycle bin to view the dropped departments table")
     This shows the dropped table `DEPARTMENTS` in the recycle bin.
 
 4. Restore the `DEPARTMENTS` table.
 
-   ```
-    <copy>FLASHBACK TABLE departments TO BEFORE DROP</copy>
-   ```
+    ```
+    <copy>
+    FLASHBACK TABLE departments TO BEFORE DROP
+    </copy>
+    ```
     ![Restore the dropped departments table](images/fda-restore-dept.png  "Restore the dropped departments table")
     This restores the `DEPARTMENTS` table from the recycle bin.
 
 5. Verify the existence of the `DEPARTMENTS` table.
 
-   ```
-    <copy>DESC departments;/copy>
-   ```
+    ```
+    <copy>
+    DESC departments;
+    </copy>
+    ```
     ![Verify the departments table](images/fda-verify-dept.png "Verify the departments table")
 
 ## Task 7: Modify Flashback Archive Retention Time
@@ -220,14 +230,15 @@ In this task, you will drop the `DEPARTMENTS` table and then restore it back usi
 
 1. To modify the retention time to 90 days for Flashback Time Travel, run the following code snippet in your SQL Worksheet:
 
-   ```
-    <copy>BEGIN
+    ```
+    <copy>
+    BEGIN
       DBMS_CLOUD_ADMIN.SET_FLASHBACK_ARCHIVE_RETENTION(
       retention_days => 90);
     END;
-     /</copy>
-   ```
-   ![Modify the retention period for the Flashback Data Archive](images/fda-retention-period.png "Modify the retention period for the Flashback Data Archive")
+    </copy>
+    ```
+    ![Modify the retention period for the Flashback Data Archive](images/fda-retention-period.png "Modify the retention period for the Flashback Data Archive")
 
 > Note: To modify the retention time for Flashback Time Travel you must be logged in as the `ADMIN` user or you must have execute privilege on `DBMS_CLOUD_ADMIN`.
 
@@ -240,16 +251,22 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 1. To purge `Flashback Time Travel` historical data before a specified timestamp, run the following code snippet in your SQL Worksheet:
 
     ```
-   <copy>DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'timestamp', before_timestamp => '01-Jul-2023 12:00:00');</copy>
+   <copy>BEGIN
+   DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'timestamp', before_timestamp => '01-Jul-2023 12:00:00');
+   END;
+   /</copy>
     ```
     ![Purge the Flashback Data Archive based on the provided timestamp](images/fda_purge_timestamp.png "Purge the Flashback Data Archive based on the provided timestamp")
     This purges the flashback historical data based on the provided `timestamp` from the `Flashback Data Archive`.
 
-2. To purge `Flashback Time Travel` historical data before a specified timestamp, run the following code snippet in your SQL Worksheet:
+2. To purge `Flashback Time Travel` historical data before a specified `SCN`, run the following code snippet in your SQL Worksheet:
 
     ```
 
-    <copy>DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'scn',before_scn=> '38567332107905');</copy>
+    <copy>BEGIN
+    DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'scn',before_scn=> '38567332107905');
+    END;
+    /</copy>
     ```
 
     ![Purge the Flashback Data Archive based on the provided scn](images/fda-purge-scn.png  "Purge the Flashback Data Archive based on the provided scn")
@@ -259,7 +276,10 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 
     ```
 
-    <copy>DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'ALL');</copy>
+    <copy>BEGIN
+    DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'ALL');
+    END;
+    /</copy>
     ```
 
     ![Purge all Flashback Time Travel Data](images/fda-purge-all.png "Purge all Flashback Time Travel Data")
@@ -275,4 +295,4 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 
 - **Author** - Shilpa Sharma, Senior User Assistance Developer, Database Development
 - **Contributor** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Shilpa Sharma, August, 2023
+- **Last Updated By/Date** - Shilpa Sharma, October, 2023
