@@ -15,11 +15,11 @@ In this lab, you will:
 
 ### Prerequisites
 
-* Oracle user login access and SQL access on the on-premise PeopleSoft database system
+* Oracle user login access and SQL access on the on-premises PeopleSoft database system
 * SQL Access using ADMIN user on the PeopleSoft ADB-S database.
 
 
-## Task 1: Source On-Premise PeopleSoft schema objects count
+## Task 1: Source On-Premises PeopleSoft schema objects count
 
 1. Login as Oracle2 user and connect to the sqlplus prompt by entering the below SQL command
 
@@ -44,7 +44,7 @@ In this lab, you will:
     SQL> select owner, object_type, count(*) from all_objects where owner in ('PS','PEOPLE','SYSADM') group by owner, object_type order by 1,2; </copy>
 
     ```
-    Output of the above command from on-premise PeopleSoft database is below
+    Output of the above command from on-premises PeopleSoft database is below
 
     ![Output from the PeopleSoft database](./images/source-db.png "")
 
@@ -85,4 +85,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023

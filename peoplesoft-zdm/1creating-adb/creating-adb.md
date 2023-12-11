@@ -112,4 +112,4 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
