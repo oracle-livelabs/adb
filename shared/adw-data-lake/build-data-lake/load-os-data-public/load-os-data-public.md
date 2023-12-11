@@ -19,7 +19,7 @@ This workshop explores several methods for loading and linking data to an Oracle
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load Data from Object Storage Public Buckets](videohub:1_skl03gxs)
+[](youtube:WOzVqRIl9xw)
 
 ### Objectives
 
@@ -214,7 +214,7 @@ You may now proceed to the next lab.
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, December 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -9,6 +9,9 @@ You will practice linking to data from a **private** Object Storage bucket. You 
 
 Estimated Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[](youtube:IPkjI6zd2CU)
+
 ### Objectives
 
 In this lab, you will:
@@ -273,7 +276,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     + Alexey Filanovskiy, Senior Principal Product Manager
     + Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, December 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

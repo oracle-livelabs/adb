@@ -11,7 +11,8 @@ You can also leave data in place in cloud object storage, and link to it from yo
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load Data from Local Files](videohub:1_q7r7bcp0)
+
+[](youtube:B9iWOaO4RG0)
 
 ### Objectives
 
@@ -193,7 +194,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, December 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
