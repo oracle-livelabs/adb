@@ -42,6 +42,18 @@ In this lab, you will:
 
 ## Task 2: Create and Publish a Data Share
 
+_**Important:**_    
+_If you are using an **Always Free** ADB instance, you must run the following script in your SQL Worksheet as the **`share_provider`** user <u>before</u> you proceed with **step 1** below:_
+
+```
+<copy>
+BEGIN
+    DBMS_SHARE.UPDATE_DEFAULT_SHARE_PROPERTY('job_type', 'DBMS_CLOUD');
+END;
+/
+</copy>
+```
+
 As the **`share_provider`** user, create a new data share named **`training_share`**.
 
 1. To create a new data share, click the **PROVIDE SHARE** tool on the Home page. Alternatively,in the Navigation pane on the left, drill-down on the **Data Share** node, and then click **Provide Share**.
