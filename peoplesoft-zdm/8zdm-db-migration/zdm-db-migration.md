@@ -2,7 +2,9 @@
 
 ## Introduction
 
+
 This lab walks you through the steps to perform ZDM migration for  PeopleSoft on-premises database system to  Oracle Autonomous Database serverless.
+
 
 Estimated Time: 6 hours
 
@@ -15,6 +17,7 @@ In this lab, you will:
 ### Prerequisites
 
 * zdm user access on the on-premises PeopleSoft system
+
 
 
 ## Task: ZDM Database Final migration mode for PeopleSoft
@@ -56,4 +59,5 @@ You may now **proceed to the next lab.**
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
 * **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+
 

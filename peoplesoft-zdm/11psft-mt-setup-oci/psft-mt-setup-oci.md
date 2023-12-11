@@ -44,9 +44,11 @@ In this lab, you will:
     
     ![Compute provision for PSFT](./images/compute.png "")
 
+
 ## Task 2: Transfer files from on-premises PeopleSoft system to the OCI compute system
 
 1. Login as opc and sudo as root to the OCI compute system and create users,groups and directory for PeopleSoft similar to the on-premises PeopleSoft system
+
     
     Create users, groups, directories
     ```
@@ -69,7 +71,9 @@ In this lab, you will:
     </copy>
 
     ```  
+
     Files Tar and transfer from on-premises PeopleSoft system to OCI compute system
+
     ![Files tar and transfer to OCI](./images/files_tar.png "")
 
 2. Update the $HOME for PeopleSoft users to be in compatible to source.

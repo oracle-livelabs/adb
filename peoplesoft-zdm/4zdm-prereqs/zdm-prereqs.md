@@ -9,12 +9,14 @@ Estimated Time: 30 minutes
 ### Objectives
 
 In this lab, you will:
+
 * Download and install ZDM on PeopleSoft on-premises system
 * Creating API keys
 * Creating an OCI Bucket
 
 ### Prerequisites
 * My Oracle Support (MOS) credentials. Please make sure that you can successfully login to [Oracle Support](https://support.oracle.com). 
+
 * OCI CLI to be installed on the on-premises PeopleSoft database system,refer to link [here](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) for installing and configuration
 
 * Root user access on the on-premises PeopleSoft system
@@ -245,3 +247,4 @@ You may now **proceed to the next lab.**
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
 * **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+

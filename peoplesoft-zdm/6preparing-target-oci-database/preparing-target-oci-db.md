@@ -14,12 +14,16 @@ In this lab, you will:
 
 ### Prerequisites
 
+
 * zdm user login to the on-premises system and connected to ADB-S database using ADB wallet
+
 
 
 ## Task: Login to ADB-S and perform the SQL execution
 
+
 Login to the on-premises PeopleSoft system as zdm user and connect to the ADB-S database and execute the following SQL commands for preparing the database before performing the ZDM operation
+
 
    ```
    <copy>[zdmuser@psfthcm9247 ~]$ sqlplus admin@psatp_tpurgent
@@ -90,5 +94,6 @@ You may now **proceed to the next lab.**
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
 * **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+
 
 
