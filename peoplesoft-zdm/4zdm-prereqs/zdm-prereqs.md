@@ -9,20 +9,22 @@ Estimated Time: 30 minutes
 ### Objectives
 
 In this lab, you will:
-* Download and install ZDM on PeopleSoft on-premise system
+
+* Download and install ZDM on PeopleSoft on-premises system
 * Creating API keys
 * Creating an OCI Bucket
 
 ### Prerequisites
 * My Oracle Support (MOS) credentials. Please make sure that you can successfully login to [Oracle Support](https://support.oracle.com). 
-* OCI CLI to be installed on the on-premise PeopleSoft database system,refer to link [here](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) for installing and configuration
 
-* Root user access on the on-premise PeopleSoft system
+* OCI CLI to be installed on the on-premises PeopleSoft database system,refer to link [here](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) for installing and configuration
+
+* Root user access on the on-premises PeopleSoft system
 
 
-## Task 1: Download and install ZDM  on PeopleSoft on-premise system
+## Task 1: Download and install ZDM  on PeopleSoft on-premises system
 
-1. On the on-premise PeopleSoft  machine, download the ZDM binaries from [here](https://www.oracle.com/database/technologies/rac/zdm-downloads.html). It will lead to edelivery to download the ZDM software, select Linux as the platform after you login.
+1. On the on-premises PeopleSoft  machine, download the ZDM binaries from [here](https://www.oracle.com/database/technologies/rac/zdm-downloads.html). It will lead to edelivery to download the ZDM software, select Linux as the platform after you login.
 
     ![Download ADB RPM from the support link](./images/zdm_page.png)
 
@@ -244,4 +246,5 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+

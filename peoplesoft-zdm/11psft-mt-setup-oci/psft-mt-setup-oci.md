@@ -10,7 +10,7 @@ Estimated Time: 3 hours
 
 In this lab, you will:
 * Create an OCI compute system for the PeopleSoft Middle Tier setup
-* Transfer files from on-premise PeopleSoft system to the OCI compute system
+* Transfer files from on-premises PeopleSoft system to the OCI compute system
 * Install Oracle client 19c on the OCI compute system
 * Test connectivity from OCI compute system to ADB-S
 * Configure PeopleSoft Application domains
@@ -44,9 +44,11 @@ In this lab, you will:
     
     ![Compute provision for PSFT](./images/compute.png "")
 
-## Task 2: Transfer files from on-premise PeopleSoft system to the OCI compute system
 
-1. Login as opc and sudo as root to the OCI compute system and create users,groups and directory for PeopleSoft similar to the on-premise PeopleSoft system
+## Task 2: Transfer files from on-premises PeopleSoft system to the OCI compute system
+
+1. Login as opc and sudo as root to the OCI compute system and create users,groups and directory for PeopleSoft similar to the on-premises PeopleSoft system
+
     
     Create users, groups, directories
     ```
@@ -69,7 +71,9 @@ In this lab, you will:
     </copy>
 
     ```  
-    Files Tar and transfer from on-premise PeopleSoft system to OCI compute system
+
+    Files Tar and transfer from on-premises PeopleSoft system to OCI compute system
+
     ![Files tar and transfer to OCI](./images/files_tar.png "")
 
 2. Update the $HOME for PeopleSoft users to be in compatible to source.
@@ -212,7 +216,7 @@ In this lab, you will:
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
 
 
 

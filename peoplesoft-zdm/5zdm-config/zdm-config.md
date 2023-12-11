@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This lab walks you through the steps  for ZDM user configuration and establishing network connectivity between source and target database systems. Also, you will be generating a list of Oracle Tablespaces created on the on-premise PeopleSoft application and to map it with the DATA  and TEMP tablespace on ADB-S
+
+This lab walks you through the steps  for ZDM user configuration and establishing network connectivity between source and target database systems. Also, you will be generating a list of Oracle Tablespaces created on the on-premises PeopleSoft application and to map it with the DATA  and TEMP tablespace on ADB-S
 
 
 Estimated Time: 5 minutes
@@ -11,7 +12,8 @@ Estimated Time: 5 minutes
 In this lab, you will:
 
 * Establish Oracle TNS and User connectivity
-* Gather tablespaces from on-premise PeopleSoft system and map them to ADB-S
+* Gather tablespaces from on-premises PeopleSoft system and map them to ADB-S
+
 
 
 ## Task 1: Oracle TNS and User connectivity
@@ -241,4 +243,5 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+

@@ -14,7 +14,9 @@ In this lab, you will:
 
 ### Prerequisites
 
-* zdm user access on the on-premise PeopleSoft system
+
+* zdm user access on the on-premises PeopleSoft system
+
 
 ## Task 1: ZDM Prepare the response File
 
@@ -63,4 +65,5 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+
