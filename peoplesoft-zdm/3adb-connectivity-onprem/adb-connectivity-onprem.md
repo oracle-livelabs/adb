@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This lab walks you through the steps to establish connectivity between PeopleSoft on-premise system and  Oracle Autonomous Database shared, configuring source database and target database (ADB-S) for export using ZDM.
+
+This lab walks you through the steps to establish connectivity between PeopleSoft on-premises system and  Oracle Autonomous Database shared, configuring source database and target database (ADB-S) for export using ZDM.
 
 Estimated Time: 10 minutes
 
@@ -12,10 +13,10 @@ In this lab, you will:
 * Establish connectivity between source on-premise PeopleSoft system and ADB-S
 
 ### Prerequisites
-* PeopleSoft on-premise system or Oracle Marketplace PeopleSoft image (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premise PeopleSoft application,Refer to link [here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3208) for creation of new environment on OCI) 
 
-* ADB-S wallet file to be downloaded to on-premise PeopleSoft database system or Oracle Marketplace PeopleSoft image
-* Root or admin login privileges for the on-premise PeopleSoft database system
+* PeopleSoft on-premises system or Oracle Marketplace PeopleSoft image (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premises PeopleSoft application,Refer to link [here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3208) for creation of new environment on OCI) 
+* ADB-S wallet file to be downloaded to on-premises PeopleSoft database system or Oracle Marketplace PeopleSoft image
+* Root or admin login privileges for the on-premises PeopleSoft database system
 * Basic knowledge on Unix/shell commands 
 
 ## Task 1: Source Database configuration for ZDM migration
@@ -71,7 +72,8 @@ SQL> alter database open; </copy>
 
 ## Task 3: Unzipping and Configuring the ADB-S Wallet
 
-1. Login as oracle2 user or user configured for the source on-premise PeopleSoft database system
+
+1. Login as oracle2 user or user configured for the source on-premises PeopleSoft database system
 
 2. Navigate to the path where ADB-S wallet has been downloaded and create a directory and move the wallet to the directory,below are the commands to proceed with
 
@@ -117,9 +119,9 @@ SQL> alter database open; </copy>
 
 
 
-## Task 4: Testing connectivity between On-premise PeopleSoft Database system and ADB-S
+## Task 4: Testing connectivity between On-premises PeopleSoft Database system and ADB-S
 
-1. Add environment variables for the current root user, get the $ORACLE_HOME path from the current on-prem installation and add in the environment variables
+1. Add environment variables for the current root user, get the $ORACLE_HOME path from the current on-premises installation and add in the environment variables
 
 
       ```
@@ -171,6 +173,7 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 * **Authors** - Deepak Kumar M, Principal Cloud Architect
 * **Contributors** - Deepak Kumar M, Principal Cloud Architect
-* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, November 2023
+* **Last Updated By/Date** - Deepak Kumar M, Principal Cloud Architect, December 2023
+
 
 
