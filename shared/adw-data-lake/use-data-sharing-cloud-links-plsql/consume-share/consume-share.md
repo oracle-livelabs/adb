@@ -115,6 +115,8 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ![Check the available providers](images/available-providers.png)
 
+    >**Note:** If the above query doesn't show the published data share, wait for a few more minutes until the publishing process is completed, and then run the query again.
+
 6. Copy the value for the **`provider_name`** entry that starts with **`live_share_provider`**. You will need this value in the next task. Click the **eye** icon. The **`provider_name`** value is displayed.
 
     ![Copy the sharing id value](images/copy-provider-name.png)
@@ -254,7 +256,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ```
     <copy>
-    SELECT dbms_metadata.get_ddl('VIEW', 'CUSTSALES_V') view_definition
+    SELECT dbms_metadata.get_ddl('VIEW', 'CUSTSALES_SHARE_V') view_definition
     FROM dual;
     </copy>
     ```
