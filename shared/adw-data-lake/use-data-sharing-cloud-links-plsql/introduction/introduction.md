@@ -26,6 +26,7 @@ In this workshop, you will:
 * Grant the share provider user the necessary privileges
 * Obtain the data consumer Share ID
 * Identify the share provider
+* Verify the identity credentials
 * Create, verify, populate, and publish a data share
 * Create and authorize a data share recipient
 * Create a data share consumer and consume the data as a recipient using a cloud link
