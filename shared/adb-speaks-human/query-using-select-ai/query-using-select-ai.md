@@ -160,6 +160,8 @@ _**In summary, using LLMs infer a lot from human language. It's always good to v
 
 You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
+>**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
+
 If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL banner** to display the Database **Actions | Launchpad** Home page. In the **Development** section, click the **Oracle Machine Learning** card to display the **Sign In** page. Continue with step **step 7** below.
 
    ![Click the banner](./images/click-banner.png " ")
@@ -277,7 +279,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
