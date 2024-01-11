@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Chat with your data in Autonomous Database using generative AI",
+    "workshoptitle": "Develop AI web apps for natural language queries using Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
