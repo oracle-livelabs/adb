@@ -40,11 +40,11 @@ This lab assumes you have:
 
     ![Enter admin credentials](images/atp-password.png) 
 
-5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block.** 
+5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block.** Make sure Require mutual TLS authentication is left unchecked.
 
     ![Enter admin credentials](images/secure-access.png) 
 
-6. Select **License included** and then select **Create Autonomous Database** at the bottom.
+6. Leave everything else default, and then select **Create Autonomous Database** at the bottom.
 
     ![Create ADB button at the bottom](images/create-atp.png)     
 
@@ -150,4 +150,4 @@ You may now **proceed to the next lab.**
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, November 2022
+- **Last Updated By/Date** - Nicholas Cusato, January 2024
