@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Chat with Your Data in Autonomous Database Using Generative AI",
+    "workshoptitle": "Develop AI web apps for natural language queries using Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
@@ -8,45 +8,45 @@
     },
     "variables": ["./variables.json"],
     "tutorials": [
-        {
-          "title": "Introduction",
-          "description":"Introduction to the workshop",
-          "filename": "../../introduction/introduction.md"
-        },
-        {
-          "title": "Get started",
-          "description":"Get started using Oracle Cloud Infrastructure",
-          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
-        },
-        {
-          "title": "Lab 1: Set up Your Workshop Environment",
-          "description":"Set up an Autonomous Database and an LLM account",
-          "filename": "../../setup-environment/setup-environment.md"
-        },
-        {
-          "title": "Lab 2: Connect ADB to Your LLM",
-          "description":"Connect Autonomous Database to your LLM",
-          "filename": "../../connect-to-ai-model/connect-to-ai-model.md"
-        },
-        {
-          "title": "Lab 3: Use Natural Language Queries with Select AI",
-          "description":"Query Using Select AI",
-          "filename": "../../query-using-select-ai/query-using-select-ai.md"
-        },
-        {
-          "title": "Lab 4: Use the Select AI Demo Application",
-          "description":"Use the Select AI demo application",
-          "filename": "../../use-select-ai-demo/use-select-ai-demo.md"
-        },
-        {
-            "title": "Lab 5: Clean up Resources Used in the Workshop (Optional)",
-            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
-            "filename": "./../../cleanup/cleanup.md"
-        },
-        {
-          "title": "Need Help?",
-          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-        }
+      {
+        "title": "Introduction",
+        "description":"Introduction to the workshop",
+        "filename": "../../introduction/introduction.md"
+      },
+      {
+        "title": "Get started",
+        "description":"Get started using Oracle Cloud Infrastructure",
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+      },
+      {
+        "title": "Lab 1: Set up Your Workshop Environment",
+        "description":"Set up an Autonomous Database and an LLM account",
+        "filename": "../../setup-environment/setup-environment.md"
+      },     
+      {
+        "title": "Lab 2: Integrate OCI GenAI Service",
+        "description":"Connect Autonomous Database to your LLM",
+        "filename": "../../integrate-genai/integrate-genai.md"
+      },           
+      {
+        "title": "Lab 3: Add business logic for handling natural language queries",
+        "description":"Use business logic to enhance queries",
+        "filename": "../../business-logic/business-logic.md"
+      },
+      {
+        "title": "Lab 4: Expose as a REST endpoint and secure it",
+        "description":"Use a secure REST endpoint for your LLM",
+        "filename": "../../expose-rest/expose-rest.md"
+      },
+      {
+        "title": "Lab 5: Deliver a Natural Language app that uses the RESTful service",
+        "description":"Use APEX to access the LLM",
+        "filename": "../../deliver-nl-app/deliver-nl-app.md"
+      },
+      {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+      }
     ]
 }
