@@ -6,7 +6,7 @@ A data share recipient is an entity such as an individual, an institution, or a 
 
 In this lab, as a data share provider, you will create and authorize a new recipient that will access the **`demo_live_share`** data share that you just published and to the `custsales` table in this share. You will need the sharing ID that you saved from an earlier step.
 
-![Recipient flow.](images/recipient-diagram.png)
+![Recipient flow.](images/recipient-diagram.png =70%x*)
 
 Estimated Time: 5 minutes
 

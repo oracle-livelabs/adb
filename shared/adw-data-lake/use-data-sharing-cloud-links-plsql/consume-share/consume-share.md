@@ -4,7 +4,7 @@
 
 In this lab you will learn how to consume the data in your available data share as a recipient.
 
-![Recipient diagram.](images/recipient-diagram.png)
+![Recipient diagram.](images/recipient-diagram.png =65%x*)
 
 Estimated Time: 10 minutes
 
