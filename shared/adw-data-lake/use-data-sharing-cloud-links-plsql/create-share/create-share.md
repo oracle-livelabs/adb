@@ -154,7 +154,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 Up to this point, the share and its table are stored in the database and therefore are not yet available to anyone. In this task, you will call the `PUBLISH_SHARE` API which offloads data to the Cloud Store and makes it accessible to recipients that you define and authorize in a later lab.
 
-1. Publish the `demo_share` data share to make it visible to authorized recipients. To ensure that the publishing job is complete before you move on to the next lab, you will use the `PUBLISH_SHARE_WAIT` procedure. It also makes a share visible to authorized recipients; however, it waits for publishing task to complete. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon. It could take few minutes for the publishing process (export) to complete.
+1. Publish the `demo_share` data share to make it visible to authorized recipients. To ensure that the publishing job is complete before you move on to the next lab, you will use the `PUBLISH_SHARE_WAIT` procedure. It also makes a share visible to authorized recipients; however, it waits for the publishing task to complete. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon. It could take few minutes for the publishing process (export) to complete.
 
     ```
     <copy>

@@ -4,7 +4,7 @@
 
 A data share recipient is an entity such as an individual, an institution, or a software system that receives a data share from a data share provider.A recipient can access the data in the share. A recipient can have access to multiple shares. If you remove a recipient, that recipient loses access to all shares it could previously access.
 
-In this lab, as a data share provider, you will create and authorize a new recipient that will access the **`demo_live_share`** data share that you just published and to the `custsales` table in this share. You will need the sharing ID that you saved from an earlier step.
+In this lab, as a data share provider, you will create and authorize a new recipient that will access the **`demo_live_share`** data share that you just published and the `custsales` table in this share. You will need the sharing ID that you saved from an earlier step.
 
 ![Recipient flow.](images/recipient-diagram.png =70%x*)
 
