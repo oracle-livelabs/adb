@@ -2,7 +2,7 @@
 
 <!--- comment --->
 
-Data sharing enables you to share the same data with one or more consumers. Sharing data and consuming data from external sources enables collaboration with partners, establishes new partnerships, and generates new revenue streams with data monetization. The Oracle Data Sharing for general recipients is based on the open _delta sharing standard protocol_, providing a simple REST-based API to share data in `Parquet` format.
+Data sharing enables you to share the same data with one or more consumers. Sharing data and consuming data from external sources enables collaboration with partners, establishes new partnerships, and generates new revenue streams with data monetization. The Oracle Data Sharing for general recipients is based on the open _delta sharing standard protocol_, providing a simple REST-based API to share data in `Parquet` format. In addition, you can implement data sharing using Database Actions in Autonomous Database (ADB) using Cloud links.
 
 Data is made accessible by the data sharing provider (such as Oracle Autonomous Database) to the data sharing recipient (such as Microsoft Power BI) at query time in `Parquet` format. The provider can only share data which they have access to when they log into an ADB instance. The parquet files are physically stored in an OCI bucket or use the bucket to store live share parquet files to cache them and improve performance.
 
@@ -10,7 +10,7 @@ Data is made accessible by the data sharing provider (such as Oracle Autonomous 
 
 There are several methods to set up and consume data sharing using:
 
-* PL/SQL scripts using delta sharing protocol **(covered in this workshop)**
+* PL/SQL scripts using delta sharing protocol
 * PL/SQL scripts using Cloud links **(covered in this workshop)**
 * Database Actions in Autonomous Database (ADB) using delta sharing protocol
 * Database Actions in Autonomous Database (ADB) using Cloud links
@@ -56,7 +56,7 @@ While the traditional methods work in general, they come with certain _drawbacks
 
 Modern data sharing must be open, secure, real-time, vendor-agnostic, and avoid the pitfalls of extracting and duplicating data for individual consumers of data in a collaborative environment. Delta Sharing is an open protocol for secure real-time data exchange of large datasets that satisfies all these criteria, supported by multiple clients and program languages, and vendor agnostic.
 
-The open Delta Sharing protocol is aimed to solve the following problems:
+Data sharing is aimed to solve the following problems:
 
 * Share data without copying it to another system
 * Producer controls the state of data (version of data)
@@ -67,21 +67,20 @@ The open Delta Sharing protocol is aimed to solve the following problems:
 * Scale to massive data sets
 
 **Important:**    
-In this workshop, you will assume the responsibilities of several users. Initially, you will log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. The **`share_provider`** user creates a data share recipient named **`training_user`**. In various labs, you will log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
+In this workshop, you will assume the responsibilities of several users. Initially, you will log in as the default ADB **`admin`** user to create a **`share_provider`** user, a **`share_consumer`** user, and to perform various administration tasks. The **`share_provider`** user creates a data share recipient named **`live_share_oracle_user`**. In various labs, you will log in as either the **`share_provider`** user or the **`share_consumer`** user to perform the appropriate tasks associated with those users.
 
 **_In real use cases, there will be different users performing different responsibilities._**
 
   ![The workshop users.](images/users-diagram.png)
 
-### How Does Delta Sharing Work?
+### How Does Cloud Links Data Sharing Work?
 
-At the high level, the delta sharing protocol works as follows:
+At the high level, sharing data using cloud links works as follows:
 
 * The share provider user creates and publishes a data share that can be shared with one or more recipients.
 * The share provider user creates and authorizes recipients.
-* Every recipient will get a personal activation link to download their own `.JSON` profile with the necessary information to access their data share.
-* The recipient subscribes to the data share provider by using the .JSON configuration profile.
-* The recipient retrieves data from the share.
+* The recipient uses the share provider's id to discover the available data shares and tables.
+* The recipient subscribes to the data share provider, retrieves data from the data share, and creates a share link and a view using the data share table.
 
   ![The data sharing overview.](images/data-sharing-diagram.png)
 
@@ -101,7 +100,7 @@ You may now proceed to the next lab.
 * **Contributor:**
   * Alexey Filanovskiy, Senior Product Manager
 
-* **Last Updated By/Date:** Lauran K. Serhal, December 2023
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

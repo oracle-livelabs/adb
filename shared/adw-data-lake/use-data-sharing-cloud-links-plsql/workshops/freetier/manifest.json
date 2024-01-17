@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Implement Data Sharing with PL/SQL",
+    "workshoptitle": " Set up live data sharing between Oracle Databases using Cloud Links and PL/SQL APIs",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -20,10 +20,10 @@
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
         },
         {
-            "title": "Lab 2: Create a User, an Object Storage Bucket, and an OCI Credential",
+            "title": "Lab 2: Create a Share Provider User",
             "type":"freetier",
-            "description": "This lab walks you through how to load local data into your ADW instance.",
-            "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
+            "description": "This lab walks you through how to create a share provider user.",
+            "filename": "./../../create-user/create-user.md"
         },
         {
             "title": "Lab 3: Create, Populate, and Publish a Data Share",
