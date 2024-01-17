@@ -43,18 +43,21 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 3. Under the database actions dropdown, select the **SQL** option. You should automatically be signed in as admin. 
 
+    ![Create policy](./images/sql-option.png "")
+
 4. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
 
     ```
     <copy>
-    sql
     begin
     dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
     end;
     /
     </copy>
     ```
-5. Sign out of admin in the SQL worksheet. 
+    ![Create policy](./images/resource-principal.png "")
+
+5. Sign out of admin in the SQL worksheet at the top right of your page. 
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
