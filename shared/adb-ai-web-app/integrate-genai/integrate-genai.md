@@ -23,8 +23,14 @@ In this lab, you will:
 
     ```
     Name: <copy>PublicGenAI</copy>
-    Policy: <copy>allow any-user to manage generative-ai-family in tenancy</copy>
+    Description: <copy>Public Gen AI Policy
+    Compartment: Ensure you are in the correct compartment
+    Policy: <copy>allow any-user to manage generative-ai-family in compartment training-adw-compartment</copy>
     ```
+3. Click **Create**
+
+    ![Create policy](./images/create-policy.png "")
+    
     This policy is very broad. In a production environment, you will want to make this much more narrow.
 
 ## Task 2: Enable use of Resource Principals for MOVIESTREAM user
