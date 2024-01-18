@@ -61,7 +61,9 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
-1. Sign into the SQL worksheet as the MOVIESTREAM user. Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema.
+1. Sign into the SQL worksheet as the MOVIESTREAM user. Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to Resource Manager -> Stacks -> Stack details -> select the job we created -> then select Outputs under Resources. 
+
+    ![Create policy](./images/moviestream-pw.png "")
 
 2. Create an AI profile by running the following statement in the SQL worksheet. 
 
@@ -69,7 +71,6 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     
     ```
     <copy>
-    sql
     BEGIN
     DBMS_CLOUD_AI.drop_profile(
             profile_name => 'GENAI',
@@ -93,11 +94,12 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-3. To use OpenAI, run the following statement in the SQL worksheet and be sure to update with your personal information. 
+    ![Create policy](./images/ai-profile.png "")
+
+3. To use OpenAI, run the following statement in the SQL worksheet and be sure to update with your personal information from lab 1 when creating the OpenAI API.
 
     ```
     <copy>
-    sql
     BEGIN
     DBMS_CLOUD.CREATE_CREDENTIAL (
         credential_name  => 'openai',
@@ -109,11 +111,14 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     </copy>
     ```
 
+    ![Create policy](./images/create-credential.png "")
+
+    ![Create policy](./images/create-credential2.png "")
+
 4. To create an AI profile for OpenAI, run the following statement in the SQL worksheet. 
 
     ```
     <copy>
-    sql
     BEGIN
     DBMS_CLOUD_AI.drop_profile(
             profile_name => 'GENAI',
@@ -137,16 +142,16 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
+    ![Create policy](./images/create-profile.png "")
 
 ## Task 4: Test the AI profile
 
 We will use the PLSQL API to generate a response from a prompt:
 
-1. Run the following statement in the SQL worksheet to learn about Autonomous Database
+1. Run the following statement as MOMVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database.
 
     ```
     <copy>
-    sql
     SELECT DBMS_CLOUD_AI.GENERATE(
         prompt       => 'what is oracle autonomous database',
         profile_name => 'GENAI',
