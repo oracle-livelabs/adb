@@ -43,7 +43,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 3. Under the database actions dropdown, select the **SQL** option. You should automatically be signed in as admin. 
 
-    ![Create policy](./images/sql-option.png "")
+    ![Select SQL option](./images/sql-option.png "")
 
 4. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
 
@@ -55,15 +55,15 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-    ![Create policy](./images/resource-principal.png "")
+    ![Enable resource principal](./images/resource-principal.png "")
 
 5. Sign out of admin in the SQL worksheet at the top right of your page. 
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
-1. Sign into the SQL worksheet as the MOVIESTREAM user. Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to Resource Manager -> Stacks -> Stack details -> select the job we created -> then select Outputs under Resources. 
+1. Sign into the SQL worksheet as the MOVIESTREAM user. Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
 
-    ![Create policy](./images/moviestream-pw.png "")
+    ![Moviestream password](./images/moviestream-pw.png "")
 
 2. Create an AI profile by running the following statement in the SQL worksheet. 
 
@@ -94,7 +94,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-    ![Create policy](./images/ai-profile.png "")
+    ![Create AI profile](./images/ai-profile.png "")
 
 3. To use OpenAI, run the following statement in the SQL worksheet and be sure to update with your personal information from lab 1 when creating the OpenAI API.
 
@@ -111,9 +111,9 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     </copy>
     ```
 
-    ![Create policy](./images/create-credential.png "")
+    ![Create credential](./images/create-credential.png "")
 
-    ![Create policy](./images/create-credential2.png "")
+    ![Create credential SQL command](./images/create-credential2.png "")
 
 4. To create an AI profile for OpenAI, run the following statement in the SQL worksheet. 
 
@@ -142,7 +142,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-    ![Create policy](./images/create-profile.png "")
+    ![Create AI profile for GenAI](./images/create-profile.png "")
 
 ## Task 4: Test the AI profile
 
