@@ -41,6 +41,24 @@ In this lab, you will:
     </copy>
     ```
 
+## Task 3: (Optional) Design the API using OpenAPI (Swagger) tool. 
+
+1. Right click the REST enabled table. Click on REST. Click on cURL command and copy the code into your clipboard. 
+
+2. Navigate to Swagger. 
+
+    ```
+    <copy>
+    https://editor.swagger.io/
+    </copy>
+    ```
+
+
+
+2. Paste the following into the editor. 
+
+
+
 
 You may now proceed to the next lab.
 

@@ -240,7 +240,7 @@ In this lab, you will:
     </copy>
     ```
 
-3. 
+3. Create a function to route the prompts to the corresponding SQL by pasting this into the SQL workshop and running to completion. 
 
     ```
     <copy>
@@ -277,6 +277,14 @@ In this lab, you will:
         when others then
             return 'Error generating response.' || chr(10) || sqlerrm;
     end;
+    </copy>
+    ```
+
+4. Verify this by calling the function with the Customer ID.
+
+    ```
+    <copy>
+    select get_genai_response(query_parameter => '1192572') from dual
     </copy>
     ```
 
