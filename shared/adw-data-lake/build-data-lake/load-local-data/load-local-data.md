@@ -171,7 +171,7 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![View the new table in the Catalog.](./images/display-new-tables.png " ")
 
-    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data. When
+    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data.
 
     ![Click customer_segment to display its data.](./images/customer-segment-data.png " ")
 
