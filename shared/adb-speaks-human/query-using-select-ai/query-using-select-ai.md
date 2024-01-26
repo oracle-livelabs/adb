@@ -76,6 +76,7 @@ To get started, you'll need to do the following:
     /
     ```
 
+<!-- Requetsed to change as it was causing an ML issue 
 * Create a logon trigger that will automatically set the profile for new connections session. In this workshop, we have only one LLM profile; therefore, you can create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
 
     ```
@@ -84,6 +85,18 @@ To get started, you'll need to do the following:
         BEGIN
             DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
         END;
+    /
+    </copy>
+    ```
+    -->
+
+* You can have multiple **Select AI** profiles. You need to pick the one to use for your session. Use the **`DBMS_CLOUD_AI.SET_PROFILE`** procedure to specify which profile to use as follows:
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
+    END;
     /
     </copy>
     ```
@@ -206,7 +219,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
 1. Click the button below to download the ADB Speaks Human OML notebook:
 
-    <a href="../notebook/ADB%20Speaks%20Human.dsnb" class="tryit-button">Download notebook</a>
+    <a href="../notebook/ADB-Speaks-Human.dsnb" class="tryit-button">Download notebook</a>
 
 2. Click **Go to OML Notebooks EA**. The **OML Notebooks EA (Early Adopter)** page is displayed.
 
@@ -221,6 +234,8 @@ You can import a notebook from a local disk or from a remote location if you pro
     ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
 
 5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+
+     >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
     ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
 
