@@ -1,6 +1,12 @@
 {
     "workshoptitle": "Implement Data Sharing with PL/SQL",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "cleanup-workshop.md":"/common/building-blocks/tasks/adb/cleanup.md"
+    },
+    "variables": ["./variables.json"],
     "tutorials": [
         {
             "title": "Introduction",
@@ -42,12 +48,6 @@
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../consume-share/consume-share.md"
-        },
-        {
-            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
-            "type":"freetier",
-            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
-            "filename": "./../../cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",

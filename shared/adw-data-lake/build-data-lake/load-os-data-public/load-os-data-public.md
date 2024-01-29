@@ -56,17 +56,21 @@ If you already have the **Oracle Database Actions** browser tab open from the pr
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
 
+    The **Data Load** page is displayed.
+
 ## Task 2: Link to Data in Public Object Storage Buckets and Create External Tables
 
 In this task, you will link to data and create the following external tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
 
-1. In the **What do you want to do with your data?** section, click **LINK DATA**.
+1. On the **Data Load** page, click the **LINK DATA** card.
 
-2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
+    ![Click Link Data.](images/click-link-data.png)
 
-    ![Select Link Data and Cloud Store.](images/select-link-data-from-cloud-store.png)
+2. On the **Link Data** page, the **Cloud Store** tab is selected by default.
 
-3. The **Link Cloud Object** page is displayed. Copy the following object storage URL and paste it in the **Link Data from Cloud Store** field. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL.
+    ![Select Link Data and Cloud Store.](images/link-data-page.png)
+
+3. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL.
 
     ```
     <copy>
@@ -76,14 +80,13 @@ In this task, you will link to data and create the following external tables in 
 
     ![Enter public bucket URL.](images/public-bucket-url.png)
 
-4. Press **[ENTER]** on your keyboard. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this public bucket from this section to the data linking job section on the right.
+4. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this public bucket from this section to the data linking job section on the right.
 
     ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
 
 5. Drag the **customer\_contact** folder and drop it onto the data linking job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
-
 
 6. A dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
@@ -97,17 +100,17 @@ In this task, you will link to data and create the following external tables in 
 
     ![Drag and drop three more folders.](images/drag-drop-3-folders.png)
 
-8. Click the **Actions** icon (3-dot vertical ellipsis) for the **customer\_contact** link task, and then select **Settings** to view the settings for this task.
+8. Click the **Settings** icon (pencil) for the **customer\_contact** link task to view its settings.
 
-    ![Click the pencil icon to open settings viewer for customer_contact load task](images/customer-contact-settings.png)
+    ![Click the pencil icon to open settings viewer for customer_contact load task](images/click-customer-contact-settings.png)
 
     The **Link Data from Cloud Store Location customer_contact** settings panel is displayed.
 
 9. The **Database Actions** link job will create a **CUSTOMER_CONTACT** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
-    ![View the settings for customer_contact load task](images/preview-create-table.png)
+    ![View the settings for customer_contact load task](images/customer-contact-settings.png)
 
-10. Click the **Actions** icon (3-dot vertical ellipsis) for the **sales\_sample** load task, and then select **Settings** from the context menu to view its settings.
+10. Click the **Settings** icon (pencil) for the **sales\_sample** link task to view its settings.
 
     ![View the sales-sample load task settings.](images/sales-sample-preview.png)
 
@@ -115,7 +118,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![Update table name](images/change-target-table-name.png)
 
-12. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
+12. Click **Start** to run the data link job. In the **Start Link From Cloud Store** dialog box, click **Run**.
 
     ![Run the data load job](images/run-data-link.png)
 
@@ -125,7 +128,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![Load job tasks completed. View the genre load task settings.](images/link-completed.png)
 
-14. Click the **Actions** icon (3-dot vertical ellipsis) for the **genre** load task, and then select **Settings** from the context menu to view its settings.
+14. Click the **Settings** icon (pencil) for the **genre** load task to view its settings.
 
 15. Review some of the linked data. Click the **Table** tab to view the **genre** data.
 
@@ -214,7 +217,7 @@ You may now proceed to the next lab.
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, December 2023
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
