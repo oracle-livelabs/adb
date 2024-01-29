@@ -9,53 +9,101 @@ Estimated Time: 10 minutes.
 ### Objectives
 
 In this lab, you will:
-* 
+* Expose tables as REST endpoint
+* Test the REST endpoint
+* Access the API using OpenAPI (Swagger) tool
+* Create module for API 
 
 ### Prerequisites
 - This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
 
 ## Task 1: Expose as a REST endpoint. 
 
-1. In the navigator, select **Procedures.** 
+1. In the navigator, select **CUSTOMER.** 
 
 2. Right click and select **REST** -> **Enable.**
 
-## Task 2: Try the rest endpoint. 
+## Task 2: Try the REST endpoint. 
 
 1. Go to the REST visual editor by clicking Hamburger -> **REST**
 
 2. Click AutoREST.
 
-3. Go to ASK_QUESTION -> OpenAPI View.
+3. Click the **Open in new tab** for the table CUSTOMER to test the API.  
 
-4. Click POST -> Try it out
+## Task 3: (Optional) Access the API using OpenAPI (Swagger) tool. 
 
-5. Replace "string" with a question and click Execute.
+1. Click the elipsise for CUSTOMER and select OpenAPI View.
 
-    ```
-    <copy>
-    json
-    {
-    "question": "what are our top 10 movies based on total views"
-    }
-    </copy>
-    ```
+2. Click GET -> Try it out
 
-## Task 3: (Optional) Design the API using OpenAPI (Swagger) tool. 
+3. Paste the following into the ID field and click execute. 
 
-1. Right click the REST enabled table. Click on REST. Click on cURL command and copy the code into your clipboard. 
+  ```
+  <copy>
+  1000001
+  </copy>
+  ```
+4. Notice the response shows all the fields realting to that ID number. We can utitlize this within our app and more in our next lab. 
 
-2. Navigate to Swagger. 
+## Task 4: Create module for API.
 
-    ```
-    <copy>
-    https://editor.swagger.io/
-    </copy>
-    ```
+1. Using the hamburger menu, click **REST.** 
 
+2. Click **Modules.** 
 
+3. Click **Create Module.** 
 
-2. Paste the following into the editor. 
+4. Name the Module, Base Path, and make sure all the fields match the image and click **Create.**
+
+  ```
+  Name:<copy>api</copy>
+  Base Path:<copy>/api/</copy>
+  ```
+
+5. Click on the newly created module. 
+
+6. Click **Create Template.** 
+
+7. Name the URI template and click **Create.** 
+
+  ```
+  URI Template:<copy>image/:cust_id</copy>
+  ```
+
+8. Click **Create Handler.**
+
+9. Paste the following into **Source** and click **Create.**
+
+  ```
+  <copy>
+  SELECT M.image_url
+  FROM MOVIESTREAM.STREAMS S
+  JOIN MOVIESTREAM.MOVIES M ON S.MOVIE_ID = M.MOVIE_ID
+  WHERE S.CUST_ID = :cust_id
+  ORDER BY S.DAY_ID DESC
+  FETCH FIRST 3 ROWS ONLY
+  </copy>
+  ```
+
+10. Click **Create Parameter.** 
+
+11. Name the Parameter and the Bind Variable, change the source type from header to **URI,** and change parameter type from string to **INT.** Click **Create.**
+
+  ```
+  Parameter Name:<copy>:cust_id</copy>
+  Bind Variable Name:<copy>cust_id</copy>
+  ```
+## Task 5: Test the module
+
+1. Click **open in new tab** button and paste the following for cust_id
+
+  ```
+  cust_id:<copy>1000001</copy>
+  ```
+
+2. Notice the row is retrieved for only 1 customer. 
+
 
 
 
