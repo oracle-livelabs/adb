@@ -1,3 +1,10 @@
+<!--
+    {
+        "name":"Connect with SQL Worksheet",
+        "description":"Connect to Autonomous Database using the SQL Worksheet in Database Actions"
+    }
+-->
+
 # Clean up Resources Used in this Workshop (Optional)
 
 ## Introduction
