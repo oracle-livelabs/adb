@@ -102,11 +102,39 @@ In this lab, you will:
   cust_id:<copy>1000001</copy>
   ```
 
-2. Notice the row is retrieved for only 1 customer. 
+2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer. 
 
+## Task 6: Create module template for natural language query API. 
 
+1. Using the bread crumb menu, click **API.** 
 
+2. Click **Create Template.** 
 
+3. Name the URI template and click **Create.** 
+
+  ```
+  URI Template:<copy>nl/recommend/:cust_id</copy>
+  ```
+
+4. Click **Create Handler.**
+
+5. Paste the following into **Source** and click **Create.**
+
+  ```
+  <copy>
+  SELECT get_genai_response(query_parameter => TO_NUMBER(:cust_id), project_id => '8')
+    FROM dual
+  </copy>
+  ```
+
+6. Click **Create Parameter.** 
+
+7. Name the Parameter and the Bind Variable, change the source type from header to **URI,** and change parameter type from string to **INT.** Click **Create.**
+
+  ```
+  Parameter Name:<copy>:cust_id</copy>
+  Bind Variable Name:<copy>cust_id</copy>
+  ```
 
 You may now proceed to the next lab.
 
