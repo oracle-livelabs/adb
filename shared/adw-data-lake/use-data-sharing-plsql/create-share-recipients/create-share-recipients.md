@@ -6,7 +6,7 @@ A data share recipient is an entity such as an individual, an institution, or a 
 
 In this lab, as a data share provider, you will create and authorize a new recipient that will access the data share and the `custsales` table in the share. You will then provide the new recipient with the activation link or the JSON config file that is needed to create a credential to access the data share.
 
-![Recipient flow.](images/recipient-diagram.png)
+![Recipient flow.](images/recipient-diagram.png =50%x*)
 
 Estimated Time: 15 minutes
 
@@ -50,7 +50,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Query recipients.](images/query-recipients.png)
 
-3. You can optionally modify properties for a recipient. For example, modify the `TOKEN_LIFETIME` for the **`training_user`** recipient to **90 days**. This property specifies for how long the generated token will be valid after which the recipient loses access to the data share and must request a new token.
+3. You can modify properties for a recipient. For example, modify the `TOKEN_LIFETIME` for the **`training_user`** recipient to **90 days**. This property specifies for how long the generated token will be valid after which the recipient loses access to the data share and must request a new token.
 
     ```
     <copy>
@@ -119,13 +119,13 @@ As the **`share_provider`** user, you need to provide the `training_user` recipi
 
     The activation link is generated.
 
-    ![Generate the activation link URL using method 1.](images/method-1-temp.png)
+    ![Generate the activation link URL using method 1.](images/download-activation-link.png)
 
 2. Save the result of the script so that you can save a copy of the activation link locally. In the **Script Output** tab, click the **Download script output** icon.
 
     ![Click the download script output icon.](images/click-download-script-output.png)
 
-    The output of the script is downloaded as a text file to your **Downloads** folder.
+    The output of the script is downloaded as a **text** file to your **Downloads** folder.
 
     ![The script output is downloaded.](images/script-output-downloaded.png)
 
@@ -149,7 +149,7 @@ As the `training_user` recipient user, you can use the activation link URL that 
 
     ![Profile file downloaded.](images/screen-2.png)
 
-2. The **`delta_share_profile`.json** file is downloaded to your browser's Downloads directory.
+2. The **`delta_share_profile`.json** file is downloaded to your browser's **Downloads** directory.
 
     ![The downloaded file is displayed.](images/downloaded-file.png)
 
