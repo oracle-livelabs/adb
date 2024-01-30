@@ -25,15 +25,14 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Create a Data Share Recipient
 
-1. As the **`share_provider`** user, create a new data share recipient named **`training_user`**. The `token_lifetime` parameter specifies for how long the generated token will be valid. In this example, we specified **90 days**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
+1. As the **`share_provider`** user, create a new data share recipient named **`training_user`**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
-        DBMS_SHARE.CREATE_RECIPIENT(
+        DBMS_SHARE.CREATE_SHARE_RECIPIENT(
             recipient_name => 'training_user',
-            email => 'training_user@oracle.com',
-            token_lifetime=>'90 00:00:00');
+            email => 'training_user@oracle.com');
     END;
     </copy>
     ```
@@ -50,6 +49,23 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ```
 
     ![Query recipients.](images/query-recipients.png)
+
+3. You can optionally modify properties for a recipient. For example, modify the `TOKEN_LIFETIME` for the **`training_user`** recipient to **90 days**. This property specifies for how long the generated token will be valid after which the recipient loses access to the data share and must request a new token.
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_SHARE.UPDATE_RECIPIENT_PROPERTY (
+        recipient_name => 'training_user',
+        recipient_property => 'TOKEN_LIFETIME',
+        new_value => '90 00:00:00');
+        COMMIT;
+    END;
+    /
+    </copy>
+    ```
+
+    ![Set the TOKEN_LIFETIME property.](images/set-token-lifetime-property.png)
 
 ## Task 2: Grant the Recipient Access Privileges to the Data Share
 
@@ -87,12 +103,6 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 As the **`share_provider`** user, you need to provide the `training_user` recipient with the _activation link_ to download the **`delta_share_profile.json`** configuration file. The recipient will need the `delta_share_profile.json` file to create an access credential in the next lab.
 
-<!---
-Expose the following paragraph when method 2 bug is corrected.
-As the `share_provider` user, you need to provide the `training_user` recipient with the _activation link_ needed to download the **`delta_share_profile.json`** configuration file. This is described in the **Method 1** section below; alternatively, you can generate the `delta_share_profile.json` file directly as the `share_provider` user, and then share it with the `training_user` recipient. This is described in the 
-
-**Method 2** section below. Use this task when method 2 is fixed. **Method 1: The `share_provider` user provides the recipient with the activation link (used in this workshop)** --->
-
 ### **The `share_provider` user provides the recipient with the activation link**
 
 1. As the  **`share_provider`** user, generate the activation link's URL that will enable the authorized recipient to download the `delta_share_profile.json` configuration file. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
@@ -100,32 +110,16 @@ As the `share_provider` user, you need to provide the `training_user` recipient 
     ```
     <copy>
     BEGIN
-        DBMS_OUTPUT.PUT_LINE(
-        REPLACE(
-        DBMS_SHARE.GET_ACTIVATION_LINK('training_user'),
-        '/dwcsseed.',
-        '/' || REPLACE(LOWER(SYS_CONTEXT('USERENV','CON_NAME')),'_','-') || '.'));
+        DBMS_OUTPUT.PUT_LINE(DBMS_SHARE.GET_ACTIVATION_LINK
+        ('training_user'));
     END;
     /
-     </copy>
+    </copy>
     ```
 
     The activation link is generated.
 
     ![Generate the activation link URL using method 1.](images/method-1-temp.png)
-
-<!--- July 18: The original activation link generation code. Will revert to this in 3 weeks when the fix makes it to production. --->
-
-<!---
-    ```
-    <copy>
-    BEGIN
-        DBMS_OUTPUT.PUT_LINE(dbms_share.get_activation_link
-            (recipient_name=>'TRAINING_USER'));
-    END;
-    /
-    </copy>
-    ```--->
 
 2. Save the result of the script so that you can save a copy of the activation link locally. In the **Script Output** tab, click the **Download script output** icon.
 
@@ -241,8 +235,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Contributor:** 
+    * Alexey Filanovskiy, Senior Principal Product Manager
+    * David Greenfield, Consulting Member Technical Staff
+    * Jakub Illner, Lakehouse and Analytics Data Specialist
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
