@@ -4,7 +4,7 @@
 
 In this lab you will learn how to consume the data in your available data share as a recipient.
 
-![Recipient diagram.](images/recipient-diagram.png =50%x*)
+![Recipient diagram.](images/recipient-diagram.png =70%x*)
 
 Estimated Time: 10 minutes
 
@@ -93,7 +93,7 @@ To consume a data share, a recipient user must have the required network connect
 In our example, the **`endpoint`** value where the data share is located is as follows:
 
 ```
-https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing
+https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing
 ```
 
 For the next code that you will run, _copy your own endpoint URL up to only the **`oraclecloudapps.com`** and remove everything after that, namely `/ords/admin/_delta_sharing`. In addition, don't include the `https://` at the beginning of the URL_. Paste the final edited URL in the **host** parameter. So, in our example, this is what we will use for the host value in the next code example:
@@ -329,7 +329,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

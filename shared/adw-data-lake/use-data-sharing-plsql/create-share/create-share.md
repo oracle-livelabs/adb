@@ -6,7 +6,7 @@ A data share is a named entity in the provider’s instance. It can be a group o
 
 In this lab, as a share provider user, you will create a data share and add a table to it. Next, you will publish the data share to make it available to the authorized recipient that you will define in the next lab.
 
- ![Create a data share diagram.](images/data-share-diagram.png =45%x*)
+ ![Create a data share diagram.](images/data-share-diagram.png =60%x*)
 
 Estimated Time: 15 minutes
 
@@ -208,7 +208,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -4,7 +4,7 @@
 
 In this lab, you will create a **data share provider** user and grant this user the necessary role and privileges. You will also create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
-![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png =50%x*)
+![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png =65%x*)
 
 Estimated Time: 15 minutes
 
@@ -310,7 +310,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

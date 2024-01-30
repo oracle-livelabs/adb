@@ -2,11 +2,11 @@
 
 ## Introduction
 
-A data share recipient is an entity such as an individual, an institution, or a software system that receives a data share from a data share provider.A recipient can access the data in the share. A recipient can have access to multiple shares. If you remove a recipient, that recipient loses access to all shares it could previously access.
+A data share recipient is an entity such as an individual, an institution, or a software system that receives a data share from a data share provider. A recipient can access the data in the share and can have access to multiple shares. If you remove a recipient, that recipient loses access to all shares it could previously access.
 
 In this lab, as a data share provider, you will create and authorize a new recipient that will access the data share and the `custsales` table in the share. You will then provide the new recipient with the activation link or the JSON config file that is needed to create a credential to access the data share.
 
-![Recipient flow.](images/recipient-diagram.png =50%x*)
+![Recipient flow.](images/recipient-diagram.png =70%x*)
 
 Estimated Time: 15 minutes
 
@@ -59,7 +59,6 @@ This lab assumes that you have successfully completed all of the preceding labs 
         recipient_name => 'training_user',
         recipient_property => 'TOKEN_LIFETIME',
         new_value => '90 00:00:00');
-        COMMIT;
     END;
     /
     </copy>
@@ -235,11 +234,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** 
+* **Contributors:** 
     * Alexey Filanovskiy, Senior Principal Product Manager
     * David Greenfield, Consulting Member Technical Staff
     * Jakub Illner, Lakehouse and Analytics Data Specialist
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
