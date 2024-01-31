@@ -190,7 +190,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, February 2024
+* **Last Updated By/Date:** Lauran Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
