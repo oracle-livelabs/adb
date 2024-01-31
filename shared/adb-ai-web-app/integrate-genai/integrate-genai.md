@@ -4,13 +4,18 @@
 
 You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
 
+You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users make REST calls to Open AI.
+
 Estimated Time: 10 minutes.
 
 ### Objectives
 
 In this lab, you will:
-* As the `ADMIN` user, enable users to connect to the LLM REST endpoint
-* Grant users privileges to use the **Select AI** APIs
+* Create policy to enable access to OCI GenAI
+* Enable use of Resource Principals for MOVIESTREAM user
+* Create an AI Profile for OCI GenAI
+* Test the AI profile
+
 
 ### Prerequisites
 - This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
@@ -181,6 +186,7 @@ You may now proceed to the next lab.
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
 * [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
   * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer

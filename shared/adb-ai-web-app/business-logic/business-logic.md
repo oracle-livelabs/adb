@@ -2,11 +2,7 @@
 
 ## Introduction
 
-Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.
-
-As you can see from the previous labs, Select AI makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a demo app that was built using Oracle APEX. When you ran the scripts to set up your environment, the APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like), and manage conversations.
-
-Autonomous Database has a built in language (PLSQL) that is feature-rich, fast, optmized for SQL and secure.
+Using the Natural Language Model makes it simple to query your data in Autonomous Database. The Large Language model and Autonomous Database are able to handle the task of storing and sturcturing data with ease, allowing the user to focus on the end use of the application. In this app, users can will be able to converse with the AI to generate trivia about their favorite movies. 
 
 Estimated Time: 15 minutes.
 
@@ -141,8 +137,10 @@ In this lab, you will:
 You may now proceed to the next lab.
 
 ## Learn More
-
+* [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
+* [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
   * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
