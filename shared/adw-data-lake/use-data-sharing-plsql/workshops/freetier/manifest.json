@@ -4,6 +4,7 @@
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
     },
     "variables": ["./variables.json"],
     "tutorials": [
@@ -58,12 +59,6 @@
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-        },
-        {
-            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
-            "type":"freetier",
-            "description": "This lab walks you through how to clean up the resources used in this workshop.",
-            "filename": "https://common/building-blocks/blocks/adb/cleanup/cleanup.md"
         }
     ]
 }
