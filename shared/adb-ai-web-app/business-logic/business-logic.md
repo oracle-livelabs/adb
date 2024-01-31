@@ -43,54 +43,30 @@ In this lab, you will:
     ```
     <copy>
     INSERT INTO "MOVIESTREAM"."GENAI_PROJECT" ("ID", "NAME", "QUERY", "TASK", "TASK_RULES")
-    VALUES (
-    3,
-    'Movie Recommendation',
-    'with promoted_movie_list as
-    (select json_arrayagg(json_object(title, image_url)) as promoted_movie_list
-     from movies
-     where studio like ''%Amblin%''
-    ),
-    customer_latest_movies as (
-        select 
-            s.cust_id,            
-            m.title,
-            max(s.day_id) as day_id
-        from streams s, movies m
-        where m.movie_id = s.movie_id
-          and s.cust_id = :cust_id
-        group by s.cust_id, m.title
-        order by day_id desc
-        fetch first 3 rows only
-    ),
-    customer_details as (
-        select 
-            m.cust_id,
-            c.first_name,
-            c.last_name,
-            c.age,
-            c.gender,
-            c.pet,
-            max(day_id),            
-            json_arrayagg(m.title) as recently_watched_movies
-        from customer_extension c, customer_latest_movies m
-        where 
-            c.cust_id = m.cust_id
-        group by  
-            m.cust_id,
-            first_name,
-            last_name,
-            age,
-            gender,
-            pet
+        VALUES (1,	'Movie Pizza Recommendation',	'WITH promoted_movie_list AS (
+        SELECT
+            JSON_OBJECTAGG(title, image_url RETURNING CLOB) AS promoted_movie_list
+        FROM
+            movies
     )
-    select cust_id, first_name, last_name, age, gender, pet, recently_watched_movies, promoted_movie_list 
-    from customer_details, promoted_movie_list',
-    'Create a movie recommendation in the persona of the top genre of films watched. Follow the task rules.',
-    'Recommend 3 movies from the promoted_movie_list that are most similar to movies in the recently_watched_movies list. Include a short synopsis of each movie. Convince the reader that they will love the recommended movies. Recommend a type of pizza that would pair well with each movie.',
-    );
+    SELECT
+        M.image_url,
+        P.promoted_movie_list
+    FROM
+        MOVIESTREAM.STREAMS S
+    JOIN
+        promoted_movie_list P ON 1 = 1 -- Lateral join
+    JOIN
+        MOVIESTREAM.MOVIES M ON S.MOVIE_ID = M.MOVIE_ID
+    WHERE
+        S.CUST_ID = :cust_id
+    ORDER BY
+        S.DAY_ID DESC
+    FETCH FIRST 1 ROWS ONLY',
+        'Create a movie recommendation. Follow the task rules.',	'Recommend 3 movies from the promoted_movie_list that are most similar to movies in the recently_watched_movies list. Include a short synopsis of each movie. Convince the reader that they will love the recommended movies. Also include a recommend pizza that would pair well with each movie. include the image_url as well. Make it object oriented for easy parsing.')
     </copy>
     ```
+    ![Insert GenAI Row](./images/insert-genai-row.png "")
 
 3. In the SQL worksheet, run the following command to generate a simple function that process natural language requests.
 
@@ -128,16 +104,19 @@ In this lab, you will:
     end;
     </copy>
     ```
+    ![Generate function that processes natural language requests](./images/generate-function.png "")
+
 ## Task 2: Test the Business Logic 
 
-1. In the SQL worksheet, run the following command to test the business logic function that we just created.
+1. In the SQL worksheet, run the following command to test the business logic function that we just created. When prompted for a cust_id insert **1000001.**
 
     ```
     <copy>
-    SELECT get_genai_response() FROM dual;
+    SELECT get_genai_response(query_parameter => TO_NUMBER(:cust_id), project_id => '1')
+    FROM dual
     </copy>
     ```  
-    
+    ![Test GenAI function](./images/test-genai-function.png "")
 You may now proceed to the next lab.
 
 ## Learn More
