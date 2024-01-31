@@ -23,7 +23,7 @@ In this lab, you will:
 
 ## Task 1: Create the business logic 
 
-1. Create table by copying and pasting the following into SQL worksheet.
+1. Still logged in as MOVIESTREAM user, create a table by copying and pasting the following into SQL worksheet.
 
     ```
     <copy>

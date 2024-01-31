@@ -159,8 +159,9 @@ We will use the PLSQL API to generate a response from a prompt:
     FROM dual;
     </copy>
     ```
+    ![Test the LLM](./images/test-llm.png "")
 
-2. To generate a sentence-like repsonse, we can use **narrate** with our statement in the SQL worksheet 
+2. To generate a sentence-like repsonse, we can use **narrate** with our statement in the SQL worksheet.
 
     ```
     <copy>
@@ -171,7 +172,7 @@ We will use the PLSQL API to generate a response from a prompt:
     FROM dual;
     </copy>
     ```
-
+    ![Generate sentence-like response](./images/sentence-response.png "")
 
 
 You may now proceed to the next lab.
