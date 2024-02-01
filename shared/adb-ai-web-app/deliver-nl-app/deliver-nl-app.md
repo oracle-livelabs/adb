@@ -22,22 +22,30 @@ In this lab, you will:
 
 2. Click **Create Bucket** 
 
-3. Name the bucket, **movie_app**
+3. Name the bucket, **movie_app** and click **create.** Leave all other fields as default. 
+
+![Create bucket](./images/create-bucket.png "")
 
 4. Click on the bucket you just made and change visibility to public. 
 
 5. Save changes. 
 
+![Change visibility to public](./images/public-visibility.png "")
+
 ## Task 2: Create App and deploy to Object Storage bucket
 
 1. Open up Cloud Shell within the OCI Console. 
+
+![Open Cloud Shell](./images/open-cloudshell.png "")
 
 2. Run the following command:
 
     ```
     <copy>
     wget enter zip file here 
+    unzip movie-app
     cd movie-app
+    npm i react-scripts
     npm run deploy 
     </copy>
     ```
@@ -63,7 +71,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
   * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
   * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
-* **Last Updated By/Date:** Stephen Stuart, January 2024
+* **Last Updated By/Date:** Stephen Stuart, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

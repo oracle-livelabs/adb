@@ -4,7 +4,7 @@
 
 You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
 
-You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users make REST calls to Open AI.
+You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users make REST calls to Open AI. The credentials are safely stored under a user profile.
 
 Estimated Time: 10 minutes.
 
@@ -191,7 +191,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
   * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
   * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
-* **Last Updated By/Date:** Stephen Stuart, January 2024
+* **Last Updated By/Date:** Stephen Stuart, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

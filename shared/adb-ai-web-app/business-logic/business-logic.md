@@ -2,7 +2,9 @@
 
 ## Introduction
 
-Using the Natural Language Model makes it simple to query your data in Autonomous Database. The Large Language model and Autonomous Database are able to handle the task of storing and sturcturing data with ease, allowing the user to focus on the end use of the application. In this app, users can will be able to converse with the AI to generate trivia about their favorite movies. 
+Using the Natural Language (NL) Model makes it simple to query your data in Autonomous Database. The Large Language model and Autonomous Database are able to handle the task of storing and sturcturing data with ease, allowing the user to focus on the end use of the application. 
+
+Business logic a key feature of integrating the NL model with the app. By setting these rules, the user is able to access specific use cases for queries.  In this app, the users will generate a table to store the business logic and perform a test operation on it. 
 
 Estimated Time: 15 minutes.
 
@@ -124,7 +126,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
   * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
   * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
-* **Last Updated By/Date:** Stephen Stuart, January 2024
+* **Last Updated By/Date:** Stephen Stuart, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
