@@ -7,7 +7,7 @@ In this lab, you will load movie data that is stored in `JSON` format into an Au
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load and Analyze JSON Data](videohub:1_9hugohpd)
+[](youtube:5zgf-_sBIEk)
 
 ### Objectives
 
@@ -58,19 +58,15 @@ If you already have the **Oracle Database Actions** browser tab open from the pr
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-    <if type="livelabs">
-    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
-    </if>
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     <if type="freetier">
     ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
     </if>
 
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+5. The SQL Worksheet is displayed.
 
-    ![Click the SQL card.](./images/click-sql-card.png " ")
+    ![The SQL worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
 
 6. Use the Autonomous Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
     ```
@@ -275,6 +271,5 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
-* **Contributors:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, December 2023

@@ -5,73 +5,49 @@
         {
             "title": "Introduction",
             "description": "Introduction to Data Studio",
-            "filename": "../../0-introduction.md"
+            "filename": "../../0-introduction-short.md"
           },
           {
             "title": "Get Started",
             "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
           },
-        {
-            "title": "Lab 1: Provision an Autonomous Database",
-            "description": "Provision Autonomous Database",
+          {
+            "title": "Lab 1: Understand data analysis requirements",
+            "description": "Look at a fictitious data analysis project for requirements",
             "type": "livelabs",
-            "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
-        },
-        {
-            "title": "Lab 2: Create a User",
-            "description": "Create a database user",
+            "filename": "../../4-understand-requirements-short.md"
+          },
+          {
+            "title": "Lab 2: Load demo data",
+            "description": "Load demo data for the Data Studio overview workshop",
             "type": "livelabs",
-            "filename": "../../../common/create-user.md"
-        },
-        {
-          "title": "Lab 3: Load demo data",
-          "description": "Load demo data for the Data Studio overview workshop",
-          "type": "livelabs",
-          "filename": "../../3-demo-data.md"
-        },
-        {
-          "title": "Lab 4: Understand data analysis requirements",
-          "description": "Look at a fictitious data analysis project for requirements",
-          "type": "livelabs",
-          "filename": "../../4-understand-requirements.md"
-        },
-        {
-            "title": "Lab 5: Browse database objects",
-            "description": "Use Data Catalog to browse database objects",
+            "filename": "../../3-demo-data-short.md"
+          },
+          {
+            "title": "Lab 3: Transform and prepare data",
+            "description": "Use Data Transforms to transform and prepare data",
             "type": "livelabs",
-            "filename": "../../5-browse-objects.md"
-        },
-        {
-          "title": "Lab 6: Load additional data",
-          "description": "Use Load Data to load additional data sets",
-          "type": "livelabs",
-          "filename": "../../6-load-data.md"
-        },
-        {
-          "title": "Lab 7: Transform and prepare data",
-          "description": "Use Data Transforms to transform and prepare data",
-          "type": "livelabs",
-          "filename": "../../7-transform-data.md"
-        },
-        {
-          "title": "Lab 8: Analyze data",
-          "description": "Use Data Analysis to analyze data",
-          "type": "livelabs",
-          "filename": "../../8-analyze-data.md"
-        },
-        {
-          "title": "Lab 9: Explore data insights",
-          "description": "Use Data Insight to find hidden patterns",
-          "type": "livelabs",
-          "filename": "../../9-insight-in-data.md"
-        },
-        {
-          "title": "Lab 10: Wrap up",
-          "description": "Wrap up and clean demo data",
-          "type": "livelabs",
-          "filename": "../../10-wrap-up.md"
-        },
+            "filename": "../../7-transform-data-short.md"
+          },
+          {
+            "title": "Lab 4: Analyze data",
+            "description": "Use Data Analysis to analyze data",
+            "type": "livelabs",
+            "filename": "../../8-analyze-data.md"
+          },
+          {
+            "title": "Lab 5: Explore data insights",
+            "description": "Use Data Insight to find hidden patterns",
+            "type": "livelabs",
+            "filename": "../../9-insight-in-data.md"
+          },
+          {
+            "title": "Lab 6: Wrap up",
+            "description": "Wrap up and clean demo data",
+            "type": "livelabs",
+            "filename": "../../10-wrap-up-short.md"
+          },
         {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",

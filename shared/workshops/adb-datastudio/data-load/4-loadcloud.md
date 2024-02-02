@@ -38,9 +38,9 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 1. To begin this process, you need to navigate to the **Data Load** page in Data Studio, from the Database Actions home page.
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/launch-data-load.png)
-2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
-  ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
-3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMLANDING**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
+2. On the **Data Load** main page, click the **Connections** card so you can define a new connection to your cloud storage system.
+  ![The Connections card in Data Studio](images/cloudlocations.png)
+3. Click the **Create** button in the upper left and select **New Cloud Store Location**. Set the Name to **MOVIESTREAMLANDING**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
  ```
     $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o</copy>
@@ -80,7 +80,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![Properties of the data load task for activities](images/activity-columns.png)
 
-  Note that the Data Type for three of the columns (cust_id, genre_id and movie_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length/Precision yourself so that this analysis is avoided.
+  Note that the Data Type for three of the columns (cust\_id, genre\_id and movie\_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length/Precision yourself so that this analysis is avoided.
 
   In this case there is no need to make any changes. You can close the form and then click the **Start** button to start your data load job. 
 
@@ -120,11 +120,11 @@ Where you want to download and load data from a file from a cloud location that 
 
   ![Warning icon on completed load task](images/load-warning.png)
 
-6. Click the name of the file on the completed load task, then click the **Errors** option on the left hand side to review the errors:
+6. Click the name of the file on the completed load task, then click the **Job Report** option on the left hand side to review the errors:
 
   ![Reviewing loading errors](images/load-errors2.png)
 
-7. We can see a very clear indication of why these 4 rows failed. In all cases there was an error processing the column **YRS_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
+7. In the **Detail Error Log** section at the bottom of the screen, we can see a very clear indication of why 4 rows failed. In all cases there was an error processing the column **YRS_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
 
   ![The data column with the errored values highlighted](images/load-errors3.png)
 
@@ -134,13 +134,11 @@ Where you want to download and load data from a file from a cloud location that 
 
   ![The Reload Cart option](images/reload-cart.png)
 
-9. After reloading the cart, click on the file name of the load task to review the settings. Note that an error message appears warning us that the load task is currently attempting to create a table that already exists, as we have already loaded it. 
+9. After reloading the cart, click on the file name of the load task to review the settings. 
 
-  ![Error message indicating a clashing table name](images/reload-error.png)
+10. We want to drop and recreate the table with the same name, so make sure the **Option** drop down is set to **Drop table and create new table**, and that the table is set to **CUSTOMERCONTACTISSUES** under **Name**, as follows:
 
-10. In this case, we want to drop and recreate the table with the same name, so what we need to do is change the **Option** drop down to **Drop table and create new table**, and then re-select the table **CUSTOMERCONTACTISSUES** under **Name**, as follows:
-
-  ![Change option to drop and recreate the CUSTOMERCONTACTISSUES table](images/reload-changeoption.png)
+  ![Check option to drop and recreate the CUSTOMERCONTACTISSUES table](images/reload-changeoption.png)
 
 11. Next, we know that the **YRS_CUSTOMER** column actually contains some strings, so we should change its data type to **VARCHAR2** in the **Mapping** section:
 
@@ -181,4 +179,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
-- Last Updated By - Mike Matthews, January 2023
+- Last Updated By - Mike Matthews, November 2023

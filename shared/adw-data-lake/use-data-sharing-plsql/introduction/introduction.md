@@ -69,7 +69,7 @@ In this workshop, you will assume the responsibilities of several users. Initial
 
 **_In real use cases, there will be different users performing different responsibilities._**
 
-  ![The workshop users.](images/users-diagram.png)
+  ![The workshop users.](images/users-diagram.png =50%x*)
 
 ### How Does Delta Sharing Work?
 
@@ -96,10 +96,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
-  * Alexey Filanovskiy, Senior Product Manager
-
-* **Last Updated By/Date:** Lauran K. Serhal, July 2023
+* **Contributor:** Alexey Filanovskiy, Senior Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

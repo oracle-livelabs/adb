@@ -79,6 +79,16 @@
             "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
         },
         {
+            "title": "Lab 14: Elastic Resource Pools",
+            "description": "Elastic Resource Pools",
+            "filename": "./../../adb-elastic-resource-pools/adb-elastic-resource-pools.md"
+        },
+        {
+            "title": "Lab 15: Flashback Time Travel",
+            "description": "Flashback Time Travel",
+            "filename": "./../../adb-flashback/adb-flashback.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"

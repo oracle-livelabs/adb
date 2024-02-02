@@ -19,7 +19,7 @@ This workshop explores several methods for loading and linking data to an Oracle
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load Data from Object Storage Public Buckets](videohub:1_skl03gxs)
+[](youtube:WOzVqRIl9xw)
 
 ### Objectives
 
@@ -50,23 +50,27 @@ If you already have the **Oracle Database Actions** browser tab open from the pr
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. The **Database Actions | Launchpad** Home page is displayed in a _**new tab**_ in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
+4. Click the **Database Actions** drop-down list, and then select **View all database actions**.
+
+5. The **Database Actions | Launchpad** Home page is displayed in a _**new tab**_ in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
 
     ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
+
+    The **Data Load** page is displayed.
 
 ## Task 2: Link to Data in Public Object Storage Buckets and Create External Tables
 
 In this task, you will link to data and create the following external tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
 
-1. In the **What do you want to do with your data?** section, click **LINK DATA**.
+1. On the **Data Load** page, click the **LINK DATA** card.
 
-2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
+    ![Click Link Data.](images/click-link-data.png)
 
-    ![Select Link Data and Cloud Store.](images/select-link-data-from-cloud-store.png)
+2. On the **Link Data** page, the **Cloud Store** tab is selected by default.
 
-3. The **Link Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following public URL.
+    ![Select Link Data and Cloud Store.](images/link-data-page.png)
 
-    Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field:
+3. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL.
 
     ```
     <copy>
@@ -74,15 +78,17 @@ In this task, you will link to data and create the following external tables in 
     </copy>
     ```
 
-    Click **[ENTER]** on your keyboard. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
+    ![Enter public bucket URL.](images/public-bucket-url.png)
+
+4. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this public bucket from this section to the data linking job section on the right.
 
     ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
 
-4. Drag the **customer\_contact** folder and drop it onto the data linking job section.
+5. Drag the **customer\_contact** folder and drop it onto the data linking job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
-5. A dialog box is displayed to prompt you whether or not if you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
+6. A dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
     ![Click yes to load objects to a single table.](images/link-to-single-table.png)
 
@@ -90,45 +96,45 @@ In this task, you will link to data and create the following external tables in 
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png)
 
-6. Drag and drop the **genre**, **sales\_sample**, and **pizza\_location** folders onto the data loading job section. Click **Yes** when prompted for each target table.
+7. Drag and drop the **genre**, **sales\_sample**, and **pizza\_location** folders onto the data linking job section. Click **Yes** when prompted for each target table.
 
     ![Drag and drop three more folders.](images/drag-drop-3-folders.png)
 
-7. Click the **Actions** icon (3-dot vertical ellipsis) for the **customer\_contact** link task, and then select **Settings** from the context menu to view the settings for this task.
+8. Click the **Settings** icon (pencil) for the **customer\_contact** link task to view its settings.
 
-    ![Click the pencil icon to open settings viewer for customer_contact load task](images/customer-contact-settings.png)
+    ![Click the pencil icon to open settings viewer for customer_contact load task](images/click-customer-contact-settings.png)
 
     The **Link Data from Cloud Store Location customer_contact** settings panel is displayed.
 
-8. The **Database Actions** link job will create a **CUSTOMER_CONTACT** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
+9. The **Database Actions** link job will create a **CUSTOMER_CONTACT** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
-    ![View the settings for customer_contact load task](images/preview-create-table.png)
+    ![View the settings for customer_contact load task](images/customer-contact-settings.png)
 
-9. Click the **Actions** icon (3-dot vertical ellipsis) for the **sales\_sample** load task, and then select **Settings** from the context menu to view its settings.
+10. Click the **Settings** icon (pencil) for the **sales\_sample** link task to view its settings.
 
     ![View the sales-sample load task settings.](images/sales-sample-preview.png)
 
-10. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **SALES_SAMPLE** to **CUSTSALES**. Next, click **Close**.
+11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **SALES_SAMPLE** to **CUSTSALES**. Next, click **Close**.
 
     ![Update table name](images/change-target-table-name.png)
 
-11. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
+12. Click **Start** to run the data link job. In the **Start Link From Cloud Store** dialog box, click **Run**.
 
     ![Run the data load job](images/run-data-link.png)
 
     > **Note:** The load job can take about 2 minutes to complete.
 
-12. After the load job is completed, make sure that all of the data link cards have green check marks next to them. This indicates that your data link tasks have completed successfully.
+13. After the load job is completed, make sure that all of the data link cards have green check marks next to them. This indicates that your data link tasks have completed successfully.
 
     ![Load job tasks completed. View the genre load task settings.](images/link-completed.png)
 
-13. Click the **Actions** icon (3-dot vertical ellipsis) for the **genre** load task, and then select **Settings** from the context menu to view its settings.
+14. Click the **Settings** icon (pencil) for the **genre** load task to view its settings.
 
-14. Review some of the linked data. Click the **Table** tab to view the **genre** data.
+15. Review some of the linked data. Click the **Table** tab to view the **genre** data.
 
     ![View genre data](images/preview-genre-table.png)
 
-15. Click **Close** to exit the **genre** task preview, and then click **Done** to exit the Data Load tool and return to the **Database Actions Launchpad**.
+16. Click **Close** to exit the **genre** task preview, and then click **Done** to exit the Data Load tool and return to the **Database Actions Launchpad**.
 
      ![Click Done.](images/click-done.png)
 
@@ -205,13 +211,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

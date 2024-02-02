@@ -95,12 +95,12 @@ Now that you have the API key, create a PL/SQL function that queries the REST en
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
-5. The **Database Actions | Launchpad** Home page is displayed in a **_new tab_** in your browser. In the **Development** section, click the **SQL** card.
+5. The SQL Worksheet is displayed.
 
-    ![Click the SQL card.](./images/click-sql-card.png " ")
-
+    ![The SQL worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
+    
 6. Ensure that the public REST endpoint is accessible by our PL/SQL function. Copy and paste the following API call code into your SQL Worksheet to update the access control list, and then click the **Run Script (F5)** icon in the Worksheet toolbar. This will allow the **ADMIN** user to call out to any public host.
 
     ```
@@ -350,5 +350,5 @@ You may now proceed to the next lab.
 
 * **Authors:**
     * Marty Gubar, Autonomous Database Product Management
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+    * Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023

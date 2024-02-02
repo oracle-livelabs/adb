@@ -45,12 +45,8 @@ In this lab, you will:
 
 ## Task 1: Log in to the Oracle Cloud Console
 
-1. Log in to the **Oracle Cloud Console** as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator.
+1. Log in to the **Oracle Cloud Console** as the Cloud Administrator using the steps described in the **Get Started** lab in the Navigation menu on the left. You will complete all the labs in this workshop using this Cloud Administrator.
 See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Tasks/signingin.htm) in the _Oracle Cloud Infrastructure_ documentation.
-
-2. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**.
-
-   ![The blurred username and masked password are displayed on the OCI Sign in screen. The tenancy's name and username are blurred. The Sign In button is highlighted.](./images/sign-in.png " ")
 
    The **Oracle Cloud Console** Home page is displayed.
 
@@ -214,8 +210,9 @@ You may now proceed to the next lab.
 * [Get Started with Data Catalog](https://docs.oracle.com/en-us/iaas/data-catalog/using/index.htm)
 
 ## Acknowledgements
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 
