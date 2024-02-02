@@ -30,7 +30,7 @@ In this lab, you will:
     Name: <copy>PublicGenAI</copy>
     Description: <copy>Public Gen AI Policy
     Compartment: Ensure you are in the correct compartment
-    Policy: <copy>allow any-user to manage generative-ai-family in compartment training-adw-compartment</copy>
+    Policy: allow any-user to manage generative-ai-family in compartment training-adw-compartment</copy>
     ```
 3. Click **Create**
 

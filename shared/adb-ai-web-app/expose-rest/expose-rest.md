@@ -19,9 +19,11 @@ In this lab, you will:
 
 ## Task 1: Expose as a REST endpoint. 
 
-1. In the navigator, select **CUSTOMER.** 
+1. Ensure you are logged in as MOVIESTREAM user. In the navigator, select **CUSTOMER.** 
 
 2. Right click and select **REST** -> **Enable.**
+
+![Enable REST](./images/enable-rest.png "")
 
 ## Task 2: Try the REST endpoint. 
 
@@ -29,11 +31,17 @@ In this lab, you will:
 
 2. Click AutoREST.
 
+![Click AutoREST](./images/click-autorest.png "")
+
 3. Click the **Open in new tab** for the table CUSTOMER to test the API.  
+
+![Open in new tab](./images/open-new-tab.png "")
 
 ## Task 3: (Optional) Access the API using OpenAPI (Swagger) tool. 
 
 1. Click the elipsise for CUSTOMER and select OpenAPI View.
+
+![OpenAPI view](./images/open-api-view.png "")
 
 2. Click GET -> Try it out
 
@@ -44,6 +52,9 @@ In this lab, you will:
   1000001
   </copy>
   ```
+
+![Execute ID](./images/execute-id.png "")
+
 4. Notice the response shows all the fields realting to that ID number. We can utitlize this within our app and more in our next lab. 
 
 ## Task 4: Create module for API.
