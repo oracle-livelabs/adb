@@ -44,10 +44,10 @@
             "filename": "./../../consume-share/consume-share.md"
         },
         {
-            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
-            "type":"freetier",
-            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
-            "filename": "./../../cleanup/cleanup.md"
+            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
+            "description": "Delete the ADB instance and compartment if not needed.",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",
