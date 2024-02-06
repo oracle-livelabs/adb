@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, as the **`admin`** user, you will create a **data share provider** and a **data share consumer** users and grant the two users the necessary role and privileges. Next, as the new **`share_provider`** user, you will create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair, if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
+In this lab, as the **`admin`** user, you will create a **data share provider** and a **data share consumer** users and grant the two users the necessary role and privileges. You will optionally create an RSA key pair, if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
 ![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
 
@@ -16,7 +16,6 @@ In this lab, you will:
     * create a data share provider user and grant this user the necessary role and privileges.
     * Create a data share consumer user and grant this user the necessary role and privileges.
 * As the **`share_provider`** user, you will do the following:
-    * Create an Oracle Object Storage bucket (if you don't have one) where you'll store the shared data.
     * Generate an RSA key pair to generate a private key and a fingerprint (if you need that)
     * Create an OCI native credential and associate the buckets' URL with the credential.
 
@@ -161,92 +160,10 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![Logged in as share_provider](images/logged-share-provider.png)
 
-## Task 4: Create an Oracle Object Storage Bucket
+## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
+[](include:adb-generate-rsa-key-pair.md)
 
-You should store the data share data in Object Storage. You will then create a link to your Object Storage bucket and associate the access credentials with that bucket.
-
->**Note:** If you already have an Object Storage bucket, you don't need to create a new one.
-
-1. In your **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
-
-2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
-
-    ![The Buckets page is displayed.](./images/bucket-page.png " ")
-
-3. Click **Create Bucket**.
-
-4. In the **Create Bucket** panel, specify the following:
-    - **Bucket Name:** Enter **data-share-bucket**.
-    - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
-    - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
-
-    >**Note:** Bucket names must be unique per tenancy and region.
-
-5. Click **Create** to create the bucket.
-
-    ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
-
-6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
-
-    ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
-
-## Task 5: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
-
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through this entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
-
-In this task, you will get the following items that are required to create a Cloud location in the next task.
-
-+ An RSA key pair in PEM format (minimum 2048 bits). See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).
-+ The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
-+ The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
-
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
-
-    ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
-
-2. The **User Details** page is displayed. Scroll down the page to the **Resources** section, and then click **API Keys**.
-
-    ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
-
-3. In the **API Keys** section, click **Add API Key**. The **Add API Key** dialog box is displayed.
-
-    ![Click Add API Key.](./images/click-add-api-key.png " ")
-
-4. Click **Download Private Key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Private Key**.
-
-    ![Download private key.](./images/download-private-key.png " ")
-
-    The name of the downloaded private key is usually as follows:
-
-    **`oraclecloudidentityservice_username-date.pem`**
-
-    Rename your downloaded private key to something shorter such as:
-
-    **`oci-api-private-key.pem`**
-
-5. In most cases, you do not need to download the public key; however, you can download the public key for future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
-
-    ![Download public key.](./images/download-public-key.png " ")
-
-    The name of the downloaded public key is usually as follows:
-
-    **`oraclecloudidentityservice_username-date_public.pem`**
-
-    Rename your downloaded private key to something shorter such as:
-
-    **`oci-api-public-key.pem`**
-
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
-
-    ![Configuration file preview.](./images/config-file-preview.png " ")
-
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
-
-    ![Credentials items.](./images/credentials-items.png " ")
-
-7. Click **Close**.
-    
-## Task 6: Define a Cloud Location and Create an OCI Credential
+## Task 5: Define a Cloud Location and Create an OCI Credential
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
