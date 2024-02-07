@@ -23,7 +23,7 @@ In this lab, you will:
 ## Task 2: Create the Autonomous Database instance
 [](include:adb-provision-body.md)
 
-Please *proceed to the next lab*.
+Please proceed to the next lab.
 
 ## Learn more
 
@@ -33,4 +33,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, June 2023
+- **Last Updated By/Date** - Katherine Wardhana, User Assistance Developer, February 2024
