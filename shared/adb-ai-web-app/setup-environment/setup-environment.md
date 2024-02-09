@@ -21,66 +21,10 @@ Estimated Time: 5 minutes.
 
 In this lab, you will:
 
-* Create a developer account with OpenAI
+* Create an OCI Compartment 
 * Run the stack to perform all the prerequisites required to analyze data
 
-## Task 1: Sign up for Access to a Large Language Model (LLM)
-
-Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
-
-Sign up for an **OpenAI** account as follows:
-
-1. Click the following link to [create your OpenAI account](https://platform.openai.com/signup?launch). To create an account, you can use either an email address or a Google, Microsoft, or Apple account. In this workshop, we created a new account using the  **Continue with Google** option, and then followed the prompts.
-
-      _**Important:** Make sure you create a paid account. API calls will fail if you use a free account._
-
-      ![Create a new account](images/create-openai-account.png =50%x*)
-
-    >**Note:** If you encounter problems creating a new account using an email address, then try using your Microsoft, Google, or Apple account instead of using an email address.
-
-    Each LLM will have its own process for enabling access to its API. This workshop will use the **OpenAI GPT-3.5** model. This model requires that you sign up for a _paid developer account_. The cost for using OpenAI for this workshop is minimal, less than $ 1.
-
-2. Create a **Paid developer account**. Navigate to the [Welcome to the OpenAI platform](https://platform.openai.com/) page. Click the account label, **Personal** in our example, and then select **Manage account** from the drop-down menu.
-
-    ![Manage account](images/manage-account.png "")
-
-3. On the **Organization settings** page, click **Billing**.
-
-    ![Click Billing](images/click-billing.png "")
-
-4. On the **Billing overview** page, click **Start payment plan**.
-
-    ![Start payment plan](images/start-payment-plan.png "")
-
-5. In the **What best describes you?** dialog box, click either **Individual** or **Company**. In this example, we will choose **Individual**.
-
-    ![Click individual plan](images/click-individual-plan.png =75%x*)
-
-6. Complete the **Set up payment plan** dialog box, and then **Continue**.
-
-    ![Complete the payment plan dialog box](images/complete-payment-dialog.png =75%x*)
-
-7. In the **Configure payment** dialog box, enter the dollar amount of the credit you want to purchase (between 5 and 50), and then click **Continue**. In this example, we chose **$ 5**.
-
-    ![Credit amount dialog box](images/credit-amount.png =75%x*)
-
-    A successful purchase message is displayed briefly. The **Billing overview** page is re-displayed. The updated credit balance is displayed. In our example the credit balance is now $10 because we had a free credit of $5 and we just purchased another $5.
-
-    ![Credit balance dialog box](images/credit-balance.png " ")
-
-Create a secret key as follows:
-
-1. Click the following link to [create a new API secret key](https://platform.openai.com/account/api-keys). The secret key is used to sign requests to OpenAI's API. You will need it when creating a credential later. On the **API keys** page, click **Create new secret key**.
-
-    ![Create a secret key](images/create-secret-key.png "")
-
-3. The **Create new secret key** dialog box is displayed with the newly created secret key which is blurred in this example for security reasons. Click the **Copy** icon to copy the key to the clipboard (in MS-Windows) and then save it to a text editor of your choice as you'll need it when you set up your connection to the service. Next, click **Done**.
-
-    ![Create a new secret](images/create-secret-key-db.png "")
-
-    >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
-
-## Task 2: Create an OCI Compartment
+## Task 1: Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
@@ -112,7 +56,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the button below:
 
-    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-Select-AI-demonstration-RM.zip" class="tryit-button">Deploy workshop</a>
+    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-Select-AI-demonstration-RM.zip&sourceType=:ow:lp:cpo::::RC_WWMK211125P00013:llid=3831" class="tryit-button">Deploy workshop</a>
 
     The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
@@ -127,7 +71,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
     >**Note:** When you access the **Create Stack** page, the **US East (Ashburn)** region is selected by default. This is where the stack will be created. If you want to create the stack in a different region, select that region from the **Regions** drop-down list in the Console's banner.
 
-  ![The Stack information step 1 of the wizard](./images/create-stack.png "")
+  ![The Stack information step 1 of the wizard](./images/create-stack-updated.png "")
 
 3. In the **Configure variables** step 2 of the wizard, provide the following:
     * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `ca-toronto-1` region.
@@ -136,20 +80,20 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
         >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
-    * **Secret API key used to connect to AI model:** Enter your secret key. If you don't have one, follow the instructions in **Task 1** in this lab to obtain one.
+    * UPDATE SECRET KEY INPUT
     * For the other fields, accept the default selections.
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)
 
     Click **Next**.
 
-    ![Click next in step 2 of the wizard](./images/click-next.png "")
+    ![Click next in step 2 of the wizard](./images/create-stack-steptwo.png "")
 
     >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 
 4. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
 
-    ![Click Create](./images/click-create.png "")
+    ![Click Create](./images/create-stack-stepthree.png "")
 
 5. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
 
