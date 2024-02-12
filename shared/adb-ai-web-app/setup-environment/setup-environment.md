@@ -9,13 +9,12 @@ comments syntax
 This workshop focuses on teaching you how to setup and use generative AI to query your data using natural language from a SQL prompt and from an application. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
-* Install the Select AI demo application that was built using APEX
 
 The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure Documentation documentation.
 
-Autonomous Database supports both the **OpenAI** and **Cohere** models. In the second part of the workshop, you will set up a developer account on **OpenAI**.
+Autonomous Database supports both the **Meta Llama** and **Cohere** models. 
 
-Estimated Time: 5 minutes.
+Estimated Time: 15 minutes.
 
 ### Objectives
 
@@ -50,9 +49,9 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
 
-## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
+## Task 3: Provision an ADB Instance and Load Data
 
-Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and install the Select AI demo application that was built using APEX.
+Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance and upload the data to the instance.
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the button below:
 
@@ -69,18 +68,17 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
 2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** step 1 of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** check box. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
 
-    >**Note:** When you access the **Create Stack** page, the **US East (Ashburn)** region is selected by default. This is where the stack will be created. If you want to create the stack in a different region, select that region from the **Regions** drop-down list in the Console's banner.
+    >**Note:** When you access the **Create Stack** page, ensure the **US Midwest (Chicago)** region is selected. This is where the stack will be created. If you want to create the stack in a different region, select that region from the **Regions** drop-down list in the Console's banner.
 
   ![The Stack information step 1 of the wizard](./images/create-stack-updated.png "")
 
 3. In the **Configure variables** step 2 of the wizard, provide the following:
-    * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `ca-toronto-1` region.
+    * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `us-chicago-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
     * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
         >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
-    * UPDATE SECRET KEY INPUT
     * For the other fields, accept the default selections.
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)

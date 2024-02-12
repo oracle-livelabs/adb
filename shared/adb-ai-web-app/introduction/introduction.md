@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities to interact with an open-source developer friendly application built on React with typescript. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
+In this workshop, you will learn how to use **Autonomous Database DBMS_CLOUD_AI.GENERATE** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities to interact with an open-source developer friendly application built on React with typescript. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
 
 ### What is Natural Language?
 
@@ -17,7 +17,7 @@ Generative AI enables users to quickly generate new content based on a variety o
 In this workshop, you will:
 
 * Configure your Autonomous Database to leverage a generative AI model for querying data using natural language
-* Use **`Select AI`** to query data using natural language
+* Use **`DBMS_CLOUD_AI.GENERATE`** to query data using natural language
 * Learn about using business logic to enhance your APIs 
 * Learn about using custom modules and AutoREST to connect your app to ADB 
 * Learn about deploying a React App from OCI Console to Object Storage 

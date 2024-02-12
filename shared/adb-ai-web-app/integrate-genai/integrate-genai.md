@@ -4,7 +4,7 @@
 
 You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
 
-You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users make REST calls to Open AI. The credentials are safely stored under a user profile.
+You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users to make REST calls to OCI Gen AI. The credentials are safely stored under a user profile.
 
 Estimated Time: 10 minutes.
 
@@ -73,52 +73,50 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     ![Moviestream password](./images/moviestream-pw.png "")
 
 2. Create an AI profile for **Meta Llama model** by running the following statement in the SQL worksheet. 
-
-    **NOTE: THIS DOESN'T WORK WELL YET. THIS IS THE CODE WE'LL WANT.**
     
     ```
     <copy>
     BEGIN
     DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'OCIAI1',
+            profile_name => 'OCIAI_LLAMA',
             force => true
     );
 
     DBMS_CLOUD_AI.create_profile(
-        profile_name => 'OCIAI1',                                                             
+        profile_name => 'OCIAI_LLAMA',                                                             
         attributes => '{"provider":"oci",
             "model": "meta.llama-2-70b-chat",
-            "credential_name":"OCI$RESOURCE_PRINCIPAL"
+            "credential_name":"OCI$RESOURCE_PRINCIPAL",
+            "oci_runtimetype":"LLAMA"
         }');
     end;
     /
     </copy>
     ```
-    ![Create AI profile](./images/ai-profile.png "")
+    ![Create AI profile](./images/create-llama-updated.png "")
 
 2. Create an AI profile for **Cohere model** by running the following statement in the SQL worksheet. 
-
-    **NOTE: THIS DOESN'T WORK WELL YET. THIS IS THE CODE WE'LL WANT.**
     
     ```
     <copy>
     BEGIN
     DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'OCIAI2',
+            profile_name => 'OCIAI_COHERE',
             force => true
     );
 
     DBMS_CLOUD_AI.create_profile(
-        profile_name => 'OCIAI2',                                                             
+        profile_name => 'OCIAI_COHERE',                                                             
         attributes => '{"provider":"oci",
             "model": "cohere.command",
-            "credential_name":"OCI$RESOURCE_PRINCIPAL"
+            "credential_name":"OCI$RESOURCE_PRINCIPAL",
+            "oci_runtimetype":"COHERE"
         }');
     end;
     /
     </copy>
     ```
-    ![Create AI profile](./images/ai-profile.png "")
+    ![Create AI profile](./images/create-cohere-updated.png "")
 
 
 ## Task 4: Test the AI profile
@@ -131,27 +129,27 @@ We will use the PLSQL API to generate a response from a prompt:
     <copy>
     SELECT DBMS_CLOUD_AI.GENERATE(
         prompt       => 'what is oracle autonomous database',
-        profile_name => 'GENAI',
+        profile_name => 'OCIAI_COHERE',
         action       => 'chat')
     FROM dual;
     </copy>
     ```
-    ![Test the LLM](./images/test-llm.png "")
+    ![Test the LLM](./images/cohere-output.png "")
 
-2. To generate a sentence-like repsonse, we can use **narrate** with our statement in the SQL worksheet.
+2. To compare our Cohere model to our Llama model, run the following statement in the SQL worksheet.
 
     ```
     <copy>
     SELECT DBMS_CLOUD_AI.GENERATE(
-        prompt       => 'who is Tom Hanks?',
-        profile_name => 'GENAI',
-        action       => 'narrate') as response
+        prompt       => 'what is oracle autonomous database',
+        profile_name => 'OCIAI_LLAMA',
+        action       => 'chat')
     FROM dual;
     </copy>
     ```
-    ![Generate sentence-like response](./images/sentence-response.png "")
+    ![Generate sentence-like response](./images/llama-chat.png "")
 
-**Note:** The SELECT AI may generate some responses with a SQL query to generate the result. Expand the result by clicking the eyeball on the response to view the generated SQL.
+**Note:** The OCI Gen AI may generate some responses with a SQL query to generate the result. Expand the result by clicking the eyeball on the response to view the generated SQL.
 
     ![Generated sql from SELECT AI](./images/select-ai-response.png "")
 
