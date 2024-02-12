@@ -31,17 +31,15 @@ Make sure you're still logged in as the **`share_provider`** user. If you alread
 
 ## Task 2: Load Data from a Public Object Storage Bucket and Create a Table
 
-In this task, you will load the **sales\_sample** data into your Autonomous Database instance and then create a table.
+In this task, you will load the **customer\_contact** data into your Autonomous Database instance and then create a table.
 
-1. In the **What do you want to do with your data?** section, click **LOAD DATA**.
-
-2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
+1. In the **Data Load** section, click **LOAD DATA**.
 
     ![Select Load Data and Cloud Store.](images/select-load-data-from-cloud-store.png)
 
-3. The **Load Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following public URL.
+    The **Load Cloud Object** page is displayed.
 
-    Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field:
+2. Click the **Cloud Store** tab. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following public URL. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field:
 
     ```
     <copy>
@@ -51,53 +49,53 @@ In this task, you will load the **sales\_sample** data into your Autonomous Data
 
     ![Load Cloud Object](images/load-cloud-object.png)
 
-4. Click **[ENTER]** on your keyboard. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
+3. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
 
     ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
 
-5. Drag the **`customer_contact`** folder and drop it onto the data load job section.
+4. Drag the **`customer_contact`** folder and drop it onto the data load job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
-6. A dialog box is displayed to prompt you whether or not if you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
+5. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
     The **`customer_contact`** target table to be created for the selected `.csv` file is displayed in the data linking job section.
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png)
 
-7. Click the **Actions** icon (3-dot vertical ellipsis) for the **customer\_contact** load task, and then select **Settings** from the context menu to view the settings for this task.
+6. Click the **Settings** icon (Pencil) for the **customer\_contact** load task to view the settings for this task.
 
     ![Click the pencil icon to open settings viewer for customer_contact load task](images/customer-contact-settings.png)
 
-    The **Link Data from Cloud Store Location customer_contact** settings panel is displayed.
+    The **Load Data from Cloud Store Location customer_contact** settings panel is displayed.
 
-8. The **Database Actions** load job will create a **`CUSTOMER_CONTACT`** table with the listed columns and data types that are based on the selected **`.csv`** file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
+7. The **Database Actions** load job will create a **`CUSTOMER_CONTACT`** table with the listed columns and data types that are based on the selected **`.csv`** file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
     ![View the settings for customer_contact load task](images/preview-create-table.png)
 
     The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL.
 
-9. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
+8. Click **Start** to run the data link job. In the **Start Load from Cloud Store** dialog box, click **Run**.
 
     ![Run the data load job](images/run-data-load.png)
 
-10. After the load job is completed, make sure that the data load card has a green check mark next to it. This indicates that your data load task has completed successfully.
+9. After the load job is successfully completed, a green check mark is displayed.
 
     ![Load job tasks completed. View the genre load task settings.](images/load-completed.png)
 
-11. Click the **Actions** icon (3-dot vertical ellipsis) for the **`customer_contact`** load task, and then select **Settings** from the context menu to view its settings.
+10. Click the **Settings** icon for the **`customer_contact`** load task to view its settings.
 
-12. Review some of the load data. Click the **Table** tab to view the **`customer_contact`** data.
+11. Review some of the load data. Click the **Table** tab to view the **`customer_contact`** data.
 
     ![View customer_contact data](images/preview-customer-contact-table.png)
 
     >**Note:** You can also use the **Navigator** tab in the SQL Worksheet to view the table. You might need to click the **Refresh** icon before you can see the newly created table.
 
-13. Click **Close** to exit the **`customer_contact`** task preview, and then click **Done** to exit the Data Load tool.
+12. Click **Close** to exit the **`customer_contact`** table preview, and then click **Done** to exit the Data Load tool.
 
      ![Click Done.](images/click-done.png)
 
-    The **Database Actions Launchpad** is displayed.
+    The **Data Load** page is displayed.
 
      ![Launchpad is displayed.](images/launchpad.png)
 
@@ -115,7 +113,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer
 * **Contributors:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, November 2023
+* **Last Updated By/Date:** Lauran Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

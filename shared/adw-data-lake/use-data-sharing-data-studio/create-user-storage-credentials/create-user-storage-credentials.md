@@ -1,10 +1,10 @@
-# Create a Share Provider User, an Object Storage Bucket, and an OCI Credential
+# Create a Share Provider User and an OCI Credential
 
 ## Introduction
 
 In this lab, as the **`admin`** user, you will create a **data share provider** and a **data share consumer** users and grant the two users the necessary role and privileges. You will optionally create an RSA key pair, if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
-![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
+![Create a user and an OCI credential.](./images/user-bucket-credential-diagram.png =70%x*" ")
 
 Estimated Time: 15 minutes
 
@@ -25,6 +25,8 @@ In this lab, you will:
 
 ## Task 1: Navigate to the SQL Worksheet
 
+After you provisioned an ADB instance in the **Set up the Workshop Environment** lab, the **Autonomous Database details** page was displayed. If the page is active, start with **step 4** below. If the page had timed out, start with **step 1** below.
+
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
@@ -36,7 +38,11 @@ In this lab, you will:
 
     ![From the Database Actions drop-down list, click SQL.](./images/click-db-actions-sql.png " ")
 
-    The SQL Worksheet is displayed.
+5. The first time you open the SQL Worksheet, a series of pop-up informational boxes may appear, providing you with a tour that introduces the main features. If not, click the **Tour** icon (binoculars) in the upper right corner of the toolbar. To take the tour through the informational boxes, click **Next**. To exit the tour, click the **X** control.
+
+    ![SQL Worksheet.](./images/adb-sql-worksheet-opening-tour.png " ")
+
+6. Click the **X** control to exit the tour. The SQL Worksheet is displayed.
 
     ![The SQL Worksheet is displayed.](./images/sql-worksheet.png " ")
 
@@ -138,16 +144,6 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![View the script results](images/script-results.png)
 
-<!--- comment
-2. Log out of the `admin` user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu. Click **Leave**.
-
-3. Log in as the newly created user, `share_consumer`. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
-
-    ![Log in as share_consumer](images/login-share-consumer.png)
-
-    You are now logged in as the `share_consumer` user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
---->
-
 2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`ADMIN`** user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
 
     ![Log out of admin](images/logout-admin.png)
@@ -160,10 +156,39 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![Logged in as share_provider](images/logged-share-provider.png)
 
-## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
+## Task 4: (Optional) Create an Oracle Object Storage Bucket
+
+You should store the data share data in Object Storage. You will then create a link to your Object Storage bucket and associate the access credentials with that bucket.
+
+>**Note:** If you already have an Object Storage bucket, you don't need to create a new one. You can use your own bucket.
+
+1. In your **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
+
+2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
+
+    ![The Buckets page is displayed.](./images/bucket-page.png " ")
+
+3. Click **Create Bucket**.
+
+4. In the **Create Bucket** panel, specify the following:
+    - **Bucket Name:** Enter **data-share-bucket**.
+    - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
+    - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
+
+    >**Note:** Bucket names must be unique per tenancy and region.
+
+5. Click **Create** to create the bucket.
+
+    ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
+
+6. The new bucket is displayed on the **Buckets** page.
+
+    ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
+
+## Task 5: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 [](include:adb-generate-rsa-key-pair.md)
 
-## Task 5: Define a Cloud Location and Create an OCI Credential
+## Task 6: Define a Cloud Location and Create an OCI Credential
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
@@ -177,7 +202,7 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
      ![Click Data Load from the drop-down list.](./images/click-data-load-drop-down.png " ")
 
-4. The **Database Actions | Data Load** page is displayed in a new tab in your browser. Scroll-down to the **Administration** section and then click **CONNECTIONS**.
+4. The **Data Load** page is displayed in a new tab in your browser. Scroll-down to the **Administration** section and then click **CONNECTIONS**.
 
     ![Click the Cloud Locations card.](./images/click-connections.png " ")
 
@@ -205,7 +230,7 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
     ![Click Create Credential.](./images/click-create-credential.png " ")
     
-    The **Add Cloud Store Location** panel is re-displayed. The newly created credential is displayed. If you already have a bucket, select it from the **Select Bucket** drop-down list. This populates the **Bucket URI** text box; otherwise, select the **Bucket URI** option, and then enter your bucket's URI in the **Bucket URI** text box. You identified your bucket's URI in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_. 
+    The **Add Cloud Store Location** panel is re-displayed. The newly created credential is displayed. If you already have a bucket, select it from the **Select Bucket** drop-down list. This populates the **Bucket URI** text box; otherwise, select the **Bucket URI** option, and then enter your bucket's URI in the **Bucket URI** text box. You identified your bucket's URI in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
     
     >**Note:** Substitute the URI value in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`namespace  name`** place holder for security.
 
@@ -235,7 +260,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
