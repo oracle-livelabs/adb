@@ -26,17 +26,19 @@ In this lab, you will:
 
 2. Click on **Create policy** and paste the following into the fields:
 
+**Note:** Select the **Show Manual Editor** to open the field  in order to paste the policy.
+
     ```
     Name: <copy>PublicGenAI</copy>
-    Description: <copy>Public Gen AI Policy
-    Compartment: Ensure you are in the correct compartment
-    Policy: allow any-user to manage generative-ai-family in compartment training-adw-compartment</copy>
+    Description: <copy>Public Gen AI Policy</copy>
+    Compartment: <copyEnsure you are in the correct compartment</copy>
+    Policy: <copy>allow any-user to manage generative-ai-family in compartment training-adw-compartment</copy>
     ```
-3. Click **Create**
+1. Click **Create**
 
     ![Create policy](./images/create-policy.png "")
     
-    This policy is very broad. In a production environment, you will want to make this much more narrow.
+**Note:** This policy is very broad. In a production environment, you will want to make this much more narrow.
 
 ## Task 2: Enable use of Resource Principals for MOVIESTREAM user
 
@@ -66,11 +68,11 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
-1. Sign into the SQL worksheet as the MOVIESTREAM user. Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
+1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
 
     ![Moviestream password](./images/moviestream-pw.png "")
 
-2. Create an AI profile by running the following statement in the SQL worksheet. 
+2. Create an AI profile for **Meta Llama model** by running the following statement in the SQL worksheet. 
 
     **NOTE: THIS DOESN'T WORK WELL YET. THIS IS THE CODE WE'LL WANT.**
     
@@ -78,22 +80,15 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     <copy>
     BEGIN
     DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'GENAI',
+            profile_name => 'OCIAI1',
             force => true
     );
 
     DBMS_CLOUD_AI.create_profile(
-        profile_name => 'GENAI',                                                             
+        profile_name => 'OCIAI1',                                                             
         attributes => '{"provider":"oci",
-            "credential_name":"OCI$RESOURCE_PRINCIPAL",
-            "object_list": [
-                {"owner": "MOVIESTREAM", "name": "GENRE"},
-                {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                {"owner": "MOVIESTREAM", "name": "STREAMS"},
-                {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                {"owner": "MOVIESTREAM", "name": "ACTORS"}
-            ]
+            "model": "meta.llama-2-70b-chat",
+            "credential_name":"OCI$RESOURCE_PRINCIPAL"
         }');
     end;
     /
@@ -101,53 +96,30 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     ```
     ![Create AI profile](./images/ai-profile.png "")
 
-3. To use OpenAI, run the following statement in the SQL worksheet and be sure to update with your personal information from lab 1 when creating the OpenAI API.
+2. Create an AI profile for **Cohere model** by running the following statement in the SQL worksheet. 
 
-    ```
-    <copy>
-    BEGIN
-    DBMS_CLOUD.CREATE_CREDENTIAL (
-        credential_name  => 'openai',
-        username         => '<insert personal information>',
-        password         => '<insert personal information>'
-        );
-    END;
-    /
-    </copy>
-    ```
-
-    ![Create credential](./images/create-credential.png "")
-
-    ![Create credential SQL command](./images/create-credential2.png "")
-
-4. To create an AI profile for OpenAI, run the following statement in the SQL worksheet. 
-
+    **NOTE: THIS DOESN'T WORK WELL YET. THIS IS THE CODE WE'LL WANT.**
+    
     ```
     <copy>
     BEGIN
     DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'GENAI',
+            profile_name => 'OCIAI2',
             force => true
     );
 
     DBMS_CLOUD_AI.create_profile(
-        profile_name => 'GENAI',                                                             
-        attributes => '{"provider":"openai",
-            "credential_name":"OPENAI",
-            "object_list": [
-                {"owner": "MOVIESTREAM", "name": "GENRE"},
-                {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                {"owner": "MOVIESTREAM", "name": "STREAMS"},
-                {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                {"owner": "MOVIESTREAM", "name": "ACTORS"}
-            ]
+        profile_name => 'OCIAI2',                                                             
+        attributes => '{"provider":"oci",
+            "model": "cohere.command",
+            "credential_name":"OCI$RESOURCE_PRINCIPAL"
         }');
     end;
     /
     </copy>
     ```
-    ![Create AI profile for GenAI](./images/create-profile.png "")
+    ![Create AI profile](./images/ai-profile.png "")
+
 
 ## Task 4: Test the AI profile
 
@@ -171,7 +143,7 @@ We will use the PLSQL API to generate a response from a prompt:
     ```
     <copy>
     SELECT DBMS_CLOUD_AI.GENERATE(
-        prompt       => 'what are our total views?',
+        prompt       => 'who is Tom Hanks?',
         profile_name => 'GENAI',
         action       => 'narrate') as response
     FROM dual;
@@ -179,6 +151,9 @@ We will use the PLSQL API to generate a response from a prompt:
     ```
     ![Generate sentence-like response](./images/sentence-response.png "")
 
+**Note:** The SELECT AI may generate some responses with a SQL query to generate the result. Expand the result by clicking the eyeball on the response to view the generated SQL.
+
+    ![Generated sql from SELECT AI](./images/select-ai-response.png "")
 
 You may now proceed to the next lab.
 
