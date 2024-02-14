@@ -272,4 +272,4 @@ You may now proceed to the next lab.
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, December 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024

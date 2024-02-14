@@ -139,9 +139,13 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png " ")
 
-3. In the **Open** dialog box, navigate to the directory that contains the two **.csv** files that you downloaded earlier. Select the *customer\_segment.csv* and *customer\_extension.csv* files.
+3. In the **Open** dialog box, navigate to the directory that contains the two **.csv** files that you downloaded earlier. Select the **`customer_segment.csv`** and **`customer_extension.csv`** files, and then click **Open**.
 
     ![Select the two files.](./images/open-dialog-box.png " ")
+
+    >**Note:** If you have an issue uploading both files simultaneously, you can select one file at a time. Select the first downloaded file using step 3. When the file is uploaded, click the **Select Files** icon on the **Load Data** page, and then select the second file.
+
+    ![Select the one file at a time.](./images/select-second-file.png " ")
 
 4. When the upload is complete, you will make a small change to the default table name that will be created for the *customer-extension.csv* file. Click the **Settings** (pencil) icon to the right of *customer-extension.csv*.
 
@@ -155,7 +159,7 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Examine the editor of the data load job.](./images/change-table-name.png " ")
 
-8. Click **Start**. A **Run Data Load Job** confirmation dialog box is displayed. Click **Run**.
+8. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
 
     ![Run the data load.](./images/click-start.png " ")
 
@@ -196,7 +200,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
