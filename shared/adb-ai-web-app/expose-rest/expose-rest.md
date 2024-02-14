@@ -2,7 +2,17 @@
 
 ## Introduction
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
+You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab. 
+
+This lab will implement two different types of RESTful services. First, AutoREST can be published quickly and efficiently with only a couple clicks. Secondly, RESTful modules can be created to impelement PL/SQL blocks and SQL queries from an API and managed using the service manager. 
+
+- AutoREST  
+
+![REST API Introduction](./images/intro-restapi.png "")
+
+- RESTful services management 
+
+![REST API Introduction](./images/intro-restapi-two.png "")
 
 Estimated Time: 10 minutes.
 

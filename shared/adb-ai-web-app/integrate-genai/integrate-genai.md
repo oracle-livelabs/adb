@@ -52,7 +52,20 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
     ![Select SQL option](./images/sql-option.png "")
 
-4. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
+4. The setup script enabled Resource Principals usage for MovieStream. To better understand the use of Resource Principal, let's disable and recreate it. Run the following statement to disable the use of Resource Principals for the MOVIESTREAM user: 
+
+    ```
+    <copy>
+    begin
+    dbms_cloud_admin.disable_resource_principal(username  => 'MOVIESTREAM');
+    end;
+    /
+    </copy>
+    ```
+
+
+
+4. Now let's reenable the Resource Principal. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
 
     ```
     <copy>
@@ -68,11 +81,29 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
+In the installation, the Terraform script created a couple Select AI profiles. Let's create a couple more. The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
+
+    ```
+    -- GenAI projects
+    dbms_cloud_ai.drop_profile(
+        profile_name => 'genai',
+        force => true
+        );
+
+    dbms_cloud_ai.create_profile(
+        profile_name => 'genai',
+        attributes =>       
+            '{"provider": "oci",
+            "credential_name": "OCI$RESOURCE_PRINCIPAL"
+            }'
+        );
+    ```
+
 1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
 
     ![Moviestream password](./images/moviestream-pw.png "")
 
-2. Create an AI profile for **Meta Llama model** by running the following statement in the SQL worksheet. 
+2. Create an AI profile for **Meta Llama 2 Chat model** by running the following statement in the SQL worksheet. 
     
     ```
     <copy>
@@ -148,10 +179,6 @@ We will use the PLSQL API to generate a response from a prompt:
     </copy>
     ```
     ![Generate sentence-like response](./images/llama-chat.png "")
-
-**Note:** The OCI Gen AI may generate some responses with a SQL query to generate the result. Expand the result by clicking the eyeball on the response to view the generated SQL.
-
-    ![Generated sql from SELECT AI](./images/select-ai-response.png "")
 
 You may now proceed to the next lab.
 

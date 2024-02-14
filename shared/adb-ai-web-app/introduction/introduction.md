@@ -4,6 +4,10 @@
 
 In this workshop, you will learn how to use **Autonomous Database DBMS_CLOUD_AI.GENERATE** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities to interact with an open-source developer friendly application built on React with typescript. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
 
+The purpose of this lab is to highlight the business logic required to integrate Generative AI with data from the Autonomous Database using both **DBMS_CLOUD_AI.CREATE_PROFILE** and **DBMS_CLOUD_AI.GENERATE.**  
+
+![Introduction Slide](./images/intro-slide.png "")
+
 ### What is Natural Language?
 
 Natural language processing is the ability of a computer application to understand human language as it is spoken and written. It is a component of artificial intelligence (AI).
@@ -23,6 +27,9 @@ In this workshop, you will:
 * Learn about deploying a React App from OCI Console to Object Storage 
 
 ### Oracle MovieStream Business Scenario
+
+![MovieStream Logo](./images/moviestream-logo.png "")
+
 The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to query most recently watched films by CUST_ID, which will trigger Select AI process. The business logic will suggest films from the promoted movie list as well as pizza and their locations. 
 
 You may now proceed to the next lab.

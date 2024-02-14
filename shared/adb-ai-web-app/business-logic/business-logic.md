@@ -6,6 +6,12 @@ Using the Natural Language (NL) Model makes it simple to query your data in Auto
 
 Business logic a key feature of integrating the NL model with the app. By setting these rules, the user is able to access specific use cases for queries.  In this app, the users will generate a table to store the business logic and perform a test operation on it. 
 
+- Example use case for **DBMS_CLOUD_AI.GENERATE** 
+
+![Business Logic Overview](./images/intro-businesslogic.png "")
+
+> **Note:** The prompt is feeding in both the task and data using a profile previously created named "ociai" to generate a email using Generative AI and data from the database. 
+
 Estimated Time: 15 minutes.
 
 ### Objectives
@@ -36,7 +42,11 @@ In this lab, you will:
    </copy>
    ```
 
-2. Insert the following business rule into the new table by copying and pasting the following into SQL worksheet. 
+2. Let's take a look at the Business Logic that was defined by the setup script. It's captured in a table called GenAI_project. 
+
+NOTE: Take screenshot and show how to look at table and preview existing projects then create new one by inserts 
+
+Insert the following business rule into the new table by copying and pasting the following into SQL worksheet. 
 
     ```
     <copy>
@@ -66,55 +76,20 @@ In this lab, you will:
     ```
     ![Insert GenAI Row](./images/insert-genai-row.png "")
 
-3. In the SQL worksheet, run the following command to generate a simple function that process natural language requests.
-
-    ```
-    <copy>
-    create or replace function MOVIESTREAM.get_genai_response(
-        query_parameter varchar2 default '1192572', 
-        project_id number default 1,
-        profile_name varchar2 default 'genai'
-        ) return clob is
-        
-        l_prompt clob;
-        l_response clob;
-
-    begin
-
-        -- Get the prompt from the project + the query parameter
-        l_prompt := get_genai_prompt(
-                query_parameter => query_parameter,
-                project_id => project_id
-        );
-
-        -- Pass the prompt to the model and return the response
-        l_response := dbms_cloud_ai.GENERATE(
-            prompt => l_prompt,
-            profile_name => profile_name,
-            action => 'chat'
-        );
-
-        return l_response;
-
-        exception
-            when others then
-                return 'Error generating response.' || chr(10) || sqlerrm;
-    end;
-    </copy>
-    ```
-    ![Generate function that processes natural language requests](./images/generate-function.png "")
+3. Let's take a look at the function that drives the business logic.
 
 ## Task 2: Test the Business Logic 
 
-1. In the SQL worksheet, run the following command to test the business logic function that we just created. When prompted for a cust_id insert **1000001.**
+1. In the SQL worksheet, run the following command to test the business logic function that we just created. We have created a view where customer_id's are short-handed. 
 
     ```
     <copy>
-    SELECT get_genai_response(query_parameter => TO_NUMBER(:cust_id), project_id => '1')
+    SELECT get_genai_response(query_parameter => '1', project_id => '1')
     FROM dual
     </copy>
     ```  
     ![Test GenAI function](./images/test-genai-function.png "")
+    
 You may now proceed to the next lab.
 
 ## Learn More
