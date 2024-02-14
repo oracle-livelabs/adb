@@ -87,7 +87,7 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
     ![Click Load Data.](./images/click-load-data.png " ")
 
-2. On the **Load Data** page, click the **Cloud Store** tab. The newly created **oci-data-lake** Cloud Location that you created is already selected in the **Select Cloud Store Location or enter public URL** drop-down list. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
+2. On the **Load Data** page, click the **Cloud Store** tab. Select the newly created **oci-data-lake** cloud location that you created, if not already selected in the **Select Cloud Store Location or enter public URL** drop-down list. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
 
     ![Load Data page.](./images/load-data-page.png " ")
 
@@ -151,8 +151,8 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
         Click **Create Credential**. The **Add Cloud Store Location** panel is re-displayed. Specify the following: 
 
-        + **Bucket URI:** Leave this option as selected which is the default.
-        + **Bucket URI:** Enter your AWS endpoint. The URL format is as follows:
+        + **Bucket URI option:** Leave this option as selected which is the default.
+        + **Bucket URI text box:** Enter your AWS endpoint. The URL format is as follows:
 
             `https://<bucket-name>.s3.<region>.amazonaws.com/`
 
@@ -166,7 +166,7 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
     ![The cloud store location is created.](./images/aws-connection-created.png " ")
 
-6. Click on the **Data Load** link in the breadcrumbs to return to the **data Load** page.
+6. Click on the **Data Load** link in the breadcrumbs to return to the **Data Load** page.
 
 ## Task 5: Link to Data from the AWS S3 Cloud Location and Create an External Table
 
@@ -293,7 +293,7 @@ You may now proceed to the next lab.
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
