@@ -50,15 +50,17 @@ In this lab, you will:
     </copy>
     ```
 
-## Task 3: Test app 
+## Task 3: Test app and compare code
+
+The webpage is stored in object storage as a light weight deployment. The script from the previous command used a shell script in the deployment that uses a renaming convention to modify the index.html file to read the objects stored in the directory.
 
 1. Navigate to bucket and click the ellipses. Click on object details. 
 
 2. Grab the URL and paste into browser. 
 
-3. Observe the movie data is floating around the screen as little dots. You can interact with the dots by clicking and dragging. 
+![copy url for index.html](./images/react-url.png "")
 
-4. Click on Artie to open up the chat bot and ask a question about any of the movies. 
+3. The web page is made using the parallax effect, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory to by component. 
 
 You may now proceed to the next lab.
 
