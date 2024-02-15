@@ -4,7 +4,7 @@
 
 You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
 
-You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users to make REST calls to OCI Gen AI. The credentials are safely stored under a user profile.
+You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users to make REST calls to OCI GenAI. The credentials are safely stored under a user profile.
 
 Estimated Time: 10 minutes.
 
@@ -22,11 +22,11 @@ In this lab, you will:
 
 ## Task 1: Create policy to enable access to OCI GenAI
 
-1. Naviagte from the OCI Console to Identity -> Policies using the hamburger menu. 
+1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
 
 2. Click on **Create policy** and paste the following into the fields:
 
-**Note:** Select the **Show Manual Editor** to open the field  in order to paste the policy.
+>**Note:** Select the **Show Manual Editor** to open the field  in order to paste the policy.
 
     ```
     Name: <copy>PublicGenAI</copy>
@@ -189,8 +189,14 @@ You may now proceed to the next lab.
 * [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
-  * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
+
+  * **Author:** Marty Gubar, Product Management 
+  * **Contributors:** 
+    * Stephen Stuart, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer 
+    * Olivia Maxwell, Cloud Engineer 
+    * Taylor Rees, Cloud Engineer 
+    * Joanna Espinosa, Cloud Engineer 
 * **Last Updated By/Date:** Stephen Stuart, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

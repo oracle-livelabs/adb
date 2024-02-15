@@ -71,9 +71,15 @@ You may now proceed to the next lab.
 * [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
-  * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
-* **Last Updated By/Date:** Stephen Stuart, February 2024
+
+  * **Author:** Marty Gubar, Product Management 
+  * **Contributors:** 
+    * Stephen Stuart, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer 
+    * Olivia Maxwell, Cloud Engineer 
+    * Taylor Rees, Cloud Engineer 
+    * Joanna Espinosa, Cloud Engineer 
+* **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
