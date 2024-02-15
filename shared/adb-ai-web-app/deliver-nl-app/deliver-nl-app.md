@@ -11,18 +11,18 @@ Estimated Time: 20 minutes.
 In this lab, you will:
 * As the `ADMIN` user, enable users to connect to the LLM REST endpoint
 * Grant users privileges to use the **Select AI** APIs
-* Test app
+* Test the app
 
 ### Prerequisites
-- This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
+- This lab requires the completion of all the preceding labs. 
 
 ## Task 1: Create bucket to host application
 
-1. Naviagte to **Buckets** using the hamburger menu (storage -> buckets)
+1. Navigate to **Buckets** using the hamburger menu (storage -> buckets)
 
 2. Click **Create Bucket** 
 
-3. Name the bucket, **movie_app** and click **create.** Leave all other fields as default. 
+3. Name the bucket, **movie-app** and click **Create.** Leave all other fields as default. 
 
 ![Create bucket](./images/create-bucket.png "")
 
@@ -70,9 +70,11 @@ This script does all the deployment in a few simple commands. First, the src fil
 
 ## Task 3: Test app and compare code
 
-The webpage is stored in object storage as a light weight deployment. The script from the previous command used a shell script in the deployment that uses a renaming convention to modify the index.html file to read the objects stored in the directory.
+The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage. 
 
-1. Navigate to bucket and click the ellipses foir the index. Click on object details. 
+1. Navigate back to **movie-app** bucket and click the ellipsis for the **index.html** object. Click on object details. 
+
+![Open object details for index.html](./images/index-details.png "")
 
 2. Grab the URL and paste into browser. 
 
@@ -146,6 +148,7 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
