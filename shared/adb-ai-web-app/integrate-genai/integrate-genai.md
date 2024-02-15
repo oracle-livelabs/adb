@@ -28,27 +28,28 @@ In this lab, you will:
 
 >**Note:** Select the **Show Manual Editor** to open the field  in order to paste the policy.
 
-    ```
-    Name: <copy>PublicGenAI</copy>
-    Description: <copy>Public Gen AI Policy</copy>
-    Compartment: <copyEnsure you are in the correct compartment</copy>
-    Policy: <copy>allow any-user to manage generative-ai-family in compartment training-adw-compartment</copy>
-    ```
-1. Click **Create**
+* **Name:** **`PublicGenAI`**
+* **Description:** **`Public Gen AI Policy`**
+* **Compartment:** **`training-adw-compartment`**
+* **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
+    
+3. Click **Create**
 
     ![Create policy](./images/create-policy.png "")
     
 **Note:** This policy is very broad. In a production environment, you will want to make this much more narrow.
 
-## Task 2: Enable use of Resource Principals for MOVIESTREAM user
+## Task 2: Enable the use of Resource Principals for the MOVIESTREAM user
 
 MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, enable the use of Resource Principals for the MOVIESTREAM user.
 
-1. Navigate to ADB using hamburger menu from the OCI console. 
+1. From the **Console,** Open the **Navigation** menu and click **Oracle Database.** Under **Oracle Database,** click **Autonomous Database.**
 
-2. Make sure you are in the right compartment and select the ADB we have created in lab #1. 
+2. On the **Autonomous Database** page, click your **MovieStreamWorkshop** ADB instance. 
 
-3. Under the database actions dropdown, select the **SQL** option. You should automatically be signed in as admin. 
+    ![Open ADB](./images/click-adb.png "")
+
+3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click SQL. 
 
     ![Select SQL option](./images/sql-option.png "")
 
@@ -62,7 +63,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-
+    ![Disable resource principal](./images/disable-resource.png "")
 
 
 4. Now let's reenable the Resource Principal. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
@@ -77,7 +78,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     ```
     ![Enable resource principal](./images/resource-principal.png "")
 
-5. Sign out of admin in the SQL worksheet at the top right of your page. 
+5. Sign out of the **aADMIN** user. On the **Oracle Database Actions | SQL banner,** click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
