@@ -11,18 +11,25 @@ Estimated Time: 10 minutes.
 In this lab, you will:
 * As the `ADMIN` user, enable users to connect to the LLM REST endpoint
 * Grant users privileges to use the **Select AI** APIs
-* Test app
+* Test the app
 
 ### Prerequisites
-- This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
+- This lab requires the completion of all the preceding labs.
 
 ## Task 1: Create bucket to host application
 
-1. Naviagte to **Buckets** using the hamburger menu (storage -> buckets)
+1. In your **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**. 
 
-2. Click **Create Bucket** 
+2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket. 
 
-3. Name the bucket, **movie_app** and click **create.** Leave all other fields as default. 
+3. Click **Create Bucket**. 
+
+4. In the **Create Bucket** panel, specify the following:
+  - **Bucket Name:** Enter **movie_app**. 
+  - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier. 
+  - **Encryption:** Accept the default **Encrypt using Oracle managed keys**. 
+
+5. Click **Create** to create the bucket.
 
 ![Create bucket](./images/create-bucket.png "")
 
@@ -52,9 +59,9 @@ In this lab, you will:
 
 ## Task 3: Test app and compare code
 
-The webpage is stored in object storage as a light weight deployment. The script from the previous command used a shell script in the deployment that uses a renaming convention to modify the index.html file to read the objects stored in the directory.
+The Web page is stored in object storage as a light weight deployment. The script from the previous command used a shell script in the deployment that uses a renaming convention to modify the index.html file to read the objects stored in the directory.
 
-1. Navigate to bucket and click the ellipses. Click on object details. 
+1. Navigate back to the **movie_app** bucket and click the ellipsis. Click on object details. 
 
 2. Grab the URL and paste into browser. 
 
@@ -62,7 +69,6 @@ The webpage is stored in object storage as a light weight deployment. The script
 
 3. The web page is made using the parallax effect, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory to by component. 
 
-You may now proceed to the next lab.
 
 ## Learn More
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
@@ -79,6 +85,7 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
+    * Lauran K. Serhal, Consulting User Assistance Developer 
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

@@ -163,17 +163,13 @@ Since there is already a module named **api** that was created by the Terraform 
 
 ## Task 6: Create module template for natural language query API. 
 
-1. Using the bread crumb menu, click **apiapp**. Let's create another template for the AI generated response (**/ai/**).
+1. Click **apiapp** in the breadcrumbs. Let's create another template for the AI generated response (**/ai/**).
 
 2. Click **Create Template**. 
-  
-![Template button](./images/create-template.png "")
 
-3. Name the URI template and click **Create.** 
+![Create template](./images/create-template-one.png "")
 
-  ```
-  URI Template:<copy>ai/moviePizzaRecommendation/:cust_id</copy>
-  ```
+3. Enter a name for the URI template such as **ai/moviePizzaRecommendation/:cust_id** and then click **Create.** 
 
 ![uri and create button](./images/uri-create.png "")
 
@@ -182,15 +178,11 @@ Since there is already a module named **api** that was created by the Terraform 
 ![Handler button](./images/create-handler.png "")
 
 5. Change the source type to **PL/SQL**, paste the following into **Source**, and click **Create**. Here we have designated 3 parameters: 
-- **:summary** - defines the response for easy parsing.
-- **:cust_id** - passes the variable from the uri into the pl/sql block.
-- **:profile_name** - allows for comparison between the two models in the app by passing the variable from the header.
+* **:summary** - defines the response for easy parsing.
+* **:cust_id** - passes the variable from the uri into the pl/sql block.
+* **:profile_name** - allows for comparison between the two models in the app by passing the variable from the header.
 
-The function genai.get_response is a package created by the terraform script. This can be view optionally by navigating back to the sql worksheet and changing the object viewer to **packages**. Picture is included for reference.
-
-![Genai Package in sql worksheet](./images/genai-package.png "")
-  
-  ```
+```
   <copy>
   begin
       :summary := genai.get_response ( 
@@ -203,40 +195,32 @@ The function genai.get_response is a package created by the terraform script. Th
 
 ![Movie handler with code and updated source type](./images/movie-handler.png "")
 
+The **`genai.get_response`** is a PL/SQL package function is created by the Terraform script. To view the package, navigate to the SQL Worksheet and then select **Packages** from the **Object Viewer** drop-down list in the **Navigator** pane as follows: 
+
+![Genai Package in sql worksheet](./images/genai-package.png "")
+
 6. Click **Create Parameter**.
 
 ![Parameter button](./images/create-parameter.png "")
 
 7. Name the Parameter and the Bind Variable, change the source type from header to **URI**, and then click **Create**.
 
-  ```
-  Parameter Name:<copy>cust_id</copy>
-  ```
-  ```
-  Bind Variable Name:<copy>cust_id</copy>
-  ```
+  * **Parameter Name:** **`cust_id`**
+  * **Bind Variable Name:** **`cust_id`**
 
 8. Click **Create Parameter** again.
 
 9. Name the Parameter and the Bind Variable. Click **Create**.
 
-  ```
-  Parameter Name:<copy>profile_name</copy>
-  ```
-  ```
-  Bind Variable Name:<copy>profile_name</copy>
-  ```
+  * **Parameter Name:** **`profile_name`**
+  * **Bind Variable Name:** **`profile_name`**
 
 10. Click **Create Parameter** one more time.
 
 11. Name the Parameter and the Bind Variable, change the source type from header to **RESPONSE**. Click **Create**.
 
-  ```
-  Parameter Name:<copy>response</copy>
-  ```
-  ```
-  Bind Variable Name:<copy>response</copy>
-  ```
+  * **Parameter Name:** **`response`**
+  * **Bind Variable Name:** **`response`**
 
 The completed **/ai/moviePizzaRecommendation/:cust_id** module is shown below:
 
@@ -260,6 +244,7 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

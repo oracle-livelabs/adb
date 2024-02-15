@@ -107,6 +107,7 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Last Updated By/Date:** Stephen Stuart, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
