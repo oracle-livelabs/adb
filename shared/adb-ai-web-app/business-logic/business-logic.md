@@ -6,7 +6,7 @@ Using the Natural Language (NL) Model makes it simple to query your data in Auto
 
 Business logic a key feature of integrating the NL model with the app. By setting these rules, the user is able to access specific use cases for queries.  In this app, the users will generate a table to store the business logic and perform a test operation on it. 
 
-- Example use case for **DBMS_CLOUD_AI.GENERATE** 
+- Example use case for **`DBMS_CLOUD_AI.GENERATE`** 
 
 ![Business Logic Overview](./images/intro-businesslogic.png "")
 
@@ -25,7 +25,7 @@ In this lab, you will:
 
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
 
-## Task 1: Create the business logic 
+## Task 1: Create the Business Logic 
 
 1. Still logged in as MOVIESTREAM user, create a table by copying and pasting the following into SQL worksheet.
 
@@ -42,9 +42,9 @@ In this lab, you will:
    </copy>
    ```
 
-2. Let's take a look at the Business Logic that was defined by the setup script. It's captured in a table called GenAI_project. 
+2. Let's take a look at the business logic that was defined by the setup script. It's captured in a table called GenAI_project. 
 
-NOTE: Take screenshot and show how to look at table and preview existing projects then create new one by inserts 
+    ![Insert GenAI Row](../../business-logic/./images/insert-genai-row.png "")
 
 Insert the following business rule into the new table by copying and pasting the following into SQL worksheet. 
 
