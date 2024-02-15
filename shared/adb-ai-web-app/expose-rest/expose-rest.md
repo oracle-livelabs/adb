@@ -163,11 +163,13 @@ Since there is already an existing module created by the Terraform script (named
   cust_id:<copy>1000001</copy>
   ```
 
-2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. 
+![Test module in new window](./images/test-in-new-window.png "")
+
+1. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
 
 ## Task 6: Create module template for natural language query API. 
 
-1. Using the bread crumb menu, click **apiapp**. Let's create another template for the AI generated response (**/ai/**).
+1. Using the bread crumb menu, click **apiapp** to navigate back to the templates homepage. Let's create another template for the AI generated response (**/ai/**).
 
 2. Click **Create Template**. 
   
