@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-In this workshop, you will learn how to use **Autonomous Database DBMS_CLOUD_AI.GENERATE** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities to interact with an open-source developer friendly application built on React with typescript. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
+In this workshop, you will learn how to use **Autonomous Database** **`DBMS_CLOUD_AI.GENERATE`** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities to interact with an open-source developer friendly application built on React with typescript. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
 
 The purpose of this lab is to highlight the business logic required to integrate Generative AI with data from the Autonomous Database using both **DBMS_CLOUD_AI.CREATE_PROFILE** and **DBMS_CLOUD_AI.GENERATE.**  
 
@@ -41,8 +41,14 @@ You may now proceed to the next lab.
 * [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
-  * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
+
+  * **Author:** Marty Gubar, Product Management 
+  * **Contributors:** 
+    * Stephen Stuart, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer 
+    * Olivia Maxwell, Cloud Engineer 
+    * Taylor Rees, Cloud Engineer 
+    * Joanna Espinosa, Cloud Engineer 
 * **Last Updated By/Date:** Stephen Stuart, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

@@ -49,7 +49,7 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
 
-## Task 3: Provision an ADB Instance and Load Data
+## Task 2: Provision an ADB Instance and Load Data
 
 Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance and upload the data to the instance.
 
@@ -149,9 +149,18 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Nicholas Cusato, Joanna Espinosa, Stephen Stuart, Febuary 2024
+  * **Author:** 
+    * Marty Gubar, Product Management
+    * Lauran K. Serhal, Consulting User Assistance Developer
+  * **Contributors:** 
+    * Stephen Stuart, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer 
+    * Olivia Maxwell, Cloud Engineer 
+    * Taylor Rees, Cloud Engineer 
+    * Joanna Espinosa, Cloud Engineer 
+* **Last Updated By/Date:** Stephen Stuart, February 2024
+
+
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

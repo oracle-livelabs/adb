@@ -25,31 +25,37 @@ In this lab, you will:
 * Create module for API 
 
 ### Prerequisites
-- This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
+- This lab requires the completion of all of the preceding labs. 
 
-## Task 1: Expose as a REST endpoint. 
+## Task 1: Expose as a REST Endpoint. 
 
-1. Ensure you are logged in as MOVIESTREAM user. In the navigator, select **CUSTOMER.** 
+1. Ensure that you are logged in as **MOVIESTREAM** user. In the Navigator, select **CUSTOMER.** 
+
+![Select customer](./images/select-customer.png "")
 
 2. Right click and select **REST** -> **Enable.**
 
 ![Enable REST](./images/enable-rest.png "")
 
-## Task 2: Try the REST endpoint. 
+3. Click **Enable.**
 
-1. Click **AutoREST** at the top of the page.
+![Click Enable](./images/click-enable.png "")
+
+## Task 2: Try the REST Endpoint. 
+
+1. On the **Oracle Database Actions | SQL banner,** click the hamburger menu and select **REST.** Click **AutoREST** at the top of the page.
 
 ![Click AutoREST](./images/autorest-button.png "")
 
-3. Click the **Open in new tab** for the table CUSTOMER to test the API. 
+2. Click the **Open in new tab** icon for the table CUSTOMER to test the API. 
 
 ![Open in new tab](./images/open-new-tab.png "")
 
-Notice that all of the records are displayed in json format without any filters. This api is unprotected and open to the public for consumption. In a production environment with senstive information, it is a best practice to require authentication to the AutoRest Enabled table, which can be accomplished by toggling the switch when editting the REST Enabled Object.
+Notice that all of the records are displayed in json format without any filters. This api is unprotected and open to the public for consumption. In a production environment with senstive information, it is a best practice to require authentication to the AutoRest Enabled table, which can be accomplished by selecting the ellipsis, clicking edit, then toggling the switch when editting the REST Enabled Object.
 
-![Authorization toggle button](./images/authorization.png "")
+![Authorization toggle button](./images/require-authentication.png "")
 
-In this example, let's leave it as default (open) for easy access.
+In this example, let's leave it as default. 
 
 ## Task 3: (Optional) Access the API using OpenAPI (Swagger) tool. 
 
@@ -57,33 +63,29 @@ In this example, let's leave it as default (open) for easy access.
 
 ![Rest button](./images/rest-button.png "")
 
-2. Click the modules.
+2. In the **Objects** section, click **Modules.**
 
 ![Modules button](./images/modules.png "")
    
-3. Click the ellipsis for the module **api** and select **OpenAPI View**.
+3. Click the ellipsis **icon** for the module **api** and select **OpenAPI View** from the context menu.
 
 ![OpenAPI view](./images/open-api-view.png "")
 
 4. Scroll down to the GET for **/ai/supportChatSummary/{chatID}** and click the **arrow** to expand the field.  
 
-5. Paste the following into the ID field and click execute. The number 1 represents a view of a customer ID that was short-handed. Typing any customer ID would produce a similar result.
+5. Enter **1** into the **ChatID** field, and then click **Execute.** The number 1 represents a view of a customer ID that was short-handed. Typing any customer ID would produce a similar result.
 
-  ```
-  <copy>
-  1
-  </copy>
-  ```
+![OpenAPI view for the support chat summary api](./images/support-chat.png)
 
-![OpenAPI view for the support chat summary api](./images/support-chat-summary.png "")
+![OpenAPI view for the support chat summary api](./images/support-chat-response.png)
 
 Notice the response shows a summary of a chat with a customer. The Cohere model also, describes the sentiment related to it.
 
 6. Additionally, the fields **/ai/thingsToDo/{customerID}** and **/ai/promotion/{customerID}** produces a similar effect. Give them a try before proceeding to the next task.
 
-## Task 4: Create module for API.
+## Task 4: Create Module for API.
 
-Since there is already an existing module created by the Terraform script (named api), let's create a new one that will be utilized by the MovieStreamAI app.
+Since there is already a module named **api** that was created by the Terraform script, let's create a new module that the **MovieStreamAI** app will use. 
 
 1. Using the breadcrumb menu, select **Modules**.
 
@@ -95,24 +97,18 @@ Since there is already an existing module created by the Terraform script (named
 
 3. Name the Module, Base Path, and make sure all the fields match the image and click **Create.**
 
-  ```
-  Name:<copy>apiapp</copy>
-  ```
-  ```
-  Base Path:<copy>/apiapp/</copy>
-  ```
-
+* **Name:** **`apiapp`**
+* **Base Path:** **`/apiapp/`** 
+ 
 5. Click on the newly created module **apiapp**. From here, we will create multiple templates for the api to call. The endpoints will be designated by either data collection (named **/data/**) or ai generated responses (named **/ai/**). First, let's create the data collection api for the **recently watched movies**.
 
 6. Click **Create Template.** 
 
-![Template button](./images/create-template.png "")
+![Template button](./images/create-template-one.png "")
 
-7. Name the URI template and click **Create**. 
+7. Enter a name for the template such as **:/data/image/:cust_id** and then click **Create**. 
 
-  ```
-  URI Template:<copy>/data/image/:cust_id</copy>
-  ```
+![Template button](./images/create-template-two.png "")
 
 8. Click **Create Handler**.
 
@@ -148,20 +144,20 @@ Since there is already an existing module created by the Terraform script (named
   
 ![Parameter button](./images/create-parameter.png "")
 
-11.  Name the Parameter and the Bind Variable, change the source type from header to **URI,** and change parameter type from string to **INT.** Click **Create.**
+11. Provide a name for the **Parameter** and the **Bind Variable.** Change the **Source Type** from **Header** to **URI.** Change the **Parameter Type** from **String** to **Integer.** Next, click **Create.** 
 
-  ```
-  Parameter Name:<copy>:cust_id</copy>
-  Bind Variable Name:<copy>cust_id</copy>
-  ```
+* **Parameter Name:** **`cust_id`**
+* **Bind Variable Name:** **`cust_id`**
+
+![Parameter details](./images/parameter-details.png "")
 
 ## Task 5: Test the module
 
-1. Click **open in new tab** button and paste the following for cust_id
+1. Click **Open in new tab** icon and enter **1000001** for the **cust_id.**
 
-  ```
-  cust_id:<copy>1000001</copy>
-  ```
+![Open in new tab](./images/open-new-tab-two.png "")
+
+![Cust_id input](./images/cust_id.png "")
 
 ![Test module in new window](./images/test-in-new-window.png "")
 
@@ -258,8 +254,14 @@ You may now proceed to the next lab.
 * [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
-  * **Author:** Marty Gubar, Product Management Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** Stephen Stuart, Nicholas Cusato, Olivia Maxwell, Taylor Rees, Joanna Espinosa, Cloud Engineers 
+
+  * **Author:** Marty Gubar, Product Management 
+  * **Contributors:** 
+    * Stephen Stuart, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer 
+    * Olivia Maxwell, Cloud Engineer 
+    * Taylor Rees, Cloud Engineer 
+    * Joanna Espinosa, Cloud Engineer 
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
