@@ -159,7 +159,9 @@ Since there is already a module named **api** that was created by the Terraform 
 
 ![Cust_id input](./images/cust_id.png "")
 
-2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. 
+![Test module in new window](./images/test-in-new-window.png "")
+
+1. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
 
 ## Task 6: Create module template for natural language query API. 
 
