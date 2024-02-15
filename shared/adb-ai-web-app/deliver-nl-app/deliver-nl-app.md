@@ -126,7 +126,7 @@ The webpage is stored in object storage as a light weight deployment. The script
   ```<copy>cat ./SearchBar/SearchComponent.tsx</copy>```
   ```<copy>cat ./AI/ResponseComponent.tsx</copy>```
 
-12. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API.
+12. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the App.tsx file for better understanding. This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
 
 
 You may now proceed to the next lab.
