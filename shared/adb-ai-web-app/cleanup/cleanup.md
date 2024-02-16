@@ -9,6 +9,7 @@ Estimated Time: 5 minutes
 ### Objectives
 
 * Delete the Autonomous Database instance or destroy the created stack and its resources such as the ADB instance.
+* Delete object storage bucket
 * Delete your entire compartment if you don't need it.
 
 ### Prerequisites
@@ -36,7 +37,17 @@ You can terminate your ADW instance that you created in this workshop as follows
 
     The **State** of the Autonomous Database instance goes into **Terminating**. When the ADB is deleted, the **State** changes to **Terminated**.
 
-## Task 3 (Optional): Delete Your Compartment
+## Task 3: Delete object Storage Bucket
+
+You can delete the bucket that contains the the contents for the application as follows:
+
+1. Open the **Navigation** menu and click **Storage**. Click **Buckets**.
+
+2. Click the ellipsis for the bucket **movie-app** and select **Delete**.
+
+3. Confirm the name of the bucket and click **Delete**.
+
+## Task 4 (Optional): Delete Your Compartment
 
 If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
 
@@ -57,7 +68,10 @@ If you created an optional compartment for this workshop, you can delete it if y
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Contributors:** 
+    * Nicholas Cusato, Cloud Engineer
+    * Marty Gubar, Product Management 
+* **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
