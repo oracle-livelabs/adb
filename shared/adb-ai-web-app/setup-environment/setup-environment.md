@@ -89,17 +89,17 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png)
 
-1. Click **Next**.
+4. Click **Next**.
 
     ![Click next in step 2 of the wizard](./images/create-stack-steptwo.png "")
 
     >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 
-2. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
+5. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
 
     ![Click Create](./images/create-stack-stepthree.png "")
 
-3. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
+6. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
 
   ![Job in progress](./images/in-progress.png "")
 
@@ -107,7 +107,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
   ![Job has been successful](./images/stack-success.png "")
 
-7. Scroll-down to the **Resources** section at the bottom of **Job details** page, and then click **Outputs**. The keys and values are displayed in the **Outputs** section. Save the values for the following keys in a text editor of your choice as you will need this information later. For the **`select_ai_demo_url`** value, click the **Copy** button in that row to copy the value into the clipboard, and then paste it into your text editor. _This is the URL that you will use later to launch the **Autonomous Database Select AI** demo application._
+7. Scroll-down to the **Resources** section at the bottom of **Job details** page, and then click **Outputs**. The keys and values are displayed in the **Outputs** section. Save the values for the following keys in a text editor of your choice as you will need this information later. For the **`select_ai_demo_url`** value, click the **Copy** button in that row to copy the value into the clipboard, and then paste it into your text editor. _This URL to launch the **Autonomous Database Select AI** demo application is **not required** for this lab._
 
     * **`adb_user_name`**
     * **`adb_user_password`**
@@ -140,6 +140,8 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 11. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed, **``TrainingAIWorkshop``**.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
+
+    >**Note:** The Region should be **US MIDWEST (Chicago)**
 
 You may now proceed to the next lab.
 
