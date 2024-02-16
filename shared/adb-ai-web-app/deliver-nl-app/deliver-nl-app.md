@@ -1,4 +1,4 @@
-# Deploy the MovieStreamAI App using Object Storage
+# Deliver a Natural Language app that uses the RESTful service
 
 ## Introduction
 
@@ -19,13 +19,13 @@ Estimated Time: 20 minutes.
 
 In this lab, you will:
 * Create a bucket to host the MovieStreamAI application
-* Deploy the App Fast using Object Storage
+* Deploy the App fast using Object Storage
 * Understand how to use the API in the MovieStreamAI App
 
 ### Prerequisites
 - This lab requires the completion of all the preceding labs. 
 
-## Task 1: Create bucket to host application
+## Task 1: Create bucket to host MovieStreamAI application
 
 1. Navigate to **Buckets** using the hamburger menu (storage -> buckets)
 
@@ -39,7 +39,7 @@ In this lab, you will:
 
 ![Change visibility to public](./images/public-visibility.png "")
 
-## Task 2: Deploy the App Fast using Object Storage
+## Task 2: Deploy the App fast using Object Storage
 
 1. Open up Cloud Shell within the OCI Console. 
 
@@ -65,7 +65,7 @@ In this lab, you will:
 
 4. Paste the endpoints into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
-5.  Run the following commands to Deploy the app.
+5.  Run the following commands to deploy the app.
 
     ```
     <copy>
@@ -74,7 +74,7 @@ In this lab, you will:
     </copy>
     ```
 
-This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy_to_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
+>**Note:** This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy_to_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
 
 ## Task 3: Understand how to use the API in the MovieStreamAI App
 
@@ -84,7 +84,7 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 ![Open object details for index.html](./images/index-details.png "")
 
-2. Grab the URL and paste into a new tab in the browser. 
+2. Grab the URL for the object and paste into a new tab in the browser. 
 
 ![copy url for index.html](./images/react-url.png "")
 

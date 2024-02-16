@@ -1,4 +1,4 @@
-# Allow Users to Connect to Your LLM
+# Expose as a REST endpoint and secure it
 
 ## Introduction
 
@@ -14,7 +14,7 @@ This lab will implement two different types of RESTful services. First, AutoREST
 
 ![REST API Introduction](./images/intro-restapi-two.png "")
 
-Estimated Time: 10 minutes.
+Estimated Time: 20 minutes.
 
 ### Objectives
 
@@ -23,6 +23,8 @@ In this lab, you will:
 * Test the REST endpoint
 * Access the API using OpenAPI (Swagger) tool
 * Create module for API 
+* Test the module
+* Create module template for natural language query API
 
 ### Prerequisites
 - This lab requires the completion of all of the preceding labs. 
@@ -41,7 +43,7 @@ In this lab, you will:
 
 ![Click Enable](./images/click-enable.png "")
 
-## Task 2: Try the REST Endpoint. 
+## Task 2: Test the REST Endpoint. 
 
 1. On the **Oracle Database Actions | SQL banner,** click the hamburger menu and select **REST.** Click **AutoREST** at the top of the page.
 
@@ -85,7 +87,7 @@ Notice the response shows a summary of a chat with a customer. The Cohere model 
 
 6. Additionally, the fields **/ai/thingsToDo/{customerID}** and **/ai/promotion/{customerID}** produces a similar effect. Give them a try before proceeding to the next task.
 
-## Task 4: Create Module for API.
+## Task 4: Create module for API.
 
 Since there is already a module named **api** that was created by the Terraform script, let's create a new module that the **MovieStreamAI** app will use. 
 
