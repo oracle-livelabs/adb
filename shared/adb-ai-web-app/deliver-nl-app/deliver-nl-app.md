@@ -1,17 +1,26 @@
-# Allow Users to Connect to Your LLM
+# Deploy the MovieStreamAI App using Object Storage
 
 ## Introduction
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
+In order to utilize the APIs created in the previous labs, we have developed an application using Open-Source tools, such as React (Framework for App development) using Typescript (superset of JavaScript). This allows for easy integration of many libraries that available for all sorts of utility, such as integration of OpenMaps (Open-Source mapping tool). The MovieStreamAI Application features the search capability of the Customer Ids to integrate the data stored in the database to several components:
+-  Recently Watched Films list
+-  Recommended Movies List
+-  Recommended Pizza Pairing
+-  Mapping of nearby Pizza locations
+
+
+Here is a preview of what to expect:
+
+![MovieStreamAI landing page](./images/moviestreamai.png "")
 
 Estimated Time: 20 minutes.
 
 ### Objectives
 
 In this lab, you will:
-* As the `ADMIN` user, enable users to connect to the LLM REST endpoint
-* Grant users privileges to use the **Select AI** APIs
-* Test the app
+* Create a bucket to host the MovieStreamAI application
+* Deploy the App Fast using Object Storage
+* Understand how to use the API in the MovieStreamAI App
 
 ### Prerequisites
 - This lab requires the completion of all the preceding labs. 
@@ -22,17 +31,15 @@ In this lab, you will:
 
 2. Click **Create Bucket** 
 
-3. Name the bucket, **movie-app** and click **Create.** Leave all other fields as default. 
+3. Name the bucket, **movie-app** and click **Create**. Leave all other fields as default. 
 
 ![Create bucket](./images/create-bucket.png "")
 
-4. Click on the bucket you just made and change visibility to public. 
-
-5. Save changes. 
+4. Click on the bucket you just made and change visibility to **Public**. Click **Save changes**. 
 
 ![Change visibility to public](./images/public-visibility.png "")
 
-## Task 2: Create App and deploy to Object Storage bucket
+## Task 2: Deploy the App Fast using Object Storage
 
 1. Open up Cloud Shell within the OCI Console. 
 
@@ -49,7 +56,9 @@ In this lab, you will:
     ```
 3. Update the config file with the APIs used in the Lab **Allow Users to Connect to Your LLM and Data**. Run the following command to edit the file.
 
-  ```<copy>vi ./src/config.ts</copy>```
+    ```
+    <copy>vi ./src/config.ts</copy>
+    ```
 
 
 ![update APIs in config.tsx file](./images/update-config.png "")
@@ -60,7 +69,6 @@ In this lab, you will:
 
     ```
     <copy>
-    npm i react-scripts
     chmod +x node_modules/.bin/react-scripts
     npm run deploy 
     </copy>
@@ -68,7 +76,7 @@ In this lab, you will:
 
 This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy_to_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
 
-## Task 3: Test app and compare code
+## Task 3: Understand how to use the API in the MovieStreamAI App
 
 The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage. 
 
@@ -125,8 +133,13 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 11. Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method.
 
-  ```<copy>cat ./SearchBar/SearchComponent.tsx</copy>```
-  ```<copy>cat ./AI/ResponseComponent.tsx</copy>```
+  ```
+  <copy>cat ./SearchBar/SearchComponent.tsx</copy>
+  ```
+
+  ```
+  <copy>cat ./AI/ResponseComponent.tsx</copy>
+  ```
 
 12. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the App.tsx file for better understanding. This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
 

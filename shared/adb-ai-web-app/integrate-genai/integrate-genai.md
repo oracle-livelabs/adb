@@ -37,7 +37,7 @@ In this lab, you will:
 
     ![Create policy](./images/create-policy.png "")
     
-**Note:** This policy is very broad. In a production environment, you will want to make this much more narrow.
+>**Note:** This policy is very broad. In a production environment, you will want to make this much more narrow.
 
 ## Task 2: Enable the use of Resource Principals for the MOVIESTREAM user
 
@@ -53,7 +53,9 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
     ![Select SQL option](./images/sql-option.png "")
 
-4. The setup script enabled Resource Principals usage for MovieStream. To better understand the use of Resource Principal, let's disable and recreate it. Run the following statement to disable the use of Resource Principals for the MOVIESTREAM user: 
+>**Note:** The setup script automatically enabled Resource Principals usage for MovieStream. The following 2 steps are optional.
+
+4. To better understand the use of Resource Principal, let's disable and recreate it. Run the following statement to disable the use of Resource Principals for the MOVIESTREAM user: 
 
     ```
     <copy>
@@ -78,7 +80,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     ```
     ![Enable resource principal](./images/resource-principal.png "")
 
-5. Sign out of the **aADMIN** user. On the **Oracle Database Actions | SQL banner,** click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
+5. Sign out of the **ADMIN** user. On the **Oracle Database Actions | SQL banner,** click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
