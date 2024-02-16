@@ -92,20 +92,20 @@ In the installation, the Terraform script created a couple Generative AI profile
 
 >**Note:**The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
 
-    ```
-    dbms_cloud_ai.drop_profile(
-        profile_name => 'genai',
-        force => true
-        );
+```
+dbms_cloud_ai.drop_profile(
+    profile_name => 'genai',
+    force => true
+    );
 
-    dbms_cloud_ai.create_profile(
-        profile_name => 'genai',
-        attributes =>       
-            '{"provider": "oci",
-            "credential_name": "OCI$RESOURCE_PRINCIPAL"
-            }'
-        );
-    ```
+dbms_cloud_ai.create_profile(
+    profile_name => 'genai',
+    attributes =>       
+        '{"provider": "oci",
+        "credential_name": "OCI$RESOURCE_PRINCIPAL"
+        }'
+    );
+```
 
 1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). 
 
@@ -159,7 +159,7 @@ In the installation, the Terraform script created a couple Generative AI profile
     /
     </copy>
     ```
-    ![Create AI profile](./images/create-cohere.png "")
+    ![Create AI profile](./images/create-cohere-updated.png "")
 
 
 ## Task 4: Test the AI profile
@@ -179,7 +179,7 @@ We will use the PL/SQL API to generate a response from a prompt:
     ```
     ![Test the LLM](./images/cohere-output.png "")
 
-2. Run the following statement in the SQL worksheet to compare the Cohere model to the **Llama model**, 
+2. Run the following statement in the SQL worksheet to compare the Cohere model to the **Llama model**. 
 
     ```
     <copy>

@@ -76,9 +76,17 @@ In this lab, you will:
     </copy>
     ```  
 
+>**Note:** The default profile used is **`genai`**, which is automatically created by the terraform. We will use the new profiles for this function in the next lab.
+
 ![Test GenAI function](./images/test-genai-function.png "")
 
-2. Change the Object viewer from Tables to **Packages**, right-click the **GENAI** and view the **Body** script to understand how this function uses 3 parameters, which we will highlight in the following lab.
+2. Change the Object viewer from Tables to **Packages**, right-click the **GENAI** and view the **Body** script to understand how this function uses 3 parameters, which we will highlight in the following lab. The following functions are stored in this package:
+* **get_prompt_sql()**
+* **get_response()** - covered in this lab
+* **get_prompt()** - helpful for debugging business logic
+* **ask_question()**
+
+![View package used to trigger business logic](./images/package.png "")
     
 You may now proceed to the next lab.
 
@@ -98,7 +106,7 @@ You may now proceed to the next lab.
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Stephen Stuart, February 2024
+* **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
