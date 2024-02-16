@@ -84,6 +84,8 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.
+
+>**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations. 
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)
 
@@ -159,7 +161,7 @@ You may now proceed to the next lab.
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Stephen Stuart, February 2024
+* **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 
 
