@@ -2,9 +2,9 @@
     "workshoptitle": "Implement Data Sharing with PL/SQL",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
-      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
-      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
-      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md",
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
     },
     "variables": ["./variables.json"],
     "tutorials": [
@@ -26,7 +26,7 @@
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
         },
         {
-            "title": "Lab 2: Create a User, an Object Storage Bucket, and an OCI Credential",
+            "title": "Create a User, an Object Storage Bucket, and an OCI Credential",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
@@ -50,10 +50,10 @@
             "filename": "./../../consume-share/consume-share.md"
         },
         {
-            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
-            "type":"freetier",
-            "description": "This lab walks you through how to clean up the resources used in this workshop.",
-            "filename": "https://common/building-blocks/blocks/adb/cleanup/cleanup.md"
+            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
+            "description": "Delete the ADB instance and compartment if not needed.",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",

@@ -88,7 +88,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
-6. A dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
+6. A **Link to Single Target Table** dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
     ![Click yes to load objects to a single table.](images/link-to-single-table.png)
 
@@ -134,9 +134,13 @@ In this task, you will link to data and create the following external tables in 
 
     ![View genre data](images/preview-genre-table.png)
 
-16. Click **Close** to exit the **genre** task preview, and then click **Done** to exit the Data Load tool and return to the **Database Actions Launchpad**.
+16. Click **Close** to exit the **genre** task preview.
 
      ![Click Done.](images/click-done.png)
+
+17. Click **Done** to exit the **Link Data** page and return to the **Data Load** page.
+
+    ![Data Load page.](images/data-load-page.png)
 
 ## Task 3: Create and Populate an External Table Using the DBMS_CLOUD Package
 
@@ -217,7 +221,7 @@ You may now proceed to the next lab.
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

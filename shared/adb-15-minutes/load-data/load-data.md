@@ -28,10 +28,10 @@ Autonomous Database supports a variety of object stores, including Oracle Object
 
 This completes the Data Load lab. We now have a full set of structured tables loaded into Autonomous Database instance from files on object storage. We will be working with these tables in the next lab.
 
-Please *proceed to the next lab*.
+Please proceed to the next lab.
 
 ## Acknowledgements
 
 * **Author** - Mike Matthews, Autonomous Database Product Management
 * **Contributors** -  Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Rick Green, Autonomous Database User Assistance, January 2023
+* **Last Updated By/Date** - Katherine Wardhana, User Assistance Developer, February 2024
