@@ -51,11 +51,13 @@ In this lab, you will:
 
 ![Open in new tab](./images/open-new-tab.png "")
 
-Notice that all of the records are displayed in json format without any filters. This api is unprotected and open to the public for consumption. In a production environment with senstive information, it is a best practice to require authentication to the AutoRest Enabled table, which can be accomplished by selecting the ellipsis, clicking edit, then toggling the switch when editting the REST Enabled Object.
+>**Note:** Notice that all of the records are displayed in json format without any filters. This api is unprotected and open to the public for consumption. In a production environment with senstive information, it is a best practice to require authentication to the AutoRest Enabled table, which can be accomplished by selecting the ellipsis, clicking edit, then toggling the switch when editting the REST Enabled Object.
 
 ![Authorization toggle button](./images/require-authentication.png "")
 
 In this example, let's leave it as default. 
+
+5. Copy the **Url** from the New Tab in a note for Lab 5. This will be used in our App that we deploy.
 
 ## Task 3: (Optional) Access the API using OpenAPI (Swagger) tool. 
 
@@ -106,7 +108,7 @@ Since there is already a module named **api** that was created by the Terraform 
 
 ![Template button](./images/create-template-one.png "")
 
-7. Enter a name for the template such as **:/data/image/:cust_id** and then click **Create**. 
+7. Enter a name for the template such as **/data/image/:cust_id** and then click **Create**. 
 
 ![Template button](./images/create-template-two.png "")
 
@@ -161,7 +163,9 @@ Since there is already a module named **api** that was created by the Terraform 
 
 ![Test module in new window](./images/test-in-new-window.png "")
 
-1. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
+2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
+
+3. Copy the **URL** (without the 1000001) in a note for use in Lab 5.
 
 ## Task 6: Create module template for natural language query API. 
 
@@ -227,6 +231,12 @@ The completed **/ai/moviePizzaRecommendation/:cust_id** module is shown below:
 
 ![Complete module with all fields shown](./images/movie-pizza-recommendation.png "")
 
+10.  Perform at test on the API by clicking the **test in new window** button (similar to Task 5, step 2).
+  * **Summary**: `check the **null** box`
+  * **cust_id**: `1000001`
+  * **Profile_name** parameter: `OCIAI_COHERE`
+
+11. Copy the **URL** (without the endpoint 1000001) and save as a note for Lab 5.
 
 You may now proceed to the next lab.
 
