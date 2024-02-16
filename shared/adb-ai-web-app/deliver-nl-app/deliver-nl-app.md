@@ -84,19 +84,19 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 ![Open object details for index.html](./images/index-details.png "")
 
-2. Grab the URL and paste into browser. 
+2. Grab the URL and paste into a new tab in the browser. 
 
 ![copy url for index.html](./images/react-url.png "")
 
-3. The web page is made using the parallax effect, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory in the zip file downloaded. Let's open the file in the **OCI Shell**.
+>**Note:**The web page is made using the **parallax effect**, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory in the zip file downloaded. Let's open the file in the **OCI Cloud Shell**.
 
-4. View the file **App.tsx** by running the command in the shell.
+1. View the file **App.tsx** by running the command in the shell.
 
   ```
   <copy>cat ./src/App.tsx</copy>
   ```
 
-5. Click the **double arrow** in the shell to expand the window.
+5. Click the **double arrow** in the shell to expand the window full screen.
 
 ![Print the App.tsx file and expand the window](./images/expand-app.png "")
 
@@ -110,7 +110,7 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 ![Highlighting the structure of the App.tsx file](./images/app-full.png "")
 
-7. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** to load all of data that is being fetched when the App is running. 
+7. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** (hotkey) or hitting the refresh button on the browser to load all of data that is being fetched when the App is running. 
 
 ![Browser Networking](./images/network-f12.png "")
 
@@ -136,12 +136,14 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
   ```
   <copy>cat ./SearchBar/SearchComponent.tsx</copy>
   ```
+>**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
 
   ```
   <copy>cat ./AI/ResponseComponent.tsx</copy>
   ```
 
-12. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the App.tsx file for better understanding. This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
+12. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the **App.tsx** file for better understanding of the Open-Source Mapping. 
+- This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
 
 
 You may now proceed to the next lab.

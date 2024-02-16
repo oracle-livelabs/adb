@@ -89,7 +89,6 @@ In the installation, the Terraform script created a couple Select AI profiles. L
 >**Note:**The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
 
     ```
-    -- GenAI projects
     dbms_cloud_ai.drop_profile(
         profile_name => 'genai',
         force => true
