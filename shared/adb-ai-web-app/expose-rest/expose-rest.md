@@ -146,7 +146,7 @@ Since there is already a module named **api** that was created by the Terraform 
 
 11. Provide a name for the **Parameter** and the **Bind Variable.** Change the **Source Type** from **Header** to **URI.** Change the **Parameter Type** from **String** to **Integer.** Next, click **Create.** 
 
-* **Parameter Name:** **`cust_id`**
+* **Parameter Name:** **`:cust_id`**
 * **Bind Variable Name:** **`cust_id`**
 
 ![Parameter details](./images/parameter-details.png "")
@@ -197,7 +197,7 @@ Since there is already a module named **api** that was created by the Terraform 
 
 ![Movie handler with code and updated source type](./images/movie-handler.png "")
 
-The **`genai.get_response`** is a PL/SQL package function is created by the Terraform script. To view the package, navigate to the SQL Worksheet and then select **Packages** from the **Object Viewer** drop-down list in the **Navigator** pane as follows: 
+>**Note:**The **`genai.get_response`** is a PL/SQL package function is created by the Terraform script. To view the package, navigate to the SQL Worksheet and then select **Packages** from the **Object Viewer** drop-down list in the **Navigator** pane as follows: 
 
 ![Genai Package in sql worksheet](./images/genai-package.png "")
 
@@ -209,20 +209,19 @@ The **`genai.get_response`** is a PL/SQL package function is created by the Terr
 
   * **Parameter Name:** **`cust_id`**
   * **Bind Variable Name:** **`cust_id`**
+  * **Source Type:** **`URI`**
 
-8. Click **Create Parameter** again.
-
-9. Name the Parameter and the Bind Variable. Click **Create**.
+8. Repeat step 6 and 7 for the following new parameters:
 
   * **Parameter Name:** **`profile_name`**
   * **Bind Variable Name:** **`profile_name`**
+  * **Source Type:** **`HEADER`**
 
-10. Click **Create Parameter** one more time.
-
-11. Name the Parameter and the Bind Variable, change the source type from header to **RESPONSE**. Click **Create**.
+9.  Repeat step 6 and 7 for the following new parameters:
 
   * **Parameter Name:** **`response`**
   * **Bind Variable Name:** **`response`**
+  * **Source Type:** **`RESPONSE`**
 
 The completed **/ai/moviePizzaRecommendation/:cust_id** module is shown below:
 

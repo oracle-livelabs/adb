@@ -82,7 +82,9 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
-In the installation, the Terraform script created a couple Select AI profiles. Let's create a couple more. The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
+In the installation, the Terraform script created a couple Select AI profiles. Let's create a couple more! 
+
+>**Note:**The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
 
     ```
     -- GenAI projects
@@ -100,7 +102,11 @@ In the installation, the Terraform script created a couple Select AI profiles. L
         );
     ```
 
-1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). Note, the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
+1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). 
+
+>**Note:** the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
+
+- Location of where to find the
 
     ![Moviestream password](./images/moviestream-pw.png "")
 
@@ -127,7 +133,7 @@ In the installation, the Terraform script created a couple Select AI profiles. L
     ```
     ![Create AI profile](./images/create-llama-updated.png "")
 
-2. Create an AI profile for **Cohere model** by running the following statement in the SQL worksheet. 
+3. Create an AI profile for **Cohere model** by running the following statement in the SQL worksheet. 
     
     ```
     <copy>
@@ -153,7 +159,7 @@ In the installation, the Terraform script created a couple Select AI profiles. L
 
 ## Task 4: Test the AI profile
 
-We will use the PLSQL API to generate a response from a prompt:
+We will use the PL/SQL API to generate a response from a prompt:
 
 1. Run the following statement as MOMVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database.
 
