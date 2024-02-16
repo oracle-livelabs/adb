@@ -65,7 +65,8 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-    ![Disable resource principal](./images/disable-resource.png "")
+
+![Disable resource principal](./images/disable-resource.png "")
 
 
 4. Now let's reenable the Resource Principal. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
@@ -78,13 +79,16 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
     /
     </copy>
     ```
-    ![Enable resource principal](./images/resource-principal.png "")
+    
+![Enable resource principal](./images/resource-principal.png "")
 
-5. Sign out of the **ADMIN** user. On the **Oracle Database Actions | SQL banner,** click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
+5. Sign out of the **ADMIN** user. On the **Oracle Database Actions | SQL banner**, click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
+
+![Sign out from Admin](./images/signout.png "")
 
 ## Task 3: Create an AI Profile for OCI GenAI
 
-In the installation, the Terraform script created a couple Select AI profiles. Let's create a couple more! 
+In the installation, the Terraform script created a couple Generative AI profiles. Let's create a couple more! 
 
 >**Note:**The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
 
@@ -107,7 +111,7 @@ In the installation, the Terraform script created a couple Select AI profiles. L
 
 >**Note:** the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
 
-- Location of where to find the
+- Reference location of where to find the credentials:
 
     ![Moviestream password](./images/moviestream-pw.png "")
 
@@ -155,14 +159,14 @@ In the installation, the Terraform script created a couple Select AI profiles. L
     /
     </copy>
     ```
-    ![Create AI profile](./images/create-cohere-updated.png "")
+    ![Create AI profile](./images/create-cohere.png "")
 
 
 ## Task 4: Test the AI profile
 
 We will use the PL/SQL API to generate a response from a prompt:
 
-1. Run the following statement as MOMVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database.
+1. Run the following statement as MOMVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database using the **Cohere model**.
 
     ```
     <copy>
@@ -175,7 +179,7 @@ We will use the PL/SQL API to generate a response from a prompt:
     ```
     ![Test the LLM](./images/cohere-output.png "")
 
-2. To compare our Cohere model to our Llama model, run the following statement in the SQL worksheet.
+2. Run the following statement in the SQL worksheet to compare the Cohere model to the **Llama model**, 
 
     ```
     <copy>
@@ -206,7 +210,7 @@ You may now proceed to the next lab.
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Stephen Stuart, February 2024
+* **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
