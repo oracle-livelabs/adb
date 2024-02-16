@@ -4,7 +4,7 @@
 
 In this workshop, you will learn how to use **Autonomous Database** **`DBMS_CLOUD_AI.GENERATE`** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities to interact with an open-source developer friendly application built on React with typescript. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
 
-The purpose of this lab is to highlight the business logic required to integrate Generative AI with data from the Autonomous Database using both **DBMS_CLOUD_AI.CREATE_PROFILE** and **DBMS_CLOUD_AI.GENERATE.**  
+The purpose of this lab is to highlight the business logic required to integrate Generative AI with data from the Autonomous Database using both **`DBMS_CLOUD_AI.CREATE_PROFILE`** and **`DBMS_CLOUD_AI.GENERATE`**.  
 
 ![Introduction Slide](./images/intro-slide.png "")
 
@@ -30,7 +30,7 @@ In this workshop, you will:
 
 ![MovieStream Logo](./images/moviestream-logo.png "")
 
-The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to query most recently watched films by CUST_ID, which will trigger Select AI process. The business logic will suggest films from the promoted movie list as well as pizza and their locations. 
+The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to query most recently watched films by CUST_ID, which will trigger GENERATE AI process. The business logic will suggest films from the promoted movie list as well as a pizza pairing and their locations. 
 
 You may now proceed to the next lab.
 
@@ -50,7 +50,7 @@ You may now proceed to the next lab.
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Stephen Stuart, February 2024
+* **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
