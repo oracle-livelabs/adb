@@ -85,21 +85,21 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.
 
->**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations. 
+    >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations. 
     
-    ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)
+    ![The Configure variables step 2 of the wizard](./images/configure-variables.png)
 
-4. Click **Next**.
+1. Click **Next**.
 
     ![Click next in step 2 of the wizard](./images/create-stack-steptwo.png "")
 
     >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 
-5. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
+2. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
 
     ![Click Create](./images/create-stack-stepthree.png "")
 
-6. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
+3. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
 
   ![Job in progress](./images/in-progress.png "")
 
