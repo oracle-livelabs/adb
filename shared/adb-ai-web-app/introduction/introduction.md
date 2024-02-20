@@ -8,7 +8,7 @@ Specifically, customers for MovieStream - a fictitious moviestreaming company - 
 
 An open-source, developer-friendly application built on React with typescript will use that RESTful service that you created. Using the MovieStream data, the end user is able to get tailored movie reccomendations along with pizza recomendations. The open-source OpenStreetMap is used to help the user find local pizza shops and take full advantage of the spatial capability of the Autonomous Database. 
 
-The purpose of this lab is to highlight the business logic required to integrate Generative AI with data from the Autonomous Database using both **`DBMS_CLOUD_AI.CREATE_PROFILE`** and **`DBMS_CLOUD_AI.GENERATE`**.  
+The purpose of this lab is to highlight the help you understand how to develop business logic required to integrate Generative AI with data from the Autonomous Database. You will use to key APIs to accomplish the task: **`DBMS_CLOUD_AI.CREATE_PROFILE`** and **`DBMS_CLOUD_AI.GENERATE`**.  
 
 ![Introduction Slide](./images/intro-slide.png "")
 
