@@ -6,13 +6,19 @@ comments syntax
 
 ## Introduction
 
-This workshop focuses on teaching you how to setup and use generative AI to query your data using natural language from a SQL prompt and from an application. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
+This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
+* Connects your Autonomous Database to OCI Generative AI service
+* Deploy the business logic for running different types of AI projects - like summarizing a support chat and suggesting things to do at a location
+* Deploy RESTful endpoints for executing that business logic from your applications
+* Deploys two APEX apps in a MOVIESTREAM workspace: 1) chat with your data in Autonomous Database and 2) create and test GenAI projects
+
+All of this is done so that you can immediately try all of the different components. You will also be developing many of these components on your own as part of the workshop.
 
 The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure Documentation documentation.
 
-Autonomous Database supports both the **Meta Llama** and **Cohere** models. 
+Autonomous Database supports different API providers and models. You will use the models deployed to OCI Generative AI: **Meta Llama 2** and **Cohere**.. 
 
 Estimated Time: 15 minutes.
 
@@ -51,7 +57,7 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
 ## Task 2: Provision an ADB Instance and Load Data
 
-Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance and upload the data to the instance.
+Use an OCI Cloud Stack to set up your workshop environment. This step will create an ADB instance, load the moviestreaming data, and set up different application components as described in the Introduction.
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the button below: 
 

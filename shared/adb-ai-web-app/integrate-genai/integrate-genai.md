@@ -2,7 +2,7 @@
 
 ## Introduction
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
+You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use LLMs offered by the OCI Generative AI service.
 
 You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users to make REST calls to OCI GenAI. The credentials are safely stored under a user profile.
 
@@ -20,7 +20,8 @@ In this lab, you will:
 ### Prerequisites
 - This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
 
-## Task 1: Create policy to enable access to OCI GenAI
+## Task 1: Create policy to enable access to OCI Generative AI
+Create a policy that will 
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
 
@@ -37,11 +38,11 @@ In this lab, you will:
 
     ![Create policy](./images/create-policy.png "")
     
->**Note:** This policy is very broad. In a production environment, you will want to make this much more narrow.
+>**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
 
 ## Task 2: Enable the use of Resource Principals for the MOVIESTREAM user
 
-MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, enable the use of Resource Principals for the MOVIESTREAM user.
+MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). In ADB, enable the use of resource principals for the MOVIESTREAM user.
 
 1. From the **Console,** Open the **Navigation** menu and click **Oracle Database.** Under **Oracle Database,** click **Autonomous Database.**
 
@@ -55,7 +56,7 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 >**Note:** The setup script automatically enabled Resource Principals usage for MovieStream. The following 2 steps are optional.
 
-4. To better understand the use of Resource Principal, let's disable and recreate it. Run the following statement to disable the use of Resource Principals for the MOVIESTREAM user: 
+4. To better understand the use of Resource Principal, let's disable the enablement created by the deployment script and recreate it. Run the following statement to disable the use of Resource Principals for the MOVIESTREAM user: 
 
     ```
     <copy>
@@ -86,25 +87,39 @@ MOVIESTREAM user will connect to OCI GenAI using resource principals. In ADB, en
 
 ![Sign out from Admin](./images/signout.png "")
 
-## Task 3: Create an AI Profile for OCI GenAI
+## Task 3: Create an AI Profile for OCI Generative AI
 
-In the installation, the Terraform script created a couple Generative AI profiles. Let's create a couple more! 
+A Select AI profile encapsulates connection information for an AI provider. This includes: 
+1. a security credential (e.g. the resource principal)
+2. the name of the provider
+3. the name of the LLM
 
->**Note:**The code below shows the creation of the default profile. We've gone into more detail with specifying attributes for the new profiles. 
+You can create as many profiles as you need, which is useful when comparing the quality of the results of different models.
+
+Check out [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) for a complete list of Select AI profile attributes.
+
+>**Note:** The deployment script created a Select AI profile using the code below: 
 
 ```
-dbms_cloud_ai.drop_profile(
-    profile_name => 'genai',
-    force => true
-    );
+<copy>
+BEGIN
+    -- drop the API profile
+    DMBS_CLOUD_AI.drop_profile (
+        profile_name => 'genai',
+        force => true
+        );
 
-dbms_cloud_ai.create_profile(
-    profile_name => 'genai',
-    attributes =>       
-        '{"provider": "oci",
-        "credential_name": "OCI$RESOURCE_PRINCIPAL"
-        }'
-    );
+    -- create an API profile that uses the default COHERE model on OCIå
+    DMBS_CLOUD_AI.create_profile(
+        profile_name => 'genai',
+        attributes =>       
+            '{"provider": "oci",
+            "credential_name": "OCI$RESOURCE_PRINCIPAL"
+            }'
+        );
+END;
+/        
+</copy>
 ```
 
 1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). 
@@ -120,19 +135,21 @@ dbms_cloud_ai.create_profile(
     ```
     <copy>
     BEGIN
-    DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'OCIAI_LLAMA',
-            force => true
-    );
+        -- drops the profile if it already exists
+        DBMS_CLOUD_AI.drop_profile(
+                profile_name => 'OCIAI_LLAMA',
+                force => true
+        );
 
-    DBMS_CLOUD_AI.create_profile(
-        profile_name => 'OCIAI_LLAMA',                                                             
-        attributes => '{"provider":"oci",
-            "model": "meta.llama-2-70b-chat",
-            "credential_name":"OCI$RESOURCE_PRINCIPAL",
-            "oci_runtimetype":"LLAMA"
-        }');
-    end;
+        -- create a new profile that uses a specific model
+        DBMS_CLOUD_AI.create_profile(
+            profile_name => 'OCIAI_LLAMA',                                                             
+            attributes => '{"provider":"oci",
+                "model": "meta.llama-2-70b-chat",
+                "credential_name":"OCI$RESOURCE_PRINCIPAL",
+                "oci_runtimetype":"LLAMA"
+            }');
+    END;
     /
     </copy>
     ```
@@ -143,18 +160,20 @@ dbms_cloud_ai.create_profile(
     ```
     <copy>
     BEGIN
-    DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'OCIAI_COHERE',
-            force => true
-    );
+        -- drops the profile if it already exists
+        DBMS_CLOUD_AI.drop_profile(
+                profile_name => 'OCIAI_COHERE',
+                force => true
+        );
 
-    DBMS_CLOUD_AI.create_profile(
-        profile_name => 'OCIAI_COHERE',                                                             
-        attributes => '{"provider":"oci",
-            "model": "cohere.command",
-            "credential_name":"OCI$RESOURCE_PRINCIPAL",
-            "oci_runtimetype":"COHERE"
-        }');
+        -- create a new profile that uses COHERE.COMMAND
+        DBMS_CLOUD_AI.create_profile(
+            profile_name => 'OCIAI_COHERE',                                                             
+            attributes => '{"provider":"oci",
+                "model": "cohere.command",
+                "credential_name":"OCI$RESOURCE_PRINCIPAL",
+                "oci_runtimetype":"COHERE"
+            }');
     end;
     /
     </copy>
@@ -164,7 +183,7 @@ dbms_cloud_ai.create_profile(
 
 ## Task 4: Test the AI profile
 
-We will use the PL/SQL API to generate a response from a prompt:
+We will use the PL/SQL API to generate a response from the Cohere model.This example is using the **chat** action. It is not using any private data coming from your database.:
 
 1. Run the following statement as MOMVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database using the **Cohere model**.
 
