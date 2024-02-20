@@ -103,13 +103,13 @@ Check out [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-d
 ```
 <copy>
 BEGIN
-    -- drop the API profile
+    -- drop the AI profile
     DMBS_CLOUD_AI.drop_profile (
         profile_name => 'genai',
         force => true
         );
 
-    -- create an API profile that uses the default COHERE model on OCIå
+    -- create an AI profile that uses the default COHERE model on OCI
     DMBS_CLOUD_AI.create_profile(
         profile_name => 'genai',
         attributes =>       
