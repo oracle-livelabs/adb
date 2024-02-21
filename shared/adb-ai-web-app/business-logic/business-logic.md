@@ -2,15 +2,22 @@
 
 ## Introduction
 
-Using the Natural Language (NL) Model makes it simple to query your data in Autonomous Database. The Large Language model and Autonomous Database are able to handle the task of storing and structuring data with ease, allowing the user to focus on the end use of the application. 
+Large language models are incredibly powerful tools for analyzing data using natural language. The problem with LLMs is that they don't know about your organization's private data. Autonomous Database and Select AI makes it simple to overcome this challenge and use an LLM's creative power and understanding of language to rapidly innovate.
+
+This lab will introduce you to using your organization's data with LLMs. You will learn how to define LLM prompts that combine natural language tasks with private data. Those prompts will provide clearly delineate the data sets and tasks to encourage better results:
 
 ![Wrapping of task rules and data to send to the model in tabular form](./images/json-prompts.png "")
 
-Business logic a key feature of integrating the NL model with the app. By setting these rules, the user is able to access specific use cases for queries.  In this app, the users will generate a table to store the business logic and perform a test operation on it. Additionally, they will explore the functions used to wrap the data to send to the model.
+The business logic is captured in a GENAI\_PROJECT table that provides a simple organizational structure. Each record in that table includes:
+1. the task - a description of the purpose of the project
+2. the task rules - a natural language description of the LLM tasks (e.g. summarize a support chat)
+3. the query - the database query whose results the tasks will operate on
+
+A JSON document is used to organize the resulting data set (task rules and query results) and that document is passed to the LLM for processing. 
 
 ![Wrapping of task rules and data to send to the model](./images/json-wrapper.png "")
 
-- Example use case for **`DBMS_CLOUD_AI.GENERATE`** 
+- Example use case for **`DBMS_CLOUD_AI.GENERATE`**: A compelling EMAIL promotion.
 
 ![Business Logic Overview](./images/intro-businesslogic.png "")
 
@@ -28,6 +35,28 @@ In this lab, you will:
 ### Prerequisites
 
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
+
+## Task 1: How to use AI models with data in Autonomous Database
+Let's start
+
+select *
+from v_customer_support;
+with task as
+(
+    select 'Summarize the support chat in 3 sentences. Also return the customer sentiment' as task_details
+    from dual
+)
+select 
+json_object(
+    task_details,
+    support_chat 
+    ) as prompt
+from v_customer_support, task;
+
+
+
+
+
 
 ## Task 1: Create the Business Logic 
 

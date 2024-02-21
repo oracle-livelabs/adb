@@ -20,26 +20,6 @@ In this lab, you will:
 ### Prerequisites
 - This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
 
-## Task 1: Create policy to enable access to OCI Generative AI
-Create a policy that will 
-
-1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
-
-2. Click on **Create policy** and paste the following into the fields:
-
->**Note:** Select the **Show Manual Editor** to open the field  in order to paste the policy.
-
-* **Name:** **`PublicGenAI`**
-* **Description:** **`Public Gen AI Policy`**
-* **Compartment:** **`training-adw-compartment`**
-* **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
-    
-3. Click **Create**
-
-    ![Create policy](./images/create-policy.png "")
-    
->**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
-
 ## Task 2: Enable the use of Resource Principals for the MOVIESTREAM user
 
 MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). In ADB, enable the use of resource principals for the MOVIESTREAM user.

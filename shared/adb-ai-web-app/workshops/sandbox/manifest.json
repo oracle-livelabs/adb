@@ -22,9 +22,14 @@
           "title": "Lab 1: Set up Your Workshop Environment",
           "description":"Set up an Autonomous Database and an LLM account",
           "filename": "../../setup-environment/setup-environment.md"
-        },     
+        },   
         {
-          "title": "Lab 2: Integrate OCI GenAI Service",
+          "title": "Lab 2: Explore OCI Generative AI Service",
+          "description":"Explore OCI Generative AI Service",
+          "filename": "../../explore-oci-genai/explore-oci-genai.md"
+        },           
+        {
+          "title": "Lab 2: Integrate OCI Generative AI Service",
           "description":"Connect Autonomous Database to your LLM",
           "filename": "../../integrate-genai/integrate-genai.md"
         },           
