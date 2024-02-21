@@ -52,7 +52,9 @@ Go to the OCI Generative AI Playground and ask some interesting questions.
 
    OCI Generative AI supports multiple models. Notice how results change as you try different models and prompts. You will want to test different models and prompts to see which produces the best results for your business.
 
-    ![French toast recipe](./images/french-toast.png)
+   Below, we're asking Cohere to generate a movie pitch starring Christian Bale and Natalie Portman that takes place in Chicago in 1968.
+
+    ![Movie pitch](./images/movie-pitch.png)
 
 ## Summary    
 LLMs are amazing, but they don't know about your organization's data. In subsequent labs, you will learn how to use data in Autonomous Database with OCI Generative AI LLMs to summarize support chats and make targeted promotions.
