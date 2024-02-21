@@ -18,7 +18,7 @@ In this lab, you will:
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
 
 ## Task 1: Create policy to enable access to OCI Generative AI
-Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. Make sure to select the compartment where your Autonomous Database is deployed. The policy will be necessary for Autonomous Database to connect to OCI Generative AI.
+Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. Make sure to select the compartment where your Autonomous Database is deployed. The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
 
@@ -50,7 +50,7 @@ Go to the OCI Generative AI Playground and ask some interesting questions.
     
     ![Go to the Playground](./images/goto-playground.png)
 
-   OCI Generative AI supports multiple models. Notice how results change as you try different models and prompts. You will want to test different models and prompts to see which produces the best results for your business.
+   OCI Generative AI supports multiple models. Notice how results change as you try different models and prompts. You will want to test different models and prompts to see which produces the best results for your use case.
 
    Below, we're asking Cohere to generate a movie pitch starring Christian Bale and Natalie Portman that takes place in Chicago in 1968.
 

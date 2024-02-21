@@ -29,27 +29,27 @@
           "filename": "../../explore-oci-genai/explore-oci-genai.md"
         },           
         {
-          "title": "Lab 2: Integrate OCI Generative AI Service",
+          "title": "Lab 3: Integrate OCI Generative AI with Autonomous Database",
           "description":"Connect Autonomous Database to your LLM",
           "filename": "../../integrate-genai/integrate-genai.md"
         },           
         {
-          "title": "Lab 3: Add business logic for handling natural language queries",
+          "title": "Lab 4: Add business logic for handling natural language queries",
           "description":"Use business logic to enhance queries",
           "filename": "../../business-logic/business-logic.md"
         },
         {
-          "title": "Lab 4: Expose as a REST endpoint and secure it",
+          "title": "Lab 5: Expose as a REST endpoint and secure it",
           "description":"Use a secure REST endpoint for your LLM",
           "filename": "../../expose-rest/expose-rest.md"
         },
         {
-          "title": "Lab 5: Deliver a Natural Language app that uses the RESTful service",
+          "title": "Lab 6: Deliver a Natural Language app that uses the RESTful service",
           "description":"Use APEX to access the LLM",
           "filename": "../../deliver-nl-app/deliver-nl-app.md"
         },
         {
-          "title": "Lab 6: Clean Up",
+          "title": "Lab 7: Clean Up",
           "description":"Destroy the resources to clean up",
           "filename": "../../cleanup/cleanup.md"
         },

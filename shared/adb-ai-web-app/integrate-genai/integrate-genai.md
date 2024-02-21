@@ -1,28 +1,29 @@
-# Integrate OCI GenAI Service
+# Integrate OCI Generative AI with Autonomous Database
 
 ## Introduction
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use LLMs offered by the OCI Generative AI service.
+In the previous lab, you saw a snapshot of the creative responses that can be produced by LLMs. Let's now apply that creativity to your data. The first step is to integrate OCI Generative AI with Autonomous Database.
 
-You will navigate to the SQL Worksheet in order to run queries that will update permissions allowing users to make REST calls to OCI GenAI. The credentials are safely stored under a user profile.
+You can use different large language models (LLM) with Autonomous Database. This lets you pick the best model for your use case. Select AI profiles encapsulate the connections to each model; you specify which profile to use when generating results. In this lab, you will enable the user **`MOVIESTREAM`** to use multiple LLMs offered by the OCI Generative AI service. 
 
 Estimated Time: 10 minutes.
 
 ### Objectives
 
 In this lab, you will:
-* Create policy to enable access to OCI GenAI
 * Enable use of Resource Principals for MOVIESTREAM user
-* Create an AI Profile for OCI GenAI
+* Create Select AI Profile for OCI GenAI
 * Test the AI profile
 
 
 ### Prerequisites
 - This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
 
-## Task 2: Enable the use of Resource Principals for the MOVIESTREAM user
+## Task 1: Enable the use of resource principals by the MOVIESTREAM user
 
-MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). In ADB, enable the use of resource principals for the MOVIESTREAM user.
+MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
+
+In ADB, enable the use of resource principals for the MOVIESTREAM user.
 
 1. From the **Console,** Open the **Navigation** menu and click **Oracle Database.** Under **Oracle Database,** click **Autonomous Database.**
 
