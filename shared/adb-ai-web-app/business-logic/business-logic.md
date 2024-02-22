@@ -1,4 +1,4 @@
-# Use Business Logic to Enhance Generative AI
+# Use GenAI to analyze your data in Autonomous Database
 
 ## Introduction
 
@@ -39,7 +39,7 @@ In this lab, you will:
 ## Task 1: How to use AI models with data in Autonomous Database
 In our first example, we'll summarize a conversation that a customer had with the support team. And, we'll determine the customer's sentiment at the end of the chat. 
 
-1. Still logged in as MOVIESTREAM user, view the support chat conversation by runnng the following query. Run the query as a script to make it easy to see the complete results:
+1. Still logged in as MOVIESTREAM user, view a support chat conversation by running the following query. Run the query as a script to make it easy to see the complete results:
 
     ```
     <copy>
@@ -54,7 +54,7 @@ In our first example, we'll summarize a conversation that a customer had with th
 
 2. Create a prompt for the LLM with the tasks that you want it to perform: 
 
-    > Summarize the support chat in 3 sentences. Include the customer sentiment.
+    > Summarize the support chat in 3 sentences. also return the customer sentiment
 
     A JSON document is a really good way to structure the prompt; the LLM can easily interpret the task and data set to operate on. The following SQL query combines the task with the data set. Run this query in SQL Worksheet:
 
@@ -67,7 +67,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     FROM v_customer_support WHERE support_chat_id = 1;
     </copy>
     ```
-    Here is a snapshot in SQL Worksheet:
+    Here is a snapshot of the result in SQL Worksheet:
     ![Prompt for LLM](images/support-chat-prompt.png)
 
     Below is a better formatted version of the document. Importantly, you can see how the task is cleanly separated from the data:
@@ -86,7 +86,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     }
     ```
 
-3. Now that we have a well defined prompt, pass that to the model using the `DBMS_CLOUD_AI.GENERATE` function. Run the following query in the SQL Worksheet:
+3. Now that we have a well defined prompt, pass that to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. Run the following query in the SQL Worksheet:
       
     ```
     <copy>
@@ -109,8 +109,10 @@ In our first example, we'll summarize a conversation that a customer had with th
 
    You can see that the problem was solved and that the customer is happy at the end of the chat. We've just applied the power of LLMs to your organization's private data.
 
+   Prompt engineering is a process. You will iterate on the language used to summarize support chat until you get the the type of response you need.
+
 ## Task 2: Organize and execute GenAI projects
-This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that are applied different use cases. 
+You will likely use GenAI for many different projects where you need to apply analytics to data in Autonomous Database. This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that are applied to different use cases. 
 
 1. Let's take a look at the current projects:
 
@@ -124,20 +126,29 @@ This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that 
 
     ![alt text](images/genai_project_table.png)
 
-    However, instead of hardcoding the `support_chat_id`, the query is parameterized so you can easily summarize and get the sentiment of an support chat:
+    However, instead of hardcoding the `support_chat_id`, the query is parameterized so you can easily summarize and get the sentiment of any support chat (in this example, there's only one record):
     ```
     SELECT * 
     FROM v_customer_support
     WHERE support_chat_id = :chat_id
     ```
 
-2. A couple of helper functions were installed when the workshop was deployed that let you get the AI prompt and generate a response from the LLM. The functions use the contents of the `GENAI_PROJECT` to get results. These functions are simply samples, you can update them to meet your needs. 
+2. A couple of helper functions were installed when the workshop was deployed that derive the AI prompt and generate a response from the LLM. Fundamentally, these functions do the same things you just tried. The one difference is that the functions use the contents of the `GENAI_PROJECT` to get these results. The functions are simply samples, you can update them to meet your needs. 
 
-    Let's see how those helper functions work by finding out what Jennine Mouly (cust_id=1) should do at her destination (project=3). The LLM will use information about Jennine that's stored in Autonomous Database to produce targeted results.
+    | Function | Description | Parameters |
+    |----------|----------|----------|
+    | **`GENAI.GET_PROMPT`** | Returns the prompt that will be sent to the LLM. | **`query_parameter`** : Each project includes a parameterized query (e.g a customer id or support chat id). Specify that parameter.<br>**`project_id`** : Specify the id for the project. For example, use id=2 for "Summarize a support chat" |
+    | **`GENAI.GET_RESPONSE`** | Returns the response from the LLM. | **`query_parameter`** : see above<br>**`project_id`** : see above<br>**`profile_name`** : Specify the AI profile to use for this prompt |
+
+    To see the source code, go to the SQL Worksheet and change the Object viewer from **Tables** to **Packages**, right-click the **GENAI** and view the **Body** script:
+
+    ![View package used to trigger business logic](./images/package.png "")
+    
+3. Let's see how those helper functions work by finding out what Jennine Mouly (cust_id=1) should do at her destination (project=3). The LLM will use information about Jennine that's stored in Autonomous Database to produce targeted results.
     
     ![Things to do at a location](images/things-to-do-project.png)
     
-    Run this query in SQL worksheet to learn about Jennine:
+    Run this query in SQL worksheet to learn about Jennine. She is `customer_id = 1`:
     ```
     <copy>
     SELECT 
@@ -159,6 +170,9 @@ This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that 
     WHERE customer_id = 1;
     </copy>
     ```
+    See the results below:
+    ![About Jennine](images/about-jennine.png)
+
 3. The function `GENAI.GET_PROMPT` will return the prompt that will be sent to the LLM. Run the function call below in SQL Worksheet to see what will be sent to the model:
     ```
     <copy>
@@ -173,7 +187,7 @@ This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that 
 
     ![Jennine JSON document](images/get-jennine-prompt.png)
 
-4. Let's use the second function - `GENAI.GET_RESPONSE` - find out what Jennine and her husband should do in Paris! We'll use the **Meta Llama 2 Chat** model. Run the following in the SQL Worksheet:
+4. Let's use the second function - **`GENAI.GET_RESPONSE`** - find out what Jennine and her husband should do in Paris! We'll use the **Meta Llama 2 Chat** model. Run the following in the SQL Worksheet:
     ```
     <copy>
     SELECT genai.get_response(
@@ -188,68 +202,34 @@ This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that 
 
     Enjoy yourself Jennine!
 
+## Task 3: Simplifying prompt engineering
+As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous tasks:
 
-## Task 3: Create the Business Logic 
+1. In a new browser window, go to the Create GenAI Prompt app and log in as the same MOVIESTREAM user:
+    https://g798ff7528b56c8-testdrive.adb.us-chicago-1.oraclecloudapps.com/ords/r/moviestream/genai-projects/
 
-1. Still logged in as MOVIESTREAM user, insert the following business rule into the **GENAI_PROJECT** table by copying, pasting, and running the following using the SQL worksheet. 
+2. After logging in, you will see the list of GenAI projects. These projects came from the `GENAI_PROJECT` table.
+    ![GenAI projects](images/apex-create-ai-prompt.png)
 
-    ```
-    <copy>
-    INSERT INTO "MOVIESTREAM"."GENAI_PROJECT" ("ID", "NAME", "QUERY", "TASK", "TASK_RULES")
-        VALUES (4,	'Movie Pizza Recommendation',	'WITH promoted_movie_list AS (
-        SELECT
-            JSON_OBJECTAGG(title, image_url RETURNING CLOB) AS promoted_movie_list
-        FROM
-            movies
-    )
-    SELECT
-        M.image_url,
-        P.promoted_movie_list
-    FROM
-        MOVIESTREAM.STREAMS S
-    JOIN
-        promoted_movie_list P ON 1 = 1 
-    JOIN
-        MOVIESTREAM.MOVIES M ON S.MOVIE_ID = M.MOVIE_ID
-    WHERE
-        S.CUST_ID = :cust_id
-    ORDER BY
-        S.DAY_ID DESC
-    FETCH FIRST 1 ROWS ONLY',
-        'Create a movie recommendation. Follow the task rules.',	'Recommend 3 movies from the promoted_movie_list that are most similar to movies in the recently_watched_movies list. Include a short synopsis of each movie. Convince the reader that they will love the recommended movies. Also include a recommend pizza that would pair well with each movie. include the image_url as well. Make it object oriented for easy parsing.')
+3. Let's take a look at the **Movie Pizza Recommendation** project. Click on the edit button for that project:
+    ![Edit project](images/apex-edit-project.png)
 
-    COMMIT;
-    </copy>
-    ```
+4. You can see the details for this project. Update the task and task rules as you see fit to produce better results. And, you can see the query. For this app, each project's query has a single parameter - in this case `cust_id`. This lets you get details for that customer's profile. For now, let's leave the project as is - our subsequent lab is expecting results from this prompt. Click **Cancel**.
+    ![Edit project details](images/apex-edit-details.png)
 
-![Insert GenAI Row](./images/insert-genai-row.png "")
-
-1. Right-click **GENAI_PROJECT** and click **Open** on the left side of the SQL Worksheet.
-2. Click **Data** to view the new business logic statement you have submitted is correct. Additionally, 3 rows have been automatically created by the automation script. We will learn more about these in the next lab.
-
-## Task 2: Test the Business Logic 
-
-1. In the SQL worksheet, run the following command to test the business logic function that we just created. The automation script has created a package **genai.get_response()** where we can submit tasks along with data.
-
-    ```
-    <copy>
-    SELECT genai.get_response(query_parameter => '1000001', project_id => '4')
-    FROM dual;
-    </copy>
-    ```  
-
->**Note:** The default profile used is **`genai`**, which is automatically created by the terraform. We will use the new profiles for this function in the next lab.
-
-![Test GenAI function](./images/test-genai-function.png "")
-
-2. Change the Object viewer from Tables to **Packages**, right-click the **GENAI** and view the **Body** script to understand how this function uses 3 parameters, which we will highlight in the following lab. The following functions are stored in this package:
-* **get_prompt_sql()**
-* **get_response()** - covered in this lab
-* **get_prompt()** - helpful for debugging business logic
-* **ask_question()**
-
-![View package used to trigger business logic](./images/package.png "")
+5. Test the GenAI project by following these simple steps:
+    * Select the project **Movie Pizza Recommendation**
+    * Pick an AI Profile. You can accept the default. Or, try different profiles and compare the results.
+    * Pick customer ID **1000001**
+    * Click **Generate Response**
     
+    ![Test the GenAI project](images/apex-test-genai-project.png)
+
+    The response may take a minute to return. You'll see the prompt used to generate the response and the response itself.
+
+## Summary    
+Sometimes it's useful to step back and say, "how would I have summarized a support chat or created a targeted offer in the past?". Applying large language models to your data really opens up so many opportunities to deliver value to your organization quickly and easily. 
+
 You may now proceed to the next lab.
 
 ## Learn More

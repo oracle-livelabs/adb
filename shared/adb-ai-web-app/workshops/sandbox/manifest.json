@@ -34,8 +34,8 @@
           "filename": "../../integrate-genai/integrate-genai.md"
         },           
         {
-          "title": "Lab 4: Add business logic for handling natural language queries",
-          "description":"Use business logic to enhance queries",
+          "title": "Lab 4: Use GenAI to analyze your data in Autonomous Database",
+          "description":"Deliver GenAI projects tat summarize chats and recommend movies",
           "filename": "../../business-logic/business-logic.md"
         },
         {
