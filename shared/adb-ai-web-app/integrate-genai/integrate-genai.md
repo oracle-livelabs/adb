@@ -19,7 +19,7 @@ In this lab, you will:
 ### Prerequisites
 - This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
 
-## Task 1: Enable the use of resource principals by the MOVIESTREAM user
+## Task 1: Enable resource principal usage for user MOVIESTREAM
 
 MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
 
@@ -166,7 +166,7 @@ END;
 
 We will use the PL/SQL API to generate a response from the Cohere model.This example is using the **chat** action. It is not using any private data coming from your database.:
 
-1. Run the following statement as MOMVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database using the **Cohere model**.
+1. Run the following statement as MOVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database using the **Cohere model**.
 
     ```
     <copy>

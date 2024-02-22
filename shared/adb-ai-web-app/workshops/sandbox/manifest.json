@@ -19,7 +19,7 @@
           "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-          "title": "Lab 1: Set up Your Workshop Environment",
+          "title": "Lab 1: Set up your workshop environment",
           "description":"Set up an Autonomous Database and an LLM account",
           "filename": "../../setup-environment/setup-environment.md"
         },   
@@ -44,7 +44,7 @@
           "filename": "../../expose-rest/expose-rest.md"
         },
         {
-          "title": "Lab 6: Deliver a Natural Language app that uses the RESTful service",
+          "title": "Lab 6: Deliver a natural language app that uses the RESTful service",
           "description":"Use APEX to access the LLM",
           "filename": "../../deliver-nl-app/deliver-nl-app.md"
         },
