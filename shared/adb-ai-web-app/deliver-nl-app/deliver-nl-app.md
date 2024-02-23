@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In order to utilize the APIs created in the previous labs, we have developed an application using Open-Source tools, such as React (Framework for App development) using Typescript (superset of JavaScript). This allows for easy integration of many libraries that available for all sorts of utility, such as integration of OpenMaps (Open-Source mapping tool). The MovieStreamAI Application features the search capability of the Customer Ids to integrate the data stored in the database to several components:
--  Recently Watched Films list
--  Recommended Movies List
--  Recommended Pizza Pairing
--  Mapping of nearby Pizza locations
+The RESTful AI services are now available to applications across your organizataion. We'll show you an example app that uses open source tools, specifically React (a framework for app development) using Typescript (superset of JavaScript). This approach allows for easy integration of many useful libraries, such as integration of OpenMaps (open source mapping tool). Our MovieStreamAI application lets you search for information about customers and then make recommendations. The list of features includes:
+-  Recently watched films list
+-  Recommended movies list based on viewing history
+-  Recommended pizza pairing using spatial analytics
+-  Mapping of nearby pizza locations
 
 
 Here is a preview of what to expect:
@@ -19,15 +19,15 @@ Estimated Time: 20 minutes.
 
 In this lab, you will:
 * Create a bucket to host the MovieStreamAI application
-* Deploy the App fast using Object Storage
-* Understand how to use the API in the MovieStreamAI App
+* Deploy the app quickly using OCI Object Storage
+* Understand how to use your API in the MovieStreamAI App
 
 ### Prerequisites
 - This lab requires the completion of all the preceding labs. 
 
 ## Task 1: Create bucket to host MovieStreamAI application
 
-1. Navigate to **Buckets** using the hamburger menu (storage -> buckets)
+1. Use the OCI hamburger menu to navigate to **Storage -> Buckets** 
 
 2. Click **Create Bucket** 
 
@@ -35,18 +35,18 @@ In this lab, you will:
 
 ![Create bucket](./images/create-bucket.png "")
 
-4. Click on the bucket you just made and change visibility to **Public**. Click **Save changes**. 
+4. Change the bucket's visibility to public. Click on the bucket **movie-app**, then click **Edit Visibility**. Select **Public** and then click **Save Changes**. 
 
 ![Change visibility to public](./images/public-visibility.png "")
 
-## Task 2: Deploy the App fast using Object Storage
+## Task 2: Deploy the app quickly using Object Storage
 
 1. Open up Cloud Shell within the OCI Console. 
 
 ![Open Cloud Shell](./images/open-cloudshell.png "")
 
 2. Run the following command:
-
+**TO DO: his needs to be uploaded to the public bucket in livelabs**
     ```
     <copy>
     wget https://adwc4pm.objectstorage.us-chicago-1.oci.customer-oci.com/n/adwc4pm/b/wget-link/o/movie-app.zip
@@ -59,7 +59,6 @@ In this lab, you will:
     ```
     <copy>vi ./src/config.ts</copy>
     ```
-
 
 ![update APIs in config.tsx file](./images/update-config.png "")
 

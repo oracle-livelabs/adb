@@ -1,10 +1,9 @@
 # Expose as a REST endpoint and secure it
 
 ## Introduction
+You created a GenAI project that recommends movies and creates a localized pizza offer. Now, expose that project as a RESTful service.
 
-You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab. 
-
-This lab will implement two different types of RESTful services. First, AutoREST can be published quickly and efficiently with only a couple clicks. Secondly, RESTful modules can be created to impelement PL/SQL blocks and SQL queries from an API and managed using the service manager. 
+This lab will implement two different types of RESTful services. First, AutoREST lets you publish a RESTful service quickly and efficiently with only a couple clicks. Second, RESTful modules give you a bit more flexiblity. For example, you can define signatures for those REST endpoints using Swagger or other OpenAPI tools - and then import those definitions into Autonomous Database. After import, you use Autonomous Database's REST editor to implement the handlers for the endpoints.
 
 - AutoREST  
 
@@ -22,32 +21,56 @@ In this lab, you will:
 * Expose tables as REST endpoint
 * Test the REST endpoint
 * Access the API using OpenAPI (Swagger) tool
-* Create module for API 
+* Design a RESTful module for your AI project
 * Test the module
-* Create module template for natural language query API
 
 ### Prerequisites
 - This lab requires the completion of all of the preceding labs. 
 
-## Task 1: Expose as a REST Endpoint. 
+## Task 1: Use AutoREST to enable access to customer information
+Start by providing access to customer data using AutoREST. This is the easiest way to enable RESTful access to data in Autonomous Database:
 
 1. Ensure that you are logged in as **MOVIESTREAM** user. In the Navigator, select **CUSTOMER.** 
 
-![Select customer](./images/select-customer.png "")
+  ![Select customer](./images/select-customer.png "")
 
-2. Right click and select **REST** -> **Enable.**
+2. Right-click and select **REST** -> **Enable.**
 
-![Enable REST](./images/enable-rest.png "")
+  ![Enable REST](./images/enable-rest.png "")
 
-3. Click **Enable.**
+3. In the **REST Enable Object** dialog, click **Enable**.
 
-![Click Enable](./images/click-enable.png "")
+  ![Click Enable](./images/click-enable.png "")
 
-## Task 2: Test the REST Endpoint. 
+  That's it! Your table is now available via REST.
 
-1. On the **Oracle Database Actions | SQL banner,** click the hamburger menu and select **REST.** Click **AutoREST** at the top of the page.
+  >**Note:** The API can be secured by selecting **Require Authentication**. We will keep things simple and not require authentication, which is clearly not a best practice. To learn more about securing REST endpoints, go to [Configuring Secure Access to RESTful Services.](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/18.4/aelig/developing-REST-applications.html#GUID-5B39A5A6-C55D-452D-AE53-F49431A4DE97).
+
+4. Test the REST endpoint from a command prompt. Right-click **CUSTOMER** and select **REST** -> **cURL command...**.
+  ![test the api](images/click-rest-quick-test.png)
+
+  Then, select **GET Single** and enter cust_id **1320371**
+
+  ![curl for custid](images/curl-for-custid.png)
+
+  Copy the URL to the clipboard.
+
+5. Open a command prompt on your computer. Paste the curl command and hit enter. Assuming no firewalls are blocking your access to the service, you will see information about our customer Betsy Chan:
+  ![curl result](images/click-rest-quick-test-result.png)
+
+## Task 2: Test the customer REST endpoint. 
+Autonomous Database provides an intuitive REST service editing tool that allows you to create, edit and test RESTful services. Let's test the customer endpoint that we just defined.
+
+qbe: {"last_name":{"$like":"%Water%"}}
+cust_id: 1320371
+
+40W5F-P4ihUBysT1SuqQiA..
+z1uv9tx-VClpZe7NBoBIPQ..
+
+1. On the **Oracle Database Actions | SQL** banner, click the hamburger menu and then select **REST.** Click **AutoREST** at the top of the page.
 
 ![Click AutoREST](./images/autorest-button.png "")
+
 
 2. Click the **Open in new tab** icon for the table CUSTOMER to test the API. 
 
@@ -93,143 +116,151 @@ Since there is already a module named **api** that was created by the Terraform 
 
 1. Using the breadcrumb menu, select **Modules**.
 
-![Modules breadcrumb button](./images/modules-breadcrumb.png "")
+  ![Modules breadcrumb button](./images/modules-breadcrumb.png "")
 
 2. Click **Create Module.** 
+  ![Modules create button](./images/create-module.png "")
 
-![Modules create button](./images/create-modules.png "")
+3. Name the Module, Base Path, and make sure all the fields match the image below. Then, click **Create.**
 
-3. Name the Module, Base Path, and make sure all the fields match the image and click **Create.**
-
-* **Name:** **`apiapp`**
-* **Base Path:** **`/apiapp/`** 
- 
-5. Click on the newly created module **apiapp**. From here, we will create multiple templates for the api to call. The endpoints will be designated by either data collection (named **/data/**) or ai generated responses (named **/ai/**). First, let's create the data collection api for the **recently watched movies**.
-
-6. Click **Create Template.** 
-
-![Template button](./images/create-template-one.png "")
-
-7. Enter a name for the template such as **/data/image/:cust_id** and then click **Create**. 
-
-![Template button](./images/create-template-two.png "")
-
-8. Click **Create Handler**.
-
-![Handler button](./images/create-handler.png "")
-
-9.  Paste the following into **Source** and click **Create**.
-
-  ```
-  <copy>
-  SELECT 
-      M.image_url,
-      M.year,
-      M.main_subject,
-      M.awards,
-      M.summary,
-      M.gross,
-      M.runtime
-  FROM 
-      MOVIESTREAM.STREAMS S
-  JOIN 
-      MOVIESTREAM.MOVIES M ON S.MOVIE_ID = M.MOVIE_ID
-  WHERE 
-      S.CUST_ID = :cust_id
-  ORDER BY 
-      S.DAY_ID DESC
-  FETCH FIRST 3 ROWS ONLY
-  </copy>
-  ```
-
-![Handler with code](./images/image-handler.png "")
-
-10.  Click **Create Parameter**.
+  * **Name:** `apiapp`
+  * **Base Path:** `/apiapp/`
+  * **Protected By Privilege:** `Not Protected`
   
-![Parameter button](./images/create-parameter.png "")
+![Completed module form](images/module-completed-form.png)
+ 
+4. Click on the newly created module **apiapp**. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **/data/**) or AI generated responses (named **/ai/**). First, let's create the data collection api for the **recently watched movies**.
 
-11. Provide a name for the **Parameter** and the **Bind Variable.** Change the **Source Type** from **Header** to **URI.** Change the **Parameter Type** from **String** to **Integer.** Next, click **Create.** 
+5. Click **Create Template.** 
 
-* **Parameter Name:** **`:cust_id`**
-* **Bind Variable Name:** **`cust_id`**
+  ![Template button](./images/create-template-one.png "")
+
+6. Enter the following name for the template: **data/image/:cust_id** and then click **Create**. 
+
+  ![Template button](./images/create-template-two.png "")
+
+7. Click **Create Handler** to implement the API:
+
+  ![Handler button](./images/create-handler.png "")
+
+8. Paste the following into **Source** and click **Create**.
+
+    ```
+    <copy>
+    SELECT 
+        M.image_url,
+        M.year,
+        M.main_subject,
+        M.awards,
+        M.summary,
+        M.gross,
+        M.runtime
+    FROM 
+        MOVIESTREAM.STREAMS S
+    JOIN 
+        MOVIESTREAM.MOVIES M ON S.MOVIE_ID = M.MOVIE_ID
+    WHERE 
+        S.CUST_ID = :cust_id
+    ORDER BY 
+        S.DAY_ID DESC
+    FETCH FIRST 3 ROWS ONLY
+    </copy>
+    ```
+
+  ![Handler with code](./images/image-handler.png "")
+
+10. Add a parameter for the handler. Click **Create Parameter**.
+  
+  ![Parameter button](./images/create-parameter.png "")
+
+11. Fill out the dialog as follows: 
+
+* **Parameter Name:** `:cust_id`
+* **Bind Variable Name:** `cust_id`
+* **Source Type:** `URI`
+* **Parameter Type:** `INT`
+
+The completed form should look like the following:
 
 ![Parameter details](./images/parameter-details.png "")
 
-## Task 5: Test the module
+Click **Create.** 
 
-1. Click **Open in new tab** icon and enter **1000001** for the **cust_id.**
+## Task 5: Test the new customer API
 
-![Open in new tab](./images/open-new-tab-two.png "")
+1. Test the handler. Click **Open in new tab** icon**.
 
-![Cust_id input](./images/cust_id.png "")
+  ![Open in new tab](./images/open-new-tab-two.png "")
+ 
+  Then, enter **1000001** for the **cust_id**:
 
-![Test module in new window](./images/test-in-new-window.png "")
+  ![Cust_id input](./images/cust_id.png "")
+
+  ![Test module in new window](./images/test-in-new-window.png "")
 
 2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
 
 3. Copy the **URL** (without the 1000001) in a note for use in Lab 5.
 
-## Task 6: Create module template for natural language query API. 
+## Task 6: Create RESTful service for movie recommendations with a pizza offer
+This last task will create our final RESTful service. This uses GenAI to recommend movies and a local pizza offer.
 
 1. Click **apiapp** in the breadcrumbs. Let's create another template for the AI generated response (**/ai/**).
 
 2. Click **Create Template**. 
 
-![Create template](./images/create-template-one.png "")
+    ![Create template](./images/create-template-one.png "")
 
-3. Enter a name for the URI template such as **ai/moviePizzaRecommendation/:cust_id** and then click **Create.** 
+3. Enter the following name for the URI template: **ai/moviePizzaRecommendation/:cust_id**. Then, click **Create.** 
 
-![uri and create button](./images/uri-create.png "")
+    ![uri and create button](./images/uri-create.png "")
 
 4. Click **Create Handler**.
 
-![Handler button](./images/create-handler.png "")
+    ![Handler button](./images/create-handler.png "")
 
-5. Change the source type to **PL/SQL**, paste the following into **Source**, and click **Create**. Here we have designated 3 parameters: 
-* **:summary** - defines the response for easy parsing.
-* **:cust_id** - passes the variable from the uri into the pl/sql block.
-* **:profile_name** - allows for comparison between the two models in the app by passing the variable from the header.
-
-```
-  <copy>
-  begin
-      :summary := genai.get_response ( 
-          query_parameter => :cust_id,
-          project_id => 4,
-          profile_name => :profile_name);
-  end;
-  </copy>
-  ```
-
-![Movie handler with code and updated source type](./images/movie-handler.png "")
-
->**Note:**The **`genai.get_response`** is a PL/SQL package function is created by the Terraform script. To view the package, navigate to the SQL Worksheet and then select **Packages** from the **Object Viewer** drop-down list in the **Navigator** pane as follows: 
-
-![Genai Package in sql worksheet](./images/genai-package.png "")
+5. Change the source type to **PL/SQL**, paste the following into **Source**, and click **Create**.  
+    ```
+    <copy>
+    begin
+        :summary := genai.get_response ( 
+            query_parameter => :cust_id,
+            project_id => 4,
+            profile_name => :profile_name);
+    end;
+    </copy>
+    ```    
+    ![Movie handler with code and updated source type](./images/movie-handler.png "")
+    The code has 3 parameters that you will define in the next steps:
+    - **:summary** - defines the response for easy parsing.
+    - **:cust_id** - passes the variable from the uri into the pl/sql block.
+    - **:profile_name** - allows for comparison between the two models in the app by passing the variable from the header.
 
 6. Click **Create Parameter**.
 
-![Parameter button](./images/create-parameter.png "")
+    ![Parameter button](./images/create-parameter.png "")
 
 7. Name the Parameter and the Bind Variable, change the source type from header to **URI**, and then click **Create**.
 
-  * **Parameter Name:** **`cust_id`**
-  * **Bind Variable Name:** **`cust_id`**
-  * **Source Type:** **`URI`**
+    - **Parameter Name:** `cust_id`
+    - **Bind Variable Name:** `cust_id`
+    - **Source Type:** `URI`
 
 8. Repeat step 6 and 7 for the following new parameters:
 
-  * **Parameter Name:** **`profile_name`**
-  * **Bind Variable Name:** **`profile_name`**
-  * **Source Type:** **`HEADER`**
+    - **Parameter Name:** `profile_name`
+    - **Bind Variable Name:** `profile_name`
+    - **Source Type:** `HEADER`
 
 9.  Repeat step 6 and 7 for the following new parameters:
 
-  * **Parameter Name:** **`response`**
-  * **Bind Variable Name:** **`response`**
-  * **Source Type:** **`RESPONSE`**
+    - **Parameter Name:** `summary`
+    - **Bind Variable Name:** `summary`
+    - **Source Type:** `RESPONSE`
+    - **Parameter Type:** `STRING`
+    - **Access Method:** `Output`
 
-The completed **/ai/moviePizzaRecommendation/:cust_id** module is shown below:
+The completed **ai/moviePizzaRecommendation/:cust_id** module is shown below:
 
 ![Complete module with all fields shown](./images/movie-pizza-recommendation.png "")
 
@@ -256,7 +287,7 @@ You may now proceed to the next lab.
     * Nicholas Cusato, Cloud Engineer 
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer 
+    * Joanna Espinosa, Cloud Engineer ?
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
