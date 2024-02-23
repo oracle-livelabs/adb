@@ -259,9 +259,7 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
     ![The link job is completed successfully.](images/link-job-complete.png)
 
-To view buckets and Cloud Locations in other compartments or in the root tenancy, click the **Data Studio Preferences** icon. You can use the panel to select a different credential, compartment, and AI profile.
-
-6. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, select a different compartment, and then click **Save**.
+    >**Note:** To view buckets and Cloud Locations in other compartments or in the root tenancy, click the **Data Studio Preferences** icon. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, you can select a different compartment, and then click **Save**.
 
     ![Click the Data Studio Preferences icon.](images/save-preferences.png)
 
@@ -283,7 +281,7 @@ You may now proceed to the next lab.
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
