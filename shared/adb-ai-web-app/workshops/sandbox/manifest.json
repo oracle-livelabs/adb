@@ -44,7 +44,7 @@
           "filename": "../../expose-rest/expose-rest.md"
         },
         {
-          "title": "Lab 6: Integrating REST servics with OpenAPI",
+          "title": "Lab 6: Use OpenAPI tools with your RESTful services",
           "description":"Document and test your APIs",
           "filename": "../../openapi-integration/openapi-integration.md"
         },        

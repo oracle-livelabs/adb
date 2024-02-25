@@ -33,17 +33,17 @@ In this lab, you will:
 
 3. Name the bucket, **movie-app** and click **Create**. Leave all other fields as default. 
 
-![Create bucket](./images/create-bucket.png "")
+  ![Create bucket](./images/create-bucket.png "")
 
 4. Change the bucket's visibility to public. Click on the bucket **movie-app**, then click **Edit Visibility**. Select **Public** and then click **Save Changes**. 
 
-![Change visibility to public](./images/public-visibility.png "")
+  ![Change visibility to public](./images/public-visibility.png "")
 
 ## Task 2: Deploy the app quickly using Object Storage
 
 1. Open up Cloud Shell within the OCI Console. 
 
-![Open Cloud Shell](./images/open-cloudshell.png "")
+  ![Open Cloud Shell](./images/open-cloudshell.png "")
 
 2. Run the following command:
 **TO DO: his needs to be uploaded to the public bucket in livelabs**
@@ -54,13 +54,13 @@ In this lab, you will:
     cd movie-app
     </copy>
     ```
-3. Update the config file with the APIs used in the Lab **Allow Users to Connect to Your LLM and Data**. Run the following command to edit the file.
+3. Update the config file with the APIs used in the previous Lab. Run the following command to edit the file.
 
     ```
     <copy>vi ./src/config.ts</copy>
     ```
 
-![update APIs in config.tsx file](./images/update-config.png "")
+  ![update APIs in config.tsx file](./images/update-config.png "")
 
 4. Paste the endpoints into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
@@ -73,7 +73,7 @@ In this lab, you will:
     </copy>
     ```
 
->**Note:** This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy_to_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
+>**Note:** This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy\_to\_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
 
 ## Task 3: Understand how to use the API in the MovieStreamAI App
 
@@ -81,13 +81,13 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 1. Navigate back to **movie-app** bucket and click the ellipsis for the **index.html** object. Click on object details. 
 
-![Open object details for index.html](./images/index-details.png "")
+  ![Open object details for index.html](./images/index-details.png "")
 
 2. Grab the URL for the object and paste into a new tab in the browser. 
 
-![copy url for index.html](./images/react-url.png "")
+  ![copy url for index.html](./images/react-url.png "")
 
->**Note:**The web page is made using the **parallax effect**, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory in the zip file downloaded. Let's open the file in the **OCI Cloud Shell**.
+  >**Note:**The web page is made using the **parallax effect**, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory in the zip file downloaded. Let's open the file in the **OCI Cloud Shell**.
 
 1. View the file **App.tsx** by running the command in the shell.
 

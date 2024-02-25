@@ -111,8 +111,9 @@ Notice the response shows a summary of a chat with a customer. The Cohere model 
 6. Additionally, the fields **/ai/thingsToDo/{customerID}** and **/ai/promotion/{customerID}** produces a similar effect. Give them a try before proceeding to the next task.
 
 ## Task 4: Create module for API.
+AutoREST is fast and easy. Your APIs are immediately available to use. But, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's RESTful design tool. Start by creating an API module (see [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187)).
 
-Since there is already a module named **api** that was created by the Terraform script, let's create a new module that the **MovieStreamAI** app will use. 
+A module named **api** was created by the Terraform script. Let's create a new module that the **MovieStreamAI** app will use. 
 
 1. Using the breadcrumb menu, select **Modules**.
 

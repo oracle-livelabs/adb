@@ -1,9 +1,13 @@
-# Integrating REST servics with OpenAPI
+# Use Open API tools with your RESTful services
 
 ## Introduction
-OpenAPI, formerly known as Swagger, is a specification for building and documenting APIs. It allows developers to describe the structure of their APIs in a standardized format using JSON or YAML, making it easier to understand and work with APIs. OpenAPI specifications can be used to generate interactive documentation, client libraries, and server stubs, streamlining the API development process.
+OpenAPI is a specification for building and documenting APIs. It allows developers to describe the structure of their APIs in a standardized format using JSON or YAML, making it easier to understand and work with APIs. OpenAPI specifications can be used to generate interactive documentation, client libraries, and server stubs, streamlining the API development process. There are many tools that you can use with OpenAPI, including Swagger, Postman, and more. 
 
-It's easy to use OpenAPI with Autonomous Database RESTful development. This lab will show you how to view and test your APIs using OpenAPI.
+It's easy to use OpenAPI with Autonomous Database RESTful development. Autonomous Database supports the OpenAPI 3.0 specification, allowing you to both import and export your API modules. This gives you flexibility in your API development:
+1. Create your API modules in Autonomous Database, export their definitions, and then document them using your API tools
+2. Design your RESTful services in your OpenAPI tool and then import those definitions into Autonomous Database. Complete the API implementation in Autonomous Database's API design tool.
+
+This lab will show you how to view and test your APIs using OpenAPI. We'll need to capture the endpoint URLs in order to update our web app in the next lab.
 
 Estimated Time: 15 minutes.
 
@@ -18,199 +22,82 @@ In this lab, you will:
 
 - This lab requires completion of the previous labs in the **Contents** menu on the left.
 
-## Task 1: How to use AI models with data in Autonomous Database
-In our first example, we'll summarize a conversation that a customer had with the support team. And, we'll determine the customer's sentiment at the end of the chat. 
+## Task 1: Review the customer API created using AutoREST
+Let's review our **customer** endpoint. We'll test it and then save the URL.
 
-1. Still logged in as MOVIESTREAM user, view a support chat conversation by running the following query. Run the query as a script to make it easy to see the complete results:
+1. Still logged into Database Actions as the MOVIESTREAM user, go to to the REST editor by clicking the hamburger menu and selecting **REST**:
+    ![go to REST](images/goto-REST.png)
 
-    ```
-    <copy>
-    SELECT support_chat 
-    FROM v_customer_support
-    WHERE support_chat_id = 1;
-    </copy>
-    ```
-    ![Support chat query](images/query-support-chat.png)
+2. Select AutoREST tab:
+    ![go to AutoREST](images/goto-autoREST.png)
 
-    You can see a humorous exchange between the customer and the support chat.
+3. You'll notice our **CUSTOMER** RESTful endpoint. You can view the endpoint in an OpenAPI view. Click the 3 dots on the **CUSTOMER** tile and select **OpenAPI view**:
+    ![go to CUSTOMER OpenAPI view](images/openapi-customer-apis.png)
 
-2. Create a prompt for the LLM with the tasks that you want it to perform: 
+4. This view will look familiar if you use OpenAPI tools; they present the APIs in a very similar way. As you can see, AutoREST exposed numerous APIs for customer. For example, you can add, delete and view customer records. 
 
-    > Summarize the support chat in 3 sentences. also return the customer sentiment
+    Let's get all customers whose last name includes "Water". Use the **GET** API and apply a JSON query by example parameter:
+    - Click **GET** and then clik the **Try it out** button. 
+    - Enter the following into the parameter field: 
+        ```
+        <copy>
+        {"last_name":{"$instr":"Water"}}`
+        </copy>
+        ```
+    - The form should look like the following:
+        ![completed form](images/openapi-customer-qbe-form.png)
 
-    A JSON document is a really good way to structure the prompt; the LLM can easily interpret the task and data set to operate on. The following SQL query combines the task with the data set. Run this query in SQL Worksheet:
+        Click **Execute**
+5. Scroll down to the **Response body** to see the results. You'll find numerous customers.
 
-    ```
-    <copy>
-    SELECT 
-        JSON_OBJECT (
-            'task' VALUE 'summarize the support chat in 3 sentences. also return the customer sentiment',
-        support_chat ) AS prompt
-    FROM v_customer_support WHERE support_chat_id = 1;
-    </copy>
-    ```
-    Here is a snapshot of the result in SQL Worksheet:
-    ![Prompt for LLM](images/support-chat-prompt.png)
+6. You will use the customer API in the next lab. In the **Request URL** field, copy and save the API call up to the "/" following the customer identfier:
+    ![Save customer URL](images/openapi-customer-save-url.png)
 
-    Below is a better formatted version of the document. Importantly, you can see how the task is cleanly separated from the data:
-    ```json
-    {
-        "task": "summarize the support chat in 3 sentences. also return the customer sentiment",
-        "support_chat": 
-        "Customer: Hi, I've been staring at my computer screen for hours, and it's giving me the silent treatment. I think it's mad at me.
-        Support Rep: Oh no, we can't have that! Let's try to make peace with your computer. What seems to be the issue? 
-        Customer: Well, it's just sitting there, not doing anything. I've tried talking to it nicely, but no response. 
-        Support Rep: Hmmm, have you tried sweet-talking it in binary? Sometimes computers are just shy in human language. 
-        Customer: Binary? Like 0101010101? Are you serious? 
-        Support Rep: Absolutely! Give it a shot. Tell it you appreciate its 01010101110 processing power, and you might see some sparks flying. 
-        ....
-        Customer: Nope, I think my computer and I are on good terms now. Thanks again for the laughs and the tech wizardry! \nSupport Rep: Happy to help. If you ever need more binary poetry or tech support, you know where to find me. Have a great day!"
-    }
-    ```
+    The URL will look similar to:
 
-3. Now that we have a well defined prompt, pass that to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. Run the following query in the SQL Worksheet:
-      
-    ```
-    <copy>
-    WITH prompt_document AS (
-        SELECT JSON_OBJECT(
-            'task' VALUE 'summarize the support chat in 3 sentences. also return the customer sentiment',
-            support_chat) AS prompt_details
-        FROM v_customer_support WHERE support_chat_id = 1
-    )
-    SELECT 
-        DBMS_CLOUD_AI.GENERATE(
-            PROMPT => prompt_details,
-            PROFILE_NAME => 'OCIAI_COHERE',
-            ACTION       => 'chat'                     
-        ) AS response
-    FROM prompt_document;       
-    </copy>
-    ```
-   ![Summarized chat](images/summarize-chat.png) 
+    `https://your-db.adb.us-chicago-1.oraclecloudapps.com/ords/moviestream/customer`
 
-   You can see that the problem was solved and that the customer is happy at the end of the chat. We've just applied the power of LLMs to your organization's private data.
+## Task 2: Review and test the **apiapp** module's movie recommendation API using the OpenAPI view
+Let's review the **apiapp** module using the OpenAPI view. 
 
-   Prompt engineering is a process. You will iterate on the language used to summarize support chat until you get the the type of response you need.
+1. Go to the **Modules** tab. You'll see 2 modules:
+    - the **api** module that was created by the setup script
+    - the **apiapp** module that you created in the previous lab
+        ![module list](images/module-list.png)
 
-## Task 2: Organize and execute GenAI projects
-You will likely use GenAI for many different projects where you need to apply analytics to data in Autonomous Database. This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that are applied to different use cases. 
+2. Click the 3 dots on the **apiapp** tile and select **OpenAPI view**:
+    ![go to openapi view for apiapp module](images/goto-apiapp-module.png)
 
-1. Let's take a look at the current projects:
-
-    ```
-    <copy>
-    SELECT * FROM GENAI_PROJECT ORDER BY 1;           
-    </copy>
-    ```
-
-    Notice below the **Summarize support chat** project. That is the same use case we ran in the previous task. The prompt's query, task and task rules are all captured in that record:
-
-    ![alt text](images/genai_project_table.png)
-
-    However, instead of hardcoding the `support_chat_id`, the query is parameterized so you can easily summarize and get the sentiment of any support chat (in this example, there's only one record):
-    ```
-    SELECT * 
-    FROM v_customer_support
-    WHERE support_chat_id = :chat_id
-    ```
-
-2. A couple of helper functions were installed when the workshop was deployed that derive the AI prompt and generate a response from the LLM. Fundamentally, these functions do the same things you just tried. The one difference is that the functions use the contents of the `GENAI_PROJECT` to get these results. The functions are simply samples, you can update them to meet your needs. 
-
-    | Function | Description | Parameters |
-    |----------|----------|----------|
-    | **`GENAI.GET_PROMPT`** | Returns the prompt that will be sent to the LLM. | **`query_parameter`** : Each project includes a parameterized query (e.g a customer id or support chat id). Specify that parameter.<br>**`project_id`** : Specify the id for the project. For example, use id=2 for "Summarize a support chat" |
-    | **`GENAI.GET_RESPONSE`** | Returns the response from the LLM. | **`query_parameter`** : see above<br>**`project_id`** : see above<br>**`profile_name`** : Specify the AI profile to use for this prompt |
-
-    To see the source code, go to the SQL Worksheet and change the Object viewer from **Tables** to **Packages**, right-click the **GENAI** and view the **Body** script:
-
-    ![View package used to trigger business logic](./images/package.png "")
+3. Test the **/ai/moviePizzaRecommendation/{cust_id}**:
+    - Click **GET** for API **/ai/moviePizzaRecommendation/{cust_id}**
+    - Click **Try it out**
+    - Enter  **cust_id**: `1000001` 
+    - Enter parameter AI **profile_name**: `OCIAI_COHERE`. 
+    The complete form should appear as follows:
+    ![alt text](images/openapi-movie-recommendation-form.png)
     
-3. Let's see how those helper functions work by finding out what Jennine Mouly (cust_id=1) should do at her destination (project=3). The LLM will use information about Jennine that's stored in Autonomous Database to produce targeted results.
-    
-    ![Things to do at a location](images/things-to-do-project.png)
-    
-    Run this query in SQL worksheet to learn about Jennine. She is `customer_id = 1`:
-    ```
-    <copy>
-    SELECT 
-        cust_id,
-        customer_id,
-        last_name,
-        first_name,
-        location,
-        age,
-        education,
-        gender,
-        has_kids,
-        income_level,
-        job_type,
-        marital_status,
-        num_cars,
-        dog_owner 
-    FROM v_target_customers
-    WHERE customer_id = 1;
-    </copy>
-    ```
-    See the results below:
-    ![About Jennine](images/about-jennine.png)
+    Click **Execute**
 
-3. The function `GENAI.GET_PROMPT` will return the prompt that will be sent to the LLM. Run the function call below in SQL Worksheet to see what will be sent to the model:
-    ```
-    <copy>
-    SELECT genai.get_prompt(
-        query_parameter => '1',  -- customer id = 1
-        project_id => 3          -- things to do at a destination
-    ) AS prompt
-    FROM dual;
-    </copy>
-    ```
-    Again, the LLM's tasks and data set are clearly defined:
+4. View the recommendations in the **Response Body**
+5. You will use this API in the next lab. In the **Request URL** field, copy and save the API call up to the "/" following the moviePizzaRecommendation identfier:
 
-    ![Jennine JSON document](images/get-jennine-prompt.png)
+    ![Save customer URL](images/openapi-movie-recommendations-save-url.png)
 
-4. Let's use the second function - **`GENAI.GET_RESPONSE`** - find out what Jennine and her husband should do in Paris! We'll use the **Meta Llama 2 Chat** model. Run the following in the SQL Worksheet:
-    ```
-    <copy>
-    SELECT genai.get_response(
-        query_parameter => '1',  -- customer id = 1
-        project_id => 3,         -- things to do at a destination
-        profile_name => 'OCIAI_LLAMA'
-    ) AS response
-    FROM dual;
-    </copy>
-    ```
-    ![Things to do](images/things-to-do-response.png)
+    The URL will look similar to:
 
-    Enjoy yourself Jennine!
+    `https://your-db.adb.us-chicago-1.oraclecloudapps.com/ords/moviestream/apiapp/ai/moviePizzaRecommendation`
 
-## Task 3: Simplifying prompt engineering
-As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous tasks:
 
-1. In a new browser window, go to the Create GenAI Prompt app and log in as the same MOVIESTREAM user:
-    https://g798ff7528b56c8-testdrive.adb.us-chicago-1.oraclecloudapps.com/ords/r/moviestream/genai-projects/
+## Task 3: Export your API definitions to an OpenAPI tool
+It's easy to export your API signatures to an OpenAPI tool.
 
-2. After logging in, you will see the list of GenAI projects. These projects came from the `GENAI_PROJECT` table.
-    ![GenAI projects](images/apex-create-ai-prompt.png)
-
-3. Let's take a look at the **Movie Pizza Recommendation** project. Click on the edit button for that project:
-    ![Edit project](images/apex-edit-project.png)
-
-4. You can see the details for this project. Update the task and task rules as you see fit to produce better results. And, you can see the query. For this app, each project's query has a single parameter - in this case `cust_id`. This lets you get details for that customer's profile. For now, let's leave the project as is - our subsequent lab is expecting results from this prompt. Click **Cancel**.
-    ![Edit project details](images/apex-edit-details.png)
-
-5. Test the GenAI project by following these simple steps:
-    * Select the project **Movie Pizza Recommendation**
-    * Pick an AI Profile. You can accept the default. Or, try different profiles and compare the results.
-    * Pick customer ID **1000001**
-    * Click **Generate Response**
-    
-    ![Test the GenAI project](images/apex-test-genai-project.png)
-
-    The response may take a minute to return. You'll see the prompt used to generate the response and the response itself.
+1. Go to the **apiapp** module tile and click the 3 dots. Select **Export Module -> OpenAPI**
+    ![Export to OpenAPI](images/openapi-export-module.png)
+2. You are presented with the OpenAPI 3.0 export file. OpenAPI tools will provide a way to either copy and paste these definitions or import the file:
+    ![Resulting document](images/openapi-export-results.png)
 
 ## Summary    
-Sometimes it's useful to step back and say, "how would I have summarized a support chat or created a targeted offer in the past?". Applying large language models to your data really opens up so many opportunities to deliver value to your organization quickly and easily. 
+Autonomous Database makes it easy to develop and test your APIs and integrate them with your favorite OpenAPI tools
 
 You may now proceed to the next lab.
 
