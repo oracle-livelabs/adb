@@ -18,7 +18,7 @@ In this lab, you will:
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
 
 ## Task 1: Create policy to enable access to OCI Generative AI
-Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. Make sure to select the compartment where your Autonomous Database is deployed. The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
+Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. Make sure your policy uses the compartment where your Autonomous Database is deployed. The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
 
@@ -55,6 +55,8 @@ Go to the OCI Generative AI Playground and ask some interesting questions.
    Below, we're asking Cohere to generate a movie pitch starring Christian Bale and Natalie Portman that takes place in Chicago in 1968.
 
     ![Movie pitch](./images/movie-pitch.png)
+
+    Cohere generated an interesting movie pitch titled "Love in the Windy City". The pitch Cohere generated for you may be totally different - and that's expected. Feel to try some of your own questions against different models.
 
 ## Summary    
 LLMs are amazing, but they don't know about your organization's data. In subsequent labs, you will learn how to use data in Autonomous Database with OCI Generative AI LLMs to summarize support chats and make targeted promotions.
