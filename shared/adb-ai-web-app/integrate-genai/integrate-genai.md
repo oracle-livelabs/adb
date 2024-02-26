@@ -4,7 +4,7 @@
 
 In the previous lab, you saw a snapshot of the creative responses that can be produced by LLMs. Let's now apply that creativity to your data. The first step is to integrate OCI Generative AI with Autonomous Database.
 
-You can use different large language models (LLM) with Autonomous Database. This lets you pick the best model for your use case. Select AI profiles encapsulate the connections to each model; you specify which profile to use when generating results. In this lab, you will enable the user **`MOVIESTREAM`** to use multiple LLMs offered by the OCI Generative AI service. 
+You can use different LLMs with Autonomous Database. This lets you pick the best model for your use case. Select AI profiles encapsulate the connections to each model; you specify which profile to use when generating results. In this lab, you will enable the user **`MOVIESTREAM`** to use multiple LLMs offered by the OCI Generative AI service. 
 
 Estimated Time: 10 minutes.
 
@@ -17,11 +17,11 @@ In this lab, you will:
 
 
 ### Prerequisites
-- This lab requires the completion of **Lab 1: Set up Your Workshop Environment** in the **Contents** menu on the left.
+- This lab requires the completion of **Labs 1 & 2** in the **Contents** menu on the left.
 
 ## Task 1: Enable resource principal usage for user MOVIESTREAM
 
-MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
+MOVIESTREAM user will connect to OCI Generative AI using resource principals (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource (i.e. your ADB instance) needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
 
 In ADB, enable the use of resource principals for the MOVIESTREAM user.
 
@@ -37,38 +37,38 @@ In ADB, enable the use of resource principals for the MOVIESTREAM user.
 
 >**Note:** The setup script automatically enabled Resource Principals usage for MovieStream. The following 2 steps are optional.
 
-4. To better understand the use of Resource Principal, let's disable the enablement created by the deployment script and recreate it. Run the following statement to disable the use of Resource Principals for the MOVIESTREAM user: 
+4. The deployment in Lab 1 already set up resouce principals in your database. To better understand the use of resource principals, let's undo that enablement and recreate it. Run the following statement to disable the use of resource principals for the MOVIESTREAM user: 
 
     ```
     <copy>
     begin
-    dbms_cloud_admin.disable_resource_principal(username  => 'MOVIESTREAM');
+      dbms_cloud_admin.disable_resource_principal(username  => 'MOVIESTREAM');
     end;
     /
     </copy>
     ```
 
-![Disable resource principal](./images/disable-resource.png "")
+    ![Disable resource principal](./images/disable-resource.png "")
 
 
-4. Now let's reenable the Resource Principal. Run the following statement to enable the use of Resource Principals for the MOVIESTREAM user:
+5. Now let's re-enable the resource principal. Run the following statement to enable the use of the resource principal by the MOVIESTREAM user:
 
     ```
     <copy>
     begin
-    dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
+      dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
     end;
     /
     </copy>
     ```
     
-![Enable resource principal](./images/resource-principal.png "")
+    ![Enable resource principal](./images/resource-principal.png "")
 
-5. Sign out of the **ADMIN** user. On the **Oracle Database Actions | SQL banner**, click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
+6. Sign out of the **ADMIN** user. On the **Oracle Database Actions | SQL banner**, click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
 
-![Sign out from Admin](./images/signout.png "")
+    ![Sign out from Admin](./images/signout.png "")
 
-## Task 3: Create an AI Profile for OCI Generative AI
+## Task 2: Create an AI Profile for OCI Generative AI
 
 A Select AI profile encapsulates connection information for an AI provider. This includes: 
 1. a security credential (e.g. the resource principal)
@@ -162,9 +162,9 @@ END;
     ![Create AI profile](./images/create-cohere-updated.png "")
 
 
-## Task 4: Test the AI profile
+## Task 3: Test the AI profile
 
-We will use the PL/SQL API to generate a response from the Cohere model.This example is using the **chat** action. It is not using any private data coming from your database.:
+We will use the PL/SQL API to generate a response from the Cohere model. This example is using the **chat** action. It is not using any private data coming from your database.:
 
 1. Run the following statement as MOVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database using the **Cohere model**.
 
@@ -192,6 +192,10 @@ We will use the PL/SQL API to generate a response from the Cohere model.This exa
     ```
     ![Generate sentence-like response](./images/llama-chat.png "")
 
+
+## Summary
+You learned how to integrate Autonomous Database with OCI Generative AI. And, you chatted with different models hosted on OCI Generative AI. Next, let's see how to use our private data with LLMs.
+ 
 You may now proceed to the next lab.
 
 ## Learn More
