@@ -54,13 +54,15 @@ In this lab, you will:
     cd movie-app
     </copy>
     ```
-3. Update the config file with the APIs used in the previous Lab. Run the following command to edit the file.
+3. Update the config file with the APIs used in the previous Lab. Run the following command to edit the file. 
 
     ```
     <copy>vi ./src/config.ts</copy>
     ```
 
   ![update APIs in config.tsx file](./images/update-config.png "")
+
+>**Note:**The URLs for the **/data/image/:cust_id** and **/ai/moviePizzaRecommendation/:cust_id** will be from the new module **apiapp** created in the previous lab.
 
 4. Paste the endpoints into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
@@ -130,7 +132,7 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 ![Show fetch for both customer and pizza data](./images/fetch-customer-pizza.png "")
 
-11. Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method.
+1.  Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method for the api that was created for the Generative AI models: **MOVIE_STREAM_IMAGE_API_URL** and **MOVIE_STREAM_PIZZA_API_URL**.
 
   ```
   <copy>cat ./SearchBar/SearchComponent.tsx</copy>
