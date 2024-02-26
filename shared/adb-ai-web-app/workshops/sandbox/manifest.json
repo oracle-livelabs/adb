@@ -49,12 +49,12 @@
           "filename": "../../openapi-integration/openapi-integration.md"
         },        
         {
-          "title": "Lab 7: Deliver a natural language app that uses the RESTful service",
-          "description":"Use APEX to access the LLM",
+          "title": "Lab 7: Deliver a custom app that uses the RESTful AI services",
+          "description":"Building custom apps",
           "filename": "../../deliver-nl-app/deliver-nl-app.md"
         },
         {
-          "title": "Lab 7: Clean Up",
+          "title": "Lab 8: Clean Up",
           "description":"Destroy the resources to clean up",
           "filename": "../../cleanup/cleanup.md"
         },

@@ -22,29 +22,39 @@
         "title": "Lab 1: Set up Your Workshop Environment",
         "description":"Set up an Autonomous Database and an LLM account",
         "filename": "../../setup-environment/setup-environment.md"
-      },     
+      },
       {
-        "title": "Lab 2: Integrate OCI GenAI Service",
-        "description":"Connect Autonomous Database to your LLM",
-        "filename": "../../integrate-genai/integrate-genai.md"
+        "title": "Lab 2: Explore OCI Generative AI Service",
+        "description":"Explore OCI Generative AI Service",
+        "filename": "../../explore-oci-genai/explore-oci-genai.md"
       },           
       {
-        "title": "Lab 3: Add business logic for handling natural language queries",
-        "description":"Use business logic to enhance queries",
+        "title": "Lab 3: Integrate OCI Generative AI with Autonomous Database",
+        "description":"Connect Autonomous Database to your LLM",
+        "filename": "../../integrate-genai/integrate-genai.md"
+      },            
+      {
+        "title": "Lab 4: Use GenAI to analyze your data in Autonomous Database",
+        "description":"Deliver GenAI projects tat summarize chats and recommend movies",
         "filename": "../../business-logic/business-logic.md"
       },
       {
-        "title": "Lab 4: Expose as a REST endpoint and secure it",
-        "description":"Use a secure REST endpoint for your LLM",
+        "title": "Lab 5: Publish AI projects as RESTful services",
+        "description":"Enable analytics across your organization",
         "filename": "../../expose-rest/expose-rest.md"
       },
       {
-        "title": "Lab 5: Deliver a Natural Language app that uses the RESTful service",
-        "description":"Use APEX to access the LLM",
+        "title": "Lab 6: Use OpenAPI tools with your RESTful services",
+        "description":"Document and test your APIs",
+        "filename": "../../openapi-integration/openapi-integration.md"
+      },        
+      {
+        "title": "Lab 7: Deliver a custom app that uses the RESTful AI services",
+        "description":"Building custom apps",
         "filename": "../../deliver-nl-app/deliver-nl-app.md"
       },
-      {
-        "title": "Lab 6: Clean Up",
+    {
+        "title": "Lab 8: Clean Up",
         "description":"Destroy the resources to clean up",
         "filename": "../../cleanup/cleanup.md"
       },
