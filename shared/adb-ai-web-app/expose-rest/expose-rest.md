@@ -46,7 +46,11 @@ Start by providing access to customer data using AutoREST. This is the easiest w
 
   >**Note:** The API can be secured by selecting **Require Authentication**. We will keep things simple and not require authentication, which is clearly not a best practice. To learn more about securing REST endpoints, go to [Configuring Secure Access to RESTful Services.](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/18.4/aelig/developing-REST-applications.html#GUID-5B39A5A6-C55D-452D-AE53-F49431A4DE97).
 
-4. Test the REST endpoint from a command prompt. Right-click **CUSTOMER** and select **REST** -> **cURL command...**.
+4. Repeat steps 1-3 for the table named **PIZZA_SHOP** and copy the **Preview url** into a notepad for later (lab 5).
+
+  ![Enable AUTOrest for pizza_shop](./images/pizza-shop.png "")
+
+5. Test the REST endpoint from a command prompt. Right-click **CUSTOMER** and select **REST** -> **cURL command...**.
   ![test the api](images/click-rest-quick-test.png)
 
   Then, select **GET Single** and enter cust_id **1320371**
@@ -55,8 +59,10 @@ Start by providing access to customer data using AutoREST. This is the easiest w
 
   Copy the URL to the clipboard.
 
-5. Open a command prompt on your computer. Paste the curl command and hit enter. Assuming no firewalls are blocking your access to the service, you will see information about our customer Betsy Chan:
+6. Open a command prompt on your computer. Paste the curl command and hit enter. Assuming no firewalls are blocking your access to the service, you will see information about our customer Betsy Chan:
   ![curl result](images/click-rest-quick-test-result.png)
+
+7. Save the URL (without the cust_id endpoint) in a notepad for Lab 5.
 
 ## Task 2: Create customer-movie REST endpoint using a module
 AutoREST is fast and easy. Your APIs are immediately available to use. But, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's RESTful design tool. Start by creating an API module (see [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187)).
