@@ -13,7 +13,7 @@ For this workshop, the business logic is captured in a GENAI\_PROJECT table that
 2. the task rules - a natural language description of the LLM tasks (e.g. summarize a support chat)
 3. the query - the database query whose results the tasks will operate on
 
-A JSON document is used to organize the genAI prompt (task rules and query results) and that document is passed to the LLM for processing. 
+A JSON document is used to organize the GenAI prompt (task rules and query results) and that document is passed to the LLM for processing. 
 
 ![Wrapping of task rules and data to send to the model](./images/json-wrapper.png "")
 
@@ -39,7 +39,7 @@ In this lab, you will:
 ## Task 1: How to use AI models with data in Autonomous Database
 In our first example, we'll summarize a conversation that a customer had with the support team. And, we'll determine the customer's sentiment at the end of the chat. 
 
-1. Still logged in as MOVIESTREAM user, view a support chat conversation by running the following query. Run the query as a script to make it easy to see the complete results:
+1. Still logged into SQL Worksheet as MOVIESTREAM user, view a support chat conversation by running the following query. Run the query as a script to make it easy to see the complete results:
 
     ```
     <copy>
@@ -64,7 +64,8 @@ In our first example, we'll summarize a conversation that a customer had with th
         JSON_OBJECT (
             'task' VALUE 'summarize the support chat in 3 sentences. also return the customer sentiment',
         support_chat ) AS prompt
-    FROM v_customer_support WHERE support_chat_id = 1;
+    FROM v_customer_support 
+    WHERE support_chat_id = 1;
     </copy>
     ```
     Here is a snapshot of the result in SQL Worksheet:
@@ -86,7 +87,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     }
     ```
 
-3. Now that we have a well defined prompt, pass that to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. Run the following query in the SQL Worksheet:
+3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. We'll use the Cohere model (you can also try it using `Meta Llama 2 Chat`). Run the following query in the SQL Worksheet:
       
     ```
     <copy>
@@ -203,10 +204,17 @@ You will likely use GenAI for many different projects where you need to apply an
     Enjoy yourself Jennine!
 
 ## Task 3: Simplifying prompt engineering
-As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous tasks:
+As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous task:
 
-1. In a new browser window, go to the Create GenAI Prompt app and log in as the same MOVIESTREAM user:
-    https://g798ff7528b56c8-testdrive.adb.us-chicago-1.oraclecloudapps.com/ords/r/moviestream/genai-projects/
+1. You will need the URL for the APEX app deployed to your Autonomous Database. The URL is:
+
+    >https://**[your-adb]**/ords/r/moviestream/genai-projects
+
+    To replace **[your-adb]** with the appropriate value for you deployment:
+    - Go to SQL Worksheet and copy the URL prefix from your browser:
+        ![copy URL](images/copy-url.png)
+
+1. In a new browser window, go to the **GenAI Projects** app using the URL above and log in as the same MOVIESTREAM user
 
 2. After logging in, you will see the list of GenAI projects. These projects came from the `GENAI_PROJECT` table.
     ![GenAI projects](images/apex-create-ai-prompt.png)
@@ -214,7 +222,7 @@ As you can see, prompt engineering is going to be an iterative process. You'll w
 3. Let's take a look at the **Movie Pizza Recommendation** project. Click on the edit button for that project:
     ![Edit project](images/apex-edit-project.png)
 
-4. You can see the details for this project. Update the task and task rules as you see fit to produce better results. And, you can see the query. For this app, each project's query has a single parameter - in this case `cust_id`. This lets you get details for that customer's profile. For now, let's leave the project as is - our subsequent lab is expecting results from this prompt. Click **Cancel**.
+4. You can see the details for this project. You can update the task and task rules as you see fit to produce better results. And, you can see the query. For this app, each project's query has a single parameter - in this case `cust_id`. This lets you get details for that customer's profile. For now, let's leave the project as is - our subsequent lab is expecting results from this prompt. Click **Cancel**.
     ![Edit project details](images/apex-edit-details.png)
 
 5. Test the GenAI project by following these simple steps:
