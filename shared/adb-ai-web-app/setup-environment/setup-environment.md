@@ -78,8 +78,6 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
 2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** step 1 of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** check box. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
 
-    >**Note:** When you access the **Create Stack** page, ensure the **US Midwest (Chicago)** region is selected. This is where the stack will be created. If you want to create the stack in a different region, select that region from the **Regions** drop-down list in the Console's banner.
-
   ![The Stack information step 1 of the wizard](./images/create-stack-updated.png "")
 
 3. In the **Configure variables** step 2 of the wizard, provide the following:
@@ -146,8 +144,6 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 11. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed, **``TrainingAIWorkshop``**.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
-
-    >**Note:** The Region should be **US MIDWEST (Chicago)**
 
 You may now proceed to the next lab.
 
