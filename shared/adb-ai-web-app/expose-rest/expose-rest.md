@@ -7,11 +7,11 @@ This lab will implement two different types of RESTful services. First, AutoREST
 
 - AutoREST  
 
-![REST API Introduction](./images/intro-restapi.png "")
+  ![REST API Introduction](./images/intro-restapi.png "")
 
 - RESTful services management 
 
-![REST API Introduction](./images/intro-restapi-two.png "")
+  ![REST API Introduction](./images/intro-restapi-two.png "")
 
 Estimated Time: 20 minutes.
 
@@ -19,15 +19,15 @@ Estimated Time: 20 minutes.
 
 In this lab, you will:
 * Expose tables as REST endpoint
-* Test the REST endpoint
-* Access the API using OpenAPI (Swagger) tool
-* Design a RESTful module for your AI project
-* Test the module
+* Test the REST endpoints
+* Access the API using OpenAPI tools
+* Design and test RESTful module for your AI project
+* Export your project to OpenAPI tools
 
 ### Prerequisites
 - This lab requires the completion of all of the preceding labs. 
 
-## Task 1: Create customer info REST endpoint using AutoREST
+## Task 1: Create customer and pizza shop REST endpoints using AutoREST
 Start by providing access to customer data using AutoREST. This is the easiest way to enable RESTful access to data in Autonomous Database:
 
 1. Ensure that you are logged in as **MOVIESTREAM** user. In the Navigator, select **CUSTOMER.** 
@@ -46,11 +46,7 @@ Start by providing access to customer data using AutoREST. This is the easiest w
 
   >**Note:** The API can be secured by selecting **Require Authentication**. We will keep things simple and not require authentication, which is clearly not a best practice. To learn more about securing REST endpoints, go to [Configuring Secure Access to RESTful Services.](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/18.4/aelig/developing-REST-applications.html#GUID-5B39A5A6-C55D-452D-AE53-F49431A4DE97).
 
-4. Repeat steps 1-3 for the table named **PIZZA_SHOP** and copy the **Preview url** into a notepad for later (lab 5).
-
-  ![Enable AUTOrest for pizza_shop](./images/pizza-shop.png "")
-
-5. Test the REST endpoint from a command prompt. Right-click **CUSTOMER** and select **REST** -> **cURL command...**.
+4. You can test the REST endpoint from a command prompt (we'll test it using other tools later). Right-click **CUSTOMER** and select **REST** -> **cURL command...**.
   ![test the api](images/click-rest-quick-test.png)
 
   Then, select **GET Single** and enter cust_id **1320371**
@@ -59,19 +55,24 @@ Start by providing access to customer data using AutoREST. This is the easiest w
 
   Copy the URL to the clipboard.
 
-6. Open a command prompt on your computer. Paste the curl command and hit enter. Assuming no firewalls are blocking your access to the service, you will see information about our customer Betsy Chan:
+5. Open a command prompt on your computer. Paste the curl command and hit enter. Assuming no firewalls are blocking your access to the service, you will see information about our customer Betsy Chan:
   ![curl result](images/click-rest-quick-test-result.png)
 
-7. Save the URL (without the cust_id endpoint) in a notepad for Lab 5.
+6. Repeat steps 1-3 for the table named **PIZZA_SHOP**
+
+  ![Enable AUTOrest for pizza_shop](./images/pizza-shop.png "")
+
 
 ## Task 2: Create customer-movie REST endpoint using a module
-AutoREST is fast and easy. Your APIs are immediately available to use. But, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's RESTful design tool. Start by creating an API module (see [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187)).
+AutoREST is fast and easy. Your APIs are immediately available to use. But, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's REST design tool. Start by creating an API module (see [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187)).
 
-A module named **api** was created by the Terraform script. Let's create a new module that the **MovieStreamAI** app will use. 
+1. Go to the Autonomous Database REST tool by clicking the hamburger menu and selecting **REST**:
+  ![Go to REST](images/goto-rest.png)
 
-1. Using the breadcrumb menu, select **Modules**.
+2. Go to the list of modules. In the REST tool, select the **Modules** tab
+  ![Go to modules](images/goto-modules.png)
 
-  ![Modules breadcrumb button](./images/modules-breadcrumb.png "")
+  A module named **api** was created by the Terraform script. Let's create a new module that the **MovieStreamAI** app will use. 
 
 2. Click **Create Module.** 
   ![Modules create button](./images/create-module.png "")
@@ -84,13 +85,14 @@ A module named **api** was created by the Terraform script. Let's create a new m
   
     ![Completed module form](images/module-completed-form.png)
  
-4. Click on the newly created module **apiapp**. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **/data/**) or AI generated responses (named **/ai/**). First, let's create the data collection api for the **recently watched movies**.
+4. Click on the newly created module **apiapp**. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **data/**) or AI generated responses (named **ai/**). First, let's create the data collection api for the **recently watched movies**.
 
 5. Click **Create Template.** 
 
   ![Template button](./images/create-template-one.png "")
 
-6. Enter the following name for the template: **data/image/:cust_id** and then click **Create**. 
+6. Enter the following name for the template: `data/image/:cust_id` and then click **Create**. 
+  >**Note:** Use the exact name `data/image/:cust_id`. Our React app is expecting that name.
 
   ![Template button](./images/create-template-two.png "")
 
@@ -143,19 +145,17 @@ Click **Create.**
 
 ## Task 3: Test the new customer-movie API
 
-1. Test the handler. Click **Open in new tab** icon**.
+1. Test the handler. Click **Open in new tab** icon.
 
   ![Open in new tab](./images/open-new-tab-two.png "")
  
-  Then, enter **1000001** for the **cust_id**:
+  Then, enter `1000001` for the **cust_id**:
 
   ![Cust_id input](./images/cust_id.png "")
 
   ![Test module in new window](./images/test-in-new-window.png "")
 
 2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
-
-3. Copy the **URL** (without the 1000001) in a note for use in Lab 5.
 
 ## Task 4: Create REST API for movie recommendations with a pizza offer
 This last task will create our final RESTful service. This uses GenAI to recommend movies and a local pizza offer.
@@ -166,7 +166,8 @@ This last task will create our final RESTful service. This uses GenAI to recomme
 
     ![Create template](./images/create-template-one.png "")
 
-3. Enter the following name for the URI template: **ai/moviePizzaRecommendation/:cust_id**. Then, click **Create.** 
+3. Enter the following name for the URI template: `ai/moviePizzaRecommendation/:cust_id`. Then, click **Create.** 
+    >**Note:** Use the exact name `ai/moviePizzaRecommendation/:cust_id`. Our React app is expecting that name.
 
     ![uri and create button](./images/uri-create.png "")
 
@@ -224,7 +225,9 @@ The completed **ai/moviePizzaRecommendation/:cust_id** module is shown below:
   * **cust_id**: `1000001`
   * **Profile_name** parameter: `OCIAI_COHERE`
 
-11. Copy the **URL** (without the endpoint 1000001) and save as a note for Lab 5.
+
+## Summary
+Your APIs are now available! You can test the APIs using the built-in OpenAPI tool or publish the APIs to your favorite OpenAPI tools.
 
 You may now proceed to the next lab.
 
