@@ -37,27 +37,22 @@ Let's review our **customer** endpoint. We'll test it and then save the URL.
 4. This view will look familiar if you use OpenAPI tools; they present the APIs in a very similar way. As you can see, AutoREST exposed numerous APIs for customer. For example, you can add, delete and view customer records. 
 
     Let's get all customers whose last name includes "Water". Use the **GET** API and apply a JSON query by example parameter:
-    - Click **GET** and then clik the **Try it out** button. 
+    - Click **GET** and then click the **Try it out** button. 
     - Enter the following into the parameter field: 
         ```
         <copy>
-        {"last_name":{"$instr":"Water"}}`
+        {"last_name":{"$instr":"Water"}}
         </copy>
         ```
     - The form should look like the following:
         ![completed form](images/openapi-customer-qbe-form.png)
 
         Click **Execute**
-5. Scroll down to the **Response body** to see the results. You'll find numerous customers.
+5. Scroll down to the **Response body** to see the results. You'll find numerous customers whose name contains `Water`:
+    ![Names with Water](images/openapi-water-results.png)
 
-6. You will use the customer API in the next lab. In the **Request URL** field, copy and save the API call up to the "/" following the customer identfier:
-    ![Save customer URL](images/openapi-customer-save-url.png)
 
-    The URL will look similar to:
-
-    `https://your-db.adb.us-chicago-1.oraclecloudapps.com/ords/moviestream/customer`
-
-## Task 2: Review and test the **apiapp** module's movie recommendation API using the OpenAPI view
+## Task 2: Review the movie recommendation API using the OpenAPI view
 Let's review the **apiapp** module using the OpenAPI view. 
 
 1. Go to the **Modules** tab. You'll see 2 modules:
@@ -68,8 +63,8 @@ Let's review the **apiapp** module using the OpenAPI view.
 2. Click the 3 dots on the **apiapp** tile and select **OpenAPI view**:
     ![go to openapi view for apiapp module](images/goto-apiapp-module.png)
 
-3. Test the **/ai/moviePizzaRecommendation/{cust_id}**:
-    - Click **GET** for API **/ai/moviePizzaRecommendation/{cust_id}**
+3. Test the **ai/moviePizzaRecommendation/{cust_id}**:
+    - Click **GET** for API **ai/moviePizzaRecommendation/{cust_id}**
     - Click **Try it out**
     - Enter  **cust_id**: `1000001` 
     - Enter parameter AI **profile_name**: `OCIAI_COHERE`. 
@@ -78,14 +73,7 @@ Let's review the **apiapp** module using the OpenAPI view.
     
     Click **Execute**
 
-4. View the recommendations in the **Response Body**
-5. You will use this API in the next lab. In the **Request URL** field, copy and save the API call up to the "/" following the moviePizzaRecommendation identfier:
-
-    ![Save customer URL](images/openapi-movie-recommendations-save-url.png)
-
-    The URL will look similar to:
-
-    `https://your-db.adb.us-chicago-1.oraclecloudapps.com/ords/moviestream/apiapp/ai/moviePizzaRecommendation`
+4. Scroll down to view the recommendations in the **Response Body**
 
 
 ## Task 3: Export your API definitions to an OpenAPI tool
@@ -95,6 +83,9 @@ It's easy to export your API signatures to an OpenAPI tool.
     ![Export to OpenAPI](images/openapi-export-module.png)
 2. You are presented with the OpenAPI 3.0 export file. OpenAPI tools will provide a way to either copy and paste these definitions or import the file:
     ![Resulting document](images/openapi-export-results.png)
+3. The example below shows our API used in the OpenAPI plug-in for VSCode. Using the tool, you can document the API, test it and more. 
+    ![In an OpenAPI too](images/openapi-tool-example.png)
+    This is just one example. Import these definitions into any number of tools that support OpenAPI - including Swagger, Postman and more.
 
 ## Summary    
 Autonomous Database makes it easy to develop and test your APIs and integrate them with your favorite OpenAPI tools
