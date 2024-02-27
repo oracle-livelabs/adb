@@ -71,6 +71,7 @@ In this lab, you will:
     ```
     <copy>
     chmod +x node_modules/.bin/react-scripts
+    ./generated_config.sh
     npm run deploy 
     </copy>
     ```
