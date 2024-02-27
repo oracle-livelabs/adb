@@ -57,7 +57,7 @@ In this lab, you will:
 3. Update the config file with the APIs used in the previous Lab. Run the following command to edit the file. 
 
     ```
-    <copy>vi ./src/config.ts</copy>
+    <copy>vi config.txt</copy>
     ```
 
   ![update APIs in config.tsx file](./images/update-config.png "")
@@ -71,6 +71,7 @@ In this lab, you will:
     ```
     <copy>
     chmod +x node_modules/.bin/react-scripts
+    ./generate_config.sh
     npm run deploy 
     </copy>
     ```
