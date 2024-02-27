@@ -245,7 +245,7 @@ You may now proceed to the next lab.
     * Nicholas Cusato, Cloud Engineer 
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer ?
+    * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
