@@ -62,7 +62,7 @@ In this lab, you will:
 
   ![update APIs in config.tsx file](./images/update-config.png "")
 
->**Note:**The URLs for the `/data/image/:cust_id` and `/ai/moviePizzaRecommendation/:cust_id` will be from the new module **apiapp** created in the previous lab.
+>**Note:** This information is used by the bash script to send the objects to the correct bucket. The generated_config.sh passes 
 
 4. Paste the endpoints into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
@@ -71,6 +71,7 @@ In this lab, you will:
     ```
     <copy>
     chmod +x node_modules/.bin/react-scripts
+    chmod +x generated_config.sh
     ./generated_config.sh
     npm run deploy 
     </copy>
