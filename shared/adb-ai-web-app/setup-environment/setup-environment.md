@@ -63,7 +63,7 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
     <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-Select-AI-demonstration-RM.zip&sourceType=:ow:lp:cpo::::RC_WWMK211125P00013:llid=3831" class="tryit-button">Deploy workshop</a>
 
-    >**Note:** If you would to learn more about creating Autonmous Databases and loading data, go to this [15 minute quick start](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=928)
+    >**Note:** If you would to learn more about creating Autonomous Databases and loading data, go to this [15 minute quick start](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=928)
 
     The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
