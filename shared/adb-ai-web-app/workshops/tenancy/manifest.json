@@ -49,7 +49,7 @@
         "filename": "../../openapi-integration/openapi-integration.md"
       },        
       {
-        "title": "Lab 7: Deliver a custom app that uses the RESTful AI services",
+        "title": "Lab 7: Deliver a React app that uses the RESTful AI services",
         "description":"Building custom apps",
         "filename": "../../deliver-nl-app/deliver-nl-app.md"
       },
