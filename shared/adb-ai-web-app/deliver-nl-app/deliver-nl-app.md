@@ -62,11 +62,11 @@ In this lab, you will:
 
   ![update APIs in config.tsx file](./images/update-config.png "")
 
->**Note:** This information is used by the bash script to send the objects to the correct bucket. The generated_config.sh passes 
+>**Note:** This information is used by the bash script to send the objects to the correct bucket. The generated_config.sh passes the `ADB_URL_PREFIX` to the /src/config.ts file using generated_config.sh. `config.ts` contains the api variables used to fetch the queries that we created earlier.
 
-4. Paste the endpoints into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
+1. Paste the **BUCKET_NAME**, **BUCKET_REGION**, and **ADB_URL_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
-5.  Run the following commands to deploy the app.
+2.  Run the following commands to deploy the app.
 
     ```
     <copy>
