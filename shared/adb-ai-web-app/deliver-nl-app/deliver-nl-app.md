@@ -93,17 +93,17 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
   >**Note:**The web page is made using the **parallax effect**, which moves object in the foreground at different speeds from the background. If you scroll down the page, subtle animations bring the page to life. Each of the components are organized in a directory in the zip file downloaded. Let's open the file in the **OCI Cloud Shell**.
 
-1. View the file **App.tsx** by running the command in the shell.
+3. View the file **App.tsx** by running the command in the shell.
 
   ```
   <copy>cat ./src/App.tsx</copy>
   ```
 
-5. Click the **double arrow** in the shell to expand the window full screen.
+4. Click the **double arrow** in the shell to expand the window full screen.
 
 ![Print the App.tsx file and expand the window](./images/expand-app.png "")
 
-6. Scroll down to the bottom and notice the return statement that outlines the structure of the app. With the App open, compare the following to better understand the structure.
+5. Scroll down to the bottom and notice the return statement that outlines the structure of the app. With the App open, compare the following to better understand the structure.
 - First, Parallax is wraps the code so each of the components can move according to the desired effect. The **AdvancedBannerTop** component showcases the effect with the webpage title "MovieStreamAI" floating between the background of the stars and the foreground of the Las Vegas images.
 - Secondly, the **{text}** is wrapped in a typewritter effect, which is declared in the script closer to the top.
 - Next, the **SearchComponent** fetches the customerData and implements a state change, which displays the RecentlyWatched films cards (click to show the movie details) and Spinner for the ResponseComponent. 
@@ -113,28 +113,28 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 ![Highlighting the structure of the App.tsx file](./images/app-full.png "")
 
-7. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** (hotkey) or hitting the refresh button on the browser to load all of data that is being fetched when the App is running. 
+6. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** (hotkey) or hitting the refresh button on the browser to load all of data that is being fetched when the App is running. 
 
 ![Browser Networking](./images/network-f12.png "")
 
 
-8. Give the app a test drive by selecting a **Customer ID** from the dropdown list. Toggle the switch to **OCIAI_COHERE** and hit the **Search** button.
+7. Give the app a test drive by selecting a **Customer ID** from the dropdown list. Toggle the switch to **OCIAI_COHERE** and hit the **Search** button.
 
 ![Search Customer ID](./images/customer-id-dropdown.png "")
 
-9. The data that is being fetched from the api can be seen in the Browser Developer Tool interface by selecting the endpoints. Click through each of them to see what data is being pulled from the API.
+8. The data that is being fetched from the api can be seen in the Browser Developer Tool interface by selecting the endpoints. Click through each of them to see what data is being pulled from the API.
 - pizza_shop/
 - Customer ID entered in SearchBar (shown 3 times)
 
 ![Show API response in DevTools](./images/api-response.png "")
 
-10.  Navigating back to the Cloud Shell, notice the **fetch** command in the **App.tsx** that is implemented above the return function described earlier. This pulls the endpoint set earlier in the config file. At the top, it is imported from this file using the following:
+9.  Navigating back to the Cloud Shell, notice the **fetch** command in the **App.tsx** that is implemented above the return function described earlier. This pulls the endpoint set earlier in the config file. At the top, it is imported from this file using the following:
 
   ```import { CUSTOMER_API_URL, PIZZA_SHOP_API_URL } from './config';```
 
 ![Show fetch for both customer and pizza data](./images/fetch-customer-pizza.png "")
 
-1.  Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method for the api that was created for the Generative AI models: **MOVIE_STREAM_IMAGE_API_URL** and **MOVIE_STREAM_PIZZA_API_URL**.
+10.  Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method for the api that was created for the Generative AI models: **MOVIE_STREAM_IMAGE_API_URL** and **MOVIE_STREAM_PIZZA_API_URL**.
 
   ```
   <copy>cat ./SearchBar/SearchComponent.tsx</copy>
@@ -145,7 +145,7 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
   <copy>cat ./AI/ResponseComponent.tsx</copy>
   ```
 
-12. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the **App.tsx** file for better understanding of the Open-Source Mapping. 
+11. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the **App.tsx** file for better understanding of the Open-Source Mapping. 
 - This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
 
 
