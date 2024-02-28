@@ -220,10 +220,7 @@ The completed **ai/moviePizzaRecommendation/:cust_id** module is shown below:
 
 ![Complete module with all fields shown](./images/movie-pizza-recommendation.png "")
 
-10.  Perform at test on the API by clicking the **test in new window** button (similar to Task 5, step 2).
-  * **Summary**: `check the **null** box`
-  * **cust_id**: `1000001`
-  * **Profile_name** parameter: `OCIAI_COHERE`
+That's it. You'll test this and other APIs in our next lab using the OpenAPI integration.
 
 
 ## Summary
