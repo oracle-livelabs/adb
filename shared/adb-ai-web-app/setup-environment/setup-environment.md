@@ -12,7 +12,9 @@ This workshop focuses on teaching you how to use your data and  generative AI to
 * Connects your Autonomous Database to OCI Generative AI service
 * Deploy the business logic for running different types of AI projects - like summarizing a support chat and suggesting things to do at a location
 * Deploy RESTful endpoints for executing that business logic from your applications
-* Deploys two APEX apps in a MOVIESTREAM workspace: 1) chat with your data in Autonomous Database and 2) create and test GenAI projects
+* Deploys two APEX apps in a MOVIESTREAM workspace: 
+* 1) chat with your data in Autonomous Database 
+* 2) create and test GenAI projects
 
 All of this is done so that you can immediately try all of the different components. You will also be developing many of these components on your own as part of the workshop.
 
