@@ -1,8 +1,8 @@
-# Deliver a Natural Language app that uses the RESTful service
+# Deliver a React app that uses the RESTful AI services
 
 ## Introduction
 
-The RESTful AI services are now available to applications across your organizataion. We'll show you an example app that uses open source tools, specifically React (a framework for app development) using Typescript (superset of JavaScript). This approach allows for easy integration of many useful libraries, such as integration of OpenMaps (open source mapping tool). Our MovieStreamAI application lets you search for information about customers and then make recommendations. The list of features includes:
+Your RESTful AI services are now available to applications across your organizataion. We'll show you an example app that uses open source tools, specifically React (a framework for app development) using Typescript (superset of JavaScript). This approach allows for easy integration of many useful libraries, such as integration of OpenMaps (open source mapping tool). Our MovieStreamAI application lets you search for information about customers and then make recommendations. The list of features includes:
 -  Recently watched films list
 -  Recommended movies list based on viewing history
 -  Recommended pizza pairing using spatial analytics
@@ -25,7 +25,17 @@ In this lab, you will:
 ### Prerequisites
 - This lab requires the completion of all the preceding labs. 
 
-## Task 1: Create bucket to host MovieStreamAI application
+## Task 1: Copy the root URL for Oracle REST Data Services
+The app will need the root URL for your Autnomous Database instance RESTful services. It's easy to get that URL from your browser's URL location bar.
+1. Go to any of the database tools - like SQL Worksheet or the REST tool. Make sure you're logged in as the MOVIESTREAM user.
+2. Copy the URL up to and including `moviestream`
+    ![Get the url prefix](images/ords-url-prefix.png)
+
+    For example: `https://myadb.adb.us-chicago-1.oraclecloudapps.com/ords/moviestream`
+
+3. Save the URL. You will need it when configuring the React app.
+
+## Task 2: Create bucket to host MovieStreamAI application
 
 1. Use the OCI hamburger menu to navigate to **Storage -> Buckets** 
 
@@ -39,7 +49,7 @@ In this lab, you will:
 
   ![Change visibility to public](./images/public-visibility.png "")
 
-## Task 2: Deploy the app quickly using Object Storage
+## Task 3: Deploy the app using Object Storage
 
 1. Open up Cloud Shell within the OCI Console. 
 
@@ -54,17 +64,17 @@ In this lab, you will:
     cd movie-app
     </copy>
     ```
-3. Update the config file with the APIs used in the previous Lab. Run the following command to edit the file. 
+3. Update the config file with information about the bucket you just created and the Autonomous Database REST prefix you copied in Task 1. Run the following command to edit the file. 
 
     ```
     <copy>vi config.txt</copy>
     ```
 
-  ![update APIs in config.tsx file](./images/update-config.png "")
+  ![update APIs in config.txt file](./images/update-config.png "")
 
->**Note:** This information is used by the bash script to send the objects to the correct bucket. The generated_config.sh passes the `ADB_URL_PREFIX` to the /src/config.ts file using generated_config.sh. `config.ts` contains the api variables used to fetch the queries that we created earlier.
+>**Note:** The information in `config.txt` is used by a bash script to send the objects to the correct object storage bucket. The script `generated_config.sh` generates a config file `./src/config.ts` using that same `config.txt` file. The `config.ts` contains the api variables used by the React app to make REST calls to your Autonomous Database.
 
-1. Paste the **BUCKET_NAME**, **BUCKET_REGION**, and **ADB_URL_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
+1. Enter the **BUCKET\_NAME**, **BUCKET\_REGION**, and **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
 2.  Run the following commands to deploy the app.
 
@@ -79,7 +89,7 @@ In this lab, you will:
 
 >**Note:** This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy\_to\_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
 
-## Task 3: Understand how to use the API in the MovieStreamAI App
+## Task 4: Understand how to use the API in the MovieStreamAI App
 
 The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage. 
 
