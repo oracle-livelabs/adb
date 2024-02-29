@@ -18,7 +18,7 @@ In this lab, you will:
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
 
 ## Task 1: Create policy to enable access to OCI Generative AI
-Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. Make sure your policy uses the compartment where your Autonomous Database is deployed. The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
+Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
 
@@ -28,7 +28,7 @@ Create a policy that will allow you to use OCI Generative AI within your previou
 
 * **Name:** **`PublicGenAI`**
 * **Description:** **`Public Gen AI Policy`**
-* **Compartment:** **`training-adw-compartment`**
+* **Compartment:** **`select your own compartment`**
 * **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
     
 3. Click **Create**
@@ -46,7 +46,7 @@ Go to the OCI Generative AI Playground and ask some interesting questions.
 
 2. From the **Console**, open the **Navigation** menu and click **Analytics & AI**. Under **AI Services**, click **Generative AI.**
 
-3. Go to the Playground and ask some questions!
+3. Click **Go to playground** and ask some questions!
     
     ![Go to the Playground](./images/goto-playground.png)
 

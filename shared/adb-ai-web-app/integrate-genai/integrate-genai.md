@@ -17,7 +17,7 @@ In this lab, you will:
 
 
 ### Prerequisites
-- This lab requires the completion of **Labs 1 & 2** in the **Contents** menu on the left.
+- This lab requires the completion of **Labs 1 and 2** in the **Contents** menu on the left.
 
 ## Task 1: Enable resource principal usage for user MOVIESTREAM
 
@@ -71,13 +71,13 @@ In ADB, enable the use of resource principals for the MOVIESTREAM user.
 ## Task 2: Create an AI Profile for OCI Generative AI
 
 A Select AI profile encapsulates connection information for an AI provider. This includes: 
-1. a security credential (e.g. the resource principal)
-2. the name of the provider
-3. the name of the LLM
+1. A security credential (e.g. the resource principal)
+2. The name of the provider
+3. The name of the LLM
 
 You can create as many profiles as you need, which is useful when comparing the quality of the results of different models.
 
-Check out [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) for a complete list of Select AI profile attributes.
+For a complete list of the Select AI profile attributes, see the [DBMS_CLOUD_AI_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
 
 >**Note:** The deployment script created a Select AI profile using the code below: 
 
@@ -111,7 +111,7 @@ END;
 
     ![Moviestream password](./images/moviestream-pw.png "")
 
-2. Create an AI profile for **Meta Llama 2 Chat model** by running the following statement in the SQL worksheet. 
+2. Create an AI profile for the **Meta Llama 2 Chat model** by running the following script in the SQL worksheet. 
     
     ```
     <copy>
@@ -136,7 +136,7 @@ END;
     ```
     ![Create AI profile](./images/create-llama-updated.png "")
 
-3. Create an AI profile for **Cohere model** by running the following statement in the SQL worksheet. 
+3. Create an AI profile for the **Cohere model** by running the following statement in the SQL worksheet. 
     
     ```
     <copy>
