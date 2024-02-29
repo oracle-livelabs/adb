@@ -66,10 +66,10 @@ Start by providing access to customer data using AutoREST. This is the easiest w
 ## Task 2: Create customer-movie REST endpoint using a module
 AutoREST is fast and easy. Your APIs are immediately available to use. But, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's REST design tool. Start by creating an API module (see [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187)).
 
-1. Go to the Autonomous Database REST tool by clicking the hamburger menu and selecting **REST**:
+1. Ensure that you are still logged in as **MOVIESTREAM** user. Click the hamburger menu and then click **REST**.
   ![Go to REST](images/goto-rest.png)
 
-2. Go to the list of modules. In the REST tool, select the **Modules** tab
+2. Go to the list of modules. In the REST tool, select the **Modules** tab. 
   ![Go to modules](images/goto-modules.png)
 
   A module named **api** was created by the Terraform script. Let's create a new module that the **MovieStreamAI** app will use. 
@@ -85,9 +85,9 @@ AutoREST is fast and easy. Your APIs are immediately available to use. But, you 
   
     ![Completed module form](images/module-completed-form.png)
  
-4. Click on the newly created module **apiapp**. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **data/**) or AI generated responses (named **ai/**). First, let's create the data collection api for the **recently watched movies**.
+4. Click on the newly created module **apiapp**. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **data/**) or AI generated responses (named **ai/**). 
 
-5. Click **Create Template.** 
+5. First, let's create the data collection api for the **recently watched movies**. Click **Create Template.** 
 
   ![Template button](./images/create-template-one.png "")
 
@@ -202,13 +202,13 @@ This last task will create our final RESTful service. This uses GenAI to recomme
     - **Bind Variable Name:** `cust_id`
     - **Source Type:** `URI`
 
-8. Repeat step 6 and 7 for the following new parameters:
+8. Repeat steps 6 and 7 for the following new parameters:
 
     - **Parameter Name:** `profile_name`
     - **Bind Variable Name:** `profile_name`
     - **Source Type:** `HEADER`
 
-9.  Repeat step 6 and 7 for the following new parameters:
+9.  Repeat steps 6 and 7 for the following new parameters:
 
     - **Parameter Name:** `summary`
     - **Bind Variable Name:** `summary`

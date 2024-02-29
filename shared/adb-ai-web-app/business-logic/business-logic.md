@@ -9,9 +9,9 @@ This lab will introduce you to using your organization's data with LLMs. You wil
 ![Wrapping of task rules and data to send to the model in tabular form](./images/json-prompts.png "")
 
 For this workshop, the business logic is captured in a GENAI\_PROJECT table that provides a simple organizational structure. Each record in that table includes:
-1. the task - a description of the purpose of the project
-2. the task rules - a natural language description of the LLM tasks (e.g. summarize a support chat)
-3. the query - the database query whose results the tasks will operate on
+1. The task - a description of the purpose of the project
+2. The task rules - a natural language description of the LLM tasks (e.g. summarize a support chat)
+3. The query - the database query whose results the tasks will operate on
 
 A JSON document is used to organize the GenAI prompt (task rules and query results) and that document is passed to the LLM for processing. 
 
@@ -34,7 +34,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the first two labs in the **Contents** menu on the left.
+- This lab requires completion of all of the preceding labs in the **Contents** menu on the left.
 
 ## Task 1: How to use AI models with data in Autonomous Database
 In our first example, we'll summarize a conversation that a customer had with the support team. And, we'll determine the customer's sentiment at the end of the chat. 
@@ -141,7 +141,7 @@ You will likely use GenAI for many different projects where you need to apply an
     | **`GENAI.GET_PROMPT`** | Returns the prompt that will be sent to the LLM. | **`query_parameter`** : Each project includes a parameterized query (e.g a customer id or support chat id). Specify that parameter.<br>**`project_id`** : Specify the id for the project. For example, use id=2 for "Summarize a support chat" |
     | **`GENAI.GET_RESPONSE`** | Returns the response from the LLM. | **`query_parameter`** : see above<br>**`project_id`** : see above<br>**`profile_name`** : Specify the AI profile to use for this prompt |
 
-    To see the source code, go to the SQL Worksheet and change the Object viewer from **Tables** to **Packages**, right-click the **GENAI** and view the **Body** script:
+    To see the source code, in the **Navigator** tab on the left pane, select **Packages** from the **Object Viewer** drop-down list. Right-click **GENAI** and then select **Open > Body** from the context menu. 
 
     ![View package used to trigger business logic](./images/package.png "")
     
@@ -174,7 +174,7 @@ You will likely use GenAI for many different projects where you need to apply an
     See the results below:
     ![About Jennine](images/about-jennine.png)
 
-3. The function `GENAI.GET_PROMPT` will return the prompt that will be sent to the LLM. Run the function call below in SQL Worksheet to see what will be sent to the model:
+4. The function `GENAI.GET_PROMPT` will return the prompt that will be sent to the LLM. Run the function call below in SQL Worksheet to see what will be sent to the model:
     ```
     <copy>
     SELECT genai.get_prompt(
@@ -188,7 +188,7 @@ You will likely use GenAI for many different projects where you need to apply an
 
     ![Jennine JSON document](images/get-jennine-prompt.png)
 
-4. Let's use the second function - **`GENAI.GET_RESPONSE`** - find out what Jennine and her husband should do in Paris! We'll use the **Meta Llama 2 Chat** model. Run the following in the SQL Worksheet:
+5. Let's use the second function - **`GENAI.GET_RESPONSE`** - find out what Jennine and her husband should do in Paris! We'll use the **Meta Llama 2 Chat** model. Run the following in the SQL Worksheet:
     ```
     <copy>
     SELECT genai.get_response(
@@ -214,7 +214,7 @@ As you can see, prompt engineering is going to be an iterative process. You'll w
     - Go to SQL Worksheet and copy the URL prefix from your browser:
         ![copy URL](images/copy-url.png)
 
-1. In a new browser window, go to the **GenAI Projects** app using the URL above and log in as the same MOVIESTREAM user
+1. In a new browser window, go to the **GenAI Projects** app using the URL above and log in as the same MOVIESTREAM user.
 
 2. After logging in, you will see the list of GenAI projects. These projects came from the `GENAI_PROJECT` table.
     ![GenAI projects](images/apex-create-ai-prompt.png)

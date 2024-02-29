@@ -4,7 +4,7 @@
 OpenAPI is a specification for building and documenting APIs. It allows developers to describe the structure of their APIs in a standardized format using JSON or YAML, making it easier to understand and work with APIs. OpenAPI specifications can be used to generate interactive documentation, client libraries, and server stubs, streamlining the API development process. There are many tools that you can use with OpenAPI, including Swagger, Postman, and more. 
 
 It's easy to use OpenAPI with Autonomous Database RESTful development. Autonomous Database supports the OpenAPI 3.0 specification, allowing you to both import and export your API modules. This gives you flexibility in your API development:
-1. Create your API modules in Autonomous Database, export their definitions, and then document them using your API tools
+1. Create your API modules in Autonomous Database, export their definitions, and then document them using your API tools.
 2. Design your RESTful services in your OpenAPI tool and then import those definitions into Autonomous Database. Complete the API implementation in Autonomous Database's API design tool.
 
 This lab will show you how to view and test your APIs using OpenAPI. We'll need to capture the endpoint URLs in order to update our web app in the next lab.
@@ -25,13 +25,13 @@ In this lab, you will:
 ## Task 1: Review the customer API created using AutoREST
 Let's review our **customer** endpoint. We'll test it and then save the URL.
 
-1. Still logged into Database Actions as the MOVIESTREAM user, go to to the REST editor by clicking the hamburger menu and selecting **REST**:
+1.  Make sure that you are still logged in to the Database Actions as the **MOVIESTREAM** user. Click the hamburger menu and then select **REST**.
     ![go to REST](images/goto-REST.png)
 
-2. Select AutoREST tab:
+2. Select the AutoREST tab:
     ![go to AutoREST](images/goto-autoREST.png)
 
-3. You'll notice our **CUSTOMER** RESTful endpoint. You can view the endpoint in an OpenAPI view. Click the 3 dots on the **CUSTOMER** tile and select **OpenAPI view**:
+3. You'll notice our **CUSTOMER** RESTful endpoint. You can view the endpoint in an OpenAPI view. Click the 3 dots on the **CUSTOMER** tile and select **OpenAPI View**:
     ![go to CUSTOMER OpenAPI view](images/openapi-customer-apis.png)
 
 4. This view will look familiar if you use OpenAPI tools; they present the APIs in a very similar way. As you can see, AutoREST exposed numerous APIs for customer. For example, you can add, delete and view customer records. 
@@ -48,7 +48,7 @@ Let's review our **customer** endpoint. We'll test it and then save the URL.
         ![completed form](images/openapi-customer-qbe-form.png)
 
         Click **Execute**
-5. Scroll down to the **Response body** to see the results. You'll find numerous customers whose name contains `Water`:
+5. Scroll down to the **Response body** section to see the results. You'll find numerous customers whose name contains `Water`:
     ![Names with Water](images/openapi-water-results.png)
 
 
@@ -73,18 +73,18 @@ Let's review the **apiapp** module using the OpenAPI view.
     
     Click **Execute**
 
-4. Scroll down to view the recommendations in the **Response Body**
+4. Scroll down to the **Response Body** section to view the recommendations.
 
 
 ## Task 3: Export your API definitions to an OpenAPI tool
 It's easy to export your API signatures to an OpenAPI tool.
 
-1. Go to the **apiapp** module tile and click the 3 dots. Select **Export Module -> OpenAPI**
-    ![Export to OpenAPI](images/openapi-export-module.png)
+1. Go to the **apiapp** module tile and click the 3 dots. Select **Export Module > OpenAPI**
+    ![Export to OpenAPI](./images/openapi-export-module.png)
 2. You are presented with the OpenAPI 3.0 export file. OpenAPI tools will provide a way to either copy and paste these definitions or import the file:
-    ![Resulting document](images/openapi-export-results.png)
+    ![Resulting document](./images/export-results.png)
 3. The example below shows our API used in the OpenAPI plug-in for VSCode. Using the tool, you can document the API, test it and more. 
-    ![In an OpenAPI too](images/openapi-tool-example.png)
+    ![In an OpenAPI too](./images/openapi-tool-example.png)
     This is just one example. Import these definitions into any number of tools that support OpenAPI - including Swagger, Postman and more.
 
 ## Summary    
