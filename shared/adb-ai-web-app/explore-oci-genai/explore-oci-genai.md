@@ -54,6 +54,12 @@ Go to the OCI Generative AI Playground and ask some interesting questions.
 
    Below, we're asking Cohere to generate a movie pitch starring Christian Bale and Natalie Portman that takes place in Chicago in 1968.
 
+    ```
+    <copy>
+    Pitch a new movie starring Christian Bale and Natalie Portman that takes place in Chicago in 1968.
+    </copy>
+    ```
+
     ![Movie pitch](./images/movie-pitch.png)
 
     Cohere generated an interesting movie pitch titled "Love in the Windy City". The pitch Cohere generated for you may be totally different - and that's expected. Feel to try some of your own questions against different models.
