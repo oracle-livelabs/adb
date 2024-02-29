@@ -64,7 +64,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
     cd movie-app
     </copy>
     ```
-3. Update the config file with information about the bucket you just created and the Autonomous Database REST prefix you copied in Task 1. Run the following command to edit the file. 
+3. Update the config file with information about the bucket you just created and the Autonomous Database URL prefix you copied in Task 1. Run the following command to edit the file. 
 
     ```
     <copy>vi config.txt</copy>
@@ -93,7 +93,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage. 
 
-1. Navigate back to **movie-app** bucket. You may need to refresh the object storage file list by clicking **More Actions -> Refresh**. Then, click the ellipsis for the **index.html** object.  Click on object details. 
+1. Navigate back to **movie-app** bucket. You may need to refresh the object storage file listing by clicking **More Actions -> Refresh**. Then, click the ellipsis for the **index.html** object.  Click on object details. 
 
   ![Open object details for index.html](./images/index-details.png "")
 
@@ -111,52 +111,53 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 4. Click the **double arrow** in the shell to expand the window full screen.
 
-![Print the App.tsx file and expand the window](./images/expand-app.png "")
+  ![Print the App.tsx file and expand the window](./images/expand-app.png "")
 
 5. Scroll down to the bottom and notice the return statement that outlines the structure of the app. With the App open, compare the following to better understand the structure.
-- First, Parallax is wraps the code so each of the components can move according to the desired effect. The **AdvancedBannerTop** component showcases the effect with the webpage title "MovieStreamAI" floating between the background of the stars and the foreground of the Las Vegas images.
-- Secondly, the **{text}** is wrapped in a typewritter effect, which is declared in the script closer to the top.
+- First, Parallax wraps the code so each of the components can move according to the desired effect. The **AdvancedBannerTop** component showcases the effect with the webpage title "MovieStreamAI" floating between the background of the stars and the foreground of the Las Vegas images.
+- Second, the **{text}** is wrapped in a typewritter effect, which is declared in the script closer to the top.
 - Next, the **SearchComponent** fetches the customerData and implements a state change, which displays the RecentlyWatched films cards (click to show the movie details) and Spinner for the ResponseComponent. 
 - The **ResponseComponent** uses the {selectedCustID} to pass the variable to the API, which after loading will display a carousel of the recommended movies and details from the **/ai/moviePizzaRecommendation/:cust_id** endpoint. 
 - The component **SearchTop** uses a similar Parallax effect as theAdvancedBannerTop component.
 - Lastly, the **Map** component pulls the OpenMaps library and displays a map, pulling data from the PizzaShops endpoint.
 
-![Highlighting the structure of the App.tsx file](./images/app-full.png "")
+  ![Highlighting the structure of the App.tsx file](./images/app-full.png "")
 
 6. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** (hotkey) or hitting the refresh button on the browser to load all of data that is being fetched when the App is running. 
 
-![Browser Networking](./images/network-f12.png "")
+  ![Browser Networking](./images/network-f12.png "")
 
 
 7. Give the app a test drive by selecting a **Customer ID** from the dropdown list. Toggle the switch to **OCIAI_COHERE** and hit the **Search** button.
 
-![Search Customer ID](./images/customer-id-dropdown.png "")
+  ![Search Customer ID](./images/customer-id-dropdown.png "")
 
 8. The data that is being fetched from the api can be seen in the Browser Developer Tool interface by selecting the endpoints. Click through each of them to see what data is being pulled from the API.
 - pizza_shop/
 - Customer ID entered in SearchBar (shown 3 times)
 
-![Show API response in DevTools](./images/api-response.png "")
+  ![Show API response in DevTools](./images/api-response.png "")
 
 9.  Navigating back to the Cloud Shell, notice the **fetch** command in the **App.tsx** that is implemented above the return function described earlier. This pulls the endpoint set earlier in the config file. At the top, it is imported from this file using the following:
 
   ```import { CUSTOMER_API_URL, PIZZA_SHOP_API_URL } from './config';```
 
-![Show fetch for both customer and pizza data](./images/fetch-customer-pizza.png "")
+  ![Show fetch for both customer and pizza data](./images/fetch-customer-pizza.png "")
 
-10.  Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method for the api that was created for the Generative AI models: **MOVIE_STREAM_IMAGE_API_URL** and **MOVIE_STREAM_PIZZA_API_URL**.
+10.  Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method for the api that was created for the Generative AI models: **MOVIE\_STREAM\_IMAGE\_API\_URL** and **MOVIE\_STREAM\_PIZZA\_API\_URL**.
 
   ```
   <copy>cat ./SearchBar/SearchComponent.tsx</copy>
   ```
->**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
+  >**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
 
   ```
   <copy>cat ./AI/ResponseComponent.tsx</copy>
   ```
 
 11. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the **App.tsx** file for better understanding of the Open-Source Mapping. 
-- This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
+
+This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
 
 
 You may now proceed to the next lab.
