@@ -51,7 +51,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 ## Task 3: Deploy the app using Object Storage
 
-1. Open up Cloud Shell within the OCI Console. 
+1. Open up Cloud Shell within the OCI Console. Make sure you open Cloud Shell in the same region as your object storage bucket.
 
   ![Open Cloud Shell](./images/open-cloudshell.png "")
 
@@ -74,7 +74,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 >**Note:** The information in `config.txt` is used by a bash script to send the objects to the correct object storage bucket. The script `generated_config.sh` generates a config file `./src/config.ts` using that same `config.txt` file. The `config.ts` contains the api variables used by the React app to make REST calls to your Autonomous Database.
 
-4. Enter the **BUCKET\_NAME**\ and **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
+4. Enter the **BUCKET\_NAME** and **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
 5.  Run the following commands to deploy the app.
 
@@ -93,7 +93,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage. 
 
-1. Navigate back to **movie-app** bucket and click the ellipsis for the **index.html** object. Click on object details. 
+1. Navigate back to **movie-app** bucket. You may need to refresh the object storage file list by clicking **More Actions -> Refresh**. Then, click the ellipsis for the **index.html** object.  Click on object details. 
 
   ![Open object details for index.html](./images/index-details.png "")
 
