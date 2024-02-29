@@ -74,9 +74,9 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 >**Note:** The information in `config.txt` is used by a bash script to send the objects to the correct object storage bucket. The script `generated_config.sh` generates a config file `./src/config.ts` using that same `config.txt` file. The `config.ts` contains the api variables used by the React app to make REST calls to your Autonomous Database.
 
-1. Enter the **BUCKET\_NAME**, **BUCKET\_REGION**, and **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
+4. Enter the **BUCKET\_NAME**\ and **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
-2.  Run the following commands to deploy the app.
+5.  Run the following commands to deploy the app.
 
     ```
     <copy>
