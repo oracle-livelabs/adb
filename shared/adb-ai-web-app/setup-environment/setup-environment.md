@@ -13,8 +13,8 @@ This workshop focuses on teaching you how to use your data and  generative AI to
 * Deploy the business logic for running different types of AI projects - like summarizing a support chat and suggesting things to do at a location
 * Deploy RESTful endpoints for executing that business logic from your applications
 * Deploys two APEX apps in a MOVIESTREAM workspace: 
-* 1) chat with your data in Autonomous Database 
-* 2) create and test GenAI projects
+    * Chat with your data in Autonomous Database 
+    * Create and test GenAI projects
 
 All of this is done so that you can immediately try all of the different components. You will also be developing many of these components on your own as part of the workshop.
 
@@ -93,6 +93,8 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
     >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations. 
     
+    ![The Configure variables step 2 of the wizard part one](./images/configure-step-two.png)
+
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png)
 
 4. Click **Next**.
