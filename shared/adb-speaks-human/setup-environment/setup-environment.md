@@ -168,7 +168,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
         ![User details](./images/output.png "")
 
-8. Let's view the completed the newly created stack and job. From the Console, open the **Navigation** menu and click **Developer Services**. Under **Resource Manager**, click **Stacks**.
+8. Let's view the newly created stack and job. From the Console, open the **Navigation** menu and click **Developer Services**. Under **Resource Manager**, click **Stacks**.
 
     ![Navigate to stacks](./images/navigate-stacks.png "")
 
