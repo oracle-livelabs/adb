@@ -64,6 +64,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
     cd movie-app
     </copy>
     ```
+
 3. Update the config file with information about the bucket you just created and the Autonomous Database URL prefix you copied in Task 1. Run the following command to edit the file. 
 
     ```
@@ -116,6 +117,7 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 5. Scroll down to the bottom and notice the return statement that outlines the structure of the app. With the App open, compare the following to better understand the structure.
 - First, Parallax wraps the code so each of the components can move according to the desired effect. The **AdvancedBannerTop** component showcases the effect with the webpage title "MovieStreamAI" floating between the background of the stars and the foreground of the Las Vegas images.
 - Second, the **{text}** is wrapped in a typewritter effect, which is declared in the script closer to the top.
+
 - Next, the **SearchComponent** fetches the customerData and implements a state change, which displays the RecentlyWatched films cards (click to show the movie details) and Spinner for the ResponseComponent. 
 - The **ResponseComponent** uses the {selectedCustID} to pass the variable to the API, which after loading will display a carousel of the recommended movies and details from the **/ai/moviePizzaRecommendation/:cust_id** endpoint. 
 - The component **SearchTop** uses a similar Parallax effect as theAdvancedBannerTop component.
@@ -126,7 +128,6 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 6. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** (hotkey) or hitting the refresh button on the browser to load all of data that is being fetched when the App is running. 
 
   ![Browser Networking](./images/network-f12.png "")
-
 
 7. Give the app a test drive by selecting a **Customer ID** from the dropdown list. Toggle the switch to **OCIAI_COHERE** and hit the **Search** button.
 
@@ -158,7 +159,6 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 11. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the **App.tsx** file for better understanding of the Open-Source Mapping. 
 
 This should give you a general understanding of how the APIs are used in the MovieStreamAI app.
-
 
 You may now proceed to the next lab.
 
