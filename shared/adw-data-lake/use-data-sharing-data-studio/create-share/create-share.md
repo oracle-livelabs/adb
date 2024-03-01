@@ -6,7 +6,7 @@ A data share is a named entity in the provider’s instance. It can be a group o
 
 In this lab, as a share provider user, you will create a data share and add a table to it. Next, you will create a new recipient that will have access to this data share. Finally, you will publish the data share and send the recipient the activation link needed to access the data share.
 
- ![Create a data share diagram.](images/data-share-diagram.png)
+ ![Create a data share diagram.](images/data-share-diagram.png =55%x*)
 
 Estimated Time: 15 minutes
 
@@ -42,6 +42,18 @@ In this lab, you will:
 
 ## Task 2: Create and Publish a Data Share
 
+_**Important:**_    
+_If you are using an **Always Free** ADB instance, you must run the following script in your SQL Worksheet as the **`share_provider`** user <u>before</u> you proceed with **step 1** below:_
+
+```
+<copy>
+BEGIN
+    DBMS_SHARE.UPDATE_DEFAULT_SHARE_PROPERTY('job_type', 'DBMS_CLOUD');
+END;
+/
+</copy>
+```
+
 As the **`share_provider`** user, create a new data share named **`training_share`**.
 
 1. To create a new data share, click the **PROVIDE SHARE** tool on the Home page. Alternatively,in the Navigation pane on the left, drill-down on the **Data Share** node, and then click **Provide Share**.
@@ -74,27 +86,31 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![Create a new recipient.](images/create-recipient.png)
 
-7. In the **Create Share Recipient** panel, enter **`training_recipient`** as the name of the recipient, an optional description, and the recipient's email address. Next, click **Create** to create the new recipient.
+7. In the **Create Share Recipient** panel, enter **`training_recipient`** as the name of the recipient, an optional description, and the recipient's email address. Next, click **Show Advanced Options**.
 
-    ![Create the new recipient.](images/click-create-recipient.png)
+    ![Create the new recipient and show advanced options.](images/create-recipient-advanced-options.png =50%x*)
 
-8. The new recipient is displayed in the **Create Share** page.
+8. In the **User token lifetime** section, modify the **TOKEN_LIFETIME** for the **`training_user`** recipient to **90** days. This property specifies for how long the generated token will be valid after which the recipient loses access to the data share and must request a new token. Enter **90** in the first text field. Select **Days** from the drop-down menu. Next, click **Create** to create the new recipient.
 
-    ![The recipient is created.](images/recipient-created.png)
+    ![Create the new recipient.](images/click-create-recipient.png =50%x*)
 
-9. Click **Create** to create and publish the data share. The **Provide Share** page is displayed. Two information boxes are displayed briefly to indicate that the share is created and that publishing is in progress. The **training_share** is displayed along with its details such as the entity type, owner, shared objects, and the recipients. Note the status of the share is **Unpublished**. It will take a few minutes to publish it depending on the size of the table in the share.
+9. The new recipient is displayed in the **Create Share** page.
+
+    ![The recipient is created.](images/recipient-created.png =60%x*)
+
+10. Click **Create** to create and publish the data share. The **Provide Share** page is displayed. Two information boxes are displayed briefly to indicate that the share is created and that publishing is in progress. The **training_share** is displayed along with its details such as the entity type, owner, shared objects, and the recipients. Note the status of the share is **Unpublished**. It will take a few minutes to publish it depending on the size of the table in the share.
 
     ![The data share is created.](images/share-created.png)
 
-10. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Click **Send** to send the email to the recipient.
+11. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Click **Send** to send the email to the recipient.
 
     ![Click send email.](images/activation-email.png)
 
-11. After a few minutes, click the **Reload** icon to refresh the page. The status of the **training_share** is now **Published**.
+12. After a few minutes, click the **Reload** icon to refresh the page. The status of the **training_share** is now **Published**.
 
     ![The data share is published.](images/share-published.png)
 
-12. Click the **RECIPIENTS** tile. The **`training_recipient`** is displayed along with its details.
+13. Click the **RECIPIENTS** tile. The **`training_recipient`** is displayed along with its details.
 
     ![Click the recipients tile.](images/click-recipients-tile.png)
 
@@ -102,7 +118,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![Versioned share type.](images/versioned-share-type.png)
 
-13. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. If you are prompted to leave, click **Leave**.
+14. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. If you are prompted to leave, click **Leave**.
 
 You may now proceed to the next lab.
 
@@ -116,7 +132,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

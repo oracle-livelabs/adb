@@ -7,7 +7,7 @@ In this lab, you will load movie data that is stored in `JSON` format into an Au
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load and Analyze JSON Data](videohub:1_9hugohpd)
+[](youtube:5zgf-_sBIEk)
 
 ### Objectives
 
@@ -272,4 +272,4 @@ You may now proceed to the next lab.
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024

@@ -6,7 +6,7 @@ A data share is a named entity in the provider’s instance. It can be a group o
 
 In this lab, as a share provider user, you will create a data share and add a table to it. Next, you will publish the data share to make it available to the authorized recipient that you will define in the next lab.
 
- ![Create a data share diagram.](images/data-share-diagram.png)
+ ![Create a data share diagram.](images/data-share-diagram.png =60%x*)
 
 Estimated Time: 15 minutes
 
@@ -62,7 +62,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     ![Query new data share.](images/query-data-share.png)
 
-    Before you publish the data share, the **Current Version** column shows **`(null)`**. After you publish the data share, the the **Current Version** column will show **`1`**.
+    Before you publish the data share, the **Current Version** column shows **`(null)`**. After you publish the data share, the value in the **Current Version** column will show **`1`**.
 
 ## Task 2: Create Tables to Add to the Data Share
 
@@ -141,6 +141,18 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 Up to this point, the share and its table are stored in the database and therefore are not yet available to anyone. In this task, you will call the `PUBLISH_SHARE` API which offloads data to the Cloud Store and makes it accessible to recipients that you define and authorize in a later lab.
 
+_**Important:**_    
+_If you are using an **Always Free** ADB instance, you must run the following script in your SQL Worksheet as the **`share_provider`** user <u>before</u> you proceed with **step 1** below:_
+
+```
+<copy>
+BEGIN
+    DBMS_SHARE.UPDATE_DEFAULT_SHARE_PROPERTY('job_type', 'DBMS_CLOUD');
+END;
+/
+</copy>
+```
+
 1. Publish the `demo_share` data share to make it visible to authorized recipients. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon. It could take few minutes for the publishing process (export) to complete.
 
     ```
@@ -176,7 +188,9 @@ Up to this point, the share and its table are stored in the database and therefo
 
     ![Track the data export.](images/track-export.png)
 
-    If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for a few minutes for the publishing to finish. Don't proceed to the next lab until the **STATUS** shows **CURRENT**.
+    If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for a few minutes for the publishing to finish. _Don't proceed to the next lab until the **STATUS** shows **CURRENT**_.
+
+    ![Publishing is not completed yet.](images/status-exporting.png)
 
     >**Note:**
     When you publish a `versioned` share type, the tool generates and stores the data share as `parquet` files in the specified bucket such as `data-share-bucket` in our example. Any authenticated data share recipient can directly access the share in that bucket.
@@ -194,7 +208,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

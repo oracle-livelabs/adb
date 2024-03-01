@@ -76,6 +76,7 @@ To get started, you'll need to do the following:
     /
     ```
 
+<!-- Requetsed to change as it was causing an ML issue 
 * Create a logon trigger that will automatically set the profile for new connections session. In this workshop, we have only one LLM profile; therefore, you can create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
 
     ```
@@ -84,6 +85,18 @@ To get started, you'll need to do the following:
         BEGIN
             DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
         END;
+    /
+    </copy>
+    ```
+    -->
+
+* You can have multiple **Select AI** profiles. You need to pick the one to use for your session. Use the **`DBMS_CLOUD_AI.SET_PROFILE`** procedure to specify which profile to use as follows:
+
+    ```
+    <copy>
+    BEGIN
+        DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
+    END;
     /
     </copy>
     ```
@@ -160,6 +173,8 @@ _**In summary, using LLMs infer a lot from human language. It's always good to v
 
 You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
 
+>**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
+
 If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL banner** to display the Database **Actions | Launchpad** Home page. In the **Development** section, click the **Oracle Machine Learning** card to display the **Sign In** page. Continue with step **step 7** below.
 
    ![Click the banner](./images/click-banner.png " ")
@@ -204,7 +219,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
 1. Click the button below to download the ADB Speaks Human OML notebook:
 
-    <a href="../notebook/ADB%20Speaks%20Human.dsnb" class="tryit-button">Download notebook</a>
+    <a href="../notebook/ADB-Speaks-Human.dsnb" class="tryit-button">Download notebook</a>
 
 2. Click **Go to OML Notebooks EA**. The **OML Notebooks EA (Early Adopter)** page is displayed.
 
@@ -219,6 +234,8 @@ You can import a notebook from a local disk or from a remote location if you pro
     ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
 
 5. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+
+     >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
     ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
 
@@ -277,7 +294,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Last Updated By/Date:** Lauran K. Serhal, January 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
