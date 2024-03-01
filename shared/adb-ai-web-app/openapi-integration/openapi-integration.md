@@ -26,10 +26,10 @@ In this lab, you will:
 Let's review our **customer** endpoint. We'll test it and then save the URL.
 
 1.  Make sure that you are still logged in to the Database Actions as the **MOVIESTREAM** user. Click the hamburger menu and then select **REST**.
-    ![go to REST](images/goto-REST.png)
+    ![go to REST](./images/go-to-rest.png)
 
 2. Select the AutoREST tab:
-    ![go to AutoREST](images/goto-autoREST.png)
+    ![go to AutoREST](./images/go-to-autorest.png)
 
 3. You'll notice our **CUSTOMER** RESTful endpoint. You can view the endpoint in an OpenAPI view. Click the 3 dots on the **CUSTOMER** tile and select **OpenAPI View**:
     ![go to CUSTOMER OpenAPI view](images/openapi-customer-apis.png)
