@@ -69,7 +69,7 @@ In this workshop, you will assume the responsibilities of several users. Initial
 
 **_In real use cases, there will be different users performing different responsibilities._**
 
-   ![The data sharing overview.](images/data-sharing-diagram.png)
+   ![The data sharing overview.](images/data-sharing-diagram.png =60%x*)
 
 ### How Does Delta Sharing Work?
 
@@ -93,7 +93,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

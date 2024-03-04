@@ -389,10 +389,10 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

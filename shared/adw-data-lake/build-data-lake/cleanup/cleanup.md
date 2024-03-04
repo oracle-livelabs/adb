@@ -48,7 +48,7 @@ You can terminate your ADW instance that you created in this workshop as follows
 
 ## Task 3 (Optional): Delete Your Compartment
 
-If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you can must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
+If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you can delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
 
 1. Click the **Navigation** menu and click **Identity & Security**. Under **Identity**, select **Compartments**. From the list of available compartments, search for your compartment.
 
@@ -65,8 +65,8 @@ This concludes the workshop.
 
 ## Acknowledgements
 
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran Serhal, November 2023
 
 Data about movies in this workshop were sourced from Wikipedia.
 

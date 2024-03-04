@@ -13,6 +13,9 @@ Autonomous Database supports the Delta Sharing protocol.
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[](youtube:YH7pPGEaxNI)
+
 ### Objectives
 
 In this lab, you will:
@@ -171,10 +174,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, September 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

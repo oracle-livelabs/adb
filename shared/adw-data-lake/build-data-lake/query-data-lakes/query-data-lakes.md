@@ -50,7 +50,7 @@ In this task, we define a **Connection** to connect to a public Oracle Object St
 
 2. On the **Connections** page, click the **Create** drop-down list and then select **New Cloud Store Location** from the list.
 
-    ![Click Add Cloud Storage.](./images/click-oci-cloud-store-location.png " ")
+    ![Click Add Cloud Storage.](./images/click-new-cloud-store-location.png " ")
 
 3. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`oci-data-lake`**.
@@ -71,11 +71,11 @@ In this task, we define a **Connection** to connect to a public Oracle Object St
 
     ![Click Next to see the objects in the bucket.](./images/oci-cloud-data.png " ")
 
-5. Click **Create**. The **oci-data-lake** cloud location is displayed in the **Connections** page.
+5. Click **Create**. The new **oci-data-lake** cloud location is displayed in the **Connections** page.
 
     ![The cloud store location is created.](./images/oci-connection-created.png " ")
 
-6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
+6. Click on the **Data Load** link in the breadcrumbs to return to the **Data Load** page.
 
 ## Task 3: Load Data from the OCI Cloud Location and Create a Table
 
@@ -83,37 +83,29 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
 >**Note:** In **Lab 3: Load Data from Local Files**, we already loaded the **customer-extension.csv** file into our ADB instance; therefore, we won't perform this step. In addition, in **Lab 4: Link to Data in Public Object Storage Buckets**, we already linked to the **`customer_contact`** file and created the external table; however, in this task, we will load the same **`customer_contact`** data into our ADB instance and create a new database table under a new name. Querying data stored inside the database is much faster than querying data that is stored in external tables outside the database.
 
-1. In the **What do you want to do with your data?** section, click **LOAD DATA**.
+1. In the **Data Load** section, click **LOAD DATA**.
 
-2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
+    ![Click Load Data.](./images/click-load-data.png " ")
 
-3. The **Load Cloud Object** page is displayed. Use this page to drag and drop tables from the public object storage bucket to the data linking job.
+2. On the **Load Data** page, click the **Cloud Store** tab. Select the newly created **oci-data-lake** cloud location that you created, if not already selected in the **Select Cloud Store Location or enter public URL** drop-down list. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
 
-    Copy the following public object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. Alternatively, you can select it from the drop-down list.
+    ![Load Data page.](./images/load-data-page.png " ")
 
-    ```
-    <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
-    </copy>
-    ```
-
-    Click **[ENTER]** on your keyboard. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
-
-4. Drag the **`customer_contact`** folder and drop it onto the data linking job section.
+3. Drag the **`customer_contact`** folder and drop it onto the data loading job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
-5. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, **`customer_contact.csv`**. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
+4. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, **`customer_contact.csv`**. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
     ![Click yes to load objects to a single table.](images/load-to-single-table.png)
 
-    The **`customer_contact`** target table to be created for the selected **`.csv`** file is displayed in the data linking job section. Again, since we already have linked to the **`customer_contact`** file in a previous lab, the data load utility changed the name of the newly created external table to **`customer_contact_1`**.
+    The **`customer_contact`** target table to be created for the selected **`.csv`** file is displayed in the data loading job section. Again, since we already have linked to the **`customer_contact`** file in a previous lab, the data load utility changed the name of the newly created external table to **`customer_contact_1`**.
 
     >**Note:** You can click the **`customer_contact (23 MB)`** link to display the settings for the table that will be created. You can preview the external table and change its name, data type, and so on.
 
     ![The customer_contact target table is displayed.](images/customer-contact-1-created.png)
 
-6. Click **Start** to start the load job. The **Run Data Load Job** dialog box is displayed. Click **Run** to start the load job and to create the new external table.
+5. Click **Start** to start the load job. The **Start Load From Cloud Store** dialog box is displayed. Click **Run** to start the load job and to create the new external table.
 
     ![Run the load job.](images/click-run.png)
 
@@ -121,11 +113,9 @@ In this task, we will load data and create the **customer\_contact** table in yo
 
     ![Load job completed.](images/customer-contact-created.png)
 
-7. Navigate to the SQL Worksheet. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
+6. Navigate to the SQL Worksheet. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
 
-    ![Click Database Actions in the banner.](images/click-database-actions-2.png)
-
-8. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+7. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
 
     The two tables that we created and will use in this demo are displayed in the **Navigator** tab, namely, **`CUSTOMER_CONTACT_1`** and **`CUSTOMER_EXTENSION`**.
 
@@ -139,9 +129,11 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
 ![The potential_churners.csv file in the S3 bucket.](images/aws-s3-bucket.png)
 
-1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, click the **DATA LOAD** card. On the **Data Load** card, in the **Administration** section, click **CONNECTIONS**.
+1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Data Studio** section, click the **DATA LOAD** card. On the **Data Load** page, in the **Administration** section, click **CONNECTIONS**.
 
 2. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
+
+    ![Create new cloud store location.](images/create-aws-s3-location.png)
 
 3. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`aws-s3-data-lake`**.
@@ -159,8 +151,8 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
         Click **Create Credential**. The **Add Cloud Store Location** panel is re-displayed. Specify the following: 
 
-        + **Bucket URI:** Leave this option as selected which is the default.
-        + **Bucket URI:** Enter your AWS endpoint. The URL format is as follows:
+        + **Bucket URI option:** Leave this option as selected which is the default.
+        + **Bucket URI text box:** Enter your AWS endpoint. The URL format is as follows:
 
             `https://<bucket-name>.s3.<region>.amazonaws.com/`
 
@@ -174,25 +166,23 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
     ![The cloud store location is created.](./images/aws-connection-created.png " ")
 
-6. Click on the **Data Load** link in the breadcrumbs to return to the previous page.
+6. Click on the **Data Load** link in the breadcrumbs to return to the **Data Load** page.
 
 ## Task 5: Link to Data from the AWS S3 Cloud Location and Create an External Table
 
 In this task, we will link to the `potential_churners.csv` data from the AWS S3 cloud location that we created. A link is preferred so that if the data changes, we don't have to re-load the data. We are always looking at up-to-date data.
 
-1. In the **What do you want to do with your data?** section, click **LINK DATA**.
+1. On the **Data Load** page, click **LINK DATA**.
 
-2. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
+2. The **Link Data** page is displayed and the **CLOUD STORE** tab is selected. Select the **`aws-s3-data-lake`** from the **Select Cloud Store Location or enter public URL** drop-down list.
 
-3. The **Link Cloud Object** page is displayed. Select the **`aws-s3-data-lake`** from the **Select Cloud Store Location or enter public URL** drop-down list, if not already selected from the previous task. Next, drag and drop the **`potential_churners`** table from the Amazon S3 public bucket to the data linking job.
+    ![Select the aws-s3 cloud location](images/select-aws-s3.png)
+
+3. Drag and drop the **`potential_churners`** table from the Amazon S3 public bucket to the data linking job.
 
     ![Drag and drop the potential_churners folder](images/drag-drop-potential-churners.png)
 
-4. Click **Start** and then click **Run**.
-
-    ![Click Start to start the link job.](images/start-link-job.png)
-
-    If the **`potential_churners`** link job completes successfully, a green checkmark with the status **Complete** is displayed next to the file's name.
+4. Click **Start** and then click **Run**. If the **`potential_churners`** link job completes successfully, a green checkmark with the status **Complete** is displayed next to the file's name.
 
     ![The potential_churners target table is displayed.](images/link-job-completed.png)
 
@@ -300,10 +290,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

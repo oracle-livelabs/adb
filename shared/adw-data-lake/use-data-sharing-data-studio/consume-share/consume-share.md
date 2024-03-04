@@ -141,9 +141,9 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
     ![Click subscribe to selected share.](images/click-subscribe.png)
 
-    A **`CUSTOMER_CONTACT_SHARE` share provider was created successfully**  informational message is displayed. You are directed to the **Link Cloud Object** page.
+    A **`CUSTOMER_CONTACT_SHARE` share provider was created successfully**  informational message is displayed. You are directed to the **Link Data** page with the **Share** tab selected. The **`share_consumer`** user now has access to the **`training_share`** data share that was created by the **`share_provider`** user.
 
-    ![The Link Cloud Object page is displayed.](images/link-object-page.png)
+    ![The Link Cloud Object page is displayed.](images/link-data-page.png)
 
 ## Task 4: Create an External Table over the Shared Table
 
@@ -151,7 +151,7 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
     ![Drag and drop the shared table onto the canvas.](images/drag-and-drop-share.png)
 
-2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT`** external table will be created on top of the **`CUSTOMER_CONTACT`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click the ellipsis icon, and then click **Settings** from the context menu.
+2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT`** external table will be created on top of the **`CUSTOMER_CONTACT`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click the **Settings** icon (pencil).
 
     ![The Link Cloud Object page is displayed.](images/shared-table-added.png)
 
@@ -159,11 +159,11 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
     ![Change the table name.](images/change-table-name.png)
 
-    The **Link Cloud Object** page is re-displayed.
+    The **Link Data** page is re-displayed.
 
     ![The changed table name is displayed.](images/table-name-changed.png)
 
-4. Click **Start**. A **Run Data Load Job** dialog box is displayed. Click **Run**. When the job completes successfully, a green **Complete** icon with a checkmark is displayed. The **`CUSTOMER_SHARE`** external table is created. Click **Done**.
+4. Click **Start**. A **Start Link from Cloud Store** dialog box is displayed. Click **Run**. When the job completes successfully, a green **Complete** icon with a checkmark is displayed. The **`CUSTOMER_CONTACT_SHARE`** external table is created. Click **Done**.
 
     ![The link job is completed.](images/link-job-complete.png)
 
@@ -197,7 +197,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

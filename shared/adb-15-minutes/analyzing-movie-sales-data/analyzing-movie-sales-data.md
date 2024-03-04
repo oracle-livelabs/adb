@@ -142,4 +142,4 @@ We accomplished alot in just 15 minutes!
 ## **Acknowledgements**
 
 - **Authors** - Marty Gubar, Oracle Autonomous Database Product Management
-- **Last Updated By/Date** - Katherine Wardhana, November 2023
+- **Last Updated By/Date** - Katherine Wardhana, User Assistance Developer, February 2024

@@ -4,7 +4,7 @@
 
 In this lab, you will create a **data share provider** user and grant this user the necessary role and privileges. You will also create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
-![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
+![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png =65%x*)
 
 Estimated Time: 15 minutes
 
@@ -24,7 +24,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
@@ -146,19 +146,11 @@ You should store the data share data in Object Storage. You will then create a l
 
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through this entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **My profile**.
 
-In this task, you will get the following items that are required to create a Cloud location in the next task.
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
 
-+ An RSA key pair in PEM format (minimum 2048 bits). See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).
-+ The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
-+ The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
-
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
-
-    ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
-
-2. The **User Details** page is displayed. Scroll down the page to the **Resources** section, and then click **API Keys**.
+2. The **My profile** page is displayed. In the **User Information** tab, you can click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
@@ -166,7 +158,7 @@ In this task, you will get the following items that are required to create a Clo
 
     ![Click Add API Key.](./images/click-add-api-key.png " ")
 
-4. Click **Download Private Key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Private Key**.
+4. Click **Download private key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download private key**.
 
     ![Download private key.](./images/download-private-key.png " ")
 
@@ -178,27 +170,21 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-private-key.pem`**
 
-5. In most cases, you do not need to download the public key; however, you can download the public key for future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
+5. In most cases, you do not need to download the public key; however, you can download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
 
-    ![Download public key.](./images/download-public-key.png " ")
-
-    The name of the downloaded public key is usually as follows:
-
-    **`oraclecloudidentityservice_username-date_public.pem`**
-
-    Rename your downloaded private key to something shorter such as:
-
-    **`oci-api-public-key.pem`**
-
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+6. A checkmark should appear next to each button. Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Click the **Copy** link to copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to your clipboard and then paste it into a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
 
     ![Credentials items.](./images/credentials-items.png " ")
 
-7. Click **Close**.
+    You can access the downloaded private key and then paste the key value in the above text editor file as you will need the value in the next task.
+
+    ![Private key value.](./images/get-private-key-value.png " ")
+
+7. In the **Configuration File Preview** dialog box, click **Close**.
 
 ## Task 5: Create an OCI Native Credential as the share_provider User
 
@@ -268,7 +254,7 @@ To access data in the Object Store, you need to enable your database user to aut
     </copy>
     ```
 
-    You are able to access the bucket but since you have not uploaded any files to it, no rows are returned.
+    You are able to access the bucket but since you have not uploaded any files to it, you will get the message **No rows are returned** in the **Script Output**.
 
     ![Access user bucket.](images/access-user-bucket.png)
 
@@ -324,7 +310,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
