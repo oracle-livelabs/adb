@@ -55,11 +55,11 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
   ![Open Cloud Shell](./images/open-cloudshell.png "")
 
-2. Run the following command:
-**TO DO: his needs to be uploaded to the public bucket in livelabs**
+2. Run the following command to download the React application:
+
     ```
     <copy>
-    wget https://adwc4pm.objectstorage.us-chicago-1.oci.customer-oci.com/n/adwc4pm/b/wget-link/o/movie-app.zip
+    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/JnW5Gl5btrPK_vx66MqWktIB_GKmdEkosRDcehPvc5hTGheJdD41pq2PmsBbdUUU/n/c4u04/b/building_blocks_utilities/o/select-ai-react-app/movie-app.zip
     unzip movie-app
     cd movie-app
     </copy>
