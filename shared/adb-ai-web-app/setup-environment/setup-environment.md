@@ -31,7 +31,7 @@ In this lab, you will:
 * Create an OCI Compartment 
 * Run the stack to perform all the prerequisites required to analyze data
 
-## Task 1: Create an OCI Compartment
+## (Optional) Task 1: Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
