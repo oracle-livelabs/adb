@@ -6,7 +6,11 @@ comments syntax
 
 ## Introduction
 
-This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
+This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. 
+
+> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** region in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+
+To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
 * Connects your Autonomous Database to OCI Generative AI service
