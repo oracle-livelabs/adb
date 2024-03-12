@@ -85,13 +85,13 @@ For a complete list of the Select AI profile attributes, see the [DBMS_CLOUD_AI_
 <copy>
 BEGIN
     -- drop the AI profile
-    DMBS_CLOUD_AI.drop_profile (
+    DBMS_CLOUD_AI.drop_profile (
         profile_name => 'genai',
         force => true
         );
 
     -- create an AI profile that uses the default COHERE model on OCI
-    DMBS_CLOUD_AI.create_profile(
+    DBMS_CLOUD_AI.create_profile(
         profile_name => 'genai',
         attributes =>       
             '{"provider": "oci",
