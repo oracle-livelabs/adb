@@ -84,7 +84,7 @@ Estimated Lab Time: 20 minutes
 
     ![](./images/10.png " ")
 
-3. Before Importing the skill in the next step, please make sure you **download** this file via this text link: [Download DemoDigitalAssistantSkill.zip here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/CSv7IOyvydHG3smC6R5EGtI3gc1vA3t-68MnKgq99ivKAbwNf8BVnXVQ2V3H2ZnM/n/c4u04/b/livelabsfiles/o/solutions-library/DemoDigitalAssistantSkill.zip)
+3. Before Importing the skill in the next step, please make sure you **download** this file via this text link: [Download DemoDigitalAssistantSkill.zip here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/solutions-library/DemoDigitalAssistantSkill.zip)
 
 4. On the skill, click on the **Import Skill** button in the top right corner.
 
