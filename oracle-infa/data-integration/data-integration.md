@@ -17,7 +17,7 @@ In this lab, you will:
 ### **Assets**
 
 PDF
-* [Lab 3: Enriching Your Data](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ei1_2QRw4M8tQpk59Qhao2JCvEivSAX8MGB9R6PfHZlqNkpkAcnVg4V3-GyTs1_t/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2003%20-%20Cloud%20DQ%20+%20DI%20-OCI.pdf) 
+* [Lab 3: Enriching Your Data](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2003%20-%20Cloud%20DQ%20+%20DI%20-OCI.pdf) 
 
 
 ## Learn More

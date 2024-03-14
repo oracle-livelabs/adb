@@ -15,7 +15,7 @@ In this lab, you will:
 ### **Assets**
 
 PDF
-* [Lab 0: Database Mass Ingestion](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ei1_2QRw4M8tQpk59Qhao2JCvEivSAX8MGB9R6PfHZlqNkpkAcnVg4V3-GyTs1_t/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2000%20-%20Mass%20Ingestion%20Database_OCI.pdf) 
+* [Lab 0: Database Mass Ingestion](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2000%20-%20Mass%20Ingestion%20Database_OCI.pdf) 
 
 
 ## Learn More

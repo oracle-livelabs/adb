@@ -23,7 +23,7 @@ To complete this lab, you must have:
 ## Task 1: Understand the Sample JSON Files
 In this step you are going to understand the structure of the two sample JSON files (_sample\_skills.json_ and _sample\_users.json_). However, you should know that you can change these ones in any way, depending on your business need.
 
-1. Download the two sample JSON files [here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Lab4-Sample_JSON.zip).
+1. Download the two sample JSON files [here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Lab4-Sample_JSON.zip).
 
 2. The first, and the most important one is the _sample\_skills.json_ file. This file represents the main data source for the application that is going to be build in these labs.
 
@@ -52,7 +52,7 @@ In this step you are going to understand the structure of the two sample JSON fi
     The users in the application presented will have 3 roles which will be determined based on the **is\_admin** and **is\_mgr** tags, as shown in the table below.
 
     | ROLE    | VALUE FOR is_admin | VALUE FOR is_mgr |
-    |---------|--------------------|------------------|
+    | ------- | ------------------ | ---------------- |
     | ADMIN   | Y                  | Y or N           |
     | MANAGER | Y or N             | Y                |
     | USER    | N                  | N                |
