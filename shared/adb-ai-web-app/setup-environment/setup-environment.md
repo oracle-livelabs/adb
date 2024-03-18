@@ -6,7 +6,11 @@ comments syntax
 
 ## Introduction
 
-This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
+This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. 
+
+> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** region in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+
+To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
 * Connects your Autonomous Database to OCI Generative AI service
@@ -31,7 +35,7 @@ In this lab, you will:
 * Create an OCI Compartment 
 * Run the stack to perform all the prerequisites required to analyze data
 
-## Task 1: Create an OCI Compartment
+## (Optional) Task 1: Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
@@ -86,7 +90,13 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
     * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `us-chicago-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
     * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
-        >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    
+    
+    >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    
+    * **Do you want a always Free Oracle Autonomous Database instance?** Accept the default **`false`** value. Select **`true`** from the drop-down list if you want to deploy an Always Free database.
+
+        ![Provision an always free ADB instance](./images/provision-always-free.png "")
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.

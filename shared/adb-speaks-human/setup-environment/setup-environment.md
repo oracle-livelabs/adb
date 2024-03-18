@@ -133,7 +133,10 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
     * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `ca-toronto-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
     * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
-        >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+
+
+    >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    
     * **Do you want a always Free Oracle Autonomous Database instance?** Accept the default **`false`** value. Select **`true`** from the drop-down list if you want to deploy an Always Free database.
 
         ![Provision an always free ADB instance](./images/provision-always-free.png "")

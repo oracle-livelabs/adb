@@ -4,7 +4,7 @@
 
 In this lab, we will create a ATP to import a schema for the data. We will review the process for creating the Autonomous Transaction Processing (ATP) instance, Schema for the APEX workspace, and import the APEX app, along with the DDL.
 
-Download the SQL files for the lab: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+Download the SQL files for the lab: [Link](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
 
 Estimated Time: 20 minutes
 
@@ -106,7 +106,7 @@ This lab assumes you have:
 
 3. Select **Upload** to browse and upload the sql files (Except for the apexApplicationHackathon.sql script - that will be used for task 4).
 
-    - Download the lab files if you haven't already: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+    - Download the lab files if you haven't already: [Link](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
 
     ![Upload SQL scripts from menu](images/upload-scripts.png) 
 
