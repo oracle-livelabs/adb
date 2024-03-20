@@ -15,7 +15,7 @@ In this lab, you will:
 ### **Assets**
 
 PDF
-* [Lab 2: Cloud Data Quality](https://objectstorage.us-ashburn-1.oraclecloud.com/p/Ei1_2QRw4M8tQpk59Qhao2JCvEivSAX8MGB9R6PfHZlqNkpkAcnVg4V3-GyTs1_t/n/c4u04/b/livelabsfiles/o/oci-library/LAB%2002%20-%20Cloud%20Data%20Quality%20-%20OCI.pdf) 
+* [Lab 2: Cloud Data Quality](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/oci-library/LAB%2002%20-%20Cloud%20Data%20Quality%20-%20OCI.pdf) 
 
 
 ## Learn More
