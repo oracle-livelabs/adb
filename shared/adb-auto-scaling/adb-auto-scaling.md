@@ -209,7 +209,7 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
   ![Execute command, query 3.](./images/run-query-3.png " ")
 
-4. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 2 ECPU system, go to your Autonomous Database's console page and click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and look at the Monitored SQL to see that each worksheet is running your procedure.
+4. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 2 ECPU system, Navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure.
 
     ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-with-auto-scaling-disabled.png " ")
 
