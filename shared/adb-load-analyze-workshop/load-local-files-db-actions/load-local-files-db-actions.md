@@ -2,13 +2,7 @@
 
 ## Introduction
 
-This workshop practices multiple methods for loading data into an Oracle Autonomous Database. In this data loading lab, you practice loading data from files on your local computer. You will download to your local computer two CSV files from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html), and then load them into your Oracle Autonomous Database instance in preparation for exploration and analysis.
-
-You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the built-in tools as in this lab, or you can use other Oracle and third party data integration tools. With the built-in tools, you can load data:
-
-+ from files in your local device
-+ from tables in remote databases
-+ from files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, Google Cloud Storage)
+In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in Database Action tools, or using other Oracle and third party data integration tools.
 
 You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
 
@@ -17,80 +11,129 @@ You can also leave data in place in cloud object storage, and link to it from yo
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load Data from Local Files](videohub:1_q7r7bcp0)
+
+[](youtube:B9iWOaO4RG0)
 
 ### Objectives
 
 In this lab, you will:
-* Download to your local computer two CSV files from the MovieStream data lake
-* Navigate to the Data Load utility of Oracle Autonomous Database Data Tools
-* Load data from the CSV file to your autonomous database
+* Download two **.csv** data files to your local computer from the MovieStream data lake (Oracle Object Storage buckets).
+* Navigate to the Data Load utility of Oracle Autonomous Database Data Tools.
+* Load data from the .csv files to your autonomous database instance.
 
 ### Prerequisites
 
-- This lab requires completion of lab **Provision an Autonomous Database** found in the Contents menu on the left.
+This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
-## Task 1: Download CSV files from the MovieStream data lake to your local computer
+## Task 1: Log in to the Oracle Cloud Console
 
-1. Right-click on the links below and click **Save Link As...** to download the files to your computer.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+
+## Task 2: Download .csv Files from the MovieStream Data Lake to your Local Computer
+
+Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
+
+1. Right-click on each of the links below, and then click **Save link as...** from the context menu to download the files to a folder on your local computer.
 
     * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
     * [Download customer-extension.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
 
+2. Close the Excel files and make a note of your folder location as you will use the two downloaded files in a later task in this lab.
 
-2. Make note of the folder location - you will be using these files in just a minute!
+## Task 3: Navigate to the Data Load Page
 
-## Task 2: Navigate to Database Actions and open the Data Load utility
+1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
 
-1. Navigate back to the Data Load main page by returning to the Database Actions Launchpad and in the **Data Studio** section, click **DATA LOAD**. If you closed Database Actions, then you'll need to navigate to the Data Load utility following the steps found in the previous lab *Load Data from Object Storage Public Buckets*.
+2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-    ![Go to DB Actions](./images/navigate-back-to-data-load.png)
+3. On the **Autonomous Databases** page, click your ADB instance. Make sure you select the appropriate compartment from the **Compartment** drop-down list in the **List Scope** section.
 
+    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
-## Task 3: Load data from the CSV files using the Data Load utility
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **View all database actions**.
 
-In this task you perform a simple data loading task, to load CSV file data into two different tables in your Autonomous Database.
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-1. Leave the default selections, **LOAD DATA** and **LOCAL FILE**, and click **Next**.
+5. The **Database Actions Launchpad** Home page is displayed _in a new tab_ in your browser. Scroll-down to the **Data Studio** section, and then click the **DATA LOAD** card.
+
+    ![The Database Actions Launchpad page is displayed.](./images/launchpad-page.png =70%x*)
+
+5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
+
+    ![The Data Load Home page is displayed.](./images/data-load-home.png =70%x*)
+
+## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
+
+In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous Database instance.
+
+1. On the **Data Load** page, click the **LOAD DATA** card.
+
+2. On the **Load Data** page, the **Local File** button is selected by default. In the **Load data from local files** section, you can either drag and drop files to upload, or click **Select Files** to select the files to upload. Click **Select Files**.
 
     ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png " ")
 
-2. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the *customer\_segment.csv* and *customer\_extension.csv* files from the directory where you downloaded onto the Drag and Drop target. Or select the files using the Select Files pop-up dialog.
+3. In the **Open** dialog box, navigate to the directory that contains the two **.csv** files that you downloaded earlier. Select the **`customer_segment.csv`** and **`customer_extension.csv`** files, and then click **Open**.
 
-    ![Drag and drop or select the file.](./images/datatools-dataload-load-local-file.png " ")
+    ![Select the two files.](./images/open-dialog-box.png " ")
 
-3. When the upload is complete, you could simply click the **Start** button and click **Run** to run the data load job, but we want to make a small update to the table name for file name *customer-extension.csv*. Click the 3-dot ellipsis menu to the right of *customer-extension.csv* and click the **Settings** button labeled with a pencil symbol.
+    >**Note:** If you have an issue uploading both files simultaneously, you can select one file at a time. Select the first downloaded file using step 3. When the file is uploaded, click the **Select Files** icon on the **Load Data** page, and then select the second file.
 
-    ![Update the data load job settings.](./images/click-settings-to-examine-data-load-job.png " ")
+    ![Select the one file at a time.](./images/select-second-file.png " ")
 
-4. A page opens for the local *customer-extension.csv* file that you will be loading. Take a moment to examine the preview information and loading options. Note that the tool makes intelligent choices for target table name and properties.  Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types.
+4. When the upload is complete, you will make a small change to the default table name that will be created for the *customer-extension.csv* file. Click the **Settings** (pencil) icon to the right of *customer-extension.csv*.
 
-    Update the table name to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
+    ![Update the data load job settings.](./images/click-settings.png " ")
 
-    ![Examine the editor of the data load job.](./images/examine-data-load-job-editor.png " ")
+5. The **Load Data from Local File customer-extension.csv** page is displayed. Take a moment to examine the settings. The tool makes intelligent choices for target table name and its properties. Since this is an initial load, accept the default option of **Create Table** to create the target table in your Autonomous Database. In the mappings section, you can change the target column names, data types, and length/precision.
 
-5. Click the green arrow **Start** button, and then click **Run** in the confirmation dialog.
+    ![Examine the editor of the data load job.](./images/preview-table.png " ")
 
-    ![Run the data load.](./images/run-the-data-load.png " ")
+7. In the **Name** field, change the table name that will be created from **CUSTOMEREXTENSION** to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
 
-6. When the load job finishes, a green check mark appears for each table. Click **Catalog** in the menu on the left.
+    ![Examine the editor of the data load job.](./images/change-table-name.png " ")
+
+8. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
+
+    ![Run the data load.](./images/click-start.png " ")
+
+9. When the load job is complete, a green check mark appears next to each table. Click **Catalog** in the menu on the left.
 
     ![Click Catalog in the menu on the left.](./images/click-catalog.png " ")
 
-7. The Catalog shows the *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION* tables have been successfully created. You can click a table name to see the data.
+    > **Note:** If the menu on the left is collapsed, click the double arrows icon to expand it so that the label for each icon is displayed.
 
-    ![View the new table in the Catalog.](./images/view-new-table.png " ")
+    ![Click Expand to expand the menu on the lef.](./images/expand-menu.png " ")
 
-    ![See the new table's data.](./images/see-new-table-data.png " ")
+10. The Catalog displays the two newly created tables: *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION*.
 
-This completes the lab on loading CSV files from your local computer.
+    ![View the new table in the Catalog.](./images/display-new-tables.png " ")
 
-You may now **proceed to the next lab**.
+    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data.
+
+    ![Click customer_segment to display its data.](./images/customer-segment-data.png " ")
+
+11. When finished, click **Close**, and then click the **Data Load** in the menu on the left. Click **Done**.
+
+    ![Click Done.](./images/click-done.png " ")
+
+    The **Data Load** page is re-displayed.
+
+This completes the lab on loading .csv files from your local computer to new tables in your ADB instance.
+
+You may now proceed to the next lab.
+
+## Learn More
+
+* [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
-* **Author** - Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Rick Green, February 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributors:**
+    * Mike Matthews, Autonomous Database Product Management
+    * Marty Gubar, Autonomous Database Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, March 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
