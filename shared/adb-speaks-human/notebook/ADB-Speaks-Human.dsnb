@@ -1,6 +1,6 @@
 [
   {
-    "name" : "ADB-Speaks-Human (1)",
+    "name" : "ADB-Speaks-Human",
     "description" : null,
     "tags" : null,
     "version" : "6",
@@ -168,8 +168,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039315010,
-          "endTime" : 1711039317685,
+          "startTime" : 1712254934363,
+          "endTime" : 1712254937064,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -236,7 +236,7 @@
         "title" : "Ask a general question",
         "hasTitle" : true,
         "message" : [
-          "%sql",
+          "%script",
           "select ai chat what are considered the best movies produced in the past 20 years"
         ],
         "selectedVisualization" : "raw",
@@ -249,9 +249,9 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974307332,
-          "endTime" : 1710974312175,
-          "interpreter" : "sql.low",
+          "startTime" : 1712254945198,
+          "endTime" : 1712254949505,
+          "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
           "results" : null,
@@ -499,7 +499,7 @@
         "title" : "Action: narrate",
         "hasTitle" : true,
         "message" : [
-          "%sql",
+          "%script",
           "",
           "",
           "select ai narrate what are our total sales"
@@ -514,9 +514,9 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974317637,
-          "endTime" : 1710974321043,
-          "interpreter" : "sql.low",
+          "startTime" : 1712255048837,
+          "endTime" : 1712255051142,
+          "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
           "results" : null,
@@ -533,7 +533,7 @@
         "title" : "Action: showsql",
         "hasTitle" : true,
         "message" : [
-          "%sql",
+          "%script",
           "",
           "",
           "select ai showsql what are our total sales"
@@ -548,9 +548,9 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974321538,
-          "endTime" : 1710974323218,
-          "interpreter" : "sql.low",
+          "startTime" : 1712255033790,
+          "endTime" : 1712255035405,
+          "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
           "results" : null,
@@ -567,7 +567,7 @@
         "title" : "Action: showsql",
         "hasTitle" : true,
         "message" : [
-          "%sql",
+          "%script",
           "",
           "",
           "select ai explainsql what are our total sales"
@@ -582,9 +582,9 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039473464,
-          "endTime" : 1711039477951,
-          "interpreter" : "sql.low",
+          "startTime" : 1712255012386,
+          "endTime" : 1712255016091,
+          "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
           "results" : null,
@@ -811,7 +811,7 @@
         "title" : "Model maps starring to ACTOR column",
         "hasTitle" : true,
         "message" : [
-          "%sql",
+          "%script",
           "",
           "",
           "select ai showsql select ai what are our sales for movies starring Harrison Ford broken out by movie;"
@@ -879,7 +879,7 @@
         "title" : "Model knows A&A are genres",
         "hasTitle" : true,
         "message" : [
-          "%sql",
+          "%script",
           " ",
           "",
           "select ai showsql what are the most popular devices when watching Action and Adventure movies;"
