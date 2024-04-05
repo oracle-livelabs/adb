@@ -254,12 +254,12 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of data transform service start](images/image15_transform_start.png)
 
-4.  It will take up to 6 minutes for the service to be started for the first time. Once
+4.  It will take up to 3-5 minutes for the service to be started for the first time. Once
     provisioned you will see the following home screen.
 
     >**Note:** The Data Transforms tool is provisioned based on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be started again. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
+    be started again. Maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
