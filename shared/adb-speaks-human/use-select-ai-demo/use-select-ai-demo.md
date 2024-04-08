@@ -25,19 +25,19 @@ In this lab, you will:
 
 1. Copy the **Select AI demo** application URL that you saved in a text editor.
 
-    ![Copy the URL value](./images/demo-credentials-file.png " ")
+    ![Copy the URL value](./images/demo-credentials-file.png =65%x*)
 
     Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **ChatDB** page, enter the username (`moviestream`) and password that you saved in your text editor file, and then click **Sign In**.
 
-    ![Enter ChatDB credentials](./images/ai-select-credentials.png " ")
+    ![Enter ChatDB credentials](./images/ai-select-credentials.png =70%x*)
 
-2. On the **AI ChatDB** page, select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`OPENAI_GPT35`** profile that was created in the **Create credential and AI profile** paragraph in the notebook that you imported in the **Lab 3**.
+2. On the **ChatDB** page, select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`OPENAI_GPT35`** profile that was created in the **Create credential and AI profile** paragraph in the notebook that you imported in the **Lab 3**.
 
-    ![Select AI profile](./images/select-profile.png " ")
+    ![Select AI profile](./images/select-profile.png =70%x*)
 
     The ChatDB application is displayed. You are now ready to ask questions at the **Ask a question** prompt!
 
-    ![Select AI application displayed](./images/select-ai-application.png " ")
+    ![Select AI application displayed](./images/select-ai-application.png =70%x*)
 
 ## Task 2: Ask Natural Language and Database Questions Using the Application
 
@@ -46,12 +46,12 @@ You can use this application to ask the following types of questions:
 - **Ask the Internet Using your LLM Provider:**
 _Uncheck the **Ask Database** checkbox_ to ask general free form questions (internet-based) about anything such as _How do you make french toast?_. This question will go to the LLM Provider that you selected when you created the profile and returns the answer.
 
-  ![Ask the internet](./images/ask-internet.png " ")
+  ![Ask the internet](./images/ask-internet.png =70%x*)
 
 - **Ask your Database :**
 _Select the **Ask Database** checkbox_ to ask questions about your business data based on the user and tables in the database that you specified when you created the profile.
 
-  ![Ask the database](./images/ask-database.png " ")
+  ![Ask the database](./images/ask-database.png =70%x*)
 
   <!---
   Where do you specify what LLM provider and database schema/tables to use when answering your questions? When you create the profile using **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL procedure, you specify the LLM provider, the credential, the schema, and the tables to use to answer your natural language questions on general data or your business data that is stored in your database.
@@ -65,31 +65,31 @@ Let's experiment a bit with both general data from the `internet` and also from 
 
     >**Note:** You can type your own natural language question. You don't have to use the exact question that we show in our examples.
 
-    ![How to make french toast question](./images/french-toast-question.png " ")
+    ![How to make french toast question](./images/french-toast-question.png =70%x*)
 
     A French toast recipe is displayed.
 
-   ![How to make french toast answer](./images/french-toast-answer.png " ")
+   ![How to make french toast answer](./images/french-toast-answer.png =70%x*)
 
 2. Let's find out the top 10 streamed movies in the moviestream company. Enter your question using a free form format in the **Ask a Question** text box, and select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 
-    ![Top 10 streamed movies](./images/top-10-movies.png " ")
+    ![Top 10 streamed movies](./images/top-10-movies.png =70%x*)
 
     The top 10 streamed movies are displayed in descending order.
 
-    ![Top 10 streamed movies result](./images/top-10-movies-result.png " ")
+    ![Top 10 streamed movies result](./images/top-10-movies-result.png =70%x*)
 
 3. Click the **Explain** link to view and explain the SQL query behind this natural language question.
 
-  ![View and explain query](./images/explain-query-1.png " ")
+  ![View and explain query](./images/explain-query-1.png =70%x*)
 
   When you finish, click the **Close SQL** icon (left arrow) to return to the Home page. Click the **Explore** link to display the **Explore** page.
 
-  ![The Explore page](./images/explore-page.png " ")
+  ![The Explore page](./images/explore-page.png =70%x*)
 
 4. Click the **Actions** drop-down list to perform several tasks on the generated data such as sorting, downloading, formatting, charting and much more. For details on using the actions tasks, see the embedded video in the Introduction section of this lab. Click the **Close SQL** icon (left arrow) to return to the Home page.
 
-  ![Actions drop-down list](./images/actions.png " ")
+  ![Actions drop-down list](./images/actions.png =70%x*)
 
   >**Note:** _LLMs are remarkable at inferring intent from the human language and they are getting better all the time; however, they are not perfect! It is very important to verify the results._
 
@@ -103,11 +103,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
   * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
   * **Contributors:** Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

@@ -2,7 +2,7 @@
 
 ### **Introduction**
 
-In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query twice. You will be running this procedure from 3 SQL Developer Web worksheet sessions concurrently to see how CPU is utilized with and without auto scaling.
+In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query twice. You will be running this procedure from 3 SQL Developer Web worksheet sessions concurrently to see how the CPU is utilized with and without auto scaling.
 
 Estimated time: 30 minutes
 
@@ -15,7 +15,7 @@ With auto scaling enabled, the database can use up to **three times** more CPU a
 
 When you enable auto scaling, if your workload requires additional CPU and IO resources, the database automatically uses the resources without any manual intervention required.
 
-**Note**: You don't need to perform a "triggering action" after which your database can start to scale; the additional CPU and IO are **always** available to you.
+> **Note:** You don't need to perform a "triggering action" after which your database can start to scale; the additional CPU and IO are **always** available to you.
 
 ![Conceptual illustration of auto scaling](./images/auto-scaling-symbol.jpg " ")
 
@@ -29,9 +29,9 @@ The customer is charged only for the actual average number of ECPUs used per hou
 
 ### Objectives
 
--   Learn the benefits of auto scaling
--   Learn how to enable and disable auto scaling
--   Examine the performance benefits of auto scaling
+- Learn the benefits of auto scaling
+- Learn how to enable and disable auto scaling
+- Examine the performance benefits of auto scaling
 
 ### How You Will Test a Real-World Auto Scaling Example in this Lab
 
@@ -41,37 +41,46 @@ The **business case** we want to answer here is to **summarize orders by month a
 - **Test 2**: You will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more ECPUs, reducing your execution times significantly.
 
 ## **Test 1 - Auto Scaling Disabled**
+
 In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
 
 ## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your ADW Database
 
-1. You created an Autonomous Data Warehouse database **ADW\_Finance\_Mart** in the earlier lab named *Provision Autonomous Database*. In the previous lab named *Scale for Performance* you increased the ECPU count from 2 to 16 ECPUs. Let's bring the ECPU count back to 2 ECPUs, and disable Compute auto scaling. Go to the Autonomous Database details page for the database, and click **Manage resource allocation**. In the Manage resource allocation dialog, change the ECPU count from 16 back to 2. Then deselect the **Compute auto scaling** checkbox to disable auto scaling if you have not done so already. Click **Apply**, which will close the dialog and return you to the details page for the database.
+1. You created the **ADW\_Finance\_Mart** Autonomous Data Warehouse database in the earlier lab named *Provision Autonomous Database*. In the previous lab named *Scale for Performance* you increased the ECPU count from 2 to 16 ECPUs. Let's bring the ECPU count back to 2 ECPUs, and disable Compute auto scaling. Go to the Autonomous Database details page for the database, and click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** back to **`2`**. Next, deselect the **Compute auto scaling** checkbox to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous Database details** page is re-displayed.
 
     ![Remove the checkbox for ECPU auto scaling.](images/disable-auto-scaling.png " ")
 
-2. On the Autonomous Database details page, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** button. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click the **SQL** card. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
+2. Wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** drop-down list, and then select **SQL**.
 
-    ![Click SQL card in Database Actions Launchpad.](./images/database-actions-launchpad.png " ")
+    >**Note:** You can alternatively use SQL Developer desktop client instead of SQL Developer Web.
 
-3. Create and save 4 SQL Developer Web worksheets. In SQL Developer Web worksheets, you choose the consumer group from the drop-down menu in the upper-right corner.:
+    ![Click SQL from the Database Actions drop-down list.](./images/select-sql-database-action.png " ")
+
+3. Create and save 4 SQL Developer Web worksheets. In SQL Developer Web worksheets, you choose the consumer group from the drop-down menu in the upper-right corner:
     - Save the first worksheet with the name **Setup**. You will use this worksheet with the LOW consumer group in Task 2, to run the setup that creates a procedure for running test queries. The LOW consumer group is appropriate for non-CPU-intensive tasks such as this creation of a procedure.
-    - Save the other 3 worksheets with the names **Query 1**, **Query 2**, and **Query 3**. In later tasks, you will use these 3 worksheets to simultaneously run the test queries using the HIGH consumer group. For real production workloads, you will typically use the MEDIUM or HIGH consumer groups, since they have higher parallelism and lower concurrency. A worksheet using the HIGH consumer group gets top priority. You may read [more about consumer groups here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-priorities.html#GUID-80E464A7-8ED4-45BB-A7D6-E201DD4107B7).
+    - Repeat the previous step and save the other 3 worksheets with the names **Query 1**, **Query 2**, and **Query 3**. In the next task, you will use these 3 worksheets to simultaneously run the test queries using the HIGH consumer group. For real production workloads, you will typically use the MEDIUM or HIGH consumer groups, since they have higher parallelism and lower concurrency. A worksheet using the HIGH consumer group gets top priority. You may read [more about consumer groups here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-priorities.html#GUID-80E464A7-8ED4-45BB-A7D6-E201DD4107B7).
 
-  ![Save the worksheets.](./images/save-worksheets.png " ")
+      ![Save the worksheets.](./images/save-worksheets.png " ")
 
-    **Note:** When you re-open a saved worksheet, it opens by default with the LOW consumer group. If you want to run a script in the re-opened worksheet using the HIGH consumer group, you need to manually change it from LOW to HIGH. For more information on using the HIGH, MEDIUM and LOW consumer groups, see the documentation [Predefined Database Service Names for Autonomous Data Warehouse](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-predefined.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE).
+4. Click the worksheet's drop-down list, and then select **Open Recent** to display your 4 saved worksheets.
 
-  ![Consumer Group drop-down menu showing HIGH highlighted.](./images/create-four-worksheets.png " ")
+      ![List the saved the worksheets.](./images/list-saved-worksheets.png " ")
+
+    >**Note:** When you re-open a saved worksheet, it opens by default with the LOW consumer group. If you want to run a script in the re-opened worksheet using the HIGH consumer group, you need to manually change it from LOW to HIGH. For more information on using the HIGH, MEDIUM and LOW consumer groups, see the documentation [Predefined Database Service Names for Autonomous Data Warehouse](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/connect-predefined.html#GUID-9747539B-FD46-44F1-8FF8-F5AC650F15BE).
+
+  ![Consumer Group drop-down menu showing HIGH highlighted.](./images/consumer-group-options.png " ")
 
 ## Task 2: Create the `test_proc` Procedure to Generate the Test Workload
 In this task, you run a script that will:
-- Create the procedure **test\_proc** for the workload used in the test.
-    - When this procedure is executed, it will run a query in a loop 2 times, to answer the business case from our [SSB database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B): Aggregate orders by month and city, for customers in the US, in the Fall of 1992.
-    - After performing this lab, you may go back and increase the `i_executions` number for further testing.)
+- Create the procedure **`test_proc`** for the workload used in the test.
+- When this procedure is executed, it will run a query in a loop 2 times, to answer the business case from our [SSB database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B):    
+_Aggregate orders by month and city, for customers in the US, in the Fall of 1992_.
 - Create a sequence used for each test number.
 - Create the table used to save the results.
 
-1. Copy and paste the following script into the first worksheet you named **Setup**. Run the following script using the LOW consumer group.
+    >**Note:** After performing this lab, you may go back and increase the `i_executions` number for further testing.
+
+1. Copy and paste the following script into the first worksheet you named **Setup**. Run the following script using the **LOW** consumer group. Click the **Run Script** icon in the toolbar.
 
     ```
     <copy>-- Create a sequence to increment the number of tests running
@@ -175,26 +184,38 @@ In this task, you run a script that will:
     /
     </copy>
     ```
+  
+  ![Run the script.](./images/run-script.png " ")
 
 ## Task 3: Run the `test_proc` Procedure Concurrently in Three Worksheets
 
-1. Open 3 worksheets you named **Query 1**, **Query 2**, and **Query 3**. To open 3 SQL Developer Web worksheets, simply go back to the OCI console's Details page for your database, click the **Database Actions** button and in the Database Actions **Launchpad**, click the **SQL** card to open a SQL worksheet in a tab in your browser. Do this 3 times so that you have 3 SQL worksheets open in your browser. In the first SQL worksheet, select your saved Query 1. In the second worksheet, select Query 2. In the third worksheet, select Query 3.
+1. Open the 3 worksheets that you saved earlier, namely, **Query 1**, **Query 2**, and **Query 3**. To open 3 separate SQL Developer Web worksheets, go to the browser tab that shows the **Autonomous Database details** page. Click the **Database actions** drop-down list, and then select **SQL**. The worksheet is displayed in a new tab in your browser. Repeat this process to open two additional worksheets.
 
-    ![Click the SQL card.](./images/database-actions-launchpad.png " ")
+2. In the first new worksheet, click worksheet drop-down list, select **Open Recent**, and then select your saved **Query 1**. Repeat this process to display **Query 2** and **Query 3** in the other two new worksheets.
 
-2. **Make sure that each of the 3 worksheets are set to the HIGH consumer group.** Enter - but do not immediately execute - the following execute command in each worksheet. After you have entered the command into all 3 worksheets, quickly execute the command in each worksheet so that they begin at nearly the same time.
+    ![Query 3 is displayed in one of the new worksheets.](./images/query3-worksheet.png " ")
+
+3. **Make sure that each of the 3 worksheets are set to the HIGH consumer group.** Copy and paste the following execute command in each worksheet; however, **_do not run the command yet_**. After you have entered the command into all 3 worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
 
     ```
+    <copy>
     exec test_proc;
+    </copy>
     ```
 
-3. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 1 OCPU system (you will see different execution times using 2 ECPUs), go to your Autonomous Database's console page and click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and look at the Monitored SQL to see that each worksheet is running your procedure.
+  ![Execute command, query 1.](./images/run-query-1.png " ")
+
+  ![Execute command, query 2.](./images/run-query-2.png " ")
+
+  ![Execute command, query 3.](./images/run-query-3.png " ")
+
+4. While the 3 procedure instances are running concurrently, which in our test runs for approximately 4.5 minutes on a 2 ECPU system, Navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In Performance Hub, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure.
 
     ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-with-auto-scaling-disabled.png " ")
 
 4. Go back to your SQL Developer Web worksheets. Make sure all 3 tests in the worksheets indicate that the queries have **executed** completely. You can see if the test procedure is still running, completed successfully or failed in the worksheet's status at the bottom of the page.
 
-    **Note**: If your test procedure fails after running for a while, you may be behind a VPN that is timing out your query. You may need to disconnect from that VPN to run this test.
+    >**Note:** If your test procedure fails after running for a while, you may be behind a VPN that is timing out your query. You may need to disconnect from that VPN to run this test.
 
     ![Screenshot of a Worksheet indicating that the PL/SQL procedure completed successfully.](./images/procedure-successfully-completed.png " ")
 
@@ -222,11 +243,11 @@ In this task, you run a script that will:
     </copy>
     ```
 
-6. Review the results of running the test. Notice that in our run using a single OCPU:
+6. Review the results of running the test. Notice that we are using two ECPUs:
     - The average time each query ran was 275.5 seconds.
     - The total time the test ran was 581.5 seconds.
 
-    (**Note**: The value CPU\_COUNT displays 2x the number of ECPUs available, as each ECPU has 2 CPU threads. Thus, for this test's use of 1 single OCPU we see the CPU_COUNT of 2.)
+      > **Note:** The **`CPU_COUNT`** value is equivalent to the number of ECPUs available; therefore, for this test, using **`1`** single ECPU, the **`CPU_COUNT`** value is **`1`**.
 
     ![Screenshot shows the results of running the test.](./images/test-one-results.png " ")
 
@@ -291,7 +312,7 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
     - The number of ECPUs available to the database jumps by 3x; in our example, from 2 ECPUs to 6 ECPUs.
 
-      (Note: The value CPU\_COUNT displays 2x the number of ECPUs available, as each ECPU has 2 CPU threads. Thus, we see the CPU_COUNT values displayed jump from 4 to 8.)
+        >**Note:** The **`CPU_COUNT`** value is equivalent to the number of available ECPUs; therefore, for this test, we see the **`CPU_COUNT`** value jumps from **`2`** to **`6`**.
 
     - All 3 running sessions now had access to 3x the amount of CPU and IO.
 
@@ -301,7 +322,7 @@ In tasks 4 through 6, you will enable auto scaling and again have 3 SQL Develope
 
     ![Screenshot of Performance Hub Activity panel showing ASH Analytics panel.](./images/drag-rectangle-to-cover-period-of-queries.png " ")
 
-4. Scroll down and view the **Average Active Sessions** chart. View the Average Active Sessions chart by Wait Class in the 2nd test after auto scaling is enabled.  Since there are 6 OCPUs available to the running queries, we now see:
+4. Scroll down and view the **Average Active Sessions** chart. View the Average Active Sessions chart by Wait Class in the 2nd test after auto scaling is enabled.  Since there are 6 ECPUs available to the running queries, we now see:
 - The **inflated I/O waits** (in blue) due to the unavailability of resources reduces significantly.
 - Consequently, the workload becomes more efficient (CPU-bound) and is able to utilize more CPU (in dark green) reducing the average time spent on running each query.
 - The **Scheduler waits** (in light green) on CPU/IO resources almost entirely disappears.
@@ -322,6 +343,10 @@ For more information about auto scaling, see the documentation [Use Auto Scaling
 
 ## Acknowledgements
 
-- **Authors** - Rick Green, Database User Assistance; Nilay Panchal, ADB Product Management
-- **Contributors** - John Zimmerman, Real World Performance Team; Keith Laker, ADB Product Management
-- **Last Updated By/Date** - Rick Green, August 2023
+- **Authors:**
+    * Rick Green, Database User Assistance
+    * Nilay Panchal, ADB Product Management
+- **Contributors:**
+    * John Zimmerman, Real World Performance Team
+    * Keith Laker, ADB Product Management
+- **Last Updated By/Date** - Lauran K. Serhal, Consulting User Assistance Developer, March 2024
