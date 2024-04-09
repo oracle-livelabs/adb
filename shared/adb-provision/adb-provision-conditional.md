@@ -169,11 +169,11 @@ You may now **proceed to the next lab**.
 
 ## Learn more
 
-Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-workflow.html#GUID-5780368D-6D40-475C-8DEB-DBA14BA675C3) on the typical workflow for using Autonomous Data Warehouse.
+* [Provision Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-provision.html#GUID-0B230036-0A05-4CA3-AF9D-97A255AE0C08)
 
 ## Acknowledgements
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager)
-- **Last Updated By/Date** - Richard Green, August 2023
+- **Last Updated By/Date** - Lauran K. Serhal, April 2024
