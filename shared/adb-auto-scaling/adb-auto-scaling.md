@@ -2,7 +2,7 @@
 
 ### **Introduction**
 
-In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query three times. You will be running this procedure from two SQL Developer Web worksheet sessions concurrently to see how the CPU is utilized with and without auto scaling.
+In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query three times. You will be running this procedure from three SQL Developer Web worksheet sessions concurrently to see how the CPU is utilized with and without auto scaling.
 
 Estimated time: 30 minutes
 
@@ -23,7 +23,7 @@ When you create an Autonomous Database, the auto scaling checkbox is enabled by 
 
 If your organization performs intensive queries at varied times, auto scaling will ramp up and ramp down CPU resources when needed.
 
-As in our lab example below, if a customer provisions an Autonomous Database with 2 base ECPUs and enables auto scaling, they will immediately have access to 3x the 2 base ECPUs provisioned; therefore 6 ECPUs. They will also immediately have access to 3x the IO.
+As in our lab example below, if a customer provisions an Autonomous Database with 4 base ECPUs and enables auto scaling, they will immediately have access to 3x the 4 base ECPUs provisioned; therefore 12 ECPUs. They will also immediately have access to 3x the IO.
 
 The customer is charged only for the actual average number of ECPUs used per hour, between 2 and 6 ECPUs.
 
@@ -48,7 +48,7 @@ In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Develo
 
 In the **Provision Autonomous Database** lab, you created the **ADW\_Finance\_Mart** Autonomous Data Warehouse database. In the previous **Scale for Performance** lab, you increased the ECPU count from 2 to 16 ECPUs.
 
-1. Change the ECPU count to **4 ECPUs** and disable **Compute auto scaling**. Go to the **Autonomous Database details** page, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** to **`4`**. Next, deselect the **Compute auto scaling** checkbox to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous Database details** page is re-displayed.
+1. Select the ECPU count as **4** and disable **Compute auto scaling**. Go to the **Autonomous Database details** page, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** to **`4`**. Next, deselect the **Compute auto scaling** checkbox to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous Database details** page is re-displayed.
 
     ![Remove the checkbox for ECPU auto scaling.](images/disable-auto-scaling.png " ")
 
@@ -84,7 +84,9 @@ In the **Provision Autonomous Database** lab, you created the **ADW\_Finance\_Ma
 
     ![The saved worksheet is displayed.](./images/query2-worksheet-displayed.png " ")
 
-6. Create and save the fourth worksheet. Click the **Worksheet** drop-down list, and then select **Save As**. Enter **Query 3** as the name and then click **Save**.
+6. Create and save the fourth worksheet. Click the **Worksheet** drop-down list, and then select **Save As**. Enter **Query 3** as the name and then click **Save**. The saved worksheet is displayed.
+
+    ![The saved worksheet is displayed.](./images/query3-worksheet-displayed.png " ")
 
     In the next task, you will use the **Query 1**, **Query 2**, and **Query 3** worksheets to simultaneously run the test queries using the **HIGH** consumer group. For real production workloads, you will typically use the MEDIUM or HIGH consumer groups, since they have higher parallelism and lower concurrency. A worksheet using the HIGH consumer group gets top priority. For more information about consumer groups, see [Manage Concurrency and Priorities on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-priorities.html#GUID-80E464A7-8ED4-45BB-A7D6-E201DD4107B7).
 
@@ -247,15 +249,17 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
   ![Execute command, query 3.](./images/run-query-3.png " ")
 
-6. While the 3 procedure instances are running concurrently on a 4 ECPU system with auto scaling disabled, navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In **Performance Hub**, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure. _Remember, this procedure is executed twice in each SQL worksheet in order to answer the business case from our SSB database_. Initially, the status of each running procedure in each worksheet is represented by the **running** blue circular icon.
+6. While the 3 procedure instances are running concurrently on a 4 ECPU system with auto scaling disabled, navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In **Performance Hub**, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure. _Note this procedure is executing multiple query runs, so expect to see several queries running when you view Performance Hub. Monitor these queries to completion, it will take a few minutes._. Initially, the status of each running procedure in each worksheet is represented by the **running** blue circular icon.
 
     ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-with-auto-scaling-disabled.png " ")
 
-    Keep clicking the **Refresh** button at the top right of the page until the queries are completed successfully which is represented by the green circle with a checkmark. Since each procedure ran twice in each worksheet, there are a total of six rows. As you can see, our test runs for approximately 2.17 minutes. Click **Close** to exit Performance Hub.
+    While monitoring the running queries, you may click the **Refresh** button at the top right of the page until they complete successfully, which is represented by the green circle with a checkmark.
+
+    Since each procedure ran twice in each worksheet, there are a total of six rows. As you can see, our test runs for approximately 2.17 minutes. Click **Close** to exit Performance Hub.
   
     ![In Performance Hub, view the completed queries.](./images/completed-queries-with-auto-scaling-disabled.png " ")
 
-7. Return to your SQL Developer Web worksheets. Make sure all 3 tests in the worksheets indicate that the queries have **executed** completely. You can see if the test procedure is still running, completed successfully or failed in the worksheet's status at the bottom of the page. If you see the message **Code execution failed**, ignore that error. This can be due to a timeout if your query runs longer than expected. You will check the code execution status using **Performance Hub**.
+7. Return to your SQL Developer Web worksheets. Make sure all 3 tests in the worksheets indicate that the queries have **executed** completely. You can see if the test procedure is still running, completed successfully or failed in the worksheet's status at the bottom of the page. If you see the message **Code execution failed**, ignore that error. This can be due to a timeout if your query runs longer than expected. You will check the query execution status using **Performance Hub**.
 
     >**Note:** If your test procedure fails after running for a while, you may also be behind a VPN that is timing out your query. You may need to disconnect from that VPN to run this test.
 
@@ -285,7 +289,7 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
     </copy>
     ```
 
-9. Review the results of running the test. Notice that we are using four ECPUs:
+9. Review the results of running the test. In our example:
     - The average time each query ran was **128.7** seconds.
     - The total time the test ran was **262.8** seconds.
 
@@ -320,7 +324,9 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 
     ![Monitored SQL shows three queries executing and consuming less database time.](images/monitored-sql-while-three-procedures-running-with-auto-scaling.png " ")
 
-    The query was executed 6 times in the three SQL worksheets. In the previous test, before you enabled Auto Scaling, the procedure's 3 query sessions averaged **2.17** minutes to run. After enabling Auto Scaling and immediately getting access to 3x the amount of CPU and IO, the queries now require approximately 2x less time; we see about **1.05** minutes to run.
+    Notice, after enabling Auto Scaling and immediately getting access to 3x the amount of CPU and IO, the queries run much faster.
+
+    <!--In the previous test, before you enabled Auto Scaling, the procedure's 3 query sessions averaged **2.17** minutes to run. After enabling Auto Scaling and immediately getting access to 3x the amount of CPU and IO, the queries now require approximately 2x less time; we see about **1.05** minutes to run.-->
 
 3. Go back to your SQL Developer Web worksheets to be sure that the 3 tests in the worksheets indicate that the queries have **executed** completely. If you see the message **Code execution failed**, ignore that error. This can be due to a timeout if your query runs longer than expected. You will check the code execution status using **Performance Hub** next.
 
@@ -364,7 +370,7 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 
     - All 3 running sessions now had access to 3x the amount of CPU and IO.
 
-    - Consequently, the average query time reduced from 128.7 seconds to 63.1 seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently **reduced approximately 2x** from 262.8 seconds to 131 seconds.
+    - Consequently, the average query time reduced from 128.7 seconds to 63.1 seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently reduced from 262.8 seconds to 131 seconds.
 
 3. Return to your **Autonomous Database details** page and click **Performance Hub**. Move your mouse cursor in the **Activity** panel above the SQL Monitoring panel, and drag the rectangle horizontally across to cover the portion of the timeline that indicates your recent query activity. This will fill in the **ASH Analytics** panel at the bottom, with information from the two completed tests.
 
@@ -379,9 +385,9 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 
     **Things to Note**
 
-- When auto scaling is enabled, IO is also scaled to 2X the ECPU allocation. So even if only one session is executing a SQL Statement, it benefits from the additional IO.
+- When auto scaling is enabled, IO is also scaled to 3X the ECPU allocation. So even if only one session is executing a SQL Statement, it benefits from the additional IO.
 - To see the average number of ECPUs used during an hour you can use the "Number of ECPUs allocated" graph on the Overview page on the Autonomous Data Warehouse service console. **Note**: These Overview graphs are updated **per hour**, so you will be able to see this data in the next hour.
-- When auto scaling is enabled, only the amount of ECPUs and IO available to the database increases by 2x. Other database parameters, including memory, concurrency and parallel statement queueing, do not automatically scale. Depending on where the bottlenecks in your business' query workloads are, you may see different lifts in performance.
+- When auto scaling is enabled, only the amount of ECPUs and IO available to the database increases by 3x. Other database parameters, including memory, concurrency and parallel statement queueing, do not automatically scale. Depending on where the bottlenecks in your business' query workloads are, you may see different lifts in performance.
 
 You may now **proceed to the next lab**.
 
