@@ -370,7 +370,7 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 
     - All 3 running sessions now had access to 3x the amount of CPU and IO.
 
-    - Consequently, the average query time reduced from 128.7 seconds to 63.1 seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently reduced from 262.8 seconds to 131 seconds.
+    - Consequently, the average query time was reduced from 128.7 seconds to 63.1 seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently was reduced from 262.8 seconds to 131 seconds.
 
 3. Return to your **Autonomous Database details** page and click **Performance Hub**. Move your mouse cursor in the **Activity** panel above the SQL Monitoring panel, and drag the rectangle horizontally across to cover the portion of the timeline that indicates your recent query activity. This will fill in the **ASH Analytics** panel at the bottom, with information from the two completed tests.
 
