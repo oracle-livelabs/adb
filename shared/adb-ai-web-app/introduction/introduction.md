@@ -50,19 +50,19 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Author:** Marty Gubar, Product Management 
-  * **Contributors:** 
-    * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
-    * Olivia Maxwell, Cloud Engineer 
-    * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer 
+  * **Author:** Marty Gubar, Product Management
+  * **Contributors:**
+    * Stephen Stuart, Cloud Engineer
+    * Nicholas Cusato, Cloud Engineer
+    * Olivia Maxwell, Cloud Engineer
+    * Taylor Rees, Cloud Engineer
+    * Joanna Espinosa, Cloud Engineer
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
