@@ -25,20 +25,20 @@ In this lab, you will:
 * Export your project to OpenAPI tools
 
 ### Prerequisites
-- This lab requires the completion of all of the preceding labs. 
+- This lab requires the completion of all of the preceding labs.
 
 ## Task 1: Create customer and pizza shop REST endpoints using AutoREST
 Start by providing access to customer data using AutoREST. This is the easiest way to enable RESTful access to data in Autonomous Database:
 
-1. Ensure that you are logged in as **MOVIESTREAM** user. In the Navigator, select **CUSTOMER.** 
+1. Ensure that you are logged in as the **MOVIESTREAM** user. In the Navigator pane, select the **CUSTOMER** table.
 
   ![Select customer](./images/select-customer.png "")
 
-2. Right-click and select **REST** -> **Enable.**
+2. Right-click the **CUSTOMER** table, and then select **REST** > **Enable** from the context menu.
 
   ![Enable REST](./images/enable-rest.png "")
 
-3. In the **REST Enable Object** dialog, click **Enable**.
+3. In the **REST Enable Object** panel, click **Enable**.
 
   ![Click Enable](./images/click-enable.png "")
 
@@ -46,61 +46,62 @@ Start by providing access to customer data using AutoREST. This is the easiest w
 
   >**Note:** The API can be secured by selecting **Require Authentication**. We will keep things simple and not require authentication, which is clearly not a best practice. To learn more about securing REST endpoints, go to [Configuring Secure Access to RESTful Services.](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/18.4/aelig/developing-REST-applications.html#GUID-5B39A5A6-C55D-452D-AE53-F49431A4DE97).
 
-4. You can test the REST endpoint from a command prompt (we'll test it using other tools later). Right-click **CUSTOMER** and select **REST** -> **cURL command...**.
+4. You can test the REST endpoint from a command prompt (we'll test it using other tools later). Right-click **CUSTOMER** and then select **REST** > **cURL command...** from the context menu.
+  
   ![test the api](images/click-rest-quick-test.png)
 
-  Then, select **GET Single** and enter cust_id **1320371**
+5. In the **cURL for the table CUSTOMER** panel, select the **GET Single** tab, and then enter **1320371** in the cust_id field. Click the **Copy to clipboard** icon. Next, click **Close**.
 
   ![curl for custid](images/curl-for-custid.png)
 
-  Copy the URL to the clipboard.
-
-5. Open a command prompt on your computer. Paste the curl command and hit enter. Assuming no firewalls are blocking your access to the service, you will see information about our customer Betsy Chan:
+6. Open a command prompt on your computer. Paste the curl command and press **[Enter]**. Assuming no firewalls are blocking your access to the service, you will see information about our customer **Betsy Chan**.
+  
   ![curl result](images/click-rest-quick-test-result.png)
 
-6. Repeat steps 1-3 for the table named **PIZZA_SHOP**
+7. Repeat steps 1-3 for the **PIZZA_SHOP** table.
 
   ![Enable AUTOrest for pizza_shop](./images/pizza-shop.png "")
 
-
 ## Task 2: Create customer-movie REST endpoint using a module
-AutoREST is fast and easy. Your APIs are immediately available to use. But, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's REST design tool. Start by creating an API module (see [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187)).
+AutoREST is fast and easy. Your APIs are immediately available to use; however, you may want more control over how your APIs are organized and structured. You can design your APIs using Autonomous Database's REST design tool. Start by creating an API module. See the [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187) documentation for additional information.
 
-1. Ensure that you are still logged in as **MOVIESTREAM** user. Click the hamburger menu and then click **REST**.
+1. Ensure that you are still logged in as **MOVIESTREAM** user. Click the **Selector** (hamburger) in the banner, and then click **REST**.
   ![Go to REST](images/goto-rest.png)
 
-2. Go to the list of modules. In the REST tool, select the **Modules** tab. 
-  ![Go to modules](images/goto-modules.png)
+2. View the list of modules. In the REST tool, click the **Modules** tab.
+  ![Go to modules](images/goto-modules.png =60%x*)
 
-  A module named **api** was created by the Terraform script. Let's create a new module that the **MovieStreamAI** app will use. 
+  A module named **api** was created by the Terraform script.
+  
+  ![The API module.](images/api-modules.png)
 
-2. Click **Create Module.** 
-  ![Modules create button](./images/create-module.png "")
+3. Let's create a new module that the **MovieStreamAI** app will use. Click **Create Module**.
 
-3. Name the Module, Base Path, and make sure all the fields match the image below. Then, click **Create.**
+4. Specify the following for the new module. Make sure all the fields match the image below. Next, click **Create**.
 
     * **Name:** `apiapp`
     * **Base Path:** `/apiapp/`
     * **Protected By Privilege:** `Not Protected`
   
-    ![Completed module form](images/module-completed-form.png)
+      ![Completed module form](images/module-completed-form.png)
  
-4. Click on the newly created module **apiapp**. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **data/**) or AI generated responses (named **ai/**). 
+5. The newly created **apiapp** module is displayed. From here, we will create multiple templates that will provide RESTful services. The endpoints will be designated by either data collection (named **data/**) or AI generated responses (named **ai/**).
 
-5. First, let's create the data collection api for the **recently watched movies**. Click **Create Template.** 
+6. First, let's create the data collection api for the **recently watched movies**. Click **Create Template**. The **Create Template** panel is displayed.
 
   ![Template button](./images/create-template-one.png "")
 
-6. Enter the following name for the template: `data/image/:cust_id` and then click **Create**. 
-  >**Note:** Use the exact name `data/image/:cust_id`. Our React app is expecting that name.
+7. In the **URI Template** field, enter **`data/image/:cust_id`** as the name for the template. Next, then click **Create**.
 
-  ![Template button](./images/create-template-two.png "")
+    >**Note:** Use the exact name, **`data/image/:cust_id`**. Our React app is expecting that name.
 
-7. Click **Create Handler** to implement the API:
+    ![Template button](./images/create-template-two.png =75%x*)
+
+8. Click **Create Handler** to implement the API.
 
   ![Handler button](./images/create-handler.png "")
 
-8. Paste the following into **Source** and click **Create**.
+9. Copy and paste the following code into **Source** field, and then click **Create**.
 
     ```
     <copy>
@@ -128,54 +129,58 @@ AutoREST is fast and easy. Your APIs are immediately available to use. But, you 
 
 10. Add a parameter for the handler. Click **Create Parameter**.
   
-  ![Parameter button](./images/create-parameter.png "")
+  ![Parameter button](./images/create-parameter.png =60%x*)
 
-11. Fill out the dialog as follows: 
+11. Specify the following in the **Create Parameter** panel.
 
-  * **Parameter Name:** `:cust_id`
-  * **Bind Variable Name:** `cust_id`
-  * **Source Type:** `URI`
-  * **Parameter Type:** `INT`
+    * **Parameter Name:** `:cust_id`
+    * **Bind Variable Name:** `cust_id`
+    * **Source Type:** `URI`
+    * **Parameter Type:** `INT`
 
-The completed form should look like the following:
+    The completed panel should look as follows:
 
-![Parameter details](./images/parameter-details.png "")
+    ![The parameter details.](./images/parameter-details.png =70%x*)
 
-Click **Create.** 
+12. Click **Create**. The new parameter is displayed.
+
+      ![The parameter is created.](./images/parameter-created.png "")
 
 ## Task 3: Test the new customer-movie API
 
-1. Test the handler. Click **Open in new tab** icon.
+1. Test the handler. Click the **Open in new tab** icon.
 
   ![Open in new tab](./images/open-new-tab-two.png "")
  
-  Then, enter `1000001` for the **cust_id**:
+2. In the **Bind Variables** dialog box, enter **`1000001`** for the **cust_id**, and then click **OK**.
 
-  ![Cust_id input](./images/cust_id.png "")
+  ![Cust_id input](./images/cust_id.png =75%x*)
 
-  ![Test module in new window](./images/test-in-new-window.png "")
+3. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
 
-2. Notice the API displays a JSON response containing an URL for images of the 3 most recently watched movies for only 1 customer, along with some additional details about the movie. Close the new tab when completed.
+  ![JSON response.](./images/json-response.png "")
 
 ## Task 4: Create REST API for movie recommendations with a pizza offer
 This last task will create our final RESTful service. This uses GenAI to recommend movies and a local pizza offer.
 
 1. Click **apiapp** in the breadcrumbs. Let's create another template for the AI generated response (**/ai/**).
 
-2. Click **Create Template**. 
+2. Click **Create Template**. The **Create Template** panel is displayed.
 
     ![Create template](./images/create-template-one.png "")
 
-3. Enter the following name for the URI template: `ai/moviePizzaRecommendation/:cust_id`. Then, click **Create.** 
-    >**Note:** Use the exact name `ai/moviePizzaRecommendation/:cust_id`. Our React app is expecting that name.
+3. In the **URI Template** field, enter **`ai/moviePizzaRecommendation/:cust_id`** as the name for the template. Next, click **Create**.
+
+    >**Note:** Use the exact name, **`ai/moviePizzaRecommendation/:cust_id`**. Our React app is expecting that name.
 
     ![uri and create button](./images/uri-create.png "")
 
 4. Click **Create Handler**.
 
-    ![Handler button](./images/create-handler.png "")
+    ![Handler button](./images/create-handler-2.png =75%x*)
 
-5. Change the source type to **PL/SQL**, paste the following into **Source**, and click **Create**.  
+5. In the **Create Handler** panel, select **PL/SQL** from the **Source Type** drop-down list. Paste the following into **Source** field, and then click **Create**.
+    
     ```
     <copy>
     begin
@@ -185,8 +190,10 @@ This last task will create our final RESTful service. This uses GenAI to recomme
             profile_name => :profile_name);
     end;
     </copy>
-    ```    
+    ```
+
     ![Movie handler with code and updated source type](./images/movie-handler.png "")
+
     The code has 3 parameters that you will define in the next steps:
     - **:summary** - defines the response for easy parsing.
     - **:cust_id** - passes the variable from the uri into the pl/sql block.
@@ -196,17 +203,21 @@ This last task will create our final RESTful service. This uses GenAI to recomme
 
     ![Parameter button](./images/create-parameter.png "")
 
-7. Name the Parameter and the Bind Variable, change the source type from header to **URI**, and then click **Create**.
+7. Specify the following for the new parameter, and then click **Create**.
 
     - **Parameter Name:** `cust_id`
     - **Bind Variable Name:** `cust_id`
     - **Source Type:** `URI`
+
+    ![Create cust_id parameter.](./images/cust-id-parameter.png "")
 
 8. Repeat steps 6 and 7 for the following new parameters:
 
     - **Parameter Name:** `profile_name`
     - **Bind Variable Name:** `profile_name`
     - **Source Type:** `HEADER`
+
+    ![Create profile_name parameter.](./images/profile-name-parameter.png "")
 
 9.  Repeat steps 6 and 7 for the following new parameters:
 
@@ -240,15 +251,15 @@ You may now proceed to the next lab.
   * **Contributors:** 
     * Stephen Stuart, Cloud Engineer 
     * Nicholas Cusato, Cloud Engineer 
+    * Lauran K. Serhal, Consulting User Assistance Developer
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
-    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Last Updated By/Date:** Nicholas Cusato, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
