@@ -386,7 +386,7 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
     **Things to Note**
 
 - When auto scaling is enabled, IO is also scaled to 3X the ECPU allocation. So even if only one session is executing a SQL Statement, it benefits from the additional IO.
-- To see the average number of ECPUs used during an hour you can use the "Number of ECPUs allocated" graph on the Overview page on the Autonomous Data Warehouse service console. **Note**: These Overview graphs are updated **per hour**, so you will be able to see this data in the next hour.
+- To see the average number of ECPUs used during an hour, navigate to the Launchpad, and then scroll-down to the **Monitoring** section. Click **Database Dashboard**, and then view the **Number of ECPUs allocated** graph. **Note**: These Overview graphs are updated **per hour**, so you will be able to see this data in the next hour.
 - When auto scaling is enabled, only the amount of ECPUs and IO available to the database increases by 3x. Other database parameters, including memory, concurrency and parallel statement queueing, do not automatically scale. Depending on where the bottlenecks in your business' query workloads are, you may see different lifts in performance.
 
 You may now **proceed to the next lab**.
