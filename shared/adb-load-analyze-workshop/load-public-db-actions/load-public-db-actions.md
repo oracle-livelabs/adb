@@ -46,11 +46,11 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-    * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Rick Green, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, March 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

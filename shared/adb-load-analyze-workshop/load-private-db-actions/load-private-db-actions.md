@@ -267,11 +267,15 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 + **copy_data**: Loads the specified source file to a table. The table must already exist in ADW.
     + You will use this procedure to load tables to your admin schema with data from data files staged in the Oracle Cloud Infrastructure Object Storage cloud service.
 
-1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main **Database Actions Launchpad** using the breadcrumb link in the upper left corner.
+1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main **Database Actions Launchpad**. Click **Database Actions** in the banner to go to the Launchpad.
+
+    ![Click Database Actions in the banner.](./images/click-database-actions.png =50%x*)
 
     >**Note:** If you are prompted for username and password, enter the username `admin` and the password you created for `admin` when you created your autonomous database.
 
-2. Under **Development**, click **SQL** to open SQL Worksheet.
+2. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to open SQL Worksheet.
+
+    ![Navigate to the SQL worksheet.](./images/navigate-sql-worksheet.png =75%x*)
 
 3. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
 
@@ -405,7 +409,7 @@ Replace the provided example URL with the real object storage base URL that you 
 
     ![Get logfile and badfile table names.](./images/log-and-table-names.png " ")
 
-6. Query the log table to see detailed information about an individual load. In our example, the table name is `copy$2_log`.
+6. Query the log table to see detailed information about an individual load. In our example, the table name is `copy$12_log`.
 
     ![Type the query and click Run Script.](./images/query-log-file.png " ")
 
@@ -440,7 +444,7 @@ Replace the provided example URL with the real object storage base URL that you 
         			"trimspaces":"lrtrim",
         			"truncatecol":"true",
         			"ignoremissingcolumns":"true"
-        			}',
+        			}'
         );
     end;
     /
@@ -453,8 +457,8 @@ Replace the provided example URL with the real object storage base URL that you 
 
 10. View the results by running this query:
 
-    <copy>
     ```
+    <copy>
     SELECT * 
     FROM genre_debug;
     </copy>
@@ -480,11 +484,11 @@ See the documentation [Loading Data with Autonomous Database](https://docs.oracl
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Rick Green, Principal Developer
 
-* **Last Updated By/Date** - Lauran K. Serhal, March 2024
+* **Last Updated By/Date** - Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
