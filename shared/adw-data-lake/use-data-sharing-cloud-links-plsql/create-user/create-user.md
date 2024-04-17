@@ -119,9 +119,14 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![Log in as share_provider](images/login-share-provider.png)
 
-    You are now logged in as the newly created **`share_provider`** user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+    You are now logged in as the newly created **`share_provider`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab.
 
     ![Logged in as share_provider](images/logged-share-provider.png)
+
+    The SQL Worksheet is displayed.
+
+    ![The SQL Worksheet is displayed for the share_provider user](images/share-provider-worksheet.png)
+
 
 5. Provide the share provider user identity information. This enables consumers to see this share provider user and the user's shared data. This is a free formed metadata. Provide a meaningful **name**, **description**, and an **email** address. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -166,11 +171,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
