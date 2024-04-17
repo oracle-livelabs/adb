@@ -41,7 +41,7 @@ In this lab, you will:
 
 - This lab requires completion of the labs **Provision an Autonomous Database** and **Load Data from Object Storage Private Buckets** found in the Contents menu on the left.
 
-## Task 1: Create a data pipeline
+## Task 1: Create a Data Pipeline
 
 Begin by creating a data pipeline to either load data or export data continuously.
 
@@ -60,19 +60,20 @@ Begin by creating a data pipeline to either load data or export data continuousl
     </copy>
     ```
 
-## Task 2: Configure the data pipeline attributes
+    ![Create a pipeline.](./images/create-pipeline.png " ")
 
-Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a weather CSV file that you will download and then upload to your object storage bucket. **WEATHER** will be the destination table that you create in your autonomous database that your pipeline will load data into.
+## Task 2: Configure the Data Pipeline Attributes
 
-1. Define the attributes for the data pipeline. The pipeline will import all data files of **CSV type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name).
+Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a weather CSV file that you will download and then upload to your object storage bucket. **`WEATHER`** will be the destination table that you create in your Autonomous Database that your pipeline will load data into.
 
-    In **Lab 6: Load Data from Object Storage Private Buckets**, you created an object storage bucket and credentials to access that bucket from your autonomous database. Now you will set up continuous data loading using the object storage URL of your bucket.
+Define the attributes for the data pipeline. The pipeline will import all data files of **CSV type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name).
 
-    Run the following code snippet in your SQL worksheet.
+In preparation for step 1, in **Lab 5: Load Data from Private Object Storage Buckets**, you created an object storage bucket and a credential to access that bucket from your Autonomous Database. Now you will set up continuous data loading using the object storage URL of your bucket. You will need the following:
 
-    **Note**: For the **credential name** value, use the name of the credential you created in Lab 6, Task 6.
+* The **credential name** value, use the name of the credential you created in **Lab 5 > Task 6**. You named the credential `OBJ_STORE_CRED`.
+*  The **location** value, swap in the base URL path you identified in **Lab 5 > Task 4**.
 
-    **Note**: For the **location** value, swap in the base URL path you identified in Lab 6, Task 4, **and append it with `/weather`**. You will be defining a subfolder in your storage bucket named "weather", to contain a weather data file that you will be uploading.
+1. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_. Substitute the URL in the code with your own URL that you identified in **Lab 5 > Task 4**. The code below contains the `your-region` and `your-tenancy-name` place holders.
 
     ```
     <copy>
@@ -81,7 +82,7 @@ Next, you will set the appropriate attributes for the data pipeline, such as the
        pipeline_name => 'MY_FIRST_PIPELINE',
        attributes => JSON_OBJECT(
                     'credential_name' VALUE 'OBJ_STORE_CRED',
-                    'location' VALUE 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/adwc4pm/b/ADWClab/o/weather',
+                    'location' VALUE 'https://objectstorage.your-region.oraclecloud.com/n/your-tenancy-name/b/training-data-lake/o',
                     'table_name' VALUE 'weather',
                     'format' VALUE '{
                                      "delimiter" : ",",
@@ -102,37 +103,37 @@ Next, you will set the appropriate attributes for the data pipeline, such as the
     </copy>
     ```
 
+2.  Add **/weather** to the end of your URL. This creates a subfolder in your private object storage bucket named **weather**. This bucket will hold a weather data file that you will be uploading. Next, click the **Run Script (F5)** icon in the Worksheet toolbar.
+
     ![Configure the pipeline attributes](./images/confgure-pipeline-attributes-with-subfolder.png " ")
 
-## Task 3: Preview how to test the data pipeline
+## Task 3: Preview How to Test the Data Pipeline
 
-> **Note**: We provide Tasks 3 and 4 for you to preview the steps for testing and resetting your data pipeline. Please read these tasks but do not perform them.
+> **Note**: We provide Tasks 3 and 4 for you to preview the steps for testing and resetting your data pipeline. _Please read these tasks but do not perform them_.
 
 Normally, before you activate your configured pipeline, you will want to test that it works. However, to keep this lab short and simple, we will only preview the steps for testing. You would call the `DBMS_CLOUD_PIPELINE.RUN_PIPELINE_ONCE` procedure to run your pipeline once, on-demand. This would not create a repeating scheduled job.
 
 1. You would run the following code snippet in your SQL worksheet:
 
     ```
-    <copy>
     BEGIN
     DBMS_CLOUD_PIPELINE.RUN_PIPELINE_ONCE(
             pipeline_name => 'MY_FIRST_PIPELINE'
     );
     END;
     /
-    </copy>
     ```
+
 2. You can monitor and troubleshoot your pipeline's running job by examining the `user_cloud_pipeline_history` view or by querying the `status_table` for each file in the pipeline via the `user_cloud_pipelines` view.
 
     You would run the following code snippet in your SQL worksheet:
 
     ```
-    <copy>
     SELECT pipeline_id, pipeline_name, status, error_message  
     FROM user_cloud_pipeline_history
     WHERE pipeline_name = 'MY_FIRST_PIPELINE';
-    </copy>
     ```
+    
     ![Monitor the running pipeline using queries](images/monitor-pipeline-running-job.png " ")
 
 3. If something did go wrong causing your pipeline's file load to fail, you may query the database table `USER_LOAD_OPERATIONS` along with the operation IDs of your pipeline to get the related LOG and BAD files for the data load. This will provide insight into which lines in the data file cause a problem in the load.
@@ -140,34 +141,29 @@ Normally, before you activate your configured pipeline, you will want to test th
     You would run the following code snippets in your SQL worksheet:
 
     ```
-    <copy>
     -- More details about the load operation in USER_LOAD_OPERATIONS.
     SELECT owner_name, type, status, start_time, update_time, status_table, rows_loaded, logfile_table, badfile_table
         FROM user_load_operations
         WHERE id = (SELECT operation_id
                    FROM user_cloud_pipelines
                    WHERE pipeline_name = 'MY_FIRST_PIPELINE');
-    </copy>
     ```
 
     ```
-    <copy>
     --Query the relevant LOG and BAD files
     SELECT * FROM PIPELINE$4$21_LOG;
     SELECT * FROM PIPELINE$4$21_BAD;
-    </copy>
     ```
 
-## Task 4: Preview how to reset the pipeline's state and history
+## Task 4: Preview How to Reset the Pipeline's State and History
 
-> **Note**: We provide Tasks 3 and 4 for you to preview the steps for testing and resetting your data pipeline. Please read these tasks but do not perform them.
+> **Note**: We provide Tasks 3 and 4 for you to preview the steps for testing and resetting your data pipeline. _Please read these tasks but do not perform them_.
 
 Before proceeding to Start your pipeline, if you had tested your pipeline as was shown in Task 3, you would then use the `DBMS_CLOUD_PIPELINE.RESET_PIPELINE` procedure to reset the pipeline's state and history of loaded files. As below, you may also optionally purge the data in your database or object store. A data pipeline must be in stopped state to reset it.
 
 1. To reset your pipeline, you would run the following code snippet in your SQL worksheet:
 
     ```
-    <copy>
     BEGIN  
     DBMS_CLOUD_PIPELINE.RESET_PIPELINE(
          pipeline_name => 'MY_FIRST_PIPELINE',
@@ -175,12 +171,11 @@ Before proceeding to Start your pipeline, if you had tested your pipeline as was
     );
     END;
     /
-    </copy>
     ```
 
-## Task 5: Create the WEATHER table in the target Autonomous database
+## Task 5: Create the WEATHER Table in the Target Autonomous Database
 
-Before starting the data pipeline, create the WEATHER table in your target autonomous database that the data pipeline will load, when it detects data that you upload  to your object store.
+Before starting the data pipeline, create the **`WEATHER`** table in your target Autonomous Database that the data pipeline will load, when it detects data that you upload to your object store.
 
 1. Run the following code snippet in your SQL worksheet:
 
@@ -190,13 +185,15 @@ Before starting the data pipeline, create the WEATHER table in your target auton
     </copy>
     ```
 
-## Task 6: Start the data pipeline
+    ![Create the weather table.](images/create-weather-table.png " ")
 
-Now that your data pipeline is successfully configured, and you have created the target WEATHER table in your autonomous database, all you have left to do is simply start the pipeline.
+## Task 6: Start the Data Pipeline
 
-Once your pipeline has been started, it is now running and since it is a "load data" pipeline, it will pick up new data files to load that have not been successfully processed yet, as they are moved into your object storage bucket.
+Now that your data pipeline is successfully configured, and you have created the target **`WEATHER`** table in your Autonomous Database, all you have left to do is simply start the pipeline.
 
-It is important to note here that the load pipeline identifies, loads and keeps track of new data files by their filename; updating or deleting data from an existing filename that had already been loaded successfully in the past will not affect data in the database. The pipeline will also retry loading a previously failed file several times.
+Once your start your pipeline, it will run and since it is a **load data** pipeline, it will pick up new data files to load that have not been successfully processed yet, as they are moved into your object storage bucket.
+
+It is important to note here that the load pipeline identifies, loads, and keeps track of new data files by their filename; updating or deleting data from an existing filename that had already been loaded successfully in the past will not affect data in the database. The pipeline will also retry loading a previously failed file several times.
 
 1. Run the following code snippet in your SQL worksheet:
 
@@ -211,9 +208,11 @@ It is important to note here that the load pipeline identifies, loads and keeps 
     </copy>
     ```
 
-## Task 7: Download data that you will upload to object storage
+    ![Start the pipeline.](images/start-pipeline.png " ")
 
-For this example, download a .CSV file containing weather information. In the next task, you will upload the data to your object storage bucket and test whether the pipeline automatically adds the data to your WEATHER table.
+## Task 7: Download Data that you Will Upload to Object Storage
+
+For this example, download a .CSV file that contains the weather information. In the next task, you will upload this weather data to your object storage bucket and test whether the pipeline automatically adds the data to your **`WEATHER`** table.
 
 1. Copy and paste the following URL to your browser and press the **Enter** key on your keyboard. In the pop-up dialog, click **Save Link As…** to download the file to your computer.
 
@@ -223,53 +222,57 @@ For this example, download a .CSV file containing weather information. In the ne
     </copy>
     ```
 
-2. Make note of the folder location - you will be using this file in the next task.
+2. Make note of the downloaded file location - you will be using this file in the next task.
 
-## Task 8: Upload the data to your OCI object storage bucket
+## Task 8: Upload the Data to your OCI Object Storage Bucket
 
-Now you upload the `weather-newark-airport.csv` file to your object storage bucket. The pipeline should detect this new data, and automatically load it into your autonomous database.
+Now you upload the **`weather-newark-airport.csv`** file to your object storage bucket. The pipeline should detect this new data, and automatically load it into your autonomous database.
 
-1. Navigate back to the OCI Object Storage bucket you created in the lab named "Load Data from Object Storage Private Buckets". From the Autonomous Data Warehouse console, pull out the left side menu from the top-left corner and select **Storage > Buckets**.
+1. In the **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud Console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-    ![Navigate back to your OCI object storage bucket](./images/pull-out-left-side-menu.png " ")
+    ![Navigate to buckets.](./images/navigate-buckets.png =70%x*)
 
-    ![Select Storage and then Buckets from the left navigation window in the Oracle Cloud homepage.](./images/select-storage-then-buckets.png " ")
+2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. In this example, we chose a compartment named **`training-adw-compartment`**. Make sure you are in the region where you created your bucket.
 
-2. You should now be on the **Object Storage & Archive Storage** page. Check that you are in the compartment in which you created your bucket. (The following screenshot shows a typical assigned compartment name for those running the workshop in a hosted LiveLabs sandbox.) Click your **bucket name** to open it.
+    ![The buckets page is displayed.](./images/bucket-created.png =70%x*)
 
+3. Click your **bucket name** to open it. The **Bucket Details** page is displayed. Scroll-down the page to the **Objects** section. The `potential_churners.csv` file that you uploaded in a previous lab is displayed.
 
-    ![Click the bucket name.](./images/click-bucket-name-livelabs.png " ")
+    ![Click the bucket name.](./images/bucket-page.png " ")
 
-3. In your bucket, you will see the `potential_churners.csv` file that you uploaded in a previous lab. Let's make a new folder in this bucket to upload the weather data. In the **Objects** section of the **Bucket Details** page, click **More Actions** and select **Create New Folder**.
+4. Create a new folder in this bucket to where you'll upload the weather data. Click the **More Actions** drop-down list and then select **Create New Folder**.
 
     ![Click Create New Folder.](./images/create-new-folder.png " ")
 
-4. In the **Create New Folder** dialog, enter the folder name, `weather`, and click **Create**.
+5. In the **Create New Folder** dialog, enter **`weather`** as the name of the folder, and then click **Create**.
 
-    ![Create a folder named weather.](./images/create-folder-named-weather.png " ")
+    ![Create a folder named weather.](./images/create-folder.png " ")
 
-5. Click the new `weather` folder to open it.
+6. Click the new **`weather`** folder to open it.
 
-    ![Click the weather folder to open it.](./images/click-to-open-weather-folder.png " ")
+    ![Click the weather folder to open it.](./images/open-folder.png " ")
 
-6. Now that you are in the `weather` folder, click the **Upload** button:
+7. Click the **Upload** button.
 
-    ![Click Upload under Objects section.](./images/click-upload.png " ")
+    ![Click Upload under Objects section.](./images/click-upload-button.png " ")
 
-
-7. Drag and drop, or click **select files**, to select the `weather-newark-airport.csv` file you downloaded in the previous task. Click **Upload** and wait for the upload to complete:
+8. Drag and drop, or click **select files**, to select the **`weather-newark-airport.csv`** file that you downloaded in the previous task. Click **Upload** and wait for the upload to complete.
 
     ![Select and upload the weather-newark-airport.csv file.](./images/select-and-upload-weather-newark-airport-file.png " ")
 
-8. When the file finishes uploading, click **Close** at the bottom of the Upload Objects page. The end result should look like this with the file listed under **Objects**:
+8. When uploading the file is completed, the status is **Finished**. Click **Close**.
 
-    ![Click Close when the file finishes uploading.](./images/click-close-when-file-finishes-uploading.png " ")
+    ![Click Close when the file finishes uploading.](./images/click-close.png " ")
 
-## Task 9: Check that the data pipeline loaded the data into the database
+    The new file is displayed in the folder.
+
+    ![The file is uploaded.](./images/file-uploaded.png " ")
+
+## Task 9: Check that the Data Pipeline Loaded the Data into the Database
 
 When you uploaded your new weather data to your object store, the pipeline should have detected the new data and loaded it to your target autonomous database WEATHER table.
 
-1. Check that your weather data was loaded from your object store to the WEATHER table in your database. In a SQL Worksheet, run the following query to show a sampling of 10 rows of data in the WEATHER table:
+1. Check that your weather data was loaded from your object store to the WEATHER table in your database. Copy and paste the following query into your SQL Worksheet, and then click the **Run Scripts** icon. The query shows a sampling of 10 rows of data from the **`WEATHER`** table:
 
     ```
     <copy>
@@ -279,21 +282,24 @@ When you uploaded your new weather data to your object store, the pipeline shoul
     </copy>
     ```
 
-    ![Check that weather data uploaded to bucket has been loaded to target table.](./images/check-weather-data-loaded-to-target-table.png " ")
+    ![Check that weather data uploaded to bucket has been loaded to target table.](./images/check-weather-data.png " ")
 
 ## Learn More
 
-Data Pipelines greatly simplify the repetitive nature of loading or exporting new data of similar structure, as it is being populated within a specified location or table. In addition to configuring your own data pipeline, we also provide [Oracle-maintained data pipelines mentioned here](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/pipelines-about.html#GUID-4CC0E833-DD11-4972-B959-508C4EC45A63) out of the box, that are preconfigured to export database logs to a selected object store location.
-
-The following link provides more information about Oracle Data Pipelines:
-
-- [Oracle documentation on data pipelines](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/pipelines-about.html#GUID-333ABC83-57FA-46CE-887A-F0555461ED80)
+* [Use Data Pipelines for Continuous Load and Export](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-pipelines.html#GUID-7A23F17E-DADD-4F49-9967-BD2FA581CED7)
 
 ## Acknowledgements
 
-* **Author** - Rick Green, Principal Developer, Database User Assistance
-* **Contributors** Nilay Panchal, Principal Product Manager, Autonomous Database; Marty Gubar, Director of Product Management, Autonomous Database; Sanket Jain, Archtect, Autonomous Database
-* **Last Updated By/Date** - Rick Green, May 2023
+* **Author:** Rick Green, Principal Developer, Database User Assistance
+
+* **Contributors:** 
+
+    * Nilay Panchal, Principal Product Manager, Autonomous Database
+    * Marty Gubar, Director of Product Management, Autonomous Database
+    * Sanket Jain, Archtect, Autonomous Database
+    * Lauran K. Serhal, Consulting User Assistance Developer
+
+* **Last Updated By/Date:** Lauran K. Serhal, March 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

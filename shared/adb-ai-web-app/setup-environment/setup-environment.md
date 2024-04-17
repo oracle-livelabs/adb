@@ -6,7 +6,11 @@ comments syntax
 
 ## Introduction
 
-This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
+This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. 
+
+> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** region in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+
+To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
 * Connects your Autonomous Database to OCI Generative AI service
@@ -31,7 +35,7 @@ In this lab, you will:
 * Create an OCI Compartment 
 * Run the stack to perform all the prerequisites required to analyze data
 
-## Task 1: Create an OCI Compartment
+## (Optional) Task 1: Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
@@ -74,38 +78,38 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
     * Grant the required privileges to perform various actions in the workshop
     * Download the **Autonomous Database Select AI** APEX application
 
-     
-
     >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation.
 
-2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** step 1 of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** check box. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
+2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** **step 1** of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** checkbox. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
 
-  ![The Stack information step 1 of the wizard](./images/create-stack-updated.png "")
+  ![The Stack information step 1 of the wizard](./images/create-stack-updated.png =75%x*)
 
-3. In the **Configure variables** step 2 of the wizard, provide the following:
+3. In the **Configure variables** **step 2** of the wizard, provide the following:
     * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `us-chicago-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
     * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
-        >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    
+    
+    >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    
+    * **Do you want a always Free Oracle Autonomous Database instance?** Accept the default **`false`** value. Select **`true`** from the drop-down list if you want to deploy an Always Free database.
+
+        ![Provision an always free ADB instance](./images/provision-always-free.png "")
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.
 
-    >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations. 
+    >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
     
-    ![The Configure variables step 2 of the wizard part one](./images/configure-step-two.png)
-
-    ![The Configure variables step 2 of the wizard](./images/configure-variables.png)
+    ![The Configure variables step 2 of the wizard](./images/configure-variables.png =80%x*)
 
 4. Click **Next**.
 
-    ![Click next in step 2 of the wizard](./images/create-stack-steptwo.png "")
+   >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 
-    >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
+5. In the **Review** **step 3** of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
 
-5. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
-
-    ![Click Create](./images/create-stack-stepthree.png "")
+    ![Click Create](./images/create-stack-step3.png =80%x*)
 
 6. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
 
@@ -159,23 +163,20 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Author:** 
+  * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** 
-    * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
-    * Olivia Maxwell, Cloud Engineer 
-    * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer 
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
-
-
+  * **Contributors:**
+    * Stephen Stuart, Cloud Engineer
+    * Nicholas Cusato, Cloud Engineer
+    * Olivia Maxwell, Cloud Engineer
+    * Taylor Rees, Cloud Engineer
+    * Joanna Espinosa, Cloud Engineer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2004 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

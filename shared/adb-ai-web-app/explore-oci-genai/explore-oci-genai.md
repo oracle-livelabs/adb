@@ -20,18 +20,18 @@ In this lab, you will:
 ## Task 1: Create policy to enable access to OCI Generative AI
 Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
-1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.** 
+1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
 
-2. Click on **Create policy** and paste the following into the fields:
+2. Click on **Create policy** and paste the following into the appropriate fields:
 
->**Note:** Select the **Show Manual Editor** to open the field  in order to paste the policy.
+    >**Note:** Slide the **Show manual editor** control to display the text field in order to paste the policy.
 
-* **Name:** **`PublicGenAI`**
-* **Description:** **`Public Gen AI Policy`**
-* **Compartment:** **`select your own compartment`**
-* **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
+    * **Name:** **`PublicGenAI`**
+    * **Description:** **`Public Gen AI Policy`**
+    * **Compartment:** **`select your own compartment`**
+    * **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
     
-3. Click **Create**
+3. Click **Create**.
 
     ![Create policy](./images/create-policy.png "")
     
@@ -48,7 +48,7 @@ Go to the OCI Generative AI Playground and ask some interesting questions.
 
 3. Click **Go to playground** and ask some questions!
     
-    ![Go to the Playground](./images/goto-playground.png)
+    ![Go to the Playground](./images/goto-playground.png =75%x*)
 
    OCI Generative AI supports multiple models. Notice how results change as you try different models and prompts. You will want to test different models and prompts to see which produces the best results for your use case.
 
@@ -72,13 +72,12 @@ LLMs are amazing, but they don't know about your organization's data. In subsequ
 
 ## Acknowledgements
 
-  * **Author:** Marty Gubar, Product Management 
-  * **Contributors:** 
-    * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
-    * Olivia Maxwell, Cloud Engineer 
-    * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer 
+  * **Author:** Marty Gubar, Product Management
+  * **Contributors:**
+    * Stephen Stuart, Cloud Engineer
+    * Nicholas Cusato, Cloud Engineer
+    * Olivia Maxwell, Cloud Engineer
+    * Taylor Rees, Cloud Engineer
+    * Joanna Espinosa, Cloud Engineer
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Marty Gubar, February 2024
-
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024

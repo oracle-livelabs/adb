@@ -4,7 +4,7 @@
 
 Large language models are incredibly powerful tools for analyzing data using natural language. The problem with LLMs is that they don't know about your organization's private data. Autonomous Database and Select AI makes it simple to overcome this challenge and use an LLM's creative power and understanding of language to rapidly innovate.
 
-This lab will introduce you to using your organization's data with LLMs. You will learn how to define LLM prompts that combine natural language tasks with private data. Those prompts will clearly delineate from the data sets and tasks to encourage better results:
+This lab will introduce you to using your organization's data with LLMs. You will learn how to define LLM prompts that combine natural language tasks with private data. Those prompts will clearly delineate from the data sets and tasks to encourage better results.
 
 ![Wrapping of task rules and data to send to the model in tabular form](./images/json-prompts.png "")
 
@@ -13,7 +13,7 @@ For this workshop, the business logic is captured in a GENAI\_PROJECT table that
 2. The task rules - a natural language description of the LLM tasks (e.g. summarize a support chat)
 3. The query - the database query whose results the tasks will operate on
 
-A JSON document is used to organize the GenAI prompt (task rules and query results) and that document is passed to the LLM for processing. 
+A JSON document is used to organize the GenAI prompt (task rules and query results) and that document is passed to the LLM for processing.
 
 ![Wrapping of task rules and data to send to the model](./images/json-wrapper.png "")
 
@@ -39,7 +39,7 @@ In this lab, you will:
 ## Task 1: How to use AI models with data in Autonomous Database
 In our first example, we'll summarize a conversation that a customer had with the support team. And, we'll determine the customer's sentiment at the end of the chat. 
 
-1. Still logged into SQL Worksheet as MOVIESTREAM user, view a support chat conversation by running the following query. Run the query as a script to make it easy to see the complete results:
+1. Still logged into SQL Worksheet as **MOVIESTREAM** user, view a support chat conversation. Run the query as a script to make it easy to see the complete results. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -52,11 +52,12 @@ In our first example, we'll summarize a conversation that a customer had with th
 
     You can see a humorous exchange between the customer and the support chat.
 
-2. Create a prompt for the LLM with the tasks that you want it to perform: 
+2. Create a prompt for the LLM with the tasks that you want it to perform.
 
     > Summarize the support chat in 3 sentences. also return the customer sentiment
 
-    A JSON document is a really good way to structure the prompt; the LLM can easily interpret the task and data set to operate on. The following SQL query combines the task with the data set. Run this query in SQL Worksheet:
+    A JSON document is a really good way to structure the prompt; the LLM can easily interpret the task and data set to operate on. The following SQL query combines the task with the data set. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+
 
     ```
     <copy>
@@ -87,7 +88,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     }
     ```
 
-3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. We'll use the Cohere model (you can also try it using `Meta Llama 2 Chat`). Run the following query in the SQL Worksheet:
+3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. We'll use the Cohere model (you can also try it using `Meta Llama 2 Chat`). Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
       
     ```
     <copy>
@@ -115,11 +116,13 @@ In our first example, we'll summarize a conversation that a customer had with th
 ## Task 2: Organize and execute GenAI projects
 You will likely use GenAI for many different projects where you need to apply analytics to data in Autonomous Database. This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that are applied to different use cases. 
 
-1. Let's take a look at the current projects:
+1. Let's take a look at the current projects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
 
     ```
     <copy>
-    SELECT * FROM GENAI_PROJECT ORDER BY 1;           
+    SELECT * 
+    FROM GENAI_PROJECT 
+    ORDER BY 1;           
     </copy>
     ```
 
@@ -149,7 +152,8 @@ You will likely use GenAI for many different projects where you need to apply an
     
     ![Things to do at a location](images/things-to-do-project.png)
     
-    Run this query in SQL worksheet to learn about Jennine. She is `customer_id = 1`:
+    Run this query in SQL worksheet to learn about Jennine. She is `customer_id = 1`. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
+
     ```
     <copy>
     SELECT 
@@ -171,10 +175,10 @@ You will likely use GenAI for many different projects where you need to apply an
     WHERE customer_id = 1;
     </copy>
     ```
-    See the results below:
+    
     ![About Jennine](images/about-jennine.png)
 
-4. The function `GENAI.GET_PROMPT` will return the prompt that will be sent to the LLM. Run the function call below in SQL Worksheet to see what will be sent to the model:
+4. The function `GENAI.GET_PROMPT` will return the prompt that will be sent to the LLM. Run the function call below in SQL Worksheet to see what will be sent to the model.
     ```
     <copy>
     SELECT genai.get_prompt(
@@ -204,32 +208,34 @@ You will likely use GenAI for many different projects where you need to apply an
     Enjoy yourself Jennine!
 
 ## Task 3: Simplifying prompt engineering
-As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous task:
+As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous task.
 
-1. You will need the URL for the APEX app deployed to your Autonomous Database. The URL is:
+1. You will need the URL for the APEX app deployed to your Autonomous Database. The URL format is as follows:
 
     >https://**[your-adb]**/ords/r/moviestream/genai-projects
 
-    To replace **[your-adb]** with the appropriate value for you deployment:
-    - Go to SQL Worksheet and copy the URL prefix from your browser:
+    Replace the **[your-adb]** place holder with the appropriate value for you deployment:
+    - Go to your SQL Worksheet and copy the URL prefix from your browser.
         ![copy URL](images/copy-url.png)
 
-1. In a new browser window, go to the **GenAI Projects** app using the URL above and log in as the same MOVIESTREAM user.
+2. In a new browser window, go to the **GenAI Projects** app using the URL above and log in as the same MOVIESTREAM user.
 
-2. After logging in, you will see the list of GenAI projects. These projects came from the `GENAI_PROJECT` table.
+    ![Go to GenAI Projects app.](images/genai-projects-url.png)
+
+3. After logging in, you will see the list of GenAI projects. These projects came from the `GENAI_PROJECT` table.
     ![GenAI projects](images/apex-create-ai-prompt.png)
 
-3. Let's take a look at the **Movie Pizza Recommendation** project. Click on the edit button for that project:
+4. Let's take a look at the **Movie Pizza Recommendation** project. Click the **Edit** icon for that project:
     ![Edit project](images/apex-edit-project.png)
 
-4. You can see the details for this project. You can update the task and task rules as you see fit to produce better results. And, you can see the query. For this app, each project's query has a single parameter - in this case `cust_id`. This lets you get details for that customer's profile. For now, let's leave the project as is - our subsequent lab is expecting results from this prompt. Click **Cancel**.
+5. You can see the details for this project. You can update the task and task rules as you see fit to produce better results. And, you can see the query. For this app, each project's query has a single parameter - in this case `cust_id`. This lets you get details for that customer's profile. For now, let's leave the project as is - our subsequent lab is expecting results from this prompt. Click **Cancel**.
     ![Edit project details](images/apex-edit-details.png)
 
-5. Test the GenAI project by following these simple steps:
-    * Select the project **Movie Pizza Recommendation**
-    * Pick an AI Profile. You can accept the default. Or, try different profiles and compare the results.
-    * Pick customer ID **1000001**
-    * Click **Generate Response**
+6. Test the GenAI project by following these simple steps:
+    * Select the project **Movie Pizza Recommendation**.
+    * Choose an AI Profile. You can accept the default, or, try different profiles and compare the results.
+    * Enter customer ID **1000001** as the parameter.
+    * Click **Generate Response**.
     
     ![Test the GenAI project](images/apex-test-genai-project.png)
 
@@ -251,16 +257,16 @@ You may now proceed to the next lab.
   * **Author:** Marty Gubar, Product Management 
   * **Contributors:** 
     * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer
+    * Lauran K. Serhal, Consulting User Assistance Developer 
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, February 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

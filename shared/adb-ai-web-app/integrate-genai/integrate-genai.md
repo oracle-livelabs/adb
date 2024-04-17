@@ -15,7 +15,6 @@ In this lab, you will:
 * Create Select AI Profile for OCI GenAI
 * Test the AI profile
 
-
 ### Prerequisites
 - This lab requires the completion of **Labs 1 and 2** in the **Contents** menu on the left.
 
@@ -31,13 +30,13 @@ In ADB, enable the use of resource principals for the MOVIESTREAM user.
 
     ![Open ADB](./images/click-adb.png "")
 
-3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click SQL. 
+3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click SQL.
 
     ![Select SQL option](./images/sql-option.png "")
 
 >**Note:** The setup script automatically enabled Resource Principals usage for MovieStream. The following 2 steps are optional.
 
-4. The deployment in Lab 1 already set up resouce principals in your database. To better understand the use of resource principals, let's undo that enablement and recreate it. Run the following statement to disable the use of resource principals for the MOVIESTREAM user: 
+4. The deployment in Lab 1 already set up resource principals in your database. To better understand the use of resource principals, let's undo that enablement and recreate it. Disable the use of resource principals for the MOVIESTREAM user. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -50,8 +49,7 @@ In ADB, enable the use of resource principals for the MOVIESTREAM user.
 
     ![Disable resource principal](./images/disable-resource.png "")
 
-
-5. Now let's re-enable the resource principal. Run the following statement to enable the use of the resource principal by the MOVIESTREAM user:
+5. Now let's re-enable the use of the resource principal by the MOVIESTREAM user. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -62,11 +60,11 @@ In ADB, enable the use of resource principals for the MOVIESTREAM user.
     </copy>
     ```
     
-    ![Enable resource principal](./images/resource-principal.png "")
+    ![Enable resource principal](./images/enable-resource-principal.png "")
 
 6. Sign out of the **ADMIN** user. On the **Oracle Database Actions | SQL banner**, click the drop-down list next to the **ADMIN** user, and then select **Sign Out** from the drop-down menu. 
 
-    ![Sign out from Admin](./images/signout.png "")
+    ![Sign out from Admin](./images/sign-out.png "")
 
 ## Task 2: Create an AI Profile for OCI Generative AI
 
@@ -77,21 +75,20 @@ A Select AI profile encapsulates connection information for an AI provider. This
 
 You can create as many profiles as you need, which is useful when comparing the quality of the results of different models.
 
-For a complete list of the Select AI profile attributes, see the [DBMS_CLOUD_AI_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
+For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
 
 >**Note:** The deployment script created a Select AI profile using the code below: 
 
 ```
-<copy>
 BEGIN
     -- drop the AI profile
-    DMBS_CLOUD_AI.drop_profile (
+    DBMS_CLOUD_AI.drop_profile (
         profile_name => 'genai',
         force => true
         );
 
     -- create an AI profile that uses the default COHERE model on OCI
-    DMBS_CLOUD_AI.create_profile(
+    DBMS_CLOUD_AI.create_profile(
         profile_name => 'genai',
         attributes =>       
             '{"provider": "oci",
@@ -100,31 +97,27 @@ BEGIN
         );
 END;
 /        
-</copy>
 ```
 
-1. Sign into the SQL worksheet as the MOVIESTREAM user (**Password:** watchS0meMovies#). 
+1. Sign into the SQL worksheet as the **MOVIESTREAM** user with the password **watchS0meMovies#**, and then navigate to the SQL Worksheet.
 
->**Note:** the MOVIESTREAM user was created as part of the setup and tables were created in that schema. Moviestream password can be found going to **Developer Services** from the hamburger menu -> **Resource Manager** -> **Stacks** -> selecting the stack we created, **Deploy-ChatDB-Autonomous-Database...** -> select the job we created, **ormjob2024117214431** -> then select **Outputs** under Resources. 
+    >**Note:** the **MOVIESTREAM** user was created as part of the setup and tables that were created in that schema. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack we created, **Deploy-ChatDB-Autonomous-Database...** > Select the job we created, **ormjob2024117214431** > Select **Outputs** under **Resources**.
 
-- Reference location of where to find the credentials:
+    ![Moviestream password](./images/moviestream-output-pswd.png "")
 
-    ![Moviestream password](./images/moviestream-pw.png "")
+2. Create an AI profile for the **Meta Llama 2 Chat model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
-2. Create an AI profile for the **Meta Llama 2 Chat model** by running the following script in the SQL worksheet. 
-    
     ```
     <copy>
     BEGIN
-        -- drops the profile if it already exists
+    -- drops the profile if it already exists
         DBMS_CLOUD_AI.drop_profile(
-                profile_name => 'OCIAI_LLAMA',
-                force => true
-        );
-
+            profile_name => 'OCIAI_LLAMA',
+            force => true
+        );     
         -- create a new profile that uses a specific model
         DBMS_CLOUD_AI.create_profile(
-            profile_name => 'OCIAI_LLAMA',                                                             
+            profile_name => 'OCIAI_LLAMA',
             attributes => '{"provider":"oci",
                 "model": "meta.llama-2-70b-chat",
                 "credential_name":"OCI$RESOURCE_PRINCIPAL",
@@ -134,39 +127,35 @@ END;
     /
     </copy>
     ```
-    ![Create AI profile](./images/create-llama-updated.png "")
+    ![Create AI profile](./images/create-llama.png "")
 
-3. Create an AI profile for the **Cohere model** by running the following statement in the SQL worksheet. 
+3. Create an AI profile for the **Cohere model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
     
     ```
     <copy>
     BEGIN
-        -- drops the profile if it already exists
-        DBMS_CLOUD_AI.drop_profile(
-                profile_name => 'OCIAI_COHERE',
-                force => true
-        );
+    -- drops the profile if it already exists
+        DBMS_CLOUD_AI.drop_profile(profile_name => 'OCIAI_COHERE', force => true);    
 
-        -- create a new profile that uses COHERE.COMMAND
+    -- create a new profile that uses COHERE.COMMAND
         DBMS_CLOUD_AI.create_profile(
-            profile_name => 'OCIAI_COHERE',                                                             
+            profile_name => 'OCIAI_COHERE',
             attributes => '{"provider":"oci",
-                "model": "cohere.command",
-                "credential_name":"OCI$RESOURCE_PRINCIPAL",
-                "oci_runtimetype":"COHERE"
-            }');
+            "model": "cohere.command",
+            "credential_name":"OCI$RESOURCE_PRINCIPAL",
+            "oci_runtimetype":"COHERE"}');
     end;
     /
     </copy>
     ```
-    ![Create AI profile](./images/create-cohere-updated.png "")
+    ![Create AI profile](./images/create-cohere.png "")
 
 
 ## Task 3: Test the AI profile
 
-We will use the PL/SQL API to generate a response from the Cohere model. This example is using the **chat** action. It is not using any private data coming from your database.:
+We will use the PL/SQL API to generate a response from the Cohere model. This example is using the **chat** action. It is not using any private data coming from your database.
 
-1. Run the following statement as MOVIESTREAM user in the SQL worksheet to test the LLM and learn about Autonomous Database using the **Cohere model**.
+1. Test the LLM and learn about Autonomous Database as the MOVIESTREAM user using the **Cohere model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -179,7 +168,7 @@ We will use the PL/SQL API to generate a response from the Cohere model. This ex
     ```
     ![Test the LLM](./images/cohere-output.png "")
 
-2. Run the following statement in the SQL worksheet to compare the Cohere model to the **Llama model**. 
+2. Compare the Cohere model to the **Llama model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -209,16 +198,16 @@ You may now proceed to the next lab.
   * **Author:** Marty Gubar, Product Management 
   * **Contributors:** 
     * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
+    * Nicholas Cusato, Cloud Engineer
+    * Lauran K. Serhal, Consulting User Assistance Developer 
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024  Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

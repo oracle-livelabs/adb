@@ -4,13 +4,13 @@
 
 In this lab, you will load and link data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into an Oracle Autonomous Database instance in preparation for exploration and analysis.
 
-You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the built-in tools as in this lab, or you can use other Oracle and third party data integration tools. With the built-in tools, you can load data:
+You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the built-in tools as in this lab, or you can use other Oracle and third party data integration tools. With the built-in tools, you can load data from the following:
 
-+ from files in your local device
-+ from tables in remote databases
-+ from files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, Google Cloud Storage)
++ Files in your local device
++ Tables in remote databases
++ Files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, and Google Cloud Storage)
 
-You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
+You can also leave data in place in a cloud object storage, and then link to it from your Autonomous Database.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
@@ -29,15 +29,15 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of the lab **Provision an Autonomous Database**, from the **Contents** menu on the left.
 
-## Task 1: Navigate to Database Actions and open the Data Load utility
+## Task 1: Navigate to the Data Load Page
 
 [](include:adb-goto-data-load-utility.md)
 
-## Task 2: Create tables and load data from files in public Object Storage buckets using Database Actions tools
+## Task 2: Load Data from a Public Object Storage Bucket and Create Tables
 
-This step will create and load the following tables into Autonomous Database: genre, customer_contact, custsales and pizza\_locations.
+In this task, you will load data from files in a public storage bucket and create the following tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
 
 [](include:adb-load-public-db-actions.md)
 
@@ -45,9 +45,12 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author** - Mike Matthews and Marty Gubar, Autonomous Database Product Management
-* **Contributors** -  Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Rick Green, July 2022
+* **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Mike Matthews, Autonomous Database Product Management
+    * Marty Gubar, Autonomous Database Product Management
+* **Contributor:** Rick Green, Database User Assistance
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

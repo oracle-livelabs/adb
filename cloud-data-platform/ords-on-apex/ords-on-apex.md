@@ -52,7 +52,7 @@ Estimated Lab Time: 30 minutes
 
     ![](./images/8.png " ")
 
-2. You will download a data file from this workshop for your APIs. You can download it by clicking on the following text link: [Download ORDS-REST-DEMO.sql here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/CSv7IOyvydHG3smC6R5EGtI3gc1vA3t-68MnKgq99ivKAbwNf8BVnXVQ2V3H2ZnM/n/c4u04/b/livelabsfiles/o/solutions-library/ORDS-REST-DEMO.sql). Then, return back to your browser window.
+2. You will download a data file from this workshop for your APIs. You can download it by clicking on the following text link: [Download ORDS-REST-DEMO.sql here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/solutions-library/ORDS-REST-DEMO.sql). Then, return back to your browser window.
 
 3. Click on **Choose File** and select **ORDS-REST-DEMO.sql**, the file you just downloaded for this workshop.
 
@@ -147,7 +147,7 @@ Estimated Lab Time: 30 minutes
 
 ## Task 1: Add API URLs to Web Page Code
 
-1. You will download a data file from this workshop for your web page. You can download it by clicking on the following text link: [Download WebPage.zip here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/CSv7IOyvydHG3smC6R5EGtI3gc1vA3t-68MnKgq99ivKAbwNf8BVnXVQ2V3H2ZnM/n/c4u04/b/livelabsfiles/o/solutions-library/WebPage.zip).
+1. You will download a data file from this workshop for your web page. You can download it by clicking on the following text link: [Download WebPage.zip here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/solutions-library/WebPage.zip).
 
 2. Then, go to your Downloads folder and unzip the .zip file.
 

@@ -113,9 +113,9 @@ Upload the **`potential_churners.csv`** file that you downloaded earlier in this
 
   ![The Upload Objects panel is displayed.](./images/select-file.png " ")
 
-6. Click **Upload** to upload the selected file to the bucket.
+3. Click **Upload** to upload the selected file to the bucket.
 
-7. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
+4. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
 
     ![The file is uploaded. Close the panel.](./images/file-uploaded.png " ")
 

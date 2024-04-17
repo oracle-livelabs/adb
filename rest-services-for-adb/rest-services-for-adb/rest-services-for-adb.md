@@ -119,7 +119,7 @@ We need to load some data into the database so that we can create some REST serv
 
     **(right-click and download the file with the following link)**
 
-    [May 2018 Earthquakes](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/may2018.csv)
+    [May 2018 Earthquakes](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/may2018.csv)
 
 6. Once you have downloaded the file, drag the file into the Upload Data into New Table modal. You can also click the **Select files** button and find where you downloaded it via your operating system's file browser.
 

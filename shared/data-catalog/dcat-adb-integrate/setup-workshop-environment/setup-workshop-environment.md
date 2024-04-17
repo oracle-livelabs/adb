@@ -146,25 +146,29 @@ Data Catalog offers both aggregate and individual resource-types for writing pol
 
 Create a Data Catalog instance using the following steps.
 
-1. Open the **Navigation** menu and click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**.
+1. From the Console, open the **Navigation** menu.
 
-   ![From the Navigation menu, navigate to Data Catalog.](./images/navigate-data-catalog.png " ")
+    ![Click the Navigation menu.](./images/click-navigation-menu.png =70%x*)
 
-2. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
+2. Click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**.
+
+    ![From the Navigation menu, navigate to Data Catalog.](./images/navigate-data-catalog.png " ")
+
+3. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
 
    ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")
 
-3. On the **Data Catalogs** page, click **Create data catalog**.
+4. On the **Data Catalogs** page, click **Create data catalog**.
 
    ![The Create Data Catalog button in the training-dcat-compartment is highlighted.](./images/data-catalog-page.png " ")
 
-4. Select the **`training-dcat-compartment`** compartment from the **Create in compartment** drop-down list, if not already selected.
+5. Select the **`training-dcat-compartment`** compartment from the **Create in compartment** drop-down list, if not already selected.
 
-5. Enter **`training-dcat-instance`** in the **Name** field.
+6. Enter **`training-dcat-instance`** in the **Name** field.
 
    ![The completed Create Data Catalog dialog box is displayed. The Create Data Catalog button is highlighted.](./images/create-data-catalog.png " ")
 
-6. Click **Create data catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
+7. Click **Create data catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
 
    ![The newly created Data Catalog instance is displayed with an Active state.](./images/click-data-catalog.png " ")
 
