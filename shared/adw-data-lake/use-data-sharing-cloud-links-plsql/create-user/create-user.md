@@ -4,7 +4,7 @@
 
 In this lab, you as the **`admin`**, you will create a **data share provider** user and grant this user the necessary role and privileges, and enable data sharing.
 
-![Create a user and grant roles and privileges](./images/create-user-privileges-diagram.png " ")
+![Create a user and grant roles and privileges](./images/create-user-privileges-diagram.png =65%x*)
 
 Estimated Time: 15 minutes
 
@@ -109,7 +109,7 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     Copy the value and paste it into your text editor file.
 
-    ![Paste the value into a text editor file](images/copy-value-text-editor.png)
+    ![Paste the value into a text editor file](images/copy-value-text-editor.png =70%x*)
 
 3. Log out of the **`ADMIN`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`ADMIN`** user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
 
@@ -117,7 +117,7 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
 4. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
 
-    ![Log in as share_provider](images/login-share-provider.png)
+    ![Log in as share_provider](images/login-share-provider.png =50%x*)
 
     You are now logged in as the newly created **`share_provider`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab.
 
