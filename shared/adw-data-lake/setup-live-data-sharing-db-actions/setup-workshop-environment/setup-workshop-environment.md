@@ -47,7 +47,7 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 
 2. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**.
 
-   ![The blurred username and masked password are displayed on the OCI Sign in screen. The tenancy's name and username are blurred. The Sign In button is highlighted.](./images/sign-in.png " ")
+   ![The blurred username and masked password are displayed on the OCI Sign in screen. The tenancy's name and username are blurred. The Sign In button is highlighted.](./images/sign-in.png =50%x*)
    
        >**Note:** Based on the Multi-factor authentication setup for your account, provide authentication to sign into the account. In our example, we clicked **Allow** on the iphone based on our authentication setup. For more details, refer to the [Managing Multifactor Authentication](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/usingmfa.htm) documentation.
 
