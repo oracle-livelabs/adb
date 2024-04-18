@@ -6,7 +6,7 @@ A data share recipient is an entity such as an individual, an institution, or a 
 
 In this lab, as a data share provider, you will create and authorize a new recipient that will access the **`demo_live_share`** data share that you just published and the `custsales` table in this share. You will need the sharing ID that you saved from an earlier step.
 
-![Recipient flow.](images/recipient-diagram.png =70%x*)
+![Recipient flow.](images/recipient-diagram.png =60%x*)
 
 Estimated Time: 5 minutes
 
@@ -96,11 +96,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

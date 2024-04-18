@@ -26,7 +26,7 @@
         {
             "title": "Lab 3: Connect Securely With or Without a Connection Wallet",
             "description": "Connecting Securely with or without a Connection Wallet",
-            "filename": "./../../c/adw-connection-wallet.md"
+            "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {
             "title": "Lab 4: Monitor Your Database",
