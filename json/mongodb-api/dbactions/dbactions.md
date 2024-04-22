@@ -186,7 +186,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
 
     Now we want to open SQL. Select __SQL__ in the Development section.
 
-    ![dbactions menu](./images/dbactions-menu-json.png " ")
+    ![dbactions menu](./images/dbactions-menu-sql.png " ")
 
 2.  Examine the EMP table
 
