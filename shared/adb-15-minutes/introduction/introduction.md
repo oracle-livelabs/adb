@@ -20,19 +20,20 @@ The workshop's business scenario is based on Oracle MovieStream - a fictitious m
 
 
 
-## Learn more
+## Learn More
 
 * [Oracle Autonomous Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
-* [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
+* [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/index.html)
 
 
 ## Acknowledgements
-* **Author** - Marty Gubar, Product Manager
-* **Last Updated By/Date** - Richard Green, Principal Developer, Database User Assistance, February 2022
+* **Author:** Marty Gubar, Product Manager
+* **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date** April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
