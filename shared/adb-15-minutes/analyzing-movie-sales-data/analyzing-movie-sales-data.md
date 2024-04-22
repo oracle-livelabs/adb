@@ -24,7 +24,7 @@ Estimated Time: 5 minutes
 
     ![The SQL worksheet is displayed](images/sql-worksheet.png " ")
 
-2. Learn more about the SQL Worksheet features using the tooltips when you hover over an icon. You will run queries by entering your commands in the worksheet. Click the **Run Statement** icon to run command and view the output in the **Query Result** tab in tabular format. Click the **Run Script** icon to run a script and display the output in the **Script Output** tab in text format. You can clear your worksheet by clicking the trash icon.
+2. Learn more about the SQL Worksheet features using the tooltips when you hover over an icon. You will run queries by entering your commands in the worksheet. Click the **Run Statement** icon to run the command and view the output in the **Query Result** tab in tabular format. Click the **Run Script** icon to run a script and display the output in the **Script Output** tab in text format. You can clear your worksheet by clicking the trash icon.
 
     ![Go to SQL worksheet](images/run-query.png " ")
 
