@@ -60,38 +60,7 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
    ![An example of magnifying an image. The magnifying glass icon with a plus sign is shown as hoovering over a sample image.](./images/magnify-image.png "Click an image to magnify it.")
 
 ## Task 2: (Optional) Create a Compartment
-
-A Cloud Administrator can optionally create a compartment in your tenancy to help organize your resources. In this lab, as a Cloud Administrator, you will create a new compartment that will group all of your resources that you will use in the workshop.
-
-1. Open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**.
-
-       ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
-
-    For faster navigation, you can pin items that you use frequently. To pin an item, hover over the menu item and then click pin to the left of the item name.
-
-    ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png " ")
-
-    The pinned item is displayed in the **Pinned** section of the **Home** tab the next time you use the Navigation menu.
-
-    ![An example that shows the Compartment item pinned.](./images/pinned-item.png " ")
-
-    The **Recently visited** section of the **Home** tab shows recently used navigation items.
-
-    To quickly find navigation menu items, use the **Search** box.
-
-2. On the **Compartments** page, click **Create Compartment**.
-
-   ![The Compartments page is displayed. The Create Compartment button is highlighted.](./images/click-create-compartment.png " ")
-
-3. In the **Create Compartment** dialog box, enter **`training-adw-compartment`** in the **Name** field and **`Training ADW Compartment`** in the **Description** field.
-
-4. In the **Parent Compartment** drop-down list, select your parent compartment, and then click **Create Compartment**.
-
-   ![On the completed Create Compartment dialog box, click Create Compartment.](./images/create-compartment.png " ")
-
-   The **Compartments** page is re-displayed and the newly created compartment is displayed in the list of available compartments.
-
-   ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png " ")
+[](include:iam-compartment-create-body.md)
 
 ## Task 3: Create an Autonomous Data Warehouse Instance
 
@@ -179,10 +148,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, February 2024
+* **Last Updated By/Date:** Lauran Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
