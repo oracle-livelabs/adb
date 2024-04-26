@@ -31,7 +31,7 @@ Although you can connect to your Oracle Autonomous Database using desktop tools 
 
     ![From the Database Actions drop-down list, click SQL.](./images/click-db-actions-sql.png " ")
 
-    The SQL Worksheet is displayed. A **Logged in as ADMIN user** warning box is displayed, close this box. The first time you access the SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the Tour button (labeled with binoculars symbol) in the upper right corner. Click **Next** to take a tour through the informational boxes.
+    The SQL Worksheet is displayed. If a **Logged in as ADMIN user** warning box is displayed, close the box. The first time you access the SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the Tour button (labeled with binoculars symbol) in the upper right corner. Click **Next** to take a tour through the informational boxes.
 
     ![An information box is displayed.](./images/information-box.png " ")
 
