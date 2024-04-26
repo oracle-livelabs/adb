@@ -111,16 +111,10 @@ You should now be in Mongo Shell. This is a command-line utility to interact wit
 
 	```
 	<copy>
-	db.emp.insertOne(
-		{ "name":"Smith", "job": "Programmer", "salary": 60000, "email" : "smith@example.com" }
-	)
-	</copy>
-	```
-
-	```
-	<copy>
-	db.emp.insertOne(
+	db.emp.insertMany([
+		{ "name":"Smith", "job": "Programmer", "salary": 60000, "email" : "smith@example.com" },
 		{ "name":"Miller", "job": "Programmer", "salary": 70000 }
+	]
 	)	
 	</copy>
 	```
@@ -201,4 +195,4 @@ You may now proceed to the next lab.
 
 - **Author** - Roger Ford, Principal Product Manager
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Hermann Baer, June 2023
+- **Last Updated By/Date** - Hermann Baer, April 2024
