@@ -178,4 +178,4 @@ Please [*proceed to the next lab*](#next).
 
 * **Author** - Mike Matthews, Autonomous Database Product Management
 * **Contributors** -  Rick Green, Principal Developer, Database User Assistance, Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Marty Gubar, September 2022
+* **Last Updated By/Date** - Marty Gubar, April 2024
