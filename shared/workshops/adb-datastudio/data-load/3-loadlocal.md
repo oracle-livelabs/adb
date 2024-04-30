@@ -60,15 +60,11 @@ Click the **Open in new tab** icon to open a new tab. This URL may be used to a
 
   ![Database Actions Log-in screen with the QTEAM user](images/qteam-login.png)
 
-4. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the Data Studio on the right-hand side. 
+4. This will take you to the Autonomous Database **Database Actions** page (shown below), with a link to Data Studio. 
 
   ![The Database Actions home page](images/dbactions.png)
 
-5. If you want more information about each of the cards on this page, then you can access the online help by clicking the **Question Mark** in the title bar, as indicated in the image below:
-
-  ![Link to open the online help](images/question-mark.png)
-
-6. This will pop out a tray containing links to the relevant topics in the Autonomous Data Warehouse documentation. To close the help tray, simply click the  **X**.
+5. If you want more information about Data Studio, hover over the sections on the left hand side, and click the links under the **Documentation** section. This will pop open a documentation page giving an outline of the relevant Data Studio tool. To close the help tray, simply click the  **X**.
 
   ![Screenshot of the online help system, and the icon to close it](images/help.png)
 
@@ -105,11 +101,11 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   ![Link to open the Data Studio Data Load tool](images/launch-data-load.png)
 
-2. Click on the first card in each of the first two rows of cards (in row one - **LOAD DATA** and row two - **LOCAL FILE** ) which will mark each box with a blue tick in the bottom right corner. To move forward to the next step in this process, simply click the blue **Next** button.
+2. Click on the first card in - **LOAD DATA** and make sure **Local File** is selected in the top left of the screen. 
 
   ![Load local files](images/load-local.png)
 
-3. This is where you need to locate the three files (Countries.csv, Days_Months.xlsx and Devices.xlsx) that you downloaded earlier! If they are easily accessible, then you can simply drag **ALL THREE** files at one time, and drop them onto to canvas as stated in the text on the screen.
+3. Next, you need to locate the three files (Countries.csv, Days_Months.xlsx and Devices.xlsx) that you downloaded earlier! If they are easily accessible, then you can simply drag **ALL THREE** files at one time, and drop them onto to canvas as stated in the text on the screen.
 
 4. An alternative approach is to click **Select Files** button in the middle of the screen, which will open the file explorer on your local computer where you can locate your data files: Countries.csv, Days\_Months.xlsx, and Devices.xlsx. You can select all the files in a single operation.
 
@@ -117,7 +113,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   ![Data load cards for files](images/loadlocal-fourcards.png)
 
-  Why do you have  ***four***  cards listed on the data loading screen? This is because your spreadsheet file **Days\_Months.xlsx** contains two worksheets: one for Days and one for Months. The data loading wizard automatically parsed your spreadsheet and created a separate data loading card for each worksheet. 
+  Why do you have  ***four***  cards listed on the data loading screen? This is because the spreadsheet file **Days\_Months.xlsx** contains two worksheets: one for Days and one for Months. The data loading wizard automatically parsed your spreadsheet and created a separate data loading card for each worksheet. 
 
 5. Before you load any data, let's review what the data loading wizard has discovered about the data within your data files. Let's focus on the **Countries.csv** file. Click the ellipsis on the right side of the card, then click **Settings** to inspect the data loading properties:
 
@@ -161,4 +157,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Ashish Jain, Rick Green
-- Last Updated By - Mike Matthews, January 2023
+- Last Updated By - Mike Matthews, April 2024

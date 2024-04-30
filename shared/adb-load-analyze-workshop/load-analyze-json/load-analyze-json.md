@@ -15,7 +15,6 @@ In this lab, you will:
 * Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` procedure
 * Use SQL to analyze both simple and complex JSON attributes
 
-
 ### Prerequisites
 
 - This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
@@ -47,4 +46,4 @@ You may now proceed to the next lab.
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, March 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
