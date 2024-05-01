@@ -4,7 +4,7 @@
 
 In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
 
-### What is Natural Language?
+### What is Natural Language Processing?
 
 Natural language processing is the ability of a computer application to understand human language as it is spoken and written. It is a component of artificial intelligence (AI).
 
@@ -34,11 +34,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

@@ -4,7 +4,7 @@
 
 In this lab you will learn how to consume the data in your available data share as a recipient.
 
-![Recipient diagram.](images/recipient-diagram.png)
+![Recipient diagram.](images/recipient-diagram.png =70%x*)
 
 Estimated Time: 10 minutes
 
@@ -25,11 +25,19 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 In this lab, you will log in as the `admin` user to create a database user (schema) that will be used to consume the data share that the `share_provider` user created and shared with the `training_user` recipient. If you already have an existing schema with the appropriate privileges, you can use it. We chose to separate the share\_provider user (schema) from the share\_consumer user (schema) to simulate a real use case of data sharing between a provider and a consumer.
 
-1. Log out of the `share_provider` user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. Click **Leave**.
+1. Log out of the `share_provider` user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu.
+
+    ![Log out of user share_provider](images/logout-share-provider.png)
 
 2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
 
-3. In the **Development** section, click the **SQL** card.
+    ![Log in as user admin](images/login-admin.png =50%x*)
+
+    The Database Actions Launchpad is displayed.
+
+3. Click the **Development** tab and then click the **SQL** tab to display the SQL Worksheet.
+
+    ![Navigate to the SQL Worksheet](images/navigate-sql-worksheet.png " ")
 
 4. Create a new consumer user named **`share_consumer`**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon.
 
@@ -93,7 +101,7 @@ To consume a data share, a recipient user must have the required network connect
 In our example, the **`endpoint`** value where the data share is located is as follows:
 
 ```
-https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/admin/_delta_sharing
+https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing
 ```
 
 For the next code that you will run, _copy your own endpoint URL up to only the **`oraclecloudapps.com`** and remove everything after that, namely `/ords/admin/_delta_sharing`. In addition, don't include the `https://` at the beginning of the URL_. Paste the final edited URL in the **host** parameter. So, in our example, this is what we will use for the host value in the next code example:
@@ -145,7 +153,15 @@ ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com
 
 In this task, as the **`share_consumer`** user, you will need the entire content of the **`delta_share_profile.json`** file that you downloaded in the previous lab in order to create the required credential to access the data share.
 
-1. Log out of the `admin` user and log in as the **`share_consumer`** user. In the **Development** section, click the **SQL** card. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_
+1. Log out of the `admin` user.
+
+    ![Log out of user admin.](images/log-out-admin.png)
+
+2. Log in as the **`share_consumer`** user. Click the **Development** tab and then click the **SQL** tab to display the SQL Worksheet.
+
+    ![Log in as user share_consumer.](images/login-share-consumer.png)
+
+3. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_
 
     >**Note:** We used place holders in the following code for security.
 
@@ -179,15 +195,15 @@ In this task, as the **`share_consumer`** user, you will need the entire content
     </copy>
     ```
 
-2. Replace everything from (and including) the opening braces "**`{`**" to the end braces "**`}`**" that are enclosed between the single quotes " **`'`** " with the entire content of your downloaded **`delta_share_profile.json`** file from the previous lab. _Pay attention to not remove the single quotes_.
+4. Replace everything from (and including) the opening braces "**`{`**" to the end braces "**`}`**" that are enclosed between the single quotes " **`'`** " with the entire content of your downloaded **`delta_share_profile.json`** file from the previous lab. _Pay attention to not remove the single quotes_.
 
     ![Copy profile content.](images/copy-profile-content.png)
 
-3. Next, click the **Run Script** icon.
+5. Next, click the **Run Script** icon.
 
     ![Create credential.](images/create-credential.png)
 
-4. Find the name of the newly created credential. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
+6. Find the name of the newly created credential. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
     ```
     <copy>
@@ -329,11 +345,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2023
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

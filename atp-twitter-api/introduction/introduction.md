@@ -45,8 +45,8 @@ This lab assumes you have:
 - An **Elevated Twitter Developer account** (not Free) [Link to sign up](https://developer.twitter.com/en/docs/twitter-api)
 
 Download the lab files here: 
-[SQL Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
-[Python Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
+[SQL Files](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+[Python Files](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
 
 >**Note:** Creating an **Elevated** (Basic or Pro) Twitter Developer account may take up to a couple days to be approved depending on your responses to the questions. It is recommended to start this process before beginning the lab. Click the link to get started: [Link to sign up](https://developer.twitter.com/en/docs/twitter-api).
 

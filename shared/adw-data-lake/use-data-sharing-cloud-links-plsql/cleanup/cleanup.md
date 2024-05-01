@@ -1,3 +1,10 @@
+<!--
+    {
+        "name":"Connect with SQL Worksheet",
+        "description":"Connect to Autonomous Database using the SQL Worksheet in Database Actions"
+    }
+-->
+
 # Clean up Resources Used in this Workshop (Optional)
 
 ## Introduction
@@ -53,7 +60,7 @@ This concludes the workshop.
 ## Acknowledgements
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, October 2023
+* **Last Updated By/Date:** Lauran Serhal, January 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -1,6 +1,12 @@
 {
     "workshoptitle": "Implement Data Sharing with PL/SQL",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+    "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md",
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+    },
+    "variables": ["./variables.json"],
     "tutorials": [
         {
             "title": "Introduction",
@@ -44,10 +50,10 @@
             "filename": "./../../consume-share/consume-share.md"
         },
         {
-            "title": "Lab 6: Clean up Resources Used in the Workshop (Optional)",
-            "type":"freetier",
-            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
-            "filename": "./../../cleanup/cleanup.md"
+            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
+            "description": "Delete the ADB instance and compartment if not needed.",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",

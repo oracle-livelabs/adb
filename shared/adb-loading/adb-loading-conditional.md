@@ -36,7 +36,7 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
 ## Task 1: Download sample data for loading from local file
 
-1. For this task, you will download a .csv file containing CHANNELS information to your local computer, then use it to populate a CHANNELS_LOCAL table in your ADW database in the next task.  Click <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/channels.csv" target="\_blank">this link to download the sample channels.csv file</a> and save it to a directory on your local computer.
+1. For this task, you will download a .csv file containing CHANNELS information to your local computer, then use it to populate a CHANNELS_LOCAL table in your ADW database in the next task.  Click <a href="https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/channels.csv" target="\_blank">this link to download the sample channels.csv file</a> and save it to a directory on your local computer.
 
 ## Task 2: Load local data using the Database Actions DATA LOAD tool
 
@@ -90,7 +90,7 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
 In Tasks 1 and 2, you downloaded a channels.csv file to your local computer and used the Database Actions DATA LOAD tool to create and load an ADW table. Now, you will download a zip file containing data files that you will stage to an *OCI Object Store*, to populate a number of tables in later tasks.
 
-1. Click <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/adb_sample_data_files.zip" target="\_blank">**here to download a zip file of the sample source files**</a> that you will upload to an object store that you will be defining. Unzip it to a directory on your local computer.
+1. Click <a href="https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/adb_sample_data_files.zip" target="\_blank">**here to download a zip file of the sample source files**</a> that you will upload to an object store that you will be defining. Unzip it to a directory on your local computer.
 
 ## Task 4: Navigate to object storage and create bucket
 
