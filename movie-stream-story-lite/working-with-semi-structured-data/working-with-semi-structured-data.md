@@ -273,4 +273,4 @@ Please *proceed to the next lab*
 
 - **Author** - Keith Laker, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Keith Laker, Marty Gubar October 20, 2021
+- **Last Updated By/Date** - Keith Laker, Marty Gubar April 2024
