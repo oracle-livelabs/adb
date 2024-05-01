@@ -193,7 +193,7 @@ In this task, you will create the required credentials in Autonomous Database th
 
 2. Inspect the new protected schema in Autonomous Database that was created by the sync operation and the two external tables in that schema that were created on top of the two tables in the AWS S3 bucket. In the **Navigator** tab on the left, search for the schema with a name that starts with **`GLUE`**, **`$`**, the AWS Glue connection name, **`AWS_GLUE_CONN`**, the AWS Glue database name, **`PARQ`**, followed by other strings. The generated schema name in this example is **`GLUE$AWS_GLUE_CONN_PARQ_TPCDS_ORACLE_PARQ`**. This schema contains the **`ITEM`** and **`STORE`** external tables.
 
-    >**Note:** You might have to click the **Refresh** icon in the **Navigator** tab before you can see the newly created protected schema. If the Refresh doesn't work, select **Sign Out** from the **`ADMIN`** drop-down list, and then click **Leave**. Next, on the **Sign-in** page, sign in as the **admin** user. On the **Launchpad**, in the **Development** section, click the **SQL** card.
+    >**Note:** You might have to click the **Refresh** icon in the **Navigator** tab before you can see the newly created protected schema. If the Refresh doesn't work, select **Sign Out** from the **`ADMIN`** drop-down list, and then click **Leave**. Next, on the **Sign-in** page, sign in as the **admin** user. On the **Launchpad** page, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
     ![Explore protected schema](images/explore-protected-schema.png)
 
@@ -209,15 +209,11 @@ In this task, you will create the required credentials in Autonomous Database th
 
     ![Run store query](images/run-store-query.png)
 
-6. Let's examine the Data Definition Language (DDL) code for the **`Store`** external table. In the **Navigator** tab, make sure that the newly created schema is selected. Next, right-click **`STORE`**, and then select **Edit** from the context menu.
+6. Let's examine the Data Definition Language (DDL) code for the **`Store`** external table. In the **Navigator** tab, make sure that the newly created schema is selected. Next, right-click **`STORE`**, and then select **Quick DDL > Save to File** from the context menu.
 
-    ![Examine the Store external table](images/edit-store.png)
+    ![Examine the Store external table](images/ddl-file.png =60%x*)
 
-7. In the **Table Properties** panel, in the **External Table** tab, click the **DDL** category.
-
-    ![Click DDL](images/click-ddl.png)
-
-8. Click the **Create** tab, and then scroll-down to the bottom of the **`CREATE TABLE`** command. The **`Location`** parameter indicates that the source data for the **`store`** external table is in AWS S3.
+7. Open the download text file, and then scroll-down to the bottom of the **`CREATE TABLE`** command. The **`Location`** parameter indicates that the source data for the **`store`** external table is in AWS S3.
 
     ![Location of the data](images/store-location.png)
 
@@ -232,15 +228,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
