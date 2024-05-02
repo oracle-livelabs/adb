@@ -65,6 +65,10 @@ This is not a hands-on task. In this task, you will navigate to an OCI Data Cata
 
 In this task, you will learn how to register an OCI Data Catalog instance in ADW in order to connect to that instance and link to the data asset's entities to create external tables in ADW.
 
+If you already accessed the SQL Worksheet in the previous lab, click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab to display the **Data Load Dashboard**. You can now skip over to **Step 5**.
+
+If you closed the Web browser tab where the SQL Worksheet was displayed, navigate to the **Data Load** page as follows:
+
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
@@ -81,7 +85,7 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **Data Load**.
 
-5. In the **Administration** section, click **CONNECTIONS** to display the **Connections** page.
+5. Click the **CONNECTIONS** tile.
 
     ![Click the Connections card.](./images/click-connections.png " ")
 
@@ -93,10 +97,11 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 
     * **Catalog Name:** Enter a meaningful name. **Note:** The name must conform to the Oracle object naming conventions, which do not allow spaces or **hyphens**.
     * **Description:** Enter an optional description.
-    * **Register Data Catalog Connection:** Select this checkbox.
-    * **Select Credential:** Select your **`OBJ_STORAGE_CRED`** credential that you created in **Lab 5 > Task 6** from the drop-down list. This could take a minute.
+    ** **Catalog Type:** Accept the default **OCI Data Catalog** from the drop-down list.
+    * **Credential for Data Catalog Connection:** Select your **`OBJ_STORAGE_CRED`** credential that you created in **Lab 5 > Task 6** from the drop-down list. This could take a minute.
     * **Region:** Your region should be already selected after you chose your credential.
-    * **Data Catalog ID:** If you have several Data Catalog instances, select the Data Catalog instance that you want to register from the drop-down list.
+    * **Data Catalog ID:** If you have several Data Catalog instances, select the Data Catalog instance that you want to register from the drop-down list. In this workshop, you only have one credential.
+    * **Register Data Catalog Connection:** Click this field to enable it.
 
         ![The completed Register Data Catalog panel is displayed.](./images/register-data-catalog-panel.png " ")
 
@@ -116,43 +121,43 @@ In this task, you will learn how to register an OCI Data Catalog instance in ADW
 
 In this task, you will link to data assets from the registered Data Catalog and create two external tables in your Autonomous Database instance based on those data assets.
 
-1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page.
+1. Click the **Data Load** link in the breadcrumbs to display the Data Load page.
 
-2. In the **Data Studio**, click **DATA LOAD**.
+2. Click the **LINK DATA** tile.
 
-3. In the **What do you want to do with your data?** section, click **LINK DATA**.
+    ![Click Connections.](./images/click-link-data.png " ")
 
-4. In the **Where is your data?** section, select **CLOUD STORE**, and then click **Next**.
+3. The **Link Data** page is displayed. You will use this page to drag and drop tables from the registered Data Catalog instance to the data linking job area. Click the **Data Catalog** tab. Next, select the **`REGISTER_DCAT_INSTANCE`** connection that you created from the **Select Cloud Store Location or enter public URL** drop-down list.
 
-5. The **Link Cloud Object** page is displayed. You will use this page to drag and drop tables from the registered Data Catalog instance to the data linking job area. Click the drop-down list. Under the **Catalog Locations** category, select the **`REGISTER_DCAT_INSTANCE`** that you created.
+    ![Drag the data assets from the Data Catalog bucket onto the linking job section.](images/click-data-catalog-tab.png)
 
-    ![Drag the data assets from the Data Catalog bucket onto the linking job section.](images/drag-and-drop-assets.png)
-
-6. Drag the **`customer_promotions`** and **`moviestream_churn`** data assets from the **moviestream\_sandbox** bucket in our Data Catalog instance, and drop them onto the data linking job section.
+4. Drag the **`customer_promotions`** and **`moviestream_churn`** data assets from the **moviestream\_sandbox** bucket in our Data Catalog instance, and drop them onto the data linking job section.
 
      ![Click the pencil icon to open settings viewer for customer_contact load task](images/customer-promotions-settings.png)
 
-7. Let's change the default name for the **`customer_promotions`** external table that will be created. Click the **Actions** icon (3-dot vertical ellipsis) for the **`customer_promotions`** link task, and then select **Settings** from the context menu. The **Link Data from Cloud Store Location customer\_promotions** settings panel is displayed. Change the external table name to **`CUSTOMER_PROMOTIONS_DCAT`**, and then click **Close**.
+5. Let's change the default name for the **`customer_promotions`** external table that will be created. Click the **Settings** icon (pencil) for the **`customer_promotions`** link task. The **Link Data from Cloud Store Location customer\_promotions** settings panel is displayed. Change the external table name to **`CUSTOMER_PROMOTIONS_DCAT`**, and then click **Close**.
 
-    ![Change name of the external table.](images/customer-promotions-dcat.png)
+    ![Change name of the external table.](images/customer-promotions-dcat.png =65%x*)
 
-8. Let's change the default name for the **`moviestream_churn`** external table that will be created. Click the **Actions** icon (3-dot vertical ellipsis) for the **`moviestream_churn`** link task, and then select **Settings** from the context menu to view the settings for this task. The **Link Data from Cloud Store Location moviestream\_churn** settings panel is displayed. Change the name of the external table name to **`MOVIESTREAM_CHURN_DCAT`**, and then click **Close**.
+6. Let's change the default name for the **`moviestream_churn`** external table that will be created. Click the **Settings** icon (pencil) for the **`moviestream_churn`** link task. The **Link Data from Cloud Store Location moviestream\_churn** settings panel is displayed. Change the name of the external table to **`MOVIESTREAM_CHURN_DCAT`**, and then click **Close**.
 
-9. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
+    ![Change name of the external table.](images/moviestream-churn-dcat.png =65%x*)
 
-    ![Run the data link job](images/run-data-link.png)
+7. Click **Start** to run the data link job. In the **Run Data Load Job** dialog box, click **Run**.
 
-10. After the load job is completed, make sure that all of the data link cards have green check marks next to them. This indicates that your data link tasks have completed successfully.
+    ![Run the data link job](images/run-data-link.png =65%x*)
+
+8. After the load job is completed, make sure that the two data link cards have the link icon next to them. This indicates that your data link tasks have completed successfully.
 
     ![The Link job tasks completed.](images/link-completed.png)
 
-11. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Development** section, click **SQL** to display your SQL Worksheet.
+9. Click **Database Actions | Data Load** in the banner to display the **Launchpad** page. Click the  **Development** tab, and then click the **SQL** tab to display your SQL Worksheet.
 
-12. From the **Navigator** pane, drag and drop the newly created **`CUSTOMERS_PROMOTIONS_DCAT`** external table onto the Worksheet. In the **Choose Type of insertion**, click **Select**, and then click **Apply**.
+10. From the **Navigator** pane, drag and drop the newly created **`CUSTOMERS_PROMOTIONS_DCAT`** external table onto the Worksheet. In the **Choose Type of insertion**, click **Select**, and then click **Apply**.
 
     ![Drag and drop the external table onto the worksheet.](images/drag-drop-external-table.png)
 
-13. The auto generated query is displayed in the worksheet. Click the **Run Statement** icon to run the query. The results are displayed. You just accessed the data in the registered Data Catalog instance!
+11. The auto generated query is displayed in the worksheet. Click the **Run Statement** icon to run the query. The results are displayed. You just accessed the data in the registered Data Catalog instance!
 
     ![Run the query.](images/run-query.png)
 
@@ -172,15 +177,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
