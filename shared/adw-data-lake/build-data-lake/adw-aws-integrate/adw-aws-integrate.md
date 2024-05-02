@@ -76,8 +76,13 @@ In this task, you will navigate to an AWS Glue Data Catalog instance and explore
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
+<if type="livelabs">
+3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+</if>
+
+<if type="freetier">
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+</if>
 
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
