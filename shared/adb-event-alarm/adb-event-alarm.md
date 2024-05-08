@@ -3,11 +3,11 @@
 
 ## Introduction
 
-*Note: the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps.*
+_>**Note:** the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps._
 
 The Oracle Cloud Infrastructure (OCI) Notifications service broadcasts messages to distributed components through a publish-subscribe pattern, delivering secure, highly reliable, low latency and durable messages for applications hosted on OCI and externally.
 
-The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions . When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
+The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions. When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
 
 This lab shows you how to define events and alarms with conditional rules that will generate email notifications when the state of an Autonomous Database changes or an alarm condition has been met.
 
@@ -221,14 +221,16 @@ You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-- ADW Documentation: [Use Autonomous Database Events](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/notification-critical-and-informational-events.html#GUID-7D1E3455-CD54-495B-BAE5-46B4CBB002B1)
-- OCI Documentation: [Getting Started with Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsgetstarted.htm)
-- OCI Documentation: [Overview of Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
-- OCI Documentation: [Notifications Overview](https://docs.oracle.com/en-us/iaas/Content/Notification/Concepts/notificationoverview.htm)
-- LiveLabs Workshop: [Using Events and Notifications](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?p180_id=653) 
+* [Use Autonomous Database Events](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/notification-critical-and-informational-events.html#GUID-7D1E3455-CD54-495B-BAE5-46B4CBB002B1)
+* OCI Documentation: [Getting Started with Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsgetstarted.htm)
+* OCI Documentation: [Overview of Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
+* OCI Documentation: [Notifications Overview](https://docs.oracle.com/en-us/iaas/Content/Notification/Concepts/notificationoverview.htm)
+* LiveLabs Workshop: [Using Events and Notifications](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?p180_id=653) 
 
 ## Acknowledgements
 
-- **Author **- Rick Green, Principal Developer, Database User Assistance
-- **Contributor** - Nilay Panchal, ADB Product Management
-- **Last Updated By/Date** - Kamryn Vinson, May 2021
+- **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Rick Green, Principal Developer, Database User Assistance
+- **Contributor:** Nilay Panchal, ADB Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, May 2024

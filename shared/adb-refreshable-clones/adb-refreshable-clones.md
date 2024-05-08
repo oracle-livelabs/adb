@@ -121,7 +121,7 @@ You have proven that the refreshable clone contains the source database's table 
 
 1. Switch back to the **source database's** SQL worksheet. This will be the **`ADW_Finance_ Mart`** database instance that you created in the workshop's **Provision an Autonomous Database** lab, or another database that you might be using as the source.
 
-![Navigate to the source database SQL Worksheet](images/source-databae-sql-worksheet.png =65%x*)
+  ![Navigate to the source database SQL Worksheet](images/source-databae-sql-worksheet.png =65%x*)
 
 2. Insert and commit an additional row into the source database. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
