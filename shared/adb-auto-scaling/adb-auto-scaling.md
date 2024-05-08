@@ -398,10 +398,10 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Authors:**
-    * Rick Green, Database User Assistance
-    * Nilay Panchal, ADB Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, ADB Product Management
+    * Rick Green, Database User Assistance
 - **Contributors:**
     * John Zimmerman, Real World Performance Team
     * Keith Laker, ADB Product Management
-- **Last Updated By/Date** - Lauran K. Serhal, April 2024
+- **Last Updated By/Date** - Lauran K. Serhal, May 2024
