@@ -36,7 +36,7 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
 ## Task 1: Download sample data for loading from local file
 
-1. For this task, you will download a .csv file containing CHANNELS information to your local computer, then use it to populate a CHANNELS_LOCAL table in your ADW database in the next task.  Click <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/channels.csv" target="\_blank">this link to download the sample channels.csv file</a> and save it to a directory on your local computer.
+1. For this task, you will download a .csv file containing CHANNELS information to your local computer, then use it to populate a CHANNELS_LOCAL table in your ADW database in the next task.  Click <a href="https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/channels.csv" target="\_blank">this link to download the sample channels.csv file</a> and save it to a directory on your local computer.
 
 ## Task 2: Load local data using the Database Actions DATA LOAD tool
 
@@ -60,7 +60,7 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
     ![Drag and drop or select the file.](./images/datatools-dataload-drop-target.png " ")
 
-6. When the upload is complete, you could simply click the green arrow **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the **Settings** button labeled with a pencil symbol.
+6. When the upload is complete, you could simply click the **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the 3-dotted ellipsis menu and click the **Settings** button labeled with a pencil symbol.
 
     ![Modify the data load job settings.](./images/click-settings-to-modify-data-load-job.png " ")
 
@@ -72,13 +72,13 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
     ![Run the data load.](./images/run-the-data-load.png " ")
 
-9. When the load job finishes, a green check mark appears. Click **Data Load** in the breadcrumb in the upper left corner, to return to the **Data Load** page.
+9. When the load job finishes, a green check mark appears. Click **Done**.
 
-    ![Click Data Load in the breadcrumb.](./images/click-data-load-in-breadcrumb.png " ")
+    ![A green check mark appears.](./images/load-finishes-green-check-mark.png " ")
 
-10. In the **Data Load** page, click **EXPLORE**.
+10. Return to the initial **Database Actions Launchpad**. In the **Data Studio** section, click **Catalog**.
 
-    ![Click EXPLORE in the Data Load page.](./images/click-explore-in-data-load-page.png " ")
+    ![Click Catalog in the Database Actions page.](./images/click-catalog.png " ")
 
 11. The Catalog shows the *CHANNELS_LOCAL* table has been successfully created. You can click the table name to see the data.
 
@@ -90,7 +90,7 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
 In Tasks 1 and 2, you downloaded a channels.csv file to your local computer and used the Database Actions DATA LOAD tool to create and load an ADW table. Now, you will download a zip file containing data files that you will stage to an *OCI Object Store*, to populate a number of tables in later tasks.
 
-1. Click <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/adb_sample_data_files.zip" target="\_blank">**here to download a zip file of the sample source files**</a> that you will upload to an object store that you will be defining. Unzip it to a directory on your local computer.
+1. Click <a href="https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/adb_sample_data_files.zip" target="\_blank">**here to download a zip file of the sample source files**</a> that you will upload to an object store that you will be defining. Unzip it to a directory on your local computer.
 
 ## Task 4: Navigate to object storage and create bucket
 

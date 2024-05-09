@@ -8,7 +8,7 @@ In this workshop, we'll show you how you can replace your MongoDB database with 
 
 Once you're using Oracle Database to store your document collections, you have access to that very same data from all the advanced tools provided by Oracle, such as machine learning, graph analytics and many others. Your data can remain in document collections, but be accessed from the SQL language as well as using MongoDB commands. You can join JSON and relational data, without any need to export the JSON data to relational format first.
 
-In the workshop, you will use Oracle Database 23c Free and a local ORDS installation to connect to the database using MongoDB tools. You'll learn how you can work with JSON data using both standard MongoDB tools, and using Oracle Database tools.
+In the workshop, you will use Oracle Database 23ai Free and a local ORDS installation to connect to the database using MongoDB tools. You'll learn how you can work with JSON data using both standard MongoDB tools, and using Oracle Database tools.
 
 This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
 
@@ -21,7 +21,7 @@ Watch the video below for a quick walk through of the workshop.
 
 In this workshop, we'll implement a very simple employee database. 
 
-We'll use Oracle Database 23c Free and connect to it using the standard "MongoDB Shell" tool. We'll use that to create an employee collection, and populate it with some employee records.
+We'll use Oracle Database 23ai Free and connect to it using the standard "MongoDB Shell" tool. We'll use that to create an employee collection, and populate it with some employee records.
 
 We'll then explore the same data using "Database Actions" powered by our local ORDS installation.
 
@@ -81,9 +81,9 @@ Now you know what JSON is and also why so many people love it. Enough theory for
 ### Objectives
 
 In this workshop, you will explore: 
-*	How to use our sandbox environment with a pre-installed Oracle Database 23c Free environment
+*	How to use our sandbox environment with a pre-installed Oracle Database 23ai Free environment
 *	How to install MongoDB Shell and Mongo tools on a linux environment
-*   How to connect to Oracle Database 23c Free from MongoDB Shell and work with collections
+*   How to connect to Oracle Database 23ai Free from MongoDB Shell and work with collections
 *   How to access the MongoDB collection from JSON Workshop and SQL
 
 

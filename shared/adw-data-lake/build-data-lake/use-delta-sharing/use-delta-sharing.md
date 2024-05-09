@@ -13,6 +13,9 @@ Autonomous Database supports the Delta Sharing protocol.
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[](youtube:YH7pPGEaxNI)
+
 ### Objectives
 
 In this lab, you will:
@@ -46,7 +49,7 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 ## Task 2: Navigate to the SQL Worksheet
 
-If you already accessed the SQL Worksheet from the previous lab, you can skip over to **Task 3**; otherwise, navigate to SQL Worksheet as follows:
+If you already accessed the SQL Worksheet in the previous lab, you can skip over to **Task 3**; otherwise, navigate to SQL Worksheet as follows:
 
 1. Log in to the **Oracle Cloud Console**.
 
@@ -60,17 +63,15 @@ If you already accessed the SQL Worksheet from the previous lab, you can skip ov
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-5. In the **Database Actions | Launchpad** Home page, in the **Development** section, click the **SQL** card to display the SQL Worksheet.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**. The SQL Worksheet is displayed.
 
 ## Task 3: Create a Database Credential and List the Available Schemas and Tables
 
 Create a new database credential that you will use in this task as follows:
 
-1. Use the **`CREATE_CREDENTIAL`** procedure in the **`DBMS_CLOUD`** PL/SQL package to create and store the cloud service credentials in the Autonomous Database. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation. Copy and paste the following code into your SQL Worksheet. You can substitute the `credential_name` and `user_name` with your own values. The `password` value is the **`bearerToken`** value from the public Delta Sharing profile. Click the **Run Script** icon in the Worksheet toolbar.
+1. Use the **`CREATE_CREDENTIAL`** procedure in the **`DBMS_CLOUD`** PL/SQL package to create and store the cloud service credentials in the Autonomous Database. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation. Copy and paste the following code into your SQL Worksheet. You can substitute the `credential_name` with your own value. Click the **Run Script** icon in the Worksheet toolbar.
 
-    >**Note:** It is a requirement to use **`bearer_token`** as the **`password`**.
+    >**Note:** It is a requirement to use **`bearer_token`** as the **`username`**.
 
     ```
     <copy>
@@ -172,15 +173,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Contributor:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

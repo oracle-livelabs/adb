@@ -1,4 +1,4 @@
-# Load Data from Object Storage Private Buckets
+# Load Data from Private Object Storage Buckets
 
 ## Introduction
 In this lab, you will load more data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into your Oracle Autonomous Database instance, in preparation for exploration and analysis.
@@ -22,13 +22,13 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab, **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of the lab, **Provision an Autonomous Database** from the **Contents** menu on the left.
 
-## Task 1: Download customer data for staging to an object store
+## Task 1: Download Customer Data from a Public Bucket
 
-First, download a CSV file containing a simulation of sensitive customer retention data. Later, you will stage the file to a private **OCI Object Store** bucket, to populate a table in later tasks.
+First, download a **`CSV`** file containing a simulation of sensitive customer retention data. Later, you will stage the file to a private **OCI Object Storage** bucket, to populate a table in later tasks.
 
-1. Copy and paste this URL into your browser, and press **ENTER**:
+1. Copy and paste the following URL into a _**new tab**_ in your web browser, and then press **[ENTER]**. The **moviestream\_sandbox** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**.
 
     ```
     <copy>
@@ -36,50 +36,99 @@ First, download a CSV file containing a simulation of sensitive customer retenti
     </copy>
     ```
 
-2. The browser page will prompt you to download the `potential_churners.csv` file. This file contains customers who will stop or might stop being repeat customers. Choose a folder to save the file and click **Save**.
+2. The browser page downloads (the **Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file which contains customers who will stop or might stop being repeat customers. The data in the downloaded file is also displayed in an Excel worksheet. Close the worksheet.
 
-  ![Download the potential_churners.csv file to your local computer.](images/save-the-potential-churners-csv-file.png " ")
+  ![Download the potential_churners.csv file to your local computer.](images/potential-churners-csv-file.png " ")
 
-    Make note of where you download the file, as you will upload it to the object store that you define in the next task.
+    >**Note:** Make a note of where you downloaded the file. You will upload it to the private object storage bucket that you will create in the next task.
 
-## Task 2: Navigate to OCI Object Storage and create private bucket
+## Task 2: Create a Private Object Storage Bucket
 
-In OCI Object Storage, a bucket is the terminology for a container of files.
-
-1. Now you create an OCI Object Storage bucket. From the Autonomous Data Warehouse console, pull out the left side menu from the top-left corner and select **Storage > Buckets**.
-
-    ![Pull out the left side menu from top left corner.](images/pull-out-left-side-menu.png " ")
-
-
-    ![Select Storage and then Buckets from the left navigation window in the Oracle Cloud homepage.](images/select-storage-then-buckets.png " ")
-
-    To learn more about the OCI Object Storage, refer to its [its documentation](https://docs.us-phoenix-1.oraclecloud.com/Content/GSG/Tasks/addingbuckets.htm).
-
-2. You should now be on the **Object Storage & Archive Storage** page. <if type="livelabs">Choose the LiveLabs compartment you were assigned, and click **Create Bucket**:</if><if type="freetier">Choose any compartment to which you have access. In this example, a **training** compartment is chosen. Click **Create Bucket**:</if>
-
-    <if type="livelabs">
-    ![Choose a compartment on Object Storage page.](images/choose-compartment-livelabs.png " ")
-    </if>
-    <if type="freetier">
-    ![Choose a compartment on Object Storage page.](images/choose-compartment.png " ")
-    </if>
+Create a private Object Storage bucket to store your data. For more information about Oracle Object Storage, see [Explore more about Object Storage in Oracle Cloud.](https://docs.oracle.com/en-us/iaas/Content/Object/home.htm)
 
 <if type="livelabs">
-3. **Bucket names must be unique per tenancy and region**; otherwise you will receive an "already exists" message. So include your LiveLabs user login ID, as in **user_id-ADWCLab**. Enter the unique bucket name, leave the default settings, and click the **Create** button.
 
-    ![Enter the required details and click Create.](images/click-create-to-create-the-bucket-livelabs.png " ")
+1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click the **Launch OCI** button.
+
+    ![Click the Launch OCI button.](images/click-launch-oci.png " ")
+
+2. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
+
+3. On the **Buckets** page, select the compartment that was assigned to you where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region that was assigned to you where you will create your bucket.
+
+4. Click **Create Bucket**.
+
+5. In the **Create Bucket** panel, specify the following:
+    - **Bucket Name:** Enter a meaningful name for the bucket.
+    - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
+    - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
+
+    >**Note:** Bucket names must be unique per tenancy and region.
+
+6. Click **Create** to create the bucket.
+
+  ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
+
+7. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
+
+  ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 </if>
+
 <if type="freetier">
-3. **Bucket names must be unique per tenancy and region**; otherwise you will receive an "already exists" message. Enter the unique bucket name, leave the default settings,  and click the **Create** button.
 
-    ![Enter the required details and click Create.](images/click-create-to-create-the-bucket.png " ")
-</if>
+1. In the **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-## Task 3: Upload a file to your OCI Object Storage bucket
+    ![Navigate to buckets.](./images/navigate-buckets.png =70%x*)
 
-Normally, you would likely upload multiple files to an OCI Object Storage bucket. However, to keep this lab simple and quick, you will upload the single file you downloaded in the first task.
+2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. In this example, we chose a compartment named **`training-adw-compartment`**. Make sure you are in the region where you want to create your bucket.
 
-1. Click your **bucket name** to open it:
+    ![The buckets page is displayed.](./images/buckets-page.png =70%x*)
+
+3. Click **Create Bucket**.
+
+4. In the **Create Bucket** panel, specify the following:
+    - **Bucket Name:** Enter a meaningful name for the bucket. In this example, we chose **`training-data-lake`** as the name.
+    - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
+    - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
+
+    >**Note:** Bucket names must be unique per tenancy and region; otherwise an **already exists** error message is displayed.
+
+5. Click **Create** to create the bucket.
+
+  ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
+
+6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
+
+  ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
+
+  </if>
+
+## Task 3: Upload Customer Data to your Private Object Storage Bucket
+
+Upload the **`potential_churners.csv`** file that you downloaded earlier in this lab to your newly created private Object Storage bucket. Normally, you would likely upload multiple files to an OCI Object Storage bucket; However, to keep this lab simple and quick, you will upload one file.
+
+1. On the **Buckets** page, click the new bucket name link. On the **Bucket Details** page, scroll down the page to the **Objects** section, and then click **Upload**.
+
+  ![The Bucket Details page is displayed.](./images/bucket-details.png " ")
+
+2. In the **Upload Objects** panel, you can drag and drop a single or multiple files into the **Choose Files from your Computer** field or click **select files** to choose the file(s) that you want to upload from your computer. In this example, we used the drag-and-drop method to select the **`potential_churners.csv`** file from our **Downloads** folder.
+
+  ![The Upload Objects panel is displayed.](./images/select-file.png " ")
+
+6. Click **Upload** to upload the selected file to the bucket.
+
+7. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
+
+    ![The file is uploaded. Close the panel.](./images/file-uploaded.png " ")
+
+    The **Bucket Details** page is re-displayed. The newly uploaded file is displayed in the **Objects** section.
+
+    ![The Upload file is displayed.](./images/uploaded-file-displayed.png " ")
+
+
+
+<!---
+Note to self. I need to update and include the conditional if for livelabs when I am done updating and testing the freetier
 
 <if type="livelabs">
     ![Click on the bucket name.](images/click-bucket-name-livelabs.png " ")
@@ -95,95 +144,117 @@ Normally, you would likely upload multiple files to an OCI Object Storage bucket
 
     ![Click Upload under Objects section.](images/click-upload.png " ")
 </if>
+-->
 
-3. Drag and drop, or click **select files**, to select the `potential_churners.csv` file you downloaded in Task 1. Click **Upload** and wait for the upload to complete:
+## Task 4: Locate the Base URL for the Object Storage File
 
-    ![Upload file by drag and drop or manually select file in the wizard and click upload.](images/select-file-and-upload.png " ")
+Find the base URL of the object you just uploaded to your private Object Storage bucket.
 
-4. When the file finishes uploading, click **Close** at the bottom of the Upload Objects page. The end result should look like this with the file listed under **Objects**:
-
-    ![This is the objects section after the file is uploaded.](images/list-of-uploaded-objects.png " ")
-
-## Task 4: Locate the object store base URL
-
-1. Locate the base URL of the object you just uploaded to your object store. The simplest way to get this URL is to click **View Object Details** in the ellipsis menu to the right of any uploaded file in the object store.
+1. On the **Bucket Details** page, scroll down to the **Objects** section. In the row for the **`potential_churners.csv`** file, click the 3-dot ellipsis icon, and then select **View Object Details** from the context menu.
 
     ![Select View Object Details from the ellipsis on the right of any uploaded file.](images/view-object-details.png " ")
 
-2.  In the **Object Details** page, copy the base URL that points to the location of your files staged in the OCI Object Storage. **Do not include the trailing slash.** Save the base URL in a text notepad. You  will use the base URL in the upcoming tasks. When you are done copying the base URL, click **Cancel** to close the Object Details page.
+2. In the **Object Details** panel, copy the **URL Path (URI)** that points to the location of the file in your private Object Storage bucket up to the **`/o`** part. **_Do not include the trailing slash;otherwise, you will get an error message when you use the URL_**. Save the base URL in a text editor of your choice such as Notepad in MS-Windows. You will use this URL in the upcoming tasks. Next, click **Cancel** to close the **Object Details** page.
 
-    ![Copy the base URL.](images/copy-base-url.png " ")
+    ![Copy the base URL.](images/url-path.png " ")
 
-3. Take a look at the URL you copied. In this example, the **region name** is us-ashburn-1, the **Namespace** is a+++++++++ng5, and the **bucket name** is ADWCLab.
-
-    > **Note:** You can construct the URL as here:
+3. The format of the URL is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
-## Task 5: Create an object store auth token
+    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `training-data-lake`.
 
-To load data from the Oracle Cloud Infrastructure (OCI) Object Storage, you will need an OCI user with the appropriate privileges to read data (or upload) data to the Object Store. The communication between the database and the object store relies on the native URI, and the OCI user Auth Token.
+    ![The URL highlighted.](images/url.png " ")
 
-1. In the menu bar at the top, click the **person icon** at the far right. From the drop-down menu, click your **OCI user's name**. This username might have a prefix followed by an email address, for example: `oracleidentitycloudservice/xxxxxxx.xxxxx@xxxxxx.com`.
+## Task 5: Create an Object storage Auth Token
 
-    ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
+To load data from the Oracle Cloud Infrastructure (OCI) Object Storage, you will need an OCI user with the appropriate privileges to read data (or upload) data to the Object Storage bucket. The communication between the database and object storage relies on the native URI, and the OCI user's Auth Token.
 
-2. In the Identity > Users > User Details page, make note of this username, as you will need it in an upcoming task. At the bottom left side of the page, in the **Resources** section, click **Auth Tokens**.
+1. In the Console banner, click the **Profile** icon. The **Profile** drop-down menu is displayed.
+
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
+
+    >**Note:** Make a note of your OCI user's name that is displayed in the **Profile** drop-down menu as you will need it in a later task. This username might have a prefix followed by an email address, for example:    
+    **`oracleidentitycloudservice/xxxxxxx.xxxxx@xxxxxx.com`**
+
+2. From the drop-down menu, click **My profile**. The **User Profile** page is displayed. Scroll down the page to the **Resources** section, click **Auth tokens**, and then click **Generate token**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-auth-tokens.png " ")
 
-3. Click **Generate Token**.
+3. In the **Generate token** panel, enter a meaningful description for the token, and then click **Generate token**.
 
-    ![Click Generate Token.](./images/click-generate-token.png " ")
+    ![Enter a description for the token.](./images/enter-description.png " ")
 
-4. Enter a meaningful **description** for the token and click **Generate Token**.
+4. The new Auth token is displayed. Click **Copy** to copy the Auth Token to the clipboard. Save the contents of the clipboard in a text editor file of your choice. You will use it in the next tasks.
 
-    ![Enter Description and click Generate Token.](./images/generate-the-token.png " ")
-
-5.  The new Auth Token is displayed. Click **Copy** to copy the Auth Token to the clipboard. Save the contents of the clipboard in your text notepad file. You will use it in the next tasks.
-
-    > **Note:** You can't retrieve the Auth Token again after closing the dialog box.
+    >**Note:** You can't retrieve the Auth Token again after you close the panel.
 
     ![Copy the Auth Token to clipboard.](./images/copy-the-generated-token.png " ")
 
-6. Click **Close** to close the Generate Token dialog.
+5. Click **Close** to close the **Generate token** panel.
 
-## Task 6: Define a cloud location and create credential using Database Actions DATA LOAD tool
+6. The **User Profile** page is re-displayed. The new Auth token is displayed.
+
+    ![Auth token is displayed.](./images/auth-token-displayed.png " ")
+
+## Task 6: Define a Cloud Location and Create a Credential Using the DATA LOAD Tool
 
 You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store, using the DBMS_CLOUD PL/SQL package. There are two parts to this process and you must perform the first part only once. The two parts are:
 
 + Set up connection to the Oracle Object Store by defining a cloud location with credential.
 + Load the file using the DBMS_CLOUD PL/SQL package.
 
-First, define a **Cloud Location** to connect to the Oracle Object Store. To begin this process, you need to navigate back to the **DATA LOAD** page of Database Actions.
+First, define a new **Cloud Location** to connect to the Oracle Object Storage bucket. To begin this process, you need to navigate back to the **DATA LOAD** page under **Database Actions**.
 
 [](include:adb-goto-data-load-utility.md)
 
-4. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your object store.
+1. In the **Data Load** main page, in the **Administration** section, click the **CONNECTIONS** card.
 
-    ![Click the Cloud Locations card.](./images/click-cloud-locations-card.png " ")
+    ![Click the Cloud Locations card.](./images/click-connections.png " ")
 
-5. Click **Add Cloud Storage**.
+2. In the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
 
-    ![Click Add Cloud Storage.](./images/click-add-cloud-storage.png " ")
+    ![Click Add Cloud Storage.](./images/click-new-cloud-location.png " ")
 
-6. Complete the **Add Cloud Store Location** page.
-    + Specify the name **ADWCLab** and a description.
-    + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and Auth Token. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
+3. Specify the following in the **Add Cloud Store Location** panel.
+    + **Name:** Enter **`oci-cloud`**.
+    + **Description:** Enter an optional description.
+    + Accept the default **Select Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
+    + Click **Create Credential**.
+    + In the **Create Credential** dialog box, specify the following:
+        + **Credential Type:** Accept the default **Cloud Username and Password** option.
+        + **Cloud Store:** Select **Oracle** from the drop-down list since you will load data from your Oracle Object Storage bucket.
+        + **Credential Name:** Enter **OBJ\_STORE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
+        + **Oracle Cloud Infrastructure User Name:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
+        + **Auth Token:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
 
-    + Choose **Oracle** as the cloud store, since you will be loading from your Oracle Object Store bucket.
-    + Specify the credential name **OBJ\_STORE\_CRED**.
-      **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-    + Specify your Oracle Cloud Infrastructure user name that you identified in Task 5.
-    + Copy and paste the Auth Token that you generated in Task 5.
-    + Specify the Bucket URI that you recorded in Task 4. Remember to use this general structure, swapping in your own values:
+7. Click **Create Credential**.
 
-      https://objectstorage.region name.oraclecloud.com/n/namespace name/b/bucket name/o
-    + Click **Create**.
+    ![Click Create Credential.](./images/click-create-credential.png " ")
 
-    ![Complete the Add Cloud Storage page.](./images/complete-add-cloud-storage-page.png " ")
+    The **Add Cloud Store Location** panel is re-displayed. The newly created **`OBJ_STORE_CRED`** credential is displayed in the drop-down list.
 
-## Task 7: Load data from the object store using the PL/SQL package, DBMS_CLOUD
+    ![Credential created.](./images/credential-created.png " ")
+
+8. Specify the following in the **Add Cloud Store Location** panel:    
+    + **Bucket URI option:** Select this option, if it's not already selected.    
+    + **Bucket URI field:** Enter the Bucket URI that you recorded in **Task 4**. Remember to use the following general structure while substituting the `region-name` and `namespace-name` place holders with your own values.
+
+        ```
+        https://objectstorage.region-name.oraclecloud.com/n/namespace-name/b/bucket name/o
+        ```
+
+        ![Click Create Credential.](./images/storage-setting.png " ")
+
+9. Click **Next** to see the available objects in the bucket that you specified. The **Cloud Data** wizard step is displayed. Our bucket contains the `potential_churners.csv` file that we uploaded earlier.
+
+    ![The Cloud Data wizard step.](./images/cloud-data.png " ")
+
+10. Click **Create**. The **`oci-cloud`** cloud location connection is displayed in the **Connections** page.
+
+    ![The cloud store location is created.](./images/cloud-connection-created.png " ")
+
+## Task 7: Load Data from the Private Object Storage Bucket Using the DBMS_CLOUD PL/SQL Package
 
 As an alternative to the wizard-guided data load that you used in the previous labs, you can use the PL/SQL package `DBMS_CLOUD` directly. This is the preferred choice for any load automation.
 
@@ -196,19 +267,19 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 + **copy_data**: Loads the specified source file to a table. The table must already exist in ADW.
     + You will use this procedure to load tables to your admin schema with data from data files staged in the Oracle Cloud Infrastructure Object Storage cloud service.
 
-1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main Database Actions Launchpad using the breadcrumb link in the upper left corner.
+1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main **Database Actions Launchpad**. Click **Database Actions** in the banner to go to the Launchpad.
 
-    ![Navigate back to Database Actions Launchpad and click SQL card.](./images/click-database-actions-button.png " ")
+    ![Click Database Actions in the banner.](./images/click-database-actions.png =50%x*)
 
-    If you are prompted for username and password, enter the username `admin` and the password you created for `admin` when you created your autonomous database.
+    >**Note:** If you are prompted for username and password, enter the username `admin` and the password you created for `admin` when you created your autonomous database.
 
-2. Under **Development**, click the **SQL** tile to open SQL Worksheet.
+2. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to open SQL Worksheet.
 
-  ![Open SQL Worksheet](images/open-sql-worksheet.png)
+    ![Navigate to the SQL worksheet.](./images/navigate-sql-worksheet.png =75%x*)
 
 3. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
 
-    Connected as your ADMIN user in SQL Worksheet, copy and paste this code snippet to the worksheet, to create the required `potential_churners` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Then click the **Run Script** button to run it.
+    Connected as your `ADMIN` user in SQL Worksheet, copy and paste this code snippet to the worksheet, to create the required `potential_churners` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Click the **Run Script** icon in the toolbar to run it.
 
     ```
     <copy>
@@ -227,15 +298,15 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     > **Note:** You do not need to specify anything other than the list of columns when creating tables in the SQL scripts. You can use primary keys and foreign keys if you want, but they are not required.*
 
-4. Download [this code snippet](./files/load_data_without_base_url_v3.txt) to a text editor, for copying the data in the `potential_churners.csv` file you uploaded to the object store bucket, to the target `potential_churners` table you just created in your autonomous database.
-
-5. In the code snippet, after `define file_uri_base =`, replace the example URL with the real object store base URL you copied in Task 4. The top of the file should look similar to the example below:
+4. Copy the following code and paste it in your SQL Worksheet. This code copies the data in the `potential_churners.csv` file you uploaded to the object storage bucket, to the target `potential_churners` table you just created in your Autonomous Database.
+Replace the provided example URL with the real object storage base URL that you identified and copied in **Task 4**. In the **define** statement in the code example, substitute the _your-region-name_, _your-tenancy-name_, and _your-bucket-name_ place holders with your own region name, tenancy name, and bucket name. The top of the file should look similar to the example below:
 
     ```
+    <copy>
     /* In this code snippet, after define file_uri_base =, replace the example URL below with the URL you copied from your file in OCI Object Storage at runtime.
     */
     set define on
-    define file_uri_base = 'https://objectstorage.me-dubai-1.oraclecloud.com/n/c4u04/b/LL6570-ADWLab/o'
+    define file_uri_base = 'https://objectstorage.your-region-name.oraclecloud.com/n/your-tenancy-name/b/your-bucket-name/o'
 
     begin
      dbms_cloud.copy_data(
@@ -246,11 +317,10 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
      );
     end;
     /
+    </copy>
     ```
 
-6. Copy and paste your edited file to a SQL Worksheet. This script uses the **copy\_data** procedure of the **DBMS\_CLOUD** package to copy the data from the source file to the target table you created before.
-
-7. Run the script.
+    The script uses the **copy\_data** procedure of the **DBMS\_CLOUD** package to copy the data from the source file to the target table you created before.
 
     ![Click Run Script.](./images/run-data-loading-script.png " ")
 
@@ -258,7 +328,9 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     ```
     <copy>
-    SELECT * from POTENTIAL_CHURNERS WHERE PROB_CHURN >= 0.8 and WILL_CHURN = 1;
+    SELECT * 
+    FROM POTENTIAL_CHURNERS 
+    WHERE PROB_CHURN >= 0.8 and WILL_CHURN = 1;
     </copy>
     ```
 
@@ -268,11 +340,13 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
 1. Connected as your user in SQL Worksheet, run the following query to look at past and current data loads.
     ```
-    $ <copy>select * from user_load_operations;</copy>
+    $ <copy>SELECT *
+    FROM user_load_operations;
+    </copy>
     ```
     *Notice how this table lists the past and current load operations in your schema. Any data copy and data validation operation will have backed-up records in your Cloud.*
 
-2. For an example of how to troubleshoot a data load, we will create and try to load a version of the GENRE table, GENRE_DEBUG, that we know will fail because the loading script uses the wrong delimiter. Copy and paste this snippet into your SQL Worksheet and run the snippet:
+2. For an example of how to troubleshoot a data load, we will create and try to load a version of the `GENRE` table named `GENRE_DEBUG` that we know will fail because the loading script uses the wrong delimiter, **`"|"`**. Copy and paste the following code into your SQL Worksheet, and then run it.
 
     ```
     <copy>
@@ -305,21 +379,41 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     ![Paste the code and click Run Script.](images/query-results-intentionally-using-wrong-format.png " ")
 
-3. If you run select * from genre_debug; the result will show that no rows were loaded. What happened? Run the following query to see the load that errored out.
+3. Run the following query.
 
     ```
-    <copy>select * from user_load_operations where status='FAILED';</copy>
+    <copy>
+    SELECT *
+    FROM genre_debug;
+    </copy>
+    ```
+
+    ![Run the query.](images/run-query-no-rows-returned.png " ")
+
+    The result shows that no rows were loaded. What happened?
+
+4. Run the following query to see the load that errored out.
+
+    ```
+    <copy>SELECT * 
+    FROM user_load_operations 
+    WHERE status='FAILED';
+    </copy>
     ```
 
     ![Paste the query and click Run Script.](./images/user-load-operations-where-status-equals-failed.png " ")
 
-    A load or external table validation that errors out is indicated by *status=FAILED* in this table. Get the names of the log and bad files for the failing load operation from the column **logfile\_table** and **badfile\_table**. The `logfile_table` column shows the name of the table you can query to look at the *log* of a load operation. The column `badfile_table` shows the name of the table you can query to look at the *rows that got errors* during loading.
+    A load or external table validation that errors out is indicated by _**status=FAILED**_ in this table.
+    
+5. Get the names of the log and bad files for the failing load operation from the column **logfile\_table** and **badfile\_table**. The `logfile_table` column shows the name of the table you can query to look at the _log_ for a load operation. The column `badfile_table` shows the name of the table you can query to look at the _rows that got errors_ during loading. Your tables' names might be different than our example.
 
-4. Query the log and bad tables to see detailed information about an individual load. In this example, the names are `copy$33_log` and `copy$33_bad` respectively.
+    ![Get logfile and badfile table names.](./images/log-and-table-names.png " ")
 
-    ![Type the query and click Run Script.](./images/query-log-and-bad-files-result.png " ")    
+6. Query the log table to see detailed information about an individual load. In our example, the table name is `copy$12_log`.
 
-5. The fields delimiter were specified as "|".
+    ![Type the query and click Run Script.](./images/query-log-file.png " ")
+
+7. The fields delimiter were specified as "|".
 
     format => '{
 
@@ -332,7 +426,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     "delimiter":",",
 
-6. In the SQL Worksheet, run this corrected version of the load, which uses the comma delimiter:
+8. In the SQL Worksheet, run this corrected version of the load, which uses the comma delimiter:
 
     ```
     <copy>
@@ -350,26 +444,31 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
         			"trimspaces":"lrtrim",
         			"truncatecol":"true",
         			"ignoremissingcolumns":"true"
-        			}',
+        			}'
         );
     end;
     /
     </copy>
     ```
 
-7. The PL/SQL procedure will successfully complete.
+9. The PL/SQL procedure will successfully complete.
 
     ![Successful load after using the correct comma delimiter.](./images/successful-load-using-comma-delimiter.png " ")
 
-8. View the results by running this query:
+10. View the results by running this query:
 
-    `select * from genre_debug;`
+    ```
+    <copy>
+    SELECT * 
+    FROM genre_debug;
+    </copy>
+    ```
 
-    The GENRE_ID table will now have the loaded data:
+    The `GENRE_ID` table will now have the loaded data:
 
     ![View the results of successful load.](./images/view-data-loaded-in-genre-debug.png " ")
 
-9. To learn more about how to specify file formats, delimiters, reject limits, and more, review the [Autonomous Database Supplied Package Reference](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html) and [DBMS_CLOUD Package Format Options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703).
+11. To learn more about how to specify file formats, delimiters, reject limits, and more, review the [Autonomous Database Supplied Package Reference](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/dbmscloud-reference.html) and [DBMS_CLOUD Package Format Options](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/format-options.html#GUID-08C44CDA-7C81-481A-BA0A-F7346473B703) documentation references.
 
 Please *proceed to the next lab*.
 
@@ -381,12 +480,15 @@ See the documentation [Loading Data with Autonomous Database](https://docs.oracl
 
 ## Acknowledgements
 
-* **Author** - Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Rick Green, August 2022
+* **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Rick Green, Principal Developer
+
+* **Last Updated By/Date** - Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

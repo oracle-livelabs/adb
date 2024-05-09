@@ -378,4 +378,4 @@ You may now [proceed to the next lab](#next).
 ## **Acknowledgements**
 
 - **Authors** - Marty Gubar, Oracle Autonomous Database Product Management
-- **Last Updated By/Date** - Marty Gubar, September 2022
+- **Last Updated By/Date** - Marty Gubar, April 2024

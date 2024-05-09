@@ -5,9 +5,9 @@ define file_uri_base = 'https://objectstorage.me-dubai-1.oraclecloud.com/n/c4u04
 
 begin
  dbms_cloud.copy_data(
-    table_name =>'CUSTOMER_EXTENSION',
+    table_name =>'POTENTIAL_CHURNERS',
     credential_name =>'OBJ_STORE_CRED',
-    file_uri_list =>'&file_uri_base/customer-extension.csv',
+    file_uri_list =>'&file_uri_base/potential_churners.csv',
     format =>'{"type" : "csv", "skipheaders" : 1}'
  );
 end;

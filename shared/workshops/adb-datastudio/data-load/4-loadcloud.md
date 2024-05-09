@@ -38,9 +38,9 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 1. To begin this process, you need to navigate to the **Data Load** page in Data Studio, from the Database Actions home page.
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/launch-data-load.png)
-2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
-  ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
-3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMLANDING**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
+2. On the **Data Load** main page, click the **Connections** card so you can define a new connection to your cloud storage system.
+  ![The Connections card in Data Studio](images/cloudlocations.png)
+3. Click the **Create** button in the upper left and select **New Cloud Store Location**. Set the Name to **MOVIESTREAMLANDING**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
  ```
     $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o</copy>
@@ -58,7 +58,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 ## Task 2: Load Data Files from a Cloud Location
 
-1. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Load Data**  from  **Cloud Store** and then click the blue **Next** button. 
+1. Navigate back to the main Data Load page again using the breadcrumb link. Click the **Load Data** card, then select **Cloud Store** on the top ribbon. 
 
   ![The Data Load page with Load Data and Cloud Store selected](images/loadcloud1.png)
 
@@ -68,11 +68,13 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   Now you see a file browser-like view of your Object Store. In this case we want to load the **activity**, **customer\_extension**, **customer\_segment** and **pizza\_location** files. To do this, we can either select and drag the subfolders containing each of these files, or drag the files themselves, to the right hand side of the screen. 
 
+  Two warning messages will appear in the top right of the screen. These are to indicate that some columns from the **customer\_extension** and **customer\_segment** files have been detected as containing possible PI (Personally Identifiable) data. These warnings allow you to exclude such columns from the load process if you do not want users to be able to see the data. However, for this workshop, you can ignore these warnings. 
+
   >**Note**: The selection of a folder allows the loading of multiple files that are in the same structure into a single table. If you drag and drop a folder, rather than a file, a prompt appears to confirm that you want to load all files in this folder into a single table. In this case, all our folders contain a single file, so click **Yes** on each prompt. If you have a folder containing files in different structures and you want to load many of them, you should drag across each file separately so that separate tables can be created, each with the correct columns and data.
 
   ![The Data Load page with a card created for each file we want to load](images/loadcloud2.png)
 
-3. You can edit the properties of each of the data loading tasks by opening the menu on the right-hand side of each card and selecting **Settings**. Do this for the **activity** load task: 
+3. You can edit the settings of each of the data loading tasks by clicking the pencil icon on the right-hand side of each card. Do this for the **activity** load task: 
 
   ![Accessing the settings for the data load task for activities](images/activity-settings.png)
 
@@ -80,17 +82,14 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![Properties of the data load task for activities](images/activity-columns.png)
 
-  Note that the Data Type for three of the columns (cust_id, genre_id and movie_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length/Precision yourself so that this analysis is avoided.
+  Note that the Data Type for three of the columns (cust\_id, genre\_id and movie\_id) has been detected as NUMBER. The remaining columns have been detected as VARCHAR2 columns, with the Length/Precision set to **Auto**. The **Auto** setting will analyze the full data set and automatically create columns that are comfortably long enough to store the longest found values for each column. With larger files, it may be more performance-efficient to specify the Length yourself so that this analysis is avoided.
 
   In this case there is no need to make any changes. You can close the form and then click the **Start** button to start your data load job. 
-
-  ![The toolbar with the Start button selected](images/cloudload-start.png)
 
   The job should take less than a minute to complete. You can see the number of rows loaded into each table.
 
   ![All cloud data load tasks completed, with row counts](images/cloudload-complete.png)
 
-5. Click the **Done** button in the bottom right corner of the screen.
 
 ## Task 3: Review and resolve data loading issues
 
@@ -100,9 +99,9 @@ In this task, we are going to load a file that contains a few minor data issues 
 
 Where you want to download and load data from a file from a cloud location that you do not need to save, and which does not require credentials, you can simply paste the URI into the cloud location screen when loading data. 
 
-1. On the Data Load screen, select **Load Data** and **Cloud Store** again, and click **Next**
+1. On the Data Load screen, select **Load Data** and **Cloud Store** again.
 
-2. This time, rather than using the saved cloud store, we are going to paste the following URI into the **Select Cloud Store Location or enter public URL** bar. To do this, select the default contents of the bar and delete them to clear the bar. Then copy and paste the below URI:
+2. This time, rather than using any of the saved cloud storage locations, we are going to paste the following URI into the **Select Cloud Store Location or enter public URL** bar. To do this, select the default contents of the bar and delete them to clear the bar. Then copy and paste the below URI:
 
  ```
     $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/datastudio/o/</copy>
@@ -110,9 +109,9 @@ Where you want to download and load data from a file from a cloud location that 
 
   ![Load from Cloud Location directly from URI](images/load-from-uri.png)
 
-2. Expand the dataload folder and drag over the file **customer-contact-issues.csv** to the right hand side.
+2. Expand the dataload folder and drag over the file **customer-contact-issues.csv** to the right hand side. Ignore the warning about PI columns.
 
-3. Click on the menu of the load task and select **Settings**
+3. Click the pencil icon to open the settings for the load task.
 
 4. The settings look reasonable. Note that some of the columns, including **YRS_CUSTOMER** have been detected as numbers. Click **Close** to close the settings screen and then click the **Start** button to run the load job.
 
@@ -120,38 +119,35 @@ Where you want to download and load data from a file from a cloud location that 
 
   ![Warning icon on completed load task](images/load-warning.png)
 
-6. Click the name of the file on the completed load task, then click the **Errors** option on the left hand side to review the errors:
+6. Click the **Report** button to review the errors:
 
   ![Reviewing loading errors](images/load-errors2.png)
 
-7. We can see a very clear indication of why these 4 rows failed. In all cases there was an error processing the column **YRS_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
+7. In the **Summary Error Log** section, we can see that there were 4 occurrences of an error loading the **YRS_CUSTOMER** column. If we expand the **Detail Error Log** section at the bottom of the screen, we can work out why 4 rows failed. In all cases there was an error processing the column **YRS_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
 
   ![The data column with the errored values highlighted](images/load-errors3.png)
 
   Click **Close** to close the task view.
 
-8. We have options here as to what to do. In some cases, we might decide it is acceptable to keep the table without these rows in it, but in this case we want to get a complete load of all rows, as we know we can fix the data using the built-in **Data Transforms** part of Data Studio. To correct the issues in the data load, we can use the **Reload Cart** option in the bottom right hand corner of the Data Load screen to change and rerun the data load:
+8. We have options here as to what to do. In some cases, we might decide it is acceptable to keep the table without these rows in it. We aldo had the option to download the errored records, fix the errors, and load these into our target table. Or, we can choose to recreate the table and reload the data, changing the data type of the **YRS_CUSTOMER** column to a text type so that we can load all the records, as we know we can fix the data using the built-in **Data Transforms** part of Data Studio. To do this, we can use the **Reload** option on the load task to change and rerun the data load:
 
-  ![The Reload Cart option](images/reload-cart.png)
+  ![The Reload option](images/reload-cart.png)
 
-9. After reloading the cart, click on the file name of the load task to review the settings. Note that an error message appears warning us that the load task is currently attempting to create a table that already exists, as we have already loaded it. 
+9. This is where Data Studio can help us out. It knows about the error, and can suggest a recommended fix! C;ick **Yes** to apply the recommended fix.
 
-  ![Error message indicating a clashing table name](images/reload-error.png)
+  ![The Recommended Fix dialog](images/recommended-fix.png)
 
-10. In this case, we want to drop and recreate the table with the same name, so what we need to do is change the **Option** drop down to **Drop table and create new table**, and then re-select the table **CUSTOMERCONTACTISSUES** under **Name**, as follows:
+10. Notice that the load task has been recreated, but now shows **Drop Table and Create New Table** rather than **Create Table**:
 
-  ![Change option to drop and recreate the CUSTOMERCONTACTISSUES table](images/reload-changeoption.png)
+  ![New setting to drop and recreate the CUSTOMERCONTACTISSUES table](images/reload-changeoption.png)
 
-11. Next, we know that the **YRS_CUSTOMER** column actually contains some strings, so we should change its data type to **VARCHAR2** in the **Mapping** section:
-
-  ![The YRS_CUSTOMER column changed to VARCHAR2](images/change-column.png)
+11. Click the pencil icon to check the settings of the reloaded load task. In the bottom **Mapping** section, scroll down to find the **YRS_CUSTOMER** column. The Data Type for this column is now VARCHAR2 rather than NUMBER. 
 
 12. Now we can click **Close** to close the settings for the load task, and rerun it by clicking the **Start** button.
 
   This time, when the task completes, it shows no errors, and that all rows were loaded correctly! 
 
   ![The completed load task with no errors](images/load-noerrors.png)
-
 
 ## Task 4: Inspect the newly loaded table
 
@@ -173,7 +169,7 @@ Where you want to download and load data from a file from a cloud location that 
 
 ## RECAP
 
-In this lab, you used Data Studio's data loading tool to load data from cloud storage. First, we set up a cloud storage location that we want to use regularly, and loaded some files from it in a few easy steps. Then, we learnt how to load directly from a URI, and how to resolve common types of issue with data loading - in this case, where we had a handful of rows with mismatched data types.
+In this lab, you used Data Studio's data loading tool to load data from cloud storage. First, we set up a cloud storage location that we want to use regularly, and loaded some files from it in a few easy steps. Then, we learnt how to load directly from a URI, and how to resolve common types of issue with data loading - in this case, we had a handful of rows with mismatched data types, but Data Studio provided a recommended fix that resolved the issue.
 
 You may now **proceed to the next lab**.
 
@@ -181,4 +177,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
-- Last Updated By - Mike Matthews, January 2023
+- Last Updated By - Mike Matthews, April 2024

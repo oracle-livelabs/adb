@@ -7,7 +7,7 @@ In this lab, you will load movie data that is stored in `JSON` format into an Au
 Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Load and Analyze JSON Data](videohub:1_9hugohpd)
+[](youtube:5zgf-_sBIEk)
 
 ### Objectives
 
@@ -39,39 +39,15 @@ Our movie data set has a series of columns that contain different types of detai
 
 JSON data is organized very differently than typical warehouse data. There is a single entry for **producer** but the corresponding key **names** actually has multiple values. This is referred to as an **array** - specifically a JSON array.
 
->**Note:**    
-If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | Launchpad** banner to display the **Database Actions | Launchpad** Home page. In the **Development** section, click the **SQL** card to display the SQL Worksheet. Next, skip to **step 6**; otherwise, start with **step 1** below.
+1. You should be already on the **Data Load Dashboard** page from the previous lab. Click **Database Actions | Data Load** in the banner.
 
-![Click the banner.](./images/click-banner.png " ")
+    ![Click the banner.](./images/click-banner.png " ")
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
+2. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **SQL** tab.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![The SQL worksheet is displayed.](./images/click-development-sql-tabs.png " ")
 
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
-</if>
-
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
-</if>
-
-4. On the **Autonomous Database details** page, click **Database actions**.
-
-    <if type="livelabs">
-    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
-    </if>
-
-    <if type="freetier">
-    ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
-    </if>
-
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
-
-    ![Click the SQL card.](./images/click-sql-card.png " ")
-
+    The SQL Worksheet is displayed.
 6. Use the Autonomous Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
     ```
     <copy>
@@ -275,6 +251,5 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
-* **Contributors:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+* **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024

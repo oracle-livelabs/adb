@@ -51,4 +51,4 @@ drop table MOVIE_SALES;
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Jayant Mahto
-- Last Updated By - Mike Matthews, January 2023
+- Last Updated By - Mike Matthews, April 2024

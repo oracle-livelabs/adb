@@ -18,7 +18,7 @@ In this lab, you will:
 ### Prerequisites
 
 This lab assumes you have:
-* Oracle Database 23c Free Developer Release
+* Oracle Database 23ai Free Developer Release
 * A terminal or console access to the database
 
 ## Task 1: Setting database user password and ensure you can connect properly
@@ -49,7 +49,7 @@ This lab assumes you have:
 
 
     Connected to:
-    Oracle Database 23c Free, Release 23.0.0.0.0 - Developer-Release
+    Oracle Database 23ai Free, Release 23.0.0.0.0 - Developer-Release
     Version 23.2.0.0.0
 
     SQL>

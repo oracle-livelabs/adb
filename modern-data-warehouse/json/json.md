@@ -34,7 +34,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 2. Once you have downloaded the JSON containing some tweets, we need to upload them into Object Storage. First we need to create a bucket. Open a new web browser window, access to the **Oracle Cloud console** page, cloud.oracle.com, after access to **Storage** from the **Oracle Cloud Console Burger Menu** and after **Buckets** section.
 
-    ![Go to Buckets](https://oracle-livelabs.github.io/common/images/console/storage-buckets.png " ")
+    ![Go to Buckets](./images/create-bucket.png)
 
 3. Click on **Create Bucket**
 
@@ -53,7 +53,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Select Bucket](./images/select-bucket.png)
 
-6. Scroll down and click on the **upload** button.
+6. Click on the **upload** button.
 
     ![Select Bucket](./images/select-upload.png)
 
@@ -68,16 +68,23 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 ## Task 2: Create credential for Autonomous Database
 
-1. We have the tweets available in the Object Storage. Now we need to create a **credential**. This credential will allow the Autonomous Database to authenticate against the Object Storage Service. Click on your **profile icon** and then on your user name. **Take a note** of your user as you will need it for later.
+1. We have the tweets available in the Object Storage. Now we need to create a **credential**. This credential will allow the Autonomous Database to authenticate against the Object Storage Service. Click on your **profile icon** and then on **My profile**. **Take a note** of your user as you will need it for later.
 
     ![Find credentials](./images/go-to-credential2.png)
 
+    If you don't see **My profile** section, please copy your user from the information that you can see in this menu under **Profile**. The format should be `oracleidentitycloudservice/your_email`.
 
-2. Let's create a new token for the Autonomous Database. Scroll down and click on **Auth Tokens** under the **Resources** section on the left side of the screen. Click on **Generate Token**.
+    ![Find credentials](./images/go-to-credential3.png)
+
+2. Let's create a new token for the Autonomous Database. Click on **Auth Tokens** under the **Resources** section on the left size of the screen.
+
+    ![Open credentials](./images/go-to-token.png)
+
+3. Click on **Generate Token**.
 
     ![Create credentials](./images/generate-token.png)
 
-3. Provide a **token description** and click **Generate token**.
+4. Provide a **token name**, for instance, **token\_modern\_data\_warehouse**, and click **Generate token**.
 
     - **Description:** token\_modern\_data\_warehouse
         ```
@@ -86,29 +93,33 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
     
     ![Show token name](./images/show-token-name.png)
 
-4. It will show a popup like this. **This token will be shown only once**. Click **Show** to show the token. Click **Copy** and store it in a secure place. **Save it** in a notepad or a secure place for later. **It will never be shown again**. Then you can click **Close**.
+5. It will show a popup like this. **This token will be shown only once**. Click **Show** to show the token.
+
+    ![Show token](./images/show-token.png)
+
+6. Click **Copy** and store it in a secure place. **Save it** in a notepad or a secure place for later. **It will never be shown again**. Then you can click **Close**.
 
     ![Copy token](./images/save-token.png)
 
-5. We have stored the credential, now we need to find and store the location of where the data is stored. We will share this info with the Autonomous Database so it can load it. Let's go back to the **Object Storage** and click **Buckets**.
+7. We have stored the credential, now we need to find and store the location of where the data is stored. We will share this info with the Autonomous Database so it can load it. Let's go back to the **Object Storage**. Go from the **Oracle Cloud Console Burger Menu** and after **Buckets** section.
 
-    ![Go to Buckets](https://oracle-livelabs.github.io/common/images/console/storage-buckets.png " ")
+    ![Go to Object](./images/go-to-object.png)
 
-6. Select the JSON bucket we already created.
+8. Select the JSON bucket we already created.
 
-    ![Select Bucket](./images/select-bucket.png)
+    ![Select JSON](./images/select-json-bucket.png)
 
-7. Let's find the information from the tweets. From the menu of the file, select **View Object Details**
+9. Let's find the information from the tweets. From the menu of the file, select **View Object Details**
 
     ![View Details](./images/get-json-details.png)
 
-8. You will find the url with the JSON file location. **Save this url** as we are going to need it for loading it later on. Then click **Cancel** to exit.
+10. You will find the url with the JSON file location. **Save this url** as we are going to need it for loading it later on. Then click **Cancel** to exit.
  
     ![Save URL](./images/get-url-json.png)
 
-9. As we have the credential created and we know the url where we store our JSON data, now we can proceed to authorize Autonomous with this credential. Let's go to our Autonomous Data Warehouse.
+11. As we have the credential created and we know the url where we store our JSON data, now we can proceed to authorize Autonomous with this credential. Let's go to our Autonomous Data Warehouse.
 
-    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+    ![Go to ADW](./images/go-to-adb.png)
 
 12. Select our **MODERNDW** database.
 
@@ -118,11 +129,11 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Choose DB Actions](./images/go-to-actions.png)
 
-14. We need to connect with the **CNVG** and not with the **ADMIN** user. Let's sign out first.
+14. We need to connect with the **CNVG** and not with the **ADMIN** user. Let's log out first.
 
     ![Log out](./images/sign-out.png)
 
-15. Click on **Sign in**.
+15. Now we are ready to **Sign in**.
 
     ![Log ing](./images/sign-in.png)
 
@@ -145,7 +156,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
     ![Select sql](./images/select-sql.png)
 
 18. Run the following **SQL** for creating the credential, replacing username and password for the information that we already copied before.
-    - **username**, it is your **Oracle Cloud user name** that we copied on step number 1 of this task. **It should be your email address**.
+    - **username**, it is your **Oracle Cloud user name** that we copied on step number 1 of this task. It should be your your email address.
     - **password**, it is the **Auth token** that we copied on step number 6 of this task.
 
     ```
@@ -188,7 +199,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Create Document](./images/create-document.png)
 
-5. Copy and paste the following tweet. Then click on the **Create** button. Be sure you have just **one pair of {}**, otherwise, you will see and error.
+5. Copy and paste the following tweet. Then click on the **Create** button.
     
     ```
         <copy>
@@ -246,7 +257,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
         </copy>
     ```
 
-    Check that the **PL/SQL procedure has been successfully completed**.
+    Check that the **PL/SQL procedure has being successfully completed**.
 
     ![Copy Collection](./images/copy-collection.png)
 
@@ -298,7 +309,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 5. If you feel more comfortable with JSON, we can use the **Query by Example** directly on JSON. Let's run a simple query. Let's go to the JSON utility.
 
-    ![Go to JSON](./images/go-to-json.png)
+    ![Back to JSON](./images/back-to-json.png)
 
 6. Let's run a simple query, **to filter by specific id**, in this case **510**:
 
@@ -323,6 +334,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 You can **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Javier de la Torre - Principal Data Management Specialist
-* **Contributors** - Priscila Iruela - Technology Product Strategy Director
-* **Last Updated By/Date** - Priscila Iruela, March 2023
+* **Author** - Javier de la Torre, Principal Data Management Specialist
+* **Contributors** - Priscila Iruela, Technology Product Strategy Director
+* **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist
+
