@@ -126,7 +126,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Authors:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-    * Rick Green, Principal Developer, Database User Assistance
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Contributor:** Rick Green, Principal Developer, Database User Assistance
 - **Last Updated By/Date:**  Lauran K. Serhal, May 2024

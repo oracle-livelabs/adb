@@ -109,7 +109,7 @@ In today's world, regulations, audits, and compliance requirements often demand 
 
 It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous Database, the process of long-term backups is completely automated and managed by Oracle.
 
-_For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous Database** in this workshop._
+> **Note:** For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous Database** in this workshop.
 
 <!---
 
@@ -152,7 +152,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Authors:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-    * Rick Green, Principal Developer, Database User Assistance
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Contributor:** Rick Green, Principal Developer, Database User Assistance
 - **Last Updated By/Date:** Lauran K. Serhal, May 2024

@@ -276,13 +276,17 @@ In the rare case when your primary is down and automatic failover is unsuccessfu
 You may now **proceed to the next lab**.
 
 ## Want to Learn More?
-* For more notes about Autonomous Data Guard standby databases, see the documentation [Autonomous Data Guard Notes](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-data-guard-notes.html#GUID-06514279-EB46-4BAE-A943-8F8B51C51817).
-* For more information about Standby Databases, see the documentation [About Standby Databases](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-about.html#GUID-045AD017-8120-4BDC-AF58-7430FFE28D2B).
-* To use OCI REST APIs to enable and use Autonomous Data Guard, see [Use the API](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-api.html#GUID-3E4C0FA6-DE04-4F7F-A7AF-4C270870DCFF).
-* For additional detail about Cross-Region Autonomous Data Guard, see [this blog](https://blogs.oracle.com/datawarehousing/post/cross-region-autonomous-data-guard-your-complete-autonomous-database-disaster-recovery-solution).
-* For additional detail about Backup-Based Disaster Recovery, see [this blog](https://blogs.oracle.com/datawarehousing/post/backup-based-disaster-recovery)
-* For additional detail about the networking setup required if your database with Cross-Region Autonomous Data Guard is enabled behind a private endpoint, see [this blog](https://blogs.oracle.com/datawarehousing/post/vcn-peering-for-adbs-with-private-endpoints-and-cross-region-autonomous-data-guard).
+* [Autonomous Data Guard Notes](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-data-guard-notes.html#GUID-06514279-EB46-4BAE-A943-8F8B51C51817)
+* [About Standby Databases](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-about.html#GUID-045AD017-8120-4BDC-AF58-7430FFE28D2B)
+* [Use the API](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-data-guard-api.html#GUID-3E4C0FA6-DE04-4F7F-A7AF-4C270870DCFF)
+* [Cross-Region Autonomous Data Guard](https://blogs.oracle.com/datawarehousing/post/cross-region-autonomous-data-guard-your-complete-autonomous-database-disaster-recovery-solution)
+* [Introducing Backup-Based Disaster Recovery](https://blogs.oracle.com/datawarehousing/post/backup-based-disaster-recovery)
 
 ## Acknowledgements
-* Authors - Vandanadevi Rajamani, Database User Assistance; Nilay Panchal, ADB Product Management; Rick Green, Database User Assistance
-* Last Updated By/Date - Rick Green, August 2023
+
+* **Authors:**
+    * Vandanadevi Rajamani, Database User Assistance
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, ADB Product Management
+* **Contributor:** Rick Green, Database User Assistance
+* **Last Updated By/Date:** Lauran K. Serhal, May 2024

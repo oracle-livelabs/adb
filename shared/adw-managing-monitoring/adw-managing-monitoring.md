@@ -152,21 +152,21 @@ Another facility for monitoring your autonomous database is the OCI Monitoring C
     ![Select a deployment type](images/select-a-deployment-type.png " ")
 
 5. The page updates to display only the resources in that compartment and namespace. Scroll down this very long page. It shows the following metrics:
-    -   CPU Utilization
-    -   Storage utilization
-    -   Sessions
-    -   Execute Count
-    -   Running Statements
-    -   Queued Statements
-    -   Transaction Count
-    -   Current Logons
-    -   User Calls
-    -   Parse Count
-    -   Failed Logons
-    -   Failed Connections
-    -   Connection Latency
-    -   Query Latency
-    -   CPU Time
+    - CPU Utilization
+    - Storage utilization
+    - Sessions
+    - Execute Count
+    - Running Statements
+    - Queued Statements
+    - Transaction Count
+    - Current Logons
+    - User Calls
+    - Parse Count
+    - Failed Logons
+    - Failed Connections
+    - Connection Latency
+    - Query Latency
+    - CPU Time
 
     ![Scroll down the service metrics page](images/scroll-down-service-metrics-page.png =65%x*)
 
@@ -182,5 +182,6 @@ You may now **proceed to the next lab**.
 
 ## **Acknowledgements**
 
-- **Author** - Rick Green, Principal Developer, Database User Assistance
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Contributor:** Rick Green, Principal Developer, Database User Assistance
 - **Last Updated By/Date** - Lauran K. Serhal, May 2024

@@ -145,7 +145,16 @@ You have proven that the refreshable clone contains the source database's table 
 
     ![Query the updated table](images/query-updated-table.png =65%x*)
 
-    You now have 2 rows in the source but only a single row in the refreshable clone. Make note of the time when you inserted the second row.
+    You now have 2 rows in the source but only a single row in the refreshable clone.
+
+4. Make note of the time when you inserted the second row. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon. This will retrieve the current timestamp of the database.
+
+    ```
+    <copy>
+    SELECT SYSTIMESTAMP
+    FROM dual;
+    </copy>
+    ```
 
 ## Task 4: Refresh the Clone to View New Data
 
@@ -192,8 +201,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Authors:**    
-    * Lauran K. Serhal, Consulting User Assistance Developer
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Contributors:**
+    * Nilay Panchal, ADB Product Management
     * Rick Green, Principal Developer, Database User Assistance
-- **Contributor:** Nilay Panchal, ADB Product Management
 - **Last Updated By/Date:**  Lauran K. Serhal, May 2024
