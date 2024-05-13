@@ -53,7 +53,7 @@ Use the latest version of Oracle SQL Developer, version 23.1.1 as of the writing
 
     ![The Oracle Usage Tracking dialog box](./images/sql-developer-started.png " ")
 
-## Task 2: Connect SQL Developer to Database Securely Without Wallet
+## Task 2: Connect to the Database Using SQL Developer Securely Without a Wallet
 
 The first of two methods we'll learn for establishing a secure SQL Developer connection to an autonomous database is to connect securely without a wallet, using TLS authentication.
 
