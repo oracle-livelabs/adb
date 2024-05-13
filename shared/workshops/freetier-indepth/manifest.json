@@ -39,13 +39,13 @@
             "filename": "./../../adb-sqldevweb/adb-sqldevweb.md"
         },
         {
-            "title": "Lab 3: Connect Securely With or Without a Connection Wallet",
+            "title": "Lab 3: Connect Securely to Autonomous Data Warehouse with or without a Connection Wallet",
             "description": "Connecting Securely with or without a Connection Wallet",
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {
             "title": "Lab 4: Monitor Your Database",
-            "description": "Monitoring Your Autonomous Database Instance using the Cloud Console",
+            "description": "Monitoring Your Autonomous Database Instance Using the Cloud Console",
             "filename": "./../../adw-managing-monitoring/adw-managing-monitoring.md"
         },
         {

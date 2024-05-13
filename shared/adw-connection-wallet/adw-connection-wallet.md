@@ -1,4 +1,4 @@
-# Connect SQL Developer Securely With or Without a Connection Wallet
+# Connect to Autonomous Data Warehouse with SQL Developer Securely with or without a Connection Wallet
 
 ## Introduction
 
