@@ -4,7 +4,7 @@
 
 In this lab, we will create a ATP to import a schema for the data. We will review the process for creating the Autonomous Transaction Processing (ATP) instance, Schema for the APEX workspace, and import the APEX app, along with the DDL.
 
-Download the SQL files for the lab: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+Download the SQL files for the lab: [Link](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
 
 Estimated Time: 20 minutes
 
@@ -40,11 +40,11 @@ This lab assumes you have:
 
     ![Enter admin credentials](images/atp-password.png) 
 
-5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block.** 
+5. Change network access to **allowed IPs and VCNs only** and change IP notation type to **CIDR Block.** Make sure Require mutual TLS authentication is left unchecked.
 
     ![Enter admin credentials](images/secure-access.png) 
 
-6. Select **License included** and then select **Create Autonomous Database** at the bottom.
+6. Leave everything else default, and then select **Create Autonomous Database** at the bottom.
 
     ![Create ADB button at the bottom](images/create-atp.png)     
 
@@ -106,7 +106,7 @@ This lab assumes you have:
 
 3. Select **Upload** to browse and upload the sql files (Except for the apexApplicationHackathon.sql script - that will be used for task 4).
 
-    - Download the lab files if you haven't already: [Link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+    - Download the lab files if you haven't already: [Link](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
 
     ![Upload SQL scripts from menu](images/upload-scripts.png) 
 
@@ -150,4 +150,4 @@ You may now **proceed to the next lab.**
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, November 2022
+- **Last Updated By/Date** - Nicholas Cusato, January 2024

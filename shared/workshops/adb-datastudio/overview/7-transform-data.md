@@ -7,10 +7,9 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 25 minutes
 
-<!---
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_g5x49pk2)
--->
+[Create a database user](videohub:1_t22mdnao)
+
 
 ### Objectives
 
@@ -255,12 +254,12 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of data transform service start](images/image15_transform_start.png)
 
-4.  It will take up to 6 minutes for the service to be started for the first time. Once
+4.  It will take up to 3-5 minutes for the service to be started for the first time. Once
     provisioned you will see the following home screen.
 
     >**Note:** The Data Transforms tool is provisioned based on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be started again. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
+    be started again. Maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
@@ -701,7 +700,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Last Updated By - Jayant Mahto, August 2023
 
 
 Copyright (C)  Oracle Corporation.

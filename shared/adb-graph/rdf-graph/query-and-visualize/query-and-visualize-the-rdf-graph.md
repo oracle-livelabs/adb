@@ -29,7 +29,7 @@ First **import** the sample notebook and then execute the relevant paragraph for
   Note the location of the downloaded file.
 
     ```
-  	<copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/uaOb7jHZFcCWy4Y-OPjS3MYydBdIWL8OY2qAq5OUDmUUOZ8L-h8fggF_mjP4H0_e/n/c4u04/b/livelabsfiles/o/data-management-library-files/INTRO_SPARQL.dsnb</copy>
+  	<copy>https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/INTRO_SPARQL.dsnb</copy>
   	```
 
   2. Click the **Notebooks** menu icon and then on the **Import Notebook** icon on the top right.  

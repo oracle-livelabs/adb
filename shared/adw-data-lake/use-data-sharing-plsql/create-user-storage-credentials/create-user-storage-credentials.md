@@ -4,7 +4,7 @@
 
 In this lab, you will create a **data share provider** user and grant this user the necessary role and privileges. You will also create an Oracle Object Storage bucket (if you don't have one) where you will store the shared data. You will optionally create an RSA key pair if you don't have one. This will provide you with the private key, the user's and tenancy's OCIDs, and the fingerprint which you will need to create the OCI credential. Finally, you'll create an OCI credential.
 
-![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png " ")
+![Create a user, a bucket, and an OCI credential.](./images/user-bucket-credential-diagram.png =65%x*)
 
 Estimated Time: 15 minutes
 
@@ -24,20 +24,20 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. The **Database Actions | Launchpad** Home page is displayed in a _**new tab in your browser**_. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+5. The SQL Worksheet is displayed.
 
-    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-sql-card.png " ")
+    ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
@@ -96,13 +96,24 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![Log out of admin](images/logout-admin.png)
 
-3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
+3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The Database Actions Launchpad page is displayed. You are now logged in as the newly created **`share_provider`** user.
 
     ![Log in as share_provider](images/login-share-provider.png)
 
-    You are now logged in as the newly created **`share_provider`** user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+4. Click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
-    ![Logged in as share_provider](images/logged-share-provider.png)
+    ![Logged in as share_provider](images/share-provider.png)
+
+4. Run the following query to determine if the user has the required privileges to share objects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon. A **`1`** result indicates that the user has the required privileges to share objects. A **`0`** result indicates that the user doesn't have the privileges to share objects. The user must revisit the previous steps.
+
+    ```
+    <copy>
+    SELECT dbms_share.can_create_share
+    FROM dual;
+    </copy>
+    ```
+
+    ![Determine if the user has the privilege to share](images/can-user-share.png)
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
@@ -129,37 +140,17 @@ You should store the data share data in Object Storage. You will then create a l
 
     ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
 
-6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
+6. The new bucket is displayed on the **Buckets** page.
 
     ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
 
-7. Change the bucket type to **Public**. In the row for the **data-share-bucket**, click the **Actions** icon, and then click **Edit Visibility** from the context menu.
-
-    ![Select Edit Visibility from the context menu.](./images/edit-visibility.png " ")
-
-8. In the **Edit Visibility** dialog box, select the **Public** visibility option, and then click **Save Changes**.
-
-    ![Edit Visibility dialog box.](./images/public-option.png " ")
-
-    The **Buckets** page is re-displayed. The bucket type is now **Public**.
-
-    ![The Buckets page is displayed.](./images/buckets-page.png " ")
-
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through this entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **My profile**.
 
-In this task, you will get the following items that are required to create a Cloud location in the next task.
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
 
-+ An RSA key pair in PEM format (minimum 2048 bits). See [How to Generate an API Signing Key](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#two).
-+ The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
-+ The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
-
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
-
-    ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
-
-2. The **User Details** page is displayed. Scroll down the page to the **Resources** section, and then click **API Keys**.
+2. The **My profile** page is displayed. In the **User Information** tab, you can click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
@@ -167,7 +158,7 @@ In this task, you will get the following items that are required to create a Clo
 
     ![Click Add API Key.](./images/click-add-api-key.png " ")
 
-4. Click **Download Private Key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Private Key**.
+4. Click **Download private key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download private key**.
 
     ![Download private key.](./images/download-private-key.png " ")
 
@@ -179,33 +170,27 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-private-key.pem`**
 
-5. In most cases, you do not need to download the public key; however, you can download the public key for future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
+5. In most cases, you do not need to download the public key; however, you can download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
 
-    ![Download public key.](./images/download-public-key.png " ")
-
-    The name of the downloaded public key is usually as follows:
-
-    **`oraclecloudidentityservice_username-date_public.pem`**
-
-    Rename your downloaded private key to something shorter such as:
-
-    **`oci-api-public-key.pem`**
-
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+6. A checkmark should appear next to each button. Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Click the **Copy** link to copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to your clipboard and then paste it into a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
 
     ![Credentials items.](./images/credentials-items.png " ")
 
-7. Click **Close**.
+    You can access the downloaded private key and then paste the key value in the above text editor file as you will need the value in the next task.
+
+    ![Private key value.](./images/get-private-key-value.png " ")
+
+7. In the **Configuration File Preview** dialog box, click **Close**.
 
 ## Task 5: Create an OCI Native Credential as the share_provider User
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
-1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to an the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
+1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
@@ -269,7 +254,7 @@ To access data in the Object Store, you need to enable your database user to aut
     </copy>
     ```
 
-    You are able to access the bucket but since you have not uploaded any files to it, no rows are returned.
+    You are able to access the bucket but since you have not uploaded any files to it, you will get the message **No rows are returned** in the **Script Output**.
 
     ![Access user bucket.](images/access-user-bucket.png)
 
@@ -325,11 +310,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2023
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C), 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

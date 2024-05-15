@@ -24,7 +24,7 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 ## Task 1: Navigate to the SQL Worksheet
 
-If your SQL Worksheet is still displayed from the previous task, skip over to **Task 2**.
+If your SQL Worksheet is still displayed from the previous task, skip over to **Task 2**. If you closed the Web browser tab where the SQL Worksheet was displayed, navigate to the SQL Worksheet as follows:
 
 1. Log in to the **Oracle Cloud Console**.
 
@@ -102,15 +102,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Contributor:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

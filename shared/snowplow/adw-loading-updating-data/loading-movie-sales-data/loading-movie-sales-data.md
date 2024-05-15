@@ -8,7 +8,7 @@ Estimated Lab Time: 25 minutes
 
 ### Objectives
 
-In this lab, you will use the Autonomous Data Warehouse's built-in Data Load tool to load in a set of files.
+In this lab, you will use the Autonomous Data Warehouse's built-in Data Load tool in Data Studio to load in a set of files.
 
 ### Prerequisites
 
@@ -40,21 +40,13 @@ A wide range of file formats are supported including comma-separated, tab delimi
 
 In this step, we will add a link from the Autonomous Data Warehouse to the public bucket on OCI Object Storage so that it can load data from this location.
 
-1. From your Autonomous Database Details page, click the **Database Actions** button:
+1. From your Autonomous Database Details page, click the **Database Actions** button, and select **Data Load**. This will take us directly to the Data Load tool.
 
-    ![Click the Database Actions button.](images/launchdbactions.png)
-
-2. On the login screen, enter the username **ADMIN**, and the admin password you set up when provisioning the ADW instance. Click **Sign in**.
-
-3. In the **Data Studio** section of the Database Actions page, click the **Data Load** card:
-
-    ![Click the Data Load card.](images/launchdataload.png)
-
-4. Under **Administration**, click the **Cloud Locations** card:
+2. Click **Connections** as we are going to add a connection to a new cloud location:
 
     ![Click the Cloud Locations card.](images/cloudlocations.png)
 
-5. Click the **+ Add Cloud Store Location** button.
+5. Click the **Create** button and select **New Cloud Store Location**.
 
 6. Enter the **Name** of the cloud storage location as **MovieData**.
 
@@ -141,11 +133,11 @@ All the MovieStream data files for this workshop are stored in a public bucket i
 
     ![Click Data Load](images/backtodataload.png)
 
-2. The Data Load tool allows us to load data from various locations, including local files, linked databases, or cloud storage locations. We can also choose to load data, link to data in cloud locations, or feed data in from such locations on a recurring basis. In this case, we want to load data from our newly created cloud storage link, so select **LOAD DATA** and **CLOUD STORAGE**, then click **Next**:
+2. The Data Load tool allows us to load data from various locations, including local files, linked databases, or cloud storage locations. We can also choose to load data, link to data in cloud locations, or feed data in from such locations on a recurring basis. In this case, we want to load data from our newly created cloud storage link, so select **LOAD DATA**:
 
     ![Select to load data from cloud storage](images/loadfromstorage.png)
 
-3. The left hand side of the screen shows our **MOVIEDATA** cloud location, and a list of folders containing files for loading. Expand the **movie\_sales\_fact** folder to show a list of csv files. We can see that there is a file for each month of sales data.
+3. At the top of the screen is a list of places we can load from. Click **Cloud Store**. The left hand side of the screen now shows our **MOVIEDATA** cloud location, and a list of folders containing files for loading. Expand the **movie\_sales\_fact** folder to show a list of csv files. We can see that there is a file for each month of sales data.
 
 4. As we want to load all the files into a single table, rather than selecting any one file, we want to drag the whole **movie\_sales\_fact** folder to the right hand pane. This then shows a prompt to confirm that we want to load all 35 objects to a single target table. Click **Yes**.
 
@@ -159,11 +151,11 @@ All the MovieStream data files for this workshop are stored in a public bucket i
 
     ![Run data load](images/rundataload.png)
 
-	If your autonomous database is running with 8 OCPUs, and the object storage files are located in the same region as your autonomous database, the data load task should take between 4 to 7 minutes. The time taken will vary depending on how many OCPUs there are, and how close the data is.
+	If your autonomous database is running with 16 ECPUs, and the object storage files are located in the same region as your autonomous database, the data load task should take between 4 to 7 minutes. The time taken will vary depending on how many ECPUs there are, and how close the data is.
 
-	Note that you can scale your autonomous database up and down to use more or fewer OCPUs from the console page on Oracle Cloud Infrastructure.
+	Note that you can scale your autonomous database up and down to use more or fewer ECPUs from the console page on Oracle Cloud Infrastructure.
 
-8. Once the data load task is complete, a green tick icon appears next to it, and the row count shows 97890562 loaded rows, with no errors. Click the name of the directory ("movie_sales_fact/ (56GB)"), and then click **Table** on the left hand side to show a preview of the data loaded in the table. 
+8. Once the data load task is complete, the row count will show 97.9m loaded rows, with no errors. Click the name of the table ("ADMIN.MOVIE\_SALES\_FACT") in the header row of the task to show a preview of the data loaded in the table. 
 
 This means we have now successfully loaded the initial movie sales data.
 
@@ -184,4 +176,4 @@ Please *proceed to the next lab*.
 
 * **Authors** - Keith Laker and Mike Matthews, ADB Product Management
 * **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Mike Matthews, March 2023
+* **Last Updated By/Date** - Mike Matthews, May 2024

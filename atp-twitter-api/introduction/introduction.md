@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Want to know how people feel about a topic? Twitter is a haven for people's opinions. Even though you are limited to 280 characters, with such a big & easy-to-use soapbox, folks can quickly & effortlessly share what they think about things. 
+Want to know how people feel about a topic? Twitter (x.com) is a haven for people's opinions. Even though you are limited to 280 characters, with such a big & easy-to-use soapbox, folks can quickly & effortlessly share what they think about things. 
 
 <img src="https://media.giphy.com/media/jxIwOlTpqJ0iOL159d/giphy.gif" width="1000" height="500" />
 
@@ -42,13 +42,13 @@ This lab assumes you have:
 - Python 3.9 installed on your computer (Lab won't run properly with newer versions of Python)
 - Basic familiarity with Python and SQL language
 - IDE of your choice installed on your computer (All examples in this lab will use VSCode - [Link to install](https://code.visualstudio.com/download))
-- An **Elevated Twitter Developer account** [Link to sign up](https://developer.twitter.com/en/docs/twitter-api)
+- An **Elevated Twitter Developer account** (not Free) [Link to sign up](https://developer.twitter.com/en/docs/twitter-api)
 
 Download the lab files here: 
-[SQL Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
-[Python Files](https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
+[SQL Files](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL1_sql.zip)
+[Python Files](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/Twitter_LL2_python.zip)
 
->**Note:** Creating an **Elevated** Twitter Developer account may take up to a couple days to be approved depending on your responses to the questions. It is recommended to start this process before beginning the lab. Click the link to get started: [Link to sign up](https://developer.twitter.com/en/docs/twitter-api).
+>**Note:** Creating an **Elevated** (Basic or Pro) Twitter Developer account may take up to a couple days to be approved depending on your responses to the questions. It is recommended to start this process before beginning the lab. Click the link to get started: [Link to sign up](https://developer.twitter.com/en/docs/twitter-api).
 
 ## Want to learn more about Autonomous Database?
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
@@ -58,4 +58,4 @@ Download the lab files here:
 
 - **Author**- Nicholas Cusato, Santa Monica Specialists Hub
 - **Contributers**- Rodrigo Mendoza, Ethan Shmargad, Thea Lazarova
-- **Last Updated By/Date** - Nicholas Cusato, November 2022
+- **Last Updated By/Date** - Nicholas Cusato, January 2024

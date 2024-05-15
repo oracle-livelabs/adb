@@ -26,7 +26,7 @@ In this lab, you will:
 
 <if type="freetier">
 
-2. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **Region** in the top, right-hand corner of the page.
+2. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in your home region where Always Free Resources are available. You can see your current **Region** in the top, right-hand corner of the page. Please go to your home region.
 
     ![Select region on the far upper-right corner of the page.](./images/region.png " ")
 
@@ -39,11 +39,7 @@ In this lab, you will:
 
 </if>
 
-3. Click the navigation menu in the upper left to show top-level navigation choices.
-
-    ![Oracle home page.](./images/navigation.png " ")
-
-4. Click on **Oracle Database** and choose **Autonomous JSON Database**.
+3. Click the navigation menu in the upper left to show top-level navigation choices. Click on **Oracle Database** and choose **Autonomous JSON Database**.
 
     ![Click Autonomous JSON Database](./images/adb-json.png " ")
 
@@ -58,7 +54,7 @@ In this lab, you will:
     ![Check the workload type](./images/workload-type.png " ")
 
 <if type="freetier">
-   > **Note:** Avoid the use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services.
+   > **Note:** You cannot use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services. 
 </if>
 
 ## Task 2: Create the AJD Instance
@@ -97,6 +93,8 @@ In this lab, you will:
 
 5. Choose a deployment type: Select the deployment type for your database from the choices:
 
+    If you have chosen workload type __JSON__, then the only available deployment option is serverless. If you have chosen a different workload type (which you should not have done), then you would have the following choices:
+
     - __Serverless__ - For this lab, choose __Serverless__ as the deployment type.
     - __Dedicated Infrastructure__ - Alternatively, you could have chosen Dedicated Infrastructure as the deployment type.
 
@@ -111,11 +109,13 @@ In this lab, you will:
     - __Always Free__ - For this lab, we recommend you leave Always Free unchecked.
     </if>
     - __Choose database version__ - Select 19c from the database version. Note: This lab should work on 21c AJD database as well.
-    - __OCPU count__ - Number of OCPUs for your service. For this lab, leave the default __1 OCPU__. If you choose an Always Free database, it comes with 1 OCPU.
-    - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, leave the default __1 TB__ of storage. If you choose an Always Free database, it comes with 20 GB of storage.
-    - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+    - __ECPU count__ - Number of ECPUs for your service. For this lab, leave the default __2 ECPU__. If you choose an Always Free database, it comes with preconfigured and fixed cpu capabilities.
+    - __Storage__ - Select your storage capacity in gigabytes. For this lab you can reduce the storage to the minimum of __20 GB__ of storage. If you choose an Always Free database, it comes with 20 GB of storage by default.
+    - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand. (While this will not happen as part of the workshop, we don't know what else you are going to experiment with.)
 
     *Note: You cannot scale up/down an Always Free autonomous database.*
+
+    If you are planning to use this autonomous database solely for the purpose of this workshop, you can reduce the backup retention also to the minimum of __1 day__.
 
     ![Choose the remaining parameters.](./images/configuration.png " ")
 
@@ -155,8 +155,10 @@ In this lab, you will:
 
 9. Choose a license type:
 
-    - __Bring Your Own License (BYOL)__ - Select this type when your organization has existing database licenses.
-    - __License Included__ - Select this type when you want to subscribe to new database software licenses and the database cloud service. For this lab, choose __License Included__.
+    If you have chosen workload type __JSON__, then the only available licensing option is license included. If you have chosen a different workload type (which you should not have done), then you would have the following choices:
+
+    - __Bring Your Own License (BYOL)__ - Select this license type when your organization has existing database licenses that can be used in the Cloud.
+    - __License Included__ - Select this license type when you want to subscribe to new database software licenses and the database cloud service. For this lab, choose __License Included__.
 
     ![Choose license included](./images/license-type.png " ")
 
@@ -184,7 +186,7 @@ These will be needed in later labs.
 
     First scroll down the page until you find __Web Access (ORDS)__. Click on the Copy button, and save the URL to a text file for later use.
     
-    ![URL for MongoDB API](./images/mdb-api-url.png " ")
+    ![URL for MongoDB API](./images/ords-url.png " ")
 
     Now scroll further down the page until you find the section __MongoDB API__. For Autonomous JSON databases, it should be enabled by default. For Autonomous Transaction Processing or Autonomous Data Warehouse, it will be disabled by default and you will need to click __Edit Tool Configuration__ at the top of the page to enable it. If you have not correctly set __Secure access from allowed IPs and VCNs only__ in the previous Task, you will not be able to enable the MongoDB API.
 
@@ -196,13 +198,18 @@ These will be needed in later labs.
 
 ## Task 4: Connect to your Autonomous Database using "JSON Workshop" UI
 
-1. You should still be in the Database Actions tab from the previous step. Scroll up to the top of the page, to the **Development** section.
+On the OCI detail screen of your newly provisioned Autonomous JSON Database you need to select 'all database actions' from the 'database actions' drop down menu.
 
-2. You'll see a variety of developer tools under **Development** choose **JSON** to manage your JSON documents.
+![All Database Actions menu](./images/select-all-db-actions-menu.png)
 
-    ![Choose JSON](./images/json.png)
+1. You should be in the Database Actions panel.On the Development pane, click on **JSON** to manage your JSON documents.
+
+    ![Choose Development](./images/json.png)
+    ![Choose JSON](./images/dbactions-menu-json.png)
 
 6. It opens on a worksheet. The first time you open JSON, a series of pop-up informational boxes introduce the main features. Click Next to know more or click on `X` to close the pop-up.
+
+    The following is for information only and steps you through the tutorial screens you would experience with the initial tour. Feel free to follow the tutorial at this point in time or proceed to the next lab.
 
     ![Tutorial pane 1](./images/tutorials.png " ")
     ![Tutorial pane 2](./images/tour2.png " ")
@@ -229,4 +236,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 - **Author** - Anoosha Pilli, Product Manager, Oracle Database
-- **Last Updated By/Date** - Madhusudhan Rao, Apr 2022
+- **Last Updated By/Date** - Hermann Baer, April 2024

@@ -78,6 +78,16 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![Screen showing the generated URL of the Pre-Authenticated Request, with the copy button highlighted](images/par-uri.png)
 
+10. Now we can upload a file into the bucket to use as the basis for the live feed configuration. Any future files that land in the bucket will need to be in the same structure. To do this, first download the following example file to your local machine:
+
+  https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-10.csv
+
+>**Important:** Your computer may not support downloading files to your local disk. If you are in this situation, you may be able to use another structured csv file with a header row, as this is just an example. 
+
+11. Click the **feedlab** bucket to view its details. Under **Objects**, click the **Upload** button.
+
+12. Find the **custsales-2020-10.csv** file you just downloaded to your local machine, and click the **Upload** button to upload it.
+
 
 ## Task 2: Use Data Studio to set up a live data feed
 
@@ -85,11 +95,11 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![The Database Actions page, with the Data Load card selected](images/launch-data-load.png)
 
-2. Click **Cloud Locations** to set up access to your new storage bucket.
+2. Click **Connections** to set up access to your new storage bucket.
 
-  ![The Cloud Locations card](images/cloudlocations.png)
+  ![The Connections card](images/cloudlocations.png)
 
-3. In the top right, click **Add Cloud Store Location**
+3. In the top left, click **Create** then select **New Cloud Store Location**
 
 4. Set up a new cloud location named **MovieSalesData**. Select the **Public Bucket** option, and paste in the URL of the pre-authenticated request you created in Task 1.
 
@@ -99,21 +109,29 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 5. Click **Data Load** from the menu on the left, or from the breadcrumbs at the top of the screen.
 
-6. Select **Feed Data** from the top list of cards. Note that the **Where is your data?** option automatically switches to **Cloud Store**. Click **Next**.
+6. Select **Feed Data** from the top list of cards.
 
-  ![The Data Load tool, with the Feed Data and Cloud Store options selected](images/feed-data.png)
+  ![The Data Load tool, with the Feed Data option selected](images/feed-data.png)
 
-7. Click the **Create Live Table Feed** button in the top right.
+7. Click the **Create Live Table Feed** button.
 
   ![The Create Live Table Feed button](images/create-live-feed.png)
 
-8. Set up the Live Table Feed as shown below, with the **Live Table Feed Name** set to **FEED\_MOVIE\_DATA**, the **Target Table Name** set to **MOVIE\_SALES**, and the **Object Filter** set to **\*.csv**. Then tick the **Enable for Notifications** box, and untick the **Enable for Scheduling** box.
+8. In the first section, **Data Source**, select the **MOVIESALESDATA** cloud store location that you just created, and specify an Object Filter of *csv as shown below. 
 
-  ![The details of the live feed configuration](images/live-feed-details.png)
+  ![The Data Source section of Live Feed configuration](images/feed-datasource.png)
 
-  Click the **Create** button to complete the initial setup of the live table feed. 
+We can see a preview of the file that we uploaded to the bucket. Click **Next** to continue.
 
-9. With the live table feed now set up, a URL is generated which we can use to link up to the OCI event generation mechanism. To see and copy the URL, click the menu of the newly created Live Table Feed, and select **Show Notification URL**. 
+9. Under **Table Settings**, we can see that the format of the file has been determined, and the format of the target table to be created from it has been created for us. Click **Next** to continue.
+
+10. Under **Preview**, we can see a preview of the target table with the data as it will be fed in. Click **Next** to continue.
+
+11. Under **Live Feed Settings**, click the option to **Enable for Notification** and ensure the option to enable for scheduling is unticked. This means that the live feed is configured to run when a notification is received from the cloud storage system that new or updated data is available, rather than scheduled to look for new or updated data on a regular basis, though both types of live feed are supported. Click **Save** to create the live feed. A dialog will be displayed asking if you want to run the live feed now. Click **No**.
+
+>**Note:** It is not important to click **No** here. If you clicked **Yes**, the feed will run and load the file into the table. We will then prompt the live feed to run again in the next task, by uploading another file.
+
+12. With the live table feed now set up, a URL is generated which we can use to link up to the OCI event generation mechanism. To see and copy the URL, click the menu of the newly created Live Table Feed, and select **Show Notification URL**. 
 
   ![The live table feed menu with the Show Notification URL option highlighted](images/show-not-url.png)
 
@@ -123,7 +141,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 1. If you are not already logged in, log in to the OCI Console at https://cloud.oracle.com
 
-2. Search for **notif** in the menu and click the result for **Notifications - Application Integration**.
+2. Search for **notif** in the menu and click the result for **Notifications - Application Integration** under **Services**.
 
   ![Search for 'notif' to find Notifications in the OCI Console](images/notif-search.png)
 
@@ -143,7 +161,7 @@ The subscription is now created. It will show as **Pending** for a couple of min
 
 > **Note:** There is no need to wait for the subscription to become active before continuing the lab. It will become active while we do the next steps.
 
-7. Next we need to set up event rules that will trigger notifications. In the search box in the top left, search for **events**, and click the **Rules - Events Service** link:
+7. Next we need to set up event rules that will trigger notifications. In the search box at the top of the screen, search for **events**, and click the **Rules - Events Service** link under **Services**:
 
   ![The OCI Console search window, searching, for events, with Rules - Event Service highlighted](images/search-events.png)
 
@@ -163,11 +181,11 @@ The subscription is now created. It will show as **Pending** for a couple of min
 
 ## Task 4: Test the live feed
 
-To trigger the live table feed, we simply need to upload a new csv file into the **feedlab** bucket that we created at the very beginning of the lab. 
+To trigger the live table feed, we simply need to upload another csv file into the **feedlab** bucket that we created at the very beginning of the lab, in the same format as the previous file. 
 
 1. To do this, first download the following example file to your local machine:
 
-  https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-10.csv
+  https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-11.csv
 
 >**Important:** Your computer may not support downloading files to your local disk. If you are in this situation, you may be able to use another structured csv file with a header row, as this is just an example. 
 
@@ -181,25 +199,25 @@ To trigger the live table feed, we simply need to upload a new csv file into the
 
 4. Under **Objects**, click the **Upload** button.
 
-5. Find the **custsales-2020-10.csv** file you just downloaded to your local machine, and click the **Upload** button to upload it.
+5. Find the **custsales-2020-11.csv** file you just downloaded to your local machine, and click the **Upload** button to upload it.
 
-6. Now go back to the Database Actions launchpad, click the **Data Load** card, select **Feed Data** and **Next** to view the details of your live feed.
+6. Now go back to the Database Actions launchpad, click the **Data Load** card, and select **Feed Data** to view the details of your live feed. The live feed should now show as active. If it does not, click on the Refresh button in the top right, or wait 30 seconds.
 
-7. Click the menu of the live feed, and select **Live Table Feed Run Details** to view information about the live feed.
+  ![The live feed showing as active](images/active-livefeed.png)
 
-  ![The live table feed menu with the Live Table Feed Run Details object selected](images/feed-run-details.png)
+7. We can now see that over 2m rows have been loaded into the **MOVIESALESDATA** table. Click the live feed, and select **Job Report** to see details.
 
-8. You should now see a preview of the data that has been loaded from the uploaded csv file. Switch to the **Data Load Jobs** view from the list on the left. 
+8. You should now see a preview of the data that has been loaded from the uploaded csv file. Switch to the **Job Report** view from the list on the left. 
 
-  ![The Data Load jobs option for the live feed](images/feed-load-jobs.png)
+  ![The Job Report option for the live feed](images/feed-load-jobs.png)
 
-  Here we can see that a job has just run to load the MOVIE\_SALES table with the 1,019,901 rows that were present in the uploaded csv file.
+  Here we can see details of the load jobs that have run to populate the table. If you selected **No** when asked to run the live feed immediately after it was created, you should see a report that loaded 2 files from cloud storage as above, with a total of 2028855 rows. If you selected **Yes** you should see two jobs - the most recent will have run when a new file was detected, and loaded the **custsales-2020-11.csv** file, and the previous one will have loaded the **custsales-2020-10.csv** file.  
 
-9. Now click the **Logs** view on the left to see a summary of this job run.
+9. Now click the **Logs** view on the left to see a summary of the job run.
 
   ![The Logs option for the live feed](images/feed-logs.png)
 
-  This view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none, so we know the data has been loaded completely.
+  Note that the default **Loaded Files** view summarizes all runs of the live feed to show the files that have been loaded, and if there were any errors or rejected rows. In this case, there were none, so we know the data has been loaded completely.
 
 10. To see detailed information about all actions related to the Data Feed, change the selection under **Live Table Run Log Details** from **Loaded Files** to **Log**
 
@@ -219,4 +237,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Jayant Mahto, Rick Green
-- Last Updated By - Mike Matthews, January 2023
+- Last Updated By - Mike Matthews, April 2024

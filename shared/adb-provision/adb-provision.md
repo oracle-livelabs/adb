@@ -60,8 +60,8 @@ To complete this lab, you need to have the following:
 3. Provide basic information for the autonomous database:
 
     - __Choose a compartment__ - Select a compartment for the database from the drop-down list.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __ADW Finance Mart__.
-    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Underscores not initially supported.) For this lab, use __ADWFINANCE__.
+    - __Display Name__ - Enter a memorable name for the database for display purposes. For this lab, use __ADW\_Finance\_Mart__. (Spaces are not supported)
+    - __Database Name__ - Use letters and numbers only, starting with a letter. Maximum length is 14 characters. (Spaces and underscores not supported.) For this lab, use __ADWFINANCE__.
 
     ![Enter the required details.](./images/create-adb-screen-freetier.png " ")
 

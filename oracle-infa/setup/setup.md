@@ -195,7 +195,7 @@ This Lab is now complete you can now go to the next lab.
 
 ## Learn More
 
-* [Creating an ADB Instance](https://oracle.github.io/learning-library/data-management-library/autonomous-database/shared/adb-quickstart-workshop/freetier/?lab=adb-provision-conditional)
+* [Creating an ADB Instance](https://oracle-livelabs.github.io/adb/shared/adb-quickstart-workshop/freetier/?lab=adb-provision-conditional)
 * [Creating a VCN in OCI](https://github.com/enabling-cloud/oci-learning/blob/master/manual/CreatingVCN.md)
 * [Registering a Secure Agent](https://knowledge.informatica.com/s/article/573195?language=en_US)
 * [Secure Agent Documentation](https://knowledge.informatica.com/s/article/573195?language=en_US)

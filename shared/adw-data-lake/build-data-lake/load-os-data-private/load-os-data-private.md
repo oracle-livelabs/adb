@@ -3,15 +3,19 @@
 ## Introduction
 In this lab, you will link to data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into your Oracle Autonomous Database instance, in preparation for exploration and analysis.
 
-You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store. Instead of using the wizard-driven data loading tools of Database Actions, you practice loading data using the **DBMS_CLOUD** PL/SQL package, the preferred method for load automation.
+You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
 Estimated Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[](youtube:IPkjI6zd2CU)
+
 ### Objectives
 
 In this lab, you will:
+
 - Download to your local computer a comma-separated value (.csv) file containing a simulation of sensitive customer data
 - Create a private OCI Object Storage bucket
 - Upload the .csv file to the OCI private bucket
@@ -36,7 +40,7 @@ Download a **.csv** file that contains a simulation of sensitive customer retent
     </copy>
     ```
 
-2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file. This file contains customers who will stop or might stop being repeat customers.
+2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file which contains customers who will stop or might stop being repeat customers. The data in the downloaded file is also displayed in an Excel worksheet. Close the worksheet.
 
   ![Download the potential_churners.csv file to your local computer.](images/potential-churners-csv-file.png " ")
 
@@ -109,9 +113,9 @@ Upload the **`potential_churners.csv`** file that you downloaded earlier in this
 
   ![The Upload Objects panel is displayed.](./images/select-file.png " ")
 
-6. Click **Upload** to upload the selected file to the bucket.
+3. Click **Upload** to upload the selected file to the bucket.
 
-7. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
+4. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
 
     ![The file is uploaded. Close the panel.](./images/file-uploaded.png " ")
 
@@ -141,7 +145,7 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 ## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys    ._
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
 
@@ -149,11 +153,11 @@ In this task, you will get the following items that are required to create a Clo
 + The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
 + The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
 
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **My profile**.
 
-    ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
 
-2. The **User Details** page is displayed. In the **User Information** tab, click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
+2. The **My profile** page is displayed. In the **User Information** tab, you can click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
@@ -161,7 +165,7 @@ In this task, you will get the following items that are required to create a Clo
 
     ![Click Add API Key.](./images/click-add-api-key.png " ")
 
-4. Click **Download Private Key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Private Key**.
+4. Click **Download private key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download private key**.
 
     ![Download private key.](./images/download-private-key.png " ")
 
@@ -173,88 +177,97 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-private-key.pem`**
 
-5. In most cases, you do not need to download the public key; however, you will download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
+5. In most cases, you do not need to download the public key; however, you can download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
 
-    ![Download public key.](./images/download-public-key.png " ")
-
-    The name of the downloaded public key is usually as follows:
-
-    **`oraclecloudidentityservice_username-date_public.pem`**
-
-    Rename your downloaded private key to something shorter such as:
-
-    **`oci-api-public-key.pem`**
-
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+6. A checkmark should appear next to each button. Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Click the **Copy** link to copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to your clipboard and then paste it into a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
 
     ![Credentials items.](./images/credentials-items.png " ")
 
-7. Click **Close**.
+    You can access the downloaded private key and then paste the key value in the above text editor file as you will need the value in the next task.
 
-## Task 6: Define a Connection and Create a Credential
+    ![Private key value.](./images/get-private-key-value.png " ")
 
-You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store in an earlier task using the `DBMS_CLOUD` PL/SQL package. There are two parts to this process:
+7. In the **Configuration File Preview** dialog box, click **Close**.
 
-+ Set up a connection to Oracle Object Storage by defining a cloud location with a credential. You perform this step only once.
-+ Load the file using the `DBMS_CLOUD` PL/SQL package.
+## Task 6: Create a Native OCI Credential
 
-In this task, you define a connection to connect to an Oracle Object Storage bucket. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
+You will load data from the **`potential_churners.csv`** file you uploaded to your private Oracle Object Store in an earlier task using the **`DBMS_CLOUD`** PL/SQL package. First, you will create a credential in order to access your  Oracle Object Storage. You perform this step only once.
 
-1. On the **Oracle Cloud Console** Home page, open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+In this task, you create a credential to connect to an Oracle Object Storage bucket.
 
-<if type="livelabs">
-2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+1. Navigate back to the **SQL Worksheet** in the **SQL | Oracle Database Actions** browser tab that you used in a previous lab.
 
-<if type="freetier">
-2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
+    ![Navigate back to the SQL Worksheet.](./images/sql-worksheet.png =60%x*)
 
-3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **Data Load**.
+2. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the placeholders values for the **`user_ocid`**, **`tenancy_ocid`**, **`private_key`**, and **`fingerprint`** in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
 
-4. On that **Data Load** page, in the **Administration** section, click **CONNECTIONS** to display the **Connections** page.
+    >**Note:** To find your unencrypted **private_key** value that you downloaded in the previous task: Open the private key file in a text editor, and then copy the entire key value but don't include the **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----** lines. Next, paste the copied value in the following code.
 
-    ![Click the Cloud Locations card.](./images/click-connections.png " ")
+    ![Private key value.](./images/private-key-value.png " ")
 
-6. On the **Connections** page, click the **Create** drop-down list and then select **New Cloud Store Location** from the drop-down list.
+    ```
+    <copy>
+    BEGIN
+    dbms_cloud.create_credential(
+        credential_name=>'OBJ_STORAGE_CRED',
+        user_ocid=>'user_ocid',
+        tenancy_ocid=>'tenancy_ocid',
+        private_key=>'private_key',
+        fingerprint=>'fingerprint');
+    END;
+    /
+    </copy>
+    ```
 
-    ![Click Add Cloud Storage.](./images/click-new-cloud-store-location.png " ")
+    Next, click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-7. Specify the following in the **Add Cloud Store Location** panel.
-    + **Name:** Enter **`training-data-lake`**.
-    + **Description:** Enter an optional description.
-    + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + In the **Credential Credential** dialog box, specify the following:
-        + **Credential Type:** Select the **Oracle Cloud Infrastructure Signing Keys** option.
-        + **Credential Name:** Enter **OBJ\_STORAGE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-        + **Fingerprint:** Enter the fingerprint for your RSA key pair that you copied earlier to a text file.
-        + **Private Key:** Paste your unencrypted private key in the RSA key pair.
-        Open the private key file in a text editor, and then copy the entire content from the (and including) **-----BEGIN PRIVATE KEY-----** line to (and including) the **-----END PRIVATE KEY-----** line.
-        ![Private key.](./images/private-key-value.png " ")
+    ![Create an OCI credential.](images/credential-created.png)
 
-        + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
-        + **Oracle Cloud Infrastructure User Name:** Enter your _**user's OCID**_ (and not the actual username).  _**Note:** If you did complete the optional **Task 5**, then the you should have already saved the user's OCID (and not the actual username) in a text file of your choice. If you didn't perform the optional **Task 5**, you can find the user's OCID as follows: Navigate to the **Oracle Cloud Console**. Click the **User's** drop-down list, and then select **User settings**. In the **User Details** page, in the **User Information** tab, click **Copy** next to the **OCID** field. Save this user OCID in your text file._
-        
-            The **Add Cloud Store Location** panel is re-displayed. Specify the following:
+## Task 7: Link to Data in the Bucket
 
-        + Select the **Bucket URI** option.
-        + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
+1. Click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab.
 
-            `https://objectstorage.region name.oraclecloud.com/n/namespace name/b/bucket name/o`
+    ![Navigate to Data Load page.](images/click-data-studio-data-load.png)
 
-            ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
+2. On the **Data Load** page, click the **LINK DATA** tile.
 
-8. Click **Next** to see the available objects in the bucket that you specified. There is only one file that you uploaded to your private Object Storage bucket, `potential_churners.csv`.
+    ![Click link data.](images/click-link-data.png)
 
-    ![Click Next to see the objects in the bucket.](./images/click-next.png " ")
+    The **Link Data** page is displayed. The **Cloud Store** tab is already selected. Click the **Select Cloud Store Location or enter public URL** drop-down list to see the buckets and/or Cloud Locations to which you have access. In this workshop, you already have access to the **`TRAINING-DATA-LAKE`** private bucket in your compartment after your created the OCI credential. Select this bucket.
 
-9. Click **Create**. The **training-data-lake** connection is displayed in the **Connections** page.
+    ![Click drop-down list on link data page.](images/click-drop-down-list.png)
 
-    ![The cloud store location is created.](./images/connection-created.png " ")
+3. This bucket contains only the **`potential_churners.csv`** file that you uploaded to the bucket earlier. Drag the **`potential_churners.csv`** file and drop it onto the data linking job section.
+
+    ![The selected bucket.](images/selected-bucket.png)
+
+4. The **`potential_churners.csv`** target table to be created for the selected `.csv` file is displayed in the data linking job section.
+
+    ![Drag the potential_churners.csv file.](images/drag-drop-potential-churners.png)
+
+5. Click **Start**. A **Start Link From Cloud Store** dialog box is displayed. Click **Run**. When the link job is completed successfully (external table created), the data link card has the link icon next to it.
+
+    ![The link job is completed successfully.](images/link-job-complete.png)
+
+6. Click the **Report** button for the link job to view a report of total rows inserted successfully and failed for the selected table.
+
+    ![Click Report.](images/click-report.png " ")
+
+7. To view buckets and Cloud Locations in other compartments or in the root tenancy, click the **Data Studio Preferences** icon.
+
+    ![Click the Data Studio Preferences icon.](images/click-data-studio.png)
+
+8. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, you can select a different compartment, and then click **Save**.
+
+    ![Change preferences.](images/save-preferences.png =50%x*)
+
+    The Cloud Locations and buckets that are available in the selected compartment are displayed.
+
+    ![The cloud locations and buckets in the selected compartment.](images/cloud-locations-buckets.png)
 
 ## Learn more
 
@@ -265,16 +278,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Contributors:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-    + Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
