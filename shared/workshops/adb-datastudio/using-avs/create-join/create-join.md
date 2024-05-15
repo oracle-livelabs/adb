@@ -1,3 +1,4 @@
+
 # Define Joins
 
 ## Introduction
@@ -20,7 +21,7 @@ In this lab you will:
 
 If you press the **Show DDL** button the tool will let you know that these elements are missing.
 
-![Missing Join](../images/8-missing-join.png)
+![Missing Join](images/missing-join.png)
 
 ## Task 2 - Specify the Join
 
@@ -32,14 +33,14 @@ With an Analytic View, the join is part of the metadata. As a result, joins are 
 
 1. Choose **Data Sources** and select **DAY\_ID** for both the **Hierarchy Column** and the **MOVIE\_SALES\_FACT** Fact Column.
 
-![Join Time Dim](../images/8-join-time-dim.png)
+![Join Time Dim](images/join-time-dim.png)
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, February 2023
+- Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

@@ -26,7 +26,7 @@ Congratulations, you now have an analytic view deployed in the database! There i
 
 The Analysis tool will automatically switch out of the Analytic View design to the Data Quality tab.  This tab will let you know if there are certain types of errors found in the tables.  Since this is a Live Lab, there are no errors!
 
-![Data Quality Tab](../images/10-data-quality-tab-1.png)
+![Data Quality Tab](images/data-quality-tab-1.png)
 
 ## Task 2 - Review Data in the Analytic View
 
@@ -36,11 +36,11 @@ To view the data in the Analytic View, choose the Analyze tab and define a query
 
 The application chooses a level (Year in this case) and a measure (Sales) and displays a report.
 
-![Analyze Tab](../images/10-analyze-tab-1.png)
+![Analyze Tab](images/analyze-tab-1.png)
 
 2. Switch to a chart by pressing the **bar chart** button in the upper, right corner of the application.
 
-![Chart Button](../images/10-chart-button.png)
+![Chart Button](images/chart-button.png)
 
 A bar chart with Years is displayed. Add **Months** to the Chart.
 
@@ -48,14 +48,14 @@ A bar chart with Years is displayed. Add **Months** to the Chart.
 
 The chart now displays Month within Year.
 
-![Move month to x-axis](images/10-month-to-x-axis.png)
+![Move month to x-axis](images/month-to-x-axis.png)
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, February 2023
+- Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
