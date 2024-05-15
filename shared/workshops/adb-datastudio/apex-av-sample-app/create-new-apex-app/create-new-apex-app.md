@@ -86,7 +86,7 @@ You may now **proceed to the next lab** and start making the graphs come to life
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, June 2023
+- Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
