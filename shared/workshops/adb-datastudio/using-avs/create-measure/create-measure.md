@@ -24,17 +24,17 @@ Measures come from the fact table.
 2. Choose **Add Measures**.
 3. Select **SALES**.
 
-![Create Sales Measure](../images/9-create-sales-measure.png)
+![Create Sales Measure](images/create-sales-measure.png)
 
 The analytic view now has a measure.
 
-![Create Sales Measure](../images/9-sales-measure.png)
+![Create Sales Measure](images/sales-measure.png)
 
 4. Press the Show DDL button.
 
 The tool can generate all the SQL DDL needed to create the Attribute Dimension Hierarchy and Analytic View. Aren’t you happy that you don’t have to type that yourself?
 
-![Show DDL](../images/9-show-ddl-1.png)
+![Show DDL](images/show-ddl-1.png)
 
 ## Task 2 - Create Additional Fact Measures
 
@@ -45,7 +45,7 @@ Before creating the analytic view, add some additional measures.  Repeating the 
 
 By default, the aggregation expression is SUM. For measures such as SALES and QUANTITY, it makes sense that those measures would be aggregated by SUM.
 
-![Show Measures](../images/9-measures-1.png)
+![Show Measures](images/measures-1.png)
 
 ## Task 3 - Change Aggregation Method of Discount Percent
 
@@ -54,7 +54,7 @@ Does it make sense to aggregate DISCOUNT\_PERCENT by SUM? Probably not. It rarel
 1. Select the DISCOUNT_PERCENT MEASURE in the tree control.
 2. Change the Expression for DISCOUNT_PERCENT to AVG.
 
-![Discount Percent Avg](../images/9-discount-pct-avg.png)
+![Discount Percent Avg](images/discount-pct-avg.png)
 
 **Pro-tip:**  It rarely makes sense to SUM ratios such as percentages. For example, you would not SUM the percent change in sales from a prior period.  Most ratios should be calculated at the same level of aggregation as being reporting on. For example, the percent change in sales for the current year as compared to the prior year should be calculated using year-level sales values.  That is SUM(sales) / SUM(sales prior period).
 
@@ -67,7 +67,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, February 2023
+- Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
