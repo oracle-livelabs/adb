@@ -1,5 +1,7 @@
 # Enable Disaster Recovery Using Autonomous Data Guard or Backup-Based Disaster Recovery
 
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
+
 ## Introduction
 
 In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database Serverless.
@@ -288,5 +290,4 @@ You may now **proceed to the next lab**.
     * Vandanadevi Rajamani, Database User Assistance
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, ADB Product Management
-* **Contributor:** Rick Green, Database User Assistance
 * **Last Updated By/Date:** Lauran K. Serhal, May 2024

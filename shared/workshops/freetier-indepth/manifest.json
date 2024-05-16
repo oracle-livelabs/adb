@@ -41,6 +41,7 @@
         {
             "title": "Lab 3: Connect Securely to Autonomous Data Warehouse with or without a Connection Wallet",
             "description": "Connecting Securely with or without a Connection Wallet",
+            "type": "freetier",
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {

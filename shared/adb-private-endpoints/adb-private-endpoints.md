@@ -1,5 +1,7 @@
 # Public and Private Network Access in Autonomous Database
 
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
+
 ## Introduction
 
 This lab reviews the 3 options for configuring secure network access to your Oracle Autonomous Database, focusing on how to easily choose the option that restricts access to a private endpoint within an OCI VCN.

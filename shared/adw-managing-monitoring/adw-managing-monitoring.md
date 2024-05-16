@@ -25,20 +25,23 @@ Watch a video demonstration of monitoring an Oracle Autonomous Database.
 [](youtube:uA6X7bnvaFs)
 
 ### Objectives
-In this lab, you'll
--   Examine the charts in the Metrics section of the Autonomous Database details Page
--   Explore the charts in the Database dashboard
--   Explore more charts in the Performance hub
--   Examine the database monitoring charts in the OCI Monitoring Console
+
+In this lab, you'll:
+
+- Examine the charts in the Metrics section of the Autonomous Database details Page
+- Explore the charts in the Database dashboard
+- Explore more charts in the Performance hub
+- Examine the database monitoring charts in the OCI Monitoring Console
 
 ### Prerequisites
--   This lab requires completion of the Provision an Autonomous Database lab in the **Contents** menu on the left.
+
+- This lab requires completion of the Provision an Autonomous Database lab in the **Contents** menu on the left.
 
 ## Task 1: Navigate to Database Metrics
 
 The first facility that we will look at for monitoring your autonomous database is the Database Metrics display located conveniently at the bottom of the Autonomous Database details page.
 
-1. In your **`ADW_Finance_Mart`** **Database details** page, scroll down to the **Metrics** section.
+1. On your **`ADW_Finance_Mart`** **Autonomous Database details** page, scroll down to the **Metrics** section.
 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
@@ -183,5 +186,4 @@ You may now **proceed to the next lab**.
 ## **Acknowledgements**
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Contributor:** Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, May 2024

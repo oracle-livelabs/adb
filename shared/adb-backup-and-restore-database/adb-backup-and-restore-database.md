@@ -1,5 +1,4 @@
-﻿
-# Backup and Restore Your Autonomous Database
+﻿# Backup and Restore Your Autonomous Database
 
 ## Introduction
 
@@ -25,11 +24,11 @@ Let's examine where to find available backups of your Autonomous Database.
 
 1. On the **Autonomous Database details** page, scroll down to the **Backup** section, and note the backup information.
 
-    ![Examine the Backup section of Autonomous Database details page](images/examine-backup-section-details-page.png)
+    ![Examine the Backup section of Autonomous Database details page](images/examine-backup-section-details-page.png " ")
 
 2. Scroll down further to the **Resources** section, and then click the **Backups** link. This link lists the backups that have been automatically created for you daily.
 
-    ![Click the Backups link.](images/click-backups-link.png)
+    ![Click the Backups link.](images/click-backups-link.png =40%x*)
 
     > **Note:** In this workshop, your newly-created Autonomous Database will not yet have a list of daily backups.
 
@@ -127,5 +126,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Contributor:** Rick Green, Principal Developer, Database User Assistance
 - **Last Updated By/Date:**  Lauran K. Serhal, May 2024

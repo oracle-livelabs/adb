@@ -33,6 +33,8 @@ You will run a basic query on the `SSB` data set which is a 1 terabyte data set 
 
 Although you can connect to your Oracle Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your ADW or ATP console.
 
+If you are still on the **Autonomous Databases** page from the previous lab, you can skip to step 3 below; Otherwise, start with step 1.
+
 1. Click the **Navigation** menu.
 
     ![Click the Navigation menu.](./images/click-navigation-menu.png =40%x*)
@@ -49,7 +51,7 @@ Although you can connect to your Oracle Autonomous Database using local PC deskt
 
     ![Click SQL from Database actions drop-down list.](images/click-sql.png " ")
 
-5. The first time you open the SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. Close those boxes.
+5. The first time you open the SQL Worksheet, a warning and a message box may appear. Close those boxes.
 
     ![SQL Worksheet with informational boxes.](./images/informational-boxes.png " ")
 

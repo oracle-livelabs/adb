@@ -29,7 +29,7 @@ This lab assumes you have:
 
 Use the latest version of Oracle SQL Developer, version 23.1.1 as of the writing of this workshop. This task will walk you through downloading and installing Oracle SQL Developer in a Windows environment.
 
-1. Download the latest version of Oracle SQL Developer from **[this link](https://www.oracle.com/database/sqldeveloper/technologies/download/)** for your appropriate platform. In this example, we'll choose **Windows 64-bit with JDK 11 included**. The **Oracle License Agreement** message box is displayed. You must check the **I reviewed and accept the Oracle License Agreement** check box before you can proceed. Next, click the **Download** button. You will be prompted to login to your single-sign-on account. Follow the prompts.
+1. Download the latest version of Oracle SQL Developer from [this link](https://www.oracle.com/database/sqldeveloper/technologies/download/) for your appropriate platform. In this example, we'll choose **Windows 64-bit with JDK 11 included**. The **Oracle License Agreement** message box is displayed. You must check the **I reviewed and accept the Oracle License Agreement** check box before you can proceed. Next, click the **Download** button. You will be prompted to login to your single-sign-on account. Follow the prompts.
 
     ![Click the license agreement check box](./images/click-agreement-checkbox.png =65%x*)
 
@@ -146,23 +146,23 @@ You can download the wallet either from the instance's **Autonomous Database det
 
 1. Login to your the Oracle Cloud Console, if you are not already logged in. Click the **Navigation** menu.
 
-    ![Click the Navigation menu](./images/click-navigation-menu.png =50%x*)
+    ![Click the Navigation menu](./images/click-navigation-menu.png =40%x*)
 
 2. Click **Oracle Database**. Under **Oracle Database**, click **Autonomous Data Warehouse**.
 
-    ![Click the Autonomous Data Warehouse](./images/click-adw.png " ")
+    ![Click the Autonomous Data Warehouse](./images/click-adw.png =60%x*)
 
 3. On the **Autonomous Databases** page, click your **`ADW_Finance_Mart`** database instance. Make sure you are in the right compartment and region where your autonomous database is provisioned.
 
-    ![Click your database instance](./images/click-adw-instance.png " ")
+    ![Click your database instance](./images/click-adw-instance.png =65%x*)
 
 4. On your **Autonomous Database details** page, click **Database connection**.
 
-    ![Click the Database connection button](./images/click-database-connection.png " ")
+    ![Click the Database connection button](./images/click-database-connection.png =60%x*)
 
 5. In the **Database connection** panel, in the **Download client credentials (Wallet)** section, accept the default **Wallet Type** selection, **`Instance Wallet`**. This wallet type is for a single database only. This provides a database-specific wallet. Next, click **Download wallet**.
 
-    ![Download the wallet](./images/download-wallet.png " ")
+    ![Download the wallet](./images/download-wallet.png =60%x*)
 
     >**Note:** Oracle recommends that you provide a database-specific wallet, using Instance Wallet, to end users and for application use whenever possible. Regional wallets should only be used for administrative purposes that require potential access to all Autonomous Databases within a region.
 
@@ -170,11 +170,17 @@ You can download the wallet either from the instance's **Autonomous Database det
 
     >**Note:** If you are prevented from downloading your Connection Wallet, it may be due to your browser's pop-up blocker. Please disable it or create an exception for Oracle Cloud domains.
 
-    ![Specify a password for the wallet](./images/specify-wallet-password.png " ")
+    ![Specify a password for the wallet](./images/specify-wallet-password.png =60%x*)
 
 7. Once the wallet is downloaded, click **Close** to close the **Database connection** panel.
 
-   ![The wallet is downloaded](./images/wallet-downloaded.png =65%x*)
+    <if type="freetier">
+    ![The wallet is downloaded](./images/wallet-downloaded.png =60%x*)
+    </if>
+
+    <if type="livelabs">
+    ![The wallet is downloaded](./images/ll-wallet-downloaded.png =60%x*)
+    </if>
 
 ## Task 4: Connect to the Database Using SQL Developer with a Wallet
 
@@ -189,7 +195,7 @@ Create a new database connection in SQL Developer using the default administrato
     * **Username:** Enter the database username. You can either use the default administrator database account **`ADMIN`** provided as part of the service or create a new schema, and use it.
     * **Password:** Enter the password you created for the database user such as **`Training4ADB`**. Click the **Save Password** checkbox so that you won't be prompted to enter the password.
     * **Connection Type:** Select **`Cloud Wallet`**.
-    * **Configuration File:** Enter the full path for the **`Wallet_ADWFINANCE.zip`** wallet file that you downloaded earlier. Alternatively, click **Browse...** to navigate to the location of the file.
+    * **Configuration File:** Click **Browse** and navigate to your downloaded wallet file.
     * **Service:** There are 3 pre-configured database services for each database. Pick **<*databasename*>\_high** for this lab. For example, if the database you created was named adwfinance, select **adwfinance_high** as the service.
 
         ![Fill in the connection details](./images/specify-connection-details-2.png " ")
@@ -243,5 +249,4 @@ You may now **proceed to the next lab**.
 ## **Acknowledgements**
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Richard Green, Principal User Assistance Developer
 * **Last Updated By/Date** - Lauran K. Serhal, May 2024

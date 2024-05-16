@@ -18,20 +18,17 @@ Estimated Time: 5 minutes
 
 In this lab, you will:
 
--   Create an Oracle Cloud Infrastructure compartment
--   Provision a new Autonomous Database
+- Create an Oracle Cloud Infrastructure compartment
+- Provision a new Autonomous Database
 
 ### Prerequisites
 
 - This lab requires completion of the Get Started section in the Contents menu on the left.
 
-## Task 1: (Optional) Create a Compartment
-[](include:iam-compartment-create-body.md)
-
-## Task 2: Choose Autonomous Database from the OCI Services Menu
+## Task 1: Choose Autonomous Database from the OCI Services Menu
 [](include:adb-goto-service-body.md)
 
-## Task 3: Create the Autonomous Database Instance
+## Task 2: Create the Autonomous Database Instance
 [](include:adb-provision-body.md)
 
 You may now **proceed to the next lab**.

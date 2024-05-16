@@ -99,6 +99,7 @@ In the **Provision Autonomous Database** lab, you created the **ADW\_Finance\_Ma
   ![Consumer Group drop-down menu showing HIGH highlighted.](./images/consumer-group-options.png " ")
 
 ## Task 2: Create the `test_proc` Procedure to Generate the Test Workload
+
 In this task, you run a script that will:
 - Create the procedure **`test_proc`** for the workload used in the test.
 - When this procedure is executed, it will run a query in a loop 2 times, to answer the business case from our [Star Schema Benchmark (SSB) Schema](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-sample-data.html#GUID-4BB2B49B-0C20-4E38-BCC7-A61D3F45390B):    
@@ -221,6 +222,8 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
 ## Task 3: Run the `test_proc` Procedure Concurrently in Three Worksheets
 
+>_**Important:** The amount of time it takes you to run the queries twice might be different than the results shown in this task. In addition, the results will be different depending on whether you are running the queries using your own tenancy or the LiveLabs Sandbox hosted environment._
+
 1. Open the **Query 1**, **Query 2**, and **Query 3** worksheets that you saved earlier. To open 3 separate SQL Developer Web worksheets, go to your browser tab that shows the **Autonomous Database details** page. Click the **Database actions** drop-down list, and then select **SQL**. The worksheet is displayed in a new tab in your browser. Repeat this process to open two more worksheets.
 
 2. In the first new worksheet, click worksheet drop-down list, select **Open Recent**, and then select the **Query 1** saved worksheet. Click the **Consumer group** drop-down list and select **HIGH**.
@@ -312,6 +315,8 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 
 ## Task 5: Run the Procedure Again Concurrently in Three Worksheets
 
+>_**Important:** The amount of time it takes you to run the queries twice might be different than the results shown in this task. In addition, the results will be different depending on whether you are running the queries using your own tenancy or the LiveLabs Sandbox hosted environment._
+
 1. Go to your **Query 1**, **Query 2**, and **Query 3** SQL worksheets (re-open 3 instances if you closed the tabs from before). Change the **Consumer group** drop-down list setting to **HIGH**. Copy the following execute command into each worksheet; however, _but do not immediately execute the command_. After you have entered the command into the three worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
 
     ```
@@ -401,7 +406,6 @@ You may now **proceed to the next lab**.
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, ADB Product Management
 - **Contributors:**
-    * Rick Green, Database User Assistance
     * John Zimmerman, Real World Performance Team
     * Keith Laker, ADB Product Management
 - **Last Updated By/Date** - Lauran K. Serhal, May 2024
