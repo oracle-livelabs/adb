@@ -178,7 +178,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - William (Bud) Endress, June 2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
