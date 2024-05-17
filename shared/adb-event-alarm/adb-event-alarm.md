@@ -244,9 +244,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Author:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-- **Contributors:**
-    * Rick Green, Principal Developer, Database User Assistance
-    * Nilay Panchal, ADB Product Management
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Contributor:** Nilay Panchal, ADB Product Management
 - **Last Updated By/Date:** Lauran K. Serhal, May 2024
