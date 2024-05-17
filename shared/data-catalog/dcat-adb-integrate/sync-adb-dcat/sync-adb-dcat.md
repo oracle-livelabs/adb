@@ -19,6 +19,7 @@ In this lab, you will:
 * Query the generated log, schemas, and external tables
 
 ### Prerequisites
+
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
 
 ## Task 1: Access the Autonomous Database SQL Worksheet
