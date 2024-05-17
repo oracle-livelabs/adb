@@ -141,7 +141,7 @@ _If you are running this workshop in a LiveLabs hosted sandbox, please change th
 
 9. Click **Add peer database**.
 
-    ![Again click Add peer satabase](./images/click-add-peer-database-second-time.png)
+    ![Again click Add peer database](./images/click-add-peer-database-second-time.png)
 
 10. Note that in addition to your local standby database, you are provisioning a second standby database that is a remote, cross-region database. The provisioning of the cross-region standby database and the updating of the primary database will take several minutes. Once it becomes available, you are protected against regional outages. The remote standby is visible in the remote region with your source database's name trailed by **"_Remote"**. The initial status of the instance is **UPDATING**. Wait for a few minutes for the status to change to **AVAILABLE**.
 
