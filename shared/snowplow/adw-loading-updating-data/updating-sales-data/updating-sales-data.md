@@ -40,7 +40,7 @@ MovieStream is a global business with finance departments distributed around the
     </copy>
     ```
 
-2. This will return something similar to the results shown below: 8.43 GB.
+2. This will return something similar to the results shown below: 8.23 GB.
 
     ![Query result showing space consumed by movie sales table](images/initialsize.png)
 
@@ -53,11 +53,11 @@ In this task, we will merge in all the country-specific adjustment files into ou
 
     ![Go to the Data Load tool](images/menudataload.png)
 
-2. As in the lab where you loaded the data, select **LOAD DATA** and **CLOUD STORAGE**, then click **Next**.
+2. As in the lab where you loaded the data, select **LOAD DATA** and **Cloud Store**.
 
 3. From the **MOVIEDATA** bucket, drag the **adjustments** folder into the right-hand pane and click **Yes** to load all 47 objects into a single target table.
 
-4. Click the menu for the load task, and select **Settings**:
+4. Click the pencil icon for the load task, and select **Settings**:
 
     ![Edit the settings for the load task](images/editmerge.png)
 
@@ -71,7 +71,7 @@ Click the **Close** icon when you have the settings as above.
 
 7. Click the **Start** button to start the data load job, and click **Run** in the dialog box.
 
-The job should take less than 2 minutes to run, and should merge in 48692 adjustment rows. Note that the primary key that we created earlier helps the database quickly and efficiently to locate the records that need to be updated by each MERGE statement.
+The job should take between 3 to 4 minutes to run, and should merge in 48.7K adjustment rows. Note that the primary key that we created earlier helps the database quickly and efficiently to locate the records that need to be updated by each MERGE statement.
 
 ## Task 3: Verify the results
 
@@ -107,7 +107,7 @@ The job should take less than 2 minutes to run, and should merge in 48692 adjust
 	</copy>
     ```
 
-6. This will return something similar to the results shown below: 8.43 GB. This is a very, very slight increase in space usage! The previous value was 8.42 GB.
+6. This will return something similar to the results shown below: 8.29 GB. This is a very, very slight increase in space usage! The previous value was 8.23 GB.
 
     ![Query result showing very slight increase in space usage](images/sizeaftermerge.png)
 
@@ -132,4 +132,4 @@ Oracle Autonomous Database automatically manages the data storage process for yo
 
 * **Authors** - Keith Laker and Mike Matthews, ADB Product Management
 * **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date** - Mike Matthews, March 2023
+* **Last Updated By/Date** - Mike Matthews, May 2024
