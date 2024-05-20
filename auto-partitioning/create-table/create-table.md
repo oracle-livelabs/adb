@@ -32,7 +32,7 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 
 3. 	In Cloud Shell, execute the following to connect to your database. You need to insert your copied **autonomous database OCID** into the code below. For the database connection you are using ADMIN with the admin password you set up when provisioning your autonomous database.
 
-	The name of your service is your database name with suffix "_high", "_medium", or "_low". You can get this information also from the DB Connections button on your **Autonomous Database Details** screen.
+	The name of your service is your database name with suffix "high", "medium", or "low". You can get this information also from the DB Connections button on your **Autonomous Database Details** screen.
 	
 	```
 	# go to home directory

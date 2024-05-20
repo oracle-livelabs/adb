@@ -72,7 +72,7 @@ Estimated Lab Time: 15 minutes.
 
     ![Always Free Logo](./images/always_free_logo.png)
 
-        ![ADB Creation Details](./images/lab100_3_2.png)
+    ![ADB Creation Details](./images/lab100_3_2.png)
 
     - **Choose Database version:** 19c
     
