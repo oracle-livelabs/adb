@@ -61,7 +61,7 @@ Estimated Time: 15 minutes.
     - **Database Name:** Enter any database name you choose that fits the requirements for ADW. The database name must consist of letters and numbers only, starting with a letter. The maximum length is 14 characters. You can leave the name provided. That field is not a mandatory one.
     - **Workload Type:** Autonomous Data Warehouse  
     
-    - **Deployment Type:** Shared Infrastructure
+    - **Deployment Type:** Serverless
     
     - **Always Free:** On or Off 
 
@@ -125,4 +125,4 @@ You have just created an Autonomous Database with the latest features of Oracle 
 
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
-- **Last Updated By/Date** - Nigel Bayliss, June 2022
+- **Last Updated By/Date** - Nigel Bayliss, May 2024
