@@ -125,4 +125,4 @@ You have just created an Autonomous Database with the latest features of Oracle 
 
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
-- **Last Updated By/Date** - Nigel Bayliss, June 2022
+- **Last Updated By/Date** - Nigel Bayliss, May 2024
