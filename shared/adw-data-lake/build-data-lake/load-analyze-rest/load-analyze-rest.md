@@ -83,21 +83,15 @@ Create a **News API** account as follows:
 
 Now that you have the API key, create a PL/SQL function that queries the REST endpoint using the parameters above.
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
+1. Navigate to the SQL Worksheet. Click the **Database Actions | Data Load** in the banner.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![Click Data Load in the banner.](./images/click-data-load-banner.png " ")
 
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+2. On the **Launchpad** page, click the **Development** tab, and then click the **SQL** tab.
 
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
+    ![Click Development > SQL tabs.](./images/click-development-sql-tabs.png " ")
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
-
-5. The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed.
 
     ![The SQL worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
     
@@ -351,4 +345,4 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar, Autonomous Database Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024

@@ -1,5 +1,7 @@
 # Scale Your Autonomous Database
 
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
+
 ## Introduction
 
 In this lab, you will scale up your Oracle Autonomous Data Warehouse (ADW) or Autonomous Transaction Processing (ATP) service to have more CPUs. You will also watch a demo that shows the performance and concurrency impacts of scaling your service online.
@@ -21,28 +23,28 @@ Watch the video below for a quick walk-through of the lab.
 
     ![Click Manage resource allocation.](./images/click-manage-resource-allocation.png " ")
 
-2.  Fill in the **Manage resource allocation** dialog with the following information:
+2. Specify the following in the **Manage resource allocation** panel.
 
-    -   **ECPU count:** 16
-    -   **Compute auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
-    -   **Storage (TB):** 2
-    -   **Storage auto scaling:** Keep this checkbox deselected; by default the checkbox does not have a checkmark.
+    - **ECPU count:** 16
+    - **Compute auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
+    - **Storage (TB):** 2
+    - **Storage auto scaling:** Keep this checkbox deselected; by default the checkbox does not have a checkmark.
 
-  *Note: You can scale up/down your autonomous database only if your autonomous database is NOT Always Free.*
+    > **Note:** You can scale up/down your autonomous database only if your autonomous database is NOT Always Free.
 
-3.  Click **Apply** after filling in the Manage resource allocation dialog.
+3. Click **Apply**.
 
     ![Click Apply.](./images/click-apply-in-manage-resource-allocation-dialog.png " ")
 
-    *Note: Applications can continue running during the scale operation without downtime.*
+    >**Note:** Applications can continue running during the scale operation without downtime.
 
-4.  This will take you to the database instance's Details page. A message will appear indicating **SCALING IN PROGRESS**. Wait a few minutes for the scaling to finish.
+4. The **Autonomous Database details** page is re-displayed. The instance status is **SCALING IN PROGRESS**. Wait a few minutes for the scaling to finish.
 
     ![A SCALING IN PROGRESS message appears.](./images/scaling-in-progress.png " ")
 
-5.  When scaling finishes, the message will change to **AVAILABLE**. You may need to refresh the page to see the result of the scale operation.
+5. When scaling finishes, the instance status changes to **AVAILABLE**. You may need to refresh the page to see the result of the scale operation.
 
-    ![A refreshed database console page with updated OCPU count and storage.](./images/the-result-of-scaling.png " ")
+   ![A refreshed database console page with updated OCPU count and storage.](./images/the-result-of-scaling.png " ")
 
 ## Task 2: Performance and Concurrency Benefits of Dynamic Scaling
 
@@ -58,11 +60,10 @@ You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-add-resources.html#GUID-DA72422A-5A70-42FA-A363-AB269600D4B0) for documentation on enabling auto scaling.
-
+* [Add CPU or Storage Resources or Enable Auto Scaling](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-add-resources.html#GUID-DA72422A-5A70-42FA-A363-AB269600D4B0)
 ## **Acknowledgements**
 
-- **Author** - Nilay Panchal, ADB Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Contributors** - LiveLabs QA Team (Jeffrey Malcolm Jr, Ayden Smith, Arabella Yao)
-- **Last Updated By/Date** - Richard Green, August 2023
+* **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, ADB Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, May 2024

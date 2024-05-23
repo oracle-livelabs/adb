@@ -74,7 +74,7 @@
         },
         {
             "title": "Lab 11: Integrate ADW with AWS Glue Data Catalogs",
-            "type":"freetier",
+            "type":"livelabs",
             "description": "This lab shows ADW integration with AWS Data Catalogs.",
             "filename": "./../../adw-aws-integrate/adw-aws-integrate.md"
         },

@@ -17,7 +17,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- Oracle Database 23c Free Developer Release
+- Oracle Database 23ai Free Developer Release
 - All previous labs successfully completed
 
 

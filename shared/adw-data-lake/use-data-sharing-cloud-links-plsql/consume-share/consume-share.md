@@ -29,7 +29,9 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
 2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
 
-3. In the **Development** section, click the **SQL** card.
+3. You are now logged in as the **`admin`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
+
+    ![Logged in as share_provider](images/login-as-admin.png)
 
 4. Create a new consumer user named **`share_consumer`**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon.
 
@@ -83,13 +85,13 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ![Enable share_consumer schema.](images/enable-share-consumer-schema.png)
 
-2. Log out of the `admin` user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu. Click **Leave**.
+2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu. Click **Leave**.
 
 3. Log in as the newly created user, `share_consumer`. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
 
-    ![Log in as share_consumer](images/login-share-consumer.png)
+4.You are now logged in as the `share_consumer` user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
-    You are now logged in as the `share_consumer` user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+![Logged in as share_consumer](images/login-as-consumer.png)
 
 4. Verify that you as the `share_consumer` have the privilege to read the data share. You can use the following query to check if the current session user is enabled for `READ` access to a data set.
 
@@ -117,15 +119,11 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     >**Note:** If the above query doesn't show the published data share, wait for a few more minutes until the publishing process is completed, and then run the query again.
 
-6. Copy the value for the **`provider_name`** entry that starts with **`live_share_provider`**. You will need this value in the next task. Click the **eye** icon. The **`provider_name`** value is displayed.
+6. Copy the value for the **`provider_name`** entry that starts with **`live_share_provider`**. You will need this value in the next task. Right-click the cell and then select **Copy** from the context menu.
 
     ![Copy the sharing id value](images/copy-provider-name.png)
 
-7. Click the **`provider_name`** value to highlight it and copy it.
-
-    ![Copy the highlighted provider_name value](images/highlight-provider-name.png)
- 
-    Next, paste the copied value into your text editor file.
+7. Paste the copied value into your text editor file.
 
     ![Paste the value into a text editor file](images/paste-provider-name-value.png)
 
@@ -287,11 +285,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

@@ -5,7 +5,7 @@
         {
             "title": "Introduction",
             "description": "The Introduction is always first. The title and contents menu title match for the Introduction.",
-            "filename": "../../files/0-introduction.md"
+            "filename": "../../introduction/introduction.md"
         },
         {
             "title": "Get Started",
@@ -20,55 +20,55 @@
         },
         {
             "title": "Lab 2: Open SQL Worksheet",
-            "filename": "../../files/2-open-sql-worksheet.md"
+            "filename": "../../open-sql-worksheet/open-sql-worksheet.md"
         },
         {
             "title": "Lab 3: Create a Database User",
-            "filename": "../../files/3-create-user.md"
+            "filename": "../../create-user/create-user.md"
         },
         {
             "title": "Lab 4: Install Sample Data",
-            "filename": "../../files/4-install-sample-data.md"
+            "filename": "../../install-sample-data/install-sample-data.md"
         },
         {
             "title": "Lab 5: Launch the Data Studio Analysis Tool",
-            "filename": "../../files/5-launch-analysis-tool.md"
+            "filename": "../../launch-analysis-tool/launch-analysis-tool.md"
         },
         {
             "title": "Lab 6: Create a New Analytic View",
-            "filename": "../../files/6-create-new-av.md"
+            "filename": "../../create-new-av/create-new-av.md"
         },
         {
             "title": "Lab 7: Create a Hierarchy",
-            "filename": "../../files/7-create-hierarchy.md"
+            "filename": "../../create-hierarchy/create-hierarchy.md"
         },
         {
             "title": "Lab 8: Define Joins",
-            "filename": "../../files/8-create-join.md"
+            "filename": "../../create-join/create-join.md"
         },
         {
             "title": "Lab 9: Create a Measure",
-            "filename": "../../files/9-create-measure.md"
+            "filename": "../../create-measure/create-measure.md"
         },
         {
             "title": "Lab 10: Deploy the Analytic View",
-            "filename": "../../files/10-deploy-av.md"
+            "filename": "../../deploy-av/deploy-av.md"
         },
         {
             "title": "Lab 11: Add More Hierarchies",
-            "filename": "../../files/11-add-hierarchies.md"
+            "filename": "../../add-hierarchies/add-hierarchies.md"
         },
         {
             "title": "Lab 12: Create a Calculated Measure",
-            "filename": "../../files/12-create-calculated-measures.md"
+            "filename": "../../create-calculated-measures/create-calculated-measures.md"
         },
         {
             "title": "Lab 13: Explore Data",
-            "filename": "../../files/13-explore-data.md"
+            "filename": "../../explore-data/explore-data.md"
         },
         {
             "title": "Lab 14: Learn More",
-            "filename": "../../files/14-learn-more.md"
+            "filename": "../../learn-more/learn-more.md"
         },
         {
             "title": "Need Help?",
