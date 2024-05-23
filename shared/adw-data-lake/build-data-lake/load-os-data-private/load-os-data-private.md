@@ -195,23 +195,15 @@ In this task, you will get the following items that are required to create a Clo
 
 ## Task 6: Create a Native OCI Credential
 
-You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store in an earlier task using the `DBMS_CLOUD` PL/SQL package. First, you will create a credential in order to access your  Oracle Object Storage. You perform this step only once.
+You will load data from the **`potential_churners.csv`** file you uploaded to your private Oracle Object Store in an earlier task using the **`DBMS_CLOUD`** PL/SQL package. First, you will create a credential in order to access your  Oracle Object Storage. You perform this step only once.
 
-In this task, you create a credential to connect to an Oracle Object Storage bucket. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
+In this task, you create a credential to connect to an Oracle Object Storage bucket.
 
-1. On the **Oracle Cloud Console** Home page, open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+1. Navigate back to the **SQL Worksheet** in the **SQL | Oracle Database Actions** browser tab that you used in a previous lab.
 
-<if type="livelabs">
-2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+    ![Navigate back to the SQL Worksheet.](./images/sql-worksheet.png =60%x*)
 
-<if type="freetier">
-2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
-
-3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **SQL**.
-
-4. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the placeholders values for the `user_ocid`, `tenancy_ocid`, `private_key`, and `fingerprint` in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
+2. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the placeholders values for the **`user_ocid`**, **`tenancy_ocid`**, **`private_key`**, and **`fingerprint`** in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
 
     >**Note:** To find your unencrypted **private_key** value that you downloaded in the previous task: Open the private key file in a text editor, and then copy the entire key value but don't include the **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----** lines. Next, paste the copied value in the following code.
 
@@ -237,13 +229,15 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
 ## Task 7: Link to Data in the Bucket
 
-1. Click the **Database Actions | SQL** banner to display the **Database Actions | Launchpad** Home page. In the **Data Studio** section, click the **DATA LOAD** card.
+1. Click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab.
 
-2. In the **Data Load** section, click the **LINK DATA** card.
+    ![Navigate to Data Load page.](images/click-data-studio-data-load.png)
+
+2. On the **Data Load** page, click the **LINK DATA** tile.
 
     ![Click link data.](images/click-link-data.png)
 
-    The **Link Data** page is displayed. The **Cloud Store** tab is already selected. Click the **Select Cloud Store Location or enter public URL** drop-down list to see the buckets and/or Cloud Locations to which you have access. In this workshop, you already have access to the `TRAINING-DATA-LAKE` private bucket in your compartment after your created the OCI credential. Select this bucket.
+    The **Link Data** page is displayed. The **Cloud Store** tab is already selected. Click the **Select Cloud Store Location or enter public URL** drop-down list to see the buckets and/or Cloud Locations to which you have access. In this workshop, you already have access to the **`TRAINING-DATA-LAKE`** private bucket in your compartment after your created the OCI credential. Select this bucket.
 
     ![Click drop-down list on link data page.](images/click-drop-down-list.png)
 
@@ -255,18 +249,25 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
     ![Drag the potential_churners.csv file.](images/drag-drop-potential-churners.png)
 
-5. Click **Start**. A **Start Link From Cloud Store** dialog box is displayed. Click **Run**. When the link job is completed successfully, a green check mark appears. Click **Done**.
+5. Click **Start**. A **Start Link From Cloud Store** dialog box is displayed. Click **Run**. When the link job is completed successfully (external table created), the data link card has the link icon next to it.
 
     ![The link job is completed successfully.](images/link-job-complete.png)
 
-    >**Note:** To view buckets and Cloud Locations in other compartments or in the root tenancy, click the **Data Studio Preferences** icon. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, you can select a different compartment, and then click **Save**.
+6. Click the **Report** button for the link job to view a report of total rows inserted successfully and failed for the selected table.
 
-    ![Click the Data Studio Preferences icon.](images/save-preferences.png)
+    ![Click Report.](images/click-report.png " ")
+
+7. To view buckets and Cloud Locations in other compartments or in the root tenancy, click the **Data Studio Preferences** icon.
+
+    ![Click the Data Studio Preferences icon.](images/click-data-studio.png)
+
+8. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, you can select a different compartment, and then click **Save**.
+
+    ![Change preferences.](images/save-preferences.png =50%x*)
 
     The Cloud Locations and buckets that are available in the selected compartment are displayed.
 
     ![The cloud locations and buckets in the selected compartment.](images/cloud-locations-buckets.png)
-
 
 ## Learn more
 
@@ -277,15 +278,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributors:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

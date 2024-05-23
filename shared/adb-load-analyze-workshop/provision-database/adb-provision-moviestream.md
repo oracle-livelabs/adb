@@ -23,7 +23,7 @@ In this lab, you will:
 
 ### Prerequisites
 
--   This lab requires completion of the Get Started section in the Contents menu on the left.
+- This lab requires completion of the Get Started section in the Contents menu on the left.
 
 ## Task 1: (Optional) Create a Compartment
 [](include:iam-compartment-create-body.md)
@@ -43,5 +43,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** - Lauran K. Serhal, March 2024
+- **Last Updated By/Date:** - Lauran K. Serhal, April 2024
 - **Built with Common Tasks**

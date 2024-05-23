@@ -64,7 +64,7 @@ In this lab, you will:
     ![database name](./images/database-name.png " ")
 
 
-7.  On the database page, choose __Database Actions__.
+7.  On the database page, choose __View all database actions__ in the __Database Actions__ menu.
 
     ![choose database actions from the menu](./images/dbactions-button.png " ")
 
@@ -76,12 +76,14 @@ In this lab, you will:
     * SQL - allows you to work with a relational, **SQL-based** view of your data
     * Charts - generate charts over data in Autonomous Database
 
+    All of these tools are under the __Development__ section
+
     ![menu for database actions](./images/dbactions-menu.png " ")
 
 
 ## Task 2: JSON in Database Actions
 
-1. You should be in the Database Actions panel. Click on the **JSON** card
+1. You should be in the Database Actions panel. Click on the **JSON** tool in the Development tab.
 
     ![choose JSON](./images/dbactions-menu-json.png " ")
 
@@ -182,7 +184,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
 
     ![back to dbactions](./images/back-to-dbactions.png " ")
 
-    Now we want to open SQL. Click on the SQL panel in Database Actions
+    Now we want to open SQL. Select __SQL__ in the Development section.
 
     ![dbactions menu](./images/dbactions-menu-sql.png " ")
 
@@ -200,7 +202,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
 
     ```
     <copy>
-    select * from emp
+    select * from emp;
     </copy>
     ```
     ![simple select command](./images/select-star.png " ")
@@ -216,7 +218,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
 
     ```
     <copy>
-    select json_serialize(data) from emp
+    select json_serialize(data) from emp;
     </copy>
     ```
 
@@ -233,7 +235,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
     select e.data.name,
            e.data.job,
            e.data.salary
-        from emp e
+        from emp e;
     </copy>
     ```
 
@@ -246,7 +248,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
     select  avg (e.data.salary),
             e.data.job
         from emp e
-        group by e.data.job
+        group by e.data.job;
     </copy>
     ```
 
@@ -293,6 +295,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
             dataguide => dg
         );
     end;
+    /
     </copy>
     ```
 
@@ -309,7 +312,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
     select  sum("salary"),
             "job"
         from emp_view
-        group by "job"
+        group by "job";
     </copy>
     ``` 
 
@@ -340,7 +343,7 @@ Now we're going to look at a SQL view of the same data, showing how you can swap
     select  sum("salary"),
             "job"
         from emp_view
-        group by "job"
+        group by "job";
     </copy>
     ``` 
     On the right Choose "Pie Chart" in the "Chart type" drop-down. You can also select the "3D" option if you like. Click "Create" when done.
@@ -361,4 +364,4 @@ You may now proceed to the next lab to clean up your lab environment.
 
 - **Author** - Roger Ford, Principal Product Manager
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Hermann Baer, June 2023
+- **Last Updated By/Date** - Hermann Baer, April 2024

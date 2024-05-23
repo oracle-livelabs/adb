@@ -14,11 +14,11 @@ Watch the video below for a quick walk through of the workshop.
 In this lab, you will:
 
 * Use Mongo and Oracle tools interchangeably
-* Experience some of the new MongoDB API capabilities with Oracle Database 23c
+* Experience some of the new MongoDB API capabilities with Oracle Database 23ai
 
 ### Prerequisites
 
-* Oracle Database 23c Free Developer Release
+* Oracle Database 23ai Free Developer Release
 * ORDS started with MongoDB API enabled
 * Password of database user hol23c known
 
@@ -111,7 +111,7 @@ The data is stored in a **single** location - the Oracle database - and transact
 
 ## Task 2: Use Mongo Compass to build an aggregation pipeline
 
-With Oracle MongoDB API in the newest ORDS and Oracle Database 23c, the compatibility of Oracle MongoDB API and MongoDB have significantly increased. The most notable enhancement is the support for Aggregation Pipelines. 
+With Oracle MongoDB API in the newest ORDS and Oracle Database 23ai, the compatibility of Oracle MongoDB API and MongoDB have significantly increased. The most notable enhancement is the support for Aggregation Pipelines. 
 
 The following lab will focus on aggregation pipelines, illustrate its functionality and give a view under the hood of how you use the power of Oracle's database JSON processing capabilities to speed up MongoDB requests.
 
@@ -304,7 +304,7 @@ There's more to cover for the Oracle Database API for MongoDB or the unified acc
 * [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
 * [Oracle Database API for MongoDB - Documentation](https://docs.oracle.com/en/database/oracle/mongodb-api/index.html)
 * [Oracle Database API for MongoDB - YouTube](https://www.youtube.com/watch?v=EVDn4b6u628&ab_channel=Oracle)
-* [SQL, JSON, and MongoDB API: Unify worlds with Oracle Database 23c Free](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3635)
+* [SQL, JSON, and MongoDB API: Unify worlds with Oracle Database 23ai Free](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3635)
 
 ## Acknowledgements
 

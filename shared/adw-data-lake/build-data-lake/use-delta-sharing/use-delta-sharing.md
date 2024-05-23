@@ -49,7 +49,7 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 ## Task 2: Navigate to the SQL Worksheet
 
-If you already accessed the SQL Worksheet from the previous lab, you can skip over to **Task 3**; otherwise, navigate to SQL Worksheet as follows:
+If you already accessed the SQL Worksheet in the previous lab, you can skip over to **Task 3**; otherwise, navigate to SQL Worksheet as follows:
 
 1. Log in to the **Oracle Cloud Console**.
 
@@ -173,15 +173,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

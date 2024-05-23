@@ -48,19 +48,21 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 
 3. On the **Autonomous Databases** page, click your ADB instance. Make sure you select the appropriate compartment from the **Compartment** drop-down list in the **List Scope** section.
 
+    <if type="livelabs">
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
+    </if>
+
+    <if type="freetier">
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **View all database actions**.
+4. Click the **Database actions** drop-down list, and then select **Data Load**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![Click data load from the database actions.](./images/click-data-load-drop-down.png =50%x*)
 
-5. The **Database Actions Launchpad** Home page is displayed _in a new tab_ in your browser. Scroll-down to the **Data Studio** section, and then click the **DATA LOAD** card.
+5. The **Data Load** Home page is displayed in a _**new browser tab**_.
 
-    ![The Database Actions Launchpad page is displayed.](./images/launchpad-page.png =70%x*)
-
-5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
-
-    ![The Data Load Home page is displayed.](./images/data-load-home.png =70%x*)
+    ![Click the Data Load card.](./images/data-load-home-page-2.png =70%x*)
 
 ## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
 
@@ -78,8 +80,6 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     >**Note:** If you have an issue uploading both files simultaneously, you can select one file at a time. Select the first downloaded file using step 3. When the file is uploaded, click the **Select Files** icon on the **Load Data** page, and then select the second file.
 
-    ![Select the one file at a time.](./images/select-second-file.png " ")
-
 4. When the upload is complete, you will make a small change to the default table name that will be created for the *customer-extension.csv* file. Click the **Settings** (pencil) icon to the right of *customer-extension.csv*.
 
     ![Update the data load job settings.](./images/click-settings.png " ")
@@ -88,33 +88,33 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Examine the editor of the data load job.](./images/preview-table.png " ")
 
-7. In the **Name** field, change the table name that will be created from **CUSTOMEREXTENSION** to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
+6. In the **Name** field, change the table name that will be created from **CUSTOMEREXTENSION** to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
 
     ![Examine the editor of the data load job.](./images/change-table-name.png " ")
 
-8. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
+7. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
 
     ![Run the data load.](./images/click-start.png " ")
 
-9. When the load job is complete, a green check mark appears next to each table. Click **Catalog** in the menu on the left.
+8. When the load job is complete, a green check mark appears next to each table in the Data Load dashboard. Click **Catalog** in the menu on the left.
 
-    ![Click Catalog in the menu on the left.](./images/click-catalog.png " ")
+    ![Click Catalog in the menu on the left.](./images/load-completed.png " ")
 
     > **Note:** If the menu on the left is collapsed, click the double arrows icon to expand it so that the label for each icon is displayed.
 
-    ![Click Expand to expand the menu on the lef.](./images/expand-menu.png " ")
-
-10. The Catalog displays the two newly created tables: *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION*.
+9. The Catalog displays the two newly created tables, *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION*, at the top of the Data Load dashboard among the other tables that were created earlier.
 
     ![View the new table in the Catalog.](./images/display-new-tables.png " ")
 
-    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data.
+    You can click a table name link to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data.
+
+    ![Click customer_segment name link.](./images/customer-segment-link.png " ")
 
     ![Click customer_segment to display its data.](./images/customer-segment-data.png " ")
 
-11. When finished, click **Close**, and then click the **Data Load** in the menu on the left. Click **Done**.
+10. When finished, click **Close**, and then click the **Data Load** in the menu on the left to return to the **Data Load** page.
 
-    ![Click Done.](./images/click-done.png " ")
+    ![Click Done.](./images/return-data-load.png " ")
 
     The **Data Load** page is re-displayed.
 
@@ -133,11 +133,11 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, March 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
