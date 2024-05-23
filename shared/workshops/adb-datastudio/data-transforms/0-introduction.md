@@ -2,6 +2,8 @@
 
 ## About this Workshop
 
+WIP
+
 This workshop will show you how to use Data Transforms tool to load and transform your data in the Autonomous Database.
 
 Estimated Workshop Duration: ?? hour, ?? minutes
