@@ -193,7 +193,7 @@ In this task, you will get the following items that are required to create a Clo
 
 7. In the **Configuration File Preview** dialog box, click **Close**.
 
-## Task 6: Create a Native OCI Credential
+## Task 6: Create a Native OCI Credential Using the DBMS_CLOUD PL/SQL Package
 
 You will load data from the **`potential_churners.csv`** file you uploaded to your private Oracle Object Store in an earlier task using the **`DBMS_CLOUD`** PL/SQL package. First, you will create a credential in order to access your  Oracle Object Storage. You perform this step only once.
 
@@ -227,7 +227,34 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
     ![Create an OCI credential.](images/credential-created.png)
 
-## Task 7: Link to Data in the Bucket
+## Task 7: (Optional) Create Native OCI Credentials and RSA Key Pairs with a Fingerprint Using a Cloud Shell Script
+
+In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and an RSA key pairs with a fingerprint is to use a newly available Cloud Shell script named **`adb-create-cred_BETA.sh`** that you will download and run in this task.
+
+1. Click the following link to download the [adb-create-cred_BETA.sh](files/adb-create-cred_BETA.sh?download=1) Cloud Shell script to your local machine.
+
+2. Start Cloud Shell. On your Oracle Console banner, click the **Developer tools** icon, and then select **Cloud Shell**.
+
+    ![Start Cloud Shell.](images/start-cloud-shell.png)
+
+3. After a minute or so, the Cloud Shell is displayed. To maximize the view, click the **Maximize** icon on the Cloud Shell banner.
+
+    ![Click Maximize.](images/click-maximize.png)
+
+    The Cloud Shell view is maximized.
+
+    ![Maximized screen.](images/maximized-screen.png)
+
+4. Upload the **`adb-create-cred_BETA.sh`** script that you downloaded to your Cloud Shell home directory. Click the **Cloud Shell menu** (the Gear) icon, and then click **Upload**.
+
+    ![Click Upload.](images/click-upload.png)
+
+5. The **File upload to your home directory** dialog box is displayed. You can choose the file to upload using either the drag-and-drop method or you can click the **Select from your computer** link which we will do in this example.
+
+    ![Select the file to upload.](images/file-upload-dialog.png)
+    
+
+## Task 8: Link to Data in the Bucket
 
 1. Click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab.
 
