@@ -229,9 +229,9 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
 ## Task 7: (Optional) Create Native OCI Credentials and RSA Key Pairs with a Fingerprint Using a Cloud Shell Script
 
-In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and an RSA key pairs with a fingerprint is to use a newly available Cloud Shell script named **`adb-create-cred_BETA.sh`** that you will download and run in this task.
+In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and an RSA key pairs with a fingerprint is to use a newly available Cloud Shell script named **`adb-create-cred.sh`** that you will download and run in this task.
 
-1. Click the following link to download the [adb-create-cred_BETA.sh](files/adb-create-cred_BETA.sh?download=1) Cloud Shell script to your local machine.
+1. Click the following link to download the [adb-create-cred.sh](files/adb-create-cred.sh?download=1) Cloud Shell script to your local machine.
 
 2. Start Cloud Shell. On your Oracle Console banner, click the **Developer tools** icon, and then select **Cloud Shell**.
 
@@ -245,7 +245,7 @@ In Task 6, you learned how to create an an OCI native credential to access your 
 
     ![Maximized screen.](images/maximized-screen.png)
 
-4. Upload the **`adb-create-cred_BETA.sh`** script that you downloaded to your Cloud Shell home directory. Click the **Cloud Shell menu** (the Gear) icon, and then click **Upload**.
+4. Upload the **`adb-create-cred.sh`** script that you downloaded to your Cloud Shell home directory. Click the **Cloud Shell menu** (the Gear) icon, and then click **Upload**.
 
     ![Click Upload.](images/click-upload.png)
 
