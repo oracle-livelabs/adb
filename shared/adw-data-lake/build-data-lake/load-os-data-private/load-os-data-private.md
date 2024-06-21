@@ -266,7 +266,7 @@ In Task 6, you learned how to create an an OCI native credential to access your 
 
     The screen is cleared.
 
-    ![Screen cleared.](images/screen-cleared.png =65%x*)
+    ![Screen cleared.](images/screen-cleared.png =70%x*)
 
 ### **The Available Script's Arguments**
 
@@ -345,9 +345,9 @@ Now that you are familiar with the arguments that you can use with the script, l
     </copy>
     ```
 
-    ![List the home directory contents.](images/list-home-directory.png =65%x*)
+    ![List the home directory contents.](images/list-home-directory.png =70%x*)
 
-4. To view the generated private and public keys, Copy and paste the following command to the command prompt and then hit **`[Enter]`**. Next, run the `ls -l` command again.
+4. To view the generated private and public keys, copy and paste the following command to the command prompt and then hit **`[Enter]`**. Next, run the `ls -l` command again.
 
     ```
     <copy>
@@ -355,7 +355,7 @@ Now that you are familiar with the arguments that you can use with the script, l
     </copy>
     ```
 
-    ![List the .oci directory contents.](images/list-oci-directory.png =65%x*)
+    ![List the .oci directory contents.](images/list-oci-directory.png =70%x*)
 
 ### **Run the Script: Example 2**
 
@@ -371,31 +371,31 @@ In this example, our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`
 
     The script generates the private and public keys, the fingerprint, and the .sql and .json credential files.
 
-    ![Step 1.](images/example-2-step-1.png =65%x*)
+    ![Step 1.](images/example-2-step-1.png =70%x*)
 
 2. The script prompts as to whether or not we'd like to run the credential script in our Autonomous Database. We entered **`y`** for yes. Because we didn't use the `--region` argument, a list of the regions to which we have access is displayed. We entered **13** for the **`ca-toronto-1`** region.
 
-    ![Step 2.](images/example-2-step-2.png =65%x*)
+    ![Step 2.](images/example-2-step-2.png =70%x*)
 
 3. The available compartments in the selected region are displayed. We entered **4** for our compartment.
 
-    ![Step 3.](images/example-2-step-3.png =65%x*)
+    ![Step 3.](images/example-2-step-3.png =70%x*)
 
 4. The Autonomous Database instances that are available in the selected region and compartment are displayed. We entered **1** for our Autonomous Database instance.
 
-    ![Step 4.](images/example-2-step-4.png =65%x*)
+    ![Step 4.](images/example-2-step-4.png =70%x*)
 
 5. The script recognized that we don't have a wallet file; therefore, it created one for us.
 
-    ![Step 5.](images/example-2-step-5.png =60%x*)
+    ![Step 5.](images/example-2-step-5.png =65%x*)
 
 6. An informative message is displayed about what has been created so far. Next, the script attempts to connect to our selected Autonomous Database instance so that we can run the generated script file. We are prompted to enter our Autonomous Database instance username and password. The ADB instance username is **`admin`** and the password that we used in **Lab 1** of this workshop is **`Training4ADW`**. If the login is successful, the script is run and the **`oci_native_credential.sql`** credential is created. If the connection to the Autonomous Database is unsuccessful, you can execute **`cat ~/oci_native_credential.sql`**, to copy the SQL code and run it directly in the Autonomous Database using any SQL tool such as the SQL Worksheet.
 
-    ![Step 6.](images/example-2-step-6.png =65%x*)
+    ![Step 6.](images/example-2-step-6.png =70%x*)
 
 7. Finally, we are prompted whether or not we want to run the credential script in another Autonomous Database instance. We entered **`n`**. The script exits.
 
-    ![Step 7.](images/example-2-step-7.png =65%x*)
+    ![Step 7.](images/example-2-step-7.png =70%x*)
 
     <!-- one long screen
     ![Run the script with the region argument.](images/run-script-region.png =80%x*)
@@ -412,7 +412,7 @@ In this example, our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`
     </copy>
     ```
 
-    ![Query credentials again.](images/query-credentials-2.png =65%x*)
+    ![Query credentials again.](images/query-credentials-2.png =70%x*)
 
     The newly created **`OCI_NATIVE_CRED`** is displayed.
 
@@ -426,7 +426,7 @@ In the following example, our home region is **`us-ashburn-1`**; however, we wan
 
 In this example, we will enter **`k`** to keep the current region. The remaining steps are the same as those in example 2.
 
-![Select the region.](images/select-region.png =65%x*)
+![Select the region.](images/select-region.png =70%x*)
 
 ### Create Auth Token/Swift Credential Using the Cloud Shell Script
 
@@ -440,7 +440,7 @@ adb-create-cred.sh --all
 
 When you use this argument, the script prompts you whether you want to include an Auth Token. If you enter **`y`**, your Auth Token key is generated and uploaded to your OCI profile, and the **`oci_auth_token_credential.sql`** and **`auth_token.tok`** scripts are created.
 
-![Create auth token.](images/auth-token.png =65%x*)
+![Create auth token.](images/auth-token.png =70%x*)
 
 You can view the Auth Token key using either of the following methods:
 
@@ -502,6 +502,7 @@ You may now proceed to the next lab.
 * **Contributor:**
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Jameson White, Principal Software Engineer
+    * Drue Swadener, Principal User Assistance Developer
 * **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
