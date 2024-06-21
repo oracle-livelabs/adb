@@ -499,7 +499,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
+* **Contributors:**
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Jameson White, Principal Software Engineer
     * Drue Swadener, Principal User Assistance Developer
