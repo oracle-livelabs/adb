@@ -227,32 +227,225 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
     ![Create an OCI credential.](images/credential-created.png)
 
-## Task 7: (Optional) Create Native OCI Credentials and RSA Key Pairs with a Fingerprint Using a Cloud Shell Script
+3. Query the available credentials. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
-In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and an RSA key pairs with a fingerprint is to use a newly available Cloud Shell script named **`adb-create-cred.sh`** that you will download and run in this task.
+    ```
+    <copy>
+    SELECT credential_name, username, comments
+    FROM all_credentials;
+    </copy>
+    ```
 
-1. Click the following link to download the [adb-create-cred.sh](files/adb-create-cred.sh?download=1) Cloud Shell script to your local machine.
+    ![Query credentials.](images/query-credentials.png)
 
-2. Start Cloud Shell. On your Oracle Console banner, click the **Developer tools** icon, and then select **Cloud Shell**.
+    The newly created **`OBJ_STORAGE_CRED`** is displayed.
+
+## Task 7: (Optional) Create Native OCI Credentials, RSA Key Pairs, a Fingerprint, and Auth Tokens Using a Cloud Shell Script
+
+In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and, an RSA key pairs with a fingerprint, and an optional Auth token is to use a Cloud Shell script named **`adb-create-cred.sh`** that you will run in this task. This script is located in the **`/usr/local/bin`** directory.
+
+### **Start the OCI Cloud Shell**
+
+1. Start Cloud Shell. On your Oracle Console banner, click the **Developer tools** icon, and then select **Cloud Shell**. In our example, the home region is **US East (Ashburn)**.
 
     ![Start Cloud Shell.](images/start-cloud-shell.png)
 
-3. After a minute or so, the Cloud Shell is displayed. To maximize the view, click the **Maximize** icon on the Cloud Shell banner.
+    >**Note:** If you do not have access to Cloud Shell, you can create OCI Native Credentials without using the `adb-create-cred.sh` script. See [Create Oracle Cloud Infrastructure Native Credentials](https://docs-uat.us.oracle.com/en/cloud/paas/query-service/adwst/adp-ld-managing-cloud-storage-connections.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) for details.
+
+2. After a minute or so, the Cloud Shell is displayed along with your currently selected region. In this example, our home region is **`US East (Ashburn)`** as shown in the banner and also in the Cloud Shell prompt.
 
     ![Click Maximize.](images/click-maximize.png)
 
-    The Cloud Shell view is maximized.
+3. Maximize the Cloud Shell view. Click the **Maximize** icon on the Cloud Shell banner. The Cloud Shell view is maximized.
 
     ![Maximized screen.](images/maximized-screen.png)
 
-4. Upload the **`adb-create-cred.sh`** script that you downloaded to your Cloud Shell home directory. Click the **Cloud Shell menu** (the Gear) icon, and then click **Upload**.
+4. To clear the screen, enter the **`clear`** command at the prompt and then press the **`[Enter]`** key.
 
-    ![Click Upload.](images/click-upload.png)
+    ![Clear screen.](images/clear-screen.png)
 
-5. The **File upload to your home directory** dialog box is displayed. You can choose the file to upload using either the drag-and-drop method or you can click the **Select from your computer** link which we will do in this example.
+    The screen is cleared.
 
-    ![Select the file to upload.](images/file-upload-dialog.png)
+    ![Screen cleared.](images/screen-cleared.png =65%x*)
+
+### **The Available Script's Arguments**
+
+Let's explore some of the available arguments that you can use with the script.
+
+* **`--help`**:    
+This argument lists the available arguments that you can use with the script. Copy and paste the following command on the command prompt, and then press the **`[Enter]`** key.
+
+    ```
+    <copy>
+    adb-create-cred.sh --help
+    </copy>
+    ```
+
+    ![Run the script with the help argument.](images/run-script-help.png =80%x*)
+
+* **`-r`** or **`--region`**:    
+By default, the script creates the credentials in an Autonomous Database in your home region; therefore, it will not prompt you for a region; In this scenario, you run the script _without the region argument_.    
+
+    If you are in your home region and your Autonomous Database is in a _different region_, then you must use the **`--region`** argument. This argument enables you to select a region that contains the desired Autonomous Database from a list of regions that are available to you.
+
+    ```
+    adb-create-cred.sh --region
+    ```
     
+    >**Note:** Once you select your region, it may take few minutes to gather information about the compartments and Autonomous Database instances on a large Tenancy; however, the next two arguments will speed up the process of creating the credentials in a different region and a specific compartment in the selected region.
+    
+* **`-r=region_name`** or **`--region=region_name`**:    
+This argument is similar to the **`--region`** argument except that you must provide the region name with it. In our example, our home region is **`us-ashburn-1`**. If we want to create the credentials scripts in the **`ca-toronto-1`** region, then we would run the script with the region argument as follows which is faster than using the `--region` argument.
+
+    ```
+    adb-create-cred.sh --region=ca-toronto-1
+    ```
+
+* **`-c=compartment_name`** or **`--compartment=compartment_name`**:    
+If you want to create the credentials in a specific compartment instead of having the script list all of your available compartments and then have you choose the desired compartment, which can take time, you can use the **`--compartment`** argument along with the name of the compartment that contains Autonomous Databases to which you have access. This will be a faster option. If the following example, we used the argument with the name of the compartment that contains the ADB instance where we want to create the credentials.
+
+    ```
+    adb-create-cred.sh --compartment=training-adw-compartment
+    ```
+
+    Finally, we can run the script in a different region and a specific compartment as follows:
+
+    ```
+    adb-create-cred.sh --region=ca-toronto-1 --compartment=training-adw-compartment
+    ```
+
+### **Run the Script: Example 1**
+
+Now that you are familiar with the arguments that you can use with the script, let's go through a simple example. We will run the script in our **`us-ashburn-1`** home region and we won't run the generated script in any Autonomous Database instance; instead, we will opt to run the generated `.sql` credential script ourselves later in the SQL Worksheet of our Autonomous Database instance. In addition, we don't have any existing API keys, a fingerprint, or a wallet file. If we did, we will be prompted on whether we'd like to reuse them.
+
+1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key. 
+
+    ```
+    <copy>
+    adb-create-cred.sh 
+    </copy>
+    ```
+
+    The public and private API keys and a fingerprint are created. The following `.sql` and `json` OCI native credential scripts are also created for you:
+
+    * **`oci_native_credential.sql`**
+    * **`oci_native_credential.json`**
+
+    ![Don't run script on any ADB instance.](images/create-credential-no-adb-run.png)
+
+2. Next, you are prompted whether or not you'd like to run the generated credentials in an Autonomous Database of your choice. Again, in this example, we'll keep it simple and enter **`n`** for no. The script is existed. Next, you copy the generated credential script and run it in your Cloud Shell window or download it or copy it and run it in SQL Developer, SQL Developer worksheet, or in any tool that runs SQL.
+
+    ![Exit the script.](images/exit-script.png)
+
+3. Verify the creation of the credentials. List the contents of your Cloud Shell home directory. Copy and paste the following command to the command prompt and then hit **`[Enter]`**.
+
+    ```
+    <copy>
+    ls -l
+    </copy>
+    ```
+
+    ![List the home directory contents.](images/list-home-directory.png =65%x*)
+
+4. To view the generated private and public keys, Copy and paste the following command to the command prompt and then hit **`[Enter]`**. Next, run the `ls -l` command again.
+
+    ```
+    <copy>
+    cd ~/.oci
+    </copy>
+    ```
+
+    ![List the .oci directory contents.](images/list-oci-directory.png =65%x*)
+
+### **Run the Script: Example 2**
+
+In this example, our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`** Autonomous Database instance is in a different region, **`ca-toronto-1`**, in a compartment named **`training-adw-compartment`**. Also, as in example 1, we don't have any API keys, fingerprint, or wallet file.
+
+1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key.
+
+    ```
+    <copy>
+    adb-create-cred.sh 
+    </copy>
+    ```
+
+    The script generates the private and public keys, the fingerprint, and the .sql and .json credential files.
+
+    ![Step 1.](images/example-2-step-1.png =65%x*)
+
+2. The script prompts as to whether or not we'd like to run the credential script in our Autonomous Database. We entered **`y`** for yes. Because we didn't use the `--region` argument, a list of the regions to which we have access is displayed. We entered **13** for the **`ca-toronto-1`** region.
+
+    ![Step 2.](images/example-2-step-2.png =65%x*)
+
+3. The available compartments in the selected region are displayed. We entered **4** for our compartment.
+
+    ![Step 3.](images/example-2-step-3.png =65%x*)
+
+4. The Autonomous Database instances that are available in the selected region and compartment are displayed. We entered **1** for our Autonomous Database instance.
+
+    ![Step 4.](images/example-2-step-4.png =65%x*)
+
+5. The script recognized that we don't have a wallet file; therefore, it created one for us.
+
+    ![Step 5.](images/example-2-step-5.png =60%x*)
+
+6. An informative message is displayed about what has been created so far. Next, the script attempts to connect to our selected Autonomous Database instance so that we can run the generated script file. We are prompted to enter our Autonomous Database instance username and password. The ADB instance username is **`admin`** and the password that we used in **Lab 1** of this workshop is **`Training4ADW`**. If the login is successful, the script is run and the **`oci_native_credential.sql`** credential is created. If the connection to the Autonomous Database is unsuccessful, you can execute **`cat ~/oci_native_credential.sql`**, to copy the SQL code and run it directly in the Autonomous Database using any SQL tool such as the SQL Worksheet.
+
+    ![Step 6.](images/example-2-step-6.png =65%x*)
+
+7. Finally, we are prompted whether or not we want to run the credential script in another Autonomous Database instance. We entered **`n`**. The script exits.
+
+    ![Step 7.](images/example-2-step-7.png =65%x*)
+
+    <!-- one long screen
+    ![Run the script with the region argument.](images/run-script-region.png =80%x*)
+    -->
+
+    > **Note:** If you have an Autonomous Database private endpoint in a Virtual Cloud Network, the adb-create-cred.sh script generates the SQL or JSON scripts and performs all the steps required to access the Autonomous Database private end point. However, it will fail to connect, which causes a login failure. If you have a Bastion or Jump Host you can connect yourself by utilizing the downloaded wallet file then execute the following command to copy the SQL into whatever SQL tool you have access to:
+
+8. Query the available credentials. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    SELECT credential_name, username, comments
+    FROM all_credentials;
+    </copy>
+    ```
+
+    ![Query credentials again.](images/query-credentials-2.png =65%x*)
+
+    The newly created **`OCI_NATIVE_CRED`** is displayed.
+
+### **Run the Script: Example 3**
+
+In the following example, our home region is **`us-ashburn-1`**; however, we want to create the credentials in the **`ca-toronto-1`** region. The steps are the same as before; however, since we are not in our home region when we run the script, we are prompted to make one of the following choices:
+
+* Keep the current region, **`k`**, (**`ca-toronto-1`**)
+* Change to the home directory, **`h`**, (**`us-ashburn-1`**)
+* Pick a different region, **`p`**. If you choose **`p`**, a list of the available regions to which you have access are displayed and then you can pick a different region. 
+
+In this example, we will enter **`k`** to keep the current region. The remaining steps are the same as those in example 2.
+
+![Select the region.](images/select-region.png =65%x*)
+
+### Create Auth Token/Swift Credential Using the Cloud Shell Script
+
+If you need to create an **Auth Token/Swift** credential (Oracle recommends the use of OCI Native Credentials instead), you can add the **`--all`** argument when you run the script. This generates both the **OCI Native** credentials and the **Auth Token/Swift** credential.
+
+```
+<copy>
+adb-create-cred.sh --all
+</copy>
+```
+
+When you use this argument, the script prompts you whether you want to include an Auth Token. If you enter **`y`**, your Auth Token key is generated and uploaded to your OCI profile, and the **`oci_auth_token_credential.sql`** and **`auth_token.tok`** scripts are created.
+
+![Create auth token.](images/auth-token.png =65%x*)
+
+You can view the Auth Token key using either of the following methods:
+
+* Run the **`oci_auth_token_credential.sql`** script from the Cloud Shell, to create the Auth Token key in your database. The Auth Token key is the value of the password parameter for **`DBMS_CLOUD_CREATE_CREDENTIAL`**.
+* View **`auth_token.tok`** from the Cloud Shell. Your Auth Token is the value of **`token`**.
 
 ## Task 8: Link to Data in the Bucket
 
@@ -306,8 +499,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Contributor:**
+    * Alexey Filanovskiy, Senior Principal Product Manager
+    * Jameson White, Principal Software Engineer
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
