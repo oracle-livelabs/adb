@@ -318,7 +318,7 @@ If you want to create the credentials in a specific compartment instead of havin
 
 Now that you are familiar with the arguments that you can use with the script, let's go through a simple example. We will run the script in our **`us-ashburn-1`** home region and we won't run the generated script in any Autonomous Database instance; instead, we will opt to run the generated `.sql` credential script ourselves later in the SQL Worksheet of our Autonomous Database instance. In addition, we don't have any existing API keys, a fingerprint, or a wallet file. If we did, we will be prompted on whether we'd like to reuse them.
 
-1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key. 
+1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key.
 
     ```
     <copy>
@@ -357,9 +357,43 @@ Now that you are familiar with the arguments that you can use with the script, l
 
     ![List the .oci directory contents.](images/list-oci-directory.png =70%x*)
 
+5. Return to your Home directory. Run the **`cd ..`** command. Next, use the **`cat`** command to display the content of the generated script.
+
+    ```
+    <copy>
+    cd ..
+    cat oci_native_credential.sql
+    </copy>
+    ```
+
+    ![List the script.](images/copy-script.png " ")
+
+6. Copy the script from the first **`BEGIN`** statement to the ending **`/`**. Highlight the code, right-mouse click, and then select **Copy** from the context menu.
+
+    >**Note:** You can also use the **Cloud Shell Menu** icon to download the generated credential files to your local machine, and then follow the prompts.
+
+    ![Download file.](images/download-credential.png =70%x*)
+
+7. Return to your SQL Worksheet and then paste the copied code into the SQL Worksheet. Notice that we changed the name of the credential to be created to **`OCI_NATIVE_CRED_2`**. The first script drops the credential if it already exists. The second script creates the new credential. Click the **Run Script** icon in the Toolbar.
+
+    ![Paste the script into the SQL Worksheet.](images/paste-script.png " ")
+
+8. Query the available credentials. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    SELECT credential_name, username, comments
+    FROM all_credentials;
+    </copy>
+    ```
+
+    ![Query credentials again.](images/query-credentials-example-1.png =70%x*)
+
+    The newly created **`OCI_NATIVE_CRED_2`** is displayed.
+
 ### **Run the Script: Example 2**
 
-In this example, our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`** Autonomous Database instance is in a different region, **`ca-toronto-1`**, in a compartment named **`training-adw-compartment`**. Also, as in example 1, we don't have any API keys, fingerprint, or wallet file.
+In this example, we assume that we didn't run example 1. In addition, we are in our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`** Autonomous Database instance is in a different region, **`ca-toronto-1`**, in a compartment named **`training-adw-compartment`**. Also, as in example 1, we don't have any API keys, fingerprint, or wallet file.
 
 1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key.
 
@@ -389,7 +423,7 @@ In this example, our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`
 
     ![Step 5.](images/example-2-step-5.png =65%x*)
 
-6. An informative message is displayed about what has been created so far. Next, the script attempts to connect to our selected Autonomous Database instance so that we can run the generated script file. We are prompted to enter our Autonomous Database instance username and password. The ADB instance username is **`admin`** and the password that we used in **Lab 1** of this workshop is **`Training4ADW`**. If the login is successful, the script is run and the **`oci_native_credential.sql`** credential is created. If the connection to the Autonomous Database is unsuccessful, you can execute **`cat ~/oci_native_credential.sql`**, to copy the SQL code and run it directly in the Autonomous Database using any SQL tool such as the SQL Worksheet.
+6. An informative message is displayed about what has been created so far. Next, the script attempts to connect to our selected Autonomous Database instance so that we can run the generated script file. We are prompted to enter our Autonomous Database instance username and password. The ADB instance username is **`admin`** and the password that we used in **Lab 1** of this workshop is **`Training4ADW`**. If the login is successful, the script is run and the **`oci_native_credential.sql`** credential is created. If the connection to the Autonomous Database is unsuccessful, you can execute **`cat ~/oci_native_credential.sql`**, to copy the SQL code and run it directly in the Autonomous Database using any SQL tool such as the SQL Worksheet similar to what we did in example 1.
 
     ![Step 6.](images/example-2-step-6.png =70%x*)
 
@@ -428,24 +462,39 @@ In this example, we will enter **`k`** to keep the current region. The remaining
 
 ![Select the region.](images/select-region.png =70%x*)
 
-### Create Auth Token/Swift Credential Using the Cloud Shell Script
+### **Create Auth Token/Swift Credential Using the Cloud Shell Script**
 
-If you need to create an **Auth Token/Swift** credential (Oracle recommends the use of OCI Native Credentials instead), you can add the **`--all`** argument when you run the script. This generates both the **OCI Native** credentials and the **Auth Token/Swift** credential.
+If you need to create an **Auth Token/Swift** credential (Oracle recommends the use of OCI Native Credentials instead), you can add the **`--all`** argument when you run the script. 
 
-```
-<copy>
-adb-create-cred.sh --all
-</copy>
-```
+1. Create both the **OCI Native** credentials and the **Auth Token/Swift** credential. Run the **`adb-create-cred.sh`** Cloud Shell script with the **`--all`** argument. The script prompts you whether you want to include an Auth Token. If you enter **`y`**, your Auth Token key is generated and uploaded to your OCI profile, and the **`oci_auth_token_credential.sql`** and **`auth_token.tok`** scripts are created.
 
-When you use this argument, the script prompts you whether you want to include an Auth Token. If you enter **`y`**, your Auth Token key is generated and uploaded to your OCI profile, and the **`oci_auth_token_credential.sql`** and **`auth_token.tok`** scripts are created.
+    ```
+    <copy>
+    adb-create-cred.sh --all
+    </copy>
+    ```
 
-![Create auth token.](images/auth-token.png =70%x*)
+    ![Create Auth Token.](images/create-credentials-token.png =70%x*)
 
-You can view the Auth Token key using either of the following methods:
+    **Note:** The script recognized the existence of an `AuthToken` file. We opted to replace the existing file and create a new one.
 
-* Run the **`oci_auth_token_credential.sql`** script from the Cloud Shell, to create the Auth Token key in your database. The Auth Token key is the value of the password parameter for **`DBMS_CLOUD_CREATE_CREDENTIAL`**.
-* View **`auth_token.tok`** from the Cloud Shell. Your Auth Token is the value of **`token`**.
+2. List the contents of your Cloud Shell home directory.
+
+    ```
+    <copy>
+    ls -l
+    </copy>
+    ```
+
+    ![List the home directory contents.](images/list-home-directory-auth-token.png " ")
+
+3. You can view the Auth Token key using either of the following methods:
+
+    * Run the **`oci_auth_token_credential.sql`** script from the Cloud Shell. This creates the Auth Token key in your database. The Auth Token key is the value of the password parameter for **`DBMS_CLOUD_CREATE_CREDENTIAL`**.
+    
+    * View **`auth_token.tok`** from the Cloud Shell. Your Auth Token is the value of **`token`**.
+
+        ![The auth_token.tok value.](images/auth-token-value.png " ")
 
 ## Task 8: Link to Data in the Bucket
 
