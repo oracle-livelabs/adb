@@ -395,7 +395,7 @@ Now that you are familiar with the arguments that you can use with the script, l
 
 In this example, we assume that we didn't run example 1. In addition, we are in our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`** Autonomous Database instance is in a different region, **`ca-toronto-1`**, in a compartment named **`training-adw-compartment`**. Also, as in example 1, we don't have any API keys, fingerprint, or wallet file.
 
-1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key.
+1. Run the **`adb-create-cred.sh`** Cloud Shell script with the `--region` argument.
 
     ```
     <copy>
@@ -464,7 +464,7 @@ In this example, we will enter **`k`** to keep the current region. The remaining
 
 ### **Create Auth Token/Swift Credential Using the Cloud Shell Script**
 
-If you need to create an **Auth Token/Swift** credential (Oracle recommends the use of OCI Native Credentials instead), you can add the **`--all`** argument when you run the script. 
+If you need to create an **Auth Token/Swift** credential (Oracle recommends the use of OCI Native Credentials instead), you can add the **`--all`** argument when you run the script.
 
 1. Create both the **OCI Native** credentials and the **Auth Token/Swift** credential. Run the **`adb-create-cred.sh`** Cloud Shell script with the **`--all`** argument. The script prompts you whether you want to include an Auth Token. If you enter **`y`**, your Auth Token key is generated and uploaded to your OCI profile, and the **`oci_auth_token_credential.sql`** and **`auth_token.tok`** scripts are created.
 
