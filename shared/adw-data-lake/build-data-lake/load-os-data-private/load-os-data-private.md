@@ -399,7 +399,7 @@ In this example, we assume that we didn't run example 1. In addition, we are in 
 
     ```
     <copy>
-    adb-create-cred.sh 
+    adb-create-cred.sh --region
     </copy>
     ```
 
