@@ -52,14 +52,14 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039169570,
-          "endTime" : 1711039169818,
+          "startTime" : 1719332877770,
+          "endTime" : 1719332877901,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h1 id=\"use-natural-language-to-query-your-data\">Use natural language to query your data</h1>\n<p>Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.</p>\n<p>The following paragraphs will show you how to:</p>\n<ol>\n<li>Create a credential</li>\n<li>Create an AI profile</li>\n<li>Have general AI chat conversations</li>\n<li>Query data using natural language</li>\n<li>Show the SQL generated for a query</li>\n</ol>\n<h2 id=\"create-a-credential\">Create a credential</h2>\n<p>A credential is used to sign LLM requests. Below is the code used to create a credential for OpenAI. This code has already been run by the setup script; you don't need to run it.</p>\n<pre><code>begin\n    dbms_cloud.create_credential (\n        credential_name  =&gt; 'OPENAI_CRED',\n        username         =&gt; 'OPENAI',\n        password         =&gt; 'your-llm-secret-goes-here'\n    );\nend;\n</code></pre>\n",
+              "message" : "<h1 id=\"use-natural-language-to-query-your-data\">Use natural language to query your data</h1>\n<p>Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.</p>\n<p>The following paragraphs will show you how to:</p>\n<ol>\n<li>Create a credential</li>\n<li>Create an AI profile</li>\n<li>Have general AI chat conversations</li>\n<li>Query data using natural language</li>\n<li>Show the SQL generated for a query</li>\n</ol>\n<h2 id=\"create-a-credential\">Create a credential</h2>\n<p>A credential is used to sign LLM API requests. Below is the code used to create a credential for OpenAI. This code has already been run by the setup script; you don't need to run it.</p>\n<pre><code>begin\n    dbms_cloud.create_credential (\n        credential_name  =&gt; 'OPENAI_CRED',\n        username         =&gt; 'OPENAI',\n        password         =&gt; 'your-llm-secret-goes-here'\n    );\nend;\n</code></pre>\n",
               "type" : "HTML"
             }
           ],
@@ -94,8 +94,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039279903,
-          "endTime" : 1711039280680,
+          "startTime" : 1719332899047,
+          "endTime" : 1719332899239,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -169,8 +169,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1712254934363,
-          "endTime" : 1712254937064,
+          "startTime" : 1719331865111,
+          "endTime" : 1719331869205,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -213,8 +213,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974306659,
-          "endTime" : 1710974306990,
+          "startTime" : 1719332910363,
+          "endTime" : 1719332910467,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -250,8 +250,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1712254945198,
-          "endTime" : 1712254949505,
+          "startTime" : 1719331869566,
+          "endTime" : 1719331873585,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -294,8 +294,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974312366,
-          "endTime" : 1710974312512,
+          "startTime" : 1719332917173,
+          "endTime" : 1719332917246,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -336,8 +336,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974312703,
-          "endTime" : 1710974312869,
+          "startTime" : 1719331873955,
+          "endTime" : 1719331874177,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -373,8 +373,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974313067,
-          "endTime" : 1710974313222,
+          "startTime" : 1719331874307,
+          "endTime" : 1719331874431,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -409,8 +409,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974313797,
-          "endTime" : 1710974313973,
+          "startTime" : 1719331874728,
+          "endTime" : 1719331874957,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -442,8 +442,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039395977,
-          "endTime" : 1711039396213,
+          "startTime" : 1719332943860,
+          "endTime" : 1719332943934,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -481,8 +481,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974314593,
-          "endTime" : 1710974317381,
+          "startTime" : 1719331875278,
+          "endTime" : 1719331877418,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -515,8 +515,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1712255048837,
-          "endTime" : 1712255051142,
+          "startTime" : 1719331877547,
+          "endTime" : 1719331880521,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -549,8 +549,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1712255033790,
-          "endTime" : 1712255035405,
+          "startTime" : 1719331880670,
+          "endTime" : 1719331882093,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -583,8 +583,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1712255012386,
-          "endTime" : 1712255016091,
+          "startTime" : 1719331882214,
+          "endTime" : 1719331886814,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -618,8 +618,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974323718,
-          "endTime" : 1710974324051,
+          "startTime" : 1719332949674,
+          "endTime" : 1719332949754,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -657,8 +657,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974324428,
-          "endTime" : 1710974327030,
+          "startTime" : 1719331887130,
+          "endTime" : 1719331889433,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -691,8 +691,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711043453879,
-          "endTime" : 1711043455739,
+          "startTime" : 1719331889579,
+          "endTime" : 1719331891693,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -725,8 +725,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974330205,
-          "endTime" : 1710974332754,
+          "startTime" : 1719331891834,
+          "endTime" : 1719331895244,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -759,8 +759,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974333221,
-          "endTime" : 1710974335547,
+          "startTime" : 1719331895372,
+          "endTime" : 1719331897989,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -793,8 +793,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039771097,
-          "endTime" : 1711039773769,
+          "startTime" : 1719331898126,
+          "endTime" : 1719331900841,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -827,9 +827,9 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974338812,
-          "endTime" : 1710974341116,
-          "interpreter" : "sql.low",
+          "startTime" : 1719331901011,
+          "endTime" : 1719331903336,
+          "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
           "results" : null,
@@ -861,8 +861,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974341323,
-          "endTime" : 1710974343647,
+          "startTime" : 1719331903491,
+          "endTime" : 1719331906506,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -895,9 +895,9 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974343838,
-          "endTime" : 1710974346017,
-          "interpreter" : "sql.low",
+          "startTime" : 1719331906663,
+          "endTime" : 1719331909069,
+          "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
           "results" : null,
@@ -935,18 +935,13 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974346203,
-          "endTime" : 1710974346320,
+          "startTime" : 1719331909209,
+          "endTime" : 1719331909284,
           "interpreter" : "md.low",
-          "taskStatus" : "SUCCESS",
-          "status" : "SUCCESS",
-          "results" : [
-            {
-              "message" : "<h4 id=\"challenge-with-tables-and-similar-content-need-to-create-a-view\">Challenge with tables and similar content. Need to create a view.</h4>\n<p>The next question fails. The challenge is when you have multiple tables with similar content - like <code>CUSTOMER_CONTACT</code> and <code>CUSTOMER_EXTENSION</code>. The model fails to find the right tables.</p>\n<p>After the failed query, you will solve the problem by:</p>\n<ul>\n<li>creating a view to join <code>CUSTOMER_CONTACT</code>, <code>CUSTOMER_SEGMENT</code> and <code>CUSTOMER_SEGMENT</code></li>\n<li>updating the AI profile to include this new view</li>\n</ul>\n<p>Then, ask the question again</p>\n",
-              "type" : "HTML"
-            }
-          ],
-          "forms" : "[]"
+          "taskStatus" : null,
+          "status" : null,
+          "results" : null,
+          "forms" : null
         },
         "relations" : [ ],
         "dynamicFormParams" : null
@@ -974,8 +969,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974346521,
-          "endTime" : 1710974351513,
+          "startTime" : 1719331909413,
+          "endTime" : 1719331911827,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1043,8 +1038,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039801216,
-          "endTime" : 1711039801548,
+          "startTime" : 1719331911953,
+          "endTime" : 1719331912057,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1078,8 +1073,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039835960,
-          "endTime" : 1711039836125,
+          "startTime" : 1719331912229,
+          "endTime" : 1719331912359,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1149,8 +1144,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039848696,
-          "endTime" : 1711039851330,
+          "startTime" : 1719331912481,
+          "endTime" : 1719331913987,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1183,8 +1178,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039856516,
-          "endTime" : 1711039858440,
+          "startTime" : 1719331914120,
+          "endTime" : 1719331916366,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1218,8 +1213,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1710974358462,
-          "endTime" : 1710974358756,
+          "startTime" : 1719332969164,
+          "endTime" : 1719332969232,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -1267,8 +1262,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039866611,
-          "endTime" : 1711039870028,
+          "startTime" : 1719331916938,
+          "endTime" : 1719331919244,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1312,8 +1307,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711039938328,
-          "endTime" : 1711039940100,
+          "startTime" : 1719331919377,
+          "endTime" : 1719331921250,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1348,18 +1343,13 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711040151863,
-          "endTime" : 1711040152070,
+          "startTime" : 1719331921383,
+          "endTime" : 1719331921455,
           "interpreter" : "md.low",
-          "taskStatus" : "SUCCESS",
-          "status" : "SUCCESS",
-          "results" : [
-            {
-              "message" : "<h4 id=\"what-to-do-when-my-table-and-column-names-are-difficult-to-understand\">What to do when my table and column names are difficult to understand?</h4>\n<p>It's convenient that our movie data is contained in tables that use clear names. Unfortunately, that's oftentimes not the case!</p>\n<p>Use <strong>COMMENTS</strong> on tables and columns to help the model understand their meaning.</p>\n",
-              "type" : "HTML"
-            }
-          ],
-          "forms" : "[]"
+          "taskStatus" : null,
+          "status" : null,
+          "results" : null,
+          "forms" : null
         },
         "relations" : [ ],
         "dynamicFormParams" : null
@@ -1400,7 +1390,7 @@
           "    NAME as c2",
           "FROM GENRE;"
         ],
-        "selectedVisualization" : "html",
+        "selectedVisualization" : "raw",
         "visualizationConfig" : null,
         "hideCode" : false,
         "hideResult" : false,
@@ -1410,8 +1400,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711040503213,
-          "endTime" : 1711040503382,
+          "startTime" : 1719331921603,
+          "endTime" : 1719331921731,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1442,8 +1432,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711040510972,
-          "endTime" : 1711040511142,
+          "startTime" : 1719331921874,
+          "endTime" : 1719331921956,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1477,18 +1467,13 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711043219347,
-          "endTime" : 1711043219691,
+          "startTime" : 1719331922085,
+          "endTime" : 1719331922153,
           "interpreter" : "md.low",
-          "taskStatus" : "SUCCESS",
-          "status" : "SUCCESS",
-          "results" : [
-            {
-              "message" : "<h5 id=\"create-a-new-ai-profile-that-uses-comments\">Create a new AI profile that uses COMMENTS</h5>\n<p>We'll create a new AI profile called <code>USING_COMMENTS</code>. Notice that the profile has an attribute <code>&quot;comments&quot;:&quot;true&quot;</code>. This tells Select AI to send comments with the LLM request.</p>\n<p>We still haven't added comments to our objects - that will come next!</p>\n",
-              "type" : "HTML"
-            }
-          ],
-          "forms" : "[]"
+          "taskStatus" : null,
+          "status" : null,
+          "results" : null,
+          "forms" : null
         },
         "relations" : [ ],
         "dynamicFormParams" : null
@@ -1514,6 +1499,7 @@
           "    attributes =>       ",
           "        '{\"provider\": \"openai\",",
           "          \"credential_name\": \"OPENAI_CRED\",",
+          "          \"model\":\"gpt-3.5-turbo\",",
           "          \"comments\":\"true\", ",
           "          \"object_list\": [",
           "            {\"owner\": \"MOVIESTREAM\", \"name\": \"view1\"},",
@@ -1538,8 +1524,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711042286795,
-          "endTime" : 1711042289367,
+          "startTime" : 1719331922279,
+          "endTime" : 1719331923886,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1571,8 +1557,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711042316735,
-          "endTime" : 1711042319983,
+          "startTime" : 1719331924019,
+          "endTime" : 1719331928132,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1604,8 +1590,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711042871478,
-          "endTime" : 1711042871618,
+          "startTime" : 1719332983742,
+          "endTime" : 1719332983905,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -1661,8 +1647,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711042448346,
-          "endTime" : 1711042448556,
+          "startTime" : 1719331928462,
+          "endTime" : 1719331928618,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1694,8 +1680,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1711042955738,
-          "endTime" : 1711042959585,
+          "startTime" : 1719331928756,
+          "endTime" : 1719331931858,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
