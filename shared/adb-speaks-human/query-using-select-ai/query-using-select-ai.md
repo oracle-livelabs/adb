@@ -207,9 +207,9 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
     ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page.png " ")
 
-8. In the **Quick Actions** section, click the **Notebooks** button. The **OML Notebooks EA (Early Adopter)** page is displayed.
+8. In the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
 
-    ![The Notebooks page is displayed](./images/notebooks-ea-page.png " ")
+    ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
 
 ## Task 3: Import a Notebook into OML
 
