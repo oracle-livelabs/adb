@@ -314,7 +314,7 @@ If you want to create the credentials in a specific compartment instead of havin
     adb-create-cred.sh --region=ca-toronto-1 --compartment=training-adw-compartment
     ```
 
-### **Run the Script: Example 1**
+### **Example 1: Run the Script with No Arguments**
 
 Now that you are familiar with the arguments that you can use with the script, let's go through a simple example. We will run the script in our **`us-ashburn-1`** home region and we won't run the generated script in any Autonomous Database instance; instead, we will opt to run the generated `.sql` credential script ourselves later in the SQL Worksheet of our Autonomous Database instance. In addition, we don't have any existing API keys, a fingerprint, or a wallet file. If we did, we will be prompted on whether we'd like to reuse them.
 
@@ -391,7 +391,7 @@ Now that you are familiar with the arguments that you can use with the script, l
 
     The newly created **`OCI_NATIVE_CRED_2`** is displayed.
 
-### **Run the Script: Example 2**
+### **Example 2: Run the Script with the --region Argument**
 
 In this example, we assume that we didn't run example 1. In addition, we are in our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`** Autonomous Database instance is in a different region, **`ca-toronto-1`**, in a compartment named **`training-adw-compartment`**. Also, as in example 1, we don't have any API keys, fingerprint, or wallet file.
 
@@ -450,7 +450,7 @@ In this example, we assume that we didn't run example 1. In addition, we are in 
 
     The newly created **`OCI_NATIVE_CRED`** is displayed.
 
-### **Run the Script: Example 3**
+### **Example 3: Run the Script in a Different Region**
 
 In the following example, our home region is **`us-ashburn-1`**; however, we want to create the credentials in the **`ca-toronto-1`** region. The steps are the same as before; however, since we are not in our home region when we run the script, we are prompted to make one of the following choices:
 
@@ -542,6 +542,7 @@ If you need to create an **Auth Token/Swift** credential (Oracle recommends the 
 
 * [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
 * [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
+* [Manage Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-manage-credentials.html#GUID-863FAF80-AEDB-4128-89E7-3B93FED550ED)
 
 You may now proceed to the next lab.
 
