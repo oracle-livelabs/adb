@@ -61,6 +61,7 @@ To get started, you'll need to do the following:
             attributes =>
                 '{"provider": "openai",
                 "credential_name": "OPENAI_CRED",
+                "model":"gpt-3.5-turbo",
                 "object_list": [{"owner": "MOVIESTREAM", "name": "movies"},
                                 {"owner": "MOVIESTREAM", "name": "streams"},
                                 {"owner": "MOVIESTREAM", "name": "customer_extension"},
@@ -207,9 +208,9 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
     ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page.png " ")
 
-8. In the **Quick Actions** section, click the **Notebooks** button. The **OML Notebooks EA (Early Adopter)** page is displayed.
+8. In the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
 
-    ![The Notebooks page is displayed](./images/notebooks-ea-page.png " ")
+    ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
 
 ## Task 3: Import a Notebook into OML
 
@@ -273,7 +274,6 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     ![Invalidate the session.](./images/invalidate-session.png =60%x*)
 
-
 6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
 
   ![Run all paragraphs](images/run-all-paragraph.png)
@@ -286,12 +286,13 @@ You may now proceed to the next lab.
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
