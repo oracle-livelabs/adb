@@ -96,7 +96,7 @@ Apache Iceberg is a distributed, community-driven, Apache 2.0-licensed, 100% ope
 
     ![Navigate to the SQL Worksheet.](images/navigate-sql-worksheet.png =65%x*)
 
-2. Create an external table named **`movie_promotion_training`**. This table point to the Glue catalog that contains the metadata that points to the actual data stored in Amazon Cloud. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+2. Create an external table named **`movie_promotion_training`**. This table points to the Glue catalog that contains the metadata that points to the actual data stored in Amazon Cloud. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
