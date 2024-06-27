@@ -182,7 +182,6 @@ We now have the needed tables to analyze the data and identify the potential cus
 
     ![Query the potential_churn_customers table .](./images/query-potential_churn_customers.png " ")
 
-    
     You may now proceed to the next lab.
     
 ## Learn more
