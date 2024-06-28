@@ -25,7 +25,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 ## Task 1: Create Blockchain table
 
-1. Before starting the exercise you need to **Download the Data**. Download the **CSV dataset** from the following [LINK] (https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/revenue.csv "download csv dataset"). 
+1. Before start the exercise you need to **Download the Data**. Download the **CSV dataset** from the following [LINK] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/revenue.csv "download csv dataset"). 
 
 
 2. Let's create the **Blockchain table**. We need to go back to **SQL** menu on the **Database Actions** section. If you are still connected as CNVG user, you can go to step number 9 from this lab and step. Otherwise, you can follow the following steps.
@@ -33,7 +33,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 3. Let's go to our **Autonomous Data Warehouse**.
 
-    ![Click Autonomous Data Warehouse.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+    ![Go to ADW](./images/go-to-adb.png)
 
 4. Select our **MODERNDW** database.
 
@@ -69,7 +69,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Select SQL](./images/select-sql.png)
 
-10. Copy the following **create table statement**, which contains the blockchain table:
+3. Copy the following **create table statement**, which contains the blockchain table:
 
     ```
         <copy> CREATE BLOCKCHAIN TABLE REVENUE
@@ -106,7 +106,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
         </copy>
     ```
 
-11. **Paste** it over SQL, and click on **Run Statement**.
+4. **Paste** it over SQL, and click on **Run**.
 
     Check that the **statement has being completed successfully**.
 
@@ -126,7 +126,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Select File](./images/select-file.png)
 
-4. Once it is **selected**, we are going to **define** into which table we want to load. Click on the **Settings** button.
+4. Once it is **selected**, we are going to **define** into which table we want to load. Click on the **Edit** button.
 
     ![Modify Load](./images/modify-load.png)
 
@@ -138,7 +138,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Set Definition](./images/set-definition.png)
 
-6. Now you can click on **Start** to **load the data into the blockchain table**.
+6. Now you can click on **Run** to **load the data into the blockchain table**.
 
     ![Load Data](./images/load-data.png)
 
@@ -152,7 +152,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 1. Now that we have the **data loaded**, let's go to **SQL** to run some queries.
 
-    ![Back SQL](./images/back-to-sql.png)
+    ![Back SQL](./images/back-sql.png)
 
 2. Let's have a look into the **new revenue data**. You will see information about many transactions. **Run** the following statement:
 
@@ -259,6 +259,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 You can **proceed to the next lab.**
 
 ## Acknowledgements
-* **Author** - Javier de la Torre - Principal Data Management Specialist
-* **Contributors** - Priscila Iruela - Technology Product Strategy Director
-* **Last Updated By/Date** - Priscila Iruela, March 2023
+* **Author** - Javier de la Torre, Principal Data Management Specialist
+* **Contributors** - Priscila Iruela, Technology Product Strategy Director
+* **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist
+

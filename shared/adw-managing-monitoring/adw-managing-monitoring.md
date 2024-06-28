@@ -25,26 +25,29 @@ Watch a video demonstration of monitoring an Oracle Autonomous Database.
 [](youtube:uA6X7bnvaFs)
 
 ### Objectives
-In this lab, you'll
--   Examine the charts in the Metrics section of the Autonomous Database details Page
--   Explore the charts in the Database dashboard
--   Explore more charts in the Performance hub
--   Examine the database monitoring charts in the OCI Monitoring Console
+
+In this lab, you'll:
+
+- Examine the charts in the Metrics section of the Autonomous Database details Page
+- Explore the charts in the Database dashboard
+- Explore more charts in the Performance hub
+- Examine the database monitoring charts in the OCI Monitoring Console
 
 ### Prerequisites
--   This lab requires completion of the Provision an Autonomous Database lab in the Contents menu on the left.
+
+- This lab requires completion of the Provision an Autonomous Database lab in the **Contents** menu on the left.
 
 ## Task 1: Navigate to Database Metrics
 
 The first facility that we will look at for monitoring your autonomous database is the Database Metrics display located conveniently at the bottom of the Autonomous Database details page.
 
-1. In your ADW\_Finance\_Mart **Database details** page, scroll down to the **Metrics** section.
+1. On your **`ADW_Finance_Mart`** **Autonomous Database details** page, scroll down to the **Metrics** section.
 
     ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
 
-## Task 2: Examine Database Metrics
+## Task 2: Examine the Database Metrics
 
-The Metrics section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
+The **Metrics** section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
 
 1. Scroll through the 8 initial graphs: CPU Utilization, Storage Utilization, Sessions, Execute Count, Running Statements, Queued Statements, Database Availability, and Failed Connections.
 
@@ -57,19 +60,28 @@ The Metrics section displays an initial set of 8 graphs to examine database metr
     ![Click View all database metrics](images/click-view-all-database-metrics.png " ")
 
 ## Task 3: Examine the Database Actions Database Dashboard
-You can also view this monitoring information with more detailed tools provided in the Database Actions Launchpad.
 
-1. Go back to your ADW\_Finance\_Mart database's **Autonomous Database details** page, and click the **Database actions** dropdown list. Select **View all database actions**. If you are brought to the sign-in dialog for Database Actions, simply use your database instance's default administrator account, Username - **admin**, and click **Next**. Enter the admin password you specified when creating the database. Click **Sign in**. The **Database Actions Launchpad** opens.
+You can also view this monitoring information with more detailed tools provided in the **Database Actions Launchpad**.
 
-    In the **Monitoring** section, click **Database Dashboard**.
+1. Go back to the **Autonomous Database details** page. Click the **Database actions** drop-down list, and then click **View all database actions**.
 
-    ![In Database Actions Launchpad Monitoring section click Database Dashboard](images/click-database-dashboard.png " ")
+    ![Click View all database actions.](images/click-view-all-database-actions.png " ")
 
-2. The Database Dashboard opens in the **Overview** tab. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated ECPUs, and SQL statement response time.
+    >**Note:** If the sign-in dialog box for Database Actions is displayed, enter your database instance's default administrator account username, **`admin`** and the admin password you specified when creating the database. Next, click **Sign in** to display the **Database Actions Launchpad**.
 
-    ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png =50%x*)
+    The **Database Actions Launchpad** page is displayed.
 
-3. By selecting the **Monitor** tab at the top of the page, you can also view this information in real time or in a specific time period. The Monitor tab opens initially in the **Real time** view.
+    ![The Launchpad page is displayed.](images/launchpad.png " ")
+
+2. Click the **Monitoring** tab, and then click the **Database Dashboard** tab.
+
+    ![In Database Actions Launchpad, click the Monitoring > Database Dashboard tabs.](images/click-monitoring-database-dashboard.png " ")
+
+3. The **Database Dashboard** is displayed with the **Overview** tab selected by default. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated ECPUs, and SQL statement response time.
+
+    ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png " ")
+
+4. Select the **Monitor** tab at the top of the page to view this information in real time or for a specific time period. The **Monitor** tab opens initially in the **Real time** view.
 
     ![Examine the components of Database Dashboard Monitor tab in real time](images/database-actions-monitor-tab-real-time.png " ")
 
@@ -80,21 +92,21 @@ You can also view this monitoring information with more detailed tools provided 
 ## Task 4: View Performance Data from the Performance Hub
 You can view real-time and historical performance data from the Performance Hub. Performance Hub shows information about Active Session History (ASH) analytics and SQL monitoring.
 
-1. On the **Database Actions Launchpad**, in the **Monitoring** section, click **Performance Hub**.
+1. Click the **Database Actions | Database Dashboard** in the banner to display the **Launchpad** page. Click the **Monitoring** tab, and then click the **Performance Hub** tab.
 
     ![Access Performance Hub from the Database Actions Launchpad Monitoring section](images/click-performance-hub-in-database-actions.png " ")
 
-    (Note that you can also access the Performance Hub from you ADW\_Finance\_Mart **Autonomous Database details** page.)
+    >**Note:** You can also access the **Performance Hub** from the **Autonomous Database details** page.
 
     ![Access Performance Hub from the Autonomous Database details](images/click-performance-hub-in-details-page.png " ")
 
-2. The Performance Hub page displays. At the top of the page you can select the time range to display, followed by the Activity Summary, which is displayed in Database Time in units of average active sessions.
+2. The **Performance Hub** page is displayed. At the top of the page you can select the time range to display, followed by the Activity Summary, which is displayed in Database Time in units of average active sessions.
 
     ![Examine the top of the Performance hub page](images/top-of-performance-hub-page.png " ")
 
 3. Continuing down the page, you can view Active sessions history analytics and SQL monitoring.
 
-    The **ASH Analytics** tab shows average active sessions.
+    The **ASH Analytics** tab shows the average active sessions.
 
     ![Examine the ASH Analytics tab](images/performance-hub-ash-analytics.png " ")
 
@@ -126,52 +138,52 @@ You can view real-time and historical performance data from the Performance Hub.
 
 Another facility for monitoring your autonomous database is the OCI Monitoring Console.
 
-1. Go back to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
+1. Go back to the Console. Click the **Navigation** menu.
 
-    ![Go to OCI dashboard navigation menu](images/click-navigation-menu.png " ")
+    ![Go to OCI dashboard navigation menu](images/click-navigation-menu.png =40%x*)
 
-2. Scroll down the navigation menu. Click **Observability & Management**, click **Service Metrics**.
+2. Click **Observability & Management**. Under **Monitoring**, click **Service Metrics**.
 
-    ![Navigate to OCI service metrics](images/click-service-metrics.png " ")
+    ![Navigate to OCI service metrics](images/click-service-metrics.png =65%x*)
 
-3. Choose a **Compartment** that you have permission to work in. Choose a **Metric Namespace** in the drop-down menu to the right of the compartment. If you're not sure which compartment and namespace to use, contact an administrator. Click the **edit** symbol next to **Dimensions**.
+3. Choose a **Compartment** that you have permission to work in. Choose a **Metric Namespace** in the drop-down menu to the right of the compartment. If you're not sure which compartment and namespace to use, contact an administrator. Click the **Add** (pencil) icon next to **Dimensions**.
 
-    ![Click the edit button for dimensions](images/click-edit-dimensions-icon.png " ")
+    ![Click the edit button for dimensions](images/click-add-dimensions-icon.png " ")
 
-4. In the **Edit dimensions** pop-up dialog, select a **Deployment Type**. Click **Done**.
+4. In the **Edit Dimensions** dialog box, select **Shared** as the **Deployment Type**. Click **Done**.
 
     ![Select a deployment type](images/select-a-deployment-type.png " ")
 
 5. The page updates to display only the resources in that compartment and namespace. Scroll down this very long page. It shows the following metrics:
-    -   CPU Utilization
-    -   Storage utilization
-    -   Sessions
-    -   Execute Count
-    -   Running Statements
-    -   Queued Statements
-    -   Transaction Count
-    -   Current Logons
-    -   User Calls
-    -   Parse Count
-    -   Failed Logons
-    -   Failed Connections
-    -   Connection Latency
-    -   Query Latency
-    -   CPU Time
+    - CPU Utilization
+    - Storage utilization
+    - Sessions
+    - Execute Count
+    - Running Statements
+    - Queued Statements
+    - Transaction Count
+    - Current Logons
+    - User Calls
+    - Parse Count
+    - Failed Logons
+    - Failed Connections
+    - Connection Latency
+    - Query Latency
+    - CPU Time
 
-    ![Scroll down the service metrics page](images/scroll-down-service-metrics-page.jpg " ")
+    ![Scroll down the service metrics page](images/scroll-down-service-metrics-page.png =65%x*)
 
-6.  In addition to these service metrics, you can also perform queries on the metrics by using **Metrics Explorer**, creating **Alarms**, and creating **Health Checks**, to ensure that users will become immediately aware of any availability issues.
+6. In addition to these service metrics, you can also perform queries on the metrics by using **Metrics Explorer**, creating **Alarms**, and creating **Health Checks**, to ensure that users will become immediately aware of any availability issues.
 
-    ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.jpg " ")
+    ![You can create alarms and health checks](images/metrics-explorer-alarms-health-checks.png " ")
 
 You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-Click [here for documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE) on managing and monitoring an autonomous database.
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE)
 
 ## **Acknowledgements**
 
-- **Author** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Rick Green, August 2023
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** Lauran K. Serhal, May 2024

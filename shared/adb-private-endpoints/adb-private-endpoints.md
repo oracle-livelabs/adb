@@ -1,5 +1,7 @@
 # Public and Private Network Access in Autonomous Database
 
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
+
 ## Introduction
 
 This lab reviews the 3 options for configuring secure network access to your Oracle Autonomous Database, focusing on how to easily choose the option that restricts access to a private endpoint within an OCI VCN.
@@ -26,7 +28,6 @@ Specifying the virtual cloud network configuration allows traffic only from the 
 
 > **Note**: For simplicity, this lab uses the `ADMIN` user you created when provisioning your autonomous database. In an actual workplace environment, you will need to create a user group and add an Oracle Cloud account to the group, and define an IAM policy for the group to enable adding a private endpoint. When you configure private endpoints at your workplace, see the documentation [Configure network access with private endpoints](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/private-endpoints-autonomous.html#GUID-60FE6BFD-B05C-4C97-8B4A-83285F31D575).
 
-
 You can perform this lab in Oracle's free tier with trial credits, in your own tenancy using a paid Oracle Cloud account, or in an Oracle-provided environment, such as LiveLabs.
 
 Estimated Lab Time: 10 minutes
@@ -35,32 +36,31 @@ Estimated Lab Time: 10 minutes
 
 In this lab, you will:
 
-- Change the network access of your existing Autonomous Database to private endpoint access only
-- Prove that the Autonomous Database can no longer be accessed from a public IP address
+* Change the network access of your existing Autonomous Database to private endpoint access only
+* Prove that the Autonomous Database can no longer be accessed from a public IP address
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
-- Performed the previous lab on provisioning an Oracle Autonomous Database
+* Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+* Performed the previous lab on provisioning an Oracle Autonomous Database
 
-## Task 1: Change the network access to private endpoint access only
+## Task 1: Change the Network Access to Private Endpoint Access Only
+
 In the provisioning lab, you chose the default option, **Secure access from everywhere**. Now you will see how to restrict access to your autonomous database using the **Private endpoint access only** option.
 
 1. Go back to your database's **Autonomous Database details** page. From the **More actions** drop-down list, select **Update network access**.
 
     ![Select Update network access](images/select-update-network-access.png " ")
 
-2. In the **Update network access** dialog, select **Private endpoint access only**. This expands the Virtual cloud network private access configuration area. When you select Private endpoint access only, this only allows connections from the specified private network (VCN), from peered VCNs, and from on-prem networks connected to your VCN.
-
-    ![Select private endpoint access only](./images/select-private-endpoint-access-only.png " ")
+2. In the **Update network access** panel, select **Private endpoint access only**. This expands the Virtual cloud network private access configuration area. When you select Private endpoint access only, this only allows connections from the specified private network (VCN), from peered VCNs, and from on-prem networks connected to your VCN.
 
 3. If you had access to a virtual cloud network, you would select the virtual cloud network and optionally a subnet. Click **Show advanced options**. You can optionally enter a custom **Private IP address**. You can optionally enter a **Hostname prefix**. **Network Security Groups** (NSGs) allow you to optionally control inbound and outbound traffic.
 
     ![Change network access to private endpoint only](./images/change-network-access-to-private-endpoint-only.png " ")
 
-4. You would then click **Update** and wait for the update to finish.
+4. Next, you would then click **Update** and wait for the update to finish.
 
 ## Task 2: Test that the private endpoint restricts access
 
@@ -76,10 +76,11 @@ In the provisioning lab, you chose the default option, **Secure access from ever
 
 The following links provide documentation about configuring network access with access control lists (ACLs) and with private endpoints:
 
-- [Configure network access with access control lists (ACLs)](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/access-control-rules-autonomous.html#GUID-483CD2B4-5898-4D27-B74E-6735C32CB58C)
-- [Configure network access with private endpoints](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/private-endpoints-autonomous.html#GUID-60FE6BFD-B05C-4C97-8B4A-83285F31D575)
+* [Configure network access with access control lists (ACLs)](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/access-control-rules-autonomous.html#GUID-483CD2B4-5898-4D27-B74E-6735C32CB58C)
+* [Configure network access with private endpoints](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/private-endpoints-autonomous.html#GUID-60FE6BFD-B05C-4C97-8B4A-83285F31D575)
 
 ## Acknowledgements
 
-- **Author** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Rick Green, August 2023
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Rick Green, Principal User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, May 2024

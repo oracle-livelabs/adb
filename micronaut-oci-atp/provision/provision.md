@@ -27,11 +27,11 @@ In this lab you will:
 
 ![Entering the Database Name](images/db2.png)
 
-3. Choose "Shared Infrastructure" and ensure to select "Always Free".
+3. Choose "Serverless" and ensure to select "Always Free".
 
 ![Use Shared Infrastructure](images/db3.png)
 
-4. Enter and take note of the Administrator password (must be at least 12 characters and contain a number and an uppercase letter) and ensure "Allow secure access from everywhere" is selected.
+4. Enter and take note of the Administrator password (must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number) and ensure "Allow secure access from everywhere" is selected.
 
 ![Enter Administrator Password](images/db4.png)
 
@@ -41,19 +41,11 @@ In this lab you will:
 
 ## Task 2: Creating an Autonomous Database Schema User
 
-1. On the "Autonomous Database Details" page click the "Database Actions" button.
+1. On the "Autonomous Database Details" page click the "Database actions" button, then select SQL.
 
 ![Opening Service Console](images/db6.png)
 
-2. Enter "ADMIN" for the username and the password you defined in the previous section.
-
-![Logging into Database Actions](images/db7.png)
-
-3. Under "Development" click the "SQL" button to open the SQL console.
-
-![Accessing the SQL console](images/db8.png)
-
-4. Create a user password (must be at least 12 characters and contain a number and an uppercase letter), then within the worksheet paste the following SQL which will create a schema user with a username of "mnocidemo", replacing the text XXXXXXXXX with the user password:
+2. Create a user password (must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number), then within the worksheet paste the following SQL which will create a schema user with a username of "mnocidemo", replacing the text XXXXXXXXX with the user password:
 
     ```
     <copy>
@@ -81,7 +73,7 @@ To connect locally you need to download and configure the ATP Wallet locally.
 
     ![ATP instance](images/atp-instance-list.png)
 
-3. In the instance details, click on 'DB Connection'.
+3. In the instance details, click on 'Database connection'.
 
     ![DB Connection](images/db-connection-btn.png)
 
@@ -89,7 +81,7 @@ To connect locally you need to download and configure the ATP Wallet locally.
 
     ![Wallet dialog](images/wallet-dialog.png)
 
-5. Create a wallet password (must be at least 12 characters and contain a number and an uppercase letter), then enter (and confirm) the wallet password.
+5. Create a wallet password (must be 8 to 60 characters and contain at least 1 alphabetic and 1 numeric character), then enter (and confirm) the wallet password.
 
     ![Wallet password](images/wallet-password.png)
 
@@ -107,7 +99,8 @@ To connect locally you need to download and configure the ATP Wallet locally.
 
 ## Task 4: Configure Oracle Cloud Vault for Password Storage (Optional)
 
-Micronaut supports using Oracle Cloud Vault as a distributed configuration source. You'll use a Vault to store database passwords so they're not visible in cleartext in your application configuration files.
+Micronaut supports using Oracle Cloud Vault as a distributed configuration source.
+You'll use a Vault to store database passwords so they're not visible in cleartext in your application configuration files.
 
 To securely store your passwords you need to create a vault and an encryption key, and create secrets in the vault.
 

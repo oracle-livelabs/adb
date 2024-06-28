@@ -82,6 +82,12 @@
         "filename": "../../create-data-pipelines/create-data-pipelines.md"
     },
     {
+        "title": "Lab 10 (optional): Use AutoML to Predict Customer Churn",
+        "description": "Create a Machine Learning model using AutoML UI to Predict Churn",
+        "type": "freetier",
+        "filename": "../../predict-churn/predict-churn.md"
+    },
+    {
     "title": "Need Help?",
     "description": "Solutions to Common Problems and Directions for Receiving Live Help",
     "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"

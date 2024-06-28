@@ -28,9 +28,9 @@ In this lab, you will:
 
 ## Task 1: SQL Developer Web
 
-1. Open Database Actions (if you don't already have it open). Either choose **SQL** under Development from the launchpad, or click on the navigation menu on the top left and select **SQL** under Development.
+1. Open Database Actions (if you don't already have it open). On the Development pane, choose **SQL**.
 
-    ![SQL navigation](./images/nav-sql.png)
+    ![SQL navigation](./images/dbactions-menu-sql.png)
 
 2. On the left side, click on PRODUCTS - this is the table for the 'products' collection. To get the view displayed, you need to right-click on **PRODUCTS** and choose **Open**.
 
@@ -767,4 +767,4 @@ Often, you do not know all the fields that occur in a collection of JSON data, e
 
 - **Author** - Beda Hammerschmidt, Architect
 - **Contributors** - Anoosha Pilli, Product Manager, Oracle Database
-- **Last Updated By/Date** - Anoosha Pilli, Brianna Ambler, June 2021
+- **Last Updated By/Date** - Hermann Baer, April 2024
