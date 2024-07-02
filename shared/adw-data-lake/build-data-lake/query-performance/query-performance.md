@@ -372,7 +372,7 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
