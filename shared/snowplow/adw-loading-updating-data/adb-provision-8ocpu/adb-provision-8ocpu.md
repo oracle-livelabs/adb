@@ -17,10 +17,10 @@ In this lab, you will:
 
 This lab assumes you have:
 
-- **Note:** The timings and screenshots in this workshop are based on using 8 OCPUs. If you opt to configure fewer OCPUs the response times and query times will be longer.
+- **Note:** The timings and screenshots in this workshop are based on using 16 ECPUs. If you opt to configure fewer ECPUs the response times and query times will be longer.
 - Completed the steps in the **Get Started** section seen in the Contents menu on the left.
 
-## Task 1: Choose ADW from the Services Menu
+## Task 1: Create an ADW database
 
 1. Log in to the Oracle Cloud, as shown in the previous lab.
 2. Once you are logged in, you are taken to the cloud services dashboard where you can see all the services available to you. Click the navigation menu in the upper left to show top level navigation choices.
@@ -29,27 +29,8 @@ This lab assumes you have:
 
     ![Oracle Cloud Infrastructure home page](images/oci-home.png)
 
-3. This lab shows provisioning of an Autonomous Data Warehouse database, so click **Oracle Database** and then click **Autonomous Data Warehouse**.
+    This lab shows provisioning of an Autonomous Data Warehouse database, so click **Create an ADW database**. This brings up the **Create Autonomous Database** screen where you will specify the configuration of the instance.
 
-    ![Click Autonomous Data Warehouse.](images/oci-select-adw.png)
-
-4. Make sure your workload type is **Data Warehouse** or **All** to see your Autonomous Data Warehouse instances. Use the **List Scope** drop-down menu to select a compartment. If you are using a LiveLabs environment, be sure to select the compartment provided by the environment from the List Scope drop-down menu.
-
-   **Note:** Avoid the use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services.
-
-5. This console shows that no databases yet exist. If there were a long list of databases, you could filter the list by the **State** of the databases (Available, Stopped, Terminated, and so on). You can also sort by **Workload Type**. Here, the **Data Warehouse** workload type is selected.
-
-    ![Autonomous Databases console.](images/empty-adw-list.png)
-
-6. You can see your current default **region** in the top, right hand corner of the page.
-
-    ![Select region on the far upper-right corner of the page.](images/regions.png)
-
-## Task 2: Create the ADW Instance
-
-1. Click **Create Autonomous Database** to start the instance creation process.
-
-2. This brings up the **Create Autonomous Database** screen where you will specify the configuration of the instance.
 3. Provide basic information for the autonomous database:
 
     - **Choose a compartment** - Select a compartment for the database from the drop-down list.
@@ -67,7 +48,7 @@ This lab assumes you have:
 
 5. Choose a deployment type. Select the deployment type for your database from the choices:
 
-    - **Shared Infrastructure** - For this lab, choose **Shared Infrastructure** as the deployment type.
+    - **Serverless** - For this lab, choose **Serverless** as the deployment type.
     - **Dedicated Infrastructure** - Alternatively, you could have chosen Dedicated Infrastructure as the deployment type.
 
     ![Choose a deployment type.](images/deployment-type.png)
@@ -75,7 +56,7 @@ This lab assumes you have:
 6. Configure the database:
 
     - **Choose database version** - Select a database version from the available versions.
-    - **OCPU count** - Number of CPUs for your service<if type="livelabs">, choose **2 OCPUs** when you are running your workshop in LiveLabs sandbox environment</if>. Our example screenshot uses a database instance with **8 OCPUs**. If you opt to configure fewer OCPUs your response times and query times will be longer<if type="livelabs"> and similarly if you opt to configure more OCPUs your response times and query times will be shorter</if>.
+    - **ECPU count** - Number of ECPUs for your service<if type="livelabs">, choose **4 ECPUs** when you are running your workshop in a LiveLabs sandbox environment</if>. Our example screenshot uses a database instance with **16 ECPUs**. If you opt to configure fewer ECPUs your response times and query times will be longer<if type="livelabs"> and similarly if you opt to configure more ECPUs your response times and query times will be shorter</if>.
     - **Storage (TB)** - Select your storage capacity in terabytes. For this lab, specify **1 TB** of storage.
     - **Auto Scaling** - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
     - **New Database Preview** - If a checkbox is available to preview a new database version, do NOT select it.
@@ -94,15 +75,15 @@ This lab assumes you have:
 
     ![Enter password and confirm password.](images/admin-pw.png)
 
-8. Choose a license type. For this lab, choose **License Included**. The two license types are:
-
-    - **Bring Your Own License (BYOL)** - Select this type when your organization has existing database licenses.
-    - **License Included** - Select this type when you want to subscribe to new database software licenses and the database cloud service.
-
-9. Choose network access:
+8. Choose network access:
     - For this lab, accept the default, **"Allow secure access from everywhere"**.
     - If you want a private endpoint, to allow traffic only from the VCN you specify - where access to the database from all public IPs or VCNs is blocked, then select "Virtual cloud network" in the Choose network access area.
     - You can control and restrict access to your Autonomous Database by setting network access control lists (ACLs). You can select from 4 IP notation types: IP Address, CIDR Block, Virtual Cloud Network, Virtual Cloud Network OCID).
+
+9. Choose a license type. For this lab, choose **License Included**. The two license types are:
+
+    - **Bring Your Own License (BYOL)** - Select this type when your organization has existing database licenses.
+    - **License Included** - Select this type when you want to subscribe to new database software licenses and the database cloud service.
 
 10. Click the **Create Autonomous Database** button.
 
@@ -114,11 +95,11 @@ Please *proceed to the next lab*.
 
 ## Learn More
 
-- Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-workflow.html#GUID-5780368D-6D40-475C-8DEB-DBA14BA675C3) for documentation on the typical workflow for using Autonomous Data Warehouse.
+- Click [here](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/index.html) for full documentation on Autonomous Database Serverless
 
 ## Acknowledgements
 
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager Intern)
-- **Last Updated By/Date** - Mike Matthews, March 2023
+- **Last Updated By/Date** - Mike Matthews, May 2024

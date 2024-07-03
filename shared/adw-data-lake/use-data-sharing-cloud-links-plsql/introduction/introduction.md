@@ -71,7 +71,7 @@ In this workshop, you will assume the responsibilities of several users. Initial
 
 **_In real use cases, there will be different users performing different responsibilities._**
 
-  ![The workshop users.](images/users-diagram.png)
+  ![The workshop users.](images/users-diagram.png =50%x*)
 
 ### How Does Cloud Links Data Sharing Work?
 
@@ -82,7 +82,7 @@ At the high level, sharing data using cloud links works as follows:
 * The recipient uses the share provider's id to discover the available data shares and tables.
 * The recipient subscribes to the data share provider, retrieves data from the data share, and creates a share link and a view using the data share table.
 
-  ![The data sharing overview.](images/data-sharing-diagram.png)
+  ![The data sharing overview.](images/data-sharing-diagram.png =65%x*)
 
 You may now proceed to the next lab.
 
@@ -100,10 +100,10 @@ You may now proceed to the next lab.
 * **Contributor:**
   * Alexey Filanovskiy, Senior Product Manager
 
-* **Last Updated By/Date:** Lauran K. Serhal, January 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

@@ -5,7 +5,7 @@ In this lab you will learn how to turn your application into a native executable
 
 Estimated Lab Time: 20 minutes
 
-Watch the video below for a quick walk-through of the lab.
+Watch the video below for a quick walkthrough of the lab.
 [Build a GraalVM Native Image](videohub:1_xp83wilj)
 
 ### Objectives
@@ -26,25 +26,25 @@ Whilst building a native executable can take some time, the benefits include a d
 
 ## Building a Native Executable with Gradle
 
-If you are using Gradle and the GraalVM SDK with Native Image installed (Native Image is an optional component installable via `gu install native-image`), then building a native executable is trivial.
+If you are using Gradle and the GraalVM SDK, building a native executable is trivial.
 
-Open up the Terminal pane and run the following command:
+Open the Terminal pane and run the following command:
 
     <copy>
     ./gradlew nativeCompile
     </copy>
 
-After some time the native executable will be built to `build/native-image/application`.
+After some time the native executable will be built to `build/native/nativeCompile/example-atp`.
 
 You can now run the native executable from Terminal:
 
     <copy>
-    MICRONAUT_ENVIRONMENTS=oraclecloud ./build/native/nativeCompile/example-atp
+    MICRONAUT_ENVIRONMENTS=oraclecloud build/native/nativeCompile/example-atp
     </copy>
 
 ## Building a Native Executable with Maven
 
-If you are using Maven and the GraalVM SDK with Native Image installed (Native Image is an optional component installable via `gu install native-image`), then building a native executable is trivial.
+If you are using Maven and the GraalVM SDK, building a native executable is trivial.
 
 Open up the Terminal pane and run the following command:
 
@@ -52,12 +52,12 @@ Open up the Terminal pane and run the following command:
     ./mvnw clean package -Dpackaging=native-image
     </copy>
 
-After some time the native executable with be built into the `target/native-image` directory.
+After some time the native executable with be built into the `target` directory.
 
 You can now run the native executable from Terminal:
 
     <copy>
-    MICRONAUT_ENVIRONMENTS=oraclecloud ./target/example
+    MICRONAUT_ENVIRONMENTS=oraclecloud target/example-atp
     </copy>
 
 You may now *proceed to the next lab*.

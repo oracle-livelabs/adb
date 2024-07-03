@@ -61,6 +61,7 @@ To get started, you'll need to do the following:
             attributes =>
                 '{"provider": "openai",
                 "credential_name": "OPENAI_CRED",
+                "model":"gpt-3.5-turbo",
                 "object_list": [{"owner": "MOVIESTREAM", "name": "movies"},
                                 {"owner": "MOVIESTREAM", "name": "streams"},
                                 {"owner": "MOVIESTREAM", "name": "customer_extension"},
@@ -175,7 +176,7 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
-If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL banner** to display the Database **Actions | Launchpad** Home page. In the **Development** section, click the **Oracle Machine Learning** card to display the **Sign In** page. Continue with **step 7** below.
+If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the Database **Database Actions | Launchpad** Home page. Click the **Development** tab, and then click the **Oracle Machine Learning** tab to display the **Sign In** page. Continue with **step 7** below.
 
    ![Click the banner](./images/click-banner.png " ")
 
@@ -195,9 +196,9 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
    ![Select view all database actions](./images/view-all-database-actions.png " ")
 
-6. On the **Database Actions | Launchpad** page, in the **Development** section, click the **ORACLE MACHINE LEARNING** card.
+6. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **Oracle Machine Learning** tab.
 
-    ![Click the Oracle Machine Learning card](./images/oml-card.png " ")
+    ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
 
 7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 Step 6** in the **Password** field, and then click **Sign In**.
 
@@ -209,9 +210,7 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
 8. In the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
 
-    >**Note:** In this workshop, we are using the Early Adopter version of the notebook.
-
-    ![The Notebooks page is displayed](./images/notebooks-page.png " ")
+    ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
 
 ## Task 3: Import a Notebook into OML
 
@@ -221,21 +220,15 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     <a href="../notebook/ADB-Speaks-Human.dsnb" class="tryit-button">Download notebook</a>
 
-2. Click **Go to OML Notebooks EA**. The **OML Notebooks EA (Early Adopter)** page is displayed.
-
-    ![The OML Notebooks EA page is displayed](./images/ea-page.png " ")
-
-    >**Note:** You can also navigate to the **OML Notebooks EA (Early Adopter)** page directly using the OML Navigation menu. Next, click **Projects > Notebooks EA**.
-
-3. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`ADB Speaks Human.dsnb`** notebook file. The file is displayed in the **File name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+2. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`ADB Speaks Human.dsnb`** notebook file. The file is displayed in the **File name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
     ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
 
     If the import is successful, a notification is displayed and the **`ADB Speaks Human`** notebook is displayed in the list of available notebooks.
 
-    ![The 1 out of 1 notebooks imported successfully message is displayed. The newly imported notebook name link is displayed and highlighted on the page.](./images/import-successful.png " ")
+    ![The newly imported notebook is displayed.](./images/import-successful.png " ")
 
-4. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+3. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
@@ -281,7 +274,6 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     ![Invalidate the session.](./images/invalidate-session.png =60%x*)
 
-
 6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
 
   ![Run all paragraphs](images/run-all-paragraph.png)
@@ -294,12 +286,13 @@ You may now proceed to the next lab.
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

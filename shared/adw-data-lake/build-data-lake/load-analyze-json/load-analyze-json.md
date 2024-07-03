@@ -39,35 +39,15 @@ Our movie data set has a series of columns that contain different types of detai
 
 JSON data is organized very differently than typical warehouse data. There is a single entry for **producer** but the corresponding key **names** actually has multiple values. This is referred to as an **array** - specifically a JSON array.
 
->**Note:**    
-If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | Launchpad** banner to display the **Database Actions | Launchpad** Home page. In the **Development** section, click the **SQL** card to display the SQL Worksheet. Next, skip to **step 6**; otherwise, start with **step 1** below.
+1. You should be already on the **Data Load Dashboard** page from the previous lab. Click **Database Actions | Data Load** in the banner.
 
-![Click the banner.](./images/click-banner.png " ")
+    ![Click the banner.](./images/click-banner.png " ")
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
+2. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **SQL** tab.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![The SQL worksheet is displayed.](./images/click-development-sql-tabs.png " ")
 
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
-</if>
-
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/adb-page.png " ")
-</if>
-
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
-
-    <if type="freetier">
-    ![The Database Actions button is highlighted.](./images/click-db-actions.png " ")
-    </if>
-
-5. The SQL Worksheet is displayed.
-
-    ![The SQL worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
-
+    The SQL Worksheet is displayed.
 6. Use the Autonomous Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
     ```
     <copy>
@@ -272,4 +252,4 @@ You may now proceed to the next lab.
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
