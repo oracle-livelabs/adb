@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab you are going to get create a Micronaut application locally and configure the application to communicate with an Oracle Autonomous Database instance.
+In this lab you are going to create a Micronaut application locally and configure it to communicate with an Oracle Autonomous Database instance.
 
 If at any point you run into trouble completing the steps, the full source code for the application can be cloned from Github using the following command to checkout the code:
 
@@ -39,7 +39,7 @@ There are several ways you can get started creating a new Micronaut application.
 
     ```
     <copy>
-      mn create-app example-atp --jdk 17 --features oracle,data-jdbc
+      mn create-app example-atp --jdk 17 --features oracle,data-jdbc,validation
     cd example-atp
     </copy>
     ```
@@ -50,7 +50,7 @@ There are several ways you can get started creating a new Micronaut application.
 
     ```
     <copy>
-    curl https://launch.micronaut.io/example-atp.zip\?javaVersion\=JDK_17\&features\=oracle,data-jdbc -o example-atp.zip
+    curl https://launch.micronaut.io/example-atp.zip\?javaVersion\=JDK_17\&features\=oracle,data-jdbc,validation -o example-atp.zip
     unzip example-atp.zip
     cd example-atp
     </copy>
@@ -61,24 +61,22 @@ There are several ways you can get started creating a new Micronaut application.
 * Choose JDK 17 as the Java version.
 * Choose `example-atp` as the Name
 * Choose `example.atp` as the Base Package
-* Click the `Features` button and select the `oracle` and `data-jdbc` features
+* Click the `Features` button and select the `oracle`, `data-jdbc`, and `validation` features
 * Then click `Generate` -> `Download Zip` which will download a zip file you can unzip locally with the created application.
 
 ![Create with Launch](images/launch.png)
 
 ## Task 2: Configure the Micronaut Application
 
-To configure the Micronaut application to work with Autonomous Database, create a new `src/main/resources/application-oraclecloud.yml` file and populate the default datasource connection settings as follows replacing the `password` entry with the password you chose for the schema user in the previous lab:
+To configure the Micronaut application to work with Autonomous Database, create a new `src/main/resources/application-oraclecloud.properties` file and populate the default datasource connection settings as follows replacing the `password` entry with the password you chose for the schema user in the previous lab:
 
     <copy>
-    datasources:
-      default:
-        url: jdbc:oracle:thin:@mnociatp_high?tns_admin=/tmp/wallet
-        username: mnocidemo
-        password: XXXXXXXX
+    datasources.default.url=jdbc:oracle:thin:@mnociatp_high?tns_admin=/tmp/wallet
+    datasources.default.username=mnocidemo
+    datasources.default.password=XXXXXXXX
     </copy>
 
-> **NOTE**: The password you enter should be the Schema user password not the Admin password for the Autonomous Database instance.
+> **NOTE**: The password you enter should be the Schema user password, not the Admin password for the Autonomous Database instance.
 > **NOTE**: If you extracted the wallet to a different location other than `/tmp/wallet`, you need to update the URL accordingly.
 
 ## Task 3: Configure Oracle Autonomous Database JDBC Drivers
@@ -86,7 +84,7 @@ To configure the Micronaut application to work with Autonomous Database, create 
 If you are using Gradle add the following dependencies to the `build.gradle` file in the root of your project inside the `dependencies` block:
 
     <copy>
-    implementation(platform("com.oracle.database.jdbc:ojdbc-bom:21.9.0.0"))
+    implementation(platform("com.oracle.database.jdbc:ojdbc-bom:21.13.0.0"))
     runtimeOnly("com.oracle.database.security:oraclepki")
     runtimeOnly("com.oracle.database.security:osdt_cert")
     runtimeOnly("com.oracle.database.security:osdt_core")
@@ -100,7 +98,7 @@ Alternatively if you are using Maven, add the following dependencies to your `po
         <dependency>
           <groupId>com.oracle.database.jdbc</groupId>
           <artifactId>ojdbc-bom</artifactId>
-          <version>21.9.0.0</version>
+          <version>21.13.0.0</version>
           <type>pom</type>
           <scope>import</scope>
         </dependency>
@@ -125,10 +123,11 @@ Alternatively if you are using Maven, add the following dependencies to your `po
 
 ## Task 4: Configure Flyway to Create the Schema
 
-Once you have configured the `DataSource`, add a dependency on `micronaut-flyway` to your `build.gradle` configuration inside the `dependencies` block:
+Once you have configured the `DataSource`, add a dependency on `micronaut-flyway` and `flyway-database-oracle` to your `build.gradle` configuration inside the `dependencies` block:
 
     <copy>
     runtimeOnly("io.micronaut.flyway:micronaut-flyway")
+    runtimeOnly("org.flywaydb:flyway-database-oracle")
     </copy>
 
 or if using Maven, add to your `pom.xml` under `<dependencies>`:
@@ -139,33 +138,33 @@ or if using Maven, add to your `pom.xml` under `<dependencies>`:
         <artifactId>micronaut-flyway</artifactId>
         <scope>runtime</scope>
     </dependency>
+    <dependency>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-database-oracle</artifactId>
+        <scope>runtime</scope>
+    </dependency>
     </copy>
 
 This enables support for the Open Source [Flyway database migration toolkit](https://flywaydb.org) which lets you define SQL scripts that manage and version your database schema so you can gradually evolve the schema along with new versions of your application.
 
-To enable Flyway to run on startup, add the following configuration to your `application.yml`:
+To enable Flyway to run on startup, add the following configuration to your `application.properties`:
 
     <copy>
-    flyway:
-      datasources:
-        default:
-          enabled: true
+    flyway.datasources.default.enabled=true
     </copy>
 
-Create `src/main/resources/application-test.yml` with the following entry for flyway which will contain your test configuration and set Flyway to clean the schema when the application starts, to ensure tests run with fresh data:
+Create `src/main/resources/application-test.properties` with the following entry for flyway which will contain your test configuration and set Flyway to clean the schema when the application starts, to ensure tests run with fresh data:
 
     <copy>
-    flyway:
-      datasources:
-        default:
-          clean-schema: true
+    flyway.datasources.default.clean-schema=true
     </copy>
 
-> **NOTE:** that in a real world scenario you would setup a separate database to run your tests against
+> **NOTE:** that in a real world scenario you would use a separate database to run your tests against
 
 ## Task 5: Defining a SQL Migration Script
 
-The next step is to define a SQL migration script that will create the application's initial schema. To do that create a new SQL script in a file called `src/main/resources/db/migration/V1__create-schema.sql` (two underscores after V1) and add the following SQL:
+The next step is to define a SQL migration script that will create the application's initial schema.
+To do that, create a new SQL script in a file called `src/main/resources/db/migration/V1__create-schema.sql` (two underscores after V1) and add the following SQL:
 
     <copy>
     CREATE TABLE "PET" ("ID" VARCHAR(36),"OWNER_ID" NUMBER(19) NOT NULL,"NAME" VARCHAR(255) NOT NULL,"TYPE" VARCHAR(255) NOT NULL);
@@ -185,7 +184,7 @@ If you created a Vault with secrets for the user and admin passwords in the prev
     If you are using Gradle, add the following dependency in `build.gradle` inside the `dependencies` block:
 
         <copy>
-        runtimeOnly('io.micronaut.oraclecloud:micronaut-oraclecloud-vault')
+        runtimeOnly("io.micronaut.oraclecloud:micronaut-oraclecloud-vault")
         </copy>
 
     and if you are using Maven, add the following dependency to your `pom.xml` inside the `<dependencies>` element:
@@ -198,23 +197,15 @@ If you created a Vault with secrets for the user and admin passwords in the prev
         </dependency>
         </copy>
 
-2. Create `src/main/resources/bootstrap-oraclecloud.yml` with the following content:
+2. Create `src/main/resources/bootstrap-oraclecloud.properties` with the following content:
 
         <copy>
-        micronaut:
-          application:
-            name: example-atp
-          config-client:
-            enabled: true
-        oci:
-          config:
-            profile: DEFAULT
-          vault:
-            config:
-              enabled: true
-            vaults:
-              - ocid: OCID_VAULT
-                compartment-ocid: OCID_COMPARTMENT
+        micronaut.application.name=example-atp
+        micronaut.config-client.enabled=true
+        oci.config.profile=DEFAULT
+        oci.vault.config.enabled=true
+        oci.vault.vaults[0].compartment-ocid=OCID_COMPARTMENT
+        oci.vault.vaults[0].ocid=OCID_VAULT
         </copy>
 
     Replace __OCID\_VAULT__ with the Vault OCID that you saved when creating it (the OCID should start with "ocid1.vault"), and replace __OCID\_COMPARTMENT__ with the OCID of the compartment where you created the secrets (the compartment OCID should start with "ocid1.compartment"). To find that, in the OCI Console, click on the burger menu and select "Compartments" under "Identity & Security".
@@ -225,11 +216,11 @@ If you created a Vault with secrets for the user and admin passwords in the prev
 
     ![Copy compartment OCID](images/compartment2.png)
 
-3. Replace the password value in `src/main/resources/application-oracecloud.yml` with the placeholder for the __ATP\_USER\_PASSWORD__ secret:
+3. Replace the password value in `src/main/resources/application-oraclecloud.properties` with the placeholder for the __ATP\_USER\_PASSWORD__ secret:
 
         ...
-        username: mnocidemo
-        password: ${ATP_USER_PASSWORD}
+        datasources.default.username=mnocidemo
+        datasources.default.password=${ATP_USER_PASSWORD}
         ...
 
 ## Task 7: Configure Automatic Wallet Download (Optional)
@@ -241,8 +232,8 @@ If you created a Vault with secrets for the user and admin passwords in the prev
     If you are using Gradle, add the following dependencies in `build.gradle` inside the `dependencies` block:
 
         <copy>
-        runtimeOnly('io.micronaut.oraclecloud:micronaut-oraclecloud-sdk')
-        runtimeOnly('io.micronaut.oraclecloud:micronaut-oraclecloud-atp')
+        runtimeOnly("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")
+        runtimeOnly("io.micronaut.oraclecloud:micronaut-oraclecloud-atp")
         </copy>
 
     and if you are using Maven, add the following dependencies to your `pom.xml` inside the `<dependencies>` element:
@@ -260,15 +251,13 @@ If you created a Vault with secrets for the user and admin passwords in the prev
         </dependency>
         </copy>
 
-2. Comment out the current __datasources__ section in `src/main/resources/application-oraclecloud.yml` by adding a `#` character to the start of each line (you'll need this version when deploying), and add the following:
+2. Comment out the current __datasources__ section in `src/main/resources/application-oraclecloud.properties` by adding a `#` character to the start of each line (you'll need this version when deploying), and add the following:
 
         <copy>
-        datasources:
-          default:
-            ocid: OCID_ATP
-            walletPassword: ${ATP_WALLET_PASSWORD}
-            username: mnocidemo
-            password: ${ATP_USER_PASSWORD}
+        datasources.default.ocid=OCID_ATP
+        datasources.default.walletPassword=${ATP_WALLET_PASSWORD}
+        datasources.default.username=mnocidemo
+        datasources.default.password=${ATP_USER_PASSWORD}
         </copy>
 
 
@@ -284,13 +273,12 @@ If you created a Vault with secrets for the user and admin passwords in the prev
 
 ## Task 8: Configure OCI authentication (Optional)
 
-If you already have the [Oracle Cloud CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and you have run __oci setup config__ to configure local access, then you should be all set. If you are using a profile in __~/.oci/config__ other than __DEFAULT__, change the profile name in `bootstrap-oraclecloud.yml`:
+If you already have the [Oracle Cloud CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) installed and you have run __oci setup config__ to configure local access, then you should be all set. If you are using a profile in __~/.oci/config__ other than __DEFAULT__, change the profile name in `bootstrap-oraclecloud.properties`:
 
-        oci:
-          config:
-            profile: MY_OTHER_PROFILE
+        oci.config.profile=MY_OTHER_PROFILE
 
-Don't install the Oracle Cloud CLI if you haven't already since it involves a few steps including installing or updating Python. Instead, manually create the __~/.oci/config__ file.
+Don't install the Oracle Cloud CLI if you haven't already, since it involves a few steps including installing or updating Python.
+Instead, manually create the __~/.oci/config__ file.
 
 1. In the OCI Console, open the Profile menu ![Profile link](images/usermenu.png) in the top right corner and click __User Settings__.
 
@@ -308,7 +296,7 @@ Don't install the Oracle Cloud CLI if you haven't already since it involves a fe
 
     ![Compartment menu](images/apikey4.png)
 
-5. Click the __Copy__ link in the lower right corner of the __Configuration File Preview__ dialog to copy the API key configuration to the clipboard, then create __~/.oci/config__ in a text editor and paste the contents there. 
+5. Click the __Copy__ link in the lower right corner of the __Configuration File Preview__ dialog to copy the API key configuration to the clipboard, then create __~/.oci/config__ in a text editor and paste the contents there.
 
    ![Compartment menu](images/apikey5.png)
 
