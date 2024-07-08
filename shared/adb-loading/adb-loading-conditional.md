@@ -216,13 +216,13 @@ In the first part of this lab, you loaded data from a file that you located on y
 
 3. On the **Data Load** main page, click the **Connections** card so you can define a new connection to your object store.
 
-    ![Click the Cloud Locations card.](./images/click-cloud-locations-card.png " ")
+    ![Click the Cloud Locations card.](./images/data-load-connections.png " ")
 
 4. Click **Create**, then **New Cloud Store Location**.
 
     ![Click Add Cloud Storage.](./images/new-cloud-store.png " ")
 
-65. Complete the **Add Cloud Storage** page.
+5. Complete the **Add Cloud Storage** page.
     + Specify the name **ADWCLab** and a description.
     + Choose **Oracle** as the cloud store, since you will be loading from your Oracle Object Store bucket.
     + Specify the URI and bucket that you recorded in Task 6.
@@ -235,28 +235,28 @@ In the first part of this lab, you loaded data from a file that you located on y
 
     ![Complete the Add Cloud Storage page.](./images/add-credentials-cloud-storage.png " ")
 
-7. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load data files from your bucket. Navigate back to the main Data Load page again using the breadcrumb link in the upper left corner. Click the two cards for **LOAD DATA** from **CLOUD STORAGE** and then click the **Next** button.
+6. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to link data files from your bucket. Navigate back to the main Data Load page again using the breadcrumb link in the upper left corner. Click the two cards for **LOAD DATA** from **CLOUD STORAGE** and then click the **Next** button.
 
-    ![Choose LOAD DATA and CLOUD STORAGE.](./images/choose-load-data-and-cloud-storage.png " ")
+    ![Choose LOAD DATA and CLOUD STORAGE.](./images/choose-link-data-and-cloud-storage.png " ")
 
-8. Now you see a file browser-like view of your Object Store. Let's practice the easy drag-and-drop method of loading files by multi-selecting the `channels.csv` and `countries.csv` files in the left part of the screen. Drag and drop these files onto the canvas on the right.
+7. Now you see a file browser-like view of your Object Store. Let's practice the easy drag-and-drop method of loading files by multi-selecting the `channels.csv` and `countries.csv` files in the left part of the screen. Drag and drop these files onto the canvas on the right.
 
     ![Drag the file onto the canvas.](./images/drag-files-onto-canvas.png " ")
 
-9. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. Click the **pencil** button for the `channels.csv` and `countries.csv` tables.
+8. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. Click the **pencil** button for the `channels.csv` and `countries.csv` tables.
 
     ![Click the pencil button.](./images/click-pencil-button.png " ")
 
-10. You can use this page to quickly review the properties sheet and make any changes to column names or data types. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL.
+9. You can use this page to quickly review the properties sheet and make any changes to column names or data types. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL.
 
     - For `channels.csv`, change the target table name to **CHANNELS\_DB\_TOOLS**.
     - For `countries.csv`, change the target table name to **COUNTRIES\_DB\_TOOLS**.
 
     ![Review the properties sheet.](./images/review-properties-sheet.png " ")
 
-11. When you are satisfied with the format, close the form and then click the **green arrow** button to start your data load job.
+10. When you are satisfied with the format, close the form and then click the **green arrow** button to start your data load job.
 
-    ![Click green arrow button to start data load job.](./images/click-green-arrow-button-start-data-load.png " ")
+    ![Click green arrow button to start data load job.](./images/click-start-button-start-data-load.png " ")
 
 > **Note:** The target tables loaded up to this point were for practice using the Database Tools user interface. In the next task, you will load a set of tables that will be used in subsequent labs.
 
@@ -279,7 +279,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
 1. Click the SQL tile to open SQL Worksheet.
 
-  ![Open SQL Worksheet](images/open-sql-web-dev.png)
+  ![Open SQL Worksheet](images/ords-sql.png)
 
 2. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
 
