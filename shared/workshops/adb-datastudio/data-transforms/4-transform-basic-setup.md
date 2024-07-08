@@ -38,6 +38,8 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
     This will take you to the home screen of Data Transforms.
 
+    *Note*: Transforms service goes to sleep when not in use. After it goes to sleep, you can wake it up by refreshing the browser and logging back again. The default maximum idle time is 10 minutes. For the workshop you don't need to change the maximum idle time but if needed, it can be configured from in the Autonomous database tools configuration from OCI console.
+
     ![Screenshot of DT home](images/image_data_transforms_home.png)
 
 
@@ -79,7 +81,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
     Test the connection and make sure both the connections test successfully.
 
-## Task 2: Import data entity definition
+## Task 3: Import data entity definition
 
 Now we have all the connectivity we need for the workshop. In order to create data pipeline, Transforms stores a local copy of entity definition. You can initially import the entity definition from your connections and later keep it in sync periodically. 
 
@@ -89,7 +91,7 @@ Note that once imported, the entity definitions in Transforms are isolated from 
 
     ![Screenshot of DT entity](images/image_dt_entity.png)
 
-2. Click on Import Entity and provide the following information
+2. Click on **Import Data Entities** and provide the following information
 
     - Connection: SOURCE\_DATA
     - Schema: DT\_DEMO\_SOURCE
@@ -104,11 +106,11 @@ Note that once imported, the entity definitions in Transforms are isolated from 
 
     ![Screenshot of DT entity source job](images/image_dt_entity_SOURCE_job.png)
 
-3. Navigate to the Jobs menu to monitor the entity import job.
+3. Navigate to the Jobs menu to monitor the entity import job. Refresh the list by clicking on the refresh icon on the right side as needed.
 
     ![Screenshot of DT entity](images/image_dt_job.png)
 
-4. After successful job completion, go back to Entity menu and you should be able to see the following table entries:
+4. After successful job completion, go back to **Data Entities** menu and you should be able to see the following table entries:
 
     - GENRE
     - MOVIE
@@ -123,7 +125,7 @@ Note that once imported, the entity definitions in Transforms are isolated from 
 
     ![Screenshot of DT entity delete](images/image_dt_entity_delete.png)
 
-5. You can also use the same menu to look at the entity definition and preview the data from the right side menu. Select MOVIESALES\_CA and click on the **Preview**.
+5. You can also use the Actions menu (three dots at the end) to look at the entity definition and preview the data from the right side menu. Select MOVIESALES\_CA and click on the **Preview** from the Actions menu.
 
     This the data preview for MOVIESALES\_CA.
 
@@ -141,7 +143,7 @@ Note that once imported, the entity definitions in Transforms are isolated from 
     - CUSTOMER\_VALUE
 
 
-## Task 3: Create project
+## Task 4: Create project
 
 Project help you to keep related data pipeline processes together.
 

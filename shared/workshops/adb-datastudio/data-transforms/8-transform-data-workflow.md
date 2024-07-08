@@ -35,7 +35,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 1. Navigate to **Workflows** from the left side menu and create a new workflow.
 
-    - Name: Nightly\_Load
+    Name: Nightly\_Load
 
     Click **Create** 
 

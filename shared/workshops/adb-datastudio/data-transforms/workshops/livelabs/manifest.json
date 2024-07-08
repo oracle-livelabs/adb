@@ -37,13 +37,13 @@
         "filename": "../../5-transform-data-load.md"
       },
       {
-        "title": "Lab 5: Transform data using a simple example",
+        "title": "Lab 5: Simple Data Transformation",
         "description": "Transform data using simple use case",
         "type": "livelabs",
         "filename": "../../6-transform-data-simple.md"
       },
       {
-        "title": "Lab 6: Transform data using complex example",
+        "title": "Lab 6: Complex Data Transformation",
         "description": "Transform data using complex use case",
         "type": "livelabs",
         "filename": "../../7-transform-data-complex.md"

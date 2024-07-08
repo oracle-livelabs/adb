@@ -19,16 +19,54 @@ DT\_DEMO\_SOURCE will be used to store some source data and DT\_DEMO\_DW is the 
 
 - Username: DT\_DEMO\_SOURCE
 - Quota: Unlimited
-- Roles: DWROLE, DATA_TRANSFORMS_USER
+- Roles: DWROLE, DATA\_TRANSFORM\_USER (Granted and Default both checked in UI)
+- Web Access: ON
+
+You can either use user management UI or use the following SQL to create the user. Login as Admin users and execute the script by copy/paste into SQL worksheet.
+
+```
+<copy>
+CREATE USER DT_DEMO_SOURCE IDENTIFIED BY Welcome#1234
+  QUOTA 100M ON data;
+GRANT DWROLE TO DT_DEMO_SOURCE;
+GRANT DATA_TRANSFORM_USER TO DT_DEMO_SOURCE;
+BEGIN
+  ords.enable_schema(p_schema => 'DT_DEMO_SOURCE');
+END;
+/
+</copy>
+```
 
 
-Username: DT\_DEMO\_DW
-Quota: Unlimited
-Roles: DWROLE, DATA_TRANSFORMS_USER
+- Username: DT\_DEMO\_DW
+- Quota: Unlimited
+- Roles: DWROLE, DATA\_TRANSFORM\_USER (Granted and Default both checked in UI)
+- Web Access: ON
+
+You can either use user management UI or use the following SQL to create the user. Login as Admin users and execute the script by copy/paste into SQL worksheet.
+
+```
+<copy>
+CREATE USER DT_DEMO_DW IDENTIFIED BY Welcome#1234
+  QUOTA 100M ON data;
+GRANT DWROLE TO DT_DEMO_DW;
+GRANT DATA_TRANSFORM_USER TO DT_DEMO_DW;
+BEGIN
+  ords.enable_schema(p_schema => 'DT_DEMO_DW');
+END;
+/
+</copy>
+```
+
 
 In the rest of the workshop you will connect to individual users as per the instructions. Please note down the user URLs so that you can quickly connect to the appropriate user.
 
-## Task 2: Connect to the source user and import Source data
+## Task 2: Download database wallet file
+
+Connect to your Autonomous database console in OCI and download the wallet file. This file will be used later to create connection to the database.
+
+
+## Task 3: Connect to the source user and import Source data
 
 Connect to DT\_DEMO\_SOURCE user and navigate to the SQL worksheet. It is under **Development** sections in the **Database Actions**.
 
@@ -162,7 +200,7 @@ end;
 
     ![Screenshot of SQL worksheet](images/image_sql_worksheet_source.png)
 
-## Task 3: Connect to Data warehouse user and import demo data
+## Task 4: Connect to Data warehouse user and import demo data
 
 Connect to DT\_DEMO\_DW user and navigate to the SQL worksheet. It is under **Development** sections in the **Database Actions**.
 
