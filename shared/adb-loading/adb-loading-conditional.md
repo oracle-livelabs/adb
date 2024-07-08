@@ -363,4 +363,4 @@ See the documentation [Loading Data with Autonomous Database](https://docs.oracl
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Last Updated By/Date** - Magadan Ramona, Technical Program Manager, July 2024
