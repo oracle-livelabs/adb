@@ -5,7 +5,7 @@
 
 This lab will guide you through the steps to import demo data. 
 
-Estimated Time: 5 minutes
+Estimated Time: 10 minutes
 
 ### Prerequisites
 

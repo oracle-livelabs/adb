@@ -5,7 +5,7 @@
 
 This lab introduces you to a more complex data flow process. You will transform the data from multiple source tables and load it to a target.
 
-Estimated Time: 30 minutes
+Estimated Time: 35 minutes
 
 ### Objectives
 

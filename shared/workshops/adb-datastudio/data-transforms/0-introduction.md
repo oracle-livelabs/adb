@@ -4,7 +4,7 @@
 
 This workshop will show you how to use Data Transforms tool to create a data pipeline for data analysis, data science or for any ad-hoc data preparation need. Data can be loaded from a wide selection of heterogenous sources (databases and applications) and can go through complex transformations. You will learn how to define the data load and transforms process and schedule them for periodic execution.
 
-Estimated Workshop Duration: ?? hour, ?? minutes
+Estimated Workshop Duration: 02 hour, 30 minutes
 
 ### Who should use this Workshop?
 

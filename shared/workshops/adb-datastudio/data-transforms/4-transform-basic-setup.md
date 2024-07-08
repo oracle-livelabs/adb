@@ -5,7 +5,7 @@
 
 This lab will guide you to launch Data Transforms and to do basic setup before we start creating data pipeline jobs.
 
-Estimated Time: 10 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 

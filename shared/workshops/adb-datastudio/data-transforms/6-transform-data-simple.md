@@ -5,7 +5,7 @@
 
 This lab introduces you to the basic concepts of building a data flow process to transform the data and load it to a target.
 
-Estimated Time: 30 minutes
+Estimated Time: 35 minutes
 
 ### Objectives
 
