@@ -5,7 +5,7 @@
 
 This lab introduces you to a more complex data flow process. You will transform the data from multiple source tables and load it to a target.
 
-Estimated Time: 15 minutes
+Estimated Time: 35 minutes
 
 ### Objectives
 
@@ -55,7 +55,7 @@ FROM
 </copy>
 ```
 
-Click **Save**
+You can optionally validate it before saving in case there are syntax errors. Click **Save**
 
 ![Screenshot of DT ](images/image_dt_cmplx01_inline_view.png)
 
@@ -80,13 +80,13 @@ Now we will create a new data flow and use the in line view created earlier. In 
 2. Now we are in the data flow UI. In this data flow we will combine data from tables in different databases and load CUSTOMER\_SALES\_ANALYSIS table. The specification for this data flow is as follows:
 
     - Source tables:
-        From DATAWAREHOUSE connection: MOVIESALES\_CA, CUSTOMER\_VALUE and CUSTOMER\_ATTRIBUTE (inline SQL)
-        From SOURCE\_DATA connection: GENRE 
-    - Target table: CUSTOMER\_SALES\_ANALYSIS
+        From DT_DEMO_DW Schema: MOVIESALES\_CA, CUSTOMER\_VALUE and CUSTOMER\_ATTRIBUTE (inline SQL)
+        From DT\_DEMO\_SOURCE schema: GENRE 
+    - Target table: CUSTOMER\_SALES\_ANALYSIS in DT\_DEMO\_DW Schema
     - Data flow details:
         Join all the source tables. Clean GENRE table by removing leading and trailing spaces and converting to title case. Load the resulting data to the target table.
 
-    Note that only the DT_DEMO_DW schema is available in the left side entity list. This is because we had added this schema in the previous lab. For convenience all the schemas used in the project are displayed as a starting list and users can add more schemas as needed. Since we need to join data from GENRE table which is present in the DT\_DEMO\_SOURCE schema in the SOURCE\_DATA DB, we will add it to the list.
+    Note that only the DT\_DEMO\_DW schema is available in the left side entity list. This is because we had added this schema in the previous lab. For convenience all the schemas used in the project are displayed as a starting list and users can add more schemas as needed. Since we need to join data from GENRE table which is present in the DT\_DEMO\_SOURCE schema in the SOURCE\_DATA DB, we will add it to the list.
 
     Click on **Add a Schema** in the data entities section and select DT\_DEMO\_SOURCE schema in the SOURCE\_DATA connection.
 
@@ -94,7 +94,9 @@ Now we will create a new data flow and use the in line view created earlier. In 
 
     Click **OK**. Now you can see both the schemas in the left side entity list. You can expand the tree to see the tables.
 
-3. Now we are ready to build the data flow. Drag the source tables from the left side and **Join** transforms on the top to build the flow as shown in the screenshot below. Note that as you link tables to the join transform, it will automatically build the join condition based on the matching column names. You can navigate to the join properties to inspect and edit if needed. For now no need to check. We will move to the next step and fix any errors later.
+3. Now we are ready to build the data flow. Drag the source tables from the left side and **Join** transforms on the top to build the flow as shown in the screenshot below. 
+
+    *Note*: Join tables from the left side first. Starting with the join between MOVIESALES\_CA and CUSTOMER\_ATTRIBUES. As you link tables to the join transform, it will automatically build the join condition based on the matching column names. You can navigate to the join properties to inspect and edit if needed. For now no need to check. We will move to the next step and fix any errors later.
 
     ![Screenshot of DT partial](images/image_dt_cmplx06_analysis_df_part.png)
 
@@ -122,7 +124,9 @@ Now we will create a new data flow and use the in line view created earlier. In 
 
     Collapse the properties section.
 
-7. Now we simply need to load this into the target. Drag CUSTOMER\_SALES\_ANALYSIS table from the left side and link it to the data flow, making it complete.
+7. Now we simply need to load this into the target. Drag CUSTOMER\_SALES\_ANALYSIS table from the DT\_DEMO\_DW Schema on the left navigation pane and link it to the data flow, making it complete.
+
+    You can arrange the layout as per your liking or use the auto layout from the top menu.
 
     Save the data flow so that you don't lose your work.
 

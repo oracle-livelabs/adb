@@ -10,7 +10,7 @@
       {
         "title": "Get Started",
         "description": "Login to Oracle Cloud",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
       },
       {
           "title": "Lab 1: Provision an Autonomous Database",
@@ -37,13 +37,13 @@
         "filename": "../../5-transform-data-load.md"
       },
       {
-        "title": "Lab 5: Simple Data Transformation",
+        "title": "Lab 5: Transform data using a simple example",
         "description": "Transform data using simple use case",
         "type": "livelabs",
         "filename": "../../6-transform-data-simple.md"
       },
       {
-        "title": "Lab 6: Complex Data Transformation",
+        "title": "Lab 6: Transform data using complex example",
         "description": "Transform data using complex use case",
         "type": "livelabs",
         "filename": "../../7-transform-data-complex.md"
@@ -59,6 +59,12 @@
         "description": "Use scheduler to periodic execution",
         "type": "livelabs",
         "filename": "../../9-transform-data-schedule.md"
+      },
+      {
+        "title": "Lab 9: Deploy ODI Web",
+        "description": "Deploy ODI Web",
+        "type": "livelabs",
+        "filename": "../../Deploy/deploying-odi-web-edition.md"
       },
       {
         "title": "Need Help?",

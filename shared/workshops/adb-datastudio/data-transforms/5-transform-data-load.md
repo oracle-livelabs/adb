@@ -5,7 +5,7 @@
 
 This lab introduces you to the data load process from a source to target without any transformations. Data load job is defined for multiple tables in a schema and both full and incremental modes are supported.
 
-Estimated Time: 25 minutes
+Estimated Time: 30 minutes
 
 ### Objectives
 
@@ -56,6 +56,8 @@ In this task we will create a data load job to extract MOVIESALES\_CA, MOVIE and
 
     Note that in our workshop we are using the same Autonomous database for source and target connections to keep the setup simple. However source and target connections can be heterogenous and different. For example, source can be SQL Server DB and target can be Autonomous database.
 
+    *Note*: Saving takes a few minutes while the tool connects to the data source to collect the table listing and associated metadata.
+
     ![Screenshot of DT data load target](images/image_dt_dataload_target.png)
 
 2. Now we need to select tables and load options.
@@ -72,11 +74,11 @@ In this task we will create a data load job to extract MOVIESALES\_CA, MOVIE and
 
     ![Screenshot of DT data load def](images/image_dt_dataload_definition.png)
 
-3. Click on the floppy icon on the top to save the data load job definition.
+3. Click on Save button to save the data load job definition.
 
     ![Screenshot of DT data load save](images/image_dt_dataload_save.png)
 
-4. Click on the green arrow to execute the data load job. 
+4. Click on the execute button to start execution of the data load job.
 
     ![Screenshot of DT data load execute](images/image_dt_dataload_execute.png)
 
@@ -104,9 +106,11 @@ In this task we will create a data load job to extract MOVIESALES\_CA, MOVIE and
 
 3. Select MOVIESALES\_CA table and from the right side menu, select the data preview to look at the data.
 
+    *Note*: It takes few minutes for the table statistics to be collected by the target database and it may show no statistics in the beginning. However, you can see the data in the preview screen.
+
     ![Screenshot of DT movie sales data menu](images/image_moviesales_data_menu.png)
 
-    Note that the number of rows in the this tables is the same as the number of rows observed in the source DB as observed in the previous lab.
+    After the statistics is loaded, note that the number of rows in the this tables is the same as the number of rows observed in the source DB as observed in the previous lab.
 
     ![Screenshot of DT movie sales data in target](images/image_moviesales_data_target.png)
 

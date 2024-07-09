@@ -5,7 +5,7 @@
 
 This lab introduces you to the basic concepts of building a data flow process to transform the data and load it to a target.
 
-Estimated Time: 15 minutes
+Estimated Time: 35 minutes
 
 ### Objectives
 
@@ -89,8 +89,6 @@ In order to keep it simple, we will use the source table in the same DB schema. 
 
 9. Click on the trash icon on the top right to delete the unwanted attributes. Now you have only two attributes that we care about.
 
-    ![Screenshot of DT data transforms aggregate two attributes](images/image_dt_datatransforms08_agg_two_att.png)
-
 10. click on **Column Mapping** and fill in the attribute's expression as follows. You can drag the columns from the tree view to the expression and edit as needed. There is also full expression editor but we don't need it for such simple task.
 
     - CUST\_ID: MOVIESALES\_CA.CUST\_ID
@@ -156,7 +154,7 @@ In order to keep it simple, we will use the source table in the same DB schema. 
 
     ![Screenshot of DT data transforms status](images/image_dt_datatransforms19_exec_status.png)
 
-20. Click on the target table in the data flow and expand the properties section for data preview. Click on the eyes icon for data preview and you will the data loaded. You can see that customers are assigned values 1 to 5 in our table.
+20. Click on the target table in the data flow and expand the properties section for data preview. Click on the "Preview" icon to see/preview the data loaded in the table. You can see that customers are assigned values 1 to 5 in our table.
 
     ![Screenshot of DT data transforms data preview](images/image_dt_datatransforms20_exec_preview.png)
 

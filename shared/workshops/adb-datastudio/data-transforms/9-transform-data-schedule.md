@@ -5,7 +5,7 @@
 
 This lab introduces you to the in-built scheduler that allows you to schedule your data pipeline process
 
-Estimated Time: 5 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
