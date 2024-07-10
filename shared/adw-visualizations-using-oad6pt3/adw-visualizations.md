@@ -62,19 +62,11 @@ For simplicity's sake, in this exercise, we will use the Oracle Sales History (S
 
    ![Click Database Actions button.](./images/click-database-actions-button.png " ")
 
-2. A sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - ADMIN** and click **Next**.
+2. The Database Actions page opens. In the **Development** box, click **SQL**.
 
-   ![Enter login details and click Sign in.](./images/Picture100-16.png " ")
+    ![Click on SQL.](./images/ords-sql.png " ")
 
-3. Enter the ADMIN **Password** you specified when creating the database and click **Sign in**.
-
-    ![Enter the ADMIN password.](./images/Picture100-16-password.png " ")
-
-4. The Database Actions page opens. In the **Development** box, click **SQL**.
-
-    ![Click on SQL.](./images/Picture100-16-click-sql.png " ")
-
-5. In a SQL Worksheet, copy and execute the following script.  
+3. In a SQL Worksheet, copy and execute the following script.  
 
       ```
       <copy>drop view DV_SH_VIEW;
@@ -278,4 +270,4 @@ See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-wa
 
 - **Author** - Nilay Panchal, ADB Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, December 2021
+- **Last Updated By/Date** - Magadan Ramona, Technical Program Manager, July 2024
