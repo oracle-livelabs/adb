@@ -22,112 +22,9 @@ Access to an ADW and Data Catalog instances, if you choose to perform the steps.
 >**Note:**
 _**This is not a hands-on lab; instead, it is a demo of how to query data from different clouds: OCI Object Storage and Amazon S3 buckets.**_
 
-## Task 1: Navigate to the Data Load Page
+<!-- Comments:  -->
 
-If you already accessed the SQL Worksheet in the previous lab, click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab to display the **Data Load Dashboard**. You can now skip over to **Task 2**.
-
-If you closed the Web browser tab where the SQL Worksheet was displayed, navigate to the **Data Load** page as follows:
-
-1. Log in to the **Oracle Cloud Console**.
-
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
-
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
-
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
-
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
-
-## Task 2: Define an OCI Oracle Cloud Location
-
-In this task, we will get some customers information from a public OCI Object Storage bucket.
-
-In this task, we define a **Connection** to connect to a public Oracle Object Storage bucket in order to load data from the **`customer-contact.csv`** and **`customer-extension.csv`** files to create detailed customers tables.
-
-1. On the **Data Load** page, click the **CONNECTIONS** tile.
-
-    ![Click the Cloud Locations card.](./images/click-connections-oci.png " ")
-
-2. On the **Connections** page, click the **Create** drop-down list and then select **New Cloud Store Location** from the list.
-
-    ![Click Add Cloud Storage.](./images/click-new-cloud-store-location.png " ")
-
-3. Specify the following in the **Storage Settings** page 1 of the **Add Cloud Store Location** wizard:
-    + **Name:** Enter **`oci-data-lake`**.
-    + **Description:** Enter an optional description.
-    + Select the **Public Bucket** option.
-    + Accept the selected **Bucket URI** option.
-    + **Bucket URI:** Enter the URI for the public Object Storage bucket.
-
-        ```
-        <copy>
-        https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
-        </copy>
-        ```
-
-        ![Complete the Add Cloud Store Location.](./images/oci-cloud-settings.png =65%x*)
-
-4. Click **Next** to see the available objects in the selected bucket in the **Cloud Data** page 2 of the wizard. This bucket contains several folders. We will load the **`customer-contact.csv`** and **`customer-extension.csv`** files from their respective folders into our ADB instance and use them to create tables that will help us identify the potential customers churners.
-
-    ![Click Next to see the objects in the bucket.](./images/oci-cloud-data.png =65%x*)
-
-5. Click **Create**. The new **oci-data-lake** cloud location is displayed in the **Connections** page.
-
-    ![The cloud store location is created.](./images/oci-connection-created.png =65%x*)
-
-6. Click on the **Data Load** link in the breadcrumbs to return to the **Data Load** page.
-
-## Task 3: Load Data from the OCI Cloud Location and Create a Table
-
-In this task, we will load data and create the **customer\_contact** table in your Autonomous Database instance.
-
->**Note:** In **Lab 3: Load Data from Local Files**, we already loaded the **customer-extension.csv** file into our ADB instance; therefore, we won't perform this step. In addition, in **Lab 4: Link to Data in Public Object Storage Buckets**, we already linked to the **`customer_contact`** file and created the external table; however, in this task, we will load the same **`customer_contact`** data into our ADB instance and create a new database table under a new name. Querying data stored inside the database is much faster than querying data that is stored in external tables outside the database.
-
-1. On the **Data Load Dashboard**, click the **LOAD DATA** tile.
-
-    ![Click Load Data.](./images/click-load-data.png " ")
-
-2. On the **Load Data** page, click the **Cloud Store** tab. Select the newly created **oci-data-lake** cloud location that you created, if not already selected in the **Select Cloud Store Location or enter public URL** drop-down list. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this section to the data loading job section.
-
-    ![Load Data page.](./images/load-data-page.png " ")
-
-3. Drag the **`customer_contact`** folder and drop it onto the data loading job section.
-
-    ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
-
-4. A dialog box is displayed to prompt you whether or not if you want to load all objects in this folder matching **.csv** to a single target table. This folder contains a single file, **`customer_contact.csv`**. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
-
-    ![Click yes to load objects to a single table.](images/load-to-single-table.png =60%x*)
-
-    The **`customer_contact`** target table to be created for the selected **`.csv`** file is displayed in the data loading job section. If a warning message box is displayed, close it. Again, since we already have linked to the **`customer_contact`** file in a previous lab, the data load utility changed the name of the newly created external table to **`customer_contact_1`**.
-
-    >**Note:** You can click the **`customer_contact (23 MB)`** link to display the settings for the table that will be created. You can preview the external table and change its name, data type, and so on.
-
-    ![The customer_contact target table is displayed.](images/customer-contact-1-created.png)
-
-5. Click **Start** to start the load job. The **Start Load From Cloud Store** dialog box is displayed. Click **Run** to start the load job and to create the new external table.
-
-    ![Run the load job.](images/click-run.png)
-
-    If the load job is completed successfully, the data load card has a copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
-
-    ![Load job completed.](images/customer-contact-created.png)
-
-6. Navigate to the SQL Worksheet. Click **Database Actions | Data Load** in the banner to display the **Launchpad** page.
-
-7. Click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
-
-    ![Navigate to SQL Worksheet.](images/navigate-sql-worksheet.png)
-
-    The two tables that we created and will use in this demo are displayed in the **Navigator** tab, namely, **`CUSTOMER_CONTACT_1`** and **`CUSTOMER_EXTENSION`**.
-
-    ![The two tables are displayed.](images/two-tables-displayed.png)
-
-## Task 4: Define an Amazon S3 Cloud Location
+## Task 1: Define an Amazon S3 Cloud Location
 
 _**Note:** This is not a hands-on task; instead, it is a demo of how to define an Amazon S3 location._
 
@@ -178,7 +75,7 @@ In this task, we define a **Connection** to connect to our **`moviestream-churn`
 
 6. Click on the **Data Load** link in the breadcrumbs to return to the **Data Load** page.
 
-## Task 5: Link to Data from the AWS S3 Cloud Location and Create an External Table
+## Task 2: Link to Data from the AWS S3 Cloud Location and Create an External Table
 
 In this task, we will link to the `potential_churners.csv` data from the AWS S3 cloud location that we created. A link is preferred so that if the data changes, we don't have to re-load the data. We are always looking at up-to-date data.
 
@@ -196,7 +93,7 @@ In this task, we will link to the `potential_churners.csv` data from the AWS S3 
 
     ![The potential_churners target table is displayed.](images/link-job-completed.png)
 
-## Task 6: Query Data from the OCI and Amazon Data lakes
+## Task 3: Query Data from the OCI and Amazon Data lakes
 
 We now have the needed tables to analyze the data and identify the potential customers that might churn.
 
@@ -285,7 +182,6 @@ We now have the needed tables to analyze the data and identify the potential cus
 
     ![Query the potential_churn_customers table .](./images/query-potential_churn_customers.png " ")
 
-    
     You may now proceed to the next lab.
     
 ## Learn more
@@ -298,7 +194,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -309,4 +205,3 @@ under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
-

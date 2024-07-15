@@ -1,16 +1,16 @@
 {
-  "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle Autonomous Database",
+  "workshoptitle": "Load and transform data in Oracle Autonomous Database using Data Transforms",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
         "title": "Introduction",
-        "description": "Introduction to Data Studio",
+        "description": "Introduction to Data Transforms",
         "filename": "../../0-introduction.md"
       },
       {
         "title": "Get Started",
         "description": "Login to Oracle Cloud",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
       },
       {
           "title": "Lab 1: Provision an Autonomous Database",
@@ -19,63 +19,51 @@
           "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
       },
       {
-          "title": "Lab 2: Create a User",
-          "description": "Create a database user",
-          "type": "livelabs",
-          "filename": "../../../common/create-user.md"
-      },
-      {
-        "title": "Lab 3: Load demo data",
-        "description": "Load demo data for the Data Studio overview workshop",
+        "title": "Lab 2: Import demo data",
+        "description": "Import demo data for the Data Transforms workshop",
         "type": "livelabs",
         "filename": "../../3-demo-data.md"
       },
       {
-        "title": "Lab 4: Understand data analysis requirements",
-        "description": "Look at a fictitious data analysis project for requirements",
+        "title": "Lab 3: Basic Setup",
+        "description": "Basic setup before defining data load and data flow processes",
         "type": "livelabs",
-        "filename": "../../4-understand-requirements.md"
+        "filename": "../../4-transform-basic-setup.md"
       },
       {
-          "title": "Lab 5: Browse database objects",
-          "description": "Use Data Catalog to browse database objects",
-          "type": "livelabs",
-          "filename": "../../5-browse-objects.md"
+        "title": "Lab 4: Load data without transformation",
+        "description": "Load data without transformation",
+        "type": "livelabs",
+        "filename": "../../5-transform-data-load.md"
       },
       {
-        "title": "Lab 6: Load additional data",
-        "description": "Use Load Data to load additional data sets",
+        "title": "Lab 5: Transform data using a simple example",
+        "description": "Transform data using simple use case",
         "type": "livelabs",
-        "filename": "../../6-load-data.md"
+        "filename": "../../6-transform-data-simple.md"
       },
       {
-        "title": "Lab 7: Transform and prepare data",
-        "description": "Use Data Transforms to transform and prepare data",
+        "title": "Lab 6: Transform data using complex example",
+        "description": "Transform data using complex use case",
         "type": "livelabs",
-        "filename": "../../7-transform-data.md"
+        "filename": "../../7-transform-data-complex.md"
       },
       {
-        "title": "Lab 8: Analyze data",
-        "description": "Use Data Analysis to analyze data",
+        "title": "Lab 7: Create workflow for the entire data pipeline",
+        "description": "Use workflow to orchestrate multiple data load and data flow processes",
         "type": "livelabs",
-        "filename": "../../8-analyze-data.md"
+        "filename": "../../8-transform-data-workflow.md"
       },
       {
-        "title": "Lab 9: Explore data insights",
-        "description": "Use Data Insight to find hidden patterns",
+        "title": "Lab 8: Schedule jobs",
+        "description": "Use scheduler to periodic execution",
         "type": "livelabs",
-        "filename": "../../9-insight-in-data.md"
-      },
-      {
-        "title": "Lab 10: Clean demo data",
-        "description": "Clean demo data",
-        "type": "livelabs",
-        "filename": "../../10-clean-demo-data.md"
+        "filename": "../../9-transform-data-schedule.md"
       },
       {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
       }
     ]
 }
