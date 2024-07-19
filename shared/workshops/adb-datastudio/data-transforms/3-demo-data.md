@@ -1,75 +1,83 @@
-# Load demo data for the Data Studio overview workshop
+# Import demo data for the Data Transforms workshop
 
 
 ## Introduction
 
-This lab will guide you through the steps to load demo data. 
+This lab will guide you through the steps to import demo data. 
 
-Estimated Time: 5 minutes
+Estimated Time: 10 minutes
 
 ### Prerequisites
 
-- Created an Autonomous Data Warehouse instance
-- Created a new QTEAM user with appropriate roles
+- Created an Autonomous Database instance
 
-## Task 1: Access the SQL worksheet
+## Task 1: Create users for the workshop
 
-SQL worksheet is linked from the **Database Actions** home page.
+Connect to your Autonomous Database as Admin user and create two users as follows:
 
-In the previous lab, you created the database user **QTEAM**, and you should still be connected as user QTEAM. If you are already logged in as QTEAM, and on the Database Actions home page, you may go directly to Step 3. 
+DT\_DEMO\_SOURCE will be used to store some source data and DT\_DEMO\_DW is the data warehouse user. In the workshop we will load the data warehouse from the source data. For convenience we are using the same Autonomous database for both source and target. If you have more than one Autonomous database then you can create source user in one database and the data warehouse use in another.
 
-1. There are two ways to reach the Database Actions home page, where you can find Data Studio and other useful tools for your database.
+- Username: DT\_DEMO\_SOURCE
+- Quota: Unlimited
+- Roles: DWROLE, DATA\_TRANSFORM\_USER (Granted and Default both checked in UI)
+- Web Access: ON
 
-    - Via the Autonomous Database console page
-    - Directly via URI
+You can either use user management UI or use the following SQL to create the user. Login as Admin users and execute the script by copy/paste into SQL worksheet.
 
-    ### Access Database Actions via the Console
-
-    On the Autonomous Database Details page, click the **Database Actions** button:
-
-    ![Screenshot of the link to Database Actions from the database console page](images/image_db_console.png)
-
-    ### Access Database Actions directly via URI
-
-    When user QTEAM was created (in a previous step), a card appeared on the Database Users screen, similar to what is shown below. Notice the URI at the bottom of the card.
-
-    Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
-
-    ![Link to open Database Actions from the user login page](images/image_user_login.png)
-
-2. Once you have launched the Database Actions page, sign in as user QTEAM, with the password assigned previously, and click **Sign In**.
-
-    ![Database Actions Log-in screen with the user name](images/image_user_uri.png)
-
-3. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
-
-    ![The Database Actions home page](images/image_db_action.png)
+```
+<copy>
+CREATE USER DT_DEMO_SOURCE IDENTIFIED BY Welcome#1234
+  QUOTA 100M ON data;
+GRANT DWROLE TO DT_DEMO_SOURCE;
+GRANT DATA_TRANSFORM_USER TO DT_DEMO_SOURCE;
+BEGIN
+  ords.enable_schema(p_schema => 'DT_DEMO_SOURCE');
+END;
+/
+</copy>
+```
 
 
-## Task 2: Execute the script
+- Username: DT\_DEMO\_DW
+- Quota: Unlimited
+- Roles: DWROLE, DATA\_TRANSFORM\_USER (Granted and Default both checked in UI)
+- Web Access: ON
 
-1. Below is the script you need to execute to load demo data. Simply copy and paste this code into your SQL Worksheet.
+You can either use user management UI or use the following SQL to create the user. Login as Admin users and execute the script by copy/paste into SQL worksheet.
+
+```
+<copy>
+CREATE USER DT_DEMO_DW IDENTIFIED BY Welcome#1234
+  QUOTA 100M ON data;
+GRANT DWROLE TO DT_DEMO_DW;
+GRANT DATA_TRANSFORM_USER TO DT_DEMO_DW;
+BEGIN
+  ords.enable_schema(p_schema => 'DT_DEMO_DW');
+END;
+/
+</copy>
+```
+
+
+In the rest of the workshop you will connect to individual users as per the instructions. Please note down the user URLs so that you can quickly connect to the appropriate user.
+
+## Task 2: Download database wallet file
+
+Connect to your Autonomous database console in OCI and download the wallet file. This file will be used later to create connection to the database.
+
+
+## Task 3: Connect to the source user and import Source data
+
+Connect to DT\_DEMO\_SOURCE user and navigate to the SQL worksheet. It is under **Development** sections in the **Database Actions**.
+
+1. Below is the script you need to execute to load source data. Simply copy and paste this code into your SQL Worksheet.
 
     *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
 ```
 <copy>
-DROP TABLE CUSTOMER_CA;
- 
-CREATE TABLE CUSTOMER_CA 
-    ( 
-     CUST_ID        NUMBER , 
-     AGE            NUMBER , 
-     EDUCATION      VARCHAR2 (40) , 
-     GENDER         VARCHAR2 (20) , 
-     INCOME_LEVEL   VARCHAR2 (20) , 
-     MARITAL_STATUS VARCHAR2 (8) , 
-     PET            VARCHAR2 (40) 
-    ) 
-;
-
 DROP TABLE MOVIESALES_CA;
- 
+
 CREATE TABLE MOVIESALES_CA 
     ( 
      DAY_ID           DATE , 
@@ -153,16 +161,12 @@ CREATE TABLE TIME
     ) 
 ;
 
+
 set define on
 define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/prepareandanalyze'
 
 begin
- dbms_cloud.copy_data(
-    table_name =>'CUSTOMER_CA',
-    file_uri_list =>'&file_uri_base/CUSTOMER_CA.csv',
-    format =>'{"type" : "csv", "skipheaders" : 1}'
- );
- dbms_cloud.copy_data(
+dbms_cloud.copy_data(
     table_name =>'MOVIESALES_CA',
     file_uri_list =>'&file_uri_base/MOVIESALES_CA.csv',
     format =>'{"type" : "csv", "skipheaders" : 1}'
@@ -182,6 +186,100 @@ begin
     file_uri_list =>'&file_uri_base/TIME.csv',
     format =>'{"type" : "csv", "skipheaders" : 1}'
  );
+
+ FOR TNAME IN (SELECT table_name FROM user_tables  where table_name like 'COPY$%') LOOP
+ EXECUTE IMMEDIATE ('DROP TABLE ' || TNAME.table_name || ' CASCADE CONSTRAINTS PURGE');
+ END LOOP;
+end;
+/
+</copy>
+```
+2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+
+    >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+
+    ![Screenshot of SQL worksheet](images/image_sql_worksheet_source.png)
+
+## Task 4: Connect to Data warehouse user and import demo data
+
+Connect to DT\_DEMO\_DW user and navigate to the SQL worksheet. It is under **Development** sections in the **Database Actions**.
+
+1. Below is the script you need to execute to load source data. Simply copy and paste this code into your SQL Worksheet.
+
+    *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
+
+```
+<copy>
+DROP TABLE CUSTOMER_CA;
+
+CREATE TABLE CUSTOMER_CA 
+    ( 
+     CUST_ID        NUMBER , 
+     AGE            NUMBER , 
+     EDUCATION      VARCHAR2 (40) , 
+     GENDER         VARCHAR2 (20) , 
+     INCOME_LEVEL   VARCHAR2 (20) , 
+     MARITAL_STATUS VARCHAR2 (8) , 
+     PET            VARCHAR2 (40) 
+    ) 
+;
+
+CREATE TABLE AGE_GROUP 
+    ( 
+     MIN_AGE   NUMBER , 
+     MAX_AGE   NUMBER , 
+     AGE_GROUP VARCHAR2 (4000) 
+    ) 
+;
+
+DROP TABLE CUSTOMER_SALES_ANALYSIS;
+
+CREATE TABLE CUSTOMER_SALES_ANALYSIS
+(
+GENRE VARCHAR2(30 CHAR),
+AGE_GROUP VARCHAR2(4000 CHAR),
+GENDER VARCHAR2(20 CHAR),
+APP VARCHAR2(100 CHAR),
+DEVICE VARCHAR2(100 CHAR),
+OS VARCHAR2(100 CHAR),
+PAYMENT_METHOD VARCHAR2(100 CHAR),
+LIST_PRICE NUMBER(38),
+DISCOUNT_TYPE VARCHAR2(100 CHAR),
+DISCOUNT_PERCENT NUMBER(38),
+TOTAL_SALES NUMBER(38),
+EDUCATION VARCHAR2(40 CHAR),
+INCOME_LEVEL VARCHAR2(20 CHAR),
+MARITAL_STATUS VARCHAR2(8 CHAR),
+PET VARCHAR2(40 CHAR),
+CUST_VALUE NUMBER
+);
+
+DROP TABLE CUSTOMER_VALUE;
+
+CREATE TABLE CUSTOMER_VALUE 
+    ( 
+     CUST_ID        NUMBER , 
+     CUST_VALUE NUMBER
+    ) 
+;
+
+set define on
+define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/prepareandanalyze'
+
+begin
+ dbms_cloud.copy_data(
+    table_name =>'CUSTOMER_CA',
+    file_uri_list =>'&file_uri_base/CUSTOMER_CA.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+ dbms_cloud.copy_data(
+    table_name =>'AGE_GROUP',
+    file_uri_list =>'&file_uri_base/AGE_GROUP.csv',
+    format =>'{"type" : "csv", "skipheaders" : 1}'
+ );
+ FOR TNAME IN (SELECT table_name FROM user_tables  where table_name like 'COPY$%') LOOP
+ EXECUTE IMMEDIATE ('DROP TABLE ' || TNAME.table_name || ' CASCADE CONSTRAINTS PURGE');
+ END LOOP;
 end;
 /
 </copy>
@@ -197,8 +295,7 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
-- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
-
+- Contributors - Mike Matthews
+- Last Updated By - Jayant Mahto, June 2024
 
 Copyright (C)  Oracle Corporation.

@@ -42,45 +42,45 @@ In Tasks 1 and 2, you will create one ADW table, **CHANNELS_LOCAL**, and load it
 
 1. In your database's details page, click the **Database Actions** button.
 
-    ![Click the Database Actions button](./images/click-database-actions-button.png " ")
+    ![Click the Database Actions button](./images/view-all-db-actions.png " ")
 
-2.  A sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - admin**, and click **Next**. Enter the administrator **Password** you specified when creating the database. Click **Sign in**.
+<!-- 2.  A sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - admin**, and click **Next**. Enter the administrator **Password** you specified when creating the database. Click **Sign in**.
 
-    ![Enter the admin password.](./images/Picture100-16-password.png " ")
+    ![Enter the admin password.](./images/Picture100-16-password.png " ") -->
 
-3. The Database Actions page opens. In the **Data Tools** section, click **DATA LOAD**.
+2. The Database Actions Launchpad page opens. In the **Data Studio** section, click **Data Load**.
 
-    ![Click SQL.](./images/click-data-load.jpg " ")
+    ![Click SQL.](./images/ords-data-load.png " ")
 
-4. Leave the default selections, **LOAD DATA** and **LOCAL FILE**, and click **Next**.
+3. Select **LOAD DATA**.
 
-    ![Select LOAD DATA and LOCAL FILE and click Next.](./images/datatools-dataload-2.png " ")
+    ![Select LOAD DATA.](./images/ords-load-data-select.png " ")
 
-5. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the *channels.csv* file from the directory where you downloaded onto the Drag and Drop target. Or select *channels.csv* using the Select Files pop-up dialog.
+4. The Local Files page enables you to drag and drop files to upload, or you can select files. Drag the *channels.csv* file from the directory where you downloaded onto the Drag and Drop target. Or select *channels.csv* using the Select Files pop-up dialog.
 
-    ![Drag and drop or select the file.](./images/datatools-dataload-drop-target.png " ")
+    ![Drag and drop or select the file.](./images/ords-load-files.png " ")
 
-6. When the upload is complete, you could simply click the **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the 3-dotted ellipsis menu and click the **Settings** button labeled with a pencil symbol.
+5. When the upload is complete, you could simply click the **Start** button and click **Run** to run the data load job, but let's modify the data load job slightly. Click the **Settings** button labeled with a pencil symbol.
 
     ![Modify the data load job settings.](./images/click-settings-to-modify-data-load-job.png " ")
 
-7. A page opens for the local channels.csv file that you will be loading. Take a moment to examine the preview information and loading options. Change the target table name from *CHANNELS* to *CHANNELS_LOCAL*. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types. Click **Close** in the lower right corner of the page.
+6. A page opens for the local channels.csv file that you will be loading. Take a moment to examine the preview information and loading options. Change the target table name from *CHANNELS* to *CHANNELS_LOCAL*. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL. In the mappings section, notice that you can change the target column names and data types. Click **Close** in the lower right corner of the page.
 
     ![Change the target table name.](./images/change-target-table-name.png " ")
 
-8. Notice that the target table name has changed to *CHANNELS_LOCAL*. Click **Start**, and then click **Run** in the confirmation dialog.
+7. Notice that the target table name has changed to *CHANNELS_LOCAL*. Click **Start**, and then click **Run** in the confirmation dialog.
 
     ![Run the data load.](./images/run-the-data-load.png " ")
 
-9. When the load job finishes, a green check mark appears. Click **Done**.
+8. When the load job finishes, a green check mark appears.
 
     ![A green check mark appears.](./images/load-finishes-green-check-mark.png " ")
 
-10. Return to the initial **Database Actions Launchpad**. In the **Data Studio** section, click **Catalog**.
+9. Return to the initial **Database Actions Launchpad**. In the **Data Studio** section, click **Catalog**.
 
     ![Click Catalog in the Database Actions page.](./images/click-catalog.png " ")
 
-11. The Catalog shows the *CHANNELS_LOCAL* table has been successfully created. You can click the table name to see the data.
+10. The Catalog shows the *CHANNELS_LOCAL* table has been successfully created. You can click the table name to see the data.
 
     ![View the new table in the Catalog.](./images/view-new-table.png " ")
 
@@ -204,25 +204,25 @@ In the first part of this lab, you loaded data from a file that you located on y
 
 1. First, define a **Cloud Location** to connect to the Oracle Object Store. To begin this process you need to navigate back to the **Data Load** page. In your ADW Finance Mart database's details page, click the **Database Actions** button.
 
-    ![Click the Database Actions button](./images/click-database-actions-button.png " ")
+    ![Click the Database Actions button](./images/view-all-db-actions.png " ")
 
-2.  The sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - admin**, and click **Next**. Enter the administrator **Password** you specified when creating the database. Click **Sign in**.
+<!-- 2.  The sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - admin**, and click **Next**. Enter the administrator **Password** you specified when creating the database. Click **Sign in**.
 
-    ![Enter the admin password.](./images/Picture100-16-password.png " ")
+    ![Enter the admin password.](./images/Picture100-16-password.png " ") -->
 
-3. The Database Actions page opens. In the **Data Tools** section, click **DATA LOAD**.
+2. The Database Actions Launchpad page opens. In the **Data Studio** section, click **Data Load**.
 
-    ![Click Data Load.](./images/click-data-load.jpg " ")
+    ![Click Data Load.](./images/ords-data-load.png " ")
 
-4. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your object store.
+3. On the **Data Load** main page, click the **Connections** card so you can define a new connection to your object store.
 
-    ![Click the Cloud Locations card.](./images/click-cloud-locations-card.png " ")
+    ![Click the Cloud Locations card.](./images/data-load-connections.png " ")
 
-5. Click **Add Cloud Storage**.
+4. Click **Create**, then **New Cloud Store Location**.
 
-    ![Click Add Cloud Storage.](./images/click-add-cloud-storage.png " ")
+    ![Click Add Cloud Storage.](./images/new-cloud-store.png " ")
 
-6. Complete the **Add Cloud Storage** page.
+5. Complete the **Add Cloud Storage** page.
     + Specify the name **ADWCLab** and a description.
     + Choose **Oracle** as the cloud store, since you will be loading from your Oracle Object Store bucket.
     + Specify the URI and bucket that you recorded in Task 6.
@@ -233,30 +233,30 @@ In the first part of this lab, you loaded data from a file that you located on y
     + Specify your Oracle Cloud Infrastructure user name.
     + Copy and paste the Auth Token that you generated in Task 7. Click **Create**.
 
-    ![Complete the Add Cloud Storage page.](./images/complete-add-cloud-storage-page-livelabs.png " ")
+    ![Complete the Add Cloud Storage page.](./images/add-credentials-cloud-storage.png " ")
 
-7. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load data files from your bucket. Navigate back to the main Data Load page again using the breadcrumb link in the upper left corner. Click the two cards for **LOAD DATA** from **CLOUD STORAGE** and then click the **Next** button.
+6. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to link data files from your bucket. Navigate back to the main Data Load page again using the breadcrumb link in the upper left corner. Click the two cards for **LOAD DATA** from **CLOUD STORAGE** and then click the **Next** button.
 
-    ![Choose LOAD DATA and CLOUD STORAGE.](./images/choose-load-data-and-cloud-storage.png " ")
+    ![Choose LOAD DATA and CLOUD STORAGE.](./images/choose-link-data-and-cloud-storage.png " ")
 
-8. Now you see a file browser-like view of your Object Store. Let's practice the easy drag-and-drop method of loading files by multi-selecting the `channels.csv` and `countries.csv` files in the left part of the screen. Drag and drop these files onto the canvas on the right.
+7. Now you see a file browser-like view of your Object Store. Let's practice the easy drag-and-drop method of loading files by multi-selecting the `channels.csv` and `countries.csv` files in the left part of the screen. Drag and drop these files onto the canvas on the right.
 
     ![Drag the file onto the canvas.](./images/drag-files-onto-canvas.png " ")
 
-9. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. Click the **pencil** button for the `channels.csv` and `countries.csv` tables.
+8. As before, you can edit the properties of your new data load job by clicking the **pencil** button on the right-hand side of the card. Click the **pencil** button for the `channels.csv` and `countries.csv` tables.
 
     ![Click the pencil button.](./images/click-pencil-button.png " ")
 
-10. You can use this page to quickly review the properties sheet and make any changes to column names or data types. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL.
+9. You can use this page to quickly review the properties sheet and make any changes to column names or data types. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the ADW database, without the need to predefine the table in SQL.
 
     - For `channels.csv`, change the target table name to **CHANNELS\_DB\_TOOLS**.
     - For `countries.csv`, change the target table name to **COUNTRIES\_DB\_TOOLS**.
 
     ![Review the properties sheet.](./images/review-properties-sheet.png " ")
 
-11. When you are satisfied with the format, close the form and then click the **green arrow** button to start your data load job.
+10. When you are satisfied with the format, close the form and then click the **green arrow** button to start your data load job.
 
-    ![Click green arrow button to start data load job.](./images/click-green-arrow-button-start-data-load.png " ")
+    ![Click green arrow button to start data load job.](./images/click-start-button-start-data-load.png " ")
 
 > **Note:** The target tables loaded up to this point were for practice using the Database Tools user interface. In the next task, you will load a set of tables that will be used in subsequent labs.
 
@@ -279,7 +279,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
 1. Click the SQL tile to open SQL Worksheet.
 
-  ![Open SQL Worksheet](images/open-sql-web-dev.png)
+  ![Open SQL Worksheet](images/ords-sql.png)
 
 2. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
 
@@ -363,4 +363,4 @@ See the documentation [Loading Data with Autonomous Database](https://docs.oracl
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Last Updated By/Date** - Magadan Ramona, Technical Program Manager, July 2024
