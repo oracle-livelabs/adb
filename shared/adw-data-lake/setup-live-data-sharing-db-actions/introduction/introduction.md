@@ -23,7 +23,8 @@ In this workshop, you will:
 * Create a data share provider user that creates and manages the data share and the recipients of the data share
 * Create, populate, and publish a data share
 * Create and authorize a data share recipient
-* Create a data share consumer and consume the data as a recipient
+* Create a data share consumer
+* Subscribe to the share provider and consume the data as a recipient
 
 ### Prerequisites
 
