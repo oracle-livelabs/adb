@@ -12,7 +12,7 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-* Create a provider id that enables recipients on to identify you.
+* Create a provider id that enables recipients to identify you.
 * Create a new data share as the **`share_provider`** user.
 * Add the **`customer_contact`** table from the previous lab to the data share.
 * Create a new data share recipient named **`training_recipient`**.

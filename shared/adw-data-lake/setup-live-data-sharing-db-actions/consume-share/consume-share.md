@@ -37,11 +37,13 @@ Live data shared with you through data sharing is not automatically available fo
 
     ![click the consume share tile.](images/click-consume-share.png)
 
-2. Click the **+ Subscribe to Share Provider** drop-down list, and then click   the **Subscribe to Live Share Provider** option.
+2. Click the **+ Subscribe to Share Provider** drop-down list, and then click the **Subscribe to Live Share Provider** option.
 
     ![click Subscribe to Share Provider.](images/click-subscribe-provider.png)
 
     The **Subscribe to Share Provider** wizard is displayed.
+
+    >**Note:** The **Available Live Share Providers in the last 7 Days** section displays the list of available Live Share Providers in the last 7 days. You can click the **+** sign to subscribe to a Live Share.
 
 3. On the **Provider Settings** page 1 of the wizard, provide the following information:
 
@@ -66,17 +68,19 @@ Live data shared with you through data sharing is not automatically available fo
 
     ![The Link Cloud Object page is displayed.](images/link-data-page.png)
 
-## Task 3: Create an External Table over the Shared Table
+## Task 3: Create a View over the Shared Table
+
+In this task, you create a view based on the **`CUSTOMER_CONTACT`** table that was included in the live data share. A view is a logical table based on one or more tables or views. A view contains no data itself. The tables upon which a view is based are called base tables.
 
 1. Click the drop-down list and select the **`TRAINING_SHARE`**, if needed. You might need to click the **Refresh** icon to display the **`TRAINING_SHARE`**. Drill-down on the **`TRAINING_SHARE`** data share node to display the objects in it. Drag and drop the **`CUSTOMER_CONTACT`** shared table to add it to the data link job.
 
     ![Drag and drop the shared table onto the canvas.](images/drag-and-drop-share.png)
 
-2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT`** external table will be created on top of the **`CUSTOMER_CONTACT`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click the **Settings** icon (pencil).
+2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT`** view will be created on top of the **`CUSTOMER_CONTACT`** table that was shared with you. Before you create the view, change its name from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click the **Settings** icon (pencil).
 
     ![The Link Cloud Object page is displayed.](images/shared-table-added.png)
 
-3. In the **Link Data from Cloud Store Location SHARE_PROVIDER.CUSTOMER\_CONTACT** dialog box, change the name of the external table that will be generated to **`CUSTOMER_CONTACT_SHARE`**, and then click **Close**.
+3. In the **Link Data from Cloud Store Location SHARE_PROVIDER.CUSTOMER\_CONTACT** dialog box, change the name of the view that will be generated to **`CUSTOMER_CONTACT_SHARE`**, and then click **Close**.
 
     ![Change the table name.](images/change-table-name.png)
 
@@ -84,7 +88,7 @@ Live data shared with you through data sharing is not automatically available fo
 
     ![The changed table name is displayed.](images/table-name-changed.png)
 
-4. Click **Start**. A **Start Link from Cloud Store** dialog box is displayed. Click **Run**. When the job completes successfully, a link icon is displayed. The **`CUSTOMER_CONTACT_SHARE`** external table is created.
+4. Click **Start**. A **Start Link from Cloud Store** dialog box is displayed. Click **Run**. When the job completes successfully, a link icon is displayed. The **`CUSTOMER_CONTACT_SHARE`** view is created.
 
     ![The link job is completed.](images/link-job-complete.png)
 
