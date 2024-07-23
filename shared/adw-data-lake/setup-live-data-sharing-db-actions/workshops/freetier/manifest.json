@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Implement Data Sharing with ADB Data Studio",
+    "workshoptitle": "Set up live data sharing between Oracle Databases using Database Actions",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
     "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md",
@@ -26,7 +26,7 @@
             "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
         },
         {
-            "title": "Lab 2: Create a User and an OCI Credential",
+            "title": "Lab 2: Create Share Provider and Share Consumer Users",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
