@@ -22,6 +22,7 @@ In this workshop, you will:
 * Use the Select AI demo application to chat with your data in your own language
 
 ### Oracle MovieStream Business Scenario
+
 The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to ask questions about movies, customers who watch movies, and the movies they decide to watch.
 
 You may now proceed to the next lab.
