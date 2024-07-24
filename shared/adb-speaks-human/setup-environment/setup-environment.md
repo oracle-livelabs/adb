@@ -13,7 +13,7 @@ This workshop focuses on teaching you how to setup and use generative AI to quer
 
 The automation uses a predefined OCI Cloud Stack Template that contains all the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure documentation.
 
-Autonomous Database supports both the **OpenAI** and **Cohere** models. In the second part of the workshop, you will set up a developer account on **OpenAI**.
+Autonomous Database supports models from **OCI Generative AI**, **Azure OpenAI**, **OpenAI**, and **Cohere**. This workshop will use the **Llama 3** model that's delivered with OCI Generative AI.
 
 Estimated Time: 5 minutes.
 
@@ -21,10 +21,12 @@ Estimated Time: 5 minutes.
 
 In this lab, you will:
 
-* Create a developer account with OpenAI
 * Run the stack to perform all the prerequisites required to analyze data
 
-## Task 1: Sign up for Access to a Large Language Model (LLM)
+<!---
+Removed the following as Task 1 since we will start using OCI Generative AI
+
+Sign up for Access to a Large Language Model (LLM)
 
 Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
 
@@ -79,8 +81,9 @@ Create a secret key as follows:
     ![Create a new secret](images/create-secret-key-db.png "")
 
     >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
+--->
 
-## Task 2: Create an OCI Compartment
+## Task 1: (Optional) Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
@@ -109,6 +112,29 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
    The **Compartments** page is re-displayed and the newly created compartment is displayed in the list of available compartments. You can use the compartment for your cloud services!
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
+
+## Task 2: Create Policy to Enable Access to OCI Generative AI
+
+Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
+
+1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
+
+2. Click on **Create policy** and paste the following into the appropriate fields:
+
+    >**Note:** Slide the **Show manual editor** control to display the text field in order to paste the policy.
+
+    * **Name:** `PublicGenAI`
+    * **Description:** `Public Gen AI Policy`
+    * **Compartment:** Select your own compartment
+    * **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
+    
+        > **Note:** Substitute `training-adw-compartment` in the above policy with your own compartment's name.
+
+3. Click **Create**.
+
+    ![Create policy](./images/create-policy.png "")
+    
+>**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
 
 ## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
 
@@ -228,7 +254,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
