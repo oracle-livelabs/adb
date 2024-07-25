@@ -119,14 +119,14 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
 
-2. Click on **Create policy** and paste the following into the appropriate fields:
+2. Click **Create policy** and specify the following into the appropriate fields:
 
     >**Note:** Slide the **Show manual editor** control to display the text field in order to paste the policy.
 
     * **Name:** `PublicGenAI`
     * **Description:** `Public Gen AI Policy`
     * **Compartment:** Select your own compartment
-    * **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
+    * **Policy Builder:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
     
         > **Note:** Substitute `training-adw-compartment` in the above policy with your own compartment's name.
 
@@ -141,8 +141,8 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
 Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and install the Select AI demo application that was built using APEX.
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the button below:
-
-    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-Select-AI-demonstration-RM.zip" class="tryit-button">Deploy workshop</a>
+    
+    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip" class="tryit-button">Deploy workshop</a>
 
     The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
@@ -157,24 +157,26 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
     >**Note:** When you access the **Create Stack** page, the **US East (Ashburn)** region is selected by default. This is where the stack will be created. If you want to create the stack in a different region, select that region from the **Regions** drop-down list in the Console's banner.
 
-  ![The Stack information step 1 of the wizard](./images/create-stack.png "")
+    ![The Stack information step 1 of the wizard](./images/create-stack.png "")
 
 3. In the **Configure variables** step 2 of the wizard, provide the following:
-    * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `ca-toronto-1` region.
+    * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `us-ashburn-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
-    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
+    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. _Replace this name with your own database name_. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
 
-    >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
-    
+        >**Note:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+
     * **Do you want an always Free Oracle Autonomous Database instance?** Accept the default **`false`** value. Select **`true`** from the drop-down list if you want to deploy an Always Free database.
 
         ![Provision an always free ADB instance](./images/provision-always-free.png "")
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
-    * **Secret API key used to connect to AI model:** Enter your secret key. If you don't have one, follow the instructions in **Task 1** in this lab to obtain a secret key.
+    
+        >**Note:** In the **Workshop Settings** section, if a **Secret API key used to connect to AI model** field is displayed, that is not **_not Required_** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
+   
     * For the other fields, accept the default selections.
     
-    ![The Configure variables step 2 of the wizard](./images/configure-variables.png =110%x*)
+        ![The Configure variables step 2 of the wizard](./images/configure-variables-updated.png " ")
 
 4. Click **Next**. If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 

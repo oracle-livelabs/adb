@@ -99,7 +99,7 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.
 
-    >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
+    >**Note:** In the **Workshop Settings** section, the **Secret API key used to connect to AI model** field is **_not Required_** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png =80%x*)
 
