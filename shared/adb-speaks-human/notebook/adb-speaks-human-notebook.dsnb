@@ -562,7 +562,7 @@
         "col" : 0,
         "sizeX" : 0,
         "width" : 4,
-        "title" : "Action: showsql",
+        "title" : "Action: explainsql",
         "hasTitle" : true,
         "message" : [
           "%script",
@@ -1244,7 +1244,7 @@
           "declare",
           "    l_prompt varchar2(4000) := 'Who is Tom Hanks?';",
           "    l_response clob;",
-          "    l_profile_name varchar2(100) := 'openai_gpt35';",
+          "    l_profile_name varchar2(100) := 'genai';",
           "begin",
           "    l_response := dbms_cloud_ai.generate(",
           "                    prompt          => l_prompt,",

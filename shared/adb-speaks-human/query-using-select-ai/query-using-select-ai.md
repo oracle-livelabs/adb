@@ -257,7 +257,7 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     ![Invalidate the session.](./images/invalidate-session.png =60%x*)
 
-6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
+5. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
 
   ![Run all paragraphs](images/run-all-paragraph.png)
 

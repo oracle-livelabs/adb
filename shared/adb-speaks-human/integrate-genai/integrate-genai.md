@@ -72,10 +72,10 @@ In ADB, enable the use of resource principals for the **`MOVIESTREAM`** user.
 
 A Select AI profile encapsulates connection information for an AI provider. This includes:
 
-1. A security credential (i.e. the resource principal)
+1. A security credential (e.g. the resource principal)
 2. The name of the provider
-3. The name of the LLM
-
+3. The name of the LLM (optional)
+4. A list of target tables that will be used for natural language queries (required when using NL2SQL)
 You can create as many profiles as you need, which is useful when comparing the quality of the results of different models.
 
 For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
@@ -83,23 +83,28 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 >**Note:** The deployment script created a Select AI profile using the code below: 
 
 ```
-BEGIN
-    -- drop the AI profile
-    DBMS_CLOUD_AI.drop_profile (
-        profile_name => 'genai',
-        force => true
-        );
+begin    
 
-    -- create an AI profile that uses the default COHERE model on OCI
-    DBMS_CLOUD_AI.create_profile(
+    -- Create an AI profile that uses the default LLAMA model on OCI
+    dbms_cloud_ai.create_profile(
         profile_name => 'genai',
         attributes =>       
             '{"provider": "oci",
-            "credential_name": "OCI$RESOURCE_PRINCIPAL"
+            "credential_name": "OCI$RESOURCE_PRINCIPAL",
+            "comments":"true",            
+            "object_list": [
+                {"owner": "MOVIESTREAM", "name": "GENRE"},
+                {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
+                {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
+                {"owner": "MOVIESTREAM", "name": "STREAMS"},            
+                {"owner": "MOVIESTREAM", "name": "MOVIES"},
+                {"owner": "MOVIESTREAM", "name": "ACTORS"}
+             ]
             }'
         );
-END;
-/        
+        
+end;
+/      
 ```
 
 1. Sign into the SQL worksheet as the **`MOVIESTREAM`** user with the password **`watchS0meMovies#`**. On the **Database Actions Launchpad** page, click the **Development** tab, and then click the **SQL** tab. The SQL Worksheet is displayed.
@@ -108,56 +113,66 @@ END;
 
     ![Moviestream password](./images/moviestream-output-pswd.png "")
 
-2. Create an AI profile for the **Meta Llama 2 Chat model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+2. Create an AI profile for the **Meta Llama 3 model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     BEGIN
-    -- drops the profile if it already exists
+        -- drops the profile if it already exists
         DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'OCIAI_LLAMA',
+            profile_name => 'ociai_llama',
             force => true
         );     
-        -- create a new profile that uses a specific model
-        DBMS_CLOUD_AI.create_profile(
-            profile_name => 'OCIAI_LLAMA',
-            attributes => '{"provider":"oci",
-                "model": "meta.llama-2-70b-chat",
-                "credential_name":"OCI$RESOURCE_PRINCIPAL",
-                "oci_runtimetype":"LLAMA"
-            }');
-    END;
+
+        -- Meta Llama 3 (this is the default model, so you could skip the model attribute if you like)                                                                     
+        DBMS_CLOUD_AI.create_profile (                                              
+            profile_name => 'ociai_llama',
+            attributes   => 
+            '{"provider": "oci",
+                "credential_name": "OCI$RESOURCE_PRINCIPAL",
+                "object_list": [
+                    {"owner": "moviestream", "name": "GENRE"},
+                    {"owner": "moviestream", "name": "CUSTOMER"},
+                    {"owner": "moviestream", "name": "PIZZA_SHOP"},
+                    {"owner": "moviestream", "name": "STREAMS"},            
+                    {"owner": "moviestream", "name": "MOVIES"},
+                    {"owner": "moviestream", "name": "ACTORS"}
+                ],
+                "model": "meta.llama-3-70b-instruct"
+                }');
+    END;                                                                         
     /
     </copy>
     ```
     ![Create AI profile](./images/create-llama.png "")
 
-3. Create an AI profile for the **Cohere model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+3. Create an AI profile for the **Cohere model**. This model will not be used for SQL generation - it will only be used for generating innovative content. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
     
     ```
     <copy>
-    BEGIN
-    -- drops the profile if it already exists
+    BEGIN                                                                        
+        -- drops the profile if it already exists
         DBMS_CLOUD_AI.drop_profile(profile_name => 'OCIAI_COHERE', force => true);    
 
-    -- create a new profile that uses COHERE.COMMAND
-        DBMS_CLOUD_AI.create_profile(
+        DBMS_CLOUD_AI.CREATE_PROFILE(                                              
             profile_name => 'OCIAI_COHERE',
-            attributes => '{"provider":"oci",
-            "model": "cohere.command",
-            "credential_name":"OCI$RESOURCE_PRINCIPAL",
-            "oci_runtimetype":"COHERE"}');
-    end;
+            attributes   => '{"provider": "oci",
+                                "credential_name": "OCI$RESOURCE_PRINCIPAL",                        
+                                "model": "cohere.command-r-plus",
+                                "oci_apiformat":"COHERE"
+                            }');
+    END;
     /
     </copy>
     ```
     ![Create AI profile](./images/create-cohere.png "")
 
+
 ## Task 3: Test the AI profile
 
 We will use the PL/SQL API to generate a response from the Cohere model. This example is using the **chat** action. It is not using any private data coming from your database.
 
-1. Test the LLM and learn about Autonomous Database as the **`MOVIESTREAM`** user using the **Cohere model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+1. Test the LLM and learn about Autonomous Database as the MOVIESTREAM user using the **Cohere model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -182,7 +197,6 @@ We will use the PL/SQL API to generate a response from the Cohere model. This ex
     </copy>
     ```
     ![Generate sentence-like response](./images/llama-chat.png "")
-
 
 ## Summary
 You learned how to integrate Autonomous Database with OCI Generative AI. And, you chatted with different models hosted on OCI Generative AI. Next, let's see how to use our private data with LLMs.
