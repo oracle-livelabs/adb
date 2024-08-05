@@ -97,7 +97,15 @@ We are now creating a nonpartitioned table that will become our candidate table 
 	-- keep the random strings apart when written to storage, which will  
 	-- make compression less effective. We want to make the table large
 	-- as quickly as possible so that it qualifies for auto partitioning.
-	  
+	--
+	-- If you want to use a paid (non-free) Autonomouse Database environment, 
+	-- the minimum size for the table is 64GB. You can create a suitable table 
+	-- by changing the following line in the SQL statement below.
+	-- From this:
+	--    from dual connect by level <= 3 )
+	-- To this:
+	--    from dual connect by level <= 30 )
+	--
 	alter session set optimizer_ignore_hints = false;
 	  
 	-- Table data is compressed by default, so we will insert random data 
@@ -142,4 +150,4 @@ A candidate table for automatic partitioning must be at least 5 GB in size in a 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Dec 2021 
 * **Contributor** - Hermann Baer
-* **Last Updated By/Date** - Nigel Bayliss, May 2024
+* **Last Updated By/Date** - Nigel Bayliss, Aug 2024
