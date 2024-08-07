@@ -26,7 +26,7 @@ In this lab, you will:
 
 <if type="freetier">
 
-2. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **Region** in the top, right-hand corner of the page.
+2. If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in your home region where Always Free Resources are available. You can see your current **Region** in the top, right-hand corner of the page. Please go to your home region.
 
     ![Select region on the far upper-right corner of the page.](./images/region.png " ")
 
@@ -39,11 +39,7 @@ In this lab, you will:
 
 </if>
 
-3. Click the navigation menu in the upper left to show top-level navigation choices.
-
-    ![Oracle home page.](./images/navigation.png " ")
-
-4. Click on **Oracle Database** and choose **Autonomous JSON Database**.
+3. Click the navigation menu in the upper left to show top-level navigation choices. Click on **Oracle Database** and choose **Autonomous JSON Database**.
 
     ![Click Autonomous JSON Database](./images/adb-json.png " ")
 
@@ -58,7 +54,7 @@ In this lab, you will:
     ![Check the workload type](./images/workload-type.png " ")
 
 <if type="freetier">
-   > **Note:** Avoid the use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services.
+   > **Note:** You cannot use of the ManagedCompartmentforPaaS compartment as this is an Oracle default used for Oracle Platform Services. 
 </if>
 
 ## Task 2: Create the AJD Instance
@@ -113,11 +109,13 @@ In this lab, you will:
     - __Always Free__ - For this lab, we recommend you leave Always Free unchecked.
     </if>
     - __Choose database version__ - Select 19c from the database version. Note: This lab should work on 21c AJD database as well.
-    - __OCPU count__ - Number of OCPUs for your service. For this lab, leave the default __1 OCPU__. If you choose an Always Free database, it comes with 1 OCPU.
-    - __Storage (TB)__ - Select your storage capacity in terabytes. For this lab, leave the default __1 TB__ of storage. If you choose an Always Free database, it comes with 20 GB of storage.
-    - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand.
+    - __ECPU count__ - Number of ECPUs for your service. For this lab, leave the default __2 ECPU__. If you choose an Always Free database, it comes with preconfigured and fixed cpu capabilities.
+    - __Storage__ - Select your storage capacity in gigabytes. For this lab you can reduce the storage to the minimum of __20 GB__ of storage. If you choose an Always Free database, it comes with 20 GB of storage by default.
+    - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand. (While this will not happen as part of the workshop, we don't know what else you are going to experiment with.)
 
     *Note: You cannot scale up/down an Always Free autonomous database.*
+
+    If you are planning to use this autonomous database solely for the purpose of this workshop, you can reduce the backup retention also to the minimum of __1 day__.
 
     ![Choose the remaining parameters.](./images/configuration.png " ")
 
@@ -204,9 +202,10 @@ On the OCI detail screen of your newly provisioned Autonomous JSON Database you 
 
 ![All Database Actions menu](./images/select-all-db-actions-menu.png)
 
-1. You'll see a variety of developer tools under **Development** choose **JSON** to manage your JSON documents.
+1. You should be in the Database Actions panel.On the Development pane, click on **JSON** to manage your JSON documents.
 
-    ![Choose JSON](./images/json.png)
+    ![Choose Development](./images/json.png)
+    ![Choose JSON](./images/dbactions-menu-json.png)
 
 6. It opens on a worksheet. The first time you open JSON, a series of pop-up informational boxes introduce the main features. Click Next to know more or click on `X` to close the pop-up.
 
@@ -237,4 +236,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 - **Author** - Anoosha Pilli, Product Manager, Oracle Database
-- **Last Updated By/Date** - Hermann Baer, Sep 2023
+- **Last Updated By/Date** - Hermann Baer, April 2024

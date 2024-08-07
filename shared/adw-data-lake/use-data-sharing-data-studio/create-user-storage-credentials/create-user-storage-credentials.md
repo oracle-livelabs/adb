@@ -34,6 +34,8 @@ After you provisioned an ADB instance in the **Set up the Workshop Environment**
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
+    >**Note:** If you get a _Forbidden_ message on the **Autonomous Databases** page, that indicates that you are in the wrong compartment. Refer to the **Reservation Information** panel for your reservation and make a note of your assigned compartment. Next, on the same page, click the **Compartment** drop-down list in the **Scope** section, and selected your assigned compartment.
+
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![From the Database Actions drop-down list, click SQL.](./images/click-db-actions-sql.png " ")
@@ -262,7 +264,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
