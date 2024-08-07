@@ -48,13 +48,13 @@
       {
         "title": "Lab 5: Publish AI projects as RESTful services",
         "description":"Enable analytics across your organization",
-        "filename": "../../expose-rest/expose-rest.md",
+        "filename": "../../expose-rest/expose-rest-python.md",
         "type":"python"
       },
       {
         "title": "Lab 6: Use OpenAPI tools with your RESTful services",
         "description":"Document and test your APIs",
-        "filename": "../../openapi-integration/openapi-integration.md",
+        "filename": "../../openapi-integration/openapi-integration-python.md",
         "type":"python"
       },        
       {
