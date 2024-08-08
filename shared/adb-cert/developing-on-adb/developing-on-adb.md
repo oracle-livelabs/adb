@@ -71,9 +71,9 @@ This lab assumes you have:
 
 ## Task 2: Creating a New JSON Collection
 
-1. Select **Database Actions**.
+1. Click **Database Actions** then **View all database actions**. 
 
-    ![Click Database Actions](./images/T1-1.2.png)
+    ![Click Database Actions](./images/db-actions.png)
 
 2. Use the Username and Password you created when initially provisioning your Autonomous JSON Database to log into the **Database Actions** page.
 
@@ -338,4 +338,4 @@ This statement returns every title and associated actor **in their own relationa
 ## Acknowledgements
 
 - **Author**- Roger Ford, Principal Product Manager, Ethan Shmargad, Santa Monica Specialists Hub
-- **Last Updated By/Date** - Kamryn Vinson, June 2023
+- **Last Updated By/Date** - Kamryn Vinson, August 2024
