@@ -88,19 +88,17 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 3. In the **Configure variables** **step 2** of the wizard, provide the following:
     * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `us-chicago-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
-    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
+    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
     
     
     >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
     
     * **Do you want a always Free Oracle Autonomous Database instance?** Accept the default **`false`** value. Select **`true`** from the drop-down list if you want to deploy an Always Free database.
 
-        ![Provision an always free ADB instance](./images/provision-always-free.png "")
+        ![Provision an ADB instance](./images/provision-paid.png "")
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.
-
-    >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
     
     ![The Configure variables step 2 of the wizard](./images/configure-variables.png =80%x*)
 
@@ -150,7 +148,7 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
     ![Failed job](./images/failed-job.png "")
 
-11. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed, **``TrainingAIWorkshop``**.
+11. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed: it's blurred out here - the field will match the name you gave it in the previous steps.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
 

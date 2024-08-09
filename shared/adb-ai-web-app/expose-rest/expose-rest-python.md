@@ -60,7 +60,7 @@ The `JSON_DOCUMENT` column contains the actual JSON content. It is stored in a O
 
 **Make these collections available over REST**<br>
 You will use two procedures to make the collections available over REST. 
-1. Sign into the SQL worksheet as the **MOVIESTREAM** user with the password **watchS0meMovies#**, and then navigate to the SQL Worksheet.
+1. Sign into the SQL worksheet as the **MOVIESTREAM** user with the password **watchS0meMovies#**.
 2. Enable your schema for Oracle REST Data Services(ORDS) access. See the code comments for the meaning of the fields. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon:
     ```sql
     <copy>
@@ -91,7 +91,7 @@ You will use two procedures to make the collections available over REST.
     ```  
   >**Note:** We are simplifying the workshop by disabling secure access. This is **NOT** a good practice and should not be done in a production environment. To learn more about securing REST endpoints, go to [Configuring Secure Access to RESTful Services.](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/18.4/aelig/developing-REST-applications.html#GUID-5B39A5A6-C55D-452D-AE53-F49431A4DE97).
 
-    ![alt text](images/disable-secure-access.png)
+  ![disable secure access](images/disable-secure-access.png)
 
 That's it! Your table is now available via REST.
 
@@ -173,11 +173,11 @@ You will now create a REST API that will use GenAI to create your personalized b
       ![Handler with code](./images/bedtime-handler-form.png "")
 
   The code has 5 parameters that you will define in the next step:
-    * **:cust_id** - the customer creating the story
-    * **:characters** - the characters that will be featured in the story
-    * **:movies** - the movies that will be used as a basis for the story
-    * **:title** - the title output by the procedure
-    * **:story** - the story output by the procedure
+    * **cust_id** - the customer creating the story
+    * **characters** - the characters that will be featured in the story
+    * **movies** - the movies that will be used as a basis for the story
+    * **title** - the title output by the procedure
+    * **story** - the story output by the procedure
 
 10. Click **Create Parameter**.
   
@@ -249,10 +249,9 @@ Your APIs are now available! You can test the APIs using the built-in OpenAPI to
 You may now proceed to the next lab.
 
 ## Learn More
-* [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
-* [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
+* [Simple Oracle Document Access (SODA)](https://docs.oracle.com/en/database/oracle/simple-oracle-document-access/)
+* [Creating RESTful Web Services](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/creating-restful-services.html#GUID-5E5D3FFD-05FD-42C4-A1C1-A5F237B50D39)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
-* [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
 

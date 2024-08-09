@@ -26,7 +26,6 @@ You will run the bedtime stories django app on your computer. It requires:
 * Latest Python 3 release
 * Extra Python packages to run the app
 
-You will download a zip file containing the bedtime stories Django app. The zip file contains a root folder called **`bedtimestories`**.
 1. Download the zip file containing the bedtime stories app to a folder on your computer
   <a href="../bedtime-stories-app/bedtimestories.zip" class="tryit-button">Download Bedtime stories code</a>
 2. Unzip the **`bedtimestories.zip`** file. You will see a new folder called **`bedtimestories`** containing files and subfolders 
@@ -44,9 +43,10 @@ You will download a zip file containing the bedtime stories Django app. The zip 
     For example:
     ![shell home](images/shell-home.png)
 
-The remaining setup steps depend on your operating system. YOu will use a Python virtual environment to prevent conflicts with other Python deployments on your computer:
+The remaining setup steps depend on your operating system. You will use a Python virtual environment to prevent conflicts with other Python deployments on your computer:
 
 **Windows**
+
 In your command prompt:
 
 * Create a virtual environment
@@ -143,7 +143,7 @@ Now that you're client is set up, let's use it to access our collections and cre
     </copy>
     ```
 
-4. Set other constants and then send the request to Autonomous Database:
+4. Set other constants and then send the request to Autonomous Database. Copy and paste the following snippet into your Python window and click enter:
 
     ```python
     <copy>
@@ -171,7 +171,7 @@ Now that you're client is set up, let's use it to access our collections and cre
     ![movie results](images/get-kid-friendly-movies.png)
 
 
-5. The output is difficult to read, Let's format it:
+5. The output is difficult to read. Let's format it. Copy and paste the following snippet into your Python window and click enter:
 
     ```python
     <copy>
@@ -182,7 +182,7 @@ Now that you're client is set up, let's use it to access our collections and cre
 
     ![formatted movie results](images/get-kid-friendly-movies-formatted.png)
 
-6. Create a bedtime story using the AI API:
+6. Create a bedtime story using the AI API. Copy and paste the following snippet into your Python window and click enter. There will be a delay when the story is being generated:
   
     ```python
     <copy>

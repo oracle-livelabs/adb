@@ -57,7 +57,7 @@ Let's review the **apiapp** module using the OpenAPI view.
 
     ![The response.](images/generated-story.png =60%x*)
 
-## Task 3: Export your API definitions to an OpenAPI tool
+## Task 2: Export your API definitions to an OpenAPI tool
 It's easy to export your API signatures to an OpenAPI tool.
 
 1. Go to the **apiapp** module tile and click the 3 dots. Select **Export Module > OpenAPI**
