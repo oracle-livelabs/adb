@@ -45,9 +45,9 @@
           "filename": "../../openapi-integration/openapi-integration-python.md"
         },        
         {
-          "title": "Lab 6: Deliver a React app that uses the RESTful AI services",
+          "title": "Lab 6: Deliver a Django app that uses the RESTful AI services",
           "description":"Building custom apps",
-          "filename": "../../deliver-nl-app/deliver-nl-app.md"
+          "filename": "../../bedtime-stories-python/bedtime-stories-python.md"
         },
         {
           "title": "Lab 7: Clean Up",
