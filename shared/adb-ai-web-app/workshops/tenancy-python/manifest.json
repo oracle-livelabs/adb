@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Develop apps using GenAI, Autonomous Database and React",
+    "workshoptitle": "Develop apps using GenAI, Autonomous Database and Django",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
@@ -48,19 +48,19 @@
       {
         "title": "Lab 5: Publish AI projects as RESTful services",
         "description":"Enable analytics across your organization",
-        "filename": "../../expose-rest/expose-rest.md",
+        "filename": "../../expose-rest/expose-rest-python.md",
         "type":"python"
       },
       {
         "title": "Lab 6: Use OpenAPI tools with your RESTful services",
         "description":"Document and test your APIs",
-        "filename": "../../openapi-integration/openapi-integration.md",
+        "filename": "../../openapi-integration/openapi-integration-python.md",
         "type":"python"
       },        
       {
-        "title": "Lab 7: Deliver a React app that uses the RESTful AI services",
+        "title": "Lab 7: Deliver a Django app that uses the RESTful AI services",
         "description":"Building custom apps",
-        "filename": "../../deliver-nl-app/deliver-nl-app.md",
+        "filename": "../../bedtime-stories-python/bedtime-stories-python.md",
         "type":"python"
       },
     {
