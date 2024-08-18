@@ -59,7 +59,7 @@ The following values should be supplied:
 
 * *description:*  micronaut
 * *Source CIDR:* 0.0.0.0/0
-* *Destination Port Range:*: 8080
+* *Destination Port Range:* 8080
 
 ## Task 2:  Deploy Micronaut Application to OCI
 
@@ -71,16 +71,12 @@ The following values should be supplied:
     </copy>
     ```
 
-2. To keep things simple, we'll revert to hardcoded passwords and explicit wallet configuration for the deployed instance. Ensure that your `datasources` block in `application-oraclecloud.yml` looks like this (replace __XXXXXXXX__ with the user password):
+2. To keep things simple, we'll revert to hardcoded passwords and explicit wallet configuration for the deployed instance. Ensure that your `datasources` block in `application-oraclecloud.properties` looks like this (replace __XXXXXXXX__ with the user password):
 
         <copy>
-        datasources:
-          default:
-            url: jdbc:oracle:thin:@mnociatp_high?tns_admin=/tmp/wallet
-            driverClassName: oracle.jdbc.OracleDriver
-            username: mnocidemo
-            password: XXXXXXXX
-            dialect: ORACLE
+        datasources.default.url=jdbc:oracle:thin:@mnociatp_high?tns_admin=/tmp/wallet
+        datasources.default.username=mnocidemo
+        datasources.default.password=XXXXXXXX
         </copy>
 
 3. Before deploying, ensure the wallet exists on the VM by running the following snippet replacing [YOUR IP] with the public IP from the previous section:
@@ -131,7 +127,7 @@ The following values should be supplied:
     </copy>
     ```
 
-Then install GraalVM 22:
+Then install GraalVM:
 
     <copy>
     yum check-update

@@ -1,4 +1,4 @@
-# Load data from object storage using Data Tools and scripting
+# Load data from object storage using Database Actions and scripting
 
 ## Introduction
 
@@ -35,21 +35,19 @@ In this step, you will set up access to the a bucket on Oracle Cloud Infrastruct
 
 1. In your database's details page, click the **Database Actions** button.
 
-	  ![Click Database Actions](images/launchdbactions.png)
+     ![Click Database Actions](images/launchdbactions.png)
 
-2. On the login screen, enter the username ADMIN, then click the blue **Next** button.
+2. Database Actions should automatically open up with you logged in as Admin user.
 
-3. Enter the password for the ADMIN user you set up in the earlier lab. Click **Sign in**.
-
-4. On the Database Actions Launchpad page, under **Data Tools**, click **DATA LOAD**
+3. On the Database Actions Launchpad page, under **Data Studio**, click **DATA LOAD**
 
     ![Click DATA LOAD](images/dataload.png)
 
-5. In the **Where is Your Data** section, click **CLOUD LOCATIONS** to set up the connection from your autonomous database to object storage.
+4. In the **Menu** section, click **Cloud Store** to set up the connection from your autonomous database to object storage.
 
     ![Click CLOUD LOCATIONS](images/cloudstore.png)
 
-6. To add access to the files, click **+Add Cloud Storage** in the top right of your screen.
+5. To add access to the files, click **+Create Cloud Store Loacation** in the top right of your screen.
 
 -   In the **Name** field, enter 'INFASampleData'
 
@@ -72,13 +70,13 @@ In this step, you will set up access to the a bucket on Oracle Cloud Infrastruct
 
 In this step we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
 
-1. To load or link data from our newly configured cloud storage, stay in the Load Cloud Object.
+1. To load or link data from our newly configured cloud storage, stay in the Data Load Cloud Store page.
 
     ![Click Data Load](images/backtodataload.png)
 
     
 
-3. From the INFASAMPLEDATA location, drag the **orders.txt** folder over to the right hand pane. Note that a dialog box appears asking if we want to load all the files in this folder to a single target table. In this case, we only have a single file, but we do want to load this into a single table. Click **OK**.
+3. Click on the down arrow and select INFASAMPLEDATA location, then drag the **orders.txt** file over to the right hand pane.
 
 4. Next, drag the **lineitem.txt** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
 
@@ -107,12 +105,10 @@ In this step we will perform some simple data loading tasks, to load in CSV file
 
     ![Check the job is completed](images/loadcompleted.png)
 
-11. Click the **Done** button in the bottom right of the screen.
-
 This completes the Data Load lab. We now have two tables loaded into the Autonomous Database from the Object Storage. We will be working with these tables in later labs.
 
 ## Acknowledgements
 
 * **Author** - Larry Fumagalli, Outbound Product Management
 * **Contributors** -  Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Larry Fumagalli, Outbound Product Management, September 2022
+* **Last Updated By/Date** - Larry Fumagalli, Outbound Product Management, May 2024

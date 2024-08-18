@@ -47,7 +47,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<p><img src=\"https://oracle-livelabs.github.io/adb/shared/movie-stream-story/introduction/images/moviestream.jpeg\" alt=\"MovieStream Logo\" /></p>\n"
+            "data": "<p><img src=\"https://oracle-livelabs.github.io/adb/movie-stream-story-lite/introduction/images/moviestream.jpeg\" alt=\"MovieStream Logo\" /></p>\n"
           }
         ]
       }

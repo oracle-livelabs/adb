@@ -103,7 +103,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
   * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
   * **Contributors:** Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
