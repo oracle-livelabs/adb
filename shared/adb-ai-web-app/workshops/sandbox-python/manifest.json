@@ -19,38 +19,37 @@
           "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-          "title": "Lab 1: Set up your workshop environment",
-          "description":"Set up an Autonomous Database and an LLM account",
-          "filename": "../../setup-environment/setup-environment.md"
-        },           
+          "title": "Your OCI GenAI key",
+          "filename": "https://oracle-livelabs.github.io/common/labs/ocw24/hol2383.md"
+        },                 
         {
-          "title": "Lab 2: Integrate OCI Generative AI with Autonomous Database",
+          "title": "Lab 1: Integrate OCI Generative AI with Autonomous Database",
           "description":"Connect Autonomous Database to your LLM",
-          "filename": "/common/building-blocks/blocks/adb/integrate-genai/integrate-genai.md",
+          "filename": "../../integrate-genai-cloudworld/integrate-genai.md",
           "type":"python"
         },           
         {
-          "title": "Lab 3: Use GenAI to analyze your data in Autonomous Database",
+          "title": "Lab 2: Use GenAI to analyze your data in Autonomous Database",
           "description":"Deliver GenAI projects tat summarize chats and recommend movies",
           "filename": "../../business-logic/business-logic.md"
         },
         {
-          "title": "Lab 4: Publish AI projects as RESTful services",
+          "title": "Lab 3: Publish AI projects as RESTful services",
           "description":"Enable analytics across your organization",
           "filename": "../../expose-rest/expose-rest-python.md"
         },
         {
-          "title": "Lab 5: Use OpenAPI tools with your RESTful services",
+          "title": "Lab 4: Use OpenAPI tools with your RESTful services",
           "description":"Document and test your APIs",
           "filename": "../../openapi-integration/openapi-integration-python.md"
         },        
         {
-          "title": "Lab 6: Deliver a Django app that uses the RESTful AI services",
+          "title": "Lab 5: Deliver a Django app that uses the RESTful AI services",
           "description":"Building custom apps",
           "filename": "../../bedtime-stories-python/bedtime-stories-python.md"
         },
         {
-          "title": "Lab 7: Clean Up",
+          "title": "Lab 6: Clean Up",
           "description":"Destroy the resources to clean up",
           "filename": "../../cleanup/cleanup.md"
         },
