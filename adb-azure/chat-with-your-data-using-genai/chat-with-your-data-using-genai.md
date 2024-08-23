@@ -105,15 +105,25 @@ For a complete list of the Select AI profile attributes, see the [DBMS CLOUD AI 
 
     ![This image shows the result of performing the above step.](./images/variable2.png " ")
 
+- Grant execute to moviestream user
+
+    ```
+    <copy>
+    grant execute on DBMS_CLOUD_AI to moviestream;
+    </copy>
+    ```
 
 - Now log in as the ***moviestream*** that will be using generative AI.
 Create a credential that allows the user to access the Azure OpenAI endpoint
 
 NOTE: The MOVIESTREAM user was created as part of the migrating to ADB Lab. 
 
+
 Moviestream schema password: ***watchS0meMovies#***.
 
 -  Right click on ***moviestream*** connection in your Visual Studio and Open SQL Worksheet. 
+
+    Note: You will be executing the below sql queries as ***moviestream*** user.
 
     ![This image shows the result of performing the above step.](./images/mssql.png " ")
 
@@ -213,7 +223,7 @@ Let's look at a couple of examples:
 
 ```
 <copy>
-select ai chat what is autonomous database;
+SELECT AI chat what is autonomous database;
 </copy>
 ```
 
@@ -250,7 +260,7 @@ What are total sales of tom hanks movies
 
 ```
 <copy>
-select ai what are our total streams broken out by genre;
+SELECT AI what are our total streams broken out by genre;
 </copy>
 ```
 
@@ -258,7 +268,7 @@ select ai what are our total streams broken out by genre;
 
 ```
 <copy>
-select ai explainsql what are our total streams broken out by genre;
+SELECT AI explainsql what are our total streams broken out by genre;
 </copy>
 ```
 
@@ -284,8 +294,14 @@ SELECT JSON_OBJECT(
         'task' VALUE 'summarize the support chat in 3 sentences. also return the customer sentiment',
         support_chat) AS prompt_details
 FROM v_customer_support WHERE support_chat_id = 1;
+</copy>
+```
 
--- now apply GenAI in a query to get teh answer
+
+- Now apply GenAI in a query to get the answer
+
+```
+<copy>
 WITH prompt_document AS (
     -- this json document
     SELECT JSON_OBJECT(

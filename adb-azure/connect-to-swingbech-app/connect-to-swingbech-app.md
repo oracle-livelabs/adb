@@ -155,7 +155,7 @@ oewizard.bat
 
 ***NOTE: Do not disconnect the swingbench application. The next steps show the Autoscaling capability of the Autonomous Database.***
 
-## Task 3: Enable Compute Auto Scaling in you Autonomous database
+## Task 3: Enable Compute Auto Scaling in Autonomous database
 
 - Login to Azure portal and navigate to your Autonomous database overview page and expand ***Settings*** and click on ***Resource allocation*** and ***Manage***.
 

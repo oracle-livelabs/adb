@@ -86,20 +86,21 @@ NOTE: For this lab you will use the following credentials:
     <copy>
     datapump import -
     -schemas MOVIESTREAM -
+    -excludeexpr "IN ('PROCEDURE', 'PACKAGE')" -
     -directory data_pump_dir -
     -credential AZURE_CRED_NAME -
     -remaptablespaces USERS=DATA -
-    -dumpuri https://tjdatapump.blob.core.windows.net/holcontainer/exp01.dmp -
+    -dumpuri https://tjdatapump.blob.core.windows.net/holcontainer/db.dmp -
     -logfile testuser1.log
-    </copy>
+     </copy>
     ```
 
-    ![This image shows the result of performing the above step.](./images/import.png " ")
+    ![This image shows the result of performing the above step.](./images/import1.png " ")
 
 - Your import will be completed in a few minutes as shown below.
 
     
-    ![This image shows the result of performing the above step.](./images/import1.png " ")
+    ![This image shows the result of performing the above step.](./images/import.png " ")
 
 All Done! Your application schema was successfully imported.
 
