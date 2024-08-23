@@ -104,13 +104,8 @@ impdp admin/<ADB_Password>@adb2_high SCHEMAS = <schemas> network_link=<Database_
 
     ![This image shows the result of performing the above step.](./images/dblink8.png)
 
-You have now successfully migrated your Source Database to Autonomous Database using Database Links. 
+You have now successfully migrated your Source Database to Autonomous Database using Database Links.
 
-
---Optional TJ Notes 
-Show how to migrate from Shared to Dedicated
-Show both ways - From shared to D and D to S 
-Database link to migrate from Shared to Dedicated 
 
 ## Acknowledgements
 *Congratulations! You successfully migrated your Oracle database to Autonomous Databases*
