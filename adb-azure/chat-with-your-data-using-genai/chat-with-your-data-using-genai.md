@@ -139,12 +139,12 @@ Moviestream schema password: ***watchS0meMovies#***.
     define azureDeployment='adb-hol';
     define secret='Azure API key';
 
-    BEGIN                                                                          
+    BEGIN                       
     dbms_cloud.create_credential(                                                 
-   credential_name => '&credentialName',                                            
-   username => 'AZURE_OPENAI',                                                 
-   password => '&secret');                            
-    END;                                                                           
+    credential_name => '&credentialName',                                            
+    username => 'AZURE_OPENAI',                                                 
+    password => '&secret');                            
+    END;                           
     /
     </copy>
     ```
@@ -400,7 +400,6 @@ FROM dataset;
 
 ***In summary, using LLMs infer a lot from human language. It's always good to verify your results.***
 
-You may now **proceed to the next lab**.
 
 ## Acknowledgements
 

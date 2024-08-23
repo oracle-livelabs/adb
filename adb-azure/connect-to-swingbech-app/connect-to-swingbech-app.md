@@ -21,21 +21,11 @@ Refer to Lab 2: **Connect securely with Visual Studio code**.
 
 ## Task 1: Download and install Swingbench
 
-- We will start with downloading and installing Swingbench in a developer client virtual machine.
-
 - Connect to your developer client machine via RDP. Detailed instructions are provided in Lab 2: **Connect securely with Visual Studio code**.
 
     *The remainder of this lab assumes you are connected to the Windows instance through RDP  and are operating from the Windows instance and not your local machine (except if noted).*
 
-- Once connected, open a Microsoft Edge browser and download the latest version of swingbench.
-
-    ````
-    <copy>
-    https://www.dominicgiles.com/downloads/
-    </copy>
-    ````
-
-- unzip swingbench.zip. It unzips contents in the swingbench folder.
+- Windows VM is pre-installed with swingbench application. Verify in the below directory.
 
     ```
     <copy>
@@ -43,10 +33,13 @@ Refer to Lab 2: **Connect securely with Visual Studio code**.
     </copy>
     ```
 
-### JDBC Drivers in Swingbench
-- You would need the jdbc drivers to run swingbench. Oracle jdbc drivers may be downloaded from [JDBC Downloads](https://www.oracle.com/java/technologies/downloads/#jdk22-windows).
+- If you do not see the swingbench application folder, download it from the below link. Open a Microsoft Edge browser and download the latest version of swingbench.
 
-- Use on screen instructions to update drivers if needed, otherwise move on to transfer DB wallet.
+    ````
+    <copy>
+    https://www.dominicgiles.com/downloads/
+    </copy>
+    ````
 
 ### Transfer DB Wallet to swingbench client machine
 If you have not downloaded the wallet already to your Dev Client machine in an earlier lab, follow the steps in Lab 2: **Connect securely with Visual Studio code** to download the wallet.
@@ -60,6 +53,8 @@ Now that you have installed swingbench, the next step is to connect the applicat
 
 - Load sample data to your Autonomous Database. To start oewizard to load Schema and data, navigate to Swinbench winbin folder and run oewizard.bat.
 
+
+NOTE: If swingbench application complaints about JDBC Drivers, download from [JDBC Downloads](https://www.oracle.com/java/technologies/downloads/#jdk22-windows) and follow the on-screen instructions to install.
 
 ```
 <copy>
