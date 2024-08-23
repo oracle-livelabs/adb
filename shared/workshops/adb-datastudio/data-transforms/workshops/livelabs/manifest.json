@@ -14,7 +14,7 @@
       },
       {
           "title": "Lab 1: Provision an Autonomous Database",
-          "description": "Provision Autonomous Database",
+          "description": "Provision an Autonomous Database",
           "type": "livelabs",
           "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
       },
@@ -25,8 +25,8 @@
         "filename": "../../3-demo-data.md"
       },
       {
-        "title": "Lab 3: Basic Setup",
-        "description": "Basic setup before defining data load and data flow processes",
+        "title": "Lab 3: Basic setup",
+        "description": "Set up Data Transforms before defining data load and data flow processes",
         "type": "livelabs",
         "filename": "../../4-transform-basic-setup.md"
       },
@@ -37,26 +37,26 @@
         "filename": "../../5-transform-data-load.md"
       },
       {
-        "title": "Lab 5: Transform data using a simple example",
-        "description": "Transform data using simple use case",
+        "title": "Lab 5: Simple Data Transformation",
+        "description": "Transform data using a simple use case",
         "type": "livelabs",
         "filename": "../../6-transform-data-simple.md"
       },
       {
-        "title": "Lab 6: Transform data using complex example",
-        "description": "Transform data using complex use case",
+        "title": "Lab 6: Complex Data Transformation",
+        "description": "Transform data using a more complex use case",
         "type": "livelabs",
         "filename": "../../7-transform-data-complex.md"
       },
       {
-        "title": "Lab 7: Create workflow for the entire data pipeline",
-        "description": "Use workflow to orchestrate multiple data load and data flow processes",
+        "title": "Lab 7: Create a workflow for the entire data pipeline",
+        "description": "Use a workflow to orchestrate multiple data load and data flow processes",
         "type": "livelabs",
         "filename": "../../8-transform-data-workflow.md"
       },
       {
         "title": "Lab 8: Schedule jobs",
-        "description": "Use scheduler to periodic execution",
+        "description": "Use the scheduler to set up periodic execution",
         "type": "livelabs",
         "filename": "../../9-transform-data-schedule.md"
       },

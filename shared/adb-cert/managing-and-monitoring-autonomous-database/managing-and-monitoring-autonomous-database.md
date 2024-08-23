@@ -98,13 +98,13 @@ First we need to disable Auto Scaling and create four connections in SQL Develop
 
       ![Click Database Actions.](images/disable-auto-scaling.png " ")
 
-  3. On the Details page for your autonomous database, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click the **Database Actions** button. 
+  3. On the Details page for your autonomous database, wait a few minutes for the **SCALING IN PROGRESS** message to change to **AVAILABLE**. Click **Database Actions** then **View all database actions**. 
 
-      ![Remove the checkbox for OCPU auto scaling.](images/db-actions.png " ")  
+      ![Click view all database actions.](images/db-actions.png " ")  
   
-  4. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click the **SQL** card. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
+  4. In the log-in dialog, provide the username `admin` and the administrator password you specified when you created the Autonomous Database. On the Database Actions **Launchpad**, click **SQL**. (Note that you can alternatively use SQL Developer desktop client instead of SQL Developer Web.)
 
-      ![Click SQL card in Database Actions Launchpad.](./images/database-actions-launchpad.png)
+      ![Click SQL in the Database Actions Launchpad.](./images/database-actions-launchpad.png)
 
   4. We will create and save 4 SQL Developer Web worksheets:
       - Click the **Worksheet** button and click **Save As...** 
@@ -242,7 +242,7 @@ First we need to disable Auto Scaling and create four connections in SQL Develop
 
   Now, we need to run the `test_proc` Procedure concurrently in three worksheets.
 
-  5. Open 3 worksheets you named **Query 1**, **Query 2**, and **Query 3**. To open 3 SQL Developer Web worksheets, simply go back to the OCI console's Details page for your database, click the **Database Actions** button and in the Database Actions **Launchpad**, click the **SQL** card to open a SQL worksheet in a tab in your browser. Do this 3 times so that you have 3 SQL worksheets open in your browser. In the first SQL worksheet, select your saved Query 1. In the second worksheet, select Query 2. In the third worksheet, select Query 3.
+  5. Open 3 worksheets you named **Query 1**, **Query 2**, and **Query 3**. To open 3 SQL Developer Web worksheets, simply go back to the OCI console's Details page for your database, click the **Database Actions** button and in the Database Actions **Launchpad**, click **SQL** to open a SQL worksheet in a tab in your browser. Do this 3 times so that you have 3 SQL worksheets open in your browser. In the first SQL worksheet, select your saved Query 1. In the second worksheet, select Query 2. In the third worksheet, select Query 3.
 
       ![Click the SQL card.](./images/database-actions-launchpad.png " ")
 

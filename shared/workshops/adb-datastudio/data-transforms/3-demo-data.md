@@ -3,34 +3,73 @@
 
 ## Introduction
 
-This lab will guide you through the steps to import demo data. 
+This lab will guide you through the steps to import the demo data used in the remainder of the workshop. 
 
-Estimated Time: 5 minutes
+Estimated Time: 10 minutes
 
 ### Prerequisites
+To complete this lab, you must have already:
 
 - Created an Autonomous Database instance
 
 ## Task 1: Create users for the workshop
 
-Connect to your Autonomous Database as Admin user and create two users as follows:
+Connect to your Autonomous Database as the Admin user and create two users as follows:
 
-DT\_DEMO\_SOURCE will be used to store some source data and DT\_DEMO\_DW is the data warehouse user. In the workshop we will load the data warehouse from the source data. For convenience we are using the same Autonomous database for both source and target. If you have more than one Autonomous database then you can create source user in one database and the data warehouse use in another.
+DT\_DEMO\_SOURCE will be used to store some source data and DT\_DEMO\_DW is the data warehouse user. In the workshop we will load the data warehouse from the source data. For convenience we are using the same autonomous database for both source and target. If you have more than one autonomous database then you can create the source user in one database and the data warehouse user in another.
 
 - Username: DT\_DEMO\_SOURCE
 - Quota: Unlimited
-- Roles: DWROLE, DATA_TRANSFORMS_USER
+- Roles: DWROLE, DATA\_TRANSFORM\_USER (Granted and Default both checked in UI)
+- Web Access: ON
+
+You can either use the user management UI on the Database Actions page, or use the following SQL, to create the source user. Log in as the Admin user and execute the script by copy/paste into SQL worksheet.
+
+```
+<copy>
+CREATE USER DT_DEMO_SOURCE IDENTIFIED BY Welcome#1234
+  QUOTA 100M ON data;
+GRANT DWROLE TO DT_DEMO_SOURCE;
+GRANT DATA_TRANSFORM_USER TO DT_DEMO_SOURCE;
+BEGIN
+  ords.enable_schema(p_schema => 'DT_DEMO_SOURCE');
+END;
+/
+</copy>
+```
 
 
-Username: DT\_DEMO\_DW
-Quota: Unlimited
-Roles: DWROLE, DATA_TRANSFORMS_USER
+- Username: DT\_DEMO\_DW
+- Quota: Unlimited
+- Roles: DWROLE, DATA\_TRANSFORM\_USER (Granted and Default both checked in UI)
+- Web Access: ON
 
-In the rest of the workshop you will connect to individual users as per the instructions. Please note down the user URLs so that you can quickly connect to the appropriate user.
+In tne same way, you can either use the user management UI, or use the following SQL, to create the data warehouse user. Log in as the Admin user and execute the script by copy/paste into SQL worksheet.
 
-## Task 2: Connect to the source user and import Source data
+```
+<copy>
+CREATE USER DT_DEMO_DW IDENTIFIED BY Welcome#1234
+  QUOTA 100M ON data;
+GRANT DWROLE TO DT_DEMO_DW;
+GRANT DATA_TRANSFORM_USER TO DT_DEMO_DW;
+BEGIN
+  ords.enable_schema(p_schema => 'DT_DEMO_DW');
+END;
+/
+</copy>
+```
 
-Connect to DT\_DEMO\_SOURCE user and navigate to the SQL worksheet. It is under **Development** sections in the **Database Actions**.
+
+In the rest of the workshop you will connect as individual users as per the instructions. Please note down the user URLs so that you can quickly connect as the appropriate user.
+
+## Task 2: Download the wallet file for your autonomous database
+
+Connect to your autonomous database console in OCI and download the wallet file. This file will be used later to create connection to the database.
+
+
+## Task 3: Connect as the source user and import source data
+
+Connect as the DT\_DEMO\_SOURCE user and navigate to the SQL worksheet. It is under the **Development** section of the **Database Actions** home page.
 
 1. Below is the script you need to execute to load source data. Simply copy and paste this code into your SQL Worksheet.
 
@@ -156,13 +195,13 @@ end;
 /
 </copy>
 ```
-2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+2. Click the **Run Script** icon.
 
     >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
 
     ![Screenshot of SQL worksheet](images/image_sql_worksheet_source.png)
 
-## Task 3: Connect to Data warehouse user and import demo data
+## Task 4: Connect as the data warehouse user and import demo data
 
 Connect to DT\_DEMO\_DW user and navigate to the SQL worksheet. It is under **Development** sections in the **Database Actions**.
 
