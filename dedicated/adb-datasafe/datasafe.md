@@ -43,5 +43,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 - **Last Updated By/Date** - Kris Bhanushali, Autonomous Database Product Management, March 2022
 
-## See an issue or have feedback?  
-Please submit feedback [here](https://apexapps.oracle.com/pls/apex/f?p=133:1:::::P1_FEEDBACK:1).   Select 'Autonomous DB on Dedicated Exadata' as workshop name, include Lab name and issue / feedback details. Thank you!
+

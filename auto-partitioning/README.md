@@ -6,7 +6,7 @@ Finding appropriate partitioning strategies requires deep knowledge of the appli
 
 Automatic partitioning uses a single-column partition key combined with single-level partitioning. Automatic partitioning does not support more complex partitioning strategies such as multi-column partitioned tables or composite partitioning as of today.
 
-[Run a workshop now!](http://developer.oracle.com/livelabs)
+[Run a workshop now!](http://livelabs.oracle.com)
 
 ## Documentation
 - [Oracle Auto Partitioning](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/mdw-managing-automatic-partitioning-autonomous-database.html)

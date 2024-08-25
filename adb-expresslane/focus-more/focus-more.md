@@ -21,13 +21,13 @@ The Oracle Cloud Infrastructure Foundations Certification provides candidates wi
 
 The labs featured on this page cover various solutions, skill levels, and categories based on Oracle Cloud Infrastructure (OCI).
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=648" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=648" class="tryit-button">Try it!</a>
 
 
 
 ## Learn More
 
-* [LiveLabs](https://developer.oracle.com/livelabs)
+* [LiveLabs](https://livelabs.oracle.com)
 
 ## Acknowledgements
 * **Author** - Kevin Lazarz, Senior Principle Product Manager, DB Product Management
