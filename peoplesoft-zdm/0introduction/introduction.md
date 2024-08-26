@@ -35,7 +35,7 @@ In Labs 1-11, you will :
 
 * An OCI tenancy with administrator user access.
 * My Oracle Support (MOS) credentials. Please make sure that you can successfully login to [Oracle Support](https://support.oracle.com).
-* PeopleSoft Source Database already existing on an on-premises system with the following server specifications: Oracle Linux 7/8, PeopleSoft HCM 9.2 PI 47 with PeopleTools 8.58.10 or above and Oracle Database version on 19.10. (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premises PeopleSoft application,Refer to link [here](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3208) for creation of new environment on OCI)
+* PeopleSoft Source Database already existing on an on-premises system with the following server specifications: Oracle Linux 7/8, PeopleSoft HCM 9.2 PI 47 with PeopleTools 8.58.10 or above and Oracle Database version on 19.10. (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premises PeopleSoft application,Refer to link [here](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3208) for creation of new environment on OCI)
 * The following should be installed:
     * A different web browser (i.e. Chrome) to connect to OCI web console.
     * If you have a windows machine, please download:

@@ -28,7 +28,7 @@ This lab assumes you have:
 * [Informatica Trials](https://www.informatica.com/trials.html)
 * [Oracle Free Tier](https://www.oracle.com/cloud/free/)
 * [Oracle Documents](http://docs.oracle.com)
-* [Oracle ADB 15 Minute Quick Start LiveLab](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=928&clear=RR,180&session=822983470552)
+* [Oracle ADB 15 Minute Quick Start LiveLab](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=928)
 
 ## Acknowledgements
 * **Author** - Larry Fumagalli, Outbound Product Management
