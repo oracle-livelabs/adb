@@ -34,7 +34,7 @@ You will run the bedtime stories django app on your computer. It requires:
 
 ## Task 2: Install Python and required packages
 
-1. Install Python 3 on your computer (verson 3.9 or higher). You can download Python from [python.org](https://www.python.org/downloads/). Follow the installation instructions provided on that site.
+1. Install Python 3 on your computer (version 3.9 or higher). You can download Python from [python.org](https://www.python.org/downloads/). Follow the installation instructions provided on that site.
 
 2. Launch a command prompt and navigate to the **`bedtimestories`** folder. This is the folder that was created when you extracted the zip file.
     ```
