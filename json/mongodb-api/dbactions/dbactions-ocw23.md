@@ -304,7 +304,7 @@ There's more to cover for the Oracle Database API for MongoDB or the unified acc
 * [Oracle Database API for MongoDB](https://blogs.oracle.com/database/post/mongodb-api)
 * [Oracle Database API for MongoDB - Documentation](https://docs.oracle.com/en/database/oracle/mongodb-api/index.html)
 * [Oracle Database API for MongoDB - YouTube](https://www.youtube.com/watch?v=EVDn4b6u628&ab_channel=Oracle)
-* [SQL, JSON, and MongoDB API: Unify worlds with Oracle Database 23ai Free](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3635)
+* [SQL, JSON, and MongoDB API: Unify worlds with Oracle Database 23ai Free](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3635)
 
 ## Acknowledgements
 

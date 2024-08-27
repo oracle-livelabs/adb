@@ -589,13 +589,13 @@ Now other professionals can take advantage of both the deployment you have just 
    When developing Applications that can pass the information needed to get a score of the models, the OML Services REST API can return a sub-second score for a mini-batch of records, or you can request an asynchronous call for batch scoring as well.  
    ![Churn AutoML Task 10 Step 9 DB Actions Related Services](images/oml-churn-dbactions-related.png " ")
 
-   For more details on how to use the deployed model and Oracle Machine Learning Services capabilities, make sure to look at that Lab in the [Oracle Machine Learning Fundamentals on Oracle Autonomous Database](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=922) workshop, which shows you how to use REST clients to access the model and more.
+   For more details on how to use the deployed model and Oracle Machine Learning Services capabilities, make sure to look at that Lab in the [Oracle Machine Learning Fundamentals on Oracle Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922) workshop, which shows you how to use REST clients to access the model and more.
 
 ## Learn more
 
 * [Oracle Machine Learning product information](https://oracle.com/goto/machinelearning)
-* [LiveLabs: Introduction to Oracle Machine Learning for Python](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=786)
-* [LiveLabs: Get started with Oracle Machine Learning fundamentals on Autonomous Database](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=922)
+* [LiveLabs: Introduction to Oracle Machine Learning for Python](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=786)
+* [LiveLabs: Get started with Oracle Machine Learning fundamentals on Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922)
 * [Get started with Oracle Machine Learning Services REST APIs](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html)
 * [Subscribe to the AskTOM Oracle Machine Learning Office Hours](https://asktom.oracle.com/pls/apex/asktom.search?office=6801#sessionss)
 * [Oracle Machine Learning AutoML UI Demo](https://www.youtube.com/watch?v=yJGsfU9cmt0)

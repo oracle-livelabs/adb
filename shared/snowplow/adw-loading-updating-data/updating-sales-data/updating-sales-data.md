@@ -122,7 +122,7 @@ Oracle Autonomous Database automatically manages the data storage process for yo
 
 - Experiment with using Data Studio with your own data.
 
-- Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
+- Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
 
 ## Want to Learn More?
 

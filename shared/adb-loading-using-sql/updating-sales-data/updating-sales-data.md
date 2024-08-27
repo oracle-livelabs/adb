@@ -700,7 +700,7 @@ Obviously, Autonomous Database automatically manages the data storage process fo
 
 - Review the [Oracle Autonomous Database documentation for DBMS_CLOUD](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-9428EA51-5DDD-43C2-B1F5-CD348C156122)
 
-- Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
+- Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
 
 ## Want to Learn More?
 

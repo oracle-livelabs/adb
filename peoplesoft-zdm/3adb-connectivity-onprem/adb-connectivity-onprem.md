@@ -14,7 +14,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-* PeopleSoft on-premises system or Oracle Marketplace PeopleSoft image (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premises PeopleSoft application,Refer to link [here](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3208) for creation of new environment on OCI) 
+* PeopleSoft on-premises system or Oracle Marketplace PeopleSoft image (Note: PeopleSoft Marketplace images for HR system, Financial, Campus Solution etc can also be used in place of an on-premises PeopleSoft application,Refer to link [here](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3208) for creation of new environment on OCI) 
 * ADB-S wallet file to be downloaded to on-premises PeopleSoft database system or Oracle Marketplace PeopleSoft image
 * Root or admin login privileges for the on-premises PeopleSoft database system
 * Basic knowledge on Unix/shell commands 

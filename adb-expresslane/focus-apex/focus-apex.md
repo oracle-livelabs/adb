@@ -19,14 +19,14 @@ In this workshop, you create a fully featured, responsive Web app using Oracle A
 
 This workshop walks you through uploading the NYC High Schools spreadsheet data into an Oracle database table, and then creating an application based on this new table. You will then play with the Faceted Search, Interactive Report, and improve the attached form. You will learn how to add a map region to the search page in order to visually enhance the page. You will also learn to download and use the application as a Progressive Web App (PWA).
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=631" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=631" class="tryit-button">Try it!</a>
 
 ## Workshop 2: Build a Starter Online Shopping App using Oracle APEX!
 
 This workshop walks you through the creation of a Shopping Cart application that allows administrators users to manage the products, customers, and stores.
 On the other side, customers can review and add products to the Shopping Cart and eventually proceed to checkout.
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=848" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=848" class="tryit-button">Try it!</a>
 
 ## Workshop 3: Building a Movies Watchlist Application using Oracle APEX
 
@@ -39,7 +39,7 @@ The final part of the lab is developing the Watchlist page, where you will work 
 
 ## Learn More
 
-* [LiveLabs](https://developer.oracle.com/livelabs)
+* [LiveLabs](https://livelabs.oracle.com)
 
 ## Acknowledgements
 * **Author** - Kevin Lazarz, Senior Principle Product Manager, DB Product Management
