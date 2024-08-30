@@ -9,6 +9,10 @@ The Windows Virtual machine provided for the workshop is pre-configured with Vis
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Simplifying @ Azure](videohub:1_jy1zyem0)
+
+
 ### Objectives
 
 As a database user, DBA or application developer,
@@ -22,7 +26,7 @@ As a database user, DBA or application developer,
 
 ## Task 1: Connect Windows compute client to Remote Desktop
 
-- Log in to your cloud account using your tenant name, username and password.
+- Log in to the Azure portal with your username/email and password.
 
 - Click **Menu** and select **Virtual machines**.
     
@@ -57,7 +61,7 @@ As a database user, DBA or application developer,
 
 ## Task 2: Connect Autonomous Database with Visual Studio
 
-- To download Autonomous Database credential wallet, login to Azure portal from your Windows VM and navigate to Oracle Database@Azure and Oracle Autonomous Database Service.
+- To download the Autonomous Database credential wallet, login to the Azure portal from your Windows VM and navigate to Oracle Database@Azure and click on Oracle Autonomous Database Service.
 
     ![This image shows the result of performing the above step.](./images/adb1.png " ")
 
@@ -74,6 +78,8 @@ As a database user, DBA or application developer,
     ![This image shows the result of performing the above step.](./images/wallet1.png " ")
 
 - Open Visual Studio and click on SQL Developer extension. 
+
+    NOTE: It will take a minute for SQL Developer extension to show up in Visual Studio.
 
     ![This image shows the result of performing the above step.](./images/vs.png " ")
 

@@ -89,7 +89,8 @@ As an Autonomous Database administrator:
 
 ## Take 3:  Run the data generator and demo sql
 
-For the rest of this lab we will use the Database In-Memory demo script from the Oracle In-memory team.  The script is available here: https://github.com/AndyRivenes/DBIM/tree/master/Simple%20Demo.
+For the rest of this lab we will use the Database In-Memory demo script from the Oracle In-memory team.  The script is available here: https://github.com/AndyRivenes/DBIM/tree/master/Simple%20Demo
+
 The script will create an orders table and generate ~8M records covering 4 years of data.  Once the data is loaded stats will be gathered, and the table will be populated into the IM column store.  The script finishes by running two different queries twice, once with IM enabled and a second time with IM disabled so we can compare the performance difference.  
 
 - Download the SQL file to the machine you are running your sqlplus commands from:

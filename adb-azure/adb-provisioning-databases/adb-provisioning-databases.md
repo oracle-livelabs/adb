@@ -7,22 +7,26 @@ This lab walks you through the steps to provision Autonomous Database@Azure.
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Provision ADB@Azure](videohub:1_2qkjv6o5)
+
 ### Objectives
 
 As a database user, DBA or application developer:
 
-1. Rapidly deploy autonomous transaction processing databases.
+1. Rapidly deploy an Autonomous Transaction Processing databases.
 
 ### Required Artifacts
 
-- An Azure account with a pre-configured Resource Group and Virtual Network.
+- An Azure account with a pre-configured Resource Group and a Virtual Network.
 
 ## Task 1: Create Autonomous Database@Azure
 
-In this section, you will be provisioning Autonomous database using the Azure cloud console.
+In this section, you will be provisioning an Autonomous database using the Azure portal.
 
 1.	Login to Azure Portal (portal.azure.com) and navigate to All services. Then click on Oracle Database@Azure.
 
+    NOTE: Please click skip if you are asked to enable multi-factor authorization.
 
     ![This image shows the result of performing the above step.](./images/oracledb.png " ")
 
@@ -37,21 +41,21 @@ In this section, you will be provisioning Autonomous database using the Azure cl
 
 -  This will bring up the **Create Oracle Autonomous Database** screen where you specify the configuration of the instance.
 
-- Select the **Subscription**, **Resource Group**, and enter Instance **Name** and  pick the **Region** and click Next.
+- Select the **Subscription**, **Resource Group**, and enter Instance **Name** and pick the **Region** then click Next.
 
     ![This image shows the result of performing the above step.](./images/basics.png " ")
 
-For this lab, we will be using the following Subscription: **omcpmhol1** Resource Group: **ocw24-hol-resource-group-east-us** Region: **East US**.
+For this lab, we will be using the following Subscription: **omcpmhol1**, Resource Group: **ocw24-hol-resource-group-east-us**, and Region: **East US**.
 
 -  Enter the details in the **Configuration** page.
 
     *NOTE: Autonomous Database supports different workload types, including: Data Warehouse and Transaction Processing. Both of these workload types provide performance improvements and additional features that support operations for the specified workload. [Learn More](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/about-autonomous-database-workloads.html#GUID-E1C8C5F2-22FB-4225-A3B9-9E78277A5834)*
 
--  Select **Transaction Processing** under **Workload type** dropdown.
+-  Select **Transaction Processing** under the **Workload type** dropdown.
     
     ![This image shows the result of performing the above step.](./images/transaction.png " ")
 
-- Under **Database configuration** enter the following details.
+- Under **Database configuration**, enter the following details:
     ```
      Database Version: 19c
      ECPU count: 2
@@ -110,7 +114,7 @@ For this lab, we will be using the following Subscription: **omcpmhol1** Resourc
     ![This image shows the result of performing the above step.](./images/network.png " ")
     
 
-- Under **Maintenance** select the **Maintenance patch level** and enter **Maintenance contact emails** and click Next.
+- Under **Maintenance**, select the **Maintenance patch level** and enter **Maintenance contact emails**, then click Next.
     
     ![This image shows the result of performing the above step.](./images/maintenance.png " ")
 
@@ -121,7 +125,6 @@ For this lab, we will be using the following Subscription: **omcpmhol1** Resourc
 - Add Tags if required and click Next.
 
     ![This image shows the result of performing the above step.](./images/tags.png " ")
-
 
 - Review the configurations and click Create.
 
