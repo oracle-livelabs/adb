@@ -21,23 +21,11 @@ Estimated Time: 10 minutes
 
     ![Select autonomous Data Warehouse on the left navigation menu in the Oracle Cloud homepage.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
 
-    ![Select your database instance.](images/step1.1-adb.png " ")
+    ![Select your database instance.](images/view-all-db-sql.png " ")
 
-2.  If you are not already logged in to SQL Worksheet, in your ADW Finance Mart Database Details page, click the **Database Actions** button.
+3.  The Database Actions page opens. In the **Development** box, click **SQL**.
 
-    ![Click the Database Actions button.](./images/click-database-actions-button.png " ")
-
-3.  A sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - ADMIN** and click **Next**.
-
-    ![Enter the admin username.](./images/Picture100-16.png " ")
-
-4.  Enter the ADMIN **Password** you specified when creating the database and click **Sign in**.
-
-    ![Enter the ADMIN password.](./images/Picture100-16-password.png " ")
-
-5.  The Database Actions page opens. In the **Development** box, click **SQL**.
-
-    ![Click SQL.](./images/Picture100-16-click-sql.png " ")
+    ![Click SQL.](./images/ords-sql.png " ")
 
 6.  The SQL Worksheet appears. Before you proceed with the SQL Worksheet, perform the next two steps.
 
@@ -71,4 +59,4 @@ For more information about querying external data, see the documentation [Queryi
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
 - **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, November 2021
+- **Last Updated By/Date** - Magadan Ramona, Technical Program Manager, July 2024

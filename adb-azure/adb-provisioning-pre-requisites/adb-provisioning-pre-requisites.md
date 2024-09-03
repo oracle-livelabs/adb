@@ -3,7 +3,11 @@
 
 ## Introduction
 
+<<<<<<< HEAD
 This lab walks you through the prerequisites to get started with Autonomous Database@Azure. This involves creating a Resource Group, VNet, and a subnet that needs to be delegated to Oracle.Database/networkAttachement.
+=======
+This lab walks you through the prerequisites to get started with Autonomous Database@Azure. This involves creating a Resource Group, Vnet, and adding a subnet that needs to be delegated for the Oracle Database@Azure service.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
 
 Estimated Time: 20 minutes
@@ -16,6 +20,7 @@ As a database user, DBA, or application developer:
 
 ## Task 1: Create a Resource Group
 
+<<<<<<< HEAD
 In this section, you will create a resource group and VNet.
 
 1.  Login to Azure Portal (portal.azure.com) and navigate to All services. Then click on the **Resource groups** icon.
@@ -27,6 +32,19 @@ In this section, you will create a resource group and VNet.
     ![](./images/resource_group_image2.png " ")
 
 3.	On “Create resource groups’ provide details in each tab as mentioned below. 
+=======
+In this section, you will create a resource group and VNet as a pre-requisite steps before provisioning ADB@Azure.
+
+1.  Login to Azure Portal (portal.azure.com) and navigate to All services. Then click on the Resource groups icon.
+
+    ![](./images/resource_group_image1.png " ")
+
+2.	On ‘Resource groups’ page, click on ‘Create’ button.
+
+    ![](./images/resource_group_image2.png " ")
+
+3.	On “Create resource groups’ provide details in each tab as mentioned in the below screenshot. 
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     Basics:
     a.  Subscription – select your billing subscription in the directory you selected
     b.  Resource group – Enter the name for the resource group to be created
@@ -36,27 +54,47 @@ In this section, you will create a resource group and VNet.
     ![](./images/resource_group_image3.png " ")
 
     Tags
+<<<<<<< HEAD
     Provide input to organize your resource with tagging as shown below
+=======
+    Provide inputs to organize your resource with tagging as shown below screenshot
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     a.	Name
     b.	Value
     
     ![](./images/resource_group_image4.png " ")
 
 
+<<<<<<< HEAD
     The ‘Review + create’ page will validate the input provided in the previous steps. Once Validation is passed, it will create a resource group.
 
     ![](./images/resource_group_image5.png " ")
 
 4.	Navigate to ‘Resource groups’ from ‘Home’ screen and search for the Resource group created to validate  
+=======
+    On Review + create page, it will validate the inputs provided in the previous steps. Once Validation is passed, it will create a resource group.
+
+    ![](./images/resource_group_image5.png " ")
+
+4.	Navigate to Resource groups from ‘Home screen’ and search for the Resource group created to validate as shown in below screenshot
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![](./images/resource_group_image6.png " ")
 
 ## Task 2:  Create Virtual Network (VNet)
+<<<<<<< HEAD
 1. Navigate to ‘Azure Services’ and select Virtual networks. Then click on the Create button
 
     ![](./images/vnet1.png " ")
 
 2.	Create Virtual Network page will appear. Provide all required details as shown below for each tab
+=======
+1. Navigate to ‘Azure Services’ and select Virtual networks. Then click on Create button
+
+    ![](./images/vnet1.png " ")
+
+2.	Create Virtual Network page will appear. Provide all required details as shown in below screenshot for each tab
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     
     Project Details:
     * **Subscription:**
@@ -78,24 +116,37 @@ In this section, you will create a resource group and VNet.
     ![](./images/vnet3.png " ")
 
     * **IP Addresses:** There is an option to choose IPV4/IPV6 addresses for your network resources. 
+<<<<<<< HEAD
     Select default IP Address range or provide new IP range based on your requirement. Here we are using default IP range for IP addresses as shown below.
+=======
+    Select default IP Address range or provide new Ip range based on the requirement. Here we are using default IP range for IP addresses as shown in below screenshot.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![](./images/vnet4.png " ")
 
     Tags
     
+<<<<<<< HEAD
     Provide input to organize your resource with tagging as shown below
+=======
+    Provide inputs to organize your resource with tagging as shown in below screenshot
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     * **Name**
     * **Value**
 
     ![](./images/vnet5.png " ")
 
+<<<<<<< HEAD
     On the **Review + create** page, it will validate the input provided in previous steps. Once Validation is passed, it will create the virtual network.
+=======
+    On * **Review + create page**, it will validate the inputs provided in previous steps. Once Validation is passed, it will create virtual network.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![](./images/vnet6.png " ")
 
     Deployment can be monitored as below.
 
+<<<<<<< HEAD
     Once all required resources are created for virtual network, deployment status will get changed to **‘Complete’**.
 
     ![](./images/vnet7.png " ")
@@ -113,6 +164,25 @@ In this section, you will create a resource group and VNet.
     ![](./images/subnet2.png " ")
 
 - You need to delegate this subnet to **Oracle.Database/networkAttachments**. Under the **Subnet Delegation** option, select **Oracle.Database/networkAttachments** from the drop down list.
+=======
+    Once all required resources are created for virtual network, deployment status will get changed to * **‘Complete’**.
+
+    ![](./images/vnet7.png " ")
+
+    Navigate to **Virtual Network** and search for the name of the VNet created to see details about the virtual cloud network.
+
+## Task 3: Add Subnet and Delegate to Oracle Database@Azure Service
+
+- Select VNet created in Task 2 and click on ‘Add a subnet'. It will open a page to provide inputs.
+
+    ![](./images/subnet1.png " ")
+
+- Provide name for the subnet to be created and then select Ip address range based on the size of network required for the deployment.
+
+    ![](./images/subnet2.png " ")
+
+- You need to delegate this subnet to Oracle Database @Azure service. Under Subnet Delegation option, select Oracle.Database/networkAttachments from the drop down list.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![](./images/subnet3.png " ")
 

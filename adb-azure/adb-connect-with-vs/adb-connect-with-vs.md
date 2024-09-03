@@ -9,10 +9,13 @@ The Windows Virtual machine provided for the workshop is pre-configured with Vis
 
 Estimated Time: 10 minutes
 
+<<<<<<< HEAD
 Watch the video below for a quick walk-through of the lab.
 [Simplifying @ Azure](videohub:1_jy1zyem0)
 
 
+=======
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 ### Objectives
 
 As a database user, DBA or application developer,
@@ -26,7 +29,11 @@ As a database user, DBA or application developer,
 
 ## Task 1: Connect Windows compute client to Remote Desktop
 
+<<<<<<< HEAD
 - Log in to the Azure portal with your username/email and password.
+=======
+- Log in to your cloud account using your tenant name, username and password.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
 - Click **Menu** and select **Virtual machines**.
     
@@ -61,7 +68,11 @@ As a database user, DBA or application developer,
 
 ## Task 2: Connect Autonomous Database with Visual Studio
 
+<<<<<<< HEAD
 - To download the Autonomous Database credential wallet, login to the Azure portal from your Windows VM and navigate to Oracle Database@Azure and click on Oracle Autonomous Database Service.
+=======
+- To download Autonomous Database credential wallet, login to Azure portal from your Windows VM and navigate to Oracle Database@Azure and Oracle Autonomous Database Service.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![This image shows the result of performing the above step.](./images/adb1.png " ")
 
@@ -79,8 +90,11 @@ As a database user, DBA or application developer,
 
 - Open Visual Studio and click on SQL Developer extension. 
 
+<<<<<<< HEAD
     NOTE: It will take a minute for SQL Developer extension to show up in Visual Studio.
 
+=======
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     ![This image shows the result of performing the above step.](./images/vs.png " ")
 
 - NOTE: It is important to have SQL Developer Extension in your Visual Studio to continue with the Labs. If you do not see the SQL Developer extension, click on Add Extension and Install SQL Developer.

@@ -4,7 +4,7 @@
 
 This lab uses three hierarchy views and an analytic view that reference the tables created in the previous lab.  You will create these objects using a script.
 
-This analytic view could be created using the Database Actions Data Studio Analysis tool.  To learn how, see the [Get Started With Analytic Views using Data Studio](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3594) Live Lab.
+This analytic view could be created using the Database Actions Data Studio Analysis tool.  To learn how, see the [Get Started With Analytic Views using Data Studio](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3594) Live Lab.
 
 Estimated Time:  5 minutes.
 
@@ -171,7 +171,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, June
+- Last Updated By - William (Bud) Endress, May 2024
  2023
 
 Data about movies in this workshop were sourced from **Wikipedia**.

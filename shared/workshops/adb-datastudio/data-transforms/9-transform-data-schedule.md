@@ -1,77 +1,61 @@
-# Using Data Transforms to prepare data for analysis
+# Scheduling the data pipeline process
 
 
 ## Introduction
 
-This lab introduces the Data Transforms application built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
+This lab introduces you to the in-built scheduler that allows you to schedule your data pipeline process.
 
-Estimated Time: 25 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
 In this workshop, you will learn:
--	How to transform and prepare your data for analysis
+-	How to schedule a process
 
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
 - Created an Autonomous Data Warehouse instance
-- Created a new QTEAM user with appropriate roles
-- Loaded the demo data
-- Loaded Age group data into AGE\_GROUP
+- Created the users DT\_DEMO\_SOURCE and DT\_DEMO\_DW with appropriate roles
+- Imported the demo data
+- Used Data Transforms to create data flows and a workflow
 
-### Demo data for this lab
->**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
+## Task 1: Create a schedule
 
-If you have not completed the previous labs then run the following script in SQL Worksheet to load all necessary objects.
+So far we have been executing processes (such as data flows and workflows) directly from the editor window. THis is useful when designing, debugging and testing processes. However, in a data integration implementation you will have normally need to execute processes on a periodic basis. This will be accomplished by creating a schedule.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
+1. Navigate to your project and click on **Schedules** from left side menu. Then click **Create Schedule**. Configure it as follows.
 
-```
-<copy>
-</copy>
-```
+    - Name: LOAD\_DATAWAREHOUSE
+    - Resource: Workflow
+    - Resource Name: Nightly\_Load
+    - Frequency: Hourly
+    - Time: 3 Minutes, 0 seconds
+    - Status: Active
 
-Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
+    Click on **Save** to create the schedule. This schedule will run in 3 minutes and then after every hour. 
 
->**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
+    Note that you can schedule the workflow to run on any other frequency, for example daily or weekly at a certain time. For our exercise we did it hourly starting in 3 minutes so that we can check the progress quickly.
 
-![Alt text](images/image_sql_worksheet.png)
+    ![Screenshot of create schedule](images/image_sc_01_create_sc.png)
 
-Now you are ready to go through the rest of the labs in this workshop.
+2. Now the schedule is created and the workflow will be executed at the assigned time. Note that you can activate/de-activate any schedule by editing it. After testing your schedule, you should de-activate it so that it doesn't keep running in the background. Let's go to the jobs menu in three minutes and check. You should be able to see your job running.
 
-## Task 1: Launch Data Transforms
-
-
+    ![Screenshot of scheduled job](images/image_sc_01_jobs.png)
 
 ## RECAP
 
-In this lab, we used the Data Transforms tool to calculate customer value from sales data, and combine it
-with the customer, age group and movie genre information to load into a target table to be 
-used for data analysis. 
+In this lab, we used Data Transforms to create a schedule for a data pipeline process. One can have multiple schedules for different processes.
 
-Note that we scratched only the surface. Other features are:
+Now you have gone through the basic features of Data Transforms and should be ready to design and implement a data integration process based on your real world requirements.
 
--   **Variety of data sources**: Databases, Object Store, REST API and Fusion
-    Application
-
--   **Load Data:** Load multiple tables in a schema from another data
-    source. It can also integrate with Oracle Golden Gate Cloud Service for advanced
-    replication. This complements the Data Load tool explored in the earlier
-    lab.
-
--   **Workflow:** Combine several data flows to run sequentially or in parallel.
-
--   **Schedule:** In-built scheduler for periodic execution.
-
-You may now **proceed to the next lab**.
+This concludes the Data Transforms workshop.
 
 ## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
-- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
-
+- Contributors - Mike Matthews
+- Last Updated By - Jayant Mahto, June 2024
 
 Copyright (C)  Oracle Corporation.

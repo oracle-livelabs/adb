@@ -2,9 +2,9 @@
 
 ## About this Workshop
 
-This workshop will show you how to use Data Transforms tool to load and transform your data in the Autonomous Database.
+This workshop will show you how to use Data Studio's Data Transforms tool to create a data pipeline in order to engineer data for data analysis, data science, or AI. Data can be loaded from a wide selection of heterogenous sources (databases and applications) and can go through complex transformations. You will learn how to define the data load and transforms process and schedule them for periodic execution.
 
-Estimated Workshop Duration: ?? hour, ?? minutes
+Estimated Workshop Duration: 2 hours, 30 minutes
 
 ### Who should use this Workshop?
 
@@ -29,17 +29,24 @@ Before you launch into this workshop, you will need the following:
 
 ### How to use the Workshop
 
-Labs 1 and 2 are for provisioning an Autonomous Database (or have one ready to use) and creating a user. If you already have
-a database and a user with appropriate roles then you can directly jump to lab 3, which is for loading demo data. After that 
-you need to sequentially complete the labs, since each lab uses the artifacts created in previous labs.
+The labs are ordered in a sequence. Start with creating the users and importing the data. If you have the pre-created environment then you can skip these. The rest of the workshop takes you through various tasks you need to execute in order to build a data pipeline in the Data Transforms tool.
+
+A data pipeline consists of the following components:
+
+- A Data Load job: For extracting data from the source and loading to the target without any transformations. A Data Load job can be used to extract data from one, many, or all source tables in a schema, and load corresponding tables in the target database.
+- A Data Flow: You can design complex transformations in a data flow from any set of source tables to your target table.
+- A Workflow: You can execute multiple data load and data flow jobs in a single workflow so that they can be executed as an unit.
+
+For this workshop we will use demo movie streaming and customer demographics data for a fictional movie streaming company. The goal of creating the data pipeline is to populate a set of tables that can be used to analyze customer movie watching behavior. The details will be explained further in individual labs.
+
 
 If you have any questions about the topics covered in this lab and the entire workshop, please contact us by posting on our public forum on  **[cloudcustomerconnect.oracle.com](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/)**  and we will respond as soon as possible.
 
 ## Acknowledgements
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
-- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, January 2023
+- Contributors - Mike Matthews
+- Last Updated By - Jayant Mahto, July 2024
 
 
 Copyright (C)  Oracle Corporation.

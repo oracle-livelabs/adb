@@ -35,9 +35,9 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 1. To begin this process, you need to navigate to the **Data Load** page in Data Studio. 
   ![The Data Studio cards on the Database Actions home page, with the Data Load card selected](images/launch-data-load.png)
-2. On the **Data Load** main page, click the **Cloud Locations** card so you can define a new connection to your cloud storage system.
-  ![The Cloud Locations card in Data Studio](images/cloudlocations.png)
-3. Click the **Add Cloud Storage** button on the upper right and define a Cloud Storage location. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
+2. On the **Data Load** main page, click the **Connections** card so you can define a new connection to your cloud storage system.
+  ![The Connections card in Data Studio](images/cloudlocations.png)
+3. Click the **Create** button on the upper left and select **New Cloud Store Location**. Set the Name to **MOVIESTREAMGOLD**, select the **Public Bucket** radio option, and copy and paste the following Bucket URI:
 
  ```
   $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_gold/o</copy>
@@ -56,11 +56,9 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 ## Task 2: Link to data files in a Cloud Location
 
-1. Navigate back to the main Data Load page again using the breadcrumb link. Click the two cards for  **Link Data**  from  **Cloud Store** and then click the blue **Next** button. 
+1. Navigate back to the main Data Load page again using the breadcrumb link. Click the **Link Data** card and make sure **Cloud Store** is selected at the top. 
 
-  ![The Data Load page with Link Data and Cloud Store selected](images/linkcloud.png)
-
-2. Make sure the **MOVIESTREAMGOLD** cloud location is selected in the top dropdown box. If it does not appear, click the **Refresh** button on the far right of the toolbar, then select it.
+2. Select the **MOVIESTREAMGOLD** cloud location in the dropdown box. If it does not appear, click the **Refresh** button on the far right of the toolbar, then select it.
 
   ![The Refresh button the toolbar](images/refresh.png)
 
@@ -68,7 +66,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![The Data Load page with the custsales folder selected for linking](images/linkcustsales.png)
 
-3. Click on the menu for the link task and click **Settings**.
+3. Click on the pencil icon for the link task to review its settings.
 
 4. Click the **SQL** option on the left hand side, so that we can see exactly how the external table will be created. 
 
@@ -86,8 +84,6 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
   ![Cloud link task complete, with row count](images/linkcomplete.png)
 
-  Click the **Done** option in the bottom right of the screen.
-
 ## Task 3: Query the new external table
 
 Now that we have linked to the directory of parquet files, we are set up to query and use the data in the Autonomous Database, even though the data is still resident on cloud storage. Let's run a simple query on the data.
@@ -96,7 +92,7 @@ Now that we have linked to the directory of parquet files, we are set up to quer
 
   ![Link to Database Actions launchpad](images/goto-launchpad.png)
 
-2. Click the **SQL** option to open SQL Developer Web.
+2. Click the **SQL** option in the **Development** section to open SQL Developer Web.
 
   ![Link to SQL on Database Actions](images/goto-sql.png)
 
@@ -124,4 +120,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
-- Last Updated By - Mike Matthews, January 2023
+- Last Updated By - Mike Matthews, April 2024

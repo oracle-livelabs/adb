@@ -1,0 +1,88 @@
+{
+    "workshoptitle": "Build a Data Lake with Autonomous Data Warehouse (ODTUG KScope 24)",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "type":"freetier",
+            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "filename": "./../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Set up the Workshop Environment",
+            "type":"freetier",
+            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
+            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
+        },
+        {
+            "title": "Lab 2: Load Local Data",
+            "type":"freetier",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../load-local-data/load-local-data.md"
+        },
+        {
+            "title": "Lab 3: Link to Data in Public Object Storage Buckets",
+            "type":"freetier",
+            "description": "This lab walks you through how to link data in public object storage buckets.",
+            "filename": "./../../load-os-data-public/load-os-data-public.md"
+        },
+        {
+            "title": "Lab 4: Link to Data from Private Object Storage Buckets",
+            "type":"freetier",
+            "description": "This lab walks you through how to link data from private object storage buckets.",
+            "filename": "./../../load-os-data-private/load-os-data-private.md"
+        },
+        {
+            "title": "Lab 5: Create and Query External Tables Using Delta Sharing Protocol",
+            "type":"freetier",
+            "description": "This lab shows you how ADW supports Public Data Share.",
+            "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+        },
+        {
+            "title": "Lab 6: Query Data Across Multi-Cloud Data Lakes",
+            "type":"freetier",
+            "description": "This lab shows you how to query data from OCI and AWS S3.",
+            "filename": "./../../query-data-lakes/query-data-lakes.md"
+        },
+        {
+            "title": "Lab 7: Query Iceberg Tables",
+            "type":"freetier",
+            "description": "This lab shows you how to query Iceberg tables in ADW.",
+            "filename": "./../../query-iceberg-tables/query-iceberg-tables.md"
+        },
+        {
+            "title": "Lab 8: Integrate ADW with AWS Glue Data Catalogs",
+            "type":"freetier",
+            "description": "This lab shows ADW integration with AWS Data Catalogs.",
+            "filename": "./../../adw-aws-integrate/adw-aws-integrate.md"
+        },
+        {
+            "title": "Lab 9: Performance Best Practices",
+            "type":"freetier",
+            "description": "This lab shows you how to improve query performance.",
+            "filename": "./../../query-performance/query-performance.md"
+        },
+        {
+            "title": "Lab 10: ADW Multi-language Support",
+            "type":"freetier",
+            "description": "This lab shows you how ADW supports multiple languages",
+            "filename": "./../../adw-multi-language/adw-multi-language.md"
+        },
+        {
+            "title": "Lab 11: Clean up Resources Used in the Workshop (Optional)",
+            "type":"freetier",
+            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
+            "filename": "./../../cleanup/cleanup.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

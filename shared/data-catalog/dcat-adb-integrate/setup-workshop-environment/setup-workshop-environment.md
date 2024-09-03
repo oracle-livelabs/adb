@@ -5,7 +5,7 @@
 
 Since you are using the LiveLabs environment, you **don't** have administrative privileges to create any OCI resources; therefore, all of the OCI resources that you need in this workshop are already created for you with your LiveLabs reservation. We recommend that you at least review the list of OCI resources that you will use in this workshop in the **Objectives** and **Prerequisites** sections.
 
-If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs: [Access the Data Lake using Autonomous Database and Data Catalog](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=877)
+If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs: [Access the Data Lake using Autonomous Database and Data Catalog](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=877)
 
 > **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new Data Catalog administrator user and a Data Catalog administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage a Data Catalog and Autonomous Database instances.
 
@@ -58,7 +58,6 @@ In this lab, you will:
 * Import a Glossary into your Data Catalog instance.
 * Create an Autonomous Database instance.
 
-
 ### Prerequisites
 
 * An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported.
@@ -87,7 +86,11 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 
 A Cloud Administrator can optionally create a compartment in your tenancy to help organize the Data Catalog resources. In this lab, as a Cloud Administrator, you will create a new compartment that will group all of your Data Catalog resources that you will use in the workshop.
 
-1. Open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**.
+1. Open the **Navigation** menu.
+
+    ![Click the Navigation menu.](./images/click-navigation-menu.png " ")
+
+2. Click **Identity & Security**. Under **Identity**, click **Compartments**.
 
 	 ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
 
@@ -146,25 +149,29 @@ Data Catalog offers both aggregate and individual resource-types for writing pol
 
 Create a Data Catalog instance using the following steps.
 
-1. Open the **Navigation** menu and click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**.
+1. From the Console, open the **Navigation** menu.
 
-   ![From the Navigation menu, navigate to Data Catalog.](./images/navigate-data-catalog.png " ")
+    ![Click the Navigation menu.](./images/click-navigation-menu.png =70%x*)
 
-2. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
+2. Click **Analytics & AI**. Under **Data Lake**, click **Data Catalog**.
+
+    ![From the Navigation menu, navigate to Data Catalog.](./images/navigate-data-catalog.png " ")
+
+3. On the **Data Catalog Overview** page, click **Go to Data Catalogs**.
 
    ![The Go to Data Catalogs button is highlighted.](./images/data-catalog-overview.png " ")
 
-3. On the **Data Catalogs** page, click **Create data catalog**.
+4. On the **Data Catalogs** page, click **Create data catalog**.
 
    ![The Create Data Catalog button in the training-dcat-compartment is highlighted.](./images/data-catalog-page.png " ")
 
-4. Select the **`training-dcat-compartment`** compartment from the **Create in compartment** drop-down list, if not already selected.
+5. Select the **`training-dcat-compartment`** compartment from the **Create in compartment** drop-down list, if not already selected.
 
-5. Enter **`training-dcat-instance`** in the **Name** field.
+6. Enter **`training-dcat-instance`** in the **Name** field.
 
    ![The completed Create Data Catalog dialog box is displayed. The Create Data Catalog button is highlighted.](./images/create-data-catalog.png " ")
 
-6. Click **Create data catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
+7. Click **Create data catalog**. The Data Catalog instance is created and displayed in the **Data Catalogs** page.
 
    ![The newly created Data Catalog instance is displayed with an Active state.](./images/click-data-catalog.png " ")
 
@@ -215,59 +222,69 @@ In this task, you create a new and empty business glossary in the newly created 
 
    The import file is small; therefore, the job finishes instantly and the imported glossary is displayed. If the import file is large, you can monitor the status of the job from the Jobs tab. When the job is completed successfully, the contents of the Excel file are imported into your glossary.
 
-   ![The Summary tab of the imported glossary displays the glossary details. In the Glossary Hierarchy pane on the left, the Refresh glossary link and MovieStream Application name link are highlighted.](./images/glossary-imported.png " ")
+   ![The Summary tab of the imported glossary displays the glossary details.](./images/glossary-imported.png " ")
 
 8. The imported glossary is displayed in the **Glossary Hierarchy** pane on the left. You can also click **Expand all** to view all of the details. The children of the **MovieStream Application** glossary are displayed. If the glossary details are not displayed, click **Refresh glossary**.
 
-   ![In the Glossary Hierarchy pane, the Expand all and MovieStream Application name link are highlighted. The MovieStream Application is expanded to show some of its immediate children and descendants.](./images/expand-all.png " ")
+   ![In the Glossary Hierarchy pane, the Expand all and MovieStream Application name link are highlighted.](./images/expand-all.png =50%x*)
 
     >**Note:** The categories and terms created within a glossary are displayed in the **Glossary Hierarchy** tree navigation list. Expand each category to view terms created within that category. The summary information changes as you click different nodes in the glossary tree. You can use Expand All or Collapse All to expand or collapse all the nodes available in the glossary respectively. You can also use the search bar to search for categories and terms. If the glossary children are not displayed, click **Refresh glossary**.
 
 9. Close the **Glossaries** and **MovieStream Application** tabs.
 
 ## Task 5: Create a Dynamic Group
+
 Dynamic groups allow you to group Oracle Cloud Infrastructure compute instances as "principal" actors (similar to user groups). You can then create policies to permit instances to make API calls against Oracle Cloud Infrastructure services. When you create a dynamic group, rather than adding members explicitly to the group, you instead define a set of matching rules to define the group members. For example, a rule could specify that all instances in a particular compartment are members of the dynamic group. The members can change dynamically as instances are launched and terminated in that compartment.
 
 In this task, you create a dynamic group that includes the specific compartment OCID as a resource in the group.
 
-1. Open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Dynamic Groups**.
+1. Open the **Navigation** menu. Click **Identity & Security**. Under **Identity**, click **Domains**.
 
-  ![The Navigation menu is clicked. The navigation path to Dynamic Groups is displayed and highlighted.](./images/navigate-dynamic-group.png " ")
+  ![The Navigation menu is clicked. The navigation path to Dynamic Groups is displayed and highlighted.](./images/navigate-domains.png " ")
 
-2. On the **Dynamic Groups** page, click **Create Dynamic Group**.
+2. On the **Domains** page, click the **Default** (Current domain) link.
+
+    ![Click the Default domain.](./images/click-default-domain.png " ")
+
+3. On the **Overview in Default Domain** page, under **Identity domain**,
+click **Dynamic groups**.
+
+    ![Click the Default domain.](./images/overview-in-default-domain.png " ")
+
+4. On the **Dynamic Groups in Default Domain** page, click **Create dynamic group**.
 
   ![The Create Dynamic Group button is highlighted.](./images/dynamic-group-page.png " ")
 
-3. In the **Create Dynamic Group** dialog box, specify the following:
+5. In the **Create Dynamic Group** dialog box, specify the following:
 
     + **Name:** Enter **`moviestream-dynamic-group`**.
     + **Description:** Enter **`Training Compartment Dynamic Group`**.
-    + In the **Matching Group** section, accept the default **Match any rules defined below** option.
+    + In the **Matching rules** section, accept the default **Match any rules defined below** option.
     + Click the **Copy** button in the following code box to copy the dynamic rule, and then paste it in the **Rule 1** text box. This rule specifies that any _resource defined in this compartment is a member of this dynamic group_. You will substitute the _your-compartment-ocid_ with your own **training-dcat-instance** compartment OCID that you will identify in the next step. Make sure you don't delete the single quotation marks around the OCID value.
 
         ```
         <copy>resource.compartment.id='your-compartment-ocid'</copy>
         ```
 
-4. To find your _Compartment OCID_, copy the URL in the address bar of your current browser tab where the **Create Dynamic Group** page is displayed. Open a new browser tab. For example, in Chrome, you click the **New tab** (plus sign) icon.
+6. To find your _Compartment OCID_, copy the URL in the address bar of your current browser tab where the **Create Dynamic Group** page is displayed. Open a new browser tab. For example, in Chrome, you click the **New tab** (plus sign) icon.
 
     ![The URL on the current tab in Chrome is highlighted and copied and labeled as 1. Next, the New tab icon (plus icon) is clicked to create a new tab and labeled as 2.](./images/copy-url-new-tab.png " ")
 
-5. Paste the copied URL into the address bar of the new tab.
+7. Paste the copied URL into the address bar of the new tab.
 
     ![The copied URL is pasted in the new tab's address bar.](./images/paste-url-new-tab.png " ")
 
-6. In the new tab, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**. On the **Compartments** page, in the row for your **training-dcat-compartment**, hover over the **OCID link** in the **OCID** column, and then click **Copy** to copy the OCID for the **training-dcat-compartment**. You can close this tab.
+8. In the new tab, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**. On the **Compartments** page, in the row for your **training-dcat-compartment**, hover over the **OCID link** in the **OCID** column, and then click **Copy** to copy the OCID for the **training-dcat-compartment**. You can close this tab.
 
     ![In the row for the training-dcat-compartment, hover over the OCID link in the OCID column, and then click the Copy link.](./images/copy-compartment-ocid.png " ")
 
-7. Click the original tab in your web browser where you were creating the dynamic group policy. Paste the copied compartment OCID value to replace the **'your-compartment-ocid'** placeholder in the **Rule 1** text box.
+9. Click the original tab in your web browser where you were creating the dynamic group policy. Paste the copied compartment OCID value to replace the **'your-compartment-ocid'** placeholder in the **Rule 1** text box.
 
-8. Click **Create**.
+10. Click **Create**.
 
     ![The completed Create Dynamic Group dialog box is displayed. Rule 1 field and the Create button are highlighted.](./images/moviestream-dynamic-group-db.png " ")
 
-9. The **Dynamic Group Details** page is displayed. Click **Dynamic Groups** in the breadcrumbs to re-display the **Dynamic Groups** page.
+11. The **Dynamic Group Details** page is displayed. Click **Dynamic Groups** in the breadcrumbs to re-display the **Dynamic Groups** page.
 
     ![On the Dynamic Group Details page, the breadcrumbs are displayed at the top of the page. The Dynamic Group Information and Matching Rules sections are displayed.](./images/dynamic-group-details.png " ")
 
@@ -276,6 +293,7 @@ In this task, you create a dynamic group that includes the specific compartment 
     ![The new dynamic group is displayed on the Dynamic Groups page.](./images/dynamic-group-created.png " ")
 
 ## Task 6: Create Access Policy for Dynamic Group
+
 After you have created a dynamic group, you need to create a policy to permit the dynamic group to access Oracle Cloud Infrastructure services. In this task, you create a policy to allow any resource in the dynamic group to access and manage your Data Catalog in the `training-dcat-compartment` using the aggregate resource-type **`data-catalog-family`** as follows:
 
 1. If you are still on the **Dynamic Groups** page from the previous task, click **Policies** in the **Identity** section on the left; otherwise, open the **Navigation** menu and click **Identity & Security**. Under **Identity**, select **Policies**.
@@ -403,12 +421,13 @@ You may now proceed to the next lab.
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
-* **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+* **Last Updated By/Date:** Lauran Serhal, May 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

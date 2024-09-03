@@ -19,6 +19,7 @@ In this lab, you will:
 * Query the generated log, schemas, and external tables
 
 ### Prerequisites
+
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
 
 ## Task 1: Access the Autonomous Database SQL Worksheet
@@ -42,17 +43,13 @@ This lab assumes that you have successfully completed all of the preceding labs 
     ![On the Autonomous Databases page, the Autonomous Database that you provisioned is displayed and highlighted.](./images/click-db-dcat.png " ")
     </if>
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **SQL**.
     <if type="livelabs">
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/ll-db-actions-new.png " ")
     </if>
     <if type="freetier">
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions-sql.png " ")
     </if>
-
-5. A **Launch DB actions** message box with the message **Please wait. Initializing DB Actions** is displayed. Next, the **Database Actions | Launchpad** Home page is displayed in a new tab in your browser. In the **Development** section, click the **SQL** card.
-
-    ![The Database Actions Launchpad Home page is displayed. The SQL card in the Development section is highlighted.](./images/ll-launchpad.png " ")
 
     <if type="livelabs">
     >**Note:** If you are prompted for a username and password, enter the LiveLabs username and password that were provided for you in **Reservation Information** panel that is accessed from the **Run Workshop Access the Data Lake using Autonomous Database and Data Catalog** tab.
@@ -253,8 +250,8 @@ Before you can create a connection to your Data Catalog instance, you will need 
     ![Saved values in Notepad file.](./images/saved-values-notepad.png " ")
 
     >**Notes:**
-    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
-    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
+    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
+    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
 
 4. Create a connection to your Data Catalog instance using the `set_data_catalog_conn` procedure. This is required to synchronize the metadata with Data Catalog. An Autonomous Database instance can connect to a single Data Catalog instance. You only need to call this procedure once to set the connection. Click **Copy** to copy the following code and paste it into the SQL Worksheet.
 
@@ -386,8 +383,8 @@ Before you can create a connection to your Data Catalog instance, you will need 
     ![Saved values in Notepad file.](./images/ll-saved-values-notepad.png " ")
 
     >**Notes:**
-    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
-    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
+    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
+    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
 
 8. Create a connection to your Data Catalog instance using the `set_data_catalog_conn` procedure. This is required to synchronize the metadata with Data Catalog. An Autonomous Database instance can connect to a single Data Catalog instance. You only need to call this procedure once to set the connection. Click **Copy** to copy the following code and paste it into the SQL Worksheet.
 
@@ -762,10 +759,10 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer, Oracle Autonomous Database and Big Data
 * **Contributor:** Marty Gubar, Product Manager, Server Technologies
-* **Last Updated By/Date:** Lauran Serhal, March 2023
+* **Last Updated By/Date:** Lauran Serhal, May 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

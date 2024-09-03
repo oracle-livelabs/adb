@@ -3,15 +3,19 @@
 ## Introduction
 In this lab, you will link to data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) into your Oracle Autonomous Database instance, in preparation for exploration and analysis.
 
-You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store. Instead of using the wizard-driven data loading tools of Database Actions, you practice loading data using the **DBMS_CLOUD** PL/SQL package, the preferred method for load automation.
+You will practice linking to data from a **private** Object Storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
 Estimated Time: 20 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[](youtube:IPkjI6zd2CU)
+
 ### Objectives
 
 In this lab, you will:
+
 - Download to your local computer a comma-separated value (.csv) file containing a simulation of sensitive customer data
 - Create a private OCI Object Storage bucket
 - Upload the .csv file to the OCI private bucket
@@ -36,7 +40,7 @@ Download a **.csv** file that contains a simulation of sensitive customer retent
     </copy>
     ```
 
-2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file. This file contains customers who will stop or might stop being repeat customers.
+2. The browser page downloads (**Downloads** directory by default in MS-Windows) and displays the **`potential_churners.csv`** file which contains customers who will stop or might stop being repeat customers. The data in the downloaded file is also displayed in an Excel worksheet. Close the worksheet.
 
   ![Download the potential_churners.csv file to your local computer.](images/potential-churners-csv-file.png " ")
 
@@ -109,9 +113,9 @@ Upload the **`potential_churners.csv`** file that you downloaded earlier in this
 
   ![The Upload Objects panel is displayed.](./images/select-file.png " ")
 
-6. Click **Upload** to upload the selected file to the bucket.
+3. Click **Upload** to upload the selected file to the bucket.
 
-7. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
+4. When the file is uploaded successfully, a **Finished** status is displayed next to the file's name. Click **Close** to close the **Upload Objects** panel.
 
     ![The file is uploaded. Close the panel.](./images/file-uploaded.png " ")
 
@@ -141,7 +145,7 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 ## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
-_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys    ._
+_**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
 
@@ -149,11 +153,11 @@ In this task, you will get the following items that are required to create a Clo
 + The Fingerprint of the public key. See [How to Get the Key's Fingerprint](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#four).
 + The Tenancy's OCID and the user's OCID. See [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five).
 
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **My profile**.
 
-    ![Click the person icon at the far upper right and click your username.](./images/click-your-username.png " ")
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
 
-2. The **User Details** page is displayed. In the **User Information** tab, click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
+2. The **My profile** page is displayed. In the **User Information** tab, you can click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
     ![Click Auth Tokens under Resources at the bottom left.](./images/click-api-key.png " ")
 
@@ -161,7 +165,7 @@ In this task, you will get the following items that are required to create a Clo
 
     ![Click Add API Key.](./images/click-add-api-key.png " ")
 
-4. Click **Download Private Key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Private Key**.
+4. Click **Download private key**. The private key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download private key**.
 
     ![Download private key.](./images/download-private-key.png " ")
 
@@ -173,108 +177,387 @@ In this task, you will get the following items that are required to create a Clo
 
     **`oci-api-private-key.pem`**
 
-5. In most cases, you do not need to download the public key; however, you will download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
+5. In most cases, you do not need to download the public key; however, you can download the public key for potential future use. click **Download Public Key**. The public key is downloaded to your Web browser's default directory such as the **Downloads** folder in MS-Windows. A checkmark is displayed next to the **Download Public Key**.
 
-    ![Download public key.](./images/download-public-key.png " ")
-
-    The name of the downloaded public key is usually as follows:
-
-    **`oraclecloudidentityservice_username-date_public.pem`**
-
-    Rename your downloaded private key to something shorter such as:
-
-    **`oci-api-public-key.pem`**
-
-6. A checkmark should appear next to each Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
+6. A checkmark should appear next to each button. Click **Add**. The key is added and the **Configuration File Preview** dialog box is displayed. The file snippet includes required parameters and values you'll need to create your configuration file.
 
     ![Configuration file preview.](./images/config-file-preview.png " ")
 
-    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
+    This dialog box contains all of the information that you will need in the next task to create a new Cloud location and credential. Click the **Copy** link to copy the **User's OCID**, **API Key Fingerprint**, and **Tenancy OCID** to your clipboard and then paste it into a text editor of your choice such as Notepad in MS-Windows. You will need those values in the next task.
 
     ![Credentials items.](./images/credentials-items.png " ")
 
-7. Click **Close**.
+    You can access the downloaded private key and then paste the key value in the above text editor file as you will need the value in the next task.
 
-## Task 6: Define a Connection and Create a Credential
+    ![Private key value.](./images/get-private-key-value.png " ")
 
-You will load data from the `potential_churners.csv` file you uploaded to your private Oracle Object Store in an earlier task using the `DBMS_CLOUD` PL/SQL package. There are two parts to this process:
+7. In the **Configuration File Preview** dialog box, click **Close**.
 
-+ Set up a connection to Oracle Object Storage by defining a cloud location with a credential. You perform this step only once.
-+ Load the file using the `DBMS_CLOUD` PL/SQL package.
+## Task 6: Create a Native OCI Credential Using the DBMS_CLOUD PL/SQL Package
 
-In this task, you define a connection to connect to an Oracle Object Storage bucket. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
+You will load data from the **`potential_churners.csv`** file you uploaded to your private Oracle Object Store in an earlier task using the **`DBMS_CLOUD`** PL/SQL package. First, you will create a credential in order to access your  Oracle Object Storage. You perform this step only once.
 
-1. On the **Oracle Cloud Console** Home page, open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+In this task, you create a credential to connect to an Oracle Object Storage bucket.
 
-<if type="livelabs">
-2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+1. Navigate back to the **SQL Worksheet** in the **SQL | Oracle Database Actions** browser tab that you used in a previous lab.
 
-<if type="freetier">
-2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
+    ![Navigate back to the SQL Worksheet.](./images/sql-worksheet.png =60%x*)
 
-3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **Data Load**.
+2. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the placeholders values for the **`user_ocid`**, **`tenancy_ocid`**, **`private_key`**, and **`fingerprint`** in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
 
-4. On that **Data Load** page, in the **Administration** section, click **CONNECTIONS** to display the **Connections** page.
+    >**Note:** To find your unencrypted **private_key** value that you downloaded in the previous task: Open the private key file in a text editor, and then copy the entire key value but don't include the **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----** lines. Next, paste the copied value in the following code.
 
-    ![Click the Cloud Locations card.](./images/click-connections.png " ")
+    ![Private key value.](./images/private-key-value.png " ")
 
-6. On the **Connections** page, click the **Create** drop-down list and then select **New Cloud Store Location** from the drop-down list.
+    ```
+    <copy>
+    BEGIN
+    dbms_cloud.create_credential(
+        credential_name=>'OBJ_STORAGE_CRED',
+        user_ocid=>'user_ocid',
+        tenancy_ocid=>'tenancy_ocid',
+        private_key=>'private_key',
+        fingerprint=>'fingerprint');
+    END;
+    /
+    </copy>
+    ```
 
-    ![Click Add Cloud Storage.](./images/click-new-cloud-store-location.png " ")
+    Next, click the **Run Script (F5)** icon in the Worksheet toolbar.
 
-7. Specify the following in the **Add Cloud Store Location** panel.
-    + **Name:** Enter **`training-data-lake`**.
-    + **Description:** Enter an optional description.
-    + Click **Create Credential**. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + In the **Credential Credential** dialog box, specify the following:
-        + **Credential Type:** Select the **Oracle Cloud Infrastructure Signing Keys** option.
-        + **Credential Name:** Enter **OBJ\_STORAGE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-        + **Fingerprint:** Enter the fingerprint for your RSA key pair that you copied earlier to a text file.
-        + **Private Key:** Paste your unencrypted private key in the RSA key pair.
-        Open the private key file in a text editor, and then copy the entire content from the (and including) **-----BEGIN PRIVATE KEY-----** line to (and including) the **-----END PRIVATE KEY-----** line.
-        ![Private key.](./images/private-key-value.png " ")
+    ![Create an OCI credential.](images/credential-created.png)
 
-        + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
-        + **Oracle Cloud Infrastructure User Name:** Enter your _**user's OCID**_ (and not the actual username).  _**Note:** If you did complete the optional **Task 5**, then the you should have already saved the user's OCID (and not the actual username) in a text file of your choice. If you didn't perform the optional **Task 5**, you can find the user's OCID as follows: Navigate to the **Oracle Cloud Console**. Click the **User's** drop-down list, and then select **User settings**. In the **User Details** page, in the **User Information** tab, click **Copy** next to the **OCID** field. Save this user OCID in your text file._
-        
-            The **Add Cloud Store Location** panel is re-displayed. Specify the following:
+3. Query the available credentials. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
-        + Select the **Bucket URI** option.
-        + **Bucket URI:** Enter the Bucket URI that you identified and saved in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
+    ```
+    <copy>
+    SELECT credential_name, username, comments
+    FROM all_credentials;
+    </copy>
+    ```
 
-            `https://objectstorage.region name.oraclecloud.com/n/namespace name/b/bucket name/o`
+    ![Query credentials.](images/query-credentials.png)
 
-            ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
+    The newly created **`OBJ_STORAGE_CRED`** is displayed.
 
-8. Click **Next** to see the available objects in the bucket that you specified. There is only one file that you uploaded to your private Object Storage bucket, `potential_churners.csv`.
+## Task 7: (Optional) Create Native OCI Credentials, RSA Key Pairs, a Fingerprint, and Auth Tokens Using a Cloud Shell Script
 
-    ![Click Next to see the objects in the bucket.](./images/click-next.png " ")
+In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and, an RSA key pairs with a fingerprint, and an optional Auth token is to use a Cloud Shell script named **`adb-create-cred.sh`** that you will run in this task. This script is located in the **`/usr/local/bin`** directory.
 
-9. Click **Create**. The **training-data-lake** connection is displayed in the **Connections** page.
+### **Start the OCI Cloud Shell**
 
-    ![The cloud store location is created.](./images/connection-created.png " ")
+1. Start Cloud Shell. On your Oracle Console banner, click the **Developer tools** icon, and then select **Cloud Shell**. In our example, the home region is **US East (Ashburn)**.
+
+    ![Start Cloud Shell.](images/start-cloud-shell.png)
+
+    >**Note:** If you do not have access to Cloud Shell, you can create OCI Native Credentials without using the `adb-create-cred.sh` script. See [Create Oracle Cloud Infrastructure Native Credentials](https://docs-uat.us.oracle.com/en/cloud/paas/query-service/adwst/adp-ld-managing-cloud-storage-connections.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) for details.
+
+2. After a minute or so, the Cloud Shell is displayed along with your currently selected region. In this example, our home region is **`US East (Ashburn)`** as shown in the banner and also in the Cloud Shell prompt.
+
+    ![Click Maximize.](images/click-maximize.png)
+
+3. Maximize the Cloud Shell view. Click the **Maximize** icon on the Cloud Shell banner. The Cloud Shell view is maximized.
+
+    ![Maximized screen.](images/maximized-screen.png)
+
+4. To clear the screen, enter the **`clear`** command at the prompt and then press the **`[Enter]`** key.
+
+    ![Clear screen.](images/clear-screen.png)
+
+    The screen is cleared.
+
+    ![Screen cleared.](images/screen-cleared.png =70%x*)
+
+### **The Available Script's Arguments**
+
+Let's explore some of the available arguments that you can use with the script.
+
+* **`--help`**:    
+This argument lists the available arguments that you can use with the script. Copy and paste the following command on the command prompt, and then press the **`[Enter]`** key.
+
+    ```
+    <copy>
+    adb-create-cred.sh --help
+    </copy>
+    ```
+
+    ![Run the script with the help argument.](images/run-script-help.png =80%x*)
+
+* **`-r`** or **`--region`**:    
+By default, the script creates the credentials in an Autonomous Database in your home region; therefore, it will not prompt you for a region; In this scenario, you run the script _without the region argument_.    
+
+    If you are in your home region and your Autonomous Database is in a _different region_, then you must use the **`--region`** argument. This argument enables you to select a region that contains the desired Autonomous Database from a list of regions that are available to you.
+
+    ```
+    adb-create-cred.sh --region
+    ```
+    
+    >**Note:** Once you select your region, it may take few minutes to gather information about the compartments and Autonomous Database instances on a large Tenancy; however, the next two arguments will speed up the process of creating the credentials in a different region and a specific compartment in the selected region.
+    
+* **`-r=region_name`** or **`--region=region_name`**:    
+This argument is similar to the **`--region`** argument except that you must provide the region name with it. In our example, our home region is **`us-ashburn-1`**. If we want to create the credentials scripts in the **`ca-toronto-1`** region, then we would run the script with the region argument as follows which is faster than using the `--region` argument.
+
+    ```
+    adb-create-cred.sh --region=ca-toronto-1
+    ```
+
+* **`-c=compartment_name`** or **`--compartment=compartment_name`**:    
+If you want to create the credentials in a specific compartment instead of having the script list all of your available compartments and then have you choose the desired compartment, which can take time, you can use the **`--compartment`** argument along with the name of the compartment that contains Autonomous Databases to which you have access. This will be a faster option. If the following example, we used the argument with the name of the compartment that contains the ADB instance where we want to create the credentials.
+
+    ```
+    adb-create-cred.sh --compartment=training-adw-compartment
+    ```
+
+    Finally, we can run the script in a different region and a specific compartment as follows:
+
+    ```
+    adb-create-cred.sh --region=ca-toronto-1 --compartment=training-adw-compartment
+    ```
+
+### **Example 1: Run the Script with No Arguments**
+
+Now that you are familiar with the arguments that you can use with the script, let's go through a simple example. We will run the script in our **`us-ashburn-1`** home region and we won't run the generated script in any Autonomous Database instance; instead, we will opt to run the generated `.sql` credential script ourselves later in the SQL Worksheet of our Autonomous Database instance. In addition, we don't have any existing API keys, a fingerprint, or a wallet file. If we did, we will be prompted on whether we'd like to reuse them.
+
+1. Run the **`adb-create-cred.sh`** Cloud Shell script. Enter its name at the command prompt, and then press the **`[Enter]`** key.
+
+    ```
+    <copy>
+    adb-create-cred.sh 
+    </copy>
+    ```
+
+    The public and private API keys and a fingerprint are created. The following `.sql` and `json` OCI native credential scripts are also created for you:
+
+    * **`oci_native_credential.sql`**
+    * **`oci_native_credential.json`**
+
+    ![Don't run script on any ADB instance.](images/create-credential-no-adb-run.png)
+
+2. Next, you are prompted whether or not you'd like to run the generated credentials in an Autonomous Database of your choice. Again, in this example, we'll keep it simple and enter **`n`** for no. The script is existed. Next, you copy the generated credential script and run it in your Cloud Shell window or download it or copy it and run it in SQL Developer, SQL Developer worksheet, or in any tool that runs SQL.
+
+    ![Exit the script.](images/exit-script.png)
+
+3. Verify the creation of the credentials. List the contents of your Cloud Shell home directory. Copy and paste the following command to the command prompt and then hit **`[Enter]`**.
+
+    ```
+    <copy>
+    ls -l
+    </copy>
+    ```
+
+    ![List the home directory contents.](images/list-home-directory.png =70%x*)
+
+4. To view the generated private and public keys, copy and paste the following command to the command prompt and then hit **`[Enter]`**. Next, run the `ls -l` command again.
+
+    ```
+    <copy>
+    cd ~/.oci
+    </copy>
+    ```
+
+    ![List the .oci directory contents.](images/list-oci-directory.png =70%x*)
+
+5. Return to your Home directory. Run the **`cd ..`** command. Next, use the **`cat`** command to display the content of the generated script.
+
+    ```
+    <copy>
+    cd ..
+    cat oci_native_credential.sql
+    </copy>
+    ```
+
+    ![List the script.](images/copy-script.png " ")
+
+6. Copy the script from the first **`BEGIN`** statement to the ending **`/`**. Highlight the code, right-mouse click, and then select **Copy** from the context menu.
+
+    >**Note:** You can also use the **Cloud Shell Menu** icon to download the generated credential files to your local machine, and then follow the prompts.
+
+    ![Download file.](images/download-credential.png =70%x*)
+
+7. Return to your SQL Worksheet and then paste the copied code into the SQL Worksheet. Notice that we changed the name of the credential to be created to **`OCI_NATIVE_CRED_2`**. The first script drops the credential if it already exists. The second script creates the new credential. Click the **Run Script** icon in the Toolbar.
+
+    ![Paste the script into the SQL Worksheet.](images/paste-script.png " ")
+
+8. Query the available credentials. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    SELECT credential_name, username, comments
+    FROM all_credentials;
+    </copy>
+    ```
+
+    ![Query credentials again.](images/query-credentials-example-1.png =70%x*)
+
+    The newly created **`OCI_NATIVE_CRED_2`** is displayed.
+
+### **Example 2: Run the Script with the --region Argument**
+
+In this example, we assume that we didn't run example 1. In addition, we are in our home region is **`us-ashburn-1`** but our **`ADW-Data-Lake`** Autonomous Database instance is in a different region, **`ca-toronto-1`**, in a compartment named **`training-adw-compartment`**. Also, as in example 1, we don't have any API keys, fingerprint, or wallet file.
+
+1. Run the **`adb-create-cred.sh`** Cloud Shell script with the `--region` argument.
+
+    ```
+    <copy>
+    adb-create-cred.sh --region
+    </copy>
+    ```
+
+    The script generates the private and public keys, the fingerprint, and the .sql and .json credential files.
+
+    ![Step 1.](images/example-2-step-1.png =70%x*)
+
+2. The script prompts as to whether or not we'd like to run the credential script in our Autonomous Database. We entered **`y`** for yes. Because we didn't use the `--region` argument, a list of the regions to which we have access is displayed. We entered **13** for the **`ca-toronto-1`** region.
+
+    ![Step 2.](images/example-2-step-2.png =70%x*)
+
+3. The available compartments in the selected region are displayed. We entered **4** for our compartment.
+
+    ![Step 3.](images/example-2-step-3.png =70%x*)
+
+4. The Autonomous Database instances that are available in the selected region and compartment are displayed. We entered **1** for our Autonomous Database instance.
+
+    ![Step 4.](images/example-2-step-4.png =70%x*)
+
+5. The script recognized that we don't have a wallet file; therefore, it created one for us.
+
+    ![Step 5.](images/example-2-step-5.png =65%x*)
+
+6. An informative message is displayed about what has been created so far. Next, the script attempts to connect to our selected Autonomous Database instance so that we can run the generated script file. We are prompted to enter our Autonomous Database instance username and password. The ADB instance username is **`admin`** and the password that we used in **Lab 1** of this workshop is **`Training4ADW`**. If the login is successful, the script is run and the **`oci_native_credential.sql`** credential is created. If the connection to the Autonomous Database is unsuccessful, you can execute **`cat ~/oci_native_credential.sql`**, to copy the SQL code and run it directly in the Autonomous Database using any SQL tool such as the SQL Worksheet similar to what we did in example 1.
+
+    ![Step 6.](images/example-2-step-6.png =70%x*)
+
+7. Finally, we are prompted whether or not we want to run the credential script in another Autonomous Database instance. We entered **`n`**. The script exits.
+
+    ![Step 7.](images/example-2-step-7.png =70%x*)
+
+    <!-- one long screen
+    ![Run the script with the region argument.](images/run-script-region.png =80%x*)
+    -->
+
+    > **Note:** If you have an Autonomous Database private endpoint in a Virtual Cloud Network, the adb-create-cred.sh script generates the SQL or JSON scripts and performs all the steps required to access the Autonomous Database private end point. However, it will fail to connect, which causes a login failure. If you have a Bastion or Jump Host you can connect yourself by utilizing the downloaded wallet file then execute the following command to copy the SQL into whatever SQL tool you have access to:
+
+8. Query the available credentials. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+
+    ```
+    <copy>
+    SELECT credential_name, username, comments
+    FROM all_credentials;
+    </copy>
+    ```
+
+    ![Query credentials again.](images/query-credentials-2.png =70%x*)
+
+    The newly created **`OCI_NATIVE_CRED`** is displayed.
+
+### **Example 3: Run the Script in a Different Region**
+
+In the following example, our home region is **`us-ashburn-1`**; however, we want to create the credentials in the **`ca-toronto-1`** region. The steps are the same as before; however, since we are not in our home region when we run the script, we are prompted to make one of the following choices:
+
+* Keep the current region, **`k`**, (**`ca-toronto-1`**)
+* Change to the home directory, **`h`**, (**`us-ashburn-1`**)
+* Pick a different region, **`p`**. If you choose **`p`**, a list of the available regions to which you have access are displayed and then you can pick a different region. 
+
+In this example, we will enter **`k`** to keep the current region. The remaining steps are the same as those in example 2.
+
+![Select the region.](images/select-region.png =70%x*)
+
+### **Create Auth Token/Swift Credential Using the Cloud Shell Script**
+
+If you need to create an **Auth Token/Swift** credential (Oracle recommends the use of OCI Native Credentials instead), you can add the **`--all`** argument when you run the script.
+
+1. Create both the **OCI Native** credentials and the **Auth Token/Swift** credential. Run the **`adb-create-cred.sh`** Cloud Shell script with the **`--all`** argument. The script prompts you whether you want to include an Auth Token. If you enter **`y`**, your Auth Token key is generated and uploaded to your OCI profile, and the **`oci_auth_token_credential.sql`** and **`auth_token.tok`** scripts are created.
+
+    ```
+    <copy>
+    adb-create-cred.sh --all
+    </copy>
+    ```
+
+    ![Create Auth Token.](images/create-credentials-token.png =70%x*)
+
+    **Note:** The script recognized the existence of an `AuthToken` file. We opted to replace the existing file and create a new one.
+
+2. List the contents of your Cloud Shell home directory.
+
+    ```
+    <copy>
+    ls -l
+    </copy>
+    ```
+
+    ![List the home directory contents.](images/list-home-directory-auth-token.png " ")
+
+3. You can view the Auth Token key using either of the following methods:
+
+    * Run the **`oci_auth_token_credential.sql`** script from the Cloud Shell. This creates the Auth Token key in your database. The Auth Token key is the value of the password parameter for **`DBMS_CLOUD_CREATE_CREDENTIAL`**.
+    
+    * View **`auth_token.tok`** from the Cloud Shell. Your Auth Token is the value of **`token`**.
+
+        ![The auth_token.tok value.](images/auth-token-value.png " ")
+
+## Task 8: Link to Data in the Bucket
+
+1. Click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab.
+
+    ![Navigate to Data Load page.](images/click-data-studio-data-load.png)
+
+2. On the **Data Load** page, click the **LINK DATA** tile.
+
+    ![Click link data.](images/click-link-data.png)
+
+    The **Link Data** page is displayed. The **Cloud Store** tab is already selected. Click the **Select Cloud Store Location or enter public URL** drop-down list to see the buckets and/or Cloud Locations to which you have access. In this workshop, you already have access to the **`TRAINING-DATA-LAKE`** private bucket in your compartment after your created the OCI credential. Select this bucket.
+
+    ![Click drop-down list on link data page.](images/click-drop-down-list.png)
+
+3. This bucket contains only the **`potential_churners.csv`** file that you uploaded to the bucket earlier. Drag the **`potential_churners.csv`** file and drop it onto the data linking job section.
+
+    ![The selected bucket.](images/selected-bucket.png)
+
+4. The **`potential_churners.csv`** target table to be created for the selected `.csv` file is displayed in the data linking job section.
+
+    ![Drag the potential_churners.csv file.](images/drag-drop-potential-churners.png)
+
+5. Click **Start**. A **Start Link From Cloud Store** dialog box is displayed. Click **Run**. When the link job is completed successfully (external table created), the data link card has the link icon next to it.
+
+    ![The link job is completed successfully.](images/link-job-complete.png)
+
+6. Click the **Report** button for the link job to view a report of total rows inserted successfully and failed for the selected table.
+
+    ![Click Report.](images/click-report.png " ")
+
+7. To view buckets and Cloud Locations in other compartments or in the root tenancy, click the **Data Studio Preferences** icon.
+
+    ![Click the Data Studio Preferences icon.](images/click-data-studio.png)
+
+8. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, you can select a different compartment, and then click **Save**.
+
+    ![Change preferences.](images/save-preferences.png =50%x*)
+
+    The Cloud Locations and buckets that are available in the selected compartment are displayed.
+
+    ![The cloud locations and buckets in the selected compartment.](images/cloud-locations-buckets.png)
 
 ## Learn more
 
 * [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
 * [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
+* [Manage Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-manage-credentials.html#GUID-863FAF80-AEDB-4128-89E7-3B93FED550ED)
 
 You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-    + Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran Serhal, August 2023
+    * Alexey Filanovskiy, Senior Principal Product Manager
+    * Jameson White, Principal Software Engineer
+    * Drue Swadener, Principal User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

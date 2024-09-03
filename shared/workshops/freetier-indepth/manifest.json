@@ -1,6 +1,21 @@
 {
     "workshoptitle" : "Manage and Monitor Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+        "adb-create-load-json-collection.md":"/common/building-blocks/tasks/adb/create-load-json-collection.md",
+        "adb-load-public-db-actions.md":"/common/building-blocks/tasks/adb/load-public-db-actions.md",
+        "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-goto-sql-worksheet.md":"/common/building-blocks/tasks/adb/goto-sql-worksheet.md",
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "adb-query-json-arrays.md":"/common/building-blocks/tasks/adb/query-json-arrays.md",
+        "adb-query-json-simple.md":"/common/building-blocks/tasks/adb/query-json-simple.md",
+        "adb-query-object-store-contents-with-sql.md":"/common/building-blocks/tasks/adb/query-object-store-contents-with-sql.md",
+        "adb-use-partitioned-external-table-body.md":"/common/building-blocks/tasks/adb/use-partitioned-external-table-body.md",
+        "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+        "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md"
+      },
+      "variables": ["./variables.json"],
 	"tutorials": [
         {
             "title": "Introduction",
@@ -16,7 +31,7 @@
             "title": "Lab 1: Provision Autonomous Database",
             "description": "Provision Autonomous Database",
             "type": "freetier",
-            "filename": "./../../adb-provision/adb-provision-conditional.md"
+            "filename": "./../../adb-provision/adb-provision-moviestream.md"
         },
         {
             "title": "Lab 2: Work with Free Sample Data Sets",
@@ -24,13 +39,14 @@
             "filename": "./../../adb-sqldevweb/adb-sqldevweb.md"
         },
         {
-            "title": "Lab 3: Connect Securely With or Without a Connection Wallet",
+            "title": "Lab 3: Connect Securely to Autonomous Data Warehouse with or without a Connection Wallet",
             "description": "Connecting Securely with or without a Connection Wallet",
+            "type": "freetier",
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
         },
         {
             "title": "Lab 4: Monitor Your Database",
-            "description": "Monitoring Your Autonomous Database Instance using the Cloud Console",
+            "description": "Monitoring Your Autonomous Database Instance Using the Cloud Console",
             "filename": "./../../adw-managing-monitoring/adw-managing-monitoring.md"
         },
         {
@@ -77,6 +93,11 @@
             "title": "Lab 13: Public and Private Network Access in Autonomous Database",
             "description": "Public and Private Network Access in Autonomous Database",
             "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
+        },
+        {
+            "title": "Lab 14: Flashback Time Travel",
+            "description": "Flashback Time Travel",
+            "filename": "./../../adb-flashback/adb-flashback.md"
         },
         {
             "title": "Need Help?",

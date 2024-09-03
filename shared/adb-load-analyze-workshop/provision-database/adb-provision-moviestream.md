@@ -23,26 +23,25 @@ In this lab, you will:
 
 ### Prerequisites
 
--   This lab requires completion of the Get Started section in the Contents menu on the left.
+- This lab requires completion of the Get Started section in the Contents menu on the left.
 
-## Task 1: Create or select a compartment
+## Task 1: (Optional) Create a Compartment
 [](include:iam-compartment-create-body.md)
 
-## Task 2: Choose Autonomous Database from the OCI services menu
+## Task 2: Choose Autonomous Database from the OCI Services Menu
 [](include:adb-goto-service-body.md)
 
-## Task 3: Create the Autonomous Database instance
+## Task 3: Create the Autonomous Database Instance
 [](include:adb-provision-body.md)
 
 You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-workflow.html#GUID-5780368D-6D40-475C-8DEB-DBA14BA675C3) on the typical workflow for using Autonomous Data Warehouse.
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/index.html#Oracle%C2%AE-Cloud)
 
 ## Acknowledgements
 
-- **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Rick Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Rick Green, February 2023
-- **Built with Blocks**
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** - Lauran K. Serhal, April 2024
+- **Built with Common Tasks**

@@ -83,24 +83,18 @@ Create a **News API** account as follows:
 
 Now that you have the API key, create a PL/SQL function that queries the REST endpoint using the parameters above.
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
+1. Navigate to the SQL Worksheet. Click the **Database Actions | Data Load** in the banner.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![Click Data Load in the banner.](./images/click-data-load-banner.png " ")
 
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+2. On the **Launchpad** page, click the **Development** tab, and then click the **SQL** tab.
 
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
+    ![Click Development > SQL tabs.](./images/click-development-sql-tabs.png " ")
 
-4. On the **Autonomous Database details** page, click **Database actions**.
+    The SQL Worksheet is displayed.
 
-5. The **Database Actions | Launchpad** Home page is displayed in a **_new tab_** in your browser. In the **Development** section, click the **SQL** card.
-
-    ![Click the SQL card.](./images/click-sql-card.png " ")
-
+    ![The SQL worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
+    
 6. Ensure that the public REST endpoint is accessible by our PL/SQL function. Copy and paste the following API call code into your SQL Worksheet to update the access control list, and then click the **Run Script (F5)** icon in the Worksheet toolbar. This will allow the **ADMIN** user to call out to any public host.
 
     ```
@@ -350,5 +344,5 @@ You may now proceed to the next lab.
 
 * **Authors:**
     * Marty Gubar, Autonomous Database Product Management
-    * Lauran Serhal, Consulting User Assistance Developer, Oracle Database and Big Data
-* **Last Updated By/Date:** Lauran Serhal, June 2023
+    * Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024

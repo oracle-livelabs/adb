@@ -26,7 +26,7 @@
             "filename": "../../micronaut/micronaut.md"
         },
         {
-            "title": "Lab 4: Build a GraalVM Native Image",
+            "title": "Lab 4: Build a GraalVM Native Executable",
             "filename": "../../graalvm/nativeimage.md"
         },
         {

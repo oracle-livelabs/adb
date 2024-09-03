@@ -7,10 +7,9 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
-<!---
 Watch the video below for a quick walk-through of the lab.
-[Create a database user](videohub:1_tfp0sgen)
--->
+[Create a database user](videohub:1_bqbg5sf2)
+
 
 ### Objectives
 
@@ -25,7 +24,7 @@ In this lab, you will:
 
 To complete this lab, you need to have the following:
 
-- Completed Autonomous Database
+- Completed Autonomous Database provisioning
 
 ## Task 1: Create New Database User
 
@@ -38,7 +37,7 @@ For this workshop, we need to create one new user.
 
 2.  This will take you to the Database Actions page, logged in as the ADMIN user.
 
-3.  On the Database Actions launchpad page, under Administration, click the **Database Users** card.
+3.  On the Database Actions launchpad page, under Administration, click **Database Users** card.
     ![Launch Database Users admin page](images/database-users.png)
 
 4.  You can see that your ADMIN user is listed as the current user.  On the right-hand side, click the "+ **Create User**" button.
@@ -102,9 +101,6 @@ Now you need to switch to working as the user QTEAM, so you can start the next l
 
 3.  This will launch the Database Actions Launchpad page.
 
-    ![Database Actions page for QTEAM](images/database-actions-launchpad.png)
-
-
 Now you have connected to your Autonomous Data Warehouse with your new user. 
 
 You may now **proceed to the next lab**.
@@ -117,4 +113,4 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
 - Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
-- Last Updated By - Jayant Mahto, February 2023
+- Last Updated By - Mike Matthews, April 2024

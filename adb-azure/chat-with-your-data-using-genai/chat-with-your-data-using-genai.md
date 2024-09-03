@@ -3,7 +3,11 @@
 
 ## Introduction
 
+<<<<<<< HEAD
 In this lab, you will learn how to use Autonomous Database Select AI (Select AI) to query your data using natural language. You don't need prior knowledge of the data structure or how that data is accessed.
+=======
+In this lab, you will learn how to use Autonomous Database Select AI (Select AI) to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
 What is Natural Language Processing?
 Natural language processing is the ability of a computer application to understand human language as it is spoken and written. It is a component of artificial intelligence (AI).
@@ -31,12 +35,20 @@ The lab's business scenario is based on Oracle MovieStream - a fictitious movie 
 
 Autonomous Database supports models from OCI Generative AI, Azure OpenAI, OpenAI, and Cohere. This workshop will use the Azure OpenAI model.
 
+<<<<<<< HEAD
 1.	Login to your Microsoft Windows Virtual machine and open Visual Studio with Autonomous Database.
+=======
+1.	Login to your Microsoft Windows Virtual machine and open Visual studio with Autonomous Database.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
 
     ![This image shows the result of performing the above step.](./images/vs1.png " ")
 
+<<<<<<< HEAD
 -  Right click on your Database connection and **Clone** the connection to add ***moviestream*** user connection.
+=======
+-  Right click on your Database connection and clone the connection to add ***moviestream*** user connection.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
 - Enter the connection name, Username and password and click Save.
     
@@ -53,7 +65,11 @@ Autonomous Database supports models from OCI Generative AI, Azure OpenAI, OpenAI
 
     ![This image shows the result of performing the above step.](./images/moviestream.png " ") 
 
+<<<<<<< HEAD
 - Right click on the connection (Admin) again and click **Open SQL Worksheet** in the Oracle Autonomous Database Service details page.
+=======
+- Right click on the connection (Admin) again and Open SQL Worksheet in Oracle Autonomous Database Service details page.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![This image shows the result of performing the above step.](./images/admin.png " ")
 
@@ -65,7 +81,11 @@ Autonomous Database supports models from OCI Generative AI, Azure OpenAI, OpenAI
 A Select AI profile encapsulates connection information for an AI provider. This includes:
 1. A security credential (e.g. the resource principal)
 2. The name of the provider
+<<<<<<< HEAD
 3. The name of the Large Language Model LLM (optional)
+=======
+3. The name of the LLM (optional)
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 4. A list of target tables that will be used for natural language queries (required when using NL2SQL) You can create as many profiles as you need, which is useful when comparing the quality of the results of different models.
 
 For a complete list of the Select AI profile attributes, see the [DBMS CLOUD AI Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in Autonomous Database Serverless documentation.
@@ -105,7 +125,11 @@ For a complete list of the Select AI profile attributes, see the [DBMS CLOUD AI 
 
     ![This image shows the result of performing the above step.](./images/variable2.png " ")
 
+<<<<<<< HEAD
 - Grant execute to the moviestream user
+=======
+- Grant execute to moviestream user
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ```
     <copy>
@@ -113,7 +137,11 @@ For a complete list of the Select AI profile attributes, see the [DBMS CLOUD AI 
     </copy>
     ```
 
+<<<<<<< HEAD
 - Now log in as the ***moviestream*** user that will be using generative AI.
+=======
+- Now log in as the ***moviestream*** that will be using generative AI.
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 Create a credential that allows the user to access the Azure OpenAI endpoint
 
 NOTE: The MOVIESTREAM user was created as part of the migrating to ADB Lab. 
@@ -121,7 +149,11 @@ NOTE: The MOVIESTREAM user was created as part of the migrating to ADB Lab.
 
 Moviestream schema password: ***watchS0meMovies#***.
 
+<<<<<<< HEAD
 -  Right click on ***moviestream*** connection in your Visual Studio and clik **Open SQL Worksheet**. 
+=======
+-  Right click on ***moviestream*** connection in your Visual Studio and Open SQL Worksheet. 
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     Note: You will be executing the below sql queries as ***moviestream*** user.
 
@@ -406,4 +438,8 @@ FROM dataset;
 *All Done! You have successfully integrated Azure OpenAI with your Autonomous Database instance and used Autonomous Database Select AI to query your data using natural language.*
 
 - **Author** - Tejus Subrahmanya
+<<<<<<< HEAD
 - **Last Updated By/Date** - Tejus Subrahmanya, August 2024
+=======
+- **Last Updated By/Date** - Tejus Subrahmanya, July 2024
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420

@@ -35,7 +35,7 @@ Estimated Time: 35 minutes
   This lab assumes you have:
   * An Oracle Cloud Account - Please view this workshop's LiveLabs landing page to see which environments are supported
   
-  - Download the MOVIESTREAM file (moviestream\_rdf.nt) using this [link](https://objectstorage.us-ashburn-1.oraclecloud.com/p/VEKec7t0mGwBkJX92Jn0nMptuXIlEpJ5XJA-A6C9PymRgY2LhKbjWqHeB5rVBbaV/n/c4u04/b/livelabsfiles/o/data-management-library-files/moviestream_rdf.nt)
+  - Download the MOVIESTREAM file (moviestream\_rdf.nt) using this [link](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/moviestream_rdf.nt)
 
 This concludes this lab. You may now *proceed to the next lab.*
 

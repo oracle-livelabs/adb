@@ -14,63 +14,51 @@
       },
       {
           "title": "Lab 1: Provision an Autonomous Database",
-          "description": "Provision Autonomous Database",
+          "description": "Provision an Autonomous Database",
           "type": "livelabs",
           "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
       },
       {
-          "title": "Lab 2: Create a User",
-          "description": "Create a database user",
-          "type": "livelabs",
-          "filename": "../../../common/create-user.md"
-      },
-      {
-        "title": "Lab 3: Load demo data",
-        "description": "Load demo data for the Data Transforms workshop",
+        "title": "Lab 2: Import demo data",
+        "description": "Import demo data for the Data Transforms workshop",
         "type": "livelabs",
         "filename": "../../3-demo-data.md"
       },
       {
-        "title": "Lab 4: Import data entity definition",
-        "description": "import data entity definition",
+        "title": "Lab 3: Basic setup",
+        "description": "Set up Data Transforms before defining data load and data flow processes",
         "type": "livelabs",
-        "filename": "../../4-transform-data-import-entity.md"
+        "filename": "../../4-transform-basic-setup.md"
       },
       {
-        "title": "Lab 5: First data flow to transform data",
-        "description": "Transform and prepare data",
-        "type": "livelabs",
-        "filename": "../../5-transform-data.md"
-      },
-      {
-        "title": "Lab 6: Data load without transformation",
+        "title": "Lab 4: Load data without transformation",
         "description": "Load data without transformation",
         "type": "livelabs",
-        "filename": "../../6-transform-data-load.md"
+        "filename": "../../5-transform-data-load.md"
       },
       {
-        "title": "Lab 7: Data load with transformation",
-        "description": "Load data with transformation",
+        "title": "Lab 5: Simple Data Transformation",
+        "description": "Transform data using a simple use case",
         "type": "livelabs",
-        "filename": "../../7-transform-data-load-transform.md"
+        "filename": "../../6-transform-data-simple.md"
       },
       {
-        "title": "Lab 8: Workflow to execute multiple data flows",
-        "description": "Use workflow to execute multiple data flows",
+        "title": "Lab 6: Complex Data Transformation",
+        "description": "Transform data using a more complex use case",
+        "type": "livelabs",
+        "filename": "../../7-transform-data-complex.md"
+      },
+      {
+        "title": "Lab 7: Create a workflow for the entire data pipeline",
+        "description": "Use a workflow to orchestrate multiple data load and data flow processes",
         "type": "livelabs",
         "filename": "../../8-transform-data-workflow.md"
       },
       {
-        "title": "Lab 9: Scheduling the execution",
-        "description": "Use scheduler to execute data transform flows",
+        "title": "Lab 8: Schedule jobs",
+        "description": "Use the scheduler to set up periodic execution",
         "type": "livelabs",
         "filename": "../../9-transform-data-schedule.md"
-      },
-      {
-        "title": "Lab 10: Clean demo data",
-        "description": "Clean demo data",
-        "type": "livelabs",
-        "filename": "../../10-clean-demo-data.md"
       },
       {
         "title": "Need Help?",

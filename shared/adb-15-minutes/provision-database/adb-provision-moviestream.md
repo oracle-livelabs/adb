@@ -10,27 +10,27 @@ Estimated Time: 5 minutes
 
 In this lab, you will:
 
--   Provision a new Autonomous Database
+- Provision a new Autonomous Database
 
 ### Prerequisites
 
--   This lab requires completion of the Get Started section in the Contents menu on the left.
-
+- This lab requires completion of the Get Started section in the Contents menu on the left.
 
 ## Task 1: Choose Autonomous Database from the OCI services menu
 [](include:adb-goto-service-body.md)
 
-## Task 2: Create the Autonomous Database instance
+## Task 2: Create the Autonomous Database Instance
 [](include:adb-provision-body.md)
 
-Please *proceed to the next lab*.
+You may now **proceed to the next lab**.
 
 ## Learn more
 
-See the [documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-workflow.html#GUID-5780368D-6D40-475C-8DEB-DBA14BA675C3) on the typical workflow for using Autonomous Data Warehouse.
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/index.html)
 
 ## Acknowledgements
 
-- **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Last Updated By/Date** - Richard Green, June 2023
+- **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, Oracle Autonomous Database Product Management
+- **Last Updated By/Date:** - Lauran K. Serhal, April 2024

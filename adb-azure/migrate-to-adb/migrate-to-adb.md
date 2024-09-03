@@ -10,9 +10,12 @@ This lab walks you through the steps to migrate a sample application schema usin
 Estimated Time: 15 minutes
 
 
+<<<<<<< HEAD
 Watch the video below for a quick walk-through of the lab.
 [Simplifying @ Azure](videohub:1_68d8k1oy)
 
+=======
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 ### Objectives
 
 As a database admin or user:
@@ -43,6 +46,7 @@ As a database admin or user:
 
 Now that we have the credentials token, let's set up the target database to read from the Azure Storage and import data.
 
+<<<<<<< HEAD
 RDP to your provided developer client image. Once logged into your developer client, launch **Visual Studio Code** as discussed in an earlier lab and connect to your database.
 
 Here, we will use **SQLcl** to demonstrate the steps needed to set up Azure storage credentials.
@@ -50,6 +54,15 @@ Here, we will use **SQLcl** to demonstrate the steps needed to set up Azure stor
 - Once connected to your autonomous database as ***admin*** user, run the following pl/sql procedure, replacing password with access key.
 
 NOTE: For this lab you will use ***tjdatapump*** as username.
+=======
+RDP to your developer client image provided. Once logged into your developer client, launch Visual Studio code as discussed in an earlier lab and connect to your database.
+
+Here, we will use SQLcl to demonstrate the steps needed to set up Azure storage credentials.
+
+- Once connected to your autonomous database as ***admin*** user, run the following pl/sql procedure, replacing username and password with your own cloud credentials.
+
+NOTE: For this lab you will use the following credentials:
+>>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ```
     <copy>

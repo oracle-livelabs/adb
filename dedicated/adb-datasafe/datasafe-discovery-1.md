@@ -3,8 +3,6 @@
 ## Introduction
 Using Oracle Data Safe, discover sensitive data in your Autonomous database with the Data Discovery wizard and identify dictionary-based and non-dictionary referential relationships, in a sensitive data model, to modify and analyze results and reports.
 
-To log issues and view the Lab Guide source, go to the [GitHub Oracle Learning Library](https://github.com/oracle/learning-library/issues/new) repository.
-
 Estimated Time: 40 minutes
 
 ### Objectives
@@ -184,5 +182,4 @@ You may now **proceed to the next lab**.
 - **Author** - Jayshree Chatterjee
 - **Last Updated By/Date** - Kris Bhanushali, Autonomous Database Product Management, March 2022
 
-## See an issue or have feedback?  
-Please submit feedback [here](https://apexapps.oracle.com/pls/apex/f?p=133:1:::::P1_FEEDBACK:1).   Select 'Autonomous DB on Dedicated Exadata' as workshop name, include Lab name and issue / feedback details. Thank you!
+
