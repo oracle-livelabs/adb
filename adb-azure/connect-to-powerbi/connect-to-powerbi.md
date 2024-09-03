@@ -9,12 +9,9 @@ This lab allows you to connect Power BI Desktop to an Oracle Database in Oracle 
 
 Estimated Time: 10-15 minutes
 
-<<<<<<< HEAD
 Watch the video below for a quick walk-through of the lab.
 [Simplifying @ Azure](videohub:1_ehgzfts4)
 
-=======
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 ### Objectives
 
 1. Use Microsoft Power BI Desktop to retrieve data from an Autonomous Database in Oracle Database@Azure.
@@ -107,25 +104,6 @@ Ensure that the Oracle Client for Microsoft Tools is installed on the virtual ma
 
     ![Enter Credentials](./images/adb3.png " ")
 
-<<<<<<< HEAD
-=======
-
-## Task 4 Build your report
-
-  1. Select the **data** build your Microsoft Power BI Desktop report by checking column names within each database table
-
-  ![Select Data](./images/dataselection.png " ")
-
-  2. Select your desired **Visualization** (table) by examining option under **Visualizations** 
-
-  ![Select Visualization](./images/visualizations.png " ")
-
-## Task 5 Review your generated report and adjust properties as needed
-
-  ![Report Generated](./images/reportgenerated.png " ")
-
-
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 ## References
 
     * https://www.oracle.com/a/ocom/docs/database/microsoft-powerbi-connection-adw.pdf
@@ -138,8 +116,4 @@ You may now **proceed to the next lab**.
 *Fantastic! You successfully learned to connect Autonomous Database to Power BI.*
 
 - **Author** - Anwar Belayachi
-<<<<<<< HEAD
 - **Last Updated By/Date** - Tejus Subrahmanya / August 20, 2024
-=======
-- **Last Updated By/Date** - August 20, 2024
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420

@@ -7,17 +7,13 @@ This lab walks you through the steps to provision Autonomous Database@Azure.
 
 Estimated Time: 10 minutes
 
-<<<<<<< HEAD
 Watch the video below for a quick walk-through of the lab.
 [Provision ADB@Azure](videohub:1_2qkjv6o5)
 
-=======
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 ### Objectives
 
 As a database user, DBA or application developer:
 
-<<<<<<< HEAD
 1. Rapidly deploy an Autonomous Transaction Processing databases.
 
 ### Required Artifacts
@@ -31,20 +27,6 @@ In this section, you will be provisioning an Autonomous database using the Azure
 1.	Login to Azure Portal (portal.azure.com) and navigate to All services. Then click on Oracle Database@Azure.
 
     NOTE: Please click skip if you are asked to enable multi-factor authorization.
-=======
-1. Rapidly deploy autonomous transaction processing databases.
-
-### Required Artifacts
-
-- An Azure account with a pre-configured Resource Group and Virtual Network.
-
-## Task 1: Create Autonomous Database@Azure
-
-In this section, you will be provisioning Autonomous database using the Azure cloud console.
-
-1.	Login to Azure Portal (portal.azure.com) and navigate to All services. Then click on Oracle Database@Azure.
-
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
     ![This image shows the result of performing the above step.](./images/oracledb.png " ")
 
@@ -59,37 +41,21 @@ In this section, you will be provisioning Autonomous database using the Azure cl
 
 -  This will bring up the **Create Oracle Autonomous Database** screen where you specify the configuration of the instance.
 
-<<<<<<< HEAD
 - Select the **Subscription**, **Resource Group**, and enter Instance **Name** and pick the **Region** then click Next.
 
     ![This image shows the result of performing the above step.](./images/basics.png " ")
 
 For this lab, we will be using the following Subscription: **omcpmhol1**, Resource Group: **ocw24-hol-resource-group-east-us**, and Region: **East US**.
-=======
-- Select the **Subscription**, **Resource Group**, and enter Instance **Name** and  pick the **Region** and click Next.
-
-    ![This image shows the result of performing the above step.](./images/basics.png " ")
-
-For this lab, we will be using the following Subscription: **omcpmhol1** Resource Group: **ocw24-hol-resource-group-east-us** Region: **East US**.
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 
 -  Enter the details in the **Configuration** page.
 
     *NOTE: Autonomous Database supports different workload types, including: Data Warehouse and Transaction Processing. Both of these workload types provide performance improvements and additional features that support operations for the specified workload. [Learn More](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/about-autonomous-database-workloads.html#GUID-E1C8C5F2-22FB-4225-A3B9-9E78277A5834)*
 
-<<<<<<< HEAD
 -  Select **Transaction Processing** under the **Workload type** dropdown.
     
     ![This image shows the result of performing the above step.](./images/transaction.png " ")
 
 - Under **Database configuration**, enter the following details:
-=======
--  Select **Transaction Processing** under **Workload type** dropdown.
-    
-    ![This image shows the result of performing the above step.](./images/transaction.png " ")
-
-- Under **Database configuration** enter the following details.
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     ```
      Database Version: 19c
      ECPU count: 2
@@ -148,11 +114,7 @@ For this lab, we will be using the following Subscription: **omcpmhol1** Resourc
     ![This image shows the result of performing the above step.](./images/network.png " ")
     
 
-<<<<<<< HEAD
 - Under **Maintenance**, select the **Maintenance patch level** and enter **Maintenance contact emails**, then click Next.
-=======
-- Under **Maintenance** select the **Maintenance patch level** and enter **Maintenance contact emails** and click Next.
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
     
     ![This image shows the result of performing the above step.](./images/maintenance.png " ")
 
@@ -164,10 +126,6 @@ For this lab, we will be using the following Subscription: **omcpmhol1** Resourc
 
     ![This image shows the result of performing the above step.](./images/tags.png " ")
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 41adebb2a7ca349e08ad90935ed23a35db804420
 - Review the configurations and click Create.
 
     ![This image shows the result of performing the above step.](./images/review.png " ")
