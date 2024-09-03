@@ -21,7 +21,7 @@ As a database user, DBA or application developer,
 ### Required Artifacts
 
 - A pre-provisioned Autonomous database instance.
-- Microsoft Remote Desktop client on your local laptop.
+- Microsoft Remote Desktop client on your local laptop. Click [here](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac#get-the-remote-desktop-client) to download.
 
 
 ## Task 1: Connect Windows compute client to Remote Desktop
