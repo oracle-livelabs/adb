@@ -101,9 +101,10 @@ You may now proceed to the next lab.
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
-  * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, June 2024
+  * **Authors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Marty Gubar, Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, September 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
