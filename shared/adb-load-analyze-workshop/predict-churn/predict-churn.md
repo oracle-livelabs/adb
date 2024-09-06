@@ -393,7 +393,7 @@ Enter **OMLUSER** and the password you just created to sign in.
 
     <a href="files/Scoring Customers with Churn Model.dsnb" class="tryit-button" style="background-color:maroon">Download notebook</a>
 
-    Go to the main notebooks EA listing by clicking on the "three lines" OML Navigation button on the upper left of the screen, and then select **Notebooks EA**.
+    Go to the main notebooks listing by clicking on the "three lines" OML Navigation button on the upper left of the screen, and then select **Notebooks**.
 
     ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
@@ -439,10 +439,30 @@ Enter **OMLUSER** and the password you just created to sign in.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook Python 2](images/oml-churn-automl-notebook-python2.png " ")
 
-5. In SQL let's run a dynamic scoring with the model
+5. Oracle Machine Learning can generate Prediction Details dynamically
+
+    This feature allows us to get, for every customer scored, the top "N" `Reasons Why` the model predicted that the customer is a `0` (non-Churner) or `1` (Churner).
+
+    For example, the first row indicates that CUST_ID = 1031800 was predicted to be a *Non-Churner* (`0`) and the most important Features that were the reason for such prediction are:
+    - Feature 1: AGE = 57 with relative weight of 4.142
+    - Feature 2: `AVG_NTRANS_M3_5` = 5.67 with relative weight of 0.168
+    - Feature 3: GENRE_WAR = 1
+    And you can continue looking at the other Features by scrolling to the right.
+
+    This means that the most important reasons why this person was identified as a *Non-Churner* by the model have to do with their age, their average number of transactions in the last quarter, the number of movies of the genre WAR, among others.
+
+     ![Churn AutoML Task 3 Step 3 Scoring Notebook Python 3](images/oml-churn-automl-notebook-python3.png " ")
+   
+    
+6. In SQL let's review the table created by Python and run a dynamic scoring with the model
    
     If we scroll down to the **SQL** section, we see basically two main steps. There is one paragraph that deletes a table named `LATEST_POTENTIAL_CHURNERS` if it exists (in case we wanted to experiment later with SQL).
     
+    In the first paragraph, we can see that we can query the table that was `materialized` via the Python code above.
+
+    ![Churn AutoML Task 3 Step 3 Scoring Notebook first screen](images/oml-churn-automl-notebook-sql-screen1.png " ")
+
+
     The second paragraph uses SQL to create a new table based on the `PREDICTION` and `PREDICTION_PROBABILITY` capabilities of Oracle SQL enabled by OML.  These are unique features in SQL for in-Database Dynamic Machine Learning Inference.   These functions can score any table that contains the columns necessary for computing the Probability.
     
     > **Note:** Oracle Machine Learning is resilient to missing data, and it can return a Probability computation even if there are missing data in some columns by replacing missing data using different techniques. 
@@ -463,11 +483,18 @@ Enter **OMLUSER** and the password you just created to sign in.
     ORDER BY PROB_CHURN DESC;
     ```
 
-  The **SQL** code that follows the dynamic scoring is just showing the table created and materialized by **Python**.  It is showing a small sample for a feeling of what to expect from the output of this process.
+    The **SQL** code that follows the dynamic scoring is showing how to get the Prediction Details, this time via SQL, that gives us the `Reasons Why` each customer was predicted the way they were.
+ 
+    For example, the first row indicates that CUST_ID = 1001689 was predicted to be a *Non-Churner* (`0`), since his probability to Churn was 3.5% (0.035), and the most important Features that were the reason for such prediction are:
+    - Feature 1: `AVG_NTRANS_M3_5` = 11.67 with relative weight of 1.283
+    - Feature 2: CREDIT_BALANCE = 0 with relative weight of 0.883
+    - Feature 3: related to the customer GENDER
+    And you can continue looking at the other Features by scrolling to the right.
 
+    This means that the most important reasons why this person was identified as a *Non-Churner* by the model have to do with their age, their average number of transactions in the last quarter, the number of movies of the genre WAR, among others.
     ![Churn AutoML Task 3 Step 3 Scoring Notebook third screen](images/oml-churn-automl-notebook-screen3.png " ")
 
-  You can scroll to the right and see more columns, or select the other pages of customers as well.
+  You can scroll to the right and see more details, or select the other pages of customers as well.
 
 **CONGRATULATIONS!!!**
 
@@ -556,7 +583,7 @@ Now other professionals can take advantage of both the deployment you have just 
    We will deploy the selected model from the AutoML UI directly to a REST endpoint that is hosted by **Oracle Machine Learning Services**, and it is provided at no extra cost to all **Autonomous Database** customers.  Only the CPU consuemd while actually scoring via REST would be charged, so there is no additional infrastructure needed for the model's REST API to be exposed.
 
 1. Let's return to the OML AutoML Experiment results. Click the three-line menu at the top of the Oracle Machine Learning, and then click **AutoML Experiments** in the menu that opens.  
-   ![Churn AutoML Task 10 Step 1 Go back to AutoML](images/oml-churn-automl-back-to-automl.png " ")
+   ![Churn AutoML Task 10 Step 1 Go back to AutoML](images/oml-churn-automl-back-to-automl2.png " ")
    
 2. The list of experiments will open. Click on the experiment we named before _Detect potential churners_.
    ![Churn AutoML Task 10 Step 2 select experiment](images/oml-churn-automl-select-experiment.png " ")
@@ -566,6 +593,7 @@ Now other professionals can take advantage of both the deployment you have just 
     - **URI:**  churn_pred
     - **Version:**  1.0
     - **Namespace:**  OML_MODELS
+    - **Comment:** Probability to Churn (this is optional)
   
    Check the _Shared_ box, and click **OK**.
    ![Churn AutoML Task 10 Step 3 select experiment](images/oml-churn-automl-deploy-model.png " ")
@@ -604,4 +632,4 @@ Now other professionals can take advantage of both the deployment you have just 
 ## Acknowledgements
 * **Author** - Marcos Arancibia, Oracle Autonomous Database Product Management
 * **Contributors** -  Mark Hornick, Marty Gubar, Kevin Lazarz, Nilay Panchal, Jayant Sharma, Jie Liu, Sherry LaMonica, Richard Green
-* **Last Updated By/Date** - Marcos Arancibia, August 2024
+* **Last Updated By/Date** - Marcos Arancibia, September 2024
