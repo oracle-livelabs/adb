@@ -1,9 +1,9 @@
 
-# Get started - Autonomous Database@Azure
+# Get started - Autonomous Database
 
 ## Introduction
 
-This lab walks you through the prerequisites to get started with Autonomous Database@Azure. This involves creating a Resource Group, VNet, and a subnet that needs to be delegated to Oracle.Database/networkAttachement.
+This lab walks you through the prerequisites to get started with Oracle Database@Azure - Autonomous Database. This involves creating a Resource Group, VNet, and a subnet that needs to be delegated to Oracle.Database/networkAttachement.
 
 
 Estimated Time: 20 minutes
@@ -120,7 +120,7 @@ In this section, you will create a resource group and VNet.
 
     ![](./images/subnet4.png " ")
 
-You may now **proceed to the next lab** to provision Autonomous Database@Azure.
+You may now **proceed to the next lab** to provision Autonomous Database.
 
 ## Acknowledgements
 

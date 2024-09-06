@@ -1,9 +1,9 @@
 
-# Provisioning Autonomous Database@Azure
+# Provisioning Autonomous Database
 
 ## Introduction
 
-This lab walks you through the steps to provision Autonomous Database@Azure. 
+This lab walks you through the steps to provision Autonomous Database. 
 
 Estimated Time: 10 minutes
 
@@ -20,7 +20,7 @@ As a database user, DBA or application developer:
 
 - An Azure account with a pre-configured Resource Group and a Virtual Network.
 
-## Task 1: Create Autonomous Database@Azure
+## Task 1: Create Autonomous Database
 
 In this section, you will be provisioning an Autonomous database using the Azure portal.
 
