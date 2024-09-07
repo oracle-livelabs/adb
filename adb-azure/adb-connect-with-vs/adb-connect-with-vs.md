@@ -37,7 +37,7 @@ As a database user, DBA or application developer,
 
     ***NOTE: Please select your assigned Windows VM.***
     ```
-    VM Name: UserXXVM
+    VM Name: HOLWINVM_XXXXXXXX
     ```
 
     ![This image shows the result of performing the above step.](./images/ip.png " ")

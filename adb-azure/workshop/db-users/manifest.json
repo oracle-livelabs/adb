@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Introduction to ADB@Azure",
+    "workshoptitle": "Introduction to Oracle Database@Azure - Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
                 {
@@ -9,15 +9,15 @@
         },
         {
             "title": "Get Started",
-            "description": "Pre-requisites to provision Autonomous Databases@Azure",
+            "description": "Pre-requisites to provision Autonomous Databases",
             "partnumber": "Ennnnn_01",
             "publisheddate": "07/25/2024",
             "contentid": "12nnnn",
             "filename": "./../../adb-provisioning-pre-requisites/adb-provisioning-pre-requisites.md"
         },
         {
-            "title": "Lab 1: Provisioning Autonomous Databases@Azure",
-            "description": "Provisioning Autonomous databases@Azure",
+            "title": "Lab 1: Provisioning Autonomous Database",
+            "description": "Provisioning Autonomous database",
             "partnumber": "Ennnnn_01",
             "publisheddate": "07/25/2024",
             "contentid": "12nnnn",

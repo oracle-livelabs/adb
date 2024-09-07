@@ -74,7 +74,6 @@ For a complete list of the Select AI profile attributes, see the [DBMS CLOUD AI 
 
     ```
     <copy>
-    select * from user_cloud_ai_profiles;
     define username='moviestream';
     define profileName='gpt4o';
     define credentialName='azure_cred40';
