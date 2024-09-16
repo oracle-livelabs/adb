@@ -1,0 +1,47 @@
+{
+    "workshoptitle": "Send Notifications from Autonomous Database to Slack and Microsoft Teams",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "cloud-login.md":"/common/labs/cloud-login/cloud-login.md"
+      },
+      "variables": ["./variables.json"],
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to Sending Slack and Microsoft Teams notifications from Autonomous Database",
+            "filename": "../../introduction/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Set up the environment",
+            "filename": "../../get-started/get-started.md"
+
+        },
+        {
+        "title": "Lab 1: Provision an Autonomous Database",
+        "description": "You will create a  ADB instance",
+        "type": "livelabs",
+        "filename": "../../provision-database/provision-database.md"
+        },
+        {
+            "title": "Lab 2: Prepare to Send Slack Notifications from Autonomous Database",
+            "description": "You will use ADB to send notifications and query result to a Slack channel",
+            "type": "livelabs",
+            "filename": "../../prepare-adb-slack/prepare-adb-slack.md"
+            },
+        {
+        "title": "Lab 3: Prepare to Send Microsoft Teams Notifications from Autonomous Database",
+        "description": "You will use ADB to send notifications and query result to a Microsoft Teams channel",
+        "type": "livelabs",
+        "filename": "../../prepare-adb-msteams/prepare-adb-msteams.md"
+    },
+    {
+    "title": "Need Help?",
+    "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+    "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+
+    ]
+}
