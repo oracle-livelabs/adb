@@ -6,7 +6,7 @@ Slack, a leading collaboration tool, provides teams to have seamless communicati
 
 This lab walks you through the steps to configure your Slack application to receive messages, alerts, and output of a query from Autonomous Database. You will learn the required procedures to send Slack notifications.
 
-Estimated Time: 20 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 

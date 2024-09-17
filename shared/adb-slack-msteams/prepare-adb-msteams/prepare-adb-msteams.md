@@ -6,7 +6,7 @@ Microsoft Teams serves as a comprehensive collaboration platform within the Micr
 
 This lab walks you through the steps to configure your Microsoft Teams application to receive messages, alerts and output of a query from Autonomous Database. Also, you will learn the procedures to send Microsoft Teams notifications.
 
-Estimated Time: 30 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 

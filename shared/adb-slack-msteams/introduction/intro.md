@@ -6,11 +6,11 @@ The labs in this workshop walk you through all the steps to send Slack and Micro
 
 Estimated Workshop Time: 1.5 hours
 
-### **About Slack and Microsoft Teams**
+### About Slack and Microsoft Teams
 
 Oracle Autonomous Database (ADB) offers robust integration with Slack and Microsoft Teams, enabling you to enhance your communication, and productivity workflows in your organization. This integration facilitates the seamless transmission of messages, alerts, and query results directly to Slack and Teams channels, addressing several key use cases for modern teams.
 
-### **Objectives**
+### Objectives
 
 - Create a Slack account and workspace
 - Create a Slack app
@@ -26,7 +26,7 @@ Oracle Autonomous Database (ADB) offers robust integration with Slack and Micros
 - Send a query output to Microsoft Teams
 - Confirm the receipt of the messages in Microsoft Teams
 
-### **Prerequisites**
+### Prerequisites
 
 - An Oracle Cloud account - You may use your own cloud account, a cloud account that you obtained through a trial, a Free Tier account, or a training account whose details were given to you by an Oracle instructor.
 - Experience with Oracle Autonomous Database
