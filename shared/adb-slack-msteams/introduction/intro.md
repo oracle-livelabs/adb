@@ -4,7 +4,7 @@
 
 The labs in this workshop walk you through all the steps to send Slack and Microsoft Teams notifications from **Oracle Autonomous Database**. You will create Slack and Microsoft Teams apps and configure them so that you can send messages,alerts, or output of a query from Oracle Autonomous Database. You will review and confirm the receipt of the messages in both Slack channel and Microsoft Team Channel.
 
-Estimated Workshop Time: 1.5 hours
+Estimated Workshop Time: 1 hours
 
 ### About Slack and Microsoft Teams
 
@@ -43,8 +43,8 @@ Oracle Autonomous Database (ADB) offers robust integration with Slack and Micros
 
 ## Acknowledgements
 
-- **Authors** - Yonca Aksit, Database User Assistance Intern;
-- **Contributors** - Nilay Panchal, ADB Product Management; Marty Gubar, ADB Product Management
+- **Author** - Yonca Aksit, Database User Assistance Intern;
+- **Contributors** 
 - **Last Updated By/Date** - Yonca Aksit, October 2024
 
 Copyright (C) Oracle Corporation.
