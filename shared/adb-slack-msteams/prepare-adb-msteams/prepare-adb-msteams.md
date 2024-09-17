@@ -4,17 +4,9 @@
 
 Microsoft Teams serves as a comprehensive collaboration platform within the Microsoft 365 ecosystem, facilitating instant messaging, audio and video calls, and online meetings. With its seamless integration with other applications, Teams enhances productivity by streamlining communication and project management. This is precisely what unites Oracle Autonomous Database and Microsoft Teams in this lab.
 
-This lab walks you through the steps to configure your Microsoft Teams application to receive messages,alerts and output of a query from Autonomous Database. Also, you will learn the procedures to send Microsoft Teams notifications.
+This lab walks you through the steps to configure your Microsoft Teams application to receive messages, alerts and output of a query from Autonomous Database. Also, you will learn the procedures to send Microsoft Teams notifications.
 
-Before we begin, this lab requires the following:
-
-+ Microsoft Teams account and workspace
-+ Microsoft Teams app and channel
-+ Microsoft 365 Developer Account
-
-> **Note:** The Microsoft 365 Developer Program offers a powerful sandbox environment through its Microsoft 365 E5 developer subscription. This subscription provides developers with a dedicated space to build and test solutions without impacting production systems. For more information, see [set up a developer sandbox subscription](https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started).
-
-Estimated Time: 20 minutes
+Estimated Time: 30 minutes
 
 ### Objectives
 
@@ -32,11 +24,17 @@ In this lab, you will:
 
 ### Prerequisites
 
-+ This lab requires completion of the lab **Set up the environment** from the **Contents** menu on the left.
++ Completion of the lab **Set up the environment** from the **Contents** menu on the left.
++ Microsoft Teams account and workspace
++ Microsoft Teams app and channel
++ Microsoft 365 Developer Account
+
+> **Note:** The Microsoft 365 Developer Program offers a powerful sandbox environment through its Microsoft 365 E5 developer subscription. This subscription provides developers with a dedicated space to build and test solutions without impacting production systems. For more information, see [set up a developer sandbox subscription](https://learn.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started).
+
 
 ## Task 1: Create your Microsoft Teams application
 
-1. To create a Microsoft Teams application, click [this link](https://dev.teams.microsoft.com/home) to access **Developer Portal for Teams**, and select **Apps** from the left side panel.
+1. To create a Microsoft Teams application, click [this link](https://dev.teams.microsoft.com/home) to access **Developer Portal for Teams**, and then select **Apps** from the left side panel.
 
     ![Open ADB](./images/select-apps.png "")
 
@@ -52,7 +50,7 @@ In this lab, you will:
 
 ## Task 2: Create and configure a bot for your Microsoft Teams application
 
-1. Select **Tools** from the left side panel, and then click **Bot management**.
+1. Select **Tools** from the left side panel of the Developer Portal for Teams, and then click **Bot management**.
 
     ![Open ADB](./images/bot_management.png "")
 
@@ -94,17 +92,17 @@ In this lab, you will:
 
 ## Task 3: Publish your Microsoft Teams application
 
-After creating your application, you must publish your application to your organization to make it available to users in your org.Before publishing the app, ensure you fill out the required **Basic Information**.
+After creating your application, you must publish your application to your organization to make it available to users in your org.
 
 1. Click on **Basic Information**, which is located under **Configure** section.
 
    ![Open ADB](./images/select-basic-info.png "")
 
-2. On the **Basic Information** page, you must fill out the basic information about your application, and then click **Save**.
+2. On the **Basic Information** page, fill out the basic information about your application, and then click **Save**.
 
     > **Note:** If you do not enter the information on your app details page, you will not be able to  publish your app to org. For more information, see [Create your Teams Store listing details](https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/prepare/submission-checklist?referrer=developerportal&tabs=desktop).
 
-3. When the app is ready for use in production, click **Publish** to submit the app using the Teams App Submission API which can be called from Graph API.
+3. When your app is ready for use in production, click **Publish** to submit the app using the Teams App Submission API which can be called from Graph API.
 
    ![Open ADB](./images/select_publish_app.png "")
 
@@ -114,7 +112,7 @@ After creating your application, you must publish your application to your organ
 
 ## Task 4: Configure your Microsoft Teams application using Microsoft Entra ID
 
-1. Ensure your admin approves your app from [Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps).
+1. After publishing your app, ensure your admin approves your app from [Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps).
 
 2. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/#home), and click **App registrations**.
 
@@ -124,7 +122,9 @@ After creating your application, you must publish your application to your organ
 
    ![Open ADB](./images/app_registry.png "")
 
-4. Click on **Display name**.
+    > **Note:** Please copy your **Application (client) ID**. It is unique identifier for an app and also known as the client ID for an app. 
+
+4. Click **Display name**.
 
    ![Open ADB](./images/select_bot_name.png "")
 
@@ -145,19 +145,19 @@ After creating your application, you must publish your application to your organ
 
     ![Open ADB](./images/add_permis_channel.png "")
 
-8. Repeat the task 7 above to add `Files.ReadWrite.All` permission.
+8. Repeat the task 7 above to add `Files.ReadWrite.All` permission as well.
 
-9. After adding permissions, ensure your admin approve requested permissions from Microsoft Entra admin center.
+9. After adding permissions, ensure your admin approve requested permissions from **Microsoft Entra admin center**.
 
     ![Open ADB](./images/grant_permis.png "")
 
 ## Task 5: Create your Microsoft Teams Channel
 
-1. Log into your Teams, select **+** sign and select **Create channel**.
+1. Log into your Teams, click **+** sign, and then select **Create channel**.
 
     ![Open ADB](./images/create_teams_channel.png "")
 
-2. To create a channel, select **add the channel to a team** according your preference, enter  **channel name**, and select **channel type** as **standard** so people on your team has access.
+2. To create a channel, select **add the channel to a team** according your preference, enter  **channel name**, and then select **channel type** as **standard** so people on your team has access.
 
     ![Open ADB](./images/click_create_channel.png "")
 
@@ -165,7 +165,7 @@ After creating your application, you must publish your application to your organ
 
     ![Open ADB](./images/add_app_to_channel.png "")
 
-4. Select **Add to a team** , and click your **team or your channel** from the drop down list.
+4. Select **Add to a team** , and then click your **team or your channel** from the dropdown.
 
     ![Open ADB](./images/search_team.png "")
 
@@ -177,15 +177,15 @@ After creating your application, you must publish your application to your organ
 
     ![Open ADB](./images/click_ok_msg.png "")
 
-    > **Note:** To send a query result to a Microsoft Teams channel, you need to obtain the **team ID**, and  **tenant ID**.
+    > **Note:** To send a query result to a Microsoft Teams channel, you need to obtain the **team ID**, and  **tenant ID**, which will be explained in the step  7.
 
-7. Click on the three dots(...) next to your team title, and click on **Get link to team**
+7. Click on the three dots(...) next to your team title, and then click on **Get link to team**
 
     ![Open ADB](./images/click_three_dots.png "")
 
     ![Open ADB](./images/get_link_channel.png "")
 
-8. Copy the link and grab the **tenant ID** from end of the URL.
+8. Copy the link and then grab the **tenant ID** from end of the URL.
 
     ![Open ADB](./images/copy_the_link.png "")
 
@@ -197,9 +197,9 @@ After creating your application, you must publish your application to your organ
 
     ![Open ADB](./images/copy_team_id.png "")
 
-11. Click on the three dots(...) next to your channel title, and click on **Get link to channel**
+11. For channel ID, click on the three dots(...) next to your channel title, and then click **Get link to channel**
 
-12. Copy the link and grab the **channel ID**.
+12. Copy the link. Take note of the **channel ID**.
 
     ![Open ADB](./images/copy_channel_id.png "")
 
@@ -213,12 +213,16 @@ After creating your application, you must publish your application to your organ
 
     ![Open ADB](./images/click-adb-name.png "")
 
-3. Click **Database actions** drop-down list, and select **SQL** .
+3. Click **Database actions** dropdown, and then select **SQL** .
 
     ![Open ADB](./images/select-database-actions.png "")
 
-4. Copy and paste the following code into your SQL Worksheet, enter **bot id** which is **Application(client) ID**, and **bot key** which is client secrets. Then,click the **Run Script (F5)** icon in the Worksheet toolbar.
+4. Copy and paste the following code into your SQL Worksheet. In the code, you will need to replace two parameters.
 
+    - Replace **bot_id** with your **Application (client) ID.
+    - Replace **bot_secret** with your bot's **client secret**.
+
+5. After replacing parameters, click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -232,16 +236,15 @@ After creating your application, you must publish your application to your organ
 
     ![Open ADB](./images/create_credential.png "")
 
-    > **Note:** To use Microsoft Teams app with DBMS_CLOUD_NOTIFICATION procedure, you need to run the procedure successfully. If you can not run the CREATE_CREDENTIAL procedure successfully, you can consult the ADMIN user to grant execute access on DBMS_CLOUD packages.
+    > **Note:** To use Microsoft Teams app with **`DBMS_CLOUD_NOTIFICATION`** procedure, you need to run the procedure successfully. If you can not run the **`CREATE_CREDENTIAL`** procedure successfully, you can consult the ADMIN user to grant execute access on **`DBMS_CLOUD`** packages.
 
 ## Task 7: Send messages to a Microsoft Teams Channel
 
-After creating the Microsoft Teams credential object, you can use the DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE procedure to send a message to your Microsoft Teams channel.
+After creating the Microsoft Teams credential object, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Microsoft Teams channel.
 
 1. Copy and paste the following code into your SQL Worksheet, and enter your **Team ID**, then click the **Run Script (F5)**.
 
-
-   ```
+    ```
     <copy>
        BEGIN
          DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE(
@@ -251,7 +254,7 @@ After creating the Microsoft Teams credential object, you can use the DBMS_CLOUD
              params          => json_object('channel' value 'teamID'));
         END;
     </copy>
-   ```
+    ```
 
     ![Open ADB](./images/run_send_notif_pkg.png "")
 
@@ -261,7 +264,7 @@ After creating the Microsoft Teams credential object, you can use the DBMS_CLOUD
 
 ## Task 8: Send query results to a Microsoft Teams Channel
 
-After creating required credential and configuration, you can use the DBMS_CLOUD_NOTIFICATION.SEND_DATA procedure to send the output of a query to your Microsoft Teams Channel.
+After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Microsoft Teams Channel.
 
 1. Copy and paste the following code into your SQL Worksheet, enter the following parameters, and then click the **Run Script (F5)**.
 
@@ -271,7 +274,7 @@ After creating required credential and configuration, you can use the DBMS_CLOUD
     - Title: Enter your preferred **title of the file**
     - Type: Output format can be `csv` or `json`
 
-   ```
+    ```
      <copy>
       BEGIN
           DBMS_CLOUD_NOTIFICATION.SEND_DATA(provider => 'msteams',
@@ -284,11 +287,11 @@ After creating required credential and configuration, you can use the DBMS_CLOUD
                                        'type'value 'csv'));
         END;
      </copy>
-   ```
+    ```
 
     ![Open ADB](./images/send_results_query.png "")
 
-    > **Note:** The maximum file size supported when using DBMS_CLOUD_NOTIFICATION.SEND_DATA for Microsoft Teams is `4MB`.
+    > **Note:** The maximum file size supported when using `DBMS_CLOUD_NOTIFICATION.SEND_DATA` for Microsoft Teams is `4MB`.
 
 2. Open your Teams channel, and confirm the receipt of the query result.
 
@@ -296,19 +299,16 @@ After creating required credential and configuration, you can use the DBMS_CLOUD
 
 ## Summary
 You learned how to create  and configure a Microsoft app to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity.
- 
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-+ **Authors:**
-  + Yonca Aksit, User Assistance Developer Intern
-  + Nilay Panchal, ADB Product Management
-  + Marty Gubar, Autonomous Database Product Management
-+ **Contributor:**
-+ **Last Updated By/Date:** Yonca Aksit, September 2024
++ **Author:** - Yonca Aksit, User Assistance Developer Intern
 
-Data about movies in this workshop were sourced from Wikipedia.
++ **Contributor:**
+
++ **Last Updated By/Date:** Yonca Aksit, October 2024
 
 Copyright (C) Oracle Corporation.
 
