@@ -2,9 +2,12 @@
 
 ## Introduction
 
-This lab walks you through how to install and configure a workload generation tool called Swingbench and monitor the performance of Autonomous Database.
+This lab walks you through how to install and configure a workload generation tool called Swingbench and monitor the performance of an Autonomous Database.
 
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Simplifying @ Azure](videohub:1_xj46a62c)
 
 ### Objectives
 
@@ -15,7 +18,7 @@ As an administrator:
 
 ### Required Artifacts
 
-- A pre-provisioned instance of Autonomous database and Developer Client image. 
+- A pre-provisioned instance of an Autonomous database and a Developer Client image. 
 
 Refer to Lab 2: **Connect securely with Visual Studio code**.
 
@@ -25,7 +28,7 @@ Refer to Lab 2: **Connect securely with Visual Studio code**.
 
     *The remainder of this lab assumes you are connected to the Windows instance through RDP  and are operating from the Windows instance and not your local machine (except if noted).*
 
-- Windows VM is pre-installed with swingbench application. Verify in the below directory.
+- Windows VM is pre-installed with Swingbench application. Verify in the below directory.
 
     ```
     <copy>
@@ -41,20 +44,20 @@ Refer to Lab 2: **Connect securely with Visual Studio code**.
     </copy>
     ````
 
-### Transfer DB Wallet to swingbench client machine
-If you have not downloaded the wallet already to your Dev Client machine in an earlier lab, follow the steps in Lab 2: **Connect securely with Visual Studio code** to download the wallet.
+### Transfer DB Wallet to the Swingbench client machine
+If you have not downloaded the Database Wallet already to your Dev Client machine in an earlier lab, follow the steps in Lab 2: **Connect securely with Visual Studio code** to download the wallet.
 
 
-## Task 2: Connect swingbench application to Autonomous database
+## Task 2: Connect the Swingbench application to Autonomous database
 
-Now that you have installed swingbench, the next step is to connect the application to your Autonomous database.
+Now that you have installed Swingbench, the next step is to connect the application to your Autonomous database.
 
 - You are ready to run Swingbench workloads on Autonomous database. Workloads are simulated by users submitting transactions to the database.
 
-- Load sample data to your Autonomous Database. To start oewizard to load Schema and data, navigate to Swinbench winbin folder and run oewizard.bat.
+- Load sample data to your Autonomous Database. To start **oewizard** to load Schema and data, navigate to Swinbench winbin folder and run oewizard.bat.
 
 
-NOTE: If swingbench application complaints about JDBC Drivers, download from [JDBC Downloads](https://www.oracle.com/java/technologies/downloads/#jdk22-windows) and follow the on-screen instructions to install.
+NOTE: If the Swingbench application complaints about JDBC Drivers, download from [JDBC Downloads](https://www.oracle.com/java/technologies/downloads/#jdk22-windows) and follow the on-screen instructions to install.
 
 ```
 <copy>
@@ -75,6 +78,8 @@ oewizard.bat
     ![This image shows the result of performing the above step.](./images/oewizard2.png " ")
 
 - Copy the Connect string from Azure portal, and change the Username to ***Admin*** and enter your Admin password and click Next. 
+
+    NOTE: Copy _tp connect string from Azure console.
 
     ![This image shows the result of performing the above step.](./images/connectstring.png " ")
 
@@ -118,7 +123,7 @@ oewizard.bat
     
     ![This image shows the result of performing the above step.](./images/swingbench.png " ")
 
-- Running the above command should open up the Swingbench configuration tool and select the following to connect Swingbench to Autonomous database. 
+- Running the above command will open the Swingbench configuration tool. Select the following to connect Swingbench to Autonomous database. 
 
 - Select SOE_Server_Side_V2 and click OK.
 
@@ -148,7 +153,7 @@ oewizard.bat
 
     ![This image shows the result of performing the above step.](./images/start1.png " ")
 
-***NOTE: Do not disconnect the swingbench application. The next steps show the Autoscaling capability of the Autonomous Database.***
+***NOTE: Do not disconnect the Swingbench application. The next steps show the Auto scaling capability of the Autonomous Database.***
 
 ## Task 3: Enable Compute Auto Scaling in Autonomous database
 
@@ -160,16 +165,20 @@ oewizard.bat
 
     ![This image shows the result of performing the above step.](./images/auto1.png " ")
 
-- Open Swingbench application and notice how your Transactions per minute is increasing on enabling Auto scaling. 
+- Open the Swingbench application and notice how your Transactions per minute are increasing when enabling Auto scaling. 
 
     ![This image shows the result of performing the above step.](./images/auto2.png " ")
 
 - Navigate back to Azure portal and turn off Auto Scaling. 
 
+- Stop the Swingbench application. 
+
+    ![This image shows the result of performing the above step.](./images/stop.png " ")
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-*Congratulations! You successfully configured the swingbench java application with Autonomous database and observed how compute auto scaling can benfit your applications .*
+*Congratulations! You successfully configured the Swingbench java application with Autonomous database and observed how compute auto scaling can benfit your applications .*
 
 - **Author** - Tejus Subrahmanya
 - **Last Updated By/Date** - Tejus Subrahmanya, Autonomous Database Product Management, August 2024
