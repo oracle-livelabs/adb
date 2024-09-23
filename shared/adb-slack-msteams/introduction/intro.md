@@ -8,9 +8,9 @@ Estimated Workshop Time: 1 hour
 
 ### About Slack and Microsoft Teams
 
-**Slack** is a business messaging platform designed to connect teams with essential information. By fostering collaboration among team members, Slack revolutionizes organizational communication, enabling a more unified approach to teamwork. See [Getting started](https://slack.com/help/articles/360059928654-How-to-use-Slack--your-quick-start-guide) with Slack for more information.
+**Slack** is a business messaging platform that connects teams with the apps, services, and resources you need. It offers real-time messaging, file sharing, and application integrations, making it easy for teams to communicate and collaborate efficiently. See [Getting started](https://slack.com/help/articles/360059928654-How-to-use-Slack--your-quick-start-guide) with Slack for more information.
 
-**Microsoft Teams** is the business messaging platform, offering a workspace for real-time collaboration, communication, meetings, file, and app sharing. See [Get Started](https://support.microsoft.com/en-us/office/get-started-with-microsoft-teams-b98d533f-118e-4bae-bf44-3df2470c2b12) for more information.
+**Microsoft Teams** is a collaboration platform that combines chat, video meetings, and file sharing. It integrates with Microsoft 365 apps, supports third-party integrations, and offers robust security. With dedicated channels and mobile access, Teams enhances productivity in remote and hybrid work environments. See [Get Started](https://support.microsoft.com/en-us/office/get-started-with-microsoft-teams-b98d533f-118e-4bae-bf44-3df2470c2b12) with Microsoft Teams for more information.
 
 Oracle Autonomous Database offers robust integration with Slack and Microsoft Teams, enabling you to enhance your communication, and productivity workflows in your organization. This integration facilitates the seamless transmission of messages, alerts, and query results directly to Slack and Teams channels, addressing several key use cases for modern teams.
 
