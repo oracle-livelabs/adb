@@ -22,7 +22,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-+ Completion of the lab **Set up the environment** from the **Contents** menu on the left.
++ Completion of the lab **Get Started** from the **Contents** menu on the left.
 + Slack account and workspace
 + Slack app
 + Slack channel
@@ -229,9 +229,9 @@ You may now **proceed to the next lab**.
 
 + **Author:** - Yonca Aksit, User Assistance Developer Intern
 
-+ **Contributor:**
++ **Contributors:** - Nilay Panchal, ADB Product Management; Lauran K. Serhal Consulting User Assistance Developer
 
-+ **Last Updated By/Date:** Yonca Aksit, September 2024
++ **Last Updated By/Date:** Yonca Aksit, October 2024
 
 Copyright (C) Oracle Corporation.
 

@@ -2,28 +2,27 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to send Slack and Microsoft Teams notifications from **Oracle Autonomous Database**. You will create Slack and Microsoft Teams apps and configure them so that you can send messages,alerts, or output of a query from Oracle Autonomous Database. You will review and confirm the receipt of the messages in both Slack channel and Microsoft Team Channel.
+The labs in this workshop walk you through all the steps to send Slack and Microsoft Teams notifications from **Oracle Autonomous Database** (ADB) . You will create Slack and Microsoft Teams apps and configure them so that you can send messages, alerts, or the output of a query from Oracle Autonomous Database. You will review and confirm the receipt of the messages in both Slack channel and Microsoft Teams Channels.
 
-Estimated Workshop Time: 1 hours
+Estimated Workshop Time: 1 hour
 
 ### About Slack and Microsoft Teams
 
-Oracle Autonomous Database (ADB) offers robust integration with Slack and Microsoft Teams, enabling you to enhance your communication, and productivity workflows in your organization. This integration facilitates the seamless transmission of messages, alerts, and query results directly to Slack and Teams channels, addressing several key use cases for modern teams.
+**Slack** is a business messaging platform designed to connect teams with essential information. By fostering collaboration among team members, Slack revolutionizes organizational communication, enabling a more unified approach to teamwork. See [Getting started](https://slack.com/help/articles/360059928654-How-to-use-Slack--your-quick-start-guide) with Slack for more information.
+
+**Microsoft Teams** is the business messaging platform, offering a workspace for real-time collaboration, communication, meetings, file, and app sharing. See [Get Started](https://support.microsoft.com/en-us/office/get-started-with-microsoft-teams-b98d533f-118e-4bae-bf44-3df2470c2b12) for more information.
+
+Oracle Autonomous Database offers robust integration with Slack and Microsoft Teams, enabling you to enhance your communication, and productivity workflows in your organization. This integration facilitates the seamless transmission of messages, alerts, and query results directly to Slack and Teams channels, addressing several key use cases for modern teams.
 
 ### Objectives
 
-- Create a Slack account and workspace
-- Create a Slack app
-- Create a Slack channel
+- Create a Slack account, workspace, app, and channel
 - Create a credential object for the Slack app
-- Send a message to the Slack channel
-- Send a query output to the Slack channel
+- Send a message and a query output to the Slack channel
 - Confirm the receipt of the messages in Slack channel
-- Create a Microsoft Teams account and app
-- Create a Microsoft Teams channel
+- Create a Microsoft Teams account, app, and  channel
 - Create a credential object for the Microsoft Teams app
-- Send a message to Microsoft Teams
-- Send a query output to Microsoft Teams
+- Send a message and a query output to Microsoft Teams
 - Confirm the receipt of the messages in Microsoft Teams
 
 ### Prerequisites
@@ -33,18 +32,20 @@ Oracle Autonomous Database (ADB) offers robust integration with Slack and Micros
 - Familiarity with Slack and Microsoft Teams
 - Familiarity with Oracle Cloud Infrastructure is helpful, but not required.
 
-**Let's begin! Please click Getting Started in the Contents menu on the left.**
+**Let's begin! Please click Get Started in the Contents menu on the left.**
 
 ## Learn More
 
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 - [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/tutorials.html)
-- [Autonomous Database 15 Minute Quick Start](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-quickstart.html#GUID-00170F47-AAB2-407A-938C-DEE6238F2C81)
+- [Autonomous Database Workshops](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?p100_workshop_series=222)
+- [Slack](https://slack.com/)
+- [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software)
 
 ## Acknowledgements
 
-- **Author** - Yonca Aksit, Database User Assistance Intern;
-- **Contributors** 
+- **Author** - Yonca Aksit, Database User Assistance Intern
+- **Contributors** - Nilay Panchal, ADB Product Management; Lauran K. Serhal Consulting User Assistance Developer
 - **Last Updated By/Date** - Yonca Aksit, October 2024
 
 Copyright (C) Oracle Corporation.

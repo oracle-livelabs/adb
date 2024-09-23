@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In  this lab, you will learn the steps to get started using the Oracle Autonomous Database (Autonomous Data Warehouse [ADW]).We will show you how to deploy a complete data warehousing platform that can scale to your requirements.
+In  this lab, you will learn the steps to get started using the Oracle Autonomous Database (Autonomous Data Warehouse).We will show you how to deploy a complete data warehousing platform that can scale to your requirements.
 Estimated Time: 5 minutes
 
 ### Objectives
@@ -32,5 +32,5 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 - **Author:** Yonca Aksit, User Assistance Developer Intern
-- **Last Updated By/Date:** - Yonca Aksit, September 2024
+- **Last Updated By/Date:** - Yonca Aksit, October 2024
 - **Built with Common Tasks**
