@@ -22,19 +22,19 @@
         {
         "title": "Lab 1: Provision an Autonomous Database",
         "description": "You will create a  ADB instance",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../provision-database/provision-database.md"
         },
         {
             "title": "Lab 2: Prepare to Send Slack Notifications from Autonomous Database",
             "description": "You will use ADB to send notifications and query result to a Slack channel",
-            "type": "livelabs",
+            "type": "freetier",
             "filename": "../../prepare-adb-slack/prepare-adb-slack.md"
             },
         {
         "title": "Lab 3: Prepare to Send Microsoft Teams Notifications from Autonomous Database",
         "description": "You will use ADB to send notifications and query result to a Microsoft Teams channel",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../prepare-adb-msteams/prepare-adb-msteams.md"
     },
     {
