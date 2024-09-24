@@ -1,10 +1,10 @@
-# Prepare to Send Slack Notifications from Autonomous Database
+# Send Slack Notifications from Autonomous Database
 
 ## Introduction
 
-Slack, a leading collaboration tool, provides teams to have seamless communication and efficient data management. Slack has cool integrations with external app and sources. This is precisely what unites Oracle Autonomous Database and Slack in this lab.
+Slack, a leading collaboration tool, enables teams with the ability to have seamless communication and efficient data management. Slack has cool integrations with external apps and sources.
 
-This lab walks you through the steps to configure your Slack application to receive messages, alerts, and output of a query from Autonomous Database. You will learn the required procedures to send Slack notifications.
+This lab walks you through the steps to configure your Slack application to receive messages, alerts, and the output of a query from Autonomous Database. You will learn the required procedures to send Slack notifications.
 
 Estimated Time: 25 minutes
 
@@ -22,16 +22,16 @@ In this lab, you will:
 
 ### Prerequisites
 
-+ Completion of the lab **Get Started** from the **Contents** menu on the left.
++ Completion of the lab **Get Started** and **Lab 1** from the **Contents** menu on the left.
 + Slack account and workspace
 + Slack app
 + Slack channel
 
-> **Note:** A Slack workspace is made up of channels, where team member can communicate and work together. To join a workspace, you can [create an account](https://slack.com/get-started#/createnew) using your email address.
+> **Note:** A Slack workspace is made up of channels, where team members can communicate and work together. To join a workspace, you can [create a Slack account](https://slack.com/get-started#/createnew) using your email address.
 
-## Task 1: Create your Slack application
+## Task 1: Create Your Slack application
 
-1. To create a Slack application, click [this link](https://api.slack.com/apps) to access **Your Apps** page, and select **Create New App**.
+1. To create a Slack application, click [this link](https://api.slack.com/apps) to access the **Your Apps** page, and select **Create an App**.
 
     ![Open ADB](./images/create-a-new-app.png "")
 
@@ -43,25 +43,41 @@ In this lab, you will:
 
     ![Open ADB](./images/select-appname.png "")
 
+    > **Note:** To create a Slack app successfully, you must select your preferred workspace as shown in the Task 1, step 3. After creating your app, you need to have your Slack admin approve your application.
+
+4. Under **Settings** section, you will see the **Basic Information** page after creating your Slack app. You can update your information, and then click **Save Changes** or you can click **Discard Changes** not to apply changes.
+
+    ![Open ADB](./images/see-basic-information.png "")
+
+5. At the bottom of the **Basic Information**, you will see **Delete App** section. If you want to delete your Slack app, you can click **Delete App**.
+
+    ![Open ADB](./images/delete-slack-app.png "")
+
 ## Task 2: Configure your Slack application
 
-After creating your application, you must request scopes which will give your application permission to perform actions such as viewing basic information, posting messages, and uploading files in your workspace.
+After creating your application, you must request scopes which will grant your application permissions to perform actions such as viewing basic information, posting messages, and uploading files in your selected workspace.
 
 These following scopes are  required:
 
-+ channels:read
-+ chat:write
-+ files:write
++ **channels:read**
 
-1. Go to [main application page](https://api.slack.com/apps), and then click your **App Name**.
+    This permission scope will enable you to view basic information about public channels in your workspace. For more information, see [channels:read](https://api.slack.com/scopes/channels:read).
++ **chat:write**
+
+    This permission scope will enable you to post messages in approved channels and conversations. For more information, see [chat:write](https://api.slack.com/scopes/chat:write).
++ **files:write**
+
+    This permission scope will enable you to upload, edit, and delete files from your Slack app. For more information, see [files:write](https://api.slack.com/scopes/files:write).
+
+1. Go to [Your Apps](https://api.slack.com/apps), and then click your **App Name**.
 
     ![Open ADB](./images/click-app-name.png "")
 
-2. Scroll down to **Features**, and click **OAuth & Permissions**.
+2. Scroll down to **Features** section, and click **OAuth & Permissions**.
 
     ![Open ADB](./images/click-oa-permissions.png "")
 
-3. Scroll down to **Scopes**, and then click **Add an OAuth Scope**.
+3. Scroll down to **Scopes** section, and then click **Add an OAuth Scope**.
 
     ![Open ADB](./images/click-add-scope.png "")
 
