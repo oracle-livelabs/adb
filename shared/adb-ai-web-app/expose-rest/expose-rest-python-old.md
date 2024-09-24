@@ -112,123 +112,135 @@ You can test the REST endpoint from a command prompt using the **cURL** command.
 3. Copy and past the URL into a new browser window. You will see all of the customer profiles:
   ![customer profiles](images/customerProfiles.png)
   
-## Task 3: Create REST API for generating a bedtime story using PLSQL
-You can create REST APIs using both PLSQL and the REST designer. We'll start by creating the bedtime story REST endpoint using PLSQL. 
+## Task 3: Create REST API for creating a bedtime story using a module
+You will now create a REST API that will use GenAI to create your personalized bedtime story. You can design your APIs using Autonomous Database's REST design tool. Start by creating an API module. See the [Getting Started with RESTful Services](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/23.4/orddg/developing-REST-applications.html#GUID-25DBE336-30F6-4265-A422-A27413A1C187) documentation for additional information.
 
-The following PLSQL API calls perform the following tasks:
-* Creates a module called **apiapp** that represents a group of related services and is part of the URL path
-* In that module, defines a REST template called **bedtimestory/create** that will handle requests for creating a bedtime story
-* In that template, defines a handler that describes how to process the request. Here, it calls the **create_story** procedure that was reviewed in the previous lab.
-* Creates several parameters for the procedure's inputs and output
+1. Ensure that you are still logged in as **MOVIESTREAM** user. Click the **Selector** (hamburger) in the banner, and then click **REST**.
+  ![Go to REST](images/goto-rest.png)
 
-1. Copy/paste the following PLSQL block in the SQL Worksheet as the MOVIESTREAM user and then click **Run Statement**:
-  ```sql
-  <copy>
-  BEGIN
-      
-    ORDS.DEFINE_MODULE(
-        p_module_name    => 'apiapp',
-        p_base_path      => '/apiapp/',
-        p_items_per_page => 25,
-        p_status         => 'PUBLISHED',
-        p_comments       => 'RESTful services leveraging AI to deliver analytics across the organization');
+2. View the list of modules. In the REST tool, click the **Modules** tab.
+  ![Go to modules](images/goto-modules.png =60%x*)
 
-    ORDS.DEFINE_TEMPLATE(
-        p_module_name    => 'apiapp',
-        p_pattern        => 'bedtimestory/create',
-        p_priority       => 0,
-        p_etag_type      => 'HASH',
-        p_etag_query     => NULL,
-        p_comments       => NULL);
+  A module named **api** was created by the Terraform script.
+  
+  ![The API module.](images/api-modules.png)
 
-    ORDS.DEFINE_HANDLER(
-        p_module_name    => 'apiapp',
-        p_pattern        => 'bedtimestory/create',
-        p_method         => 'POST',
-        p_source_type    => 'plsql/block',
-        p_items_per_page => 25,
-        p_mimes_allowed  => NULL,
-        p_comments       => NULL,
-        p_source         => 
-  'begin
-      create_story (
-          cust_id => :cust_id,
-          characters => :characters,
-          movies => :movies,
-          title => :title,
-          story => :story
-          );
-      end;');
+3. Let's create a new module that the **Bedtime Story** app can use. Click **Create Module**.
 
-    ORDS.DEFINE_PARAMETER(
-        p_module_name        => 'apiapp',
-        p_pattern            => 'bedtimestory/create',
-        p_method             => 'POST',
-        p_name               => 'cust_id',
-        p_bind_variable_name => 'cust_id',
-        p_source_type        => 'HEADER',
-        p_param_type         => 'INT',
-        p_access_method      => 'IN',
-        p_comments           => 'Story created for this customer id');
+4. Specify the following for the new module. Make sure all the fields match the image below. Next, click **Create**.
 
-    ORDS.DEFINE_PARAMETER(
-        p_module_name        => 'apiapp',
-        p_pattern            => 'bedtimestory/create',
-        p_method             => 'POST',
-        p_name               => 'characters',
-        p_bind_variable_name => 'characters',
-        p_source_type        => 'HEADER',
-        p_param_type         => 'STRING',
-        p_access_method      => 'IN',
-        p_comments           => 'This is the list of characters that will appear in the story. They come from your customer profile and your friends.
-      Pass an array of names:
-      ["Sari", "Mom"]');
+    * **Name:** `apiapp`
+    * **Base Path:** `/apiapp/`
+    * **Protected By Privilege:** `Not Protected`
+  
+      ![Completed module form](images/module-completed-form.png)
+ 
+5. The newly created **apiapp** module is displayed. From here, we will create a template that will provide our RESTful service. 
 
-    ORDS.DEFINE_PARAMETER(
-        p_module_name        => 'apiapp',
-        p_pattern            => 'bedtimestory/create',
-        p_method             => 'POST',
-        p_name               => 'movies',
-        p_bind_variable_name => 'movies',
-        p_source_type        => 'HEADER',
-        p_param_type         => 'STRING',
-        p_access_method      => 'IN',
-        p_comments           => 'The list of movies that the bedtime story will be based on. This should be passed as an array:
-      ["Big", "Finding Nemo"]');
+6. Create the **bedtimestory** template. Click **Create Template**. The **Create Template** panel is displayed.
 
-    ORDS.DEFINE_PARAMETER(
-        p_module_name        => 'apiapp',
-        p_pattern            => 'bedtimestory/create',
-        p_method             => 'POST',
-        p_name               => 'title',
-        p_bind_variable_name => 'title',
-        p_source_type        => 'RESPONSE',
-        p_param_type         => 'STRING',
-        p_access_method      => 'OUT',
-        p_comments           => 'The generated title for the story');
+  ![create template](images/click-create-template.png)
 
-    ORDS.DEFINE_PARAMETER(
-        p_module_name        => 'apiapp',
-        p_pattern            => 'bedtimestory/create',
-        p_method             => 'POST',
-        p_name               => 'story',
-        p_bind_variable_name => 'story',
-        p_source_type        => 'RESPONSE',
-        p_param_type         => 'STRING',
-        p_access_method      => 'OUT',
-        p_comments           => 'The generated story.');
-          
-  COMMIT;
+7. In the **URI Template** field, enter **`bedtimestory/create`** as the name for the template. Then click **Create**.
 
-  END;
-  /
-  </copy>
-  ```
-  ![generate the API](images/gen-api-plsql.png)
+    >**Note:** Use the exact name, **`bedtimestory/create`**. Our Django app is expecting that name.
 
-> **Note:** You can also create REST APIs using the REST designer. You can see details about how that's done [in the documentation](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/creating-restful-services.html#GUID-3583910E-C360-4449-9243-CD0AAD3BF211).
+  ![create template](images/create-bedtime-template.png)
 
-That's it. You'll test this and other APIs in our next lab using the REST designer and OpenAPI integration.
+8. Click **Create Handler** to implement the API. The handler will call the **`create_story`** procedure and take the customer id, story characters and movies as parameters. It will output the title and story
+
+  ![Handler button](./images/click-create-handler.png "")
+
+9. Complete the handler form:
+    * Select **Method: POST**
+    * Select **Source Type: PL/SQL**
+    * Copy and paste the following code into **Source** field, and then click **Create**.
+
+      ```
+      <copy>
+      begin
+        create_story (
+            cust_id => :cust_id,
+            characters => :characters,
+            movies => :movies,
+            title => :title,
+            story => :story
+            );
+      end;
+      </copy>
+      ```
+
+      ![Handler with code](./images/bedtime-handler-form.png "")
+
+  The code has 5 parameters that you will define in the next step:
+    * **cust_id** - the customer creating the story
+    * **characters** - the characters that will be featured in the story
+    * **movies** - the movies that will be used as a basis for the story
+    * **title** - the title output by the procedure
+    * **story** - the story output by the procedure
+
+10. Click **Create Parameter**.
+  
+  ![Parameter button](./images/create-parameter.png =60%x*)
+
+11. Specify the following in the **Create Parameter** panel.
+
+    * **Parameter Name:** `cust_id`
+    * **Bind Variable Name:** `cust_id`
+    * **Source Type:** `Header`
+    * **Parameter Type:** `INT`
+    * **Access Method:** `Input`
+    * **Comments:** `Story created for this customer id`
+
+    The completed panel should look as follows:
+
+    ![The parameter details.](./images/parameter-details-custid.png =70%x*)
+
+12. Click **Create**. The new parameter is displayed.
+
+      ![The parameter is created.](./images/parameter-created-custid.png "")
+
+13. Repeat steps 10-12 for the following new parameters:
+
+    * **Parameter Name:** `characters`
+    * **Bind Variable Name:** `characters`
+    * **Source Type:** `Header`
+    * **Parameter Type:** `STRING`
+    * **Access Method:** `Input`
+    * **Comments:** `This is the list of characters that will appear in the story.    They come from your customer profile and your friends. Pass an array of names:["Sari", "Mom"]`
+
+14. Repeat steps 10-12 for the following new parameters:
+
+    * **Parameter Name:** `movies`
+    * **Bind Variable Name:** `movies`
+    * **Source Type:** `Header`
+    * **Parameter Type:** `STRING`
+    * **Access Method:** `Input`
+    * **Comments:** `The list of movies that the bedtime story will be based on. This should be passed as an array: ["Big", "Finding Nemo"]`    
+
+15. Repeat steps 10-12 for the following new parameters:
+
+    * **Parameter Name:** `title`
+    * **Bind Variable Name:** `title`
+    * **Source Type:** `Response`
+    * **Parameter Type:** `STRING`
+    * **Access Method:** `Output`
+    * **Comments:** `The generated title for the story`    
+
+16. Repeat steps 10-12 for the following new parameters:
+
+    * **Parameter Name:** `story`
+    * **Bind Variable Name:** `story`
+    * **Source Type:** `Response`
+    * **Parameter Type:** `STRING`
+    * **Access Method:** `Output`
+    * **Comments:** `The generated story`    
+
+The completed list of parameters is shown below:
+
+![Parameter list](./images/completed-parameters.png "")
+
+That's it. You'll test this and other APIs in our next lab using the OpenAPI integration.
 
 
 ## Summary
