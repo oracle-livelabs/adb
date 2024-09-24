@@ -31,6 +31,7 @@ You may now **proceed to the next lab**.
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/index.html#Oracle%C2%AE-Cloud)
 
 ## Acknowledgements
-- **Author:** Yonca Aksit, User Assistance Developer Intern
-- **Last Updated By/Date:** - Yonca Aksit, October 2024
-- **Built with Common Tasks**
+
+- **Author** - Lauran K. Serhal Consulting User Assistance Developer
+- **Contributors** - Marty Gubar, Product Manager
+- **Last Updated By/Date** - Yonca Aksit, October 2024
