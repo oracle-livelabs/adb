@@ -194,7 +194,10 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
 In this task, you will use **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** procedure to grant the access control privileges to a user. For more information, see [Configuring Access Control for External Network Services](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-fine-grained-access-in-pl-sql-packages-and-types.html#DBSEG-GUID-3D5B66BC-0277-4887-9CD1-97DB44EB5213).
 
-1. In the source database SQL window, enter the following script, edit your **principal_name** according to your user name or user role, and then click **Run Statement**.
+1. In the source database SQL window, enter the following script, set the following parameters, and then click **Run Statement**.
+
+    - principal_name: Enter  your database user name or role such as **ADMIN**.
+    - principal_type: Enter **`xs_acl.ptype_db`** for a database user or role.
 
     ```
     <copy>
