@@ -113,7 +113,7 @@ You can test the REST endpoint from a command prompt using the **cURL** command.
   ![customer profiles](images/customerProfiles.png)
   
 ## Task 3: Create REST API for generating a bedtime story using PLSQL
-You can create REST APIs using both PLSQL and the REST designer. We'll start by creating the bedtime story REST endpoint using PLSQL. 
+You can create REST APIs using both PLSQL and the REST designer. We'll create the bedtime story REST endpoint using PLSQL and then review it using the designer. 
 
 The following PLSQL API calls perform the following tasks:
 * Creates a module called **apiapp** that represents a group of related services and is part of the URL path
