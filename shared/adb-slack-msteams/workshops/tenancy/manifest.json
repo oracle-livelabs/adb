@@ -26,13 +26,13 @@
         "filename": "../../provision-database/provision-database.md"
         },
         {
-            "title": "Lab 2: Prepare to Send Slack Notifications from Autonomous Database",
+            "title": "Lab 2: Send Slack Notifications from Autonomous Database",
             "description": "You will use ADB to send notifications and query result to a Slack channel",
             "type": "freetier",
             "filename": "../../prepare-adb-slack/prepare-adb-slack.md"
             },
         {
-        "title": "Lab 3: Prepare to Send Microsoft Teams Notifications from Autonomous Database",
+        "title": "Lab 3: Send Microsoft Teams Notifications from Autonomous Database",
         "description": "You will use ADB to send notifications and query result to a Microsoft Teams channel",
         "type": "freetier",
         "filename": "../../prepare-adb-msteams/prepare-adb-msteams.md"

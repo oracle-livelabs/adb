@@ -1,4 +1,4 @@
-# Prepare to Send Microsoft Teams Notifications from Autonomous Database
+# Send Microsoft Teams Notifications from Autonomous Database
 
 ## Introduction
 
@@ -24,7 +24,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-+ Completion of the lab **Get Started** from the **Contents** menu on the left.
++ Completion of the lab **Get Started**, and **Lab 1** from the **Contents** menu on the left.
 + Microsoft Teams account and workspace
 + Microsoft Teams app and channel
 + Microsoft 365 Developer Account
