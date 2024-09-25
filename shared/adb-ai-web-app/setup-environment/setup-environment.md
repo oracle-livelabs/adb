@@ -6,14 +6,14 @@ comments syntax
 
 ## Introduction
 
-This workshop focuses on teaching you how to apply generative AI to your organization's private data for different types of use cases. 
+This workshop teaches you how to apply generative AI to your organization's private data for different types of use cases. 
 
-> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** region in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+> **NOTE:** In order to use OCI Generative AI, your tenancy must be subscribed to the **US Midwest (Chicago)** region. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. You can use other AI providers if you do not have access to OCI GenAI.
 
 To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
-* Connects your Autonomous Database to OCI Generative AI service
+* Connects your Autonomous Database to OCI Generative AI service (assuming you are subscribed to the US Midwest (Chicago) region)
 * Deploy the business logic for running different types of AI projects - like summarizing a support chat and suggesting things to do at a location
 * Deploy RESTful endpoints for executing that business logic from your applications
 * Deploys two APEX apps in a MOVIESTREAM workspace: 
@@ -24,15 +24,13 @@ All of this is done so that you can immediately try all of the different compone
 
 The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure Documentation documentation.
 
-Autonomous Database supports different API providers and models. You will use the models deployed to OCI Generative AI: **Meta Llama 3** and **Cohere**.
-
 Estimated Time: 15 minutes.
 
 ### Objectives
 
 In this lab, you will:
 
-* Create an OCI Compartment 
+* (optional) Create an OCI Compartment 
 * Run the stack to perform all the prerequisites required to analyze data
 * Define an IAM policy that enables access to OCI Generative AI
 
@@ -77,7 +75,7 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
     * Create a new user named **`moviestream`**
     * Create movie related tables and views in the **`moviestream`** schema
     * Grant the required privileges to perform various actions in the workshop
-    * Download the **Autonomous Database Select AI** APEX application
+    * Download the **Autonomous Database Select AI** APEX applications
 
     >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation.
 
@@ -152,7 +150,9 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
 
-## Task 3: Create policy to enable access to OCI Generative AI
+## Task 3: Create policy to enable access to OCI Generative AI 
+You need to perform this task if you plan to use OCI Generative AI and not a 3rd party AI model. 
+
 Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
