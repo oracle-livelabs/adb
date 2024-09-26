@@ -44,9 +44,15 @@ Oracle Autonomous Database offers robust integration with Slack and Microsoft Te
 
 ## Acknowledgements
 
-- **Author** - Yonca Aksit, Database User Assistance Intern
-- **Contributors** - Nilay Panchal, ADB Product Management; Lauran K. Serhal Consulting User Assistance Developer
-- **Last Updated By/Date** - Yonca Aksit, October 2024
++ **Author:** Yonca Aksit, User Assistance Developer Intern
+
++ **Contributors:**
+
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, Principal Product Manager, Autonomous Database
+    * Marty Gubar, Director of Product Management, Autonomous Database
+
++ **Last Updated By/Date:** Yonca Aksit, October 2024
 
 Copyright (C) Oracle Corporation.
 

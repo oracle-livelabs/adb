@@ -1,5 +1,7 @@
 # Send Slack Notifications from Autonomous Database
 
+**Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Slack admin permissions. If you run this lab using a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s Slack workspace.
+
 ## Introduction
 
 Slack, a leading collaboration tool, enables teams with the ability to have seamless communication and efficient data management. Slack has cool integrations with external apps and sources.
@@ -35,21 +37,23 @@ In this lab, you will:
 
     ![Open ADB](./images/create-a-new-app.png "")
 
-2. Select **From scratch**.
+> **Note:** Please bookmark  [Your Apps](https://api.slack.com/apps) link as you will need it for future tasks.
+
+1. Select **From scratch**.
 
     ![Open ADB](./images/select-from-scratch.png "")
 
-3. Enter your **App Name**, select your **Workspace**, and then click **Create App**.
+2. Enter your **App Name**, select your **Workspace**, and then click **Create App**.
 
     ![Open ADB](./images/select-appname.png "")
 
     > **Note:** To create a Slack app successfully, you must select your preferred workspace as shown in the previous screen capture. After creating your app, you need to have your Slack admin approve your application.
 
-4. Under the **Settings** section, you will see the **Basic Information** page after creating your Slack app. You can update your information, and then click **Save Changes** or you can click **Discard Changes** not to apply changes.
+3. Under the **Settings** section, you will see the **Basic Information** page after creating your Slack app. You can update your information, and then click **Save Changes** or you can click **Discard Changes** not to apply changes.
 
     ![Open ADB](./images/see-basic-information.png "")
 
-5. At the bottom of the **Basic Information** page, you will see **Delete App** section. If you want to delete your Slack app, you can click **Delete App**.
+4. At the bottom of the **Basic Information** page, you will see **Delete App** section. If you want to delete your Slack app, you can click **Delete App**.
 
     ![Open ADB](./images/delete-slack-app.png "")
 
@@ -97,6 +101,16 @@ These following scopes are  required:
 
     ![Open ADB](./images/request-to-install.png "")
 
+8. To request to install your application, add an **optional message** for your Slack admin, and then click **Submit Request**.
+
+    ![Open ADB](./images/request-info-install.png "")
+
+9. After submitting request, you will see the following message as shown in the screen capture.
+
+    ![Open ADB](./images/oauth-tokens.png "")
+
+    > **Note:** Have your Slack admin grant you access to install your Slack application in your workspace to proceed with the following tasks in this lab. If you are a non-Oracle user, you might not need permission to install your Slack application.
+
 ## Task 3: Create a  Slack channel
 
 For this task, you will use **`DBMS_CLOUD_NOTIFICATION`** package which enables you to send messages, and the output of query to the supported providers. For more information, see [`DBMS_CLOUD_NOTIFICATION Package`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-F3347243-2C65-4E9A-84AA-5FA93200058F).
@@ -119,11 +133,9 @@ You will learn how to add your Slack app to your channel so that you can send me
 
     ![Open ADB](./images/create-channel.png "")
 
-5. Click **Skip for now**.
+5. If you can want to add people to your new channel, enter the **username or email** address, and then click **Add**. Click **Skip for now**.
 
    ![Open ADB](./images/add-people-to-ch.png "")
-
-    > **Note:** If you want to add people to your channel, enter **a name or an email**, and then click **Add**.
 
 6. If successful, you will see your channel in your workspace. Click the arrow icon next to your **Channel name**.
 
@@ -161,17 +173,23 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     ![Open ADB](./images/select-database-actions.png "")
 
-4. To create credential object to access the Slack app from Autonomous Database, you need to obtain your **bot token**.
+4. To create credential object to access the Slack app from Autonomous Database, you need to obtain your **Bot User OAuth Token**.
 
     > **Note:** Bot tokens are authentication tokens, enabling your bot to interact with the workspace's API to send and receive messages. For more information, see [Bot tokens](https://api.slack.com/concepts/token-types#bot).
 
+5. Access the [Your Apps](https://api.slack.com/apps) page, and then click your app.
 
-5. Scroll down to the **Features** section, click **OAuth & Permissions**, and then copy your **Bot User OAuth Token**
+6. Scroll down to the **Features** section, click **OAuth & Permissions**, and then copy your **Bot User OAuth Token**
 
     ![Open ADB](./images/copy-bot-token.png "")
 
-6. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+    > **Note:** Once your application is approved by your Slack admin, **OAuth Tokens** will be generated. If the approval is not granted, you will not see the **OAuth Tokens for Your Workspace** section as described in the step 6.
 
+7. To create credential object to access the Slack app from Autonomous Database,set the following parameters, copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+
+    - credential_name: Enter **`SLACK_CRED`**
+    - username: Enter **`SLACK_TOKEN`**
+    - password: Enter your **Bot User OAuth Token**
 
     ```
     <copy>
@@ -252,7 +270,7 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
 ## Task 7: Send query results to a Slack Channel
 
-After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Slack channel. For more information, see [SEND_DATA Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
+After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Slack channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
 
 1. Copy your **Channel ID** from Task 6 (step 3).
 
@@ -286,9 +304,13 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-+ **Author:** - Yonca Aksit, User Assistance Developer Intern
++ **Author:** Yonca Aksit, User Assistance Developer Intern
 
-+ **Contributors:** - Nilay Panchal, ADB Product Management; Lauran K. Serhal Consulting User Assistance Developer
++ **Contributors:**
+
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, Principal Product Manager, Autonomous Database
+    * Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
 

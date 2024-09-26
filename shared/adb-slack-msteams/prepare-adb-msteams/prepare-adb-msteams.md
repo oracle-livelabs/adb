@@ -1,8 +1,10 @@
 # Send Microsoft Teams Notifications from Autonomous Database
 
+**Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Microsoft Teams admin permissions. If you run this lab using a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s Microsoft Teams workspace.
+
 ## Introduction
 
-Microsoft Teams serves as a comprehensive collaboration platform within the Microsoft 365 ecosystem, facilitating instant messaging, audio and video calls, and online meetings. With its seamless integration with other applications, Teams enhances productivity by streamlining communication and project management. This is precisely what unites Oracle Autonomous Database and Microsoft Teams in this lab.
+Microsoft Teams serves as a comprehensive collaboration platform within the Microsoft 365 ecosystem, facilitating instant messaging, audio and video calls, and online meetings. With its seamless integration with other applications, Teams enhances productivity by streamlining communication and project management. Microsoft Teams supports a wide range of integrations with external apps and services.
 
 This lab walks you through the steps to configure your Microsoft Teams application to receive messages, alerts and output of a query from Autonomous Database. Also, you will learn the procedures to send Microsoft Teams notifications.
 
@@ -304,9 +306,13 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-+ **Author:** - Yonca Aksit, User Assistance Developer Intern
++ **Author:** Yonca Aksit, User Assistance Developer Intern
 
-+ **Contributors:** - Nilay Panchal, ADB Product Management; Lauran K. Serhal Consulting User Assistance Developer
++ **Contributors:**
+
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, Principal Product Manager, Autonomous Database
+    * Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
 
