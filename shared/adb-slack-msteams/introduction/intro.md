@@ -54,7 +54,7 @@ Oracle Autonomous Database offers robust integration with Slack and Microsoft Te
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
