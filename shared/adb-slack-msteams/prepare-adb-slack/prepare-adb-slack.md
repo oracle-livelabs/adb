@@ -181,7 +181,7 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     > **Note:** Bot tokens are authentication tokens, enabling your bot to interact with the workspace's API to send and receive messages. For more information, see [Bot tokens](https://api.slack.com/concepts/token-types#bot).
 
-5. Access the [Your Apps](https://api.slack.com/apps) page, and then click your app.
+5. Access the [Your Apps](https://api.slack.com/apps) page, and then click **Your Apps**.
 
 6. Scroll down to the **Features** section, click **OAuth & Permissions**, and then copy your **Bot User OAuth Token**
 
