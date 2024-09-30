@@ -37,7 +37,7 @@ In this lab, you will:
 
     ![Open ADB](./images/create-a-new-app.png "")
 
-> **Note:** Please bookmark  [Your Apps](https://api.slack.com/apps) link as you will need it for future tasks.
+    > **Note:** Please bookmark  [Your Apps](https://api.slack.com/apps) link as you will need it for future tasks.
 
 1. Select **From scratch**.
 
