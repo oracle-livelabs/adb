@@ -405,6 +405,33 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/confirm_query_result.png "")
 
+4. Repeat step 2 and substitute **json** into type value.
+
+5. Copy and paste the following code into your SQL Worksheet, substitute previously specified parameters, and then click the **Run Script (F5)**.
+
+    ```
+     <copy>
+      BEGIN
+          DBMS_CLOUD_NOTIFICATION.SEND_DATA(
+             provider => 'msteams',
+             credential_name => 'TEAMS_CRED',
+             query => 'SELECT tablespace_name FROM dba_tablespaces',
+             params => json_object(
+                'tenant'value '5b743bc******c0286',
+                'team'value '0ae401*********5d2bd',
+                'channel'value '19%3a94be023*****%40thread.tacv2',
+                'title'value 'today',
+                'type'value 'json'));
+        END;
+     </copy>
+    ```
+
+    ![Open ADB](./images/send-results-json.png "")
+
+6. Go to your Teams channel, and confirm the receipt of the query result.
+
+    ![Open ADB](./images/confirm-query-json.png "")
+
 ## Summary
 You learned how to create  and configure a Microsoft app to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity.
 
