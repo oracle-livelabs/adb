@@ -39,13 +39,13 @@ In this lab, you will:
 
     ![Open ADB](./images/select-apps.png "")
 
-    > **Note:** Please bookmark  [Apps](https://dev.teams.microsoft.com/apps) link as you will need it for future tasks.
+    > **Note:** Please bookmark the [apps](https://dev.teams.microsoft.com/apps) link as you will need it for future tasks.
 
-2. Click the plus sign next to **New App** to create a new application.
+2. Click the plus sign next to **New app** to create a new application.
 
     ![Open ADB](./images/create_new_app.png "")
 
-3. Enter your preferred app **Name** into a placeholder, and then click **Add**.
+3. Enter a name for your app in the **Name** field, and then click **Add**.
 
     ![Open ADB](./images/add_app.png "")
 
@@ -53,25 +53,27 @@ In this lab, you will:
 
     ![Open ADB](./images/app-created.png "")
 
-5. If you want to delete your application, click the **3 dots** sign next to your application name, and then click **Delete**.
+5. If you want to delete your application, click the **3 dots** sign on the row for your app, and then click **Delete**.
 
     ![Open ADB](./images/delete-app.png "")
 
-6. Enter your application name into a placeholder, and then click **Confirm**.
+6. Enter your application **name** in the field, and then click **Confirm**.
 
     ![Open ADB](./images/enter-confirm-to-delete.png "")
 
-7. If successfull, you will receive a message as shown in the screen capture.
+7. If successful, you will receive a message as shown in the screen capture.
 
     ![Open ADB](./images/receive-popup-msg.png "")
 
 ## Task 2: Create and configure a bot for your Microsoft Teams application
 
-1. Click the **three-line sign** that is located on the left side panel.
+For this task, you will create and configure a bot for your Microsoft Team application.  A Bot is the application designed to interact through conversation and it is also referred to as a chatbot or conversational bot. It's an app that runs simple and repetitive tasks by users such as customer service or support staff. Everyday use of bots include, bots that provide information about the weather, make dinner reservations, or provide travel information. Interactions with bots can be quick questions and answers or complex conversations. For more information, see [Build bots for Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/what-are-bots).
+
+1. Click the **Navigation menu** that is located on the left side panel.
 
     ![Open ADB](./images/click-lines.png "")
 
-2. Select **Tools** from the navigation menu of the Developer Portal for Teams, and then click **Bot management**.
+2. Click **Tools** in the Navigation menu, and then click **Bot management** in the **Tools** section.
 
     ![Open ADB](./images/bot_management.png "")
 
@@ -79,7 +81,7 @@ In this lab, you will:
 
     ![Open ADB](./images/select_newbot.png "")
 
-4. Enter your preferred **Bot name** into a place holder, and then click **Add**.
+4. Enter your bot name in the **Bot name** field, and then click **Add**.
 
     ![Open ADB](./images/enter_bot_name.png "")
 
@@ -87,27 +89,27 @@ In this lab, you will:
 
     ![Open ADB](./images/created_bot.png "")
 
-6. To create a secret key for your bot, click **Bot Name**.
+6. To create a secret key for your bot, click the **Bot Name**.
 
     ![Open ADB](./images/click_bot_name.png "")
 
-7. Select **Client Secrets**, and then click **Add a secret** to create client secrets for your bot.
+7. Select the **Client secrets**, and then click **Add a secret** to create a client secret for your bot.
 
     ![Open ADB](./images/add_secret.png "")
 
-8. After creating client secret, make sure that you copy the secret by clicking **copy** near the code. Then, click **OK** to close it.
+8. After you create the client secret, click the **Copy** icon next to the code to copy the secret which you will need in later steps. This is the only time the generated secret will be displayed. Next, click **OK** close it.
 
     ![Open ADB](./images/create_secret_key.png "")
 
-9. Select **Apps** from the navigation menu, and click your application **Name**.
+9. Select **Apps** from the Navigation menu, and then click your application **Name**.
 
     ![Open ADB](./images/select-appname.png "")
 
-10. Scroll down to the **Configure** section, click **App features**.
+10. Scroll down to the **Configure** section, and then click **App features**.
 
     ![Open ADB](./images/select_app_features.png "")
 
-11. Click **Bot** to set up required scope and permission for your application.
+11. In the **App features** section, click **Bot** to set up required scope and permission for your application.
 
    ![Open ADB](./images/select_appfeatures_bot.png "")
 
@@ -115,9 +117,9 @@ In this lab, you will:
 
 12. Specify the following parameters that are shown in the screen capture to set up your bot's scope, and then click **Save**.
 
-    - Identify your bot: Select **select an existing bot** 
-    - What can your bot do: Click the **Only send notifications**
-    - Scopes: Click the **Team** 
+    - Identify your bot: Click **Select an existing bot**
+    - What can your bot do: Click **Only send notifications**
+    - Select the scopes where people can use your bot: Click **Team**
 
    ![Open ADB](./images/add_scope_permission.png "")
 
@@ -131,27 +133,31 @@ After creating your application successfully, the next crucial step is to publi
 
     ![Open ADB](./images/select-appname.png "")
 
-2. Scroll down to the **Configure** section, and then select **Basic Information**.
+2. Scroll down to the **Configure** section, and then select **Basic information**.
 
     ![Open ADB](./images/select-basic-info.png "")
 
 3. On the **Basic Information** page, fill out the basic information about your application, and then click **Save**.
 
-    ![Open ADB](./images/basic-info-example.png "")
+    ![Open ADB](./images/basic-info-sized.png "")
 
-    > **Note:** If you do not enter the information on your app details page, you will not be able to  publish your app to org. For more information, see [Create your Teams Store listing details](https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/prepare/submission-checklist?referrer=developerportal&tabs=desktop).
+    > **Note:** If you do not enter the information on your app details page, you will not be able to  publish your app to org (MSFT). For more information, see [Create your Teams Store listing details](https://learn.microsoft.com/en-us/microsoftteams/platform/concepts/deploy-and-publish/appsource/prepare/submission-checklist?referrer=developerportal&tabs=desktop).
 
-4. After completing the basic information, click the **Publish** button that is located on the upper right-hand side of the page to submit the app.
+4. After completing the basic information, scroll down to the **Publish** section, and then click **Publish to org** to submit your app.
 
-   ![Open ADB](./images/select_publish_app.png "")
+   ![Open ADB](./images/publish-button.png "")
 
 5. Verify that the submission **Status** shows **Submitted**.
 
    ![Open ADB](./images/check_sub_status.png "")
 
+6. Once your Microsoft Teams admin approves your app, the **Status** will change to **Published** as shown in the screen capture.
+
+   ![Open ADB](./images/status-published.png "")
+
 ## Task 4: Configure your Microsoft Teams application using Microsoft Entra ID
 
-1. After publishing your app, ensure your Microsoft Teams admin approves your app from [Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps).
+1. After publishing your app, ensure your Microsoft Teams admin approves your app from the [Teams admin center](https://admin.teams.microsoft.com/policies/manage-apps) page.
 
     > **Note:** If your application is not approved by Microsoft Team admin, you will not be able to proceed to the next tasks.
 
@@ -167,7 +173,7 @@ After creating your application successfully, the next crucial step is to publi
 
    ![Open ADB](./images/register_app.png "")
 
-5. Select **Owned applications**, which will automatically populate your bot with **Application(client) ID**.
+5. Select **Owned applications**, which will automatically populate your bot with the **Application(client) ID**.
 
     ![Open ADB](./images/app_registry.png "")
 
@@ -228,10 +234,12 @@ After creating your application successfully, the next crucial step is to publi
 
 3. To create a channel, specify the following parameters as shown in the screen capture and click **Create**.
 
-    - Add the channel to a team: Select your preferred **team** and click **Done**.
-    - Channel name: Enter your preferred **channel name** into a place holder.
+    - Add the channel to a team: Select your preferred **team** and click **Done** as shown in the screen capture.
+    - Channel name: Enter your preferred **Channel name** in the name field.
     - Description: Enter your preferred **Description**
-    - Channel type: Select **channel type** as **Standard** so people on your team has access.
+    - Channel type: Choose a **channel type** as **Standard** so people on your team has access
+
+    ![Open ADB](./images/select-ateam.png "")
 
     ![Open ADB](./images/click_create_channel.png "")
 
@@ -247,7 +255,7 @@ After creating your application successfully, the next crucial step is to publi
 
    ![Open ADB](./images/select-add-team.png "")
 
-7. Enter your channel name into place holder or click the **search** icon to find your channel, and then select your **team or your channel** from the dropdown.
+7. Enter your channel name in the name field or click the **search** icon to find your channel, and then select your **team or your channel** from the dropdown.
 
     ![Open ADB](./images/search_team.png "")
 
@@ -255,7 +263,7 @@ After creating your application successfully, the next crucial step is to publi
 
     ![Open ADB](./images/add_bot_to_team.png "")
 
-9. Click **OK** for the pop-up message.
+9. In the **About this bot** message box, click **OK** .
 
     ![Open ADB](./images/click_ok_msg.png "")
 
@@ -306,12 +314,12 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 4. To create a credential object to access the Microsoft Teams app from Autonomous Database, specify the following parameters that are used in the following code example.
 
     - credential_name: Enter your preferred name such as **`TEAMS_CRED`**
-    - username: Substitute **bot_id** with your **Application (client) ID**. 
-    - password: Substitute **bot_secret** with your **client secret**.
+    - username: Substitute **bot_id** with your **Application (client) ID**
+    - password: Substitute **bot_secret** with your **client secret**
 
-    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see task 2, step 8 for **client secret** and task 4, step 5 for **Application (client) ID**
+    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see task 2, step 8 for the **client secret** and task 4, step 5 for the **Application (client) ID**.
 
-5. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+5. Substitute the `bot_id` place holder with your **Application (client) ID**, and the `bot_secret` place holder with your **client secret**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -326,7 +334,7 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     ![Open ADB](./images/create_credential.png "")
 
-    > **Note:** To use Microsoft Teams app with **`DBMS_CLOUD_NOTIFICATION`** procedure, you need to run the procedure successfully. If you can not run the **`CREATE_CREDENTIAL`** procedure successfully, you can consult the ADMIN user to grant execute access on **`DBMS_CLOUD`** packages. For more information, see[`DBMS_CLOUD`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37).
+    > **Note:** To use Microsoft Teams app with **`DBMS_CLOUD_NOTIFICATION`** procedure, you need to run the procedure successfully. If you can not run the **`CREATE_CREDENTIAL`** procedure successfully, you can consult the ADMIN user to grant execute access on **`DBMS_CLOUD`** packages. For more information, see [`DBMS_CLOUD`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37).
 
     You can leave the SQL window open and continue with the next task.
 
@@ -339,11 +347,11 @@ After creating the Microsoft Teams credential object, you can use the **`DBMS_CL
     - provider: Enter **msteams**
     - credential_name: Enter your credential name such as **`TEAMS_CRED`**
     - message: Enter your preferred message such as **`text from new teams api`**
-    - params: Substitute **`C0....08`** with your own  **channel ID**
+    - params: Substitute the channel ID placeholder with your own  **channel ID**
 
     > **Note:** You will not be able to run the code without having your **channel ID**. Please see task 5, step 13 to obtain your **channel ID**.
 
-2. Copy and paste the following code into your SQL Worksheet, and enter your **Team ID**, then click the **Run Script (F5)**.
+2. Substitute the channel ID place holder with your own **channel ID**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
     ```
     <copy>
@@ -372,13 +380,13 @@ After creating required credential and configuration, you can use the **`DBMS_CL
     - provider: Enter **msteams**
     - credential_name: Enter your credential name such as **`TEAMS_CRED`**
     - query: Enter your preferred query such as **`SELECT tablespace_name FROM dba_tablespaces`**
-    - tenant: Enter your **tenant ID**
-    - team: Enter your **team ID**
-    - channel: Enter **channel ID**
-    - title: Enter your preferred **title of the file**
-    - type: Output format can be `csv` or `json`
+    - tenant: Substitute the **`5b743bc******c0286`** placeholder with your **tenant ID**
+    - team: Substitute the **`0ae401*********5d2bd`** placeholder with your **team ID**
+    - channel: Substitute the **`19%3a94be023*****%40thread.tacv2`** placeholder with your **channel ID**
+    - title: Substitute **`today`** placeholder with your preferred **title**
+    - type: Enter your preferred output format as `csv` or `json`
 
-2. Copy and paste the following code into your SQL Worksheet, substitute previously specified parameters, and then click the **Run Script (F5)**.
+2. Substitute previously specified parameters in step 1. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
     ```
      <copy>
@@ -405,9 +413,15 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/confirm_query_result.png "")
 
-4. Repeat step 2 and substitute **json** into type value.
+4. Click the **Open link** to see query results in csv format.
 
-5. Copy and paste the following code into your SQL Worksheet, substitute previously specified parameters, and then click the **Run Script (F5)**.
+    ![Open ADB](./images/click-open-link.png "")
+
+5. After you open the link, you will see your query results as shown in the screen capture.
+
+    ![Open ADB](./images/csv-result.png "")
+
+6. To get your query results in `json` format, substitute previously specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
 
     ```
      <copy>
@@ -428,9 +442,21 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/send-results-json.png "")
 
-6. Go to your Teams channel, and confirm the receipt of the query result.
+7. Go to your Teams channel, and confirm the receipt of the query result.
 
     ![Open ADB](./images/confirm-query-json.png "")
+
+8. Click the **Open link** to download the file to your local device.
+
+    ![Open ADB](./images/open-link-json.png "")
+
+9. Click **Open file** from your downloads folder as shown in the screen capture.
+
+    ![Open ADB](./images/open-file-json.png "")
+
+10. After you open the file, you will see your query results in json format as shown in the screen capture.
+
+    ![Open ADB](./images/json-result.png "")
 
 ## Summary
 You learned how to create  and configure a Microsoft app to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity.
