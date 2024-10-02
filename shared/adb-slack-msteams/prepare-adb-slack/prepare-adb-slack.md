@@ -37,23 +37,23 @@ In this lab, you will:
 
     ![Open ADB](./images/create-a-new-app.png "")
 
-    > **Note:** Please bookmark  [Your Apps](https://api.slack.com/apps) link as you will need it for future tasks.
+    > **Note:** Please bookmark the [Your Apps](https://api.slack.com/apps) link as you will need it for future tasks.
 
-1. Select **From scratch**.
+2. Select **From scratch**.
 
     ![Open ADB](./images/select-from-scratch.png "")
 
-2. Enter your **App Name**, select your **Workspace**, and then click **Create App**.
+3. Enter your **App Name**, select your **Workspace**, and then click **Create App**.
 
     ![Open ADB](./images/select-appname.png "")
 
     > **Note:** To create a Slack app successfully, you must select your preferred workspace as shown in the previous screen capture. After creating your app, you need to have your Slack admin approve your application.
 
-3. Under the **Settings** section, you will see the **Basic Information** page after creating your Slack app. You can update your information, and then click **Save Changes** or you can click **Discard Changes** not to apply changes.
+4. Under the **Settings** section, you will see the **Basic Information** page after creating your Slack app. You can update your information, and then click **Save Changes** or you can click **Discard Changes** not to apply changes.
 
     ![Open ADB](./images/see-basic-information.png "")
 
-4. At the bottom of the **Basic Information** page, you will see **Delete App** section. If you want to delete your Slack app, you can click **Delete App**.
+5. At the bottom of the **Basic Information** page, you will see **Delete App** section. If you want to delete your Slack app, you can click **Delete App**.
 
     ![Open ADB](./images/delete-slack-app.png "")
 
@@ -109,7 +109,7 @@ These following scopes are  required:
 
     ![Open ADB](./images/oauth-tokens.png "")
 
-    > **Note:** Have your Slack admin grant you access to install your Slack application in your workspace to proceed with the following tasks in this lab. If you are a non-Oracle user, you might not need permission to install your Slack application.
+    > **Note:** Have your Slack admin grant you access to install your Slack application in your workspace to proceed with the following tasks in this lab.
 
 ## Task 3: Create a  Slack channel
 
@@ -153,9 +153,9 @@ You will learn how to add your Slack app to your channel so that you can send me
 
     ![Open ADB](./images/select-add.png "")
 
-    > **Note:** Have your Slack admin grant you access to install your Slack application in your workspace to proceed with the following tasks in this lab. If you are a non-Oracle user, you might not need permission to install your Slack application.
+    > **Note:** Have your Slack admin grant you access to install your Slack application in your workspace to proceed with the following tasks in this lab.
 
-     > **Note:** **ADBS Notifications** is the app developed for sending notifications from Autonomous Database to your Slack channel. Due to some restrictions, a new app cant be installed. Therefore, an existing app is being used to test in this workshop.
+    > **Note:** **ADBS Notifications** is an internal Slack app developed for sending notifications from Autonomous Database to your Slack channel. Due to restrictions, the Slack app (Slack-ADB) created in Task 2, Step 3 cannot be installed in the workspace. Therefore, an existing app is being used to test in this workshop.
 
 10. If successful, you will receive a message as shown in the screen capture below.
 
@@ -321,7 +321,7 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/confirm-sql-output.png "")
 
-4. Send query results in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
+4. Send the results of query in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
 
     - provider: Enter **slack**
     - credential_name: Enter your credential name such as **`SLACK_CRED`**
