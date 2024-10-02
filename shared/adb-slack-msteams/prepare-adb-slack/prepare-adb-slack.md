@@ -1,6 +1,6 @@
 # Send Slack Notifications from Autonomous Database
 
-**Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Slack admin permissions. If you run this lab using a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s Slack workspace.
+**Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Slack admin permissions.
 
 ## Introduction
 
@@ -189,15 +189,15 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     > **Note:** Once adding your application is approved by your Slack admin, **OAuth Token** will be generated. If the approval is not granted, you will not see the **OAuth Tokens for Your Workspace** section shown in the previous screen capture.
 
-7. To create a credential object to access the Slack app from Autonomous Database, specify the following parameters that are used in the following code example.
+7. Create a credential object to access the Slack app from Autonomous Database using the following script. Specify the following parameters that are used in the script.
 
     - credential_name: Enter your preferred name such as **`SLACK_CRED`**
-    - username: Enter your preferred username such as **`SLACK_TOKEN`**
+    - username: Enter **`SLACK_TOKEN`** as a username
     - password: Enter your **Bot User OAuth Token**
 
     > **Note:** If adding your application is not approved by you Slack admin, you will not be able to run the code without having the **Bot User OAuth Token**.
 
-8. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+   Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -220,12 +220,12 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
 In this task, you will use **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** procedure to grant the access control privileges to a user. For more information, see [Configuring Access Control for External Network Services](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-fine-grained-access-in-pl-sql-packages-and-types.html#DBSEG-GUID-3D5B66BC-0277-4887-9CD1-97DB44EB5213).
 
-1. In the source database SQL window, specify the following parameters that are used in the following code example.
+1. In the source database SQL window, specify the following parameters that are used in the following script.
 
-    - principal_name: Enter  your database user name or role such as **`ADMIN`**.
+    - principal_name: Substitute the `enter_db_user_name_or_role` place holder with your database user name such as **`ADMIN`**.
     - principal_type: Enter **`xs_acl.ptype_db`** for a database user or role.
 
-2. Substitute the `enter_db_user_name_or_role` place holder with your own your database user name or role such as admin. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -255,7 +255,7 @@ After creating required credential and configuration, you can use the **`DBMS_CL
     - provider: Enter **slack**
     - credential_name: Enter your credential name such as **`SLACK_CRED`**
     - message: Enter your preferred message such as **`Alert from Autonomous Database...`**
-    - params: Substitute **`C0....08`** with your own Slack channel ID
+    - params: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
 
 2. Click the drop-down list next to your channel's name, scroll down to the bottom section, and then copy the **Channel ID**.
 
@@ -290,7 +290,15 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
 1. Copy your **Channel ID** from Task 6 (step 4).
 
-2. Copy and paste the following code into your SQL Worksheet, enter your **Channel ID**, and then click the **Run Script (F5)**.
+2. Send query results in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
+
+    - provider: Enter **slack**
+    - credential_name: Enter your credential name such as **`SLACK_CRED`**
+    - query: Enter your preferred query such as **`SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3`**
+    - channel: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
+    - type: Enter your preferred format such as **csv**
+
+    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
     ```
     <copy>
@@ -313,11 +321,15 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/confirm-sql-output.png "")
 
-4. if you want to have your output in json format, specify the following parameters that are used in the following code example.
+4. Send query results in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
 
-    - params: Substitute `csv` with `json`
+    - provider: Enter **slack**
+    - credential_name: Enter your credential name such as **`SLACK_CRED`**
+    - query: Enter your preferred query such as **`SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3`**
+    - channel: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
+    - type: Enter your preferred format such as **`json`**
 
-5. Copy and paste the following code into your SQL Worksheet, enter your **Channel ID**, and then click the **Run Script (F5)**.
+    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
     ```
     <copy>
@@ -334,7 +346,7 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/send-query-result-json.png "")
 
-6. Open your Slack channel, and confirm the receipt of query result.
+5. Open your Slack channel, and confirm the receipt of query result.
 
     ![Open ADB](./images/receipt-query-json.png "")
 

@@ -1,6 +1,6 @@
 # Send Microsoft Teams Notifications from Autonomous Database
 
-**Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Microsoft Teams admin permissions. If you run this lab using a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s Microsoft Teams workspace.
+**Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Microsoft Teams admin permissions.
 
 ## Introduction
 
@@ -311,15 +311,13 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     ![Open ADB](./images/select-database-actions.png "")
 
-4. To create a credential object to access the Microsoft Teams app from Autonomous Database, specify the following parameters that are used in the following code example.
+4. Create a credential object to access the Microsoft Teams app from Autonomous Database using the following script. Specify the following parameters that are used in the script.
 
     - credential_name: Enter your preferred name such as **`TEAMS_CRED`**
     - username: Substitute **bot_id** with your **Application (client) ID**
     - password: Substitute **bot_secret** with your **client secret**
 
-    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see task 2, step 8 for the **client secret** and task 4, step 5 for the **Application (client) ID**.
-
-5. Substitute the `bot_id` place holder with your **Application (client) ID**, and the `bot_secret` place holder with your **client secret**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -334,6 +332,8 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     ![Open ADB](./images/create_credential.png "")
 
+    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see task 2, step 8 for the **client secret** and task 4, step 5 for the **Application (client) ID**.
+
     > **Note:** To use Microsoft Teams app with **`DBMS_CLOUD_NOTIFICATION`** procedure, you need to run the procedure successfully. If you can not run the **`CREATE_CREDENTIAL`** procedure successfully, you can consult the ADMIN user to grant execute access on **`DBMS_CLOUD`** packages. For more information, see [`DBMS_CLOUD`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37).
 
     You can leave the SQL window open and continue with the next task.
@@ -342,7 +342,7 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
 After creating the Microsoft Teams credential object, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Microsoft Teams channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
 
-1. In the source database SQL window, specify the following parameters that are used in the following code example.
+1. In the source database SQL window, specify the following parameters that are used in the following script.
 
     - provider: Enter **msteams**
     - credential_name: Enter your credential name such as **`TEAMS_CRED`**
@@ -351,7 +351,7 @@ After creating the Microsoft Teams credential object, you can use the **`DBMS_CL
 
     > **Note:** You will not be able to run the code without having your **channel ID**. Please see task 5, step 13 to obtain your **channel ID**.
 
-2. Substitute the channel ID place holder with your own **channel ID**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
+  Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
     ```
     <copy>
@@ -367,7 +367,7 @@ After creating the Microsoft Teams credential object, you can use the **`DBMS_CL
 
     ![Open ADB](./images/run_send_notif_pkg.png "")
 
-3. Open your Teams channel, and confirm the receipt of the message.
+2. Open your Teams channel, and confirm the receipt of the message.
 
     ![Open ADB](./images/confirm_msg.png "")
 
@@ -375,7 +375,7 @@ After creating the Microsoft Teams credential object, you can use the **`DBMS_CL
 
 After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Microsoft Teams Channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
 
-1. Specify the following parameters that are used in the following code example.
+1. Send query results to a Microsoft Teams Channel using the following the script. Specify the following parameters that are used in the following script.
 
     - provider: Enter **msteams**
     - credential_name: Enter your credential name such as **`TEAMS_CRED`**
@@ -386,7 +386,7 @@ After creating required credential and configuration, you can use the **`DBMS_CL
     - title: Substitute **`today`** placeholder with your preferred **title**
     - type: Enter your preferred output format as `csv` or `json`
 
-2. Substitute previously specified parameters in step 1. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
+    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
     ```
      <copy>
@@ -409,19 +409,19 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     > **Note:** The maximum file size supported when using `DBMS_CLOUD_NOTIFICATION.SEND_DATA` for Microsoft Teams is `4MB`. For more information, see ['SEND_DATA Procedure'](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54)
 
-3. Go to your Teams channel, and confirm the receipt of the query result.
+2. Go to your Teams channel, and confirm the receipt of the query result.
 
     ![Open ADB](./images/confirm_query_result.png "")
 
-4. Click the **Open link** to see query results in csv format.
+3. Click the **Open link** to see query results in csv format.
 
     ![Open ADB](./images/click-open-link.png "")
 
-5. After you open the link, you will see your query results as shown in the screen capture.
+4. After you open the link, you will see your query results as shown in the screen capture.
 
     ![Open ADB](./images/csv-result.png "")
 
-6. To get your query results in `json` format, substitute previously specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
+5. To get your query results in `json` format, substitute previously specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
 
     ```
      <copy>
@@ -442,19 +442,19 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
     ![Open ADB](./images/send-results-json.png "")
 
-7. Go to your Teams channel, and confirm the receipt of the query result.
+6. Go to your Teams channel, and confirm the receipt of the query result.
 
     ![Open ADB](./images/confirm-query-json.png "")
 
-8. Click the **Open link** to download the file to your local device.
+7. Click the **Open link** to download the file to your local device.
 
     ![Open ADB](./images/open-link-json.png "")
 
-9. Click **Open file** from your downloads folder as shown in the screen capture.
+8. Click **Open file** from your downloads folder as shown in the screen capture.
 
     ![Open ADB](./images/open-file-json.png "")
 
-10. After you open the file, you will see your query results in json format as shown in the screen capture.
+9. After you open the file, you will see your query results in json format as shown in the screen capture.
 
     ![Open ADB](./images/json-result.png "")
 
