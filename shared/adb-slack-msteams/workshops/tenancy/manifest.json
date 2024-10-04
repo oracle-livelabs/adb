@@ -35,7 +35,7 @@
             "title": "Lab 3: Provision and Configure an Autonomous Database",
             "description": "You will create a  ADB instance",
             "type": "freetier",
-            "filename": "../../provision-database-config/provision-database-config.md"
+            "filename": "../../provision-database-config/provision-database-configure.md"
         },
         {
             "title": "Lab 4: Send Notifications from Autonomous Database to Slack and Microsoft Teams",

@@ -29,7 +29,7 @@ In this lab, you will:
 
 ## Task 1: Send messages to a Slack channel
 
- In this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Slack channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
+ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Slack channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
 
 1. In the source database SQL window, specify the following parameters that are used in the following code example.
 
@@ -67,9 +67,9 @@ In this lab, you will:
 
 ## Task 2: Send query results to a Slack Channel
 
-After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Slack channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
+For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Slack channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
 
-1. Copy your **Channel ID** from Task 2 (step 4).
+1. Copy your **Channel ID** from Task 1 (step 2).
 
 2. Send query results in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
 
@@ -134,7 +134,7 @@ After creating required credential and configuration, you can use the **`DBMS_CL
 
 ## Task 3: Send messages to a Microsoft Teams Channel
 
-After creating the Microsoft Teams credential object, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Microsoft Teams channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
+For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Microsoft Teams channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
 
 1. In the source database SQL window, specify the following parameters that are used in the following script.
 
@@ -143,7 +143,8 @@ After creating the Microsoft Teams credential object, you can use the **`DBMS_CL
     - message: Enter your preferred message such as **`text from new teams api`**
     - params: Substitute the channel ID placeholder with your own  **channel ID**
 
-    > **Note:** You will not be able to run the code without having your **channel ID**. Please see task 5, step 13 to obtain your **channel ID**.
+    > **Note:** You will not be able to run the code without having your **channel ID**. 
+    Please see Lab 2: Task 5, step 13 to obtain your **channel ID**.
 
   Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
@@ -167,7 +168,7 @@ After creating the Microsoft Teams credential object, you can use the **`DBMS_CL
 
 ## Task 4: Send query results to a Microsoft Teams Channel
 
-After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Microsoft Teams Channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
+For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Microsoft Teams Channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
 
 1. Send query results to a Microsoft Teams Channel using the following the script. Specify the following parameters that are used in the following script.
 
@@ -253,7 +254,8 @@ After creating required credential and configuration, you can use the **`DBMS_CL
     ![Open ADB](./images/json-result.png "")
 
 ## Summary
-You learned how to create  and configure a Microsoft app to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity.
+
+You learned how to send messages and query results to your Slack and Microsoft Teams channel to from an Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity.
 
 ## Acknowledgements
 

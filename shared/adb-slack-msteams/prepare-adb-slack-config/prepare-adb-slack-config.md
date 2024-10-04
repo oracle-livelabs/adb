@@ -151,7 +151,9 @@ You will learn how to add your Slack app to your channel so that you can send me
 
     > **Note:** Have your Slack admin grant you access to install your Slack application in your workspace to proceed with the following tasks in this lab.
 
-    > **Note:** **ADBS Notifications** is an internal Slack app developed for sending notifications from Autonomous Database to your Slack channel. Due to restrictions, the Slack app (Slack-ADB) created in Task 2, Step 3 cannot be installed in the workspace. Therefore, an existing app is being used to test in this workshop.
+   **ADBS Notifications** is an internal Slack app developed for sending notifications from Autonomous Database to your Slack channel. Due to restrictions, the Slack app (Slack-ADB) that is previously created in Task 2, Step 3, cannot be installed in the workspace. Therefore, an existing app is being used to test in this workshop.
+
+    The Slack app uses the Slack Web API to communicate with an Autonomous Database. The Slack Web API is an interface for making changes and retrieving information from a Slack workplace. For more information, see [Using the Slack Web API](https://api.slack.com/web).
 
 10. If successful, you will receive a message as shown in the screen capture below.
 
@@ -159,7 +161,7 @@ You will learn how to add your Slack app to your channel so that you can send me
 
 ## Summary
 
-You learned how to create  and configure a Slack app to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity. Next, let's see how to create and configure Microsoft Teams.
+You learned how to create a Slack app and a Slack channel to receive messages and query results from Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity. Next, let's see how to create Microsoft Teams application and channel.
 
 You may now **proceed to the next lab**.
 
@@ -170,7 +172,6 @@ You may now **proceed to the next lab**.
 + **Contributors:**
 
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Nilay Panchal, Principal Product Manager, Autonomous Database
     * Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024

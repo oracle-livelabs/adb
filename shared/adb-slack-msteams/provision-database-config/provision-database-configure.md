@@ -5,7 +5,7 @@
 
 In  this lab, you will learn the steps to get started using the Oracle Autonomous Database (Autonomous Data Warehouse). We will show you how to deploy a complete data warehousing platform that can scale to your requirements.
 
-Also, you will learn how to configure your Slack and Microsoft Teams application to receive messages, alerts and output of a query from Autonomous Database.
+Also, you will learn how to configure your Slack and Microsoft Teams application and channel to receive messages, alerts, and output of a query from an Autonomous Database.
 
 Estimated Time: 5 minutes
 
@@ -21,7 +21,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the Get Started section in the Contents menu on the left.
+- This lab requires completion of the **Get Started**, **Lab 1**, and **Lab 2** sections in the Contents menu on the left.
 
 ## Task 1: Choose Autonomous Database from the OCI Services Menu
 
@@ -30,7 +30,6 @@ In this lab, you will:
 ## Task 2: Create the Autonomous Database Instance
 
 [](include:adb-provision-body.md)
-
 
 ## Task 3: Create a credential object to access the Slack application from Autonomous Database
 
@@ -89,7 +88,7 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
 ## Task 4: Configure access control to allow user access to external network services
 
-In this task, you will use **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** procedure to grant the access control privileges to a user. For more information, see [Configuring Access Control for External Network Services](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-fine-grained-access-in-pl-sql-packages-and-types.html#DBSEG-GUID-3D5B66BC-0277-4887-9CD1-97DB44EB5213).
+For this task, you will use **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** procedure to grant the access control privileges to a user. For more information, see [Configuring Access Control for External Network Services](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-fine-grained-access-in-pl-sql-packages-and-types.html#DBSEG-GUID-3D5B66BC-0277-4887-9CD1-97DB44EB5213).
 
 1. In the source database SQL window, specify the following parameters that are used in the following script.
 
@@ -154,9 +153,15 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
     ![Open ADB](./images/create_credential.png "")
 
-    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see **Lab 2**, task 2, step 8 for the **client secret** and task 4, step 5 for the **Application (client) ID**.
+    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see  task 2, step 8 in **Lab 2** for the **client secret** and task 4, step 5 in **Lab 2** for the **Application (client) ID**.
 
     > **Note:** To use Microsoft Teams app with **`DBMS_CLOUD_NOTIFICATION`** procedure, you need to run the procedure successfully. If you can not run the **`CREATE_CREDENTIAL`** procedure successfully, you can consult the ADMIN user to grant execute access on **`DBMS_CLOUD`** packages. For more information, see [`DBMS_CLOUD`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37).
+
+## Summary
+
+You learned how to create provisions and configure an Autonomous Database. Next, let's see how to send notifications from an Autonomous Database to your Slack and Microsoft Teams channels.
+
+You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
@@ -164,8 +169,22 @@ For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which e
 
 ## Acknowledgements
 
-- **Author** 
-    - Lauran K. Serhal Consulting User Assistance Developer
-    - Yonca Aksit, User Assistance Developer Intern
-- **Contributors** - Marty Gubar, Product Manager
-- **Last Updated By/Date** - Yonca Aksit, October 2024
++ **Author:**
+
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Yonca Aksit, User Assistance Developer Intern
+
++ **Contributors:**
+
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Marty Gubar, Director of Product Management, Autonomous Database
+
++ **Last Updated By/Date:** Yonca Aksit, October 2024
+
+Copyright (C) 2024 Oracle Corporation.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

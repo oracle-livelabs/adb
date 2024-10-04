@@ -291,10 +291,11 @@ After creating your application successfully, the next crucial step is to publi
 
     ![Open ADB](./images/copy_channel_id.png "")
 
-
 ## Summary
 
-You learned how to create  and configure a Microsoft app to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity. Next, let's see how to provision a new Autonomous Database.
+You learned how to create a Microsoft Teams application and a channel to receive messages and query results form Autonomous Database. Autonomous Database supports sending alerts,messages and query results directly to your channels to enhance productivity. Next, let's see how to provision and configure a new Autonomous Database.
+
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
@@ -303,7 +304,6 @@ You learned how to create  and configure a Microsoft app to receive messages and
 + **Contributors:**
 
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Nilay Panchal, Principal Product Manager, Autonomous Database
     * Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
