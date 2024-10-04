@@ -20,13 +20,13 @@
 
         },
         {
-            "title": "Lab 1: Configure The Slack application",
+            "title": "Lab 1: Configure the Slack application",
             "description": "You will use configure Slack and Microsoft Teams to send notifications and query result from an Autonomous Database",
             "type": "freetier",
             "filename": "../../prepare-adb-slack-config/prepare-adb-slack-config.md"
             },
             {
-                "title": "Lab 2: Configure The Microsoft Teams application",
+                "title": "Lab 2: Configure the Microsoft Teams application",
                 "description": "You will learn how to configure MS Teams to send notifications and query result from an Autonomous Database",
                 "type": "freetier",
                 "filename": "../../prepare-adb-msteams-config/prepare-adb-msteams-config.md"
