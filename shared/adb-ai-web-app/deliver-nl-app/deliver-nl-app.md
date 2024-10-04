@@ -178,7 +178,7 @@ You may now proceed to the next lab.
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
+* **Last Updated By/Date:** Stephen Stuart, October 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
