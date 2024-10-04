@@ -20,23 +20,29 @@
 
         },
         {
-        "title": "Lab 1: Provision an Autonomous Database",
-        "description": "You will create a  ADB instance",
-        "type": "freetier",
-        "filename": "../../provision-database/provision-database.md"
+            "title": "Lab 1: Configure The Slack application",
+            "description": "You will use configure Slack and Microsoft Teams to send notifications and query result from an Autonomous Database",
+            "type": "freetier",
+            "filename": "../../prepare-adb-slack-config/prepare-adb-slack-config.md"
+            },
+            {
+                "title": "Lab 2: Configure The Microsoft Teams application",
+                "description": "You will learn how to configure MS Teams to send notifications and query result from an Autonomous Database",
+                "type": "freetier",
+                "filename": "../../prepare-adb-msteams-config/prepare-adb-msteams-config.md"
+                },
+            {
+            "title": "Lab 3: Provision an Autonomous Database",
+            "description": "You will create a  ADB instance",
+            "type": "freetier",
+            "filename": "../../provision-database/provision-database.md"
         },
         {
-            "title": "Lab 2: Send Slack Notifications from Autonomous Database",
+            "title": "Lab 4: Send Slack and Microsoft Notifications from Autonomous Database",
             "description": "You will use ADB to send notifications and query result to a Slack channel",
             "type": "freetier",
-            "filename": "../../prepare-adb-slack/prepare-adb-slack.md"
+            "filename": "../../prepare-adb-msteams-slack-sendmsg/prepare-adb-sendmsg.md"
             },
-        {
-        "title": "Lab 3: Send Microsoft Teams Notifications from Autonomous Database",
-        "description": "You will use ADB to send notifications and query result to a Microsoft Teams channel",
-        "type": "freetier",
-        "filename": "../../prepare-adb-msteams/prepare-adb-msteams.md"
-    },
     {
     "title": "Need Help?",
     "description": "Solutions to Common Problems and Directions for Receiving Live Help",
