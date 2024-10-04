@@ -1,4 +1,4 @@
-# Send Notifications to Slack and Microsoft Teams from Autonomous Database
+# Send Notifications from Autonomous Database to Slack and Microsoft Teams
 
 **Important:** This lab uses features which are not available on the Oracle LiveLabs Sandbox hosted environments (the Green button), and requires Microsoft Teams admin permissions.
 
@@ -19,14 +19,17 @@ In this lab, you will:
 
 ### Prerequisites
 
-+ Completion of the lab **Get Started**, and **Lab 1** from the **Contents** menu on the left.
++ Completion of the lab **Get Started**, **Lab 1**, **Lab 2**, and **Lab 3** from the **Contents** menu on the left.
++ Slack account and workspace
++ Slack app
++ Slack channel
 + Microsoft Teams account and workspace
 + Microsoft Teams app and channel
 + Microsoft 365 Developer Account
 
 ## Task 1: Send messages to a Slack channel
 
-After creating required credential and configuration, you can use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Slack channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
+ In this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Slack channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
 
 1. In the source database SQL window, specify the following parameters that are used in the following code example.
 

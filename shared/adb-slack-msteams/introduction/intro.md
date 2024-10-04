@@ -17,11 +17,10 @@ Oracle Autonomous Database offers robust integration with Slack and Microsoft Te
 ### Objectives
 
 - Create a Slack account, workspace, app, and channel
-- Create a credential object for the Slack app
+- Create a Microsoft Teams account, app, and  channel
+- Provision and configure an Autonomous Database
 - Send a message and a query output to the Slack channel
 - Confirm the receipt of the messages in Slack channel
-- Create a Microsoft Teams account, app, and  channel
-- Create a credential object for the Microsoft Teams app
 - Send a message and a query output to Microsoft Teams
 - Confirm the receipt of the messages in Microsoft Teams
 

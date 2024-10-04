@@ -6,7 +6,7 @@
 
 Microsoft Teams serves as a comprehensive collaboration platform within the Microsoft 365 ecosystem, facilitating instant messaging, audio and video calls, and online meetings. With its seamless integration with other applications, Teams enhances productivity by streamlining communication and project management. Microsoft Teams supports a wide range of integrations with external apps and services.
 
-This lab walks you through the steps to configure your Microsoft Teams application to receive messages, alerts and output of a query from Autonomous Database. Also, you will learn the procedures to send Microsoft Teams notifications.
+This lab walks you through the steps to create your Microsoft Teams application and channel to receive messages, alerts and output of a query from Autonomous Database.
 
 Estimated Time: 25 minutes
 
@@ -19,12 +19,10 @@ In this lab, you will:
 + Publish your Microsoft Teams application
 + Configure your Microsoft Teams application using Azure Portal
 + Create your Microsoft Teams channel
-+ Create a credential object to access Microsoft Teams application from Autonomous Database
-+ Configure access control to allow user access to external network services
 
 ### Prerequisites
 
-+ Completion of the lab **Get Started**, and **Lab 1** from the **Contents** menu on the left.
++ Completion of the lab **Get Started** from the **Contents** menu on the left.
 + Microsoft Teams account and workspace
 + Microsoft Teams app and channel
 + Microsoft 365 Developer Account
@@ -293,46 +291,6 @@ After creating your application successfully, the next crucial step is to publi
 
     ![Open ADB](./images/copy_channel_id.png "")
 
-## Task 6: Create a credential object to access Microsoft Teams application from Autonomous Database
-
-For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which enables you to access the cloud service for data loading, and querying external data in the cloud. For more information, see [`CREATE_CREDENTIAL procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A).
-
-1. In the Oracle Cloud console, open the **Navigation menu**, navigate to **Oracle Database**, and then select **Autonomous Data Warehouse**.
-
-    ![Open ADB](./images/click-adb.png "")
-
-2. Select your **Autonomous Database instance**.
-
-    ![Open ADB](./images/click-adb-name.png "")
-
-3. Click **Database actions** dropdown, and then select **SQL** .
-
-    ![Open ADB](./images/select-database-actions.png "")
-
-4. Create a credential object to access the Microsoft Teams app from Autonomous Database using the following script. Specify the following parameters that are used in the script.
-
-    - credential_name: Enter your preferred name such as **`TEAMS_CRED`**
-    - username: Substitute **bot_id** with your **Application (client) ID**
-    - password: Substitute **bot_secret** with your **client secret**
-
-    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-       BEGIN
-          DBMS_CLOUD.CREATE_CREDENTIAL(
-                    credential_name => 'TEAMS_CRED',
-                    username        => 'bot_id',
-                    password        => 'bot_secret');
-       END;
-    </copy>
-    ```
-
-    ![Open ADB](./images/create_credential.png "")
-
-    > **Note:** You will not be able to run the code without having your **Application (client) ID** and **client secret**. Please see task 2, step 8 for the **client secret** and task 4, step 5 for the **Application (client) ID**.
-
-    > **Note:** To use Microsoft Teams app with **`DBMS_CLOUD_NOTIFICATION`** procedure, you need to run the procedure successfully. If you can not run the **`CREATE_CREDENTIAL`** procedure successfully, you can consult the ADMIN user to grant execute access on **`DBMS_CLOUD`** packages. For more information, see [`DBMS_CLOUD`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37).
 
 ## Summary
 

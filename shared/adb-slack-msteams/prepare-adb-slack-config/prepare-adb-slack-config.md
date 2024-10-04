@@ -6,7 +6,7 @@
 
 Slack, a leading collaboration tool, enables teams with the ability to have seamless communication and efficient data management. Slack has cool integrations with external apps and sources.
 
-This lab walks you through the steps to configure your Slack application to receive messages, alerts, and the output of a query from Autonomous Database. You will learn the required procedures to send Slack notifications.
+This lab walks you through the steps to create your Slack application and channel to receive messages, alerts, and the output of a query from an Autonomous Database.
 
 Estimated Time: 25 minutes
 
@@ -17,8 +17,6 @@ In this lab, you will:
 + Create your Slack application
 + Configure your Slack application
 + Create your Slack channel
-+ Create a credential object to access the Slack application from Autonomous Database
-+ Configure access control to allow user access to external network services
 
 ### Prerequisites
 
@@ -158,89 +156,6 @@ You will learn how to add your Slack app to your channel so that you can send me
 10. If successful, you will receive a message as shown in the screen capture below.
 
     ![Open ADB](./images/app-added-channel.png "")
-
-## Task 4: Create a credential object to access the Slack application from Autonomous Database
-
-For this task, you will use **`DBMS_CLOUD.CREATE_CREDENTIAL`** procedure which enables you to access the cloud service for data loading, and querying external data in the cloud. For more information, see [`CREATE_CREDENTIAL procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A).
-
-1. In the Oracle Cloud console, open the **Navigation menu**, navigate to **Oracle Database**, and then select **Autonomous Data Warehouse**.
-
-    ![Open ADB](./images/click-adb.png "")
-
-2. Select your **Autonomous Database instance**.
-
-    ![Open ADB](./images/click-adb-name.png "")
-
-3. Click **Database actions**, and then select **SQL** .
-
-    ![Open ADB](./images/select-database-actions.png "")
-
-4. To create credential object to access the Slack app from Autonomous Database, you need to obtain your **Bot User OAuth Token**.
-
-    > **Note:** Bot tokens are authentication tokens, enabling your bot to interact with the workspace's API to send and receive messages. For more information, see [Bot tokens](https://api.slack.com/concepts/token-types#bot).
-
-5. Access the [Your Apps](https://api.slack.com/apps) page, and then click **Your Apps**.
-
-6. Scroll down to the **Features** section, click **OAuth & Permissions**, and then copy your **Bot User OAuth Token**
-
-    ![Open ADB](./images/copy-bot-token.png "")
-
-    > **Note:** Once adding your application is approved by your Slack admin, **OAuth Token** will be generated. If the approval is not granted, you will not see the **OAuth Tokens for Your Workspace** section shown in the previous screen capture.
-
-7. Create a credential object to access the Slack app from Autonomous Database using the following script. Specify the following parameters that are used in the script.
-
-    - credential_name: Enter your preferred name such as **`SLACK_CRED`**
-    - username: Enter **`SLACK_TOKEN`** as a username
-    - password: Enter your **Bot User OAuth Token**
-
-    > **Note:** If adding your application is not approved by you Slack admin, you will not be able to run the code without having the **Bot User OAuth Token**.
-
-   Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    BEGIN
-     DBMS_CLOUD.CREATE_CREDENTIAL(
-      credential_name => 'SLACK_CRED',
-      username    => 'SLACK_TOKEN',
-      password    => 'xoxb-34....96-34....52-zW....cy');
-     END;
-    </copy>
-    ```
-
-    ![Open ADB](./images/create-credential.png "")
-
-    > **Note:**If you can not run the `CREATE_CREDENTIAL` procedure successfully, you can consult the ADMIN user to grant execute access on `DBMS_CLOUD` packages. For more information, see [`DBMS_CLOUD`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37).
-
-    You can leave the SQL window open and continue with the next task.
-
-## Task 5: Configure access control to allow user access to external network services
-
-In this task, you will use **`DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE`** procedure to grant the access control privileges to a user. For more information, see [Configuring Access Control for External Network Services](https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/managing-fine-grained-access-in-pl-sql-packages-and-types.html#DBSEG-GUID-3D5B66BC-0277-4887-9CD1-97DB44EB5213).
-
-1. In the source database SQL window, specify the following parameters that are used in the following script.
-
-    - principal_name: Substitute the `enter_db_user_name_or_role` place holder with your database user name such as **`ADMIN`**.
-    - principal_type: Enter **`xs_acl.ptype_db`** for a database user or role.
-
-    Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    BEGIN
-       DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE (
-          host         => 'slack.com',
-          lower_port   => 443,
-          upper_port   => 443,
-          ace          => xs$ace_type(
-          privilege_list => xs$name_list('http'),
-          principal_name => enter_db_user_name_or_role,
-          principal_type => xs_acl.ptype_db));
-    END;
-    </copy>
-    ```
-
-    ![Open ADB](./images/run-acl.png "")
 
 ## Summary
 
