@@ -27,7 +27,71 @@ In this lab, you will:
 + Microsoft Teams app and channel
 + Microsoft 365 Developer Account
 
-## Task 1: Send messages to a Slack channel
+## Task 1: Create a Luxury Car Dealership Story
+
+Let's assume you work at a luxury car dealership that prides itself on providing exceptional customer service. The dealership offers a special **white glove** treatment for customers who purchase cars valued at over $40,000.
+
+You will create the customers table based on few parameters, and then will notify the customer service who qualify for the treatment from Autonomous Database to Slack and Microsoft Teams channels.
+
+- name: Customer name
+- email: Customer email
+- product: Car type
+- amount: Price of the car
+
+1. In the Oracle Cloud console, open the **Navigation menu**, navigate to **Oracle Database**, and then select **Autonomous Data Warehouse**.
+
+    ![Open ADB](./images/click-adb.png "")
+
+2. Select your **Autonomous Database instance**.
+
+    ![Open ADB](./images/click-adb-name.png "")
+
+3. Click **Database actions**, and then select **SQL** .
+
+    ![Open ADB](./images/select-database-actions.png "")
+
+4. To create the generated **customers** table using the script, copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+
+    ```
+      <copy>
+         CREATE TABLE customers
+          (
+             name varchar2(100),
+             email varchar2(100),
+             product varchar2(100),
+             amount number
+          );
+
+     </copy>
+    ```
+
+    ![Open ADB](./images/table-created.png "")
+
+5. This example is using the sample customers data. To insert sample data into the **customers** table, copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+
+    ```
+        <copy>
+
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('John Doe','john.doe@example.com','Zypher A1',15000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Jane Smith','jane.smith@example.com','Zypher A2',18000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Emily Johnson','emily.j@example.com','Zypher A3',22000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Michael Brown','michael.b@example.com','Zypher B1',30000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Jessica Davis','jessica.d@example.com','Zypher B2',35000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('David Wilson','david.w@example.com','Zypher B3',40000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Sarah Miller','sarah.m@example.com','Zypher C1',50000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('James Anderson','james.a@example.com','Zypher C2',55000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Laura Thomas','laura.t@example.com','Zypher C3',60000);
+         Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Robert Jackson','robert.j@example.com','Zypher D1',70000);
+         commit;
+
+     </copy>
+    ```
+
+    ![Open ADB](./images/insert-data.png "")
+
+   That's it. Now, you can notify customer service about the customers who qualify for the white glove treatment which are customers who spent more than $40,000. Let's start!
+
+## Task 2: Send messages to a Slack channel
 
  For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Slack channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
 
@@ -50,7 +114,7 @@ In this lab, you will:
       DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE(
         provider          => 'slack',
         credential_name   => 'SLACK_CRED',
-        message           => 'Alert from Autonomous Database...',
+        message           => 'Please provide white glove treatment to the following customer.',
         params            => json_object('channel' value 'C0....08'));
      END;
 
@@ -65,11 +129,11 @@ In this lab, you will:
 
     ![Open ADB](./images/check-to-see-msg.png "")
 
-## Task 2: Send query results to a Slack Channel
+## Task 3: Send query results to a Slack Channel
 
 For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Slack channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
 
-1. Copy your **Channel ID** from Task 1 (step 2).
+1. Copy your **Channel ID** from Task 2 (step 2).
 
 2. Send query results in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
 
@@ -87,7 +151,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
       DBMS_CLOUD_NOTIFICATION.SEND_DATA(
         provider => 'slack',
         credential_name => 'SLACK_CRED',
-        query => 'SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3',
+        query => 'select * from CUSTOMERS where amount >= 40000',
         params => json_object('channel' value 'C0....08',
                             'type' value 'csv'));
      END;
@@ -118,7 +182,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
       DBMS_CLOUD_NOTIFICATION.SEND_DATA(
         provider => 'slack',
         credential_name => 'SLACK_CRED',
-        query => 'SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3',
+        query => 'select * from CUSTOMERS where amount >= 40000',
         params => json_object('channel' value 'C0....08',
                             'type' value 'json'));
      END;
@@ -131,8 +195,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
     ![Open ADB](./images/receipt-query-json.png "")
 
-
-## Task 3: Send messages to a Microsoft Teams Channel
+## Task 4: Send messages to a Microsoft Teams Channel
 
 For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** procedure to send a message to your Microsoft Teams channel. For more information, see [SEND_MESSAGE Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-8A557984-BEC3-4F82-909E-4451E86F66E0).
 
@@ -143,8 +206,8 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** proce
     - message: Enter your preferred message such as **`text from new teams api`**
     - params: Substitute the channel ID placeholder with your own  **channel ID**
 
-    > **Note:** You will not be able to run the code without having your **channel ID**. 
-    Please see Lab 2: Task 5, step 13 to obtain your **channel ID**.
+    > **Note:** You will not be able to run the code without having your **channel ID**.
+    Please see task 5, step 13 in **Lab 2** to obtain your **channel ID**.
 
   Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
@@ -154,7 +217,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** proce
          DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE(
              provider        => 'msteams',
              credential_name => 'TEAMS_CRED',
-             message         => 'text from new teams api',
+             message         => 'Please provide white glove treatment to the following customer.',
              params          => json_object('channel' value 'channel ID'));
         END;
     </copy>
@@ -166,7 +229,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** proce
 
     ![Open ADB](./images/confirm_msg.png "")
 
-## Task 4: Send query results to a Microsoft Teams Channel
+## Task 5: Send query results to a Microsoft Teams Channel
 
 For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedure to send the output of a query to your Microsoft Teams Channel. For more information, see [`SEND_DATA Procedure`](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-dbms-cloud-notification.html#GUID-B3375A5B-79B1-43A5-B043-A7FA646FBF54).
 
@@ -189,7 +252,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
           DBMS_CLOUD_NOTIFICATION.SEND_DATA(
              provider => 'msteams',
              credential_name => 'TEAMS_CRED',
-             query => 'SELECT tablespace_name FROM dba_tablespaces',
+             query => 'select * from CUSTOMERS where amount >= 40000',
              params => json_object(
                 'tenant'value '5b743bc******c0286',
                 'team'value '0ae401*********5d2bd',
@@ -216,7 +279,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
     ![Open ADB](./images/csv-result.png "")
 
-5. To get your query results in `json` format, substitute previously specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
+5. To get your query results in `json` format, substitute specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
 
     ```
      <copy>
@@ -224,7 +287,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
           DBMS_CLOUD_NOTIFICATION.SEND_DATA(
              provider => 'msteams',
              credential_name => 'TEAMS_CRED',
-             query => 'SELECT tablespace_name FROM dba_tablespaces',
+             query => 'select * from CUSTOMERS where amount >= 40000',
              params => json_object(
                 'tenant'value '5b743bc******c0286',
                 'team'value '0ae401*********5d2bd',
@@ -264,7 +327,6 @@ You learned how to send messages and query results to your Slack and Microsoft T
 + **Contributors:**
 
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Nilay Panchal, Principal Product Manager, Autonomous Database
     * Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
