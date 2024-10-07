@@ -242,7 +242,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
     - team: Substitute the **`0ae401*********5d2bd`** placeholder with your **team ID**
     - channel: Substitute the **`19%3a94be023*****%40thread.tacv2`** placeholder with your **channel ID**
     - title: Substitute **`today`** placeholder with your preferred **title**
-    - type: Enter your preferred output format as `csv` or `json`
+    - type: Enter your preferred output format as **`csv` or `json`**
 
     Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
@@ -279,7 +279,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
     ![Open ADB](./images/csv-result.png "")
 
-5. To get your query results in `json` format, substitute specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
+5. To get your query results in **`json`** format, substitute specified parameters in step 1. Copy and paste the following code into your SQL Worksheet,and then click the **Run Script (F5)**.
 
     ```
      <copy>
@@ -312,7 +312,7 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
     ![Open ADB](./images/open-file-json.png "")
 
-9. After you open the file, you will see your query results in json format as shown in the screen capture.
+9. After you open the file, you will see your query results in **`json`** format as shown in the screen capture.
 
     ![Open ADB](./images/json-result.png "")
 
