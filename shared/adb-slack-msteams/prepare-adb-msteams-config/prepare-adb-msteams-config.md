@@ -8,7 +8,7 @@ Microsoft Teams serves as a comprehensive collaboration platform within the Micr
 
 This lab walks you through the steps to create your Microsoft Teams application and channel to receive messages, alerts and output of a query from Autonomous Database.
 
-Estimated Time: 25 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 

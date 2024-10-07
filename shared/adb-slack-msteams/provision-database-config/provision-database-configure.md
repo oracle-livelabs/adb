@@ -7,7 +7,7 @@ In  this lab, you will learn the steps to get started using the Oracle Autonomou
 
 Also, you will learn how to configure your Slack and Microsoft Teams application and channel to receive messages, alerts, and output of a query from an Autonomous Database.
 
-Estimated Time: 5 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 

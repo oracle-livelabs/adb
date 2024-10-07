@@ -8,7 +8,7 @@ Slack, a leading collaboration tool, enables teams with the ability to have seam
 
 This lab walks you through the steps to create your Slack application and channel to receive messages, alerts, and the output of a query from an Autonomous Database.
 
-Estimated Time: 25 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 

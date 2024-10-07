@@ -6,7 +6,7 @@
 
 This lab walks you through the steps to send messages, alerts and output of a query from Autonomous Database to Slack and Microsoft Teams. Also, you will learn the procedures to send Microsoft Teams and Slack notifications.
 
-Estimated Time: 25 minutes
+Estimated Time: 10 minutes
 
 ### Objectives
 
