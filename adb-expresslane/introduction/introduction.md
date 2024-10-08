@@ -23,7 +23,7 @@ Do any of the recommended & supported workshops!
 
 ## Learn More
 
-* [LiveLabs](http://developer.oracle.com/livelabs)
+* [LiveLabs](http://livelabs.oracle.com)
 
 ## Acknowledgements
 * **Author** - Kevin Lazarz, Senior Principle Product Manager, DB Product Management

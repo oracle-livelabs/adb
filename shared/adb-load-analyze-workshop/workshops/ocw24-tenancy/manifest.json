@@ -28,44 +28,46 @@
             "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login.md"
         },
         {
-        "title": "Lab 1: Provision an Autonomous Database",
-        "description": "Provision Autonomous Database",
-        "type": "freetier",
-        "filename": "../../provision-database/adb-provision-moviestream.md"
-    },
-    {
-        "title": "Lab 2: Load Data from Object Storage Public Buckets",
-        "description": "Load customer contact, movie genre, customer sales and pizza location data into ADB from public object storage buckets using the Database Tools",
-        "type": "freetier",
-        "filename": "../../load-public-db-actions/load-public-db-actions.md"
-    },
-    {
-        "title": "Lab 3: Use AutoML to Predict Customer Churn",
-        "description": "Create a Machine Learning model using AutoML UI to Predict Churn",
-        "type": "freetier",
-        "filename": "../../predict-churn/predict-churn.md"
-    },
-    {
-        "title": "Lab 4 (optional): Load Data from Local Files",
-        "description": "Load additional customer details into ADB from local files using the Database Actions tools",
-        "type": "livelabs",
-        "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
-    },
-    {
-        "title": "Lab 5 (optional): Load and Analyze JSON Data",
-        "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
-        "filename": "../../load-analyze-json/load-analyze-json.md"
-    },
-    {
-        "title": "Lab 6 (optional): Load and Analyze the News from REST Endpoints",
-        "description": "Load news and analyze the sentiment about actors from the newsapi.org",
-        "filename": "/common/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
-    },
-    {
-    "title": "Need Help?",
-    "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-    "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
-    }
-
+            "title": "Lab 1: Provision an Autonomous Database",
+            "description": "Provision Autonomous Database",
+            "type": "freetier",
+            "filename": "../../provision-database/adb-provision-moviestream.md"
+        },
+        {
+            "title": "Lab 2: Use AutoML to Predict Customer Churn",
+            "description": "Create a Machine Learning model using AutoML UI to Predict Churn",
+            "type": "freetier",
+            "filename": "../../predict-churn/predict-churn.md"
+        },
+        {
+            "title": "Lab 3 (optional): Load Data from Object Storage Public Buckets",
+            "description": "Load customer contact, movie genre, customer sales and pizza location data into ADB from public object storage buckets using the Database Tools",
+            "type": "freetier",
+            "filename": "../../load-public-db-actions/load-public-db-actions.md"
+        },
+        {
+            "title": "Lab 4 (optional): Load Data from Local Files",
+            "description": "Load additional customer details into ADB from local files using the Database Actions tools",
+            "type": "freetier",
+            "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
+        },
+        {
+            "title": "Lab 5 (optional): Load and Analyze JSON Data",
+            "description": "Load JSON collections about movies using the DBMS_CLOUD package and analyze that data using SQL",
+            "type": "freetier",
+            "filename": "../../load-analyze-json/load-analyze-json.md"
+        },
+        {
+            "title": "Lab 6 (optional): Load and Analyze the News from REST Endpoints",
+            "description": "Load news and analyze the sentiment about actors from the newsapi.org",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/adb/load-analyze-rest/load-analyze-rest.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "type": "freetier",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
     ]
 }

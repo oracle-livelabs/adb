@@ -5,7 +5,7 @@
 Large language models are incredibly powerful tools for analyzing data using natural language. The problem with LLMs is that they don't know about your organization's private data. Autonomous Database and Select AI makes it simple to overcome this challenge and use an LLM's creative power and understanding of language to rapidly innovate.
 
 This lab will introduce you to using your organization's data with LLMs. You will learn how to define LLM prompts that combine natural language tasks with private data. Those prompts will clearly delineate from the data sets and tasks to encourage better results.
-
+<!--
 ![Wrapping of task rules and data to send to the model in tabular form](./images/json-prompts.png "")
 
 For this workshop, the business logic is captured in a GENAI\_PROJECT table that provides a simple organizational structure. Each record in that table includes:
@@ -22,7 +22,7 @@ A JSON document is used to organize the GenAI prompt (task rules and query resul
 ![Business Logic Overview](./images/intro-businesslogic.png "")
 
 > **Note:** The prompt (in the example above) is using both the tasks and data (from a profile created named "ociai") to generate a email using Generative AI and data from the database. 
-
+-->
 Estimated Time: 15 minutes.
 
 ### Objectives
@@ -88,7 +88,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     }
     ```
 
-3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. We'll use the Cohere model (you can also try it using `Meta Llama 2 Chat`). Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
       
     ```
     <copy>
@@ -101,7 +101,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     SELECT 
         DBMS_CLOUD_AI.GENERATE(
             PROMPT => prompt_details,
-            PROFILE_NAME => 'OCIAI_COHERE',
+            PROFILE_NAME => 'GENAI',
             ACTION       => 'chat'                     
         ) AS response
     FROM prompt_document;       
@@ -113,7 +113,85 @@ In our first example, we'll summarize a conversation that a customer had with th
 
    Prompt engineering is a process. You will iterate on the language used to summarize support chat until you get the the type of response you need.
 
-## Task 2: Organize and execute GenAI projects
+## Task 2: Create a Bedtime Story
+MovieStream is going to provide a new service that parents will love. The service lets you create a bedtime story based on movies that you've watched in the past - and people on your account profile can be selected as characters in your story.
+
+1. Let's take a look at the procedure `create_story`. It generates a new bedtime story based on a few parameters about the customer. In the SQL Navigator, go to **Procedures**. Right-click **CREATE_STORY** and select **Open**:
+    ![Open procedure](images/open-create-story.png)
+    
+    Replace the code in your worksheet without saving your content. Click **No** in the **Save Changes** prompt. 
+
+2. The procedure is simple. It takes a few parameters:
+    * `cust_id`: the customer id that will be creating the new story
+    * `characters`: the list of people on your account that will be characters in your new story
+    * `movies`: the list of movies that the will be the basis for the new movie
+    * `profile_name`: the AI profile to use to generate the movie (optional)
+
+    And it returns:
+    * `title`: the generated story title
+    * `story`: the generated story
+
+3. Similar to our previous examples, the procedure uses the parameters to customize the prompt sent to the LLM. And then, the prompt is sent to the LLM and a new story is generated:
+
+    ```sql
+    -- Generate the prompt for creating the story using the characters and movies
+    prompt := sysdate || ' - Generate a new 2 page story targeted for a child. Make this story unique. Put the complete story title on the first line and do not use emojis in the title. Then start the story on the next line. Use lots of emojis. The story should be similar in concept and tone to the following list of movies:\n' ||
+                movies || '\nUse the following character names in the generated story:\n' || characters;
+    
+    ....
+    -- Generate the story using the content
+    story := DBMS_CLOUD_AI.GENERATE (
+        prompt => prompt,
+        profile_name => profile_name,
+        action => 'chat'
+    );
+    ```
+
+    Close the procedure by clicking **CREATE_STORY** and then selecting **Close**
+    ![Close procedure](images/close-create-story.png)
+
+4. There are a couple of JSON collections that capture customer profile information and recent, kid-friendly movies watched by the customer. These will be the sources for your application that creates the bedtime story.
+    * Create a new SQL worksheet by clicking **New** -> **Worksheet** 
+        ![New worksheet](images/new-worksheet.png)
+    * View information about Bill Flowers in the `customerProfiles` collection. Copy and paste the following query into the workseet and then click **Run Script**:
+        ```sql
+        <copy>
+        SELECT JSON_SERIALIZE(json_document PRETTY) as json_doc
+        FROM "customerProfiles"
+        WHERE JSON_VALUE(json_document, '$.last_name') = 'Flowers';
+        </copy>
+        ```
+        Bill, Mom, Chloe and Omar are potential characters in the next movie!
+        ![Customer profiles](images/select-customer-profiles.png)  
+    * View the kid-friendly movies that the family has seen; this is captured in the `kidFriendlyMovies` collection. Copy and paste the following query into the workseet and then click **Run Script**:
+        ```sql
+        <copy>
+        SELECT JSON_SERIALIZE(json_document PRETTY) as json_doc
+        FROM "kidFriendlyMovies"
+        WHERE JSON_VALUE(json_document, '$.cust_id') = 1083240;
+        </copy>
+        ```
+        ![Kid friendly movies](images/kid-friendly-movies.png)
+5. Create a bedtime story! Test out the procedure based on Bill Flower's customer profile and recently watched movies. Copy and paste the following query into the workseet and then click **Run Script**:
+    ```sql
+    <copy>
+    DECLARE
+        l_title        VARCHAR2(200);
+        l_story        CLOB;
+    BEGIN
+        create_story(cust_id => 1083240, 
+                    characters => '["Mom","Omar"]', 
+                    movies => '["The Lion King", "Frozen II"]', 
+                    title => l_title, 
+                    story => l_story);
+    END;
+    /
+    </copy>
+    ```
+    The `CREATE_STORY` procedure outputs results. You can see the new bedtime story below:
+    ![create a bedtime story](images/create-story.png)
+<!--
+REM ## Task 3: Organize and execute GenAI projects (optional)
 You will likely use GenAI for many different projects where you need to apply analytics to data in Autonomous Database. This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that are applied to different use cases. 
 
 1. Let's take a look at the current projects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
@@ -207,7 +285,7 @@ You will likely use GenAI for many different projects where you need to apply an
 
     Enjoy yourself Jennine!
 
-## Task 3: Simplifying prompt engineering
+REM ## Task 4: Simplifying prompt engineering (optional)
 As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous task.
 
 1. You will need the URL for the APEX app deployed to your Autonomous Database. The URL format is as follows:
@@ -240,7 +318,7 @@ As you can see, prompt engineering is going to be an iterative process. You'll w
     ![Test the GenAI project](images/apex-test-genai-project.png)
 
     The response may take a minute to return. You'll see the prompt used to generate the response and the response itself.
-
+-->
 ## Summary    
 Sometimes it's useful to step back and say, "how would I have summarized a support chat or created a targeted offer in the past?". Applying large language models to your data really opens up so many opportunities to deliver value to your organization quickly and easily. 
 
@@ -262,7 +340,7 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Marty Gubar, September 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
