@@ -4,7 +4,7 @@
 
 In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
 
-> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** _or_ **Germany Central (Frankfurt)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** region in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
 
 
 ### What is Natural Language Processing?
