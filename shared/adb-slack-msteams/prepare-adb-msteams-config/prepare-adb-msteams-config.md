@@ -63,7 +63,7 @@ In this lab, you will:
 
 ## Task 2: Create and configure a bot for your Microsoft Teams application
 
-For this task, you will create and configure a bot for your Microsoft Team application.  A Bot is the application designed to interact through conversation and it is also referred to as a chatbot or conversational bot. It's an app that runs simple and repetitive tasks by users such as customer service or support staff. Everyday use of bots include, bots that provide information about the weather, make dinner reservations, or provide travel information. Interactions with bots can be quick questions and answers or complex conversations. For more information, see [Build bots for Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/what-are-bots).
+For this task, you will create and configure a bot for your Microsoft Team application.  A bot is the application designed to interact through conversation and it is also referred to as a chatbot or conversational bot. It's an app that runs simple and repetitive tasks by users such as customer service or support staff. Everyday use of bots include, bots that provide information about the weather, make dinner reservations, or provide travel information. Interactions with bots can be quick questions and answers or complex conversations. For more information, see [Build bots for Teams](https://learn.microsoft.com/en-us/microsoftteams/platform/bots/what-are-bots).
 
 1. Click the **Navigation menu** that is located on the left side panel.
 
@@ -183,23 +183,23 @@ After creating your application successfully, the next crucial step is to publi
 
    ![Open ADB](./images/select_bot_name.png "")
 
-8. Scroll down to **Manage** section, an then select **API permissions** 
+8. Scroll down to **Manage** section, an then select **API permissions**.
 
    ![Open ADB](./images/select_api_perms.png "")
 
 9. For your application, these following permissions are required:
 
-+ **`Files.ReadWrite.All`**
+    + **`Files.ReadWrite.All`**
 
-    This permission will enable you to read, create, update and delete all files. For more information, see [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference).
+     This permission will enable you to read, create, update and delete all files. For more information, see [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference).
 
-+ **`ChannelSettings.Read.All`**
+    + **`ChannelSettings.Read.All`**
 
-    This permission will enable you to read all channel names, channel descriptions, and channel settings. For more information, see [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference).
+     This permission will enable you to read all channel names, channel descriptions, and channel settings. For more information, see [Microsoft Graph permissions reference](https://learn.microsoft.com/en-us/graph/permissions-reference).
 
 10. To request required permissions for your app, click **Add a permission**.
 
-   ![Open ADB](./images/click_add_permis.png "")
+    ![Open ADB](./images/click_add_permis.png "")
 
 11. On the Request API permissions page,  set the following parameters, and then click **Add permissions**.
 
@@ -212,7 +212,7 @@ After creating your application successfully, the next crucial step is to publi
 
     > **Note:** Microsoft Graph API for Teams offers powerful capabilities to enhance your applications. It provides access to crucial data about teams, channels, users, and messages, enabling the creation of rich features. Additionally, the notification APIs simplify sending alerts from your app directly to the Teams activity feed. For more information, see [Use the Microsoft Graph API to work with Microsoft Teams](https://learn.microsoft.com/en-us/graph/api/resources/teams-api-overview?view=graph-rest-1.0).
 
-12. Repeat the step 11 to add `Files.ReadWrite.All` permission as well.
+12. Repeat the step 11 to add **`Files.ReadWrite.All`** permission as well.
 
 13. After adding permissions, ensure your admin approve requested permissions from **Microsoft Entra admin center**.
 
@@ -230,10 +230,10 @@ After creating your application successfully, the next crucial step is to publi
 
 3. To create a channel, specify the following parameters as shown in the screen capture and click **Create**.
 
-    - Add the channel to a team: Select your preferred **team** and click **Done** as shown in the screen capture.
+    - Add the channel to a team: Select your preferred **team**, and click **Done** as shown in the screen capture.
     - Channel name: Enter your preferred **Channel name** in the name field.
-    - Description: Enter your preferred **Description**
-    - Channel type: Choose a **channel type** as **Standard** so people on your team has access
+    - Description: Enter your preferred **Description**.
+    - Channel type: Choose a **channel type** as **Standard** so people on your team has access.
 
     ![Open ADB](./images/select-ateam.png "")
 
