@@ -33,10 +33,10 @@ Let's assume you work at a luxury car dealership that prides itself on providing
 
 You will create the customers table based on few parameters, and then will notify the customer service who qualify for the treatment from Autonomous Database to Slack and Microsoft Teams channels.
 
-- name: Customer name
-- email: Customer email
-- product: Car type
-- amount: Price of the car
++ name: Customer name
++ email: Customer email
++ product: Car type
++ amount: Price of the car
 
 1. In the Oracle Cloud console, open the **Navigation menu**, navigate to **Oracle Database**, and then select **Autonomous Data Warehouse**.
 
@@ -53,7 +53,7 @@ You will create the customers table based on few parameters, and then will notif
 4. To create the generated **customers** table using the script, copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
-      <copy>
+    <copy>
          CREATE TABLE customers
           (
              name varchar2(100),
@@ -70,7 +70,7 @@ You will create the customers table based on few parameters, and then will notif
 5. This example is using the sample customers data. To insert sample data into the **customers** table, copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
-        <copy>
+    <copy>
 
          Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('John Doe','john.doe@example.com','Zypher A1',15000);
          Insert into CUSTOMERS (NAME,EMAIL,PRODUCT,AMOUNT) values ('Jane Smith','jane.smith@example.com','Zypher A2',18000);
@@ -97,10 +97,10 @@ You will create the customers table based on few parameters, and then will notif
 
 1. In the source database SQL window, specify the following parameters that are used in the following code example.
 
-    - provider: Enter **slack**
-    - credential_name: Enter your credential name such as **`SLACK_CRED`**
-    - message: Enter your preferred message such as **`Alert from Autonomous Database...`**
-    - params: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
+    + provider: Enter **slack**
+    + credential_name: Enter your credential name such as **`SLACK_CRED`**
+    + message: Enter your preferred message such as **`Alert from Autonomous Database...`**
+    + params: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
 
 2. Click the drop-down list next to your channel's name, scroll down to the bottom section, and then copy the **Channel ID**.
 
@@ -137,11 +137,11 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
 2. Send query results in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
 
-    - provider: Enter **slack**
-    - credential_name: Enter your credential name such as **`SLACK_CRED`**
-    - query: Enter your preferred query such as **`SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3`**
-    - channel: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
-    - type: Enter your preferred format such as **csv**
+    + provider: Enter **slack**
+    + credential_name: Enter your credential name such as **`SLACK_CRED`**
+    + query: Enter your preferred query such as **`SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3`**
+    + channel: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
+    + type: Enter your preferred format such as **csv**
 
     Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
@@ -168,11 +168,11 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
 4. Send the results of query in `json` format using the following script. In the source database SQL window, specify the following parameters that are used in the following script.
 
-    - provider: Enter **slack**
-    - credential_name: Enter your credential name such as **`SLACK_CRED`**
-    - query: Enter your preferred query such as **`SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3`**
-    - channel: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
-    - type: Enter your preferred format such as **`json`**
+    + provider: Enter **slack**
+    + credential_name: Enter your credential name such as **`SLACK_CRED`**
+    + query: Enter your preferred query such as **`SELECT username, account_status, expiry_date FROM USER_USERS WHERE rownum < 3`**
+    + channel: Substitute the **`C0....08`** place holder with your own Slack **channel ID**
+    + type: Enter your preferred format such as **`json`**
 
     Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
@@ -201,10 +201,10 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_MESSAGE`** proce
 
 1. In the source database SQL window, specify the following parameters that are used in the following script.
 
-    - provider: Enter **msteams**
-    - credential_name: Enter your credential name such as **`TEAMS_CRED`**
-    - message: Enter your preferred message such as **`text from new teams api`**
-    - params: Substitute the channel ID placeholder with your own  **channel ID**
+    + provider: Enter **msteams**
+    + credential_name: Enter your credential name such as **`TEAMS_CRED`**
+    + message: Enter your preferred message such as **`text from new teams api`**
+    + params: Substitute the channel ID placeholder with your own  **channel ID**
 
     > **Note:** You will not be able to run the code without having your **channel ID**.
     Please see task 5, step 13 in **Lab 2** to obtain your **channel ID**.
@@ -235,14 +235,14 @@ For this task, you will use the **`DBMS_CLOUD_NOTIFICATION.SEND_DATA`** procedur
 
 1. Send query results to a Microsoft Teams Channel using the following the script. Specify the following parameters that are used in the following script.
 
-    - provider: Enter **msteams**
-    - credential_name: Enter your credential name such as **`TEAMS_CRED`**
-    - query: Enter your preferred query such as **`SELECT tablespace_name FROM dba_tablespaces`**
-    - tenant: Substitute the **`5b743bc******c0286`** placeholder with your **tenant ID**
-    - team: Substitute the **`0ae401*********5d2bd`** placeholder with your **team ID**
-    - channel: Substitute the **`19%3a94be023*****%40thread.tacv2`** placeholder with your **channel ID**
-    - title: Substitute **`today`** placeholder with your preferred **title**
-    - type: Enter your preferred output format as **`csv` or `json`**
+    + provider: Enter **msteams**
+    + credential_name: Enter your credential name such as **`TEAMS_CRED`**
+    + query: Enter your preferred query such as **`SELECT tablespace_name FROM dba_tablespaces`**
+    + tenant: Substitute the **`5b743bc******c0286`** placeholder with your **tenant ID**
+    + team: Substitute the **`0ae401*********5d2bd`** placeholder with your **team ID**
+    + channel: Substitute the **`19%3a94be023*****%40thread.tacv2`** placeholder with your **channel ID**
+    + title: Substitute **`today`** placeholder with your preferred **title**
+    + type: Enter your preferred output format as **`csv` or `json`**
 
     Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)**.
 
@@ -326,8 +326,8 @@ You learned how to send messages and query results to your Slack and Microsoft T
 
 + **Contributors:**
 
-    * Lauran K. Serhal, Consulting User Assistance Developer
-    * Marty Gubar, Director of Product Management, Autonomous Database
+    + Lauran K. Serhal, Consulting User Assistance Developer
+    + Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
 

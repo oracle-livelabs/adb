@@ -203,10 +203,10 @@ After creating your application successfully, the next crucial step is to publi
 
 11. On the Request API permissions page,  set the following parameters, and then click **Add permissions**.
 
-    - Microsoft APIs: Select **Microsoft Graph**
-    - Type of permissions: Select **Application permissions**
-    - Select permissions: Enter **ChannelSettings.Read.All** in the **search** field
-    - Channel Settings: Click the **ChannelSettings.Read.All** box
+    + Microsoft APIs: Select **Microsoft Graph**
+    + Type of permissions: Select **Application permissions**
+    + Select permissions: Enter **ChannelSettings.Read.All** in the **search** field
+    + Channel Settings: Click the **ChannelSettings.Read.All** box
 
     ![Open ADB](./images/add_permis_channel.png "")
 
@@ -230,10 +230,10 @@ After creating your application successfully, the next crucial step is to publi
 
 3. To create a channel, specify the following parameters as shown in the screen capture and click **Create**.
 
-    - Add the channel to a team: Select your preferred **team**, and click **Done** as shown in the screen capture.
-    - Channel name: Enter your preferred **Channel name** in the name field.
-    - Description: Enter your preferred **Description**.
-    - Channel type: Choose a **channel type** as **Standard** so people on your team has access.
+    + Add the channel to a team: Select your preferred **team**, and click **Done** as shown in the screen capture.
+    + Channel name: Enter your preferred **Channel name** in the name field.
+    + Description: Enter your preferred **Description**.
+    + Channel type: Choose a **channel type** as **Standard** so people on your team has access.
 
     ![Open ADB](./images/select-ateam.png "")
 
@@ -303,8 +303,8 @@ You may now **proceed to the next lab**.
 
 + **Contributors:**
 
-    * Lauran K. Serhal, Consulting User Assistance Developer
-    * Marty Gubar, Director of Product Management, Autonomous Database
+    + Lauran K. Serhal, Consulting User Assistance Developer
+    + Marty Gubar, Director of Product Management, Autonomous Database
 
 + **Last Updated By/Date:** Yonca Aksit, October 2024
 
