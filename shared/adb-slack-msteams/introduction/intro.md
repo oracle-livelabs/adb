@@ -33,7 +33,7 @@ Oracle Autonomous Database offers robust integration with Slack and Microsoft Te
 
 **Let's begin! Please click Get Started in the Contents menu on the left.**
 
-## Learn More
+### Learn More
 
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 - [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/tutorials.html)
