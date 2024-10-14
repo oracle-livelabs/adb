@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to send messages, alerts and output of a query from Autonomous Database to Slack and Microsoft Teams. Also, you will learn the procedures to send Microsoft Teams and Slack notifications.
+This lab walks you through the steps to send messages, alerts and output of a query from Autonomous Database to Slack and Microsoft Teams. Also, you will learn the procedures to send notifications to Microsoft Teams and Slack channels.
 
 Estimated Time: 10 minutes
 
@@ -89,7 +89,7 @@ You will create the customers table based on few parameters, and then will notif
 
     ![Open ADB](./images/insert-data.png "")
 
-   That's it. Now, you can notify customer service about the customers who qualify for the white glove treatment which are customers who spent more than $40,000. Let's start!
+   That's it. Now, you can notify customer service about the customers who qualify for the white glove treatment, which are customers who spent more than $40,000. Let's start!
 
 ## Task 2: Send messages to a Slack channel
 
