@@ -37,7 +37,7 @@ Oracle Autonomous Database offers robust integration with Slack and Microsoft Te
 
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 - [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/tutorials.html)
-- [Autonomous Database Workshops](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?p100_workshop_series=222)
+- [Autonomous Database Workshops](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/livelabs-workshop-cards?clear=100&session=103864463501116)
 - [Slack](https://slack.com/)
 - [Microsoft Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software)
 
