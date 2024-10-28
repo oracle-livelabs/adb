@@ -219,14 +219,11 @@ You can import a notebook from a local disk or from a remote location if you pro
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
-    ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
-
 ## Task 4: Review and Run the Imported Notebook
 
 A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL, Python, R, markdown and more. The **ADB Speaks Human** notebook is well-documented using markdown code. Examine the paragraphs in the notebook and then execute the code. Feel free to run different types of queries!
 
-1. In this notebook, the code sections of all paragraphs in the notebook are hidden. Only the results (outputs) of all markdown paragraphs are displayed. To show or hide the code sections in all the paragraphs, on the notebook's banner, click the **Show Code** icon. This is a toggle 
-icon that you can use to show or hide the code in all paragraphs. Click the **Show Code** icon.
+1. In this notebook, the code sections of all paragraphs in the notebook are hidden. Only the results (outputs) of all markdown paragraphs are displayed. To show or hide the code sections in all the paragraphs, on the notebook's banner, click the **Show Code** icon. This is a toggle icon that you can use to show or hide the code in all paragraphs. Click the **Show Code** icon.
 
     ![Select Show Code from the Actions drop-down menu](./images/show-code.png =75%x*)
 
