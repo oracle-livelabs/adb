@@ -80,32 +80,7 @@ You can create as many profiles as you need, which is useful when comparing the 
 
 For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
 
->**Note:** The deployment script created a Select AI profile using the code below: 
-
-```
-begin    
-
-    -- Create an AI profile that uses the default LLAMA model on OCI
-    dbms_cloud_ai.create_profile(
-        profile_name => 'genai',
-        attributes =>       
-            '{"provider": "oci",
-            "credential_name": "OCI$RESOURCE_PRINCIPAL",
-            "comments":"true",            
-            "object_list": [
-                {"owner": "MOVIESTREAM", "name": "GENRE"},
-                {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                {"owner": "MOVIESTREAM", "name": "STREAMS"},            
-                {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                {"owner": "MOVIESTREAM", "name": "ACTORS"}
-             ]
-            }'
-        );
-        
-end;
-/      
-```
+>**Note:** The deployment script that you ran in **Lab 1 > Task 1 > Step 1** created a `Select AI` profile named **genai** using the code shown in this task; however, you'll practice dropping the file and then recreating it. For the **region** parameter, specify the region name where the OCI GenAI service is running and to which your tenancy is subscribed. In our example, we used **us-chicago-1** (the default). If you are subscribed to **Frankfurt**, then use `eu-frankfurt-1` as the value for the **region** parameter. If you are subscribed to **London**, then use `uk-london-1` as the value for the **region** parameter.
 
 1. Sign into the SQL worksheet as the **`MOVIESTREAM`** user with the password **`watchS0meMovies#`**. On the **Database Actions Launchpad** page, click the **Development** tab, and then click the **SQL** tab. The SQL Worksheet is displayed.
 
@@ -113,38 +88,41 @@ end;
 
     ![Moviestream password](./images/moviestream-output-pswd.png "")
 
-2. Create an AI profile for the **Meta Llama 3 model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+2. Create an AI profile for the **Meta Llama 3** model. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
-    ```
-    <copy>
-    BEGIN
-        -- drops the profile if it already exists
-        DBMS_CLOUD_AI.drop_profile(
-            profile_name => 'ociai_llama',
-            force => true
-        );     
+```
+<copy>
+BEGIN
+    -- drops the profile if it already exists
+    DBMS_CLOUD_AI.drop_profile(
+        profile_name => 'genai',
+        force => true
+    );     
 
-        -- Meta Llama 3 (this is the default model, so you could skip the model attribute if you like)                                                                     
-        DBMS_CLOUD_AI.create_profile (                                              
-            profile_name => 'ociai_llama',
-            attributes   => 
-            '{"provider": "oci",
-                "credential_name": "OCI$RESOURCE_PRINCIPAL",
-                "object_list": [
-                    {"owner": "moviestream", "name": "GENRE"},
-                    {"owner": "moviestream", "name": "CUSTOMER"},
-                    {"owner": "moviestream", "name": "PIZZA_SHOP"},
-                    {"owner": "moviestream", "name": "STREAMS"},            
-                    {"owner": "moviestream", "name": "MOVIES"},
-                    {"owner": "moviestream", "name": "ACTORS"}
-                ],
-                "model": "meta.llama-3-70b-instruct"
-                }');
-    END;                                                                         
-    /
-    </copy>
-    ```
-    ![Create AI profile](./images/create-llama.png "")
+    -- Meta Llama 3 (this is the default model, so you could skip the model attribute if you like)      
+    DBMS_CLOUD_AI.create_profile (                                              
+        profile_name => 'genai',
+        attributes   =>
+        '{"provider": "oci",
+            "credential_name": "OCI$RESOURCE_PRINCIPAL",
+            "object_list": [
+                {"owner": "moviestream", "name": "GENRE"},
+                {"owner": "moviestream", "name": "CUSTOMER"},
+                {"owner": "moviestream", "name": "PIZZA_SHOP"},
+                {"owner": "moviestream", "name": "STREAMS"},            
+                {"owner": "moviestream", "name": "MOVIES"},
+                {"owner": "moviestream", "name": "ACTORS"}
+            ],
+             "region": "us-chicago-1"
+            }');
+END;                                                                         
+/
+</copy>
+```
+
+![Create AI profile](./images/create-llama.png "")
+
+<!--
 
 3. Create an AI profile for the **Cohere model**. This model will not be used for SQL generation - it will only be used for generating innovative content. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
     
@@ -167,25 +145,27 @@ end;
     ```
     ![Create AI profile](./images/create-cohere.png "")
 
+-->
 
 ## Task 3: Test the AI profile
 
-We will use the PL/SQL API to generate a response from the Cohere model. This example is using the **chat** action. It is not using any private data coming from your database.
+We will use the PL/SQL API to generate a response from the **Meta Llama 3** model. This example is using the **chat** action. It is not using any private data coming from your database.
 
-1. Test the LLM and learn about Autonomous Database as the MOVIESTREAM user using the **Cohere model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+1. Test the LLM and learn about Autonomous Database as the MOVIESTREAM user using the **genai** model. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
     SELECT DBMS_CLOUD_AI.GENERATE(
         prompt       => 'what is oracle autonomous database',
-        profile_name => 'OCIAI_COHERE',
+        profile_name => 'genai',
         action       => 'chat')
     FROM dual;
     </copy>
     ```
-    ![Test the LLM](./images/cohere-output.png "")
+    ![Test the LLM](./images/genai-output.png "")
 
-2. Compare the Cohere model to the **Llama model**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+<!--
+2. Compare the **genai** model to the **Llama** model. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
 
     ```
     <copy>
@@ -197,6 +177,7 @@ We will use the PL/SQL API to generate a response from the Cohere model. This ex
     </copy>
     ```
     ![Generate sentence-like response](./images/llama-chat.png "")
+-->
 
 ## Summary
 You learned how to integrate Autonomous Database with OCI Generative AI. And, you chatted with different models hosted on OCI Generative AI. Next, let's see how to use our private data with LLMs.
@@ -211,16 +192,17 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:**
+  * **Authors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Management
+  * **Contributors:**
     * Stephen Stuart, Cloud Engineer
     * Nicholas Cusato, Cloud Engineer
     * Olivia Maxwell, Cloud Engineer
     * Taylor Rees, Cloud Engineer
     * Joanna Espinosa, Cloud Engineer
 
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, October 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

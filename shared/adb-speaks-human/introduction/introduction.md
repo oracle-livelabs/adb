@@ -4,8 +4,7 @@
 
 In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
 
-> **NOTE:** Your tenancy must be subscribed to the **US Midwest (Chicago)** region in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
-
+> **NOTE:** At the time this workshop was last updated, your tenancy must be subscribed to the **US Midwest (Chicago)**, **Germany Central (Frankfurt)**, or **UK South (London)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
 
 ### What is Natural Language Processing?
 
@@ -36,8 +35,9 @@ You may now proceed to the next lab.
 * [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Marty Gubar, Product Manager
+* **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Marty Gubar, Product Manager
 * **Last Updated By/Date:** Lauran K. Serhal, October 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
