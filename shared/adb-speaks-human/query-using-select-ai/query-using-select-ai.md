@@ -187,15 +187,15 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
     ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
 
-7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 Step 6** in the **Password** field, and then click **Sign In**.
+7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 > Step 6** in the **Password** field, and then click **Sign In**.
 
     ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
 
     The **Oracle Machine Learning** Home page is displayed. You can use this landing page to access tutorials, model creation, notebooks, and much more.
 
-    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page.png " ")
+    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-new.png " ")
 
-8. In the **Quick Actions** section, click the **Notebooks** button. The **Notebooks** page is displayed.
+8. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
 
     ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
 
@@ -211,7 +211,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
 
-    If the import is successful, a notification is displayed and the **`ADB Speaks Human`** notebook is displayed in the list of available notebooks.
+    If the import is successful, a notification is displayed and the **`adb-speaks-human-notebook`** notebook is displayed in the list of available notebooks.
 
     ![The newly imported notebook is displayed.](./images/import-successful.png " ")
 
@@ -219,15 +219,11 @@ You can import a notebook from a local disk or from a remote location if you pro
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
-    ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
-
 ## Task 4: Review and Run the Imported Notebook
 
 A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL, Python, R, markdown and more. The **ADB Speaks Human** notebook is well-documented using markdown code. Examine the paragraphs in the notebook and then execute the code. Feel free to run different types of queries!
 
-1. Display the code sections of all paragraphs in the notebook. On the notebook banner, the **Show Code** icon. This is a toggle icon that you can use to show or hide the code in all paragraphs.
-
-    >**Note:** By default, the code sections of all markdown paragraphs in this notebook are hidden.
+1. In this notebook, the code sections of all paragraphs in the notebook are hidden. Only the results (outputs) of all markdown paragraphs are displayed. To show or hide the code sections in all the paragraphs, on the notebook's banner, click the **Show Code** icon. This is a toggle icon that you can use to show or hide the code in all paragraphs. Click the **Show Code** icon.
 
     ![Select Show Code from the Actions drop-down menu](./images/show-code.png =75%x*)
 
@@ -237,7 +233,7 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     In this notebook, the **`%md`** (Markdown) paragraphs provide useful information about the paragraphs. The **`%md`** Markdown interpreter generates static html from plain Markdown text. In this lab, you will review the code in each paragraph one at a time, run that paragraph, and review the results as desired. It is a good idea to hide the code of any .md paragraph.
 
-2. Display the result (output) sections of all paragraphs in the notebook. On the notebook banner, click the **Show Result/Hide Result** icon to show the output sections of the paragraphs where the output section is not shown by default.
+2. By default, when you imported the notebook, the results (output) sections of the .md paragraphs were displayed. On the notebook banner, click the **Show Result/Hide Result** icon to show the output sections of the paragraphs where the output section is not shown by default.
 
     ![The Show/hide the output icon on the notebook toolbar is shown as clicked.](./images/show-result.png " ")
 
@@ -275,7 +271,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, October 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
