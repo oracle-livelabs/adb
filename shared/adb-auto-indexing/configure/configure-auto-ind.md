@@ -127,7 +127,7 @@ This lab assumes you have completed the following lab:
     </copy>
     ````
 
-2.  You can drop individual or multiple auto indexes using the DBMS_AUTO_INDEX API. You cannot use the DROP INDEX DDL command. Drop the index, and prevent it from being created again (FALSE in parameter three prevents the index from being recreated).
+2.  You can drop individual or multiple auto indexes using the DBMS\_AUTO\_INDEX API. You cannot use the DROP INDEX DDL command. Drop the index, and prevent it from being created again (FALSE in parameter three prevents the index from being recreated).
 
 	```
 	<copy>
@@ -136,7 +136,8 @@ This lab assumes you have completed the following lab:
 	```
 
 	```
-    -- For example
+    -- For example...
+    -- You will need to change the index name to match those created in your database)
     --
 	exec dbms_auto_index.drop_auto_indexes(user,'"SYS_AI_gdu3958w4jtrf"',false)
 
