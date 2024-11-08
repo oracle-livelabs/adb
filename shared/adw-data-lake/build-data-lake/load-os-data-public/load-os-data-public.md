@@ -207,7 +207,7 @@ You may now proceed to the next lab.
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -217,4 +217,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
