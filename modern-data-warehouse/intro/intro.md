@@ -36,7 +36,7 @@ The aim of this workshop is to explore how Autonomous Data Warehouse can support
 
 ### Prerequisites
 
-* [An Oracle Free Tier](https://bit.ly/free-tier-1207), Always Free, Paid or LiveLabs Cloud Account - You can check Getting Started section for more information.
+* [An Oracle Free Tier](https://bit.ly/free-tier-1207),Always Free, Paid or LiveLabs Cloud Account - You can check Getting Started section for more information.
 
 Here is a video to help with the Oracle Trial Sign Up Process:
 [](youtube:4U-0SumNz6w)
