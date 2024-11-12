@@ -83,21 +83,15 @@ Create a **News API** account as follows:
 
 Now that you have the API key, create a PL/SQL function that queries the REST endpoint using the parameters above.
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
+1. Navigate to the SQL Worksheet. Click the **Database Actions | Data Load** in the banner.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![Click Data Load in the banner.](./images/click-data-load-banner.png " ")
 
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+2. On the **Launchpad** page, click the **Development** tab, and then click the **SQL** tab.
 
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
+    ![Click Development > SQL tabs.](./images/click-development-sql-tabs.png " ")
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
-
-5. The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed.
 
     ![The SQL worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
     
@@ -351,4 +345,14 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar, Autonomous Database Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+
+Data about movies in this workshop were sourced from Wikipedia.
+
+Copyright (C) 2024, Oracle Corporation.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

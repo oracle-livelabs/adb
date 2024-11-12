@@ -34,35 +34,23 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
 ## Task 1: Navigate to the Data Load Page
 
-If you already have the **Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the **Database Actions | Launchpad** Home page. In the **Data Studio** section, click the **DATA LOAD** card. Next, skip to **Task 2**; otherwise, start with **step 1** below.
+1. Click **Database Actions | SQL** in the banner to display the **Database Actions | Launchpad** page.
 
-![Click the banner.](./images/click-banner.png " ")
+    ![Click the banner.](./images/click-banner.png " ")
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator, `ADMIN`. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
+2. Click the **Data Studio** tab, and then click the **Data Load** tab.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![Click Data Studio > Data Load tabs.](./images/click-data-load-tab.png " ")
 
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
+    The **Data Load Dashboard** page is displayed.
 
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
-
-4. Click the **Database Actions** drop-down list, and then select **View all database actions**.
-
-5. The **Database Actions | Launchpad** Home page is displayed in a _**new tab**_ in your browser. In the **Data Studio** section, click the **DATA LOAD** card.
-
-    ![The Database Actions Launchpad Home page is displayed. The Data Load card in the Data Studio section is highlighted.](./images/click-data-load.png " ")
-
-    The **Data Load** page is displayed.
+    ![The Data Load Dashboard is displayed.](./images/data-load-dashboard.png " ")
 
 ## Task 2: Link to Data in Public Object Storage Buckets and Create External Tables
 
-In this task, you will link to data and create the following external tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
+In this task, you will link to data and create the following external tables in your Autonomous Database instance: **`customer_contact`**, **`genre`**, **`pizza_locations`**, and **`sales_sample`**.
 
-1. On the **Data Load** page, click the **LINK DATA** card.
+1. On the **Data Load Dashboard**, click the **LINK DATA** tile.
 
     ![Click Link Data.](images/click-link-data.png)
 
@@ -70,7 +58,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![Select Link Data and Cloud Store.](images/link-data-page.png)
 
-3. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL.
+3. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. The **`moviestream_landing`** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL.
 
     ```
     <copy>
@@ -84,35 +72,35 @@ In this task, you will link to data and create the following external tables in 
 
     ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
 
-5. Drag the **customer\_contact** folder and drop it onto the data linking job section.
+5. Drag the **`customer_contact`** folder and drop it onto the data linking job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
 6. A **Link to Single Target Table** dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
-    ![Click yes to load objects to a single table.](images/link-to-single-table.png)
+    ![Click yes to load objects to a single table.](images/link-to-single-table.png =60%x*)
 
-    The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data linking job section.
+    The **`customer_contact`** target table to be created for the selected `.csv` file is displayed in the data linking job section.
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png)
 
-7. Drag and drop the **genre**, **sales\_sample**, and **pizza\_location** folders onto the data linking job section. Click **Yes** when prompted for each target table.
+7. Drag and drop the **`genre`**, **`sales_sample`**, and **`pizza_location`** folders onto the data linking job section. Click **Yes** when prompted for each target table.
 
     ![Drag and drop three more folders.](images/drag-drop-3-folders.png)
 
-8. Click the **Settings** icon (pencil) for the **customer\_contact** link task to view its settings.
+8. Click the **Settings** icon (pencil) for the **`customer_contact`** link task to view its settings.
 
     ![Click the pencil icon to open settings viewer for customer_contact load task](images/click-customer-contact-settings.png)
 
     The **Link Data from Cloud Store Location customer_contact** settings panel is displayed.
 
-9. The **Database Actions** link job will create a **CUSTOMER_CONTACT** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
+9. The **Database Actions** link job will create a **`CUSTOMER_CONTACT`** table with the listed columns and data types that are based on the selected *.csv file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
     ![View the settings for customer_contact load task](images/customer-contact-settings.png)
 
-10. Click the **Settings** icon (pencil) for the **sales\_sample** link task to view its settings.
+10. Click the **Settings** icon (pencil) for the **`sales_sample`** link task to view its settings.
 
-    ![View the sales-sample load task settings.](images/sales-sample-preview.png)
+    ![View the sales-sample load task settings.](images/sales-sample-preview.png =60%x*)
 
 11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **SALES_SAMPLE** to **CUSTSALES**. Next, click **Close**.
 
@@ -122,25 +110,23 @@ In this task, you will link to data and create the following external tables in 
 
     ![Run the data load job](images/run-data-link.png)
 
-    > **Note:** The load job can take about 2 minutes to complete.
+    > **Note:** The link job can take about 2 minutes to complete.
 
-13. After the load job is completed, make sure that all of the data link cards have green check marks next to them. This indicates that your data link tasks have completed successfully.
+13. After the link job is completed, make sure that all of the data link cards have the link icons next to them. You can click the **Report** button for a link job to view a report of total rows processed successfully and failed for the selected table.
 
     ![Load job tasks completed. View the genre load task settings.](images/link-completed.png)
 
-14. Click the **Settings** icon (pencil) for the **genre** load task to view its settings.
+14. Click the **Settings** icon (pencil) for the **`genre`** load task to view its settings. Next, select **Table > View Details**.
 
-15. Review some of the linked data. Click the **Table** tab to view the **genre** data.
+    ![View genre details](images/view-genre-details.png)
+
+15. The **Preview** tab is selected by default. This shows the **`genre`** data.
 
     ![View genre data](images/preview-genre-table.png)
 
-16. Click **Close** to exit the **genre** task preview.
+16. Click **Close** to exit the **genre** task preview and to return to the Data Load Dashboard.
 
-     ![Click Done.](images/click-done.png)
-
-17. Click **Done** to exit the **Link Data** page and return to the **Data Load** page.
-
-    ![Data Load page.](images/data-load-page.png)
+     ![Return to Data Load Dashboard.](images/redisplay-data-load-dashboard.png)
 
 ## Task 3: Create and Populate an External Table Using the DBMS_CLOUD Package
 
@@ -155,13 +141,13 @@ The `DBMS_CLOUD` package supports loading data files from the following Cloud so
 
 Use the `DBMS_CLOUD` package to create an external table and to also load it with the public Object Storage Parquet file data.
 
-1. Click the **Database Actions | Launchpad** banner to display the Home page.
+1. Click **Database Actions | Data Load** in the banner to display the **Launchpad** page.
 
-    ![Click the banner.](./images/click-banner-3.png " ")
+    ![Click the banner.](./images/click-data-load-banner.png " ")
 
-2. In the **Development** section, click the **SQL** card.
+2. Click the **Development** tab, and then click the **SQL** tab.
 
-    ![Click the SQL card.](./images/click-sql-card.png " ")
+    ![Click the SQL card.](./images/click-sql-tab.png " ")
 
 3. Create an external table and load it with data from a Parquet file in a _public_ OCI Object Storage bucket. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table. You can access the Object Storage Parquet file using the OCI Object Storage Native URI format as follows:
 
@@ -221,14 +207,14 @@ You may now proceed to the next lab.
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
     * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

@@ -72,7 +72,7 @@ Estimated Lab Time: 15 minutes.
 
     ![Always Free Logo](./images/always_free_logo.png)
 
-        ![ADB Creation Details](./images/lab100_3_2.png)
+    ![ADB Creation Details](./images/lab100_3_2.png)
 
     - **Choose Database version:** 19c
     
@@ -128,4 +128,4 @@ You have just created an Autonomous Database with the latest features of Oracle 
 
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
-- **Last Updated By/Date** - Anoosha Pilli, April 2022
+- **Last Updated By/Date** - Nigel Bayliss, May 2024

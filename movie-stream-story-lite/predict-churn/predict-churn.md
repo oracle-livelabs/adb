@@ -203,7 +203,7 @@ Access OML from the Autonomous Database OCI service console.
 
 1. [**CLICK HERE** to download the "Scoring customers with Churn Model" notebook in JSON format](./files/scoring_customers_with_churn_model.json?download=1) which contains the sequence of SQL commands for scoring customers, and download it to a folder on your local computer.
 
-    Go to the main notebooks listing by clicking on the "three lines" OML Navigation button on the upper left of the screen, and then select **Notebooks**.
+    Go to the main notebooks listing by clicking on the "three lines" OML Navigation button on the upper left of the screen, and then select **Notebooks EA**.
 
     ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
@@ -221,23 +221,19 @@ Access OML from the Autonomous Database OCI service console.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook main menu](images/oml-churn-automl-notebook-listing.png " ")
 
-    You will see that the notebook server starts and loads the notebook. You should see the beginning of the notebook, as shown below.
+    You will see that the notebook server starts and loads the notebook. Click **Allow Run** to enable the paragraph actions. You should then see the beginning of the notebook, as shown below.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook first screen](images/oml-churn-automl-notebook-screen1.png " ")
 
-    We need to make sure we select the correct **Interpreters**, which specifies whether to run the notebook using the LOW, MEDIUM or HIGH Autonomous Database consumer group.
-
-    Click the gear icon on the top right, which will open the panel with the Interpreters, and on that panel make sure to select at least one of the interpreters that indicate **%sql (default), %script, %python**. You can move the interpreters to change their order and bring the one you prefer to the top. Ideally move the **MEDIUM** interpreter (the one with "_medium" in the name) to the top, or only select it by clicking on it (it becomes blue) and leave the others unselected (they stay white).
+    Click the Update Notebook Type to change the Autonomous Database consumer group to **MEDIUM**. This allows for parallel execution in the database.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook interpreter screen](images/oml-churn-automl-notebook-interpreters.png " ")
-
-    Once you are satisfied, click **Save** to save your options, and stay in the notebook screen.
 
     We will follow the notes and instructions in the notebook, but before we do, and to make sure the entire environment is ready, we will run the entire notebook by clicking at the top of the screen, on the icon that looks like a **play button** next to the notebook name, like indicated in the image below.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook Run All option](images/oml-churn-automl-notebook-runall.png " ")
 
-    In the menu that pops open, confirm that you do want to run the entire Notebook by clicking the **OK** button.
+    In the menu that pops open, confirm that you do want to run the entire Notebook by clicking the **Confirm** button.
 
     The entire run is expected to take around 15 seconds, depending on the resources available.
 
@@ -326,4 +322,4 @@ Please *proceed to the next lab, or try the bonus Task 4*.
 ## Acknowledgements
 * **Author** - Marcos Arancibia, Oracle Machine Learning Product Management
 * **Contributors** -  Mark Hornick, Marty Gubar, Kevin Lazarz, Nilay Panchal, Jayant Sharma, Jie Liu, Sherry LaMonica, Richard Green
-* **Last Updated By/Date** - Marty Gubar, September 2022
+* **Last Updated By/Date** - Marty Gubar, April 2024

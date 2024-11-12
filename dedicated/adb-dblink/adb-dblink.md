@@ -104,7 +104,7 @@ impdp admin/<ADB_Password>@adb2_high SCHEMAS = <schemas> network_link=<Database_
 
     ![This image shows the result of performing the above step.](./images/dblink8.png)
 
-You have now successfully migrated your Source Database to Autonomous Database using Database Links. 
+You have now successfully migrated your Source Database to Autonomous Database using Database Links.
 
 
 ## Acknowledgements
@@ -113,5 +113,4 @@ You have now successfully migrated your Source Database to Autonomous Database u
 - **Author** - Tejus S
 - **Last Updated By/Date** -  Tejus S, July 2022
 
-## See an issue or have feedback?  
-Please submit feedback [here](https://apexapps.oracle.com/pls/apex/f?p=133:1:::::P1_FEEDBACK:1).   Select 'Autonomous DB on Dedicated Exadata' as workshop name, include Lab name and issue / feedback details. Thank you!
+

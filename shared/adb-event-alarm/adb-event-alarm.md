@@ -3,11 +3,11 @@
 
 ## Introduction
 
-*Note: the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps.*
+>_**Important:** The OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps._
 
 The Oracle Cloud Infrastructure (OCI) Notifications service broadcasts messages to distributed components through a publish-subscribe pattern, delivering secure, highly reliable, low latency and durable messages for applications hosted on OCI and externally.
 
-The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions . When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
+The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions. When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
 
 This lab shows you how to define events and alarms with conditional rules that will generate email notifications when the state of an Autonomous Database changes or an alarm condition has been met.
 
@@ -23,7 +23,7 @@ In this lab, you'll:
 
 - Use the OCI Console to define a notification topic and subscribe to the topic.
 - Create a rule for an Autonomous Database event that will trigger an email notification.
-- Perform an activity that activates the rule and confirm that an email notification was sent. 
+- Perform an activity that activates the rule and confirm that an email notification was sent.
 - Create and test an Autonomous Database alarm that will trigger an email notification.
 
 ## **PART 1 - Define an Event that Will Email a Notification When a Database Is Stopped**
@@ -40,174 +40,191 @@ In Tasks 1 through 7, you create a notification topic with an email subscription
 
 ## Task 1: Sign in to OCI Console and Create a Notification Topic
 
-*Note: Again, please note that the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps.*
+>_**Note:** Again, please note that the OCI Notifications service is not supported in the Livelabs hosted sandbox environment. If you are running this workshop in a LiveLabs sandbox, please view the steps in this lab to learn about setting event and alarm notifications. However, please do not attempt to perform the steps._
 
-1. First, you will create a Notification topic. From OCI Services menu, click **Developer Services** -> **Notifications**
-  ![ALT text is not available for this image](images/2570118073.png)
-2. Click **Create Topic**. ![ALT text is not available for this image](images/2570118185.png)
+1. Create a Notification topic. Click the **Navigation** menu, and then click **Developer Services**. Under **Application Integration**, click **Notifications**.
 
-3. Fill out the dialog box:
+    ![Navigate to Notifications](images/click-notifications.png)
 
-    - **Name**: Provide a name
-    - **Description**: Provide a description
+2. On the **Topics** page, click **Create Topic**.
 
-5. Click **Create**.
+    ![Click Create Topic](images/click-create-topic.png)
 
-  ![ALT text is not available for this image](images/2569299698.png)
+3. In the **Create Topic** panel, enter a name and an optional description, and then click **Create**.
+
+    ![Click Create](images/click-create.png)
+
+    The new notification is displayed on the **Topics** page.
+
+    ![The new topic is displayed](images/new-topic-displayed.png)
 
 ## Task 2: Create a Subscription to the Topic
 
-Now that you have created a notification topic, create a subscription to that topic, so that you can receive email alerts when a condition changes. (You will create a rule with conditions in a following task.)
+Now that you have created a notification topic, create a subscription to that topic, so that you can receive email alerts when a condition changes. You will create a rule with conditions in a following task.
 
 In this lab, you create an email subscription. Subscriptions can be defined to trigger emails or pager notifications (for on-call staff whose phones will be paged.)
 
-1. Click the topic Name. Click **Create Subscription**.![ALT text is not available for this image](images/2569305855.png)
+1. On the **Topics** page, click the **Data-Notification** topic. On the **Topics details** page, click **Create Subscription**.
 
-2. Fill out the dialog box:
+    ![Click Create Subscription](images/click-create-subscription.png)
 
-    - **PROTOCOL**: Email
-    - **EMAIL**: Provide your email id
+2. On the **Create Subscription** panel, specify the following:
+    - **PROTOCOL:** Email
+    - **EMAIL:** Enter your email address
 
-3. Click **Create**.
+    ![Create the subscription](images/create-subscription.png)
 
-  ![ALT text is not available for this image](images/2569305899.png)
-
-4. The Subscription Details screen will be displayed with subscription status showing **Pending confirmation**.
-
-  ![ALT text is not available for this image](images/2569305971.png)
+3. Click **Create**. The current status of the subscription is **PENDING**.
 
 ## Task 3: Respond to the Verification Email
 
-You will receive an email notification of your subscription. You will need to respond to the email's verification request.
+1. You will receive an email notification of your subscription to the email address that you specified. You need to respond to the email's verification request. Click the **Confirm subscription** link.
 
-1. Check the email account you specified and open the verification email. Click the **Confirm subscription** verification link for this subscription.
+    ![Confirm subscription](images/click-confirm-subscription.png)
 
-  ![ALT text is not available for this image](images/2569306086.png)
+2. A browser tab opens, confirming that you have subscribed your email account to the **Data-Notification** topic.
 
-2. A browser tab will open, confirming that you have subscribed your email account to the topic: Database-Notification.
+    ![The subscription is confirmed](images/subscription-confirmed.png)
 
-  ![ALT text is not available for this image](images/2587885600.png)
+3. On the **Data-Notifications** page, the new subscription is displayed. You might have to refresh the page to display the new subscription. The subscription status is now **ACTIVE**.
 
-## Task 4: Verify that Subscription Status Has Changed from Pending to Active
+  ![The new subscription is displayed.](images/subscription-displayed.png)
 
-Your verification of the email will change the subscription status from pending to active.
-
-1. Switch back to OCI console window and verify the subscription status changed to **Active**. You may need to refresh your browser.
-
-  ![ALT text is not available for this image](images/2587885707.png)
-
-2. You are now subscribed to a Notification topic. Next you will define an event with conditions that, when met, will publish messages to this Notification topic.
+You are now subscribed to a Notification topic. Next you will define an event with conditions that, when met, will publish messages to this Notification topic.
 
 ## Task 5: Define an Event with Rules that Will Publish Messages
 
 Let's define an event that triggers an email notification when an Autonomous Database is stopped.
 
-1. From OCI Services menu, click **Observability & Management >** **Rules**.
+1. In the Oracle Console, click the **Navigation** menu.
 
-  ![ALT text is not available for this image](images/2587885780.png)
+  ![Click the Navigation menu](images/click-navigation-menu.png =50%x*)
 
-2. Click **Create Rule**.
+2. Click **Observability & Management**. Under **Events Service**, click **Rules**.
+  
+  ![Click Rules](images/click-rules.png)
 
-  ![ALT text is not available for this image](images/2587885820.png)
+2. On the **Rules** page, click **Create Rule**.
 
-3. Fill out the dialog box:
+  ![Click Create Rule](images/click-create-rule.png)
 
-    - **DISPLAY NAME** : Provide a name, such as the event type that you will be choosing; in this lab, the event type will be Autonomous Database - Stop End.
-    - **DESCRIPTION** : Provide a description.
+3. On the **Create Rule** page, specify the following:
+    - **DISPLAY NAME:** : Provide a name, such as the event type that you will be choosing; in this lab, the event type will be `Autonomous Database - Stop End`.
+    - **DESCRIPTION:** Provide a description.
 
-  Under **Rule Conditions**
+    In the **Rule Conditions** section, specify the following:
+    - **Condition:** `Event Type`
+    - **SERVICE NAME:** `Database`
+    - **EVENT TYPE:** : Choose `Autonomous Database - Stop End` from the drop-down list.
 
-    - **Condition:** Event Type
-    - **SERVICE NAME**: Database
-    - **EVENT TYPE** : Choose **Autonomous Database - Stop End** from the drop down menu. 
+    In the **Actions** section, specify the following:
 
-  Under **Actions**
+    - **ACTION TYPE:** `Notifications`
+    - **NOTIFICATIONS COMPARTMENT:**: Choose your compartment.
+    - **TOPIC:** Choose the topic created earlier, **Data-Notification**.
 
-    - **ACTION TYPE**: Notifications
-    - **NOTIFICATIONS COMPARTMENT**: Choose your compartment.
-    - **TOPIC**: Choose the topic created earlier, **Database-Notification**.
+4. Click **Create Rule**.
 
-4. Click **Create Rule**. 
+  ![Click Create Rule](images/click-create-rule-page.png)
 
-  ![ALT text is not available for this image](images/2587886335.png)
+  The **Autonomous Database - Stop End** page is displayed.
+
+  ![The Stop End page is displayed](images/stop-end-page.png)
 
 You have configured a Notification service and tied an event to it with a specific compartment. When a database is shut down, an email notification will be sent to the email address specified.
 
 ## Task 6: Trigger the Event
 
-Now shut down the Autonomous Database to trigger the notification email.
+You will now shut down the Autonomous Database to trigger the notification email.
 
-1. Navigate to your Autonomous Database's Details page. From the **More Actions** drop-down menu, select **Stop**.
+1. Navigate to the **`ADW_Finance_Mart`** **Autonomous Database details** page. Click the **More actions** drop-down list, and then select **Stop**.
 
-  ![ALT text is not available for this image](images/2587886423.png)
+  ![Stop the database](images/stop-database.png)
 
 2. In the confirmation dialog box, click **Stop**.
 
-  ![ALT text is not available for this image](images/2587886425.png)
+  ![Confirm database stop](images/confirm-stop.png =50%x*)
 
-3. Wait until the database status changes to **STOPPED**.
+3. The initial status of the database is **STOPPING**.
+
+    ![The status is stopping](images/status-stopping.png " ")
+
+4. Wait until the database status changes to **STOPPED**.
+
+    ![The status is stopped](images/status-stopped.png " ")
 
 ## Task 7: Verify that an Email Notification Was Sent
 
-Check the email account you specified to verify that a notification email was sent.
+Check the the email account that you specified to verify that a notification email was sent.
 
 1. Go to the specified email account and verify that a notification of the database stoppage has been sent.
 
-  ![ALT text is not available for this image](images/2587886485.png)
+  ![The email notification is sent](images/stop-database-email.png)
 
 ## **PART 2 - Define an Alarm that Will Email a Notification When CPU Utilization Exceeds a Specific Percentage**
 
 In Tasks 8 through 10, define an alarm that triggers an email when CPU utilization exceeds a percentage level that you set.
 
-**Note:** For convenience, use the same topic and subscription that you defined in Part 1. You could define new ones, if you prefer.
+>**Note:** For convenience, use the same topic and subscription that you defined in Part 1; however, you could define new ones, if you prefer.
 
 ## Task 8:  Define an Alarm for the CPU Utilization Chart
 
-1. Navigate to your Autonomous Database's **Details** page. Scroll down to the **Metrics** charts. In the **CPU Utilization** chart, click the **Options** drop-down menu and select **Create an Alarm on this Query**. 
+1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **STARTING**. In a few minutes, the status changes to **AVAILABLE**.
 
-  ![ALT text is not available for this image](images/2619002341.png)
+    ![The database is started](images/database-started.png =60%x*)
 
-2. Fill in or update the alarm settings in the **Create Alarm** dialog:
+2. Scroll-down the **Autonomous Database details** page to the **Metrics** charts. In the **CPU Utilization** chart, click the **Options** drop-down list, and then select **Create an alarm on this query**.
 
-- **ALARM NAME** : Provide a name, perhaps indicating the metric that will trigger the alarm. In this lab example, the alarm is to alert unusual CPU usage .
-- **ALARM BODY** : Provide a description, for example: CPU usage alarm; an Autonomous Database may be utilizing more CPU than usual.
+  ![Define an alarm](images/define-alarm.png)
 
-  ![ALT text is not available for this image](images/2619004504.png)
+3. On the **Create Alarm** page, specify the following:
+    - **Alarm name:** Provide a name, perhaps indicating the metric that will trigger the alarm. In this lab example, the alarm is to `alert unusual CPU usage`.
+ 
+    In the **Metric description** section, specify the following:
+    - **Compartment:** Choose the compartment that contains the Autonomous Database for which you are creating the alarm.
+    - **Metric namespace**: The available options depend on the types of resources that exist in the selected compartment. In this case, choose **`oci_autonomous_database`**.
+    - **Metric name** : **`CpuUtilization`**
 
-  Under **Metric description**
+    In the **Metric dimensions** section, specify the following:
+    - Click **+Additional dimension**. Select **resourceId** from the drop-down list as the name. For the **Dimension value**, Select the first value in the drop-down list. This is the OCID for your region. You can find your region's OCID on your **Autonomous Database details** page.
+    - **DeploymentType:** Select **Shared**
 
-- **COMPARTMENT:** Choose the compartment containing the Autonomous Database for which you are creating the alarm
-- **METRIC NAMESPACE**: Options depend on the types of resources that exist in the selected compartment. In this case, choose **oci_autonomous_database**.
-- **METRIC NAME** : **CpuUtilization** 
+    In the **Trigger rule 1** section, specify the following:
+    - **Operator:** `greater than`.
+    - **Value:** Specify the value of the condition threshold. In this lab example, specify **30** so that the alarm will trigger if CPU utilization exceeds 30 percent.
+    - **Trigger delay minutes:** Specify the number of minutes that the condition must be maintained before the alarm is in a firing state. In this lab example, specify **1** minute.
+    - **Alarm severity:** Select `Critical`.
 
-  Under **Metric dimensions**
+    In the **Define alarm notifications** section, specify the following:
 
-- **DIMENSION NAME:** Keep the default value, **resourceId**
-- **DIMENSION VALUE**: Keep the default value.
-- **DEPLOYMENTTYPE**: Select **Shared**
+    - **Destination service:** Select **`Notifications`**.
+    - **Compartment:** Select your compartment.
+    - **Topic:** Select the topic you defined earlier in **Part 1 > Task 1** of this lab, **`Data-Notifications`**.
 
-![ALT text is not available for this image](images/2619005278.png)
+    ![Click Save alarm](images/save-alarm.png)
 
-  Under **trigger rule**
+4. Click **Save alarm**. The **CPU Usage Alarm** is displayed.
 
-- **OPERATOR:** greater than
-- **VALUE**: Specify the value of the condition threshold. In this lab example, specify **30** so that the alarm will trigger if CPU utilization exceeds 30 percent..
-- **TRIGGER DELAY MINUTES**: Specify the number of minutes that the condition must be maintained before the alarm is in a firing state. In this lab example, specify **1** minute.
+    ![The alarm is created](images/alarm-created.png)
 
-  ![ALT text is not available for this image](images/notifications.png)
+## Task 9: Create a CPU Utilization that Triggers the New Alarm
 
-  Under **Notifications**
+Re-run the **`test_proc`** procedure in **Lab 6: Apply Auto Scaling > Task 5** again to create a CPU utilization that triggers the alarm that you just created. You will run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm.
 
-- **DESTINATION SERVICE:** Select **Notifications Service**
-- **COMPARTMENT**: Select your compartment.
-- **TOPIC**: Select the topic you defined earlier in Part 1 > Task 1 of this lab. Click **Save alarm**.
+1. Navigate to your SQL Worksheet.
 
-  ![ALT text is not available for this image](images/2619005285.png)
+2. Go to your **Query 1**, **Query 2**, and **Query 3** SQL worksheets (re-open 3 instances if you closed the tabs from before). Change the **Consumer group** drop-down list setting to **HIGH**. Copy the following execute command into each worksheet; however, _but do not immediately execute the command_. After you have entered the command into the three worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
 
-## Task 9: Re-run the Procedure in the Auto Scaling Lab to Create a CPU Utilization that Triggers the Alarm
+    ```
+    <copy>
+    exec test_proc;
+    </copy>
+    ```
+    ![Execute command, query 1.](./images/run-query-1.png " ")
 
-1. Return to this workshop's Auto Scaling lab.  
-2. In Part 2 of that lab, perform Task 5. Run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm. 
+    ![Execute command, query 2.](./images/run-query-2.png " ")
+
+    ![Execute command, query 3.](./images/run-query-3.png " ")
 
 ## Task 10: Verify that an Email Notification Was Sent
 
@@ -221,14 +238,12 @@ You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-- ADW Documentation: [Use Autonomous Database Events](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/notification-critical-and-informational-events.html#GUID-7D1E3455-CD54-495B-BAE5-46B4CBB002B1)
-- OCI Documentation: [Getting Started with Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsgetstarted.htm)
-- OCI Documentation: [Overview of Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
-- OCI Documentation: [Notifications Overview](https://docs.oracle.com/en-us/iaas/Content/Notification/Concepts/notificationoverview.htm)
-- LiveLabs Workshop: [Using Events and Notifications](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?p180_id=653) 
+* [Getting Started with Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsgetstarted.htm)
+* [Overview of Events](https://docs.cloud.oracle.com/en-us/iaas/Content/Events/Concepts/eventsoverview.htm)
+* [Notifications Overview](https://docs.oracle.com/en-us/iaas/Content/Notification/Concepts/notificationoverview.htm)
 
 ## Acknowledgements
 
-- **Author **- Rick Green, Principal Developer, Database User Assistance
-- **Contributor** - Nilay Panchal, ADB Product Management
-- **Last Updated By/Date** - Kamryn Vinson, May 2021
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Contributor:** Nilay Panchal, ADB Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, May 2024

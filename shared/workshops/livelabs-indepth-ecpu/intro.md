@@ -48,7 +48,7 @@ Use these links to get more information about Oracle Autonomous Database:
 - [Oracle Autonomous Data Warehouse ipaper](https://www.oracle.com/us/products/database/autonomous-dw-cloud-ipaper-3938921.pdf)
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 - [Autonomous Data Warehouse Videos](https://docs.oracle.com/en/cloud/paas/autonomous-database/shared/videos.html)
-- [Autonomous Database Workshops: Click "View All Workshops", then under "Workshop Series", select "Autonomous DB Serverless"](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/home/)
+- [Autonomous Database Workshops: Click "View All Workshops", then under "Workshop Series", select "Autonomous DB Serverless"](https://livelabs.oracle.com/)
 
 ## Acknowledgements
 

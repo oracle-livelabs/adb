@@ -23,6 +23,7 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 ## Task 1: Load friends JSON data
 
+
 1. Before start the exercise you need to download the data that we will use. **Click** on the following [LINK](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/friend_of.json "open the json file") to see the JSON dataset and **Save it** using **Control S** or different method to save files. We recommend you to call the file **friend\_of.json**.
 
     - **File name:** friend\_of.json

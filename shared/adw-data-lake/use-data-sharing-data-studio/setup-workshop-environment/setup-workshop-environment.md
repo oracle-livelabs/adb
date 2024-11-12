@@ -7,7 +7,7 @@
 
 Since you are using the LiveLabs environment, you **don't** have administrative privileges to create any OCI resources; therefore, all of the OCI resources that you need in this workshop are already created for you with your LiveLabs reservation.
 
-If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Build a Data Lake with Autonomous Warehouse**.
+If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Implement Data Sharing with ADB Data Studio**.
 
 > **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new ADW administrator user and a ADW administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage an ADW and Data Catalog instances.
 
@@ -138,6 +138,8 @@ See [Signing In to the Console](https://docs.cloud.oracle.com/en-us/iaas/Content
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
+</if>
+
 You may now proceed to the next lab.
 
 ## Learn More
@@ -148,7 +150,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, April 2024
+* **Last Updated By/Date:** Lauran Serhal, July 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
