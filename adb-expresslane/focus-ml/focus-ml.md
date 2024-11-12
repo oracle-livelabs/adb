@@ -17,23 +17,23 @@ Always select, **Run on Your Tenancy** when starting a workshop.
 
 Oracle integrates machine learning across the Oracle stack and the enterprise, fully leveraging Oracle Database and Oracle Autonomous Database. In this workshop, create a machine learning model and move the model to ADB. Explore machine learning notebooks and use prediction in applications.
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=560" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=560" class="tryit-button">Try it!</a>
 
 ## Workshop 2: Get started with Oracle Machine Learning Fundamentals on Oracle Autonomous Database
 
 Get a quick tour of Oracle Machine Learning technologies on Autonomous Database. Use OML Notebooks to create and evaluate models and score data using Python and SQL. Use OML Services REST API to deploy models and score data. Use AutoML UI for a no-code machine learning experience.
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=922" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922" class="tryit-button">Try it!</a>
 
 ## Workshop 3: Introduction to Oracle Machine Learning for Python on Autonomous Database
 
 In this hands-on lab, experience Oracle Machine Learning for Python on Oracle Autonomous Database. OML4Py supports scalable in-database data exploration and preparation using native Python syntax, invocation of in-database algorithms for model building and scoring, and embedded execution of user-defined Python functions from Python or REST APIs. OML4Py also includes the AutoML interface for automated algorithms and feature selection, and hyperparameter tuning. Join us for this tour of OML4Py.
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=786" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=786" class="tryit-button">Try it!</a>
 
 ## Learn More
 
-* [LiveLabs](https://developer.oracle.com/livelabs)
+* [LiveLabs](https://livelabs.oracle.com)
 
 ## Acknowledgements
 * **Author** - Kevin Lazarz, Senior Principle Product Manager, DB Product Management

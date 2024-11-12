@@ -8,7 +8,6 @@ Your RESTful AI services are now available to applications across your organizat
 -  Recommended pizza pairing using spatial analytics
 -  Mapping of nearby pizza locations
 
-
 Here is a preview of what to expect:
 
 ![MovieStreamAI landing page](./images/moviestreamai.png "")
@@ -23,7 +22,7 @@ In this lab, you will:
 * Understand how to use your API in the MovieStreamAI App
 
 ### Prerequisites
-- This lab requires the completion of all the preceding labs. 
+- This lab requires the completion of all the preceding labs.
 
 ## Task 1: Copy the root URL for Oracle REST Data Services
 The app will need the root URL for your Autnomous Database instance RESTful services. It's easy to get that URL from your browser's URL location bar.
@@ -37,17 +36,19 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 ## Task 2: Create bucket to host MovieStreamAI application
 
-1. Use the OCI hamburger menu to navigate to **Storage -> Buckets** 
+1. In your Autonomous Database browser tab, open the **Navigation** menu in the Oracle Cloud console and then click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-2. Click **Create Bucket** 
+2. On the **Buckets** page, select the compartment where you want to create the bucket from the Compartment drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
 
-3. Name the bucket, **movie-app** and click **Create**. Leave all other fields as default. 
+3. Click **Create Bucket**.
 
-  ![Create bucket](./images/create-bucket.png "")
+4. Name the bucket, **movie-app** and accept the default for all other fields as default. Next, click **Create**.
 
-4. Change the bucket's visibility to public. Click on the bucket **movie-app**, then click **Edit Visibility**. Select **Public** and then click **Save Changes**. 
+  ![Create bucket](./images/create-bucket.png =65%x*)
 
-  ![Change visibility to public](./images/public-visibility.png "")
+4. Change the bucket's visibility to public. Click on the bucket **movie-app**, then click **Edit Visibility**. Select **Public** and then click **Save Changes**.
+
+  ![Change visibility to public](./images/public-visibility.png =65%x*)
 
 ## Task 3: Deploy the app using Object Storage
 
@@ -55,8 +56,8 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
   ![Open Cloud Shell](./images/open-cloudshell.png "")
 
-2. Run the following command:
-**TO DO: his needs to be uploaded to the public bucket in livelabs**
+2. Run the following command to download the React application:
+
     ```
     <copy>
     wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ba2tl-Lz1tiUOX_3HLkkLuEMHG6vZs54nawkD0OtDrDXL1THcl4gd9XsyBN-od6O/n/c4u04/b/building_blocks_utilities/o/select-ai-react-app/movie-app.zip
@@ -73,9 +74,9 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
   ![update APIs in config.txt file](./images/update-config.png "")
 
->**Note:** The information in `config.txt` is used by a bash script to send the objects to the correct object storage bucket. The script `generated_config.sh` generates a config file `./src/config.ts` using that same `config.txt` file. The `config.ts` contains the api variables used by the React app to make REST calls to your Autonomous Database.
+    >**Note:** The information in `config.txt` is used by a bash script to send the objects to the correct object storage bucket. The script `generated_config.sh` generates a config file `./src/config.ts` using that same `config.txt` file. The `config.ts` contains the api variables used by the React app to make REST calls to your Autonomous Database.
 
-4. Enter the **BUCKET\_NAME** and **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
+4. Enter the **BUCKET\_NAME**, **movie-app** and your **ADB\_URL\_PREFIX** into each of the corresponding fields. Press the **Esc** button and then **:wq!** to save and exit.
 
 5.  Run the following commands to deploy the app.
 
@@ -88,17 +89,17 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
     </copy>
     ```
 
->**Note:** This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy\_to\_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
+    >**Note:** This script does all the deployment in a few simple commands. First, the src files are pulled from the repository and unzipped. The react-scripts are installed, while permissions are enabled for them. The **npm run deploy** script runs both the build and deploy\_to\_oci.sh script that implements OCI CLI to bulk upload the build directory to the bucket **movie-app**.
 
 ## Task 4: Understand how to use the API in the MovieStreamAI App
 
-The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage. 
+The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage.
 
 1. Navigate back to **movie-app** bucket. You may need to refresh the object storage file listing by clicking **More Actions -> Refresh**. Then, click the ellipsis for the **index.html** object.  Click on object details. 
 
   ![Open object details for index.html](./images/index-details.png "")
 
-2. Grab the URL for the object and paste into a new tab in the browser. 
+2. Copy the URL for the object up to but don't include the **/o/** and paste into a new tab in the browser.
 
   ![copy url for index.html](./images/react-url.png "")
 
@@ -106,9 +107,11 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 3. View the file **App.tsx** by running the command in the shell.
 
-  ```
-  <copy>cat ./src/App.tsx</copy>
-  ```
+    ```
+    <copy>
+    cat ./src/App.tsx
+    </copy>
+    ```
 
 4. Click the **double arrow** in the shell to expand the window full screen.
 
@@ -134,8 +137,8 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
   ![Search Customer ID](./images/customer-id-dropdown.png "")
 
 8. The data that is being fetched from the api can be seen in the Browser Developer Tool interface by selecting the endpoints. Click through each of them to see what data is being pulled from the API.
-- pizza_shop/
-- Customer ID entered in SearchBar (shown 3 times)
+    - pizza_shop/
+    - Customer ID entered in SearchBar (shown 3 times)
 
   ![Show API response in DevTools](./images/api-response.png "")
 
@@ -152,9 +155,11 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
   ```
   >**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
 
-  ```
-  <copy>cat ./AI/ResponseComponent.tsx</copy>
-  ```
+    >**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
+
+    ```
+    <copy>cat ./AI/ResponseComponent.tsx</copy>
+    ```
 
 11. The Map component is updated with the information pulled from the customer fetch sequence to set the map coordinates to the coordinates pulled from the AutoREST of the Customer API. Investigate this in the **App.tsx** file for better understanding of the Open-Source Mapping. 
 
@@ -174,6 +179,7 @@ You may now proceed to the next lab.
   * **Contributors:** 
     * Stephen Stuart, Cloud Engineer 
     * Nicholas Cusato, Cloud Engineer 
+    * Lauran K. Serhal, Consulting User Assistance Developer
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
@@ -182,7 +188,7 @@ You may now proceed to the next lab.
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

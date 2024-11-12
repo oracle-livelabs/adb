@@ -15,7 +15,7 @@ Estimated Time: 15 minutes.
 
 In this lab, you will:
 
-* Review and test our REST endpoints 
+* Review and test our REST endpoints
 * Export the API definitions for use by OpenAPI tools
 
 ### Prerequisites
@@ -39,44 +39,53 @@ Let's review our **customer** endpoint. We'll test it and then save the URL.
 4. This view will look familiar if you use OpenAPI tools; they present the APIs in a very similar way. As you can see, AutoREST exposed numerous APIs for customer. For example, you can add, delete and view customer records. 
 
     Let's get all customers whose last name includes "Water". Use the **GET** API and apply a JSON query by example parameter:
-    - Click **GET** and then click the **Try it out** button. 
-    - Enter the following into the parameter field: 
+    - Click **GET** and then click the **Try it out** button.
+    - Copy and paste the following code into the parameter field:
+
         ```
         <copy>
         {"last_name":{"$instr":"Water"}}
         </copy>
         ```
-    - The form should look like the following:
+    The form should look as follows:
+
         ![completed form](images/openapi-customer-qbe-form.png)
 
-        Click **Execute**
-5. Scroll down to the **Response body** section to see the results. You'll find numerous customers whose name contains `Water`:
+5. Click **Execute**
+
+6. Scroll down to the **Response body** section to see the results. You'll find numerous customers whose name contains `Water`:
     ![Names with Water](images/openapi-water-results.png)
 
-
 ## Task 2: Review the movie recommendation API using the OpenAPI view
-Let's review the **apiapp** module using the OpenAPI view. 
 
-1. Go to the **Modules** tab. You'll see 2 modules:
+Let's review the **apiapp** module using the OpenAPI view.
+
+1. Go to the **Modules** tab. You'll see 2 modules.
+
     - the **api** module that was created by the setup script
     - the **apiapp** module that you created in the previous lab
-        ![module list](images/module-list.png)
 
-2. Click the 3 dots on the **apiapp** tile and select **OpenAPI view**:
-    ![go to openapi view for apiapp module](images/goto-apiapp-module.png)
+        ![module list](images/module-list.png =60%x*)
+
+2. Click the 3 dots on the **apiapp** tile and select **OpenAPI view** from the context menu.
+
+    ![go to openapi view for apiapp module](images/goto-apiapp-module.png =60%x*)
 
 3. Test the **ai/moviePizzaRecommendation/{cust_id}**:
     - Click **GET** for API **ai/moviePizzaRecommendation/{cust_id}**
     - Click **Try it out**
-    - Enter  **cust_id**: `1000001` 
-    - Enter parameter AI **profile_name**: `OCIAI_COHERE`. 
-    The complete form should appear as follows:
-    ![alt text](images/openapi-movie-recommendation-form.png)
+    - **cust_id**: `1000001`
+    - **profile_name**: `OCIAI_COHERE`.
     
-    Click **Execute**
+    The completed form should look as follows.
 
-4. Scroll down to the **Response Body** section to view the recommendations.
+    ![The completed form](images/openapi-movie-recommendation-form.png)
+    
+4. Click **Execute**.
 
+5. Scroll down to the **Response Body** section to view the recommendations.
+
+    ![The response.](images/response.png =60%x*)
 
 ## Task 3: Export your API definitions to an OpenAPI tool
 It's easy to export your API signatures to an OpenAPI tool.
@@ -102,19 +111,19 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Author:** Marty Gubar, Product Management 
-  * **Contributors:** 
-    * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
-    * Olivia Maxwell, Cloud Engineer 
-    * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer 
+* **Author:** Marty Gubar, Product Management
+* **Contributors:**
+    * Stephen Stuart, Cloud Engineer
+    * Nicholas Cusato, Cloud Engineer
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
+    * Olivia Maxwell, Cloud Engineer
+    * Taylor Rees, Cloud Engineer
+    * Joanna Espinosa, Cloud Engineer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

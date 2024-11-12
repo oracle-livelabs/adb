@@ -31,7 +31,7 @@
         {
           "title": "Lab 3: Integrate OCI Generative AI with Autonomous Database",
           "description":"Connect Autonomous Database to your LLM",
-          "filename": "../../integrate-genai/integrate-genai.md"
+          "filename": "/common/building-blocks/blocks/adb/integrate-genai/integrate-genai.md"
         },           
         {
           "title": "Lab 4: Use GenAI to analyze your data in Autonomous Database",

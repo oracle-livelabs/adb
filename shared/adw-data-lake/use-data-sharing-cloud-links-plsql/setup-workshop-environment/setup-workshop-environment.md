@@ -7,7 +7,7 @@
 
 Since you are using the LiveLabs environment, you **don't** have administrative privileges to create any OCI resources; therefore, all of the OCI resources that you need in this workshop are already created for you with your LiveLabs reservation.
 
-If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Build a Data Lake with Autonomous Warehouse**.
+If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Set up live data sharing between Oracle Databases using Cloud Links and PL/SQL APIs**.
 
 > **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new ADW administrator user and a ADW administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage an ADW and Data Catalog instances.
 
@@ -63,15 +63,15 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 1. Open the **Navigation** menu and click **Identity & Security**. Under **Identity**, click **Compartments**.
 
-       ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png "Click the Navigation menu, and navigate to Compartments.")
+       ![The Navigation menu is clicked. The navigation path to Compartments is displayed.](./images/navigate-compartment.png =65%x*)
 
     For faster navigation, you can pin items that you use frequently. To pin an item, hover over the menu item and then click pin to the left of the item name.
 
-    ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png " ")
+    ![An example on pinning an item such as Data Lake/Data Catalog for quicker access is shown.](./images/pin-items.png =65%x*)
 
     The pinned item is displayed in the **Pinned** section of the **Home** tab the next time you use the Navigation menu.
 
-    ![An example that shows the Compartment item pinned.](./images/pinned-item.png " ")
+    ![An example that shows the Compartment item pinned.](./images/pinned-item.png =65%x*)
 
     The **Recently visited** section of the **Home** tab shows recently used navigation items.
 
@@ -79,17 +79,17 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 2. On the **Compartments** page, click **Create Compartment**.
 
-   ![The Compartments page is displayed. The Create Compartment button is highlighted.](./images/click-create-compartment.png " ")
+   ![The Compartments page is displayed. The Create Compartment button is highlighted.](./images/click-create-compartment.png =65%x*)
 
 3. In the **Create Compartment** dialog box, enter **`training-adw-compartment`** in the **Name** field and **`Training ADW Compartment`** in the **Description** field.
 
 4. In the **Parent Compartment** drop-down list, select your parent compartment, and then click **Create Compartment**.
 
-   ![On the completed Create Compartment dialog box, click Create Compartment.](./images/create-compartment.png " ")
+   ![On the completed Create Compartment dialog box, click Create Compartment.](./images/create-compartment.png =65%x*)
 
    The **Compartments** page is re-displayed and the newly created compartment is displayed in the list of available compartments.
 
-   ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png " ")
+   ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =65%x*)
 
 ## Task 3: Create an Autonomous Data Warehouse Instance
 
@@ -104,7 +104,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
        * **Display Name:** **`ADW-Data-Lake`**.
        * **Database Name:** **`TrainingADW`**.
 
-       ![The completed "Provide basic information for the Autonomous Database" section is displayed.](./images/adb-basic-info.png " ")
+       ![The completed "Provide basic information for the Autonomous Database" section is displayed.](./images/adb-basic-info.png =75%x*)
 
 5. In the **Choose a workload type** section, accept the **Data Warehouse** default selection.
 
@@ -152,7 +152,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
        **Important:** Make a note of this _password_ as you will need it to perform later tasks.
        * **Confirm password:** Confirm your password.
 
-       ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png " ")
+       ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png =65%x*)
 
 10. In the **Choose network access** section, select the **Secure access from everywhere** option as the access type.
 
@@ -180,6 +180,8 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
+</if>
+
 You may now proceed to the next lab.
 
 ## Learn More
@@ -190,10 +192,10 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, January 2024
+* **Last Updated By/Date:** Lauran Serhal, July 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (c) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

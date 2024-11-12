@@ -18,7 +18,7 @@ Oracle Database, including Oracle Autonomous Database, provides native support f
 
 ![Conceptual diagram of Spatial in Oracle Autonomous Database](images/spatial.png " ")
 
-For a hands-on general introduction, you are encouraged to review **[Introduction to Oracle Spatial Workshop] (https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=736)**
+For a hands-on general introduction, you are encouraged to review **[Introduction to Oracle Spatial Workshop] (https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=736)**
 
 
 ### Objectives

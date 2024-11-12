@@ -6,10 +6,14 @@ comments syntax
 
 ## Introduction
 
-This workshop focuses on teaching you how to use your data and  generative AI to create a promotional offer using natural language. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
+This workshop teaches you how to apply generative AI to your organization's private data for different types of use cases. 
+
+> **NOTE:** In order to use OCI Generative AI, your tenancy must be subscribed to the **US Midwest (Chicago)** region. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. You can use other AI providers if you do not have access to OCI GenAI.
+
+To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
 * Provision your Autonomous Database instance with the required users and data
-* Connects your Autonomous Database to OCI Generative AI service
+* Connects your Autonomous Database to OCI Generative AI service (assuming you are subscribed to the US Midwest (Chicago) region)
 * Deploy the business logic for running different types of AI projects - like summarizing a support chat and suggesting things to do at a location
 * Deploy RESTful endpoints for executing that business logic from your applications
 * Deploys two APEX apps in a MOVIESTREAM workspace: 
@@ -20,18 +24,17 @@ All of this is done so that you can immediately try all of the different compone
 
 The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure Documentation documentation.
 
-Autonomous Database supports different API providers and models. You will use the models deployed to OCI Generative AI: **Meta Llama 2** and **Cohere**.. 
-
 Estimated Time: 15 minutes.
 
 ### Objectives
 
 In this lab, you will:
 
-* Create an OCI Compartment 
+* (optional) Create an OCI Compartment 
 * Run the stack to perform all the prerequisites required to analyze data
+* Define an IAM policy that enables access to OCI Generative AI
 
-## Task 1: Create an OCI Compartment
+## (Optional) Task 1: Create an OCI Compartment
 
 A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
@@ -63,49 +66,47 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the button below: 
 
-    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-Select-AI-demonstration-RM.zip&sourceType=:ow:lp:cpo::::RC_WWMK211125P00013:llid=3831" class="tryit-button">Deploy workshop</a>
+    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip" class="tryit-button">Deploy workshop</a>
 
-    >**Note:** If you would to learn more about creating Autonomous Databases and loading data, go to this [15 minute quick start](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=928)
+    >**Note:** If you would to learn more about creating Autonomous Databases and loading data, go to this [15 minute quick start](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=928)
 
     The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
     * Create a new user named **`moviestream`**
     * Create movie related tables and views in the **`moviestream`** schema
     * Grant the required privileges to perform various actions in the workshop
-    * Download the **Autonomous Database Select AI** APEX application
-
-     
+    * Download the **Autonomous Database Select AI** APEX applications
 
     >**Note:** For detailed information about Resource Manager and managing stacks in Resource Manager, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm#concepts__package) and [Managing Stacks](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/stacks.htm) documentation.
 
-2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** step 1 of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** check box. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
+2. After you log in to your Oracle Cloud account, the **Create stack** page is displayed. In the **Stack information** **step 1** of the wizard, select the **I have reviewed and accept the Oracle Terms of Use** checkbox. In the **Create in compartment** drop-down list, select your desired compartment. Accept the default values for the rest of the fields, and then click **Next**.
 
-  ![The Stack information step 1 of the wizard](./images/create-stack-updated.png "")
+  ![The Stack information step 1 of the wizard](./images/create-stack-updated.png =75%x*)
 
-3. In the **Configure variables** step 2 of the wizard, provide the following:
+3. In the **Configure variables** **step 2** of the wizard, provide the following:
     * **Region:** Select the target region for the new Autonomous Database instance. In our example, we chose the `us-chicago-1` region.
     * **Compartment:** Select the target compartment for the new Autonomous Database instance.
-    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. In our example, we changed the database name to **``TrainingAIWorkshop``**. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
-        >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    * **Database Name:** The default database name is **`MovieStreamWorkshop`**. You can replace this name with your own name but that is optional. The database name must contain only letters and numbers, starting with a letter, and between 12 and 30 characters long. The name cannot contain the double quote (") character, space, underscore "_", or the username `admin`.
+    
+    
+    >**Important:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+    
+    * **Do you want a always Free Oracle Autonomous Database instance?** Accept the default **`false`** value. Select **`true`** from the drop-down list if you want to deploy an Always Free database.
+
+        ![Provision an ADB instance](./images/provision-paid.png "")
 
     * **Password:** Enter a password for the `ADMIN` user of your choice such as **`Training4ADW`**. **Important**: Make a note of this password as you will need it to perform later tasks.
     * For the other fields, accept the default selections.
-
-    >**Note:** The **Secret Key** is **not Required** for this Lab since OCI Generative AI does not use a secret key for Resource Operations. 
     
-    ![The Configure variables step 2 of the wizard part one](./images/configure-step-two.png)
-
-    ![The Configure variables step 2 of the wizard](./images/configure-variables.png)
+    ![The Configure variables step 2 of the wizard](./images/configure-variables.png =80%x*)
 
 4. Click **Next**.
 
-    ![Click next in step 2 of the wizard](./images/create-stack-steptwo.png "")
+   >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
 
-    >**Note:** If clicking **Next** does not take you to the page 3 of the wizard, check the **Region** field. It may have been reset.
+5. In the **Review** **step 3** of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
 
-5. In the **Review** step 3 of the wizard, review your configuration variables and make any necessary changes on the previous pages. If everything looks good, then it's time for you to create and apply your stack! Ensure that the **Run apply** check box is checked, and then click **Create**.
-
-    ![Click Create](./images/create-stack-stepthree.png "")
+    ![Click Create](./images/create-stack-step3.png =80%x*)
 
 6. The **Job details** page is displayed. The initial status (in orange color) is **ACCEPTED** and then **IN PROGRESS**.
 
@@ -145,9 +146,31 @@ Use an OCI Cloud Stack to set up your workshop environment. This step will creat
 
     ![Failed job](./images/failed-job.png "")
 
-11. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed, **``TrainingAIWorkshop``**.
+11. Let's view the newly provisioned ADB instance. From the Console, open the **Navigation** menu and click **Oracle Database**. Under **Autonomous Database**, click **Autonomous Data Warehouse**. On the **Autonomous Databases** page, select the _compartment and region_ that you specified in the **Configure variables** step 2 of the wizard. The Autonomous Database that was provisioned by the stack is displayed: it's blurred out here - the field will match the name you gave it in the previous steps.
 
     ![The Autonomous Databases page](./images/adb-instances.png "")
+
+## Task 3: Create policy to enable access to OCI Generative AI 
+You need to perform this task if you plan to use OCI Generative AI and not a 3rd party AI model. 
+
+Create a policy that will allow you to use OCI Generative AI within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
+
+1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
+
+2. Click on **Create policy** and paste the following into the appropriate fields:
+
+    >**Note:** Slide the **Show manual editor** control to display the text field in order to paste the policy.
+
+    * **Name:** **`PublicGenAI`**
+    * **Description:** **`Public Gen AI Policy`**
+    * **Compartment:** **`select your own compartment`**
+    * **Policy:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
+    
+3. Click **Create**.
+
+    ![Create policy](./images/create-policy.png "")
+    
+>**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
 
 You may now proceed to the next lab.
 
@@ -159,23 +182,20 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Author:** 
+  * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Contributors:** 
-    * Stephen Stuart, Cloud Engineer 
-    * Nicholas Cusato, Cloud Engineer 
-    * Olivia Maxwell, Cloud Engineer 
-    * Taylor Rees, Cloud Engineer 
-    * Joanna Espinosa, Cloud Engineer 
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Nicholas Cusato, February 2024
-
-
+  * **Contributors:**
+    * Stephen Stuart, Cloud Engineer
+    * Nicholas Cusato, Cloud Engineer
+    * Olivia Maxwell, Cloud Engineer
+    * Taylor Rees, Cloud Engineer
+    * Joanna Espinosa, Cloud Engineer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (c) 2004 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

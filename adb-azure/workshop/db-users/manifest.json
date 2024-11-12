@@ -1,0 +1,72 @@
+{
+    "workshoptitle": "Introduction to Oracle Database@Azure - Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+                {
+            "title": "Introduction",
+            "description": "Introduction of the workshop.",
+            "filename": "./intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Pre-requisites to provision Autonomous Databases",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-provisioning-pre-requisites/adb-provisioning-pre-requisites.md"
+        },
+        {
+            "title": "Lab 1: Provisioning Autonomous Database",
+            "description": "Provisioning Autonomous database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-provisioning-databases/adb-provisioning-databases.md"
+        },
+        {
+            "title": "Lab 2: Connect Securely with Visual Studio",
+            "description": "Connect Autonomous Database with Visual Studio",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../adb-connect-with-vs/adb-connect-with-vs.md"
+        },
+        {
+            "title": "Lab 3: Migrate to ADB using Data Pump",
+            "description": "Migrate to Autonomous Database using Data Pump",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../migrate-to-adb/migrate-to-adb.md"
+        },
+        {
+            "title": "Lab 4: Connect ADB with Swingbench application",
+            "description": "Connect Swingbench application with Autonomous Database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../connect-to-swingbech-app/connect-to-swingbech-app.md"
+        },
+        {
+            "title": "Lab 5: Connect PowerBI with ADB",
+            "description": "Connect PowerBI with Autonomous Database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../connect-to-powerbi/connect-to-powerbi.md"
+        },
+        {
+            "title": "Lab 6: Chat with your data in ADB using Generative AI",
+            "description": "Chat with your data in ADB using Generative AI",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../chat-with-your-data-using-genai/chat-with-your-data-using-genai.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

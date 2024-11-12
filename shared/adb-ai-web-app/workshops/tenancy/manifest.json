@@ -11,52 +11,62 @@
       {
         "title": "Introduction",
         "description":"Introduction to the workshop",
-        "filename": "../../introduction/introduction.md"
+        "filename": "../../introduction/introduction.md",
+        "type":"react"
       },
       {
         "title": "Get started",
         "description":"Get started using Oracle Cloud Infrastructure",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md",
+        "type":"react"
       },
       {
         "title": "Lab 1: Set up Your Workshop Environment",
         "description":"Set up an Autonomous Database and an LLM account",
-        "filename": "../../setup-environment/setup-environment.md"
+        "filename": "../../setup-environment/setup-environment.md",
+        "type":"react"
       },
       {
         "title": "Lab 2: Explore OCI Generative AI Service",
         "description":"Explore OCI Generative AI Service",
-        "filename": "../../explore-oci-genai/explore-oci-genai.md"
+        "filename": "../../explore-oci-genai/explore-oci-genai.md",
+        "type":"react"
       },           
       {
         "title": "Lab 3: Integrate OCI Generative AI with Autonomous Database",
         "description":"Connect Autonomous Database to your LLM",
-        "filename": "../../integrate-genai/integrate-genai.md"
+        "filename": "/common/building-blocks/blocks/adb/integrate-genai/integrate-genai.md",
+        "type":"react"
       },            
       {
         "title": "Lab 4: Use GenAI to analyze your data in Autonomous Database",
         "description":"Deliver GenAI projects tat summarize chats and recommend movies",
-        "filename": "../../business-logic/business-logic.md"
+        "filename": "../../business-logic/business-logic.md",
+        "type":"react"
       },
       {
         "title": "Lab 5: Publish AI projects as RESTful services",
         "description":"Enable analytics across your organization",
-        "filename": "../../expose-rest/expose-rest.md"
+        "filename": "../../expose-rest/expose-rest.md",
+        "type":"react"
       },
       {
         "title": "Lab 6: Use OpenAPI tools with your RESTful services",
         "description":"Document and test your APIs",
-        "filename": "../../openapi-integration/openapi-integration.md"
+        "filename": "../../openapi-integration/openapi-integration.md",
+        "type":"react"
       },        
       {
         "title": "Lab 7: Deliver a React app that uses the RESTful AI services",
         "description":"Building custom apps",
-        "filename": "../../deliver-nl-app/deliver-nl-app.md"
+        "filename": "../../deliver-nl-app/deliver-nl-app.md",
+        "type":"react"
       },
     {
         "title": "Lab 8: Clean Up",
         "description":"Destroy the resources to clean up",
-        "filename": "../../cleanup/cleanup.md"
+        "filename": "../../cleanup/cleanup.md",
+        "type":"react"
       },
       {
         "title": "Need Help?",

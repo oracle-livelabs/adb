@@ -111,7 +111,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Object Browser](./images/task-5/object-browser.png " ")
 
 
-4. Upload the script [found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
+4. Upload the script [found here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
 
     ![Navigate to SQL Scripts](./images/task-5/sql-scripts.png " ")
     ![Upload the SQL Script](./images/task-5/upload-sql-script.png " ")
@@ -130,7 +130,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). 
+8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). 
  After each load, verify that all columns were mapped correctly, and  click "View Table" once complete to return to object browser.
 
      >***Note:*** Do not create application - return to object browser
@@ -146,16 +146,16 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
     >***Note:*** Ensure all columns are mapped properly. After each load, click view table to return to the object browser
 
-    | Table name | File to upload |
-    | -----------|-----------|
+    | Table name            | File to upload                        |
+    | --------------------- | ------------------------------------- |
     | Healthcare Facilities | HEALTHCARE\_FACILITY\_DATA\_TABLE.csv |
-    | LAB | LAB\_DATA\_TABLE.csv |
-    | PATIENT | PATIENT\_DATA\_TABLE.csv |
-    | PATIENT_DOCUMENTS | Do not upload |
-    | PATIENT_INSURANCE | Do not upload |
-    | PATIENT_LAB | PATIENT\_LAB\_DATA\_TABLE.csv |
-    | PATIENT_VISIT | PATIENT\_VISIT\_DATA\_TABLE.csv |
-    | PRACTITIONER | PRACTITIONER\_DATA\_TABLE.csv |
+    | LAB                   | LAB\_DATA\_TABLE.csv                  |
+    | PATIENT               | PATIENT\_DATA\_TABLE.csv              |
+    | PATIENT_DOCUMENTS     | Do not upload                         |
+    | PATIENT_INSURANCE     | Do not upload                         |
+    | PATIENT_LAB           | PATIENT\_LAB\_DATA\_TABLE.csv         |
+    | PATIENT_VISIT         | PATIENT\_VISIT\_DATA\_TABLE.csv       |
+    | PRACTITIONER          | PRACTITIONER\_DATA\_TABLE.csv         |
     
 10. There should now be data in 6/8 tables
 
@@ -256,21 +256,21 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Run the application to view changes](./images/task-6/view-application-changes.png " ")
 
-12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/jyHA4nclWcTaekNIdpKPq3u2gsLb00v_1mmRKDIuOEsp--D6GJWS_tMrqGmb85R2/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip).
+12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip).
 
     
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
 
 13. Upload all 6 PDF documents ensuring that the **Patient Visit ID** matches the document name that is being uploaded. Repeat this step for all 6 PDF documents. 
 
-    | Patient Visit Id | File to upload |
-    | -----------|-----------|
-    | 651 - Bettye Wartnaby	 | Bettye\_Wartnaby\_Visit.pdf |
-    | 430 - Shelli Purslow | Shelli\_Purslow\_Visit.pdf |
+    | Patient Visit Id         | File to upload                 |
+    | ------------------------ | ------------------------------ |
+    | 651 - Bettye Wartnaby    | Bettye\_Wartnaby\_Visit.pdf    |
+    | 430 - Shelli Purslow     | Shelli\_Purslow\_Visit.pdf     |
     | 757 - Christye McCarrick | Christye\_McCarrick\_Visit.pdf |
-    | 292 - Vilma Marciek | Vilma\_Mariek\_Visit.pdf |
-    | 553 - Oralla Gemlbett	 | Oralla\_Gemlbett\_Visit.pdf |
-    | 3 - Pascale Greendale | Pascale\_Greendale\_Visit.pdf |
+    | 292 - Vilma Marciek      | Vilma\_Mariek\_Visit.pdf       |
+    | 553 - Oralla Gemlbett    | Oralla\_Gemlbett\_Visit.pdf    |
+    | 3 - Pascale Greendale    | Pascale\_Greendale\_Visit.pdf  |
 
     
     ![Upload all 6 sample documents](./images/task-6/upload-samples.png " ")

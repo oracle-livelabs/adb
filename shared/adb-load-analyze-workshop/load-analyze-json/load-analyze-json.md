@@ -15,7 +15,6 @@ In this lab, you will:
 * Load JSON data from Oracle Object Storage using the `DBMS_CLOUD.COPY_COLLECTION` procedure
 * Use SQL to analyze both simple and complex JSON attributes
 
-
 ### Prerequisites
 
 - This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
@@ -31,7 +30,20 @@ In this lab, you will:
 
 Please [*proceed to the next lab*](#next).
 
+## Learn more
+
+* [DBMS_CLOUD Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-package.html#GUID-CE359BEA-51EA-4DE2-88DB-F21A9FC10721)
+* [JSON File Format](https://en.wikipedia.org/wiki/JSON).
+* [COPY_COLLECTION Procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-0985BB63-A86D-41C0-8B5B-B9E965809F5A)
+* [Dropping a Document Collection with SODA for PL/SQL](https://docs.oracle.com/en/database/oracle/oracle-database/18/adsdp/using-soda-pl-sql.html#GUID-D29C4FFF-D093-4C1B-889A-5C29B63756C6)
+* [ Query JSON Data](https://docs.oracle.com/en/database/oracle/oracle-database/19/adjsn/query-json-data.html#GUID-119E5069-77F2-45DC-B6F0-A1B312945590)
+* [SQL/JSON Function JSON_VALUE](https://docs.oracle.com/en/database/oracle/oracle-database/19/adjsn/function-JSON_VALUE.html#GUID-0565F0EE-5F13-44DD-8321-2AC142959215)
+* [SQL/JSON Function JSON_TABLE](https://docs.oracle.com/en/database/oracle/oracle-database/19/adjsn/function-JSON_TABLE.html#GUID-0172660F-CE29-4765-BF2C-C405BDE8369A)
+
+You may now proceed to the next lab.
+
 ## Acknowledgements
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Marty Gubar, July 2022
+* **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2024

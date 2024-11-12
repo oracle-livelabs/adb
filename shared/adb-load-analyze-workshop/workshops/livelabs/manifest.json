@@ -28,7 +28,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
         },
         {
-        "title": "Lab 1: Provision an Analytics Cloud Instance",
+        "title": "Lab 1 (optional): Review How to Provision an Analytics Cloud Instance",
         "description": "Provision Oracle Analytics Cloud. You will use this instance when creating dashboards at the end of this workshop.",
         "type": "livelabs",
         "filename": "/common/building-blocks/blocks/oac/provision/oac-provision.md"
@@ -52,7 +52,7 @@
         "filename": "../../load-local-files-db-actions/load-local-files-db-actions.md"
     },
     {
-        "title": "Lab 5: Develop Self-Service Analytics Cloud Dashboards",
+        "title": "Lab 5 (optional): Review How to Develop Self-Service Analytics Cloud Dashboards",
         "description": "Use Analytics Cloud for interactive dashboards",
         "type": "livelabs",
         "filename": "../../develop-dashboards/develop-dashboards.md"
@@ -78,8 +78,14 @@
     {
         "title": "Lab 9 (optional): Create Data Pipelines for Continuous Data Import and Export",
         "description": "Create Oracle Data Pipelines for continuous data import and export",
-        "type": "freetier",
+        "type": "livelabs",
         "filename": "../../create-data-pipelines/create-data-pipelines.md"
+    },
+    {
+        "title": "Lab 10 (optional): Use AutoML to Predict Customer Churn",
+        "description": "Create a Machine Learning model using AutoML UI to Predict Churn",
+        "type": "livelabs",
+        "filename": "../../predict-churn/predict-churn.md"
     },
     {
     "title": "Need Help?",

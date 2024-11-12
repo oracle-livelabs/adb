@@ -24,23 +24,7 @@ This lab requires the completion of the following labs/task from the **Contents*
 * **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**.
 * **Lab 5: Link Data from Private Object Storage Buckets > Task 6: Define a Cloud Location and Create a Credential**.
 
-## Task 1: Navigate to the SQL Worksheet
-
-1. Log in to the **Oracle Cloud Console**.
-
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
-
-<if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
-
-<if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
-
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **SQL**. The SQL Worksheet is displayed.
-
-## Task 2: Create a Materialized View for an External Table
+## Task 1: Create a Materialized View for an External Table
 
 In this task, you will create a materialized view on top of the **custsales** external table that you created in **Lab 4: Task 2** based on **sales\_sample** to improve the query response time.
 
@@ -167,23 +151,19 @@ In this task, you will create a materialized view on top of the **custsales** ex
 
     ![Run query with materialized view.](./images/monitor-query.png " ")
 
-8. Click **Oracle Database Actions** in the banner to display the **Launchpad** landing page.
+8. Click **Database Actions | SQL** in the banner to display the **Launchpad** page. Click the **Monitoring** tab, and then click the **Performance Hub** tab.
 
-    ![Click Database Actions in the banner.](images/click-database-actions.png)
+    ![Click Database Actions in the banner.](images/performance-hub-tab.png)
 
-9. Scroll-down the page to the **Monitoring** section, and then click **PERFORMANCE HUB**.
-
-    ![Click Performance hub.](images/click-performance-hub.png)
-
-10. Click the **SQL Monitoring** tab. Re-size the timeline border as needed to show the queries you ran. Click the link for the latest monitoring query that you ran.
+9. Click the **SQL Monitoring** tab. Re-size the timeline border as needed to show the queries you ran. Click the link for the latest monitoring query that you ran.
 
     ![Click the SQL Monitoring tab.](images/click-sql-monitoring-tab.png)
 
-11. In the **Real-time SQL Monitoring for SQL** page for the selected query, the execution plan shows that the query was re-written to use the materialized view. The data was obtained using the **`sales_summary_mv`** materialized view and not the **`custsales`** detailed table.
+10. In the **Real-time SQL Monitoring for SQL** page for the selected query, the execution plan shows that the query was re-written to use the materialized view. The data was obtained using the **`sales_summary_mv`** materialized view and not the **`custsales`** detailed table.
 
     ![The query is re-written.](images/query-rewrite.png)
 
-## Task 3: Create and Manage Partitioned External Tables
+## Task 2: Create and Manage Partitioned External Tables
 
 Partitioning is a well-established technique to improve the performance and manageability of database systems by dividing large objects into smaller partitions; any large data warehouse takes advantage of it. This is true for large objects inside the database and objects outside the database, such as data lakes in Object Stores.
 
@@ -205,7 +185,7 @@ Let's just have a quick look at what all of this means for a relatively small pa
 
 A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents sales data for two years. The data is in the **sales\_sample** folder in the **moviestream\_landing** Object Storage bucket that you used in the previous task. There are **24** `parquet` data files in this folder. Each file represents a month's worth of data for the years **2019** and **2020**.
 
-1. Click **Oracle Database Actions** in the banner to display the Launchpad landing page. In the **Development** section, click the **SQL** card.
+1. Click **Database Actions | Performance Hub** in the banner to display the **Launchpad** page. Click the **Development** tab, and then click the **SQL** tab.
 
 2. Let's create a monthly partitioned external table on top of these `parquet` files, using the traditional **DBMS\_CLOUD** PL/SQL package and the **CREATE\_EXTERNAL\_PART\_TABLE** procedure. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -392,11 +372,11 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:**
     + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

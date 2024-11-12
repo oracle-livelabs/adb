@@ -18,7 +18,7 @@ Always select, **Run on Your Tenancy** when starting a workshop.
 Use graph analytics and visualization to detect potentially fraudulent money transfers.
 This workshop covers how to load data in CSV files into the database and introduces key graph data modeling and analysis concepts and the interactive Graph Studio for working with graphs in an Autonomous Database. It shows you how to use graph queries to find circular payments, i.e. potentially fraudulent transactions. You will load data from CSV files containing Account and Transaction information. Then create a graph and finally query it and visualize the results.
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=770" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=770" class="tryit-button">Try it!</a>
 
 ## Workshop 2: Working with RDF Graphs in Graph Studio
 
@@ -30,18 +30,18 @@ Hence, you can now use Graph Studio for the following supported RDF features:
 * Execute SPARQL queries on the RDF graph in a notebook paragraph
 * Analyze and visualize RDF graphs
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=770" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=770" class="tryit-button">Try it!</a>
 
 ## Workshop 3: Work with Spatial Data in Oracle Database
 
 This workshop introduces the spatial features of Oracle Database. You'll learn how to use spatial queries to identify items based on proximity and containment within a region.
 
-<a href="https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=736" class="tryit-button">Try it!</a>
+<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=736" class="tryit-button">Try it!</a>
 
 
 ## Learn More
 
-* [LiveLabs](https://developer.oracle.com/livelabs)
+* [LiveLabs](https://livelabs.oracle.com)
 
 ## Acknowledgements
 * **Author** - Kevin Lazarz, Senior Principle Product Manager, DB Product Management

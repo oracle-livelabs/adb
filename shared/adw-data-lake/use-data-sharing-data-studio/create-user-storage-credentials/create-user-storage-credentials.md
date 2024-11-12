@@ -34,6 +34,8 @@ After you provisioned an ADB instance in the **Set up the Workshop Environment**
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
 
+    >**Note:** If you get a _Forbidden_ message on the **Autonomous Databases** page, that indicates that you are in the wrong compartment. Refer to the **Reservation Information** panel for your reservation and make a note of your assigned compartment. Next, on the same page, click the **Compartment** drop-down list in the **Scope** section, and selected your assigned compartment.
+
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![From the Database Actions drop-down list, click SQL.](./images/click-db-actions-sql.png " ")
@@ -144,17 +146,19 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![View the script results](images/script-results.png)
 
-2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`ADMIN`** user, and then select **Sign Out** from the drop-down menu. When prompted if you want to leave the site, click **Leave**.
+2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`ADMIN`** user, and then select **Sign Out** from the drop-down menu.
 
     ![Log out of admin](images/logout-admin.png)
 
-3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
+3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The Database Actions Launchpad page is displayed.
 
     ![Log in as share_provider](images/login-share-provider.png)
 
-    You are now logged in as the newly created **`share_provider`** user. In the **Development** section, click the **SQL** card to display the SQL Worksheet.
+    You are now logged in as the newly created **`share_provider`** user. 
 
-    ![Logged in as share_provider](images/logged-share-provider.png)
+4. Click the **Development** tab and then click the **SQL** tab to display the SQL Worksheet.
+
+    ![Logged in as share_provider](images/launchpad-share-provider.png)
 
 ## Task 4: (Optional) Create an Oracle Object Storage Bucket
 
@@ -192,25 +196,25 @@ You should store the data share data in Object Storage. You will then create a l
 
 To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
-You will set up a connection to Oracle Object Storage by defining a cloud location with a credential. _You perform this step only once_. You will define a **Cloud Location** to connect to Oracle Object Storage. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions**.
+You will set up a connection to Oracle Object Storage by defining a cloud location with a credential. _You perform this step only once_. You will define a **Cloud Location** to connect to Oracle Object Storage. To begin this process, you need to navigate back to the **DATA LOAD** page of **Database Actions** as the **share_provider** user. You should already have the SQL Worksheet open from a previous task in this lab.
 
-1. In your **Autonomous Database** browser tab, open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+1. From the SQL Worksheet, click the **Database Actions | SQL** banner to display the Launchpad page.
 
-2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+    ![Click the SQL banner.](./images/click-sql-banner.png " ")
 
-3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
+2. On the **Database Actions | Launchpad** page, click the **Data Studio** tab and then click the **Data Load** tab.
 
-     ![Click Data Load from the drop-down list.](./images/click-data-load-drop-down.png " ")
+    ![Navigate to Data Load.](./images/click-data-studio-data-load.png " ")
 
-4. The **Data Load** page is displayed in a new tab in your browser. Scroll-down to the **Administration** section and then click **CONNECTIONS**.
+    The **Data Load** Home page is displayed. Click **CONNECTIONS**.
 
-    ![Click the Cloud Locations card.](./images/click-connections.png " ")
+    ![The Data Load Home page.](./images/data-load-home-page.png " ")
 
-5. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location** from the drop-down menu.
+3. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location** from the drop-down menu.
 
     ![Click New Cloud Store Location.](./images/click-new-cloud-store-location.png " ")
 
-6. Specify the following in the **Add Cloud Store Location** panel.
+4. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`delta_share_storage`**.
     + **Description:** Enter an optional description.
     + Accept the **Select Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
@@ -226,7 +230,7 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
         + **Oracle Cloud Infrastructure Tenancy:** Enter your tenancy OCID that you copied earlier to a text file.
         + **Oracle Cloud Infrastructure User Name:** Enter your _**user's OCID**_ (and not the actual username).  _**Note:** If you did complete the optional **Task 5**, then the you should have already saved the user's OCID (and not the actual username) in a text file of your choice. If you didn't perform the optional **Task 5**, you can find the user's OCID as follows: Navigate to the **Oracle Cloud Console**. Click the **User's** drop-down list, and then select **User settings**. In the **User Details** page, in the **User Information** tab, click **Copy** next to the **OCID** field. Save this user OCID in your text file._
 
-7. Click **Create Credential**.
+5. Click **Create Credential**.
 
     ![Click Create Credential.](./images/click-create-credential.png " ")
     
@@ -240,11 +244,11 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
     ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
 
-8. Click **Next** to see the available objects in the bucket that you specified. Our selected bucket is empty.
+6. Click **Next** to see the available objects in the bucket that you specified. Our selected bucket is empty.
 
     ![Click Next to see the objects in the bucket.](./images/click-next.png " ")
 
-9. Click **Create**. The **DELTA\_SHARE\_STORAGE** cloud location connection is displayed in the **Connections** page.
+7. Click **Create**. The **DELTA\_SHARE\_STORAGE** cloud location connection is displayed in the **Connections** page.
 
     ![The cloud store location is created.](./images/cloud-connection-created.png " ")
 
@@ -260,11 +264,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
