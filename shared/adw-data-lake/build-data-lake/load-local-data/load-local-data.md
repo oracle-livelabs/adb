@@ -147,7 +147,7 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Select the one file at a time.](./images/select-second-file.png " ")
 
-4. When the upload is complete, you will make a small change to the default table name that will be created for the *customer-extension.csv* file. Click the **Settings** (pencil) icon to the right of *customer-extension.csv*.
+4. When the upload is complete, you will make a small change to the default table name that will be created for the **`customer-extension.csv`** file. Click the **Settings** (pencil) icon to the right of **`customer-extension.csv`**.
 
     ![Update the data load job settings.](./images/click-settings.png " ")
 
@@ -155,35 +155,29 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Examine the editor of the data load job.](./images/preview-table.png " ")
 
-7. In the **Name** field, change the table name that will be created from **CUSTOMEREXTENSION** to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
+6. In the **Name** field, change the table name that will be created from **`CUSTOMEREXTENSION`** to **`CUSTOMER_EXTENSION`**. Click **Close** in the lower right corner of the page.
 
     ![Examine the editor of the data load job.](./images/change-table-name.png " ")
 
-8. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
+7. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
 
     ![Run the data load.](./images/click-start.png " ")
 
-9. When the load job is complete, a green check mark appears next to each table. Click **Catalog** in the menu on the left.
+8. After the load job is completed, make sure that the data load card has the copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
 
-    ![Click Catalog in the menu on the left.](./images/click-catalog.png " ")
+    ![The data load icons are displayed.](./images/load-successful.png " ")
 
-    > **Note:** If the menu on the left is collapsed, click the double arrows icon to expand it so that the label for each icon is displayed.
+9. You can click a table name to display its data. In this example, click the **ellipsis** icon for the **`CUSTOMER_SEGMENT`** load task to view its settings among other things. Next, click **Table > View Details** from the context menu.
 
-    ![Click Expand to expand the menu on the lef.](./images/expand-menu.png " ")
+    ![Click customer_segment to display its data.](./images/preview-customer-segment.png " ")
 
-10. The Catalog displays the two newly created tables: *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION*.
+10. The **Preview** tab is selected by default. This shows the **`CUSTOMER_SEGMENT`** data.
 
-    ![View the new table in the Catalog.](./images/display-new-tables.png " ")
+    ![The customer_segment data.](./images/customer-segment-data.png " ")
 
-    You can click a table name to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data.
+10. When finished, click **Close** to return to the Data Load Dashboard.
 
-    ![Click customer_segment to display its data.](./images/customer-segment-data.png " ")
-
-11. When finished, click **Close**, and then click the **Data Load** in the menu on the left. Click **Done**.
-
-    ![Click Done.](./images/click-done.png " ")
-
-    The **Data Load** page is re-displayed.
+    ![Click Close.](./images/data-load-dashboard.png " ")
 
 This completes the lab on loading .csv files from your local computer to new tables in your ADB instance.
 
@@ -200,14 +194,14 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) Oracle Corporation.
+Copyright (C) 2024 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

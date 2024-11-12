@@ -4,6 +4,8 @@
 
 In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
 
+> **NOTE:** At the time this workshop was last updated, your tenancy must be subscribed to the **US Midwest (Chicago)**, **Germany Central (Frankfurt)**, or **UK South (London)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+
 ### What is Natural Language Processing?
 
 Natural language processing is the ability of a computer application to understand human language as it is spoken and written. It is a component of artificial intelligence (AI).
@@ -22,6 +24,7 @@ In this workshop, you will:
 * Use the Select AI demo application to chat with your data in your own language
 
 ### Oracle MovieStream Business Scenario
+
 The workshop's business scenario is based on Oracle MovieStream - a fictitious movie streaming service that is similar to services to which you currently subscribe. You'll be able to ask questions about movies, customers who watch movies, and the movies they decide to watch.
 
 You may now proceed to the next lab.
@@ -32,9 +35,10 @@ You may now proceed to the next lab.
 * [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Marty Gubar, Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, October 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
