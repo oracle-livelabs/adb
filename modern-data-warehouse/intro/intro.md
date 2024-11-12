@@ -47,5 +47,5 @@ Here is a video to help with the Oracle Trial Sign Up Process:
 ## Acknowledgements
 * **Author** - Javier de la Torre, Principal Data Management Specialist
 * **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist
+* **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist, November 2024
 
