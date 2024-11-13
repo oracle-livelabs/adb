@@ -131,14 +131,19 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 7. In the **Configure the database** section, accept the default selections as follows:
 
-       * **Always Free:** An Always Free database is especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or a paid account. The only option you can specify in an Always Free database is the database version.  For this lab, we recommend that you leave the **Always Free** option disabled unless you are in an Always Free account.
-       * **Choose database version:** Accept the default selection.
-       * **ECPU count:** **`2`**.
-       * **Compute auto scaling:** Leave the checkbox checked (default).
-       * **Storage (TB):** **`1`** (TB).
-       * **Storage auto scaling:** Leave the checkbox unchecked (default).
+       - **Always Free**: An Always Free databases are especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or paid account. However, it must be deployed in the home region of your tenancy. The only option you specify in an Always Free database is the database version. For this lab, we recommend you leave **Always Free** unchecked unless you are in an Always Free account.
+       - **Developer**: Developer databases provide a great low cost option for developing apps with Autonomous Database. You have similar features to Always Free - but are not limited in terms of region deployments or the number of databases in your tenancy. You can upgrade your Developer Database to a full paid version later and benefit from greater control over resources, backups and more.
+       - **Choose database version**: Select your database version from this drop-down list.
+       - **ECPU count**: Choose the number of ECPUs for your service. For this lab, specify **[](var:db_ocpu)**. If you choose an Always Free database, you do not need to specify this option.
+       - **Storage (TB)**: Select your storage capacity in terabytes. For this lab, specify **[](var:db_storage)** of storage. Or, if you choose an Always Free database, it comes with 20 GB of storage.
+       - **Compute auto scaling**: Accept the default which is enabled. This enables the system to automatically use up to three times more compute and IO resources to meet workload demand.
+       - **Storage auto scaling**: For this lab, there is no need to enable storage auto scaling, which would allow the system to expand up to three times the reserved storage.
 
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db-ecpu.png " ")
+       > **Note:** You cannot scale up/down an Always Free autonomous database.
+
+       ![Choose the remaining parameters.](./images/adb-create-screen-configure-db-new.png =80%x*)
+
+       >**Note:** You can click the **Show advanced options** link to use your organization's on-premise licenses with **bring your own license** or to take advantage of database consolidation savings with **elastic pools**.
 
 8. In the **Backup retention** section, you can either accept the default value or specify your own preferred backup retention days value. Accept the default **60** days default value.
 
@@ -158,9 +163,9 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The selected "Secure access from everywhere" option of the "Choose network access" section is displayed and highlighted.](./images/adb-network-access.png " ")
 
-11. In the **Choose a license and Oracle Database edition** section, accept the default selection, **This Database is provisioned with License included license type**.
+11. In the **Provide contacts for operational notifications and announcements** section, do not provide a contact email address. The **Contact email** field allows you to list contacts to receive operational notices and announcements as well as unplanned maintenance notifications.
 
-       ![Accept the default license selection.](./images/license-default.png " ")
+       ![Do not provide a contact email address.](images/adb-create-screen-contact-email.png "email")
 
 12. Click __Create Autonomous Database__.
 
@@ -174,9 +179,9 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     In a few minutes, the instance status changes to **AVAILABLE**. At this point, your Autonomous Data Warehouse database instance is ready to use! Review your instance's details including its name, database version, ECPU count, and storage size.
 
-    ![The breadcrumbs and AVAILABLE Status on the Autonomous Database Details page are highlighted. The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
+    ![The Autonomous Database Information tab displays many details about your provisioned database.](./images/adb-provisioned.png " ")
 
-14. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
+13. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
@@ -192,7 +197,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, July 2024
+* **Last Updated By/Date:** Lauran Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
