@@ -22,6 +22,10 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
+<if type="livelabs">
+Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password.
+</if>
+
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.

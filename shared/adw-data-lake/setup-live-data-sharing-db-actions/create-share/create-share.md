@@ -112,7 +112,7 @@ When you create the data share using the share live data using direct connection
 
     ![Click Create.](images/recipient-wizard-page.png " ")
 
-11. **Create** to create the data share. The **Provide Share** page is displayed. The new data share is displayed in the entities section. An informational message is displayed about the publishing process of the data share has started.
+11. Click **Create** to create the data share. The **Provide Share** page is displayed. The new data share is displayed in the entities section. An informational message is displayed about the publishing process of the data share has started.
 
     ![Data share created.](images/data-share-created.png " ")
 
@@ -120,7 +120,7 @@ When you create the data share using the share live data using direct connection
 
     ![Click Actions.](images/click-actions.png " ")
 
-13. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. If you are prompted to leave, click **Leave**.
+13. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu.
 
 You may now proceed to the next lab.
 
@@ -134,7 +134,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -144,4 +144,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
