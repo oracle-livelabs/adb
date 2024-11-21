@@ -27,15 +27,20 @@ This lab assumes that you have successfully completed all of the preceding labs 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
 
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. The SQL Worksheet is displayed.
+5. The SQL Worksheet is displayed. If some informational boxes are displayed, close them.
 
     ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
+
+6. To display more of the Worksheet area and hide the Navigation pane, click the **Collapse** icon.
+
+    ![Click Collapse.](./images/ll-click-collapse.png " ")
+
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
