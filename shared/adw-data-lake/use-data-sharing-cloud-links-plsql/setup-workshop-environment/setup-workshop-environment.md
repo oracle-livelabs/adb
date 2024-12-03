@@ -1,21 +1,5 @@
 <!--- This is a comment. --->
 
-<if type="livelabs">
-# Review the Workshop Environment Setup (Optional)
-
-## Introduction
-
-Since you are using the LiveLabs environment, you **don't** have administrative privileges to create any OCI resources; therefore, all of the OCI resources that you need in this workshop are already created for you with your LiveLabs reservation.
-
-If you want to review the detailed steps on how to set up the workshop environment when you are using either the **freetier** version or your own paid tenancy, see **Lab 1: Set Up the Workshop Environment** in the freetier version of the workshop on LiveLabs titled **Set up live data sharing between Oracle Databases using Cloud Links and PL/SQL APIs**.
-
-> **Note:** This lab is directed at administrator users because they are granted the required access permissions. In real life scenarios, you would create a new ADW administrator user and a ADW administrator group, and then add the new administrator user to the new group. Next, you create the Oracle Cloud Infrastructure Identity and Access Management (IAM) policies that are required to create and manage an ADW and Data Catalog instances.
-
-Estimated Time: 5 minutes
-
-</if>
-
-<if type="freetier">
 # Set Up the Workshop Environment
 
 ## Introduction
@@ -114,21 +98,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        ![The selected Shared Infrastructure option of the "Choose a deployment type" section is displayed and highlighted.](./images/adb-deployment-type.png " ")
 
-<!--- This is a comment. --->
-
-<!---7. In the **Configure the database** section, specify the following:
-
-       * **Always Free:** Disabled. If your Cloud Account is an Always Free account, you can select this option to create an Always Free autonomous database.
-       * **Choose database version:** **`19c`**.
-       * **OCPU count:** **`1`**.
-       * **OCPU auto scaling:** Select this checkbox. This allows the system to automatically use up to three times more CPU and IO resources to meet the workload demand.
-       * **Storage (TB):** **`1`** (TB).
-       * **Storage auto scaling:** Leave the checkbox unchecked.
-
-       ![The completed "Configure the database" section is displayed.](./images/adb-configure-db.png " ")
-
-       >**Note:** If you are using a Free Trial or Always Free account, and you want to use Always Free Resources, you need to be in a region where Always Free Resources are available. You can see your current default **region** in the top, right hand corner of the page. --->
-
 7. In the **Configure the database** section, accept the default selections as follows:
 
        - **Always Free**: An Always Free databases are especially useful for development and trying new features. You can deploy an Always Free instance in an Always Free account or paid account. However, it must be deployed in the home region of your tenancy. The only option you specify in an Always Free database is the database version. For this lab, we recommend you leave **Always Free** unchecked unless you are in an Always Free account.
@@ -141,7 +110,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
        > **Note:** You cannot scale up/down an Always Free autonomous database.
 
-       ![Choose the remaining parameters.](./images/adb-create-screen-configure-db-new.png =80%x*)
+       ![Choose the remaining parameters.](./images/adb-create-screen-configure-db-new.png =85%x*)
 
        >**Note:** You can click the **Show advanced options** link to use your organization's on-premise licenses with **bring your own license** or to take advantage of database consolidation savings with **elastic pools**.
 
@@ -157,7 +126,7 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
        **Important:** Make a note of this _password_ as you will need it to perform later tasks.
        * **Confirm password:** Confirm your password.
 
-       ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png =65%x*)
+       ![The completed "Create administrator credentials" section is displayed.](./images/adb-admin-credentials.png =75%x*)
 
 10. In the **Choose network access** section, select the **Secure access from everywhere** option as the access type.
 
@@ -184,8 +153,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 13. Click the **Autonomous Database** link in the breadcrumbs. The **Autonomous Database** page is displayed. The new Autonomous Database instance is displayed.
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
-
-</if>
 
 You may now proceed to the next lab.
 
