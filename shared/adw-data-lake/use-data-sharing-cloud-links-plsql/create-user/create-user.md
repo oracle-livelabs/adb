@@ -22,20 +22,29 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Navigate to the SQL Worksheet
 
+<if type="livelabs">
+Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password.
+</if>
+
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
 
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. The SQL Worksheet is displayed.
+5. The SQL Worksheet is displayed. If some informational boxes are displayed, close them.
 
     ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
+
+6. To display more of the Worksheet area and hide the Navigation pane, click the **Collapse** icon.
+
+    ![Click Collapse.](./images/ll-click-collapse.png " ")
+
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
@@ -171,14 +180,14 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2024, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

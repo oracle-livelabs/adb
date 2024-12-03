@@ -20,14 +20,27 @@ As an **`admin`** user, you will do the following:
 
 ## Task 1: Navigate to the Database Actions Launchpad
 
+<if type="livelabs">
+Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password.
+</if>
+
+<if type="freetier">
 After you provisioned an ADB instance in the **Set up the Workshop Environment** lab, the **Autonomous Database details** page was displayed. If the page is active, start with **step 4** below. If the page had timed out, start with **step 1** below.
+</if>
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+    
+    <if type="freetier">
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    </if>
+
+    <if type="livelabs">
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
+    </if>
 
     >**Note:** If you get a _Forbidden_ message on the **Autonomous Databases** page, that indicates that you are in the wrong compartment. Refer to the **Reservation Information** panel for your reservation and make a note of your assigned compartment. Next, on the same page, click the **Compartment** drop-down list in the **Scope** section, and selected your assigned compartment.
 
@@ -47,9 +60,7 @@ Oracle Autonomous Database Serverless enables the data share provider to share e
 
 Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The `DWROLE` role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
-1. Click **Database Actions Launchpad** in the banner to display the **Launchpad** page.
-
-2. Click the **Administration** tab, and then click the **Database Users** tab.
+1. On the **Database Actions Launchpad** page, click the **Administration** tab, and then click the **Database Users** tab.
 
     ![Click Administration and then Database Users.](./images/database-users.png " ")
 
@@ -57,24 +68,24 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![The User Management page.](./images/user-management-1.png " ")
 
-3. Click **Create User**. In the **Create User** panel, provide the following information in the **User** tab.
+2. Click **Create User**. In the **Create User** panel, provide the following information in the **User** tab.
 
     * **User Name:** `SHARE_PROVIDER`
     * **Password:** `DataShare4ADW`
-    * **Web Access:** Enable this field
     * **Quota on tablespace data:** `UNLIMITED`
-
+    * **Web Access:** Enable this field
+    
         ![The User tab.](./images/user-tab.png " ")
 
-4. Click the **Granted Roles** tab. In the **Filter by role** field, enter **`dwrole`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
+3. Click the **Granted Roles** tab. In the **Filter by role** field, enter **`dwrole`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
 
     ![The Granted Roles tab.](./images/granted-roles-tab.png " ")
 
-5. Click **Create User**. The new `SHARE_PROVIDER` user is displayed in the **User Management** page.
+4. Click **Create User**. The new `SHARE_PROVIDER` user is displayed in the **User Management** page.
 
     ![Share_provider user is created.](./images/share-provider-created.png " ")
 
-6. Click **Database Actions** in the banner to display the **Launchpad** page.
+5. Click **Database Actions** in the banner to display the **Launchpad** page.
 
     ![Click Database Actions.](./images/click-database-actions.png " ")
 
@@ -96,81 +107,7 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![The provider and consumer page is re-displayed.](./images/information.png " ")
 
-<!--
-
-5. Sign out of the **`ADMIN`** user.
-
-    ![Sign out.](./images/sign-out.png " ")
-
-6. Sign back in as the **`ADMIN`** user and enter the admin's password, **`Training4ADW`**. On the **Database Actions Launchpad** page, click the **Data Studio** tab, and then click the **Data Sharing** tab. The **Provider and Consumer** page is re-displayed.
-
-    ![Provider and Consumer page.](./images/provider-consumer-page.png " ")
-
--->
-
-<!--
-
-5. The first time you open the SQL Worksheet, a series of pop-up informational boxes may appear, providing you with a tour that introduces the main features. If not, click the **Tour** icon (binoculars) in the upper right corner of the toolbar. To take the tour through the informational boxes, click **Next**. To exit the tour, click the **X** control.
-
-    ![SQL Worksheet.](./images/adb-sql-worksheet-opening-tour.png " ")
-
-6. Click the **X** control to exit the tour. The SQL Worksheet is displayed.
-
-    ![The SQL Worksheet is displayed.](./images/sql-worksheet.png " ")
--->
-
-
-<!--
-Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
-
-    ```
-    <copy>
-    -- Create a new user that will provide the shared data.
-
-    CREATE USER share_provider IDENTIFIED BY DataShare4ADW;
-
-    -- Grant the new user the required role and privileges.
-
-    GRANT CONNECT TO share_provider;
-    GRANT DWROLE TO share_provider;
-    GRANT RESOURCE TO share_provider;
-    GRANT UNLIMITED TABLESPACE TO share_provider;
-
-    -- Enable REST.
-
-    BEGIN
-        ORDS_ADMIN.ENABLE_SCHEMA(
-            p_enabled => TRUE,
-            p_schema => 'SHARE_PROVIDER',
-            p_url_mapping_type => 'BASE_PATH',
-            p_url_mapping_pattern => 'share_provider',
-            p_auto_rest_auth=> TRUE
-        );
-
-    -- Enable data sharing.
-        DBMS_SHARE.ENABLE_SCHEMA(
-        SCHEMA_NAME => 'SHARE_PROVIDER',
-        ENABLED => TRUE
-        );
-       commit;
-    END;
-    /
-    </copy>
-    ```
-
-    ![Run the script](images/run-script.png)
-
-    The results are displayed in the **Script Output** tab.
-
-    ![View the script results](images/script-results.png)
-
-    >**Note:** If you can't see the newly created **share\_provider** user in the first drop-down list in the **Navigator** tab, log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the **`ADMIN`** user, and then select **Sign Out** from the drop-down menu. Next, log back in as the **`ADMIN`** user. On the **Sign-in** page, enter **`ADMIN`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. Click the the first drop-down menu and select the **share_provider** user.
-
-    ![Sign out to view the new user](images/sign-out.png)
-
--->
-
-## Task 3: (Optional) Create a Share Consumer User and Grant Privileges to the User
+## Task 4: (Optional) Create a Share Consumer User and Grant Privileges to the User
 
 Create a new consumer user named **`share_consumer`**.
 
@@ -184,9 +121,9 @@ Create a new consumer user named **`share_consumer`**.
 
     * **User Name:** `SHARE_CONSUMER`
     * **Password:** `DataShare4ADW`
+     * **Quota on tablespace data:** `UNLIMITED`
     * **Web Access:** Enable this field
-    * **Quota on tablespace data:** `UNLIMITED`
-
+   
         ![The User tab.](./images/share-consumer-user-tab.png " ")
 
 4. Click the **Granted Roles** tab. In the **Filter by role** field, enter **`dwrole`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
@@ -201,7 +138,7 @@ Create a new consumer user named **`share_consumer`**.
 
     ![Log out of admin](images/logout-admin.png)
 
-7. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The Database Actions Launchpad page is displayed.
+7. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The **Database Actions Launchpad** page is displayed.
 
     ![Log in as share_provider](images/login-share-provider.png)
 
@@ -219,7 +156,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -229,4 +166,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

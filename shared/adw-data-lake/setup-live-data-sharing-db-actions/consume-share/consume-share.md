@@ -21,7 +21,7 @@ Live data shared with you through data sharing is not automatically available fo
 
 ## Task 1: Log in as the share_consumer User
 
-1. Log in as the **`share_consumer`** user. On the **Sign-in** page, enter **`share_consumer`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+1. Log in as the **`share_consumer`** user. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
 
 2. On the **Database Actions Launchpad** page, click the **Data Studio** tab, and then click the **Data Share** tab.
 
@@ -43,7 +43,7 @@ Live data shared with you through data sharing is not automatically available fo
 
     The **Subscribe to Share Provider** wizard is displayed.
 
-    >**Note:** The **Available Live Share Providers in the last 7 Days** section displays the list of available Live Share Providers in the last 7 days. You can click the **+** sign to subscribe to a Live Share.
+    >**Note:** The **Available Live Share Providers in the last 7 Days** section displays the list of available Live Share Providers in the last 7 days. You can click the **+** sign to subscribe to a Live Share. It might take some time before you can see the published data share. You can use the **Refresh** icon to refresh the view.
 
 3. On the **Provider Settings** page 1 of the wizard, provide the following information:
 
@@ -94,7 +94,7 @@ In this task, you create a view based on the **`CUSTOMER_CONTACT`** table that w
 
 5. Let's query the newly created view. Click **Query**. You can also use the SQL Worksheet. An informational box is displayed. Close it.
 
-6. Click **Run**. The query result is displayed in the **Query Result** tab.
+6. The query result is already displayed; however, you can click **Run** to run it again. The query result is displayed in the **Query Result** tab.
 
     ![Query table share.](images/query-customer-share.png)
 
@@ -112,7 +112,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -122,4 +122,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
