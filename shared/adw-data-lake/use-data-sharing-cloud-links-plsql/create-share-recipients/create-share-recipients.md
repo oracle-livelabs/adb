@@ -96,7 +96,8 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
+
 
 Data about movies in this workshop were sourced from Wikipedia.
 
