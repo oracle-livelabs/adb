@@ -25,9 +25,17 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 In this lab, you will log in as the `admin` user to create a database user (schema) that will be used to consume the data share that the `share_provider` user created and shared with the `live_share_oracle_user` recipient. If you already have an existing schema with the appropriate privileges, you can use it. We chose to separate the share\_provider user (schema) from the share\_consumer user (schema) to simulate a real use case of data sharing between a provider and a consumer.
 
-1. Log out of the `share_provider` user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. Click **Leave**, if prompted.
+1. Log out of the `share_provider` user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu.
 
+<if type="freetier">
 2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+</if>
+
+<if type="livelabs">
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username. You can find your assigned **`admin`** user at the bottom of your **Reservation Information** dialog box. Next, click **Sign in**.
+
+    ![Get the assigned admin password](images/ll-assigned-admin-password.png)
+</if>
 
 3. You are now logged in as the **`admin`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
@@ -85,11 +93,11 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ![Enable share_consumer schema.](images/enable-share-consumer-schema.png)
 
-2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu. Click **Leave**.
+2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu.
 
-3. Log in as the newly created user, `share_consumer`. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
+3. Log in as the newly created user, **`share_consumer`**. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
 
-4.You are now logged in as the `share_consumer` user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
+4.You are now logged in as the **`share_consumer`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
 ![Logged in as share_consumer](images/login-as-consumer.png)
 
@@ -104,7 +112,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ![Have access to cloud links?](images/cloud-links-access.png)
 
-    The `YES` indicates that the `share_consumer` user is enabled for `READ` access to a data set.
+    The **`YES`** indicates that the **`share_consumer`** user is enabled for **`READ`** access to a data set.
 
 5. Query the share providers that are available to the `share_consumer` user.
 
@@ -149,7 +157,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     Copy the value of the returned **provider id** as you will need it in the next step.
 
-2. Subscribe to the data share provider by creating a new share provider name that we called **`demo_live_provider`** in our example. _**Important:** Copy and paste the following script into your SQL Worksheet; **however, don't run it yet**. Replace the text place holder in the script for the **`oracle_provider_id`** argument with your own **`oracle_provider_id`** value that you obtained in the previous step._ Next, click the **Run Script** icon.
+2. Subscribe to the data share provider by creating a new share provider name that we called **`demo_live_provider`** in our example. _**Important:** Copy and paste the following script into your SQL Worksheet; **however, don't run it yet**. Replace the text place holder in the script for the **`oracle_provider_id`** argument with your own **`provider_id`** value that you obtained in the previous step._ Next, click the **Run Script** icon.
 
     ```
     <copy>
@@ -285,7 +293,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
