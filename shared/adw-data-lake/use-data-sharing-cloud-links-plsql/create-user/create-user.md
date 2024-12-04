@@ -26,7 +26,6 @@ This lab assumes that you have successfully completed all of the preceding labs 
 Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password. If you get a **_Forbidden_** error, make sure you select your assigned compartment from the **Compartment** drop-down list in the **List Scope** section. Your assigned compartment is listed in the **Reservation Information** dialog box.
 
  ![The Reservation Information dialog box.](./images/ll-reservation-information.png " ")
-
 </if>
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in.

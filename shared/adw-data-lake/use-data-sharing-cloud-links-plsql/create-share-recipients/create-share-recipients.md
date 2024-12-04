@@ -98,6 +98,7 @@ You may now proceed to the next lab.
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
 * **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
+
 Data about movies in this workshop were sourced from Wikipedia.
 
 Copyright (c) 2024, Oracle Corporation.
