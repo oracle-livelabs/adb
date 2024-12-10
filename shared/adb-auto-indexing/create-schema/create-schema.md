@@ -14,7 +14,7 @@ This lab assumes you have completed the following:
 
 - Provision an Autonomous Database Instance
 
-## Task 1: Prepeare to Execute SQL statements in a SQL Query Window using Database Actions 
+## Task 1: Prepare to Execute SQL statements in a SQL Query Window using Database Actions 
 
 We will now prepare to execute SQL statements. 
 
