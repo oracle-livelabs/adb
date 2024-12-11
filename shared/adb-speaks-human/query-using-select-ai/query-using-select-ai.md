@@ -163,11 +163,9 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
-If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the Database **Database Actions | Launchpad** Home page. Click the **Development** tab, and then click the **Oracle Machine Learning** tab to display the **Sign In** page. Continue with **step 7** below.
+    ![Click the banner](./images/click-banner.png " ")
 
-   ![Click the banner](./images/click-banner.png " ")
-
-If you are no longer logged in to your Cloud account, start with **step 1** below.
+If you are no longer logged in to your Cloud account, start with **step 1** below. If you are still connected to your SQL Worksheet as the **`moviestream`** user from an earlier lab, sign out of this user and sign in as the **`ADMIN`** user using the drop-down list next to the user name in the banner.
 
 1. Log in to the **Oracle Cloud Console** as the Cloud Administrator.
 
@@ -271,7 +269,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
