@@ -158,8 +158,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
 You may now proceed to the next lab.
 
-You may now proceed to the next lab.
-
 ## Learn More
 
 - [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
