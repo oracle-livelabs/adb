@@ -1,6 +1,6 @@
 [
   {
-    "name" : "ADB-Speaks-Human",
+    "name" : "adb-speaks-human-notebook",
     "description" : null,
     "tags" : null,
     "version" : "6",
@@ -31,20 +31,21 @@
           "4. Query data using natural language",
           "5. Show the SQL generated for a query",
           "",
-          "## Create a credential",
-          "A credential is used to sign LLM API requests. Below is the code used to create a credential for OpenAI. This code has already been run by the setup script; you don't need to run it.",
+          "## Use an Autonomous Database resource principal to access OCI Generative AI",
+          "A credential is used to sign LLM API requests. This workshop uses an Autonomous Database resource principal to access OCI Generative AI model; your database has been granted privileges to access OCI GenAI. This code has already been run by the setup script; you don't need to run it. It is typically run by the ADMIN user:",
           "",
           "    begin",
-          "        dbms_cloud.create_credential (",
-          "            credential_name  => 'OPENAI_CRED',",
-          "            username         => 'OPENAI',",
-          "            password         => 'your-llm-secret-goes-here'",
+          "        dbms_cloud_admin.enable_resource_principal (",
+          "            username  => 'MOVIESTREAM'",
           "        );",
-          "    end;"
+          "    end;",
+          "",
+          "",
+          "[Go to Lab 2 of the workshop](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/run-workshop?p210_wid=3831) to see how to connect to other AI providers, including Google Gemini, Azure OpenAI and OpenAI."
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : true,
@@ -52,21 +53,21 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332877770,
-          "endTime" : 1719332877901,
+          "startTime" : 1734041981131,
+          "endTime" : 1734041981638,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h1 id=\"use-natural-language-to-query-your-data\">Use natural language to query your data</h1>\n<p>Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.</p>\n<p>The following paragraphs will show you how to:</p>\n<ol>\n<li>Create a credential</li>\n<li>Create an AI profile</li>\n<li>Have general AI chat conversations</li>\n<li>Query data using natural language</li>\n<li>Show the SQL generated for a query</li>\n</ol>\n<h2 id=\"create-a-credential\">Create a credential</h2>\n<p>A credential is used to sign LLM API requests. Below is the code used to create a credential for OpenAI. This code has already been run by the setup script; you don't need to run it.</p>\n<pre><code>begin\n    dbms_cloud.create_credential (\n        credential_name  =&gt; 'OPENAI_CRED',\n        username         =&gt; 'OPENAI',\n        password         =&gt; 'your-llm-secret-goes-here'\n    );\nend;\n</code></pre>\n",
+              "message" : "<h1 id=\"use-natural-language-to-query-your-data\">Use natural language to query your data</h1>\n<p>Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All of these tasks are handled by a large language model and Autonomous Database.</p>\n<p>The following paragraphs will show you how to:</p>\n<ol>\n<li>Create a credential</li>\n<li>Create an AI profile</li>\n<li>Have general AI chat conversations</li>\n<li>Query data using natural language</li>\n<li>Show the SQL generated for a query</li>\n</ol>\n<h2 id=\"use-an-autonomous-database-resource-principal-to-access-oci-generative-ai\">Use an Autonomous Database resource principal to access OCI Generative AI</h2>\n<p>A credential is used to sign LLM API requests. This workshop uses an Autonomous Database resource principal to access OCI Generative AI model; your database has been granted privileges to access OCI GenAI. This code has already been run by the setup script; you don't need to run it. It is typically run by the ADMIN user:</p>\n<pre><code>begin\n    dbms_cloud_admin.enable_resource_principal (\n        username  =&gt; 'MOVIESTREAM'\n    );\nend;\n</code></pre>\n<p><a href=\"https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/run-workshop?p210_wid=3831\">Go to Lab 2 of the workshop</a> to see how to connect to other AI providers, including Google Gemini, Azure OpenAI and OpenAI.</p>\n",
               "type" : "HTML"
             }
           ],
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -82,82 +83,118 @@
           "### Create an AI profile",
           "To get started: you'll need to: ",
           "* Create a profile that describes your LLM provider and the metadata (schemas, tables, views, etc.) that can be used for natural language queries. You can have multiple profiles - each pointing to different models.",
-          "* Set the profile for your session. Because we're accessing a single LLM, create a LOGON trigger that sets the profile for your session."
+          "* Set the profile for your session.",
+          "",
+          "The following script enables you to choose the LLM provider that you want to use. OCI GenAI is the default.",
+          "",
+          "The AI_PROVIDER variable in the script is used to specify the LLM provider that you are using. The valid values for this workshop (Select AI does support other providers) are:",
+          "1. oci (default)",
+          "2. azure",
+          "3. google",
+          "4. openai",
+          "",
+          "The AI_CREDENTIAL_NAME variable is used to specify the name of your credential. OCI is using the resource principal.",
+          "",
+          "In this notebook, we are using the OCI LLM provider. "
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
-        "hideVizConfig" : false,
+        "hideVizConfig" : true,
         "hideInIFrame" : false,
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332899047,
-          "endTime" : 1719332899239,
+          "startTime" : 1734042053972,
+          "endTime" : 1734042054510,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h2 id=\"use-ai-profiles-to-access-your-llm\">Use AI profiles to access your LLM</h2>\n<p>Profiles capture the properties of your LLM provider plus the tables and views you want to enable for natural language queries. You can create multiple profiles (e.g. for different providers), although only one is active for a given session.</p>\n<h3 id=\"create-an-ai-profile\">Create an AI profile</h3>\n<p>To get started: you'll need to:</p>\n<ul>\n<li>Create a profile that describes your LLM provider and the metadata (schemas, tables, views, etc.) that can be used for natural language queries. You can have multiple profiles - each pointing to different models.</li>\n<li>Set the profile for your session. Because we're accessing a single LLM, create a LOGON trigger that sets the profile for your session.</li>\n</ul>\n",
+              "message" : "<h2 id=\"use-ai-profiles-to-access-your-llm\">Use AI profiles to access your LLM</h2>\n<p>Profiles capture the properties of your LLM provider plus the tables and views you want to enable for natural language queries. You can create multiple profiles (e.g. for different providers), although only one is active for a given session.</p>\n<h3 id=\"create-an-ai-profile\">Create an AI profile</h3>\n<p>To get started: you'll need to:</p>\n<ul>\n<li>Create a profile that describes your LLM provider and the metadata (schemas, tables, views, etc.) that can be used for natural language queries. You can have multiple profiles - each pointing to different models.</li>\n<li>Set the profile for your session.</li>\n</ul>\n<p>The following script enables you to choose the LLM provider that you want to use. OCI GenAI is the default.</p>\n<p>The AI_PROVIDER variable in the script is used to specify the LLM provider that you are using. The valid values for this workshop (Select AI does support other providers) are:</p>\n<ol>\n<li>oci (default)</li>\n<li>azure</li>\n<li>google</li>\n<li>openai</li>\n</ol>\n<p>The AI_CREDENTIAL_NAME variable is used to specify the name of your credential. OCI is using the resource principal.</p>\n<p>In this notebook, we are using the OCI LLM provider.</p>\n",
               "type" : "HTML"
             }
           ],
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
         "col" : 0,
         "sizeX" : 0,
         "width" : 12,
-        "title" : "Create AI profile",
+        "title" : "Create AI profiles for different LLM providers",
         "hasTitle" : true,
         "message" : [
           "%script",
           "",
-          "begin",
+          "DECLARE",
+          "   AI_PROVIDER varchar2(10) := 'oci';  -- valid values are oci, azure, google, openai",
+          "   AI_CREDENTIAL_NAME varchar2(100) := 'OCI$RESOURCE_PRINCIPAL'; -- The name of your credential. OCI is using the resource principal",
+          "   -- When using Azure OpenAI - fill in the fields below",
+          "   AZURE_OPENAI_RESOURCE_NAME varchar2(100) :='';  -- This is your Azure OpenAI resource name",
+          "   AZURE_OPENAI_DEPLOYMENT_NAME  varchar2(100):='';  -- This is your Azure OpenAI deployment name",
+          "BEGIN",
+          "    ",
           "    -- ~~~~~~~~~~~~~~",
-          "    -- drop the AI profile just in case it already exists",
-          "    -- ~~~~~~~~~~~~~~",
-          "    dbms_cloud_ai.drop_profile(",
-          "        profile_name => 'openai_gpt35',",
+          "    -- recreate the profile ",
+          "    -- ~~~~~~~~~~~~~~    ",
+          "",
+          "    dbms_cloud_ai.drop_profile (",
+          "        profile_name => 'GENAI',",
           "        force => true",
           "    );",
-          "    -- ~~~~~~~~~~~~~~",
-          "    -- Specify the LLM provider, your credential",
-          "    -- and the tables/views that will be used for queries",
-          "    -- You can specify specific tables. Or, omit the table from the object list to",
-          "    -- include all objects in the schema",
-          "    -- ~~~~~~~~~~~~~~",
-          "    dbms_cloud_ai.create_profile(",
-          "        profile_name => 'openai_gpt35',",
-          "        attributes =>",
-          "            '{\"provider\": \"openai\",",
-          "            \"credential_name\": \"OPENAI_CRED\",",
-          "            \"model\":\"gpt-3.5-turbo\",",
-          "            \"object_list\": [{\"owner\": \"MOVIESTREAM\", \"name\": \"movies\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"streams\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"customer_extension\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"pizza_shop\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"actors\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"genre\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"customer_segment\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"customer_contact\"}",
-          "                            ]",
-          "            }'",
-          "        );",
-          "    -- ~~~~~~~~~~~~~~",
-          "    -- set the AI profile for this session",
-          "    -- ~~~~~~~~~~~~~~",
-          "    dbms_cloud_ai.set_profile(",
-          "        profile_name => 'openai_gpt35'",
-          "    );",
-          "end;"
+          "    -- create an AI profile. The attributes are different for providers.",
+          "    IF upper(AI_PROVIDER) = 'AZURE' THEN",
+          "      dbms_cloud_ai.create_profile (",
+          "          profile_name => 'GENAI',",
+          "          attributes =>",
+          "              '{\"provider\": \"azure\",",
+          "                  \"azure_resource_name\": \"AZURE_OPENAI_RESOURCE_NAME\",",
+          "                  \"azure_deployment_name\": \"AZURE_OPENAI_DEPLOYMENT_NAME\",",
+          "                  \"credential_name\": \"AI_CREDENTIAL_NAME\",",
+          "                  \"comments\":\"true\",",
+          "                  \"object_list\": [",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"GENRE\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"CUSTOMER\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"PIZZA_SHOP\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"STREAMS\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"MOVIES\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"ACTORS\"}",
+          "                  ]",
+          "                  }'",
+          "      );",
+          "    ELSE",
+          "      dbms_cloud_ai.create_profile (",
+          "          profile_name => 'GENAI',",
+          "          attributes =>",
+          "              '{\"provider\": \"' || AI_PROVIDER || '\",",
+          "                  \"credential_name\": \"' || AI_CREDENTIAL_NAME ||'\",",
+          "                  \"comments\":\"true\",",
+          "                  \"object_list\": [",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"GENRE\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"CUSTOMER\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"PIZZA_SHOP\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"STREAMS\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"MOVIES\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"ACTORS\"}",
+          "                  ]",
+          "                }'",
+          "      );",
+          "    END IF;",
+          "",
+          "-- ~~~~~~~~~~~~~~",
+          "-- Set the AI profile for this session",
+          "-- ~~~~~~~~~~~~~~",
+          "",
+          "dbms_cloud_ai.set_profile(profile_name =>'genai');",
+          "END;",
+          "/"
         ],
         "selectedVisualization" : "raw",
         "visualizationConfig" : null,
@@ -169,8 +206,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331865111,
-          "endTime" : 1719331869205,
+          "startTime" : 1734042102019,
+          "endTime" : 1734042112331,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -178,7 +215,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -198,6 +235,7 @@
           "2. runsql  - [default] ask a question and get a structured result",
           "3. narrate - ask a question and get a conversational result",
           "4. showsql - SQL used to produce the result",
+          "5. explainsql - an explanation of the SQL used to produce the result",
           "",
           "Enough explaining. Just give it a try!",
           "",
@@ -205,7 +243,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : false,
@@ -213,21 +251,21 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332910363,
-          "endTime" : 1719332910467,
+          "startTime" : 1734042204478,
+          "endTime" : 1734042213734,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h2 id=\"ask-natural-language-questions\">Ask natural language questions!</h2>\n<p>You can now ask questions using <code>SELECT AI</code>. <strong>AI</strong> is a special keyword in the select statement that tells Autonomous Database that the subsequent text will be either or an action or the natural language question.</p>\n<p>Here are the actions:</p>\n<ol>\n<li>chat    - general AI chat</li>\n<li>runsql  - [default] ask a question and get a structured result</li>\n<li>narrate - ask a question and get a conversational result</li>\n<li>showsql - SQL used to produce the result</li>\n</ol>\n<p>Enough explaining. Just give it a try!</p>\n<p>Start by asking a general question that is not going to be answered by our data. But, the answer may lead to questions that we want to ask of our data:</p>\n",
+              "message" : "<h2 id=\"ask-natural-language-questions\">Ask natural language questions!</h2>\n<p>You can now ask questions using <code>SELECT AI</code>. <strong>AI</strong> is a special keyword in the select statement that tells Autonomous Database that the subsequent text will be either or an action or the natural language question.</p>\n<p>Here are the actions:</p>\n<ol>\n<li>chat    - general AI chat</li>\n<li>runsql  - [default] ask a question and get a structured result</li>\n<li>narrate - ask a question and get a conversational result</li>\n<li>showsql - SQL used to produce the result</li>\n<li>explainsql - an explanation of the SQL used to produce the result</li>\n</ol>\n<p>Enough explaining. Just give it a try!</p>\n<p>Start by asking a general question that is not going to be answered by our data. But, the answer may lead to questions that we want to ask of our data:</p>\n",
               "type" : "HTML"
             }
           ],
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -250,8 +288,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331869566,
-          "endTime" : 1719331873585,
+          "startTime" : 1734042228164,
+          "endTime" : 1734042254521,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -259,7 +297,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -286,7 +324,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : true,
@@ -294,8 +332,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332917173,
-          "endTime" : 1719332917246,
+          "startTime" : 1734028127318,
+          "endTime" : 1734028127814,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -308,7 +346,7 @@
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -336,8 +374,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331873955,
-          "endTime" : 1719331874177,
+          "startTime" : 1734042353400,
+          "endTime" : 1734042353906,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -345,7 +383,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -373,8 +411,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331874307,
-          "endTime" : 1719331874431,
+          "startTime" : 1734042372367,
+          "endTime" : 1734042379853,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -382,7 +420,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -409,8 +447,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331874728,
-          "endTime" : 1719331874957,
+          "startTime" : 1734042399022,
+          "endTime" : 1734042399530,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -418,7 +456,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -434,7 +472,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : true,
@@ -442,8 +480,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332943860,
-          "endTime" : 1719332943934,
+          "startTime" : 1734028134907,
+          "endTime" : 1734028135373,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -456,7 +494,7 @@
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -481,8 +519,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331875278,
-          "endTime" : 1719331877418,
+          "startTime" : 1734042434424,
+          "endTime" : 1734042438258,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -490,7 +528,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -515,8 +553,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331877547,
-          "endTime" : 1719331880521,
+          "startTime" : 1734042449534,
+          "endTime" : 1734042452822,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -524,7 +562,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -549,8 +587,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331880670,
-          "endTime" : 1719331882093,
+          "startTime" : 1734042466418,
+          "endTime" : 1734042468604,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -558,14 +596,14 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
         "col" : 0,
         "sizeX" : 0,
         "width" : 4,
-        "title" : "Action: showsql",
+        "title" : "Action: explainsql",
         "hasTitle" : true,
         "message" : [
           "%script",
@@ -583,8 +621,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331882214,
-          "endTime" : 1719331886814,
+          "startTime" : 1734042478717,
+          "endTime" : 1734042484995,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -592,7 +630,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -610,7 +648,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : true,
@@ -618,8 +656,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332949674,
-          "endTime" : 1719332949754,
+          "startTime" : 1734028140891,
+          "endTime" : 1734028141364,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -632,7 +670,7 @@
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -645,7 +683,7 @@
           "%sql",
           "",
           "",
-          "select ai what are our total sales by movie with best movies first;"
+          "select ai what are our total sales by movie with best movies first"
         ],
         "selectedVisualization" : "table",
         "visualizationConfig" : null,
@@ -657,8 +695,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331887130,
-          "endTime" : 1719331889433,
+          "startTime" : 1734042515931,
+          "endTime" : 1734042520960,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -666,7 +704,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -691,8 +729,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331889579,
-          "endTime" : 1719331891693,
+          "startTime" : 1734042532075,
+          "endTime" : 1734042535619,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -700,7 +738,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -725,8 +763,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331891834,
-          "endTime" : 1719331895244,
+          "startTime" : 1734042562953,
+          "endTime" : 1734042568364,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -734,7 +772,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -759,8 +797,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331895372,
-          "endTime" : 1719331897989,
+          "startTime" : 1734027860586,
+          "endTime" : 1734027865673,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -768,7 +806,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -793,8 +831,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331898126,
-          "endTime" : 1719331900841,
+          "startTime" : 1734027866168,
+          "endTime" : 1734027870657,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -802,7 +840,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -827,8 +865,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331901011,
-          "endTime" : 1719331903336,
+          "startTime" : 1734027871157,
+          "endTime" : 1734027875453,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -836,75 +874,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
-      },
-      {
-        "row" : 0,
-        "col" : 0,
-        "sizeX" : 0,
-        "width" : 6,
-        "title" : "How people watch Action/Adventure movies",
-        "hasTitle" : true,
-        "message" : [
-          "%sql",
-          "",
-          "",
-          "select ai runsql what are the most popular devices when watching Action and Adventure movies;"
-        ],
-        "selectedVisualization" : "table",
-        "visualizationConfig" : null,
-        "hideCode" : false,
-        "hideResult" : false,
-        "hideGutter" : true,
-        "hideVizConfig" : false,
-        "hideInIFrame" : false,
-        "enabled" : true,
-        "forms" : "[]",
-        "result" : {
-          "startTime" : 1719331903491,
-          "endTime" : 1719331906506,
-          "interpreter" : "sql.low",
-          "taskStatus" : null,
-          "status" : null,
-          "results" : null,
-          "forms" : null
-        },
-        "relations" : [ ],
-        "dynamicFormParams" : null
-      },
-      {
-        "row" : 0,
-        "col" : 0,
-        "sizeX" : 0,
-        "width" : 6,
-        "title" : "Model knows A&A are genres",
-        "hasTitle" : true,
-        "message" : [
-          "%script",
-          " ",
-          "",
-          "select ai showsql what are the most popular devices when watching Action and Adventure movies;"
-        ],
-        "selectedVisualization" : "raw",
-        "visualizationConfig" : null,
-        "hideCode" : false,
-        "hideResult" : false,
-        "hideGutter" : true,
-        "hideVizConfig" : false,
-        "hideInIFrame" : false,
-        "enabled" : true,
-        "forms" : "[]",
-        "result" : {
-          "startTime" : 1719331906663,
-          "endTime" : 1719331909069,
-          "interpreter" : "script.low",
-          "taskStatus" : null,
-          "status" : null,
-          "results" : null,
-          "forms" : null
-        },
-        "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -914,20 +884,18 @@
         "title" : null,
         "hasTitle" : false,
         "message" : [
-          "#### Challenge with tables and similar content. Need to create a view.",
+          "%md",
+          "#### Simplify sources for the model using a view.",
+          "",
+          "It's good to simplify your sources to make the model more effective. For example, you may have tables with overlapping content - creating a view that includes the correct columns will make SQL generation more reliable. Let's create a view to disambiguate customer information.",
           "",
           "",
-          "The next question fails. The challenge is when you have multiple tables with similar content - like `CUSTOMER_CONTACT` and `CUSTOMER_EXTENSION`. The model fails to find the right tables.",
-          "",
-          "After the failed query, you will solve the problem by: ",
-          "* creating a view to join `CUSTOMER_CONTACT`, `CUSTOMER_SEGMENT` and `CUSTOMER_SEGMENT`",
-          "* updating the AI profile to include this new view",
-          "",
-          "Then, ask the question again"
+          "* Create a view to join `CUSTOMER_CONTACT`, `CUSTOMER_SEGMENT` and `CUSTOMER_SEGMENT`",
+          "* Update the AI profile to include this new view"
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : true,
@@ -935,50 +903,21 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331909209,
-          "endTime" : 1719331909284,
+          "startTime" : 1734028147254,
+          "endTime" : 1734028147718,
           "interpreter" : "md.low",
-          "taskStatus" : null,
-          "status" : null,
-          "results" : null,
-          "forms" : null
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4 id=\"simplify-sources-for-the-model-using-a-view\">Simplify sources for the model using a view.</h4>\n<p>It's good to simplify your sources to make the model more effective. For example, you may have tables with overlapping content - creating a view that includes the correct columns will make SQL generation more reliable. Let's create a view to disambiguate customer information.</p>\n<ul>\n<li>Create a view to join <code>CUSTOMER_CONTACT</code>, <code>CUSTOMER_SEGMENT</code> and <code>CUSTOMER_SEGMENT</code></li>\n<li>Update the AI profile to include this new view</li>\n</ul>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
-      },
-      {
-        "row" : 0,
-        "col" : 0,
-        "sizeX" : 0,
-        "width" : 12,
-        "title" : "This question fails",
-        "hasTitle" : true,
-        "message" : [
-          "%sql",
-          "",
-          "",
-          "select ai What are sales by customer segment"
-        ],
-        "selectedVisualization" : "raw",
-        "visualizationConfig" : "[{\"raw\":{\"layout\":\"beautify\",\"lastColumns\":[],\"version\":1}}]",
-        "hideCode" : false,
-        "hideResult" : false,
-        "hideGutter" : true,
-        "hideVizConfig" : false,
-        "hideInIFrame" : false,
-        "enabled" : true,
-        "forms" : "[]",
-        "result" : {
-          "startTime" : 1719331909413,
-          "endTime" : 1719331911827,
-          "interpreter" : "sql.low",
-          "taskStatus" : null,
-          "status" : null,
-          "results" : null,
-          "forms" : null
-        },
-        "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1038,8 +977,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331911953,
-          "endTime" : 1719331912057,
+          "startTime" : 1734042592421,
+          "endTime" : 1734042598537,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1047,7 +986,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1073,8 +1012,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331912229,
-          "endTime" : 1719331912359,
+          "startTime" : 1734027878128,
+          "endTime" : 1734027878593,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1082,7 +1021,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1094,45 +1033,68 @@
         "message" : [
           "%script",
           "",
-          "begin",
+          "DECLARE",
+          "   AI_PROVIDER varchar2(10) := 'oci';  -- valid values are oci, azure, google, openai",
+          "   AI_CREDENTIAL_NAME varchar2(100) := 'OCI$RESOURCE_PRINCIPAL'; -- The name of your credential. OCI is using the resource principal",
+          "   -- When using Azure OpenAI - fill in the fields below",
+          "   AZURE_OPENAI_RESOURCE_NAME varchar2(100) :='';  -- This is your Azure OpenAI resource name",
+          "   AZURE_OPENAI_DEPLOYMENT_NAME  varchar2(100):='';  -- This is your Azure OpenAI deployment name",
+          "BEGIN",
+          "    ",
+          "    -- ~~~~~~~~~~~~~~",
+          "    -- recreate the profile but replace the CUSTOMER table with the V_CUSTOMER view",
+          "    -- ~~~~~~~~~~~~~~    ",
           "",
-          "    -- ~~~~~~~~~~~~~~",
-          "    -- drop the current AI profile ",
-          "    -- ~~~~~~~~~~~~~~",
-          "    dbms_cloud_ai.drop_profile(",
-          "        profile_name => 'openai_gpt35',",
+          "    dbms_cloud_ai.drop_profile (",
+          "        profile_name => 'GENAI',",
           "        force => true",
           "    );",
+          "    -- create an AI profile. The attributes are different for providers.",
+          "    IF upper(AI_PROVIDER) = 'AZURE' THEN",
+          "      dbms_cloud_ai.create_profile (",
+          "          profile_name => 'GENAI',",
+          "          attributes =>",
+          "              '{\"provider\": \"azure\",",
+          "                  \"azure_resource_name\": \"AZURE_OPENAI_RESOURCE_NAME\",",
+          "                  \"azure_deployment_name\": \"AZURE_OPENAI_DEPLOYMENT_NAME\",",
+          "                  \"credential_name\": \"AI_CREDENTIAL_NAME\",",
+          "                  \"comments\":\"true\",",
+          "                  \"object_list\": [",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"GENRE\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"V_CUSTOMER\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"PIZZA_SHOP\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"STREAMS\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"MOVIES\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"ACTORS\"}",
+          "                  ]",
+          "                  }'",
+          "      );",
+          "    ELSE",
+          "      dbms_cloud_ai.create_profile (",
+          "          profile_name => 'GENAI',",
+          "          attributes =>",
+          "              '{\"provider\": \"' || AI_PROVIDER || '\",",
+          "                  \"credential_name\": \"' || AI_CREDENTIAL_NAME ||'\",",
+          "                  \"comments\":\"true\",",
+          "                  \"object_list\": [",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"GENRE\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"V_CUSTOMER\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"PIZZA_SHOP\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"STREAMS\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"MOVIES\"},",
+          "                  {\"owner\": \"MOVIESTREAM\", \"name\": \"ACTORS\"}",
+          "                  ]",
+          "                }'",
+          "      );",
+          "    END IF;",
           "",
-          "    -- ~~~~~~~~~~~~~~",
-          "    -- change CUSTOMER to the V_CUSTOMER view",
-          "    -- ~~~~~~~~~~~~~~",
-          "    ",
-          "    dbms_cloud_ai.create_profile(",
-          "        profile_name => 'openai_gpt35',",
-          "        attributes =>       ",
-          "            '{\"provider\": \"openai\",",
-          "            \"model\":\"gpt-3.5-turbo\",",
-          "            \"credential_name\": \"OPENAI_CRED\",",
-          "            \"object_list\": [{\"owner\": \"MOVIESTREAM\", \"name\": \"movies\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"streams\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"v_customer\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"pizza_shop\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"genre\"},",
-          "                            {\"owner\": \"MOVIESTREAM\", \"name\": \"actors\"}",
-          "                            ]",
-          "            }'",
-          "        );",
+          "-- ~~~~~~~~~~~~~~",
+          "-- Set the AI profile for this session",
+          "-- ~~~~~~~~~~~~~~",
           "",
-          "    -- ~~~~~~~~~~~~~~",
-          "    -- set the AI profile for this session",
-          "    -- ~~~~~~~~~~~~~~",
-          "    dbms_cloud_ai.set_profile(",
-          "        profile_name => 'openai_gpt35'",
-          "    );    ",
-          "   ",
-          "",
-          "end;"
+          "dbms_cloud_ai.set_profile(profile_name =>'genai');",
+          "END;",
+          "/"
         ],
         "selectedVisualization" : "raw",
         "visualizationConfig" : null,
@@ -1144,8 +1106,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331912481,
-          "endTime" : 1719331913987,
+          "startTime" : 1734042628969,
+          "endTime" : 1734042637895,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1153,7 +1115,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1178,8 +1140,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331914120,
-          "endTime" : 1719331916366,
+          "startTime" : 1734042659285,
+          "endTime" : 1734042663493,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1187,7 +1149,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1198,14 +1160,14 @@
         "hasTitle" : false,
         "message" : [
           "%md",
-          "## Use a PLSQL API to access the LLM",
+          "#### Use a PLSQL API to access the LLM",
           "You can use a PLSQL API to access the LLM. This is useful for tools that are unable to use the SQL interface. Here's a couple examples that use `DBMS_CLOUD_AI.GENERATE` that to translate natural lange to SQL.",
           "",
           "This approach is used by the **Ask Autonomous** APEX app."
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : true,
@@ -1213,21 +1175,21 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332969164,
-          "endTime" : 1719332969232,
+          "startTime" : 1734028164470,
+          "endTime" : 1734028164953,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
           "results" : [
             {
-              "message" : "<h2 id=\"use-a-plsql-api-to-access-the-llm\">Use a PLSQL API to access the LLM</h2>\n<p>You can use a PLSQL API to access the LLM. This is useful for tools that are unable to use the SQL interface. Here's a couple examples that use <code>DBMS_CLOUD_AI.GENERATE</code> that to translate natural lange to SQL.</p>\n<p>This approach is used by the <strong>Ask Autonomous</strong> APEX app.</p>\n",
+              "message" : "<h4 id=\"use-a-plsql-api-to-access-the-llm\">Use a PLSQL API to access the LLM</h4>\n<p>You can use a PLSQL API to access the LLM. This is useful for tools that are unable to use the SQL interface. Here's a couple examples that use <code>DBMS_CLOUD_AI.GENERATE</code> that to translate natural lange to SQL.</p>\n<p>This approach is used by the <strong>Ask Autonomous</strong> APEX app.</p>\n",
               "type" : "HTML"
             }
           ],
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1242,7 +1204,7 @@
           "declare",
           "    l_prompt varchar2(4000) := 'Who is Tom Hanks?';",
           "    l_response clob;",
-          "    l_profile_name varchar2(100) := 'openai_gpt35';",
+          "    l_profile_name varchar2(100) := 'genai';",
           "begin",
           "    l_response := dbms_cloud_ai.generate(",
           "                    prompt          => l_prompt,",
@@ -1262,8 +1224,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331916938,
-          "endTime" : 1719331919244,
+          "startTime" : 1734042686784,
+          "endTime" : 1734042708985,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1271,7 +1233,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1285,9 +1247,9 @@
           "",
           "",
           "declare",
-          "    l_prompt varchar2(4000) := 'What are our total views by genre?';",
+          "    l_prompt varchar2(4000) := 'What are our total streams by customer segment';",
           "    l_response clob;",
-          "    l_profile_name varchar2(100) := 'openai_gpt35';",
+          "    l_profile_name varchar2(100) := 'genai';",
           "begin",
           "    l_response := dbms_cloud_ai.generate(",
           "                    prompt          => l_prompt,",
@@ -1307,8 +1269,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331919377,
-          "endTime" : 1719331921250,
+          "startTime" : 1734042727802,
+          "endTime" : 1734042731223,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1316,7 +1278,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1326,6 +1288,7 @@
         "title" : null,
         "hasTitle" : false,
         "message" : [
+          "%md",
           "#### What to do when my table and column names are difficult to understand?",
           "It's convenient that our movie data is contained in tables that use clear names. Unfortunately, that's oftentimes not the case! ",
           "",
@@ -1335,7 +1298,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : false,
@@ -1343,16 +1306,21 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331921383,
-          "endTime" : 1719331921455,
+          "startTime" : 1734028171238,
+          "endTime" : 1734028171709,
           "interpreter" : "md.low",
-          "taskStatus" : null,
-          "status" : null,
-          "results" : null,
-          "forms" : null
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4 id=\"what-to-do-when-my-table-and-column-names-are-difficult-to-understand\">What to do when my table and column names are difficult to understand?</h4>\n<p>It's convenient that our movie data is contained in tables that use clear names. Unfortunately, that's oftentimes not the case!</p>\n<p>Use <strong>COMMENTS</strong> on tables and columns to help the model understand their meaning.</p>\n<p>We'll create views with meaningless names and then try a natural language query. Then, we'll apply comments to see how they help.</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1400,8 +1368,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331921603,
-          "endTime" : 1719331921731,
+          "startTime" : 1734042755133,
+          "endTime" : 1734042755751,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1409,7 +1377,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1432,8 +1400,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331921874,
-          "endTime" : 1719331921956,
+          "startTime" : 1734042772328,
+          "endTime" : 1734042773821,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1441,7 +1409,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1451,7 +1419,8 @@
         "title" : null,
         "hasTitle" : false,
         "message" : [
-          "%md ##### Create a new AI profile that uses COMMENTS",
+          "%md ",
+          "#### Create a new AI profile that uses COMMENTS",
           "",
           "We'll create a new AI profile called `USING_COMMENTS`. Notice that the profile has an attribute `\"comments\":\"true\"`. This tells Select AI to send comments with the LLM request.",
           "",
@@ -1459,7 +1428,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : false,
@@ -1467,16 +1436,21 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331922085,
-          "endTime" : 1719331922153,
+          "startTime" : 1734028178168,
+          "endTime" : 1734028178625,
           "interpreter" : "md.low",
-          "taskStatus" : null,
-          "status" : null,
-          "results" : null,
-          "forms" : null
+          "taskStatus" : "SUCCESS",
+          "status" : "SUCCESS",
+          "results" : [
+            {
+              "message" : "<h4 id=\"create-a-new-ai-profile-that-uses-comments\">Create a new AI profile that uses COMMENTS</h4>\n<p>We'll create a new AI profile called <code>USING_COMMENTS</code>. Notice that the profile has an attribute <code>&quot;comments&quot;:&quot;true&quot;</code>. This tells Select AI to send comments with the LLM request.</p>\n<p>We still haven't added comments to our objects - that will come next!</p>\n",
+              "type" : "HTML"
+            }
+          ],
+          "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1497,9 +1471,8 @@
           "  dbms_cloud_ai.create_profile(",
           "    profile_name => 'USING_COMMENTS',",
           "    attributes =>       ",
-          "        '{\"provider\": \"openai\",",
-          "          \"credential_name\": \"OPENAI_CRED\",",
-          "          \"model\":\"gpt-3.5-turbo\",",
+          "        '{\"provider\": \"oci\",",
+          "          \"credential_name\": \"OCI$RESOURCE_PRINCIPAL\",",
           "          \"comments\":\"true\", ",
           "          \"object_list\": [",
           "            {\"owner\": \"MOVIESTREAM\", \"name\": \"view1\"},",
@@ -1524,8 +1497,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331922279,
-          "endTime" : 1719331923886,
+          "startTime" : 1734042790224,
+          "endTime" : 1734042804694,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1533,7 +1506,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1557,8 +1530,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331924019,
-          "endTime" : 1719331928132,
+          "startTime" : 1734042829781,
+          "endTime" : 1734042833181,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1566,7 +1539,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1582,7 +1555,7 @@
         ],
         "selectedVisualization" : "html",
         "visualizationConfig" : null,
-        "hideCode" : false,
+        "hideCode" : true,
         "hideResult" : false,
         "hideGutter" : true,
         "hideVizConfig" : false,
@@ -1590,8 +1563,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719332983742,
-          "endTime" : 1719332983905,
+          "startTime" : 1734028184641,
+          "endTime" : 1734028185142,
           "interpreter" : "md.low",
           "taskStatus" : "SUCCESS",
           "status" : "SUCCESS",
@@ -1604,7 +1577,7 @@
           "forms" : "[]"
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1647,8 +1620,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331928462,
-          "endTime" : 1719331928618,
+          "startTime" : 1734042871572,
+          "endTime" : 1734042872183,
           "interpreter" : "script.low",
           "taskStatus" : null,
           "status" : null,
@@ -1656,7 +1629,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       },
       {
         "row" : 0,
@@ -1680,8 +1653,8 @@
         "enabled" : true,
         "forms" : "[]",
         "result" : {
-          "startTime" : 1719331928756,
-          "endTime" : 1719331931858,
+          "startTime" : 1734042910282,
+          "endTime" : 1734042924677,
           "interpreter" : "sql.low",
           "taskStatus" : null,
           "status" : null,
@@ -1689,7 +1662,7 @@
           "forms" : null
         },
         "relations" : [ ],
-        "dynamicFormParams" : null
+        "dynamicFormParams" : "{}"
       }
     ]
   }
