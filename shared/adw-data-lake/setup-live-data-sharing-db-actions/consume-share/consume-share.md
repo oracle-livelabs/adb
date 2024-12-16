@@ -52,6 +52,8 @@ Live data shared with you through data sharing is not automatically available fo
 
         ![Complete share panel.](images/completed-share-panel.png)
 
+    >**Important:** If the **Share Provider** drop-down list doesn't show **`training-share`**, click the **+** sign in the **Available Live Share Providers in the last 7 Days** section to subscribe to the Live Share. It might take some time before you can see the published data share. You can use the **Refresh** icon to refresh the view.
+
 4. Click **Next**.
 
 5. On the **Add Shares** wizard page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
@@ -112,7 +114,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

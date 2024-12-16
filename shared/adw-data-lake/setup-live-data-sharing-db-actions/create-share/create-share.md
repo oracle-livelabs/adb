@@ -50,7 +50,7 @@ The **Provider and Consumer** page is displayed. The **PROVIDE SHARE** and the *
 
     The **Provider Identification** panel is displayed.
 
-3. In the **General** tab, specify the following:
+3. Specify the following:
 
     * **Name:** Enter **`training_share`**.
     * **Email:** Enter the email address for the provider such as **`training_share@outlook.com`**.
@@ -104,7 +104,7 @@ When you create the data share using the share live data using direct connection
 
     ![Click recipient.](images/click-recipient.png " ")
 
-9. In the **Create Share Recipient** panel, enter **`training_recipient`** as the name of the recipient, an optional description, and paste the sharing id that you copied to your clipboard in the **Sharing ID** field.
+9. In the **Create Share Recipient** panel, enter **`training_recipient`** as the name of the recipient, an optional description, an email address, and paste the sharing id that you copied to your clipboard in the **Sharing ID** field.
 
     ![Create the new recipient.](images/create-new-recipient.png " ")
 
