@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This workshop walks you through the steps to get started using the Oracle Autonomous Database. For this workshop we're going to use an  **Autonomous Database optimized for Transactin (ATP)**. You will provision a new database in just a few minutes.
+This workshop walks you through the steps to get started using the Oracle Autonomous Database. For this workshop we're going to use an  **Autonomous Database Optimized for Transaction Processing (ATP)**. You will provision a new database in just a few minutes. Real-time SPM was introduced in Oracle Database 23ai, but it was backported to Oracle _Autonomous_ Database 19c, so it is available in this version, too.
 
 Oracle Autonomous Databases have the following characteristics:
 
@@ -63,6 +63,10 @@ Estimated Lab Time: 15 minutes.
 
     - **Compute auto scaling:** Unchecked
 
+    - **Choose database version:** 19c or 23ai (you can choose either)
+
+    - **Other settings (ECPU count, etc):** Leave as default
+
     ![ADB Creation Details](./images/prov-3.png)
 
 3. Under **Create administration credentials** and **Choose network access** sections:
@@ -101,4 +105,4 @@ You may now *proceed to the next lab.*
 
 - **Author** - Priscila Iruela - Technology Product Strategy Director, Juan Antonio Martin Pedro - Analytics Business Development
 - **Contributors** - Victor Martin, Melanie Ashworth-March, Andrea Zengin
-- **Last Updated By/Date** - Nigel Bayliss, Dec 2024
+- **Last Updated By/Date** - Nigel Bayliss, Jan 2025

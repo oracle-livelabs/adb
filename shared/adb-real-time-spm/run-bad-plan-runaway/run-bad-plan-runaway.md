@@ -56,7 +56,7 @@ This lab assumes you have completed the following:
     ```
 	<copy>
     --
-    -- Induce a bad plan by enabling the hints
+    -- Try to induce a bad plan by enabling the hints, but SPM will save us
     --
     alter session set optimizer_ignore_hints = false;
 
@@ -100,28 +100,24 @@ This lab assumes you have completed the following:
       578465878            3 SQL_PLAN_9mmnzp9rptjrr8b7ec007 
     ```
 
-2. In this case, the CHILD_NUMBER is 3, so the following SQL statement will show the plan.
+2. The CHILD_NUMBER is usually 1 or three. Pick the appropriate command...
     ```
 	<copy>
     --
-    -- Use the CHILD_NUMBER from above in the cursor_child_no parameter
+    -- NOTE! Use the CHILD_NUMBER from above in the cursor_child_no parameter
+    -- It may be 3...
     --
     SELECT *
     FROM table(DBMS_XPLAN.DISPLAY_CURSOR(sql_id=>'7x23vdf61j0av', cursor_child_no=>3));    
-    </copy>
-	```
-
-3. Note that a SQL plan baseline is used.
-
-    ```
-	<copy>
     --
-    -- Use the CHILD_NUMBER from above in the cursor_child_no parameter
+    -- Or, it may be 1
     --
     SELECT *
-    FROM table(DBMS_XPLAN.DISPLAY_SQL_PLAN_BASELINE(sql_id=>'7x23vdf61j0av', cursor_child_no=>3));    
+    FROM table(DBMS_XPLAN.DISPLAY_CURSOR(sql_id=>'7x23vdf61j0av', cursor_child_no=>1));    
     </copy>
-	```
+	```    
+
+3. Note that a SQL plan baseline is used.
 
     ![SQL plan baseline is used](./images/baseline-used-runaway.png)
 

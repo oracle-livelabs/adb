@@ -4,7 +4,7 @@
 
 In this lab you will execute and application query with a good plan. Its performance will be acceptable.
 
-Estimated Time: 5mins
+Estimated Time: 20mins
 
 ### Objectives
 - Reset the lab, execute an application query with a good plan, and wait for it to be captured in the automatic SQL tuning set.
@@ -22,7 +22,7 @@ This lab assumes you have completed the following:
     ![Restart the Database](./images/restart.png)
     ![Confirm Database](./images/restart2.png)
 
-2. If you have executed and tasks in this lab report, use the SQL worksheet to remove references to the test query from the automatic SQL tuning set and SQL plan baselines.
+2. Remove previous references to the test query from SQL plan baselines and the automatic SQL tuning set.
 
 	```
 	<copy>        
@@ -172,7 +172,9 @@ This lab assumes you have completed the following:
 
     ![ASTS Capture](./images/output-asts-v2.png)
 
-You may now *proceed to the next lab.*
+## Task 6: Wait Before Proceeding
+
+1. Before proceeding to the next lab, wait 15mins.
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Dec 2024

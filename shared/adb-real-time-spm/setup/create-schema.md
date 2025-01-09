@@ -29,7 +29,7 @@ We will now prepare to execute SQL statements.
 
 ## Task 2: Create and Populate an Application Tables
 
-1. Drop the table if it exists already.
+1. Drop the test table if it exists already.
 
     ```
 	<copy>
@@ -129,4 +129,4 @@ We will now prepare to execute SQL statements.
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Dec 2024
-* **Last Updated By/Date** - Nigel Bayliss, Dec 2024
+* **Last Updated By/Date** - Nigel Bayliss, Jan 2025

@@ -55,7 +55,7 @@ This lab assumes you have completed the following:
 	</copy>
 	```
 
-3. Observe the performance regression being resolved.
+3. Observe the performance regression being resolved. Internally, real-time SPM compares SQL performance using _buffer gets_ and _CPU_ rather than elapsed time. However, for this demonstration, we can identify a poorly performing SQL statement using the elapsed time as a proxy for these metrics.
 
     ![Resolved performance regression](./images/perf.png)
 
@@ -82,10 +82,15 @@ This lab assumes you have completed the following:
     ```
 	<copy>
     --
-    -- Use the CHILD_NUMBER from above in the cursor_child_no parameter
-    --
+    -- NOTE! Use the CHILD_NUMBER from above in the cursor_child_no parameter
+    --    
     SELECT *
     FROM table(DBMS_XPLAN.DISPLAY_CURSOR(sql_id=>'7x23vdf61j0av', cursor_child_no=>2));    
+    --
+    -- Alternatively, if it's 1
+    --    
+    SELECT *
+    FROM table(DBMS_XPLAN.DISPLAY_CURSOR(sql_id=>'7x23vdf61j0av', cursor_child_no=>1));      
     </copy>
 	```
 
