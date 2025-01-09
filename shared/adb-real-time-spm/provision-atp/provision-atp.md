@@ -1,4 +1,4 @@
-# Get Started
+# Provision an Autonomous Database Instance
 
 ## Introduction
 
