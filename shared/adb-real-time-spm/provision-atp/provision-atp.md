@@ -1,4 +1,4 @@
-# Provisioning a new Autonomous Data Database
+# Get Started
 
 ## Introduction
 
@@ -20,10 +20,6 @@ Automates data protection and security.
 Automates failure detection, failover, and repair.
 
 - Detect and protect from system failures and user errors automatically and provide failover to standby databases with zero data loss.
-
-Watch our short video that explains how to provision your Autonomous Database instance:
-
-[](youtube:IfWJhnodAxk)
 
 Estimated Lab Time: 15 minutes.
 
