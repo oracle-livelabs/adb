@@ -48,8 +48,7 @@ Use these links to get more information about Oracle Autonomous Database:
 
 ## Acknowledgements
 
-- **Author** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance
-- **Contributors:**
+- **Author:**
+    * Nilay Panchal, ADB Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Rick Green, Principal User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, January 2025
