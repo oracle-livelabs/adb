@@ -61,9 +61,10 @@ You may now **proceed to the next lab**.
 ## Want to Learn More?
 
 * [Add CPU or Storage Resources or Enable Auto Scaling](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-add-resources.html#GUID-DA72422A-5A70-42FA-A363-AB269600D4B0)
+
 ## **Acknowledgements**
 
 * **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, ADB Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, January 2025
