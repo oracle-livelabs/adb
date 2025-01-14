@@ -22,42 +22,36 @@
         },
         {
             "title": "Lab 1: Set up the Workshop Environment",
-            "type":"freetier",
-            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
-            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
-        },
-        {
-            "title": "Lab 2: Set up the Workshop Environment-building blocks-test please ignore",
             "description": "Set up the workshop environment.",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
         },
         {
-            "title": "Lab 3: Create a User, an Object Storage Bucket, and an OCI Credential",
+            "title": "Lab 2: Create a User, an Object Storage Bucket, and an OCI Credential",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
         },
         {
-            "title": "Lab 4: Create, Populate, and Publish a Data Share",
+            "title": "Lab 3: Create, Populate, and Publish a Data Share",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-share/create-share.md"
         },
         {
-            "title": "Lab 5: Create and Authorize the Data Share Recipient",
+            "title": "Lab 4: Create and Authorize the Data Share Recipient",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-share-recipients/create-share-recipients.md"
         },
         {
-            "title": "Lab 6: Consume the Data Share",
+            "title": "Lab 5: Consume the Data Share",
             "type":"freetier",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../consume-share/consume-share.md"
         },
         {
-            "title": "Lab 7: Clean up Resources Used in this Workshop (Optional)",
+            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
             "description": "Delete the ADB instance and compartment if not needed.",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"
