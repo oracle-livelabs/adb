@@ -22,8 +22,8 @@
         },
         {
             "title": "Lab 1: Set up the Workshop Environment",
-            "description": "Set up the workshop environment.",
             "type": "freetier",
+            "description": "Set up the workshop environment.",
             "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
         },
         {
