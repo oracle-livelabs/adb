@@ -22,9 +22,9 @@
         },
         {
             "title": "Lab 1: Set up the Workshop Environment",
-            "type":"freetier",
-            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
-            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
+            "description": "Set up the workshop environment.",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
         },
         {
             "title": "Lab 2: Set up the Workshop Environment-building blocks-test please ignore",
