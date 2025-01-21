@@ -162,7 +162,7 @@ This lab assumes you have completed the following lab:
 	```
 	<copy>
 	-- If using Oracle Database 23ai only - not required for Oracle Database 19c
-	exec exec dbms_auto_index.configure('auto_index_include_dml_cost', 'ON')
+	exec dbms_auto_index.configure('auto_index_include_dml_cost', 'ON')
 	</copy>
 	```
 

@@ -119,7 +119,7 @@ We will now prepare to execute SQL statements.
 	```
 	<copy>
 	-- If using Oracle Database 23ai only - not required for Oracle Database 19c
-	exec exec dbms_auto_index.configure('auto_index_include_dml_cost', 'OFF')
+	exec dbms_auto_index.configure('auto_index_include_dml_cost', 'OFF')
 	</copy>
 	```
 
