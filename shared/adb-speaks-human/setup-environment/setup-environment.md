@@ -113,7 +113,9 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
 
-## Task 2: Create Policy to Enable Access to OCI Generative AI
+## Task 2: (Optional) Create Policy to Enable Access to OCI Generative AI
+
+**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
 
 Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
