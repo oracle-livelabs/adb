@@ -33,11 +33,6 @@
             "filename": "./../../monitor-adb/monitor-adb.md"
         },
         {
-            "title": "Lab 5: Chat with your data in ADB using Generative AI",
-            "description": "Chat with your data in ADB using Generative AI",
-            "filename": "./../../chat-with-your-data-using-genai/chat-with-your-data-using-genai.md"
-        },
-        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
