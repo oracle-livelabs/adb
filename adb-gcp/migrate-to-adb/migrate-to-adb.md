@@ -103,5 +103,5 @@ You may now **proceed to the next lab**.
 
 *Congratulations! You have successfully completed migrating an Oracle database to the Autonomous database.*
 
-- **Author** - Tejus Subrahmanya
-- **Last Updated By/Date** - Tejus Subrahmanya, August 2024
+- **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
+- **Last Updated By/Date** - Vivek Verma, Jan 2025

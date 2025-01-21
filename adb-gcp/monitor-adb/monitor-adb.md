@@ -38,74 +38,54 @@ To view an available metric:
 
 4. Similarly a number of other Metrics can be viewed for Autonomous Database.
 
-## Task 2: Set up User credentials in your target autonomous database
+## Task 2: Monitor using Cloud Monitoring dashboards
 
-Now that we have the Access key and the Secret, let's set up the target database to read from the Google Cloud Storage and import data.
+Cloud Monitoring lets you monitor your Oracle Database@Google Cloud resources using custom dashboards. You can create custom dashboards using Cloud Monitoring and the available Oracle Database@Google Cloud metrics and logs.
 
-Here, we will use **SQLcl** to demonstrate the steps needed to set up Google Cloud Storage credentials.
+To create a custom dashboard, do the following:
 
-Download and install sqlcl on the Google Cloud Compute VM instance.
+1. In the Google Cloud console, under **Observability Monitoring**, click **Dashboards**.
 
-You can download sqlcl from https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-24.3.2.330.1718.zip
+2. In the **Dashboards** page, click **Create Dashboard**.
 
-- Once connected to your autonomous database as ***admin*** user, run the following pl/sql procedure, replacing the username with **Access key** and password with **Secret**.
+    ![Cloud Metrics Explorer](./images/create-dashboard.png " ")
 
-    ```
-    <copy>
-    set define off
-    begin
-    DBMS_CLOUD.CREATE_CREDENTIAL(
-    credential_name => 'GOOGLE_CRED_NAME',
-    username => 'Access_key',
-    password => 'Secret'
-    );
-    END;
-    /
-    </copy>
-    ```
+3. In the dashboard toolbar, click **Add widget**.
 
-- Here's a screenshot of the above command run from a SQLcl.
+4. In the **Add widget** pane, select a widget to add to your dashboard. For this workshop select **Metric**. 
 
-    ![Cloud Storage Settings](./images/create-cloud-cred.png " ") 
+    ![Add Widget](./images/add-widget.png " ")
 
-- Ensure the pl/sql procedure is executed successfully from the log message.
+    You can select a widget based on the type of data to display or how you want to display the data. In all cases, a configuration pane is opened. For example, you can select the Metric widget and then set the visualization to Stacked area. Or, you can select the Stacked area widget and then select the metric.
 
-- Test the access to Google Cloud Storage
+5. On the **Configure widget** page, click **Select a metric** and select **Autonomous Database**. Click **CPU Utilization** and click **Apply**.
 
-    ```
-    <copy>
-    SELECT * FROM DBMS_CLOUD.LIST_OBJECTS('GOOGLE_CRED_NAME', 'https://gcpdatapump.storage.googleapis.com/');
-    </copy>
-    ```
+    ![Configure Widget](./images/configure-widget.png " ")
 
-    ![This image shows the result of performing the above step.](./images/query-gcpdatapump.png " ")
+6. Click **Apply** to add the widget to the Dashboard.
 
-## Task 3: Import data from Azure storage using impdp utility
+    ![Add Widget](./images/add-widget-to-dashboard.png " ")
 
-- From the same SQLcl window run the data pump import command.
+7. This will add the widget to the dashboard.
 
-    ```
-    <copy>
-    datapump import -
-    -schemas HR -
-    -excludeexpr "IN ('PROCEDURE', 'PACKAGE')" -
-    -directory data_pump_dir -
-    -credential GOOGLE_CRED_NAME -
-    -remaptablespaces USERS=DATA -
-    -dumpuri https://gcpdatapump.storage.googleapis.com/HR.dmp -
-    -logfile testuser1.log
-     </copy>
-    ```
-    
-    ![This image shows the result of performing the above step.](./images/import.png " ")
+    ![Add Widget](./images/view-dashboard.png " ")
 
-All Done! Your application schema was successfully imported.
+8. Follow steps 3 to 7 to add more widgets to the dashboard. 
+
+    ![Add Widget](./images/view-dashboard1.png " ")
+
+9. Click on the Dashboard name and rename it to **Autonomous Database Dashboard**.
+
+10. Go back to **Dashboards Overview** to see the list of Dashboards.
+
+    ![Add Widget](./images/dashboard-overview.png " ")
+
+11. Click the newly created dashbaord from the list of dashboards and change the time range to **Today**. View the refreshed Dashboard.
+
+    ![Add Widget](./images/dashboard-today.png " ")
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-
-*Congratulations! You have successfully completed migrating an Oracle database to the Autonomous database.*
-
-- **Author** - Tejus Subrahmanya
-- **Last Updated By/Date** - Tejus Subrahmanya, August 2024
+- **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
+- **Last Updated By/Date** - Vivek Verma, Jan 2025
