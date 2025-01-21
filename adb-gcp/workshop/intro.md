@@ -22,10 +22,9 @@ Find more details on getting started [Onboarding with Oracle Database@GCP](https
 
 * Get Started
 * Lab 1: Provisinoing Autonomous Database@GCP
-* Lab 2: Connect ADB with sqlcl
-* Lab 3: Connect ADB with Swingbench Application
-* Lab 4: Migrate data to ADB@GCP
-* Lab 5: Monitoring ADB@GCP
+* Lab 2: Connect ADB with Swingbench Application
+* Lab 3: Migrate data to ADB@GCP
+* Lab 4: Monitoring ADB@GCP
 
 Please proceed to the next lab.
 
