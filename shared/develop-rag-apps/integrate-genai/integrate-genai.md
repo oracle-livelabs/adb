@@ -66,7 +66,7 @@ In this lab, you will:
 
     ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
 
-## Task 2: Connect Autonomous Database to an AI Provider and Create an AI Profile
+## Task 2: Connect Autonomous Database to an AI Provider, Create an AI Profile, and a Vector Index
 
 ### Background
 There are 3 things to do in order to connect Autonomous Database to an AI provider:
