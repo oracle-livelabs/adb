@@ -2,9 +2,9 @@
 
 ## Introduction
 
-As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a few. When you ran the scripts to set up your environment, The Select AI APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
+As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with a few queries. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
 
->**Note:** Refer to lab 3 to review what you learned about creating profiles to specify what LLM provider and database schema/tables to use when answering your questions in the app.
+>**Note:** Refer to lab 2 to review what you learned about creating profiles to specify what LLM provider and the Vector index to use when answering your questions in the app.
 
 Estimated Time: 10 minutes.
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 ## Task 1: Access the Select AI Demo Application
 
-1. Copy the **Select AI demo** application URL that you saved in a text editor.
+1. Copy the **Select AI demo** application URL that you saved in a text editor earlier in Lab 1.
 
     ![Copy the URL value](./images/demo-credentials-file.png =65%x*)
 
@@ -39,9 +39,9 @@ In this lab, you will:
 
     ![Select AI application displayed](./images/select-ai-application.png =70%x*)
 
-## Task 2: Ask Natural Language and Database Questions Using the Application
+3. Click **Close** to exit the **AI Settings** panel.
 
-1. 
+## Task 2: Ask Natural Language and Database Questions Using the Application
 
 You can use this application to ask the following types of questions:
 
@@ -56,14 +56,11 @@ _Select the **Ask Database** checkbox_ to ask questions about your business data
   ![Ask the database](./images/ask-database.png =70%x*)
 
   <!---
-  Where do you specify what LLM provider and database schema/tables to use when answering your questions? When you create the profile using **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL procedure, you specify the LLM provider, the credential, the schema, and the tables to use to answer your natural language questions on general data or your business data that is stored in your database.
-
-  ![Create profile diagram](./images/create-profile-diagram.png " ")
---->
+  --->
 
 Let's experiment a bit with both general data from the `internet` and also from the `moviestream` support site.
 
-1. Enter your question using a free form format in the **Ask a Question** text box such as `My movie is frozen on the opening scene`, and make sure that the **Ask Database** checkbox is not checked since this is a general internet question that will be handled by your LLM provider. Next, click the **Run** icon, or press **[ENTER]**.
+1. Enter your question using a free form format in the **Ask a Question** text box such as `My movie is frozen on the opening scene`. Select the **Ask your database** checkbox is checked since this is a general internet question and also one that uses the internal moviestream support site. Next, click the **Run** icon, or press **[ENTER]**.
 
     >**Note:** You can type your own natural language question. You don't have to use the exact question that we show in our examples.
 

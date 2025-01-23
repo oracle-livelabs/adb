@@ -77,12 +77,12 @@ There are 4 things to do in order to connect Autonomous Database to an AI provid
 
 >**Note:** All of these steps have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
 
-A Select AI profile encapsulates connection information for an AI provider. This includes: 
+A Select AI profile encapsulates connection information for an AI provider and Vector search. This includes:
 
 1. A security credential (e.g. the resource principal for OCI GenAI or a credential that captures a secret for a 3rd party AI provider)
 2. The name of the provider
 3. The name of the LLM (optional)
-4. A list of target tables that will be used for natural language queries (required when using NL2SQL)
+4. A Vector index
 
 You can create as many profiles as you need, which is useful when comparing the quality or performance of the results of different models.
 
