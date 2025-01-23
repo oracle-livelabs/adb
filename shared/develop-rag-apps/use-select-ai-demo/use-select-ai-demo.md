@@ -31,15 +31,17 @@ In this lab, you will:
 
     ![Enter ChatDB credentials](./images/ai-select-credentials.png =70%x*)
 
-2. On the **ChatDB** page, select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`OPENAI_GPT35`** profile that was created in the **Create credential and AI profile** paragraph in the notebook that you imported in the **Lab 3**.
+2. On the **ChatDB** page, the **AI Settings** panel is displayed. Select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`GENAI`** profile that was created in the **Lab 2** when you ran the script.
 
-    ![Select AI profile](./images/select-profile.png =70%x*)
+    ![Select AI profile](./images/select-profile-rag.png =70%x*)
 
     The ChatDB application is displayed. You are now ready to ask questions at the **Ask a question** prompt!
 
     ![Select AI application displayed](./images/select-ai-application.png =70%x*)
 
 ## Task 2: Ask Natural Language and Database Questions Using the Application
+
+1. 
 
 You can use this application to ask the following types of questions:
 
@@ -59,19 +61,19 @@ _Select the **Ask Database** checkbox_ to ask questions about your business data
   ![Create profile diagram](./images/create-profile-diagram.png " ")
 --->
 
-Let's experiment a bit with both general data from the `internet` and also from the `moviestream` tables in the database.
+Let's experiment a bit with both general data from the `internet` and also from the `moviestream` support site.
 
-1. Let's find out how to make french toast. Enter your question using a free form format in the **Ask a Question** text box, and make sure that the **Ask Database** checkbox is not checked since this is a general internet question that will be handled by your LLM provider. Next, click the **Run** icon, or press **[ENTER]**.
+1. Enter your question using a free form format in the **Ask a Question** text box such as `My movie is frozen on the opening scene`, and make sure that the **Ask Database** checkbox is not checked since this is a general internet question that will be handled by your LLM provider. Next, click the **Run** icon, or press **[ENTER]**.
 
     >**Note:** You can type your own natural language question. You don't have to use the exact question that we show in our examples.
 
-    ![How to make french toast question](./images/french-toast-question.png =70%x*)
+    ![Prompt 1: frozen movie](./images/frozen-movie-prompt-1.png =70%x*)
 
-    A French toast recipe is displayed.
+    The suggested answers from the support site and the internet are displayed.
 
-   ![How to make french toast answer](./images/french-toast-answer.png =70%x*)
+   ![Prompt 1 answer](./images/prompt-1-answer.png =70%x*)
 
-2. Let's find out the top 10 streamed movies in the moviestream company. Enter your question using a free form format in the **Ask a Question** text box, and select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
+2. Let's ask another question. In the **Ask a Question** text box: `George Clooney’s lips are moving but I cant hear him`find out the top 10 streamed movies in the moviestream company. Enter your question using a free form format in the **Ask a Question** text box, and select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 
     ![Top 10 streamed movies](./images/top-10-movies.png =70%x*)
 

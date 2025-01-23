@@ -69,10 +69,11 @@ In this lab, you will:
 ## Task 2: Connect Autonomous Database to an AI Provider, Create an AI Profile, and a Vector Index
 
 ### Background
-There are 3 things to do in order to connect Autonomous Database to an AI provider:
-1. Grant the **`MOVIESTREAM`** user network access to the AI provider endpoint
+There are 4 things to do in order to connect Autonomous Database to an AI provider:
+1. Grant the **`MOVIESTREAM`** user network access to the AI provider endpoint (already done for you)
 2. Create a credential containing the secret used to sign requests to the AI provider
-3. Create a Select AI profile (see below for more details) 
+3. Create a Select AI profile (see below for more details)
+4. Create a Vector index (see below for more details)
 
 >**Note:** All of these steps have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
 
@@ -87,54 +88,117 @@ You can create as many profiles as you need, which is useful when comparing the 
 
 For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
 
-
 ### **Connect to one of the following AI providers using each provider's default model**:
+
+>**Note:** In this workshop, we are using the OCI GenAI as the LLM in our examples.
 
 <details>
     <summary>**OCI Generative AI** (default)</summary>
 
-1. Grant the **`MOVIESTREAM`** user network access to the endpoint.
-
-    **Note:** This is not required when using **OCI GenAI**
-
-2. Create a credential as follows:
-
-    The workshop deployment step already set up a resource principal for your database and enabled the **`MOVIESTREAM`** user to use that principal (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource (i.e. your ADB instance) needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
-
-3. Create a Select AI profile.
+1. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon in the toolbar.
 
     ```sql
     <copy>
-    begin    
-        -- Drop the profile in case it already exists
-        dbms_cloud_ai.drop_profile(
-            profile_name => 'genai',
-            force => true
-        );    
 
-        -- Create an AI profile that uses the default LLAMA model on OCI
-        dbms_cloud_ai.create_profile(
-            profile_name => 'genai',
-            attributes =>       
-                '{"provider": "oci",
-                "credential_name": "OCI$RESOURCE_PRINCIPAL",
-                "comments":"true",            
-                "object_list": [
-                    {"owner": "MOVIESTREAM", "name": "GENRE"},
-                    {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                    {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                    {"owner": "MOVIESTREAM", "name": "STREAMS"},            
-                    {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                    {"owner": "MOVIESTREAM", "name": "ACTORS"}
-                ]
-                }'
-            );
-            
-    end;
+    -- Use resource principal
+    -- This policy allows access: allow any-user to manage
+    -- generative-ai-family in the tenancy as ADMIN
+
+    -- The following is already done for you in this workshop.
+    -- exec dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
+
+    -- As MOVIESTREAM
+    -- Here is the web site:
+    -- https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
+
+    /* REVIEW */
+    -- Look at the files on object store
+    -- Review the file list that comprise the support web site
+    SELECT object_name, bytes 
+    FROM dbms_cloud.list_objects(
+        credential_name => 'OCI$RESOURCE_PRINCIPAL',
+        location_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/'
+    );
+
+    /* RESET */
+    -- delete profiles / vector indexes in case they exist
+    BEGIN  
+    -- AI profile
+    dbms_cloud_ai.drop_profile(
+            profile_name => 'SUPPORT_SITE',
+            force => true
+    );           
+    -- Vector index
+    dbms_cloud_ai.drop_vector_index (
+        index_name => 'SUPPORT',
+        force => true
+    );                                                                 
+
+    END;
     /
+
+    /* CREATE */
+    -- create the profile and index
+    BEGIN  
+    -- create the ai profile. It will use the support vector to answer questions
+    dbms_cloud_ai.create_profile (
+        profile_name => 'SUPPORT_SITE',
+        attributes => 
+            '{
+            "provider": "oci",        
+            "credential_name": "OCI$RESOURCE_PRINCIPAL",              
+            "vector_index_name": "SUPPORT"
+            }'      
+    );  
+
+    -- Create a vector index that points to the object storage location
+    -- that contains the website files. This will create a pipeline
+    -- that loads the index and keeps it up to date
+
+    dbms_cloud_ai.create_vector_index(
+        index_name  => 'SUPPORT',
+        attributes  => '{"vector_db_provider": "oracle",
+                        "object_storage_credential_name": "OCI$RESOURCE_PRINCIPAL",
+                        "location": "https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/",
+                        "profile_name": "SUPPORT_SITE",
+                        "vector_table_name":"support_site_vector",
+                        "vector_distance_metric": "cosine"
+                    }'
+        );                                       
+    END;                                                                           
+    /  
+
+    /* PIPELINE */
+    -- A pipeline was created and you can see it here. The pipeline runs
+    -- periodically to update the vectors.
+    -- Check out the status table to see progress/details
+    SELECT pipeline_id, pipeline_name, status, last_execution, status_table
+    FROM user_cloud_pipelines;
+
+    SELECT * 
+    FROM user_cloud_pipeline_attributes;
+
+    SELECT * 
+    FROM user_cloud_pipeline_history;
+
+    /* VECTOR TABLE */
+    -- Review the generated table that has the chunks and vector embedding
+    SELECT * FROM support_site_vector;
+
+    /* QUERY */
+    SELECT
+    dbms_cloud_ai.generate (
+        profile_name => 'SUPPORT_SITE',
+        action => 'narrate',
+        prompt => 'George Clooney lips are moving but I can not hear him'
+    ) as support_question;  
     </copy>
     ```
-</details>
+    ![The output is displayed in the Script Output tab.](./images/genai-output-rag.png " ")
+
+    ![The output is displayed in the Script Output tab.](./images/genai-output-rag-query.png " ")
+    </details>
+
 
 <details>
     <summary>**OpenAI**</summary>
