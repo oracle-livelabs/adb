@@ -11,13 +11,16 @@ Estimated Time: 10 minutes.
 ### Objectives
 
 In this lab, you will:
+
 * Connect Autonomous Database to an AI provider
 * Test the AI profile
 
 ### Prerequisites
+
 - This lab requires the completion of the previous labs that deployed your Autonomous Database.
 
 ## Task 1: Log into the SQL Worksheet
+
 >**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack we created, **Deploy-ChatDB-Autonomous-Database...** > Select the job we created, **ormjob2024117214431** > Select **Outputs** under **Resources**.
 
 ![Moviestream password](./images/moviestream-output-pswd.png "")
@@ -66,10 +69,12 @@ In this lab, you will:
 
     ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
 
-## Task 2: Connect Autonomous Database to an AI Provider, Create an AI Profile, and a Vector Index
+## Task 2: Connect Autonomous Database to an AI Provider, Create an AI Profile and a Vector Index
 
 ### Background
+
 There are 4 things to do in order to connect Autonomous Database to an AI provider:
+
 1. Grant the **`MOVIESTREAM`** user network access to the AI provider endpoint (already done for you)
 2. Create a credential containing the secret used to sign requests to the AI provider
 3. Create a Select AI profile (see below for more details)
@@ -86,61 +91,73 @@ A Select AI profile encapsulates connection information for an AI provider and V
 
 You can create as many profiles as you need, which is useful when comparing the quality or performance of the results of different models.
 
-For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
+For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation.
 
-### **Connect to one of the following AI providers using each provider's default model**:
+### **Connect to one of the following AI providers using each provider's default model**
 
 >**Note:** In this workshop, we are using the OCI GenAI as the LLM in our examples.
 
 <details>
     <summary>**OCI Generative AI** (default)</summary>
 
-1. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon in the toolbar.
+1. The following policy allows access but it's already done for you in this workshop.
+
+    ```
+    allow any-user to manage generative-ai-family in the tenancy as ADMIN
+    ```
+
+    You need to Use resource principal which is already enabled for the **MOVIESTREAM** user in this workshop; therefore, _you don't need to run the following script_; however, if you do need to run it, make sure you are signed in as the **admin** user.
+
+    ```
+    exec dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
+    ```
+
+2. Navigate to and review the **MOVIESTREAM** internal support Web site using the following URL.
 
     ```sql
     <copy>
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
+    </copy>
+    ```
 
-    -- Use resource principal
-    -- This policy allows access: allow any-user to manage
-    -- generative-ai-family in the tenancy as ADMIN
+3. Explore the Web site as desired. For example, to see the list of account and billing issues, click the **Account & Billing Issues** menu.
 
-    -- The following is already done for you in this workshop.
-    -- exec dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
+    ![Click Account & Billing Issues.](./images/account-billing-issues.png " ")
 
-    -- As MOVIESTREAM
-    -- Here is the web site:
-    -- https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
+4. Ensure that you are signed in as the **MOVIESTREAM** user. Review the files in the public object storage bucket that comprise the moviestream support web site. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
 
-    /* REVIEW */
-    -- Look at the files on object store
-    -- Review the file list that comprise the support web site
-    SELECT object_name, bytes 
+    ```sql
+    <copy>
+    SELECT object_name, bytes
     FROM dbms_cloud.list_objects(
         credential_name => 'OCI$RESOURCE_PRINCIPAL',
         location_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/'
     );
+    </copy>
+    ```
 
+    ![Query the support site files.](./images/query-support-files.png " ")
+
+### **Create the AI profile**
+
+1. Create an AI profile named **SUPPORT_SITE**. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
+
+    ```sql
+    <copy>
     /* RESET */
-    -- delete profiles / vector indexes in case they exist
+    -- delete the AI profile in case it already exists
+
     BEGIN  
     -- AI profile
     dbms_cloud_ai.drop_profile(
             profile_name => 'SUPPORT_SITE',
             force => true
     );           
-    -- Vector index
-    dbms_cloud_ai.drop_vector_index (
-        index_name => 'SUPPORT',
-        force => true
-    );                                                                 
-
-    END;
-    /
-
+    
     /* CREATE */
-    -- create the profile and index
-    BEGIN  
     -- create the ai profile. It will use the support vector to answer questions
+    -- *** THIS WILL BE DIFFERENT FOR EACH AI PROVIDER **
+
     dbms_cloud_ai.create_profile (
         profile_name => 'SUPPORT_SITE',
         attributes => 
@@ -150,11 +167,53 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
             "vector_index_name": "SUPPORT"
             }'      
     );  
+    END;
+    </copy>
+    ```
 
-    -- Create a vector index that points to the object storage location
-    -- that contains the website files. This will create a pipeline
-    -- that loads the index and keeps it up to date
+    ![Create AI profile.](./images/create-ai-profile.png " ")
 
+2. Query your available profiles. A **GENAI** profile was created by the set up script in **Lab 1**. In addition, you should now see the newly created **SUPPORT_SITE** profile. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```sql
+    <copy>
+    SELECT * 
+    FROM user_cloud_ai_profiles;
+    </copy>
+    ```
+
+    ![Query AI profile.](./images/query-ai-profile.png " ")
+
+3. Query your profiles attributes. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```sql
+    <copy>
+    SELECT * 
+    FROM user_cloud_ai_profile_attributes;
+    </copy>
+    ```
+
+    ![Query AI profile attributes.](./images/query-ai-profile-attributes.png " ")
+
+### **Create the Vector index**
+
+1. Create your Vector index that points to the object storage location that contains the website files that you reviewed earlier. This will create a table containing the vector. The API call will also create a pipeline that loads the index and keeps it up to date. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
+
+    ```sql
+    <copy>
+    /* RESET */
+    -- delete vector index in case it exists
+    BEGIN  
+    -- Vector index
+    dbms_cloud_ai.drop_vector_index (
+        index_name => 'SUPPORT',
+        force => true
+    );    
+
+    -- Create the vector. This will create a table containing the vector.
+    -- That API call will also create a pipeline that loads the index and keeps it up to date
+
+    -- Create a vector index that points to the object storage location that contains the website files. 
     dbms_cloud_ai.create_vector_index(
         index_name  => 'SUPPORT',
         attributes  => '{"vector_db_provider": "oracle",
@@ -167,44 +226,125 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
         );                                       
     END;                                                                           
     /  
+    </copy>
+    ```
 
-    /* PIPELINE */
-    -- A pipeline was created and you can see it here. The pipeline runs
-    -- periodically to update the vectors.
-    -- Check out the status table to see progress/details
-    SELECT pipeline_id, pipeline_name, status, last_execution, status_table
+    ![Create vector index.](./images/create-vector-index.png " ")
+
+2. A pipeline was created and you can query it. The pipeline runs periodically to update the vectors. Review the status table to see progress and vector details. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```
+    <copy>
+    SELECT pipeline_id, pipeline_name, status, last_execution, status_table 
     FROM user_cloud_pipelines;
+    </copy>
+    ```
 
-    SELECT * 
+    ![Query the pipeline.](./images/query-pipeline.png " ")
+
+    >**Note:** Notice that the status of the pipeline is **STARTED**. It can take up to minute (or less) for the pipeline to be created.
+
+3. Copy the name of the **`STATUS_TABLE`** from the results. You will need this table name in the next step. In our example, the table's name is **`PIPELINE$8$21_STATUS`**. Right-click the table's name in the **`STATUS_TABLE`** column, and then select **Copy** from the context menu.
+
+    ![Copy the table's name.](./images/copy-table-name.png " ")
+
+4. Query the **`STATUS_TABLE`**. Copy the following code and then paste it into your SQL Worksheet. Substitute the **`STATUS_TABLE`** name with your own table name that you copied in the previous step. Next, click the **Run Statement** icon in the toolbar.
+
+    ```
+    <copy>
+    SELECT *
+    FROM pipeline$8$21_status;
+    </copy>
+    ```
+
+    ![Query the status table.](./images/query-status-table.png " ")
+
+5. Query the pipeline attributes table. Copy the following code and then paste it into your SQL Worksheet. Substitute the **`STATUS_TABLE`** name with your own table name that you copied in the previous step. Next, click the **Run Statement** icon in the toolbar.
+
+    ```
+    <copy>
+    SELECT *
     FROM user_cloud_pipeline_attributes;
+    </copy>
+    ```
 
-    SELECT * 
+    ![Query the pipeline attributes.](./images/query-pipeline-attributes.png " ")
+
+6. Query the pipeline history table. Copy the following code and then paste it into your SQL Worksheet. Substitute the **`STATUS_TABLE`** name with your own table name that you copied in the previous step. Next, click the **Run Statement** icon in the toolbar.
+
+    ```
+    <copy>
+    SELECT *
     FROM user_cloud_pipeline_history;
+    </copy>
+    ```
 
-    /* VECTOR TABLE */
-    -- Review the generated table that has the chunks and vector embedding
-    SELECT * FROM support_site_vector;
+    ![Query the pipeline history.](./images/query-pipeline-history.png " ")
 
-    /* QUERY */
+7. Describe the generated Vector table. This table contains the chunks and the vector embedding. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```
+    <copy>
+    desc support_site_vector;
+    </copy>
+    ```
+
+    ![Describe the vector table.](./images/describe-vector-table.png " ")
+
+8. Query the Vector table. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** in the toolbar.
+
+    ```
+    <copy>
+    SELECT *
+    FROM support_site_vector;
+    </copy>
+    ```
+
+    ![Query the vector table.](./images/query-vector-table.png " ")
+
+### **Ask customer support questions using Select AI, the AI profile and the Vector index**
+
+1. After you explore the **MOVIESTREAM** internal support Web site, ask customers using the following format. Copy the following query and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```sql
+    <copy>
     SELECT
     dbms_cloud_ai.generate (
         profile_name => 'SUPPORT_SITE',
         action => 'narrate',
         prompt => 'George Clooney lips are moving but I can not hear him'
-    ) as support_question;  
+    ) as support_question;
     </copy>
     ```
-    ![The output is displayed in the Script Output tab.](./images/genai-output-rag.png " ")
 
-    ![The output is displayed in the Script Output tab.](./images/genai-output-rag-query.png " ")
-    </details>
+    ![Prompt 1 and the answer.](./images/prompt-1.png " ")
 
+1. After you explore the **MOVIESTREAM** internal support Web site, ask customers using the following format. Copy the following query and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```sql
+    <copy>
+    SELECT
+    dbms_cloud_ai.generate (
+        profile_name => 'SUPPORT_SITE',
+        action => 'narrate',
+        prompt => 'My subscription is not recognized'
+    ) as support_question;
+    </copy>
+    ```
+
+    ![Prompt 2 and the answer.](./images/prompt-2.png " ")
+
+    The result suggests checking out the internal support site for subscription issues. The URL is:
+
+    ```https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/subscription-login-issues.html```
+
+</details>
 
 <details>
     <summary>**OpenAI**</summary>
-You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models. 
+You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models.
 
-1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.    
+1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.
 
     ```sql
     <copy>
@@ -216,7 +356,7 @@ You will need a [paid OpenAI account](https://platform.openai.com/docs/overview)
                             principal_type => xs_acl.ptype_db)
     );
     END;
-    /    
+    /
     </copy>
     ```
 
@@ -267,7 +407,6 @@ You will need a [paid OpenAI account](https://platform.openai.com/docs/overview)
     </copy> 
     ```
 </details>
-
 
 <details>
     <summary>**Azure OpenAI**</summary>
@@ -405,23 +544,6 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     </copy> 
     ```
 </details>
-
-## Task 3: Test the AI Profile
-
-We will use the Select AI PL/SQL API to generate a response from the AI model. This example is using the **chat** action. It is not using any private data coming from your database.
-
-1. Test the LLM and learn about Autonomous Database as the **`MOVIESTREAM`** user. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon. Your answer may differ!
-
-    ```
-    <copy>
-    SELECT DBMS_CLOUD_AI.GENERATE(
-        prompt       => 'what is oracle autonomous database',
-        profile_name => 'GENAI',
-        action       => 'chat')
-    FROM dual;
-    </copy>
-    ```
-    ![Test the LLM](./images/cohere-output.png "")
 
 ## Summary
 You learned how to integrate Autonomous Database with your AI provider. And, you asked the model your first question using the "chat"action. Next, let's see how to use our private data with LLMs.

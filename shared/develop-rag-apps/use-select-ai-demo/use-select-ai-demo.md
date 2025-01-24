@@ -25,23 +25,40 @@ In this lab, you will:
 
 1. Copy the **Select AI demo** application URL that you saved in a text editor earlier in Lab 1.
 
-    ![Copy the URL value](./images/demo-credentials-file.png =65%x*)
+    ![Copy the URL value](./images/demo-credentials-file.png =85%x*)
 
     Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **ChatDB** page, enter the username (`moviestream`) and password that you saved in your text editor file, and then click **Sign In**.
 
     ![Enter ChatDB credentials](./images/ai-select-credentials.png =70%x*)
 
-2. On the **ChatDB** page, the **AI Settings** panel is displayed. Select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`GENAI`** profile that was created in the **Lab 2** when you ran the script.
+2. On the **ChatDB** page, the **AI Settings** panel is displayed. Select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`SUPPORT_SITE`** profile that was created in the **Lab 2** when you ran the script to create the profile.
 
-    ![Select AI profile](./images/select-profile-rag.png =70%x*)
+    ![Select AI profile](./images/select-profile-rag.png =85%x*)
 
     The ChatDB application is displayed. You are now ready to ask questions at the **Ask a question** prompt!
 
-    ![Select AI application displayed](./images/select-ai-application.png =70%x*)
+    ![Select AI application displayed](./images/select-ai-application.png =85%x*)
 
 3. Click **Close** to exit the **AI Settings** panel.
 
-## Task 2: Ask Natural Language and Database Questions Using the Application
+## Task 2: Review the Oracle MovieStream Internal Support Website
+
+Oracle MovieStream business has an internal website with support information. We're going to make it easy to ask questions from that support site using vectors. 
+
+1. Navigate to the Moviestream Support web site. Copy the following URL and then paste it in a new Web browser window or tab.
+
+```
+<copy>
+https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
+</copy>
+```
+
+![The oracle moviestream internal web site support web site](./images/support-site.png =85%x*)
+
+2. Explore the different menu options as desired to get some ideas on prompts that you can ask the application. For example, you can click the **Playback Issues** or the **Subscription & Login Issues** menus.
+
+
+## Task 3: Ask Natural Language and Database Questions Using the Application
 
 You can use this application to ask the following types of questions:
 

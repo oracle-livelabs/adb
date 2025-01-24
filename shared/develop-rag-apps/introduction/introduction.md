@@ -4,7 +4,7 @@
 
 In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date content and provides more relevant natural language responses to your prompts.
 
-> **NOTE:** At the time this workshop was last updated, your tenancy must be subscribed to the **US Midwest (Chicago)**, **Germany Central (Frankfurt)**, or **UK South (London)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+> **NOTE:** At the time this workshop was last updated, your tenancy must be subscribed to the **US Midwest (Chicago)**, **Germany Central (Frankfurt)**, **UK South (London)**, **Brazil East (Sao Paulo)**, or **Japan Central (Osaka)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
 ### About Select AI
 
@@ -44,7 +44,7 @@ The workshop's business scenario is based on Oracle MovieStream - a fictitious m
 
 ### Oracle MovieStream Internal Support Website
 
-Oracle MovieStream business has an internal website with support information. We're going to make it easy to ask questions from that support site using vectors.You can access the website using the following URL:
+Oracle MovieStream business has an internal website with support information. We're going to make it easy to ask questions from that support site using vectors. You can access the website using the following URL:
 
 ```
 <copy>
