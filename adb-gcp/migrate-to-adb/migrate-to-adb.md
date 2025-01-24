@@ -76,7 +76,7 @@ You can download sqlcl from https://download.oracle.com/otn_software/java/sqldev
 
     ![This image shows the result of performing the above step.](./images/query-gcpdatapump.png " ")
 
-## Task 3: Import data from Azure storage using impdp utility
+## Task 3: Import data from Google Cloud Storage Bucket using impdp utility
 
 - From the same SQLcl window run the data pump import command.
 
