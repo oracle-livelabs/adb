@@ -12,7 +12,8 @@ Estimated Time: 15 minutes
 ### Objectives
 
 As a database admin or user:
-1. Set up cloud credentials and use the sample .dmp file to import data to your Autonomous database.
+1. Monitor Oracle Database@Google using Cloud Monitoring.
+2. Create custom monitoring Dashboard for Oracle Database@Google.
 
 
 ### Required Artifacts
