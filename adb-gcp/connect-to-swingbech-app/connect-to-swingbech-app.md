@@ -10,8 +10,6 @@ Estimated Time: 10 minutes
 
 As an administrator:
 1. Install and configure Swingbench to simulate a transaction processing workload.
-2. Monitor the performance of Autonomous Database.
-
 
 ### Required Artifacts
 
