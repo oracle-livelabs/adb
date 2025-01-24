@@ -155,7 +155,18 @@ This lab assumes you have completed the following lab:
 	</copy>
 	```
 
-## Task 3: Disable Automatic Indexing
+## Task 3: Turn On DML Awareness
+
+1. If you are using Oracle Database 23ai, return the DML cost setting to its default value.
+
+	```
+	<copy>
+	-- If using Oracle Database 23ai only - not required for Oracle Database 19c
+	exec dbms_auto_index.configure('auto_index_include_dml_cost', 'ON')
+	</copy>
+	```
+
+## Task 4: Disable Automatic Indexing
 
 1. Disable automatic indexing.
 	
@@ -167,4 +178,4 @@ This lab assumes you have completed the following lab:
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jul 2022
-* **Last Updated By/Date** - Nigel Bayliss, Jul 2022
+* **Last Updated By/Date** - Nigel Bayliss, Jan 2025
