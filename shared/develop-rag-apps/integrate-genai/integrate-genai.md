@@ -11,7 +11,6 @@ Estimated Time: 10 minutes.
 ### Objectives
 
 In this lab, you will:
-
 * Connect Autonomous Database to an AI provider
 * Test the AI profile
 
