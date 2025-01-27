@@ -47,13 +47,9 @@ Oracle MovieStream business has an internal website with support information tha
 
 1. Navigate to the Moviestream Support web site. Copy the following URL and then paste it in a new Web browser window or tab.
 
-```
-<copy>
-https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
-</copy>
-```
+  https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
 
-![The oracle moviestream internal web site support web site](./images/support-site.png =85%x*)
+  ![The oracle moviestream internal web site support web site](./images/support-site.png =85%x*)
 
 2. Explore the different menu options as desired to get some ideas on prompts that you can ask the application. For example, you can click the **Playback Issues** or the **Subscription & Login Issues** menus.
 
@@ -96,7 +92,7 @@ Let's experiment a bit with data from the `moviestream` support site.
 
     The result also shows where the answer is located on the moviestream support Web site.
     
-    ```https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html```
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html
 
     ![Result on Web site](./images/result-web-site.png =70%x*)
 

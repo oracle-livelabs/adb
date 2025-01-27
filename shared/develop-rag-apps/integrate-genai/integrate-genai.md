@@ -79,7 +79,7 @@ There are 4 things to do in order to connect Autonomous Database to an AI provid
 3. Create a Select AI profile (see below for more details)
 4. Create a Vector index (see below for more details)
 
->**Note:** All of these steps have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
+>**Note:** The first three steps have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
 
 A Select AI profile encapsulates connection information for an AI provider and Vector search. This includes:
 
@@ -113,11 +113,7 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
 2. Navigate to and review the **MOVIESTREAM** internal support Web site using the following URL.
 
-    ```sql
-    <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
-    </copy>
-    ```
+   https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
 
 3. Explore the Web site as desired. For example, to see the list of account and billing issues, click the **Account & Billing Issues** menu.
 
