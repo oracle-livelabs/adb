@@ -6,6 +6,10 @@ In this workshop, you will learn how to use **Autonomous Database Select AI (Sel
 
 > **NOTE:** At the time this workshop was last updated, your tenancy must be subscribed to the **US Midwest (Chicago)**, **Germany Central (Frankfurt)**, **UK South (London)**, **Brazil East (Sao Paulo)**, or **Japan Central (Osaka)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
+Watch the video below on how to simplify developing AI Retrieval Augmented Generation (RAG) apps with Autonomous Database Select AI.
+
+[](youtube:LsjYT_tQDpM)
+
 ### About Select AI
 
 Use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM.

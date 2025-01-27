@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with a few queries. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
+As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date and content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with a few queries. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
 
 >**Note:** Refer to lab 2 to review what you learned about creating profiles to specify what LLM provider and the Vector index to use when answering your questions in the app.
 
@@ -43,7 +43,7 @@ In this lab, you will:
 
 ## Task 2: Review the Oracle MovieStream Internal Support Website
 
-Oracle MovieStream business has an internal website with support information. We're going to make it easy to ask questions from that support site using vectors. 
+Oracle MovieStream business has an internal website with support information that the users can use. We're going to make it easy to ask questions from that support site using vectors.
 
 1. Navigate to the Moviestream Support web site. Copy the following URL and then paste it in a new Web browser window or tab.
 
@@ -56,7 +56,6 @@ https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_uti
 ![The oracle moviestream internal web site support web site](./images/support-site.png =85%x*)
 
 2. Explore the different menu options as desired to get some ideas on prompts that you can ask the application. For example, you can click the **Playback Issues** or the **Subscription & Login Issues** menus.
-
 
 ## Task 3: Ask Natural Language and Database Questions Using the Application
 
@@ -75,9 +74,9 @@ _Select the **Ask Database** checkbox_ to ask questions about your business data
   <!---
   --->
 
-Let's experiment a bit with both general data from the `internet` and also from the `moviestream` support site.
+Let's experiment a bit with data from the `moviestream` support site.
 
-1. Enter your question using a free form format in the **Ask a Question** text box such as `My movie is frozen on the opening scene`. Select the **Ask your database** checkbox is checked since this is a general internet question and also one that uses the internal moviestream support site. Next, click the **Run** icon, or press **[ENTER]**.
+1. Enter your question using a free form format in the **Ask a question** text box such as `My movie is frozen on the opening scene`. Select the **Ask your database** checkbox is checked since this is a general internet question and also one that uses the internal moviestream support site. Next, click the **Run** icon, or press **[ENTER]**.
 
     >**Note:** You can type your own natural language question. You don't have to use the exact question that we show in our examples.
 
@@ -87,25 +86,28 @@ Let's experiment a bit with both general data from the `internet` and also from 
 
    ![Prompt 1 answer](./images/prompt-1-answer.png =70%x*)
 
-2. Let's ask another question. In the **Ask a Question** text box: `George Clooney’s lips are moving but I cant hear him`find out the top 10 streamed movies in the moviestream company. Enter your question using a free form format in the **Ask a Question** text box, and select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
+2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 
-    ![Top 10 streamed movies](./images/top-10-movies.png =70%x*)
+    ![Can't hear audio](./images/no-audio.png =70%x*)
 
-    The top 10 streamed movies are displayed in descending order.
+    The result from the moviestream support web site using the created vector index is displayed.
 
-    ![Top 10 streamed movies result](./images/top-10-movies-result.png =70%x*)
+    ![No audio issue result](./images/no-audio-result.png =70%x*)
 
-3. Click the **Explain** link to view and explain the SQL query behind this natural language question.
+    The result also shows where the answer is located on the moviestream support Web site.
+    
+    ```https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html```
 
-  ![View and explain query](./images/explain-query-1.png =70%x*)
+    ![Result on Web site](./images/result-web-site.png =70%x*)
 
-  When you finish, click the **Close SQL** icon (left arrow) to return to the Home page. Click the **Explore** link to display the **Explore** page.
+3. Let's ask one more question. Click **Clear** in the banner. In the **Ask a question** text box, enter `My subscription is not recognized`. Select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 
-  ![The Explore page](./images/explore-page.png =70%x*)
+    ![Subscription issue](./images/subscription-issue.png =70%x*)
 
-4. Click the **Actions** drop-down list to perform several tasks on the generated data such as sorting, downloading, formatting, charting and much more. For details on using the actions tasks, see the embedded video in the Introduction section of this lab. Click the **Close SQL** icon (left arrow) to return to the Home page.
+    The result from the moviestream support web site using the created vector index is displayed.
 
-  ![Actions drop-down list](./images/actions.png =70%x*)
+    ![Subscription issue result](./images/subscription-issue-result.png =70%x*)
+
 
   >**Note:** _LLMs are remarkable at inferring intent from the human language and they are getting better all the time; however, they are not perfect! It is very important to verify the results._
 
@@ -130,4 +132,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
