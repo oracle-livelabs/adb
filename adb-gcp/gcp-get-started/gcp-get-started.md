@@ -60,15 +60,19 @@ In this section, you will create a VPC which will have two subnets:
 
 ## Task 2:  Provision Google Cloud Compute VM Instance
 
-1.  From the Google Cloud Console (console.cloud.google.com), click on the **Navigation Menu**. Then click on **VM instances** under **Compute Engine**.
+1.  Generating ssh key pairs
+    
+    SSH keys are required to access a running compute VM instance securely. You can use an existing SSH-2 RSA key pair or create a new one. Instructions for creating SSH keys can also be found on the [OCI documentation page](https://docs.cloud.oracle.com/iaas/Content/GSG/Tasks/creatingkeys.htm). For Linux instances you can generate SSH keys [here](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/managingkeypairs.htm#Managing_Key_Pairs_on_Linux_Instances).
+
+2. From the Google Cloud Console (console.cloud.google.com), click on the **Navigation Menu**. Then click on **VM instances** under **Compute Engine**.
 
     ![](./images/compute-vm-navigate.png " ")
 
-2. On the **VM instances** page click **CREATE INSTANCE**
+3. On the **VM instances** page click **CREATE INSTANCE**
 
     ![](./images/compute-vm-create.png " ")
 
-3. Under **Machine configuration** enter the following -
+4. Under **Machine configuration** enter the following -
 
     * **Name** - app-instance
     * **Region** - us-east4
@@ -76,9 +80,9 @@ In this section, you will create a VPC which will have two subnets:
 
     ![](./images/compute-vm-machine-config.png " ")
 
-4.  Leave all as default under **OS and storage**
+5.  Leave all as default under **OS and storage**
 
-5.  Click **Networking** on the left tab and enter the following -
+6.  Click **Networking** on the left tab and enter the following -
 
     * **Allow HTTP traffic** - Checkmark
     * **Allow HTTPS traffic** - Checkmark
@@ -96,11 +100,11 @@ In this section, you will create a VPC which will have two subnets:
 
     ![](./images/compute-vm-network-config.png " ")
 
-6.  Click **Security** on the left tab and enter the following. Click **MANAGE ACCESS** and click **ADD ITEM** under **Add manually generated SSH keys**. Enter the public ssh key. Click **CREATE** to create the VM instance.
+7.  Click **Security** on the left tab and enter the following. Click **MANAGE ACCESS** and click **ADD ITEM** under **Add manually generated SSH keys**. Enter the public ssh key. Click **CREATE** to create the VM instance.
 
     ![](./images/compute-vm-ssh-create.png " ")
 
-7.	The created VM instance will show up on the **VM instances** page -
+8.	The created VM instance will show up on the **VM instances** page -
 
     ![](./images/compute-vm-instance.png " ")
 

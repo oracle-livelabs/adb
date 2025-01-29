@@ -40,20 +40,20 @@
             "filename": "./../connect-to-swingbech-app/connect-to-swingbech-app.md"
         },
         {
-            "title": "Lab 4: Migrate to ADB using Data Pump",
-            "description": "Migrate to Autonomous Database using Data Pump",
-            "partnumber": "Ennnnn_01",
-            "publisheddate": "07/25/2024",
-            "contentid": "12nnnn",
-            "filename": "./../migrate-to-adb/migrate-to-adb.md"
-        },
-        {
-            "title": "Lab 5: Monitor Autonomous Database",
+            "title": "Lab 4: Monitor Autonomous Database",
             "description": "Monitor Autonomous Database from Google Cloud",
             "partnumber": "Ennnnn_01",
             "publisheddate": "07/25/2024",
             "contentid": "12nnnn",
             "filename": "./../monitor-adb/monitor-adb.md"
+        },
+        {
+            "title": "Lab 5: Migrate to ADB using Data Pump",
+            "description": "Migrate to Autonomous Database using Data Pump",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../migrate-to-adb/migrate-to-adb.md"
         },
         {
             "title": "Need Help?",

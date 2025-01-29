@@ -54,9 +54,9 @@ In this section, you will be provisioning an Autonomous database using the Googl
 
 - Enter the password for admin user under **Administrator credentials**
 
-- Select 'app-network' for **Associated network** under Networking
+- In the **Associated network** drop-down, select the network you want to use - 'app-network'. This is the VPC that contains the public subnet where compute VM instance is placed. This VPC is used to connect to the Autonomous Database subnet.
 
-- Enter CIDR range '10.2.0.0/24' for **Subnet range** under **Configure networking for your database**
+- Enter CIDR range '10.2.0.0/24' for **Subnet range** under **Configure networking for your database**. This is the IPv4 subnet range for your Autonomous Database. The database subnet range can't overlap with the subnet range of the VPC network specified under **Associated network**. The subnet range specified here will create a Private Subnet where the Autonomous Database will be placed. If a Private Subnet with this range exists, the database will be added to that private subnet.
 
     ![ADB Instance Details](./images/adb-credentials-network-cidr.png " ")
 
