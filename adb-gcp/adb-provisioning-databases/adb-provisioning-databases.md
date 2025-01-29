@@ -15,7 +15,7 @@ As a database user, DBA or application developer:
 
 ### Required Artifacts
 
-- A GCP account with a pre-configured Virtual Private Cloud (VPC) Network.
+- A Google Cloud account with a pre-configured Virtual Private Cloud (VPC) Network.
 
 ## Task 1: Create Autonomous Database
 

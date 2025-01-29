@@ -1,10 +1,9 @@
 
-# Get started - Autonomous Database
+# Provisioning Google Cloud resources
 
 ## Introduction
 
-This lab walks you through the prerequisites to get started with Oracle Database@GCP - Autonomous Database. This involves creating a Virtual Private Cloud (VPC) Network in Google Cloud that will be associated with the Autonomous Database and a Compute VM instance that will be used to connect to the Autonomous Database.
-
+This lab walks you through the prerequisites to get started with Oracle Database@Google Cloud - Autonomous Database. This involves creating a Virtual Private Cloud (VPC) Network in Google Cloud that will be associated with the Autonomous Database and a Compute VM instance that will be used to connect to the Autonomous Database.
 
 Estimated Time: 30 minutes
 
@@ -13,15 +12,18 @@ Estimated Time: 30 minutes
 As a database user, DBA, or application developer:
 
 1. Create a Virtual Private Cloud (VPC) Network in Google Cloud Portal.
-2. Provision a Compute VM instance in GCP.
+2. Provision a Compute VM instance in Google Cloud.
 
 ## Task 1: Create a Virtual Private Cloud (VPC)
 
-In this section, you will create a VPC.
+In this section, you will create a VPC which will have two subnets: 
+
+* A private subnet where you Autonomous Database is deployed (this will be created as part of your ADB deployment). A private subnet will protect your database endpoint from internet access.
+* A public subnet where you will deploy a virtual machine. You will use this VM to access Autonomous Database.
 
 1.  Login to Google Cloud Console (console.cloud.google.com) and click on the **Navigation Menu**. Then click on **VPC Networks** under **VPC Network**..
 
-    ![](./images/navigation-menu.png " ")
+    ![](./images/navigation-menu2.png " ")
 
 2.	On the **VPC networks** page, click on the **CREATE VPC NETWORK** button.
 
@@ -56,7 +58,7 @@ In this section, you will create a VPC.
 
     ![](./images/vpc-app-network.png " ")
 
-## Task 2:  Provision GCP Compute VM Instance
+## Task 2:  Provision Google Cloud Compute VM Instance
 
 1.  From the Google Cloud Console (console.cloud.google.com), click on the **Navigation Menu**. Then click on **VM instances** under **Compute Engine**.
 

@@ -17,7 +17,7 @@ As a database admin or user:
 
 ### Required Artifacts
 - Access to a pre-provisioned Autonomous Database instance.
-- GCP Compute VM instance.
+- Google Cloud Compute VM instance.
 
 
 ## Task 1: Generate access key for your user account
