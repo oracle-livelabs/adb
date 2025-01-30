@@ -84,6 +84,24 @@ Let's experiment a bit with data from the `moviestream` support site.
     
     https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html
 
+    In the above example, Select AI implemented RAG as follows:
+  
+    * You as the user asked a question (specified a prompt) using the Select AI  narrate action.
+    * Select AI generated Vector embeddings of the prompt using the embedding model specified in the AI profile (we used the default in our example).
+    * The vector search index used the Vector embedding of the question to find matching content from the moviestream enterprise data (searching the Vector store) which has been indexed.
+    * The Vector search returns top n texts _similar_ to the input to your Autonomous Database instance.
+    * Autonomous Database then sent these top n query results with the user question to the LLM.
+    * The LLM returned its response to your Autonomous Database instance.
+    * Autonomous Database Select AI provides the response to the user.
+    You can control the "n" value as an attribute
+    So, the response grabbed n chunks and sent them to the model.
+
+_**Note to self:**_
+
+Add the diagrams from the doc here or the intro?
+
+https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-3C071798-CB7E-4952-93A0-29C5A078A7ED
+0:35
 
 2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter something like, `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream internal data. Next, press **[ENTER]**.
 
