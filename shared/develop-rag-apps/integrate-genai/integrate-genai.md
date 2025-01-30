@@ -1,4 +1,4 @@
-# Integrate GenAI models with Autonomous Database
+# Create an AI Profile and a Vector Index
 
 ## Introduction
 
@@ -16,7 +16,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires the completion of the previous labs that deployed your Autonomous Database.
+* This lab requires the completion of the previous labs that deployed your Autonomous Database.
 
 ## Task 1: Log into the SQL Worksheet
 
@@ -68,33 +68,74 @@ In this lab, you will:
 
     ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
 
-## Task 2: Connect Autonomous Database to an AI Provider, Create an AI Profile and a Vector Index
+## Task 2: Review the Moviestream Internal Support Website
+
+1. Navigate to and review the **MOVIESTREAM** internal support Web site. Click the following URL.
+
+   https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
+
+2. Explore the Web site as desired. For example, to see the list of account and billing issues, click the **Account & Billing Issues** menu.
+
+    ![Click Account & Billing Issues.](./images/account-billing-issues.png " ")
+
+3. Ensure that you are signed in as the **MOVIESTREAM** user. Review the files in the public object storage bucket that comprise the moviestream support web site. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+
+    ```sql
+    <copy>
+    SELECT object_name, bytes
+    FROM dbms_cloud.list_objects(
+        location_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/'
+    );
+    </copy>
+    ```
+
+    ![Query the support site files.](./images/query-support-files.png " ")
+
+## Task 3: Connect Autonomous Database to an AI Provider
 
 ### Background
 
 There are 4 things to do in order to connect Autonomous Database to an AI provider:
 
-1. Grant the **`MOVIESTREAM`** user network access to the AI provider endpoint (already done for you)
+1. Grant the **`MOVIESTREAM`** user network access to the AI provider endpoint
 2. Create a credential containing the secret used to sign requests to the AI provider
 3. Create a Select AI profile (see below for more details)
-4. Create a Vector index (see below for more details)
 
->**Note:** The first three steps have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
+>**Note:** The three steps above have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
 
 A Select AI profile encapsulates connection information for an AI provider and Vector search. This includes:
 
 1. A security credential (e.g. the resource principal for OCI GenAI or a credential that captures a secret for a 3rd party AI provider)
 2. The name of the provider
-3. The name of the LLM (optional)
-4. A Vector index
-
-You can create as many profiles as you need, which is useful when comparing the quality or performance of the results of different models.
+3. The name of the LLM (optional) used to process the natural language request
+4. The name of the embedding model (optional) that will create the vectors from the source data
+5. A Vector index
 
 For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation.
 
 ### **Connect to one of the following AI providers using each provider's default model**
 
->**Note:** In this workshop, we are using the OCI GenAI as the LLM in our examples.
+The following examples will use the default models for OCI and Google. For Azure, there is no default. You need to pick the Azure resource and deployment.
+
+For Azure, there are two models that needs to be selected:
+
+1. A deployment name
+2. An embedding deployment name
+
+The following applies to everything, not just OCI. The script is using the default models for OCI. There are two models that are required:
+
+1. An embedding_model (see doc for attribute name) - which encodes the question as a vector to be used for similarity search.
+2. LLM model - the LLM that answers your request (language).
+
+When you use the defaults, Select AI will always pick the latest/best model for processing the request.
+
+>**Note:** You can override the defaults if you like.
+
+For additional information, see the following documentation resources:
+
+* [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2)
+
+* [Profile Attributes](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-12D91681-B51C-48E0-93FD-9ABC67B0F375)
 
 <details>
     <summary>**OCI Generative AI** (default)</summary>
@@ -110,28 +151,6 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
     ```
     exec dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
     ```
-
-2. Navigate to and review the **MOVIESTREAM** internal support Web site using the following URL.
-
-   https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/index.html
-
-3. Explore the Web site as desired. For example, to see the list of account and billing issues, click the **Account & Billing Issues** menu.
-
-    ![Click Account & Billing Issues.](./images/account-billing-issues.png " ")
-
-4. Ensure that you are signed in as the **MOVIESTREAM** user. Review the files in the public object storage bucket that comprise the moviestream support web site. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
-
-    ```sql
-    <copy>
-    SELECT object_name, bytes
-    FROM dbms_cloud.list_objects(
-        credential_name => 'OCI$RESOURCE_PRINCIPAL',
-        location_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/'
-    );
-    </copy>
-    ```
-
-    ![Query the support site files.](./images/query-support-files.png " ")
 
 ### **Create the AI profile**
 
@@ -168,18 +187,140 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Create AI profile.](./images/create-ai-profile.png " ")
 
-2. Query your available profiles. A **GENAI** profile was created by the set up script in **Lab 1**. In addition, you should now see the newly created **SUPPORT_SITE** profile. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+</details>
+
+<details>
+    <summary>**Azure OpenAI**</summary>
+You will need an Azure subscription and an [Azure OpenAI resource](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal) in order to use the GPT models. After creating the Azure OpenAI resource, navigate to the resource page and select **Resource Management -> Keys and Endpoint**. Copy its **Endpoint** (the server name only - not including "https://" or "/") and a **KEY**. For example, consider a resource named **openaigpt40** (your name will be different):
+![Azure OpenAI resource](images/azure-resource-info.png)
+
+You will also need the Azure OpenAI deployment name. In that same portal page, navigate to **Resource Management -> Model Deployments** and click **Manage Deployments**. Copy the **Deployment name** for your GPT model.
+
+1. Grant the **`MOVIESTREAM`** user network access to the Azure OpenAI resource endpoint.    
+    ```sql
+    <copy>
+    BEGIN
+    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+        host => 'your-azure-openai-resource-endpoint',
+        ace  => xs$ace_type(privilege_list => xs$name_list('http'),
+                            principal_name => 'MOVIESTREAM',
+                            principal_type => xs_acl.ptype_db)
+    );
+    END;
+    /    
+    </copy>
+    ```
+
+2. Create a credential.
+    ```sql
+    <copy>
+    BEGIN                                                                          
+    dbms_cloud.create_credential (                                                 
+        credential_name => 'azure_openai_credential',                                            
+        username => 'azure',                                                 
+        password => 'your-api-key-goes-here'
+    );                             
+    END;                                                                           
+    /  
+    </copy>
+    ```
+
+3. Create a Select AI profile.
+    ```sql
+    <copy>
+    BEGIN
+  dbms_cloud_ai.create_profile (
+      profile_name => 'SUPPORT_SITE',
+      attributes => 
+        '{
+          "provider": "azure",        
+          "credential_name": "azure_openai_credential",
+          "azure_resource_name":"enter your azure resource name here", 
+          "azure_deployment_name":"enter your azure openai deployment name",         
+          "azure_embedding_deployment_name":"enter your openai embeding model name",
+          "vector_index_name": "SUPPORT"
+        }'      
+    );  
+    END;
+    /
+    </copy> 
+    ```
+</details>
+
+<details>
+    <summary>**Google Gemini**</summary>
+You will need a [Google AI Studio account](https://ai.google.dev) and [an API key](https://aistudio.google.com/app/apikey) in order to use Google Gemini. 
+
+1. Grant the **`MOVIESTREAM`** network access to the Google Gemini endpoint. 
+    ```sql
+    <copy>
+    BEGIN
+    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+        host => 'generativelanguage.googleapis.com',
+        ace  => xs$ace_type(privilege_list => xs$name_list('http'),
+                            principal_name => 'MOVIESTREAM',
+                            principal_type => xs_acl.ptype_db)
+    );
+    END;
+    /    
+    </copy>
+    ```
+
+2. Create a credential.
+    ```sql
+    <copy>
+    BEGIN                                                                          
+    dbms_cloud.create_credential (                                                 
+        credential_name => 'gemini_credential',                                            
+        username => 'google',                                                 
+        password => 'your-api-key-goes-here'
+    );                             
+    END;                                                                           
+    /  
+    </copy>
+    ```
+
+3. Create a Select AI profile.
+    ```sql
+    <copy>
+    begin    
+        -- Drop the profile in case it already exists
+        dbms_cloud_ai.drop_profile(
+            profile_name => 'support_site',
+            force => true
+        );    
+
+        -- Create an AI profile that uses the default Gemini model
+    BEGIN
+    dbms_cloud_ai.create_profile (
+      profile_name => 'SUPPORT_SITE',
+      attributes => 
+        '{
+          "provider": "google",
+          "credential_name": "gemini_credential",
+          "vector_index_name": "SUPPORT"
+        }'      
+    );  
+    END;
+    /  
+    </copy> 
+    ```
+</details>
+
+Now that you have created the profile, you can now query the available profiles as follows.
+
+1. Query your available profiles. A **GENAI** profile was created by the set up script in **Lab 1**. In addition, you should now see the newly created **SUPPORT_SITE** profile. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
 
     ```sql
     <copy>
-    SELECT * 
+    SELECT *
     FROM user_cloud_ai_profiles;
     </copy>
     ```
 
     ![Query AI profile.](./images/query-ai-profile.png " ")
 
-3. Query your profiles attributes. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+2. Query your profiles attributes. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
 
     ```sql
     <copy>
@@ -190,7 +331,9 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Query AI profile attributes.](./images/query-ai-profile-attributes.png " ")
 
-### **Create the Vector index**
+## Task 4: Create the Vector index
+
+Select AI simplifies the creation and maintenance of a Vector index that’s sourced from files on an object store. The **`dbms_cloud_ai.create_vector_index`** procedure will create a table containing the vector index. Then, it will create a pipeline that is used to populate the vector index and keep it up to date. The pipeline will run periodically; you can control how often it runs. For more details, see the [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2) documentation.
 
 1. Create your Vector index that points to the object storage location that contains the website files that you reviewed earlier. This will create a table containing the vector. The API call will also create a pipeline that loads the index and keeps it up to date. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
 
@@ -208,11 +351,11 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
     -- Create the vector. This will create a table containing the vector.
     -- That API call will also create a pipeline that loads the index and keeps it up to date
 
-    -- Create a vector index that points to the object storage location that contains the website files. 
+    -- Create a vector index that points to the public object storage location that contains the website files. Since we are using a public object storage bucket; we don't to create a credential to access the public bucket.
+
     dbms_cloud_ai.create_vector_index(
         index_name  => 'SUPPORT',
         attributes  => '{"vector_db_provider": "oracle",
-                        "object_storage_credential_name": "OCI$RESOURCE_PRINCIPAL",
                         "location": "https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/",
                         "profile_name": "SUPPORT_SITE",
                         "vector_table_name":"support_site_vector",
@@ -237,9 +380,9 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Query the pipeline.](./images/query-pipeline.png " ")
 
-    >**Note:** Notice that the status of the pipeline is **STARTED**. It can take up to minute (or less) for the pipeline to be created.
+    >**Note:** It could take up to minute for the pipeline to be created. Initially, the `LAST_EXECUTION` and `STATUS_TABLE` columns values are `NULL`. In our example, the status of the pipeline is **STARTED** and the name of the generated status_table is displayed.
 
-3. Copy the name of the **`STATUS_TABLE`** from the results. You will need this table name in the next step. In our example, the table's name is **`PIPELINE$8$21_STATUS`**. Right-click the table's name in the **`STATUS_TABLE`** column, and then select **Copy** from the context menu.
+3. Copy the name of the **`STATUS_TABLE`** from the results. You will need this table name in the next step. In our example, the table's name is **`PIPELINE$8$21_STATUS`**. Your table name will be different. Right-click the table's name in the **`STATUS_TABLE`** column, and then select **Copy** from the context menu.
 
     ![Copy the table's name.](./images/copy-table-name.png " ")
 
@@ -297,252 +440,6 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Query the vector table.](./images/query-vector-table.png " ")
 
-### **Ask customer support questions using Select AI, the AI profile and the Vector index**
-
-1. After you explore the **MOVIESTREAM** internal support Web site, ask customers using the following format. Copy the following query and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
-
-    ```sql
-    <copy>
-    SELECT
-    dbms_cloud_ai.generate (
-        profile_name => 'SUPPORT_SITE',
-        action => 'narrate',
-        prompt => 'George Clooney lips are moving but I can not hear him'
-    ) as support_question;
-    </copy>
-    ```
-
-    ![Prompt 1 and the answer.](./images/prompt-1.png " ")
-
-1. After you explore the **MOVIESTREAM** internal support Web site, ask customers using the following format. Copy the following query and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
-
-    ```sql
-    <copy>
-    SELECT
-    dbms_cloud_ai.generate (
-        profile_name => 'SUPPORT_SITE',
-        action => 'narrate',
-        prompt => 'My subscription is not recognized'
-    ) as support_question;
-    </copy>
-    ```
-
-    ![Prompt 2 and the answer.](./images/prompt-2.png " ")
-
-    The result suggests checking out the internal support site for subscription issues. The URL is:
-
-    ```https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/subscription-login-issues.html```
-
-</details>
-
-<details>
-    <summary>**OpenAI**</summary>
-You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models.
-
-1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.
-
-    ```sql
-    <copy>
-    BEGIN
-    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'api.openai.com',
-        ace  => xs$ace_type(privilege_list => xs$name_list('http'),
-                            principal_name => 'MOVIESTREAM',
-                            principal_type => xs_acl.ptype_db)
-    );
-    END;
-    /
-    </copy>
-    ```
-
-2. Create a credential.
-    ```sql
-    <copy>
-    BEGIN                                                                          
-        dbms_cloud.create_credential (                                                 
-            credential_name => 'openai_credential',                                            
-            username => 'openai',                                                 
-            password => 'your-api-key-goes-here'
-        );                             
-    END;                                                                           
-    /  
-    </copy>
-    ```
-
-3. Create a Select AI profile.
-
-    ```sql
-    <copy>
-    BEGIN
-        -- Drop the profile in case it already exists
-        dbms_cloud_ai.drop_profile(
-            profile_name => 'genai',
-            force => true
-        );        
-        
-        -- Create an AI profile that uses the default GPT model
-        dbms_cloud_ai.create_profile(
-            profile_name => 'genai',
-            attributes =>       
-                '{"provider": "openai",
-                "credential_name": "openai_credential",
-                "comments":"true",            
-                "object_list": [
-                    {"owner": "MOVIESTREAM", "name": "GENRE"},
-                    {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                    {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                    {"owner": "MOVIESTREAM", "name": "STREAMS"},            
-                    {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                    {"owner": "MOVIESTREAM", "name": "ACTORS"}
-                ]
-                }'
-            );          
-    END;
-    /    
-    </copy> 
-    ```
-</details>
-
-<details>
-    <summary>**Azure OpenAI**</summary>
-You will need an Azure subscription and an [Azure OpenAI resource](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal) in order to use the GPT models. After creating the Azure OpenAI resource, navigate to the resource page and select **Resource Management -> Keys and Endpoint**. Copy its **Endpoint** (the server name only - not including "https://" or "/") and a **KEY**. For example, consider a resource named **openaigpt40** (your name will be different):
-![Azure OpenAI resource](images/azure-resource-info.png)
-
-You will also need the Azure OpenAI deployment name. In that same portal page, navigate to **Resource Management -> Model Deployments** and click **Manage Deployments**. Copy the **Deployment name** for your GPT model.
-
-1. Grant the **`MOVIESTREAM`** user network access to the Azure OpenAI resource endpoint.    
-    ```sql
-    <copy>
-    BEGIN
-    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'your-azure-openai-resource-endpoint',
-        ace  => xs$ace_type(privilege_list => xs$name_list('http'),
-                            principal_name => 'MOVIESTREAM',
-                            principal_type => xs_acl.ptype_db)
-    );
-    END;
-    /    
-    </copy>
-    ```
-
-2. Create a credential.
-    ```sql
-    <copy>
-    BEGIN                                                                          
-    dbms_cloud.create_credential (                                                 
-        credential_name => 'azure_openai_credential',                                            
-        username => 'azure',                                                 
-        password => 'your-api-key-goes-here'
-    );                             
-    END;                                                                           
-    /  
-    </copy>
-    ```
-
-3. Create a Select AI profile.
-    ```sql
-    <copy>
-    begin    
-        -- Drop the profile in case it already exists
-        dbms_cloud_ai.drop_profile(
-            profile_name => 'genai',
-            force => true
-        );    
-
-        -- Create an AI profile that uses the default Gemini model
-        dbms_cloud_ai.create_profile(
-            profile_name => 'genai',
-            attributes =>       
-                '{"provider": "azure",
-                "azure_resource_name": "your-azure-resource-name",                    
-                "azure_deployment_name": "your-azure-deployment-name",
-                "credential_name": "azure_openai_credential",                
-                "comments":"true",            
-                "object_list": [
-                    {"owner": "MOVIESTREAM", "name": "GENRE"},
-                    {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                    {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                    {"owner": "MOVIESTREAM", "name": "STREAMS"},            
-                    {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                    {"owner": "MOVIESTREAM", "name": "ACTORS"}
-                ]
-                }'
-            );          
-    end;
-    /    
-    </copy> 
-    ```
-</details>
-
-<details>
-    <summary>**Google Gemini**</summary>
-You will need a [Google AI Studio account](https://ai.google.dev) and [an API key](https://aistudio.google.com/app/apikey) in order to use Google Gemini. 
-
-1. Grant the **`MOVIESTREAM`** network access to the Google Gemini endpoint. 
-    ```sql
-    <copy>
-    BEGIN
-    DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'generativelanguage.googleapis.com',
-        ace  => xs$ace_type(privilege_list => xs$name_list('http'),
-                            principal_name => 'MOVIESTREAM',
-                            principal_type => xs_acl.ptype_db)
-    );
-    END;
-    /    
-    </copy>
-    ```
-
-2. Create a credential.
-    ```sql
-    <copy>
-    BEGIN                                                                          
-    dbms_cloud.create_credential (                                                 
-        credential_name => 'gemini_credential',                                            
-        username => 'google',                                                 
-        password => 'your-api-key-goes-here'
-    );                             
-    END;                                                                           
-    /  
-    </copy>
-    ```
-
-3. Create a Select AI profile.
-    ```sql
-    <copy>
-    begin    
-        -- Drop the profile in case it already exists
-        dbms_cloud_ai.drop_profile(
-            profile_name => 'genai',
-            force => true
-        );    
-
-        -- Create an AI profile that uses the default Gemini model
-        dbms_cloud_ai.create_profile(
-            profile_name => 'genai',
-            attributes =>       
-                '{"provider": "google",
-                "credential_name": "gemini_credential",
-                "comments":"true",            
-                "object_list": [
-                    {"owner": "MOVIESTREAM", "name": "GENRE"},
-                    {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                    {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                    {"owner": "MOVIESTREAM", "name": "STREAMS"},            
-                    {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                    {"owner": "MOVIESTREAM", "name": "ACTORS"}
-                ]
-                }'
-            );          
-    end;
-    /    
-    </copy> 
-    ```
-</details>
-
-## Summary
-You learned how to integrate Autonomous Database with your AI provider. And, you asked the model your first question using the "chat"action. Next, let's see how to use our private data with LLMs.
-
 You may now proceed to the next lab.
 
 ## Learn More
@@ -560,7 +457,7 @@ You may now proceed to the next lab.
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2025  Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

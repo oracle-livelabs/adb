@@ -2,23 +2,21 @@
 
 ## Introduction
 
-As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date and content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with a few queries. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
+As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date and content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with asking a few questions using natural language. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
 
 >**Note:** Refer to lab 2 to review what you learned about creating profiles to specify what LLM provider and the Vector index to use when answering your questions in the app.
 
 Estimated Time: 10 minutes.
 
-Watch the video below for a detailed walk-through of using the Oracle APEX-based ChatDB demo application and the Select AI feature.
-
-[](youtube:htVeX8loT6c)
-
 ### Objectives
 
 In this lab, you will:
+
 * As the `moviestream` user, access the **Select AI demo** application using the URL that you saved in a text editor file in **Lab 1 > Task 2 > Step 6**. If you didn't save the URL, refer to **Lab 1 > Task 2** to find it using the **Outputs** link in the **Resources** section on the **Job details** page.
 * Ask natural questions with the **Select AI demo** application.
 
 ### Prerequisites
+
 - This lab requires the completion of all the preceding labs in the **Contents** menu on the left.
 
 ## Task 1: Access the Select AI Demo Application
@@ -81,6 +79,11 @@ Let's experiment a bit with data from the `moviestream` support site.
     The suggested answers from the support site and the internet are displayed.
 
    ![Prompt 1 answer](./images/prompt-1-answer.png =70%x*)
+
+   The result also shows where the answer is located on the moviestream support Web site.
+    
+    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html
+
 
 2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 

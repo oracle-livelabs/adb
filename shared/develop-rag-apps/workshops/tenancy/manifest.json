@@ -27,18 +27,23 @@
           "filename": "../../setup-environment/setup-environment.md"
         },
         {
-          "title": "Lab 2: Integrate GenAI models with Autonomous Database",
-          "description":"Connect Autonomous Database to your LLM",
+          "title": "Lab 2: Create an AI Profile and a Vector Index",
+          "description":"Create an AI profile and Vector Index",
           "type": "tenancy",
           "filename": "../../integrate-genai/integrate-genai.md"
         },
         {
-          "title": "Lab 3: Use the Select AI Demo Application",
+          "title": "Lab 3: Ask Questions Using Select AI APIs",
+          "description": "Ask Questions Using Select AI APIs",
+          "filename": "../../select-ai-api/select-ai-api.md"
+        },
+        {
+          "title": "Lab 4: Use the Select AI Demo Application",
           "description":"Use the Select AI demo application",
           "filename": "../../use-select-ai-demo/use-select-ai-demo.md"
         },
         {
-          "title": "Lab 4: Clean up Resources Used in this Workshop (Optional)",
+          "title": "Lab 5: Clean up Resources Used in this Workshop (Optional)",
           "description": "Delete the ADB instance and compartment if not needed.",
           "type": "tenancy",
           "filename": "../../cleanup/cleanup.md"
