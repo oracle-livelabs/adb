@@ -101,7 +101,6 @@ _**Note to self:**_
 Add the diagrams from the doc here or the intro?
 
 https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-3C071798-CB7E-4952-93A0-29C5A078A7ED
-0:35
 
 2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter something like, `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream internal data. Next, press **[ENTER]**.
 
