@@ -174,6 +174,7 @@ For additional information, see the following documentation resources:
 
     dbms_cloud_ai.create_profile (
         profile_name => 'SUPPORT_SITE',
+        description => 'contains customer support information about using the moviestream application, including managing the account, playback, network and device compatibility issues',
         attributes => 
             '{
             "provider": "oci",        
@@ -229,8 +230,10 @@ You will also need the Azure OpenAI deployment name. In that same portal page, n
     ```sql
     <copy>
     BEGIN
-  dbms_cloud_ai.create_profile (
+
+    dbms_cloud_ai.create_profile (
       profile_name => 'SUPPORT_SITE',
+      description => 'contains customer support information about using the moviestream application, including managing the account, playback, network and device compatibility issues',
       attributes => 
         '{
           "provider": "azure",        
@@ -293,8 +296,9 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
         -- Create an AI profile that uses the default Gemini model
     BEGIN
     dbms_cloud_ai.create_profile (
-      profile_name => 'SUPPORT_SITE',
-      attributes => 
+    profile_name => 'SUPPORT_SITE',
+        description => 'contains customer support information about using the moviestream application, including managing the account, playback, network and device compatibility issues',
+        attributes => 
         '{
           "provider": "google",
           "credential_name": "gemini_credential",
