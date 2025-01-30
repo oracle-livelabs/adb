@@ -85,7 +85,7 @@ Let's experiment a bit with data from the `moviestream` support site.
     https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html
 
 
-2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
+2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter something like, `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream internal data. Next, press **[ENTER]**.
 
     ![Can't hear audio](./images/no-audio.png =70%x*)
 

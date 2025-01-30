@@ -122,16 +122,16 @@ For Azure, there are two models that needs to be selected:
 1. A deployment name
 2. An embedding deployment name
 
-The following applies to everything, not just OCI. The script is using the default models for OCI. There are two models that are required:
+The following applies to all AI providers in this workshop, not just OCI GenAI. The script is using the default models for OCI; however, you can override the defaults if you like. There are two models that are required:
 
 1. An embedding_model (see doc for attribute name) - which encodes the question as a vector to be used for similarity search.
 2. LLM model - the LLM that answers your request (language).
 
 When you use the defaults, Select AI will always pick the latest/best model for processing the request.
 
->**Note:** You can override the defaults if you like.
-
 For additional information, see the following documentation resources:
+
+* [Pretrained Foundational Models in Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/pretrained-models.htm)
 
 * [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2)
 
