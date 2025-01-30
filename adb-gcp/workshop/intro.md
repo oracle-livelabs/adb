@@ -27,8 +27,9 @@ Find more details on getting started [Onboarding with Oracle Database@Google Clo
 * Lab 1: Provisinoing Google Cloud resources
 * Lab 2: Provisinoing Autonomous Database@Google Cloud
 * Lab 3: Connect ADB with Swingbench Application
-* Lab 4: Migrate data to ADB@Google Cloud
-* Lab 5: Monitoring ADB@Google Cloud
+* Lab 4: Monitoring ADB@Google Cloud
+* Lab 5: Migrate data to ADB@Google Cloud
+* Lab 6: Oracle Database Actions
 
 Please proceed to the next lab.
 
