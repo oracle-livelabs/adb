@@ -56,6 +56,11 @@
             "filename": "./../migrate-to-adb/migrate-to-adb.md"
         },
         {
+            "title": "Lab 6: Oracle Database Actions",
+            "description": "Oracle Database Actions",
+            "filename": "./../database-actions/database-actions.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"

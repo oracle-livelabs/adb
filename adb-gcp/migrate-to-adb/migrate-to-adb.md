@@ -110,6 +110,8 @@ You can download sqlcl from https://download.oracle.com/otn_software/java/sqldev
 
 All Done! Your application schema was successfully imported.
 
+You may now **proceed to the next lab**.
+
 ## Acknowledgements
 
 *Congratulations! You have successfully completed migrating an Oracle database to the Autonomous database.*
