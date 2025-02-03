@@ -84,23 +84,19 @@ Let's experiment a bit with data from the `moviestream` support site.
     
     https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html
 
-    In the above example, Select AI implemented RAG as follows:
+    In the above example, Select AI implemented RAG as shown in the following diagram and explanation:
+
+    ![Select AI and RAG diagram](./images/select-ai-rag-diagram.png "")
   
     * You as the user asked a question (specified a prompt) using the Select AI  narrate action.
     * Select AI generated Vector embeddings of the prompt using the embedding model specified in the AI profile (we used the default in our example).
     * The vector search index used the Vector embedding of the question to find matching content from the moviestream enterprise data (searching the Vector store) which has been indexed.
     * The Vector search returns top n texts _similar_ to the input to your Autonomous Database instance.
-    * Autonomous Database then sent these top n query results with the user question to the LLM.
+    * Autonomous Database then sent these top `n` query results with the user question to the LLM.
     * The LLM returned its response to your Autonomous Database instance.
     * Autonomous Database Select AI provides the response to the user.
-    You can control the "n" value as an attribute
+    You can control the `n` value as an attribute
     So, the response grabbed n chunks and sent them to the model.
-
-_**Note to self:**_
-
-Add the diagrams from the doc here or the intro?
-
-https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-3C071798-CB7E-4952-93A0-29C5A078A7ED
 
 2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter something like, `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream internal data. Next, press **[ENTER]**.
 
@@ -130,6 +126,7 @@ https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/selec
 You may now proceed to the next lab.
 
 ## Learn More
+* [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2)
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
 * [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
