@@ -21,11 +21,11 @@ If you do not have an Oracle Cloud Infrastructure (OCI) account, you can create 
 Find more details on getting started [Onboarding with Oracle Database@Google Cloud](https://docs.oracle.com/en-us/iaas/Content/database-at-gcp/oagcp-onboard.htm)
 
 
-### Developers and Database Users
+### Workshop Labs
 
 * Get Started
-* Lab 1: Provisinoing Google Cloud resources
-* Lab 2: Provisinoing Autonomous Database@Google Cloud
+* Lab 1: Provision Google Cloud resources
+* Lab 2: Provision Autonomous Database@Google Cloud
 * Lab 3: Connect ADB with Swingbench Application
 * Lab 4: Monitoring ADB@Google Cloud
 * Lab 5: Migrate data to ADB@Google Cloud
