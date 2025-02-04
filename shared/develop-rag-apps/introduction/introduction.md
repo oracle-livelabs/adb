@@ -58,9 +58,9 @@ You may now proceed to the next lab.
 
 ## Learn more
 
-* [Oracle Autonomous Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
+* [Oracle Autonomous Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-intro-adb.html#GUID-8EAA5AE6-397D-4E9A-9BD0-3E37A0345E24)
 * [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2)
-* [Overview of Oracle AI Vector Search](https://docs.oracle.com/en/database/oracle/oracle-database/23/vecse/overview-ai-vector-search.html#VECSE-GUID-746EAA47-9ADA-4A77-82BB-64E8EF5309BE)
+* [Overview of Oracle AI Vector Search](https://docs.oracle.com/en/database/oracle/oracle-database/23/vecse/overview-ai-vector-search.html#GUID-746EAA47-9ADA-4A77-82BB-64E8EF5309BE)
 
 ## Acknowledgements
 * **Authors:**

@@ -31,13 +31,13 @@ Select AI implements RAG as shown in the following diagram and explanation:
 
 ![Select AI and RAG diagram](./images/select-ai-rag-diagram.png "")
 
-* You as the user asked a question (specified a prompt) using the Select AI  narrate action.
-* Select AI generated Vector embeddings of the prompt using the embedding model specified in the AI profile (we used the default in our example).
-* The vector search index used the Vector embedding of the question to find matching content from the moviestream enterprise data (searching the Vector store) which has been indexed.
+* You as the user ask a question (specify a prompt) using the Select AI  narrate action.
+* Select AI generates Vector embeddings of the prompt using the embedding model specified in the AI profile (we used the default in our example).
+* The vector search index uses the Vector embedding of the question to find matching content from the moviestream enterprise data (searching the Vector store) which has been indexed.
 * The Vector search returns top n texts _similar_ to the input to your Autonomous Database instance.
-* Autonomous Database then sent these top `n` query results with the user question to the LLM.
-* The LLM returned its response to your Autonomous Database instance.
-* Autonomous Database Select AI provides the response to the user. You can control the `n` value as an attribute
+* Autonomous Database then sends these top `n` query results with the user question to the LLM.
+* The LLM returns its response to your Autonomous Database instance.
+* Autonomous Database Select AI provides the response to you. You can control the `n` value as an attribute
 So, the response grabbed n chunks and sent them to the model.
 
 ## Task 2: Ask Questions Using Various Select AI Actions
