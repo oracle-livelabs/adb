@@ -20,7 +20,7 @@ Select AI with RAG augments your natural language prompt by retrieving content f
 
 Select AI automates the Retrieval Augmented Generation (RAG) process. This technique retrieves data from enterprise sources using AI vector search and augments user prompts for your specified large language model (LLM). By leveraging information from enterprise data stores, RAG reduces hallucinations and generates grounded responses.
 
-RAG uses AI vector search on a vector index to find semantically similar data for the specified question. Vector store processes vector embeddings, which are mathematical representations of various data points like text, images, and audio. These embeddings capture the meaning of the data, enabling efficient processing and analysis. For more details on vector embeddings and AI vector search, see Overview of AI Vector Search.
+RAG uses AI vector search on a vector index to find semantically similar data for the specified question. Vector store processes vector embeddings, which are mathematical representations of various data points like text, images, and audio. These embeddings capture the meaning of the data, enabling efficient processing and analysis. For more details on vector embeddings and AI vector search, see Overview of AI vector search.
 
 Select AI integrates with AI vector search available in Oracle Autonomous Database 23ai for similarity search using vector embeddings.
 
@@ -37,8 +37,8 @@ Generative AI enables users to quickly generate new content based on a variety o
 In this workshop, you will:
 
 * Configure your Autonomous Database to leverage a generative AI model for querying data using natural language
-* Use Vector search to find the relevant content based on a similarity ranking
-* Use **`Select AI`** to query data using natural language and Vector search
+* Use vector search to find the relevant content based on a similarity ranking
+* Use **`Select AI`** to query data using natural language and vector search
 * Learn about PL/SQL APIs that help integrate AI with your application
 * Use the Select AI demo application to chat with your data in your own language
 

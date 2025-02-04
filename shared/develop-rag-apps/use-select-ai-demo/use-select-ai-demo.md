@@ -4,7 +4,7 @@
 
 As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date and content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with asking a few questions using natural language. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
 
->**Note:** Refer to lab 2 to review what you learned about creating profiles to specify what LLM provider and the Vector index to use when answering your questions in the app.
+>**Note:** Refer to lab 2 to review what you learned about creating profiles to specify what LLM provider and the vector index to use when answering your questions in the app.
 
 Estimated Time: 10 minutes.
 

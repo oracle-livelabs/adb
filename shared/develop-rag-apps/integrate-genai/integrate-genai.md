@@ -103,13 +103,13 @@ There are 4 things to do in order to connect Autonomous Database to an AI provid
 
 >**Note:** The three steps above have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
 
-A Select AI profile encapsulates connection information for an AI provider and Vector search. This includes:
+A Select AI profile encapsulates connection information for an AI provider and vector search. This includes:
 
 1. A security credential (e.g. the resource principal for OCI GenAI or a credential that captures a secret for a 3rd party AI provider)
 2. The name of the provider
 3. The name of the LLM (optional) used to process the natural language request
 4. The name of the embedding model (optional) that will create the vectors from the source data
-5. A Vector index
+5. A vector index
 
 For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation.
 
@@ -339,9 +339,9 @@ Now that you have created the profile, you can now query the available profiles 
 
 ## Task 4: Create the Vector index
 
-Select AI simplifies the creation and maintenance of a Vector index that’s sourced from files on an object store. The **`dbms_cloud_ai.create_vector_index`** procedure will create a table containing the vector index. Then, it will create a pipeline that is used to populate the vector index and keep it up to date. The pipeline will run periodically; you can control how often it runs. For more details, see the [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2) documentation.
+Select AI simplifies the creation and maintenance of a vector index that’s sourced from files on an object store. The **`dbms_cloud_ai.create_vector_index`** procedure will create a table containing the vector index. Then, it will create a pipeline that is used to populate the vector index and keep it up to date. The pipeline will run periodically; you can control how often it runs. For more details, see the [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2) documentation.
 
-1. Create your Vector index that points to the object storage location that contains the website files that you reviewed earlier. This will create a table containing the vector. The API call will also create a pipeline that loads the index and keeps it up to date. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
+1. Create your vector index that points to the object storage location that contains the website files that you reviewed earlier. This will create a table containing the vector. The API call will also create a pipeline that loads the index and keeps it up to date. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
 
     ```sql
     <copy>
@@ -425,7 +425,7 @@ Select AI simplifies the creation and maintenance of a Vector index that’s sou
 
     ![Query the pipeline history.](./images/query-pipeline-history.png " ")
 
-7. Describe the generated Vector table. This table contains the chunks and the vector embedding. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+7. Describe the generated vector table. This table contains the chunks and the vector embedding. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
 
     ```
     <copy>
@@ -435,7 +435,7 @@ Select AI simplifies the creation and maintenance of a Vector index that’s sou
 
     ![Describe the vector table.](./images/describe-vector-table.png " ")
 
-8. Query the Vector table. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** in the toolbar.
+8. Query the vector table. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** in the toolbar.
 
     ```
     <copy>
