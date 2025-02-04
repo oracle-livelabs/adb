@@ -23,18 +23,18 @@ In this section, you will create a VPC which will have two subnets:
 
 1.  Login to Google Cloud Console (console.cloud.google.com) and click on the **Navigation Menu**. Then click on **VPC Networks** under **VPC Network**..
 
-    ![](./images/navigation-menu2.png " ")
+    ![Navigation](./images/navigation-menu2.png " ")
 
 2.	On the **VPC networks** page, click on the **CREATE VPC NETWORK** button.
 
-    ![](./images/create-vpc.png " ")
+    ![Create VPC](./images/create-vpc.png " ")
 
 3.	On **Create a VPC Network** provide details as mentioned below. 
     
     * **VPC Name** - app-network
     * **Description** - Application Database Network
 
-    ![](./images/vpc-name.png " ")
+    ![VPC Name](./images/vpc-name.png " ")
 
     Under **Subnets** enter the details of the Subnet -
 
@@ -44,19 +44,19 @@ In this section, you will create a VPC which will have two subnets:
     * **IPv4 range** - 10.1.0.0/24
     * Leave the rest as defaults under **Subnets**
 
-    ![](./images/vpc-subnet.png " ")
+    ![VPC Subnet](./images/vpc-subnet.png " ")
 
     Under **Firewall rules** select all rules -
 
-    ![](./images/vpc-firewall.png " ")
+    ![VPC Firewall](./images/vpc-firewall.png " ")
 
     Click **CREATE** to create the VPC Network.
 
-    ![](./images/vpc-create.png " ")
+    ![VPC Create](./images/vpc-create.png " ")
 
 4.	The created VPC will show up on the **VPC networks** page -
 
-    ![](./images/vpc-app-network.png " ")
+    ![App Network](./images/vpc-app-network.png " ")
 
 ## Task 2:  Provision Google Cloud Compute VM Instance
 
@@ -66,11 +66,11 @@ In this section, you will create a VPC which will have two subnets:
 
 2. From the Google Cloud Console (console.cloud.google.com), click on the **Navigation Menu**. Then click on **VM instances** under **Compute Engine**.
 
-    ![](./images/compute-vm-navigate.png " ")
+    ![Compute VM](./images/compute-vm-navigate.png " ")
 
 3. On the **VM instances** page click **CREATE INSTANCE**
 
-    ![](./images/compute-vm-create.png " ")
+    ![Create VM](./images/compute-vm-create.png " ")
 
 4. Under **Machine configuration** enter the following -
 
@@ -78,7 +78,7 @@ In this section, you will create a VPC which will have two subnets:
     * **Region** - us-east4
     * Leave the rest as default.
 
-    ![](./images/compute-vm-machine-config.png " ")
+    ![VM Config](./images/compute-vm-machine-config.png " ")
 
 5.  Leave all as default under **OS and storage**
 
@@ -87,26 +87,26 @@ In this section, you will create a VPC which will have two subnets:
     * **Allow HTTP traffic** - Checkmark
     * **Allow HTTPS traffic** - Checkmark
 
-    ![](./images/compute-vm-networking.png " ")
+    ![VM Networking](./images/compute-vm-networking.png " ")
 
     Click the drop down for **Network interfaces**
 
-    ![](./images/compute-vm-network-default.png " ")
+    ![VM Default Network](./images/compute-vm-network-default.png " ")
 
     Enter the following under **Edit network interface**
 
     * **Network** - app-network
     * **Subnetwork** - public-subnet
 
-    ![](./images/compute-vm-network-config.png " ")
+    ![VM Network Config](./images/compute-vm-network-config.png " ")
 
 7.  Click **Security** on the left tab and enter the following. Click **MANAGE ACCESS** and click **ADD ITEM** under **Add manually generated SSH keys**. Enter the public ssh key. Click **CREATE** to create the VM instance.
 
-    ![](./images/compute-vm-ssh-create.png " ")
+    ![VM ssh create](./images/compute-vm-ssh-create.png " ")
 
 8.	The created VM instance will show up on the **VM instances** page -
 
-    ![](./images/compute-vm-instance.png " ")
+    ![VM instance create](./images/compute-vm-instance.png " ")
 
 You may now **proceed to the next lab** to provision Autonomous Database.
 

@@ -24,11 +24,11 @@ As a database admin or user:
 
 1. From the Google Cloud Console (console.cloud.google.com), click on the **Navigation Menu**. Then click on **VM instances** under **Compute Engine**.
 
-    ![](./images/compute-vm-navigate.png " ")
+    ![Compute VM](./images/compute-vm-navigate.png " ")
 
 2. On the **VM instances** page click **CREATE INSTANCE**
 
-    ![](./images/compute-vm-create.png " ")
+    ![Compute VM](./images/compute-vm-create.png " ")
 
 3. Under **Machine configuration** enter the following -
 
@@ -36,41 +36,41 @@ As a database admin or user:
     * **Region** - us-east4
     * Leave the rest as default.
 
-    ![](./images/compute-win-machine-config.png " ")
+    ![Compute VM](./images/compute-win-machine-config.png " ")
 
 5.  Click **OS and storage** on the left tab and click **Change** to change the Operating System to Windows. Under the drop down for **Operating system** select **Windows Server**. Leave others as default.
 
-    ![](./images/os-win-machine-config.png " ")
+    ![Compute VM](./images/os-win-machine-config.png " ")
 
 6.  Click **Networking** on the left tab and enter the following -
 
     * **Allow HTTP traffic** - Checkmark
     * **Allow HTTPS traffic** - Checkmark
 
-    ![](./images/compute-vm-networking.png " ")
+    ![Compute VM](./images/compute-vm-networking.png " ")
 
     Click the drop down for **Network interfaces**
 
-    ![](./images/compute-vm-network-default.png " ")
+    ![Compute VM](./images/compute-vm-network-default.png " ")
 
     Enter the following under **Edit network interface**
 
     * **Network** - app-network
     * **Subnetwork** - public-subnet
 
-    ![](./images/compute-vm-network-config.png " ")
+    ![Compute VM](./images/compute-vm-network-config.png " ")
 
 7.  Click **Security** on the left tab and enter the following. Click **MANAGE ACCESS** and click **ADD ITEM** under **Add manually generated SSH keys**. Enter the public ssh key. Click **CREATE** to create the VM instance.
 
-    ![](./images/compute-vm-ssh-create.png " ")
+    ![Compute VM](./images/compute-vm-ssh-create.png " ")
 
 8.	The created VM instance will show up on the **VM instances** page -
 
-    ![](./images/compute-win-instance.png " ")
+    ![Compute VM](./images/compute-win-instance.png " ")
 
 9. Set the Windows VM login password by clicking on **Set Windows password**.
 
-    ![](./images/set-win-pass.png " ")
+    ![Compute VM](./images/set-win-pass.png " ")
 
 10. RDP to the VM instance using the External IP address and login using the username and password set in above step.
 

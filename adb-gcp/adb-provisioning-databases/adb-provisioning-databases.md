@@ -23,15 +23,15 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 
 1.	Login to Google Cloud Console (console.cloud.google.com) and search for **Oracle Database** in the **Search Bar** on the top of the page. Click on **Oracle Database@Google Cloud**.
 
-    ![This image shows the result of performing the above step.](./images/adb-search.png " ")
+    ![Search Bar](./images/adb-search.png " ")
 
 -  Click **Autonomous Database** from the left menu.
 
-    ![This image shows the result of performing the above step.](./images/adb-menu.png " ")
+    ![ADB Menu](./images/adb-menu.png " ")
 
 - Click **Create** on the Autonomous Database details page.
 
-    ![This image shows the result of performing the above step.](./images/adb-create.png " ")
+    ![Create ADB](./images/adb-create.png " ")
 
 -  This will bring up the **Create an Autonomous Database** screen where you specify the configuration of the database.
 
