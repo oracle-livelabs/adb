@@ -17,7 +17,7 @@ As an administrator:
 
 ### Required Artifacts
 
-- A pre-provisioned instance of an Autonomous database and a Developer Client image. 
+- A pre-provisioned instance of an Autonomous Database and a Developer Client image. 
 
 ## Task 1: Connect to Compute VM Instance
 
@@ -119,11 +119,11 @@ As an administrator:
     </copy>
     ```
 
-## Task 3: Connect the Swingbench application to Autonomous database
+## Task 3: Connect the Swingbench application to Autonomous Database
 
-Now that you have installed Swingbench and copied over the Autonomous Database wallet to the VM instance, the next step is to connect the application to your Autonomous database.
+Now that you have installed Swingbench and copied over the Autonomous Database wallet to the VM instance, the next step is to connect the application to your Autonomous Database.
 
-- You are ready to run Swingbench workloads on Autonomous database. Workloads are simulated by users submitting transactions to the database.
+- You are ready to run Swingbench workloads on Autonomous Database. Workloads are simulated by users submitting transactions to the database.
 
 - Load sample data to your Autonomous Database. To start **oewizard** to load Schema and data, navigate to Swinbench bin folder and run oewizard. 
 
@@ -190,7 +190,7 @@ sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGro
 
     ![Swingbench wizard](./images/swingbench-load-run.png " ")
 
-- You should now see the Transaction happening in your Autonomous database. 
+- You should now see the Transaction happening in your Autonomous Database. 
 
 - We are going to monitor the Autonomous Database using Google Cloud Monitoring in the next lab.
 
@@ -199,7 +199,7 @@ sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGro
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-*Congratulations! You successfully configured the Swingbench java application with Autonomous database.*
+*Congratulations! You successfully configured the Swingbench java application with Autonomous Database.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
 - **Last Updated By/Date** - Vivek Verma, Jan 2025

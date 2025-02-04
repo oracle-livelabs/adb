@@ -3,7 +3,7 @@
 ## Introduction
 Oracle Data Pump offers very fast bulk data and metadata movement between user managed Oracle databases and Autonomous Database.
 
-Data Pump Import lets you import data from Data Pump files residing on the Object Storage. You can save your data to your Cloud Object Store and use Oracle Data Pump to load data to Autonomous database.
+Data Pump Import lets you import data from Data Pump files residing on the Object Storage. You can save your data to your Cloud Object Store and use Oracle Data Pump to load data to Autonomous Database.
 
 This lab walks you through the steps to migrate a sample application schema using Data Pump Import into your Autonomous Database.
 
@@ -15,7 +15,7 @@ As a database admin or user:
 1. Upload a datapump dumpfile to Google Cloud Storage Bucket.
 2. Get the access key to allow Autonomous Database to connect to the cloud storage bucket.
 3. Install sqlcl and connect to ADB
-4. Use the sample .dmp file to import data to your Autonomous database.
+4. Use the sample .dmp file to import data to your Autonomous Database.
 
 ### Required Artifacts
 - Access to a pre-provisioned Autonomous Database instance.
@@ -36,7 +36,15 @@ As a database admin or user:
 
 - Note down the **Access key** and **Secret** in a notepad.
 
-## Task 2: Set up User credentials in your target autonomous database
+## Task 2: Upload the Dump file to Google Cloud Storage Bucket
+
+- Download the dump file [here](https://storage.cloud.google.com/vvbucketttt/HR.dmp).
+
+- From the Google Cloud Console, under **Cloud Storage** go to **Buckets** to create a Cloud Storage Bucket. Click **CREATE** to create a bucket. For this workshop we will name the bucket **gcpdatapump**.
+
+- Once the bucket is created. Upload the dump file under the **gcpdatapump** bucket.
+
+## Task 3: Set up User credentials in your target autonomous database
 
 Now that we have the Access key and the Secret, let's set up the target database to read from the Google Cloud Storage and import data.
 
@@ -46,14 +54,44 @@ Download and install sqlcl on the Google Cloud Compute VM instance.
 
 You can download sqlcl from https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-24.3.2.330.1718.zip
 
-- After downloading sqlcl unzip the zip file and connect to the Autonomous Database using the connection string.
+- After downloading sqlcl unzip the zip file.
 
     ```
     <copy>
     wget https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-24.3.2.330.1718.zip
     unzip sqlcl-24.3.2.330.1718.zip
+    </copy>
+    ```
+
+- On the Google Cloud Console, from the **Autonomous Database** page click the Autonomous Database that was provisioned.
+
+    ![Cloud Storage Settings](./images/adb-page.png " ")
+
+- Under **CONNECTIONS** tab on the **Autonomous Database Details** page note down the **TNS name** and **Connection string**.
+
+    ![Cloud Storage Settings](./images/connections-tab.png " ")
+    ![Cloud Storage Settings](./images/connection-strings.png " ")    
+
+- Create a 'tnsnames.ora' file under 'sqlcl/bin' and set the 'TNS_ADMIN' variable to current working directory. Connect to the Autonomous Database using the connection string or by setting up the tnsnames path. 
+
+    * Setting up tnsnames path and connecting to the database -
+
+    ```
+    <copy>
     cd sqlcl/bin
-    ./sqlcl
+    $ cat tnsnames.ora 
+    adbgcp_high=(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=mahfgbhj.adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=gd443790554e91c_adbgcp_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=no)))
+    $ 
+    export TNS_ADMIN=`pwd`
+    ./sqlcl admin@adbgcp_high
+    </copy>
+    ```
+    * Using connection string -
+
+    ```
+    <copy>
+    cd sqlcl/bin 
+    ./sqlcl admin@"(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=mahfgbhj.adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=gd443790554e91c_adbgcp_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=no)))"
     </copy>
     ```
 
@@ -89,7 +127,7 @@ You can download sqlcl from https://download.oracle.com/otn_software/java/sqldev
 
     ![This image shows the result of performing the above step.](./images/query-gcpdatapump.png " ")
 
-## Task 3: Import data from Google Cloud Storage Bucket using impdp utility
+## Task 4: Import data from Google Cloud Storage Bucket using impdp utility
 
 - From the same SQLcl window run the data pump import command.
 
@@ -114,7 +152,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-*Congratulations! You have successfully completed migrating an Oracle database to the Autonomous database.*
+*Congratulations! You have successfully completed migrating an Oracle database to the Autonomous Database.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
 - **Last Updated By/Date** - Vivek Verma, Jan 2025

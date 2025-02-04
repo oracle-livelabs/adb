@@ -19,7 +19,7 @@ As a database user, DBA or application developer:
 
 ## Task 1: Create Autonomous Database
 
-In this section, you will be provisioning an Autonomous database using the Google Cloud Console.
+In this section, you will be provisioning an Autonomous Database using the Google Cloud Console.
 
 1.	Login to Google Cloud Console (console.cloud.google.com) and search for **Oracle Database** in the **Search Bar** on the top of the page. Click on **Oracle Database@Google Cloud**.
 

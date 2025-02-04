@@ -1,7 +1,7 @@
 # Oracle Database Actions
 
 ## Introduction
-You can access Database Actions from Autonomous Database. Database Actions provides development tools, data tools, administration, and monitoring features for Autonomous Database. Using Database Actions you can run SQL statements, queries, and scripts in a worksheet. 
+Database Actions brings you your favorite Oracle Database desktop tool’s features and experience to your browser! Delivered as a single-page web application, Database Actions is powered by Oracle REST Data Services (ORDS). Database Actions offers, a worksheet for running queries and scripts, the ability to manage and browse your data dictionary, a REST development environment for your REST APIs and AUTOREST enabled objects, an interface for Oracle’s JSON Document Store (SODA), a DBA console for managing the database, a data model reporting solution, and access to PerfHub.
 
 Database Actions provides a web-based interface with development, data tools, administration, monitoring, and download features for Autonomous Database. 
 
@@ -78,9 +78,9 @@ As a database admin or user:
 
 ## Task 2: Oracle Database Actions Overview
 
-You can view available Oracle Database@Google Cloud metrics using Cloud Monitoring in the Google Cloud console.
+You can access Database Actions from Autonomous Database. Database Actions provides development tools, data tools, administration, and monitoring features for Autonomous Database. Using Database Actions you can run SQL statements, queries, and scripts in a worksheet. 
 
-To view an available metric:
+To launch Database Actions:
 
 1. From the **Autonomous Database Details** page, click **MANAGE ON OCI** to go to the OCI Console.
 
