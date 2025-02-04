@@ -124,10 +124,10 @@ For Azure, there are two models that needs to be selected:
 
 The following applies to all AI providers in this workshop, not just OCI GenAI. The script is using the default models for OCI; however, you can override the defaults if you like. There are two models that are required:
 
-1. An embedding_model (see doc for attribute name) - which encodes the question as a vector to be used for similarity search.
-2. LLM model - the LLM that answers your request (language).
+1. An **embedding model**. For example, the  profile attribute for OCI could be **`embedding_model":"cohere.embed-english-v3.0"`** which encodes the question as a vector to be used for similarity search.
+2. **LLM model**. The LLM that answers your request (language). For example, the profile attribute for OCI could be **`"model":"meta.llama-3.1-70b-instruct"`**.
 
-When you use the defaults, Select AI will always pick the latest/best model for processing the request.
+When you use the defaults, Select AI will always choose the latest/best model for processing the request.
 
 For additional information, see the following documentation resources:
 
@@ -140,7 +140,7 @@ For additional information, see the following documentation resources:
 <details>
     <summary>**OCI Generative AI** (default)</summary>
 
-1. The following policy allows access but it's already done for you in this workshop.
+1. A policy must be created by the user.
 
     ```
     allow any-user to manage generative-ai-family in the tenancy as ADMIN
@@ -310,6 +310,8 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     </copy> 
     ```
 </details>
+
+### **Review your Select AI profiles**
 
 Now that you have created the profile, you can now query the available profiles as follows.
 

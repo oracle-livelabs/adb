@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this labe, you will ask support questions that can be answered by information contained in the support site. You can use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM. When you use Select AI, Autonomous Database manages the process of converting natural language into SQL. This means you can provide a natural language prompt instead of SQL code to interact with your data. Select AI serves as a productivity tool for SQL users and developers and enables non-expert SQL users to derive useful insights from their data, without having to understand data structures or technical languages.
+In this lab, you will ask support questions that can be answered by information contained in the support site. You can use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM. When you use Select AI, Autonomous Database manages the process of converting natural language into SQL. This means you can provide a natural language prompt instead of SQL code to interact with your data. Select AI serves as a productivity tool for SQL users and developers and enables non-expert SQL users to derive useful insights from their data, without having to understand data structures or technical languages.
 
 Estimated Time: 3 minutes.
 
@@ -14,18 +14,31 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires the completion of the previous labs that deployed your Autonomous Database.
+* This lab requires the completion of the previous labs that deployed your Autonomous Database.
 
 ## Task 1: Overview of Select AI
 
-You can now ask questions using **SELECT AI**. **AI** is a special keyword in the **SELECT** statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
+Select AI provides the **`dbms_cloud_ai.generate`** built-in function that you will use to generate different kinds of responses from natural language queries.
 
 Here are the available actions:
 
 * **chat:** Use for general AI chat.
-* **runsql [default]:** Use to ask a question and get a structured result.
+* **runsql:** Use to ask a question and get a structured result.
 * **narrate:** Use to ask a question and get a conversational result.
 * **showsql:** Use to show the SQL code that was used to produce the result.
+
+Select AI implements RAG as shown in the following diagram and explanation:
+
+![Select AI and RAG diagram](./images/select-ai-rag-diagram.png "")
+
+* You as the user asked a question (specified a prompt) using the Select AI  narrate action.
+* Select AI generated Vector embeddings of the prompt using the embedding model specified in the AI profile (we used the default in our example).
+* The vector search index used the Vector embedding of the question to find matching content from the moviestream enterprise data (searching the Vector store) which has been indexed.
+* The Vector search returns top n texts _similar_ to the input to your Autonomous Database instance.
+* Autonomous Database then sent these top `n` query results with the user question to the LLM.
+* The LLM returned its response to your Autonomous Database instance.
+* Autonomous Database Select AI provides the response to the user. You can control the `n` value as an attribute
+So, the response grabbed n chunks and sent them to the model.
 
 ## Task 2: Ask Questions Using Various Select AI Actions
 
@@ -50,7 +63,7 @@ Let's look at some examples of using Select AI with the available actions.
     * [account-billing-issues.html](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/account-billing-issues.html)
     * [subscription-login-issues.html](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/subscription-login-issues.html) 
 
-2. Use the **runsql** action to see each of the chunks and their score. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+2. Use the **runsql** action to see each of the chunks and their similarity (or distance) score. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
 
     ```
     <copy>

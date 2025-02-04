@@ -176,7 +176,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
     
         >**Note:** In the **Workshop Settings** section, if a **Secret API key used to connect to AI model** field is displayed, that is not **_not Required_** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
    
-    * For the other fields, accept the default selections. For the **A valid Oracle Database version for Autonomous Database** field, you can click the drop-down list and select the database version as either **19c** or **23ai**.
+    * For the other fields, accept the default selections. For the **A valid Oracle Database version for Autonomous Database** field, ensure that **23ai** is selected for the database version.
     
         ![The Configure variables step 2 of the wizard](./images/configure-variables-updated.png " ")
 
