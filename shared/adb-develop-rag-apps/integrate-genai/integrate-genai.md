@@ -460,10 +460,11 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Authors:**
+ * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, February 2025
+ * **Contributor:** Michelle Malcher, Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, February 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
