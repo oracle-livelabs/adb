@@ -137,6 +137,10 @@ For additional information, see the following documentation resources:
 
 * [Profile Attributes](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-12D91681-B51C-48E0-93FD-9ABC67B0F375)
 
+_To view the detailed steps for any of the following models, click the drill-down icon for a model._
+
+![Drill-down the desired model.](./images/drill-down-model.png =60%x*)
+
 <details>
     <summary>**OCI Generative AI** (default)</summary>
 
@@ -154,7 +158,7 @@ For additional information, see the following documentation resources:
 
 ### **Create the AI profile**
 
-1. Create an AI profile named **SUPPORT_SITE**. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
+1. Make sure you are still logged in to your SQL Worksheet as the **MOVIESTREAM** user. Create an AI profile named **SUPPORT_SITE**. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
 
     ```sql
     <copy>
@@ -456,10 +460,11 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Authors:**
+ * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, February 2025
+ * **Contributor:** Michelle Malcher, Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, February 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

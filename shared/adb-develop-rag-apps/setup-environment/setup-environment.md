@@ -148,6 +148,9 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
     The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
+    
+        >**Note:** Your database name that you choose must be unique in the tenancy that you are using; otherwise, you will get an error message.
+
     * Create a new user named **`moviestream`**
     * Create movie related tables and views in the **`moviestream`** schema
     * Grant the required privileges to perform various actions in the workshop
