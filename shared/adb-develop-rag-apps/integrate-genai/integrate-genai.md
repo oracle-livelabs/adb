@@ -179,16 +179,18 @@ _To view the detailed steps for any of the following models, click the drill-dow
     dbms_cloud_ai.create_profile (
         profile_name => 'SUPPORT_SITE',
         description => 'contains customer support information about using the moviestream application, including managing the account, playback, network and device compatibility issues',
-        attributes => 
+        attributes =>
             '{
-            "provider": "oci",        
-            "credential_name": "OCI$RESOURCE_PRINCIPAL",              
+            "provider": "oci",
+            "credential_name": "OCI$RESOURCE_PRINCIPAL",
+            "region": "us-chicago-1",
             "vector_index_name": "SUPPORT"
-            }'      
-    );  
+            }'
+    );
     END;
     </copy>
     ```
+    >**Note:** The **region** attribute indicates the location of the Generative AI cluster that you want to use. The default region is **`us-chicago-1`**. If you are using another region such as Frankfurt, **`eu-frankfurt-1`**, replace the **`us-chicago-1`** region's attribute value in the above code with **`eu-frankfurt-1`**. For the current list of regions with OCI Generative AI, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
     ![Create AI profile.](./images/create-ai-profile.png " ")
 
