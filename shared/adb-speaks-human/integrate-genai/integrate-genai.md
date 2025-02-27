@@ -115,15 +115,16 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
         -- Create an AI profile that uses the default LLAMA model on OCI
         dbms_cloud_ai.create_profile(
             profile_name => 'genai',
-            attributes =>       
+            attributes =>
                 '{"provider": "oci",
                 "credential_name": "OCI$RESOURCE_PRINCIPAL",
-                "comments":"true",            
+                "region": "us-chicago-1",
+                "comments":"true",
                 "object_list": [
                     {"owner": "MOVIESTREAM", "name": "GENRE"},
                     {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
                     {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                    {"owner": "MOVIESTREAM", "name": "STREAMS"},            
+                    {"owner": "MOVIESTREAM", "name": "STREAMS"},
                     {"owner": "MOVIESTREAM", "name": "MOVIES"},
                     {"owner": "MOVIESTREAM", "name": "ACTORS"}
                 ]
@@ -134,13 +135,17 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
     /
     </copy>
     ```
+
+    >**Note:** The **region** attribute indicates the location of the Generative AI cluster that you want to use. 
+    The default region is **`us-chicago-1`**. If you are using another region such as Frankfurt, **`eu-frankfurt-1`**, replace the **`us-chicago-1`** region's attribute value in the above code with **`eu-frankfurt-1`**. For the current list of regions with OCI Generative AI, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
+
 </details>
 
 <details>
     <summary>**OpenAI**</summary>
-You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models. 
+You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models.
 
-1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.    
+1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.
 
     ```sql
     <copy>
@@ -379,7 +384,7 @@ You may now proceed to the next lab.
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024  Oracle Corporation.
+Copyright (c) 2025  Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
