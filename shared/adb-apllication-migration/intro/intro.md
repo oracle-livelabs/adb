@@ -30,5 +30,5 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 ## Acknowledgements
 
 - **Authors** - Shilpa Sharma, Prinicipal User Assistance Developer
-- **Contributors** - Lauran Serhal, Consulting User Assistance Developer.
+- **Contributors** - Lauran K. Serhal, Consulting User Assistance Developer
 - **Last Updated By/Date** - Shilpa Sharma, February 2025

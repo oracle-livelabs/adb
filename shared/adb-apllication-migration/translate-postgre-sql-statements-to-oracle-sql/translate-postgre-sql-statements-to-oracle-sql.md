@@ -79,5 +79,5 @@ The function version of the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` subroutine accept
 
 ## Acknowledgements
 
-- Author       - Shilpa Sharma, Principal User Assistance Developer.
-- Contributors - Lauran Serhal, Consulting User Assistance Developer.
+- Author       - Shilpa Sharma, Principal User Assistance Developer
+- Contributors - Lauran K. Serhal, Consulting User Assistance Developer
