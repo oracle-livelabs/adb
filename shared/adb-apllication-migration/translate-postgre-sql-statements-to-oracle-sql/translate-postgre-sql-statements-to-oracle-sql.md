@@ -57,7 +57,7 @@ The procedure form of the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` subroutine accepts 
   This accepts PostgreSQL statement as input, translates the PostgreSQL statement to Oracle SQL. The translated statement is then assigned to the `translated_sql_output` variable.
   You can display the output (translated statement) using `DBMS_OUTPUT.PUT_LINE`.
 
-  ## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Function to Translate a PostgreSQL statement to Oracle SQL
+## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Function to Translate a PostgreSQL statement to Oracle SQL
 
 The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL`function  enables you to translate a non-SQL statement to Oracle SQL. With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
 
