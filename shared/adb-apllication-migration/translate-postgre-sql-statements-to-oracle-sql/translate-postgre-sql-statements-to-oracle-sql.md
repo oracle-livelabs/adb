@@ -16,10 +16,10 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab assumes you have:
+This lab assumes that:
 
-- Performed the previous lab on provisioning an Oracle Autonomous Database instance.
-- You must be logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
+- You have performed the previous lab on provisioning an Oracle Autonomous Database instance.
+- You are logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
 
 ## Task 1: Connect with the SQL Worksheet
 
