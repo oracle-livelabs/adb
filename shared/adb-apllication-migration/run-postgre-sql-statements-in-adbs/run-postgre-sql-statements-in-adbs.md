@@ -2,9 +2,9 @@
 # Run PostgreSQL Statements in Autonomous Database Serverless
 
 ## Introduction
-This lab introduces the `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` procedure that enables you to run your SQL statements written in PostreSQL statement in your Autonomous Database session.
+This lab introduces the `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` procedure that enables you to run PostgreSQL statements in your Autonomous database session.
 
-**Note: 'DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION' is not supported in Database Actions and is not supported with the Oracle APEX Service.**
+**Note: `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` is not supported in Database Actions and is not supported with the Oracle APEX Service.**
 
 Estimated Time: 30 minutes
 
@@ -76,7 +76,6 @@ This shows the enabled translation language for your session.
     CREATE TABLE film (film_id int, title varchar(255));
     </copy>
     ```
-  ![Use DBMS_CLOUD_MIGRATION.MIGRATE_SQL Procedure](images/migrate-sql-function.png)
 
   This entered PostreSQL statement runs seamlessly as Oracle SQL in your session.
 
