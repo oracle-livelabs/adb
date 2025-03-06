@@ -19,10 +19,10 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab assumes you have:
+This lab assumes that:
 
-- Performed the previous lab on provisioning an Oracle Autonomous Database instance.
-- You must be logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
+- You have performed the previous lab on provisioning an Oracle Autonomous Database instance.
+- You are logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
 
 ## Task 1: Connect with the SQL Worksheet
 
@@ -33,13 +33,13 @@ To complete the subsequent tasks you need to use SQL Worksheet.
 ![Use DBMS_CLOUD_MIGRATION.MIGRATE_SQL Procedure](images/sqlworksheet.png)
 
 
-## Task 2: Use the `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` Procedure to Enable Real-Time Translation for Your Session
+## Task 2: Enable Real-Time Translation in Your Session
 
-To run a PostgreSQL statement in your Autonomous Database you must first enable real-time SQL translation for your session. Use the `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` procedure to enable real-time translation for a session.
+To run a PostgreSQL statement in your Autonomous Database you must first enable real-time SQL translation in your session. Use the `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` procedure to enable real-time translation for a session.
 
 ### Enable Real-Time SQL Translation in Your Session
 
-1. Run `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` to enable real-time translation. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+1. Run `DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION` to enable real-time translation in your session. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -106,7 +106,7 @@ This shows the enabled translation language for your session.
 
 ## Task 3: Disable Real-Time SQL Translation in Your Session
 
-1. Run `DBMS_CLOUD_MIGRATION.DISABLE_TRANSLATION` to disable real-time translation for your session. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+1. Run `DBMS_CLOUD_MIGRATION.DISABLE_TRANSLATION` to disable real-time translation in your session. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
      ```
     <copy>
@@ -116,7 +116,7 @@ This shows the enabled translation language for your session.
     /
     </copy>
     ```
-This disables the real-time SQL translation for your session.
+This disables the real-time SQL translation in your session.
 
 
 
