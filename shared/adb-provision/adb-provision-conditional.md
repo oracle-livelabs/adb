@@ -174,6 +174,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Contributors** - Oracle LiveLabs QA Team (Jeffrey Malcolm Jr, Intern | Arabella Yao, Product Manager)
+- **Contributors** - Oracle LiveLabs QA Team
 - **Last Updated By/Date** - Lauran K. Serhal, April 2024

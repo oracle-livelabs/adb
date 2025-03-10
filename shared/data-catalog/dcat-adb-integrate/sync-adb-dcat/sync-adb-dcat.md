@@ -250,8 +250,8 @@ Before you can create a connection to your Data Catalog instance, you will need 
     ![Saved values in Notepad file.](./images/saved-values-notepad.png " ")
 
     >**Notes:**
-    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
-    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
+    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
+    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
 
 4. Create a connection to your Data Catalog instance using the `set_data_catalog_conn` procedure. This is required to synchronize the metadata with Data Catalog. An Autonomous Database instance can connect to a single Data Catalog instance. You only need to call this procedure once to set the connection. Click **Copy** to copy the following code and paste it into the SQL Worksheet.
 
@@ -383,8 +383,8 @@ Before you can create a connection to your Data Catalog instance, you will need 
     ![Saved values in Notepad file.](./images/ll-saved-values-notepad.png " ")
 
     >**Notes:**
-    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
-    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
+    * For additional information on how to find your region identifier, see the [How do I find a region identifier?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3263) OCI sprint.
+    * For additional information on how to find your Data Catalog instance OCID, see the [How do I find a Data Catalog instance OCID?](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=3262) OCI sprint.
 
 8. Create a connection to your Data Catalog instance using the `set_data_catalog_conn` procedure. This is required to synchronize the metadata with Data Catalog. An Autonomous Database instance can connect to a single Data Catalog instance. You only need to call this procedure once to set the connection. Click **Copy** to copy the following code and paste it into the SQL Worksheet.
 

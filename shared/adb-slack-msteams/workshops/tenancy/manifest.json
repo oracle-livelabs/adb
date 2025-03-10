@@ -1,0 +1,53 @@
+{
+    "workshoptitle": "Send Notifications from Autonomous Database to Slack and Microsoft Teams",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "cloud-login.md":"/common/labs/cloud-login/cloud-login.md"
+      },
+      "variables": ["./variables.json"],
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to Sending Slack and Microsoft Teams notifications from Autonomous Database",
+            "filename": "../../introduction/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Set up the environment",
+            "filename": "https://oracle-livelabs.github.io/common//labs/cloud-login/cloud-login.md"
+
+        },
+        {
+            "title": "Lab 1: Configure the Slack application",
+            "description": "You will use configure Slack and Microsoft Teams to send notifications and query result from an Autonomous Database",
+            "type": "freetier",
+            "filename": "../../prepare-adb-slack-config/prepare-adb-slack-config.md"
+            },
+            {
+                "title": "Lab 2: Configure the Microsoft Teams application",
+                "description": "You will learn how to configure MS Teams to send notifications and query result from an Autonomous Database",
+                "type": "freetier",
+                "filename": "../../prepare-adb-msteams-config/prepare-adb-msteams-config.md"
+                },
+            {
+            "title": "Lab 3: Provision and Configure an Autonomous Database",
+            "description": "You will create a  ADB instance",
+            "type": "freetier",
+            "filename": "../../provision-database-config/provision-database-configure.md"
+        },
+        {
+            "title": "Lab 4: Send Notifications from Autonomous Database to Slack and Microsoft Teams",
+            "description": "You will use ADB to send notifications and query result to a Slack channel",
+            "type": "freetier",
+            "filename": "../../prepare-adb-msteams-slack-sendmsg/prepare-adb-sendmsg.md"
+            },
+    {
+    "title": "Need Help?",
+    "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+    "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+
+    ]
+}

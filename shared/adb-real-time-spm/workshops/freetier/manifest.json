@@ -1,0 +1,57 @@
+{
+    "workshoptitle": "Real-time SQL Plan Management",
+    "help": "livelabs-help-db_us@oracle.com",
+	"tutorials": [
+        {
+            "title": "Introduction",
+            "description": "About the Real-time SPM Workshop",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },        
+        {
+            "title": "Lab 1: Provision an Autonomous Database Instance",
+            "description": "Provision an Autonomous Database Instance",
+            "type": "livelabs",
+            "filename": "../../provision-atp/provision-atp.md"
+        },
+        {
+            "title": "Lab 2: Create an Application Schema",
+            "description": "Create an Application Schema",
+            "type": "livelabs",
+            "filename": "../../create-schema/create-schema.md"
+        },   
+        {
+            "title": "Lab 3: Execute an Application Query With a Good Plan",
+            "description": "Execute an Application Query With a Good Plan",
+            "type": "livelabs",
+            "filename": "../../run-good-plan/run-good-plan.md"
+        },   
+        {
+            "title": "Lab 4: Execute the Application Query, Inducing a Poor Plan",
+            "description": "Execute the Application Query, Inducing a Poor Plan",
+            "type": "livelabs",
+            "filename": "../../run-bad-plan/run-bad-plan.md"
+        },                                                                          
+        {
+            "title": "Lab 5: Execute an Application Query With a Good Plan Again",
+            "description": "Execute an Application Query With a Good Plan Again",
+            "type": "livelabs",
+            "filename": "../../run-good-plan/run-good-plan-again.md"
+        },
+        {
+            "title": "Lab 6: Execute a Runaway Query Interrupted by DBRM",
+            "description": "Execute a Runaway Query Interrupted by DBRM",
+            "type": "livelabs",
+            "filename": "../../run-bad-plan-runaway/run-bad-plan-runaway.md"
+        },                                                                          
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

@@ -43,5 +43,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, January 2025
 - **Built with Common Tasks**

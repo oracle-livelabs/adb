@@ -5,7 +5,7 @@
 Large language models are incredibly powerful tools for analyzing data using natural language. The problem with LLMs is that they don't know about your organization's private data. Autonomous Database and Select AI makes it simple to overcome this challenge and use an LLM's creative power and understanding of language to rapidly innovate.
 
 This lab will introduce you to using your organization's data with LLMs. You will learn how to define LLM prompts that combine natural language tasks with private data. Those prompts will clearly delineate from the data sets and tasks to encourage better results.
-
+<!--
 ![Wrapping of task rules and data to send to the model in tabular form](./images/json-prompts.png "")
 
 For this workshop, the business logic is captured in a GENAI\_PROJECT table that provides a simple organizational structure. Each record in that table includes:
@@ -22,7 +22,7 @@ A JSON document is used to organize the GenAI prompt (task rules and query resul
 ![Business Logic Overview](./images/intro-businesslogic.png "")
 
 > **Note:** The prompt (in the example above) is using both the tasks and data (from a profile created named "ociai") to generate a email using Generative AI and data from the database. 
-
+-->
 Estimated Time: 15 minutes.
 
 ### Objectives
@@ -88,7 +88,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     }
     ```
 
-3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. We'll use the Cohere model (you can also try it using `Meta Llama 3`). Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
+3. Now that we have a well defined prompt, pass it to the model using the **`DBMS_CLOUD_AI.GENERATE`** function. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon.
       
     ```
     <copy>
@@ -101,7 +101,7 @@ In our first example, we'll summarize a conversation that a customer had with th
     SELECT 
         DBMS_CLOUD_AI.GENERATE(
             PROMPT => prompt_details,
-            PROFILE_NAME => 'OCIAI_COHERE',
+            PROFILE_NAME => 'GENAI',
             ACTION       => 'chat'                     
         ) AS response
     FROM prompt_document;       
@@ -190,8 +190,8 @@ MovieStream is going to provide a new service that parents will love. The servic
     ```
     The `CREATE_STORY` procedure outputs results. You can see the new bedtime story below:
     ![create a bedtime story](images/create-story.png)
-
-## Task 3: Organize and execute GenAI projects
+<!--
+REM ## Task 3: Organize and execute GenAI projects (optional)
 You will likely use GenAI for many different projects where you need to apply analytics to data in Autonomous Database. This workshop uses a `GENAI_PROJECT` table to organize prompts and queries that are applied to different use cases. 
 
 1. Let's take a look at the current projects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
@@ -285,7 +285,7 @@ You will likely use GenAI for many different projects where you need to apply an
 
     Enjoy yourself Jennine!
 
-## Task 4: Simplifying prompt engineering
+REM ## Task 4: Simplifying prompt engineering (optional)
 As you can see, prompt engineering is going to be an iterative process. You'll want to test different models, tweak the tasks and update the queries. To make this process easier and more productive, a sample APEX app was deployed to your Autonomous Database. The app lets you create, edit and test your GenAI projects. It's a simple front-end to what you did manually in the previous task.
 
 1. You will need the URL for the APEX app deployed to your Autonomous Database. The URL format is as follows:
@@ -318,7 +318,7 @@ As you can see, prompt engineering is going to be an iterative process. You'll w
     ![Test the GenAI project](images/apex-test-genai-project.png)
 
     The response may take a minute to return. You'll see the prompt used to generate the response and the response itself.
-
+-->
 ## Summary    
 Sometimes it's useful to step back and say, "how would I have summarized a support chat or created a targeted offer in the past?". Applying large language models to your data really opens up so many opportunities to deliver value to your organization quickly and easily. 
 
@@ -340,7 +340,7 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
-* **Last Updated By/Date:** Lauran K. Serhal, February 2024
+* **Last Updated By/Date:** Marty Gubar, September 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

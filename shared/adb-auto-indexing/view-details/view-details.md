@@ -23,6 +23,10 @@ This lab assumes you have completed the following:
 
     ````
     <copy>
+    --
+    -- These formatting commands are ignored by the SQL worksheet 
+    -- but are useful if you run in SQL Plus
+    --
     set linesize 250 trims on
     column column_name format a20
     column table_name format a25

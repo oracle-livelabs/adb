@@ -113,7 +113,9 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
    ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
 
-## Task 2: Create Policy to Enable Access to OCI Generative AI
+## Task 2: (Optional) Create Policy to Enable Access to OCI Generative AI
+
+**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
 
 Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
@@ -174,7 +176,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
     
         >**Note:** In the **Workshop Settings** section, if a **Secret API key used to connect to AI model** field is displayed, that is not **_not Required_** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
    
-    * For the other fields, accept the default selections.
+    * For the other fields, accept the default selections. For the **A valid Oracle Database version for Autonomous Database** field, you can click the drop-down list and select the database version as either **19c** or **23ai**.
     
         ![The Configure variables step 2 of the wizard](./images/configure-variables-updated.png " ")
 
@@ -256,7 +258,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
@@ -266,4 +268,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

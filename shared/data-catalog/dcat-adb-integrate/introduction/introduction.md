@@ -36,7 +36,7 @@ With a data warehouse, you perform data transformation and cleansing before you 
 ### What is a Lakehouse?
 The Lakehouse combines the abilities of a data lake and a data warehouse to process a broad range of enterprise and streaming data for business analysis and machine learning. It offers an architecture that eliminates data silos – allowing you to analyze data across your data estate.
 
-For additional information, see the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://apexapps.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
+For additional information, see the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://livelabs.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
 ### Objectives
 

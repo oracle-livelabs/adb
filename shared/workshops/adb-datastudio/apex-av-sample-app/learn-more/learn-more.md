@@ -20,7 +20,7 @@ Additional learning opportunities can be found as the @BudsOracleAV Library[@Bud
 
 ### Oracle Autonomous Database Data Studio
 
-The Oracle Autonomous Database Data Studio includes tools for designing and querying analytic views. Learn more at this Oracle Live Lab:  [Get Started With Analytic Views using Data Studio](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3594)
+The Oracle Autonomous Database Data Studio includes tools for designing and querying analytic views. Learn more at this Oracle Live Lab:  [Get Started With Analytic Views using Data Studio](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3594)
 
 ### Analytic Views and Oracle Analytic Cloud
 

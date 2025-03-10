@@ -1,0 +1,56 @@
+{
+    "workshoptitle": "Develop AI Retrieval Augmented Generation (RAG) apps with Autonomous Database Select AI",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+    },
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+          "title": "Introduction",
+          "description":"Introduction to the workshop",
+          "filename": "../../introduction/introduction.md"
+        },
+        {
+          "title": "Get started",
+          "description":"Get started using Oracle Cloud Infrastructure",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+          "title": "Lab 1: Set up Your Workshop Environment",
+          "description":"Set up an Autonomous Database and an LLM account",
+          "type": "tenancy",
+          "filename": "../../setup-environment/setup-environment.md"
+        },
+        {
+          "title": "Lab 2: Integrate OCI Generative AI with Autonomous Database",
+          "description":"Integrate OCI Generative AI with Autonomous Database",
+          "type": "tenancy",
+          "filename": "../../integrate-genai/integrate-genai.md"
+        },
+        {
+          "title": "Lab 3: Use Natural Language Queries with Select AI",
+          "description":"Query Using Select AI",
+          "type": "tenancy",
+          "filename": "../../query-using-select-ai/query-using-select-ai.md"
+        },
+        {
+          "title": "Lab 4: Use the Select AI Demo Application",
+          "description":"Use the Select AI demo application",
+          "filename": "../../use-select-ai-demo/use-select-ai-demo.md"
+        },
+        {
+          "title": "Lab 5: Clean up Resources Used in this Workshop (Optional)",
+          "description": "Delete the ADB instance and compartment if not needed.",
+          "type": "tenancy",
+          "filename": "../../cleanup/cleanup.md"
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

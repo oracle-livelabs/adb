@@ -219,7 +219,7 @@ insert into learn_more (
     'Use ADB as a JSON document store to drive modern applications',
     'Learn How with LiveLab',
     'Develop with Oracle SODA and MongoDB APIs',
-    'https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=831'
+    'https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=831'
 );
 
 insert into learn_more (
@@ -251,7 +251,7 @@ insert into learn_more (
     'Combine Oracle SQL and Spatial analytics for top movies near you',
     'Learn How With LiveLabs',
     'Analytic SQL and Spatial',
-    'https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889'
+    'https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889'
 );
 
 insert into learn_more (
@@ -267,7 +267,7 @@ insert into learn_more (
     'Use Graph Analytics to produce movie recommendations',
     'Learn How With LiveLabs',
     'Graph Analytics',
-    'https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889'
+    'https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889'
 );
 
 insert into learn_more (
@@ -283,7 +283,7 @@ insert into learn_more (
     'Use Oracle Machine Learning to predict churn and localize offers with Oracle Spatial',
     'Learn How With LiveLabs',
     'Machine Learning and Spatial Analytics',
-    'https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889'
+    'https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889'
 );
 
 commit;

@@ -4,7 +4,7 @@
     "include": {
       "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
       "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
-      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body-developer.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
     },
     "variables": ["./variables.json"],

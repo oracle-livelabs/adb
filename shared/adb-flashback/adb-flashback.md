@@ -333,4 +333,4 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 
 - **Author:** Shilpa Sharma, Senior User Assistance Developer, Database Development
 - **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, January 2025
