@@ -147,7 +147,7 @@ _To view the detailed steps for any of the following models, click the drill-dow
 1. A policy must be created by the user.
 
     ```
-    allow any-user to manage generative-ai-family in the tenancy as ADMIN
+    allow any-user to manage generative-ai-family in tenancy
     ```
 
     You need to Use resource principal which is already enabled for the **MOVIESTREAM** user in this workshop; therefore, _you don't need to run the following script_; however, if you do need to run it, make sure you are signed in as the **admin** user.
