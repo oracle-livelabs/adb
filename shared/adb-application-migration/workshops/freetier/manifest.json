@@ -16,7 +16,7 @@
             "title": "Lab 1: Create an Oracle Autonomous Database",
             "description": "Provision a new Autonomous Database instance",
             "type": "tenancy",
-            "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 2: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
