@@ -22,7 +22,7 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 
 **Let's begin! If you need to create an account, please click Get Started in the Contents menu on the left. Otherwise, if you have an existing account, click "Lab 1: Provision an Oracle Autonomous Database (ADW and ATP)".</i>**
 
-## Want to Learn More About Autonomous Database?
+## Learn More
 
 - <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html" target="\_blank">Oracle Autonomous Data Warehouse Documentation</a>
 - <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html" target="\_blank">Additional Autonomous Data Warehouse Tutorials</a>
@@ -31,4 +31,4 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 
 - **Authors** - Shilpa Sharma, Prinicipal User Assistance Developer
 - **Contributors** - Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date** - Shilpa Sharma, February 2025
+- **Last Updated By/Date** - Shilpa Sharma, March 2025
