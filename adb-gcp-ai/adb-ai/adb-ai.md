@@ -80,15 +80,33 @@ In this section, you will be enabling Vertex AI API to be used later in the lab.
 
 ## Task 2: Launch VSCode
 
-We will use Visual Studio Code (VSCode) to connect to our Google Cloud VM and run run our Jupyter Notebook.
+We will use Visual Studio Code (VSCode) to connect to our Google Cloud VM and run our Jupyter Notebook.
 
 Please use VSCode's Remote Explorer function to connect to your remote VM. If you don't know how to do that, please see [this tutorial first](https://code.visualstudio.com/docs/remote/ssh).
 
-Open the `vectors.ipynb` file (this file, really) in VSCode and continue reading while executing the code cells below.
+1. Launch VSCode on your local machine and connect to the remote VM. Click the **Search Bar** and select **Show and Run Commands**.
 
-2. Launch VSCode on your local machine and connect to the remote VM. 
+    ![](./images/vscode-show-run-command.png " ")
+
+2. Type **Remote-SSH** and select **Remote-SSH: Connect to Host...**.
+
+    ![](./images/vscode-remote-ssh.png " ")
+
+3. Enter the IP address of the Google Compute VM Instance that we provisioned earlier in this workshop and press **Enter**.
+
+    ![](./images/vscode-select-ssh-host.png " ")
+
+4. On the next VSCode Window, verify that you have remotely connected to the Compute VM instance. Left bottom corner has a message **SSH: IP Address**. Click **Open** to open the Juniper Notebook.
+
+    ![](./images/vscode-confirm-ssh.png " ")
+
+5. Select the `database-rag.ipynb` file present under `vectors` directory.
+
+    ![](./images/vscode-select-file.png " ")
 
 ## Task 3: Run the RAG application code snippets in Jupyter notebook
+
+Open the `vectors.ipynb` file (this file, really) in VSCode and continue reading while executing the code cells below.
 
 You may now **proceed to the next lab**.
 

@@ -5,7 +5,7 @@ Oracle Database@Google Cloud is an Oracle Cloud Database service that runs Oracl
 
 With native integration, you can deploy your Oracle database services in a Google Cloud data center running on Oracle Cloud Infrastructure (OCI) Exadata hardware with minimal latency. Workloads reside in Google Cloud and the Exadata systems used by both services are deployed in Google Cloud data centers. You get the best from Oracle and Google Cloud – which includes the performance and monitoring tools, developer tools, analytics, etc.
 
-In this workshop you’ll learn how to deploy a retrieval-augmented generation–based chatbot on Google Cloud using Oracle Database 23ai. This is done with the Oracle Database@Google Cloud service, which enables you to run Oracle Database workloads in a Google Cloud environment.
+In this workshop you’ll learn how to deploy a retrieval-augmented generation–based chatbot on Google Cloud using Oracle Database 23ai. This is done with the Oracle Database@Google Cloud service, which enables you to run Oracle Database workloads in a Google Cloud environment and with Gemini 1.5 Flash, the best performing Gemini model from Google Vertex AI.
 
 **Gemini 1.5 Flash**
 
