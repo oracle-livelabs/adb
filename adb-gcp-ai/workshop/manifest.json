@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Build a Multicloud AI Chatbot with Oracle Database 23ai and Google Vertex AI",
+    "workshoptitle": "Build a Multicloud RAG Application with Oracle Database 23ai and Google Vertex AI",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
                 {
@@ -23,8 +23,8 @@
             "filename": "./../adb-provisioning-databases/adb-provisioning-databases.md"
         },
         {
-            "title": "Lab 3: Build the RAG Chatbot engine",
-            "description": "Build the RAG Chatbot engine",
+            "title": "Lab 3: Build the RAG Application",
+            "description": "Build the RAG Application",
             "filename": "./../adb-ai/adb-ai.md"
         },
         {

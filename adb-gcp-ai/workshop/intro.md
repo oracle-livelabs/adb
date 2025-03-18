@@ -44,7 +44,8 @@ Find more details on getting started [Onboarding with Oracle Database@Google Clo
 * Get Started
 * Lab 1: Provision Google Cloud resources
 * Lab 2: Provision Autonomous Database@Google Cloud
-* Lab 3: RAG Chatbot engine with Oracle Database@Google Cloud
+* Lab 3: RAG Application with Oracle Database@Google Cloud
+* Lab 4: Run the RAG application using UI
 
 Please proceed to the next lab.
 
