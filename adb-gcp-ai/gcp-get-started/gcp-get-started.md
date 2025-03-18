@@ -168,13 +168,17 @@ For this lab, we will use Visual Studio Code (VSCode) to connect to our Google C
     <copy>
     pip install --upgrade pip
     pip install oracledb
+    pip install dotenv
     pip install sentence-transformers
     pip install PyPDF2
     pip install langchain
     pip install --upgrade google-cloud-aiplatform
     pip install langchain_community
+    pip install -U langchain-community
     pip install langchain_huggingface
     pip install -U langchain-google-vertexai
+    pip install streamlit
+    pip install oci
     </copy>
     ```
 

@@ -28,9 +28,9 @@
             "filename": "./../adb-ai/adb-ai.md"
         },
         {
-            "title": "Lab 6: Oracle Database Actions",
-            "description": "Oracle Database Actions",
-            "filename": "./../database-actions/database-actions.md"
+            "title": "Lab 4: Run the RAG application using UI",
+            "description": "Run the RAG application using UI",
+            "filename": "./../adb-ai-ui/adb-ai-ui.md"
         },
         {
             "title": "Need Help?",

@@ -106,7 +106,332 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
 
 ## Task 3: Run the RAG application code snippets in Jupyter notebook
 
-Open the `vectors.ipynb` file (this file, really) in VSCode and continue reading while executing the code cells below.
+Open the `database-rag.ipynb` file in VSCode and continue reading while executing the code cells below.
+
+1. Run the RAG application code snippets in Jupyter notebook.
+
+    Now you're ready to run each code snippet in sequence starting from the top in Jupyter. To run a code snippet, select the cell of the code and click Run to execute the code.
+
+    When the code snippet has completed running a number will appear in the square brackets. You can then proceed to the next cell and code snippet. Some of the code will print an output so you can get feedback.At any time you can also re-run the code snippets in the Jupyter cell.
+
+    Python libraries and modules have already been installed for this RAG application. Note the libraries for LangChain and a new library for the Oracle AI Vector Search, OracleVS and Vertex AI, vertexai.
+
+    ```
+    <copy>
+    # Import libraries and modules
+
+    import sys
+    import array
+    import time
+    import oci
+    import os
+    from dotenv import load_dotenv
+    from PyPDF2 import PdfReader
+    #from sentence_transformers import CrossEncoder
+    from langchain.text_splitter import CharacterTextSplitter
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_community.vectorstores.utils import DistanceStrategy
+    from langchain_community.llms import OCIGenAI
+    from langchain_core.prompts import PromptTemplate
+    from langchain.chains import LLMChain
+    from langchain_core.runnables import RunnablePassthrough
+    from langchain_core.output_parsers import StrOutputParser
+    from langchain_community.vectorstores import oraclevs
+    from langchain_community.vectorstores.oraclevs import OracleVS
+    from langchain_core.documents import BaseDocumentTransformer, Document
+    from langchain_community.chat_models.oci_generative_ai import ChatOCIGenAI
+    from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
+    import oracledb
+
+    from langchain_huggingface import HuggingFaceEmbeddings
+
+    # suppersing warning messages
+    from tqdm import tqdm, trange
+
+    print("Successfully imported libraries and modules")
+    </copy>
+    ```
+
+2. This next code snippet defines the function to include metadata with the chunks. Select the code snippet and click Run.
+
+    ```
+    <copy>
+    # Function to format and add metadata to Oracle 23ai Vector Store
+
+    def chunks_to_docs_wrapper(row: dict) -> Document:
+        """
+        Converts text into a Document object suitable for ingestion into Oracle Vector Store.
+        - row (dict): A dictionary representing a row of data with keys for 'id', 'link', and 'text'.
+        """
+        metadata = {'id': row['id'], 'link': row['link']}
+        return Document(page_content=row['text'], metadata=metadata)
+    print("Successfully defined metadata wrapper")
+    </copy>
+    ```
+
+3. This code connects to Oracle Database 23ai with the credentials and connection string. Select the code snippet and click Run. Update the code with the Username, Password, Connection String (eg. d5kas9zhfydbe31a_high) and Wallet Password.
+
+    ```
+    <copy>
+    import oracledb
+
+    un = "username" # Enter Username
+    pw = "password" # Enter Password
+    dsn = 'connection string' # Enter Connection String
+    wpwd = "wallet password" # Enter Wallet Password
+
+    connection = oracledb.connect(
+        config_dir = '../wallet', 
+        user=un, 
+        password=pw, 
+        dsn=dsn,
+        wallet_location = '../wallet',
+        wallet_password = wpwd)
+    </copy>
+    ```
+
+4. Load the Document
+
+    The document in our use case is in PDF format. We are loading a PDF document and printing the total number of pages, and printing page 1 for your visual feedback.
+
+    ```
+    <copy>
+    # Load the document
+
+    # creating a pdf reader object
+    pdf = PdfReader('oracle-database-23ai-new-features-guide.pdf')
+
+    # print number of pages in pdf file 
+    print("The number of pages in this document is ",len(pdf.pages)) 
+    # print the first page 
+    print(pdf.pages[0].extract_text())
+    </copy>
+    ```
+
+5. The code transforms each page of the PDF document to text. Click Run to execute the code.
+
+    ```
+    <copy>
+    # Transform the document to text
+
+    if pdf is not None:
+    print("Transforming the PDF document to text...")
+    text=""
+    for page in pdf.pages:
+        text += page.extract_text()
+    print("You have transformed the PDF document to text format")
+    </copy>
+    ```
+
+6. Split the text into chunks
+
+    Our chunk size will be 800 characters, with an overlap of 100 characters with each chunk. Note: Chunk sizes vary depending on the type of document you are embedding. Chat messages may have smaller chunk size, and larger 100 page essays may have larger chunk sizes.
+
+    ```
+    <copy>
+    # Chunk the text document into smaller chunks
+    text_splitter = CharacterTextSplitter(separator="\n",chunk_size=800,chunk_overlap=100,length_function=len)
+    chunks = text_splitter.split_text(text)
+    print(chunks[0])
+    </copy>
+    ```
+
+7. The code adds metadata such as id to each chunk for the database table. Click Run to execute the code.
+
+    ```
+    <copy>
+    # Create metadata wrapper to store additional information in the vector store
+    """
+    Converts a row from a DataFrame into a Document object suitable for ingestion into Oracle Vector Store.
+    - row (dict): A dictionary representing a row of data with keys for 'id', 'link', and 'text'.
+    """
+    docs = [chunks_to_docs_wrapper({'id': f'{page_num}', 'link': f'Page {page_num}', 'text': text}) for page_num, text in enumerate(chunks)]
+    print("Created metadata wrapper with the chunks")
+    </copy>
+    ```
+
+8. Set up Oracle AI Vector Search and insert the embedding vectors
+
+    The embedding model used in this lab is **all-MiniLM-L6-v2** from HuggingFace. **docs** will point to the text chunks. The connection string to the database is in the object **connection**. The table to store the vectors and metadata are in **RAG_TAB**. We use **DOTPRODUCT** as the algorithm for the nearest neighbor search. Note: Embedding models are used to vectorize data. To learn more about embedding models, see the LiveLabs on Oracle AI Vector Search.
+
+    ```
+    <copy>
+    # Using an embedding model, embed the chunks as vectors into Oracle Database 23ai.
+
+    # Initialize embedding model
+    model_4db = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
+    # Configure the vector store with the model, table name, and using the indicated distance strategy for the similarity search and vectorize the chunks
+    s1time = time.time()
+    knowledge_base = OracleVS.from_documents(docs, model_4db, client=connection, table_name="RAG_TAB", distance_strategy=DistanceStrategy.DOT_PRODUCT, )     
+    s2time =  time.time()      
+    print( f"Vectorizing and inserting chunks duration: {round(s2time - s1time, 1)} sec.")
+    You have successfully uploaded the document, transformed it to text, split into chunks, and embedded its vectors in Oracle Database 23ai.
+    </copy>
+    ```
+
+9. Connect to the database and run a sample query on the table to confirm records were inserted into the table.
+
+    ```
+    <copy>
+    table_name = "RAG_TAB"
+
+    with connection.cursor() as cursor:
+        # Define the query to select all rows from a table
+        query = f"SELECT * FROM {table_name}"
+
+        # Execute the query
+        cursor.execute(query)
+
+        # Fetch all rows
+        rows = cursor.fetchall()
+
+        # Print the rows
+        for row in rows[:5]:
+            print(row)
+    </copy>
+    ```
+
+10. The code issues a prompt related to the document we loaded. Click Run to execute the code.
+
+    ```
+    <copy>
+    user_question = 'List maximum availability features of 23ai'
+    print ("The prompt to the LLM will be:",user_question)
+    </copy>
+    ```
+
+11. The code records the timing for searching the database. It's quick! Click Run to execute the code.
+
+    ```
+    <copy>
+    # Setup timings to check performance
+
+    # code not needed, only used for measuring timing
+    if user_question:
+        s3time =  time.time()
+        result_chunks=knowledge_base.similarity_search(user_question, 5)
+        print(result_chunks)
+        s4time = time.time()
+        print( f"Search user_question and return chunks duration: {round(s4time - s3time, 1)} sec.")
+        print("")
+    </copy>
+    ```
+
+12. LLM to generate your response.
+
+    We will be using Vertex AI for this lab. From your Google Cloud Console confirm the Project ID and region that you want to use and enter the details. Import the library vertexai and initiate Vertex AI.
+
+    ```
+    <copy>
+    import vertexai
+
+    PROJECT_ID = "project_id"  # Enter Project ID
+    REGION = "region"  # Enter Region eg. us-east4
+
+    # Initialize Vertex AI SDK
+    vertexai.init(project=PROJECT_ID, location=REGION)
+    import time
+    </copy>
+    ```
+
+    ```
+    <copy>
+    from google.cloud import aiplatform
+
+    # LangChain
+    import langchain
+    from langchain.chat_models import ChatVertexAI
+    from langchain.embeddings import VertexAIEmbeddings
+    from langchain.llms import VertexAI
+
+    # Utils
+    from langchain.schema import HumanMessage, SystemMessage
+    from pydantic import BaseModel
+
+    print(f"LangChain version: {langchain.__version__}")
+
+    # Vertex AI
+
+    print(f"Vertex AI SDK version: {aiplatform.__version__}")
+    </copy>
+    ```
+
+13. The code below sets up the **Vertex AI Service** to use **gemini-1.5-flash-002**. Click Run to execute the code.
+
+    ```
+    <copy>
+    import vertexai
+    from langchain_google_vertexai import VertexAI
+
+    # set the LLM to get response
+    llm = VertexAI(
+        model_name="gemini-1.5-flash-002",
+        max_output_tokens=8192,
+        temperature=1,
+        top_p=0.8,
+        top_k=40,
+        verbose=True,
+    )
+    </copy>
+    ```
+
+14. The code below builds the prompt template to include both the question and the context, and instantiates the knowledge base class to use the retriever to retrieve context from Oracle Database 23ai. Click Run to execute the code.
+
+    ```
+    <copy>
+    # Set up a template for the question and context, and instantiate the database retriever object
+
+    template = """Answer the question based only on the following context:
+                {context} Question: {question} """
+    prompt = PromptTemplate.from_template(template)
+    retriever = knowledge_base.as_retriever(search_kwargs={"k": 10})
+    print("The template is:",template)
+    print(retriever)
+    </copy>
+    ```
+
+15. Invoke the chain
+
+    This is the key part of the RAG application. It is the LangChain pipeline that chains all the components together to produce an LLM response with context. The chain will embed the question as a vector. This vector will be used to search for other vectors that are similar. The top similar vectors will be returned as text chunks (context). Together the question and the context will form the prompt to the LLM for processing. And ultimately generating the response.
+
+    The code defines the RAG chain process and invokes the chain. Click Run to execute the code.
+
+    ```
+    <copy>
+    # Chain the entire process together, retrieve the context, construct the prompt with the question and context, and pass to LLM for the response
+
+    s5time = time.time()
+    print("We are sending the prompt and RAG context to the LLM, wait a few seconds for the response...")
+    chain = (
+        {"context": retriever, "question": RunnablePassthrough()}
+            | prompt
+            | llm
+            | StrOutputParser()
+    )
+
+    response = chain.invoke(user_question)
+    print(user_question)
+    print(prompt)
+    print(response)
+    # Print timings for the RAG execution steps
+
+    s6time = time.time()
+    print("")
+    print( f"Send user question and ranked chunks to LLM and get answer duration: {round(s6time - s5time, 1)} sec.")
+    </copy>
+    ```
+
+    You're done with this lab. You can proceed to the next lab.
+
+    Click Run to execute the congrats code.
+
+    ```
+    <copy>
+    print("")
+    print("Congratulations! You've completed your RAG application with AI Vector Search in Oracle Database 23ai running on Oracle Database@Google Cloud using Vertex AI - Gemini")
+    </copy>
+    ```
 
 You may now **proceed to the next lab**.
 

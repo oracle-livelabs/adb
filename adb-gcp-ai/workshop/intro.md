@@ -26,7 +26,7 @@ Gemini 1.5 Flash is designed for high-volume, high-frequency tasks where cost an
 
 Estimated Workshop Time: 120 minutes
 
-https://youtu.be/dzpoDeyKWy8?si=QPus80YKx_INjQi1
+[![alt text](./images/intro-vertex-adb.png)](https://youtu.be/dzpoDeyKWy8?si=QPus80YKx_INjQi1)
 
 ## Workshop Objectives
 This set of hands-on-labs is designed to assist developers, multicloud architects, and database users in setting up and using various features of the **Autonomous Database Service**. The labs in this workshop address provisioning Autonomous Database@Google Cloud and deploying a retrieval-augmented generation–based chatbot on **Google Cloud** using **Oracle Database 23ai** and **Vertex AI**.
