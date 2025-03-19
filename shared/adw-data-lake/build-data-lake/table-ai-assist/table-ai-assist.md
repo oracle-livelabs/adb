@@ -151,9 +151,9 @@ Now that you have created an OCI credential, you can create an AI profile.
 
     ![Table AI Assist page is re-displayed.](./images/click-settings-3.png =65%x*)
 
-## Task 2: Load Data from a Public Object Storage Bucket and Create External Tables
+## Task 2: Load Data from a Public Object Storage Bucket and Create Tables
 
-In this task, you will load data into your ADB instance from the **MovieStream** data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) in preparation for exploration and analysis.
+In this task, you will load data into your ADB instance from the **MovieStream** data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) in preparation for data analysis.
 
 You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in tools. In this task, you will load data from a public object storage bucket and create the following tables in your Autonomous Database instance: **`customer`**, **`custsales`**, and **`genre`**. You will use the new tables in the next two tasks.
 
