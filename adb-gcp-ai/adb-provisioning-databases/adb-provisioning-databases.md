@@ -92,7 +92,17 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 
     ```
     <copy>
-    scp -i <private_key_file> Wallet_adbgcp.zip <Compute_VM_IP>:/home_directory/wallet/.
+    scp -i <private_key_file> Wallet_db_name.zip <Compute_VM_IP>:/home_directory/wallet/.
+    </copy>
+    ```
+
+- Login to the Compute VM and unzip the database wallet that was uploaded in the previous step.
+
+    ```
+    <copy>
+    cd wallet
+    sudo apt install unzip
+    unzip Wallet_db_name.zip
     </copy>
     ```
 

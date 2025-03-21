@@ -49,10 +49,10 @@ def main():
     st.info("Oracle Database@Google Cloud and Google Vertex AI")
     st.header(" Ask your question to get answers based on your pdf " )
 
-    un = "admin" # Enter Username
-    pw = "WElcome##123" # Enter Password
-    dsn = 'd5kas9zhfydbe31a_high' # Enter Connection String
-    wpwd = "WElcome##123" # Enter Wallet Password
+    un = "username" # Enter Username
+    pw = "password" # Enter Password
+    dsn = 'connection String' # Enter Connection String
+    wpwd = "wallet password" # Enter Wallet Password
 
     connection = oracledb.connect(
         config_dir = '../wallet', 
@@ -93,8 +93,8 @@ def main():
 
       s2time =  time.time()
 
-    PROJECT_ID = "proud-research-451713-i5"  # @param {type:"string"}
-    REGION = "us-east4"  # @param {type:"string"}
+    PROJECT_ID = "Google Cloud Project ID"  # @param {type:"string"}
+    REGION = "Google Cloud Region"  # @param {type:"string"}
 
     # Initialize Vertex AI SDK
     vertexai.init(project=PROJECT_ID, location=REGION)
@@ -150,8 +150,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
 

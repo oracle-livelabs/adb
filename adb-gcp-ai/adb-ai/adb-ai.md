@@ -61,6 +61,7 @@ As a database user, DBA or application developer:
 
 - A pre-provisioned instance of an Autonomous Database.
 - Google Cloud Compute VM instance.
+- Downloaded Source pdf file and Jupyter Notebook.
 
 ## Task 1: Enable Vertex AI API
 
@@ -96,19 +97,114 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
 
     ![](./images/vscode-select-ssh-host.png " ")
 
-4. On the next VSCode Window, verify that you have remotely connected to the Compute VM instance. Left bottom corner has a message **SSH: IP Address**. Click **Open** to open the Juniper Notebook.
+4. On the next VSCode Window, verify that you have remotely connected to the Compute VM instance. Left bottom corner has a message **SSH: IP Address**.
 
     ![](./images/vscode-confirm-ssh.png " ")
 
-5. Select the `database-rag.ipynb` file present under `vectors` directory.
+## Task 3:  Setup the Python environment
+
+1. Launch a terminal session in VSCode. After connecting to the VM instance update the softwares installed.
+
+    ```
+    <copy>
+    sudo apt update
+    </copy>
+    ```
+
+2. Install `pyenv` on the Compute VM. This is our way to quickly and neatly manage multiple Python versions on the same machine. For this lab, we will use Python 3.12. Run the following commands (for the latest version of this procedure, see [the official pyenv page here](https://github.com/pyenv/pyenv-installer)):
+
+    ```
+    <copy>    
+    sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+
+    curl https://pyenv.run | bash
+
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+    echo 'eval "$(pyenv init -)"' >> ~/.profile
+
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+    echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+    exec "$SHELL"
+    </copy>
+    ```
+
+3. Install Python 3.12 on the VM:
+
+    ```
+    <copy>
+    pyenv install 3.12
+    </copy>
+    ```
+
+4. Create a new folder called `vectors` . Go to the `vectors` folder and make Python 3.12 the active kernel for it:
+
+    ```
+    <copy>
+    mkdir vectors
+    cd vectors
+    pyenv local 3.12
+    </copy>
+    ```
+
+5. Last step in this phase is installing the Python libraries for accessing the Oracle Database and sentence transformers (to convert strings to vectors):
+
+    ```
+    <copy>
+    pip install --upgrade pip
+    pip install oracledb
+    pip install dotenv
+    pip install sentence-transformers
+    pip install PyPDF2
+    pip install langchain
+    pip install langchain_community
+    pip install streamlit
+    pip install oci
+    pip install langchain_huggingface
+    pip install -U langchain-google-vertexai
+    pip install -U langchain-community
+    pip install --upgrade google-cloud-aiplatform
+    </copy>
+    ```
+
+6. Download the [Source pdf file](https://objectstorage.us-phoenix-1.oraclecloud.com/p/DiuTfuapQc-nDTpWUbWJuLbn35KsNuhN-HxqvidF-s6IrdCqKRtJvgxkSAqlAz4w/n/axxduehrw7lz/b/gcp-ai-lab/o/oracle-database-23ai-new-features-guide.pdf) and the [Jupyter Notebook](https://objectstorage.us-phoenix-1.oraclecloud.com/p/O8WKC75TW_sZNHIaGKHeBw_KmHNJ89hux_UfjwrH7WUSpUTR3gDXcxp0DvPBYuj6/n/axxduehrw7lz/b/gcp-ai-lab/o/database-rag.ipynb) to the `vectors` directory.
+
+    ```
+    <copy>
+    wget https://objectstorage.us-phoenix-1.oraclecloud.com/p/DiuTfuapQc-nDTpWUbWJuLbn35KsNuhN-HxqvidF-s6IrdCqKRtJvgxkSAqlAz4w/n/axxduehrw7lz/b/gcp-ai-lab/o/oracle-database-23ai-new-features-guide.pdf
+    wget https://objectstorage.us-phoenix-1.oraclecloud.com/p/O8WKC75TW_sZNHIaGKHeBw_KmHNJ89hux_UfjwrH7WUSpUTR3gDXcxp0DvPBYuj6/n/axxduehrw7lz/b/gcp-ai-lab/o/database-rag.ipynb
+    </copy>
+    ```
+
+## Task 4: Run the RAG application code snippets in Jupyter notebook
+
+1. Open the `database-rag.ipynb` file in VSCode and continue reading while executing the code cells below. Click **Open** to open the Juniper Notebook.
+
+    ![](./images/vscode-confirm-ssh.png " ")
+    
+2. Select the `database-rag.ipynb` file present under `vectors` directory.
 
     ![](./images/vscode-select-file.png " ")
 
-## Task 3: Run the RAG application code snippets in Jupyter notebook
+3. On clicking Run to execute the first code snippet, you will be prompted to install and enable extensions (Python and Jupyter).
 
-Open the `database-rag.ipynb` file in VSCode and continue reading while executing the code cells below.
+    ![](./images/install-enable-extensions.png " ")
 
-1. Run the RAG application code snippets in Jupyter notebook.
+    After installing the required extensions you will be prompted to choose the **Kernel Source**. Select **Python Environments**.
+
+    ![](./images/python-envs.png " ")
+
+    Upon installing required Python Kernel, select the Python Envinronment.
+
+    ![](./images/select-python.png " ")
+
+    Running cells with '3.12.9 (Python 3.12.9)' requires the ipykernel package. Click **Install**.
+
+3. Run the RAG application code snippets in Jupyter notebook.
 
     Now you're ready to run each code snippet in sequence starting from the top in Jupyter. To run a code snippet, select the cell of the code and click Run to execute the code.
 
@@ -152,7 +248,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-2. This next code snippet defines the function to include metadata with the chunks. Select the code snippet and click Run.
+4. This next code snippet defines the function to include metadata with the chunks. Select the code snippet and click Run.
 
     ```
     <copy>
@@ -169,7 +265,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-3. This code connects to Oracle Database 23ai with the credentials and connection string. Select the code snippet and click Run. Update the code with the Username, Password, Connection String (eg. d5kas9zhfydbe31a_high) and Wallet Password.
+5. This code connects to Oracle Database 23ai with the credentials and connection string. Select the code snippet and click Run. Update the code with the Username, Password, Connection String (eg. d5kas9zhfydbe31a_high) and Wallet Password.
 
     ```
     <copy>
@@ -190,7 +286,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-4. Load the Document
+6. Load the Document
 
     The document in our use case is in PDF format. We are loading a PDF document and printing the total number of pages, and printing page 1 for your visual feedback.
 
@@ -208,7 +304,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-5. The code transforms each page of the PDF document to text. Click Run to execute the code.
+7. The code transforms each page of the PDF document to text. Click Run to execute the code.
 
     ```
     <copy>
@@ -223,7 +319,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-6. Split the text into chunks
+8. Split the text into chunks
 
     Our chunk size will be 800 characters, with an overlap of 100 characters with each chunk. Note: Chunk sizes vary depending on the type of document you are embedding. Chat messages may have smaller chunk size, and larger 100 page essays may have larger chunk sizes.
 
@@ -236,7 +332,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-7. The code adds metadata such as id to each chunk for the database table. Click Run to execute the code.
+9. The code adds metadata such as id to each chunk for the database table. Click Run to execute the code.
 
     ```
     <copy>
@@ -250,7 +346,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-8. Set up Oracle AI Vector Search and insert the embedding vectors
+10. Set up Oracle AI Vector Search and insert the embedding vectors
 
     The embedding model used in this lab is **all-MiniLM-L6-v2** from HuggingFace. **docs** will point to the text chunks. The connection string to the database is in the object **connection**. The table to store the vectors and metadata are in **RAG_TAB**. We use **DOTPRODUCT** as the algorithm for the nearest neighbor search. Note: Embedding models are used to vectorize data. To learn more about embedding models, see the LiveLabs on Oracle AI Vector Search.
 
@@ -270,7 +366,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-9. Connect to the database and run a sample query on the table to confirm records were inserted into the table.
+11. Connect to the database and run a sample query on the table to confirm records were inserted into the table.
 
     ```
     <copy>
@@ -292,7 +388,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-10. The code issues a prompt related to the document we loaded. Click Run to execute the code.
+12. The code issues a prompt related to the document we loaded. Click Run to execute the code.
 
     ```
     <copy>
@@ -301,7 +397,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-11. The code records the timing for searching the database. It's quick! Click Run to execute the code.
+13. The code records the timing for searching the database. It's quick! Click Run to execute the code.
 
     ```
     <copy>
@@ -318,9 +414,17 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-12. LLM to generate your response.
+14. Execute the following in the VSCode Terminal to set up Application Default Credentials (ADC) for your local development environment.
 
-    We will be using Vertex AI for this lab. From your Google Cloud Console confirm the Project ID and region that you want to use and enter the details. Import the library vertexai and initiate Vertex AI.
+    ```
+    <copy>
+    gcloud auth application-default login
+    </copy>
+    ```
+
+15. LLM to generate your response.
+
+    Continue running the code from Jupyter Notebook. We will be using Vertex AI for this lab. From your Google Cloud Console confirm the Project ID and region that you want to use and enter the details. Import the library vertexai and initiate Vertex AI.
 
     ```
     <copy>
@@ -357,7 +461,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-13. The code below sets up the **Vertex AI Service** to use **gemini-1.5-flash-002**. Click Run to execute the code.
+15. The code below sets up the **Vertex AI Service** to use **gemini-1.5-flash-002**. Click Run to execute the code.
 
     ```
     <copy>
@@ -376,7 +480,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-14. The code below builds the prompt template to include both the question and the context, and instantiates the knowledge base class to use the retriever to retrieve context from Oracle Database 23ai. Click Run to execute the code.
+16. The code below builds the prompt template to include both the question and the context, and instantiates the knowledge base class to use the retriever to retrieve context from Oracle Database 23ai. Click Run to execute the code.
 
     ```
     <copy>
@@ -391,7 +495,7 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     </copy>
     ```
 
-15. Invoke the chain
+17. Invoke the chain
 
     This is the key part of the RAG application. It is the LangChain pipeline that chains all the components together to produce an LLM response with context. The chain will embed the question as a vector. This vector will be used to search for other vectors that are similar. The top similar vectors will be returned as text chunks (context). Together the question and the context will form the prompt to the LLM for processing. And ultimately generating the response.
 
@@ -421,8 +525,6 @@ Open the `database-rag.ipynb` file in VSCode and continue reading while executin
     print( f"Send user question and ranked chunks to LLM and get answer duration: {round(s6time - s5time, 1)} sec.")
     </copy>
     ```
-
-    You're done with this lab. You can proceed to the next lab.
 
     Click Run to execute the congrats code.
 

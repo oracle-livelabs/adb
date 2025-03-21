@@ -20,7 +20,7 @@ In this lab you will run the RAG application interactively using a simple user i
 
     ```
     <copy>
-    $ cd $HOME/vectors
+    cd $HOME/vectors
     </copy>
     ```
 
@@ -28,7 +28,7 @@ In this lab you will run the RAG application interactively using a simple user i
 
     ```
     <copy>
-    $ streamlit run genai.py
+    streamlit run genai.py
     </copy>
     ```
 
