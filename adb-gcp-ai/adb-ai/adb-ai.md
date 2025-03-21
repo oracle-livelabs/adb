@@ -205,7 +205,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
 
     Running cells with '3.12.9 (Python 3.12.9)' requires the ipykernel package. Click **Install**.
 
-3. Run the RAG application code snippets in Jupyter notebook.
+4. Run the RAG application code snippets in Jupyter notebook.
 
     Now you're ready to run each code snippet in sequence starting from the top in Jupyter. To run a code snippet, select the cell of the code and click Run to execute the code.
 
@@ -249,7 +249,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-4. This next code snippet defines the function to include metadata with the chunks. Select the code snippet and click Run.
+5. This next code snippet defines the function to include metadata with the chunks. Select the code snippet and click Run.
 
     ```
     <copy>
@@ -266,7 +266,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-5. This code connects to Oracle Database 23ai with the credentials and connection string. Select the code snippet and click Run. Update the code with the Username, Password, Connection String (eg. d5kas9zhfydbe31a_high) and Wallet Password.
+6. This code connects to Oracle Database 23ai with the credentials and connection string. Select the code snippet and click Run. Update the code with the Username, Password, Connection String (eg. d5kas9zhfydbe31a_high) and Wallet Password.
 
     ```
     <copy>
@@ -287,7 +287,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-6. Load the Document
+7. Load the Document
 
     The document in our use case is in PDF format. We are loading a PDF document and printing the total number of pages, and printing page 1 for your visual feedback.
 
@@ -305,7 +305,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-7. The code transforms each page of the PDF document to text. Click Run to execute the code.
+8. The code transforms each page of the PDF document to text. Click Run to execute the code.
 
     ```
     <copy>
@@ -320,7 +320,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-8. Split the text into chunks
+9. Split the text into chunks
 
     Our chunk size will be 800 characters, with an overlap of 100 characters with each chunk. Note: Chunk sizes vary depending on the type of document you are embedding. Chat messages may have smaller chunk size, and larger 100 page essays may have larger chunk sizes.
 
@@ -333,7 +333,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-9. The code adds metadata such as id to each chunk for the database table. Click Run to execute the code.
+10. The code adds metadata such as id to each chunk for the database table. Click Run to execute the code.
 
     ```
     <copy>
@@ -347,7 +347,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-10. Set up Oracle AI Vector Search and insert the embedding vectors
+11. Set up Oracle AI Vector Search and insert the embedding vectors
 
     The embedding model used in this lab is **all-MiniLM-L6-v2** from HuggingFace. **docs** will point to the text chunks. The connection string to the database is in the object **connection**. The table to store the vectors and metadata are in **RAG_TAB**. We use **DOTPRODUCT** as the algorithm for the nearest neighbor search. Note: Embedding models are used to vectorize data. To learn more about embedding models, see the LiveLabs on Oracle AI Vector Search.
 
@@ -367,7 +367,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-11. Connect to the database and run a sample query on the table to confirm records were inserted into the table.
+12. Connect to the database and run a sample query on the table to confirm records were inserted into the table.
 
     ```
     <copy>
@@ -389,7 +389,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-12. The code issues a prompt related to the document we loaded. Click Run to execute the code.
+13. The code issues a prompt related to the document we loaded. Click Run to execute the code.
 
     ```
     <copy>
@@ -398,7 +398,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-13. The code records the timing for searching the database. It's quick! Click Run to execute the code.
+14. The code records the timing for searching the database. It's quick! Click Run to execute the code.
 
     ```
     <copy>
@@ -415,7 +415,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-14. Execute the following in the VSCode Terminal to set up Application Default Credentials (ADC) for your local development environment.
+15. Execute the following in the VSCode Terminal to set up Application Default Credentials (ADC) for your local development environment. Enter **Y** to continue.
 
     ```
     <copy>
@@ -423,7 +423,23 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-15. LLM to generate your response.
+    ![](./images/enter-Y-to-continue.png " ")
+
+16. Copy the link and paste it in a browser.
+
+    ![](./images/copy-link.png " ")
+
+    The browser will prompt you to login to your Google Cloud Account. Post login allow the application to use your cloud credentials.
+
+    ![](./images/login-page.png " ")
+    ![](./images/allow-application.png " ")
+
+17. Copy the code and paste it back in the terminal window.
+
+    ![](./images/copy-code.png " ")
+    ![](./images/paste-code.png " ")
+
+18. LLM to generate your response.
 
     Continue running the code from Jupyter Notebook. We will be using Vertex AI for this lab. From your Google Cloud Console confirm the Project ID and region that you want to use and enter the details. Import the library vertexai and initiate Vertex AI.
 
@@ -462,7 +478,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-15. The code below sets up the **Vertex AI Service** to use **gemini-1.5-flash-002**. Click Run to execute the code.
+19. The code below sets up the **Vertex AI Service** to use **gemini-1.5-flash-002**. Click Run to execute the code.
 
     ```
     <copy>
@@ -481,7 +497,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-16. The code below builds the prompt template to include both the question and the context, and instantiates the knowledge base class to use the retriever to retrieve context from Oracle Database 23ai. Click Run to execute the code.
+20. The code below builds the prompt template to include both the question and the context, and instantiates the knowledge base class to use the retriever to retrieve context from Oracle Database 23ai. Click Run to execute the code.
 
     ```
     <copy>
@@ -496,7 +512,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-17. Invoke the chain
+21. Invoke the chain
 
     This is the key part of the RAG application. It is the LangChain pipeline that chains all the components together to produce an LLM response with context. The chain will embed the question as a vector. This vector will be used to search for other vectors that are similar. The top similar vectors will be returned as text chunks (context). Together the question and the context will form the prompt to the LLM for processing. And ultimately generating the response.
 
