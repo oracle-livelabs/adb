@@ -177,6 +177,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     <copy>
     wget https://objectstorage.us-phoenix-1.oraclecloud.com/p/DiuTfuapQc-nDTpWUbWJuLbn35KsNuhN-HxqvidF-s6IrdCqKRtJvgxkSAqlAz4w/n/axxduehrw7lz/b/gcp-ai-lab/o/oracle-database-23ai-new-features-guide.pdf
     wget https://objectstorage.us-phoenix-1.oraclecloud.com/p/O8WKC75TW_sZNHIaGKHeBw_KmHNJ89hux_UfjwrH7WUSpUTR3gDXcxp0DvPBYuj6/n/axxduehrw7lz/b/gcp-ai-lab/o/database-rag.ipynb
+    wget https://objectstorage.us-phoenix-1.oraclecloud.com/p/6ulMJ9B8Dlr1EVVA4WqgDOVfPrWkwKIYRDfV7vgsl90CnqCBDcuqCY0vOspN8ih9/n/axxduehrw7lz/b/gcp-ai-lab/o/rag_app_ui.py
     </copy>
     ```
 

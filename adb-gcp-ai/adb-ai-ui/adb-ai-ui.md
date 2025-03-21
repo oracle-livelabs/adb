@@ -16,29 +16,39 @@ In this lab you will run the RAG application interactively using a simple user i
 
 ## Task 1: Run Application
 
-1. From the terminal, go to directory
+1. From the VSCode terminal, go to directory `vectors`
 
     ```
     <copy>
     cd $HOME/vectors
     </copy>
     ```
+2. Update the following in application python file - `rag_app_ui.py` :
 
-2. Run the RAG application
+    DB Username, 
+    DB Password, 
+    DB Connection String, 
+    DB Wallet Password, 
+    Google Cloud Project ID, 
+    Google Cloud Region
+
+3. Run the RAG application from terminal
 
     ```
     <copy>
-    streamlit run genai.py
+    streamlit run rag_app_ui.py
     </copy>
     ```
 
-3. A browser will launch. If not, open a browser from the Activities menu and select Firefox or Chrome.
+    ![](./images/streamlit-run-app.png " ")
 
-4. Enter IP-Address-of-Compute-VM:8501 for the URL in the browser.
+4. Click **Open in Browser** to launch the application in a browser. If the prompt doesn't show up, open a browser and launch the application - http://IP-Address-of-Compute-VM:8501.
+
+    ![](./images/browse-file.png " ")
 
     Your application will now be running. Simply follow the UI.
 
-5. Click on the Browse files button and load a PDF document.
+5. Click the **Browse files** button and load a PDF document.
 
     After a few seconds the PDF document will be loaded, transformed to text, chunked, and vectorized into Oracle Database 23ai.
 
@@ -47,6 +57,8 @@ In this lab you will run the RAG application interactively using a simple user i
 6. Type a question and hit return.
     
     In a few seconds the LLM will answer the question and respond with context stored in Oracle Database 23ai.
+
+    ![](./images/final-output.png " ")
 
 Suggestions
 
