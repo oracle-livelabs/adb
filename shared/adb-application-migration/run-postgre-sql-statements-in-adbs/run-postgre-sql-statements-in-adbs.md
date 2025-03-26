@@ -124,5 +124,6 @@ This disables the real-time SQL translation in your session.
 
 ## Acknowledgements
 
-- Author       - Shilpa Sharma, Principal User Assistance Developer
-- Contributors - Lauran K. Serhal, Consulting User Assistance Developer
+**Author:**       - Shilpa Sharma, Principal User Assistance Developer
+**Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
+**Last Updated By/Date:** - Shilpa Sharma, March 2025

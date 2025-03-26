@@ -15,19 +15,19 @@
         {
             "title": "Lab 1: Create an Oracle Autonomous Database",
             "description": "Provision a new Autonomous Database instance",
-            "type": "tenancy",
+            "type": "freetier",
             "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 2: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "description":"Translate individual SQL statements from a non-Oracle database to Oracle SQL",
-            "type": "tenancy",
+            "type": "freetier",
             "filename": "../../translate-postgre-sql-statements-to-oracle-sql/translate-postgre-sql-statements-to-oracle-sql.md"
         },
         {
             "title": "Lab 3: Run PostgreSQL statements in Autonomous Database",
             "description":"Run PostgreSQL statements in Autonomous Database",
-            "type": "tenancy",
+            "type": "freetier",
             "filename": "../../run-postgre-sql-statements-in-adbs/run-postgre-sql-statements-in-adbs.md"
           },
         {
