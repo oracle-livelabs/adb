@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Provisioning an Autonomous Database",
+    "workshoptitle": "Migrate Application to Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
         {
@@ -11,6 +11,12 @@
             "title": "Get Started",
             "description": "Get a Free Trial",
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Create an Oracle Autonomous Database",
+            "description": "Provision a new Autonomous Database instance",
+            "type": "tenancy",
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 2: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
