@@ -27,7 +27,6 @@ To complete the subsequent tasks you need connect to your Autonomous Database us
 
 1. Navigate to your SQL worksheet.
 
-
 ## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Procedure to Translate a PostgreSQL statement to Oracle SQL
 
 The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` procedure accepts a PostgreSQL statement as input and translates the statement to Oracle SQL.
@@ -81,6 +80,6 @@ The function version of the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` subroutine accept
 
 ## Acknowledgements
 
-**Author:**       - Shilpa Sharma, Principal User Assistance Developer
-**Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
-**Last Updated By/Date:** - Shilpa Sharma, March 2025
+- **Author:**       - Shilpa Sharma, Principal User Assistance Developer
+- **Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** - Shilpa Sharma, March 2025

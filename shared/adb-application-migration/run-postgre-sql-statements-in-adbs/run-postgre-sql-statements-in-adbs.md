@@ -57,7 +57,8 @@ To run a PostgreSQL statement in your Autonomous Database you must first enable 
 
       ```
     <copy>
-        SELECT SYS_CONTEXT ('USERENV','SQL_TRANSLATION_PROFILE_NAME') FROM DUAL;
+      SELECT SYS_CONTEXT ('USERENV','SQL_TRANSLATION_PROFILE_NAME')
+      FROM DUAL;
     </copy>
     ```
 
@@ -73,36 +74,54 @@ This shows the enabled translation language for your session.
 
     ```
     <copy>
-    CREATE TABLE film (film_id int, title varchar(255));
+    CREATE TABLE emp (emp_id int, name varchar(255), salary money, hire_date date);
     </copy>
     ```
 
-  This entered PostreSQL statement runs seamlessly as Oracle SQL in your session.
+   ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/create-table.png)
+
+  This entered PostgreSQL statement runs seamlessly as Oracle SQL in your session.
 
    Verify the table creation. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
-    DESC film;
+    DESCRIBE emp;
     </copy>
     ```
-  2. After the table **FILM** is created, you can insert records into the table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+
+    ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/desc-emp.png)
+
+    Please note that the **MONEY** PostgreSQL datatype is automatically converted to **NUMBER** datatype.
+
+  2. After the table **EMP** is created, you can insert records into the table. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
      ```
     <copy>
-    INSERT INTO film(film_id, title) VALUES (123, 'Tangled');
-    INSERT INTO film(film_id, title) VALUES (234, 'Frozen');
+    INSERT INTO emp(emp_id, name, salary, hire_date) VALUES (101, 'King',  25000, sysdate);
+    INSERT INTO emp(emp_id, name, salary, hire_date) VALUES (102, 'James', 30000, sysdate);
+    INSERT INTO emp(emp_id, name, salary, hire_date) VALUES (103, 'Nancy', 35000, sysdate);
+    INSERT INTO emp(emp_id, name, salary, hire_date) VALUES (104, 'Lauran',35000, sysdate);
+    INSERT INTO emp(emp_id, name, salary, hire_date) VALUES (105, 'Neena', 30000, sysdate);
     </copy>
     ```
-    This inserts two records into the **FILM** table.
 
-    Use SQL SELECT statement to retrieve records from the **FILM** table.  Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+     ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/insert.png)
+
+    This inserts five records into the **EMP** table.
+
+    Use SQL SELECT statement to retrieve records from the **EMP** table.  Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
      ```
     <copy>
-    SELECT * FROM film AS f;
+    Select emp_test.*
+    FROM emp AS emp_test;
     </copy>
     ```
+
+    ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/select-emp.png)
+
+    This retrieves five records from the **EMP** table.
 
 ## Task 3: Disable Real-Time SQL Translation in Your Session
 
@@ -116,14 +135,15 @@ This shows the enabled translation language for your session.
     /
     </copy>
     ```
+
+    ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/disable-translation.png)
 This disables the real-time SQL translation in your session.
 
-
-
+**Note:**  An error is encountered if SQL language translation is not enabled for your session.
 
 
 ## Acknowledgements
 
-**Author:**       - Shilpa Sharma, Principal User Assistance Developer
-**Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
-**Last Updated By/Date:** - Shilpa Sharma, March 2025
+- **Author:**       - Shilpa Sharma, Principal User Assistance Developer
+- **Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** - Shilpa Sharma, March 2025
