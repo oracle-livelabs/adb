@@ -25,9 +25,7 @@ This lab assumes that:
 
 To complete the subsequent tasks you need connect to your Autonomous Database using SQL Worksheet.
 
-1. Navigate to your SQL worksheet. On the **Autonomous Databases** page, click the **`ADW_Finance_Mart`** database instance that you created in **Lab 1: Provision Autonomous Database**. Next, click the **Database actions** drop-down list, and then select **SQL**.
-
-  ![Navigate to the SQL Worksheet](images/sqlworksheet.png)
+1. Navigate to your SQL worksheet.
 
 
 ## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Procedure to Translate a PostgreSQL statement to Oracle SQL

@@ -24,8 +24,7 @@ Let's begin! If you need to create an Oracle Cloud account, please click Get Sta
 
 ## Learn More
 
-- <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html" target="\_blank">Oracle Autonomous Data Warehouse Documentation</a>
-- <a href="https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html" target="\_blank">Additional Autonomous Data Warehouse Tutorials</a>
+* [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 
 ## Acknowledgements
 
