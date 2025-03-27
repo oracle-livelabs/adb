@@ -21,7 +21,7 @@
         {
             "title": "Lab 2: Connect with SQL Worksheet",
             "description": "Connect with SQL Worksheet",
-            "type": "freetier",
+            "type": "tenancy",
             "filename": "/common/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
         },
         {
