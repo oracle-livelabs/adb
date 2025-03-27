@@ -18,9 +18,9 @@ The purpose of this workshop is to introduce you to the `DBMS_CLOUD_MIGRATION` p
 
 This workshop requires an Oracle Cloud account. You may use your existing account or create one in the following lab.
 
-**<i>Note: If you have a Free Trial account, when your Free Trial expires your account will be converted to an Always Free account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available.**
+**<i>Note: If you have a Free Trial Oracle Cloud account, when your Free Trial expires your Oracle Cloud account will be converted to an Always Free Oracle Cloud account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available.**
 
-**Let's begin! If you need to create an account, please click Get Started in the Contents menu on the left. Otherwise, if you have an existing account, click "Lab 1: Provision an Oracle Autonomous Database (ADW and ATP)".</i>**
+Let's begin! If you need to create an Oracle Cloud account, please click Get Started in the Contents menu on the left. Otherwise, if you have an existing Oracle Cloud account, click "Lab 1: Provision an Oracle Autonomous Database (ADW and ATP)".</i>
 
 ## Learn More
 
