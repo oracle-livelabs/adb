@@ -37,6 +37,16 @@
             "filename": "../../run-postgre-sql-statements-in-adbs/run-postgre-sql-statements-in-adbs.md"
           },
         {
+            "title": "Lab 5: Load the PostgreSQL File to Object Store Bucket",
+            "description": "Upload Files to Object Store",
+            "filename":"/common/building-blocks/blocks/adb/load-data/load-data-tools.md"
+        },
+        {
+            "title": "Lab 6: Migrate PostgreSQL File to Oracle SQL",
+            "description": "Migrate PostgreSQL File to Oracle SQL",
+            "filename":"../../migrate-postgre-sql-files-in-adbs/migrate-postgre-sql-files-in-adbs.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
