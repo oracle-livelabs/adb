@@ -261,11 +261,11 @@ Once you are satisfied with a recipe you can use it to create or replace a view,
 
     ![New column created.](./images/new-column-created.png =60%x*)
 
-5. In this case, since you are masking the PII from the email column, select the **Replace Column** option, and then enter the **email** column name in the **Column Name to Replace** field.
+5. In this case, since you are masking the PII from the email column, select the **Replace Column** option, and then select the **email** column name from the **Column Name to Replace** drop-down list.
 
     ![Replace email column.](./images/replace-email-column.png =60%x*)
 
-6. Click **Add Step**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newlt added masked email column.
+6. Click **Add Step**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added masked email column.
 
     ![Click Add Step.](./images/replaced-email-column.png " ")
 
@@ -326,7 +326,7 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
     ![custsales rows count.](./images/custsales-rows-count.png =65%x*)
 
-4. Add the following clause on the next line of the `SELECT` statement, and then click **Run**.
+4. Add the `Fetch` clause to the `SELECT` statement, and then click **Run**. This will only show the first 10 rows in the table.
 
     ```sql
     <copy>
@@ -340,7 +340,7 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
     ![Enable natural language query.](./images/enable-natural-language.png " ")
 
-6. Click **Select Tables** and select the **customer**, **customer_enhanced**, **custsales**, and **genre** tables. Click anywhere in the SQL Editor to dismiss the list of tables.
+6. Click **Select Tables** and select the **customer_enhanced**, **custsales**, and **genre** tables. Click anywhere in the SQL Editor to dismiss the list of tables.
 
     ![Select tables.](./images/select-tables.png " ")
 
@@ -386,16 +386,20 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
 ## Learn more
 
+* [Table AI Assist Tool](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/table-ai-assist-tool.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Manage Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-manage-credentials.html#GUID-863FAF80-AEDB-4128-89E7-3B93FED550ED)
 * [Manage AI Profiles](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-manage-profiles.html#GUID-842C70F5-A3BE-42A1-B189-64341A9BAAED)
+* [Manage Policies](https://docs.oracle.com/en-us/iaas/language/using/policies.htm)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Ekrem Soylemez, Vice President
-* **Last Updated By/Date:** Lauran K. Serhal, March 2025
+* **Contributor:**
+    * Ekrem Soylemez, Vice President
+    * A.A. Hopeman, Consulting Software Engineer
+* **Last Updated By/Date:** Lauran K. Serhal, April 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
