@@ -396,7 +396,7 @@ We will work with the **custsales** data. Click **View All** to display all the 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
+* **Contributors:**
     * Ekrem Soylemez, Vice President
     * A.A. Hopeman, Consulting Software Engineer
 * **Last Updated By/Date:** Lauran K. Serhal, April 2025
