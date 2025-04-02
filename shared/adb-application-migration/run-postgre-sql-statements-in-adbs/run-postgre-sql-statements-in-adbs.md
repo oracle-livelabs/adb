@@ -23,15 +23,13 @@ This lab assumes that:
 
 - You have performed the previous lab on provisioning an Oracle Autonomous Database instance.
 - You are logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
+- You are connected to your Autonomous Database using SQL Worksheet.
 
-## Task 1: Connect with the SQL Worksheet
+## Task 1: Navigate to SQL Worksheet.
 
 To complete the subsequent tasks you need to use SQL Worksheet.
 
-1. Return to your SQL Worksheet. On the **Autonomous Databases** page, click the **`ADW_Finance_Mart`** database instance that you created in **Lab 1: Provision Autonomous Database**. Next, click the **Database actions** drop-down list, and then select **SQL**.
-
-![Use DBMS_CLOUD_MIGRATION.MIGRATE_SQL Procedure](images/sqlworksheet.png)
-
+1. Navigate to your SQL Worksheet and login with your credentials.
 
 ## Task 2: Enable Real-Time Translation in Your Session
 
@@ -146,4 +144,4 @@ This disables the real-time SQL translation in your session.
 
 - **Author:**       - Shilpa Sharma, Principal User Assistance Developer
 - **Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** - Shilpa Sharma, March 2025
+- **Last Updated By/Date:** - Shilpa Sharma, April 2025

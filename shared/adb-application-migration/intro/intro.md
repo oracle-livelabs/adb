@@ -11,6 +11,7 @@ The purpose of this workshop is to introduce you to the `DBMS_CLOUD_MIGRATION` p
 ## Objectives
 
 - Provision an Oracle Autonomous Database
+- Connect to the Oracle Autonomous Database using the SQL Worksheet
 - Translate individual SQL statements from a non-Oracle database to Oracle SQL
 - Run PostgreSQL Statements in Autonomous Database
 

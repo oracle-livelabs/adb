@@ -20,12 +20,13 @@ This lab assumes that:
 
 - You have performed the previous lab on provisioning an Oracle Autonomous Database instance.
 - You are logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
+- You are connected to your Autonomous Database using SQL Worksheet.
 
 ## Task 1: Connect with the SQL Worksheet
 
 To complete the subsequent tasks you need connect to your Autonomous Database using SQL Worksheet.
 
-1. Navigate to your SQL worksheet.
+1. Navigate to your SQL Worksheet and login with your credentials.
 
 ## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Procedure to Translate a PostgreSQL statement to Oracle SQL
 
@@ -82,4 +83,4 @@ The function version of the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` subroutine accept
 
 - **Author:**       - Shilpa Sharma, Principal User Assistance Developer
 - **Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** - Shilpa Sharma, March 2025
+- **Last Updated By/Date:** - Shilpa Sharma, April 2025

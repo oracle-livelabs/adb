@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Provisioning an Autonomous Database",
+    "workshoptitle": "Migrate Applications from Non-Oracle Databases to Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
         {
