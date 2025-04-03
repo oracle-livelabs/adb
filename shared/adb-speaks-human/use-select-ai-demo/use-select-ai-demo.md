@@ -104,11 +104,11 @@ You may now proceed to the next lab.
   * **Authors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, September 2024
+* **Last Updated By/Date:** Lauran K. Serhal, March 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
