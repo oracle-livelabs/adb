@@ -48,7 +48,7 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
 ## Task 2: Link to Data in Public Object Storage Buckets and Create External Tables
 
-In this task, you will link to data and create the following external tables in your Autonomous Database instance: **`customer_contact`**, **`genre`**, **`pizza_locations`**, and **`sales_sample`**.
+In this task, you will link to data and create the following external tables in your Autonomous Database instance: **`customer_contact`**, **`pizza_locations`**, and **`sales_sample`**.
 
 1. On the **Data Load Dashboard**, click the **LINK DATA** tile.
 
@@ -84,9 +84,9 @@ In this task, you will link to data and create the following external tables in 
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png)
 
-7. Drag and drop the **`genre`**, **`sales_sample`**, and **`pizza_location`** folders onto the data linking job section. Click **Yes** when prompted for each target table.
+7. Drag and drop the **`sales_sample`** and **`pizza_location`** folders onto the data linking job section. Click **Yes** when prompted for each target table.
 
-    ![Drag and drop three more folders.](images/drag-drop-3-folders.png)
+    ![Drag and drop three more folders.](images/drag-drop-2-folders.png)
 
 8. Click the **Settings** icon (pencil) for the **`customer_contact`** link task to view its settings.
 
@@ -102,7 +102,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![View the sales-sample load task settings.](images/sales-sample-preview.png =60%x*)
 
-11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **SALES_SAMPLE** to **CUSTSALES**. Next, click **Close**.
+11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **SALES_SAMPLE** to **CUSTSALES_EXT**. Next, click **Close**.
 
     ![Update table name](images/change-target-table-name.png)
 
@@ -116,15 +116,15 @@ In this task, you will link to data and create the following external tables in 
 
     ![Load job tasks completed. View the genre load task settings.](images/link-completed.png)
 
-14. Click the **Settings** icon (pencil) for the **`genre`** load task to view its settings. Next, select **Table > View Details**.
+14. Click the **Settings** icon (pencil) for the **`CUSTSALES_EXT`** load task to view its settings. Next, select **Table > View Details**.
 
-    ![View genre details](images/view-genre-details.png)
+    ![View genre details](images/view-custsales-ext-details.png)
 
 15. The **Preview** tab is selected by default. This shows the **`genre`** data.
 
-    ![View genre data](images/preview-genre-table.png)
+    ![View genre data](images/preview-custsales-table.png)
 
-16. Click **Close** to exit the **genre** task preview and to return to the Data Load Dashboard.
+16. Click **Close** to return to the Data Load Dashboard.
 
      ![Return to Data Load Dashboard.](images/redisplay-data-load-dashboard.png)
 
@@ -206,12 +206,11 @@ You may now proceed to the next lab.
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-    * Rick Green, Principal Developer, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024 Oracle Corporation.
+Copyright (C) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
