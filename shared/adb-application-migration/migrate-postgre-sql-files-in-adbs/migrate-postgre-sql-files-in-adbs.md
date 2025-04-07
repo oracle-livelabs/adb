@@ -63,7 +63,7 @@ BEGIN
 END;
 /
   </copy>
-    ```
+  ```
 
   This translates the PostgreSQL file postgrestest.sql to Oracle SQL and generates a new file with the name postgresfile_oracle.sql.
 
