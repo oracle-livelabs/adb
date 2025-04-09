@@ -71,7 +71,7 @@ END;
 
     ```
     <copy>
-SELECT object_name 
+SELECT object_name
  FROM DBMS_CLOUD.LIST_OBJECTS (credential_name => 'LIVE_LAB_OBJCRED', location_uri => 'https://objectstorage.region.oraclecloud.com/n/namespace/b/bucket/o/files');
   </copy>
     ```
