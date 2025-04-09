@@ -3,7 +3,8 @@
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
-        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
         },
 	"tutorials": [
         {
