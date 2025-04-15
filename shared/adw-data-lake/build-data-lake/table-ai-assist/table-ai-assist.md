@@ -520,7 +520,7 @@ In this task, you will learn how to import a `.JSON` connection file that you ca
 
     A connection file named similar to **`Excel_connection_ukgyxp2x0rqadss_admin.json`** is downloaded to your browser's **Downloads** folder. In our example, `ukgyxp2x0rqadss`is our host name.
 
-4. Return to your Excel Sheet.Click the **Autonomous Database** tab, and then click **Connections** from the **General Actions** section.
+4. Return to your Excel Sheet. Click the **Autonomous Database** tab, and then click **Connections** from the **General Actions** section.
 
     ![Click Connections.](./images/click-connections.png " ")
 
