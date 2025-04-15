@@ -225,13 +225,11 @@ You can load data into your Autonomous Database (either Oracle Autonomous Data W
 
 ## Task 3: Create a Recipe
 
-### What is a Recipe?
+**What is a Recipe?**
 
 In this task, you will work with the data preparation tool to create recipes. A recipe is a set of steps. You can use a step to add, replace, remove, and rename columns without making any changes to your base (source) table. You can add as many steps as you want to a recipe. You can then save a recipe to your schema or export it as JSON to a file. You can then return back to your saved recipe and keep working on it as needed.
 
-### Different modes of Recipe
-
-The following are different modes of a recipe:
+The following are the different modes of a recipe:
 
 * Create or Replace View
 * Create a new table
@@ -420,7 +418,7 @@ You can install the Oracle Autonomous Database for Excel from the Microsoft AppS
 
     ![Click the Addin.](./images/click-the-addin.png " ")
 
-You can now connect to your Autonomous Database instance to analyze and query the data. You will learn how to [connect to your ADB instance](#importaconnection) and [run Direct SQL queries in an Excel worksheet](#rundirectsqlqueriesinanexcelworksheet)later in this task.
+You can now connect to your Autonomous Database instance to analyze and query the data. You will learn how to [connect to your ADB instance](#task6importaconnection) and [run Direct SQL queries in an Excel worksheet](#task7rundirectsqlqueriesinanexcelworksheet)later in this task.
 
 **Method 2: Install the add-in from ADB's Database Actions**
 
