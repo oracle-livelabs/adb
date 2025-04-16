@@ -29,7 +29,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab requires completion of [Lab 1: Set Up the Workshop Environment](https://oracle-livelabs.github.io/adb/shared/adw-data-lake/build-data-lake/workshops/freetier/index.html?lab=setup-workshop-environment) from the **Contents** menu on the left.
 
 ## Task 1: Configure Your AI Profile
 
@@ -384,11 +384,9 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
     ![Click Expand Report.](./images/report-displayed.png " ")
 
-## Task 5: Install the Oracle Autonomous Database for Excel Add-In
+## Task 5: Install the Excel Add-in from the Microsoft AppSource
 
 The Oracle Autonomous Database for Excel integrates Microsoft Excel spreadsheets with Autonomous Database to retrieve and analyze data from Analytic Views in the database. You can also directly run SQL queries to view their results in the Excel worksheet. In this task, you'll learn how to install Oracle Autonomous Database for Excel add-in from the Microsoft AppSource and also from ADB's Database Actions.
-
-**Method 1: Install the add-in from Microsoft AppSource**
 
 **Prerequisite**
 
@@ -418,11 +416,35 @@ You can install the Oracle Autonomous Database for Excel from the Microsoft AppS
 
     ![Click the Addin.](./images/click-the-addin.png " ")
 
-You can now connect to your Autonomous Database instance to analyze and query the data. You will learn how to [connect to your ADB instance](#task6importaconnection) and [run Direct SQL queries in an Excel worksheet](#task7rundirectsqlqueriesinanexcelworksheet)later in this task.
+You can now connect to your Autonomous Database instance to analyze and query the data. You will learn how to [connect to your ADB instance](#task7importaconnection) and [run Direct SQL queries in an Excel worksheet](#task8rundirectsqlqueriesinanexcelworksheet)later in this task.
 
-**Method 2: Install the add-in from ADB's Database Actions**
+**Uninstall the add-in**
 
-You can install the add-in from the **Database Actions**. This is accessed by users with an Oracle Account.
+If you have installed Oracle Autonomous Database for Excel for Windows using the Microsoft AppSource, you can uninstall it as follows:
+
+1. Click the **Add-ins** icon from the **Home** menu.
+
+    ![Click Add-in.](./images/click-addin-remove.png " ")
+
+2. In the **My Add-ins** dialog box, click **+ Get Add-ins**.
+
+    ![Click Get Add-in.](./images/get-addin-remove.png =65%x*)
+
+3. In the **Office Add-ins** dialog box, click the **MY ADD-INS** tab, right-click **Oracle Autonomous Database Add-in for Excel**, and then click **Remove** from the context menu.
+
+    ![Click Remove.](./images/click-remove.png " ")
+
+4. A confirmation box is displayed. Click **Remove**. The Add-in is removed. Click the **X** control to exit the dialog box
+
+    ![Add-in removed.](./images/addin-removed.png " ")
+
+    The **Oracle Autonomous Database Add-in for Excel** add-in is removed from the menu bar.
+
+    ![Add-in removed from menu bar.](./images/addin-removed-menu.png " ")
+
+## Task 6: Install the Excel Add-in from Database Actions
+
+You can install the add-in from the Oracle Autonomous Database **Database Actions**. This is accessed by users with an Oracle Account.
 
 **Prerequisites**
 
@@ -481,11 +503,11 @@ To install the Oracle Autonomous Database for Excel, download the **`oracleplugi
 
 5. Start Excel and open a new or an existing workbook.
 
-6. From the **Developer** menu in the Excel ribbon (if you have added to your ribbon), click **Add-ins**; alternatively, if you have the **Add-ins** tool already displayed on your ribbon, click it.
+6. From the **Home** menu in the Excel ribbon, click **Add-ins**.
 
-    ![Click addin.](./images/click-addin.png " ")
+    ![Click addin.](./images/click-addin-desktop.png " ")
 
-    >**Note:** You can add the **Add-ins** tool and the **Developer** menu to your ribbon by using the **Customize Quick Access Toolbar** drop-down menu in the Excel title bar.
+    >**Note:** You can add the **Add-ins** tool to your ribbon, if needed, by using the **Customize Quick Access Toolbar** > **More Commands** from the drop-down menu in the Excel title bar.
 
     ![Customize ribbon.](./images/customize-ribbon.png " ")
 
@@ -501,7 +523,35 @@ To install the Oracle Autonomous Database for Excel, download the **`oracleplugi
 
     ![Addin displayed.](./images/addin-displayed.png " ")
 
-## Task 6: **Import a Connection**
+**Uninstall the add-in**
+
+If you have installed the **Oracle Autonomous Database for Excel** add-in for Windows using Database Actions, you can uninstall it as follows:
+
+1. Delete the **`manifest.xml`** file from the **`C:\Users\USERNAME\AppData\Local\Oracle\Autonomous Database\manifest`** folder where `USERNAME` is your own username.
+
+    ![Manifest folder path.](./images/manifest-folder-path.png " ")
+
+    >**Note:** On a MS Windows 11 system, you can quickly navigate to this folder as follows: Press the Windows **[key + R]**. Next, enter **`%localappdata%`** as the path, and then and press **[Enter]**. This will directly open the `Local` folder within the AppData folder.
+
+    ![Navigate path.](./images/navigate-path.png =65%x*)
+
+2. In Excel, click the **Home** menu, and then click the **Add-ins** icon.
+
+3. In the **Add-ins** window, click **+ Get Add-ins**.
+
+4. In the **Office Add-ins** window, click the **SHARED FOLDER** link, and then click **Refresh**.
+
+    ![Refresh.](./images/click-refresh.png " ")
+
+    The add-in is removed. Click the **X** control to exit the window.
+
+    ![Add-in removed.](./images/removed.png " ")
+
+5. The **Oracle Autonomous Database Add-in for Excel** add-in is removed from the menu bar.
+
+    ![Add-in removed from menu bar.](./images/addin-removed-menu.png " ")
+
+## Task 7: Import a Connection
 
 Each time you start the add-in for Excel, you must create a connection. The connections feature lets you manage and connect to multiple Autonomous Databases with a single add-in. Multiple connections can be created. However, only one connection can remain active. The **Connection** panel lets you connect to the Autonomous Database through a connection where you provide the login credentials and access the Autonomous Database instance. For additional information, see [Connection Management
 ](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/connection-management.html).
@@ -554,7 +604,7 @@ In this task, you will learn how to import a `.JSON` connection file that you ca
 
     ![Connection successful.](./images/connection-successful.png =50%x* )
 
-## Task 7: Run Direct SQL Queries in an Excel Worksheet
+## Task 8: Run Direct SQL Queries in an Excel Worksheet
 
 Now that you have a connection to your ADB instance, you will run a simple query from the Excel worksheet. The Oracle Autonomous Database for Excel lets you run Direct SQL queries to work with your data in an Excel worksheet. With the add-in, you can create a table and insert, update and delete rows from the existing tables or views. You can view the results in the current worksheet or different worksheets. To run a query using the add-in, run Excel, and create a blank workbook using the standard Excel workbook file format. For additional information, see the [Query an Analytic View in an Excel worksheet](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/query-av.html).
 
