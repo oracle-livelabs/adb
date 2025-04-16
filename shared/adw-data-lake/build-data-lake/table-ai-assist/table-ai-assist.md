@@ -642,7 +642,7 @@ Now that you have a connection to your ADB instance, you will run a simple query
 * [Oracle Autonomous Database for Excel](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/add-in.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
-* [Manage Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-manage-credentials.html#GUID-863FAF80-AEDB-4128-89E7-3B93FED550ED)
+* [Manage Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/autonomous-manage-credentials.html#GUID-863FAF80-AED,B-4128-89E7-3B93FED550ED)
 * [Manage AI Profiles](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-manage-profiles.html#GUID-842C70F5-A3BE-42A1-B189-64341A9BAAED)
 * [Manage Policies](https://docs.oracle.com/en-us/iaas/language/using/policies.htm)
 
@@ -653,6 +653,7 @@ Now that you have a connection to your ADB instance, you will run a simple query
     * Ekrem Soylemez, Vice President
     * A.A. Hopeman, Consulting Software Engineer
     * Manisha Mati, Principal User Assistance Developer
+    * Yossi Cohen, Principal Software Engineer
 * **Last Updated By/Date:** Lauran K. Serhal, April 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
