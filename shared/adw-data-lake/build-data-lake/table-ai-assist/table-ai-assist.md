@@ -416,7 +416,7 @@ You can install the Oracle Autonomous Database for Excel from the Microsoft AppS
 
     ![Click the Addin.](./images/click-the-addin.png " ")
 
-You can now connect to your Autonomous Database instance to analyze and query the data. You will learn how to [connect to your ADB instance](#task7importaconnection) and [run Direct SQL queries in an Excel worksheet](#task8rundirectsqlqueriesinanexcelworksheet)later in this task.
+You can now connect to your Autonomous Database instance to analyze and query the data. You will learn how to [connect to your ADB instance](#task7importaconnection) and [run Direct SQL queries in an Excel worksheet](#task8rundirectsqlqueriesinanexcelworksheet) later in this task.
 
 **Uninstall the add-in**
 
