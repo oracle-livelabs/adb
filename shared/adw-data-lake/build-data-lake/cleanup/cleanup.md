@@ -66,7 +66,7 @@ This concludes the workshop.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, November 2023
+* **Last Updated By/Date:** Lauran Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 

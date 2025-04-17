@@ -83,10 +83,17 @@ Enter **OMLUSER** and the password you just created to sign in.
 4. From the list of the folders on the left, drag **moviestrean_data** to the right panel, and confirm that you want to "to a single target table" when asked.
     ![Drag and Drop Moviestream_churn data](images/load-data-drag-moviestream-churn.png "")
 
-5. You should see the following.  Click on _Start_ to begin loading the data, and then _Run_ to confirm that you wish to start the load.  It should take a few seconds.
+5. After a few seconds, you should see the following screen. Before we load the data it's *important* that we make a quick change to a data type.  To do this, click on the pencil at the bottom right of the card.
+   ![Click on the edit pencil](images/dbactions-omluser-data-load-pencil-edit.png "")
+
+6. In the window that pops-up, scroll all the way down to the list of columns. In there look for the column named **IS\_CHURNER**.  We want to make sure we *change* the current data type from **BOOLEAN** into **NUMBER**.  We only require that change to the **IS\_CHURNER** column.  Once you finish that, you can click on the *Close* button.
+   
+   ![Click on the edit pencil](images/dbactions-omluser-data-load-change-boolean.png "")
+
+7. Now, you can click on _Start_ to begin loading the data, and then _Run_ to confirm that you wish to start the load.  It should take a few seconds.
     ![Begin loading Moviestream_churn data](images/start-loading-moviestream-data.png "")
 
-6. Once loaded, the screen will show you the successful load. Now click on the "Database Actions" text in the top section of the screen to go back to the main menu. 
+8. Once loaded, the screen will show you the successful load. Now click on the "Database Actions" text in the top section of the screen to go back to the main menu. 
     ![Go back to the main DB Actions menu](images/finished-loading-moviestream-churn.png "")
 
 </if>
@@ -140,10 +147,17 @@ Enter **OMLUSER** and the password you just created to sign in.
 4. From the list of the folders on the left, drag **moviestrean_data** to the right panel, and confirm that you want to "to a single target table" when asked.
     ![Drag and Drop Moviestream_churn data](images/load-data-drag-moviestream-churn.png "")
 
-5. You should see the following.  Click on _Start_ to begin loading the data, and then _Run_ to confirm that you wish to start the load.  It should take a few seconds.
+5. After a few seconds, you should see the following screen. Before we load the data it's *important* that we make a quick change to a data type.  To do this, click on the pencil at the bottom right of the card.
+   ![Click on the edit pencil](images/dbactions-omluser-data-load-pencil-edit.png "")
+
+6. In the window that pops-up, scroll all the way down to the list of columns. In there look for the column named **IS\_CHURNER**.  We want to make sure we *change* the current data type from **BOOLEAN** into **NUMBER**.  We only require that change to the **IS\_CHURNER** column.  Once you finish that, you can click on the *Close* button.
+   
+   ![Click on the edit pencil](images/dbactions-omluser-data-load-change-boolean.png "")
+
+7. Now, you can click on _Start_ to begin loading the data, and then _Run_ to confirm that you wish to start the load.  It should take a few seconds.
     ![Begin loading Moviestream_churn data](images/start-loading-moviestream-data.png "")
 
-6. Once loaded, the screen will show you the successful load. Now click on the "Database Actions" text in the top section of the screen to go back to the main menu. 
+8. Once loaded, the screen will show you the successful load. Now click on the "Database Actions" text in the top section of the screen to go back to the main menu. 
     ![Go back to the main DB Actions menu](images/finished-loading-moviestream-churn.png "")
 
 </if>

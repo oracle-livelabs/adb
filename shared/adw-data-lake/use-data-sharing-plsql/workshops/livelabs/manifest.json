@@ -20,40 +20,28 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 1: Review the Workshop Environment",
-            "type":"livelabs",
-            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
-            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
-        },
-        {
-            "title": "Lab 2: Create a User, an Object Storage Bucket, and an OCI Credential",
+            "title": "Lab 1: Create a User, an Object Storage Bucket, and an OCI Credential",
             "type":"livelabs",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-user-storage-credentials/create-user-storage-credentials.md"
         },
         {
-            "title": "Lab 3: Create, Populate, and Publish a Data Share",
+            "title": "Lab 2: Create, Populate, and Publish a Data Share",
             "type":"livelabs",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-share/create-share.md"
         },
         {
-            "title": "Lab 4: Create and Authorize the Data Share Recipient",
+            "title": "Lab 3: Create and Authorize the Data Share Recipient",
             "type":"livelabs",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../create-share-recipients/create-share-recipients.md"
         },
         {
-            "title": "Lab 5: Consume the Data Share",
+            "title": "Lab 4: Consume the Data Share",
             "type":"livelabs",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../consume-share/consume-share.md"
-        },
-        {
-            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
-            "description": "Delete the ADB instance and compartment if not needed.",
-            "type": "livelabs",
-            "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",

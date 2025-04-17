@@ -4,7 +4,7 @@
 
 In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
 
-> **NOTE:** At the time this workshop was last updated, your tenancy must be subscribed to the **US Midwest (Chicago)**, **Germany Central (Frankfurt)**, or **UK South (London)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details.
+**NOTE:** This workshop requires access to a Large Language Model (LLM). You can use LLMs from OCI GenAI, OpenAI, Azure, or Google Gemini. If you want to use OCI GenAI, ensure that your tenancy is subscribed to one of the following regions (at the time the workshop was last updated): **US Midwest (Chicago)** (default), **Germany Central (Frankfurt)**, **UK South (London)**, **Brazil East (Sao Paulo)**, or **Japan Central (Osaka)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
 ### What is Natural Language Processing?
 
@@ -38,11 +38,11 @@ You may now proceed to the next lab.
 * **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2024
+* **Last Updated By/Date:** Lauran K. Serhal, March 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
