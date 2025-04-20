@@ -10,7 +10,7 @@ Estimated Time: 30 minutes
 ### **Objectives**
 
 In this lab, you will:
-- Connect with SQL Worksheet
+- Connect to your ADB Instance
 - Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Procedure to Translate a PostgreSQL statement to Oracle SQL
 - Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Function to Translate a PostgreSQL Statement to Oracle SQL
 
@@ -22,9 +22,9 @@ This lab assumes that:
 - You are logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
 - You are connected to your Autonomous Database using SQL Worksheet.
 
-## Task 1: Connect with the SQL Worksheet
+## Task 1: Connect to your ADB Instance
 
-To complete the subsequent tasks you need connect to your Autonomous Database using SQL Worksheet.
+- See the documentation [Use Flashback Time Travel](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/flashback-time-travel-autononomous.html#GUID-A98E1F8B-FAE4-4FFF-955D-3A0E5F8EBC4A)
 
 1. Navigate to your SQL Worksheet and login with your credentials.
 
@@ -59,7 +59,7 @@ The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` procedure accepts a PostgreSQL statement 
 
 ## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Function to Translate a PostgreSQL statement to Oracle SQL
 
-The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL`function  enables you to translate a non-SQL statement to Oracle SQL. With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
+The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function  enables you to translate a non-SQL statement to Oracle SQL. With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
 
 **Note:**  With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
 

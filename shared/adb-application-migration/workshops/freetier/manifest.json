@@ -41,12 +41,7 @@
             "type": "freetier",
             "filename": "../../run-postgre-sql-statements-in-adbs/run-postgre-sql-statements-in-adbs.md"
           },
-        {
-            "title": "Lab 5: Load the PostgreSQL File to Object Store Bucket",
-            "description": "Upload Files to Object Store",
-            "filename":"/common/building-blocks/blocks/adb/load-data/load-data-tools.md"
-        },
-        {
+       {
             "title": "Lab 6: Migrate PostgreSQL File to Oracle SQL",
             "description": "Migrate PostgreSQL File to Oracle SQL",
             "filename":"../../migrate-postgre-sql-files-in-adbs/migrate-postgre-sql-files-in-adbs.md"

@@ -13,31 +13,31 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Create an Oracle Autonomous Database",
+            "title": "Create an Autonomous Database",
             "description": "Provision a new Autonomous Database instance",
             "type": "tenancy",
             "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
-            "title": "Lab 2: Connect with SQL Worksheet",
+            "title": "Lab 1: Connect to Your ADB Instance",
             "description": "Connect with SQL Worksheet",
             "type": "tenancy",
             "filename": "/common/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
         },
         {
-            "title": "Lab 3: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
+            "title": "Lab 2: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "description":"Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "type": "tenancy",
             "filename": "../../translate-postgre-sql-statements-to-oracle-sql/translate-postgre-sql-statements-to-oracle-sql.md"
         },
         {
-            "title": "Lab 4: Run PostgreSQL statements in Autonomous Database",
+            "title": "Lab 3: Run PostgreSQL statements in Autonomous Database",
             "description":"Run PostgreSQL statements in Autonomous Database",
             "type": "tenancy",
             "filename": "../../run-postgre-sql-statements-in-adbs/run-postgre-sql-statements-in-adbs.md"
           },
         {
-            "title": "Lab 5: Upload Files to Object Store",
+            "title": "Lab 4: Upload Files to Object Store",
             "description": "Upload Files to Object Store",
             "filename":"https://livelabs.oracle.com/cdn/sprints/oci/sprint-create-bucket/index.html?customTrackingParam=:ow:lp:cpo::::RC_WWMK211125P00013:llid=3169&lab=sprint-upload-files"
         },

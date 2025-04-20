@@ -12,7 +12,7 @@ Estimated Time: 30 minutes
 ### Objectives
 
 In this lab, you will:
-- Connect with SQL Worksheet
+- Connect to your ADB Instance using SQLDeveloper
 - Enable Real-Time SQL Translation in Your Session
 - Run PostgreSQL Statements in Your Session
 - Disable Real-Time SQL Translation in Your Session
@@ -30,6 +30,8 @@ This lab assumes that:
 To complete the subsequent tasks you need to use SQL Worksheet.
 
 1. Navigate to your SQL Worksheet and login with your credentials.
+
+See the documentation 
 
 ## Task 2: Enable Real-Time Translation in Your Session
 

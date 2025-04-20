@@ -15,7 +15,7 @@ You can translate SQL statements written in PostgreSQL to Oracle SQL and run the
 
 In this lab, you will:
 
-- Connect with SQL Worksheet
+- Connect to Your ADB Instance
 - Translate PostgreSQL Statements to Oracle SQL
 - Migrate PostgreSQL Files to Oracle SQL
 - Run PostgreSQL Statements in Autonomous Database
@@ -32,7 +32,7 @@ This lab assumes you have:
 - You are logged in as the `ADMIN` user or `EXECUTE` privilege on `DBMS_CLOUD_MIGRATION`.
 
 
-## Task 1: Connect with SQL Worksheet
+## Task 1: Connect to Your ADB Instance
 
 To complete the subsequent tasks you need to use SQL Worksheet.
 

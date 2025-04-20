@@ -11,6 +11,7 @@ Estimated Time: 30 minutes
 
 In this lab, you will:
 
+- Upload a file containing PostgreSQL SQL statements to your Object Storage bucket
 - Create a credential to access Cloud Object Storage
 - Use the `DBMS_CLOUD_MIGRATION.MIGRATE_FILE` Procedure to Translate a file that contains PostgreSQL statement to Oracle SQL
 
@@ -20,14 +21,34 @@ This lab assumes that:
 
 - You have performed the previous lab on provisioning an Oracle Autonomous Database instance.
 - You are logged in as the ADMIN user or have EXECUTE privilege on the `DBMS_CLOUD_MIGRATION` package.
-- You have uploaded a file containing PostgreSQL SQL statements to your Object Store bucket
 - You are connected to your Autonomous Database using SQL Worksheet.
 
-## Task 1: Connect with the SQL Worksheet
+## Task 1: Upload a File Containing PostgreSQL SQL Statements to Object Storage
 
-To complete the subsequent tasks you need connect to your Autonomous Database using SQL Worksheet.
+1. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-1. Navigate to your SQL Worksheet and login with your credentials.
+2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where your bucket was created.
+
+3. On the **Buckets** page, click the bucket's name link to which you want to upload the files. The **Bucket Details** page is displayed.
+
+
+![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/bucket_page.png)
+
+4. Scroll down the page to the **Objects** section, and then click **Upload**.
+
+![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/upload.png)
+
+5. In the **Upload Objects** panel, you can drag and drop a single or multiple files into the **Choose Files from your Computer** field or click **select files** to choose the file that you want to upload from your computer.
+
+![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/upload_file.png)
+
+6. Click **Upload** to upload the selected file to the bucket.
+
+7. When the file is uploaded, click **Close** to close the **Upload Objects** panel. The **Bucket Details** page is re-displayed. The newly uploaded file is displayed in the **Objects** section.
+
+![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/uploaded_file.png)
+
+8. To return to the **Buckets** page, click **Object Storage** in the breadcrumbs.
 
 ## Task 2: Create a credential to access Cloud Object Storage
 
