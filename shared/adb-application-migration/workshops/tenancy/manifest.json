@@ -1,6 +1,7 @@
 {
     "workshoptitle": "Migrate Applications from Non-Oracle Databases to Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "variables": ["./variables.json"],
 	"tutorials": [
         {
             "title": "Introduction",

@@ -6,6 +6,7 @@
         "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
         "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
         },
+    "variables": ["./variables.json"],
 	"tutorials": [
         {
             "title": "Introduction",
@@ -18,31 +19,31 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Create an Oracle Autonomous Database",
+            "title": "Provision a new Autonomous Database instance",
             "description": "Provision a new Autonomous Database instance",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
-            "title": "Lab 2: Connect with SQL Worksheet",
+            "title": "Connect with SQL Worksheet",
             "description": "Connect with SQL Worksheet",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
         },
         {
-            "title": "Lab 3: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
+            "title": "Lab 1: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "description":"Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "type": "freetier",
             "filename": "../../translate-postgre-sql-statements-to-oracle-sql/translate-postgre-sql-statements-to-oracle-sql.md"
         },
         {
-            "title": "Lab 4: Run PostgreSQL statements in Autonomous Database",
+            "title": "Lab 2: Run PostgreSQL statements in Autonomous Database",
             "description":"Run PostgreSQL statements in Autonomous Database",
             "type": "freetier",
             "filename": "../../run-postgre-sql-statements-in-adbs/run-postgre-sql-statements-in-adbs.md"
           },
        {
-            "title": "Lab 6: Migrate PostgreSQL File to Oracle SQL",
+            "title": "Lab 3: Migrate PostgreSQL File to Oracle SQL",
             "description": "Migrate PostgreSQL File to Oracle SQL",
             "filename":"../../migrate-postgre-sql-files-in-adbs/migrate-postgre-sql-files-in-adbs.md"
         },
