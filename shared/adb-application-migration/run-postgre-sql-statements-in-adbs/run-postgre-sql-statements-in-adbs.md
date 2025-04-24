@@ -136,7 +136,7 @@ To run a PostgreSQL statement in your Autonomous Database you must first enable 
 
 This shows the enabled translation language for your session.
 
-## Task 2: Run PostgreSQL Statements in Your Session
+## Task 3: Run PostgreSQL Statements in Your Session
 
 ### Run PostgreSQL Statements in Your Session
 
@@ -193,7 +193,7 @@ This shows the enabled translation language for your session.
 
     This retrieves five records from the **EMP** table.
 
-## Task 3: Disable Real-Time SQL Translation in Your Session
+## Task 4: Disable Real-Time SQL Translation in Your Session
 
 1. Run `DBMS_CLOUD_MIGRATION.DISABLE_TRANSLATION` to disable real-time translation in your session. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 

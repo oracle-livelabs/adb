@@ -10,7 +10,7 @@ Estimated Time: 30 minutes
 ### **Objectives**
 
 In this lab, you will:
-- Connect to your ADB Instance
+- Connect to your ADB Instance using SQL Worksheet
 - Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Procedure to Translate a PostgreSQL statement to Oracle SQL
 - Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Function to Translate a PostgreSQL Statement to Oracle SQL
 
@@ -24,11 +24,9 @@ This lab assumes that:
 
 ## Task 1: Connect to your ADB Instance
 
-- See the documentation [Use Flashback Time Travel](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/flashback-time-travel-autononomous.html#GUID-A98E1F8B-FAE4-4FFF-955D-3A0E5F8EBC4A)
-
 1. Navigate to your SQL Worksheet and login with your credentials.
 
-## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Procedure to Translate a PostgreSQL statement to Oracle SQL
+## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` procedure to Translate a PostgreSQL statement to Oracle SQL
 
 The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` procedure accepts a PostgreSQL statement as input and translates the statement to Oracle SQL.
 
@@ -57,9 +55,9 @@ The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` procedure accepts a PostgreSQL statement 
   This accepts PostgreSQL statement as input and translates it to Oracle SQL. The translated statement is then assigned to the `translated_sql_output` variable.
   You can display the output (translated statement) using `DBMS_OUTPUT.PUT_LINE`.
 
-## Task 2: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` Function to Translate a PostgreSQL statement to Oracle SQL
+## Task 3: Use the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function to Translate a PostgreSQL statement to Oracle SQL
 
-The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function  enables you to translate a non-SQL statement to Oracle SQL. With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
+The `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function enables you to translate a non-SQL statement to Oracle SQL. With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
 
 **Note:**  With the `DBMS_CLOUD_MIGRATION.MIGRATE_SQL` function you can translate only one SQL statement per call.
 
