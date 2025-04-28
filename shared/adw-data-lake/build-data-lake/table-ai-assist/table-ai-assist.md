@@ -448,7 +448,7 @@ You can install the add-in from the Oracle Autonomous Database **Database Action
 
 **Prerequisites**
 
-* You must have an Oracle Cloud Account.
+* You must log in to your ADW database instance as the **`admin`** user.
 * You can install the add-in only from the licensed desktop version of Microsoft Excel.
 
 In this task, you will learn how to install the add-in on a MS-Windows machine. If you are using a Mac, see the documentation for information on how to install the add-in on a Mac.
@@ -553,7 +553,8 @@ If you have installed the **Oracle Autonomous Database for Excel** add-in for Wi
 
 ## Task 7: Import a Connection
 
-Each time you start the add-in for Excel, you must create a connection. The connections feature lets you manage and connect to multiple Autonomous Databases with a single add-in. Multiple connections can be created. However, only one connection can remain active. The **Connection** panel lets you connect to the Autonomous Database through a connection where you provide the login credentials and access the Autonomous Database instance. For additional information, see [Connection Management
+When you start the Excel add-in, you can create a connection that you can use going forward. The connections feature lets you manage and connect to multiple Autonomous Databases with a single add-in. You can create multiple connections; however, only one connection can remain active at a time. The **Connection** panel lets you connect to the Autonomous Database through a connection where you provide the login credentials and access the Autonomous Database instance. For additional information, 
+see [Connection Management
 ](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/connection-management.html).
 
 In this task, you will learn how to import a `.JSON` connection file that you can download from the **Database Actions Launchpad**.
