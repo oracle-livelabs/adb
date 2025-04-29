@@ -1,9 +1,10 @@
 {
-    "db_name": "MYQUICKSTART",
-    "db_display_name":"myquickstart",
-    "db_ocpu": "2 ECPUs",
+    "db_name": "Bob",
+    "db_display_name":"MovieStreamWorkshop",
+    "db_ocpu": "4 ECPUs",
     "db_storage": "1 TB",
     "db_workload_type":"Autonomous Data Warehouse",
     "db_user_name":"MOVIESTREAM",
-    "oac_instance_name": "WORKSHOPADWOAC"    
+    "oac_instance_name": "WORKSHOPADWOAC",
+    "terraform_url": "https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/martygubar/terraform-oci-oracle-cloud-foundation/releases/download/1.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip&zipUrlVariables={%22tag%22:%22moviestream-analytics%22,%22db_compute_count%22:4,%22db_name%22:%22MovieStreamWorkshop%22}"
  }
