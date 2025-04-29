@@ -131,7 +131,7 @@ We can now find out what people are talking about. What parts of our service are
 ## Acknowledgements
   * **Authors:** 
     * Marty Gubar, Product Management
-* **Last Updated By/Date:** Marty GUbar, April 2025
+* **Last Updated By/Date:** Marty Gubar, April 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

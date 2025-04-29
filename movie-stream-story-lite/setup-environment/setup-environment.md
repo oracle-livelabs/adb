@@ -22,6 +22,9 @@ Learn how to
 [](include:iam-compartment-create-body.md)
 
 ## Task 2: Create an IAM policy enabling access to OCI Generative AI
+
+**Note:** Select AI supports many AI providers and LLMs ([see list here](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-about.html#GUID-FDAEF22A-5DDF-4BAE-A465-C1D568C75812)). This workshop uses **OCI Generative AI** as your AI provider.
+
 [](include:create-genai-policy.md)
 
 ## Task 3: Provision ADB and load data using an OCI Cloud Stack

@@ -1,5 +1,5 @@
 {
-    "db_name": "Bob",
+    "db_name": "MovieStreamWorkshop",
     "db_display_name":"MovieStreamWorkshop",
     "db_ocpu": "4 ECPUs",
     "db_storage": "1 TB",
