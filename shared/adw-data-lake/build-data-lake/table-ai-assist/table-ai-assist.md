@@ -554,7 +554,8 @@ If you have installed the **Oracle Autonomous Database for Excel** add-in for Wi
 ## Task 7: Import a Connection
 
 When you start the Excel add-in, you can create a connection that you can use going forward. The connections feature lets you manage and connect to multiple Autonomous Databases with a single add-in. You can create multiple connections; however, only one connection can remain active at a time. The **Connection** panel lets you connect to the Autonomous Database through a connection where you provide the login credentials and access the Autonomous Database instance. For additional information, 
-see [Connection Management](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/connection-management.html).
+see [Connection Management
+](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/connection-management.html).
 
 In this task, you will learn how to import a `.JSON` connection file that you can download from the **Database Actions Launchpad**.
 
