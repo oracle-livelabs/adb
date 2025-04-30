@@ -92,9 +92,9 @@ For detailed information on creating credentials, see the [CREATE_CREDENTIAL Pro
   SET SERVEROUTPUT ON
 BEGIN
  DBMS_CLOUD_MIGRATION.MIGRATE_FILE (
-     credential_name => 'LIVE_LAB_OBJCRED',
-     location_uri    => 'https://objectstorage.region.oraclecloud.com/n/namespace/b/bucket/o/files/postgretest_sql.sql',
-     source_db       => 'POSTGRES'
+    credential_name => 'LIVE_LAB_OBJCRED',
+    location_uri    => 'https://objectstorage.region.oraclecloud.com/n/namespace/b/bucket/o/files/postgretest_sql.sql',
+    source_db       => 'POSTGRES'
     );
 END;
 /
@@ -110,10 +110,9 @@ END;
 
   ```
    <copy>
-SELECT object_name FROM DBMS_CLOUD.LIST_OBJECTS (
-  credential_name => 'LIVE_LAB_OBJCRED',
-  location_uri    => 'https://objectstorage.region.oraclecloud.com/n/namespace/b/bucket/o/files'
- );
+  SELECT object_name FROM DBMS_CLOUD.LIST_OBJECTS (
+    credential_name => 'LIVE_LAB_OBJCRED',
+    location_uri    => 'https://objectstorage.region.oraclecloud.com/n/namespace/b/bucket/o/files');
   </copy>
 ```
 
