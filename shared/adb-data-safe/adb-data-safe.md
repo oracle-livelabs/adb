@@ -40,7 +40,7 @@ This lab assumes you have:
 
 ## Task 1: Create a user group and add an Oracle Cloud account to the group
 
-*Note: If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.*
+> _**Note:** If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment._
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
@@ -110,19 +110,25 @@ As a tenancy administrator, create an IAM policy that grants the user permission
 
 ## Task 3: Load Sample Data Into Your Database
 
-As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.sql` SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
+As the **`ADMIN`** user on the database, download and run the **`load-data-safe-sample-data_admin.sql`** SQL script to load sample data into your database. This script creates several tables with sample data that you can use to practice with the Oracle Data Safe features. It also generates database activity for the `ADMIN` user.
 
-1. Download the [**load-data-safe-sample-data_admin.sql**](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
+1. Click the following link to download the [**load-data-safe-sample-data_admin.sql**](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/security-library/load-data-safe-sample-data_admin.sql) script and open it in a text editor, such as NotePad.
 
-2. Navigate back to your database's **Autonomous Database Details** page, and click the **Database actions** button. Sign in with the username `ADMIN`. Use the `ADMIN` password you specified when you created the database. From the **Database Actions Launchpad**, in the **Development** section, click **SQL**.
+    ![Download the script](images/download-script.png " ")
 
-3. Copy the entire script to the clipboard and paste it into the worksheet in Database Actions. The last line of the script is as follows:
+2. Navigate back to your database's **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **SQL**. The SQL Worksheet is displayed.
+    >**Note:** If needed, sign in with the username `ADMIN`. Use the `ADMIN` password you specified when you provisioned the database instance.
 
-     `select null as "End of script" from dual;`
+3. Copy the entire script from your text editor file to the clipboard and paste it into the worksheet. The last line of the script is as follows:
 
-4. On the toolbar, click the **Run Script** button and wait for the script to finish running.
+    ```
+     SELECT AS "End of script"
+     FROM dual;
+    ```
 
-    ![Run Script button](images/run-script.png "Run Script button")
+4. Click the **Run Script F5** icon on the Worksheet toolbar. Wait for the script to finish running.
+
+    ![Run Script button](images/run-script.png " ")
 
     - The script takes a few minutes to run.
     - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
@@ -141,12 +147,13 @@ As the `ADMIN` user on the database, run the `load-data-safe-sample-data_admin.s
     - `REGIONS` - 4 rows
     - `SUPPLEMENTAL_DATA` - 149 rows
 
-
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-6. Refresh Database Actions: Refresh the _browser's_ page and then verify that the `HCM1` schema is listed in the first drop-down list on the **Navigator** pane.
+6. Refresh Database Actions. Refresh your _Web browser's_ page, and then verify that the **`HCM1`** schema is listed in the first drop-down list on the **Navigator** pane.
 
-    >- **Note**: It is important that you refresh the **browser page**, not just click the refresh circular arrow icon in the SQL Worksheet, to see the new schemas like `HCMI` that were just created.
+    ![Refresh your browser](images/refresh-browser.png " ")
+
+    >**Note**: It is important that you refresh the **browser page**, not just click the refresh circular arrow icon in the SQL Worksheet, to see the new `HCMI` schema that was just created.
 
 7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
@@ -161,39 +168,42 @@ After registering an Autonomous Database, you can grant and revoke roles from th
 
 If you plan to use a database other than an Oracle Autonomous Database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database Details** page.
+1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database details** page.
 
-    If you navigated away from this page: From the navigation menu, select **Oracle Database**, and then **Autonomous Data Warehouse**. Select your compartment (if needed), and then click the name of your database.
+    If you navigated away from this page. Click the **Navigation** menu, select **Oracle Database**, and then **Autonomous Data Warehouse**. Select your compartment (if needed), and then click the display name of your database, **`ADW_Finance_Mart`**.
 
-2. Scroll down the page, and then under **Data Safe**, click **Register**.
+2. Scroll down the page to the **Data Safe** section, and then click **Register**.
 
-    ![Register option for your database](images/register-database.png "Register option for your database")
+    ![Register option for your database](images/register-database.png " ")
 
-3. In the **Register Database with Data Safe** dialog box, click **Confirm**.
+3. In the **Register database with Data Safe** dialog box, click **Confirm**.
 
-    ![Register Database with Data Safe confirm dialog box](images/confirm-registration.png "Register Database with Data Safe confirm dialog box")
-
+    ![Register Database with Data Safe confirm dialog box](images/confirm-registration.png " ")
 
 4. Wait for the registration process to finish and for the status to change to **Registered**.
 
-    ![Status reads registered](images/status-registered.png "Status reads registered" )
+    ![Status reads registered](images/status-registered.png =60%x* )
 
 ## Task 5: Access Oracle Data Safe And View Your List Of Registered Target Databases
 
 1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
 
-2. From the navigation menu, select **Oracle Database**, and then **Data Safe**.
+2. Click the Navigation menu. Select **Oracle Database**, and then **Data Safe - Database Security**.
+
+    ![Navigate to Data Safe - Database Security](images/navigate-data-safe.png " " )
 
     The **Overview** page for the Oracle Data Safe service is displayed. On this page, you can access Security Center, register target databases, and find links to useful information.
 
+    ![The Data Safe Overview page is displayed](images/data-safe-overview.png " " )
+
 3. On the left, click **Target Databases**.
 
-4. From the **Compartment** drop-down list under **List Scope**, select your compartment. Optionally, deselect **Include child compartments**. Your registered target database is listed on the right.
+4. From the **Compartment** drop-down list under **List Scope**, select your compartment, if it's not already selected. Optionally, deselect **Include child compartments**. Your registered target database is listed on the right.
 
     - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed after 45 days.
 
-    ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
+        ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
 
 5. Click the name of your target database to view its registration details. The **Target Database Details** page is displayed.
 
@@ -215,7 +225,7 @@ Start by examining sensitive data in one of the tables on your target database b
 
 3. On the left under **Security Center**, click **Data Discovery**.
 
-4. From the **Compartment** drop-down list, select your compartment.
+4. From the **Compartment** drop-down list, select your compartment, if not already selected.
 
     A Data Discovery dashboard is displayed with statistics for the top five target databases in your compartment. Your dashboard is most likely empty because this is the first time you are using Data Discovery in this workshop.
 
@@ -223,77 +233,66 @@ Start by examining sensitive data in one of the tables on your target database b
 
 5. Click **Discover Sensitive Data**.
 
-    The **Create Sensitive Data Model** page is displayed.
+    The **Create Sensitive Data Model** wizard is displayed.
 
-6. On the **Provide Basic Information** page, do the following, and then click **Next**.
+6. On the **Provide Basic Information** page, specify the following, and then click **Next**.
 
-    - In the **Name** box, enter **SDM1**.
-    - Leave the compartment set to your compartment.
-    - In the **Description** box, enter **Sensitive Data Model 1**.
-    - Select your target database
+    - **Name:** Enter **SDM1**.
+    - **Compartment:** Leave the compartment set to your compartment.
+    - **Description:** Enter **Sensitive Data Model 1**.
+    - **Target database:** Select your target database.
 
-    ![Provide Basic Information page](images/provide-basic-information-page.png "Provide Basic Information page")
+    ![Provide Basic Information page](images/provide-basic-information-page.png =65%x*)
 
-7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **HCM1** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
+7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **`HCM1`** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
 
-    ![Select Schemas page](images/select-schemas-page.png "Select Schemas page")
+    ![Select Schemas page](images/select-schemas-page.png =65%x*)
 
-8. On the **Select Sensitive Types** page, expand all of the sensitive categories by moving the **Expand All** slider to the right. Scroll down the page and review the sensitive types. Notice that you can select individual sensitive types, sensitive categories, and all sensitive types at one time. At the top of the page, select the **All** check box, and then click **Next**.
+8. On the **Select sensitive types for data discovery** page, expand all of the sensitive categories by moving the **Expand All** slider to the right. Scroll down the page and review the sensitive types. Notice that you can select individual sensitive types, sensitive categories, and all sensitive types at one time.
 
-    ![Select Sensitive Types page](images/select-sensitive-types-page.png "Select Sensitive Types page")
+    ![Select Sensitive Types page](images/select-sensitive-types-page.png =65%x*)
 
-9. On the **Select Discovery Options** page, select **Collect, display and store sample data**, and then click **Create Sensitive Data Model** at the bottom of the page to begin the data discovery process.
+9. At the top of the page, select the **All** check box, and then click **Next**.
+
+    ![Select Sensitive Types page](images/select-all.png " ")
+
+10. On the **Select discovery options** page, select **Collect, display and store sample data**, and then click **Create sensitive data model** at the bottom of the page to begin the data discovery process.
 
     ![Select Discovery Options page page](images/select-discovery-options-page.png "Select Discovery Options page")
 
-10. Wait for the sensitive data model to be created. The **Sensitive Data Model Details** page is displayed.
+11. When the sensitive data model is created successfully, the **Sensitive Data Model Details** page is displayed with the status **Active**.
+
+    ![The Sensitive Data Model 1 is active](images/sdm1-active.png " ")
 
 ## Task 7: Analyze The Sensitive Data Model
 
-1. Review the information on the **Sensitive Data Model Details** page.
+1. Review the information on the **Sensitive data model details** page.
 
     - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
-    - You can click the **View Details** link to view the work request information.
-    - The pie chart compares the number of sensitive values per sensitive category and sensitive type.
-    - The **Sensitive Columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
+    - You can click the **View details** link to view the work request information.
+    - The bar chart compares the number of sensitive values per sensitive category and sensitive type.
+    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
-    ![Sensitive Data Model Details page bottom](images/sensitive-data-model-details-page-2.png "Sensitive Data Model Details page bottom")
 
-2. Position your mouse over the **Identification Information** category in the chart to view its value. Your percentage value may be different than the value shown in the screenshot.
+2. Under **Sensitive columns**, from the first drop-down list, select **Sensitive type view** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the Expand all slider to the left.
 
-    ![Identification Information category in sensitive data model chart](images/sdm-chart-identification-information.png "Identification Information category in sensitive data model chart")
+    ![Sensitive Type View](images/sensitive-type-view.png " ")
 
-3. With your mouse still over **Identification Information**, click the pie slice to drill down. Notice that the **Identification Information** category is now divided into two smaller categories (**Personal Identifiers** and **Public Identifiers**).
+3. From the same drop-down list, select **Schema view** to sort the sensitive columns by schema and table name.
 
-    ![Personal and Public Identifiers in sensitive data model chart](images/sdm-chart-personal-public-identifiers.png "Personal and Public Identifiers in sensitive data model chart")
+    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the Parent column. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
 
-4.  To drill-up, click the **All** link in the chart's breadcrumb.
-
-5. Under **Sensitive Columns**, from the drop-down list, select **Sensitive Type View** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the **Expand All** slider to the left.
-
-    ![Sensitive Type View of sensitive data model](images/sensitive-type-view-sdm1.png "Sensitive Type View of sensitive data model")
-
-6. From the drop-down list, select **Schema View** to sort the sensitive columns by table name.
-
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the **Parent Column**. For example, `MANAGER_ID` in the `DEPARTMENTS` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
-
-    ![Schema View of sensitive data model](images/schema-view-sdm1.png "Schema View of sensitive data model")
+        ![Schema View](images/schema-view.png " ")
 
 ## Want to Learn More?
 
 The following links provide more information about Oracle Data Safe:
 
-- [In-depth 2-hour workshop including data masking: Get Started with Oracle Data Safe Fundamentals](https://apexapps.oracle.com/pls/apex/f?p=133:180:13269576864925::::wid:598)
-- [Oracle Data Safe website](https://www.oracle.com/database/technologies/security/data-safe.html)
-- [Oracle Data Safe user assistance](https://docs.oracle.com/en/cloud/paas/data-safe/index.html)
-- [Oracle Data Safe data sheet](https://www.oracle.com/a/tech/docs/dbsec/data-safe/ds-security-data-safe.pdf)
-- [Oracle Data Safe frequently asked questions](https://www.oracle.com/a/tech/docs/dbsec/data-safe/faq-security-data-safe.pdf)
-- [Target Database Registration](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/data-safe&id=ADMDS-GUID-B5F255A7-07DD-4731-9FA5-668F7DD51AA6)
 - [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
 
 ## Acknowledgements
 
-- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Adapted by** - Rick Green, Principal User Assistance Developer, Database Development
-- **Last Updated By/Date** - Rick Green, June, 2023
+- **Author:** Jody Glover, Consulting User Assistance Developer, Database Development
+- **Contributors:** Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** Lauran K. Serhal, May 2024

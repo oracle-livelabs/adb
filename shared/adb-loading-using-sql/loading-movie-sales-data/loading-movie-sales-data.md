@@ -22,7 +22,7 @@ This lab assumes you have:
 
 ## Overview Of The Data Loading Process
 
-Autonomous Data Warehouse provides different ways to load data depending on your needs: a set of wizards to help you load data files, click here to review the [Introduction to Autonomous Database Tools Workshop](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789), and a scripting-based approach that gives you more control. In this lab, we will explore how to populate a new data warehouse using simple scripts, which you can then amend and use to load new data on an on-going basis. Later in this lab, we will load a set of data files containing just updates and corrections - in many cases with this type of sales analysis you will get an initial file to load containing a "draft" view or soft-close view of the latest sales data. A "final", verified sales data set is often then published later in the month after all the sales transactions have been processed and correctly booked. This is the scenario we are using in this workshop.
+Autonomous Data Warehouse provides different ways to load data depending on your needs: a set of wizards to help you load data files, click here to review the [Introduction to Autonomous Database Tools Workshop](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789), and a scripting-based approach that gives you more control. In this lab, we will explore how to populate a new data warehouse using simple scripts, which you can then amend and use to load new data on an on-going basis. Later in this lab, we will load a set of data files containing just updates and corrections - in many cases with this type of sales analysis you will get an initial file to load containing a "draft" view or soft-close view of the latest sales data. A "final", verified sales data set is often then published later in the month after all the sales transactions have been processed and correctly booked. This is the scenario we are using in this workshop.
 
 ### What About Data Quality In Your Autonomous Data Warehouse?
 
@@ -368,7 +368,7 @@ A smarter and more efficient way to load all the data for 2018 to 2020 is to let
 
 - Review the [Oracle Autonomous Database documentation for DBMS_CLOUD](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-9428EA51-5DDD-43C2-B1F5-CD348C156122)
 
-- Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
+- Look at the new [LiveLabs workshop for the Database Actions data loading tools which are built into Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=789)
 
 ## Want to Learn More?
 

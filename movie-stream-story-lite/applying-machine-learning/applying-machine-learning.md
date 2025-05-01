@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Autonomous Data Warehouse has built-in machine learning algorithms. The aim of this lab is to give a simple introduction into using machine learning models to solve common business problems. There are many other workshops in LiveLabs that will help you explore machine learning in more detail: [see these workshops](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_focus_area=27&p100_product=131).
+Autonomous Data Warehouse has built-in machine learning algorithms. The aim of this lab is to give a simple introduction into using machine learning models to solve common business problems. There are many other workshops in LiveLabs that will help you explore machine learning in more detail: [see these workshops](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?c=y&p100_focus_area=27&p100_product=131).
 
 Estimated Lab Time: 10 minutes
 

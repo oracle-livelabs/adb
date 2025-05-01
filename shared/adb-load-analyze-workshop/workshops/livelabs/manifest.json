@@ -78,8 +78,14 @@
     {
         "title": "Lab 9 (optional): Create Data Pipelines for Continuous Data Import and Export",
         "description": "Create Oracle Data Pipelines for continuous data import and export",
-        "type": "freetier",
+        "type": "livelabs",
         "filename": "../../create-data-pipelines/create-data-pipelines.md"
+    },
+    {
+        "title": "Lab 10 (optional): Use AutoML to Predict Customer Churn",
+        "description": "Create a Machine Learning model using AutoML UI to Predict Churn",
+        "type": "livelabs",
+        "filename": "../../predict-churn/predict-churn.md"
     },
     {
     "title": "Need Help?",

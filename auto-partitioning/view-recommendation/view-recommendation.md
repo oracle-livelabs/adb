@@ -70,11 +70,11 @@ In addition to the core information about the recommendation execution and the t
 
 2. Initiate the _autoPartitionFinding.html_ file download to your local machine using the Cloud Shell. Select the _Download_ menu option.
 
-    ![download menu](./images/download-1.jpg)
+    ![download menu](./images/download-1.png)
 
 3. Specify the file name and click the Download button.
 
-    ![specifying file name](./images/download-2.jpg)
+    ![specifying file name](./images/download-2.png)
 
 ## Task 4: View the Auto Partitioning Report
 

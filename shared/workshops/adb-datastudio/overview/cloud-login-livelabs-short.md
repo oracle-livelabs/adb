@@ -35,7 +35,7 @@ Creating an Oracle account can be summarized in the following two simple steps.
 
 ## Task 2: Request Workshop Reservation
 
-1. Using your *Oracle Account Login* go to [LiveLabs](https://developer.oracle.com/livelabs). Open a workshop, click **Start**, and then **Run on LiveLabs Sandbox** to request a reservation for this workshop.
+1. Using your *Oracle Account Login* go to [LiveLabs](https://livelabs.oracle.com). Open a workshop, click **Start**, and then **Run on LiveLabs Sandbox** to request a reservation for this workshop.
   ![Run on LiveLabs](https://oracle-livelabs.github.io/common/labs/cloud-login/images/run-on-livelabs.png " ")
 
 2. Fill out the information on the *Reserve Workshop* page. Check **I consent to receive emails from LiveLabs for my reservation**. Click **Submit Reservation**.

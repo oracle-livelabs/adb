@@ -21,9 +21,9 @@ Watch the video below for a quick walk-through of the lab.
 In this lab, you will:
 
 * Access the Delta Sharing public examples on GitHub
-* Navigate to the SQL Worksheet
-* Create a database credential and list the available schemas and tables in the Delta Share
-* Create a Parquet external table based on a table in the Delta Share and query the table
+* Download the profile file that you will use to access the data share
+* Navigate to Data Share in Autonomous Database
+* Consume the data share and create an external table based on one of the share's files
 
 ### Prerequisites
 
@@ -47,25 +47,118 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
     ![Click the delta sharing profile link.](./images/share-profile.png " ")
 
-## Task 2: Navigate to the SQL Worksheet
+4. Click the **Download** icon to download the Delta Sharing profile for this example to your local **Downloads** folder.
 
-If you already accessed the SQL Worksheet in the previous lab, you can skip over to **Task 3**; otherwise, navigate to SQL Worksheet as follows:
+    ![Click Download delta sharing profile file.](./images/download-share-profile.png " ")
 
-1. Log in to the **Oracle Cloud Console**.
+    The **`open-dataset.share`** file is downloaded.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+    ![Profile file is downloaded.](./images/file-downloaded.png " ")
+
+## Task 2: Navigate to Data Share
+
+Navigate to the **Launchpad** page to access Data Sharing as follows:
+
+1. Navigate to your **Autonomous Databases** page.
 
 <if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
 </if>
 
 <if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**. The SQL Worksheet is displayed.
+3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **View all database actions**.
 
-## Task 3: Create a Database Credential and List the Available Schemas and Tables
+  ![Navigate to the Launchpad page.](./images/navigate-launchpad.png " ")
+
+  The **Launchpad** page is displayed.
+
+  ![Navigate to the Launchpad page.](./images/launchpad.png " ")
+
+4. Click the **Data Studio** tab, and then click the **Data Share** tab.
+
+    ![Navigate to Data Share.](./images/navigate-data-share.png " ")
+
+5. On the **Data Share** page, click **Enable Sharing**.
+
+    ![Enable Data Share.](./images/enable-sharing.png " ")
+
+6. In the **Enable Sharing** dialog box, click the **`ADMIN`** schema in the **Available Schemas** section, and then click the **>** (Select) button to add the selected schema to the **Selected Schemas** section. Click **Save**.
+
+    ![Select the admin schema.](./images/select-admin-schema.png " ")
+
+    The **Data Share** page is displayed.
+
+## Task 3: Consume the Data Share
+
+1. Click the **CONSUME SHARE** tile.
+
+    ![Click CONSUME SHARE.](./images/click-consume-share.png " ")
+
+2. On the **Consume Share** page, click the **Subscribe to Share Provider** drop-down list, and then select **Subscribe to Delta Share Provider**.
+
+    ![Click Subscribe to Share Provider.](./images/click-subscribe-share-provider.png " ")
+
+    The **Subscribe to Share Provider** wizard is displayed.
+
+3. On the **Provider Settings** page 1 of the wizard, specify the following:
+
+    * **Share Source:** Accept the default selection, **`Delta Share Provider JSON`**.
+    * **Share Provider JSON:** Accept the default selection, **`From File`**.
+    * **Delta Share Profile JSON:** Click this box. In the **Open** dialog box, navigate to the location where you downloaded the `open-data-sets.share` profile, select it, and then click **Open**.
+    * **Provider Name:** Enter **`training-data-share`**.
+
+      ![Complete the Subscribe to Share Provider panel.](./images/complete-subscribe-share-provider.png " ")
+
+4. Click **Next**. The **Add Shares** page 2 of the wizard is displayed. In the **Available Shares** section, click **DELTA_SHARING**, and then click the **>** (Select) button.
+
+    ![Select Share.](./images/select-share.png " ")
+
+    The **DELTA_SHARING** share is added to the **Selected Shares** section.
+
+    ![Click Subscribe.](./images/click-subscribe.png " ")
+
+5. Click **Subscribe**.
+
+6. On the **Link Data** page, click the **Select Cloud Store Location or enter a public URL** drop-down list.
+
+    ![Click drop-down list.](./images/click-location.png " ")
+
+7. Select the **training-data-share**. The **DELTA_SHARING** data share to which you subscribed is now displayed. You can drill down on this data share to display the available data. Let's create an external table based on the **`DEFAULT.BOSTON-HOUSING`** file. Drag and drop this file onto the data linking job section.
+
+    ![Drill-down on data share.](./images/drill-down-data-share.png " ")
+
+    The external table to be created is displayed in the data linking job section.
+
+    ![Target table displayed.](./images/target-table.png " ")
+
+    You can click the **Settings** icon to display the **Link Data from Cloud Store Location** panel. You can use the various tabs to change the name of the external table name to be created, view the table's properties, view the table's data, view the SQL code used to create the table and more. Click **Close** when you're done.
+
+    ![Click Settings.](./images/click-settings.png " ")
+
+8. Click **Start**. A **Start Link From Cloud Store** message box is displayed. Click **Run**.
+
+    ![Click Start > Run.](./images/click-start-run.png " ")
+
+9. After the link job is completed, make sure that the data link card has the link icon next to it. You can click the **Report** button for this link job to view a report of the total rows processed successfully and failed for the selected table.
+
+    ![Table created.](./images/table-created.png " ")
+
+10. Click the **`BOSTONHOUSING`** external table link to preview its data. Remember, the source data for this external table is the **`BOSTON-HOUSING`** data share.
+
+    ![Click the BOSTONHOUSING link.](images/click-bostonhousing.png)
+
+    The **`BOSTONHOUSING`** panel is displayed with the **Preview** tab selected by default that displays the external table's data.
+
+    ![Preview BOSTONHOUSING.](images/bostonhousing-preview.png)
+
+11. Click **Close** to exit the panel and to return to the Data Load Dashboard.
+
+<!-- Old tasks
+
+Task 3: Create a Database Credential and List the Available Schemas and Tables
 
 Create a new database credential that you will use in this task as follows:
 
@@ -100,7 +193,17 @@ Create a new database credential that you will use in this task as follows:
 
      ![Query the available schemas and tables in the Delta Share.](./images/schemas-tables-displayed.png " ")
 
-## Task 4: Create a Parquet External Table Based on a Table in the Delta Share
+     In the next task, you will access one of the data share tables, **`BOSTON-HOUSING`**, using the Data Sharing tool.
+
+Task 5: Create an External Table Based on a Table in the Delta Share
+
+Navigate the **Database Actions | Launchpad** page.
+
+1. Go back to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. On your **Autonomous Databases** page, click your **ADW-Data-Lake** Autonomous Database instance.
+
+2. On the **ADW-Data-Lake** page, click the **Database actions** drop-down list, and then click **View all database actions**.
+
+Task 4: Create a Parquet External Table Based on a Table in the Delta Share
 
 Create an external table and load it with data from the **`boston-housing`** table in the Delta Public share. Use the **`EXTERNAL_TABLE`** procedure in the **`DBMS_CLOUD`** package to create and populate the external table.
 
@@ -164,6 +267,8 @@ The PL/SQL block is executed successfully and the new **`BOSTONHOUSING`** extern
 
     ![Query external table.](./images/query-external-table.png " ")
 
+-->
+
 ## Learn more
 
 * [DBMS_CLOUD Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-package.html#GUID-CE359BEA-51EA-4DE2-88DB-F21A9FC10721)
@@ -175,14 +280,14 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024 Oracle Corporation.
+Copyright (C) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](files/https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

@@ -60,7 +60,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
     ```
     <copy>
-    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/JnW5Gl5btrPK_vx66MqWktIB_GKmdEkosRDcehPvc5hTGheJdD41pq2PmsBbdUUU/n/c4u04/b/building_blocks_utilities/o/select-ai-react-app/movie-app.zip
+    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ba2tl-Lz1tiUOX_3HLkkLuEMHG6vZs54nawkD0OtDrDXL1THcl4gd9XsyBN-od6O/n/c4u04/b/building_blocks_utilities/o/select-ai-react-app/movie-app.zip
     unzip movie-app
     cd movie-app
     </copy>

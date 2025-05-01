@@ -29,42 +29,45 @@ You will run a basic query on the `SSB` data set which is a 1 terabyte data set 
 
 - This lab requires completion of the Provision an Autonomous Database lab in the Contents menu on the left.
 
-## Task 1: Connect with SQL Worksheet
+## Task 1: Connect with The SQL Worksheet
 
 Although you can connect to your Oracle Autonomous Database using local PC desktop tools like Oracle SQL Developer, you can conveniently access the browser-based SQL Worksheet directly from your ADW or ATP console.
 
-1.  If you are not logged in to Oracle Cloud Console, log in and select **Autonomous Data Warehouse** from the navigation menu, make sure you are in the right compartment where your autonomous database is provisioned and navigate into your ADW Finance Mart instance.
+If you are still on the **Autonomous Databases** page from the previous lab, you can skip to step 3 below; Otherwise, start with step 1.
 
-    ![Oracle Home page left navigation menu.](https://oracle-livelabs.github.io/common/images/console/database-adw.png " ")
+1. Click the **Navigation** menu.
 
+    ![Click the Navigation menu.](./images/click-navigation-menu.png =40%x*)
 
-    ![Autonomous Databases homepage.](images/step1.1-adb.png " ")
+2. Click **Oracle Database**. Under **Oracle Database**, click **Autonomous Data Warehouse**.
 
-2. In your ADW Finance Mart database's details page, click the **Database Actions** dropdown list. Select **View all database actions**.
+    ![Select ADW.](./images/select-adw.png " ")
 
-    ![Click Database Actions button.](./images/click-database-actions-button.png " ")
+3. On the **Autonomous Databases** page, click your **`ADW_Finance_Mart`** instance. Make sure you are in the right compartment and region where your autonomous database is provisioned. In this example, we used our own compartment, **`training-adw-compartment`**.
 
-3.  A sign-in page opens for Database Actions. For this lab, simply use your database instance's default administrator account, **Username - admin**, and click **Next**.
+    ![Click ADW instance.](./images/click-adw-instance.png " ")
 
-    ![Enter the admin username.](./images/Picture100-16.png " ")
+4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
-4. Enter the admin **Password** you specified when creating the database. Click **Sign in**.
+    ![Click SQL from Database actions drop-down list.](images/click-sql.png " ")
 
-    ![Enter the admin password.](./images/Picture100-16-password.png " ")
+5. The first time you open the SQL Worksheet, a warning and a message box may appear. Close those boxes.
 
-5. The Database Actions page opens. In the **Development** box, click **SQL**.
+    ![SQL Worksheet with informational boxes.](./images/informational-boxes.png " ")
 
-    ![Click SQL.](./images/Picture100-16-click-sql.png " ")
+    The SQL Worksheet is displayed.
 
-6.  The first time you open SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the Tour button (labeled with binoculars symbol) in the upper right corner. Click **Next** to take a tour through the informational boxes.
-
-    ![SQL Worksheet.](./images/Picture100-sql-worksheet.png " ")
+    ![The SQL Worksheet is displayed.](./images/sql-worksheet.png " ")
 
 ## Task 2: Run scripts in SQL Worksheet
 
 Run a query on a sample Oracle Autonomous Database data set.
 
-1.  Copy and paste the code snippet below to your SQL Worksheet. This query will run on the Star Schema Benchmark (ssb.customer), one of the two ADW sample data sets that you can access  from any ADW instance. Take a moment to examine the script. Make sure you click the **Run Statement** button to run it in SQL Worksheet so that all the rows display on the screen.
+1. Copy and paste the code to your SQL Worksheet. The first time you paste code into the SQL Worksheet, a message is displayed. Click **Allow**.
+
+    ![Copy code into the sql worksheet.](./images/click-allow.png =40%x*)
+
+    This query will run on the Star Schema Benchmark (ssb.customer), one of the two ADW sample data sets that you can access from any ADW instance. Take a moment to examine the query. Click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -77,21 +80,21 @@ Run a query on a sample Oracle Autonomous Database data set.
 
     ![Paste the code and click Run Script.](./images/ssb-query-low-results-sql-worksheet.png " ")
 
-2.  Take a look at the output response from your Autonomous Data Warehouse.
+2. Review the output response from your Autonomous Data Warehouse.
 
-3.  When possible, ADW also *caches* the results of a query for you. If you run identical queries more than once, you will notice a much shorter response time when your results have been cached.
+3. When possible, ADW also *caches* the results of a query for you. If you run identical queries more than once, you will notice a much shorter response time when your results have been cached.
 
-4.  You can find [more sample queries to run](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html) in the ADW documentation.
+4. You can find more sample queries to run in the [Sample Star Schema Benchmark (SSB) Queries and Analytic Views](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/sample-queries.html) documentation.
 
 You may now **proceed to the next lab**.
 
 ## Learn more
 
-Go to [the documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/sql-developer-web.html#GUID-102845D9-6855-4944-8937-5C688939610F) on connecting with the built-in Oracle Database Actions.
+* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/index.html)
 
 ## **Acknowledgements**
 
-- **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
-- **Contributors** - Oracle LiveLabs QA Team (Arabella Yao, Product Manager Intern | Ayden Smith, QA Intern)
-- **Last Updated By/Date** - Richard Green, August 2023
+- **Authors:**
+    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Nilay Panchal, Oracle Autonomous Database Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, January 2025

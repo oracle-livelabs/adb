@@ -1,0 +1,46 @@
+{
+    "workshoptitle": " Set up live data sharing between Oracle Databases using Cloud Links and PL/SQL APIs",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "type":"livelabs",
+            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "filename": "./../../introduction/introduction.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+            "title": "Lab 1: Create a Share Provider User",
+            "type":"livelabs",
+            "description": "This lab walks you through how to create a share provider user.",
+            "filename": "./../../create-user/create-user.md"
+        },
+        {
+            "title": "Lab 2: Create, Populate, and Publish a Data Share",
+            "type":"livelabs",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../create-share/create-share.md"
+        },
+        {
+            "title": "Lab 3: Create and Authorize the Data Share Recipient",
+            "type":"livelabs",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../create-share-recipients/create-share-recipients.md"
+        },
+        {
+            "title": "Lab 4: Consume the Data Share",
+            "type":"livelabs",
+            "description": "This lab walks you through how to load local data into your ADW instance.",
+            "filename": "./../../consume-share/consume-share.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

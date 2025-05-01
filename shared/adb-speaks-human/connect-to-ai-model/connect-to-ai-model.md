@@ -1,5 +1,9 @@
 # Allow Users to Connect to Your LLM
 
+<!---
+I removed this lab from the manifest.json on July 24 since we are using oci genai. 
+I am keeping the lab in case we need instruction in the future on using OpenAI as the model.
+--->
 ## Introduction
 
 You can use different large language models (LLM) with Autonomous Database. In this lab, you will enable the user **`MOVIESTREAM`** to use the LLM that you set up in the previous lab.
@@ -89,11 +93,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
   * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
   * **Contributors:** Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, March 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

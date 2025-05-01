@@ -65,11 +65,7 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png " ")
 
-7. Click the **Settings** icon (pencil) for the **customer\_contact** load task to view its settings.
-
-    ![Click the pencil icon to open settings viewer for customer_contact load task](images/click-customer-contact-settings.png =50%x*)
-
-    The **Load Data from Cloud Store Location customer_contact** settings panel is displayed.
+7. Click the **Settings** icon (pencil) for the **customer\_contact** load task to view its settings. The **Load Data from Cloud Store Location customer_contact** settings panel is displayed.
 
 8. The **Database Actions** load job will create a **`CUSTOMER_CONTACT`** table with the listed columns and data types that are based on the selected **`.csv`** file. Review the information and the loading options. In the **Mapping** section, notice that you can change the target column names, data types, and length/precision. Click **Close** to close the settings viewer panel.
 
@@ -117,7 +113,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer
 * **Contributors:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, April 2024
+* **Last Updated By/Date:** Lauran Serhal, December 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -127,4 +123,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

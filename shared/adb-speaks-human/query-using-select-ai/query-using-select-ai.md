@@ -33,73 +33,47 @@ An AI profile captures the properties of your LLM provider plus the tables and v
 
 You can have multiple profiles where each one is pointing to different models or enabling different tables and views.
 
-To get started, you'll need to do the following:
+>**Note:** In this workshop, we are using OCI Generative AI and the resource principal.
 
-* Create a credential that is used to sign LLM API requests using the **`DBMS_CLOUD.CREATE_CREDENTIAL`** PL/SQL package as follows. For additional information, see the [CREATE_CREDENTIAL procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-742FC365-AA09-48A8-922C-1987795CF36A) documentation.
+To get started, you'll need to create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _LLM provider_ and _the metadata such as schemas, tables, views, and so on that can be used for natural language queries_. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
 
-    >**Note:** Don't run the following code. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following credential.
+_**Don't run the following code**_. This is for informational purpose in this task. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following profile.
 
-    ```
-    BEGIN
-        dbms_cloud.create_credential (
-            credential_name  => 'OPENAI_CRED',
-            username => 'OPENAI',
-            password => 'enter-your-LLM-secret-key-here'
+```
+begin
+    dbms_cloud_ai.drop_profile(
+        profile_name => 'genai',
+        force => true);
+        dbms_cloud_ai.create_profile(
+        profile_name => 'genai',
+        attributes =>
+        '{"provider": "oci",
+        "credential_name": "OCI$RESOURCE_PRINCIPAL",
+        "comments":"true",
+        "object_list": [
+        {"owner": "MOVIESTREAM", "name": "GENRE"},
+        {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
+        {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
+        {"owner": "MOVIESTREAM", "name": "STREAMS"},       
+        {"owner": "MOVIESTREAM", "name": "MOVIES"},
+        {"owner": "MOVIESTREAM", "name": "ACTORS"}
+        ]
+        }'
         );
-    END;
-    /
-    ```
+end;
+/
+```
 
-* Create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _LLM provider_ and _the metadata such as schemas, tables, views, and so on that can be used for natural language queries_. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+Since you can have multiple **Select AI** profiles, you need to pick the one to use for your session. Use the **`DBMS_CLOUD_AI.SET_PROFILE`** procedure to specify which profile to use as follows:
 
-    >**Note:** Don't run the following code. In **Task 4** in this lab, you will import and run a Notebook that contains a paragraph that creates the following profile.
-
-    ```
-    BEGIN
-        DBMS_CLOUD_AI.CREATE_PROFILE(
-            profile_name => 'openai_gpt35',
-            attributes =>
-                '{"provider": "openai",
-                "credential_name": "OPENAI_CRED",
-                "object_list": [{"owner": "MOVIESTREAM", "name": "movies"},
-                                {"owner": "MOVIESTREAM", "name": "streams"},
-                                {"owner": "MOVIESTREAM", "name": "customer_extension"},
-                                {"owner": "MOVIESTREAM", "name": "pizza_shop"},
-                                {"owner": "MOVIESTREAM", "name": "actors"},
-                                {"owner": "MOVIESTREAM", "name": "genre"},
-                                {"owner": "MOVIESTREAM", "name": "customer_segment"},
-                                {"owner": "MOVIESTREAM", "name": "customer_contact"}
-                                ]
-                }'
-            );
-    END;
-    /
-    ```
-
-<!-- Requetsed to change as it was causing an ML issue 
-* Create a logon trigger that will automatically set the profile for new connections session. In this workshop, we have only one LLM profile; therefore, you can create a **`LOGON`** trigger that sets the profile for your session. For additional information, see the [PL/SQL Triggers](https://docs.oracle.com/en/database/oracle/oracle-database/19/lnpls/plsql-triggers.html#GUID-217E8B13-29EF-45F3-8D0F-2384F9F1D231) documentation.
-
-    ```
-    <copy>
-    CREATE OR REPLACE TRIGGER SET_AI_PROFILE AFTER LOGON ON SCHEMA
-        BEGIN
-            DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
-        END;
-    /
-    </copy>
-    ```
-    -->
-
-* Since you can have multiple **Select AI** profiles, you need to pick the one to use for your session. Use the **`DBMS_CLOUD_AI.SET_PROFILE`** procedure to specify which profile to use as follows:
-
-    ```
-    <copy>
-    BEGIN
-        DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'openai_gpt35');
-    END;
-    /
-    </copy>
-    ```
+```
+<copy>
+BEGIN
+    DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'genai');
+END;
+/
+</copy>
+```
 
 ### **Ask Natural Language Questions**
 
@@ -175,11 +149,9 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
-If you already have the **SQL| Oracle Database Actions** browser tab open from the previous lab, click the **Database Actions | SQL** banner to display the Database **Database Actions | Launchpad** Home page. Click the **Development** tab, and then click the **Oracle Machine Learning** tab to display the **Sign In** page. Continue with **step 7** below.
+![Click the banner](./images/click-banner.png " ")
 
-   ![Click the banner](./images/click-banner.png " ")
-
-If you are no longer logged in to your Cloud account, start with **step 1** below.
+If you are no longer logged in to your Cloud account, start with **step 1** below. If you are still connected to your SQL Worksheet as the **`moviestream`** user from an earlier lab, sign out of this user and sign in as the **`ADMIN`** user using the drop-down list next to the user name in the banner.
 
 1. Log in to the **Oracle Cloud Console** as the Cloud Administrator.
 
@@ -189,7 +161,7 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
 3. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-4. On the **Autonomous Databases** page, make sure that the **`your-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section, and then click your **`MovieStreamWorkshop`** ADB that you provisioned earlier.
+4. On the **Autonomous Databases** page, make sure that the **`your-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section, and then click your ADB instance that you provisioned earlier.
 
 5. On the **Autonomous Database Details** page, click the **Database Actions** drop-down list, and then select **View all database actions** from the list.
 
@@ -199,55 +171,53 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
     ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
 
-7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 Step 6** in the **Password** field, and then click **Sign In**.
+7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 > Step 6** in the **Password** field, and then click **Sign In**.
 
     ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
 
     The **Oracle Machine Learning** Home page is displayed. You can use this landing page to access tutorials, model creation, notebooks, and much more.
 
-    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page.png " ")
+    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-new.png " ")
 
-8. In the **Quick Actions** section, click the **Notebooks** button. The **OML Notebooks EA (Early Adopter)** page is displayed.
+8. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
 
-    ![The Notebooks page is displayed](./images/notebooks-ea-page.png " ")
+    ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
 
 ## Task 3: Import a Notebook into OML
 
-You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **ADB Speaks Human** contains all the steps for setting up the **Select AI** profile and then run natural language queries. In this task, you will first download the **ADB Speaks Human** OML notebook to your local machine, and then import this notebook into OML.
+You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **adb-speaks-human-notebook** contains all the steps for setting up the **Select AI** profile and then run natural language queries. In this task, you will first download the **`adb-speaks-human-notebook.dsnb`** OML notebook to your local machine, and then import this notebook into OML.
 
-1. Click the button below to download the ADB Speaks Human OML notebook:
+1. Click the button below to download the notebook:
 
-    <a href="../notebook/ADB-Speaks-Human.dsnb" class="tryit-button">Download notebook</a>
+    <a href="../notebook/adb-speaks-human-notebook.dsnb" class="tryit-button">Download notebook</a>
 
-2. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`ADB Speaks Human.dsnb`** notebook file. The file is displayed in the **File name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+2. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`adb-speaks-human-notebook.dsnb`** notebook file. The file is displayed in the **File name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
     ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
 
-    If the import is successful, a notification is displayed and the **`ADB Speaks Human`** notebook is displayed in the list of available notebooks.
+    If the import is successful, a notification is displayed and the **`adb-speaks-human-notebook`** notebook is displayed in the list of available notebooks.
 
     ![The newly imported notebook is displayed.](./images/import-successful.png " ")
 
-3. Open the imported notebook. Click the **ADB Speaks Human** notebook link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+3. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
-
-    ![The notebook and the paragraphs it contains is displayed in the Notebook Editor.](./images/notebook-displayed.png " ")
 
 ## Task 4: Review and Run the Imported Notebook
 
 A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL, Python, R, markdown and more. The **ADB Speaks Human** notebook is well-documented using markdown code. Examine the paragraphs in the notebook and then execute the code. Feel free to run different types of queries!
 
-1. Display the code sections of all paragraphs in the notebook. On the notebook banner, the **Show Code** icon. This is a toggle icon that you can use to show or hide the code in all paragraphs.
+1. In this notebook, the code sections of all paragraphs in the notebook are displayed. We already ran all the markdown paragraphs and the results (outputs) are displayed. To show or hide the code sections in all the paragraphs, on the notebook's banner, click the **Show Code** icon. This is a toggle icon that you can use to show or hide the code in all paragraphs.
 
     ![Select Show Code from the Actions drop-down menu](./images/show-code.png =75%x*)
 
-    The code section of each paragraph is displayed. For example, paragraph 1 uses the **`%md`** (Markdown) interpreter.
+    For example, paragraph 1 uses the **`%md`** (Markdown) interpreter.
 
-    ![A paragraph with the markdown interpreter](./images/code-displayed.png " ")
+    ![A paragraph with the markdown interpreter](./images/code-displayed.png =75%x*)
 
-    In this notebook, the **`%md`** (Markdown) paragraphs provide useful information about the paragraphs. The **`%md`** Markdown interpreter generates static html from plain Markdown text. In this lab, you will review the code in each paragraph one at a time, run that paragraph, and review the results as desired.
+    In this notebook, the **`%md`** (Markdown) paragraphs provide useful information about the paragraphs. The **`%md`** Markdown interpreter generates static html from plain Markdown text. In this lab, you will review the code in each paragraph one at a time, run that paragraph, and review the results as desired. It is a good idea to hide the code of any .md paragraph.
 
-2. Display the result (output) sections of all paragraphs in the notebook. On the notebook banner, click the **Show Result/Hide Result** icon to show the output sections of the paragraphs where the output section is not shown by default.
+2. By default, when you imported the notebook, the results (output) sections of the .md paragraphs were run and displayed. On the notebook banner, click the **Show Result/Hide Result** icon to show the output sections of the paragraphs where the output section is not shown by default.
 
     ![The Show/hide the output icon on the notebook toolbar is shown as clicked.](./images/show-result.png " ")
 
@@ -259,22 +229,15 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     The code sections are hidden. It is good practice to hide the code section of a **`%md`** paragraph since you are only interested in looking at the formatted output.
 
-4. The terraform setup script that you ran in Lab 1 created the credential you see in this paragraph. You need to create a credential in order to connect to an AI provider. The create credential code run by the setup script is listed below; your secret key was used as the credential password. Any user name can be used.
-
-    ![Replace the password placeholder with your own secret key.](./images/create-credential.png " ")
-
-5. To run a paragraph, click the **Run Paragraph** icon for the paragraph.
+4. To run a paragraph, click the **Run Paragraph** icon for the paragraph.
 
     ![To run a paragraph, click the Run icon for the paragraph](./images/run-paragraph.png " ")
-
-    The status of the paragraph goes from `READY` to `PENDING` to `RUNNING` to `FINISHED`.
 
     >**Note:** If the status of one or more paragraphs shows **ERROR**, reset your notebook connection using the **Invalidate Session** icon in the banner, and then re-run the notebook.
 
     ![Invalidate the session.](./images/invalidate-session.png =60%x*)
 
-
-6. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
+5. Examine, run, and review the output of the remaining paragraphs, as desired. To run the entire notebook, click the **Run Paragraphs** icon on the notebook banner. A **Run all paragraphs** confirmation message box is displayed. Click **Confirm**.
 
   ![Run all paragraphs](images/run-all-paragraph.png)
 
@@ -286,19 +249,20 @@ You may now proceed to the next lab.
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, March 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
