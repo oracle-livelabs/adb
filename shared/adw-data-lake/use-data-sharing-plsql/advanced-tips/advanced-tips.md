@@ -252,6 +252,24 @@ at the share level.
 
 ## Task 4: Call a Delta Sharing Endpoint from PL/SQL
 
+ When integrating with external Delta Sharing providers such as Databricks, it's important to verify that the Delta Sharing endpoint is reachable from Oracle ADB. This task shows how to configure network access and call the API to list shares and tables in the shares using PL/SQL.
+
+Prerequisite:
+
+You must have a valid Delta Sharing activation profile with:
+
+* endpoint URL
+* bearer token
+* optional expiration date
+
+**Example:**
+-- {
+--   "shareCredentialsVersion":1,
+--   "bearerToken":"FRBK-SjR2cGT58dD8VMyEAyTagaiSJ6D0UKljjqDcTbZciBNpmX1F3c5R1oz85L0",
+--   "endpoint":"https://westus.azuredatabricks.net/api/2.0/delta-sharing/metastores/1740e12d-77bc-4bf8-a9d0-14e932246739",
+--   "expirationTime":"9999-12-31T23:59:59.999Z"
+-- }
+
 In this task, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
 
 * XML file name for ACL configuration
