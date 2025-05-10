@@ -52,7 +52,7 @@
         }
         ,
         {
-            "title": "Lab 6: Advanced Data Share Tips",
+            "title": "Lab 6: Advanced Data Share Techniques",
             "type":"freetier",
             "description": "This lab walks you through how to use some advanced data share tips.",
             "filename": "./../../advanced-tips/advanced-tips.md"
