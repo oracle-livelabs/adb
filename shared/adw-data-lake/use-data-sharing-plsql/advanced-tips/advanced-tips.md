@@ -263,21 +263,16 @@ You must have a valid Delta Sharing activation profile with:
 * optional expiration date
 
 **Example:**
--- {
---   "shareCredentialsVersion":1,
---   "bearerToken":"FRBK-SjR2cGT58dD8VMyEAyTagaiSJ6D0UKljjqDcTbZciBNpmX1F3c5R1oz85L0",
---   "endpoint":"https://westus.azuredatabricks.net/api/2.0/delta-sharing/metastores/1740e12d-77bc-4bf8-a9d0-14e932246739",
---   "expirationTime":"9999-12-31T23:59:59.999Z"
--- }
+
+![Exampe .](images/example.png)
 
 In this task, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
 
-* XML file name for ACL configuration
-* Grant the `admin` user (or role) the connect privilege
-* Assign this ACL to the Databricks host on port 443 (HTTPS)
-* (Optional): Add the privilege to resolve host names for the specified user
+Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to external network resources. In this step, you will do the following:
 
-You will also provide the URL for an endpoint and token from your activation profile to fetch and print the list of shares and the tables in a specific share from the specified endpoint.
+* Create an ACL file.
+* Grant `HTTPS` (port 443) access to a specific host, Databricks endpoint in our example.
+* Grant DNS resolution rights to the user (or role), `admin` in our example.
 
 1. Log out of the `share_provider` user and then log in as the **`admin`** user. Create an Access Control List (ACL) to allow outbound connections over HTTPS for the `admin` user. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
@@ -301,7 +296,7 @@ You will also provide the URL for an endpoint and token from your activation pro
         upper_port  => 443
     );
 
-    -- Optional: Add privilege to resolve hostnames for the user
+    -- Optionally grant permission to resolve hostnames (DNS lookup)
     DBMS_NETWORK_ACL_ADMIN.ADD_PRIVILEGE(
         ACL         => 'databricks_acl_west.xml',
         PRINCIPAL   => 'ADMIN',
@@ -315,38 +310,47 @@ You will also provide the URL for an endpoint and token from your activation pro
 
     ![Set ACLs.](images/set-acls.png)
 
-2. List the shares and tables from an endpoint from your activation profile. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+2. In this step, you will do the following:
+
+* Define the Delta Sharing API endpoint and token.
+* Call the `/shares` endpoint to list shares.
+* Call the `/tables` endpoint to list tables in a specific share.
+* Use `UTL_HTTP` to send `HTTPS` requests and read responses.
+
+    Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     DECLARE
-        -- Endpoint and token from activation profile
+        --  Define the endpoint and authorization information
         V_ENDPOINT       VARCHAR2(4000) := 'https://westus.azuredatabricks.net/api/2.0/delta-sharing/metastores/1740e12d-77bc-4bf8-a9d0-14e932246739';
         V_URL_SHARES     VARCHAR2(4000) := V_ENDPOINT || '/shares'; -- URL to list shares
         V_URL_TABLES     VARCHAR2(4000);                             -- URL to list tables in a specific share
         V_BEARER_TOKEN   VARCHAR2(200) := 'FRBK-SjR2cGT58dD8VMyEAyTagaiSJ6D0UKljjqDcTbZciBNpmX1F3c5R1oz85L0';
         V_RESPONSE       CLOB;
 
-        -- HTTP request/response handlers
+        -- Variables for managing HTTP request and response
         L_HTTP_REQ       UTL_HTTP.REQ;
         L_HTTP_RESP      UTL_HTTP.RESP;
         L_BUFFER         VARCHAR2(32767);
 
-        -- Procedure to fetch response from a given URL
+        -- Procedure to call an API URL and return the response as CLOB
         PROCEDURE FETCH_API_RESPONSE (
             P_URL      VARCHAR2,
             P_RESPONSE OUT CLOB
         ) IS
         BEGIN
-            -- Initiate a GET request
+            -- Start HTTP GET request
             L_HTTP_REQ := UTL_HTTP.BEGIN_REQUEST(P_URL, 'GET');
 
-            -- Set required headers
+            -- Add required headers: Authorization and Content-Type
             UTL_HTTP.SET_HEADER(L_HTTP_REQ, 'Authorization', 'Bearer ' || V_BEARER_TOKEN);
             UTL_HTTP.SET_HEADER(L_HTTP_REQ, 'Content-Type', 'application/json');
 
-            -- Submit the request and capture the response
+            -- Execute the request and get the response
             L_HTTP_RESP := UTL_HTTP.GET_RESPONSE(L_HTTP_REQ);
+
+            --Create a temporary CLOB to store the response
             DBMS_LOB.CREATETEMPORARY(P_RESPONSE, TRUE);
 
             -- Read the response in chunks and append to the CLOB
@@ -360,27 +364,27 @@ You will also provide the URL for an endpoint and token from your activation pro
                 END;
             END LOOP;
 
-            -- Clean up HTTP response
+            -- Always clean up the HTTP response to free memory
             UTL_HTTP.END_RESPONSE(L_HTTP_RESP);
 
         EXCEPTION
             WHEN OTHERS THEN
-                -- Clean up even in case of error
+                -- If there's an error, ensure the response is still closed
                 BEGIN
                     UTL_HTTP.END_RESPONSE(L_HTTP_RESP);
                 EXCEPTION
-                    WHEN OTHERS THEN NULL;
+                    WHEN OTHERS THEN NULL; -- Suppress secondary error
                 END;
-                RAISE;
+                RAISE; -- Propagate the original error
         END FETCH_API_RESPONSE;
 
     BEGIN
-        -- Fetch and print the list of shares from the endpoint
+      -- Call the /shares endpoint and print the result
         FETCH_API_RESPONSE(V_URL_SHARES, V_RESPONSE);
         DBMS_OUTPUT.PUT_LINE('Shares: ' || V_RESPONSE);
 
-        -- Now try to fetch tables for a specific share
-        -- Replace 'dbr2oracle' with your actual share name if needed
+        -- Call the /tables endpoint for a specific share, 'dbr2oracle' in our example
+        
         V_URL_TABLES := V_ENDPOINT || '/shares/dbr2oracle/schemas/default/tables';
         FETCH_API_RESPONSE(V_URL_TABLES, V_RESPONSE);
         DBMS_OUTPUT.PUT_LINE('Tables in dbr2oracle: ' || V_RESPONSE);
