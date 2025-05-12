@@ -33,31 +33,31 @@ This lab assumes that:
 3. On the **Buckets** page, click the bucket's name link to which you want to upload the files. The **Bucket Details** page is displayed.
 
 
-![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/bucket_page.png)
+  ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/bucket_page.png)
 
 4. Scroll down the page to the **Objects** section, and then click **Upload**.
 
-![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/upload.png)
+  ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/upload.png)
 
 5. In the **Upload Objects** panel, you can drag and drop a single or multiple files into the **Choose Files from your Computer** field or click **select files** to choose the file that you want to upload from your computer.
 
-![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/upload_file.png)
+  ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/upload_file.png)
 
 6. Click **Upload** to upload the selected file to the bucket.
 
 7. When the file is uploaded, click **Close** to close the **Upload Objects** panel. The **Bucket Details** page is re-displayed. The newly uploaded file is displayed in the **Objects** section.
 
-![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/uploaded_file.png)
+  ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/uploaded_file.png)
 
 8. Note the URL path (URI) of your uploaded Postresql file. In the row showing the uploads, click more actions at the end of the row (ellipsis) and select **View Object Details**.
 
-![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/object_details.png)
+  ![Use DBMS_CLOUD_MIGRATION.ENABLE_TRANSLATION Procedure](images/object_details.png)
 
 8. To return to the **Buckets** page, click **Object Storage** in the breadcrumbs.
 
 ## Task 2: Connect to your ADB Instance
 
-1. Navigate to your SQL Worksheet and login with your credentials.
+    Navigate to your SQL Worksheet and login with your credentials.
 
 ## Task 3: Create a credential to access Cloud Object Storage
 
@@ -75,7 +75,7 @@ END;
 /
   </copy>
 ```
-![Use migrate_postresql_file Procedure](images/create_credentials.png)
+  ![Use migrate_postresql_file Procedure](images/create_credentials.png)
 
 This creates a credential object to access Cloud Object Store.
 
@@ -100,7 +100,7 @@ END;
 /
  </copy>
 ```
- ![Use migrate_postresql_file Procedure](images/migrate_postresql_file.png)
+   ![Use migrate_postresql_file Procedure](images/migrate_postresql_file.png)
 
  This translates the PostgreSQL file to Oracle SQL and generates a new file with the name **postgretestsql_oracle.sql**.
 
@@ -116,7 +116,7 @@ END;
   </copy>
 ```
 
- ![Use Use migrate_postresql_file Procedure](images/verify_output.png)
+   ![Use Use migrate_postresql_file Procedure](images/verify_output.png)
 
  **Note:** Replace the **location_uri** parameter value with the location URI value you noted in **Step 8** of **Task 1**.
 
@@ -124,4 +124,4 @@ END;
 
 - **Author:**       - Shilpa Sharma, Principal User Assistance Developer
 - **Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** - Shilpa Sharma, April 2025
+- **Last Updated By/Date:** - Shilpa Sharma, May 2025

@@ -82,14 +82,14 @@ Next, perform the following steps to obtain the **TLS connection string**.
 
 12. In **New / Select** Database Connection dialog box, specify the following information:
 
-  - **Name**: Enter a name for this connection, such as connection without wallet using TLS.
-  - **Username**: Enter the database username. You can either use the default administrator database account ADMIN provided as part of the service or create a new schema, and use it.
-  - **Password**: Enter the password you created for the database user such as Training4ADB.
-  - **Connection Type**: Select Custom JDBC.
-  - **Custom JDBC URL**: Enter the following:
+   - **Name**: Enter a name for this connection, such as connection without wallet using TLS.
+   - **Username**: Enter the database username. You can either use the default administrator database account ADMIN provided as part of the service or create a new schema, and use it.
+   - **Password**: Enter the password you created for the database user such as Training4ADB.
+   - **Connection Type**: Select Custom JDBC.
+   - **Custom JDBC URL**: Enter the following:
   **jdbc:oracle:thin:@** followed by the connection string you copied in **Step 9**.
 
- ![SQLdeveloper connection dialog](images/sql-dev-connection-dialog.png)
+![SQLdeveloper connection dialog](images/sql-dev-connection-dialog.png)
 
  **Note**: When you copy the connection string, the values for **region** and **databasename** are for your Oracle Autonomous Database instance.
 
@@ -216,4 +216,4 @@ This disables the real-time SQL translation in your session.
 
 - **Author:**       - Shilpa Sharma, Principal User Assistance Developer
 - **Contributors:** - Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** - Shilpa Sharma, April 2025
+- **Last Updated By/Date:** - Shilpa Sharma, May 2025
