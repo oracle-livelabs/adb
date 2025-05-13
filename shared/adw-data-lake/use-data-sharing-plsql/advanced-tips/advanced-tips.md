@@ -1,4 +1,4 @@
-# Use Data Share Advanced Tips
+# Use Data Share Advanced Techniques
 
 ## Introduction
 
@@ -397,7 +397,7 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
 
     ![Print shares and tables.](images/print-shares-tables.png)
 
-You may now proceed to the next lab.
+You may now proceed to the next lab!
 
 ## Learn More
 
