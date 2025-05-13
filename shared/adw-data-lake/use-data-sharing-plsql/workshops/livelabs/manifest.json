@@ -44,6 +44,13 @@
             "filename": "./../../consume-share/consume-share.md"
         },
         {
+            "title": "Lab 5: Advanced Data Share Techniques",
+            "type":"freetier",
+            "description": "This lab walks you through how to use some advanced data share tips.",
+            "filename": "./../../advanced-tips/advanced-tips.md"
+        }
+        ,
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
