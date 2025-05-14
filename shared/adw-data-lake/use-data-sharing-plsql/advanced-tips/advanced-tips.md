@@ -258,13 +258,13 @@ Prerequisite:
 
 You must have a valid Delta Sharing activation profile with:
 
-* endpoint URL
-* bearer token
-* optional expiration date
+* Bearer token
+* Endpoint URL
+* Optional expiration date
 
 **Example:**
 
-![Exampe .](images/example.png)
+![Example .](images/example.png)
 
 In this task, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
 
@@ -274,7 +274,7 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
 * Grant `HTTPS` (port 443) access to a specific host, Databricks endpoint in our example.
 * Grant DNS resolution rights to the user (or role), `admin` in our example.
 
-1. Log out of the `share_provider` user and then log in as the **`admin`** user. Create an Access Control List (ACL) to allow outbound connections over HTTPS for the `admin` user. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Log out of the **`share_provider`** user and then log in as the **`admin`** user. Create an Access Control List (ACL) to allow outbound connections over HTTPS for the `admin` user. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -283,9 +283,9 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
     DBMS_NETWORK_ACL_ADMIN.CREATE_ACL(
         ACL         => 'databricks_acl_west.xml', -- XML file name for ACL config
         DESCRIPTION => 'Allow outbound HTTPS requests',
-        PRINCIPAL   => 'ADMIN',                    -- Grant to this user or role
+        PRINCIPAL   => 'ADMIN',     -- Grant to this user or role
         IS_GRANT    => TRUE,
-        PRIVILEGE   => 'connect'                   -- Allow connect privilege
+        PRIVILEGE   => 'connect'    -- Allow connect privilege
     );
 
     -- Assign this ACL to the Databricks host on port 443 (HTTPS)
@@ -296,7 +296,7 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
         upper_port  => 443
     );
 
-    -- Optionally grant permission to resolve hostnames (DNS lookup)
+    -- Optional: Add privilege to resolve hostnames for the user
     DBMS_NETWORK_ACL_ADMIN.ADD_PRIVILEGE(
         ACL         => 'databricks_acl_west.xml',
         PRINCIPAL   => 'ADMIN',
@@ -325,7 +325,8 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
         --  Define the endpoint and authorization information
         V_ENDPOINT       VARCHAR2(4000) := 'https://westus.azuredatabricks.net/api/2.0/delta-sharing/metastores/1740e12d-77bc-4bf8-a9d0-14e932246739';
         V_URL_SHARES     VARCHAR2(4000) := V_ENDPOINT || '/shares'; -- URL to list shares
-        V_URL_TABLES     VARCHAR2(4000);                             -- URL to list tables in a specific share
+        -- URL to list tables in a specific share
+        V_URL_TABLES     VARCHAR2(4000);
         V_BEARER_TOKEN   VARCHAR2(200) := 'FRBK-SjR2cGT58dD8VMyEAyTagaiSJ6D0UKljjqDcTbZciBNpmX1F3c5R1oz85L0';
         V_RESPONSE       CLOB;
 
@@ -383,7 +384,7 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
         FETCH_API_RESPONSE(V_URL_SHARES, V_RESPONSE);
         DBMS_OUTPUT.PUT_LINE('Shares: ' || V_RESPONSE);
 
-        -- Call the /tables endpoint for a specific share, 'dbr2oracle' in our example
+        -- Call the /tables endpoint for a specific share, 'dbr2oracle' in our example.
         
         V_URL_TABLES := V_ENDPOINT || '/shares/dbr2oracle/schemas/default/tables';
         FETCH_API_RESPONSE(V_URL_TABLES, V_RESPONSE);
