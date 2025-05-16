@@ -7,7 +7,7 @@ The purpose of this workshop is to introduce you to the `DBMS_CLOUD_MIGRATION` p
 
 Estimated Workshop Time: 90 minutes
 
-**<i>Note: At present, the `DBMS_CLOUD_MIGRATION` package supports the migration of SQL statements written in <b>PostgreSQL</b>, <b>MySQL</b> and <b>SQL Server</b>.</i>**
+**<i>Note: At present, the `DBMS_CLOUD_MIGRATION` package supports the migration of SQL statements written in <b>PostgreSQL</b>, <b>MySQL</b> and <b>SQL Server</b>. This workshop demonstrates translation and migration of the SQL statements from PostgreSQL to Oracle SQL.</i>**
 
 
 ## Objectives
@@ -35,4 +35,4 @@ Let's begin! If you need to create an Oracle Cloud account, please click Get Sta
 
 - **Authors** - Shilpa Sharma, Prinicipal User Assistance Developer
 - **Contributors** - Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date** - Shilpa Sharma, April 2025
+- **Last Updated By/Date** - Shilpa Sharma, May 2025

@@ -57,7 +57,7 @@ This lab assumes that:
 
 ## Task 2: Connect to your ADB Instance
 
-    Navigate to your SQL Worksheet and login with your credentials.
+  Navigate to your SQL Worksheet and login with your credentials.
 
 ## Task 3: Create a credential to access Cloud Object Storage
 
@@ -77,7 +77,7 @@ END;
 ```
   ![Use migrate_postresql_file Procedure](images/create_credentials.png)
 
-This creates a credential object to access Cloud Object Store.
+ This creates a credential object to access Cloud Object Store.
 
 **Note:** The **username** and **password** arguments together specify your cloud service credentials.
 
@@ -100,7 +100,7 @@ END;
 /
  </copy>
 ```
-   ![Use migrate_postresql_file Procedure](images/migrate_postresql_file.png)
+  ![Use migrate_postresql_file Procedure](images/migrate_postresql_file.png)
 
  This translates the PostgreSQL file to Oracle SQL and generates a new file with the name **postgretestsql_oracle.sql**.
 
