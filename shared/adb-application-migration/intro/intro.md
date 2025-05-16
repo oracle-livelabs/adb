@@ -10,7 +10,7 @@ Estimated Workshop Time: 90 minutes
 **<i>Note: At present, the `DBMS_CLOUD_MIGRATION` package supports the migration of SQL statements written in <b>PostgreSQL</b>, <b>MySQL</b> and <b>SQL Server</b>. This workshop demonstrates translation and migration of the SQL statements from PostgreSQL to Oracle SQL.</i>**
 
 
-## Objectives
+### Objectives
 
 - Provision an Oracle Autonomous Database
 - Connect to the Oracle Autonomous Database using the SQL Worksheet
@@ -19,7 +19,7 @@ Estimated Workshop Time: 90 minutes
 - Run PostgreSQL Statements in Autonomous Database
 - Translate PostgreSQL files to Oracle SQL
 
-## Prerequisites
+### Prerequisites
 
 This workshop requires an Oracle Cloud account. You may use your existing account or create one in the following lab.
 
@@ -27,11 +27,11 @@ This workshop requires an Oracle Cloud account. You may use your existing accoun
 
 Let's begin! If you need to create an Oracle Cloud account, please click Get Started in the Contents menu on the left. Otherwise, if you have an existing Oracle Cloud account, click "Create an Autonomous Database".</i>
 
-## Learn More
+### Learn More
 
 * [Migrate Applications from Non-Oracle SQL to Oracle SQL](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/application-migration-overview.html)
 
-## Acknowledgements
+### Acknowledgements
 
 - **Authors** - Shilpa Sharma, Prinicipal User Assistance Developer
 - **Contributors** - Lauran K. Serhal, Consulting User Assistance Developer
