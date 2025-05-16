@@ -31,7 +31,7 @@ Let's begin! If you need to create an Oracle Cloud account, please click Get Sta
 
 * [Migrate Applications from Non-Oracle SQL to Oracle SQL](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/application-migration-overview.html)
 
-### Acknowledgements
+## Acknowledgements
 
 - **Authors** - Shilpa Sharma, Prinicipal User Assistance Developer
 - **Contributors** - Lauran K. Serhal, Consulting User Assistance Developer
