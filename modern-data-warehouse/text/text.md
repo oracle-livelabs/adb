@@ -177,5 +177,7 @@ You can **proceed to the next lab.**
 ## Acknowledgements
 * **Author** - Javier de la Torre, Principal Data Management Specialist
 * **Contributors** - Priscila Iruela, Technology Product Strategy Director
-* **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist
+* **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist, November 2024
+
+
 

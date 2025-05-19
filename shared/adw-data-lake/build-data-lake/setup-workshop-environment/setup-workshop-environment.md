@@ -195,7 +195,7 @@ Watch our short overview video that explains key features in Data Catalog.
 
 [](youtube:nY7mG2u6-Ew)
 
-To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops.
+To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=877) LiveLabs workshops.
 
 </if>
 
