@@ -10,7 +10,7 @@
     "tutorials": [
         {
             "title": "Introduction",
-            "type":"freetier",
+            "type":"livelabs",
             "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
             "filename": "./../../introduction/introduction.md"
         },
@@ -48,12 +48,6 @@
             "type":"livelabs",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../consume-share/consume-share.md"
-        },
-        {
-            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
-            "description": "Delete the ADB instance and compartment if not needed.",
-            "type": "livelabs",
-            "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"
         },
         {
             "title": "Need Help?",

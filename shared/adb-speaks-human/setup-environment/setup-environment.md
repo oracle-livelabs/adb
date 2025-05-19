@@ -115,6 +115,8 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
 ## Task 2: Create Policy to Enable Access to OCI Generative AI
 
+**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
+
 Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
@@ -141,8 +143,8 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
 Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and install the Select AI demo application that was built using APEX.
 
 1. Deploy the required cloud resources for this workshop using the OCI Resource Manager. Click the button below:
-    
-    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip" class="tryit-button">Deploy workshop</a>
+ 
+    <a href="https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip&zipUrlVariables=%7B%22tag%22%3A%22gen-ai%22%2C%22db_compute_count%22%3A2%2C%22db_name%22%3A%22MovieStreamWorkshop%22%7D" class="tryit-button">Deploy workshop</a>
 
     The automation uses a predefined OCI Cloud Stack Template that contains all of the resources that you will need in this workshop. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. Your first step will be to log in to Oracle Cloud. Next, you will land on the Resource Manager page where you will kick off a job that will do the following:
     * Create a new Autonomous Database named **`MovieStreamWorkshop`** by default; however, you can replace the database name with your own name.
@@ -174,7 +176,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
     
         >**Note:** In the **Workshop Settings** section, if a **Secret API key used to connect to AI model** field is displayed, that is not **_not Required_** for this Lab since OCI Generative AI does not use a secret key for Resource Operations.
    
-    * For the other fields, accept the default selections.
+    * For the other fields, accept the default selections. For the **A valid Oracle Database version for Autonomous Database** field, you can click the drop-down list and select the database version as either **19c** or **23ai**.
     
         ![The Configure variables step 2 of the wizard](./images/configure-variables-updated.png " ")
 
@@ -256,14 +258,14 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2024
+* **Last Updated By/Date:** Lauran K. Serhal, April 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

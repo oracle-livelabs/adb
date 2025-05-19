@@ -56,7 +56,7 @@ END;
 
 As the **`share_provider`** user, create a new data share named **`training_share`**.
 
-1. To create a new data share, click the **PROVIDE SHARE** tool on the Home page. Alternatively,in the Navigation pane on the left, drill-down on the **Data Share** node, and then click **Provide Share**.
+1. To create a new data share, click the **PROVIDE SHARE** tool on the Home page. Alternatively, in the Navigation pane on the left, drill-down on the **Data Share** node, and then click **Provide Share**.
 
     ![Access provide share.](./images/access-provide-share.png " ")
 
@@ -70,7 +70,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     * **Name:** Enter **`training_share`**.
     * **Email:** Enter the email address for the provider such as **`training_share@outlook.com`**.
-    * **Description:** Enter a meaningful description of the provider (required).
+    * **Description:** Enter a meaningful description of the provider (_required_).
 
     ![The General tab.](./images/general-tab.png " ")
 
@@ -114,13 +114,15 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![The recipient is created.](images/recipient-created.png =75%x*)
 
-13. Click the **Email recipient profile download link** icon to email the activation link to the recipient. 
+_Next, you will learn how to get the activation link that the recipient will need using two methods. In this lab, you'll use the activation link that is generated using the **second method**._
+
+13. **Method 1:** Click the **Email recipient profile download link** icon to email the activation link to the recipient. 
 
     >**Note:** You can also click the **Copy Profile activation link to clipboard** icon as a backup in case the user didn't get the email.
 
     ![Copy activation link to clipboard.](images/copy-activation-link-clipboard.png =70%x*)
 
-14. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Click **Send** to send the email to the recipient.
+14. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Next, you would cClick **Send** to send the email to the recipient. _**Don't click the Send button. You will use the activation link generated using the second method next.**_
 
     ![Click send email.](images/activation-email.png)
 
@@ -144,7 +146,11 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![Versioned share type.](images/versioned-share-type.png)
 
-18. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. If you are prompted to leave, click **Leave**.
+18. **Method 2:** In the **TRAINING_RECIPIENT** tile, click the **Actions** (ellipsis) icon and then select **Copy Profile Activation Link to Profile**. This is the activation link that the recipient will use. Save this activation link to a text editor of your choice as you will need it in the next lab.
+
+    ![Method 2 activation link.](images/method2-activation-link.png)
+
+19. Log out of the **`SHARE_PROVIDER`** user. On the **Oracle Database Actions | Data Share** banner, click the drop-down list next to the `SHARE_PROVIDER` user, and then select **Sign Out** from the drop-down menu. If you are prompted to leave, click **Leave**.
 
 You may now proceed to the next lab.
 
@@ -158,7 +164,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -168,4 +174,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

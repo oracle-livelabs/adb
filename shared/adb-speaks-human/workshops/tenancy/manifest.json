@@ -4,8 +4,10 @@
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
-      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
-    },
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "adb-integrate-genai/integrate-genai.md":"/common/building-blocks/tasks/adb/integrate-genai/integrate-genai.md",
+      "connect-with-sql-worksheet-non-admin.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-non-admin.md"
+      },
     "variables": ["./variables.json"],
     "tutorials": [
         {
@@ -25,8 +27,8 @@
           "filename": "../../setup-environment/setup-environment.md"
         },
         {
-          "title": "Lab 2: Integrate OCI Generative AI with Autonomous Database",
-          "description":"Integrate OCI Generative AI with Autonomous Database",
+          "title": "Lab 2: Integrate GenAI models with Autonomous Database",
+          "description":"Connect Autonomous Database to your LLM",
           "type": "tenancy",
           "filename": "../../integrate-genai/integrate-genai.md"
         },

@@ -14,7 +14,7 @@ This lab assumes you have completed the following:
 
 - Provision an Autonomous Database Instance
 
-## Task 1: Prepeare to Execute SQL statements in a SQL Query Window using Database Actions 
+## Task 1: Prepare to Execute SQL statements in a SQL Query Window using Database Actions 
 
 We will now prepare to execute SQL statements. 
 
@@ -111,7 +111,20 @@ We will now prepare to execute SQL statements.
 	alter system set result_cache_mode = manual;
 	</copy>
 	```    	
-	
+
+## Task 4: Turn Off DML Awareness
+
+1. Oracle Database 23ai includes a new configuration setting that reduces the propensity for creating indexes on tables subject to a lot of DML activity (INSERT/UPDATE/DELETE/MERGE). Indexes improve SELECT performance, but this can be at the expense of DML performance if a table is subject to high rates of change. If the following configuration setting is enabled, automatic indexing will avoid creating indexes on tables with high levels of DML. For the purposes of this demonstration, we must disable this setting because the test table is subject to a lot of DML activity.
+
+	```
+	<copy>
+	-- If using Oracle Database 23ai only - not required for Oracle Database 19c
+	exec dbms_auto_index.configure('auto_index_include_dml_cost', 'OFF')
+	</copy>
+	```
+
+You may now **proceed to the next lab**.
+
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jun 2022
-* **Last Updated By/Date** - Nigel Bayliss, Nov 2024
+* **Last Updated By/Date** - Nigel Bayliss, Jan 2025

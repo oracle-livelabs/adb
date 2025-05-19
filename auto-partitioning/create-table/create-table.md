@@ -22,12 +22,12 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 
 1. From your Autonomous Database Details page, click the OCI Cloud Shell button:
 
-	![invoke oci cli](./images/apart_create_table_01.jpg)
+	![invoke oci cli](./images/ct-1.png)
 
 2. When the shell has started we need to download the wallet into Cloud Shell to connect to your autonomous database. 
    First, we need to copy the OCID of your newly created autonomous database. That is the unique identifier of your database.	
 
-	![copy the db ocid](./images/apart_create_table_02.jpg)
+	![copy the db ocid](./images/ct-2.png)
 
 
 3. 	In Cloud Shell, execute the following to connect to your database. You need to insert your copied **autonomous database OCID** into the code below. For the database connection you are using ADMIN with the admin password you set up when provisioning your autonomous database.
@@ -51,7 +51,7 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 	```
 	This could look as follows:
 
-	![successful connection with sqlcl](./images/apart_create_table_03.jpg)
+	![successful connection with sqlcl](./images/ct-3.png)
 
 
 ## Task 2: Creating and populating a new Table

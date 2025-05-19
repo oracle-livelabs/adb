@@ -29,7 +29,13 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ![Log out of user share_provider](images/logout-share-provider.png)
 
+<if type="freetier">
 2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+</if>
+
+<if type="livelabs">
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username. To get the password that was assigned to your reservation, click the **View Login Info** link to display the **Reservation Information** dialog box.  Scroll-down to the **Terraform Values** section, and then click **Copy value** next to the **Database Admin Password** field. Paste the value in the password field of the **Sign-in** page, and then click **Sign in**.
+</if>
 
     ![Log in as user admin](images/login-admin.png =50%x*)
 
@@ -236,7 +242,7 @@ To create a table on top of the data share share object, the recipient needs to 
 
 If the recipient plans to access the table name several times, it would be easier to create a named provider once and use it going forward.
 
-1. Subscribe to the data share provider by creating a new share provider name that we called `demo_provider` in our example. It points to the data share provider's endpoint. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
+1. Subscribe to the data share provider by creating a new share provider name that we called `demo_provider` in our example. It points to the data share provider's endpoint. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon. _Substitute the value of the `endpoint` parameter with your own value_.
 
     ```
     <copy>
@@ -345,14 +351,14 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024, Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

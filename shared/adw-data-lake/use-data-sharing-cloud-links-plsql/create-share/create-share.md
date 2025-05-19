@@ -25,7 +25,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
 ## Task 1: Create a Data Share
 
-1. As the **`share_provider`** user, create a new data share named **`demo_share`**. The **`DATA_SHARE_STORAGE_LINK`** value refers to the storage link that you created in **Lab 2** which points to your Object Storage bucket's URI. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. As the **`share_provider`** user, create a new data share named **`demo_live_share`**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -193,7 +193,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -203,4 +203,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
