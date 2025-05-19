@@ -45,6 +45,7 @@
        {
             "title": "Lab 3: Migrate PostgreSQL File to Oracle SQL",
             "description": "Migrate PostgreSQL File to Oracle SQL",
+            "type": "freetier",
             "filename":"../../migrate-postgre-sql-files-in-adbs/migrate-postgre-sql-files-in-adbs.md"
         },
         {

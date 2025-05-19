@@ -1,6 +1,11 @@
 {
     "workshoptitle": "Migrate Applications from Non-Oracle Databases to Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
+        "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+        },
     "variables": ["./variables.json"],
 	"tutorials": [
         {
@@ -14,33 +19,34 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Create an Autonomous Database",
+            "title": "Provision a new Autonomous Database instance",
             "description": "Provision a new Autonomous Database instance",
             "type": "tenancy",
             "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
-            "title": "Lab 1: Connect to Your ADB Instance",
+            "title": "Connect with SQL Worksheet",
             "description": "Connect with SQL Worksheet",
             "type": "tenancy",
             "filename": "/common/building-blocks/blocks/adb/connect/connect-sql-worksheet.md"
         },
         {
-            "title": "Lab 2: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
+            "title": "Lab 1: Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "description":"Translate individual SQL statements from a non-Oracle database to Oracle SQL",
             "type": "tenancy",
             "filename": "../../translate-postgre-sql-statements-to-oracle-sql/translate-postgre-sql-statements-to-oracle-sql.md"
         },
         {
-            "title": "Lab 3: Run PostgreSQL statements in Autonomous Database",
+            "title": "Lab 2: Run PostgreSQL statements in Autonomous Database",
             "description":"Run PostgreSQL statements in Autonomous Database",
             "type": "tenancy",
             "filename": "../../run-postgre-sql-statements-in-adbs/run-postgre-sql-statements-in-adbs.md"
           },
-        {
-            "title": "Lab 4: Upload Files to Object Store",
-            "description": "Upload Files to Object Store",
-            "filename":"https://livelabs.oracle.com/cdn/sprints/oci/sprint-create-bucket/index.html?customTrackingParam=:ow:lp:cpo::::RC_WWMK211125P00013:llid=3169&lab=sprint-upload-files"
+       {
+            "title": "Lab 3: Migrate PostgreSQL File to Oracle SQL",
+            "description": "Migrate PostgreSQL File to Oracle SQL",
+            "type": "tenancy",
+            "filename":"../../migrate-postgre-sql-files-in-adbs/migrate-postgre-sql-files-in-adbs.md"
         },
         {
             "title": "Need Help?",
