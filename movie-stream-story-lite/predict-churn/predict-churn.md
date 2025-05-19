@@ -311,11 +311,10 @@ Please *proceed to the next lab, or try the bonus Task 4*.
 
 * [Oracle Machine Learning product information](https://oracle.com/goto/machinelearning)
 * [Subscribe to the Weekly AskTOM Oracle Machine Learning Office Hours](https://asktom.oracle.com/pls/apex/asktom.search?office=6801#sessionss)
-* [Oracle Machine Learning AutoML UI Demo](https://www.youtube.com/watch?v=yJGsfU9cmt0)
 * [Oracle Machine Learning for Python Demo](https://youtu.be/P861m__PEMQ)
 * [Oracle Machine Learning Notebooks Demo](https://youtu.be/EgxKYQ8paCw)
 
 ## Acknowledgements
 * **Author** - Marcos Arancibia, Oracle Machine Learning Product Management
 * **Contributors** -  Mark Hornick, Marty Gubar, Kevin Lazarz, Nilay Panchal, Jayant Sharma, Jie Liu, Sherry LaMonica, Richard Green
-* **Last Updated By/Date** - Marty Gubar, April 2024
+* **Last Updated By/Date** - Marty Gubar, May 2025
