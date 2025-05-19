@@ -3,10 +3,6 @@
 
 ## About this Workshop
 
-#### Video Preview
-
-[](youtube:fwkBA6A7isI)
-
 Most workshops focus on teaching you about a cloud service or performing a series of tasks. This workshop is different. You will learn how to deliver high value solutions using Oracle Cloud data platform services. And, the workshop will do this in the context of a company that we all can relate to and understand.
 
 Estimated Workshop Time: 90 minutes
@@ -28,24 +24,24 @@ In this workshop, we'll start with two key components of MovieStream's architect
 You will learn how they built their solution and performed sophisticated analytics through a series of labs that highlight the following:
 
 ### Objectives
-* Automatically deploy the database and data required for the workshop using Terraform and OCI Resource Manager. You can optionally run thru these deployment steps manually:
-    * Deploy an Autonomous Database instance
-    * Integrate Autonomous Database with the Data Lake
+* Automatically deploy the database and data required for the workshop using Terraform and OCI Resource Manager. 
 * Use advanced SQL to uncover issues and possibilities
+* Query your data using natural language with Select AI
+* Load data and gain insights from user feedback with AI
 * Predict customer churn using Machine Learning
-* Use spatial analyses to help provide localized promotions
+* Use spatial analyses and Select AI to help provide localized promotions
 * Offer recommendations based on graph relationships
 
 ## Learn more
 
-* [Enterprise Data Warehousing - an Integrated Data Lake](https://docs.oracle.com/en/solutions/oci-curated-analysis/index.html#GUID-7FF7A024-5EB0-414B-A1A5-4718929DC7F2)
-* [Autonomous Database Workshops](https://bit.ly/get-started-with-adb)
+* [Data Management Reference Architectures](https://docs.oracle.com/solutions/?q=autonomous%20database%20data%20management&cType=reference-architectures%2Csolution-playbook%2Cbuilt-deployed&sort=date-desc&lang=en)
+* [Autonomous Database Workshops](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/livelabs-workshop-cards?p100_workshop_series=222)
 * [Autonomous Database web site](https://www.oracle.com/autonomous-database/)
-* [Autonmous Data Warehouse Videos](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/videos.html)
+
 
 ## Acknowledgements
 * **Author** - Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date** - Marty Gubar, August 2023
+* **Last Updated By/Date** - Marty Gubar, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

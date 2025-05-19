@@ -1,6 +1,6 @@
 {
-    "db_name": "MYQUICKSTART",
-    "db_display_name":"MyQuickStart",
+    "db_name": "TrainingADW",
+    "db_display_name":"ADW-Data-Lake",
     "db_ocpu": "2 ECPUs",
     "db_storage": "1 TB",
     "db_name_livelabs": "MOVIE+your user id",

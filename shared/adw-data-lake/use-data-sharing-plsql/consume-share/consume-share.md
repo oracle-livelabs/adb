@@ -29,7 +29,13 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 
     ![Log out of user share_provider](images/logout-share-provider.png)
 
+<if type="freetier">
 2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+</if>
+
+<if type="livelabs">
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username. To get the password that was assigned to your reservation, click the **View Login Info** link to display the **Reservation Information** dialog box.  Scroll-down to the **Terraform Values** section, and then click **Copy value** next to the **Database Admin Password** field. Paste the value in the password field of the **Sign-in** page, and then click **Sign in**.
+</if>
 
     ![Log in as user admin](images/login-admin.png =50%x*)
 
@@ -345,11 +351,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, December 2024
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024, Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

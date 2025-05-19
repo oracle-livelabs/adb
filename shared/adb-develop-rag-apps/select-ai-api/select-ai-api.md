@@ -67,13 +67,11 @@ Let's look at some examples of using Select AI with the available actions.
 
     ```
     <copy>
-    select json_serialize(
-    dbms_cloud_ai.generate (
+    select dbms_cloud_ai.generate (
         profile_name => 'support_site',
         action => 'runsql',
         prompt => 'how do I unsubscribe from the service?'
-    ) PRETTY
-    ) as support_question;
+    );
     </copy>
     ```
 
@@ -107,7 +105,7 @@ You may now proceed to the next lab.
   * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, February 2025
+  * **Last Updated By/Date:** Lauran K. Serhal, March 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
