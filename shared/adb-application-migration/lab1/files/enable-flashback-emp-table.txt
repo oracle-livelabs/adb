@@ -1,0 +1,9 @@
+1) Manisha raised a request with Sherin to change the help links for redirects..but Tom suggested otherwise..Tom will work with Saba..limks that they point to Serverless. Manisha will ask Sherin to reollback the same now.
+
+2) Delta changes..Manisha has updated the existing delta changes and she is expecting many more. Tom suggested to wait for a week and then send them post review. 1 Aug plan publish. 
+
+3) Tom need to send a list of delta changes that Manisha a take up and work.
+
+4) Manisha spoke with Jeff regarding the name change from Oracle Database Actions to SQL Developer Web. He wants to retain it as it is, no changes. 
+
+5) Suresh suggested to put togther a doc for this project for future reference. Manisha opted to do the same and Tom is ready to support.
