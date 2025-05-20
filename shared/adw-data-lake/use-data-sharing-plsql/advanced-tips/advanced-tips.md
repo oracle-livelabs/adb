@@ -256,25 +256,26 @@ at the share level.
 
 Prerequisite:
 
+>_**Note**: This is not a hands-on lab; instead, it is a demo of how to integrate ADW
+with an external Delta Sharing provider such as Databricks in our example. Some of the code this task is blurred or masked with place holders to protect private credentials. You can replace the masked credentials with your own `endpoint`, `tokenEndpoint`, `bearerToken`, and `clientSecret` credentials from your own **`delta_share_profile.json`** downloaded file._
+
 You must have a valid Delta Sharing activation profile with:
 
-* endpoint URL
-* bearer token
-* optional expiration date
+* Bearer token
+* Endpoint URL
+* Optional expiration date
 
 **Example:**
 
-![Exampe .](images/example.png)
+![Example .](images/example.png " ")
 
-In this task, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
-
-Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to external network resources. In this step, you will do the following:
+Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to external network resources. In this step, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
 
 * Create an ACL file.
 * Grant `HTTPS` (port 443) access to a specific host, Databricks endpoint in our example.
 * Grant DNS resolution rights to the user (or role), `admin` in our example.
 
-1. Log out of the `share_provider` user and then log in as the **`admin`** user. Create an Access Control List (ACL) to allow outbound connections over HTTPS for the `admin` user. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
+1. Log out of the **`share_provider`** user and then log in as the **`admin`** user. Create an Access Control List (ACL) to allow outbound connections over HTTPS for the `admin` user. Copy and paste the following script into your SQL Worksheet. Substitute the host used in the example with your own host, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -283,12 +284,13 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
     DBMS_NETWORK_ACL_ADMIN.CREATE_ACL(
         ACL         => 'databricks_acl_west.xml', -- XML file name for ACL config
         DESCRIPTION => 'Allow outbound HTTPS requests',
-        PRINCIPAL   => 'ADMIN',                    -- Grant to this user or role
+        PRINCIPAL   => 'ADMIN',     -- Grant to this user or role
         IS_GRANT    => TRUE,
-        PRIVILEGE   => 'connect'                   -- Allow connect privilege
+        PRIVILEGE   => 'connect'    -- Allow connect privilege
     );
 
-    -- Assign this ACL to the Databricks host on port 443 (HTTPS)
+    -- Assign this ACL to the Databricks host on port 443 (HTTPS).
+    -- Substitute the host used in the example with your own host.
     DBMS_NETWORK_ACL_ADMIN.assign_acl(
         acl         => 'databricks_acl_west.xml',
         host        => 'westus.azuredatabricks.net',
@@ -296,7 +298,7 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
         upper_port  => 443
     );
 
-    -- Optionally grant permission to resolve hostnames (DNS lookup)
+    -- Optional: Add privilege to resolve hostnames for the user
     DBMS_NETWORK_ACL_ADMIN.ADD_PRIVILEGE(
         ACL         => 'databricks_acl_west.xml',
         PRINCIPAL   => 'ADMIN',
@@ -317,16 +319,19 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
 * Call the `/tables` endpoint to list tables in a specific share.
 * Use `UTL_HTTP` to send `HTTPS` requests and read responses.
 
+    > _**Note:** Replace the place holders in the `V_ENDPOINT` and `V_BEARER_TOKEN` variables in the code block with your own of credential values from your **`delta_share_profile.json`** downloaded file. In addition, substitute the `dbr2oracle` share name used in the example with your own share name._
+
     Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
     DECLARE
         --  Define the endpoint and authorization information
-        V_ENDPOINT       VARCHAR2(4000) := 'https://westus.azuredatabricks.net/api/2.0/delta-sharing/metastores/1740e12d-77bc-4bf8-a9d0-14e932246739';
+        V_ENDPOINT       VARCHAR2(4000) := 'replace-with-your-own-end-point-value';
         V_URL_SHARES     VARCHAR2(4000) := V_ENDPOINT || '/shares'; -- URL to list shares
-        V_URL_TABLES     VARCHAR2(4000);                             -- URL to list tables in a specific share
-        V_BEARER_TOKEN   VARCHAR2(200) := 'FRBK-SjR2cGT58dD8VMyEAyTagaiSJ6D0UKljjqDcTbZciBNpmX1F3c5R1oz85L0';
+        -- URL to list tables in a specific share
+        V_URL_TABLES     VARCHAR2(4000);
+        V_BEARER_TOKEN   VARCHAR2(200) := 'replace-with-your-own-bearer-token-value';
         V_RESPONSE       CLOB;
 
         -- Variables for managing HTTP request and response
@@ -383,7 +388,7 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
         FETCH_API_RESPONSE(V_URL_SHARES, V_RESPONSE);
         DBMS_OUTPUT.PUT_LINE('Shares: ' || V_RESPONSE);
 
-        -- Call the /tables endpoint for a specific share, 'dbr2oracle' in our example
+        -- Call the /tables endpoint for a specific share, 'dbr2oracle' in our example.
         
         V_URL_TABLES := V_ENDPOINT || '/shares/dbr2oracle/schemas/default/tables';
         FETCH_API_RESPONSE(V_URL_TABLES, V_RESPONSE);
@@ -392,6 +397,74 @@ Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to
     /
     </copy>
     ```
+
+    <!--
+    DECLARE
+    --  Define the endpoint and authorization information
+    V_ENDPOINT       VARCHAR2(4000) := 'https://westus.azuredatabricks.net/api/2.0/delta-sharing/metastores/1740e12d-77bc-4bf8-a9d0-14e932246739';
+    V_URL_SHARES     VARCHAR2(4000) := V_ENDPOINT || '/shares'; -- URL to list shares
+    -- URL to list tables in a specific share
+    V_URL_TABLES     VARCHAR2(4000);
+    V_BEARER_TOKEN   VARCHAR2(200) := 'FRBK-SjR2cGT58dD8VMyEAyTagaiSJ6D0UKljjqDcTbZciBNpmX1F3c5R1oz85L0';
+    V_RESPONSE       CLOB;-- Variables for managing HTTP request and response
+    L_HTTP_REQ       UTL_HTTP.REQ;
+    L_HTTP_RESP      UTL_HTTP.RESP;
+    L_BUFFER         VARCHAR2(32767);
+
+    -- Procedure to call an API URL and return the response as CLOB
+    PROCEDURE FETCH_API_RESPONSE (
+        P_URL      VARCHAR2,
+        P_RESPONSE OUT CLOB
+    ) IS
+    BEGIN
+        -- Start HTTP GET request
+        L_HTTP_REQ := UTL_HTTP.BEGIN_REQUEST(P_URL, 'GET');
+
+        -- Add required headers: Authorization and Content-Type
+        UTL_HTTP.SET_HEADER(L_HTTP_REQ, 'Authorization', 'Bearer ' || V_BEARER_TOKEN);
+        UTL_HTTP.SET_HEADER(L_HTTP_REQ, 'Content-Type', 'application/json');
+
+        -- Execute the request and get the response
+        L_HTTP_RESP := UTL_HTTP.GET_RESPONSE(L_HTTP_REQ);
+
+        --Create a temporary CLOB to store the response
+        DBMS_LOB.CREATETEMPORARY(P_RESPONSE, TRUE);
+
+        -- Read the response in chunks and append to the CLOB
+        LOOP
+            BEGIN
+                UTL_HTTP.READ_TEXT(L_HTTP_RESP, L_BUFFER, 32767);
+                DBMS_LOB.APPEND(P_RESPONSE, L_BUFFER);
+            EXCEPTION
+                WHEN UTL_HTTP.END_OF_BODY THEN
+                    EXIT;
+            END;
+        END LOOP;
+
+        -- Always clean up the HTTP response to free memory
+        UTL_HTTP.END_RESPONSE(L_HTTP_RESP);
+
+    EXCEPTION
+        WHEN OTHERS THEN
+            -- If there's an error, ensure the response is still closed
+            BEGIN
+                UTL_HTTP.END_RESPONSE(L_HTTP_RESP);
+            EXCEPTION
+                WHEN OTHERS THEN NULL; -- Suppress secondary error
+            END;
+            RAISE; -- Propagate the original error
+        END FETCH_API_RESPONSE;
+        BEGIN
+    -- Call the /shares endpoint and print the result
+        FETCH_API_RESPONSE(V_URL_SHARES, V_RESPONSE);
+        DBMS_OUTPUT.PUT_LINE('Shares: ' || V_RESPONSE);-- Call the /tables endpoint for a specific share, 'dbr2oracle' in our example.
+
+    V_URL_TABLES := V_ENDPOINT || '/shares/dbr2oracle/schemas/default/tables';
+    FETCH_API_RESPONSE(V_URL_TABLES, V_RESPONSE);
+    DBMS_OUTPUT.PUT_LINE('Tables in dbr2oracle: ' || V_RESPONSE);
+    END;
+    /
+    -->
 
     You are done! If the endpoint is accessible and the token is valid, you’ll see the list of shares and tables printed in the output.
 
