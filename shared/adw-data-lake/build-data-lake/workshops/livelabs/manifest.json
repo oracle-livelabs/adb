@@ -25,7 +25,7 @@
             "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 3: Augment Data By Using Natural Language AI Prompts",
+            "title": "Lab 3: Analyze Data with Table AI Assist and ADB Excel Add-in",
             "type":"freetier",
             "description": "This lab walks you through how to use the Table AI Assist Tool.",
             "filename": "./../../table-ai-assist/table-ai-assist.md"

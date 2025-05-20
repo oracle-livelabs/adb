@@ -655,7 +655,7 @@ Now that you have a connection to your ADB instance, you will run a simple query
     * A.A. Hopeman, Consulting Software Engineer
     * Manisha Mati, Principal User Assistance Developer
     * Yossi Cohen, Principal Software Engineer
-* **Last Updated By/Date:** Lauran K. Serhal, April 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
