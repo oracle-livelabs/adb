@@ -85,6 +85,9 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
     chmod +x node_modules/.bin/react-scripts
     chmod +x generated_config.sh
     ./generated_config.sh
+    echo "Patching createEnvironmentHash.js for FIPS compliance..."
+    sed -i "s/createHash('md4')/createHash('sha256')/" node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js
+    echo "Patch complete. md4 → sha256"
     npm run deploy 
     </copy>
     ```
@@ -184,7 +187,7 @@ You may now proceed to the next lab.
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Stephen Stuart, October 2024
+* **Last Updated By/Date:** Stephen Stuart and Nicholas Cusato, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
