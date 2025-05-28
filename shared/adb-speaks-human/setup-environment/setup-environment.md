@@ -112,7 +112,7 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
     
 >**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
 
-## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Application 
+## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application 
 [](include:stacks-provision-adb-select-ai.md)
 
 
