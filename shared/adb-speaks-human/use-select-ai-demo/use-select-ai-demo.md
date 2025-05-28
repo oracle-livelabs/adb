@@ -31,25 +31,13 @@ In this lab, you will:
 
     ![Enter ChatDB credentials](./images/ai-select-credentials.png =70%x*)
 
-    The **ADB Chat** application is displayed. 
+2. The **AI Settings** window in the **ADB Chat** application is displayed. Select a profile that you want to use. Click the **Choose subject areas** drop-down list, and select the **`GENAI [1]`** profile. This profile was created in the **Create credential and AI profile** paragraph in the notebook that you imported in **Lab 3**. Next, click the **X** control.
 
     ![Select AI application displayed](./images/select-ai-application.png =70%x*)
-
-2. On the **ADB Chat** page, select a profile that you want to use. In the banner, click the profile (person) drop-down list, and then select **Settings**. 
-
-    ![Click Settings](./images/click-settings.png =70%x*)
- 
- 3. On the **Settings** page, click **AI Settings**. 
- 
-    ![Click ai Settings](./images/click-ai-settings.png =70%x*)
- 
- 4. Click the **Choose subject areas** drop-down list, and select the **`GENAI [1]`** profile. This profile was created in the **Create credential and AI profile** paragraph in the notebook that you imported in **Lab 3**. Next, click the **X** control.
-
-    ![Select AI profile](./images/select-profile.png =70%x*)
 
     The ADB Chat application is re-displayed. You are now ready to ask questions at the **Ask a question** prompt!
 
-    ![Select AI application displayed](./images/select-ai-application.png =70%x*)
+    ![Select AI application displayed](./images/select-ai-demo.png =70%x*)
 
 ## Task 2: Ask Natural Language and Database Questions Using the Application
 
