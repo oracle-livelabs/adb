@@ -29,15 +29,13 @@ In this lab, you will:
 
     ![Enter ChatDB credentials](./images/ai-select-credentials.png =70%x*)
 
-2. On the **ChatDB** page, the **AI Settings** panel is displayed. Select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`SUPPORT_SITE`** profile that was created in the **Lab 2** when you ran the script to create the profile.
+2. On the **ADB Chat** page, the **AI Settings** panel is displayed. Select a profile that you want to use from the **Choose subject areas** drop-down list. In this workshop, select the **`SUPPORT_SITE`** profile that was created in the **Lab 2** when you ran the script to create the profile. Close the **AI Settings** panel.
 
     ![Select AI profile](./images/select-profile-rag.png =85%x*)
 
-    The ChatDB application is displayed. You are now ready to ask questions at the **Ask a question** prompt!
+    The **ADB Chat** application is displayed. You are now ready to ask questions at the **Ask a question** prompt!
 
     ![Select AI application displayed](./images/select-ai-application.png =85%x*)
-
-3. Click **Close** to exit the **AI Settings** panel.
 
 ## Task 2: Review the Oracle MovieStream Internal Support Website
 
@@ -121,7 +119,7 @@ You may now proceed to the next lab.
   * **Authors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, February 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
