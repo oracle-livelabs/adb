@@ -3,6 +3,7 @@
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "stacks-provision-adb-select-ai.md":"/common/building-blocks/tasks/stacks/provision-adb-select-ai.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
       "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
       "adb-integrate-genai/integrate-genai.md":"/common/building-blocks/tasks/adb/integrate-genai/integrate-genai.md",
