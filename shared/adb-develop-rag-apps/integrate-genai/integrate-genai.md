@@ -19,14 +19,15 @@ In this lab, you will:
 * This lab requires the completion of the previous labs that deployed your Autonomous Database.
 
 ## Task 1: Log into the SQL Worksheet
+>**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack that was created for you, **Deploy-ChatDB-Autonomous-Database...** > Select the job that was created for you, **ormjob2025...** > Click **Outputs** in the **Resources** section.
 
->**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack we created, **Deploy-ChatDB-Autonomous-Database...** > Select the job we created, **ormjob2024117214431** > Select **Outputs** under **Resources**.
-
-![Moviestream password](./images/moviestream-output-pswd.png "")
+![Moviestream password](./images/output.png "")
 
 1. If you are not logged in to Oracle Cloud Console, log in and select **[](var:db_workload_type)** from the Navigation menu.
 
-    ![Oracle Home page left navigation menu.](./images/database-adw.png " ")
+    ![Click the navigation menu.](./images/click-navigation-menu.png " ")
+
+    ![Click Autonomous Database.](./images/click-autonmous-database.png " ")
 
 2. Make sure you are in the correct compartment where you ADB instance was provisioned and then click your **TrainingAIWorkshop** instance.
 
@@ -34,18 +35,22 @@ In this lab, you will:
 
 3. On your **TrainingAIWorkshop** Autonomous Database details page, click the **Database Actions** drop-down list, and then select **View all database actions**.
 
-    ![Click Database Actions button.](./images/view-db-actions.png " ")
+    ![Click Database Actions button.](./images/view-all-dbactions.png " ")
 
     Logging in from the OCI service console requires you to be the **`ADMIN`** user. Log in as the **`ADMIN`** user if you are not automatically logged in.
     
     * **Username:** **`ADMIN`**
     * **Password:** *your-password* (e.g. **`WlsAtpDb1234#`**)
 
-4. The **Database Actions** page is displayed. Click the **Development** tab if not already selected, and then click the **SQL** tab.
+4. The **Database Actions** page is displayed. Click the **Development** tab, and then click the **SQL** tab.
 
     ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
 
-5. The first time you open SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the **Tour** icon (binoculars) in the upper right corner. Click **Next** to take a tour through the informational boxes; otherwise, close the boxes. Close the boxes.
+5. The first time you open SQL Worksheet, a series of pop-up informational boxes appears. Click the **Tour** icon (binoculars) in the upper right corner to get a tour that introduces the main features. Close the boxes.
+
+    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
+
+    You can expand the SQL Worksheet editor area by collapsing the left navigation area.
 
     ![SQL Worksheet.](./images/adb-sql-worksheet.png " ")
 
@@ -64,7 +69,7 @@ In this lab, you will:
 
     ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
 
-    The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed. Close the **Run Statement** informational box.
 
     ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
 
@@ -78,7 +83,7 @@ In this lab, you will:
 
     ![Click Account & Billing Issues.](./images/account-billing-issues.png " ")
 
-3. Ensure that you are signed in as the **MOVIESTREAM** user. Review the files in the public object storage bucket that comprise the moviestream support web site. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+3. Ensure that you are signed in as the **`moviestream`** user. Review the files in the public object storage bucket that comprise the moviestream support web site. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
 
     ```sql
     <copy>
@@ -150,7 +155,7 @@ _To view the detailed steps for any of the following models, click the drill-dow
     allow any-user to manage generative-ai-family in tenancy
     ```
 
-    You need to Use resource principal which is already enabled for the **MOVIESTREAM** user in this workshop; therefore, _you don't need to run the following script_; however, if you do need to run it, make sure you are signed in as the **admin** user.
+    You need to use resource principal which is already enabled for the **`moviestream`** user in this workshop; therefore, _you don't need to run the following script_; however, if you do need to run it, make sure you are signed in as the **admin** user.
 
     ```
     exec dbms_cloud_admin.enable_resource_principal(username  => 'MOVIESTREAM');
@@ -158,7 +163,7 @@ _To view the detailed steps for any of the following models, click the drill-dow
 
 ### **Create the AI profile**
 
-1. Make sure you are still logged in to your SQL Worksheet as the **MOVIESTREAM** user. Create an AI profile named **SUPPORT_SITE**. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
+1. Make sure you are still logged in to your SQL Worksheet as the **`moviestream`** user. Create an AI profile named **SUPPORT_SITE**. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
 
     ```sql
     <copy>
@@ -466,7 +471,7 @@ You may now proceed to the next lab.
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
  * **Contributor:** Michelle Malcher, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, February 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

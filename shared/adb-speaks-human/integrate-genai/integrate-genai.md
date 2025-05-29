@@ -45,7 +45,11 @@ In this lab, you will:
 
     ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
 
-5. The first time you open SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the **Tour** icon (binoculars) in the upper right corner. Click **Next** to take a tour through the informational boxes; otherwise, close the boxes. Close the boxes.
+5. The first time you open SQL Worksheet, a series of pop-up informational boxes appears. Click the **Tour** icon (binoculars) in the upper right corner to get a tour that introduces the main features. Close the boxes.
+
+    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
+
+    You can expand the SQL Worksheet editor area by collapsing the left navigation area.
 
     ![SQL Worksheet.](./images/adb-sql-worksheet.png " ")
 
@@ -64,7 +68,7 @@ In this lab, you will:
 
     ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
 
-    The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed. Close the **Run Statement** informational box.
 
     ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
 
@@ -103,7 +107,7 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     The workshop deployment step already set up a resource principal for your database and enabled the **`MOVIESTREAM`** user to use that principal (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource (i.e. your ADB instance) needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
 
-3. Create a Select AI profile.
+3. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. Next, click the **Run Script** icon. 
 
     ```sql
     <copy>
