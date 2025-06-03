@@ -150,4 +150,4 @@ A candidate table for automatic partitioning must be at least 5 GB in size in a 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Dec 2021 
 * **Contributor** - Hermann Baer
-* **Last Updated By/Date** - Nigel Bayliss, Aug 2024
+* **Last Updated By/Date** - Nigel Bayliss, Jun 2025
