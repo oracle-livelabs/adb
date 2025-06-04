@@ -143,9 +143,9 @@ A candidate table for automatic partitioning must be at least 5 GB in size in a 
 	     where  segment_name = 'APART';
 	</copy>
 	```
-	It should show a size larger than 5GB, as shown below.
+	It should show a size larger than 5000MB (similar to the example below).
 
-	![sample table greater than 5gb](./images/apart_create_table_04.jpg)
+	![sample table greater than 5gb](./images/ct-4.png)
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Dec 2021 
