@@ -250,7 +250,36 @@ at the share level.
 
     >**Note:** Shares and recipients must *both* have `version_access` enabled for versioned queries to succeed.
 
-## Task 4: Call a Delta Sharing Endpoint from PL/SQL
+## Task 4: Access Delta Sharing Endpoint with cURL
+
+In this task, you verify Delta Sharing integration using a terminal window. You will use the `bearerToken` value and `endpoint URL` from your Delta Sharing activation profile, `delta_share_profile.json` to run a simple `cURL` command from a terminal window to list your available data shares.
+
+Prerequisite:
+
+* You must have a valid  Delta Sharing activation profile, `delta_share_profile.json`, with the `bearerToken` value and `endpoint URL`.
+
+    ![Example json profile.](images/json-profile-example.png " ")
+
+* A bash terminal such as power-shell, cloud-shell, or terminal on macOS. In this task, we are using Git Bash which is a terminal emulator for Windows that provides a Bash shell and Git command-line tools. 
+
+    >**Note:** MS-Windows 10 and later versions include cURL as a default component. It is pre-installed and ready to use. 
+
+1. Use a terminal window such as Git Bash on a Windows machine to run a `cURL` command to confirm that your credential and endpoint URL are working. Copy and paste the following cURL command in your terminal window, and then press the [Enter] key. _Important: Substitute the `bearerToken` and `endpoint URL` placeholders in the following command with your own `bearerToken` value and `endpoint URL`_. 
+
+    ```
+    <copy>
+    curl -X GET \
+    -H "Authorization: Bearer enter-your-bearer-token-value-here \
+    enter-your-endpoint-url-here/shares
+    </copy>
+    ```
+
+    If your credentials are correct, you are connected to your endpoint and the available data shares are displayed. In this workshop, we have one data share, **`DEMO_SHARE`**.
+
+    ![Set ACLs.](images/demo-share-curl-output.png)
+
+
+## Task 5: Call a Delta Sharing Endpoint from PL/SQL
 
  When integrating with external Delta Sharing providers such as Databricks, it's important to verify that the Delta Sharing endpoint is reachable from Oracle ADB. This task shows how to configure network access and call the API to list shares and tables in the shares using PL/SQL.
 
@@ -261,9 +290,9 @@ with an external Delta Sharing provider such as Databricks in our example. Some 
 
 You must have a valid Delta Sharing activation profile with:
 
-* Bearer token
-* Endpoint URL
-* Optional expiration date
+* `bearerToken`
+* `endpoint URL`
+* Optional `expirationTime`
 
 **Example:**
 
