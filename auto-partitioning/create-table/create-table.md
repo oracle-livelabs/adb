@@ -22,12 +22,12 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 
 1. From your Autonomous Database Details page, click the OCI Cloud Shell button:
 
-	![invoke oci cli](./images/apart_create_table_01.jpg)
+	![invoke oci cli](./images/ct-1.png)
 
 2. When the shell has started we need to download the wallet into Cloud Shell to connect to your autonomous database. 
    First, we need to copy the OCID of your newly created autonomous database. That is the unique identifier of your database.	
 
-	![copy the db ocid](./images/apart_create_table_02.jpg)
+	![copy the db ocid](./images/ct-2.png)
 
 
 3. 	In Cloud Shell, execute the following to connect to your database. You need to insert your copied **autonomous database OCID** into the code below. For the database connection you are using ADMIN with the admin password you set up when provisioning your autonomous database.
@@ -51,7 +51,7 @@ During this part of the workshop we will use OCI Cloud Shell, a web browser-base
 	```
 	This could look as follows:
 
-	![successful connection with sqlcl](./images/apart_create_table_03.jpg)
+	![successful connection with sqlcl](./images/ct-3.png)
 
 
 ## Task 2: Creating and populating a new Table
@@ -97,7 +97,15 @@ We are now creating a nonpartitioned table that will become our candidate table 
 	-- keep the random strings apart when written to storage, which will  
 	-- make compression less effective. We want to make the table large
 	-- as quickly as possible so that it qualifies for auto partitioning.
-	  
+	--
+	-- If you want to use a paid (non-free) Autonomouse Database environment, 
+	-- the minimum size for the table is 64GB. You can create a suitable table 
+	-- by changing the following line in the SQL statement below.
+	-- From this:
+	--    from dual connect by level <= 3 )
+	-- To this:
+	--    from dual connect by level <= 30 )
+	--
 	alter session set optimizer_ignore_hints = false;
 	  
 	-- Table data is compressed by default, so we will insert random data 
@@ -135,11 +143,11 @@ A candidate table for automatic partitioning must be at least 5 GB in size in a 
 	     where  segment_name = 'APART';
 	</copy>
 	```
-	It should show a size larger than 5GB, as shown below.
+	It should show a size larger than 5000MB (similar to the example below).
 
-	![sample table greater than 5gb](./images/apart_create_table_04.jpg)
+	![sample table greater than 5gb](./images/ct-4.png)
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Dec 2021 
 * **Contributor** - Hermann Baer
-* **Last Updated By/Date** - Nigel Bayliss, May 2024
+* **Last Updated By/Date** - Nigel Bayliss, Jun 2025

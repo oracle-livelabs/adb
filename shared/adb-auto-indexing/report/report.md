@@ -43,6 +43,20 @@ This lab assumes you have completed the following:
 
     ````
     <copy>
+    -- Suitable for SQL Worksheet
+    DECLARE
+       report clob;
+    BEGIN
+       report := dbms_auto_index.report_last_activity(section=>'ALL',level=>'ALL');
+       dbms_output.put_line(report);
+    END;
+    /
+    </copy>
+    ````
+
+    ````
+    <copy>
+    -- Suitable for using with SQL Plus
     set linesize 300
     set trims on
     set pagesize 1000
@@ -60,6 +74,20 @@ This lab assumes you have completed the following:
 
     ````
     <copy>
+    -- Suitable for SQL Worksheet
+    DECLARE
+       report clob;
+    BEGIN
+       report := dbms_auto_index.report_activity(activity_start=>sysdate-2,section=>'ALL',level=>'ALL');
+       dbms_output.put_line(report);
+    END;
+    /
+    </copy>
+    ````
+
+    ````
+    <copy>
+    -- Suitable for using with SQL Plus
     set linesize 300
     set trims on
     set pagesize 1000

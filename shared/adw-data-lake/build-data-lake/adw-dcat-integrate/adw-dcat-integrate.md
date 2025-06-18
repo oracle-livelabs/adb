@@ -17,7 +17,7 @@ In this lab, you will:
 ### Prerequisites
 
 >_**Note:**
-This is not a hands-on lab; instead, it is a demo of how to integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://bit.ly/adb-dcat-datalake) LiveLabs workshops._
+This is not a hands-on lab; instead, it is a demo of how to integrate ADW with an OCI Data Catalog instance that contains a harvested data asset. To learn about how to create a Data Asset in an OCI Data Catalog instance and how to harvest data from Object Storage buckets, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=877) LiveLabs workshops._
 
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
@@ -179,14 +179,14 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, November 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024 Oracle Corporation.
+Copyright (C) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

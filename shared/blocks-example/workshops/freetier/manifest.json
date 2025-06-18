@@ -1,0 +1,28 @@
+{
+    "workshoptitle": "Autonomous Database 15 Minute Quick Start",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
+      "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body-developer.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+    },
+    "variables": ["./variables.json"],
+    "tutorials": [
+      {
+        "title": "ReadMe",
+        "type": "freetier",
+        "filename": "../../introduction/readme.md"
+      },      
+      {
+        "title": "Lab 1: Provision an ADB Instance (blocks)",
+        "type": "freetier",
+        "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
+      },
+        {
+          "title": "Lab 2: Provision an ADB Instance (tasks)",
+          "type": "freetier",
+          "filename": "../../provision-database/adb-provision-moviestream.md"
+        }
+    ]
+}

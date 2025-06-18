@@ -1,0 +1,62 @@
+{
+    "workshoptitle": "Develop apps using GenAI, Autonomous Database and Django",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+    },
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+          "title": "Introduction",
+          "description":"Introduction to the workshop",
+          "filename": "../../introduction/introduction.md"
+        },
+        {
+          "title": "Get started",
+          "description":"Get started using Oracle Cloud Infrastructure",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+          "title": "Your OCI GenAI key",
+          "filename": "https://oracle-livelabs.github.io/common/labs/ocw24/hol2383.md"
+        },                 
+        {
+          "title": "Lab 1: Integrate OCI Generative AI with Autonomous Database",
+          "description":"Connect Autonomous Database to your LLM",
+          "filename": "../../integrate-genai-cloudworld/integrate-genai.md",
+          "type":"python"
+        },           
+        {
+          "title": "Lab 2: Use GenAI to analyze your data in Autonomous Database",
+          "description":"Deliver GenAI projects tat summarize chats and recommend movies",
+          "filename": "../../business-logic/business-logic.md"
+        },
+        {
+          "title": "Lab 3: Publish AI projects as RESTful services",
+          "description":"Enable analytics across your organization",
+          "filename": "../../expose-rest/expose-rest-python.md"
+        },
+        {
+          "title": "Lab 4: Use OpenAPI tools with your RESTful services",
+          "description":"Document and test your APIs",
+          "filename": "../../openapi-integration/openapi-integration-python.md"
+        },        
+        {
+          "title": "Lab 5: Deliver a Django app that uses the RESTful AI services",
+          "description":"Building custom apps",
+          "filename": "../../bedtime-stories-python/bedtime-stories-python.md"
+        },
+        {
+          "title": "Lab 6: Clean Up",
+          "description":"Destroy the resources to clean up",
+          "filename": "../../cleanup/cleanup.md"
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

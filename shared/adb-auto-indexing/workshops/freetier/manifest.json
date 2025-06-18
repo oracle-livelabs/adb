@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Autotatic Indexing for Oracle Autonomous Database",
+    "workshoptitle": "Automatic Indexing for Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
         {
@@ -16,7 +16,7 @@
             "title": "Lab 1: Provision an Autonomous Database Instance",
             "description": "Provision an Autonomous Database instance",
             "type": "livelabs",
-            "filename": "../../provision-adw/provision-adw.md"
+            "filename": "../../provision-adw/provision-atp.md"
         },
         {
             "title": "Lab 2: Create and Application Schema and Prepare for Auto Indexing",
@@ -40,8 +40,8 @@
         },       
         {
             "title": "Lab 6: Controlling and Configuring Automatic Indexing",
-            "description": "How to control and configure autmatic indexing.",
-            "filename": "../../configue/configure.md"
+            "description": "How to control and configure automatic indexing.",
+            "filename": "../../configure/configure-auto-ind.md"
         },             
         {
             "title": "Need Help?",

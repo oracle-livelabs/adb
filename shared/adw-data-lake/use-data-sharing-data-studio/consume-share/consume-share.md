@@ -23,19 +23,24 @@ In this lab, you will:
 
 ## Task 1: Download the .json Configuration File
 
-As the **`training_recipient`**, you can use the activation link URL that was sent to you by by the **`share_provider`** via email to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to connect to the data share and access the **`CUSTOMER_CONTACT_SHARE`** table in the share.
+As the **`training_recipient`**, you can use the activation link URL that was sent to you by the **`share_provider`** via email to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to connect to the data share and access the **`CUSTOMER_CONTACT_SHARE`** table in the share. **Note:** In our example, you will use the second activation link that you got using the second method in the previous lab.
 
->**Note:** To download the `.json` file as the recipient, it doesn't matter what user you are logged in as. All you need is a web browser.
+>**Note:** _To download the `.json` file as the recipient, it doesn't matter what user you are logged in as. All you need is a web browser._
+
+<!-- text -->
+
+<!--
+Uncomment this when development find a fix for this bug.
 
 1. Open the email message that was sent to you which contains the activation link URL.
 
-    ![Open the email message.](images/open-email.png)
+    ![Open the email message.](images/open-email.png)-->
 
-2. Copy the activation link URL, and then paste it in your web browser's address bar. Alternatively, you can simply click the URL in the email message.
+1. Copy the activation link URL that you obtained using the second method, and then paste it in your web browser's address bar. <!--Alternatively, you can simply click the URL in the email message.-->
 
     ![Paste activation link in the browser.](images/paste-activation-url.png)
 
-3. Press **[Enter]**. The **Autonomous Database Data Sharing** page is displayed. To download the config file, click **Get Profile Information**.
+2. Press **[Enter]**. The **Autonomous Database Data Sharing** page is displayed. To download the config file, click **Get Profile Information**.
 
     ![Click Get Profile Information.](images/click-get-profile.png)
 
@@ -45,17 +50,17 @@ As the **`training_recipient`**, you can use the activation link URL that was se
 
     ![Profile file downloaded.](images/screen-2.png)
 
-4. The **`delta_share_profile`.json** file is downloaded to your browser's **Downloads** directory.
+3. The **`delta_share_profile`.json** file is downloaded to your browser's **Downloads** directory.
 
     ![The downloaded file is displayed.](images/downloaded-file.png)
 
-5. Open the downloaded file to display its content. You will need this file to connect and use the data share.
+4. Open the downloaded file to display its content. You will need this file to connect and use the data share.
 
     ![Open the delta share profile file.](images/open-profile.png)
 
 ## Task 2: Log in as the share_consumer User
 
-1. Log in as the **`share_consumer`** user. On the **Sign-in** page, enter **`share_consumer`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+1. Log in as the **`share_consumer`** user. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
 
 2. On the **Database Actions Launchpad** page, click the **Data Studio** tab, and then click the **Data Share** tab.
 
@@ -192,7 +197,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, December 2024
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -202,4 +207,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

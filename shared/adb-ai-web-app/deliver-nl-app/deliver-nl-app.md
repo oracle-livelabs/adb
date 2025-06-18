@@ -60,7 +60,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
     ```
     <copy>
-    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/JnW5Gl5btrPK_vx66MqWktIB_GKmdEkosRDcehPvc5hTGheJdD41pq2PmsBbdUUU/n/c4u04/b/building_blocks_utilities/o/select-ai-react-app/movie-app.zip
+    wget https://objectstorage.us-ashburn-1.oraclecloud.com/p/ba2tl-Lz1tiUOX_3HLkkLuEMHG6vZs54nawkD0OtDrDXL1THcl4gd9XsyBN-od6O/n/c4u04/b/building_blocks_utilities/o/select-ai-react-app/movie-app.zip
     unzip movie-app
     cd movie-app
     </copy>
@@ -85,6 +85,9 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
     chmod +x node_modules/.bin/react-scripts
     chmod +x generated_config.sh
     ./generated_config.sh
+    echo "Patching createEnvironmentHash.js for FIPS compliance..."
+    sed -i "s/createHash('md4')/createHash('sha256')/" node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js
+    echo "Patch complete. md4 → sha256"
     npm run deploy 
     </copy>
     ```
@@ -95,7 +98,7 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
 
 The web page is hosted in object storage as a light-weight deployment. The script from the previous command **npm run deploy** used a renaming convention to modify the index.html file. This allows the index.html to read the files in the object storage.
 
-1. Navigate back to **movie-app** bucket. You may need to refresh the object storage file listing by clicking the **More Actions** drop-down list and then select **Refresh**. Next, click the ellipsis for the **index.html** object. Click **View Object Details** from the context menu.
+1. Navigate back to **movie-app** bucket. You may need to refresh the object storage file listing by clicking **More Actions -> Refresh**. Then, click the ellipsis for the **index.html** object.  Click on object details. 
 
   ![Open object details for index.html](./images/index-details.png "")
 
@@ -118,15 +121,15 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
   ![Print the App.tsx file and expand the window](./images/expand-app.png "")
 
 5. Scroll down to the bottom and notice the return statement that outlines the structure of the app. With the App open, compare the following to better understand the structure.
+- First, Parallax wraps the code so each of the components can move according to the desired effect. The **AdvancedBannerTop** component showcases the effect with the webpage title "MovieStreamAI" floating between the background of the stars and the foreground of the Las Vegas images.
+- Second, the **{text}** is wrapped in a typewritter effect, which is declared in the script closer to the top.
 
-    - First, Parallax wraps the code so each of the components can move according to the desired effect. The **AdvancedBannerTop** component showcases the effect with the webpage title "MovieStreamAI" floating between the background of the stars and the foreground of the Las Vegas images.
-    - Second, the **{text}** is wrapped in a typewritter effect, which is declared in the script closer to the top.
-    - Next, the **SearchComponent** fetches the customerData and implements a state change, which displays the RecentlyWatched films cards (click to show the movie details) and Spinner for the ResponseComponent. 
-    - The **ResponseComponent** uses the {selectedCustID} to pass the variable to the API, which after loading will display a carousel of the recommended movies and details from the **/ai/moviePizzaRecommendation/:cust_id** endpoint. 
-    - The component **SearchTop** uses a similar Parallax effect as theAdvancedBannerTop component.
-    - Lastly, the **Map** component pulls the OpenMaps library and displays a map, pulling data from the PizzaShops endpoint.
+- Next, the **SearchComponent** fetches the customerData and implements a state change, which displays the RecentlyWatched films cards (click to show the movie details) and Spinner for the ResponseComponent. 
+- The **ResponseComponent** uses the {selectedCustID} to pass the variable to the API, which after loading will display a carousel of the recommended movies and details from the **/ai/moviePizzaRecommendation/:cust_id** endpoint. 
+- The component **SearchTop** uses a similar Parallax effect as theAdvancedBannerTop component.
+- Lastly, the **Map** component pulls the OpenMaps library and displays a map, pulling data from the PizzaShops endpoint.
 
-      ![Highlighting the structure of the App.tsx file](./images/app-full.png "")
+  ![Highlighting the structure of the App.tsx file](./images/app-full.png "")
 
 6. Press **F12** on your keyboard to open the **Browser Developer Tools interface** and select **Network** from the header. Refresh the webpage by pressing **ctrl + r** (hotkey) or hitting the refresh button on the browser to load all of data that is being fetched when the App is running. 
 
@@ -140,7 +143,7 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
     - pizza_shop/
     - Customer ID entered in SearchBar (shown 3 times)
 
-      ![Show API response in DevTools](./images/api-response.png "")
+  ![Show API response in DevTools](./images/api-response.png "")
 
 9.  Navigating back to the Cloud Shell, notice the **fetch** command in the **App.tsx** that is implemented above the return function described earlier. This pulls the endpoint set earlier in the config file. At the top, it is imported from this file using the following:
 
@@ -150,9 +153,10 @@ The web page is hosted in object storage as a light-weight deployment. The scrip
 
 10.  Similar fetch commands are implemented in the files **SearchComponent.tsx** and **ResponseComponent.tsx**. Use the following commands to investigate how the api is used in a similar method for the api that was created for the Generative AI models: **MOVIE\_STREAM\_IMAGE\_API\_URL** and **MOVIE\_STREAM\_PIZZA\_API\_URL**.
 
-    ```
-    <copy>cat ./SearchBar/SearchComponent.tsx</copy>
-    ```
+  ```
+  <copy>cat ./SearchBar/SearchComponent.tsx</copy>
+  ```
+  >**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
 
     >**Note:** Search for the keyword **fetch**, which means it is fetching the data from the API. This is a good indicator that the variables stored in the config file are nearby in the code.
 
@@ -182,7 +186,8 @@ You may now proceed to the next lab.
     * Olivia Maxwell, Cloud Engineer 
     * Taylor Rees, Cloud Engineer 
     * Joanna Espinosa, Cloud Engineer 
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+    * Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Stephen Stuart and Nicholas Cusato, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

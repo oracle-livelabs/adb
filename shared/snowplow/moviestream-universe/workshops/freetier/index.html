@@ -1,284 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Oracle LiveLabs gives you access to Oracle's products to run a wide variety of labs and workshops; allowing you to experience our best technology, live!">
-		<title>Oracle LiveLabs</title>
 
-    <script src="https://oracle-livelabs.github.io/common/redwood-hol/js/jquery-1.11.0.min.js"></script>
-    <script src="https://oracle-livelabs.github.io/common/redwood-hol/js/jquery-ui-1.10.4.custom.js"></script>
-    <!-- <script src="https://oracle-livelabs.github.io/common/redwood-hol/js/main.min.js"></script> -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description"
+		content="Oracle LiveLabs gives you access to Oracle's products to run a wide variety of labs and workshops; allowing you to experience our best technology, live!">
+	<title>Oracle LiveLabs</title>
+
+	<script src="https://oracle-livelabs.github.io/common/redwood-hol/js/jquery-1.11.0.min.js"></script>
+	<script src="https://oracle-livelabs.github.io/common/redwood-hol/js/jquery-ui-1.10.4.custom.js"></script>
+	<!-- <script src="https://oracle-livelabs.github.io/common/redwood-hol/js/main.min.js"></script> -->
 	<script src="script.js" defer></script>
-		<link rel="stylesheet" href="https://oracle-livelabs.github.io/common/redwood-hol/css/style.min.css" />
-		<link rel="shortcut icon" href="https://oracle-livelabs.github.io/common/redwood-hol/img/favicon.ico" />
-	</head>
-	<body>
-		<header class="hol-Header" role="banner">
-			<div class="hol-Header-wrap">
-				<div class="hol-Header-logo"><span>Oracle LiveLabs</span></div>
-				<a href="https://developer.oracle.com/livelabs" target="_blank" id="livelabs" title="Oracle LiveLabs"></a>
-				<div class="hol-Header-actions">
-					<button id="openNav" class="hol-Header-button hol-Header-button--menu rightNav" aria-label="Open Menu"
-                    title="Open Menu">
-						<span class="hol-Header-toggleIcon"></span>
-					</button>
-				</div>
-			</div>
-		</header>
-		<div id="container">
-			<div id="leftNav">
-				<div id="toc"></div>
-			</div>
-			<div id="contentBox">
-				<main class="hol-Content" id="module-content"></main>
-				<p style="text-align:center;"><img src="images/3038282309.jpeg"></p>
-				<style>
-td, th {
-   border: none!important;
-}
-				</style>
+	<link rel="stylesheet" href="https://oracle-livelabs.github.io/common/redwood-hol/css/style.min.css" />
+	<link rel="shortcut icon" href="https://oracle-livelabs.github.io/common/redwood-hol/img/favicon.ico" />
+    
+</head>
 
-<div>
-	<button id=play>Play</button> &nbsp;
-	<button id=pause>Pause</button> &nbsp;
-	<button id=stop>Stop</button>
-</div>
+<body>
+	<header class="hol-Header" role="banner">
+		<div class="hol-Header-wrap">
+			<div class="hol-Header-logo"><span>Oracle LiveLabs</span></div>
+			<a href="https://livelabs.oracle.com" target="_blank" id="livelabs" title="Oracle LiveLabs"></a>
+			<div class="hol-Header-actions">
+				<button id="openNav" class="hol-Header-button hol-Header-button--menu rightNav" aria-label="Open Menu"
+					title="Open Menu">
+					<span class="hol-Header-toggleIcon"></span>
+				</button>
+			</div>
+		</div>
+	</header>
+	<div id="container">
+		<div id="leftNav">
+			<div id="toc"></div>
+		</div>
+		<div id="contentBox">
+			<main class="hol-Content" id="module-content"></main>
+			<p style="text-align:center;"><img src="images/3038282309.jpeg"></p>
+			<style>
+				td,
+				th {
+					border: none !important;
+				}
+			</style>
 
-<article>
+			<div>
+				<button id=play>Play</button> &nbsp;
+				<button id=pause>Pause</button> &nbsp;
+				<button id=stop>Stop</button>
+			</div>
+
+			<article>
 				<h1> Welcome to Oracle MovieStream</h1>
-				Oracle MovieStream is a fictitious on-line movie streaming company. Customers log into Oracle MovieStream using their computers, tablets and phones where they are presented with a targeted list of movies based on their past viewing habits. The company is now looking for better, smarter ways to track performance, identifying customers to target with campaigns that promote new services, new movies and new viewing platforms. Many of the scenarios in this workshop will very likely match the challenges you are seeing in your business and we hope the following labs and accompanying workshops will give you some insight into how Oracle can help you solve these common everyday business and technical challenges.
+				Oracle MovieStream is a fictitious on-line movie streaming company. Customers log into Oracle
+				MovieStream using their computers, tablets and phones where they are presented with a targeted list of
+				movies based on their past viewing habits. The company is now looking for better, smarter ways to track
+				performance, identifying customers to target with campaigns that promote new services, new movies and
+				new viewing platforms. Many of the scenarios in this workshop will very likely match the challenges you
+				are seeing in your business and we hope the following labs and accompanying workshops will give you some
+				insight into how Oracle can help you solve these common everyday business and technical challenges.
 				<br><br>
 				<h2> A handy guide to the MovieStream Universe</h2>
-				There is an ever expanding list of MoiveStream workshops so we have created this handy guide to help you navigate the complete set of workshops. Which shop do you need to run first, where can I learn about machine learning, can I just jump to the lab on scripting? When is a good time to top up my bicket of popcorn? All these questions and more are covered below:
-</article>				
-				<br><br>
-				<h2>MovieStream Part I - Exploring the basics of data management and SQL analytics</h2>
-				<br>
-				<br>
-				<table width="100%" >
-					<tr>
-						<td width="10%" align="center">
-						</td>
-						<td valign="bottom">
-							<div style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(images/rh02-panel1.jpg); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
-								<br><br>
-								Data Loading and Management Using Zero-Code on the MovieStream Dataset Workshop
-							</div>
-						</td>
-						<td valign="top">
-							<div style="margin-left:50px;">
-								<strong>Overview</strong><br>
-								You will quickly get an overview of how the team at MovieStream built their solution and performed sophisticated analytics thru a series of labs you will experience the edited highlights of the following topics.
-								<br>
-								<br>
-								<strong>Objectives</strong>
-								<ul>
-									<li>Deploy an Autonomous Database instance</li>
-									<li>Integrate Autonomous Database with the Data Lake</li>
-									<li>Use advanced SQL to uncover issues and possibilities</li>
-									<li>Predict customer churn using Machine Learning</li>
-									<li>Use spatial analyses to help provide localized promotions</li>
-									<li>Offer recommendations based on graph relationships</li>
-								</ul>
-								<br>
-								<br>
-								<strong>Duration</strong><br>
-								This is the high level tour around the world of MovieStream. The workshop will take round 90 minutes to complete.
-								<br>
-								<br>
-								<div style="font-family:arial; font-weight: bold;">
-									<a href="https://apexapps.oracle.com/pls/apex/f?p=133:100:1635531922091::::SEARCH:moviestream">CLICK HERE TO LAUNCH THE WORKSHOP</a>
-									</strong>
-						</td>
-					</tr>
-				</table>
-				<br>
-				<br>
-				<br>
-				<br>
-					<table width="100%">
-						<tr>
-							<td width="10%" align="center">
-							</td>
-							<td valign="bottom">
-								<div style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(images/rh02-panel2.jpg); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
-									<br><br>
-									Data Loading and Management Using SQL on the MovieStream Dataset Workshop
-								</div>
-							</td>
-							<td valign="top">
-								<div style="margin-left:50px;">
-									<strong>Overview</strong></br>
-				In this workshop, you will go through the steps to load movie sales data into an Oracle Autonomous Data Warehouse on Shared Infrastructure (ADB-S). You will load data from the object store, enable data integrity checks and finally apply updates to the sales data.
-				<br>
-				<br>
-				<strong>Objectives</strong>
-				<ul>
-					<li>Provisioning an Autonomous Database</li>
-					<li>Loading Movie Sales Data</li>
-					<li>Enabling Data Integrity</li>
-					<li>Updating the Sales Data</li>
-				</ul>
-				<strong>Duration</strong><br>
-				This is the high level touraround the world of MovieStream. The workshop will take round 90 minutes to complete.
-				<br>
-				<br>
-				<div style="font-family:arial; font-weight: bold;">
-					<a href="(https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=838)">CLICK HERE TO LAUNCH THE WORKSHOP</a>
-				</div>
-				</td>
-				</tr>
-				</table>
-				<br>
-				<br>
-				<table width="100%">
-					<tr>
-						<td width="10%" align="center">
-						</td>
-						<td valign="bottom">
-							<div style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(images/rh02-panel3.png); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
-								<br><br>
-								Analytics Using SQL on the MovieStream Dataset Workshop
-							</div>
-						</td>
-						<td valign="top">
-							<div style="margin-left:50px;">
-								<strong>Overview</strong><br>
-								The company is now looking for better, smarter ways to track performance, identifying target customers with campaigns to promote new services, new movies and new viewing platforms. Many of the analytical scenarios in this workshop will very likely match the challenges you are seeing in your business and we hope the following examples will give you some insight into how Oracle can help you solve these common everyday challenges.
-								<br>
-								<br>
-								<strong>Objectives</strong>
-								<ul>
-									<li>Analyzing Movie Sales Data</li>
-									<li>Working with Semi-Structured Movie Data</li>
-									<li>Deeper Analysis of Movie Sales Data</li>
-									<li>Managing Text Lists Using SQL</li>
-									<li>Finding Our Most Important Customers</li>
-									<li>Targeting Customers Based On Viewing Patterns</li>
-									<li>Applying Machine Learning to Customer Demographics</li>
-								</ul>
-								<br>
-								<br>
-								<strong>Duration</strong><br>
-								This is the high level touraround the world of MovieStream. The workshop will take round 90 minutes to complete.
-								<br>
-								<br>
-								<div style="font-family:arial; font-weight: bold;">
-									<a href="https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=852">CLICK HERE TO LAUNCH THE WORKSHOP</a>
-								</div>
-						</td>
-					</tr>
-				</table>
-				<br><br>
-				<h2>MovieStream Part II - Exploring the complete data-to-dashboard story</h2>
-				<br>
-				<br>
-				<table width="100%">
-					<tr>
-						<td width="10%" align="center">
-						</td>
-						<td valign="bottom">
-							<div style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(https://www.oracle.com/node/oce/storyhub/prod/api/v1.1/assets/CONT1A59F07A471C4DEFA7E4A9635C0E24C3/native); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
-								<br><br><br>
-								Action! MovieStream Analytics Produce the Best Picture with Oracle Cloud - Trailer
-							</div>
-						</td>
-						<td valign="top">
-							<div style="margin-left:50px;">
-								<strong>Overview</strong><br>
-								You will quickly get an overview of how the team at MovieStream built their solution and performed sophisticated analytics thru a series of labs you will experience the edited highlights of the following topics:
-								<br>
-								<br>
-								<strong>Objectives</strong><br>
-								<ul>
-									<li>Deploy an Autonomous Database instance</li>
-									<li>See how Autonomous Database integrates with the Data Lake</li>
-									<li>Use SQL features and functions to explore sales data</li>
-									<li>Sneak peak at automation for building machine learning models</li>
-									<li>Sneak peak into jow spatial analytics can help provide localized promotions</li>
-									<li>Sneak peak into using graph to make recommendations</li>
-								</ul>
-								<strong>Duration</strong><br>
-								This is the high level touraround the world of MovieStream. The workshop will take round 90 minutes to complete.
-								<br>
-								<br>
-								<div style="font-family:arial; font-weight: bold;">
-									<a href="https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=865">CLICK HERE TO LAUNCH THE WORKSHOP</a>
-								</div>
-						</td>
-					</tr>
-				</table>
-				<br><br>
-				<table width="100%">
-					<tr>
-						<td width="10%" align="center">
-						</td>
-						<td valig="bottom">
-							<div style="border: 3px solid #186A3B;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(https://www.oracle.com/node/oce/storyhub/prod/api/v1.1/assets/CONTB677ADB6CC2F4D5CB0DAC8CC510B7356/native); background-size: cover">
-								<br><br>
-								Action! MovieStream Analytics Produce the Best Picture with Oracle Cloud - THE EPIC WORKSHOP
-							</div>
-						</td>
-						<td valign="top">
-							<div style="margin-left:50px;">
-								<strong>Overview</strong><br>
-								You will go a lot deeper into how the team at MovieStream built their solution and performed sophisticated analytics thru a series of labs that help you explore in detail the following topics:
-								<br>
-								<br>
-								<strong>Objectives</strong><br>
+				There is an ever expanding list of MoiveStream workshops so we have created this handy guide to help you
+				navigate the complete set of workshops. Which shop do you need to run first, where can I learn about
+				machine learning, can I just jump to the lab on scripting? When is a good time to top up my bicket of
+				popcorn? All these questions and more are covered below:
+			</article>
+			<br><br>
+			<h2>MovieStream Part I - Exploring the basics of data management and SQL analytics</h2>
+			<br>
+			<br>
+			<table width="100%">
+				<tr>
+					<td width="10%" align="center">
+					</td>
+					<td valign="bottom">
+						<div
+							style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(images/rh02-panel1.jpg); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
+							<br><br>
+							Data Loading and Management Using Zero-Code on the MovieStream Dataset Workshop
+						</div>
+					</td>
+					<td valign="top">
+						<div style="margin-left:50px;">
+							<strong>Overview</strong><br>
+							You will quickly get an overview of how the team at MovieStream built their solution and
+							performed sophisticated analytics thru a series of labs you will experience the edited
+							highlights of the following topics.
+							<br>
+							<br>
+							<strong>Objectives</strong>
+							<ul>
 								<li>Deploy an Autonomous Database instance</li>
 								<li>Integrate Autonomous Database with the Data Lake</li>
 								<li>Use advanced SQL to uncover issues and possibilities</li>
 								<li>Predict customer churn using Machine Learning</li>
 								<li>Use spatial analyses to help provide localized promotions</li>
 								<li>Offer recommendations based on graph relationships</li>
-								</ul>
-								<strong>Duration</strong><br>
-								This is the total full-on, 3D experience and lasts round 4 hours.
-								<br>
-								<br>
-								<div style="font-family:arial; font-weight: bold;">
-									<a href-"https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889">CLICK HERE TO LAUNCH THE WORKSHOP</a>
-								</div>
-					</tr>
-				</table>
-				<br><br>
-				<br><br><br><br>
-				Acknowledgements<br>
-				Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021<br>
-				Last Updated By - Keith Laker, November 2021<br>
-			</div>
+							</ul>
+							<br>
+							<br>
+							<strong>Duration</strong><br>
+							This is the high level tour around the world of MovieStream. The workshop will take round 90
+							minutes to complete.
+							<br>
+							<br>
+							<div style="font-family:arial; font-weight: bold;">
+								<a
+									href="https://livelabs.oracle.com/pls/apex/f?p=133:100:1635531922091::::SEARCH:moviestream">CLICK
+									HERE TO LAUNCH THE WORKSHOP</a>
+								</strong>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<br>
+			<br>
+			<br>
+			<table width="100%">
+				<tr>
+					<td width="10%" align="center">
+					</td>
+					<td valign="bottom">
+						<div
+							style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(images/rh02-panel2.jpg); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
+							<br><br>
+							Data Loading and Management Using SQL on the MovieStream Dataset Workshop
+						</div>
+					</td>
+					<td valign="top">
+						<div style="margin-left:50px;">
+							<strong>Overview</strong></br>
+							In this workshop, you will go through the steps to load movie sales data into an Oracle
+							Autonomous Data Warehouse on Shared Infrastructure (ADB-S). You will load data from the
+							object store, enable data integrity checks and finally apply updates to the sales data.
+							<br>
+							<br>
+							<strong>Objectives</strong>
+							<ul>
+								<li>Provisioning an Autonomous Database</li>
+								<li>Loading Movie Sales Data</li>
+								<li>Enabling Data Integrity</li>
+								<li>Updating the Sales Data</li>
+							</ul>
+							<strong>Duration</strong><br>
+							This is the high level touraround the world of MovieStream. The workshop will take round 90
+							minutes to complete.
+							<br>
+							<br>
+							<div style="font-family:arial; font-weight: bold;">
+								<a href="(https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=838)">CLICK
+									HERE TO LAUNCH THE WORKSHOP</a>
+							</div>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<br>
+			<table width="100%">
+				<tr>
+					<td width="10%" align="center">
+					</td>
+					<td valign="bottom">
+						<div
+							style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(images/rh02-panel3.png); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
+							<br><br>
+							Analytics Using SQL on the MovieStream Dataset Workshop
+						</div>
+					</td>
+					<td valign="top">
+						<div style="margin-left:50px;">
+							<strong>Overview</strong><br>
+							The company is now looking for better, smarter ways to track performance, identifying target
+							customers with campaigns to promote new services, new movies and new viewing platforms. Many
+							of the analytical scenarios in this workshop will very likely match the challenges you are
+							seeing in your business and we hope the following examples will give you some insight into
+							how Oracle can help you solve these common everyday challenges.
+							<br>
+							<br>
+							<strong>Objectives</strong>
+							<ul>
+								<li>Analyzing Movie Sales Data</li>
+								<li>Working with Semi-Structured Movie Data</li>
+								<li>Deeper Analysis of Movie Sales Data</li>
+								<li>Managing Text Lists Using SQL</li>
+								<li>Finding Our Most Important Customers</li>
+								<li>Targeting Customers Based On Viewing Patterns</li>
+								<li>Applying Machine Learning to Customer Demographics</li>
+							</ul>
+							<br>
+							<br>
+							<strong>Duration</strong><br>
+							This is the high level touraround the world of MovieStream. The workshop will take round 90
+							minutes to complete.
+							<br>
+							<br>
+							<div style="font-family:arial; font-weight: bold;">
+								<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=852">CLICK
+									HERE TO LAUNCH THE WORKSHOP</a>
+							</div>
+					</td>
+				</tr>
+			</table>
+			<br><br>
+			<h2>MovieStream Part II - Exploring the complete data-to-dashboard story</h2>
+			<br>
+			<br>
+			<table width="100%">
+				<tr>
+					<td width="10%" align="center">
+					</td>
+					<td valign="bottom">
+						<div
+							style="border: 3px solid darkgrey;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(https://www.oracle.com/node/oce/storyhub/prod/api/v1.1/assets/CONT1A59F07A471C4DEFA7E4A9635C0E24C3/native); background-size: cover; text-align: center; align: center; vertical-align: bottom;">
+							<br><br><br>
+							Action! MovieStream Analytics Produce the Best Picture with Oracle Cloud - Trailer
+						</div>
+					</td>
+					<td valign="top">
+						<div style="margin-left:50px;">
+							<strong>Overview</strong><br>
+							You will quickly get an overview of how the team at MovieStream built their solution and
+							performed sophisticated analytics thru a series of labs you will experience the edited
+							highlights of the following topics:
+							<br>
+							<br>
+							<strong>Objectives</strong><br>
+							<ul>
+								<li>Deploy an Autonomous Database instance</li>
+								<li>See how Autonomous Database integrates with the Data Lake</li>
+								<li>Use SQL features and functions to explore sales data</li>
+								<li>Sneak peak at automation for building machine learning models</li>
+								<li>Sneak peak into jow spatial analytics can help provide localized promotions</li>
+								<li>Sneak peak into using graph to make recommendations</li>
+							</ul>
+							<strong>Duration</strong><br>
+							This is the high level touraround the world of MovieStream. The workshop will take round 90
+							minutes to complete.
+							<br>
+							<br>
+							<div style="font-family:arial; font-weight: bold;">
+								<a href="https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=865">CLICK
+									HERE TO LAUNCH THE WORKSHOP</a>
+							</div>
+					</td>
+				</tr>
+			</table>
+			<br><br>
+			<table width="100%">
+				<tr>
+					<td width="10%" align="center">
+					</td>
+					<td valig="bottom">
+						<div
+							style="border: 3px solid #186A3B;  color:white; font-family:arial; font-size:22pt; font-weight:bold; text-align: center; padding: 20px; width: 400px; height: 350px; background: url(https://www.oracle.com/node/oce/storyhub/prod/api/v1.1/assets/CONTB677ADB6CC2F4D5CB0DAC8CC510B7356/native); background-size: cover">
+							<br><br>
+							Action! MovieStream Analytics Produce the Best Picture with Oracle Cloud - THE EPIC WORKSHOP
+						</div>
+					</td>
+					<td valign="top">
+						<div style="margin-left:50px;">
+							<strong>Overview</strong><br>
+							You will go a lot deeper into how the team at MovieStream built their solution and performed
+							sophisticated analytics thru a series of labs that help you explore in detail the following
+							topics:
+							<br>
+							<br>
+							<strong>Objectives</strong><br>
+							<li>Deploy an Autonomous Database instance</li>
+							<li>Integrate Autonomous Database with the Data Lake</li>
+							<li>Use advanced SQL to uncover issues and possibilities</li>
+							<li>Predict customer churn using Machine Learning</li>
+							<li>Use spatial analyses to help provide localized promotions</li>
+							<li>Offer recommendations based on graph relationships</li>
+							</ul>
+							<strong>Duration</strong><br>
+							This is the total full-on, 3D experience and lasts round 4 hours.
+							<br>
+							<br>
+							<div style="font-family:arial; font-weight: bold;">
+								<a href-"https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=889">CLICK
+									HERE TO LAUNCH THE WORKSHOP</a>
+							</div>
+				</tr>
+			</table>
+			<br><br>
+			<br><br><br><br>
+			Acknowledgements<br>
+			Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021<br>
+			Last Updated By - Keith Laker, November 2021<br>
 		</div>
-		<footer class="hol-Footer">
-			<a class="hol-Footer-topLink" href="#top">Return to Top</a>
-			<div id="footer-banner">
-				<div class="footer-row">
-					<div class="footer-content">
-						<ul class="footer-links">
-							<li><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/legal&id=cpyr" target="_blank" aria-label="Open a new window to Oracle legal notices" data-lbl="copyright">© Oracle</a>
-							</li>
-							<li><a href="https://www.oracle.com/corporate/index.html" target="_blank" aria-label="Open a new window to learn more about oracle" data-lbl="about-oracle">About Oracle</a>
-							</li>
-							<li><a href="https://www.oracle.com/corporate/contact/" target="_blank" aria-label="Open a new window to contact oracle" data-lbl="contact-us">Contact Us</a>
-							</li>
-							<li class="footer-links-break"></li>
-							<li><a href="https://docs.oracle.com/en/browseall.html" target="_blank" aria-label="Open a new window to products a-z" data-lbl="products-a-z">Products A-Z</a>
-							</li>
-							<li><a href="https://www.oracle.com/legal/privacy/" target="_blank" aria-label="Open a new window to read more about Oracle terms of use and privacy" data-lbl="terms-of-use-and-privacy">Terms of Use & Privacy</a>
-							</li>
-							<li><a href="https://www.oracle.com/legal/privacy/privacy-policy.html#11" target="_blank" aria-label="Open a new window to read more about managing Oracle cookie preferences" data-lbl="cookie-preferences">Cookie Preferences</a>
-							</li>
-							<li><a href="https://www.oracle.com/legal/privacy/marketing-cloud-data-cloud-privacy-policy.html#adchoices" target="_blank" aria-label="Open a new window to ad choices" data-lbl="ad-choices">Ad Choices</a>
-							</li>
-							<li class="footer-links-break"></li>
-							<li class="last"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/legal&id=cpyr" target="_blank" aria-label="Open a new window to Oracle legal notices" data-lbl="copyright">© Oracle</a>
-							</li>
-						</ul>
-					</div>
+	</div>
+	<footer class="hol-Footer">
+		<a class="hol-Footer-topLink" href="#top">Return to Top</a>
+		<div id="footer-banner">
+			<div class="footer-row">
+				<div class="footer-content">
+					<ul class="footer-links">
+						<li><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/legal&id=cpyr" target="_blank"
+								aria-label="Open a new window to Oracle legal notices" data-lbl="copyright">© Oracle</a>
+						</li>
+						<li><a href="https://www.oracle.com/corporate/index.html" target="_blank"
+								aria-label="Open a new window to learn more about oracle" data-lbl="about-oracle">About
+								Oracle</a>
+						</li>
+						<li><a href="https://www.oracle.com/corporate/contact/" target="_blank"
+								aria-label="Open a new window to contact oracle" data-lbl="contact-us">Contact Us</a>
+						</li>
+						<li class="footer-links-break"></li>
+						<li><a href="https://docs.oracle.com/en/browseall.html" target="_blank"
+								aria-label="Open a new window to products a-z" data-lbl="products-a-z">Products A-Z</a>
+						</li>
+						<li><a href="https://www.oracle.com/legal/privacy/" target="_blank"
+								aria-label="Open a new window to read more about Oracle terms of use and privacy"
+								data-lbl="terms-of-use-and-privacy">Terms of Use & Privacy</a>
+						</li>
+						<li><a href="https://www.oracle.com/legal/privacy/privacy-policy.html#11" target="_blank"
+								aria-label="Open a new window to read more about managing Oracle cookie preferences"
+								data-lbl="cookie-preferences">Cookie Preferences</a>
+						</li>
+						<li><a href="https://www.oracle.com/legal/privacy/marketing-cloud-data-cloud-privacy-policy.html#adchoices"
+								target="_blank" aria-label="Open a new window to ad choices" data-lbl="ad-choices">Ad
+								Choices</a>
+						</li>
+						<li class="footer-links-break"></li>
+						<li class="last"><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/legal&id=cpyr"
+								target="_blank" aria-label="Open a new window to Oracle legal notices"
+								data-lbl="copyright">© Oracle</a>
+						</li>
+					</ul>
 				</div>
 			</div>
-		</footer>
-	</body>
+		</div>
+	</footer>
+</body>
+
 </html>

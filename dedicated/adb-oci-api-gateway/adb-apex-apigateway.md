@@ -136,7 +136,5 @@ You may now **proceed to the next lab**.
 - **Author** - Phani Turlapati
 - **Last Updated By/Date** - Phani Turlapati, Autonomous Database Product Management, January 2023
 
-## See an issue or have feedback?  
-Please submit feedback [here](https://apexapps.oracle.com/pls/apex/f?p=133:1:::::P1_FEEDBACK:1).   Select 'Autonomous DB on Dedicated Exadata' as the workshop name, include Lab name and issue/feedback details. Thank you!
 
 

@@ -97,4 +97,4 @@ You may now **proceed to the next lab**.
 - **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, Oracle Autonomous Database Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, January 2025

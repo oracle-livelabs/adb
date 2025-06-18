@@ -29,13 +29,25 @@ This lab assumes that you have successfully completed all of the preceding labs 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+
+    <if type="freetier">
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    </if>
+
+    <if type="livelabs">
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
+
+    **Note:** Since you are using a Sandbox environment, an ADB instance was created for you. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database display name are displayed. If you get a **Forbidden** message, make sure you choose your assigned compartment from the **Compartment** drop-down list in the **List scope** section.
+
+    ![The Autonomous Database details.](./images/ll-adb-details.png =65%x*)
+
+    </if>
 
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. The SQL Worksheet is displayed.
+5. The SQL Worksheet is displayed. Close any informational boxes that are displayed.
 
     ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
 
@@ -125,7 +137,13 @@ You should store the data share data in Object Storage. You will then create a l
 
 2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
 
+    <if type="freetier">
     ![The Buckets page is displayed.](./images/bucket-page.png " ")
+    </if>
+
+    <if type="livelabs">
+    ![The Buckets page is displayed.](./images/ll-bucket-page.png " ")
+    </if>
 
 3. Click **Create Bucket**.
 
@@ -142,13 +160,28 @@ You should store the data share data in Object Storage. You will then create a l
 
 6. The new bucket is displayed on the **Buckets** page.
 
+    <if type="freetier">
     ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
+    </if>
+
+    <if type="livelabs">
+    ![The new bucket is displayed on the Buckets page.](./images/ll-bucket-created.png " ")
+
+7. Next, _you need to get the name of the namespace (tenancy) where this new bucket was created_. You will need this namespace name in this workshop. In the row for the bucket, click the **Actions** icon (ellipsis), and then select **View Object Details** from the context menu.
+
+    ![Get the bucket's namespace.](./images/ll-get-bucket-namespace.png " ")
+
+    The **Bucket Details** page is displayed. The **Namespace** field displays the name of the namespace. The name is blurred for security reasons. Copy this name to your choice of text editor such as Notepad in Windows as you will need it in later steps.
+
+    ![Copy the bucket's namespace.](./images/ll-copy-bucket-namespace.png " ")
+
+    </if>
 
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **My profile**.
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
 
-    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png =65%x*)
 
 2. The **My profile** page is displayed. In the **User Information** tab, you can click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
@@ -194,11 +227,15 @@ To access data in the Object Store, you need to enable your database user to aut
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
-    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`.
+    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`. If you are using a Sandbox reservation (green button), you can find the region name in the **Reservation Information** dialog box. You already saved the bucket's namespace in **Task 3** and saved it to a text editor file of your choice.
 
-2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+    <if type="livelabs">
+    ![Reservation Information dialog box.](images/reservation-information.png)
+    </if>
 
-    >**Note:** Substitute the URI value in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`tenancy-name`** place holder for security.
+2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_.
+
+    >**Note:** Substitute the URI value (region and tenancy namespace) in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`tenancy-name`** place holder for security.
 
     ```
     <copy>
@@ -211,6 +248,8 @@ To access data in the Object Store, you need to enable your database user to aut
     /
     </copy>
     ```
+
+    Click the **Run Script** icon in the Worksheet toolbar.
 
     ![Create a cloud storage link.](images/create-storage-link.png)
 
@@ -310,14 +349,14 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C), 2024 Oracle Corporation.
+Copyright (C), 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
