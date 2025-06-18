@@ -18,7 +18,6 @@ This lab assumes you have completed the following:
 
 We will now prepare to execute SQL statements. 
 
-
 1. From your Autonomous Database Details page, click "Database actions" and then "SQL":
 
 	![Invoke SQL Query Window](./images/setup-1.png)
@@ -26,6 +25,10 @@ We will now prepare to execute SQL statements.
 2. Ensure you are connected to ADMIN via the LOW service (circled in red):	
 
 	![Check Connection Settings](./images/setup-2.png)
+
+3. For the rest of this lab, use the run script button to execute SQL because some of the PL/SQL packages will write output. 
+	
+	![SQL script button](./images/run-script-button3.png)
 
 ## Task 2: Reset the Lab
 
