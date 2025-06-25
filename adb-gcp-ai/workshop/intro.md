@@ -7,11 +7,19 @@ With native integration, you can deploy your Oracle database services in a Googl
 
 In this workshop you’ll learn how to deploy a retrieval-augmented generation–based chatbot on Google Cloud using Oracle Database 23ai. This is done with the Oracle Database@Google Cloud service, which enables you to run Oracle Database workloads in a Google Cloud environment and with Gemini 1.5 Flash, the best performing Gemini model from Google Vertex AI.
 
-**Gemini 1.5 Flash**
+**Gemini 2.5 Flash**
 
-We will be using **Gemini 1.5 Flash** AI model in this lab. Gemini 1.5 Flash is the best performing Gemini model with features for a wide range of tasks. Gemini 1.5 Flash is a foundation model that performs well at a variety of multimodal tasks such as visual understanding, classification, summarization, and creating content from image, audio and video. It's adept at processing visual and text inputs such as photographs, documents, infographics, and screenshots.
+We will be using **Gemini 2.5 Flash** AI model in this lab. Gemini 2.5 models are thinking models, capable of reasoning through their thoughts before responding, resulting in enhanced performance and improved accuracy.
 
-Gemini 1.5 Flash is designed for high-volume, high-frequency tasks where cost and latency matter. On most common tasks, Flash achieves comparable quality to other Gemini Pro models at a significantly reduced cost. Flash is well-suited for applications like chat assistants and on-demand content generation where speed and scale matter.
+Gemini 2.5 Flash: best for balancing reasoning and speed.
+
+Gemini 2.5 Flash is a thinking model, designed to tackle increasingly complex problems.
+
+Key features:
+
+* User can activate thinking
+
+* User can set a thinking budget (8k-24k tokens)
 
 **Use cases**
 
@@ -51,4 +59,4 @@ Please proceed to the next lab.
 
 ## Acknowledgements
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
-- **Last Updated By/Date** - Vivek Verma, Mar 2025
+- **Last Updated By/Date** - Vivek Verma, July 2025

@@ -7,7 +7,7 @@ In this lab we will implement a RAG (Retrieval Augmented Generation) chatbot usi
 
 We will guide you through the process of loading and parsing a pdf file, integrating it with an Oracle 23ai database, and employing the Google Cloud Platform to order it and run the Python code and Generative AI services needed for the chatbot.
 
-Oracle Database 23ai will be used as the vector store. In this lab, we will use a pdf file as the source data, but you can apply these steps to other data types including audio and video. **Gemini 1.5 Flash (gemini-1.5-flash-002)**, a multimodal model from Google AI, is leveraged for RAG.
+Oracle Database 23ai will be used as the vector store. In this lab, we will use a pdf file as the source data, but you can apply these steps to other data types including audio and video. **Gemini 2.5 Flash (gemini-2.5-flash)**, a multimodal model from Google AI, is leveraged for RAG.
 
 High-level steps followed in this lab:
 
@@ -478,7 +478,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
     </copy>
     ```
 
-19. The code below sets up the **Vertex AI Service** to use **gemini-1.5-flash-002**. Click Run to execute the code.
+19. The code below sets up the **Vertex AI Service** to use **gemini-2.5-flash**. Click Run to execute the code.
 
     ```
     <copy>
@@ -487,7 +487,7 @@ Please use VSCode's Remote Explorer function to connect to your remote VM. If yo
 
     # set the LLM to get response
     llm = VertexAI(
-        model_name="gemini-1.5-flash-002",
+        model_name="gemini-2.5-flash",
         max_output_tokens=8192,
         temperature=1,
         top_p=0.8,
