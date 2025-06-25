@@ -1,0 +1,56 @@
+{
+    "workshoptitle": "Introduction to Oracle Database@AWS - Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+                {
+            "title": "Introduction",
+            "description": "Introduction of the workshop.",
+            "filename": "./intro.md"
+        },
+        {
+            "title": "Lab 1: Provisioning ODB Network",
+            "description": "Pre-requisites to provision Autonomous Databases",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../network-pre-requisites/create-odb-network.md"
+        },
+        {
+            "title": "Lab 2: Provisioning Exadata infrastructure",
+            "description": "Provisioning Exadata infrastructure",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../provisioning-exadata/create-exadata.md"
+        },
+        {
+            "title": "Lab 3: Provisioning Autonomous VM Cluster",
+            "description": "Provisioning Autonomous VL Cluster",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../provisioning-avmc/create-avmc.md"
+        },
+        {
+            "title": "Lab 4: Provisioning Autonomous Container Database",
+            "description": "Provisioning Autonomous Container Database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../provisioning-acd/create-acd.md"
+        },
+        {
+            "title": "Lab 5: Provisioning Autonomous Database",
+            "description": "Provisioning Autonomous Database",
+            "partnumber": "Ennnnn_01",
+            "publisheddate": "07/25/2024",
+            "contentid": "12nnnn",
+            "filename": "./../../provisioning-adb/create-adb.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
