@@ -79,4 +79,4 @@ By using AI Vector Search in Oracle Database 23ai, you can build RAG application
 ## Acknowledgements
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
-- **Last Updated By/Date** - Vivek Verma, Mar 2025
+- **Last Updated By/Date** - Vivek Verma, July 2025

@@ -118,4 +118,4 @@ You may now **proceed to the next lab** to provision Autonomous Database.
 *All Done! You have successfully created a VPC Network and Compute VM instance.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
-- **Last Updated By/Date** - Vivek Verma, Mar 2025
+- **Last Updated By/Date** - Vivek Verma, July 2025
