@@ -2,71 +2,77 @@
 
 ## Introduction
 
-Analytic Views are a collection of database objects that are used together to present a business model to applications.  Analytic Views may be queried with SQL.   These objects are:
+Analytic Views organize data into a business model that can be queried using SQL. They consist of:
 
-- One or more *Attribute Dimensions* define metadata with attributes and levels, which are the building blocks for hierarchies.
-- One or more *Hierarchies*, a type of view with levels and attributes organized to support the selection of data, aggregations, and navigation (e.g., drill down).
-- An *Analytic View* that references fact tables, measures, and hierarchies to pull all the data together in a single view.
+- **Attribute Dimensions** – define metadata with attributes and levels.
+- **Hierarchies** – organize attributes and levels for filtering, aggregation, and drill-down.
+- **Analytic View** – combines fact tables, measures, and hierarchies into one queryable view.
 
-These objects are created in the Database using SQL DDL statements. The Data Studio Data Analysis tool creates all these objects for you as a complete system.  You do not need to write SQL DDL statements. The tool will show you the DDL statements if you would like to learn the SQL DDL or understand what the tool is doing ‘under the covers’.
+In this lab, you will use the Data Studio Data Analysis tool to create all necessary objects automatically. You don’t need to write SQL DDL, but you can view the generated SQL if desired.
 
-To create an Analytic View in this tool, you will:
+Steps to create an Analytic View:
 
-- Identify the tables that the Analytic View objects will reference. In this lab, there are two tables, a customer lookup table and a fact table.
-- Create hierarchies. When you create hierarchies, the tool will create both an Attribute Dimension object and a Hierarchy View object.
-- Create fact measures (measures from the fact table) and calculated measures. The tool will create the Analytic View object for you using this information.
+- Identify the source tables (fact and dimension).
+- Create hierarchies (the tool will create Attribute Dimensions and Hierarchy Views).
+- Define fact and calculated measures (the tool will create the Analytic View).
 
-Estimated Time:  5 minutes.
+**Estimated Time: 5 minutes**
 
 ### Objectives
 
-In this lab you will:
+You will:
 
 - Create a new Analytic View.
 
-### Prerequisites:
+### Prerequisites
 
 - Complete the previous lab.
 
 ## Task 1 - Create a New Analytic View
 
-Start the design process by creating a new Analytic View. Depending on how you enter the Data Analysis Application, you might or not see the Create button as shown below.
+Begin by creating a new Analytic View.
 
-1. Press the Create button or choose to Create Analytic View from the menu.
+1. Click the **Create** button or choose **Create Analytic View** from the menu.
 
-![Create Analytic View](images/create-analytic-view.png)
+   ![Create Analytic View](images/create-analytic-view.png)
 
-2. Choose the fact table. The fact table contains measures such as Sales or Units Sold. In this example, choose MOVIE\_SALES_FACT.
+2. Select the fact table. For this lab, choose MOVIE\_SALES\_FACT.
 
-3. You can view data in the MOVIE\_SALES_FACT table by pressing the Preview Data button.
+![Create Analytic View](images/choose-fact-table.png)
 
-4. Press the Close button after you have reviewed the data in the MOVIE\_SALES_FACT table.
+3. Click **Preview Data** to view the contents of the MOVIE\_SALES\_FACT table.
 
-5. Enter a user-friendly name in the Caption field. For example, Movie Sales Data.  Also enter a Description such as “Daily sales data by customer, and search genre”.
+![Preview](images/display-fact-table-preview.png)
 
-**Do not press the Create button yet.**  The Analytic View database objects will be created later after you have created hierarchies and measures.
+4. After previewing, click **Close**.
 
-**Do not press the Generate Hierarchies and Measures button.**   The tool has a feature that can attempt to automatically create hierarchies and measures. In some cases, this might offer a useful head start. In this lab, you will learn how to create hierarchies and measures yourself.  Because you know your data best, and you know your business requirements, you will usually create hierarchies and measures as shown in this lab.
+5. Enter a friendly name in the **Caption** field (e.g., Movie Sales Data).
 
-You will want to provide user-friendly names to objects in the Analytic View.  User-friendly names may be used by an application to represent the Analytic View to end users. User-friendly names are entered into Captions. You may also provide a description of the object in the Description field.
+6. Enter a description (e.g., Daily sales data by customer and search genre).
 
-![Choose Fact Table and Preview the Data](images/choose-fact-table.png)
+7. **Turn off** Search for Dimension Tables.
 
-You are now off to a good start!
+**Do not press the Create button yet.**  
+You will first define hierarchies and measures.
+
+**Do not press the Generate Hierarchies and Measures button.**  
+This feature auto-generates structures but is skipped in this lab so you can learn to create them manually. Knowing your data and business needs helps you build the best model.
+
+Use the **Caption** and **Description** fields to give user-friendly names and explanations for the Analytic View objects. These names may appear in applications.
+
+   ![Caption and Description](images/enter-caption.png)
+
+You’re now ready to build the model!
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, February 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

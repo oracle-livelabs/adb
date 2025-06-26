@@ -1,52 +1,47 @@
 # Introduction
 
-## About This Workshop
+## Workshop Overview
 
-This workshop introduces creating Analytic Views in Oracle Autonomous Database Using the Data Studio Analysis application.  This Live Lab is designed to be short and approachable.
+This workshop shows you how to create **Analytic Views** in **Oracle Autonomous Database** using the **Data Studio Analysis** tool. It's designed to be short, simple, and beginner-friendly.
 
-The Analytic View that you will design is simple and easy to understand.  It introduces the business model and key features.  You will also use the Analysis tool to view your Analytic View and verify the design.
+You’ll build a basic Analytic View that introduces the business model and key features. You'll also use the Analysis tool to view and verify your design.
 
-The Data Studio Analysis tool generates all the DDL needed to create Analytic Views. You can view the DDL in the tool.  If you would like to look more closely at Analytic View DDL, consider running the **[Oracle Live SQL Tutorial Creating Analytic Views – Getting Started tutorial](https://livesql.oracle.com/apex/livesql/file/tutorial_EDVE861IID1QUD1NIUPU5ALEW.html)**.
+Data Studio generates all the DDL required to create an Analytic View. You can review the DDL in the tool. For a deeper dive, explore the [**Oracle Live SQL: Creating Analytic Views – Getting Started**](https://livesql.oracle.com/apex/livesql/file/tutorial_EDVE861IID1QUD1NIUPU5ALEW.html) tutorial.
 
-### About Analytic Views
+## What Is an Analytic View?
 
-An Analytic View is a type of view in the Oracle Database that allows users to perform complex queries and calculations on data stored in one or more tables. These views provide a higher level of abstraction over the underlying data, allowing users to access and analyze the data in a more meaningful way. They are typically used in business intelligence and data warehousing applications. For the application developers, analytic views can simplify SQL generation and calculation expressions.
+An **Analytic View** is a database object that simplifies complex queries and calculations across one or more tables. It provides a semantic layer for easier analysis and is ideal for business intelligence and data warehousing. Developers benefit from simpler SQL and built-in support for calculations.
 
-### Objectives
+## Workshop Objectives
 
-In this workshop, you will:
+In this lab, you will:
 
-- Learn how to quickly create a simple Analytic View using the Data Studio Analysis application.
-- Learn about the main features of the analytic view.
-- Create dimensions, hierarchies, and fact measures.
-- Add calculated measures.
-- View the analytic view in the Data Studio Analysis application.
+- Quickly create a simple Analytic View using Data Studio
+- Learn the core features of Analytic Views
+- Define dimensions, hierarchies, and fact measures
+- Add calculated measures
+- View and verify your Analytic View design in Data Studio
 
-### About the Data
+## Sample Data
 
-The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous Database labs.  MovieStream is a fictitious video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports the analysis of sales data by time, geography, and genre used when searching for movies.
+The lab uses a simplified version of the **MovieStream** dataset—a fictional video streaming service. The dataset focuses on core concepts and supports sales analysis by time, geography, and genre.
 
-### Prerequisites
+## Prerequisites
 
-Before you launch into this workshop, you will need the following:
+To complete this workshop, you should have:
 
-1. Basic knowledge of Oracle Cloud
-2. Basic level of understanding of SQL query language
+1. Basic knowledge of Oracle Cloud  
+2. Basic understanding of SQL
 
-If you have any questions about the topics covered in this lab and the entire workshop, please contact us by posting on our public forum on **[cloudcustomerconnect.oracle.com](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/)**  and we will respond as soon as possible.
+If you have questions, please post them on our [**Oracle Cloud Customer Connect forum**](https://cloudcustomerconnect.oracle.com/resources/32a53f8587/) and we’ll respond promptly.
 
-### Acknowledgements
+## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Special thanks to Mike Matthews, ADB Product Management, for his excellent editing.
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, February 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
