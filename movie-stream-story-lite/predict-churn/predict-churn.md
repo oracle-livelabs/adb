@@ -31,12 +31,12 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of Labs 1–2 in the Contents menu on the left.
+- This lab requires completion of Lab 1 in the Contents menu on the left.
 
 ## Defining customer churn for MovieStream
 To understand customer behavior, we need to look at both geo-demographic information and transactional patterns. For transactional data, we need to summarize customers' transactions by month for each type of transaction that we would like to explore. This type of summarization is required because machine learning algorithms need a single input row per customer, with each attribute reflected in a table column.
 
-A Data Engineer and a Data Scientist worked together to process and transform the data that exists in the **CUSTSALES** Oracle Database table. This table contains historical customer transactions for every movie streamed, including payment and discounts, and can help us identify customer preferences and usage of the service. To aggregate the data, with *one customer per row* (which is a data layout required by Machine Learning), they worked with the *date* information of the transactions to determine the customer behavior over time.
+A Data Engineer and a Data Scientist worked together to process and transform the data that exists in the **STREAMS** Oracle Database table. This table contains historical customer transactions for every movie streamed, including payment and discounts, and can help us identify customer preferences and usage of the service. To aggregate the data, with *one customer per row* (which is a data layout required by Machine Learning), they worked with the *date* information of the transactions to determine the customer behavior over time.
 
 Defining what *customer churn* means can be very complex. For our example, the agreement between the business team and the data scientist was:
 - A customer has "churned" if they had 1) *zero movie streams in the last available month of data* and 2) streamed movies every month during 12 months before a *buffer* month (detailed below).
@@ -49,17 +49,13 @@ The following diagram shows the process we will use, including a *buffer* month 
 In addition, *a customer churning today probably made that decision a while ago*. This means that our machine learning model needs to be able to detect any change in behavior from at least a month ago. This is the reason for the buffer of 1 month in the process.
 
 ## Task 1: Navigate to OML AutoML
-Access OML from the Autonomous Database OCI service console.
+Access OML from Database Tools:
 
-1. Go to the Database Actions Launchpad. If you are at the Autonomous Database in the OCI service console, the select **Database Actions -> View all database actions**:
+1. If you are not already in the Database Tools, navigate to it using the steps from [Lab 2, Task 1](/adb/movie-stream-story-lite/workshops/tenancy/index.html?lab=query-with-sql#Task1:LogintotheSQLWorksheet). Make sure you are logged in as the **MOVIESTREAM** user.
 
-    ![Go to Database actions](/common/building-blocks/tasks/adb/images/adb-dbactions-goto.png "Database Actions")
+2. Click the hamburger menu on the top left and then click **Machine Learning**:
 
-    Logging into Database Actions from the OCI service console expects you to be the ADMIN user. Log in as ADMIN if you are not automatically logged into Database Actions.
-
-3. In the Launchpad, click **Oracle Machine Learning**:
-
-    ![Go to OML](images/adb-goto-oml.png "Go to OML")
+   ![Got to OML](images/goto-oml-from-db-tools.png) 
 
 4. Log in in as MOVIESTREAM.
 
@@ -157,9 +153,9 @@ Access OML from the Autonomous Database OCI service console.
     In this **Experiment**, the attributes with the highest **overall importance** are:  AGE, AVG\_DISC\_M3\_11 (average discounts for the 9 months before the current quarter), GENDER, CREDIT\_BALANCE, AVG\_NTRANS\_M3\_5 (average number of transactions in the previous quarter), YRS\_RESIDENCE, GENRE\_THRILLER, GENRE\_COMEDY, and GENRE\_WAR
     
 4. Understand model performance.
-    Scrolling up to the **Leader Board** section, we can click the **Decision Tree** unique model name to open the diagnostics. Click on the Decision Tree **Model Name** link in blue.
+    Scrolling up to the **Leader Board** section, we can click the **Random Forest** unique model name to open the diagnostics. Click on the Random Forest **Model Name** link in blue.
 
-    > **NOTE**: The exact random model name is unique to your model, so it will not appear as *DT\_312651AA64* like the one below.
+    > **NOTE**: The exact random model name is unique to your model, so it will not appear as *RF\_312651AA64* like the one below.
 
     ![Churn AutoML Task 2 Step 4 Leader Board select model](images/oml-churn-automl-leader-model.png " ")
 
@@ -201,13 +197,13 @@ Access OML from the Autonomous Database OCI service console.
 
 ## Task 3: Deploy the model and score a table
 
-1. [**CLICK HERE** to download the "Scoring customers with Churn Model" notebook in JSON format](./files/scoring_customers_with_churn_model.json?download=1) which contains the sequence of SQL commands for scoring customers, and download it to a folder on your local computer.
+1. [**CLICK HERE** to download the "Scoring customers with Churn Model" notebook](./files/scoring_customers_with_churn_model.dsnb?download=1) which contains the sequence of SQL commands for scoring customers, and download it to a folder on your local computer.
 
-    Go to the main notebooks listing by clicking on the "three lines" OML Navigation button on the upper left of the screen, and then select **Notebooks EA**.
+    Go to the main notebooks listing by clicking on the "three lines" OML Navigation button on the upper left of the screen, and then select **Notebooks**.
 
     ![Oracle Machine Learning Notebooks menu](images/go-back-to-notebooks.png " ")
 
-2. Click the **Import** button and navigate to the folder where you just downloaded the notebook **Scoring\_customers\_with\_Churn\_Model.json** file.
+2. Click the **Import** button and navigate to the folder where you just downloaded the notebook **Scoring\_customers\_with\_Churn\_Model.dsnb** file.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook import](images/oml-churn-automl-scoring-import-note.png " ")
 
@@ -315,11 +311,10 @@ Please *proceed to the next lab, or try the bonus Task 4*.
 
 * [Oracle Machine Learning product information](https://oracle.com/goto/machinelearning)
 * [Subscribe to the Weekly AskTOM Oracle Machine Learning Office Hours](https://asktom.oracle.com/pls/apex/asktom.search?office=6801#sessionss)
-* [Oracle Machine Learning AutoML UI Demo](https://www.youtube.com/watch?v=yJGsfU9cmt0)
 * [Oracle Machine Learning for Python Demo](https://youtu.be/P861m__PEMQ)
 * [Oracle Machine Learning Notebooks Demo](https://youtu.be/EgxKYQ8paCw)
 
 ## Acknowledgements
 * **Author** - Marcos Arancibia, Oracle Machine Learning Product Management
 * **Contributors** -  Mark Hornick, Marty Gubar, Kevin Lazarz, Nilay Panchal, Jayant Sharma, Jie Liu, Sherry LaMonica, Richard Green
-* **Last Updated By/Date** - Marty Gubar, April 2024
+* **Last Updated By/Date** - Marty Gubar, May 2025

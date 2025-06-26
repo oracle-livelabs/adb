@@ -1,5 +1,5 @@
 {
-  "workshoptitle":"Integrate, Analyze and Act on All data using Autonomous Database",
+  "workshoptitle":"Innovate with Autonomous Database's built-in Select AI, Graph, ML and Spatial analytics",
   "help": "livelabs-help-db_us@oracle.com",
   "include": {
     "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
@@ -10,8 +10,9 @@
     "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
     "adb-create-user.md":"/common/building-blocks/tasks/adb/create-user.md",
     "adb-goto-graph-studio.md":"/common/building-blocks/tasks/adb/goto-graph-studio.md",
-    "adb-create-graph.md":"/common/building-blocks/tasks/adb/create-graph.md"
- 
+    "adb-create-graph.md":"/common/building-blocks/tasks/adb/create-graph.md",
+    "stack-provision-adb.md":"/common/building-blocks/tasks/stacks/provision-adb-select-ai.md",
+    "create-genai-policy.md":"/common/building-blocks/tasks/adb/create-genai-policy.md"
   },
   "variables": ["/adb/movie-stream-story-lite/workshops/variables/variables-tenancy.json"],
   "tutorials": [
@@ -24,28 +25,31 @@
       "filename": "../../setup-environment/setup-environment.md"
     },
     {
-      "title": "(Optional) Lab 2: Provision an ADB Instance",
-      "filename": "../../provision-database/adb-provision-moviestream.md"
+      "title": "Lab 2: Query your data SQL",
+      "filename": "../../query-with-sql/query-with-sql.md"
+    },    
+    {
+      "title": "Lab 3: Query your data with Select AI",
+      "filename": "../../query-with-select-ai/query-with-select-ai.md"
+    },         
+    {
+      "title": "Lab 4: Use the Select AI Sample Chat App",
+      "filename": "/common/building-blocks/blocks/adb/use-select-ai-sample/use-select-ai-sample.md"
+    },         
+    {
+      "title": "Lab 5: Load data and gain insights from user feedback with AI",
+      "filename": "../../load-data-ai/load-data-ai.md"
+    },    
+    {
+      "title": "Lab 6: Use Select AI and Spatial functions to customize offers",
+      "filename": "../../offers-using-select-ai-spatial/offers-using-select-ai-spatial.md"
     },
     {
-      "title": "(Optional) Lab 3: Use Database Actions to create a user and load data",
-      "filename": "../../load-data/load-data.md"
-    },
-    {
-      "title": "Lab 4: Use SQL to analyze movie sales data",
-      "filename": "../../analyzing-movie-sales-data/analyze-sales-converged.md"
-    },
-    {
-        "title": "Lab 5: Work with JSON data",
-        "filename": "../../working-with-semi-structured-data/working-with-semi-structured-data.md"
-
-    },
-    {
-        "title": "Lab 6: Use OML to predict customer churn",        
+        "title": "Lab 7: Use OML to predict customer churn",        
         "filename": "../../predict-churn/predict-churn.md"
     },
     {
-        "title": "Lab 7: Use Graph analytics for product recommendations",
+        "title": "Lab 8: Use Graph analytics for product recommendations",
         "filename": "../../apply-graph/apply-graph.md"
     },
     {

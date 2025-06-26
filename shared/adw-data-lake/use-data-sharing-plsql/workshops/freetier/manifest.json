@@ -52,7 +52,14 @@
         }
         ,
         {
-            "title": "Lab 6: Clean up Resources Used in this Workshop (Optional)",
+            "title": "Lab 6: Advanced Data Share Techniques",
+            "type":"freetier",
+            "description": "This lab walks you through how to use some advanced data share tips.",
+            "filename": "./../../advanced-tips/advanced-tips.md"
+        }
+        ,
+        {
+            "title": "Lab 7: Clean up Resources Used in this Workshop (Optional)",
             "description": "Delete the ADB instance and compartment if not needed.",
             "type": "freetier",
             "filename": "/common/building-blocks/blocks/adb/cleanup/cleanup.md"

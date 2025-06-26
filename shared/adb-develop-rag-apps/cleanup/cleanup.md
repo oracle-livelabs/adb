@@ -8,7 +8,7 @@ Estimated Time: 5 minutes
 
 ### Objectives
 
-* Delete the Autonomous Database instance or destroy the created stack and its resources such as the ADB instance.
+* Destroy the created stack and its resources such as the ADB instance.
 * Delete your entire compartment if you don't need it.
 
 ### Prerequisites
@@ -24,19 +24,7 @@ You can destroy (instead of deleting) your stack that you created in Lab 1 in th
 
 3. On the **Stack details** page, click **Destroy**. A **Destroy** confirmation box is displayed. Click **Destroy**. The initial status is **Accepted** followed by **In progress** and finally **Succeeded**. The stack resources are released.
 
-## Task 2: Terminate Your Autonomous Database Instance
-
-You can terminate your ADW instance that you created in this workshop as follows:
-
-1. Open the **Navigation** menu and click **Oracle Databases**. Click **Autonomous Database**.
-
-2. On the **Autonomous Databases** page, in the **List Scope** section, select your compartment from the **Compartment** drop-down list. In the row for your Autonomous Database instance, click the **Actions** icon (three dots), and then select **Terminate** from the context menu.
-
-3. A **Terminate Autonomous Database** dialog box is displayed. Enter your ADB instance name in the **To confirm, enter the name of the database that you want to terminate** field, and then click **Terminate Autonomous Database**.
-
-    The **State** of the Autonomous Database instance goes into **Terminating**. When the ADB is deleted, the **State** changes to **Terminated**.
-
-## Task 3 (Optional): Delete Your Compartment
+## Task 2 (Optional): Delete Your Compartment
 
 If you created an optional compartment for this workshop, you can delete it if you no longer need it. To delete a compartment, it must be empty of all resources. Before you initiate deleting a compartment, be sure that all its resources have been moved, deleted, or terminated, including any policies attached to the compartment. If you want to re-run this entire workshop from the beginning, you must delete all of the resources in your compartment as described in the earlier steps of this lab. Next, you can delete the compartment. See [Managing Compartments](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingcompartments.htm) in the Oracle Cloud Infrastructure documentation.
 
@@ -57,7 +45,7 @@ If you created an optional compartment for this workshop, you can delete it if y
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, February 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

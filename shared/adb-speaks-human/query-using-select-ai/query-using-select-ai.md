@@ -149,29 +149,19 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
-![Click the banner](./images/click-banner.png " ")
+1. If you are still connected to your SQL Worksheet as the **`moviestream`** user from the earlier lab, sign out of this user using the drop-down list next to the user name in the banner. 
 
-If you are no longer logged in to your Cloud account, start with **step 1** below. If you are still connected to your SQL Worksheet as the **`moviestream`** user from an earlier lab, sign out of this user and sign in as the **`ADMIN`** user using the drop-down list next to the user name in the banner.
+    ![Sign out of moviestream](./images/signout-moviestream.png " ")
 
-1. Log in to the **Oracle Cloud Console** as the Cloud Administrator.
+2. On the **Sign-in** page, sign in as the **`ADMIN`** user. 
 
-    >**Note:** To access **Database Actions** from the Console, you must log in as an **`ADMIN`** user.
+    ![Sign in as admin](./images/signin-admin.png =70%x*)
 
-2. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
-
-3. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
-
-4. On the **Autonomous Databases** page, make sure that the **`your-compartment`** is selected in the **Compartment** drop-down list in the **List Scope** section, and then click your ADB instance that you provisioned earlier.
-
-5. On the **Autonomous Database Details** page, click the **Database Actions** drop-down list, and then select **View all database actions** from the list.
-
-   ![Select view all database actions](./images/view-all-database-actions.png " ")
-
-6. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **Oracle Machine Learning** tab.
+3. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **Machine Learning** tab.
 
     ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
 
-7. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 2 > Step 6** in the **Password** field, and then click **Sign In**.
+4. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 4 > Step 8** in the **Password** field, and then click **Sign In**.
 
     ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
 
@@ -179,7 +169,7 @@ If you are no longer logged in to your Cloud account, start with **step 1** belo
 
     ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-new.png " ")
 
-8. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
+5. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
 
     ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
 
@@ -255,7 +245,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, March 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
