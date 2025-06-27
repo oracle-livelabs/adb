@@ -1,6 +1,15 @@
 {
     "workshoptitle": "Build a Data Lake with Autonomous Data Warehouse",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-provision-data-sharing-lake-task.md":"/common/building-blocks/tasks/adb/provision-data-sharing-lake-task.md",  
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "connect-with-sql-worksheet-non-admin.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-non-admin.md",
+      "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md"
+      },
+    "variables": ["./variables.json"],
         "tutorials": [
         {    
             "title": "Introduction",
@@ -16,7 +25,7 @@
             "title": "Lab 1: Review the Workshop Environment (Optional)",
             "type":"livelabs",
             "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
-            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
         },
         {
             "title": "Lab 2: Load Local Data",

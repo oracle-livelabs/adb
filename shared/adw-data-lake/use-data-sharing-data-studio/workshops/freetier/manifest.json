@@ -4,7 +4,8 @@
     "include": {
     "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md",
     "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
-    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-data-sharing-lake-task.md":"/common/building-blocks/tasks/adb/provision-data-sharing-lake-task.md"    
     },
     "variables": ["./variables.json"],
     "tutorials": [
@@ -23,7 +24,7 @@
             "title": "Lab 1: Set up the Workshop Environment",
             "type":"freetier",
             "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
-            "filename": "./../../setup-workshop-environment/setup-workshop-environment.md"
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
         },
         {
             "title": "Lab 2: Create a User and an OCI Credential",
