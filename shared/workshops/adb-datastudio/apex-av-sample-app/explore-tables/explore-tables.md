@@ -1,30 +1,29 @@
 # Explore the Data Tables
 
-
 ## Introduction
 
-You will explore the table in this lab and become familiar with the data.
+In this lab, you will explore the data tables and get familiar with the dataset.
 
-Estimated Time:  5 minutes.
+**Estimated Time:** 5 minutes
 
 ### Objectives
 
-In this lab, you will:
+- Review the data used by the analytic view.
 
-- Understand the data in the tables used by the analytic view.
-
-### Prerequisites:
+### Prerequisites
 
 - Complete the previous lab.
 
 ## Task 1 - Examine the Dimension Tables
 
-Run queries that select from the dimension tables to become familiar with the data.
+Run the queries below to review the dimension tables.
 
-1.  You should already be connected to SQL Worksheet as the **MOVIESTREAM** users.  If you are not, connect to the database using the  **MOVIESTREAM** (or other) user created in Lab 3.
-1.  Run the following commands in SQL Worksheet.
+1. Make sure you're connected to SQL Worksheet as the **MOVIESTREAM** user (or other user created in Lab 3).
+2. Run the following SQL commands:
 
-The TIME_DIM tables contain data at the Day, Month, Quarter, and Year levels over two years.
+**View the TIME\_DIM table:**
+
+This table includes Day, Month, Quarter, and Year data over two years.
 
 ~~~SQL
 <copy>
@@ -39,7 +38,9 @@ ORDER BY
 </copy>
 ~~~
 
-The CUSTOMER\_DIM table contains data at the City, State, Country, and Continent levels.
+**View the CUSTOMER\_DIM table:**
+
+This table contains customer location details such as City, State, Country, and Continent.
 
 ~~~SQL
 <copy>
@@ -52,7 +53,9 @@ FROM
 </copy>
 ~~~
 
-The SEARCH\_GENRE\_DIM table contains a list of movie genre.  In the MovieStream data set, this was the genre that the user searched on while browsing for movies.
+**View the SEARCH\_GENRE\_DIM table:**
+
+This table lists movie genres users searched for.
 
 ~~~SQL
 <copy>
@@ -69,7 +72,7 @@ ORDER BY
 
 ## Task 2 - Examine the Fact Table
 
-The MOVIE\_SALES\_FACT table contains Sales, Quantity, and Discount Percent by day, customer, and search genre.
+The MOVIE\_SALES\_FACT table includes daily sales data by customer and genre, with quantity and discount information.
 
 ~~~SQL
 <copy>
@@ -86,9 +89,9 @@ ORDER BY
 </copy>
 ~~~
 
-## Task 3 - Query a  Flattened View of the Data
+## Task 3 - Query a Flattened View of the Data
 
-The MOVIE\_SALES\_FACT table can be joined to the dimension tables to provide a full, 'flattened' view of the data.
+Join the fact table with the dimension tables to create a complete, flattened view of the data.
 
 ~~~SQL
 <copy>
@@ -122,19 +125,15 @@ WHERE
 </copy>
 ~~~
 
-You may now **proceed to the next lab**
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, June 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

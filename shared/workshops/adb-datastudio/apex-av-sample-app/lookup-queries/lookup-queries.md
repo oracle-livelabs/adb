@@ -2,23 +2,21 @@
 
 ## Introduction
 
-There are many times when the APEX developer also needs to write queries to provide a list of values for a select list, a pop-up list of values, a radio list, or a tree.
+APEX developers often write queries to populate select lists, pop-up LOVs, radio lists, or trees.
 
-Estimated Time:  5 minutes.
+**Estimated Time:** 5 minutes
 
 ### Objectives
 
-In this lab, you will:
-
 - Examine and run queries used to provide lists of values for APEX items.
 
-### Prerequisites:
+### Prerequisites
 
 - Complete the previous lab.
 
 ## Task 1 - List of Geographies
 
-You may need a list of all geographies from the CUSTOMER_DIM table for a pop-up LOV (list of values) item on a page in your APEX application.  If the list of values is for a single level, for example, countries, you can provide a SQL Query like this.
+To populate a list of values for a single level (e.g., continent or country), use a simple query like this:
 
 ~~~SQL
 <copy>
@@ -29,26 +27,26 @@ FROM
   customer_dim
 ORDER BY
   continent;
-  </copy>
+</copy>
 ~~~
 
-You need another query if you need a list for a different level.  For example:
+Or for a different level:
 
 ~~~SQL
 <copy>
 SELECT
   DISTINCT country AS d,
-  country r
+  country AS r
 FROM
   customer_dim
 ORDER BY
   country;
-  </copy>
+</copy>
 ~~~
 
 ## Task 2 - A List of Geographies with Multiple Levels
 
-If you need a list with more than one level, you might use a query such as this:
+To support multiple levels in a single LOV, use `UNION` to combine the results:
 
 ~~~SQL
 <copy>
@@ -74,7 +72,7 @@ FROM
 
 ## Task 3 - A List of Geographies with Multiple Levels and Hierarchical Metadata
 
-Including hierarchical metadata enriches the list of geographies, allowing for filters using levels or hierarchy depth.  You might use a query such as this.
+Add level and depth metadata to support filtering and sorting:
 
 ~~~SQL
 <copy>
@@ -112,10 +110,10 @@ ORDER BY
   , continent
   , country
   , d;
-  </copy>
-  ~~~
+</copy>
+~~~
 
-You could create a similar query for time periods.
+You can apply the same idea to time periods:
 
 ~~~SQL
 <copy>
@@ -173,19 +171,15 @@ ORDER BY
 
 There must be a better way!
 
-You may now **proceed to the next lab**
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, June 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

@@ -2,36 +2,33 @@
 
 ## Introduction
 
-In this lab, you will add data selectors to the Sales Dashboard and update the queries to use the selections.
+In this lab, you’ll add interactive selectors to your Sales Dashboard. These selectors allow users to filter data by time period and geography.
 
-Estimated Time:  20 minutes.
+**Estimated Time:** 20 minutes
 
 ### Objectives
 
-In this lab, you will learn how to:
+- Create select lists using SQL queries on analytic views and dictionary metadata  
+- Modify chart queries to use selector values
 
-- Create select lists using queries select from the data dictionary and hierarchies.
-- Implement user selections with queries selecting from the analytic view.
-
-### Prerequisites:
+### Prerequisites
 
 - Complete the previous lab.
 
 ## Task 1 - Add Time Level Selector
 
-The Sales and Sales Change Year Ago charts use static selections, selecting Month level data.  
+The Sales and Sales Change Prior Period charts currently use static time levels. You’ll add a **Popup LOV** to let users choose a time level dynamically.
 
-In this task, you will add a Popup LOV that allows the user to select time periods by choosing the values of the analytic view's TIME hierarchy.
-
-1. Add a **Popup LOV** item to the page as shown in the illustration below.
-1. **Name** the item **P1\_TIME\_LEVEL**.
-1. The **Label** should default to **Time Level**.
-1. In the **Layout** section, set **Column Span** to **3**.
+1. Add a **Popup LOV** to the page  
+2. Set **Name** to `P1_TIME_LEVEL`  
+3. Label: `Time Level`  
+4. Under **Layout**, set **Column Span** to `3`
 
 ![P1_TIME_LEVEL item](images/p1-time-level-position.png)
 
-5.  In **List of Values** choose **SQL Query**.
-5.  Replace the **SQL Query** with the following query. Note that this query selects from a data dictionary view.  All analytic view metadata is available in data dictionary views.  This view will return the levels of the TIME hierarchy.
+5. In **List of Values**, choose:
+   - Type: `SQL Query`  
+   - SQL:
 
 ~~~SQL
 <copy>
@@ -47,41 +44,36 @@ ORDER BY
 </copy>
 ~~~
 
-7. In the **Settings** section set **Display Extra Values** to **off**.
-7. Set **Display Null Value** to **off**.
-7. In the **Default** section set:
-- **Type**:  **Static**
-- **Static Value**:
-~~~SQL
-<copy>
-MONTH
-</copy>
-~~~
+6. In **Settings**:  
+   - Display Extra Values: `Off`  
+   - Display Null Value: `Off`
 
-A dynamic action will submit and refresh the page.
+7. In **Default**:  
+   - Type: `Static`  
+   - Static Value: `MONTH`
 
-1. Select the **P1\_TIME\_LEVEL** item.
-1. Create a dynamic action.
-1. Accept **Change** as the default event.
-1. Set the **True** action to **Submit Page**
+8. Add a **Dynamic Action**:  
+   - Event: `Change`  
+   - True Action: `Submit Page`
 
-Feel free to run the page and test the Time Level selector. It's not hooked up to the query, so it will not yet affect the charts.
+You can now test the control. It won’t affect charts yet — that comes next.
 
-## Task 2 - Add a Geography Member Selector
+## Task 2 - Add Geography Member Selector
 
-In this task, you will add a Popup LOV that allows the user to choose a Geography hierarchy member. 
+Add a **Popup LOV** that allows selection of a geography member from the hierarchy.
 
-1. Add a **Popup LOV** item to the page as shown in the illustration below.
-1. **Name** the item **P1_GEOGRAPHY**.
-1. The **Label** should default to **Geography**.
-1. If the **P1_GEOGRAPHY** is correctly positioned, **Start New Row** and **New Column** will be **off** in the **Settings** section. If not, try to reposition it but do not worry it is not perfect.
+1. Add a **Popup LOV**  
+2. Set **Name** to `P1_GEOGRAPHY`  
+3. Label: `Geography`  
+4. Ensure **Start New Row** and **New Column** are `Off`
 
 ![P1_GEOGRAPHY item](images/p1-geography-position.png)
 
-5. In the **List of Values** section, choose **Type:  SQL Query**.
-5. Enter the following **SQL Query**.
+5. Set **List of Values**:
+   - Type: `SQL Query`  
+   - SQL:
 
-~~~
+~~~SQL
 <copy>
 SELECT
     member_name        d
@@ -89,40 +81,31 @@ SELECT
 FROM
     geography
 WHERE
-    level_name IN ('ALL', 'CONTINENT', 'COUNTRY' )
+    level_name IN ('ALL', 'CONTINENT', 'COUNTRY')
 ORDER BY
     hier_order;
 </copy>
 ~~~
 
-The query selects the hierarchy member-friendly name (MEMBER\_NAME) and primary key value (MEMBER\_UNIQUE\_NAME) at the  ALL, CONTINENT, and COUNTRY levels. This query can be used with any hierarchy.
+6. In **Settings**:  
+   - Display Extra Values: `Off`  
+   - Display Null Value: `Off`
 
-7. In the **Settings** section set **Display Extra Values** to **off**.
-7. Set **Display Null Value** to **off**.
-7. In the **Default** section set:
-- **Type**:  **Static**
-- **Static Value**:
-~~~
-<copy>
-[ALL].[ALL]
-</copy>
-~~~
-Note: **[ALL].[ALL]** is the key value (MEMBER\_UNIQUE\_NAME) of the grand total hierarchy member.
+7. In **Default**:  
+   - Type: `Static`  
+   - Static Value: `[ALL].[ALL]`
 
-A dynamic action will submit and refresh the page.
+8. Add a **Dynamic Action**:  
+   - Event: `Change`  
+   - True Action: `Submit Page`
 
-1. Select the **P1\_GEOGRAPHY\_MEMBER** item.
-1. Create a dynamic action.
-1. Accept **Change** as the default event.
-1. Set the True action to **Submit Page**
-
-Feel free to run the page and test the Geography selector. It's not hooked up to the query, so it will not yet affect the charts.
+Now test the Geography selector. It will become active in the next step.
 
 ## Task 3 - Update the Sales Chart Query
 
-Update the query used by the Sales chart to use the Time Level and Geography selectors.  The query will select time periods at the chosen level and the chosen Geography value. Note that this query follows the familiar SELECT ... FROM ... WHERE pattern.  Joins and GROUP BY are replaced by the HIERARCHIES clause.
+Update the chart to use the selector values.
 
-1.  Replace the SQL Query used by the Sales chart with the following query:
+1. Edit the Sales chart query:
 
 ~~~SQL
 <copy>
@@ -145,13 +128,13 @@ ORDER BY
 </copy>
 ~~~
 
-Feel free to run the page and test the chart.  The selectors will now be active for this chart.
+Run the page — the chart now reflects user selections.
 
 ## Task 4 - Update the Sales Change Prior Period Chart Query
 
-The query to the Sales Change Prior Period chart will also use the Time Level and Geography selections.  Note that this query following the same pattern as the previous pattern, but uses the USING form of FROM and ADD MEASURES.
+Update this chart to use both selectors and a calculated measure.
 
-1.  Replace the SQL Query used by the Sales Change Prior Period chart with the following query:
+1. Edit the Sales Change Prior Period chart query:
 
 ~~~SQL
 <copy>
@@ -177,13 +160,13 @@ ORDER BY
 </copy>
 ~~~
 
-Feel free to run the page and test the chart.  The selectors will now be active for this chart.
+Test the chart. It now uses the time level and geography selected by the user.
 
 ## Task 5 - Update the Sales Percent Change Year Ago Chart Query
 
-The query to the Sales Percent Change Year Ago chart will use the Geography selection to select the children of the selected value.   Again, the same query pattern is used.  The filter uses the PARENT\_UNIQUE\_NAME column which will result in the query returning the children of the parent hierarchy member.
+Update this chart to return child values based on the selected geography.
 
-1.  Replace the SQL Query used by the Update the Sales Percent Change Year Ago chart with the following query:
+1. Replace the chart query with:
 
 ~~~SQL
 <copy>
@@ -211,13 +194,13 @@ ORDER BY
 </copy>
 ~~~
 
-Feel free to run the page and test the chart.  The Geography selector will now be active for this chart.
+Run the page and confirm the Geography selector now filters this chart.
 
 ## Task 6 - Update the Sales Share of Genre Query
 
-The query to the Sales Share of Genre chart will also use the Geography selection.  The geography value is used to select the children of the selected geography.  This query includes a SHARE calculation. SHARE calculations return the ration of the current member to another member, in this case the ALL member (that is, the grand total).
+Add geography filtering to this chart, and include a `SHARE_OF` calculation.
 
-1.  Replace the SQL Query used by the Sales Share of Genre chart with the following query:
+1. Replace the query with:
 
 ~~~SQL
 <copy>
@@ -246,37 +229,41 @@ ORDER BY sales_share_genre;
 </copy>
 ~~~
 
-**Run the page and test the chart.**  The Geography selector will now be active for this chart.
+Run the page and test the updated chart.
 
 ## Notes About the Queries
 
-The charts now allow interactive selections of the time periods.  If the queries select from tables, all the column names used in the query would need to change.  With the analytic view queries, the only thing that changed was the value of the level filter.  The reuse of the query template simplifies SQL generation in APEX applications.
+Your charts now support user-driven filtering by time and geography.
 
-The completed Sales Dashboard will look like this.
+With analytic views:
+- No joins or GROUP BY needed  
+- Column names stay consistent  
+- Only level or hierarchy filters change  
+- Reusable query templates simplify development  
+
+The final Sales Dashboard should resemble this:
 
 ![Completed Sales Dashboard](images/completed-sales_dashboard.png)
 
 ## Summary
 
-In this lab, your updated charts allow users to change time periods and geographies.  In upgrading the charts, you should have observed that only minor changes to the query templates were required.
+You added selectors and updated queries to create a fully interactive Sales Dashboard. Only small changes to the queries were required — analytic views handled the complexity behind the scenes.
 
-This Live Lab introduced you to creating an APEX application using an analytic view.  The analytic view simplifies SQL generation in APEX application by providing a a foundation that replaces complex collections of tables with single view that eliminates the need for joins, aggregation (GROUP BY), returns rows at detail and aggregate values using a consistent set of columns, includes helpful hierarchical attributes, and provides unique calculation expressions. 
+Analytic views make it easy to build flexible APEX apps by:
 
-Each analytic view includes the same set of hierarchical attribute columns, making it easy to transfer knowledge and code from one application and analytic view to the next. Most SQL generation can be accomplished using simple, reusable query templates.
+- Replacing joins and GROUP BY with HIERARCHIES  
+- Supporting consistent, reusable SQL  
+- Providing calculated measures and hierarchy-aware filtering  
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, June 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
