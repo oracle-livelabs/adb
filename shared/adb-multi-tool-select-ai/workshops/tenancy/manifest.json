@@ -5,7 +5,7 @@
                 "step2.md":"../../data-load/files/step2.md",
                 "goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
                 "provision-body-developer.md":"/common/building-blocks/tasks/adb/provision-body-developer.md",
-                "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+                "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md", 
                 "adb-provision-body-developer.md":"/common/building-blocks/tasks/adb/provision-body-developer.md"
             },
     "variables": ["../../variables/variables.json",
