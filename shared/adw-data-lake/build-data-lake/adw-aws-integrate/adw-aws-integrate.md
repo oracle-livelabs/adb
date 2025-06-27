@@ -6,7 +6,7 @@ Amazon AWS Glue Data Catalog is a centralized metadata management service that h
 
 Autonomous Database allows you to synchronize with Amazon Web Service (AWS) Glue Data Catalog metadata. A database external table is automatically created by Autonomous Database for every table harvested by AWS Glue about data stored in Amazon Simple Storage Service (S3). Users can query data stored in Amazon S3 from Autonomous Database without having to manually derive the schema for the external data sources and create external tables.
 
-Synchronizing with AWS Glue Data Catalog has the same properties as synchronizing with OCI Data Catalog. Synchronization is dynamic, keeping the database up-do-date with respect to changes to the underlying data, reducing administration cost as it automatically maintains hundreds to thousands of tables.
+Synchronizing with AWS Glue Data Catalog is dynamic, keeping the database up-do-date with respect to changes to the underlying data, reducing administration cost as it automatically maintains hundreds to thousands of tables.
 
 Estimated Time: 10 minutes
 
@@ -177,7 +177,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

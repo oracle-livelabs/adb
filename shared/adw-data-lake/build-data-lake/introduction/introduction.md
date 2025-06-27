@@ -2,13 +2,13 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Data Warehouse (ADW), Oracle Object Storage, and optionally Oracle Cloud Infrastructure (OCI) Data Catalog and Amazon Simple Storage Service (S3).
+The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Data Warehouse (ADW), Oracle Object Storage, and Amazon Simple Storage Service (S3).
 
 In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle ADW has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
 
 Traditionally, there were two main paths for creating data lake architectures: The database-centric and the object store-centric approach. Each offers unique strengths. The database-centric model excels in performance, concurrency, governance, and security. The object store-centric approach provides instant data access, multiple-engine compatibility, and multi-cloud support.
 
-There are scenarios where an object store-centric approach shines. ADW supports a wide range of file formats and is compatible across multiple cloud platforms. It even facilitates seamless collaboration and data sharing with the Delta Sharing Protocol, and robust data governance through Data Catalogs integration.
+There are scenarios where an object store-centric approach shines. ADW supports a wide range of file formats and is compatible across multiple cloud platforms. It even facilitates seamless collaboration and data sharing with the Delta Sharing Protocol.
 
 The focus of this workshop is on the process of building an object store-centric data lake with ADW. Whether you're an organization seeking superior performance, secure governance, or versatile support for diverse data formats and cloud platforms, this workshop is designed to equip you with the practical skills to leverage the full potential of your data with Oracle ADW. ADW provides an efficient, cost-effective, and robust data management solutions.
 
@@ -17,7 +17,7 @@ The focus of this workshop is on the process of building an object store-centric
 Estimated Time: 2.5 hours
 
 ### What is a Data Lake?
-A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will harvest in Data Catalog and query in ADB.
+A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will query in ADB.
 
 ### What is a Data Warehouse?
 With a data warehouse, you perform data transformation and cleansing before you commit the data to the warehouse. With a data lake, you ingest data quickly and prepare it on the fly as people access it. A data lake supports operational reporting and business monitoring that require immediate access to data and flexible analysis to understand what is happening in the business while it happening.
@@ -36,7 +36,6 @@ In this workshop, you will:
 * Create external tables using the Delta Sharing protocol
 * Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
 * Use Oracle as a data provider.
-* Integrate ADW with centrally managed Data Catalogs.
 * Improve query performance by creating a materialized view over an external table.
 * Create and manage partitioned external tables to improve performance.
 
@@ -56,18 +55,15 @@ You may now proceed to the next lab.
 
 ## Learn More
 
-* [Get Started with Data Catalog](https://docs.oracle.com/en-us/iaas/data-catalog/using/index.htm)
-* [Data Catalog Overview](https://docs.oracle.com/en-us/iaas/data-catalog/using/overview.htm)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [What Is a Data Catalog and Why Do You Need One?](https://www.oracle.com/big-data/what-is-a-data-catalog/)
 * [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf) and the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://livelabs.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
