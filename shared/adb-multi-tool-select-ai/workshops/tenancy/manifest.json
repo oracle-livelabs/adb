@@ -2,7 +2,10 @@
     "workshoptitle": "The Title of the Workshop is Defined in the Manifest File",
     "include": {"starter-file.sql":"../../data-load/files/starter-file.sql",
                 "sample.json":"../../data-load/files/sample.json",
-                "step2.md":"../../data-load/files/step2.md"},
+                "step2.md":"../../data-load/files/step2.md",
+                "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+                "adb-provision-body-developer.md":"/common/building-blocks/tasks/adb/provision-body-developer.md"
+            },
     "variables": ["../../variables/variables.json",
                  "../../variables/variables-in-another-file.json"],
     "help": "livelabs-help-**enterarea**_us@oracle.com",
@@ -20,7 +23,7 @@
         {
             "title": "Lab 1: Provision an Instance",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
-            "filename": "/common/building-blocks/tasks/adb/provision-body.md"
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 2: Setup the Environment",
