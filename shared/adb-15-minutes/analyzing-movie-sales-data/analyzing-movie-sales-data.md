@@ -138,7 +138,6 @@ We accomplished a lot in just 15 minutes!
 ## Learn more
 
 * [Oracle Autonomous Data Warehouse documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
-* [Additional Autonomous Database LiveLabs workshops](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/livelabs-workshop-cards?p100_product=82)
 
 ## **Acknowledgements**
 
