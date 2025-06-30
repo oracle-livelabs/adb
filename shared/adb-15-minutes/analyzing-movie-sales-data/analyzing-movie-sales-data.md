@@ -12,7 +12,7 @@ Estimated Time: 5 minutes
 
 ### Prerequisites
 
-- This lab requires the completion of **Labs 1** and **Lab 2** in the **Contents** menu on the left.
+- This lab requires the completion of **Lab 1** and **Lab 2** in the **Contents** menu on the left.
 
 ## Task 1: Navigate to the SQL Worksheet
 
@@ -20,7 +20,7 @@ Estimated Time: 5 minutes
 
     ![Go to SQL worksheet](images/goto-sql.png =60%x*)
 
-    The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed. The first time you access the SQL Worksheet, informational boxes are displayed. Click the **X** icons to close those boxes. You can also click the **Collapse** icon to increase the worksheet area.
 
     ![The SQL worksheet is displayed](images/sql-worksheet.png " ")
 
@@ -32,7 +32,12 @@ You are now ready to start analyzing MovieStream's performance using SQL.
 
 ## Task 2: Explore the Sales Data
 
-1. Let's use a very simple query to look at sales by customer education level. Copy the following code and paste it in your SQL Worksheet, and then click the **Run Statement** icon in the toolbar.
+1. Let's use a very simple query to look at sales by customer education level. Copy the following code and paste it in your SQL Worksheet, and then click the **Run Statement** icon in the toolbar. 
+
+    >**Note:** The first time you try to paste anything from the clipboard into your SQL Worksheet, an informational box is displayed. Click **Allow**.
+
+    ![Allow paste](images/allow-paste.png =50%x*)
+
 
     ```
     <copy>select
@@ -132,12 +137,12 @@ We accomplished a lot in just 15 minutes!
 
 ## Learn more
 
-* [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
-* [Additional Autonomous Data Warehouse Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
+* [Oracle Autonomous Data Warehouse documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
+* [Additional Autonomous Database LiveLabs workshops](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/livelabs-workshop-cards?p100_product=82)
 
 ## **Acknowledgements**
 
 - **Authors:**
-    * Marty Gubar, Oracle Autonomous Database Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, April 2024
+    * Marty Gubar, Oracle Autonomous Database Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, July 2025

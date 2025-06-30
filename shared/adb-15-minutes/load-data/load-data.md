@@ -32,8 +32,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author:** Mike Matthews, Autonomous Database Product Management
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
-    - Marty Gubar, Autonomous Database Product Management
-    - Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+    - Mike Matthews, Autonomous Database Product Management
+    - Marty Gubar, Autonomous Database Product Management   
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
