@@ -32,8 +32,27 @@ This lab assumes you have:
 
 * Must have an Administrator Account or Permissions to manage several OCI Services: Oracle Databases, Networking, Policies.
 
+## Task 1: Create API Key in OCI
 
-## Task 1: Create Autonomous Database
+This task involves creating and API Key in OCI, the key will be used to implement Select AI.
+
+1. Login the OCI Console and click the person icon on the top right.
+
+    ![Open OCI Profile](images/oci_profile.png)
+
+2. Click API keys at the bottom left, then click the add API Key button.
+
+    ![Add API Key](images/oci_add_api_key.png)
+
+3. Select the generate API Key Pair and click the add button. Make sure to download the private key.
+
+    ![Generate API Key](images/oci_add_api_key_generate.png)
+
+4. Make note of the API configurations, it will be needed later.
+
+    ![View API Key](images/add_api_key_config_view.png)
+
+## Task 2: Create Autonomous Database
 
 This task involves creating Autonomous Database 23ai.
 
@@ -58,7 +77,7 @@ This task involves creating Autonomous Database 23ai.
     ![Create ADB Done](images/create_adb_complete.png)
 
  
-## Task 2: Access APEX Administration Services
+## Task 3: Access APEX Administration Services
 
 This task involves logging into APEX Administration Services
 
@@ -79,7 +98,7 @@ This task involves logging into APEX Administration Services
     ![Create ADB Password](images/apex_admin_services.png)
 
 
-## Task 3: Create APEX workspace 
+## Task 4: Create APEX workspace 
 
 
 This task involves Creating an APEX workspace from APEX Administration Services
@@ -96,7 +115,7 @@ This task involves Creating an APEX workspace from APEX Administration Services
 
     ![Create APEX Workspace Name and User](images/apex_create_workspace_name_user.png)
 
-4. Finish creating new workspace, use the link to log into your new workspace or logout and use the Launch APEX button from task 2, step 3.
+4. Finish creating new workspace, use the link to log into your new workspace or logout and use the Launch APEX button from task 3, step 3.
 
     ![Finish Creating APEX Workspace](images/apex_create_workspace_done.png)
 

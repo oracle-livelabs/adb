@@ -23,7 +23,7 @@
             "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Provision an Instance",
+            "title": "Lab 1: Provision Resources",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../provision-resources/provision_resources.md"
         },
