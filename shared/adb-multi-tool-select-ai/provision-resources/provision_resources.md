@@ -100,35 +100,10 @@ This task involves Creating an APEX workspace from APEX Administration Services
 
     ![Finish Creating APEX Workspace](images/apex_create_workspace_done.png)
 
-## Task 4: Deploy Sample App
-
-In this task we deploy a sample Apex app into the workspace
-
-1. Login into the workspace using the name and credentials you created in task 3.
-
-    ![Login APEX Workspace](images/apex_login_workspace.png)
-
-2. From the workspace home screen click the App Builder button.
-
-    ![APEX Workspace App Builder Button](images/apex_workspace_home.png)
-
-3. Click the Install a Starter or Sample App button.
-
-    ![Install Sample App](images/apex_workspace_install_sample.png)
-
-4.  Type in Brookstrut in the search bar and click the install button in the Bookstrut Sample App card.
-
-    ![Select Sample App](images/apex_workspace_select_sample_brookstrut.png)
-
-5.  After installation completes, you should see the install button replaced with a run button. Click the button to login the app and save the url for later.
-
-    ![Run Sample App](images/apex_workspace_run_sample_brookstrut.png)
-
-6. Login to the sample app using the workspace credentials. 
-
-    ![Login Sample App](images/apex_workspace_sample_login.png)
 
 You may now proceed to the next lab.
+
+
 
 ## Acknowledgements
 
@@ -137,4 +112,4 @@ You may now proceed to the next lab.
 * **Contributors**
     * **Kaushik Kundu**, Master Principal Cloud Architect, NACIE
 * **Last Updated By/Date**
-    * **Jadd Jennings**, Principal Cloud Architect, NACIE, March 2025
+    * **Jadd Jennings**, Principal Cloud Architect, NACIE, June 2025
