@@ -32,5 +32,5 @@ You may now **proceed to the next lab**.
 
 - **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Nilay Panchal, Oracle Autonomous Database Product Management
-- **Last Updated By/Date:** - Lauran K. Serhal, November 2024
+- **Contributor:** Nilay Panchal, Oracle Autonomous Database Product Management
+- **Last Updated By/Date:** - Lauran K. Serhal, July 2025
