@@ -140,7 +140,7 @@ In this task we deploy a sample Apex app into the workspace
         <copy>
             BEGIN                                                                         
             DBMS_CLOUD.CREATE_CREDENTIAL(                                               
-                credential_name => 'GENAI_GRAPH_CRED',                                          
+                credential_name => 'APEX_GENAI_CRED',                                          
                 user_ocid       => '<UPDATE HERE>',
                 tenancy_ocid    => '<UPDATE HERE>',
                 private_key     => '<UPDATE HERE>',

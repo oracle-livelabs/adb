@@ -1,4 +1,4 @@
-# Generate Data for Graph
+# Setup Apex Chatbot App workflows
 
 ## Introduction
 
@@ -24,7 +24,7 @@ This lab assumes you have:
 
 
  
-## Task 1:
+## Task 1: Open the prebuilt Apex workflow
 
 1. From within the Apex workspace, navigate to App Builder.
 
@@ -46,11 +46,13 @@ This lab assumes you have:
 
      ![Open ToolCallingWorkflow](images/apex_workflow_page.png)
 
-6. Expand the Workflows tree on the left, select RAG tool and edit the PL/SQL source
+## Task 2: Add Select AI tools to the Apex Workflow Activities
+
+1. Expand the Workflows tree on the left, select RAG tool and edit the PL/SQL source
 
      ![select RAG Tool](images/apex_tool_calling_workflow_rag_tool.png)
 
-7. Copy the SQL below into the source, validate and save.
+2. Copy the SQL below into the source, validate and save.
 
     Paste the PL/SQL:
 

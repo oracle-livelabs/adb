@@ -32,11 +32,15 @@
             "filename": "../../setup-apex-app/setup_apex_chatbot.md"
         },
         {
-            "title": "Lab 3: Demo",
+            "title": "Lab 3: Setup the Apex Workflows",
+            "filename": "../../setup-apex-app-workflows/setup_apex_workflows.md"
+        },
+        {
+            "title": "Lab 4: Demo",
             "filename": "../../demo/demo.md"
         },
         {
-            "title": "Lab 4: Clean Up (optional)",
+            "title": "Lab 5: Clean Up (optional)",
             "filename": "../../query/query.md"
         },
         {
