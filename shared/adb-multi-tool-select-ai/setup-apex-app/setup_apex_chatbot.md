@@ -108,7 +108,7 @@ This lab assumes you have:
   ![APEX Workspace Install Done](images/import_app_install_done.png)
 
 
-## Task 4: Install necessary PL/SQL for Apex Chatbot app
+## Task 4: Install PL/SQL for Apex Chatbot app
 
 
 1. Open SQL Commands, from SQL Workshop drop down
@@ -133,25 +133,6 @@ This lab assumes you have:
   ![Open SQL Workshop](images/apex_sql_insert_adb_chat_tool.png)
 
 3. Copy SQL below to create OCI Credentials, use credentials created in Lab 1, Task 1
-
-    Paste the PL/SQL:
-
-    ```text
-        <copy>
-            BEGIN                                                                         
-            DBMS_CLOUD.CREATE_CREDENTIAL(                                               
-                credential_name => 'APEX_GENAI_CRED',                                          
-                user_ocid       => '<UPDATE HERE>',
-                tenancy_ocid    => '<UPDATE HERE>',
-                private_key     => '<UPDATE HERE>',
-                fingerprint     => '<UPDATE HERE>'
-            );
-            END;
-        </copy>
-    ```
-  ![Create Credential in APEX](images/apex_sql_create_credential.png)
-
-  3. Copy SQL below to create OCI Credentials, use credentials created in Lab 1, Task 1
 
     Paste the PL/SQL:
 
@@ -254,7 +235,7 @@ This lab assumes you have:
                         }');                                                                  
 
         DBMS_CLOUD_AI.CREATE_VECTOR_INDEX(
-            index_name  => 'ERP_FEATURES_COUNTRY3',
+            index_name  => 'ERP_FEATURES_COUNTRY',
             attributes  => '{"vector_db_provider": "oracle",
                             "location": "https://objectstorage.us-chicago-1.oraclecloud.com/n/idb6enfdcxbl/b/Livelabs/o/apex-chatbot-multi-tool-livelab/",
                             "profile_name": "GENAI_VECTOR_APEX",
