@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab will take you through the steps needed to provision an Oracle Autonomous Database for APEX workload types. It also covers how to access APEX Administrative services, create an APEX workspace and deploy a sample APEX app.
+This lab will take you through the steps needed to provision an Oracle Autonomous Database for APEX workload types. It also covers how to access APEX Administrative services and create an APEX workspace.
 
 Estimated Time: 60 minutes
 
@@ -24,7 +24,7 @@ In this lab, you will:
 * Provision an Oracle Autonomous Database for APEX workloads
 * Learn how to access APEX Administrative Services
 * Learn how to create an APEX Workspace 
-* Deploy an APEX sample app that is accessible from the public internet 
+
 
 ### Prerequisites
 
