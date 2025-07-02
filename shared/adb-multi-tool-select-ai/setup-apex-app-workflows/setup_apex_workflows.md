@@ -1,19 +1,21 @@
 # Setup Apex Chatbot App workflows
 
+
 ## Introduction
 
+This lab will take you thru the necesssary steps for updating the workflow activities to call the each tool for the chatbot
 
+Estimated Time: 30 minutes
 
-Estimated Time: 60 minutes
- 
+### About Oracle Apex Workflows
+
 
 ### Objectives
 
- 
+In this lab, you will:
 
-In this lab, you will update the workflow activities of the prebuilt Apex Chatbot app
-
-*  
+* Update the Workflow activities for the workflow of the imported chatbot app
+* Activate the workflow
 
 ### Prerequisites (Optional)
 
