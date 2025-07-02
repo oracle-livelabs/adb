@@ -43,7 +43,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
+4. On the **ADW-Data-Lake** Autonomous Database page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
@@ -110,13 +110,21 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
 3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The Database Actions Launchpad page is displayed. You are now logged in as the newly created **`share_provider`** user.
 
-    ![Log in as share_provider](images/login-share-provider.png)
+    ![Log in as share_provider](images/login-share-provider.png =65%x*)
 
 4. Click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
     ![Logged in as share_provider](images/share-provider.png)
 
-4. Run the following query to determine if the user has the required privileges to share objects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon. A **`1`** result indicates that the user has the required privileges to share objects. A **`0`** result indicates that the user doesn't have the privileges to share objects. The user must revisit the previous steps.
+    A **Run Statement** informational box is displayed. Close the box.
+
+    ![SQL Worksheet for the share_provider](images/sql-worksheet-share-provider.png)
+
+4. Run the following query to determine if the user has the required privileges to share objects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon. 
+
+    >**Note:** The first time you try to paste content from your clipboard into your SQL Worksheet, a dialog box is displayed. Click **Allow**.
+
+    ![Click Allow](images/click-allow.png =50%x*)
 
     ```
     <copy>
@@ -126,6 +134,9 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
     ```
 
     ![Determine if the user has the privilege to share](images/can-user-share.png)
+
+    A **`1`** result indicates that the user has the required privileges to share objects. A **`0`** result indicates that the user doesn't have the privileges to share objects. The user must revisit the previous steps.
+
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
@@ -179,6 +190,9 @@ You should store the data share data in Object Storage. You will then create a l
 
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
+[](include:adb-generate-rsa-key-pair.md)
+
+<!-- 
 1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
 
     ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png =65%x*)
@@ -218,6 +232,7 @@ You should store the data share data in Object Storage. You will then create a l
     ![Private key value.](./images/get-private-key-value.png " ")
 
 7. In the **Configuration File Preview** dialog box, click **Close**.
+-->
 
 ## Task 5: Create an OCI Native Credential as the share_provider User
 
@@ -349,7 +364,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
