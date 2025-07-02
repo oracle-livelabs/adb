@@ -24,7 +24,7 @@ This lab assumes you have:
 
 
  
-## Task 1:
+## Task 1: Grant privileges for APEX workspace schema
 
 
 1. Open the service detail page for your Autonomous Database instance in the OCI console.  
@@ -55,9 +55,9 @@ This lab assumes you have:
 3. Sign out of SQL Developer 
 
  
-## Task 2:
+## Task 2: Download prebuilt Apex Chatbot and install Apex sample data
 
-In this task we deploy a sample Apex app into the workspace
+
 
 1. Download the prebuilt Apex chatbot application
 
@@ -83,7 +83,7 @@ In this task we deploy a sample Apex app into the workspace
     
     ![Sample Datasets Install Done ](images/apex_sql_sample_datasets_install_done.png)
 
-## Task 3
+## Task 3: Import prebuilt Apex Application
 
 1. From the workspace home screen click the App Builder button.
 
@@ -108,7 +108,7 @@ In this task we deploy a sample Apex app into the workspace
   ![APEX Workspace Install Done](images/import_app_install_done.png)
 
 
-## Task 4:
+## Task 4: Install necessary PL/SQL for Apex Chatbot app
 
 
 1. Open SQL Commands, from SQL Workshop drop down
@@ -250,7 +250,7 @@ In this task we deploy a sample Apex app into the workspace
         attributes   =>'{
                         "provider": "oci",                                                                   
                         "credential_name": "APEX_GENAI_CRED",
-                        "vector_index_name": "ERP_FEATURES_COUNTRY3"
+                        "vector_index_name": "ERP_FEATURES_COUNTRY"
                         }');                                                                  
 
         DBMS_CLOUD_AI.CREATE_VECTOR_INDEX(
