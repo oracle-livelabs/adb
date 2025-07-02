@@ -11,7 +11,7 @@ Estimated Time: 60 minutes
 
  
 
-In this lab, you will:
+In this lab, you will update the workflow activities of the prebuilt Apex Chatbot app
 
 *  
 
@@ -42,13 +42,13 @@ This lab assumes you have:
 
      ![Apex Workflows](images/apex_workflows.png)
 
-5. Open the ToolCallingWorkflow via the workflow link
+5. Open the ToolCallingWorkflow via the workflow link.
 
      ![Open ToolCallingWorkflow](images/apex_workflow_page.png)
 
 ## Task 2: Add Select AI tools to the Apex Workflow Activities
 
-1. Expand the Workflows tree on the left, select RAG tool and edit the PL/SQL source
+1. Expand the Workflows tree on the left, select RAG tool and edit the PL/SQL source.
 
      ![select RAG Tool](images/apex_tool_calling_workflow_rag_tool.png)
 
@@ -603,7 +603,7 @@ This lab assumes you have:
     ![select Weather API Tool](images/apex_tool_calling_workflow_weather_api_tool.png)
     ![validate Weather API Tool pl/sql](images/apex_tool_calling_workflow_weather_api_tool_validate.png)
 
-
+You may proceed to the next lab
 ## Acknowledgements
 
 
