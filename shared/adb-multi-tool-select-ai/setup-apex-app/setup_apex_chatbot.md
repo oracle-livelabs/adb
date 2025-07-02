@@ -1,19 +1,24 @@
 # Setup Apex Chatbot App
 
+
 ## Introduction
 
-
+This lab will take you through the steps needed apply necessary grant privileges for an Apex workspace, install sample data, import the prebuilt Apex Chatbot and install the pl/sql for the app.
 
 Estimated Time: 60 minutes
- 
+
+### About Oracle DB Security
+
+
 
 ### Objectives
 
- 
-
 In this lab, you will:
 
-*  
+* grant required db privleges for the Apex workspace
+* install Apex Sample data
+* import a prebuilt Apex chatbot app that is accessible from the public internet 
+
 
 ### Prerequisites (Optional)
 
@@ -52,34 +57,32 @@ This lab assumes you have:
 
    ![grant user grants plsql](images/grant_privileges_for_apex.png "grant user grants plsql")
 
-3. Sign out of SQL Developer 
-
  
 ## Task 2: Download prebuilt Apex Chatbot and install Apex sample data
 
 
 
-1. Download the prebuilt Apex chatbot application
+1. Download the prebuilt Apex chatbot application.
 
     a. [apex_chatbot_workflows.sql](https://objectstorage.us-chicago-1.oraclecloud.com/n/idb6enfdcxbl/b/Livelabs/o/apex-chatbot-multi-tool-livelab%2Fapex_chatbot_workflows.sql)
 
 
-2. Login into the workspace using the name and credentials you created in Lab 1
+2. Login into the workspace using the name and credentials you created in Lab 1.
 
     ![Login APEX Workspace](images/apex_login_workspace.png)
 
 
-3. open the sample datasets utility
+3. Open the sample datasets utility.
 
     ![Sample Datasets Utility](images/apex_sql_sample_datasets.png)
 
 
-4. Find the Countries row, click the install button and than click the install dataset button
+4. Find the Countries row, click the install button and than click the install dataset button.
     
     ![Sample Datasets Utility](images/apex_sql_sample_datasets_manage.png)
     ![Sample Datasets Install](images/apex_sql_sample_datasets_install.png)
 
-5. After the sample dataset installs, the Countries install button should now be an Update button
+5. After the sample dataset installs, the Countries install button should now be an Update button.
     
     ![Sample Datasets Install Done ](images/apex_sql_sample_datasets_install_done.png)
 
@@ -93,7 +96,7 @@ This lab assumes you have:
 
     ![APEX Workspace Import Button](images/import_apex_app.png)
 
-4. Import the prebuilt apex app from task 1.
+4. Import the prebuilt Apex app from task 1.
 
     ![APEX Workspace Import Drag/Drop](images/import_app_drag_drop.png)
     ![APEX Workspace Import Drag/Drop Loaded](images/import_app_drag_drop_loaded.png)
@@ -102,7 +105,7 @@ This lab assumes you have:
 
   ![APEX Workspace Import Next](images/import_app_drag_drop_next.png)
  
-6. Click install supporting objects button.
+6. Click the install supporting objects button.
 
   ![APEX Workspace Install Supporting](images/import_app_install_supporting.png)
   ![APEX Workspace Install Done](images/import_app_install_done.png)
@@ -111,12 +114,12 @@ This lab assumes you have:
 ## Task 4: Install PL/SQL for Apex Chatbot app
 
 
-1. Open SQL Commands, from SQL Workshop drop down
+1. Open SQL Commands, from SQL Workshop drop down.
 
 
   ![Open SQL Workshop](images/import_app_install_done.png)
 
-2. Copy SQL below to load tool table
+2. Copy SQL below to load tool table.
 
     Paste the PL/SQL:
 
@@ -132,7 +135,7 @@ This lab assumes you have:
     ```
   ![Open SQL Workshop](images/apex_sql_insert_adb_chat_tool.png)
 
-3. Copy SQL below to create OCI Credentials, use credentials created in Lab 1, Task 1
+3. Copy SQL below to create OCI Credentials, use credentials created in Lab 1, Task 1.
 
     Paste the PL/SQL:
 
@@ -151,7 +154,7 @@ This lab assumes you have:
     ```
   ![Create Credential in APEX](images/apex_sql_create_credential.png)
 
-4. Copy the SQL below to add the PROPRIETARY column to the EBA_COUNTRIES TABLE
+4. Copy the SQL below to add the PROPRIETARY column to the EBA_COUNTRIES TABLE.
 
     Paste the PL/SQL:
 
@@ -164,7 +167,7 @@ This lab assumes you have:
 
     ![Add column in APEX](images/apex_sql_add_column.png)
 
-5. Copy the SQL below to add comments on PROPRIETARY column
+5. Copy the SQL below to add comments on PROPRIETARY column.
 
     Paste the PL/SQL:
 
@@ -177,7 +180,7 @@ This lab assumes you have:
 
      ![Add Column Comment in APEX](images/apex_sql_add_comment.png)
 
-6. Copy the SQL below to update values for specific rows in the EBA_COUNTRIES table
+6. Copy the SQL below to update values for specific rows in the EBA_COUNTRIES table.
 
     Paste the PL/SQL:
 
@@ -199,7 +202,7 @@ This lab assumes you have:
 
      ![Update Countries](images/apex_sql_update_countries.png)
 
-7.  Create profile for LLM, RAG, NL2SQL and Vector Index
+7.  Create profile for LLM, RAG, NL2SQL and Vector Index.
 
     Paste the PL/SQL:
 
