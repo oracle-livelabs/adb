@@ -18,13 +18,15 @@ In this lab, you will:
 - This lab requires the completion of the previous labs that deployed your Autonomous Database.
 
 ## Task 1: Log into the SQL Worksheet
->**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack we created, **Deploy-ChatDB-Autonomous-Database...** > Select the job we created, **ormjob2024117214431** > Select **Outputs** under **Resources**.
+>**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack that was created for you, **Deploy-ChatDB-Autonomous-Database...** > Select the job that was created for you, **ormjob2025...** > Click **Outputs** in the **Resources** section.
 
-![Moviestream password](./images/moviestream-output-pswd.png "")
+![Moviestream password](./images/output.png "")
 
 1. If you are not logged in to Oracle Cloud Console, log in and select **[](var:db_workload_type)** from the Navigation menu.
 
-    ![Oracle Home page left navigation menu.](./images/database-adw.png " ")
+    ![Click the navigation menu.](./images/click-navigation-menu.png " ")
+
+    ![Click Autonomous Database.](./images/click-autonmous-database.png " ")
 
 2. Make sure you are in the correct compartment where you ADB instance was provisioned and then click your **TrainingAIWorkshop** instance.
 
@@ -39,11 +41,15 @@ In this lab, you will:
     * **Username:** **`ADMIN`**
     * **Password:** *your-password* (e.g. **`WlsAtpDb1234#`**)
 
-4. The **Database Actions** page is displayed. Click the **Development** tab if not already selected, and then click the **SQL** tab.
+4. The **Database Actions** page is displayed. Click the **Development** tab, and then click the **SQL** tab.
 
     ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
 
-5. The first time you open SQL Worksheet, a series of pop-up informational boxes may appear, providing you a tour that introduces the main features. If not, click the **Tour** icon (binoculars) in the upper right corner. Click **Next** to take a tour through the informational boxes; otherwise, close the boxes. Close the boxes.
+5. The first time you open SQL Worksheet, a series of pop-up informational boxes appears. Click the **Tour** icon (binoculars) in the upper right corner to get a tour that introduces the main features. Close the boxes.
+
+    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
+
+    You can expand the SQL Worksheet editor area by collapsing the left navigation area.
 
     ![SQL Worksheet.](./images/adb-sql-worksheet.png " ")
 
@@ -62,7 +68,7 @@ In this lab, you will:
 
     ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
 
-    The SQL Worksheet is displayed.
+    The SQL Worksheet is displayed. Close the **Run Statement** informational box.
 
     ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
 
@@ -101,46 +107,51 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     The workshop deployment step already set up a resource principal for your database and enabled the **`MOVIESTREAM`** user to use that principal (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource (i.e. your ADB instance) needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
 
-3. Create a Select AI profile.
+3. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. Next, click the **Run Script** icon. 
 
     ```sql
     <copy>
     begin    
-        -- Drop the profile in case it already exists
-        dbms_cloud_ai.drop_profile(
-            profile_name => 'genai',
-            force => true
-        );    
+    -- Drop the profile in case it already exists
+    dbms_cloud_ai.drop_profile(
+        profile_name => 'genai',
+        force => true
+    );    -- Create an AI profile that uses the default LLAMA model on OCI
 
-        -- Create an AI profile that uses the default LLAMA model on OCI
-        dbms_cloud_ai.create_profile(
-            profile_name => 'genai',
-            attributes =>       
-                '{"provider": "oci",
-                "credential_name": "OCI$RESOURCE_PRINCIPAL",
-                "comments":"true",            
-                "object_list": [
-                    {"owner": "MOVIESTREAM", "name": "GENRE"},
-                    {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
-                    {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
-                    {"owner": "MOVIESTREAM", "name": "STREAMS"},            
-                    {"owner": "MOVIESTREAM", "name": "MOVIES"},
-                    {"owner": "MOVIESTREAM", "name": "ACTORS"}
-                ]
-                }'
-            );
-            
+    dbms_cloud_ai.create_profile(
+        profile_name => 'genai',
+        attributes =>
+        '{"provider": "oci",
+        "credential_name": "OCI$RESOURCE_PRINCIPAL",
+        "region": "us-chicago-1",
+        "comments":"true",
+        "object_list": [
+            {"owner": "MOVIESTREAM", "name": "GENRE"},
+            {"owner": "MOVIESTREAM", "name": "CUSTOMER"},
+            {"owner": "MOVIESTREAM", "name": "PIZZA_SHOP"},
+            {"owner": "MOVIESTREAM", "name": "STREAMS"},
+            {"owner": "MOVIESTREAM", "name": "MOVIES"},
+            {"owner": "MOVIESTREAM", "name": "ACTORS"}
+        ]
+        }'
+    );
     end;
     /
-    </copy>
+    </copy> 
     ```
+
+    ![Create AI Profile.](./images/create-ai-profile.png " ")
+
+    >**Note:** The **region** attribute indicates the location of the Generative AI cluster that you want to use. 
+    The default region is **`us-chicago-1`**. If you are using another region such as Frankfurt, **`eu-frankfurt-1`**, replace the **`us-chicago-1`** region's attribute value in the above code with **`eu-frankfurt-1`**. For the current list of regions with OCI Generative AI, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
+
 </details>
 
 <details>
     <summary>**OpenAI**</summary>
-You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models. 
+You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models.
 
-1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.    
+1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.
 
     ```sql
     <copy>
@@ -310,6 +321,7 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     ```
 
 3. Create a Select AI profile.
+
     ```sql
     <copy>
     begin    
@@ -340,6 +352,7 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     /    
     </copy> 
     ```
+
 </details>
 
 ## Task 3: Test the AI Profile
@@ -375,11 +388,11 @@ You may now proceed to the next lab.
   * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, December 2024
+  * **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2024  Oracle Corporation.
+Copyright (c) 2025  Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

@@ -14,6 +14,8 @@ Watch the video below on how to simplify developing AI Retrieval Augmented Gener
 
 Use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM.
 
+Estimated Time: 1 hour
+
 ### What is Retrieval Augmented Generation (RAG)?
 
 Select AI with RAG augments your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date content and provides more relevant natural language responses to your prompts.
@@ -66,7 +68,7 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar, Product Manager
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, February 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

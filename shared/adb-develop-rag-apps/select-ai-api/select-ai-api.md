@@ -63,23 +63,21 @@ Let's look at some examples of using Select AI with the available actions.
     * [account-billing-issues.html](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/account-billing-issues.html)
     * [subscription-login-issues.html](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/subscription-login-issues.html) 
 
-2. Use the **runsql** action to see each of the chunks and their similarity (or distance) score. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+2. Use the **runsql** action to see each of the chunks and their similarity (or distance) score. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
 
     ```
     <copy>
-    select json_serialize(
-    dbms_cloud_ai.generate (
+    select dbms_cloud_ai.generate (
         profile_name => 'support_site',
         action => 'runsql',
         prompt => 'how do I unsubscribe from the service?'
-    ) PRETTY
-    ) as support_question;
+    );
     </copy>
     ```
 
     ![Use the runsql action.](./images/use-run-sql-action.png " ")
 
-3. Use the **showsql** action to see the SQL command that was used to run the vector search. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Statement** icon in the toolbar.
+3. Use the **showsql** action to see the SQL command that was used to run the vector search. Copy the following code and then paste it into your SQL Worksheet. Next, click the **Run Script** icon in the toolbar.
 
     ```
     <copy>
@@ -107,7 +105,7 @@ You may now proceed to the next lab.
   * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, February 2025
+  * **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

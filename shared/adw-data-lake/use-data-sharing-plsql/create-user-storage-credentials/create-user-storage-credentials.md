@@ -43,7 +43,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
 
     </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
+4. On the **ADW-Data-Lake** Autonomous Database page, click the **Database actions** drop-down list, and then click **SQL**.
 
     ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
@@ -110,13 +110,21 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
 3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The Database Actions Launchpad page is displayed. You are now logged in as the newly created **`share_provider`** user.
 
-    ![Log in as share_provider](images/login-share-provider.png)
+    ![Log in as share_provider](images/login-share-provider.png =65%x*)
 
 4. Click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
     ![Logged in as share_provider](images/share-provider.png)
 
-4. Run the following query to determine if the user has the required privileges to share objects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon. A **`1`** result indicates that the user has the required privileges to share objects. A **`0`** result indicates that the user doesn't have the privileges to share objects. The user must revisit the previous steps.
+    A **Run Statement** informational box is displayed. Close the box.
+
+    ![SQL Worksheet for the share_provider](images/sql-worksheet-share-provider.png)
+
+4. Run the following query to determine if the user has the required privileges to share objects. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon. 
+
+    >**Note:** The first time you try to paste content from your clipboard into your SQL Worksheet, a dialog box is displayed. Click **Allow**.
+
+    ![Click Allow](images/click-allow.png =50%x*)
 
     ```
     <copy>
@@ -126,6 +134,9 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
     ```
 
     ![Determine if the user has the privilege to share](images/can-user-share.png)
+
+    A **`1`** result indicates that the user has the required privileges to share objects. A **`0`** result indicates that the user doesn't have the privileges to share objects. The user must revisit the previous steps.
+
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
@@ -167,7 +178,7 @@ You should store the data share data in Object Storage. You will then create a l
     <if type="livelabs">
     ![The new bucket is displayed on the Buckets page.](./images/ll-bucket-created.png " ")
 
-7. Next, you need to get the name of the namespace (tenancy) where this new bucket was created. You will need this namespace name in this workshop. In the row for the bucket, click the **Actions** icon (ellipsis), and then select **View Object Details** from the context menu. 
+7. Next, _you need to get the name of the namespace (tenancy) where this new bucket was created_. You will need this namespace name in this workshop. In the row for the bucket, click the **Actions** icon (ellipsis), and then select **View Object Details** from the context menu.
 
     ![Get the bucket's namespace.](./images/ll-get-bucket-namespace.png " ")
 
@@ -179,9 +190,12 @@ You should store the data share data in Object Storage. You will then create a l
 
 ## Task 4: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 
-1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **My profile**.
+[](include:adb-generate-rsa-key-pair.md)
 
-    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
+<!-- 
+1. In the Console banner, click the **Profile** icon. From the drop-down menu, click your **User settings**.
+
+    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png =65%x*)
 
 2. The **My profile** page is displayed. In the **User Information** tab, you can click the **Copy** link next to the **OCID** field. Make a note of this username's OCID as you will need it in a later task. Scroll down the page to the **Resources** section, and then click **API Keys**.
 
@@ -218,6 +232,7 @@ You should store the data share data in Object Storage. You will then create a l
     ![Private key value.](./images/get-private-key-value.png " ")
 
 7. In the **Configuration File Preview** dialog box, click **Close**.
+-->
 
 ## Task 5: Create an OCI Native Credential as the share_provider User
 
@@ -227,15 +242,15 @@ To access data in the Object Store, you need to enable your database user to aut
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
-    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`. If you are using a Sandbox reservation (green button), you can find the region name in the **Reservation Information** dialog box. You already saved the bucket's namespace in a Task 3 and saved it to a text editor file of your choice.
+    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`. If you are using a Sandbox reservation (green button), you can find the region name in the **Reservation Information** dialog box. You already saved the bucket's namespace in **Task 3** and saved it to a text editor file of your choice.
 
     <if type="livelabs">
     ![Reservation Information dialog box.](images/reservation-information.png)
     </if>
 
-2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+2. Create a named storage link that points to your Object Storage bucket's URI. Make sure that the user has `WRITE` privileges to the specified bucket. Copy and paste the following script into your SQL Worksheet. _Don't run the script yet_.
 
-    >**Note:** Substitute the URI value in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`tenancy-name`** place holder for security.
+    >**Note:** Substitute the URI value (region and tenancy namespace) in the following code with your own bucket's URI. In our example, we replaced the actual tenancy name in the URI value with the **`tenancy-name`** place holder for security.
 
     ```
     <copy>
@@ -248,6 +263,8 @@ To access data in the Object Store, you need to enable your database user to aut
     /
     </copy>
     ```
+
+    Click the **Run Script** icon in the Worksheet toolbar.
 
     ![Create a cloud storage link.](images/create-storage-link.png)
 
@@ -347,11 +364,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, December 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C), 2024 Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
