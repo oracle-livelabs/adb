@@ -179,24 +179,6 @@ A Cloud Administrator can optionally create a compartment in your tenancy to hel
 
     ![The provisioned Autonomous Database instance is displayed on the Autonomous Databases page. The state of the instance is AVAILABLE.](./images/adb-page.png " ")
 
-## Task 4: (Optional) Create a Data Catalog Instance
-
-OCI Data Catalog is a fully managed, self-service data discovery and governance solution for your enterprise data. With Data Catalog, you get a single collaborative environment to manage technical, business, and operational metadata. You can collect, organize, find, access, understand, enrich, and activate this metadata.
-
-* Harvest technical metadata from a wide range of supported data sources that are accessible using public or private IPs.
-* Create and manage a common enterprise vocabulary with a business glossary.
-* Build a hierarchy of categories, subcategories, and terms with detailed rich text descriptions.
-* Enrich the harvested technical metadata with annotations by linking data entities and attributes to the business terms or adding free-form tags.
-* Find the information you need by exploring the data assets, browsing the data catalog, or using the quick search bar.
-* Automate and manage harvesting jobs using schedules.
-* Integrate the enterprise class capabilities of your data catalog with other applications using REST APIs and SDKs.
-
-Watch our short overview video that explains key features in Data Catalog.
-
-[](youtube:nY7mG2u6-Ew)
-
-To learn about getting started with OCI Data Catalog and integrating OCI Data Catalog with ADB, see the [Get started with Oracle Cloud Infrastructure Data Catalog](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=919) and [Access the Data Lake using Autonomous Database and Data Catalog](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=877) LiveLabs workshops.
-
 </if>
 
 You may now proceed to the next lab.
@@ -205,14 +187,11 @@ You may now proceed to the next lab.
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
-* [Data Catalog Overview](https://docs.oracle.com/en-us/iaas/data-catalog/using/overview.htm)
-* [What Is a Data Catalog and Why Do You Need One?](https://www.oracle.com/big-data/what-is-a-data-catalog/)
-* [Get Started with Data Catalog](https://docs.oracle.com/en-us/iaas/data-catalog/using/index.htm)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, April 2025
+* **Last Updated By/Date:** Lauran K. Serhal, June 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
