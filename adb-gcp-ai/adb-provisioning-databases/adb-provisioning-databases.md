@@ -11,7 +11,7 @@ Estimated Time: 10 minutes
 
 As a database user, DBA or application developer:
 
-1. Provision an ODBG Network
+1. Create an ODBG network
 2. Rapidly deploy an Autonomous Transaction Processing databases.
 
 ### Required Artifacts
@@ -125,6 +125,44 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 
     ![Autonomous Database](./images/adb-post-create.png " ")
 
+## Task 3: Download the Autonomous Database wallet file
+
+**Oracle Autonomous Database** only accepts secure connections to the database. This requires a **'wallet'** file that contains the SQL\*NET configuration files and the secure connection information. Wallets are used by client utilities such as SQL Developer, SQL\*Plus etc.
+
+- On the **Autonomous Database** page click the Autonomous Database that was provisioned.
+
+    ![Download zip](./images/vm-adb-details.png " ")
+
+- Go to the **CONNECTIONS** tab.
+
+    ![Download zip](./images/adb-details-connection.png " ")
+
+- Click **DOWNLOAD WALLET** on the **Connections** page.
+
+    ![Download zip](./images/adb-download.png " ")
+
+- Set a password for the wallet on the **Download your wallet** page and click **DOWNLOAD**
+
+    ![Download zip](./images/adb-download-wallet.png " ")
+    
+- Create a folder named **wallet** on the Compute VM instance and scp or Copy over the Wallet zip file to wallet folder on the VM instance. If you are using a Linux Terminal, run the following command to copy over the wallet to the VM instance -
+
+    ```
+    <copy>
+    scp -i <private_key_file> Wallet_db_name.zip <Compute_VM_IP>:/home_directory/wallet/.
+    </copy>
+    ```
+
+- Login to the Compute VM and unzip the database wallet that was uploaded in the previous step.
+
+    ```
+    <copy>
+    cd wallet
+    sudo apt install unzip
+    unzip Wallet_db_name.zip
+    </copy>
+    ```
+
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
@@ -132,5 +170,4 @@ You may now **proceed to the next lab**.
 *All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
-
 - **Last Updated By/Date** - Vivek Verma, July 2025
