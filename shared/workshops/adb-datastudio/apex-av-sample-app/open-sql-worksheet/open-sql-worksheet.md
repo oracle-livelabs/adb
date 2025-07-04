@@ -2,52 +2,53 @@
 
 ## Introduction
 
-You will connect to Autonomous Database and run SQL commands to create a user, add workshop utilities, and load sample data.  This lab provides instructions for connecting to SQL Worksheet using your browser.  If you prefer to use a different tool such as SQL Developer desktop, feel free to do so.
+To complete this lab, you’ll connect to Oracle Autonomous Database and run SQL commands to create a user and load sample data. These steps use the browser-based **SQL Worksheet**. If you prefer, you may use a different tool like **SQL Developer**.
 
-Estimated Time:  Less than 5 minutes.
+**Estimated Time:** Less than 5 minutes
 
 ### Objectives
 
-In this lab, you will:
+- Open and access SQL Worksheet
 
-- Open Oracle Autonomous Database Actions.
-- Open SQL Worksheet.
+### Prerequisites
 
-### Prerequisites:
+- Access to your Autonomous Database using the database URL as the **ADMIN** user.  The URL will look similar to this:
 
-- Access to the Autonomous Database Console or a URL to Autonomous Database Actions.
+   https://xcsvfpwxb7cd9bvet-adppm.adb.uk-london-1.oraclecloudapps.com/
 
-## Task 1 - Connect to the Database Actions Tool Set
+## Task 1 – Login to Autonomous Database
 
-You will use SQL Worksheet to run a script that loads data and creates the sample analytic view.  You will also the Data Studio Analysis tool to view the design of the analytic view and run a report.  Data Studio is part of the Database Actions tool set, which contains many different types of tools.
+Follow these steps:
 
-You can connect to Database Actions using the Autonomous Database Service Console or a URL provided by your Autonomous Database administrator.
+1. Access your Autonomous Database using the URL.
 
-1.  Choose the Database Actions button if you connect via the Autonomous Database Service Console.
+![REST Data Servicews](images/rest-data-services.png)
 
-![Open Database Actions](images/adb-console-access-db-actions.png)
+1. Login as the **ADMIN** user.
 
-## Task 2 - Connect to SQL Worksheet
+   ![ADMIN logtin](images/admin-login.png)
 
-SQL Worksheet allows you to run SQL commands in the Oracle Database.  You will run SQL commands to create a database user, load sample data, and create the analytic view.
+## Task 2 – Open SQL Worksheet
 
-1.  Choose the SQL button.
+You will use SQL Worksheet to run SQL commands needed for the workshop.
 
-![Open Database Actions](images/start-sql-worksheet.png)
+1. Select the **Development** tab and click the **SQL** button.
 
-You may now **proceed to the next lab**.
+   ![Open SQL Worksheet](images/start-sql-worksheet.png)
+
+SQL Worksheet will look like this:
+
+![SQL Worksheet](images/sql-worksheet.png)
+
+You’re now ready to **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, June 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

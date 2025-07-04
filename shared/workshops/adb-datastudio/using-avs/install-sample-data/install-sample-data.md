@@ -2,29 +2,24 @@
 
 ## Introduction
 
-This lab uses sample data that is loaded into the Autonomous Database from Oracle Cloud Infrastructure Object Store.  You will create four tables and load data from Object Storage using the DBMS\_CLOUD.COPY\_DATA procedure. 
-
-Estimated Time:  10 minutes with 1 ocpu.
+This lab installs sample data by creating four tables and loading data from Oracle Cloud Infrastructure Object Store using `DBMS_CLOUD.COPY_DATA`.  
+**Estimated time: 10 minutes with 1 OCPU**
 
 ### Objectives
 
-In this lab you will:
+You will:
 
 - Install sample data.
 
-### Prerequisites:
+### Prerequisites
 
 - Complete the previous lab.
 
-**Author's note.  Before publication, replace PAR with PAR to final bucket.**
 
 ## Task 1 - Load Sample Data
 
-To load sample data in this lab.
-
-1. Using SQL Worksheet, connect to the database using the  **MOVIESTREAM** (or other) user created in Lab 3.
-2. Run the following commands in SQL Worksheet.  They can be run all at once as a script or individually, as you prefer.
-
+1. Connect to the database using the **MOVIESTREAM** user (created in Lab 3).
+2. Run the commands below in SQL Worksheet — either as a single script or one at a time.
 
 ~~~SQL
 <copy>
@@ -115,10 +110,9 @@ END;
 </copy>
 ~~~
 
-
 ## Task 2 - Confirm That Data is Loaded
 
-You can view using in the tables you just created using the following commands in SQL Worksheet.
+Run the following queries in SQL Worksheet to confirm the tables were loaded:
 
 ~~~SQL
 <copy>
@@ -132,19 +126,15 @@ SELECT * FROM movie_sales_fact;
 </copy>
 ~~~
 
-You may now **proceed to the next lab**
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, February 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

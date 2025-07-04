@@ -2,59 +2,52 @@
 
 ## Introduction
 
-Estimated Time:  10 minutes with 1 ocpu.
-
-This lab uses the Database Actions Data Studio Analysis tool to design the Analytic view.
-
-Estimated Time:  Less than 5 minutes.
+Use the Database Actions Data Studio Analysis tool to design the Analytic View.  
+**Estimated time: Less than 5 minutes**
 
 ### Objectives
 
-In this lab you will:
+You will:
 
 - Launch the Data Studio Analysis tool.
 
-### Prerequisites:
+### Prerequisites
 
 - Complete the previous lab.
 
-##  Task 1 - Access Database Actions
+## Task 1 - Access Database Actions
 
-The Database Actions tools can be accessed directly using a URL or through the Autonomous Database console.
+If you are still logged in as the **ADMIN** user, log out and log back in as the **MOVIESTREAM** user and proceed to Step 4.  
 
-If you are running this lab in your tenancy and do not have access to the Autonomous Database console,  ask the administrator of the database to provide you with the URL.
+Othewise, you can access **Database Actions** using the URL of your Autonomous Database instance.  The URL will look similar to this:
 
-1. If you have access to the Autonomous Database console, choose Database Actions.
+   https://xcsvfpwxb7cd9bvet-adppm.adb.uk-london-1.oraclecloudapps.com/
 
-![Open Database Actions](images/adb-console-access-db-actions.png)
+Follow these steps:
 
-2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions of you are logged in as ADMIN.
+1. Access your Autonomous Database using the URL.
 
-![Log out of Database Actions](images/db-actions-logout.png)
+   ![REST Data Services](images/rest-data-services.png)
 
-3. Sign in as your database user (for example, MOVIESTREAM).
+2. Sign in with your database user (e.g., **MOVIESTREAM**).
 
-![Log into Database Actions](images/db-actions-login.png)
+   ![Log into Database Actions](images/rest-login.png)
 
-4. Open the Data Analysis application.
+4. Go to the Data Studio tab and launch the **Data Analysis** application.
 
-The first time you open the Analysis Application, introductory cards might be displayed.  You can choose to review the cards or simply close them.
+   ![Open Data Analysis](images/open-data-analysis.png)   
 
-![Open Data Analysis application](images/hopscotch.png)
+   On first launch, you may see introductory cards. You can review or close them.
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- **Created By** - William (Bud) Endress, Product Manager, Autonomous Database, February 2023  
+- **Last Updated By** - William (Bud) Endress, June 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C)  Oracle Corporation.
+Copyright (C) Oracle Corporation.
 
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.3
-or any later version published by the Free Software Foundation;
-with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
