@@ -1,8 +1,10 @@
+
 # Provisioning Autonomous Database
 
 ## Introduction
 
 This lab walks you through the steps to provision Autonomous Database. 
+
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -85,6 +87,7 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 -  This will bring up the **Create an Autonomous Database** screen where you specify the configuration of the database.
 
 - Enter the following for **Instance details**:
+
     * **Instance ID** - adb-gcp
     * **Database name** - adbgcp
     * **Database display name** - Autonomous-Database-GCP
@@ -126,7 +129,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
- *All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
+*All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
+
 - **Last Updated By/Date** - Vivek Verma, July 2025
