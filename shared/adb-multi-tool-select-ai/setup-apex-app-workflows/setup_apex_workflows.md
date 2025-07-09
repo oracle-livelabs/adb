@@ -513,7 +513,7 @@ This lab assumes you have:
         as
         (
         select apex_web_service.make_rest_request(
-            p_url            => 'https://api.open-meteo.com/v1/forecast?latitude=' || latitude_value || '&longitude=' || longitude_value || '&daily=temperature_2m_max,temperature_2m_min&current=apparent_temperature,temperature_2m,relative_humidity_2m || '&' || forecast_days=3 || '&' || temperature_unit=fahrenheit',
+            p_url            => 'https://api.open-meteo.com/v1/forecast?latitude=' || latitude_value || '&longitude=' || longitude_value || '&daily=temperature_2m_max,temperature_2m_min || '&' || current=apparent_temperature,temperature_2m,relative_humidity_2m || '&' || forecast_days=3 || '&' || temperature_unit=fahrenheit',
             p_http_method    => 'GET') weatherJSON
         from latitude,longitude  
         )
