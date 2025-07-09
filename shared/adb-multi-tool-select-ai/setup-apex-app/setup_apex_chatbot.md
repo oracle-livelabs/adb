@@ -160,7 +160,7 @@ This lab assumes you have:
 
     ```text
         <copy>
-        alter table "WKSP_LIVELABMULTIAGENT"."EBA_COUNTRIES" add
+        alter table "<UPDATE HERE>"."EBA_COUNTRIES" add
         ("PROPRIETARY" VARCHAR2(1000));
         </copy>
     ```
@@ -173,7 +173,7 @@ This lab assumes you have:
 
     ```text
         <copy>
-        comment on column "WKSP_LIVELABMULTIAGENT"."EBA_COUNTRIES"."PROPRIETARY"
+        comment on column "<UPDATE HERE>"."EBA_COUNTRIES"."PROPRIETARY"
         is 'This columns is private info we have on the country it is proprietary information.';
         </copy>
     ```
@@ -223,7 +223,7 @@ This lab assumes you have:
         attributes   =>'{
                         "provider": "oci",                                                                   
                         "credential_name": "APEX_GENAI_CRED",
-                        "object_list": [{"owner": "WKSP_LIVELABMULTIAGENT", "name": "EBA_COUNTRIES"}],
+                        "object_list": [{"owner": "<UPDATE HERE>", "name": "EBA_COUNTRIES"}],
                         "conversation": "true",
                         "enforce_object_list": "true",
                         "comments": "true"

@@ -601,8 +601,7 @@ This lab assumes you have:
         end;
         </copy>
     ```
-
-    ![select Weather API Tool](images/apex_tool_calling_workflow_weather_api_tool.png)
+    
     ![validate Weather API Tool pl/sql](images/apex_tool_calling_workflow_weather_api_tool_validate.png)
 
 You may proceed to the next lab
