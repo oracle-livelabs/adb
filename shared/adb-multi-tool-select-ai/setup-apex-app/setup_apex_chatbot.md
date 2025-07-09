@@ -223,7 +223,6 @@ This lab assumes you have:
                         "provider": "oci",                                                                   
                         "credential_name": "APEX_GENAI_CRED",
                         "object_list": [{"owner": "<UPDATE HERE>", "name": "EBA_COUNTRIES"}],
-                        "conversation": "true",
                         "enforce_object_list": "true",
                         "comments": "true"
                         }');                                                                  
