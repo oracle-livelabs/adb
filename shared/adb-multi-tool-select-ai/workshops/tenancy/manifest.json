@@ -40,10 +40,6 @@
             "filename": "../../demo/demo.md"
         },
         {
-            "title": "Lab 5: Clean Up (optional)",
-            "filename": "../../query/query.md"
-        },
-        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
