@@ -214,8 +214,7 @@ This lab assumes you have:
         profile_name =>'GENAI',                                                             
         attributes   =>'{
                         "provider": "oci",                                                                   
-                        "credential_name": "APEX_GENAI_CRED",
-                        "conversation": "true"
+                        "credential_name": "APEX_GENAI_CRED"
                         }');                                                                  
                                                                     
         DBMS_CLOUD_AI.CREATE_PROFILE(                                              
