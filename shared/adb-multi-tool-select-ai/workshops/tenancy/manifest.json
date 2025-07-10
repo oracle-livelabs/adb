@@ -1,5 +1,6 @@
 {
-    "workshoptitle": "The Title of the Workshop is Defined in the Manifest File",
+    "workshoptitle": "Multitool Select AI Chatbot",
+    "help": "livelabs-help-adb_us@oracle.com",
     "include": {"starter-file.sql":"../../data-load/files/starter-file.sql",
                 "sample.json":"../../data-load/files/sample.json",
                 "step2.md":"../../data-load/files/step2.md",
@@ -10,7 +11,7 @@
             },
     "variables": ["../../variables/variables.json",
                  "../../variables/variables-in-another-file.json"],
-    "help": "livelabs-help-**enterarea**_us@oracle.com",
+
      "tutorials": [
         {
             "title": "Get Started",

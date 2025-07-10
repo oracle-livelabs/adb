@@ -5,7 +5,7 @@
 
 This lab will take you thru the necesssary steps for updating the workflow activities to call the each tool for the chatbot
 
-Estimated Time: 30 minutes
+Estimated Time: 15 minutes
 
 ### About Oracle Apex Workflows
 
