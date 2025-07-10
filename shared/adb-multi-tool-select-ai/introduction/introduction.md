@@ -24,9 +24,9 @@ In this workshop, you will learn how to:
 * Implement Apex Workflows
 * Demonstrate Prompts on Apex Multitool Chatbot
 
- ![Prompt NL2SQL](images/prompt_nl2sql_weather.png)
- 
- ![Prompt NL2SQL](../demo/images/prompt_vector_rag.png)
+ ![Prompt NL2SQL](../demo/images/prompt_nl2sql_weather.png)
+
+ ![Prompt Rag](../demo/images/prompt_vector_rag.png)
 
 ## Learn More
 
