@@ -624,8 +624,5 @@ You may proceed to the next lab
 * **Author**
     * **Jadd Jennings**, Principal Cloud Architect, NACIE
 
-* **Contributors**
-
-
 * **Last Updated By/Date**
-    * **Jadd Jennings**, Principal Cloud Architect, NACIE, June 2025
+    * **Jadd Jennings**, Principal Cloud Architect, NACIE, July 2025
