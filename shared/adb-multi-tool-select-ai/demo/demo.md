@@ -3,11 +3,10 @@
 
 ## Introduction
 
-This lab will take you thru the steps for demonstrating each tool of the multitool select AI chatbot.
+This lab will take you thru the steps for demonstrating each tool of the Multitool Select AI chatbot.
 
 Estimated Time: 15 minutes
 
-### About Oracle Apex Workflows
 
 
 ### Objectives
