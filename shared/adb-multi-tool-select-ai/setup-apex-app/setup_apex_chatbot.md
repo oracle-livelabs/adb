@@ -3,21 +3,29 @@
 
 ## Introduction
 
-This lab will take you through the steps needed apply necessary grant privileges for an Apex workspace, install sample data, import the prebuilt Apex Chatbot and install the pl/sql for the app.
+This lab will take you through the steps needed apply necessary grant privileges for the Apex workspace, install sample data, import the prebuilt Apex Chatbot and install the remaining pl/sql for the Apex Chatbot.
 
-Estimated Time: 60 minutes
+Estimated Time: 30 minutes
 
-### About Oracle DB Security
+### About Privileges and Roles
 
+Authorization permits users to access, process, or alter data; it also creates limitations on user access or actions.
+
+The limitations placed on (or removed from) users can apply to objects such as schemas, entire tables, or table rows.
+
+A user privilege is the right to run a particular type of SQL statement, or the right to access an object that belongs to another user, run a PL/SQL package, and so on. The types of privileges are defined by Oracle Database.
+
+Roles are created by users (usually administrators) to group together privileges or other roles. They are a way to facilitate the granting of multiple privileges or roles to users. In addition to granting roles to users and other roles, you can assign roles to programs by using code based access control (CBAC).
 
 
 ### Objectives
 
 In this lab, you will:
 
-* grant required db privleges for the Apex workspace
+* grant required db privileges for the Apex workspace
 * install Apex Sample data
-* import a prebuilt Apex chatbot app that is accessible from the public internet 
+* import a prebuilt Apex chatbot app 
+* apply pl/sql scripts for Apex chatbot app
 
 
 ### Prerequisites (Optional)
@@ -127,7 +135,7 @@ This lab assumes you have:
         <copy>
         INSERT INTO ADB_CHAT_TOOL (ID, TOOL_NAME, TOOL_DESCRIPTION)
             SELECT 1, 'OCI Object Storage','Vectorized PDF Files of ERP Cloud Country Data Sheets. Holds information about ERP Cloud features for different countries.'
-        UNION SELECT 2, 'Database','database of countries with a column for Proprietary Information. This is the preferred tool for most prompts'
+        UNION SELECT 2, 'Database','database of countries with a column for Proprietary Information.'
         UNION SELECT 3, 'Large Language Model','Large Language Model LLM'
         UNION SELECT 4, 'Meteo Weather API','Weather API that will return weather in JSON format for given location'
 
@@ -154,7 +162,7 @@ This lab assumes you have:
     ```
   ![Create Credential in APEX](images/apex_sql_create_credential.png)
 
-4. Copy the SQL below to add the PROPRIETARY column to the EBA_COUNTRIES TABLE.
+4. Copy the SQL below to add the PROPRIETARY column to the EBA_COUNTRIES TABLE, be sure to update for your schema name.
 
     Paste the PL/SQL:
 
@@ -167,7 +175,7 @@ This lab assumes you have:
 
     ![Add column in APEX](images/apex_sql_add_column.png)
 
-5. Copy the SQL below to add comments on PROPRIETARY column.
+5. Copy the SQL below to add comments on PROPRIETARY column, be sure to update for your schema name.
 
     Paste the PL/SQL:
 
@@ -202,7 +210,7 @@ This lab assumes you have:
 
      ![Update Countries](images/apex_sql_update_countries.png)
 
-7.  Create profile for LLM, RAG, NL2SQL and Vector Index.
+7.  Create profile for LLM, RAG, NL2SQL and Vector Index, be sure to update for the workspace schema name (where it says UPDATE HERE).
 
     Paste the PL/SQL:
 
