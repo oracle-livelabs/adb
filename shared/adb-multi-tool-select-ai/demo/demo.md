@@ -87,3 +87,8 @@ This lab assumes you have:
     ```
 
      ![Prompt NL2SQL](images/prompt_vector_rag.png)
+
+## Acknowledgements
+* **Author** - Jadd Jennings, Principal Cloud Architect
+
+* **Last Updated By/Date** -  Jadd Jennings, July 2025
