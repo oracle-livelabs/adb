@@ -21,9 +21,7 @@ To complete this lab, you’ll connect to Oracle Autonomous Database and run SQL
 Follow these steps:
 
 1. Access your Autonomous Database using the URL.
-
 ![REST Data Servicews](images/rest-data-services.png)
-
 1. Login as the **ADMIN** user.
 
    ![ADMIN logtin](images/admin-login.png)

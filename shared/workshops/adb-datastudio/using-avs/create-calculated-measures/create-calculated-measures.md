@@ -26,36 +26,24 @@ You will:
 Create a calculated measure to show percent change in sales from the previous period.
 
 1. Return to the Analytic View Designe.
- 
    ![Edit Analytic View](images/edit-analytic-view.png)
-
-2. Right-click **Calculations**  
-3. Choose **Add Calculated Measure**
-
+1. Right-click **Calculations**  
+1. Choose **Add Calculated Measure**
    ![Add Calculated Measure](images/add-calculated-measure.png)
-
-4. Enter the name and press Enter:  
+1. Enter the name and press Enter:  
    `SALES_PCT_CHANGE_PRIOR_PERIOD`
-
    When you press Enter, the Caption and Description automatically default to the the measure name.
-
-5. Set the **Calculation Category** to:  
+1. Set the **Calculation Category** to:  
    `Prior and Future Period`
-
-6. Set the **Calculation Template** to:  
+1. Set the **Calculation Template** to:  
    `Percent Difference From Prior Period`
-
-7. Choose the base measure:  
+1. Choose the base measure:  
    `SALES`
-
-8. Choose the hierarchy:  
+1. Choose the hierarchy:  
    `TIME`
-
 The configuration should look like this:
-
    ![Sales Percent Change Prior Period measure](images/sales-pct-chg-calc-meas.png)
-
-8. Click the **Update** button in the lower-right corner to save.
+1. Click the **Update** button in the lower-right corner to save.
 
 You may now **proceed to the next lab**
 
