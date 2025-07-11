@@ -20,41 +20,33 @@ In this lab, you’ll add interactive selectors to your Sales Dashboard. These s
 The Sales and Sales Change Prior Period charts currently use static time levels. You’ll add a **Popup LOV** to let users choose a time level dynamically.
 
 1. Add a **Popup LOV** to the page  
-2. Set **Name** to `P1_TIME_LEVEL`  
-3. Label: `Time Level`  
-4. Under **Layout**, set **Column Span** to `3`
-
-![P1_TIME_LEVEL item](images/p1-time-level-position.png)
-
-5. In **List of Values**, choose:
-   - Type: `SQL Query`  
-   - SQL:
-
-~~~SQL
-<copy>
-SELECT
-    level_name as d,
-    level_name as r
-FROM
-    user_hier_levels
-WHERE
-    hier_name = 'TIME'
-ORDER BY
-    order_num;
-</copy>
-~~~
-
-6. In **Settings**:  
-   - Display Extra Values: `Off`  
-   - Display Null Value: `Off`
-
-7. In **Default**:  
-   - Type: `Static`  
-   - Static Value: `MONTH`
-
-8. Add a **Dynamic Action**:  
-   - Event: `Change`  
-   - True Action: `Submit Page`
+1. Set **Name** to `P1_TIME_LEVEL`  
+1. Label: `Time Level`  
+1. Under **Layout**, set **Column Span** to `3`  
+   ![P1_TIME_LEVEL item](images/p1-time-level-position.png)
+1. In **List of Values**, choose:  
+    - Type: `SQL Query`  
+    - SQL:  
+     ```sql
+     SELECT
+         level_name as d,
+         level_name as r
+     FROM
+         user_hier_levels
+     WHERE
+         hier_name = 'TIME'
+     ORDER BY
+         order_num;
+     ```
+1. In **Settings**:  
+    - Display Extra Values: `Off`  
+    - Display Null Value: `Off`
+1. In **Default**:  
+    - Type: `Static`  
+    - Static Value: `MONTH`
+1. Add a **Dynamic Action**:  
+    - Event: `Change`  
+    - True Action: `Submit Page`
 
 You can now test the control. It won’t affect charts yet — that comes next.
 
