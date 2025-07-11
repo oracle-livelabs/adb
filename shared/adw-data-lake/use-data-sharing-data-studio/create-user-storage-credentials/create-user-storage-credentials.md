@@ -31,24 +31,32 @@ Your green button reservation includes an ADB instance. You can find the require
  ![The Reservation Information dialog box.](./images/ll-reservation-information.png " ")
 </if>
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+
+    <if type="freetier">
     ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
+    <if type="livelabs">
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
 
-    ![From the Database Actions drop-down list, click SQL.](./images/click-db-actions-sql.png " ")
+    **Note:** Since you are using a Sandbox environment, an ADB instance was created for you. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database display name are displayed. If you get a **Forbidden** message, make sure you choose your assigned compartment from the **Compartment** drop-down list in the **List scope** section.
 
-5. The first time you open the SQL Worksheet, a series of pop-up informational boxes may appear, providing you with a tour that introduces the main features. If not, click the **Tour** icon (binoculars) in the upper right corner of the toolbar. To take the tour through the informational boxes, click **Next**. To exit the tour, click the **X** control.
+    ![The Autonomous Database details.](./images/ll-adb-details.png =65%x*)
 
-    ![SQL Worksheet.](./images/adb-sql-worksheet-opening-tour.png " ")
+    </if>
 
-6. Click the **X** control to exit the tour. The SQL Worksheet is displayed.
+4. On the **ADW-Data-Lake** Autonomous Database page, click the **Database actions** drop-down list, and then click **SQL**.
 
-    ![The SQL Worksheet is displayed.](./images/sql-worksheet.png " ")
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+
+5. The SQL Worksheet is displayed. Close any informational boxes that are displayed.
+
+    ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
 
 ## Task 2: Create a Share Provider User and Grant Privileges to the User
 
@@ -97,11 +105,11 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
     </copy>
     ```
 
-    ![Run the script](images/run-script.png)
+    ![Run the script](images/run-script-share-provider.png)
 
     The results are displayed in the **Script Output** tab.
 
-    ![View the script results](images/script-results.png)
+    ![View the script results](images/script-results-share-provider.png)
 
 ## Task 3: (Optional) Create a Share Consumer User and Grant Privileges to the User
 
@@ -154,7 +162,7 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
 3. Log in as the newly created user, **`share_provider`**. On the **Sign-in** page, enter **`share_provider`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**. The Database Actions Launchpad page is displayed.
 
-    ![Log in as share_provider](images/login-share-provider.png)
+    ![Log in as share_provider](images/login-share-provider.png =65%x*)
 
     You are now logged in as the newly created **`share_provider`** user. 
 
@@ -283,7 +291,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
