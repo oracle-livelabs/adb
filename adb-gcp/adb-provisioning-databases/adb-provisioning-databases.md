@@ -128,5 +128,10 @@ You may now **proceed to the next lab**.
 
  *All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
 
+<<<<<<< Updated upstream
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
 - **Last Updated By/Date** - Vivek Verma, July 2025
+=======
+ - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
+ - **Last Updated By/Date** - Vivek Verma, July 2025
+>>>>>>> Stashed changes
