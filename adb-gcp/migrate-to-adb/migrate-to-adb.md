@@ -28,13 +28,13 @@ As a database admin or user:
 
 - Assuming you are logged into your Google Cloud account, click on **Settings** under **Cloud Storage** from the Navigation Menu.
 
-    ![Cloud Storage Settings](./images/cloud-storage-settings.png " ") 
+    ![Cloud Storage Settings](./images/cloud-storage-settings.png " ")
 
 - On the **Settings** page select **INTEROPERABILITY**. Scroll down the page and click **CREATE A KEY** under **Access keys for your user account**.
 
-    ![Cloud Storage Settings](./images/storage-create-key1.png " ") 
+    ![Cloud Storage Settings](./images/storage-create-key1.png " ")
 
-    ![Cloud Storage Settings](./images/storage-create-key.png " ") 
+    ![Cloud Storage Settings](./images/storage-create-key.png " ")
 
 - Note down the **Access key** and **Secret** in a notepad.
 
@@ -72,7 +72,7 @@ You can download sqlcl from https://download.oracle.com/otn_software/java/sqldev
 - Under **CONNECTIONS** tab on the **Autonomous Database Details** page note down the **TNS name** and **Connection string**.
 
     ![Cloud Storage Settings](./images/connections-tab.png " ")
-    ![Cloud Storage Settings](./images/connection-strings.png " ")    
+    ![Cloud Storage Settings](./images/connection-strings.png " ")
 
 - Create a 'tnsnames.ora' file under 'sqlcl/bin' and set the 'TNS_ADMIN' variable to current working directory. Connect to the Autonomous Database using the connection string or by setting up the tnsnames path.
 
@@ -115,7 +115,7 @@ You can download sqlcl from https://download.oracle.com/otn_software/java/sqldev
 
 - Here's a screenshot of the above command run from a SQLcl.
 
-    ![Cloud Storage Settings](./images/create-cloud-cred.png " ") 
+    ![Cloud Storage Settings](./images/create-cloud-cred.png " ")
 
 - Ensure the pl/sql procedure is executed successfully from the log message.
 
