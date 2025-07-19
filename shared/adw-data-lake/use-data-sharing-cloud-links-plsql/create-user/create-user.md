@@ -43,8 +43,6 @@ Your green button reservation includes an ADB instance. You can find the require
 
     ![Forbidden error.](images/forbidden-error.png =65%x*)
 
-    >**Note:** The **Couldn't load data** error on the page is due to being in the wrong compartment. You will learn how to navigate to your assigned compartment next. 
-
     OCI resources are organized into compartments. To navigate to your assigned sandbox reservation compartment, click the **Compartment** field. Next, enter your assigned compartment name (or partial name) from the **Reservation Information** page in the **Compartment** text box. Once your assigned compartment is displayed in the drop-down list under the **`Livelabs`** node, click it.
     
     ![Select your assigned compartment.](images/ll-select-compartment.png =65%x*)
