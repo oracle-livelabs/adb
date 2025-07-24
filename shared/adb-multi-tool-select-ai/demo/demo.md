@@ -70,7 +70,7 @@ This lab assumes you have:
 
     ```text
         <copy>
-          which country has proprietary info and what is the weather there?
+          what todays weather for first country with proprietary info?
         </copy>
     ```
 
