@@ -465,152 +465,235 @@ This lab assumes you have:
 
     ```text
         <copy>
-        declare
-            c_response clob;
-            c_sql clob;
-            l_has_summary number;
-            l_prompt varchar2(4000);
-            v_profile_name varchar2(100);
-            v_summary_profile_name varchar2(100);
-            v_tools_left number;
-            v_prompt_latitude varchar2(100);
-            v_prompt_longitude varchar2(100);
-        begin
-        
+declare
+    c_response clob;
+    c_sql clob;
+    l_has_summary number;
+    l_prompt varchar2(4000);
+    v_profile_name varchar2(100);
+    v_summary_profile_name varchar2(100);
+    v_tools_left number;
+    v_weather_JSON varchar2(3500); 
+    v_latitude_value  varchar2(200);
+    v_longitude_value varchar2(200);
+    v_p_url  varchar2(500);
+begin
 
-        /**
-        ** Find Longitude of place in prompt and store
-        ** Find Latitude of place in prompmt and store
-        **/ 
 
+/**
+** Find Longitude of place in prompt and store
+** Find Latitude of place in prompmt and store
+**/ 
+
+    INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
+    SELECT 'Tool 4:Get the AI profile for this prompt '
+        ,SYSTIMESTAMP
+        ,':APP_USER_IN:' || :APP_USER_IN || ' |V_PROMPT:' || :V_PROMPT 
+    FROM DUAL;
+
+    -- Get the AI profile for this prompt. It will choose from the list of profiles that were selected by the user
+
+    v_profile_name := 'GENAI'; 
+
+    INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
+    SELECT 'Tool 4:Generate response using prompt and profiles'
+        ,SYSTIMESTAMP
+        ,'v_profile_name:' || v_profile_name || ' |V_PROMPT:' || :V_PROMPT  
+    FROM DUAL;
+
+commit;
+ 
+SELECT REGEXP_SUBSTR(DBMS_CLOUD_AI.GENERATE(
+    prompt => 'Return only 5/6 characters, I need the latitude from the first location of the following prompt only return in number format examples: 10 or 10.45
+        Prompt: ' || :V_PROMPT,--:WORKFLOW_PROMPT,
+    profile_name => 'GENAI',
+    action       => 'chat') , '[+-]?([0-9]*[.])?[0-9]+')
+INTO v_latitude_value
+FROM dual;
+
+INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
+SELECT 'Tool 4:Latitude'
+        ,SYSTIMESTAMP
+        ,'v_profile_name:' || v_profile_name || ' |v_latitude_value:' || v_latitude_value
+FROM DUAL;
+
+commit;
+
+SELECT REGEXP_SUBSTR(DBMS_CLOUD_AI.GENERATE(
+
+    prompt => 'Return only 5/6 characters, I need the longitude from the first location of the following prompt only return in number format examples: 10 or 10.45
+        Prompt: ' || :V_PROMPT,--:WORKFLOW_PROMPT,
+    profile_name => 'GENAI',
+    action       => 'chat'), '[+-]?([0-9]*[.])?[0-9]+')
+INTO v_longitude_value
+FROM dual;
+
+INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
+SELECT 'Tool 4:longitude'
+        ,SYSTIMESTAMP
+        ,'v_profile_name:' || v_profile_name || ' |v_longitude_value:' || v_longitude_value
+FROM DUAL;
+
+commit;
+
+select apex_web_service.make_rest_request(
+    p_url            => 'https://api.open-meteo.com/v1/forecast?latitude=' || v_latitude_value || '&longitude=' || v_longitude_value || '&daily=temperature_2m_max,temperature_2m_min' || '&' || 'current=apparent_temperature,temperature_2m,relative_humidity_2m' || '&' || 'forecast_days=3' || '&' || 'temperature_unit=fahrenheit',
+    p_http_method    => 'GET'),
+    'https://api.open-meteo.com/v1/forecast?latitude=' || v_latitude_value || '&longitude=' || v_longitude_value || '&daily=temperature_2m_max,temperature_2m_min' || '&' || 'current=apparent_temperature,temperature_2m,relative_humidity_2m' || '&' || 'forecast_days=3' || '&' || 'temperature_unit=fahrenheit'
+    as p_url
+INTO v_weather_JSON, v_p_url
+FROM dual;
+
+INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS, SHOWSQL)
+SELECT 'Tool 4: Weather URL/JSON'
+        ,SYSTIMESTAMP
+        ,'v_profile_name:' || v_profile_name || ' |v_p_url:' || v_p_url
+        ,v_weather_JSON
+FROM DUAL;
+
+commit;
+
+/**with latitude 
+as
+(
+SELECT DBMS_CLOUD_AI.GENERATE(
+
+    prompt => 'I need the latitude from the first location of the following prompt only return one number 
+        Prompt: ' || :V_PROMPT,--:WORKFLOW_PROMPT,
+    profile_name => 'GENAI',
+    action       => 'chat') as latitude_value
+    FROM dual
+),
+longitude 
+as
+(
+SELECT DBMS_CLOUD_AI.GENERATE(
+
+    prompt => 'I need the longitude from the first location of the following prompt only return one number 
+        Prompt: ' || :V_PROMPT,--:WORKFLOW_PROMPT,
+    profile_name => 'GENAI',
+    action       => 'chat') as longitude_value
+    FROM dual
+),
+weatherCall
+as
+(
+select apex_web_service.make_rest_request(
+    p_url            => 'https://api.open-meteo.com/v1/forecast?latitude=' || latitude_value || '&longitude=' || longitude_value || '&daily=temperature_2m_max,temperature_2m_min' || '&' || 'current=apparent_temperature,temperature_2m,relative_humidity_2m' || '&' || 'forecast_days=3' || '&' || 'temperature_unit=fahrenheit',
+    p_http_method    => 'GET') weatherJSON,
+    latitude_value,
+    longitude_value,
+    'https://api.open-meteo.com/v1/forecast?latitude=' || latitude_value || '&longitude=' || longitude_value || '&daily=temperature_2m_max,temperature_2m_min' || '&' || 'current=apparent_temperature,temperature_2m,relative_humidity_2m' || '&' || 'forecast_days=3' || '&' || 'temperature_unit=fahrenheit'
+    as p_url
+from latitude,longitude  
+)
+SELECT DBMS_CLOUD_AI.GENERATE(
+                            prompt => :V_PROMPT || ' use this weather info: ' || weatherJSON,
+                            profile_name => 'GENAI',
+                            action       => 'chat')
+      ,weatherJSON
+      ,latitude_value
+      ,longitude_value
+      ,p_url
+INTO c_response, v_weather_JSON, v_latitude_value, v_longitude_value, v_p_url
+FROM weatherCall;
+*/
+
+SELECT DBMS_CLOUD_AI.GENERATE(
+                            prompt => :V_PROMPT || ' use this weather info: ' || v_weather_JSON,
+                            profile_name => 'GENAI',
+                            action       => 'chat')
+INTO c_response
+FROM DUAL
+
+
+commit;
+
+    INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS) 
+    SELECT 'Tool 4: Weather Prompt Done'
+        ,SYSTIMESTAMP
+        ,'v_profile_name:' || v_profile_name || ' |V_PROMPT:' || :V_PROMPT  
+
+    FROM DUAL;
+
+commit;
+
+    -- Generate a summary?
+    select count(*)
+    into l_has_summary
+    from ADB_CHAT_CONVERSATIONS
+    where id = :CONV_ID 
+    and summary is not null;
+
+    if l_has_summary = 0 then
+        -- Yes! Generate the summary b/c one does not exist.
+        -- get a profile to generate the response. 
+        v_summary_profile_name:= 'GENAI';
+
+        if v_summary_profile_name is null then
+            l_prompt := 'Untitiled conversation';            
+        else
+            l_prompt := dbms_cloud_ai.generate(
+                        prompt => 'Rewrite as a short title : '||:WORKFLOW_PROMPT,
+                        action => 'chat',
+                        profile_name => v_summary_profile_name
+                    );
+
+        end if;
+
+        update ADB_CHAT_CONVERSATIONS set summary = l_prompt
+        where id = :CONV_ID and summary is null;
+
+    end if;
+
+    INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
+    SELECT 'Tool 4: check for other tool calls'
+        ,SYSTIMESTAMP
+        ,':CONV_ID' || :CONV_ID || 'v_profile_name:' || v_profile_name || ' |V_PROMPT:' || :V_PROMPT  || ' c_sql:' || c_sql 
+    FROM DUAL;
+
+    :WEATHER_TOOL := 'false';
+
+    UPDATE ADB_CHAT_CONVERSATIONS_TOOLS
+    SET TOOL_APPLIED = 1
+    WHERE CONVERSATION_ID = :CONV_ID
+    AND    TOOL_ID = 4;
+
+    v_tools_left := 0;
+
+    SELECT COUNT(*) INTO v_tools_left
+    FROM ADB_CHAT_CONVERSATIONS_TOOLS
+    WHERE CONVERSATION_ID = :CONV_ID
+    AND  TOOL_APPLIED = 0;
+
+    IF v_tools_left > 0 THEN
+
+        c_response := dbms_cloud_ai.generate(
+                        prompt => 'Rewrite to 3000 characters or less and remove anything about weather not available and keep any source references:  '|| c_response,
+                        action => 'chat',
+                        profile_name => 'GENAI'
+                    );
+
+        :V_PROMPT :=  :V_PROMPT || ' use this weather information: ' || substr(c_response,1,3000);
             INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
-            SELECT 'Tool 4:Get the AI profile for this prompt '
+            SELECT 'Tool 4: UPDATE V_PROMPT'
                 ,SYSTIMESTAMP
-                ,':APP_USER_IN:' || :APP_USER_IN || ' |V_PROMPT:' || :V_PROMPT 
+                ,':CONV_ID' || :CONV_ID || ' |V_PROMPT:' || :V_PROMPT || ' |c_response '  
             FROM DUAL;
 
-            -- Get the AI profile for this prompt. It will choose from the list of profiles that were selected by the user
+    ELSE
 
-            v_profile_name := 'GENAI_VECTOR_APEX'; 
-            
-            INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
-            SELECT 'Tool 4:Generate response using prompt and profiles'
+        INSERT INTO ADB_CHAT_PROMPTS (conv_id, profile_name, prompt, response, asked_on, showsql) 
+        VALUES (:CONV_ID, v_profile_name, :WORKFLOW_PROMPT, c_response, systimestamp, c_sql);
+        INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
+            SELECT 'Tool 4: INSERT INTO ADB_CHAT_PROMPTS'
                 ,SYSTIMESTAMP
-                ,'v_profile_name:' || v_profile_name || ' |V_PROMPT:' || :V_PROMPT  
+                ,':CONV_ID ' || :CONV_ID || ' |WORKFLOW_PROMPT:' || :WORKFLOW_PROMPT || ' |c_response ' 
             FROM DUAL;
-        
-        with latitude 
-        as
-        (
-        SELECT DBMS_CLOUD_AI.GENERATE(
 
-            prompt => 'I the need latitude from the following prompt only return one number 
-                Prompt: ' || :V_PROMPT,--:WORKFLOW_PROMPT,
-            profile_name => 'GENAI',
-            action       => 'chat') as latitude_value
-            FROM dual
-        ),
-        longitude 
-        as
-        (
-        SELECT DBMS_CLOUD_AI.GENERATE(
+    END IF;
 
-            prompt => 'I the need longitude from the following prompt only return one number 
-                Prompt: ' || :V_PROMPT,--:WORKFLOW_PROMPT,
-            profile_name => 'GENAI',
-            action       => 'chat') as longitude_value
-            FROM dual
-        ),
-        weatherCall
-        as
-        (
-        select apex_web_service.make_rest_request(
-            p_url            => 'https://api.open-meteo.com/v1/forecast?latitude=' || latitude_value || '&longitude=' || longitude_value || '&daily=temperature_2m_max,temperature_2m_min&forecast_days=3&temperature_unit=fahrenheit',
-            p_http_method    => 'GET') weatherJSON
-        from latitude,longitude  
-        )
-        SELECT DBMS_CLOUD_AI.GENERATE(
-                                    prompt => :V_PROMPT || ' using the info: ' || weatherJSON,
-                                    profile_name => 'GENAI',
-                                    action       => 'chat') into c_response
-            FROM weatherCall;
-            
-            -- Generate a summary?
-            select count(*)
-            into l_has_summary
-            from ADB_CHAT_CONVERSATIONS
-            where id = :CONV_ID 
-            and summary is not null;
-            
-            if l_has_summary = 0 then
-                -- Yes! Generate the summary b/c one does not exist.
-                -- get a profile to generate the response. 
-                v_summary_profile_name:= 'GENAI';
-
-                if v_summary_profile_name is null then
-                    l_prompt := 'Untitiled conversation';            
-                else
-                    l_prompt := dbms_cloud_ai.generate(
-                                prompt => 'Rewrite as a short title : '||:WORKFLOW_PROMPT,
-                                action => 'chat',
-                                profile_name => v_summary_profile_name
-                            );
-
-                end if;
-                
-                update ADB_CHAT_CONVERSATIONS set summary = l_prompt
-                where id = :CONV_ID and summary is null;
-            
-            end if;
-
-            INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
-            SELECT 'Tool 4: check for other tool calls'
-                ,SYSTIMESTAMP
-                ,':CONV_ID' || :CONV_ID || 'v_profile_name:' || v_profile_name || ' |V_PROMPT:' || :V_PROMPT  || ' c_sql:' || c_sql 
-            FROM DUAL;
-            
-            :WEATHER_TOOL := 'false';
-
-            UPDATE ADB_CHAT_CONVERSATIONS_TOOLS
-            SET TOOL_APPLIED = 1
-            WHERE CONVERSATION_ID = :CONV_ID
-            AND    TOOL_ID = 4;
-
-            v_tools_left := 0;
-
-            SELECT COUNT(*) INTO v_tools_left
-            FROM ADB_CHAT_CONVERSATIONS_TOOLS
-            WHERE CONVERSATION_ID = :CONV_ID
-            AND  TOOL_APPLIED = 0;
-
-            IF v_tools_left > 0 THEN
-            
-                c_response := dbms_cloud_ai.generate(
-                                prompt => 'Rewrite to 3000 characters or less and remove anything about weather not available and keep any source references:  '|| c_response,
-                                action => 'chat',
-                                profile_name => 'GENAI'
-                            );
-
-                :V_PROMPT :=  :V_PROMPT || ' use this information ' || substr(c_response,1,3000);
-                    INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
-                    SELECT 'Tool 4: UPDATE V_PROMPT'
-                        ,SYSTIMESTAMP
-                        ,':CONV_ID' || :CONV_ID || ' |V_PROMPT:' || :V_PROMPT || ' |c_response '  
-                    FROM DUAL;
-            
-            ELSE
-
-                INSERT INTO ADB_CHAT_PROMPTS (conv_id, profile_name, prompt, response, asked_on, showsql) 
-                VALUES (:CONV_ID, v_profile_name, :WORKFLOW_PROMPT, c_response, systimestamp, c_sql);
-                INSERT INTO WORKFLOW_LOG (STEP, STARTTIME, PARAMETERS)
-                    SELECT 'Tool 4: INSERT INTO ADB_CHAT_PROMPTS'
-                        ,SYSTIMESTAMP
-                        ,':CONV_ID ' || :CONV_ID || ' |WORKFLOW_PROMPT:' || :WORKFLOW_PROMPT || ' |c_response ' 
-                    FROM DUAL;
-            
-            END IF;
-            
-        end;
+end;
         </copy>
     ```
     
