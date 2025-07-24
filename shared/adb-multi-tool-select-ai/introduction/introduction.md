@@ -20,9 +20,9 @@ Estimated Workshop Time: 1 hours 30 minutes (This estimate is for the entire wor
 
 In this workshop, you will learn how to:
 * Provision Autonomous Database 23AI
-* Setup prebuilt Apex Chatbot Application 
-* Implement Apex Workflows
-* Demonstrate Prompts on Apex Multitool Chatbot
+* Setup prebuilt APEX Chatbot Application 
+* Implement APEX Workflows
+* Demonstrate Prompts on APEX Multitool Chatbot
 
  ![Prompt NL2SQL](../demo/images/prompt_nl2sql_weather.png)
 

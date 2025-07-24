@@ -1,14 +1,14 @@
-# Setup Apex Chatbot App workflows
+# Setup APEX Chatbot App workflows
 
 
 ## Introduction
 
-This lab will take you thru the necessary steps for updating the workflow activities that integrate tools for the Apex Chatbot. The tools integrated are NL2SQL, RAG and the Mateo weather API. The NL2SQL allows natural language on and apex sample dataset that includes a listing of countries and some manual DML updates to prove tool usage. The RAG tool is powered by a vector search on pdf documents related to country specific ERP Cloud features. The Mateo weather api is an open-source weather api that provides weather forecasts for any location, see https://open-meteo.com/ for more info. The chatbot uses a system prompt to decide which tools are need for the user prompt.
+This lab will take you thru the necessary steps for updating the workflow activities that integrate tools for the APEX Chatbot. The tools integrated are NL2SQL, RAG and the Mateo weather API. The NL2SQL allows natural language on and apex sample dataset that includes a listing of countries and some manual DML updates to prove tool usage. The RAG tool is powered by a vector search on pdf documents related to country specific ERP Cloud features. The Mateo weather api is an open-source weather api that provides weather forecasts for any location, see https://open-meteo.com/ for more info. The chatbot uses a system prompt to decide which tools are need for the user prompt.
 
 
 Estimated Time: 15 minutes
 
-### About Oracle Apex Workflows
+### About Oracle APEX Workflows
 
 Oracle APEX Workflow provides basic workflow capabilities for APEX developers.
 
@@ -38,15 +38,15 @@ This lab assumes you have:
 
 
  
-## Task 1: Open the prebuilt Apex workflow
+## Task 1: Open the prebuilt APEX workflow
 
-1. From within the Apex workspace, navigate to App Builder.
+1. From within the APEX workspace, navigate to App Builder.
 
      ![Navigate to App Builder](images/navigate_to_app_builder.png)
 
 2. Click the ATOM 23AI Chat_clone app button.
 
-     ![Apex Application Page](images/apex_application_page.png)
+     ![APEX Application Page](images/apex_application_page.png)
 
 3. Click the Shared Components button.
 
@@ -54,13 +54,13 @@ This lab assumes you have:
 
 4. Click the Workflows link under Workflows and Automations.
 
-     ![Apex Workflows](images/apex_workflows.png)
+     ![APEX Workflows](images/apex_workflows.png)
 
 5. Open the ToolCallingWorkflow via the workflow link.
 
      ![Open ToolCallingWorkflow](images/apex_workflow_page.png)
 
-## Task 2: Add Select AI tools to the Apex Workflow Activities
+## Task 2: Add Select AI tools to the APEX Workflow Activities
 
 1. Expand the Workflows tree on the left, select RAG tool and edit the PL/SQL source.
 

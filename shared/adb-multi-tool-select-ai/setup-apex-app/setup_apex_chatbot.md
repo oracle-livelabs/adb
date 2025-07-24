@@ -1,9 +1,9 @@
-# Setup Apex Chatbot App
+# Setup APEX Chatbot App
 
 
 ## Introduction
 
-This lab will take you through the steps needed apply necessary grant privileges for the Apex workspace, install sample data, import the prebuilt Apex Chatbot and install the remaining pl/sql for the Apex Chatbot.
+This lab will take you through the steps needed apply necessary grant privileges for the APEX workspace, install sample data, import the prebuilt APEX Chatbot and install the remaining pl/sql for the APEX Chatbot.
 
 Estimated Time: 30 minutes
 
@@ -22,10 +22,10 @@ Roles are created by users (usually administrators) to group together privileges
 
 In this lab, you will:
 
-* grant required db privileges for the Apex workspace
-* install Apex Sample data
-* import a prebuilt Apex chatbot app 
-* apply pl/sql scripts for Apex chatbot app
+* grant required db privileges for the APEX workspace
+* install APEX Sample data
+* import a prebuilt APEX chatbot app 
+* apply pl/sql scripts for APEX chatbot app
 
 
 ### Prerequisites (Optional)
@@ -66,11 +66,11 @@ This lab assumes you have:
    ![grant user grants plsql](images/grant_privileges_for_apex.png "grant user grants plsql")
 
  
-## Task 2: Download prebuilt Apex Chatbot and install Apex sample data
+## Task 2: Download prebuilt APEX Chatbot and install APEX sample data
 
 
 
-1. Download the prebuilt Apex chatbot application.
+1. Download the prebuilt APEX chatbot application.
 
     a. [apex_chatbot_workflows.sql](https://objectstorage.us-chicago-1.oraclecloud.com/n/idb6enfdcxbl/b/Livelabs/o/apex-chatbot-multi-tool-livelab%2Fapex_chatbot_workflows.sql)
 
@@ -94,7 +94,7 @@ This lab assumes you have:
     
     ![Sample Datasets Install Done ](images/apex_sql_sample_datasets_install_done.png)
 
-## Task 3: Import prebuilt Apex Application
+## Task 3: Import prebuilt APEX Application
 
 1. From the workspace home screen click the App Builder button.
 
@@ -104,7 +104,7 @@ This lab assumes you have:
 
     ![APEX Workspace Import Button](images/import_apex_app.png)
 
-4. Import the prebuilt Apex app from task 1.
+4. Import the prebuilt APEX app from task 1.
 
     ![APEX Workspace Import Drag/Drop](images/import_app_drag_drop.png)
     ![APEX Workspace Import Drag/Drop Loaded](images/import_app_drag_drop_loaded.png)
@@ -119,7 +119,7 @@ This lab assumes you have:
   ![APEX Workspace Install Done](images/import_app_install_done.png)
 
 
-## Task 4: Install PL/SQL for Apex Chatbot app
+## Task 4: Install PL/SQL for APEX Chatbot app
 
 
 1. Open SQL Commands, from SQL Workshop drop down.
