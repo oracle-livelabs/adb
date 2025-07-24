@@ -1,10 +1,8 @@
-
 # Provisioning Autonomous Database
 
 ## Introduction
 
 This lab walks you through the steps to provision Autonomous Database. 
-
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -36,7 +34,6 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 -  This will bring up the **Create an Autonomous Database** screen where you specify the configuration of the database.
 
 - Enter the following for **Instance details**:
-
     * **Instance ID** - adb-gcp
     * **Database name** - adbgcp
     * **Database display name** - Autonomous-Database-GCP
@@ -54,11 +51,15 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 
 - Enter the password for admin user under **Administrator credentials**
 
+    ![ADB Instance Details](./images/adb-credentials.png " ")
+
+- Under the **Networking** section, select **Private endpoint access only** for **Access type**.
+
 - In the **Associated network** drop-down, select the network you want to use - 'app-network'. This is the VPC that contains the public subnet where compute VM instance is placed. This VPC is used to connect to the Autonomous Database subnet.
 
 - Enter CIDR range '10.2.0.0/24' for **Subnet range** under **Configure networking for your database**. This is the IPv4 subnet range for your Autonomous Database. The database subnet range can't overlap with the subnet range of the VPC network specified under **Associated network**. The subnet range specified here will create a Private Subnet where the Autonomous Database will be placed. If a Private Subnet with this range exists, the database will be added to that private subnet.
 
-    ![ADB Instance Details](./images/adb-credentials-network-cidr.png " ")
+     ![ADB Instance Details](./images/adb-credentials-network-cidr.png " ")
 
 - Leave the rest as defaults and click **CREATE** to create the Autonomous Database.
 
@@ -72,7 +73,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-*All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
+ *All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
-- **Last Updated By/Date** - Vivek Verma, Jan 2025
+- **Last Updated By/Date** - Vivek Verma, July 2025

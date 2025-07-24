@@ -19,7 +19,7 @@ In this lab, you will:
 
 >**Important:** Make sure you're still logged in as the **`share_provider`** user. You should be already on the **Connections** page from the previous lab.
 
-1. On the **Connections** page, click the **Data Load** link in the breadcrumbs.
+1. On the **Connections** page, close the **No Credential and AI Profile Found** section, and then click the **Data Load** link in the breadcrumbs. 
 
     ![Click the banner.](./images/click-breadcrumbs-link.png " ")
 
@@ -33,11 +33,11 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
 1. On the **Data Load** page, click the **LOAD DATA** card.
 
-    ![Select Link Data and Cloud Store.](images/click-data-load-card.png =70%x*)
+    ![Select Link Data and Cloud Store.](images/click-data-load-card.png " ")
 
 2. On the **Load Data** page, click the **Cloud Store** tab.
 
-    ![Click Cloud Store.](images/click-cloud-store-tab.png =70%x*)
+    ![Click Cloud Store.](images/click-cloud-store-tab.png " ")
 
 3. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. The **moviestream\_landing** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL. Press [Enter] if needed.
 
@@ -59,7 +59,7 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
 6. A **Load to Single Target Table** dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**. If you receive a warning, close the message box.
 
-    ![Click yes to load objects to a single table.](images/load-to-single-table.png =60%x*)
+    ![Click yes to load objects to a single table.](images/load-to-single-table.png " ")
 
     The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data loading job section.
 
@@ -73,29 +73,33 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
     The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL.
 
-9. Click **Start** to run the data load job. In the **Start Load from Cloud Store** dialog box, click **Run**.
+9. Click **Start** to run the data load job. 
+
+   ![Click Start](images/click-start.png)
+
+10. In the **Start Load from Cloud Store** dialog box, click **Run**.
 
     ![Run the data load job](images/run-data-load.png)
 
-10. After the load job is completed, make sure that the data load card has the copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
+11. After the load job is completed, make sure that the data load card has the copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
 
     ![Load job task completed. View the genre load task settings.](images/customer-contact-load-completed.png)
 
-11. Click the **Report** button for the **`customer_contact`** load job. The details about the successful load job is displayed. Click **Close**.
+12. Click the **Report** button for the **`customer_contact`** load job. The details about the successful load job is displayed. Click **Close**.
 
     ![Click Report for custsales.](images/click-customer-contact-report.png)
 
-12. Click the **ellipsis** icon for the **`customer_contact`** load task to view its settings. Next, click **Table > View Details** from the context menu.
+13. Click the **ellipsis** icon for the **`customer_contact`** load task to view its settings. Next, click **Table > View Details** from the context menu.
 
     ![View customer_contact data.](images/click-customer-contact-ellipsis.png)
 
-13. The **Preview** tab is selected by default. This shows the **`customer_contact`** data.
+14. The **Preview** tab is selected by default. This shows the **`customer_contact`** data.
 
     ![View customer_contact data](images/preview-customer-contact-table.png)
 
-14. Click **Close** to exit the **customer_contact** task preview and return to the load data dashboard.
+15. Click **Close** to exit the **customer_contact** task preview and return to the load data dashboard.
 
-     ![Click Close.](images/data-load-page.png)
+    ![Click Close.](images/data-load-dashboard.png)
 
     >**Note:** You can also use the **Navigator** tab in the SQL Worksheet to view the table. You might need to click the **Refresh** icon before you can see the newly created table.
 
@@ -113,11 +117,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer
 * **Contributors:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, December 2024
+* **Last Updated By/Date:** Lauran Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024, Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

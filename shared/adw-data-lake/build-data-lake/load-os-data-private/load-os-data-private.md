@@ -553,7 +553,7 @@ You may now proceed to the next lab.
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Jameson White, Principal Software Engineer
     * Drue Swadener, Principal User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

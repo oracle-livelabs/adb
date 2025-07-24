@@ -194,7 +194,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, June 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
