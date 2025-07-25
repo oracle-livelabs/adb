@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab will take you thru the necessary steps for updating the workflow activities that integrate tools for the APEX Chatbot. The tools integrated are NL2SQL, RAG and the Mateo weather API. The NL2SQL allows natural language on and apex sample dataset that includes a listing of countries and some manual DML updates to prove tool usage. The RAG tool is powered by a vector search on pdf documents related to country specific ERP Cloud features. The Mateo weather api is an open-source weather api that provides weather forecasts for any location, see https://open-meteo.com/ for more info. The chatbot uses a system prompt to decide which tools are need for the user prompt.
+This lab will take you thru the necessary steps for updating the workflow activities that integrate tools for the APEX Chatbot. The tools integrated are NL2SQL, RAG and the Mateo weather API. The NL2SQL tools allow for the use of natural language to query an apex sample dataset consisting of a listing of countries and with an extra column  to prove tool usage. The RAG tool is powered by a vector search on pdf documents related to country specific ERP Cloud features. The Mateo weather api is an open-source weather api that provides weather forecasts for any location, see https://open-meteo.com/ for more info. The chatbot uses a system prompt to decide which tools are needed for the user prompt.
 
 
 Estimated Time: 15 minutes
@@ -15,11 +15,11 @@ Oracle APEX Workflow provides basic workflow capabilities for APEX developers.
 A workflow is the automation of a business process where documents, information, or tasks move from one participant to another, following a set of procedural rules.
 
 APEX workflows provide the following capabilities:
-Workflow Versions for managing both a development and an active version of a workflow
-Workflow Definitions, including parameters, variables, activities, connections, and participants
-a visual Workflow Designer for creating and authoring sequential workflows
-a Workflow Console for monitoring and administering workflows
-a Workflow Runtime Engine for running workflow instances
+- Workflow Versions for managing both a development and an active version of a workflow
+- Workflow Definitions, including parameters, variables, activities, connections, and participants
+- a visual Workflow Designer for creating and authoring sequential workflows
+- a Workflow Console for monitoring and administering workflows
+- a Workflow Runtime Engine for running workflow instances
 
 
 ### Objectives
@@ -36,6 +36,10 @@ This lab assumes you have:
 * An Oracle Cloud account
 * All previous labs successfully completed
 
+## Learn More
+
+
+* [About APEX Workflows](https://docs.oracle.com/en/database/oracle/apex/24.1/htmdb/about-workflows.html)
 
  
 ## Task 1: Open the prebuilt APEX workflow

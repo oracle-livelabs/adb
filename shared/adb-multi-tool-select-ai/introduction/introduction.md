@@ -16,8 +16,6 @@ Estimated Workshop Time: 1 hours 30 minutes (This estimate is for the entire wor
 
 ### Objectives
 
-*List objectives for the workshop*
-
 In this workshop, you will learn how to:
 * Provision Autonomous Database 23AI
 * Setup prebuilt APEX Chatbot Application 

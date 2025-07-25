@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab will take you through the steps needed apply necessary grant privileges for the APEX workspace, install sample data, import the prebuilt APEX Chatbot and install the remaining pl/sql for the APEX Chatbot.
+This lab will take you through the steps needed to: apply necessary grant privileges for the APEX workspace, install sample data, import the prebuilt APEX Chatbot and install the remaining pl/sql for the APEX Chatbot.
 
 Estimated Time: 30 minutes
 
@@ -36,6 +36,10 @@ This lab assumes you have:
 * All previous labs successfully completed
 
 
+## Learn More
+
+
+* [Configuring Privilege and Role Authorization](https://docs.oracle.com/en/database/oracle/oracle-database/23/dbseg/configuring-privilege-and-role-authorization.html)
  
 ## Task 1: Grant privileges for APEX workspace schema
 

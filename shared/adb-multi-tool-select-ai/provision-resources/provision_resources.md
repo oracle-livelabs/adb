@@ -8,7 +8,7 @@ Estimated Time: 30 minutes
 
 ### About Oracle ADB for APEX workloads
 
-Oracle Autonomous Database is an autonomous database that can drive, secure and repair itself. It offers elastic scalability, rapid query performance and eliminates the need for manual database administration. It can also be provisioned in manner where performance and features are positioned for APEX workloads.
+Oracle Autonomous Database is an autonomous database that can drive, secure and repair itself. It offers elastic scalability, rapid query performance and eliminates the need for manual database administration. It can also be provisioned in a manner where performance and features are positioned for APEX workloads.
 
 ### About Oracle APEX 
 
@@ -31,6 +31,12 @@ In this lab, you will:
 This lab assumes you have:
 
 * Must have an Administrator Account or Permissions to manage several OCI Services: Oracle Databases, Networking, Policies.
+
+## Learn More
+
+
+* [Oracle APEX](https://apex.oracle.com/en/learn/)
+ 
 
 ## Task 1: Create API Key in OCI
 
