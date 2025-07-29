@@ -8,7 +8,7 @@ Estimated Time: 30 minutes
 
 ### About Oracle ADB for APEX workloads
 
-Oracle Autonomous Database is an autonomous database that can drive, secure and repair itself. It offers elastic scalability, rapid query performance and eliminates the need for manual database administration. It can also be provisioned in manner where performance and features are positioned for APEX workloads.
+Oracle Autonomous Database is an autonomous database that can drive, secure and repair itself. It offers elastic scalability, rapid query performance and eliminates the need for manual database administration. It can also be provisioned in a manner where performance and features are positioned for APEX workloads.
 
 ### About Oracle APEX 
 
@@ -32,19 +32,25 @@ This lab assumes you have:
 
 * Must have an Administrator Account or Permissions to manage several OCI Services: Oracle Databases, Networking, Policies.
 
+## Learn More
+
+
+* [Oracle APEX](https://apex.oracle.com/en/learn/)
+ 
+
 ## Task 1: Create API Key in OCI
 
 This task involves creating and API Key in OCI, the key will be used to implement Select AI.
 
-1. Login the OCI Console and click the person icon on the top right.
+1. Login the OCI Console and click the person icon on the top right and click thru the username.
 
     ![Open OCI Profile](images/oci_profile.png)
 
-2. Click API keys at the bottom left, then click the add API Key button.
+2. Select the Token and keys tab, then click the Add API Key button.
 
     ![Add API Key](images/oci_add_api_key.png)
 
-3. Select the generate API Key Pair and click the add button. Make sure to download the private key.
+3. Select the generate API Key Pair, click Download private key, click Download public key and lastly click the Add button.
 
     ![Generate API Key](images/oci_add_api_key_generate.png)
 
