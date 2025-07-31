@@ -93,7 +93,7 @@ You can download sqlcl from https://download.oracle.com/otn_software/java/sqldev
     ```
     <copy>
     cd sqlcl/bin 
-    ./sqlcl admin@"(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=mahfgbhj.adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=gd443790554e91c_adbgcp_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=no)))"
+    ./sql admin@"(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=mahfgbhj.adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=gd443790554e91c_adbgcp_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=no)))"
     </copy>
     ```
 
