@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to provision Autonomous Database. 
+This lab walks you through the steps to provision Autonomous Database.
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -19,11 +19,11 @@ As a database user, DBA or application developer:
 
 In this section, you will be provisioning an Autonomous Database using the Google Cloud Console.
 
-1.	Login to Google Cloud Console (console.cloud.google.com) and search for **Oracle Database** in the **Search Bar** on the top of the page. Click on **Oracle Database@Google Cloud**.
+1. Login to Google Cloud Console (console.cloud.google.com) and search for **Oracle Database** in the **Search Bar** on the top of the page. Click on **Oracle Database@Google Cloud**.
 
     ![Search Bar](./images/adb-search.png " ")
 
--  Click **Autonomous Database** from the left menu.
+- Click **Autonomous Database** from the left menu.
 
     ![ADB Menu](./images/adb-menu.png " ")
 
@@ -31,13 +31,14 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 
     ![Create ADB](./images/adb-create.png " ")
 
--  This will bring up the **Create an Autonomous Database** screen where you specify the configuration of the database.
+- This will bring up the **Create an Autonomous Database** screen where you specify the configuration of the database.
 
 - Enter the following for **Instance details**:
-    * **Instance ID** - adb-gcp
-    * **Database name** - adbgcp
-    * **Database display name** - Autonomous-Database-GCP
-    * **Region** - us-east4
+
+  - **Instance ID** - adb-gcp
+  - **Database name** - adbgcp
+  - **Database display name** - Autonomous-Database-GCP
+  - **Region** - us-east4
 
     ![ADB Instance Details](./images/adb-instance-details.png " ")
 
@@ -45,7 +46,7 @@ In this section, you will be provisioning an Autonomous Database using the Googl
 
     ![ADB Instance Details](./images/adb-workload.png " ")
 
-- Leave all defaults for **Database configuration**
+- Select **23ai** for **Choose database version** and leave the rest as defaults for **Database configuration**
 
     ![ADB Instance Details](./images/adb-database-config.png " ")
 
