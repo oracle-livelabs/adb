@@ -56,7 +56,7 @@ This task involves creating and API Key in OCI, the key will be used to implemen
 
 4. Make note of the API configurations, it will be needed later.
 
-    ![View API Key](images/add_api_key_config_view.png)
+    ![View API Key](images/add_api_key_config_file_view.png)
 
 ## Task 2: Create Autonomous Database
 
@@ -68,13 +68,13 @@ This task involves creating Autonomous Database 23ai.
 
 2. Provide information for Compartment, Display name, Database name. Also, choose workload type as APEX.
     
-    ![Create ADB Name](images/create_adb_name_workload.png)
+    ![Create ADB Name](images/create_adb_name_workload_type.png)
     
-3. Choose deployment type as Serverless, database version as 23ai and disable Compute auto scaling.
+3. Choose database version as 23ai and disable Compute auto scaling.
 
     ![Create ADB Deployment](images/create_adb_deployment_type.png)
 
-4. Make sure Network Access is Secure access from everywhere, provide password, valid email ID and click on Create Autonomous Database.
+4. Make sure Network Access is Secure access from everywhere, provide password, valid email ID and click on Create.
 
     ![Create ADB Password](images/create_adb_password_network.png)
 
@@ -89,7 +89,7 @@ This task involves logging into APEX Administration Services
 
 1. Locate the Autonomous Database created in task 1 and click thru the name to view the details.
 
-    ![View ADB Details](images/adb_details.png)
+    ![View ADB Details](images/apex_instance_name.png)
 
 2. Scroll down and find the APEX instance name, click thru the instance name to view APEX Instance details.
     
@@ -97,7 +97,7 @@ This task involves logging into APEX Administration Services
     
 3. From the APEX Instance Details click the Launch APEX button.
 
-    ![Launch APEX](images/launch_apex.png)
+    ![Launch APEX](images/apex_details_launch_apex.png)
 
 4. Open APEX Administration Services, use the autonomous database admin password created in task 1.
 
