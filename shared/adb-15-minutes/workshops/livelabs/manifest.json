@@ -4,7 +4,7 @@
     "include": {
       "adb-load-public-db-actions-15-min-quickstart.md":"/common/building-blocks/tasks/adb/load-public-db-actions-15-min-quickstart.md",
       "adb-goto-data-load-utility.md":"/common/building-blocks/tasks/adb/goto-data-load-utility.md",
-      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body-developer.md",
+      "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md"
     },
     "variables": ["./variables.json"],    "tutorials": [
@@ -13,14 +13,14 @@
         "type": "odbw",
         "filename": "../../introduction/introduction.md"
       },
-      {
-        "title": "Get Started",
-        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
-      },
+        {
+            "title": "Get Started with LiveLabs",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
       {
         "title": "Lab 1: Provision an ADB Instance",
         "type": "livelabs",
-        "filename": "../../provision-database/adb-provision-moviestream.md"
+        "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
       },
       {
           "title": "Lab 2: Use Data Tools to Load Data",

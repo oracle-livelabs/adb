@@ -26,7 +26,7 @@ In this lab, you will:
 
 In this task, you will create a Provider ID. This provides information to the recipient on how to identify you.
 
-The **Provider and Consumer** page is displayed. The **PROVIDE SHARE** and the **CONSUME SHARE** tools enable you to create a data share as a share provider and to subscribe and consume a data share as a recipient respectively. You can click the [Quick Start Guide](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwfd/index.html) button to view step by step instructions on how to use Oracle Autonomous Database as a data share provider and as a data share recipient. For the complete Data Share documentation, see [The Data Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB). You can also try one of the available Data Sharing LiveLabs workshops.
+You should be on the **Data Load** home page from the last lab. In the navigation pane on the left, drill-down on the **Data Share** node. The **PROVIDE SHARE** and the **CONSUME SHARE** tools enable you to create a data share as a share provider and to subscribe and consume a data share as a recipient respectively. You can click the [Quick Start Guide](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwfd/index.html) button to view step by step instructions on how to use Oracle Autonomous Database as a data share provider and as a data share recipient. For the complete Data Share documentation, see [The Data Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB). You can also try one of the available Data Sharing LiveLabs workshops.
 
 1. Make sure you are still logged in as the **share_provider** user. In the navigation pane on the left, drill-down on **Data Share** if needed, and then click **Provide Share**.
 
@@ -100,13 +100,13 @@ When you create the data share using the share live data using direct connection
 
     ![The table is added.](images/table-added.png " ")
 
-8. On the **Recipients** page, there are no recipients available initially. Click the **Select Recipient** drop-down list, and then select **MY_TENANCIES** from the list. Next, create a new recipient that will consume this data share. Click **New Recipient**.
+8. On the **Recipients** page, there are no recipients available initially. Click the **Select Recipient** drop-down list, and then select **MY_TENANCY** from the list. Next, create a new recipient that will consume this data share. Click **New Recipient**.
 
     ![Click recipient.](images/click-recipient.png " ")
 
 9. In the **Create Share Recipient** panel, enter **`training_recipient`** as the name of the recipient, an optional description, an email address, and paste the sharing id that you copied to your clipboard in the **Sharing ID** field.
 
-    ![Create the new recipient.](images/create-new-recipient.png " ")
+    ![Create the new recipient.](images/create-new-recipient.png =65%x*)
 
 10. Click **Create**. The **Recipients** wizard's page is re-displayed. The newly created **TRAINING_RECIPIENT** is displayed on the page.
 
@@ -116,7 +116,7 @@ When you create the data share using the share live data using direct connection
 
     ![Data share created.](images/data-share-created.png " ")
 
-12. You can click the Actions icon (ellipsis) to view the data share details.
+12. You can click the **Actions** icon (ellipsis) to view the data share details.
 
     ![Click Actions.](images/click-actions.png " ")
 
@@ -134,7 +134,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -4,7 +4,7 @@
 
 This lab walks you through how to install and configure a workload generation tool called Swingbench and monitor the performance of an Autonomous Database.
 
-Swingbench is a free load generator (and benchmarks) designed to stress test an Oracle database (12c, 18c, 19c, 21c, 23c). The software enables a load to be generated and the transactions/response times to be charted. The tool has both graphical and command line functionality. Learn more about Swingbench [here](https://www.dominicgiles.com/swingbench/).
+Swingbench is a free load generator (and benchmarks) designed to stress test an Oracle database (12c, 18c, 19c, 21c, 23c). The software enables a load to be generated and the transactions/response times to be charted. The tool has both graphical and command line functionality. Learn more about Swingbench from the official [website](https://www.dominicgiles.com/swingbench/).
 
 We will be installing Swingbench and running some fabricated workloads that can be monitored later.
 
@@ -13,6 +13,7 @@ Estimated Time: 10 minutes
 ### Objectives
 
 As an administrator:
+
 1. Install and configure Swingbench to simulate a transaction processing workload.
 
 ### Required Artifacts
@@ -110,7 +111,7 @@ As an administrator:
 - Set a password for the wallet on the **Download your wallet** page and click **DOWNLOAD**
 
     ![Download zip](./images/adb-download-wallet.png " ")
-    
+
 - Scp or Copy over the Wallet zip file to VM instance. If you are using a Linux Terminal, run the following command to copy over the wallet to the VM instance -
 
     ```
@@ -125,45 +126,46 @@ Now that you have installed Swingbench and copied over the Autonomous Database w
 
 - You are ready to run Swingbench workloads on Autonomous Database. Workloads are simulated by users submitting transactions to the database.
 
-- Load sample data to your Autonomous Database. To start **oewizard** to load Schema and data, navigate to Swinbench bin folder and run oewizard. 
+- Load sample data to your Autonomous Database. To start **oewizard** to load Schema and data, navigate to Swinbench bin folder and run oewizard.
 
-    * admin\_user_password is the Autonomous Database admin user password
-    * soe\_user_password is the password for soe schema that will get created 
+    - admin\_user_password is the Autonomous Database admin user password
+    - soe\_user_password is the password for soe schema that will get created
+    - adbgcp\_high is the TNS String to connect to the database
 
-```
-<copy>
-cd ~/swingbench/bin
+    ```
+    <copy>
+    cd ~/swingbench/bin
 
-./oewizard -cf ~/Wallet_adbgcp.zip -cs adbgcp_high -ts DATA -dbap admin_user_password -dba admin -u soe -p soe_user_password -async_off -scale 2 -hashpart -create -cl -v
-</copy>
-```
+    ./oewizard -cf /tmp/Wallet_adbgcp.zip -cs adbgcp_high -ts DATA -dbap admin_user_password -dba admin -u soe -p soe_user_password -async_off -scale 0.2 -hashpart -create -cl -v
+    </copy>
+    ```
 
-![oewizard](./images/oewizard.png " ")
+    ![oewizard](./images/oewizard.png " ")
 
 - Validate the schema created correctly using the following command
 
-```
-<copy>
-cd ~/swingbench/bin
+    ```
+    <copy>
+    cd ~/swingbench/bin
 
-./sbutil -soe -cf ~/Wallet_adbgcp.zip -cs adbgcp_high -u soe -p soe_user_password -val
-</copy>
-```
+    ./sbutil -soe -cf /tmp/Wallet_adbgcp.zip -cs adbgcp_high -u soe -p soe_user_password -val
+    </copy>
+    ```
 
-![oewizard](./images/oewizard-verify.png " ")
+    ![oewizard](./images/oewizard-verify.png " ")
 
 - Edit the config file :
 
     Run the following command from command line 
 
-```
-<copy>
-sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGroupCount>/' \
-       -e 's/<LogonDelay>0<\/LogonDelay>/<LogonDelay>300<\/LogonDelay>/' \
-       -e 's/<WaitTillAllLogon>true<\/WaitTillAllLogon>/<WaitTillAllLogon>false<\/WaitTillAllLogon>/' \
-       ../configs/SOE_Server_Side_V2.xml
-</copy>
-```
+    ```
+    <copy>
+    sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGroupCount>/' \
+        -e 's/<LogonDelay>0<\/LogonDelay>/<LogonDelay>300<\/LogonDelay>/' \
+        -e 's/<WaitTillAllLogon>true<\/WaitTillAllLogon>/<WaitTillAllLogon>false<\/WaitTillAllLogon>/' \
+        ../configs/SOE_Server_Side_V2.xml
+    </copy>
+    ```
 
 - Once the Schema is created, run a workload against the newly created schema
 
@@ -172,7 +174,7 @@ sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGro
     ```
     <copy>
     ./charbench -c ../configs/SOE_Server_Side_V2.xml \
-            -cf ~/Wallet_adbgcp.zip \
+            -cf /tmp/Wallet_adbgcp.zip \
             -cs adbgcp_low \
             -u soe \
             -p soe_user_password \
@@ -187,7 +189,6 @@ sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGro
     </copy>
     ```
 
-
     ![Swingbench wizard](./images/swingbench-load-run.png " ")
 
 - You should now see the Transaction happening in your Autonomous Database. 
@@ -199,6 +200,7 @@ sed -i -e 's/<LogonGroupCount>1<\/LogonGroupCount>/<LogonGroupCount>5<\/LogonGro
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
+
 *Congratulations! You successfully configured the Swingbench java application with Autonomous Database.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
