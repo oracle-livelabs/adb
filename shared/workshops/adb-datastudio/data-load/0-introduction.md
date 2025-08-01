@@ -35,7 +35,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews, Product Manager, Autonomous Database, January 2023
 - Contributors - Bud Endress, Marty Gubar, Rick Green
-- Last Updated By - Mike Matthews, April 2024
+- Last Updated By - Mike Matthews, August 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

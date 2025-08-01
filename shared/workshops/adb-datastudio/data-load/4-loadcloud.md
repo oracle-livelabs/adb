@@ -123,17 +123,17 @@ Where you want to download and load data from a file from a cloud location that 
 
   ![Reviewing loading errors](images/load-errors2.png)
 
-7. In the **Summary Error Log** section, we can see that there were 4 occurrences of an error loading the **YRS_CUSTOMER** column. If we expand the **Detail Error Log** section at the bottom of the screen, we can work out why 4 rows failed. In all cases there was an error processing the column **YRS_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
+7. In the **Summary Error Log** section, we can see that there were 4 occurrences of an error loading the **YRS\_CUSTOMER** column. If we expand the **Detail Error Log** section at the bottom of the screen, we can work out why 4 rows failed. In all cases there was an error processing the column **YRS\_CUSTOMER** because these rows did not contain a valid number. If we expand the size of the **Data** column, we can see the values "eight", "six", and 2 cases of "unknown" which have caused the problem:
 
   ![The data column with the errored values highlighted](images/load-errors3.png)
 
   Click **Close** to close the task view.
 
-8. We have options here as to what to do. In some cases, we might decide it is acceptable to keep the table without these rows in it. We aldo had the option to download the errored records, fix the errors, and load these into our target table. Or, we can choose to recreate the table and reload the data, changing the data type of the **YRS_CUSTOMER** column to a text type so that we can load all the records, as we know we can fix the data using the built-in **Data Transforms** part of Data Studio. To do this, we can use the **Reload** option on the load task to change and rerun the data load:
+8. We have options here as to what to do. In some cases, we might decide it is acceptable to keep the table without these rows in it. We aldo had the option to download the errored records, fix the errors, and load these into our target table. Or, we can choose to recreate the table and reload the data, changing the data type of the **YRS_CUSTOMER** column to a text type so that we can load all the records, as we know we can fix the data using the built-in **Data Transforms** part of Data Studio, or by using Table AI Assist. To do this, we can use the **Reload** option on the load task to change and rerun the data load:
 
   ![The Reload option](images/reload-cart.png)
 
-9. This is where Data Studio can help us out. It knows about the error, and can suggest a recommended fix! C;ick **Yes** to apply the recommended fix.
+9. This is where Data Studio can help us out. It knows about the error, and can suggest a recommended fix! Click **Yes** to apply the recommended fix.
 
   ![The Recommended Fix dialog](images/recommended-fix.png)
 
@@ -151,13 +151,12 @@ Where you want to download and load data from a file from a cloud location that 
 
 ## Task 4: Inspect the newly loaded table
 
-1. Click on **Catalog** from the Data Studio navigation menu on the left hand side. 
+1. Click the name of the table (CUSTOMERCONTACTISSUES) on the Data Load screen to view the table.
 
-  ![The Data Studio menu with Catalog selected](images/launch-catalog.png)
+  ![The Data Studio menu with Catalog selected](images/click-table-name.png)
 
-  Under **Saved Searches** on the right hand side, click on **Tables, views and analytic views owned by QTEAM** to see a list of the tables you have created in this and previous labs.
 
-2. Click the **CUSTOMERCONTACTISSUES** table and then click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly. In some cases, the Statistics may not be gathered yet. In this case, click on the **Gather Statistics** button. After about 30 seconds, click on the **Refresh** button, and the statistics should be available.
+2. Click **Statistics** on the panel to the left of the screen. Statistics help you quickly understand the structure and content of the table and to verify that data has been loaded correctly. 
 
 3. Scroll down to find the card relating to the **YRS_CUSTOMER** column. Notice that its icon denotes that it is a text (VARCHAR) column. Click on the Expand button to view the statistics in more detail.
 
@@ -166,6 +165,7 @@ Where you want to download and load data from a file from a cloud location that 
 4. This now shows the distribution of values for the **YRS_CUSTOMER** column. Find the small scroll bar to the left of the graph and scroll down. You will see the captured values "eight", "six" and "unknown" that we have now loaded:
 
   ![Graph showing value distribution of the YRS_CUSTOMER column](images/stats-graph.png)
+
 
 ## RECAP
 
@@ -177,4 +177,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
-- Last Updated By - Mike Matthews, April 2024
+- Last Updated By - Mike Matthews, August 2025
