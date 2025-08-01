@@ -155,4 +155,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Ashish Jain, Rick Green
-- Last Updated By - Mike Matthews, June 2025
+- Last Updated By - Mike Matthews, August 2025
