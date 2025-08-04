@@ -44,7 +44,7 @@ Otherwise, there are two ways to reach the Database Actions home page, where you
 
 ### Access Database Actions via the Console
 
-On the Autonomous Database Details page, click the **Database Actions** button:
+On the Autonomous Database Details page, click the **View all database actions** button from the **Database action** drop-down:
 
   ![Screenshot of the link to Database Actions from the database console page](images/dbactions-fromconsole.png)
 
@@ -119,13 +119,13 @@ Below are the files that you will be using during this part of the workshop. Bef
 
   ![Edit data load properties for countries](images/loadlocal-countries.png)
 
-6. In the bar on the left, there are links for Settings, Preview, Table, SQL and Errors. This screenshot shows the **Settings** page. Observe that this shows the structural information and intelligent default values that data wizard has created from simply looking at the file.
+6. In the bar on the left, there are links for Settings, Preview, Table, SQL and Errors. This screenshot shows the **Settings** page. Observe that this shows the structural information and intelligent default values that the data load wizard has created from simply looking at the file.
 
   ![Data load settings for countries](images/countries-settings.png)
 
 7. How does it do this? Most csv files contain structural information about the data within the file in the first row. Notice that there is a tick box selected, **Column header row**.
 
-8. This has allowed the data loading wizard to discover that your data file contains two columns of data: **COUNTRY** and **CONTINENT**. The default table name has based derived from the filename. Click the drop-down menu under **Option**.
+8. This has allowed the data load wizard to discover that your data file contains two columns of data: **COUNTRY** and **CONTINENT**. The default table name has based derived from the filename. Click the drop-down menu under **Option**.
 
   ![Table options](images/load-options.png)
 
@@ -145,7 +145,7 @@ Below are the files that you will be using during this part of the workshop. Bef
 
 ### RECAP: Loading Data from local files
 
-In this part of the workshop, you used the new data loading tool to quickly load data into your data warehouse from three local data files simply by dragging and dropping them onto the Data Load canvas. One file was in CSV format and the other two were Excel spreadsheets. One of the spreadsheets contained two worksheets and each one was loaded into its own table. The data loading process automatically created a target table containing the appropriate column structures based on the data within each file.
+In this part of the workshop, you used the new data loading tool to quickly load data into your data warehouse from three local data files simply by dragging and dropping them onto the Data Load canvas. One file was in CSV format and the other two were Excel spreadsheets. One of the spreadsheets contained two worksheets and each one was loaded into its own table. The data loading process automatically created new tables containing the appropriate column structures based on the data within each file.
 
 In a few clicks, you were able to define and load data into four new tables without having to write any SQL code. It was all done with a few mouse clicks.
 
@@ -155,4 +155,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Patrick Wheeler, Ashish Jain, Rick Green
-- Last Updated By - Mike Matthews, April 2024
+- Last Updated By - Mike Matthews, August 2025

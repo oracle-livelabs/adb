@@ -32,19 +32,12 @@ When you create a new Autonomous Database, you automatically get an account call
 
 For this workshop, we need to create one new user.
 
-1.  Navigate to the **Details** page of the Autonomous Database you provisioned in the "Provision an ADB Instance" lab. Click the **View all database actions** button from the pull down menu on **Database Actions**.
+1.  Navigate to the **Details** page of the Autonomous Database you provisioned in the "Provision an ADB Instance" lab. Click the **Database Users** button from the pull down menu on **Database actions**.
     ![Click Database Actions](images/click-database-actions-button.png)
 
-2.  This will take you to the Database Actions page, logged in as the ADMIN user.
+2.  This will take you to the Database Actions User Management page, logged in as the ADMIN user. You can see that your ADMIN user is listed as the current user. On the right-hand side, click the "+ **Create User**" button.
 
-3.  On the Database Actions launchpad page, under Administration, click **Database Users** card.
-    ![Launch Database Users admin page](images/database-users.png)
-
-4.  You can see that your ADMIN user is listed as the current user.  On the right-hand side, click the "+ **Create User**" button.
-
-    ![Click Create User](images/create-user.png)
-
-5.  The **Create User** form will appear on the right-hand side of your browser window. Use the settings below to complete the form:
+3.  The **Create User** form will appear on the right-hand side of your browser window. Use the settings below to complete the form:
 
     - User Name: **QTEAM**
     - Password: make up your own suitably strong password.
@@ -60,20 +53,20 @@ For this workshop, we need to create one new user.
   
     - Select **UNLIMITED** from the drop-down menu for **Quota on tablespace DATA**
   
-    Next, you will examine the form.
-  
-6.  When you examine the form, it should look like this:
+4.  Enable RSET, GraphQL, MongoDB API, and Web access
+ 
+5.  The completed **User** tab should look like this:
 
     ![Create user selections](images/create-user-dialog.png)
 
-7.  You need the following user roles to enable tools:
+7.  You need the following user roles to enable the Data Studio tools used in this and other related workshops:
 
     - **DWROLE:** to grant access to load and store data
     - **DATA\_TRANSFORM\_USER:** to grant access to transform data
 
     > **Note:** Access to the Data Transforms tool may grant the user visibility to other users' data since the tool allows you to import and view data from any schema. Please be aware of this and enable this role selectively.
 
-    Click on the **Granted Roles** banner at the top of the form and add the following roles by checking the boxes in the first (Granted) and third columns (Default):
+    Click on the **Granted Roles** tab at the top of the form and add the following roles by checking the boxes in the first (Granted) and third columns (Default):
 
     > **Note:** Ensure that for each role the **Granted** and **Default** options are selected.
  
@@ -81,7 +74,7 @@ For this workshop, we need to create one new user.
 
     Notice that two additional roles have already been automatically assigned: **CONNECT** and **RESOURCE**.  
 
-    Search for **DATA\_TRANSFORM\_USER** role and click on **Granted** and **Default** options.
+    Search for the **DATA\_TRANSFORM\_USER** role and click on **Granted** and **Default** options.
 
     ![Grant roles to the user](images/transformsrole.png)
     
@@ -113,4 +106,4 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
 - Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
-- Last Updated By - Mike Matthews, April 2024
+- Last Updated By - Mike Matthews, June 2025
