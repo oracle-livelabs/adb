@@ -17,7 +17,9 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the lab **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of  lab 2, **Provision an Autonomous Database**, in the Contents menu on the left.
+
+    >**Important:** In the **Provision an Autonomous Database** lab, we chose **23ai** as the database version. Some of the JSON syntax in this lab works only with version **23ai** database version.
 
 ## Task 1: Create and load JSON movie collection
 [](include:adb-create-load-json-collection.md)
@@ -46,4 +48,4 @@ You may now proceed to the next lab.
 
 * **Author** - Marty Gubar, Autonomous Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025

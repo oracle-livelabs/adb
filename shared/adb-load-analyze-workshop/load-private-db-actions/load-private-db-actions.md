@@ -162,7 +162,7 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
-    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `training-data-lake`.
+    In our example, the **region name** is `us-ashburn-1`, the **Namespace** is blurred for security, and the **bucket name** is `training-data-lake`.
 
     ![The URL highlighted.](images/url.png " ")
 
@@ -170,30 +170,34 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 To load data from the Oracle Cloud Infrastructure (OCI) Object Storage, you will need an OCI user with the appropriate privileges to read data (or upload) data to the Object Storage bucket. The communication between the database and object storage relies on the native URI, and the OCI user's Auth Token.
 
-1. In the Console banner, click the **Profile** icon. The **Profile** drop-down menu is displayed.
+1. In the Console banner, click the **Profile** icon. The **Profile** drop-down menu is displayed. Select **User settings**.
 
-    ![Click the person icon at the far upper right and click your username.](./images/click-my-profile.png " ")
+    ![Click the person icon.](./images/click-my-profile.png =60%x*)
 
+<!-- 
     >**Note:** Make a note of your OCI user's name that is displayed in the **Profile** drop-down menu as you will need it in a later task. This username might have a prefix followed by an email address, for example:    
     **`oracleidentitycloudservice/xxxxxxx.xxxxx@xxxxxx.com`**
+Removed since I am using the default domain. -->
 
-2. From the drop-down menu, click **My profile**. The **User Profile** page is displayed. Scroll down the page to the **Resources** section, click **Auth tokens**, and then click **Generate token**.
+2. On the **User Profile** page, click the **Tokens and keys** tab. 
 
-    ![Click Auth Tokens under Resources at the bottom left.](./images/click-auth-tokens.png " ")
+    ![Click Tokens and keys tab.](./images/click-tokens-keys-tab.png " ")
+
+3. Scroll down the page to the **Auth tokens** section, and then **Generate token**.
+
+    ![Click Auth Tokens under Resources at the bottom left.](./images/click-generate-token.png " ")
 
 3. In the **Generate token** panel, enter a meaningful description for the token, and then click **Generate token**.
 
     ![Enter a description for the token.](./images/enter-description.png " ")
 
-4. The new Auth token is displayed. Click **Copy** to copy the Auth Token to the clipboard. Save the contents of the clipboard in a text editor file of your choice. You will use it in the next tasks.
+4. The new Auth token is displayed. Click the ellipsis icon, and then click **Copy** from the context menu to copy the Auth Token to the clipboard. Save the contents of the clipboard in a text editor file of your choice. You will use it in the next tasks.
 
     >**Note:** You can't retrieve the Auth Token again after you close the panel.
 
     ![Copy the Auth Token to clipboard.](./images/copy-the-generated-token.png " ")
 
-5. Click **Close** to close the **Generate token** panel.
-
-6. The **User Profile** page is re-displayed. The new Auth token is displayed.
+5. Click **Close** to close the **Generate token** panel. The **User Profile** page is re-displayed. The new Auth token is displayed.
 
     ![Auth token is displayed.](./images/auth-token-displayed.png " ")
 
@@ -208,35 +212,35 @@ First, define a new **Cloud Location** to connect to the Oracle Object Storage b
 
 [](include:adb-goto-data-load-utility.md)
 
-1. In the **Data Load** main page, in the **Administration** section, click the **CONNECTIONS** card.
+3. In the **Data Load** main page, in the **Administration** section, click the **Connections** card.
 
     ![Click the Cloud Locations card.](./images/click-connections.png " ")
 
-2. In the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
+4. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
 
     ![Click Add Cloud Storage.](./images/click-new-cloud-location.png " ")
 
-3. Specify the following in the **Add Cloud Store Location** panel.
+5. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`oci-cloud`**.
     + **Description:** Enter an optional description.
     + Accept the default **Select Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
     + Click **Create Credential**.
     + In the **Create Credential** dialog box, specify the following:
-        + **Credential Type:** Accept the default **Cloud Username and Password** option.
-        + **Cloud Store:** Select **Oracle** from the drop-down list since you will load data from your Oracle Object Storage bucket.
-        + **Credential Name:** Enter **OBJ\_STORE\_CRED**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-        + **Oracle Cloud Infrastructure User Name:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
+        + **Credential Name:** Enter **`OBJ_STORE_CRED`**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
+        + **Cloud Service:** Select **Oracle** from the drop-down list since you will load data from your Oracle Object Storage bucket.
+        + **OCI Create Credential Method:** Select the **Cloud Username and Password** option.
+        + **Oracle Cloud Infrastructure Username:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
         + **Auth Token:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
 
-7. Click **Create Credential**.
+6. Click **Create Credential**.
 
     ![Click Create Credential.](./images/click-create-credential.png " ")
 
-    The **Add Cloud Store Location** panel is re-displayed. The newly created **`OBJ_STORE_CRED`** credential is displayed in the drop-down list.
+    The **Add Cloud Store Location** panel is re-displayed. The newly created **`OBJ_STORE_CRED`** credential is displayed in the **Select Credential** drop-down list.
 
     ![Credential created.](./images/credential-created.png " ")
 
-8. Specify the following in the **Add Cloud Store Location** panel:    
+7. Specify the following in the **Add Cloud Store Location** panel:    
     + **Bucket URI option:** Select this option, if it's not already selected.    
     + **Bucket URI field:** Enter the Bucket URI that you recorded in **Task 4**. Remember to use the following general structure while substituting the `region-name` and `namespace-name` place holders with your own values.
 
@@ -246,11 +250,11 @@ First, define a new **Cloud Location** to connect to the Oracle Object Storage b
 
         ![Click Create Credential.](./images/storage-setting.png " ")
 
-9. Click **Next** to see the available objects in the bucket that you specified. The **Cloud Data** wizard step is displayed. Our bucket contains the `potential_churners.csv` file that we uploaded earlier.
+8. Click **Next** to see the available objects in the bucket that you specified. The **Cloud Data** wizard step is displayed. Our bucket contains the `potential_churners.csv` file that we uploaded earlier.
 
     ![The Cloud Data wizard step.](./images/cloud-data.png " ")
 
-10. Click **Create**. The **`oci-cloud`** cloud location connection is displayed in the **Connections** page.
+9. Click **Create**. The **`oci-cloud`** cloud location connection is displayed in the **Connections** page.
 
     ![The cloud store location is created.](./images/cloud-connection-created.png " ")
 
@@ -262,10 +266,10 @@ The `DBMS_CLOUD` package supports loading data files from the following Cloud so
 
 This task shows how to load data from Oracle Cloud Infrastructure Object Storage using two of the procedures in the `DBMS_CLOUD` package:
 
-+ **create_credential**: Stores the object store credentials in your Autonomous Data Warehouse schema.
-    + You will use this procedure to create object store credentials in your ADW admin schema.
-+ **copy_data**: Loads the specified source file to a table. The table must already exist in ADW.
-    + You will use this procedure to load tables to your admin schema with data from data files staged in the Oracle Cloud Infrastructure Object Storage cloud service.
++ **`create_credential`**: Stores the object store credentials in your Autonomous Data Warehouse schema.
+    + You will use this procedure to create object store credentials in your ADW `admin` schema.
++ **`copy_data`**: Loads the specified source file to a table. The table must already exist in ADW.
+    + You will use this procedure to load tables to your `admin` schema with data from data files staged in the Oracle Cloud Infrastructure Object Storage cloud service.
 
 1. Now that you've created the Cloud Location to connect to the Oracle Object Store, you're ready to load the `potential_churners.csv` file from your bucket. Navigate back to the main **Database Actions Launchpad**. Click **Database Actions** in the banner to go to the Launchpad.
 
@@ -277,9 +281,9 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     ![Navigate to the SQL worksheet.](./images/navigate-sql-worksheet.png =75%x*)
 
-3. Unlike the earlier tasks where the Database Actions DATA LOAD tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
+3. Unlike the earlier tasks where the Database Actions Data Load tool gave you the option to automatically create the target Oracle Autonomous Database tables during the data load process, the following steps for loading with the `DBMS_CLOUD` package require you to first create the target tables.
 
-    Connected as your `ADMIN` user in SQL Worksheet, copy and paste this code snippet to the worksheet, to create the required `potential_churners` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Click the **Run Script** icon in the toolbar to run it.
+    Connected as your `ADMIN` user in SQL Worksheet, copy and paste the following script to the worksheet. This creates the required `potential_churners` table. Take a moment to examine the script. You will first drop any table with the same name before creating the table. Click the **Run Script** icon in the toolbar to run it.
 
     ```
     <copy>
@@ -296,7 +300,7 @@ This task shows how to load data from Oracle Cloud Infrastructure Object Storage
 
     ![Click Run Script.](./images/table-creation-results-sql-worksheet.png " ")
 
-    > **Note:** You do not need to specify anything other than the list of columns when creating tables in the SQL scripts. You can use primary keys and foreign keys if you want, but they are not required.*
+    > **Note:** You do not need to specify anything other than the list of columns when creating tables in the SQL scripts. You can use primary keys and foreign keys if you want, but they are not required.
 
 4. Copy the following code and paste it in your SQL Worksheet. This code copies the data in the `potential_churners.csv` file you uploaded to the object storage bucket, to the target `potential_churners` table you just created in your Autonomous Database.
 Replace the provided example URL with the real object storage base URL that you identified and copied in **Task 4**. In the **define** statement in the code example, substitute the _your-region-name_, _your-tenancy-name_, and _your-bucket-name_ place holders with your own region name, tenancy name, and bucket name. The top of the file should look similar to the example below:
@@ -320,11 +324,11 @@ Replace the provided example URL with the real object storage base URL that you 
     </copy>
     ```
 
-    The script uses the **copy\_data** procedure of the **DBMS\_CLOUD** package to copy the data from the source file to the target table you created before.
+    The script uses the **`copy_data`** procedure of the **`DBMS_CLOUD`** package to copy the data from the source file to the target table you created before.
 
     ![Click Run Script.](./images/run-data-loading-script.png " ")
 
-8. You have successfully loaded the `POTENTIAL_CHURNERS` table. While in the SQL Worksheet, you can do a simple query against the table you just loaded. For example, to see the customers who have a greater than 0.8 likelihood of no longer remaining as MovieStream customers, run this query:
+5. You have successfully loaded the **`POTENTIAL_CHURNERS`** table. While in the SQL Worksheet, you can do a simple query against the table you just loaded. For example, to see the customers who have a greater than 0.8 likelihood of no longer remaining as MovieStream customers, run this query:
 
     ```
     <copy>
@@ -339,12 +343,16 @@ Replace the provided example URL with the real object storage base URL that you 
 ## Task 8: Troubleshoot DBMS_CLOUD data loads
 
 1. Connected as your user in SQL Worksheet, run the following query to look at past and current data loads.
+
     ```
-    $ <copy>SELECT *
+    <copy>SELECT *
     FROM user_load_operations;
     </copy>
     ```
-    *Notice how this table lists the past and current load operations in your schema. Any data copy and data validation operation will have backed-up records in your Cloud.*
+
+    ![Query data loads.](./images/query-data-loads.png " ")
+    
+    >**Note:** This table lists the past and current load operations in your schema. Any data copy and data validation operation will have backed-up records in your Cloud.
 
 2. For an example of how to troubleshoot a data load, we will create and try to load a version of the `GENRE` table named `GENRE_DEBUG` that we know will fail because the loading script uses the wrong delimiter, **`"|"`**. Copy and paste the following code into your SQL Worksheet, and then run it.
 
@@ -377,7 +385,7 @@ Replace the provided example URL with the real object storage base URL that you 
     </copy>
     ```
 
-    ![Paste the code and click Run Script.](images/query-results-intentionally-using-wrong-format.png " ")
+    ![Paste the code and click Run Script.](images/error-wrong-format.png " ")
 
 3. Run the following query.
 
@@ -401,15 +409,24 @@ Replace the provided example URL with the real object storage base URL that you 
     </copy>
     ```
 
-    ![Paste the query and click Run Script.](./images/user-load-operations-where-status-equals-failed.png " ")
+    ![Paste the query and click Run Script.](./images/status-equals-failed.png " ")
 
     A load or external table validation that errors out is indicated by _**status=FAILED**_ in this table.
     
-5. Get the names of the log and bad files for the failing load operation from the column **logfile\_table** and **badfile\_table**. The `logfile_table` column shows the name of the table you can query to look at the _log_ for a load operation. The column `badfile_table` shows the name of the table you can query to look at the _rows that got errors_ during loading. Your tables' names might be different than our example.
+5. Get the names of the log and bad files for the failing load operation from the column **`logfile_table`** and **`badfile_table`**. The **`logfile_table`** column shows the name of the table you can query to look at the _log_ for a load operation. The **`badfile_table`** column shows the name of the table you can query to look at the _rows that got errors_ during loading. Your tables' names might be different than our example.
 
     ![Get logfile and badfile table names.](./images/log-and-table-names.png " ")
 
-6. Query the log table to see detailed information about an individual load. In our example, the table name is `copy$12_log`.
+6. Query the log table to see detailed information about an individual load. In our example, the table name is `copy$8_log`.
+
+    Run the following query. Substitute the table name with your own table name.
+
+    ```
+    <copy>
+    SELECT *
+    FROM copy$8_log;
+    </copy>
+    ```
 
     ![Type the query and click Run Script.](./images/query-log-file.png " ")
 
@@ -455,7 +472,7 @@ Replace the provided example URL with the real object storage base URL that you 
 
     ![Successful load after using the correct comma delimiter.](./images/successful-load-using-comma-delimiter.png " ")
 
-10. View the results by running this query:
+10. View the results. Run the following query:
 
     ```
     <copy>
@@ -480,15 +497,12 @@ See the documentation [Loading Data with Autonomous Database](https://docs.oracl
 
 ## Acknowledgements
 
-* **Authors:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-    * Rick Green, Principal Developer
-
-* **Last Updated By/Date** - Lauran K. Serhal, April 2024
+* **Authors:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (c) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
