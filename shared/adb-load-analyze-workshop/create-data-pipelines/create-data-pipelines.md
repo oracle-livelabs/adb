@@ -250,45 +250,39 @@ In this task, you will upload the downloaded **`weather-newark-airport.csv`** fi
 
 2. On the **Buckets** page, select your compartment that contains your bucket from the **Compartment** field, if needed. In this example, we chose our own compartment named **`training-adw-compartment`**. Make sure you are in the region where you created your bucket.
 
+    <!-- Redwood UI Bucket, when ready 
     ![The buckets page is displayed.](./images/bucket-created.png " ")
+    -->
 
-3. Click your **bucket name** to open it. The **Bucket Details** page is displayed. Click the **Objects** tab. The `potential_churners.csv` file that you uploaded in a previous lab is displayed.
+3. Click your **bucket name** to open it. The **Bucket Details** page is displayed. In the **Objects** section, the `potential_churners.csv` file that you uploaded in a previous lab is displayed.
 
-    ![Click the bucket name.](./images/objects-tabs.png " ")
+    ![Click the bucket name.](./images/objects-section.png " ")
 
-4. Create a new folder in this bucket to where you'll upload the weather data. Click the **Actions** drop-down list, and then select **Create new folder**.
+4. Create a new folder in this bucket to where you'll upload the weather data. Click the **Actions** drop-down list, and then select **Create New Folder**.
 
     ![Click Create New Folder.](./images/create-new-folder.png " ")
 
-5. In the **Create New Folder** dialog, enter **`weather`** as the name of the folder, and then click **Create folder**.
+5. In the **Create New Folder** dialog box, enter **`weather`** as the name of the folder, and then click **Create**.
 
-    ![Create a folder named weather.](./images/create-weather-folder.png " ")
+    ![Create a folder named weather.](./images/click-create.png " ")
 
-6. Click the **Actions** icon (ellipsis) associated with the **`weather`** folder, and then select **Upload objects** from the context menu.
+6. Click the **Actions** icon (ellipsis) associated with the **`weather`** folder, and then select **Upload** from the context menu.
 
     ![Click the weather folder to open it.](./images/weather-upload-objects.png " ")
 
-7. On the **Select files** page 1 of the **Upload objects** wizard, scroll down to the **Choose Files from your Computer** section, and then click the **Drop a file or select one** field.
+7. On the **Upload Objects** dialog box, scroll down to the **Choose Files from your Computer** section, and then click the **select files** link.
 
     ![Click Upload under Objects section.](./images/click-select-file.png " ")
 
-8. Navigate to the location where you downloaded the **`weather-newark-airport.csv`** file, and select it. Drag and drop, or click **select files**, to select the **`weather-newark-airport.csv`** file that you downloaded in the previous task. The file name is displayed in the **File Upload** section. Click **Next**.
+8. Navigate to the location where you downloaded the **`weather-newark-airport.csv`** file, and select it. Drag and drop, or click **select files**, to select the **`weather-newark-airport.csv`** file that you downloaded in the previous task. The file name is displayed in the **Upload Objects** dialog box. Click **Upload**.
 
     ![Select and upload the weather-newark-airport.csv file.](./images/select-and-upload-weather-newark-airport-file.png " ")
 
-9. On the **Review files** page 2 of the **Upload objects** wizard, click **Next**.
-
-10.  On the **Upload files** page 3 of the **Upload objects** wizard, click **Upload objects**.
-
-11. When uploading the file is completed, the status is **Done**. Click **Close**.
+9. When uploading the file is completed, the status is **Finished**. Click **Close**.
 
     ![Click Close when the file finishes uploading.](./images/click-close.png " ")
 
-12. The **Objects** page is re-displayed. If the uploaded file is not displayed under the **weather** folder, click the **Actions** drop-down menu, and then select **Refresh**. Drill down on the **weather** folder to display the newly uploaded file.
-
-    ![Click Actions > Refresh.](./images/click-refresh.png " ")
-
-    >**Note:** If the uploaded file is still not displayed, return to the **Buckets** page, click the **training-data-lake** bucket name link, and then click the **Objects** tab. Next, drill-down on **weather**. The uploaded file should be displayed. 
+12. The **Bucket Details** page is re-displayed. The **`weather-newark-airport.csv`** file is displayed under the **weather** folder.
 
     ![Uploaded file is displayed.](./images/uploaded-file-displayed.png " ")
 
@@ -319,10 +313,9 @@ When you uploaded your new weather data to your object store, the pipeline shoul
 * **Contributors:** 
 
     * Nilay Panchal, Principal Product Manager, Autonomous Database
-    * Marty Gubar, Director of Product Management, Autonomous Database
-    * Sanket Jain, Archtect, Autonomous Database
+    * Sanket Jain, Architect, Autonomous Database
    
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, August 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -332,4 +325,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

@@ -34,8 +34,6 @@ In this lab, you will:
 
 ### Prerequisites
 
-<if type="freetier">
-
 ## Task 1: Create a new Database user and access its DB Actions
 
 1. If you have the Database Actions for the **`ADMIN`** user still open, click the **Administration** tab, and then click the **Database Users** tab. 
@@ -126,80 +124,8 @@ In this lab, you will:
 
     ![Navigate to Launchpad](images/navigate-launchpad.png "")
 
-</if>
-
-<if type="livelabs">
-
-## Task 1: Create a new Database user and access its DB Actions
-
-1. If you have the Database Actions for the **ADMIN** user still open, look for the **Administration** section, and you will find _Database Users_. Click to open the interface for managing users.
-    ![Go to Database Users from Database Actions](images/dbactions-database-users-tile.png "")
-
-
->  Alternatively, you can navigate from the Autonomous Database console, by selecting the option **Database Users** from the _Database Actions_ pull-down menu.
-    ![Go to Database Users from ADB Console](images/adb-console-database-users-menu.png "")
-
-2. In the Database Users interface that opens, click on **Create User**
-    ![Go to Database Users from ADB Console](images/dbactions-user-admin-main.png "")
-
-3. Create a new user called **`OMLUSER`** with the following features:
-- Type a password and confirm it.  The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character, and cannot contain the username.
-- Check "OML"
-- Check "Web Access"
-- Select "UNLIMITED" for quota on tablespace DATA.
-
-Click _Create User_ to create the user.
-    ![Create New user OMLUSER](images/dbactions-create-user-omluser.png "")
-
-4. Once the user is created, it is going to be shown with the details.  We want to go to that specific user's DB Actions in order to load data directly to it.  Click on the indicated button to open the link to the user's DB Actions.
-    ![Go to OMLUSER DB Actions](images/dbactions-open-omluser-dbactions-url.png "")
-
-5. You will be asked for the user and password for the OMLUSER.  Note that in the URL itself in the browser you can see that this is the specific DB Actions link for that user.  
-
-Enter **`OMLUSER`** and the password you just created to sign in.
-    ![Sing into OMLUSER DB Actions](images/dbactions-omluser-login.png "")
-
-## Task 2: Load the data we will use to work with Oracle Machine Learning
-
-1. Inside the DB Actions of the OMLUSER, under the **Data Studio** section, select _Data Load_ and click to open the interface.
-    ![Enter Data Load](images/dbactions-omluser-data-load-tile.png "")
-
-2. Inside the **Data Load** section, select _Load Data_.
-    ![Enter Load Data](images/datastudio-data-load.png "")
-
-3. Select the _Cloud Store_ button and the following Public Object Storage bucket address in the field indicated:
-```
-    <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o
-```
- ![Open Object Storage location](images/dbactions-omluser-type-objstore-location.png "")
-
-4. From the list of the folders on the left, drag **moviestrean_data** to the right panel, and confirm that you want to "to a single target table" when asked.
-    ![Drag and Drop Moviestream_churn data](images/load-data-drag-moviestream-churn.png "")
-
-5. After a few seconds, you should see the following screen. Before we load the data it's *important* that we make a quick change to a data type.  To do this, click on the pencil at the bottom right of the card.
-   ![Click on the edit pencil](images/dbactions-omluser-data-load-pencil-edit.png "")
-
-6. In the window that pops-up, scroll all the way down to the list of columns. In there look for the column named **IS\_CHURNER**.  We want to make sure we *change* the current data type from **BOOLEAN** into **NUMBER**.  We only require that change to the **IS\_CHURNER** column.  Once you finish that, you can click on the *Close* button.
-   
-   ![Click on the edit pencil](images/dbactions-omluser-data-load-change-boolean.png "")
-
-7. Now, you can click on _Start_ to begin loading the data, and then _Run_ to confirm that you wish to start the load.  It should take a few seconds.
-    ![Begin loading Moviestream_churn data](images/start-loading-moviestream-data.png "")
-
-8. Once loaded, the screen will show you the successful load. Now click on the "Database Actions" text in the top section of the screen to go back to the main menu. 
-    ![Go back to the main DB Actions menu](images/finished-loading-moviestream-churn.png "")
-
-</if>
-
-
-
-<if type="livelabs">
 ## Task 3: Navigate to Oracle Machine Learning UI
-</if>
-<if type="freetier">
-## Task 3: Navigate to Oracle Machine Learning UI
-</if>
+
 <if type="ocw24sandbox">
 ## Task 1: Navigate to Oracle Machine Learning UI
 </if>
@@ -221,17 +147,9 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     In addition, *a customer churning today probably made that decision a while ago*. This means that our machine learning model needs to be able to detect any change in behavior from at least a month ago. This is the reason for the buffer of 1 month in the process.
 
-<if type="livelabs">
-1. We will access Oracle Machine Learning UI from the Database Actions menu, by going to the **Development** section, and clicking on Oracle Machine Learning.
-
-    ![Go to OML UI](images/click-oml-ui-tile-on-dbactions.png " ")
-</if>
-
-<if type="freetier">
 1. From the Database Actions Launchpad, click the **Development** tab, and then click the **Machine Learning** tab.
 
     ![Go to ML UI](images/click-machine-learning.png " ")
-</if>
 
 <if type="ocw24sandbox">
 1. We will access Oracle Machine Learning UI from the LiveLabs Instructions Login Info.  
@@ -262,12 +180,8 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     The **AutoML Experiments** page is displayed.
 
-<if type="livelabs">
 ## Task 4: Create a new AutoML Experiment
-</if>
-<if type="freetier">
-## Task 4: Create a new AutoML Experiment
-</if>
+
 <if type="ocw24sandbox">
 ## Task 2: Create a new AutoML Experiment
 </if>
@@ -323,12 +237,8 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     We are now ready to start the Experiment.
 
-<if type="livelabs">
 ## Task 5: Run the Experiment and explore the results.
-</if>
-<if type="freetier">
-## Task 5: Run the Experiment and explore the results.
-</if>
+
 <if type="ocw24sandbox">
 ## Task 3: Run the Experiment and explore the results.
 </if>
@@ -343,12 +253,12 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     You will see a floating **Progress** indicator while the **Experiment** is running. The progress indicator shows the status of each of the Experiment's steps and an approximate time that it has been running.
 
-    ![Churn AutoML Task 2 Step 1 open progress](images/progress.png " ")
+    ![Status running](images/status-running.png =55%x*)
 
     The performance of OML AutoML UI is impacted by your Autonomous Database configuration. As explained in [this blog post](https://blogs.oracle.com/machinelearning/oml-automl-ui-4-things-you-can-do-that-affect-performance), several components may affect the performance, including the base number of Autonomous Database CPUs and whether or not auto scaling has been enabled.
 
 2. Check the results.
-   Once the process completes, you will note that the **running icon** on the top right changes to indicate it is **Completed**. The **Balanced Accuracy** chart will show the increased accuracy over time as the models were tested, and the **Leader Board** will present the different algorithms that were chosen, and their respective **Model Names**.
+   Once the process completes, you will note that the **Running** status on the top right changes to **Completed**. The **Balanced Accuracy** chart will show the increased accuracy over time as the models were tested, and the **Leader Board** will present the different algorithms that were chosen, and their respective **Model Names**.
 
     In the following screen we can see that the top 3 algorithms chosen were a **Random Forest**, a **Decision Tree** and a **Support Vector Machine**. By default they receive randomly generated unique **Model Names**.
 
@@ -389,12 +299,8 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     The model also thought that __1.05%__ of the customers would not churn (Predict: 0) but they actually did (Actual: 1).  This type of error is more dangerous in churn management, since your model is not capable of identifying these customers as churners when they indeed would have been, and should be monitored over time.
 
-<if type="livelabs">
 ## Task 6: Prepare the model for scoring and deployment
-</if>
-<if type="freetier">
-## Task 6: Prepare the model for scoring and deployment
-</if>
+
 <if type="ocw24sandbox">
 ## Task 4: Prepare the model for scoring and deployment
 </if>
@@ -415,12 +321,8 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     Now we are ready for scoring customers using SQL by using that model name.
 
-<if type="livelabs">
 ## Task 7: Score customers with Python and SQL using the model
-</if>
-<if type="freetier">
-## Task 7: Score customers with Python and SQL using the model
-</if>
+
 <if type="ocw24sandbox">
 ## Task 5: Score customers with Python and SQL using the model
 </if>
@@ -463,7 +365,6 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     > **Note:** Looking at the bottom right on each paragraph you will see how long ago it was run the last time.  Confirm that it says _a few minutes ago_ or _a few seconds ago_
 
-
 6. In Python load the Random Forest model and create a new TABLE
    
     Scrolling down the Notebook body, the first large section with code is using __Python__ to create proxy connections to the dataset **`MOVIESTREAM_DATA`**, to the Random Forest model, and then using the _predict_ function to request the Database to score the dataset, generating an **Inference** for the future customer likelihood to Churn.
@@ -474,7 +375,7 @@ Enter **`OMLUSER`** and the password you just created to sign in.
 
     ![Churn AutoML Task 3 Step 3 Scoring Notebook Python 2](images/oml-churn-automl-notebook-python2.png " ")
 
-5. Oracle Machine Learning can generate Prediction Details dynamically
+7. Oracle Machine Learning can generate Prediction Details dynamically
 
     This feature allows us to get, for every customer scored, the top "N" `Reasons Why` the model predicted that the customer is a `0` (non-Churner) or `1` (Churner).
 
@@ -489,7 +390,7 @@ Enter **`OMLUSER`** and the password you just created to sign in.
      ![Churn AutoML Task 3 Step 3 Scoring Notebook Python 3](images/oml-churn-automl-notebook-python3.png " ")
    
     
-6. In SQL let's review the table created by Python and run a dynamic scoring with the model
+7. In SQL let's review the table created by Python and run a dynamic scoring with the model
    
     If we scroll down to the **SQL** section, we see basically two main steps. There is one paragraph that deletes a table named `LATEST_POTENTIAL_CHURNERS` if it exists (in case we wanted to experiment later with SQL).
     
@@ -537,12 +438,8 @@ You now have deployed a new table called `LATEST_POTENTIAL_CHURNERS` containing 
 
 Now other professionals can take advantage of both the deployment you have just made in order to contact the customers at risk with an offer, as well as use your SQL Scoring code to put the model into production and run the scoring in batch every time there is a new refresh of the data, be it hourly, daily, weekly, or monthly.
 
-<if type="livelabs">
 ## Task 8: Bonus content - additional model quality metrics
-</if>
-<if type="freetier">
-## Task 8: Bonus content - additional model quality metrics
-</if>
+
 <if type="ocw24sandbox">
 ## Task 6: Bonus content - additional model quality metrics
 </if>
@@ -568,12 +465,8 @@ Now other professionals can take advantage of both the deployment you have just 
 
     ![Churn AutoML Task 2 Step 5 Leader Board view metrics](images/leader-more-metrics.png " ")
 
-<if type="livelabs">
 ## Task 9: Bonus content - auto-generated OML4Py notebook
-</if>
-<if type="freetier">
-## Task 9: Bonus content - auto-generated OML4Py notebook
-</if>
+
 <if type="ocw24sandbox">
 ## Task 7: Bonus content - auto-generated OML4Py notebook
 </if>
@@ -619,12 +512,8 @@ Now other professionals can take advantage of both the deployment you have just 
    
      ![Churn AutoML Task 9 Step 7 Scoring](images/oml-churn-automl-autogenerated-score.png " ")   
 
-<if type="livelabs">
 ## Task 10: Bonus content - deploy the model to an OML Service REST endpoint
-</if>
-<if type="freetier">
-## Task 10: Bonus content - deploy the model to an OML Service REST endpoint
-</if>
+
 <if type="ocw24sandbox">
 ## Task 8: Bonus content - deploy the model to an OML Service REST endpoint
 </if>
@@ -671,7 +560,7 @@ Now other professionals can take advantage of both the deployment you have just 
 
    ![Click churn_pred](images/click-churn-pred.png " ")
 
-10. Let's now check the deployed model's **Open API Specification for CHURN_PRED**. Click the `churn_pred` in the URI column. The Open API specification contains the details about how to access the model via REST, gives the server details, and specifies the expected inputs and the output labels that it produces, as well as available options.
+10. Let's now check the deployed model's **Open API Specification for CHURN_PRED**. Click the `churn_pred` in the URI column. The Open API specification contains the details about how to access the model via REST, gives the server details, and specifies the expected inputs and the output labels that it produces, as well as available options. Close the list when you're done.
 
    ![Click URI name](images/click-uri-name.png " ")
 
@@ -697,13 +586,15 @@ Now other professionals can take advantage of both the deployment you have just 
 
 ## Acknowledgements
 * **Author:** Marcos Arancibia, Oracle Autonomous Database Product Management
-* **Contributors:** 
-    -  Mark Hornick
-    - Marty Gubar
-    - Kevin Lazarz
-    - Nilay Panchal
-    - Jayant Sharma
-    - Jie Liu
-    - Sherry LaMonica
-    - Lauran K. Serhal
+* **Contributors:** Mark Hornick, Kevin Lazarz, Nilay Panchal, Jayant Sharma, Jie Liu, Sherry LaMonica, Lauran K. Serhal
 * **Last Updated By/Date:** Lauran K. Serhal, August 2025
+
+Data about movies in this workshop were sourced from Wikipedia.
+
+Copyright (C) 2025 Oracle Corporation.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

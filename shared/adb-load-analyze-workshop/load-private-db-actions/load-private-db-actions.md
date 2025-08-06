@@ -48,7 +48,7 @@ Create a private Object Storage bucket to store your data. For more information 
 
 <if type="livelabs">
 
-1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click the **Launch OCI** button.
+1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click **Launch OCI**.
 
     ![Click the Launch OCI button.](images/click-launch-oci.png " ")
 
@@ -212,7 +212,7 @@ First, define a new **Cloud Location** to connect to the Oracle Object Storage b
 
 [](include:adb-goto-data-load-utility.md)
 
-3. In the **Data Load** main page, in the **Administration** section, click the **Connections** card.
+3. In the **Data Load** main page, click the **Connections** card.
 
     ![Click the Cloud Locations card.](./images/click-connections.png " ")
 
@@ -498,7 +498,7 @@ See the documentation [Loading Data with Autonomous Database](https://docs.oracl
 ## Acknowledgements
 
 * **Authors:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, August 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
@@ -508,4 +508,4 @@ Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
