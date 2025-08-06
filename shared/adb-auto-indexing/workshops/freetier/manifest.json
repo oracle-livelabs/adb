@@ -16,7 +16,7 @@
             "title": "Lab 1: Provision an Autonomous Database Instance",
             "description": "Provision an Autonomous Database instance",
             "type": "livelabs",
-            "filename": "../../provision-adw/provision-adw.md"
+            "filename": "../../provision-adw/provision-atp.md"
         },
         {
             "title": "Lab 2: Create and Application Schema and Prepare for Auto Indexing",

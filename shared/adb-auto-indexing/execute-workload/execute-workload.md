@@ -19,6 +19,10 @@ This lab assumes you have completed the following:
 
 1. Execute a workload on the application table, AUTO\_INDEX\_TEST\_TABLE. The statements use a variety of different predicates, some of which will benefit from index access. Auto indexing tests _new_ appliation workload SQL statements as soon as possible and will not test them again for at least 30 days. To ensure that our SQL statements are tested as soon as possible (even if you have run this lab before), the PL/SQL block below generates unique SQL statements each time it is executed. It does this using a table alias name incorporating a time-stamp. Note that workload SQL statements need to be executed more than once to be considered by auto indexing.
 
+    Remember to use the script button:
+
+    ![SQL script button](./images/run-script-button3.png)
+
     ````
     <copy>
     set serveroutput on
@@ -96,4 +100,4 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 * **Author** - Nigel Bayliss, Jul 2022
-* **Last Updated By/Date** - Nigel Bayliss, Jul 2022
+* **Last Updated By/Date** - Nigel Bayliss, Jun 2025

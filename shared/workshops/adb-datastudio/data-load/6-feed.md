@@ -76,17 +76,15 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 9. Copy the generated URL of the pre-authenticated request, and paste it into a note or other file, and save it. You will need this later in the lab.
 
-  ![Screen showing the generated URL of the Pre-Authenticated Request, with the copy button highlighted](images/par-uri.png)
-
 10. Now we can upload a file into the bucket to use as the basis for the live feed configuration. Any future files that land in the bucket will need to be in the same structure. To do this, first download the following example file to your local machine:
 
   https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/custsales/custsales-2020-10.csv
 
 >**Important:** Your computer may not support downloading files to your local disk. If you are in this situation, you may be able to use another structured csv file with a header row, as this is just an example. 
 
-11. Click the **feedlab** bucket to view its details. Under **Objects**, click the **Upload** button.
+11. Click the **feedlab** bucket to view its details. Under **Objects**, click the **Upload objects** button.
 
-12. Find the **custsales-2020-10.csv** file you just downloaded to your local machine, and click the **Upload** button to upload it.
+12. Find the **custsales-2020-10.csv** file you just downloaded to your local machine, and click the **Upload objects** button to upload it.
 
 
 ## Task 2: Use Data Studio to set up a live data feed
@@ -101,7 +99,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 3. In the top left, click **Create** then select **New Cloud Store Location**
 
-4. Set up a new cloud location named **MovieSalesData**. Select the **Public Bucket** option, and paste in the URL of the pre-authenticated request you created in Task 1.
+4. Set up a new cloud location named **MOVIESALESDATA**. Select the **Public Bucket** option, and paste in the URL of the pre-authenticated request you created in Task 1.
 
   ![The Cloud Location screen, with the Public Bucket selected and the URL pasted in](images/add-feed-location.png)
 
@@ -117,7 +115,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
   ![The Create Live Table Feed button](images/create-live-feed.png)
 
-8. In the first section, **Data Source**, select the **MOVIESALESDATA** cloud store location that you just created, and specify an Object Filter of *csv as shown below. 
+8. In the first section, **Data Source**, select the **MOVIESALESDATA** cloud store location that you just created.
 
   ![The Data Source section of Live Feed configuration](images/feed-datasource.png)
 
@@ -127,7 +125,7 @@ We can see a preview of the file that we uploaded to the bucket. Click **Next** 
 
 10. Under **Preview**, we can see a preview of the target table with the data as it will be fed in. Click **Next** to continue.
 
-11. Under **Live Feed Settings**, click the option to **Enable for Notification** and ensure the option to enable for scheduling is unticked. This means that the live feed is configured to run when a notification is received from the cloud storage system that new or updated data is available, rather than scheduled to look for new or updated data on a regular basis, though both types of live feed are supported. Click **Save** to create the live feed. A dialog will be displayed asking if you want to run the live feed now. Click **No**.
+11. Under **Live Feed Settings**, click the option to **Enable for Notification** and ensure the option to enable for scheduling is unticked. This means that the live feed is configured to run when a notification is received from the cloud storage system that new or updated data is available, rather than scheduled to look for new or updated data on a regular basis, though both types of live feed are supported. Click **Create** to create the live feed. A dialog will be displayed asking if you want to run the live feed now. Click **No**.
 
 >**Note:** It is not important to click **No** here. If you clicked **Yes**, the feed will run and load the file into the table. We will then prompt the live feed to run again in the next task, by uploading another file.
 
@@ -189,9 +187,7 @@ To trigger the live table feed, we simply need to upload another csv file into t
 
 >**Important:** Your computer may not support downloading files to your local disk. If you are in this situation, you may be able to use another structured csv file with a header row, as this is just an example. 
 
-2. Then navigate back to **Object Storage - Buckets** in the OCI Console as you did in the first few steps in the lab:
-
-  ![The Storage menu, with Buckets highlighted](images/buckets.png)
+2. Then navigate back to **Object Storage - Buckets** in the OCI Console as you did in the first few steps in the lab.
 
 3. Select your compartment, if not selected already, and click the **feedlab** bucket
 
@@ -199,13 +195,15 @@ To trigger the live table feed, we simply need to upload another csv file into t
 
 4. Under **Objects**, click the **Upload** button.
 
-5. Find the **custsales-2020-11.csv** file you just downloaded to your local machine, and click the **Upload** button to upload it.
+5. Find the **custsales-2020-11.csv** file you just downloaded to your local machine, and click the **Upload objects** button to upload it.
 
 6. Now go back to the Database Actions launchpad, click the **Data Load** card, and select **Feed Data** to view the details of your live feed. The live feed should now show as active. If it does not, click on the Refresh button in the top right, or wait 30 seconds.
 
   ![The live feed showing as active](images/active-livefeed.png)
 
-7. We can now see that over 2m rows have been loaded into the **MOVIESALESDATA** table. Click the live feed, and select **Job Report** to see details.
+>**Note:** If the Live Feed shows a warning icon that it has not been confirmed yet, click the menu option and **Show Confirmation URL**, then click the confirmation URL to confirm the subscription. This will ensure the Live Feed subscription is confirmed.
+
+7. We can now see that over 2m rows have been loaded into the **MOVIESALESDATA** table. Click the live feed to see details.
 
 8. You should now see a preview of the data that has been loaded from the uploaded csv file. Switch to the **Job Report** view from the list on the left. 
 
@@ -237,4 +235,4 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
 - Contributors - Jayant Mahto, Rick Green
-- Last Updated By - Mike Matthews, April 2024
+- Last Updated By - Mike Matthews, August 2025

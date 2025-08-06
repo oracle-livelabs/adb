@@ -25,6 +25,5 @@ Please *proceed to the next lab*.
 ## Acknowledgements
 
 - **Author** - Nilay Panchal, Oracle Autonomous Database Product Management
-- **Adapted for Cloud by** - Richard Green, Principal Developer, Database User Assistance
 - **Last Updated By/Date** - Marty Gubar, ADB PM
 - **Built with Blocks**

@@ -85,30 +85,58 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 ## Task 3: Navigate to the Data Load Page
 
 <if type="livelabs">
-1. You should be already logged in to the Console using the instructions in the **Task 1** in this lab.
+Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password. 
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**. The **Autonomous Databases** page should be displayed; however, your assigned resources for this workshop are all in your assigned LiveLabs compartment (that is displayed in the  **Reservation Information** panel) and not in the **root** tenancy. The following expected warning message is displayed.
+ ![The Reservation Information dialog box.](./images/ll-reservation-information.png =75%x*)
+</if>
 
-    ![Warning that you might get if you are in the root compartment and not in your own LiveLabs assigned compartment.](./images/wrong-compartment.png " ")
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
-3. To select your assigned LiveLabs compartment, click the **Compartment** drop-down list in the **List Scope** section on the left. Enter your LiveLabs assigned compartment name in the **Compartment** text field to search for it which should look something like **LL#####-COMPARTMENT** where the **#####** is a unique five-digit number. Alternatively, you can drill-down on the **Livelabs** node and select your assigned compartment. When your assigned compartment is displayed in the list of compartments, select it. In addition, make sure that your LiveLabs assigned region from the **Run Workshop *workshop-name*** page is selected in Console's banner.
+2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
 
-    ![The Data Catalogs page in your assigned LiveLabs compartment is displayed. The training-dcat-instance Data Catalog instance provided for you is displayed on this page.](./images/ll-select-compartment.png " ")
+<if type="livelabs">
+    > **_Important:** At the time of updating this workshop (July 15, 2025), there was a known issue with some OCI regions and using the sandbox environment reservations (the green button). The old Autonomous Databases UI (brown) page is displayed instead of the new Redwood UI page. If the new Redwood UI page is displayed in your environment, please ignore this note and continue with the note about the **Couldn't load data** error below._
 
-    >**Note:** Refer to the **Reservation Information** panel that you can access from the **Run Workshop *workshop-name*** tab for information about your assigned resources.
+    ![The old Autonomous Databases page.](images/old-adb-page.png =75%x*)
 
-    ![The LL assigned resources are displayed in the **Reservation Information** panel.](./images/ll-resources.png " ")
+    To correct this issue, simply click **Reload this page** icon in your browser. The newly designed **Autonomous Databases** page is displayed. 
+    
+    >**Note:** The **Couldn't load data** error on the page is due to being in the wrong compartment. You will learn how to navigate to your assigned compartment next. 
 
-4. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-    ![On the Autonomous Databases page, the Autonomous Database that is assigned to your LiveLabs workshop reservation is displayed.](./images/ll-adb-page.png " ")
+    ![Forbidden error.](images/forbidden-error.png =75%x*)
 
-5. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
+    OCI resources are organized into compartments. To navigate to your assigned sandbox reservation compartment, click the **Compartment** field. Next, enter your assigned compartment name (or partial name) from the **Reservation Information** page in the **Compartment** text box. Once your assigned compartment is displayed in the drop-down list under the **`Livelabs`** node, click it.
+    
+    ![Select your assigned compartment.](images/ll-select-compartment.png =65%x*)
 
-    ![The Database Actions button is highlighted.](./images/ll-click-db-actions.png " ")
+    >**Note:** For more details on finding your assigned resources in your reservation such as the username, password, compartment and so on, review the **Get Started with LiveLabs** lab in the Navigation menu on the left.
 
-6. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
+    
+</if>
+
+3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+
+    <if type="freetier">
+    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png =75%x*)
+    </if>
+
+    <if type="livelabs">
+    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png =75%x*)
+
+    >**Note:** Since you are using a Sandbox environment, an ADB instance was created for you. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database display name are displayed.
+
+    </if>
+
+4. On the **ADW-Data-Lake** Autonomous Database page, click the **Database actions** drop-down list, and then click **Data Load**.
+
+    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+
+5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
     ![The Data Load Home page is displayed.](./images/data-load-home.png " ")
+
+    >**Note:** You can close the **No Credential and AI Profile Found** section.
+
 </if>
 
 <if type="freetier">
@@ -127,13 +155,16 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
     ![The Data Load Home page is displayed.](./images/data-load-home.png " ")
+
+6. Close the **No Credential and AI Profile Found** section. Click the **X** control.
+
 </if>
 
 ## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
 
 In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous Database instance.
 
-1. On the **Data Load** page, click the **LOAD DATA** card.
+1. On the **Data Load** page, click the **Load Data** card.
 
 2. On the **Load Data** page, the **Local File** button is selected by default. In the **Load data from local files** section, you can either drag and drop files to upload, or click **Select Files** to select the files to upload. Click **Select Files**.
 
@@ -144,8 +175,6 @@ In this task you will load the two .csv files that you downloaded earlier into t
     ![Select the two files.](./images/open-dialog-box.png " ")
 
     >**Note:** If you have an issue uploading both files simultaneously, you can select one file at a time. Select the first downloaded file using step 3. When the file is uploaded, click the **Select Files** icon on the **Load Data** page, and then select the second file.
-
-    ![Select the one file at a time.](./images/select-second-file.png " ")
 
 4. When the upload is complete, you will make a small change to the default table name that will be created for the **`customer-extension.csv`** file. Click the **Settings** (pencil) icon to the right of **`customer-extension.csv`**.
 
@@ -161,7 +190,9 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
 7. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
 
-    ![Run the data load.](./images/click-start.png " ")
+    ![Click Start to run the data load.](./images/click-start.png " ")
+
+    ![Click run.](./images/click-run.png =65%x*)
 
 8. After the load job is completed, make sure that the data load card has the copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
 
@@ -194,7 +225,7 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

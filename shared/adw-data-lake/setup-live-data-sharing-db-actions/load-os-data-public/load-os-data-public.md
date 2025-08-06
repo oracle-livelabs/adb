@@ -31,9 +31,11 @@ In this lab, you will:
 
 In this task, you will load the **customer\_contact** data into your Autonomous Database instance and then create a table.
 
-1. On the **Data Load** page, click the **LOAD DATA** card.
+1. On the **Data Load** page, click the **Load Data** card.
 
     ![Select Link Data and Cloud Store.](images/click-data-load-card.png " ")
+
+    >**Note:** Close the **X** control to close the **No Credential and AI Profile Found** section.
 
 2. On the **Load Data** page, click the **Cloud Store** tab.
 
@@ -53,19 +55,17 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
     ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
 
-5. Drag the **customer\_contact** folder and drop it onto the data loading job section.
+5. Drag the **`customer_contact`** folder and drop it onto the data loading job section.
 
     ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
 
 6. A **Load to Single Target Table** dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**. If you receive a warning, close the message box.
 
-    ![Click yes to load objects to a single table.](images/load-to-single-table.png =60%x*)
-
-    The **customer\_contact** target table to be created for the selected `.csv` file is displayed in the data loading job section.
+    The **`customer_contact`** target table to be created for the selected `.csv` file is displayed in the data loading job section.
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png " ")
 
-7. Click the **Settings** icon (pencil) for the **customer\_contact** load task to view its settings. The **Load Data from Cloud Store Location customer_contact** settings panel is displayed.
+7. Click the **Settings** icon (pencil) for the **`customer_contact`** load task to view its settings. The **Load Data from Cloud Store Location customer_contact** settings panel is displayed.
 
     ![Click the pencil icon to open settings viewer for customer_contact load task](images/click-pencil.png " ")
 
@@ -77,7 +77,9 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
 9. Click **Start** to run the data load job. In the **Start Load from Cloud Store** dialog box, click **Run**.
 
-    ![Run the data load job](images/run-data-load.png)
+    ![Click Start](images/run-data-load.png)
+
+    ![Click Run](images/click-run.png)
 
 10. After the load job is completed, make sure that the data load card has the copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
 
@@ -95,11 +97,11 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
     ![View customer_contact data](images/preview-customer-contact-table.png)
 
-14. Click **Close** to exit the **customer_contact** task preview and return to the load data dashboard.
+14. Click **Close** to exit the **`customer_contact`** task preview and return to the load data dashboard.
 
      ![Click Close.](images/data-load-displayed.png)
 
-15. Click **Query** to query the newly created **CUSTOMER_CONTACT** table.
+15. Click **Query** to query the newly created **`CUSTOMER_CONTACT`** table.
 
 16. Close any informational boxes that are displayed, and then click **Run**. The query result is displayed. Click **Save** to save the query if you like.
 
@@ -121,11 +123,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer
 * **Contributors:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, December 2024
+* **Last Updated By/Date:** Lauran Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024, Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

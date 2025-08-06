@@ -26,7 +26,7 @@ In this lab, you will:
 
 ## Task 1: Navigate to Data Share
 
-1. Make sure you are still logged in as the **share_provider** user. Click **Oracle Database Actions | Launchpad** in the banner to display the **Database Actions Launchpad** page.
+1. Make sure you are still logged in as the **share_provider** user. Click **Oracle Database Actions** in the banner to display the **Database Actions Launchpad** page.
 
     ![Click the banner.](./images/click-banner.png " ")
 
@@ -72,7 +72,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
     * **Email:** Enter the email address for the provider such as **`training_share@outlook.com`**.
     * **Description:** Enter a meaningful description of the provider (_required_).
 
-    ![The General tab.](./images/general-tab.png " ")
+    ![The General tab.](./images/provider-information.png " ")
 
 4. Click **Save**. The **Provide Share** page is re-displayed. Initially, there are no data shares or recipients.
 
@@ -86,7 +86,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
     ![The general page.](./images/wizard-general.png " ")
 
-7. On the **Publish Details** page, select the **DELTA\_SHARE\_STORAGE** credential that you created in the previous lab from the drop-down list, and then click **Next**.
+7. On the **Publish Details** page, select the **`DELTA_SHARE_STORAGE`** credential that you created in the previous lab from the drop-down list, and then click **Next**.
 
     ![The publish details page.](./images/wizard-publish-details.png " ")
 
@@ -108,7 +108,7 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
 11. In the **User token lifetime** section, modify the **TOKEN_LIFETIME** for the **`training_user`** recipient to **90** days. This property specifies for how long the generated token will be valid after which the recipient loses access to the data share and must request a new token. Enter **90** in the first text field. Select **Days** from the drop-down menu. Next, click **Create** to create the new recipient.
 
-    ![Create the new recipient.](images/click-create-recipient.png =50%x*)
+    ![Create the new recipient.](images/click-create-recipient.png =65%x*)
 
 12. The new recipient is displayed in the **Create Share** page.
 
@@ -116,13 +116,17 @@ As the **`share_provider`** user, create a new data share named **`training_shar
 
 _Next, you will learn how to get the activation link that the recipient will need using two methods. In this lab, you'll use the activation link that is generated using the **second method**._
 
-13. **Method 1:** Click the **Email recipient profile download link** icon to email the activation link to the recipient. 
+**Method 1**
+
+13. Click the **Email recipient profile download link** icon to email the activation link to the recipient. 
+
+    ![Click email recipient](images/email-recipient.png =70%x*)
 
     >**Note:** You can also click the **Copy Profile activation link to clipboard** icon as a backup in case the user didn't get the email.
 
     ![Copy activation link to clipboard.](images/copy-activation-link-clipboard.png =70%x*)
 
-14. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Next, you would cClick **Send** to send the email to the recipient. _**Don't click the Send button. You will use the activation link generated using the second method next.**_
+14. An email message that will be sent to the recipient is automatically generated and displayed. This email message contains the _personal authorization profile_ (activation link) URL that the recipient will use to download the **`delta_share_profile.json`** configuration file. This file is required to access the data share in the next lab. In our example, we are using Microsoft Outlook as the email client. Next, you would click **Send** to send the email to the recipient. _**Don't click the Send button. You will use the activation link generated using the second method next.**_
 
     ![Click send email.](images/activation-email.png)
 
@@ -133,6 +137,10 @@ _Next, you will learn how to get the activation link that the recipient will nee
 15. In the **Create Share** wizard, click **Create** to create and publish the data share. The **Provide Share** page is displayed. Two information boxes are displayed briefly to indicate that the share is created and that publishing is in progress. The **training_share** is displayed along with its details such as the entity type, owner, shared objects, and the recipients. Note the status of the share is **Unpublished**. It will take a few minutes to publish it depending on the size of the table in the share.
 
     ![The data share is created.](images/share-created.png)
+
+    If you click the **Reload** icon, the status of the publishing will be **share**, `share publish in process`.
+
+    ![Share publish in process.](images/share-publish-in-process.png)
 
 16. After a few minutes, click the **Reload** icon to refresh the page. The status of the **training_share** is now **Published**.
 
@@ -146,7 +154,9 @@ _Next, you will learn how to get the activation link that the recipient will nee
 
     ![Versioned share type.](images/versioned-share-type.png)
 
-18. **Method 2:** In the **TRAINING_RECIPIENT** tile, click the **Actions** (ellipsis) icon and then select **Copy Profile Activation Link to Profile**. This is the activation link that the recipient will use. Save this activation link to a text editor of your choice as you will need it in the next lab.
+**Method 2**
+
+18. In the **TRAINING_RECIPIENT** tile, click the **Actions** (ellipsis) icon and then select **Copy Profile Activation Link to Profile**. This is the activation link that the recipient will use. Save this activation link to a text editor of your choice as you will need it in the next lab.
 
     ![Method 2 activation link.](images/method2-activation-link.png)
 
@@ -164,11 +174,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, December 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024, Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

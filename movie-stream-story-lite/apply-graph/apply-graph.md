@@ -72,7 +72,7 @@ In this lab, you will use the Graph Studio feature of Autonomous Database to:
 ## Learn more
 
 * [LiveLabs](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=758&clear=180&session=900372122498)
-* [Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/graph-studio.html)
+* [Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/graph-autonomous-database.html)
 * [Get Started](https://www.oracle.com/autonomous-database/graph/get-started/)
 * [Webpage](https://www.oracle.com/database/graph/)
 

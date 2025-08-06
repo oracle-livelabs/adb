@@ -37,7 +37,7 @@ In this lab, you will:
 
 ## Task 2: Load Data from a Public Object Storage Bucket and Create Tables
 
-In this task, you will load data from files in a public storage bucket and create the following tables in your Autonomous Database instance: **customer\_contact**, **genre**, **pizza\_locations**, and **sales\_sample**.
+In this task, you will load data from files in a public storage bucket and create the following tables in your Autonomous Database instance: **`customer_contact`**, **`genre`**, **`pizza_locations`**, and **`sales_sample`**.
 
 [](include:adb-load-public-db-actions.md)
 
@@ -50,7 +50,7 @@ You may now **proceed to the next lab**.
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
 * **Contributor:** Rick Green, Database User Assistance
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

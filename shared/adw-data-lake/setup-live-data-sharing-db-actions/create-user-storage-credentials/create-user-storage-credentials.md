@@ -1,4 +1,4 @@
-# Create a Share Provider User and an OCI Credential
+# Create Users and an OCI Credential
 
 ## Introduction
 
@@ -20,17 +20,37 @@ As an **`admin`** user, you will do the following:
 
 ## Task 1: Navigate to the Database Actions Launchpad
 
-<if type="livelabs">
-Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password.
-</if>
-
 <if type="freetier">
 After you provisioned an ADB instance in the **Set up the Workshop Environment** lab, the **Autonomous Database details** page was displayed. If the page is active, start with **step 4** below. If the page had timed out, start with **step 1** below.
 </if>
 
-1. Log in to the **Oracle Cloud Console**, if you are not already logged in.
+<if type="livelabs">
+Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password. 
+
+ ![The Reservation Information dialog box.](./images/ll-reservation-information.png =65%x*)
+</if>
+
+1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
 2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+
+<if type="livelabs">
+    > **_Important: At the time of updating this workshop (July 17, 2025), there is a known issue with OCI and using the sandbox environment reservations (the green button). The old Autonomous Databases UI page is displayed instead of the new Redwood UI page._**
+
+    ![The old Autonomous Databases page.](images/old-adb-page.png =65%x*)
+
+    To correct this issue, simply click **Reload this page** icon in your browser. The newly designed **Autonomous Databases** page is displayed. 
+    
+    >**Note:** The **Couldn't load data** error on the page is due to being in the wrong compartment. You will learn how to navigate to your assigned compartment next. 
+
+    ![Forbidden error.](images/forbidden-error.png =65%x*)
+
+    OCI resources are organized into compartments. To navigate to your assigned sandbox reservation compartment, click the **Compartment** field. Next, enter your assigned compartment name (or partial name) from the **Reservation Information** page in the **Compartment** text box. Once your assigned compartment is displayed in the drop-down list under the **`Livelabs`** node, click it.
+    
+    ![Select your assigned compartment.](images/ll-select-compartment.png =65%x*)
+
+    >**Note:** For more details on finding your assigned resources in your reservation such as the username, password, compartment and so on, review the **Get Started with LiveLabs** lab in the Navigation menu on the left.
+</if>
 
 3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
     
@@ -40,9 +60,8 @@ After you provisioned an ADB instance in the **Set up the Workshop Environment**
 
     <if type="livelabs">
     ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
-    </if>
 
-    >**Note:** If you get a _Forbidden_ message on the **Autonomous Databases** page, that indicates that you are in the wrong compartment. Refer to the **Reservation Information** panel for your reservation and make a note of your assigned compartment. Next, on the same page, click the **Compartment** drop-down list in the **Scope** section, and selected your assigned compartment.
+    </if>
 
 4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **View all database actions**.
 
@@ -73,11 +92,12 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
     * **User Name:** `SHARE_PROVIDER`
     * **Password:** `DataShare4ADW`
     * **Quota on tablespace data:** `UNLIMITED`
-    * **Web Access:** Enable this field
+    * **REST, GraphQL, MongoDB API, and Web access:** Enable this slider.
+    * **Web access advanced features:** Drill-down on this field and make sure the **Authorization required** slider is enabled.
     
         ![The User tab.](./images/user-tab.png " ")
 
-3. Click the **Granted Roles** tab. In the **Filter by role** field, enter **`dwrole`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
+3. Click the **Granted Roles** tab. In the **Search for role** field, enter **`dwrole`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
 
     ![The Granted Roles tab.](./images/granted-roles-tab.png " ")
 
@@ -122,11 +142,12 @@ Create a new consumer user named **`share_consumer`**.
     * **User Name:** `SHARE_CONSUMER`
     * **Password:** `DataShare4ADW`
      * **Quota on tablespace data:** `UNLIMITED`
-    * **Web Access:** Enable this field
+    * **REST, GraphQL, MongoDB API, and Web access:** Enable this slider.
+    * **Web access advanced features:** Drill-down on this field and make sure the **Authorization required** slider is enabled.
    
         ![The User tab.](./images/share-consumer-user-tab.png " ")
 
-4. Click the **Granted Roles** tab. In the **Filter by role** field, enter **`dwrole`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
+4. Click the **Granted Roles** tab. In the **Search for role** field, enter **`DWROLE`**. The **DWROLE** row is displayed. Select the **Granted** and **Default** checkboxes.
 
     ![The Granted Roles tab.](./images/share-consumer-granted-roles-tab.png " ")
 
@@ -156,11 +177,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, December 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2024, Oracle Corporation.
+Copyright (C) 2025, Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

@@ -1,23 +1,26 @@
 # Oracle Database Actions
 
 ## Introduction
+
 Database Actions brings you your favorite Oracle Database desktop tool’s features and experience to your browser! Delivered as a single-page web application, Database Actions is powered by Oracle REST Data Services (ORDS). Database Actions offers, a worksheet for running queries and scripts, the ability to manage and browse your data dictionary, a REST development environment for your REST APIs and AUTOREST enabled objects, an interface for Oracle’s JSON Document Store (SODA), a DBA console for managing the database, a data model reporting solution, and access to PerfHub.
 
-Database Actions provides a web-based interface with development, data tools, administration, monitoring, and download features for Autonomous Database. 
+Database Actions provides a web-based interface with development, data tools, administration, monitoring, and download features for Autonomous Database.
 
 The following table lists the main features of Database Actions.
 
-![Database actions features](./images/database-actions-features.png " ") 
+![Database actions features](./images/database-actions-features.png " ")
 
 Estimated Time: 15 minutes
 
 ### Objectives
 
 As a database admin or user:
+
 1. Provision a Windows Compute VM in Google Cloud.
 2. Access Database Actions under Autonomous Database.
 
 ### Required Artifacts
+
 - Access to a pre-provisioned Autonomous Database instance.
 
 ## Task 1: Provision Windows Compute VM instance in Google Cloud
@@ -32,20 +35,20 @@ As a database admin or user:
 
 3. Under **Machine configuration** enter the following -
 
-    * **Name** - windows-instance
-    * **Region** - us-east4
-    * Leave the rest as default.
+    - **Name** - windows-instance
+    - **Region** - us-east4
+    - Leave the rest as default.
 
     ![Compute VM](./images/compute-win-machine-config.png " ")
 
-5.  Click **OS and storage** on the left tab and click **Change** to change the Operating System to Windows. Under the drop down for **Operating system** select **Windows Server**. Leave others as default.
+4. Click **OS and storage** on the left tab and click **Change** to change the Operating System to Windows. Under the drop down for **Operating system** select **Windows Server**. Leave others as default.
 
     ![Compute VM](./images/os-win-machine-config.png " ")
 
-6.  Click **Networking** on the left tab and enter the following -
+5. Click **Networking** on the left tab and enter the following -
 
-    * **Allow HTTP traffic** - Checkmark
-    * **Allow HTTPS traffic** - Checkmark
+    - **Allow HTTP traffic** - Checkmark
+    - **Allow HTTPS traffic** - Checkmark
 
     ![Compute VM](./images/compute-vm-networking.png " ")
 
@@ -55,30 +58,30 @@ As a database admin or user:
 
     Enter the following under **Edit network interface**
 
-    * **Network** - app-network
-    * **Subnetwork** - public-subnet
+    - **Network** - app-network
+    - **Subnetwork** - public-subnet
 
     ![Compute VM](./images/compute-vm-network-config.png " ")
 
-7.  Click **Security** on the left tab and enter the following. Click **MANAGE ACCESS** and click **ADD ITEM** under **Add manually generated SSH keys**. Enter the public ssh key. Click **CREATE** to create the VM instance.
+6. Click **Security** on the left tab and enter the following. Click **MANAGE ACCESS** and click **ADD ITEM** under **Add manually generated SSH keys**. Enter the public ssh key. Click **CREATE** to create the VM instance.
 
     ![Compute VM](./images/compute-vm-ssh-create.png " ")
 
-8.	The created VM instance will show up on the **VM instances** page -
+7. The created VM instance will show up on the **VM instances** page -
 
     ![Compute VM](./images/compute-win-instance.png " ")
 
-9. Set the Windows VM login password by clicking on **Set Windows password**.
+8. Set the Windows VM login password by clicking on **Set Windows password**.
 
     ![Compute VM](./images/set-win-pass.png " ")
 
-10. RDP to the VM instance using the External IP address and login using the username and password set in above step.
+9. RDP to the VM instance using the External IP address and login using the username and password set in above step.
 
     We will use this Windows Compute VM to launch **Autonomos Database** - **Database Actions**.
 
 ## Task 2: Oracle Database Actions Overview
 
-You can access Database Actions from Autonomous Database. Database Actions provides development tools, data tools, administration, and monitoring features for Autonomous Database. Using Database Actions you can run SQL statements, queries, and scripts in a worksheet. 
+You can access Database Actions from Autonomous Database. Database Actions provides development tools, data tools, administration, and monitoring features for Autonomous Database. Using Database Actions you can run SQL statements, queries, and scripts in a worksheet.
 
 To launch Database Actions:
 
@@ -124,7 +127,7 @@ To launch Database Actions:
 
     The Data Studio comprises of the Data Load, the Data Analysis, the Data Insights, Catalog, Data Marketplace and the Data Share tool.
 
-    The Data Studio Tools enables you to load data from cloud and other diverse sources, analyzes it and gain insights from it. You can share the result of the analysis with other users. It is a one-stop application of your analytics tool from multiple data sources. This tool makes sure that there is seamless transition between different applications. The multiple ways of navigation do not impact the progress of your work. For instance, if you are working on data analysis and decide you need some additional data, you can navigate to the Data Load page, bring in the new contents, and return to your analysis in progress. 
+    The Data Studio Tools enables you to load data from cloud and other diverse sources, analyzes it and gain insights from it. You can share the result of the analysis with other users. It is a one-stop application of your analytics tool from multiple data sources. This tool makes sure that there is seamless transition between different applications. The multiple ways of navigation do not impact the progress of your work. For instance, if you are working on data analysis and decide you need some additional data, you can navigate to the Data Load page, bring in the new contents, and return to your analysis in progress.
 
 10. Click **Data Load** to go to the **Data Load** page which lists various options to load data into the Autonomous Database.
 
@@ -146,9 +149,9 @@ To launch Database Actions:
 
     From the **Downloads** page you can -
 
-    * Download Oracle Instant Client
-    * Download SODA Drivers
-    * Download Microsoft Excel/Google Sheets add-in
+    - Download Oracle Instant Client
+    - Download SODA Drivers
+    - Download Microsoft Excel/Google Sheets add-in
 
 14. Click **Database actions** to go back to the **Database actions** main page and click **Monitoring**.
 
@@ -167,7 +170,7 @@ To launch Database Actions:
     ![Table details](./images/related-services.png " ")
 
     SODA - Oracle REST Data Services (ORDS) provides HTTPS interfaces for working with the contents of your Oracle Database in one or more REST enabled schemas.
-    
+
     Oracle Machine Learning RESTful services -  Oracle Machine Learning provides REST APIs for OML4Py Embedded Python Execution and OML Services.
 
 17. Click **Open** and **Copy** the URL.
@@ -181,5 +184,6 @@ To launch Database Actions:
     Refer [Developing RESTful Services in Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/ords-autonomous-database.html) for more details.
 
 ## Acknowledgements
+
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
 - **Last Updated By/Date** - Vivek Verma, Jan 2025

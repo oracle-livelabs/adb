@@ -50,13 +50,13 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
 In this task, you will link to data and create the following external tables in your Autonomous Database instance: **`customer_contact`**, **`pizza_locations`**, and **`sales_sample`**.
 
-1. On the **Data Load Dashboard**, click the **LINK DATA** tile.
+1. On the **Data Load Dashboard**, click the **Link Data** tile.
 
     ![Click Link Data.](images/click-link-data.png)
 
 2. On the **Link Data** page, the **Cloud Store** tab is selected by default.
 
-    ![Select Link Data and Cloud Store.](images/link-data-page.png)
+    ![Select Link Data and Cloud Store.](images/link-data-page.png " ")
 
 3. Copy the following object storage URL and paste it in the **Select Cloud Store Location or enter public URL** field. The **`moviestream_landing`** Oracle Object Storage bucket that contains the data is located in a different tenancy than yours, **c4u04**; therefore, you will use the following URL.
 
@@ -70,17 +70,17 @@ In this task, you will link to data and create the following external tables in 
 
 4. A list of the folders in the selected Object Storage bucket is displayed on left side section of the page. You can drag and drop the desired folders from this public bucket from this section to the data linking job section on the right.
 
-    ![The Load Cloud Object page appears](images/bucket-folders-displayed.png)
+    ![The Load Cloud Object page appears](images/bucket-folders-displayed.png " ")
 
 5. Drag the **`customer_contact`** folder and drop it onto the data linking job section.
 
-    ![Drag the customer_contact folder](images/drag-drop-customer-contact.png)
+    ![Drag the customer_contact folder](images/drag-drop-customer-contact.png " ")
 
 6. A **Link to Single Target Table** dialog box is displayed to prompt you whether or not you want to link all objects in this folder matching **.csv** to a single target table. This folder contains a single file, `customer-contact.csv`. In general, data lake folders contain many files of the same type, as you will see with sales data. Click **Yes**.
 
-    ![Click yes to load objects to a single table.](images/link-to-single-table.png =60%x*)
-
     The **`customer_contact`** target table to be created for the selected `.csv` file is displayed in the data linking job section.
+
+    >**Note:** If you get a warning, ignore it.
 
     ![The customer_contact target table is displayed.](images/customer_contact-target-table.png)
 
@@ -100,15 +100,19 @@ In this task, you will link to data and create the following external tables in 
 
 10. Click the **Settings** icon (pencil) for the **`sales_sample`** link task to view its settings.
 
-    ![View the sales-sample load task settings.](images/sales-sample-preview.png =60%x*)
+    ![View the sales-sample load task settings.](images/sales-sample-preview.png =65%x*)
 
-11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **SALES_SAMPLE** to **CUSTSALES_EXT**. Next, click **Close**.
+11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **`SALES_SAMPLE`** to **`CUSTSALES_EXT`**. Next, click **Close**.
 
     ![Update table name](images/change-target-table-name.png)
 
 12. Click **Start** to run the data link job. In the **Start Link From Cloud Store** dialog box, click **Run**.
 
-    ![Run the data load job](images/run-data-link.png)
+    ![Run the data load job](images/click-start.png " ")
+
+    In the **Start Link From Cloud Store** dialog box, click **Run**.
+
+    ![Run the data load job](images/click-run.png)
 
     > **Note:** The link job can take about 2 minutes to complete.
 
@@ -206,7 +210,7 @@ You may now proceed to the next lab.
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, April 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

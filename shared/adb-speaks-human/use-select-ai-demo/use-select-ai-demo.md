@@ -15,7 +15,7 @@ Watch the video below for a detailed walk-through of using the Oracle APEX-based
 ### Objectives
 
 In this lab, you will:
-* As the `moviestream` user, access the **Select AI demo** application using the URL that you saved in a text editor file in **Lab 1 > Task 2 > Step 6**. If you didn't save the URL, refer to **Lab 1 > Task 2** to find it using the **Outputs** link in the **Resources** section on the **Job details** page.
+* As the `moviestream` user, access the **Select AI demo** application using the URL that you saved in a text editor file in **Lab 1 > Task 3 > Step 8**. If you didn't save the URL, refer to **Lab 1 > Task 3** to find it using the **Outputs** link in the **Resources** section on the **Job details** page.
 * Ask natural questions with the **Select AI demo** application.
 
 ### Prerequisites
@@ -23,21 +23,21 @@ In this lab, you will:
 
 ## Task 1: Access the Select AI Demo Application
 
-1. Copy the **Select AI demo** application URL that you saved in a text editor.
+1. Copy the URL for the **Select AI demo** application that you saved in a text editor in Lab 1.
 
     ![Copy the URL value](./images/demo-credentials-file.png =65%x*)
 
-    Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **ChatDB** page, enter the username (`moviestream`) and password that you saved in your text editor file, and then click **Sign In**.
+    Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **ADB Chat** page, enter the username (`moviestream`) and password that you saved in your text editor file, and then click **Sign In**.
 
     ![Enter ChatDB credentials](./images/ai-select-credentials.png =70%x*)
 
-2. On the **ChatDB** page, select a profile that you want to use from the **Service** drop-down list. In this workshop, select the **`OPENAI_GPT35`** profile that was created in the **Create credential and AI profile** paragraph in the notebook that you imported in the **Lab 3**.
-
-    ![Select AI profile](./images/select-profile.png =70%x*)
-
-    The ChatDB application is displayed. You are now ready to ask questions at the **Ask a question** prompt!
+2. The **AI Settings** window in the **ADB Chat** application is displayed. Select a profile that you want to use. Click the **Choose subject areas** drop-down list, and select the **`GENAI [1]`** profile. This profile was created in the **Create credential and AI profile** paragraph in the notebook that you imported in **Lab 3**. Next, click the **X** control.
 
     ![Select AI application displayed](./images/select-ai-application.png =70%x*)
+
+    The ADB Chat application is re-displayed. You are now ready to ask questions at the **Ask a question** prompt!
+
+    ![Select AI application displayed](./images/select-ai-demo.png =70%x*)
 
 ## Task 2: Ask Natural Language and Database Questions Using the Application
 
@@ -71,7 +71,7 @@ Let's experiment a bit with both general data from the `internet` and also from 
 
    ![How to make french toast answer](./images/french-toast-answer.png =70%x*)
 
-2. Let's find out the top 10 streamed movies in the moviestream company. Enter your question using a free form format in the **Ask a Question** text box, and select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
+2. Let's find out the top 10 streamed movies in the moviestream company. Click the **Clear** icon in the banner to clear the last question and answer. Enter your question using a free form format in the **Ask a Question** text box, and select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 
     ![Top 10 streamed movies](./images/top-10-movies.png =70%x*)
 
@@ -79,11 +79,15 @@ Let's experiment a bit with both general data from the `internet` and also from 
 
     ![Top 10 streamed movies result](./images/top-10-movies-result.png =70%x*)
 
-3. Click the **Explain** link to view and explain the SQL query behind this natural language question.
+3. Click the **Explain** button to view and explain the SQL query behind this natural language question.
 
   ![View and explain query](./images/explain-query-1.png =70%x*)
 
-  When you finish, click the **Close SQL** icon (left arrow) to return to the Home page. Click the **Explore** link to display the **Explore** page.
+  When you finish, click the **Close SQL** icon (left arrow) to return to the Home page. Click the **Explore** button.
+
+  ![Click Explore](./images/click-explore.png =70%x*)
+  
+  The **Explore** page is displayed.
 
   ![The Explore page](./images/explore-page.png =70%x*)
 
@@ -104,7 +108,7 @@ You may now proceed to the next lab.
   * **Authors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, March 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

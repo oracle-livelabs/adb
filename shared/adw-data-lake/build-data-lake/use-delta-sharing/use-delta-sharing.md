@@ -57,39 +57,22 @@ This lab requires the completion of **Lab 1**: Set up the Workshop Environment >
 
 ## Task 2: Navigate to Data Share
 
-Navigate to the **Launchpad** page to access Data Sharing as follows:
-
-1. Navigate to your **Autonomous Databases** page.
-
-<if type="livelabs">
-2. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
-</if>
-
-<if type="freetier">
-2. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-</if>
-
-3. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **View all database actions**.
-
-  ![Navigate to the Launchpad page.](./images/navigate-launchpad.png " ")
-
-  The **Launchpad** page is displayed.
-
-  ![Navigate to the Launchpad page.](./images/launchpad.png " ")
-
-4. Click the **Data Studio** tab, and then click the **Data Share** tab.
+1. Navigate to the **Launchpad** page to access Data Sharing. Click the **Data Studio** tab, and then click the **Data Share** tab.
 
     ![Navigate to Data Share.](./images/navigate-data-share.png " ")
 
-5. On the **Data Share** page, click **Enable Sharing**.
+2. On the **Data Share** page, click **Enable Sharing**.
 
     ![Enable Data Share.](./images/enable-sharing.png " ")
 
-6. In the **Enable Sharing** dialog box, click the **`ADMIN`** schema in the **Available Schemas** section, and then click the **>** (Select) button to add the selected schema to the **Selected Schemas** section. Click **Save**.
+3. In the **Enable Sharing** dialog box, click the **`ADMIN`** schema in the **Available Schemas** section, and then click the **>** (Select) button to add the selected schema to the **Selected Schemas** section. Click **Save**.
 
     ![Select the admin schema.](./images/select-admin-schema.png " ")
 
-    The **Data Share** page is displayed.
+4. If you get a message about the privileges being changed. Log out of the admin user and then log back in. The **Data Share** Home page is displayed.
+
+    ![Data Share Home page.](./images/data-share-home.png " ")
+
 
 ## Task 3: Consume the Data Share
 
@@ -105,9 +88,9 @@ Navigate to the **Launchpad** page to access Data Sharing as follows:
 
 3. On the **Provider Settings** page 1 of the wizard, specify the following:
 
-    * **Share Source:** Accept the default selection, **`Delta Share Provider JSON`**.
+    * **Share Source:** Accept the default selection, **`Create Share Provider`**.
     * **Share Provider JSON:** Accept the default selection, **`From File`**.
-    * **Delta Share Profile JSON:** Click this box. In the **Open** dialog box, navigate to the location where you downloaded the `open-data-sets.share` profile, select it, and then click **Open**.
+    * **Delta Share Profile JSON:** Click this box. In the **Open** dialog box, navigate to the location where you downloaded the `open-datasets.share` profile, select it, and then click **Open**.
     * **Provider Name:** Enter **`training-data-share`**.
 
       ![Complete the Subscribe to Share Provider panel.](./images/complete-subscribe-share-provider.png " ")
@@ -138,19 +121,19 @@ Navigate to the **Launchpad** page to access Data Sharing as follows:
 
     ![Click Settings.](./images/click-settings.png " ")
 
-8. Click **Start**. A **Start Link From Cloud Store** message box is displayed. Click **Run**.
+8. Click **Start**. 
 
-    ![Click Start > Run.](./images/click-start-run.png " ")
+    ![Click Start.](./images/click-start.png " ")
+
+    A **Start Link From Cloud Store** message box is displayed. Click **Run**.
+
+    ![Click Run.](./images/click-run.png " ")
 
 9. After the link job is completed, make sure that the data link card has the link icon next to it. You can click the **Report** button for this link job to view a report of the total rows processed successfully and failed for the selected table.
 
     ![Table created.](./images/table-created.png " ")
 
-10. Click the **`BOSTONHOUSING`** external table link to preview its data. Remember, the source data for this external table is the **`BOSTON-HOUSING`** data share.
-
-    ![Click the BOSTONHOUSING link.](images/click-bostonhousing.png)
-
-    The **`BOSTONHOUSING`** panel is displayed with the **Preview** tab selected by default that displays the external table's data.
+10. Click the **`BOSTONHOUSING`** external table link to preview its data. Remember, the source data for this external table is the **`BOSTON-HOUSING`** data share. The **`BOSTONHOUSING`** panel is displayed with the **Preview** tab selected by default that displays the external table's data.
 
     ![Preview BOSTONHOUSING.](images/bostonhousing-preview.png)
 
@@ -280,7 +263,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, November 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -1,4 +1,6 @@
-# Enhance Data for Analytics Using the Table AI Assist Tool
+# Analyze Data with Table AI Assist and ADB Excel Add-in
+
+>_**Important: Due to some restrictions in the LiveLabs reservation environment, you can't run the OCI Cloud Shell script that we use in this lab to create an OCI credential and an AI profile. In addition, a reservation can't guarantee a region where OCI GenAI is deployed; therefore, this lab is not a hands-on task; instead, it is a demo. You can still run this lab successfully in your own tenancy.**_
 
 ## Introduction
 
@@ -41,7 +43,7 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
 **Create the OCI Credential**
 
-1. On your **Data Load** page from the previous lab, click **Settings** in the navigation pane on the left. Initially, a **No Credential and AI Profile Found** message is displayed. You will define an OCI credential and a new AI profile in this task.
+1. On your **Data Load** page from the previous lab, click **Settings** in the navigation pane on the left. Initially, a **No Credential and AI Profile Found** message is displayed if you have not closed that section in an earlier lab. You will define an OCI credential and a new AI profile in this task.
 
     ![Data load page.](./images/data-load-page.png " ")
 
@@ -69,7 +71,7 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
     ![Cloud Shell home directory.](./images/cloud-shell-home.png " ")
 
-7. Right-click the mouse and paste the script that you copied from the earlier step on the command line prompt.
+7. Right-click the mouse and paste the script that you copied from the earlier step on the command line prompt, and then press [Enter].
 
     ![Run the script.](./images/run-script.png " ")
 
@@ -77,19 +79,41 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
     ![Reuse existing API keys and fingerprint?](./images/use-replace-api-key-fingerprint.png " ")
 
-9. Next, you are prompted if you want to run the created credential scripts on your Autonomous Database. Enter **yes**.
+9. Your native credential SQL and JSON files are created. 
+
+    ![Credentials files are created.](./images/credentials-files-created.png " ")
+
+10. Next, you are prompted if you want to generate the AI profile script. Enter **yes**. In our example, we chose option 6, **`Meta Llama 3.1`**.
+
+    ![Generate AI profile script?](./images/generate-ai-profile-script.png " ")
+
+11. A verification required prompt is displayed. Enter **yes**.
+
+    ![Verification required?](./images/verification-required.png " ")
+
+12. Since we chose option 6, `Meta Llama 3.1`, an acceptable use policy prompt is displayed. Enter **yes**. Your Generative AI model is created. 
+
+    >**Note:** If you chose another option, follow the prompts.
+
+    ![Acceptable use policy](./images/acceptable-use-policy.png " ")
+
+13. Next, you are prompted if you want to run the created credential scripts on your Autonomous Database. Enter **yes**. We chose not to reuse our existing wallet file. 
 
     ![Run scripts on your Autonomous Database?](./images/run-scripts-on-adb.png " ")
 
-10. When prompted, enter and confirm your **`admin`** user password.
+14. When prompted, enter (and confirm, if prompted) your **`admin`** user password. The following are created for you:
+    - **`table_ai_assist_cred`** OCI credential
+    - **`AI_PROFILE_META`** Generative AI profile
+
+ The script exits. The command prompt is displayed.
 
     ![Enter admin password.](./images/enter-admin-password.png " ")
 
-11. Your `table_ai_assist_cred` OCI credential is created and the script exits. The command prompt is displayed. Click the **X** control to close the Cloud Shell window.
+15. Click the **X** control to close the Cloud Shell window, and then click **Exit** when prompted.
 
-    ![OCI credential created.](./images/oci-credential-created.png " ")
+    ![OCI credential created.](./images/click-x.png " ")
 
-12. The **Create Credential** page is re-displayed. Click **Close**.
+16. The **Create Credential** page is re-displayed. Click **Close**.
 
     ![Close Create Credential page.](./images/close-credential-page.png =60%x*)
 
@@ -97,19 +121,19 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
     ![The wizard is re-displayed.](./images/no-credential-selected.png =60%x*)
 
-13. On the Data Load page, click **Settings**.
+17. On the Data Load page, click **Settings**.
 
     ![Click Settings on the Load Data page.](./images/click-settings-2.png =60%x*)
 
-14. In the Wizard, click the **Cloud Services** tab. The newly created OCI credential is displayed. Click **Check Object Store Access** to check if you have access to the object store.
+18. In the Wizard, click the **Cloud Services** tab. The newly created OCI credential is displayed (if not, select it from the drop-down list). Click **Check Object Store Access** to check if you have access to the object store.
 
     ![Click object store access.](./images/click-object-store-access.png =60%x*)
 
-15. The **Policy Check** dialog box is displayed which displays whether or not you have access to the OCI, AWS, and Azure buckets. In this example, you have access to only OCI buckets since you only created an OCI credential. Click **Close**.
+19. The **Policy Check** dialog box is displayed which displays whether or not you have access to the OCI, AWS, and Azure buckets. In this example, you have access to only OCI buckets since you only created an OCI credential. Click **Close**.
 
     ![The OCI list buckets dialog box is displayed.](./images/oci-list-buckets.png =60%x*)
 
-16. Click **Check Cloud Service Access** to check on the cloud services policy.
+20. Click **Check Cloud Service Access** to check on the cloud services policy.
 
     ![Click Check Cloud Service Access.](./images/click-cloud-service-access.png =60%x*)
 
@@ -117,9 +141,20 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
     ![The Policy Check dialog box is displayed.](images/policy-check-dialog.png =60%x*)
 
-**Create the AI Profile**
+21. Click the **AI Profile** wizard tab. The **AI Profile** page is displayed. The **`AI_PROFILE_META`** Generative AI profile that was created by the Cloud Shell script is displayed. Click **Close**.
 
-Now that you have created an OCI credential, you can create an AI profile.
+    ![The AI Profile page is displayed.](images/llama-ai-profile.png =65%x*)
+
+22. The **Table AI Assist** page is re-displayed. Notice the earlier message about `No AI Profile Found` is no longer displayed since you just created one.
+
+    ![Table AI Assist page is re-displayed.](./images/click-settings-3.png " ")
+
+
+**(Optional) Create an AI Profile Using the AI Profile Wizard Tab** 
+
+> **Note:** This section is informational only and is not required as we already have a new **`AI_PROFILE_META`** Generative AI profile that we will use in this workshop.
+
+Now that you have created an OCI credential, you can create more AI profiles.
 
 1. Click the **AI Profile** wizard tab. The **AI Profile** page is displayed.
 
@@ -245,53 +280,49 @@ Once you are satisfied with a recipe you can use it to create or replace a view,
 
     ![The Table AI Assist SQL Recipes page is displayed.](./images/table-ai-assist-recipes.png " ")
 
-2. For the **customer** table, click **+ New Recipe**. The **Edit Recipe** page is displayed. Note the **EMAIL** column that contains PII that we will correct now.
+2. For the **customer** table, click **+ New Recipe**. The **Edit Recipe** page is displayed. Note the **EMAIL** column that contains PII that we will correct now. Click the **Add Step** drop-down menu, and then select **Add or Replace Column**.
 
-    ![The Table AI Assist SQL Recipes page is displayed.](./images/edit-recipe-page.png " ")
+    ![Click the Add Step drop-down menu.](./images/click-add-step.png " ")
+    
+    The **Add Step** panel is displayed.
 
-3. Click **Add Step**. The **Add Step** panel is displayed.
+    ![The Add Step panel is displayed.](./images/add-step-panel.png " ")
 
-    ![The Add Step panel is displayed.](./images/add-step-panel.png =60%x*)
+3. You can choose any one of the prompts suggested by the tool. In the **Ask AI to generate SQL** text field, provide some natural language prompt of what you want to do such as **`The email column contains PII. Please replace everything before the @ with ***`**. Next, click **Ask AI**.
 
-4. In the **Enter a prompt in natural language or specify SQL for column** text field, provide some natural language prompt of what you want to do such as **`The email column contains PII. Please replace everything before the @ with ***`**. Next, click **Ask AI**.
+    ![Click Ask AI.](./images/click-ask-ai.png " ")
 
-    ![Click Ask AI.](./images/click-ask-ai.png =60%x*)
+    A new generated **MASKED_MAIL** column is displayed in the **Data Preview** section. The new column shows the masked PII in the email addresses. Note the generated SQL that performs this operation which you can also edit and run if you are familiar with SQL. Since you are masking the PII from the `email` column, click **Replace Column**. Click **Save**.
 
-    A new generated **EMAIL_1** column is displayed in the **Data Preview** section. The new column shows the masked PII in the email addresses. Note the generated SQL that performs this operation which you can also edit and run if you are familiar with SQL.
+    ![New column created.](./images/new-column-created.png " ")
 
-    ![New column created.](./images/new-column-created.png =60%x*)
-
-5. In this case, since you are masking the PII from the email column, select the **Replace Column** option, and then select the **email** column name from the **Column Name to Replace** drop-down list.
-
-    ![Replace email column.](./images/replace-email-column.png =60%x*)
-
-6. Click **Add Step**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added masked email column.
+4. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added masked email column.
 
     ![Click Add Step.](./images/replaced-email-column.png " ")
 
-7. Let's perform some demographics operations such as getting the birth year from the **age** column. Click **Add Step**. In the **Enter a prompt in natural language or specify SQL for column** text field, provide some natural language prompt of what you want to do such as **`birth year from the age column`**. Next, click **Ask AI**.
+5. Let's perform some demographics operations such as getting the birth year from the **age** column. Click the **Add Step** drop-down menu, and then select **Add or Replace Column**. In the **Ask AI to generate SQL** text field, provide some natural language prompt of what you want to do such as **`birth year from the age column`**. Next, click **Ask AI**.
 
-    ![birth year from the age column.](./images/birth-year.png =60%x*)
+    ![birth year from the age column.](./images/birth-year.png " ")
 
-    The new **BIRTH_YEAR** column is displayed in the **Data Preview** section. The SQL expression that was used to create this column is displayed in the **SQL** field.
+    The new **`BIRTH_YEAR`** column is displayed in the **Data Preview** section. The SQL expression that was used to create this column is displayed in the **SQL** field. Make sure that the **New Column** button is selected.
 
-8. Click **Add Step**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added **BIRTH_YEAR** column.
+6. Click **Save**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added **`BIRTH_YEAR`** column.
 
     ![Birth Year column is displayed.](./images/birth-year-column.png " ")
 
-9. Let's perform one more data preparation. Click **Add Step**. In the **Enter a prompt in natural language or specify SQL for column** text field, provide some natural language prompt of what you want to do such as **`generation name from the birth year column`**. Next, click **Ask AI**. The new **generation_name** column is displayed in the **Data Preview** section.
+7. Let's perform one more data preparation. Click the **Add Step** drop-down menu, and then select **Add or Replace Column**. In the **Ask AI to generate SQL** text field, provide some natural language prompt of what you want to do such as **`generation name from the birth year column`**. Next, click **Ask AI**. The new **generation_name** column is displayed in the **Data Preview** section. Make sure that the **New Column** button is selected.
 
-    ![generation name from the birth year column.](./images/generation-name-column.png =60%x*)
+    ![generation name from the birth year column.](./images/generation-name-column.png " ")
 
-10. Click **Add Step**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added **GENERATION_NAME** column.
+8. Click **Save**. The **Edit Recipe** page is re-displayed. Scroll to the right of the table to display the newly added **`GENERATION_NAME`** column.
 
     ![The generation_name column is displayed.](./images/generation-name-column-displayed.png " ")
 
-11. Finally, let's save the modified **customer** table as a new table named **`customer_enhanced`**. Click the **Target Type** drop-down list and select **Create Table**. Change the table name in the **Target Name** field to **`customer_enhanced`**, and then click **Create Table**.
+9. Finally, let's save the modified **`customer`** table as a new table named **`customer_enhanced`**. Click the **Target Type** drop-down list and select **Create Table**. Change the table name in the **Target Name** field to **`customer_enhanced`**, and then click **Create Table**.
 
     ![Click Create Table.](./images/click-create-table.png " ")
 
-12. A **Create Table** dialog box is displayed. Click **Yes**.
+10. A **Create Table** dialog box is displayed. Click **Yes**.
 
     ![Create Table dialog box.](./images/click-yes-dialog.png " ")
 
@@ -307,18 +338,17 @@ You can access the Data Analysis page from the Database Actions Launchpad. Click
 
 ![Access the tool from Launchpad.](./images/access-tool-launchpad.png " ")
 
-1. You can also access the Data Analysis page from the Navigation menu. Click **Analysis**.
-We will work with the **custsales** data. Click **View All** to display all the tables.
+1. You can also access the Data Analysis page from the Navigation menu. Click **Analysis**. We will work with the **`custsales`** data. Click **All** to display all the tables if not already selected.
 
     ![Click View All.](./images/click-view-all.png " ")
 
-2. Click **custsales**.
+2. Click **`custsales`**.
 
     ![Click custsales.](./images/click-custsales.png " ")
 
     A **Select Schema** informational box is displayed. Close it.
 
-3. The **custsales** query returns **`The given query has returned large data`** error in the **Query Result** section. There is a limit on displaying only one million rows in this window.
+3. The **custsales** query returns **`The given query has returned large data. Unable to process.`** error in the **Query Result** section. There is a limit on displaying only one million rows in this window.
 
     ![custsales error.](./images/custsales-error.png =65%x*)
 
@@ -340,7 +370,7 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
     ![Enable natural language query.](./images/enable-natural-language.png " ")
 
-6. Click **Select Tables** and select the **customer_enhanced**, **custsales**, and **genre** tables. Click anywhere in the SQL Editor to dismiss the list of tables.
+6. Click **Select Tables** and select the **`customer_enhanced`**, **`custsales`**, and **`genre`** tables. Click anywhere in the SQL Editor to dismiss the list of tables.
 
     ![Select tables.](./images/select-tables.png " ")
 
@@ -348,7 +378,7 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
     ![Generate query.](./images/generate-query.png " ")
 
-    The **customer_enhanced**, **custsales**, and **genre** tables were joined to generate the result. You can review the generated SQL query. You can also edit and run the query.
+    The **`customer_enhanced`**, **`custsales`**, and **`genre`** tables were joined to generate the result. You can review the generated SQL query. You can also edit and run the query.
 
     ![Results](./images/result.png " ")
 
@@ -372,9 +402,9 @@ We will work with the **custsales** data. Click **View All** to display all the 
 
     ![The named analysis is displayed.](./images/named-analysis.png " ")
 
-11. You can access your saved analyses from the **Analysis** page. Click the **Entity Type** drop-down list and select **Analysis**. Your saved analysis from the previous step is displayed. Click the **Customer Analysis** image. You can also use the **Actions** (ellipsis) icon to display the context menu.
+11. You can access your saved analyses from the **Analysis** page. Click **Customer Analysis**
 
-    ![Reuse The saved analysis.](./images/reuse-saved-analysis.png =65%x*)
+    ![Reuse The saved analysis.](./images/saved-analysis-page.png " ")
 
     The saved analysis is displayed.
 
@@ -400,7 +430,7 @@ You can install the Oracle Autonomous Database for Excel from the Microsoft AppS
 
     ![Start Excel.](./images/start-excel.png " ")
 
-    >Note: You can access the web version of Microsoft Excel with your Microsoft AppSource account using your Microsoft 365 Copilot (earlier known as MS Office) app link, https://m365.cloud.microsoft. Login with your account, and then select Excel Workbook from the Microsoft 365 Copilot home page.
+    >**Note:** You can access the web version of Microsoft Excel with your Microsoft AppSource account using your Microsoft 365 Copilot (earlier known as MS Office) app.
 
 2. From the **Home** menu, click **Add-ins** in the ribbon.
 
@@ -408,7 +438,7 @@ You can install the Oracle Autonomous Database for Excel from the Microsoft AppS
 
 3. In the Search text box, search for **Oracle Autonomous**. The **Oracle Autonomous Database** addin is displayed. Click **Add**.
 
-    ![Search for ADB addin.](./images/search-adb.png " ")
+    ![Search for ADB addin.](./images/search-adb.png =65%x*)
 
     > **Note:** You also add the Excel Add-in as follows: Click **More Add-ins** > **STORE** tab > Search for **oracle autonomous** > **Add** > **Continue**.
 
@@ -426,9 +456,9 @@ If you have installed Oracle Autonomous Database for Excel for Windows using the
 
     ![Click Add-in.](./images/click-addin-remove.png " ")
 
-2. In the **My Add-ins** dialog box, click **+ Get Add-ins**.
+2. In the **My Add-ins** dialog box, click **+ More Add-ins**.
 
-    ![Click Get Add-in.](./images/get-addin-remove.png =65%x*)
+    ![Click Get Add-in.](./images/get-addin-remove.png =60%x*)
 
 3. In the **Office Add-ins** dialog box, click the **MY ADD-INS** tab, right-click **Oracle Autonomous Database Add-in for Excel**, and then click **Remove** from the context menu.
 
@@ -481,7 +511,7 @@ To install the Oracle Autonomous Database for Excel, download the **`oracleplugi
 
     The extracted folder contains an installer file, `install.cmd`, a `manifest.xml` file, and a `readme.txt` file which contains useful information.
 
-    ![Extract files.](./images/extracted-files.png =65%x*)
+    ![Extract files.](./images/extracted-files.png " ")
 
 **Install the add-in**
 
@@ -569,7 +599,7 @@ In this task, you will learn how to import a `.JSON` connection file that you ca
 
     ![Click Download add-in.](./images/click-download-connection.png " ")
 
-    A connection file named similar to **`Excel_connection_ukgyxp2x0rqadss_admin.json`** is downloaded to your browser's **Downloads** folder. In our example, `ukgyxp2x0rqadss`is our host name.
+    A connection file named similar to **`General_connection_..._aaaaaaaah...ca.json`** is downloaded to your browser's **Downloads** folder.
 
 4. Return to your Excel Sheet. Click the **Autonomous Database** tab, and then click **Connections** from the **General Actions** section.
 
@@ -588,6 +618,18 @@ In this task, you will learn how to import a `.JSON` connection file that you ca
     An **Imported connections successfully** message is displayed.
 
     ![Import successful.](./images/import-successful.png " ")
+
+    >**Important:** If the displayed schema name is not **`admin`** as shown in the following screen capture example, you'll need to edit the name; otherwise, connecting to your ADB instance will fail. **This is a reported issue**. To correct this issue, click the **Actions** icon (three vertical dots), and then click **Edit**.
+
+    ![Wrong schema name.](./images/wrong-schema-name.png =50%x*)
+
+    Replace the string of characters in the **Schema Name** field with **`admin`**, and then click **Save**.
+
+    ![Edit schema name and save.](./images/edit-save.png =50%x*)
+
+    The correct schema name is displayed.
+
+    ![Schema name corrected.](./images/schema-name-corrected.png =50%x*)
 
 8. Click the **Actions** icon (three vertical dots) in the connection file section, then click **Connect**.
 
@@ -655,7 +697,7 @@ Now that you have a connection to your ADB instance, you will run a simple query
     * A.A. Hopeman, Consulting Software Engineer
     * Manisha Mati, Principal User Assistance Developer
     * Yossi Cohen, Principal Software Engineer
-* **Last Updated By/Date:** Lauran K. Serhal, April 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

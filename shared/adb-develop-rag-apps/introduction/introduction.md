@@ -68,7 +68,7 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar, Product Manager
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, March 2025
+* **Last Updated By/Date:** Lauran K. Serhal, May 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
