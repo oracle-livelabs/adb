@@ -23,7 +23,7 @@
           "title": "Lab 1: Set up Your Workshop Environment",
           "description":"Set up an Autonomous Database and an LLM account",
           "type": "aiw2025-sandbox",
-          "filename": "../../setup-environment/setup-environment-aiw2025.md"
+          "filename": "../../setup-environment/setup-environment.md"
         },
         {
         "title": "Lab 2: Register an Autonomous Database with Oracle Data Safe",
