@@ -113,6 +113,8 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
 
 ## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application 
 
+[](include:stacks-provision-adb-select-ai.md)
+
 You may now proceed to the next lab.
 
 ## Learn More
