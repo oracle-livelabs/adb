@@ -4,14 +4,15 @@
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
-      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "stacks-provision-adb-select-ai.md":"/common/building-blocks/tasks/stacks/provision-adb-select-ai.md"
     },
     "variables": ["./variables.json"],
     "tutorials": [
         {
           "title": "Introduction",
           "description":"Introduction to the workshop",
-          "filename": "../../introduction/introduction.md"
+          "filename": "../../introduction-aiw2025/introduction-aiw2025.md"
         },
         {
           "title": "Get started",
@@ -27,8 +28,8 @@
         {
         "title": "Lab 2: Register an Autonomous Database with Oracle Data Safe",
         "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
-        "filename": "../../register-autonomous-database/register-autonomous-database.md",
-        "type": "aiw2025-sandbox"
+        "type": "aiw2025-sandbox",
+        "filename": "../../register-autonomous-database/register-autonomous-database.md"
         },
         {
           "title": "Lab 3: Integrate OCI Generative AI with Autonomous Database",
@@ -51,14 +52,14 @@
         {
         "title": "Lab 6: Audit database activity",
         "description": "This lab shows you how to provision audit and alert policies in Data Safe.",
-        "filename": "../../audit-database-activity/audit-database-activity.md",
-        "type": "aiw2025-sandbox"
-        },
+        "type": "aiw2025-sandbox",
+        "filename": "../../audit-database-activity/audit-database-activity.md"
+         },
         {
         "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
         "description": "This lab shows you how to use SQL Firewall in Data Safe.",
-        "filename": "../../sqlfw/sqlfw.md",
-        "type": "aiw2025-sandbox"
+        "type": "aiw2025-sandbox",
+        "filename": "../../sqlfw/sqlfw.md"       
         },
         {
           "title": "Need Help?",
