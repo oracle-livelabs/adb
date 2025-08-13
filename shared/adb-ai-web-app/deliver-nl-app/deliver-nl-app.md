@@ -85,9 +85,37 @@ The app will need the root URL for your Autnomous Database instance RESTful serv
     chmod +x node_modules/.bin/react-scripts
     chmod +x generated_config.sh
     ./generated_config.sh
-    echo "Patching createEnvironmentHash.js for FIPS compliance..."
-    sed -i "s/createHash('md4')/createHash('sha256')/" node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js
-    echo "Patch complete. md4 → sha256"
+    patch_files=(
+      "node_modules/@react-native/metro-babel-transformer/src/index.js"
+      "node_modules/bl/test/test.js"
+      "node_modules/file-entry-cache/cache.js"
+      "node_modules/metro/src/Assets.js.flow"
+      "node_modules/metro-cache/src/stableHash.js.flow"
+      "node_modules/metro-cache-key/src/index.js.flow"
+      "node_modules/metro-file-map/src/lib/rootRelativeCacheKeys.js.flow"
+      "node_modules/metro-file-map/src/watchers/WatchmanWatcher.js.flow"
+      "node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js"
+      "node_modules/sockjs/lib/utils.js"
+      "node_modules/tailwindcss/src/lib/cacheInvalidation.js"
+      "node_modules/uuid/dist/esm-node/md5.js"
+      "node_modules/uuid/dist/md5.js"
+      "node_modules/websocket-driver/lib/websocket/driver/draft76.js"
+      "node_modules/workbox-build/build/lib/get-composite-details.js"
+      "node_modules/workbox-build/build/lib/get-string-hash.js"
+      "node_modules/workbox-build/src/lib/get-composite-details.ts"
+      "node_modules/workbox-build/src/lib/get-string-hash.ts"
+      "node_modules/workbox-webpack-plugin/build/lib/get-asset-hash.js"
+      "node_modules/workbox-webpack-plugin/src/lib/get-asset-hash.ts"
+    )
+    
+    # Apply patch to each file
+    for file in "${patch_files[@]}"; do
+      if [[ -f "$file" ]]; then
+        sed -i "s/createHash('md5')/createHash('sha256')/g" "$file"
+        echo "✅ Patched: $file"
+      fi
+    done
+    
     npm run deploy 
     </copy>
     ```
