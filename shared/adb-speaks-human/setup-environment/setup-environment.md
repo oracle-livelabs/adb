@@ -83,7 +83,36 @@ Create a secret key as follows:
     >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
 --->
 
-## Task 1: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application 
+## Task 1: (Optional) Create an OCI Compartment
+[](include:iam-compartment-create-body.md)
+
+## Task 2: Create Policy to Enable Access to OCI Generative AI
+
+**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
+
+Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
+
+1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
+
+2. Click **Create policy** and specify the following into the appropriate fields:
+
+    >**Note:** Slide the **Show manual editor** control to display the text field in order to paste the policy.
+
+    * **Name:** `PublicGenAI`
+    * **Description:** `Public Gen AI Policy`
+    * **Compartment:** Select your own compartment
+    * **Policy Builder:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
+    
+        > **Note:** Substitute `training-adw-compartment` in the above policy with your own compartment's name.
+
+3. Click **Create**.
+
+    ![Create policy](./images/create-policy.png "")
+    
+>**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
+
+## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application 
+
 [](include:stacks-provision-adb-select-ai.md)
 
 You may now proceed to the next lab.
@@ -98,7 +127,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Last Updated By/Date:** Lauran K. Serhal, August 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
