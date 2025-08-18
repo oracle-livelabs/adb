@@ -1,0 +1,11 @@
+{
+ "db_name": "MovieStreamWorkshop",
+    "db_display_name":"MovieStreamWorkshop",
+    "db_ocpu": "2 ECPUs",
+    "db_storage": "1 TB",
+    "db_name_livelabs": "MOVIE+your user id",
+    "db_name_livelabs_example": "MOVIE2252",
+    "db_workload_type":"Autonomous Database",
+    "oac_instance_name": "WORKSHOPADWOAC",
+    "terraform_url": "https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-devrel/terraform-oci-oracle-cloud-foundation/releases/download/v1.0.0/Deploy-ChatDB-Autonomous-Database-oci-genai-demonstration-RM.zip&zipUrlVariables=%7B%22tag%22%3A%22gen-ai%22%2C%22db_compute_count%22%3A4%2C%22db_name%22%3A%22MovieStreamWorkshop%22%7D"
+ }

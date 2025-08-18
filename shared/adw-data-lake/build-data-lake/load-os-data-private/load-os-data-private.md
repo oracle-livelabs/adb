@@ -145,6 +145,10 @@ Find the base URL of the object you just uploaded to your private Object Storage
 
 ## Task 5: Generate an RSA Key Pair and Get the Key's Fingerprint
 
+[](include:adb-generate-rsa-key-pair.md)
+
+<!-- 
+
 _**IMPORTANT:** If you already have an RSA key pair in PEM format (minimum 2048 bits) and a fingerprint of the public key, you can skip this optional task and proceed to **Task 6**. To get your user's and tenancy's OCID, see [Where to Get the Tenancy's OCID and User's OCID](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm#five); however, going through the entire task might be easier for you as you can get all the information that you need from the **Configuration File Preview** dialog box when you create your keys._
 
 In this task, you will get the following items that are required to create a Cloud location in the next task.
@@ -193,6 +197,8 @@ In this task, you will get the following items that are required to create a Clo
 
 7. In the **Configuration File Preview** dialog box, click **Close**.
 
+ -->
+ 
 ## Task 6: Create a Native OCI Credential Using the DBMS_CLOUD PL/SQL Package
 
 You will load data from the **`potential_churners.csv`** file you uploaded to your private Oracle Object Store in an earlier task using the **`DBMS_CLOUD`** PL/SQL package. First, you will create a credential in order to access your  Oracle Object Storage. You perform this step only once.
@@ -201,7 +207,7 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
 
 1. Navigate back to the **SQL Worksheet** in the **SQL | Oracle Database Actions** browser tab that you used in a previous lab.
 
-    ![Navigate back to the SQL Worksheet.](./images/sql-worksheet.png =60%x*)
+    ![Navigate back to the SQL Worksheet.](./images/sql-worksheet.png =75%x*)
 
 2. Create an OCI native credential to access your Object Store. Copy and paste the following script into your SQL Worksheet. Substitute the placeholders values for the **`user_ocid`**, **`tenancy_ocid`**, **`private_key`**, and **`fingerprint`** in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task.
 
@@ -241,6 +247,8 @@ In this task, you create a credential to connect to an Oracle Object Storage buc
     The newly created **`OBJ_STORAGE_CRED`** is displayed.
 
 ## Task 7: (Optional) Create Native OCI Credentials, RSA Key Pairs, a Fingerprint, and Auth Tokens Using a Cloud Shell Script
+
+> _**Note:** You can only try this optional task in your own tenancy and not in green button reservation._
 
 In Task 6, you learned how to create an an OCI native credential to access your Object Store using the OCI Console. An alternative method to create an native OCI credential and, an RSA key pairs with a fingerprint, and an optional Auth token is to use a Cloud Shell script named **`adb-create-cred.sh`** that you will run in this task. This script is located in the **`/usr/local/bin`** directory.
 
@@ -326,18 +334,22 @@ Now that you are familiar with the arguments that you can use with the script, l
     </copy>
     ```
 
-    The public and private API keys and a fingerprint are created. The following `.sql` and `json` OCI native credential scripts are also created for you:
+    Notice the prompts and our selections in the following screen capture. The public and private API keys and a fingerprint are created. The following `.sql` and `json` OCI native credential scripts are also created for you:
 
     * **`oci_native_credential.sql`**
     * **`oci_native_credential.json`**
 
     ![Don't run script on any ADB instance.](images/create-credential-no-adb-run.png)
 
-2. Next, you are prompted whether or not you'd like to run the generated credentials in an Autonomous Database of your choice. Again, in this example, we'll keep it simple and enter **`n`** for no. The script is existed. Next, you copy the generated credential script and run it in your Cloud Shell window or download it or copy it and run it in SQL Developer, SQL Developer worksheet, or in any tool that runs SQL.
+2. Next, you are prompt whether or not you want to generate the AI profile script. Enter yes. Select from the list of available models. In our example, we chose 6. The generative AI SQL file is created.
+
+    ![Generate AI profile script?](images/generate-ai-profile.png)
+
+3. Next, you are prompted whether or not you'd like to run the generated credentials in an Autonomous Database of your choice. Again, in this example, we'll keep it simple and enter **`n`** for no. The script is existed. Next, you copy the generated credential script and run it in your Cloud Shell window or download it or copy it and run it in SQL Developer, SQL Developer worksheet, or in any tool that runs SQL.
 
     ![Exit the script.](images/exit-script.png)
 
-3. Verify the creation of the credentials. List the contents of your Cloud Shell home directory. Copy and paste the following command to the command prompt and then hit **`[Enter]`**.
+4. Verify the creation of the credentials. List the contents of your Cloud Shell home directory. Copy and paste the following command to the command prompt and then hit **`[Enter]`**.
 
     ```
     <copy>
@@ -508,15 +520,15 @@ If you need to create an **Auth Token/Swift** credential (Oracle recommends the 
 
     The **Link Data** page is displayed. The **Cloud Store** tab is already selected. Click the **Select Cloud Store Location or enter public URL** drop-down list to see the buckets and/or Cloud Locations to which you have access. In this workshop, you already have access to the **`TRAINING-DATA-LAKE`** private bucket in your compartment after your created the OCI credential. Select this bucket.
 
-    ![Click drop-down list on link data page.](images/click-drop-down-list.png)
+    ![Click drop-down list on link data page.](images/click-drop-down-list.png " ")
 
 3. This bucket contains only the **`potential_churners.csv`** file that you uploaded to the bucket earlier. Drag the **`potential_churners.csv`** file and drop it onto the data linking job section.
 
-    ![The selected bucket.](images/selected-bucket.png)
+    ![The selected bucket.](images/selected-bucket.png " ")
 
 4. The **`potential_churners.csv`** target table to be created for the selected `.csv` file is displayed in the data linking job section.
 
-    ![Drag the potential_churners.csv file.](images/drag-drop-potential-churners.png)
+    ![Drag the potential_churners.csv file.](images/drag-drop-potential-churners.png " ")
 
 5. Click **Start**. A **Start Link From Cloud Store** dialog box is displayed. Click **Run**. When the link job is completed successfully (external table created), the data link card has the link icon next to it.
 
@@ -530,13 +542,11 @@ If you need to create an **Auth Token/Swift** credential (Oracle recommends the 
 
     ![Click the Data Studio Preferences icon.](images/click-data-studio.png)
 
-8. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Preferences** icon. In the **Data Studio Preferences** panel, you can select a different compartment, and then click **Save**.
+8. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Settings** icon. In the **Data Studio Settings** panel, you can select a different compartment, and then click **Close**.
 
-    ![Change preferences.](images/save-preferences.png =50%x*)
+    ![Change preferences.](images/save-preferences.png =60%x*)
 
     The Cloud Locations and buckets that are available in the selected compartment are displayed.
-
-    ![The cloud locations and buckets in the selected compartment.](images/cloud-locations-buckets.png)
 
 ## Learn more
 
@@ -553,7 +563,7 @@ You may now proceed to the next lab.
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Jameson White, Principal Software Engineer
     * Drue Swadener, Principal User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

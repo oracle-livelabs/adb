@@ -8,7 +8,7 @@ Estimated Time: 30 minutes
 
 ### About Oracle ADB for APEX workloads
 
-Oracle Autonomous Database is an autonomous database that can drive, secure and repair itself. It offers elastic scalability, rapid query performance and eliminates the need for manual database administration. It can also be provisioned in manner where performance and features are positioned for APEX workloads.
+Oracle Autonomous Database is an autonomous database that can drive, secure and repair itself. It offers elastic scalability, rapid query performance and eliminates the need for manual database administration. It can also be provisioned in a manner where performance and features are positioned for APEX workloads.
 
 ### About Oracle APEX 
 
@@ -32,25 +32,31 @@ This lab assumes you have:
 
 * Must have an Administrator Account or Permissions to manage several OCI Services: Oracle Databases, Networking, Policies.
 
+## Learn More
+
+
+* [Oracle APEX](https://apex.oracle.com/en/learn/)
+ 
+
 ## Task 1: Create API Key in OCI
 
 This task involves creating and API Key in OCI, the key will be used to implement Select AI.
 
-1. Login the OCI Console and click the person icon on the top right.
+1. Login the OCI Console and click the person icon on the top right and click thru the username.
 
     ![Open OCI Profile](images/oci_profile.png)
 
-2. Click API keys at the bottom left, then click the add API Key button.
+2. Select the Token and keys tab, then click the Add API Key button.
 
     ![Add API Key](images/oci_add_api_key.png)
 
-3. Select the generate API Key Pair and click the add button. Make sure to download the private key.
+3. Select the generate API Key Pair, click Download private key, click Download public key and lastly click the Add button.
 
     ![Generate API Key](images/oci_add_api_key_generate.png)
 
 4. Make note of the API configurations, it will be needed later.
 
-    ![View API Key](images/add_api_key_config_view.png)
+    ![View API Key](images/add_api_key_config_file_view.png)
 
 ## Task 2: Create Autonomous Database
 
@@ -62,13 +68,13 @@ This task involves creating Autonomous Database 23ai.
 
 2. Provide information for Compartment, Display name, Database name. Also, choose workload type as APEX.
     
-    ![Create ADB Name](images/create_adb_name_workload.png)
+    ![Create ADB Name](images/create_adb_name_workload_type.png)
     
-3. Choose deployment type as Serverless, database version as 23ai and disable Compute auto scaling.
+3. Choose database version as 23ai and disable Compute auto scaling.
 
     ![Create ADB Deployment](images/create_adb_deployment_type.png)
 
-4. Make sure Network Access is Secure access from everywhere, provide password, valid email ID and click on Create Autonomous Database.
+4. Make sure Network Access is Secure access from everywhere, provide password, valid email ID and click on Create.
 
     ![Create ADB Password](images/create_adb_password_network.png)
 
@@ -83,7 +89,7 @@ This task involves logging into APEX Administration Services
 
 1. Locate the Autonomous Database created in task 1 and click thru the name to view the details.
 
-    ![View ADB Details](images/adb_details.png)
+    ![View ADB Details](images/apex_instance_name.png)
 
 2. Scroll down and find the APEX instance name, click thru the instance name to view APEX Instance details.
     
@@ -91,7 +97,7 @@ This task involves logging into APEX Administration Services
     
 3. From the APEX Instance Details click the Launch APEX button.
 
-    ![Launch APEX](images/launch_apex.png)
+    ![Launch APEX](images/apex_details_launch_apex.png)
 
 4. Open APEX Administration Services, use the autonomous database admin password created in task 1.
 

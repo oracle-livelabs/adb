@@ -25,11 +25,7 @@ In this lab, you will:
 
 This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
 
-## Task 1: Log in to the Oracle Cloud Console
-
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator. You will complete all the labs in this workshop using this Cloud Administrator. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
-
-## Task 2: Download .csv Files from the MovieStream Data Lake to your Local Computer
+## Task 1: Download Two .csv Files from the MovieStream Data Lake to your Local Computer
 
 Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
 
@@ -38,49 +34,29 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
     * [Download customer\_segment.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_segment/customer_segment.csv)
     * [Download customer-extension.csv](https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/moviestream_landing/o/customer_extension/customer-extension.csv)
 
-2. Close the Excel files and make a note of your folder location as you will use the two downloaded files in a later task in this lab.
+2. Close the Excel files (if they are open) and make a note of your folder location as you will use the two downloaded files in a later task in this lab.
 
-## Task 3: Navigate to the Data Load Page
-
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
-
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
-
-3. On the **Autonomous Databases** page, click your ADB instance. Make sure you select the appropriate compartment from the **Compartment** drop-down list in the **List Scope** section.
-
-    <if type="livelabs">
-    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
-    </if>
-
-    <if type="freetier">
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
-    </if>
-
-4. Click the **Database actions** drop-down list, and then select **Data Load**.
-
-    ![Click data load from the database actions.](./images/click-data-load-drop-down.png =50%x*)
-
-5. The **Data Load** Home page is displayed in a _**new browser tab**_.
-
-    ![Click the Data Load card.](./images/data-load-home-page-2.png =70%x*)
-
-## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
+## Task 2: Load Data from the CSV Files Using the Load Data Tool
 
 In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous Database instance.
 
-1. On the **Data Load** page, click the **LOAD DATA** card.
+>**Note:** You should be already on the **Data Load** page from the previous lab. 
+
+1. On the **Data Load** page, click the **Load Data** card.
+
+    ![Click Load Data card.](./images/click-load-data-card.png " ")
 
 2. On the **Load Data** page, the **Local File** button is selected by default. In the **Load data from local files** section, you can either drag and drop files to upload, or click **Select Files** to select the files to upload. Click **Select Files**.
 
     ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png " ")
 
-3. In the **Open** dialog box, navigate to the directory that contains the two **.csv** files that you downloaded earlier. Select the **`customer_segment.csv`** and **`customer_extension.csv`** files, and then click **Open**.
+3. In the **Open** dialog box, navigate to the directory that contains the two **.csv** files that you downloaded earlier. Select the **`customer_segment.csv`** and **`customer_extension.csv`** files, and then click **Open**. When the upload is complete, the two files are displayed.
 
     ![Select the two files.](./images/open-dialog-box.png " ")
 
     >**Note:** If you have an issue uploading both files simultaneously, you can select one file at a time. Select the first downloaded file using step 3. When the file is uploaded, click the **Select Files** icon on the **Load Data** page, and then select the second file.
 
-4. When the upload is complete, you will make a small change to the default table name that will be created for the *customer-extension.csv* file. Click the **Settings** (pencil) icon to the right of *customer-extension.csv*.
+4.  You will make a small change to the default table name that will be created for the `customer-extension.csv` file. Click the **Settings** (pencil) icon to the right of `customer-extension.csv`.
 
     ![Update the data load job settings.](./images/click-settings.png " ")
 
@@ -88,13 +64,17 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Examine the editor of the data load job.](./images/preview-table.png " ")
 
-6. In the **Name** field, change the table name that will be created from **CUSTOMEREXTENSION** to **CUSTOMER\_EXTENSION**. Click **Close** in the lower right corner of the page.
+6. In the **Name** field, change the table name that will be created from **`CUSTOMEREXTENSION`** to **`CUSTOMER_EXTENSION`**. Click **Close** in the lower right corner of the page.
 
     ![Examine the editor of the data load job.](./images/change-table-name.png " ")
 
-7. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
+7. Click **Start**. 
 
-    ![Run the data load.](./images/click-start.png " ")
+    ![Click Start.](./images/click-start.png " ")
+
+    A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
+
+    ![Click Run.](./images/click-run.png " ")
 
 8. When the load job is complete, a green check mark appears next to each table in the Data Load dashboard. Click **Catalog** in the menu on the left.
 
@@ -102,11 +82,11 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     > **Note:** If the menu on the left is collapsed, click the double arrows icon to expand it so that the label for each icon is displayed.
 
-9. The Catalog displays the two newly created tables, *CUSTOMER\_SEGMENT* and *CUSTOMER\_EXTENSION*, at the top of the Data Load dashboard among the other tables that were created earlier.
+9. The Catalog displays the two newly created tables, `CUSTOMER_SEGMENT` and `CUSTOMER_EXTENSION`   , at the top of the Data Load dashboard among the other tables that were created earlier.
 
     ![View the new table in the Catalog.](./images/display-new-tables.png " ")
 
-    You can click a table name link to display its data. Click the *CUSTOMER\_SEGMENT* table to view the data.
+    You can click a table name link to display its data. Click the `CUSTOMER_SEGMENT` table to view the data.
 
     ![Click customer_segment name link.](./images/customer-segment-link.png " ")
 
@@ -117,8 +97,6 @@ In this task you will load the two .csv files that you downloaded earlier into t
     ![Click Done.](./images/return-data-load.png " ")
 
     The **Data Load** page is re-displayed.
-
-This completes the lab on loading .csv files from your local computer to new tables in your ADB instance.
 
 You may now proceed to the next lab.
 
@@ -133,14 +111,14 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Mike Matthews, Autonomous Database Product Management
     * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, April 2024
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (c) 2024 Oracle Corporation.
+Copyright (C) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)

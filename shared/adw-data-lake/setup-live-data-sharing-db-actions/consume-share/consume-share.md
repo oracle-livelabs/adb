@@ -47,7 +47,7 @@ Live data shared with you through data sharing is not automatically available fo
 
 3. On the **Provider Settings** page 1 of the wizard, provide the following information:
 
-    * **Share Source:** Accept the default **Select from Live Share Providers** option.
+    * **Share Source:** Accept the default **Live Share Provider** option.
     * **Share Provider:** Select the **`training-share`** from the drop-down list.
 
         ![Complete share panel.](images/completed-share-panel.png)
@@ -56,7 +56,7 @@ Live data shared with you through data sharing is not automatically available fo
 
 4. Click **Next**.
 
-5. On the **Add Shares** wizard page, click the **TRAINING_SHARE** in the **Available Shares** section, and then click the **Select** (>) icon.
+5. On the **Add Shares** wizard page, click the **`TRAINING_SHARE`** in the **Available Shares** section, and then click the **Select** (>) icon.
 
     ![Add shares page.](images/wizard-add-shares.png)
 
@@ -114,7 +114,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, July 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

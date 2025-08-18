@@ -25,7 +25,7 @@ This lab assumes you have:
  
 ## Task 1: Login to the chatbot
 
-1. From within the Apex workspace, navigate to the applications by drilling thru the number next to the Applications title under Summary.
+1. From within the APEX workspace, navigate to the applications by drilling thru the number next to the Applications title under Summary.
 
      ![Navigate to Applications](images/navigate_to_applications.png)
 
@@ -70,7 +70,7 @@ This lab assumes you have:
 
     ```text
         <copy>
-          which country has proprietary info and what is the weather there?
+          what todays weather for first country with proprietary info?
         </copy>
     ```
 
