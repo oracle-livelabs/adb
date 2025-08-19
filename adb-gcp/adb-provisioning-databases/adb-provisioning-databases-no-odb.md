@@ -1,11 +1,8 @@
-
 # Provisioning Autonomous Database
 
 ## Introduction
 
-
-This lab walks you through the steps to provision Autonomous Database. 
-
+This lab walks you through the steps to provision Autonomous Database.
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -77,7 +74,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-*All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
+ *All Done! You have successfully deployed your Autonomous Database instance and is available for use now.*
 
 - **Authors/Contributors** - Vivek Verma, Master Principal Cloud Architect, North America Cloud Engineering
 - **Last Updated By/Date** - Vivek Verma, July 2025
