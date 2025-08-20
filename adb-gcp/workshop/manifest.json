@@ -29,7 +29,7 @@
             "partnumber": "Ennnnn_01",
             "publisheddate": "07/25/2024",
             "contentid": "12nnnn",
-            "filename": "./../adb-provisioning-databases/adb-provisioning-databases-odb.md"
+            "filename": "./../adb-provisioning-databases/adb-provisioning-databases.md"
         },
         {
             "title": "Lab 3: Connect ADB with Swingbench application",
