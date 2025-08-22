@@ -4,14 +4,15 @@
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
       "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
-      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "stacks-provision-adb-select-ai.md":"/common/building-blocks/tasks/stacks/provision-adb-select-ai.md"
     },
     "variables": ["./variables.json"],
     "tutorials": [
         {
           "title": "Introduction",
           "description":"Introduction to the workshop",
-          "filename": "../../introduction/introduction.md"
+          "filename": "../../introduction-aiw2025/introduction-aiw2025.md"
         },
         {
           "title": "Get started",
@@ -21,31 +22,44 @@
         {
           "title": "Lab 1: Set up Your Workshop Environment",
           "description":"Set up an Autonomous Database and an LLM account",
-          "type": "tenancy",
+          "type": "aiw2025-sandbox",
           "filename": "../../setup-environment/setup-environment.md"
         },
         {
-          "title": "Lab 2: Integrate OCI Generative AI with Autonomous Database",
+        "title": "Lab 2: Register an Autonomous Database with Oracle Data Safe",
+        "description": "This lab shows you how to register an Autonomous Data Warehouse on Shared Exadata Infrastructure with Oracle Data Safe and load sample data into it.",
+        "type": "aiw2025-sandbox",
+        "filename": "../../register-autonomous-database/register-autonomous-database.md"
+        },
+        {
+          "title": "Lab 3: Integrate OCI Generative AI with Autonomous Database",
           "description":"Integrate OCI Generative AI with Autonomous Database",
-          "type": "tenancy",
+          "type": "aiw2025-sandbox",
           "filename": "../../integrate-genai/integrate-genai.md"
         },
         {
-          "title": "Lab 3: Use Natural Language Queries with Select AI",
+          "title": "Lab 4: Use Natural Language Queries with Select AI",
           "description":"Query Using Select AI",
-          "type": "tenancy",
+          "type": "aiw2025-sandbox",
           "filename": "../../query-using-select-ai/query-using-select-ai.md"
         },
         {
-          "title": "Lab 4: Use the Select AI Demo Application",
+          "title": "Lab 5: Use the Select AI Demo Application",
           "description":"Use the Select AI demo application",
+          "type": "aiw2025-sandbox",
           "filename": "../../use-select-ai-demo/use-select-ai-demo.md"
         },
         {
-          "title": "Lab 5: Clean up Resources Used in this Workshop (Optional)",
-          "description": "Delete the ADB instance and compartment if not needed.",
-          "type": "tenancy",
-          "filename": "../../cleanup/cleanup.md"
+        "title": "Lab 6: Audit database activity",
+        "description": "This lab shows you how to provision audit and alert policies in Data Safe.",
+        "type": "aiw2025-sandbox",
+        "filename": "../../audit-database-activity/audit-database-activity.md"
+         },
+        {
+        "title": "Lab 7: Create and enforce a SQL Firewall policy in Data Safe",
+        "description": "This lab shows you how to use SQL Firewall in Data Safe.",
+        "type": "aiw2025-sandbox",
+        "filename": "../../sqlfw/sqlfw.md"       
         },
         {
           "title": "Need Help?",

@@ -83,62 +83,7 @@ Create a secret key as follows:
     >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
 --->
 
-## Task 1: (Optional) Create an OCI Compartment
-
-A compartment is a collection of cloud assets, such as compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
-
-If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges to create a compartment and should skip this first task. Oracle LiveLabs has already created a compartment for you and you should use that one. Even though you can't create a compartment, you can review the steps below to see how it is done.
-
-1. Log in to the **Oracle Cloud Console**. On the **Sign In** page, select your tenancy, enter your username and password, and then click **Sign In**. The **Oracle Cloud Console** Home page is displayed.
-
-2. Open the **Navigation** menu.
-
-    ![Click the Navigation menu.](./images/click-navigation-menu.png =65%x*)
-
-3. Click **Identity & Security**. Under **Identity**, click **Compartments**.
-
-       ![The navigation path to Compartments is displayed.](./images/navigate-compartment.png =80%x*)
-
-4. On the **Compartments** page, click **Create Compartment**.
-
-   ![The Compartments page is displayed. The Create Compartment button is highlighted.](./images/click-create-compartment.png =70%x*)
-
-5. In the **Create Compartment** dialog box, enter an appropriate name such as **`training-adw-compartment`** in the **Name** field and a description such as **`Training ADW Compartment`** in the **Description** field.
-
-6. In the **Parent Compartment** drop-down list, select your parent compartment, and then click **Create Compartment**.
-
-   ![On the completed Create Compartment dialog box, click Create Compartment.](./images/create-compartment.png =70%x*)
-
-   The **Compartments** page is re-displayed and the newly created compartment is displayed in the list of available compartments. You can use the compartment for your cloud services!
-
-   ![The newly created compartment is highlighted with its status as Active.](./images/compartment-created.png =70%x*)
-
-## Task 2: Create Policy to Enable Access to OCI Generative AI
-
-**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
-
-Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
-
-1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
-
-2. Click **Create policy** and specify the following into the appropriate fields:
-
-    >**Note:** Slide the **Show manual editor** control to display the text field in order to paste the policy.
-
-    * **Name:** `PublicGenAI`
-    * **Description:** `Public Gen AI Policy`
-    * **Compartment:** Select your own compartment
-    * **Policy Builder:** **`allow any-user to manage generative-ai-family in compartment training-adw-compartment`**
-    
-        > **Note:** Substitute `training-adw-compartment` in the above policy with your own compartment's name.
-
-3. Click **Create**.
-
-    ![Create policy](./images/create-policy.png "")
-    
->**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
-
-## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
+## Task 1: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application
 
 Use an OCI Cloud Stack to set up your workshop environment by creating an ADB instance, upload the data to the instance, and install the Select AI demo application that was built using APEX.
 
@@ -208,7 +153,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
       ![Save values in file.](./images/save-values.png "")
 
-## Task 4: Review Your Deployment
+## Task 2: Review Your Deployment
 
 1. Let's view the newly created stack and job. From the Console, open the **Navigation** menu.
 
@@ -236,7 +181,7 @@ Use an OCI Cloud Stack to set up your workshop environment by creating an ADB in
 
     ![Failed job](./images/failed-job.png "")
 
-## Task 5: Navigate to Your New Autonomous Database Instance
+## Task 3: Navigate to Your New Autonomous Database Instance
 
 Let's view the newly provisioned ADB instance.
 
