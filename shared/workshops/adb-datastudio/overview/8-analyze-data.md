@@ -3,13 +3,14 @@
 
 ## Introduction
 
-This lab introduces the Data Analysis application built into the Oracle Autonomous Database and shows the various ways you can analyze your data.
+This lab introduces the Analysis tool built into the Oracle Autonomous Database and shows the various ways you can analyze your data.
 
 Estimated Time: 20 minutes
 
+<!--
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_2hv2b15z)
-
+-->
 
 ### Objectives
 
@@ -22,14 +23,10 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
 - Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
-- Loaded the demo data 
-- Loaded Age group data into AGE\_GROUP 
-- Prepared data and loaded it into CUSTOMER\_SALES\_ANALYSIS 
 
 ### Demo data for this lab
->**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed the **Transform and prepare data lab** then run the following script in SQL Worksheet to load all necessary objects.
+Run the following script in SQL Worksheet to load all necessary objects.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
@@ -99,20 +96,17 @@ We will go through a few examples such as movie genre
 preference based on age groups and marital status and whether these
 preferences are different across high-value and low-value customers.
 
-1.  Navigate to the Data Studio page and launch the **Data Analysis** tool.
+1.  From the Data Studio Overview page launch the **Analysis** tool.
 
     ![screenshot of data analysis card](images/image58_analysis_card.png)
 
-2.  When you access the Data Analysis tool for the first time, you are presented with a set of 
+2.  When you access the Analysis tool for the first time, you are presented with a set of 
     tool tips that explain how to use various features of the tool. You may wish to step through 
     this brief tutorial, or press X in the top right of any highlighted box to exit at any time. 
 
-    ![screenshot of data analysis home page](images/image59_analysis_home.png)
-
     You can relaunch the tutorial by pressing the binoculars icon in the upper-right corner.
 
-    ![screenshot of data analysis tutorial page](images/image59_analysis_tutorial.png)
-
+    ![screenshot of data analysis home page](images/image59_analysis_home.png)
 
 3.  In this lab, we are going to create an Analytic View of the movie sales data so we can start to analyze it 
     and understand our customers’ purchasing patterns. Analytic
@@ -120,7 +114,7 @@ preferences are different across high-value and low-value customers.
     easily add aggregations and calculations to data sets and present
     data in views that can be queried with relatively simple SQL.
     
-    Select your schema QTEAM and click on **+** button below Analytic View.
+    Click on **Create Analytic View** on the top right.
 
     ![screenshot of creating the analytic view](images/image60_av_create-1.png)
 
@@ -182,7 +176,7 @@ preferences are different across high-value and low-value customers.
 
     ![screenshot of creating an analytic view](images/image67_av_create.png)
 
-11. Our AV is ready now and we can start analyzing data. Click on the three dots next to the name of the AV and click **Analyze**.
+11. Our AV is ready now and we can start analyzing data. Click on the AV CUSTOMER\_SALES\_ANALYSIS\_AV.
 
     ![screenshot of analytic view review](images/image68_av_analyze.png)
 
@@ -194,9 +188,11 @@ and start finding hidden patterns in the data.
 
 Next, let's learn how to navigate the analysis tool.
 
-1.  Select your AV and click on **Analyze**. Click on the three dots next to the name of the AV and click **Analyze**.
+1.  If you get a quick tour wizard like below then close it. Optionally you can cycle through all the sections to learn about this page.
 
-    The Data Analysis UI is divided into multiple zones. These zones are:
+    ![screenshot of the analysis home page tour](images/image69_av_analyze_home_tour.png)
+
+    The Analysis UI is divided into multiple zones. These zones are:
     
     1: Hierarchies and measures
     
@@ -293,16 +289,13 @@ Next, let's learn how to navigate the analysis tool.
     We can spend lots of time in the analysis tool visualizing the data with
     different combinations of attributes.
 
-    >**Note:** So far, we are looking at only the charts, but this data can be
-displayed in tabular format and a pivot table as well. Switch the
-display mode to see how it works. Advanced users can access the data in
-this AV from Excel or Google Sheets. 
+    >**Note:** So far, we are looking at only the charts, but this data can be displayed in tabular format and a pivot table as well. Switch the display mode to see how it works. Advanced users can access the data in this AV from Excel or Google Sheets. 
 
     ![screenshot of sales analysis by movie genre and customer value](images/image75_sales_genre_custvalue_detail.png)
 
-8. You can add more than one report and arrange them on the canvas by clicking on **Add Report** button. For our workshop we will only have one report. After you have completed the report, you can save it by clicking on the **Save** button on the top right corner. 
+8. After you have completed the report, you can save it by clicking on the **Save Analysis As** button on the top right corner. It is under the drop down menu of **Save** button. Call it Sales\_Analysis\_Report.
 
-    Click on the left arrow button on the top left corner to go back to Data Analysis main page.
+    Click on the left arrow button on the top left corner to go back to Analysis main page.
 
     ![screenshot of saving sales analysis by movie genre and customer value](images/image75_sales_genre_custvalue_save.png)
 
@@ -314,11 +307,11 @@ this AV from Excel or Google Sheets.
 
 ## RECAP
 
-In this lab, we used the Data Analysis tool to create a dimensional model (Analytic View) on
+In this lab, we used the Analysis tool to create a dimensional model (Analytic View) on
 the sales analysis table and then analyzed movie sales across various dimensions such as age group, 
 marital status and movie genre. We found many interesting patterns in customer purchasing behavior. 
 
-Analytic Views make analysis easy, not only in Data Studio's Data Analysis tool, but also in tools such as Oracle Analytics, Tableau and PowerBI; even Excel and Google Sheets! As the business model is defined in the database, analysis of this data is always consistent across these tools, as well as being simple and performant. 
+Analytic Views make analysis easy, not only in Data Studio's Analysis tool, but also in tools such as Oracle Analytics, Tableau and PowerBI; even Excel and Google Sheets! As the business model is defined in the database, analysis of this data is always consistent across these tools, as well as being simple and performant. 
 
 You may now **proceed to the next lab**.
 
@@ -326,7 +319,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, August 2023
+- Last Updated By - Jayant Mahto, August 2025
 
 
 Copyright (C)  Oracle Corporation.

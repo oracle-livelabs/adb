@@ -13,7 +13,7 @@ Let's go through the action items again.
 
 1. Transform and prepare data
 
-    We created customer quintiles based on total sales by the customer and loaded them into a new table. For analysis, we added various customer attributes to this table as well. The Transforms tool made this task easy with a drag-and-drop user interface. 
+    For analysis, we added various customer attributes to this movie sales data and cleaned it. The Transforms tool made this task easy with a drag-and-drop user interface. 
 
 2. Analyze data
 

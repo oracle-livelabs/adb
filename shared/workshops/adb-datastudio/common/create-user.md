@@ -7,9 +7,10 @@ In this lab, you will create a database user.
 
 Estimated Time: 10 minutes
 
+<!--
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_bqbg5sf2)
-
+-->
 
 ### Objectives
 
@@ -113,4 +114,4 @@ See the documentation on [Managing Users on Autonomous Database](https://docs.o
 
 - Created By/Date - Keith Laker, Product Manager, Autonomous Database, March 2021
 - Contributors - Nilay Panchal, Rick Green, Patrick Wheeler, Marty Gubar, Bud Endress, Jayant Mahto, Mike Matthews, Ashish Jain
-- Last Updated By - Mike Matthews, April 2024
+- Last Updated By - Mike Matthews, April 2025

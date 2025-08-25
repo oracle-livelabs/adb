@@ -18,13 +18,11 @@ Let's go through the action items again.
 2. Load data
 
     Age group data was missing from the database. There are many ways to 
-    import data from various sources into an Autonomous database. We imported it from our local file.
+    import data from various sources into an Autonomous Database. We imported it from the object store.
 
 3. Transform and prepare data
 
-    Now we had all the tables we needed. We created customer quintiles based on total sales by the customer and 
-    loaded them into a new table. For analysis, we added various customer attributes to this table as well. The Transforms 
-    tool made this task easy with a drag-and-drop user interface. 
+    Now we had all the tables we needed. However, the data needed to be prepared for our analysis that requires transformation. We learned how to transform the data and load into an analysis table. The Transforms tool made this task easy with a drag-and-drop user interface. 
 
 4. Analyze data
 
@@ -69,7 +67,7 @@ DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV;
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, August 2023
+- Last Updated By - Jayant Mahto, August 2025
 
 
 Copyright (C)  Oracle Corporation.

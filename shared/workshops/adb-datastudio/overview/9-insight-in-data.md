@@ -3,13 +3,14 @@
 
 ## Introduction
 
-This lab introduces Data Studio’s Data Insights tool built into the Oracle Autonomous Database and shows how to search for and interpret data insights.
+This lab introduces Data Studio’s Insights tool built into the Oracle Autonomous Database and shows how to search for and interpret data insights.
 
 Estimated Time: 15 minutes
 
+<!--
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_0o150ib2)
-
+-->
 
 ### Objectives
 
@@ -24,7 +25,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 - Created a new QTEAM user with appropriate roles
 - Created Analytic view CUSTOMER\_SALES\_ANALYSIS\_AV
 
-## Task 1: Use Data Insights
+## Task 1: Use Insights tool
 
 Data Studio's insights process runs in the background, finding interesting patterns 
 in the data. This is a hands-off approach to
@@ -40,12 +41,11 @@ is small enough that it will complete in a reasonable time. But you might
 see the insight list being refreshed while it is executing.
 
 
-1.  Launch Data Insights by clicking on the Database Actions link on the
-    top and then click on the **Data Insights** card.
+1.  From the Data Studio Overview page launch the **Insights** tool.
 
     ![screenshot of the Data Insights card](images/image76_inst_card.png)
 
-2.  On the **Data Insights** page click on the top right icon to get a tour of the
+2.  On the **Insights** page click on the top right icon to get a tour of the
     tool.
 
     ![screenshot of Insights home page](images/image77_inst_home.png)
@@ -70,7 +70,7 @@ see the insight list being refreshed while it is executing.
     insights may vary if the data is different or the insight is still
     running, therefore refer to the labels on each tile to identify it.
 
-    A list of various insights will appear on the page. The Data Insights tool has gone through the data and discovered
+    A list of various insights will appear on the page. The Insights tool has gone through the data and discovered
     many interesting behavioral patterns based on the movie sales data.
     
     
@@ -125,7 +125,7 @@ see the insight list being refreshed while it is executing.
     
     It shows that the highest value (5) dog owners are purchasing far more movies than average compared to non-dog owners. It may be just a correlation but perhaps you could use this data to offer dog grooming products to high-value customers!
     
-    Interesting. Isn't it? The Data Insights tool has discovered all these hidden
+    Interesting. Isn't it? The Insights tool has discovered all these hidden
     patterns just by crawling through the data.
 
     ![screenshot of insights on pet ownership and customer value](images/image82_inst_pet_custvalue.png)
@@ -134,9 +134,9 @@ see the insight list being refreshed while it is executing.
 
     Click on the **Back** button to go back to the list.
 
-There are many other insights in the list. Go back to the list and look at a few others. See if you find any other interesting insight. The Data Insight tool has discovered all these hidden patterns just by crawling through the data.
+There are many other insights in the list. Go back to the list and look at a few others. See if you find any other interesting insight. The Insights tool has discovered all these hidden patterns just by crawling through the data.
 
-## Task 2: Peeling the layers of Data Insights
+## Task 2: Peeling the layers of Insights
 
 This section is an attempt to explain the insights by manually running
 queries and correlating them with what we can see in insights.
@@ -150,15 +150,14 @@ queries and correlating them with what we can see in insights.
 
     ![screenshot of singles by genre insight](images/image83_inst_single_genre.png)
 
-2.  We can go back to the **Data Analysis** tool to confirm this
-    insight. Go back to the data analysis tool and click on the previously created AV to create a new analysis.
+2.  We can go back to the **Analysis** tool to confirm this insight. Go back to the analysis tool and click on the previously created AV to create a new analysis.
 
     ![screenshot of applying the filter for marital status](images/image84_analyze_peeling_layer_home.png)
 
 3.  In this new report we will analyze **sales** by **Genre** for married and singles alternately.
 
     Drag **Genre** on X-Axis (you will have to expand the tree on the left). 
-    Pick **M** in the filter box on the right for marital status.
+    Pick **M** in the filter box on the right for marital status. You may need to scroll down on the right to find the marital status filter.
 
     ![screenshot of applying the filter for marital status](images/image84_analyze_filter.png)
 
@@ -175,9 +174,9 @@ queries and correlating them with what we can see in insights.
 
     ![screenshot of sales analysis to singles by genre](images/image86_analyze_single_genre.png)
 
-**Isn’t that what Data Insights told us?! It discovered that without any input from us!**
+**Isn’t that what Insights tool told us?! It discovered that without any input from us!**
 
-While doing manual analysis in the **Data Analysis** tool, 
+While doing manual analysis in the **Analysis** tool, 
 we must actively look at and compare the data for
 certain hierarchies. There are many combinations, but people use their
 experience to guide their analysis steps. In comparison, **Data
@@ -189,10 +188,10 @@ tools to use in "a day in the life of a data analyst".
 
 ## RECAP
 
-In this lab, we examined various insights discovered by the Data Insights tool. 
+In this lab, we examined various insights discovered by the Insights tool. 
 They were interesting insights and not very obvious without digging into the data.
 
-We also compared the results with the Data Analysis tool by doing manual analysis, illustrating 
+We also compared the results with the Analysis tool by doing manual analysis, illustrating 
 the value of automated insights.
 
 Now all the assigned tasks have been completed successfully.
@@ -203,7 +202,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, August 2023
+- Last Updated By - Jayant Mahto, August 2025
 
 
 Copyright (C)  Oracle Corporation.
