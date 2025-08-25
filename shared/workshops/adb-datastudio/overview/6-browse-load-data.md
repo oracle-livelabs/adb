@@ -1,4 +1,4 @@
-# Browse and Load the additional data set
+# Browse and load the additional data set
 
 
 ## Introduction
