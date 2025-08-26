@@ -83,7 +83,6 @@ Create a secret key as follows:
     >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
 --->
 
-
 ## Task 1: (Optional) Create an OCI Compartment
 [](include:iam-compartment-create-body.md)
 
@@ -113,8 +112,8 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
 >**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
 
 ## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application 
-[](include:stacks-provision-adb-select-ai.md)
 
+[](include:stacks-provision-adb-select-ai.md)
 
 You may now proceed to the next lab.
 
@@ -128,7 +127,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Last Updated By/Date:** Lauran K. Serhal, August 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
