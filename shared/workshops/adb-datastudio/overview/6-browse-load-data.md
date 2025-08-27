@@ -100,7 +100,7 @@ Data Studio tools can be used to load data from all the above. Since this is an 
 4.  Look for the other tables of interest on the main catalog page.
     Recall from the meeting notes in the workshop's introduction that we are also interested in CUSTOMER\_CA and GENRE tables.
 
-    You will also see CUSTOMER\_SALES\_ANALYSIS table which is empty. This table will be populated by the transforms tool later in this workshop.
+    You will also see CUSTOMER\_SALES\_ANALYSIS\_FULL table which is empty. This table will be populated by the transforms tool later in this workshop.
     
     Find and click on these tables to do a data preview.
 
@@ -189,6 +189,18 @@ We are told that this data set is available in an Object Store file. First we ne
 
    ![Screenshot of age group table](images/image8_9_catalog_files_load_table_age_group_data.png)
 
+
+## Task 5: What's more?
+
+Note that we scratched only the surface. Other features are:
+
+-   **Linking data**: Query data without moving frm the original location
+-   **Live Feed**: Load data continuously as files are dropped in object store
+-   **External Catalog**: Link to other catalogs to browse and access external data sets
+-   **Data Share**: Load data from other share providers
+-   **AI Source**: Get generated data from Open AI or Cohere AI source. This is an experimental feature.
+
+Data Load is a very capable tool for loading wide variety of data. We have a dedicated workshop in Oracle Livelabs to cover advanced features.
 
 ## RECAP
 

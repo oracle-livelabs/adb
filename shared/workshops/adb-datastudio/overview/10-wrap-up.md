@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab will summarize the workshop and guide you through the steps to clean demo data. 
+This lab will summarize the workshop and guide you through the process to clean demo data. 
 
 ## Task 1: Wrap up
 
@@ -26,8 +26,7 @@ Let's go through the action items again.
 
 4. Analyze data
 
-    Finally, we analyzed the data. We created an analytic view (AV), which is a dimensional model, and learned how to analyze 
-    the data across various dimension hierarchies. We also found interesting results unearthed by the Insights process. 
+    Finally, we learned how to analyze the data across various customer attributes. We also found interesting results unearthed by the Insights process. 
 
 Various tools of Data Studio worked seamlessly with each other, helping us complete all the action items successfully.
 
@@ -52,7 +51,6 @@ DROP TABLE MOVIE;
 DROP TABLE TIME;
 DROP TABLE AGE_GROUP;
 DROP TABLE CUSTOMER_SALES_ANALYSIS;
-DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV;
     </copy>
     ```
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.

@@ -62,6 +62,8 @@ DROP TABLE GENRE;
 DROP TABLE MOVIE;
 DROP TABLE TIME;
 DROP TABLE CUSTOMER_SALES_ANALYSIS;
+DROP TABLE CUSTOMER_SALES_ANALYSIS_FULL;
+
     </copy>
     ```
     >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command if you run this on an empty schema.
@@ -211,6 +213,20 @@ begin
  END LOOP;
 end;
 /
+CREATE TABLE CUSTOMER_SALES_ANALYSIS_FULL
+as SELECT 
+GENRE,
+GENDER,
+AGE_GROUP,
+CUST_VALUE,
+PET,
+MARITAL_STATUS,
+EDUCATION,
+INCOME_LEVEL,
+TOTAL_SALES
+FROM CUSTOMER_SALES_ANALYSIS
+WHERE 1=2;
+
     </copy>
     ```
 
