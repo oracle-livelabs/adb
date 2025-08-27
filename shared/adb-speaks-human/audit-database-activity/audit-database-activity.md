@@ -33,7 +33,7 @@ This lab assumes you have:
 - Your data values may be different than those shown in the screenshots.
 - Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs. 
 
-## Task 1: Configure auditing and alerts for your target database
+## Task 1: Configure Auditing and Alerts for your Target Database
 
 1. Return to the **Oracle Data Safe** browser tab. In the breadcrumbs at the top of the page, click **Data Safe**.
 
@@ -103,7 +103,7 @@ This lab assumes you have:
     
 10. Click **Close**.
 
-## Task 2: Perform activities on your target database to generate audit data
+## Task 2: Perform Activities on your Target Database to Generate Audit Data
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, you will sign in as the `ADMIN` user and create a new user account.
 
@@ -138,7 +138,7 @@ In this task, you perform activities on your target database in Database Actions
 
 10. Return to the browser tab for **Oracle Data Safe** and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
-## Task 3: Review alerts in Oracle Data Safe
+## Task 3: Review Alerts in Oracle Data Safe
 
 1. In the **Security center** section on the left, click **Alerts**.
 
@@ -174,7 +174,7 @@ In this task, you perform activities on your target database in Database Actions
 
         ![All alerts report top](images/all-alerts-report-full.png " ")
     
-## Task 4: Review audit events in Oracle Data Safe
+## Task 4: Review Audit Events in Oracle Data Safe
 
 1. In the **Security center** section, click **Activity auditing**.
 
@@ -196,6 +196,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author:** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
+- **Contributors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+    * Michelle Malcher, Director, Product Management  
 - **Last Updated By/Date:** - Lauran K. Serhal, August 2025

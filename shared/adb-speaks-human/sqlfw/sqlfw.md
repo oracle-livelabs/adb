@@ -28,7 +28,7 @@ This lab assumes you have:
 - Prepared your environment
 - A target database that is Oracle Database 23ai
 
-## Task 1: Grant the SQL Firewall role on your target database
+## Task 1: Grant the SQL Firewall Role on your Target Database
 
 Perform this task only if you are working in your own tenancy. If you are using a LiveLabs sandbox, you do not need to perform this task.
 
@@ -76,7 +76,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     ![Status Active](images/status-active.png " ")
 
-## Task 3: Create a SQL collection for APP_USER
+## Task 3: Create a SQL Collection for APP_USER
 
 1. In the **SQL collections** section, click **Create and start SQL collection**. The **Create and start SQL collection** dialog box is displayed.
 
@@ -165,7 +165,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     The SQL collection is created for `APP_USER`.
 
-## Task 4: Deploy the SQL Firewall policy for APP_USER
+## Task 4: Deploy the SQL Firewall Policy for APP_USER
 
 1. On the **SQL collection details** page, click **Generate firewall policy**.
 
@@ -201,7 +201,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
    ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements")
 
-## Task 5: Test the SQL Firewall policy
+## Task 5: Test the SQL Firewall Policy
 
 When you run the SQL statements in this task, use the **Run Statement** button in Database Actions because that is how you previously ran the queries when you created the SQL collection. If you use the **Run Script** button instead, SQL Firewall will block the results.
 
@@ -249,7 +249,7 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     ```
     You should receive an error message: **`ORA-47605: SQL Firewall violation`**.
 
-## Task 6: Add a SQL statement from the violation log to the allow-list
+## Task 6: Add a SQL statement from the Violation Log to the allow-list
     
 1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab. You may need to wait a couple of minutes for the violations to show up.
 
@@ -286,7 +286,9 @@ Congratulations! You have finished this LiveLabs workshop!
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+- **Contributors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+    * Michelle Malcher, Director, Product Management  
 - **Last Updated By/Date:** - Lauran K. Serhal, August 2025
 
 

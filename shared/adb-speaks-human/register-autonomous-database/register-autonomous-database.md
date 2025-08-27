@@ -29,7 +29,7 @@ This lab assumes you have:
 - Your data values are most likely different than those shown in the screenshots.
 - Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs.
 
-## Task 1: Explore target database registration options
+## Task 1: Explore Target Database Registration Options
 
 You have three options for registering your Autonomous Database:
 - Use the **Register** link on the **Autonomous Databases** page (one-click method with no interaction).
@@ -54,7 +54,7 @@ You have three options for registering your Autonomous Database:
 
     ![Target database information page](images/target-database-details-page.png "Target database information page")
     
-## Task 2: Access Oracle Data Safe and view your list of registered target databases
+## Task 2: Access Oracle Data Safe and View your List of Registered Target Databases
 
 1. In the breadcrumb at the top of the page, click **Target databases**.
 
