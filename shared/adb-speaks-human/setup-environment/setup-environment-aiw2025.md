@@ -110,8 +110,8 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Authors:** 
-- Lauran K. Serhal, Consulting User Assistance Developer
-- Jody Glover, Consulting User Assistance Developer, Database Development
+    - Lauran K. Serhal, Consulting User Assistance Developer
+    - Jody Glover, Consulting User Assistance Developer, Database Development
 * **Last Updated By/Date:** Lauran K. Serhal, August 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
