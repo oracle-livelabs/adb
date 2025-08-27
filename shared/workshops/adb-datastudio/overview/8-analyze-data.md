@@ -184,18 +184,15 @@ We will go through a few examples such as movie genre preference based on age gr
 
     ![screenshot of sales analysis by movie genre](images/image73_t_sales_genre.png)
 
-10.  We had earlier ranked our customers in high and low-value quintiles.
-    It will be interesting to find out whether there is a movie genre
-    preference for high-value customers.
+10. We had earlier ranked our customers in high and low-value quintiles. It will be interesting to find out whether there is a movie genre preference for high-value customers.
 
-    Drag CUST\_VALUE to the X-Axis. Make sure the CUST\_VALUE is 
-    on the top of GENRE.
+    Drag CUST\_VALUE to the X-Axis. Make sure the CUST\_VALUE is on the top of GENRE.
 
     Filter for CUST\_VALUE=1 in the right side filter area. You can see that Action is very popular genre with low value customers.
     
     ![screenshot of sales analysis by movie genre and customer value](images/image74_t_sales_genre_custvalue.png)
 
-11.  Now lets filter for high value customers. You will need to remove the previous filter and use a new one for CUST\_VALUE=5.
+11. Now lets filter for high value customers. You will need to remove the previous filter and use a new one for CUST\_VALUE=5.
 
     Note that Drama is popular with high value customers.
 
