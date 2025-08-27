@@ -61,18 +61,6 @@
         "filename": "../../9-transform-data-schedule.md"
       },
       {
-        "title": "Lab 9: Export/Import objects",
-        "description": "Use export/import to move objects to a new environment",
-        "type": "livelabs",
-        "filename": "../../9-2-transform-exportimport.md"
-      },
-      {
-        "title": "Lab 10: Using Python API",
-        "description": "Use the Python API to create objects",
-        "type": "livelabs",
-        "filename": "../../9-3-transform-python-api.md"
-      },
-      {
         "title": "Need Help?",
         "description": "Solutions to Common Problems and Directions for Receiving Live Help",
         "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
