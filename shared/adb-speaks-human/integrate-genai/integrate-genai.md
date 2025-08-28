@@ -4,7 +4,7 @@
 
 LLMs can produce incredibly creative responses to prompts, generate SQL from natural language, and so much more. In order to be most effective, you want to leverage LLMs with your organization's private data. The first step is to integrate your models with Autonomous Database. 
 
-You can use different LLMs with Autonomous Database. This lets you pick the best model for your use case. Select AI profiles encapsulate the connections to each model; you specify which profile to use when generating results. In this lab, you will enable the user **`MOVIESTREAM`** to connect to models from Oracle OCI GenAI, Azure OpenAI and Google Gemini.
+You can use different LLMs with Autonomous Database. This lets you pick the best model for your use case. Select AI profiles encapsulate the connections to each model; you specify which profile to use when generating results. In this lab, you will enable the user **`MOVIESTREAM`** to connect to models from Oracle OCI GenAI, Azure OpenAI and Google Gemini. 
 
 Estimated Time: 10 minutes.
 
@@ -17,73 +17,62 @@ In this lab, you will:
 ### Prerequisites
 - This lab requires the completion of the previous labs that deployed your Autonomous Database.
 
-## Task 1: Log into the SQL Worksheet
->**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack that was created for you, **Deploy-ChatDB-Autonomous-Database...** > Select the job that was created for you, **ormjob2025...** > Click **Outputs** in the **Resources** section.
+## Task 1: Log into SQL Worksheet
 
-![Moviestream password](./images/output.png "")
+>**Note:** the **MOVIESTREAM** user and its tables were created as part of the setup. You can find the Moviestream password by navigating to **Developer Services** from the Navigation menu. Next, click **Resource Manager** > **Stacks** > Select the stack we created, **Deploy-ChatDB-Autonomous-Database...** > Select the job we created, **ormjob2024117214431** > Select **Outputs** under **Resources**.
 
-1. If you are not logged in to Oracle Cloud Console, log in and select **[](var:db_workload_type)** from the Navigation menu.
+![Moviestream password](./images/moviestream-output-pswd.png =65%x*)
 
-    ![Click the navigation menu.](./images/click-navigation-menu.png " ")
+1. On your Autonomous Database details page, click the **Database Actions** drop-down list, and then select **SQL**. 
 
-    ![Click Autonomous Database.](./images/click-autonmous-database.png " ")
+    >**Note:** Make sure you are in the correct compartment and region where you ADB instance was provisioned.
 
-2. Make sure you are in the correct compartment where you ADB instance was provisioned and then click your **TrainingAIWorkshop** instance.
+    ![Click Database Actions > SQL](./images/navigate-sql.png =65%x*)
 
-    ![Autonomous Databases homepage.](./images/adb-home-page.png " ")
-
-3. On your **TrainingAIWorkshop** Autonomous Database details page, click the **Database Actions** drop-down list, and then select **View all database actions**.
-
-    ![Click Database Actions button.](./images/view-all-dbactions.png " ")
+    The SQL Worksheet is displayed.
 
     Logging in from the OCI service console requires you to be the **`ADMIN`** user. Log in as the **`ADMIN`** user if you are not automatically logged in.
     
     * **Username:** **`ADMIN`**
-    * **Password:** *your-password* (e.g. **`WlsAtpDb1234#`**)
+    * **Password:** *your password*
 
-4. The **Database Actions** page is displayed. Click the **Development** tab, and then click the **SQL** tab.
+2. The first time you open SQL Worksheet, a series of pop-up informational boxes appears. Click the **Tour** icon (binoculars) in the upper right corner to get a tour that introduces the main features. Close the boxes.
 
-    ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
-
-5. The first time you open SQL Worksheet, a series of pop-up informational boxes appears. Click the **Tour** icon (binoculars) in the upper right corner to get a tour that introduces the main features. Close the boxes.
-
-    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
+    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png =65%x*)
 
     You can expand the SQL Worksheet editor area by collapsing the left navigation area.
 
-    ![SQL Worksheet.](./images/adb-sql-worksheet.png " ")
+    ![SQL Worksheet.](./images/adb-sql-worksheet.png =55%x*)
 
-6. We'll run the SQL analytics as the **`MOVIESTREAM`** user. Sign out of the **`ADMIN`** user. Click the the drop-down list next to the **`ADMIN`** user in the banner, and then click **Sign Out**.
-    
-    ![Log out.](./images/sign-out-admin.png " ")
+3. We'll run the SQL analytics as the **`MOVIESTREAM`** user. Sign out of the **`ADMIN`** user. Click the the drop-down list next to the **`ADMIN`** user in the banner, and then click **Sign Out**.
 
-7. Log in to the SQL Worksheet using the following credentials, and then click **Sign in** to display the **Database Actions Launchpad**.
+4. Log in to the SQL Worksheet using the following credentials, and then click **Sign in** to display the Database Actions Launchpad.
 
-    * **Username:** **`MOVIESTREAM`**
-    * **Password:** **`your-password`** (e.g. **`watchS0meMovies#`**)
+    - **Username:** **`MOVIESTREAM`**
+    - **Password:** `your-password` (e.g. `watchS0meMovies#`)
 
-    ![Sign in.](./images/sign-in-moviestream.png " ")
+    ![Click sign-in moviestream.](./images/click-signin-moviestream.png =65%x*)
 
-8. The **Database Actions Launchpad** page is displayed. Click the **Development** tab if not already selected, and then click the **SQL** tab.
+5. The **Database Actions Launchpad** page is displayed. Click the **Development** tab, and then click the **SQL** tab.
 
-    ![Click SQL.](./images/adb-dbactions-click-sql.png " ")
+    ![Click Development > SQL.](./images/click-development-sql.png =65%x*)
 
-    The SQL Worksheet is displayed. Close the **Run Statement** informational box.
+    The SQL Worksheet is displayed. Close the Run Statement informational box.
 
-    ![SQL Worksheet.](./images/moviestream-sql-worksheet.png " ")
+    ![The SQL Worksheet is displayed.](./images/sql-worksheet-moviestream.png =65%x*)
 
-## Task 2: Connect Autonomous Database to an AI Provider and Create an AI Profile
+## Task 2: Connect Autonomous Database to an AI provider and create an AI Profile
 
 ### Background
+
 There are 3 things to do in order to connect Autonomous Database to an AI provider:
-1. Grant the **`MOVIESTREAM`** user network access to the AI provider endpoint
+1. Grant the `MOVIESTREAM` user network access to the AI provider endpoint
 2. Create a credential containing the secret used to sign requests to the AI provider
 3. Create a Select AI profile (see below for more details) 
 
 >**Note:** All of these steps have already been done for accessing OCI GenAI when you deployed your Autonomous Database. You can review the deployment steps below. You will need to execute these steps when connecting to non-Oracle AI providers.
 
 A Select AI profile encapsulates connection information for an AI provider. This includes: 
-
 1. A security credential (e.g. the resource principal for OCI GenAI or a credential that captures a secret for a 3rd party AI provider)
 2. The name of the provider
 3. The name of the LLM (optional)
@@ -93,21 +82,19 @@ You can create as many profiles as you need, which is useful when comparing the 
 
 For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_AI\_Package] (https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) in the Using Oracle Autonomous Database Serverless documentation. 
 
-
-### **Connect to one of the following AI providers using each provider's default model**:
+### Connect to one of the following AI providers using each provider's default model:
 
 <details>
     <summary>**OCI Generative AI** (default)</summary>
+1. Grant `MOVIESTREAM` network access to the endpoint:
 
-1. Grant the **`MOVIESTREAM`** user network access to the endpoint.
+    This is not required when using OCI GenAI    
 
-    **Note:** This is not required when using **OCI GenAI**
+2. Create a credential:
 
-2. Create a credential as follows:
+    The workshop deployment step already set up a resource principal for your database and enabled the `MOVIESTREAM` user to use that principal (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource (i.e. your ADB instance) needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
 
-    The workshop deployment step already set up a resource principal for your database and enabled the **`MOVIESTREAM`** user to use that principal (for more information, see [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/resource-principal.html#GUID-E283804C-F266-4DFB-A9CF-B098A21E496A)). This means that the ADB resource (i.e. your ADB instance) needs access to OCI Generative AI. The OCI policy you created in the previous lab authorized that access.
-
-3. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. Next, click the **Run Script** icon. 
+3. Create a Select AI profile
 
     ```sql
     <copy>
@@ -116,7 +103,7 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
     dbms_cloud_ai.drop_profile(
         profile_name => 'genai',
         force => true
-    );    -- Create an AI profile that uses the default LLAMA model on OCI
+        );    -- Create an AI profile that uses the default LLAMA model on OCI
 
     dbms_cloud_ai.create_profile(
         profile_name => 'genai',
@@ -137,22 +124,22 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
     );
     end;
     /
-    </copy> 
+    </copy>  
     ```
 
-    ![Create AI Profile.](./images/create-ai-profile.png " ")
+    ![Create AI Profile.](./images/create-ai-profile-tenancy.png " ")
 
     >**Note:** The **region** attribute indicates the location of the Generative AI cluster that you want to use. 
     The default region is **`us-chicago-1`**. If you are using another region such as Frankfurt, **`eu-frankfurt-1`**, replace the **`us-chicago-1`** region's attribute value in the above code with **`eu-frankfurt-1`**. For the current list of regions with OCI Generative AI, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
+
 
 </details>
 
 <details>
     <summary>**OpenAI**</summary>
-You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models.
+You will need a [paid OpenAI account](https://platform.openai.com/docs/overview) and [an API key](https://platform.openai.com/docs/quickstart) in order to use OpenAI GPT models. 
 
-1. Grant the **`MOVIESTREAM`** user network access to the OpenAI endpoint.
-
+1. Grant MOVIESTREAM network access to the OpenAI endpoint.    
     ```sql
     <copy>
     BEGIN
@@ -167,7 +154,7 @@ You will need a [paid OpenAI account](https://platform.openai.com/docs/overview)
     </copy>
     ```
 
-2. Create a credential.
+2. Create a credential
     ```sql
     <copy>
     BEGIN                                                                          
@@ -181,8 +168,7 @@ You will need a [paid OpenAI account](https://platform.openai.com/docs/overview)
     </copy>
     ```
 
-3. Create a Select AI profile.
-
+3. Create a Select AI profile
     ```sql
     <copy>
     BEGIN
@@ -223,7 +209,7 @@ You will need an Azure subscription and an [Azure OpenAI resource](https://learn
 
 You will also need the Azure OpenAI deployment name. In that same portal page, navigate to **Resource Management -> Model Deployments** and click **Manage Deployments**. Copy the **Deployment name** for your GPT model.
 
-1. Grant the **`MOVIESTREAM`** user network access to the Azure OpenAI resource endpoint.    
+1. Grant MOVIESTREAM network access to the Azure OpenAI resource endpoint.    
     ```sql
     <copy>
     BEGIN
@@ -238,7 +224,7 @@ You will also need the Azure OpenAI deployment name. In that same portal page, n
     </copy>
     ```
 
-2. Create a credential.
+2. Create a credential
     ```sql
     <copy>
     BEGIN                                                                          
@@ -252,7 +238,7 @@ You will also need the Azure OpenAI deployment name. In that same portal page, n
     </copy>
     ```
 
-3. Create a Select AI profile.
+3. Create a Select AI profile
     ```sql
     <copy>
     begin    
@@ -291,7 +277,7 @@ You will also need the Azure OpenAI deployment name. In that same portal page, n
     <summary>**Google Gemini**</summary>
 You will need a [Google AI Studio account](https://ai.google.dev) and [an API key](https://aistudio.google.com/app/apikey) in order to use Google Gemini. 
 
-1. Grant the **`MOVIESTREAM`** network access to the Google Gemini endpoint. 
+1. Grant MOVIESTREAM network access to the Google Gemini endpoint.    
     ```sql
     <copy>
     BEGIN
@@ -306,7 +292,7 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     </copy>
     ```
 
-2. Create a credential.
+2. Create a credential
     ```sql
     <copy>
     BEGIN                                                                          
@@ -320,8 +306,7 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     </copy>
     ```
 
-3. Create a Select AI profile.
-
+3. Create a Select AI profile
     ```sql
     <copy>
     begin    
@@ -352,14 +337,14 @@ You will need a [Google AI Studio account](https://ai.google.dev) and [an API ke
     /    
     </copy> 
     ```
-
 </details>
 
-## Task 3: Test the AI Profile
+
+## Task 3: Test the AI profile
 
 We will use the Select AI PL/SQL API to generate a response from the AI model. This example is using the **chat** action. It is not using any private data coming from your database.
 
-1. Test the LLM and learn about Autonomous Database as the **`MOVIESTREAM`** user. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon. Your answer may differ!
+1. Test the LLM and learn about Autonomous Database as the MOVIESTREAM user. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script** icon. Your answer may differ!
 
     ```
     <copy>
@@ -385,17 +370,15 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-  * **Authors:**
-    * Marty Gubar, Product Management
-    * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, May 2025
+  * **Author:** Marty Gubar, Product Management 
+  * **Last Updated By/Date:** Marty Gubar (Retired), August 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2025  Oracle Corporation.
+Copyright (c) 2024  Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled [GNU Free Documentation License](https://oracle-livelabs.github.io/adb/shared/adb-15-minutes/introduction/files/gnu-free-documentation-license.txt)
+A copy of the license is included in the section entitled [GNU Free Documentation License](files/gnu-free-documentation-license.txt)

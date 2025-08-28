@@ -33,23 +33,33 @@ This lab assumes you have:
 - Your data values may be different than those shown in the screenshots.
 - Please ignore the dates for the data and database names. Screenshots are taken at various times and may differ between labs and within labs. 
 
-## Task 1: Configure auditing and alerts for your target database
+## Task 1: Configure Auditing and Alerts for your Target Database
 
-1. Return to the browser tab for Oracle Data Safe. In the breadcrumb at the top of the page, click **Data Safe**.
+1. Return to the **Oracle Data Safe** browser tab. In the breadcrumbs at the top of the page, click **Data Safe**.
 
-2. Under **Data Safe**, click **Activity auditing**.
+    ![Click Data Safe in breadcrumbs](images/click-data-safe-aiw2025.png " ")
+    
+    The **Data Safe** page is displayed.
+
+2. In the **Security center**, click **Activity auditing**.
+
+    ![Click Activity auditing](images/click-activity-auditing-aiw2025.png " ")
+
+    The **Activity auditing** page is displayed.
 
 3. Click **Configure auditing and alerts** to start the Activity Auditing wizard.
 
-4. For **Alert policy**, do the following to enable alert policies, and then click **Next**.
+    ![Click Configure auditing and alerts](images/configure-auditing-alerts-aiw2025.png " ")
 
-    a) If needed, click **Change Compartment** and select your compartment.
+4. For **Alert policy**, perform the following to enable alert policies, and then click **Next**.
+
+    a) If needed, click the **Change Compartment** link and select your assigned compartment.
     
-    b) Select your target database. The list of available alert policies is displayed.
+    b) Select your target database from the **Target Database** drop-down list. The list of available alert policies is displayed.
 
     c) Select the **Failed logins by admin user** and **User creation/modification** alert policies to enable them.
 
-   ![Activity Auditing wizard - Alert Policy](images/activity-auditing-wizard-alert-policy.png "Activity Auditing wizard - Alert Policy")
+   ![Activity Auditing wizard - Alert Policy](images/activity-auditing-wizard-alert-policy.png " ")
     
 5. For **Audit policy**, select the following audit policies to enable them, and then click **Next**.
 
@@ -59,25 +69,21 @@ This lab assumes you have:
    
    c) Under **Admin activity auditing**, select **Admin user activity**.
    
-   d) Under **Custom policies**, select **APP\_USER\_NOT\_APP\_SERVER**.
-
     ![Activity Auditing wizard - Audit Policy top](images/activity-auditing-wizard-audit-policy.png "Activity Auditing wizard - Audit Policy top")
 
-    ![Activity Auditing wizard - Audit Policy bottom](images/activity-auditing-wizard-audit-policy2.png "Activity Auditing wizard - Audit Policy bottom")
+6. For **Audit trails**, select the following to start collecting audit data, and then click **Next**.
 
-6. For **Audit trails**, do the following to start collecting audit data, and then click **Next**.
-
-    a) Select **UNIFIED\_AUDIT\_TRAIL: NOT_STARTED**.
+    a) Select **`UNIFIED_AUDIT_TRAIL`**: `NOT_STARTED`.
 
     b) For the start date, select the beginning of your current month.
 
     ![Activity Auditing wizard - Audit trails](images/activity-auditing-wizard-audit-trails.png "Activity Auditing wizard - Audit Trails")
 
-7. For **Audit profile**, configure the following, and then click **Next**.
+7. For **Audit profile**, select the following configuration, and then click **Next**.
 
-    - Audit data online retention months = 12
-    - Audit data offline retention months = 0
-    - This will override the global retention settings = Yes
+    - Audit data online retention months = `12`
+    - Audit data offline retention months = `0`
+    - This will override the global retention settings, please confirm = `Yes`
     - Paid usage = not selected
 
     ![Activity Auditing wizard - Audit profile](images/activity-auditing-wizard-audit-profile.png "Activity Auditing wizard - Audit profile")
@@ -91,61 +97,56 @@ This lab assumes you have:
 
     ![Activity Auditing wizard - Review and submit](images/activity-auditing-wizard-review-submit.png "Activity Auditing wizard - Review and submit")
 
-    ![Activity Auditing wizard - Review and submit](images/activity-auditing-wizard-review-submit2.png "Activity Auditing wizard - Review and submit")
-
 9. For **Audit configuration progress**, wait until the alert and audit policies are provisioned and the audit trail is started. 
     
-    ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress2.png "Activity Auditing wizard - Audit configuration progress")
+    ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress.png "Activity Auditing wizard - Audit configuration progress")
     
-
 10. Click **Close**.
 
+## Task 2: Perform Activities on your Target Database to Generate Audit Data
 
-## Task 2: Perform activities on your target database to generate audit data
-
-In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, sign in and create a user account.
+In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, you will sign in as the `ADMIN` user and create a new user account.
 
 1. Return to the SQL worksheet in Database Actions.
 
-2. Sign out of Database Actions.
+2. Sign out of Database Actions. The **Sign-in** page is displayed.
 
-    The **Sign-in** page is displayed.
+3. In the **Username** field, enter `ADMIN`.
 
-3. In the **Username** box, enter `ADMIN`.
+4. In the **Password** field, enter an incorrect password twice, and then click **Sign in**. An **Invalid credentials** message is displayed after each invalid sign in attempt.
 
-4. Do this twice: Enter an incorrect password, and then click **Sign in**. 
-
-    An **Invalid credentials** message is displayed.
-
-    ![Invalid database password message](images/invalid-database-password.png "Invalid database password message")
+    ![Invalid database password message](images/invalid-database-password.png =60%x*)
 
 5. Enter the correct password, and click **Sign in**.
 
-    If you are using a Sandbox environment, you can find the database password in the LiveLabs reservation.
+6. The SQL Worksheet is displayed. If not, click the **Development** > **SQL** tabs. Next, click **SQL**.
 
-6. If needed, click the **SQL** tile.
-
-7. Clear the worksheet, and then paste the following SQL script. Replace `your-password` with a password of your choice. The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character.
+7. Clear the worksheet (click the **Clear** icon), and then paste the following SQL script. Replace `your-password` with a password of your choice. _The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character_.
 
     ```
-    <copy>drop user MALFOY cascade;
-    create user MALFOY identified by your-password;
-    grant PDB_DBA to MALFOY;</copy>
+    <copy>DROP USER malfoy CASCADE;
+    CREATE USER malfoy IDENTIFIED BY your-password;
+    GRANT PDB_DBA TO malfoy;
+    </copy>
     ```
 
+8. Click the **Run Script** icon on the toolbar.
 
-8. On the toolbar, click the **Run Script** button and wait for the script to finish running. 
+9. In the **Script Output** tab, verify that the `MALFOY` user was successfully dropped and then recreated.
 
-9. In the script output, verify that the `MALFOY` user was successfully dropped and then recreated.
+    ![Drop and create user](images/drop-create-user.png " ")
 
-10. Return to the browser tab for Oracle Data Safe and wait a couple of minutes for Oracle Data Safe to produce the alerts.
+10. Return to the browser tab for **Oracle Data Safe** and wait a couple of minutes for Oracle Data Safe to produce the alerts.
 
+## Task 3: Review Alerts in Oracle Data Safe
 
-## Task 3: Review alerts in Oracle Data Safe
+1. In the **Security center** section on the left, click **Alerts**.
 
-1. Under **Security center** on the left, click **Alerts**.
+    ![Click Alerts](images/click-alerts.png " ")
 
-2. Under **Filters** on the left, select your target database.
+2. In the **Filters** section on the left, select your target database.
+
+    ![Select Target database](images/select-target-database.png =45%x*)
 
 3. Review the alerts dashboard.
 
@@ -155,35 +156,36 @@ In this task, you perform activities on your target database in Database Actions
     - The **Alerts summary** tab shows the number of critical, high, and medium alerts along with target database counts. It also shows you the total number of alerts and target databases. 
     - The **Targets summary** tab shows the number of open, critical, high, and medium alerts.
 
-    ![Alerts dashboard charts](images/alerts-dashboard-charts.png "Alerts dashboard charts")
-    ![Alerts summary tab](images/alerts-dashboard-alerts-summary-tab.png "Alerts summary tab")
-    ![Targets summary tab](images/alerts-dashboard-targets-summary-tab.png "Targets summary tab")
+        ![Alerts dashboard charts](images/alerts-dashboard-charts.png "Alerts dashboard charts")
+    
+        ![Targets summary tab](images/alerts-dashboard-targets-summary-tab.png "Targets summary tab")
 
 
-4. Under **Related resources**, click **Reports**.
+4. In the **Related resources** section, click **Reports**.
 
 5. In the **Report name** column on the right, click the **All alerts** report and review it.
+
+    ![All Alerts report](images/all-alerts-report.png " ")
 
     - The report is automatically filtered to show you all alerts for all target databases in the selected compartment for the past one week. To create filters, you can use the **+ Another filter** button or the **SCIM query builder**. 
     - You can view several totals, including the total number of target databases; total number of open and closed alerts, the total number of critical, high, medium, and low alerts; and the total number of alerts. You can click the **Targets** total to view the list of target databases. You can click the other totals to toggle a filter on the list of alerts.
     - At the bottom of the report, you can view the list of alerts. By default, the table shows you the alert name, alert status, alert severity, target databases on which the audited event occurred, when the alert was created, and the alert policy rule name.
     - You have options to create a PDF or XLS report, create a custom report, schedule a custom report, open and close alerts, and specify which table columns you want displayed on the page.
 
-    ![All alerts report top](images/all-alerts-report-top.png "All alerts report top")
-    ![All alerts report bottom](images/all-alerts-report-bottom.png "All alerts report bottom")
+        ![All alerts report top](images/all-alerts-report-full.png " ")
+    
+## Task 4: Review Audit Events in Oracle Data Safe
 
+1. In the **Security center** section, click **Activity auditing**.
 
-## Task 4: Review audit events in Oracle Data Safe
-
-1. On the left under **Security center**, click **Activity auditing**.
-
-2. From the **Target databases** drop-down list on the left, select your target database. 
+2. In the **Filters** section, select your target database from the **Target databases** drop-down list. 
 
 3. On the **Events summary** tab, click one of the event categories, for example, **Login failures by admin** to view more detail.
-   
-    ![Login failures report - top](images/login-failures-top.png "Login failures report - top")
-    ![Login failures report - bottom](images/login-failures-bottom.png "Login failures report - bottom")
 
+    ![Events tab](images/events-tab.png " ")
+    
+   
+    ![Login failures report - top](images/login-failures.png " ")
 
 You may now **proceed to the next lab**.
 
@@ -194,6 +196,8 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author:** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+- **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
+- **Contributors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+    * Michelle Malcher, Director, Product Management  
 - **Last Updated By/Date:** - Lauran K. Serhal, August 2025

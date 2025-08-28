@@ -37,33 +37,35 @@ In this lab, you'll:
 
 - This lab requires completion of the Provision an Autonomous Database lab in the **Contents** menu on the left.
 
-## Task 1: Navigate to Database Metrics
+## Task 1: Navigate to the Database Monitoring Tab
 
-The first facility that we will look at for monitoring your autonomous database is the Database Metrics display located conveniently at the bottom of the Autonomous Database details page.
+The first facility that we will look at for monitoring your autonomous database is the Database **Monitoring** tab on the Autonomous Database details page.
 
-1. On your **`ADW_Finance_Mart`** **Autonomous Database details** page, scroll down to the **Metrics** section.
+1. On your **`ADW_Finance_Mart`** Autonomous Database details page, scroll to the right of the page to the **Monitoring** tab.
 
-    ![Scroll down to Metrics](images/scroll-down-to-metrics.png " ")
+    ![Scroll right to the Monitoring tab ](images/scroll-right-to-monitoring.png =65%x*)
 
 ## Task 2: Examine the Database Metrics
 
-The **Metrics** section displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
+The **Monitoring** tab displays an initial set of 8 graphs to examine database metrics. There are links to drill down to many additional graphs.
 
-1. Scroll through the 8 initial graphs: CPU Utilization, Storage Utilization, Sessions, Execute Count, Running Statements, Queued Statements, Database Availability, and Failed Connections.
+1. Scroll through the 8 initial graphs: **CPU utilization**, **Storage utilization**, **Sessions**, **Execute count**, **Running statements**, **Queued statements**, **Database availability**, and **Failed connections**.
+
+    ![Scroll down to Metrics eight initial graphs](images/scroll-down-to-metrics-eight-initial-graphs.png =65%x*)
 
     The time period displayed on the metrics screen can also be easily changed to reflect your desired time period.
 
-    ![Scroll down to Metrics eight initial graphs](images/scroll-down-to-metrics-eight-initial-graphs.png " ")
+    ![Click Applied filters to change time period](images/change-time-period.png =45%x*)
 
 2. Click the **View all database metrics** link to examine many additional graphs of database metrics: Transaction Count, Current Logons, User Calls, Parse Count, Failed Logons, Failed Connections, Connection Latency, Query Latency, CPU Time, User Commits, User Rollbacks, Redo Size, Session Logical Reads, DB Block Changes, Physical Reads, Physical Writes, Physical Read Total Bytes, Physical Write Total Bytes, Parse Count (Hard), Parse Count (Failures), Bytes Received via SQL\*Net from DBLink, Bytes Sent via SQL\*Net to DBLink, Bytes Received via SQL\*Net from Client, Bytes Sent via SQL\*Net to Client, APEX Page Events, and APEX Page Load Time.
 
-    ![Click View all database metrics](images/click-view-all-database-metrics.png " ")
+    ![Click View all database metrics](images/click-view-all-database-metrics.png =65%x*)
 
 ## Task 3: Examine the Database Actions Database Dashboard
 
 You can also view this monitoring information with more detailed tools provided in the **Database Actions Launchpad**.
 
-1. Go back to the **Autonomous Database details** page. Click the **Database actions** drop-down list, and then click **View all database actions**.
+1. Go back to your Autonomous Database details page. Click the **Database actions** drop-down list, and then click **View all database actions**.
 
     ![Click View all database actions.](images/click-view-all-database-actions.png " ")
 
@@ -71,44 +73,44 @@ You can also view this monitoring information with more detailed tools provided 
 
     The **Database Actions Launchpad** page is displayed.
 
-    ![The Launchpad page is displayed.](images/launchpad.png " ")
+    ![The Launchpad page is displayed.](images/launchpad.png =65%x*)
 
 2. Click the **Monitoring** tab, and then click the **Database Dashboard** tab.
 
-    ![In Database Actions Launchpad, click the Monitoring > Database Dashboard tabs.](images/click-monitoring-database-dashboard.png " ")
+    ![In Database Actions Launchpad, click the Monitoring > Database Dashboard tabs.](images/click-monitoring-database-dashboard.png =65%x*)
 
 3. The **Database Dashboard** is displayed with the **Overview** tab selected by default. This page gives an overview of the storage allocation and usage, CPU utilization, running SQL statements, the number of allocated ECPUs, and SQL statement response time.
 
-    ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png " ")
+    ![Examine the components of Database Dashboard overview tab](images/database-actions-overview-tab.png =65%x*)
 
 4. Select the **Monitor** tab at the top of the page to view this information in real time or for a specific time period. The **Monitor** tab opens initially in the **Real time** view.
 
-    ![Examine the components of Database Dashboard Monitor tab in real time](images/database-actions-monitor-tab-real-time.png " ")
+    ![Examine the components of Database Dashboard Monitor tab in real time](images/database-actions-monitor-tab-real-time.png =65%x*)
 
 4. When you click the **Time period** view, you can use the **calendar** to look at a specific time period. You can also use the **time slider** to change the period for which performance data is shown.
 
-    ![Examine the components of Database Dashboard Monitor tab in a time period](images/database-actions-monitor-tab-time-period.png " ")
+    ![Examine the components of Database Dashboard Monitor tab in a time period](images/database-actions-monitor-tab-time-period.png =65%x*)
 
 ## Task 4: View Performance Data from the Performance Hub
 You can view real-time and historical performance data from the Performance Hub. Performance Hub shows information about Active Session History (ASH) analytics and SQL monitoring.
 
 1. Click the **Database Actions | Database Dashboard** in the banner to display the **Launchpad** page. Click the **Monitoring** tab, and then click the **Performance Hub** tab.
 
-    ![Access Performance Hub from the Database Actions Launchpad Monitoring section](images/click-performance-hub-in-database-actions.png " ")
+    ![Access Performance Hub from the Database Actions Launchpad Monitoring section](images/click-performance-hub-in-database-actions.png =65%x*)
 
     >**Note:** You can also access the **Performance Hub** from the **Autonomous Database details** page.
 
-    ![Access Performance Hub from the Autonomous Database details](images/click-performance-hub-in-details-page.png " ")
+    ![Access Performance Hub from the Autonomous Database details](images/click-performance-hub-in-details-page.png =65%x*)
 
 2. The **Performance Hub** page is displayed. At the top of the page you can select the time range to display, followed by the Activity Summary, which is displayed in Database Time in units of average active sessions.
 
-    ![Examine the top of the Performance hub page](images/top-of-performance-hub-page.png " ")
+    ![Examine the top of the Performance hub page](images/top-of-performance-hub-page.png =65%x*)
 
 3. Continuing down the page, you can view Active sessions history analytics and SQL monitoring.
 
     The **ASH Analytics** tab shows the average active sessions.
 
-    ![Examine the ASH Analytics tab](images/performance-hub-ash-analytics.png " ")
+    ![Examine the ASH Analytics tab](images/performance-hub-ash-analytics.png =65%x*)
 
 4. Click the **SQL Monitoring** tab. Each SQL statement can be inspected for further details. Here you can see the status, duration, SQL ID, SQL Plan Hash, and the user who created the statement. You can also see if parallelism was used, the resources consumed, and the SQL text.
 
@@ -116,23 +118,23 @@ You can view real-time and historical performance data from the Performance Hub.
 
     To terminate a running or queued SQL statement, click **Kill Session**.
 
-    ![Examine the SQL Monitoring tab](images/performance-hub-sql-monitoring.png " ")
+    ![Examine the SQL Monitoring tab](images/performance-hub-sql-monitoring.png =65%x*)
 
-5. If you open the Performance Hub from the **Autonomous Database details** page rather than from the **Database Actions Launchpad**, some additional information is available.
+5. If you open the Performance Hub from the **Autonomous Database details** page rather than from the **Database Actions Launchpad** like in our example, some additional information is available.
 
     The Automatic Workload Repository (AWR) collects, processes, and maintains performance statistics for problem detection and self-tuning purposes. This data is stored in both memory and the database. From the Performance Hub, you can generate and download a report of the gathered data.
 
     From the **Reports** drop-down list, select **Automatic Workload Repository**.
 
-    ![Select Automatic Workload Repository from Reports drop-down list](images/select-awr-from-reports-menu.png " ")
+    ![Select Automatic Workload Repository from Reports drop-down list](images/select-awr-from-reports-menu.png =65%x*)
 
 6. In the **Generate Automatic Workload Repository Report** dialog, select the Start Snapshot and End Snapshot time range. After you select the time range, click **Download**.
 
-    ![Select a time range and generate the report](images/generate-awr-report.png " ")
+    ![Select a time range and generate the report](images/generate-awr-report.png =65%x*)
 
-7. Use the **Save As** dialog to specify where to download the report's HTML file to your local computer. Click the downloaded HTML file to view the lengthy, detailed report.
+7. On our MS-Windows machine and Chrome browser, the report is downloaded to our downloads folder. Click the downloaded HTML file to view the lengthy, detailed report.
 
-    ![Download and view the report](images/view-amr-report.png " ")
+    ![Download and view the report](images/view-amr-report.png =65%x*)
 
 ## Task 5: Examine the OCI Monitoring Console
 
@@ -186,4 +188,4 @@ You may now **proceed to the next lab**.
 ## **Acknowledgements**
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Last Updated By/Date:** Lauran K. Serhal, August 2025

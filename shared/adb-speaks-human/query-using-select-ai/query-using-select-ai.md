@@ -151,27 +151,25 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 
 1. If you are still connected to your SQL Worksheet as the **`moviestream`** user from the earlier lab, sign out of this user using the drop-down list next to the user name in the banner. 
 
-    ![Sign out of moviestream](./images/signout-moviestream.png " ")
-
 2. On the **Sign-in** page, sign in as the **`ADMIN`** user. 
 
-    ![Sign in as admin](./images/signin-admin.png =70%x*)
+    ![Sign in as admin](./images/signin-admin-tenancy.png =70%x*)
 
 3. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **Machine Learning** tab.
 
-    ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
+    ![Click the Oracle Machine Learning card](./images/oml-tab-tenancy.png " ")
 
-4. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 4 > Step 8** in the **Password** field, and then click **Sign In**.
+4. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** value that you saved in **Lab 1 > Task 3 > Step 8** in the **Password** field, and then click **Sign In**. 
 
-    ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
+    ![Enter credentials on the Sign In page](./images/oml-sign-in-tenacy.png " ")
 
     The **Oracle Machine Learning** Home page is displayed. You can use this landing page to access tutorials, model creation, notebooks, and much more.
 
-    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-new.png " ")
+    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-tenancy.png " ")
 
 5. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
 
-    ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
+    ![The Notebooks page is displayed](./images/notebooks-page-displayed-tenancy.png " ")
 
 ## Task 3: Import a Notebook into OML
 
@@ -187,7 +185,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     If the import is successful, a notification is displayed and the **`adb-speaks-human-notebook`** notebook is displayed in the list of available notebooks.
 
-    ![The newly imported notebook is displayed.](./images/import-successful.png " ")
+    ![The newly imported notebook is displayed.](./images/import-successful-tenancy.png " ")
 
 3. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
@@ -243,9 +241,10 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Authors:**
+    * Marty Gubar (Retired), Product Management
+    * Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, August 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
