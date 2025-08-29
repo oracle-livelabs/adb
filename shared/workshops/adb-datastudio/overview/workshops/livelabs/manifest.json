@@ -25,8 +25,8 @@
             "filename": "../../../common/create-user.md"
         },
         {
-          "title": "Lab 3: Load demo data",
-          "description": "Load demo data for the Data Studio overview workshop",
+          "title": "Lab 3: Prepare Database",
+          "description": "Prepare Autonomous database for the Data Studio overview workshop",
           "type": "livelabs",
           "filename": "../../3-demo-data.md"
         },
@@ -37,22 +37,22 @@
           "filename": "../../4-understand-requirements.md"
         },
         {
-            "title": "Lab 5: Browse database objects",
-            "description": "Use Data Catalog to browse database objects",
+            "title": "Lab 5: Overview of Data Studio tools",
+            "description": "Overview of Data Studio tools",
             "type": "livelabs",
-            "filename": "../../5-browse-objects.md"
+            "filename": "../../5-datastudio-overview.md"
         },
         {
-          "title": "Lab 6: Load additional data",
-          "description": "Use Load Data to load additional data sets",
+          "title": "Lab 6: Browse data sets and Load additional data",
+          "description": "Browse data sets and Load additional data",
           "type": "livelabs",
-          "filename": "../../6-load-data.md"
+          "filename": "../../6-browse-load-data.md"
         },
         {
           "title": "Lab 7: Transform and prepare data",
           "description": "Use Data Transforms to transform and prepare data",
           "type": "livelabs",
-          "filename": "../../7-transform-data.md"
+          "filename": "../../7-transform-data_prepopulated_rep.md"
         },
         {
           "title": "Lab 8: Analyze data",
@@ -68,7 +68,7 @@
         },
         {
           "title": "Lab 10: Wrap up",
-          "description": "Wrap up and clean demo data",
+          "description": "Summarizing the workshop",
           "type": "livelabs",
           "filename": "../../10-wrap-up.md"
         },

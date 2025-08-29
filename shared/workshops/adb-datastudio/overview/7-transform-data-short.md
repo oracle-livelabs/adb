@@ -7,9 +7,10 @@ This lab introduces the Data Transforms application built into the Oracle Autono
 
 Estimated Time: 20 minutes
 
+<!--
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_t22mdnao)
-
+-->
 
 ### Objectives
 
@@ -103,7 +104,7 @@ Now we are ready to prepare the data.
 
 ## Task 3: Import table definitions
 
-1.  Before you work on any project you need to have table definitions for the tables you will be working on. You can import the definitions from your connections. You can also manually create the definitions if you are creating new tables. In our lab we are simply working on the tables already present in our Autonomous database. Some entities are already present in our pre-provisioned environment but not all. Click on **Data Entities** on the left side to look at available tables. Then click on **Import Data Entities** and select connection and schema QTEAM. Click **Start**.
+1.  Before you work on any project you need to have table definitions for the tables you will be working on. You can import the definitions from your connections. You can also manually create the definitions if you are creating new tables. In our lab we are simply working on the tables already present in our Autonomous Database. Some entities are already present in our pre-provisioned environment but not all. Click on **Data Entities** on the left side to look at available tables. Then click on **Import Data Entities** and select connection and schema QTEAM. Click **Start**.
     
     ![screenshot of the connection menu](images/image17_import_entity.png) 
 
