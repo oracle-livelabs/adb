@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Before you learn and create your own Select AI Agents, this quick lab is your hands-on tour of the demo app that showcases the agentic chatbot running on Oracle Autonomous Database using Select AI. You’ll open the app, peek at the settings, pick an AI Agent, and try a few prompts—no heavy setup, just click and chat.
+Before you create your own Select AI agents, this quick lab is your hands-on tour of the demo chatbot app that showcases the agentic chatbot running on Oracle Autonomous Database using Select AI Agent. While we’ll focus on interacting with an agent team, the chatbot also supports asking natural language questions of your database data and received LLM responses enhanced with your private document content using retrieval augmented generation (RAG). You’ll open the app, review at the settings, pick an AI Agent, and try a few prompts—no heavy setup, just click and chat.
 
 
 Estimated Time: 10 minutes.
@@ -25,7 +25,7 @@ In this lab, you will:
 
     [Ask Oracle Chatbot](https://g0a51db2590de87-selectaiagentdb.adb-stable.us-ashburn-1.oraclecloudapps.com/ords/r/appstore/askoracle102/home)
 
-    Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **Ask Oracle** page, enter the username (`appstoreuser3`) and password (`Welcome12345`), and then click **Sign In**.
+    Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **Ask Oracle** page, enter the username (`select_ai_user`) and password (`Welcome12345`), and then click **Sign In**.
 
     ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
 
@@ -35,43 +35,53 @@ In this lab, you will:
 3. Click **Settings** from the menu. 
     ![Select Settings](./images/settings.png =70%x*)
 
-4. Choose your AI Agent by clicking on the **AI Agents**. Pick an agent to answer your questions. 
+4. Choose your AI Agent by clicking on the **AI Agents**. Pick the agent team **Sales Return Agent Team** and click the **x** in the upper right to close the settings dialog. Notice that the bottom right indicates that the selected profile is **[Sales Return Agent Team]**.
 
     ![Select AI application displayed](./images/ai-agents.png =70%x*)
 
     The Ask Oracle Chatbot using Select AI application is re-displayed. You are now ready to ask questions at the **Ask question** prompt!
 
 
-## Task 2: Ask Natural Language and Database Questions Using the Application
+## Task 2: Interact with the Sales Return Agent
 
-You can use this application to ask the following types of questions:
+For example, follow this script:
+- “I want to return a smartphone case”
+- “The item is defective”
+- “I will need a replacement”
+- “I'm Bob Martinez and my order number is 7820”
+- “No thank you”
 
-- **Ask the Internet Using your LLM Provider:**
-_Uncheck the **Ask Database** checkbox_ to ask general free form questions (internet-based) about anything such as _How do you make french toast?_. This question will go to the LLM Provider that you selected when you created the profile and returns the answer.
+## Task 3: (Optional) Ask Natural Language and Database Questions Using the Application
+
+You can use this application to interact with the LLM and your database in a variety of ways:
+
+- **Ask the LLM Directly:**
+_Uncheck the **Ask Database** checkbox_ and **Generate narrated result** _checkbox_ to ask general free form questions to your LLM about anything such as _What is Oracle Autonomous Database?_. This question will go to the LLM that you selected when you created the profile and returns the response.
 
   ![Ask the internet](./images/ask-internet.png =70%x*)
 
 - **Ask your Database :**
-_Select the **Ask Database** checkbox_ to ask questions about your business data based on the user and tables in the database that you specified when you created the profile.
+_Select the **Ask your Database** checkbox_ to ask questions about your database data based on the user and tables in the database that you specified when you created the profile.
 
   ![Ask the database](./images/ask-database.png =70%x*)
+
+  - **Generate narrated result:**
+  _Select the **Generate narrated result** checkbox_ to ask questions using retrieval augmented generation (RAG). Choose an AI profile that specifies a vector index. Ask questions relative to the corresponding vector index content for Select AI to augment your prompt with relevant content for the LLM. 
+
 
   <!---
   Where do you specify what LLM provider and database schema/tables to use when answering your questions? When you create the profile using **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL procedure, you specify the LLM provider, the credential, the schema, and the tables to use to answer your natural language questions on general data or your business data that is stored in your database.
 
   ![Create profile diagram](./images/create-profile-diagram.png " ")
 --->
-- **Generate narrated result :**
-_Select the **Generate narrated result** checkbox_ to ask questions so that Select AI can return a clear, plain-English summary with key insights or use AI agents that can reason over context, call tools, and return a summary of actions.
 
-Let's experiment a bit with both general data from the `internet`. 
-Let's find out how to make french toast. Enter your question using a free form format in the **Ask a Question** text box, and make sure that the **Ask Database** checkbox is not checked since this is a general internet question that will be handled by your LLM provider. Next, click the **Run Prompt** icon, or press **[ENTER]**.
+Let's experiment with  these. Let's find out about **Oracle Autonomous Database**. Enter your prompt using natural language in the prompt text box, and make sure that the **Ask your database** checkbox is not checked. Next, click the **Run Prompt** icon, or press [ENTER].
 
 **Note:** You can type your own natural language question. You don't have to use the exact question that we show in our examples.
 
 ![How to make french toast question](./images/french-toast-example.png =70%x*)
 
-A French toast recipe is displayed.
+A description of Oracle Autonomous Database is returned.
 
 <!---
 
@@ -88,7 +98,7 @@ A French toast recipe is displayed.
 You may now proceed to the next lab.
 
 ## Learn More
-* [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
+* [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/23/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
 * [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-000CBBD4-202B-4E9B-9FC2-B9F2FF20F246)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 

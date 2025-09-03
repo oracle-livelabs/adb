@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab focuses on part two of the solution : Better Experience - confirmation email preview. In this lab, you’ll add a standard reusable email component so the agent can present a confirmation message after a return is recorded.
+This lab focuses correcting the email generation from the previous lab. In this lab, you’ll add a standardized email function so the agent can present a consistent confirmation message after a return is recorded.
 
 Estimated Time: 30 minutes.
 
@@ -10,15 +10,16 @@ Estimated Time: 30 minutes.
 
 In this lab, you will:
 
-* Write and a PL/SQL function that composes a return-confirmation email.
-* Register an email task with clear instructions.
-* Create an agent that calls the email task to produce a ready-to-send email preview.
+* Write and test a PL/SQL function that composes a return-confirmation email.
+* Create a customer email tool that uses the function
+* Create a task over this tool with clear instructions.
+* Update the agent that calls the email task to produce a ready-to-send email preview.
 * Update the agent team to include the new task.
 * Run an end-to-end interaction and capture the email preview.
 
 ### Prerequisites
 
-- This lab requires completion of the first three labs in the **Contents** menu on the left.
+- This lab requires completion of all the previous labs in the **Contents** menu on the left.
 
 
 ## Task 1: Create a Function to Generate an Email
@@ -109,7 +110,7 @@ END;
 ```
 ## Task 2: Create an Email Tool
 
-You’ll create an email tool with clear instructions on what the tool should do and update the database with the order status and an email confirmation.
+You’ll create an email tool with clear instructions on what the tool should do.
 
 Create a build\_email\_tool and include the build\_return\_email function.
 
@@ -123,7 +124,9 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
     DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
         tool_name => 'build_email_tool',
         attributes => '{"instruction": "This tool constructs an email string using as input details from the customer interaction as to the product they want to return or get a refund.",
-                        "function" : "build_return_email"}',
+                        "function" : "build_return_email",
+                        "tool_inputs" : [{"name":"p_email_type",
+                                          "description" : "Only supported value is ''refund'' and ''replacement'' "}]}',
         description => 'Tool for updating customer order status in database table.'
     );
 END;
@@ -131,21 +134,34 @@ END;
 
 ## Task 3: Create an Email Task
 
-You'll create an email task and add the build\_email\_tool to the task. The task gathers fields from the attributes, calls the tool, to return a clean email preview.
+You'll create an email task and add the build\_email\_tool to the task. The task gathers fields from the attributes, calls the tool, and returns the email text to review.
 
 1. Create a Build\_Email\_Task.
 
 ```
 %script
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Build_Email_Task');
+BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
 EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 BEGIN
   DBMS_CLOUD_AI_AGENT.create_task(
-    task_name => 'Build_Email_Task',
-    attributes => '{"instruction": "Use the customer information and product details to build an email using the tool.",
-                    "tools": "build_email_tool"}'
+    task_name => 'Handle_Product_Return_Task',
+    attributes => '{"instruction": "Process a product return request from a customer:{query} ' || 
+                    '1. Ask customer the reason for return (no longer needed, arrived too late, box broken, or defective) ' || 
+                    '2. If no longer needed:' ||
+                    '   a. Inform customer to ship the product at their expense back to us.' ||
+                    '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
+                     '3. If it arrived too late:' ||
+                    '   a. Ask customer if they want a refund.' ||
+                    '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed ' || 
+                    '4. If the product was defective or the box broken:' ||
+                    '   a. Ask customer if they want a replacement or a refund' ||
+                    '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
+                    '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund. ' ||
+                    '5. Use Build_Email_Tool to generate a confirmation email for the return/refund request. Display the email to customer and ask them to confirm if the information in email is correct' ||
+                    '6. After the completion of a return or refund, ask if you can help with anything else. Say a friendly goodbye if user does not need help on anything else",
+                    "tools": ["Update_Order_Status_Tool", "Build_Email_Tool"]}'
   );
 END;
 ```
@@ -165,19 +181,19 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
 BEGIN                                                                 
   DBMS_CLOUD_AI_AGENT.create_team(  
     team_name  => 'Return_Agency_Team',                                                            
-    attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"},
-                               {"name" : "Customer_Return_Agent", "task" : "Build_Email_Task"}],
+    attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"}],
                     "process": "sequential"}');                                                                 
 END;
 ```
+
 ## Task 5: Interact with the Refined Agent - Part 2
-You can start interacting with the refined Select AI agent team by using a natural language prompt on the SQL command line. To do so, you must set the agent team for the current session.
+You can start interacting with the refined Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session.
 
 1. Set the agent team in the current session.
 
 ```
 %script
-
+EXEC DBMS_CLOUD_AI.set_conversation_id(NULL);  
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team'); 
 ```
 2. Interact with Return Agency in a series of natural language prompts.
@@ -189,7 +205,7 @@ select ai agent I want to return a smartphone backup storage;
 **Result:**
 ```
 RESPONSE
-What is the reason for your return? Is it because you no longer need it, it arrived too late, the box was broken, or it was defective?
+Could you please tell me the reason for returning the smartphone backup storage? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective? 
 ```
 
 ```
@@ -198,7 +214,7 @@ select ai agent It arrived too late;
 **Result:**
 ```
 RESPONSE
-Do you want a refund for the smartphone backup storage?
+I'm sorry to hear that the smartphone backup storage arrived too late. Would you like a refund for this item?
 ```
 
 ```
@@ -207,7 +223,7 @@ select ai agent Yes;
 **Result:**
 ```
 RESPONSE
-Could you please provide your name and order number so I can process the refund?
+Could you please provide me with your full name and the order number for the smartphone backup storage so I can process the refund?
 ```
 
 ```
@@ -215,14 +231,47 @@ select ai agent Carol Chen order number 7635;
 ```
 **Result:**
   ```
-  Is there anything else I can help you with today?
-  ```
+  RESPONSE                                                                                                                               
+Here is the confirmation email for your refund request:
 
-  ```
-  select ai agent No, nothing else;
-  ```
+Subject: Your Return Request for Order 7635 - smartphone backup storage
+Body:
+Dear Carol Chen,
 
+Thank you for contacting us regarding your return request!
 
+This email confirms that we have received your request to return the following item from order number 7635:
+
+Item: smartphone backup storage
+Reason for Return: arrived too late
+
+A full refund will be issued to the credit card on file. Please allow 7-10 business days for the refund to reflect in your account.
+
+Please let me know if you have any questions or if there is anything else I can assist you with.
+
+Thank you, and have a great day!
+
+Is all the information in this email correct? If not, please let me know what needs to be updated.
+```
+
+```
+select ai agent yes it is correct
+```
+**Result:**
+```
+
+RESPONSE
+I'm glad everything looks good with the email confirmation. Is there anything else I can help you with today?
+```
+```
+select ai agent No, thank you, nothing else;
+```
+**Result:**
+```
+
+RESPONSE
+I'm happy to have assisted you with the return process for the smartphone backup storage, Carol. If you think of anything else in the future, don't hesitate to reach out. Have a wonderful day! Goodbye!
+```
 ## Learn More
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)

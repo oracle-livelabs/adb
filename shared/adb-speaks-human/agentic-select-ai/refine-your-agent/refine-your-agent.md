@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab focuses on part two of the solution : Better Experience. In this lab, you’ll make the return flow feel personalized. After updating the order, the agent will compose a clear, polite confirmation email that could be sent to the customer.
+This lab focuses on refining the solution of the previous lab to achieve a better customer experience. In this lab, you’ll make the return flow feel personalized. After updating the order, the agent will compose a clear, polite confirmation email. But this has a problem, which we’ll address in the next lab.
 
 Estimated Time: 15 minutes.
 
@@ -22,7 +22,7 @@ In this lab, you will:
 
 ## Task 1: Refine the Role of the Customer Agent
 
-You'll make the agent concise, chatty, empathetic, and consistent by defining a clear role.
+You'll make the agent concise, chatty, empathetic, and consistent by defining an enhanced role.
 
 1. Refine the customer agent by redefining the role.
 
@@ -35,7 +35,7 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
 BEGIN
   DBMS_CLOUD_AI_AGENT.create_agent(
     'Customer_Return_Agent',
-    '{"profile_name": "GOOGLE",
+    '{"profile_name": "OCI_GENAI_GROK",
       "role": "You are a convivial and chatty experienced customer return agent who deals with customers return requests."}');
 END;
 ```
@@ -69,7 +69,7 @@ BEGIN
 END;
 ```
 
-## Task 3: Add New Task to the Agent Team
+## Task 3: Add the New Task to the Agent Team
 
 You'll add the Generate\_Email\_Task to the Return Agency team and ensure the team runs the return update first and then generates the email.
 
@@ -92,57 +92,86 @@ END;
 
 ## Task 4: Interact with the Refined Agent - Part 1
 
-You can start interacting with the refined Select AI agent team by using a natural language prompt on the SQL command line. To do so, you must set the agent team for the current session.
+You can start interacting with the refined Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session.
 
 1. Set the agent team in the current session.
 
 ```
+EXEC DBMS_CLOUD_AI.set_conversation_id(NULL);
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
 ```
 
-2. Interact with the Return Agency in a series of natural language prompts.
+2. Interact with the Return Agency Team in a series of natural language prompts.
 
 ```
-select ai agent I want to return a smartphone cord;
+select ai agent Hello Sales Return Agent;
 ```
 **Result:**
 ```
 RESPONSE
-What is the reason for returning the smartphone cord? Is it no longer needed, arrived too late, the box was broken, or is the product defective?
+Hello! I'm happy to assist with your return request. Could you please tell me the reason for the return? Is it because the product is no longer needed, arrived too late, the box is broken, or is it defective?
+```
+
+```
+select ai agent I want to return a smartphone cord;
+```
+
+**Result:**
+```
+RESPONSE
+Thanks for letting me know you're returning a smartphone cord. Could you please clarify the reason for the return? Is it because the product is no longer needed, arrived too late, the box is broken, or is it defective?
 ```
 
 ```
 select ai agent The box was broken;
 ```
-
 **Result:**
 ```
 RESPONSE
-Since the box was broken, would you prefer a replacement or a refund for the smartphone cord?
+I'm sorry to hear that the box for your smartphone cord was broken. Would you like a replacement or a refund for this item?
 ```
 
 ```
-select ai agent I''ll take a refund; 
+select ai agent I''ll take a refund;
 ```
 **Result:**
 ```
 RESPONSE
-Could you please provide your name and order number?
+I'm happy to process your refund for the smartphone cord. Could you please confirm your name and order number so I can update the status and provide you with a return shipping label to send the product back?
 ```
 
 ```
-select ai agent Eva Green with order number 5019;
+select ai agent I''m Eva Green with order number 5019
 ```
 **Result:**
 ```
-RESPONSE                                               
-Is there anything else I can assist you with today?
+RESPONSE
+Thank you, Eva. Your refund has been processed. Please print out the return shipping label that will be sent to you shortly, and use it to send the smartphone cord back to us. Is there anything else I can help you with?
 ```
+```
+select ai agent No, not at the moment
+```
+**Result:**
+```
+RESPONSE                                                                                                                                                                                                                                                                                                                                                               
+Subject: Return Confirmation for Order #5019 - Smartphone Cord
+
+Dear Eva Green,
+
+I hope this message finds you well. I'm writing to confirm the return of your smartphone cord from order number 5019. I understand that the box was broken, and I’m sorry for the inconvenience this has caused.
+
+As per your request, a refund will be issued to the credit card on record. You should see the amount reflected in your account within the next 5-10 business days, depending on your bank’s processing time. Additionally, a return shipping label has been sent to you. Please use this label to send the smartphone cord back to us at your earliest convenience.
+
+If you have any questions or need further assistance, don’t hesitate to reach out. We’re here to help!
+
+Thank you for choosing us, and we hope to serve you again in the future.
+
+Warm regards,  
+[Your Name]  
+Customer Return Agent  
+[Company Name]    
 
 ```
-select ai agent No, I''m all set
-```
-
 
 You may now proceed to the next lab.
 

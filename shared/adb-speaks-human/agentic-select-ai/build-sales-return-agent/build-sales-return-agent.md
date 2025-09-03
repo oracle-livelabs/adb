@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you’ll turn a common support flow, returning a purchased item, into an agentic workflow inside Oracle Autonomous Database using Select AI. The agent will converse with a customer, collect the reason for return, and run an update to the order record. You’ll then group the agent into a small team so it can run end‑to‑end with one call.
+In this lab, you’ll turn a common customer service workflow - returning a purchased item - into an agentic workflow using Oracle Autonomous Database Select AI. The agent will converse with you the customer, collect the reason for return, and run an update to the order record.
 
 Estimated Time: 30 minutes.
 
@@ -10,12 +10,12 @@ Estimated Time: 30 minutes.
 
 In this lab, you will:
 
-* Create a sample customer data and create a function to update the order status.
-* Register a tool that updates return status in the database.
+* Review the sample customer data and create a PL/SQL function to update the order status.
+* Create a tool that uses that function to update the return status in the database.
 * Create a task that coordinates the return action.
-* Define a Customer Agent that collects details and calls the task.
-* Assemble a Return Agency Team and run it using natural language prompt.
-* Use DBMS\_CLOUD\_AI\_AGENT.RUN\_TEAM function to run a multi‑step interaction.
+* Create a customer agent that defines the persona/role of the customer return agent.
+* Create an agent team and run it from the SQL command line, providing responses the agent’s questions.
+* Use DBMS\_CLOUD\_AI\_AGENT.RUN\_TEAM function to run a multi step interaction.
 
 ### Prerequisites
 
@@ -26,80 +26,22 @@ GRANT EXECUTE ON DBMS_CLOUD_AI TO <user>;
 GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <user>;
 ```
 
-## Task 1: Create a Customer Table
+## Task 1: Review a Customer Table
 
-You'll create a sample table for the scenario.
+You'll view the sample table for the scenario.
 
-1. Create a customer table.
-
-```
-%script
-
-BEGIN EXECUTE IMMEDIATE 'DROP TABLE customer';
-EXCEPTION WHEN OTHERS THEN NULL; END;
-/
-CREATE TABLE customer (
-    customer_id  NUMBER(10) PRIMARY KEY,
-    name         VARCHAR2(100),
-    email        VARCHAR2(100),
-    phone        VARCHAR2(20),
-    state        VARCHAR2(2),
-    zip          VARCHAR2(10)
-);
-
-INSERT INTO customer (customer_id, name, email, phone, state, zip) VALUES
-(1, 'Alice Thompson', 'alice.thompson@example.com', '555-1234', 'NY', '10001'),
-(2, 'Bob Martinez', 'bob.martinez@example.com', '555-2345', 'CA', '94105'),
-(3, 'Carol Chen', 'carol.chen@example.com', '555-3456', 'TX', '73301'),
-(4, 'David Johnson', 'david.johnson@example.com', '555-4567', 'IL', '60601'),
-(5, 'Eva Green', 'eva.green@example.com', '555-5678', 'FL', '33101');
-```
-2. View the contents of the table.
+1. View the contents of the customer table.
 
 ```
 select * from customer;
 ```
-3. Create a customer order return status table and insert the sample data.
 
-```
-BEGIN EXECUTE IMMEDIATE 'DROP TABLE customer_order_status';
-EXCEPTION WHEN OTHERS THEN NULL; END;
-/
-CREATE TABLE customer_order_status (
-    customer_id     NUMBER(10),
-    order_number    VARCHAR2(20),
-    status          VARCHAR2(30),
-    product_name    VARCHAR2(100)
-
-);
-
-INSERT INTO customer_order_status (customer_id, order_number, status, product_name) VALUES
-(1, '4381', 'pending_delivery', 'smartphone protective case'),
-(2, '7820', 'delivered', 'smartphone charging cord'),
-(3, '1293', 'pending_return', 'smartphone stand (metal)'),
-(4, '9842', 'returned', 'smartphone backup storage'),
-(5, '5019', 'delivered', 'smartphone protective case'),
-(2, '6674', 'pending_delivery', 'smartphone charging cord'),
-(1, '3087', 'returned', 'smartphone stand (metal)'),
-(3, '7635', 'pending_return', 'smartphone backup storage'),
-(4, '3928', 'delivered', 'smartphone protective case'),
-(5, '8421', 'pending_delivery', 'smartphone charging cord'),
-(1, '2204', 'returned', 'smartphone stand (metal)'),
-(2, '7031', 'pending_delivery', 'smartphone backup storage'),
-(3, '1649', 'delivered', 'smartphone protective case'),
-(4, '9732', 'pending_return', 'smartphone charging cord'),
-(5, '4550', 'delivered', 'smartphone stand (metal)'),
-(1, '6468', 'pending_delivery', 'smartphone backup storage'),
-(2, '3910', 'returned', 'smartphone protective case'),
-(3, '2187', 'delivered', 'smartphone charging cord'),
-(4, '8023', 'pending_return', 'smartphone stand (metal)'),
-(5, '5176', 'delivered', 'smartphone backup storage');
-```
-4. View the order status table you just created.
+2. View the order status table.
 
 ```
 select * from customer_order_status;
 ```
+
 ## Task 2: Create a Customer Order Update Status Function
 
 You will create a SQL function to update a customer’s order status and return a message, run an PL/SQL block to set a customers order to _pending\_return_ and print the result, then verify the table.
@@ -162,7 +104,7 @@ where customer_id = 4
 
 ## Task 3: Create a Tool to Update Database
 
-You'll create a tool that an agent can use during task processing. Each tool is identified by a unique name and includes attributes that define its purpose, implementation logic, and metadata. You'll verify the tool by querying a corresponding view.
+You'll create a tool that a task will use. Each tool is identified by a unique name and includes attributes that define its purpose, implementation logic, and metadata. You'll verify the tool by querying a corresponding view.
 
 1. Create Update\_Order\_Status\_Tool.
 
@@ -181,7 +123,7 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
     );
 END;
 ```
-2. Verify the Update\_Order\_Status\_Tool by querying USER\_AI\_AGENT\_TOOLS view.
+2. Verify the Update\_Order\_Status\_Tool by querying `USER_AI_AGENT_TOOLS` view.
 
 ```
 select * from USER_AI_AGENT_TOOLS
@@ -190,7 +132,7 @@ order by created desc
 
 ## Task 4: Create a Task to Handle the Product Return
 
-You'll define a task that a Select AI agent can include in its reasoning process. Each task has a unique name and a set of attributes that specify the agent’s behavior when planning and performing the task. In this scenario, you'll describe the interaction with the customer and how to respond in various cases.
+You'll define a task that a Select AI agent will perform. Each task has a unique name and a set of attributes that specify  its behavior when planning and performing the task. In this scenario, you'll describe the interaction with the customer and how to respond in various cases.
 
 Create Handle\_Product\_Return\_Task.
 
@@ -217,14 +159,36 @@ BEGIN
                     '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the database for customer name and order number with status refund' ||
                     '5. After the completion of a return or refund, ask if you can help with anything else.' ||
                     '   End the task if user does not need help on anything else",
-                    "tools": ["HUMAN_TOOL","Update_Order_Status_Tool"]}'
+                    "tools": ["Update_Order_Status_Tool"]}'
   );
 END;
 ```
+## Task 5: Create an AI Profile
+You'll create an AI profile that you'll use in the next step to create an agent.
 
-## Task 5: Define Customer Agent
+```
+%script
 
-You'll create an agent to register a new AI agent in the Select AI Agent framework. This procedure enables you to configure the agent’s behavior and operational context for Select AI actions.
+BEGIN
+  BEGIN DBMS_CLOUD_AI.drop_profile(profile_name => 'OCI_GENAI_GROK'); 
+  EXCEPTION WHEN OTHERS THEN NULL; END;
+
+  DBMS_CLOUD_AI.create_profile(
+      profile_name => 'OCI_GENAI_GROK',
+      attributes   => '{
+          "provider": "oci",
+          "credential_name": "OCI_CRED",
+          "model": "xai.grok-3",
+          "embedding_model": "cohere.embed-english-v3.0"
+      }',
+      description  => 'Supports the Select AI Sales Return Agent scenario.'
+  ); 
+END;
+```
+
+## Task 6: Define Customer Agent
+
+You'll create an agent, which specifies the LLM to use through an AI profile and the role the agent plays.
 
 Create the Customer\_Return\_Agent.
 
@@ -237,14 +201,14 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
 BEGIN
   DBMS_CLOUD_AI_AGENT.create_agent(
     agent_name => 'Customer_Return_Agent',
-    attributes => '{"profile_name": "GOOGLE",
+    attributes => '{"profile_name": "OCI_GENAI_GROK",
                     "role": "You are an experienced customer return agent who deals with customers return requests."}');
 END;
 ```
 
-## Task 6: Create the Agent Team
+## Task 7: Create the Agent Team
 
-You'll define a team of AI agents that work together to accomplish tasks. You specify agents and their associated tasks, along with how the tasks should be processed. In this scenario it is a single agent.
+You'll define an agent team that uses the agent and tasks specified above. You specify agent-task pairs for defining a sequential workflow. If you have multiple agents or multiple tasks, these are specified within the JSON list. The same Agent can be specified multiple times with their associated tasks. In this scenario it is a single agent and task pair.
 
 Create the Return\_Agency\_Team.
 
@@ -262,9 +226,9 @@ BEGIN
 END;
 ```
 
-## Task 7: Interact with the Return Agency Agent
+## Task 8: Interact with the Return Agency Agent
 
-You can start interacting with the Select AI agent team by using a natural language prompt on the SQL command line. To do so, you must set the agent team for the current session. Prefix your prompt with `Select AI agent`. In this scenario, the agent team interacts with you in a natural language, the team should confirm the fields, call the tool, and summarize the change.
+You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session. Then, prefix your prompt with `Select AI agent`. In this scenario, the agent team interacts with you in natural language. Behind the scenes, the ReAct agent pattern is used to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
 Let's test it:
 
 1. Set the agent team in the current session.
@@ -276,48 +240,68 @@ EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
 2. Interact with the Return Agency in a series of natural language prompts.
 
 ```
-select ai agent I''m Bob Martinez and my order number is 7820 and I''d like to return a smartphone stand;
+select ai agent agent I want to return a smartphone case;
 ```
 **Result:**
 ```
 RESPONSE
-Thank you, Bob. And what is the reason for your return? Please choose from the following options: no longer needed, arrived too late, box broken, or defective.
+Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
 ```
 
 ```
-select ai agent I no longer need it
+select ai agent the item is defective;
 ```
 
 **Result:**
 ```
 RESPONSE
-Thank you, Bob. Since you no longer need the smartphone stand, please ship the product back to us at your expense. Once we receive the returned item, we will process it. To confirm, your name is Bob Martinez and your order number is 7820?
+I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
 ```
 
 ```
-select ai agent yes
+select ai agent I will need a replacement
 ```
 **Result:**
 ```
 RESPONSE
-Is there anything else I can help you with today?
+Can you please confirm your name and order number so I can update the status and process the replacement?
 ```
 
 ```
-select ai agent No, I''m all set. Thanks
+select ai agent I''m Bob Martinez and my order number is 7820
 ```
 **Result:**
 ```
 RESPONSE
-Okay, Bob. If you have any other questions in the future, please don''t hesitate to contact us. Have a great day!
+Thank you, Bob. The replacement for your smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
+.
+.
+.
 ```
 
-## Task 8: Use DBMS_CLOUD_AI_AGENT.RUN_TEAM
+## Task 9: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
 
-You'll use the DBMS\_CLOUD\_AI\_AGENT.RUN\_TEAM function to run the agent team and interact with the Return Agency team.
+First you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. The agent team also keeps a track of the customer conversation history.
 
-1. Call the DBMS\_CLOUD\_AI\_AGENT.RUN\_TEAM function.
+1. Create Select AI conversation.
 
+```
+%script
+
+CREATE OR REPLACE PACKAGE my_globals IS
+  l_team_cov_id varchar2(4000);
+END my_globals;
+/
+-- Create conversation
+DECLARE
+  l_team_cov_id varchar2(4000);
+BEGIN
+  l_team_cov_id := DBMS_CLOUD_AI.create_conversation();
+  my_globals.l_team_cov_id := l_team_cov_id;
+  DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
+END;
+```
+2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not loose the context and prompt histories.
 ```
 %script
 
@@ -325,19 +309,17 @@ DECLARE
   v_response VARCHAR2(4000);
 BEGIN
   v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name => 'Return_Agency_Team',
+    team_name   => 'Return_Agency_Team',
     user_prompt => 'I want to return a smartphone case',
-    params => NULL
+    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
 ```
 **Result:**
 ```
-What is the reason for returning the smartphone case? (no longer needed, arrived too late, box broken, or defective)
+Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
 ```
-
-2. Interact with the Return Agency team in a series of prompts provided within the function.
 
 ```
 %script
@@ -346,16 +328,54 @@ DECLARE
   v_response VARCHAR2(4000);
 BEGIN
   v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name => 'Return_Agency_Team',
+    team_name   => 'Return_Agency_Team',
     user_prompt => 'the item is defective',
-    params => NULL
+    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
 ```
 **Result:**
 ```
-Would you like a replacement or a refund for the defective smartphone case?
+I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
+```
+
+```
+%script
+
+DECLARE
+  v_response VARCHAR2(4000);
+BEGIN
+  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+    team_name   => 'Return_Agency_Team',
+    user_prompt => 'I''d like a replacement',
+    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+  );
+  DBMS_OUTPUT.PUT_LINE(v_response);
+END;
+```
+**Result:**
+```
+Can you please confirm your name and order number so I can update the status and process the replacement?
+```
+
+```
+%script
+
+DECLARE
+  v_response VARCHAR2(4000);
+BEGIN
+  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+    team_name    => 'Return_Agency_Team',
+    user_prompt => 'I''m Bob Martinez and my order number is 7820',
+    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+  );
+  DBMS_OUTPUT.PUT_LINE(v_response);
+END;
+```
+**Result:**
+```
+Thank you, Bob. The replacement for your smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
 ```
 
 ```
@@ -366,17 +386,16 @@ DECLARE
 BEGIN
   v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
     team_name => 'Return_Agency_Team',
-    user_prompt => 'I''d like a replacement',
-    params => NULL
+    user_prompt => 'No, thank you',
+    params => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
 ```
 **Result:**
 ```
-Great! A replacement is on its way, and you will receive a return shipping label for the defective product. Can you please provide your name and order number so I can update the order status?
+Thank you, Bob. I'm glad we could assist with the replacement of your smartphone case. If you have any other concerns in the future, feel free to reach out. Have a great day!
 ```
-
 
 You may now proceed to the next lab.
 

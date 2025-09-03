@@ -1,27 +1,31 @@
-# Introduce a RAG Tool for Alternate Product Recommendation
+# Introduce a RAG Tool for Alternative Product Recommendation
 
 ## Introduction
 
-In this lab you’ll enrich the return flow with RAG (Retrieval Augmented Generation). After recording a return, the agent can recommend alternative products based on your prompts from content indexed in Object Storage, and present a standard confirmation email. You’ll set up an AI Profile for RAG, provide Object Storage, build a vector index, and call a RAG tool into your agent team.
+In this lab you’ll enrich the return flow with RAG (Retrieval Augmented Generation). We’ll use a couple of documents that provide product summary information: descriptions, pros, and cons, that can be used to offer alternative product recommendations. After recording a return, the agent can recommend alternative products based on your prompts from content indexed in Object Storage and present a standard confirmation email. You’ll set up an AI Profile for RAG, use content Object Storage, build a vector index, and insert a RAG-related task into your agent team.
 
 ### Overview of Important Concepts
 Let's review some of the important concepts that you should know.
 
 ### **Use AI profiles to access your LLM**
 
-An AI profile captures the properties of your LLM provider plus the tables and views you want to enable for natural language queries. You can create multiple profiles (For example, for different providers), although only one is active for a given session or a particular call.
+An AI profile captures the properties of your AI provider and the AI model(s) you want to us, as well as other attributes depending on whether you are using it for SQL query generation or retrieval augmented generation (RAG). You can create multiple profiles for different purposes (NL2SQL, RAG, or the content you want them to access), although only one is active for a given session or a particular call.
 
-### **Create an AI Profile for RAG**
+### **Create an AI Profile for RAG and a Vector Index**
 
-You can have multiple profiles where each one is pointing to different models or enabling different tables and views.
+Here, you will create an AI profile for RAG.
 
 >**Note:** In this workshop, we are using OCI Generative AI.
 
-To get started, you'll need to create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _LLM provider_ and _the metadata such as schemas, tables, views, and so on that can be used for natural language queries_. You can have multiple profiles where each one is pointing to different models. For additional information, see the [CREATE_PROFILE procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+To get started, you'll need to create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _AI provider_ and use the _default_ LLM transfomer. We’ll then create a vector index using content from object storage. For additional information, see the [CREATE\_PROFILE procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
 
 ### **Ask Natural Language Questions**
 
-You can ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
+You can ask questions using **`SELECT AI`** where **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database to use Select AI on your natural language question. Select AI provides multiple ‘_actions_’ for interacting with the LLM. The one we will use is ‘_narrate_’ that when paired with an AI profile configured with a vector index, will support RAG.
+
+### **Update your Task to Use the RAG Tool**
+
+With this AI profile, define a RAG tool and update the task to use RAG to suggest alternative products. 
 
 Estimated Time: 20 minutes.
 
@@ -40,21 +44,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the first two labs in the **Contents** menu on the left.
-- Grants - run once as ADMIN:
-```
-GRANT EXECUTE ON DBMS_CLOUD_AI TO <user>;
-GRANT EXECUTE ON DBMS_CLOUD_PIPELINE  TO <user>;
-ALTER USER ADB_USER QUOTA 1T ON <tablespace_name>; 
-```
-- Create a credential for your AI provider.
-```
-EXEC 
-DBMS_CLOUD.CREATE_CREDENTIAL(
-credential_name   => 'OCI_CRED', 
-username          =>  '<username>', 
-password          =>  '<your_oci_password>');
-```
+- This lab requires completion of the previous labs in the **Contents** menu on the left.
 
 ## Task 1: Create a profile for RAG
 Define an AI Profile that has your LLM and database objects and is ready to use RAG once a vector index exists.
@@ -124,7 +114,7 @@ END;
 EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
 </copy>
 ```
-5. Use natural language prompts to check RAG. Ask for alternate product recommendations.
+5. Use natural language prompts to run some tests using our LLM and specific content. Ask for alternate product recommendations.
 ```
 select ai narrate what are alternatives for the smartphone case
 ```
@@ -159,7 +149,7 @@ END;
 ```
 
 ## Task 3: Update the Task to Handle the Product Return
-You'll update the Handle\_Product\_Return\_Task with the new RAG tool and define clear instructions. The task first updates the the return status and then fetches the alternate product recommendations using RAG.
+You'll update the Handle\_Product\_Return\_Task with the new RAG tool and define clear instructions. The task first updates the return status and then fetches the alternate product recommendations using RAG.
 
 Update the Handle\_Product\_Return\_Task.
 ```
@@ -186,7 +176,7 @@ BEGIN
                     '   d. if consider alternative recommendations, use the RAG tool to present 2 alternatives to the customer and let them decide if they want this product or the original one' || 
                     '5. After the completion of a return or refund, ask if you can help with anything else.' ||
                     '   End the task if user does not need help on anything else",
-                    "tools": ["HUMAN_TOOL","Update_Order_Status_Tool","sales_rag_tool"]}'
+                    "tools": ["Update_Order_Status_Tool","sales_rag_tool"]}'
   );
 END;
 ```
@@ -203,9 +193,8 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 BEGIN                                                                 
   DBMS_CLOUD_AI_AGENT.create_team(  
-    team_name  => 'Return_Agency_Team',                                  
-    attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"},
-                               {"name" : "Customer_Return_Agent", "task" : "Build_Email_Task"}],
+    team_name  => 'Return_Agency_Team',                                                            
+    attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"}],
                     "process": "sequential"}');                                                                 
 END;
 ```
@@ -214,7 +203,7 @@ Start interacting with the updated RAG agent with natural language prompts.
 1. Set the AI profile for RAG in the session.
 ```
 %script
-
+EXEC DBMS_CLOUD_AI.set_conversation_id(NULL);
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
 ```
 
@@ -223,7 +212,7 @@ EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
 <copy>
 %script
 select ai agent I want to return a smartphone case just received
-select ai agent Can you suggest alternative products
+select ai agent what are some alternatives you could recommend
 </copy>
 ```
 
