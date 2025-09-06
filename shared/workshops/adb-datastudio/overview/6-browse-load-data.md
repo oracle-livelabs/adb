@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Catalog and Data Load tool of Data Studio built into the Oracle Autonomous Database and shows how to browse and load a new data set.
+This lab introduces the Catalog and Data Load tools of Data Studio, and shows how to discover and load a new data set from connected cloud storage.
 
 Estimated Time: 10 minutes
 
@@ -22,30 +22,23 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous Database instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
 
 ## Task 1: Where is your data?
 
-Data and its management is the foundation of any data analysis project. It is distributed in and out of organization. This data should either be loaded to the Autonomous Database or linked to the autonomous database so that it can be combined with other data sets for meaningful analysis.
+Data and its management is the foundation of any data analysis project. To enable analytics, data sets can either be loaded into the Autonomous Database or linked to it.
 
-The data can be available in various formats/locations and the following tools can be used to load data.
+Data Studio provides tools to help you connect and discover data that may be useful for analysis, and to load or link the data.
 
-Use **Data Load** tool for:
+Use the **Catalog** to connect to cloud storage systems, other databases, shares, and external data catalogs, so that you can browse, discover and in many cases immediately use any of the data available in them.
 
-   - Data is in local files or cloud Object Stores in various file formats.
-
-   - Data from data providers as data share.
-
-   - Data is accessible via other catalogs. We can browse and load/link data in other catalogs by simply linking the catalogs to Autonomous Database.
-
+Use the **Data Load** tool to load or link data from the catalog, or from local files.
    
-Use **Data Transforms** tool for:
+Use the **Data Transforms** tool to integrate data from other databases and applications. 
 
-   - Data in other databases and applications. These require special connectors for each data source. These connectors are available in the Data Transforms tool of Data Studio since data transformation is most often needed after loading the data. This usage is typical in an enterprise data integration requirement.
-
-Data Studio tools can be used to load data from all the above. Since this is an overview workshop, we will show you how to quickly load data from object store using Data Load tool.
+In this workshop, we will show you how to discover and load data from connected cloud storage using the Catalog and Data Load tools.
 
 ## Task 2: Explore the catalog
 
@@ -53,9 +46,11 @@ Data Studio tools can be used to load data from all the above. Since this is an 
 
     ![Screenshot of the Catalog card](images/image2_datastudio_overview_list_catalog.png)
 
-    The catalog is a metadata management service for the contents of your autonomous database and its connected assets, providing an easily searchable inventory of all the objects in, or accessible from, your database, including schemas, tables, views, columns, analytic views, packages and procedures, files on cloud object storage, and much more. it can also connect to other catalogs in OCI and from 3rd party vendors to give a centralized access to all accessible objects.
+    The catalog provides a way to search for and discover data both in your Autonomous Database and in a wide range of other connected systems, including other Autonomous Databases, connected on-premises databases, cloud storage data, shared data, and external data catalogs. 
 
-    A typical catalog will have many objects and you need various ways to search and display objects. Various ways to navigate a catalog are shown by marked numbers in the screenshot. These are:
+    The catalog UI allows you to add catalogs to connect to additional systems, and then browse and search for data either in a catalog, or across many catalogs.
+    
+    Various ways to navigate a catalog are shown by marked numbers in the screenshot. These are:
     
     1. Saved searches. You can filter objects easily with one click and
     then refine the search further as per need.
@@ -66,15 +61,13 @@ Data Studio tools can be used to load data from all the above. Since this is an 
     
     4. Quick access to Data Studio overview and other tools.
 
-    5. In Settings you can configure for AI services. Data studio can make use of AI services to help for identifying personal information, creating descriptions, creating new columns with natural language prompts and more. This is an advanced usage and will not be covered in this overview workshop.
+    5. In Settings you can configure an AI Profile. Data studio can make use of AI Profiles to help identify Personally Identifiable data, add table descriptions, create new columns with natural language prompts, and much more. 
 
     ![Screenshot of the catalog page](images/image3_catalog_ui_zones.png)
 
-2.  Note that the catalog shows all types of objects. We are interested in
-    only the tables for now. Click on "Tables, views and analytic views
-    owned by..." on the right zone 1.
+2.  Note that the catalog can search and list many types of object, including tables, views, cloud storage files, other Autonomous Databases, and more. We first want to understand the tables that exist in our connected Autonomous Database, so check that **Tables and Views** is selected in the middle of the screen. 
 
-    You can see the MOVIESALES\_CA in this list. We are interested in this
+    You can see the MOVIESALES\_CA in this list of tables. We are interested in this
     table since we were told that this table contains movie sales
     transaction data. (Referring to the meeting notes in the introductory
     section of this workshop).
@@ -100,9 +93,9 @@ Data Studio tools can be used to load data from all the above. Since this is an 
 4.  Look for the other tables of interest on the main catalog page.
     Recall from the meeting notes in the workshop's introduction that we are also interested in CUSTOMER\_CA and GENRE tables.
 
-    You will also see CUSTOMER\_SALES\_ANALYSIS\_FULL table which is empty. This table will be populated by the transforms tool later in this workshop.
+    You will also see CUSTOMER\_SALES\_ANALYSIS\_FULL table which is empty. This table will be populated by the Data Transforms tool later in this workshop.
     
-    Find and click on these tables to do a data preview.
+    Find and click on these tables to look at a data preview and understand the data.
 
     ![Screenshot of desired tables](images/image6_catalog_tables_grid.png)
 
@@ -110,19 +103,19 @@ Data Studio tools can be used to load data from all the above. Since this is an 
 
     Clear the search bar and enter the following search string:
     
-    **(type: TABLE) AGE\_GROUP**
+    **age**
     
-    This will search for all the tables with "AGE\_GROUP" in the name. We find no such table. For our workshop, we needed a table about various age groups. Since we could not find it in the catalog, we will have to load it into the database in the next lab.
+    This will search for all the tables with "AGE" in the name. We find no such table. For our workshop, we needed a table about various age groups. Since we could not find it in the catalog, we will have to load it into the database in the next lab.
 
     ![Screenshot of searching for a table](images/image7_catalog_search_cols.png)
 
-## Task 3: Create a connection to Object Store
+## Task 3: Create a connection to Cloud Object Storage
 
 We need to analyze the movie sales data by age group. While browsing the catalog,
 we noticed that there is no age group information, so we need to load a
 new table for the age groups.
 
-We are told that this data set is available in an Object Store file. First we need to create a connection to this Object Store so that we can browse the files.
+We are told that this data set is available in a file on OCI Cloud Object Storage. First we need to create a connection to this cloud storage system so that we can browse the files.
 
 1.  Click on the **Data Load** card in the Data Studio overview section. You can also navigate between tools using the links on the left side panel.
 
@@ -132,9 +125,9 @@ We are told that this data set is available in an Object Store file. First we ne
 
     ![Screenshot of data load card Connections](images/image8_2_load_card_connections.png)
 
-3. Look at the options in **Create** drop down menu. You can either create a connection to Cloud Store or subscribe to any share provider. You can also connect to other catalog so that you can browse and load data from sources in the catalog.
+3. Look at the options in **Create** drop down menu. You can either create a connection to cloud storage system or subscribe to any share provider. You can also connect to another catalog so that you can browse and load data from it.
 
-   For our purpose, we will create a connection to the Cloud Store. Click on the **New Cloud Store Location**.
+   For our purpose, we will create a connection to a cloud storage location. Click on the **New Cloud Store Location**.
 
    ![Screenshot of data load cloud store configuration](images/image8_3_load_card_create_cloud_store.png)
 
@@ -159,7 +152,7 @@ We are told that this data set is available in an Object Store file. First we ne
 
 ## Task 4: Browse files and Load age groups
 
-1.  Click on the **Files** to see all the accessible files. These files are on the Object Store linked to the catalog in previous section.
+1.  Click on the **Files** to see all the accessible files. These files are in the cloud storage location linked to the catalog in previous section.
 
    ![Screenshot of Catalog files](images/image8_6_catalog_files.png)
 
@@ -167,13 +160,13 @@ We are told that this data set is available in an Object Store file. First we ne
 
    ![Screenshot of Catalog files filter for age](images/image8_7_catalog_files_age.png)
 
-3. Click on the file and look at the options. You can either load the file to the Autonomous Database, or simply link to the file. Linking a file simply creates an external table and gives you the data access without moving the data. In our use, we physically want to move the data to the Autonomous Database by loading the file since we have a need to join it with other tables already in the Autonomous Database and it will be more optimized if all tables are in the database.
+3. Click on the file and look at the options. You can either load the file to the Autonomous Database, or link to the file. Linking a file simply creates an external table and gives you the data access without moving the data. In our case, we want to move the data to the Autonomous Database by loading the file since we have a need to join it with other tables already in the Autonomous Database and it will be more optimized if all tables are in the database.
 
    Click on **Load to table**
 
    ![Screenshot of Catalog files load to table](images/image8_8_catalog_files_load_table.png)
 
-4. Data Load tool parses the file and figures out columns and data types. Review load properties and click on **Load Data**. 
+4. Data Load tool parses the file and works out the columns and data types to create automatically. Review load properties and click on **Load Data**. 
 
    ![Screenshot of load to table properties](images/image8_9_catalog_files_load_table_property.png)
 
@@ -181,7 +174,7 @@ We are told that this data set is available in an Object Store file. First we ne
 
    ![Screenshot of go to data load](images/image8_9_catalog_files_load_table_property_dialog.png)
 
-6. Now switch to Catalog tool and look for the AGE\_GROUPS table in the **Tables and Views** section by searching for **age** in the search bar. We can see the loaded table now. 
+6. Now switch to the Catalog tool and look for the AGE\_GROUPS table in the **Tables and Views** section by searching for **age** in the search bar. We can see the loaded table now. 
 
    ![Screenshot of age group table](images/image8_9_catalog_files_load_table_age_group.png)
 
@@ -192,23 +185,22 @@ We are told that this data set is available in an Object Store file. First we ne
 
 ## Task 5: What's more?
 
-Note that we scratched only the surface. Other features are:
+Note that we scratched only the surface. Some of the other features available in Data Studio include:
 
--   **Linking data**: Query data without moving frm the original location
+-   **Linking data**: Query data without moving from the original location
 -   **Live Feed**: Load data continuously as files are dropped in object store
 -   **External Catalog**: Link to other catalogs to browse and access external data sets
 -   **Data Share**: Load data from other share providers
 -   **AI Source**: Get generated data from Open AI or Cohere AI source. This is an experimental feature.
 
-Data Load is a very capable tool for loading wide variety of data. We have a dedicated workshop in Oracle Livelabs to cover advanced features.
+Data Load is a very capable tool for loading wide variety of data. To explore more of its functionality, see the dedicated workshop in Oracle Livelabs: https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3590 
 
 ## RECAP
 
-In this lab, we used Catalog to browse and search for the desired objects in the database. There are different 
+In this lab, we used the catalog to browse and search for the desired objects in the database. There are different 
 ways to search for an object and display the search results. We learned how to see a preview of the data in a table. 
 
-We used Data Load tool to load additional data from an Object Store. Note that there are other ways to access data, such as linking files, live feed etc., which are not covered here. These details will be covered in another in-depth workshop on Data Load.
-
+We then used the Data Load tool to load additional data from cloud object storage. 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements

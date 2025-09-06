@@ -14,24 +14,23 @@ Watch the video below for a quick walk-through of the lab.
 
 ### Objectives
 
-In this workshop, you will learn:
--	How to find hidden insights in your data
+In this workshop, you will learn how to find hidden insights in your data using Data Studio's Data Insights tool.
 
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous Database instance
 - Created a new QTEAM user with appropriate roles
 
-## Task 1: Use Insights tool
+## Task 1: Use Data Insights
 
 Data Studio's insights process runs in the background, finding interesting patterns 
 in the data. This is a hands-off approach to
 finding insights that are lurking out of sight in the data.
 
 In this lab, we will investigate a few sample insights produced by the tool.
-We will learn how to interpret it and will cross-check it with manual
+We will learn how to interpret the results and will cross-check them with manual
 analysis.
 
 >**Note:** The insight process can run for some time depending on the
@@ -40,7 +39,7 @@ is small enough that it will complete in a reasonable time. But you might
 see the insight list being refreshed while it is executing.
 
 
-1.  From the Data Studio Overview page launch the **Insights** tool.
+1.  From the Data Studio Overview page launch the **Data Insights** tool.
 
     ![screenshot of the Data Insights card](images/image76_inst_card.png)
 
@@ -112,7 +111,7 @@ see the insight list being refreshed while it is executing.
 6.  Click on the tile marked **S** on the top and the **GENRE** at
     the bottom.
 
-    It shows that singles are watching less drama.
+    It shows that unmarried customers are watching less drama.
 
     ![screenshot of insights on singles and genre](images/image81_t_inst_single_genre.png)
 
@@ -121,7 +120,7 @@ see the insight list being refreshed while it is executing.
 7.  Click on the tile marked **Adventure** on the top and the **AGE\_GROUP** at
     the bottom.
 
-    It shows that GenZ are watching lots of adventure movies.
+    This shows that GenZ customers are watching lots of adventure movies.
 
     ![screenshot of insights on adventure and age group](images/image81_t_inst_adventure_agegroup.png)
 
@@ -132,14 +131,13 @@ see the insight list being refreshed while it is executing.
 
     Click on the tile marked **Dog** on the top and **CUST\_VALUE**.
     
-    It shows that the highest value (5) dog owners are purchasing far more movies than average compared to non-dog owners. It may be just a correlation but perhaps you could use this data to offer dog grooming products to high-value customers!
+    Here we can see that the highest value (5) dog owners are purchasing far more movies than average compared to non-dog owners. It may be just a correlation but perhaps you could use this data to offer dog grooming products to high-value customers!
     
-    Interesting. Isn't it? The Insights tool has discovered all these hidden
-    patterns just by crawling through the data.
+    The Insights tool has discovered all these hidden patterns just by crawling through the data.
 
     ![screenshot of insights on pet ownership and customer value](images/image82_t_inst_pet_custvalue.png)
 
-    Wow! That's quite an insight!! 
+    Wow! That's quite an insight!
 
     Click on the **Back** button to go back to the list.
 
@@ -152,8 +150,8 @@ This section is an attempt to explain the insights by manually doing the analysi
 1.  Let's go back and look at the first insight again.
 
     Click on the tile marked **S** on the top and the **GENRE** at
-    the bottom. It showed singles are purchasing 
-    adventure and comedy more than the average and purchasing less drama genre than 
+    the bottom. It showed single customers are purchasing 
+    adventure and comedy more than the average, and purchasing less drama genre than 
     the average.
 
     ![screenshot of singles by genre insight](images/image81_t_inst_single_genre.png)
@@ -162,10 +160,10 @@ This section is an attempt to explain the insights by manually doing the analysi
 
     ![screenshot of applying the filter for marital status](images/image84_t_analyze_peeling_layer_home.png)
 
-3.  In this new report we will analyze **sales** by **Genre** for married and singles alternately.
+3.  In this new report we will analyze **sales** by **Genre** for married and single customers alternately.
 
     Use chart format. Drag **GENRE** on X-Axis and **TOTAL\_SALES** on Y-Axis.
-    Pick singles in the filter box on the right for marital status. Notice the total sales for drama genre by hovering your mouse on the bar. It is approx 68k. 
+    Pick **S** for single in the filter box on the right for marital status. Notice the total sales for drama genre by hovering your mouse on the bar. It is approx 68k. 
 
     ![screenshot of applying the filter for marital status](images/image84_t_analyze_filter.png)
 
@@ -175,12 +173,12 @@ This section is an attempt to explain the insights by manually doing the analysi
 
     ![screenshot of sales analysis to married by genre](images/image86_t_analyze_married_genre.png)
 
-**Isn’t that what Insights tool told us?! That singles are less into drama genre!! It discovered that without any input from us!**
+**This confirms what the Insights tool told us - that singles are less into the drama genre! It discovered that without any input from us!**
 
 While doing manual analysis in the **Analysis** tool, 
 we must actively look at and compare the data for
 certain hierarchies. There are many combinations, but people use their
-experience to guide their analysis steps. In comparison, **Insights** tool is a hands-off approach and it finds patterns without
+experience to guide their analysis steps. In comparison, the **Data Insights** tool is a hands-off approach and it finds patterns without
 understanding what hierarchies mean.
 
 We think that both are complementary to each other and provide valuable
@@ -188,7 +186,7 @@ tools to use in "a day in the life of a data analyst".
 
 ## RECAP
 
-In this lab, we examined various insights discovered by the Insights tool. 
+In this lab, we examined various insights discovered by the Data Insights tool. 
 They were interesting insights and not very obvious without digging into the data.
 
 We also compared the results with the Analysis tool by doing manual analysis, illustrating 
@@ -202,7 +200,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, August 2025
+- Last Updated By - Jayant Mahto, September 2025
 
 
 Copyright (C)  Oracle Corporation.
