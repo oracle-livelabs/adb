@@ -12,10 +12,10 @@ Estimated Lab Time: 20 minutes
 
 In this lab, you will:
 
-- (For your tenancy only): Grant the SQL Firewall role on your target database
+- Grant the SQL Firewall role on your target database
 - Enable SQL Firewall in Data Safe
-- Create a SQL collection for APP_USER
-- Deploy the SQL Firewall policy for APP_USER
+- Create a SQL collection for `APP_USER`
+- Deploy the SQL Firewall policy for `APP_USER`
 - Test the SQL Firewall policy
 - Add a SQL statement from the violation log to the allow-list
 
@@ -28,56 +28,59 @@ This lab assumes you have:
 - Prepared your environment
 - A target database that is Oracle Database 23ai
 
-## Task 1 (For your tenancy only): Grant the SQL Firewall role on your target database
+## Task 1: Grant the SQL Firewall Role on your Target Database
 
 Perform this task only if you are working in your own tenancy. If you are using a LiveLabs sandbox, you do not need to perform this task.
 
-1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab.
+1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab using the **Clear** icons.
 
-2. On the SQL worksheet, enter the following command to grant the SQL Firewall role to the Oracle Data Safe service account on your target database.
+2. On the SQL worksheet, enter the following command to grant the SQL Firewall role to the Oracle Data Safe service account on your target database. Next, click the **Run Script** icon in the toolbar to execute the command.
 
     ```
-    <copy>EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');</copy>
+    <copy>
+    EXECUTE DS_TARGET_UTIL.GRANT_ROLE('DS$SQL_FIREWALL_ROLE');
+    </copy>
     ```
 
-3. On the toolbar, click the **Run Statement** button (green circle with a white arrow) to execute the query. 
+    ![Click Run Script](images/click-run-script.png " ")
 
-    ![Run Statement button on toolbar](images/run-statement-button.png "Run Statement button on toolbar")
-
-4. Verify that the script output reads as follows:
+3. Verify that the script output shows the following message:
 
     `PL/SQL procedure successfully completed.`
     
     You are now able to use the SQL Firewall feature with your target database.
 
-5. Clear the worksheet and script output.  
+4. Clear the worksheet and script output sections. Click the **Clear** icons.  
 
-6. Return to the **Data Safe | Oracle Cloud Infrastructure** browser tab.
-
-
+5. Return to the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
 ## Task 2: Enable SQL Firewall in Data Safe
 
 1. Make sure you are on the **Data Safe | Oracle Cloud Infrastructure** browser tab.
 
-2. Under **Security center** in Data Safe, click **SQL Firewall**.
+    ![Data Safe browser](images/data-safe-browser.png " ")
 
-3. Under **List Scope** on the left, select your compartment.
+2. In the **Security center** section in Data Safe, click **SQL Firewall**.
+
+3. In the **List Scope** section, select your assigned compartment.
+
+    ![Click SQL Firewall](images/click-sql-firewall.png " ")
 
 4. On the **Target summary** tab, click the name of your target database. The SQL Firewall status should currently show as **Disabled**.
 
-5. Click **Refresh**. 
+5. Click **Refresh**, and then click **Enable**.
 
-6. Click **Enable** and wait until the status changes to **ACTIVE**.
+    ![Click Refresh and Enable](images/click-refresh-enable.png " ")
 
+6. Wait for the status to change to **ACTIVE**.
 
-## Task 3: Create a SQL collection for APP_USER
+    ![Status Active](images/status-active.png " ")
 
-1. Under **SQL collections**, click **Create and start SQL collection**.
+## Task 3: Create a SQL Collection for APP_USER
 
-    The **Create and start SQL collection** dialog box is displayed.
+1. In the **SQL collections** section, click **Create and start SQL collection**. The **Create and start SQL collection** dialog box is displayed.
 
-2. From the **Database user** drop-down list, select **APP_USER**.
+2. From the **Database user** drop-down list, select **`APP_USER`**.
 
     If `APP_USER` is not listed in the **Database user** drop-down list, click the **Refresh** icon, and then select the user.
 
@@ -85,7 +88,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 4. Click **Create and start SQL collection**.
 
-   ![Create and start SQL collection dialog box](images/create-start-sql-collection.png "Create and start SQL Collection dialog box")
+   ![Create and start SQL collection dialog box](images/create-start-sql-collection.png " ")
 
 5. Wait for the status to change to **COLLECTING**.
 
@@ -97,7 +100,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 8. On the **Autonomous Database details** page, from the **Database actions** menu, select **Database Users**.
 
-9. On the **APP_USER** tile, click the three dots, and select **Edit**.
+9. On the **`APP_USER`** tile, click the three dots, and select **Edit**.
 
 10. In the **Password** and **Confirm Password** boxes, enter a database password for `APP_USER`.
 
@@ -121,24 +124,32 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 17. Close any tip dialog boxes.
 
-18. On the worksheet, enter the following, and then click the **Run Statement** button:
+18. Copy and paste the following query in the SQL Worksheet, and then click the **Run Statement** icon on the toolbar.
 
-    ```text
-    <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
+    ```sql
+    <copy>
+    SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID 
+    FROM HCM1.EMPLOYEES;
     </copy>
     ```
 
-19. On the worksheet, enter the following, and then click the **Run Statement** button:
+19. Copy and paste the following query in the SQL Worksheet, and then click the **Run Statement** icon on the toolbar.
 
-    ```text
-    <copy>SELECT LOCATION_ID, STREET_ADDRESS, CITY FROM HCM1.LOCATIONS ORDER BY LOCATION_ID;
+    ```sql
+    <copy>
+    SELECT LOCATION_ID, STREET_ADDRESS, CITY 
+    FROM HCM1.LOCATIONS 
+    ORDER BY LOCATION_ID;
     </copy>
     ```
 
-20. On the worksheet, enter the following, and then click the **Run Statement** button:
+20. Copy and paste the following query in the SQL Worksheet, and then click the **Run Statement** icon on the toolbar.
 
-    ```text
-    <copy>SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1000';
+    ```sql
+    <copy>
+    SELECT LOCATION_ID, CITY 
+    FROM HCM1.LOCATIONS 
+    WHERE LOCATION_ID='1000';
     </copy>
     ```
 
@@ -154,8 +165,7 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     The SQL collection is created for `APP_USER`.
 
-
-## Task 4: Deploy the SQL Firewall policy for APP_USER
+## Task 4: Deploy the SQL Firewall Policy for APP_USER
 
 1. On the **SQL collection details** page, click **Generate firewall policy**.
 
@@ -191,49 +201,55 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
    ![Filtered SQL statements](images/filtered-sql-statements.png "Filtered SQL statements")
 
-## Task 5: Test the SQL Firewall policy
+## Task 5: Test the SQL Firewall Policy
 
 When you run the SQL statements in this task, use the **Run Statement** button in Database Actions because that is how you previously ran the queries when you created the SQL collection. If you use the **Run Script** button instead, SQL Firewall will block the results.
 
 1. Return to Database Actions as `APP_USER` and clear the worksheet.
 
-2. Try running one of the SQL statements on the allow-list, for example:
+2. Try running one of the SQL statements on the allow-list such as the following query:
 
-    ```text
-    <copy>SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
+    ```sql
+    <copy>
+    SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID 
+    FROM HCM1.EMPLOYEES;
     </copy>
     ```
  
     The query should return data.
 
-3. Clear the worksheet and try running a SQL statement that isn't on the allow-list, for example:
+3. Clear the worksheet and try running a SQL statement that isn't on the allow-list such as the following query: 
 
-    ```text
-    <copy>SELECT * FROM HCM1.EMPLOYEES;
+    ```sql
+    <copy>
+    SELECT * 
+    FROM HCM1.EMPLOYEES;
     </copy>
     ```
 
-    You should recieve an error message: ORA-47605: SQL Firewall violation.
+    You should receive an error message: **`ORA-47605: SQL Firewall violation`**.
 
-4. Clear the worksheet and try running a SQL statement on the allow-list with a modified `WHERE` clause, for example:
+4. Clear the worksheet and try running a SQL statement that is on the allow-list with a modified `WHERE` clause such as the following query:
 
-    ```text
+    ```sql
     <copy>
-    SELECT LOCATION_ID, CITY FROM HCM1.LOCATIONS WHERE LOCATION_ID='1300';
+    SELECT LOCATION_ID, CITY 
+    FROM HCM1.LOCATIONS 
+    WHERE LOCATION_ID='1300';
     </copy>
     ```
     The query should return data. 
 
-5. Clear the worksheet and try running the SQL statement on the allow-list with its columns in a different order, for example:
+5. Clear the worksheet and try running the SQL statement on the allow-list with its columns in a different order such as the following query:
 
-    ```text
-    <copy>SELECT LAST_NAME, FIRST_NAME, EMPLOYEE_ID FROM HCM1.EMPLOYEES;
+    ```sql
+    <copy>SELECT LAST_NAME, FIRST_NAME, EMPLOYEE_ID 
+    FROM HCM1.EMPLOYEES;
     </copy>
     ```
-    You should receive an error message: ORA-47605: SQL Firewall violation.
+    You should receive an error message: **`ORA-47605: SQL Firewall violation`**.
 
-
-## Task 6: Add a SQL statement from the violation log to the allow-list
+## Task 6: Add a SQL statement from the Violation Log to the allow-list
     
 1. Return to the **SQL Firewall | Oracle Cloud Infrastructure** tab. You may need to wait a couple of minutes for the violations to show up.
 
@@ -257,18 +273,22 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
 7. Return to **Database Actions** as `APP_USER` and run the newly-allowed SQL statement to test that it will run successfully.
 
-    ```text
-    <copy>SELECT * FROM HCM1.EMPLOYEES;
+    ```sql
+    <copy>
+    SELECT * 
+    FROM HCM1.EMPLOYEES;
     </copy>
     ```
     The query should retrieve data.
 
-Congratulations! You finished the Get Started with Oracle Data Safe Fundamentals livelab.
+Congratulations! You have finished this LiveLabs workshop!
 
 ## Acknowledgements
 
 - **Author** - Jody Glover, Consulting User Assistance Developer, Database Development
-- **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+- **Contributors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
+    * Michelle Malcher, Director, Product Management  
 - **Last Updated By/Date:** - Lauran K. Serhal, August 2025
 
 

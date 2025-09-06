@@ -84,11 +84,22 @@ Create a secret key as follows:
 --->
 
 ## Task 1: (Optional) Create an OCI Compartment
+
+<if type="aiw2025-sandbox">
+> _**Note:** If your are using a sandbox environment reservation, please ignore **Tasks 1 and 2**. As part of the reservation, you are assigned a compartment and a policy is already created for you._
+</if>
+
 [](include:iam-compartment-create-body.md)
 
 ## Task 2: Create Policy to Enable Access to OCI Generative AI
 
-**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
+<if type="aiw2025-sandbox">
+
+> _**Note:** If your are using a sandbox environment reservation, please ignore **Task 2**. As part of the reservation, a policy is already created for you._
+
+</if>
+
+>**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
 
 Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
 

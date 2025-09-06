@@ -21,14 +21,14 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data 
 - Loaded Age group data into AGE\_GROUP 
-- Optional: Downloaded the wallet file to connect to your Autonomous Database. This is an optional step for the last section.
+- Optional: Download wallet from your Autonomous database. This is an optional step for the last section.
 
 ### Demo data for this lab
->**NOTE:** Skip this section if you have demo data loaded and have completed previous labs.
+>**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
 If you have not completed the previous labs then run the following script in SQL Worksheet to load all necessary objects.
 
@@ -248,11 +248,11 @@ Now you are ready to go through the rest of the labs in this workshop.
 
     ![screenshot of the data transform link](images/image_dt_001_transforms_overview.png)
 
-2.  You can also start it from the Database Actions page under Data Studio.
+2.  You can also start it from DB Actions page under Data Studio.
 
     ![screenshot of data transform link in DB Action](images/image_dt_002_transforms.png)
 
-3. If you are using Data Transforms for the first time or the Transforms service has logged you out then you will get the following login screen. Enter your database user and password.
+3. If you are using Data Transforms for the first time or the Transforms service has logged you out then you will get the following login screen. Enter your DB user and password.
 
     ![screenshot of data transform login](images/image_dt_003_transforms_login.png)
 
@@ -265,19 +265,19 @@ Now you are ready to go through the rest of the labs in this workshop.
 
     >**Note:** The Data Transforms tool is provisioned based on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then refresh your browser.
+    be started again. Maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then refresh your browser.
 
-    Look at the Home page. You can load data from various databases and applications using **Load Data**, and transform data to any desired shape using **Transform Data**. You can also move your data integration project from one environment to another using **Export** and **Import**. In our next section we will show you the available data sources and use the **Import** wizard to get a pre-populated data flow.
+    Look at the Home page. You can load data from various databases and applications using **Load Data** and transforms data to any desired shape using **Transform Data**. You can also move your data integration project from one environment to other using **Export** and **Import**. In our next section we will show you available data sources and use the **Import** wizard to get pre-populated data flow.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
 
 ## Task 2: Import Data Transforms data flow
 
-For this lab, we will try to create a table suitable for analysis by joining a table of movie sales transactions with the customer table, and aggregate the sales amount for each customer. This is achieved by creating a data flow with various transformations, such as, Join, Aggregate, Data Cleanse etc.
+For this lab, we will try to create a table suitable for analysis by joining movie sales transaction table with the customer master and aggregate the sales amount for each customer. This is achieved by creating a data flow with various transformations, such as, join, aggregate, data cleanse etc. 
 
-Since this is an overview workshop, instead of creating a new data flow, we will import a pre-created data flow and review the steps. 
+Since this is an overview workshop, instead of creating a new data flow, we will import a pre created data flow and review the steps. 
 
-1.  First, we will create a connection to cloud object storage, from where we will import the pre-created data flow. Click on **Connections** on the left side.
+1.  We will create a connection to an Object Store from where we will import the pre created data flow. Click on **Connections** on the left side.
 
     ![screenshot of the connection menu](images/image17_transform_conn.png)
 
@@ -285,11 +285,11 @@ Since this is an overview workshop, instead of creating a new data flow, we will
 
     ![screenshot of creating connection](images/image_dt_003_create_connection.png)
 
-3.  You will see various data sources supported by Data Transforms. Browse the Database and Applications tabs to review the list of data sources. All these connectors are provided out of the box in Data Studio and very simple to use. All we need to do is to provide login credentials to the data source and create a connection.
+3.  You will see various data sources supported by Data Transforms. Browse under Database and Applications tab to review the list of data sources. All these connectors are provided out of the box in Data Studio and very simple to use. All we need to do is to provide login credentials to the data source and create a connection.
 
-    In this workshop we are going to connect to cloud object storage to import the pre-populated data flow. Go back to the Database section and click on **Oracle Object Storage** icon. Then click **Next**.
+    In this workshop we are going to connect to Object Store to import the pre-populated data flow. Go back to the Database section and click on **Oracle Object Storage** icon. Then click **Next**.
 
-    ![screenshot of creating a connection to object storage](images/image_dt_003_1_create_connection_ObjectStore.png)
+    ![screenshot of creating connection Object Store](images/image_dt_003_1_create_connection_ObjectStore.png)
 
 4. Configure connection details as follows:
 
@@ -329,13 +329,13 @@ Since this is an overview workshop, instead of creating a new data flow, we will
 
     Click on **Update**
 
-    This will update the connection without user or token information. Since in this case the object storage bucket is public, we will be able to connect successfully.
+    This will update the connection without usr or token. Since the object store bucket is public, we will be able to connect successfully.
 
 6. From Home page click on **Import**.
 
     ![screenshot of import](images/image_dt_005_create_import.png)
 
-7. Configure the import task as follows:
+7. Configure import task as follows:
 
     Object Store Location: DT\_demo\_rep\_bucket
 
@@ -351,25 +351,25 @@ Since this is an overview workshop, instead of creating a new data flow, we will
 
     Click **OK** on the next dialog.
 
-8. An import job is submitted. Click **OK** to acknowledge. It will take 1-2 minutes for the import to finish. 
+8. An import job is submitted. Click **OK** to acknowledge. It will take 1-2 minute for the import to finish. 
 
-    We are now ready to learn how Data Transforms helps in transforming the data to any desired shape.
+    Get a coffee or stretch. We are now ready to learn how Data Transforms helps in transforming the data to any desired shape.
 
     ![screenshot of import configuration OK Job](images/image_dt_008_create_import_config_OK_job.png)
 
 ## Task 3: Review data flow
 
-As mentioned earlier, we are taking a shortcut by reviewing the pre-created data flow to learn how it works. Let's get started.
+As mentioned earlier, we are taking a shortcut by reviewing the pre created data flow to learn how it works. Lets get started.
 
 1. Click on Projects on the left side and select **SalesDW** project. This project has been imported in the previous section.
 
     ![screenshot of Projects](images/image_dt_009_Projects.png)
 
-2. A project consists of various objects, such as:
+2. A project consists of various objects like:
 
-    **Data Load**: Configuration to load data from various databases and applications
+    **Data Load**: Load data from various databases and applications
     
-    **Data Flows**: Flows to transform data
+    **Data flow**: Transforming data
     
     **Workflows**: Orchestration of data pipelines with integration steps
     
@@ -379,13 +379,13 @@ As mentioned earlier, we are taking a shortcut by reviewing the pre-created data
 
     **Jobs**: Monitoring jobs for success/failure and debugging
 
-    We have a detailed Data Transforms workshop in Oracle Livelabs if you want in-depth knowledge of these features. For now, let's look at the imported data flow.
+    We have a detailed Data Transforms workshop in Oracle Livelabs if you want in-depth knowledge of these features. For now, lets look at the imported data flow.
 
     Click on the data flow **Load\_Sales\_Analysis** under **Data Flow**.
 
     ![screenshot of Projects](images/image_dt_010_Projects.png)
 
-3. This is the user interface for defining and editing data flows. The sections are as follows:
+3. This is data flow UI. Various sections are as follows:
 
     1. Main panel for defining the data flow
 
@@ -401,17 +401,17 @@ As mentioned earlier, we are taking a shortcut by reviewing the pre-created data
 
     ![screenshot of dataflow UI](images/image_dt_011_dataflow_UI.png)
 
-4. Now let's review the data flow. 
+4. Now lets review the data flow. 
 
-    MOVIESALES\_CA is the transaction table which is aggregated (Aggregate\_sales step) and then joined with CUSTOMER\_CA table, which is our main customer table. Then the flow moves through the data cleaning step (DataCleanse step) which trims white spaces for a few columns, and converts them into title case. Finally the data is loaded into the final target table CUSTOMER\_SALES.
+    MOVIESALES\_CA is the transaction table which is aggregated (Aggregate\_sales step) and then joined with CUSTOMER\_CA table, which is the customer master. Then the flow moves through the data cleaning step (DataCleanse step) which trims white spaces for few columns and converts them into title case. Finally the data is loaded into the final target table CUSTOMER\_SALES.
 
     Click on any object in the data flow to review the properties. For example click on the join step to review the join condition. You may need to expand or collapse the property window by clicking on the top right marker to view it fully.
 
-    Imagine creating your own data flow step by step with this drag and drop UI. It is easy to visualize any complex transformations by breaking them down into individual steps in the flow.
+    Imagine creating your own data flow step by step in this drag and drop UI. It is easy to visualize any complex transformation by breaking down into individual steps in the flow.
 
     ![screenshot of dataflow UI properties](images/image_dt_012_dataflow_UI_properties.png)
 
-5. Now let's look at the target table properties. Click on the CUSTOMER\_SALES target table and click on the **Options** icon (looks like a cube in the property window). Expand the property window to see full details.
+5. Now lets look at the target table properties. Click on the CUSTOMER\_SALES target and click on the **Options** icon (looks like a cube in the property window). Expand the property window to see full details.
 
     ![screenshot of dataflow target properties](images/image_dt_013_dataflow_target_properties.png)
 
@@ -421,39 +421,39 @@ As mentioned earlier, we are taking a shortcut by reviewing the pre-created data
 
     ![screenshot of dataflow target properties collapse](images/image_dt_014_dataflow_target_properties_collapse.png)
 
-7. We have completed our review of the data flow. In a real project, there will commonly be many data flows defined (for example, one for each target table). Multiple data flows can be combined into a single workflow so that all flows can be executed at once.
+7. We are done reviewing how data flow is defined. In a real project, there will be many data flows defined for each target tables and these will be used as a step in the workflow.
 
-    The next two tasks (tasks 4 and 5) are optional. In these tasks, you can see how a more complex data flow can be defined, and you will be introduced to workflows and scheduling. 
+    Next few labs are optional. You can see how a complex data flow can be defined easily. You will also be introduced to workflow and scheduler. 
     
-    In the last task (task 6) we will execute this data flow.
+    In the last lab we will execute this data flow.
 
 ## Task 4: (Optional) More complex data flow
 
-Let's look at a more complex data flow. Go to your project again and open the data flow **Load\_Sales\_Analysis\_w\_cust\_value**. This data flow computes customer value and combines this information with customer demographics and movie genre data before loading into a new table **CUSTOMER\_SALES\_ANALYSIS\_FULL**.
+Lets look at a more complex data flow. Go to your project again and open the data flow **Load\_Sales\_Analysis\_w\_cust\_value**. It looks like below. This data flow computes customer value and combines the information with customer demographics and movie genre before loading into a new table **CUSTOMER\_SALES\_ANALYSIS\_FULL**.
 
-To understand this better, different sections of the flow are highlighted in the screenshot below.
+To understand better different sections are highlighted in the screenshot below.
 
-- Section 1: **Compute customer value**: This computes customer value by using a statistical tool called quantile_binning. This tool can be found under the **DATA PREPARATION** group. In our data flow, the tool is named as Find\_CustValue. It distributes all the customers into 5 equal buckets after ordering the customers based on their value. In this case, customer value is determined by the total movie sales amount by each customer (in the aggregator transform Agg\_sales\_per\_cust preceding Find\_CustValue). This is a statistical function and is a good example of Data Transforms leveraging database functions. There are many more advanced transformations available to be used in the data flow, including AI/ML and spatial transforms.
+- Section 1: **Compute customer value**: It computes customer value by using a statistical transform called quantile_binning. It is under **DATA PREPARATION** group and in the data flow named as Find\_CustValue transformation step. It distributes all the customers into 5 equal buckets after ordering the customers based on their value. Value is determined by the total movie sales amount by each customer (in the aggregator transform Agg\_sales\_per\_cust preceding Find\_CustValue). This is a statistical function and is a good example of Data Transforms leveraging database functions for transformations. There are many more advanced transformations available to be used in the data flow, including AI/ML and spatial transforms.
 
-- Section 2: **Collect customer demographics**: Customer data is enhanced by looking up an age groups reference table based on age.
+- Section 2: **Collect customer demographics**: Customer master data is enhanced by looking up for age groups table based on age.
 
 - Section 3: **Get movie genre name**: Movie sales data is enhanced by joining with the movie genre table to get genre name based on genre id.
 
-    All three streams of the data flow are combined together and the data is loaded into the target.
+    All three streams of data flow are combined together and the data is loaded into the target.
     
     ![screenshot of complex dataflow ](images/image_dt_014_dataflow_complex.png)
 
-    You will notice that the visual UI allows you to think about building the data flow step by step to prepare the data according to your requirements. This table will be used by the analysis lab later in the workshop.
+    You will notice that the visual UI allows you to think about building the data flow step by step to prepare the data according to your requirement. This table will be used by the analysis lab later in the workshop.
 
 ## Task 5: (Optional) workflow and scheduler
 
-The data flow created so far could be executed on its own to load the target table, but often a workflow is created so that all the executable steps can run as a single scheduled job with any needed dependencies between each step. 
+The data flow created so far could be executed by themselves to load the target tables but often a workflow is created so that sll the executable steps can run as a single scheduled job with dependency between each step. 
 
 Go to the project again and click on the **Nightly_run** workflow. 
 
 ![screenshot of workflow ](images/image_dt_014_workflow.png)
 
-Let's review the different steps. You can see that both the data flows are executed in a sequential manner. The steps can be executed after the success or failure of previous step. A workflow step can be any executable object including SQL/PLSQL steps. In our demo repository the SQL steps have a dummy select value but it can be a complex PLSQL script.
+Lets review different steps. You can see that both the data flows are executed in a sequential manner. The steps can be executed after the success or failure of previous step. A workflow step can be any executable object including SQL/PLSQL step. in our demo repository the SQL steps have a dummy select value but it can be a complex PLSQL script.
 
 We are just scratching the surface of possibilities in this overview workshop. If you are interested then we have Data Transforms specific workshop you can go through. 
 
@@ -461,31 +461,31 @@ We are just scratching the surface of possibilities in this overview workshop. I
 
 ## Task 6: (Optional) Execute the dataflow
 
-If you are interested in actually executing a data transforms job then follow these steps. For the remaining labs, demo data will be loaded afresh so this is an optional task.
+If you are interested in actually executing a data transforms job then follow these steps. For the remaining labs, demo data will be loaded afresh therefore it is an optional step.
 
 1. Go to the Home page and click on the **Sales\_Datawarehouse** connection in the **Connections** menu. You need to upload the wallet from your database and provide user and password as shown below. Click on **Update** after the connection test succeeds.
 
     ![screenshot of dataflow DW connection](images/image_dt_015_dataflow_DW_Connection.png)
 
-2. Go back to the data flow under the **SalesDW** project and click on execute by clicking on the green triangle in the actions section on the top.
+2. Go back to the data flow under **SalesDW** project and click on execute by clicking on the green triangle in the actions section on the top.
 
     **NOTE**: If you had moved the layout or changed any properties, then you will need to save the data flow before you can execute it.
 
     ![screenshot of dataflow execution](images/image_dt_016_dataflow_execution.png)
 
-3. The job is submitted in the background. Acknowledge the dialog.
+3. Job gets submitted in the background. Acknowledge the dialog.
 
     ![screenshot of dataflow execution OK](images/image_dt_017_dataflow_execution_OK.png)
 
-    Click anywhere in the main panel and look at the status of the job. It should take 1-2 minutes to finish.
+    Click anywhere in the main panel and look at the status of the job. It should take 1-2 minute to finish.
 
     ![screenshot of dataflow execution success](images/image_dt_018_dataflow_execution_success.png)
 
-4. Data Transforms allows you to browse the data for source and target tables. Click on the target table in the flow and the eye icon in the property window to preview the data. Expand the property window for a larger view.
+4. Data Transforms allows you to browse the data for source and target tables. Click on the target table in the flow and the eye icon in the property window for data preview. Expand the property window for larger view.
 
     ![screenshot of dataflow data preview](images/image_dt_019_dataflow_data_preview.png)
 
-5. You can see the aggregated sales amount for each customer ID. We also have customer attributes like income level, marital status etc. from the customer table. Now this target table has all the data we need for analysis.
+5. You can see the aggregated sales amount for each customer ID. We also have customer attributes like income level, marital status etc. from the customer master. Now this target table has all the data we need for analysis.
 
     ![screenshot of dataflow data preview details](images/image_dt_020_dataflow_data_preview_detail.png)
 
@@ -495,13 +495,13 @@ If you are interested in actually executing a data transforms job then follow th
 
 ## Task 7: What's more?
 
-This lab provided an introduction to Data Transforms. There are many other features available, including:
+Note that we scratched only the surface. Other features are:
 
--   **Variety of data sources**: Databases, Object Storage, REST API and Fusion
-    Applications
+-   **Variety of data sources**: Databases, Object Store, REST API and Fusion
+    Application
 
 -   **Load Data**: Load multiple tables in a schema from another data
-    source. Data Transforms can also integrate with Oracle Golden Gate Cloud Service for advanced
+    source. It can also integrate with Oracle Golden Gate Cloud Service for advanced
     replication. This complements the Data Load tool explored in the earlier
     lab.
 
@@ -511,16 +511,16 @@ This lab provided an introduction to Data Transforms. There are many other featu
 
 -   **Schedule**: In-built scheduler for periodic execution.
 
--   **Export/Import**: Save snapshot of objects and move them from one environment to other (for example from development to production)
+-   **Export/Import**: Save snapshot of objects and move them from one environment to other (ex: development to production)
 
 -   **Python API**: Create objects using scripting
 
-Data Transforms is a comprehensive data integration tool, suitable for all projects and organizations. To explore more of its functionality, see the dedicated workshop in Oracle Livelabs: https://livelabs.oracle.com/pls/apex/f?p=133:180:10208447067911::::wid:832 
+Data Transforms is a full fledged data integration tool for enterprise usage. We have a dedicated workshop in Oracle Livelabs to cover advanced features.
 
 ## RECAP
 
 In this lab, we used the Data Transforms tool to aggregate sales data, combine it
-with the customer attributes and clean up the data to load into a target table to be 
+with the customer attributes and cleaned few columns to load into a target table to be 
 used for data analysis. 
 
 You may now **proceed to the next lab**.
@@ -529,7 +529,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain,
-- Last Updated By - Jayant Mahto, September 2025
+- Last Updated By - Jayant Mahto, August 2025
 
 
 Copyright (C)  Oracle Corporation.

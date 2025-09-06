@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Analysis tool built into Oracle Autonomous Database Data Studio, and shows some of the ways you can analyze your data.
+This lab introduces the Analysis tool built into the Oracle Autonomous Database and shows the various ways you can analyze your data.
 
 Estimated Time: 20 minutes
 
@@ -14,13 +14,14 @@ Watch the video below for a quick walk-through of the lab.
 
 ### Objectives
 
-In this workshop, you will learn how to analyze the data using the Data Studio Analysis tool.
+In this workshop, you will learn:
+-	How to analyze the data using simple UI
 
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous Data Warehouse instance
 - Created a new QTEAM user with appropriate roles
 
 ### Demo data for this lab
@@ -187,7 +188,7 @@ We will go through a few examples such as movie genre preference based on age gr
 
     Drag CUST\_VALUE to the X-Axis. Make sure the CUST\_VALUE is on the top of GENRE.
 
-    Filter for CUST\_VALUE=1 in the right side filter area. You can see that Action is a very popular genre with low value customers.
+    Filter for CUST\_VALUE=1 in the right side filter area. You can see that Action is very popular genre with low value customers.
     
     ![screenshot of sales analysis by movie genre and customer value](images/image74_t_sales_genre_custvalue.png)
 
@@ -204,19 +205,19 @@ We will go through a few examples such as movie genre preference based on age gr
     We can spend lots of time in the analysis tool visualizing the data with
     different combinations of attributes.
 
-    >**Note:** So far, we are looking at only the charts, but this data can be displayed in tabular format or as a pivot table as well. 
+    >**Note:** So far, we are looking at only the charts, but this data can be displayed in tabular format and a pivot table as well. 
 
-12. After you have completed the report, you can rename the report by clicking on the three dots on top right side. Rename it as "Sales by genre for high value customers".
+12. After you have completed the report, you cna rename the report by clicking on the three dots on top right side. Rename it as "Sales by genre for high value customers".
 
     Note that you can have multiple reports in the analysis and arrange them as dashboard. In our lab we will create only one report.
 
     ![screenshot of sales analysis for customer value high report](images/image74_t_sales_genre_custvalue_high_rep.png)
 
-13. It is also possible to use Microsoft Excel or Google Sheets to access and analyze the data in Autonomous Database, with the provided plug-ins. This is not covered in this workshop. 
+13. Advanced users can also use Microsoft Excel or Google Sheets to access the data in Autonomous Database. We will not cover this in our overview workshop.
 
     ![screenshot of sales analysis plugin](images/image74_t_analysis_plugin.png)
 
-14. You can now save the analysis by clicking on the **Save** button on the top right corner. Save it as Sales\_Analysis\_Report.
+14. you can now save the analysis by clicking on the **Save** button on the top right corner. Save it as Sales\_Analysis\_Report.
 
     Click on the left arrow button on the top left corner to go back to Analysis main page.
 
@@ -228,15 +229,21 @@ We will go through a few examples such as movie genre preference based on age gr
 
 ## Task 2: What's more?
 
-This lab provides a brief overview of how to analyze data using Data Studio. Other features include:
+Note that we scratched only the surface. Other features are:
 
--   **Plug-ins for Microsoft Excel and Google Sheets**: Query data using your favorite desktop tool
--   **Analytic Views**: Create dimensional models from tables. Analytic Views provide a business model using dimensional hierarchies and complex measures. External query tools can query the Analytic View leveraging the business model in the Autonomous Database and optimizing queries.
+-   **Plugin for Excel and Google Sheet**: Query data using our favorite desktop tool
+-   **Analytic View**: Create dimensional model from tables. It is a business model using dimensional hierarchies and complex measures. External query tools can query the Analytic View leveraging the business model in the Autonomous Database and optimizing queries.
+
+We have a dedicated workshop in Oracle Livelabs to cover advanced features.
+
 
 ## RECAP
 
-In this lab, we used the Analysis tool to analyze movie sales data across various dimensions such as age group, 
+In this lab, we used the Analysis tool to create a dimensional model (Analytic View) on
+the sales analysis table and then analyzed movie sales across various dimensions such as age group, 
 marital status and movie genre. We found many interesting patterns in customer purchasing behavior. 
+
+Analytic Views make analysis easy, not only in Data Studio's Analysis tool, but also in tools such as Oracle Analytics, Tableau and PowerBI; even Excel and Google Sheets! As the business model is defined in the database, analysis of this data is always consistent across these tools, as well as being simple and performant. 
 
 You may now **proceed to the next lab**.
 
@@ -244,7 +251,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, September 2025
+- Last Updated By - Jayant Mahto, August 2025
 
 
 Copyright (C)  Oracle Corporation.
