@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab focuses on refining the solution of the previous lab to achieve a better customer experience. In this lab, you’ll make the return flow feel personalized. After updating the order, the agent will compose a clear, polite confirmation email. But this has a problem, which we’ll address in the next lab.
+This lab focuses on refining the solution of the previous lab to achieve a better customer experience. In this lab, you’ll make the return flow feel more personalized. After updating the order, the agent will compose a clear, polite confirmation email. But this has a problem, which we’ll address in the next lab.
 
 Estimated Time: 15 minutes.
 
@@ -22,9 +22,9 @@ In this lab, you will:
 
 ## Task 1: Refine the Role of the Customer Agent
 
-You'll make the agent concise, chatty, empathetic, and consistent by defining an enhanced role.
+You'll make the agent chatty and empathetic by refining the agent role.
 
-1. Refine the customer agent by redefining the role.
+1. Refine the customer agent by changing the role description.
 
 ```
 %script
@@ -47,7 +47,7 @@ select * from USER_AI_AGENTS;
 
 ## Task 2: Create a Task to Generate an Email Response
 
-You will produce a standard confirmation email using structured data from the return. You’ll define a task with instructions on what to include as an email response.
+In this task, you will have the LLM produce a standard confirmation email using structured data from the product return. You’ll define a task with instructions on what to include as an email response.
 
 Create a Generate\_Email\_Task.
 
@@ -71,7 +71,7 @@ END;
 
 ## Task 3: Add the New Task to the Agent Team
 
-You'll add the Generate\_Email\_Task to the Return Agency team and ensure the team runs the return update first and then generates the email.
+You'll add the Generate\_Email\_Task to the Return Agency team and see that the team runs processes the return first and then generates the email.
 
 Update the customer agent to include both the tasks.
 
@@ -92,12 +92,12 @@ END;
 
 ## Task 4: Interact with the Refined Agent - Part 1
 
-You can start interacting with the refined Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session.
+You can start interacting with the refined Select AI agent team by using natural language prompt on the SQL command line. To do so, you first clear any previous conversation and then set the agent team for the current session.
 
 1. Set the agent team in the current session.
 
 ```
-EXEC DBMS_CLOUD_AI.set_conversation_id(NULL);
+EXEC DBMS_CLOUD_AI.clear_conversation_id;
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
 ```
 
@@ -173,6 +173,8 @@ Customer Return Agent
 
 ```
 
+This result relied on the LLM to generate a form letter using its own *creativity*. The specific content may differ from customer to customer as is typical for LLMs. To ensure we have a consistent form letter response, you will define a function that generates exactly the text you want in the next lab.
+
 You may now proceed to the next lab.
 
 ## Learn More
@@ -184,7 +186,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager
+* **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
 <!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
 -->
 

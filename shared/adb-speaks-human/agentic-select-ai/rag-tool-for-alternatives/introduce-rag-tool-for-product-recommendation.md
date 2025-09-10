@@ -2,26 +2,27 @@
 
 ## Introduction
 
-In this lab you’ll enrich the return flow with RAG (Retrieval Augmented Generation). We’ll use a couple of documents that provide product summary information: descriptions, pros, and cons, that can be used to offer alternative product recommendations. After recording a return, the agent can recommend alternative products based on your prompts from content indexed in Object Storage and present a standard confirmation email. You’ll set up an AI Profile for RAG, use content Object Storage, build a vector index, and insert a RAG-related task into your agent team.
+In this lab you’ll enrich the return flow with RAG (Retrieval Augmented Generation). We’ll use a couple of documents that provide product summary information: descriptions, pros, and cons, that can be used to offer alternative product recommendations. After recording a return, the agent can recommend alternative products based on your prompts from content indexed in Object Storage and present a standard confirmation email. You’ll set up an AI Profile for RAG, use content Object Storage, create a vector index, and insert a RAG-related task into your agent team.
 
 ### Overview of Important Concepts
 Let's review some of the important concepts that you should know.
 
 ### **Use AI profiles to access your LLM**
 
-An AI profile captures the properties of your AI provider and the AI model(s) you want to us, as well as other attributes depending on whether you are using it for SQL query generation or retrieval augmented generation (RAG). You can create multiple profiles for different purposes (NL2SQL, RAG, or the content you want them to access), although only one is active for a given session or a particular call.
+An AI profile captures the properties of your AI provider and the AI model(s) you want to us, as well as other attributes depending on whether you are using it for SQL query generation or retrieval augmented generation (RAG). You can create multiple profiles for different purposes (NL2SQL, RAG, and the content you want them to access), although only one is active for a given session or a particular call.
 
 ### **Create an AI Profile for RAG and a Vector Index**
+[comment]: # (MH: The LiveLab will need to tell the user how to create the credential as well. For the HOL, we'll have a predefined credential, but the general LiveLab will require users to create this. This will require a section on credential creation with OCI GenAI since it's far from easy. When we first use the OCI_CRED, much earlier in the workshop, this should be added. With a reference to that section here (rather than repeat it.)
 
 Here, you will create an AI profile for RAG.
 
 >**Note:** In this workshop, we are using OCI Generative AI.
 
-To get started, you'll need to create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _AI provider_ and use the _default_ LLM transfomer. We’ll then create a vector index using content from object storage. For additional information, see the [CREATE\_PROFILE procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
+To get started, you'll need to create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _AI provider_ and use the _default_ LLM transformer. We’ll then create a vector index using content from object storage. For additional information, see the [CREATE\_PROFILE procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
 
 ### **Ask Natural Language Questions**
 
-You can ask questions using **`SELECT AI`** where **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database to use Select AI on your natural language question. Select AI provides multiple ‘_actions_’ for interacting with the LLM. The one we will use is ‘_narrate_’ that when paired with an AI profile configured with a vector index, will support RAG.
+You can ask questions using **`SELECT AI`** where **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database to use Select AI on your natural language question. Select AI provides multiple ‘_actions_’ for interacting with the LLM. The one we will use is ‘_narrate_’ that, when paired with an AI profile configured with a vector index, will support RAG.
 
 ### **Update your Task to Use the RAG Tool**
 
@@ -66,6 +67,7 @@ END;
 ```
 
 2. Create credentials to access Object Storage.
+[comment]:#(MH: This needs to be augmented to say where to get the needed details. Check with Sherry.)
 ```
 %script
 
@@ -114,7 +116,7 @@ END;
 EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
 </copy>
 ```
-5. Use natural language prompts to run some tests using our LLM and specific content. Ask for alternate product recommendations.
+5. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
 ```
 select ai narrate what are alternatives for the smartphone case
 ```
@@ -151,7 +153,9 @@ END;
 ## Task 3: Update the Task to Handle the Product Return
 You'll update the Handle\_Product\_Return\_Task with the new RAG tool and define clear instructions. The task first updates the return status and then fetches the alternate product recommendations using RAG.
 
-Update the Handle\_Product\_Return\_Task.
+Update the `Handle_Product_Return_Task`.
+  
+  **Note**: This version does not include email generation, only the product recommendation.
 ```
 %script
 
@@ -182,9 +186,9 @@ END;
 ```
 
 ## Task 4: Update the Agent Team
-You'll update the agent team with the updated Product Return task and generate a standard email. Ensure the team runs return update first and then generate an email.
+You'll update the agent team with the revised Product Return task.
 
-Update the Return\_Agent\Team.
+Update the `Return_Agent_Team`.
 ```
 %script
 
@@ -227,7 +231,8 @@ select ai agent what are some alternatives you could recommend
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager
+* **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
+
 <!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
 -->
 

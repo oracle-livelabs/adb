@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab focuses correcting the email generation from the previous lab. In this lab, you’ll add a standardized email function so the agent can present a consistent confirmation message after a return is recorded.
+This lab focuses on generating a consistent email form letter. In this lab, you’ll add a standardized email function so the agent can present a consistent confirmation message after a return is recorded.
 
 Estimated Time: 30 minutes.
 
@@ -108,11 +108,14 @@ END;
 ```
 {"subject":"Your Return Request for Order 1234 - smartphone charging cord","body":"Dear Alice Thompson,\n\nThank you for contacting us regarding your return request!\n\nThis email confirms that we have received your request to return the following item from order number 1234:\n\nItem: smartphone charging cord\nReason for Return: Item not compatible with my phone\n\nYour replacement for the smartphone charging cord will be shipped within 3-5 business days. You will receive a separate email with tracking information once your replacement has shipped.\n\nPlease let me know if you have any questions or if there is anything else I can assist you with.\n\nThank you, and have a great day!\n"}
 ```
+
+**Note**: The result is provided in JSON format and the result string includes `\n` for returns. Your application code can extract the subject and body and send using an email tool. Using the email tool is left as an unscripted exercise.
+
 ## Task 2: Create an Email Tool
 
 You’ll create an email tool with clear instructions on what the tool should do.
 
-Create a build\_email\_tool and include the build\_return\_email function.
+Create a build\_email\_tool that specifies the build\_return\_email function.
 
 ```
 %script
@@ -168,7 +171,7 @@ END;
 
 ## Task 4: Update the Agent Team
 
-Add the new task into your agent team and ensure the team runs return update first and then generate an email.
+Add the new task into your agent team, which now includes the email generation tool as part of the `Handle_Product_Return_Task`.
 
 Update the Return\_Agency\_Team.
 
@@ -193,7 +196,7 @@ You can start interacting with the refined Select AI agent team by using natural
 
 ```
 %script
-EXEC DBMS_CLOUD_AI.set_conversation_id(NULL);  
+EXEC DBMS_CLOUD_AI.clear_conversation_id;
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team'); 
 ```
 2. Interact with Return Agency in a series of natural language prompts.
@@ -280,8 +283,8 @@ I'm happy to have assisted you with the return process for the smartphone backup
 
 ## Acknowledgements
 
-* **Author:** Sarika Surampudi, Principal ting User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager
+* **Author:** Sarika Surampudi, Principal User Assistance Developer
+* **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
 <!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
 -->
 

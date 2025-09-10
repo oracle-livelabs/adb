@@ -10,23 +10,46 @@ Estimated Time: 30 minutes.
 
 In this lab, you will:
 
+* Download and import the Sales Return Notebook into OML.
 * Review the sample customer data and create a PL/SQL function to update the order status.
 * Create a tool that uses that function to update the return status in the database.
 * Create a task that coordinates the return action.
 * Create a customer agent that defines the persona/role of the customer return agent.
 * Create an agent team and run it from the SQL command line, providing responses the agent’s questions.
-* Use DBMS\_CLOUD\_AI\_AGENT.RUN\_TEAM function to run a multi step interaction.
+* Use DBMS\_CLOUD\_AI\_AGENT.RUN\_TEAM function to run a multi-step interaction.
 
 ### Prerequisites
 
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
 - Typical grants to run DBMS\_CLOUD\_AI\_AGENT Package are (run as ADMIN once):
-```
-GRANT EXECUTE ON DBMS_CLOUD_AI TO <user>;
-GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <user>;
-```
 
-## Task 1: Review a Customer Table
+```
+GRANT EXECUTE ON DBMS_CLOUD_AI TO <USER>;
+GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <USER>;
+```
+Replace _`USER`_ with your user name.
+
+## Task 1: Download and Import a Notebook into OML
+
+You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **sales-return-agent** contains all the steps for setting up the **Sales Return Agent** for processing the product return from a customer. In this task, you will first download the **`sales-return-agent.dsnb`** OML notebook to your local machine, and then import this notebook into OML.
+
+1. Click the button below to download the notebook:
+
+    <a href="../build-sales-return-agent/files/sales-return-agent.dsnb" class="tryit-button">Download Notebook</a>
+
+2. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`sales-return-agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+
+    ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
+
+    If the import is successful, a notification is displayed and the **`sales-return-agent`** notebook is displayed in the list of available notebooks.
+
+    ![The newly imported notebook is displayed.](./images/import-successful.png " ")
+
+3. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+
+     >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
+
+## Task 2: Review the Customer Table
 
 You'll view the sample table for the scenario.
 
@@ -42,7 +65,7 @@ select * from customer;
 select * from customer_order_status;
 ```
 
-## Task 2: Create a Customer Order Update Status Function
+## Task 3: Create a Customer Order Update Status Function
 
 You will create a SQL function to update a customer’s order status and return a message, run an PL/SQL block to set a customers order to _pending\_return_ and print the result, then verify the table.
 
@@ -82,7 +105,7 @@ EXCEPTION
         RETURN 'Error: ' || SQLERRM;
 END;
 ```
-2. Update the order for a specific customer and return a message on completion.
+2. Test this function by updating an order for a specific customer and return a message on completion.
 
 ```
 %script
@@ -95,16 +118,16 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE(v_result);
 END;
 ```
-3. Verify the change by viewing the customer order update status table for that particular customer. 
+3. Verify the change by viewing the customer order update status table for that customer. 
 
 ```
 select * from customer_order_status
-where customer_id = 4
+where ORDER_NUMBER = 3928
 ```
 
-## Task 3: Create a Tool to Update Database
+## Task 4: Create a Tool to Update Database
 
-You'll create a tool that a task will use. Each tool is identified by a unique name and includes attributes that define its purpose, implementation logic, and metadata. You'll verify the tool by querying a corresponding view.
+You'll create a tool that a task will use. Each tool is identified by a unique name and includes attributes that define its purpose, instruction logic, and metadata. You'll verify the tool by querying a corresponding view.
 
 1. Create Update\_Order\_Status\_Tool.
 
@@ -117,7 +140,7 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
  BEGIN
     DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
         tool_name => 'Update_Order_Status_Tool',
-        attributes => '{"instruction": "This tool updates the database to reflect return status change. It take the customer name and order number as input",
+        attributes => '{"instruction": "This tool updates the database to reflect return status change. Always confirm user name and order number with user before update status",
                         "function" : "update_customer_order_status"}',
         description => 'Tool for updating customer order status in database table.'
     );
@@ -130,9 +153,9 @@ select * from USER_AI_AGENT_TOOLS
 order by created desc
 ```
 
-## Task 4: Create a Task to Handle the Product Return
+## Task 5: Create a Task to Handle the Product Return
 
-You'll define a task that a Select AI agent will perform. Each task has a unique name and a set of attributes that specify  its behavior when planning and performing the task. In this scenario, you'll describe the interaction with the customer and how to respond in various cases.
+You'll define a task that your Select AI agent will perform. Each task has a unique name and a set of attributes that specify  its behavior when planning and performing the task. In this scenario, you'll describe the interaction with the customer and how to respond in various cases.
 
 Create Handle\_Product\_Return\_Task.
 
@@ -145,26 +168,26 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
 BEGIN
   DBMS_CLOUD_AI_AGENT.create_task(
     task_name => 'Handle_Product_Return_Task',
-    attributes => '{"instruction": "Process a product return request from a customer:{query}' ||
-                    '1. Ask customer the reason for return (no longer needed, arrived too late, box broken, or defective)' ||
+    attributes => '{"instruction": "Process a product return request from a customer:{query}' || 
+                    '1. Ask customer the order reason for return (no longer needed, arrived too late, box broken, or defective)' || 
                     '2. If no longer needed:' ||
                     '   a. Inform customer to ship the product at their expense back to us.' ||
-                    '   a. Ask customer for their name and order number and update order status return_shipment_pending.' ||
+                    '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
                      '3. If it arrived too late:' ||
                     '   a. Ask customer if they want a refund.' ||
-                    '   b. If the customer wants a refund, then confirm refund processed and update the database for customer name and order number with status refund_completed' ||
+                    '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed' || 
                     '4. If the product was defective or the box broken:' ||
                     '   a. Ask customer if they want a replacement or a refund' ||
-                    '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the database for customer name and order number with status replaced' ||
-                    '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the database for customer name and order number with status refund' ||
+                    '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
+                    '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
                     '5. After the completion of a return or refund, ask if you can help with anything else.' ||
                     '   End the task if user does not need help on anything else",
                     "tools": ["Update_Order_Status_Tool"]}'
   );
 END;
 ```
-## Task 5: Create an AI Profile
-You'll create an AI profile that you'll use in the next step to create an agent.
+## Task 6: Create an AI Profile
+You'll create an AI profile to use in the next step to create an agent.
 
 ```
 %script
@@ -186,7 +209,7 @@ BEGIN
 END;
 ```
 
-## Task 6: Define Customer Agent
+## Task 7: Define Customer Agent
 
 You'll create an agent, which specifies the LLM to use through an AI profile and the role the agent plays.
 
@@ -206,7 +229,7 @@ BEGIN
 END;
 ```
 
-## Task 7: Create the Agent Team
+## Task 78: Create the Agent Team
 
 You'll define an agent team that uses the agent and tasks specified above. You specify agent-task pairs for defining a sequential workflow. If you have multiple agents or multiple tasks, these are specified within the JSON list. The same Agent can be specified multiple times with their associated tasks. In this scenario it is a single agent and task pair.
 
@@ -226,9 +249,9 @@ BEGIN
 END;
 ```
 
-## Task 8: Interact with the Return Agency Agent
+## Task 9: Interact with the Return Agency Agent
 
-You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session. Then, prefix your prompt with `Select AI agent`. In this scenario, the agent team interacts with you in natural language. Behind the scenes, the ReAct agent pattern is used to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
+You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session. Then, prefix your prompt with `Select AI agent`. In this scenario, the agent team interacts with you in natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
 Let's test it:
 
 1. Set the agent team in the current session.
@@ -279,9 +302,9 @@ Thank you, Bob. The replacement for your smartphone case is on its way, and you 
 .
 ```
 
-## Task 9: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
+## Task 10: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
 
-First you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. The agent team also keeps a track of the customer conversation history.
+First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. The agent team also keeps a track of the customer conversation history.
 
 1. Create Select AI conversation.
 
@@ -301,7 +324,7 @@ BEGIN
   DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
 END;
 ```
-2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not loose the context and prompt histories.
+2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not lose the context and prompt history.
 ```
 %script
 
@@ -407,8 +430,8 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Sarika Surampudi, Principal ting User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager
+* **Author:** Sarika Surampudi, Principal User Assistance Developer
+* **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
 <!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
 -->
 
