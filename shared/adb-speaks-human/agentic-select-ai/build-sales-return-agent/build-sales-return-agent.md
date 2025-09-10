@@ -31,19 +31,19 @@ Replace _`USER`_ with your user name.
 
 ## Task 1: Download and Import a Notebook into OML
 
-You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **sales-return-agent** contains all the steps for setting up the **Sales Return Agent** for processing the product return from a customer. In this task, you will first download the **`sales-return-agent.dsnb`** OML notebook to your local machine, and then import this notebook into OML.
+You can import a notebook from a local disk or from a remote location if you provide the URL. A notebook named **SelectAI4SQL - AI Agents - Sales Return Agent** contains all the steps for setting up the **Sales Return Agent** for processing the product return from a customer. In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** OML notebook to your local machine, and then import this notebook into OML.
 
 1. Click the button below to download the notebook:
 
-    <a href="../build-sales-return-agent/files/sales-return-agent.dsnb" class="tryit-button">Download Notebook</a>
+    <a href="../build-sales-return-agent/files/SelectAI4SQL - AI Agents - Sales Return Agent.dsnb" class="tryit-button">Download Notebook</a>
 
-2. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`sales-return-agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+2. On your Oracle Machine Learning home page, click the top left navigation menu. Click **Notebooks**. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
-    ![The Open dialog box is displayed](./images/open-imported-notebook.png " ")
+    ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
 
-    If the import is successful, a notification is displayed and the **`sales-return-agent`** notebook is displayed in the list of available notebooks.
+    If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
 
-    ![The newly imported notebook is displayed.](./images/import-successful.png " ")
+    ![The newly imported notebook is displayed.](../build-sales-return-agent/images/notebook-imported.png " ")
 
 3. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 

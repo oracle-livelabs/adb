@@ -102,10 +102,7 @@ select * from USER_AI_AGENT_TEAM_HISTORY
 order by START_DATE desc
 ```
 
-**This concludes the workshop.**
-
-
-## Want to Learn More?
+## Learn More
 
 * [Select AI Agents](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents1.html) 
 * [Select AI Agents Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents-package.html)
