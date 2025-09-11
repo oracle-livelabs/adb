@@ -243,7 +243,7 @@ RESPONSE
 Can you please tell me the reason for returning the smartphone case? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective?
 ```
 
-You may continue with these prompts:
+You may continue with the following prompts as per the below sequence:
 
 _select ai agent Hi, unforunately, it is defective_
 

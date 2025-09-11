@@ -20,7 +20,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the first two labs in the **Contents** menu on the left.
+[comment]: # (MH: This lab requires completion of the **Get Started** section in the **Contents** menu on the left.)
 - Access to Oracle Machine Learning Notebooks interface.
 - Typical grants to run DBMS\_CLOUD\_AI\_AGENT Package are (run as ADMIN once):
 
@@ -59,19 +59,19 @@ You'll view the sample table for the scenario.
 
 1. View the contents of the customer table.
 
-```
-<copy>
-select * from customer;
-</copy>
-```
+    ```
+    <copy>
+    select * from customer;
+    </copy>
+    ```
 
 2. View the order status table.
 
-```
-<copy>
-select * from customer_order_status;
-</copy>
-```
+    ```
+    <copy>
+    select * from customer_order_status;
+    </copy>
+    ```
 
 ## Task 3: Create a Customer Order Update Status Function
 
@@ -79,65 +79,65 @@ You will create a SQL function to update a customer’s order status and return 
 
 1. Create a customer order update status function.
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-CREATE OR REPLACE FUNCTION update_customer_order_status (
-    p_customer_name IN VARCHAR2,
-    p_order_number  IN VARCHAR2,
-    p_status        IN VARCHAR2
-) RETURN VARCHAR2 IS
-    v_customer_id  customer.customer_id%TYPE;
-    v_row_count    NUMBER;
-BEGIN
-    -- Find customer_id from customer_name
-    SELECT customer_id
-    INTO v_customer_id
-    FROM customer
-    WHERE name = p_customer_name;
-    
-    UPDATE customer_order_status
-    SET status = p_status
-    WHERE customer_id = v_customer_id
-      AND order_number = p_order_number;
+    CREATE OR REPLACE FUNCTION update_customer_order_status (
+        p_customer_name IN VARCHAR2,
+        p_order_number  IN VARCHAR2,
+        p_status        IN VARCHAR2
+    ) RETURN VARCHAR2 IS
+        v_customer_id  customer.customer_id%TYPE;
+        v_row_count    NUMBER;
+    BEGIN
+        -- Find customer_id from customer_name
+        SELECT customer_id
+        INTO v_customer_id
+        FROM customer
+        WHERE name = p_customer_name;
+        
+        UPDATE customer_order_status
+        SET status = p_status
+        WHERE customer_id = v_customer_id
+          AND order_number = p_order_number;
 
-    v_row_count := SQL%ROWCOUNT;
+        v_row_count := SQL%ROWCOUNT;
 
-    IF v_row_count = 0 THEN
-        RETURN 'No matching record found to update.';
-    ELSE
-        RETURN 'Update successful.';
-    END IF;
-EXCEPTION
-    WHEN OTHERS THEN
-        RETURN 'Error: ' || SQLERRM;
-END;
-</copy>
-```
+        IF v_row_count = 0 THEN
+            RETURN 'No matching record found to update.';
+        ELSE
+            RETURN 'Update successful.';
+        END IF;
+    EXCEPTION
+        WHEN OTHERS THEN
+            RETURN 'Error: ' || SQLERRM;
+    END;
+    </copy>
+    ```
 2. Test this function by updating an order for a specific customer and return a message on completion.
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-DECLARE
-  v_result CLOB;
-BEGIN
-  v_result := update_customer_order_status('David Johnson', '3928', 'pending_return');
+    DECLARE
+      v_result CLOB;
+    BEGIN
+      v_result := update_customer_order_status('David Johnson', '3928', 'pending_return');
 
-  DBMS_OUTPUT.PUT_LINE(v_result);
-END;
-</copy>
-```
+      DBMS_OUTPUT.PUT_LINE(v_result);
+    END;
+    </copy>
+    ```
 3. Verify the change by viewing the customer order update status table for that customer. 
 
-```
-<copy>
-select * from customer_order_status
-where ORDER_NUMBER = 3928
-</copy>
-```
+    ```
+    <copy>
+    select * from customer_order_status
+    where ORDER_NUMBER = 3928
+    </copy>
+    ```
 
 ## Task 4: Create a Tool to Update Database
 
@@ -145,31 +145,31 @@ You'll create a tool that a task will use. Each tool is identified by a unique n
 
 1. Create Update\_Order\_Status\_Tool.
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('Update_Order_Status_Tool');
-EXCEPTION WHEN OTHERS THEN NULL; END;
-/
- BEGIN
-    DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
-        tool_name => 'Update_Order_Status_Tool',
-        attributes => '{"instruction": "This tool updates the database to reflect return status change. Always confirm user name and order number with user before update status",
-                        "function" : "update_customer_order_status"}',
-        description => 'Tool for updating customer order status in database table.'
-    );
-END;
-</copy>
-```
+    BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('Update_Order_Status_Tool');
+    EXCEPTION WHEN OTHERS THEN NULL; END;
+    /
+    BEGIN
+        DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
+            tool_name => 'Update_Order_Status_Tool',
+            attributes => '{"instruction": "This tool updates the database to reflect return status change. Always confirm user name and order number with user before update status",
+                            "function" : "update_customer_order_status"}',
+            description => 'Tool for updating customer order status in database table.'
+        );
+    END;
+    </copy>
+    ```
 2. Verify the Update\_Order\_Status\_Tool by querying `USER_AI_AGENT_TOOLS` view.
 
-```
-<copy>
-select * from USER_AI_AGENT_TOOLS
-order by created desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TOOLS
+    order by created desc
+    </copy>
+    ```
 
 ## Task 5: Create a Task to Handle the Product Return
 
@@ -177,35 +177,35 @@ You'll define a task that your Select AI agent will perform. Each task has a uni
 
 Create Handle\_Product\_Return\_Task.
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
-EXCEPTION WHEN OTHERS THEN NULL; END;
-/
-BEGIN
-  DBMS_CLOUD_AI_AGENT.create_task(
-    task_name => 'Handle_Product_Return_Task',
-    attributes => '{"instruction": "Process a product return request from a customer:{query}' || 
-                    '1. Ask customer the order reason for return (no longer needed, arrived too late, box broken, or defective)' || 
-                    '2. If no longer needed:' ||
-                    '   a. Inform customer to ship the product at their expense back to us.' ||
-                    '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
-                     '3. If it arrived too late:' ||
-                    '   a. Ask customer if they want a refund.' ||
-                    '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed' || 
-                    '4. If the product was defective or the box broken:' ||
-                    '   a. Ask customer if they want a replacement or a refund' ||
-                    '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
-                    '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
-                    '5. After the completion of a return or refund, ask if you can help with anything else.' ||
-                    '   End the task if user does not need help on anything else",
-                    "tools": ["Update_Order_Status_Tool"]}'
-  );
-END;
-</copy>
-```
+    BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
+    EXCEPTION WHEN OTHERS THEN NULL; END;
+    /
+    BEGIN
+      DBMS_CLOUD_AI_AGENT.create_task(
+        task_name => 'Handle_Product_Return_Task',
+        attributes => '{"instruction": "Process a product return request from a customer:{query}' || 
+                        '1. Ask customer the order reason for return (no longer needed, arrived too late, box broken, or defective)' || 
+                        '2. If no longer needed:' ||
+                        '   a. Inform customer to ship the product at their expense back to us.' ||
+                        '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
+                        '3. If it arrived too late:' ||
+                        '   a. Ask customer if they want a refund.' ||
+                        '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed' || 
+                        '4. If the product was defective or the box broken:' ||
+                        '   a. Ask customer if they want a replacement or a refund' ||
+                        '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
+                        '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
+                        '5. After the completion of a return or refund, ask if you can help with anything else.' ||
+                        '   End the task if user does not need help on anything else",
+                        "tools": ["Update_Order_Status_Tool"]}'
+      );
+    END;
+    </copy>
+    ```
 
 ## Task 6: Create OCI Credentials
 Before you create and use an AI profile, you must create your AI provider credentials. In this task you will gather the required parameters for OCI Gen AI credential and create a credential that will be used in the next task to create an AI profile.
@@ -223,7 +223,7 @@ Follow these steps to create your OCI credentials:
 
    a. From the same user menu -> go to **Tenancy**.
 
-   b. Copy the OCID shown there.
+   b. Copy the **OCID** shown there.
 
 3. Fingerprint
 
@@ -231,9 +231,7 @@ Follow these steps to create your OCI credentials:
 
    a. Navigate to **User Settings** -> **Tokens and Keys** -> **API Keys**.
 
-   b. After creating or uploading a public key, OCI generates a fingerprint for it.
-
-   c. Copy that value.
+   b. After creating or uploading a public key, OCI generates a fingerprint for it. Copy that value.
 
 4. Private Key
 
@@ -248,27 +246,27 @@ Follow these steps to create your OCI credentials:
      -----END PRIVATE KEY-----
      ```
 5. Create an OCI Gen AI credential.
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-begin
-  DBMS_CLOUD.drop_credential(credential_name => 'OCI_CRED');
-  EXCEPTION WHEN OTHERS THEN NULL; END;
-end;
-/
-BEGIN
-  DBMS_CLOUD.create_credential(
-    credential_name => 'OCI_CRED',
-    user_ocid       => '<ocid>',
-    tenancy_ocid    => '<tenancy ocid>',
-    private_key     => '<private key>',
-    fingerprint     => '<fingerprint>'
-  );
-END;
-</copy>
-```
-## Task 6: Create an AI Profile
+    begin
+      DBMS_CLOUD.drop_credential(credential_name => 'OCI_CRED');
+      EXCEPTION WHEN OTHERS THEN NULL; END;
+    end;
+    /
+    BEGIN
+      DBMS_CLOUD.create_credential(
+        credential_name => 'OCI_CRED',
+        user_ocid       => '<ocid>',
+        tenancy_ocid    => '<tenancy ocid>',
+        private_key     => '<private key>',
+        fingerprint     => '<fingerprint>'
+      );
+    END;
+    </copy>
+    ```
+## Task 7: Create an AI Profile
 You'll create an AI profile with LLM of your choice, to use in the next step to create an agent. In this task, you are using xAi's GROK model with OCI Gen AI credential.
 
 ```
@@ -293,7 +291,7 @@ END;
 </copy>
 ```
 
-## Task 7: Define Customer Agent
+## Task 8: Define Customer Agent
 
 You'll create an agent, which specifies the LLM to use through an AI profile and the role the agent plays.
 
@@ -315,7 +313,7 @@ END;
 </copy>
 ```
 
-## Task 8: Create the Agent Team
+## Task 9: Create the Agent Team
 
 You'll define an agent team that uses the agent and tasks specified above. You specify agent-task pairs for defining a sequential workflow. If you have multiple agents or multiple tasks, these are specified within the JSON list. The same Agent can be specified multiple times with their associated tasks. In this scenario it is a single agent and task pair.
 
@@ -337,209 +335,208 @@ END;
 </copy>
 ```
 
-## Task 9: Interact with the Return Agency Agent
+## Task 10: Interact with the Return Agency Agent
 
 You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current session. Then, prefix your prompt with `Select AI agent`. In this scenario, the agent team interacts with you in natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
 Let's test it:
 
 1. Set the agent team in the current session.
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-EXEC DBMS_CLOUD_AI.clear_conversation_id; 
-EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
-</copy>
-```
+    EXEC DBMS_CLOUD_AI.clear_conversation_id; 
+    EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
+    </copy>
+    ```
 
 2. Interact with the Return Agency in a series of natural language prompts.
 
-```
-<copy>
-select ai agent I want to return a smartphone case;
-</copy>
-```
+    ```
+    <copy>
+    select ai agent I want to return a smartphone case;
+    </copy>
+    ```
 **Result:**
-```
-RESPONSE
-Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
-```
+    ```
+    RESPONSE
+    Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
+    ```
 
-```
-<copy>
-select ai agent the item is defective
-</copy>
-```
-
+    ```
+    <copy>
+    select ai agent the item is defective
+    </copy>
+    ```
 **Result:**
-```
-RESPONSE
-I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
-```
+    ```
+    RESPONSE
+    I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
+    ```
 
-```
-<copy>
-select ai agent I will need a replacement
-</copy>
-```
+    ```
+    <copy>
+    select ai agent I will need a replacement
+    </copy>
+    ```
 **Result:**
-```
-RESPONSE
-Could you please confirm your name and order number so I can update the status and process the replacement?
-```
+    ```
+    RESPONSE
+    Could you please confirm your name and order number so I can update the status and process the replacement?
+    ```
 
-```
-<copy>
-select ai agent I''m Bob Martinez and my order number is 7820
-</copy>
-```
+    ```
+    <copy>
+    select ai agent I''m Bob Martinez and my order number is 7820
+    </copy>
+    ```
 **Result:**
-```
-RESPONSE
-Thank you, Bob. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
-```
+    ```
+    RESPONSE
+    Thank you, Bob. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
+    ```
 
-To continue, you may try these prompts:
+To continue, you may try these prompts in the given sequence:
 
-_select ai agent Yes, I''d like to return a smartphone stand;_
+a. _select ai agent Yes, I''d like to return a smartphone stand;_
 
-_select ai agent I no longer need it_
+b. _select ai agent I no longer need it_
 
-_select ai agent I''m Bob Martinez with order number is 7820_
+c. _select ai agent I''m Bob Martinez with order number is 7820_
 
-_select ai agent No, I''m all set. Thanks_
+d. _select ai agent No, I''m all set. Thanks_
 
 
-## Task 10: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
+## Task 11: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
 
 First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. Creating a conversation helps the agent team to keep track of the customer conversation context and history.
 
 1. Create Select AI conversation.
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-CREATE OR REPLACE PACKAGE my_globals IS
-  l_team_cov_id varchar2(4000);
-END my_globals;
-/
--- Create conversation
-DECLARE
-  l_team_cov_id varchar2(4000);
-BEGIN
-  l_team_cov_id := DBMS_CLOUD_AI.create_conversation();
-  my_globals.l_team_cov_id := l_team_cov_id;
-  DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
-END;
-</copy>
-```
+    CREATE OR REPLACE PACKAGE my_globals IS
+      l_team_cov_id varchar2(4000);
+    END my_globals;
+    /
+    -- Create conversation
+    DECLARE
+      l_team_cov_id varchar2(4000);
+    BEGIN
+      l_team_cov_id := DBMS_CLOUD_AI.create_conversation();
+      my_globals.l_team_cov_id := l_team_cov_id;
+      DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
+    END;
+    </copy>
+    ```
 2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not lose the context and prompt history.
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-DECLARE
-  v_response VARCHAR2(4000);
-BEGIN
-  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name   => 'Return_Agency_Team',
-    user_prompt => 'I want to return a smartphone case',
-    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-  );
-  DBMS_OUTPUT.PUT_LINE(v_response);
-END;
-</copy>
-```
+    DECLARE
+      v_response VARCHAR2(4000);
+    BEGIN
+      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+        team_name   => 'Return_Agency_Team',
+        user_prompt => 'I want to return a smartphone case',
+        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+      );
+      DBMS_OUTPUT.PUT_LINE(v_response);
+    END;
+    </copy>
+    ```
 **Result:**
-```
-Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
-```
+    ```
+    Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
+    ```
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-DECLARE
-  v_response VARCHAR2(4000);
-BEGIN
-  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name   => 'Return_Agency_Team',
-    user_prompt => 'the item is defective',
-    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-  );
-  DBMS_OUTPUT.PUT_LINE(v_response);
-END;
-</copy>
-```
+    DECLARE
+      v_response VARCHAR2(4000);
+    BEGIN
+      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+        team_name   => 'Return_Agency_Team',
+        user_prompt => 'the item is defective',
+        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+      );
+      DBMS_OUTPUT.PUT_LINE(v_response);
+    END;
+    </copy>
+    ```
 **Result:**
-```
-I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
-```
+    ```
+    I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
+    ```
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-DECLARE
-  v_response VARCHAR2(4000);
-BEGIN
-  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name   => 'Return_Agency_Team',
-    user_prompt => 'I''d like a replacement',
-    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-  );
-  DBMS_OUTPUT.PUT_LINE(v_response);
-END;
-</copy>
-```
+    DECLARE
+      v_response VARCHAR2(4000);
+    BEGIN
+      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+        team_name   => 'Return_Agency_Team',
+        user_prompt => 'I''d like a replacement',
+        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+      );
+      DBMS_OUTPUT.PUT_LINE(v_response);
+    END;
+    </copy>
+    ```
 **Result:**
-```
-Thank you for your response. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Could you please confirm your name and order number so I can update the order status?
-```
+    ```
+    Thank you for your response. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Could you please confirm your name and order number so I can update the order status?
+    ```
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-DECLARE
-  v_response VARCHAR2(4000);
-BEGIN
-  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name    => 'Return_Agency_Team',
-    user_prompt => 'I''m Bob Martinez and my order number is 7820',
-    params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-  );
-  DBMS_OUTPUT.PUT_LINE(v_response);
-END;
-</copy>
-```
+    DECLARE
+      v_response VARCHAR2(4000);
+    BEGIN
+      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+        team_name    => 'Return_Agency_Team',
+        user_prompt => 'I''m Bob Martinez and my order number is 7820',
+        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+      );
+      DBMS_OUTPUT.PUT_LINE(v_response);
+    END;
+    </copy>
+    ```
 **Result:**
-```
-Is there anything else I can help you with?
-```
+    ```
+    Is there anything else I can help you with?
+    ```
 
-```
-<copy>
-%script
+    ```
+    <copy>
+    %script
 
-DECLARE
-  v_response VARCHAR2(4000);
-BEGIN
-  v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
-    team_name => 'Return_Agency_Team',
-    user_prompt => 'No, thank you',
-    params => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
-  );
-  DBMS_OUTPUT.PUT_LINE(v_response);
-END;
-</copy>
-```
+    DECLARE
+      v_response VARCHAR2(4000);
+    BEGIN
+      v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+        team_name => 'Return_Agency_Team',
+        user_prompt => 'No, thank you',
+        params => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+      );
+      DBMS_OUTPUT.PUT_LINE(v_response);
+    END;
+    </copy>
+    ```
 **Result:**
-```
-Thank you, Bob. I'm glad we could assist with the replacement of your smartphone case. If you have any other concerns in the future, feel free to reach out. Have a great day!
-```
+    ```
+    Thank you, Bob. I'm glad we could assist with the replacement of your smartphone case. If you have any other concerns in the future, feel free to reach out. Have a great day!
+    ```
 
 You may now proceed to the next lab.
 

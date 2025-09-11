@@ -22,8 +22,8 @@ You will build this agentic solution step-by-step. You will start by defining fu
 There are several phases to this solution:
 * First, a basic definition that interacts with the customer and updates the order status in a database table.
 * Second, refine your agent to make it more personable and generate an email that could be sent to the customer confirming the action.
-* Third, define a function to populate a standard email form that accepts parameters
-* Fourth, create a tool supporting retrieval augmented generation (RAG) to give recommendations to the customer
+* Third, define a function to populate a standard email form that accepts parameters.
+* Fourth, create a tool supporting retrieval augmented generation (RAG) to give recommendations to the customer.
 
 At the conclusion, you'll see how Select AI Agent can be used to make structured database updates and have natural language interactions with a user while exploring how to create and integrate various types of tools.
 
@@ -36,7 +36,7 @@ Before we begin, let's review some important terms:
 * **ReAct Framework (Reasoning and Acting)**: The logic where the agent reasons about the request, chooses tools, performs actions, and evaluates results to accomplish a goal.
 <!--* **RAG Tool**: A retrieval mechanism that lets the agent pull in external or domain-specific knowledge to make better decisions.-->
 
-**NOTE:** This workshop requires access to a Large Language Model (LLM). You can use LLMs from a wide range of AI providers, including OCI GenAI, OpenAI, Azure, and Google Gemini, among others . If you want to use OCI GenAI, ensure that your tenancy is subscribed to one of the following regions (at the time the workshop was last updated): **US Midwest (Chicago)** (default), **Germany Central (Frankfurt)**, **UK South (London)**, **Brazil East (Sao Paulo)**, or **Japan Central (Osaka)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
+>**NOTE:** This workshop requires access to a Large Language Model (LLM). You can use LLMs from a wide range of AI providers, including OCI GenAI, OpenAI, Azure, and Google Gemini, among others . If you want to use OCI GenAI, ensure that your tenancy is subscribed to one of the following regions (at the time the workshop was last updated): **US Midwest (Chicago)** (default), **Germany Central (Frankfurt)**, **UK South (London)**, **Brazil East (Sao Paulo)**, or **Japan Central (Osaka)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
 ### Objectives
 
@@ -55,9 +55,9 @@ You may now proceed to the next lab.
 ## Learn more
 
 * [Oracle Autonomous Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
-*[Oracle Select AI Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html)
-* [Oracle Select AI Agent Documentation]()
-*[DBMS_CLOUD_AI Package Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-000CBBD4-202B-4E9B-9FC2-B9F2FF20F246)
+* [Oracle Select AI Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html)
+* [Oracle Select AI Agent Documentation](https://docs-uat.us.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents1.html)
+* [`DBMS_CLOUD_AI` Package Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-000CBBD4-202B-4E9B-9FC2-B9F2FF20F246)
 * [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
 
 ## Acknowledgements
