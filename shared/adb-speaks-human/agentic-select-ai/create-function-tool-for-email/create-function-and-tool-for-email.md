@@ -29,6 +29,7 @@ You'll create a function to return a confirmation email as a `CLOB` and test the
 1. Create the build\_return\_email function.
 
 ```
+<copy>
   %script
 
 CREATE OR REPLACE FUNCTION build_return_email (
@@ -84,10 +85,12 @@ BEGIN
 
     RETURN l_json;
 END;
+	</copy>
 ```
 2. Test the build\_return\_email function and verify the output.
 
 ```
+<copy>
 %script
 
 DECLARE
@@ -103,6 +106,7 @@ BEGIN
 
     DBMS_OUTPUT.PUT_LINE(v_json);
 END;
+	</copy>
 ```
 **Result:**
 ```
@@ -118,6 +122,7 @@ You’ll create an email tool with clear instructions on what the tool should do
 Create a build\_email\_tool that specifies the build\_return\_email function.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('build_email_tool');
@@ -133,6 +138,7 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
         description => 'Tool for updating customer order status in database table.'
     );
 END;
+	</copy>
 ```
 
 ## Task 3: Create an Email Task
@@ -142,6 +148,7 @@ You'll create an email task and add the build\_email\_tool to the task. The task
 1. Create a Build\_Email\_Task.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
@@ -167,6 +174,7 @@ BEGIN
                     "tools": ["Update_Order_Status_Tool", "Build_Email_Tool"]}'
   );
 END;
+	</copy>
 ```
 
 ## Task 4: Update the Agent Team
@@ -176,6 +184,7 @@ Add the new task into your agent team, which now includes the email generation t
 Update the Return\_Agency\_Team.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_team('Return_Agency_Team');
@@ -187,6 +196,7 @@ BEGIN
     attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"}],
                     "process": "sequential"}');                                                                 
 END;
+	</copy>
 ```
 
 ## Task 5: Interact with the Refined Agent - Part 2
@@ -195,24 +205,32 @@ You can start interacting with the refined Select AI agent team by using natural
 1. Set the agent team in the current session.
 
 ```
+<copy>
 %script
+
 EXEC DBMS_CLOUD_AI.clear_conversation_id;
-EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team'); 
+
+EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
+</copy>
 ```
 2. Interact with Return Agency in a series of natural language prompts.
 
 ```
-select ai agent I want to return a smartphone backup storage;
+<copy>
+select ai agent I want to return a smartphone backup storage
+	</copy>
 ```
 
 **Result:**
 ```
 RESPONSE
-Could you please tell me the reason for returning the smartphone backup storage? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective? 
+Could you please tell me the reason for returning the smartphone backup storage? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective?
 ```
 
 ```
-select ai agent It arrived too late;
+<copy>
+select ai agent It arrived too late
+	</copy>
 ```
 **Result:**
 ```
@@ -221,7 +239,9 @@ I'm sorry to hear that the smartphone backup storage arrived too late. Would you
 ```
 
 ```
+<copy>
 select ai agent Yes;
+	</copy>
 ```
 **Result:**
 ```
@@ -230,11 +250,13 @@ Could you please provide me with your full name and the order number for the sma
 ```
 
 ```
+<copy>
 select ai agent Carol Chen order number 7635;
+	</copy>
 ```
 **Result:**
   ```
-  RESPONSE                                                                                                                               
+RESPONSE                                                                                                                               
 Here is the confirmation email for your refund request:
 
 Subject: Your Return Request for Order 7635 - smartphone backup storage
@@ -255,10 +277,13 @@ Please let me know if you have any questions or if there is anything else I can 
 Thank you, and have a great day!
 
 Is all the information in this email correct? If not, please let me know what needs to be updated.
+
 ```
 
 ```
+<copy>
 select ai agent yes it is correct
+	</copy>
 ```
 **Result:**
 ```
@@ -267,16 +292,23 @@ RESPONSE
 I'm glad everything looks good with the email confirmation. Is there anything else I can help you with today?
 ```
 ```
+<copy>
 select ai agent No, thank you, nothing else;
+	</copy>
 ```
 **Result:**
 ```
 
 RESPONSE
-I'm happy to have assisted you with the return process for the smartphone backup storage, Carol. If you think of anything else in the future, don't hesitate to reach out. Have a wonderful day! Goodbye!
+I'm happy to have assisted you with the return process, Carol. If you think of anything else in the future, don't hesitate to reach out. Have a wonderful day! Goodbye!
 ```
+
+You may now proceed to the next lab.
+
 ## Learn More
 
+* [Select AI Agents](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents1.html)
+* [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)

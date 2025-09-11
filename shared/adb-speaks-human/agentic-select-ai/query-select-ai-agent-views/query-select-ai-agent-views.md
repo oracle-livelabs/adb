@@ -23,8 +23,10 @@ In this lab, you will:
 - Typical grants to run DBMS\_CLOUD\_AI\_AGENT Package are (run as ADMIN once):
 
 ```
+<copy>
 GRANT EXECUTE ON DBMS_CLOUD_AI TO <USER>;
 GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <USER>;
+</copy>
 ```
 Replace _`USER`_ with your user name.
 
@@ -34,6 +36,7 @@ You are building a helper procedure that prints a readable timeline of a convers
 
 Create the team processing procedure and run it.
 ```
+<copy>
 WITH latest_team AS (
   SELECT team_exec_id, team_name, start_date
   FROM user_ai_agent_team_history
@@ -60,7 +63,7 @@ LEFT JOIN user_cloud_ai_conversation_prompts p
   ON p.conversation_id = JSON_VALUE(task.conversation_params, '$.conversation_id')
 ORDER BY task.start_date DESC NULLS LAST,
          p.created     DESC NULLS LAST;
-
+</copy>
 ```
 
 ## Task 2: View the Schema of Select AI Agent Views
@@ -70,41 +73,51 @@ You'll inspect columns and data types so you know what you can filter and displa
 Run the following script:
 
 ```
+<copy>
 %script
 
 describe USER_AI_AGENT_TOOL_HISTORY;
 describe USER_AI_AGENT_TASK_HISTORY;
 describe USER_AI_AGENT_TEAM_HISTORY;
+</copy>
 ```
 
-## Task 3: Query the `USER_AI_AGENT_*` views
+## Task 3: Query the `USER_AI_AGENT_` Views
 
 See each tool call the agent made which tool, with what inputs, and what came back. Review task-level flow: which tasks ran, their order, what inputs were used, what were the results, were there any error messages, and what parameters were used. Summarize each end-to-end run: when it started, their status, and conversation context used.
 
 1. Query `USER_AI_AGENT_TOOL_HISTORY`.
 
 ```
+<copy>
 select * from USER_AI_AGENT_TOOL_HISTORY
 order by START_DATE desc
+</copy>
 ```
 
 2. Query `USER_AI_AGENT_TASK_HISTORY`.
 
 ```
+<copy>
 select * from USER_AI_AGENT_TASK_HISTORY
  order by START_DATE desc
+</copy>
 ```
 
 3. Query `USER_AI_AGENT_TEAM_HISTORY`
 
 ```
+<copy>
 select * from USER_AI_AGENT_TEAM_HISTORY
 order by START_DATE desc
+</copy>
 ```
+
+You may now proceed to the next lab.
 
 ## Learn More
 
-* [Select AI Agents](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents1.html) 
+* [Select AI Agents](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents1.html)
 * [Select AI Agents Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agents-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)

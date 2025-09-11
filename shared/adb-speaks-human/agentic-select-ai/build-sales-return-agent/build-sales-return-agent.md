@@ -21,11 +21,15 @@ In this lab, you will:
 ### Prerequisites
 
 - This lab requires completion of the first two labs in the **Contents** menu on the left.
+- Access to Oracle Machine Learning Notebooks interface.
 - Typical grants to run DBMS\_CLOUD\_AI\_AGENT Package are (run as ADMIN once):
 
 ```
+<copy>
+
 GRANT EXECUTE ON DBMS_CLOUD_AI TO <USER>;
 GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <USER>;
+</copy>
 ```
 Replace _`USER`_ with your user name.
 
@@ -56,13 +60,17 @@ You'll view the sample table for the scenario.
 1. View the contents of the customer table.
 
 ```
+<copy>
 select * from customer;
+</copy>
 ```
 
 2. View the order status table.
 
 ```
+<copy>
 select * from customer_order_status;
+</copy>
 ```
 
 ## Task 3: Create a Customer Order Update Status Function
@@ -72,6 +80,7 @@ You will create a SQL function to update a customer’s order status and return 
 1. Create a customer order update status function.
 
 ```
+<copy>
 %script
 
 CREATE OR REPLACE FUNCTION update_customer_order_status (
@@ -104,10 +113,12 @@ EXCEPTION
     WHEN OTHERS THEN
         RETURN 'Error: ' || SQLERRM;
 END;
+</copy>
 ```
 2. Test this function by updating an order for a specific customer and return a message on completion.
 
 ```
+<copy>
 %script
 
 DECLARE
@@ -117,12 +128,15 @@ BEGIN
 
   DBMS_OUTPUT.PUT_LINE(v_result);
 END;
+</copy>
 ```
 3. Verify the change by viewing the customer order update status table for that customer. 
 
 ```
+<copy>
 select * from customer_order_status
 where ORDER_NUMBER = 3928
+</copy>
 ```
 
 ## Task 4: Create a Tool to Update Database
@@ -132,6 +146,7 @@ You'll create a tool that a task will use. Each tool is identified by a unique n
 1. Create Update\_Order\_Status\_Tool.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('Update_Order_Status_Tool');
@@ -145,12 +160,15 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
         description => 'Tool for updating customer order status in database table.'
     );
 END;
+</copy>
 ```
 2. Verify the Update\_Order\_Status\_Tool by querying `USER_AI_AGENT_TOOLS` view.
 
 ```
+<copy>
 select * from USER_AI_AGENT_TOOLS
 order by created desc
+</copy>
 ```
 
 ## Task 5: Create a Task to Handle the Product Return
@@ -160,6 +178,7 @@ You'll define a task that your Select AI agent will perform. Each task has a uni
 Create Handle\_Product\_Return\_Task.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
@@ -185,11 +204,75 @@ BEGIN
                     "tools": ["Update_Order_Status_Tool"]}'
   );
 END;
+</copy>
+```
+
+## Task 6: Create OCI Credentials
+Before you create and use an AI profile, you must create your AI provider credentials. In this task you will gather the required parameters for OCI Gen AI credential and create a credential that will be used in the next task to create an AI profile.
+
+Follow these steps to create your OCI credentials:
+1. User OCID
+
+   a. Go to the OCI Console.
+
+   b. Open the profile menu (top right, click your user name) -> **User Settings**.
+
+   c. Copy the OCID shown there.
+
+2. Tenancy OCID
+
+   a. From the same user menu -> go to **Tenancy**.
+
+   b. Copy the OCID shown there.
+
+3. Fingerprint
+
+   This comes from the public key you upload when you create an API key.
+
+   a. Navigate to **User Settings** -> **Tokens and Keys** -> **API Keys**.
+
+   b. After creating or uploading a public key, OCI generates a fingerprint for it.
+
+   c. Copy that value.
+
+4. Private Key
+
+   This is the private key file you generated locally (when you created the API key pair).
+
+   Usually named `oci_api_key.pem`.
+
+   Open it in a text editor and copy the entire contents, including:
+     ```
+     -----BEGIN PRIVATE KEY-----
+     ...key content...
+     -----END PRIVATE KEY-----
+     ```
+5. Create an OCI Gen AI credential.
+```
+<copy>
+%script
+
+begin
+  DBMS_CLOUD.drop_credential(credential_name => 'OCI_CRED');
+  EXCEPTION WHEN OTHERS THEN NULL; END;
+end;
+/
+BEGIN
+  DBMS_CLOUD.create_credential(
+    credential_name => 'OCI_CRED',
+    user_ocid       => '<ocid>',
+    tenancy_ocid    => '<tenancy ocid>',
+    private_key     => '<private key>',
+    fingerprint     => '<fingerprint>'
+  );
+END;
+</copy>
 ```
 ## Task 6: Create an AI Profile
-You'll create an AI profile to use in the next step to create an agent.
+You'll create an AI profile with LLM of your choice, to use in the next step to create an agent. In this task, you are using xAi's GROK model with OCI Gen AI credential.
 
 ```
+<copy>
 %script
 
 BEGIN
@@ -207,6 +290,7 @@ BEGIN
       description  => 'Supports the Select AI Sales Return Agent scenario.'
   ); 
 END;
+</copy>
 ```
 
 ## Task 7: Define Customer Agent
@@ -216,6 +300,7 @@ You'll create an agent, which specifies the LLM to use through an AI profile and
 Create the Customer\_Return\_Agent.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_agent('Customer_Return_Agent');
@@ -227,26 +312,29 @@ BEGIN
     attributes => '{"profile_name": "OCI_GENAI_GROK",
                     "role": "You are an experienced customer return agent who deals with customers return requests."}');
 END;
+</copy>
 ```
 
-## Task 78: Create the Agent Team
+## Task 8: Create the Agent Team
 
 You'll define an agent team that uses the agent and tasks specified above. You specify agent-task pairs for defining a sequential workflow. If you have multiple agents or multiple tasks, these are specified within the JSON list. The same Agent can be specified multiple times with their associated tasks. In this scenario it is a single agent and task pair.
 
 Create the Return\_Agency\_Team.
 
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_team('Return_Agency_Team');
 EXCEPTION WHEN OTHERS THEN NULL; END;
 /
-BEGIN
-  DBMS_CLOUD_AI_AGENT.create_team(
-    team_name  => 'Return_Agency_Team',
+BEGIN                                                                 
+  DBMS_CLOUD_AI_AGENT.create_team(  
+    team_name  => 'Return_Agency_Team',                                                            
     attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"}],
-                    "process": "sequential"}');
+                    "process": "sequential"}');                                                                 
 END;
+</copy>
 ```
 
 ## Task 9: Interact with the Return Agency Agent
@@ -257,13 +345,20 @@ Let's test it:
 1. Set the agent team in the current session.
 
 ```
+<copy>
+%script
+
+EXEC DBMS_CLOUD_AI.clear_conversation_id; 
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
+</copy>
 ```
 
 2. Interact with the Return Agency in a series of natural language prompts.
 
 ```
-select ai agent agent I want to return a smartphone case;
+<copy>
+select ai agent I want to return a smartphone case;
+</copy>
 ```
 **Result:**
 ```
@@ -272,7 +367,9 @@ Could you please tell me the reason for returning the smartphone case? Is it no 
 ```
 
 ```
-select ai agent the item is defective;
+<copy>
+select ai agent the item is defective
+</copy>
 ```
 
 **Result:**
@@ -282,33 +379,46 @@ I'm sorry to hear that the smartphone case is defective. Would you like a replac
 ```
 
 ```
+<copy>
 select ai agent I will need a replacement
+</copy>
 ```
 **Result:**
 ```
 RESPONSE
-Can you please confirm your name and order number so I can update the status and process the replacement?
+Could you please confirm your name and order number so I can update the status and process the replacement?
 ```
 
 ```
+<copy>
 select ai agent I''m Bob Martinez and my order number is 7820
+</copy>
 ```
 **Result:**
 ```
 RESPONSE
-Thank you, Bob. The replacement for your smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
-.
-.
-.
+Thank you, Bob. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
 ```
+
+To continue, you may try these prompts:
+
+_select ai agent Yes, I''d like to return a smartphone stand;_
+
+_select ai agent I no longer need it_
+
+_select ai agent I''m Bob Martinez with order number is 7820_
+
+_select ai agent No, I''m all set. Thanks_
+
 
 ## Task 10: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
 
-First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. The agent team also keeps a track of the customer conversation history.
+First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. Creating a conversation helps the agent team to keep track of the customer conversation context and history.
 
 1. Create Select AI conversation.
 
 ```
+<copy>
 %script
 
 CREATE OR REPLACE PACKAGE my_globals IS
@@ -323,9 +433,11 @@ BEGIN
   my_globals.l_team_cov_id := l_team_cov_id;
   DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
 END;
+</copy>
 ```
 2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not lose the context and prompt history.
 ```
+<copy>
 %script
 
 DECLARE
@@ -338,6 +450,7 @@ BEGIN
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
+</copy>
 ```
 **Result:**
 ```
@@ -345,6 +458,7 @@ Could you please tell me the reason for returning the smartphone case? Is it no 
 ```
 
 ```
+<copy>
 %script
 
 DECLARE
@@ -357,6 +471,7 @@ BEGIN
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
+</copy>
 ```
 **Result:**
 ```
@@ -364,6 +479,7 @@ I'm sorry to hear that the smartphone case is defective. Would you like a replac
 ```
 
 ```
+<copy>
 %script
 
 DECLARE
@@ -376,13 +492,15 @@ BEGIN
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
+</copy>
 ```
 **Result:**
 ```
-Can you please confirm your name and order number so I can update the status and process the replacement?
+Thank you for your response. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Could you please confirm your name and order number so I can update the order status?
 ```
 
 ```
+<copy>
 %script
 
 DECLARE
@@ -395,13 +513,15 @@ BEGIN
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
+</copy>
 ```
 **Result:**
 ```
-Thank you, Bob. The replacement for your smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
+Is there anything else I can help you with?
 ```
 
 ```
+<copy>
 %script
 
 DECLARE
@@ -414,6 +534,7 @@ BEGIN
   );
   DBMS_OUTPUT.PUT_LINE(v_response);
 END;
+</copy>
 ```
 **Result:**
 ```
@@ -426,6 +547,7 @@ You may now proceed to the next lab.
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Example of creating an OCI Gen AI Select AI Profile](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-examples.html#GUID-BD10A668-42A6-4B44-BC77-FE5E5592DE27)
 * [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements

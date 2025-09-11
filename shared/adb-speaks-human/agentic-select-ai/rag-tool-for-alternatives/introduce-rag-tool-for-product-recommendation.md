@@ -14,9 +14,9 @@ An AI profile captures the properties of your AI provider and the AI model(s) yo
 ### **Create an AI Profile for RAG and a Vector Index**
 [comment]: # (MH: The LiveLab will need to tell the user how to create the credential as well. For the HOL, we'll have a predefined credential, but the general LiveLab will require users to create this. This will require a section on credential creation with OCI GenAI since it's far from easy. When we first use the OCI_CRED, much earlier in the workshop, this should be added. With a reference to that section here (rather than repeat it.)
 
-Here, you will create an AI profile for RAG.
+Here, you will create an AI profile for RAG. 
 
->**Note:** In this workshop, we are using OCI Generative AI.
+>**Note:** In this workshop, we are using OCI Generative AI. Before creating an AI profile, create credentials to access AI provider. See **Lab 1** of this workshop.
 
 To get started, you'll need to create a profile using the **`DBMS_CLOUD_AI.CREATE_PROFILE`** PL/SQL package that describes your _AI provider_ and use the _default_ LLM transformer. We’ll then create a vector index using content from object storage. For additional information, see the [CREATE\_PROFILE procedure](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html#GUID-D51B04DE-233B-48A2-BBFA-3AAB18D8C35C) documentation.
 
@@ -52,6 +52,7 @@ Define an AI Profile that has your LLM and database objects and is ready to use 
 
 1. Create an AI profile for RAG usage.
 ```
+<copy>
 BEGIN  
   DBMS_CLOUD_AI.drop_profile(profile_name => 'SALES_AGENT_RAG_PROFILE');
  
@@ -64,31 +65,36 @@ BEGIN
                         "credential_name": "OCI_CRED",          
                         "vector_index_name": "SALES_AGENT_VECTOR_INDEX"}');  
 END;
+	</copy>
 ```
 
 2. Create credentials to access Object Storage.
 [comment]:#(MH: This needs to be augmented to say where to get the needed details. Check with Sherry.)
 ```
+<copy>
 %script
 
 begin
-  dbms_cloud.drop_credential(credential_name => 'OCI_SALES_CRED');
+  DBMS_CLOUD.drop_credential(credential_name => 'OCI_SALES_CRED');
   EXCEPTION WHEN OTHERS THEN NULL; END;
 end;
 /
 BEGIN
   DBMS_CLOUD.create_credential(
     credential_name => 'OCI_SALES_CRED',
-    user_ocid       => 'ocid1.user.oc1..aaaaaa...',
-    tenancy_ocid    => 'ocid1.tenancy.oc1..aaaaaaaa...',
-    private_key     => '<your_oci_private_key>',
-    fingerprint     => '<your_fingerprint>'
+    user_ocid       => '<ocid>',
+    tenancy_ocid    => '<tenancy ocid>',
+    private_key     => '<private key>',
+    fingerprint     => '<fingerprint>'
   );
 END;
+</copy>
 ```
 3. Build a vector index over product docs stored in Object Storage. The index is used by RAG.
 ```
+<copy>
 %script
+
 BEGIN
   DBMS_CLOUD_AI.DROP_VECTOR_INDEX(
    index_name  => 'SALES_AGENT_VECTOR_INDEX',
@@ -108,6 +114,7 @@ BEGIN
                      "chunk_size":450}',
       description => 'Vector index for sales return agent scenario');
 END;
+	</copy>
 ```
 4. Set the AI profile in the current session.
 ```
@@ -118,7 +125,9 @@ EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
 ```
 5. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
 ```
+<copy>
 select ai narrate what are alternatives for the smartphone case
+	</copy>
 ```
 **Result:**
 ```
@@ -135,6 +144,7 @@ Define a RAG tool that the AI agent team can call to provide alternate product r
 
 Create the sales\_rag\_tool.
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('sales_rag_tool');
@@ -144,10 +154,11 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
     DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
         tool_name => 'sales_rag_tool',
         attributes => q'[{"tool_type": "RAG",
-                      "tool_params": {"profile_name": "SALES_AGENT_RAG_PROFILE"}}]',
+                          "tool_params": {"profile_name": "SALES_AGENT_RAG_PROFILE"}}]',
         description => 'Tool for doing RAG for product recommendations using supplier documents.'
     );
 END;
+	</copy>
 ```
 
 ## Task 3: Update the Task to Handle the Product Return
@@ -157,6 +168,7 @@ Update the `Handle_Product_Return_Task`.
   
   **Note**: This version does not include email generation, only the product recommendation.
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
@@ -165,24 +177,26 @@ EXCEPTION WHEN OTHERS THEN NULL; END;
 BEGIN
   DBMS_CLOUD_AI_AGENT.create_task(
     task_name => 'Handle_Product_Return_Task',
-    attributes => '{"instruction": "Process a product return request from a customer:{query}' || 
+    attributes => '{"instruction": "Process a product return request from a customer: {query} ' ||
+                    'Steps to be followed: ' ||
                     '1. Ask customer the reason for return (no longer needed, arrived too late, box broken, or defective)' || 
                     '2. If no longer needed:' ||
                     '   a. Inform customer to ship the product at their expense back to us.' ||
-                    '   a. Ask customer for their name and order number and update order status return_shipment_pending.' ||
+                    '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
                      '3. If it arrived too late:' ||
                     '   a. Ask customer if they want a refund.' ||
-                    '   b. If the customer wants a refund, then confirm refund processed and update the database for customer name and order number with status refund_completed' || 
+                    '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed' || 
                     '4. If the product was defective or the box broken:' ||
                     '   a. Ask customer if they want a replacement or a refund or if they would like to consider alternative recommendations' ||
-                    '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the database for customer name and order number with status replaced' ||
-                    '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the database for customer name and order number with status refund' ||
-                    '   d. if consider alternative recommendations, use the RAG tool to present 2 alternatives to the customer and let them decide if they want this product or the original one' || 
+                    '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
+                    '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
+                    '   d. If consider alternative recommendations, use the RAG tool to present 2 alternatives to the customer and let them decide if they want this product or the original one' || 
                     '5. After the completion of a return or refund, ask if you can help with anything else.' ||
                     '   End the task if user does not need help on anything else",
                     "tools": ["Update_Order_Status_Tool","sales_rag_tool"]}'
   );
 END;
+	</copy>
 ```
 
 ## Task 4: Update the Agent Team
@@ -190,6 +204,7 @@ You'll update the agent team with the revised Product Return task.
 
 Update the `Return_Agent_Team`.
 ```
+<copy>
 %script
 
 BEGIN DBMS_CLOUD_AI_AGENT.drop_team('Return_Agency_Team');
@@ -199,26 +214,48 @@ BEGIN
   DBMS_CLOUD_AI_AGENT.create_team(  
     team_name  => 'Return_Agency_Team',                                                            
     attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"}],
-                    "process": "sequential"}');                                                                 
+                    "process": "sequential"}');
 END;
+	</copy>
 ```
 ## Task 5: Interact with your Updated RAG Agent
-Start interacting with the updated RAG agent with natural language prompts. 
+Start interacting with the updated RAG agent with natural language prompts.
 1. Set the AI profile for RAG in the session.
 ```
+<copy>
 %script
-EXEC DBMS_CLOUD_AI.set_conversation_id(NULL);
+
+EXEC DBMS_CLOUD_AI.clear_conversation_id;
+
 EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
+	</copy>
 ```
 
 2. Interact with the new RAG agent.
 ```
 <copy>
-%script
 select ai agent I want to return a smartphone case just received
-select ai agent what are some alternatives you could recommend
 </copy>
 ```
+**RESULT**
+```
+RESPONSE
+Can you please tell me the reason for returning the smartphone case? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective?
+```
+
+You may continue with these prompts:
+
+_select ai agent Hi, unforunately, it is defective_
+
+_select ai agent Sure, what are some alternatives you could recommend_
+
+_select ai agent A refund please_
+
+_select ai agent Carol Chen order number 7635_
+
+_select ai agent no, thank you_
+
+You may now proceed to the next lab.
 
 ## Learn More
 
