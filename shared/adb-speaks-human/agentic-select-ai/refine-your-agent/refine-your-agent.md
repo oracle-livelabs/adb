@@ -54,27 +54,28 @@ You'll make the agent chatty and empathetic by refining the agent role.
 
 In this task, you will have the LLM produce a standard confirmation email using structured data from the product return. You’ll define a task with instructions on what to include as an email response.
 
-Create a Generate\_Email\_Task.
+Create a `Generate_Email_Task`.
 
-    ```
-    <copy>
-    %script
+```
+<copy>
 
-    BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Generate_Email_Task');
-    EXCEPTION WHEN OTHERS THEN NULL; END;
-    /
-    BEGIN
-      DBMS_CLOUD_AI_AGENT.create_task(
-        task_name => 'Generate_Email_Task',
-        attributes => '{"instruction": "Use the customer information and product details to generate an email in a professional format. The email should:' || 
-                        '1. Include a greeting to the customer by name' || 
-                        '2. Specify the item being returned, the order number, and the reason for the return' ||
-                        '3. If it is a refund, state the refund will be issued to the credit card on record.' ||
-                        '4. If it is a replacement, state that the replacement will be shipped in 3-5 business days."}'
-      );
-    END;
-    </copy>
-    ```
+%script
+
+BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Generate_Email_Task');
+EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+BEGIN
+    DBMS_CLOUD_AI_AGENT.create_task(
+    task_name => 'Generate_Email_Task',
+    attributes => '{"instruction": "Use the customer information and product details to generate an email in a professional format. The email should:' || 
+                    '1. Include a greeting to the customer by name' || 
+                    '2. Specify the item being returned, the order number, and the reason for the return' ||
+                    '3. If it is a refund, state the refund will be issued to the credit card on record.' ||
+                    '4. If it is a replacement, state that the replacement will be shipped in 3-5 business days."}'
+    );
+END;
+</copy>
+```
 
 ## Task 3: Add the New Task to the Agent Team
 

@@ -20,7 +20,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-[comment]: # (MH: This lab requires completion of the **Get Started** section in the **Contents** menu on the left.)
+[comment]: # (This lab requires completion of the **Get Started** section in the **Contents** menu on the left.)
 - Access to Oracle Machine Learning Notebooks interface.
 - Typical grants to run DBMS\_CLOUD\_AI\_AGENT Package are (run as ADMIN once):
 
@@ -39,7 +39,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
 1. Click the button below to download the notebook:
 
-    <a href="../build-sales-return-agent/files/SelectAI4SQL - AI Agents - Sales Return Agent.dsnb" class="tryit-button">Download Notebook</a>
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 2. On your Oracle Machine Learning home page, click the top left navigation menu. Click **Notebooks**. Click **Import**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
@@ -177,35 +177,35 @@ You'll define a task that your Select AI agent will perform. Each task has a uni
 
 Create Handle\_Product\_Return\_Task.
 
-    ```
-    <copy>
-    %script
+  ```
+  <copy>
+  %script
 
-    BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
-    EXCEPTION WHEN OTHERS THEN NULL; END;
-    /
-    BEGIN
-      DBMS_CLOUD_AI_AGENT.create_task(
-        task_name => 'Handle_Product_Return_Task',
-        attributes => '{"instruction": "Process a product return request from a customer:{query}' || 
-                        '1. Ask customer the order reason for return (no longer needed, arrived too late, box broken, or defective)' || 
-                        '2. If no longer needed:' ||
-                        '   a. Inform customer to ship the product at their expense back to us.' ||
-                        '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
-                        '3. If it arrived too late:' ||
-                        '   a. Ask customer if they want a refund.' ||
-                        '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed' || 
-                        '4. If the product was defective or the box broken:' ||
-                        '   a. Ask customer if they want a replacement or a refund' ||
-                        '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
-                        '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
-                        '5. After the completion of a return or refund, ask if you can help with anything else.' ||
-                        '   End the task if user does not need help on anything else",
-                        "tools": ["Update_Order_Status_Tool"]}'
-      );
-    END;
-    </copy>
-    ```
+  BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
+  EXCEPTION WHEN OTHERS THEN NULL; END;
+  /
+  BEGIN
+    DBMS_CLOUD_AI_AGENT.create_task(
+      task_name => 'Handle_Product_Return_Task',
+      attributes => '{"instruction": "Process a product return request from a customer:{query}' || 
+                      '1. Ask customer the order reason for return (no longer needed, arrived too late, box broken, or defective)' || 
+                      '2. If no longer needed:' ||
+                      '   a. Inform customer to ship the product at their expense back to us.' ||
+                      '   b. Update the order status to return_shipment_pending using Update_Order_Status_Tool.' ||
+                      '3. If it arrived too late:' ||
+                      '   a. Ask customer if they want a refund.' ||
+                      '   b. If the customer wants a refund, then confirm refund processed and update the order status to refund_completed' || 
+                      '4. If the product was defective or the box broken:' ||
+                      '   a. Ask customer if they want a replacement or a refund' ||
+                      '   b. If a replacement, inform customer replacement is on its way and they will receive a return shipping label for the defective product, then update the order status to replaced' ||
+                      '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
+                      '5. After the completion of a return or refund, ask if you can help with anything else.' ||
+                      '   End the task if user does not need help on anything else",
+                      "tools": ["Update_Order_Status_Tool"]}'
+    );
+  END;
+  </copy>
+  ```
 
 ## Task 6: Create OCI Credentials
 Before you create and use an AI profile, you must create your AI provider credentials. In this task you will gather the required parameters for OCI Gen AI credential and create a credential that will be used in the next task to create an AI profile.
