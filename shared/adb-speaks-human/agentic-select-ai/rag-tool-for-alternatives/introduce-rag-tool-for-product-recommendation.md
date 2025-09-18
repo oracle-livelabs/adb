@@ -52,41 +52,41 @@ Define an AI Profile that has your LLM and database objects and is ready to use 
 
 1. Create an AI profile for RAG usage.
 ```
-<copy>
-BEGIN  
-  DBMS_CLOUD_AI.drop_profile(profile_name => 'SALES_AGENT_RAG_PROFILE');
- 
-  -- default LLM: meta.llama-3.1-70b-instruct
-  -- default transformer: cohere.embed-english-v3.0
+    <copy>
+    BEGIN  
+      DBMS_CLOUD_AI.drop_profile(profile_name => 'SALES_AGENT_RAG_PROFILE');
+    
+      -- default LLM: meta.llama-3.1-70b-instruct
+      -- default transformer: cohere.embed-english-v3.0
 
-  DBMS_CLOUD_AI.create_profile(                                              
-      profile_name => 'SALES_AGENT_RAG_PROFILE',                                                                 
-      attributes   => '{"provider": "oci",   
-                        "credential_name": "OCI_CRED",          
-                        "vector_index_name": "SALES_AGENT_VECTOR_INDEX"}');  
-END;
-	</copy>
+      DBMS_CLOUD_AI.create_profile(                                              
+          profile_name => 'SALES_AGENT_RAG_PROFILE',                                                                 
+          attributes   => '{"provider": "oci",   
+                            "credential_name": "OCI_CRED",          
+                            "vector_index_name": "SALES_AGENT_VECTOR_INDEX"}');  
+    END;
+      </copy>
 ```
 
 2. Create credentials to access Object Storage.
-[comment]:#(MH: This needs to be augmented to say where to get the needed details. Check with Sherry.)
+
 ```
 <copy>
 %script
 
 begin
-  DBMS_CLOUD.drop_credential(credential_name => 'OCI_SALES_CRED');
-  EXCEPTION WHEN OTHERS THEN NULL; END;
+DBMS_CLOUD.drop_credential(credential_name => 'OCI_SALES_CRED');
+EXCEPTION WHEN OTHERS THEN NULL; END;
 end;
 /
 BEGIN
-  DBMS_CLOUD.create_credential(
-    credential_name => 'OCI_SALES_CRED',
-    user_ocid       => '<ocid>',
-    tenancy_ocid    => '<tenancy ocid>',
-    private_key     => '<private key>',
-    fingerprint     => '<fingerprint>'
-  );
+DBMS_CLOUD.create_credential(
+  credential_name => 'OCI_SALES_CRED',
+  user_ocid       => '<ocid>',
+  tenancy_ocid    => '<tenancy ocid>',
+  private_key     => '<private key>',
+  fingerprint     => '<fingerprint>'
+);
 END;
 </copy>
 ```
@@ -97,8 +97,8 @@ END;
 
 BEGIN
   DBMS_CLOUD_AI.DROP_VECTOR_INDEX(
-   index_name  => 'SALES_AGENT_VECTOR_INDEX',
-   include_data => TRUE);
+  index_name  => 'SALES_AGENT_VECTOR_INDEX',
+  include_data => TRUE);
   EXCEPTION WHEN OTHERS THEN NULL;
 END;
 /
@@ -106,31 +106,31 @@ BEGIN
   DBMS_CLOUD_AI.CREATE_VECTOR_INDEX(
     index_name  => 'SALES_AGENT_VECTOR_INDEX',
     attributes  => '{"vector_db_provider": "oracle",
-                     "location": "https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/b9UsLs4CwZi9iorADMTK9c-ziXkhmME6m7kcdJ9ypjqFTzzZmHSLqNve0t_Vi1du/n/adwc4pm/b/oaiw25-sales-agent-rag-documents/o/",
-                     "object_storage_credential_name": "OCI_SALES_CRED",
-                     "profile_name": "SALES_AGENT_RAG_PROFILE", 
-                     "vector_distance_metric": "cosine",
-                     "chunk_overlap":50,
-                     "chunk_size":450}',
+                    "location": "https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/b9UsLs4CwZi9iorADMTK9c-ziXkhmME6m7kcdJ9ypjqFTzzZmHSLqNve0t_Vi1du/n/adwc4pm/b/oaiw25-sales-agent-rag-documents/o/",
+                    "object_storage_credential_name": "OCI_SALES_CRED",
+                    "profile_name": "SALES_AGENT_RAG_PROFILE", 
+                    "vector_distance_metric": "cosine",
+                    "chunk_overlap":50,
+                    "chunk_size":450}',
       description => 'Vector index for sales return agent scenario');
 END;
-	</copy>
+  </copy>
 ```
 4. Set the AI profile in the current session.
-```
-<copy>
-%script
-EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
-</copy>
-```
+  ```
+  <copy>
+  %script
+  EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
+  </copy>
+  ```
 5. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
-```
-<copy>
-select ai narrate what are alternatives for the smartphone case
-	</copy>
-```
-**Result:**
-```
+  ```
+  <copy>
+  select ai narrate what are alternatives for the smartphone case
+    </copy>
+  ```
+  **Result:**
+  ```
 RESPONSE
 Alternatives for smartphone cases include TitanGuard Pro, ClearEdge Ultra, and ArmorFlex Shield. TitanGuard Pro is a military-grade case with reinforced corners and dust-proof port covers, designed for rugged outdoor use. ClearEdge Ultra is a crystal-clear slim case made with hybrid polymer to resist scratches and yellowing, showcasing the phone's design while offering light protection. ArmorFlex Shield is built with a shock-absorbing TPU frame and scratch-resistant polycarbonate back, designed for maximum impact protection without adding unnecessary bulk.
 
@@ -166,7 +166,7 @@ You'll update the Handle\_Product\_Return\_Task with the new RAG tool and define
 
 Update the `Handle_Product_Return_Task`.
   
-  **Note**: This version does not include email generation, only the product recommendation.
+>   **Note**: This version does not include email generation, only the product recommendation.
 ```
 <copy>
 %script
@@ -192,7 +192,7 @@ BEGIN
                     '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
                     '   d. If consider alternative recommendations, use the RAG tool to present 2 alternatives to the customer and let them decide if they want this product or the original one' || 
                     '5. After the completion of a return or refund, ask if you can help with anything else.' ||
-                    '   End the task if user does not need help on anything else",
+                    '   End the task and generatea a final answer only if user does not need help on anything else",
                     "tools": ["Update_Order_Status_Tool","sales_rag_tool"]}'
   );
 END;
