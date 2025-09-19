@@ -1,14 +1,16 @@
-# Load demo data for the Data Studio overview workshop
+# Prepare Autonomous Database for the Data Studio overview workshop
 
 
 ## Introduction
 
-This lab will guide you through the steps to load demo data. 
+This lab will guide you through the steps to prepare Autonomous Database. 
 
 Estimated Time: 5 minutes
 
+<!--
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_v0l1ljqo)
+-->
 
 ### Prerequisites
 
@@ -19,12 +21,12 @@ Watch the video below for a quick walk-through of the lab.
 
 SQL worksheet is linked from the **Database Actions** home page.
 
-In the previous lab, you created the database user **QTEAM**, and you should still be connected as user QTEAM. If you are already logged in as QTEAM, and on the Database Actions home page, you may go directly to Step 3. 
+In the previous lab, you created the database user **QTEAM**, and you should still be connected as user QTEAM. If you are already logged in as QTEAM, and on the Database Actions home page, you may go directly to Step 2. 
 
 1. There are two ways to reach the Database Actions home page, where you can find Data Studio and other useful tools for your database.
 
     - Via the Autonomous Database console page
-    - Directly via URI
+    - Directly login to your DB user via URI
 
     ### Access Database Actions via the Console
 
@@ -34,26 +36,20 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
     ### Access Database Actions directly via URI
 
-    When user QTEAM was created (in a previous step), a card appeared on the Database Users screen, similar to what is shown below. Notice the URI at the bottom of the card.
-
-    Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
+    Login to your DB user directly.
 
     ![Link to open Database Actions from the user login page](images/image_user_login.png)
 
-2. Once you have launched the Database Actions page, sign in as user QTEAM, with the password assigned previously, and click **Sign In**.
-
-    ![Database Actions Log-in screen with the user name](images/image_user_uri.png)
-
-3. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
+2. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet under Development tools. 
     
-    Click on the **SQL** card.
+    Click on the **SQL**.
 
     ![The Database Actions home page](images/image_db_action.png)
 
 
 ## Task 2: Execute the script
 
-1. Go to the next step if you are first time loading the demo data. Use this script to cleanup your previously loaded demo data.
+1. Go to the next step if you are first time preparing the demo data. Use this script to cleanup your previously loaded demo data.
 
     Simply copy and paste this code into your SQL Worksheet.
 
@@ -66,6 +62,8 @@ DROP TABLE GENRE;
 DROP TABLE MOVIE;
 DROP TABLE TIME;
 DROP TABLE CUSTOMER_SALES_ANALYSIS;
+DROP TABLE CUSTOMER_SALES_ANALYSIS_FULL;
+
     </copy>
     ```
     >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command if you run this on an empty schema.
@@ -215,6 +213,20 @@ begin
  END LOOP;
 end;
 /
+CREATE TABLE CUSTOMER_SALES_ANALYSIS_FULL
+as SELECT 
+GENRE,
+GENDER,
+AGE_GROUP,
+CUST_VALUE,
+PET,
+MARITAL_STATUS,
+EDUCATION,
+INCOME_LEVEL,
+TOTAL_SALES
+FROM CUSTOMER_SALES_ANALYSIS
+WHERE 1=2;
+
     </copy>
     ```
 

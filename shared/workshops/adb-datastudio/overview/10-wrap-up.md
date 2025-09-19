@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab will summarize the workshop and guide you through the steps to clean demo data. 
+This lab will summarize the workshop and guide you through the process to clean demo data. 
 
 ## Task 1: Wrap up
 
@@ -18,18 +18,15 @@ Let's go through the action items again.
 2. Load data
 
     Age group data was missing from the database. There are many ways to 
-    import data from various sources into an Autonomous database. We imported it from our local file.
+    import data from various sources into an Autonomous Database. We imported it from the object store.
 
 3. Transform and prepare data
 
-    Now we had all the tables we needed. We created customer quintiles based on total sales by the customer and 
-    loaded them into a new table. For analysis, we added various customer attributes to this table as well. The Transforms 
-    tool made this task easy with a drag-and-drop user interface. 
+    Now we had all the tables we needed. However, the data needed to be prepared for our analysis that requires transformation. We learned how to transform the data and load into an analysis table. The Transforms tool made this task easy with a drag-and-drop user interface. 
 
 4. Analyze data
 
-    Finally, we analyzed the data. We created an analytic view (AV), which is a dimensional model, and learned how to analyze 
-    the data across various dimension hierarchies. We also found interesting results unearthed by the Insights process. 
+    Finally, we learned how to analyze the data across various customer attributes. We also found interesting results unearthed by the Insights process. 
 
 Various tools of Data Studio worked seamlessly with each other, helping us complete all the action items successfully.
 
@@ -54,7 +51,6 @@ DROP TABLE MOVIE;
 DROP TABLE TIME;
 DROP TABLE AGE_GROUP;
 DROP TABLE CUSTOMER_SALES_ANALYSIS;
-DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV;
     </copy>
     ```
 2. Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
@@ -69,7 +65,7 @@ DROP ANALYTIC VIEW CUSTOMER_SALES_ANALYSIS_AV;
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, August 2023
+- Last Updated By - Jayant Mahto, August 2025
 
 
 Copyright (C)  Oracle Corporation.
