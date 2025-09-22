@@ -15,7 +15,7 @@ Watch the video below for a detailed walk-through of using the Oracle APEX-based
 ### Objectives
 
 In this lab, you will:
-* As the `moviestream` user, access the **Select AI demo** application using the **Select AI Demo URL** that you can find in your **Reservation Information** panel.
+* As the `moviestream` user, access the **Select AI demo** application using the **Select AI Demo URL** link that you can find in your **Reservation Information** panel.
 * Ask natural questions with the **Select AI demo** application.
 
 ### Prerequisites
@@ -23,9 +23,9 @@ In this lab, you will:
 
 ## Task 1: Access the Select AI Demo Application
 
-1. Navigate to your **Reservation Information** panel, and then click the **Select AI Demo URL** link.
+1. Navigate to your **Reservation Information** panel, and then click the **Ask Oracle Select AI Demo URL** link.
 
-    ![Copy the URL value](./images/demo-reservation-information.png =50%x*)
+    ![Copy the URL value](./images/demo-reservation-information.png " ")
 
 2. On the **ADB Chat** page, enter the username (`moviestream`) and the password (`ADB User Password`) that you can find in your **Reservation Information** panel, and then click **Sign In**.
 
@@ -108,7 +108,7 @@ You may now proceed to the next lab.
   * **Authors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+* **Last Updated By/Date:** Lauran K. Serhal, September 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

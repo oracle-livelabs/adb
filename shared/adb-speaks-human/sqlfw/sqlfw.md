@@ -76,126 +76,158 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
     ![Status Active](images/status-active.png " ")
 
-## Task 3: Create a SQL Collection for APP_USER
+## Task 3: Create a SQL Collection for `SELECT_AI_USER`
 
-1. In the **SQL collections** section, click **Create and start SQL collection**. The **Create and start SQL collection** dialog box is displayed.
+1. In the **Resources** section, click **SQL collections** to display the **SQL collections** page. In the **SQL collections** section, click **Create and start SQL collection**. The **Create and start SQL collection** dialog box is displayed.
 
-2. From the **Database user** drop-down list, select **`APP_USER`**.
+2. Select your compartment and target database from the **Compartment** and **Target database** drop-down lists. From the **Database user** drop-down list, select **`SELECT_AI_USER`**.
 
-    If `APP_USER` is not listed in the **Database user** drop-down list, click the **Refresh** icon, and then select the user.
+    If `SELECT_AI_USER` is not listed in the **Database user** drop-down list, click the **Refresh** icon, and then select the user.
 
 3. Leave **User issued SQL commands** selected.
 
 4. Click **Create and start SQL collection**.
 
-   ![Create and start SQL collection dialog box](images/create-start-sql-collection.png " ")
+   ![Create and start SQL collection dialog box](images/create-start-sql-collection.png =65%x*)
 
-5. Wait for the status to change to **COLLECTING**.
+5. Wait for the status to change from **CREATING** to **COLLECTING**.
 
-    SQL Firewall is now set to capture SQL statements issued by the `APP_USER` database user.
+    ![Status collecting](images/status-collecting.png =40%x*)
+
+    SQL Firewall is now set to capture SQL statements issued by the **`SELECT_AI_USER`** database user.
 
 6. From the navigation menu, select **Oracle Database**, and then **Autonomous Database**.
 
 7. Click the name of your database.
 
-8. On the **Autonomous Database details** page, from the **Database actions** menu, select **Database Users**.
+8. On the **Autonomous Database details** page, from the **Database actions** drop-down list, and then select **Database Users**.
 
-9. On the **`APP_USER`** tile, click the three dots, and select **Edit**.
+9. On the **`SELECT_AI_USER`** tile, click the ellipsis icon (three dots), and then click **Edit**.
 
-10. In the **Password** and **Confirm Password** boxes, enter a database password for `APP_USER`.
+    ![Click Edit](images/click-edit.png =75%x*)
 
-    Note: The password must be 12 to 30 characters and contain at least one uppercase letter, one lowercase letter, and one number. It cannot contain the double quote (") character or the username "admin".
+    The **Edit User** dialog box is displayed. 
 
-11. At the bottom, enable **Web Access**.
+10. In the **Password** and **Confirm Password** fields, enter the **`SELECT_AI_USER`** password which you can find on the **Reservation Information** panel.
 
-   ![Enable web access](images/enable-web-access.png "Enable web access")
+11. Click the **Quota on tablespace DATA** drop-down list, select `UNLIMITED`.
 
-12. Click **Apply Changes**.
+12. Scroll down to the bottom of the dialog box. Make sure that the **REST, GraphQL, MongoDB, and Web access** slider is enabled.
 
-13. Click the three dots again, and select **Enable REST**.
+   ![Edit User](images/edit-user.png " ")
 
-14. To the right of the URL in the `APP_USER` tile, click the **Open in new tab** icon.
+13. Click **Apply Changes**. Ignore the error message.
 
-    The sign-in page for Database Actions is opened in a new tab.
+14. To the right of the URL in the **`SELECT_AI_USER`** tile, click the **Open in new tab** icon.
 
-15. Sign in as `APP_USER` and enter the password.
+    ![Open in new window](images/open-new-window.png " ")
 
-16. Click the **SQL** tab.
+    The sign-in page for Database Actions is displayed in a new browser tab.
 
-17. Close any tip dialog boxes.
+15. Sign in as **`SELECT_AI_USER`** and enter the password.
+
+16. On the **Launchpad** page, click the **Development** tab, and the click the **SQL** tab.
+
+17. Close any informational boxes that might be appear.
 
 18. Copy and paste the following query in the SQL Worksheet, and then click the **Run Statement** icon on the toolbar.
 
     ```sql
     <copy>
-    SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID 
-    FROM HCM1.EMPLOYEES;
+    SELECT cust_first_name, cust_last_name, cust_year_of_birth
+    FROM sh.customers;
     </copy>
     ```
+
+    ![Result of Query 1](images/query-1.png " ")
 
 19. Copy and paste the following query in the SQL Worksheet, and then click the **Run Statement** icon on the toolbar.
 
     ```sql
     <copy>
-    SELECT LOCATION_ID, STREET_ADDRESS, CITY 
-    FROM HCM1.LOCATIONS 
-    ORDER BY LOCATION_ID;
+    SELECT cust_id, prod_id, amount_sold
+    FROM sh.sales 
+    ORDER BY amount_sold;
     </copy>
     ```
+    
+    ![Result of Query 2](images/query-2.png " ")
 
 20. Copy and paste the following query in the SQL Worksheet, and then click the **Run Statement** icon on the toolbar.
 
     ```sql
     <copy>
-    SELECT LOCATION_ID, CITY 
-    FROM HCM1.LOCATIONS 
-    WHERE LOCATION_ID='1000';
+    SELECT * 
+    FROM sh.sales 
+    WHERE prod_id=120;
     </copy>
     ```
 
+    ![Result of Query 3](images/query-3.png " ")
+
 21. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
 
-22. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**.
+22. From the navigation menu, select **Oracle Database**, and then **SQL Firewall** under **Data Safe - Database Security**. The **SQL Firewall** page is displayed.
 
-23. Click the name of your target database.
+23. In the **Target summary** tab, click the name of your target database.
 
-24. Click the SQL collection for `APP_USER`. 
+    ![Click the target database link](images/click-target-database-link.png " ")
+
+    The **Configuration details** page is displayed.
+
+24. In the **SQL collections** section, click the SQL collection for the **`SELECT_AI_USER`** user. 
+
+    ![Click the SQL collection for the user](images/click-sql-collection.png " ")
+
+    The **SQL collection details** page is displayed.
+
+    ![The SQL collection details page](images/sql-collection-details-page.png " ")
 
 25. To stop the SQL workload capture of allowed SQL statements, click **Stop**, and wait for the status to change to **COMPLETED**.
 
-    The SQL collection is created for `APP_USER`.
+    ![The SQL collection created](images/sql-collection-created.png " ")
 
-## Task 4: Deploy the SQL Firewall Policy for APP_USER
+    The SQL collection is created for the **`SELECT_AI_USER`** user.
+
+## Task 4: Deploy the SQL Firewall Policy for `SELECT_AI_USER`
 
 1. On the **SQL collection details** page, click **Generate firewall policy**.
 
+    ![Generate firewall policy](images/generate-firewall-policy.png " ")
+
     A firewall policy is created, but not yet enabled (deployed). Notice the status of the policy is set to **Disabled**.
+
+    ![Firewall policy created](images/firewall-policy-created.png " ")
     
 2. Scroll down and review the collection of SQL statements on the allow-list. 
 
-    Note: Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
+    >**Note:** Database Actions adds additional SQL statements to the allow-list automatically. The SQL statements that you just collected also have additional code inserted, which you can ignore.
 
-3. To deploy the SQL Firewall policy for the `APP_USER` user, click **Deploy and enforce**.
+3. To deploy the SQL Firewall policy for the **`SELECT_AI_USER`** user, click **Deploy and enforce**.
 
     The **Deploy SQL Firewall policy** dialog box is displayed.
 
 4. Select the following options:
 
-    - Enforcement scope: **SQL statements only**
-    - Action on violations: **Block and log violations**
-    - Audit for violations: **Off**. Note: If you select **On**, the audit trail for your target database must be started.
+    - **Enforcement scope:** `SQL statements only`
+    - **Action on violations:** `Block and log violations`
+    - **Audit for violations:** `Off`. **Note:** If you select `On`, the audit trail for your target database must be started.
 
-    *Be sure to select these options carefully!*
+    ![Deploy SQL Firewall policy](images/deploy-sql-firewall-policy-new.png " ")
+
+    >**Note:** _Be sure to select these options carefully!_
     
 5. Click **Deploy and enforce**.
-
-   ![Deploy SQL Firewall policy dialog box](images/deploy-sql-firewall-policy.png "Deploy SQL Firewall policy dialog box")
 
 6. Notice that the status of the SQL Firewall policy changes to **Enabled**. 
 
    ![Unique allowed SQL statements](images/enabled-policy.png "Unique allowed SQL statements")
 
-7. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**, set **SQL text Like HCM1**, and click **Apply**.
+7. To filter the allow-list, under **Unique allowed SQL statements**, click **+ Add filter**. Specify the following: 
+    
+    - **Type:** `SQL text`.
+    - **Operation:** `Like`.
+    - **Value:** `SH`.
 
     The SQL statements that you collected earlier are listed.
 
@@ -205,14 +237,14 @@ Perform this task only if you are working in your own tenancy. If you are using 
 
 When you run the SQL statements in this task, use the **Run Statement** button in Database Actions because that is how you previously ran the queries when you created the SQL collection. If you use the **Run Script** button instead, SQL Firewall will block the results.
 
-1. Return to Database Actions as `APP_USER` and clear the worksheet.
+1. Return to Database Actions as **`SELECT_AI_USER`** and clear the worksheet.
 
 2. Try running one of the SQL statements on the allow-list such as the following query:
 
     ```sql
     <copy>
-    SELECT FIRST_NAME, LAST_NAME, EMPLOYEE_ID 
-    FROM HCM1.EMPLOYEES;
+    SELECT cust_first_name, cust_last_name, cust_year_of_birth 
+    FROM sh.customers;
     </copy>
     ```
  
@@ -223,31 +255,24 @@ When you run the SQL statements in this task, use the **Run Statement** button i
     ```sql
     <copy>
     SELECT * 
-    FROM HCM1.EMPLOYEES;
+    FROM sh.customers;
     </copy>
     ```
 
     You should receive an error message: **`ORA-47605: SQL Firewall violation`**.
 
-4. Clear the worksheet and try running a SQL statement that is on the allow-list with a modified `WHERE` clause such as the following query:
+    ![Error message](images/error-message.png " ")
+
+4. Clear the worksheet and try running the following SQL query:
 
     ```sql
     <copy>
-    SELECT LOCATION_ID, CITY 
-    FROM HCM1.LOCATIONS 
-    WHERE LOCATION_ID='1300';
+    SELECT * 
+    FROM sh.sales 
+    WHERE prod_id=16;
     </copy>
     ```
-    The query should return data. 
-
-5. Clear the worksheet and try running the SQL statement on the allow-list with its columns in a different order such as the following query:
-
-    ```sql
-    <copy>SELECT LAST_NAME, FIRST_NAME, EMPLOYEE_ID 
-    FROM HCM1.EMPLOYEES;
-    </copy>
-    ```
-    You should receive an error message: **`ORA-47605: SQL Firewall violation`**.
+    ![Query result](images/query-result.png " ")
 
 ## Task 6: Add a SQL statement from the Violation Log to the allow-list
     
@@ -257,29 +282,28 @@ When you run the SQL statements in this task, use the **Run Statement** button i
 
     The **Add from violations** page is displayed showing you Autonomous Database SQL queries.
 
-    ![Add from violations page](images/two-violations.png "Add from violations page")
+    ![Add from violations page](images/one-violation.png " ")
 
-3. Expand the violations and review.
+3. Select the check box for the SQL violation: `SELECT * FROM sh.customers;`.
 
-4. Select the check box for the second SQL violation: `SELECT * FROM HCM1.EMPLOYEES`.
-
-5. Click **Add violations**. 
+4. Click **Add violations**. 
 
     You are returned to the **Firewall policy details** page.
 
-6. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
+5. Under **Unique allowed SQL statements**, notice that your selected SQL statement is now listed at the top.
 
-    ![Add from violations page](images/new-allowed-sql-statement.png "Add from violations page")
+    ![Add from violations page](images/new-allowed-sql-statement.png " ")
 
-7. Return to **Database Actions** as `APP_USER` and run the newly-allowed SQL statement to test that it will run successfully.
+6. Return to **Database Actions** as **`SELECT_AI_USER`** and run the newly-allowed SQL statement to test that it will run successfully.
 
     ```sql
     <copy>
     SELECT * 
-    FROM HCM1.EMPLOYEES;
+    FROM sh.customers;
     </copy>
     ```
-    The query should retrieve data.
+
+    ![Query runs successfully](images/allowed-sql-statement.png " ")
 
 Congratulations! You have finished this LiveLabs workshop!
 
@@ -289,6 +313,6 @@ Congratulations! You have finished this LiveLabs workshop!
 - **Contributors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
     * Michelle Malcher, Director, Product Management  
-- **Last Updated By/Date:** - Lauran K. Serhal, August 2025
+- **Last Updated By/Date:** - Lauran K. Serhal, September 2025
 
 

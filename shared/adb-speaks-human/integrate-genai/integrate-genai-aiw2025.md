@@ -11,90 +11,40 @@ Estimated Time: 10 minutes.
 ### Objectives
 
 In this lab, you will:
-* Generate an RSA key pair and get the Key's fingerprint and other information
-* Create a native OCI credential using the DBMS_CLOUD PL/SQL package
+
 * Connect Autonomous Database to an AI provider
 * Test the AI profile
 
 ### Prerequisites
 - This lab requires having access to a LiveLabs Sandbox reservation.
 
-## Task 1: Generate an RSA Key Pair and Get the Key's Fingerprint
+## Task 1: Log into the SQL Worksheet
 
-[](include:adb-generate-rsa-key-pair.md)
+The **`MOVIESTREAM`** user and its tables were created as part of your LiveLabs Sandbox reservation that you are using. You can find the URL to access **Database Actions** and the **`moviestream`** credentials (**`ADB Username`** and **`ADB User Password`**) in the **Reservation Information** panel for your reservation. 
 
-## Task 2: Log into the SQL Worksheet
+![Moviestream password](./images/reservation-info.png =65%x*)
 
-The **`MOVIESTREAM`** user and its tables were created as part of your LiveLabs Sandbox reservation that you are using. You can find the **`moviestream`** credentials (**`ADB Username`** and **`ADB User Password`**) in the **Reservation Information** panel for your reservation. 
+1. On the **Reservation Information** panel for your reservation, click the **Database Actions** URL. The **Sign-in** page is displayed.
 
-![Moviestream password](./images/reservation-info.png =55%x*)
+2. In the **Reservation Information** panel, click **Copy value** to the right of the **ADB Username** field, and then paste it in the **Username** field. Click **Copy value** to the right of the **ADB User Password** field, and then paste it in the **Password** field.
 
-1. On your Autonomous Database details page, click the **Database Actions** drop-down list, and then select **SQL**. 
+3. Click **Sign in**.
 
-    >**Note:** Make sure you are in the correct compartment and region where you ADB instance was provisioned.
+    ![Click Sign in](./images/click-signin.png =65%x*)
 
-    ![Click Database Actions > SQL](./images/click-sql.png =55%x*)
+4. On the **Database Actions Launchpad** page, the **Development** is selected by default. Click the **SQL** tab; alternatively, you can click **Open**. 
 
-    The SQL Worksheet is displayed.
-
-    Logging in from the OCI service console requires you to be the **`ADMIN`** user. Log in as the **`ADMIN`** user if you are not automatically logged in.
+    ![Click the SQL tab](./images/click-sql-tab.png =75%x*)
     
-    * **Username:** **`ADMIN`**
-    * **Password:** *your assigned password* (**`ADB Admin Password`** from the **Reservation Information** panel)
+5. The SQL Worksheet is displayed. The first time you open the SQL Worksheet, a series of pop-up informational boxes may appear. Close the boxes. 
 
-2. The first time you open SQL Worksheet, a series of pop-up informational boxes appears. Click the **Tour** icon (binoculars) in the upper right corner to get a tour that introduces the main features. Close the boxes.
+    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png " ")
 
-    ![SQL Worksheet is displayed.](./images/sql-worksheet-displayed.png =55%x*)
+## Task 2: Query the Available Native OCI Credential
 
-    You can expand the SQL Worksheet editor area by collapsing the left navigation area.
+In this workshop, we already created a new OCI credential for you named **`AI_CREDENTIAL`** that you will use to create the AI Profile.
 
-    ![SQL Worksheet.](./images/adb-sql-worksheet.png =55%x*)
-
-3. We'll run the workshop as the **`MOVIESTREAM`** user. Sign out of the **`ADMIN`** user. Click the the drop-down list next to the **`ADMIN`** user in the banner, and then click **Sign Out**.
-    
-    ![Log out.](./images/sign-out-admin.png =65%x*)
-
-4. Log in to the SQL Worksheet using the following credentials, and then click **Sign in** to display the **Database Actions Launchpad**.
-
-    * **Username:** **`MOVIESTREAM`**
-    * **Password:** `enter-your-assigned-password` (**`ADB User Password`** from the **Reservation Information** panel) 
-
-        ![Moviestream password](./images/reservation-info-moviestream.png =55%x*)
-        
-        ![Sign in.](./images/sign-in-moviestream.png =55%x*)
-
-5. On the **Database Actions Launchpad** page, click the **Development** tab, and then click the **SQL** tab.
-
-    ![Click SQL.](./images/adb-dbactions-click-sql.png =65%x*)
-
-    The SQL Worksheet is displayed. Close the **Run Statement** informational box.
-
-    ![SQL Worksheet.](./images/moviestream-sql-worksheet.png =65%x*)
-
-
-## Task 3: Create a Native OCI Credential Using the DBMS_CLOUD PL/SQL Package
-
-1. Create a credential. Copy the following script into your SQL Worksheet but _don't run the script yet_. The first time you paste code in your SQL Worksheet, a dialog box is displayed. Click **Allow**.     
-    >_**Important:** Substitute the placeholders values for the **`user_ocid`**, **`tenancy_ocid`**, **`private_key`**, and **`fingerprint`** in the following code with the respective values that you saved from the **Configuration File Preview** dialog box from the previous task_. Next, click the **Run Script** icon in the toolbar.
-
-    ```sql
-    <copy>
-    BEGIN                                                                          
-        dbms_cloud.create_credential (                                                 
-            credential_name => 'GENAI_CRED',
-            user_ocid => 'enter-your-user-ocid-here',
-            tenancy_ocid => 'enter-your-tenancy-ocid-here',
-            private_key => 'enter-your-private-key-here',
-            fingerprint => 'enter-your-fingerprint-here'
-        );                             
-    END;                                                                           
-    /  
-    </copy>
-    ```
-
-    ![Create credential](./images/create-credential-aiw2025.png =65%x*)
-
-2. Confirm the creation of the `GENAI_CRED` OCI native credential. Copy the following query into your SQL Worksheet, and then click the **Run Statement** icon in the toolbar.
+1. Confirm the creation of the **`AI_CREDENTIAL`** OCI native credential. Copy the following query into your SQL Worksheet, and then click the **Run Statement** icon in the toolbar. The first time you paste content in your SQL Worksheet, a message box is displayed. Click **Allow**.
     
     ```sql
     <copy>
@@ -105,7 +55,9 @@ The **`MOVIESTREAM`** user and its tables were created as part of your LiveLabs 
 
     ![Query credentials](./images/query-credential-aiw2025.png =65%x*)
 
-## Task 4: Connect Autonomous Database to an AI Provider and Create an AI Profile
+     The **`AI_CREDENTIAL`** OCI native credential is displayed.
+
+## Task 3: Connect Autonomous Database to an AI Provider and Create an AI Profile
 
 ### Background
 There are 3 things to do in order to connect Autonomous Database to an AI provider:
@@ -128,7 +80,11 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
 ### **Connect to the OCI Generative AI provider using the default model**
 
-1. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. _Don't run the code yet. Substitute the place holder for the region attribute with your assigned region from the **Reservation Information** panel_. For example, if your Generative AI endpoint assigned region is `Brazil East (Sao Paulo) (sa-saopaulo-1)`, then enter `sa-saopaulo-1` for the region parameter. Next, click the **Run Script** icon. 
+1. Click the **Clear** icon in the Worksheet area and the **Clear Output** icon in the Query Results area. 
+
+    ![Click the Clear and Clear Output icons](./images/click-clear-output.png "")
+
+2. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. _Don't run the code yet. Substitute the place holder for the region attribute with your assigned region from the **Reservation Information** panel_. For example, if your Generative AI endpoint assigned region is `Brazil East (Sao Paulo) (sa-saopaulo-1)`, enter `sa-saopaulo-1` for the region parameter. Note that we are using the **`AI_CREDENTIAL`**. Next, click the **Run Script** icon. 
 
     ```sql
     <copy>
@@ -143,7 +99,7 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
         profile_name => 'genai',
         attributes =>
         '{"provider": "oci",
-        "credential_name": "GENAI_CRED",
+        "credential_name": "AI_CREDENTIAL",
         "region": "enter-your-assigned-region",
         "comments":"true",
         "object_list": [
@@ -166,7 +122,7 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
     >**Note:** The **region** attribute indicates the location of the Generative AI cluster that you want to use. 
     The default region is **`us-chicago-1`**. If you are using another region such as Frankfurt, **`eu-frankfurt-1`**, replace the **`us-chicago-1`** region's attribute value in the above code with **`eu-frankfurt-1`**. For the current list of regions with OCI Generative AI, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
-## Task 5: Test the AI Profile
+## Task 4: Test the AI Profile
 
 We will use the Select AI PL/SQL API to generate a response from the AI model. This example is using the **chat** action. It is not using any private data coming from your database.
 
@@ -200,7 +156,7 @@ You may now proceed to the next lab.
     * Marty Gubar (Retired), Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:** Michelle Malcher, Director, Product Management  
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+* **Last Updated By/Date:** Lauran K. Serhal, September 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

@@ -83,7 +83,6 @@ This lab assumes you have:
 
     - Audit data online retention months = `12`
     - Audit data offline retention months = `0`
-    - This will override the global retention settings, please confirm = `Yes`
     - Paid usage = not selected
 
     ![Activity Auditing wizard - Audit profile](images/activity-auditing-wizard-audit-profile.png "Activity Auditing wizard - Audit profile")
@@ -95,11 +94,11 @@ This lab assumes you have:
 
 8. For **Review and submit**, review the configuration, and click **Submit** if everything is correct.
 
-    ![Activity Auditing wizard - Review and submit](images/activity-auditing-wizard-review-submit.png "Activity Auditing wizard - Review and submit")
+    ![Activity Auditing wizard - Review and submit](images/activity-auditing-wizard-review-submit-new.png " ")
 
 9. For **Audit configuration progress**, wait until the alert and audit policies are provisioned and the audit trail is started. 
     
-    ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress.png "Activity Auditing wizard - Audit configuration progress")
+    ![Activity Auditing wizard - Audit configuration progress](images/activity-auditing-wizard-audit-configuration-progress.png " ")
     
 10. Click **Close**.
 
@@ -107,21 +106,19 @@ This lab assumes you have:
 
 In this task, you perform activities on your target database in Database Actions to generate some audit data. First, purposely try to log in as the `ADMIN` user with incorrect passwords. Then, you will sign in as the `ADMIN` user and create a new user account.
 
-1. Return to the SQL worksheet in Database Actions.
+1. Click the **Database Actions** link in the **Reservation Information** panel. The **Sign-in** page is displayed.
 
-2. Sign out of Database Actions. The **Sign-in** page is displayed.
+2. In the **Username** field, enter `ADMIN`.
 
-3. In the **Username** field, enter `ADMIN`.
-
-4. In the **Password** field, enter an incorrect password twice, and then click **Sign in**. An **Invalid credentials** message is displayed after each invalid sign in attempt.
+3. In the **Password** field, enter an incorrect password, and then click **Sign in**. An **Invalid credentials** message is displayed. Enter another incorrect password in the **Password** field, and then click **Sign in** again. An **Invalid credentials** message is displayed.
 
     ![Invalid database password message](images/invalid-database-password.png =60%x*)
 
-5. Enter the correct password, and click **Sign in**.
+4. Enter the correct **ADB Admin Password** password that you can find in the **Reservation Information** panel, and then click **Sign in**.
 
-6. The SQL Worksheet is displayed. If not, click the **Development** > **SQL** tabs. Next, click **SQL**.
+5. The **Database Actions Launchpad** page is displayed. Click the **Development** > **SQL** tabs. Next, click **SQL**.
 
-7. Clear the worksheet (click the **Clear** icon), and then paste the following SQL script. Replace `your-password` with a password of your choice. _The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character_.
+7. Clear the worksheet (click the **Clear** icon), if needed, and then paste the following SQL script. Replace `your-password` with a password of your choice. _The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character. It cannot contain your username or the double quote (") character_.
 
     ```
     <copy>DROP USER malfoy CASCADE;
@@ -158,7 +155,7 @@ In this task, you perform activities on your target database in Database Actions
 
         ![Alerts dashboard charts](images/alerts-dashboard-charts.png "Alerts dashboard charts")
     
-        ![Targets summary tab](images/alerts-dashboard-targets-summary-tab.png "Targets summary tab")
+        ![Targets summary tab](images/alerts-dashboard-targets-summary-tab.png " ")
 
 
 4. In the **Related resources** section, click **Reports**.
@@ -200,4 +197,4 @@ You may now **proceed to the next lab**.
 - **Contributors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
     * Michelle Malcher, Director, Product Management  
-- **Last Updated By/Date:** - Lauran K. Serhal, August 2025
+- **Last Updated By/Date:** - Lauran K. Serhal, September 2025
