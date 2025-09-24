@@ -84,7 +84,9 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Click the Clear and Clear Output icons](./images/click-clear-output.png "")
 
-2. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. _Don't run the code yet. Substitute the place holder for the region attribute with your assigned region from the **Reservation Information** panel_. For example, if your Generative AI endpoint assigned region is `Brazil East (Sao Paulo) (sa-saopaulo-1)`, enter `sa-saopaulo-1` for the region parameter. Note that we are using the **`AI_CREDENTIAL`**. Next, click the **Run Script** icon. 
+2. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. _Don't run the code yet. Substitute the place holder for the region attribute with your assigned **Generative AI endpoint Region** from the **Reservation Information** panel_. For example, if your assigned Generative AI endpoint region is **`Brazil East (Sao Paulo) (sa-saopaulo-1)`**, enter **`sa-saopaulo-1`** for the region parameter. Note that we are using the **`AI_CREDENTIAL`** that was created for you. Next, click the **Run Script** icon. 
+
+    ![Generative AI endpoint Region](./images/gen-ai-endpoint-region.png =65%x*)
 
     ```sql
     <copy>
@@ -119,9 +121,6 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Create AI Profile.](./images/create-ai-profile-aiw2025.png " ")
 
-    >**Note:** The **region** attribute indicates the location of the Generative AI cluster that you want to use. 
-    The default region is **`us-chicago-1`**. If you are using another region such as Frankfurt, **`eu-frankfurt-1`**, replace the **`us-chicago-1`** region's attribute value in the above code with **`eu-frankfurt-1`**. For the current list of regions with OCI Generative AI, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
-
 ## Task 4: Test the AI Profile
 
 We will use the Select AI PL/SQL API to generate a response from the AI model. This example is using the **chat** action. It is not using any private data coming from your database.
@@ -155,7 +154,9 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar (Retired), Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributors:** Michelle Malcher, Director, Product Management  
+* **Contributors:** 
+    * Michelle Malcher, Director, Product Management  
+    * Marcos Arancibia, Senior Principal Product Manager, ADB-S
 * **Last Updated By/Date:** Lauran K. Serhal, September 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.

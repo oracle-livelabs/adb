@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you create and enforce a SQL Firewall policy for the `APP_USER` database user. **Oracle SQL Firewall** is a robust security feature built into the Oracle Database 23ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
+In this lab, you create and enforce a SQL Firewall policy for the `SELECT_AI_USER` database user. **Oracle SQL Firewall** is a robust security feature built into the Oracle Database 23ai, designed to provide real-time protection against common database attacks by restricting access to only authorized SQL statements or connections.
 
-You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `APP_USER`. This collection is referred to as the *allow-list*. Next, you test that `APP_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
+You begin by using Data Safe and Database Actions to create a collection of allowed SQL statements for `SELECT_AI_USER`. This collection is referred to as the *allow-list*. Next, you test that `SELECT_AI_USER` cannot run any other statement on the target database.  Lastly, you add a SQL statement from the violation log to the allow-list.
 
 Estimated Lab Time: 20 minutes
 
@@ -14,8 +14,8 @@ In this lab, you will:
 
 - Grant the SQL Firewall role on your target database
 - Enable SQL Firewall in Data Safe
-- Create a SQL collection for `APP_USER`
-- Deploy the SQL Firewall policy for `APP_USER`
+- Create a SQL collection for `SELECT_AI_USER`
+- Deploy the SQL Firewall policy for `SELECT_AI_USER`
 - Test the SQL Firewall policy
 - Add a SQL statement from the violation log to the allow-list
 
@@ -29,8 +29,6 @@ This lab assumes you have:
 - A target database that is Oracle Database 23ai
 
 ## Task 1: Grant the SQL Firewall Role on your Target Database
-
-Perform this task only if you are working in your own tenancy. If you are using a LiveLabs sandbox, you do not need to perform this task.
 
 1. Return to the SQL worksheet in Database Actions. If you are prompted to sign in to your target database, sign in as the `ADMIN` user. Clear the worksheet and the **Script Output** tab using the **Clear** icons.
 
@@ -313,6 +311,7 @@ Congratulations! You have finished this LiveLabs workshop!
 - **Contributors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer, Database Development
     * Michelle Malcher, Director, Product Management  
+    * Marcos Arancibia, Senior Principal Product Manager, ADB-S
 - **Last Updated By/Date:** - Lauran K. Serhal, September 2025
 
 
