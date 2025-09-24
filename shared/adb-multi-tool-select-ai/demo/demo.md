@@ -1,9 +1,9 @@
-# Demo Multitool Select AI chatbot
+# Demo Multi-Tool Select AI chatbot
 
 
 ## Introduction
 
-This lab will take you thru the steps for demonstrating each tool of the Multitool Select AI chatbot.
+This lab will take you thru the steps for demonstrating each tool of the Multi-Tool Select AI chatbot.
 
 Estimated Time: 15 minutes
 
