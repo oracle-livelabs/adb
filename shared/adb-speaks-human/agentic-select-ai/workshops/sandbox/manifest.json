@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Get started with AI Agents using Select AI on Autonomous Database",
+    "workshoptitle": "Get started with AI Agents using Select AI on Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",

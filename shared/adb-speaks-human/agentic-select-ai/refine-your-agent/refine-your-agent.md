@@ -211,8 +211,6 @@ You may now proceed to the next lab.
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
 * **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
-<!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
--->
 
 
 Copyright (c) 2025 Oracle Corporation.
