@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Multitool Select AI Chatbot",
+    "workshoptitle": "Multi-Tool Select AI Chatbot",
     "help": "livelabs-help-adb_us@oracle.com",
     "include": {"starter-file.sql":"../../data-load/files/starter-file.sql",
                 "sample.json":"../../data-load/files/sample.json",
