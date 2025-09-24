@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-In this workshop, you will learn how to use APEX Workflows with Select AI to create a multitool select AI chatbot. The LLM chatbot will have following tools: Natural Language to Structured Query Language (NL2SQL), Retrieval Augmented Generation (RAG) and the Open-Meteo weather API. Each tool is called via PL/SQL all within the same database.
+In this workshop, you will learn how to use APEX Workflows with Select AI to create a multi-tool select AI chatbot. The LLM chatbot will have following tools: Natural Language to Structured Query Language (NL2SQL), Retrieval Augmented Generation (RAG) and the Open-Meteo weather API. Each tool is called via PL/SQL all within the same database.
 
  **Autonomous Database Select AI (Select AI)**
 Use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM
@@ -20,7 +20,7 @@ In this workshop, you will learn how to:
 * Provision Autonomous Database 23AI
 * Setup prebuilt APEX Chatbot Application 
 * Implement APEX Workflows
-* Demonstrate Prompts on APEX Multitool Chatbot
+* Demonstrate Prompts on APEX Multi-Tool Chatbot
 
  ![Prompt NL2SQL](../demo/images/prompt_nl2sql_weather.png)
 
