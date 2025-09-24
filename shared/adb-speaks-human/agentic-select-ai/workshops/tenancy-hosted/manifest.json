@@ -1,0 +1,47 @@
+{
+    "workshoptitle": "Chat with Your Data in Autonomous Database Using Generative AI",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+    },
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+          "title": "Introduction",
+          "description":"Introduction to the workshop",
+          "filename": "../../introduction/introduction.md"
+        },
+        {
+          "title": "Get started",
+          "description":"Get started using Oracle Cloud Infrastructure",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+          "title": "Lab 1: Set up Your Workshop Environment",
+          "description":"Set up an Autonomous Database and an LLM account",
+          "filename": "../../setup-environment/setup-environment-everything.md"
+        },
+        {
+          "title": "Lab 2: Use Natural Language Queries with Select AI",
+          "description":"Query Using Select AI",
+          "filename": "../../query-using-select-ai/query-using-select-ai.md"
+        },
+        {
+          "title": "Lab 3: Use the Select AI Demo Application",
+          "description":"Use the Select AI demo application",
+          "filename": "../../use-select-ai-demo/use-select-ai-demo.md"
+        },
+        {
+            "title": "Lab 4: Clean up Resources Used in the Workshop (Optional)",
+            "description": "This lab shows you how to identify and delete the resources that you have created in this workshop.",
+            "filename": "./../../cleanup/cleanup.md"
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
