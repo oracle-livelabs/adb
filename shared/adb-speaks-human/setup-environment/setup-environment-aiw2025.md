@@ -37,7 +37,7 @@ Estimated Time: 5 minutes
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
 
 You have three options for registering your Autonomous Database:
-- Use the **Register** link on the **Autonomous Databases** page (one-click method with no interaction).
+- Use the **Register** button on the **Autonomous Databases** page (one-click method with no interaction).
 - Use the Autonomous Databases wizard on the **Overview** page for the Oracle Data Safe service (guided method with customization options).
 - Manually register your target database from the **Registered Targets** page (advanced method without guidance).
 
