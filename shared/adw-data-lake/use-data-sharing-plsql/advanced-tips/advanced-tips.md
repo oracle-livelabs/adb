@@ -269,7 +269,7 @@ Prerequisite:
     ```
     <copy>
     curl -X GET \
-    -H "Authorization: Bearer enter-your-bearer-token-value-here \
+    -H "Authorization: Bearer enter-your-bearer-token-value-here" \
     enter-your-endpoint-url-here/shares
     </copy>
     ```
