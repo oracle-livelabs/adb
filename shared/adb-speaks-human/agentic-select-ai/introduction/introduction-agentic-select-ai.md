@@ -10,7 +10,7 @@ In this workshop, you will learn how to use **Oracle Autonomous Database Select 
 In this workshop, you will use Select AI Agent to build an intelligent system that can automate customer service agent tasks such as interacting with a customer to handle product returns, refunds, and tasks. The workshop introduces the basic agentic system by defining Select AI Agent objects, such as tools, tasks, agents, and agent teams. 
 
 ### Sales Return Agent Scenario
-has had to send it back at some point. Maybe it was damaged when it got there, or maybe they just didn't need it anymore. In this workshop, you'll build a Sales Return Agent that helps you deal with this familiar situation.
+Almost everyone who buys something online has had to send it back at some point. Maybe it was damaged when it got there, or maybe they just didn't need it anymore. In this workshop, you'll build a Sales Return Agent that helps you deal with this familiar situation.
 
 The agent will interact with customer to:
 * Find out why the item is being returned.
@@ -29,8 +29,8 @@ At the conclusion, you'll see how Select AI Agent can be used to make structured
 
 ### Concepts of Agentic AI with Select AI
 Before we begin, let's review some important terms:
-* **Agent**: Specifies one or more agents and the tasks each performs. An agent team is the unit of agentic solution invocation and engagement.
-* **Agent Team**: An actor with a clearly-defined role that performs tasks using an AI profile-specified LLM.
+* **Agent Team**: Specifies one or more agents and the tasks each performs. An agent team is the unit of agentic solution invocation and engagement.
+* **Agent**: An actor with a clearly-defined role that performs tasks using an AI profile-specified LLM.
 * **Task**: A step in a process or responsibility assigned to an agent. A task has a clearly defined set of instructions that may rely on one or more tools. (For example, processing a return).
 * **Tool**: A resource an agent task uses to affect changes in or perceive information from systems, such as a databases, email servers, web services, and other systems.
 * **ReAct Framework (Reasoning and Acting)**: The logic where the agent reasons about the request, chooses tools, performs actions, and evaluates results to accomplish a goal.
