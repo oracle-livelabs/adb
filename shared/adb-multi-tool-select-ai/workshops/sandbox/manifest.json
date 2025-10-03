@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Multitool Select AI Chatbot",
+    "workshoptitle": "Multi-Tool Select AI Chatbot",
     "help": "livelabs-help-aimldb_us@oracle.com",
     "variables": ["../../variables/variables.json",
         "../../variables/variables-in-another-file.json"],

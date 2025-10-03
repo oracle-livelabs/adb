@@ -30,7 +30,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     ![Log out of user share_provider](images/logout-share-provider.png)
 
 <if type="freetier">
-2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`Training4ADW`** as the password, and then click **Sign in**.
 </if>
 
 <if type="livelabs">
