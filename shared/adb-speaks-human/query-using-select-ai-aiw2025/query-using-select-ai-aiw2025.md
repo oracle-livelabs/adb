@@ -48,7 +48,7 @@ begin
         profile_name => 'genai',
         attributes =>
         '{"provider": "oci",
-        "credential_name": "OCI$RESOURCE_PRINCIPAL",
+        "credential_name": "AI_CREDENTIAL",
         "comments":"true",
         "object_list": [
         {"owner": "MOVIESTREAM", "name": "GENRE"},
@@ -149,29 +149,23 @@ You can import, create, and work with notebooks in Oracle Machine Learning Noteb
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
-1. If you are still connected to your SQL Worksheet as the **`moviestream`** user from the earlier lab, sign out of this user using the drop-down list next to the user name in the banner. 
+In this task, you will access Oracle Machine Learning (OML) as the **`moviestream`** user.
 
-2. On the **Sign-in** page, sign in as the **`ADMIN`** user. 
+1. At the bottom of your **Reservation Information** panel, click the **Machine Learning URL** link.
 
-    ![Sign in as admin](./images/signin-admin.png =70%x*)
+    ![Click OML URL](./images/click-oml-url.png =70%x*)
 
-3. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **Machine Learning** tab.
+2. On the **Sign In** page, enter **`moviestream`** in the **USERNAME** field. In the **Reservation Information** panel, click the **Copy value** button next to the **ADB User Password** field, and then paste it in the **PASSWORD** field. Next, click **Sign In**.
 
-    ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
+    ![Sign in as admin](./images/signin-moviestream.png =70%x*)
 
-4. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field. For the password, copy the value of the **ADB User Password** from the **Reservation Information** panel.
-
-    ![Copy moviestream password](./images/copy-moviestream-password.png " ")
-
-    Next, click **Sign In**.
-
-    ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
+    >**Note:** You can also launch OML from the **Database Actions | Launchpad** page. Click the **Development** tab, and then click the **Machine Learning** tab.
 
     The **Oracle Machine Learning** Home page is displayed. You can use this landing page to access tutorials, model creation, notebooks, and much more.
 
     ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-aiw2025.png " ")
 
-5. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
+3. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
 
     ![The Notebooks page is displayed](./images/notebooks-page-displayed-aiw2025.png " ")
 
@@ -221,7 +215,7 @@ A notebook is comprised of paragraphs that use different languages: SQL, PL/SQL,
 
     The code sections are hidden. It is good practice to hide the code section of a **`%md`** paragraph since you are only interested in looking at the formatted output.
 
-4. _**Important:** Before you can run this notebook, you'll have to make changes to the following three paragraphs in the notebook if the region that is assigned to your Sandbox reservation is not **Brazil East (Sao Paulo) (sa-saopaulo-1)** as in our example:_
+4. _**Important:** Before you can run this notebook, you'll have to scroll down the notebook and make changes to the following three paragraphs if the **Generative AI Endpoint Region** that is assigned to your Sandbox reservation is not **Brazil East (Sao Paulo) (sa-saopaulo-1)** as in our example:_
 
     ![Our sandbox region example](./images/region-example.png =60%x*)
 
@@ -261,8 +255,10 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar (Retired), Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributors:** Michelle Malcher, Director, Product Management  
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+* **Contributors:** 
+    * Michelle Malcher, Director, Product Management  
+    * Marcos Arancibia, Senior Principal Product Manager, ADB-S
+* **Last Updated By/Date:** Lauran K. Serhal, September 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
