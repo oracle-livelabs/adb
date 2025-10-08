@@ -44,56 +44,55 @@ This lab assumes you have:
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
-1. From the navigation menu, select **Identity & Security**, and then **Groups**.
+1. From the navigation menu, select **Identity & Security**. Under **Identity**, click **Domains**. The **Domains** page is displayed. Click the domain where you want to create the group such as the **Default** domain in our example. The Domain's page is displayed.
 
-    The **Groups** page in IAM is displayed.
+2. Click the **User management** tab. 
 
-2. Click **Create Group**.
+3. Scroll-down to the **Groups** section.
 
-    The **Create Group** dialog box is displayed.
+4. Click **Create group**. The **Create Group** page is displayed.
 
-3. Enter a name for the group, for example, `dsg01` (short for Data Safe group 1).
+5. Provide the following information:
 
-4. Enter a description for the group, for example, **User group for data safe user 1**. A description is required.
+    * **Name:** Enter a name for the group such as **`dsg01`** (short for Data Safe group 1).
+    * **Description:** Enter a description for the group such as **`User group for data safe user 1`**. A description is required.
+    * **Users:** Select the checkbox next to the user that you'd like to add to the group.
+    * **Tags:** You can optionally create a tag. Drill-down on **Tags**, and then click **Add tag**. 
 
-5. (Optional) Click **Show Advanced Options** and create a tag.
+        ![Create group page](images/create-group-page.png " ")
 
 6. Click **Create**.
 
-    The **Group Details** page is displayed.
+    The new **dsg01** group details page is displayed.
 
-7. Under **Group Members**, click **Add User to Group**.
+    ![Group created](images/group-created.png " ")
+    
+7. Click the **Users** tab. Make sure the user is added to the group. 
 
-    The **Add User to Group** dialog box is displayed.
+    ![Users tab](images/users-tab.png " ")
 
-8. From the drop-down list, select the user for this workshop (perhaps you are using the **admin** user to run this workshop), and then click **Add**.
-
-    The user is listed as a group member.
-
+8. To assign additional users to this group, click **Assign user to group**, select the user from the list, and then click **Add**.
 
 ## Task 2: Create an IAM policy for the user group
 
-> **Note**: If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.
+> **Note**: _If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment._
 
 As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous Database in the user's compartment.
 
-1. From the navigation menu, select **Identity & Security**, and then **Policies**.
+1. From the navigation menu, select **Identity & Security**. Under **Identity**, select **Policies**. The **Policies** page is displayed.
 
-    The **Policies** page in IAM is displayed.
+2. On the left next to **Applied filters**, make sure that the **`root`** compartment is selected.
 
-2. On the left under **COMPARTMENT**, leave the **root** compartment selected.
+3. Click **Create Policy**. The **Create Policy** page is displayed.
 
-3. Click **Create Policy**.
+4. Provide the following information: 
+    * **Name:** Enter a name for the policy. It is helpful to name the policy after a group name such as **`dsg01`**.
+    * **Description:** Enter a description for the policy such as **`Policy for Data Safe group 1`**.
+    * **COMPARTMENT:** Select the **root** compartment from the drop-down list, if not already selected.
 
-    The **Create Policy** page is displayed.
+5. In the **Policy Builder** section, click **Show manual editor** to display the policy field.
 
-4. Enter a name for the policy. It is helpful to name the policy after a group name, for example, `dsg01 `.
-
-5. Enter a description for the policy, for example, **Policy for Data Safe group 1**.
-
-6. From the **COMPARTMENT** drop-down list, leave the **root** compartment selected.
-
-7. In the **Policy Builder** section, move the **Show manual editor** slider to the right to display the policy field.
+    ![Click show manual editor](images/click-show-manual-editor.png " ")
 
 8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
@@ -106,7 +105,12 @@ As a tenancy administrator, create an IAM policy that grants the user permission
 
     The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement allows the user group to create an Autonomous Database in the specified compartment and use it with Oracle Data Safe.
 
-9. Click **Create**.
+    ![Create policy](images/create-policy.png " ")
+
+9. Click **Create**. The new **dsg01** policy details page is displayed.
+
+    ![Policy created](images/policy-created.png " ")
+
 
 ## Task 3: Load Sample Data Into Your Database
 
@@ -178,8 +182,6 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
 
 3. In the **Register database with Data Safe** dialog box, click **Confirm**.
 
-    ![Register Database with Data Safe confirm dialog box](images/confirm-registration.png " ")
-
 4. Wait for the registration process to finish and for the status to change to **Registered**.
 
     ![Status reads registered](images/status-registered.png =60%x* )
@@ -203,7 +205,7 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
     - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
     - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed after 45 days.
 
-        ![Target Databases page in OCI](images/target-databases-page-oci.png "Target Databases page in OCI")
+        ![Target Databases page in OCI](images/target-databases-page.png " ")
 
 5. Click the name of your target database to view its registration details. The **Target Database Details** page is displayed.
 
@@ -211,7 +213,7 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
     - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
     - You have options to edit connection details (change the connection protocol), move the target database registration to another compartment, deregister the target database, and add tags.
 
-    ![Target Database Details page](images/target-database-details-page.png "Target Database Details page")
+    ![Target Database Details page](images/target-database-details-page.png " ")
 
 ## Task 6: Discover Sensitive Data In Target Database Using Data Discovery
 
@@ -242,17 +244,17 @@ Start by examining sensitive data in one of the tables on your target database b
     - **Description:** Enter **Sensitive Data Model 1**.
     - **Target database:** Select your target database.
 
-    ![Provide Basic Information page](images/provide-basic-information-page.png =65%x*)
+    ![Provide Basic Information page](images/provide-basic-information-page.png =65%x* " ")
 
 7. On the **Select Schemas** page, leave **Select specific schemas only** selected. Scroll down and select the **`HCM1`** schema, and then click **Next**. You might need to click the right arrow button at the bottom of the page to navigate to page 2.
 
     ![Select Schemas page](images/select-schemas-page.png =65%x*)
 
-8. On the **Select sensitive types for data discovery** page, expand all of the sensitive categories by moving the **Expand All** slider to the right. Scroll down the page and review the sensitive types. Notice that you can select individual sensitive types, sensitive categories, and all sensitive types at one time.
+8. On the **Select tables for schema** page, accept the default, All tables for the HCMI schema, and then click **Next**.
 
-    ![Select Sensitive Types page](images/select-sensitive-types-page.png =65%x*)
+    ![Select Schema tables page](images/select-tables-page.png =65%x*)
 
-9. At the top of the page, select the **All** check box, and then click **Next**.
+9. On the **Select sensitive types** page, select all of the sensitive categories by selecting the **All** check box, and then click **Next**.
 
     ![Select Sensitive Types page](images/select-all.png " ")
 
@@ -273,7 +275,7 @@ Start by examining sensitive data in one of the tables on your target database b
     - The bar chart compares the number of sensitive values per sensitive category and sensitive type.
     - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
 
-    ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png "Sensitive Data Model Details page top")
+    ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png " ")
 
 2. Under **Sensitive columns**, from the first drop-down list, select **Sensitive type view** to sort the sensitive columns by sensitive type. By default, all items are expanded in the view. You can collapse the items by moving the Expand all slider to the left.
 
@@ -293,6 +295,7 @@ The following links provide more information about Oracle Data Safe:
 
 ## Acknowledgements
 
-- **Author:** Jody Glover, Consulting User Assistance Developer, Database Development
-- **Contributors:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Authors:** 
+    * Jody Glover, Consulting User Assistance Developer, Database Development
+    * Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

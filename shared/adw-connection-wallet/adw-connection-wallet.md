@@ -83,7 +83,7 @@ To create a new TLS connection to Autonomous Database:
 
 4. Click **Save**. Wait a minute for the database status to change from **UPDATING** to **AVAILABLE**.
 
-5. On the **Autonomous Database details** page, in the **Network** section, note that the **Access type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** link next to **Mutual TLS (mTLS) authentication**.
+5. On the **Autonomous Database details** page, in the **Network** section, note that the **Access type** has automatically changed from the default access type that you used when provisioning the database, **Allow secure access from everywhere**, to **Allow secure access from specified IPs and VCNs**. Click the **Edit** button next to **Mutual TLS (mTLS) authentication**.
 
     ![Click the Edit button next to Mutual TLS authentication](./images/click-edit-to-uncheck-mtls.png =65%x*)
 
@@ -240,7 +240,7 @@ You may now **proceed to the next lab**.
 * [Network configuration options](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-network-access.html#GUID-D2D468C3-CA2D-411E-92BC-E122F795A413)
 * [Connecting to Your Autonomous Database Has Never Been Easier](https://blogs.oracle.com/datawarehousing/post/connecting-your-autonomous-database-has-never-been-easier)
 
-## **Acknowledgements**
+## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date** - Lauran K. Serhal, August 2025
+* **Last Updated By/Date** - Lauran K. Serhal, September 2025

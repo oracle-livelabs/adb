@@ -82,4 +82,4 @@ The following links provide documentation about configuring network access with 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, January 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
