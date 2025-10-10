@@ -34,6 +34,11 @@ In this lab, you will:
 
 ### Prerequisites
 
+<if type="freetier">
+
+- You must have run `Lab 2: Provision an Autonomous Database`
+- You must have ADMIN access to Database Actions (required to create a new user)
+
 ## Task 1: Create a new Database user and access its DB Actions
 
 1. If you have the Database Actions for the **`ADMIN`** user still open, click the **Administration** tab, and then click the **Database Users** tab. 
@@ -125,8 +130,22 @@ In this lab, you will:
     ![Navigate to Launchpad](images/navigate-launchpad.png "")
 
 ## Task 3: Navigate to Oracle Machine Learning UI
+</if>
 
 <if type="ocw24sandbox">
+
+- You must have your LiveLabs sandbox deployed
+- You will need the URLs to the OML UI provided with the Instructions
+
+## Task 1: Navigate to Oracle Machine Learning UI
+</if>
+
+
+<if type="livelabs">
+
+- You must have your LiveLabs sandbox deployed
+- You will need the URLs to the OML UI provided with the Instructions
+
 ## Task 1: Navigate to Oracle Machine Learning UI
 </if>
 
@@ -147,11 +166,29 @@ In this lab, you will:
 
     In addition, *a customer churning today probably made that decision a while ago*. This means that our machine learning model needs to be able to detect any change in behavior from at least a month ago. This is the reason for the buffer of 1 month in the process.
 
+<if type="freetier">
 1. From the Database Actions Launchpad, click the **Development** tab, and then click the **Machine Learning** tab.
 
     ![Go to ML UI](images/click-machine-learning.png " ")
 
+</if>
+
 <if type="ocw24sandbox">
+1. We will access Oracle Machine Learning UI from the LiveLabs Instructions Login Info.  
+   
+    If you have not done so yet, make sure to click on *Launch Workshop* under *My Reservations*.
+
+    ![Click on Launch Workshop](images/click-launch-workshop-myreserv.png " ")
+
+    Click on *View Login Info* (1).  In the window that opens, click on *Copy value* for the `Database User Password` (2) and then click on the link for the *OML UI* (3).
+
+    ![Click View Login Info and OML UI](images/click-view-login-info-omlui.png " ")
+
+    You will be taken to the Login page for Oracle Machine Learning UI.
+</if>
+
+
+<if type="livelabs">
 1. We will access Oracle Machine Learning UI from the LiveLabs Instructions Login Info.  
    
     If you have not done so yet, make sure to click on *Launch Workshop* under *My Reservations*.
@@ -172,7 +209,11 @@ In this lab, you will:
     Remember to paste the Password you just copied, which is AAbbcc123456. 
 </if>
 
-    ![Oracle Machine Learning Notebooks sign-in page](images/oml-login-page.png " ")
+<if type="livelabs">
+    Remember to paste the Password you just copied, which is AAbbcc123456. 
+</if>
+
+   ![Oracle Machine Learning Notebooks sign-in page](images/oml-login-page.png " ")
 
 3. The Oracle Machine Learning Home page is displayed. You can use this page to access tutorials, create models and notebooks, and more. We'll now create a new machine learning model using the **AutoML UI**. In the **Quick Actions** section, click **AutoML**.
 
@@ -180,9 +221,15 @@ In this lab, you will:
 
     The **AutoML Experiments** page is displayed.
 
+<if type="freetier">
 ## Task 4: Create a new AutoML Experiment
+</if>
 
 <if type="ocw24sandbox">
+## Task 2: Create a new AutoML Experiment
+</if>
+
+<if type="livelabs">
 ## Task 2: Create a new AutoML Experiment
 </if>
 
@@ -237,9 +284,15 @@ In this lab, you will:
 
     We are now ready to start the Experiment.
 
+<if type="freetier">
 ## Task 5: Run the Experiment and explore the results.
+</if>
 
 <if type="ocw24sandbox">
+## Task 3: Run the Experiment and explore the results.
+</if>
+
+<if type="livelabs">
 ## Task 3: Run the Experiment and explore the results.
 </if>
 
@@ -299,7 +352,13 @@ In this lab, you will:
 
     The model also thought that __1.05%__ of the customers would not churn (Predict: 0) but they actually did (Actual: 1).  This type of error is more dangerous in churn management, since your model is not capable of identifying these customers as churners when they indeed would have been, and should be monitored over time.
 
+<if type="freetier">
 ## Task 6: Prepare the model for scoring and deployment
+</if>
+
+<if type="livelabs">
+## Task 4: Prepare the model for scoring and deployment
+</if>
 
 <if type="ocw24sandbox">
 ## Task 4: Prepare the model for scoring and deployment
@@ -321,7 +380,13 @@ In this lab, you will:
 
     Now we are ready for scoring customers using SQL by using that model name.
 
+<if type="freetier">
 ## Task 7: Score customers with Python and SQL using the model
+</if>
+
+<if type="livelabs">
+## Task 5: Score customers with Python and SQL using the model
+</if>
 
 <if type="ocw24sandbox">
 ## Task 5: Score customers with Python and SQL using the model
@@ -390,7 +455,7 @@ In this lab, you will:
      ![Churn AutoML Task 3 Step 3 Scoring Notebook Python 3](images/oml-churn-automl-notebook-python3.png " ")
    
     
-7. In SQL let's review the table created by Python and run a dynamic scoring with the model
+8. In SQL let's review the table created by Python and run a dynamic scoring with the model
    
     If we scroll down to the **SQL** section, we see basically two main steps. There is one paragraph that deletes a table named `LATEST_POTENTIAL_CHURNERS` if it exists (in case we wanted to experiment later with SQL).
     
@@ -438,7 +503,13 @@ You now have deployed a new table called `LATEST_POTENTIAL_CHURNERS` containing 
 
 Now other professionals can take advantage of both the deployment you have just made in order to contact the customers at risk with an offer, as well as use your SQL Scoring code to put the model into production and run the scoring in batch every time there is a new refresh of the data, be it hourly, daily, weekly, or monthly.
 
+<if type="freetier">
 ## Task 8: Bonus content - additional model quality metrics
+</if>
+
+<if type="livelabs">
+## Task 6: Bonus content - additional model quality metrics
+</if>
 
 <if type="ocw24sandbox">
 ## Task 6: Bonus content - additional model quality metrics
@@ -465,7 +536,13 @@ Now other professionals can take advantage of both the deployment you have just 
 
     ![Churn AutoML Task 2 Step 5 Leader Board view metrics](images/leader-more-metrics.png " ")
 
+<if type="freetier">
 ## Task 9: Bonus content - auto-generated OML4Py notebook
+</if>
+
+<if type="livelabs">
+## Task 7: Bonus content - auto-generated OML4Py notebook
+</if>
 
 <if type="ocw24sandbox">
 ## Task 7: Bonus content - auto-generated OML4Py notebook
@@ -512,7 +589,13 @@ Now other professionals can take advantage of both the deployment you have just 
    
      ![Churn AutoML Task 9 Step 7 Scoring](images/oml-churn-automl-autogenerated-score.png " ")   
 
+<if type="freetier">
 ## Task 10: Bonus content - deploy the model to an OML Service REST endpoint
+</if>
+
+<if type="livelabs">
+## Task 8: Bonus content - deploy the model to an OML Service REST endpoint
+</if>
 
 <if type="ocw24sandbox">
 ## Task 8: Bonus content - deploy the model to an OML Service REST endpoint
