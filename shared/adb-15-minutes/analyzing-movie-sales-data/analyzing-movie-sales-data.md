@@ -18,15 +18,15 @@ Estimated Time: 5 minutes
 
 1. From the Data Load tool, navigate to the SQL Worksheet. Click the **Selector** menu. In the **Development** section, click **SQL**.
 
-    ![Go to SQL worksheet](images/goto-sql.png =60%x*)
+    ![Go to SQL worksheet](images/goto-sql.png =65%x*)
 
-    The SQL Worksheet is displayed. The first time you access the SQL Worksheet, informational boxes are displayed. Click the **X** icons to close those boxes. You can also click the **Collapse** icon to increase the worksheet area.
+    The SQL Worksheet is displayed. The first time you access the SQL Worksheet, informational boxes might be displayed. Click the **X** icons to close those boxes. You can also click the **Collapse** icon to increase the worksheet area.
 
-    ![The SQL worksheet is displayed](images/sql-worksheet.png " ")
+    ![The SQL worksheet is displayed](images/sql-worksheet.png =65%x*)
 
 2. Learn more about the SQL Worksheet features using the tooltips when you hover over an icon. You will run queries by entering your commands in the worksheet. Click the **Run Statement** icon to run the command and view the output in the **Query Result** tab in tabular format. Click the **Run Script** icon to run a script and display the output in the **Script Output** tab in text format. You can clear your worksheet by clicking the trash icon.
 
-    ![Go to SQL worksheet](images/run-query.png " ")
+    ![Go to SQL worksheet](images/run-query.png =65%x*)
 
 You are now ready to start analyzing MovieStream's performance using SQL.
 
@@ -36,7 +36,7 @@ You are now ready to start analyzing MovieStream's performance using SQL.
 
     >**Note:** The first time you try to paste anything from the clipboard into your SQL Worksheet, an informational box is displayed. Click **Allow**.
 
-    ![Allow paste](images/allow-paste.png =50%x*)
+    ![Allow paste](images/allow-paste.png =45%x*)
 
 
     ```
@@ -53,7 +53,7 @@ You are now ready to start analyzing MovieStream's performance using SQL.
 
     This returns a result similar to the following:
 
-    ![sales by education level](images/sales-by-education-level.png " ")
+    ![sales by education level](images/sales-by-education-level.png =65%x*)
 
     As you can see, most sales are to customers with a high school education, and the fewest sales are to customers with a masters degree. It is interesting that MovieStream has more sales to customers with a doctorate degree than customers with a masters degree!
 
@@ -73,7 +73,9 @@ In the following steps, the scripts will build a SQL query to identify:
 
 Customers will be categorized into 5 buckets measured (using the **`NTILE`** function) in increasing importance. For example, an **RFM** combined score of **551** indicates that the customer is in the highest tier of customers in terms of recent visits (**R=5**) and activity on the site (**F=5**); however the customer is in the lowest tier in terms of spend (**M=1**). Perhaps this is a customer that performs research on the site, but then decides to buy movies elsewhere!
 
-1. Let's bin customers based on their behavior. Copy the following query and paste it in your SQL Worksheet, and then click the **Run Statement** icon in the toolbar. Use the query to segment customer behavior into **5 distinct bins** based on the **recency**, **frequency**, and **monetary** metrics.
+1. Let's bin customers based on their behavior. Copy the following query and paste it in your SQL Worksheet, and then click the **Run Statement** icon in the toolbar. Use the query to segment customer behavior into **5 distinct bins** based on the **recency**, **frequency**, and **monetary** metrics. 
+
+    >**Note:** To clear the SQL query from the worksheet area, click the **Clear** icon in the toolbar. To clear the output from the Query Result area, click the **Clear Output** icon in the toolbar.
 
     ```
     <copy>SELECT
@@ -143,5 +145,5 @@ We accomplished a lot in just 15 minutes!
 
 - **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Marty Gubar, Oracle Autonomous Database Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, July 2025
+    * Marty Gubar (Retired), Oracle Autonomous Database Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025
