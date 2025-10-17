@@ -185,7 +185,7 @@ You may now **proceed to the next lab**.
 
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE)
 
-## **Acknowledgements**
+## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, August 2025
+- **Last Updated By/Date:** Lauran K. Serhal, September 2025

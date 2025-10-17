@@ -44,11 +44,7 @@ In Tasks 1 through 7, you create a notification topic with an email subscription
 
 1. Create a Notification topic. Click the **Navigation** menu, and then click **Developer Services**. Under **Application Integration**, click **Notifications**.
 
-    ![Navigate to Notifications](images/click-notifications.png)
-
 2. On the **Topics** page, click **Create Topic**.
-
-    ![Click Create Topic](images/click-create-topic.png)
 
 3. In the **Create Topic** panel, enter a name and an optional description, and then click **Create**.
 
@@ -62,9 +58,9 @@ In Tasks 1 through 7, you create a notification topic with an email subscription
 
 Now that you have created a notification topic, create a subscription to that topic, so that you can receive email alerts when a condition changes. You will create a rule with conditions in a following task.
 
-In this lab, you create an email subscription. Subscriptions can be defined to trigger emails or pager notifications (for on-call staff whose phones will be paged.)
+In this task, you create an email subscription. Subscriptions can be defined to trigger emails or pager notifications (for on-call staff whose phones will be paged.)
 
-1. On the **Topics** page, click the **Data-Notification** topic. On the **Topics details** page, click **Create Subscription**.
+1. On the **Topics** page, click the **Data-Notification** topic. On the **Topics details** page, click the **Subscriptions** tab, and then click **Create subscription**.
 
     ![Click Create Subscription](images/click-create-subscription.png)
 
@@ -74,7 +70,9 @@ In this lab, you create an email subscription. Subscriptions can be defined to t
 
     ![Create the subscription](images/create-subscription.png)
 
-3. Click **Create**. The current status of the subscription is **PENDING**.
+3. Click **Create**. The current status of the subscription is **Pending**.
+
+    ![State pending](images/state-pending.png)
 
 ## Task 3: Respond to the Verification Email
 
@@ -86,7 +84,7 @@ In this lab, you create an email subscription. Subscriptions can be defined to t
 
     ![The subscription is confirmed](images/subscription-confirmed.png)
 
-3. On the **Data-Notifications** page, the new subscription is displayed. You might have to refresh the page to display the new subscription. The subscription status is now **ACTIVE**.
+3. On the **Data-Notifications** page, the new subscription is displayed. You might have to refresh the page to display the new subscription. The subscription status is now **Active**.
 
   ![The new subscription is displayed.](images/subscription-displayed.png)
 
@@ -97,8 +95,6 @@ You are now subscribed to a Notification topic. Next you will define an event wi
 Let's define an event that triggers an email notification when an Autonomous Database is stopped.
 
 1. In the Oracle Console, click the **Navigation** menu.
-
-  ![Click the Navigation menu](images/click-navigation-menu.png =50%x*)
 
 2. Click **Observability & Management**. Under **Events Service**, click **Rules**.
   
@@ -141,15 +137,13 @@ You will now shut down the Autonomous Database to trigger the notification email
 
   ![Stop the database](images/stop-database.png)
 
-2. In the confirmation dialog box, click **Stop**.
+2. In the **Confirm stop** dialog box, click **Stop**.
 
-  ![Confirm database stop](images/confirm-stop.png =50%x*)
-
-3. The initial status of the database is **STOPPING**.
+3. The initial status of the database is **Stopping**.
 
     ![The status is stopping](images/status-stopping.png " ")
 
-4. Wait until the database status changes to **STOPPED**.
+4. Wait until the database status changes to **Stopped**.
 
     ![The status is stopped](images/status-stopped.png " ")
 
@@ -169,11 +163,13 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
 
 ## Task 8:  Define an Alarm for the CPU Utilization Chart
 
-1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **STARTING**. In a few minutes, the status changes to **AVAILABLE**.
+1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **Starting**. In a few minutes, the status changes to **Available**.
 
-    ![The database is started](images/database-started.png =60%x*)
+2. On the **Autonomous Database details** page, click the **Monitoring** tab. 
 
-2. Scroll-down the **Autonomous Database details** page to the **Metrics** charts. In the **CPU Utilization** chart, click the **Options** drop-down list, and then select **Create an alarm on this query**.
+  ![Click the Monitoring tab](images/click-monitoring-tab.png)
+
+3. In the **CPU utilization** chart section, click the **Actions** (ellipsis) icon, and then select **Create an alarm on this query**.
 
   ![Define an alarm](images/define-alarm.png)
 
@@ -209,11 +205,15 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
 
 ## Task 9: Create a CPU Utilization that Triggers the New Alarm
 
-Re-run the **`test_proc`** procedure in **Lab 6: Apply Auto Scaling > Task 5** again to create a CPU utilization that triggers the alarm that you just created. You will run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm.
+Re-run the **`test_proc`** procedure in **Lab 6: Apply Auto Scaling > Task 5** again to create a CPU utilization that triggers the alarm that you just created. You will run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm. 
 
-1. Navigate to your SQL Worksheet.
+1. Let's make sure that you'll trigger the CPU alarm. From the **Autonomous Database details** page, click the **More actions** drop-down list, and then select **Manager resource allocation**. Change the **ECPU count** for the **`ADW_Finance_Mart`** instance to the original setting from lab 1 to `2`. Make sure that the **Compute auto scaling** slider is disabled. 
 
-2. Go to your **Query 1**, **Query 2**, and **Query 3** SQL worksheets (re-open 3 instances if you closed the tabs from before). Change the **Consumer group** drop-down list setting to **HIGH**. Copy the following execute command into each worksheet; however, _but do not immediately execute the command_. After you have entered the command into the three worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
+2. Navigate to your SQL Worksheet. 
+
+  ![Navigate to SQL Worksheet](images/navigate-sql-worksheet.png " ")
+
+3. Go to your **Query 1**, **Query 2**, and **Query 3** SQL worksheets (re-open 3 instances if you closed the tabs from before). Change the **Consumer group** drop-down list setting to **HIGH**. Copy the following execute command into each worksheet; however, _but do not immediately execute the command_. After you have entered the command into the three worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
 
     ```
     <copy>
@@ -232,7 +232,11 @@ Check the email account you specified to verify that a notification email was se
 
 1. Go to the specified email account and verify that a notification of the CPU utilization has been sent. 
 
-  ![ALT text is not available for this image](images/2619005579.png)
+  ![CPU Usage Alarm email](images/cpu-usage-alarm-email.png " ")
+
+2. In the body of the email, click the **View Alarm in Console** green button at the bottom of the email. The alarm is displayed in the Console.
+
+  ![CPU Usage Alarm displayed in Console](images/cpu-usage-alarm-console.png " ")
 
 You may now **proceed to the next lab**.
 
@@ -246,4 +250,4 @@ You may now **proceed to the next lab**.
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 - **Contributor:** Nilay Panchal, ADB Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

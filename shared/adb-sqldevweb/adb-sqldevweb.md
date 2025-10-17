@@ -92,9 +92,9 @@ You may now **proceed to the next lab**.
 
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/index.html)
 
-## **Acknowledgements**
+## Acknowledgements
 
 - **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, Oracle Autonomous Database Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, August 2025
+- **Last Updated By/Date:** Lauran K. Serhal, September 2025

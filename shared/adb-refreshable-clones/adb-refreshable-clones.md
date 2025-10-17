@@ -53,7 +53,7 @@ In this lab, you'll:
 
 2. On the **Autonomous Databases details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
-    ![Click Database actions > SQL](images/click-sql.png)
+  ![Click Database actions > SQL](images/click-sql.png)
 
     The SQL worksheet is displayed.
 
@@ -67,7 +67,9 @@ In this lab, you'll:
     </copy>
     ```
 
-    ![Create and populate table](images/create-populate-table.png)
+    ![Create and populate table](images/create-populate-table.png " ")
+
+    >**Note:** In our example, the code was executed at `2:54:40 PM UTC` time.
 
 ## Task 2: Create a Refreshable Clone from the Autonomous Database Instance
 
@@ -75,35 +77,31 @@ Now that you have created a table in the source database and populated it with a
 
 1. Return to the **Autonomous Database details** page of your source database. Click the **More actions** drop-down menu, and then select **Create clone**.
 
-  ![Select Create clone from the More actions menu](images/select-create-clone.png)
+2. For the **Clone type**, accept the default **Full Clone**. Enable the **Refreshable clone** slider. A refreshable clone must be refreshed every 7 days or less; otherwise, it falls too far out of sync from the source and can no longer be refreshed.
 
-2. Select the **Refreshable Clone** option. A refreshable clone must be refreshed every 7 days or less; otherwise, it falls too far out of sync from the source and can no longer be refreshed.
+  ![Select full clone and refreshable option](images/refreshable-clone.png " ")
 
-3. Enter **refreshclone** for the display and database names.
+3. In the **Basic information for the Autonomous Database clone** section, accept the currently selected region and compartment. Enter **`refreshclone`** for the display and database names.
 
-  ![Specify the clone type and basic information](images/clone-type-information.png =65%x*)
+  ![Specify the clone type and basic information](images/clone-basic-information.png " ")
 
-3. Accept the default number of **ECPU Count**, 2, for your refreshable clone. There is **no storage selection** necessary. Since this is a read-only clone that only brings in data from its source database, the amount of storage selected in TB is automatically the same as that of the source.
+3. In the **Database configuration** section, accept the default number of **ECPU Count**, `4`, for your refreshable clone. There is **no storage selection** necessary. Since this is a read-only clone that only brings in data from its source database, the amount of storage selected in TB is automatically the same as that of the source.
 
 4. There is also no Admin password option for the refreshable clone, as that is taken from the source when refreshed.
 
 5. In the **Choose network access** section, select **Secure access from everywhere**.
 
-6. In the **Choose license and Oracle Database edition** section, accept the default **License included**.
+6. In the **Provide contacts for operational notifications and announcements** section, provide a contact email address to receive operational notifications and announcements.
 
-7. In the **Provide contacts for operational notifications and announcements** section, provide a contact email address to receive operational notifications and announcements.
-
-  ![Specify the remaining information](images/specify-remaining-information.png =65%x*)
-
-8. Click **Create Autonomous Database clone**. The initial state is **PROVISIONING**.
-
-  ![The provisioning state](images/povisioning-state.png " ")
-
-9. Once the clone is provisioned, you can see useful clone information such as the **Clone source database** that the clone is attached to and the **Refresh point** timestamp of the source from which the clone was refreshed.
+7. Click **Clone**. The initial state is **`PROVISIONING`**. Once the clone is provisioned, you can see useful clone information such as the **Clone source database** that the clone is attached to and the **Refresh point** timestamp of the source from which the clone was refreshed.
   
-  ![The refershable clone is provisioned](images/referhable-clone-provisioned.png " ")
+  ![The refreshable clone is provisioned](images/referhable-clone-provisioned.png " ")
 
-10. Navigate back to your SQL Worksheet from the **refreshable clone's** OCI console and query the table that you created and populated. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+9. Navigate back to your SQL Worksheet from the **refreshable clone's** OCI console. Close the information and warning boxes. Click **Allow** when you paste the query in the SQL Worksheet.
+
+  ![Navigate to the SQL Worksheet](images/navigate-sql-worksheet.png " ")
+
+10. Query the table that you created and populated. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -120,9 +118,9 @@ Now that you have created a table in the source database and populated it with a
 
 You have proven that the refreshable clone contains the source database's table with one row of data. Now, you will add a second row of data to the source database, and learn how to refresh the clone to pick up that second row.
 
-1. Switch back to the **source database's** SQL worksheet. This will be the **`ADW_Finance_ Mart`** database instance that you created in the workshop's **Provision an Autonomous Database** lab, or another database that you might be using as the source.
+1. Switch back to the **source database's** SQL worksheet. This will be the **`ADW_Finance_Mart`** database instance that you created in the workshop's **Provision an Autonomous Database** lab, or another database that you might be using as the source.
 
-  ![Navigate to the source database SQL Worksheet](images/source-databae-sql-worksheet.png =65%x*)
+  ![Navigate to the source database SQL Worksheet](images/source-databae-sql-worksheet.png " ")
 
 2. Insert and commit an additional row into the source database. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -157,19 +155,23 @@ You have proven that the refreshable clone contains the source database's table 
     </copy>
     ```
 
+  ![The timestamp](images/second-row-timestamp.png =65%x*)
+
 ## Task 4: Refresh the Clone to View New Data
 
 You will now learn how easy it is to refresh the clone with the new data you just added to the source.
 
-1. Return to the **Autonomous Database details** page of your **`refreshclone`** clone database.
+1. Return to the **Autonomous Database details** page of your **`refreshclone`** clone database. Scroll-down to the **Clone information** section.
 
     ![Navigate to the refreshclone details page](images/navigate-refreshclone.png)
 
-2. Click **Refresh clone** in the banner. This banner also displays the date and time before which you must refresh the clone (which is 7 days after the last refresh was performed), before it would lose the ability to sync with the source.
+2. In the **Clone information** section, click the **Actions** icon (ellipsis), and then select **Refresh**. The **Refresh point** field displays the date and time before which you must refresh the clone (which is 7 days after the last refresh was performed), before it would lose the ability to sync with the source.
 
-3. The **Refresh Clone** dialog box prompts you for a refresh point timestamp of the source database to which you want to refresh. This makes refreshes consistent and intelligible, as it definitively refreshes to an exact timestamp of the source. For example, if you inserted the second row into the source at about 13:10 UTC, you could input 13:15 UTC as your refresh point. After you enter your refresh point timestamp, click **Refresh Clone**.
+  ![Click Actions > Refresh](images/click-actions-refresh.png " ")
 
-  ![The Refresh Clone dialog box is displayed](images/refresh-clone-dialog-box.png)
+3. The **Refresh Clone** dialog box prompts you for a refresh point date and time of the source database to which you want to refresh. This makes refreshes consistent and intelligible, as it definitively refreshes to an exact timestamp of the source. For example, if you inserted the second row into the source at about `16:06 UTC`, you could input `16:11 UTC` as your refresh point. After you enter your refresh point timestamp, click **Refresh**.
+
+  ![The Refresh Clone dialog box is displayed](images/refresh-clone-dialog-box.png " ")
 
 4. While the clone is refreshing, the state of the refresh is **UPDATING**. During a refresh, connections are not dropped and any running queries on the clone simply wait until the refresh is completed. The refresh may take several seconds to several minutes depending on how long it has been since the last refresh, and the number of changes that have come in since then.
 
@@ -205,4 +207,4 @@ You may now **proceed to the next lab**.
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 - **Contributor:**
     * Nilay Panchal, ADB Product Management
-- **Last Updated By/Date:**  Lauran K. Serhal, January 2025
+- **Last Updated By/Date:**  Lauran K. Serhal, October 2025

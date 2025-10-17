@@ -41,7 +41,7 @@ The **business case** we want to answer here is to **summarize orders by month a
 - **Test 2**: You will enable auto scaling and again have 3 SQL Developer Web sessions executing queries. Auto scaling will allow your running sessions to use up to 3x more OCPUs, reducing your execution times significantly.
 
 ## **Test 1 - Auto Scaling Disabled and Scale down OCPU allocation**
-In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
+In **tasks 1 through task 3**, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
 
 ## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your ADW Database
 

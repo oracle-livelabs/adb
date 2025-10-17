@@ -19,22 +19,22 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Task 1: Scaling your Autonomous Database Instance
 
-1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **Manage resource allocation** button.
+1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **More actions** drop-down list, and then select **Manage resource allocation** from the context menu.
 
     ![Click Manage resource allocation.](./images/click-manage-resource-allocation.png " ")
 
 2. Specify the following in the **Manage resource allocation** panel.
 
     - **ECPU count:** 16
-    - **Compute auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the checkmark in this checkbox.
+    - **Compute auto scaling:** The provisioning lab instructed you to accept the default enablement of auto scaling. Keep the slider enabled.
     - **Storage (TB):** 2
-    - **Storage auto scaling:** Keep this checkbox deselected; by default the checkbox does not have a checkmark.
+    - **Storage auto scaling:** Keep this slider disabled.
 
     > **Note:** You can scale up/down your autonomous database only if your autonomous database is NOT Always Free.
 
 3. Click **Apply**.
 
-    ![Click Apply.](./images/click-apply-in-manage-resource-allocation-dialog.png " ")
+    ![Click Apply.](./images/click-apply.png " ")
 
     >**Note:** Applications can continue running during the scale operation without downtime.
 
@@ -62,9 +62,9 @@ You may now **proceed to the next lab**.
 
 * [Add CPU or Storage Resources or Enable Auto Scaling](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-add-resources.html#GUID-DA72422A-5A70-42FA-A363-AB269600D4B0)
 
-## **Acknowledgements**
+## Acknowledgements
 
 * **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, ADB Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Last Updated By/Date:** Lauran K. Serhal, September 2025

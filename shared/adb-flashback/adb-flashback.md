@@ -37,7 +37,7 @@ This lab assumes you have:
 
 To complete the subsequent tasks you need to use SQL Worksheet.
 
-1. Return to your SQL Worksheet. On the **Autonomous Databases** page, click the **`ADW_Finance_Mart`** database instance that you created in **Lab 1: Provision Autonomous Database**. Next, click the **Database actions** drop-down list, and then select **SQL**.
+1. Return to your SQL Worksheet. On the **Autonomous Databases** page, click the **`ADW_Finance_Mart`** database instance that you created in **Lab 1: Provision Autonomous Database**. Click the **Database actions** drop-down list, and then select **SQL**.
 
    ![Navigate to the SQL Worksheet](images/navigate-sql-worksheet.png " ")
 
@@ -98,7 +98,7 @@ In this task, you will first create the `DEPARTMENTS` table and then enable the 
 
 Once the Flashback Time Travel is enabled for a table you can view the past states of data in the table.
 
-You can use the `SELECT` statement with an `AS OF` clause to retrieve data, as it existed at an earlier time. The query explicitly references a past time through a time stamp or System Change Number (SCN) to return committed data that was current at that point in time.
+You can use the **`SELECT`** statement with an **`AS OF`** clause to retrieve data, as it existed at an earlier time. The query explicitly references a past time through a time stamp or System Change Number (SCN) to return committed data that was current at that point in time.
 
 In this task, you will insert records into the `EMPLOYEES` table, update the records, and view the past states of table data.
 
@@ -154,15 +154,13 @@ In this task, you will insert records into the `EMPLOYEES` table, update the rec
 
     ![Verify the update](images/verify-update-emp.png " ")
 
-5. Now, you can use Oracle Flashback Query to examine the contents of the table as it existed at a previous timestamp.  Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon.
-
-    > **Note:** Copy the following command, however, substitute in your database's timestamp in place of the one used in this code example.
+5. Now, you can use Oracle Flashback Query to examine the contents of the table as it existed at a previous timestamp.  Copy and paste the following code into your SQL Worksheet. _Substitute the timestamp in the code with your own database's timestamp from step 2._ Next, click the **Run Script (F5)** icon.
 
     ```
     <copy>
     SELECT * FROM employees
     AS OF TIMESTAMP
-    TO_TIMESTAMP('2023-07-12 12:30:45','YYYY-MM-DD HH24:MI:SS')
+    TO_TIMESTAMP('2025-10-08 12:43:55','YYYY-MM-DD HH24:MI:SS')
     WHERE empno=1002;
     </copy>
     ```
@@ -280,7 +278,7 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
     ```
     <copy>
     BEGIN
-    DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'timestamp', before_timestamp => '01-May-2024 12:00:00');
+    DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'timestamp', before_timestamp => '01-october-2025 12:00:00');
     END;
     /
     </copy>
@@ -290,13 +288,26 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 
     This purges the flashback historical data based on the provided `timestamp` from the `Flashback Data Archive`.
 
-2. To purge `Flashback Time Travel` historical data before a specified system change number, `SCN`, run the following code in your SQL Worksheet:
+2. You can also purge `Flashback Time Travel` historical data before a specified system change number. To get the system change number, `SCN`, for your database instance, run the following query. 
+
+    ```
+    <copy>
+    SELECT CURRENT_SCN 
+    FROM V$DATABASE;
+    /
+    </copy>
+    ```
+
+    ![Get the database scn number](images/query-scn.png  " ")
+
+ 
+3. To purge `Flashback Time Travel` historical data before a specified system change number, `SCN`, run the following code in your SQL Worksheet.
 
     ```
 
     <copy>
     BEGIN
-        DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'scn',before_scn=> '38567332107905');
+        DBMS_CLOUD_ADMIN.PURGE_FLASHBACK_ARCHIVE(scope => 'scn',before_scn=> '45652117865953');
     END;
     /
     </copy>
@@ -306,7 +317,7 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 
      This purges the flashback historical data based on the system change number `scn` from the `Flashback Data Archive`.
 
-3. To purge all `Flashback Time Travel` historical data, run the following code in your SQL Worksheet:
+4. To purge all `Flashback Time Travel` historical data, run the following code in your SQL Worksheet:
 
     ```
 
@@ -333,4 +344,4 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 
 - **Author:** Shilpa Sharma, Senior User Assistance Developer, Database Development
 - **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

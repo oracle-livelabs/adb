@@ -42,13 +42,13 @@ The **business case** we want to answer here is to **summarize orders by month a
 
 ## **Test 1 - Auto Scaling Disabled**
 
-In tasks 1 through 3, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
+In **task 1 through task 3**, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
 
 ## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your ADW Database
 
-In the **Provision Autonomous Database** lab, you created the **ADW\_Finance\_Mart** Autonomous Data Warehouse database. In the previous **Scale for Performance** lab, you increased the ECPU count from 2 to 16 ECPUs.
+In the **Provision Autonomous Database** lab, you created the **`ADW_Finance_Mart`** Autonomous Data Warehouse database. In the previous **Scale for Performance** lab, you increased the ECPU count from **`2`** to **`16`** ECPUs.
 
-1. Select the ECPU count as **4** and disable **Compute auto scaling**. Go to the **Autonomous Database details** page, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** to **`4`**. Next, deselect the **Compute auto scaling** checkbox to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous Database details** page is re-displayed.
+1. You will select the ECPU count as **`4`**, and then disable **Compute auto scaling** slider. Go to the **Autonomous Database details** page, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** to **`4`**. Next, deselect the **Compute auto scaling** slider to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous Database details** page is re-displayed.
 
     ![Remove the checkbox for ECPU auto scaling.](images/disable-auto-scaling.png " ")
 
@@ -98,7 +98,7 @@ In the **Provision Autonomous Database** lab, you created the **ADW\_Finance\_Ma
 
   ![Consumer Group drop-down menu showing HIGH highlighted.](./images/consumer-group-options.png " ")
 
-## Task 2: Create the `test_proc` Procedure to Generate the Test Workload
+## Task 2: Create the test_proc Procedure to Generate the Test Workload
 
 In this task, you run a script that will:
 - Create the procedure **`test_proc`** for the workload used in the test.
@@ -220,7 +220,7 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
   ![View created objects.](./images/view-created-objects.png =50%x*)
 
-## Task 3: Run the `test_proc` Procedure Concurrently in Three Worksheets
+## Task 3: Run the test_proc Procedure Concurrently in Three Worksheets
 
 >_**Important:** The amount of time it takes you to run the queries twice might be different than the results shown in this task. In addition, the results will be different depending on whether you are running the queries using your own tenancy or the LiveLabs Sandbox hosted environment._
 
@@ -252,16 +252,14 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
   ![Execute command, query 3.](./images/run-query-3.png " ")
 
-6. While the 3 procedure instances are running concurrently on a 4 ECPU system with auto scaling disabled, navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In **Performance Hub**, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure. _Note this procedure is executing multiple query runs, so expect to see several queries running when you view Performance Hub. Monitor these queries to completion, it will take a few minutes._. Initially, the status of each running procedure in each worksheet is represented by the **running** blue circular icon.
+6. While the 3 procedure instances are running concurrently on a **`4`** ECPU system with auto scaling disabled, navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In **Performance Hub**, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure. _Note this procedure is executing multiple query runs, so expect to see several queries running when you view Performance Hub. Monitor these queries to completion, it will take a few minutes._. Initially, the status of each running procedure in each worksheet is represented by the **running** blue circular icon.
 
-    ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-with-auto-scaling-disabled.png " ")
+    ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-auto-scaling-disabled.png " ")
 
     While monitoring the running queries, you may click the **Refresh** button at the top right of the page until they complete successfully, which is represented by the green circle with a checkmark.
 
-    Since each procedure ran twice in each worksheet, there are a total of six rows. As you can see, our test runs for approximately 2.17 minutes. Click **Close** to exit Performance Hub.
+    Since each procedure ran twice in each worksheet, there are a total of six rows. As you can see, our test runs for approximately **`1.47`** minutes. Click **Close** to exit Performance Hub.
   
-    ![In Performance Hub, view the completed queries.](./images/completed-queries-with-auto-scaling-disabled.png " ")
-
 7. Return to your SQL Developer Web worksheets. Make sure all 3 tests in the worksheets indicate that the queries have **executed** completely. You can see if the test procedure is still running, completed successfully or failed in the worksheet's status at the bottom of the page. If you see the message **Code execution failed**, ignore that error. This can be due to a timeout if your query runs longer than expected. You will check the query execution status using **Performance Hub**.
 
     >**Note:** If your test procedure fails after running for a while, you may also be behind a VPN that is timing out your query. You may need to disconnect from that VPN to run this test.
@@ -293,21 +291,21 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
     ```
 
 9. Review the results of running the test. In our example:
-    - The average time each query ran was **128.7** seconds.
-    - The total time the test ran was **262.8** seconds.
+    - The average time each query ran was **`78.8`** seconds.
+    - The total time the test ran was **`158.5`** seconds.
 
-      > **Note:** The **`CPU_COUNT`** value is equivalent to the number of ECPUs available; therefore, for this test, using **`4`** ECPUs, the **`CPU_COUNT`** value is **`4`**.
+      > **Note:** For **`4`** ECPUs, the **`CPU_COUNT`** value is **`2`**.
 
-    ![Screenshot shows the results of running the test.](./images/test-one-results.png " ")
+    ![Screenshot shows the results of running the test.](./images/test-one-results-new.png " ")
 
   In the next tasks, let's see if auto scaling reduces query time and increases CPU and IO usage.
 
 ## **Test 2 - Auto Scaling Enabled, Providing 3x the Amount of CPU and IO Resources**
-In tasks 4 through 6, you will enable auto scaling and then execute the queries in your 3 SQL Developer Web sessions. Auto scaling will allow your running sessions to use up to **3x more ECPUs**, reducing your execution times significantly.
+In **task 4 through task 6**, you will enable auto scaling and then execute the queries in your 3 SQL Developer Web sessions. Auto scaling will allow your running sessions to use up to **3x more ECPUs**, reducing your execution times significantly.
 
 ## Task 4: Enable Auto Scaling
 
-1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous Database details page, click **Manage resource allocation**, and select the **Compute auto scaling** checkbox to **re-enable** auto scaling. Click **Apply** and wait for the database to update.
+1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous Database details page, click **Manage resource allocation**, and enable the **Compute auto scaling** slider to **re-enable** auto scaling. Click **Apply** and wait for the database to update.
 
     ![Click the checkbox to re-enable auto scaling.](images/enable-auto-scaling.png " ")
 
@@ -328,6 +326,10 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 2. While the procedures are running, view the monitored SQL in **Performance Hub**.  Keep clicking the **Refresh** button until the execution is completed successfully.
 
     ![Monitored SQL shows three queries executing and consuming less database time.](images/monitored-sql-while-three-procedures-running-with-auto-scaling.png " ")
+
+    New one:
+
+      ![Monitored SQL shows three queries executing and consuming less database time.](images/monitored-sql-while-three-procedures-running-auto-scaling-new.png " ")
 
     Notice, after enabling Auto Scaling and immediately getting access to 3x the amount of CPU and IO, the queries run much faster.
 
@@ -365,26 +367,26 @@ In tasks 4 through 6, you will enable auto scaling and then execute the queries 
 
 2. Let's examine the improved performance after enabling auto scaling. **Test 1** had auto scaling **disabled** and **Test 2** had auto scaling **enabled**:
 
-  ![Screenshot shows the improved performance of Test 2 after enabling auto scaling.](images/test-two-results.png " ")
+  ![Screenshot shows the improved performance of Test 2 after enabling auto scaling.](images/test-two-results-new.png " ")
 
-    These numbers look great! After enabling auto scaling we see that:
+  These numbers look great! After enabling auto scaling we see that:
 
-    - The number of ECPUs available to the database jumps by 3x; in our example, from 4 ECPUs to 12 ECPUs.
+  - The number of ECPUs available to the database jumps by 3x.
 
-        >**Note:** The **`CPU_COUNT`** value is equivalent to the number of available ECPUs; therefore, for this test, we see the **`CPU_COUNT`** value jumps from **`4`** to **`12`**.
+  >**Note:** For **`4`** ECPUs you should expect to see **`2`** **`CPU_COUNT`**; therefore, for this test, we see the **`CPU_COUNT`** value jumps from **`2`** to **`6`**.
 
-    - All 3 running sessions now had access to 3x the amount of CPU and IO.
+  - All 3 running sessions now had access to 3x the amount of CPU and IO.
 
-    - Consequently, the average query time was reduced from 128.7 seconds to 63.1 seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently was reduced from 262.8 seconds to 131 seconds.
+  - Consequently, the average query time was reduced from **`78.8`** seconds to **`45.4`** seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently was reduced from **`158.5`** seconds to **`93.7`** seconds.
 
 3. Return to your **Autonomous Database details** page and click **Performance Hub**. Move your mouse cursor in the **Activity** panel above the SQL Monitoring panel, and drag the rectangle horizontally across to cover the portion of the timeline that indicates your recent query activity. This will fill in the **ASH Analytics** panel at the bottom, with information from the two completed tests.
 
     ![Screenshot of Performance Hub Activity panel showing ASH Analytics panel.](./images/drag-rectangle-to-cover-period-of-queries.png " ")
 
-4. Scroll-down the page and then click the **ASH Analytics** tab. In the **Ash Dimension** drop-down list, select **Top Dimensions > Wait Class**. The **Average Active Sessions** charts by Wait Class before and after auto scaling is enabled are displayed. Since there are 12 ECPUs available to the running queries when auto scaling was enabled, we now see:
+4. Scroll-down the page and then click the **ASH Analytics** tab, if not already selected. In the **Ash Dimension** drop-down list, select **Top Dimensions > Wait Class**. The **Average Active Sessions** charts by Wait Class before and after auto scaling is enabled are displayed. Since there are 6 ECPUs available to the running queries when auto scaling was enabled, we now see:
 - The **inflated I/O waits** (in blue) due to the unavailability of resources was reduced significantly.
 - Consequently, the workload becomes more efficient (CPU-bound) and is able to utilize more CPU (in dark green) reducing the average time spent on running each query.
-- The **Scheduler waits** (in light green) on CPU/IO resources almost entirely disappears.
+- The **Scheduler waits** (in light green) on CPU/IO resources almost entirely disappears. In the following screen capture, we chose the **Area Chart** from the **View Option** section.
 
   ![Screenshot showing Average Active Sessions.](images/graphs-by-wait-class.png " ")
 
@@ -408,4 +410,4 @@ You may now **proceed to the next lab**.
 - **Contributors:**
     * John Zimmerman, Real World Performance Team
     * Keith Laker, ADB Product Management
-- **Last Updated By/Date** - Lauran K. Serhal, January 2025
+- **Last Updated By/Date** - Lauran K. Serhal, September 2025

@@ -28,7 +28,7 @@ In this lab, you will:
 - Examine how to create a clone from backup as a cross-region clone.
 - Create a long-term backup.
 
-## Task 1: Clone a Database from the Currently Running Primary database
+## Task 1: Clone a Database from the Currently Running Primary Database
 
 1. Return to the **Autonomous Database details** page of your source database. From the **More actions** drop-down list, select **Create clone**.
 
@@ -52,15 +52,34 @@ In this lab, you will:
 
         ![Clone basic information.](images/choose-clone-basic-information.png)
 
-5. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database.
+5. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database as follows:
 
-    ![The remaining sections.](images/remaining-sections.png)
+    * **Workload type:** Data Warehourse.
+    * **Choose database version:** `23ai`.
+    * **ECPU count:** `2`.
+    * **Compute auto scaling:** Enabled.
+    * **Storage:** `2`.
+    * **Password:** `Training4ADW`.
+    * **Access type:** Secure access from everywhere.
+   
+7. Drill-down on **Advanced options**.
 
-6. Click **Create Autonomous Database clone**. The initial state of the database instance is **PROVISIONING**.
+    ![Drill-down on Advanced options.](images/drill-down-advanced-options.png =55%x*)
+
+8. Drill-down on **Tools**, and then click **Edit tool configuration**.
+
+    ![Drill-down on Tools.](images/drill-down-tools.png)
+
+9. In the **Configure tools** panel, scroll-down to the **Data Lake Accelerator** section, check the status of the slider. If it is enabled, disable it and then click **Apply**. If it is already disabled, click **Cancel**.
+
+    ![Disable slider and then click apply.](images/disable-slider-and-apply.png)
+
+
+10. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-7. When the clone finishes provisioning, review the clone information in the **Autonomous Database details** page.
+11. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous Database details** page.
 
     ![See clone information in Autonomous Database details page](images/see-clone-info-in-autonomous-details-page.png)
 
@@ -70,6 +89,10 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
 1. Return to the **Autonomous Database details** page of your source database, if you are not already there. From the **More actions** drop-down list, select **Create clone**. The **Create Autonomous Database clone** dialog is displayed.
 
+    ![Click source database](images/click-source-db.png)
+
+    ![Click more > create clone](images/click-create-clone.png)
+
 2. In the **Choose a clone type** section, accept the default **Full clone** selection.
 
     ![Choose Full Clone as clone type](images/choose-full-clone.png)
@@ -78,7 +101,7 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
     ![Select Clone from a backup](images/select-clone-from-a-backup.png)
 
-4. In the **Backup clone type** area, you can choose a **Point in time clone**, **Select the backup from a list**, or simply choose the **Latest backup timestamp**. Click **Select the backup from a list**. A list of backups appear. Choose one of the listed backups to create the clone.
+4. In the **Backup clone type** section, click **Select the backup from a list**. A list of your available backups appear. Choose one of the listed backups to create the clone.
 
    ![Select Clone from a backup](images/select-clone-from-backup.png)
 
@@ -92,17 +115,31 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
         ![Provide information and click Create Autonomous Database clone](images/provide-information-to-create-clone-backup.png)
 
-6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database.
+6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database as follows:
 
-    ![The remaining sections.](images/remaining-sections.png)
+    * **Workload type:** Data Warehourse.
+    * **Choose database version:** `23ai`.
+    * **ECPU count:** `2`.
+    * **Compute auto scaling:** Enabled.
+    * **Storage:** `2`.
+    * **Password:** `Training4ADW`.
+    * **Access type:** Secure access from everywhere.
+   
+7. Drill-down on **Advanced options**.
 
-7. Click **Create Autonomous Database clone**.
+8. Drill-down on **Tools**, and then click **Edit tool configuration**.
+
+9. In the **Configure tools** panel, scroll-down to the **Data Lake Accelerator** section, check the status of the slider. If it is enabled, disable it and then click **Apply**. If it is already disabled, click **Cancel**.
+
+    ![Disable slider and then click apply.](images/disable-slider-and-apply.png)
+
+10. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
+
+    ![Clone provisioning](images/clone-provisioning.png)
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-8. When the clone finishes provisioning, review the clone information in the **Autonomous Database details** page.
-
-    ![See clone information in Autonomous Database details page](images/see-clone-information-in-details-page-2.png)
+11. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous Database details** page.
 
 ## Task 3: Create Long-term Backups
 
@@ -111,38 +148,6 @@ In today's world, regulations, audits, and compliance requirements often demand 
 It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous Database, the process of long-term backups is completely automated and managed by Oracle.
 
 > **Note:** For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous Database** in this workshop.
-
-<!---
-
-1. Scroll down the Autonomous Database details page for your database and select **Backups** under your database's **Resources** section. You will see the **Create long-term backup** button.
-
-    ![Select Backups in the Resources section of Autonomous Database details page](images/select-backups.png)
-
-2. The **Create long-term backup** dialog appears. Backups on Autonomous Database are completely automated. Provide the following information:
-    - When you would like a long-term backup to be taken (Immediately, at a scheduled time in the future, or repeatedly at your preferred cadence)
-    - How long you would like us to keep a long-term backup for you (that is, the backup retention period). While your existing automatic backups have a backup retention period of 60 days, long-term backups can be retained starting from 90 days all the way up to 10 years.
-
-    You may also automate long-term backups at your own, personalized cadence by calling long-term backup CLI APIs in your scripts or via Terraform.
-
-    ![Specify the long-term backup details](images/specify-long-term-backup-details.png)
-
-    Click **Create**.
-
-3. When you click Create, Oracle starts an asynchronous job to create a long-term backup for you in the background, so your database is not held up waiting for the backup to complete. You can track this long-term backup and other lifecycle management (LCM) operations triggered on your database by clicking the **Work Requests** tab.
-
-    ![Click the Work requests tab](images/click-work-requests.png)
-
-4. When your long-term backup is available, you will see it in your list of backups. Each long-term backup is a standalone backup that can be managed individually. You may edit the retention period of a long-term backup, delete it if you no longer need it, or clone from the backup when you need an instantiated database copy from that long-term backup.
-
-    It is good practice to test your long-term backup after creating it by cloning from it, to ensure your backed up data is as required.
-
-    ![Test your long-term backup by cloning it](images/test-long-term-backup-by-cloning-it.png)
-
-5. From the Autonomous Database details page, you can view the details of any scheduled long-term backups and you can edit a long-term backup schedule. Note that the  console also presents the size of backups you are paying for - While 60 day automatic backups are included with OCPU-based databases, long-term backups will be billed additionally at your database storage rate.
-
-    ![View scheduled long-term backups on the Autonomous Database details page](images/view-scheduled-long-term-backups.png)
-
--->
 
 You may now **proceed to the next lab**.
 
@@ -154,4 +159,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Contributor:** Nilay Panchal, ADB Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

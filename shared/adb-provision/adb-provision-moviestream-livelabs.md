@@ -23,7 +23,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the Get Started section in the Contents menu on the left.
+- This lab requires completion of the **Get Started** lab in the **Contents** menu on the left.
 
 ## Task 1: Choose Autonomous Database from the OCI Services Menu
 [](include:adb-goto-service-body.md)
@@ -40,5 +40,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, May 2024
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025
 - **Built with Common Tasks**
