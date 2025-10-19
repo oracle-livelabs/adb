@@ -1,8 +1,8 @@
-# Apply Auto Scaling on an Autonomous Database
+# Apply Auto Scaling on an Autonomous AI Database
 
 ### **Introduction**
 
-In this lab, you will learn the benefits of auto scaling an Oracle Autonomous Database. This lab uses the existing SSB schema in Autonomous Data Warehouse (ADW). The lab executes a PL/SQL procedure which loops through executing a query three times. You will be running this procedure from three SQL Developer Web worksheet sessions concurrently to see how the CPU is utilized with and without auto scaling.
+In this lab, you will learn the benefits of auto scaling an Oracle Autonomous AI Database. This lab uses the existing SSB schema in Autonomous AI Database Lakehouse. The lab executes a PL/SQL procedure which loops through executing a query three times. You will be running this procedure from three SQL Developer Web worksheet sessions concurrently to see how the CPU is utilized with and without auto scaling.
 
 Estimated time: 30 minutes
 
@@ -19,7 +19,7 @@ When you enable auto scaling, if your workload requires additional CPU and IO re
 
 ![Conceptual illustration of auto scaling](./images/auto-scaling-symbol.jpg " ")
 
-When you create an Autonomous Database, the auto scaling checkbox is enabled by default. After the database is created, you can use the **Manage resource allocation** button on the **Autonomous Database details** page to disable or enable auto scaling.
+When you create an Autonomous AI Database, the auto scaling checkbox is enabled by default. After the database is created, you can use the **Manage resource allocation** button on the **Autonomous AI Database details** page to disable or enable auto scaling.
 
 If your organization performs intensive queries at varied times, auto scaling will ramp up and ramp down CPU resources when needed.
 
@@ -44,11 +44,11 @@ The **business case** we want to answer here is to **summarize orders by month a
 
 In **task 1 through task 3**, with auto scaling **disabled**, you will have 3 SQL Developer Web sessions executing queries sharing the CPU and IO resources, and you will examine query times.
 
-## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your ADW Database
+## Task 1: Disable Auto Scaling and Create Four Connections in SQL Developer Web to your Autonomous AI Database
 
-In the **Provision Autonomous Database** lab, you created the **`ADW_Finance_Mart`** Autonomous Data Warehouse database. In the previous **Scale for Performance** lab, you increased the ECPU count from **`2`** to **`16`** ECPUs.
+In the **Provision Autonomous AI Database** lab, you created the **`ADW_Finance_Mart`** Autonomous AI database. In the previous **Scale for Performance** lab, you increased the ECPU count from **`2`** to **`16`** ECPUs.
 
-1. You will select the ECPU count as **`4`**, and then disable **Compute auto scaling** slider. Go to the **Autonomous Database details** page, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** to **`4`**. Next, deselect the **Compute auto scaling** slider to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous Database details** page is re-displayed.
+1. In this lab, you will decrease the ECPU count to **`4`**, and then disable **Compute auto scaling** slider. Go to the **Autonomous AI Database details** page. Click the **More actions** drop-down list, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, change the ECPU count from **`16`** to **`4`**. Next, deselect the **Compute auto scaling** slider to disable auto scaling, if you have not done so already. Click **Apply**. The **Autonomous AI Database details** page is re-displayed.
 
     ![Remove the checkbox for ECPU auto scaling.](images/disable-auto-scaling.png " ")
 
@@ -252,7 +252,7 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
   ![Execute command, query 3.](./images/run-query-3.png " ")
 
-6. While the 3 procedure instances are running concurrently on a **`4`** ECPU system with auto scaling disabled, navigate back to the **Autonomous Database details** page, and then click **Performance Hub**. In **Performance Hub**, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure. _Note this procedure is executing multiple query runs, so expect to see several queries running when you view Performance Hub. Monitor these queries to completion, it will take a few minutes._. Initially, the status of each running procedure in each worksheet is represented by the **running** blue circular icon.
+6. While the 3 procedure instances are running concurrently on a **`4`** ECPU system with auto scaling disabled, navigate back to the **Autonomous AI Database details** page, and then click **Performance Hub**. In **Performance Hub**, click the **SQL Monitoring** tab, and then look at the Monitored SQL to see that each worksheet is running your procedure. _Note this procedure is executing multiple query runs, so expect to see several queries running when you view Performance Hub. Monitor these queries to completion, it will take a few minutes._. Initially, the status of each running procedure in each worksheet is represented by the **running** blue circular icon.
 
     ![In Performance Hub click the SQL Monitoring tab.](./images/sql-monitoring-during-query-auto-scaling-disabled.png " ")
 
@@ -305,7 +305,7 @@ In **task 4 through task 6**, you will enable auto scaling and then execute the 
 
 ## Task 4: Enable Auto Scaling
 
-1. Enable auto scaling, to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous Database details page, click **Manage resource allocation**, and enable the **Compute auto scaling** slider to **re-enable** auto scaling. Click **Apply** and wait for the database to update.
+1. Enable auto scaling to allow you to use 3X the amount of base CPU and IO. Go back to the Autonomous AI Database details page. Click the **More actions** drop-down list, and then click **Manage resource allocation**. In the **Manage resource allocation** dialog box, enable the **Compute auto scaling** slider to **re-enable** auto scaling. Click **Apply** and wait for the database to update.
 
     ![Click the checkbox to re-enable auto scaling.](images/enable-auto-scaling.png " ")
 
@@ -410,4 +410,4 @@ You may now **proceed to the next lab**.
 - **Contributors:**
     * John Zimmerman, Real World Performance Team
     * Keith Laker, ADB Product Management
-- **Last Updated By/Date** - Lauran K. Serhal, September 2025
+- **Last Updated By/Date** - Lauran K. Serhal, October 2025

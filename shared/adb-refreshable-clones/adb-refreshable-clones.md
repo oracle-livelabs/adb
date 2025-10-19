@@ -1,10 +1,10 @@
-﻿# Create Refreshable Clones in Autonomous Database
+﻿# Create Refreshable Clones in Autonomous AI Database
 
 _**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous AI Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
   ![ALT text is not available for this image](images/2673172546.jpg)
 
@@ -31,7 +31,7 @@ Estimated Lab Time: 15 minutes
 
 Watch the video below for a quick walk-through of the lab.
 
-[Create Refreshable Clones in Autonomous Database](videohub:1_f2xmkhp9)
+[Create Refreshable Clones in Autonomous AI Database](videohub:1_f2xmkhp9)
 
 ### Objectives
 
@@ -47,7 +47,7 @@ In this lab, you'll:
 
 ## Task 1: Create a Table in the Source Database
 
-1. On the **Autonomous Databases** page, click the **ADW Finance Mart** database instance that you created in the **Provision Autonomous Database** lab. Alternatively, you can create a new database as your source. You will insert a line of data into this source database before you clone it.
+1. On the **Autonomous AI Databases** page, click the **ADW Finance Mart** database instance that you created in the **Provision Autonomous AI Database** lab. Alternatively, you can create a new database as your source. You will insert a line of data into this source database before you clone it.
 
   ![Click the database instance](images/click-instance.png)
 
@@ -69,31 +69,31 @@ In this lab, you'll:
 
     ![Create and populate table](images/create-populate-table.png " ")
 
-    >**Note:** In our example, the code was executed at `2:54:40 PM UTC` time.
+    >**Note:** In our example, the code was executed at **`1:10:48 PM UTC time`**.
 
-## Task 2: Create a Refreshable Clone from the Autonomous Database Instance
+## Task 2: Create a Refreshable Clone from the Autonomous AI Database Instance
 
 Now that you have created a table in the source database and populated it with a row of data, you will create a refreshable clone from the source database.
 
-1. Return to the **Autonomous Database details** page of your source database. Click the **More actions** drop-down menu, and then select **Create clone**.
+1. Return to the **Autonomous AI Database details** page of your source database. Click the **More actions** drop-down menu, and then select **Create clone**.
 
 2. For the **Clone type**, accept the default **Full Clone**. Enable the **Refreshable clone** slider. A refreshable clone must be refreshed every 7 days or less; otherwise, it falls too far out of sync from the source and can no longer be refreshed.
 
   ![Select full clone and refreshable option](images/refreshable-clone.png " ")
 
-3. In the **Basic information for the Autonomous Database clone** section, accept the currently selected region and compartment. Enter **`refreshclone`** for the display and database names.
+3. In the **Basic information for the Autonomous AI Database clone** section, accept the currently selected region and compartment. Enter **`refreshclone`** for the display and database names.
 
   ![Specify the clone type and basic information](images/clone-basic-information.png " ")
 
-3. In the **Database configuration** section, accept the default number of **ECPU Count**, `4`, for your refreshable clone. There is **no storage selection** necessary. Since this is a read-only clone that only brings in data from its source database, the amount of storage selected in TB is automatically the same as that of the source.
+4. In the **Database configuration** section, accept the default number of **ECPU Count**, `4`, for your refreshable clone. There is **no storage selection** necessary. Since this is a read-only clone that only brings in data from its source database, the amount of storage selected in TB is automatically the same as that of the source.
 
-4. There is also no Admin password option for the refreshable clone, as that is taken from the source when refreshed.
+5. There is also no Admin password option for the refreshable clone, as that is taken from the source when refreshed.
 
-5. In the **Choose network access** section, select **Secure access from everywhere**.
+6. In the **Choose network access** section, select **Secure access from everywhere**.
 
-6. In the **Provide contacts for operational notifications and announcements** section, provide a contact email address to receive operational notifications and announcements.
+7. In the **Provide contacts for operational notifications and announcements** section, provide a contact email address to receive operational notifications and announcements.
 
-7. Click **Clone**. The initial state is **`PROVISIONING`**. Once the clone is provisioned, you can see useful clone information such as the **Clone source database** that the clone is attached to and the **Refresh point** timestamp of the source from which the clone was refreshed.
+8. Click **Clone**. The initial state is **`PROVISIONING`**. Once the clone is provisioned, you can see useful clone information such as the **Clone source database** that the clone is attached to and the **Refresh point** timestamp of the source from which the clone was refreshed.
   
   ![The refreshable clone is provisioned](images/referhable-clone-provisioned.png " ")
 
@@ -118,7 +118,7 @@ Now that you have created a table in the source database and populated it with a
 
 You have proven that the refreshable clone contains the source database's table with one row of data. Now, you will add a second row of data to the source database, and learn how to refresh the clone to pick up that second row.
 
-1. Switch back to the **source database's** SQL worksheet. This will be the **`ADW_Finance_Mart`** database instance that you created in the workshop's **Provision an Autonomous Database** lab, or another database that you might be using as the source.
+1. Switch back to the **source database's** SQL worksheet. This will be the **`ADW_Finance_Mart`** database instance that you created in the workshop's **Provision an Autonomous AI Database** lab, or another database that you might be using as the source.
 
   ![Navigate to the source database SQL Worksheet](images/source-databae-sql-worksheet.png " ")
 
@@ -161,7 +161,7 @@ You have proven that the refreshable clone contains the source database's table 
 
 You will now learn how easy it is to refresh the clone with the new data you just added to the source.
 
-1. Return to the **Autonomous Database details** page of your **`refreshclone`** clone database. Scroll-down to the **Clone information** section.
+1. Return to the **Autonomous AI Database details** page of your **`refreshclone`** clone database. Scroll-down to the **Clone information** section.
 
     ![Navigate to the refreshclone details page](images/navigate-refreshclone.png)
 
@@ -169,7 +169,7 @@ You will now learn how easy it is to refresh the clone with the new data you jus
 
   ![Click Actions > Refresh](images/click-actions-refresh.png " ")
 
-3. The **Refresh Clone** dialog box prompts you for a refresh point date and time of the source database to which you want to refresh. This makes refreshes consistent and intelligible, as it definitively refreshes to an exact timestamp of the source. For example, if you inserted the second row into the source at about `16:06 UTC`, you could input `16:11 UTC` as your refresh point. After you enter your refresh point timestamp, click **Refresh**.
+3. The **Refresh Clone** dialog box prompts you for a refresh point date and time of the source database to which you want to refresh. This makes refreshes consistent and intelligible, as it definitively refreshes to an exact timestamp of the source. For example, if you inserted the second row into the source at about `1:37 PM UTC`, you could input `1:47 PM UTC` as your refresh point. After you enter your refresh point timestamp, click **Refresh**.
 
   ![The Refresh Clone dialog box is displayed](images/refresh-clone-dialog-box.png " ")
 
@@ -177,11 +177,11 @@ You will now learn how easy it is to refresh the clone with the new data you jus
 
     ![Status is updating](images/refresh-status-updating.png)
 
-5. Once the refresh is completed, you can see exactly what timestamp of the source the clone has been refreshed to in the clone's **Autonomous Database details** page.
+5. Once the refresh is completed, you can see exactly what timestamp of the source the clone has been refreshed to in the clone's **Autonomous AI Database details** page.
 
     ![The clone refresh is complete](images/clone-refresh-complete.png)
 
-6. In the clone's SQL worksheet, query the **refreshclonetests** table. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+6. In the clone's SQL worksheet, query the **refreshclonetests** table. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -200,11 +200,10 @@ You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-* [Using Refreshable Clones with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-refreshable-clone.html#GUID-C49DA251-D347-491B-9C50-3D42EB3F93D9) 
+* [Using Refreshable Clones with Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/autonomous-refreshable-clone.html#GUID-C49DA251-D347-491B-9C50-3D42EB3F93D9) 
 
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Contributor:**
-    * Nilay Panchal, ADB Product Management
+- **Contributor:** Nilay Panchal, ADB Product Management
 - **Last Updated By/Date:**  Lauran K. Serhal, October 2025

@@ -5,10 +5,10 @@
 In this lab, you will explore the monitoring capabilities available for your Oracle Autonomous Database (ADB).
 
 Oracle provides several facilities for monitoring the performance and activity of your autonomous database. Among them are:
--   **Autonomous Database Metrics** (at bottom of Autonomous Database details page)
--   **Database Actions - Database Dashboard** (accessible from Database Actions Launchpad)
--   **Performance Hub** (accessible on Autonomous Database details page or from Database Actions Launchpad)
--   **OCI Monitoring Console** (accessible from Oracle Cloud Interface (OCI) navigation menu)
+-   **Autonomous Database Metrics**
+-   **Database Actions - Database Dashboard**
+-   **Performance Hub**
+-   **OCI Monitoring Console**
 
 The ADB user interface provides dashboards to monitor the real-time and historical CPU and storage utilization, as well as database activity, like the number of running or queued statements. It also provides Real-Time SQL Monitoring to look at current and past long-running SQL statements in your instance and allows you to cancel long-running queries or set thresholds for ADW or ATP to automatically cancel them for you.
 
@@ -65,7 +65,7 @@ The **Monitoring** tab displays an initial set of 8 graphs to examine database m
 
 You can also view this monitoring information with more detailed tools provided in the **Database Actions Launchpad**.
 
-1. Go back to your Autonomous Database details page. Click the **Database actions** drop-down list, and then click **View all database actions**.
+1. On the Autonomous Database details page, click the **Database actions** drop-down list, and then click **View all database actions**.
 
     ![Click View all database actions.](images/click-view-all-database-actions.png " ")
 
@@ -188,4 +188,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, September 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

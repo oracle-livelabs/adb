@@ -2,8 +2,8 @@
 
 ## Introduction
 
-This lab shows how to use the `Flashback Time Travel` feature on Oracle Autonomous Database.
-In this lab you will learn to work with `Flashback Time Travel` for a table in an Oracle Autonomous Database (Autonomous Data Warehouse [ADW] and Autonomous Transaction Processing [ATP]) on Oracle Cloud Interface.
+This lab shows how to use the `Flashback Time Travel` feature on Oracle Autonomous AI Database.
+In this lab you will learn to work with `Flashback Time Travel` for a table in an Oracle Autonomous AI Database (Lakehouse and Autonomous Transaction Processing) on Oracle Cloud Interface.
 
 Estimated Lab Time: 30 minutes (25 minutes if you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment)
 
@@ -29,7 +29,7 @@ In this lab, you will:
 
 This lab assumes you have:
 
-- Performed the previous lab on provisioning an Oracle Autonomous Database instance.
+- Performed the previous lab on provisioning an Oracle Autonomous AI Database instance.
 - Performed the previous lab on Work with Free Sample Data Sets.
 - You must be logged an as the `ADMIN` user or have `FLASHBACK ARCHIVE` privilege on `FLASHBACK_ARCHIVE`.
 
@@ -37,9 +37,9 @@ This lab assumes you have:
 
 To complete the subsequent tasks you need to use SQL Worksheet.
 
-1. Return to your SQL Worksheet. On the **Autonomous Databases** page, click the **`ADW_Finance_Mart`** database instance that you created in **Lab 1: Provision Autonomous Database**. Click the **Database actions** drop-down list, and then select **SQL**.
+1. Return to your SQL Worksheet. On the **Autonomous AI Databases** page, click the **`ADW_Finance_Mart`** database instance that you created in **Lab 1: Provision Autonomous AI Database**. Click the **Database actions** drop-down list, and then select **SQL**.
 
-   ![Navigate to the SQL Worksheet](images/navigate-sql-worksheet.png " ")
+   ![Navigate to the SQL Worksheet](images/click-sql.png " ")
 
    The SQL Worksheet is displayed.
 
@@ -338,7 +338,7 @@ In this task you will learn about the steps to purge `Flashback Time Travel`.
 ## Want to Learn More?
 
 * [Use Flashback Time Travel](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/flashback-time-travel-autononomous.html#GUID-A98E1F8B-FAE4-4FFF-955D-3A0E5F8EBC4A)
-- [How to Use Flashback Time Travel in Autonomous Database](https://blogs.oracle.com/datawarehousing/post/flashback-time-travel-autonomous-database#:~:text=Retention%20of%20Historical%20Changes%3A%20Flashback,the%20timestamp%20of%20each%20change.).
+- [How to Use Flashback Time Travel in Autonomous AI Database](https://blogs.oracle.com/datawarehousing/post/flashback-time-travel-autonomous-database#:~:text=Retention%20of%20Historical%20Changes%3A%20Flashback,the%20timestamp%20of%20each%20change.).
 
 ## Acknowledgments
 
