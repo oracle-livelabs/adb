@@ -24,7 +24,7 @@ Let's examine where to find available backups of your Autonomous AI Database.
 
 1. On the **Autonomous AI Database** details page, scroll down to the **Backup** section, and note the backup information.
 
-    ![Examine the Backup section of Autonomous Database details page](images/examine-backup-section-details-page.png " ")
+    ![Examine the Backup section of Autonomous AI Database details page](images/examine-backup-section-details-page.png " ")
 
 2. At the top of the **Autonomous AI Database** details page, scroll to the right and click the **Backups** tab. This tab lists the backups that have been automatically created for you daily.
 
@@ -76,7 +76,7 @@ You can restore any of the daily backups listed, or you can restore from a point
 
 In today's world, regulations, audits, and compliance requirements often demand long-term retention of data. For instance, in the financial or healthcare sector, you may have to keep transactional and patient data for several years, if not decades. You may need long-term backups for compliance and regulatory requirements, legal and contractual obligations, historical analysis, or for business continuity in response to data loss.
 
-It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle AI Autonomous Database, the process of long-term backups is completely automated and managed by Oracle.
+It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous AI Database, the process of long-term backups is completely automated and managed by Oracle.
 
 Using the **long-term backup** feature, you can create a long-term backup as a one-time backup or as scheduled long-term backup. You select the retention period for long-term backups in the range of a minimum of 3 months and a maximum of 10 years.
 
@@ -84,7 +84,7 @@ Autonomous AI Database takes scheduled long-term backups automatically according
 
 1. At the top of the **Autonomous AI Database** details page, click the **Backups** tab. This tab lists the backups that have been automatically created for you daily. Click **Create long-term backup**.
 
-    ![Select Backups in the Resources section of Autonomous Database details page](images/click-create-long-term-backup.png)
+    ![Select Backups in the Resources section of Autonomous AI Database details page](images/click-create-long-term-backup.png)
 
 2. The **Create long-term backup** panel is displayed. Backups on Autonomous AI Database are completely automated. Specify the following:
     * **Retention period Section:** Accept the default **`1`** Year.
@@ -111,7 +111,7 @@ Autonomous AI Database takes scheduled long-term backups automatically according
 
 5. From the **Autonomous AI Database details** page, you can view the details of any scheduled long-term backups and you can edit a long-term backup schedule. Note that the console also presents the size of backups you are paying for - While 60 day automatic backups are included with ECPU-based databases, long-term backups will be billed additionally at your database storage rate.
 
-    ![View scheduled long-term backups on the Autonomous Database details page](images/view-scheduled-long-term-backups.png)
+    ![View scheduled long-term backups on the Autonomous AI Database details page](images/view-scheduled-long-term-backups.png)
 
 You may now **proceed to the next lab**.
 

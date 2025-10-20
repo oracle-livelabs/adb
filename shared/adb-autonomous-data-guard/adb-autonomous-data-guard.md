@@ -4,7 +4,7 @@ _**Important:** This lab uses features which are not available on Oracle's Alway
 
 ## Introduction
 
-In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database Serverless.
+In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous AI Database Serverless.
 - You will practice enabling Autonomous Data Guard (AuDG), using a standby database.
 - You will learn about Backup-Based Disaster Recovery, which uses a backup copy of your primary database.
 
@@ -25,7 +25,7 @@ Watch the video below for a quick walk-through of the lab.
 * Learn how to specify the standby database in the same local region as the primary database, or in a remote region
 * Learn how Backup-Based Disaster Recovery works
 
->**Note:**  This lab uses Autonomous Data Guard, which is **not available** with Oracle's Always Free databases. You can run the lab by reserving a hosted Livelabs environment, or by signing up for free trial credits, or by using your own tenancy. Autonomous Data Guard is available only in Autonomous Database instances 19c and above.
+>**Note:**  This lab uses Autonomous Data Guard, which is **not available** with Oracle's Always Free databases. You can run the lab by reserving a hosted Livelabs environment, or by signing up for free trial credits, or by using your own tenancy. Autonomous Data Guard is available only in Autonomous AI Database instances 19c and above.
 
 ### Basic Disaster Recovery Terminology
 
@@ -56,7 +56,7 @@ Watch the video below for a quick walk-through of the lab.
 
 ![Diagram showing primary and standby](./images/primary-standby-db.png)
 
-Autonomous Data Guard monitors the primary database and if the Autonomous Database instance goes down, then the standby instance assumes the role of the primary instance.
+Autonomous Data Guard monitors the primary database and if the Autonomous AI Database instance goes down, then the standby instance assumes the role of the primary instance.
 
 Unforeseen database failures due to disasters can happen at any time. Autonomous Data Guard offers the highest level of protection for an enterprise's data availability and system performance requirements.
 
@@ -93,7 +93,7 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 ## Task 1: Enable Autonomous Data Guard
 
 >**IMPORTANT:**    
-_If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 2 ECPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient ECPUs and storage, you can skip this step._
+_If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 2 ECPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous AI Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient ECPUs and storage, you can skip this step._
 
 1. On your **Autonomous AI Database details** page, click the **Disaster recovery** tab.
 
@@ -111,7 +111,7 @@ _If you are running this workshop in a LiveLabs hosted sandbox, please change th
 
     ![Select the Autonomous Data Guard button and click Submit](./images/select-autonomous-data-guard-and-update.png)
 
-4. The Autonomous Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
+4. The Autonomous AI Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
 
     >**Note**: While you provision a new standby database, the primary database is available for read/write operations. Enabling Autonomous Data Guard is non-blocking; there is no downtime on the primary database.
 
@@ -153,7 +153,7 @@ _If you are running this workshop in a LiveLabs hosted sandbox, please change th
 
 11. Go back to the **Autonomous AI Database details** page of your original database. In the **Disaster recovery** section of the page, the **Cross-region** field status has changed from **Not enabled** to **Autonomous Data Guard** with a button to perform a **Switchover**. This page indicates you are in your original database, **`adwfinance`**, with the role of primary database, in the primary region.
 
-    ![See the changed Cross-region field on the Autonomous Database details page](./images/third-field-region.png)
+    ![See the changed Cross-region field on the Autonomous AI Database details page](./images/third-field-region.png)
 
 ## Task 2: Test Switchover to a Standby Database
 
@@ -169,7 +169,7 @@ You can view the available standby database in the **Disaster recovery** tab.
 
 You can perform a switchover to the **local standby** database as follows:
 
-1. On the **Autonomous Database** details page of your original primary database, click the **Disaster recovery** tab. Click the **Actions** icon (3-dot ellipsis) on the right side of the local backup copy (your **local** standby, not the remote cross-region standby if you also created one), and select **Switchover**.
+1. On the **Autonomous AI Database** details page of your original primary database, click the **Disaster recovery** tab. Click the **Actions** icon (3-dot ellipsis) on the right side of the local backup copy (your **local** standby, not the remote cross-region standby if you also created one), and select **Switchover**.
 
     ![Click Switchover in the pop-up menu](./images/adg-switchover.png)
 
@@ -205,7 +205,7 @@ _If you are running this workshop in a hosted LiveLabs sandbox, you must perform
 
     ![Click Disable in the Status field](./images/adg-disable.png)
 
-    In the **Disable** dialog box, select the standby database you want to disable and terminate. Enter the Autonomous Database name to confirm that you want to disable Autonomous Data Guard for the instance. Click **Disable**.
+    In the **Disable** dialog box, select the standby database you want to disable and terminate. Enter the Autonomous AI Database name to confirm that you want to disable Autonomous Data Guard for the instance. Click **Disable**.
 
     ![Click Disable Autonomous Data Guard](./images/confirm-disable.png =65%x*)
 
@@ -245,7 +245,7 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
 ## Automatic and Manual Failover options in case of a disaster
 
-In a disaster situation when the Primary becomes unavailable, the Switchover button would turn to a Failover one. With ADG, an **Automatic Failover** is automatically triggered (no user action is needed) by the Autonomous Database when a user is unable to connect to their primary database for a few minutes. Since this is an automated action, the automatic failover is allowed to succeed only when no data loss will occur. In ADG, for automatic failover, RTO is 2 minutes and RPO is 0 minutes.
+In a disaster situation when the Primary becomes unavailable, the Switchover button would turn to a Failover one. With ADG, an **Automatic Failover** is automatically triggered (no user action is needed) by the Autonomous AI Database when a user is unable to connect to their primary database for a few minutes. Since this is an automated action, the automatic failover is allowed to succeed only when no data loss will occur. In ADG, for automatic failover, RTO is 2 minutes and RPO is 0 minutes.
 
 >**Note:** We do not support automatic failover across regions since failing over across regions is more impactful than failing over locally; often users want to failover mid-tiers / applications along with the database for optimum performance. You may manually trigger the switchover/failover button on the console or a scripted API call when required. For the same reason, if you have both a local and a remote standby database available, we always recommend failover to the local standby first.
 

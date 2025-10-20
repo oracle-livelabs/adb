@@ -68,15 +68,15 @@ In this lab, you will:
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-7. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous Database details** page.
+7. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous AI Database details** page.
 
-    ![See clone information in Autonomous Database details page](images/see-clone-info-in-autonomous-details-page.png)
+    ![See clone information in Autonomous AI Database details page](images/see-clone-info-in-autonomous-details-page.png)
 
 ## Task 2: Clone a Database from a Backup Timestamp of your Database
 
 Create a full clone database from a **backup timestamp** of your currently running primary database.
 
-1. Return to the **Autonomous Database details** page of your source database, if you are not already there. From the **More actions** drop-down list, select **Create clone**. The **Create Autonomous Database clone** dialog is displayed.
+1. Return to the **Autonomous AI Database details** page of your source database, if you are not already there. From the **More actions** drop-down list, select **Create clone**. The **Create Autonomous AI Database clone** dialog is displayed.
 
    ![Click more > create clone](images/click-create-clone.png)
 
@@ -100,9 +100,9 @@ Create a full clone database from a **backup timestamp** of your currently runni
     * **Display name:** Accept the default display name.
     * **Database name:** Accept the default database name.
 
-        ![Provide information and click Create Autonomous Database clone](images/provide-information-to-create-clone-backup.png)
+        ![Provide information and click Create Autonomous AI Database clone](images/provide-information-to-create-clone-backup.png)
 
-6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database as follows:
+6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an Autonomous AI Database as follows:
 
     * **Workload type:** `Lakehouse`.
     * **Choose database version:** `26ai`.
@@ -118,7 +118,7 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-11. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous Database details** page.
+11. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous AI Database details** page.
 
 ## Task 3: Create Long-term Backups
 

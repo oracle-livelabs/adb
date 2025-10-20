@@ -7,7 +7,7 @@ In this lab, you will learn the benefits of auto scaling an Oracle Autonomous AI
 Estimated time: 30 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Apply Auto Scaling on an Autonomous Database](videohub:1_bj3lzbp8)
+[Apply Auto Scaling on an Autonomous AI Database](videohub:1_bj3lzbp8)
 
 **What is Auto Scaling and How Does It Work?**
 
@@ -23,7 +23,7 @@ When you create an Autonomous AI Database, the auto scaling checkbox is enabled 
 
 If your organization performs intensive queries at varied times, auto scaling will ramp up and ramp down CPU resources when needed.
 
-As in our lab example below, if a customer provisions an Autonomous Database with 4 base ECPUs and enables auto scaling, they will immediately have access to 3x the 4 base ECPUs provisioned; therefore 12 ECPUs. They will also immediately have access to 3x the IO.
+As in our lab example below, if a customer provisions an Autonomous AI Database with 4 base ECPUs and enables auto scaling, they will immediately have access to 3x the 4 base ECPUs provisioned; therefore 12 ECPUs. They will also immediately have access to 3x the IO.
 
 The customer is charged only for the actual average number of ECPUs used per hour, between 2 and 6 ECPUs.
 
@@ -88,7 +88,7 @@ In the **Provision Autonomous AI Database** lab, you created the **`ADW_Finance_
 
     ![The saved worksheet is displayed.](./images/query3-worksheet-displayed.png " ")
 
-    In the next task, you will use the **Query 1**, **Query 2**, and **Query 3** worksheets to simultaneously run the test queries using the **HIGH** consumer group. For real production workloads, you will typically use the MEDIUM or HIGH consumer groups, since they have higher parallelism and lower concurrency. A worksheet using the HIGH consumer group gets top priority. For more information about consumer groups, see [Manage Concurrency and Priorities on Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-priorities.html#GUID-80E464A7-8ED4-45BB-A7D6-E201DD4107B7).
+    In the next task, you will use the **Query 1**, **Query 2**, and **Query 3** worksheets to simultaneously run the test queries using the **HIGH** consumer group. For real production workloads, you will typically use the MEDIUM or HIGH consumer groups, since they have higher parallelism and lower concurrency. A worksheet using the HIGH consumer group gets top priority. For more information about consumer groups, see [Manage Concurrency and Priorities on Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-priorities.html#GUID-80E464A7-8ED4-45BB-A7D6-E201DD4107B7).
 
 7. Click the worksheet's drop-down list, and then select **Open Recent** to display your 4 saved worksheets.
 
@@ -224,7 +224,7 @@ _Aggregate orders by month and city, for customers in the US, in the Fall of 199
 
 >_**Important:** The amount of time it takes you to run the queries twice might be different than the results shown in this task. In addition, the results will be different depending on whether you are running the queries using your own tenancy or the LiveLabs Sandbox hosted environment._
 
-1. Open the **Query 1**, **Query 2**, and **Query 3** worksheets that you saved earlier. To open 3 separate SQL Developer Web worksheets, go to your browser tab that shows the **Autonomous Database details** page. Click the **Database actions** drop-down list, and then select **SQL**. The worksheet is displayed in a new tab in your browser. Repeat this process to open two more worksheets.
+1. Open the **Query 1**, **Query 2**, and **Query 3** worksheets that you saved earlier. To open 3 separate SQL Developer Web worksheets, go to your browser tab that shows the **Autonomous AI Database details** page. Click the **Database actions** drop-down list, and then select **SQL**. The worksheet is displayed in a new tab in your browser. Repeat this process to open two more worksheets.
 
 2. In the first new worksheet, click worksheet drop-down list, select **Open Recent**, and then select the **Query 1** saved worksheet. Click the **Consumer group** drop-down list and select **HIGH**.
 
@@ -379,7 +379,7 @@ In **task 4 through task 6**, you will enable auto scaling and then execute the 
 
   - Consequently, the average query time was reduced from **`78.8`** seconds to **`45.4`** seconds and therefore the duration of the total test that ran 3 worksheet sessions concurrently was reduced from **`158.5`** seconds to **`93.7`** seconds.
 
-3. Return to your **Autonomous Database details** page and click **Performance Hub**. Move your mouse cursor in the **Activity** panel above the SQL Monitoring panel, and drag the rectangle horizontally across to cover the portion of the timeline that indicates your recent query activity. This will fill in the **ASH Analytics** panel at the bottom, with information from the two completed tests.
+3. Return to your **Autonomous AI Database details** page and click **Performance Hub**. Move your mouse cursor in the **Activity** panel above the SQL Monitoring panel, and drag the rectangle horizontally across to cover the portion of the timeline that indicates your recent query activity. This will fill in the **ASH Analytics** panel at the bottom, with information from the two completed tests.
 
     ![Screenshot of Performance Hub Activity panel showing ASH Analytics panel.](./images/drag-rectangle-to-cover-period-of-queries.png " ")
 

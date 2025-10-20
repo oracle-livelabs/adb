@@ -1,5 +1,5 @@
 {
-    "workshoptitle" : "Manage and Monitor Autonomous Database",
+    "workshoptitle" : "Manage and Monitor Autonomous AI Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
