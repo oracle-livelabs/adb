@@ -1,4 +1,4 @@
-# Scale Your Autonomous Database
+# Scale Your Autonomous AI Database
 
 _**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
 
@@ -10,14 +10,14 @@ Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
 
-[Scale Your Autonomous Database](videohub:1_ls8fjm2p)
+[Scale Your Autonomous AI Database](videohub:1_ls8fjm2p)
 
 ### Objectives
 
 -   Learn how to scale up an ADW or ATP service
 -   Understand the performance and concurrency impacts of scaling your autonomous database service online
 
-## Task 1: Scaling your Autonomous Database Instance
+## Task 1: Scaling your Autonomous AI Database Instance
 
 1. From your **`ADW_Finance_Mart`** database details page, click the **More actions** drop-down list, and then select **Manage resource allocation** from the context menu.
 
@@ -38,7 +38,7 @@ Watch the video below for a quick walk-through of the lab.
 
     >**Note:** Applications can continue running during the scale operation without downtime.
 
-4. The **Autonomous Database details** page is re-displayed. The instance status is **SCALING IN PROGRESS**. Wait a few minutes for the scaling to finish.
+4. The **Autonomous AI Database details** page is re-displayed. The instance status is **SCALING IN PROGRESS**. Wait a few minutes for the scaling to finish.
 
     ![A SCALING IN PROGRESS message appears.](./images/scaling-in-progress.png " ")
 

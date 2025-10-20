@@ -1,11 +1,11 @@
-# Monitor Your Autonomous Database Instance using the Cloud Console
+# Monitor Your Autonomous AI Database Instance using the Cloud Console
 
 ## Introduction
 
-In this lab, you will explore the monitoring capabilities available for your Oracle Autonomous Database (ADB).
+In this lab, you will explore the monitoring capabilities available for your Oracle Autonomous AI Database (ADB).
 
 Oracle provides several facilities for monitoring the performance and activity of your autonomous database. Among them are:
--   **Autonomous Database Metrics**
+-   **Autonomous AI Database Metrics**
 -   **Database Actions - Database Dashboard**
 -   **Performance Hub**
 -   **OCI Monitoring Console**
@@ -16,11 +16,11 @@ Estimated Lab Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
 
-[Monitor Your Autonomous Database Instance using the Cloud Console](videohub:1_q9gd2fnw)
+[Monitor Your Autonomous AI Database Instance using the Cloud Console](videohub:1_q9gd2fnw)
 
 ### Video Preview
 
-Watch a video demonstration of monitoring an Oracle Autonomous Database.
+Watch a video demonstration of monitoring an Oracle Autonomous AI Database.
 
 [](youtube:uA6X7bnvaFs)
 
@@ -28,20 +28,20 @@ Watch a video demonstration of monitoring an Oracle Autonomous Database.
 
 In this lab, you'll:
 
-- Examine the charts in the Metrics section of the Autonomous Database details Page
+- Examine the charts in the Metrics section of the Autonomous AI Database details Page
 - Explore the charts in the Database dashboard
 - Explore more charts in the Performance hub
 - Examine the database monitoring charts in the OCI Monitoring Console
 
 ### Prerequisites
 
-- This lab requires completion of the Provision an Autonomous Database lab in the **Contents** menu on the left.
+- This lab requires completion of the Provision an Autonomous AI Database lab in the **Contents** menu on the left.
 
 ## Task 1: Navigate to the Database Monitoring Tab
 
-The first facility that we will look at for monitoring your autonomous database is the Database **Monitoring** tab on the Autonomous Database details page.
+The first facility that we will look at for monitoring your autonomous database is the Database **Monitoring** tab on the Autonomous AI Database details page.
 
-1. On your **`ADW_Finance_Mart`** Autonomous Database details page, scroll to the right of the page to the **Monitoring** tab.
+1. On your **`ADW_Finance_Mart`** Autonomous AI Database details page, scroll to the right of the page to the **Monitoring** tab.
 
     ![Scroll right to the Monitoring tab ](images/scroll-right-to-monitoring.png =65%x*)
 
@@ -65,7 +65,7 @@ The **Monitoring** tab displays an initial set of 8 graphs to examine database m
 
 You can also view this monitoring information with more detailed tools provided in the **Database Actions Launchpad**.
 
-1. On the Autonomous Database details page, click the **Database actions** drop-down list, and then click **View all database actions**.
+1. On the Autonomous AI Database details page, click the **Database actions** drop-down list, and then click **View all database actions**.
 
     ![Click View all database actions.](images/click-view-all-database-actions.png " ")
 
@@ -98,9 +98,9 @@ You can view real-time and historical performance data from the Performance Hub.
 
     ![Access Performance Hub from the Database Actions Launchpad Monitoring section](images/click-performance-hub-in-database-actions.png =65%x*)
 
-    >**Note:** You can also access the **Performance Hub** from the **Autonomous Database details** page.
+    >**Note:** You can also access the **Performance Hub** from the **Autonomous AI Database details** page.
 
-    ![Access Performance Hub from the Autonomous Database details](images/click-performance-hub-in-details-page.png =65%x*)
+    ![Access Performance Hub from the Autonomous AI Database details](images/click-performance-hub-in-details-page.png =65%x*)
 
 2. The **Performance Hub** page is displayed. At the top of the page you can select the time range to display, followed by the Activity Summary, which is displayed in Database Time in units of average active sessions.
 
@@ -120,7 +120,7 @@ You can view real-time and historical performance data from the Performance Hub.
 
     ![Examine the SQL Monitoring tab](images/performance-hub-sql-monitoring.png =65%x*)
 
-5. If you open the Performance Hub from the **Autonomous Database details** page rather than from the **Database Actions Launchpad** like in our example, some additional information is available.
+5. If you open the Performance Hub from the **Autonomous AI Database details** page rather than from the **Database Actions Launchpad** like in our example, some additional information is available.
 
     The Automatic Workload Repository (AWR) collects, processes, and maintains performance statistics for problem detection and self-tuning purposes. This data is stored in both memory and the database. From the Performance Hub, you can generate and download a report of the gathered data.
 
@@ -183,7 +183,7 @@ You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/manage-service.html#GUID-759EFFFA-9FAC-4439-B47F-281E470E01DE)
 
 ## Acknowledgements
 
