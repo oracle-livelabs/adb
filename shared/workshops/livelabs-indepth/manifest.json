@@ -1,5 +1,5 @@
 {
-  "workshoptitle" : "Manage and Monitor Autonomous Database",
+  "workshoptitle" : "Manage and Monitor Autonomous AI Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
@@ -28,7 +28,7 @@
             "filename": "./intro.md"
         },
         {
-            "title": "Lab 1: Provision an Autonomous Database",
+            "title": "Lab 1: Provision an Autonomous AI Database",
             "description": "Provision Autonomous Database",
             "type": "livelabs",
             "filename": "./../../adb-provision/adb-provision-moviestream-livelabs.md"
@@ -90,7 +90,7 @@
             "filename": "./../../adb-data-safe/adb-data-safe.md"
         },
         {
-            "title": "Lab 13: Public and Private Network Access in Autonomous Database",
+            "title": "Lab 13: Public and Private Network Access in Autonomous AI Database",
             "description": "Public and Private Network Access in Autonomous Database",
             "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
         },
