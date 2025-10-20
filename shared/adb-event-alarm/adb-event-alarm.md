@@ -1,5 +1,4 @@
-﻿
-# Set Event and Alarm Notifications for an Autonomous Database
+﻿# Set Event and Alarm Notifications for an Autonomous AI Database
 
 ## Introduction
 
@@ -9,7 +8,7 @@ The Oracle Cloud Infrastructure (OCI) Notifications service broadcasts messages 
 
 The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions. When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
 
-This lab shows you how to define events and alarms with conditional rules that will generate email notifications when the state of an Autonomous Database changes or an alarm condition has been met.
+This lab shows you how to define events and alarms with conditional rules that will generate email notifications when the state of an Autonomous AI Database changes or an alarm condition has been met.
 
 **An event** is triggered for a lifecycle management (LCM) type operation performed in Oracle Cloud, such as creating a database, stopping a database, and so on.
 
@@ -22,9 +21,9 @@ Estimated Lab Time: 20 minutes
 In this lab, you'll:
 
 - Use the OCI Console to define a notification topic and subscribe to the topic.
-- Create a rule for an Autonomous Database event that will trigger an email notification.
+- Create a rule for an Autonomous AI Database event that will trigger an email notification.
 - Perform an activity that activates the rule and confirm that an email notification was sent.
-- Create and test an Autonomous Database alarm that will trigger an email notification.
+- Create and test an Autonomous AI Database alarm that will trigger an email notification.
 
 ## **PART 1 - Define an Event that Will Email a Notification When a Database Is Stopped**
 
@@ -92,7 +91,7 @@ You are now subscribed to a Notification topic. Next you will define an event wi
 
 ## Task 5: Define an Event with Rules that Will Publish Messages
 
-Let's define an event that triggers an email notification when an Autonomous Database is stopped.
+Let's define an event that triggers an email notification when an Autonomous AI Database is stopped.
 
 1. In the Oracle Console, click the **Navigation** menu.
 
@@ -105,13 +104,13 @@ Let's define an event that triggers an email notification when an Autonomous Dat
   ![Click Create Rule](images/click-create-rule.png)
 
 3. On the **Create Rule** page, specify the following:
-    - **DISPLAY NAME:** : Provide a name, such as the event type that you will be choosing; in this lab, the event type will be `Autonomous Database - Stop End`.
+    - **DISPLAY NAME:** : Provide a name, such as the event type that you will be choosing; in this lab, the event type will be `Autonomous AI Database - Stop End`.
     - **DESCRIPTION:** Provide a description.
 
     In the **Rule Conditions** section, specify the following:
     - **Condition:** `Event Type`
     - **SERVICE NAME:** `Database`
-    - **EVENT TYPE:** : Choose `Autonomous Database - Stop End` from the drop-down list.
+    - **EVENT TYPE:** : Choose `Autonomous AI Database - Stop End` from the drop-down list.
 
     In the **Actions** section, specify the following:
 
@@ -123,7 +122,7 @@ Let's define an event that triggers an email notification when an Autonomous Dat
 
   ![Click Create Rule](images/click-create-rule-page.png)
 
-  The **Autonomous Database - Stop End** page is displayed.
+  The **Autonomous AI Database - Stop End** page is displayed.
 
   ![The Stop End page is displayed](images/stop-end-page.png)
 
@@ -131,9 +130,9 @@ You have configured a Notification service and tied an event to it with a specif
 
 ## Task 6: Trigger the Event
 
-You will now shut down the Autonomous Database to trigger the notification email.
+You will now shut down the Autonomous AI Database to trigger the notification email.
 
-1. Navigate to the **`ADW_Finance_Mart`** **Autonomous Database details** page. Click the **More actions** drop-down list, and then select **Stop**.
+1. Navigate to the **`ADW_Finance_Mart`** **Autonomous AI Database details** page. Click the **More actions** drop-down list, and then select **Stop**.
 
   ![Stop the database](images/stop-database.png)
 
@@ -141,11 +140,7 @@ You will now shut down the Autonomous Database to trigger the notification email
 
 3. The initial status of the database is **Stopping**.
 
-    ![The status is stopping](images/status-stopping.png " ")
-
 4. Wait until the database status changes to **Stopped**.
-
-    ![The status is stopped](images/status-stopped.png " ")
 
 ## Task 7: Verify that an Email Notification Was Sent
 
@@ -163,9 +158,9 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
 
 ## Task 8:  Define an Alarm for the CPU Utilization Chart
 
-1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **Starting**. In a few minutes, the status changes to **Available**.
+1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous AI Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **Starting**. In a few minutes, the status changes to **Available**.
 
-2. On the **Autonomous Database details** page, click the **Monitoring** tab. 
+2. On the **Autonomous AI Database details** page, click the **Monitoring** tab. 
 
   ![Click the Monitoring tab](images/click-monitoring-tab.png)
 
@@ -177,12 +172,12 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
     - **Alarm name:** Provide a name, perhaps indicating the metric that will trigger the alarm. In this lab example, the alarm is to `alert unusual CPU usage`.
  
     In the **Metric description** section, specify the following:
-    - **Compartment:** Choose the compartment that contains the Autonomous Database for which you are creating the alarm.
+    - **Compartment:** Choose the compartment that contains the Autonomous AI Database for which you are creating the alarm.
     - **Metric namespace**: The available options depend on the types of resources that exist in the selected compartment. In this case, choose **`oci_autonomous_database`**.
     - **Metric name** : **`CpuUtilization`**
 
     In the **Metric dimensions** section, specify the following:
-    - Click **+Additional dimension**. Select **resourceId** from the drop-down list as the name. For the **Dimension value**, Select the first value in the drop-down list. This is the OCID for your region. You can find your region's OCID on your **Autonomous Database details** page.
+    - Click **+Additional dimension**. Select **resourceId** from the drop-down list as the name. For the **Dimension value**, Select the first value in the drop-down list. This is the OCID for your region. You can find your region's OCID on your **Autonomous AI Database details** page.
     - **DeploymentType:** Select **Shared**
 
     In the **Trigger rule 1** section, specify the following:
@@ -207,7 +202,7 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
 
 Re-run the **`test_proc`** procedure in **Lab 6: Apply Auto Scaling > Task 5** again to create a CPU utilization that triggers the alarm that you just created. You will run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm. 
 
-1. Let's make sure that you'll trigger the CPU alarm. From the **Autonomous Database details** page, click the **More actions** drop-down list, and then select **Manager resource allocation**. Change the **ECPU count** for the **`ADW_Finance_Mart`** instance to the original setting from lab 1 to `2`. Make sure that the **Compute auto scaling** slider is disabled. 
+1. Let's make sure that you'll trigger the CPU alarm. From the **Autonomous AI Database details** page, click the **More actions** drop-down list, and then select **Manager resource allocation**. Change the **ECPU count** for the **`ADW_Finance_Mart`** instance to the original setting from lab 1 to `2`. Make sure that the **Compute auto scaling** slider is disabled. 
 
 2. Navigate to your SQL Worksheet. 
 

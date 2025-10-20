@@ -39,9 +39,9 @@ If you are still on the newly created database details page from the previous la
 
     ![Click the Navigation menu.](./images/click-navigation-menu.png =60%x*)
 
-2. Click **Oracle Database**. Under **Oracle Database**, click **Autonomous Data Warehouse**.
+2. Click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
 
-    ![Select ADW.](./images/select-adw.png =65%x*)
+    ![Select ADW.](./images/select-autonomous-ai-database.png =65%x*)
 
 3. On the **Autonomous Databases** page, click your **`ADW_Finance_Mart`** instance. Make sure you are in the right compartment and region where your autonomous database is provisioned. In this example, we used our own compartment, **`training-adw-compartment`**.
 
@@ -97,4 +97,4 @@ You may now **proceed to the next lab**.
 - **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, Oracle Autonomous Database Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, September 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

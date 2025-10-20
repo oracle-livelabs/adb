@@ -4,7 +4,7 @@ _**Important:** This lab uses features which are not available on Oracle's Alway
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous AI Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
 This lab shows how to create a **full** clone from the **currently running** database or from a **backup** timestamp of that database.
 
@@ -30,11 +30,11 @@ In this lab, you will:
 
 ## Task 1: Clone a Database from the Currently Running Primary Database
 
-1. Return to the **Autonomous Database details** page of your source database. From the **More actions** drop-down list, select **Create clone**.
+1. Return to the **Autonomous AI Database details** page of your source database. From the **More actions** drop-down list, select **Create clone**.
 
-    ![Select Create clone from M**ore actions](images/select-create-clone.png)
+    ![Select Create clone from More actions](images/select-create-clone.png)
 
-    The **Create Autonomous Database clone** page is displayed.
+    The **Create Autonomous AI Database clone** page is displayed.
 
 2. In the **Choose a clone type** section, accept the default **Full clone** selection. This creates a new database with the source database's data and metadata.
 
@@ -44,7 +44,7 @@ In this lab, you will:
 
     ![Choose Clone from database instance](images/choose-clone-from-database-instance.png)
 
-4. In the **Provide basic information for the Autonomous Database clone** section, specify the the required information to create the clone database.
+4. In the **Basic information for the Autonomous AI Database clone** section, specify the the required information to create the clone database.
     * **Choose your preferred region:** Accept the default, which is your current region.
     * **Create in compartment:** Select a compartment to which you have access. *Important: If you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
     * **Display name:** Accept the default display name.
@@ -52,34 +52,23 @@ In this lab, you will:
 
         ![Clone basic information.](images/choose-clone-basic-information.png)
 
-5. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database as follows:
+5. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an Autonomous AI Database as follows:
 
-    * **Workload type:** Data Warehourse.
-    * **Choose database version:** `23ai`.
+    * **Workload type**: `Lakehouse`.
+    * **Choose database version:** `26ai`.
     * **ECPU count:** `2`.
     * **Compute auto scaling:** Enabled.
     * **Storage:** `2`.
     * **Password:** `Training4ADW`.
     * **Access type:** Secure access from everywhere.
    
-7. Drill-down on **Advanced options**.
+        ![Remaining sections selections.](images/remaining-sections.png =65%x*)
 
-    ![Drill-down on Advanced options.](images/drill-down-advanced-options.png =55%x*)
-
-8. Drill-down on **Tools**, and then click **Edit tool configuration**.
-
-    ![Drill-down on Tools.](images/drill-down-tools.png)
-
-9. In the **Configure tools** panel, scroll-down to the **Data Lake Accelerator** section, check the status of the slider. If it is enabled, disable it and then click **Apply**. If it is already disabled, click **Cancel**.
-
-    ![Disable slider and then click apply.](images/disable-slider-and-apply.png)
-
-
-10. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
+6. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-11. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous Database details** page.
+7. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous Database details** page.
 
     ![See clone information in Autonomous Database details page](images/see-clone-info-in-autonomous-details-page.png)
 
@@ -89,9 +78,7 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
 1. Return to the **Autonomous Database details** page of your source database, if you are not already there. From the **More actions** drop-down list, select **Create clone**. The **Create Autonomous Database clone** dialog is displayed.
 
-    ![Click source database](images/click-source-db.png)
-
-    ![Click more > create clone](images/click-create-clone.png)
+   ![Click more > create clone](images/click-create-clone.png)
 
 2. In the **Choose a clone type** section, accept the default **Full clone** selection.
 
@@ -105,9 +92,9 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
    ![Select Clone from a backup](images/select-clone-from-backup.png)
 
-    >**Note:** Backups are created daily. In this lab environment, you may not yet have any backups listed if you recently created your Autonomous Database.
+    >**Note:** Backups are created daily. In this lab environment, you may not yet have as many backups listed if you recently created your Autonomous AI Database.
 
-5. In the **Provide basic information for the Autonomous Database clone** section, specify the the required information to create the clone database.
+5. In the **Basic information for the Autonomous AI Database clone** section, specify the the required information to create the clone database.
     * **Choose your preferred region:** Accept the default, which is your current region.
     * **Create in compartment:** Select a compartment to which you have access. *Important: If you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
     * **Display name:** Accept the default display name.
@@ -117,23 +104,15 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
 6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database as follows:
 
-    * **Workload type:** Data Warehourse.
-    * **Choose database version:** `23ai`.
+    * **Workload type:** `Lakehouse`.
+    * **Choose database version:** `26ai`.
     * **ECPU count:** `2`.
     * **Compute auto scaling:** Enabled.
     * **Storage:** `2`.
     * **Password:** `Training4ADW`.
-    * **Access type:** Secure access from everywhere.
+    * **Access type:** `Secure access from everywhere`.
    
-7. Drill-down on **Advanced options**.
-
-8. Drill-down on **Tools**, and then click **Edit tool configuration**.
-
-9. In the **Configure tools** panel, scroll-down to the **Data Lake Accelerator** section, check the status of the slider. If it is enabled, disable it and then click **Apply**. If it is already disabled, click **Cancel**.
-
-    ![Disable slider and then click apply.](images/disable-slider-and-apply.png)
-
-10. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
+7. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
 
     ![Clone provisioning](images/clone-provisioning.png)
 
@@ -145,15 +124,15 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
 In today's world, regulations, audits, and compliance requirements often demand long-term retention of data. For instance, in the financial or healthcare sector, you may have to keep transactional and patient data for several years, if not decades. You may need long-term backups for compliance and regulatory requirements, legal and contractual obligations, historical analysis, or for business continuity in response to data loss.
 
-It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous Database, the process of long-term backups is completely automated and managed by Oracle.
+It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous AI Database, the process of long-term backups is completely automated and managed by Oracle.
 
-> **Note:** For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous Database** in this workshop.
+> **Note:** For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous AI Database** in this workshop.
 
 You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-* [Clone an Autonomous Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8)
+* [Clone an Autonomous AI Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8)
 * [Create a Long-Term Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/backup-long-term.html)
 
 ## Acknowledgements

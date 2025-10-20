@@ -19,9 +19,9 @@ Watch the video below for a quick walk-through of the lab.
 
 ## Task 1: Scaling your Autonomous Database Instance
 
-1. Go back to the Cloud Console you used during the provisioning exercise and go to the database instance's **Autonomous Database details** page. Click the **More actions** drop-down list, and then select **Manage resource allocation** from the context menu.
+1. From your **`ADW_Finance_Mart`** database details page, click the **More actions** drop-down list, and then select **Manage resource allocation** from the context menu.
 
-    ![Click Manage resource allocation.](./images/click-manage-resource-allocation.png " ")
+    ![Click Manage resource allocation.](./images/click-manage-resource-allocation.png =65%x*)
 
 2. Specify the following in the **Manage resource allocation** panel.
 
@@ -67,4 +67,4 @@ You may now **proceed to the next lab**.
 * **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, ADB Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, September 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

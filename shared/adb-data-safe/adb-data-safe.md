@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab introduces you to the features of Oracle Data Safe. You will prepare your environment in Oracle Cloud Infrastructure for the lab, register your Autonomous Database with Oracle Data Safe, and discover sensitive data.
+This lab introduces you to the features of Oracle Data Safe. You will prepare your environment in Oracle Cloud Infrastructure for the lab, register your Autonomous AI Database with Oracle Data Safe, and discover sensitive data.
 
 You can do this lab in Oracle's free tier with trial credits, in your own tenancy using a paid Oracle Cloud account, or in an Oracle-provided environment, such as LiveLabs.
 
@@ -36,7 +36,7 @@ In this lab, you will:
 This lab assumes you have:
 
 - Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
-- Performed the previous lab on provisioning an Oracle Autonomous Database
+- Performed the previous lab on provisioning an Oracle Autonomous AI Database
 
 ## Task 1: Create a user group and add an Oracle Cloud account to the group
 
@@ -77,7 +77,7 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
 
 > **Note**: _If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment._
 
-As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous Database in the user's compartment.
+As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous AI Database in the user's compartment.
 
 1. From the navigation menu, select **Identity & Security**. Under **Identity**, select **Policies**. The **Policies** page is displayed.
 
@@ -103,7 +103,7 @@ As a tenancy administrator, create an IAM policy that grants the user permission
     </copy>
     ```
 
-    The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement allows the user group to create an Autonomous Database in the specified compartment and use it with Oracle Data Safe.
+    The first statement allows the user group to register an Oracle Database with Oracle Data Safe and create and manage Oracle Data Safe resources in the specified compartment. The second statement allows the user group to create an Autonomous AI Database in the specified compartment and use it with Oracle Data Safe.
 
     ![Create policy](images/create-policy.png " ")
 
@@ -120,7 +120,7 @@ As the **`ADMIN`** user on the database, download and run the **`load-data-safe-
 
     ![Download the script](images/download-script.png " ")
 
-2. Navigate back to your database's **Autonomous Database details** page, click the **Database actions** drop-down list, and then select **SQL**. The SQL Worksheet is displayed.
+2. Navigate back to your database's **Autonomous AI Database details** page, click the **Database actions** drop-down list, and then select **SQL**. The SQL Worksheet is displayed.
     >**Note:** If needed, sign in with the username `ADMIN`. Use the `ADMIN` password you specified when you provisioned the database instance.
 
 3. Copy the entire script from your text editor file to the clipboard and paste it into the worksheet. The last line of the script is as follows:
@@ -159,20 +159,20 @@ As the **`ADMIN`** user on the database, download and run the **`load-data-safe-
 
     >**Note**: It is important that you refresh the **browser page**, not just click the refresh circular arrow icon in the SQL Worksheet, to see the new `HCMI` schema that was just created.
 
-7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous Database | Oracle Cloud Infrastructure** tab.
+7. Leave the **SQL | Oracle Database Actions** tab open because you return to it throughout this workshop. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** tab.
 
-## Task 4: Register Your Autonomous Database With Oracle Data Safe
+## Task 4: Register Your Autonomous AI Database With Oracle Data Safe
 
 To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
 
-After registering an Autonomous Database, you can grant and revoke roles from the Oracle Data Safe service account on your Autonomous Database to control which Oracle Data Safe features you can use with the database. You need to register your Autonomous Database before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account on your target database. Keep in mind that the roles for Autonomous Databases are different than those for non-Autonomous Databases. For non-Autonomous Databases, you can grant roles before or after registering your database.
-- For an **Oracle Autonomous Database Serverless**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+After registering an Autonomous AI Database, you can grant and revoke roles from the Oracle Data Safe service account on your Autonomous AI Database to control which Oracle Data Safe features you can use with the database. You need to register your Autonomous AI Database before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account on your target database. Keep in mind that the roles for Autonomous Databases are different than those for non-Autonomous Databases. For non-Autonomous Databases, you can grant roles before or after registering your database.
+- For an **Oracle Autonomous AI Database Serverless**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
 
 **Assumption**: Your data values are most likely different than those shown in the screenshots.
 
-If you plan to use a database other than an Oracle Autonomous Database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
+If you plan to use a database other than an Oracle Autonomous AI Database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous Database details** page.
+1. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous AI Database details** page.
 
     If you navigated away from this page. Click the **Navigation** menu, select **Oracle Database**, and then **Autonomous Data Warehouse**. Select your compartment (if needed), and then click the display name of your database, **`ADW_Finance_Mart`**.
 
@@ -188,13 +188,9 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
 
 ## Task 5: Access Oracle Data Safe And View Your List Of Registered Target Databases
 
-1. Return to the **Autonomous Database | Oracle Cloud Infrastructure** browser tab.
+1. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab.
 
-2. Click the Navigation menu. Select **Oracle Database**, and then **Data Safe - Database Security**.
-
-    ![Navigate to Data Safe - Database Security](images/navigate-data-safe.png " " )
-
-    The **Overview** page for the Oracle Data Safe service is displayed. On this page, you can access Security Center, register target databases, and find links to useful information.
+2. Click the Navigation menu. Select **Oracle AI Database**, and then **Data Safe - Database Security**. The **Overview** page for the Oracle Data Safe service is displayed. On this page, you can access Security Center, register target databases, and find links to useful information.
 
     ![The Data Safe Overview page is displayed](images/data-safe-overview.png " " )
 
@@ -210,7 +206,7 @@ If you plan to use a database other than an Oracle Autonomous Database for this 
 5. Click the name of your target database to view its registration details. The **Target Database Details** page is displayed.
 
     - You can view/edit the target database name and description.
-    - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous Database), and the connection protocol (TLS). The information varies depending on the target database type.
+    - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous AI Database), and the connection protocol (TLS). The information varies depending on the target database type.
     - You have options to edit connection details (change the connection protocol), move the target database registration to another compartment, deregister the target database, and add tags.
 
     ![Target Database Details page](images/target-database-details-page.png " ")

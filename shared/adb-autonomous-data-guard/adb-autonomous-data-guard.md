@@ -95,7 +95,7 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 >**IMPORTANT:**    
 _If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 2 ECPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient ECPUs and storage, you can skip this step._
 
-1. On your **Autonomous Database details** page, click the **Disaster recovery** tab.
+1. On your **Autonomous AI Database details** page, click the **Disaster recovery** tab.
 
     ![Click Disaster recovery tab](./images/click-disaster-recovery-tab.png)
 
@@ -105,11 +105,11 @@ _If you are running this workshop in a LiveLabs hosted sandbox, please change th
 
     ![Click the 3-dot ellipsis symbol](./images/click-actions-icon.png)
 
-3. The **Update disaster recovery** panel is displayed. The **Backup-based disaster recovery** tile is selected by default. Select the **Autonomous Data Guard** tile, and then click **Submit**.
+3. The **Edit disaster recovery** panel is displayed. The **Backup-based disaster recovery** tile is selected by default. Select the **Autonomous Data Guard** tile, and then click **Update**.
 
     >**Note**: Read the information about recovery time and recovery point objectives, and the informational note.
 
-    ![Select the Autonomous Data Guard button and click Submit](./images/select-autonomous-data-guard-and-submit.png)
+    ![Select the Autonomous Data Guard button and click Submit](./images/select-autonomous-data-guard-and-update.png)
 
 4. The Autonomous Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
 
@@ -151,7 +151,7 @@ _If you are running this workshop in a LiveLabs hosted sandbox, please change th
     * Your **local standby** database, also named **`adwfinance`**
     * Your optional **cross-region** standby database, **`adwfinance_your_region_key`**. In our example, the database name is **`adwfinance_YYZ`**.
 
-11. Go back to the **Autonomous Database details** page of your original database. In the **Disaster recovery** section of the page, the **Cross-region** field status has changed from **Not enabled** to **Autonomous Data Guard** with a button to perform a **Switchover**. This page indicates you are in your original database, **`adwfinance`**, with the role of primary database, in the primary region.
+11. Go back to the **Autonomous AI Database details** page of your original database. In the **Disaster recovery** section of the page, the **Cross-region** field status has changed from **Not enabled** to **Autonomous Data Guard** with a button to perform a **Switchover**. This page indicates you are in your original database, **`adwfinance`**, with the role of primary database, in the primary region.
 
     ![See the changed Cross-region field on the Autonomous Database details page](./images/third-field-region.png)
 
@@ -159,7 +159,7 @@ _If you are running this workshop in a LiveLabs hosted sandbox, please change th
 
 After Autonomous Data Guard is enabled, if you perform a switchover operation, the primary database becomes the standby database, and the standby database becomes the primary database, with no data loss. A switchover is typically done to test your application's failover procedures when Autonomous Data Guard is enabled.
 
-The Oracle Cloud Infrastructure console **Disaster recovery** section in the **Autonmous Database information** tab shows a **Switchover** button in the **Cross-region** field when both the primary database and the standby database are available.
+The Oracle Cloud Infrastructure console **Disaster recovery** section in the **Autonomous AI Database information** tab shows a **Switchover** button in the **Cross-region** field when both the primary database and the standby database are available.
 
   ![See the Lifecycle State is available and the switchover link in the Cross-regions field](./images/lifecycle-state-shows-available.png)
 
@@ -199,9 +199,9 @@ You can perform a switchover to the **local standby** database as follows:
 ## Task 3: Disable Autonomous Data Guard
 _If you are running this workshop in a hosted LiveLabs sandbox, you must perform this task to free up resources for the next lab on creating refreshable clones. If you are running this workshop on your own tenancy and have sufficient resources, you can skip this task._
 
-1. If you are not logged in to Oracle Cloud Console, log in and navigate into your Autonomous Database.
+1. If you are not logged in to Oracle Cloud Console, log in and navigate into your Autonomous AI Database.
 
-2. On the Autonomous Database details page, click the **Disaster recovery** tab. For each Standby database you created, click the **Actions** icon (3-dot ellipsis) on the right side of the Standby database, and then click **Disable peer** to disable the Autonomous Data Guard.
+2. On the Autonomous AI Database details page, click the **Disaster recovery** tab. For each Standby database you created, click the **Actions** icon (3-dot ellipsis) on the right side of the Standby database, and then click **Disable peer** to disable the Autonomous Data Guard.
 
     ![Click Disable in the Status field](./images/adg-disable.png)
 

@@ -34,7 +34,7 @@ Oracle’s Autonomous Database is the perfect quick-start service for fast data 
 ## Prerequisites
 This workshop requires an Oracle Cloud account. You may use your own cloud account, a cloud account that you obtained through a trial, a Free Tier account, or a training account whose details were given to you by an Oracle instructor.
 
-*Note: If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)***
+*Note: If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available.
 
 **You are all set; let's begin! Click Getting Started in the Contents menu on the left.**
 
@@ -42,16 +42,12 @@ This workshop requires an Oracle Cloud account. You may use your own cloud accou
 
 Use these links to get more information about Oracle Autonomous Database:
 
-- [Oracle Autonomous Database website](https://www.oracle.com/autonomous-database/)
-- [Oracle Autonomous Data Warehouse website](https://www.oracle.com/autonomous-database/autonomous-data-warehouse/)
-- [Oracle Autonomous Transaction Processing website](https://www.oracle.com/autonomous-database/autonomous-transaction-processing/)
-- [Oracle Autonomous Data Warehouse ipaper](https://www.oracle.com/us/products/database/autonomous-dw-cloud-ipaper-3938921.pdf)
 - [Oracle Autonomous Data Warehouse Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 - [Autonomous Data Warehouse Videos](https://docs.oracle.com/en/cloud/paas/autonomous-database/shared/videos.html)
-- [Autonomous Database Workshops: Click "View All Workshops", then under "Workshop Series", select "Autonomous DB Serverless"](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/home/)
 
 ## Acknowledgements
 
-- **Author** - Nilay Panchal, ADB Product Management; Richard Green, Database User Assistance
-- **Adapted for Cloud by** - Richard Green
-- **Last Updated By/Date** - Richard Green, June 2023
+- **Authors:** 
+    * Nilay Panchal, ADB Product Management
+    * Lauran K. Serhal, Consulting User Assistance Developer
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025
