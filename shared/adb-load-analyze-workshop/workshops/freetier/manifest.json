@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Load and Analyze Your Data with Autonomous Database",
+    "workshoptitle": "Load and Analyze Your Data with Autonomous AI Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
@@ -19,7 +19,7 @@
 	"tutorials": [
         {
             "title": "Introduction",
-            "description": "Introduction to Autonomous Database",
+            "description": "Introduction to Autonomous AI Database",
             "filename": "../../intro/intro.md"
         },
         {
@@ -34,8 +34,8 @@
         "filename": "/common/building-blocks/blocks/oac/provision/oac-provision.md"
         },
         {
-        "title": "Lab 2: Provision an Autonomous Database",
-        "description": "Provision Autonomous Database",
+        "title": "Lab 2: Provision an Autonomous AI Database",
+        "description": "Provision Autonomous AI Database",
         "type": "freetier",
         "filename": "../../provision-database/adb-provision-moviestream.md"
     },

@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in Database Action tools, or using other Oracle and third party data integration tools.
+In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous AI Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in Database Action tools, or using other Oracle and third party data integration tools.
 
-You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
+You can also leave data in place in cloud object storage, and link to it from your Autonomous AI Database.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
@@ -18,8 +18,8 @@ Watch the video below for a quick walk-through of the lab.
 
 In this lab, you will:
 * Download two **.csv** data files to your local computer from the MovieStream data lake (Oracle Object Storage buckets).
-* Navigate to the Data Load utility of Oracle Autonomous Database Data Tools.
-* Load data from the .csv files to your autonomous database instance.
+* Navigate to the Data Load utility of Oracle Autonomous AI Database Data Tools.
+* Load data from the .csv files to your Autonomous AI Database instance.
 
 ### Prerequisites
 
@@ -27,7 +27,7 @@ This lab requires the completion of **Lab 1: Set up the Workshop Environment > T
 
 ## Task 1: Download Two .csv Files from the MovieStream Data Lake to your Local Computer
 
-Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
+Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous AI Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous AI Database where it is analyzed by many (and varied) members of the user community.
 
 1. Right-click on each of the links below, and then click **Save link as...** from the context menu to download the files to a folder on your local computer.
 
@@ -38,7 +38,7 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 
 ## Task 2: Load Data from the CSV Files Using the Load Data Tool
 
-In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous Database instance.
+In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous AI Database instance.
 
 >**Note:** You should be already on the **Data Load** page from the previous lab. 
 
@@ -60,7 +60,7 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Update the data load job settings.](./images/click-settings.png " ")
 
-5. The **Load Data from Local File customer-extension.csv** page is displayed. Take a moment to examine the settings. The tool makes intelligent choices for target table name and its properties. Since this is an initial load, accept the default option of **Create Table** to create the target table in your Autonomous Database. In the mappings section, you can change the target column names, data types, and length/precision.
+5. The **Load Data from Local File customer-extension.csv** page is displayed. Take a moment to examine the settings. The tool makes intelligent choices for target table name and its properties. Since this is an initial load, accept the default option of **Create Table** to create the target table in your Autonomous AI Database. In the mappings section, you can change the target column names, data types, and length/precision.
 
     ![Examine the editor of the data load job.](./images/preview-table.png " ")
 
@@ -103,15 +103,15 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
-    * Mike Matthews, Autonomous Database Product Management
-    * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+    * Mike Matthews, Autonomous AI Database Product Management
+    * Marty Gubar (Retired), Autonomous AI Database Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -2,9 +2,9 @@
 
 ## Introduction
 
-> **Important:** _Oracle Analytics Cloud (OAC) is not available with Oracle Cloud Free Tier (Always Free), nor is it supported in Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this workshop using an Always Free database or a LiveLabs Sandbox environment, you can review **Lab 1** and **Lab 5** **without provisioning and using OAC**, and later practice the two labs on **Oracle Autonomous Database** and **OAC** in your organization’s own tenancy._
+> **Important:** _Oracle Analytics Cloud (OAC) is not available with Oracle Cloud Free Tier (Always Free), nor is it supported in Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this workshop using an Always Free database or a LiveLabs Sandbox environment, you can review **Lab 1** and **Lab 5** **without provisioning and using OAC**, and later practice the two labs on **Oracle Autonomous AI Database** and **OAC** in your organization’s own tenancy._
 
-This lab walks you through the steps to create data visualizations using Oracle Analytics Cloud (OAC). You will learn how to immediately gain insights and share powerful dashboards to analyze data in your autonomous database.
+This lab walks you through the steps to create data visualizations using Oracle Analytics Cloud (OAC). You will learn how to immediately gain insights and share powerful dashboards to analyze data in your Autonomous AI Database.
 
 Estimated Time: 20 minutes
 
@@ -13,17 +13,17 @@ Watch the video below for a quick walk-through of the lab.
 
 ### Objectives
 - Learn how to create a simple data visualization project with Oracle Analytics Cloud
-- Learn how to access and gain insights from data in the Autonomous Database
+- Learn how to access and gain insights from data in the Autonomous AI Database
 
 ### Prerequisites
 - This lab requires creation of an Oracle Analytics Cloud instance, or the use of an OAC instance provided by your instructor.
-- This lab requires completion of the Provision Autonomous Database lab in the Contents menu on the left.
+- This lab requires completion of the Provision Autonomous AI Database lab in the Contents menu on the left.
 
 ## Task 1: Create a View
 
 Run a SQL script that will perform two tasks. First, primary keys are defined on tables to ensure uniqueness between rows. Then, foreign key constraints are added that ensure data integrity between tables. These constraints have the added benefit of improving performance.
 
-Next, the script creates a `SALES_DASHBOARD` view that you will use to create your analytic dashboard. This simplifies the usability for analytics users; they can simply use the one view for all of their queries. You can conveniently access the browser-based SQL Worksheet directly from your Autonomous Database console.
+Next, the script creates a `SALES_DASHBOARD` view that you will use to create your analytic dashboard. This simplifies the usability for analytics users; they can simply use the one view for all of their queries. You can conveniently access the browser-based SQL Worksheet directly from your Autonomous AI Database console.
 
 [](include:adb-goto-sql-worksheet.md)
 
@@ -78,9 +78,9 @@ Next, the script creates a `SALES_DASHBOARD` view that you will use to create yo
     
     ![Script output.](./images/script-output.png " ")
     
-## Task 2: Download a Wallet to Connect Oracle Analytics Cloud to your Autonomous Database
+## Task 2: Download a Wallet to Connect Oracle Analytics Cloud to your Autonomous AI Database
 
-You will need to download your wallet credentials file in order for Analytics Cloud to connect to Autonomous Database. The wallet will enable both the server and client to verify each other.
+You will need to download your wallet credentials file in order for Analytics Cloud to connect to Autonomous AI Database. The wallet will enable both the server and client to verify each other.
 
 1. In the **Database Actions | Launchpad** banner, click the **Selector** menu, and then select **Download Client Credentials (Wallet)**.
 
@@ -130,7 +130,7 @@ You will need to download your wallet credentials file in order for Analytics Cl
    | Client Credentials:   | Click **Select...**, and then select the `wallet` zip file that you previously downloaded. A file with `.sso` extension will appear in the text field.   |
    | Username:             | **`admin`**|                                            
    | Password:             | Insert the **`admin`** user password that you chose when you provisioned your ADB instance. |
-   |Service Name:          | Clickx the drop-down field and select **myquickstart_low**, or the **low** service level of the database name you specified in the Provision an Autonomous Database lab. |
+   |Service Name:          | Clickx the drop-down field and select **myquickstart_low**, or the **low** service level of the database name you specified in the Provision an Autonomous AI Database lab. |
    | Authentication:      | Always use these credentials.     |
 
 9. Click **Save**.
@@ -273,7 +273,7 @@ Let's build the dashboard!
     ![Final workbook.](./images/final-workbook.png " ")
 
 
-At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous Database is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
+At this point, with very few steps, you now have something that can further bring your data to life and you can begin to make some data-driven decisions. As you share this with others, more people will want to gain access to and benefit from the data. To enable this, the Oracle Autonomous AI Database is easy to use, fast, elastic, and will be able to quickly scale to meet your growing data and user base.
 
 You may now **proceed to the next lab**.
 
@@ -285,9 +285,9 @@ You may now **proceed to the next lab**.
 
 - **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Marty Gubar, ADB Product Management
+    * Marty Gubar (Retired), ADB Product Management
 
-- **Last Updated By/Date:** Lauran K. Serhal, July 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
