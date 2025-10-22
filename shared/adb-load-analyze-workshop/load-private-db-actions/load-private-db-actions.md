@@ -5,7 +5,7 @@ In this lab, you will load more data from the MovieStream data lake on [Oracle C
 
 In the course of this workshop, we are exploring six methods for loading data into an Oracle Autonomous AI Database. In the previous data loading labs, you loaded data from a file on your local PC and from a **public** object storage bucket. In this 3rd data loading lab, you practice loading data from a **private** object storage bucket. You learn how to set up and use an authentication token and object store credentials to access sensitive data in the private object store. Instead of using the wizard-driven data loading tools of Database Actions, you practice loading data using the DBMS_CLOUD PL/SQL package, the preferred method for load automation.
 
-> **Note:** While this lab uses Oracle Autonomous Database Lakehouse workload type, the steps are identical for loading data into an Oracle AI Autonomous Transaction Processing database.
+> **Note:** While this lab uses Oracle Autonomous AI Lakehouse workload type, the steps are identical for loading data into an Oracle Autonomous AI Transaction Processing database.
 
 Estimated Time: 20 minutes
 

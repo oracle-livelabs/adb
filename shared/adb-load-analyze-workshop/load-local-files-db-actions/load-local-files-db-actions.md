@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous AI Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in Database Action tools, or using other Oracle and third party data integration tools.
+In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous AI Database (either Oracle Autonomous AI Lakehouse or Oracle Autonomous AI Transaction Processing	) using the ADB built-in Database Action tools, or using other Oracle and third party data integration tools.
 
 You can also leave data in place in cloud object storage, and link to it from your Autonomous AI Database.
 
-> **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
+> **Note:** While this lab uses Oracle Autonomous AI Lakehouse, the steps are identical for loading data into an Oracle Autonomous AI Transaction Processing database.
 
 Estimated Time: 10 minutes
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create the Autonomous Database Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Download Two .csv Files from the MovieStream Data Lake to your Local Computer
 
