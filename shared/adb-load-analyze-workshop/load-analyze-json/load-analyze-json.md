@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Load movie data that is stored in JSON format into an Autonomous Database collection. After loading the collection using the API, you will then analyze movie data using Oracle JSON functions.
+Load movie data that is stored in JSON format into an Autonomous AI Database collection. After loading the collection using the API, you will then analyze movie data using Oracle JSON functions.
 
 Estimated Time: 10 minutes
 
@@ -17,9 +17,9 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of  lab 2, **Provision an Autonomous Database**, in the Contents menu on the left.
+- This lab requires completion of  lab 2, **Provision an Autonomous AI Database**, in the Contents menu on the left.
 
-    >**Important:** In the **Provision an Autonomous Database** lab, we chose **23ai** as the database version. Some of the JSON syntax in this lab works only with version **23ai** database version.
+    >**Important:** In the **Provision an Autonomous AI Database** lab, we chose **26ai** as the database version. Some of the JSON syntax in this lab works only with version **26ai** database version.
 
 ## Task 1: Create and load JSON movie collection
 [](include:adb-create-load-json-collection.md)
@@ -46,9 +46,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author** - Marty Gubar, Autonomous Database Product Management
+* **Author** - Marty Gubar (Retired), Autonomous AI Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

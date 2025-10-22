@@ -8,7 +8,7 @@
 
 Analyzing past performance lets you know customers who have already been lost. Let's get in front of this problem and predict those that are at risk using in database analytics.
 
-In this lab, you will use Oracle Machine Learning (OML) in Autonomous Database to identify customers with a higher likelihood of churning from **Oracle MovieStream** streaming services. You will first use OML AutoML UI to create a customer churn model. Then, you will use OML Notebooks to score customers using both SQL and Python.
+In this lab, you will use Oracle Machine Learning (OML) in Autonomous AI Database to identify customers with a higher likelihood of churning from **Oracle MovieStream** streaming services. You will first use OML AutoML UI to create a customer churn model. Then, you will use OML Notebooks to score customers using both SQL and Python.
 
 Estimated Time: 30 minutes
 
@@ -17,7 +17,7 @@ Watch the video below for a quick walk-through of the lab.
 
 ### About OML
 
-In this lab, we will learn more about the Autonomous Database's built-in [Oracle Machine Learning](https://www.oracle.com/goto/machinelearning) components, including:
+In this lab, we will learn more about the Autonomous AI Database's built-in [Oracle Machine Learning](https://www.oracle.com/goto/machinelearning) components, including:
 - For information about Oracle Machine Learning Notebooks, see the [OML Notebooks documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html).
 - For information about Oracle Machine Learning AutoML UI, see [OML AutoML UI documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml-automl-ui/index.html).
 - For information about Oracle Machine Learning for Python, see [OML4Py documentation](https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/index.html).
@@ -25,9 +25,9 @@ In this lab, we will learn more about the Autonomous Database's built-in [Oracle
 ### Objectives
 
 In this lab, you will:
-- Create an **Oracle Machine Learning user** for the Autonomous Database instance
+- Create an **Oracle Machine Learning user** for the Autonomous AI Database instance
 - With this new user, load **past churn behavior data** from an OCI Object Storage location
-- Access **Oracle Machine Learning UI** provided with Oracle Autonomous Database
+- Access **Oracle Machine Learning UI** provided with Oracle Autonomous AI Database
 - Use **OML AutoML UI** to build a high-quality machine model that can help predict future churn by customers
 - Use the machine learning model to score the list of customers and predict their likelihood to churn in the future
 - (Optionally) register the model in Oracle Analytics Cloud, and use it to score in a new Data Flow
@@ -36,20 +36,18 @@ In this lab, you will:
 
 <if type="freetier">
 
-- You must have run `Lab 2: Provision an Autonomous Database`
+- You must have run `Lab 2: Provision an Autonomous AI Database`
 - You must have ADMIN access to Database Actions (required to create a new user)
 
 ## Task 1: Create a new Database user and access its DB Actions
 
 1. If you have the Database Actions for the **`ADMIN`** user still open, click the **Administration** tab, and then click the **Database Users** tab. 
 
-    ![Go to Database Users from Database Actions](images/dbactions-database-users-tile.png "")
+    ![Go to Database Users from Database Actions](images/dbactions-database-users-tile.png " ")
 
     The **User Management** page is displayed.
 
-    Alternatively, you can navigate to the **User Management** page from the **Autonomous Databases** page. Click your **MyQuickStart** database name. On the **MyQuickStart** page, click the **Database Actions** drop-down menu, and then select **Database Users**.
-
-    ![Go to Database Users from Autonomous Databases page](images/dbactions-drop-down-menu.png "")
+    Alternatively, you can navigate to the **User Management** page from the **Autonomous AI Databases** page. Click your **MyQuickStart** database name. On the **MyQuickStart** page, click the **Database Actions** drop-down menu, and then select **Database Users**.
 
 2. On the **User Management** page, click **Create User**.
 
@@ -308,7 +306,7 @@ In this lab, you will:
 
     ![Status running](images/status-running.png =55%x*)
 
-    The performance of OML AutoML UI is impacted by your Autonomous Database configuration. As explained in [this blog post](https://blogs.oracle.com/machinelearning/oml-automl-ui-4-things-you-can-do-that-affect-performance), several components may affect the performance, including the base number of Autonomous Database CPUs and whether or not auto scaling has been enabled.
+    The performance of OML AutoML UI is impacted by your Autonomous AI Database configuration. As explained in [this blog post](https://blogs.oracle.com/machinelearning/oml-automl-ui-4-things-you-can-do-that-affect-performance), several components may affect the performance, including the base number of Autonomous AI Database CPUs and whether or not auto scaling has been enabled.
 
 2. Check the results.
    Once the process completes, you will note that the **Running** status on the top right changes to **Completed**. The **Balanced Accuracy** chart will show the increased accuracy over time as the models were tested, and the **Leader Board** will present the different algorithms that were chosen, and their respective **Model Names**.
@@ -470,7 +468,7 @@ In this lab, you will:
     
     ![Churn AutoML Task 3 Step 3 Scoring Notebook second screen](images/oml-churn-automl-notebook-screen2.png " ")
 
-    Please note that the following `SELECT` statement can be run by any Application connecting to this Autonomous Database instance through `JDBC`, and the scoring will be returned.
+    Please note that the following `SELECT` statement can be run by any Application connecting to this Autonomous AI Database instance through `JDBC`, and the scoring will be returned.
 
     Also remember that you need to change the name of the model being used from `CHURN_PRED` to something else if you decided to use a different name when you were doing the **Rename** of the model in **Step 1** of **Task 6**.
 
@@ -601,7 +599,7 @@ Now other professionals can take advantage of both the deployment you have just 
 ## Task 8: Bonus content - deploy the model to an OML Service REST endpoint
 </if>
 
-   We will deploy the selected model from the AutoML UI directly to a REST endpoint that is hosted by **Oracle Machine Learning Services**, and it is provided at no extra cost to all **Autonomous Database** customers.  Only the CPU consumed while actually scoring via REST would be charged, so there is no additional infrastructure needed for the model's REST API to be exposed.
+   We will deploy the selected model from the AutoML UI directly to a REST endpoint that is hosted by **Oracle Machine Learning Services**, and it is provided at no extra cost to all **Autonomous AI Database** customers.  Only the CPU consumed while actually scoring via REST would be charged, so there is no additional infrastructure needed for the model's REST API to be exposed.
 
 1. Let's return to the OML AutoML Experiment results. Click the Navigation menu at the top of the Oracle Machine Learning page, and then click **AutoML Experiments** in the menu.
 
@@ -647,7 +645,7 @@ Now other professionals can take advantage of both the deployment you have just 
 
    ![Click URI name](images/click-uri-name.png " ")
 
-11. We are ready to deploy the Churn Model to an Application via REST. On the Database   Actions Launchpad, click the **Related Services** tab, and then click the **Oracle Machine Learning RESTful services** tab to find the specific address for your own model, since these are unique to each Autonomous Database instance.
+11. We are ready to deploy the Churn Model to an Application via REST. On the Database   Actions Launchpad, click the **Related Services** tab, and then click the **Oracle Machine Learning RESTful services** tab to find the specific address for your own model, since these are unique to each Autonomous AI Database instance.
 
     ![Click the Oracle Machine Learning RESTful services tab](images/click-tab.png " ")
 
@@ -655,22 +653,18 @@ Now other professionals can take advantage of both the deployment you have just 
    
    ![Churn AutoML Task 10 Step 9 DB Actions Related Services](images/oml-churn-dbactions-related.png " ")
 
-   For more details on how to use the deployed model and Oracle Machine Learning Services capabilities, make sure to look at that Lab in the [Oracle Machine Learning Fundamentals on Oracle Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922) workshop, which shows you how to use REST clients to access the model and more.
+   For more details on how to use the deployed model and Oracle Machine Learning Services capabilities, make sure to look at that Lab in the [Oracle Machine Learning Fundamentals on Oracle Autonomous AI Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922) workshop, which shows you how to use REST clients to access the model and more.
 
 ## Learn more
 
-* [Oracle Machine Learning product information](https://oracle.com/goto/machinelearning)
-* [LiveLabs: Introduction to Oracle Machine Learning for Python](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=786)
-* [LiveLabs: Get started with Oracle Machine Learning fundamentals on Autonomous Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922)
 * [Get started with Oracle Machine Learning Services REST APIs](https://docs.oracle.com/en/database/oracle/machine-learning/omlss/index.html)
 * [Subscribe to the AskTOM Oracle Machine Learning Office Hours](https://asktom.oracle.com/pls/apex/asktom.search?office=6801#sessionss)
-* [Oracle Machine Learning AutoML UI Demo](https://www.youtube.com/watch?v=yJGsfU9cmt0)
 * [Oracle Machine Learning for Python Demo](https://youtu.be/P861m__PEMQ)
 
 ## Acknowledgements
-* **Author:** Marcos Arancibia, Oracle Autonomous Database Product Management
+* **Author:** Marcos Arancibia, Oracle Autonomous AI Database Product Management
 * **Contributors:** Mark Hornick, Kevin Lazarz, Nilay Panchal, Jayant Sharma, Jie Liu, Sherry LaMonica, Lauran K. Serhal
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

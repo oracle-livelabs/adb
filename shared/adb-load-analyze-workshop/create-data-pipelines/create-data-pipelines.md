@@ -39,7 +39,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the labs **Provision an Autonomous Database** and **Load Data from Object Storage Private Buckets** found in the Contents menu on the left.
+- This lab requires completion of the labs **Provision an Autonomous AI Database** and **Load Data from Object Storage Private Buckets** found in the Contents menu on the left.
 
 ## Task 1: Create a Data Pipeline
 
@@ -64,11 +64,11 @@ Begin by creating a data pipeline to either load data or export data continuousl
 
 ## Task 2: Configure the Data Pipeline Attributes
 
-Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a weather CSV file that you will download and then upload to your object storage bucket. **`WEATHER`** will be the destination table that you create in your Autonomous Database that your pipeline will load data into.
+Next, you will set the appropriate attributes for the data pipeline, such as the type of data files (for example JSON, CSV) and the location where the data files will exist (for example an object store bucket or file folder). In this lab, the data source will be a weather CSV file that you will download and then upload to your object storage bucket. **`WEATHER`** will be the destination table that you create in your Autonomous AI Database that your pipeline will load data into.
 
 Define the attributes for the data pipeline. The pipeline will import all data files of **CSV type** from an object storage bucket location at an interval of every 30 minutes (the default is 15 minutes) with a priority selected as High (that is, the HIGH database service name).
 
-In preparation for step 1, in **Lab 6: Load Data from Private Object Storage Buckets**, you created a private object storage bucket and a credential to access that bucket from your Autonomous Database. Now you will set up continuous data loading using the object storage URL of your bucket. You will need the following:
+In preparation for step 1, in **Lab 6: Load Data from Private Object Storage Buckets**, you created a private object storage bucket and a credential to access that bucket from your Autonomous AI Database. Now you will set up continuous data loading using the object storage URL of your bucket. You will need the following:
 
 * The **credential name** value, use the name of the credential you created in **Lab 6 > Task 6**. You named the credential `OBJ_STORE_CRED`.
 *  The **location** value, which is the base URL path that you identified in **Lab 6 > Task 4**.
@@ -173,9 +173,9 @@ Before proceeding to Start your pipeline, if you had tested your pipeline as was
     /
     ```
 
-## Task 5: Create the WEATHER Table in the Target Autonomous Database
+## Task 5: Create the WEATHER Table in the Target Autonomous AI Database
 
-Before starting the data pipeline, create the **`WEATHER`** table in your target Autonomous Database that the data pipeline will load, when it detects data that you upload to your object store.
+Before starting the data pipeline, create the **`WEATHER`** table in your target Autonomous AI Database that the data pipeline will load, when it detects data that you upload to your object store.
 
 1. Create the **`WEATHER`** table. Copy and paste the following code into your SQL Worksheet, and then click **Run Script (F5)** in the toolbar.
 
@@ -205,7 +205,7 @@ Before starting the data pipeline, create the **`WEATHER`** table in your target
 
 ## Task 6: Start the Data Pipeline
 
-Now that your data pipeline is successfully configured, and you have created the target **`WEATHER`** table in your Autonomous Database, all you have left to do is simply start the pipeline.
+Now that your data pipeline is successfully configured, and you have created the target **`WEATHER`** table in your Autonomous AI Database, all you have left to do is simply start the pipeline.
 
 Once your start your pipeline, it will run and since it is a **load data** pipeline, it will pick up new data files to load that have not been successfully processed yet, as they are moved into your object storage bucket.
 
@@ -242,11 +242,9 @@ For this example, download a .CSV file that contains the weather information. In
 
 ## Task 8: Upload the Data to your OCI Object Storage Bucket
 
-In this task, you will upload the downloaded **`weather-newark-airport.csv`** file to your private object storage bucket. The pipeline should detect this new data, and automatically load it into your autonomous database.
+In this task, you will upload the downloaded **`weather-newark-airport.csv`** file to your private object storage bucket. The pipeline should detect this new data, and automatically load it into your Autonomous AI Database.
 
-1. In the **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud Console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
-
-    ![Navigate to buckets.](./images/navigate-buckets.png " ")
+1. In the **Autonomous AI Database** browser tab, open the **Navigation** menu in the Oracle Cloud Console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
 2. On the **Buckets** page, select your compartment that contains your bucket from the **Compartment** field, if needed. In this example, we chose our own compartment named **`training-adw-compartment`**. Make sure you are in the region where you created your bucket.
 
@@ -254,41 +252,49 @@ In this task, you will upload the downloaded **`weather-newark-airport.csv`** fi
     ![The buckets page is displayed.](./images/bucket-created.png " ")
     -->
 
-3. Click your **bucket name** to open it. The **Bucket Details** page is displayed. In the **Objects** section, the `potential_churners.csv` file that you uploaded in a previous lab is displayed.
+3. Click your **bucket name** to open it. The **Bucket details** page is displayed. Click the **Objects** tab. The `potential_churners.csv` file that you uploaded in a previous lab is displayed.
 
-    ![Click the bucket name.](./images/objects-section.png " ")
+    ![Click the bucket name.](./images/objects-tab.png =70%x*)
 
-4. Create a new folder in this bucket to where you'll upload the weather data. Click the **Actions** drop-down list, and then select **Create New Folder**.
+4. Create a new folder in this bucket to where you'll upload the weather data. Click the **Actions** drop-down list, and then select **Create new folder**.
 
-    ![Click Create New Folder.](./images/create-new-folder.png " ")
+    ![Click Create New Folder.](./images/create-new-folder.png =70%x*)
 
-5. In the **Create New Folder** dialog box, enter **`weather`** as the name of the folder, and then click **Create**.
+5. In the **Create new folder** dialog box, enter **`weather`** as the name of the folder, and then click **Create folder**.
 
-    ![Create a folder named weather.](./images/click-create.png " ")
+    ![Create a folder named weather.](./images/click-create-folder.png =70%x*)
 
-6. Click the **Actions** icon (ellipsis) associated with the **`weather`** folder, and then select **Upload** from the context menu.
+6. Click the **Actions** icon (ellipsis) associated with the **`weather`** folder, and then select **Upload objects** from the context menu.
 
-    ![Click the weather folder to open it.](./images/weather-upload-objects.png " ")
+    ![Click the weather folder to open it.](./images/weather-upload-objects.png =70%x*)
 
-7. On the **Upload Objects** dialog box, scroll down to the **Choose Files from your Computer** section, and then click the **select files** link.
+7. On the **Upload objects** dialog box, scroll down to the **Choose Files from your Computer** section, and then click the **Drop a file or select one** box.
 
-    ![Click Upload under Objects section.](./images/click-select-file.png " ")
+    ![Click Upload under Objects section.](./images/click-select-file.png =70%x*)
 
-8. Navigate to the location where you downloaded the **`weather-newark-airport.csv`** file, and select it. Drag and drop, or click **select files**, to select the **`weather-newark-airport.csv`** file that you downloaded in the previous task. The file name is displayed in the **Upload Objects** dialog box. Click **Upload**.
+8. Navigate to the location where you downloaded the **`weather-newark-airport.csv`** file, and select it. The file name is displayed in the **File upload** dialog box. Click **Next**. 
 
-    ![Select and upload the weather-newark-airport.csv file.](./images/select-and-upload-weather-newark-airport-file.png " ")
+    ![Select and upload the weather-newark-airport.csv file.](./images/select-weather-newark-airport-file.png =70%x*)
 
-9. When uploading the file is completed, the status is **Finished**. Click **Close**.
+9. On the **Review and upload files** page, click **Upload objects**.
 
-    ![Click Close when the file finishes uploading.](./images/click-close.png " ")
+    ![Select and upload the weather-newark-airport.csv file.](./images/review-upload.png =70%x*)
 
-12. The **Bucket Details** page is re-displayed. The **`weather-newark-airport.csv`** file is displayed under the **weather** folder.
+10. When uploading the file is completed, the status is **Done**. Click **Close**.
 
-    ![Uploaded file is displayed.](./images/uploaded-file-displayed.png " ")
+    ![Click Close when the file finishes uploading.](./images/click-close.png =70%x*)
+
+11. The **Bucket details** page is re-displayed. Click the **weather** folder.
+
+    ![Click the weather folder.](./images/click-weather-folder.png =70%x*)
+
+    The **`weather-newark-airport.csv`** file is displayed under the **weather** folder.
+
+    ![Uploaded file is displayed.](./images/uploaded-file-displayed.png =70%x*)
 
 ## Task 9: Check that the Data Pipeline Loaded the Data into the Database
 
-When you uploaded your new weather data to your object store, the pipeline should have detected the new data and loaded it to your target autonomous database **`WEATHER`** table.
+When you uploaded your new weather data to your object store, the pipeline should have detected the new data and loaded it to your target Autonomous AI Database **`WEATHER`** table.
 
 1. Check that your weather data was loaded from your object store to the **`WEATHER`** table in your database. Copy and paste the following query into your SQL Worksheet, and then click the **Run Scripts** icon. The query shows a sampling of 10 rows of data from the **`WEATHER`** table:
 
@@ -312,10 +318,10 @@ When you uploaded your new weather data to your object store, the pipeline shoul
 
 * **Contributors:** 
 
-    * Nilay Panchal, Principal Product Manager, Autonomous Database
-    * Sanket Jain, Architect, Autonomous Database
+    * Nilay Panchal, Principal Product Manager, Autonomous AI Database
+    * Sanket Jain, Architect, Autonomous AI Database
    
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
