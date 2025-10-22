@@ -10,7 +10,7 @@
 
 In just a few minutes, Autonomous AI Database lets you deploy a complete data warehousing platform that can scale to your requirements. And, you can use its Database Tools to easily populate that warehouse from the data lake.
 
-This lab walks you through the steps to get started using the Oracle Autonomous AI Database on Oracle Cloud Interface. In this lab, you provision a new Lakehouse instance.
+This lab walks you through the steps to get started using the Oracle Autonomous AI Database on Oracle Cloud Interface. In this lab, you provision a new Oracle Autonomous AI Lakehouse instance.
 
 Estimated Time: 5 minutes
 
