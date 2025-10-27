@@ -2,12 +2,12 @@
 
 ## About this Workshop
 
-Autonomous Database provides a complete and easy to use platform for database applications. This workshop introduces deploying a database optimized for data warehousing workloads, integrating that warehouse with a data lake and then analyzing data using rich Oracle SQL capabilities.
+Oracle Autonomous AI Database provides a complete and easy to use platform for database applications. This workshop introduces deploying a database optimized for data warehousing workloads, integrating that warehouse with a data lake and then analyzing data using rich Oracle SQL capabilities.
 
 ### Objectives
 In the next 15 minutes, you will:
-* Deploy an Autonomous Database instance that is optimized for data warehousing workloads
-* Use Autonomous Database tools to load data from object storage
+* Deploy an Oracle Autonomous AI Database instance that is optimized for data warehousing workloads
+* Use Oracle Autonomous AI Database tools to load data from object storage
 * Use advanced SQL to uncover issues and possibilities
 
 
@@ -22,18 +22,18 @@ The workshop's business scenario is based on Oracle MovieStream - a fictitious m
 
 ## Learn More
 
-* [Oracle Autonomous Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
-* [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/index.html)
+* [Oracle Autonomous AI Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
+* [Additional Autonomous AI Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/index.html)
 
 
 ## Acknowledgements
-* **Author:** Marty Gubar, Product Manager
+* **Author:** Marty Gubar (Retired), Product Manager
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date** April 2024
+* **Last Updated By/Date** October 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (C) 2024 Oracle Corporation.
+Copyright (C) 2025 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
