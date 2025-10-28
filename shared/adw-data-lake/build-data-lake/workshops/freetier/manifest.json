@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Build a Data Lake with Autonomous Data Warehouse",
+    "workshoptitle": "Build a Data Lake with Oracle Autonomous AI Lakehouse",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",

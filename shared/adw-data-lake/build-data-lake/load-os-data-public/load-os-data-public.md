@@ -4,17 +4,17 @@
 
 In this lab, you will link from your ADB instance to data from the MovieStream data lake on [Oracle Cloud Infrastructure Object Storage](https://www.oracle.com/cloud/storage/object-storage.html) in preparation for exploration and analysis.
 
-You can load data into your Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in tools. Alternatively, you can use other Oracle and third party data integration tools. With the built-in tools, you can link to and load data from:
+You can load data into your Oracle Autonomous AI Database (either Oracle Autonomous AI Lakehouse or Oracle Autonomous AI Transaction Processing) using the ADB built-in tools. Alternatively, you can use other Oracle and third party data integration tools. With the built-in tools, you can link to and load data from:
 
 + Files on your local machine.
 + Tables in remote databases.
 + Files stored in cloud-based object storage (Oracle Cloud Infrastructure Object Storage, Amazon S3, Microsoft Azure Blob Storage, and Google Cloud Storage).
 
-You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
+You can also leave data in place in cloud object storage, and link to it from your Oracle Autonomous AI Database.
 
 > **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
 
-This workshop explores several methods for loading and linking data to an Oracle Autonomous Database. In this first data loading lab, we practice loading data from public object storage buckets.
+This workshop explores several methods for loading and linking data to an Oracle Autonomous AI Database. In this first data loading lab, we practice loading data from public object storage buckets.
 
 Estimated Time: 10 minutes
 
@@ -26,7 +26,7 @@ Watch the video below for a quick walk-through of the lab.
 In this lab, you will:
 
 * Navigate to the Data Load page.
-* Create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous Database
+* Create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous AI Database
 
 ### Prerequisites
 
@@ -48,7 +48,7 @@ This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 
 
 ## Task 2: Link to Data in Public Object Storage Buckets and Create External Tables
 
-In this task, you will link to data and create the following external tables in your Autonomous Database instance: **`customer_contact`**, **`pizza_locations`**, and **`sales_sample`**.
+In this task, you will link to data and create the following external tables in your Oracle Autonomous AI Database instance: **`customer_contact`**, **`pizza_locations`**, and **`sales_sample`**.
 
 1. On the **Data Load Dashboard**, click the **Link Data** tile.
 
@@ -102,7 +102,7 @@ In this task, you will link to data and create the following external tables in 
 
     ![View the sales-sample load task settings.](images/sales-sample-preview.png =65%x*)
 
-11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **`SALES_SAMPLE`** to **`CUSTSALES_EXT`**. Next, click **Close**.
+11. The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Oracle Autonomous AI Database instance, without the need to predefine the table in SQL. Change the name of the target table to be created from **`SALES_SAMPLE`** to **`CUSTSALES_EXT`**. Next, click **Close**.
 
     ![Update table name](images/change-target-table-name.png)
 
@@ -198,7 +198,7 @@ You may now proceed to the next lab.
 ## Learn more
 
 * [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
-* [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
+* [Load Data with Oracle Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
 * [DBMS_CLOUD Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-package.html#GUID-CE359BEA-51EA-4DE2-88DB-F21A9FC10721)
 
 You may now proceed to the next lab.
@@ -208,9 +208,9 @@ You may now proceed to the next lab.
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
     * Alexey Filanovskiy, Senior Principal Product Manager
-    * Mike Matthews, Autonomous Database Product Management
-    * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+    * Mike Matthews, Autonomous AI Database Product Management
+    * Marty Gubar (Retired), Autonomous AI Database Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will load movie data that is stored in `JSON` format into an Autonomous Database collection. After loading the collection using the API, you will then analyze movie data using Oracle JSON functions.
+In this lab, you will load movie data that is stored in `JSON` format into an Oracle Autonomous AI Database collection. After loading the collection using the API, you will then analyze movie data using Oracle JSON functions.
 
 Estimated Time: 10 minutes
 
@@ -18,7 +18,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+- This lab requires completion of the This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 2: Provision the Autonomous AI Database Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Create and Load JSON Movie Collection
 <!---
@@ -48,7 +48,7 @@ JSON data is organized very differently than typical warehouse data. There is a 
     ![The SQL worksheet is displayed.](./images/click-development-sql-tabs.png " ")
 
     The SQL Worksheet is displayed.
-6. Use the Autonomous Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+6. Use the Oracle Autonomous AI Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
     ```
     <copy>
     -- create and load movie json collection from a public bucket on object storage
@@ -250,9 +250,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author** - Marty Gubar, Autonomous Database Product Management
+* **Author: (Retired)** Marty Gubar, Autonomous AI Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

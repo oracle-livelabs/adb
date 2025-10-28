@@ -21,14 +21,14 @@ In this lab, we will show you how to do the following:
 
 This lab requires the completion of the following labs/task from the **Contents** menu on the left:
 
-* **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**.
+* **Lab 1: Set up the Workshop Environment > Task 2:  Provision the Autonomous AI Database Instance**.
 * **Lab 5: Link Data from Private Object Storage Buckets > Task 6: Define a Cloud Location and Create a Credential**.
 
 ## Task 1: Create a Materialized View for an External Table
 
-In this task, you will create a materialized view on top of the **custsales** external table that you created in **Lab 4: Task 2** based on **sales\_sample** to improve the query response time.
+In this task, you will create a materialized view on top of the **`custsales`** external table that you created in **Lab 4: Task 2** based on **`sales_sample`** to improve the query response time.
 
-1. Let's look at the content of the **sales\_sample** folder in the **moviestream\_landing** Oracle Object Storage bucket. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+1. Let's look at the content of the **`sales_sample`** folder in the **`moviestream_landing`** Oracle Object Storage bucket. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -42,11 +42,11 @@ In this task, you will create a materialized view on top of the **custsales** ex
 
     >**Note:** In **Lab 5 > Task 6**, you created a credential named **`OBJ_STORAGE_CRED`** that you used in the above query.
 
-    There are **24** parquet data files in the **sales_sample** folder. Each file represents a month's worth of data for the years **2019** and **2020**.
+    There are **24** parquet data files in the **`sales_sample`** folder. Each file represents a month's worth of data for the years **`2019`** and **`2020`**.
 
     ![The parquet files in the specified folder are displayed.](./images/parquet-files.png " ")
 
-2. Describe the structure of the **custsales** external table.
+2. Describe the structure of the **`custsales`** external table.
 
     ```
     <copy>
@@ -55,7 +55,7 @@ In this task, you will create a materialized view on top of the **custsales** ex
     ```
     ![Describe custsales.](./images/describe-custsales.png " ")
 
-3. Let's find out the sum of the actual price that is associated with **movie\_id 19**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+3. Let's find out the sum of the actual price that is associated with **`movie_id 19`**. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -71,7 +71,7 @@ In this task, you will create a materialized view on top of the **custsales** ex
 
     ![Run query without materialized view.](./images/run-query.png " ")
 
-4. Create a materialized view over the **custsales** external table to improve the query response time. In data warehouses, you can use materialized views to pre-compute and store aggregated data such as the sum of **custsales**. Materialized views in these environments are often referred to as summaries, because they store summarized data. They can also be used to pre-compute joins with or without aggregations. A materialized view eliminates the overhead associated with expensive joins and aggregations for a large or important class of queries. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about materialized views, see [Basic Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/basic-materialized-views.html#GUID-A7AE8E5D-68A5-4519-81EB-252EAAF0ADFF).
+4. Create a materialized view over the **`custsales`** external table to improve the query response time. In data warehouses, you can use materialized views to pre-compute and store aggregated data such as the sum of **`custsales`**. Materialized views in these environments are often referred to as summaries, because they store summarized data. They can also be used to pre-compute joins with or without aggregations. A materialized view eliminates the overhead associated with expensive joins and aggregations for a large or important class of queries. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about materialized views, see [Basic Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/19/dwhsg/basic-materialized-views.html#GUID-A7AE8E5D-68A5-4519-81EB-252EAAF0ADFF).
 
     ```
     <copy>
@@ -104,7 +104,7 @@ In this task, you will create a materialized view on top of the **custsales** ex
     /
     ```
 
-5. Gather some statistics for the query optimizer. This is an optional step since ADB will automatically gather statistics. In this lab, we will gather the optimizer statistics manually to show how it is done. The query optimizer (simply called the optimizer) is a built-in database software that determines the most efficient method for a SQL statement to access requested data. Use the **DBMS\_STATS** package to manipulate optimizer statistics. You can gather statistics on objects and columns at various levels of granularity: object, schema, and database. Use the **GATHER\_TABLE_STATS** procedure to collect statistics on the **CUSTSALES** table and the **SALES\_SUMMARY\_MV** materialized view. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about the optimizer, see [Query Optimizer Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgsql/query-optimizer-concepts.html#GUID-06129ACE-36B2-4534-AE68-EDFCAEBB3B5D).
+5. Gather some statistics for the query optimizer. This is an optional step since ADB will automatically gather statistics. In this lab, we will gather the optimizer statistics manually to show how it is done. The query optimizer (simply called the optimizer) is a built-in database software that determines the most efficient method for a SQL statement to access requested data. Use the **`DBMS_STATS`** package to manipulate optimizer statistics. You can gather statistics on objects and columns at various levels of granularity: object, schema, and database. Use the **`GATHER_TABLE_STATS`** procedure to collect statistics on the **`CUSTSALES`** table and the **`SALES_SUMMARY_MV`** materialized view. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. For additional information about the optimizer, see [Query Optimizer Concepts](https://docs.oracle.com/en/database/oracle/oracle-database/19/tgsql/query-optimizer-concepts.html#GUID-06129ACE-36B2-4534-AE68-EDFCAEBB3B5D).
 
     ```
     <copy>
@@ -171,7 +171,7 @@ In this task, you will learn about how ADB makes the management of your partitio
 
 ### **The traditional way to create a partitioned external table**
 
-You can create partitioned external tables in Oracle Autonomous Database by using the **DBMS_CLOUD** API. This API simplifies the definition of the external table structure;however, you will have to provide the table's metadata.
+You can create partitioned external tables in Oracle Autonomous AI Database by using the **DBMS_CLOUD** API. This API simplifies the definition of the external table structure;however, you will have to provide the table's metadata.
 
 For example, you will have to:
 
@@ -183,11 +183,11 @@ For example, you will have to:
 
 Let's just have a quick look at what all of this means for a relatively small partitioned table with an example.
 
-A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Autonomous Database. The data is transactional in nature and represents sales data for two years. The data is in the **sales\_sample** folder in the **moviestream\_landing** Object Storage bucket that you used in the previous task. There are **24** `parquet` data files in this folder. Each file represents a month's worth of data for the years **2019** and **2020**.
+A bunch of sales data-related files landed in our Oracle Object Storage bucket, ready to be analyzed in Oracle Autonomous AI Database. The data is transactional in nature and represents sales data for two years. The data is in the **`sales_sample`** folder in the **`moviestream_landing`** Object Storage bucket that you used in the previous task. There are **24** `parquet` data files in this folder. Each file represents a month's worth of data for the years **2019** and **2020**.
 
 1. Click **Database Actions | Performance Hub** in the banner to display the **Launchpad** page. Click the **Development** tab, and then click the **SQL** tab.
 
-2. Let's create a monthly partitioned external table on top of these `parquet` files, using the traditional **DBMS\_CLOUD** PL/SQL package and the **CREATE\_EXTERNAL\_PART\_TABLE** procedure. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+2. Let's create a monthly partitioned external table on top of these `parquet` files, using the traditional **`DBMS_CLOUD`** PL/SQL package and the **`CREATE_EXTERNAL_PART_TABLE`** procedure. Copy and paste the following code into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -281,7 +281,7 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
     ```
     ![Run explain plan for the query.](./images/explain-plan.png " ")
 
-4. After issuing the **EXPLAIN PLAN** statement, you use a script or package provided by Oracle Database to display the most recent plan table output. The following example uses the **DBMS_XPLAN.DISPLAY** function. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
+4. After issuing the **EXPLAIN PLAN** statement, you use a script or package provided by Oracle Database to display the most recent plan table output. The following example uses the **`DBMS_XPLAN.DISPLAY`** function. Copy and paste the following code into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
     ```
     <copy>
@@ -345,7 +345,7 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
     + The column structure is derived for the self-describing table formats with partitioned external tables, just like with non-partitioned external tables.
     + The hierarchical nature of the object storage file, together with the additional external table metadata of providing the partition_columns, enables the kernel to build the complete partitioning syntax based on the metadata and the existing files. The code is exactly the same, whether we end up with 24 or 1000 partitions!
 
-    To view the Data Definition Language (DDL) for the newly created partitioned external table, right-click the **SALES\_SAMPLE\_NEW\_API** table in the **Navigator** tab in your SQL worksheet. Next, click **Quick DDL** > **Save to File** from the context menu. The table definition is downloaded to your local machine as shown in the 
+    To view the Data Definition Language (DDL) for the newly created partitioned external table, right-click the **`SALES_SAMPLE_NEW_API`** table in the **Navigator** tab in your SQL worksheet. Next, click **Quick DDL** > **Save to File** from the context menu. The table definition is downloaded to your local machine as shown in the 
 
     ![View the DDL.](./images/view-ddl.png " ")
 
@@ -356,7 +356,7 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
 ## Learn more
 
 * [Create Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/19/sqlrf/CREATE-MATERIALIZED-VIEW.html#GUID-EE262CA4-01E5-4618-B659-6165D993CA1B).
-* [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
+* [Load Data with Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
 
 <if type="freetier">
     You may now proceed to the next lab.
@@ -368,11 +368,9 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
 
 ## Acknowledgements
 
-* **Author:**
-    * Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:**
-    + Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

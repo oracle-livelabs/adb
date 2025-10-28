@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Autonomous Data Warehouse (ADW), Oracle Object Storage, and Amazon Simple Storage Service (S3).
+The labs in this workshop walk you through all the steps to build a Data Lake using Oracle Autonomous AI Lakehouse (LH), Oracle Object Storage, and Amazon Simple Storage Service (S3).
 
 In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle ADW has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
 
@@ -17,7 +17,7 @@ The focus of this workshop is on the process of building an object store-centric
 Estimated Time: 2.5 hours
 
 ### What is a Data Lake?
-A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will query in ADB.
+A data lake enables an enterprise to store all of its data in a cost effective, elastic environment while providing the necessary processing, persistence, and analytic services to discover new business insights. A data lake stores and curates structured and unstructured data and provides methods for organizing large volumes of highly diverse data from multiple sources. In this workshop, a Data Lake refers to the Oracle Object Storage buckets that you will query in Oracle Autonomous AI Database.
 
 ### What is a Data Warehouse?
 With a data warehouse, you perform data transformation and cleansing before you commit the data to the warehouse. With a data lake, you ingest data quickly and prepare it on the fly as people access it. A data lake supports operational reporting and business monitoring that require immediate access to data and flexible analysis to understand what is happening in the business while it happening.
@@ -29,8 +29,8 @@ For additional information, see [What is the difference between a Data Lake, Dat
 In this workshop, you will:
 
 * Set up the workshop environment.
-* Load local data files into your ADB instance.
-* Load JSON data into your ADB instance and then and analyze that data.
+* Load local data files into your Oracle Autonomous AI Database instance.
+* Load JSON data into your Oracle Autonomous AI Database instance and then and analyze that data.
 * Link to data in public and private Object Storage buckets.
 * Load and analyze the news from REST endpoints.
 * Create external tables using the Delta Sharing protocol
@@ -39,7 +39,7 @@ In this workshop, you will:
 * Improve query performance by creating a materialized view over an external table.
 * Create and manage partitioned external tables to improve performance.
 
-You can create a table on top of Parquet files, using **Database Actions** in ADB and then run SQL and REST queries. You can also create a table on top of JSON files using a PL/SQL API and then run SQL, JSON API, and MongoDB API queries. You can create a table on top of CSV files using a PL/SQL API and then run SQL queries. Finally, you can create external tables on top of public REST endpoints and Delta Sharing.
+You can create a table on top of Parquet files, using **Database Actions** in Oracle Autonomous AI Database and then run SQL and REST queries. You can also create a table on top of JSON files using a PL/SQL API and then run SQL, JSON API, and MongoDB API queries. You can create a table on top of CSV files using a PL/SQL API and then run SQL queries. Finally, you can create external tables on top of public REST endpoints and Delta Sharing.
 
  ![The diagram shows the sources for creating tables.](images/table-sources-diagram.png)
 
@@ -55,7 +55,7 @@ You may now proceed to the next lab.
 
 ## Learn More
 
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf) and the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://livelabs.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
@@ -63,7 +63,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
