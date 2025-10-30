@@ -12,7 +12,7 @@ You can load data into your Oracle Autonomous AI Database (either Oracle Autonom
 
 You can also leave data in place in cloud object storage, and link to it from your Oracle Autonomous AI Database.
 
-> **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
+> **Note:** While this lab uses Oracle Autonomous AI Lakehouse, the steps are identical for loading data into an Oracle Autonomous AI Transaction Processing database.
 
 This workshop explores several methods for loading and linking data to an Oracle Autonomous AI Database. In this first data loading lab, we practice loading data from public object storage buckets.
 
@@ -30,7 +30,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab requires completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab requires completion of **Lab 1: Setup the Workshop Environment > Task 2: Provision the Autonomous AI Database Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Navigate to the Data Load Page
 

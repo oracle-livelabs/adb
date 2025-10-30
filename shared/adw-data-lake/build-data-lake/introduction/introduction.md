@@ -4,13 +4,13 @@
 
 The labs in this workshop walk you through all the steps to build a Data Lake using Oracle Autonomous AI Lakehouse (LH), Oracle Object Storage, and Amazon Simple Storage Service (S3).
 
-In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle ADW has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
+In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle Autonomous AI Lakehouse has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
 
 Traditionally, there were two main paths for creating data lake architectures: The database-centric and the object store-centric approach. Each offers unique strengths. The database-centric model excels in performance, concurrency, governance, and security. The object store-centric approach provides instant data access, multiple-engine compatibility, and multi-cloud support.
 
-There are scenarios where an object store-centric approach shines. ADW supports a wide range of file formats and is compatible across multiple cloud platforms. It even facilitates seamless collaboration and data sharing with the Delta Sharing Protocol.
+There are scenarios where an object store-centric approach shines. Oracle Autonomous AI Lakehouse supports a wide range of file formats and is compatible across multiple cloud platforms. It even facilitates seamless collaboration and data sharing with the Delta Sharing Protocol.
 
-The focus of this workshop is on the process of building an object store-centric data lake with ADW. Whether you're an organization seeking superior performance, secure governance, or versatile support for diverse data formats and cloud platforms, this workshop is designed to equip you with the practical skills to leverage the full potential of your data with Oracle ADW. ADW provides an efficient, cost-effective, and robust data management solutions.
+The focus of this workshop is on the process of building an object store-centric data lake with Oracle Autonomous AI Lakehouse. Whether you're an organization seeking superior performance, secure governance, or versatile support for diverse data formats and cloud platforms, this workshop is designed to equip you with the practical skills to leverage the full potential of your data with Oracle Oracle Autonomous AI Lakehouse. Oracle Autonomous AI Lakehouse provides an efficient, cost-effective, and robust data management solutions.
 
   ![The architecture diagram.](images/architecture-diagram.png)
 
@@ -34,7 +34,7 @@ In this workshop, you will:
 * Link to data in public and private Object Storage buckets.
 * Load and analyze the news from REST endpoints.
 * Create external tables using the Delta Sharing protocol
-* Query data from ADW and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
+* Query data from Oracle Autonomous AI Lakehouse and multi-cloud data lakes such OCI Object Storage buckets and Amazon S3 (Simple Storage Service).
 * Use Oracle as a data provider.
 * Improve query performance by creating a materialized view over an external table.
 * Create and manage partitioned external tables to improve performance.
@@ -49,7 +49,7 @@ You can create a table on top of Parquet files, using **Database Actions** in Or
 
   *Note: If you have a **Free Trial** account, when your Free Trial expires your account will be converted to an **Always Free** account. You will not be able to conduct Free Tier workshops unless the Always Free environment is available. **[Click here for the Free Tier FAQ page.](https://www.oracle.com/cloud/free/faq.html)***
 
-* This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+* This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 2: Provision the Autonomous AI Database Instance**, from the **Contents** menu on the left.
 
 You may now proceed to the next lab.
 

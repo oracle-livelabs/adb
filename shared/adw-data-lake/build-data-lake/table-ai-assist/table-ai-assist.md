@@ -39,13 +39,13 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
 **Note:** You can access the **Table Assist AI** feature from the **Database Actions** page. Click the **Data Studio** tab, and then click **Table AI Assist**.
 
-![Access the Table AI Assist feature from Database Actions.](./images/table-ai-assist.png " ")
+![Access the Table AI Assist feature from Database Actions.](./images/table-ai-assist.png =65%x*)
 
 **Create the OCI Credential**
 
 1. On your **Data Load** page from the previous lab, click **Settings** in the navigation pane on the left. Initially, a **No Credential and AI Profile Found** message is displayed if you have not closed that section in an earlier lab. You will define an OCI credential and a new AI profile in this task.
 
-    ![Data load page.](./images/data-load-page.png " ")
+    ![Data load page.](./images/data-load-page.png =65%x*)
 
     The **Data Studio Settings** wizard is displayed.
 
@@ -79,11 +79,11 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
     ![Reuse existing API keys and fingerprint?](./images/use-replace-api-key-fingerprint.png " ")
 
-9. Your native credential SQL and JSON files are created. 
+9. Your public API key, fingerprint, native credential SQL, and JSON files are created. 
 
     ![Credentials files are created.](./images/credentials-files-created.png " ")
 
-10. Next, you are prompted if you want to generate the AI profile script. Enter **yes**. In our example, we chose option 6, **`Meta Llama 3.1`**.
+10. Next, you are prompted if you want to generate the AI profile script. Enter **yes**. In our example, we chose option **6**, **`Meta Llama 3.1-405b-instruct`**.
 
     ![Generate AI profile script?](./images/generate-ai-profile-script.png " ")
 
@@ -91,23 +91,23 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
     ![Verification required?](./images/verification-required.png " ")
 
-12. Since we chose option 6, `Meta Llama 3.1`, an acceptable use policy prompt is displayed. Enter **yes**. Your Generative AI model is created. 
+12. Since we chose option 6, `Meta Llama 3.1`, an acceptable use policy prompt is displayed. Enter **yes** for the Submit to accept the terms of the License Agreement. Your Generative AI SQL file is created. 
 
     >**Note:** If you chose another option, follow the prompts.
 
     ![Acceptable use policy](./images/acceptable-use-policy.png " ")
 
-13. Next, you are prompted if you want to run the created credential scripts on your Oracle Autonomous AI Database. Enter **yes**. We chose not to reuse our existing wallet file. 
+13. A proceed to generate the Spreadsheet add-ins IAM connection is displayed. Enter **no**.
 
-    ![Run scripts on your Autonomous AI Database?](./images/run-scripts-on-adb.png " ")
+14. Next, you are prompted if you want to run the created credential scripts on your Oracle Autonomous AI Database. Enter **yes**. We chose not to reuse our existing wallet file. Confirm your choice to replace the Wallet file, enter **yes**. 
 
-14. When prompted, enter (and confirm, if prompted) your **`admin`** user password. The following are created for you:
+15. When prompted, enter (and confirm, if prompted) your **`admin`** user password. The following are created for you:
     - **`table_ai_assist_cred`** OCI credential
     - **`AI_PROFILE_META`** Generative AI profile
 
  The script exits. The command prompt is displayed.
 
-    ![Enter admin password.](./images/enter-admin-password.png " ")
+    ![Enter admin password.](./images/script-done.png " ")
 
 15. Click the **X** control to close the Cloud Shell window, and then click **Exit** when prompted.
 

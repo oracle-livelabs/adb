@@ -77,19 +77,19 @@ If your SQL Worksheet is still displayed from the previous task, skip over to **
 
 1. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. You can always access the **Reservation Information** panel to view your assigned compartment name. Make sure you are in the region that contains your bucket.
+2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** field. If you are using a sandbox reservation, you can always access the **Reservation Information** panel to view your assigned compartment name. Make sure you are in the region that contains your bucket.
 
     <if type="livelabs">
-    ![The buckets page is displayed.](./images/ll-bucket-created.png " ")
+    ![The buckets page is displayed.](./images/buckets-page.png " ")
     </if>
 
     <if type="freetier">
     ![The buckets page is displayed.](./images/buckets-page.png " ")
     </if>
 
-3. Click your bucket's name link in the **Name** column. The **Bucket Details** page is displayed. Scroll-down the page to the **Objects** section. The exported **Parquet** file is displayed.
+3. Click your bucket's name link in the **Name** column. The **Bucket Details** page is displayed. Click the **Objects** tab. The exported **Parquet** file is displayed.
 
-    ![The buckets page is displayed.](./images/exported-file.png " ")
+    ![The buckets page is displayed.](./images/bucket-created.png " ")
 
 ## Learn more
 
