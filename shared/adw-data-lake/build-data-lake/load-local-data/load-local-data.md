@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous Database (either Oracle Autonomous Data Warehouse or Oracle Autonomous Transaction Processing) using the ADB built-in Database Action tools, or using other Oracle and third party data integration tools.
+In this lab, you will practice multiple methods for loading and linking to data into an Oracle Autonomous AI Database (either Oracle Autonomous AI Lakehouse or Oracle Autonomous AI Transaction Processing) using the Oracle Autonomous AI Database built-in Database Action tools, or using other Oracle and third party data integration tools.
 
-You can also leave data in place in cloud object storage, and link to it from your Autonomous Database.
+You can also leave data in place in cloud object storage, and link to it from your Autonomous AI Database.
 
-> **Note:** While this lab uses Oracle Autonomous Data Warehouse, the steps are identical for loading data into an Oracle Autonomous Transaction Processing database.
+> **Note:** While this lab uses Oracle Autonomous AI Lakehouse, the steps are identical for loading data into an Oracle Autonomous AI Transaction Processing database.
 
 Estimated Time: 10 minutes
 
@@ -18,12 +18,12 @@ Watch the video below for a quick walk-through of the lab.
 
 In this lab, you will:
 * Download two **.csv** data files to your local computer from the MovieStream data lake (Oracle Object Storage buckets).
-* Navigate to the Data Load utility of Oracle Autonomous Database Data Tools.
-* Load data from the .csv files to your autonomous database instance.
+* Navigate to the Data Load utility of Oracle Autonomous AI Database Data Tools.
+* Load data from the .csv files to your Oracle Autonomous AI Database instance.
 
 ### Prerequisites
 
-This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 2: Provision the Autonomous AI Database Instance**, from the **Contents** menu on the left.
 
 <!-- Begin liveLabs section of task -->
 
@@ -37,7 +37,7 @@ _If you already launched the workshop and logged in to the Console using the ins
 
     ![The My Reservations tab and the Launch Workshop link for a sample workshop are highlighted.](./images/my-reservations.png " ")
 
-    The workshop is displayed in a new tab named **Run Workshop - Build a Data Lake with Autonomous Database**. Click the **View Login Info** link in the banner.
+    The workshop is displayed in a new tab named **Run Workshop - Build a Data Lake with Autonomous AI Database**. Click the **View Login Info** link in the banner.
 
     ![Click View Login Info.](./images/ll-view-login-info.png " ")
 
@@ -73,7 +73,7 @@ _If you already launched the workshop and logged in to the Console using the ins
 
 ## Task 2: Download .csv Files from the MovieStream Data Lake to your Local Computer
 
-Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Autonomous Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Autonomous Database where it is analyzed by many (and varied) members of the user community.
+Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Oracle Autonomous AI Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Oracle Autonomous AI Database where it is analyzed by many (and varied) members of the user community.
 
 1. Right-click on each of the links below, and then click **Save link as...** from the context menu to download the files to a folder on your local computer.
 
@@ -92,7 +92,7 @@ Your green button reservation includes an ADB instance. You can find the require
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+2. Open the **Navigation** menu and click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
 
 <if type="livelabs">
     > **_Important:** At the time of updating this workshop (July 15, 2025), there was a known issue with some OCI regions and using the sandbox environment reservations (the green button). The old Autonomous Databases UI (brown) page is displayed instead of the new Redwood UI page. If the new Redwood UI page is displayed in your environment, please ignore this note and continue with the note about the **Couldn't load data** error below._
@@ -114,22 +114,22 @@ Your green button reservation includes an ADB instance. You can find the require
     
 </if>
 
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
 
     <if type="freetier">
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png =75%x*)
+    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page.png =75%x*)
     </if>
 
     <if type="livelabs">
-    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png =75%x*)
+    ![The Autonomous AI Database is displayed and highlighted.](./images/ll-adb-page.png =75%x*)
 
     >**Note:** Since you are using a Sandbox environment, an ADB instance was created for you. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database display name are displayed.
 
     </if>
 
-4. On the **ADW-Data-Lake** Autonomous Database page, click the **Database actions** drop-down list, and then click **Data Load**.
+4. On the **ADW-Data-Lake** Autonomous AI Database page, click the **Database actions** drop-down list, and then click **Data Load**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![On the partial Autonomous AI Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
 5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
@@ -143,14 +143,14 @@ Your green button reservation includes an ADB instance. You can find the require
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous AI Database**.
 
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
+    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page.png " ")
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
+4. On the **Autonomous AI Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![On the partial Autonomous AI Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
 5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
@@ -162,7 +162,7 @@ Your green button reservation includes an ADB instance. You can find the require
 
 ## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
 
-In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous Database instance.
+In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous AI Database instance.
 
 1. On the **Data Load** page, click the **Load Data** card.
 
@@ -180,7 +180,7 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
     ![Update the data load job settings.](./images/click-settings.png " ")
 
-5. The **Load Data from Local File customer-extension.csv** page is displayed. Take a moment to examine the settings. The tool makes intelligent choices for target table name and its properties. Since this is an initial load, accept the default option of **Create Table** to create the target table in your Autonomous Database. In the mappings section, you can change the target column names, data types, and length/precision.
+5. The **Load Data from Local File customer-extension.csv** page is displayed. Take a moment to examine the settings. The tool makes intelligent choices for target table name and its properties. Since this is an initial load, accept the default option of **Create Table** to create the target table in your Autonomous AI Database. In the mappings section, you can change the target column names, data types, and length/precision.
 
     ![Examine the editor of the data load job.](./images/preview-table.png " ")
 
@@ -217,15 +217,14 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributors:**
-    * Mike Matthews, Autonomous Database Product Management
-    * Marty Gubar, Autonomous Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+    * Mike Matthews, Autonomous AI Database Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will use the **`EXPORT_DATA`** procedure in the **`DBMS_CLOUD`** PL/SQL package to export a table (internal or external) from your ADW instance to a **`Parquet`** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
+In this lab, you will use the **`EXPORT_DATA`** procedure in the **`DBMS_CLOUD`** PL/SQL package to export a table (internal or external) from your Oracle Autonomous AI Lakehouse instance to a **`Parquet`** file in an Object Storage bucket (private or public) of your choice based on the result of a query that you specify. Depending on the format **type** parameter, the procedure exports rows to the Cloud Object Storage as text files in CSV, JSON, Parquet, or XML.
 
 Estimated Time: 5 minutes
 
@@ -18,7 +18,7 @@ In this lab, you will:
 
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
-* **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance.
+* **Lab 1**: Set up the Workshop Environment > **Task 2**: Provision the Autonomous AI Database Instance.
 * **Lab 4**: Link to Data in Public Object Storage Buckets > **Task 2**: Link to Data in Public Object Storage Buckets and Create Tables.
 * An Oracle Object Storage bucket. If you don't have one, see [Putting Data into Object Storage](https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/addingbuckets.htm#Putting_Data_into_Object_Storage) on how to create a bucket.
 
@@ -28,17 +28,17 @@ If your SQL Worksheet is still displayed from the previous task, skip over to **
 
 1. Log in to the **Oracle Cloud Console**.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+2. Open the **Navigation** menu and click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
 
 <if type="livelabs">
-3. On the **Autonomous Databases** page, click your **DB-DCAT** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **DB-DCAT** ADB instance.
 </if>
 
 <if type="freetier">
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
 </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
+4. On the **Autonomous AI Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
 ## Task 2: Export a Table as a Parquet File to an Object Storage Bucket
 
@@ -77,19 +77,19 @@ If your SQL Worksheet is still displayed from the previous task, skip over to **
 
 1. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** drop-down list in the **List Scope** section. You can always access the **Reservation Information** panel to view your assigned compartment name. Make sure you are in the region that contains your bucket.
+2. On the **Buckets** page, select the compartment that contains your bucket from the **Compartment** field. If you are using a sandbox reservation, you can always access the **Reservation Information** panel to view your assigned compartment name. Make sure you are in the region that contains your bucket.
 
     <if type="livelabs">
-    ![The buckets page is displayed.](./images/ll-bucket-created.png " ")
+    ![The buckets page is displayed.](./images/buckets-page.png " ")
     </if>
 
     <if type="freetier">
     ![The buckets page is displayed.](./images/buckets-page.png " ")
     </if>
 
-3. Click your bucket's name link in the **Name** column. The **Bucket Details** page is displayed. Scroll-down the page to the **Objects** section. The exported **Parquet** file is displayed.
+3. Click your bucket's name link in the **Name** column. The **Bucket Details** page is displayed. Click the **Objects** tab. The exported **Parquet** file is displayed.
 
-    ![The buckets page is displayed.](./images/exported-file.png " ")
+    ![The buckets page is displayed.](./images/bucket-created.png " ")
 
 ## Learn more
 
@@ -104,7 +104,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

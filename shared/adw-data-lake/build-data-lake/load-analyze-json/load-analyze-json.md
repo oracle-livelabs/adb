@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will load movie data that is stored in `JSON` format into an Autonomous Database collection. After loading the collection using the API, you will then analyze movie data using Oracle JSON functions.
+In this lab, you will load movie data that is stored in `JSON` format into an Oracle Autonomous AI Database collection. After loading the collection using the API, you will then analyze movie data using Oracle JSON functions.
 
 Estimated Time: 10 minutes
 
@@ -18,7 +18,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires completion of the This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 3: Create an Autonomous Data Warehouse Instance**, from the **Contents** menu on the left.
+- This lab requires completion of the This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 2: Provision the Autonomous AI Database Instance**, from the **Contents** menu on the left.
 
 ## Task 1: Create and Load JSON Movie Collection
 <!---
@@ -48,7 +48,7 @@ JSON data is organized very differently than typical warehouse data. There is a 
     ![The SQL worksheet is displayed.](./images/click-development-sql-tabs.png " ")
 
     The SQL Worksheet is displayed.
-6. Use the Autonomous Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+6. Use the Oracle Autonomous AI Database ``DBMS_CLOUD.COPY_COLLECTION`` procedure to create and load the movie collection from object storage. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
     ```
     <copy>
     -- create and load movie json collection from a public bucket on object storage
@@ -72,9 +72,11 @@ JSON data is organized very differently than typical warehouse data. There is a 
 
 7. Let's take a look at the documents. The documents are stored in a highly optimized binary format. Use the `JSON_SERIALIZE` function to view the JSON text. Copy and paste the following SQL code into the worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
+    >_**Note:** If you are using Autonomous AI Database 19c when importing a JSON collection, the default column name for JSON is **`JSON_DOCUMENT`**. The default column name has changed to **DATA** in Autonomous AI Database 26ai._
+    
     ```
     <copy>
-    select json_serialize(json_document) as json
+    select json_serialize(data) as json
     from movie_collection
     where rownum < 10;
     </copy>
@@ -97,13 +99,16 @@ Oracle Database offers a wide range of SQL functions that help you analyze JSON 
 
     The movie collection includes **`title`** and **`year`** attributes. Your SQL statements can use the dot notation to navigate through the JSON path. For example, **`m.json_document.title`** refers to table **`m` (`movie_collection`)**, the **`json_document`** column, and the **`title`** JSON attribute. Copy and paste the following SQL statement into the worksheet, and then click the **Run Statement** icon in the Worksheet toolbar to view **Meryl Streep's** movies:
 
+    >_**Note:** If you are using Autonomous AI Database 19c when importing a JSON collection, the default column name for JSON is **`JSON_DOCUMENT`**. The default column name has changed to **DATA** in Autonomous AI Database 26ai._
+    
+
     ```
     <copy>
     select
-        m.json_document.title,
-        m.json_document.year
+        m.data.title,
+        m.data.year
     from movie_collection m
-    where m.json_document.cast like '%Meryl Streep%';
+    where m.data.cast like '%Meryl Streep%';
     </copy>
     ```
 
@@ -113,36 +118,36 @@ Oracle Database offers a wide range of SQL functions that help you analyze JSON 
 
 2. You can simplify subsequent queries against the movie collection by using a view. The view will allow tools and applications to access JSON data as if it were tabular data. The view definition extracts from the JSON documents both simple fields (using the `JSON_VALUE` function) and complex arrays (using the `JSON_QUERY` function). Copy and paste the following SQL code into the worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
-    ```
-    <copy>
-    -- Create a view over the collection to make queries easy
-    create or replace view movie as
-    select
-        json_value(json_document, '$.movie_id' returning number) as movie_id,
-        json_value(json_document, '$.title') as title,
-        json_value(json_document, '$.budget' returning number) as budget,
-        json_value(json_document, '$.list_price' returning number) as list_price,
-        json_value(json_document, '$.gross' returning number) as gross,
-        json_query(json_document, '$.genre' returning varchar2(400)) as genre,
-        json_value(json_document, '$.sku' returning varchar2(30)) as sku,
-        json_value(json_document, '$.year' returning number) as year,
-        json_value(json_document, '$.opening_date' returning date) as opening_date,
-        json_value(json_document, '$.views' returning number) as views,
-        json_query(json_document, '$.cast' returning varchar2(4000)) as cast,
-        json_query(json_document, '$.crew' returning varchar2(4000)) as crew,
-        json_query(json_document, '$.studio' returning varchar2(4000)) as studio,
-        json_value(json_document, '$.main_subject' returning varchar2(400)) as main_subject,
-        json_query(json_document, '$.awards' returning varchar2(4000)) as awards,
-        json_query(json_document, '$.nominations' returning varchar2(4000)) as nominations,
-        json_value(json_document, '$.runtime' returning number) as runtime,
-        json_value(json_document, '$.summary' returning varchar2(10000)) as summary
-    from movie_collection
-    ;
-    </copy>
-    ```
-    Each JSON attribute is now exposed as a column - similar to any table column.
+```
+<copy>
+-- Create a view over the collection to make queries easy
+create or replace view movie as
+select
+    json_value(data, '$.movie_id' returning number) as movie_id,
+    json_value(data, '$.title') as title,
+    json_value(data, '$.budget' returning number) as budget,
+    json_value(data, '$.list_price' returning number) as list_price,
+    json_value(data, '$.gross' returning number) as gross,
+    json_query(data, '$.genre' returning varchar2(400)) as genre,
+    json_value(data, '$.sku' returning varchar2(30)) as sku,
+    json_value(data, '$.year' returning number) as year,
+    json_value(data, '$.opening_date' returning date) as opening_date,
+    json_value(data, '$.views' returning number) as views,
+    json_query(data, '$.cast' returning varchar2(4000)) as cast,
+    json_query(data, '$.crew' returning varchar2(4000)) as crew,
+    json_query(data, '$.studio' returning varchar2(4000)) as studio,
+    json_value(data, '$.main_subject' returning varchar2(400)) as main_subject,
+    json_query(data, '$.awards' returning varchar2(4000)) as awards,
+    json_query(data, '$.nominations' returning varchar2(4000)) as nominations,
+    json_value(data, '$.runtime' returning number) as runtime,
+    json_value(data, '$.summary' returning varchar2(10000)) as summary
+from movie_collection;
+</copy>
+```
+    
+Each JSON attribute is now exposed as a column - similar to any table column.
 
-    ![Create movie view.](images/create-json-view.png)
+![Create movie view.](images/create-json-view.png)
 
 3. Query the newly created by view. Copy and paste the following SQL code into the worksheet, and then click the **Run Statement** icon in the Worksheet toolbar.
 
@@ -250,9 +255,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author** - Marty Gubar, Autonomous Database Product Management
+* **Author: (Retired)** Marty Gubar, Autonomous AI Database Product Management
 * **Contributor:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

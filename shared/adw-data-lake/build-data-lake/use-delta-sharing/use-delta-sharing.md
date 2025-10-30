@@ -9,7 +9,7 @@ Delta Sharing is an open protocol for secure real-time data sharing across multi
 * Provide strong security, auditing, and governance. It enables you to grant, track, and audit access to shared data from a single point of enforcement.
 * Scale to terabyte-scale datasets.
 
-Autonomous Database supports the Delta Sharing protocol.
+Oracle Autonomous AI Database supports the Delta Sharing protocol.
 
 Estimated Time: 10 minutes
 
@@ -22,12 +22,12 @@ In this lab, you will:
 
 * Access the Delta Sharing public examples on GitHub
 * Download the profile file that you will use to access the data share
-* Navigate to Data Share in Autonomous Database
+* Navigate to Data Share in Oracle Autonomous AI Database
 * Consume the data share and create an external table based on one of the share's files
 
 ### Prerequisites
 
-This lab requires the completion of **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance from the **Contents** menu on the left.
+This lab requires the completion of **Lab 1**: Set up the Workshop Environment > **Task 2**: Provision the Autonomous AI Database Instance from the **Contents** menu on the left.
 
 ## Task 1: Access the Delta Sharing Public Examples on GitHub
 
@@ -263,7 +263,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

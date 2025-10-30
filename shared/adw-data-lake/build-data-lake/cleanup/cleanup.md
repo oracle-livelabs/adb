@@ -8,7 +8,7 @@ Estimated Time: 5 minutes
 
 ### Objectives
 
-* Delete the Autonomous Database instance.
+* Delete the Autonomous AI Database instance.
 * Delete any resources that you created in your compartment as part of this workshop.
 * Delete your entire compartment if you don't need it.
 
@@ -16,17 +16,17 @@ Estimated Time: 5 minutes
 This lab assumes that you have successfully completed all of the preceding labs in the **Contents** menu.
 
 > **Note:**
-If you want to list the resources in your compartment, you can use the **Tenancy Explorer** page. From the **Navigation** menu, navigate to **Governance & Administration**. In the  **Governance** section, click **Tenancy Explorer**. On the **Tenancy Explorer** page, in the **Search compartments** field, type your compartment's name, and then select the compartment from the list of compartments. The resources in this compartment are displayed.
+If you want to list the resources in your compartment, you can use the **Tenancy Explorer** page. From the **Navigation** menu, navigate to **Governance & Administration**. In the **Tenancy Management** section, click **Tenancy Explorer**. On the **Tenancy Explorer** page, in the **Search compartments** field, type your compartment's name, and then select the compartment from the list of compartments. The resources in this compartment are displayed.
 
-## Task 1: Delete Your Autonomous Database Instance
+## Task 1: Delete Your Autonomous AI Database Instance
 
 You can terminate your ADW instance that you created in this workshop as follows:
 
-1. Open the **Navigation** menu and click **Oracle Databases**. Click **Autonomous Database**.
+1. Open the **Navigation** menu and click **Oracle AI Databases**. Click **Autonomous AI Database**.
 
-2. On the **Autonomous Databases** page, select your compartment from the **Compartment** field, if not already selected. In the row for the your Autonomous Database instance, click the **Actions** icon (three dots), and then select **Terminate** from the context menu.
+2. On the **Autonomous AI Databases** page, select your compartment from the **Compartment** field, if not already selected. In the row for the your Autonomous Database instance, click the **Actions** icon (three dots), and then select **Terminate** from the context menu.
 
-3. A **Terminate Autonomous Database** dialog box is displayed. Enter your ADB instance name in the **To confirm, enter the name of the database that you want to terminate** field, and then click **Terminate**.
+3. A **Terminate Autonomous AI Database** dialog box is displayed. Enter your ADB instance name in the **To confirm, enter the name of the database that you want to terminate** field, and then click **Terminate**.
 
     The **State** of the Autonomous Database instance goes into **Terminating**. When the ADB is deleted, the **State** changes to **Terminated**.
 
@@ -50,7 +50,7 @@ This concludes the workshop.
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran Serhal, June 2025
+* **Last Updated By/Date:** Lauran Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

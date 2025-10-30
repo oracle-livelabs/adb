@@ -8,7 +8,7 @@
 
 ## Introduction
 
-There are so many interesting and potentially useful data sets available today via REST: social, financial, science, health, weather and so on. Autonomous Database makes it really easy to integrate these sources using SQL queries. This eliminates the need for intermediate processing and storage and making that data available to any SQL client.
+There are so many interesting and potentially useful data sets available today via REST: social, financial, science, health, weather and so on. Oracle Autonomous AI Database makes it really easy to integrate these sources using SQL queries. This eliminates the need for intermediate processing and storage and making that data available to any SQL client.
 
 **News API** is a simple HTTP REST API for searching and retrieving live articles from all over the web. It can help you answer questions such as:
 
@@ -328,7 +328,7 @@ Now that you have the latest news for each actor, you will derive the sentiment 
 
     ![Ranking by buzz](images/adb-ranking-by-buzz.png)
 
-This completes this lab. You now know how to integrate and analyze data coming from REST endpoints in Autonomous Database.
+This completes this lab. You now know how to integrate and analyze data coming from REST endpoints in Oracle Autonomous AI Database.
 
 You may now proceed to the next lab.
 
@@ -338,14 +338,14 @@ You may now proceed to the next lab.
 * [DBMS_CLOUD Subprograms and REST APIs](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/dbms-cloud-subprograms.html#GUID-3D0A5361-672C-467D-AA90-656B1B4D4E37)
 * [Oracle Text](https://docs.oracle.com/en/database/oracle/oracle-database/19/ccref/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Authors:**
-    * Marty Gubar, Autonomous Database Product Management
+    * Marty Gubar (Retired), Autonomous AI Database Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
