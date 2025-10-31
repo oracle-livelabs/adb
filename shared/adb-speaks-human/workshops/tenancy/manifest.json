@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Chat with your data in Autonomous Database using Select AI",
+    "workshoptitle": "Chat with your data in Autonomous AI Database using Select AI",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
@@ -23,13 +23,13 @@
         },
         {
           "title": "Lab 1: Set up Your Workshop Environment",
-          "description":"Set up an Autonomous Database and an LLM account",
+          "description":"Set up an Autonomous AI Database and an LLM account",
           "type": "tenancy",
           "filename": "../../setup-environment/setup-environment.md"
         },
         {
-          "title": "Lab 2: Integrate GenAI models with Autonomous Database",
-          "description":"Connect Autonomous Database to your LLM",
+          "title": "Lab 2: Integrate GenAI models with Autonomous AI Database",
+          "description":"Connect Autonomous AI Database to your LLM",
           "type": "tenancy",
           "filename": "../../integrate-genai/integrate-genai.md"
         },

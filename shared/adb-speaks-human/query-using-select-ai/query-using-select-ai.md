@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All these tasks are handled by a large language model and Autonomous Database.
+Autonomous AI Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All these tasks are handled by a large language model and Autonomous AI Database.
 
 As you can see from the previous labs, Select AI makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a demo app that was built using Oracle APEX. When you ran the scripts to set up your environment, the APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like), and manage conversations.
 
@@ -77,7 +77,7 @@ END;
 
 ### **Ask Natural Language Questions**
 
-You can now ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
+You can now ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous AI Database that the subsequent text will be either an action or the natural language question.
 
 Here are the actions:
 
@@ -145,7 +145,7 @@ _**In summary, using LLMs infer a lot from human language. It's always good to v
 
 ## Task 2: Access Oracle Machine Learning (OML) Notebooks
 
-You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
+You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous AI Database.
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
@@ -236,7 +236,7 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements
@@ -244,7 +244,7 @@ You may now proceed to the next lab.
 * **Authors:**
     * Marty Gubar (Retired), Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
