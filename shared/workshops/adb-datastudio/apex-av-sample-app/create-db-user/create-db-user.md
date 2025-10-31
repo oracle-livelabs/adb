@@ -84,7 +84,7 @@ END;
 </copy>
 ~~~
 
-You database user and APEX workspace are now ready to use.
+Your database user and APEX workspace are now ready to use.
 
 You may now **proceed to the next lab**
 
