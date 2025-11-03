@@ -4,7 +4,7 @@ Estimated Time: 5 minutes.
 
 ## About this Workshop
 
-In this workshop, you will learn how to use **Autonomous Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
+In this workshop, you will learn how to use **Autonomous AI Database Select AI (Select AI)** to query your data using natural language; you don't need prior knowledge of the data structure or how that data is accessed. Next, you'll use those capabilities in a voice-enabled APEX app that enables you to get answers to your questions from your desktop or mobile device.
 
 **NOTE:** This workshop requires access to a Large Language Model (LLM). You can use LLMs from OCI GenAI, OpenAI, Azure, or Google Gemini. If you want to use OCI GenAI, ensure that your tenancy is subscribed to one of the following regions (at the time the workshop was last updated): **US Midwest (Chicago)** (default), **Brazil East (Sao Paulo)**, **Germany Central (Frankfurt)**, **India South (Hyderabad)**, **Japan Central (Osaka)**, **Saudi Arabia Central (Riyadh)**, **UAE East (Dubai)**, **UK South (London)**, **US East (Ashburn)**, and **US West (Phoenix)** regions in order to run this workshop. See the [OCI documentation](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingregions.htm) for more details. For the current list of regions with **Generative AI**, see [Regions with Generative AI](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm).
 
@@ -20,7 +20,7 @@ Generative AI enables users to quickly generate new content based on a variety o
 
 In this workshop, you will:
 
-* Configure your Autonomous Database to leverage a generative AI model for querying data using natural language
+* Configure your Autonomous AI Database to leverage a generative AI model for querying data using natural language
 * Use **`Select AI`** to query data using natural language
 * Learn about PL/SQL APIs that help integrate AI with your application
 * Use the Select AI demo application to chat with your data in your own language
@@ -33,14 +33,13 @@ You may now proceed to the next lab.
 
 ## Learn more
 
-* [Oracle Autonomous Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
-* [Additional Autonomous Database Tutorials](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/tutorials.html)
+* [Oracle Autonomous AI Database Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/index.html)
 
 ## Acknowledgements
 * **Authors:**
     * Lauran K. Serhal, Consulting User Assistance Developer
-    * Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, August 2025
+    * Marty Gubar (Retired), Product Manager
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
