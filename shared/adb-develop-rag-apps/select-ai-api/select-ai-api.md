@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will ask support questions that can be answered by information contained in the support site. You can use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM. When you use Select AI, Autonomous Database manages the process of converting natural language into SQL. This means you can provide a natural language prompt instead of SQL code to interact with your data. Select AI serves as a productivity tool for SQL users and developers and enables non-expert SQL users to derive useful insights from their data, without having to understand data structures or technical languages.
+In this lab, you will ask support questions that can be answered by information contained in the support site. You can use natural language to interact with your database and LLMs through SQL to enhance user productivity and develop AI-based applications. Select AI simplifies and automates using generative AI, whether generating, running, and explaining SQL from a natural language prompt, using retrieval augmented generation with vector stores, generating synthetic data, or chatting with the LLM. When you use Select AI, Autonomous AI Database manages the process of converting natural language into SQL. This means you can provide a natural language prompt instead of SQL code to interact with your data. Select AI serves as a productivity tool for SQL users and developers and enables non-expert SQL users to derive useful insights from their data, without having to understand data structures or technical languages.
 
 Estimated Time: 3 minutes.
 
@@ -14,7 +14,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-* This lab requires the completion of the previous labs that deployed your Autonomous Database.
+* This lab requires the completion of the previous labs that deployed your Autonomous AI Database.
 
 ## Task 1: Overview of Select AI
 
@@ -34,10 +34,10 @@ Select AI implements RAG as shown in the following diagram and explanation:
 * You as the user ask a question (specify a prompt) using the Select AI  narrate action.
 * Select AI generates vector embeddings of the prompt using the embedding model specified in the AI profile (we used the default in our example).
 * The vector search index uses the vector embedding of the question to find matching content from the moviestream enterprise data (searching the vector store) which has been indexed.
-* The vector search returns top n texts _similar_ to the input to your Autonomous Database instance.
-* Autonomous Database then sends these top `n` query results with your question to the LLM.
-* The LLM returns its response to your Autonomous Database instance.
-* Autonomous Database Select AI provides the response to you. You can control the `n` value as an attribute
+* The vector search returns top n texts _similar_ to the input to your Autonomous AI Database instance.
+* Autonomous AI Database then sends these top `n` query results with your question to the LLM.
+* The LLM returns its response to your Autonomous AI Database instance.
+* Autonomous AI Database Select AI provides the response to you. You can control the `n` value as an attribute
 So, the response grabbed n chunks and sent them to the model.
 
 ## Task 2: Ask Questions Using Various Select AI Actions
@@ -97,7 +97,7 @@ You may now proceed to the next lab.
 ## Learn More
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
 * [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Overview of Generative AI Service](https://docs.oracle.com/en-us/iaas/Content/generative-ai/overview.htm)
 
 ## Acknowledgements
@@ -105,7 +105,7 @@ You may now proceed to the next lab.
   * **Authors:**
     * Marty Gubar, Product Management
     * Lauran K. Serhal, Consulting User Assistance Developer
-  * **Last Updated By/Date:** Lauran K. Serhal, May 2025
+  * **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

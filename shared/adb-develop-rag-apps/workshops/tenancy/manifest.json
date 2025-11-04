@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Develop AI Retrieval Augmented Generation (RAG) apps with Autonomous Database Select AI",
+    "workshoptitle": "Develop AI Retrieval Augmented Generation (RAG) apps with Autonomous AI Database Select AI",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
       "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
@@ -23,7 +23,7 @@
         },
         {
           "title": "Lab 1: Set up Your Workshop Environment",
-          "description":"Set up an Autonomous Database and an LLM account",
+          "description":"Set up an Autonomous AI Database and an LLM account",
           "type": "tenancy",
           "filename": "../../setup-environment/setup-environment.md"
         },

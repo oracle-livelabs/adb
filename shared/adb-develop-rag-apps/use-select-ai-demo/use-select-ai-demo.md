@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date and content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with asking a few questions using natural language. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
+As you can see from the previous labs, **Select AI** makes it easy to build apps that take advantage of natural language queries. You learned how to use **Autonomous AI Database Select AI (Select AI)** with **Retrieval Augmented Generation (RAG)** to augment your natural language prompt by retrieving content from your specified vector store using semantic similarity search. This reduces hallucinations by using your specific and up-to-date and content and provides more relevant natural language responses to your prompts. In this lab, you'll experiment with asking a few questions using natural language. When you ran the scripts to set up your environment in Lab 1, The **Select AI APEX** demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like) and manage conversations.
 
 >**Note:** Refer to lab 2 to review what you learned about creating profiles to specify what LLM provider and the vector index to use when answering your questions in the app.
 
@@ -12,7 +12,7 @@ Estimated Time: 10 minutes.
 
 In this lab, you will:
 
-* As the `moviestream` user, access the **Select AI demo** application using the URL that you saved in a text editor file in **Lab 1 > Task 2 > Step 6**. If you didn't save the URL, refer to **Lab 1 > Task 2** to find it using the **Outputs** link in the **Resources** section on the **Job details** page.
+* As the `moviestream` user, access the **Select AI demo** application using the URL that you saved in a text editor file in **Lab 1 > Task 3 > Step 8**. If you didn't save the URL, refer to **Lab 1 > Task 3** to find it using the **Outputs** link in the **Resources** section on the **Job details** page.
 * Ask natural questions with the **Select AI demo** application.
 
 ### Prerequisites
@@ -68,7 +68,7 @@ _Select the **Ask Database** checkbox_ to ask questions about your business data
 
 Let's experiment a bit with data from the `moviestream` support site.
 
-1. Enter your question using a free form format in the **Ask a question** text box such as `My movie is frozen on the opening scene`. Select the **Ask your database** checkbox is checked since this is a general internet question and also one that uses the internal moviestream support site. Next, click the **Run** icon, or press **[ENTER]**.
+1. Enter your question using a free form format in the **Ask a question** text box such as _My movie is frozen on the opening scene_. Select the **Ask your database** checkbox is checked since this is a general internet question and also one that uses the internal moviestream support site. Next, click the **Run** icon, or press **[ENTER]**.
 
     >**Note:** You can type your own natural language question. You don't have to use the exact question that we show in our examples.
 
@@ -82,7 +82,7 @@ Let's experiment a bit with data from the `moviestream` support site.
    
     https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/building_blocks_utilities/o/support-site/playback-issues.html
 
-2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter something like, `George Clooney’s lips are moving but I can't hear him`. Select the **Ask Database** checkbox since this is a question about the moviestream internal data. Next, press **[ENTER]**.
+2. Let's ask another question. Click **Clear** in the banner. In the **Ask a question** text box, enter something like, _George Clooney’s lips are moving but I can't hear him_. Select the **Ask Database** checkbox since this is a question about the moviestream internal data. Next, press **[ENTER]**.
 
     ![Can't hear audio](./images/no-audio.png =70%x*)
 
@@ -96,7 +96,7 @@ Let's experiment a bit with data from the `moviestream` support site.
 
     ![Result on Web site](./images/result-web-site.png =70%x*)
 
-3. Let's ask one more question. Click **Clear** in the banner. In the **Ask a question** text box, enter `My subscription is not recognized`. Select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
+3. Let's ask one more question. Click **Clear** in the banner. In the **Ask a question** text box, enter _My subscription is not recognized_. Select the **Ask Database** checkbox since this is a question about the moviestream data. Next, press **[ENTER]**.
 
     ![Subscription issue](./images/subscription-issue.png =70%x*)
 
@@ -113,13 +113,13 @@ You may now proceed to the next lab.
 * [Select AI with Retrieval Augmented Generation (RAG)](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-retrieval-augmented-generation.html#GUID-6B2A810B-AED5-4767-8A3B-15C853F567A2)
 * [DBMS\_NETWORK\_ACL\_ADMIN PL/SQL Package](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692)
 * [DBMS\_CLOUD\_AI Package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-package.html)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
   * **Authors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Marty Gubar, Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
