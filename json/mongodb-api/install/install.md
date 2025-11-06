@@ -27,7 +27,7 @@ In this lab, you will:
 
 1. If you know already whether your Mac uses Intel or Apple Silicon you can skip this step. Otherwise:
 
-    Click on the Apple menu in the top left-hand corner of your screen and go to "About this Mac". 
+    Click on the Apple menu in the top left-hand corner of your screen and go to "About this Mac".
 
     !["about this mac" menu item](./images/about-this-mac.png " ")
 
@@ -122,7 +122,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
     </copy>
     ```
 
-3. Keep the command or terminal window open for later use. If you close it and need to reopen it, you will need to set the PATH again according to the instructions above.    
+3. Keep the command or terminal window open for later use. If you close it and need to reopen it, you will need to set the PATH again according to the instructions above.
 
 Mongo Shell is now set up on your PC or Mac.
 
@@ -132,4 +132,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Roger Ford, Principal Product Manager, Oracle Database
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Hermann Baer, April 2024
+- **Last Updated By/Date** - Abby Mulry, November 2025
