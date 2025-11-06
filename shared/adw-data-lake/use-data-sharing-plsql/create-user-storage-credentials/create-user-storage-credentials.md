@@ -32,18 +32,17 @@ Your green button reservation includes an ADB instance. You can find the require
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+2. Open the **Navigation** menu and click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
+
+    ![Click Autonomous AI Database.](images/click-autonomous-ai-database.png =65%x*)
 
 <if type="livelabs">
-    > **_Important: At the time of updating this workshop (July 15, 2025), there is a known issue with OCI and using the sandbox environment reservations (the green button). The old Autonomous Databases UI page is displayed instead of the new Redwood UI page._**
-
-    ![The old Autonomous Databases page.](images/old-adb-page.png =65%x*)
-
-    To correct this issue, simply click **Reload this page** icon in your browser. The newly designed **Autonomous Databases** page is displayed. 
+ 
+    The **Autonomous AI Databases** page is displayed. 
     
+    ![The Autonomous AI Databases page.](images/ll-autonomous-ai-databases-page.png =65%x*)
+ 
     >**Note:** The **Couldn't load data** error on the page is due to being in the wrong compartment. You will learn how to navigate to your assigned compartment next. 
-
-    ![Forbidden error.](images/forbidden-error.png =65%x*)
 
     OCI resources are organized into compartments. To navigate to your assigned sandbox reservation compartment, click the **Compartment** field. Next, enter your assigned compartment name (or partial name) from the **Reservation Information** page in the **Compartment** text box. Once your assigned compartment is displayed in the drop-down list under the **`Livelabs`** node, click it.
     
@@ -54,24 +53,24 @@ Your green button reservation includes an ADB instance. You can find the require
     
 </if>
 
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
 
     <if type="freetier">
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png =65%x*)
+    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page.png =65%x*)
     </if>
 
     <if type="livelabs">
-    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png =65%x*)
+    ![The Autonomous AI Database is displayed and highlighted.](./images/ll-adb-page.png =65%x*)
 
     >**Note:** Since you are using a Sandbox environment, an ADB instance was created for you. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database display name are displayed.
 
     </if>
 
-4. On the **ADW-Data-Lake** Autonomous Database page, click the **Database actions** drop-down list, and then click **SQL**.
+4. On the **ADW-Data-Lake** Autonomous AI Database details page, click the **Database actions** drop-down list, and then click **SQL**.
 
-    ![On the partial Autonomous Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![On the partial Autonomous AI Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
 
-5. The SQL Worksheet is displayed. Close any informational boxes that are displayed.
+5. The SQL Worksheet is displayed. Close any informational boxes that are displayed, if any.
 
     ![The SQL worksheet is displayed.](./images/sql-worksheet.png " ")
 
@@ -81,9 +80,9 @@ As the **`admin`** user, create a **share_provider** user and grant this user th
 
 ### **The Data Share Provider**
 
-Oracle Autonomous Database Serverless enables the data share provider to share existing objects such as tables with authorized recipients. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
+Oracle Autonomous AI Database Serverless enables the data share provider to share existing objects such as tables with authorized recipients. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
 
-Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The DWROLE role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
+Autonomous AI Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The DWROLE role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
 1. Create a **share_provider** user and grant this user the required role and privileges and enable REST and data sharing. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
 
@@ -164,51 +163,76 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
 ## Task 3: Create an Oracle Object Storage Bucket
 
-You should store the data share data in Object Storage. You will then create a link to your Object Storage bucket and associate the access credentials with that bucket.
+Create a private Object Storage bucket to store your data. For more information about Oracle Object Storage, see [Explore more about Object Storage in Oracle Cloud.](https://docs.oracle.com/en-us/iaas/Content/Object/home.htm)
 
->**Note:** If you already have an Object Storage bucket, you don't need to create a new one.
+<if type="livelabs">
 
-1. In your **Autonomous Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
+1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click **Launch OCI**.
 
-2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **List Scope** section. Make sure you are in the region where you want to create your bucket.
+    ![Click the Launch OCI button.](images/click-launch-oci.png =65%x*)
 
-    <if type="freetier">
-    ![The Buckets page is displayed.](./images/bucket-page.png " ")
-    </if>
+2. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-    <if type="livelabs">
-    ![The Buckets page is displayed.](./images/ll-bucket-page.png " ")
-    </if>
+    ![Navigate to Buckets.](images/navigate-buckets.png =65%x*)
 
-3. Click **Create Bucket**.
+3. On the **Buckets** page, select the compartment that was assigned to you where you want to create the bucket from the **Compartment** drop-down list in the **Applied filters** section. Make sure you are in the region that was assigned to you where you will create your bucket.
 
-4. In the **Create Bucket** panel, specify the following:
-    - **Bucket Name:** Enter **data-share-bucket**.
-    - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
+    ![The Buckets page.](images/buckets-page.png =65%x*)
+
+4. Click **Create Bucket**.
+
+5. In the **Create bucket** panel, specify the following:
+    - **Bucket name:** Enter a meaningful name for the bucket such as **`data-share-bucket`**.
+    - **Default storage tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
     - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
 
     >**Note:** Bucket names must be unique per tenancy and region.
 
-5. Click **Create** to create the bucket.
+6. Click **Create bucket** to create the bucket.
 
-    ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png " ")
+  ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png =65%x*)
 
-6. The new bucket is displayed on the **Buckets** page.
+7. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
 
-    <if type="freetier">
-    ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png " ")
-    </if>
+  ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png =65%x*)
+</if>
 
-    <if type="livelabs">
-    ![The new bucket is displayed on the Buckets page.](./images/ll-bucket-created.png " ")
+<if type="freetier">
 
-7. Next, _you need to get the name of the namespace (tenancy) where this new bucket was created_. You will need this namespace name in this workshop. In the row for the bucket, click the **Actions** icon (ellipsis), and then select **View Object Details** from the context menu.
+1. In the **Autonomous AI Database** browser tab, open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-    ![Get the bucket's namespace.](./images/ll-get-bucket-namespace.png " ")
+    ![Navigate to buckets.](./images/navigate-buckets.png =65%x*)
 
-    The **Bucket Details** page is displayed. The **Namespace** field displays the name of the namespace. The name is blurred for security reasons. Copy this name to your choice of text editor such as Notepad in Windows as you will need it in later steps.
+2. On the **Buckets** page, select the compartment where you want to create the bucket from the **Compartment** drop-down list in the **Apply filters** section. In this example, we chose a compartment named **`training-adw-compartment`**. Make sure you are in the region where you want to create your bucket.
 
-    ![Copy the bucket's namespace.](./images/ll-copy-bucket-namespace.png " ")
+    ![The buckets page is displayed.](./images/buckets-page.png =65%x*)
+
+3. Click **Create bucket**.
+
+4. In the **Create bucket** panel, specify the following:
+    - **Bucket name:** Enter a meaningful name for the bucket. In this example, we chose **`data-share-bucket`** as the name.
+    - **Default storage tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
+    - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
+
+    >**Note:** Bucket names must be unique per tenancy and region; otherwise an **already exists** error message is displayed.
+
+5. Click **Create bucket** to create the bucket.
+
+  ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png =65%x*)
+
+6. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
+
+  ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png =65%x*)
+
+  </if>
+
+7. Next, _you need to get the name of the namespace (tenancy) where this new bucket was created_. You will need this namespace name in this workshop. In the row for the bucket, click the **Actions** icon (ellipsis), and then select **View bucket details** from the context menu.
+
+    ![Get the bucket's namespace.](./images/view-bucket-details.png " ")
+
+    The **Bucket** details page is displayed. The **Namespace** field displays the name of the namespace. The name is blurred for security reasons. Copy this name to your choice of text editor such as Notepad in Windows as you will need it in later steps.
+
+    ![Copy the bucket's namespace.](./images/copy-bucket-namespace.png " ")
 
     </if>
 
@@ -260,13 +284,13 @@ You should store the data share data in Object Storage. You will then create a l
 
 ## Task 5: Create an OCI Native Credential as the share_provider User
 
-To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
+To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private `CREDENTIAL` object for your user that stores this information encrypted in your Oracle Autonomous AI Lakehouse. This information is only usable for your user schema. For more information on OCI Native Credentials, see the [Autonomous AI Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) blog and the [Create Oracle Cloud Infrastructure Native Credentials](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/create-oracle-cloud.html#GUID-4E849D62-2DB2-426E-9DF8-7E6169C20EE9) documentation.
 
 1. Return to the browser tab that contains the SQL Worksheet, if not already there. **IMPORTANT:** Make sure you are logged in as the **`share_provider`** user. Create a storage link that points to the Object Storage bucket URI that you created in the previous task. The URL's format is as follows:
 
     `https://objectstorage.<`**region name**`>.oraclecloud.com/n/<`**namespace name**`>/b/<`**bucket name**`>/o`
 
-    In our example, the **region name** is `ca-toronto-1`, the **Namespace** is blurred for security, and the **bucket name** is `data-share-bucket`. If you are using a Sandbox reservation (green button), you can find the region name in the **Reservation Information** dialog box. You already saved the bucket's namespace in **Task 3** and saved it to a text editor file of your choice.
+    In our example, the **region name** is `us-ashburn-1`, the **Namespace** is blurred for security, and the **bucket name** is **`data-share-bucket`**. If you are using a Sandbox reservation (green button), you can find the region name in the **Reservation Information** dialog box. You already saved the bucket's namespace in **Task 3** and saved it to a text editor file of your choice.
 
     <if type="livelabs">
     ![Reservation Information dialog box.](images/reservation-information.png)
@@ -281,7 +305,7 @@ To access data in the Object Store, you need to enable your database user to aut
     BEGIN
         DBMS_SHARE.CREATE_CLOUD_STORAGE_LINK(
             STORAGE_LINK_NAME => 'data_share_storage_link',
-            URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/tenancy-name/b/data-share-bucket/o/'
+            URI => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/tenancy-name/b/data-share-bucket/o/'
         );
     END;
     /
@@ -328,11 +352,11 @@ To access data in the Object Store, you need to enable your database user to aut
     FROM
     DBMS_CLOUD.LIST_OBJECTS(
         credential_name=>'SHARE_BUCKET_CREDENTIAL',
-        LOCATION_URI => 'https://objectstorage.ca-toronto-1.oraclecloud.com/n/tenancy-name/b/data-share-bucket/o/');
+        LOCATION_URI => 'https://objectstorage.us-ashburn-1.oraclecloud.com/n/tenancy-name/b/data-share-bucket/o/');
     </copy>
     ```
 
-    You are able to access the bucket but since you have not uploaded any files to it, you will get the message **No rows are returned** in the **Script Output**.
+    You are able to access the bucket but since you have not uploaded any files to it, you will get the message **No data found** in the **Query Result** tab.
 
     ![Access user bucket.](images/access-user-bucket.png)
 
@@ -382,13 +406,13 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
