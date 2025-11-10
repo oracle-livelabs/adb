@@ -6,9 +6,6 @@ In this lab, we are going to connect to the Autonomous AI Database we provisione
 
 Estimated Time: 15 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Connect to Autonomous Database with Mongo Shell](videohub:1_0dg383er)
-
 ### Objectives
 
 In this lab, you will:

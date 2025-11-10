@@ -6,9 +6,6 @@ This lab will use JSON and SQL in Database Actions from the Autonomous AI JSON D
 
 Estimated Time: 20 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Interact with JSON Documents through Database Actions](videohub:1_725rhrqf)
-
 ### Objectives
 
 In this lab, you will:
