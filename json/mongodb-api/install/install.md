@@ -8,9 +8,6 @@ This lab walks you through the installation of the Mongo Shell tool on your own 
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Install Mongo Shell](videohub:1_b7deqo67)
-
 ### Objectives
 
 In this lab, you will:
@@ -70,7 +67,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
 
     ```
     <copy>
-    curl https://downloads.mongodb.com/compass/mongosh-2.2.4-darwin-x64.zip -o mongosh.zip
+    curl https://downloads.mongodb.com/compass/mongosh-2.5.9-darwin-x64.zip -o mongosh.zip
     </copy>
     ```
 
@@ -78,7 +75,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
 
     ```
     <copy>
-    curl https://downloads.mongodb.com/compass/mongosh-2.2.4-darwin-arm64.zip -o mongosh.zip
+    curl https://downloads.mongodb.com/compass/mongosh-2.5.9-darwin-arm64.zip -o mongosh.zip
     </copy>
     ```
 
@@ -86,7 +83,7 @@ Copy **ONE** of the following *curl* commands and paste it to the command or ter
 
     ```
     <copy>
-    curl https://downloads.mongodb.com/compass/mongosh-2.2.4-win32-x64.zip -o mongosh.zip
+    curl https://downloads.mongodb.com/compass/mongosh-2.5.9-win32-x64.zip -o mongosh.zip
     </copy>
     ```
 

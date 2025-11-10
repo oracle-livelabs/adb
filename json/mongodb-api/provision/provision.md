@@ -6,9 +6,6 @@ This lab walks you through the steps to get started using the Oracle Autonomous 
 
 Estimated Time: 10 minutes
 
-Watch the video below for a quick walk-through of the lab.
-[Provision an Autonomous JSON Database](videohub:1_13lbdo9h)
-
 ### Objectives
 
 In this lab, you will:
@@ -91,10 +88,10 @@ In this lab, you will:
     ![Choose a workload type.](./images/workload-type2.png " ")
 
 5. Configure the database:
-    <if type="livelabs">
-    - __Always Free__ - For this lab, we recommend you leave Always Free unchecked.
+    <if type="freetier">
+    __Always Free__ - For this lab, we recommend you leave Always Free unchecked.
     </if>
-    - __Choose database version__ - Select 19c from the database version. Note: This lab should work on 21c AJD database as well.
+    - __Choose database version__ - Select 26ai from the database version. Note: This lab should work on 19c AJD database as well.
     - __ECPU count__ - Number of ECPUs for your service. For this lab, leave the default __2 ECPU__. If you choose an Always Free database, it comes with preconfigured and fixed cpu capabilities.
     - __Storage__ - Select your storage capacity in gigabytes. For this lab you can reduce the storage to the minimum of __20 GB__ of storage.
     - __Auto Scaling__ - For this lab, keep auto scaling enabled, to allow the system to automatically use up to three times more CPU and IO resources to meet workload demand. (While this will not happen as part of the workshop, we don't know what else you are going to experiment with.)
@@ -106,16 +103,6 @@ In this lab, you will:
 6. Administrator credential creation:
 
     - __Password and Confirm Password__ - Specify the password for ADMIN user of the service instance and confirm the password.
-
-    The password must meet the following requirements:
-    - The password must be between 12 and 30 characters long and must include at least one uppercase letter, one lowercase letter, and one numeric character.
-    - The password cannot contain the username.
-    - The password cannot contain the double quote (") character.
-    - The password must be different from the last 4 passwords used.
-    - The password must not be the same password that is set less than 24 hours ago.
-    - Re-enter the password to confirm it. Make a note of this password.
-
-    Later stages of this LiveLab will be easier if you avoid any of the characters / : ? # [ ] and @ in your password.
 
     ![Enter password and confirm password.](./images/administration.png " ")
 
