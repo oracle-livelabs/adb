@@ -45,7 +45,7 @@ If you created an optional compartment for this workshop, you can delete it if y
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
