@@ -2,23 +2,11 @@
 
 ## About this Workshop
 
-MongoDB is a popular, single-purpose database used for storing JSON documents.
-
-In this workshop, we'll show you how you can replace your MongoDB database with a powerful, multi-model Oracle Database but still run standard MongoDB tools and programs against that database, with little or no coding changes required.
-
-Once you're using Oracle Database to store your document collections, you have access to that very same data from all the advanced tools provided by Oracle, such as machine learning, graph analytics and many others. Your data can remain in document collections, but be accessed from the SQL language as well as using MongoDB commands. You can join JSON and relational data, without any need to export the JSON data to relational format first.
-
-In the workshop, you will create an Autonomous JSON Database, and connect to it using MongoDB tools. You'll learn how you can work with JSON data using both standard MongoDB tools, and using Oracle Database tools.
-
-This lab is organized into different topics, each topic consists of multiple steps. Some steps are a bit more advanced, they're marked as 'advanced' and you can skip them. After completing this workshop a user has a very good understanding of what JSON features are available in Oracle Database and when to use them. A user will also have learned why Oracle database is better suited for JSON Development than MongoDB, etc.
-
-**Estimated Time: 1 hour**
-
 ### Workshop Scenario
 
-In this workshop, we'll implement a very simple employee database. 
+In this workshop, we'll implement a very simple employee database.
 
-We'll create an Autonomous JSON Database, and connect to it using the standard "MongoDB Shell" tool. We'll use that to create an employee collection, and populate it with some employee records.
+We'll create an Autonomous AI JSON Database, and connect to it using the standard "MongoDB Shell" tool. We'll use that to create an employee collection, and populate it with some employee records.
 
 We'll then explore the same data using "Database Actions" in Oracle's Cloud Infrastructure.
 
@@ -28,9 +16,9 @@ If you have MongoDB tools such as MongoDB Shell or MongoDB Atlas already install
 
 This workshop consists of multiple 'labs' - each describing one aspect or feature. This lab has been designed for 19c AJD database but should also work on 21c AJD database and these concepts are also applicable to on-premise versions.
 
-Estimated Lab Time: 60 minutes
+Watch this quick video to know why JSON in Oracle Autonomous AI Database is awesome.
 
-Watch this quick video to know why JSON in Oracle Autonomous Database is awesome.
+**Estimated Time: 1 hour**
 
 [Youtube video about JSON in Oracle Database](youtube:yiGFO139ftg)
 
@@ -40,7 +28,7 @@ Watch this quick video to know why JSON in Oracle Autonomous Database is awesome
 
 Before we get started let's take a brief look at JSON (you may skip this step if you're already familiar with it)
 
-##### What is JSON?
+#### What is JSON?
 
 JSON is a human-readable, self-describing format to represent data in a hierarchical format. This is best illustrated by an example - a JSON object with information about a person:
 
@@ -82,10 +70,10 @@ Now you know what JSON is and also why so many people love it. Enough theory for
 
 ### Objectives
 
-In this workshop, you will explore: 
-*	How to provision an Oracle Autonomous (JSON) Database,
+In this workshop, you will explore:
+*	How to provision an Oracle Autonomous AI (JSON) Database,
 *	How to install MongoDB Shell on your own system
-*   How to connect to Autonomous Database from MongoDB Shell and create a collection
+*   How to connect to the Oracle Autonomous AI Database from MongoDB Shell and create a collection
 *   How to access the MongoDB collection from JSON Workshop and SQL
 
 ### Prerequisites
@@ -101,4 +89,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author** - Roger Ford, Principal Product Manager
-* **Last Updated By/Date** - Hermann Baer, June 2023
+* **Last Updated By/Date** - Abby Mulry, November 2025

@@ -2,18 +2,15 @@
 
 ## Introduction
 
-This lab will use JSON and SQL in Database Actions from the Autonomous JSON Database page. It shows how we can swap between a document-centric model (MongoDB and Oracle's JSON tool in Database Actions), and a relational model using Oracle's SQL tool in Database Actions.
+This lab will use JSON and SQL in Database Actions from the Autonomous AI JSON Database page. It shows how we can swap between a document-centric model (MongoDB and Oracle's JSON tool in Database Actions), and a relational model using Oracle's SQL tool in Database Actions.
 
 Estimated Time: 20 minutes
-
-Watch the video below for a quick walk-through of the lab.
-[Interact with JSON Documents through Database Actions](videohub:1_725rhrqf)
 
 ### Objectives
 
 In this lab, you will:
 
-* Open Database Actions from the Autonomous JSON Database Menu
+* Open Database Actions from the Autonomous AI JSON Database Menu
 * Use the JSON and SQL tools in Database Actions to view the data you created from Mongo Shell
 
 ### Prerequisites
@@ -41,11 +38,12 @@ In this lab, you will:
 
 3. Click the navigation menu in the upper left to show top-level navigation choices.
 
-4. Click on **Oracle Database** and choose **Autonomous JSON Database**.
+4. Click on **Oracle AI Database** and choose **Autonomous AI JSON Database**.
 
     ![Click Autonomous JSON Database](./images/adb-json.png " ")
 
-5. Use the __List Scope__ drop-down menu on the left to select the same compartment where you created your Autonomous JSON Database in Lab 2. Make sure your workload type is __JSON Database__. <if type="livelabs">Enter the first part of your user name, for example `LL185` in the Search Compartments field to quickly locate your compartment.
+5. Click the Compartment Filter beside the __Applied filters__ to select a compartment.
+<if type="livelabs">Enter the first part of your user name, for example `LL185` in the Search Compartments field to quickly locate your compartment.
 
     ![Check the workload type on the left.](images/livelabs-compartment.png " ")
 
@@ -364,4 +362,4 @@ You may now proceed to the next lab to clean up your lab environment.
 
 - **Author** - Roger Ford, Principal Product Manager
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Hermann Baer, April 2024
+- **Last Updated By/Date** - Abby Mulry, November 2025

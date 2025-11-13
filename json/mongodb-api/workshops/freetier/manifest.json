@@ -19,21 +19,24 @@
             "type": "freetier"
         },
         {
-            "title": "Lab 2: Provision an Autonomous JSON Database",
+            "title": "Lab 2: Provision an Autonomous AI JSON Database",
             "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../provision/provision.md",
             "type": "freetier"
         },
         {
-            "title": "Lab 3: Connect to Autonomous Database with Mongo Shell",
+            "title": "Lab 3: Connect to Autonomous AI Database with Mongo Shell",
+            "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../mongoshell/mongoshell.md"
-        },
+         },
+
         {
             "title": "Lab 4: Interact with JSON Documents through Database Actions",
+            "description": "Labs that follow the introduction are numbered, starting with Lab 1",
             "filename": "../../dbactions/dbactions.md"
         },
         {
-            "title": "Lab 5: Cleanup Oracle Autonomous Database",
+            "title": "Lab 5: Cleanup Oracle Autonomous AI Database",
             "filename":"https://oracle-livelabs.github.io/common/labs/terminate-adb/terminate-adb.md"
         },
         {
