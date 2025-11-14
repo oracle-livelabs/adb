@@ -161,7 +161,7 @@ To install the Oracle Autonomous AI Database for Excel, download the **`oraclepl
 
     ![Addin displayed.](./images/addin-displayed.png " ")
 
-**Uninstall the add-in**
+**(Optional) Uninstall the add-in**
 
 If you have installed the **Oracle Autonomous AI Database for Excel** add-in for Windows using Database Actions, you can uninstall it as follows:
 
