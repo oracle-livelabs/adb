@@ -8,12 +8,12 @@ comments syntax
 
 This workshop focuses on teaching you how to setup and use generative AI to query your data using natural language from a SQL prompt and from an application. To fast track using Select AI, you will deploy a ready-to-go environment using a terraform script that will:
 
-* Provision your Autonomous Database instance with the required users and data
+* Provision your Autonomous AI Database instance with the required users and data
 * Install the Select AI demo application that was built using APEX
 
 The automation uses a predefined OCI Cloud Stack Template that contains all the resources that you need. You'll use OCI Resource Manager to deploy this template and make your environment available in just a few minutes. You can use Resource Manager for your own projects. For more details, see the [Overview of Resource Manager](https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/resourcemanager.htm) Oracle Cloud Infrastructure documentation.
 
-Autonomous Database supports models from **OCI Generative AI**, **Azure OpenAI**, **OpenAI**, and **Cohere**. This workshop will use the **Llama 3** model that's delivered with OCI Generative AI.
+Autonomous AI Database supports models from **OCI Generative AI**, **Azure OpenAI**, **OpenAI**, and **Cohere**. This workshop will use the **Llama 3** model that's delivered with OCI Generative AI.
 
 Estimated Time: 5 minutes.
 
@@ -28,7 +28,7 @@ Removed the following as Task 1 since we will start using OCI Generative AI
 
 Sign up for Access to a Large Language Model (LLM)
 
-Autonomous Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
+Autonomous AI Database uses a large language model (LLM) to translate natural language to SQL. You can choose the LLM to use for your application.
 
 Sign up for an **OpenAI** account as follows:
 
@@ -83,15 +83,25 @@ Create a secret key as follows:
     >**NOTE:** The secret key is only displayed once. You will need to create a new secret key if you lose this value.
 --->
 
-
 ## Task 1: (Optional) Create an OCI Compartment
+
+<if type="aiw2025-sandbox">
+> _**Note:** If your are using a sandbox environment reservation, please ignore **Tasks 1 and 2**. As part of the reservation, you are assigned a compartment and a policy is already created for you._
+</if>
+
 [](include:iam-compartment-create-body.md)
 
 ## Task 2: Create Policy to Enable Access to OCI Generative AI
 
-**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
+<if type="aiw2025-sandbox">
 
-Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous Database is deployed.** The policy will be necessary for Autonomous Database to interact with OCI Generative AI.
+> _**Note:** If your are using a sandbox environment reservation, please ignore **Task 2**. As part of the reservation, a policy is already created for you._
+
+</if>
+
+>**Note:** This task is only required if you are using **OCI Generative AI** as your AI provider.
+
+Create a policy that will enable you to use **OCI Generative AI** within your previously defined compartment. **Make sure your policy uses the compartment where your Autonomous AI Database is deployed.** The policy will be necessary for Autonomous AI Database to interact with OCI Generative AI.
 
 1. From the **Console,** open the **Navigation** menu and click **Identity & Security.** Under **Identity,** click **Policies.**.
 
@@ -108,19 +118,19 @@ Create a policy that will enable you to use **OCI Generative AI** within your pr
 
 3. Click **Create**.
 
-    ![Create policy](./images/create-policy.png "")
+    ![Create policy](./images/create-policy.png =65%x*)
     
->**Note:** This policy allows any Autonomous Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
+>**Note:** This policy allows any Autonomous AI Database in the specified compartment to access OCI Generative AI. In a production environment, ensure your policy's scope is minimally inclusive.
 
-## Task 3: Provision an ADB Instance, Load Data, and Install the Select AI Demo Application 
+## Task 3: Provision an Autonomous AI Database Instance, Load Data, and Install the Select AI Demo Application 
+
 [](include:stacks-provision-adb-select-ai.md)
-
 
 You may now proceed to the next lab.
 
 ## Learn More
 
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
 * [OpenAI API Get Started](https://platform.openai.com/docs/introduction)
 
@@ -128,7 +138,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

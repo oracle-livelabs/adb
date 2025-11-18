@@ -3,13 +3,14 @@
 
 ## Introduction
 
-This lab introduces the Data Transforms application built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
+This lab introduces the Data Transforms tool built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
 
 Estimated Time: 25 minutes
 
+<!--
 Watch the video below for a quick walk-through of the lab.
 [Create a database user](videohub:1_t22mdnao)
-
+-->
 
 ### Objectives
 
@@ -20,7 +21,7 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous Database instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data 
 - Loaded Age group data into AGE\_GROUP 
@@ -28,7 +29,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
-If you have not completed the previous labs then run the following script in SQL Worksheet to load all necessary objects.
+If you have not completed the previous labs you can run the following script in SQL Worksheet to load all necessary objects.
 
 *For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
 
@@ -257,9 +258,9 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 4.  It will take up to 3-5 minutes for the service to be started for the first time. Once
     provisioned you will see the following home screen.
 
-    >**Note:** The Data Transforms tool is provisioned based on demand. After 10 minutes of 
+    >**Note:** The Data Transforms tool is provisioned on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be started again. Maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
+    be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
@@ -294,8 +295,8 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
 >**Note:** In this workshop, we are working with only the data available in
 our Autonomous Database, but you can create connections to other
-databases, object stores and applications as well as load and transform
-data from those sources to your Autonomous Database. Data Transforms is
+databases, object stores and applications, and then load and transform
+data from these sources to your Autonomous Database. Data Transforms is
 a complete tool for complex data integration projects.
 
 Now we are ready to prepare the data.
@@ -558,12 +559,12 @@ Now we are ready to prepare the data.
     ![screenshot of movie sales and genre join](images/image40_sales_genre_join.png)
 
 21. We have completed the data flow. It may look complex, but one can
-    visualize the step-by-step transformations. Now we need to write it
+    visualize the step-by-step transformations. Now we need to write the data
     to the target **CUSTOMER\_SALES\_ANALYSIS** table. This target table will be used for further analysis in subsequent labs.
 
-    Drag the this table from the entity browser on the left side into the canvas.
+    Drag this table from the entity browser on the left side into the canvas.
 
-    >**Note:** It is possible to create a brand new target table in the data flow as well, however for simplicity we are using a pre-created table definition in this workshop.
+    >**Note:** It is possible to create a brand new target table in the data flow as well. However for simplicity we are using a pre-created table definition in this workshop.
     
     ![screenshot of creating target table entity](images/image45_target_drag_add.png)
 
@@ -650,7 +651,7 @@ to straight go to the next lab.
     ![screenshot of data flow simulation](images/image54_transform_simul.png)
 
 2.  Look at the generated SQL. Imagine writing this SQL without the
-    graphical interface. It is complex. Isn't it? 
+    graphical interface. It would not be so easy!
     Advanced users will find this useful for debugging purposes.
 
 ![data flow simulation SQL](images/image55_transform_simul_code.png)
@@ -680,13 +681,13 @@ In this lab, we used the Data Transforms tool to calculate customer value from s
 with the customer, age group and movie genre information to load into a target table to be 
 used for data analysis. 
 
-Note that we scratched only the surface. Other features are:
+Note that we only covered a brief overview of Data Transforms capabilities. Other features include:
 
 -   **Variety of data sources**: Databases, Object Store, REST API and Fusion
     Application
 
 -   **Load Data:** Load multiple tables in a schema from another data
-    source. It can also integrate with Oracle Golden Gate Cloud Service for advanced
+    source. Data Transforms can also integrate with Oracle Golden Gate Cloud Service for advanced
     replication. This complements the Data Load tool explored in the earlier
     lab.
 
@@ -700,7 +701,7 @@ You may now **proceed to the next lab**.
 
 - Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, August 2023
+- Last Updated By - Jayant Mahto, September 2025
 
 
 Copyright (C)  Oracle Corporation.

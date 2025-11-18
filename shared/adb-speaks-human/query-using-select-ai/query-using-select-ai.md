@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Autonomous Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All these tasks are handled by a large language model and Autonomous Database.
+Autonomous AI Database makes it simple to query your data using natural language. The person asking the question doesn't need to know where the data is stored, its structure or how to combine it with other data to get results. All these tasks are handled by a large language model and Autonomous AI Database.
 
 As you can see from the previous labs, Select AI makes it easy to build apps that take advantage of natural language queries. In this lab, you'll experiment with a demo app that was built using Oracle APEX. When you ran the scripts to set up your environment, the APEX demo application was also installed. The app is probably the easiest way to get answers about your business and general internet content. Simply ask a question! You can then explore the result, get an understanding of the generated SQL (and even update it if you like), and manage conversations.
 
@@ -77,7 +77,7 @@ END;
 
 ### **Ask Natural Language Questions**
 
-You can now ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous Database that the subsequent text will be either an action or the natural language question.
+You can now ask questions using **`SELECT AI`**. **`AI`** is a special keyword in the `SELECT` statement that tells Autonomous AI Database that the subsequent text will be either an action or the natural language question.
 
 Here are the actions:
 
@@ -145,33 +145,31 @@ _**In summary, using LLMs infer a lot from human language. It's always good to v
 
 ## Task 2: Access Oracle Machine Learning (OML) Notebooks
 
-You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous Database.
+You can import, create, and work with notebooks in Oracle Machine Learning Notebooks. You can access Oracle Machine Learning Notebooks from Autonomous AI Database.
 
 >**Note:** You can run **`Select AI`** SQL queries from most tools; however, it is not yet supported by the **SQL Worksheet**.
 
 1. If you are still connected to your SQL Worksheet as the **`moviestream`** user from the earlier lab, sign out of this user using the drop-down list next to the user name in the banner. 
 
-    ![Sign out of moviestream](./images/signout-moviestream.png " ")
-
 2. On the **Sign-in** page, sign in as the **`ADMIN`** user. 
 
-    ![Sign in as admin](./images/signin-admin.png =70%x*)
+    ![Sign in as admin](./images/signin-admin-tenancy.png =70%x*)
 
 3. On the **Database Actions | Launchpad** page, click the **Development** tab, and then click the **Machine Learning** tab.
 
-    ![Click the Oracle Machine Learning card](./images/oml-tab.png " ")
+    ![Click the Oracle Machine Learning card](./images/oml-tab-tenancy.png " ")
 
-4. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** that you saved in **Lab 1 > Task 4 > Step 8** in the **Password** field, and then click **Sign In**.
+4. On the **SIGN IN** page, enter **`moviestream`** in the **Username** field, the **`adb_user_password`** value that you saved in **Lab 1 > Task 3 > Step 8** in the **Password** field, and then click **Sign In**. 
 
-    ![Enter credentials on the Sign In page](./images/oml-sign-in.png " ")
+    ![Enter credentials on the Sign In page](./images/oml-sign-in-tenacy.png " ")
 
     The **Oracle Machine Learning** Home page is displayed. You can use this landing page to access tutorials, model creation, notebooks, and much more.
 
-    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-new.png " ")
+    ![Oracle Machine Learning Home page is displayed.](./images/oml-home-page-tenancy.png " ")
 
 5. In the **Quick Actions** section, click the **Notebooks** icon. The **Notebooks** page is displayed.
 
-    ![The Notebooks page is displayed](./images/notebooks-page-displayed.png " ")
+    ![The Notebooks page is displayed](./images/notebooks-page-displayed-tenancy.png " ")
 
 ## Task 3: Import a Notebook into OML
 
@@ -187,7 +185,7 @@ You can import a notebook from a local disk or from a remote location if you pro
 
     If the import is successful, a notification is displayed and the **`adb-speaks-human-notebook`** notebook is displayed in the list of available notebooks.
 
-    ![The newly imported notebook is displayed.](./images/import-successful.png " ")
+    ![The newly imported notebook is displayed.](./images/import-successful-tenancy.png " ")
 
 3. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
@@ -238,14 +236,15 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributor:** Marty Gubar, Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, May 2025
+* **Authors:**
+    * Marty Gubar (Retired), Product Management
+    * Lauran K. Serhal, Consulting User Assistance Developer
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

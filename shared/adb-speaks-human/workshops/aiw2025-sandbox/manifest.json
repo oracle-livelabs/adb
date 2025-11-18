@@ -1,0 +1,64 @@
+{
+    "workshoptitle": "Accelerate Your AI Data Strategy with Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "stacks-provision-adb-select-ai.md":"/common/building-blocks/tasks/stacks/provision-adb-select-ai.md",
+     "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md"
+    },
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+          "title": "Introduction",
+          "description":"Introduction to the workshop",
+          "filename": "../../introduction-aiw2025/introduction-aiw2025.md"
+        },
+        {
+          "title": "Get Started with LiveLabs",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+        },
+        {
+          "title": "Lab 1: Register Your Autonomous Database with Oracle Data Safe",
+          "description":"Navigate to Your Autonomous Database Instance",
+          "type": "aiw2025-sandbox",
+          "filename": "../../setup-environment/setup-environment-aiw2025.md"
+        },
+        {
+          "title": "Lab 2: Integrate OCI Generative AI with Autonomous Database",
+          "description":"Integrate OCI Generative AI with Autonomous Database",
+          "type": "aiw2025-sandbox",
+          "filename": "../../integrate-genai/integrate-genai-aiw2025.md"
+        },
+        {
+          "title": "Lab 3: Use Natural Language Queries with Select AI",
+          "description":"Query Using Select AI",
+          "type": "aiw2025-sandbox",
+          "filename": "../../query-using-select-ai-aiw2025/query-using-select-ai-aiw2025.md"
+        },
+        {
+          "title": "Lab 4: Use the Select AI Demo Application",
+          "description":"Use the Select AI demo application",
+          "type": "aiw2025-sandbox",
+          "filename": "../../use-select-ai-demo-aiw2025/use-select-ai-demo-aiw2025.md"
+        },
+        {
+        "title": "Lab 5: Audit Database Activity",
+        "description": "This lab shows you how to provision audit and alert policies in Data Safe.",
+        "type": "aiw2025-sandbox",
+        "filename": "../../audit-database-activity/audit-database-activity.md"
+         },
+        {
+        "title": "Lab 6: Create and Enforce a SQL Firewall Policy in Data Safe",
+        "description": "This lab shows you how to use SQL Firewall in Data Safe.",
+        "type": "aiw2025-sandbox",
+        "filename": "../../sqlfw/sqlfw.md"       
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

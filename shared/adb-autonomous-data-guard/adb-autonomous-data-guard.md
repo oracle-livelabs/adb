@@ -4,7 +4,7 @@ _**Important:** This lab uses features which are not available on Oracle's Alway
 
 ## Introduction
 
-In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous Database Serverless.
+In this lab, you will learn about 2 types of Disaster Recovery features in Autonomous AI Database Serverless.
 - You will practice enabling Autonomous Data Guard (AuDG), using a standby database.
 - You will learn about Backup-Based Disaster Recovery, which uses a backup copy of your primary database.
 
@@ -25,7 +25,7 @@ Watch the video below for a quick walk-through of the lab.
 * Learn how to specify the standby database in the same local region as the primary database, or in a remote region
 * Learn how Backup-Based Disaster Recovery works
 
->**Note:**  This lab uses Autonomous Data Guard, which is **not available** with Oracle's Always Free databases. You can run the lab by reserving a hosted Livelabs environment, or by signing up for free trial credits, or by using your own tenancy. Autonomous Data Guard is available only in Autonomous Database instances 19c and above.
+>**Note:**  This lab uses Autonomous Data Guard, which is **not available** with Oracle's Always Free databases. You can run the lab by reserving a hosted Livelabs environment, or by signing up for free trial credits, or by using your own tenancy. Autonomous Data Guard is available only in Autonomous AI Database instances 19c and above.
 
 ### Basic Disaster Recovery Terminology
 
@@ -56,7 +56,7 @@ Watch the video below for a quick walk-through of the lab.
 
 ![Diagram showing primary and standby](./images/primary-standby-db.png)
 
-Autonomous Data Guard monitors the primary database and if the Autonomous Database instance goes down, then the standby instance assumes the role of the primary instance.
+Autonomous Data Guard monitors the primary database and if the Autonomous AI Database instance goes down, then the standby instance assumes the role of the primary instance.
 
 Unforeseen database failures due to disasters can happen at any time. Autonomous Data Guard offers the highest level of protection for an enterprise's data availability and system performance requirements.
 
@@ -93,133 +93,129 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 ## Task 1: Enable Autonomous Data Guard
 
 >**IMPORTANT:**    
-_If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 2 ECPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient ECPUs and storage, you can skip this step._
+_If you are running this workshop in a LiveLabs hosted sandbox, please change the scaling values back to their original settings of 2 ECPU and 1 TB of storage, to enable the lab on activating disaster recovery using Data Guard to have sufficient resources. To do this, go back to the Autonomous AI Database details page and click the Manage scaling button. If you are running this workshop in your own tenancy and you have sufficient ECPUs and storage, you can skip this step._
 
-1. Log in to your Oracle Cloud Console, if you are not already logged in, and then navigate to your **Autonomous Database details** page.
+1. On your **Autonomous AI Database details** page, click the **Disaster recovery** tab.
 
-2. Scroll down to the **Resources** section, and then click **Disaster recovery**.
-
-    ![Click Disaster recovery](./images/click-disaster-recovery.png)
+    ![Click Disaster recovery tab](./images/click-disaster-recovery-tab.png)
 
     Note the display of the local backup copy that is one of your database's automatic daily backups. This is not a physical standby database, but simply a **backup copy** stored from the source (primary) database, which can be used to instantiate a new database at the time of switchover or failover. Backup-Based Disaster Recovery is examined in a later task. However, we want to enable Autonomous Data Guard, which will create a **standby database**, a replica of the primary database which will constantly and passively refresh (that is, replicate) data from the primary, which can be used in case of failure of the primary.
 
-3. Click the 3-dot ellipsis icon on the right side of the backup copy, and then select **Update disaster recovery**.
+2. Click the **Actions** icon (3-dot ellipsis) on the right side of the backup copy row, and then select **Update disaster recovery**.
 
-    ![Click the 3-dot ellipsis symbol](./images/click-3-dot-ellipsis-symbol.png)
+    ![Click the 3-dot ellipsis symbol](./images/click-actions-icon.png)
 
-4. The **Update disaster recovery** dialog appears. The **Backup-based disaster recovery** button is selected by default. Instead, select the **Autonomous Data Guard** tile, and then click **Submit**.
+3. The **Edit disaster recovery** panel is displayed. The **Backup-based disaster recovery** tile is selected by default. Select the **Autonomous Data Guard** tile, and then click **Update**.
 
     >**Note**: Read the information about recovery time and recovery point objectives, and the informational note.
 
-    ![Select the Autonomous Data Guard button and click Submit](./images/select-autonomous-data-guard-and-submit.png)
+    ![Select the Autonomous Data Guard button and click Submit](./images/select-autonomous-data-guard-and-update.png)
 
-5. The Autonomous Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
+4. The Autonomous AI Database Lifecycle State changes to **Updating**. Depending on the size of your primary database this may take several minutes.
 
     >**Note**: While you provision a new standby database, the primary database is available for read/write operations. Enabling Autonomous Data Guard is non-blocking; there is no downtime on the primary database.
-
-    ![Status indicator showing the database is updating](./images/adw-updating.png =30%x*)
-
-    While the standby database is provisioning, observe the status in the Database Details page **Disaster recovery** section. The **Peer role** column still indicates the backup copy, and the **DR Type** column is still indicating that the disaster recovery type is backup-based. The **State** field indicates that the Autonomous Data Guard standby is provisioning.
-
-    ![Examine the disaster recovery status while AuDG standby is provisioning](./images/disaster-recovery-status-while-audg-provisioning.png)
 
     When the standby database finishes provisioning, observe the **Peer role** column has changed from **Backup copy** to **Standby**, the **State** column has changed from **Provisioning** to **Standby**, and the **DR Type** column has changed from **Backup-based** to **Autonomous Data Guard**.
 
     ![Examine the disaster recovery status after AuDG standby finishes provisioning](./images/disaster-recovery-status-of-audg-standby.png)
 
-6. You can create a total of two standby databases, one local and the other cross-region. You just enabled Autonomous Data Guard to create a local standby database. If your Oracle Cloud account has at least two regions, you can optionally create a second standby database that is cross-region.
+5. You can create a total of two standby databases, one local and the other cross-region. You just enabled Autonomous Data Guard to create a local standby database. If your Oracle Cloud account has at least two regions, you can optionally create a second standby database that is cross-region.
 
     >**Note:** Creation of a cross region standby database is optional, if your Oracle Cloud account has at least two regions. Please skip these optional steps if you are running this workshop in a LiveLabs hosted sandbox environment or in an Always Free Database. Cross region standby databases are not yet supported in LiveLabs environments.
 
-7. To perform this **optional step** of adding a second standby database that is cross-region, click **Add peer database**.
+6. To perform this **optional step** of adding a second standby database that is cross-region, click **Add peer database**.
 
-    ![Click Add peer database](./images/click-add-peer-database.png)
+    ![Click Add peer database](./images/click-add-peer-database-button.png)
 
-8. In the **Add peer database** panel, select a region other than the local region of your primary database. In our example, we chose the Canada Southeast region. Next, select your compartment.
+7. In the **Add peer database** panel, select a region other than the local region of your primary database. In our example, we chose the Canada Southeast region. Next, select your compartment.
 
-    >**Note**: Read the informational note about additional costs of a **cross-region** standby database, and the longer recovery time objective (RTO) as compared to **local** standby databases. For Cross-Region Autonomous Data Guard, the RTO is 15 minutes and the recovery point objective (RPO) is 1 minute.
+    >**Note**: Click on the various **Learn** links to read about the additional costs of a **cross-region** standby database, and the longer recovery time objective (RTO) as compared to **local** standby databases. For Cross-Region Autonomous Data Guard, the RTO is less than `10` minutes and the recovery point objective (RPO) is `1` minute.
 
-9. Click **Add peer database**.
+8. Click **Add**.
 
-    ![Again click Add peer database](./images/click-add-peer-database-second-time.png)
+    ![Again click Add peer database](./images/click-add-peer-database.png)
 
-10. Note that in addition to your local standby database, you are provisioning a second standby database that is a remote, cross-region database. The provisioning of the cross-region standby database and the updating of the primary database will take several minutes. Once it becomes available, you are protected against regional outages. The remote standby is visible in the remote region with your source database's name trailed by **"_Remote"**. The initial status of the instance is **UPDATING**. Wait for a few minutes for the status to change to **AVAILABLE**.
+9. Note that in addition to your local standby database, you are provisioning a second standby database that is a remote, cross-region database. The provisioning of the cross-region standby database and the updating of the primary database will take several minutes. Once it becomes available, you are protected against regional outages. The remote standby is visible in the remote region with your source database's name trailed by the selected region's key. In our example, the region key for the Canada Southeast (Toronto) region is **"_YYZ"**. The initial status of the instance is **UPDATING**. Wait for a few minutes for the status to change to **AVAILABLE**.
 
     ![Observe the provisioning of your remote standby database](./images/see-your-remote-cross-region-standby-database.png)
 
-11. At this point, you now have 3 Autonomous Data Warehouse databases:
+    Wait for a few minutes for the status to change to **AVAILABLE**.
+
+    ![Observe the provisioning of your remote standby database](./images/remote-cross-region-standby-database-available.png)
+
+    >**Note:** The databases display names are displayed and not the actual database names.
+
+10. At this point, you now have 3 Autonomous Data Warehouse databases:
 
     * Your **original** database, **`adwfinance`**
     * Your **local standby** database, also named **`adwfinance`**
-    * Your optional **cross-region** standby database, **`adwfinance_Remote`**
+    * Your optional **cross-region** standby database, **`adwfinance_your_region_key`**. In our example, the database name is **`adwfinance_YYZ`**.
 
-12. Go back to the **Autonomous Database details** page of your original database. In the **Disaster recovery** section of the page, the **Cross-region** field status has changed from **Not enabled** to **Autonomous Data Guard** with a link to perform a **Switchover**. This page indicates you are in your original database, **`adwfinance`**, with the role of primary database, in the primary region.
+11. Go back to the **Autonomous AI Database details** page of your original database. In the **Disaster recovery** section of the page, the **Cross-region** field status has changed from **Not enabled** to **Autonomous Data Guard** with a button to perform a **Switchover**. This page indicates you are in your original database, **`adwfinance`**, with the role of primary database, in the primary region.
 
-    ![See the changed Cross-region field on the Autonomous Database details page](./images/third-field-region.png)
+    ![See the changed Cross-region field on the Autonomous AI Database details page](./images/third-field-region.png)
 
 ## Task 2: Test Switchover to a Standby Database
 
 After Autonomous Data Guard is enabled, if you perform a switchover operation, the primary database becomes the standby database, and the standby database becomes the primary database, with no data loss. A switchover is typically done to test your application's failover procedures when Autonomous Data Guard is enabled.
 
-The Oracle Cloud Infrastructure console shows a switchover link in the **Cross-region** field when both the primary database and the standby database are available. That is, the primary database **Lifecycle state** field shows Available or Stopped:
+The Oracle Cloud Infrastructure console **Disaster recovery** section in the **Autonomous AI Database information** tab shows a **Switchover** button in the **Cross-region** field when both the primary database and the standby database are available.
 
   ![See the Lifecycle State is available and the switchover link in the Cross-regions field](./images/lifecycle-state-shows-available.png)
 
-And the standby database is available (in the **Resources** section at the bottom left of the **Autonomous Database details** page, the **State** field shows **Standby**):
+You can view the available standby database in the **Disaster recovery** tab.
 
-  ![See the Standby state is available](./images/resources-state-shows-available.png)
+  ![See the Standby state is available](./images/available-stand-by-database.png)
 
 You can perform a switchover to the **local standby** database as follows:
 
-1. On the **Autonomous Database details** of your original primary database, scroll down to the **Resources** section, and then click **Disaster recovery**. Click the 3-dot ellipsis icon on the right side of the local backup copy (your **local** standby, not the remote cross-region standby if you also created one), and select **Switchover**.
+1. On the **Autonomous AI Database** details page of your original primary database, click the **Disaster recovery** tab. Click the **Actions** icon (3-dot ellipsis) on the right side of the local backup copy (your **local** standby, not the remote cross-region standby if you also created one), and select **Switchover**.
 
     ![Click Switchover in the pop-up menu](./images/adg-switchover.png)
 
-2. In the **Confirm switchover to peer** dialog box, confirm the switchover to the standby database (enter the database name of your local standby). Click **Confirm switchover to peer**.
+2. In the **Confirm switchover to peer** dialog box, confirm the switchover to the standby database. Enter the database name of your local standby, **`ADW_Finance_Mart`**. Click **Switchover**.
 
-    ![Click Confirm switchover to peer](./images/confirm-switchover.png)
+    ![Click Confirm switchover to peer](./images/confirm-switchover.png =65%x*)
 
     The database **Lifecycle State** changes to **Updating** and the **State** field shows **Role change in progress**.
 
     ![The State field shows Role Change in Progress](./images/standby-role-change-in-progress.png)
 
-    Then the **State** field of both your local and remote standby databases will show **Provisioning**. Eventually, the **State** field for your standbys will show **Standby**.
+    After a few minutes, the **State** field for your standbys will show **Standby**.
 
     ![See that State fields showing Provisioning](./images/both-standbys-state.png)
 
     When the switchover operation completes, Autonomous Data Guard does the following:
     * The Primary database goes into the Available state and can be connected to for queries and updates.
     * The Peer State field will change to Available when the standby is ready. (The standby may go into a Provisioning state first, if necessary, without blocking operations on the Primary.)
-    * You can see the time of the last switchover when you hover over the tooltip icon (i) in the Disaster recovery **Role** field.
+    * You can see the time of the last switchover in the **Role changed on** (scroll to the right) in the **Disaster recovery** tab.
+
+    ![Role switched on](./images/role-switched-on.png)
 
 3. You can also **optionally** switch over to your remote cross-region standby database if you created one, but in that case you'll switch over from the **remote standby**, rather than from the **primary**. Once your remote standby is provisioned, you will see a "Switchover" option on your remote standby database's console. Clicking the Switchover button **from the remote standby database**, while both your primary and standby are healthy (that is, in the Available or Stopped states), performs a role change - Switching from the primary database to the remote standby database.
 
     **Note:** Again, please note that if you are running this workshop in a LiveLabs hosted sandbox environment, cross region standby databases are not yet supported in LiveLabs environments.
 
-    ![See the fields in the Confirm switchover to peer dialog box](./images/switchover-to-remote-standby.png)
-
 ## Task 3: Disable Autonomous Data Guard
-If you are running this workshop in a hosted LiveLabs sandbox, you must perform this task to free up resources for the next lab on creating refreshable clones. If you are running this workshop on your own tenancy and have sufficient resources, you can skip this task.
+_If you are running this workshop in a hosted LiveLabs sandbox, you must perform this task to free up resources for the next lab on creating refreshable clones. If you are running this workshop on your own tenancy and have sufficient resources, you can skip this task._
 
-1. If you are not logged in to Oracle Cloud Console, log in and navigate into your Autonomous Database.
+1. If you are not logged in to Oracle Cloud Console, log in and navigate into your Autonomous AI Database.
 
-2. On the Autonomous Database details page, in the **Disaster recovery** section, for each Standby database you created, click the 3-dot ellipsis symbol on the right side of the Standby and click **Disable peer** to disable the Autonomous Data Guard.
+2. On the Autonomous AI Database details page, click the **Disaster recovery** tab. For each Standby database you created, click the **Actions** icon (3-dot ellipsis) on the right side of the Standby database, and then click **Disable peer** to disable the Autonomous Data Guard.
 
     ![Click Disable in the Status field](./images/adg-disable.png)
 
-    In the Disable disaster recovery dialog, select the standby database you want to disable and terminate. Enter the Autonomous Database name to confirm that you want to disable Autonomous Data Guard for the instance. Click **Disable disaster reovery**.
+    In the **Disable** dialog box, select the standby database you want to disable and terminate. Enter the Autonomous AI Database name to confirm that you want to disable Autonomous Data Guard for the instance. Click **Disable**.
 
-    ![Click Disable Autonomous Data Guard](./images/confirm-disable.png)
+    ![Click Disable Autonomous Data Guard](./images/confirm-disable.png =65%x*)
 
-    **Note:** If Autonomous Data Guard is enabled with both a local Standby and a cross-region Standby, you disable Autonomous Data Guard individually for the local Standby or the remote Standby. If there is only a local standby or only a remote Standby, you have one choice.
+    If Autonomous Data Guard is enabled with both a local Standby and a cross-region Standby, you disable Autonomous Data Guard individually for the local Standby or the remote Standby. If there is only a local standby or only a remote Standby, you have one choice.
 
     The database Lifecycle State changes to **Updating** and the State field changes to **Terminating**.
 
-    ![See State field changing to Terminating](./images/terminating.png)
-
->**Note:**
-* Disabling Autonomous Data Guard terminates the standby database. If you later enable Autonomous Data Guard, the system creates a new standby database.
-* If you switched over to remote cross region standby, you must switch back to the primary region before you can disable the cross-region standby.
+    >**Notes:**
+    * Disabling Autonomous Data Guard terminates the standby database. If you later enable Autonomous Data Guard, the system creates a new standby database.
+    * If you switched over to remote cross region standby, you must switch back to the primary region before you can disable the cross-region standby.
 
 ## Task 4: Examine Backup-Based Disaster Recovery
 
@@ -249,7 +245,7 @@ The complete RTO and RPO Availability Service Level Objective that ADB targets c
 
 ## Automatic and Manual Failover options in case of a disaster
 
-In a disaster situation when the Primary becomes unavailable, the Switchover button would turn to a Failover one. With ADG, an **Automatic Failover** is automatically triggered (no user action is needed) by the Autonomous Database when a user is unable to connect to their primary database for a few minutes. Since this is an automated action, the automatic failover is allowed to succeed only when no data loss will occur. In ADG, for automatic failover, RTO is 2 minutes and RPO is 0 minutes.
+In a disaster situation when the Primary becomes unavailable, the Switchover button would turn to a Failover one. With ADG, an **Automatic Failover** is automatically triggered (no user action is needed) by the Autonomous AI Database when a user is unable to connect to their primary database for a few minutes. Since this is an automated action, the automatic failover is allowed to succeed only when no data loss will occur. In ADG, for automatic failover, RTO is 2 minutes and RPO is 0 minutes.
 
 >**Note:** We do not support automatic failover across regions since failing over across regions is more impactful than failing over locally; often users want to failover mid-tiers / applications along with the database for optimum performance. You may manually trigger the switchover/failover button on the console or a scripted API call when required. For the same reason, if you have both a local and a remote standby database available, we always recommend failover to the local standby first.
 
@@ -290,4 +286,4 @@ You may now **proceed to the next lab**.
     * Vandanadevi Rajamani, Database User Assistance
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Nilay Panchal, ADB Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, January 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025

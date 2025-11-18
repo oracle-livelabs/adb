@@ -30,7 +30,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     ![Log out of user share_provider](images/logout-share-provider.png)
 
 <if type="freetier">
-2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`TrainingADW`** as the password, and then click **Sign in**.
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username and **`Training4ADW`** as the password, and then click **Sign in**.
 </if>
 
 <if type="livelabs">
@@ -107,13 +107,13 @@ To consume a data share, a recipient user must have the required network connect
 In our example, the **`endpoint`** value where the data share is located is as follows:
 
 ```
-https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing
+https://mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com/ords/share_provider/_delta_sharing
 ```
 
 For the next code that you will run, _copy your own endpoint URL up to only the **`oraclecloudapps.com`** and remove everything after that, namely `/ords/admin/_delta_sharing`. In addition, don't include the `https://` at the beginning of the URL_. Paste the final edited URL in the **host** parameter. So, in our example, this is what we will use for the host value in the next code example:
 
 ```
-ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com
+mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com
 ```
 
 1. As the **`admin`** user, grant the `http` and `http_proxy` privileges for the specified host to the `DWROLE` role. Use the `DBMS_NETWORK_ACL_ADMIN` package and the `APPEND_HOST_ACE` procedure. For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Packages and Types Reference](https://docs.oracle.com/en/database/oracle/oracle-database/19/arpls/DBMS_NETWORK_ACL_ADMIN.html#GUID-254AE700-B355-4EBC-84B2-8EE32011E692) documentation. Make sure to replace the host in the following code example with your own share provider's host machine that you can find in the `.JSON profile`. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
@@ -122,7 +122,7 @@ ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com
     <copy>
     BEGIN
     DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
+        host => 'mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com',
         lower_port => 443,
         upper_port => 443,
         ace => xs$ace_type(
@@ -163,7 +163,7 @@ In this task, as the **`share_consumer`** user, you will need the entire content
 
     ![Log out of user admin.](images/log-out-admin.png)
 
-2. Log in as the **`share_consumer`** user. Click the **Development** tab and then click the **SQL** tab to display the SQL Worksheet.
+2. Log in as the **`share_consumer`** user whose password is **`DataShare4ADW`**. Click the **Development** tab and then click the **SQL** tab to display the SQL Worksheet.
 
     ![Log in as user share_consumer.](images/login-share-consumer.png)
 
@@ -177,13 +177,13 @@ In this task, as the **`share_consumer`** user, you will need the entire content
     delta_profile CLOB :=
     '{
   "shareCredentialsVersion": 1,
-  "endpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing",
-  "tokenEndpoint": "https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/oauth/token",
-  "bearerToken": "enter-your-own-bearerToken-value",
-  "expirationTime": "2023-07-13T16:26:53.025Z",
-  "clientID": "enter-your-own-clientID-value",
-  "clientSecret": "enter-your-own-clientSecret-value"
-    }
+  "endpoint": "https://mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com/ords/share_provider/_delta_sharing",
+  "tokenEndpoint": "https://mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com/ords/share_provider/oauth/token",
+  "bearerToken": "sNlkHjPSj828Djsl0zsIBQ",
+  "expirationTime": "2026-02-03T16:04:21.992Z",
+  "clientID": "169XohsTcuLoM2yZwAMHhQ..",
+  "clientSecret": "o6yDB7urpyIZSlUOjnO9Cg.."
+}
     ';
 
     -- A local name to represent the share provider
@@ -225,13 +225,13 @@ In this task, as the **`share_consumer`** user, you will need the entire content
 
 To create a table on top of the data share share object, the recipient needs to get the list of the schemas and tables being shared. If this is a single time operation (provider will be used once), then it's easier to run the `discover_available_tables` table function to get this list.
 
-1. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon in the Worksheet toolbar. Substitute the value of the `endpoint` parameter with your own value.
+1. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar. Substitute the value of the `endpoint` parameter with your own value.
 
     ```
     <copy>
     SELECT SHARE_NAME, SCHEMA_NAME, TABLE_NAME
     FROM dbms_share.discover_available_tables(
-        endpoint=>'https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing',
+        endpoint=>'https://mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com/ords/share_provider/_delta_sharing',
         credential_name=>'DEMO_PROVIDER$SHARE_CRED');
     </copy>
     ```
@@ -249,7 +249,7 @@ If the recipient plans to access the table name several times, it would be easie
     BEGIN
         DBMS_SHARE.CREATE_SHARE_PROVIDER(
         provider_name=> 'DEMO_PROVIDER',
-        endpoint=>'https://ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com/ords/share_provider/_delta_sharing');
+        endpoint=>'https://mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com/ords/share_provider/_delta_sharing');
     END;
     </copy>
     ```
@@ -345,13 +345,13 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

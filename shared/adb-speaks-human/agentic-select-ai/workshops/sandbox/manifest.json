@@ -1,0 +1,62 @@
+{
+    "workshoptitle": "Get started with AI Agents using Select AI on Oracle Autonomous Database",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md"
+    },
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+          "title": "Introduction",
+          "description":"Introduction to the workshop",
+          "filename": "../../introduction/introduction-agentic-select-ai.md"
+        },
+        {
+          "title": "Get started",
+          "description":"Get started using Oracle Cloud Infrastructure",
+          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+          "title": "Lab 1: Build a Sales Return Agent",
+          "description":"Build an agent to process product return",
+          "type": "tenancy",
+          "filename": "../../build-sales-return-agent/build-sales-return-agent.md"
+        },
+        {
+          "title": "Lab 2: Refine your Agent",
+          "description":"Refine your agent for personable interaction",
+          "filename": "../../refine-your-agent/refine-your-agent.md"
+        },
+        {
+          "title": "Lab 3: Create a Function and an AI Agent Tool to Generate an Email Response",
+          "description": "Create a function and an agent to generate a standard form email response",
+          "type": "tenancy",
+          "filename": "../../create-function-tool-for-email/create-function-and-tool-for-email.md"
+        },
+        {
+          "title": "Lab 4: Introduce a RAG Tool for Alternate Product Recommendation",
+          "description": "Recommend alternate products with RAG AI tool",
+          "type": "tenancy",
+          "filename": "../../rag-tool-for-alternatives/introduce-rag-tool-for-product-recommendation.md"
+        },
+        {
+          "title": "Lab 5: Query Select AI Agent Views",
+          "description": "Query Select AI Agent history views",
+          "type": "tenancy",
+          "filename": "../../query-select-ai-agent-views/query-select-ai-agent-views.md"
+        },
+        {
+          "title": "Lab 6: Use the Ask Oracle Chatbot Demo Application",
+          "description":"Ask natural language questions to Ask Oracle Chatbot",
+          "type": "tenancy",
+          "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
+        },
+        {
+          "title": "Need Help?",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

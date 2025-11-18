@@ -4,7 +4,7 @@ _**Important:** This lab uses features which are not available on Oracle's Alway
 
 ## Introduction
 
-One of the most widely used features in Autonomous Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
+One of the most widely used features in Autonomous AI Database Serverless is the ability to clone your database, no matter how big or small, with little to no effort.
 
 This lab shows how to create a **full** clone from the **currently running** database or from a **backup** timestamp of that database.
 
@@ -28,13 +28,13 @@ In this lab, you will:
 - Examine how to create a clone from backup as a cross-region clone.
 - Create a long-term backup.
 
-## Task 1: Clone a Database from the Currently Running Primary database
+## Task 1: Clone a Database from the Currently Running Primary Database
 
-1. Return to the **Autonomous Database details** page of your source database. From the **More actions** drop-down list, select **Create clone**.
+1. Return to the **Autonomous AI Database details** page of your source database. From the **More actions** drop-down list, select **Create clone**.
 
-    ![Select Create clone from M**ore actions](images/select-create-clone.png)
+    ![Select Create clone from More actions](images/select-create-clone.png)
 
-    The **Create Autonomous Database clone** page is displayed.
+    The **Create Autonomous AI Database clone** page is displayed.
 
 2. In the **Choose a clone type** section, accept the default **Full clone** selection. This creates a new database with the source database's data and metadata.
 
@@ -44,7 +44,7 @@ In this lab, you will:
 
     ![Choose Clone from database instance](images/choose-clone-from-database-instance.png)
 
-4. In the **Provide basic information for the Autonomous Database clone** section, specify the the required information to create the clone database.
+4. In the **Basic information for the Autonomous AI Database clone** section, specify the the required information to create the clone database.
     * **Choose your preferred region:** Accept the default, which is your current region.
     * **Create in compartment:** Select a compartment to which you have access. *Important: If you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
     * **Display name:** Accept the default display name.
@@ -52,23 +52,33 @@ In this lab, you will:
 
         ![Clone basic information.](images/choose-clone-basic-information.png)
 
-5. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database.
+5. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an Autonomous AI Database as follows:
 
-    ![The remaining sections.](images/remaining-sections.png)
+    * **Workload type**: `Lakehouse`.
+    * **Choose database version:** `26ai`.
+    * **ECPU count:** `2`.
+    * **Compute auto scaling:** Enabled.
+    * **Storage:** `2`.
+    * **Password:** `Training4ADW`.
+    * **Access type:** Secure access from everywhere.
+   
+        ![Remaining sections selections.](images/remaining-sections.png =65%x*)
 
-6. Click **Create Autonomous Database clone**. The initial state of the database instance is **PROVISIONING**.
+6. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-7. When the clone finishes provisioning, review the clone information in the **Autonomous Database details** page.
+7. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous AI Database details** page.
 
-    ![See clone information in Autonomous Database details page](images/see-clone-info-in-autonomous-details-page.png)
+    ![See clone information in Autonomous AI Database details page](images/see-clone-info-in-autonomous-details-page.png)
 
 ## Task 2: Clone a Database from a Backup Timestamp of your Database
 
 Create a full clone database from a **backup timestamp** of your currently running primary database.
 
-1. Return to the **Autonomous Database details** page of your source database, if you are not already there. From the **More actions** drop-down list, select **Create clone**. The **Create Autonomous Database clone** dialog is displayed.
+1. Return to the **Autonomous AI Database details** page of your source database, if you are not already there. From the **More actions** drop-down list, select **Create clone**. The **Create Autonomous AI Database clone** dialog is displayed.
+
+   ![Click more > create clone](images/click-create-clone.png)
 
 2. In the **Choose a clone type** section, accept the default **Full clone** selection.
 
@@ -78,80 +88,55 @@ Create a full clone database from a **backup timestamp** of your currently runni
 
     ![Select Clone from a backup](images/select-clone-from-a-backup.png)
 
-4. In the **Backup clone type** area, you can choose a **Point in time clone**, **Select the backup from a list**, or simply choose the **Latest backup timestamp**. Click **Select the backup from a list**. A list of backups appear. Choose one of the listed backups to create the clone.
+4. In the **Backup clone type** section, click **Select the backup from a list**. A list of your available backups appear. Choose one of the listed backups to create the clone.
 
    ![Select Clone from a backup](images/select-clone-from-backup.png)
 
-    >**Note:** Backups are created daily. In this lab environment, you may not yet have any backups listed if you recently created your Autonomous Database.
+    >**Note:** Backups are created daily. In this lab environment, you may not yet have as many backups listed if you recently created your Autonomous AI Database.
 
-5. In the **Provide basic information for the Autonomous Database clone** section, specify the the required information to create the clone database.
+5. In the **Basic information for the Autonomous AI Database clone** section, specify the the required information to create the clone database.
     * **Choose your preferred region:** Accept the default, which is your current region.
     * **Create in compartment:** Select a compartment to which you have access. *Important: If you are running this workshop in a LiveLabs hosted (green button) environment, select the compartment that was assigned to your reservation*.
     * **Display name:** Accept the default display name.
     * **Database name:** Accept the default database name.
 
-        ![Provide information and click Create Autonomous Database clone](images/provide-information-to-create-clone-backup.png)
+        ![Provide information and click Create Autonomous AI Database clone](images/provide-information-to-create-clone-backup.png)
 
-6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an autonomous database.
+6. For the remaining sections, use the same selections as you did in the earlier lab on provisioning an Autonomous AI Database as follows:
 
-    ![The remaining sections.](images/remaining-sections.png)
+    * **Workload type:** `Lakehouse`.
+    * **Choose database version:** `26ai`.
+    * **ECPU count:** `2`.
+    * **Compute auto scaling:** Enabled.
+    * **Storage:** `2`.
+    * **Password:** `Training4ADW`.
+    * **Access type:** `Secure access from everywhere`.
+   
+7. Click **Clone**. The initial state of the database instance is **PROVISIONING**. Click **Skip tour**, and then click **Skip** in the **Skip guided tour** dialog box.
 
-7. Click **Create Autonomous Database clone**.
+    ![Clone provisioning](images/clone-provisioning.png)
 
     >**Note**: If your tenancy subscribes to multiple regions, you can clone across regions from any of your selected database backups. When creating your cross-region clone, you can easily select the remote region to which you wish to clone from backup. You may clone a database from any available backup timestamp within the last 60 days to any region to which your tenancy is subscribed.
 
-8. When the clone finishes provisioning, review the clone information in the **Autonomous Database details** page.
-
-    ![See clone information in Autonomous Database details page](images/see-clone-information-in-details-page-2.png)
+11. When the clone finishes provisioning, its state becomes **Available**. Review the clone information in the **Autonomous AI Database details** page.
 
 ## Task 3: Create Long-term Backups
 
 In today's world, regulations, audits, and compliance requirements often demand long-term retention of data. For instance, in the financial or healthcare sector, you may have to keep transactional and patient data for several years, if not decades. You may need long-term backups for compliance and regulatory requirements, legal and contractual obligations, historical analysis, or for business continuity in response to data loss.
 
-It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous Database, the process of long-term backups is completely automated and managed by Oracle.
+It is essential to have a database backup plan that covers both short-term and long-term retention. As with other aspects of Oracle Autonomous AI Database, the process of long-term backups is completely automated and managed by Oracle.
 
-> **Note:** For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous Database** in this workshop.
-
-<!---
-
-1. Scroll down the Autonomous Database details page for your database and select **Backups** under your database's **Resources** section. You will see the **Create long-term backup** button.
-
-    ![Select Backups in the Resources section of Autonomous Database details page](images/select-backups.png)
-
-2. The **Create long-term backup** dialog appears. Backups on Autonomous Database are completely automated. Provide the following information:
-    - When you would like a long-term backup to be taken (Immediately, at a scheduled time in the future, or repeatedly at your preferred cadence)
-    - How long you would like us to keep a long-term backup for you (that is, the backup retention period). While your existing automatic backups have a backup retention period of 60 days, long-term backups can be retained starting from 90 days all the way up to 10 years.
-
-    You may also automate long-term backups at your own, personalized cadence by calling long-term backup CLI APIs in your scripts or via Terraform.
-
-    ![Specify the long-term backup details](images/specify-long-term-backup-details.png)
-
-    Click **Create**.
-
-3. When you click Create, Oracle starts an asynchronous job to create a long-term backup for you in the background, so your database is not held up waiting for the backup to complete. You can track this long-term backup and other lifecycle management (LCM) operations triggered on your database by clicking the **Work Requests** tab.
-
-    ![Click the Work requests tab](images/click-work-requests.png)
-
-4. When your long-term backup is available, you will see it in your list of backups. Each long-term backup is a standalone backup that can be managed individually. You may edit the retention period of a long-term backup, delete it if you no longer need it, or clone from the backup when you need an instantiated database copy from that long-term backup.
-
-    It is good practice to test your long-term backup after creating it by cloning from it, to ensure your backed up data is as required.
-
-    ![Test your long-term backup by cloning it](images/test-long-term-backup-by-cloning-it.png)
-
-5. From the Autonomous Database details page, you can view the details of any scheduled long-term backups and you can edit a long-term backup schedule. Note that the  console also presents the size of backups you are paying for - While 60 day automatic backups are included with OCPU-based databases, long-term backups will be billed additionally at your database storage rate.
-
-    ![View scheduled long-term backups on the Autonomous Database details page](images/view-scheduled-long-term-backups.png)
-
--->
+> **Note:** For detailed information about creating a long-term backup, see **Lab 7: Backup and Restore Your Autonomous AI Database** in this workshop.
 
 You may now **proceed to the next lab**.
 
 ## Want to Learn More?
 
-* [Clone an Autonomous Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8)
+* [Clone an Autonomous AI Database from a Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/autonomous-clone-backup.html#GUID-20D2D970-0CB4-472F-BF89-1EE769BFB5E8)
 * [Create a Long-Term Backup](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/backup-long-term.html)
 
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Contributor:** Nilay Panchal, ADB Product Management
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025

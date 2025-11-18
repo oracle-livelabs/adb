@@ -2,24 +2,21 @@
 
 ## Introduction
 
-In this lab, we are going to connect to the Autonomous Database we provisioned in Lab 2, from the MongoDB shell tool that we installed onto our local machine in Lab 1.
+In this lab, we are going to connect to the Autonomous AI Database we provisioned in Lab 2, from the MongoDB shell tool that we installed onto our local machine in Lab 1.
 
 Estimated Time: 15 minutes
-
-Watch the video below for a quick walk-through of the lab.
-[Connect to Autonomous Database with Mongo Shell](videohub:1_0dg383er)
 
 ### Objectives
 
 In this lab, you will:
 
-* Attach __mongosh__ to your Autonomous JSON Database
+* Attach __mongosh__ to your Autonomous AI JSON Database
 * Create a collection
 * Add some simple documents to that collection
 
 ### Prerequisites
 
-* Have provisioned an Autonomous JSON Database instance and saved the URLs for Database API for MongoDB.
+* Have provisioned an Autonomous AI JSON Database instance and saved the URLs for Database API for MongoDB.
 * Have installed the MongoDB Shell
 
 You will need the following information, saved from previous labs:
@@ -40,8 +37,8 @@ You will need the following information, saved from previous labs:
 	* Change the [user] string in the middle to admin
 
    	For example, let's say your password is "Password123", and your original connection string is mongodb://[user:password@]MACHINE-JSONDB.oraclecloudapps.com:27017/[user]?authMechanism=PLAIN&authSource=$external&ssl=true&retryWrites=false&loadBalanced=true
-	
-	You would change it to 
+
+	You would change it to
 
 	```
 	<copy>
@@ -195,4 +192,4 @@ You may now proceed to the next lab.
 
 - **Author** - Roger Ford, Principal Product Manager
 - **Contributors** - Kamryn Vinson, Andres Quintana
-- **Last Updated By/Date** - Hermann Baer, April 2024
+- **Last Updated By/Date** - Abby Mulry, November 2025

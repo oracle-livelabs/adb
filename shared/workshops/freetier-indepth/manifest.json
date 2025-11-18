@@ -1,5 +1,5 @@
 {
-    "workshoptitle" : "Manage and Monitor Autonomous Database",
+    "workshoptitle" : "Manage and Monitor Autonomous AI Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
@@ -28,8 +28,8 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Provision Autonomous Database",
-            "description": "Provision Autonomous Database",
+            "title": "Lab 1: Provision Autonomous AI Database",
+            "description": "Provision Autonomous AI Database",
             "type": "freetier",
             "filename": "./../../adb-provision/adb-provision-moviestream.md"
         },
@@ -39,7 +39,7 @@
             "filename": "./../../adb-sqldevweb/adb-sqldevweb.md"
         },
         {
-            "title": "Lab 3: Connect Securely to Autonomous Data Warehouse with or without a Connection Wallet",
+            "title": "Lab 3: Connect Securely to Autonomous AI Database with or without a Connection Wallet",
             "description": "Connecting Securely with or without a Connection Wallet",
             "type": "freetier",
             "filename": "./../../adw-connection-wallet/adw-connection-wallet.md"
@@ -90,7 +90,7 @@
             "filename": "./../../adb-data-safe/adb-data-safe.md"
         },
         {
-            "title": "Lab 13: Public and Private Network Access in Autonomous Database",
+            "title": "Lab 13: Public and Private Network Access in Autonomous AI Database",
             "description": "Public and Private Network Access in Autonomous Database",
             "filename": "./../../adb-private-endpoints/adb-private-endpoints.md"
         },

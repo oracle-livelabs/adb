@@ -4,7 +4,7 @@
 
 Amazon AWS Glue Data Catalog is a centralized metadata management service that helps data professionals discover data and supports data governance in AWS cloud.
 
-Autonomous Database allows you to synchronize with Amazon Web Service (AWS) Glue Data Catalog metadata. A database external table is automatically created by Autonomous Database for every table harvested by AWS Glue about data stored in Amazon Simple Storage Service (S3). Users can query data stored in Amazon S3 from Autonomous Database without having to manually derive the schema for the external data sources and create external tables.
+Oracle Autonomous AI Database allows you to synchronize with Amazon Web Service (AWS) Glue Data Catalog metadata. A database external table is automatically created by Oracle Autonomous AI Database for every table harvested by AWS Glue about data stored in Amazon Simple Storage Service (S3). Users can query data stored in Amazon S3 from Oracle Autonomous AI Database without having to manually derive the schema for the external data sources and create external tables.
 
 Synchronizing with AWS Glue Data Catalog is dynamic, keeping the database up-do-date with respect to changes to the underlying data, reducing administration cost as it automatically maintains hundreds to thousands of tables.
 
@@ -15,7 +15,7 @@ Estimated Time: 10 minutes
 In this lab, you will:
 
 * Navigate to your AWS Glue Data Catalog (if you have one) and review the available databases and tables.
-* Register an Amazon S3 Glue Data Catalog with Autonomous Database.
+* Register an Amazon S3 Glue Data Catalog with Oracle Autonomous AI Database.
 * Link to the available tables in the Glue Data Catalog and create external tables based on those tables.
 * Query the newly created external tables using the SQL Worksheet.
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 This lab requires the completion of the following labs/tasks from the **Contents** menu on the left:
 
-* **Lab 1**: Set up the Workshop Environment > **Task 3**: Create an Autonomous Data Warehouse Instance.
+* **Lab 1: Set up the Workshop Environment > Task 2:  Provision the Autonomous AI Database Instance**.
 
 > _**Note:** This is not a hands-on lab unless you have an AWS account and can access an AWS Glue instance that contains at least one database and one table._
 
@@ -69,11 +69,11 @@ In this task, you will navigate to an AWS Glue Data Catalog instance and explore
 
     ![Click the parq database](images/tables-in-parq.png)
 
-## Task 2: Register AWS Glue Data Catalog with Autonomous Database
+## Task 2: Register AWS Glue Data Catalog with Oracle Autonomous AI Database
 
 _**Note:** This is not a hands-on task; instead, it is a demo of how to define an Amazon S3 location._
 
-In this task, we register the AWS Glue **`moviestream`** database with Autonomous Database. We will the (4) files in this database to identify customers' information.
+In this task, we register the AWS Glue **`moviestream`** database with Oracle Autonomous AI Database. We will the (4) files in this database to identify customers' information.
 
 1. Navigate to the **Data Load Dashboard**. Click **Database Actions | SQL** in the banner (from the last lab) to display the **Launchpad** page. Click the **Data Studio** tab, and then click the **Data Load** tab.
 
@@ -164,12 +164,12 @@ In this task, we will link to the data from the AWS S3 Glue Data Catalog. A link
 
     ![Click Run Statement.](images/click-run-statement.png)
 
-    The data that is stored in Amazon Cloud is now available for query in Autonomous Database.
+    The data that is stored in Amazon Cloud is now available for query in Oracle Autonomous AI Database.
 
 ## Learn more
 
 * [Query External Data with AWS Glue Data Catalog](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/query-external-data-aws-glue-data-catalog.html#GUID-14F80C56-B182-440C-99F6-F890C42887CD)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 You may now proceed to the next lab.
 
@@ -177,7 +177,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab demonstrates the integration of AWS Athena and Oracle Autonomous Database (ADB). It explores how AWS Athena creates and manages Iceberg tables and how ADB in OCI accesses metadata through AWS Glue. You will learn how to query the Iceberg tables as external tables directly within ADB, using efficient cross-cloud data querying without data replication.
+This lab demonstrates the integration of AWS Athena and Oracle Autonomous AI Database (ADB). It explores how AWS Athena creates and manages Iceberg tables and how ADB in OCI accesses metadata through AWS Glue. You will learn how to query the Iceberg tables as external tables directly within ADB, using efficient cross-cloud data querying without data replication.
 
 ![Iceberg diagram.](images/iceberg-diagram.png =70%x*)
 
@@ -22,11 +22,11 @@ In this lab, we will show you how to do the following:
 
 Access to an ADW and AWS Athena if you choose to perform the steps.
 
-_**Note:** This is not a hands-on task; instead, it is a demo of how to access Amazon Athena data in Autonomous Database using external tables._
+_**Note:** This is not a hands-on task; instead, it is a demo of how to access Amazon Athena data in Oracle Autonomous AI Database using external tables._
 
 ### About Querying Apache Iceberg Tables
 
-Autonomous Database supports querying of Apache Iceberg tables stored in Amazon Web Services (AWS) or in Oracle Cloud Infrastructure (OCI) Object Storage
+Oracle Autonomous AI Database supports querying of Apache Iceberg tables stored in Amazon Web Services (AWS) or in Oracle Cloud Infrastructure (OCI) Object Storage
 
 ### About Amazon Athena
 
@@ -163,7 +163,7 @@ Apache Iceberg is a distributed, community-driven, Apache 2.0-licensed, 100% ope
 
     ![Query Iceberg table.](images/query-iceberg-table-2.png =65%x*)
 
-    The changes to the **`movie_promotion_training`** table in Athena are automatically reflected in Autonomous Database.
+    The changes to the **`movie_promotion_training`** table in Athena are automatically reflected in Oracle Autonomous AI Database.
 
 ## Learn more
 
@@ -176,7 +176,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

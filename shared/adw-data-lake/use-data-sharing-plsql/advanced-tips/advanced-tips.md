@@ -205,7 +205,7 @@ By default, share recipients are issued access tokens valid for up to 90 days. T
 
 ## Task 3: Enable Versioned Access for Shared Data
 
-Oracle Autonomous Database (ADB) does not enable *versioned shares* by default. This means consumers can only access the most recent version of a shared dataset; However, some use cases require querying historical versions for debugging, compliance, or reproducibility in analytics pipelines.
+Oracle Autonomous AI Database (ADB) does not enable *versioned shares* by default. This means consumers can only access the most recent version of a shared dataset; However, some use cases require querying historical versions for debugging, compliance, or reproducibility in analytics pipelines.
 
 In this task, you'll learn how to enable *versioned access* both at the recipient level and
 at the share level.
@@ -269,7 +269,7 @@ Prerequisite:
     ```
     <copy>
     curl -X GET \
-    -H "Authorization: Bearer enter-your-bearer-token-value-here \
+    -H "Authorization: Bearer enter-your-bearer-token-value-here" \
     enter-your-endpoint-url-here/shares
     </copy>
     ```
@@ -298,7 +298,7 @@ You must have a valid Delta Sharing activation profile with:
 
 ![Example .](images/example.png " ")
 
-Oracle Autonomous Database uses Access Control Lists (ACLs) to control access to external network resources. In this step, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
+Oracle Autonomous AI Database uses Access Control Lists (ACLs) to control access to external network resources. In this step, as the `admin` user, you will create an Access Control List (ACL) to allow outbound connections over HTTPS. This involves providing the following:
 
 * Create an ACL file.
 * Grant `HTTPS` (port 443) access to a specific host, Databricks endpoint in our example.
@@ -504,13 +504,13 @@ You may now proceed to the next lab!
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, June 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

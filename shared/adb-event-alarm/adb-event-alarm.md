@@ -1,5 +1,4 @@
-﻿
-# Set Event and Alarm Notifications for an Autonomous Database
+﻿# Set Event and Alarm Notifications for an Autonomous AI Database
 
 ## Introduction
 
@@ -9,7 +8,7 @@ The Oracle Cloud Infrastructure (OCI) Notifications service broadcasts messages 
 
 The Notifications service enables you to set up communication channels for publishing messages using topics and subscriptions. When a message is published to a topic, the Notifications service sends the message to all of the topic's subscriptions.
 
-This lab shows you how to define events and alarms with conditional rules that will generate email notifications when the state of an Autonomous Database changes or an alarm condition has been met.
+This lab shows you how to define events and alarms with conditional rules that will generate email notifications when the state of an Autonomous AI Database changes or an alarm condition has been met.
 
 **An event** is triggered for a lifecycle management (LCM) type operation performed in Oracle Cloud, such as creating a database, stopping a database, and so on.
 
@@ -22,9 +21,9 @@ Estimated Lab Time: 20 minutes
 In this lab, you'll:
 
 - Use the OCI Console to define a notification topic and subscribe to the topic.
-- Create a rule for an Autonomous Database event that will trigger an email notification.
+- Create a rule for an Autonomous AI Database event that will trigger an email notification.
 - Perform an activity that activates the rule and confirm that an email notification was sent.
-- Create and test an Autonomous Database alarm that will trigger an email notification.
+- Create and test an Autonomous AI Database alarm that will trigger an email notification.
 
 ## **PART 1 - Define an Event that Will Email a Notification When a Database Is Stopped**
 
@@ -44,11 +43,7 @@ In Tasks 1 through 7, you create a notification topic with an email subscription
 
 1. Create a Notification topic. Click the **Navigation** menu, and then click **Developer Services**. Under **Application Integration**, click **Notifications**.
 
-    ![Navigate to Notifications](images/click-notifications.png)
-
 2. On the **Topics** page, click **Create Topic**.
-
-    ![Click Create Topic](images/click-create-topic.png)
 
 3. In the **Create Topic** panel, enter a name and an optional description, and then click **Create**.
 
@@ -62,9 +57,9 @@ In Tasks 1 through 7, you create a notification topic with an email subscription
 
 Now that you have created a notification topic, create a subscription to that topic, so that you can receive email alerts when a condition changes. You will create a rule with conditions in a following task.
 
-In this lab, you create an email subscription. Subscriptions can be defined to trigger emails or pager notifications (for on-call staff whose phones will be paged.)
+In this task, you create an email subscription. Subscriptions can be defined to trigger emails or pager notifications (for on-call staff whose phones will be paged.)
 
-1. On the **Topics** page, click the **Data-Notification** topic. On the **Topics details** page, click **Create Subscription**.
+1. On the **Topics** page, click the **Data-Notification** topic. On the **Topics details** page, click the **Subscriptions** tab, and then click **Create subscription**.
 
     ![Click Create Subscription](images/click-create-subscription.png)
 
@@ -74,7 +69,9 @@ In this lab, you create an email subscription. Subscriptions can be defined to t
 
     ![Create the subscription](images/create-subscription.png)
 
-3. Click **Create**. The current status of the subscription is **PENDING**.
+3. Click **Create**. The current status of the subscription is **Pending**.
+
+    ![State pending](images/state-pending.png)
 
 ## Task 3: Respond to the Verification Email
 
@@ -86,7 +83,7 @@ In this lab, you create an email subscription. Subscriptions can be defined to t
 
     ![The subscription is confirmed](images/subscription-confirmed.png)
 
-3. On the **Data-Notifications** page, the new subscription is displayed. You might have to refresh the page to display the new subscription. The subscription status is now **ACTIVE**.
+3. On the **Data-Notifications** page, the new subscription is displayed. You might have to refresh the page to display the new subscription. The subscription status is now **Active**.
 
   ![The new subscription is displayed.](images/subscription-displayed.png)
 
@@ -94,11 +91,9 @@ You are now subscribed to a Notification topic. Next you will define an event wi
 
 ## Task 5: Define an Event with Rules that Will Publish Messages
 
-Let's define an event that triggers an email notification when an Autonomous Database is stopped.
+Let's define an event that triggers an email notification when an Autonomous AI Database is stopped.
 
 1. In the Oracle Console, click the **Navigation** menu.
-
-  ![Click the Navigation menu](images/click-navigation-menu.png =50%x*)
 
 2. Click **Observability & Management**. Under **Events Service**, click **Rules**.
   
@@ -109,13 +104,13 @@ Let's define an event that triggers an email notification when an Autonomous Dat
   ![Click Create Rule](images/click-create-rule.png)
 
 3. On the **Create Rule** page, specify the following:
-    - **DISPLAY NAME:** : Provide a name, such as the event type that you will be choosing; in this lab, the event type will be `Autonomous Database - Stop End`.
+    - **DISPLAY NAME:** : Provide a name, such as the event type that you will be choosing; in this lab, the event type will be `Autonomous AI Database - Stop End`.
     - **DESCRIPTION:** Provide a description.
 
     In the **Rule Conditions** section, specify the following:
     - **Condition:** `Event Type`
     - **SERVICE NAME:** `Database`
-    - **EVENT TYPE:** : Choose `Autonomous Database - Stop End` from the drop-down list.
+    - **EVENT TYPE:** : Choose `Autonomous AI Database - Stop End` from the drop-down list.
 
     In the **Actions** section, specify the following:
 
@@ -127,7 +122,7 @@ Let's define an event that triggers an email notification when an Autonomous Dat
 
   ![Click Create Rule](images/click-create-rule-page.png)
 
-  The **Autonomous Database - Stop End** page is displayed.
+  The **Autonomous AI Database - Stop End** page is displayed.
 
   ![The Stop End page is displayed](images/stop-end-page.png)
 
@@ -135,23 +130,17 @@ You have configured a Notification service and tied an event to it with a specif
 
 ## Task 6: Trigger the Event
 
-You will now shut down the Autonomous Database to trigger the notification email.
+You will now shut down the Autonomous AI Database to trigger the notification email.
 
-1. Navigate to the **`ADW_Finance_Mart`** **Autonomous Database details** page. Click the **More actions** drop-down list, and then select **Stop**.
+1. Navigate to the **`ADW_Finance_Mart`** **Autonomous AI Database details** page. Click the **More actions** drop-down list, and then select **Stop**.
 
   ![Stop the database](images/stop-database.png)
 
-2. In the confirmation dialog box, click **Stop**.
+2. In the **Confirm stop** dialog box, click **Stop**.
 
-  ![Confirm database stop](images/confirm-stop.png =50%x*)
+3. The initial status of the database is **Stopping**.
 
-3. The initial status of the database is **STOPPING**.
-
-    ![The status is stopping](images/status-stopping.png " ")
-
-4. Wait until the database status changes to **STOPPED**.
-
-    ![The status is stopped](images/status-stopped.png " ")
+4. Wait until the database status changes to **Stopped**.
 
 ## Task 7: Verify that an Email Notification Was Sent
 
@@ -169,11 +158,13 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
 
 ## Task 8:  Define an Alarm for the CPU Utilization Chart
 
-1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **STARTING**. In a few minutes, the status changes to **AVAILABLE**.
+1. Start your `ADW_Finance_Mart` database. Navigate back to your `ADW_Finance_Mart` **Autonomous AI Database details** page, if you are not there already. Click the **More actions** drop-down list, and then select **Start**. In the **Confirm start** dialog box, click **Start**. The initial status of the workshop is **Starting**. In a few minutes, the status changes to **Available**.
 
-    ![The database is started](images/database-started.png =60%x*)
+2. On the **Autonomous AI Database details** page, click the **Monitoring** tab. 
 
-2. Scroll-down the **Autonomous Database details** page to the **Metrics** charts. In the **CPU Utilization** chart, click the **Options** drop-down list, and then select **Create an alarm on this query**.
+  ![Click the Monitoring tab](images/click-monitoring-tab.png)
+
+3. In the **CPU utilization** chart section, click the **Actions** (ellipsis) icon, and then select **Create an alarm on this query**.
 
   ![Define an alarm](images/define-alarm.png)
 
@@ -181,12 +172,12 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
     - **Alarm name:** Provide a name, perhaps indicating the metric that will trigger the alarm. In this lab example, the alarm is to `alert unusual CPU usage`.
  
     In the **Metric description** section, specify the following:
-    - **Compartment:** Choose the compartment that contains the Autonomous Database for which you are creating the alarm.
+    - **Compartment:** Choose the compartment that contains the Autonomous AI Database for which you are creating the alarm.
     - **Metric namespace**: The available options depend on the types of resources that exist in the selected compartment. In this case, choose **`oci_autonomous_database`**.
     - **Metric name** : **`CpuUtilization`**
 
     In the **Metric dimensions** section, specify the following:
-    - Click **+Additional dimension**. Select **resourceId** from the drop-down list as the name. For the **Dimension value**, Select the first value in the drop-down list. This is the OCID for your region. You can find your region's OCID on your **Autonomous Database details** page.
+    - Click **+Additional dimension**. Select **resourceId** from the drop-down list as the name. For the **Dimension value**, Select the first value in the drop-down list. This is the OCID for your region. You can find your region's OCID on your **Autonomous AI Database details** page.
     - **DeploymentType:** Select **Shared**
 
     In the **Trigger rule 1** section, specify the following:
@@ -209,11 +200,15 @@ In Tasks 8 through 10, define an alarm that triggers an email when CPU utilizati
 
 ## Task 9: Create a CPU Utilization that Triggers the New Alarm
 
-Re-run the **`test_proc`** procedure in **Lab 6: Apply Auto Scaling > Task 5** again to create a CPU utilization that triggers the alarm that you just created. You will run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm.
+Re-run the **`test_proc`** procedure in **Lab 6: Apply Auto Scaling > Task 5** again to create a CPU utilization that triggers the alarm that you just created. You will run the `**test_proc**` procedure concurrently in 3 SQL Developer Web query worksheet instances, which should result in CPU utilization greater than the 30% specified as the triggering level in the alarm. 
 
-1. Navigate to your SQL Worksheet.
+1. Let's make sure that you'll trigger the CPU alarm. From the **Autonomous AI Database details** page, click the **More actions** drop-down list, and then select **Manager resource allocation**. Change the **ECPU count** for the **`ADW_Finance_Mart`** instance to the original setting from lab 1 to `2`. Make sure that the **Compute auto scaling** slider is disabled. 
 
-2. Go to your **Query 1**, **Query 2**, and **Query 3** SQL worksheets (re-open 3 instances if you closed the tabs from before). Change the **Consumer group** drop-down list setting to **HIGH**. Copy the following execute command into each worksheet; however, _but do not immediately execute the command_. After you have entered the command into the three worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
+2. Navigate to your SQL Worksheet. 
+
+  ![Navigate to SQL Worksheet](images/navigate-sql-worksheet.png " ")
+
+3. Go to your **Query 1**, **Query 2**, and **Query 3** SQL worksheets (re-open 3 instances if you closed the tabs from before). Change the **Consumer group** drop-down list setting to **HIGH**. Copy the following execute command into each worksheet; however, _but do not immediately execute the command_. After you have entered the command into the three worksheets, quickly click **Run Script** to execute the command in each worksheet so that they begin at nearly the same time.
 
     ```
     <copy>
@@ -232,7 +227,11 @@ Check the email account you specified to verify that a notification email was se
 
 1. Go to the specified email account and verify that a notification of the CPU utilization has been sent. 
 
-  ![ALT text is not available for this image](images/2619005579.png)
+  ![CPU Usage Alarm email](images/cpu-usage-alarm-email.png " ")
+
+2. In the body of the email, click the **View Alarm in Console** green button at the bottom of the email. The alarm is displayed in the Console.
+
+  ![CPU Usage Alarm displayed in Console](images/cpu-usage-alarm-console.png " ")
 
 You may now **proceed to the next lab**.
 
@@ -246,4 +245,4 @@ You may now **proceed to the next lab**.
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 - **Contributor:** Nilay Panchal, ADB Product Management
-- **Last Updated By/Date:** Lauran K. Serhal, January 2025
+- **Last Updated By/Date:** Lauran K. Serhal, October 2025
