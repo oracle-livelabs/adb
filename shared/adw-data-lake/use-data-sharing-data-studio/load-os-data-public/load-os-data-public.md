@@ -9,7 +9,7 @@ In this lab, you will load data into your ADB instance from a public bucket usin
 In this lab, you will:
 
 * Navigate to the Data Load page.
-* Create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous Database
+* Create tables and load data from public object storage buckets using Data Tools built-in to Oracle Autonomous AI Database
 
 ### Prerequisites
 
@@ -29,9 +29,9 @@ In this lab, you will:
 
 ## Task 2: Load Data from a Public Object Storage Bucket and Create a Table
 
-In this task, you will load the **customer\_contact** data into your Autonomous Database instance and then create a table.
+In this task, you will load the **`customer_contact`** data into your Autonomous AI Database instance and then create a table.
 
-1. On the **Data Load** page, click the **LOAD DATA** card.
+1. On the **Data Load** page, click the **Load Data** card.
 
     ![Select Link Data and Cloud Store.](images/click-data-load-card.png " ")
 
@@ -71,7 +71,7 @@ In this task, you will load the **customer\_contact** data into your Autonomous 
 
     ![View the settings for customer_contact load task](images/customer-contact-settings.png)
 
-    The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous Database instance, without the need to predefine the table in SQL.
+    The Load tool makes intelligent choices for the target table name and properties. Since this is an initial load, accept the default option of **Create Table**, which conveniently creates the target table in the Autonomous AI Database instance, without the need to predefine the table in SQL.
 
 9. Click **Start** to run the data load job. 
 
@@ -108,7 +108,7 @@ You may now proceed to the next lab.
 ## Learn more
 
 * [Load Data from Files in the Cloud](https://www.oracle.com/pls/topic/lookup?ctx=en/cloud/paas/autonomous-data-warehouse-cloud&id=CSWHU-GUID-07900054-CB65-490A-AF3C-39EF45505802).
-* [Load Data with Autonomous Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
+* [Load Data with Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/autonomous-data-warehouse-cloud/user/load-data.html#GUID-1351807C-E3F7-4C6D-AF83-2AEEADE2F83E)
 * [The Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB)
 
 You may now proceed to the next lab.
@@ -117,7 +117,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran Serhal, Consulting User Assistance Developer
 * **Contributors:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran Serhal, July 2025
+* **Last Updated By/Date:** Lauran Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -23,9 +23,9 @@ In this lab, you will:
 
 ## Task 1: Download the .json Configuration File
 
-As the **`training_recipient`**, you can use the activation link URL that was sent to you by the **`share_provider`** via email to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to connect to the data share and access the **`CUSTOMER_CONTACT_SHARE`** table in the share. **Note:** In our example, you will use the second activation link that you got using the second method in the previous lab.
+As the **`training_recipient`**, you can use the activation link URL that was sent to you by the **`share_provider`** via email (from the previous lab) to download the **`delta_share_profile.json`** configuration file. This file (delta profile) contains the required credentials that you need in order to connect to the data share and access the **`CUSTOMER_CONTACT_SHARE`** table in the share. 
 
->**Note:** _To download the `.json` file as the recipient, it doesn't matter what user you are logged in as. All you need is a web browser._
+>_**Note:** To download the `.json` file as the recipient, it doesn't matter what user you are logged in as. All you need is a web browser._
 
 <!-- text -->
 
@@ -36,15 +36,13 @@ Uncomment this when development find a fix for this bug.
 
     ![Open the email message.](images/open-email.png)-->
 
-1. Copy the activation link URL that you obtained using the second method, and then paste it in your web browser's address bar. <!--Alternatively, you can simply click the URL in the email message.-->
-
-    ![Paste activation link in the browser.](images/paste-activation-url.png)
+1. Copy the activation link URL that was sent to you in the previous lab by the **`share_provider`** user via an email message. Paste the URL in your web browser's address bar.
 
 2. Press **[Enter]**. The **Autonomous Database Data Sharing** page is displayed. To download the config file, click **Get Profile Information**.
 
     ![Click Get Profile Information.](images/click-get-profile.png)
 
-    >**Note:** You can download this profile file only once; therefore, make sure you save it once it's downloaded.
+    >_**Note:** You can download this profile file only once; therefore, make sure you save it once it's downloaded._
 
     The **Profile information downloaded** page is displayed and the name of the downloaded file, `delta_share_profile.json`, is displayed in a pop-up window. You can close this browser tab after the file is downloaded.
 
@@ -78,17 +76,15 @@ To consume a data share, a recipient must have the required network connection t
 
     ![click the consume share tile.](images/click-consume-share.png)
 
-2. Click the **+ Subscribe to Share Provider** drop-down list, and then click   the **Subscribe to Delta Share Provider** option.
+2. Click the **Subscribe to Share Provider** drop-down list, and then click   the **Subscribe to Delta Share Provider** option.
 
     ![click Subscribe to Share Provider.](images/click-subscribe-provider.png)
 
     The **Subscribe to Share Provider** wizard is displayed.
 
-    ![The Subscribe to Share Provider wizard is displayed.](images/subscribe-wizard.png)
+ 3. On the **Provider Settings** page 1 of the wizard, provide the following information:
 
-3. On the **Provider Settings** page 1 of the wizard, provide the following information:
-
-    * **Share Source:** Accept the default **Delta Share Provider JSON** option.
+    * **Share Source:** Accept the default **Create Share Provider** option.
     * **Share Provider JSON:** Accept the **From file** option.
     * **Delta Share Profile JSON:** Click this field to display the **Open** dialog box. Navigate to your **Downloads** directory where you downloaded the **`delta_share_profile.json`** file, and then click **Open**.
 
@@ -113,7 +109,7 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
     <copy>
     BEGIN
     DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'ukgyxp2x0rqadss-trainingadw.adb.ca-toronto-1.oraclecloudapps.com',
+        host => 'https://mqssyowmqvgac1y-trainingadw.adb.us-ashburn-1.oraclecloudapps.com',
         lower_port => 443,
         upper_port => 443,
         ace => xs$ace_type(
@@ -149,7 +145,7 @@ For information about the `DBMS_NETWORK_ACL_ADMIN` package, see the [PL/SQL Pack
 
 1. Expand the **TRAINING_SHARE** data share node to display the objects in it. Drag and drop the **`CUSTOMER_CONTACT`** shared table to add it to the data link job.
 
-    ![Drag and drop the shared table onto the canvas.](images/drag-and-drop-share.png)
+    ![Drag and drop the shared table onto the canvas.](images/drag-and-drop-share-new.png)
 
 2. The shared table is added to the data link job. When you run this job, a new **`CUSTOMER_CONTACT`** external table will be created on top of the **`CUSTOMER_CONTACT`** table that was shared with you. Before you create the external table, change its name from **`CUSTOMER_CONTACT`** to **`CUSTOMER_CONTACT_SHARE`**. Click the **Settings** icon (pencil).
 
@@ -197,7 +193,7 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
