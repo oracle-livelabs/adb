@@ -81,7 +81,7 @@ Oracle Autonomous AI Database Serverless enables the data share provider to shar
 
 Autonomous AI Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The DWROLE role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
-1. Create a **share_provider** user and grant this user the required role and privileges and enable REST and data sharing. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon in the Worksheet toolbar.
+1. Create a **share_provider** user and grant this user the required role and privileges and enable REST and data sharing. Copy and paste the following script into your SQL Worksheet. The first time you paste code in the worksheet, a message box is displayed. Click **Allow**, Next, click the **Run Script (F5)** icon in the Worksheet toolbar. 
 
     ```
     <copy>
@@ -183,7 +183,6 @@ Autonomous AI Database comes with a predefined database role named `DWROLE`. Thi
 
     ![Logged in as share_provider](images/launchpad-share-provider.png =65%x*)
 
-
 ## Task 4: (Optional) Create an Oracle Object Storage Bucket
 
 >**Note:** If you already have an Object Storage bucket, you don't need to create a new one. You can use your own bucket.
@@ -192,17 +191,17 @@ Create a private Object Storage bucket to store your data. For more information 
 
 <if type="livelabs">
 
-1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click **Launch OCI**.
+1. Navigate back to the Oracle Cloud Console. Click the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab.
 
-    ![Click the Launch OCI button.](images/click-launch-oci.png =65%x*)
+    ![Click the Launch OCI button.](images/click-browser-tab.png =65%x*)
 
 2. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
     ![Navigate to Buckets.](images/navigate-buckets.png =65%x*)
 
-3. On the **Buckets** page, select the compartment that was assigned to you where you want to create the bucket from the **Compartment** drop-down list in the **Applied filters** section. Make sure you are in the region that was assigned to you where you will create your bucket.
+3. On the **Buckets** page, select the compartment that was assigned to you where you want to create the bucket from the **Compartment** drop-down list in the **Applied filters** field. Make sure you are in the region that was assigned to you where you will create your bucket.
 
-    ![The Buckets page.](images/buckets-page.png =65%x*)
+    ![The Buckets page.](images/ll-buckets-page.png =65%x*)
 
 4. Click **Create Bucket**.
 
@@ -219,7 +218,11 @@ Create a private Object Storage bucket to store your data. For more information 
 
 7. The new bucket is displayed on the **Buckets** page. The default bucket type (visibility) is **Private**.
 
-  ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png =65%x*)
+  ![The new bucket is displayed on the Buckets page.](./images/ll-bucket-created.png =65%x*)
+
+8. Next, _you need to get the name of the namespace (tenancy) where this new bucket was created_. You will need this namespace name in this workshop. Navigate back to your **Reservation information** form. In the **Tenancy Information** section, click **Copy** next to the **Tenancy Name** row to copy it to your clipboard. Copy this tenancy name to your choice of text editor such as Notepad in Windows as you will need it in later steps.
+
+    ![Get the bucket's namespace.](./images/ll-reservation-information-tenancy.png =65%x*)  
 </if>
 
 <if type="freetier">
@@ -249,17 +252,15 @@ Create a private Object Storage bucket to store your data. For more information 
 
   ![The new bucket is displayed on the Buckets page.](./images/bucket-created.png =65%x*)
 
-  </if>
-
 7. Next, _you need to get the name of the namespace (tenancy) where this new bucket was created_. You will need this namespace name in this workshop. In the row for the bucket, click the **Actions** icon (ellipsis), and then select **View bucket details** from the context menu.
 
-    ![Get the bucket's namespace.](./images/view-bucket-details.png " ")
+    ![Get the bucket's namespace.](./images/view-bucket-details.png =65%x*)
 
     The **Bucket** details page is displayed. The **Namespace** field displays the name of the namespace. The name is blurred for security reasons. Copy this name to your choice of text editor such as Notepad in Windows as you will need it in later steps.
 
-    ![Copy the bucket's namespace.](./images/copy-bucket-namespace.png " ")
+    ![Copy the bucket's namespace.](./images/copy-bucket-namespace.png =65%x*)  
 
-    </if>
+  </if>
 
 ## Task 5: (Optional) Generate an RSA Key Pair and Get the Key's Fingerprint
 [](include:adb-generate-rsa-key-pair.md)
@@ -272,19 +273,19 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
 1. From the SQL Worksheet, click the **Database Actions | SQL** banner to display the Launchpad page.
 
-    ![Click the SQL banner.](./images/click-sql-banner.png " ")
+    ![Click the SQL banner.](./images/click-sql-banner.png =65%x*)
 
 2. On the **Database Actions | Launchpad** page, click the **Data Studio** tab and then click the **Data Load** tab.
 
-    ![Navigate to Data Load.](./images/click-data-studio-data-load.png " ")
+    ![Navigate to Data Load.](./images/click-data-studio-data-load.png =65%x*)
 
     The **Data Load** Home page is displayed. Click **CONNECTIONS**.
 
-    ![The Data Load Home page.](./images/data-load-home-page.png " ")
+    ![The Data Load Home page.](./images/data-load-home-page.png =65%x*)
 
 3. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location** from the drop-down menu.
 
-    ![Click New Cloud Store Location.](./images/click-new-cloud-store-location.png " ")
+    ![Click New Cloud Store Location.](./images/click-new-cloud-store-location.png =65%x*)
 
 4. Specify the following in the **Add Cloud Store Location** panel.
     + **Name:** Enter **`delta_share_storage`**.
@@ -305,7 +306,7 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
 5. Click **Create Credential**.
 
-    ![Click Create Credential.](./images/click-create-credential.png " ")
+    ![Click Create Credential.](./images/click-create-credential.png =65%x*)
     
     The **Add Cloud Store Location** panel is re-displayed. The newly created credential is displayed. If you already have a bucket, select it from the **Select Bucket** drop-down list. This populates the **Bucket URI** text box; otherwise, select the **Bucket URI** option, and then enter your bucket's URI in the **Bucket URI** text box. You identified your bucket's URI in **Task 4**. Remember to use this general structure, swapping in your own values. _Remember, don't include the trailing slash after the **`/o`**; otherwise, you will get an error_.
     
@@ -315,15 +316,15 @@ You will set up a connection to Oracle Object Storage by defining a cloud locati
 
     In our example, we selected our **data-share-bucket** from the **Select Bucket** drop-down list. The URI is displayed in the **Bucket URI** field.
 
-    ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png " ")
+    ![Complete the Add Cloud Store Location.](./images/complete-add-cloud-store-location.png =65%x*)
 
 6. Click **Next** to see the available objects in the bucket that you specified. Our selected bucket is empty.
 
-    ![Click Next to see the objects in the bucket.](./images/click-next.png " ")
+    ![Click Next to see the objects in the bucket.](./images/click-next.png =65%x*)
 
 7. Click **Create**. The **DELTA\_SHARE\_STORAGE** cloud location connection is displayed in the **Connections** page.
 
-    ![The cloud store location is created.](./images/cloud-connection-created.png " ")
+    ![The cloud store location is created.](./images/cloud-connection-created.png =65%x*)
 
 You may now proceed to the next lab.
 
