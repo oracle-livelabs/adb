@@ -193,8 +193,6 @@ Create a private Object Storage bucket to store your data. For more information 
 
 1. Navigate back to the Oracle Cloud Console. Click the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab.
 
-    ![Click the Launch OCI button.](images/click-browser-tab.png =65%x*)
-
 2. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
     ![Navigate to Buckets.](images/navigate-buckets.png =65%x*)
