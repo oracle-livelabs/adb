@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Analytic Views are a collection of database objects that are used together to present a business model to applications.  Analytic Views may be queried with SQL.   These objects are:
+An Analytic Views is a collection of database objects that are used together to present a business model to applications.  Analytic Views may be queried with SQL. The objects comprising an Analytic View are:
 
-- One or more *Attribute Dimensions* define metadata with attributes and levels, which are the building blocks for hierarchies.
-- One or more *Hierarchies*, a type of view with levels and attributes organized to support the selection of data, aggregations, and navigation (e.g., drill down).
-- An *Analytic View* that references fact tables, measures, and hierarchies to pull all the data together in a single view.
+- One or more *Attribute Dimensions*, defining metadata for attributes used as reporting dimensions. Attribute Dimensions are the building blocks for hierarchies.
+- One or more *Hierarchies*, a type of view with levels and attributes organized to support the selection of data, aggregations, and navigation (e.g. drill downs).
+- One or more *Measures*, defining attributes that are used as measures in reports. Measures may use *Calculations*, for example to calculate a sum or average of all measure values for the selected dimensions.
 
 These objects are created in the Database using SQL DDL statements. The Data Studio Data Analysis tool creates all these objects for you as a complete system.  You do not need to write SQL DDL statements. The tool will show you the DDL statements if you would like to learn the SQL DDL or understand what the tool is doing ‘under the covers’.
 
@@ -30,9 +30,9 @@ In this lab you will:
 
 ## Task 1 - Create a New Analytic View
 
-Start the design process by creating a new Analytic View. Depending on how you enter the Data Analysis Application, you might or not see the Create button as shown below.
+Start the design process by creating a new Analytic View. 
 
-1. Press the Create button or choose to Create Analytic View from the menu.
+1. Press the Create button at the top right and select **Create Analytic View**:
 
 ![Create Analytic View](images/create-analytic-view.png)
 
@@ -46,7 +46,7 @@ Start the design process by creating a new Analytic View. Depending on how you e
 
 **Do not press the Create button yet.**  The Analytic View database objects will be created later after you have created hierarchies and measures.
 
-**Do not press the Generate Hierarchies and Measures button.**   The tool has a feature that can attempt to automatically create hierarchies and measures. In some cases, this might offer a useful head start. In this lab, you will learn how to create hierarchies and measures yourself.  Because you know your data best, and you know your business requirements, you will usually create hierarchies and measures as shown in this lab.
+**Do not press the Generate Hierarchies and Measures button.**   The tool has a feature that can attempt to automatically create hierarchies and measures. In some cases, this can offer a useful head start. In this workshop, you will learn how to create hierarchies and measures yourself.  
 
 You will want to provide user-friendly names to objects in the Analytic View.  User-friendly names may be used by an application to represent the Analytic View to end users. User-friendly names are entered into Captions. You may also provide a description of the object in the Description field.
 
@@ -59,7 +59,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

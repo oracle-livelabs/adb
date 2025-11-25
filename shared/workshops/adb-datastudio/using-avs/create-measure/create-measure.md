@@ -10,25 +10,23 @@ Estimated Time:  10 minutes.
 
 In this lab you will:
 
-- Create a database user.
+- Create a measure in the Analytic View
 
 ### Prerequisites:
 
-- Create measures in the Analytic View.
+- Create the hierarchy in the Analytic View in the previous labs
 
 ## Task 1 - Create a Fact Measure
 
 Measures come from the fact table.
 
-1. Choose **Measures**.
-2. Choose **Add Measures**.
-3. Select **SALES**.
+1. Right-click **Measures** in the tree view
+2. Choose **Add Measures**
+3. Select **SALES**
 
 ![Create Sales Measure](images/create-sales-measure.png)
 
 The analytic view now has a measure.
-
-![Create Sales Measure](images/sales-measure.png)
 
 4. Press the Show DDL button.
 
@@ -40,10 +38,10 @@ The tool can generate all the SQL DDL needed to create the Attribute Dimension H
 
 Before creating the analytic view, add some additional measures.  Repeating the same steps as you did with SALES, close the Show DDL dialog and:
 
-1. Add measure QUANTITY.
-2. Add measure DISCOUNT_PERCENT.
+1. Add measure QUANTITY
+2. Add measure DISCOUNT_PERCENT
 
-By default, the aggregation expression is SUM. For measures such as SALES and QUANTITY, it makes sense that those measures would be aggregated by SUM.
+Note that by default, the aggregation expression is SUM. For measures such as SALES and QUANTITY, it makes sense that those measures would be aggregated by SUM.
 
 ![Show Measures](images/measures-1.png)
 
@@ -52,7 +50,7 @@ By default, the aggregation expression is SUM. For measures such as SALES and QU
 Does it make sense to aggregate DISCOUNT\_PERCENT by SUM? Probably not. It rarely makes sense to aggregate percentages by SUM because ratios usually need to be calculated at the level of aggregation that is being reported on.  In this case, we can aggregate DISCOUNT_PERCENT using AVERAGE.
 
 1. Select the DISCOUNT_PERCENT MEASURE in the tree control.
-2. Change the Expression for DISCOUNT_PERCENT to AVG.
+2. Change the Aggregation Operator for DISCOUNT_PERCENT to AVG.
 
 ![Discount Percent Avg](images/discount-pct-avg.png)
 
@@ -67,7 +65,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

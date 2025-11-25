@@ -11,19 +11,16 @@ Estimated Time:  5 Minutes.
 
 In this lab you will:
 
-- Use the Analysis Viewer tool to explore data in the Analytic View.
+- Use the Analysis tool to explore data in the Analytic View.
 
 ### Prerequisites:
 
-- Complete the previous lab.
+- Complete the previous labs.
 
 ## Task 1 - Create a New Report
 
-The application will return to the Data Quality tab after the analytic
-view has been updated. As before, there are no errors.
-
-1. Choose the **Analyze** tab.
-2. Choose the **Report** icon (be sure to choose the middle icon).
+1. Hover over your analytic view and select the **Analyze** option.
+2. Ensure that the middle **Pivot** icon is selected on the report:
 
 ![Format Measure](images/report-1.png)
 
@@ -55,7 +52,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
