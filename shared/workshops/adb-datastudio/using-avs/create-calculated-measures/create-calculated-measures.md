@@ -6,7 +6,7 @@ In the Analytic View, there are two types of measures:
 
 -   **Fact measures** are from the fact table. Fact measures are mapped to the fact table and include aggregation operators.
 
--   **Calculated measures** are created using expression. Calculated measures reference fact measures or other calculated measures, and do not include aggregation operators.
+-   **Calculated measures** are created using expressions. Calculated measures reference fact measures or other calculated measures, and do not include aggregation operators.
 
 The analytic view includes an expression language used for calculated
 measures. You can also use any SQL single-row function in the definition
@@ -22,15 +22,17 @@ In this lab you will:
 
 ### Prerequisites:
 
-- Complete the previous lab.
+- Complete the previous labs.
 
-## Task 1  Create a Calculated Measure
+## Task 1 - Create a Calculated Measure
 
 Create a calculated measure that returns the Percent Change in Sales
 from the current period as compared to the prior period.
 
+From the Edit screen of your Analytic View:
+
 1. Right click **Calculations**
-2. Choose **Add Calculated Measure**
+2. Select **Add Calculated Measure**
 
 ![Add Calculated Measure](images/add-calculated-measure.png)
 
@@ -53,7 +55,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

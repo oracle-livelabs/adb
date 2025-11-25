@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Estimated Time:  10 minutes with 1 ocpu.
+Estimated Time:  10 minutes with 2 ecpus.
 
-This lab uses the Database Actions Data Studio Analysis tool to design the Analytic view.
+This lab uses the Database Actions Data Studio Analysis tool to design the Analytic View.
 
 Estimated Time:  Less than 5 minutes.
 
@@ -20,15 +20,15 @@ In this lab you will:
 
 ##  Task 1 - Access Database Actions
 
-The Database Actions tools can be accessed directly using a URL or through the Autonomous Database console.
+The Database Actions tools can be accessed directly using a URL or through the Autonomous AI Database console.
 
-If you are running this lab in your tenancy and do not have access to the Autonomous Database console,  ask the administrator of the database to provide you with the URL.
+If you are running this lab in your tenancy and do not have access to the Autonomous AI Database console,  ask the administrator of the database to provide you with the URL.
 
-1. If you have access to the Autonomous Database console, choose Database Actions.
+1. If you have access to the Autonomous AI Database console, choose Database Actions.
 
 ![Open Database Actions](images/adb-console-access-db-actions.png)
 
-2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions of you are logged in as ADMIN.
+2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions from the top right banner if you are logged in as ADMIN.
 
 ![Log out of Database Actions](images/db-actions-logout.png)
 
@@ -36,9 +36,11 @@ If you are running this lab in your tenancy and do not have access to the Autono
 
 ![Log into Database Actions](images/db-actions-login.png)
 
-4. Open the Data Analysis application.
+4. Find the Data Analysis application in the Data Studio section and launch it.
 
-The first time you open the Analysis Application, introductory cards might be displayed.  You can choose to review the cards or simply close them.
+![Launch Data Analysis](images/launch-analysis.png)
+
+The first time you open the Analysis Application, introductory cards will be displayed to give you a tour of the UI.  You can choose to review the cards to gain an understanding of the UI, or you can simply close them.
 
 ![Open Data Analysis application](images/hopscotch.png)
 
@@ -47,7 +49,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

@@ -10,14 +10,14 @@ In this lab, you defined the Analytic View using data in a star schema, with dim
 
 You can learn a lot about Analytic Views by reviewing the DDL used to create them.  [Oracle Live SQL](https://livesql.oracle.com/apex/f?p=590:49:::NO:RP,49:P49_SEARCH:analytic%20views) has many Analytic View tutorials and is a great place to learn more.
 
-## Analytic Views and Oracle Analytic Cloud
+## Analytic Views and Oracle Analytics Cloud
 
-Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Cloud can import Analytic Views into Subject Areas and query them using advanced Analytic View features.  You can learn more by watching this short video:  [Oracle Analytics Native Connection to Analytic Views in Database](https://www.youtube.com/watch?v=pmhVGvEB98k&t=53s)
+Oracle Analytics Cloud has native support for Analytic Views. Oracle Analytics Cloud can import Analytic Views into Subject Areas and query them using advanced Analytic View features.  You can learn more by watching this short video:  [Oracle Analytics Native Connection to Analytic Views in Database](https://www.youtube.com/watch?v=pmhVGvEB98k&t=53s)
 
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
