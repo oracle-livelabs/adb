@@ -4,8 +4,6 @@
 
 #### Video Preview
 
-<!--[](youtube:BvSkiWWhuN4)-->
-
 [Provision an Autonomous AI Database](videohub:1_o5aynk24)
 
 In just a few minutes, Autonomous AI Database lets you deploy a complete data warehousing platform that can scale to your requirements. And, you can use its Database Tools to easily populate that warehouse from the data lake.
@@ -43,5 +41,5 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, October 2025
+- **Last Updated By/Date:** Lauran K. Serhal, December 2025
 - **Built with Common Tasks**
