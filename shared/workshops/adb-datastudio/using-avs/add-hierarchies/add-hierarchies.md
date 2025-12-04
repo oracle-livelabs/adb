@@ -14,13 +14,13 @@ In this lab you will:
 
 ### Prerequisites:
 
-- Complete the previous lab.
+- Complete the previous labs.
 
 ## Task 1 - Return to Analytic View Editor
 
 You can add hierarchies using the same methods that you added the Time hierarchy. First, you need to switch back to the Analytic View editor.
 
-1. Choose the **Edit Analytic View** command.
+1. Hover over the MOVIE\_SALES\_FACT\_AV and select the **Edit Analytic View** option:
 
 ![Edit Analytic View](images/edit-analytic-view.png)
 
@@ -30,12 +30,12 @@ You are returned to the editor.
 
 Add new Data Sources for the hierarchies. Repeat the following steps for the CUSTOMER\_DIM and SEARCH\_GENRE\_DIM views.
 
-1. Select **Data Sources**.
+1. Select **Data Sources**, then **Add Hierarchy Sources**.
 
 ![Add Hierarchy Sources](images/add-hierarchy-sources-1.png)
 
 2. Select both **CUSTOMER\_DIM** and **SEARCH\_GENRE\_DIM**.
-3. Leave **Generate and Add Hierarchy from Source** off (disabled).
+3. Switch **Generate and Add Hierarchy from Source** off (disabled).
 4. Press the **OK** button.
 
 If you leave **Generate and Add Hierarchy from Source** on, which is easy to do, just close the dialog and carry on with the lab.
@@ -58,7 +58,7 @@ Now you can add hierarchies.  For each table, create hierarchies using the colum
 |CUSTOMER_DIM           |CITY                   | 4          |
 |CUSTOMER_DIM           |CUSTOMER_ID            | 5          |
 |SEARCH\_GENRE_DIM      |GENRE_NAME             | 1          |
-|                       |                       |            |
+
 
 For example, to add a hierarchy:
 
@@ -75,12 +75,12 @@ After creating the hierarchy, your screen will look like this:
 
 Next, add levels. For example:
 
-1. Select the **CONTINENT** hierarchy.
+1. Right-click the **CONTINENT** hierarchy.
 2. Choose **Add Level**.
 3. Select the **COUNTRY** column.
 4. Repeat for **STATE\_PROVINCE**, and **CITY**.
 
-When you are done with this hierarchy your screen should look like this.
+When you have finished this hierarchy, your screen should look like this:
 
 ![Continent Hierarchy](images/edit-continent-hierarchy-3.png)
 
@@ -88,7 +88,7 @@ Use the same steps to create the Search Genre hierarchy.
 
 1. Repeat the steps used with the **SEARCH\_GENRE\_DIM** table using the GENRE\_NAME column.
 
-2. Rename the hierarchy and level to "Genre".
+2. Rename both the hierarchy and its level to "Genre".
 
 The Search Genre hierarchy includes only a single level. A hierarchy is valid with a single level.
 
@@ -105,8 +105,7 @@ Joins for each of the new hierarchies can now be added.
 |-----------------------|-----------------------|-------------|
 |TIME_DIM               |DAY_ID                 | DAY_ID      |
 |CUSTOMER_DIM           |CUSTOMER_ID            | CUST_ID     |
-|SEARCH\_GENRE_DIM      |STATE_PROVINCE         | GENRE_ID    |
-|                       |                       |             |
+|SEARCH\_GENRE_DIM      |GENRE_ID               | GENRE_ID    |
 
 The completed joins will look like this.
 
@@ -123,7 +122,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

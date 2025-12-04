@@ -2,11 +2,11 @@
 
 ## About This Workshop
 
-This workshop introduces creating Analytic Views in Oracle Autonomous Database Using the Data Studio Analysis application.  This Live Lab is designed to be short and approachable.
+This workshop introduces creating Analytic Views in Oracle Autonomous AI Database Using the Data Studio Analysis application.  This Live Lab is designed to be short and approachable.
 
 The Analytic View that you will design is simple and easy to understand.  It introduces the business model and key features.  You will also use the Analysis tool to view your Analytic View and verify the design.
 
-The Data Studio Analysis tool generates all the DDL needed to create Analytic Views. You can view the DDL in the tool.  If you would like to look more closely at Analytic View DDL, consider running the **[Oracle Live SQL Tutorial Creating Analytic Views – Getting Started tutorial](https://livesql.oracle.com/apex/livesql/file/tutorial_EDVE861IID1QUD1NIUPU5ALEW.html)**.
+The Data Studio Analysis tool generates all the DDL needed to create Analytic Views. You can view the DDL in the tool.  If you would like to look more closely at Analytic View DDL, consider running the **[Oracle Free SQL Tutorial Creating Analytic Views – Getting Started tutorial](https://freesql.com/worksheet?tutorial=creating-analytic-views-deep-dive-b9Hibz)**.
 
 ### About Analytic Views
 
@@ -38,8 +38,7 @@ If you have any questions about the topics covered in this lab and the entire wo
 ### Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Special thanks to Mike Matthews, ADB Product Management, for his excellent editing.
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

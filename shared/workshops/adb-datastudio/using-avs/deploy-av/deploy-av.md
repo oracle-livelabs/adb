@@ -20,42 +20,59 @@ In this lab you will:
 
 You've worked hard to define your first analytic view (well, not really, because the tool makes it easy).  Give that Create button a good smash!
 
-1. Press the **Create** button.
+1. Press the **Create** button and click OK to confirm.
 
 Congratulations, you now have an analytic view deployed in the database! There is also an Attribute Dimension and Hierarchy.
 
-The Analysis tool will automatically switch out of the Analytic View design to the Data Quality tab.  This tab will let you know if there are certain types of errors found in the tables.  Since this is a Live Lab, there are no errors!
+To see the Analytic View, refresh the Analysis application by clicking the magnifying glass in the search bar at the top of the screen:
 
-![Data Quality Tab](images/data-quality-tab-1.png)
+![Analyze Tab](images/refresh.png)
+
+You will then see the Analytic View below. If you hover over the Analytic View, you will see a range of available options, as follows:
+
+ - Analyze - analyze the data using the analytic view
+ - Data Quality - check that there are no data quality errors that may affect reporting
+ - Export - export the analytic view to Tableau or Power BI
+ - Edit Analytic View - edit the analytic view, for example to add new data source, hierarchies, or measures
+ - Compile Anaytic View - compile the analytic view to ensure it is valid
+ - Show DDL - show the DDL of the analytic view
+ - Delete Analytic View - delete (drop) the analytic view
+
+![Analyze Tab](images/show-analytic-view.png) 
+
 
 ## Task 2 - Review Data in the Analytic View
 
-To view the data in the Analytic View, choose the Analyze tab and define a query in a report or graph.
+To view the data in the Analytic View, select the Analyze option. We can then define a query in a report or graph.
 
-1. Choose the **Analyze** tab.
-
-The application chooses a level (Year in this case) and a measure (Sales) and displays a report.
+The application chooses a level (Year in this case) and a measure (Sales) and displays a default report.
 
 ![Analyze Tab](images/analyze-tab-1.png)
 
-2. Switch to a chart by pressing the **bar chart** button in the upper, right corner of the application.
+1. Switch to a chart by pressing the **bar chart** button in the upper, right corner of the report.
+
+![Chart Button](images/select-chart.png)
+
+The report now summarizes sales per year in a visual format:
 
 ![Chart Button](images/chart-button.png)
 
-A bar chart with Years is displayed. Add **Months** to the Chart.
+It could be useful to get more details. We can Add **Months** to the Chart:
 
-3.	Expand the **Time** hierarchy, select **Month**, and drag it under **Year** in the **X-Axis** position.
-
-The chart now displays Month within Year.
+2.	Expand the **Time** hierarchy, select **Month**, and drag it under **Year** in the **X-Axis** position.
 
 ![Move month to x-axis](images/month-to-x-axis.png)
+
+The chart now displays Month within Year. Expand the chart using the control on the bottom right to show sales by year and month in a readable way:
+
+![Move month to x-axis](images/sales-by-month-chart.png)
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

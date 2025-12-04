@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Every Analytic View must reference at least one hierarchy.  A hierarchy can have one or more levels, where a level is a collection of hierarchy members at the same level of aggregation. For example, Months, Years, Cities, and Countries might be levels or Time and Geography hierarchies
+Every Analytic View must reference at least one hierarchy.  A hierarchy can have one or more levels, where a level is a collection of hierarchy members at the same level of aggregation. For example, Months, Years, Cities, and Countries might be levels of Time and Geography hierarchies.
 
-A hierarchy organizes levels into aggregation paths. For example, Days aggregate to Months, Months aggregate to Quarters, and Quarters aggregation to Years.
+A hierarchy organizes levels into aggregation paths. For example, Days aggregate to Months, Months aggregate to Quarters, and Quarters aggregate to Years.
 
 In the terminology of the Hierarchy view, the Day level is the child of the Month level, the Month level is the child of the Quarter level, and so on.
 
@@ -12,9 +12,9 @@ Hierarchies can use data from lookup tables or directly from the fact table.  In
 
 To create a hierarchy, you will:
 
-- Add a new table to the Analytic View.
-- Create levels.
-- Specify the joins between the hierarchy table and the fact table.
+- Add a new table to the Analytic View
+- Create levels
+- Specify the joins between the hierarchy table and the fact table
 
 ### Objectives
 
@@ -38,7 +38,7 @@ Right-click on Data Sources and Choose Add Hierarchy Sources.
 
 ![Add Hierarchy Sources](images/add-time-dim-hier-source.png)
 
-The table will be added to the sources.  You will specify the join between this table and the fact table after you create levels in the hierarchy.
+The table will be added to the set of Data Sources in the Analytic View.  You will specify the join between this table and the fact table after you create levels in the hierarchy.
 
 ![Data Sources](images/data-sources.png)
 
@@ -46,11 +46,11 @@ The table will be added to the sources.  You will specify the join between this 
 
 A hierarchy is created by choosing a column of a hierarchy table. A level in the hierarchy is automatically created. Additional levels can be added later.
 
-1. Right-click Hierarchies.
+1. Right-click Hierarchies and select **Add Hierarchy**
 
-2. Choose TIME_DIM.
+2. Select TIME_DIM
 
-3. Choose YEAR.
+3. Select YEAR
 
 **Pro-tip:** Add levels from the highest level to the lowest level and you will not need to sort the levels later.
 
@@ -66,11 +66,11 @@ Whether you like the name YEAR for this hierarchy is a matter of personal opinio
 
 4. Enter **TIME** in the Hierarchy Name field.
 
-5. Enter **Time** in the Caption field.  You can also enter **Time** in the Description.
+5. The Caption and Description fields will both now default to **Time**
 
 ![Rename Hierarchy to Time](images/rename-hier-to-time.png)
 
-You can choose to set the hierarchy to Time. Some applications might benefit from knowing that the hierarchy is Time, but that is not required for time series calculations such as LEAD and LAG.  xLeads and lags are calculated using the order of members within the hierarchy as set by the Sort By property in the Analysis design tool (which sets the ORDER BY property of a level in the attribute dimension SQL DDL).
+You can also choose to set the hierarchy type to Time if you wish. Some applications might benefit from knowing that the hierarchy is Time, but this is not required for time series calculations such as LEAD and LAG. Leads and lags are calculated using the order of members within the hierarchy as set by the Sort By property in the Analysis design tool (which sets the ORDER BY property of a level in the attribute dimension SQL DDL).
 
 ## Task 3 - Add Quarter, Month, and Day Levels
 
@@ -78,7 +78,7 @@ Next, you will add the Quarter, Month and Day levels to the Time hierarchy.
 
 Viewing data in the TIME_DIM table may help you understand what additional levels can be added to the hierarchy.
 
-1. Press the **Preview Data** button.
+1. Press the **Preview Data** button and select **TIME\_DIM**.
 
 ![Preview Time Table](images/preview-time-table.png)
 
@@ -100,7 +100,7 @@ A hierarchy such as DAY\_ID \> MONTH\_OF\_YEAR > QUARTER > YEAR does not fit the
 
 ## Task 4 - Examine Level Properties
 
-1. Select the YEAR level.
+1. Select the YEAR level in the tree view on the left to show all the properties that can be set for a hierarchy level.
 
 ![Year Level Properties](images/year-level-properties.png)
 
@@ -127,7 +127,7 @@ You may now **proceed to the next lab**
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 

@@ -26,7 +26,7 @@ To create the database user for this lab.
 ~~~SQL
 <copy>
 CREATE USER moviestream IDENTIFIED BY Welcome#1234 QUOTA UNLIMITED ON DATA;
-GRANT dwrole TO moviestream;
+GRANT dwrole, connect, resource TO moviestream;
 BEGIN
     ords.enable_schema(p_schema => 'MOVIESTREAM');
 END;
@@ -35,14 +35,16 @@ END;
 ~~~
 
 
-The DWROLE role is a standard role given to all users.  Enabling the user (schema) for ORDS allows that user to access the Database Actions tools.
+The DWROLE, CONNECT and RESOURCE roles are the minimum set of roles needed to use this workshop.  Enabling the user (schema) for ORDS allows the user to access the Database Actions tools.
+
+Note that it is also possible to create users and grant them roles from the **Administration - Database Users** section of Database Actions.
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
 - Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
-- Last Updated By - William (Bud) Endress, May 2024
+- Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
