@@ -1,6 +1,13 @@
 {
     "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": 
+    {
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+    },
+    "variables": ["./variables.json"],
     "tutorials": [
         {
             "title": "Get Started",
@@ -13,10 +20,10 @@
             "filename": "../../0-introduction.md"
           },
         {
-            "title": "Lab 1: Provision an Autonomous Database",
-            "description": "Provision Autonomous Database",
+            "title": "Lab 1: Provision an Autonomous AI Database",
+            "description": "Provision Autonomous AI Database",
             "type": "livelabs",
-            "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 2: Create a User",
