@@ -10,13 +10,13 @@ Estimated Time: 10 minutes
 ### Prerequisites
 To complete this lab, you must have already:
 
-- Created an Autonomous Database instance
+- Created an Autonomous AI Database instance
 
 ## Task 1: Create users for the workshop
 
-Connect to your Autonomous Database as the Admin user and create two users as follows:
+Connect to your Autonomous AI Database as the Admin user and create two users as follows:
 
-DT\_DEMO\_SOURCE will be used to store some source data and DT\_DEMO\_DW is the data warehouse user. In the workshop we will load the data warehouse from the source data. For convenience we are using the same autonomous database for both source and target. If you have more than one autonomous database then you can create the source user in one database and the data warehouse user in another.
+DT\_DEMO\_SOURCE will be used to store some source data and DT\_DEMO\_DW is the data warehouse user. In the workshop we will load the data warehouse from the source data. For convenience we are using the same Autonomous AI Database for both source and target. If you have more than one Autonomous AI Database then you can create the source user in one database and the data warehouse user in another.
 
 - Username: DT\_DEMO\_SOURCE
 - Quota: Unlimited
@@ -62,9 +62,9 @@ END;
 
 In the rest of the workshop you will connect as individual users as per the instructions. Please note down the user URLs so that you can quickly connect as the appropriate user.
 
-## Task 2: Download the wallet file for your autonomous database
+## Task 2: Download the wallet file for your Autonomous AI Database
 
-Connect to your autonomous database console in OCI and download the wallet file. This file will be used later to create connection to the database.
+Connect to your Autonomous AI Database console in OCI and download the wallet file. This file will be used later to create connection to the database.
 
 
 ## Task 3: Connect as the source user and import source data
@@ -295,7 +295,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, June 2024
 

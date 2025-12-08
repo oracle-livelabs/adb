@@ -22,15 +22,15 @@ In this lab, you will:
 
 ##  Task 1 - Login to APEX
 
-If you are running APEX on a platform other than Autonomous Database, login into APEX as you normally would.  Use the database user (e.g., MOVIESTREAM) and APEX workspace (again, MOVIESTREAM) that was created early in this Live Lab.
+If you are running APEX on a platform other than Autonomous AI Database, login into APEX as you normally would.  Use the database user (e.g., MOVIESTREAM) and APEX workspace (again, MOVIESTREAM) that was created early in this Live Lab.
 
-If you are running this lab in your tenancy and do not have access to the Autonomous Database console,  ask the administrator of the database to provide you with the APEX URL.
+If you are running this lab in your tenancy and do not have access to the Autonomous AI Database console,  ask the administrator of the database to provide you with the APEX URL.
 
-If you are running APEX on Autonomous Database, and have access to the Autonomous Database Console follow the steps below.
+If you are running APEX on Autonomous AI Database, and have access to the Autonomous AI Database Console follow the steps below.
 
-1. If you have access to the Autonomous Database console, access it now..
+1. If you have access to the Autonomous AI Database console, access it now..
 
-![Autonomous Database Console](images/adb-console.png)
+![Autonomous AI Database Console](images/adb-console.png)
 
 2. Scroll down until you see APEX instance.  Click on the **Instance name** link.
 
@@ -85,7 +85,7 @@ You may now **proceed to the next lab** and start making the graphs come to life
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, June 2023
 - Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

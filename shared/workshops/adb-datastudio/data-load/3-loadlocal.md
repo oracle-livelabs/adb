@@ -3,9 +3,9 @@
 
 ## Introduction
 
-This lab introduces the Data Studio application built into the Oracle Autonomous Database and shows the various ways it can load data into the database.
+This lab introduces the Data Studio application built into the Oracle Autonomous AI Database and shows the various ways it can load data into the database.
 
-This lab, and the full functionality of Data Studio, is applicable to both Autonomous Data Warehouse (ADW) and Autonomous Transaction Processing (ATP) databases. 
+This lab, and the full functionality of Data Studio, is applicable to both Autonomous AI Lakehouse (ADW) and Autonomous Transaction Processing (ATP) databases. 
 
 Estimated Time: 10 minutes
 
@@ -20,14 +20,14 @@ In this lab, you will:
 
 To complete this lab, you need to have completed the two previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user
 
 ## Task 1: Overview of Data Studio
 
 ### Introduction
 
-Oracle Autonomous Database comes with a built-in Data Studio application that can help you with many of the typical data warehousing tasks. This application is complementary to various capabilities accessible via the SQL command line, which themselves are covered by other workshops.  
+Oracle Autonomous AI Database comes with a built-in Data Studio application that can help you with many of the typical data warehousing tasks. This application is complementary to various capabilities accessible via the SQL command line, which themselves are covered by other workshops.  
 
 **Let's get started!**
 
@@ -39,12 +39,12 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 Otherwise, there are two ways to reach the Database Actions home page, where you can find Data Studio and other useful tools for your database.
 
-1. Via the Autonomous Database console page
+1. Via the Autonomous AI Database console page
 2. Directly via URI
 
 ### Access Database Actions via the Console
 
-On the Autonomous Database Details page, click the **View all database actions** button from the **Database action** drop-down:
+On the Autonomous AI Database Details page, click the **View all database actions** button from the **Database action** drop-down:
 
   ![Screenshot of the link to Database Actions from the database console page](images/dbactions-fromconsole.png)
 
@@ -52,7 +52,7 @@ On the Autonomous Database Details page, click the **View all database actions*
 
 When user QTEAM was created (in a previous step), a card appeared on the Database Users screen, similar to what is shown below. Notice the URI at the bottom of the card.
 
-Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
+Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous AI Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
 
   ![Link to open Database Actions from users page](images/qteam-link.png)
 
@@ -60,7 +60,7 @@ Click the **Open in new tab** icon to open a new tab. This URL may be used to a
 
   ![Database Actions Log-in screen with the QTEAM user](images/qteam-login.png)
 
-4. This will take you to the Autonomous Database **Database Actions** page (shown below), with a link to Data Studio. 
+4. This will take you to the Autonomous AI Database **Database Actions** page (shown below), with a link to Data Studio. 
 
   ![The Database Actions home page](images/dbactions.png)
 
@@ -70,7 +70,7 @@ Click the **Open in new tab** icon to open a new tab. This URL may be used to a
 
 ## Task 2: Load Data from Local Files
 
-In this task, you will learn how to load data into Autonomous Database tables from files on your local machine. In this case, we will load two Excel spreadsheets and a csv file, but the process is much the same for any supported type of file that you may have locally, for example because you downloaded it from a public data site, or because it was emailed to you.
+In this task, you will learn how to load data into Autonomous AI Database tables from files on your local machine. In this case, we will load two Excel spreadsheets and a csv file, but the process is much the same for any supported type of file that you may have locally, for example because you downloaded it from a public data site, or because it was emailed to you.
 
 Supported file types for loading locally include:
 
@@ -153,6 +153,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
+- Created By/Date - Mike Matthews Product Management, Autonomous AI Database, January 2023
 - Contributors - Patrick Wheeler, Ashish Jain, Rick Green
 - Last Updated By - Mike Matthews, August 2025

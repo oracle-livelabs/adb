@@ -17,7 +17,7 @@ In this workshop, you will learn how to:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created the users DT\_DEMO\_SOURCE and DT\_DEMO\_DW with appropriate roles
 - Installed Python in your local desktop
 - Installed Visual Studio Code. This is a development environment for writing Python script. Users can use any other environment to write script but this lab uses Visual Studio Code to explain the steps.
@@ -42,7 +42,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, Aug 2025
 

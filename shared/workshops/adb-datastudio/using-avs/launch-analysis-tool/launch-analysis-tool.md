@@ -28,7 +28,7 @@ If you are running this lab in your tenancy and do not have access to the Autono
 
 ![Open Database Actions](images/adb-console-access-db-actions.png)
 
-2. If you have launched Database Actions from the Autonomous Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions from the top right banner if you are logged in as ADMIN.
+2. If you have launched Database Actions from the Autonomous AI Database console, you are probably logged in as the ADMIN user. Sign out of Database Actions from the top right banner if you are logged in as ADMIN.
 
 ![Log out of Database Actions](images/db-actions-logout.png)
 
@@ -48,7 +48,7 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, February 2023
 - Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.

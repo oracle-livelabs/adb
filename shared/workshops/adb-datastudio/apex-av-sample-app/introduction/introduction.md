@@ -33,7 +33,7 @@ If you have any questions about the topics covered in this lab and the entire wo
 
 ### Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, June 2023
 - Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

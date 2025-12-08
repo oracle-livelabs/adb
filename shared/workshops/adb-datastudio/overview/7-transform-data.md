@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Data Transforms tool built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
+This lab introduces the Data Transforms tool built into the Oracle Autonomous AI Database and shows the various ways you can prepare data for analysis.
 
 Estimated Time: 25 minutes
 
@@ -21,7 +21,7 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous AI Database instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data 
 - Loaded Age group data into AGE\_GROUP 
@@ -260,7 +260,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     >**Note:** The Data Transforms tool is provisioned on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
+    be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous AI Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
@@ -273,7 +273,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
     ![screenshot of the connection menu](images/image17_transform_conn.png)
 
 2.  You will notice that there is one connection already defined. This connection 
-    is to your Autonomous Database. Click on the connection to complete its configuration. 
+    is to your Autonomous AI Database. Click on the connection to complete its configuration. 
     This is a one-time activity.
 
     ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
@@ -294,9 +294,9 @@ The **Data Transforms** tool makes such data preparation tasks easy.
     ![screenshot of the connection test](images/image20_transform_conn_test.png)
 
 >**Note:** In this workshop, we are working with only the data available in
-our Autonomous Database, but you can create connections to other
+our Autonomous AI Database, but you can create connections to other
 databases, object stores and applications, and then load and transform
-data from these sources to your Autonomous Database. Data Transforms is
+data from these sources to your Autonomous AI Database. Data Transforms is
 a complete tool for complex data integration projects.
 
 Now we are ready to prepare the data.
@@ -306,7 +306,7 @@ Now we are ready to prepare the data.
 1.  Click on the **Home** button on the left side to go back to the home
     screen. You have wizards to load data from other sources (as defined
     in connections) and transform data. Since our data is already
-    loaded in our Autonomous Database in the previous lab, we will click
+    loaded in our Autonomous AI Database in the previous lab, we will click
     on the **Transform Data** wizard.
 
     ![screenshot of transforms wizard](images/image21_transform_home_wiz.png)
@@ -699,7 +699,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, September 2025
 

@@ -18,9 +18,9 @@ The deep dives provide more detail and include the descriptive metadata used by 
 
 Additional learning opportunities can be found as the @BudsOracleAV Library[@BudsOracleAV Collateral Library](https://xcsvu3mx9d9bvet-adppm.adb.uk-london-1.oraclecloudapps.com/ords/r/av_demo/bud-s-collateral-library/)
 
-### Oracle Autonomous Database Data Studio
+### Oracle Autonomous AI Database Data Studio
 
-The Oracle Autonomous Database Data Studio includes tools for designing and querying analytic views. Learn more at this Oracle Live Lab:  [Get Started With Analytic Views using Data Studio](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3594)
+The Oracle Autonomous AI Database Data Studio includes tools for designing and querying analytic views. Learn more at this Oracle Live Lab:  [Get Started With Analytic Views using Data Studio](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=3594)
 
 ### Analytic Views and Oracle Analytic Cloud
 
@@ -28,7 +28,7 @@ Oracle Analytic Cloud has native support for Analytic Views. Oracle Analytic Clo
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, June 2023
 - Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

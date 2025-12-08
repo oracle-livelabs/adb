@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Analysis tool built into the Oracle Autonomous Database and shows the various ways you can analyze your data.
+This lab introduces the Analysis tool built into the Oracle Autonomous AI Database and shows the various ways you can analyze your data.
 
 Estimated Time: 20 minutes
 
@@ -21,7 +21,7 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user with appropriate roles
 
 ### Demo data for this lab
@@ -330,7 +330,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, August 2025
 

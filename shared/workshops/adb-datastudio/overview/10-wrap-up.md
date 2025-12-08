@@ -18,7 +18,7 @@ Let's go through the action items again.
 2. Load data
 
     Age group data was missing from the database. There are many ways to 
-    import data from various sources into an Autonomous Database. We imported it from the object store.
+    import data from various sources into an Autonomous AI Database. We imported it from the object store.
 
 3. Transform and prepare data
 
@@ -63,7 +63,7 @@ DROP TABLE CUSTOMER_SALES_ANALYSIS;
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, August 2025
 
