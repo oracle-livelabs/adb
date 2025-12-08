@@ -17,12 +17,12 @@ In this workshop, you will learn how to:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created the users DT\_DEMO\_SOURCE and DT\_DEMO\_DW with appropriate roles
 - Created a project with some objects (Data Load, Data Flow, Workflow etc.)
 - Access to an object store bucket with public access. If you don't have access to your own object store then also you should go through the instructions to learn about this feature.
 - User token is available for the OCI user owning the public bucket
-- Access to another Autonomous Database with an user accessing Data Transforms tool. This will be a target env where we will import the objects. If you don't have access to a new Autonomous Database then we will simply delete the objects and import into the same Autonomous Database to learn about this feature.
+- Access to another Autonomous AI Database with an user accessing Data Transforms tool. This will be a target env where we will import the objects. If you don't have access to a new Autonomous AI Database then we will simply delete the objects and import into the same Autonomous AI Database to learn about this feature.
 
 ## Task 1: Create an object store connection
 
@@ -124,7 +124,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, Aug 2025
 

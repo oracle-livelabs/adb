@@ -24,7 +24,7 @@ In this workshop, you will:
 
 ### About the Data
 
-The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous Database labs.  MovieStream is a fictitious video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports the analysis of sales data by time, geography, and genre used when searching for movies.
+The data set used in this Live Lab is a variation of the MovieStream data set used by many other Autonomous AI Database labs.  MovieStream is a fictitious video streaming service.  The version of the data set used by this lab is highly simplified to allow you to focus on the core aspects of designing an Analytic View. It supports the analysis of sales data by time, geography, and genre used when searching for movies.
 
 ### Prerequisites
 
@@ -37,7 +37,7 @@ If you have any questions about the topics covered in this lab and the entire wo
 
 ### Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, February 2023
 - Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.

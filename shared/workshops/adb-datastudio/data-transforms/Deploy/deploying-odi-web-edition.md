@@ -15,13 +15,13 @@ In this lab, you will:
 
 - Create an ODI Web Edition instance
 
-- Register it with Autonomous Database so that Data Transforms can be launched from the Database Tools page
+- Register it with Autonomous AI Database so that Data Transforms can be launched from the Database Tools page
 
 ### Prerequisites
 
 To complete this lab, you need to have the following:
 
-- Autonomous Database, which will host repository for ODI Web Edition
+- Autonomous AI Database, which will host repository for ODI Web Edition
 
 - SSH Key
 
@@ -83,7 +83,7 @@ To complete this lab, you need to have the following:
 
     Allow dynamic-group odi_group to inspect compartments in compartment odi
 
-    **Note:** If you want ODI web to be able to access autonomous databases in other compartments in your tenancy, you will need to set additional policy statements at the root level of your tenancy. In this case, all ADW/ATP instances from the tenancy where ODI instance is created will be accessed during deployment.
+    **Note:** If you want ODI web to be able to access autonomous databases in other compartments in your tenancy, you will need to set additional policy statements at the root level of your tenancy. In this case, all AI Lakehouse/Transaction Processing instances from the tenancy where ODI instance is created will be accessed during deployment.
 
     Allow dynamic-group odi_group to inspect autonomous-database-family in tenancy
 
@@ -97,7 +97,7 @@ To complete this lab, you need to have the following:
 
 1. Starting from the OCI console, navigate to the OCI Marketplace, as follows (and as shown in the screenshot below):
 
-    - Be sure that you are working in the same OCI Region as your Autonomous Database. (In the example below, that is US West (Phoenix))
+    - Be sure that you are working in the same OCI Region as your Autonomous AI Database. (In the example below, that is US West (Phoenix))
 
     - From the Hamburger menu at the top left, select Marketplace, then **All Applications**
 
@@ -142,9 +142,9 @@ To complete this lab, you need to have the following:
 
     ![Create Data Transforms repository](images/Create_Data_Transforms_repository_01.jpg)
 
-9. Provide Autonomous Database Details where the repository will be created. You can select the Autonomous database from the list in a specified compartment. If your database doesn't show in the list then it means OCI policies are not set in order to access the database from your compartment. Refer to the Task 1 to review the policies. Ask your Autonomous Database administrator for the Admin password. Then click **Next**.
+9. Provide Autonomous AI Database Details where the repository will be created. You can select the Autonomous AI Database from the list in a specified compartment. If your database doesn't show in the list then it means OCI policies are not set in order to access the database from your compartment. Refer to the Task 1 to review the policies. Ask your Autonomous AI Database administrator for the Admin password. Then click **Next**.
 
-    ![Provide Autonomous Database Details](images/Create_Data_Transforms_repository_02.jpg)
+    ![Provide Autonomous AI Database Details](images/Create_Data_Transforms_repository_02.jpg)
 
 10. Provide schema Details where the repository will be created. Data Transforms repository schema name is prefixed with the text provide. Schema password will be used to create the schema. Then click **Next**.
 
@@ -166,7 +166,7 @@ Data Transforms tool can be launched by two methods:
 
 - Direct URL from a browser
 
-- Data Transforms card in Autonomous Database tools page.
+- Data Transforms card in Autonomous AI Database tools page.
 
 
 1. In order to find the URL we need to access the application properties in OCI stack created in previous step. In the OCI Control plane, from the hamburger menu select **Resource Manager – Stacks**, as follows:
@@ -185,7 +185,7 @@ Data Transforms tool can be launched by two methods:
 
     ![ALT text is not available for this image](images/3018104789.png)
 
-5. We need to perform few administration steps before we can successfully launch Data Transforms form Autonomous Database Actions menu. Click on the Data Transforms URL in previous step to launch Data Transform. Login with SUPERVISOR user and your password.
+5. We need to perform few administration steps before we can successfully launch Data Transforms form Autonomous AI Database Actions menu. Click on the Data Transforms URL in previous step to launch Data Transform. Login with SUPERVISOR user and your password.
 
     ![ALT text is not available for this image](images/lab04-task03-05.jpg)
 
@@ -193,12 +193,12 @@ Data Transforms tool can be launched by two methods:
 
     ![ALT text is not available for this image](images/lab04-task03-06.jpg)
 
-7. This is where Database user is mapped to Data Transforms user. There is a default map for ADMIN user to SUPERVISOR. Click + and add QTEAM user mapping to SUPERVISOR. Enter Database URL (as shown) and click Save. After this you will be able to launch Data Transforms from Autonomous Database Actions page.
+7. This is where Database user is mapped to Data Transforms user. There is a default map for ADMIN user to SUPERVISOR. Click + and add QTEAM user mapping to SUPERVISOR. Enter Database URL (as shown) and click Save. After this you will be able to launch Data Transforms from Autonomous AI Database Actions page.
 
     ![ALT text is not available for this image](images/lab04-task03-07.jpg)
 
 
-8. You can also launch **Data Transforms** from Autonomous Database. You'll see a card for a fully pre-configured connection to your Autonomous Database. Click the **DATA TRANSFORMS** card.
+8. You can also launch **Data Transforms** from Autonomous AI Database. You'll see a card for a fully pre-configured connection to your Autonomous AI Database. Click the **DATA TRANSFORMS** card.
 
     ![ALT text is not available for this image](images/3018124770.png)
 
@@ -212,7 +212,7 @@ In this section we've covered the following topics:
 
 - Deploying ODI Web Edition compute instance from OCI Marketplace
 
-- Register Data Transforms tool to Autonomous Database Tools page
+- Register Data Transforms tool to Autonomous AI Database Tools page
 
 - Launch Data Transforms tool
 

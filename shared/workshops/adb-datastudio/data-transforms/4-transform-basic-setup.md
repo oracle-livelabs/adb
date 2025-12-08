@@ -18,7 +18,7 @@ In this workshop, you will learn how to:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Downloaded the database wallet
 - Created users DT\_DEMO\_SOURCE and DT\_DEMO\_DW with appropriate roles
 
@@ -34,7 +34,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
     This will launch the Data Transforms service. The service startup time is approximately two minutes. 
     
-    > **Note:** The service is active when you are using Data Transforms, and when it is executing a scheduled job. To save on unnecessary compute costs, after a number of minutes of being idle (by default 10 minutes), the service goes to sleep and starts up again when you want to use it, or when a background scheduled job executes. You can control the maximum idle time for Data Transforms in the configuration settings for your autonomous database from the OCI console.
+    > **Note:** The service is active when you are using Data Transforms, and when it is executing a scheduled job. To save on unnecessary compute costs, after a number of minutes of being idle (by default 10 minutes), the service goes to sleep and starts up again when you want to use it, or when a background scheduled job executes. You can control the maximum idle time for Data Transforms in the configuration settings for your Autonomous AI Database from the OCI console.
 
     ![Screenshot of the Data Transforms startup page](images/image_data_transforms_startup.png)
 
@@ -57,7 +57,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
 
     ![Screenshot of creating a connection to the source](images/image_data_transforms_create_conn_source.png)
 
-4. Upload the wallet for your autonomous database and provide connection authentication information as follows:
+4. Upload the wallet for your Autonomous AI Database and provide connection authentication information as follows:
 
     - Connection Name: SOURCE_DATA
     - Use Credential File: Toggle ON (drag and drop the DB wallet file)
@@ -167,7 +167,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, June 2024
 
