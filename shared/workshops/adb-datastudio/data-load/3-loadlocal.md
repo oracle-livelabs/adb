@@ -5,7 +5,7 @@
 
 This lab introduces the Data Studio application built into the Oracle Autonomous AI Database and shows the various ways it can load data into the database.
 
-This lab, and the full functionality of Data Studio, is applicable to both Autonomous AI Lakehouse (ADW) and Autonomous Transaction Processing (ATP) databases. 
+This lab, and the full functionality of Data Studio, is applicable to both Autonomous AI Lakehouse and Autonomous Transaction Processing (ATP) databases. 
 
 Estimated Time: 10 minutes
 

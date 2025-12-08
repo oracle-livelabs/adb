@@ -83,7 +83,7 @@ To complete this lab, you need to have the following:
 
     Allow dynamic-group odi_group to inspect compartments in compartment odi
 
-    **Note:** If you want ODI web to be able to access autonomous databases in other compartments in your tenancy, you will need to set additional policy statements at the root level of your tenancy. In this case, all ADW/ATP instances from the tenancy where ODI instance is created will be accessed during deployment.
+    **Note:** If you want ODI web to be able to access autonomous databases in other compartments in your tenancy, you will need to set additional policy statements at the root level of your tenancy. In this case, all AI Lakehouse/Transaction Processing instances from the tenancy where ODI instance is created will be accessed during deployment.
 
     Allow dynamic-group odi_group to inspect autonomous-database-family in tenancy
 
