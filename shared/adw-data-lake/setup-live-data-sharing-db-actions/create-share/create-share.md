@@ -26,7 +26,7 @@ In this lab, you will:
 
 In this task, you will create a Provider ID. This provides information to the recipient on how to identify you.
 
-You should be on the **Data Load** home page from the last lab. In the navigation pane on the left, drill-down on the **Data Share** node. The **PROVIDE SHARE** and the **CONSUME SHARE** tools enable you to create a data share as a share provider and to subscribe and consume a data share as a recipient respectively. You can click the [Quick Start Guide](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwfd/index.html) button to view step by step instructions on how to use Oracle Autonomous Database as a data share provider and as a data share recipient. For the complete Data Share documentation, see [The Data Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB). You can also try one of the available Data Sharing LiveLabs workshops.
+You should be on the **Data Load** home page from the last lab. In the navigation pane on the left, drill-down on the **Data Share** node. The **PROVIDE SHARE** and the **CONSUME SHARE** tools enable you to create a data share as a share provider and to subscribe and consume a data share as a recipient respectively. You can click the [Quick Start Guide](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwfd/index.html) button to view step by step instructions on how to use Oracle Autonomous AI Database as a data share provider and as a data share recipient. For the complete Data Share documentation, see [The Data Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB). You can also try one of the available Data Sharing LiveLabs workshops.
 
 1. Make sure you are still logged in as the **share_provider** user. In the navigation pane on the left, drill-down on **Data Share** if needed, and then click **Provide Share**.
 
@@ -48,7 +48,7 @@ You should be on the **Data Load** home page from the last lab. In the navigatio
 
     ![Click provider information.](./images/click-provider-identification.png " ")
 
-    The **Provider Identification** panel is displayed.
+    The **Data Studio Settings** panel is displayed and the **Share Provider Identity** tab is selected by default.
 
 3. Specify the following:
 
@@ -56,17 +56,17 @@ You should be on the **Data Load** home page from the last lab. In the navigatio
     * **Email:** Enter the email address for the provider such as **`training_share@outlook.com`**.
     * **Description:** Enter a meaningful description of the provider (required).
 
-        ![The General tab.](./images/general-tab.png " ")
+        ![The General tab.](./images/share-provider-identity-tab.png " ")
 
-4. Click **Save**. The **Provide Share** page is re-displayed. Initially, there are no data shares or recipients.
+4. Click **Save**, and then click **Close**. The **Provide Share** page is re-displayed. Initially, there are no data shares or recipients.
 
     ![The Provide Share page is displayed.](./images/provide-share-page-redisplayed.png " ")
 
 ## Task 2: Create and Publish a Data Share
 
-When you create the data share using the share live data using direct connection method, you'll need the **Sharing ID**. A Sharing ID is a unique provider for your Autonomous Database. The Data Share tool uses it to share data with you. You can find the Sharing ID on the **Consume Share** page.
+When you create the data share using the share live data using direct connection method, you'll need the **Sharing ID**. A Sharing ID is a unique provider for your Autonomous AI Database. The Data Share tool uses it to share data with you. You can find the Sharing ID on the **Consume Share** page.
 
->**Note:** In this workshop, both the **`share_provider`** and **`share_consumer`** are using the same Autonomous Database instance.
+>**Note:** In this workshop, both the **`share_provider`** and **`share_consumer`** are using the same Autonomous AI Database instance.
 
 1. Let's get the Sharing ID. In the navigation panel on the left, click **Consume Share**.
 
@@ -128,13 +128,13 @@ You may now proceed to the next lab.
 
 * [The Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

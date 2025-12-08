@@ -21,7 +21,7 @@ As an **`admin`** user, you will do the following:
 ## Task 1: Navigate to the Database Actions Launchpad
 
 <if type="freetier">
-After you provisioned an ADB instance in the **Set up the Workshop Environment** lab, the **Autonomous Database details** page was displayed. If the page is active, start with **step 4** below. If the page had timed out, start with **step 1** below.
+After you provisioned an ADB instance in the **Set up the Workshop Environment** lab, the **Autonomous AI Database** details page was displayed. If the page is active, start with **step 4** below. If the page had timed out, start with **step 1** below.
 </if>
 
 <if type="livelabs">
@@ -32,7 +32,7 @@ Your green button reservation includes an ADB instance. You can find the require
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
 
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous Database**.
+2. Open the **Navigation** menu and click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
 
 <if type="livelabs">
     > **_Important: At the time of updating this workshop (July 17, 2025), there is a known issue with OCI and using the sandbox environment reservations (the green button). The old Autonomous Databases UI page is displayed instead of the new Redwood UI page._**
@@ -52,18 +52,18 @@ Your green button reservation includes an ADB instance. You can find the require
     >**Note:** For more details on finding your assigned resources in your reservation such as the username, password, compartment and so on, review the **Get Started with LiveLabs** lab in the Navigation menu on the left.
 </if>
 
-3. On the **Autonomous Databases** page, click your **ADW-Data-Lake** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
     
     <if type="freetier">
-    ![The Autonomous Database is displayed and highlighted.](./images/adb-page.png " ")
+    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page.png " ")
     </if>
 
     <if type="livelabs">
-    ![The Autonomous Database is displayed and highlighted.](./images/ll-adb-page.png " ")
+    ![The Autonomous AI Database is displayed and highlighted.](./images/ll-adb-page.png " ")
 
     </if>
 
-4. On the **Autonomous Database details** page, click the **Database actions** drop-down list, and then click **View all database actions**.
+4. On the **Autonomous AI Database** details page, click the **Database actions** drop-down list, and then click **View all database actions**.
 
     ![From the Database Actions drop-down list, click SQL.](./images/view-all-db-actions.png " ")
 
@@ -75,9 +75,9 @@ As the **`admin`** user, create a **`share_provider`** user and grant this user 
 
 ### **The Data Share Provider**
 
-Oracle Autonomous Database Serverless enables the data share provider to share existing objects such as tables with authorized recipients. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
+Oracle Autonomous AI Database Serverless enables the data share provider to share existing objects such as tables with authorized recipients. The share can contain a single table, a set of related tables, a set of tables with some logical grouping. The provider could be a person, an institution, or a software system that shares the objects.
 
-Autonomous Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The `DWROLE` role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
+Autonomous AI Database comes with a predefined database role named `DWROLE`. This role provides the privileges necessary for most database users;however, The `DWROLE` role does not allocate any tablespace quota to the user. If the user is going to be adding data or other objects, you need to grant the user tablespace quota. For more information about this role, see [Manage Database User Privileges](https://docs.oracle.com/en-us/iaas/autonomous-database/doc/managing-database-users.html).
 
 1. On the **Database Actions Launchpad** page, click the **Administration** tab, and then click the **Database Users** tab.
 
@@ -119,11 +119,11 @@ Autonomous Database comes with a predefined database role named `DWROLE`. This r
 
     ![Click Enable Sharing.](./images/click-enable-sharing.png " ")
 
-3. On the **Enable Sharing** panel, in the **Available Schemas** section. click the **`SHARE_PROVIDER`** user to highlight it. Next, click the **Select** button (**>**) to add this user to the **Selected Schemas** section.
+3. On the **Enable Sharing** panel, in the **Selected Schemas** section, make sure that the **`SHARE_PROVIDER`** user is already listed. If not, in the **Available Schemas** section, click the **`SHARE_PROVIDER`** user to highlight it. Next, click the **Select** button (**>**) to add this user to the **Selected Schemas** section.
 
     ![Add admin user.](./images/add-share-provider-user.png " ")
 
-4. Click **Save**. An information message indicates that the schema privileges are updated successfully. The **Provider and Consumer** page is re-displayed.
+4. Click **Cancel** to exit the **Enable Sharing** panel. The **Provider and Consumer** page is re-displayed.
 
     ![The provider and consumer page is re-displayed.](./images/information.png " ")
 
@@ -171,13 +171,13 @@ You may now proceed to the next lab.
 
 * [The Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -37,7 +37,7 @@ Live data shared with you through data sharing is not automatically available fo
 
     ![click the consume share tile.](images/click-consume-share.png)
 
-2. Click the **+ Subscribe to Share Provider** drop-down list, and then click the **Subscribe to Live Share Provider** option.
+2. Click the **Subscribe to Share Provider** drop-down list, and then click the **Subscribe to Live Share Provider** option.
 
     ![click Subscribe to Share Provider.](images/click-subscribe-provider.png)
 
@@ -90,7 +90,7 @@ In this task, you create a view based on the **`CUSTOMER_CONTACT`** table that w
 
     ![The changed table name is displayed.](images/table-name-changed.png)
 
-4. Click **Start**. A **Start Link from Cloud Store** dialog box is displayed. Click **Run**. When the job completes successfully, a link icon is displayed. The **`CUSTOMER_CONTACT_SHARE`** view is created.
+4. Click **Start**. A **Start Link from Cloud Store** dialog box is displayed. Click **Run**. When the job completes successfully, a link icon is displayed. The **`CUSTOMER_CONTACT_SHARE`** view is created. If the link icon is not displayed, click the **Refresh** drop-down list (off by default), and then select 30 seconds.
 
     ![The link job is completed.](images/link-job-complete.png)
 
@@ -108,13 +108,13 @@ You may now proceed to the next lab.
 
 * [The Share Tool](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/adp-data-share-tool.html#GUID-7EECE78B-336D-4853-BFC3-E78A7B8398DB)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, November 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

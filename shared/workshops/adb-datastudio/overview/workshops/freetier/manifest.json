@@ -1,6 +1,13 @@
 {
-  "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle Autonomous Database",
+  "workshoptitle": "Data Studio - Self-service tools for everyone using Oracle AI Autonomous Database",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": 
+    {
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+    },
+    "variables": ["./variables.json"],
 	  "tutorials": [
         {
           "title": "Introduction",
@@ -13,63 +20,63 @@
           "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
         },
         {
-            "title": "Lab 1: Provision an Autonomous Database",
-            "description": "Provision Autonomous Database",
-            "type": "livelabs",
-            "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
+            "title": "Lab 1: Provision an Autonomous AI Database",
+            "description": "Provision an Autonomous AI Database",
+            "type": "freetier",
+            "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
         },
         {
             "title": "Lab 2: Create a User",
             "description": "Create a database user",
-            "type": "livelabs",
+            "type": "freetier",
             "filename": "../../../common/create-user.md"
         },
         {
           "title": "Lab 3: Prepare Database",
-          "description": "Prepare Autonomous database for the Data Studio overview workshop",
-          "type": "livelabs",
+          "description": "Prepare Autonomous AI Database for the Data Studio overview workshop",
+          "type": "freetier",
           "filename": "../../3-demo-data.md"
         },
         {
           "title": "Lab 4: Understand data analysis requirements",
           "description": "Look at a fictitious data analysis project for requirements",
-          "type": "livelabs",
+          "type": "freetier",
           "filename": "../../4-understand-requirements.md"
         },
         {
             "title": "Lab 5: Overview of Data Studio tools",
             "description": "Overview of Data Studio tools",
-            "type": "livelabs",
+            "type": "freetier",
             "filename": "../../5-datastudio-overview.md"
         },
         {
           "title": "Lab 6: Browse data sets and Load additional data",
           "description": "Browse data sets and Load additional data",
-          "type": "livelabs",
+          "type": "freetier",
           "filename": "../../6-browse-load-data.md"
         },
         {
           "title": "Lab 7: Transform and prepare data",
           "description": "Use Data Transforms to transform and prepare data",
-          "type": "livelabs",
+          "type": "freetier",
           "filename": "../../7-transform-data_prepopulated_rep.md"
         },
         {
           "title": "Lab 8: Analyze data",
           "description": "Use Data Analysis to analyze data",
-          "type": "livelabs",
+          "type": "freetier",
           "filename": "../../8-analyze-data.md"
         },
         {
           "title": "Lab 9: Explore data insights",
           "description": "Use Data Insight to find hidden patterns",
-          "type": "livelabs",
+          "type": "freetier",
           "filename": "../../9-insight-in-data.md"
         },
         {
           "title": "Lab 10: Wrap up",
           "description": "Summarizing the workshop",
-          "type": "livelabs",
+          "type": "freetier",
           "filename": "../../10-wrap-up.md"
         },
         {
