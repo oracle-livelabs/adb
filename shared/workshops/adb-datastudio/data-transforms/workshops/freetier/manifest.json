@@ -1,6 +1,13 @@
 {
-  "workshoptitle": "Load and transform data in Oracle Autonomous Database using Data Transforms",
+  "workshoptitle": "Load and transform data in Oracle Autonomous AI Database using Data Transforms",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": 
+    {
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+    },
+    "variables": ["./variables.json"],
 	"tutorials": [
       {
         "title": "Introduction",
@@ -13,64 +20,52 @@
         "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
       },
       {
-          "title": "Lab 1: Provision an Autonomous Database",
-          "description": "Provision an Autonomous Database",
-          "type": "livelabs",
-          "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
+          "title": "Lab 1: Provision an Autonomous AI Database",
+          "description": "Provision an Autonomous AI Database",
+          "type": "freetier",
+          "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
       },
       {
         "title": "Lab 2: Import demo data",
         "description": "Import demo data for the Data Transforms workshop",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../3-demo-data.md"
       },
       {
         "title": "Lab 3: Basic setup",
         "description": "Set up Data Transforms before defining data load and data flow processes",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../4-transform-basic-setup.md"
       },
       {
         "title": "Lab 4: Load data without transformation",
         "description": "Load data without transformation",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../5-transform-data-load.md"
       },
       {
-        "title": "Lab 5: Simple Data Transformation",
+        "title": "Lab 5: Transform data using a simple example",
         "description": "Transform data using a simple use case",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../6-transform-data-simple.md"
       },
       {
-        "title": "Lab 6: Complex Data Transformation",
+        "title": "Lab 6: Transform data using a more complex example",
         "description": "Transform data using a more complex use case",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../7-transform-data-complex.md"
       },
       {
         "title": "Lab 7: Create a workflow for the entire data pipeline",
         "description": "Use a workflow to orchestrate multiple data load and data flow processes",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../8-transform-data-workflow.md"
       },
       {
         "title": "Lab 8: Schedule jobs",
         "description": "Use the scheduler to set up periodic execution",
-        "type": "livelabs",
+        "type": "freetier",
         "filename": "../../9-transform-data-schedule.md"
-      },
-      {
-        "title": "Lab 9: Export/Import objects",
-        "description": "Use export/import to move objects to a new environment",
-        "type": "livelabs",
-        "filename": "../../9-2-transform-exportimport.md"
-      },
-      {
-        "title": "Lab 10: Using Python API",
-        "description": "Use the Python API to create objects",
-        "type": "livelabs",
-        "filename": "../../9-3-transform-python-api.md"
       },
       {
         "title": "Need Help?",
