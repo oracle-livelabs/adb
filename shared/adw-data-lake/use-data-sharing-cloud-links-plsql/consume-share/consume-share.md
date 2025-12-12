@@ -4,7 +4,7 @@
 
 In this lab you will learn how to consume the data in your available data share as a recipient.
 
-![Recipient diagram.](images/recipient-diagram.png =65%x*)
+![Recipient diagram.](images/recipient-diagram.png =50%x*)
 
 Estimated Time: 10 minutes
 
@@ -32,14 +32,14 @@ In this lab, you will log in as the `admin` user to create a database user (sche
 </if>
 
 <if type="livelabs">
-2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username. You can find your assigned **`admin`** user at the bottom of your **Reservation Information** dialog box. Next, click **Sign in**.
+2. Log in as the **`admin`** user. On the **Sign-in** page, enter **`admin`** as the username. You can find your assigned **`admin`** user password at the bottom of your **Reservation Information** dialog box in the **Database Admin Password** field (redacted for security). Next, click **Sign in**.
 
     ![Get the assigned admin password](images/ll-assigned-admin-password.png)
 </if>
 
 3. You are now logged in as the **`admin`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
-    ![Logged in as share_provider](images/login-as-admin.png)
+    ![Logged in as share_provider](images/login-as-admin.png =65%x*)
 
 4. Create a new consumer user named **`share_consumer`**. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script (F5)** icon.
 
@@ -67,11 +67,11 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Run the script](images/run-script.png)
+    ![Run the script](images/run-script.png =65%x*)
 
     The results are displayed in the **Script Output** tab.
 
-    ![View the script results](images/script-results.png =65%x*)
+    ![View the script results](images/script-results.png =50%x*)
 
     At this point, the **`share_consumer`** user doesn't have the required privileges to read cloud links yet.
 
@@ -91,17 +91,15 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Enable share_consumer schema.](images/enable-share-consumer-schema.png)
+    ![Enable share_consumer schema.](images/enable-share-consumer-schema.png =65%x*)
 
 2. Log out of the **`admin`** user. On the **Oracle Database Actions | SQL** banner, click the drop-down list next to the `ADMIN` user, and then select **Sign Out** from the drop-down menu.
 
 3. Log in as the newly created user, **`share_consumer`**. On the **Sign-in** page, enter **`share_consumer`** as the username and **`DataShare4ADW`** as the password, and then click **Sign in**.
 
-4.You are now logged in as the **`share_consumer`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
+4. You are now logged in as the **`share_consumer`** user. On the Launchpad, click the **Development** tab, and then click the **SQL** tab to display the SQL Worksheet.
 
-![Logged in as share_consumer](images/login-as-consumer.png)
-
-4. Verify that you as the `share_consumer` have the privilege to read the data share. You can use the following query to check if the current session user is enabled for `READ` access to a data set.
+5. Verify that you as the `share_consumer` have the privilege to read the data share. You can use the following query to check if the current session user is enabled for `READ` access to a data set.
 
     ```
     <copy>
@@ -110,7 +108,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Have access to cloud links?](images/cloud-links-access.png)
+    ![Have access to cloud links?](images/cloud-links-access.png =65%x*)
 
     The **`YES`** indicates that the **`share_consumer`** user is enabled for **`READ`** access to a data set.
 
@@ -123,17 +121,17 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Check the available providers](images/available-providers.png)
+    ![Check the available providers](images/available-providers.png =65%x*)
 
     >**Note:** If the above query doesn't show the published data share, wait for a few more minutes until the publishing process is completed, and then run the query again.
 
 6. Copy the value for the **`provider_name`** entry that starts with **`live_share_provider`**. You will need this value in the next task. Right-click the cell and then select **Copy** from the context menu.
 
-    ![Copy the sharing id value](images/copy-provider-name.png)
+    ![Copy the sharing id value](images/copy-provider-name.png =65%x*)
 
 7. Paste the copied value into your text editor file.
 
-    ![Paste the value into a text editor file](images/paste-provider-name-value.png)
+    ![Paste the value into a text editor file](images/paste-provider-name-value.png =65%x*)
 
 ## Task 3: Discover Available Data Shares and Tables
 
@@ -153,7 +151,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Get provider id](images/get-provider-id.png)
+    ![Get provider id](images/get-provider-id.png =65%x*)
 
     Copy the value of the returned **provider id** as you will need it in the next step.
 
@@ -170,7 +168,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Create provider](images/create-provider.png)
+    ![Create provider](images/create-provider.png =65%x*)
 
 3. Query the available providers to confirm the creation of the new share provider name.
 
@@ -182,7 +180,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Verify provider](images/verify-provider.png)
+    ![Verify provider](images/verify-provider.png =65%x*)
 
 4. Query the available shares from the newly created share provider. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
@@ -193,7 +191,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Query available shares](images/query-shares.png)
+    ![Query available shares](images/query-shares.png =65%x*)
 
 5. Query the available tables in the share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -207,7 +205,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Query available tables in the share](images/query-tables.png)
+    ![Query available tables in the share](images/query-tables.png =65%x*)
 
 ## Task 4: Create a Share Link and a View Using the Data Share Table
 
@@ -227,7 +225,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Create a share link.](images/create-share-link.png)
+    ![Create a share link.](images/create-share-link.png =65%x*)
 
 2. Verify the share link. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -239,7 +237,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Verify the share link](images/verify-share-link.png)
+    ![Verify the share link](images/verify-share-link.png =65%x*)
 
 
 2. Use the new share link to create a view over the shared table. Copy and paste the following query into your SQL Worksheet, and then click the **Run Script** icon.
@@ -256,7 +254,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Create a view.](images/create-view.png)
+    ![Create a view.](images/create-view.png =65%x*)
 
 3. Describe the view.
 
@@ -267,7 +265,7 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Describe the view.](images/describe-view.png)
+    ![Describe the view.](images/describe-view.png =65%x*)
 
 4. Query the view. Copy and paste the following query into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -280,20 +278,20 @@ In this lab, you will log in as the `admin` user to create a database user (sche
     </copy>
     ```
 
-    ![Query the view.](images/query-view.png)
+    ![Query the view.](images/query-view.png =65%x*)
 
 You may now proceed to the next lab.
 
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, December 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 

@@ -6,7 +6,7 @@ A data share is a named entity in the provider’s instance. It can be a group o
 
 In this lab, as a share provider user, you will create a data share and add a table to it. Next, you will publish the data share to make it available to the authorized recipient that you will define in the next lab.
 
- ![Create a data share diagram.](images/data-share-diagram.png)
+ ![Create a data share diagram.](images/data-share-diagram.png =75%x*)
 
 Estimated Time: 15 minutes
 
@@ -38,7 +38,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Create data share.](images/create-data-share.png)
+    ![Create data share.](images/create-data-share.png =65%x*)
 
     >**Note:** To drop a share, use the `DBMS_SHARE.DROP_SHARE` procedure as follows:
 
@@ -59,7 +59,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Query new data share.](images/query-data-share.png)
+    ![Query new data share.](images/query-data-share.png =65%x*)
 
     Before you publish the data share, the **Current Version** column shows **`(null)`**. After you publish the data share, the the **Current Version** column will show **`1`**.
 
@@ -79,7 +79,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Create external table.](images/create-external-table.png)
+    ![Create external table.](images/create-external-table.png =65%x*)
 
 2. Create a table based on the external table which you will add to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon in the Worksheet toolbar.
 
@@ -92,7 +92,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Create heap table.](images/create-heap-table.png)
+    ![Create heap table.](images/create-heap-table.png =65%x*)
 
 3. Query the newly created **`custsales`** table. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -105,7 +105,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Query new data share.](images/query-custsales.png)
+    ![Query new data share.](images/query-custsales.png =65%x*)
 
 ## Task 3: Add the custsales Table to the Data Share
 
@@ -124,7 +124,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Add table to share.](images/add-table-share.png)
+    ![Add table to share.](images/add-table-share.png =65%x*)
 
 2. Verify the addition of the table to the data share. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -137,7 +137,7 @@ This lab assumes that you have successfully completed all of the preceding labs 
     </copy>
     ```
 
-    ![Verify table addition.](images/verify-table-added.png)
+    ![Verify table addition.](images/verify-table-added.png =65%x*)
 
     >**Note:** To remove a table from a share, use the following script:
 
@@ -165,7 +165,7 @@ Up to this point, the share and its table are stored in the database and therefo
     </copy>
     ```
 
-    ![Publish the share.](images/publish-share.png)
+    ![Publish the share.](images/publish-share.png =65%x*)
 
 2. Use the `user_share_versions` view to track the state of the export. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -178,7 +178,7 @@ Up to this point, the share and its table are stored in the database and therefo
     </copy>
     ```
 
-    ![Track the data export.](images/track-export.png)
+    ![Track the data export.](images/track-export.png =65%x*)
 
     If the **STATUS** shows **EXPORTING**, that indicates the publishing process is not yet complete. You might have to wait for a few minutes for the publishing to finish. Don't proceed to the next lab until the **STATUS** shows **CURRENT**.
 
@@ -187,13 +187,13 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, December 2025
 
 Data about movies in this workshop were sourced from Wikipedia.
 
