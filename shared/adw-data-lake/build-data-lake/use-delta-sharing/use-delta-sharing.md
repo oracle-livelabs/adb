@@ -13,8 +13,10 @@ Oracle Autonomous AI Database supports the Delta Sharing protocol.
 
 Estimated Time: 10 minutes
 
+<!-- Probably outdated video
 Watch the video below for a quick walk-through of the lab.
 [](youtube:YH7pPGEaxNI)
+-->
 
 ### Objectives
 

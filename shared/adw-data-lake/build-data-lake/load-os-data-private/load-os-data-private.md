@@ -9,8 +9,10 @@ You will practice linking to data from a **private** Object Storage bucket. You 
 
 Estimated Time: 20 minutes
 
+<!-- Probably outdated video
 Watch the video below for a quick walk-through of the lab.
 [](youtube:IPkjI6zd2CU)
+-->
 
 ### Objectives
 
@@ -576,11 +578,11 @@ You may now proceed to the next lab.
 * **Contributors:**
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Jameson White, Principal Software Engineer
-* **Last Updated By/Date:** Lauran K. Serhal, October 2025
+* **Last Updated By/Date:** Lauran K. Serhal, February 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2025 Oracle Corporation.
+Copyright (C) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

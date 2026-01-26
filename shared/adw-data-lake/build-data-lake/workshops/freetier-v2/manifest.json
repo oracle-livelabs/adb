@@ -1,0 +1,109 @@
+{
+    "workshoptitle": "Build a Data Lake with Oracle Autonomous AI Lakehouse - Edition 2",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+      "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+      "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+      "adb-provision-data-sharing-lake-task.md":"/common/building-blocks/tasks/adb/provision-data-sharing-lake-task.md",  
+      "adb-connect-with-sql-worksheet-body.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-body.md",
+      "connect-with-sql-worksheet-non-admin.md":"/common/building-blocks/tasks/adb/connect-with-sql-worksheet-non-admin.md",
+      "adb-generate-rsa-key-pair.md":"/common/building-blocks/tasks/adb/generate-rsa-key-pair.md"
+      },
+    "variables": ["./variables.json"],
+    "tutorials": [
+        {
+        "title": "Introduction (needs complete update)",
+        "type":"freetier",
+        "description": "Introduction to ",
+        "filename": "./../../introduction/introduction.md"
+        },
+        {
+        "title": "Get Started",
+        "description": "This is the prerequisites for customers using Free Trial and Paid tenancies.",
+        "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+        "title": "Lab 1: Set up the Workshop Environment [current]",
+        "type":"freetier",
+        "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
+        "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
+        },
+        {
+        "title": "Lab 2: Query data from OCI Object Storage using Resource Principal in the UI [current & new]",
+        "type":"freetier",
+        "description": "This lab walks you through how to load local data into your ADW instance.",
+         "filename": "./../../load-os-data-private/load-os-data-private.md"
+        },
+        {
+        "title": "Lab 3: Access AWS S3 using Access Key and Secret Key with PL/SQL (demo) [current]",
+        "type":"freetier",
+        "description": "This lab walks you through how to load local data into your ADW instance.",
+        "filename": "./../../query-data-lakes/query-data-lakes.md"
+        },
+        {
+        "title": "Lab 4: Query an Apache Iceberg table from Oracle (example) [current]",
+        "type":"freetier",
+        "description": "This lab shows you how to query Iceberg tables in ADW.",
+        "filename": "./../../query-iceberg-tables/query-iceberg-tables.md"
+        },
+        {
+        "title": "Lab 5: Consume a shared dataset using Delta Sharing protocol [current]",
+        "type":"freetier",
+        "description": "This lab shows you how ADW supports Public Data Share.",
+        "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+        },
+        {
+        "title": "Lab 6: Federated Catalog with Oracle Autonomous AI Lakehouse [new - Mike Mathews]",
+        "type":"freetier",
+        "filename": "./../../federated-catalog/federated-catalog.md"
+        },
+        {
+        "title": "Lab 7: Implicit partitioning (partition pruning) [new]",
+        "type":"freetier",
+        "filename": "./../../implicit-partitioning/implicit-partitioning.md"
+        },
+        {
+        "title": "Lab 8: Accelerating queries with Data Lake Accelerator [new]",
+        "type":"freetier",
+        "filename": "./../../data-lake-accelerator/data-lake-accelerator.md"
+        },
+        {
+        "title": "Lab 9: External Table Caching (policy-based) [new]",
+        "type":"freetier",
+        "filename": "./../../ext-table-caching/ext-table-caching.md"
+        },
+        {
+        "title": "Lab 10: External Table Caching (automatic) [new]",
+        "type":"freetier",
+        "filename": "./../../ext-table-caching-auto/ext-table-caching-auto.md"
+        },
+        {
+        "title": "Lab 11: Query with Select AI (Demo) [new]",
+        "type":"freetier",
+        "filename": "./../../query-select-ai/query-select-ai.md"
+        },
+        {
+        "title": "Lab 12: Query from Excel using the ADB Excel add-in (Demo) [current???]",
+        "type":"freetier",
+        "description": "This lab walks you through how to use the Table AI Assist Tool.",
+        "filename": "./../../table-ai-assist/table-ai-assist.md"
+        },
+        {
+        "title": "Lab 13: Multi-model querying in one place (Demo) [current & new]",
+        "type":"freetier",
+        "description": "This lab shows you how ADW supports multiple languages",
+        "filename": "./../../adw-multi-language/adw-multi-language.md"
+        },
+        {
+        "title": "Lab 14: Share data from Oracle Autonomous AI Lakehouse (Hands-on) [current & new]",
+        "type":"freetier",
+        "description": "Part 1, Live Share (Oracle-to-Oracle), Part 2, Delta Sharing (provider), Part 3, Table Hyperlink",
+        "filename": "./../../share-data-lh/share-data-lh.md"
+        },
+        {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

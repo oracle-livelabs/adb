@@ -1,5 +1,7 @@
 # Query Iceberg Tables
 
+_**Note: This is a demo only. You will observe how to access Amazon Athena data from Oracle Autonomous AI Database using external tables, rather than performing the steps yourself.**_
+
 ## Introduction
 
 This lab demonstrates the integration of AWS Athena and Oracle Autonomous AI Database (ADB). It explores how AWS Athena creates and manages Iceberg tables and how ADB in OCI accesses metadata through AWS Glue. You will learn how to query the Iceberg tables as external tables directly within ADB, using efficient cross-cloud data querying without data replication.
@@ -21,8 +23,6 @@ In this lab, we will show you how to do the following:
 ### Prerequisites
 
 Access to an ADW and AWS Athena if you choose to perform the steps.
-
-_**Note:** This is not a hands-on task; instead, it is a demo of how to access Amazon Athena data in Oracle Autonomous AI Database using external tables._
 
 ### About Querying Apache Iceberg Tables
 
@@ -176,11 +176,11 @@ You may now proceed to the next lab.
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2025
+* **Last Updated By/Date:** Lauran K. Serhal, February 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2025 Oracle Corporation.
+Copyright (C) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
