@@ -1,6 +1,13 @@
 {
-  "workshoptitle": "Querying and analyzing data in the Autonomous Database from Google Sheets",
+  "workshoptitle": "Querying and analyzing data in the Autonomous AI Database from Google Sheets",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": 
+    {
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+    },
+    "variables": ["./variables.json"],
 	"tutorials": [
       {
           "title": "Get Started",
@@ -13,14 +20,15 @@
         "filename": "./intro.md"
     },
       {
-          "title": "Lab 1: Provision an Autonomous Database",
-          "description": "Provision Autonomous Database",
+          "title": "Lab 1: Provision an Autonomous AI Database",
+          "description": "Provision Autonomous AI Database",
           "type": "livelabs",
-          "filename": "./../../adb-provision/adb-provision-conditional.md"
+          "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
       },
       {
           "title": "Lab 2: Create a User",
           "description": "Create a database user",
+          "type": "livelabs",
           "filename": "./../../updatepathtomd"
       },
       {
@@ -32,16 +40,19 @@
       {
           "title": "Lab 4: TBD",
           "description": "TBD",
+          "type": "livelabs",
           "filename": "./../../updatepathtomd"
       },
       {
           "title": "Lab 5: TBD",
           "description": "TBD",
+          "type": "livelabs",
           "filename": "./../../updatepathtomd"
       },
       {
           "title": "Lab 6: TBD",
           "description": "TBD",
+          "type": "livelabs",
           "filename": "./../../updatepathtomd"
       },
       {

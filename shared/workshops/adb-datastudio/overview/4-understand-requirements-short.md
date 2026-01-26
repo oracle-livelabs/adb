@@ -17,7 +17,7 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data for the workshop
 
@@ -80,7 +80,7 @@ To complete this lab, you need to have completed the previous labs, so that you 
     scan the data for hidden patterns. It will be interesting to see what this tool finds.
 
 
-**Data Studio** in Autonomous Database provides a set of tools to help in such projects, all under one umbrella. There
+**Data Studio** in Autonomous AI Database provides a set of tools to help in such projects, all under one umbrella. There
 is no need to install and manage any additional software. It makes the job of a Data Analyst easy. They 
 already have their hands full in dealing with data and finding value in it. The least they should
 be worried about is which tool to use for the job at hand and where to get them from.
@@ -91,7 +91,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Mike Matthews, March 2023
 

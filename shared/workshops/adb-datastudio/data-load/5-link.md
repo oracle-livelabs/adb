@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab shows how you can link your Autonomous Database to data in a cloud storage system, without loading it, so that you can query data which may be updated frequently in cloud storage.
+This lab shows how you can link your Autonomous AI Database to data in a cloud storage system, without loading it, so that you can query data which may be updated frequently in cloud storage.
 
 Estimated Time: 15 minutes
 
@@ -10,14 +10,14 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-- Connect your Autonomous Database to a cloud storage system
+- Connect your Autonomous AI Database to a cloud storage system
 - Create external tables in the database that link to files in cloud storage
 
 ### Prerequisites
 
 To complete this lab, you need to have completed Labs 1 and 2 in this workshop, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user
 
 You do not need to have completed Labs 3 or 4.
@@ -27,7 +27,7 @@ You do not need to have completed Labs 3 or 4.
 There are two parts to this process, and the first part only needs to be performed once. The two parts are:
 
 1. Set up a connection to the cloud storage system
-2. Link to the files that we want to be able to access from the Autonomous Database.
+2. Link to the files that we want to be able to access from the Autonomous AI Database.
 
 Note that in this example, we will be using files on Oracle Cloud Infrastructure Object Storage. However, the process is the same for loading files from other cloud storage systems, such as Amazon Web Services S3, Azure Storage, and Google Cloud Platform Storage.
 
@@ -86,7 +86,7 @@ Note that in this example, we will be using files on Oracle Cloud Infrastructure
 
 ## Task 3: Query the new external table
 
-Now that we have linked to the directory of parquet files, we are set up to query and use the data in the Autonomous Database, even though the data is still resident on cloud storage. Let's run a simple query on the data.
+Now that we have linked to the directory of parquet files, we are set up to query and use the data in the Autonomous AI Database, even though the data is still resident on cloud storage. Let's run a simple query on the data.
 
 1. Go back to the **Database Actions** launchpad by clicking Database Actions in the top left of your screen.
 
@@ -118,6 +118,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
+- Created By/Date - Mike Matthews Product Management, Autonomous AI Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
 - Last Updated By - Mike Matthews, August 2025

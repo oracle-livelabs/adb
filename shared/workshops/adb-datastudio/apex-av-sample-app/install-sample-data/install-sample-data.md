@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab uses sample data loaded into the Autonomous Database from Oracle Cloud Infrastructure Object Store.  You will create four tables and load data from Object Storage using the DBMS\_CLOUD.COPY\_DATA procedure. 
+This lab uses sample data loaded into the Autonomous AI Database from Oracle Cloud Infrastructure Object Store.  You will create four tables and load data from Object Storage using the DBMS\_CLOUD.COPY\_DATA procedure. 
 
 Estimated Time:  10 minutes with one ocpu.
 
@@ -139,7 +139,7 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, June 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, June 2023
 - Last Updated By - William (Bud) Endress, May 2024
 
 Data about movies in this workshop were sourced from **Wikipedia**.

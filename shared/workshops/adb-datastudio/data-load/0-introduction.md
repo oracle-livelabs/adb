@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-The purpose of this workshop is to provide details about the many ways in which you can load data into the Oracle Autonomous Data Warehouse using its built-in Data Studio application. 
+The purpose of this workshop is to provide details about the many ways in which you can load data into the Oracle Autonomous AI Lakehouse using its built-in Data Studio application. 
 
 The workshop is designed to be used alongside your own cloud account (paid or Bring-Your-Own-License) or you can register and claim free trial credits which provides up to 3,300 hours of cloud time, and 2 TB of storage, which is more than enough time and storage space to run this workshop. 
 
@@ -10,7 +10,7 @@ Estimated Workshop Duration: 1 hour, 20 minutes
 
 ### Who should use this Workshop?
 
-This workshop is useful for anyone who needs to load data into the Autonomous Data Warehouse. 
+This workshop is useful for anyone who needs to load data into the Autonomous AI Lakehouse. 
 
 ### Objectives
 
@@ -27,13 +27,13 @@ If you have any questions about the topics covered in this lab and the entire wo
 
 ### How to use the Workshop
 
-Once you have completed labs 1 and 2 - that is, you have provisioned an Autonomous Database (or have one ready to use) and created a user, you can choose to complete any of the other labs, as they are designed to be independent from one another. You can also choose to complete any of the later labs in any order that you choose.
+Once you have completed labs 1 and 2 - that is, you have provisioned an Autonomous AI Database (or have one ready to use) and created a user, you can choose to complete any of the other labs, as they are designed to be independent from one another. You can also choose to complete any of the later labs in any order that you choose.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Mike Matthews, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Bud Endress, Marty Gubar, Rick Green
 - Last Updated By - Mike Matthews, August 2025
 

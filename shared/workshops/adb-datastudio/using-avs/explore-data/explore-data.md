@@ -51,7 +51,7 @@ You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous Database, February 2023
+- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, February 2023
 - Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.

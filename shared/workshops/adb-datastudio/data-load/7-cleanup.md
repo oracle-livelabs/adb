@@ -9,11 +9,11 @@ Only use this lab if you want to remove the loaded data from your database. You 
 
 ### Objectives
 
-In this lab, you will drop the tables created during the previous labs in the workshop from your Autonomous Database.
+In this lab, you will drop the tables created during the previous labs in the workshop from your Autonomous AI Database.
 
 ### Prerequisites
 
-To complete this lab, you need to have completed any or all of labs 3-6 in this workshop, so that you have created new tables in your autonomous database and either loaded them with data or linked them to cloud storage.
+To complete this lab, you need to have completed any or all of labs 3-6 in this workshop, so that you have created new tables in your Autonomous AI Database and either loaded them with data or linked them to cloud storage.
 
 ## Task 1: Run a SQL script to clean up your database
 
@@ -49,6 +49,6 @@ drop table MOVIE_SALES;
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
+- Created By/Date - Mike Matthews Product Management, Autonomous AI Database, January 2023
 - Contributors - Jayant Mahto
 - Last Updated By - Mike Matthews, August 2025

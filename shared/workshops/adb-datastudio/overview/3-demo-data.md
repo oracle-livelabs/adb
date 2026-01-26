@@ -1,9 +1,9 @@
-# Prepare Autonomous Database for the Data Studio overview workshop
+# Prepare Autonomous AI Database for the Data Studio overview workshop
 
 
 ## Introduction
 
-This lab will guide you through the steps to prepare Autonomous Database. 
+This lab will guide you through the steps to prepare Autonomous AI Database. 
 
 Estimated Time: 5 minutes
 
@@ -14,7 +14,7 @@ Watch the video below for a quick walk-through of the lab.
 
 ### Prerequisites
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user with appropriate roles
 
 ## Task 1: Access the SQL worksheet
@@ -25,12 +25,12 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 1. There are two ways to reach the Database Actions home page, where you can find Data Studio and other useful tools for your database.
 
-    - Via the Autonomous Database console page
+    - Via the Autonomous AI Database console page
     - Directly login to your DB user via URI
 
     ### Access Database Actions via the Console
 
-    On the Autonomous Database Details page, click the **Database Actions** button:
+    On the Autonomous AI Database Details page, click the **Database Actions** button:
 
     ![Screenshot of the link to Database Actions from the database console page](images/image_db_console.png)
 
@@ -40,7 +40,7 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
     ![Link to open Database Actions from the user login page](images/image_user_login.png)
 
-2. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet under Development tools. 
+2. This will take you to the Autonomous AI Database **Database Actions** page (shown below), with links to the SQL worksheet under Development tools. 
     
     Click on the **SQL**.
 
@@ -241,7 +241,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, August 2023
 

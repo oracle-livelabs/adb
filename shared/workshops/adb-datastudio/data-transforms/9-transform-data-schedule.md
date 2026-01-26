@@ -16,7 +16,7 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created the users DT\_DEMO\_SOURCE and DT\_DEMO\_DW with appropriate roles
 - Imported the demo data
 - Used Data Transforms to create data flows and a workflow
@@ -54,7 +54,7 @@ This concludes the Data Transforms workshop.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, June 2024
 

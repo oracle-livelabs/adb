@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Data Transforms application built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
+This lab introduces the Data Transforms application built into the Oracle Autonomous AI Database and shows the various ways you can prepare data for analysis.
 
 Estimated Time: 20 minutes
 
@@ -21,7 +21,7 @@ In this workshop, you will learn:
 
 In this version of the workshop, all the pre-requisite steps have been done for you so you can get started learning how to transform and analyze your data.
 
-This Live Labs environment includes a pre-provisioned Autonomous Data Warehouse, with a user QTEAM, and loaded demo data.
+This Live Labs environment includes a pre-provisioned Autonomous AI Lakehouse, with a user QTEAM, and loaded demo data.
 
 ## Task 1: Launch Data Transforms
 
@@ -65,7 +65,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of Data Transforms home page](images/image16_transform_home.png)
 
-## Task 2: Update the connection to your Autonomous Database
+## Task 2: Update the connection to your Autonomous AI Database
 
 1.  Click on **Connections** on the left side to look at the available connections.
     
@@ -75,7 +75,7 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
 
-3.  Under the **JDBC URL**, paste in the name of your autonomous database into the string between the @ symbol and the "\_low". The name of your database will be 'adwNNNNN', that is 'adw' followed by five numbers. You will be able to see the database name in the URL being accessed by your browser. For example, in the screenshot below, the string needs to be updated to "adw45989":
+3.  Under the **JDBC URL**, paste in the name of your Autonomous AI Database into the string between the @ symbol and the "\_low". The name of your database will be 'adwNNNNN', that is 'adw' followed by five numbers. You will be able to see the database name in the URL being accessed by your browser. For example, in the screenshot below, the string needs to be updated to "adw45989":
 
     ![screenshot of the browser window showing where to get the database name](images/connection-short.png)
 
@@ -95,9 +95,9 @@ The **Data Transforms** tool makes such data preparation tasks easy.
     ![screenshot of the connection test](images/image20_transform_conn_test.png)
 
 >**Note:** In this workshop, we are working with only the data available in
-our Autonomous Database, but you can create connections to other
+our Autonomous AI Database, but you can create connections to other
 databases, object stores and applications as well as load and transform
-data from those sources to your Autonomous Database. Data Transforms is
+data from those sources to your Autonomous AI Database. Data Transforms is
 a complete tool for complex data integration projects.
 
 Now we are ready to prepare the data.
@@ -434,7 +434,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, August 2023
 

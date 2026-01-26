@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces Data Studio’s Insights tool built into the Oracle Autonomous Database and shows how to search for and interpret data insights.
+This lab introduces Data Studio’s Insights tool built into the Oracle Autonomous AI Database and shows how to search for and interpret data insights.
 
 Estimated Time: 15 minutes
 
@@ -20,7 +20,7 @@ In this workshop, you will learn how to find hidden insights in your data using 
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous AI Database instance
 - Created a new QTEAM user with appropriate roles
 
 ## Task 1: Use Data Insights
@@ -198,7 +198,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, September 2025
 

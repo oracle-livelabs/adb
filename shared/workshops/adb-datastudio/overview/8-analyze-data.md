@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Analysis tool built into Oracle Autonomous Database Data Studio, and shows some of the ways you can analyze your data.
+This lab introduces the Analysis tool built into Oracle Autonomous AI Database Data Studio, and shows some of the ways you can analyze your data.
 
 Estimated Time: 20 minutes
 
@@ -20,7 +20,7 @@ In this workshop, you will learn how to analyze the data using the Data Studio A
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous AI Database instance
 - Created a new QTEAM user with appropriate roles
 
 ### Demo data for this lab
@@ -212,7 +212,7 @@ We will go through a few examples such as movie genre preference based on age gr
 
     ![screenshot of sales analysis for customer value high report](images/image74_t_sales_genre_custvalue_high_rep.png)
 
-13. It is also possible to use Microsoft Excel or Google Sheets to access and analyze the data in Autonomous Database, with the provided plug-ins. This is not covered in this workshop. 
+13. It is also possible to use Microsoft Excel or Google Sheets to access and analyze the data in Autonomous AI Database, with the provided plug-ins. This is not covered in this workshop. 
 
     ![screenshot of sales analysis plugin](images/image74_t_analysis_plugin.png)
 
@@ -231,7 +231,7 @@ We will go through a few examples such as movie genre preference based on age gr
 This lab provides a brief overview of how to analyze data using Data Studio. Other features include:
 
 -   **Plug-ins for Microsoft Excel and Google Sheets**: Query data using your favorite desktop tool
--   **Analytic Views**: Create dimensional models from tables. Analytic Views provide a business model using dimensional hierarchies and complex measures. External query tools can query the Analytic View leveraging the business model in the Autonomous Database and optimizing queries.
+-   **Analytic Views**: Create dimensional models from tables. Analytic Views provide a business model using dimensional hierarchies and complex measures. External query tools can query the Analytic View leveraging the business model in the Autonomous AI Database and optimizing queries.
 
 ## RECAP
 
@@ -242,7 +242,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, September 2025
 

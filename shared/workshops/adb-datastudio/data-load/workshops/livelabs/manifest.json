@@ -1,6 +1,13 @@
 {
-  "workshoptitle": "Load the Autonomous Database with Data Studio",
+  "workshoptitle": "Load the Autonomous AI Database with Data Studio",
     "help": "livelabs-help-db_us@oracle.com",
+    "include": 
+    {
+    "iam-compartment-create-body.md":"/common/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md":"/common/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+    },
+    "variables": ["./variables.json"],
 	"tutorials": [
       {
           "title": "Introduction",
@@ -13,14 +20,15 @@
           "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
       },
       {
-          "title": "Lab 1: Provision an Autonomous Database",
-          "description": "Provision Autonomous Database",
+          "title": "Lab 1: Provision an Autonomous AI Database",
+          "description": "Provision Autonomous AI Database",
           "type": "livelabs",
-          "filename": "https://oracle-livelabs.github.io/adb/shared/adb-provision/adb-provision-conditional.md"
+          "filename": "/common/building-blocks/blocks/adb/provision/provision-console.md"
       },
       {
           "title": "Lab 2: Create a database user",
           "description": "Create a database user",
+          "type": "livelabs",
           "filename": "../../../common/create-user.md"
       },
       {
@@ -32,16 +40,19 @@
       {
           "title": "Lab 4: Load data from cloud storage",
           "description": "Load data into the database from cloud storage",
+          "type": "livelabs",
           "filename": "./../../4-loadcloud.md"
       },
       {
           "title": "Lab 5: Link to data in cloud storage",
           "description": "Create external tables linking to data in cloud storage",
+          "type": "livelabs",
           "filename": "./../../5-link.md"
       },
       {
           "title": "Lab 6: Clean up the loaded data",
           "description": "Remove the tables you created and loaded during this workshop",
+          "type": "livelabs",
           "filename": "./../../7-cleanup.md"
       },
       {

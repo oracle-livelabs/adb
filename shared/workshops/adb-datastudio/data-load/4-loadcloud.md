@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab shows how to connect your Autonomous Database to a cloud storage system so that it can load data from it, and also how to resolve issues that you may encounter when loading data from files.
+This lab shows how to connect your Autonomous AI Database to a cloud storage system so that it can load data from it, and also how to resolve issues that you may encounter when loading data from files.
 
 Estimated Time: 25 minutes
 
@@ -10,7 +10,7 @@ Estimated Time: 25 minutes
 
 In this lab, you will:
 
-- Connect your Autonomous Database to a cloud storage system
+- Connect your Autonomous AI Database to a cloud storage system
 - Load data into new tables in the database from cloud storage
 - Learn how to review and resolve common issues when loading data
 
@@ -18,7 +18,7 @@ In this lab, you will:
 
 To complete this lab, you need to have completed Labs 1 and 2 in this workshop, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user
 
 You do not need to have completed Lab 3.
@@ -175,6 +175,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
+- Created By/Date - Mike Matthews Product Management, Autonomous AI Database, January 2023
 - Contributors - Patrick Wheeler, Keith Laker, Ashish Jain, Rick Green, Nilay Panchal, Hermann Baer
 - Last Updated By - Mike Matthews, August 2025

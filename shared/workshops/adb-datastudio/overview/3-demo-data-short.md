@@ -13,7 +13,7 @@ Watch the video below for a quick walk-through of the lab.
 -->
 ### Prerequisites
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user with appropriate roles
 
 ## Task 1: Access the SQL worksheet
@@ -24,12 +24,12 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
 1. There are two ways to reach the Database Actions home page, where you can find Data Studio and other useful tools for your database.
 
-    - Via the Autonomous Database console page
+    - Via the Autonomous AI Database console page
     - Directly via URI
 
     ### Access Database Actions via the Console
 
-    On the Autonomous Database Details page, click the **Database Actions** button:
+    On the Autonomous AI Database Details page, click the **Database Actions** button:
 
     ![Screenshot of the link to Database Actions from the database console page](images/image_db_console.png)
 
@@ -37,7 +37,7 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
     When user QTEAM was created (in a previous step), a card appeared on the Database Users screen, similar to what is shown below. Notice the URI at the bottom of the card.
 
-    Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
+    Click the **Open in new tab** icon to open a new tab. This URL may be used to access the Database Actions page of Autonomous AI Database Tools directly, without needing to use the OCI Console. You may want to bookmark this link so that you can easily launch the page at any time.
 
     ![Link to open Database Actions from the user login page](images/image_user_login.png)
 
@@ -45,7 +45,7 @@ In the previous lab, you created the database user **QTEAM**, and you should sti
 
     ![Database Actions Log-in screen with the user name](images/image_user_uri.png)
 
-3. This will take you to the Autonomous Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
+3. This will take you to the Autonomous AI Database **Database Actions** page (shown below), with links to the SQL worksheet on the top left. 
     
     Click on the **SQL** card.
 
@@ -116,7 +116,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, Aug 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, Aug 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, August 2023
 

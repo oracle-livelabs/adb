@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab shows how you can use Data Studio to set up a live feed of data from cloud storage into the Autonomous Database. Feeding data into the database is a useful capability when you have large-scale, regularly added or updated data in cloud storage which is central to your data warehouse, and which will therefore benefit from the performance optimizations of being loaded into the database rather than simply linked from it.
+This lab shows how you can use Data Studio to set up a live feed of data from cloud storage into the Autonomous AI Database. Feeding data into the database is a useful capability when you have large-scale, regularly added or updated data in cloud storage which is central to your data warehouse, and which will therefore benefit from the performance optimizations of being loaded into the database rather than simply linked from it.
 
 There are two types of live feed:
 
@@ -22,14 +22,14 @@ Estimated Time: 30 minutes
 In this lab, you will:
 
 - Set up a new bucket in your cloud storage system, and configure it to send events when objects are changed
-- Use the Autonomous Database's built-in Data Studio application to set up a Data Feed job
+- Use the Autonomous AI Database's built-in Data Studio application to set up a Data Feed job
 - Configure notification rules in your cloud storage system to trigger the Data Feed job to check for and load data whenever data in the bucket is added
 
 ### Prerequisites
 
 To complete this lab, you need to have completed Labs 1 and 2 in this workshop, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created a new QTEAM user
 
 You do not need to have completed Labs 3, 4 or 5.
@@ -52,7 +52,7 @@ You will also need login information for Oracle Cloud Infrastructure so that you
 
 4. Under **Compartment**, select a suitable compartment for the new storage bucket. 
 
->**Note:** If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous Database has been created. This example uses a compartment named 'sandbox'.
+>**Note:** If you are using an Oracle Live Labs account, select the compartment created with your account. If you are working in your own tenancy, select any suitable compartment where you can create a new storage bucket. The compartment can be, but does not have to be, the same compartment where your Autonomous AI Database has been created. This example uses a compartment named 'sandbox'.
 
 5. With a suitable compartment selected, click the **Create Bucket** button to set up a new bucket
 
@@ -175,7 +175,7 @@ The subscription is now created. It will show as **Pending** for a couple of min
 
   If required, we can set up another rule for object update. This should be specified in exactly the same way, but with **Object - Update** selected as the Event Type, and with a display name such as **Updated\_moviesales\_object**.
 
-  This completes the configuration steps needed to trigger the live table feed job to update the Autonomous Database when an object is added or updated in our cloud storage bucket. All we need to do now is test it!
+  This completes the configuration steps needed to trigger the live table feed job to update the Autonomous AI Database when an object is added or updated in our cloud storage bucket. All we need to do now is test it!
 
 ## Task 4: Test the live feed
 
@@ -223,16 +223,16 @@ To trigger the live table feed, we simply need to upload another csv file into t
 
   This view shows details of all the actions taken for this live feed, including when the OCI subscription was confirmed, when the new file was detected in the bucket, and when the ingest job was triggered. This is also a very useful view to use if something has gone wrong in any of the steps!
   
-  This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in the cloud object storage bucket, they will automatically be loaded into the MOVIE\_SALES table in the Autonomous Database, to facilitate fast data analysis. 
+  This completes the setup of the live table feed. As new csv files with the same structure as the file just uploaded arrive in the cloud object storage bucket, they will automatically be loaded into the MOVIE\_SALES table in the Autonomous AI Database, to facilitate fast data analysis. 
 
 ## RECAP
 
-In this lab, you used Data Studio to set up a notification-based feed of data into the Autonomous Database from cloud storage. This is a very useful option where you have large volumes of data arriving into cloud object storage as files but which you need to participate in performance-critical analysis in the database.
+In this lab, you used Data Studio to set up a notification-based feed of data into the Autonomous AI Database from cloud storage. This is a very useful option where you have large volumes of data arriving into cloud object storage as files but which you need to participate in performance-critical analysis in the database.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Mike Matthews Product Management, Autonomous Database, January 2023
+- Created By/Date - Mike Matthews Product Management, Autonomous AI Database, January 2023
 - Contributors - Jayant Mahto, Rick Green
 - Last Updated By - Mike Matthews, August 2025

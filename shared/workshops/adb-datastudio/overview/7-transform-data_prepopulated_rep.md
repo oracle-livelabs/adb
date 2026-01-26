@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This lab introduces the Data Transforms application built into the Oracle Autonomous Database and shows the various ways you can prepare data for analysis.
+This lab introduces the Data Transforms application built into the Oracle Autonomous AI Database and shows the various ways you can prepare data for analysis.
 
 Estimated Time: 15 minutes
 
@@ -21,11 +21,11 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous AI Database instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data 
 - Loaded Age group data into AGE\_GROUP 
-- Optional: Downloaded the wallet file to connect to your Autonomous Database. This is an optional step for the last section.
+- Optional: Downloaded the wallet file to connect to your Autonomous AI Database. This is an optional step for the last section.
 
 ### Demo data for this lab
 >**NOTE:** Skip this section if you have demo data loaded and have completed previous labs.
@@ -265,7 +265,7 @@ Now you are ready to go through the rest of the labs in this workshop.
 
     >**Note:** The Data Transforms tool is provisioned based on demand. After 10 minutes of 
     inactivity, it will go into sleep mode and needs to
-    be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then refresh your browser.
+    be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous AI Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then refresh your browser.
 
     Look at the Home page. You can load data from various databases and applications using **Load Data**, and transform data to any desired shape using **Transform Data**. You can also move your data integration project from one environment to another using **Export** and **Import**. In our next section we will show you the available data sources and use the **Import** wizard to get a pre-populated data flow.
 
@@ -527,7 +527,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain,
 - Last Updated By - Jayant Mahto, September 2025
 

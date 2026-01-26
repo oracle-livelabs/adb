@@ -8,7 +8,7 @@ Estimated Workshop Duration: 3 hours
 
 ### Who should use this Workshop?
 
-This workshop is useful for anyone who needs to have a detailed knowledge of loading and transforming data in the Autonomous Database. 
+This workshop is useful for anyone who needs to have a detailed knowledge of loading and transforming data in the Autonomous AI Database. 
 
 ### Objectives
 
@@ -44,7 +44,7 @@ If you have any questions about the topics covered in this lab and the entire wo
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, July 2024
 

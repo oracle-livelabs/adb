@@ -17,7 +17,7 @@ In this workshop, you will learn how to:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Data Warehouse instance
+- Created an Autonomous AI Lakehouse instance
 - Created the users DT\_DEMO\_SOURCE and DT\_DEMO\_DW with appropriate roles
 - Imported the demo data
 - Started the Data Transforms tool and performed the following:
@@ -54,7 +54,7 @@ In this task we will create a data load job to extract MOVIESALES\_CA, MOVIE and
     - Connection: DATAWAREHOUSE
     - Schema: DT\_DEMO\_DW
 
-    Note that in our workshop we are using the same autonomous database for the source and target connections to keep the setup simple. However, the source and target connections can be entirely different. For example, the source might be a SQL Server database, and the target might be an autonomous database.
+    Note that in our workshop we are using the same Autonomous AI Database for the source and target connections to keep the setup simple. However, the source and target connections can be entirely different. For example, the source might be a SQL Server database, and the target might be an Autonomous AI Database.
 
     *Note*: Saving takes a few minutes while the tool connects to the data source to collect the table listing and associated metadata.
 
@@ -122,7 +122,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews
 - Last Updated By - Jayant Mahto, June 2024
 

@@ -22,13 +22,13 @@ In this workshop, you will learn:
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous Database instance
+- Created an Autonomous AI Database instance
 - Created a new QTEAM user with appropriate roles
 - Loaded the demo data
 
 ## Task 1: Where is your data?
 
-Data and its management is the foundation of any data analysis project. To enable analytics, data sets can either be loaded into the Autonomous Database or linked to it.
+Data and its management is the foundation of any data analysis project. To enable analytics, data sets can either be loaded into the Autonomous AI Database or linked to it.
 
 Data Studio provides tools to help you connect and discover data that may be useful for analysis, and to load or link the data.
 
@@ -46,7 +46,7 @@ In this workshop, we will show you how to discover and load data from connected 
 
     ![Screenshot of the Catalog card](images/image2_datastudio_overview_list_catalog.png)
 
-    The catalog provides a way to search for and discover data both in your Autonomous Database and in a wide range of other connected systems, including other Autonomous Databases, connected on-premises databases, cloud storage data, shared data, and external data catalogs. 
+    The catalog provides a way to search for and discover data both in your Autonomous AI Database and in a wide range of other connected systems, including other Autonomous Databases, connected on-premises databases, cloud storage data, shared data, and external data catalogs. 
 
     The catalog UI allows you to add catalogs to connect to additional systems, and then browse and search for data either in a catalog, or across many catalogs.
     
@@ -65,7 +65,7 @@ In this workshop, we will show you how to discover and load data from connected 
 
     ![Screenshot of the catalog page](images/image3_catalog_ui_zones.png)
 
-2.  Note that the catalog can search and list many types of object, including tables, views, cloud storage files, other Autonomous Databases, and more. We first want to understand the tables that exist in our connected Autonomous Database, so check that **Tables and Views** is selected in the middle of the screen. 
+2.  Note that the catalog can search and list many types of object, including tables, views, cloud storage files, other Autonomous Databases, and more. We first want to understand the tables that exist in our connected Autonomous AI Database, so check that **Tables and Views** is selected in the middle of the screen. 
 
     You can see the MOVIESALES\_CA in this list of tables. We are interested in this
     table since we were told that this table contains movie sales
@@ -160,7 +160,7 @@ We are told that this data set is available in a file on OCI Cloud Object Storag
 
    ![Screenshot of Catalog files filter for age](images/image8_7_catalog_files_age.png)
 
-3. Click on the file and look at the options. You can either load the file to the Autonomous Database, or link to the file. Linking a file simply creates an external table and gives you the data access without moving the data. In our case, we want to move the data to the Autonomous Database by loading the file since we have a need to join it with other tables already in the Autonomous Database and it will be more optimized if all tables are in the database.
+3. Click on the file and look at the options. You can either load the file to the Autonomous AI Database, or link to the file. Linking a file simply creates an external table and gives you the data access without moving the data. In our case, we want to move the data to the Autonomous AI Database by loading the file since we have a need to join it with other tables already in the Autonomous AI Database and it will be more optimized if all tables are in the database.
 
    Click on **Load to table**
 
@@ -205,7 +205,7 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous Database, January 2023
+- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
 - Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
 - Last Updated By - Jayant Mahto, August 2025
 
