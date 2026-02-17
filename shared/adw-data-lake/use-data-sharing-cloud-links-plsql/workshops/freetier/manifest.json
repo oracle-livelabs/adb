@@ -1,5 +1,5 @@
 {
-    "workshoptitle": " Set up live data sharing between Oracle Databases using Cloud Links and PL/SQL APIs",
+    "workshoptitle": " Set up live data sharing between Oracle AI Databases using Cloud Links and PL/SQL APIs",
     "help": "livelabs-help-db_us@oracle.com",
     "include": 
     {
@@ -12,7 +12,7 @@
         {
             "title": "Introduction",
             "type":"freetier",
-            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "description": "Set up live data sharing between Oracle AI Databases using Cloud Links and PL/SQL APIs",
             "filename": "./../../introduction/introduction.md"
         },
         {

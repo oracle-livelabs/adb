@@ -6,7 +6,7 @@ A data share recipient is an entity such as an individual, an institution, or a 
 
 In this lab, as a data share provider, you will create and authorize a new recipient that will access the **`demo_live_share`** data share that you just published and the `custsales` table in this share. You will need the sharing ID that you saved from an earlier step.
 
-![Recipient flow.](images/recipient-diagram.png =60%x*)
+![Recipient flow.](images/recipient-diagram.png =50%x*)
 
 Estimated Time: 5 minutes
 
@@ -38,7 +38,7 @@ _**Important:** Copy and paste the following script into your SQL Worksheet; **h
     </copy>
     ```
 
-    ![Create recipient.](images/create-recipient.png)
+    ![Create recipient.](images/create-recipient.png =65%x*)
 
 2. Query the available recipients. Copy and paste the following script into your SQL Worksheet, and then click the **Run Statement** icon.
 
@@ -50,7 +50,7 @@ _**Important:** Copy and paste the following script into your SQL Worksheet; **h
     </copy>
     ```
 
-    ![Query recipients.](images/query-recipients.png)
+    ![Query recipients.](images/query-recipients.png =65%x*)
 
 ## Task 2: Grant the Recipient Access Privileges to the Data Share
 
@@ -68,7 +68,7 @@ _**Important:** Copy and paste the following script into your SQL Worksheet; **h
     </copy>
     ```
 
-    ![Grant access to share.](images/grant-recipient-access.png)
+    ![Grant access to share.](images/grant-recipient-access.png =65%x*)
 
 2. Determine the data shares to which the `live_share_oracle_user` recipient has access privileges. Copy and paste the following script into your SQL Worksheet, and then click the **Run Script** icon.
 
@@ -81,7 +81,7 @@ _**Important:** Copy and paste the following script into your SQL Worksheet; **h
     </copy>
     ```
 
-    ![Check recipient access privileges.](images/query-privileges.png)
+    ![Check recipient access privileges.](images/query-privileges.png =65%x*)
 
     The **`live_share_oracle_user`** recipient has access privileges to only one data share, **`demo_live_share`**.
 
@@ -90,13 +90,13 @@ You may now proceed to the next lab.
 ## Learn More
 
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
 
 * **Author:** Lauran K. Serhal, Consulting User Assistance Developer
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, July 2025
+* **Last Updated By/Date:** Lauran K. Serhal, December 2025
 
 
 Data about movies in this workshop were sourced from Wikipedia.

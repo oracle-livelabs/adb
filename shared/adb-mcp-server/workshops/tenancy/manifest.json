@@ -1,0 +1,61 @@
+{
+    "workshoptitle": "Get Started with Oracle Autonomous AI Database MCP Server",
+    "help": "livelabs-help-db_us@oracle.com",
+    "include": {
+        "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
+    },
+    "variables":["./variables.json"],
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Introduction to the workshop",
+            "filename": "../../introduction/introduction-mcp-server.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Get started using Oracle Cloud Infrastructure",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Set up Your Workshop Environment",
+            "type": "tenancy",
+            "description": "Set up an Autonomous AI Database and Install Ask Oracle app",
+            "filename": "../../setup-environment/setup-environment.md"
+        },
+        {
+            "title": "Lab 2: Enable and Manage MCP Server",
+            "type": "tenancy",
+            "filename": "../../enable-manage-mcp-server/enable-manage-mcp-server.md"
+        },
+        {
+            "title": "Lab 3: Define Tools with Select AI Agent",
+            "type": "tenancy",
+            "filename": "../../define-tools-with-select-ai/define-tools-with-select-ai.md"
+        },
+        {
+            "title": "Lab 4: Configure Claude Desktop to Use MCP Server",
+            "type": "tenancy",
+            "filename": "../../configure-claude-desktop/configure-claude-desktop.md"
+        },
+        {
+            "title": "Lab 5: Configure Cline in Visual Studio Code to Use MCP Server",
+            "type": "tenancy",
+            "filename": "../../configure-cline/configure-cline.md"
+        },
+        {
+            "title": "Lab 6: Explore Tools in MCP Server with Cline",
+            "type": "tenancy",
+            "filename": "../../explore-tools-using-cline/explore-tools-using-cline.md"
+        },
+        {
+            "title": "Lab 7: Explore Tools in MCP Server with Claude Desktop",
+            "type": "tenancy",
+            "filename": "../../explore-tools-using-claude-desktop/explore-tools-using-claude-desktop.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
