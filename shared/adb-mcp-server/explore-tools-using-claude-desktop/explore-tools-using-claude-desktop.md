@@ -1,8 +1,12 @@
-# Use the Ask Oracle Chatbot App
+# Explore Tools in MCP Server with Claude Desktop
 
 ## Introduction
 
-This lab provides a hands-on tour of the “Ask Oracle” demo chatbot app. Here, you’ll use the chatbot to run the agent team created and enhanced in the previous labs. While we’ll focus on interacting with an agent team, this APEX-based app allows you to interact with your data using natural language prompts for RAG and NL2SQL with AI profiles already defined. You’ll open the app, review at the settings, specify NL2SQL   and RAG AI profiles, and pick an AI Agent. Then, try a few prompts - just click and chat.
+In this lab, you use Claude Desktop as an MCP client to interact with the user-defined tools created in Lab 3 and exposed through the Autonomous AI Database MCP Server.
+
+You issue natural language prompts, review tool call requests, approve tool run, and examine structured responses returned by the database.
+
+This lab demonstrates how conversational AI safely interacts with enterprise database tools using the Model Context Protocol (MCP).
 
 
 Estimated Time: x
@@ -10,190 +14,200 @@ Estimated Time: x
 ### Objectives
 
 In this lab, you will:
-* Access the Ask Oracle chatbot app.
-* Review the **Settings**.
-* Choose an AI Agent to chat with.
-* Run some sample prompts.
+* Issue natural language prompts in Claude Desktop
+* Review and approve MCP tool requests
+* Observe how Claude selects appropriate tools
+* Review structured summaries generated from database results
 
 ### Prerequisites
 - This lab requires the completion of all the preceding labs in the **Contents** menu on the left.
-- Autonomous Database is reachable from your browser environment.
 
-## Task 1: Create NL2SQL Profile
-To create NL2SQL profile:
-1. Add a paragraph in your OML Notebook by clicking the **+** symbol.
-![Add a paragraph](./images/add-paragraph.png)
+## Task 1: Discover Available Schemas
+In this task, you ask Claude to retrieve the list of schemas available in your Autonomous AI Database instance. Claude analyzes your natural language prompt, selects the appropriate tool, and calls the database to load schema information. You review the tool call and examine the formatted results returned from the database.
 
-2. Create a NL2SQL Profile by pasting the following code.
+Claude Desktop should already be running and connected to your MCP Server from the previous lab.
+
+1. In Claude Desktop, click **Menu** → **New Chat**.
+![Open New Chat](./images/new-chat.png =70%x*)
+
+2. Issue schema discovery prompt: 
+
+ _What schemas are available in the database?_  
+![`LIST_SCHEMA` approval](./images/list_schemas.png =70%x*) 
+
+  Claude determines that the LIST_SCHEMAS tool is required.
+3. Review the tool request. Click the drop down and click **Allow once**.
+![Allow once](./images/list_schema_allow_once.png =70%x*)
+A formatted list of schema names available on your Autonomous AI Database along with a summary at the end is displayed.
+![List of schema names](./images/list_schemas_result.png =70%x*)
+
+## Task 2: List Objects in a Schema
+In this task, you ask Claude to retrieve the list of database objects within a specific schema. Claude processes your natural language prompt, selects the appropriate tool, and calls the database to load object information. You review the tool call request and examine the structured results returned by the database.
+
+1. Issue object discovery prompt:
+
+  _What objects exist in the `HRM_USER` schema?_
+
+  ![Enter list objects prompt](./images/list_objects.png =70%x*)
+2. Claude requests permission to use `LIST_OBJECTS`.
+3. Review the tool request. Click the drop down and click **Allow once**. 
+  ![LIST_OBJECTS allow once](./images/list_objects_allowonce.png =70%x*)
+
+4. Claude returns object names and types.
+  ![Lists objects under the HRM_USERS schema](./images/list_objects_result.png =70%x*)
+
+
+## Task 3: Retrieve Object Metadata
+In this task, you request detailed metadata for a specific database object. Claude processes your prompt, selects the appropriate metadata tool, and calls the database to load structural information about the object. You review the tool call details and analyze the formatted metadata returned in the response.
+
+1. Issue metadata prompt:
+
+  _Show the metadata details of the employees table_
+  ![Enter the prompt](./images/get_object_details.png =70%x*)
+2. Claude requests permission to use `GET_OBJECT_DETAILS`.
+3. Review the tool request. Click the drop down and click **Allow once**.
+  ![GET_OBJECT_DETAILS allow once](./images/get_object_details_allowonce.png =70%x*)
+4. Claude returns structured metadata.
+  ![Structured result for employees table](./images/get_object_details_result.png =70%x*)
+5. Issue another metadata retrieval prompt:
+
+  _Show the metadata details of the departments table_
+  ![Enter the prompt](./images/get_object_details_another_prompt.png =70%x*)
+6. You can see that Claude requests permission to use `GET_OBJECT_DETAILS`. Repeat step 3.
+7. Claude returns structured metadata.
+  ![Structured result for department table](./images/get_object_details_second_prompt_result.png =70%x*)
+
+
+## Task 4: Execute a Business Query
+
+In this task, you ask Claude to retrieve business data using a natural language query. Claude processes your request, selects the appropriate SQL tool, and calls the database to load the required data. You review the tool call details and examine the summarized results generated from the database output.
+
+1. Issue analytical prompt:
+
+  _Find all employees working in the Engineering department_
+  ![Enter the prompt](./images/execute_sql.png =70%x*)
+2. You can see that Claude requests permission to use `EXECUTE_SQL`.
+3. Review the tool request. Click the drop down and click **Allow once**.
+  ![GET_OBJECT_DETAILS allow once](./images/execute_sql_allowonce.png =70%x*)
+4. Claude runs a read-only SQL query and returns summarized results.
+  ![Structured result for requested table](./images/execute_sql_result.png =70%x*)
+
+You have now completed the full MCP workflow from tool creation to conversational database interaction.
+
+## Quiz
+```quiz score
+Q: What happens when you click “Allow once” in Claude Desktop?
+
+- The tool is permanently approved
+- The tool runs automatically for all future requests
+* The tool runs only for the current request
+- The tool is disabled
+>“Allow once” permits the tool to run only for the current request. Future requests will require approval again unless set to “Always allow.”
+
+Q: If Claude processes a table from an unexpected schema, what should you do?
+
+- Restart Claude
+* Qualify the table name with the schema
+- Generate a new token
+- Disable EXECUTE_SQL
+>If the same table name exists in multiple schemas, specify the schema explicitly (for example, SALES_USER.CUSTOMERS).
+
+Q: Why is manual tool approval important in Claude Desktop?
+
+- It increases SQL performance
+- It reduces network latency
+- It enables caching
+* It enforces governance and control
+>Manual approval ensures controlled access to database tools and prevents unintended operations.
+
+Q: Which tool retrieves structured metadata about a table?
+
+* GET_OBJECT_DETAILS
+- EXECUTE_SQL
+- LIST_SCHEMAS
+- LIST_OBJECTS
+>GET_OBJECT_DETAILS loads structural metadata such as columns and constraints for a specified table.
+```
+
+You may now proceed to the next lab.
+
+## Troubleshooting
+If tool calls do not return expected results, review the following checks:
+
+*Issue 1: Claude Does Not Prompt for Database Credentials*
+
+**Possible Cause**
+
+Cached authentication data is interfering.
+
+**Resolution**
+
+1. In Claude, click **Menu** → **Help** → **Troubleshooting** → **Clear Cache and Restart**.
+2. Restart Claude.
+3. Retry connection.
+
+If needed:
+
+Delete the `.mcp_auth` folder.
+
+Clear browser cookies for:
   ```
-  <copy>
-
-  %script 
-  BEGIN
-    DBMS_CLOUD_AI.CREATE_PROFILE(
-        profile_name >'OCI_GENAI',
-        attributes   =>'{"provider": "oci",
-        "credential_name": "AI_CREDENTIAL",
-        "conversation": "true",
-        "object_list": [{"owner": "SH", "name": "customers"},
-                        {"owner": "SH", "name": "countries"},
-                        {"owner": "SH", "name": "supplementary_demographics"},
-                        {"owner": "SH", "name": "profits"},
-                        {"owner": "SH", "name": "promotions"},
-                        {"owner": "SH", "name": "products"}]
-          }');
-  END;
-  /
-  </copy>
+  dataaccess.adb.<region>.oraclecloudapps.com
   ```
 
-## Task 2: Access the Application
+*Issue 2: Metadata Cannot Be Retrieved*
 
-1. Launch the demo app. Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. Refer to **Lab 1** -> **Task 4**.
+**Possible Causes**
 
-  ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
+- Stale session
+- Table exists in multiple schemas
+- Insufficient privileges
 
-2. The **Ask Oracle Chatbot using Select AI** chatbot application is displayed. On the top right-hand corner, click the user icon. 
-    ![Enter Ask Oracle user icon](./images/ask-oracle-user-icon.png =70%x*)
+**Resolution**
 
-3. Click **Settings** from the menu. 
-    ![Select Settings](./images/settings.png =70%x*)
+1. Start a new chat session.
+2. Retry the prompt.
+3. Qualify the table with schema:
+  ```
+  Show metadata for SALES_USER.CUSTOMERS
+  ```
 
-4. The **Settings** screen pops up with different tabs: **NL2SQL Profile**, **RAG Profile**, **AI Agents Teams**, **Account**, and **About**. Choose the following by clicking each tab and selecting the corresponding object:
+*Issue 3: Tools Do Not Appear*
 
-  a. NL2SQL Profile – `OCI_GENAI[NL2SQL]`
+Check for the following:
 
-      ![Select OCI_GENAI in NL2SQL Profile tab](./images/ask-oracle-nl2sql.png =70%x*)
+1. MCP Server is enabled (Lab 2).
+2. You logged in using the schema user from Lab 3.
+3. Tools exist:
+  ```
+  SELECT tool_name FROM user_cloud_ai_tools;
+  ```
+4. Restart Claude Desktop after verification.
 
-  b. RAG Profile – `SALES_AGENT_RAG_PROFILE`
-      ![Select SALES_AGENT_RAG_PROFILE in RAG Profile tab](./images/ask-oracle-rag.png =70%x*)
+*Issue 5: Claude Stops Working Mid-Session*
 
-  c. AI Agent Teams – `RETURN_AGENCY_TEAM`
-      ![Select RETURN_AGENCY_TEAM in AI Agent Teams tab](./images/ask-oracle-ai-agent-teams.png =70%x*)
+**Possible Causes**
 
-For example, pick the agent team **`RETURN_AGENCY_TEAM`** and click the **X** in the upper right to close the **Settings** screen.
+- Session timeout
+- MCP reconnection required
 
-5. In the **Enter prompt** text area, click the **+** and select **Agents**. 
-      ![Select Agents at the Enter prompt text area](./images/ask-oracle-enter-prompt-agents.png =70%x*)
+**Resolution**
 
-    Notice that the bottom right indicates that agent team is `RETURN_AGENCY_TEAM`.
+- Restart Claude Desktop.
+- Reconnect to MCP Server.
+- Reissue the prompt.
 
-      ![Bottom right shows RETURN_AGENCY_TEAM](./images/ask-oracle-enter-prompt-agents-bottom-right.png =70%x*)
-
-You are now ready to ask questions at the Enter prompt area!
-
-
-## Task 3: Interact with the Sales Return Agent
-
-For example, follow this script:
-- “I want to return a smartphone case”
-- “The item is defective”
-- “I will need a replacement”
-- “I'm Bob Martinez and my order number is 7820”
-- “No thank you”
-
-## Task 4: (Optional) Ask Natural Language and Database Questions Using the Application
-
-You can use this application to interact with the LLM and your database in a variety of ways:
-
-- **Ask the LLM Directly:**
-Click the **+** and select **NL2SQL**. _Uncheck the  **Database** checkbox_ to provide direct prompts to your LLM about anything such as:
-
-  _What is Oracle Autonomous Database?_
-  
-  This prompt is sent to the LLM that you selected when you created the profile and returns the response.
-
-  ![Ask the LLM](./images/ask-oracle-llm.png =70%x*)
-
-- **Ask your Database :**
-Click the **+** and select **NL2SQL**. _Select the **Database** checkbox_ to ask questions about your database data based on the user and tables in the database that you specified when you created the profile such as:
-
-  _How many customers do I have in each country?_
-
-  ![Ask your database](./images/ask-oracle-database.png =70%x*)
-
-- **Generate narrated result:**
-_Check the **Database** and **Narrate** checkbox_ to ask questions about your database data based on the user and tables in the database specified in the AI profile such as:
-
-  _How many customers are females?_
-
-    ![Select Database and Narrate checkboxes](./images/ask-oracle-narrate.png =70%x*)
-
-  **Have an interactive conversation**
-
-  Select AI supports short-term, session based conversations, which are enabled in the AI profile by setting the `converstion` parameter to `true`. Refer to **Task 1 -> Step 2** of this lab.
-
-
-1. Uncheck **Narrate**. Use the following prompt:
-
-  _How many customers do I have in each country?_
-
-  Ask another follow up question such as:
-
-  _Break that out by gender_
-
-    ![Uncheck Narrate and have conversation](./images/ask-oracle-uncheck-narrate.png =70%x*)
-
-3. Click **Explain**. 
-
-    ![Click Explain](./images/ask-oracle-explain.png =70%x*)
-
-  The following screen displays:
-
-    ![Explains the SQL](./images/ask-oracle-explain-sql.png)
-
-  When finished viewing, click the back arrow and continue with the following script:
-
-  _Can you change that to have the country in one column and other columns such as male, female and total?_
-
-  _Display this result in a bar chart_
-
-  _Put the results in descending_
-
-  _How many customers do I have in each country?_
-
-
-- **Use RAG:**
-Click **+** and select **RAG** to ask questions using retrieval augmented generation (RAG). Before you submit the prompt, ensure that the RAG profile `SALES_AGENT_RAG_PROFILE` created earlier in **Lab 5** is selected. Ask questions relative to the corresponding vector index content for Select AI to augment your prompt with relevant content for the LLM. We have created a vector index in **Lab 5** -> **Task 1**.
-
-1. First, we’ll just ask our LLM without RAG, so select the **Chat** checkbox. The LLM returns a general response describing Select AI RAG capabilities based on its training, without using any content from your vector index.
-
-  _What are the benefits of Select AI for retrieval augmented generation (RAG)?_
-
-    ![Select Chat](./images/ask-oracle-rag-chat.png =70%x*)
-
-2. Uncheck **Chat** and then ask:
-
-  _what are alternatives for the smartphone case_
-
-  > **Tip**: Ask a question based on the RAG profile you selected, which references the documents stored in your vector database. 
-  
-  Select AI now uses retrieval augmented generation to ground the response in your vector index. The LLM returns recommendations based on the content of your documents, not general model knowledge.
-
-3. Let’s see the specific chunks provided to the LLM, so select the **Show chunk details** checkbox.
-
-  _What do I need to specify in my AI profile to enable RAG?_
-
-  ![Show chunk details](./images/ask-oracle-show-chunk-details.png =70%x*)
-
-  Select AI splits source documents into smaller units called chunks and stores them in the vector index. During a RAG query, Select AI retrieves the most relevant chunks using semantic search and adds them to the prompt sent to the LLM. This process gives the model focused context from your documents and helps reduce hallucinations.
-
-
-  **This concludes the workshop.**
-
-
-## Want to Learn More?
+## Learn More
 
 * [Select AI Agent](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html) 
 * [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
-* [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
-* [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
+* [Configure MCP Server in MCP-Compatible AI clients](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/use-mcp-server.html#GUID-B540AEF5-FB92-4091-9519-289C1B52B690)
 
 
 ## Acknowledgements
 
-* **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
+* **Authors:** Sarika Surampudi, Principal User Assistance Developer
+* **Contributors:** Chandrakanth Putha, Senior Product Manager; Mark Hornick, Senior Director, Machine Learning and AI Product Management
 <!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
 -->
 

@@ -32,6 +32,7 @@ GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO ADB_USER;
 </copy>
 ```
 Replace _`ADB_USER`_ with your user name.
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
 
 ## Task 1: Download and Import the Provided Notebook into OML
 
