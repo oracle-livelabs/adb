@@ -150,8 +150,8 @@ RESPONSE
 Alternatives for smartphone cases include TitanGuard Pro, ClearEdge Ultra, and ArmorFlex Shield. TitanGuard Pro is a military-grade case with reinforced corners and dust-proof port covers, designed for rugged outdoor use. ClearEdge Ultra is a crystal-clear slim case made with hybrid polymer to resist scratches and yellowing, showcasing the phone's design while offering light protection. ArmorFlex Shield is built with a shock-absorbing TPU frame and scratch-resistant polycarbonate back, designed for maximum impact protection without adding unnecessary bulk.
 
 Sources:
-  - Smartphone-R-US_Catalog.pdf (https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/b9UsLs4CwZi9iorADMTK9c-ziXkhmME6m7kcdJ9ypjqFTzzZmHSLqNve0t_Vi1du/n/adwc4pm/b/oaiw25-sales-agent-rag-documents/o/Smartphone-R-US_Catalog.pdf)
-  - ABC_Smartphone_Supply_Catalog.pdf (https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/b9UsLs4CwZi9iorADMTK9c-ziXkhmME6m7kcdJ9ypjqFTzzZmHSLqNve0t_Vi1du/n/adwc4pm/b/oaiw25-sales-agent-rag-documents/o/ABC_Smartphone_Supply_Catalog.pdf)
+  - Smartphone-R-US_Catalog.pdf (https://objectstorage.us-ashburn-1.oraclecloud.com/p/OSllhv6ZOGUkG1pR7MIqUZqhJ0cwBxz0B6vzSbtHhQq7MqqbyU9Jn1iX2mtHrVTV/n/c4u04/b/sales-agent-rag-documents/o/Smartphone-R-US_Catalog.pdf)
+  - ABC_Smartphone_Supply_Catalog.pdf (https://objectstorage.us-ashburn-1.oraclecloud.com/p/OSllhv6ZOGUkG1pR7MIqUZqhJ0cwBxz0B6vzSbtHhQq7MqqbyU9Jn1iX2mtHrVTV/n/c4u04/b/sales-agent-rag-documents/o/ABC_Smartphone_Supply_Catalog.pdf)
 ```
 
 ## Task 2: Create a RAG Tool

@@ -38,19 +38,19 @@
             "filename": "../../configure-claude-desktop/configure-claude-desktop.md"
         },
         {
-            "title": "Lab 5: Configure Cline in Visual Studio Code to Use MCP Server",
+            "title": "Lab 5: Explore Tools in MCP Server with Claude Desktop",
+            "type": "tenancy",
+            "filename": "../../explore-tools-using-claude-desktop/explore-tools-using-claude-desktop.md"
+        },
+        {
+            "title": "Lab 6: Configure Cline in Visual Studio Code to Use MCP Server",
             "type": "tenancy",
             "filename": "../../configure-cline/configure-cline.md"
         },
         {
-            "title": "Lab 6: Explore Tools in MCP Server with Cline",
+            "title": "Lab 7: Explore Tools in MCP Server with Cline",
             "type": "tenancy",
             "filename": "../../explore-tools-using-cline/explore-tools-using-cline.md"
-        },
-        {
-            "title": "Lab 7: Explore Tools in MCP Server with Claude Desktop",
-            "type": "tenancy",
-            "filename": "../../explore-tools-using-claude-desktop/explore-tools-using-claude-desktop.md"
         },
         {
             "title": "Need Help?",
