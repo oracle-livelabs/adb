@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Get started with AI Agents using Select AI on Autonomous Database",
+    "workshoptitle": "Get started with AI Agents using Select AI on Autonomous AI Database",
     "help": "livelabs-help-db_us@oracle.com",
     "include": {
         "adb-provision-body.md":"/common/building-blocks/tasks/adb/provision-body.md"
