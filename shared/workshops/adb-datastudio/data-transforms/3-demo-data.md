@@ -164,7 +164,7 @@ CREATE TABLE TIME
 
 
 set define on
-define file_uri_base = 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/prepareandanalyze'
+define file_uri_base = 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/oIuyBRvqJQwcnjM0RNWvAgq0o_-B1TQkwfRAjepukyxV5kzYCqXCvwKwq4lXDQnC/n/c4u04/b/datastudio/o/prepareandanalyze'
 
 begin
 dbms_cloud.copy_data(
