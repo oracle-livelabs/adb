@@ -19,6 +19,8 @@ In this lab, you will:
 - This lab requires the completion of all the preceding labs in the **Contents** menu on the left.
 - Autonomous Database is reachable from your browser environment.
 
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
+
 ## Task 1: Create NL2SQL Profile
 To create NL2SQL profile:
 1. Add a paragraph in your OML Notebook by clicking the **+** symbol.
