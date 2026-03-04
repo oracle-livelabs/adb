@@ -60,7 +60,6 @@ Define an AI Profile that has your LLM and database objects and is ready to use 
 begin
 DBMS_CLOUD.drop_credential(credential_name => 'AI_CREDENTIAL');
 EXCEPTION WHEN OTHERS THEN NULL; END;
-end;
 /
 BEGIN
 DBMS_CLOUD.create_credential(
