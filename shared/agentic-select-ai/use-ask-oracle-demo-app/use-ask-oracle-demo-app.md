@@ -19,6 +19,8 @@ In this lab, you will:
 - This lab requires the completion of all the preceding labs in the **Contents** menu on the left.
 - Autonomous Database is reachable from your browser environment.
 
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
+
 ## Task 1: Create NL2SQL Profile
 To create NL2SQL profile:
 1. Add a paragraph in your OML Notebook by clicking the **+** symbol.
@@ -31,7 +33,7 @@ To create NL2SQL profile:
     
   BEGIN
     DBMS_CLOUD_AI.CREATE_PROFILE(
-        profile_name >'OCI_GENAI',
+        profile_name =>'OCI_GENAI',
         attributes   =>'{"provider": "oci",
         "credential_name": "AI_CREDENTIAL",
         "conversation": "true",
@@ -73,7 +75,7 @@ To create NL2SQL profile:
 
 For example, pick the agent team **`RETURN_AGENCY_TEAM`** and click the **X** in the upper right to close the **Settings** screen.
 
-5. In the **Enter prompt** text area, click the **+** and select **Agents**. 
+5. In the **Enter prompt** text area, click the **+** and select **Agent Team**. 
       ![Select Agents at the Enter prompt text area](./images/ask-oracle-enter-prompt-agents.png =70%x*)
 
     Notice that the bottom right indicates that agent team is `RETURN_AGENCY_TEAM`.

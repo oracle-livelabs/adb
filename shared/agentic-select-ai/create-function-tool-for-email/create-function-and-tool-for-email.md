@@ -21,6 +21,7 @@ In this lab, you will:
 
 - This lab requires completion of all the previous labs in the **Contents** menu on the left.
 
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
 
 ## Task 1: Create a Function to Generate an Email
 

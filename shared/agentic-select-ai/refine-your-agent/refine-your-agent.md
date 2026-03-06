@@ -19,6 +19,7 @@ In this lab, you will:
 
 - This lab requires completion of Lab 1 in the **Contents** menu on the left.
 
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
 
 ## Task 1: Refine the Role of the Customer Agent
 

@@ -30,6 +30,8 @@ GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO <USER>;
 ```
 Replace _`USER`_ with your user name.
 
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
+
 ## Task 1: Query the Latest Team Processing Details
 
 You are building a quick debugging query that shows a readable timeline of a conversation: team, agent, task, prompt, and final response.
