@@ -1,10 +1,10 @@
-# ADW Support for Multiple Languages
+# Autonomous AI Database Support for Multiple Languages
 
 In this workshop, you will learn about the capabilities of Oracle Autonomous AI Lakehouse to support multiple languages. You will also identify some of the available and related LiveLabs workshops.
 
 ## Introduction
 
-Oracle Autonomous AI Lakehouse (LH) is an exceptional polyglot system that offers an array of advanced capabilities, which can be seamlessly extended to process data lakes. With ADW, you can harness the power of SQL, Python, R, Graph, Spatial, JSON, and REST to streamline and optimize your data lake workflows.
+Oracle Autonomous AI Lakehouse (LH) is an exceptional polyglot system that offers an array of advanced capabilities, which can be seamlessly extended to process data lakes. With Autonomous AI Database, you can harness the power of SQL, Python, R, Graph, Spatial, JSON, and REST to streamline and optimize your data lake workflows.
 
 Estimated Time: 10 minutes
 
@@ -22,7 +22,7 @@ In this lab, you will learn how to:
 
 ## Task 1: Oracle Autonomous AI Lakehouse SQL Support
 
-ADW's SQL capability allows you to efficiently manipulate and query data within your data lake, extracting valuable insights and performing complex analytics. Whether you're aggregating data, joining tables, or filtering records, ADW's SQL power can be extended to your data lake, enhancing its processing capabilities.
+Autonomous AI Database's SQL capability allows you to efficiently manipulate and query data within your data lake, extracting valuable insights and performing complex analytics. Whether you're aggregating data, joining tables, or filtering records, Autonomous AI Database's SQL power can be extended to your data lake, enhancing its processing capabilities.
 
 To learn how to leverage SQL in Oracle Autonomous AI Lakehouse for data lake processing, see **Lab 2: Introduction to Oracle Machine Learning for SQL** in the [Oracle Machine Learning Fundamentals on Oracle Autonomous AI Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=922) LiveLabs workshop.
 
@@ -40,7 +40,7 @@ To learn how to extend R's capabilities to your data lake, enabling more compreh
 
 ## Task 4: Oracle Autonomous AI Lakehouse Graph Support
 
-Oracle Autonomous AI Lakehouse's Graph capability is invaluable for analyzing complex relationships within your data lake. By utilizing graph algorithms and functions, you can uncover intricate connections and patterns, such as social networks or supply chain dependencies. Extend the power of graph analytics from ADW to your data lake to gain deeper insights into your data.
+Oracle Autonomous AI Lakehouse's Graph capability is invaluable for analyzing complex relationships within your data lake. By utilizing graph algorithms and functions, you can uncover intricate connections and patterns, such as social networks or supply chain dependencies. Extend the power of graph analytics from Autonomous AI Database to your data lake to gain deeper insights into your data.
 
 To learn how to leverage graph capabilities in your data lake workflows, see the [Get Started with Graph Studio on Oracle Autonomous AI Database](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=758) LiveLabs workshop.
 
@@ -52,13 +52,13 @@ To learn how to leverage spatial capabilities in your data lake, see the [How to
 
 ## Task 6: Oracle Autonomous AI Lakehouse JSON Support
 
-Oracle Autonomous AI Lakehouse's JSON capability allows you to seamlessly work with structured and semi-structured data formats within your data lake. Whether you're dealing with complex nested JSON structures or simple key-value pairs, Oracle Autonomous AI Lakehouse provides the necessary tools and functions to efficiently parse, query, and transform JSON data. By extending the power of JSON processing from ADW to your data lake, you can unlock the potential of this versatile data format.
+Oracle Autonomous AI Lakehouse's JSON capability allows you to seamlessly work with structured and semi-structured data formats within your data lake. Whether you're dealing with complex nested JSON structures or simple key-value pairs, Oracle Autonomous AI Lakehouse provides the necessary tools and functions to efficiently parse, query, and transform JSON data. By extending the power of JSON processing from Autonomous AI Database to your data lake, you can unlock the potential of this versatile data format.
 
 To learn more about JSON, see the [JSON in Oracle Database 19c](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=638) LiveLabs workshop.
 
 ## Task 7: Oracle Autonomous AI Lakehouse REST Support
 
-Oracle Autonomous AI Lakehouse's REST interface enables you to interact programmatically with ADW using HTTP requests. This interface allows for seamless integration with external systems and workflows, providing flexibility and enabling automation. By extending the power of REST from ADW to your data lake, you can leverage the REST interface to access, query, and manage data with ease.
+Oracle Autonomous AI Lakehouse's REST interface enables you to interact programmatically with Autonomous AI Database using HTTP requests. This interface allows for seamless integration with external systems and workflows, providing flexibility and enabling automation. By extending the power of REST from Autonomous AI Database to your data lake, you can leverage the REST interface to access, query, and manage data with ease.
 
 To learn more about REST, see the [Modern Application Development with Oracle REST Data Services](https://livelabs.oracle.com/pls/apex/dbpm/r/livelabs/run-workshop?p210_wid=815) LiveLabs workshop.
 
@@ -70,13 +70,13 @@ You may now proceed to the next lab.
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
 ## Acknowledgements
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributors:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2025
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2025 Oracle Corporation.
+Copyright (C) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
