@@ -1,4 +1,4 @@
-# Integrate ADW with AWS Glue Data Catalogs
+# Integrate Autonomous AI Database with AWS Glue Data Catalogs
 
 ## Introduction
 
@@ -29,7 +29,7 @@ This lab requires the completion of the following labs/tasks from the **Contents
 
 ## Task 1: Navigate to the AWS Glue OCI Data Catalog Page
 
-In this task, you will navigate to an AWS Glue Data Catalog instance and explore a database and its tables. In the next task, you will connect to this Glue Data Catalog instance from within ADW and link to some tables to create external tables over those tables.
+In this task, you will navigate to an AWS Glue Data Catalog instance and explore a database and its tables. In the next task, you will connect to this Glue Data Catalog instance from within Autonomous AI Database and link to some tables to create external tables over those tables.
 
 1. Navigate to the **AWS Management Console** page. Copy and paste the following script into your Web browser's address bar, and then click the **ENTER** key on your keyboard.
 
@@ -175,13 +175,13 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, October 2025
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2025 Oracle Corporation.
+Copyright (C) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

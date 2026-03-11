@@ -9,8 +9,10 @@ You will practice linking to data from a **private** Object Storage bucket. You 
 
 Estimated Time: 20 minutes
 
+<!-- Probably outdated video
 Watch the video below for a quick walk-through of the lab.
 [](youtube:IPkjI6zd2CU)
+-->
 
 ### Objectives
 
@@ -52,22 +54,22 @@ Create a private Object Storage bucket to store your data. For more information 
 
 1. Navigate back to the Oracle Cloud Console. In your **Run Workshop** browser tab, click the **View Login Info** tab. In your **Reservation Information** panel, click **Launch OCI**.
 
-    ![Click the Launch OCI button.](images/click-launch-oci.png =65%x*)
+    ![Click the Launch OCI button.](images/click-launch-oci-new.png =65%x*)
 
 2. Open the **Navigation** menu in the Oracle Cloud console and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
 3. On the **Buckets** page, select the compartment that was assigned to you where you want to create the bucket from the **Compartment** drop-down list in the **Applied filters** section. Make sure you are in the region that was assigned to you where you will create your bucket.
 
-4. Click **Create Bucket**.
+4. Click **Create bucket**.
 
-5. In the **Create Bucket** panel, specify the following:
+5. In the **Create bucket** panel, specify the following:
     - **Bucket Name:** Enter a meaningful name for the bucket.
     - **Default Storage Tier:** Accept the default **Standard** storage tier. Use this tier for storing frequently accessed data that requires fast and immediate access. For infrequent access, choose the **Archive** storage tier.
     - **Encryption:** Accept the default **Encrypt using Oracle managed keys**.
 
     >**Note:** Bucket names must be unique per tenancy and region.
 
-6. Click **Create** to create the bucket.
+6. Click **Create bucket** to create the bucket.
 
   ![The completed Create Bucket panel is displayed.](./images/create-bucket-panel.png =65%x*)
 
@@ -131,11 +133,11 @@ Upload the **`potential_churners.csv`** file that you downloaded earlier in this
 
 7. Click **Close** to close the **Upload objects** panel. The **Bucket details** page is re-displayed. 
 
-    ![The Upload file is displayed.](./images/bucket-details-page.png =65%x*)
+    ![The Upload file is displayed.](./images/bucket-details-page-new.png =65%x*)
 
 8. Click the **Objects** tab. The newly uploaded file is displayed in the **Objects** section.
 
-    ![The Upload file is displayed.](./images/click-objects-tab.png =65%x*)
+    ![The Upload file is displayed.](./images/click-objects-tab-new.png =65%x*)
 
 <!---
 Note to self. I need to update and include the conditional if for livelabs when I am done updating and testing the freetier
@@ -434,7 +436,7 @@ Now that you are familiar with the arguments that you can use with the script, l
 
 ### **Example 2: Run the Script with the --region and --compartment Arguments**
 
-In this example, we assume that we didn't run example 1. Our **`ADW-Data-Lake`** Oracle Autonomous AI Database instance is in our home region, **`us-ashburn-1`**, in the **`training-adw-compartment`** compartment.
+In this example, we assume that we didn't run example 1. Our **`MY_AI_LAKEHOUSE`** Oracle Autonomous AI Database instance is in our home region, **`us-ashburn-1`**, in the **`training-adw-compartment`** compartment.
 
 1. Run the **`adb-create-cred.sh`** Cloud Shell script with the `--region` and `--compartment` arguments.
 
@@ -558,7 +560,7 @@ If you need to create an **Auth Token/Swift** credential (Oracle recommends the 
 
 8. You can use the panel to select a different credential, compartment, and AI profile. Click the **Data Studio Settings** icon. In the **Data Studio Settings** panel, you can select a different compartment, and then click **Close**.
 
-    ![Change preferences.](images/save-preferences.png =65%x*)
+    ![Change preferences.](images/save-preferences-new.png =65%x*)
 
     The Cloud Locations and buckets that are available in the selected compartment are displayed.
 
@@ -572,15 +574,15 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributors:**
     * Alexey Filanovskiy, Senior Principal Product Manager
     * Jameson White, Principal Software Engineer
-* **Last Updated By/Date:** Lauran K. Serhal, October 2025
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2025 Oracle Corporation.
+Copyright (C) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

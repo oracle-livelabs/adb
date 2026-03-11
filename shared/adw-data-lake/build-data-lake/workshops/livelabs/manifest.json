@@ -14,7 +14,7 @@
         {    
             "title": "Introduction",
             "type":"freetier",
-            "description": "Introduction to Oracle Cloud Infrastructure Data Catalog.",
+            "description": "Introduction",
             "filename": "./../../introduction/introduction.md"
         },
         {
@@ -22,22 +22,22 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 1: Review the Workshop Environment (Optional)",
-            "type":"livelabs",
-            "description": "This lab walks you through the required and optional tasks to setup your workshop environment.",
-            "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
-        },
-        {
-            "title": "Lab 2: Load Local Data",
+            "title": "Lab 1: Load Local Data",
             "type":"livelabs",
             "description": "This lab walks you through how to load local data into your ADW instance.",
             "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 3: Analyze Data with Table AI Assist and ADB Excel Add-in",
-            "type":"freetier",
+            "title": "Lab 3: Analyze Data with Table AI Assist",
+            "type":"livelabs",
             "description": "This lab walks you through how to use the Table AI Assist Tool.",
             "filename": "./../../table-ai-assist/table-ai-assist.md"
+        },
+        {
+            "title": "Lab 4: Analyze Data with the Excel Add-in",
+            "type":"livelabs",
+            "description": "This lab walks you through how to use the Excel Add-in tool.",
+            "filename": "./../../adb-excel-addin/adb-excel-addin.md"
         },
         {
             "title": "Lab 4: Load and Analyze JSON Data",
@@ -88,9 +88,9 @@
             "filename": "./../../oracle-data-provider/oracle-data-provider.md"
         },
         {
-            "title": "Lab 12: Integrate ADW with AWS Glue Data Catalogs",
+            "title": "Lab 12: Integrate AI Lakehouse with AWS Glue Data Catalog",
             "type":"livelabs",
-            "description": "This lab shows ADW integration with AWS Data Catalogs.",
+            "description": "This lab shows AI Lakehouse integration with AWS Data Catalog.",
             "filename": "./../../adw-aws-integrate/adw-aws-integrate.md"
         },
         {
@@ -100,7 +100,7 @@
             "filename": "./../../query-performance/query-performance.md"
         },
         {
-            "title": "Lab 14: ADW Multi-language Support",
+            "title": "Lab 14: AI Lakehouse Multi-language Support",
             "type":"livelabs",
             "description": "This lab shows you how ADW supports multiple languages",
             "filename": "./../../adw-multi-language/adw-multi-language.md"

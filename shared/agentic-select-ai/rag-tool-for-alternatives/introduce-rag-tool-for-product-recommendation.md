@@ -47,6 +47,8 @@ In this lab, you will:
 
 This lab requires completion of the previous labs in the **Contents** menu on the left.
 
+> Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
+
 ## Task 1: Create a profile for RAG
 Define an AI Profile that has your LLM and database objects and is ready to use RAG once a vector index exists.
 
@@ -60,7 +62,6 @@ Define an AI Profile that has your LLM and database objects and is ready to use 
 begin
 DBMS_CLOUD.drop_credential(credential_name => 'AI_CREDENTIAL');
 EXCEPTION WHEN OTHERS THEN NULL; END;
-end;
 /
 BEGIN
 DBMS_CLOUD.create_credential(

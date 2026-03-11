@@ -59,46 +59,46 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 4. In the **Create Credential** panel, specify the following:
 
     * **Credential Name:** Enter `table_ai_assist_cred`.
-    * **Cloud Service:** Accept the default value, `Oracle`.
-    * **OCI Create Credential Method:** Accept the default selection, `Create using OCI Cloud Shell`.
+    * **Description:** Enter an optional description.
+    * **Credential Type:** Accept the default selection, `Oracle Cloud Infrastructure Cloud Shell`.
 
 5. The **Run the script as shown in the OCI Cloud Shell via the launch button below** field contains the script that you will run in OCI Cloud Shell to create your OCI credential. This script already has all of your information such as your chosen credential name, region, compartment's OCID, and your database name. Click **Copy Script to Clipboard and Launch Cloud Shell** to launch the OCI Cloud Shell where you will paste and run the script.
 
-    ![Click Create Credential.](./images/click-copy-script.png =60%x*)
+    ![Click Create Credential.](./images/click-copy-script-new.png =60%x*)
 
 6. The **Cloud Shell** window is displayed. It could take a minute or so for it to set up your Cloud Shell home machine and directory and connect to the directory. When the set up is complete, the **Cloud Shell** home directory is displayed.
 
-    ![Cloud Shell home directory.](./images/cloud-shell-home.png " ")
+    ![Cloud Shell home directory.](./images/cloud-shell-home-new.png " ")
 
 7. Right-click the mouse and paste the script that you copied from the earlier step on the command line prompt, and then press [Enter].
 
-    ![Run the script.](./images/run-script.png " ")
+    ![Run the script.](./images/run-script-new.png " ")
 
 8. Read the displayed informational messages. Next, you are prompted whether or not you want you want to reuse your existing API key and fingerprint, if any. In this example, we entered **no**. Read the warning. When you are prompted to confirm your selection, enter **yes**.
 
-    ![Reuse existing API keys and fingerprint?](./images/use-replace-api-key-fingerprint.png " ")
+    ![Reuse existing API keys and fingerprint?](./images/use-replace-api-key-fingerprint-new.png " ")
 
 9. Your public API key, fingerprint, native credential SQL, and JSON files are created. 
 
-    ![Credentials files are created.](./images/credentials-files-created.png " ")
+    ![Credentials files are created.](./images/credentials-files-created-new.png " ")
 
-10. Next, you are prompted if you want to generate the AI profile script. Enter **yes**. In our example, we chose option **6**, **`Meta Llama 3.1-405b-instruct`**.
+10. Next, you are prompted if you want to generate the AI profile script. Enter **yes**. In our example, we chose option **10**, **`Meta Llama 3.1-405b-instruct`**.
 
-    ![Generate AI profile script?](./images/generate-ai-profile-script.png " ")
+    ![Generate AI profile script?](./images/generate-ai-profile-script-new.png " ")
 
 11. A verification required prompt is displayed. Enter **yes**.
 
-    ![Verification required?](./images/verification-required.png " ")
+    ![Verification required?](./images/verification-required-new.png " ")
 
-12. Since we chose option 6, `Meta Llama 3.1`, an acceptable use policy prompt is displayed. Enter **yes** for the Submit to accept the terms of the License Agreement. Your Generative AI SQL file is created. 
+12. Since we chose option 10, `Meta Llama 3.1`, an acceptable use policy prompt is displayed. Enter **yes** for the Submit to accept the terms of the License Agreement. Your Generative AI SQL file is created. 
 
     >**Note:** If you chose another option, follow the prompts.
 
-    ![Acceptable use policy](./images/acceptable-use-policy.png " ")
+    ![Acceptable use policy](./images/acceptable-use-policy-new.png " ")
 
 13. A proceed to generate the Spreadsheet add-ins IAM connection is displayed. Enter **no**.
 
-14. Next, you are prompted if you want to run the created credential scripts on your Oracle Autonomous AI Database. Enter **yes**. We chose not to reuse our existing wallet file. Confirm your choice to replace the Wallet file, enter **yes**. 
+14. Next, you are prompted if you want to run the created credential scripts on your Oracle Autonomous AI Database. Enter **yes**. If you have a wallet file, you can reuse or create a new one. 
 
 15. When prompted, enter (and confirm, if prompted) your **`admin`** user password. The following are created for you:
     - **`table_ai_assist_cred`** OCI credential
@@ -106,13 +106,13 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
  The script exits. The command prompt is displayed.
 
-    ![Enter admin password.](./images/script-done.png " ")
+    ![Enter admin password.](./images/script-done-new.png " ")
 
-15. Click the **X** control to close the Cloud Shell window, and then click **Exit** when prompted.
+16. Click the **X** control to close the Cloud Shell window, and then click **Exit** when prompted.
 
     ![OCI credential created.](./images/click-x.png " ")
 
-16. The **Create Credential** page is re-displayed. Click **Close**.
+18. The **Create Credential** page is re-displayed. Click **Close**.
 
     ![Close Create Credential page.](./images/close-credential-page.png =60%x*)
 
@@ -122,29 +122,27 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
 17. On the Data Load page, click **Settings**.
 
-    ![Click Settings on the Load Data page.](./images/click-settings-2.png =60%x*)
+19. In the Wizard, click the **Cloud Services** tab. The newly created OCI credential is displayed (if not, select it from the drop-down list). Click **Check Object Store Access** to check if you have access to the object store.
 
-18. In the Wizard, click the **Cloud Services** tab. The newly created OCI credential is displayed (if not, select it from the drop-down list). Click **Check Object Store Access** to check if you have access to the object store.
+    ![Click object store access.](./images/click-object-store-access-new.png =60%x*)
 
-    ![Click object store access.](./images/click-object-store-access.png =60%x*)
-
-19. The **Policy Check** dialog box is displayed which displays whether or not you have access to the OCI, AWS, and Azure buckets. In this example, you have access to only OCI buckets since you only created an OCI credential. Click **Close**.
+20. The **Policy Check** dialog box is displayed which displays whether or not you have access to the OCI, AWS, and Azure buckets. In this example, you have access to only OCI buckets since you only created an OCI credential. Click **Close**.
 
     ![The OCI list buckets dialog box is displayed.](./images/oci-list-buckets.png =60%x*)
 
-20. Click **Check Cloud Service Access** to check on the cloud services policy.
+21. Click **Check Cloud Service Access** to check on the cloud services policy.
 
-    ![Click Check Cloud Service Access.](./images/click-cloud-service-access.png =60%x*)
+    ![Click Check Cloud Service Access.](./images/click-cloud-service-access-new.png =60%x*)
 
     The **Policy Check** dialog box is displayed. The Data Studio tool checks if the Data you load follows and can access the policies listed and that there are no errors. For more information about the Cloud Services Access, see the [Data Studio Settings](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/data-preferences.html#GUID-7FCF3C9A-1889-4476-85C0-A55550CF5692) documentation. Click **Close**.
 
     ![The Policy Check dialog box is displayed.](images/policy-check-dialog.png =60%x*)
 
-21. Click the **AI Profile** wizard tab. The **AI Profile** page is displayed. The **`AI_PROFILE_META`** Generative AI profile that was created by the Cloud Shell script is displayed. Click **Close**.
+22. Click the **AI Profile** wizard tab. The **AI Profile** page is displayed. The **`AI_PROFILE_META`** Generative AI profile that was created by the Cloud Shell script is displayed. Click **Close**.
 
-    ![The AI Profile page is displayed.](images/llama-ai-profile.png =65%x*)
+    ![The AI Profile page is displayed.](images/llama-ai-profile-new.png =65%x*)
 
-22. The **Table AI Assist** page is re-displayed. Notice the earlier message about `No AI Profile Found` is no longer displayed since you just created one.
+23. The **Table AI Assist** page is re-displayed. Notice the earlier message about `No AI Profile Found` is no longer displayed since you just created one.
 
     ![Table AI Assist page is re-displayed.](./images/click-settings-3.png " ")
 
@@ -154,29 +152,20 @@ In this task, you will use the Data Studio **Settings** on the Data Studio tool 
 
 Now that you have created an OCI credential, you can create more AI profiles.
 
-1. Click the **AI Profile** wizard tab. The **AI Profile** page is displayed.
+1. Click the **AI Profile** wizard tab. The **AI Profile** page is displayed. Click the **+** to create a new profile.
 
-    ![The AI Profile page is displayed.](images/ai-profile.png =65%x*)
+    ![The AI Profile page is displayed.](images/ai-profile-new.png =65%x*)
 
 2. Specify the following:
 
-    * **Profile Option:** Select the **Create Profile** option.
     * **Profile name:** Enter `Table_AI_Profile`.
     * **AI Provider:** Select `OCI` from the drop-down list.
-
-    ![AI provider.](images/select-ai-provider.png =60%x*)
-
     * **AI Model:** Select `meta.llama-3.1-405b-instruct` from the drop-down list.
-
-    ![AI model.](images/select-ai-model.png =60%x*)
-
     * **Credential:** Select the `table_ai_assist_cred` credential that you created from the drop-down list.
 
-    ![OCI credential.](images/click-create-ai-profile-2.png =65%x*)
+        ![OCI credential.](images/click-create-ai-profile-2-new.png =65%x*)
 
 3. Click **Create AI Profile**. A `Successfully created a new AI Profile` message is displayed.
-
-    ![Check AI Access.](./images/check-ai-access-2.png =65%x*)
 
 4. Click **Check AI Access** to confirm that you have access to the selected AI Provider. Click **Close**.
 
@@ -428,11 +417,11 @@ You can access the Data Analysis page from the Database Actions Launchpad. Click
     * Ekrem Soylemez, Vice President
     * Manisha Mati, Principal User Assistance Developer
     * Yossi Cohen, Principal Software Engineer
-* **Last Updated By/Date:** Lauran K. Serhal, November 2025
+* **Last Updated By/Date:** Lauran K. Serhal, February 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 
-Copyright (C) 2025 Oracle Corporation.
+Copyright (C) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3

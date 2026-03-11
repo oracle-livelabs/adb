@@ -41,9 +41,9 @@
             "filename": "./../../table-ai-assist/table-ai-assist.md"
         },
         {
-            "title": "Lab 4: Analyze Data with ADB Excel Add-in",
+            "title": "Lab 4: Analyze Data with the Excel Add-in",
             "type":"freetier",
-            "description": "This lab walks you through how to use the ADB Excel Add-in tool.",
+            "description": "This lab walks you through how to use the Excel Add-in tool.",
             "filename": "./../../adb-excel-addin/adb-excel-addin.md"
         },
         {
@@ -95,9 +95,9 @@
             "filename": "./../../oracle-data-provider/oracle-data-provider.md"
         },
         {
-            "title": "Lab 13: Integrate ADW with AWS Glue Data Catalogs",
+            "title": "Lab 13: Integrate AI Lakehouse with AWS Glue Data Catalog",
             "type":"freetier",
-            "description": "This lab shows ADW integration with AWS Data Catalogs.",
+            "description": "This lab shows ADW integration with AWS Data Catalog.",
             "filename": "./../../adw-aws-integrate/adw-aws-integrate.md"
         },
         {
@@ -107,9 +107,9 @@
             "filename": "./../../query-performance/query-performance.md"
         },
         {
-            "title": "Lab 15: ADW Multi-language Support",
+            "title": "Lab 15: AI Lakehouse Multi-language Support",
             "type":"freetier",
-            "description": "This lab shows you how ADW supports multiple languages",
+            "description": "This lab shows you how AI Lakehouse supports multiple languages",
             "filename": "./../../adw-multi-language/adw-multi-language.md"
         },
         {
