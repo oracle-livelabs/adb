@@ -11,7 +11,7 @@ Estimated Time: 5 minutes
 In this lab, you will:
 
 * Navigate to the SQL Worksheet.
-* Use the **`EXPORT_DATA`** procedure in the **`DBMS_CLOUD`** PL/SQL package to export a table from your ADW instance to your Oracle Object Storage bucket.
+* Use the **`EXPORT_DATA`** procedure in the **`DBMS_CLOUD`** PL/SQL package to export a table from your Autonomous AI Database instance to your Oracle Object Storage bucket.
 * Navigate to the Object Storage bucket to view the newly exported `Parquet` file.
 
 ### Prerequisites
@@ -31,18 +31,18 @@ If your SQL Worksheet is still displayed from the previous task, skip over to **
 2. Open the **Navigation** menu and click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
 
 <if type="livelabs">
-3. On the **Autonomous AI Databases** page, click your **DB-DCAT** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **`MY_AI_LAKEHOUSE`** ADB instance.
 </if>
 
 <if type="freetier">
-3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **`MY_AI_LAKEHOUSE`** ADB instance.
 </if>
 
 4. On the **Autonomous AI Database details** page, click the **Database actions** drop-down list, and then click **SQL**.
 
 ## Task 2: Export a Table as a Parquet File to an Object Storage Bucket
 
-1. Export the **`PIZZA_LOCATIONS`** table from your ADW instance to a **`Parquet`** file in a private (or public) Object Storage bucket of your choice. Provide the location of your OCI Object Storage bucket using the Native URI format as follows. _**Note:** You need to use your own **`region`** name, **`tenancy (namespace)`** name, **`bucket`** name, and the **`filename`** that will be created_.
+1. Export the **`PIZZA_LOCATIONS`** table from your ADB instance to a **`Parquet`** file in a private (or public) Object Storage bucket of your choice. Provide the location of your OCI Object Storage bucket using the Native URI format as follows. _**Note:** You need to use your own **`region`** name, **`tenancy (namespace)`** name, **`bucket`** name, and the **`filename`** that will be created_.
 
     ```
     https://objectstorage.region.oraclecloud.com/n/namespace-string/b/bucket/o/filename
@@ -67,7 +67,7 @@ If your SQL Worksheet is still displayed from the previous task, skip over to **
 
     It can take up to a minute or so for the PL/SQL procedure to complete successfully.
 
-    ![List the files in the sales_sample folder.](./images/export-table.png " ")
+    ![List the files in the sales_sample folder.](./images/export-table-new.png " ")
 
     > **Note:** If your target Object Storage bucket is **private** like in our example, then you must use **`credential_name => OBJ_STORAGE_CRED`** argument. If you use a **public** Object Storage bucket, the argument is optional.
 
@@ -102,9 +102,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 

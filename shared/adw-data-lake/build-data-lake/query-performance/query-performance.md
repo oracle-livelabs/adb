@@ -368,9 +368,9 @@ A bunch of sales data-related files landed in our Oracle Object Storage bucket, 
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 

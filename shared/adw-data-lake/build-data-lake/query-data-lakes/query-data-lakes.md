@@ -17,7 +17,7 @@ In this lab, we will show you how to do the following:
 * Create a new table that joins the three created tables to show customers data and churners. The tables data originated from the OCI and Amazon S3 buckets.
 
 ### Prerequisites
-Access to an ADW and Data Catalog instances, if you choose to perform the steps.
+Access to an Autonomous AI Database and Data Catalog instances, if you choose to perform the steps.
 
 >**Note:**
 _**This is not a hands-on lab; instead, it is a demo of how to query data from different clouds: OCI Object Storage and Amazon S3 buckets.**_
@@ -192,9 +192,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 

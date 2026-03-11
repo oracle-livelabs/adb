@@ -23,43 +23,14 @@ In this lab, you will:
 
 ### Prerequisites
 
-This lab requires the completion of **Lab 1: Set up the Workshop Environment > Task 2: Provision the Autonomous AI Database Instance**, from the **Contents** menu on the left.
+This lab requires the completion of the previous labs from the **Contents** menu on the left.
 
 <!-- Begin liveLabs section of task -->
 
 <if type="livelabs">
 
-## Task 1: Launch the Workshop and Log in to the Oracle Cloud Console
+_You should already have launched the workshop and logged in to the Console using the instructions in the **Get Started with LiveLabs** lab_
 
-_If you already launched the workshop and logged in to the Console using the instructions in the **Get Started with LiveLabs** lab, you can skip this task and proceed to **Task 2**; otherwise, start with **step 1** below._
-
-1. On the LiveLabs Home page, click the **My Reservations** tab to display your reserved workshop on the **My Reservations** page. To start the workshop, click the **Launch Workshop** link.
-
-    ![The My Reservations tab and the Launch Workshop link for a sample workshop are highlighted.](./images/my-reservations.png " ")
-
-    The workshop is displayed in a new tab named **Run Workshop - Build a Data Lake with Autonomous AI Database**. Click the **View Login Info** link in the banner.
-
-    ![Click View Login Info.](./images/ll-view-login-info.png " ")
-
-     The **Reservation Information** panel is displayed. This displays important information that you will need throughout this workshop.
-
-    ![The Workshop is displayed.](./images/ll-reservation-information.png " ")
-
-2. Click **Copy Password** to copy your initial password, and then click **Launch OCI**.
-
-3. On the Sign In page, in the **Oracle Cloud Infrastructure Direct Sign-In** section, your assigned username is already displayed in the **User Name** field. Paste your password in the **Password** field, and then click **Sign In**.
-
-    ![The Oracle Cloud Infrastructure Direct Sign-In section with the populated username and password is displayed. The Sign In button is highlighted.](./images/ll-signin.png " ")
-
-4. The **Change Password** dialog box is displayed. Paste your assigned password that you copied in the **Current Password**. Enter a new password in the **New Password** and **Confirm New Password** fields, and then click **Save New Password**. Make a note of your new password as you will need it in this workshop.
-
-    ![The completed Change Password dialog box is displayed. The Save New Password button is highlighted.](./images/ll-change-password.png " ")
-
-    The **Oracle Cloud Console** Home page is displayed. Make sure that the displayed region is the same that was assigned to you in the **Reservation Information** panel of the **Run Workshop *workshop-name*** page, **Canada Southeast (Toronto)** in this example.
-
-    ![The Oracle Cloud Console Home page is displayed with the LiveLabs assigned region highlighted.](images/console-home.png)
-
-    >**Note:** Bookmark the workshop page for quicker access.
 </if>
 
 <!-- Begin freetier section of the task -->
@@ -71,7 +42,7 @@ _If you already launched the workshop and logged in to the Console using the ins
 
 </if>
 
-## Task 2: Download .csv Files from the MovieStream Data Lake to your Local Computer
+## Task 1: Download .csv Files from the MovieStream Data Lake to your Local Computer
 
 Oracle MovieStream is a fictitious movie streaming service - similar to those that to which you currently subscribe. MovieStream is storing (and linking to) their data across Oracle Object Storage and Oracle Autonomous AI Database. Data is captured from various sources into a landing zone in object storage. This data is then processed (cleansed, transformed and optimized) and stored in a gold zone on object storage. Once the data is curated, it is loaded into an Oracle Autonomous AI Database where it is analyzed by many (and varied) members of the user community.
 
@@ -82,12 +53,10 @@ Oracle MovieStream is a fictitious movie streaming service - similar to those th
 
 2. Close the Excel files and make a note of your folder location as you will use the two downloaded files in a later task in this lab.
 
-## Task 3: Navigate to the Data Load Page
+## Task 2: Navigate to the Data Load Page
 
 <if type="livelabs">
-Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation. To log in to the Console, click the **Launch OCI** button in the **Reservation Information** dialog box, and then follow the prompts to reset your assigned password. 
-
- ![The Reservation Information dialog box.](./images/ll-reservation-information.png =75%x*)
+Your green button reservation includes an ADB instance. You can find the required credentials in the **Reservation Information** dialog box for your reservation.
 </if>
 
 1. Log in to the **Oracle Cloud Console**, if you are not already logged in; otherwise, skip to step 4.
@@ -95,72 +64,41 @@ Your green button reservation includes an ADB instance. You can find the require
 2. Open the **Navigation** menu and click **Oracle AI Database**. Under **Oracle AI Database**, click **Autonomous AI Database**.
 
 <if type="livelabs">
-    > **_Important:** At the time of updating this workshop (July 15, 2025), there was a known issue with some OCI regions and using the sandbox environment reservations (the green button). The old Autonomous Databases UI (brown) page is displayed instead of the new Redwood UI page. If the new Redwood UI page is displayed in your environment, please ignore this note and continue with the note about the **Couldn't load data** error below._
-
-    ![The old Autonomous Databases page.](images/old-adb-page.png =75%x*)
-
-    To correct this issue, simply click **Reload this page** icon in your browser. The newly designed **Autonomous Databases** page is displayed. 
-    
+        
     >**Note:** The **Couldn't load data** error on the page is due to being in the wrong compartment. You will learn how to navigate to your assigned compartment next. 
 
-    ![Forbidden error.](images/forbidden-error.png =75%x*)
+    ![Forbidden error.](images/forbidden-error-new.png =70%x*)
 
     OCI resources are organized into compartments. To navigate to your assigned sandbox reservation compartment, click the **Compartment** field. Next, enter your assigned compartment name (or partial name) from the **Reservation Information** page in the **Compartment** text box. Once your assigned compartment is displayed in the drop-down list under the **`Livelabs`** node, click it.
     
-    ![Select your assigned compartment.](images/ll-select-compartment.png =65%x*)
+    ![Select your assigned compartment.](images/ll-select-compartment-new.png =70%x*)
 
-    >**Note:** For more details on finding your assigned resources in your reservation such as the username, password, compartment and so on, review the **Get Started with LiveLabs** lab in the Navigation menu on the left.
-
-    
+    >**Note:** For more details on finding your assigned resources in your reservation such as the username, password, compartment and so on, review the **Get Started with LiveLabs** lab in the Navigation menu on the left. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database name are displayed.
 </if>
 
-3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
+3. On the **Autonomous AI Databases** page, click your **`MY_AI_LAKEHOUSE`** ADB instance.
 
     <if type="freetier">
-    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page.png =75%x*)
+    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page-new.png =75%x*)
     </if>
 
     <if type="livelabs">
-    ![The Autonomous AI Database is displayed and highlighted.](./images/ll-adb-page.png =75%x*)
-
-    >**Note:** Since you are using a Sandbox environment, an ADB instance was created for you. To view the ADB instance details, click the **View Login Info** link to display the **Reservation Information** dialog box. The database admin password, database name, and database display name are displayed.
-
+    ![The Autonomous AI Database is displayed and highlighted.](./images/ll-adb-page-new.png =70%x*)
     </if>
 
-4. On the **ADW-Data-Lake** Autonomous AI Database page, click the **Database actions** drop-down list, and then click **Data Load**.
+4. On the **`MY_AI_LAKEHOUSE`** page, click the **Database actions** drop-down list, and then click **Data Load**.
 
-    ![On the partial Autonomous AI Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
+    ![On the partial Autonomous AI Database Details page, the Database Actions button is highlighted.](./images/click-db-actions-new.png " ")
 
 5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
 
-    ![The Data Load Home page is displayed.](./images/data-load-home.png " ")
+    ![The Data Load Home page is displayed.](./images/data-load-home.png =70%x*)
 
     >**Note:** You can close the **No Credential and AI Profile Found** section.
 
 </if>
 
-<if type="freetier">
-
-1. Log in to the **Oracle Cloud Console**, if you are not already logged as the Cloud Administrator.
-
-2. Open the **Navigation** menu and click **Oracle Database**. Under **Oracle Database**, click **Autonomous AI Database**.
-
-3. On the **Autonomous AI Databases** page, click your **ADW-Data-Lake** ADB instance.
-    ![The Autonomous AI Database is displayed and highlighted.](./images/adb-page.png " ")
-
-4. On the **Autonomous AI Database details** page, click the **Database actions** drop-down list, and then click **Data Load**.
-
-    ![On the partial Autonomous AI Database Details page, the Database Actions button is highlighted.](./images/click-db-actions.png " ")
-
-5. The **Data Load** Home page is displayed in a _**new tab in your browser**_.
-
-    ![The Data Load Home page is displayed.](./images/data-load-home.png " ")
-
-6. Close the **No Credential and AI Profile Found** section. Click the **X** control.
-
-</if>
-
-## Task 4: Load Data from the CSV Files Using the LOAD DATA Tool
+## Task 3: Load Data from the CSV Files Using the LOAD DATA Tool
 
 In this task you will load the two .csv files that you downloaded earlier into two different tables in your Autonomous AI Database instance.
 
@@ -168,47 +106,47 @@ In this task you will load the two .csv files that you downloaded earlier into t
 
 2. On the **Load Data** page, the **Local File** button is selected by default. In the **Load data from local files** section, you can either drag and drop files to upload, or click **Select Files** to select the files to upload. Click **Select Files**.
 
-    ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png " ")
+    ![Select LOAD DATA and LOCAL FILE and click Next.](./images/select-load-data-and-local-file.png =70%x*)
 
 3. In the **Open** dialog box, navigate to the directory that contains the two **.csv** files that you downloaded earlier. Select the **`customer_segment.csv`** and **`customer_extension.csv`** files, and then click **Open**.
 
-    ![Select the two files.](./images/open-dialog-box.png " ")
+    ![Select the two files.](./images/open-dialog-box.png =70%x*)
 
     >**Note:** If you have an issue uploading both files simultaneously, you can select one file at a time. Select the first downloaded file using step 3. When the file is uploaded, click the **Select Files** icon on the **Load Data** page, and then select the second file.
 
 4. When the upload is complete, you will make a small change to the default table name that will be created for the **`customer-extension.csv`** file. Click the **Settings** (pencil) icon to the right of **`customer-extension.csv`**.
 
-    ![Update the data load job settings.](./images/click-settings.png " ")
+    ![Update the data load job settings.](./images/click-settings.png =70%x*)
 
 5. The **Load Data from Local File customer-extension.csv** page is displayed. Take a moment to examine the settings. The tool makes intelligent choices for target table name and its properties. Since this is an initial load, accept the default option of **Create Table** to create the target table in your Autonomous AI Database. In the mappings section, you can change the target column names, data types, and length/precision.
 
-    ![Examine the editor of the data load job.](./images/preview-table.png " ")
+    ![Examine the editor of the data load job.](./images/preview-table.png =70%x*)
 
 6. In the **Name** field, change the table name that will be created from **`CUSTOMEREXTENSION`** to **`CUSTOMER_EXTENSION`**. Click **Close** in the lower right corner of the page.
 
-    ![Examine the editor of the data load job.](./images/change-table-name.png " ")
+    ![Examine the editor of the data load job.](./images/change-table-name.png =70%x*)
 
 7. Click **Start**. A **Start Load from Local Files** confirmation dialog box is displayed. Click **Run**.
 
-    ![Click Start to run the data load.](./images/click-start.png " ")
+    ![Click Start to run the data load.](./images/click-start.png =70%x*)
 
-    ![Click run.](./images/click-run.png =65%x*)
+    ![Click run.](./images/click-run.png =60%x*)
 
 8. After the load job is completed, make sure that the data load card has the copy icon next to it. You can click the **Report** button for the load job to view a report of total rows processed successfully and failed for the selected table.
 
-    ![The data load icons are displayed.](./images/load-successful.png " ")
+    ![The data load icons are displayed.](./images/load-successful.png =70%x*)
 
 9. You can click a table name to display its data. In this example, click the **ellipsis** icon for the **`CUSTOMER_SEGMENT`** load task to view its settings among other things. Next, click **Table > View Details** from the context menu.
 
-    ![Click customer_segment to display its data.](./images/preview-customer-segment.png " ")
+    ![Click customer_segment to display its data.](./images/preview-customer-segment.png =70%x*)
 
 10. The **Preview** tab is selected by default. This shows the **`CUSTOMER_SEGMENT`** data.
 
-    ![The customer_segment data.](./images/customer-segment-data.png " ")
+    ![The customer_segment data.](./images/customer-segment-data.png =70%x*)
 
 10. When finished, click **Close** to return to the Data Load Dashboard.
 
-    ![Click Close.](./images/data-load-dashboard.png " ")
+    ![Click Close.](./images/data-load-dashboard.png =70%x*)
 
 This completes the lab on loading .csv files from your local computer to new tables in your ADB instance.
 
@@ -221,10 +159,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
-* **Contributors:**
-    * Mike Matthews, Autonomous AI Database Product Management
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
+* **Contributor:** Mike Matthews, Autonomous AI Database Product Management
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 

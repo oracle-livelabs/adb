@@ -22,7 +22,7 @@ In this lab, we will show you how to do the following:
 
 ### Prerequisites
 
-Access to an ADW and AWS Athena if you choose to perform the steps.
+Access to an Autonomous AI Database and AWS Athena if you choose to perform the steps.
 
 ### About Querying Apache Iceberg Tables
 
@@ -174,9 +174,9 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributor:** Alexey Filanovskiy, Senior Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 

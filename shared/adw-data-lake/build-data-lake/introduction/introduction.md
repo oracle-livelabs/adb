@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-The labs in this workshop walk you through all the steps to build a Data Lake using Oracle Autonomous AI Lakehouse (LH), Oracle Object Storage, and Amazon Simple Storage Service (S3).
+The labs in this workshop walk you through all the steps to build a Data Lake using Oracle Autonomous AI Lakehouse, Oracle Object Storage, and Amazon Simple Storage Service (S3).
 
 In the data-driven era, building efficient and scalable data lakes is pivotal for organizations aiming to harness the full potential of their data. Oracle Autonomous AI Lakehouse has made significant strides in this field, offering a unified platform rich with capabilities such as graph analysis, machine learning, spatial processing, JSON support, and in-memory data caching.
 
@@ -57,13 +57,12 @@ You may now proceed to the next lab.
 
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Oracle Cloud Infrastructure Documentation](https://docs.cloud.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm)
-* [What is the difference between a Data Lake, Database, and a Data Warehouse](https://www.oracle.com/a/ocom/docs/database/difference-between-data-lake-data-warehouse.pdf) and the [Oracle Cloud Data Lakehouse LiveLabs Workshop](https://livelabs.oracle.com/pls/apex/f?p=133:100:100470405399556::::SEARCH:lakehouse).
 
 ## Acknowledgements
 
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributor:** Alexey Filanovskiy, Senior Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+* **Last Updated By/Date:** Lauran K. Serhal, March 2026
 
 Data about movies in this workshop were sourced from Wikipedia.
 

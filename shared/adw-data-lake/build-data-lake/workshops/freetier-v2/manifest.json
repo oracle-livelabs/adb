@@ -29,7 +29,7 @@
         "filename": "/common/building-blocks/blocks/adb/provision/provision-data-sharing-lake-block.md"
         },
         {
-        "title": "Lab 2: Query data from OCI Object Storage using Resource Principal in the UI [current & new]",
+        "title": "Lab 2: Query data from OCI Object Storage [current]",
         "type":"freetier",
         "description": "This lab walks you through how to load local data into your ADW instance.",
          "filename": "./../../load-os-data-private/load-os-data-private.md"
