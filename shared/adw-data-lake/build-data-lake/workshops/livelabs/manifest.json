@@ -28,13 +28,13 @@
             "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 3: Analyze Data with Table AI Assist",
+            "title": "Lab 2: Analyze Data with Table AI Assist",
             "type":"livelabs",
             "description": "This lab walks you through how to use the Table AI Assist Tool.",
             "filename": "./../../table-ai-assist/table-ai-assist.md"
         },
         {
-            "title": "Lab 4: Analyze Data with the Excel Add-in",
+            "title": "Lab 3: Analyze Data with the Excel Add-in",
             "type":"livelabs",
             "description": "This lab walks you through how to use the Excel Add-in tool.",
             "filename": "./../../adb-excel-addin/adb-excel-addin.md"
