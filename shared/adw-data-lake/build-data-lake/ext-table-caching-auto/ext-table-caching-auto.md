@@ -166,8 +166,8 @@ Now, let's verify that the database has successfully created an automatic cache 
 ## Learn More
 
 * [External Table Cache overview + automatic caching section](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/improve-application-performance-with-external-table-cache.html)
-* [DBMS_CACHE package reference](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cache-package.html)
-* [ALL_EXTERNAL_TAB_CACHES view reference](https://docs.oracle.com/en/database/oracle/oracle-database/26/refrn/ALL_EXTERNAL_TAB_CACHES.html)
+* [DBMS\_CACHE package reference](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cache-package.html)
+* [ALL\_EXTERNAL\_TAB\_CACHES view reference](https://docs.oracle.com/en/database/oracle/oracle-database/26/refrn/ALL_EXTERNAL_TAB_CACHES.html)
 * [Autonomous Database Release Notes: Automatic Caching for External Tables](https://docs.oracle.com/iaas/releasenotes/autonomous-database-serverless/2025-10-automatic-caching-for-external-tables.htm)
 
 ## Acknowledgements
