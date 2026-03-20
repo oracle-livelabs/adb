@@ -117,7 +117,7 @@ In Lab 5, you subscribed to an example Delta Share. In doing so, you added a cat
     SELECT * 
     FROM OWNER.TABLENAME@CATALOGNAME
     ```
-    
+
     Copy, paste, and run the following example query of the **`NYCTAXI_2019`** table. This returns the average number of passengers who took taxi journeys of over 10 miles in 2019:
 
     >**Note:** The **DEFAULT** clause should be enclosed in double quotes.
@@ -138,6 +138,8 @@ In Lab 5, you subscribed to an example Delta Share. In doing so, you added a cat
 
 ## Task 2: Add an Iceberg catalog
 
+**_Note: This is not a hands-on task, unless you have a Databricks Unity Iceberg catalog to connect to. This task shows how to add and use such a catalog. If you do have an Iceberg catalog in Databricks Unity, you will need the Iceberg catalog URL and a bearer token to connect to it, as well as credentials to enable access to the cloud storage bucket for the Iceberg data._**
+
 We can extend the 'catalog of catalogs' with as many catalogs as we like, and search for and query data in the same way as in Task 1. Catalogs can be added over any of the following:
 
 * Other Autonomous AI Databases
@@ -147,8 +149,6 @@ We can extend the 'catalog of catalogs' with as many catalogs as we like, and se
 * Iceberg Catalogs, such as Snowflake Open Catalog, Databricks Unity Iceberg Catalogs, or Apache Polaris catalogs
 
 In this task, we will show an example of adding an Iceberg catalog from Databricks Unity.
-
-**_Note: This is not a hands-on task, unless you have a Databricks Unity Iceberg catalog to connect to. This task shows how to add and use such a catalog. If you do have an Iceberg catalog in Databricks Unity, you will need the Iceberg catalog URL and a bearer token to connect to it, as well as credentials to enable access to the cloud storage bucket for the Iceberg data._**
 
 1. Enable the Autonomous AI Lakehouse to access the relevant external resources. As user `ADMIN`, copy and run the following example SQL to enable access. Note that this example is typical for an Azure Databricks Unity catalog with Azure Data Lake storage:
 
@@ -189,7 +189,7 @@ In this task, we will show an example of adding an Iceberg catalog from Databric
 
 7. Paste in your Iceberg catalog endpoint from Databricks Unity. This is likely to be in the following format:
 
-https://DATABRICKSADDRESS.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/CATALOGNAME
+    https://DATABRICKSADDRESS.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/CATALOGNAME
 
 >**Note:** It is important to include the catalog name in the URL.
 
