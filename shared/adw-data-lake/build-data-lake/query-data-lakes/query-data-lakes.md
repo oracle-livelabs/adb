@@ -181,8 +181,24 @@ We now have the needed tables to analyze the data and identify the potential cus
     ```
 
     ![Query the potential_churn_customers table .](./images/query-potential_churn_customers.png " ")
+    
+## Task 4: Object Store Authentication Methods
 
-    You may now proceed to the next lab.
+The following table provides links to useful documentation and blogs on Object Store authentication methods.
+
+| Object store | Method | What you provide | Oracle reference |
+|---|---|---|---|
+| OCI Object Storage | Resource Principal | Enable Resource Principal; then use `OCI$RESOURCE_PRINCIPAL` | [Use Resource Principal to Access Oracle Cloud Infrastructure Resources](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/resource-principal-about.html) |
+| OCI Object Storage | Key-based (OCI API signing key) | `user_ocid`, `tenancy_ocid`, `private_key`, `fingerprint` | [The DBMS_CLOUD package](https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_cloud.html) , [Autonomous Database Now Supports Accessing the Object Storage with OCI Native Authentication](https://blogs.oracle.com/datawarehousing/post/autonomous-database-now-supports-accessing-the-object-storage-with-oci-native-authentication) |
+| AWS S3 | Access key / secret key | Access Key ID + Secret Access Key | [The DBMS_CLOUD package](https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_cloud.html) |
+| AWS S3 | Role ARN | `aws_role_arn` (and optional external ID settings) | [Using role Amazon Resource Names (ARNs) to securely access AWS Resources from your Autonomous Database](https://blogs.oracle.com/datawarehousing/post/using-role-amazon-resource-names-arns-to-securely-access-aws-resources-from-your-autonomous-database) |
+| Azure Blob Storage | Storage account key | Storage account name + access key | [The DBMS_CLOUD package](https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_cloud.html) |
+| Azure (workload identity) | Azure service principal | Enable Azure service principal; then use `AZURE$PA` | [How to Easily Access Azure Resources from Your Autonomous Database](https://blogs.oracle.com/datawarehousing/post/how-to-easily-access-azure-resources-from-your-autonomous-database) |
+| Google Cloud Storage | HMAC key (S3-compatible) | HMAC key id + HMAC secret | [DBMS_CLOUD for Access Management](https://docs.oracle.com/en/cloud/paas/autonomous-database/dedicated/adbdh/) |
+| Google Cloud Platform (workload identity) | Google service account | Enable Google service account; then use `GCP$PA` | [Use Google Service Account to Access Google Cloud Platform Resources](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/google-service-account.html) |
+{: title="Object Store Authentication Methods"}
+
+You may now proceed to the next lab.
     
 ## Learn more
 

@@ -1,4 +1,4 @@
-# Analyze Data with Table AI Assist
+# Enhance Data with Table AI Assist
 
 >_**Important: Due to some restrictions in the LiveLabs reservation environment, you can't run the OCI Cloud Shell script that we use in this lab to create an OCI credential and an AI profile. In addition, a reservation can't guarantee a region where OCI GenAI is deployed; therefore, this lab is not a hands-on task; instead, it is a demo. You can still run this lab successfully in your own tenancy.**_
 
