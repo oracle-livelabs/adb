@@ -74,7 +74,7 @@
             "title": "Lab 9: Create and Query External Tables Using Delta Sharing Protocol",
             "type":"freetier",
             "description": "This lab shows you how ADW supports Public Data Share.",
-            "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+            "filename": "./../../use-delta-sharing-v2/use-delta-sharing-v2.md"
         },
         {
             "title": "Lab 10: Query Data Across Multi-Cloud Data Lakes",

@@ -28,7 +28,7 @@
             "filename": "./../../load-local-data/load-local-data.md"
         },
         {
-            "title": "Lab 2: Analyze Data with Table AI Assist",
+            "title": "Lab 2: Enhance Data with Table AI Assist",
             "type":"livelabs",
             "description": "This lab walks you through how to use the Table AI Assist Tool.",
             "filename": "./../../table-ai-assist/table-ai-assist.md"
@@ -67,7 +67,7 @@
             "title": "Lab 8: Create and Query External Tables Using Delta Sharing Protocol",
             "type":"livelabs",
             "description": "This lab shows you how ADW supports Public Data Share.",
-            "filename": "./../../use-delta-sharing/use-delta-sharing.md"
+            "filename": "./../../use-delta-sharing-v2/use-delta-sharing-v2.md"
         },
         {
             "title": "Lab 9: Query Data Across Multi-Cloud Data Lakes",
