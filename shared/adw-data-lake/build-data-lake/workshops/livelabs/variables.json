@@ -1,6 +1,6 @@
 {
-    "db_name": "TrainingADW",
-    "db_display_name":"ADW-Data-Lake",
+    "db_name": "`MYAILAKEHOUSE`",
+    "db_display_name":"`MY_AI_LAKEHOUSE`",
     "db_ocpu": "2 ECPUs",
     "db_storage": "1 TB",
     "db_name_livelabs": "MOVIE+your user id",
