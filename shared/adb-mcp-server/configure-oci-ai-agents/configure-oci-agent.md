@@ -235,15 +235,16 @@ In this task, you connect to the compute instance, update the operating system p
     ```
 
 12. Respond to the prompts as follows:
-   * For `Enter a location for your config [/home/opc/.oci/config]:` press **Enter**
-   * For `Enter a user OCID:` paste your **User OCID**
-   * For `Enter a tenancy OCID:` paste your **Tenancy OCID**
-   * For `Enter the region ID:` enter `<your-gen-ai-region>`
-   * For `Do you want to generate a new API Signing RSA key pair... [y/n]` enter `Y`
-   * For `Enter a directory for your keys to be created [/home/opc/.oci]:` press **Enter**
-   * For `Enter a name for your key [oci_api_key]:` press **Enter**
-   * For `Enter a passphrase for your private Key ("N/A" for no passphrase):` enter `N/A`
-   * For confirmation, enter `N/A` again
+
+       * For `Enter a location for your config [/home/opc/.oci/config]:` press **Enter**
+       * For `Enter a user OCID:` paste your **User OCID**
+       * For `Enter a tenancy OCID:` paste your **Tenancy OCID**
+       * For `Enter the region ID:` enter `<your-gen-ai-region>`
+       * For `Do you want to generate a new API Signing RSA key pair... [y/n]` enter `Y`
+       * For `Enter a directory for your keys to be created [/home/opc/.oci]:` press **Enter**
+       * For `Enter a name for your key [oci_api_key]:` press **Enter**
+       * For `Enter a passphrase for your private Key ("N/A" for no passphrase):` enter `N/A`
+       * For confirmation, enter `N/A` again
 
 13. Run the following command to display the public key that you will add to your OCI user profile.
 
@@ -260,6 +261,7 @@ In this task, you connect to the compute instance, update the operating system p
     ...
     -----END PUBLIC KEY-----
     ```
+
 
 14. In the OCI Console, click your profile icon, click your name or email address, open the **Tokens and Keys** tab, go to **API Keys**, click **Add API Key**, select **Paste a public key**, paste the public key, and click **Add**.
 
