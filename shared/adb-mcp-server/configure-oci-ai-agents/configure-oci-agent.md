@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you configure an end-to-end workflow that connects an Oracle Autonomous AI Database Serverless MCP endpoint with OCI Generative AI Agents by using the Oracle Select AI Agent framework, an OCI Compute instance, OCI CLI authentication, and the OCI Agent Development Kit (ADK). You create the required cloud resources, configure secure access, install the required software, and run a Python sample that lets the agent call tools exposed through the Oracle Autonomous AI Database MCP Server.
+In this lab, you configure an end-to-end workflow that connects an Oracle Autonomous AI Database Serverless MCP endpoint with OCI Generative AI Agents by using the Oracle Select AI Agent tools, an OCI Compute instance, OCI CLI authentication, and the OCI Agent Development Kit (ADK). You create the required cloud resources, configure secure access, install the required software, and run a Python sample that lets the agent call tools exposed through the Oracle Autonomous AI Database MCP Server.
 
-This lab is designed for developers who want to validate how OCI Generative AI Agents can invoke database-backed tools through an MCP server and observe both successful and out-of-domain responses from the agent runtime.
+This lab is designed for developers who want to use OCI Generative AI Agents to invoke Select AI Agent tools through Autonomous AI Database MCP server.
 
 **Estimated Lab Time:** 40 minutes
 
@@ -15,8 +15,8 @@ In this lab, you will:
 * Generate SSH keys and provision an OCI Compute instance
 * Configure OCI CLI API key authentication on the compute instance
 * Install Python 3.12 and the OCI Agent Development Kit
-* Generate a bearer token for the ADBS MCP Server and run a Python client that connects the MCP endpoint to your OCI Generative AI Agent
-* Validate agent responses for database and non-database prompts
+* Generate a bearer token for the Autonomous AI Database MCP Server and run a Python client that connects the MCP endpoint to your OCI Generative AI Agent
+* Validate agent responses for prompts
 
 ### Prerequisites
 
@@ -59,7 +59,7 @@ In this task, you create the OCI Generative AI Agent and capture the agent endpo
 
     ![OCI Generative AI Agent in Active status](./images/agent-active.png)
 
-10. Click the agent name, scroll to the **Endpoints** section, click the three dots next to the endpoint, and then click **Copy OCID**.
+10. Click the agent name, scroll to the **Endpoints** section, click the three dots next to the endpoint, and then click **Copy OCID** or click the endpoint name and copy the OCID.
     ![OCI Generative AI Agent Endpoint OCID](./images/click-agent-endpoint.png)
 
 11. Save the endpoint OCID for later use.
@@ -154,7 +154,7 @@ In this task, you connect to the compute instance, update the operating system p
 2. Optionally, set the keepalive time in seconds.
     ![PuTTY connected to the OCI compute instance as opc](images/putty-keepalive-setting.png)
 
-3. Navigate to Connection -> SSH -> Auth - > Credentials and updload the private key that you generated using puTTYgen.
+3. Navigate to Connection -> SSH -> Auth - > Credentials and upload the private key that you generated using puTTYgen.
     ![Upload private key](images/upload-private-key.png)
 
 4. Save and connect to the compute instance public IP address and log in as the `opc` user.
@@ -263,7 +263,6 @@ In this task, you connect to the compute instance, update the operating system p
 
 14. In the OCI Console, click your profile icon, click your name or email address, open the **Tokens and Keys** tab, go to **API Keys**, click **Add API Key**, select **Paste a public key**, paste the public key, and click **Add**.
 
-    ![OCI Console API Keys page with a pasted public key](images/placeholder.png "Add OCI API Key")
 
 ## Task 5: Install Python 3.12 and Create the ADK Virtual Environment
 
@@ -380,7 +379,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
 
     > **Note:** Do not replace `pip install "oci[adk]"` with `pip install --upgrade pip setuptools wheel`. The upgrade command is optional preparation. `pip install "oci[adk]"` is the required installation step for OCI ADK.
 
-## Task 6: Generate the Bearer Token for the ADBS MCP Server
+## Task 6: Generate the Bearer Token for the Autonomous AI Database MCP Server
 
 In this task, you generate a bearer token for the Autonomous Database MCP endpoint and export it as an environment variable for the Python sample.
 
@@ -389,11 +388,10 @@ In this task, you generate a bearer token for the Autonomous Database MCP endpoi
     The expected output should look similar to:
 
     ```text
-    DB OCID:
-    ocid1.autonomousdatabase.oc1.us-chicago-1.an...
+        ocid1.autonomousdatabase.oc1.us-chicago-1.an...
     ```
 
-2. Run the following command exactly as provided to generate the bearer token.
+2. Run the following command exactly as provided to generate the bearer token. See **Lab 6 -> Task 3**.
 
     ```bash
     <copy>
@@ -408,17 +406,12 @@ In this task, you generate a bearer token for the Autonomous Database MCP endpoi
     </copy>
     ```
 
-    The expected output should look similar to:
-
-    ```text
-    "eyJhb..."
-    ```
-
-3. Run the following command to export the returned token as an environment variable.
+3. Copy and store the `access_token` value in a text editor.
+4. Run the following command to export the returned token as an environment variable.
 
     ```bash
     <copy>
-    export MCP_BEARER_TOKEN="eyJhbG..."
+    export MCP_BEARER_TOKEN="<access_token>"
     </copy>
     ```
 

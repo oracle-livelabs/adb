@@ -21,7 +21,7 @@ async def main():
 
     # Set the remote MCP server endpoint
     params = StreamableHttpParameters(
-        url="https://dataaccess.adb.us-chicago-1.oraclecloudapps.com/adb/mcp/v1/databases/ocid1.autonomousdatabase.oc1.us-chicago-1.anxxeljrknuwtjia3wasmd4u53tej4woivmy3f3fourhh3foafikzum5capa",
+        url="your_mcp_endpoint",
         headers={
             "Authorization": f"Bearer {bearer_token}"
         }
@@ -41,7 +41,7 @@ async def main():
         )
 
         # Replace with your real Agent Endpoint OCID below
-        agent_endpoint_id = "ocid1.genaiagentendpoint.oc1.us-chicago-1.amaaaaaaknuwtjia7lzdzhq5fg33ivldn2tkj6fdsgakbxswfk33ycd52ciq"
+        agent_endpoint_id = "your_agent_ocid"
 
         class InteractiveAgent(Agent):
             async def _handle_required_actions(
