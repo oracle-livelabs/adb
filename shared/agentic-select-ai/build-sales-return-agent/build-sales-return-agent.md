@@ -20,6 +20,8 @@ In this lab, you will:
 
 ### Prerequisites
 
+<if type="tenancy">
+
 [comment]: # (This lab requires completion of the **Get Started** section in the **Contents** menu on the left.)
 - Access to Oracle Machine Learning Notebooks interface.
 - Typical grants to run DBMS\_CLOUD\_AI\_AGENT Package are (run as ADMIN once):
@@ -34,6 +36,13 @@ GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO ADB_USER;
 Replace _`ADB_USER`_ with your user name.
 > Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
 
+</if>
+<if type="sandbox">
+- Access to the LiveLabs reservation for this Workshop.
+</if>
+
+
+
 ## Task 1: Download and Import the Provided Notebook into OML
 
 Oracle provides a ready-to-use OML notebook that walks through the complete setup of the **Sales Return Agent** that includes all required steps to define agents, tools, tasks, teams, and interactions for processing the product return from a customer using Select AI.
@@ -41,24 +50,67 @@ This notebook named **SelectAI4SQL - AI Agents - Sales Return Agent** contains a
 
 In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** OML notebook to your local machine, and then import this notebook into OML. <!--You can import the provided notebook from a local disk or on GitHub-->.
 
-1. Click the button below to download the notebook to your local folder:
+1. Click the button below to download the notebook to a local folder:
 
     <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 <!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+
+<if type="tenancy">
 2. To access the URL for the Oracle Machine Learning sign in page, go to your Autonomous AI Database details page and click **Tool configuration**.
 
-3. Go to the **Oracle Machine Learning user interface** section and click **Copy**. Paste the URL on the browser to sign into Oracle Machine Learning user interface.
+   Go to the **Oracle Machine Learning user interface** section and click **Copy**. Paste the URL on the browser to sign into Oracle Machine Learning user interface.
   ![Access OML User Interface URL](../build-sales-return-agent/images/oml-notebook-url.png)
 
-4. On your Oracle Machine Learning home page, click the top left navigation menu. Click **Notebooks**. Click **Import** and click **File**. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+3. To sign in, write the ADB username and password.  Click **Sign In**.
 
-    ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
+   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
+   
 
-    If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
+</if>
 
-    ![The newly imported notebook is displayed.](../build-sales-return-agent/images/notebook-imported.png " ")
+<if type="sandbox">
+2. To access the URL for the Oracle Machine Learning UI, click on the *View Login Info* on your LiveLabs reservation.
 
-3. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+   ![Click on View Login Info at the top left](../build-sales-return-agent/images/sandbox-view-login-info.png)
+
+   Scroll down in the list of optins on the right. Make sure to click on Button (1) to copy the ADB User password, and then click on Button (2) to go to the Oracle Machine Learning UI.
+   ![Click on ADB User password and Login to OML UI](../build-sales-return-agent/images/sandbox-copy-pass-and-click-url.png)
+
+3. To sign in, write the username **SELECT\_AI\_USER** and paste the copied password.  Click **Sign In**.
+
+   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
+
+</if>
+
+4. From the OML UI Home page, click on **Notebooks**
+   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-oml-home.png) 
+
+5. From the Notebooks listing page, click on **Import** => **File**
+   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-notebooks-import.png) 
+
+<if type="tenancy">
+6. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+
+  ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
+
+  If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
+
+  ![The newly imported notebook is displayed.](../build-sales-return-agent/images/notebook-imported.png " ")
+</if>
+
+<if type="sandbox">
+6. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+
+  ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
+
+  If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
+
+  ![The newly imported notebook is displayed.](../build-sales-return-agent/images/sandbox-notebook-imported.png " ")
+</if>
+
+7. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
+
+  ![The notebook is opened and the editor shown.](../build-sales-return-agent/images/sandbox-notebook-open.png " ")
 
      >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
 
