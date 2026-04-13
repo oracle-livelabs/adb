@@ -4,7 +4,7 @@
 
 In this lab, you configure an end-to-end workflow that connects an Oracle Autonomous AI Database Serverless MCP endpoint with OCI Generative AI Agents by using the Oracle Select AI Agent tools, an OCI Compute instance, OCI CLI authentication, and the OCI Agent Development Kit (ADK). You create the required cloud resources, configure secure access, install the required software, and run a Python sample that lets the agent call tools exposed through the Oracle Autonomous AI Database MCP Server.
 
-This lab is designed for developers who want to use OCI Generative AI Agents to invoke Select AI Agent tools through Autonomous AI Database MCP server.
+This lab is designed for developers who want to use OCI Generative AI Agents to call Select AI Agent tools through Autonomous AI Database MCP server.
 
 **Estimated Lab Time:** 40 minutes
 
@@ -567,7 +567,7 @@ In this task, you create the Python sample file, paste the provided code exactly
     Python 3.12.x
     ```
 
-5. Run the following command to execute the sample Python file.
+5. Type the following command to run the sample Python file.
 
     ```bash
     <copy>
