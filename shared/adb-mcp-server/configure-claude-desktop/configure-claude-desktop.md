@@ -99,7 +99,47 @@ Replace the placeholders with your actual information:
   - {`database-ocid`}: The OCID of your Autonomous AI Database
 
 
-## Task 4: Configure Claude Desktop as an MCP client
+## Task 4: (Optional) Use the MCP Server URL for a Private Endpoint Database
+
+In this task, you identify the correct MCP Server URL format for an Autonomous AI Database that is configured with a **Private Endpoint**.
+
+1. In the OCI Console, open your **Autonomous AI Database** details page and scroll to the **Network** section.
+
+2. Locate the **Private Endpoint URL** for your database. You use this value to identify the `hostname_prefix` required for the MCP Server URL.
+
+    The expected output should look similar to:
+
+    ```text
+    Private Endpoint URL:
+    testhostname01.adb.us-chicago-1.oraclecloud.com
+    ```
+
+3. Identify the `hostname_prefix` from the Private Endpoint URL. In the example, `testhostname01` is the `hostname_prefix`.
+
+
+4. Build the MCP Server URL for the private endpoint database using the following format.
+
+    ```text
+    https://{hostname_prefix}.adb.{region-identifier}.oraclecloudapps.com/adb/mcp/v1/databases/{database-ocid}
+    ```
+
+5. Replace the placeholders with your actual values:
+    * `hostname_prefix`: the value you provided during private endpoint setup, or the value generated automatically by the system
+    * `region-identifier`: the OCI region where your database is deployed
+    * `database-ocid`: the OCID of your Autonomous AI Database instance
+
+6. Verify your completed MCP Server URL.
+
+    The expected output should look similar to:
+
+    ```text
+    https://testhostname01.adb.us-chicago-1.oraclecloudapps.com/adb/mcp/v1/databases/ocid1.autonomousdatabase.oc1.iad.exampleuniqueID
+    ```
+
+
+    > **Note:** For databases configured with a Private Endpoint, the MCP Server URL uses the private hostname format shown above. `hostname_prefix` is either the value you provided during private endpoint setup or the value generated automatically by the system.
+    
+## Task 5: Configure Claude Desktop as an MCP client
 
 You'll update the Claude Desktop configuration so it can connect to the Autonomous AI Database MCP Server. You will also edit a configuration file and provide the MCP server configuration details, enabling Claude Desktop to access tools and data from your database.
 
@@ -146,13 +186,13 @@ You'll update the Claude Desktop configuration so it can connect to the Autonomo
     ![Claude Desktop main window](../configure-claude-desktop/images/claude-oauth-authentication.png =70%x*)
 11. Claude connects to MCP Server and retrieves available tools for your user profile.
 
-## Task 5: Validate MCP Server is Running
+## Task 6: Validate MCP Server is Running
 Before proceeding, confirm that the MCP Server is running.
 1. Return to Claude Desktop **Settings** → **Desktop app** → **Developer**.
 2. You should see "Autonomous\_AI\_database\_mcp\_server" (or the name you assigned in the config) listed as an MCP server and the MCP Server in **running** state.
   ![MCP Server status](./images/claude-mcp-running.png =70%x*)
 
-## Task 6: Review and Control Tool Access
+## Task 7: Review and Control Tool Access
 
 Before you begin using Claude Desktop with your Autonomous AI Database, it's important to review if Claude has successfully retrieved the database tools and manage the tools the MCP client can access. 
 

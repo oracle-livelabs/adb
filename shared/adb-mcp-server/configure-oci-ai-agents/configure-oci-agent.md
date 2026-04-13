@@ -52,7 +52,7 @@ In this task, you create the OCI Generative AI Agent and capture the agent endpo
 7. On the **Review and create** page, review the details and click **Create agent**.
     ![Create Agent](./images/create-agent-review-create.png)
 
-8. If you are prompted with an agreement or acceptable use policy, select **I Accept** and click **Submit**.
+8. If you are prompted with an agreement or acceptable use policy, select **I accept** and click **Submit**.
     ![LLM agreement](./images/llama-lic-agreement.png)
 
 9.  Wait until the agent status changes to **Active**.
@@ -154,7 +154,7 @@ In this task, you connect to the compute instance, update the operating system p
 2. Optionally, set the keepalive time in seconds.
     ![PuTTY connected to the OCI compute instance as opc](images/putty-keepalive-setting.png)
 
-3. Navigate to Connection -> SSH -> Auth - > Credentials and upload the private key that you generated using puTTYgen.
+3. Navigate to Connection → SSH → Auth → Credentials and upload the private key that you generated using PuTTYgen.
     ![Upload private key](images/upload-private-key.png)
 
 4. Save and connect to the compute instance public IP address and log in as the `opc` user.
