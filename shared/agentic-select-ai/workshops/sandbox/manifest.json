@@ -19,33 +19,33 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
-            "title": "Lab 2: Build a Sales Return Agent",
-            "type": "tenancy",
+            "title": "Lab 1: Build a Sales Return Agent",
+            "type": "sandbox",
             "filename": "../../build-sales-return-agent/build-sales-return-agent.md"
         },
         {
-            "title": "Lab 3: Refine your Agent",
-            "type": "tenancy",
+            "title": "Lab 2: Refine your Agent",
+            "type": "sandbox",
             "filename": "../../refine-your-agent/refine-your-agent.md"
         },
         {
-            "title": "Lab 4: Create a Function and an AI Agent Tool to Generate an Email Response",
-            "type": "tenancy",
+            "title": "Lab 3: Create a Function and an AI Agent Tool to Generate an Email Response",
+            "type": "sandbox",
             "filename": "../../create-function-tool-for-email/create-function-and-tool-for-email.md"
         },
         {
-            "title": "Lab 5: Introduce a RAG Tool for Alternate Product Recommendation",
-            "type": "tenancy",
+            "title": "Lab 4: Introduce a RAG Tool for Alternate Product Recommendation",
+            "type": "sandbox",
             "filename": "../../rag-tool-for-alternatives/introduce-rag-tool-for-product-recommendation.md"
         },
         {
-            "title": "Lab 6: Query Select AI Agent Views",
-            "type": "tenancy",
+            "title": "Lab 5: Query Select AI Agent Views",
+            "type": "sandbox",
             "filename": "../../query-select-ai-agent-views/query-select-ai-agent-views.md"
         },
         {
-            "title": "Lab 7: Use the Ask Oracle Chatbot Demo Application",
-            "type": "tenancy",
+            "title": "Lab 6: Use the Ask Oracle Chatbot Demo Application",
+            "type": "sandbox",
             "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
         },
         {
