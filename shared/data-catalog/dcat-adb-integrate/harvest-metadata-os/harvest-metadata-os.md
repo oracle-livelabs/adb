@@ -95,7 +95,7 @@ After you register a data source as a data asset in your data catalog, you creat
     * **Pre-Authenticated Request URL:** Click **Copy** to copy the following URL, and then paste it in this field.
 
         ```
-        <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/jTFkU1Mey2PizeVQDp2nkfpAV40OmI9rLejneNhQ9tNiDqkP4543H4Boy8gDaxos/n/c4u04/b/moviestream_sandbox/o/</copy>
+        <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/AzSDiZBM4aToz8gwjwVds6fUrK7fPl_Ez8l4LEf6TiZb6CzpioLOEpxtVePFSsMA/n/c4u04/b/moviestream_sandbox/o/</copy>
         ```
 
     * **Make this the default connection for the data asset:** Leave this checkbox unchecked.
@@ -122,7 +122,7 @@ After you register a data source as a data asset in your data catalog, you creat
     * **Pre-Authenticated Request URL:** Click **Copy** to copy the following URL, and then paste it in this field.
 
         ```
-        <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/YtpqXpUpPx1pPXFQa4Githwxx4bxp12q2yZJsCyzN0Y9-kpYr5nAOvLvwZfLHxXF/n/c4u04/b/moviestream_landing/o/</copy>
+        <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/0YsVsvcSn9VdQB3y450FplYL72iShhehtbPqsOtZoJVYIa5nXgvFwUwdbgXN321_/n/c4u04/b/moviestream_landing/o/</copy>
         ```
 
     * **Make this the default connection for the data asset:** Leave this checkbox unchecked.
@@ -149,7 +149,7 @@ After you register a data source as a data asset in your data catalog, you creat
     * **Pre-Authenticated Request URL:** Click **Copy** to copy the following URL, and then paste it in this field.
 
         ```
-        <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/B4TMFWDOLh-EPrzE2ivDAfOlizm7IjpI_SY94QgUTGJNMX3jgh0jnQFAtPPZVcWq/n/c4u04/b/moviestream_gold/o/</copy>
+        <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/IPD6ohJNL_bI0WzW2xw-JwWg-8wCVCQUQNrDd1fLpH9bz4OATUGVXJSFiTBdFOqw/n/c4u04/b/moviestream_gold/o/</copy>
         ```
 
     * **Make this the default connection for the data asset:** Leave this checkbox unchecked.
