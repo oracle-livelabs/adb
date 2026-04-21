@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you configure an end-to-end workflow that connects an Oracle Autonomous AI Database Serverless MCP endpoint with OCI Generative AI Agents by using the Oracle Select AI Agent tools, an OCI Compute instance, OCI CLI authentication, and the OCI Agent Development Kit (ADK). You create the required cloud resources, configure secure access, install the required software, and run a Python sample that lets the agent call tools exposed through the Oracle Autonomous AI Database MCP Server.
+In this lab, you configure an end-to-end workflow that connects an Oracle Autonomous AI Database Serverless MCP endpoint with OCI Generative AI Agents. This uses the Oracle Select AI Agent framework, an OCI Compute instance, OCI CLI authentication, and the OCI Agent Development Kit (ADK). You create the required cloud resources, configure secure access, install the required software, and run a Python script that allows the agent to call tools exposed through the Oracle Autonomous AI Database MCP Server.
 
-This lab is designed for developers who want to use OCI Generative AI Agents to call Select AI Agent tools through Autonomous AI Database MCP server.
+This lab is designed for developers who want to use OCI Generative AI Agents to call tools defined using the Oracle Select AI Agent framework through Autonomous AI Database MCP server.
 
 **Estimated Lab Time:** 40 minutes
 
@@ -21,7 +21,7 @@ In this lab, you will:
 ### Prerequisites
 
 This lab assumes you have:
-* Completed all previous labs
+* Completed lab 1 - lab 3
 * An Oracle Cloud account with permissions to create Generative AI Agents, Compute instances, VCN resources, and API keys
 * Access to an Autonomous AI Database instance with an MCP endpoint
 * Database credentials for generating the MCP bearer token
@@ -64,7 +64,7 @@ In this task, you create the OCI Generative AI Agent and capture the agent endpo
 
 11. Save the endpoint OCID for later use.
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Agent Endpoint OCID:
@@ -89,7 +89,7 @@ In this task, you generate the SSH key pair that you will use to connect to the 
 
 6. Copy the public key text and save it for later use in the OCI Console.
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Public key for pasting into OpenSSH authorized_keys file:
@@ -135,7 +135,7 @@ In this task, you create the OCI Compute instance that will host the OCI CLI, Py
 
 14. In the OCI Console, click the profile icon, click **Tenancy**, and copy the **Tenancy OCID**.
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     User OCID: ocid1.user.oc1..aaaaaaaaryd...
@@ -167,7 +167,7 @@ In this task, you connect to the compute instance, update the operating system p
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Last metadata expiration check: ...
@@ -185,7 +185,7 @@ In this task, you connect to the compute instance, update the operating system p
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Installed:
@@ -201,7 +201,7 @@ In this task, you connect to the compute instance, update the operating system p
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Dependencies resolved.
@@ -220,7 +220,7 @@ In this task, you connect to the compute instance, update the operating system p
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     3.x.x
@@ -254,7 +254,7 @@ In this task, you connect to the compute instance, update the operating system p
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     -----BEGIN PUBLIC KEY-----
@@ -278,7 +278,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output is:
 
     ```text
     Python 3.9.25
@@ -302,7 +302,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Installed:
@@ -320,7 +320,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Python 3.12.x
@@ -342,7 +342,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     (adk-env) [opc@instance ~]$
@@ -356,7 +356,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Collecting oci[adk]
@@ -373,7 +373,7 @@ In this task, you verify the installed Python version, install Python 3.12, crea
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Requirement already satisfied or Successfully installed pip-...
@@ -387,7 +387,7 @@ In this task, you generate a bearer token for the Autonomous Database MCP endpoi
 
 1. Return to your Autonomous Database MCP database details page and copy the **Database OCID**.
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
         ocid1.autonomousdatabase.oc1.us-chicago-1.an...
@@ -561,7 +561,7 @@ In this task, you create the Python sample file, paste the provided code exactly
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Python 3.12.x
@@ -575,7 +575,7 @@ In this task, you create the Python sample file, paste the provided code exactly
     </copy>
     ```
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Setup complete — ADB MCP tools registered with agent.
@@ -595,7 +595,7 @@ In this task, you verify that the agent can call tools exposed through the MCP s
 
 2. Review the output and approve the tool call when prompted.
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     Proposed tool: ...
@@ -642,7 +642,7 @@ In this task, you verify that the agent can call tools exposed through the MCP s
 
 8. Observe how the agent responds to an unrelated or unsupported prompt.
 
-    The expected output should look similar to:
+    The expected output should look like:
 
     ```text
     I am not able to execute this task as it is out of domain.
@@ -659,5 +659,5 @@ In this task, you verify that the agent can call tools exposed through the MCP s
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** Chandrakanth Putha, Senior Product Manager;
+* **Contributors:** Chandrakanth Putha, Senior Product Manager
 
