@@ -14,9 +14,9 @@
             "filename": "../../introduction/introduction-agentic-select-ai.md"
         },
         {
-            "title": "Get Started",
+            "title": "Get Started with LiveLabs",
             "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs-nooci.md"
         },
         {
             "title": "Lab 1: Build a Sales Return Agent",
