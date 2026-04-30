@@ -10,9 +10,9 @@ In this lab, you will learn how to set up and use Visual Studio Code with the Cl
 
 - Bearer token: You’ll generate a bearer token, configure MCP connectivity, and verify that Cline can load and process the same database tools created earlier.
 
-This lab demonstrates how different AI clients connect to the same MCP-enabled database instance.
+This lab demonstrates how Cline connect to the MCP-enabled database instance.
 
-Estimated Time:20 Minutes
+Estimated Time: 20 Minutes
 
 ### Objectives
 
@@ -71,7 +71,7 @@ In this task, you will install the Cline extension in Visual Studio Code.
 
 ## Task 3: (Bearer Token Only) Generate a Bearer Token Using cURL
 
-If you are using **OAuth authentication**, skip this task and proceed to **Task 4**.
+If you are using **OAuth authentication**, skip this task and **Task 4** and proceed to **Task 5**.
 
 If you are using **bearer token authentication**, complete this task to generate a token for the MCP server.
 
@@ -123,12 +123,54 @@ To authenticate with the MCP server, you must obtain a bearer token through an H
 2. If prompted, login to your Cline account by following the prompts on the screen.
 3. Click **MCP Servers** and click the **Configure** tab to add or modify a server connection. ![Cline main window](../configure-cline/images/cline-mcpserver-configuration.png)
 
+4. Click **Configure MCP Servers**. This opens up `cline_mcp_settings.json` file in Visual Studio Code.
+5. Use the following example as a template for MCP server configuration and replace the code in `cline_mcp_setting.json`. Provide your actual values in the placeholders:
+
+    ```
+    <copy>
+    {
+      "mcpServers": {
+        "OpsDatabase": {
+          "timeout": 300,
+          "type": "streamableHttp",
+          "url": "https://dataaccess.adb.{region-identifier}.oraclecloudapps.com/adb/mcp/v1/databases/{database-ocid}",
+          "headers": {
+            "Authorization": "Bearer <your-token>"
+          }
+        }
+      }
+    }
+    </copy>
+    ```
+
+    Replace with your actual values:
+    - {region-identifier} with your Oracle Cloud region. For example, if your database instance is in Chicago region, the `region-identifier` is `us-chicago-1`.
+    - {database-ocid} with the OCID of your Autonomous AI Database that you copied in **Lab 2**.
+    - `<your-token>` with the `access_token` you copied in **Task 3**.
+  ![Configure Cline](../configure-cline/images/cline-configuration.png =70%x*)
+6. **Save** the file and close it.
+7. Close Visual Studio Code.
+8. Reopen it.
+9. Open Cline again → Click **MCP Servers** icon → Click **Configure** tab.
+10. Cline extension may ask to authenticate. If prompted, complete the authentication process to enable full functionality of the extension.
+![Cline main window](../configure-cline/images/cline-authenticate.png =70%x*)
+11. Restart Visual Studio Code if necessary.
+12. Return to the MCP Servers **Configure** tab, you should now see **OpsDatabase** listed and running indicated with a *Green* light.
+![MCP Server name visible and running](../configure-cline/images/mcp-server-running.png =70%x*)
+13. Expand **OpsDatabase** to view the tools created in **Lab 3** are visible displaying tools, parameters, and definitions.
+![List of tools](../configure-cline/images/tools-visible.png =70%x*)
+14. Click **Done** in the top right of the configuration screen to close the screen and return to the Cline chat panel.
+
+
+## Task 5: Configure MCP Server in Cline Using OAuth Token
+
+1. Return to Cline extension in Visual Studio Code. Click the Cline icon in the Activity Bar. ![Cline main window](../configure-cline/images/cline-available-taskbar.png)
+
+2. If prompted, login to your Cline account by following the prompts on the screen.
+3. Click **MCP Servers** and click the **Configure** tab to add or modify a server connection. ![Cline main window](../configure-cline/images/cline-mcpserver-configuration.png)
+
 4. Click **Configure MCP Servers**. This opens the `cline_mcp_settings.json` file in Visual Studio Code.
-5. Use the following example as a template for MCP server configuration and replace the specification in `cline_mcp_setting.json`. Choose from:
-
-    ## Option 5A: For Oauth authentication
-
-    Provide your actual values in the placeholders.
+5. Use the following example as a template for MCP server configuration and replace the specification in `cline_mcp_setting.json`. 
 
     ```
       <copy>
@@ -150,48 +192,17 @@ To authenticate with the MCP server, you must obtain a bearer token through an H
     
     ![Configure Cline](../configure-cline/images/cline-configuration-oauth.png =70%x*)
 
-    ## Option 5B: For Bearer Token
-
-    Provide your actual values in the placeholders.
-
-
-    ```
-      <copy>
-      {
-      "mcpServers": {
-          "OpsDatabase": {
-          "timeout": 300,
-          "type": "streamableHttp",
-          "url": "https://dataaccess.adb.{region-identifier}.oraclecloudapps.com/adb/mcp/v1/databases/{database-ocid}",
-          "headers": {
-              "Authorization": "Bearer <your-token>"
-          }
-          }
-      }
-      }
-      </copy>
-    ```
-
-    Replace with your actual values:
-    - {region-identifier} with your Oracle Cloud region. For example, if your database instance is in Chicago region, the `region-identifier` is `us-chicago-1`.
-    - {database-ocid} with the OCID of your Autonomous AI Database that you copied in **Lab 2**.
-    - `<your-token>` with the `access_token` you copied in **Task 3**.
-  ![Configure Cline](../configure-cline/images/cline-configuration.png =70%x*)
-  
 6. **Save** the file and close it.
 
-7. Close Visual Studio Code.
+7. Close Visual Studio Code. 
 
 8. Reopen it.
 
 9. Open Cline again → Click **MCP Servers** icon → Click **Configure** tab.
 
-10. Cline will prompt you to authenticate the first time you connect (or whenever your session/token expires). 
+10. Cline will prompt you to authenticate the first time you connect (or whenever your session/token expires).
 
   ![Cline main window](../configure-cline/images/cline-authenticate.png =40%x*)
-  When prompted to authenticate, choose the method you configured:
-
-  ## Option 10A: For Oauth authentication 
   
   Click **Authenticate** to launch the browser-based OAuth flow. ![oauth Cline VS Confirmation](../configure-cline/images/cline-oauth-vs-confirmation.png =70%x*)
 
@@ -203,10 +214,6 @@ To authenticate with the MCP server, you must obtain a bearer token through an H
     - **Password:** `QwertY#19_95`
 
   When prompted to open Visual Studio Code, click **Open** (or **Yes**) to return to VS Code and complete authentication.
-
-  ## Option 10B: For Bearer Token
-
-  Confirm your `Authorization: Bearer <token>` header is present in `cline_mcp_settings.json`. If the token is expired, generate a new token and update the configuration.
 
 11. Restart Visual Studio Code if necessary.
 12. Return to the MCP Servers **Configure** tab, you should now see **OpsDatabase** listed and running indicated with a *Green* light.
