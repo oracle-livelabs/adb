@@ -176,7 +176,7 @@ To authenticate with the MCP server, you must obtain a bearer token through an H
       <copy>
       {
       "mcpServers": {  
-          "sales-database": {
+          "OpsDatabase": {
           "timeout": 300,
           "type": "streamableHttp",  
           "url": "https://dataaccess.adb.{region-identifier}.oraclecloudapps.com/adb/mcp/v1/databases/{database-ocid}"
