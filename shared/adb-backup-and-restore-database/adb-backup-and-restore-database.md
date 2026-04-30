@@ -1,5 +1,7 @@
 ﻿# Backup and Restore Your Autonomous AI Database
 
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases. If you run this lab using an Always Free database you can only review the steps and later practice the steps using your organization’s own tenancy._
+
 ## Introduction
 
 Data is one of the most important assets of any organization today. Whether you're a small business or a large enterprise, your data is critical to your success. In turn, data corruption or data loss that may be caused by disasters, hardware failures, human error or even malicious attacks can have a major impact. It is crucial to have an effective backup and recovery strategy in place. Autonomous AI Database Serverless provides some of the best and most user-friendly backup and restore options, made reliable by being fully managed by Oracle automation.

@@ -110,7 +110,7 @@ Let's define an event that triggers an email notification when an Autonomous AI 
     In the **Rule Conditions** section, specify the following:
     - **Condition:** `Event Type`
     - **SERVICE NAME:** `Database`
-    - **EVENT TYPE:** : Choose `Autonomous AI Database - Stop End` from the drop-down list.
+    - **EVENT TYPE:** : Choose `Autonomous Database - Stop End` from the drop-down list.
 
     In the **Actions** section, specify the following:
 

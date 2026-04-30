@@ -192,7 +192,25 @@ You can perform a switchover to the **local standby** database as follows:
 
     ![Role switched on](./images/role-switched-on.png)
 
-3. You can also **optionally** switch over to your remote cross-region standby database if you created one, but in that case you'll switch over from the **remote standby**, rather than from the **primary**. Once your remote standby is provisioned, you will see a "Switchover" option on your remote standby database's console. Clicking the Switchover button **from the remote standby database**, while both your primary and standby are healthy (that is, in the Available or Stopped states), performs a role change - Switching from the primary database to the remote standby database.
+3. You can also **optionally** switch over to your remote cross-region standby database if you created one, but in that case you'll switch over from the **remote standby**, rather than from the **primary**.
+
+    ![Click Switchover for the cross-region](./images/adg-crossregion-switchover.png)
+
+    In the **Confirm switchover to peer** dialog box, click on the link of your remote standby database.
+
+    ![Click remote standby database link](./images/link-remote-standby.png =65%x*)
+
+    Once your remote standby is provisioned, on the **Autonomous AI Database** details page of it, click the **Actions** icon (3-dot ellipsis) on the right side of the **Role** field, and select **Switchover**.
+
+    ![Click Switchover on the remote standby database console](./images/adg-remote-standby-switchover.png)
+
+    In the **Confirm switchover to peer** dialog box, confirm the switchover to the standby database. Enter the database name of your cross-region standby.
+
+    ![Click Confirm switchover to peer cross-region](./images/confirm-switchover-remote-standby.png =65%x*)
+
+    While both your primary and standby are healthy (that is, in the Available or Stopped states), this performs a role change - Switching from the primary database to the remote standby database.
+
+    ![Role switched for cross-region on](./images/role-switched-cross-on.png)
 
     **Note:** Again, please note that if you are running this workshop in a LiveLabs hosted sandbox environment, cross region standby databases are not yet supported in LiveLabs environments.
 
@@ -216,6 +234,18 @@ _If you are running this workshop in a hosted LiveLabs sandbox, you must perform
     >**Notes:**
     * Disabling Autonomous Data Guard terminates the standby database. If you later enable Autonomous Data Guard, the system creates a new standby database.
     * If you switched over to remote cross region standby, you must switch back to the primary region before you can disable the cross-region standby.
+
+    Optional, if you select your cross-region standby to disable it (and you've already made what the **Notes** block say above), in the **Disable** dialog box, click the link to the remote standby console.
+
+    ![Click Disable Link to Remote Standby Database](./images/disable-link-remote-standby.png =65%x*)
+
+    On the **Autonomous AI Database** details page of it, click the **Actions** icon (3-dot ellipsis) on the right side of the **Role** field, and select **Disconnect peer**
+
+    ![Click Disconnect in the Role field](./images/adg-disconnect-cross-region.png)
+
+    In the **Disconnect peer database** dialog box, select the standby database you want to disable and terminate. Enter the Autonomous AI Database name to confirm. Click **Disconnect**.
+
+    ![Click Disconnect Autonomous Cross Region](./images/confirm-disconnect-cross-region.png =65%x*)
 
 ## Task 4: Examine Backup-Based Disaster Recovery
 

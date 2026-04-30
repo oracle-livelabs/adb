@@ -96,7 +96,7 @@ You will need to download your wallet credentials file in order for Analytics Cl
 
 ## Task 3: Create a Dataset in **Oracle Analytics Cloud**
 
-1. Navigate to your **Instance Details** page of the **Oracle Analytics Cloud** (OAC) instance. Open the **Navigation** menu and click **Analytics & AI**. Under **Analytics**, click **Analytics Cloud**.
+1. Navigate to your **Instance Details** page of the **Oracle Analytics Cloud** (OAC) instance. Open the **Navigation** menu and click **Analytics & AI**. Under **AI Data Platform**, click **Analytics Cloud**.
 
 2. On the **Analytics Instances** page, click your instance name.
 

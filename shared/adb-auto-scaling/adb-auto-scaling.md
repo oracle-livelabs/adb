@@ -1,5 +1,7 @@
 # Apply Auto Scaling on an Autonomous AI Database
 
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases. If you run this lab using an Always Free database you can only review the steps and later practice the steps using your organization’s own tenancy._
+
 ### **Introduction**
 
 In this lab, you will learn the benefits of auto scaling an Oracle Autonomous AI Database. This lab uses the existing SSB schema in Autonomous AI Database Lakehouse. The lab executes a PL/SQL procedure which loops through executing a query three times. You will be running this procedure from three SQL Developer Web worksheet sessions concurrently to see how the CPU is utilized with and without auto scaling.

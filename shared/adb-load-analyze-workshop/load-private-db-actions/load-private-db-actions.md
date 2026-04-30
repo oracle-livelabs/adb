@@ -235,10 +235,10 @@ First, define a new **Cloud Location** to connect to the Oracle Object Storage b
     + Click **Create Credential**.
     + In the **Create Credential** dialog box, specify the following:
         + **Credential Name:** Enter **`OBJ_STORE_CRED`**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-        + **Cloud Service:** Select **Oracle** from the drop-down list since you will load data from your Oracle Object Storage bucket.
-        + **OCI Create Credential Method:** Select the **Cloud Username and Password** option.
-        + **Oracle Cloud Infrastructure Username:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
-        + **Auth Token:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
+        + **Description:** Enter an optional description.
+        + **Credential Type:** Select **Oracle Cloud Infrastructure Username and Password** from the drop-down list since you will load data from your Oracle Object Storage bucket.
+        + **Username:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
+        + **Password:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
 
 6. Click **Create Credential**.
 
