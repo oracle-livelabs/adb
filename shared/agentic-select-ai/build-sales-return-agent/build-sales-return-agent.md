@@ -36,9 +36,19 @@ GRANT EXECUTE ON DBMS_CLOUD_AI_AGENT TO ADB_USER;
 Replace _`ADB_USER`_ with your user name.
 > Note: If you are independently using OML Notebook on your instance to run the code, append `%script` at the beginning for the codeblocks.
 
+- You will need to download an OML notebook to a local folder.  Click the button below, and follow the instructions in the Task 1 below to import it:
+
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
+<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+
 </if>
 <if type="sandbox">
-- Access to the LiveLabs reservation for this Workshop.
+- Access to the LiveLabs reservation login information for this Workshop.
+- You will need to download an OML notebook to a local folder.  Click the button below, and follow the instructions in the Task 1 below to import it:
+
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
+<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+
 </if>
 
 
