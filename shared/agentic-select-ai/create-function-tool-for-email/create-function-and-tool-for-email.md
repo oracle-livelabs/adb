@@ -143,11 +143,11 @@ BEGIN
 END;</copy>
 ```
 
-## Task 3: Create an Email Task
+## Task 3: Update the Handle Product Return Task
 
-You'll create an email task and add the build\_email\_tool to the task. The task gathers fields from the attributes, calls the tool, and returns the email text to review.
+You'll update the **Handle\_Product\_Return\_Task** with a section to use the build\_email\_tool. The task gathers fields from the attributes, calls the tool, and returns the email text to review.
 
-Create a Build\_Email\_Task.
+Update the Handle\_Product\_Return\_Task.
 
 ```
 <copy> 
