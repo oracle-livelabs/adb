@@ -1,6 +1,6 @@
 ﻿# Backup and Restore Your Autonomous AI Database
 
-_**Important:** This lab uses features which are not available on Oracle's Always Free databases. If you run this lab using an Always Free database you can only review the steps and later practice the steps using your organization’s own tenancy._
+_**Important:** This lab uses features which are not available on Oracle's Always Free databases or on the Oracle LiveLabs Sandbox hosted environments (the Green button). If you run this lab using an Always Free database or a LiveLabs Sandbox environment, you can only review the steps and later practice the steps using your organization’s own tenancy._
 
 ## Introduction
 

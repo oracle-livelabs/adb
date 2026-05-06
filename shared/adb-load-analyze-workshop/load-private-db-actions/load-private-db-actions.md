@@ -224,29 +224,63 @@ First, define a new **Cloud Location** to connect to the Oracle Object Storage b
 
     ![Click the Cloud Locations card.](./images/click-connections.png =70%x*)
 
-4. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
+4. There are multiple ways to add a credential, these are two of them. Later, on step 6, it is mentioned another way to do it.
 
-    ![Click Add Cloud Storage.](./images/click-new-cloud-location.png =70%x*)
+    On the **Connections** page, click the **Data Studio Settings** button.
 
-5. Specify the following in the **Add Cloud Store Location** panel.
-    + **Name:** Enter **`oci-cloud`**.
+    ![Click Data Studio Settings.](./images/click-data-studio-settings.png =70%x*)
+
+    **Way #1:** In the **Data Studio Settings**, click the **Cloud Services** button. On this section you can create the correspondent credential of your object storage bucket: OCI, AWS, Azure, GCP. For this lab, we are going to use the **OCI credential**. Click on the **plus sign** button correspondent to **OCI Credential**.
+
+    ![Click Plus Sign Button of OCI Credential.](./images/click-plus-sign-button.png =70%x*)
+
+    **Way #2:** In the **Data Studio Settings**, click the **Credentials** button. Then, click **Create Credential** button.
+
+    ![Click Create Credential button of Credentials.](./images/click-create-credential-credentials.png =70%x*)
+
+    For any way you decided to use, in the **Create Credential** dialog box, specify the following:
+    + **Credential Name:** Enter **`OBJ_STORE_CRED`**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
     + **Description:** Enter an optional description.
-    + Accept the default **Select Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
-    + Click **Create Credential**.
-    + In the **Create Credential** dialog box, specify the following:
-        + **Credential Name:** Enter **`OBJ_STORE_CRED`**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
-        + **Description:** Enter an optional description.
-        + **Credential Type:** Select **Oracle Cloud Infrastructure Username and Password** from the drop-down list since you will load data from your Oracle Object Storage bucket.
-        + **Username:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
-        + **Password:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
+    + **Credential Type:** Select **Oracle Cloud Infrastructure Username and Password** from the drop-down list since you will load data from your Oracle Object Storage bucket.
+    + **Username:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
+    + **Password:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
 
-6. Click **Create Credential**.
+    Click **Create Credential**.
 
     ![Click Create Credential.](./images/click-create-credential.png =60%x*)
 
-    The **Add Cloud Store Location** panel is re-displayed. The newly created **`OBJ_STORE_CRED`** credential is displayed in the **Select Credential** drop-down list.
+    The newly created **`OBJ_STORE_CRED`** credential is displayed in the **OCI Credential** drop-down list and in the **Credentials** table.
 
-    ![Credential created.](./images/credential-created.png =60%x*)
+    ![OCI credential drop-down list.](./images/oci-credential-drop-list.png =60%x*)
+
+    ![Credentials table.](./images/credentials-table.png =60%x*)
+
+5. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
+
+    ![Click Add Cloud Storage.](./images/click-new-cloud-location.png =70%x*)
+
+6. Specify the following in the **Add Cloud Store Location** panel.
+    + **Name:** Enter **`oci-cloud`**.
+    + **Description:** Enter an optional description.
+    + Accept the default **Select Credential** option. To access data in the Object Store, you need to enable your database user to authenticate itself with the Object Store using your OCI object store account and a credential. You do this by creating a private CREDENTIAL object for your user that stores this information encrypted in your Autonomous Data Warehouse. This information is only usable for your user schema.
+    + If you have already created the credential, select it from the drop-down list.
+
+        ![Click drop-down list Credential.](./images/drop-down-list-credential.png =70%x*)
+
+    + If you haven't created the credential, click **Create Credential**.
+        + In the **Create Credential** dialog box, specify the following:
+            + **Credential Name:** Enter **`OBJ_STORE_CRED`**. **Note:** The credential name must conform to Oracle object naming conventions, which do not allow spaces or hyphens.
+            + **Description:** Enter an optional description.
+            + **Credential Type:** Select **Oracle Cloud Infrastructure Username and Password** from the drop-down list since you will load data from your Oracle Object Storage bucket.
+            + **Username:** Specify your Oracle Cloud Infrastructure user name that you identified in **Task 5**.
+            + **Password:** Copy and paste the Auth Token that you generated in **Task 5** and that you saved to a text file.
+        + Click **Create Credential**.
+
+            ![Click Create Credential.](./images/click-create-credential.png =60%x*)
+
+        + The **Add Cloud Store Location** panel is re-displayed. The newly created **`OBJ_STORE_CRED`** credential is displayed in the **Select Credential** drop-down list.
+
+            ![Credential created.](./images/credential-created.png =60%x*)
 
 7. Specify the following in the **Add Cloud Store Location** panel:    
     + **Bucket URI option:** Select this option, if it's not already selected.    

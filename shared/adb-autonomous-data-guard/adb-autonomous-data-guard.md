@@ -235,7 +235,7 @@ _If you are running this workshop in a hosted LiveLabs sandbox, you must perform
     * Disabling Autonomous Data Guard terminates the standby database. If you later enable Autonomous Data Guard, the system creates a new standby database.
     * If you switched over to remote cross region standby, you must switch back to the primary region before you can disable the cross-region standby.
 
-    Optional, if you select your cross-region standby to disable it (and you've already made what the **Notes** block say above), in the **Disable** dialog box, click the link to the remote standby console.
+    If you select your cross-region standby to disable, in the **Disable** dialog box, click the link to the remote standby console.
 
     ![Click Disable Link to Remote Standby Database](./images/disable-link-remote-standby.png =65%x*)
 
