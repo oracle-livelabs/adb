@@ -326,6 +326,7 @@ and then connects to MCP Server successfully.
 
 * **Authors:** Sarika Surampudi, Principal User Assistance Developer; Dhanish Kumar, Senior Member of Technical Staff
 * **Contributors:** Chandrakanth Putha, Senior Product Manager; Mark Hornick, Senior Director, Machine Learning and AI Product Management
+* **Last Updated By/Date:** Sarika Surampudi, May 2026
 
 Copyright (c) 2026 Oracle Corporation.
 

@@ -6,6 +6,10 @@ In this lab, you build on the earlier setup and extend the workflow to connect O
 
 This lab is designed for developers who want to use OCI Generative AI Agents to call tools defined using the Oracle Select AI Agent framework through Autonomous AI Database MCP server.
 
+OCI Generative AI Agents is a fully managed Oracle Cloud service that combines large language models with AI technologies to create intelligent agents capable of orchestrating tools and services to address complex, multi-turn workflows. Agents can be configured with tools, such as those exposed through an MCP server, that they call dynamically to retrieve data or perform actions in response to natural language prompts.
+
+The OCI Agent Development Kit (ADK) is a lightweight, client-side Python library that simplifies building agentic applications on top of OCI Generative AI Agents. In this lab, you use the ADK to write a Python client that registers the Autonomous AI Database MCP tools with your OCI Generative AI Agent, enabling it to answer questions about your database through natural language.
+
 **Estimated Lab Time:** 40 minutes
 
 ### Objectives
@@ -393,7 +397,7 @@ In this task, you generate a bearer token for the Autonomous Database MCP endpoi
         ocid1.autonomousdatabase.oc1.us-chicago-1.an...
     ```
 
-2. Run the following command exactly as provided to generate the bearer token. See **Lab 6 -> Task 3**.
+2. Run the following command exactly as provided to generate the bearer token. See [**Lab 6 -> Task 3**](../configure-cline/configure-cline.md#task3bearertokenonlygenerateabearertokenusingcurl).
 
     ```bash
     <copy>
@@ -649,12 +653,154 @@ In this task, you verify that the agent can call tools exposed through the MCP s
     ```
 
 
-## Learn More
+## Quiz
+```quiz score
+Q: What do you copy from the OCI Generative AI Agent to use in the Python sample?
+
+- The agent display name
+* The agent endpoint OCID
+- The compartment OCID
+- The model OCID
+>The Python sample uses the agent endpoint OCID to connect the OCI ADK client to your OCI Generative AI Agent.
+
+Q: Which command installs the OCI Agent Development Kit in the virtual environment?
+
+- pip install oci-adk
+- pip install adk
+* pip install "oci[adk]"
+- python -m install oci[adk]
+>The required installation step in this lab is `pip install "oci[adk]"`.
+
+Q: What environment variable stores the MCP bearer token in this lab?
+
+- OCI_BEARER_TOKEN
+- ADB_TOKEN
+* MCP_BEARER_TOKEN
+- OCI_MCP_TOKEN
+>The Python script reads the bearer token from the `MCP_BEARER_TOKEN` environment variable.
+
+Q: Which user do you use to connect to the OCI Compute instance over SSH?
+
+- root
+- admin
+* opc
+- oracle
+>You connect to the compute instance as the `opc` user.
+
+Q: What should you type when the Python sample asks whether to execute the proposed tool?
+
+- run
+- approve
+* yes
+- continue
+>When the script prompts `Should I execute this tool? (yes/no):`, type `yes` to allow the tool call.
+```
+
+## Troubleshooting
+If the OCI Generative AI Agent, OCI CLI, Python client, or MCP tool calls do not work as expected, review the following checks:
+
+*Issue 1: OCI CLI Setup Does Not Complete*
+
+**Possible Causes**
+- Incorrect user OCID or tenancy OCID
+- Incorrect region identifier
+- API key was not added to your OCI user profile
+
+**Solution**
+
+1. Run `oci setup config` again and verify each value that you enter.
+2. Confirm that the region identifier matches the region where you created the OCI Generative AI Agent.
+3. Display the public key again:
+    ```
+    cat /home/opc/.oci/oci_api_key_public.pem
+    ```
+4. In the OCI Console, confirm that the public key is added under **Tokens and Keys** for your user profile.
+5. Run `oci --version` to verify that OCI CLI is installed.
+
+*Issue 2: Python Version Is Lower Than 3.10*
+
+**Possible Causes**
+- Python 3.12 was not installed
+- The virtual environment was not created with Python 3.12
+- The shell is still using the default system Python
+
+**Solution**
+
+1. Check the current Python versions:
+    ```
+    python --version
+    python3.12 --version
+    ```
+2. Install Python 3.12 again if needed:
+    ```
+    sudo dnf install -y python3.12 python3.12-devel python3.12-pip
+    ```
+3. Recreate the virtual environment using Python 3.12:
+    ```
+    python3.12 -m venv adk-env
+    source adk-env/bin/activate
+    ```
+4. Run `python --version` again and verify that it is greater than `3.10`.
+
+*Issue 3: Bearer Token Is Missing or Expired*
+
+**Possible Causes**
+- The bearer token was not exported
+- The token value expired
+- The token was copied incorrectly
+
+**Solution**
+
+1. Generate a new bearer token using the curl command in **Task 6**.
+2. Copy the `access_token` value again.
+3. Export the token:
+    ```
+    export MCP_BEARER_TOKEN="<access_token>"
+    ```
+4. Run the Python sample again.
+
+*Issue 4: The Python Sample Does Not Connect to the MCP Endpoint*
+
+**Possible Causes**
+- The MCP endpoint URL is incorrect
+- The agent endpoint OCID placeholder was not replaced
+- The bearer token is invalid
+
+**Solution**
+
+1. Open `sample.py` and verify that you replaced `<mcp_end_point>` with your actual MCP endpoint URL.
+2. Verify that you replaced `<agent_endpoint_ocid>` with your actual OCI Generative AI Agent endpoint OCID.
+3. Confirm that the MCP endpoint URL uses the correct database OCID and region.
+4. Verify that the `MCP_BEARER_TOKEN` environment variable is set in the current shell session.
+5. Run:
+    ```
+    python sample.py
+    ```
+
+*Issue 5: Tool Calls Do Not Return the Expected Results*
+
+**Possible Causes**
+- You did not approve the proposed tool call
+- The question is outside the supported database context
+- The database objects expected by the prompt are not available
+
+**Solution**
+
+1. When prompted with `Should I execute this tool? (yes/no):`, type `yes`.
+2. Retry with a database-focused prompt such as:
+    ```
+    list the schemas in the database.
+    ```
+3. Try another prompt from **Task 8**, such as `show all the departments`.
+4. If a question is unrelated to the database context, expect the response to indicate that the task is out of domain.
+
+
+## What to Learn More?
 
 * [Creating an Agent in Generative AI Agents](https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/create-agent.htm)
 * [OCI Agent Development Kit Quickstart](https://docs.oracle.com/en-us/iaas/Content/generative-ai-agents/adk/api-reference/quickstart.htm)
 * [Creating an Instance](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/launchinginstance.htm)
-* [Configure MCP Server for OCI Generative AI Agents](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsw/use-mcp-server.html#GUID-2FB07D4E-4384-4126-9633-BB48C8F10886)
+* [Configure MCP Server for OCI Generative AI Agents](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/use-mcp-server.html#GUID-2FB07D4E-4384-4126-9633-BB48C8F10886)
 
 ## Acknowledgements
 

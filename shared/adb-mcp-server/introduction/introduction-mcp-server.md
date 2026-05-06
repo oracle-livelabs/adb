@@ -4,6 +4,8 @@
 
 In this workshop, you learn how to use Oracle Autonomous AI Database as a **Model Context Protocol (MCP) server**. You configure your database instance to expose tools to MCP clients, create custom tools using Select AI Agent with PL/SQL and Python, and configure MCP-compatible AI clients such as Claude Desktop and the Cline extension in Visual Studio Code. You then use these clients to perform database-driven tasks using the tools you defined.
 
+In the final lab, you integrate Oracle Autonomous AI Database MCP Server with **OCI Generative AI Agents** by using the **OCI Agent Development Kit (ADK)** to register MCP tools with an OCI agent. This demonstrates how an OCI agent can call database tools dynamically through natural language prompts and respond to database-driven requests using the tools configured earlier in the workshop.
+
 
 ### Business Use Case
 
@@ -58,8 +60,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Authors:** Sarika Surampudi, Principal User Assistance Developer
 * **Contributors:** Chandrakanth Putha, Senior Product Manager; Mark Hornick, Senior Director, Machine Learning and AI Product Management
-<!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
--->
+* **Last Updated By/Date:** Sarika Surampudi, May 2026
 
 
 Copyright (c) 2026 Oracle Corporation.

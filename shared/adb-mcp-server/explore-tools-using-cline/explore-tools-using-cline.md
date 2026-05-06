@@ -186,7 +186,7 @@ If the session suddenly stops working:
 3. Restart Visual Studio Code.
 
 
-## Want to Learn More?
+## Learn More
 
 [Configure MCP-Compatible AI clients](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/use-mcp-server.html#GUID-B540AEF5-FB92-4091-9519-289C1B52B690)
 
