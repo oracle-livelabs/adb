@@ -255,6 +255,8 @@ First, define a new **Cloud Location** to connect to the Oracle Object Storage b
 
     ![Credentials table.](./images/credentials-table.png =60%x*)
 
+    >**Note:** You only need to create the credential once and can use it anywhere in data studio.
+
 5. On the **Connections** page, click the **Create** drop-down list, and then select **New Cloud Store Location**.
 
     ![Click Add Cloud Storage.](./images/click-new-cloud-location.png =70%x*)
