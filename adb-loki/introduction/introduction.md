@@ -14,7 +14,7 @@ By the end of this workshop, you will have a built a fully functional log observ
 
 The key technical insight behind this workshop is that Autonomous AI Database can push its own logs using `UTL_HTTP` and `DBMS_SCHEDULER`. A PL/SQL package (`DBMS_LOKI`) iterates through registered log sources, executes each SQL query with a watermark bind variable (ensuring only new entries are sent), formats the results as Loki JSON payloads, and POSTs them to Loki's Push API. Since the database initiates all communication and exposes no inbound endpoint, no OAuth 2.0 configuration or additional authentication is required.
 
-**Companion workshop:** This workshop focuses on logs using a push model to Grafana Loki. For metrics using a pull model with ORDS and Prometheus, see the companion workshop: [*Build a Prometheus-Compatible Telemetry Endpoint for ADB-D Using ORDS*](https://placeholder-url/prometheus-livelab).
+**Companion workshop:** This workshop focuses on logs using a push model to Grafana Loki. For metrics using a pull model with ORDS and Prometheus, see the companion workshop: [*Build a Prometheus-Compatible Telemetry Endpoint for ADB-D Using ORDS*](../../adb-prometheus/workshop/db-users/index.html).
 
 ### Objectives
 
@@ -40,6 +40,7 @@ This lab assumes you have:
 - Basic familiarity with SQL, PL/SQL, and Linux command line
 
 ### Log Sources You Will Stream
+
 
 | Source | Underlying View | What It Captures |
 |---|---|---|
