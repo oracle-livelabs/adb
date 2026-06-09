@@ -2,7 +2,7 @@
 
 ## Introduction
 
-With your Log Explorer dashboard running, the final step is to configure alerting so you're notified when security-relevant events are detected in the audit trail. In this lab, you will create an audit failure alert using Grafana's built-in Alertmanager — you can later augment this with external notification channels or SMTP configuration.
+With your Log Explorer dashboard up and running, the final step is to configure alerting so you are notified when security-relevant events are detected in the audit trail. In this lab, you will create an audit failure alert using Grafana's built-in Alertmanager. You can later extend this configuration external notification channels, such as email, Slack, PagerDuty, or SMTP configuration.
 
 *Estimated Lab Time:* 15 minutes
 
@@ -35,7 +35,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 4. Click **Save contact point**.
 
-    > **Note:** This uses Grafana's built-in Alertmanager, which surfaces alert state changes directly in the Grafana UI. For production, you can replace this with Email, Slack, PagerDuty, or any other supported integration.
+   **Note:** This uses Grafana's built-in Alertmanager, which surfaces alert state changes directly in the Grafana UI. For production, you can replace this with Email, Slack, PagerDuty, or any other supported integration.
 
     ![Contact point configuration](images/contact_point.png)
 
@@ -45,7 +45,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 2. In **Search by contact point** select `grafana-default-alertmanager`.
 
-3. If you navigate away and come back to the page you will notice a default policy has been set.
+3. If you navigate away from the page and then return, you will notice that a default notification policy has been automatically created.
 
     ![Alerting policy](images/alerting_policy.png)
 
@@ -59,9 +59,11 @@ Grafana requires at least one contact point before you can save an alert rule.
 
     - **Data source:** Select your Loki data source
     - **Code:** Switch from **Builder** to **Code** and enter:
+
       ```
-      sum(count_over_time({job="oracle_adb", source="audit_trail"} |= "rc=" != "rc=0" [5m]))
+        sum(count_over_time({job="oracle_adb", source="audit_trail"} |= "rc=" != "rc=0" [5m]))
       ```
+
       This counts audit trail entries with non-zero return codes in the last 5 minutes.
     - Set **Alert Condition** to: **IS ABOVE** `0`
     - Click **Run queries** (`No data` is normal if you're not currently receiving audit failures)
@@ -108,7 +110,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 5. If you configured email or Slack instead of the built-in Alertmanager, you should receive a notification.
 
-    > **Tip:** To reset the alert back to Normal, wait for the 5-minute window in the LogQL query to expire without new audit failures.
+    **Tip:** To reset the alert back to Normal, wait for the 5-minute window in the LogQL query to expire without new audit failures.
 
 ## Task 5: Explore Additional Alert Ideas (Optional)
 
@@ -121,7 +123,7 @@ You can create more alert rules using the same pattern. Here are some useful Log
 | High audit volume | `sum(count_over_time({job="oracle_adb", source="audit_trail"} [5m]))` | Above 100 |
 | GRANT operations | `sum(count_over_time({job="oracle_adb", source="audit_trail"} \|= "action=GRANT" [5m]))` | Above 0 |
 
-**Congratulations!** You have successfully built a complete log observability pipeline for Oracle Autonomous AI Database - Dedicated (ADB-D) — with live dashboards and proactive alerting — entirely from within the database using PL/SQL, UTL_HTTP, and DBMS_SCHEDULER. No external agents or exporters required.
+**Congratulations!** You have successfully built a complete log observability pipeline for Oracle Autonomous AI Database on Dedicated Infrastructure with live dashboards and proactive alerting. You have built this entirely from within the database using PL/SQL, UTL_HTTP, and DBMS_SCHEDULER. No external agents or exporters are required.
 
 ## Summary
 
@@ -144,4 +146,4 @@ In this workshop, you learned how to:
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will import a pre-built Grafana dashboard that provides a comprehensive Log Explorer for your ADB-D instance. The dashboard includes log volume charts, KPI cards, log stream viewers, and audit analytics panels.
+In this lab, you will import a pre-built Grafana dashboard that provides a comprehensive Log Explorer for your Autonomous AI Database instance. The dashboard includes log volume charts, KPI cards, log stream viewers, and audit analytics panels.
 
 *Estimated Lab Time:* 10 minutes
 
@@ -24,7 +24,7 @@ In this lab, you will import a pre-built Grafana dashboard that provides a compr
 
 2. Note the UID from the URL. For example: `http://localhost:3000/connections/datasources/edit/dfj0375t0f2tca` → the UID is `dfj0375t0f2tca`.
 
-3. If you also have **Prometheus** configured (from the companion workshop), note its UID as well — the dashboard includes an optional database identity header panel that uses a Prometheus metric.
+3. If you also have **Prometheus** configured (from the companion workshop), note its UID as well as the dashboard includes an optional database identity header panel that uses a Prometheus metric.
 
 ## Task 2: Prepare the Dashboard JSON
 
@@ -401,7 +401,7 @@ In this lab, you will import a pre-built Grafana dashboard that provides a compr
     - Replace all occurrences of `<your_loki_datasource_uid>` with your Loki data source UID
     - Replace `<your_prometheus_datasource_uid>` and `<your_datasource_uid>` with your Prometheus data source UID
 
-    > **No Prometheus?** If you don't have the companion Prometheus setup, simply delete the first panel (the database identity header — panel id 20) from the JSON before importing.
+    **No Prometheus?** If you do not have the companion Prometheus setup, simply delete the first panel (the database identity header — panel id 20) from the JSON before importing.
 
 ## Task 3: Import the Dashboard
 
@@ -452,4 +452,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

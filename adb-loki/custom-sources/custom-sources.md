@@ -102,7 +102,7 @@ In this lab, you will use the DBMS_LOKI self-service API to register a custom lo
     
     ```
 
-    > **Note:** The unified audit trail has a write-behind flush delay (15–30 seconds). If the first push shows "no new entries," wait 30 seconds and try again.
+    **Note:** The unified audit trail has a write-behind flush delay (15–30 seconds). If the first push shows "no new entries," wait 30 seconds and try again.
 
 2. Verify in Grafana. Go to **Explore** → Loki → query:
 
@@ -150,7 +150,7 @@ In this lab, you will use the DBMS_LOKI self-service API to register a custom lo
     
     ```
 
-    > **Note:** Removing a source also deletes its watermark (via `ON DELETE CASCADE`). If you re-add it, the watermark re-initializes to `SYSTIMESTAMP - 5 MINUTE`.
+    **Note:** Removing a source also deletes its watermark (via `ON DELETE CASCADE`). If you re-add it, the watermark re-initializes to `SYSTIMESTAMP - 5 MINUTE`.
 
 5. Re-add it for the next lab:
 
@@ -918,7 +918,7 @@ Now that you have a third log source streaming, update your Grafana dashboard to
     }
     ```
 
-    > **Note:** This is an updated version of the dashboard you imported in [Lab 4: Import the Log Explorer Dashboard](../import-dashboard/import-dashboard.md). It adds a **DDL Changes — Schema Change Tracking** log viewer panel and a **DDL Changes** KPI stat card (orange) to the existing layout.
+    **Note:** This is an updated version of the dashboard you imported in [Lab 4: Import the Log Explorer Dashboard](../import-dashboard/import-dashboard.md). It adds a **DDL Changes — Schema Change Tracking** log viewer panel and a **DDL Changes** KPI stat card (orange) to the existing layout.
 
 2. Replace the data source UIDs in the JSON just as you did in Lab 4, Task 2:
 
@@ -944,4 +944,4 @@ You may now **proceed to the next and final lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

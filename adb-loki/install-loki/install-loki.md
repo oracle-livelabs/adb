@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will install Grafana Loki on a compute instance in the same VCN as your ADB-D. Loki will receive log entries pushed from the database via UTL_HTTP.
+In this lab, you will install Grafana Loki on a compute instance in the same VCN as your Autonomous AI Database. Loki will receive log entries pushed from the database via UTL_HTTP.
 
 *Estimated Lab Time:* 15 minutes
 
@@ -15,10 +15,10 @@ In this lab, you will install Grafana Loki on a compute instance in the same VCN
 
 ### Prerequisites
 
-- A compute instance in the same VCN/subnet as your ADB-D
+- A compute instance in the same VCN/subnet as your Autonomous AI Database
 - SSH access to the compute instance (via bastion or direct)
 
-> **Already have Loki installed?** If Loki is already running on your compute instance, skip to Lab 2.
+**Already have Loki installed?** If Loki is already running on your compute instance, skip to Lab 2.
 
 ## Task 1: SSH Into the Compute Instance
 
@@ -122,7 +122,7 @@ In this lab, you will install Grafana Loki on a compute instance in the same VCN
     
     ```
 
-    > **Important:** The `unordered_writes: true` and `reject_old_samples: false` settings are required. Without them, Loki silently drops log entries with timestamps older than the last ingested entry — which happens when the database pushes entries with their original timestamps.
+    **Note:** The `unordered_writes: true` and `reject_old_samples: false` settings are required. Without these configurations, Loki silently drops log entries whose timestamps are older than the most recently ingested entry. This behavior occurs because the database forwards log entries using their original timestamps, which may be earlier than timestamps that Loki has already processed.
 
 ## Task 4: Create the systemd Service
 
@@ -172,7 +172,7 @@ In this lab, you will install Grafana Loki on a compute instance in the same VCN
 
     Expected output: `ready`
 
-    > Keep trying the curl command if you do not see `ready` after 20 seconds
+    Keep trying the curl command if you do not see `ready` after 20 seconds
 
 2. Test the push API with a sample entry:
 
@@ -202,11 +202,11 @@ In this lab, you will install Grafana Loki on a compute instance in the same VCN
     
     ```
 
-    > **Note:** Also verify that the VCN subnet security list allows inbound TCP on port 3100 from the ADB-D subnet CIDR.
+    **Note:** Also verify that the VCN subnet security list allows inbound TCP on port 3100 from the Autonomous AI Database subnet CIDR.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

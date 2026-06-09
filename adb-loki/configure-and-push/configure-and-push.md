@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will configure the Loki endpoint, perform a test push, verify log entries appear in Grafana, and start the continuous push scheduler job. You will also learn how to backfill historical alert log entries.
+In this lab, you will configure the Loki endpoint, perform a test push, verify that log entries appear in Grafana, and start the continuous push scheduler job. You will also learn how to backfill historical alert log entries.
 
 *Estimated Lab Time:* 10 minutes
 
@@ -19,11 +19,11 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify l
 - Grafana accessible via bastion tunnel (port 3000)
 - Loki added as a Grafana data source
 
-> **Grafana setup:** If you haven't added Loki as a Grafana data source yet, go to **Connections** → **Data sources** → **Add data source** → select **Loki** → set URL to `http://localhost:3100` → click **Save & test**.
+**Grafana setup:** If you haven't added Loki as a Grafana data source yet, go to **Connections** → **Data sources** → **Add data source** → select **Loki** → set URL to `http://localhost:3100` → click **Save & test**.
 
 ## Task 1: Configure the Loki Endpoint
 
-1. Connect to your ADB-D as **PROMETHEUS_EXPORTER** via SQL Worksheet or SQLcl.
+1. Connect to your Autonomous AI Database as **PROMETHEUS_EXPORTER** via SQL Worksheet or SQLcl.
 
 2. Configure the Loki URL:
 
@@ -34,7 +34,7 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify l
     
     ```
 
-    > Replace `<compute_private_ip>` with your Loki host's IP. Expected output: `Loki URL configured: http://10.0.0.57:3100`
+    Replace `<compute_private_ip>` with your Loki host's IP. Expected output: `Loki URL configured: http://10.0.0.57:3100`
 
 ## Task 2: Test Push
 
@@ -55,7 +55,7 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify l
     audit_trail: pushed 16 entries — Status: 204
     ```
 
-    > **Note:** If alert_log shows "no new entries," this is normal — alert log entries are infrequent on ADB-D (typically only during nightly partition maintenance). See Task 4 for how to backfill historical entries.
+    **Note:** If the alert log reports "no new entries," this is expected behavior. Alert log entries are generated infrequently in Autonomous AI Database and typically occur only during significant system events, such as nightly partition maintenance. As a result, it is normal for the alert log to have no new entries for extended periods. See Task 4 for how to backfill historical entries.
 
 2. Verify in Grafana. Open Grafana → **Explore** → select the **Loki** data source → run:
 
@@ -117,7 +117,7 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify l
 
 ## Task 4: Backfill Historical Alert Log Entries
 
-The alert log watermark initializes to `SYSTIMESTAMP - 5 MINUTE`, so only new entries are captured by default. On ADB-D, alert log entries are infrequent — to see historical entries for testing, reset the watermark:
+The alert log watermark is initialized to `SYSTIMESTAMP - INTERVAL '5' MINUTE`, so only newly generated entries are captured by default. Because alert log activity is infrequent on Autonomous AI Database, you may not see any entries immediately after enabling collection. To view historical entries for testing or validation purposes, reset the watermark as shown below:
 
 1. Reset the alert log watermark to capture the last 7 days:
 
@@ -146,11 +146,11 @@ The alert log watermark initializes to `SYSTIMESTAMP - 5 MINUTE`, so only new en
 
     <!-- Screenshot placeholder: Grafana showing alert log entries spanning multiple days -->
 
-    > **Tip:** Use the same technique for the audit trail, but start with a shorter interval (e.g., 1 hour) to avoid large backfills.
+    **Tip:** Use the same technique for the audit trail, but start with a shorter interval (e.g., 1 hour) to avoid large backfills.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

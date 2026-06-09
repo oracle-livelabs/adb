@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will create a DBMS_LOKI package on your ADB-D instance. This includes creating the exporter schema (if it doesn't exist), granting the necessary privileges, creating the audit trail wrapper view, and running the provisioning steps that create the tables and PL/SQL package.
+In this lab, you will create a DBMS_LOKI package in your Autonomous AI Database instance. This includes creating the exporter schema if it does not already exist, granting the necessary privileges, creating the audit trail wrapper view, and running the provisioning steps that create the tables and PL/SQL package.
 
 *Estimated Lab Time:* 15 minutes
 
@@ -10,19 +10,19 @@ In this lab, you will create a DBMS_LOKI package on your ADB-D instance. This in
 
 - Create the PROMETHEUS_EXPORTER schema (or reuse from [companion workshop](https://placeholder-url/prometheus-livelab))
 - Grant alert log, audit trail, scheduler, and network ACL privileges
-- Create the audit trail wrapper view (required for ADB-D)
+- Create the audit trail wrapper view (required for Autonomous AI Database)
 - Deploy the DBMS_LOKI package with default log sources
 
 ### Prerequisites
 
-- ADMIN access to your ADB-D instance (via SQLcl or SQL Worksheet)
+- ADMIN access to your Autonomous AI Database instance (via SQLcl or SQL Worksheet)
 - The Loki compute instance IP address from Lab 1
 
 ## Task 1: Create the Exporter Schema
 
-> **Already completed the Prometheus workshop?** If the `PROMETHEUS_EXPORTER` schema already exists, skip to Task 2.
+ **Already completed the Prometheus workshop?** If the `PROMETHEUS_EXPORTER` schema already exists, skip to Task 2.
 
-1. Connect to your ADB-D instance as **ADMIN** using SQL Worksheet or SQLcl.
+1. Connect to your Autonomous AI Database instance as **ADMIN** using SQL Worksheet or SQLcl.
 
 2. Create the schema:
 
@@ -33,11 +33,11 @@ In this lab, you will create a DBMS_LOKI package on your ADB-D instance. This in
     
     ```
 
-    > **Note:** ADB enforces password complexity — minimum 12 characters with uppercase, lowercase, digit, and special character.
+    **Note:** Autonomous AI Database enforces password complexity — minimum 12 characters with uppercase, lowercase, digit, and special character.
 
 ## Task 2: Grant Privileges
 
-1. Still connected as **ADMIN**, grant access to the alert log and audit trail:
+1. While still connected as **ADMIN**, grant th required access to the alert log and audit trail:
 
     ```sql
     
@@ -73,13 +73,13 @@ In this lab, you will create a DBMS_LOKI package on your ADB-D instance. This in
 
     Replace `<compute_private_ip>` with your Loki host's IP (e.g., `10.0.0.57`).
 
-    > **Security note:** In production, always scope the ACL to the specific Loki host IP rather than using a wildcard (`*`). This prevents the exporter schema from connecting to any unauthorized host.
+     **Note:** In production, always scope the ACL to the specific Loki host IP rather than using a wildcard (`*`). This prevents the exporter schema from connecting to any unauthorized host.
 
 ## Task 3: Create the Audit Trail View
 
-On ADB-D, direct grants on audit objects (`AUDSYS.UNIFIED_AUDIT_TRAIL`) are not permitted. We create a wrapper view owned by ADMIN:
+On Autonomous AI Database, direct grants on audit objects such as `AUDSYS.UNIFIED_AUDIT_TRAIL` are not permitted. To provide the required access, create a wrapper view owned by the ADMIN user:
 
-1. Still as **ADMIN**, run:
+1. While still connected as **ADMIN**, run:
 
     ```sql
     
@@ -93,11 +93,11 @@ On ADB-D, direct grants on audit objects (`AUDSYS.UNIFIED_AUDIT_TRAIL`) are not 
     
     ```
 
-    > **Why a view?** The `AUDIT_VIEWER` role grants access in interactive SQL, but PL/SQL packages and DBMS_SCHEDULER jobs cannot use role-based privileges — they need direct grants. Since Oracle doesn't allow direct grants on AUDSYS objects in ADB-D, this ADMIN-owned view bridges the gap.
+    **Why use a view?** The `AUDIT_VIEWER` role provides access in interactive SQL, but PL/SQL packages and DBMS_SCHEDULER jobs cannot rely on  role-based privileges; they require direct grants. Because Oracle does not allow direct grants on AUDSYS objects in Autonomous AI Database, an ADMIN-owned view bridges the gap.
 
 ## Task 4: Create the Log Source Registry Table
 
-Still as **ADMIN**, create the log source registry table. Each log source (alert log, audit trail, custom sources) is stored as a row in this table.
+While still connected as **ADMIN**, create the log source registry table. Each log source (alert log, audit trail, custom sources) is stored as a row in this table.
 
 ```sql
 
@@ -137,7 +137,7 @@ Expected output: `LOKI_LOG_SOURCES table created.`
 
 ## Task 5: Create the Watermark and Configuration Tables
 
-1. Still as **ADMIN**, create the watermark table. This tracks the last pushed timestamp per source — the engine uses it to send only new entries on each push cycle.
+1. While still connected as **ADMIN**, create the watermark table. This tracks the last pushed timestamp per source and the engine uses it to send only new entries on each push cycle.
 
     ```sql
     
@@ -198,7 +198,7 @@ Expected output: `LOKI_LOG_SOURCES table created.`
 
 ## Task 6: Seed the Default Log Sources
 
-Still as **ADMIN**, insert the two default log sources: alert log and unified audit trail.
+While still connected as **ADMIN**, insert the two default log sources: alert log and unified audit trail.
 
 ```sql
 
@@ -260,7 +260,7 @@ Expected output: `Seed data loaded (2 default log sources).`
 
 ## Task 7: Create the Package Specification
 
-Still as **ADMIN**, create the DBMS_LOKI package specification. This defines the public API — all the procedures and functions customers will call.
+While still connected as **ADMIN**, create the DBMS_LOKI package specification. This defines the public API including all procedures and functions customers will call.
 
 ```sql
 
@@ -308,16 +308,17 @@ END dbms_loki;
 /
 
 ```
+The AUTHID CURRENT_USER clause is critical because it causes the package to execute with the privileges of the invoking user rather than the package owner. This enables the package to use privileges granted through roles, such as AUDIT_VIEWER, which is necessary for scheduler jobs and package procedures to access the audit trail. Without AUTHID CURRENT_USER, the package would execute with definer's rights and would not be able to leverage role-based privileges.
 
 Expected output: `Package PROMETHEUS_EXPORTER.DBMS_LOKI compiled`
 
-> **Note:** The `AUTHID CURRENT_USER` clause is critical. It makes the package run with the caller's privileges (including role grants like `AUDIT_VIEWER`), which is required for the scheduler job to access the audit trail.
+**Note:** The `AUTHID CURRENT_USER` clause is critical because it causes the package to run with the privileges of the invoking user rather than the package owner. This enables the package to use privileges granted through roles, such as `AUDIT_VIEWER`, which is necessary for scheduler jobs and package procedures to access the audit trail. Without `AUTHID CURRENT_USER`, the package would run with definer's rights and would not be able to leverage role-based privileges.
 
 ## Task 8: Create the Package Body
 
-Still as **ADMIN**, create the package body. This contains the push engine, JSON formatting, watermark management, and all API implementations.
+While still connected as **ADMIN**, create the package body. This contains the push engine, JSON formatting, watermark management, and all API implementations.
 
-> **Note:** This is the largest code block in the workshop. Copy and paste the entire block and run it as a single statement.
+**Note:** Copy and paste the entire code block and run it as a single statement.
 
 ```sql
 
@@ -761,7 +762,7 @@ END dbms_loki;
 
 Expected output: `Package Body PROMETHEUS_EXPORTER.DBMS_LOKI compiled`
 
-> **Troubleshooting:** If you see `PLS-00307: too many declarations of 'COLUMN_VALUE'`, ensure the package spec (Task 7) includes the `TYPE t_idx_tab IS TABLE OF PLS_INTEGER` declaration. If you see `ORA-00904: "SQLERRM": invalid identifier`, this is a cross-schema compilation issue — the `v_errmsg := SQLERRM` pattern in the exception handler resolves it (already included in the code above).
+**Troubleshooting:** If you see `PLS-00307: too many declarations of 'COLUMN_VALUE'`, ensure the package spec (Task 7) includes the `TYPE t_idx_tab IS TABLE OF PLS_INTEGER` declaration. If you see `ORA-00904: "SQLERRM": invalid identifier`, this is a cross-schema compilation issue and the `v_errmsg := SQLERRM` pattern in the exception handler resolves it (already included in the code above).
 
 ## Task 9: Verify the Package
 
@@ -803,11 +804,11 @@ Expected output: `Package Body PROMETHEUS_EXPORTER.DBMS_LOKI compiled`
 
     Expected output: `Status: 200 Body: ready`
 
-    > **Troubleshooting:** If you get `ORA-24247: network access denied`, the ACL from Task 2 was not applied correctly. Verify the host IP matches your compute instance.
+    **Troubleshooting:** If you get `ORA-24247: network access denied`, the ACL from Task 2 was not applied correctly. Verify the host IP matches your compute instance.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026
