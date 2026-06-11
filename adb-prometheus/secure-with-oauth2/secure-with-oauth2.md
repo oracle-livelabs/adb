@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In the previous lab, the endpoint was publicly accessible (no authentication required) which is insecure. In this lab, you will secure it using the OAuth2 client credentials flow — the standard pattern for server-to-server communication. After this lab, only clients with a valid access token can scrape your metrics.
+In the previous lab, the endpoint was publicly accessible and did not require authentication which is insecure. In this lab, you will secure it using the OAuth 2.0 client credentials , the standard pattern for server-to-server communication. After completing the lab, only clients with a valid access token will be able to scrape your metrics.
 
 *Estimated Lab Time:* 10 minutes
 
@@ -54,7 +54,7 @@ In the previous lab, the endpoint was publicly accessible (no authentication req
     /
     ```
 
-    > **Note:** The `ORDS.DEFINE_PRIVILEGE` procedure (with `OWA.VC_ARR` arrays) is the correct API for ORDS 25.x. The older `ORDS.CREATE_PRIVILEGE` procedure has a different signature and may produce errors on ADB.
+    > **Note:** The `ORDS.DEFINE_PRIVILEGE` procedure (with `OWA.VC_ARR` arrays) is the correct API for ORDS 25.x. The older `ORDS.CREATE_PRIVILEGE` procedure has a different signature and may produce errors on Autonomous AI Database.
 
 ## Task 3: Create the OAuth2 Client
 
@@ -138,4 +138,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

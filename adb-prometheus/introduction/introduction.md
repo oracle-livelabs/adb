@@ -1,10 +1,12 @@
-# Build a Prometheus-Compatible Telemetry Endpoint for ADB-D Using ORDS
+# Build a Prometheus-Compatible Telemetry Endpoint for Autonomous AI Database Using ORDS
 
 ## Introduction
 
-Oracle Autonomous AI Database - Dedicated (ADB-D) provides powerful performance views (`V$SYSSTAT`, `V$SYSMETRIC`, `V$WAITCLASSMETRIC`, and more) but does not natively expose a Prometheus-compatible metrics endpoint. In this workshop, you will build one — entirely from within the database — using Oracle REST Data Services (ORDS), PL/SQL, and the Prometheus exposition format.
+Oracle Autonomous AI Database on Dedicated Exadata Infrastructure (Autonomous AI Database) provides access to a rich set of performance and monitoring views, including `V$SYSSTAT`,`V$SYSMETRIC`, `V$WAITCLASSMETRIC`, and many others. However, it does not natively offer a Prometheus-compatible metrics endpoint for external monitoring and observability platforms.
 
-By the end of this workshop, you will have a fully functional observability pipeline: real-time database telemetry scraped by Prometheus and visualized in a Grafana dashboard — with no external agents or exporters required.
+In this workshop, you will learn how to build a custom Prometheus metrics endpoint entirely within the database using Oracle REST Data Services (ORDS), PL/SQL, and the Prometheus exposition format. This approach enables seamless integration of Autonomous AI Database performance metrics with modern monitoring and observability ecosystems.
+
+By the end of this workshop, you will have implemented a complete observability pipeline, enabling real-time database telemetry to be collected by Prometheus and visualized through Grafana dashboards. This solution operates entirely within Oracle Autonomous AI Database, eliminating the need for external agents, exporters, or additional monitoring infrastructure while providing comprehensive visibility into database performance and health.
 
 *Estimated Workshop Time:* 90 minutes
 
@@ -12,7 +14,7 @@ By the end of this workshop, you will have a fully functional observability pipe
 
 ![Architecture diagram showing ADB-D → ORDS → Prometheus → Grafana pipeline inside a VCN](images/adb_d_prometheus_architecture.svg)
 
-Unlike standard ORDS handlers that wrap responses in JSON, we use `source_type_media` that streams raw content with a custom `Content-Type` header. By returning `text/plain; version=0.0.4` and a CLOB containing Prometheus exposition format, we create a native `/metrics` endpoint directly from the database.
+Unlike standard ORDS handlers, which typically encapsulate responses in JSON, this implementation leverages the `source_type_media` handler type to stream raw content directly to the client with a custom `Content-Type` header. By returning content as `text/plain; version=0.0.4` along with a CLOB formatted according to the Prometheus exposition standard, we can expose a native `/metrics` endpoint directly from Oracle Autonomous AI Database.
 
 ### Objectives
 
@@ -22,14 +24,14 @@ In this workshop, you will learn how to:
 - Use ORDS `source_type_media` to serve raw `text/plain` content (bypassing JSON wrapping)
 - Secure the endpoint with OAuth2 client credentials flow
 - Deploy Prometheus and Grafana on a compute instance in the same VCN
-- Build a comprehensive Grafana dashboard for ADB-D observability
+- Build a comprehensive Grafana dashboard for Autonomous AI Database observability
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- An Oracle Autonomous AI Database - Dedicated (ADB-D) instance running in a private subnet
-- ADMIN access to the ADB-D (via Database Actions or SQLcl)
+- An Autonomous AI Database instance running in a private subnet
+- ADMIN access to the Autonomous AI Database (via Database Actions or SQLcl)
 - An OCI Bastion Service configured in the same VCN
 - OCI CLI installed and configured on your local machine
 - An SSH key pair (e.g., `~/.ssh/id_ed25519`)
@@ -52,4 +54,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

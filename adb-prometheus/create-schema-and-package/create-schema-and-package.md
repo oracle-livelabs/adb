@@ -14,11 +14,11 @@ In this lab, you will create a dedicated database schema for the Prometheus expo
 
 ### Prerequisites
 
-- ADMIN access to your ADB-D instance (via SQLcl or SQL Worksheet)
+- ADMIN access to your Autonomous AI Database instance (via SQLcl or SQL Worksheet)
 
 ## Task 1: Create the PROM\_EXPORTER Schema
 
-1. Connect to your ADB-D instance as **ADMIN** using SQLcl or SQL Worksheet.
+1. Connect to your Autonomous AI Database instance as **ADMIN** using SQLcl or SQL Worksheet.
 
 2. Run the following SQL to create the schema and grant the necessary privileges:
 
@@ -38,14 +38,14 @@ In this lab, you will create a dedicated database schema for the Prometheus expo
     GRANT SELECT ON V$WAITCLASSMETRIC TO prom_exporter;
     GRANT SELECT ON DBA_TABLESPACE_USAGE_METRICS TO prom_exporter;
 
-    -- Grant access to ACD_ cross-container views (ADB-D specific)
+    -- Grant access to ACD_ cross-container views (Autonomous AI Database specific)
     GRANT ALL ON ACD_V$SYSMETRIC TO prom_exporter;
     GRANT ALL ON ACD_V$WAITCLASSMETRIC TO prom_exporter;
     ```
 
-    > **Note:** ADB enforces password complexity — use a minimum of 12 characters with uppercase, lowercase, digit, and special character.
+    > **Note:** Autonomous AI Database enforces password complexity — use a minimum of 12 characters with uppercase, lowercase, digit, and special character.
 
-    > **ADB-D Note:** The `ACD_V$` views are cross-container views specific to ADB-D. They require `GRANT ALL` instead of `GRANT SELECT`. These views provide the real-time system metrics and wait class data that the standard `V$` equivalents may not populate on ADB-D.
+    > **Autonomous AI Database Note:** The `ACD_V$` views are cross-container views specific to Autonomous AI Database. They require `GRANT ALL` instead of `GRANT SELECT`. These views provide the real-time system metrics and wait class data that the standard `V$` equivalents may not populate on Autonomous AI Database.
 
 ## Task 2: Enable the Schema for ORDS
 
@@ -232,4 +232,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

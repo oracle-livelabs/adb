@@ -2,7 +2,7 @@
 
 ## Introduction
 
-With your dashboard running, the final step is to configure alerting so you're notified when key metrics cross critical thresholds. In this lab, you will create a Host CPU Utilization alert using Grafana's built-in Alertmanager — you can later augment this with external notification channels or SMTP configuration.
+With your dashboard in place, the final step is to configure alerting so that you are proactively notified when critical metrics exceed defined thresholds. In this lab, you will create a Host CPU Utilization alert using Grafana's built-in Alertmanager. This alert will continuously monitor CPU usage and trigger notifications when utilization reaches a specified threshold, helping you identify potential performance issues before they impact workloads. You can later extend this setup by integrating external notification channels such as email, Slack, PagerDuty, Microsoft Teams, or a custom SMTP server.
 
 *Estimated Lab Time:* 10 minutes
 
@@ -32,7 +32,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 4. Click **Save contact point**.
 
-    > **Note:** This uses Grafana's built-in Alertmanager, which surfaces alert state changes directly in the Grafana UI. For production, you can replace this with Email, Slack, PagerDuty, or any other supported integration.
+    **Note:** This uses Grafana's built-in Alertmanager, which surfaces alert state changes directly in the Grafana UI. For production, you can replace this with Email, Slack, PagerDuty, or any other supported integration.
 
     ![Contact point configuration](images/contact_point.png)
 
@@ -127,4 +127,4 @@ In this workshop, you learned how to:
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

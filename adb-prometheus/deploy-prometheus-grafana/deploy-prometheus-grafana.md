@@ -2,13 +2,13 @@
 
 ## Introduction
 
-In this lab, you will launch a compute instance in the same VCN as your Autonomous AI Database - Dedicated (ADB-D), install Prometheus and Grafana, and configure Prometheus to scrape your ORDS metrics endpoint using OAuth2 authentication.
+In this lab, you will launch a compute instance within the same VCN as your Autonomous AI Database on Dedicated Exadata Infrastructure (Autonomous AI Database). You will then install and configure Prometheus and Grafana on the compute instance, and configure Prometheus to securely scrape metrics from your ORDS endpoint using OAuth 2.0 client credentials authentication.
 
 *Estimated Lab Time:* 30 minutes
 
 ### Objectives
 
-- Launch an OCI Compute instance in the ADB-D subnet
+- Launch an OCI Compute instance in the Autonomous AI Database subnet
 - Install and configure Prometheus with OAuth2 scraping
 - Install Grafana
 - Access Grafana from your local machine via bastion tunnel
@@ -31,7 +31,7 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
       --query 'data[0].id' --raw-output
     ```
 
-    > **Replace** `<your_compartment_ocid>` above.
+    **Replace** `<your_compartment_ocid>` above.
 
 2. Launch the instance in the same subnet as your ADB-D:
 
@@ -49,9 +49,9 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
       --wait-for-state RUNNING
     ```
 
-    > **Replace** `<your_AD>`, `<your_compartment_ocid>`, `<your_adb_subnet_ocid>`, `<image_ocid_from_step_1>` and `~/.ssh/id_ed25519.pub` above.
+    **Replace** `<your_AD>`, `<your_compartment_ocid>`, `<your_adb_subnet_ocid>`, `<image_ocid_from_step_1>` and `~/.ssh/id_ed25519.pub` above.
 
-    > **Important:** The compute instance must be in the **same VCN and subnet** as your ADB-D to directly reach the SCAN hostname.
+    **Important:** The compute instance must be in the **same VCN and subnet** as your ADB-D to directly reach the SCAN hostname.
 
 3. Get the private IP of the new instance:
 
@@ -62,7 +62,7 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
     ```
 
     Note this IP — you'll use it for SSH and Grafana tunnels.
-    > **Replace** `<instance_ocid>` above.
+    **Replace** `<instance_ocid>` above.
 
 ## Task 2: SSH Into the Instance
 
@@ -79,7 +79,7 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
       --wait-for-state SUCCEEDED
     ```
 
-    > **Replace** `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
+    **Replace** `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
 
 2. Start the SSH tunnel (in a terminal that stays open):
 
@@ -90,9 +90,9 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
       <session_ocid>@host.bastion.<region>.oci.oraclecloud.com
     ```
 
-    > **Replace** `~/.ssh/id_ed25519` and `<session_ocid>` above.
+    **Replace** `~/.ssh/id_ed25519` and `<session_ocid>` above.
 
-    > **Important:** This command will provide no output, it will block the terminal but keep a tunnel open (this is normal behavior)
+    **Important:** This command will provide no output, it will block the terminal but keep a tunnel open (this is normal behavior)
 
 3. In another terminal, connect to the compute instance through the tunnel:
 
@@ -100,7 +100,7 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
     ssh -i ~/.ssh/id_ed25519 -p 2222 opc@localhost
     ```
 
-    > **Replace** `~/.ssh/id_ed25519` with your SSH key
+    **Replace** `~/.ssh/id_ed25519` with your SSH key
 
 ## Task 3: Validate Connectivity to the ORDS Endpoint
 
@@ -110,9 +110,9 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
     curl -k https://<scan-hostname>/ords/<DB_NAME>/prom_exporter/prom/v1/metrics
     ```
 
-    > If OAuth2 is enabled (Lab 3), you'll get a 401 response. That's expected — Prometheus will handle authentication automatically.
+    If OAuth2 is enabled (Lab 3), you'll get a 401 response. That's expected as Prometheus will handle authentication automatically.
 
-    > **Replace** `<scan-hostname>` and `<DB_NAME>` above.
+    **Replace** `<scan-hostname>` and `<DB_NAME>` above.
 
 ## Task 4: Install Prometheus
 
@@ -159,7 +159,7 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
     EOF
     ```
 
-    > **Replace** `<DB_NAME>`, `<scan-hostname>`, `<your_client_id>`, and `<your_client_secret>` with your actual values from Labs 2 and 3.
+    **Replace** `<DB_NAME>`, `<scan-hostname>`, `<your_client_id>`, and `<your_client_secret>` with your actual values from Labs 2 and 3.
 
 2. Set ownership and create the systemd service:
 
@@ -239,7 +239,7 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
       --wait-for-state SUCCEEDED
     ```
 
-    > **Replace** `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
+    **Replace** `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
 
 2. Start the tunnel in a new terminal:
 
@@ -250,9 +250,9 @@ In this lab, you will launch a compute instance in the same VCN as your Autonomo
       <session_ocid>@host.bastion.<region>.oci.oraclecloud.com
     ```
 
-    > **Replace** `<session_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
+    **Replace** `<session_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
 
-    > **Important:** This command will provide no output, it will block the terminal but keep a tunnel open (this is normal behavior)
+    **Important:** This command will provide no output, it will block the terminal but keep a tunnel open (this is normal behavior)
 
 3. Open **http://localhost:3000** in your browser. Login with `admin` / `admin`. You will be prompted to change the password.
 
@@ -277,4 +277,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

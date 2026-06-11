@@ -26,7 +26,7 @@ In this lab, you will import a pre-built 16-panel Grafana dashboard that visuali
 
 ## Task 2: Import the Dashboard JSON
 
-1. Copy the ADB dashboard JSON specification:
+1. Copy the Autonomous AI Database dashboard JSON specification:
 
     ```json
     {
@@ -428,7 +428,7 @@ In this lab, you will import a pre-built 16-panel Grafana dashboard that visuali
     }
     ```
 
-    > **Important:** Don't forget to replace all instances of `<your_datasource_uid>` with your actual Prometheus datasource id
+    **Important:** Don't forget to replace all instances of `<your_datasource_uid>` with your actual Prometheus datasource id
 
 ## Task 3: Import the Dashboard
 
@@ -504,7 +504,7 @@ The dashboard is organized into 6 rows with 16 panels.
 
     ![Grafana dashboard interval](images/dashboard_interval.png)
 
-    > **Tip:** The Grafana refresh interval can be independent of the Prometheus scrape interval. Making Grafana refresh faster than 30 seconds won't show new data — we configured Prometheus to only scrape every 30 seconds.
+    **Tip:** The Grafana refresh interval can be independent of the Prometheus scrape interval. Making Grafana refresh faster than 30 seconds won't show new data — we configured Prometheus to only scrape every 30 seconds.
 
 3. To change the Prometheus scrape interval, edit `/etc/prometheus/prometheus.yml` on the compute instance and restart Prometheus:
 
@@ -514,7 +514,7 @@ The dashboard is organized into 6 rows with 16 panels.
     sudo systemctl restart prometheus
     ```
 
-    > **Important:** 30 seconds is a good balance to avoid stressing the database. Lower values are not recommended.
+    **Important:** 30 seconds is a good balance to avoid stressing the database. Lower values are not recommended.
 
 ## Task 6: Create Custom Panels (Optional)
 
@@ -531,4 +531,4 @@ You may now **proceed to the next and final lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will create the ORDS module, template, and handler that exposes the PL/SQL function as a Prometheus-compatible HTTP endpoint. The key technique is using `source_type_media`, which streams raw content with a custom content type — bypassing ORDS's default JSON wrapping.
+In this lab, you will create the ORDS module, template, and handler that expose the PL/SQL function as a Prometheus-compatible HTTP endpoint. The key technique is using `source_type_media`, which streams raw content with a custom content type, bypassing ORDS's default JSON wrapping.
 
 *Estimated Lab Time:* 10 minutes
 
@@ -93,7 +93,7 @@ To find your specific values:
       --raw-output
     ```
 
-3. Note your full endpoint URL — you will use it throughout the remaining labs.
+3. Note your full endpoint URL as you will use it throughout the remaining labs.
 
 ## Task 4: Test the Endpoint (from a Compute Instance in the VCN)
 
@@ -103,9 +103,9 @@ To find your specific values:
     curl -k https://<scan-hostname>/ords/<DB_NAME>/prom_exporter/prom/v1/metrics
     ```
 
-2. You should see the raw Prometheus exposition format text — the same output as the SQL `SELECT` test, but now served over HTTPS by ORDS.
+2. You should see the raw Prometheus exposition format text —which is the same output as the SQL `SELECT` test, but now served over HTTPS by ORDS.
 
-    > **Note:** The `-k` flag disables certificate verification (ADB-D uses a self-signed certificate for internal ORDS). If you don't have a compute instance yet, don't worry — you will create one in Lab 4.
+    **Note:** The `-k` flag disables certificate verification (Autonomous AI Database uses a self-signed certificate for internal ORDS). If you do not have a compute instance yet, do not worry as you will create one in Lab 4.
 
     ```
     # HELP oracledb_sysstat Oracle system statistics.
@@ -199,4 +199,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 - **Author** - German Viscuso, Product Manager, Oracle Autonomous AI Database
-- **Last Updated By/Date** - German Viscuso, April 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026
