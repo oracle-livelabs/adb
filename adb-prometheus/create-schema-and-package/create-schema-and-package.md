@@ -69,7 +69,7 @@ In this lab, you will create a dedicated database schema for the Prometheus expo
     /
     ```
 
-    > **Note:** Setting `p_auto_rest_auth => FALSE` makes the endpoint publicly accessible initially. You will secure it with OAuth2 in Lab 3.
+    > **Note:** Setting `p_auto_rest_auth => FALSE` makes the endpoint publicly accessible initially. You will secure it with OAuth2 in [Lab 3](../secure-with-oauth2/secure-with-oauth2.md).
 
 ## Task 3: Create the PL/SQL Package
 
