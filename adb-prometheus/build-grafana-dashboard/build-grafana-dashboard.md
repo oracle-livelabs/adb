@@ -14,7 +14,7 @@ In this lab, you will import a pre-built 16-panel Grafana dashboard that visuali
 
 ### Prerequisites
 
-- Completion of Lab 4 (Grafana accessible at http://localhost:3000 with Prometheus data source configured)
+- Completion of [Lab 4](?lab=deploy-prometheus-grafana) (Grafana accessible at http://localhost:3000 with Prometheus data source configured)
 
 ## Task 1: Note Your Prometheus Data Source UID
 

@@ -15,7 +15,7 @@ With your dashboard in place, the final step is to configure alerting so that yo
 
 ### Prerequisites
 
-- Completion of Lab 5 (Grafana dashboard with live data)
+- Completion of [Lab 5](?lab=build-grafana-dashboard) (Grafana dashboard with live data)
 
 ## Task 1: Create a Contact Point
 

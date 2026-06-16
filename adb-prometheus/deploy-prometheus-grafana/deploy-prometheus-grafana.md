@@ -15,7 +15,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
 
 ### Prerequisites
 
-- Completion of Lab 3
+- Completion of [Lab 3](?lab=secure-with-oauth2)
 - OCI CLI installed and configured
 - SSH key pair available and registered in OCI
 
@@ -110,7 +110,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
     curl -k https://<scan-hostname>/ords/<DB_NAME>/prom_exporter/prom/v1/metrics
     ```
 
-    If OAuth2 is enabled (Lab 3), you'll get a 401 response. That's expected as Prometheus will handle authentication automatically.
+    If OAuth2 is enabled ([Lab 3](?lab=secure-with-oauth2)), you'll get a 401 response. That's expected as Prometheus will handle authentication automatically.
 
     **Replace** `<scan-hostname>` and `<DB_NAME>` above.
 
@@ -159,7 +159,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
     EOF
     ```
 
-    **Replace** `<DB_NAME>`, `<scan-hostname>`, `<your_client_id>`, and `<your_client_secret>` with your actual values from Labs 2 and 3.
+    **Replace** `<DB_NAME>`, `<scan-hostname>`, `<your_client_id>`, and `<your_client_secret>` with your actual values from [Lab 2](?lab=create-ords-endpoint) and [Lab 3](?lab=secure-with-oauth2).
 
 2. Set ownership and create the systemd service:
 

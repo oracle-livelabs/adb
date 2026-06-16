@@ -14,7 +14,7 @@ In this lab, you will create the ORDS module, template, and handler that expose 
 
 ### Prerequisites
 
-- Completion of Lab 1
+- Completion of [Lab 1](?lab=create-schema-and-package)
 
 ## Task 1: Create the ORDS Module, Template, and Handler
 
@@ -105,7 +105,7 @@ To find your specific values:
 
 2. You should see the raw Prometheus exposition format text —which is the same output as the SQL `SELECT` test, but now served over HTTPS by ORDS.
 
-    **Note:** The `-k` flag disables certificate verification (Autonomous AI Database uses a self-signed certificate for internal ORDS). If you do not have a compute instance yet, do not worry as you will create one in Lab 4.
+    **Note:** The `-k` flag disables certificate verification (Autonomous AI Database uses a self-signed certificate for internal ORDS). If you do not have a compute instance yet, do not worry as you will create one in [Lab 4](?lab=deploy-prometheus-grafana).
 
     ```
     # HELP oracledb_sysstat Oracle system statistics.

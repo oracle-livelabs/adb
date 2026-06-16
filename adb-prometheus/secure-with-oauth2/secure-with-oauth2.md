@@ -15,7 +15,7 @@ In the previous lab, the endpoint was publicly accessible and did not require au
 
 ### Prerequisites
 
-- Completion of Lab 2
+- Completion of [Lab 2](?lab=create-ords-endpoint)
 
 ## Task 1: Create a Role
 
@@ -98,13 +98,13 @@ In the previous lab, the endpoint was publicly accessible and did not require au
     SELECT name, client_id, client_secret FROM user_ords_clients WHERE name = 'prometheus';
     ```
 
-2. **Copy the `client_id` and `client_secret` values.** You will need them to configure Prometheus in Lab 4.
+2. **Copy the `client_id` and `client_secret` values.** You will need them to configure Prometheus in [Lab 4](?lab=deploy-prometheus-grafana).
 
     <!-- Screenshot placeholder: Screenshot of client_id and client_secret query result (with values partially redacted) -->
 
 ## Task 6: Test the OAuth2 Flow
 
-1. From a compute instance inside the VCN (or wait until Lab 4), test the token endpoint:
+1. From a compute instance inside the VCN (or wait until [Lab 4](?lab=deploy-prometheus-grafana)), test the token endpoint:
 
     ```bash
     # Step 1: Get an access token
