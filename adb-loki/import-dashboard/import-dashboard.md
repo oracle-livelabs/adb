@@ -14,7 +14,7 @@ In this lab, you will import a pre-built Grafana dashboard that provides a compr
 
 ### Prerequisites
 
-- Completion of Lab 3
+- Completion of [Lab 3](?lab=configure-and-push)
 - Grafana accessible via bastion tunnel
 - Loki added as a data source with log entries flowing
 
@@ -428,7 +428,7 @@ The dashboard has 12 panels organized in 6 rows:
     - **Audit Trail Entries** — total in selected time range
     - **Audit Failures (rc≠0)** — failed operations count (color-coded: green < 10, yellow < 50, red ≥ 50)
     - **Total Log Entries** — combined total
-    - **DDL Changes** — schema change count (visible after Lab 5)
+    - **DDL Changes** — schema change count (visible after [Lab 5](?lab=custom-sources))
 
 4. **Alert Log — Database Diagnostics** — full log viewer with timestamps, log detail expansion, and text search
 

@@ -15,7 +15,7 @@ In this lab, you will use the DBMS_LOKI self-service API to register a custom lo
 
 ### Prerequisites
 
-- Completion of Lab 4
+- Completion of [Lab 4](?lab=import-dashboard)
 - Connected as PROMETHEUS_EXPORTER in SQL Worksheet or SQLcl
 
 ## Task 1: Register the DDL Changes Source
@@ -918,14 +918,14 @@ Now that you have a third log source streaming, update your Grafana dashboard to
     }
     ```
 
-    **Note:** This is an updated version of the dashboard you imported in [Lab 4: Import the Log Explorer Dashboard](../import-dashboard/import-dashboard.md). It adds a **DDL Changes — Schema Change Tracking** log viewer panel and a **DDL Changes** KPI stat card (orange) to the existing layout.
+    **Note:** This is an updated version of the dashboard you imported in [Lab 4: Import the Log Explorer Dashboard](?lab=import-dashboard). It adds a **DDL Changes — Schema Change Tracking** log viewer panel and a **DDL Changes** KPI stat card (orange) to the existing layout.
 
-2. Replace the data source UIDs in the JSON just as you did in Lab 4, Task 2:
+2. Replace the data source UIDs in the JSON just as you did in [Lab 4, Task 2](?lab=import-dashboard#Task2PreparetheDashboardJSON):
 
     - Replace all occurrences of `<your_loki_datasource_uid>` with your Loki data source UID
     - Replace `<your_prometheus_datasource_uid>` with your Prometheus data source UID (or remove the header panel if not applicable)
 
-3. Import the updated dashboard following the same steps from [Lab 4, Task 3](../import-dashboard/import-dashboard.md):
+3. Import the updated dashboard following the same steps from [Lab 4, Task 3](?lab=import-dashboard#Task3ImporttheDashboard):
 
     - Navigate to **Dashboards** → **New** → **Import**
     - Paste the JSON code

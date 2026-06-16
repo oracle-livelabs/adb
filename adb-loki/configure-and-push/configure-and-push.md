@@ -15,7 +15,7 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify t
 
 ### Prerequisites
 
-- Completion of Lab 2
+- Completion of [Lab 2](?lab=deploy-dbms-loki)
 - Grafana accessible via bastion tunnel (port 3000)
 - Loki added as a Grafana data source
 

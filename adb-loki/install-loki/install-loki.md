@@ -18,7 +18,7 @@ In this lab, you will install Grafana Loki on a compute instance in the same VCN
 - A compute instance in the same VCN/subnet as your Autonomous AI Database
 - SSH access to the compute instance (via bastion or direct)
 
-**Already have Loki installed?** If Loki is already running on your compute instance, skip to [Lab 2](../deploy-dbms-loki/deploy-dbms-loki.md).
+**Already have Loki installed?** If Loki is already running on your compute instance, skip to [Lab 2](?lab=deploy-dbms-loki).
 
 ## Task 1: SSH Into the Compute Instance
 

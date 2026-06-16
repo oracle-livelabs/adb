@@ -33,7 +33,7 @@ This lab assumes you have:
 
 - An Autonomous AI Database instance running in a private subnet
 - ADMIN access to the Autonomous AI Database (via SQL Worksheet or SQLcl)
-- A compute instance in the same VCN as your Autonomous AI Database (or the ability to create one in Lab 1)
+- A compute instance in the same VCN as your Autonomous AI Database (or the ability to create one in [Lab 1](?lab=install-loki))
 - An OCI Bastion Service configured in the same VCN
 - OCI CLI installed and configured on your local machine
 - An SSH key pair (for example, `~/.ssh/id_ed25519`)

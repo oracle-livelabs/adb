@@ -16,7 +16,7 @@ In this lab, you will create a DBMS_LOKI package in your Autonomous AI Database 
 ### Prerequisites
 
 - ADMIN access to your Autonomous AI Database instance (via SQLcl or SQL Worksheet)
-- The Loki compute instance IP address from Lab 1
+- The Loki compute instance IP address from [Lab 1](?lab=install-loki)
 
 ## Task 1: Create the Exporter Schema
 

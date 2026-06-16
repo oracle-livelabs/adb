@@ -16,7 +16,7 @@ With your Log Explorer dashboard up and running, the final step is to configure 
 
 ### Prerequisites
 
-- Completion of Lab 5
+- Completion of [Lab 5](?lab=custom-sources)
 - Grafana accessible via bastion tunnel
 - Loki push job running (`DBMS_LOKI_PUSH_JOB` active)
 
