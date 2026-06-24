@@ -26,9 +26,9 @@ Grafana requires at least one contact point before you can save an alert rule.
 2. Click **+ Add contact point**.
 
 3. Configure:
-   - **Name:** `grafana-default-alertmanager`
-   - **Integration:** Select **Alertmanager**
-   - Leave the URL as the default Grafana Alertmanager or manually enter `http://localhost:9093` if required
+    - **Name:** `grafana-default-alertmanager`
+    - **Integration:** Select **Alertmanager**
+    - Leave the URL as the default Grafana Alertmanager or manually enter `http://localhost:9093` if required
 
 4. Click **Save contact point**.
 
@@ -105,7 +105,7 @@ You can create more alert rules using the same pattern. Here are some useful Pro
 | Tablespace Nearly Full | `max(oracledb_tablespace_used_pct)` | Above 85% |
 | High Wait Time Ratio | `oracledb_sysmetric{metric="Database Wait Time Ratio"}` | Above 50% |
 
-**Congratulations!** You have successfully built a complete Prometheus-compatible observability pipeline for Oracle Autonomous AI Database - Dedicated (ADB-D) — with live dashboards and proactive alerting — entirely from within the database using ORDS, PL/SQL, and standard Oracle performance views. No external agents or exporters required.
+**Congratulations!** You have successfully built a complete Prometheus-compatible observability pipeline for Oracle Autonomous AI Database on Dedicated Infrastructure with live dashboards and proactive alerting. You have built this entirely from within the database using ORDS, PL/SQL, and standard Oracle performance views without any external agents or exporters.
 
 ## Summary
 
@@ -115,7 +115,7 @@ In this workshop, you learned how to:
 - Build PL/SQL that outputs Prometheus exposition format from Oracle V$ views
 - Secure REST endpoints with OAuth2 client credentials
 - Deploy and configure Prometheus and Grafana on OCI Compute
-- Build production-grade observability dashboards for ADB-D
+- Build production-grade observability dashboards for Autonomous AI Database
 - Configure Grafana alerts for proactive monitoring
 
 ## Next Steps

@@ -58,7 +58,7 @@ In this lab, you will create the ORDS module, template, and handler that expose 
     /
     ```
 
-    > **How It Works:** The `ORDS.source_type_media` handler expects a SQL query returning exactly **two columns**: (1) the content type string and (2) a BLOB or CLOB payload. ORDS streams the content as-is with the specified content type. This is what enables serving `text/plain` Prometheus format instead of the default JSON response.
+    **How It Works:** The `ORDS.source_type_media` handler expects a SQL query returning exactly **two columns**: (1) the content type string and (2) a BLOB or CLOB payload. ORDS streams the content as-is with the specified content type. This is what enables serving `text/plain` Prometheus format instead of the default JSON response.
 
 ## Task 2: Verify the ORDS Definitions
 
@@ -76,9 +76,8 @@ In this lab, you will create the ORDS module, template, and handler that expose 
 
 Your ORDS endpoint URL on ADB-D follows this pattern:
 
-```
-https://<scan-hostname>/ords/<DB_NAME>/prom_exporter/prom/v1/metrics
-```
+`https://<scan-hostname>/ords/<DB_NAME>/prom_exporter/prom/v1/metrics`
+
 
 To find your specific values:
 

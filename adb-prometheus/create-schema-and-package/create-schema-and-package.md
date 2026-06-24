@@ -20,12 +20,18 @@ In this lab, you will create a dedicated database schema for the Prometheus expo
 
 1. Connect to your Autonomous AI Database instance as **ADMIN** using SQLcl or SQL Worksheet.
 
-2. Run the following SQL to create the schema and grant the necessary privileges:
+2. Run the following SQL to create the user and grant the necessary privileges:
+
 
     ```sql
-    -- Create the schema
+    -- Create the user
     CREATE USER prom_exporter IDENTIFIED BY "<YourStrongPassword>";
+    ```
 
+    **Note:** Autonomous AI Database enforces password complexity. You need to use a minimum of 12 characters with uppercase, lowercase, digit, and special character.
+
+
+    ```sql
     -- Grant the base role
     GRANT DWROLE TO prom_exporter;
 
@@ -43,15 +49,13 @@ In this lab, you will create a dedicated database schema for the Prometheus expo
     GRANT ALL ON ACD_V$WAITCLASSMETRIC TO prom_exporter;
     ```
 
-    > **Note:** Autonomous AI Database enforces password complexity — use a minimum of 12 characters with uppercase, lowercase, digit, and special character.
-
-    > **Autonomous AI Database Note:** The `ACD_V$` views are cross-container views specific to Autonomous AI Database. They require `GRANT ALL` instead of `GRANT SELECT`. These views provide the real-time system metrics and wait class data that the standard `V$` equivalents may not populate on Autonomous AI Database.
+    **Note:** The `ACD_V$` views are cross-container views specific to Autonomous AI Database. They require `GRANT ALL` instead of `GRANT SELECT`. These views provide the real-time system metrics and wait class data that the standard `V$` equivalents may not populate on Autonomous AI Database.
 
 ## Task 2: Enable the Schema for ORDS
 
 1. Connect as **PROM\_EXPORTER** (switch the user in your SQL client or log in directly as `prom_exporter`).
 
-    > **Important:** `ORDS.ENABLE_SCHEMA` must be run by the target schema itself, not by ADMIN.
+    **Important:** `ORDS.ENABLE_SCHEMA` must be run by the target schema itself, not by ADMIN.
 
 2. Run the following PL/SQL block:
 
@@ -69,7 +73,7 @@ In this lab, you will create a dedicated database schema for the Prometheus expo
     /
     ```
 
-    > **Note:** Setting `p_auto_rest_auth => FALSE` makes the endpoint publicly accessible initially. You will secure it with OAuth2 in [Lab 3](?lab=secure-with-oauth2).
+    **Note:** Setting `p_auto_rest_auth => FALSE` makes the endpoint publicly accessible initially. You will secure it with OAuth2 in [Lab 3](?lab=secure-with-oauth2).
 
 ## Task 3: Create the PL/SQL Package
 

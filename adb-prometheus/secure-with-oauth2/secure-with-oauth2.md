@@ -19,7 +19,7 @@ In the previous lab, the endpoint was publicly accessible and did not require au
 
 ## Task 1: Create a Role
 
-1. Connected as **PROM\_EXPORTER** in your SQL interpreter (SQLcl or SQL Worksheet), run:
+Connected as **PROM\_EXPORTER** in your SQL interpreter (SQLcl or SQL Worksheet), run:
 
     ```sql
     BEGIN
@@ -31,7 +31,7 @@ In the previous lab, the endpoint was publicly accessible and did not require au
 
 ## Task 2: Define a Privilege and Map to the Module
 
-1. Run the following block to create a privilege and associate it with the `prometheus` module:
+Run the following block to create a privilege and associate it with the `prometheus` module:
 
     ```sql
     DECLARE
@@ -54,11 +54,11 @@ In the previous lab, the endpoint was publicly accessible and did not require au
     /
     ```
 
-    > **Note:** The `ORDS.DEFINE_PRIVILEGE` procedure (with `OWA.VC_ARR` arrays) is the correct API for ORDS 25.x. The older `ORDS.CREATE_PRIVILEGE` procedure has a different signature and may produce errors on Autonomous AI Database.
+**Note:** The `ORDS.DEFINE_PRIVILEGE` procedure (with `OWA.VC_ARR` arrays) is the correct API for ORDS 25.x. The older `ORDS.CREATE_PRIVILEGE` procedure has a different signature and may produce errors on Autonomous AI Database.
 
 ## Task 3: Create the OAuth2 Client
 
-1. Run the following to create a client credentials OAuth2 client:
+Run the following to create a client credentials OAuth2 client:
 
     ```sql
     BEGIN
@@ -77,7 +77,7 @@ In the previous lab, the endpoint was publicly accessible and did not require au
 
 ## Task 4: Grant the Role to the Client
 
-1. Associate the client with the scraper role:
+Associate the client with the scraper role:
 
     ```sql
     BEGIN
@@ -98,9 +98,9 @@ In the previous lab, the endpoint was publicly accessible and did not require au
     SELECT name, client_id, client_secret FROM user_ords_clients WHERE name = 'prometheus';
     ```
 
-2. **Copy the `client_id` and `client_secret` values.** You will need them to configure Prometheus in [Lab 4](?lab=deploy-prometheus-grafana).
+2. Copy the `client_id` and `client_secret` values. You will need them to configure Prometheus in [Lab 4](?lab=deploy-prometheus-grafana).
 
-    <!-- Screenshot placeholder: Screenshot of client_id and client_secret query result (with values partially redacted) -->
+ <!-- Screenshot placeholder: Screenshot of client_id and client_secret query result (with values partially redacted) -->
 
 ## Task 6: Test the OAuth2 Flow
 

@@ -432,7 +432,7 @@ In this lab, you will import a pre-built 16-panel Grafana dashboard that visuali
 
 ## Task 3: Import the Dashboard
 
-1. In Grafana, navigate to **Dashboards** → **New** → **Import** and click on **Import dashboard**.
+1. In Grafana, navigate to **Dashboards** → **New** → **Import** and click **Import dashboard**.
 
     ![Grafana dashboard creation](images/dashboard_creation.png)
 
@@ -465,7 +465,7 @@ The dashboard is organized into 6 rows with 16 panels.
 
 | Panel | Description |
 |---|---|
-| **Wait Class Breakdown** | Stacked area chart showing wait time per class (User I/O, System I/O, Concurrency, Application, Commit, Network, etc.) over time. This is the ADB-D equivalent of an ASH wait class chart |
+| **Wait Class Breakdown** | Stacked area chart showing wait time per class (User I/O, System I/O, Concurrency, Application, Commit, Network, etc.) over time. This is the Autonomous AI Database equivalent of an ASH wait class chart |
 | **Key DB Ratios** | CPU Time Ratio, Wait Time Ratio, Host CPU %, and Buffer Cache Hit % trended over time |
 
 ### Row 3: AAS and Wait Counts

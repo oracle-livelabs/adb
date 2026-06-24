@@ -31,7 +31,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       --query 'data[0].id' --raw-output
     ```
 
-    **Replace** `<your_compartment_ocid>` above.
+    **Replace** `<your_compartment_ocid>` above with your value.
 
 2. Launch the instance in the same subnet as your ADB-D:
 
@@ -49,9 +49,9 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       --wait-for-state RUNNING
     ```
 
-    **Replace** `<your_AD>`, `<your_compartment_ocid>`, `<your_adb_subnet_ocid>`, `<image_ocid_from_step_1>` and `~/.ssh/id_ed25519.pub` above.
+    **Replace** `<your_AD>`, `<your_compartment_ocid>`, `<your_adb_subnet_ocid>`, `<image_ocid_from_step_1>` and `~/.ssh/id_ed25519.pub` above with your actual values.
 
-    **Important:** The compute instance must be in the **same VCN and subnet** as your ADB-D to directly reach the SCAN hostname.
+    **Important:** The compute instance must be in the **same VCN and subnet** as your Autonomous AI Database to directly reach the SCAN hostname.
 
 3. Get the private IP of the new instance:
 
@@ -61,8 +61,8 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       --query 'data[0]."private-ip"' --raw-output
     ```
 
-    Note this IP — you'll use it for SSH and Grafana tunnels.
-    **Replace** `<instance_ocid>` above.
+    Make a note of this IP as you will use it for SSH and Grafana tunnels.
+    **Replace** `<instance_ocid>` above with your actual value.
 
 ## Task 2: SSH Into the Instance
 
@@ -79,7 +79,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       --wait-for-state SUCCEEDED
     ```
 
-    **Replace** `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
+    Replace `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above with your actual values.
 
 2. Start the SSH tunnel (in a terminal that stays open):
 
@@ -90,7 +90,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       <session_ocid>@host.bastion.<region>.oci.oraclecloud.com
     ```
 
-    **Replace** `~/.ssh/id_ed25519` and `<session_ocid>` above.
+    Replace `~/.ssh/id_ed25519` and `<session_ocid>` above with your SSH key and OCID.
 
     **Important:** This command will provide no output, it will block the terminal but keep a tunnel open (this is normal behavior)
 
@@ -100,7 +100,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
     ssh -i ~/.ssh/id_ed25519 -p 2222 opc@localhost
     ```
 
-    **Replace** `~/.ssh/id_ed25519` with your SSH key
+    Replace `~/.ssh/id_ed25519` with your SSH key.
 
 ## Task 3: Validate Connectivity to the ORDS Endpoint
 
@@ -112,7 +112,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
 
     If OAuth2 is enabled ([Lab 3](?lab=secure-with-oauth2)), you'll get a 401 response. That's expected as Prometheus will handle authentication automatically.
 
-    **Replace** `<scan-hostname>` and `<DB_NAME>` above.
+    Replace `<scan-hostname>` and `<DB_NAME>` above with your values.
 
 ## Task 4: Install Prometheus
 
@@ -159,7 +159,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
     EOF
     ```
 
-    **Replace** `<DB_NAME>`, `<scan-hostname>`, `<your_client_id>`, and `<your_client_secret>` with your actual values from [Lab 2](?lab=create-ords-endpoint) and [Lab 3](?lab=secure-with-oauth2).
+    Replace `<DB_NAME>`, `<scan-hostname>`, `<your_client_id>`, and `<your_client_secret>` with your actual values from [Lab 2](?lab=create-ords-endpoint) and [Lab 3](?lab=secure-with-oauth2).
 
 2. Set ownership and create the systemd service:
 
@@ -239,7 +239,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       --wait-for-state SUCCEEDED
     ```
 
-    **Replace** `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
+    Replace `<your_bastion_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above with your values.
 
 2. Start the tunnel in a new terminal:
 
@@ -250,7 +250,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
       <session_ocid>@host.bastion.<region>.oci.oraclecloud.com
     ```
 
-    **Replace** `<session_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above.
+    Replace `<session_ocid>`, `<compute_private_ip>` and `~/.ssh/id_ed25519.pub` above with your values.
 
     **Important:** This command will provide no output, it will block the terminal but keep a tunnel open (this is normal behavior)
 
