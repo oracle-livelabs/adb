@@ -434,7 +434,7 @@ In this lab, you will import a pre-built 16-panel Grafana dashboard that visuali
 
 1. In Grafana, navigate to **Dashboards** → **New** → **Import** and click **Import dashboard**.
 
-    ![Grafana dashboard creation](images/dashboard_creation.png)
+    ![Grafana dashboard creation](images/dashboard-creation.png)
 
 2. Paste the JSON code in the **Import via dashboard JSON model** window.
 
@@ -442,13 +442,13 @@ In this lab, you will import a pre-built 16-panel Grafana dashboard that visuali
 
 4. Click the **Load** button below the import window.
 
-    ![Grafana dashboard import](images/dashboard_import.png)
+    ![Grafana dashboard import](images/dashboard-import.png)
 
 ## Task 4: Explore the Dashboard
 
 The dashboard is organized into 6 rows with 16 panels.
 
-   ![Grafana dashboard](images/grafana_dashboard.png)
+   ![Grafana dashboard](images/grafana-dashboard.png)
 
 ### Row 1: KPI Cards
 
@@ -502,7 +502,7 @@ The dashboard is organized into 6 rows with 16 panels.
 
 2. Choose your preferred interval. Options include 10s, 30s, 1m, 5m, etc.
 
-    ![Grafana dashboard interval](images/dashboard_interval.png)
+    ![Grafana dashboard interval](images/dashboard-interval.png)
 
     **Tip:** The Grafana refresh interval can be independent of the Prometheus scrape interval. Making Grafana refresh faster than 30 seconds won't show new data — we configured Prometheus to only scrape every 30 seconds.
 

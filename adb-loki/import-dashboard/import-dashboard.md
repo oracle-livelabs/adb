@@ -407,13 +407,13 @@ In this lab, you will import a pre-built Grafana dashboard that provides a compr
 
 1. In Grafana, navigate to **Dashboards** → **New** → **Import** and click on **Import dashboard**.
 
-    ![Grafana dashboard creation](images/dashboard_creation.png)
+    ![Grafana dashboard creation](images/dashboard-creation.png)
 
 2. Paste the JSON code in the **Import via dashboard JSON model** window.
 
 3. Click the **Load** button below the import window.
 
-    ![Grafana dashboard import](images/dashboard_import.png)
+    ![Grafana dashboard import](images/dashboard-import.png)
 
 ## Task 4: Explore the Dashboard
 
@@ -438,7 +438,7 @@ The dashboard has 12 panels organized in 6 rows:
     - **Audit Actions Over Time** — stacked bar chart breaking down by action type (CREATE TABLE, DROP, GRANT, etc.)
     - **Audit Activity by User** — stacked bar chart showing which users are generating audit events
 
-![Grafana Loki-based dashboard](images/loki_dashboard.png)
+![Grafana Loki-based dashboard](images/loki-dashboard.png)
 
 Try these interactions:
 

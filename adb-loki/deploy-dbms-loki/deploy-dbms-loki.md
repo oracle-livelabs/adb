@@ -33,7 +33,7 @@ In this lab, you will create a DBMS_LOKI package in your Autonomous AI Database 
     
     ```
 
-    **Note:** Autonomous AI Database enforces password complexity — minimum 12 characters with uppercase, lowercase, digit, and special character.
+    **Note:** Autonomous AI Database enforces password complexity using a minimum of 12 characters with uppercase, lowercase, digit, and special character.
 
 ## Task 2: Grant Privileges
 

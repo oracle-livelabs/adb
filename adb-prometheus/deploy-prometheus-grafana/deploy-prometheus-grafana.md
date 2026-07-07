@@ -256,7 +256,7 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
 
 3. Open **http://localhost:3000** in your browser. Login with `admin` / `admin`. You will be prompted to change the password.
 
-    ![Grafana log in screen](images/grafana_login.png)
+    ![Grafana log in screen](images/grafana-login.png)
 
 ## Task 9: Add Prometheus as a Data Source
 
@@ -266,11 +266,11 @@ In this lab, you will launch a compute instance within the same VCN as your Auto
 
 3. Set the **Prometheus server URL** to `http://localhost:9090`.
 
-    ![Prometheus data source configuration](images/prometheus_datasource.png)
+    ![Prometheus data source configuration](images/prometheus-datasource.png)
 
 4. Click **Save & test**. You should see a green checkmark with "Successfully queried the Prometheus API".
 
-    ![Prometheus data source saved](images/prometheus_datasource_added.png)
+    ![Prometheus data source saved](images/prometheus-datasource-added.png)
 
 You may now **proceed to the next lab**.
 

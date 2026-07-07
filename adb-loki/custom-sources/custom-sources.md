@@ -54,7 +54,7 @@ In this lab, you will use the DBMS_LOKI self-service API to register a custom lo
 
     Expected output: `Custom source "ddl_changes" registered.`
 
-    > **Note:** The source SQL must include a `:watermark` bind variable. The engine binds this to the last pushed timestamp for incremental delivery. Without it, the registration will fail with `ORA-20121`.
+    **Note:** The source SQL must include a `:watermark` bind variable. The engine binds this to the last pushed timestamp for incremental delivery. Without it, the registration will fail with `ORA-20121`.
 
 ## Task 2: Verify the Registration
 
@@ -112,7 +112,7 @@ In this lab, you will use the DBMS_LOKI self-service API to register a custom lo
 
     You should see the CREATE TABLE, ALTER TABLE, CREATE INDEX, DROP INDEX, and DROP TABLE entries.
 
-    ![Grafana Explore of DDL changes custom source](images/loki_explore_ddl.png)
+    ![Grafana Explore of DDL changes custom source](images/loki-explore-ddl.png)
 
 ## Task 5: Explore API Operations (Optional)
 
@@ -937,7 +937,7 @@ Now that you have a third log source streaming, update your Grafana dashboard to
     - The **DDL Changes — Schema Change Tracking** log viewer panel should appear between the Audit Trail panel and the analytics charts
     - Both panels should show the DDL activity you generated in Task 3
 
-    ![Grafana Loki-based dashboard with DDL changes](images/loki_dashboard_ddl.png)
+    ![Grafana Loki-based dashboard with DDL changes](images/loki-dashboard-ddl.png)
 
 You may now **proceed to the next and final lab**.
 

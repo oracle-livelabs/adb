@@ -65,7 +65,7 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify t
 
     You should see audit trail entries with usernames, actions, objects, and SQL text.
 
-    ![Grafana Explore shows audit trail entries from ADB-D](images/loki_explore_audit_trail.png)
+    ![Grafana Explore shows audit trail entries from ADB-D](images/loki-explore-audit-trail.png)
 
 3. Try the alert log query:
 
@@ -73,7 +73,7 @@ In this lab, you will configure the Loki endpoint, perform a test push, verify t
     {job="oracle_adb", source="alert_log"}
     ```
 
-    ![Grafana Explore shows alert log entries from ADB-D](images/loki_explore_alert_log.png)
+    ![Grafana Explore shows alert log entries from ADB-D](images/loki-explore-alert-log.png)
 
 ## Task 3: Start Continuous Push
 

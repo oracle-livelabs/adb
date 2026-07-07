@@ -12,7 +12,7 @@ By the end of this workshop, you will have implemented a complete observability 
 
 ### Architecture
 
-![Architecture diagram showing ADB-D → ORDS → Prometheus → Grafana pipeline inside a VCN](images/adb_d_prometheus_architecture.svg)
+![Architecture diagram showing ADB-D → ORDS → Prometheus → Grafana pipeline inside a VCN](images/adbd-prometheus-architecture.svg)
 
 Unlike standard ORDS handlers, which typically encapsulate responses in JSON, this implementation leverages the `source_type_media` handler type to stream raw content directly to the client with a custom `Content-Type` header. By returning content as `text/plain; version=0.0.4` along with a CLOB formatted according to the Prometheus exposition standard, we can expose a native `/metrics` endpoint directly from Oracle Autonomous AI Database.
 

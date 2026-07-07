@@ -34,7 +34,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
     **Note:** This uses Grafana's built-in Alertmanager, which surfaces alert state changes directly in the Grafana UI. For production, you can replace this with Email, Slack, PagerDuty, or any other supported integration.
 
-    ![Contact point configuration](images/contact_point.png)
+    ![Contact point configuration](images/contact-point.png)
 
 ## Task 2: Set the Default Notification Policy
 
@@ -44,7 +44,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 3. If you navigate away and come back to the page you will notice a default policy has been set
 
-    ![Alerting policy](images/alerting_policy.png)
+    ![Alerting policy](images/alerting-policy.png)
 
 ## Task 3: Create the Alert Rule
 
@@ -92,7 +92,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 4. **Remember to set the threshold back to `80` after testing.**
 
-    ![Alert firing](images/alert_firing.png)
+    ![Alert firing](images/alert-firing.png)
 
 ## Task 5: Explore Additional Alert Ideas (Optional)
 
