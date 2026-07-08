@@ -37,7 +37,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
    **Note:** This uses Grafana's built-in Alertmanager, which surfaces alert state changes directly in the Grafana UI. For production, you can replace this with Email, Slack, PagerDuty, or any other supported integration.
 
-    ![Contact point configuration](images/contact_point.png)
+    ![Contact point configuration](images/contact-point.png)
 
 ## Task 2: Set the Default Notification Policy
 
@@ -47,7 +47,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 3. If you navigate away from the page and then return, you will notice that a default notification policy has been automatically created.
 
-    ![Alerting policy](images/alerting_policy.png)
+    ![Alerting policy](images/alerting-policy.png)
 
 ## Task 3: Create the Alert Rule
 
@@ -68,7 +68,7 @@ Grafana requires at least one contact point before you can save an alert rule.
     - Set **Alert Condition** to: **IS ABOVE** `0`
     - Click **Run queries** (`No data` is normal if you're not currently receiving audit failures)
 
-    ![Alert rule](images/alert_rule.png)
+    ![Alert rule](images/alert-rule.png)
 
 4. **Set evaluation behavior:**
 
@@ -106,7 +106,7 @@ Grafana requires at least one contact point before you can save an alert rule.
 
 4. Navigate back to **Alerting** → **Alert rules**. You should see the alert transition from **Normal** → **Firing** (red), since the pending period is `0s`.
 
-    ![Alert firing](images/alert_firing.png)
+    ![Alert firing](images/alert-firing.png)
 
 5. If you configured email or Slack instead of the built-in Alertmanager, you should receive a notification.
 

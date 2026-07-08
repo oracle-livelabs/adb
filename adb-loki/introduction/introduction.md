@@ -10,7 +10,7 @@ By the end of this workshop, you will have a built a fully functional log observ
 
 ### Architecture
 
-![Architecture diagram showing ADB-D → Grafana Loki pipeline inside a VCN](images/dbms_loki_architecture.svg)
+![Architecture diagram showing ADB-D → Grafana Loki pipeline inside a VCN](images/dbms-loki-architecture.svg)
 
 The key technical insight behind this workshop is that Autonomous AI Database can push its own logs using `UTL_HTTP` and `DBMS_SCHEDULER`. A PL/SQL package (`DBMS_LOKI`) iterates through registered log sources, executes each SQL query with a watermark bind variable (ensuring only new entries are sent), formats the results as Loki JSON payloads, and POSTs them to Loki's Push API. Since the database initiates all communication and exposes no inbound endpoint, no OAuth 2.0 configuration or additional authentication is required.
 
