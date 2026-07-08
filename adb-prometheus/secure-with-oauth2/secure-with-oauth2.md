@@ -21,20 +21,20 @@ In the previous lab, the endpoint was publicly accessible and did not require au
 
 Connected as **PROM\_EXPORTER** in your SQL interpreter (SQLcl or SQL Worksheet), run:
 
-    ```sql
-    BEGIN
-        ORDS.CREATE_ROLE(p_role_name => 'prom_scraper');
-        COMMIT;
-    END;
-    /
-    ```
+ ```sql
+ BEGIN
+     ORDS.CREATE_ROLE(p_role_name => 'prom_scraper');
+     COMMIT;
+ END;
+ /
+ ```
 
 ## Task 2: Define a Privilege and Map to the Module
 
 Run the following block to create a privilege and associate it with the `prometheus` module:
 
-    ```sql
-    DECLARE
+ ```sql
+ DECLARE
         l_roles    OWA.VC_ARR;
         l_modules  OWA.VC_ARR;
     BEGIN
@@ -51,8 +51,8 @@ Run the following block to create a privilege and associate it with the `prometh
         );
         COMMIT;
     END;
-    /
-    ```
+ /
+ ```
 
 **Note:** The `ORDS.DEFINE_PRIVILEGE` procedure (with `OWA.VC_ARR` arrays) is the correct API for ORDS 25.x. The older `ORDS.CREATE_PRIVILEGE` procedure has a different signature and may produce errors on Autonomous AI Database.
 
@@ -60,8 +60,8 @@ Run the following block to create a privilege and associate it with the `prometh
 
 Run the following to create a client credentials OAuth2 client:
 
-    ```sql
-    BEGIN
+ ```sql
+   BEGIN
         OAUTH.CREATE_CLIENT(
             p_name            => 'prometheus',
             p_grant_type      => 'client_credentials',
@@ -72,23 +72,23 @@ Run the following to create a client credentials OAuth2 client:
         );
         COMMIT;
     END;
-    /
-    ```
+ /
+ ```
 
 ## Task 4: Grant the Role to the Client
 
 Associate the client with the scraper role:
 
-    ```sql
-    BEGIN
+ ```sql
+  BEGIN
         OAUTH.GRANT_CLIENT_ROLE(
             p_client_name => 'prometheus',
             p_role_name   => 'prom_scraper'
         );
         COMMIT;
     END;
-    /
-    ```
+ /
+ ```
 
 ## Task 5: Retrieve the Client Credentials
 
