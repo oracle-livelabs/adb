@@ -152,8 +152,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Authors:**
-    * Marcos Arancibia, Senior Principal Product Manager, ADB-S
-    * Marty Gubar (Retired), Product Management
+    * Marcos Arancibia, Lead Principal Product Manager, ADB-S
+    * Marty Gubar, Product Management (Retired)
 * **Contributors:** 
     * Lauran K. Serhal, Consulting User Assistance Developer
     * Michelle Malcher, Director, Product Management  
