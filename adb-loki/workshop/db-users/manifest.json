@@ -40,6 +40,11 @@
       "title": "Lab 6: Set Up a Grafana Alert on Audit Events",
       "description": "Configure proactive alerting for audit trail failures using LogQL",
       "filename": "../../set-up-alerts/set-up-alerts.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
     }
   ]
 }
