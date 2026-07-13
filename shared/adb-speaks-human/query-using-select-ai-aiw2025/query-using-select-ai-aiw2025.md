@@ -253,16 +253,16 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Authors:**
-    * Marty Gubar (Retired), Product Management
-    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Marcos Arancibia, Lead Principal Product Manager, ADB-S
+    * Marty Gubar, Product Management (Retired)
 * **Contributors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer
     * Michelle Malcher, Director, Product Management  
-    * Marcos Arancibia, Senior Principal Product Manager, ADB-S
-* **Last Updated By/Date:** Lauran K. Serhal, September 2025
+* **Last Updated By/Date:** Marcos Arancibia, July 2026
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2025 Oracle Corporation.
+Copyright (c) 2026 Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
