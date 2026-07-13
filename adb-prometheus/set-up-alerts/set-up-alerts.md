@@ -62,7 +62,7 @@ Grafana requires at least one contact point before you can save an alert rule.
     - Set **Alert Condition** to: **IS ABOVE** `80`
     - Click **Run queries** to confirm data appears
 
-    ![Alert rule](images/alert_rule.png)
+    ![Alert rule](images/alert-rule.png)
 
 4. **Set evaluation behavior:**
 
