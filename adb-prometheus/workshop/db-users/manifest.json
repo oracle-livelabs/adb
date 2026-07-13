@@ -8,6 +8,10 @@
       "filename": "../../introduction/introduction.md"
     },
     {
+      "title": "Get started",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
       "title": "Lab 1: Create the Exporter Schema and PL/SQL Package",
       "description": "Create a dedicated schema and the PL/SQL function that generates Prometheus exposition format",
       "filename": "../../create-schema-and-package/create-schema-and-package.md"

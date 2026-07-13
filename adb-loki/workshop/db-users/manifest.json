@@ -8,6 +8,10 @@
       "filename": "../../introduction/introduction.md"
     },
     {
+      "title": "Get started",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
       "title": "Lab 1: Install and Configure Loki",
       "description": "Install Grafana Loki on a VCN compute instance and configure it for database log push",
       "filename": "../../install-loki/install-loki.md"
