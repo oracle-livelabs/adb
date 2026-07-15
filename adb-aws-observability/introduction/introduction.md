@@ -30,6 +30,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Author** - German Viscuso & Tejus Subrahmanya, Product Managers, Oracle Autonomous AI Database
-- **Adapted by** - Vandana Rajamani, Consulting UA Developer, July 2026
-- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
+- **Author**: - German Viscuso, Director of Developer Community, Autonomous AI Database
+- **Adapted By**: Vandana Rajamani, Consulting UA Developer, July 2026
+- **Last Updated By/Date**: - Vandana Rajamani, Consulting UA Developer, July 2026
