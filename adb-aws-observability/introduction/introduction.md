@@ -21,10 +21,10 @@ In this lab, you will learn how to:
 
 ### Prerequisites
 
-- An Oracle Database@AWS environment must be pre-provisioned. This lab does not cover the provisioning of the network, Exadata Infrastructure, or the Autonomous Database itself. For detailed instructions on provisioning, please complete the [Oracle Database@AWS- Autonomous Database on dedicated infrastructure](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=4203) LiveLab first.
+- An Oracle Database@AWS environment must be pre-provisioned. This lab does not cover the provisioning of the network, Exadata Infrastructure, or the Autonomous Database itself. For detailed instructions on provisioning, please complete the [Introduction to Oracle Database@AWS](https://livelabs.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=4203) LiveLab first.
 - Familiarity with Oracle Database concepts.
 - Basic understanding of the AWS Management Console, specifically CloudWatch and EventBridge.
-- Familiarity with available ADB-D Metrics on AWS: <https://docs.oracle.com/en-us/iaas/Content/database-at-aws-exadata-awsmn/awsmn-monitor-cloudwatch.html>
+- Familiarity with available Autonomous AI Database Metrics on AWS: See [CloudWatch](https://docs.oracle.com/en-us/iaas/Content/database-at-aws-exadata-awsmn/awsmn-monitor-cloudwatch.html).
 
 You may now **proceed to the next lab**.
 
