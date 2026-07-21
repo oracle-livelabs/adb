@@ -1,0 +1,25 @@
+{
+  "workshoptitle": "Getting Started with Oracle Database@AWS Observability Using AWS Native Services",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Introduction to Oracle Database@AWS Observability",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Get started",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
+      "title": "Lab 1: Observability for Oracle Database@AWS Using Amazon CloudWatch and EventBridge",
+      "description": "Getting Started with Oracle Database@AWS Observability Using Amazon CloudWatch and EventBridge",
+      "filename": "../../observability-aws-native-services/observability-aws-native-services.md"
+    },    
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "workshoptitle": "Build a Prometheus-Compatible Telemetry Endpoint for ADB-D Using ORDS",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Introduction to building a Prometheus endpoint on ADB-D",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Get started",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
+      "title": "Lab 1: Create the Exporter Schema and PL/SQL Package",
+      "description": "Create a dedicated schema and the PL/SQL function that generates Prometheus exposition format",
+      "filename": "../../create-schema-and-package/create-schema-and-package.md"
+    },
+    {
+      "title": "Lab 2: Create the ORDS REST Endpoint",
+      "description": "Use ORDS source_type_media to serve raw Prometheus text",
+      "filename": "../../create-ords-endpoint/create-ords-endpoint.md"
+    },
+    {
+      "title": "Lab 3: Secure the Endpoint with OAuth2",
+      "description": "Add OAuth2 client credentials authentication",
+      "filename": "../../secure-with-oauth2/secure-with-oauth2.md"
+    },
+    {
+      "title": "Lab 4: Deploy Prometheus and Grafana",
+      "description": "Launch a compute instance and install the observability stack",
+      "filename": "../../deploy-prometheus-grafana/deploy-prometheus-grafana.md"
+    },
+    {
+      "title": "Lab 5: Build a Grafana Dashboard",
+      "description": "Import a 16-panel dashboard for real-time ADB-D monitoring",
+      "filename": "../../build-grafana-dashboard/build-grafana-dashboard.md"
+    },
+    {
+      "title": "Lab 6: Set Up a Grafana Alert",
+      "description": "Configure proactive alerting for Host CPU Utilization",
+      "filename": "../../set-up-alerts/set-up-alerts.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}

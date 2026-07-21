@@ -1,0 +1,50 @@
+{
+  "workshoptitle": "Streaming ADB-D Logs to Grafana Loki",
+  "help": "livelabs-help-db_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Introduction to streaming ADB-D logs to Grafana Loki using a native PL/SQL push engine",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Get started",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+    {
+      "title": "Lab 1: Install and Configure Loki",
+      "description": "Install Grafana Loki on a VCN compute instance and configure it for database log push",
+      "filename": "../../install-loki/install-loki.md"
+    },
+    {
+      "title": "Lab 2: Deploy the DBMS_LOKI Package",
+      "description": "Create the exporter schema, grant privileges, and deploy the PL/SQL push engine",
+      "filename": "../../deploy-dbms-loki/deploy-dbms-loki.md"
+    },
+    {
+      "title": "Lab 3: Configure and Start Continuous Push",
+      "description": "Configure the Loki endpoint, test push, start the scheduler job, and backfill historical entries",
+      "filename": "../../configure-and-push/configure-and-push.md"
+    },
+    {
+      "title": "Lab 4: Import the Log Explorer Dashboard",
+      "description": "Import a 12-panel Grafana dashboard for ADB-D log observability",
+      "filename": "../../import-dashboard/import-dashboard.md"
+    },
+    {
+      "title": "Lab 5: Add a Custom Log Source (DDL Tracking)",
+      "description": "Register a custom log source using the self-service API and verify DDL change tracking",
+      "filename": "../../custom-sources/custom-sources.md"
+    },
+    {
+      "title": "Lab 6: Set Up a Grafana Alert on Audit Events",
+      "description": "Configure proactive alerting for audit trail failures using LogQL",
+      "filename": "../../set-up-alerts/set-up-alerts.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}
