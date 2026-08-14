@@ -13,9 +13,6 @@ This short demo showcases how the app leverages Natural Language to SQL (NL2SQL)
 [Ask Oracle Chatbot Demo](youtube:p595Io2cxyw:medium)
 
 
-
-
-
 Estimated Time: 5 minutes.
 
 ### Objectives
@@ -89,7 +86,9 @@ Here is a video that walks you through the **Ask Oracle** chatbot app installati
 
 Perform the following steps to install the Ask Oracle Chatbot app. The application is available on GitHub.
 
-1. Download the `ADB-AskOracle-Chatbot-yyyy-mm-dd.sql` file from the [GitHub repository](https://github.com/oracle-devrel/oracle-autonomous-database-samples/tree/main/apex/Ask-Oracle) and store it in your local directory. 
+1. Download the `f101.sql` file by clicking on the button below, and store it in your local directory.
+
+    <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/nZNjLXKzOO23bwedhMxks1E4uMIC-wT3hIh0cpUvvltH-h84ngcLKcWuQUcdfN4g/n/c4u02/b/hosted_workshops/o/f101.sql" download="f101.sql" class="tryit-button">Download AskOracle</a>
 
 2. From your Autonomous AI Database console, navigate to **Tool configuration** and copy the APEX URL.
 
@@ -98,7 +97,7 @@ Perform the following steps to install the Ask Oracle Chatbot app. The applicati
 
 4. In APEX, go to **App Builder** → **Import**.
 
-5. Click the **Drag and Drop** selection and navigate to the `ADB-AskOracle-Chatbot-yyyy-mm-dd.sql` file that you stored in your local directory and click **Open**.
+5. Click the **Drag and Drop** selection and navigate to the `f101.sql` file that you stored in your local directory and click **Open**.
 
 6. Keep the defaults and click **Next**.
 
@@ -106,13 +105,9 @@ Perform the following steps to install the Ask Oracle Chatbot app. The applicati
 
 8. Review the supporting objects and click **Install Supporting Objects**.
 
-9. Next screen shows a confirmation screen with the supporting objects installed, click **Run Application**.
+9.  Next screen shows a confirmation screen with the supporting objects installed, click **Run Application**.
 
 10. You'll be prompted with a login screen. Enter the APEX username and password. You are ready with a prompt screen.
-
-
-
-
 
 You may now proceed to the next lab.
 
@@ -124,9 +119,11 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager
-<!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
--->
+* **Contributors:** 
+* Marcos Arancibia, Product Manager
+* Mark Hornick, Product Manager
+* **Last Updated By/Date:** Marcos Arancibia, August 2026
+
 
 
 Copyright (c) 2026 Oracle Corporation.
