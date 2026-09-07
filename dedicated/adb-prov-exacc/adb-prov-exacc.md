@@ -37,7 +37,7 @@ Before starting this lab, ensure that:
 - DNS and NTP servers are available and reachable.
 - Oracle has installed or is scheduled to install the Exadata Cloud@Customer hardware.
 
-## Task 1: Create the Exadata Cloud@Customer Infrastructure 
+## Task 1: Create the Exadata Cloud@Customer Infrastructure
 
 1. Sign in to the OCI Console and Open the Navigation Menu.
 2. Select **Oracle AI Database**. Click **Oracle Exadata Database Service at Cloud@Customer**.
@@ -58,20 +58,20 @@ Before starting this lab, ensure that:
 
    ![Exadata basic information](./images/prov-exainfra-exacc-3.png " ")
 
-5. Configure Control Plane Networking
+5. Configure Control Plane Networking:
 
    Provide the following details:
     - Two Control Plane Server IP Addresses: These IP addresses are for the network interfaces that connect the two control plane servers to your corporate network using the control plane network
     - Netmask: Specify the IP netmask for the control plane network.
     - Gateway: Specify the IP address of the control plane network gateway.
-    - HTTPS Proxy (Optional): You can choose to use this field to specify your corporate HTTPS proxy
+    - HTTPS Proxy (Optional): You can choose to use this field to specify your corporate HTTPS proxy.
 
    Confirm if IPs are reserved, Gateway is reachable and Network team has approved the values.
 
 6. Configure Exadata Internal Networks:
 
-    - Administration Network CIDR Block: Specifies the IP address range for the administration network using CIDR notation. The administration network provides connectivity that enables Oracle to administer the Exadata system components, such as the Exadata compute servers, storage servers, network switches, and power distribution units. You can accept the suggested default, or specify a custom value. The smallest CIDR range required is /23, while the maximum number of IP addresses may be reserved with a CIDR range of /16
-    - InfiniBand Network CIDR Block: Specifies the IP address range for the Exadata InfiniBand network The Exadata InfiniBand network provides the high-speed low-latency interconnect used by Exadata software for internal communications between various system components. You can accept the suggested default, or specify a custom value. The smallest CIDR range required for the Infiniband network is /22 while the largest is /19
+    - Administration Network CIDR Block: Specifies the IP address range for the administration network using CIDR notation. The administration network provides connectivity that enables Oracle to administer the Exadata system components, such as the Exadata compute servers, storage servers, network switches, and power distribution units. You can accept the suggested default, or specify a custom value. The smallest CIDR range required is /23, while the maximum number of IP addresses may be reserved with a CIDR range of /16.
+    - InfiniBand Network CIDR Block: Specifies the IP address range for the Exadata InfiniBand network The Exadata InfiniBand network provides the high-speed low-latency interconnect used by Exadata software for internal communications between various system components. You can accept the suggested default, or specify a custom value. The smallest CIDR range required for the Infiniband network is /22 while the largest is /19.
 
     In the Section Configure DNS and NTP services
 
@@ -85,7 +85,7 @@ Before starting this lab, ensure that:
 
 ## Task 2: Create a VM Cluster Network
 
-1. Sign in to the OCI Console and Open the Navigation Menu.
+1. Sign in to the OCI Console and open the Navigation Menu.
 2. Select **Oracle AI Database**. Click **Oracle Exadata Database Service at Cloud@Customer**.
 3. Click **Exadata Infrastructure**. Click the name of the Exadata infrastructure for which you want to create a VM cluster network.
 4. Click **Create VM Cluster Network**.
@@ -123,7 +123,7 @@ Before starting this lab, ensure that:
 
 10. Click **Review Configuration**. Review generated hostnames and IP allocations. Click **Create VM Cluster Network**.
 
-   The VM Cluster Network Details page is now displayed. Initially after creation, the state of the VM cluster network is **Requires Validation**
+   The VM Cluster Network Details page is now displayed. Initially after creation, the state of the VM cluster network is **Requires Validation**.
 
 ## Task 3: Configure a Backup Destination (Optional)
 

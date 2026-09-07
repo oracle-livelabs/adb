@@ -35,7 +35,7 @@ The following illustration shows a network topology that can be used to provide 
 
 ## Task 1: Launch a Linux VM for the OpenVPN server
 
-- Sign in to the OCI Console. In the navigation menu, select **Compute**, then **Instances**.
+- Sign in to the OCI Console. In the navigation menu, select **Compute**, then **Instances**. See [Overview of Compute Instances](https://docs.oracle.com/en-us/iaas/Content/Compute/Concepts/computeoverview.htm) for more details.
 
     ![Navigate OCI Console.](./images/createcompute1.png " ")
 

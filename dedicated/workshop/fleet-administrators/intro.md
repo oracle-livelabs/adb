@@ -18,16 +18,16 @@ This set of hands-on-labs is designed to assist **fleet administrators** with se
 
 In this workshop, you will learn how to:
 
-- Prepare a private network for an Oracle Cloud Infrastructure (OCI) implementation.
-- Provision Cloud Exadata Infrastructure for Autonomous AI Database on Dedicated Exadata Infrastructure.
-- Provision a Cloud Autonomous Exadata VM Cluster for Autonomous AI Database on Dedicated Exadata Infrastructure.
+- Prepare a private network to deploy an Autonomous AI Database on Dedicated Exadata Infrastructure.
+- Provision Cloud Exadata Infrastructure.
+- Provision a Cloud Autonomous Exadata VM Cluster.
 - Provision Exadata Infrastructure for Autonomous AI Database on Exadata Cloud@Customer.
 - Provision an Autonomous VM Cluster for Autonomous AI Database on Exadata Cloud@Customer.
 - Provision an Autonomous Container Database.
-- Configure VPN connectivity for your Exadata network.
+- Configure VPN connectivity for your Autonomous AI Database on Dedicated Exadata Infrastructure.
 - Configure and manage Autonomous Data Guard.
 - Migrate databases using Oracle Data Pump.
-- Configure Oracle GoldenGate replication.
+- Configure migration to Autonomous AI Database on Dedicated Exadata Infrastructure using Oracle GoldenGate replication.
 - Set up and use the OCI Notification Service.
 - Deploy Oracle Enterprise Manager (OEM) and connect Autonomous AI Database to OEM.
 - Download and analyze Automatic Workload repository (AWR) reports from Oracle Enterprise Manager (OEM).
@@ -47,5 +47,5 @@ Please **proceed to the next lab**.
 ## Acknowledgements
 
 - **Authors/Contributors** - Global Cloud Solution Hubs, Autonomous Database Product Management
-- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, September 2026
 

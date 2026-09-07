@@ -50,7 +50,7 @@ On the **Create Autonomous Exadata VM Cluster** page enter the following informa
 
 4. **Configure the Autonomous VM Cluster Resources:**
 
-    - Compute model: The default compute model is ECPU, which allocates compute resources elastically from the shared pool of Exadata database and storage servers. To use OCPU instead, click **Change Compute Model**. The OCPU model is based on physical processor cores with hyper-threading enabled.
+    - Compute model: The default compute model is ECPU, which allocates compute resources elastically from the shared pool of Exadata database and storage servers. 
 
         ![Compute model](./images/create-avmc-cc3a.png " ")
 
@@ -60,12 +60,10 @@ On the **Create Autonomous Exadata VM Cluster** page enter the following informa
 
     - Node Count: Displays the number of selected database servers that will participate in the Autonomous VM Cluster.
 
-    - Maximum number of Autonomous Container Databases: Specifies the maximum number of   Autonomous Container Databases (ACDs) that can be created in this Autonomous VM Cluster. 
-        The specified value represents an upper limit only. ACDs must be created separately when needed. Each ACD also requires at least 2 available OCPUs per node.
+    - Maximum number of Autonomous Container Databases: Specifies the maximum number of   Autonomous Container Databases (ACDs) that can be created in this Autonomous VM Cluster.      The specified value represents an upper limit only. 
+    - ECPU count per VM: Specify the number of ECPUs allocated to each VM. The minimum supported value is 5 OCPUs per VM.
 
-    - OCPU count per VM: Specify the number of OCPUs allocated to each VM. The minimum supported value is 5 OCPUs per VM.
-
-    - Database memory per OCPU (GB): Specify the amount of memory allocated per OCPU for Autonomous Databases running in the Autonomous VM Cluster.
+    - Database memory per ECPU (GB): Specify the amount of memory allocated per ECPU for Autonomous Databases running in the Autonomous VM Cluster.
 
     - Database storage(TB): Specify the storage capacity available for Autonomous Database creation within the Autonomous VM Cluster.
 
@@ -98,4 +96,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Simon Law, Kris Bhanushali and Ranganath S R
 - **Adapted By/Date** - Vandana Rajamani, Consulting UA Developer, June 2026
-- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, September 2026

@@ -40,13 +40,13 @@ Estimated Time: 20 minutes
 
             ![create avmc compute model](./images/create-avmc-pc3.png " ") 
 
-        - DB Server Selection: Lists the DB Servers (VMs) used to deploy the new Autonomous Exadata VM Cluster (AVMC) resource. The maximum resources (CPUs, Memory, and Local Storage) available per VM is also displayed. Optionally, you can add or remove the VMs by clicking **Edit DB Server Selection**. Clicking this button launches the **Change DB Servers** dialog listing all the available DB Servers. 
+        - DB Server Selection: Lists the DB Servers (VMs) used to deploy the new Autonomous Exadata VM Cluster (AVMC) resource. The maximum resources (CPUs, Memory, and Local Storage) available per VM is also displayed. Optionally, you can select the desired database servers for VM placement from the list of database servers by clicking **Edit DB server selection**. Clicking this button launches the **Change DB servers** dialog listing all the available DB Servers.
 
             ![Create avmc dbserver selection](./images/create-avmc-pc3a.png " ")  
 
         - VM count or Node Count: Denotes the number of database servers in the Exadata infrastructure. This is a read-only value.
 
-        - Maximum number of Autonomous Container Databases: The number of ACDs specified represents the upper limit on ACDs. These ACDs must be created separately as needed.
+        - Maximum number of Autonomous Container Databases: The number of ACDs specified represents the upper limit on ACDs.
 
         - CPU count per VM or node: Specify the CPU count for each individual VM. The minimum value is 40 ECPUs per VM.
 
@@ -75,7 +75,11 @@ Estimated Time: 20 minutes
         - Bring your own license: If you choose this option, make sure you have proper entitlements to use for new service instances that you create.
         - License included: With this choice, the cost of the cloud service includes a license for the Database service.
 
-    7. In the advanced options, you may pick a different timezone than the default UTC. You can optionally add a security attribute to control access for your AVMC resource using Zero Trust Packet Routing (ZPR) policies. 
+        ![create avmc network settings](./images/create-avmc-pc5b.png " ")
+
+    7. In the advanced options, you may pick a different timezone than the default UTC. You can optionally add a security attribute to control access for your AVMC resource using Zero Trust Packet Routing (ZPR) policies.
+
+       ![create avmc network settings](./images/create-avmc-pc5c.png " ")
 
 - Click **Create**.
 

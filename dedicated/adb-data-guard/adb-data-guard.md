@@ -29,7 +29,11 @@ Estimated Time: 45 minutes
 ## Task 1: Add a standby database to an ACD
 
 - Go to the Details page of the Autonomous Container Database for which you want to add a standby database.
-- Click **Enable** under **Autonomous Data Guard** in Autonomous Container Database information. Alternatively, you can also click **Add Standby** on **Autonomous Data Guard Groups**. Fill out the **Add Standby** dialog with the following information:
+- Click **Enable** under **Autonomous Data Guard** in Autonomous Container Database information. Alternatively, you can also click **Add Standby** on **Autonomous Data Guard Groups**. 
+
+  ![Add standby option from Data Guard groups.](./images/adb-dataguardgroups-addstandby.png " ")
+
+  Fill out the **Add Standby** dialog with the following information:
 
     - Peer Autonomous Container Database compartment: Select the standby Autonomous Container Database compartment.
     - Peer Autonomous Container Database name: Enter a name for the standby ACD.

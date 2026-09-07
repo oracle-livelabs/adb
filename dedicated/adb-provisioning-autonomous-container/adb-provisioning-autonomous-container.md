@@ -2,7 +2,7 @@
 
 ## Introduction
 
-An Autonomous Container Database resource provides a container for your Autonomous AI Databases. You can create multiple Autonomous Container Database resources in an Autonomous Exadata VM Cluster resource, but you must create at least one ACD before you can create any Autonomous AI Database.
+An Autonomous Container Database (ACD) is a logical container service used in Oracle's dedicated cloud infrastructure to house and manage one or more Oracle Autonomous Databases. You can create multiple ACD resources in an Autonomous Exadata VM Cluster, but you must create at least one ACD before you can create any Autonomous AI Database.
 
 Estimated Time: 20 mins
 
@@ -84,4 +84,4 @@ You may now **proceed to the next lab**.
 
 - **Author** - Ranganath S R, Tejus S. & Kris Bhanushali
 - **Adapted by :** Vandana Rajamani, Consulting UA Developer, June 2026
-- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, September 2026
