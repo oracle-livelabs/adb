@@ -86,7 +86,7 @@ You will use the following IAM structure in line with the bare minimum isolation
         </copy>
       ```
 
-   ![This image shows the result of performing the above step for creating the fleetAdminpolicy](./images/create-fleetadminpolicy.png " ")
+     ![This image shows the result of performing the above step for creating the fleetAdminpolicy](./images/create-fleetadminpolicy.png " ")
 
 4. Similarly, create a **dbUserPolicy** for the **dbUserCompartment** as shown. Ensure that you select the correct compartment before clicking **Create Policy**.
 
