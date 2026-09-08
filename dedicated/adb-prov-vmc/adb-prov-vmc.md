@@ -61,7 +61,7 @@ On the **Create Autonomous Exadata VM Cluster** page enter the following informa
     - Node Count: Displays the number of selected database servers that will participate in the Autonomous VM Cluster.
 
     - Maximum number of Autonomous Container Databases: Specifies the maximum number of   Autonomous Container Databases (ACDs) that can be created in this Autonomous VM Cluster.      The specified value represents an upper limit only. 
-    - ECPU count per VM: Specify the number of ECPUs allocated to each VM. The minimum supported value is 5 OCPUs per VM.
+    - ECPU count per VM: Specify the number of ECPUs allocated to each VM. The minimum supported value is 5 ECPUs per VM.
 
     - Database memory per ECPU (GB): Specify the amount of memory allocated per ECPU for Autonomous Databases running in the Autonomous VM Cluster.
 
