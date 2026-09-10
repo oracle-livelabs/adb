@@ -21,7 +21,7 @@ begin
         p_enabled             => false,
         p_schema              => 'RECALL_OWNER',
         p_url_mapping_type    => 'BASE_PATH',
-        p_url_mapping_pattern => 'recall-owner',
+        p_url_mapping_pattern => 'recall_owner',
         p_auto_rest_auth      => true
     );
 
