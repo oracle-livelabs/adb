@@ -1,0 +1,156 @@
+<svg width="100%" viewBox="0 0 720 590" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>DBMS_LOKI Product Architecture</title>
+<desc>Metadata-driven log push engine inside ADB-D: log source registry, watermarks, PL/SQL engine, UTL_HTTP push to Loki</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<!-- ADB-D Instance container -->
+<rect x="24" y="16" width="420" height="554" rx="12" fill="#F0F7F5" stroke="#1B7D6E" stroke-width="1.4"/>
+<text x="234" y="42" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1B7D6E">ADB-D instance</text>
+<text x="234" y="58" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5A7D76">PROMETHEUS_EXPORTER schema</text>
+
+<!-- 1. Log Source Registry Table -->
+<rect x="46" y="74" width="376" height="130" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8"/>
+<text x="234" y="94" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#1B7D6E">LOKI_LOG_SOURCES</text>
+<text x="234" y="108" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#5A7D76">Each log source is a row — customers add/remove/enable/disable via API</text>
+
+<rect x="58" y="118" width="352" height="16" rx="2" fill="#E6F0EE" stroke="none"/>
+<text x="68" y="129" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" font-weight="600" fill="#1B7D6E">source_name</text>
+<text x="152" y="129" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" font-weight="600" fill="#1B7D6E">source_sql</text>
+<text x="272" y="129" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" font-weight="600" fill="#1B7D6E">labels</text>
+<text x="342" y="129" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" font-weight="600" fill="#1B7D6E">enabled</text>
+<text x="382" y="129" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" font-weight="600" fill="#1B7D6E">builtin</text>
+
+<text x="68" y="147" font-family="Courier New, monospace" font-size="8" fill="#312D2A">alert_log</text>
+<text x="152" y="147" font-family="Courier New, monospace" font-size="8" fill="#8B8880">SELECT … V$DIAG_ALERT_EXT</text>
+<text x="272" y="147" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#8B8880">source:alert_log</text>
+<text x="352" y="147" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#1B7D6E">&#x2713;</text>
+<text x="395" y="147" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#1B7D6E">&#x2713;</text>
+
+<text x="68" y="160" font-family="Courier New, monospace" font-size="8" fill="#312D2A">audit_trail</text>
+<text x="152" y="160" font-family="Courier New, monospace" font-size="8" fill="#8B8880">SELECT … UNIFIED_AUDIT_TRAIL</text>
+<text x="272" y="160" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#8B8880">source:audit_trail</text>
+<text x="352" y="160" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#1B7D6E">&#x2713;</text>
+<text x="395" y="160" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#1B7D6E">&#x2713;</text>
+
+<rect x="58" y="165" width="352" height="16" rx="2" fill="#FDF5EE" stroke="none"/>
+<text x="68" y="176" font-family="Courier New, monospace" font-size="8" fill="#C74634">ddl_changes</text>
+<text x="152" y="176" font-family="Courier New, monospace" font-size="8" fill="#A0766A">SELECT … audit WHERE DDL</text>
+<text x="272" y="176" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#A0766A">source:ddl_changes</text>
+<text x="352" y="176" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#C74634">&#x2713;</text>
+<text x="395" y="176" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#8B8880">&#x2717;</text>
+
+<line x1="234" y1="204" x2="234" y2="220" stroke="#1B7D6E" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 2. Watermark Table + Config Table side by side -->
+<rect x="46" y="224" width="186" height="58" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8"/>
+<text x="139" y="242" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600" fill="#1B7D6E">LOKI_PUSH_WATERMARKS</text>
+<text x="139" y="258" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#5A7D76">Cursor tracking per source</text>
+<text x="139" y="272" text-anchor="middle" font-family="Courier New, monospace" font-size="8" fill="#8B8880">last_pushed | push_count</text>
+
+<rect x="244" y="224" width="178" height="58" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8"/>
+<text x="333" y="242" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600" fill="#1B7D6E">LOKI_CONFIG</text>
+<text x="333" y="258" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#5A7D76">Endpoint configuration</text>
+<text x="333" y="272" text-anchor="middle" font-family="Courier New, monospace" font-size="8" fill="#8B8880">loki_url → http://…:3100</text>
+
+<line x1="234" y1="282" x2="234" y2="298" stroke="#1B7D6E" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 3. PL/SQL Push Engine -->
+<rect x="46" y="302" width="376" height="72" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8"/>
+<text x="234" y="324" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#1B7D6E">DBMS_LOKI.PUSH_LOGS()</text>
+<text x="234" y="340" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5A7D76">Iterates enabled sources → DBMS_SQL with :watermark bind</text>
+<text x="234" y="354" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5A7D76">Formats rows → Loki JSON payload, advances watermark on success</text>
+<text x="234" y="368" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#8B8880">Per-source error isolation — failures don't block other sources</text>
+
+<line x1="180" y1="374" x2="180" y2="398" stroke="#1B7D6E" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- 4. UTL_HTTP Client -->
+<rect x="46" y="402" width="230" height="64" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8"/>
+<text x="161" y="424" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#1B7D6E">UTL_HTTP</text>
+<text x="161" y="440" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5A7D76">POST /loki/api/v1/push</text>
+<text x="161" y="454" text-anchor="middle" font-family="Courier New, monospace" font-size="9" fill="#8B8880">application/json • chunked</text>
+
+<!-- 4b. DBMS_SCHEDULER -->
+<rect x="290" y="402" width="132" height="64" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8"/>
+<text x="356" y="424" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#1B7D6E">DBMS_SCHEDULER</text>
+<text x="356" y="440" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5A7D76">Recurring push job</text>
+<text x="356" y="454" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#5A7D76">Every N seconds</text>
+
+<!-- Dashed arrow: Scheduler → Engine (triggers) -->
+<path d="M356 402 L356 387 L422 387" fill="none" stroke="#1B7D6E" stroke-width="0.8" stroke-dasharray="4 3"/>
+<text x="394" y="383" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5A7D76">triggers</text>
+
+<line x1="161" y1="466" x2="161" y2="482" stroke="#1B7D6E" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="356" y1="466" x2="356" y2="482" stroke="#1B7D6E" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- Network bar -->
+<rect x="46" y="486" width="376" height="32" rx="6" fill="#E6F0EE" stroke="#1B7D6E" stroke-width="0.6"/>
+<text x="234" y="500" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" font-weight="600" fill="#1B7D6E">Private VCN — HTTP push to Loki on customer compute</text>
+<text x="234" y="512" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5A7D76">ACL: DBMS_NETWORK_ACL_ADMIN • No public internet required</text>
+
+<!-- Self-service API -->
+<rect x="46" y="530" width="376" height="30" rx="8" fill="#FFFFFF" stroke="#1B7D6E" stroke-width="0.8" stroke-dasharray="4 2"/>
+<text x="234" y="550" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600" fill="#1B7D6E">DBMS_LOKI — Self-service API</text>
+<text x="68" y="550" font-family="Courier New, monospace" font-size="8" fill="#312D2A"></text>
+
+<!-- Expanded API detail (dashed continuation) -->
+<rect x="46" y="530" width="376" height="30" rx="8" fill="#FFFFFF" stroke="none"/>
+<rect x="46" y="526" width="376" height="40" rx="8" fill="none" stroke="#1B7D6E" stroke-width="0.8" stroke-dasharray="4 2"/>
+<text x="70" y="544" font-family="Courier New, monospace" font-size="7.5" fill="#312D2A">CONFIGURE() • ADD/REMOVE_SOURCE() • ENABLE/DISABLE_SOURCE()</text>
+<text x="70" y="558" font-family="Courier New, monospace" font-size="7.5" fill="#312D2A">START/STOP_PUSH() • LIST_SOURCES() • TEST_PUSH() • PUSH_SOURCE()</text>
+
+<path d="M420 540 L434 540 L434 130 L422 130" fill="none" stroke="#1B7D6E" stroke-width="0.8" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+
+<!-- ========================================= -->
+<!-- External: Loki -->
+<!-- ========================================= -->
+<rect x="490" y="16" width="206" height="120" rx="10" fill="#FDF5EE" stroke="#C74634" stroke-width="1.2"/>
+<text x="593" y="40" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#C74634">Grafana Loki</text>
+<text x="593" y="56" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#A0766A">Customer-managed</text>
+<text x="510" y="76" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#312D2A">• Receives POST /loki/api/v1/push</text>
+<text x="510" y="90" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#312D2A">• Stores streams by label index</text>
+<text x="510" y="104" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#312D2A">• LogQL query engine</text>
+<text x="510" y="118" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#312D2A">• VCN-only (no authentication)</text>
+
+<!-- External: Grafana -->
+<rect x="490" y="160" width="206" height="80" rx="10" fill="#FDF5EE" stroke="#C74634" stroke-width="1.2"/>
+<text x="593" y="184" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="600" fill="#C74634">Grafana</text>
+<text x="593" y="200" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" fill="#A0766A">Customer-managed</text>
+<text x="593" y="218" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#312D2A">12-panel Log Explorer • Alerting</text>
+<text x="593" y="232" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#312D2A">DDL tracking • Audit analytics</text>
+
+<line x1="593" y1="136" x2="593" y2="158" stroke="#8B8880" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- External: Customer DBA -->
+<rect x="490" y="280" width="206" height="52" rx="8" fill="#F5F4F0" stroke="#8B8880" stroke-width="0.8"/>
+<text x="593" y="302" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" fill="#312D2A">Customer DBA</text>
+<text x="593" y="318" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#8B8880">SQL Worksheet / SQLcl</text>
+
+<!-- Push model callout -->
+<rect x="490" y="360" width="206" height="50" rx="8" fill="#FDF5EE" stroke="#C74634" stroke-width="0.8" stroke-dasharray="5 3"/>
+<text x="593" y="380" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="11" font-weight="600" fill="#C74634">Push model</text>
+<text x="593" y="396" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="9" fill="#A0766A">Database pushes to Loki</text>
+<text x="593" y="406" text-anchor="middle" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#A0766A">No external agents or scrapers</text>
+
+<!-- ========================================= -->
+<!-- Numbered flow arrows -->
+<!-- ========================================= -->
+
+<!-- ① PUSH: ADB-D → Loki (UTL_HTTP POST) — arrow goes OUT from ADB-D -->
+<path d="M422 438 L460 438 L460 68 L490 68" fill="none" stroke="#C74634" stroke-width="1.2" marker-end="url(#arrow)"/>
+<circle cx="460" cy="250" r="12" fill="#C74634" stroke="none"/>
+<text x="460" y="250" text-anchor="middle" dominant-baseline="central" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">1</text>
+
+<!-- ② Loki → Grafana (LogQL queries) -->
+<circle cx="593" cy="147" r="10" fill="#8B8880" stroke="none"/>
+<text x="593" y="147" text-anchor="middle" dominant-baseline="central" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">2</text>
+
+<!-- ③ DBA → API -->
+<path d="M490 306 L450 306 L450 540 L422 540" fill="none" stroke="#8B8880" stroke-width="1" marker-end="url(#arrow)"/>
+<circle cx="450" cy="420" r="12" fill="#8B8880" stroke="none"/>
+<text x="450" y="420" text-anchor="middle" dominant-baseline="central" font-family="Oracle Sans, Helvetica Neue, Arial, sans-serif" font-size="10" font-weight="600" fill="#FFFFFF">3</text>
+
+</svg>

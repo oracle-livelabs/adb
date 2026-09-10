@@ -84,7 +84,7 @@ For a complete list of the Select AI profile attributes, see the [DBMS\_CLOUD\_A
 
     ![Click the Clear and Clear Output icons](./images/click-clear-output.png "")
 
-2. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. _Don't run the code yet. Substitute the place holder for the region attribute with your assigned **Generative AI endpoint Region** from the **Reservation Information** panel_. For example, if your assigned Generative AI endpoint region is **`Brazil East (Sao Paulo) (sa-saopaulo-1)`**, enter **`sa-saopaulo-1`** for the region parameter. Note that we are using the **`AI_CREDENTIAL`** that was created for you. Next, click the **Run Script** icon. 
+2. Create a Select AI profile. Copy and paste the following code into your SQL Worksheet. A confirmation box is displayed. Click **Allow**. _Don't run the code yet. Substitute the place holder for the region attribute with your assigned **Generative AI endpoint Region** from the **Reservation Information** panel_. For example, if your assigned Generative AI endpoint region is **`Japan Central(Osaka)(ap-osaka-1)`**, enter **`ap-osaka-1`** for the region parameter. Note that we are using the **`AI_CREDENTIAL`** that was created for you. Next, click the **Run Script** icon. 
 
     ![Generative AI endpoint Region](./images/gen-ai-endpoint-region.png =65%x*)
 
@@ -152,16 +152,16 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Authors:**
-    * Marty Gubar (Retired), Product Management
-    * Lauran K. Serhal, Consulting User Assistance Developer
+    * Marcos Arancibia, Lead Principal Product Manager, ADB-S
+    * Marty Gubar, Product Management (Retired)
 * **Contributors:** 
+    * Lauran K. Serhal, Consulting User Assistance Developer
     * Michelle Malcher, Director, Product Management  
-    * Marcos Arancibia, Senior Principal Product Manager, ADB-S
-* **Last Updated By/Date:** Lauran K. Serhal, September 2025
+* **Last Updated By/Date:** Marcos Arancibia, July 2026
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
-Copyright (c) 2025  Oracle Corporation.
+Copyright (c) 2026  Oracle Corporation.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
