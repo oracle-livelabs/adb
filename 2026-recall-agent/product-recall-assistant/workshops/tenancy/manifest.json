@@ -1,0 +1,65 @@
+{
+    "workshoptitle": "Product Recall Assistant: Identify Exposure Fast",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Review the recall scenario, architecture, identities, and lab flow.",
+            "type": "livelabs",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Decide Whether to Open the Case: Shape the Recall Evidence with JSON",
+            "description": "Help Maya open the B-482 case and prove the recall scope from its evidence.",
+            "type": "livelabs",
+            "filename": "../../investigate-recall/investigate-recall.md"
+        },
+        {
+            "title": "Lab 2: Put Help Where It Is Needed: Map Recall Impact with Oracle Spatial",
+            "description": "Help Elena assign every affected store to nearby response coverage.",
+            "type": "livelabs",
+            "filename": "../../map-recall-impact/map-recall-impact.md"
+        },
+        {
+            "title": "Lab 3: Find the Source and the Reach: Trace Recall Paths with SQL Property Graph",
+            "description": "Help Jordan connect suspect component lots to suppliers, stores, and customers.",
+            "type": "livelabs",
+            "filename": "../../trace-supply-network/trace-supply-network.md"
+        },
+        {
+            "title": "Lab 4: Hear the Signal in the Noise: Prioritize Complaint Evidence with AI Vector Search",
+            "description": "Help Priya find the complaints that support the B-482 thermal pattern.",
+            "type": "livelabs",
+            "filename": "../../prioritize-recall-evidence/prioritize-recall-evidence.md"
+        },
+        {
+            "title": "Lab 5: Answer with Evidence: Build the Recall Assistant",
+            "description": "Help Marcus give investigators grounded answers from approved database tools.",
+            "type": "livelabs",
+            "filename": "../../build-recall-assistant/build-recall-assistant.md"
+        },
+        {
+            "title": "Lab 6: Put Trusted Facts in Reach: Publish the Recall API with ORDS",
+            "description": "Help Sofia share read-only recall facts and locations without exposing the schema.",
+            "type": "livelabs",
+            "filename": "../../publish-recall-workflow/publish-recall-workflow.md"
+        },
+        {
+            "title": "Lab 7: Show Each Role Only What It Needs: Make the Recall Agent Role-Aware with Deep Data Security",
+            "description": "Help Daniel prove that each role receives only its authorized B-482 evidence.",
+            "type": "livelabs",
+            "filename": "../../secure-recall-agent/secure-recall-agent.md"
+        },
+        {
+            "title": "Lab 8: Turn Evidence into Coordinated Action: Deploy the Role-Aware React Recall Command Center",
+            "description": "Help Aisha coordinate maps, graph paths, complaints, and agent answers in one role-aware command center.",
+            "type": "livelabs",
+            "filename": "../../react-recall-command-center/react-recall-command-center.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Template to link to Need Help lab at the end of workshop.",
+            "filename": "https://raw.githubusercontent.com/oracle-livelabs/common/main/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
