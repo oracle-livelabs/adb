@@ -129,20 +129,30 @@ to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role
 
 create or replace package recall_agent_bridge authid definer as
     function summarize_context(p_context in clob) return clob;
+    function ask_context(
+        p_context  in clob,
+        p_question in varchar2
+    ) return clob;
 end recall_agent_bridge;
 /
 
 create or replace package body recall_agent_bridge as
-    function summarize_context(p_context in clob) return clob is
+    function run_agent(
+        p_context  in clob,
+        p_question in varchar2
+    ) return clob is
         l_conversation_id varchar2(128);
         l_params          clob;
         l_prompt          clob;
         l_answer          clob;
     begin
-        dbms_cloud_ai.set_profile('RECALL_AGENT_PROFILE');
+        -- The application connection is an end-user DDS session. Oracle only
+        -- permits SET_PROFILE when the profile owner is the session user, so
+        -- do not mutate the end-user session. RECALL_SECURED_RESPONDER keeps
+        -- the owner-owned profile binding in its registered agent metadata.
         l_conversation_id := dbms_cloud_ai.create_conversation(
             attributes => q'~{
-              "title":"Role-aware Product Recall Assistant",
+              "title":"React Product Recall Assistant",
               "retention_days":1,
               "conversation_length":5
             }~'
@@ -154,8 +164,11 @@ create or replace package body recall_agent_bridge as
         into l_params;
 
         l_prompt :=
-            to_clob('Summarize only this authorized recall JSON and vector evidence. ') ||
-            to_clob('Do not infer hidden rows or company totals. Evidence: ') ||
+            to_clob('Answer the user question using only the four authorized evidence sections in this request: product JSON, DDS-filtered vector and relational evidence, DDS-filtered spatial evidence, and graph evidence. ') ||
+            to_clob('Use graphEvidence for component, supplier, store, and customer relationship patterns and spatialEvidence for regions, distances, and response centers. ') ||
+            to_clob('Do not infer hidden rows or company totals. Question: ') ||
+            to_clob(substr(p_question, 1, 1000)) ||
+            to_clob('. Authorized converged evidence: ') ||
             p_context;
 
         l_answer := dbms_cloud_ai_agent.run_team(
@@ -165,9 +178,26 @@ create or replace package body recall_agent_bridge as
         );
 
         return l_answer;
+    end run_agent;
+
+    function summarize_context(p_context in clob) return clob is
+    begin
+        return run_agent(
+            p_context,
+            'Summarize the authorized recall scope and the first response action.'
+        );
     end summarize_context;
+
+    function ask_context(
+        p_context  in clob,
+        p_question in varchar2
+    ) return clob is
+    begin
+        return run_agent(p_context, p_question);
+    end ask_context;
 end recall_agent_bridge;
 /
+
 
 show errors package body recall_agent_bridge
 

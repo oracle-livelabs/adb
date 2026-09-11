@@ -2,11 +2,13 @@
 
 ## Introduction
 
-Elena Ruiz, a Field Operations Planner, has to place response teams before store managers start asking for help. The recall affects 120 stores, but a list of store codes does not tell Elena which response center should handle each location. A poor assignment wastes time when the field team is already under pressure.
+Kevin now asks, “Where do we need to support returns, and who should respond?” A list of 120 stores is not a field plan. He needs each affected location connected to a response center before store teams start calling for help.
 
-Your mission is to turn the B-482 footprint into an actionable field plan. You will promote ordinary coordinates to indexed `SDO_GEOMETRY` points, find stores inside the 25-kilometer response radius, assign the nearest center, and create GeoJSON for stores and supplier sites. Oracle Spatial makes the distance decision inside the database, so Elena receives a repeatable assignment from the same governed evidence instead of a separate spreadsheet-and-map handoff.
+David's design is to treat locations as database data, not coordinates exported to a separate map. Stores, response centers, and supplier sites become indexed points. The same workflow can test a 25-kilometer response radius, choose the nearest center, and produce map-ready output for the application.
 
-By the end of the lab, every affected store will have nearby response coverage and a nearest response-center assignment. The visible result is a field-ready location view that can also be passed to the later API and command center.
+Tim promotes the existing longitude and latitude values to Oracle Spatial `SDO_GEOMETRY`, creates the Spatial indexes, and runs the proximity and distance SQL. He then produces GeoJSON that later APIs and the command center can use without recalculating assignments elsewhere.
+
+By the end of the lab, Kevin has response coverage and a nearest-center assignment for every affected store. David can carry the location evidence forward without introducing a spreadsheet-and-map handoff.
 
 Estimated Time: 10 minutes
 
@@ -21,6 +23,8 @@ In this lab, you will:
 - Create GeoJSON for affected stores and component supplier sites.
 
 ## Task 1: Promote Coordinates to Oracle Spatial
+
+Kevin needs a field plan, not raw coordinates. David promotes locations to first-class data; Tim creates the points and indexes.
 
 1. Inspect the relational longitude and latitude values before adding spatial columns.
 
@@ -143,9 +147,9 @@ In this lab, you will:
 
     The 26ai constructor creates WGS84 points from longitude and latitude. The script inserts no rows into `USER_SDO_GEOM_METADATA`; each V2 index creates its metadata automatically.
 
-    [`00-promote-spatial-columns.sql`](files/00-promote-spatial-columns.sql) contains the complete rerunnable version of this setup.
+    The block is rerunnable and safely recognizes columns and indexes that already exist.
 
-3. Run [`00a-refresh-spatial-views.sql`](files/00a-refresh-spatial-views.sql). This switches the recall views from their Lab 1 placeholders to the populated `LOCATION` columns and recompiles `RECALL_LAB_API`.
+3. The prepared backend uses the populated `LOCATION` columns and the current `RECALL_LAB_API` package.
 
 4. Inspect the promoted geometry values.
 
@@ -192,6 +196,8 @@ In this lab, you will:
 
 ## Task 2: Find Stores Within Response Radius
 
+Kevin asks whether every store has nearby help. David defines a response-radius rule; Tim applies it inside the database.
+
 1. Find affected stores within 25 kilometers of any recall response center.
 
     ```sql
@@ -221,6 +227,8 @@ In this lab, you will:
     - The next task ranks the nearest center when service areas overlap.
 
 ## Task 3: Assign the Nearest Response Center
+
+Kevin needs one center accountable for each location. David chooses a repeatable nearest-center rule; Tim calculates it.
 
 1. Rank response centers by distance for every affected store.
 
@@ -263,9 +271,9 @@ In this lab, you will:
 
 ## Task 4: Map Stores and Supplier Sites
 
-1. Run [`01-spatial-impact.sql`](files/01-spatial-impact.sql).
+Kevin needs the plan in the application. David uses GeoJSON as the exchange format; Tim prepares the store and supplier location results.
 
-    The script returns:
+1. Use the queries in this task to return:
 
     - stores within the 25-kilometer response radius,
     - nearest-center assignments for all affected stores,
@@ -288,7 +296,7 @@ You have completed Lab 2. Lab 3 traces upstream component lots and downstream cu
 | `LOCATION` does not exist | The prepared workshop environment is incomplete | Ask the facilitator to verify the backend deployment. |
 | Column or index already exists | The promotion script already ran | Continue with verification; do not repeat the promotion step. |
 | Spatial index is invalid | Promotion stopped during index creation | Ask the facilitator to verify the backend deployment before retrying the spatial steps. |
-| Locations fall outside the continental U.S. | The database contains older generated coordinates | Run `02-refresh-us-spatial-data.sql`, then regenerate the GeoJSON captures. |
+| Locations fall outside the continental U.S. | The database contains older generated coordinates | Ask the facilitator to refresh the prepared spatial data, then regenerate the GeoJSON captures. |
 | GeoJSON has fewer than 120 stores | Batch `B-482` data changed | Recheck `recall_affected_stores_v`. |
 | Supplier-site GeoJSON is empty | Component trace data did not load | Recheck `recall_component_trace_v`. |
 
@@ -300,5 +308,6 @@ You have completed Lab 2. Lab 3 traces upstream component lots and downstream cu
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

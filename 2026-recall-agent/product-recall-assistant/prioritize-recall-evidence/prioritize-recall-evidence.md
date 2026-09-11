@@ -2,11 +2,13 @@
 
 ## Introduction
 
-Priya Nair, a Customer Signals Analyst, is listening to reports that do not use the same words. One customer says “too hot to touch,” another reports an electrical smell, and another sees an E7 code before shutoff. Other complaints mention packaging, cosmetics, or an unrelated product. If Priya searches only for exact terms, the strongest evidence can disappear in the noise.
+Kevin asks, “Which return complaints support the thermal-risk decision?” Customers do not describe the same problem in the same words. Exact keyword searches can miss a report of an electrical smell, an E7 code, or a cooker that is too hot to touch.
 
-Your mission is to find the complaints that describe the same B-482 thermal pattern, even when the wording changes. You will ensure native vector columns, use the loaded `all_MiniLM_L12_v2.onnx` model to generate embeddings inside Oracle AI Database 26ai, and rank exposed complaints with `VECTOR_DISTANCE`. You will then join those semantic matches to structured JSON observations. The differentiator is that meaning-based ranking and the underlying evidence stay together in the database, where the recall filter still controls which complaints can enter the result.
+David's design keeps complaint text, structured observations, and recall eligibility together. Semantic ranking identifies similar descriptions, but the B-482 exposure filter and JSON observations remain part of the database query. A related phrase alone does not authorize unrelated complaints into the result.
 
-By the end of the lab, the approved context will prioritize complaints `9001`, `9002`, `9006`, `9003`, and `9007`, while excluding the unrelated B-900 complaint. Priya can hand the response team a ranked signal with observable supporting details.
+Tim uses the loaded ONNX model to create vectors in Oracle AI Database, ranks complaint chunks with `VECTOR_DISTANCE`, and joins the matches back to the JSON evidence. He explains the distinction Kevin needs: vector search finds meaning; the database still controls which evidence is valid for this recall.
+
+By the end of the lab, Kevin has a ranked evidence set led by complaints `9001`, `9002`, `9006`, `9003`, and `9007`, with unrelated B-900 evidence excluded. Tim will use this approved context in the assistant.
 
 Estimated Time: 15 minutes
 
@@ -23,6 +25,8 @@ In this lab, you will:
 - Produce the approved recall context used by the Select AI Agent lab.
 
 ## Task 1: Ensure Vector Data and Use the Loaded Model
+
+Kevin needs complaint evidence that reflects meaning, not only matching words. David keeps vectors and source evidence together; Tim prepares the model-backed data.
 
 1. Inspect the complaint text and query text that will become the embedding inputs.
 
@@ -142,9 +146,11 @@ end;
     </copy>
     ```
 
-    The two samples provide visible evidence that both tables contain populated vectors. `VECTOR_SERIALIZE` converts each sample to readable text, and `SUBSTR` keeps the result compact. The complete runnable version is [`00-vector-setup.sql`](files/00-vector-setup.sql).
+    The two samples provide visible evidence that both tables contain populated vectors. `VECTOR_SERIALIZE` converts each sample to readable text, and `SUBSTR` keeps the result compact.
 
 ## Task 2: Rank Semantic Complaint Evidence
+
+Kevin asks which reports most closely match the thermal pattern. David uses semantic ranking within the recall boundary; Tim runs the vector search.
 
 1. Find the five complaint chunks closest to the workshop query vector.
 
@@ -183,6 +189,8 @@ end;
     - The query filters semantic search to the current recall exposure.
 
 ## Task 3: Combine Vector and JSON Evidence
+
+Kevin needs the reason behind a ranking. David joins semantic results to structured observations; Tim combines both forms of evidence.
 
 1. Join the ranked vector results back to JSON observations.
 
@@ -225,6 +233,8 @@ end;
 
 ## Task 4: Produce the Approved Recall Context
 
+Kevin needs a compact approved context for the desk. David defines that boundary; Tim produces it for the governed assistant.
+
 1. Call the approved package that consolidates the investigation facts.
 
     ```sql
@@ -251,7 +261,7 @@ end;
     }
     ```
 
-3. Run [`01-vector-evidence.sql`](files/01-vector-evidence.sql) to execute all vector checkpoints.
+3. The queries in this task provide the vector checkpoints.
 
 You have completed Lab 4. Lab 5 registers the approved context function as a Select AI Agent tool.
 
@@ -263,7 +273,7 @@ You have completed Lab 4. Lab 5 registers the approved context function as a Sel
 | Complaint order differs | Model revision or model metadata changed | Confirm both tables use `RECALL_MINILM_L12_V2`; exact ordering can vary slightly. |
 | Model check returns no rows | The backend deployment did not load `RECALL_MINILM_L12_V2` | Ask the facilitator to verify the backend deployment. |
 | ONNX model file is missing | The backend deployment did not place the model in `DATA_PUMP_DIR` | Ask the facilitator to verify the backend deployment and the directory contents. |
-| Context status is `CLEAR` | Lab 1 case-opening command did not run | Run `02-open-investigation.sql`. |
+| Context status is `CLEAR` | Lab 1 case-opening command did not run | Return to Lab 1 and open the investigation. |
 | Context omits component fields | The approved API package is incomplete | Ask the facilitator to verify the backend deployment. |
 
 ## Learn More
@@ -273,5 +283,6 @@ You have completed Lab 4. Lab 5 registers the approved context function as a Sel
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

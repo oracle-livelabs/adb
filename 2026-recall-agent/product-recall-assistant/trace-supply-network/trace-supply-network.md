@@ -2,11 +2,13 @@
 
 ## Introduction
 
-Jordan Okafor, a Supplier Quality Manager, needs to know whether the thermal risk began in assembly, a component lot, or a sub-vendor. He also needs to show how that suspect path can reach stores and customers. A batch number alone cannot answer either question, and a flat supplier list hides the relationships that matter.
+Kevin's next question is, “If we accept returns, what do we need to trace back to, and how far did the suspect path reach?” A component lot, supplier site, store delivery, and customer purchase are related, but a flat table list makes the route hard to explain.
 
-Your mission is to trace B-482 in both directions. You will query `RECALL_GRAPH` to follow component lots upstream to supplier sites and suppliers, then follow shipments downstream to stores, purchases, and customers. The graph stores metadata while `GRAPH_TABLE` reads the current relational rows, so Jordan gets connected paths without maintaining a second copy of the recall data.
+David models the recall as connected business entities over the existing operational tables. The graph does not become a second system of record. It gives the team a way to ask about paths: upstream from B-482 to components and suppliers, or downstream through shipments, stores, purchases, and customers.
 
-By the end of the lab, the visible result will include 25 component paths, the suspect thermostat and thermal-sensor routes, 600 downstream exposure paths across 120 stores, and a trace from a suspect component lot to affected customers.
+Tim creates `RECALL_GRAPH` and uses `GRAPH_TABLE` to query those paths. He explains how the graph definition exposes the relationships while the relational rows remain current. The SQL makes Kevin's traceability question concrete rather than leaving it to manual joins and screenshots.
+
+By the end of the lab, Kevin can see 25 component paths, suspect thermostat and thermal-sensor routes, and 600 downstream exposure paths across 120 stores. David now has the relationship evidence needed for the returns workflow.
 
 Estimated Time: 10 minutes
 
@@ -21,6 +23,8 @@ In this lab, you will:
 - Connect a suspect component lot to downstream exposure paths.
 
 ## Task 1: Create the Recall Property Graph
+
+Kevin needs the connected path, not another report of disconnected identifiers. David defines the graph over current tables; Tim creates and verifies it.
 
 1. Confirm that Lab 1 did not create the graph early.
 
@@ -127,7 +131,7 @@ In this lab, you will:
 
     The graph stores metadata over the existing relational tables. It does not copy the recall data into a separate graph store. `OPTIONS (ENFORCED MODE)` validates the graph keys and references when Oracle creates the graph.
 
-    The complete runnable version is [`00-create-recall-graph.sql`](files/00-create-recall-graph.sql).
+    The block above is the complete rerunnable graph definition.
 
 3. Verify the graph and labels.
 
@@ -147,6 +151,8 @@ In this lab, you will:
     The graph includes vertices for batches, shipments, stores, customers, components, component batches, supplier sites, and suppliers. The relational tables and their graph-supporting indexes were prepared during Lab 1. The existing `BATCH_COMPONENTS_UQ` key supports the batch-component edge.
 
 ## Task 2: Trace Upstream Component Lots
+
+Kevin asks where the suspect lots came from. David follows the graph upstream; Tim queries the supplier and component paths.
 
 1. Traverse from batch `B-482` to component batches, supplier sites, and suppliers.
 
@@ -181,6 +187,8 @@ In this lab, you will:
     The result returns 25 component paths. It includes the curated thermal sensor and contact-set suppliers plus generated tier-1 and tier-2 sub-vendor lots.
 
 ## Task 3: Trace Downstream Exposure
+
+Kevin asks who may have received the affected units. David follows the same graph downstream; Tim traces shipments, stores, and purchases.
 
 1. Traverse from batch `B-482` to shipments, stores, purchases, and customers.
 
@@ -218,6 +226,8 @@ In this lab, you will:
 
 ## Task 4: Connect Component Lots to Exposure
 
+Kevin needs one explainable route from cause to exposure. David joins both directions; Tim returns the connected path.
+
 1. Trace the suspect thermostat lot to downstream customers.
 
     ```sql
@@ -248,7 +258,7 @@ In this lab, you will:
 
     The suspect thermostat lot reaches all 600 exposed customers because batch `B-482` used that lot.
 
-2. Run [`01-graph-trace.sql`](files/01-graph-trace.sql) to execute all graph checkpoints.
+2. The queries in this task provide the graph checkpoints.
 
 You have completed Lab 3. Lab 4 uses AI Vector Search to rank complaint evidence related to heat and odor.
 
@@ -269,5 +279,6 @@ You have completed Lab 3. Lab 4 uses AI Vector Search to rank complaint evidence
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026
