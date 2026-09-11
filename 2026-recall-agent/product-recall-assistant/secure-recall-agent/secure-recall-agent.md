@@ -2,13 +2,13 @@
 
 ## Introduction
 
-Daniel Brooks, a Data Governance Lead, has to protect trust while the recall response moves quickly. A store associate needs local instructions, a Northeast manager needs a regional picture, and the recall lead needs the company-wide scope. Giving every person the same answer would either hide useful context or expose more customer and store data than the job requires.
+Kevin wants the returns process to be secure without forcing store teams to understand security policy. A Store 101 user needs local instructions. A Northeast manager needs a regional view. A recall lead needs the full response. Kevin expects the same application to respect those differences automatically.
 
-Your mission is to make authorization part of the database retrieval itself. Three local Deep Data Security end users will run the same vector search and request the same agent summary. The database grants filter stores, customers, complaints, and complaint vectors before the agent sees them, while shared component and supplier-site evidence remains available to all three roles. This is the differentiator: role boundaries do not depend on a browser filter or a promise in the prompt.
+David puts authorization inside the retrieval path. Deep Data Security data roles filter stores, customers, complaints, and vectors before package functions assemble evidence. Shared component and supplier facts remain available where the work requires them. The browser and the prompt do not decide what a person can see.
 
-By the end of the lab, the store role will see 1 store, 12 units, and 5 customers; the Northeast role will see 24 stores, 453 units, and 120 customers; and the recall lead will see 120 stores, 2,400 units, and 600 customers. The same retrieval will produce three authorized answers with different complaint evidence.
+Tim creates the roles, data grants, invoker-rights retrieval package, and owner-side agent bridge. He runs the same retrieval for each role so Kevin can see the security outcome in numbers and complaint evidence. The SQL explains the important boundary: each local user is still themselves; only their authorized evidence reaches the agent.
 
-This lab makes the security contract explicit: local users authenticate as themselves, their assigned data grants filter the database rows, and only the resulting authorized JSON and vector evidence are sent to the agent. `RECALL_OWNER` retains the direct Select AI Agent privilege and the OCI resource principal. The local users do not become `RECALL_OWNER`, do not receive unrestricted table access, and do not receive a broad `DBMS_CLOUD_AI_AGENT` grant. They use the approved package boundary; the owner-side definer-rights bridge performs the governed agent handoff. Lab 8 extends this same boundary with role-filtered Spatial and Graph evidence in the React application.
+By the end of the lab, Store 101 sees 1 store, 12 units, and 5 customers; the Northeast role sees 24 stores, 453 units, and 120 customers; and the recall lead sees 120 stores, 2,400 units, and 600 customers.
 
 Estimated Time: 12 minutes
 
@@ -24,7 +24,9 @@ In this lab, you will:
 
 ## Task 1: Inspect Security at the Source
 
-1. Connect as `RECALL_OWNER` and run [`01-owner-deepsec-policy.sql`](files/01-owner-deepsec-policy.sql).
+Kevin expects security to follow the person, not a browser setting. David defines data roles and grants; Tim creates the policy chain.
+
+1. Connect as `RECALL_OWNER` and run the policy definition below.
 
     ```sql
     <copy>
@@ -159,20 +161,30 @@ In this lab, you will:
 
     create or replace package recall_agent_bridge authid definer as
         function summarize_context(p_context in clob) return clob;
+        function ask_context(
+            p_context  in clob,
+            p_question in varchar2
+        ) return clob;
     end recall_agent_bridge;
     /
 
     create or replace package body recall_agent_bridge as
-        function summarize_context(p_context in clob) return clob is
+        function run_agent(
+            p_context  in clob,
+            p_question in varchar2
+        ) return clob is
             l_conversation_id varchar2(128);
             l_params          clob;
             l_prompt          clob;
             l_answer          clob;
         begin
-            dbms_cloud_ai.set_profile('RECALL_AGENT_PROFILE');
+            -- The application connection is an end-user DDS session. Oracle only
+            -- permits SET_PROFILE when the profile owner is the session user, so
+            -- do not mutate the end-user session. RECALL_SECURED_RESPONDER keeps
+            -- the owner-owned profile binding in its registered agent metadata.
             l_conversation_id := dbms_cloud_ai.create_conversation(
                 attributes => q'~{
-                  "title":"Role-aware Product Recall Assistant",
+                  "title":"React Product Recall Assistant",
                   "retention_days":1,
                   "conversation_length":5
                 }~'
@@ -184,8 +196,11 @@ In this lab, you will:
             into l_params;
 
             l_prompt :=
-                to_clob('Summarize only this authorized recall JSON and vector evidence. ') ||
-                to_clob('Do not infer hidden rows or company totals. Evidence: ') ||
+                to_clob('Answer the user question using only the four authorized evidence sections in this request: product JSON, DDS-filtered vector and relational evidence, DDS-filtered spatial evidence, and graph evidence. ') ||
+                to_clob('Use graphEvidence for component, supplier, store, and customer relationship patterns and spatialEvidence for regions, distances, and response centers. ') ||
+                to_clob('Do not infer hidden rows or company totals. Question: ') ||
+                to_clob(substr(p_question, 1, 1000)) ||
+                to_clob('. Authorized converged evidence: ') ||
                 p_context;
 
             l_answer := dbms_cloud_ai_agent.run_team(
@@ -195,9 +210,26 @@ In this lab, you will:
             );
 
             return l_answer;
+        end run_agent;
+
+        function summarize_context(p_context in clob) return clob is
+        begin
+            return run_agent(
+                p_context,
+                'Summarize the authorized recall scope and the first response action.'
+            );
         end summarize_context;
+
+        function ask_context(
+            p_context  in clob,
+            p_question in varchar2
+        ) return clob is
+        begin
+            return run_agent(p_context, p_question);
+        end ask_context;
     end recall_agent_bridge;
     /
+
 
     show errors package body recall_agent_bridge
 
@@ -438,7 +470,7 @@ In this lab, you will:
 
     `DG_COMPLAINT_CHUNKS` authorizes a chunk only when its parent complaint is visible. Similarity search cannot rank an unauthorized vector. Component and supplier-site grants apply to all three roles because they describe the recalled batch and do not expose customer identity.
 
-3. Connect as `ADMIN` and run [`02-admin-assign-data-roles.sql`](files/02-admin-assign-data-roles.sql). The assignment view is ADMIN-only, so run the following query in that same session:
+3. Connect as `ADMIN`. The assignment view is ADMIN-only, so run the following query in that same session:
 
     ```sql
     <copy>
@@ -483,9 +515,11 @@ In this lab, you will:
 
 ## Task 2: Compare Store and Regional Retrieval
 
-1. Connect as `STORE_101_USER` and run [`03-test-secured-vector.sql`](files/03-test-secured-vector.sql).
+Kevin wants the same question to produce the right local or regional scope. David puts filtering before retrieval; Tim compares the database results.
 
-    The script stops if `ORA_END_USER_CONTEXT` or the expected data role is missing. Confirm the displayed end-user identity; a saved connection name alone does not prove which identity it uses.
+1. Connect as `STORE_101_USER` and run the queries in this task.
+
+    Confirm the displayed end-user identity and expected data role; a saved connection name alone does not prove which identity it uses.
 
     Confirm the session identity and active role:
 
@@ -506,11 +540,13 @@ In this lab, you will:
 
 ## Task 3: Run the Same Select AI Agent for All Three Roles
 
-1. Connect as `RECALL_LEAD_USER` and rerun [`03-test-secured-vector.sql`](files/03-test-secured-vector.sql).
+Kevin wants a governed answer for every job. David passes only authorized context to the agent; Tim runs the same team for all three roles.
+
+1. Connect as `RECALL_LEAD_USER` and rerun the queries in Task 2.
 
     The vector result now contains complaints `9001`, `9002`, `9006`, `9003`, and `9007`. The context reports 120 stores, 2,400 units, and 600 customers.
 
-2. While connected as each end user, run [`04-capture-secured-context.sql`](files/04-capture-secured-context.sql).
+2. While connected as each end user, capture the secured context through the prepared application boundary.
 
     Each call stores the JSON already filtered by the active end-user security context. It contains no customer names or email addresses.
 
@@ -551,6 +587,8 @@ In this lab, you will:
     The model is not the authorization layer. Deep Data Security has already removed unauthorized rows before `RUN_TEAM` receives the JSON. The model may vary its wording, but it cannot recover a complaint, store, customer, vector, or count that was absent from the authorized input.
 
 ## Task 4: Verify the Guardrail and Context
+
+Kevin needs an audit trail and a visible boundary. David defines what to inspect; Tim verifies the secure context and guardrails.
 
 1. Run these queries as any local end user.
 
@@ -611,5 +649,6 @@ You have completed the Deep Data Security policy. Lab 8 deploys the final React/
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

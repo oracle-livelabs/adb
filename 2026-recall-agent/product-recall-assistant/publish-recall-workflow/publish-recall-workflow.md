@@ -2,11 +2,13 @@
 
 ## Introduction
 
-Sofia Alvarez, an Integration Engineer, needs to make the recall evidence available to a field application and trusted partners. The response team cannot hand out table credentials just because another system needs store locations or component sites. Sofia must make the useful facts reachable while protecting customer information and the database behind them.
+Kevin wants the returns process to reach the field application and trusted partners without handing out database credentials. Store and supplier locations are useful for response work; customer names and the underlying table model are not part of the delivery contract.
 
-Your mission is to publish the approved B-482 interface through authenticated Oracle REST Data Services endpoints. The API returns PII-safe JSON plus GeoJSON for affected stores and component supplier sites. `RECALL_APP_USER` can execute the approved owner package but cannot query application tables. ORDS creates a narrow delivery boundary, so Sofia can give applications a stable read-only contract without exposing the schema.
+David designs a small read-only interface. Owner-owned PL/SQL packages decide what facts and GeoJSON features leave the database. ORDS publishes those functions as authenticated routes, and the runtime user receives package execution rather than application-table access.
 
-By the end of the lab, authenticated requests will return the recall context and location data, anonymous access will stop at `401 Unauthorized`, and the responses will contain no customer names or email addresses. Lab 8 will consume this protected evidence through the final React/Node application.
+Tim extends the package with the returns context, spatial summary, affected-store GeoJSON, and component-site GeoJSON. He then verifies the package grants and API responses. The SQL makes the contract visible: applications receive a stable response shape, not an invitation to query the schema.
+
+By the end of the lab, Kevin's application path can retrieve approved JSON and GeoJSON through authenticated endpoints. Anonymous requests stop at `401 Unauthorized`, and the responses contain no customer names or email addresses.
 
 Estimated Time: 12 minutes
 
@@ -22,7 +24,9 @@ In this lab, you will:
 
 ## Task 1: Extend the Approved Database Interface
 
-1. Connect as `RECALL_OWNER` and run [`01-extend-recall-api.sql`](files/01-extend-recall-api.sql).
+Kevin needs an application contract, not table access. David puts approved facts behind a package; Tim extends and tests that interface.
+
+1. Connect as `RECALL_OWNER` and run the package definition below.
 
     ```sql
     <copy>
@@ -409,7 +413,7 @@ In this lab, you will:
     </copy>
     ```
 
-    Continue only when all four function names appear. If `GET_AFFECTED_STORES` is missing, the Lab 1 package is still installed; rerun the complete `01-extend-recall-api.sql` script as `RECALL_OWNER`.
+    Continue only when all four function names appear. If `GET_AFFECTED_STORES` is missing, ask the facilitator to verify the prepared database interface.
 
 3. Inspect the package grant.
 
@@ -456,9 +460,9 @@ In this lab, you will:
 
 ## Task 2: Publish and Protect the Routes
 
-1. Connect as `ADMIN` and run [`02-publish-ords.sql`](files/02-publish-ords.sql).
+Kevin needs the contract available to trusted clients. David makes ORDS the authenticated delivery layer; Tim publishes and protects the routes.
 
-    This publishes the module into `RECALL_APP_USER`. The schema alias is `recall`, and the module base path is `api/v1/`.
+1. The prepared backend publishes the module into `RECALL_APP_USER`. The schema alias is `recall`, and the module base path is `api/v1/`.
 
 2. Review the four routes.
 
@@ -479,6 +483,8 @@ In this lab, you will:
     A reachable, protected route returns `HTTP/1.1 401 Unauthorized` and an ORDS JSON error body. This is the expected result. Do not add `RECALL_APP_USER` credentials to the command line or workshop files.
 
 ## Task 3: Test the Protected API
+
+Kevin needs evidence that the route behaves as designed. David tests both allowed and anonymous paths; Tim checks the JSON and GeoJSON responses.
 
 1. Set the required environment values without placing the password in shell history.
 
@@ -509,7 +515,7 @@ You have completed Lab 6. The recall workflow now has a protected API surface.
 | Symptom | Likely cause | Recovery |
 |---|---|---|
 | Anonymous request returns `404` | ORDS metadata has not refreshed | Wait several seconds and retry. |
-| Anonymous request returns `200` | Module privilege is missing | Rerun `02-publish-ords.sql`; stop until it returns `401`. |
+| Anonymous request returns `200` | Module privilege is missing | Ask the facilitator to verify the published module; stop until it returns `401`. |
 | Curl reaches its 20-second timeout | The client cannot reach the public ORDS endpoint | Verify the hostname, Autonomous Database public-access policy, VPN, proxy, and outbound firewall rules. |
 | Authenticated request returns `401` | Runtime password is incorrect | Re-enter the password outside shell history. |
 | `ORA-00904` names `GET_AFFECTED_STORES` | The approved package is incomplete | Ask the facilitator to verify the backend deployment, then verify `USER_PROCEDURES`. |
@@ -523,5 +529,6 @@ You have completed Lab 6. The recall workflow now has a protected API surface.
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

@@ -23,4 +23,6 @@ Database Actions (SQL Developer Web) is suitable for individual lab SQL, but thi
 
 ## Acknowledgements
 
-This deployment uses Oracle Database SQL, Spatial, Property Graph, AI Vector Search, Select AI, ORDS, and Deep Data Security features.
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

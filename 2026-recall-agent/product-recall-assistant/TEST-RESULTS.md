@@ -69,5 +69,6 @@ This record replaces the earlier five-lab baseline. The July 2026 workshop now c
 
 ## Acknowledgements
 
-- **Tester:** Codex live Oracle AI Database 26ai validation
-- **Last updated:** July 23, 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

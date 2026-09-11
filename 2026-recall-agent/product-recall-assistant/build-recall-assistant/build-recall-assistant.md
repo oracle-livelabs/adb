@@ -2,13 +2,13 @@
 
 ## Introduction
 
-Marcus Lee, a Recall Desk Coordinator, is fielding questions faster than a person can open separate reports, maps, and supplier records. He needs an answer he can trust, not a fluent guess that invents a count, names a hidden customer, or recommends an action that the evidence does not support.
+Kevin wants the returns desk to answer routine B-482 questions without opening separate reports, maps, and supplier traces. He also has a clear condition: the assistant must not invent counts, reveal customer details, or turn a vague prompt into unrestricted database access.
 
-Your mission is to give Marcus a grounded conversation for batch `B-482`. You will register two package functions as Select AI Agent tools: one for recall facts and one for spatial impact. The language model decides which approved tool to use and writes the response, while the database supplies the facts. That separation is the differentiator: the agent can reason over the request without receiving unrestricted SQL access or permission to invent recall details.
+David separates the language model from the evidence boundary. The assistant can choose between two approved questions: retrieve the recall context or retrieve the spatial impact. It receives the package results, not table access, and its role instructs it to answer only from those results.
 
-By the end of the lab, one conversation will answer five investigation questions using the approved context and spatial tools. The guardrail check will show that the agent can report recall evidence without retrieving customer names or contact details. Lab 8 will extend this same pattern with one role-filtered document containing JSON, vector, spatial, and graph evidence.
+Tim implements David's boundary with PL/SQL functions, Select AI Agent tools, an agent, a task, and a team. He uses one conversation for the investigation questions and then checks the registered tools. The SQL shows why the business outcome is different: Kevin gets useful answers while the database remains in control of the facts.
 
-This lab establishes the agent privilege boundary used by the rest of the workshop. `RECALL_OWNER` owns the AI profile, tools, and agent metadata and holds the direct `EXECUTE` privilege needed to run `DBMS_CLOUD_AI_AGENT`. A runtime business user does not receive unrestricted SQL, the owner credential, or direct access to that metadata. Later labs place Deep Data Security in front of this same agent path. The three Lab 7 local users receive only the approved application and security package grants needed to request a governed answer.
+By the end of the lab, Kevin can ask five recall questions in one governed conversation. The result contains approved evidence and no customer names or contact details.
 
 Estimated Time: 18 minutes
 
@@ -23,6 +23,8 @@ In this lab, you will:
 - Verify that the agent cannot retrieve customer names or contact details through its tool.
 
 ## Task 1: Inspect the Approved Tool Boundary
+
+Kevin wants trusted answers, so David starts by defining the only evidence functions an agent may call. Tim inspects that PL/SQL boundary.
 
 1. Review the Select AI Agent framework.
 
@@ -76,6 +78,8 @@ In this lab, you will:
     The profile omits `oci_compartment_id`, so Autonomous Database uses its own compartment. Its `region` points to a region that offers the selected model.
 
 ## Task 2: Register or Reuse the Tools and Investigator
+
+Kevin needs the assistant to use the boundary consistently. David defines governed tools and roles; Tim registers or reuses them.
 
 1. Ensure the recall context function is registered as a custom Select AI Agent tool. The block creates it only when it is missing, so it is safe to rerun after a previous Lab 5 attempt.
 
@@ -177,9 +181,7 @@ In this lab, you will:
     </copy>
     ```
 
-4. Run [`02-register-recall-agent.sql`](files/02-register-recall-agent.sql) when you want to refresh the complete registration. It safely drops only existing named Lab 5 objects, then recreates both tools, the agent, the task, and the sequential team in dependency order.
-
-    The first three blocks leave existing backend-registered definitions unchanged. The canonical script is the controlled refresh path when those definitions need to be rebuilt.
+4. The prepared backend registers the tools, agent, task, and sequential team. The first three blocks leave those definitions unchanged.
 
     The verification queries should return five enabled objects:
 
@@ -192,6 +194,8 @@ In this lab, you will:
     | Team | `RECALL_ASSISTANT_TEAM` |
 
 ## Task 3: Run a Grounded Recall Conversation
+
+Kevin now asks the investigation questions in plain language. David keeps the conversation grounded in approved tools; Tim runs and checks it.
 
 1. Activate the owner-local profile in the current session.
 
@@ -393,6 +397,8 @@ In this lab, you will:
 
 ## Task 4: Verify the Guardrail
 
+Kevin needs proof that the boundary held. David makes tool access inspectable; Tim verifies the guardrail.
+
 1. Review what the agent can call.
 
     ```sql
@@ -432,12 +438,12 @@ You have completed Lab 5. Lab 6 will publish this workflow through ORDS. Lab 7 w
 | `RECALL_AGENT_PROFILE` does not exist | The prepared workshop environment is incomplete | Ask the facilitator to verify the backend deployment. |
 | OCI endpoint or authorization error | The prepared profile or IAM configuration is incomplete | Ask the facilitator to verify the backend deployment and approved OCI configuration. |
 | Conversation ID is null or invalid | No conversation exists | Run `03-run-recall-agent.sql`; it creates and passes the ID. |
-| A tool or agent is missing after the checks | A partial registration remains | Run `02-register-recall-agent.sql`; it safely refreshes the named Lab 5 objects. |
-| `GET_SPATIAL_IMPACT` is missing | The package predates the spatial agent tool | Run the updated `01-extend-recall-api.sql`, then rerun `02-register-recall-agent.sql`. |
+| A tool or agent is missing after the checks | A partial registration remains | Ask the facilitator to verify the backend deployment. |
+| `GET_SPATIAL_IMPACT` is missing | The package predates the spatial agent tool | Ask the facilitator to verify the backend deployment. |
 | Answer omits a checkpoint | The agent skipped the tool | Tighten the task instruction and confirm the tool status. |
 | Answer includes customer names | The approved package changed | Stop the lab and inspect `RECALL_LAB_API`; the Lab 5 tool must not return PII. |
 
-For fast recovery, run [`lab2-reset.sql`](files/lab2-reset.sql). Then run [`lab2-solution.sql`](files/lab2-solution.sql).
+For recovery, ask the facilitator to restore the prepared agent objects.
 
 ## Learn More
 
@@ -447,5 +453,6 @@ For fast recovery, run [`lab2-reset.sql`](files/lab2-reset.sql). Then run [`lab2
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

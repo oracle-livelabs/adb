@@ -2,15 +2,13 @@
 
 ## Introduction
 
-Aisha Rahman, a Recall Response Product Owner, needs one place where a response team can see the product evidence, the affected footprint, the supplier path, the complaint signal, and the next answer. A collection of separate SQL worksheets and service calls makes it too easy to lose context or show the wrong scope to the wrong person.
+Kevin now sees the end result he asked for: one returns-response application that brings evidence and action together without asking business users to understand JSON, spatial indexes, graph paths, vectors, agent tools, or security grants. He wants to ask a question, review the authorized scope, and decide the next action.
 
-Your mission is to turn the secured B-482 workflow into a React and Node.js command center. The application signs in with one of the three Lab 7 local Deep Data Security end users. It brings together product details, component evidence, a U.S. store map, an Oracle Property Graph visualization, vector-ranked complaints, and a Select AI Agent chat panel. The differentiator is that the database session remains the source of authority: the browser does not choose a role, and the same application code receives only the evidence allowed for the signed-in identity.
+David's final design joins the earlier components without weakening their boundaries. The signed-in database user drives Deep Data Security filtering. The application receives product JSON, vector-ranked complaints, spatial impact, and graph evidence already limited to that identity. A definer-rights bridge can call the agent only after the authorized document is assembled.
 
-By the end of the lab, Aisha can compare role-filtered counts, maps, graph paths, complaint evidence, and agent answers from one interface. The same command center will show a store associate, a Northeast manager, and a recall lead different authorized views of the B-482 response.
+Tim prepares the React/Node database bridge, configures the application, and verifies the three roles. He shows how the command center requests product context, secured stores, graph paths, vector evidence, and agent answers through approved packages. The implementation stays technical, but Kevin's outcome stays clear: one dependable returns workflow rather than eight disconnected demonstrations.
 
-This workshop uses local database users to make the security behavior visible. A production application should use enterprise identity management or OCI IAM and propagate the authenticated identity through a supported database client path. The user experience and database authorization result remain the same: the active identity receives only the rows permitted by its Deep Data Security data role.
-
-The runtime security contract is deliberately split across two packages. `RECALL_REACT_API AUTHID CURRENT_USER` and `RECALL_SECURE_API AUTHID CURRENT_USER` run retrieval in the signed-in local user session, where Deep Data Security data grants filter the rows. `RECALL_REACT_API.ASK_AGENT` assembles product JSON, DDS-filtered vector and relational evidence, DDS-filtered Spatial impact, and a compact Graph trace with role-specific exposure counts. `RECALL_AGENT_BRIDGE AUTHID DEFINER` owns the controlled Select AI Agent handoff. It uses the owner’s direct `DBMS_CLOUD_AI_AGENT` privilege and OCI configuration, but receives only the already-authorized combined document. The browser user never logs in as `RECALL_OWNER` and never receives the owner credential.
+By the end of the lab, Kevin can compare the Store 101, Northeast, and recall-lead views in one command center. Each person receives a different authorized answer to the same B-482 question, grounded in JSON, Vector, Spatial, Graph, and governed agent evidence.
 
 Estimated Time: 22 minutes
 
@@ -35,9 +33,11 @@ In this lab, you will:
 
 ## Task 1: Prepare the Database Bridge
 
-1. Connect as `RECALL_OWNER` and run [`05-prepare-react-app.sql`](files/05-prepare-react-app.sql).
+Kevin needs the application to call approved boundaries, not internal tables. David separates the user-session retrieval and owner-side agent handoff; Tim prepares the bridge.
 
-    The script creates `RECALL_REACT_API`, the shared `RECALL_GRAPH_API` property-graph boundary, the DDS-filtered downstream graph projection and secured store GeoJSON function, role-filtered Spatial impact and compact Graph evidence for the agent, and the owner-side question-answering bridge. It also creates `RECALL_SECURED_TEAM` with its converged question-answering instruction.
+1. Start with the prepared database bridge.
+
+    The backend deployment creates `RECALL_REACT_API`, the shared `RECALL_GRAPH_API` property-graph boundary, the DDS-filtered downstream graph projection and secured store GeoJSON function, role-filtered Spatial impact and compact Graph evidence for the agent, and the owner-side question-answering bridge. It also creates `RECALL_SECURED_TEAM` with its converged question-answering instruction.
 
     The bridge is intentionally split. The local user has `EXECUTE` on the approved `RECALL_REACT_API` package, not unrestricted access to `DBMS_CLOUD_AI_AGENT`. The package call runs as the local user long enough for DDS to materialize the authorized JSON, vector, Spatial, and Graph sections, then the definer-rights bridge calls `DBMS_CLOUD_AI_AGENT.RUN_TEAM` with that combined document. The registered responder agent carries the `RECALL_AGENT_PROFILE` binding, so the runtime does not call `DBMS_CLOUD_AI.SET_PROFILE` in the local user session.
 
@@ -49,11 +49,11 @@ In this lab, you will:
     grant execute on dbms_cloud_ai_agent to recall_owner;
 
     -- The application users receive the approved package boundary.
-    grant execute on recall_react_api to recall_end_user_login;
+    grant execute on recall_owner.recall_react_api to recall_end_user_login;
     </copy>
     ```
 
-    The local user therefore requests `RUN_TEAM` indirectly through `RECALL_REACT_API`; the user is never granted direct agent-framework access.
+    Run these two grants as `ADMIN`. The schema-qualified package name is required because `RECALL_REACT_API` belongs to `RECALL_OWNER`. The local user therefore requests `RUN_TEAM` indirectly through `RECALL_REACT_API`; the user is never granted direct agent-framework access.
 
 2. Confirm that the bridge packages are valid.
 
@@ -89,6 +89,8 @@ In this lab, you will:
     Confirm `ASK_AGENT`, `CURRENT_IDENTITY`, `PRODUCT_CONTEXT`, `SEARCH_VECTOR_EVIDENCE`, `SECURED_GRAPH`, and `SECURED_STORES`. The separate graph package exposes `CONTEXT` for the shared supplier trace.
 
 ## Task 2: Configure the Application
+
+Kevin needs a usable returns application. David keeps connection details outside the code; Tim configures the runtime.
 
 1. Open a terminal in the React application folder and install the dependencies.
 
@@ -141,6 +143,8 @@ In this lab, you will:
 
 ## Task 3: Run or Deploy the React Application
 
+Kevin needs a working command center that turns approved evidence into clear next actions. David defines that experience; Tim starts or deploys it.
+
 1. Start the API and React development server together.
 
     ```bash
@@ -167,6 +171,8 @@ In this lab, you will:
 4. To deploy on an application host, copy the `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in its environment, run `npm ci`, `npm run build`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
 
 ## Task 4: Compare the Three Deep Data Security Users
+
+Kevin checks whether the same application respects each job. David relies on the signed-in identity; Tim compares the three results.
 
 1. Sign in as `STORE_101_USER` with the shared Lab 7 password.
 
@@ -218,6 +224,8 @@ In this lab, you will:
 4. Compare the experience with the database session, not the browser selection. The Node API reads the active end-user identity from `ORA_END_USER_CONTEXT` after login. The same application code and same SQL package calls produce different results because the database applies different data grants.
 
 ## Task 5: Ask the Secured Select AI Agent
+
+Kevin asks the final business question. David assembles only authorized JSON, vector, Spatial, and Graph evidence; Tim sends that document through the governed agent.
 
 1. While signed in as each persona, ask a question from the chat panel:
 
@@ -273,5 +281,6 @@ You have completed the Product Recall Assistant. The React/Node application now 
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026

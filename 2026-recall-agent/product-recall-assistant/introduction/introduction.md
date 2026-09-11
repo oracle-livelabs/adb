@@ -1,43 +1,49 @@
-# Product Recall Assistant: Identify Exposure Fast
+# Product Recall Assistant: Automate Secure Returns Decisions
 
 ## Introduction
 
-Product recalls demand fast answers from trusted data. A quality report has flagged HeatPro Countertop Cooker batch `B-482` for overheating, electrical odor, and early shutoff. The team must act while the records sit across component lots, supplier sites, stores, purchases, and customer complaints.
+Kevin runs the business side of the HeatPro returns process. The current process is slow and complex. Teams must assemble evidence, decide who should act, and make sure each person sees only the information they need. Customers wait while those handoffs happen, and Kevin knows the process is not good enough.
 
-Eight people handle this recall, and each has a different job. One decides whether to open the case. Another plans the field response. Others trace suppliers, sort complaints, build the assistant, publish the data, set access rules, and bring the work into one application. Each lab starts with one person’s problem and connects it to a feature in Oracle AI Database 26ai.
+When batch `B-482` is linked to overheating, electrical odor, and early shutoff, Kevin has had enough. The new issue makes the cost of delay clear: the team needs a secure, repeatable way to decide what to do, route returns and response work, and answer questions from the application they use. Kevin does not need to become a database specialist. He needs the process to work.
 
-### Eight Professionals, Eight Challenges
+Kevin brings in David, the solution architect, and Tim, the Oracle AI Database developer. David proposes one connected Oracle AI Database workflow instead of a chain of exports, point services, and manual handoffs. The same database keeps the recall report, operational records, locations, supplier relationships, complaint evidence, governed agent tools, APIs, and access rules connected. Each component has a clear job, and the database applies authorization before information reaches a person or an agent.
 
-| Professional | Challenge | Outcome to achieve | Oracle AI Database feature |
-|---|---|---|---|
-| Maya Chen, Product Safety Investigator | A report is still marked `REPORTED`, but three warning signs need review before the team changes its status. | Open a traceable case and measure the full extent of the B-482 recall. | Native JSON, `JSON_TRANSFORM`, `JSON_TABLE`, and `JSON_VALUE` |
-| Elena Ruiz, Field Operations Planner | Field teams must reach 120 stores, but raw coordinates do not show which response center should handle each one. | Find nearby centers, assign each store, and prepare location data for the field team. | Oracle Spatial, indexed `SDO_GEOMETRY`, and GeoJSON |
-| Jordan Okafor, Supplier Quality Manager | A batch number does not show whether the problem follows a component lot or a sub-vendor, or how it can reach customers. | Trace suspect lots to suppliers and connect them to downstream exposure. | SQL Property Graph and `GRAPH_TABLE` |
-| Priya Nair, Customer Signals Analyst | Customers describe the same thermal problem in different words, while other complaints concern packaging or unrelated products. | Rank the strongest B-482 complaints and read their structured details together. | AI Vector Search with native JSON |
-| Marcus Lee, Recall Desk Coordinator | The desk gets urgent questions faster than people can open separate reports, and a language model might guess. | Give investigators quick answers based only on approved recall tools. | Select AI Agent and PL/SQL tools |
-| Sofia Alvarez, Integration Engineer | Other applications need store and supplier-site data, but table credentials could expose too much. | Publish a stable, read-only interface without sharing the database schema. | ORDS and an approved database package |
-| Daniel Brooks, Data Governance Lead | A store associate, regional manager, and recall lead need different levels of detail. | Make one retrieval return only the rows each role may see. | Deep Data Security and role-based data grants |
-| Aisha Rahman, Recall Response Product Owner | The response team needs product, location, supplier, complaint, and assistant data in one place without losing user access rules. | Bring the work into one command center that follows the database session. | Oracle AI Database data services and database-session security |
+Tim builds David's design in eight steps. He starts with the reported evidence, then adds location planning, relationship tracing, semantic complaint matching, a governed assistant, APIs, database-enforced access, and the final application. The SQL in each lab is Tim's implementation of David's design and the evidence Kevin needs to automate the returns response safely.
 
-This workshop uses relational data, native JSON, Oracle Spatial, SQL property graph queries, AI Vector Search, Select AI Agent, ORDS, and database access controls. Each feature solves a different part of the recall: case review, location planning, relationship tracing, complaint matching, trusted answers, data sharing, access control, and application delivery.
+### Kevin's Business Outcome
 
-### The Business User’s Outcome
+Kevin wants a returns-response application that answers practical questions without exposing customer data or relying on someone to assemble evidence by hand:
 
-When this work reaches the application, a business user should not need to know which query produced an answer. The user signs in, sees the part of the recall that belongs to the job, and can act from the same set of current data.
+- Should the team open the B-482 case, and what is its scope?
+- Which stores need help, and which response center should support each one?
+- Which component lot and supplier path need investigation?
+- Which complaints indicate the same thermal risk?
+- What can a store user, regional manager, or recall lead see and act on?
 
-- The store associate sees Store 101, its units and exposed-customer count, the complaints that relate to that store, and the first action to take.
-- The Northeast manager sees the regional store footprint, response-center coverage, regional complaint patterns, supplier paths, and the priorities for the field team.
-- The recall response lead sees the full 120-store, 2,400-unit, and 600-customer scope, the component and supplier relationships, and the questions that need an enterprise-wide answer.
+At the end of the workshop, Kevin can use one command center to work with current, role-appropriate evidence. A store user sees Store 101 and its next action. A Northeast manager sees the regional footprint and response coverage. A recall lead sees the full 120-store, 2,400-unit, 600-customer scope. The application does not choose that scope. Oracle AI Database applies it from the signed-in identity.
 
-The answer changes with the signed-in person because the database applies that person’s access rules before the application retrieves data. Oracle AI Database 26ai turns the work from separate SQL tasks into a recall application that helps each role decide what to do next.
+### David's Architecture
 
-### Solution Architecture
+David maps Kevin's questions to one connected design:
 
-The database stores recall facts in one Oracle AI Database 26ai environment. It exposes approved interfaces and applies the signed-in user’s access rules.
+| Kevin needs | David's design | Tim implements with |
+|---|---|---|
+| A traceable decision to open the case | Keep the source report with stable operational records | Native JSON and SQL |
+| A field-ready return response | Calculate proximity and assignments where the data lives | Oracle Spatial and GeoJSON |
+| Supplier-to-customer traceability | Model connected paths over current relational data | SQL Property Graph |
+| Complaint evidence beyond exact keywords | Rank meaning, then retain structured evidence | AI Vector Search and JSON |
+| Trusted answers | Limit the assistant to approved database tools | Select AI Agent and PL/SQL |
+| Reusable delivery to applications | Publish a narrow read-only contract | ORDS and package APIs |
+| Different answers for different jobs | Enforce scope in the database | Deep Data Security |
+| One usable experience | Assemble authorized evidence in an application | React/Node and database-session security |
 
 ![Product Recall Assistant architecture showing Oracle AI Database 26ai with relational, JSON, Spatial, SQL Property Graph, AI Vector Search, PL/SQL, Deep Data Security, Select AI Agent, ORDS, and a React/Node command center](images/product-recall-assistant-architecture.svg)
 
-The database keeps admin work, data ownership, application calls, and business-user access separate. `ADMIN` creates the accounts and platform grants. `RECALL_OWNER` owns the application objects. `RECALL_APP_USER` can call only approved interfaces. Later, Deep Data Security gives store, regional, and recall-lead users different data grants. The final application agent receives one document assembled from product JSON, complaint and vector data, spatial results, and graph paths that the signed-in user may see. The same agent answers differently because each user session supplies different data.
+Tim keeps the technical boundary explicit. `ADMIN` creates accounts and platform grants. `RECALL_OWNER` owns application objects. `RECALL_APP_USER` calls approved interfaces instead of tables. Deep Data Security later limits store, regional, and recall-lead sessions. The final agent receives only the already-authorized JSON, vector, spatial, and graph evidence.
+
+### How the Workshop Works
+
+Kevin's question starts each lab. David explains the architectural choice. Tim then uses the SQL to implement and verify it. The workshop preserves the same B-482 scenario, data model, and checkpoints throughout.
 
 Estimated Workshop Time: 120 minutes
 
@@ -75,5 +81,6 @@ Bring basic familiarity with SQL and REST concepts. Lab 8 also uses a React/Node
 
 ## Acknowledgements
 
-- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
-- **Last updated:** July 2026
+- **Author:** Tim Cline, Product Management Architect
+- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Last updated:** October 2026
