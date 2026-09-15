@@ -1,0 +1,65 @@
+{
+    "workshoptitle": "Product Recall Assistant: Automate Secure Returns Decisions",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "See Kevin’s returns outcome, David’s architecture, and Tim’s eight-lab implementation.",
+            "type": "livelabs",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Decide Whether to Open the Case: Shape the Recall Evidence with JSON",
+            "description": "Kevin needs a traceable B-482 decision; David keeps JSON and operational evidence together, and Tim opens the case.",
+            "type": "livelabs",
+            "filename": "../../investigate-recall/investigate-recall.md"
+        },
+        {
+            "title": "Lab 2: Put Help Where It Is Needed: Map Recall Impact with Oracle Spatial",
+            "description": "Kevin needs a return-response plan; David designs location-aware coverage, and Tim assigns each affected store to a nearby center.",
+            "type": "livelabs",
+            "filename": "../../map-recall-impact/map-recall-impact.md"
+        },
+        {
+            "title": "Lab 3: Find the Source and the Reach: Trace Recall Paths with SQL Property Graph",
+            "description": "Kevin needs cause-to-exposure traceability; David models connected paths, and Tim traces lots, suppliers, stores, and customers.",
+            "type": "livelabs",
+            "filename": "../../trace-supply-network/trace-supply-network.md"
+        },
+        {
+            "title": "Lab 4: Hear the Signal in the Noise: Prioritize Complaint Evidence with AI Vector Search",
+            "description": "Kevin needs the strongest thermal-risk complaints; David keeps semantic ranking inside the recall boundary, and Tim verifies the evidence.",
+            "type": "livelabs",
+            "filename": "../../prioritize-recall-evidence/prioritize-recall-evidence.md"
+        },
+        {
+            "title": "Lab 5: Answer with Evidence: Build the Recall Assistant",
+            "description": "Kevin needs trusted answers without database access; David defines governed tools, and Tim builds the recall assistant.",
+            "type": "livelabs",
+            "filename": "../../build-recall-assistant/build-recall-assistant.md"
+        },
+        {
+            "title": "Lab 6: Put Trusted Facts in Reach: Publish the Recall API with ORDS",
+            "description": "Kevin needs safe application delivery; David defines a narrow contract, and Tim publishes protected recall JSON and GeoJSON.",
+            "type": "livelabs",
+            "filename": "../../publish-recall-workflow/publish-recall-workflow.md"
+        },
+        {
+            "title": "Lab 7: Show Each Role Only What It Needs: Make the Recall Agent Role-Aware with Deep Data Security",
+            "description": "Kevin needs each role to see only its scope; David puts authorization in retrieval, and Tim verifies the role-aware results.",
+            "type": "livelabs",
+            "filename": "../../secure-recall-agent/secure-recall-agent.md"
+        },
+        {
+            "title": "Lab 8: Turn Evidence into Coordinated Action: Deploy the Role-Aware React Recall Command Center",
+            "description": "Kevin needs one secure returns command center; David joins the components, and Tim delivers the authorized application experience.",
+            "type": "livelabs",
+            "filename": "../../react-recall-command-center/react-recall-command-center.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Template to link to Need Help lab at the end of workshop.",
+            "filename": "https://raw.githubusercontent.com/oracle-livelabs/common/main/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}

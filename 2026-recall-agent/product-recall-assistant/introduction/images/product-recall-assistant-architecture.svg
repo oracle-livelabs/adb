@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="diagram-title diagram-desc">
+  <title id="diagram-title">Product Recall Assistant architecture on Oracle AI Database 26ai</title>
+  <desc id="diagram-desc">An editable architecture diagram showing recall data from suppliers, components, manufacturing, stores, customers, and complaints flowing into Oracle AI Database 26ai. The database uses relational, JSON, Spatial, SQL Property Graph, AI Vector Search, and PL/SQL features. Deep Data Security governs Select AI Agent, ORDS APIs, and a React/Node command center for store, regional, and recall lead users.</desc>
+
+  <!--
+    Product Recall Assistant architecture
+    Edit this SVG directly to keep the LiveLabs image reference stable.
+    Oracle wordmark path source:
+    https://docs.oracle.com/en/database/oracle/oracle-database/26/dbiad/css/images/oracle-logo.svg
+  -->
+
+  <defs>
+    <style>
+      .title { font: 700 32px Arial, Helvetica, sans-serif; fill: #312d2a; }
+      .subtitle { font: 400 18px Arial, Helvetica, sans-serif; fill: #5b5652; }
+      .section-title { font: 700 20px Arial, Helvetica, sans-serif; fill: #312d2a; }
+      .card-title { font: 700 16px Arial, Helvetica, sans-serif; fill: #312d2a; }
+      .body { font: 400 14px Arial, Helvetica, sans-serif; fill: #4a4542; }
+      .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #5b5652; }
+      .label { font: 700 12px Arial, Helvetica, sans-serif; fill: #ffffff; }
+      .mono { font: 400 12px "Courier New", monospace; fill: #4a4542; }
+      .connector { fill: none; stroke: #6f6a67; stroke-width: 2.5; marker-end: url(#arrow); }
+      .connector-red { fill: none; stroke: #c74634; stroke-width: 3; marker-end: url(#arrow-red); }
+      .connector-back { fill: none; stroke: #2a7f6f; stroke-width: 2.5; stroke-dasharray: 8 6; marker-end: url(#arrow-teal); }
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6a67"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c74634"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2a7f6f"/>
+    </marker>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+
+    <!-- Reusable line icons -->
+    <symbol id="icon-location" viewBox="0 0 48 48">
+      <path d="M24 44s14-14 14-27A14 14 0 1 0 10 17c0 13 14 27 14 27z" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="24" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="3"/>
+    </symbol>
+    <symbol id="icon-component" viewBox="0 0 48 48">
+      <rect x="8" y="10" width="32" height="28" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M15 17h18M15 24h18M15 31h10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M4 18h4M4 30h4M40 18h4M40 30h4" fill="none" stroke="currentColor" stroke-width="3"/>
+    </symbol>
+    <symbol id="icon-package" viewBox="0 0 48 48">
+      <path d="M8 15l16-8 16 8v20l-16 8-16-8z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M8 15l16 8 16-8M24 23v20M17 11l16 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-store" viewBox="0 0 48 48">
+      <path d="M8 20h32v22H8zM6 20l5-12h26l5 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M16 42V29h10v13M6 20c0 4 7 4 7 0 0 4 7 4 7 0 0 4 7 4 7 0 0 4 7 4 7 0 0 4 8 4 8 0" fill="none" stroke="currentColor" stroke-width="3"/>
+    </symbol>
+    <symbol id="icon-complaint" viewBox="0 0 48 48">
+      <path d="M7 8h34v25H21l-10 8v-8H7z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M14 16h20M14 23h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-table" viewBox="0 0 48 48">
+      <rect x="5" y="8" width="38" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M5 18h38M5 29h38M18 8v32" fill="none" stroke="currentColor" stroke-width="3"/>
+    </symbol>
+    <symbol id="icon-json" viewBox="0 0 48 48">
+      <path d="M18 7c-6 0-7 4-7 9v3c0 3-2 5-5 5 3 0 5 2 5 5v3c0 5 1 9 7 9M30 7c6 0 7 4 7 9v3c0 3 2 5 5 5-3 0-5 2-5 5v3c0 5-1 9-7 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-graph" viewBox="0 0 48 48">
+      <path d="M13 14l20 6M15 34l18-12M13 16l2 16" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="11" cy="13" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="36" cy="21" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="13" cy="36" r="6" fill="none" stroke="currentColor" stroke-width="3"/>
+    </symbol>
+    <symbol id="icon-vector" viewBox="0 0 48 48">
+      <circle cx="11" cy="36" r="3" fill="currentColor"/>
+      <circle cx="18" cy="27" r="3" fill="currentColor"/>
+      <circle cx="25" cy="31" r="3" fill="currentColor"/>
+      <circle cx="32" cy="18" r="3" fill="currentColor"/>
+      <circle cx="39" cy="10" r="3" fill="currentColor"/>
+      <path d="M9 38L39 8M29 8h10v10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-code" viewBox="0 0 48 48">
+      <path d="M18 12L7 24l11 12M30 12l11 12-11 12M27 7l-6 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 48 48">
+      <path d="M24 5l16 6v12c0 10-6 17-16 21C14 40 8 33 8 23V11z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M17 24l5 5 10-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-agent" viewBox="0 0 48 48">
+      <rect x="8" y="13" width="32" height="26" rx="8" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M24 6v7M17 25h.1M31 25h.1M17 32h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="24" cy="5" r="2" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-api" viewBox="0 0 48 48">
+      <path d="M16 10H8v28h8M32 10h8v28h-8M28 8l-8 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-app" viewBox="0 0 48 48">
+      <rect x="5" y="7" width="38" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M5 16h38M12 11h1M18 11h1M24 11h1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <rect x="11" y="22" width="10" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M27 24h10M27 30h10M27 36h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 48 48">
+      <circle cx="17" cy="16" r="7" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle cx="34" cy="19" r="5" fill="none" stroke="currentColor" stroke-width="3"/>
+      <path d="M5 41c1-9 6-14 12-14s11 5 12 14M27 31c2-3 4-5 8-5 5 0 8 4 9 11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="1600" height="1000" fill="#f7f6f4"/>
+  <rect x="0" y="0" width="1600" height="112" fill="#ffffff"/>
+  <rect x="0" y="109" width="1600" height="3" fill="#c74634"/>
+
+  <!-- Official Oracle wordmark -->
+  <g transform="translate(48 23) scale(0.55)">
+    <g transform="translate(-407.10883,-329.8435)">
+      <path d="m 224.238,62.8241 h 30.641 L 238.69,36.699 208.973,83.8845 h -13.575 l 36.18,-56.6282 c 1.545,-2.2942 4.196,-3.6838 7.094,-3.6838 2.834,0 5.439,1.3437 6.983,3.5832 l 36.29,56.7288 h -13.537 l -6.38,-10.5487 H 231.002 L 224.238,62.8241 M 364.827,73.3358 V 24.1486 h -11.509 v 54.0233 c 0,1.4719 0.622,2.9162 1.701,3.9576 1.097,1.134 2.605,1.755 4.186,1.755 h 52.333 l 6.819,-10.5487 h -53.53 M 174.811,64.5427 c 11.183,0 20.176,-9.0501 20.176,-20.2018 0,-11.152 -8.993,-20.1923 -20.176,-20.1923 h -50.257 v 59.7359 h 11.485 V 34.7062 h 38.008 c 5.335,0 9.658,4.3058 9.658,9.6347 0,5.3202 -4.323,9.6985 -9.658,9.6985 l -32.391,-0.0271 34.307,29.8722 h 16.665 L 169.587,64.5427 h 5.224 M 53.8887,83.8845 h 34.7219 c 16.5184,0 29.8184,-13.3455 29.8184,-29.8451 0,-16.5176 -13.3,-29.8908 -29.8184,-29.8908 H 53.8887 c -16.4993,0 -29.8819,13.3732 -29.8819,29.8908 0,16.4996 13.3826,29.8451 29.8819,29.8451 M 87.8159,73.3724 H 54.6525 c -10.6725,0 -19.3201,-8.6748 -19.3201,-19.333 0,-10.7038 8.6476,-19.3332 19.3201,-19.3332 h 33.1634 c 10.7083,0 19.3471,8.6294 19.3471,19.3332 0,10.6582 -8.6388,19.333 -19.3471,19.333 M 305.931,83.8845 h 35.449 l 6.709,-10.5121 h -41.371 c -10.723,0 -19.361,-8.6748 -19.361,-19.333 0,-10.7038 8.638,-19.3332 19.361,-19.3332 h 33.675 l 6.792,-10.5576 h -41.254 c -16.508,0 -29.918,13.3732 -29.918,29.8908 0,16.4996 13.41,29.8451 29.918,29.8451 M 446.402,73.3724 c -8.849,0 -16.308,-5.9411 -18.612,-14.0678 h 49.089 l 6.763,-10.5304 H 427.79 c 2.295,-8.1443 9.763,-14.068 18.612,-14.068 h 33.702 l 6.739,-10.5576 h -41.209 c -16.482,0 -29.855,13.3732 -29.855,29.8908 0,16.4996 13.373,29.8451 29.855,29.8451 h 35.448 l 6.739,-10.5121 h -41.419" fill="#c74634" transform="matrix(1.00425,0,0,1,383,306.271)"/>
+    </g>
+  </g>
+
+  <text x="340" y="48" class="title">Product Recall Assistant</text>
+  <text x="340" y="78" class="subtitle">Oracle AI Database 26ai converged architecture</text>
+  <rect x="1344" y="28" width="208" height="50" rx="5" fill="#312d2a"/>
+  <text x="1448" y="49" text-anchor="middle" class="label">HANDS-ON LAB</text>
+  <text x="1448" y="68" text-anchor="middle" class="small" fill="#ffffff">AI World 2026</text>
+
+  <!-- Section containers -->
+  <g id="recall-ecosystem">
+    <rect x="36" y="145" width="350" height="745" rx="8" fill="#ffffff" stroke="#d8d4d1" stroke-width="2" filter="url(#shadow)"/>
+    <text x="61" y="181" class="section-title">Recall ecosystem</text>
+    <text x="61" y="205" class="small">Events retain location, lot, and time</text>
+
+    <!-- Source 1 -->
+    <rect x="61" y="232" width="300" height="108" rx="6" fill="#f2f7fa" stroke="#2f6b8a" stroke-width="2"/>
+    <circle cx="101" cy="276" r="25" fill="#dceaf1"/>
+    <use href="#icon-location" x="81" y="256" width="40" height="40" color="#2f6b8a"/>
+    <text x="137" y="260" class="card-title" style="font-size:15px">Supplier and sub-vendor sites</text>
+    <text x="137" y="283" class="body">25 sites | tier 1 and tier 2</text>
+    <text x="137" y="305" class="mono">produced_at | received_at</text>
+    <text x="137" y="326" class="small">SDO_GEOMETRY coordinates</text>
+
+    <!-- Source 2 -->
+    <rect x="61" y="356" width="300" height="108" rx="6" fill="#fbf3e5" stroke="#d78b26" stroke-width="2"/>
+    <circle cx="101" cy="400" r="25" fill="#f8e4c1"/>
+    <use href="#icon-component" x="81" y="380" width="40" height="40" color="#b66b12"/>
+    <text x="137" y="384" class="card-title">Component batches</text>
+    <text x="137" y="407" class="body">Thermostat, sensor, cord, liner</text>
+    <text x="137" y="429" class="mono" style="font-size:11px">lot | quality_status | JSON attrs</text>
+    <text x="137" y="450" class="small">Supplier certificates and sub-lots</text>
+
+    <!-- Source 3 -->
+    <rect x="61" y="480" width="300" height="108" rx="6" fill="#f8ece9" stroke="#c74634" stroke-width="2"/>
+    <circle cx="101" cy="524" r="25" fill="#f1d7d1"/>
+    <use href="#icon-package" x="81" y="504" width="40" height="40" color="#c74634"/>
+    <text x="137" y="508" class="card-title" style="font-size:15px">Manufacturing and shipments</text>
+    <text x="137" y="531" class="body">Batch B-482 | 2,400 shipped units</text>
+    <text x="137" y="553" class="mono">installed_at | shipped_on</text>
+    <text x="137" y="574" class="small">Assembly station and shipment path</text>
+
+    <!-- Source 4 -->
+    <rect x="61" y="604" width="300" height="108" rx="6" fill="#eaf5f1" stroke="#2a7f6f" stroke-width="2"/>
+    <circle cx="101" cy="648" r="25" fill="#d2e9e1"/>
+    <use href="#icon-store" x="81" y="628" width="40" height="40" color="#2a7f6f"/>
+    <text x="137" y="632" class="card-title">Stores and customers</text>
+    <text x="137" y="655" class="body">120 stores | 600 exposed customers</text>
+    <text x="137" y="677" class="mono">store_id | purchased_on</text>
+    <text x="137" y="698" class="small">Region and role boundaries</text>
+
+    <!-- Source 5 -->
+    <rect x="61" y="728" width="300" height="108" rx="6" fill="#f1edf8" stroke="#6a4c93" stroke-width="2"/>
+    <circle cx="101" cy="772" r="25" fill="#e2d9f0"/>
+    <use href="#icon-complaint" x="81" y="752" width="40" height="40" color="#6a4c93"/>
+    <text x="137" y="756" class="card-title">Complaints and evidence</text>
+    <text x="137" y="779" class="body">Structured observations + narrative</text>
+    <text x="137" y="801" class="mono">created_at | VECTOR embedding</text>
+    <text x="137" y="822" class="small">Semantic heat-and-odor ranking</text>
+  </g>
+
+  <!-- Central Oracle AI Database 26ai -->
+  <g id="oracle-ai-database-26ai">
+    <rect x="438" y="145" width="704" height="745" rx="10" fill="#ffffff" stroke="#c74634" stroke-width="3" filter="url(#shadow)"/>
+    <rect x="438" y="145" width="704" height="94" rx="8" fill="#312d2a"/>
+    <rect x="438" y="231" width="704" height="8" fill="#c74634"/>
+
+    <!-- Database cylinder icon -->
+    <g transform="translate(474 164)">
+      <ellipse cx="38" cy="13" rx="34" ry="11" fill="#c74634"/>
+      <path d="M4 13v40c0 7 15 12 34 12s34-5 34-12V13" fill="#c74634"/>
+      <ellipse cx="38" cy="53" rx="34" ry="12" fill="#a93226"/>
+      <path d="M4 31c0 7 15 12 34 12s34-5 34-12" fill="none" stroke="#ffffff" stroke-opacity="0.72" stroke-width="2"/>
+      <ellipse cx="38" cy="13" rx="34" ry="11" fill="none" stroke="#ffffff" stroke-opacity="0.9" stroke-width="2"/>
+    </g>
+    <text x="570" y="184" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#ffffff">Oracle Autonomous AI Database 26ai</text>
+    <text x="570" y="214" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#ddd9d6">One governed engine for every recall data type and workload</text>
+    <g transform="translate(1074 166)">
+      <use href="#icon-shield" x="0" y="0" width="52" height="52" color="#ffffff"/>
+    </g>
+
+    <text x="790" y="275" text-anchor="middle" class="section-title">Converged data and processing</text>
+    <text x="790" y="298" text-anchor="middle" class="small">The same transactional facts power every lab</text>
+
+    <!-- Converged tile: Relational -->
+    <g id="relational-data">
+      <rect x="474" y="320" width="198" height="142" rx="7" fill="#f8ece9" stroke="#c74634" stroke-width="2"/>
+      <use href="#icon-table" x="552" y="331" width="43" height="43" color="#c74634"/>
+      <text x="573" y="394" text-anchor="middle" class="card-title">Relational</text>
+      <text x="490" y="417" class="body">Cases, batches, shipments,</text>
+      <text x="490" y="438" class="body">stores, purchases, parts</text>
+      <text x="490" y="456" class="mono">PK/FK + SQL joins</text>
+    </g>
+
+    <!-- Converged tile: JSON -->
+    <g id="json-data">
+      <rect x="691" y="320" width="198" height="142" rx="7" fill="#fbf3e5" stroke="#d78b26" stroke-width="2"/>
+      <use href="#icon-json" x="769" y="331" width="43" height="43" color="#b66b12"/>
+      <text x="790" y="394" text-anchor="middle" class="card-title">Native JSON</text>
+      <text x="707" y="417" class="body">Product attributes, supplier</text>
+      <text x="707" y="438" class="body">evidence, complaint details</text>
+      <text x="707" y="456" class="mono">JSON_VALUE | JSON_TABLE</text>
+    </g>
+
+    <!-- Converged tile: Spatial -->
+    <g id="spatial-data">
+      <rect x="908" y="320" width="198" height="142" rx="7" fill="#f2f7fa" stroke="#2f6b8a" stroke-width="2"/>
+      <use href="#icon-location" x="986" y="331" width="43" height="43" color="#2f6b8a"/>
+      <text x="1007" y="394" text-anchor="middle" class="card-title">Oracle Spatial</text>
+      <text x="924" y="417" class="body">Stores, response centers,</text>
+      <text x="924" y="438" class="body">supplier and sub-vendor sites</text>
+      <text x="924" y="456" class="mono">SDO_GEOMETRY | GeoJSON</text>
+    </g>
+
+    <!-- Converged tile: Graph -->
+    <g id="property-graph">
+      <rect x="474" y="482" width="198" height="142" rx="7" fill="#eaf5f1" stroke="#2a7f6f" stroke-width="2"/>
+      <use href="#icon-graph" x="552" y="493" width="43" height="43" color="#2a7f6f"/>
+      <text x="573" y="556" text-anchor="middle" class="card-title" style="font-size:14px">SQL Property Graph</text>
+      <text x="490" y="579" class="body">Supplier - component - batch -</text>
+      <text x="490" y="600" class="body">shipment - store - customer</text>
+      <text x="490" y="618" class="mono">GRAPH_TABLE path queries</text>
+    </g>
+
+    <!-- Converged tile: Vector -->
+    <g id="vector-search">
+      <rect x="691" y="482" width="198" height="142" rx="7" fill="#f1edf8" stroke="#6a4c93" stroke-width="2"/>
+      <use href="#icon-vector" x="769" y="493" width="43" height="43" color="#6a4c93"/>
+      <text x="790" y="556" text-anchor="middle" class="card-title">AI Vector Search</text>
+      <text x="707" y="579" class="body">Semantic complaint evidence</text>
+      <text x="707" y="600" class="body">with relational prefilters</text>
+      <text x="707" y="618" class="mono" style="font-size:10.5px">VECTOR_DISTANCE(..., COSINE)</text>
+    </g>
+
+    <!-- Converged tile: PL/SQL -->
+    <g id="plsql-apis">
+      <rect x="908" y="482" width="198" height="142" rx="7" fill="#f3f1ef" stroke="#6f6a67" stroke-width="2"/>
+      <use href="#icon-code" x="986" y="493" width="43" height="43" color="#4a4542"/>
+      <text x="1007" y="556" text-anchor="middle" class="card-title">PL/SQL APIs</text>
+      <text x="924" y="579" class="body">Approved recall context,</text>
+      <text x="924" y="600" class="body">store and component GeoJSON</text>
+      <text x="924" y="618" class="mono">RECALL_LAB_API</text>
+    </g>
+
+    <!-- Security layer -->
+    <g id="security-layer">
+      <rect x="474" y="650" width="632" height="132" rx="7" fill="#edf5ea" stroke="#4d7c3f" stroke-width="2"/>
+      <use href="#icon-shield" x="493" y="681" width="52" height="52" color="#4d7c3f"/>
+      <text x="790" y="684" text-anchor="middle" class="card-title">Deep Data Security and least privilege</text>
+      <text x="562" y="709" class="body">Store, Northeast region, and recall lead data roles filter rows before retrieval.</text>
+      <text x="562" y="733" class="body">Agent tools and runtime accounts receive approved package access, not table access.</text>
+      <text x="562" y="758" class="mono">RECALL_OWNER | RECALL_APP_USER | DDS roles | audit evidence</text>
+    </g>
+
+    <!-- Governed context output -->
+    <rect x="474" y="807" width="632" height="53" rx="26" fill="#c74634"/>
+    <text x="790" y="829" text-anchor="middle" class="label">PII-SAFE RECALL CONTEXT</text>
+    <text x="790" y="848" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#ffffff">120 stores | 2,400 units | 600 customers | 25 component batches | 25 supplier sites</text>
+  </g>
+
+  <!-- Experience and delivery -->
+  <g id="experience-delivery">
+    <rect x="1194" y="145" width="370" height="745" rx="8" fill="#ffffff" stroke="#d8d4d1" stroke-width="2" filter="url(#shadow)"/>
+    <text x="1219" y="181" class="section-title">Experience and delivery</text>
+    <text x="1219" y="205" class="small">Every channel uses approved database interfaces</text>
+
+    <!-- Agent -->
+    <rect x="1219" y="232" width="320" height="164" rx="7" fill="#f8ece9" stroke="#c74634" stroke-width="2"/>
+    <circle cx="1261" cy="278" r="27" fill="#f1d7d1"/>
+    <use href="#icon-agent" x="1239" y="256" width="44" height="44" color="#c74634"/>
+    <text x="1301" y="263" class="card-title">Select AI Agent</text>
+    <text x="1301" y="286" class="body">Evidence-grounded investigator</text>
+    <text x="1240" y="326" class="body">Calls one approved PL/SQL tool before answering.</text>
+    <text x="1240" y="349" class="mono">RECALL_CONTEXT_TOOL</text>
+    <text x="1240" y="370" class="small">OCI Generative AI via resource principal</text>
+    <text x="1240" y="389" class="small">No arbitrary SQL | no customer PII</text>
+
+    <!-- ORDS -->
+    <rect x="1219" y="420" width="320" height="140" rx="7" fill="#f3f1ef" stroke="#6f6a67" stroke-width="2"/>
+    <circle cx="1261" cy="466" r="27" fill="#e5e2df"/>
+    <use href="#icon-api" x="1239" y="444" width="44" height="44" color="#4a4542"/>
+    <text x="1301" y="451" class="card-title">Oracle REST Data Services</text>
+    <text x="1301" y="474" class="body">Authenticated read-only APIs</text>
+    <text x="1240" y="514" class="mono">/context | /stores | /component-sites</text>
+    <text x="1240" y="539" class="small">JSON and GeoJSON responses</text>
+
+    <!-- React and Node.js -->
+    <rect x="1219" y="584" width="320" height="164" rx="7" fill="#eef4f8" stroke="#2f6b8a" stroke-width="2"/>
+    <circle cx="1261" cy="630" r="27" fill="#dceaf1"/>
+    <use href="#icon-app" x="1239" y="608" width="44" height="44" color="#2f6b8a"/>
+    <text x="1301" y="615" class="card-title">React + Node Command Center</text>
+    <text x="1301" y="638" class="body">Metrics, map, complaints, agent answer</text>
+    <text x="1240" y="679" class="body">Live role-filtered data for the</text>
+    <text x="1240" y="700" class="body">authenticated database user.</text>
+    <text x="1240" y="726" class="small">React UI | Node API | held DB session</text>
+
+    <!-- Users -->
+    <rect x="1219" y="772" width="320" height="88" rx="7" fill="#edf5ea" stroke="#4d7c3f" stroke-width="2"/>
+    <use href="#icon-users" x="1237" y="791" width="48" height="48" color="#4d7c3f"/>
+    <text x="1301" y="800" class="card-title">Role-aware users</text>
+    <text x="1301" y="823" class="body">Store associate | regional manager</text>
+    <text x="1301" y="844" class="body">Recall response lead</text>
+  </g>
+
+  <!-- Data flow connectors -->
+  <g id="data-flows">
+    <path d="M361 286 H424 V304 H1007 V320" class="connector"/>
+    <path d="M361 410 H414 V312 H790 V320" class="connector"/>
+    <path d="M361 534 H420 V391 H474" class="connector"/>
+    <path d="M361 658 H420 V553 H474" class="connector"/>
+    <path d="M361 782 H420 V637 H790 V624" class="connector"/>
+
+    <path d="M1142 322 C1171 322 1180 314 1219 314" class="connector-red"/>
+    <path d="M1142 490 C1171 490 1180 490 1219 490" class="connector"/>
+    <path d="M1142 666 C1171 666 1180 666 1219 666" class="connector"/>
+    <path d="M1379 560 L1379 584" class="connector"/>
+    <text x="1390" y="576" class="small">React runtime</text>
+    <path d="M1379 772 L1379 748" class="connector"/>
+
+    <path d="M1219 372 C1175 390 1170 826 1106 833" class="connector-back"/>
+    <text x="1148" y="612" transform="rotate(-78 1148 612)" class="small" fill="#2a7f6f">role-scoped answer stored with secured context</text>
+  </g>
+
+  <!-- Footer -->
+  <rect x="36" y="916" width="1528" height="54" rx="7" fill="#312d2a"/>
+  <text x="800" y="939" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">ONE GOVERNED DATABASE - SAME RECALL FACTS ACROSS JSON, SPATIAL, GRAPH, VECTOR, AGENT, SECURITY, AND REACT/NODE</text>
+  <text x="800" y="958" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#ddd9d6">Trace upstream component lots and downstream exposure without copying data into specialized stores</text>
+</svg>

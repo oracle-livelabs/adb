@@ -46,7 +46,11 @@ Oracle Database@AWS automatically publishes a rich set of performance and health
 
     ![CPU Utilization with different granularity](./images/explore-metrics-8.png " ")
 
+<<<<<<< HEAD
 ## Task 2: Visualize Performance with CloudWatch Dashboards
+=======
+## Task 2: Visualizing Performance with CloudWatch Dashboards
+>>>>>>> upstream/main
 
 While viewing individual metrics is useful, a dashboard provides a consolidated, at-a-glance view of your database's health. In this task, you will create a custom CloudWatch Dashboard to monitor the most important metrics for your database.
 
@@ -82,6 +86,7 @@ While viewing individual metrics is useful, a dashboard provides a consolidated,
 
    ![Create Sessins widget](./images/visualize-perf-9.png " ")
 
+<<<<<<< HEAD
 4. View the Dashboard.
 
    ![View Dashboard](./images/visualize-perf-8.png " ")
@@ -90,13 +95,25 @@ While viewing individual metrics is useful, a dashboard provides a consolidated,
 
 ## Task 3: Monitor Proactively with CloudWatch Alarms
 
+=======
+4. View the Dashboard
+
+   ![View Dashboard](./images/visualize-perf-8.png " ")
+
+## Task 3: Proactive Monitoring with CloudWatch Alarms
+ 
+>>>>>>> upstream/main
 Dashboards are great for observing performance, but alarms are essential for proactive management. CloudWatch Alarms can automatically notify you when a metric crosses a defined threshold, allowing you to respond to potential issues before they impact users.
 
 ### Steps
 
 1. Select a metric to create an alarm for (e.g., **CPUUtilization**).
 
+<<<<<<< HEAD
    Perform Steps 1 to 5 in [Task 1](?lab=observability-aws-native-services&section=task1#Task1:ExploreDatabaseMetricsinAWSCloudWatch) above and then click on the **Create alarm** button.
+=======
+   Perform Steps 1 to 5 in [Task 1](#task-1-exploring-database-metrics-in-aws-cloudwatch) above and then click on the **Create alarm** button.
+>>>>>>> upstream/main
 
    ![Select a metric](./images/proactive-monitor-1.png " ")
 

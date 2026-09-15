@@ -1,0 +1,26 @@
+{
+  "name": "recall-command-center-react",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 0.0.0.0",
+    "dev:all": "node dev-all.mjs",
+    "api": "node server.mjs",
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "leaflet": "latest",
+    "lucide-react": "latest",
+    "oracledb": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-leaflet": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {}
+}

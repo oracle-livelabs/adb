@@ -1,0 +1,258 @@
+.oj-button,
+.oj-button-nocomp {
+  margin-bottom: 4px;
+  font-size: 1rem;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.oj-button-nocomp.oj-button-half-chrome:disabled,
+.oj-button-toggle.oj-disabled.oj-button-half-chrome,
+.oj-button.oj-disabled.oj-button-half-chrome .oj-button-button {
+  color: rgba(0, 0, 0, 0.38);
+  opacity: 1;
+}
+
+.oj-button-nocomp.oj-button-half-chrome,
+.oj-button-nocomp.oj-button-half-chrome:disabled,
+.oj-button-toggle.oj-default.oj-button-half-chrome,
+.oj-button-toggle.oj-disabled.oj-button-half-chrome,
+.oj-button-toggle.oj-focus-only.oj-button-half-chrome,
+.oj-button.oj-default.oj-button-half-chrome .oj-button-button,
+.oj-button.oj-disabled.oj-button-half-chrome .oj-button-button,
+.oj-button.oj-focus-only.oj-button-half-chrome .oj-button-button {
+  border-color: transparent;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+.oj-button-nocomp.oj-button-half-chrome:hover,
+.oj-button-toggle.oj-hover.oj-button-half-chrome,
+.oj-button.oj-hover.oj-button-half-chrome .oj-button-button {
+  color: #02629f;
+  background-color: #f7f7f8;
+  border-color: #cbcccd;
+  box-shadow: none;
+}
+
+.oj-button-nocomp.oj-button-full-chrome:hover,
+.oj-button-toggle.oj-hover.oj-button-full-chrome,
+.oj-button.oj-hover.oj-button-full-chrome .oj-button-button {
+  background-color: #f7f7f8;
+  background-image: none;
+  border-color: #cbcccd;
+  color: #02629f;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.oj-button-nocomp.oj-active.oj-button-half-chrome,
+.oj-button-nocomp.oj-button-half-chrome:active,
+.oj-button-toggle.oj-active.oj-button-half-chrome,
+.oj-button.oj-active.oj-button-half-chrome .oj-button-button {
+  color: #fff;
+  background-color: #027bc7;
+  border-color: #027bc7;
+  opacity: 1;
+  box-shadow: none;
+}
+
+.oj-button-nocomp.oj-active.oj-button-full-chrome,
+.oj-button-nocomp.oj-button-full-chrome:active,
+.oj-button-toggle.oj-active.oj-button-full-chrome,
+.oj-button.oj-active.oj-button-full-chrome .oj-button-button {
+  background-color: #027bc7;
+  background-image: none;
+  border-color: #027bc7;
+  color: #fff;
+  box-shadow: none;
+  text-shadow: none;
+  opacity: 1;
+}
+
+.oj-button-nocomp.oj-button-full-chrome,
+.oj-button-toggle.oj-default.oj-button-full-chrome,
+.oj-button-toggle.oj-focus-only.oj-button-full-chrome,
+.oj-button.oj-default.oj-button-full-chrome .oj-button-button,
+.oj-button.oj-focus-only.oj-button-full-chrome .oj-button-button {
+  background-color: #ededee;
+  background-image: none;
+  border-color: #cbcccd;
+  color: #000;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.oj-button-nocomp.oj-button-half-chrome,
+.oj-button-nocomp.oj-button-half-chrome:active,
+.oj-button-nocomp.oj-button-half-chrome:hover,
+.oj-button-nocomp.oj-button-half-chrome:link,
+.oj-button-nocomp.oj-button-half-chrome:visited,
+.oj-button-toggle.oj-button-half-chrome,
+.oj-button-toggle.oj-button-half-chrome:active,
+.oj-button-toggle.oj-button-half-chrome:hover,
+.oj-button-toggle.oj-button-half-chrome:link,
+.oj-button-toggle.oj-button-half-chrome:visited,
+.oj-button.oj-button-half-chrome .oj-button-button,
+.oj-button.oj-button-half-chrome .oj-button-button:active,
+.oj-button.oj-button-half-chrome .oj-button-button:hover,
+.oj-button.oj-button-half-chrome .oj-button-button:link,
+.oj-button.oj-button-half-chrome .oj-button-button:visited {
+  font-weight: 400;
+}
+
+.oj-button-nocomp.oj-button-full-chrome,
+.oj-button-nocomp.oj-button-full-chrome:active,
+.oj-button-nocomp.oj-button-full-chrome:hover,
+.oj-button-nocomp.oj-button-full-chrome:link,
+.oj-button-nocomp.oj-button-full-chrome:visited,
+.oj-button-toggle.oj-button-full-chrome,
+.oj-button-toggle.oj-button-full-chrome:active,
+.oj-button-toggle.oj-button-full-chrome:hover,
+.oj-button-toggle.oj-button-full-chrome:link,
+.oj-button-toggle.oj-button-full-chrome:visited,
+.oj-button.oj-button-full-chrome .oj-button-button,
+.oj-button.oj-button-full-chrome .oj-button-button:active,
+.oj-button.oj-button-full-chrome .oj-button-button:hover,
+.oj-button.oj-button-full-chrome .oj-button-button:link,
+.oj-button.oj-button-full-chrome .oj-button-button:visited {
+  font-weight: 400;
+}
+
+.oj-button-nocomp:disabled,
+.oj-button-toggle.oj-disabled,
+.oj-button.oj-disabled .oj-button-button {
+  cursor: default;
+}
+
+.oj-button-button,
+.oj-button-button:active,
+.oj-button-button:hover,
+.oj-button-button:link,
+.oj-button-button:visited,
+.oj-button-nocomp,
+.oj-button-nocomp:active,
+.oj-button-nocomp:hover,
+.oj-button-nocomp:link,
+.oj-button-nocomp:visited,
+.oj-button-toggle,
+.oj-button-toggle:active,
+.oj-button-toggle:hover,
+.oj-button-toggle:link,
+.oj-button-toggle:visited {
+  text-decoration: none;
+}
+
+.oj-button-nocomp.oj-button-half-chrome,
+.oj-button-toggle.oj-default.oj-button-half-chrome,
+.oj-button-toggle.oj-focus-only.oj-button-half-chrome,
+.oj-button.oj-default.oj-button-half-chrome .oj-button-button,
+.oj-button.oj-focus-only.oj-button-half-chrome .oj-button-button {
+  text-shadow: none;
+  color: #000;
+}
+
+.oj-button-button,
+.oj-button-nocomp,
+.oj-button-toggle {
+  justify-content: center;
+  min-width: 0;
+  align-items: center;
+  padding: 0;
+  border: 1px solid;
+  border-radius: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.oj-button-button {
+  width: 100%;
+  height: 100%;
+}
+
+.oj-button-label,
+.oj-button-label oj-option {
+  cursor: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.oj-button-nocomp.oj-button-half-chrome:disabled .oj-button-icon,
+.oj-button.oj-disabled.oj-button-half-chrome .oj-button-icon {
+  color: #cbcccd;
+}
+
+.oj-button-nocomp.oj-button-full-chrome .oj-button-icon,
+.oj-button.oj-default.oj-button-full-chrome .oj-button-icon,
+.oj-button.oj-focus-only.oj-button-full-chrome .oj-button-icon {
+  color: #8a8d8f;
+}
+
+.oj-button-icon-only .oj-button-icon {
+  display: inline-flex;
+}
+
+.oj-button-icon-only .oj-button-icon,
+.oj-button-nocomp .oj-button-icon-only,
+.oj-buttonset .oj-button-icon-only .oj-button-icon {
+  margin: 9px;
+}
+
+.oj-button .oj-button-icon {
+  font-weight: 400;
+  text-shadow: none;
+}
+
+.oj-button-nocomp.oj-button-half-chrome:hover .oj-button-icon,
+.oj-button.oj-hover.oj-button-half-chrome .oj-button-icon {
+  color: #76b8e1;
+}
+
+.oj-button-nocomp.oj-button-full-chrome:hover .oj-button-icon,
+.oj-button.oj-hover.oj-button-full-chrome .oj-button-icon {
+  color: #76b8e1;
+}
+
+.oj-button-nocomp.oj-button-half-chrome .oj-button-icon,
+.oj-button.oj-default.oj-button-half-chrome .oj-button-icon,
+.oj-button.oj-focus-only.oj-button-half-chrome .oj-button-icon {
+  color: #8a8d8f;
+}
+
+.oj-button-nocomp.oj-button-half-chrome:active .oj-button-icon,
+.oj-button.oj-active.oj-button-half-chrome .oj-button-icon {
+  color: #fff;
+}
+
+.oj-button-nocomp.oj-active.oj-button-full-chrome .oj-button-icon,
+.oj-button-nocomp.oj-button-full-chrome:active .oj-button-icon,
+.oj-button.oj-active.oj-button-full-chrome .oj-button-icon {
+  color: #fff;
+}
+
+.oj-button-button:focus-visible {
+  outline: -webkit-focus-ring-color auto;
+}
+
+.oj-popup {
+  border: 1px solid #cbcccd;
+  border-radius: 1px;
+  background-color: #fff;
+  box-shadow: 1px 1px 3px 0 hsl(0deg 0% 0% / 35%);
+  will-change: top, left;
+}
+
+.oj-toolbar-separator {
+  border-left: solid 1px #e0e1e1;
+  height: 1.833em;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.25rem;
+}
