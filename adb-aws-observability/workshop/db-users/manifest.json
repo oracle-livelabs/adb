@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Getting Started with Oracle Database@AWS Observability Using AWS Native Services",
+  "workshoptitle": "Get Started with Oracle Database@AWS Observability Using AWS Native Services",
   "help": "livelabs-help-db_us@oracle.com",
   "tutorials": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "title": "Lab 1: Observability for Oracle Database@AWS Using Amazon CloudWatch and EventBridge",
-      "description": "Getting Started with Oracle Database@AWS Observability Using Amazon CloudWatch and EventBridge",
+      "description": "Oracle Database@AWS Observability Using Amazon CloudWatch and EventBridge",
       "filename": "../../observability-aws-native-services/observability-aws-native-services.md"
     },    
     {

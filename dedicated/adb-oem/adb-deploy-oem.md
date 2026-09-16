@@ -1,203 +1,206 @@
-# Connecting to Autonomous Transaction Processing Dedicated from Oracle Enterprise Manager
+# Connect to Autonomous AI Database on Dedicated Exadata Infrastructure from Oracle Enterprise Manager
 
 ## Introduction
-The Oracle Cloud Infrastructure marketplace provides a pre-built image with necessary client tools and drivers to deploy compute instances and connect to Autonomous Transaction Processing Dedicated. A database administrator can now connect to ATPD from Oracle Enterprise Manager and monitor the performance.
 
-The image is pre-configured and installed with Oracle Enterprise manager.
-For a complete list of features, log in to your OCI account, select **Marketplace** from the top left menu and browse details on the **Enterprise Manager 13c Workshop v3.0**.
+Oracle Cloud Infrastructure Marketplace provides a prebuilt image with the necessary client tools and drivers to deploy compute instances and connect to Autonomous AI Database on Dedicated Exadata Infrastructure (Autonomous AI Database) from Oracle Enterprise Manager. Oracle Enterprise Manager is a complete, integrated, business-driven management solution for traditional and cloud environments. It takes advantage of the built-in management capabilities of the Oracle stack and enables monitoring and management of your entire infrastructure from a single console. A database administrator can use Oracle Enterprise Manager to connect to an Autonomous AI Database and monitor its performance.
 
-*In this lab we will configure and access Autonomous dedicated Transaction Processing database from Oracle Enterprise Manager.*
+*In this lab, you will configure access to an Autonomous AI Database from Oracle Enterprise Manager.*
 
 Estimated Time: 60 minutes
 
 ### Objectives
 
-As a Database Administrator:
+As a database administrator:
 
-1. Learn how to connect to Autonomous Dedicated Transaction Processing Database from Oracle Enterprise Manager.
+1. Learn how to connect an Autonomous AI Database to Oracle Enterprise Manager.
 
 ### Required Artifacts
 
-   - An Oracle Cloud Infrastructure account.
-   - A pre-provisioned dedicated autonomous database instance. Refer to the **Provisioning Databases** lab in the **Introduction to ADB Dedicated for Developers and Database Users** workshop.
-   - A pre-provisioned compute instance of Image type "Enterprise Manager 13c Workshop v3.0"
+- An Oracle Cloud Infrastructure account.
+- A pre-provisioned Autonomous Database Dedicated instance. Refer to [Provisioning Databases](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197) lab for details.
 
-## Task 1: Create a Compute Instance with OEM installed in it
+## Task 1: Set up Oracle Enterprise Manager on Oracle Cloud Infrastructure (OCI)
 
-- Log in to your Oracle Cloud Infrastructure account and select **Compute** > **Instances** from top left menu.
+You can set up Oracle Enterprise Manager on OCI using images available in OCI Marketplace.
 
-    ![This image shows the result of performing the above step.](./images/compute1.png " ")
+- Sign in to your Oracle Cloud Infrastructure account and navigate to **Marketplace** > **All Applications**.
 
-- Click **Create Instance**.
+  ![Navigate to OCI Marketplace.](./images/install-oem-1.png " ")
 
-    ![This image shows the result of performing the above step.](./images/compute3.png " ")
+- Search **Enterprise Manager** and choose the version you want to use.
 
-- A pop-up dialog opens. Select the compartment in which you create compute and click **Change Image**.
+  ![Search Enterprise Manager](./images/install-oem-2.png " ")
 
-    ![This image shows the result of performing the above step.](./images/compute4.png " ")
+- Click **Launch Stack**.
 
-- Select **Enterprise Manager 13c Workshop v3.0** under **Oracle images**.
+  ![Launch Stack.](./images/install-oem-3.png " ")
 
-    ![This image shows the result of performing the above step.](./images/compute5.png " ")
+- Review the Oracle Enterprise Manager overview, select the compartment where the stack will be located. Checkmark the Oracle Standard Terms and Restrictions and click **Launch Stack**.
 
-- Select VCN compartment and VCN, subnet compartment and subnet and then click **Create**, which will create compute with EM installed.
+  ![Choose Enterprise Manager Version](./images/install-oem-4.png " ")
 
-    ![This image shows the result of performing the above step.](./images/compute6.png " ")
+- In Edit Stack, under Stack Information enter the Name and Description for your stack. Click **Next**.
 
-- Copy the public IP address of the instance in a note pad.
+- Enter the Configuration Details, select Simple in **Enterprise Manager Deployment Size** and check **Advanced Deployment** to allow reuse of existing VCN and subnets.
 
-    ![This image shows the result of performing the above step.](./images/compute2.png " ")
+  ![Enterprise manager Configuration details.](./images/install-oem-5.png " ")
 
-**Mac / Linux users**
+- Select your Compartment, select Use Existing VCN and, from drop down menu, choose your existing VCN.
 
-- Open Terminal and SSH into linux host machine.
+  ![This image shows the result of performing the above step.](./images/install-oem-6.png " ")
+
+- Pick the Compartment where your existing public subnet exists, in many cases this will be your VCN compartment. Then, select **Use Existing EM/DB subnet**, of type **Use Public Subnet** and, lastly, select your existing public subnet from the drop down menu.
+  
+  ![Enterprise manager Networking details.](./images/install-oem-7.png " ")
+
+- In the following section, **Oracle Management Server Details**, pick the Compartment where you are planing to provision Enterprise Manager, fill Host name prefix and Passwords, pick the right Shape, Boot volume, Availability Domain and insert public SSH key.
+
+- In the **Repository Database System Details** section enter your Passwords and click on **Next**.
+
+- Review the configuration variables entered, check **Run apply** and click on **Create** to initiate stack deployment.
+
+- Click **Apply** to create the OCI Resources and deploy Enterprise Manager.
+
+- In the **Resources** section under **Jobs** you can track the Stack creation process. The Apply job takes 20 minutes for the single node. On successful completion of the job, access to Enterprise Manager can be viewed in the **Application Information** tab.  Copy the public IP address of the Enterprise Manager instance.
+
+## Task 2: Transfer the database wallet to the client machine
+
+- Navigate to OCI console. Click the hamburger menu icon on the top left of the screen. Click **Oracle AI Database**.
+
+- Click **Autonomous AI Database on Dedicated Infrastructure**. You get a list of ADB instances that have been created.
+- Click on the ADB instance that was created in the earlier lab.
+  ![List Autonomous AI database.](./images/listadb.png " ")
+- Click **Database Connection** to open the Database Connection pop-up window.
+  ![Database Connection.](./images/dbconnection.png " ")
+- Click **Download wallet** to supply a password for the wallet and download your client credentials.
+  ![Download Wallet.](./images/downloadwallet.png " ")
+    Please use below Keystore password to download the client credentials.
 
     ```
     <copy>
-    sudo ssh -i /path_to/sshkeys/id_rsa opc@publicIP
+    WElcome#1234
     </copy>
     ```
 
-**Windows users**
+    ![Confirm Download wallet.](./images/downloadwallet-confirmpwd.png " ")
 
-- You can connect to and manage linux host machine using SSH client. Recent versions of Windows 10 provide OpenSSH client commands to create and manage SSH keys and make SSH connections from a command prompt.
+## Task 3: Connect to Oracle Enterprise Manager from a web browser
 
-- Other common Windows SSH clients you can install locally is PuTTY. Click [this documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows) to follow the steps to connect to linux host machine from your windows using PuTTY.
+- In your browser, open the URL: https://<public_ip_address_of_oem_compute>:7803/em
+- On the Login screen, enter the user name sysman, and the password you provided for this user account at the time of installation, and click **Login**.
 
-## Task 2: Connect to Oracle Enterprise Manager from web browser
+## Task 4: Add Autonomous AI Database as a target in Oracle Enterprise Manager
 
-- In your browser, type the URL as "https://publicipaddress\_of\_oem\_compute:7803/em"
+- Click **Setup**, select **Add Target**, and then click **Add Targets Manually**.
 
-## Task 3: Transfer database wallet to developer client
-
-- Log in to your Oracle Cloud Infrastructure account and select **Autonomous Transaction Processing** from the menu.
-    ![](./images/atpd1.png " ")
-
-- Click **Autonomous Database** and select your previously created database.
-    ![](./images/atpd2.png " ")
-
-- Click **DB Connection**. Under **Download Client Credential(Wallet)**, click **Download**.
-    ![](./images/atpd3.png " ")
-
-- Provide a password and download the wallet to a local folder.
-    ![](./images/atpd4.png " ")
-
-    The credentials zip file contains the encryption wallet, Java keystore and other relevant files to make a secure TLS 1.2 connection to your database from client applications. Store this file in a secure location.
-
-## Task 4: Add Autonomous Transaction Processing Database dedicated as Target in OEM
-
-- Click **Setup** and select **Add Target** and click **Add Targets Manually**.
-
-    ![This image shows the result of performing the above step.](./images/atpd5.png " ")
+    ![Add target Manually.](./images/add-adbd-1.png " ")
 
 - Click **Add Target Declaratively**.
 
-    ![This image shows the result of performing the above step.](./images/atpd6.png " ")
+    ![Add target Declaratively.](./images/add-adbd-2.png " ")
 
-- Search the host name and select **emcc.marketplace.com**.
+- Search for the host name and select the name of your host. For example, **emcc.marketplace.com**.
 
-    ![This image shows the result of performing the above step.](./images/atpd7.png " ")
+    ![List Hosts available.](./images/add-adbd-3.png " ")
 
-    ![This image shows the result of performing the above step.](./images/atpd8.png " ")
+    ![Choose Host for target.](./images/add-adbd-4.png " ")
 
-- Select Target Type **Autonomous Transaction Processing** and click **Add..**.
+- Select the target type **Autonomous AI Database** and click **Add**.
 
-    ![This image shows the result of performing the above step.](./images/atpd9.png " ")
+    ![Choose Autonomous AI Database.](./images/add-adbd-5.png " ")
 
-- Give the Target Name **ADBEM** (Target name can be anything you want.)
+- Enter the following details: 
+    - Enter the target name **ADBEM** (you can use any name you prefer).
+    - Select **OCI Client Credential (Wallet)** as the wallet downloaded from the console.
+    - Select the service name **<ATPD_Name>_low**.
+    - Enter the monitoring username **ADMIN**.
+    - Enter the monitoring password that you used for the wallet download.
 
-- Select **OCI Client Credential (Wallet)** as ATPD instance wallet downloaded from console.
-
-- Select **Service Name** **<ATPD_Name>_low**.
-
-- Give the **Monitoring Username** **ADMIN**.
-
-- Give **Monitoring Password** as your wallet (.zip file) download password.
-
-    ![This image shows the result of performing the above step.](./images/atpd10.png " ")
+    ![Add Database instance](./images/add-adbd-6.png " ")
 
 - Click **Test Connection**.
 
-    ![This image shows the result of performing the above step.](./images/atpd11.png " ")
+    ![Test connection.](./images/add-adbd-7.png " ")
 
-- Once the connection test is successful, click **Next** and click **Submit**.
+- When the connection test succeeds, click **Next** and then **Submit**.
 
-    ![This image shows the result of performing the above step.](./images/atpd12.png " ")
+    ![Click Next.](./images/add-adbd-8.png " ")
 
-    ![This image shows the result of performing the above step.](./images/atpd13.png " ")
+    ![Add Database instance properties.](./images/add-adbd-9.png " ")
 
-    ![This image shows the result of performing the above step.](./images/atpd14.png " ")
+    ![Add Database instance properties.](./images/add-adbd-10.png " ")
 
-    ![This image shows the result of performing the above step.](./images/atpd15.png " ")
+    ![Submit creation.](./images/add-adbd-11.png " ")
 
 ## Task 5: Test the connection
 
 - Click **Targets** and select **All Targets**.
 
-    ![This image shows the result of performing the above step.](./images/atpd16.png " ")
+    ![List All targets.](./images/test-conn-1.png " ")
 
-- Under **Databases** select **Autonomous Transaction Processing**.
+- Under **Databases**, select your database type, For example **Autonomous Transaction Processing**.
 
-    ![This image shows the result of performing the above step.](./images/atpd17.png " ")
+    ![Select Database type.](./images/test-conn-2.png " ")
 
-    ![This image shows the result of performing the above step.](./images/atpd18.png " ")
+    ![Choose the Autonomous AI Database.](./images/test-conn-3.png " ")
 
-- Under **Target Name** select **ADBEM**.
+- Select the target name **ADBEM**.
 
-## Task 6: Unlock "ADBSNMP" user
+## Task 6: Unlock the ADBSNMP user
 
-- Select **Users** under **Security**.
+- Under **Security**, select **Users**.
 
-    ![This image shows the result of performing the above step.](./images/upd-01.png " ")
+    ![Navigate to Users.](./images/upd-01.png " ")
 
-- The default user for OEM, **ADBSNMP**, will be locked by default. Click the user **ADBSNMP**.
+- The default Oracle Enterprise Manager user, **ADBSNMP**, may be locked. Click the **ADBSNMP** user.
 
-    ![This image shows the result of performing the above step.](./images/upd-02.png " ")
+    ![Click ADBSNMP user.](./images/upd-02.png " ")
 
 - Click **Edit**.
 
-    ![This image shows the result of performing the above step.](./images/upd-03.png " ")
+    ![Edit user.](./images/upd-03.png " ")
 
-- Select the **Unlocked** radio button and give the new password for **ADBSNMP** user and click **Apply**.
+- Select the **Unlocked** radio button, enter a new password for the **ADBSNMP** user, and click **Apply**.
 
-    ![This image shows the result of performing the above step.](./images/upd-04.png " ")
+    ![Unlock user.](./images/upd-04.png " ")
 
-- Once the change is saved check under **Users** in **Security**. The user **ADBSNMP** will be **Open**.
+- After the change is saved, return to **Users** under **Security**. The **ADBSNMP** user should be listed as **Open**.
 
-    ![This image shows the result of performing the above step.](./images/upd-05.png " ")
+    ![Verify user detail.](./images/upd-05.png " ")
 
-## Task 7: Establish connection with ATP as "ADBSNMP" user
+## Task 7: Establish a connection by using the ADBSNMP user
 
 - Repeat Task 4 with the following changes:
 
-- Give the Target Name as **ADBEM2** (target name can be anything you want.)
+- Use the target name **ADBEM2** (you can use any name you prefer).
 
-- Select **OCI Client Credential (Wallet)** as the ATPD instance wallet downloaded from the console.
+- Select **OCI Client Credential (Wallet)** as the wallet downloaded from the console.
 
-- Select **Service Name** as **<ATPD_Name>_low**.
+- Select the service name **<ATPD_Name>_low**.
 
-- Give the **Monitoring Username** as **ADBSNMP**.
+- Enter the monitoring username **ADBSNMP**.
 
-- Give **Monitoring Password** as ADBSNMP user password and click **Test Connection**.
+- Enter the monitoring password for the ADBSNMP user and click **Test Connection**.
 
-    ![This image shows the result of performing the above step.](./images/upd-07.png " ")
+    ![Test connection.](./images/upd-07.png " ")
 
-- Once the connection test is successful, Click **OK** and click **Next**.
+- When the connection test succeeds, click **OK** and then **Next**.
 
-    ![This image shows the result of performing the above step.](./images/upd-08.png " ")
+    ![Click Next.](./images/upd-08.png " ")
 
 - Click **Submit** to establish the connection.
 
-    ![This image shows the result of performing the above step.](./images/upd-09.png " ")
+    ![Verify connection details.](./images/upd-09.png " ")
 
-    ![This image shows the result of performing the above step.](./images/upd-10.png " ")
+    ![Submit connection.](./images/upd-10.png " ")
+
+*Congratulations! You have successfully established a connection to Autonomous AI Database on Dedicated Exadata Infrastructure from Oracle Enterprise Manager.*
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-*Congratulations! You have successfully established connection to Autonomous Transaction Processing Dedicated Database from OEM .*
 
 - **Authors** - Navya M S & Padma Priya Natarajan
-- **Last Updated By/Date** - Kris Bhanushali, March 2022
-
+- **Adapted by** - Vandana Rajamani, Consulting UA Developer, July 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
 

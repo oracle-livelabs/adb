@@ -1,218 +1,175 @@
-# Autonomous Data Guard
+# Use Autonomous Data Guard to protect Autonomous AI Databases from failures
 
 ## Introduction
-Autonomous Data Guard (AuDG) gives users the ability to create a standby database for an Autonomous Container Database (ACD) and all Autonomous Databases (ADB) built inside the ACD in just a few clicks.  As always in the Autonomous world - It is completely automated!
+
+The Autonomous Data Guard feature enables you to keep your critical production databases available to mission critical applications despite failures, disasters, human error, or data corruption. In Autonomous AI Database on Dedicated Exadata Infrastructure, you configure and manage Autonomous Data Guard at the Autonomous Container Database level.
+
+Autonomous Data Guard creates and maintains two completely separate copies of your database: a primary database that your applications connect to and use, and a standby database that is a synchronized copy of the primary database. Then, should the primary database become unavailable for any reason, Autonomous Data Guard can convert the standby database to the primary database and, as such, it will begin servicing your applications.
+
+The primary and standby databases are often called peer databases of each other. You can have up to two standby databases per Autonomous Container Database.
 
 Estimated Time: 45 minutes
 
 ### Objectives:
 
-As a fleet administrator:
-1.  Deploy an Autonomous Container Database (ACD) onto an Autnomous VM Cluster (AVMC) with Autonomous Data Guard (AuDG) enabled.
-2.  Review the AuDG setup and understand options and monitoring available.
+- As a fleet administrator, Add a standby database to an existing Autonomous Container Database (ACD)
 
-As a database user, DBA or application developer:
-1.  Deploy an autonomous transaction processing database inside of the Autonomous Data Guard enabled ACD.
-2.  Build and configure Swingbench on the primary ADB and test switchover and failover scenarios.
-3.  Reinstate a failed over AuDG database.
-4.  Convert a physical standby to snapshot standby and vice versa.
+- As a database user, DBA or application developer:
 
+    1. Provision an Autonomous AI Database within an Autonomous Container Database (ACD).
+    2. Install and configure Swingbench against the primary Autonomous AI Database, then test both switchover and failover scenarios.
+    3. Reinstate an Autonomous Data Guard standby database after a failover operation.
+    4. Convert a physical standby database to a snapshot standby database and convert it back to a physical standby database.
 
 ### Required Artifacts
 
-- An Oracle Cloud Infrastructure account with two AVMCs created in the tenancy (primary and standby)
+- An Oracle Cloud Infrastructure (OCI) account with two Autonomous VM Clusters (AVMCs) provisioned in the tenancy: one designated as the primary AVMC and the other as the standby AVMC.
+- A provisioned Autonomous Container Database (ACD). Refer to [Lab 6: Provisioning an Autonomous Container Database](?lab=adb-provisioning-autonomous-container) for instructions.
 
+## Task 1: Add a standby database to an ACD
 
-## Task 1: Create an ADG enabled ACD
+- Go to the Details page of the Autonomous Container Database for which you want to add a standby database.
+- Click **Enable** under **Autonomous Data Guard** in Autonomous Container Database information. Alternatively, you can also click **Add Standby** on **Autonomous Data Guard Groups**. 
 
-- Log in to your OCI account as a fleet administrator
+  ![Add standby option from Data Guard groups.](./images/adb-dataguardgroups-addstandby.png " ")
 
-- Navigate to the **Oracle Database** option in the top left hamburger menu from your OCI home screen and click **Autonomous Transaction Processing** on the page that comes up.
+  Fill out the **Add Standby** dialog with the following information:
 
-- Pick **Autonomous Container Database** from the three options and click the blue **Create Autonomous Container Database** button.
+    - Peer Autonomous Container Database compartment: Select the standby Autonomous Container Database compartment.
+    - Peer Autonomous Container Database name: Enter a name for the standby ACD.
+    - Peer database backup configuration: Select a Backup Destination type from the drop-down list.
+    - Peer region: Select a region for the standby ACD. The primary and secondary ACDs can also be deployed in different regions (cross-region).
+    - Peer Exadata Infrastructure: Select the underlying Exadata Infrastructure resource for the standby ACD.
+    - Peer Autonomous Exadata VM Cluster (AVMC): Select the parent AVMC for the standby ACD.
+    - Protection Mode: Select Maximum performance or Maximum availability from the drop-down list. Maximum Performance is selected by default.
 
-    ![This image shows the result of performing the above step.](./images/create-acdv2.png " ")
+    ![Add standby to primary ACD.](./images/add-standby-acd.png " ")
 
-- In the **Create Autonomous Container Database** dialog box you can choose / modify the compartment to create your ACD. You also need to select the compartment hosting your CEI and the CEI instance as highlighted below.
+- Confirm to add the standby database.
 
-- Check the box titled **Enable Autonomous Data Guard**. You will be able to select the region and CEI that you want to use for your standby databases.
+**Note**: In an Autonomous Data Guard setup, you can add a second standby Autonomous Container Database (ACD) to the primary ACD. The second standby ACD must be in the same tenancy as the primary ACD. To be able to add a second standby ACD, the first standby ACD should not have automatic failover enabled. You must disable automatic failover on the first standby before adding the second standby and can re-enable later.
 
-- Under Protection Mode select '**Maximum Performance**'
+## Task 2: Create an Autonomous AI Database
 
-- Enable automatic failover by selecting the Enable automatic failover option. Both the maximum performance and maximum availability protection modes support automatic failover:
+- Go to **Autonomous AI Database** in the Oracle Cloud Infrastructure Console. If needed, switch to the region where you want to create the database.
+- Click **Create Autonomous AI Database**. Fill out the Create Autonomous AI Database page with the following information:
 
-    - In the Maximum availability mode, automatic failover guarantees zero data loss.
-    - In the Maximum performance mode, automatic failover ensures that the standby database does not fall behind the primary database beyond the value specified for Fast Start failover lag limit. By default, Fast Start failover lag limit is set to 30 seconds and is applicable only to the Maximum performance mode. In this case, automatic failover is only possible when the configured data loss guarantee can be upheld.
+    - Compartment: Select a compartment to host the Autonomous AI Database.
+    - Display name: Enter a user-friendly description or other information that helps you easily identify the Autonomous AI Database.
+    - Database name: Provide a name for the new Autonomous AI Database.
+    - Workload type: Choose Transaction Processing.
+    - Autonomous Container Database: Select the primary ACD in which to create the Autonomous AI Database.
 
-- Edit the Fast Start failover lag limit value as needed. 19.18 and higher ACD versions support lag limit from 5 seconds to 3600 seconds. Older versions support a minimum value of 30 seconds.
+    ![Basic information on creating ADB.](./images/provision-atp1.png " ")
 
-***Maximum Performance: Provides the highest level of data protection that is possible without affecting the performance of a primary database. This is the default protection mode.***
+    - Configure the database - CPU count: Select the number of CPUs for your database from the list of provisionable CPUs.
+    - Configure the database - CPU auto scaling: Enable or disable CPU auto scaling, which permits Autonomous AI Database to automatically use up to three times as many CPUs as specified by CPU Count as the workload on the database increases.
+    - Configure the database - Storage (GB): Specify the storage to allocate to your database in terabytes (GB), with a minimum value of 32 GB.
 
-***Maximum Availability: Provides the highest level of data protection that is possible without compromising the availability of a primary database.***
+    ![Configure database details.](./images/provision-atp2.png " ")
 
-  ![This image shows the result of performing the above step.](./images/createaudgnew.png " ")
+    - Username: Denotes the database’s username. This is a read-only value.
+    - Password: Set the password for the Admin database user in your new database. Re-confirm the password.
+    - Access Control:  Optionally, click Modify Access Control to configure network access by enabling database level access control, which is disabled by default.
+    - Contact email:  Provide contact emails where you can receive operational notifications, announcements, and unplanned maintenance notifications.
 
-***Note: If you select modify maintenance and click custom schedule you will see that it is possible to have the standby ACD patched up to 7 days before the primary for an extra buffer of patch verification time.***
+    ![Administrator credential creation.](./images/provision-atp3.png " ")
 
-  ![This image shows the result of performing the above step.](./images/maintenance.jpg " ")
+    - Advanced options - Encryption key: The encryption key settings are inherited from the parent Autonomous Container Database.
+    - Advanced options - Management: Choose a Character Set and National Character Set from the drop-down list.
+    - Advanced options - Database In-memory: Optionally, select Enable database In-memory and adjust the percentage of System Global Area (SGA) to allocate.
+    - Advanced options - Tags: If you want to use tags, add tags by selecting a Tag Namespace, Tag Key, and Tag Value.
 
-- That's it! Simply scroll down to the bottom and hit the blue 'Create Autonomous Container Database' button to deploy your primary and standby ACD automatically.
+    ![Enter Advanced optional attributes.](./images/provision-atp4.png " ")
 
-- Continue to Task 2 once the ACD has finished being created.
+- Submit the details to create the Autonomous AI Database.
 
-## Task 2: Create an Autonomous Transaction Processing Database
+## Task 3: Configure Swingbench in your new Autonomous AI Database
 
-- Log in to your OCI account as a database user.
+Complete **Task 1**, **Task 2** and **Task 3** from the lab **Build Always On Applications** in the [Introduction to ADB Dedicated for Developers and Database Users](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197) workshop.
 
-- Navigate to the **Oracle Database** option in the top left hamburger menu from your OCI home screen and click **Autonomous Transaction Processing** on the page that comes up.
-
-- Pick **Autonomous Database** from the three options in the left menu.
-
-- Select **userXX-Compartment** under the Workshop Compartment.
-
-    ![This image shows the result of performing the above step.](./images/provisionatp-dname1v2.png " ")
-
-    *Note: Oracle Cloud Infrastructure allows logical isolation of users within a tenancy through Compartments. This allows multiple users and business units to share an OCI tenancy while being isolated from each other.*
-
-    *More information about Compartments and Policies is provided in the OCI Identity and Access Management [documentation](https://docs.cloud.oracle.com/iaas/Content/Identity/Tasks/managingcompartments.htm?tocpath=Services%7CIAM%7C_____13).*
-
-- Click **Create Autonomous Database** to start the instance creation process.
-    ![This image shows the result of performing the above step.](./images/createATP-Dv2.png " ")
-
-- This will bring up the **Create Autonomous Database** screen where you specify the configurations of the instance.
-
-- Fill in the dialog box following the screenshot below while using your user compartment and unique ADB name.
-
-    *For this lab, we will be using the following as a password.*
-
-    ```
-    <copy>
-    WElcome#1234
-    </copy>
-    ```
-
-    ![This image shows the result of performing the above step.](./images/create-atp-full.png " ")
-
-- Click **Create Autonomous Database** to start provisioning the instance.
-
-- Your autonomous database instance should be up and running in a few minutes and is protected by AuDG.
-
-- Once provisioned, you can click on the instance name to see instance details.
-
-- Continue to Task 3 once creation has completed.
-
-## Task 3: Configure Swingbench in your new ATP database
-
-- Refer to the lab **Build  Always On  Applications** in the **Introduction to ADB Dedicated for Developers and Database Users** workshop, to create a Swingbench schema in your new ATP ADB.
-
-- You will need to download the wallet from your new ATP and upload to your client.
-
-- Here is a sample TNS entry from an AuDG ATP enabled instance. Notice how both the primary and standby are in the connection string and the extra parameters to facilitate reconnecting.
-
-***adglabdb_medium=(DESCRIPTION=(CONNECT_TIMEOUT=90)(RETRY_COUNT=50)(RETRY_DELAY=3)(TRANSPORT_CONNECT_TIMEOUT=3)(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=host-qr7it-scan.fleetsubnet.adbvcn.oraclevcn.com)(PORT=1521)))(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=host-zsge4-scan.fleetsubnet.adbvcn.oraclevcn.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=ADGLABDB_medium.atp.oraclecloud.com)))***
-
-- Complete steps 1-3 in the lab **Build  Always On  Applications** in the **Introduction to ADB Dedicated for Developers and Database Users** workshop before continuing on with this AuDG lab.
-
-- Make sure proper network connectivity is open from the Swingbench client and the autonomous primary and standby databases (1521 (listener),6200 (ons), 2484(TLS if testing) )
+You have now installed and configured Swingbench to generate a transactional workload against an Autonomous AI Database. You have also configured the required client-side settings to enable Transparent Application Continuity (TAC).
 
 ## Task 4: Switchover to the Standby
 
-- Once the load has stabilized from starting the **SOE\_Client\_Side** Swingbench benchmark, log into the cloud console and navigate to your **primary** Autonomous Container Database.
+- Once the load has stabilized from starting the **SOE\_Client\_Side** Swingbench benchmark, log in to the cloud console and navigate to your **primary** Autonomous Container Database.
 
-- On the lower left under Resources select **Autonomous Data Guard Associations**.
-
-    ![This image shows the result of performing the above step.](./images/associations.png " ")
-
- - Notice under Autonomous Data Guard we can see the details and performance of our configuration including: state of the standby, the Apply/Transport lag, and the last role change.
+- Under Actions, click **Switchover**.
 
 - Select **Switchover** from the drop down menu (3 dots) on the lower right of the screen.
 
-    ![This image shows the result of performing the above step.](./images/switchover.jpg " ")
+  ![Switchover from ACD primary.](./images/switchover.png " ")
 
 - Select **Switch Over** from the dialog box and wait for the role change to finish.
 
-    ![This image shows the result of performing the above step.](./images/switchover2.jpg " ")
+  ![Confirm Switchover.](./images/confirm-switchover.png " ")
 
 - Wait a few minutes while a clean switchover is done automatically and the standby becomes the new primary and the previous primary becomes a standby. There will be a small lag in transactions while this process is completed and zero data is lost. The Swingbench application will automatically retry and continue transactions on the new primary once it is opened.  
 
 ## Task 5: Failover to the Standby
 
- - Once the load has stabilized on the new primary, log into the cloud console and navigate to your **standby** Autonomous container database.
+- Once the load has stabilized on the new primary, log into the cloud console and navigate to your **standby** Autonomous container database.
 
-- On the lower left under Resources select **Autonomous Data Guard Associations**.
+- Under Actions, click **Failover**.
 
-    ![This image shows the result of performing the above step.](./images/associations2.png " ")
+  ![Standby failover Switchover operation.](./images/standby-failover-switchover.png " ")
 
-- Select **Failover** from the drop down menu (3 dots) on the lower right of the screen.
+- In case of a snapshot standby Autonomous Container Database, you see a message alerting you that the snapshot standby will be converted to physical standby after discarding all its local updates and applying data from your primary database. Click **Failover** to proceed.
 
-    ![This image shows the result of performing the above step.](./images/failover.jpg " ")
+  ![Confirm failover.](./images/confirm-failover.png " ")
 
-- Select **Fail Over** from the dialog box and wait for the role change to finish.
-
-    ![This image shows the result of performing the above step.](./images/failover2.jpg " ")
-
-- Wait a few minutes while the failover is done automatically and the standby becomes the new primary and the previous primary will be disabled. There will be a small brownout in transactions while this process is completed. The Swingbench application will automatically retry and continue transactions on the new primary once it is opened.
+- Wait a few minutes while the failover is done automatically and the standby becomes the new primary and the previous primary will be disabled. There will be a small lag in transactions while this process is completed. The Swingbench application will automatically retry and continue transactions on the new primary once it is opened.
 
 ## Task 6: Reinstate the disabled standby
 
- - Log in to the cloud console and navigate under Autonomous Database and select Autonomous Container Database. If your primary and standby database are in the same compartment you should see the following:
-    ![This image shows the result of performing the above step.](./images/state-overview.png " ")
+- Log in to the cloud console and navigate under Autonomous AI Database and select Autonomous Container Database.
 
 - Select the ACD labeled **Disabled Standby**.
 
-- On the lower left under Resources select **Autonomous Data Guard Associations**.
+- Under Actions, click **Reinstate Database**.
 
-    ![This image shows the result of performing the above step.](./images/associations3.png " ")
-
-- Select **Reinstate Database** from the drop down menu (3 dots) on the lower right of the screen.
-
-    ![This image shows the result of performing the above step.](./images/reinstate.png " ")
-
-- On the pop-up box select **Reinstate Database** and wait for the process to finish reinstating the standby database.
-
-    ![This image shows the result of performing the above step.](./images/reinstate2.png " ")
-
-- Wait for the state to change to **Available** for the standby database and you are back to being fully protected!
-
-    ![This image shows the result of performing the above step.](./images/reinstate3.png " ")
+- Provide a confirmation to proceed with the reinstatement of the disabled standby ACD. The states of the peer databases become **Role Change in Progress** until the reinstate action is complete. Upon completion, the role of the Disabled Standby container database becomes **Standby** and its state changes to **Available**.
 
 ## Task 7: Convert to snapshot standby
 
-- Log on to the cloud console and navigate to your standby ACD. On the standby ACD details page you will see an option to "Convert to standby". Click on it.
+- Log on to the cloud console and navigate to your standby ACD.
 
-![This image shows the result of performing the above step.](./images/snapshotstandby1.png " ")
+- On the standby ACD details page , click **Convert to snapshot standby** under Actions.
 
-- You will be presented with two options while converting the database to snapshot mode. 
+  ![Convert to snapshot standby.](./images/convert-snapshotstandby.png " ")
 
-        - Use new database services: New snapshot standby services will be created in your standby database that you will use to connect to it.
-        
-        - Use primary database services: Databases services that are active on primary ACD will be enabled on the snapshot standby ACD also. Extreme caution must be taken while using the primary services.
-    Select your option and click convert. 
+- The Convert to snapshot standby dialog displays with options to use new Database services or primary Database services for the snapshot standby database connections.
 
-![This image shows the result of performing the above step.](./images/snapshotstandby2.png " ")
+    - Use new Database services: Click this option to connect to snapshot standby using new services that are active only in the snapshot standby mode.
+    - Use primary Database services: Click this option if you wish to connect to snapshot standby database using the same services as the primary database.
 
-- Once the standby database is converted to snapshot standby database, you will see a new pill at the top of the ACD details page highlighting the database mode. You will also see a warning message about snapshot standby database reverting to physical standby after 7 days. 
+- You will be presented with two options while converting the database to snapshot mode.
 
-![This image shows the result of performing the above step.](./images/snapshotstandby3.png " ")
+    - Use new database services: New snapshot standby services will be created in your standby database that you will use to connect to it.
+    - Use primary database services: Databases services that are active on primary ACD will be enabled on the snapshot standby ACD also. Extreme caution must be taken while using the primary services.
+
+  Select your option and click convert.
+
+  ![Convert to snapshot standby](./images/convert-snapshotstandby1.png " ")
+
+- Once the standby database is converted to snapshot standby database, you will see a new pill at the top of the ACD details page highlighting the database mode. You will also see a warning message about snapshot standby database reverting to physical standby after 7 days.
 
 ## Task 8: Convert to physical standby
 
-- Log on to the cloud console and navigate to your standby ACD. If your standby ACD is in snapshot standby mode, then you will see an option to "Convert to physical standby". Click on it.
+- Log on to the cloud console and navigate to your standby ACD.
 
-![This image shows the result of performing the above step.](./images/snapshotstandby3.png " ")
+- On the standby ACD details page , click **Convert to physical standby** under Actions.
 
-- You will receive a warning that converting your snapshot standby to a physical standby will discards all local updates to your snapshot standby, and applies data from your primary database. Click on Convert.
+- The Convert to physical standby dialog displays a message alerting you that converting the snapshot standby to physical standby will discard all its local updates and apply data from your primary database. Click **Convert**.
 
-![This image shows the result of performing the above step.](./images/snapshotstandby4.png " ")
+- Once the conversion to physical standby is complete, the pill at the top of the ACD will change back to standby mode.
 
-Once the conversion to physical standby is complete, the pill at the top of the ACD will change back to standby mode. 
+*Congratulations! You successfully built and tested using the switchover and failover functionality of Autonomous Data Guard!*
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-*Congratulations! You successfully built and tested using the switchover and failover functionality of Autonomous Data Guard!*
 
 - **Author** - Jeffrey Cowen, Ranganath S R
-- **Last Updated By/Date** - Ranganath S R, Feb 2023
-
-
+- **Adapted By/Date :** - Vandana Rajamani, Consulting UA Developer, June 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026

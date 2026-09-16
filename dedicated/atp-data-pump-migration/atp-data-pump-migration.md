@@ -1,11 +1,12 @@
-# Migrating to Dedicated ATP using Data Pump
+# Migrate to Autonomous AI Database on Dedicated Exadata Infrastructure using Data Pump
 
 ## Introduction
-Oracle Data Pump offers very fast bulk data and metadata movement between user managed Oracle databases and Autonomous Transaction Processing.
 
-Data Pump Import lets you import data from Data Pump files residing on the Oracle Cloud Infrastructure Object Storage. You can save your data to your Cloud Object Store and use Oracle Data Pump to load data to dedicated ATP database.
+Oracle Data Pump provides fast bulk data and metadata movement between user-managed Oracle AI Databases and Autonomous AI Database on Dedicated Exadata Infrastructure.
 
-This lab walks you through the steps to migrate a sample application schema using Data Pump Import into your dedicated ATP database.
+Data Pump Import can import data from dump files stored in Oracle Cloud Infrastructure Object Storage. In this lab, you upload a sample dump file to Object Storage and use Data Pump Import to load it into an Autonomous AI Database on Dedicated Exadata Infrastructure.
+
+This lab walks you through migrating a sample application schema into your Autonomous AI Database on Dedicated Exadata infrastructure by using Data Pump Import.
 
 Estimated Time: 45 minutes
 
@@ -13,19 +14,19 @@ Estimated Time: 45 minutes
 
 As a database admin or user:
 
-1. Download a sample datapump export dump file from Oracle Learning Library github repository.
-2. Upload .dmp file to OCI Object storage bucket.
-3. Set up cloud credentials and use data pump import to move data to your ATP database.
-
+1. Download a sample Data Pump export dump file from the Oracle Learning Library GitHub repository.
+2. Upload the `.dmp` file to an OCI Object Storage bucket.
+3. Create cloud credentials and use Data Pump Import to move data into your Autonomous AI Database on Dedicated Exadata Infrastructure.
 
 ### Required Artifacts
-- An Oracle Cloud Infrastructure account with privileges to create object storage buckets and dedicated autonomous databases.
-- Access to a pre-provisioned dedicated ATP instance.
-- A pre-provisioned instance of Oracle Developer Client image in an application subnet.
 
-## Task 1: Download sample data pump export file from Oracle Learning Library github repo
+- An Oracle Cloud Infrastructure account with privileges to create Object Storage buckets and Autonomous AI Database on Dedicated Exadata Infrastructure.
+- Access to a pre-provisioned Autonomous AI Database on Dedicated Exadata Infrastructure.
+- A pre-provisioned Oracle Developer Client image in an application subnet. If you have not created one yet, complete the lab **Configuring a Development System** in [Autonomous Database Dedicated for Developers and Database Users workshop](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197).
 
-- Use the following command from your mac / PC to download a sample schema dump from OLL.
+## Task 1: Download sample Data Pump export file from Oracle Learning Library GitHub repository
+
+- From your Mac or PC, run the following command to download the sample schema dump file from Oracle Learning Library.
 
     ```
     <copy>
@@ -33,55 +34,62 @@ As a database admin or user:
     </copy>
     ```
 
-## Task 2: Create an object storage bucket and upload dump
+## Task 2: Create an Object Storage bucket and upload the dump file
 
-- Log in to your OCI account with your user credentials.
+- Sign in to your OCI account.
 
-- Navigate to Object Storage from the top left hamburger menu.
-    ![This image shows the result of performing the above step.](./images/nav-to-obj-store.png " ")
+- Open the navigation menu and click **Storage**. Under **Object Storage & Archive Storage**, click **Buckets**.
 
-- Pick your compartment where you have the  privileges to create a bucket, and click **Create Bucket**.
-    ![This image shows the result of performing the above step.](./images/pick-compartment.png " ")
+    ![OCI Console navigation for Storage.](./images/createbucket-1.png " ")
 
-- Create a bucket and let's name it **nodeAppBucket**. Leave the encryption options to default and click **Create Bucket**.
-    ![This image shows the result of performing the above step.](./images/nodeapp-bucket.png " ")
+- Select a compartment where you have privileges to create a bucket, and then click **Create Bucket**.
 
-- Upload the **nodeapp.dmp** file downloaded from OLL.
-    ![This image shows the result of performing the above step.](./images/upload-dmp.png " ")
+    ![Select compartment and create bucket.](./images/createbucket-2.png " ")
+
+- Create a bucket named **nodeAppBucket**. Leave the encryption options at their default values, and then click **Create Bucket**.
+
+    ![Provide bucket name and create bucket.](./images/createbucket-3.png " ")
+
+- Upload the **nodeapp.dmp** file that you downloaded in Task 1.
+
+    ![Upload objects.](./images/upload-objects.png " ")
 
 ## Task 3: Generate an authentication token for your user account
 
-- Assuming you are logged into your OCI account, navigate to the user details page from the top right menu item as shown below.
-    ![This image shows the result of performing the above step.](./images/get-token1.png " ")
+- In the OCI Console, open the profile menu in the upper-right corner and go to your user profile details page.
 
-- On the user details page, scroll down to **Resources** on the left, and generate an **Auth Token** as shown below.
-    ![This image shows the result of performing the above step.](./images/get-token2.png " ")
+    ![OCI Console User profile.](./images/genoauthtoken-1.png " ")
 
-- Provide any desired name and copy the generated token string some place in a text editor. You will need this token while configuring cloud credentials on your target database.
-    ![This image shows the result of performing the above step.](./images/get-token3.png " ")
+- On the user details page, Click **Tokens and keys**, and under **Auth tokens**, click **Generate token**.
 
-## Task 4: Set up Object Store user credentials in your target autonomous database
+    ![Generate OAuth token.](./images/genoauthtoken-2.png " ")
 
-- Now that we have the credentials token, let's set up the target database to read from the object store and import data.
+- Enter a name for the token, generate it, and copy the token value to a secure location. You will need this token when you create cloud credentials in the target database.
 
-- Log into your dedicated autonomous database as admin using either SQL Developer or SQLCL client.
+    ![Name OAuth token.](./images/genoauthtoken-3.png " ")
 
-    **TWO ways to do this:**
+## Task 4: Set up Object Storage credentials in your target Autonomous AI Database
 
-1. If you connected to your OCI VPN you provisioned earlier, you may directly launch SQL Developer on your local machine and connect to your dedicated ATP.
+- Use the authentication token from Task 3 to create credentials that allow the target database to read the dump file from Object Storage.
 
-2. You may ssh to a developer client image provisioned in a public subnet. Once logged into your dev client, you may then launch SQL*Plus as discussed in an earlier lab. We recommend that you launch a dev client to use the command line import utility impdp later in this lab. Alternatively, you may also connect to your dev client over VNC and launch SQL Developer from there.
+- Connect to your Autonomous AI Database as the **ADMIN** user by using SQL Developer, SQLcl, or SQL*Plus.
 
-Here, we will use a local SQL Developer to demonstrate the steps needed to set up object store credentials.
+**You can connect in one of the following ways:**
 
-- Once connected to your autonomous database as user 'admin', run the following pl/sql procedure, replacing username and password with your own cloud credentials.
+1. If you configured VPN connectivity in [Configuring VPN connectivity into your private ATP network](?lab=atp-configuring-vpn), launch SQL Developer on your local machine and connect to your dedicated ATP database.
+
+2. Connect to the developer client that you provisioned in the lab **Configuring a Development System** in [Autonomous Database Dedicated for Developers and Database Users workshop](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197). You can use SSH and launch SQL*Plus, or connect over VNC and launch SQL Developer. The developer client is also recommended for running the `impdp` command later in this lab.
+
+In the following example, SQL Developer is used to create the Object Storage credentials.
+
+- After you connect as **ADMIN**, run the following PL/SQL procedure. Replace `OCI-Username`, `Your-Auth-Token-Here`, and the credential name with your values.
 
     ```
     <copy>
     BEGIN
      DBMS_CREDENTIAL.CREATE_CREDENTIAL(
      credential_name => 'userXX_cred',
-     username => ‘OCI-Username',
+     username => 'OCI-Username',
      password => 'Your-Auth-Token-Here'
      );
      END;
@@ -89,16 +97,17 @@ Here, we will use a local SQL Developer to demonstrate the steps needed to set u
     </copy>
     ```
 
-- Here's a screen shot of the above command run from a SQL Developer client.
-    ![This image shows the result of performing the above step.](./images/credentials.png " ")
+- The following screenshot shows the command run from SQL Developer.
 
-- Ensure the pl/sql procedure executed successfully from the log message.
+    ![SQLDeveloper Output.](./images/credentials.png " ")
 
-## Task 5: Import data from object store using impdp utility
+- Confirm that the PL/SQL procedure completed successfully.
 
-- If all went well so far, proceed to ssh into your developer client machine and run the data pump import command.
+## Task 5: Import data from Object Storage using the impdp utility
 
-    *Windows users may connect to the dev client using Putty.*
+- Connect to your developer client by using SSH.
+
+    *Windows users can connect to the developer client by using PuTTY.*
 
     ```
     <copy>
@@ -106,9 +115,9 @@ Here, we will use a local SQL Developer to demonstrate the steps needed to set u
     </copy>
     ```
 
-- You will also need to download your target database wallet file so impdp can make a secure connection to your target database.
+- Download and transfer the target database wallet to the developer client. If you have not already done this, complete [Task 2: Download and transfer DB wallet to client machine](https://livelabs.oracle.com/cdn/adb/dedicated/workshop/developers-and-db-users/index.html?lab=adb-configure-dev-client#Task2:DownloadandtransferDBwallettoclientmachine).
 
-- Besides, ensure TNS_ADMIN environment variable points to the location where you downloaded and unzipped your wallet. For example, in this case we created a folder wallet under /home/opc, download *and unzip* the wallet in there.
+- Set the `TNS_ADMIN` environment variable to the directory where you unzipped the wallet. The following example uses `/home/opc/wallet`.
 
     ```
     <copy>
@@ -116,15 +125,15 @@ Here, we will use a local SQL Developer to demonstrate the steps needed to set u
     </copy>
     ```
 
-- Finally, the stage is set to run the import command from your dev client bash prompt.
+- From the developer client command prompt, run the Data Pump import command.
 
     ```
     <copy>
     $ impdp admin/password@connect_string \
-    REMAP_TABLESPACE=USERS:DATA \
+        REMAP_TABLESPACE=USERS:DATA \
         directory=data_pump_dir \
         credential=userXX_cred \
-        dumpfile= https://swiftobjectstorage.us-ashburn-1.oraclecloud.com/v1/Tenancy-Name/Bucket-Name/nodeapp.dmp \
+        dumpfile=https://swiftobjectstorage.us-ashburn-1.oraclecloud.com/v1/Tenancy-Name/Bucket-Name/nodeapp.dmp \
         parallel=16 \
         partition_options=merge \
         exclude=index,cluster,indextype,materialized_view,materialized_view_log,materialized_zonemap,db_link \
@@ -132,40 +141,41 @@ Here, we will use a local SQL Developer to demonstrate the steps needed to set u
     </copy>
     ```
 
-- In the above command, replace the following:
+- In the command, replace the following values:
 
-    *password* - Admin password for your autonomous database
+    *password* - The ADMIN password for your Autonomous AI Database.
 
-    *connect\_string* - Connect string obtained from database console; it would be something like myDatabase_high
+    *connect\_string* - The connect string from the database console, such as `myDatabase_high`.
 
-    *directory* - Leave as shown above for default or create your own directory object in database
+    *directory* - Leave this as `data_pump_dir`, or use a database directory object that you created.
 
-    *dumpfile* - Use swift URL. If your .dmp file is in Ashburn, simply replace tenancy and bucket name
+    *credential* - The credential name that you created in Task 4.
 
-    Ensure *nologfile=yes*, else the command fails.
-    ![This image shows the result of performing the above step.](./images/import1.png " ")
+    *dumpfile* - The Swift URL for the dump file in Object Storage. If your file is in the Ashburn region, replace `Tenancy-Name` and `Bucket-Name` in the example URL.
 
-- If all goes well, your import will complete in a minute as shown below. Ignore the below statement.
+    Keep `nologfile=yes`; otherwise, the import can fail.
+
+    ![Start import](./images/import1.png " ")
+
+- When the import completes, you may see the following message:
 
     *Failing sql is:
     GRANT "DBA" TO "NODEAPP"*
 
-    It indicates that while the user 'NODEAPP' had the DBA role assigned in the source database, that role is not available in the ATP instance due to security lockdowns. More details on ATP security lockdowns can be found [in this documentation](https://docs.oracle.com/en/cloud/paas/atp-cloud/atpdg/experienced-database-users.html#GUID-11ABDC70-C99F-48E4-933B-C7D588E4320A).
-    ![This image shows the result of performing the above step.](./images/import2.png " ")
+    You can ignore this message. It means the source database user **NODEAPP** had the DBA role, but that role is not available in the Autonomous AI database due to security restrictions. For more information, see [Restrictions for Autonomous AI Database](https://docs.oracle.com/en/cloud/paas/atp-cloud/atpdg/experienced-database-users.html#GUID-11ABDC70-C99F-48E4-933B-C7D588E4320A).
 
-All Done! Your application schema was successfully imported. Note that once uploaded to object store, the dump file was in a private bucket with no visibility outside of your tenancy namespace. This is important so your data file is not accessible to anyone on the internet.
+    ![Import into Autonomous AI Database.](./images/import2.png " ")
 
-You may now connect to your autonomous database using a SQL client and validate import.
+All Done! Your application schema was successfully imported. The dump file remains in a private Object Storage bucket and is not visible outside your tenancy namespace.
+
+You can now connect to your Autonomous AI Database using a SQL client and validate the imported schema.
+
+*Congratulations! You have successfully completed migration of an Oracle AI Database to the Dedicated Autonomous AI Database.*
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-*Congratulations! You have successfully completed migration of an Oracle database to the dedicated Autonomous service.*
-
 - **Author** - Tejus S. & Kris Bhanushali
-- **Adapted by** -  Yaisah Granillo, Cloud Solution Engineer
-- **Last Updated By/Date** - Kris Bhanushali, April 2022
-
-
-
+- **Adapted by** -  Vandana Rajamani, Consulting UA Developer, June 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
