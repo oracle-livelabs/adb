@@ -1,212 +1,216 @@
-
-# Provisioning Exadata Infrastructure for Autonomous database on Exadata Cloud@Customer
+# Provision Exadata Infrastructure for Autonomous AI Database on Exadata Cloud@Customer
 
 ## Introduction
-Oracle Autonomous Database on Oracle Exadata Cloud@Customer provides the benefits of a self-driving, self-securing, and self-repairing database management system, bringing it closer to your applications on-premises while deployed securely behind your firewall. Setting up and using Autonomous databases on your Exadata Cloud@Customer consists of two steps
 
-1. **Provision an Exadata Infrastructure**
+Oracle Autonomous AI Database on Exadata Cloud@Customer combines the automation capabilities of Autonomous AI Database with the security, data residency, and control of an on-premises deployment. The service runs within your data center while being managed through Oracle Cloud Infrastructure (OCI).
 
-    This step is common regardless wether you chose to deploy the Autonomous service using database 19c and above or co-managed Exadata Cloud @ Customer service using database 11g and above. To provision an Oracle Exadata Cloud@Customer system, you must work with Oracle to set up and configure the system.
-2. **Provision an Autonomous VM Cluster on your Exadata Infrastructure**
+Provisioning Autonomous AI Database on Exadata Cloud@Customer consists of two phases:
 
-    The type of VM Cluster you deploy on your Exadata Infrastrucure determines if its Autonomous  or co-managed. Once your Exadata Infrastruture is deployed and active, you may then create and Autonomous VM Cluster which runs your Autonomous Container Databases
+1. **Provision the Exadata Infrastructure**
+2. **Provision an Autonomous VM Cluster**
 
-**This lab guide explains steps to setup Exadata Infrastructure on your on-premises Exadata Cloud@Customer**
+This lab focuses on provisioning and activating the Exadata Infrastructure and preparing the environment for Autonomous VM Cluster deployment.
 
-Estimated Time: 20 minutes
+Estimated Time: 45 Minutes
 
 ### Objectives
 
-1. Create the Oracle Exadata Cloud@Customer infrastructure.
-2. You generate a file containing the infrastructure configuration details, and provide it to Oracle.
-3. The Oracle Exadata Cloud@Customer system is physically installed in your data center.
-4. Oracle uses the infrastructure configuration file to perform initial system configuration. At the end of this task, Oracle supplies you with an activation file.
-5. You activate the Exadata Cloud@Customer infrastructure by using the supplied activation file.
+By the end of this lab, you will be able to:
 
-**When the provisioning process is complete, the Oracle Exadata Cloud@Customer system is ready for you to use. You may then proceed to create an Autonomous VM Cluster as explained in the next lab guide.**
+- Create an Exadata Cloud@Customer Infrastructure resource.
+- Configure the required Exadata system networks.
+- Create a VM Cluster Network.
+- Configure an optional backup destination.
+- Download the infrastructure configuration package.
+- Submit the configuration package to Oracle.
+- Activate the Exadata Infrastructure using the Oracle-provided activation file.
+- Validate that the environment is ready for Autonomous VM Cluster deployment.
 
-### Required Artifacts
-- An Oracle Cloud Infrastructure account with service limits to deploy at least one base rack of Exadata Infrastructure in any one region or Availability Domain.
-- You also need privileges to create  Exadata Infrastructure and a container database in a pre-provisioned compartment and network.
+### Prerequisites
 
-Watch the video below for step by step directions on creating an Autonomous Exadata Infrastructure in your Oracle Cloud Infrastructure tenancy
+Before starting this lab, ensure that:
 
-[](youtube:9gxoodkEaAU)
+- You have access to an OCI tenancy with sufficient Exadata Cloud@Customer service limits.
+- You have permissions to create Exadata Infrastructure resources.
+- You have permissions to create VM Cluster Networks.
+- You have collected all required networking information from your network team.
+- DNS and NTP servers are available and reachable.
+- Oracle has installed or is scheduled to install the Exadata Cloud@Customer hardware.
 
-## Task 1: Create the Oracle Exadata Cloud@Customer infrastructure.
+## Task 1: Create the Exadata Cloud@Customer Infrastructure
 
-*Login to your OCI account as a fleet administrator*
+1. Sign in to the OCI Console and Open the Navigation Menu.
+2. Select **Oracle AI Database**. Click **Oracle Exadata Database Service at Cloud@Customer**.
 
-Navigate to the 'Exadata Cloud@Customer' option in the top left hamburger menu from your OCI home screen.
-    ![This image shows the result of performing the above step.](./images/create-ei1.png " ")
+   ![Navigate to OCI console](./images/prov-exainfra-exacc-1.png " ")
 
+3. Select **Exadata Infrastructure**. and  Click **Create Exadata Infrastructure**.
 
+   ![Create Exadata Infrasructure](./images/prov-exainfra-exacc-2.png " ")
 
-Select 'Exadata Infrastructure' and Click the blue 'Create  Exadata Infrastructure' button as shown below
-    ![This image shows the result of performing the above step.](./images/create-ei2.png " ")
+4. Enter the basic information:
+    - Compartment
+    - Display Name
+    - Exadata System Model
+    - Shape
 
+   Verify the selected model and shape match the installed rack configuration. The Oracle Exadata system model and system shape combine to define the amount of CPU, memory, and storage resources that are available in the Exadata infrastructure.
 
-Choose a compartment to deploy, provide a display name, select the Exadata System model and shape.
-![This image shows the result of performing the above step.](./images/create-ei3.png " ")
+   ![Exadata basic information](./images/prov-exainfra-exacc-3.png " ")
 
-In the network section, provide,
+5. Configure Control Plane Networking:
 
-1. **Two Control Plane Server IP Addresses:**These IP addresses are for the network interfaces that connect the two control plane servers to your corporate network using the control plane network
-2. **Netmask:** Specify the IP netmask for the control plane network.
-3. **Gateway:** Specify the IP address of the control plane network gateway.
-4. **HTTPS Proxy:** (Optional) You can choose to use this field to specify your corporate HTTPS proxy
+   Provide the following details:
+    - Two Control Plane Server IP Addresses: These IP addresses are for the network interfaces that connect the two control plane servers to your corporate network using the control plane network
+    - Netmask: Specify the IP netmask for the control plane network.
+    - Gateway: Specify the IP address of the control plane network gateway.
+    - HTTPS Proxy (Optional): You can choose to use this field to specify your corporate HTTPS proxy.
 
-In the Section **Configure the Oracle Exadata system networks**
+   Confirm if IPs are reserved, Gateway is reachable and Network team has approved the values.
 
-1. **Administration Network CIDR Block:** Specifies the IP address range for the administration network using CIDR notation. The administration network provides connectivity that enables Oracle to administer the Exadata system components, such as the Exadata compute servers, storage servers, network switches, and power distribution units. You can accept the suggested default, or specify a custom value
+6. Configure Exadata Internal Networks:
 
-The smallest CIDR range required is /23, while the maximum number of IP addresses may be reserved with a CIDR rage of /16
+    - Administration Network CIDR Block: Specifies the IP address range for the administration network using CIDR notation. The administration network provides connectivity that enables Oracle to administer the Exadata system components, such as the Exadata compute servers, storage servers, network switches, and power distribution units. You can accept the suggested default, or specify a custom value. The smallest CIDR range required is /23, while the maximum number of IP addresses may be reserved with a CIDR range of /16.
+    - InfiniBand Network CIDR Block: Specifies the IP address range for the Exadata InfiniBand network The Exadata InfiniBand network provides the high-speed low-latency interconnect used by Exadata software for internal communications between various system components. You can accept the suggested default, or specify a custom value. The smallest CIDR range required for the Infiniband network is /22 while the largest is /19.
 
-2. **InfiniBand Network CIDR Block:** Specifies the IP address range for the Exadata InfiniBand network
-The Exadata InfiniBand network provides the high-speed low-latency interconnect used by Exadata software for internal communications between various system components. You can accept the suggested default, or specify a custom value.
+    In the Section Configure DNS and NTP services
 
-The smallest CIDR range required for the Infiniband network is /22 while the largest is /19
+    - DNS Servers: Provide the IP address of a DNS server that is accessible using the control plane network. You may specify up to three DNS servers.
 
-In the Section **Configure DNS and NTP services**
+    - NTP Servers: Provide the IP address of an NTP server that is accessible using the control plane network. You may specify up to three NTP servers.
 
-1. **DNS Servers:** Provide the IP address of a DNS server that is accessible using the control plane network. You may specify up to three DNS servers.
+    - Time Zone: The default time zone for the Exadata Infrastructure is UTC, but you can specify a different time zone.
 
-2. **NTP Servers:** Provide the IP address of an NTP server that is accessible using the control plane network. You may specify up to three NTP servers.
-
-
-3. **Time Zone:** The default time zone for the Exadata Infrastructure is UTC, but you can specify a different time zone.
-
-**Click Create Exadata Infrastructure.**
-If all of your inputs are valid, then the Infrastructure Details page appears. The page outlines the next steps in the provisioning process. Initially after creation, the state of the Oracle Exadata infrastructure is Requires-Activation.
-
-
-You may now proceed to setup a VM Cluster Network to deployment your Autonomous VM Cluster later.
-
+7. Click **Create Exadata Infrastructure**. If all of your inputs are valid, then the Infrastructure Details page appears. The page outlines the next steps in the provisioning process. Initially after creation, the state of the Oracle Exadata infrastructure is Requires-Activation.
 
 ## Task 2: Create a VM Cluster Network
 
-Navigate back to the Exadata Cloud@Customer console, select 'VM Cluster' from the left menu and click the blue 'Create VM Cluster' button
+1. Sign in to the OCI Console and open the Navigation Menu.
+2. Select **Oracle AI Database**. Click **Oracle Exadata Database Service at Cloud@Customer**.
+3. Click **Exadata Infrastructure**. Click the name of the Exadata infrastructure for which you want to create a VM cluster network.
+4. Click **Create VM Cluster Network**.
+5. Provide General Information like Compartment, Display Name.
+6. Assign IPs to DB servers. By default, all DB servers are assigned IP addresses to enable easy addition and removal of VMs to the cluster in the future. Note that while DB Servers can be added to or removed from the VM Cluster Network, addresses cannot be changed in the future.
+7. Configure Client Network: Provide the following information:
 
-![This image shows the result of performing the above step.](./images/create-vmc1.png " ")
+    - VLAN ID: Provide a virtual LAN identifier (VLAN ID) for the client network between 1 and 4094, inclusive.
+    - CIDR Block: Using CIDR notation, provide the IP address range for the client network. The client network is the primary channel for application connectivity to Exadata Cloud@Customer resources.
+    - Netmask: Specify the IP netmask for the client network.
+    - Gateway: Specify the IP address of the client network gateway.
+    - Hostname Prefix: Specify the prefix that is used to generate the hostnames in the client network.
+    - Domain Name:Specify the domain name for the client network.
 
-After providing the compartment, display name (need not be unique) and the Exadata Cloud@Customer Infrastructure you provisioned above, you can proceed to configure the client and backup network for your VM Cluster as follows.
+   Verify VLAN is available, CIDR range does not overlap existing networks and Gateway is reachable.
 
-In the **Provide client network details** section
+   ![Configure Client Network](./images/crt-exa-vmcluster-2.png " ")
 
-1. **VLAN ID:** Provide a virtual LAN identifier (VLAN ID) for the client network between 1 and 4094, inclusive.
+8. Configure Backup Network: Provide the following information:
 
-2. **CIDR Block:** Using CIDR notation, provide the IP address range for the client network.
+    - VLAN ID: Provide a virtual LAN identifier (VLAN ID) for the backup network between 1 and 4094, inclusive. The backup network is the secondary channel for connectivity to Exadata Cloud@Customer resources. It is typically used to segregate application connections on the client network from other network traffic.
+    - CIDR Block: Using CIDR notation, provide the IP address range for the backup network. 
+    - Netmask: Specify the IP netmask for the backup network.
+    - Gateway: Specify the IP address of the backup network gateway.
+    - Hostname Prefix: Specify the prefix that is used to generate the hostnames in the backup network.
+    - Domain Name: Specify the domain name for the backup network.
 
-The client network is the primary channel for application connectivity to Exadata Cloud@Customer resources.
+9. The VM cluster network requires access to Domain Names System (DNS) and Network Time Protocol (NTP) services. The following settings specify the servers that provide these services:
 
-3. **Netmask:** Specify the IP netmask for the client network.
+    - DNS Servers: Provide the IP address of a DNS server that is accessible using the client network. You may specify up to three DNS servers.
 
-4. **Gateway:** Specify the IP address of the client network gateway.
+    - NTP Servers: Provide the IP address of an NTP server that is accessible using the client network. You may specify up to three NTP servers.
 
-5. **Hostname Prefix:** Specify the prefix that is used to generate the hostnames in the client network.
+   Verify that Backup network does not overlap client network and Sufficient IP addresses exist.
 
-6. **Domain Name:** Specify the domain name for the client network.
+10. Click **Review Configuration**. Review generated hostnames and IP allocations. Click **Create VM Cluster Network**.
 
-In the **Provide backup network details** section
+   The VM Cluster Network Details page is now displayed. Initially after creation, the state of the VM cluster network is **Requires Validation**.
 
-1. **VLAN ID:** Provide a virtual LAN identifier (VLAN ID) for the backup network between 1 and 4094, inclusive.
+## Task 3: Configure a Backup Destination (Optional)
 
-The backup network is the secondary channel for connectivity to Exadata Cloud@Customer resources. It is typically used to segregate application connections on the client network from other network traffic.
+When you create Autonomous AI Databases on Exadata Cloud@Customer, you can specify a backup destination and enable automatic backups. You may chose to backup your databases to one of the following destinations
 
+- OCI Object store
+- On-premise Oracle ZDLRA
+- Your own NFS storage device
 
-2. **CIDR Block:** Using CIDR notation, provide the IP address range for the backup network.
+If you plan to use OCI Object Storage, this task can be skipped.
 
-The minimum and maximum IP addresses required for the backup network depend on the shape of your Exadata Infrastructure and are specified in the table below.
+1. Navigate back to Exadata Cloud@Customer. Select **Backup Destinations** and Click **Create Backup Destination**.
 
-![This image shows the result of performing the above step.](./images/create-vmc2.png " ")
+   ![Create Backup](./images/create-bkp1.png " ")
 
-3. **Netmask:** Specify the IP netmask for the backup network.
+2. Choose one of the following options for backup destination:
 
-4. **Gateway:** Specify the IP address of the backup network gateway.
+    - Option A - Recovery Appliance: Provide Recovery Appliance Connect String and VPC Username. Contact your ZDLRA backup admin for these details. Confirm connectivity and credentials with the backup administrator.
 
-5. **Hostname Prefix:** Specify the prefix that is used to generate the hostnames in the backup network.
+      ![Recovery Appliance](./images/create-bkp2.png " ")
 
-6. **Domain Name:** Specify the domain name for the backup network.
+    - Option B - NFS : Provide the IP Address (up to 4) of your NFS Server and one or more NFS Export Shares. Contact your network / backup admin for details. Confirm that NFS exports are accessible and firewall rules permit connectivity.
 
+      ![NFS Backup](./images/create-bkp3.png " ")
 
-In the **Provide DNS and NTP server details** section
-
-1. **DNS Servers:** Provide the IP address of a DNS server that is accessible using the client network. You may specify up to three DNS servers.
-
-2. **NTP Servers:** Provide the IP address of an NTP server that is accessible using the client network. You may specify up to three NTP servers.
-
-Click **Review Configuration**
-The Review Configuration page displays detailed information about the VM cluster network, including the hostname and IP address allocations. You may chose to edit the configuration and save changes or proceed to creating the network by clicking **Create VM Cluster Network**
-
-The VM Cluster Network Details page is now displayed. Initially after creation, the state of the VM cluster network is **Requires Validation**
-
-
-Next, you may proceed to select a backup destination for your Autonomous Database backups
-
-
-## Task 3: Create a Backup Destination
-When you create autonomous  databases on  Exadata Cloud@Customer, you can specify a backup destination and enable automatic backups. You may chose to backup your databases to one of the following destinations
-
-1. OCI Object store
-2. On-premise Oracle ZDLRA
-3. Your own NFS storage device
-
-Step 3 is required if you plan to use ZDLRA or NFS as a backup destination. If you plan to backup to OCI object store, you may skip this step
-
-
-Navigate back to the Exadata Cloud@Customer console, select 'Backup Destinations' from the left menu and click the blue 'Create Backup Destination' button
-
-![This image shows the result of performing the above step.](./images/create-bkp1.png " ")
-
-Once you select a compartment and provide a display name, you may pick one of the two backup destination types
-
-1. **Recovery Appliance**
-
-If you choose to backup your autonomous databases on an on-premise Oracle Recovery Appliance,
-
-Provide the Recovery Appliance connect string and VPC username. Contact your ZDLRA backup admin for these details.
-
-![This image shows the result of performing the above step.](./images/create-bkp2.png " ")
-
-Click **Create Backup Destination** at the bottom of the page.
-
-2. **NFS**
-
-If you choose to backup your autonomous databases on an on-premise NFS Storage device,
-
-Provide the IP Address (up to 4) of your NFS Server and one or more NFS Export Shares. Contact your network / backup admin for details
-
-![This image shows the result of performing the above step.](./images/create-bkp3.png " ")
-
-Click **Create Backup Destination** at the bottom of the page.
-
+Click **Create** at the bottom of the page.
 
 You are now ready to download your configuration and send it to Oracle for validation and activation.
 
-## Task 4: Download Configuration Information
+## Task 4: Download the Infrastructure Configuration Package
 
-Navigate back to the Exadata Cloud@Customer console, select 'Exadata Infrastructure' from the left menu and select the Exadata Infrastructure your deployed above
+1. Navigate back to Exadata Cloud@Customer console and select **Exadata Infrastructure**. Select the infrastructure created in **Task 1**.
 
-Click **Download Configuration** button on the top
-Your browser downloads a file containing the infrastructure configuration details. In the next step, you will need to provide this file to Oracle to activate your Exadata Infrastructure. When you provide the generated infrastructure configuration file to Oracle, ensure that it has not been altered in any way. Also, ensure that you do not edit the Oracle Exadata infrastructure after you download the configuration file and provide it to Oracle.
+2. Click **Download Configuration**. Save the generated file securely.
 
-## Task 5: Activate Exadata Infrastructure
+   **Important** :
 
-1. On the same console screen as Step 4, Click the **Activate** button at the top
+   After downloading:
+    - Do not modify the file.
+    - Do not modify the infrastructure configuration.
+    - Submit the file to Oracle exactly as generated.
 
-The Activate button is only available if the Oracle Exadata infrastructure requires activation. You cannot activate Oracle Exadata infrastructure multiple times.
+## Task 5: Activate the Exadata Infrastructure
 
-2. Use the Activate dialog to upload the activation file, and then click **Activate Now**
+Activate the Exadata Infrastructure after Oracle completes validation and provides an activation file.
 
+Verify:
 
-After activation, the state of the Oracle Exadata infrastructure changes to **Active**
+- Oracle completed validation.
+- Activation file has been received.
+- Infrastructure state is Requires Activation.
 
-You may now **proceed to the next lab**.
+1. Open Infrastructure Details and Click **Activate**. The Activate button is only available if the Oracle Exadata infrastructure requires activation. You cannot activate Oracle Exadata infrastructure multiple times.
+2. Use the ****Activate** dialog to upload the activation file, and then click **Activate Now**. After activation, the state of the Oracle Exadata infrastructure changes to **Active**.
+
+### Troubleshooting
+
+#### Infrastructure Creation Fails
+
+Verify:
+
+- Service limits are available.
+- Required IAM permissions exist.
+- Selected compartment is correct.
+
+#### VM Cluster Network Validation Fails
+
+Verify:
+
+- VLAN assignments are correct.
+- CIDR ranges do not overlap.
+- DNS and NTP servers are reachable.
+
+#### Activation Fails
+
+Verify:
+
+- Correct activation file was uploaded.
+- Infrastructure remains in Requires Activation state.
+- Oracle validation has been completed.
+
+### Next Steps
+
+You may now proceed to the next lab: **Create an Autonomous VM Cluster**
 
 ## Acknowledgements
 
-*All Done! You have successfully setup your Autonomous Database on Exadata Cloud @ Customer environment. It is now ready to deploy Autonomous VM Clusters*
-
-- **Author** - Simon Law & Kris Bhanushali
-- **Last Updated By/Date** - Kris Bhanushali, July 2020
-
+- **Author** - Tejus S. & Kris Bhanushali
+- **Adapted by** - Vandana Rajamani, Consulting UA Developer, June 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026

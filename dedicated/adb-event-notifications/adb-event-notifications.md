@@ -1,78 +1,70 @@
-# Set up ADB event notifications through OCI Notification Service
+# Set up Autonomous AI Database event notifications through OCI Notification Service
 
 ## Introduction
-The Oracle Cloud Infrastructure Notifications service broadcasts messages  to distributed components through a publish-subscribe pattern, delivering secure, highly reliable, low latency and durable messages for applications hosted on Oracle Cloud Infrastructure and externally.
 
-You may get notified when service events occur, such as database creation, termination etc. or when alarms trigger eg. CPU usage exceeds threshold. Subscribers may choose to be notified via email, SMS messages to their phones or via Slack channels.
+The Oracle Cloud Infrastructure Notifications service delivers messages to distributed components through a publish-subscribe model. It is commonly used to notify users when service events occur, such as the creation or termination of a database, or when alarms are triggered.
+
+You can send these notifications by email, SMS, or other supported channels such as Slack.
 
 Estimated Time: 20 minutes
 
 ### Objectives
-As an database developer or administrator:
-1. Learn how to set up autonomous database event topics.
-2. Subscribe to database events via email and SMS.
+
+As a database developer or administrator, you will:
+
+ 1. Learn how to create an Autonomous AI Database event topic.
+ 2. Subscribe to database events by email and SMS.
 
 ### Required Artifacts
-- An Oracle Cloud Infrastructure account with privileges to provision an autonomous database and create ONS topics and events.
 
-## Task 1: Set up email / SMS notification on ADB provisioning events
+- An Oracle Cloud Infrastructure account with privileges to provision an Autonomous AI Database and create ONS topics and events.
 
-- Let's start by setting up a simple email / SMS notification when autonomous database instances are provisioned in the user's compartment.
+## Task 1: Set up email or SMS notifications for Autonomous Database provisioning events
 
-- Log in to your OCI tenancy and navigate to **Developer SErvices** --> **Application Integration** --> **Notifications** from the top left hamburger menu.
+- Start by creating a topic in the Notifications service. In the OCI Console, open the navigation menu and go to **Developer Services** > **Application Integration** > **Notifications**.
 
-    ![This image shows the result of performing the above step.](./images/navigate.png " ")
+    ![Notifications navigation screen](./images/navigate.png)
 
-- Select the desired compartment from the drop down and click **Create Topic**.
+- Select the compartment where you want to create the topic, then click **Create Topic**.
 
-    ![This image shows the result of performing the above step.](./images/create-topic.png " ")
+    ![Create Topic step](./images/create-topic-1.png)
 
-- Provide a topic name, an optional description, and click **Create**.
+- Enter a topic name and an optional description, then click ****Create**.
 
-    ![This image shows the result of performing the above step.](./images/create-topic2.png " ")
+    ![Topic creation ](./images/create-topic-2.png)
 
-- Next, let's add some subscribers to this topic. On the **Notification** page, select **Subscriptions** at the top left.
+- Next, add a subscription to the topic. Open the topic details page, select **Subscriptions**, and then click **Create Subscription**.
 
-    ![This image shows the result of performing the above step.](./images/subscribe.png " ")
+    ![Subscriptions page](./images/subscribe-1.png)
 
-- On the **Create Subscription** page, select the topic you just created, pick **Email** from the protocol dropdown and provide your email address as shown.
+- In the **Create Subscription** dialog, select **Email** as the protocol, and enter the email address that should receive notifications.
 
-    ![This image shows the result of performing the above step.](./images/subscribe2.png " ")
+    ![Create email subscription](./images/subscribe-2.png)
 
-- To set up an SMS notification, simply add your email-to-SMS address. Most carriers support sending SMS over email. For example, AT&T users can send SMS messages using the email id <10-digit-phone#>@mms.att.net.
+- After the topic and subscription are ready, create an event rule. Open the navigation menu and go to **Observability & Management** > **Events Service**.
 
-- A complete list of email-to-SMS formats supported by various carriers is provided [on this website](https://avtech.com/articles/138/list-of-email-to-sms-addresses/).
+    ![Events Service navigation](./images/events-1.png).
 
-    ![This image shows the result of performing the above step.](./images/sms.png " ")
+- Click **Rules** > **Create Rule**.
 
-- Now that we have a topic and subscribers in place, let's create an event that feeds to this topic. Navigate to **OCI Events** from the main menu.
+    ![Navigation for Create Rule](./images/events-2.png).
 
-    ![This image shows the result of performing the above step.](./images/events1.png " ")
+- On the **Create Rule** page, enter a name for the rule and define the event conditions. For example, you can configure the rule to trigger when an Autonomous AI Database instance is created in a specific compartment. You can also create more than one event in a single rule. You can Preview rule logic and also validate the rule before creating it.
 
-- On the **Create Rule** page, provide a name and event conditions as shown in the screen shot below. A rule condition can be an event-type with one or more attributes and filter tags.
+- In the **Actions** section, select **Notifications** as the action type and choose the topic you created earlier.
 
-    - For example, here our event-type is **Autonomous Database - Create Instance Begin** and is set on the **Database** service for compartment user04Compartment (we provide the OCID in the attribute) with a filter tag to indicate **production** instances only.
+    ![Event rule action configuration](./images/events-3.png)
 
-    - Basically, what we are saying here is 'Trigger a notification event when an Autonomous Database with a tag tier=production is created in the compartment with OCID xyz...'.
+- To test the setup, you can provision an Autonomous AI Database as described in the earlier lab, [Provisioning Databases](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197). If you have not completed that lab yet, complete it first.
 
-    ![This image shows the result of performing the above step.](./images/events2.png " ")
-
-    ![This image shows the result of performing the above step.](./images/events3.png " ")
-
-- Scroll down to select the Action type for this event and pick Notifications and the topic you just created.
-
-    ![This image shows the result of performing the above step.](./images/events4.png " ")
-
-- That's it! To test your notification setup, create an autonomous database service instance as explained in the lab, **Provisioning Databases**, in the **Introduction to ADB Dedicated for Developers and Database Users** workshop.
+Congratulations! You have successfully created notification subscriptions and configured event-based notifications.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
-*Congratulations! You successfully learnt to create DB event subscriptions and setup notifications!*
 
 - **Author** - Tejus Subrahmanya & Kris Bhanushali
-- **Adapted by** -  Yaisah Granillo, Cloud Solution Engineer
-- **Last Updated By/Date** - Kris Bhanushali, Autonomous Database Product Management, April 2022
-
+- **Adapted by** -  Vandana Rajamani, Consulting UA Developer, June 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
 
 

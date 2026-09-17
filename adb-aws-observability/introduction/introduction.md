@@ -1,8 +1,8 @@
-# Getting Started with Oracle Database@AWS Observability Using AWS Native Services
+# Get Started with Oracle Database@AWS Observability Using AWS Native Services
 
 ## Introduction
 
-Using Autonomous AI Database on Oracle Database@AWS, you can provision Dedicated Exadata Infrastructure and Autonomous VM Clusters within Amazon Web Service (AWS) that will host Multicloud deployments of Autonomous AI Database. 
+Using Autonomous AI Database on Oracle Database@AWS, you can provision Dedicated Exadata Infrastructure and Autonomous VM Clusters within Amazon Web Service (AWS) that will host Multicloud deployments of Autonomous AI Database.
 Monitoring is a critical aspect of maintaining the health, performance, and availability of Oracle Database@AWS. Amazon CloudWatch provides a fully managed observability service that enables you to collect, analyze, and act upon operational data in real time. Oracle Database@AWS provides the capability to monitor your resources using Amazon EventBridge.
 
 By the end of this workshop, you will learn how metrics from your Autonomous AI Database are surfaced in AWS CloudWatch, how to build monitoring dashboards, how to set up proactive alarms, and how to capture database lifecycle events using Amazon EventBridge.
@@ -32,4 +32,4 @@ You may now **proceed to the next lab**.
 
 - **Author**: - German Viscuso, Director of Developer Community, Autonomous AI Database
 - **Adapted By**: Vandana Rajamani, Consulting UA Developer, July 2026
-- **Last Updated By/Date**: - Vandana Rajamani, Consulting UA Developer, July 2026
+- **Last Updated By/Date**: - Vandana Rajamani, Consulting UA Developer, August 2026

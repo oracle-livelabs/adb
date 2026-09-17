@@ -1,80 +1,87 @@
-# Provisioning an Autonomous Container Database
+# Provision an Autonomous Container Database
 
 ## Introduction
-An Autonomous Container Database resource provides a container for your Autonomous Databases. You can create multiple Autonomous Container Database resources in an Autonomous Exadata VM Cluster resource, but you must create at least one ACD before you can create any Autonomous Databases.
+
+An Autonomous Container Database (ACD) is a logical container service used in Oracle's dedicated cloud infrastructure to house and manage one or more Oracle Autonomous Databases. You can create multiple ACD resources in an Autonomous Exadata VM Cluster, but you must create at least one ACD before you can create any Autonomous AI Database.
 
 Estimated Time: 20 mins
 
 ### Objectives
 
 As a fleet administrator:
-- Deploy an Autonomous Container Database (ACD) onto an Autonomous Exadata VM Cluster (Applicable to both ADB on Exadata Cloud@Customer and ADB on public cloud).
 
-**Note: When using Exadata Cloud@Customer, ACDs are deployed on Autonomous VM Clusters**
+- Deploy an Autonomous Container Database (ACD) onto an Autonomous Exadata VM Cluster (Applicable to both Autonomous AI Database on Oracle Public Cloud and Exadata Cloud@Customer deployments).
 
 ### Required Artifacts
 
-- An Oracle Cloud Infrastructure account with fleet administrator privileges. For a detailed description of required IAM policies, please refer to the [documentation on IAM policies](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbdf/) in the Autonomous Database Dedicated documentation set.
-
-Watch the video below for an overview of creating an Autonomous Container Database.
-
-[](youtube:9RBVZGmGD_o)
+- An Oracle Cloud Infrastructure account with fleet administrator privileges. For a detailed description of required IAM policies, please refer to the [documentation on IAM policies](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbdf/) for Autonomous AI Database.
 
 ## Task 1: Create an Autonomous Container Database (ACD)
 
-*Log in to your OCI account as a fleet administrator*
+- Sign in to the OCI Console and Navigate to the **Oracle AI Database** option in the top left hamburger menu from your OCI home screen. Click **Autonomous AI Database on Dedicated Infrastructure**.
 
-- Navigate to the **Autonomous Database or Autonomous Database Dedicated** option under **Oracle Database** in the top left hamburger menu from your OCI home screen.
+- Select **Autonomous Container Database** from the menu on the left. Click **Create Autonomous Container Database**.
 
-- Pick **Autonomous Container Database** from the three option, make sure you have selected the compartment hosting your exadata infrastructure and click the blue **Create Autonomous Container Database** button.
-
-    ![This image shows the result of performing the above step.](./images/create-acd1.png " ")
+  ![Navigate to OCI Console.](./images/create-acd1.png " ")
 
 - On the **Create Autonomous Container Database** dialog box you can choose / modify the compartment to create your ACD. Select the compartment hosting your Exadata Infrastructure and Autonomous Exadata VM Cluster.
 
-    ![This image shows the result of performing the above step.](./images/create-acd2.png " ")
+- Enter a user-friendly description or other information that helps you easily identify the resource. Enter a name for the container database. It can contain only letters and numbers.
 
-- Choose Container Database software Version from the dropdwon.
+- Choose the Exadata Infrastructure and an Autonomous Exadata VM Cluster to host the new Autonomous Container Database.
 
-    ![This image shows the result of performing the above step.](./images/create-acd10.png " ")
+- Choose the Oracle Database software version for the Autonomous Container Database.
 
-- To configure Autonomous Data Guard, select the **Enable Autonomous Data Guard** checkbox and select your standby region, standby Exadata Infrastructure and Standby Autonomous VM Cluster. You also have the option to change the protection and enable Automatic Failover. To learn more about Autonomous Data Guard, head to our **Autonomous Data Guard** lab in this workshop.
+  ![Create ACD basic information.](./images/create-acd2.png " ")
 
-    ![This image shows the result of performing the above step.](./images/create-acd3.png " ")
+- You will see an option to modify your ACD's maintenance schedule and the type of update you wish to apply to the container. Optionally, you can configure a maintenance preference or schedule by clicking **Modify maintenance schedule** that launches the **Edit automatic maintenance** dialog.
 
-- As you scroll down the form you will see an option to modify your ACD's maintenance schedule and the type of update you wish to apply to the container.
+  ![Automatic maintenance configuration](./images/create-acd3.png " ")
 
-- You may choose to configure container database maintenance version to either Next RU or Latest RU. And also, specify your ACD's maintenance schedule, picking a month, week, day and time in each quarter when a maintenance operation can be carried out on that container.
+- You can choose between Rolling or Non-rolling maintenance methods. Optionally, you can also select Enable time-zone update. You can change the maintenance schedule from the default to a custom schedule.
 
-    ![This image shows the result of performing the above step.](./images/create-acd4.png " ")
+  ![Edit automatic maintenance.](./images/create-acd3a.png " ")
 
-- If creating the Autonomous Container Database on Exadata Cloud@Customer, configure the backup destination to be used for backups of Autonomous Databases created in the Autonomous Container Database. Select a Backup Destination Type and then specify options based on the selected type.
+- You can specify your ACD's maintenance schedule, picking a month, week, day and time in each quarter when a maintenance operation can be carried out on that container.
 
-    ![This image shows the result of performing the above step.](./images/create-acd9.png " ")
+  ![Change Maintenance schedule.](./images/create-acd3b.png " ")
 
-Lastly, there are multiple features available under the advanced options section.
+- By default, automatic backups are enabled for an ACD. Optionally, you can choose to disable them by deselecting the Enable automatic backups check box. When you enable automatic backups, choose from the following options to determine how long backups are retained after terminating the ACD:
+    - Retain backups as per the backup retention period
+    - Retain backups for 72 hours, then delete
 
-- You may  choose a different backup retention period by selecting a retention policy from the **Management** tab under **Advanced Options** as shown below.
+- You can associate a backup destination for the backups of Autonomous AI Databases created in an ACD. You can choose **Object Storage** or **Autonomous Recovery Service** (recommended option) as the backup destination for Autonomous AI Databases deployed On Oracle Public Cloud.  If creating the Autonomous Container Database on Exadata Cloud@Customer, configure the backup destination to be used for backups of Autonomous AI Databases created in the Autonomous Container Database. Select a Backup Destination Type and then specify options based on the selected type.
 
-    ![This image shows the result of performing the above step.](./images/create-acd6.png " ")
+- If you choose to retain backups for the duration of the backup retention period, you can also enable retention lock.
 
-- Optionally, configure the Autonomous Container Database to use customer-managed encryption keys instead of Oracle-managed encryption keys. Select **Encrypt using customer-managed keys** and then select either the **Vault and Master** encryption key or the **Key Store** to use for the Autonomous Container Database, depending on whether you are creating the container database on Oracle Cloud or on Exadata Cloud@Customer.
+- After enabling automatic backups, specify a Backup retention period value to meet your needs. You can choose any value between 7 to 95 days.
 
-    ![This image shows the result of performing the above step.](./images/create-acd7.png " ")
+- Optionally, select **Enable cross-region backup copy** and specify a region for the backup copies.
 
-- You may also enable FIPS-140 security standards under the advanced options.
-    ![This image shows the result of performing the above step.](./images/create-acd8.png " ")
+  ![Backup configuration.](./images/create-acd4.png " ")
 
-That's it. Simply scroll down to the bottom and click the blue **Create Autonomous Container Database** button to deploy your ACD.
+- Optionally, you can add contact emails to receive operational notifications, announcements, and unplanned maintenance notifications regarding your Autonomous Container Database.
+
+  ![Configure contacts.](./images/create-acd5.png " ")
+
+- Optionally, you can define a suitable value for the following resource management attributes to suit your needs. Optionally, select **Enable shared server connections** to support the Net services architecture.
+
+  ![Configure operational notification.](./images/create-acd6.png " ")
+
+- Optionally, you can configure the Autonomous Container Database to use customer-managed encryption keys instead of Oracle-managed encryption keys. Select **Encrypt using customer-managed keys** and then select either the **OCI Vault Service** or  **Oracle Key Vault** to use as the encryption key for the Autonomous Container Database.
+
+- Optionally, you may also enable FIPS-140 security standards.
+
+- If you want to use tags, add tags by selecting a Tag Namespace, Tag Key, and Tag Value.
+
+  ![Configure tags.](./images/create-acd7.png " ")
+
+Click **Create** to deploy your ACD.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-*All Done! You have successfully deployed your Autonomous Container Database and it should be available shortly.*
-
 - **Author** - Ranganath S R, Tejus S. & Kris Bhanushali
-- **Adapted by** -  Yaisah Granillo, Cloud Solution Engineer
-- **Last Updated By/Date** - Tejus S, March 2023
-
-
+- **Adapted by :** Vandana Rajamani, Consulting UA Developer, June 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, September 2026

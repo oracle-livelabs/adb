@@ -1,164 +1,204 @@
-# Configuring VPN connectivity into your private ATP network
+# Configure VPN Connectivity to Your Private Autonomous AI Database Network
 
 ## Introduction
 
-Oracle's dedicated Autonomous Infrastructure and databases are deployed in a private VCN in the Oracle Cloud Infrastructure with no public IP address assigned. Hence to gain connectivity to the databases, a best practice approach is to use a VPN connection.
+Oracle Autonomous AI Database on Dedicated Exadata Infrastructure can be deployed in a private virtual cloud network (VCN) in Oracle Cloud Infrastructure (OCI), without a public IP address. A VPN connection is one approach for providing controlled client connectivity to the databases.
 
-This lab walks you through the steps to deploy a VPN server in OCI and create an SSL VPN connection between a client machine (your desktop) and the dedicated ATP infrastructure. Once configured, a single VPN server can be shared among multiple users.
+This lab walks you through deploying an OpenVPN Access Server in OCI and creating a VPN connection between a client machine and Autonomous AI Database on Dedicated Exadata Infrastructure. After it is configured, a single VPN server can support multiple users.
 
 Estimated Time: 45 minutes
 
 ### Objectives
-As a network or fleet admin:
+
+As a network or fleet administrator:
 
 1. Configure a VPN server in OCI based on OpenVPN software.
-2. Configure your VPN client and connect to VPN Server.
-3. Launch SQL Developer on client and connect to a dedicated ATP instance.
-
+2. Configure your VPN client and connect to the VPN server.
+3. Launch SQL Developer on the client and connect to a dedicated Autonomous AI Database instance.
 
 ### Required Artifacts
 
-- An Oracle Cloud Infrastructure account with privileges to create compute instance and network resources
-- A pre-provisioned dedicated Oracle Autonomous Database instance in a private network
-- A pre-provisioned Virtual Cloud Network with public and private subnets setup with appropriate security lists. Refer to the earlier lab **Prepare Private Network for OCI Implementation** in this workshop.
+- An Oracle Cloud Infrastructure account with privileges to create compute instances and network resources.
+- A pre-provisioned dedicated Oracle Autonomous AI Database instance in a private network. Refer to the lab **Provisioning Databases** in the [Autonomous Database Dedicated for Developers and Database Users workshop](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197) to provision an Autonomous AI Database.
+- A pre-provisioned VCN with public and private subnets configured with appropriate security lists. See [Preparing your private network in Oracle Cloud Infrastructure](?lab=adb-network-prepare).
 
-The following illustration shows a network topology that can be used to provide secure access to your dedicated autonomous infrastructure.
-    ![This image shows the result of performing the above step.](./images/highlevelSSL.png " ")
+The following illustration shows a network topology that can be used to provide secure access to an Autonomous AI Database on a Dedicated Exadata Infrastructure.
+![Network Topology.](./images/highlevelssl.png " ")
 
-- As shown above, Your OCI Virtual Cloud Network (VCN) has two subnets. A private subnet with CIDR 10.0.0.0/24 that hosts your exadata infrastructure and a public subnet with CIDR 10.0.1.0/24 that has public facing web and application servers and also the VPN Server.
+- As shown above, the OCI VCN has two subnets: a private subnet that hosts the Exadata infrastructure and a public subnet that hosts public-facing web and application servers, including the VPN server.
 
-- An internet gateway is attached to the public subnet to allow all resources within that subnet to be accessible over the internet.
+- An internet gateway is attached to the public subnet to allow the required resources in that subnet to communicate over the internet.
 
-- Security lists have been setup such that tcp traffic into the private exadata subnet is allowed only through hosts in the public subnet. This can be further tightened by allowing traffic from specific hosts and ports.
+- Security lists are configured so that TCP traffic to the private Exadata subnet is allowed only from hosts in the public subnet. Further restrict this access to the required source hosts and ports where possible.
 
-- For detailed instructions on network setup for an dedicated autonomous DB infrastructure, refer to the earlier lab **Prepare Private Network for OCI Implementation** in this workshop.
+- For detailed instructions on network setup for dedicated Autonomous AI Database infrastructure, see [Preparing your private network in Oracle Cloud Infrastructure](?lab=adb-network-prepare).
 
+## Task 1: Launch a Linux VM for the OpenVPN server
 
-## Task 1: Launch a CentOS VM for the OpenVPN server
+- Sign in to the OCI Console. In the navigation menu, select **Compute**, then **Instances**. See [Overview of Compute Instances](https://docs.oracle.com/en-us/iaas/Content/Compute/Concepts/computeoverview.htm) for more details.
 
-- Log in to the Oracle Cloud Infrastructure using your tenancy, userId and password.
+    ![Navigate OCI Console.](./images/createcompute1.png " ")
 
-    Refer to the earlier lab **Prepare Private Network for OCI Implementation** in this workshop for detailed instructions on logging in to your OCI account.
+- Click **Create instance**.
 
-- Once logged in, Click **Menu, Compute and Instance** and click **Create Instance**.
-    ![This image shows the result of performing the above step.](./images/createcompute.png " ")
-    ![This image shows the result of performing the above step.](./images/createcompute2.png " ")
+   ![Create Compute Instance.](./images/createcompute2.png " ")
 
-- Name your instance and select **CentOS** as your image source.
-    ![This image shows the result of performing the above step.](./images/computeimage.png " ")
+- Provide the basic information:
+    - Name: Enter a name for your instance.
+    - Compartment: Select the compartment where you want to create the instance.
+    - Placement: Choose the Availability Domain.
 
-- Select **Virtual Machine** and add your public SSH key file.
-    ![This image shows the result of performing the above step.](./images/computetype.png " ")
+    ![Create compute instance basic information.](./images/createcompute3.png " ")
 
--  Next, select the network for your VPN Server.
-    - Select the compartment and VCN where your exadata infrastructure is provisioned.
-    - Select the compartment where your public subnet is provisioned.
-    - Pick public subnet from the drop down.
-    ![This image shows the result of performing the above step.](./images/computenetwork.png " ")
+- Image and shape:
+    - Image: Select a Linux operating system that is supported by your OpenVPN Access Server release.
 
-    **Note:** While your ATP infrastructure and VPN server are in the same VCN, ATP is in a private subnet while the VPN server is deployed in a public subnet for access over the internet.
+    **Review required:** The screenshot shows **CentOS Stream 8**. Confirm that the selected image is supported by the OpenVPN Access Server release you plan to install before publishing.
 
--  Click **Create**, and within a few minutes your CentOS server will be ready with a public IP for ssh access.
+    ![Image and shape of compute instance.](./images/createcompute4.png " ")
+
+    - Shape: Click **Change shape** to select the instance type and shape series.
+
+    ![Change shape of compute instance.](./images/createcompute5.png " ")
+
+    ![Change shape series of compute instance.](./images/createcompute5a.png " ")
+
+- Optionally, enable **Shielded instances**.
+
+    ![Enable shielded instance.](./images/createcompute6.png " ")
+
+- Networking: Configure the VCN and public subnet. Select **Automatically assign a public IPv4 address** if the instance requires internet access.
+
+    ![Configure primary vnic.](./images/createcompute7.png " ")
+
+    ![Configure subnet.](./images/createcompute7a.png " ")
+
+- Add SSH keys: For Linux instances, generate a new key pair or upload your public key (`.pub` file) to allow secure SSH access.
+
+    ![Configure SSH keys.](./images/createcompute8.png " ")
+
+- Boot volume: Configure the boot volume settings as shown below.
+
+    ![Configure Boot volume.](./images/createcompute9.png " ")
+
+    ![Configure Block volumes.](./images/createcompute9a.png " ")
+
+- Review: Click **Create** after reviewing your settings.
+
+    ![Submit Compute instance creation.](./images/createcompute10.png " ")
+
+Within a few minutes, your Linux server will be ready with a public IP address for SSH access.
+
+![List Compute instance.](./images/createcompute11.png " ")
 
 ## Task 2: Install and configure OpenVPN Server
 
--   SSH into centOS vm and download the openVPN rpm package.
+In this task, you install OpenVPN Access Server on the Linux VM, set an administrator password, and configure routing and DNS so VPN clients can reach private subnets, such as the application and Exadata subnets, without routing all internet traffic through the VPN.
 
-    ```
+- Prerequisites:
+    - You have the public IP address of your Linux VM.
+    - You can SSH to the VM (security list/NSG allows TCP/22 from your source).
+    - Your OpenVPN server VM can reach the internet to download packages.
+    - The security list or network security group allows TCP port 22 only from approved administrator source addresses, TCP port 943 for the OpenVPN web interfaces, and UDP port 1194 for VPN client connections. If you use web-service port sharing, also allow TCP port 443.
+    - You know the CIDR blocks for the private subnets you want to reach over VPN (for example: App subnet CIDR, Exadata subnet CIDR).
+
+- SSH into the Linux VM. From your terminal, connect to the VM using its public IP address:
+
+    ```bash
     <copy>
-    $ ssh opc@O<public_ipAddress_of_your_centOS_VM>
-    </copy>
-    ```
-    ```
-    <copy>
-    $ wget http://swupdate.openvpn.org/as/openvpn-as-2.5.2-CentOS7.x86_64.rpm
-    </copy>
-    ```
-
-    ![This image shows the result of performing the above step.](./images/openvpn-configure.jpeg " ")
-
--   Use the RPM command to install the package.
-
-    ```
-    <copy>
-    $ sudo rpm -ivh openvpn-as-2.5.2-CentOS7.x86_64.rpm
+    $ ssh opc@<public_ip_address_of_your_linux_vm>
     </copy>
     ```
 
-    ![This image shows the result of performing the above step.](./images/openvpn-url.jpeg " ")
+    ![Instal epel release.](./images/install-epel-release.png " ")
 
--   Change the password of OpenVPN Server.
+- Download and install the OpenVPN Access Server package for your selected, supported Linux operating system.
 
-    ```
-    <copy>
-    $ sudo passwd openvpn
-    </copy>
-    ```
+    ![Install OpenVPN.](./images/install-openvpn.png " ")
 
--    From your local browser, access the admin UI console of your VPN Server (*https://public_ipAddress_of_your_centOS_VM:943/admin*), using the password for OpenVPN user.
-    ![This image shows the result of performing the above step.](./images/openvpn-login.png " ")
+    ![Instal OpenVPN AS.](./images/install-openvpn-as.png " ")
 
--   Once you are logged in, click **Network Settings** and replace the **Hostname** or **IP address** with the public IP of the OpenVPN Server Instance.
-    ![This image shows the result of performing the above step.](./images/openvpn-network.png " ")
+- Set the OpenVPN administrator password. OpenVPN Access Server creates the Linux user `openvpn` for initial administrative access. Set its password:
 
-    Save your setting before advancing to the VPN settings page.
+    ![OpenVPN Change password.](./images/openvpn-changepwd.png " ")
 
-- Click **VPN settings** and scroll down to the section labeled **Routing**.
+    Record the password securely - you will use it to log in to the Admin UI.
 
-    Here you configure how traffic from your VPN client (that is, your personal laptop for example) should be NATed and how DNS resolution should occur.
+- Sign in to the OpenVPN Admin Web UI (port 943).
 
-    Configure this section as shown in the screenshot below.
-    - Choose **Yes using NAT**.
-    - Provide CIDR ranges for your application and exadata subnets.
-    - Pick **No** for the question - **Should client internet traffic be routed through the VPN?**
-        ![This image shows the result of performing the above step.](./images/vpn-nat.png " ")
+    From your local browser, access the Admin Web UI at `https://<public_ip_address_of_your_linux_vm>:943/admin` and sign in with the `openvpn` user and the password you set.
 
-    Scroll down and configure the DNS settings as shown below.
-        ![This image shows the result of performing the above step.](./images/vpn-routing2.png " ")
+    ![Open VPN Login screen.](./images/openvpn-login.png " ")
 
--   In the **Advanced VPN** section, ensure that the option **Should clients be able to communicate with each other on the VPN IP Network?** is set to **Yes**.
-    ![This image shows the result of performing the above step.](./images/openvpn-advancedvpn.png " ")
+- In the Admin Web UI, open the network settings and set the hostname or IP address to the public IP address of the OpenVPN Access Server instance.
 
-    **Note:** Once you have applied your changes, click **Save Settings** once again. Then, **Update Running Server** to push your new configuration to the OpenVPN server.
+    ![OpenVPN Network setting.](./images/openvpn-network.png " ")
+
+    Save the setting before continuing.
+
+- Configure the VPN network settings to allow access to the required private subnets.
+
+    Configure NAT, split tunneling, and DNS so that VPN clients can reach the private application and Exadata subnets.
+
+    In current Access Server releases, use the access-control and VPN-network configuration pages to apply the following settings:
+
+     - Allow access to only the required application and Exadata subnet CIDR blocks.
+     - Use NAT for client access to these private subnets.
+     - Disable routing of general client internet traffic through the VPN (split tunneling).
+
+       ![Use VPN NAT.](./images/vpn-nat.png " ")
+
+    Configure the DNS settings required to resolve names in the private network.
+
+     ![Configure DNS setting.](./images/vpn-routing2.png " ")
+
+    **Review required:** The current Access Server 3.x Admin Web UI uses different navigation and control labels from the legacy interface shown in the screenshots. Confirm the release in use and update the screenshots or map the settings to the deployed version before publishing. The following legacy setting is not required for client-to-database access; retain it only if VPN clients must communicate directly with one another.
+
+    ![Open VPN Advanced VPN.](./images/openvpn-advancedvpn.png " ")
+
+    **Note:** Save the changes and restart or update the running server, as prompted by the Access Server release in use.
 
 ## Task 3: Install OpenVPN Client
 
--   Launch your OpenVPN Access Server Client UI at https://Your\_VPN\_Server\_Public\_IP:943 and download the OpenVPN client for your platforms.
-    ![This image shows the result of performing the above step.](./images/openvpn-client.png " ")
+- Open the OpenVPN Access Server Client Web UI at `https://<your_vpn_server_public_ip>:943` and download OpenVPN Connect or the connection profile for your platform.
 
--   Once the installation process has completed, you can see an OpenVPN icon in your OS taskbar. Right-click this icon to bring up the context menu to start your OpenVPN connection.
-    ![This image shows the result of performing the above step.](./images/openvpn-conn.png " ")
-    ![This image shows the result of performing the above step.](./images/openvpn-client-conn.png " ")
+    ![Invoke OpenVPN Client.](./images/openvpn-client.png " ")
 
-    **Note:** IP should be Public IP for OpenVPN Compute Instance.
+- After installation is complete, open OpenVPN Connect and import the downloaded connection profile, if required by your client.
 
--   Click **Connect**, which brings up a window asking for the OpenVPN username and password. Enter the credentials for your **openvpn** user and click **Connect** to establish a VPN tunnel.
-    ![This image shows the result of performing the above step.](./images/openvpn-clientwindow.png " ")
+    ![Connect using OpenVPN.](./images/openvpn-conn.png " ")
 
-You may also set up your VPN server with multiple users. Follow the OpenVPN configuration guide to set up additional users.
+    ![Enter hostname of OpenVPN Server.](./images/openvpn-client-conn.png " ")
 
+    **Note:** Use the public IP address or hostname of the OpenVPN compute instance.
 
-## Task 4: Connect SQL Developer to your dedicated ATP database
+- Click **Connect**. When prompted, enter the credentials for the `openvpn` user and click **Connect** to establish a VPN tunnel.
 
-- Launch SQL Developer and connect using the downloaded credentials wallet as shown below.
+    ![OpenVPN Client window.](./images/openvpn-clientwindow.png " ")
 
-    **Note:** Your SQL Developer version needs to be 18.3 or higher to connect to a cloud database using a wallet.
-    ![This image shows the result of performing the above step.](./images/atpd-conn.png " ")
+You can also configure the VPN server for multiple users. Follow the [OpenVPN Access Server user-management documentation](https://openvpn.net/as-docs/) to set up additional users.
 
-- To follow detailed instructions on downloading your database credentials wallet, refer to the lab **Configure a Development System** in the workshop **Introduction to ADB Dedicated for Developers and Database Users.**
+## Task 4: Connect SQL Developer to your Autonomous AI Database on Dedicated Exadata Infrastructure
 
-- You may also connect to APEX directly from your local browser. Simply get the URL from the console and launch in a browser window.
-    ![This image shows the result of performing the above step.](./images/atpd-application-apex.png " ")
+- Launch SQL Developer and connect using the downloaded client credentials wallet, as shown below.
+
+    **Note:** Oracle recommends using the latest SQL Developer release. SQL Developer 18.3 and later supports the **Cloud Wallet** connection type.
+
+    ![Launch SQL Developer Web.](./images/atpd-conn.png " ")
+
+- For detailed instructions on downloading database client credentials, see the lab **Configure a Development System** in the [Autonomous Database Dedicated for Developers and Database Users workshop](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197).
+
+- If APEX is enabled for the database, you can also connect to it directly from your local browser. Obtain the APEX URL from the OCI Console and open it in a browser window.
+
+    ![Open APEX application.](./images/atpd-application-apex.png " ")
+
+*Congratulations! You configured a secure VPN connection to your private Autonomous AI Database infrastructure.*
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-*Congratulations! You just configured a secure VPN connection into your private autonomous exadata infrastructure.*
-
 - **Author** - Tejus S. & Kris Bhanushali
-- **Adapted by** -  Yaisah Granillo, Cloud Solution Engineer
-- **Last Updated By/Date** - Yaisah Granillo, April 2022
-
-
+- **Adapted by** -  Vandana Rajamani, Consulting UA Developer, June 2026
+- **Last Updated By/Date** - Vandana Rajamani, Consulting UA Developer, July 2026
 

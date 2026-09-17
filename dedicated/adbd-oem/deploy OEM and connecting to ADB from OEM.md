@@ -1,12 +1,13 @@
-# Connecting to Autonomous Transaction Processing Dedicated from Oracle Enterprise Manager
+# Connect to Autonomous AI Database on Dedicated Exadata Infrastructure from Oracle Enterprise Manager
 
 ## Introduction
-The Oracle Cloud Infrastructure marketplace provides a pre-built image with necessary client tools and drivers to deploy compute instances and connect to Autonomous Transaction Processing Dedicated . A database administrator can now connect to ATPD from Oracle Enterprise Manager and monitor the performance. 
 
-The image is pre-configured and installed with Oracle Enterprise manager.
+The Oracle Cloud Infrastructure marketplace provides a pre-built image with necessary client tools and drivers to deploy compute instances and connect to Autonomous AI Database on Dedicated Exadata Infrastructure (Autonomous AI Database). A database administrator can now connect to Autonomous AI Database from Oracle Enterprise (OEM) and monitor the performance.
+
+The image is pre-configured and installed with OEM.
 For a complete list of features, login to your OCI account, select *Marketplace* --> *All Applications* from the top left menu and browse details on the *Oracle Enterprise Manager* Version 13.4.
 
-*In this lab we will configure and access Autonomous dedicated Transaction Processing database from Oracle Enterprise Manager.*
+*In this lab you will configure and access Autonomous AI Database from OEM.*
 
 Estimated Time: 60 minutes
 
@@ -14,22 +15,19 @@ Estimated Time: 60 minutes
 
 As a Database Administrator,
 
-1. Learn how to connect to Autonomous Dedicated Transaction Processing Database from Oracle Enterprise Manager.
-   
+1. Learn how to connect to Autonomous AI Database from OEM.
 
 ### Required Artifacts
 
-   - An Oracle Cloud Infrastructure account.
-   - A pre-provisioned dedicated autonomous database instance. Refer to the *Provisioning Databases* lab in the *Introduction to ADB Dedicated for Developers and Database Users* workshop.
-   - A pre-provisioned compute instace of Image type *Enterprise Manager 13.4*.
-
+- An Oracle Cloud Infrastructure account.
+- A pre-provisioned dedicated autonomous database instance. Refer to the lab **Provisioning Databases** in the [Autonomous Database Dedicated for Developers and Database Users workshop](https://livelabs.oracle.com/ords/r/dbpm/livelabs/run-workshop?p210_wid=3197) to provision an Autonomous AI Database.
 
 ## Task 1: Create a Compute Instance with OEM installed in it
 
-- Login to your Oracle Cloud Infrastructure account and select *Compute* —> *Instances* from top left menu.
+- Login to your Oracle Cloud Infrastructure account and select **Compute** —> **Instances** from top left menu.
     ![This image shows the result of performing the above step.](./images/Compute1.png " ")
 
-- Click on "Create Instance" under your *Compartment*
+- Click **Create Instance**.
     ![This image shows the result of performing the above step.](./images/Compute3.png " ")
 
 - Under *Create compute instance*, select the compartment in which you create compute and click on *Change Image*
