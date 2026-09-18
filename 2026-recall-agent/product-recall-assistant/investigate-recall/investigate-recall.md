@@ -1,14 +1,24 @@
-# Lab 1: Decide Whether to Open the Case: Shape the Recall Evidence with JSON
+# Lab 1: Keep Recall Reports and Case Decisions Together with JSON
 
 ## Introduction
 
-Kevin's first question is simple: “Do we have enough evidence to open the B-482 case, and what could this mean for returns?” He has a report from a source application, not a clean spreadsheet, and he needs the decision to remain traceable after the team starts acting.
+Kevin's first question is simple: “Do we have enough information to open the B-482 case, and what could this mean for returns?” The HeatPro quality-monitoring application sent the case report as JSON. It contains the batch, reported symptoms, and workflow state. Kevin needs to record the decision in the same system before the team starts acting.
 
-David's design is to keep the incoming report as JSON beside the operational recall records. The flexible report can retain its observations and workflow fields, while SQL connects the fields that matter to products, component lots, stores, shipments, and exposure. Nothing needs to be copied into a separate document system before the investigation begins.
+David keeps the application report as native JSON alongside the records the recall team already uses, such as product, component-lot, store, shipment, and customer-exposure records. Oracle AI Database keeps the original report. The team can pull the details it needs from that report and connect them to those records.
 
-Tim implements that design. He shows Kevin how native JSON preserves the report, how `JSON_VALUE` and `JSON_TABLE` expose the evidence SQL needs, and how `JSON_TRANSFORM` changes the workflow state without rebuilding the document. In the tasks, Tim opens the case and verifies the scope from the same database.
+JSON also handles details that vary from one report or complaint to the next. One may include an odor observation, another an early-shutoff note or a supplier certificate. A fixed relational table would need a new column whenever the application adds a new kind of detail. The investigation can start without first converting the report into a spreadsheet or separate document.
 
-By the end of the lab, Kevin has a traceable open case for `B-482`: 120 affected stores, 2,400 units, 600 potentially exposed customers, 25 component batches, and 25 supplier sites. That decision becomes the evidence base for David's next design step.
+This is why the lab starts with JSON. Tim shows Kevin how Oracle AI Database stores application JSON, queries it with SQL, and updates only the workflow fields that change. He uses `JSON_VALUE` and `JSON_TABLE` to read the report, and `JSON_TRANSFORM` to open the case without rebuilding the document. The tasks then check the scope in the same database.
+
+By the end of the lab, Kevin has an open case record for `B-482` with:
+
+- 120 affected stores
+- 2,400 units
+- 600 potentially exposed customers
+- 25 component batches
+- 25 supplier sites
+
+That decision gives David the data for the next design step.
 
 Estimated Time: 10 minutes
 
@@ -25,21 +35,13 @@ In this lab, you will:
 
 ## Task 1: Inspect the Reported Case JSON
 
-Kevin needs to see the report before he authorizes work. David keeps the original JSON as evidence; Tim starts by inspecting it.
+Kevin needs to see the report before he authorizes work. David keeps the original JSON as the source record. Tim starts by inspecting it.
 
-1. Sign in to **Database Actions** as `RECALL_OWNER` and select **SQL**. Open a new worksheet. Do not use `ADMIN` for learner tasks.
+1. Sign in to **Database Actions** as `RECALL_OWNER` and select **SQL**. Open a new worksheet.
 
-2. Confirm the connected identity.
+![2026-09-18-004976](images/2026-09-18-004976.png)
 
-    ```sql
-    <copy>
-    select user as connected_user;
-    </copy>
-    ```
-
-    Continue only when the query returns `RECALL_OWNER`.
-
-3. Confirm that `CASE_DATA` uses the Oracle native `JSON` data type.
+2. Confirm that `CASE_DATA` uses the Oracle native `JSON` data type.
 
     ```sql
     <copy>
@@ -54,7 +56,9 @@ Kevin needs to see the report before he authorizes work. David keeps the origina
 
     The result identifies `CASE_DATA` as `JSON`, not a text column containing JSON-looking data.
 
-4. Display the JSON document that arrived from the quality-monitoring workflow.
+    ![2026-09-18-004977](images/2026-09-18-004977.png)
+
+3. Display the JSON document that arrived from the quality-monitoring workflow.
 
     ```sql
     <copy>
@@ -68,9 +72,13 @@ Kevin needs to see the report before he authorizes work. David keeps the origina
 
     The relational case status is `REVIEW`. Inside the document, `workflowState` is `REPORTED`. The JSON also contains the batch, source, and reported time. Its three quality signals describe the incident. Customer contact is not authorized.
 
+    ![2026-09-18-004978](images/2026-09-18-004978.png)
+
 ## Task 2: Open the Investigation by Updating JSON
 
-Kevin needs a recorded decision, not an informal status change. David requires the source report and operational state to stay aligned; Tim updates both in one transaction.
+Kevin needs a recorded decision, not an informal status change. David needs the JSON report and the case status in the database to agree. Tim updates both in one transaction.
+
+For example, the case could show `OPEN` in the recall application while the JSON report still says `REPORTED`. One team could begin return work while another treats the case as unreviewed. Updating both values in one transaction prevents that split view.
 
 1. Update the case row. `JSON_TRANSFORM` changes the workflow state and adds audit fields. It preserves the rest of the document.
 
@@ -113,15 +121,24 @@ Kevin needs a recorded decision, not an informal status change. David requires t
     </copy>
     ```
 
-    The first update changes JSON workflow metadata and approved relational columns. The second makes the batch status available to later labs.
+    Run the complete block before continuing. SQL Developer Web should report `1 row updated` for each update, followed by `Commit complete.` If either update reports `0 rows updated`, stop and check the case state before running the verification query.
+    
+    ![2026-09-18-004979](images/2026-09-18-004979.png)
 
-2. Verify the relational and JSON states together.
+    The first update changes the JSON workflow details and the approved case columns. The second makes the batch status available to later labs.
+
+2. Verify the result. This query only checks the case; it does not open it. Run Step 1 first.
 
     ```sql
     <copy>
     select i.case_id,
            i.case_status,
            b.recall_status,
+           i.opened_by as column_opened_by,
+           to_char(
+               i.opened_at,
+               'YYYY-MM-DD"T"HH24:MI:SS.FF3'
+           ) as column_opened_at,
            json_value(i.case_data, '$.workflowState')
                as json_workflow_state,
            json_value(i.case_data, '$.openedBy')
@@ -135,7 +152,9 @@ Kevin needs a recorded decision, not an informal status change. David requires t
     </copy>
     ```
 
-    The case is `OPEN`, the batch is `INVESTIGATING`, and the JSON workflow state is `OPEN`. The JSON opening user is `RECALL_OWNER`.
+    The case is `OPEN`, the batch is `INVESTIGATING`, and the JSON workflow state is `OPEN`. Both opening-user columns show `RECALL_OWNER`. The relational timestamp shows the local time stored in the case row; the JSON timestamp also includes its time-zone offset.
+
+    ![2026-09-18-004980](images/2026-09-18-004980.png) 
 
 ## Task 3: Confirm the Larger Recall Scope
 
@@ -162,14 +181,15 @@ Kevin asks what the decision means for the returns operation. David defines scop
     ```
 
     Your result should show:
-
-    | Measure | Expected value |
-    |---|---:|
-    | Affected stores | 120 |
-    | Units sent | 2,400 |
-    | Exposed customers | 600 |
-    | Component batches | 25 |
-    | Supplier sites | 25 |
+    
+    | Measure           | Expected value |
+    | -------------------| ---------------:|
+    | Affected stores   | 120            |
+    | Units sent        | 2,400         |
+    | Exposed customers | 600            |
+    | Component batches | 25             |
+    | Supplier sites    | 25             |
+    {: title="Expected result"}
 
 2. The three results above form the Lab 1 checkpoint.
 
@@ -200,7 +220,9 @@ Kevin needs product detail without a new data pipeline. David keeps flexible com
     </copy>
     ```
 
-    The query returns 25 major components and traceable sub-parts. These include the thermostat, liner, power cord, thermal sensor, and contact set.
+    The query returns 25 major components and their sub-parts. These include the thermostat, liner, power cord, thermal sensor, and contact set.
+
+    ![2026-09-18-004981](images/2026-09-18-004981.png)
 
 2. Explain why JSON fits this part of the model:
 
@@ -210,7 +232,7 @@ Kevin needs product detail without a new data pipeline. David keeps flexible com
 
 ## Task 5: Read Component and Complaint JSON
 
-Kevin needs the supporting observations beside the scope. David connects JSON to relational trace data; Tim reads both as evidence.
+Kevin needs the supporting details beside the scope. David links JSON details to the records that show which component lots were installed in `B-482` and which supplier site provided them. For example, a supplier certificate in the JSON for a suspect thermostat lot matters only when the team can confirm that the lot was installed in `B-482` and identify its supplier site. Tim reads those details together.
 
 1. Inspect component-batch JSON attributes, including supplier certificate and sub-vendor lot details.
 
@@ -237,6 +259,8 @@ Kevin needs the supporting observations beside the scope. David connects JSON to
 
     The result contains 25 installed lots. The curated thermostat and thermal-sensor lots show `SUSPECT`. Generated sub-parts add `WATCH` and `SUSPECT` data with certificates, sub-vendor lots, and timestamps.
 
+    ![2026-09-18-004982](images/2026-09-18-004982.png)
+
 2. Read structured complaint observations and narrative text.
 
     ```sql
@@ -259,20 +283,18 @@ Kevin needs the supporting observations beside the scope. David connects JSON to
 
     Complaint `9005` is absent because it belongs to batch `B-900`. Complaints `9002` and `9007` came from customers who bought `B-482`. Those complaints did not name the batch.
 
+    ![2026-09-18-004983](images/2026-09-18-004983.png)
+
 You have completed Lab 1. Lab 2 uses Oracle Spatial to map the same stores and supplier sites.
 
-## Troubleshooting
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| The case already shows `OPEN` | The JSON update ran earlier | Continue, or ask the facilitator to restore `REVIEW` and `REPORTED`. |
-| The case update affects zero rows | The row is not in the seeded review state | Inspect `CASE_STATUS` and `$.workflowState`, then ask the facilitator to reset the case. |
-| Connected user is not `RECALL_OWNER` | Wrong Database Actions session | Sign out and reconnect as `RECALL_OWNER`. |
-| Object or view does not exist | The prepared workshop environment is incomplete | Ask the facilitator to verify the backend deployment. |
-| Component counts are zero | The B-482 data is not in the prepared state | Ask the facilitator to verify the backend deployment. |
-| Your result differs from the checkpoint | Seed data changed | Ask the facilitator to restore the prepared B-482 data. |
+## Conclusion
 
-For recovery, ask the facilitator to restore the prepared B-482 data.
+Kevin can now open the B-482 case from the same report that started the investigation. The returns application can show the original report, the case decision, and the affected scope without asking a user to copy details between a spreadsheet, a document, and separate operational systems.
+
+That is why the SQL in this lab matters. It keeps the application report, the case status, and the related recall records connected in one database. The application can read the details it needs, and a single transaction keeps the JSON workflow state and the operational case status in step.
+
+Oracle AI Database is the differentiator because it stores application JSON alongside relational recall data and lets the team work with both through SQL. Kevin gets a case record that shows who opened it, when it was opened, and the current scope in the application. Tim does not need to build a separate JSON store, data-conversion process, or synchronization job to make that possible.
 
 ## Learn More
 

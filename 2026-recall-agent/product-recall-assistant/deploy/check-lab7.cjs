@@ -1,0 +1,30 @@
+const fs = require('node:fs');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const root = path.resolve(__dirname, '..');
+const md = fs.readFileSync(path.join(root, 'secure-recall-agent/secure-recall-agent.md'), 'utf8');
+const deploy = fs.readFileSync(path.join(root, 'deploy/00-deploy-all.sql'), 'utf8');
+const original = fs.readFileSync(path.join(root, 'secure-recall-agent/files/01-owner-deepsec-policy.sql'), 'utf8');
+const grants = s => [...s.matchAll(/create or replace data grant[\s\S]*?;/g)].map(x => x[0].replace(/\s+/g, ' ').trim()).sort();
+assert.deepEqual(grants(md), grants(original), 'Preserve all 22 data grant definitions');
+assert.equal(grants(md).length, 22);
+assert.equal((md.match(/<copy>/g) || []).length, (md.match(/<\/copy>/g) || []).length);
+assert.equal((md.match(/^## Task /gm) || []).length, 4);
+assert(!md.includes('](files/'), 'All learner SQL must be inline');
+assert(!md.includes('create or replace package'), 'Support code belongs in deployment');
+for (const role of ['store_101', 'region_ne', 'lead']) {
+  assert(md.includes('create or replace data role recall_' + role + '_data_role;'));
+  assert(md.includes('grant data role recall_' + role + '_data_role to '));
+  assert(!deploy.includes('create or replace data role recall_' + role + '_data_role;'));
+}
+const support = deploy.split('prompt --- Lab 7 support: retrieval packages and secured responder ---')[1].split('prompt --- Final facilitator verification ---')[0];
+assert(support.includes('package recall_secure_api authid current_user'));
+assert(support.includes('grant execute on recall_secure_api to recall_end_user_login;'));
+assert(support.includes('"tools":[]'));
+assert(support.includes('"profile_name":"RECALL_AGENT_PROFILE"'));
+assert.equal((support.match(/:batch_id/g) || []).length, 6);
+assert(support.includes("'endUser' value :end_user"));
+assert(support.includes('using current_end_user,'));
+assert(!support.includes('grant select'), 'Do not add unrestricted table grants');
+for (const name of ['sandbox', 'tenancy']) JSON.parse(fs.readFileSync(path.join(root, 'workshops', name, 'manifest.json'), 'utf8'));
+console.log('PASS: Lab 7 policy preservation, copy blocks, assignments, support boundaries, bindings, and manifests');

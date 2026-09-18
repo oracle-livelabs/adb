@@ -1,61 +1,172 @@
-# Lab 7: Show Each Role Only What It Needs: Make the Recall Agent Role-Aware with Deep Data Security
+# Lab 7: Give Each User the Right Recall Scope with Deep Data Security
 
 ## Introduction
 
-Kevin wants the returns process to be secure without forcing store teams to understand security policy. A Store 101 user needs local instructions. A Northeast manager needs a regional view. A recall lead needs the full response. Kevin expects the same application to respect those differences automatically.
+Kevin wants store staff, regional managers, and the recall lead to use the same returns application. But a store employee should not see another store's customers or complaints. A regional manager needs a wider view, and the recall lead needs the company-wide picture.
 
-David puts authorization inside the retrieval path. Deep Data Security data roles filter stores, customers, complaints, and vectors before package functions assemble evidence. Shared component and supplier facts remain available where the work requires them. The browser and the prompt do not decide what a person can see.
+David keeps those access rules in Oracle AI Database, alongside the records and complaint vectors. The same rules limit ordinary queries and vector searches before information reaches the assistant. The application does not need a separate set of filters for each search method.
 
-Tim creates the roles, data grants, invoker-rights retrieval package, and owner-side agent bridge. He runs the same retrieval for each role so Kevin can see the security outcome in numbers and complaint evidence. The SQL explains the important boundary: each local user is still themselves; only their authorized evidence reaches the agent.
+Tim has prepared the code that gathers recall facts and sends them to the assistant. You will build the access rules, assign them to three users, and compare their results. The assistant does not decide what a user may see; it receives only the evidence the database permits.
 
-By the end of the lab, Store 101 sees 1 store, 12 units, and 5 customers; the Northeast role sees 24 stores, 453 units, and 120 customers; and the recall lead sees 120 stores, 2,400 units, and 600 customers.
-
-Estimated Time: 12 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 
-In this lab, you will:
+- Define store, regional, and company-wide access with data roles.
+- Apply those rules to related customers, shipments, complaints, and vectors.
+- Run identical queries as three users and compare the results.
+- Give the assistant each user's permitted evidence and check its answer.
 
-- Inspect local end users, data roles, and parent-to-child data grants.
-- Run the same vector similarity search as three business roles.
-- Confirm that unauthorized complaint chunks never enter retrieval.
-- Ask the same agent team for a role-aware recall summary.
-- Inspect the active end-user identity and data role.
+## Task 1: Define Who Can See Which Stores
 
-## Task 1: Inspect Security at the Source
+Kevin describes three responsibilities. David turns them into three data roles. Tim starts with the stores each role may see.
 
-Kevin expects security to follow the person, not a browser setting. David defines data roles and grants; Tim creates the policy chain.
+The workshop already includes local end users STORE_101_USER, REGION_NE_USER, and RECALL_LEAD_USER, using the workshop password. You will assign their data roles after defining the rules. They are database end users, not additional application schemas.
 
-1. Connect as `RECALL_OWNER` and run the policy definition below.
+1. Connect as **RECALL_OWNER**. Create the Store 101 data role.
 
     ```sql
     <copy>
-    whenever sqlerror exit sql.sqlcode rollback
-    set define off
-    set serveroutput on size unlimited
-    set feedback on
-
-    prompt ============================================================
-    prompt Product Recall Assistant - Lab 7 Deep Data Security Policy
-    prompt Connect as RECALL_OWNER.
-    prompt ============================================================
-
-    begin
-        if user != 'RECALL_OWNER' then
-            raise_application_error(-20042, 'Wrong user: connect as RECALL_OWNER.');
-        end if;
-    end;
-    /
-
     create or replace data role recall_store_101_data_role;
-    create or replace data role recall_region_ne_data_role;
-    create or replace data role recall_lead_data_role;
+    </copy>
+    ```
 
+2. Create the Northeast data role.
+
+    ```sql
+    <copy>
+    create or replace data role recall_region_ne_data_role;
+    </copy>
+    ```
+
+3. Create the recall lead data role.
+
+    ```sql
+    <copy>
+    create or replace data role recall_lead_data_role;
+    </copy>
+    ```
+
+4. Give each data role the prepared login role. It provides connection and approved package privileges, not unrestricted table access.
+
+    ```sql
+    <copy>
     grant recall_end_user_login to recall_store_101_data_role;
     grant recall_end_user_login to recall_region_ne_data_role;
     grant recall_end_user_login to recall_lead_data_role;
+    </copy>
+    ```
 
-    -- Shared reference data required by the converged investigation.
+5. Allow only Store 101.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_store_101_stores
+    as select on recall_owner.stores
+    where store_id = 101
+    to recall_store_101_data_role;
+    </copy>
+    ```
+
+6. Allow stores marked NORTHEAST in this workshop dataset.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_region_ne_stores
+    as select on recall_owner.stores
+    where region_code = 'NORTHEAST'
+    to recall_region_ne_data_role;
+    </copy>
+    ```
+
+7. Allow all stores for the recall lead. This grant has no row filter.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_lead_stores
+    as select on recall_owner.stores
+    to recall_lead_data_role;
+    </copy>
+    ```
+
+## Task 2: Apply the Rules to Related Records
+
+Hiding a store is not enough if its customers or complaints remain visible. David follows the relationships between the records. Tim makes the permitted stores determine the related records each user can read.
+
+Stay connected as **RECALL_OWNER**. Run each block separately.
+
+1. Limit customers to those whose home store is visible.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_store_customers
+    as select on recall_owner.customers
+    where home_store_id in (select store_id from recall_owner.stores)
+    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
+
+2. Limit purchases to visible stores.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_store_purchases
+    as select on recall_owner.purchases
+    where store_id in (select store_id from recall_owner.stores)
+    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
+
+3. Limit shipment items to visible stores. This also limits the units counted for each user.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_store_shipment_items
+    as select on recall_owner.shipment_items
+    where store_id in (select store_id from recall_owner.stores)
+    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
+
+4. Allow shipment headers only when a related shipment item is visible.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_store_shipments
+    as select on recall_owner.shipments
+    where shipment_id in (
+        select shipment_id from recall_owner.shipment_items
+    )
+    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
+
+5. Limit complaints to visible customers.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_customer_complaints
+    as select on recall_owner.complaints
+    where customer_id in (select customer_id from recall_owner.customers)
+    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
+
+6. Limit searchable chunks to visible complaints. A hidden complaint must not reappear through vector search.
+
+    ```sql
+    <copy>
+    create or replace data grant recall_owner.dg_complaint_chunks
+    as select on recall_owner.complaint_chunks
+    where complaint_id in (select complaint_id from recall_owner.complaints)
+    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
+
+7. Share product, batch, response instructions, search question, and response-center reference records. These facts help every role understand the recall without granting customer access.
+
+    ```sql
+    <copy>
     create or replace data grant recall_owner.dg_products_read
     as select on recall_owner.products
     to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
@@ -75,7 +186,13 @@ Kevin expects security to follow the person, not a browser setting. David define
     create or replace data grant recall_owner.dg_response_centers_read
     as select on recall_owner.response_centers
     to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
+    </copy>
+    ```
 
+8. Share component and supplier reference records. These describe the recalled product and support Lab 8 supply-chain queries.
+
+    ```sql
+    <copy>
     create or replace data grant recall_owner.dg_suppliers_read
     as select on recall_owner.suppliers
     to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
@@ -107,538 +224,207 @@ Kevin expects security to follow the person, not a browser setting. David define
     create or replace data grant recall_owner.dg_supplier_site_edges_read
     as select on recall_owner.supplier_site_edges
     to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    -- Store visibility is the root authorization decision.
-    create or replace data grant recall_owner.dg_store_101_stores
-    as select on recall_owner.stores
-    where store_id = 101
-    to recall_store_101_data_role;
-
-    create or replace data grant recall_owner.dg_region_ne_stores
-    as select on recall_owner.stores
-    where region_code = 'NORTHEAST'
-    to recall_region_ne_data_role;
-
-    create or replace data grant recall_owner.dg_lead_stores
-    as select on recall_owner.stores
-    to recall_lead_data_role;
-
-    -- Customer and purchase access follows the visible store set.
-    create or replace data grant recall_owner.dg_store_customers
-    as select on recall_owner.customers
-    where home_store_id in (select store_id from recall_owner.stores)
-    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    create or replace data grant recall_owner.dg_store_purchases
-    as select on recall_owner.purchases
-    where store_id in (select store_id from recall_owner.stores)
-    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    -- Shipment and spatial impact follow the same authorized stores.
-    create or replace data grant recall_owner.dg_store_shipment_items
-    as select on recall_owner.shipment_items
-    where store_id in (select store_id from recall_owner.stores)
-    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    create or replace data grant recall_owner.dg_store_shipments
-    as select on recall_owner.shipments
-    where shipment_id in (
-        select shipment_id from recall_owner.shipment_items
-    )
-    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    -- Complaint access follows the authorized customer; vector chunks follow
-    -- the authorized parent complaint, matching the source-article pattern.
-    create or replace data grant recall_owner.dg_customer_complaints
-    as select on recall_owner.complaints
-    where customer_id in (select customer_id from recall_owner.customers)
-    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    create or replace data grant recall_owner.dg_complaint_chunks
-    as select on recall_owner.complaint_chunks
-    where complaint_id in (select complaint_id from recall_owner.complaints)
-    to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
-
-    create or replace package recall_agent_bridge authid definer as
-        function summarize_context(p_context in clob) return clob;
-        function ask_context(
-            p_context  in clob,
-            p_question in varchar2
-        ) return clob;
-    end recall_agent_bridge;
-    /
-
-    create or replace package body recall_agent_bridge as
-        function run_agent(
-            p_context  in clob,
-            p_question in varchar2
-        ) return clob is
-            l_conversation_id varchar2(128);
-            l_params          clob;
-            l_prompt          clob;
-            l_answer          clob;
-        begin
-            -- The application connection is an end-user DDS session. Oracle only
-            -- permits SET_PROFILE when the profile owner is the session user, so
-            -- do not mutate the end-user session. RECALL_SECURED_RESPONDER keeps
-            -- the owner-owned profile binding in its registered agent metadata.
-            l_conversation_id := dbms_cloud_ai.create_conversation(
-                attributes => q'~{
-                  "title":"React Product Recall Assistant",
-                  "retention_days":1,
-                  "conversation_length":5
-                }~'
-            );
-
-            select json_object(
-                       'conversation_id' value l_conversation_id returning clob
-                   )
-            into l_params;
-
-            l_prompt :=
-                to_clob('Answer the user question using only the four authorized evidence sections in this request: product JSON, DDS-filtered vector and relational evidence, DDS-filtered spatial evidence, and graph evidence. ') ||
-                to_clob('Use graphEvidence for component, supplier, store, and customer relationship patterns and spatialEvidence for regions, distances, and response centers. ') ||
-                to_clob('Do not infer hidden rows or company totals. Question: ') ||
-                to_clob(substr(p_question, 1, 1000)) ||
-                to_clob('. Authorized converged evidence: ') ||
-                p_context;
-
-            l_answer := dbms_cloud_ai_agent.run_team(
-                team_name   => 'RECALL_SECURED_TEAM',
-                user_prompt => l_prompt,
-                params      => l_params
-            );
-
-            return l_answer;
-        end run_agent;
-
-        function summarize_context(p_context in clob) return clob is
-        begin
-            return run_agent(
-                p_context,
-                'Summarize the authorized recall scope and the first response action.'
-            );
-        end summarize_context;
-
-        function ask_context(
-            p_context  in clob,
-            p_question in varchar2
-        ) return clob is
-        begin
-            return run_agent(p_context, p_question);
-        end ask_context;
-    end recall_agent_bridge;
-    /
-
-
-    show errors package body recall_agent_bridge
-
-    begin
-        execute immediate q'~
-            create table recall_authorized_requests (
-                request_id     number generated always as identity primary key,
-                end_user_name  varchar2(128) not null,
-                batch_id       varchar2(20) not null,
-                context_json   json not null,
-                created_at     timestamp default systimestamp not null
-            )~';
-    exception
-        when others then
-            if sqlcode != -955 then raise; end if;
-    end;
-    /
-
-    create or replace package recall_context_sink authid definer as
-        function store_context(
-            p_batch_id in varchar2,
-            p_context  in clob
-        ) return number;
-    end recall_context_sink;
-    /
-
-    create or replace package body recall_context_sink as
-        function store_context(
-            p_batch_id in varchar2,
-            p_context  in clob
-        ) return number is
-            l_request_id number;
-            l_end_user   varchar2(128);
-        begin
-            select json_value(p_context, '$.endUser' returning varchar2(128))
-            into l_end_user;
-
-            if l_end_user is null then
-                raise_application_error(-20044, 'Captured context lacks an end user.');
-            end if;
-
-            insert into recall_authorized_requests(
-                end_user_name, batch_id, context_json
-            ) values (
-                l_end_user, upper(trim(p_batch_id)), json(p_context)
-            )
-            returning request_id into l_request_id;
-
-            commit;
-            return l_request_id;
-        end store_context;
-    end recall_context_sink;
-    /
-
-    show errors package body recall_context_sink
-
-    create or replace package recall_secure_api authid current_user as
-        function current_end_user return varchar2;
-        function get_secured_context(p_batch_id in varchar2) return clob;
-        function capture_secured_context(p_batch_id in varchar2) return number;
-    end recall_secure_api;
-    /
-
-    create or replace package body recall_secure_api as
-        function current_end_user return varchar2 is
-            l_user varchar2(128);
-        begin
-            select json_value(
-                       ora_end_user_context,
-                       '$.USERNAME' returning varchar2(128)
-                   )
-            into l_user;
-            return l_user;
-        end current_end_user;
-
-        function get_secured_context(p_batch_id in varchar2) return clob is
-            l_result clob;
-        begin
-            select json_object(
-                       'endUser' value current_end_user,
-                       'batchId' value upper(trim(p_batch_id)),
-                       'affectedStoreCount' value (
-                           select count(distinct si.store_id)
-                           from shipments sh
-                           join shipment_items si on si.shipment_id = sh.shipment_id
-                           where sh.batch_id = upper(trim(p_batch_id))
-                       ),
-                       'unitsSent' value (
-                           select coalesce(sum(si.units_sent), 0)
-                           from shipments sh
-                           join shipment_items si on si.shipment_id = sh.shipment_id
-                           where sh.batch_id = upper(trim(p_batch_id))
-                       ),
-                       'customerExposureCount' value (
-                           select count(distinct p.customer_id)
-                           from purchases p
-                           where p.batch_id = upper(trim(p_batch_id))
-                       ),
-                       'componentBatchCount' value (
-                           select count(*)
-                           from batch_components bc
-                           where bc.batch_id = upper(trim(p_batch_id))
-                       ),
-                       'supplierSiteCount' value (
-                           select count(distinct cb.supplier_site_id)
-                           from batch_components bc
-                           join component_batches cb
-                                on cb.component_batch_id = bc.component_batch_id
-                           where bc.batch_id = upper(trim(p_batch_id))
-                       ),
-                       'semanticComplaints' value (
-                           select json_arrayagg(
-                                      json_object(
-                                          'complaintId' value x.complaint_id,
-                                          'text' value x.chunk_text,
-                                          'distance' value round(x.distance, 4)
-                                      ) order by x.distance returning clob
-                                  )
-                           from (
-                               select cc.complaint_id,
-                                      cc.chunk_text,
-                                      vector_distance(
-                                          cc.embedding, q.query_vector, cosine
-                                      ) as distance
-                               from complaint_chunks cc
-                               cross join recall_queries q
-                               where q.query_key = 'HEAT_ODOR'
-                               and vector_distance(
-                                       cc.embedding, q.query_vector, cosine
-                                   ) < 0.70
-                               order by distance
-                               fetch first 5 rows only
-                           ) x
-                       ) format json,
-                       'firstAction' value (
-                           select action_text from recall_actions where priority_no = 1
-                       ),
-                       'customerContactAuthorized' value 'false' format json
-                       returning clob
-                   )
-            into l_result;
-            return l_result;
-        end get_secured_context;
-
-        function capture_secured_context(p_batch_id in varchar2) return number is
-            l_context clob;
-        begin
-            l_context := get_secured_context(p_batch_id);
-            return recall_context_sink.store_context(p_batch_id, l_context);
-        end capture_secured_context;
-    end recall_secure_api;
-    /
-
-    show errors package body recall_secure_api
-
-    grant execute on recall_secure_api to recall_end_user_login;
-
-    -- This responder has no retrieval tool. The invoker-rights package completes
-    -- secured retrieval first, then passes only the materialized JSON to the team.
-    begin
-        dbms_cloud_ai_agent.drop_team('RECALL_SECURED_TEAM', force => true);
-        dbms_cloud_ai_agent.drop_task('SUMMARIZE_SECURED_RECALL_TASK', force => true);
-        dbms_cloud_ai_agent.drop_agent('RECALL_SECURED_RESPONDER', force => true);
-
-        dbms_cloud_ai_agent.create_agent(
-            agent_name => 'RECALL_SECURED_RESPONDER',
-            attributes => q'~{
-              "profile_name":"RECALL_AGENT_PROFILE",
-              "role":"You are a role-aware product recall investigator. Summarize only the pre-authorized recall JSON and vector evidence supplied in the request. Never infer or add stores, customers, complaints, counts, or totals absent from that evidence.",
-              "enable_human_tool":false
-            }~'
-        );
-
-        dbms_cloud_ai_agent.create_task(
-            task_name  => 'SUMMARIZE_SECURED_RECALL_TASK',
-            attributes => q'~{
-              "instruction":"Summarize only the authorized JSON and vector evidence in this request: {query}. State the end user, visible store count, visible units, visible customer count, shared component batch count, shared supplier site count, visible complaint IDs, and first action without expanding beyond the active role scope.",
-              "tools":[],
-              "enable_human_tool":false
-            }~'
-        );
-
-        dbms_cloud_ai_agent.create_team(
-            team_name  => 'RECALL_SECURED_TEAM',
-            attributes => q'~{
-              "agents":[{"name":"RECALL_SECURED_RESPONDER","task":"SUMMARIZE_SECURED_RECALL_TASK"}],
-              "process":"sequential"
-            }~'
-        );
-    end;
-    /
-
-    prompt --- Verify owner data grants used in Task 1 ---
-
-    select grant_name, grantee, object_owner, object_name, predicate
-    from   user_data_grants
-    where  grant_name in (
-               'DG_STORE_101_STORES',
-               'DG_REGION_NE_STORES',
-               'DG_CUSTOMER_COMPLAINTS',
-               'DG_COMPLAINT_CHUNKS',
-               'DG_COMPONENT_BATCHES_READ',
-               'DG_SUPPLIER_SITES_READ'
-           )
-    order  by grant_name, grantee;
-
-    prompt Deep Data Security policy and secured agent wrapper are ready.
     </copy>
     ```
 
-    The script creates or refreshes the three data roles, 60 owner data-grant assignments, secured packages, and `RECALL_SECURED_TEAM`. The shared response-center grant supports the Lab 8 role-filtered Spatial evidence without exposing additional customer or store rows.
-
-2. Inspect the owner-created grants that form the protected retrieval chain.
+9. Switch to **ADMIN** and assign one data role to each end user.
 
     ```sql
     <copy>
-    select grant_name, grantee, object_owner, object_name, predicate
-    from   user_data_grants
-    where  grant_name in (
-               'DG_STORE_101_STORES',
-               'DG_REGION_NE_STORES',
-               'DG_CUSTOMER_COMPLAINTS',
-               'DG_COMPLAINT_CHUNKS',
-               'DG_COMPONENT_BATCHES_READ',
-               'DG_SUPPLIER_SITES_READ'
-           )
-    order  by grant_name, grantee;
+    grant data role recall_store_101_data_role to store_101_user;
+    grant data role recall_region_ne_data_role to region_ne_user;
+    grant data role recall_lead_data_role to recall_lead_user;
     </copy>
     ```
 
-    The query returns 14 rows because shared grants have one row for each data-role grantee.
-
-    The role-scoped authorization path is:
-
-    ```text
-    visible stores -> visible customers -> visible complaints -> visible vectors
-    ```
-
-    `DG_COMPLAINT_CHUNKS` authorizes a chunk only when its parent complaint is visible. Similarity search cannot rank an unauthorized vector. Component and supplier-site grants apply to all three roles because they describe the recalled batch and do not expose customer identity.
-
-3. Connect as `ADMIN`. The assignment view is ADMIN-only, so run the following query in that same session:
+10. Verify the assignments. Expect three rows, one matching role per user.
 
     ```sql
     <copy>
     select grantee, data_role
     from   dba_data_role_grants
-    where  grantee in (
-               'STORE_101_USER',
-               'REGION_NE_USER',
-               'RECALL_LEAD_USER'
-           )
+    where  grantee in ('STORE_101_USER', 'REGION_NE_USER', 'RECALL_LEAD_USER')
     order  by grantee;
     </copy>
     ```
 
-    `DBA_DATA_ROLE_GRANTS` is an administrative view; do not run it as `RECALL_OWNER`. Disconnect `ADMIN` after this check.
+## Task 3: Test the Same Queries as Three Users
 
-4. Reconnect as `RECALL_OWNER` and inspect the secured responder team.
+Kevin wants proof that changing the signed-in user changes the result without changing the application query. Tim tests database results before asking the assistant anything.
+
+Use a direct database connection, such as SQLcl or SQL Developer desktop, for these local end users. Use the same database connection details as RECALL_OWNER, with the end-user name and workshop password. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
+
+1. Connect as **STORE_101_USER** and confirm the end-user identity.
 
     ```sql
     <copy>
-    select agent_team_name, status
-    from   user_ai_agent_teams
-    where  agent_team_name = 'RECALL_SECURED_TEAM';
+    select json_value(ora_end_user_context, '$.USERNAME'
+                      returning varchar2(128)) as end_user;
     </copy>
     ```
 
-    `RECALL_SECURE_API` uses invoker rights to materialize the secured JSON and vector evidence. `RECALL_CONTEXT_SINK` captures that PII-safe document. The trusted `RECALL_AGENT_BRIDGE` passes only the captured JSON to `RECALL_SECURED_TEAM`. The responder has no SQL or retrieval tool. Lab 8 adds product JSON, DDS-filtered spatial impact, and a compact Graph trace summary before its application bridge makes the same handoff.
+    Expect STORE_101_USER. If it is null or different, correct the connection before continuing.
 
-    The privilege and data flow is:
-
-    ```text
-    local end user
-        -> ORA_END_USER_CONTEXT and assigned Deep Data Security data role
-        -> RECALL_SECURE_API AUTHID CURRENT_USER
-        -> data grants filter stores, customers, complaints, and vectors
-        -> PII-safe authorized JSON and vector evidence
-        -> RECALL_AGENT_BRIDGE AUTHID DEFINER
-        -> DBMS_CLOUD_AI_AGENT.RUN_TEAM('RECALL_SECURED_TEAM', ...)
-    ```
-
-    The `EXECUTE` privilege on `DBMS_CLOUD_AI_AGENT` belongs to the owner-side bridge owner. The local user receives `EXECUTE` only on the approved application/security packages. This is why the local user can request an answer without being able to query arbitrary tables or expand the JSON scope.
-
-## Task 2: Compare Store and Regional Retrieval
-
-Kevin wants the same question to produce the right local or regional scope. David puts filtering before retrieval; Tim compares the database results.
-
-1. Connect as `STORE_101_USER` and run the queries in this task.
-
-    Confirm the displayed end-user identity and expected data role; a saved connection name alone does not prove which identity it uses.
-
-    Confirm the session identity and active role:
-
-    ```text
-    End user: STORE_101_USER
-    Data role: RECALL_STORE_101_DATA_ROLE
-    ```
-
-    The vector result contains the closest authorized complaint match, `9001`, for the store role. The secured context reports one store, 12 units, and five potentially exposed customers. The secured context uses the top-ranked results below a `0.70` cosine-distance ceiling so weakly related generated observations do not appear.
-
-2. Run the identical script as `REGION_NE_USER`.
-
-    The SQL text and query vector do not change. Deep Data Security expands the visible set according to `RECALL_REGION_NE_DATA_ROLE`.
-
-    The result contains complaints `9001`, `9002`, and `9006`. The secured context reports 24 stores, 453 units, and 120 potentially exposed customers.
-
-3. Compare why complaint `9003` is absent. Its customer belongs to the Manhattan store, outside the Northeast grant. The database hides the complaint and its vector before `VECTOR_DISTANCE` ranks candidates.
-
-## Task 3: Run the Same Select AI Agent for All Three Roles
-
-Kevin wants a governed answer for every job. David passes only authorized context to the agent; Tim runs the same team for all three roles.
-
-1. Connect as `RECALL_LEAD_USER` and rerun the queries in Task 2.
-
-    The vector result now contains complaints `9001`, `9002`, `9006`, `9003`, and `9007`. The context reports 120 stores, 2,400 units, and 600 customers.
-
-2. While connected as each end user, capture the secured context through the prepared application boundary.
-
-    Each call stores the JSON already filtered by the active end-user security context. It contains no customer names or email addresses.
-
-3. Reconnect as `RECALL_OWNER` and run [`05-run-secured-agent.sql`](files/05-run-secured-agent.sql).
-
-    This is the role-aware Select AI Agent demonstration. The script invokes `RECALL_SECURED_TEAM` three times through `RECALL_AGENT_BRIDGE.SUMMARIZE_CONTEXT`. It processes the latest store, regional, and recall-lead contexts.
+2. Check the active data role.
 
     ```sql
     <copy>
-    l_answer := dbms_cloud_ai_agent.run_team(
-        team_name   => 'RECALL_SECURED_TEAM',
-        user_prompt => l_prompt,
-        params      => l_params
-    );
-    </copy>
-    ```
-
-    The owner-side service retains the OCI resource principal and the direct agent-framework privilege. It does not rerun retrieval or expand the captured scope. The same team, task, and prompt process all three requests. Only the database-authorized JSON changes. This owner-run script demonstrates the JSON/vector handoff after each local user captured context; Lab 8 performs the converged JSON/vector/Spatial/Graph handoff on demand from the application session.
-
-4. Compare the role-aware checkpoints.
-
-    | End user | Visible stores | Units | Customers | Semantic complaints |
-    |---|---:|---:|---:|---|
-    | `STORE_101_USER` | 1 | 12 | 5 | `9001` |
-    | `REGION_NE_USER` | 24 | 453 | 120 | `9001`, `9002`, `9006` |
-    | `RECALL_LEAD_USER` | 120 | 2,400 | 600 | `9001`, `9002`, `9006`, `9003`, `9007` |
-
-    Wording can vary because the model generates prose. Counts and complaint IDs must stay within the active role scope.
-
-5. Match each generated answer to its security context.
-
-    - The `STORE_101_USER` answer must name one store, 12 units, five customers, and complaint `9001` only.
-    - The `REGION_NE_USER` answer must name 24 stores, 453 units, 120 customers, and complaints `9001`, `9002`, and `9006` only.
-    - The `RECALL_LEAD_USER` answer must name 120 stores, 2,400 units, 600 customers, and complaints `9001`, `9002`, `9006`, `9003`, and `9007`.
-
-    This is the central before-and-after result. One Select AI Agent receives three authorized contexts and produces three appropriately scoped answers.
-
-    The model is not the authorization layer. Deep Data Security has already removed unauthorized rows before `RUN_TEAM` receives the JSON. The model may vary its wording, but it cannot recover a complaint, store, customer, vector, or count that was absent from the authorized input.
-
-## Task 4: Verify the Guardrail and Context
-
-Kevin needs an audit trail and a visible boundary. David defines what to inspect; Tim verifies the secure context and guardrails.
-
-1. Run these queries as any local end user.
-
-    ```sql
-    <copy>
-    select json_value(
-               ora_end_user_context,
-               '$.USERNAME' returning varchar2(128)
-           ) as end_user
-    ;
-
     select role_name
     from   v$end_user_data_role
     order  by role_name;
     </copy>
     ```
 
-    Direct login establishes the end-user security context. The business identity owns no schema and receives no unrestricted table grants.
+    Expect RECALL_STORE_101_DATA_ROLE.
 
-2. Explain the security result:
+3. Count the affected stores and units visible to this user.
 
-    - The database role-filters store, customer, purchase, and shipment rows.
-    - JSON complaint records follow the authorized customer.
-    - Vector chunks follow the authorized complaint.
-    - Lab 8 spatial impact counts use only visible stores in the active end-user session.
-    - Component and supplier-site counts remain shared recall evidence.
-    - The owner-managed agent receives only the captured, role-filtered JSON and vector evidence in this lab; Lab 8 adds the same role-filtered Spatial and Graph sections.
-    - The same database policy applies before data reaches the model.
+    ```sql
+    <copy>
+    select count(distinct si.store_id) as affected_stores,
+           coalesce(sum(si.units_sent), 0) as units_sent
+    from   shipments sh
+    join   shipment_items si on si.shipment_id = sh.shipment_id
+    where  sh.batch_id = 'B-482';
+    </copy>
+    ```
 
-    In other words, the local user calls the approved agent-facing package, not an unrestricted model endpoint. The package executes retrieval as `AUTHID CURRENT_USER`, and the definer-rights bridge uses the owner’s agent privilege only after the DDS-filtered document has been created. Definer's rights provide controlled access to the configured AI service; they do not bypass the data grants because retrieval has already run in the end-user context.
+    Expect **1 store and 12 units**.
 
-3. A production application should propagate the end-user context with a supported Oracle client driver. This lab uses direct login to keep the identity flow visible.
+4. Count the potentially exposed customers visible to this user.
 
-You have completed the Deep Data Security policy. Lab 8 deploys the final React/Node application and makes all three authorized experiences visible through one sign-in page.
+    ```sql
+    <copy>
+    select count(distinct customer_id) as customers
+    from   purchases
+    where  batch_id = 'B-482';
+    </copy>
+    ```
 
-## Troubleshooting
+    Expect **5 customers**.
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| End-user login fails | The prepared login role or data-role grant is missing | Ask the facilitator to verify the backend deployment. |
-| The script reports `ORA-20045` | The connection label points to a schema user instead of a local end user | Recreate the connection with the actual `STORE_101_USER`, `REGION_NE_USER`, or `RECALL_LEAD_USER` username. |
-| Store preflight reports more than one chunk | The session is not using the prepared policy or has broad visibility | Disconnect and create a fresh end-user session, then ask the facilitator to verify the backend deployment. |
-| `USER_DATA_GRANTS` returns no rows | The prepared owner policy is missing | Ask the facilitator to verify the backend deployment. |
-| `ORA_END_USER_CONTEXT` returns null | The session uses a schema user | Reconnect with the Lab 7 end-user connection. |
-| Vector query returns no rows | The prepared parent or query-vector grant is missing | Ask the facilitator to verify the backend deployment. |
-| `RECALL_OWNER` cannot query `DBA_DATA_ROLE_GRANTS` | The role-assignment view is ADMIN-only | Ask the facilitator to run the Task 1 assignment query as `ADMIN`. |
-| Store user sees complaint `9003` | The store role has a broad grant | Stop the lab. Inspect `USER_DATA_GRANTS` as `RECALL_OWNER` or `DBA_DATA_GRANTS` as `ADMIN`. |
-| Captured context shows company totals for every user | `RECALL_SECURE_API` uses definer rights | Recreate it with `AUTHID CURRENT_USER`. |
-| Agent call fails in an end-user session | Deep Data Security suppresses the owner OCI principal | Capture as the end user, then run `05-run-secured-agent.sql` as owner. |
-| Model call fails | The profile, region, or IAM policy blocks access | Verify Lab 5 before changing the security policy. |
+5. Search for the strongest permitted complaint matches. The search uses the vector from Lab 4; access rules determine which complaint chunks are available to search.
+
+    ```sql
+    <copy>
+    select cc.complaint_id,
+           round(vector_distance(cc.embedding, q.query_vector, cosine), 4) as distance,
+           cc.chunk_text
+    from   complaint_chunks cc
+    cross  join recall_queries q
+    where  q.query_key = 'HEAT_ODOR'
+    and    vector_distance(cc.embedding, q.query_vector, cosine) < 0.70
+    order  by distance
+    fetch first 5 rows only;
+    </copy>
+    ```
+
+    Expect complaint 9001. The distance ceiling excludes weak matches.
+
+6. Test a specific complaint outside Store 101's scope.
+
+    ```sql
+    <copy>
+    select complaint_id, chunk_text
+    from   complaint_chunks
+    where  complaint_id = 9003;
+    </copy>
+    ```
+
+    Expect **no rows**. This is a successful security check, not missing seed data.
+
+7. Reconnect as **REGION_NE_USER** and repeat Steps 1–6 without changing the SQL. Expect the Northeast data role, **24 stores, 453 units, and 120 customers**, with semantic matches 9001, 9002, and 9006. Complaint 9003 remains outside this workshop region's scope.
+
+8. Reconnect as **RECALL_LEAD_USER** and repeat Steps 1–6. Expect the lead data role, **120 stores, 2,400 units, and 600 customers**. Semantic matches include 9001, 9002, 9006, 9003, and 9007. Step 6 now returns complaint 9003.
+
+## Task 4: Give the Assistant Only Permitted Evidence
+
+Kevin wants the assistant to explain those same results. The prepared RECALL_SECURE_API package gathers facts using the caller's data roles. Its capture function stores that filtered document for an owner-side service to summarize. The service does not repeat the queries with wider access.
+
+RECALL_AGENT_BRIDGE and RECALL_SECURED_TEAM already exist. The team has no retrieval tools: it summarizes the supplied evidence. These prepared components also support the application in Lab 8.
+
+1. Connect as **STORE_101_USER**. Preview the document the assistant will receive.
+
+    ```sql
+    <copy>
+    select json_serialize(
+               recall_secure_api.get_secured_context('B-482')
+               returning clob pretty
+           ) as authorized_evidence;
+    </copy>
+    ```
+
+    Open the CLOB value to read the full JSON. Compare endUser, affectedStoreCount, unitsSent, customerExposureCount, and semanticComplaints with Task 3. Customer names and email fields are excluded; complaint text still needs the same access protection as its source records.
+
+2. Capture this user's evidence. Run this block as a script. Enable DBMS Output for the connection to see the request ID.
+
+    ```sql
+    <copy>
+    declare
+        l_request_id number;
+    begin
+        l_request_id := recall_secure_api.capture_secured_context('B-482');
+        dbms_output.put_line('Captured request ID: ' || l_request_id);
+    end;
+    /
+    </copy>
+    ```
+
+    This stores and commits a snapshot; it does not change the recall case. Run capture as the end user, not RECALL_OWNER.
+
+3. Repeat Steps 1–2 as **REGION_NE_USER**, then as **RECALL_LEAD_USER**. Each login produces a separate snapshot with its own permitted counts and complaints.
+
+4. Reconnect as **RECALL_OWNER** and confirm that all three users captured evidence.
+
+    ```sql
+    <copy>
+    select end_user_name, max(request_id) as latest_request_id
+    from   recall_authorized_requests
+    where  batch_id = 'B-482'
+    and    end_user_name in ('STORE_101_USER', 'REGION_NE_USER', 'RECALL_LEAD_USER')
+    group  by end_user_name
+    order  by end_user_name;
+    </copy>
+    ```
+
+    Expect three rows. Capture any missing user's evidence before continuing.
+
+5. Ask the assistant to summarize the latest Store 101 snapshot.
+
+    ```sql
+    <copy>
+    select recall_agent_bridge.summarize_context(
+               json_serialize(context_json returning clob)
+           ) as agent_answer
+    from   recall_authorized_requests
+    where  request_id = (
+               select max(request_id)
+               from   recall_authorized_requests
+               where  batch_id = 'B-482'
+               and    end_user_name = 'STORE_101_USER'
+           );
+    </copy>
+    ```
+
+    The response appears in **AGENT_ANSWER**. Open the CLOB cell for the full answer. This sends the captured evidence to the configured OCI Generative AI service.
+
+6. Run Step 5 twice more, changing only STORE_101_USER to REGION_NE_USER, then RECALL_LEAD_USER. Compare the answers with these database checkpoints, not an exact sentence.
+
+    | End user | Stores | Units | Customers | Semantic complaint IDs |
+    |---|---:|---:|---:|---|
+    | STORE_101_USER | 1 | 12 | 5 | 9001 |
+    | REGION_NE_USER | 24 | 453 | 120 | 9001, 9002, 9006 |
+    | RECALL_LEAD_USER | 120 | 2,400 | 600 | 9001, 9002, 9006, 9003, 9007 |
+
+    All roles share 25 component batches and 25 supplier sites. The first response remains quarantine and stop sales; customer contact is not yet authorized. Reject answers that invent facts or expand beyond the supplied evidence. Access filtering does not eliminate model errors.
+
+## Conclusion
+
+You built the rules that let one returns application serve three responsibilities. The same SQL returned different store, unit, customer, and complaint results because the signed-in users had different data roles.
+
+For Kevin, the application can answer local, regional, and company-wide questions without exposing every record to every user. For David, Oracle AI Database keeps access rules with both business records and complaint vectors. There is no separate vector store requiring another copy of those rules. Tim retrieves permitted evidence before passing it to the assistant; a prompt is not a substitute for database authorization.
+
+Lab 8 uses these packages and data roles in the Recall Command Center.
 
 ## Learn More
 

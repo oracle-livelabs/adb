@@ -1,14 +1,14 @@
-# Lab 8: Turn Evidence into Coordinated Action: Deploy the Role-Aware React Recall Command Center
+# Lab 8: Run Secure Returns from One React Application
 
 ## Introduction
 
-Kevin now sees the end result he asked for: one returns-response application that brings evidence and action together without asking business users to understand JSON, spatial indexes, graph paths, vectors, agent tools, or security grants. He wants to ask a question, review the authorized scope, and decide the next action.
+Kevin now sees the application he asked for: one place for the returns team to review the B-482 scope, ask questions, and decide what to do next. Business users do not need to understand JSON, Spatial indexes, graph paths, vectors, agent tools, or security grants.
 
-David's final design joins the earlier components without weakening their boundaries. The signed-in database user drives Deep Data Security filtering. The application receives product JSON, vector-ranked complaints, spatial impact, and graph evidence already limited to that identity. A definer-rights bridge can call the agent only after the authorized document is assembled.
+David combines the earlier database components without weakening their limits. The signed-in database user drives Deep Data Security filtering. The application receives product JSON, similar complaints, location impact, and graph results already limited to that user. An owner-side bridge calls the assistant only after the authorized document is built.
 
-Tim prepares the React/Node database bridge, configures the application, and verifies the three roles. He shows how the command center requests product context, secured stores, graph paths, vector evidence, and agent answers through approved packages. The implementation stays technical, but Kevin's outcome stays clear: one dependable returns workflow rather than eight disconnected demonstrations.
+Tim prepares the React and Node database bridge, configures the application, and verifies the three roles. The application requests product details, authorized stores, graph paths, similar complaints, and assistant answers through approved packages. Kevin gets one returns workflow rather than eight disconnected demonstrations.
 
-By the end of the lab, Kevin can compare the Store 101, Northeast, and recall-lead views in one command center. Each person receives a different authorized answer to the same B-482 question, grounded in JSON, Vector, Spatial, Graph, and governed agent evidence.
+By the end of the lab, Kevin can compare the Store 101, Northeast, and recall-lead views in one application. Each person receives a different authorized answer to the same B-482 question, based on JSON, Vector Search, Spatial, SQL Property Graph, and Select AI Agent results.
 
 Estimated Time: 22 minutes
 
@@ -31,9 +31,9 @@ In this lab, you will:
 - Node.js 20 or later and npm are installed on the lab workstation.
 - The workstation can connect to the Autonomous Database service.
 
-## Task 1: Prepare the Database Bridge
+## Task 1: Prepare the Database Connection for the Application
 
-Kevin needs the application to call approved boundaries, not internal tables. David separates the user-session retrieval and owner-side agent handoff; Tim prepares the bridge.
+Kevin needs the application to call approved packages, not internal tables. David separates user-session retrieval from the owner-side assistant call; Tim prepares the bridge.
 
 1. Start with the prepared database bridge.
 
@@ -141,7 +141,7 @@ Kevin needs a usable returns application. David keeps connection details outside
 
     **Read this as a security demonstration:** the user does not receive a copy of the owner’s privileges. The user calls the approved package, DDS applies the user’s data grants, and only the resulting combined document crosses the definer-rights boundary to `RUN_TEAM`. A store user and a recall lead execute the same application code and same agent team; their answers differ because the database supplied different authorized JSON, vector, Spatial, and downstream Graph evidence.
 
-## Task 3: Run or Deploy the React Application
+## Task 3: Run the React Application
 
 Kevin needs a working command center that turns approved evidence into clear next actions. David defines that experience; Tim starts or deploys it.
 
@@ -170,7 +170,7 @@ Kevin needs a working command center that turns approved evidence into clear nex
 
 4. To deploy on an application host, copy the `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in its environment, run `npm ci`, `npm run build`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
 
-## Task 4: Compare the Three Deep Data Security Users
+## Task 4: Compare the Three User Views
 
 Kevin checks whether the same application respects each job. David relies on the signed-in identity; Tim compares the three results.
 
@@ -223,9 +223,9 @@ Kevin checks whether the same application respects each job. David relies on the
 
 4. Compare the experience with the database session, not the browser selection. The Node API reads the active end-user identity from `ORA_END_USER_CONTEXT` after login. The same application code and same SQL package calls produce different results because the database applies different data grants.
 
-## Task 5: Ask the Secured Select AI Agent
+## Task 5: Ask the Assistant
 
-Kevin asks the final business question. David assembles only authorized JSON, vector, Spatial, and Graph evidence; Tim sends that document through the governed agent.
+Kevin asks the final business question. David assembles only the JSON, Vector Search, Spatial, and SQL Property Graph results that the user may see; Tim sends that document to the assistant.
 
 1. While signed in as each persona, ask a question from the chat panel:
 
@@ -254,23 +254,13 @@ Kevin asks the final business question. David assembles only authorized JSON, ve
 
 5. Sign out at the end of the test. The Node server closes the held database session and removes the browser session cookie.
 
-You have completed the Product Recall Assistant. The React/Node application now demonstrates converged recall evidence, database-enforced authorization, and live Select AI Agent answers.
+You have completed the Product Recall Assistant. The React and Node application shows database-enforced user access and live Select AI Agent answers.
 
-## Troubleshooting
+## Conclusion
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| The browser is blank or only shows a loading message | The consolidated server is not running | Run `npm run dev:all` and open `http://localhost:3001`. |
-| Port `3001` is already in use | An earlier workshop process is still running | Stop the earlier process, then run `npm run dev:all` again. |
-| `NJS-530` or host cannot be resolved | The value is an ORDS URL, the ADB service string is wrong, or the wallet/configuration is missing | Use the ADB TLS database connection string or a wallet TNS alias. Set `ORACLE_CONFIG_DIR` and `ORACLE_WALLET_LOCATION` when using a wallet, then restart the Node API. |
-| `ORACLE_CONNECT_STRING` is missing or still says `your-adb-host` | `.env` was not created or still contains the template value | Replace the template with the actual ADB TLS connection string or wallet TNS alias, then restart the Node API. |
-| Login reports missing end-user context | The selected account is not a prepared Lab 7 local end user | Use `STORE_101_USER`, `REGION_NE_USER`, or `RECALL_LEAD_USER`, then ask the facilitator to verify the backend deployment. |
-| Login succeeds but the dashboard or graph package fails | The prepared React or graph database bridge is incomplete | Ask the facilitator to verify the backend deployment, then start a fresh browser session. |
-| The map has no locations | The active data role has no visible stores or spatial columns are not prepared | Recheck the Lab 2 spatial setup and the Lab 7 persona checkpoint. |
-| Store user sees regional or companywide complaints | The session is not a fresh local end-user session | Sign out, close the browser session, and reconnect with the actual local database end-user login. |
-| Agent call fails with `ORA-01031` | The prepared owner-side bridge is incomplete or the session is not using the bound profile | Ask the facilitator to verify the backend deployment, then reconnect the browser persona. |
-| Agent answer omits Spatial or Graph evidence | The prepared bridge is incomplete | Ask the facilitator to verify the backend deployment, confirm the packages are `VALID`, and restart the Node API. |
-| Production mode shows the API JSON instead of the UI | The React build was not created | Run `npm run build`, then `npm start`. |
+Kevin's requirements now appear in one returns application. Each signed-in user can see the B-482 records that apply to their role, view the related locations and suppliers, and ask the assistant a question without receiving broader access.
+
+David keeps the application rules in Oracle AI Database: packages provide the data, Deep Data Security applies the user scope, and the owner-side bridge calls the assistant only after that filtering. The application does not need to duplicate those rules or combine results from separate JSON, vector, Spatial, or graph databases. Tim brings the results together in React.
 
 ## Learn More
 

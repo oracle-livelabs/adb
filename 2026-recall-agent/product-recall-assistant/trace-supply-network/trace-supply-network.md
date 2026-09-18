@@ -2,13 +2,13 @@
 
 ## Introduction
 
-Kevin's next question is, “If we accept returns, what do we need to trace back to, and how far did the suspect path reach?” A component lot, supplier site, store delivery, and customer purchase are related, but a flat table list makes the route hard to explain.
+With stores assigned to response centers, Kevin now asks a different question: if a customer returns a HeatPro unit, where did its components come from, and which customers may have received units from the same batch? The answer spans component lots, supplier sites, store deliveries, and purchases. A list of separate tables makes that hard to follow.
 
-David models the recall as connected business entities over the existing operational tables. The graph does not become a second system of record. It gives the team a way to ask about paths: upstream from B-482 to components and suppliers, or downstream through shipments, stores, purchases, and customers.
+David defines those existing recall tables as a graph. The graph is not a separate copy of the data. It gives the team a direct way to follow a route upstream from B-482 to components and suppliers, or downstream through shipments, stores, purchases, and customers.
 
-Tim creates `RECALL_GRAPH` and uses `GRAPH_TABLE` to query those paths. He explains how the graph definition exposes the relationships while the relational rows remain current. The SQL makes Kevin's traceability question concrete rather than leaving it to manual joins and screenshots.
+Tim creates `RECALL_GRAPH` and uses `GRAPH_TABLE` to query those routes. The graph definition describes how the existing relational rows connect. Tim can answer Kevin's questions with SQL instead of building long manual joins or moving data to another system.
 
-By the end of the lab, Kevin can see 25 component paths, suspect thermostat and thermal-sensor routes, and 600 downstream exposure paths across 120 stores. David now has the relationship evidence needed for the returns workflow.
+By the end of the lab, the database can show the 25 component lots used in B-482, their suppliers, and the 600 customer records connected to 120 affected stores. David can use those results in the returns workflow.
 
 Estimated Time: 10 minutes
 
@@ -20,25 +20,13 @@ In this lab, you will:
 - Inspect the property graph definition.
 - Trace `B-482` to component batches, supplier sites, and suppliers.
 - Trace `B-482` to shipments, stores, purchases, and customers.
-- Connect a suspect component lot to downstream exposure paths.
+- Connect a suspect component lot to downstream customer links.
 
 ## Task 1: Create the Recall Property Graph
 
-Kevin needs the connected path, not another report of disconnected identifiers. David defines the graph over current tables; Tim creates and verifies it.
+Kevin needs to follow one connected route, rather than compare separate lists of batch, supplier, store, and customer identifiers. David defines the graph over the current tables; Tim creates and verifies it.
 
-1. Confirm that Lab 1 did not create the graph early.
-
-    ```sql
-    <copy>
-    select graph_name
-    from   user_property_graphs
-    where  graph_name = 'RECALL_GRAPH';
-    </copy>
-    ```
-
-    Before this task, the query returns no rows. Lab 3 owns graph creation.
-
-2. Create the property graph over the relational tables.
+1. Create the property graph over the relational tables.
 
     ```sql
     <copy>
@@ -128,19 +116,28 @@ Kevin needs the connected path, not another report of disconnected identifiers. 
     commit;
     </copy>
     ```
+    ![2026-09-18-004992](images/2026-09-18-004992.png)
 
     The graph stores metadata over the existing relational tables. It does not copy the recall data into a separate graph store. `OPTIONS (ENFORCED MODE)` validates the graph keys and references when Oracle creates the graph.
 
     The block above is the complete rerunnable graph definition.
 
-3. Verify the graph and labels.
+2. Verify that the graph was created.
 
     ```sql
     <copy>
     select graph_name
     from   user_property_graphs
     where  graph_name = 'RECALL_GRAPH';
+    </copy>
+    ```
 
+    ![2026-09-18-004993](images/2026-09-18-004993.png)
+
+3. Inspect the graph labels.
+
+    ```sql
+    <copy>
     select label_name
     from   user_pg_labels
     where  graph_name = 'RECALL_GRAPH'
@@ -148,11 +145,13 @@ Kevin needs the connected path, not another report of disconnected identifiers. 
     </copy>
     ```
 
-    The graph includes vertices for batches, shipments, stores, customers, components, component batches, supplier sites, and suppliers. The relational tables and their graph-supporting indexes were prepared during Lab 1. The existing `BATCH_COMPONENTS_UQ` key supports the batch-component edge.
+    The graph includes batches, shipments, stores, customers, components, component batches, supplier sites, and suppliers. The relational tables and their graph-supporting indexes were prepared during Lab 1. The existing `BATCH_COMPONENTS_UQ` key supports the batch-component edge.
+
+    ![2026-09-18-004994](images/2026-09-18-004994.png)
 
 ## Task 2: Trace Upstream Component Lots
 
-Kevin asks where the suspect lots came from. David follows the graph upstream; Tim queries the supplier and component paths.
+Kevin needs to identify the suppliers behind the component lots used in B-482. David follows the graph upstream; Tim queries the supplier and component routes.
 
 1. Traverse from batch `B-482` to component batches, supplier sites, and suppliers.
 
@@ -186,9 +185,11 @@ Kevin asks where the suspect lots came from. David follows the graph upstream; T
 
     The result returns 25 component paths. It includes the curated thermal sensor and contact-set suppliers plus generated tier-1 and tier-2 sub-vendor lots.
 
-## Task 3: Trace Downstream Exposure
+    ![2026-09-18-004995](images/2026-09-18-004995.png)
 
-Kevin asks who may have received the affected units. David follows the same graph downstream; Tim traces shipments, stores, and purchases.
+## Task 3: Find Customers Connected to the Batch
+
+Kevin needs to identify the customer records connected to affected units. David follows the same graph downstream; Tim traces shipments, stores, and purchases.
 
 1. Traverse from batch `B-482` to shipments, stores, purchases, and customers.
 
@@ -216,17 +217,19 @@ Kevin asks who may have received the affected units. David follows the same grap
     </copy>
     ```
 
-    The graph returns 600 exposure paths across 120 affected stores.
+    The graph returns 600 customer links across 120 affected stores.
+
+    ![2026-09-18-004996](images/2026-09-18-004996.png)
 
 2. Note the modeling choice:
 
-    - Graph paths make relationship questions natural.
-    - The base data remains relational and constrained.
+    - Graph paths make relationship questions easier to ask.
+    - The source tables keep their existing relational rules.
     - The graph definition does not copy data into a separate store.
 
-## Task 4: Connect Component Lots to Exposure
+## Task 4: Connect a Component Lot to Customers
 
-Kevin needs one explainable route from cause to exposure. David joins both directions; Tim returns the connected path.
+Kevin needs to connect a suspect component lot to the customers who may need a return notice. David connects both directions; Tim returns the full route.
 
 1. Trace the suspect thermostat lot to downstream customers.
 
@@ -258,19 +261,17 @@ Kevin needs one explainable route from cause to exposure. David joins both direc
 
     The suspect thermostat lot reaches all 600 exposed customers because batch `B-482` used that lot.
 
-2. The queries in this task provide the graph checkpoints.
+    ![2026-09-18-004997](images/2026-09-18-004997.png)
 
-You have completed Lab 3. Lab 4 uses AI Vector Search to rank complaint evidence related to heat and odor.
+2. This query connects the component lot, batch, store, and customer records in one result.
 
-## Troubleshooting
+You have completed Lab 3. Lab 4 uses AI Vector Search to find complaints about heat and odor.
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| `RECALL_GRAPH` already exists | Task 1 ran earlier | Continue with Task 2. |
-| Graph query reports an invalid graph | A base object changed after setup | Run `ALTER PROPERTY GRAPH recall_graph COMPILE`. |
-| Graph labels are missing | The Lab 3 graph definition is incomplete | Ask the facilitator to verify the backend deployment, then recheck the graph definition. |
-| Exposure path count differs | Seed purchases or shipment items changed | Recheck `purchases` and `recall_affected_stores_v`. |
-| Component path count differs | Component trace seed data changed | Recheck `recall_component_trace_v`. |
+## Conclusion
+
+The database can now answer Kevin's returns questions directly: which suppliers provided the lots used in B-482, which stores received the batch, and which customer records connect to those stores. The returns application can use these results to explain why a unit is included in the process.
+
+David keeps the relational tables and the graph in Oracle AI Database. The team does not need a separate graph database, duplicate recall data, or an integration to keep two systems aligned. Tim uses SQL to follow the relationships already stored in the database.
 
 ## Learn More
 

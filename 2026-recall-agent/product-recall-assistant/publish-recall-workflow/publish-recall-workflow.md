@@ -1,531 +1,351 @@
-# Lab 6: Put Trusted Facts in Reach: Publish the Recall API with ORDS
+# Lab 6: Share Recall Data Safely with ORDS
 
 ## Introduction
 
-Kevin wants the returns process to reach the field application and trusted partners without handing out database credentials. Store and supplier locations are useful for response work; customer names and the underlying table model are not part of the delivery contract.
+Kevin needs the returns application to show which stores received batch `B-482`. A map should display each store and the number of affected units, without exposing customer names or giving the application access to database tables.
 
-David designs a small read-only interface. Owner-owned PL/SQL packages decide what facts and GeoJSON features leave the database. ORDS publishes those functions as authenticated routes, and the runtime user receives package execution rather than application-table access.
+David keeps the location and shipment data in Oracle AI Database and publishes a read-only web endpoint through Oracle REST Data Services (ORDS). Tim builds the GeoJSON response, saves it as a function, and connects that function to a protected URL.
 
-Tim extends the package with the returns context, spatial summary, affected-store GeoJSON, and component-site GeoJSON. He then verifies the package grants and API responses. The SQL makes the contract visible: applications receive a stable response shape, not an invitation to query the schema.
+You will build `/ords/recall/map/v1/batches/B-482/stores`. This separate map endpoint leaves any existing `/api/v1/` routes unchanged. The supporting tables, views, API role, and runtime account are already available. Lab 2 supplies the location data; you create the function and route here.
 
-By the end of the lab, Kevin's application path can retrieve approved JSON and GeoJSON through authenticated endpoints. Anonymous requests stop at `401 Unauthorized`, and the responses contain no customer names or email addresses.
-
-Estimated Time: 12 minutes
+Estimated Time: 20 minutes
 
 ### Objectives
 
 In this lab, you will:
 
-- Extend the owner API with affected-store GeoJSON.
-- Extend the owner API with component supplier-site GeoJSON.
-- Publish authenticated, read-only ORDS handlers.
-- Test JSON and spatial responses.
-- Verify that runtime credentials and customer PII remain protected.
+- Build a GeoJSON response from affected-store data.
+- Create a reusable, read-only PL/SQL function.
+- Define an ORDS module, URL template, and GET handler.
+- Require authentication before publishing the endpoint.
+- Verify 120 map features and confirm the runtime account cannot read the tables.
 
-## Task 1: Extend the Approved Database Interface
+## Task 1: Build the Store Map Response
 
-Kevin needs an application contract, not table access. David puts approved facts behind a package; Tim extends and tests that interface.
+Kevin needs store locations and affected units in one response. David chooses GeoJSON, which map applications can read. Tim uses the same location and shipment data from Lab 2; there is no separate map database or export job.
 
-1. Connect as `RECALL_OWNER` and run the package definition below.
+1. Connect as `RECALL_OWNER`. Build the GeoJSON response for B-482.
 
     ```sql
     <copy>
-    whenever sqlerror exit sql.sqlcode rollback
-    set define off
-    set serveroutput on size unlimited
-    set feedback on
-    set long 200000
+    select json_object(
+               'type' value 'FeatureCollection',
+               'batchId' value 'B-482',
+               'features' value coalesce(
+                   json_arrayagg(
+                       json_object(
+                           'type' value 'Feature',
+                           'geometry' value json_object(
+                               'type' value 'Point',
+                               'coordinates' value json_array(
+                                   a.location.sdo_point.x,
+                                   a.location.sdo_point.y
+                               )
+                           ),
+                           'properties' value json_object(
+                               'storeCode' value a.store_code,
+                               'storeName' value a.store_name,
+                               'region' value a.region_code,
+                               'unitsSent' value a.units_sent
+                           )
+                       ) order by a.store_code returning clob
+                   ), to_clob('[]')
+               ) format json
+               returning clob
+           ) as stores_geojson
+    from   recall_affected_stores_v a
+    where  a.batch_id = 'B-482';
+    </copy>
+    ```
 
-    prompt ============================================================
-    prompt Product Recall Assistant - Lab 6 Owner API
-    prompt Connect as RECALL_OWNER.
-    prompt ============================================================
+    Open the result cell to inspect the JSON. Expect a `FeatureCollection` with 120 features. Each point contains longitude followed by latitude; its properties supply the store label, region, and affected units. The query selects no customer details.
 
+2. Turn the query into a function so an application can request a batch by its identifier.
+
+    ```sql
+    <copy>
+    create or replace function recall_store_geojson(
+        p_batch_id in varchar2
+    ) return clob authid definer is
+        l_result clob;
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
     begin
-        if user != 'RECALL_OWNER' then
-            raise_application_error(-20031, 'Wrong user: connect as RECALL_OWNER.');
-        end if;
+        select json_object(
+                   'type' value 'FeatureCollection',
+                   'batchId' value l_batch_id,
+                   'features' value coalesce(
+                       json_arrayagg(
+                           json_object(
+                               'type' value 'Feature',
+                               'geometry' value json_object(
+                                   'type' value 'Point',
+                                   'coordinates' value json_array(
+                                       a.location.sdo_point.x,
+                                       a.location.sdo_point.y
+                                   )
+                               ),
+                               'properties' value json_object(
+                                   'storeCode' value a.store_code,
+                                   'storeName' value a.store_name,
+                                   'region' value a.region_code,
+                                   'unitsSent' value a.units_sent
+                               )
+                           ) order by a.store_code returning clob
+                       ), to_clob('[]')
+                   ) format json
+                   returning clob
+               )
+        into   l_result
+        from   recall_affected_stores_v a
+        where  a.batch_id = l_batch_id;
+        return l_result;
+    end recall_store_geojson;
+    /
+    </copy>
+    ```
+
+    This is the same query with a parameter instead of a fixed batch. `AUTHID DEFINER` lets the function read its owner’s data without giving the caller table access. The function contains only a SELECT; it cannot change recall records. A batch with no affected stores returns an empty feature collection.
+
+3. Check that the function compiled.
+
+    ```sql
+    <copy>
+    select line, position, text
+    from   user_errors
+    where  name = 'RECALL_STORE_GEOJSON'
+    and    type = 'FUNCTION'
+    order  by sequence;
+    </copy>
+    ```
+
+    Expect no rows. If errors appear, correct them before publishing the endpoint.
+
+4. Call your new function.
+
+    ```sql
+    <copy>
+    select json_serialize(
+               recall_store_geojson('B-482') returning clob pretty
+           ) as stores_geojson;
+    </copy>
+    ```
+
+5. Grant the API role permission to call only this function.
+
+    ```sql
+    <copy>
+    grant execute on recall_store_geojson to recall_api_role;
+    </copy>
+    ```
+
+    `RECALL_APP_USER` already has this role. You are granting execution of your function, not SELECT on the tables. The existing `RECALL_LAB_API` package stays unchanged.
+
+## Task 2: Connect the Function to a URL
+
+Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_USER` to run the HTTP handler. Tim defines the module, the batch parameter in the URL, and the SELECT that calls the function.
+
+1. Switch to an `ADMIN` SQL worksheet. Enable the runtime schema at the `recall` path.
+
+    ```sql
+    <copy>
+    begin
+        ords_admin.enable_schema(
+            p_enabled             => true,
+            p_schema              => 'RECALL_APP_USER',
+            p_url_mapping_type    => 'BASE_PATH',
+            p_url_mapping_pattern => 'recall',
+            p_auto_rest_auth      => true
+        );
+        commit;
     end;
     /
+    </copy>
+    ```
 
-    create or replace package recall_lab_api authid definer as
-        function get_recall_context(p_batch_id in varchar2) return clob;
-        function get_spatial_impact(p_batch_id in varchar2) return clob;
-        function get_affected_stores(p_batch_id in varchar2) return clob;
-        function get_component_sites(p_batch_id in varchar2) return clob;
-    end recall_lab_api;
+    Leave `RECALL_OWNER` enabled for SQL Developer Web. The setting above protects the metadata catalog; Task 3 adds protection for your custom endpoint.
+
+2. Create an unpublished module.
+
+    ```sql
+    <copy>
+    begin
+        ords_admin.define_module(
+            p_schema         => 'RECALL_APP_USER',
+            p_module_name    => 'recall.map.v1',
+            p_base_path      => 'map/v1/',
+            p_items_per_page => 0,
+            p_status         => 'NOT_PUBLISHED'
+        );
+        commit;
+    end;
     /
+    </copy>
+    ```
 
-    create or replace package body recall_lab_api as
-        function get_recall_context(p_batch_id in varchar2) return clob is
-            l_result   clob;
-            l_batch_id varchar2(20) := upper(trim(p_batch_id));
-        begin
-            select json_object(
-                       'batchId' value b.batch_id,
-                       'status' value b.recall_status,
-                       'product' value p.product_name,
-                       'investigationCaseId' value (
-                           select max(i.case_id) keep (dense_rank last order by i.opened_at)
-                           from recall_investigations i
-                           where i.batch_id = l_batch_id
-                           and i.case_status = 'OPEN'
-                       ),
-                       'affectedStoreCount' value (
-                           select count(*) from recall_affected_stores_v a
-                           where a.batch_id = l_batch_id
-                       ),
-                       'unitsSent' value (
-                           select sum(a.units_sent) from recall_affected_stores_v a
-                           where a.batch_id = l_batch_id
-                       ),
-                       'customerExposureCount' value (
-                           select count(distinct e.customer_id)
-                           from recall_customer_exposure_v e
-                           where e.batch_id = l_batch_id
-                       ),
-                       'componentBatchCount' value (
-                           select count(*)
-                           from recall_component_trace_v t
-                           where t.batch_id = l_batch_id
-                       ),
-                       'supplierSiteCount' value (
-                           select count(distinct t.supplier_site_id)
-                           from recall_component_trace_v t
-                           where t.batch_id = l_batch_id
-                       ),
-                       'componentTrace' value (
-                           select json_arrayagg(
-                                      json_object(
-                                          'componentCode' value t.component_code,
-                                          'componentBatchId' value t.component_batch_id,
-                                          'qualityStatus' value t.quality_status,
-                                          'supplier' value t.supplier_name,
-                                          'supplierSite' value t.site_code,
-                                          'supplierTier' value t.tier_no,
-                                          'producedAt' value t.produced_at,
-                                          'receivedAt' value t.received_at,
-                                          'installedAt' value t.installed_at
-                                      )
-                                      order by t.installed_at
-                                      returning clob
-                                  )
-                           from recall_component_trace_v t
-                           where t.batch_id = l_batch_id
-                       ) format json,
-                       'complaintIds' value (
-                           select json_arrayagg(x.complaint_id order by x.distance returning clob)
-                           from (
-                               select cc.complaint_id,
-                                      vector_distance(cc.embedding, q.query_vector, cosine)
-                                          as distance
-                               from complaint_chunks cc
-                               join complaints c
-                                    on c.complaint_id = cc.complaint_id
-                               cross join recall_queries q
-                               where q.query_key = 'HEAT_ODOR'
-                               and (
-                                   c.reported_batch = l_batch_id
-                                   or c.customer_id in (
-                                       select customer_id
-                                       from recall_customer_exposure_v
-                                       where batch_id = l_batch_id
-                                   )
-                               )
-                               order by distance
-                               fetch first 5 rows only
-                           ) x
-                       ) format json,
-                       'firstAction' value (
-                           select action_text from recall_actions where priority_no = 1
-                       ),
-                       'customerContactAuthorized' value 'false' format json
-                       returning clob
-                   )
-            into l_result
-            from batches b
-            join products p on p.product_id = b.product_id
-            where b.batch_id = l_batch_id;
+    The module groups the routes under `/map/v1/`. It remains unavailable while you build and secure it. Rerunning this step replaces this exercise’s module and its handlers; continue through all remaining steps.
 
-            return l_result;
-        exception
-            when no_data_found then
-                select json_object(
-                           'error' value 'UNKNOWN_BATCH',
-                           'batchId' value l_batch_id
-                           returning clob
-                       )
-                into l_result;
-                return l_result;
-        end get_recall_context;
+3. Define the URL pattern.
 
-        function get_spatial_impact(p_batch_id in varchar2) return clob is
-            l_result   clob;
-            l_batch_id varchar2(20) := upper(trim(p_batch_id));
-        begin
-            execute immediate q'~
-                with nearest_centers as (
-                    select a.store_id,
-                           a.region_code,
-                           a.units_sent,
-                           rc.center_name,
-                           row_number() over (
-                               partition by a.store_id
-                               order by sdo_geom.sdo_distance(
-                                   a.location,
-                                   rc.location,
-                                   0.00001,
-                                   'unit=km'
-                               )
-                           ) as rn
-                    from   recall_affected_stores_v a
-                    cross  join response_centers rc
-                    where  a.batch_id = :batch_id
-                ),
-                region_summary as (
-                    select region_code,
-                           count(*) as store_count,
-                           sum(units_sent) as units_sent
-                    from   nearest_centers
-                    where  rn = 1
-                    group  by region_code
-                ),
-                center_summary as (
-                    select center_name,
-                           count(*) as store_count,
-                           sum(units_sent) as units_sent
-                    from   nearest_centers
-                    where  rn = 1
-                    group  by center_name
-                )
-                select json_object(
-                           'batchId' value :batch_id,
-                           'responseRadiusKm' value 25,
-                           'affectedStoreCount' value (
-                               select count(*)
-                               from   nearest_centers
-                               where  rn = 1
-                           ),
-                           'unitsSent' value (
-                               select sum(units_sent)
-                               from   nearest_centers
-                               where  rn = 1
-                           ),
-                           'storesWithinResponseRadius' value (
-                               select count(distinct a.store_id)
-                               from   recall_affected_stores_v a
-                               cross  join response_centers rc
-                               where  a.batch_id = :batch_id
-                               and    sdo_within_distance(
-                                          a.location,
-                                          rc.location,
-                                          'distance=25 unit=km'
-                                      ) = 'TRUE'
-                           ),
-                           'regions' value (
-                               select json_arrayagg(
-                                          json_object(
-                                              'region' value region_code,
-                                              'storeCount' value store_count,
-                                              'unitsSent' value units_sent
-                                              returning clob
-                                          )
-                                          order by region_code
-                                          returning clob
-                                      )
-                               from   region_summary
-                           ) format json,
-                           'nearestResponseCenters' value (
-                               select json_arrayagg(
-                                          json_object(
-                                              'center' value center_name,
-                                              'storeCount' value store_count,
-                                              'unitsSent' value units_sent
-                                              returning clob
-                                          )
-                                          order by center_name
-                                          returning clob
-                                      )
-                               from   center_summary
-                           ) format json
-                           returning clob
-                       )~'
-            into   l_result
-            using  l_batch_id, l_batch_id, l_batch_id;
-
-            return l_result;
-        exception
-            when no_data_found then
-                select json_object(
-                           'error' value 'UNKNOWN_BATCH',
-                           'batchId' value l_batch_id
-                           returning clob
-                       )
-                into   l_result;
-
-                return l_result;
-        end get_spatial_impact;
-
-        function get_affected_stores(p_batch_id in varchar2) return clob is
-            l_result   clob;
-            l_batch_id varchar2(20) := upper(trim(p_batch_id));
-        begin
-            select json_object(
-                       'type' value 'FeatureCollection',
-                       'batchId' value l_batch_id,
-                       'features' value coalesce(
-                           json_arrayagg(
-                               json_object(
-                                   'type' value 'Feature',
-                                   'geometry' value json_object(
-                                       'type' value 'Point',
-                                       'coordinates' value json_array(
-                                           a.location.sdo_point.x,
-                                           a.location.sdo_point.y
-                                       )
-                                   ),
-                                   'properties' value json_object(
-                                       'storeCode' value a.store_code,
-                                       'storeName' value a.store_name,
-                                       'region' value a.region_code,
-                                       'unitsSent' value a.units_sent
-                                   )
-                               )
-                               order by a.store_code
-                               returning clob
-                           ),
-                           to_clob('[]')
-                       ) format json
-                       returning clob
-                   )
-            into l_result
-            from recall_affected_stores_v a
-            where a.batch_id = l_batch_id;
-
-            return l_result;
-        end get_affected_stores;
-
-        function get_component_sites(p_batch_id in varchar2) return clob is
-            l_result   clob;
-            l_batch_id varchar2(20) := upper(trim(p_batch_id));
-        begin
-            select json_object(
-                       'type' value 'FeatureCollection',
-                       'batchId' value l_batch_id,
-                       'features' value coalesce(
-                           json_arrayagg(
-                               json_object(
-                                   'type' value 'Feature',
-                                   'geometry' value json_object(
-                                       'type' value 'Point',
-                                       'coordinates' value json_array(
-                                           t.location.sdo_point.x,
-                                           t.location.sdo_point.y
-                                       )
-                                   ),
-                                   'properties' value json_object(
-                                       'componentCode' value t.component_code,
-                                       'componentBatchId' value t.component_batch_id,
-                                       'supplier' value t.supplier_name,
-                                       'supplierSite' value t.site_code,
-                                       'supplierTier' value t.tier_no,
-                                       'qualityStatus' value t.quality_status
-                                   )
-                               )
-                               order by t.supplier_site_id
-                               returning clob
-                           ),
-                           to_clob('[]')
-                       ) format json
-                       returning clob
-                   )
-            into l_result
-            from recall_component_trace_v t
-            where t.batch_id = l_batch_id;
-
-            return l_result;
-        end get_component_sites;
-
-    end recall_lab_api;
+    ```sql
+    <copy>
+    begin
+        ords_admin.define_template(
+            p_schema      => 'RECALL_APP_USER',
+            p_module_name => 'recall.map.v1',
+            p_pattern     => 'batches/:batch_id/stores'
+        );
+        commit;
+    end;
     /
-
-    show errors package body recall_lab_api
-
-    grant execute on recall_lab_api to recall_api_role;
-
-    prompt --- Verify the Lab 6 package members ---
-
-    select procedure_name
-    from   user_procedures
-    where  object_name = 'RECALL_LAB_API'
-    and    procedure_name in (
-               'GET_RECALL_CONTEXT',
-               'GET_SPATIAL_IMPACT',
-               'GET_AFFECTED_STORES',
-               'GET_COMPONENT_SITES'
-           )
-    order  by procedure_name;
-
-    select json_serialize(
-               recall_lab_api.get_recall_context('B-482')
-               returning clob pretty
-           ) as context_json
-    ;
-
-    select json_serialize(
-               recall_lab_api.get_spatial_impact('B-482')
-               returning clob pretty
-           ) as spatial_impact
-    ;
-
-    select json_serialize(
-               recall_lab_api.get_affected_stores('B-482')
-               returning clob pretty
-           ) as stores_geojson
-    ;
-
-    select json_serialize(
-               recall_lab_api.get_component_sites('B-482')
-               returning clob pretty
-           ) as component_sites_geojson
-    ;
-
-    prompt Owner API ready. No customer names or email addresses are returned.
     </copy>
     ```
 
-    The script adds `GET_SPATIAL_IMPACT`, `GET_AFFECTED_STORES`, and `GET_COMPONENT_SITES` while preserving `GET_RECALL_CONTEXT`. It returns a compact spatial summary plus GeoJSON point features for affected store locations and component supplier sites.
+    ORDS passes the batch identifier in the URL to the handler as `:batch_id`.
 
-2. Confirm that the Lab 6 package specification is installed.
+4. Add the GET handler.
 
     ```sql
     <copy>
-    select procedure_name
-    from   user_procedures
-    where  object_name = 'RECALL_LAB_API'
-    and    procedure_name in (
-               'GET_RECALL_CONTEXT',
-               'GET_SPATIAL_IMPACT',
-               'GET_AFFECTED_STORES',
-               'GET_COMPONENT_SITES'
-           )
-    order  by procedure_name;
+    begin
+        ords_admin.define_handler(
+            p_schema      => 'RECALL_APP_USER',
+            p_module_name => 'recall.map.v1',
+            p_pattern     => 'batches/:batch_id/stores',
+            p_method      => 'GET',
+            p_source_type => ords.source_type_media,
+            p_source      => q'~
+                select 'application/geo+json',
+                       recall_owner.recall_store_geojson(:batch_id)
+                from dual
+            ~'
+        );
+        commit;
+    end;
+    /
     </copy>
     ```
 
-    Continue only when all four function names appear. If `GET_AFFECTED_STORES` is missing, ask the facilitator to verify the prepared database interface.
+    The media handler sends the function’s CLOB as the response body, with the GeoJSON content type. It avoids wrapping the document in an ORDS row collection or truncating it through a text-print call. The bind variable passes the batch identifier without constructing SQL from user input.
 
-3. Inspect the package grant.
+## Task 3: Protect and Publish the Endpoint
+
+Kevin wants trusted clients to see the map, not anonymous visitors. David requires authentication for the whole module. Tim adds that rule before publishing any route.
+
+1. Stay connected as `ADMIN`. Require authentication for the module.
 
     ```sql
     <copy>
-    select grantee, privilege
-    from   user_tab_privs_made
-    where  table_name = 'RECALL_LAB_API'
-    order  by grantee;
+    declare
+        l_roles    owa.vc_arr;
+        l_patterns owa.vc_arr;
+        l_modules  owa.vc_arr;
+    begin
+        l_modules(1) := 'recall.map.v1';
+        ords_admin.define_privilege(
+            p_schema         => 'RECALL_APP_USER',
+            p_privilege_name => 'recall.map.authenticated',
+            p_roles          => l_roles,
+            p_patterns       => l_patterns,
+            p_modules        => l_modules,
+            p_label          => 'Authenticated recall map',
+            p_description    => 'Require authentication for the store map endpoint.'
+        );
+        commit;
+    end;
+    /
     </copy>
     ```
 
-    `RECALL_API_ROLE` receives package execution. It receives no table grant.
+    The empty ORDS role list requires an authenticated identity but no additional ORDS role. This is an authentication rule, not store-by-store authorization. Lab 7 introduces database-enforced user scopes.
 
-4. Call all four functions as the owner.
+2. Publish the protected module.
 
     ```sql
     <copy>
-    set long 200000
-
-    select json_serialize(
-               recall_lab_api.get_recall_context('B-482')
-               returning clob pretty
-           ) as context_json;
-
-    select json_serialize(
-               recall_lab_api.get_spatial_impact('B-482')
-               returning clob pretty
-           ) as spatial_impact;
-
-    select json_serialize(
-               recall_lab_api.get_affected_stores('B-482')
-               returning clob pretty
-           ) as stores_geojson;
-
-    select json_serialize(
-               recall_lab_api.get_component_sites('B-482')
-               returning clob pretty
-           ) as component_sites_geojson;
+    begin
+        ords_admin.publish_module(
+            p_schema      => 'RECALL_APP_USER',
+            p_module_name => 'recall.map.v1',
+            p_status      => 'PUBLISHED'
+        );
+        commit;
+    end;
+    /
     </copy>
     ```
 
-    Confirm 120 stores, 2,400 units, 600 potentially exposed customers, 25 component batches, 25 supplier sites, 120 store GeoJSON features, and 25 component-site GeoJSON features. No response contains customer names or email addresses.
+3. Confirm the runtime account has no direct SELECT grants on the owner’s tables, including through its API role.
 
-## Task 2: Publish and Protect the Routes
+    ```sql
+    <copy>
+    select grantee, table_name, privilege
+    from   dba_tab_privs
+    where  owner = 'RECALL_OWNER'
+    and    grantee in ('RECALL_APP_USER', 'RECALL_API_ROLE')
+    and    privilege = 'SELECT'
+    order  by grantee, table_name;
+    </copy>
+    ```
 
-Kevin needs the contract available to trusted clients. David makes ORDS the authenticated delivery layer; Tim publishes and protects the routes.
+    Expect no rows. The HTTP handler can execute the approved function, but cannot use these identities to select directly from the application tables.
 
-1. The prepared backend publishes the module into `RECALL_APP_USER`. The schema alias is `recall`, and the module base path is `api/v1/`.
+## Task 4: Test What an Application Receives
 
-2. Review the four routes.
+Kevin needs proof that the URL works and blocks anonymous access. Tim tests it from a terminal, outside SQL Developer Web. These requests read data; they do not open a case or change the recall.
 
-    | Route | Purpose |
-    |---|---|
-    | `GET health` | Confirm service availability |
-    | `GET batches/:batch_id/context` | Return approved recall facts |
-    | `GET batches/:batch_id/stores` | Return affected stores as GeoJSON |
-    | `GET batches/:batch_id/component-sites` | Return component supplier sites as GeoJSON |
-
-3. Confirm the authentication boundary. An anonymous health request must return HTTP `401`.
+1. Replace `<adb-ords-host>` with the hostname from your SQL Developer Web URL, then run:
 
     ```bash
-    curl --ipv4 --connect-timeout 10 --max-time 20 --show-error -i \
-      "https://<adb-ords-host>/ords/recall/api/v1/health"
+    <copy>
+    RECALL_MAP_URL="https://<adb-ords-host>/ords/recall/map/v1/batches/B-482/stores"
+    </copy>
     ```
 
-    A reachable, protected route returns `HTTP/1.1 401 Unauthorized` and an ORDS JSON error body. This is the expected result. Do not add `RECALL_APP_USER` credentials to the command line or workshop files.
+2. Request the map without credentials.
 
-## Task 3: Test the Protected API
+    ```bash
+    <copy>
+    curl --connect-timeout 10 --max-time 30 --silent --show-error \
+      --output /dev/null --write-out "HTTP %{http_code}\n" \
+      "$RECALL_MAP_URL"
+    </copy>
+    ```
 
-Kevin needs evidence that the route behaves as designed. David tests both allowed and anonymous paths; Tim checks the JSON and GeoJSON responses.
+    Expect `HTTP 401`. A `404` does not prove authentication is working; check that you published the module and used the exact URL.
 
-1. Set the required environment values without placing the password in shell history.
+3. Request it with the runtime account.
 
-2. Run [`03-test-api.sh`](files/03-test-api.sh).
+    ```bash
+    <copy>
+    curl --connect-timeout 10 --max-time 30 --silent --show-error \
+      --user RECALL_APP_USER --include "$RECALL_MAP_URL"
+    </copy>
+    ```
 
-3. Confirm these results:
+    Curl prompts for the workshop password without storing it in the command. Expect HTTP `200`, content type `application/geo+json`, and a `FeatureCollection`. Database credentials are used here only to test the service; do not embed them in browser application code. Production clients need an appropriate application authentication flow.
 
-    - Anonymous health access returns `401`.
-    - Authenticated health access returns `200`.
-    - Context returns status `INVESTIGATING`, 120 stores, 2,400 units, 600 customers, 25 component batches, and 25 supplier sites.
-    - The store GeoJSON response contains ten features.
-    - The component-site GeoJSON response contains five features.
-    - The responses contain no customer names or email addresses.
+4. Check the number of map features. This command requires `jq`.
 
-4. Review the delivery boundary:
+    ```bash
+    <copy>
+    curl --connect-timeout 10 --max-time 30 --fail --silent --show-error \
+      --user RECALL_APP_USER "$RECALL_MAP_URL" \
+      | jq '{batchId, type, featureCount: (.features | length), unitsSent: ([.features[].properties.unitsSent] | add)}'
+    </copy>
+    ```
 
-    - `RECALL_OWNER` owns every table and package.
-    - `RECALL_APP_USER` owns delivery metadata and calls the approved package.
-    - ORDS requires authentication for the entire module.
-    - The service returns read-only, PII-safe JSON and GeoJSON.
-    - Lab 7 applies user roles before vector retrieval and agent summarization.
-    - Lab 8 replaces the prototype UI with the deployable React/Node capstone.
+    Expect batch `B-482`, type `FeatureCollection`, **120 features**, and **2,400 units**. Check that the properties contain only store code, store name, region, and units sent.
 
-You have completed Lab 6. The recall workflow now has a protected API surface.
+## Conclusion
 
-## Troubleshooting
+You built the SQL response, saved it as a function, connected it to a GET route, and protected that route before publishing it. Kevin’s returns application can now request the affected-store map without being allowed to query the source tables.
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| Anonymous request returns `404` | ORDS metadata has not refreshed | Wait several seconds and retry. |
-| Anonymous request returns `200` | Module privilege is missing | Ask the facilitator to verify the published module; stop until it returns `401`. |
-| Curl reaches its 20-second timeout | The client cannot reach the public ORDS endpoint | Verify the hostname, Autonomous Database public-access policy, VPN, proxy, and outbound firewall rules. |
-| Authenticated request returns `401` | Runtime password is incorrect | Re-enter the password outside shell history. |
-| `ORA-00904` names `GET_AFFECTED_STORES` | The approved package is incomplete | Ask the facilitator to verify the backend deployment, then verify `USER_PROCEDURES`. |
-| Context passes but stores fail | The GeoJSON package extension is missing | Ask the facilitator to verify the backend deployment. |
+For David, the Oracle AI Database advantage is that the API reads the same shipment records and spatial data used in the earlier labs. There is no separate spatial database or synchronization job. Tim selects the fields in SQL, while the database controls execution privileges and ORDS controls access to the web endpoint.
 
 ## Learn More
 
-- [Developing Oracle REST Data Services applications](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.2/orddg/developing-REST-applications.html)
-- [ORDS PL/SQL package reference](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.2/orddg/ORDS-reference.html)
-- [Oracle Spatial GeoJSON support](https://docs.oracle.com/en/database/oracle/oracle-database/26/spatl/)
+- [ORDS administration PL/SQL reference](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.2/orddg/oracle-rest-data-services-administration-pl-sql-package-reference.html)
+- [Developing ORDS applications](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/26.2/orddg/developing-REST-applications.html)
 
 ## Acknowledgements
 
