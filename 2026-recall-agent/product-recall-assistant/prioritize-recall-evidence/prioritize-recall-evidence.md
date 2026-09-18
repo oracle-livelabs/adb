@@ -1,14 +1,14 @@
-# Lab 4: Hear the Signal in the Noise: Prioritize Complaint Evidence with AI Vector Search
+# Lab 4: Find Related Complaints: Use AI Vector Search for B-482
 
 ## Introduction
 
-Kevin asks, “Which return complaints support the thermal-risk decision?” Customers do not describe the same problem in the same words. Exact keyword searches can miss a report of an electrical smell, an E7 code, or a cooker that is too hot to touch.
+Kevin needs to find complaints that may describe the B-482 heat and odor issue. Customers use different words for the same problem. An exact keyword search can miss an electrical smell, an E7 code, or a cooker that is too hot to touch.
 
-David's design keeps complaint text, structured observations, and recall eligibility together. Semantic ranking identifies similar descriptions, but the B-482 exposure filter and JSON observations remain part of the database query. A related phrase alone does not authorize unrelated complaints into the result.
+David keeps complaint text, JSON observations, and the B-482 customer and batch records together. Vector search compares complaints by meaning, but the database still limits the result to complaints connected to B-482. A similar phrase from an unrelated batch does not enter the result.
 
-Tim uses the loaded ONNX model to create vectors in Oracle AI Database, ranks complaint chunks with `VECTOR_DISTANCE`, and joins the matches back to the JSON evidence. He explains the distinction Kevin needs: vector search finds meaning; the database still controls which evidence is valid for this recall.
+Tim uses the loaded ONNX model to turn complaint text into vectors, which are numeric representations of meaning. He ranks complaint text with `VECTOR_DISTANCE`, then adds the JSON observations that explain each complaint. Vector search finds similar language; the B-482 filters and JSON data confirm whether the complaint belongs in this recall.
 
-By the end of the lab, Kevin has a ranked evidence set led by complaints `9001`, `9002`, `9006`, `9003`, and `9007`, with unrelated B-900 evidence excluded. Tim will use this approved context in the assistant.
+By the end of the lab, the database returns complaints `9001`, `9002`, `9006`, `9003`, and `9007` first, while excluding unrelated batch B-900 complaints. Lab 5 uses this database result in the assistant.
 
 Estimated Time: 15 minutes
 
@@ -20,13 +20,13 @@ In this lab, you will:
 - Use the loaded ONNX embedding model in the database.
 - Populate stored and query embeddings with `VECTOR_EMBEDDING`.
 - Run `VECTOR_DISTANCE` against complaint chunks.
-- Filter semantic search to complaints tied to `B-482` exposure.
+- Filter semantic search to complaints tied to the B-482 recall.
 - Combine vector results with JSON complaint observations.
-- Produce the approved recall context used by the Select AI Agent lab.
+- Produce the recall context used by the Select AI Agent lab.
 
 ## Task 1: Ensure Vector Data and Use the Loaded Model
 
-Kevin needs complaint evidence that reflects meaning, not only matching words. David keeps vectors and source evidence together; Tim prepares the model-backed data.
+Kevin needs to find complaints that describe the same issue, even when they use different words. David keeps the vectors beside the original complaint data; Tim prepares the data for the model.
 
 1. Inspect the complaint text and query text that will become the embedding inputs.
 
@@ -43,52 +43,23 @@ Kevin needs complaint evidence that reflects meaning, not only matching words. D
 
     These relational text columns are the source for the stored complaint and query embeddings.
 
-2. Confirm that the workshop model is available in `DATA_PUMP_DIR`.
+    ![2026-09-18-004998](images/2026-09-18-004998.png)
+
+2. Add native vector columns to the existing relational tables.
 
     ```sql
     <copy>
-    select directory_name
-    from   all_directories
-    where  directory_name = 'DATA_PUMP_DIR';
+    alter table complaint_chunks add (embedding vector(384, float32));
+
+    alter table recall_queries add (query_vector vector(384, float32));
     </copy>
     ```
 
-    The query should return `DATA_PUMP_DIR`. The backend deployment places the public `all_MiniLM_L12_v2.onnx` model there before the lab begins.
+    We are using the `all_MiniLM_L12_v2` embeddingmodel. It produces 384-dimensional text embeddings. The query vector uses the same model so both sides share one semantic space.
+    
+    ![2026-09-18-004999](images/2026-09-18-004999.png)
 
-3. Ensure native vector columns on the existing relational tables. The block is safe to rerun after a previous Lab 4 attempt.
-
-    ```sql
-    <copy>
-declare
-    procedure run_ddl(
-        p_sql          in varchar2,
-        p_ignored_code in number
-    ) is
-    begin
-        execute immediate p_sql;
-    exception
-        when others then
-            if sqlcode != p_ignored_code then
-                raise;
-            end if;
-    end;
-begin
-    run_ddl(
-        'alter table complaint_chunks add (embedding vector(384, float32))',
-        -1430
-    );
-    run_ddl(
-        'alter table recall_queries add (query_vector vector(384, float32))',
-        -1430
-    );
-end;
-/
-    </copy>
-    ```
-
-    `all_MiniLM_L12_v2` produces 384-dimensional text embeddings. The query vector uses the same model so both sides share one semantic space.
-
-4. Confirm that the embedding model is available in Oracle AI Database 26ai.
+3. Confirm that the embedding model is available in Oracle AI Database 26ai.
 
     ```sql
     <copy>
@@ -103,7 +74,9 @@ end;
 
     The query should return one row for `RECALL_MINILM_L12_V2` with `MINING_FUNCTION` set to `EMBEDDING` and `ALGORITHM` set to `ONNX`. The backend deployment loaded `all_MiniLM_L12_v2.onnx` from Oracle Object Storage. Inference runs locally in the database through the imported ONNX model; no external embedding API is called.
 
-5. Populate both tables with in-database model inference.
+    ![2026-09-18-005000](images/2026-09-18-005000.png) 
+
+4. Populate both tables with in-database model inference.
 
     ```sql
     <copy>
@@ -121,23 +94,28 @@ end;
     </copy>
     ```
 
-6. Verify the model and generated vectors.
+    ![2026-09-18-005001](images/2026-09-18-005001.png)
+
+5. Inspect a generated complaint vector.
 
     ```sql
     <copy>
-    select model_name,
-           mining_function,
-           algorithm,
-           model_size
-    from   user_mining_models
-    where  model_name = 'RECALL_MINILM_L12_V2';
-
     select chunk_id,
            substr(vector_serialize(embedding), 1, 500) as embedding_sample
     from   complaint_chunks
     where  embedding is not null
     fetch  first 1 row only;
+    </copy>
+    ```
 
+    The query returns one populated complaint vector. `VECTOR_SERIALIZE` converts it to readable text, and `SUBSTR` keeps the result compact.
+    
+    ![2026-09-18-005002](images/2026-09-18-005002.png)
+
+6. Inspect a generated search-query vector.
+
+    ```sql
+    <copy>
     select query_key,
            substr(vector_serialize(query_vector), 1, 500) as query_vector_sample
     from   recall_queries
@@ -146,11 +124,13 @@ end;
     </copy>
     ```
 
-    The two samples provide visible evidence that both tables contain populated vectors. `VECTOR_SERIALIZE` converts each sample to readable text, and `SUBSTR` keeps the result compact.
+    The query returns one populated search-query vector. Both tables now have vectors for comparing the search text with complaint text.
 
-## Task 2: Rank Semantic Complaint Evidence
+    ![2026-09-18-005003](images/2026-09-18-005003.png)
 
-Kevin asks which reports most closely match the thermal pattern. David uses semantic ranking within the recall boundary; Tim runs the vector search.
+## Task 2: Find Related Complaints
+
+Kevin needs to find the complaints most similar to the heat and odor issue. David limits the search to B-482; Tim runs the vector search.
 
 1. Find the five complaint chunks closest to the workshop query vector.
 
@@ -180,17 +160,19 @@ Kevin asks which reports most closely match the thermal pattern. David uses sema
     </copy>
     ```
 
-    The top five should be the thermal-risk complaints `9001`, `9002`, `9006`, `9003`, and `9007`; exact ordering can vary slightly by model revision. Lower cosine distance means stronger similarity.
+    The top five should be the heat-and-odor complaints `9001`, `9002`, `9006`, `9003`, and `9007`; exact ordering can vary slightly by model revision. Lower cosine distance means stronger similarity.
+
+    ![2026-09-18-005004](images/2026-09-18-005004.png)
 
 2. Explain why complaint `9005` is absent:
 
     - It belongs to batch `B-900`.
     - Its customer did not buy batch `B-482`.
-    - The query filters semantic search to the current recall exposure.
+    - The query filters semantic search to the current B-482 recall.
 
-## Task 3: Combine Vector and JSON Evidence
+## Task 3: Combine Vector Results and JSON Details
 
-Kevin needs the reason behind a ranking. David joins semantic results to structured observations; Tim combines both forms of evidence.
+Kevin needs the details that explain why a complaint ranked highly. David joins the similar-language results to the JSON observations; Tim combines them in one query.
 
 1. Join the ranked vector results back to JSON observations.
 
@@ -227,15 +209,17 @@ Kevin needs the reason behind a ranking. David joins semantic results to structu
     </copy>
     ```
 
-    This query keeps semantic ranking and structured JSON observations in one result set.
+    This query returns the similarity ranking and the JSON observations in one result.
 
-    **Interpret the `NULL` values:** The complaint documents use a flexible JSON shape, so an observation column is `NULL` when that complaint does not contain the requested JSON key. For example, `odor` appears for complaints such as `9001`, `9006`, and `9007`; `display_code` appears for `9006`; and `plug_state` appears for `9007`. The missing values are intentional and demonstrate how relational ranking can be combined with sparse JSON attributes.
+    **Interpret the `NULL` values:** The complaint documents use a flexible JSON shape, so an observation column is `NULL` when that complaint does not contain the requested JSON key. For example, `odor` appears for complaints such as `9001`, `9006`, and `9007`; `display_code` appears for `9006`; and `plug_state` appears for `9007`. The missing values are expected. They show that the ranking can be combined with JSON details that appear only when a complaint records them.
 
-## Task 4: Produce the Approved Recall Context
+    ![2026-09-18-005005](images/2026-09-18-005005.png)
 
-Kevin needs a compact approved context for the desk. David defines that boundary; Tim produces it for the governed assistant.
+## Task 4: Produce Recall Context for the Assistant
 
-1. Call the approved package that consolidates the investigation facts.
+Kevin needs one database response for the recall desk. David defines the fields the assistant may use; Tim produces that response.
+
+1. Call the package that gathers the recall details for the assistant.
 
     ```sql
     <copy>
@@ -261,20 +245,15 @@ Kevin needs a compact approved context for the desk. David defines that boundary
     }
     ```
 
-3. The queries in this task provide the vector checkpoints.
+3. This query returns the recall details that the assistant will use.
 
 You have completed Lab 4. Lab 5 registers the approved context function as a Select AI Agent tool.
 
-## Troubleshooting
+## Conclusion
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| Vector query returns no rows | The model was not loaded or embeddings are null | Ask the facilitator to verify the backend deployment, then rerun the vector steps. |
-| Complaint order differs | Model revision or model metadata changed | Confirm both tables use `RECALL_MINILM_L12_V2`; exact ordering can vary slightly. |
-| Model check returns no rows | The backend deployment did not load `RECALL_MINILM_L12_V2` | Ask the facilitator to verify the backend deployment. |
-| ONNX model file is missing | The backend deployment did not place the model in `DATA_PUMP_DIR` | Ask the facilitator to verify the backend deployment and the directory contents. |
-| Context status is `CLEAR` | Lab 1 case-opening command did not run | Return to Lab 1 and open the investigation. |
-| Context omits component fields | The approved API package is incomplete | Ask the facilitator to verify the backend deployment. |
+The database can now find complaints that describe the B-482 issue in different words, then check each result against the batch, customer, and JSON complaint data. The recall application can show both the matching complaint and the details that explain why it is part of the case.
+
+David keeps complaint text, vectors, JSON observations, and recall records in Oracle AI Database. The team does not need a separate vector database or an integration that copies complaint data between systems. Tim uses SQL to combine similarity search with the checks that keep the result limited to B-482.
 
 ## Learn More
 

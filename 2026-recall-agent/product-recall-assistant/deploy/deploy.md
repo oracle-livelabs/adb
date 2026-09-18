@@ -8,6 +8,8 @@ The script prompts once for a hidden shared deployment password. It uses that va
 
 The deployment leaves batch `B-482` in its seeded `REVIEW` / `REPORTED` state. Run Lab 1 Task 2 after deployment to open the investigation.
 
+For Lab 7, deployment prepares `RECALL_SECURE_API`, `RECALL_CONTEXT_SINK`, `RECALL_AGENT_BRIDGE`, the `RECALL_AUTHORIZED_REQUESTS` table, and `RECALL_SECURED_TEAM`. Learners still create all data roles, data grants, and end-user role assignments. The retrieval package resolves vector columns at runtime so provisioning does not depend on completing Lab 4. It retains invoker rights: preparing the package does not grant end users unrestricted table access. Do not rerun the destructive deployment to upgrade an in-progress workshop; install only the Lab 7 support section as `RECALL_OWNER` after checking for existing objects.
+
 ## Estimated Time: 10 minutes
 
 ## Run the deployment

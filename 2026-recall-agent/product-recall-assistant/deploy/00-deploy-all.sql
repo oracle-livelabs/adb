@@ -17,7 +17,31 @@ prompt The deployment resets only the named workshop identities and objects.
 prompt B-482 remains in its seeded REVIEW / REPORTED state.
 prompt ============================================================
 
-accept shared_password char hide prompt 'Shared deployment password: '
+-- Same argument order as Terraform: password, GenAI region, compartment OCID.
+-- Supply the resolved Terraform values; there are no local AI defaults.
+define shared_password = '&1'
+define recall_region = '&2'
+define recall_compartment = '&3'
+
+whenever sqlerror exit sql.sqlcode rollback
+
+-- Configuration and credential validation below runs before schema reset.
+
+-- Validate Terraform inputs and the signing credential before any schema reset.
+declare
+    l_count number;
+begin
+    if trim('&recall_region') is null
+       or not regexp_like('&recall_compartment', '^ocid1[.]compartment[.]') then
+        raise_application_error(-20102, 'Supply the Terraform GenAI region and compartment OCID.');
+    end if;
+    select count(*) into l_count from dba_credentials
+    where owner = 'LLUSER' and credential_name = 'AI_CREDENTIAL';
+    if l_count != 1 then
+        raise_application_error(-20103, 'Provision LLUSER.AI_CREDENTIAL before running recall deployment.');
+    end if;
+end;
+/
 
 prompt --- Preflight: administrator session and database capabilities ---
 
@@ -209,10 +233,10 @@ from   dba_users
 where  username in ('RECALL_OWNER', 'RECALL_APP_USER')
 union all
 select 'END USER',
-       end_user,
+       username,
        schema
 from   dba_end_users
-where  end_user in ('STORE_101_USER', 'REGION_NE_USER', 'RECALL_LEAD_USER')
+where  username in ('STORE_101_USER', 'REGION_NE_USER', 'RECALL_LEAD_USER')
 union all
 select 'DATABASE ROLE',
        role,
@@ -263,17 +287,23 @@ begin
         where  username = 'RECALL_OWNER';
 
         if l_app_user_count > 0 then
-        begin
-            ords_admin.delete_module(
-                p_schema      => 'RECALL_APP_USER',
-                p_module_name => 'recall.api.v1'
-            );
-        exception
-            when others then
-                if sqlcode not in (-1403, -20012) then
-                    raise;
-                end if;
-        end;
+        for m in (
+            select 'recall.api.v1' as module_name
+            union all
+            select 'recall.map.v1' as module_name
+        ) loop
+            begin
+                ords_admin.delete_module(
+                    p_schema      => 'RECALL_APP_USER',
+                    p_module_name => m.module_name
+                );
+            exception
+                when others then
+                    if sqlcode not in (-1403, -20012) then
+                        raise;
+                    end if;
+            end;
+        end loop;
 
         begin
             ords_admin.enable_schema(
@@ -297,7 +327,7 @@ begin
                     p_enabled             => false,
                     p_schema              => 'RECALL_OWNER',
                     p_url_mapping_type    => 'BASE_PATH',
-                    p_url_mapping_pattern => 'recall-owner',
+                    p_url_mapping_pattern => 'recall_owner',
                     p_auto_rest_auth      => true
                 );
             exception
@@ -404,6 +434,21 @@ begin
     create_end_user('RECALL_LEAD_USER');
 end;
 /
+
+begin
+    ords_admin.enable_schema(
+        p_enabled             => true,
+        p_schema              => 'RECALL_OWNER',
+        p_url_mapping_type    => 'BASE_PATH',
+        p_url_mapping_pattern => 'recall_owner',
+        p_auto_rest_auth      => true
+    );
+end;
+/
+
+-- Reuse the signing key without copying or logging its private value.
+grant execute on lluser.ai_credential to recall_owner;
+create synonym recall_owner.ai_credential for lluser.ai_credential;
 
 prompt --- ADMIN phase: resource-principal configuration ---
 
@@ -1961,6 +2006,8 @@ join   suppliers s
 create or replace package recall_lab_api authid definer as
     function get_recall_context(p_batch_id in varchar2) return clob;
     function get_spatial_impact(p_batch_id in varchar2) return clob;
+    function get_affected_stores(p_batch_id in varchar2) return clob;
+    function get_component_sites(p_batch_id in varchar2) return clob;
 end recall_lab_api;
 /
 
@@ -2206,6 +2253,87 @@ create or replace package body recall_lab_api as
 
             return l_result;
     end get_spatial_impact;
+
+    -- Views exist at deployment; Lab 2 supplies their spatial values.
+    function get_affected_stores(p_batch_id in varchar2) return clob is
+        l_result   clob;
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
+    begin
+        select json_object(
+                   'type' value 'FeatureCollection',
+                   'batchId' value l_batch_id,
+                   'features' value coalesce(
+                       json_arrayagg(
+                           json_object(
+                               'type' value 'Feature',
+                               'geometry' value json_object(
+                                   'type' value 'Point',
+                                   'coordinates' value json_array(
+                                       a.location.sdo_point.x,
+                                       a.location.sdo_point.y
+                                   )
+                               ),
+                               'properties' value json_object(
+                                   'storeCode' value a.store_code,
+                                   'storeName' value a.store_name,
+                                   'region' value a.region_code,
+                                   'unitsSent' value a.units_sent
+                               )
+                           )
+                           order by a.store_code
+                           returning clob
+                       ),
+                       to_clob('[]')
+                   ) format json
+                   returning clob
+               )
+        into l_result
+        from recall_affected_stores_v a
+        where a.batch_id = l_batch_id;
+
+        return l_result;
+    end get_affected_stores;
+
+    function get_component_sites(p_batch_id in varchar2) return clob is
+        l_result   clob;
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
+    begin
+        select json_object(
+                   'type' value 'FeatureCollection',
+                   'batchId' value l_batch_id,
+                   'features' value coalesce(
+                       json_arrayagg(
+                           json_object(
+                               'type' value 'Feature',
+                               'geometry' value json_object(
+                                   'type' value 'Point',
+                                   'coordinates' value json_array(
+                                       t.location.sdo_point.x,
+                                       t.location.sdo_point.y
+                                   )
+                               ),
+                               'properties' value json_object(
+                                   'componentCode' value t.component_code,
+                                   'componentBatchId' value t.component_batch_id,
+                                   'supplier' value t.supplier_name,
+                                   'supplierSite' value t.site_code,
+                                   'supplierTier' value t.tier_no,
+                                   'qualityStatus' value t.quality_status
+                               )
+                           )
+                           order by t.supplier_site_id
+                           returning clob
+                       ),
+                       to_clob('[]')
+                   ) format json
+                   returning clob
+               )
+        into l_result
+        from recall_component_trace_v t
+        where t.batch_id = l_batch_id;
+
+        return l_result;
+    end get_component_sites;
 end recall_lab_api;
 /
 
@@ -2261,8 +2389,7 @@ where  model_name = 'RECALL_MINILM_L12_V2';
 
 prompt --- Facilitator phase: create the Select AI profile ---
 
-accept recall_region char default 'us-chicago-1' prompt 'OCI region [us-chicago-1]: '
-accept recall_model char default 'meta.llama-3.3-70b-instruct' prompt 'OCI model [meta.llama-3.3-70b-instruct]: '
+prompt --- Using the same OCI signing credential and profile settings as LLUSER ---
 
 begin
     dbms_cloud_ai.drop_profile(
@@ -2277,12 +2404,10 @@ declare
 begin
     select json_object(
                'provider' value 'oci',
-               'credential_name' value 'OCI$RESOURCE_PRINCIPAL',
-               'model' value '&recall_model',
-               'region' value '&recall_region',
-               'oci_apiformat' value 'GENERIC',
-               'temperature' value 0,
-               'max_tokens' value 1024
+               'credential_name' value 'AI_CREDENTIAL',
+               'comments' value 'true',
+               'oci_compartment_id' value '&recall_compartment',
+               'region' value '&recall_region'
                returning clob
            )
     into   l_attributes;
@@ -2303,6 +2428,280 @@ from   user_cloud_ai_profiles
 where  profile_name = 'RECALL_AGENT_PROFILE';
 
 prompt The embedding model is ready. Lab 4 creates and populates vector columns.
+
+prompt --- Lab 7 support: retrieval packages and secured responder ---
+-- Learners create data roles, data grants, and assignments in Lab 7.
+-- Dynamic SQL postpones vector-column resolution until after Lab 4.
+create or replace package recall_agent_bridge authid definer as
+    function summarize_context(p_context in clob) return clob;
+    function ask_context(
+        p_context  in clob,
+        p_question in varchar2
+    ) return clob;
+end recall_agent_bridge;
+/
+
+create or replace package body recall_agent_bridge as
+    function run_agent(
+        p_context  in clob,
+        p_question in varchar2
+    ) return clob is
+        l_conversation_id varchar2(128);
+        l_params          clob;
+        l_prompt          clob;
+        l_answer          clob;
+    begin
+        -- The application connection is an end-user DDS session. Oracle only
+        -- permits SET_PROFILE when the profile owner is the session user, so
+        -- do not mutate the end-user session. RECALL_SECURED_RESPONDER keeps
+        -- the owner-owned profile binding in its registered agent metadata.
+        l_conversation_id := dbms_cloud_ai.create_conversation(
+            attributes => q'~{
+              "title":"React Product Recall Assistant",
+              "retention_days":1,
+              "conversation_length":5
+            }~'
+        );
+
+        select json_object(
+                   'conversation_id' value l_conversation_id returning clob
+               )
+        into l_params;
+
+        l_prompt :=
+            to_clob('Answer the user question using only the four authorized evidence sections in this request: product JSON, DDS-filtered vector and relational evidence, DDS-filtered spatial evidence, and graph evidence. ') ||
+            to_clob('Use graphEvidence for component, supplier, store, and customer relationship patterns and spatialEvidence for regions, distances, and response centers. ') ||
+            to_clob('Do not infer hidden rows or company totals. Question: ') ||
+            to_clob(substr(p_question, 1, 1000)) ||
+            to_clob('. Authorized converged evidence: ') ||
+            p_context;
+
+        l_answer := dbms_cloud_ai_agent.run_team(
+            team_name   => 'RECALL_SECURED_TEAM',
+            user_prompt => l_prompt,
+            params      => l_params
+        );
+
+        return l_answer;
+    end run_agent;
+
+    function summarize_context(p_context in clob) return clob is
+    begin
+        return run_agent(
+            p_context,
+            'Summarize the authorized recall scope and the first response action.'
+        );
+    end summarize_context;
+
+    function ask_context(
+        p_context  in clob,
+        p_question in varchar2
+    ) return clob is
+    begin
+        return run_agent(p_context, p_question);
+    end ask_context;
+end recall_agent_bridge;
+/
+
+
+show errors package body recall_agent_bridge
+
+create table recall_authorized_requests (
+    request_id number generated always as identity primary key,
+    end_user_name varchar2(128) not null,
+    batch_id varchar2(20) not null,
+    context_json json not null,
+    created_at timestamp default systimestamp not null
+);
+
+create or replace package recall_context_sink authid definer as
+    function store_context(
+        p_batch_id in varchar2,
+        p_context  in clob
+    ) return number;
+end recall_context_sink;
+/
+
+create or replace package body recall_context_sink as
+    function store_context(
+        p_batch_id in varchar2,
+        p_context  in clob
+    ) return number is
+        l_request_id number;
+        l_end_user   varchar2(128);
+    begin
+        select json_value(p_context, '$.endUser' returning varchar2(128))
+        into l_end_user;
+
+        if l_end_user is null then
+            raise_application_error(-20044, 'Captured context lacks an end user.');
+        end if;
+
+        insert into recall_authorized_requests(
+            end_user_name, batch_id, context_json
+        ) values (
+            l_end_user, upper(trim(p_batch_id)), json(p_context)
+        )
+        returning request_id into l_request_id;
+
+        commit;
+        return l_request_id;
+    end store_context;
+end recall_context_sink;
+/
+
+show errors package body recall_context_sink
+
+create or replace package recall_secure_api authid current_user as
+    function current_end_user return varchar2;
+    function get_secured_context(p_batch_id in varchar2) return clob;
+    function capture_secured_context(p_batch_id in varchar2) return number;
+end recall_secure_api;
+/
+
+create or replace package body recall_secure_api as
+    function current_end_user return varchar2 is
+        l_user varchar2(128);
+    begin
+        select json_value(
+                   ora_end_user_context,
+                   '$.USERNAME' returning varchar2(128)
+               )
+        into l_user;
+        return l_user;
+    end current_end_user;
+
+    function get_secured_context(p_batch_id in varchar2) return clob is
+        l_result clob;
+    begin
+        -- Resolve Lab 4 vector columns at runtime, under the caller's data roles.
+        execute immediate q'~select json_object(
+                   'endUser' value :end_user,
+                   'batchId' value :batch_id,
+                   'affectedStoreCount' value (
+                       select count(distinct si.store_id)
+                       from shipments sh
+                       join shipment_items si on si.shipment_id = sh.shipment_id
+                       where sh.batch_id = :batch_id
+                   ),
+                   'unitsSent' value (
+                       select coalesce(sum(si.units_sent), 0)
+                       from shipments sh
+                       join shipment_items si on si.shipment_id = sh.shipment_id
+                       where sh.batch_id = :batch_id
+                   ),
+                   'customerExposureCount' value (
+                       select count(distinct p.customer_id)
+                       from purchases p
+                       where p.batch_id = :batch_id
+                   ),
+                   'componentBatchCount' value (
+                       select count(*)
+                       from batch_components bc
+                       where bc.batch_id = :batch_id
+                   ),
+                   'supplierSiteCount' value (
+                       select count(distinct cb.supplier_site_id)
+                       from batch_components bc
+                       join component_batches cb
+                            on cb.component_batch_id = bc.component_batch_id
+                       where bc.batch_id = :batch_id
+                   ),
+                   'semanticComplaints' value (
+                       select json_arrayagg(
+                                  json_object(
+                                      'complaintId' value x.complaint_id,
+                                      'text' value x.chunk_text,
+                                      'distance' value round(x.distance, 4)
+                                  ) order by x.distance returning clob
+                              )
+                       from (
+                           select cc.complaint_id,
+                                  cc.chunk_text,
+                                  vector_distance(
+                                      cc.embedding, q.query_vector, cosine
+                                  ) as distance
+                           from complaint_chunks cc
+                           cross join recall_queries q
+                           where q.query_key = 'HEAT_ODOR'
+                           and vector_distance(
+                                   cc.embedding, q.query_vector, cosine
+                               ) < 0.70
+                           order by distance
+                           fetch first 5 rows only
+                       ) x
+                   ) format json,
+                   'firstAction' value (
+                       select action_text from recall_actions where priority_no = 1
+                   ),
+                   'customerContactAuthorized' value 'false' format json
+                   returning clob
+               )~'
+        into l_result
+        using current_end_user,
+              upper(trim(p_batch_id)), upper(trim(p_batch_id)),
+              upper(trim(p_batch_id)), upper(trim(p_batch_id)),
+              upper(trim(p_batch_id)), upper(trim(p_batch_id));
+        return l_result;
+    end get_secured_context;
+
+    function capture_secured_context(p_batch_id in varchar2) return number is
+        l_context clob;
+    begin
+        l_context := get_secured_context(p_batch_id);
+        return recall_context_sink.store_context(p_batch_id, l_context);
+    end capture_secured_context;
+end recall_secure_api;
+/
+
+show errors package body recall_secure_api
+
+grant execute on recall_secure_api to recall_end_user_login;
+
+-- This responder has no retrieval tool. The invoker-rights package completes
+-- secured retrieval first, then passes only the materialized JSON to the team.
+begin
+
+    dbms_cloud_ai_agent.create_agent(
+        agent_name => 'RECALL_SECURED_RESPONDER',
+        attributes => q'~{
+          "profile_name":"RECALL_AGENT_PROFILE",
+          "role":"You are a role-aware product recall investigator. Summarize only the pre-authorized recall JSON and vector evidence supplied in the request. Never infer or add stores, customers, complaints, counts, or totals absent from that evidence.",
+          "enable_human_tool":false
+        }~'
+    );
+
+    dbms_cloud_ai_agent.create_task(
+        task_name  => 'SUMMARIZE_SECURED_RECALL_TASK',
+        attributes => q'~{
+          "instruction":"Summarize only the authorized JSON and vector evidence in this request: {query}. State the end user, visible store count, visible units, visible customer count, shared component batch count, shared supplier site count, visible complaint IDs, and first action without expanding beyond the active role scope.",
+          "tools":[],
+          "enable_human_tool":false
+        }~'
+    );
+
+    dbms_cloud_ai_agent.create_team(
+        team_name  => 'RECALL_SECURED_TEAM',
+        attributes => q'~{
+          "agents":[{"name":"RECALL_SECURED_RESPONDER","task":"SUMMARIZE_SECURED_RECALL_TASK"}],
+          "process":"sequential"
+        }~'
+    );
+end;
+/
+
+
+declare
+    l_errors number;
+begin
+    select count(*) into l_errors from user_errors
+    where name in ('RECALL_AGENT_BRIDGE', 'RECALL_CONTEXT_SINK', 'RECALL_SECURE_API')
+    and attribute = 'ERROR';
+    if l_errors > 0 then
+        raise_application_error(-20107, 'Lab 7 support packages have compilation errors.');
+    end if;
+end;
+/
 
 prompt --- Final facilitator verification ---
 
@@ -2373,5 +2772,5 @@ prompt ============================================================
 
 undefine shared_password
 undefine recall_region
-undefine recall_model
+undefine recall_compartment
 set define off

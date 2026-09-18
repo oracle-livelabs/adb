@@ -2,13 +2,15 @@
 
 ## Introduction
 
-Kevin now asks, “Where do we need to support returns, and who should respond?” A list of 120 stores is not a field plan. He needs each affected location connected to a response center before store teams start calling for help.
+Kevin now asks, “Where do we need to support returns, and who should respond?” A list of 120 stores is not a field plan. Before store teams call for help, Kevin needs to know which response center will support each store.
 
-David's design is to treat locations as database data, not coordinates exported to a separate map. Stores, response centers, and supplier sites become indexed points. The same workflow can test a 25-kilometer response radius, choose the nearest center, and produce map-ready output for the application.
+David keeps store, response-center, and supplier-site locations in the same database as the recall records. The database can check whether a store is within 25 kilometers of a response center, choose the closest center, and send the result to the application as map data. The team does not need to export coordinates to a separate mapping system and combine the results by hand.
 
-Tim promotes the existing longitude and latitude values to Oracle Spatial `SDO_GEOMETRY`, creates the Spatial indexes, and runs the proximity and distance SQL. He then produces GeoJSON that later APIs and the command center can use without recalculating assignments elsewhere.
+Oracle AI Database keeps application JSON, recall records, and location points in one database. Lab 1 kept the application report beside the recall records. Lab 2 adds locations to those same records. Tim can use one SQL workflow to connect the case report, affected stores, and response locations instead of moving data between separate systems.
 
-By the end of the lab, Kevin has response coverage and a nearest-center assignment for every affected store. David can carry the location evidence forward without introducing a spreadsheet-and-map handoff.
+Tim turns the existing longitude and latitude values into Oracle Spatial `SDO_GEOMETRY` points. He adds the indexes that make location searches fast, then uses SQL to find nearby response centers and calculate the closest one. He also produces GeoJSON for later APIs and the command center.
+
+By the end of the lab, every affected store has a response-center assignment. The application can show store teams who should support them and where that support is located.
 
 Estimated Time: 10 minutes
 
@@ -24,7 +26,7 @@ In this lab, you will:
 
 ## Task 1: Promote Coordinates to Oracle Spatial
 
-Kevin needs a field plan, not raw coordinates. David promotes locations to first-class data; Tim creates the points and indexes.
+Kevin needs a field plan, not raw coordinates. David adds locations to the database records; Tim creates the points and indexes.
 
 1. Inspect the relational longitude and latitude values before adding spatial columns.
 
@@ -54,102 +56,77 @@ Kevin needs a field plan, not raw coordinates. David promotes locations to first
     </copy>
     ```
 
-    These are regular numeric columns. The next block is safe to rerun if you need to repeat this lab task.
+    ![2026-09-18-004984](images/2026-09-18-004984.png)
 
 2. Ensure and populate the `SDO_GEOMETRY` columns, then create the V2 spatial indexes.
 
     ```sql
     <copy>
-    declare
-        procedure run_ddl(
-            p_sql          in varchar2,
-            p_ignored_code in number
-        ) is
-        begin
-            execute immediate p_sql;
-        exception
-            when others then
-                if sqlcode != p_ignored_code then
-                    raise;
-                end if;
-        end;
-    begin
-        -- This block is rerunnable after a previous Lab 2 attempt.
-        run_ddl(
-            'alter table stores add (location mdsys.sdo_geometry)',
-            -1430
-        );
-        run_ddl(
-            'alter table response_centers add (location mdsys.sdo_geometry)',
-            -1430
-        );
-        run_ddl(
-            'alter table supplier_sites add (location mdsys.sdo_geometry)',
-            -1430
-        );
-    end;
-    /
-
+ 
+    alter table stores add (location mdsys.sdo_geometry);
+    
+    alter table response_centers add (location mdsys.sdo_geometry);
+    
+    alter table supplier_sites add (location mdsys.sdo_geometry);
+    
     update stores
-    set    location = mdsys.sdo_geometry(longitude, latitude);
-
+    set location = mdsys.sdo_geometry(longitude, latitude);
+    
     update response_centers
-    set    location = mdsys.sdo_geometry(longitude, latitude);
-
+    set location = mdsys.sdo_geometry(longitude, latitude);
+    
     update supplier_sites
-    set    location = mdsys.sdo_geometry(longitude, latitude);
-
-    declare
-        procedure run_ddl(
-            p_sql          in varchar2,
-            p_ignored_code in number
-        ) is
-        begin
-            execute immediate p_sql;
-        exception
-            when others then
-                if sqlcode != p_ignored_code then
-                    raise;
-                end if;
-        end;
-    begin
-        run_ddl(
-            'alter table stores modify (location not null)',
-            -1442
-        );
-        run_ddl(
-            'alter table response_centers modify (location not null)',
-            -1442
-        );
-        run_ddl(
-            'alter table supplier_sites modify (location not null)',
-            -1442
-        );
-
-        run_ddl(
-            'create index stores_spatial_ix on stores(location) indextype is mdsys.spatial_index_v2',
-            -955
-        );
-        run_ddl(
-            'create index response_centers_spatial_ix on response_centers(location) indextype is mdsys.spatial_index_v2',
-            -955
-        );
-        run_ddl(
-            'create index supplier_sites_spatial_ix on supplier_sites(location) indextype is mdsys.spatial_index_v2',
-            -955
-        );
-    end;
-    /
-
+    set location = mdsys.sdo_geometry(longitude, latitude);
+    
+    alter table stores modify (location not null);
+    
+    alter table response_centers modify (location not null);
+    
+    alter table supplier_sites modify (location not null);
+    
+    create index if not EXISTS stores_spatial_ix on stores(location) indextype is mdsys.spatial_index_v2;
+    
+    create index if not EXISTS response_centers_spatial_ix on response_centers(location) indextype is mdsys.spatial_index_v2;
+    
+    create index if not EXISTS supplier_sites_spatial_ix on supplier_sites(location) indextype is mdsys.spatial_index_v2;
+    
     commit;
+
     </copy>
     ```
 
-    The 26ai constructor creates WGS84 points from longitude and latitude. The script inserts no rows into `USER_SDO_GEOM_METADATA`; each V2 index creates its metadata automatically.
+    
 
-    The block is rerunnable and safely recognizes columns and indexes that already exist.
+    In the updates above, `MDSYS.SDO_GEOMETRY(longitude, latitude)` converts each pair of coordinates into a geographic point that Oracle AI Database can use to calculate distances and find nearby locations. This function is called a constructor because it creates an `SDO_GEOMETRY` value. It uses WGS84 (World Geodetic System 1984), the coordinate system used by GPS, with longitude first and latitude second. Each `SPATIAL_INDEX_V2` index automatically creates the spatial metadata needed to describe its location column.
 
-3. The prepared backend uses the populated `LOCATION` columns and the current `RECALL_LAB_API` package.
+3. Update the affected-store view to use the store locations you just populated. The initial view contains a null placeholder because the spatial columns do not exist until this lab. Run this replacement before Task 2 so the distance queries receive the actual store locations.
+
+    ```sql
+    <copy>
+    create or replace view recall_affected_stores_v as
+    select x.batch_id,
+           s.store_id,
+           s.store_code,
+           s.store_name,
+           s.region_code,
+           x.units_sent,
+           s.longitude,
+           s.latitude,
+           s.location
+    from   (
+               select sh.batch_id,
+                      si.store_id,
+                      sum(si.units_sent) as units_sent
+               from   shipments sh
+               join   shipment_items si
+                      on si.shipment_id = sh.shipment_id
+               group  by sh.batch_id, si.store_id
+           ) x
+    join   stores s on s.store_id = x.store_id;
+    </copy>
+    ```
+
+    ![2026-09-18-004985](images/2026-09-18-004985.png) 
 
 4. Inspect the promoted geometry values.
 
@@ -168,6 +145,8 @@ Kevin needs a field plan, not raw coordinates. David promotes locations to first
 
     Each row is a two-dimensional point with geometry type `2001` and SRID `4326`.
 
+    ![2026-09-18-004986](images/2026-09-18-004986.png)
+
 5. Confirm the V2 indexes and their generated metadata.
 
     ```sql
@@ -184,7 +163,16 @@ Kevin needs a field plan, not raw coordinates. David promotes locations to first
                'SUPPLIER_SITES_SPATIAL_IX'
            )
     order  by table_name, index_name;
+    </copy>
+    ```
+    Each index reports `VALID` and uses the `MDSYS` V2 index type.
 
+    ![2026-09-18-004987](images/2026-09-18-004987.png)
+
+    Here we check the metadata:
+
+    ```sql
+    <copy>
     select table_name, column_name, srid
     from   user_sdo_geom_metadata
     where  table_name in ('STORES', 'RESPONSE_CENTERS', 'SUPPLIER_SITES')
@@ -192,7 +180,7 @@ Kevin needs a field plan, not raw coordinates. David promotes locations to first
     </copy>
     ```
 
-    Each index reports `VALID` and uses the `MDSYS` V2 index type. The second query returns generated SRID `4326` metadata.
+    ![2026-09-18-004988](images/2026-09-18-004988.png) 
 
 ## Task 2: Find Stores Within Response Radius
 
@@ -218,11 +206,33 @@ Kevin asks whether every store has nearby help. David defines a response-radius 
     </copy>
     ```
 
-    The result contains all 120 affected stores. An authorized recall desk serves each store within 25 kilometers.
+    Each row pairs a store with a response center within 25 kilometers. A store appears more than once when several centers are nearby. For example, 552 rows can represent 120 unique stores; the row count is not the store count.
 
-2. Note the operational result:
+    ![2026-09-18-004989](images/2026-09-18-004989.png)
 
-    - The generated national footprint includes 120 affected stores.
+2. Count the unique stores with at least one response center within 25 kilometers.
+
+    ```sql
+    <copy>
+    select count(distinct a.store_id) as covered_stores
+    from   recall_affected_stores_v a
+    cross  join response_centers rc
+    where  a.batch_id = 'B-482'
+    and    sdo_within_distance(
+               a.location,
+               rc.location,
+               'distance=25 unit=km'
+           ) = 'TRUE';
+    </copy>
+    ```
+
+    Expected result: `COVERED_STORES = 120`.
+
+    ![2026-09-18-004990](images/2026-09-18-004990.png)
+
+3. Note the operational result:
+
+    - The recall data includes 120 affected stores.
     - Every affected store has a nearby authorized response location.
     - The next task ranks the nearest center when service areas overlap.
 
@@ -269,9 +279,11 @@ Kevin needs one center accountable for each location. David chooses a repeatable
 
     All 120 affected stores now have a response-center assignment.
 
+    ![2026-09-18-004991](images/2026-09-18-004991.png)
+
 ## Task 4: Map Stores and Supplier Sites
 
-Kevin needs the plan in the application. David uses GeoJSON as the exchange format; Tim prepares the store and supplier location results.
+Kevin needs store and supplier locations in the returns application. David uses GeoJSON, a common map-data format; Tim prepares the location results.
 
 1. Use the queries in this task to return:
 
@@ -285,20 +297,15 @@ Kevin needs the plan in the application. David uses GeoJSON as the exchange form
 
     - Store and supplier-site locations join directly to recall facts.
     - Spatial operators can use spatial indexes.
-    - SQL produces GeoJSON from the governed data used by later labs.
+    - SQL produces GeoJSON from the recall data used by later labs.
 
 You have completed Lab 2. Lab 3 traces upstream component lots and downstream customer exposure with SQL property graph.
 
-## Troubleshooting
+## Conclusion
 
-| Symptom | Likely cause | Recovery |
-|---|---|---|
-| `LOCATION` does not exist | The prepared workshop environment is incomplete | Ask the facilitator to verify the backend deployment. |
-| Column or index already exists | The promotion script already ran | Continue with verification; do not repeat the promotion step. |
-| Spatial index is invalid | Promotion stopped during index creation | Ask the facilitator to verify the backend deployment before retrying the spatial steps. |
-| Locations fall outside the continental U.S. | The database contains older generated coordinates | Ask the facilitator to refresh the prepared spatial data, then regenerate the GeoJSON captures. |
-| GeoJSON has fewer than 120 stores | Batch `B-482` data changed | Recheck `recall_affected_stores_v`. |
-| Supplier-site GeoJSON is empty | Component trace data did not load | Recheck `recall_component_trace_v`. |
+Kevin's business requirements can now be delivered directly from the database: find the response center for each affected store, check whether each store is within the response area, and return map data to the returns application.
+
+David keeps recall records and location points in Oracle AI Database together. The team does not need a separate Spatial database, a process to copy data between systems, or an integration to keep recall and map information aligned. Tim can use SQL to produce the assignments and GeoJSON that the application needs.
 
 ## Learn More
 
