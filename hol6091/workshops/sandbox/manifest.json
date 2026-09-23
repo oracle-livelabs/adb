@@ -1,0 +1,47 @@
+{
+    "workshoptitle": "Build a Medallion Data Pipeline with Oracle AI Lakehouse",
+    "help": "livelabs-help-adbs_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Lab 1: Meet PeakGear and prepare your Lakehouse",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 2: Alex builds reusable Silver sales data",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../bronze-to-silver/bronze-to-silver.md"
+        },
+        {
+            "title": "Lab 3: Sam investigates inventory coverage across tiers",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../inventory-analysis/inventory-analysis.md"
+        },
+        {
+            "title": "Lab 4: Alex publishes an AI-ready West-region Gold product",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../silver-to-gold/silver-to-gold.md"
+        },
+        {
+            "title": "Lab 5: Mia asks business questions in natural language",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../ask-business/ask-business.md"
+        },
+        {
+            "title": "Lab 6: Connect the medallion journey to business value",
+            "description": "",
+            "type": "livelabs",
+            "filename": "../../conclusion/conclusion.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Template to link to Need Help lab at the end of workshop.",
+            "filename": "https://raw.githubusercontent.com/oracle-livelabs/common/main/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
