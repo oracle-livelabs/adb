@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="680" viewBox="0 0 1440 680" role="img" aria-labelledby="title desc">
+<title id="title">PeakGear medallion journey</title><desc id="desc">Alex engineers Bronze and Silver Iceberg data and native Oracle Gold. Sam queries Bronze inventory with Silver sales. Mia asks natural-language questions of West-region Gold.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10" fill="#425563"/></marker></defs>
+<rect width="1440" height="680" fill="#f7f5f0"/>
+<g font-family="Arial, sans-serif" fill="#20333e">
+<text x="52" y="58" font-size="32" font-weight="bold">From raw data to a trusted business answer</text>
+<text x="52" y="93" font-size="20">OCI hands-on deployment · Open-table Bronze and Silver · Native Oracle Gold</text>
+<rect x="52" y="132" width="1336" height="62" rx="12" fill="#e2ece9"/>
+<text x="78" y="171" font-size="23" font-weight="bold">Alex · Data Engineer</text><text x="375" y="171" font-size="21">Data Transforms: load → join and cleanse → filter, aggregate and annotate</text>
+<g stroke="#9ba8ad" stroke-width="1.5">
+<rect x="52" y="230" width="268" height="175" rx="12" fill="white"/>
+<rect x="370" y="230" width="288" height="175" rx="12" fill="#f2e2d0"/>
+<rect x="708" y="230" width="288" height="175" rx="12" fill="#e7ecef"/>
+<rect x="1046" y="230" width="342" height="175" rx="12" fill="#f7e9b5"/>
+</g>
+<g font-size="23" font-weight="bold"><text x="76" y="269">RAW SOURCES</text><text x="394" y="269">BRONZE · ICEBERG</text><text x="732" y="269">SILVER · ICEBERG</text><text x="1070" y="269">GOLD · ORACLE PG</text></g>
+<g font-size="18"><text x="76" y="309">PeakGear files</text><text x="76" y="339">OCI Object Storage</text><text x="76" y="369">Sales · Products · Stores</text>
+<text x="394" y="309">Source-faithful tables</text><text x="394" y="339">Sales · Products · Stores</text><text x="394" y="369">Inventory for investigation</text>
+<text x="732" y="309">Enriched sales</text><text x="732" y="339">Standardized names</text><text x="732" y="369">Reusable sales measures</text>
+<text x="1070" y="309">West product performance</text><text x="1070" y="339">Business scope in metadata</text><text x="1070" y="369">Select AI consumption</text></g>
+<g stroke="#425563" stroke-width="3" fill="none" marker-end="url(#arrow)"><path d="M322 309H358"/><path d="M660 309H696"/><path d="M998 309H1034"/></g>
+<text x="378" y="434" font-size="17">AI Catalog-managed tables · Data files in object storage</text>
+<rect x="52" y="468" width="944" height="114" rx="12" fill="#dfeaf3"/>
+<text x="76" y="505" font-size="23" font-weight="bold">Sam · Data Analyst</text>
+<text x="76" y="538" font-size="19">Catalog + SQL Worksheet: Bronze inventory ⨝ Silver sales → inventory coverage</text>
+<rect x="1046" y="468" width="342" height="114" rx="12" fill="#e8e1ef"/>
+<text x="1070" y="505" font-size="23" font-weight="bold">Mia · Business User</text><text x="1070" y="538" font-size="19">Natural language → Gold answer</text>
+<g stroke="#425563" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M514 441V457"/><path d="M852 441V457"/><path d="M1217 408V457"/></g>
+<text x="52" y="624" font-size="18">Implementation: native PG staging precedes Silver publication. Verify the imported Gold flow's actual source lineage.</text>
+<text x="52" y="653" font-size="18">A West filter selects rows; annotations describe scope. Compatible Spark and multi-cloud paths are extensions, not lab steps.</text>
+</g></svg>
