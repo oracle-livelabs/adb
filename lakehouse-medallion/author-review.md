@@ -4,7 +4,7 @@ Estimated Time: 10 minutes to review this checklist; allow a separate full dry-r
 
 ## Delivery status
 
-GitHub submission: WMS 12202 / LiveLabs 4526, `hol6091`, development branch `codex/hol6091-wms-12202`. The owner confirmed public check-in, including the pre-release UI screenshots. Keep the PR in draft and the LiveLabs listing Private until runtime acceptance. The uppercase source folder remains unchanged.
+GitHub submission: WMS 12202 / LiveLabs 4526, `lakehouse-medallion`, development branch `codex/hol6091-wms-12202`. The owner confirmed public check-in, including the pre-release UI screenshots. Keep the PR in draft and the LiveLabs listing Private until runtime acceptance. The uppercase source folder remains unchanged.
 
 WMS-specific checks still open: separate common Get Started lab (setup is currently integrated into Lab 1); correct sandbox Need Help variant; final screenshot redaction/cropping review; official lint checker; and all runtime checks below. Do not mark these items complete solely because the local structural validator passed. Repository contribution guidance also requests OCA verification and a sign-off. No legal attestation or sign-off is made on behalf of the owner in this draft submission.
 

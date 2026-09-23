@@ -25,7 +25,7 @@ Open `http://localhost:8000/workshops/sandbox/`. Internet access is required for
 
 ## GitHub handoff
 
-This `hol6091` directory is the GitHub submission copy of the local HOL6091 package. Filenames use lowercase to follow WMS guidance. The manifest title and help alias match WMS. Review the author checklist before requesting a production merge. The six-lab scope and new/legacy UI separation remain unchanged.
+This `lakehouse-medallion` directory is the GitHub submission copy of the local HOL6091 package. Filenames use lowercase to follow WMS guidance. The manifest title and help alias match WMS. Review the author checklist before requesting a production merge. The six-lab scope and new/legacy UI separation remain unchanged.
 
 Do not commit credentials, project exports containing secrets, attendee handouts, or private dataset URLs. The project ZIP and raw data are provisioned separately and are not embedded in this package. Review tenant identifiers in screenshots before public publication.
 

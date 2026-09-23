@@ -1,6 +1,6 @@
-# LiveLabs Workshop Validation – hol6091
+# LiveLabs Workshop Validation – lakehouse-medallion
 
-Generated on 2026-09-23T10:51:37.322736+00:00
+Generated on 2026-09-23T11:16:27.629176+00:00
 
 ## Structure Check
 - ✅ Required folders and workshop variants present.
@@ -85,6 +85,7 @@ Generated on 2026-09-23T10:51:37.322736+00:00
 ### validation-result.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
+  - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Heavy nominalization usage; prefer vivid verbs.
 
