@@ -21,9 +21,9 @@ Estimated Time: 25 minutes
 
 Kevin describes three responsibilities. David turns them into three data roles. Tim starts with the stores each role may see.
 
-The workshop already includes local end users STORE_101_USER, REGION_NE_USER, and RECALL_LEAD_USER, using the workshop password. You will assign their data roles after defining the rules. They are database end users, not additional application schemas.
+The workshop already includes local end users STORE\_101\_USER, REGION\_NE\_USER, and RECALL\_LEAD\_USER, using the workshop password. You will assign their data roles after defining the rules. They are database end users, not additional application schemas.
 
-1. Connect as **RECALL_OWNER**. Create the Store 101 data role.
+1. Connect as **RECALL\_OWNER**. Create the Store 101 data role.
 
     ```sql
     <copy>
@@ -46,6 +46,10 @@ The workshop already includes local end users STORE_101_USER, REGION_NE_USER, an
     create or replace data role recall_lead_data_role;
     </copy>
     ```
+
+    After running Steps 1–3, Script Output confirms that the three data roles were created.
+
+    ![SQL Developer Web showing the three data role statements and successful creation messages](images/lab7-create-data-roles.png)
 
 4. Give each data role the prepared login role. It provides connection and approved package privileges, not unrestricted table access.
 
@@ -89,11 +93,15 @@ The workshop already includes local end users STORE_101_USER, REGION_NE_USER, an
     </copy>
     ```
 
+    The three store grants define the local, regional, and company-wide scopes. Script Output confirms each grant was created.
+
+    ![SQL Developer Web showing the three store-scope data grants and successful creation messages](images/lab7-store-scope-grants.png)
+
 ## Task 2: Apply the Rules to Related Records
 
 Hiding a store is not enough if its customers or complaints remain visible. David follows the relationships between the records. Tim makes the permitted stores determine the related records each user can read.
 
-Stay connected as **RECALL_OWNER**. Run each block separately.
+Stay connected as **RECALL\_OWNER**. Run each block separately.
 
 1. Limit customers to those whose home store is visible.
 
@@ -162,6 +170,10 @@ Stay connected as **RECALL_OWNER**. Run each block separately.
     to recall_store_101_data_role, recall_region_ne_data_role, recall_lead_data_role;
     </copy>
     ```
+
+    Confirm that Script Output reports `Data GRANT created.` for the complaint-chunk rule.
+
+    ![SQL Developer Web showing complaint chunks restricted through their parent complaints and successful grant creation](images/lab7-protect-complaint-vectors.png)
 
 7. Share product, batch, response instructions, search question, and response-center reference records. These facts help every role understand the recall without granting customer access.
 
@@ -248,13 +260,19 @@ Stay connected as **RECALL_OWNER**. Run each block separately.
     </copy>
     ```
 
+    Confirm that each user has exactly the intended data role.
+
+    ![SQL Developer Web logged in as ADMIN showing the three verified end-user data role assignments](images/lab7-verify-role-assignments.png)
+
 ## Task 3: Test the Same Queries as Three Users
 
 Kevin wants proof that changing the signed-in user changes the result without changing the application query. Tim tests database results before asking the assistant anything.
 
-Use a direct database connection, such as SQLcl or SQL Developer desktop, for these local end users. Use the same database connection details as RECALL_OWNER, with the end-user name and workshop password. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
+Use a direct database connection, such as SQLcl or SQL Developer desktop, for these local end users. Use the same database connection details as RECALL\_OWNER, with the end-user name and workshop password. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
 
-1. Connect as **STORE_101_USER** and confirm the end-user identity.
+The examples below show captured output from real SQLcl sessions, displayed as labeled transcript views. Red outlines identify the counts and successful no-row security checks.
+
+1. Connect as **STORE\_101\_USER** and confirm the end-user identity.
 
     ```sql
     <copy>
@@ -263,7 +281,7 @@ Use a direct database connection, such as SQLcl or SQL Developer desktop, for th
     </copy>
     ```
 
-    Expect STORE_101_USER. If it is null or different, correct the connection before continuing.
+    Expect STORE\_101\_USER. If it is null or different, correct the connection before continuing.
 
 2. Check the active data role.
 
@@ -275,7 +293,7 @@ Use a direct database connection, such as SQLcl or SQL Developer desktop, for th
     </copy>
     ```
 
-    Expect RECALL_STORE_101_DATA_ROLE.
+    Expect RECALL\_STORE\_101\_DATA\_ROLE.
 
 3. Count the affected stores and units visible to this user.
 
@@ -302,6 +320,8 @@ Use a direct database connection, such as SQLcl or SQL Developer desktop, for th
     ```
 
     Expect **5 customers**.
+
+    ![Captured SQLcl output confirming Store 101 identity, data role, 1 store, 12 units, and 5 customers](images/lab7-store-101-scope.png)
 
 5. Search for the strongest permitted complaint matches. The search uses the vector from Lab 4; access rules determine which complaint chunks are available to search.
 
@@ -333,17 +353,27 @@ Use a direct database connection, such as SQLcl or SQL Developer desktop, for th
 
     Expect **no rows**. This is a successful security check, not missing seed data.
 
-7. Reconnect as **REGION_NE_USER** and repeat Steps 1–6 without changing the SQL. Expect the Northeast data role, **24 stores, 453 units, and 120 customers**, with semantic matches 9001, 9002, and 9006. Complaint 9003 remains outside this workshop region's scope.
+    ![Captured SQLcl output showing complaint 9001 and no rows for complaint 9003 as Store 101](images/lab7-store-101-vector.png)
 
-8. Reconnect as **RECALL_LEAD_USER** and repeat Steps 1–6. Expect the lead data role, **120 stores, 2,400 units, and 600 customers**. Semantic matches include 9001, 9002, 9006, 9003, and 9007. Step 6 now returns complaint 9003.
+7. Reconnect as **REGION\_NE\_USER** and repeat Steps 1–6 without changing the SQL. Expect the Northeast data role, **24 stores, 453 units, and 120 customers**, with semantic matches 9001, 9002, and 9006. Complaint 9003 remains outside this workshop region's scope.
+
+    ![Captured SQLcl output confirming the Northeast identity and scoped counts](images/lab7-region-ne-scope.png)
+
+    ![Captured SQLcl output showing three Northeast vector matches and no rows for complaint 9003](images/lab7-region-ne-vector.png)
+
+8. Reconnect as **RECALL\_LEAD\_USER** and repeat Steps 1–6. Expect the lead data role, **120 stores, 2,400 units, and 600 customers**. Semantic matches include 9001, 9002, 9006, 9003, and 9007. Step 6 now returns complaint 9003.
+
+    ![Captured SQLcl output confirming the recall lead identity and company-wide counts](images/lab7-recall-lead-scope.png)
+
+    ![Captured SQLcl output showing five recall lead vector matches and access to complaint 9003](images/lab7-recall-lead-vector.png)
 
 ## Task 4: Give the Assistant Only Permitted Evidence
 
-Kevin wants the assistant to explain those same results. The prepared RECALL_SECURE_API package gathers facts using the caller's data roles. Its capture function stores that filtered document for an owner-side service to summarize. The service does not repeat the queries with wider access.
+Kevin wants the assistant to explain those same results. The prepared RECALL\_SECURE\_API package gathers facts using the caller's data roles. Its capture function stores that filtered document for an owner-side service to summarize. The service does not repeat the queries with wider access.
 
-RECALL_AGENT_BRIDGE and RECALL_SECURED_TEAM already exist. The team has no retrieval tools: it summarizes the supplied evidence. These prepared components also support the application in Lab 8.
+RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no retrieval tools: it summarizes the supplied evidence. These prepared components also support the application in Lab 8.
 
-1. Connect as **STORE_101_USER**. Preview the document the assistant will receive.
+1. Connect as **STORE\_101\_USER**. Preview the document the assistant will receive.
 
     ```sql
     <copy>
@@ -355,6 +385,8 @@ RECALL_AGENT_BRIDGE and RECALL_SECURED_TEAM already exist. The team has no retri
     ```
 
     Open the CLOB value to read the full JSON. Compare endUser, affectedStoreCount, unitsSent, customerExposureCount, and semanticComplaints with Task 3. Customer names and email fields are excluded; complaint text still needs the same access protection as its source records.
+
+    ![SQLcl transcript excerpt showing the actual Store 101 authorized evidence JSON](images/lab7-store-101-context.png)
 
 2. Capture this user's evidence. Run this block as a script. Enable DBMS Output for the connection to see the request ID.
 
@@ -370,11 +402,11 @@ RECALL_AGENT_BRIDGE and RECALL_SECURED_TEAM already exist. The team has no retri
     </copy>
     ```
 
-    This stores and commits a snapshot; it does not change the recall case. Run capture as the end user, not RECALL_OWNER.
+    This stores and commits a snapshot; it does not change the recall case. Run capture as the end user, not RECALL\_OWNER.
 
-3. Repeat Steps 1–2 as **REGION_NE_USER**, then as **RECALL_LEAD_USER**. Each login produces a separate snapshot with its own permitted counts and complaints.
+3. Repeat Steps 1–2 as **REGION\_NE\_USER**, then as **RECALL\_LEAD\_USER**. Each login produces a separate snapshot with its own permitted counts and complaints.
 
-4. Reconnect as **RECALL_OWNER** and confirm that all three users captured evidence.
+4. Reconnect as **RECALL\_OWNER** and confirm that all three users captured evidence.
 
     ```sql
     <copy>
@@ -388,6 +420,8 @@ RECALL_AGENT_BRIDGE and RECALL_SECURED_TEAM already exist. The team has no retri
     ```
 
     Expect three rows. Capture any missing user's evidence before continuing.
+
+    ![Captured SQLcl output confirming an evidence request from each of the three users](images/lab7-captured-requests.png)
 
 5. Ask the assistant to summarize the latest Store 101 snapshot.
 
@@ -406,17 +440,20 @@ RECALL_AGENT_BRIDGE and RECALL_SECURED_TEAM already exist. The team has no retri
     </copy>
     ```
 
-    The response appears in **AGENT_ANSWER**. Open the CLOB cell for the full answer. This sends the captured evidence to the configured OCI Generative AI service.
+    The response appears in **AGENT\_ANSWER**. Open the CLOB cell for the full answer. This sends the captured evidence to the configured OCI Generative AI service.
 
-6. Run Step 5 twice more, changing only STORE_101_USER to REGION_NE_USER, then RECALL_LEAD_USER. Compare the answers with these database checkpoints, not an exact sentence.
+6. Run Step 5 twice more, changing only STORE\_101\_USER to REGION\_NE\_USER, then RECALL\_LEAD\_USER. Compare the answers with these database checkpoints, not an exact sentence.
 
-    | End user | Stores | Units | Customers | Semantic complaint IDs |
-    |---|---:|---:|---:|---|
-    | STORE_101_USER | 1 | 12 | 5 | 9001 |
-    | REGION_NE_USER | 24 | 453 | 120 | 9001, 9002, 9006 |
-    | RECALL_LEAD_USER | 120 | 2,400 | 600 | 9001, 9002, 9006, 9003, 9007 |
+    | End user           | Stores | Units  | Customers | Semantic complaint IDs       |
+    | --------------------| -------:| -------:| ----------:| ------------------------------|
+    | STORE\_101\_USER   | 1      | 12     | 5         | 9001                         |
+    | REGION\_NE\_USER   | 24     | 453    | 120       | 9001, 9002, 9006             |
+    | RECALL\_LEAD\_USER | 120    | 2,400 | 600       | 9001, 9002, 9006, 9003, 9007 |
+    {: title="Expected results"}
 
     All roles share 25 component batches and 25 supplier sites. The first response remains quarantine and stop sales; customer contact is not yet authorized. Reject answers that invent facts or expand beyond the supplied evidence. Access filtering does not eliminate model errors.
+
+    ![Captured SQLcl output of three live assistant answers using the separately authorized snapshots](images/lab7-agent-answers.png)
 
 ## Conclusion
 

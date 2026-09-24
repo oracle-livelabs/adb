@@ -4,7 +4,7 @@
 
 This runbook prepares and rehearses the standalone React/Node command center used in Lab 8. Legacy application artifacts are archived and are not part of the learner workshop flow.
 
-Estimated Time: 22 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 

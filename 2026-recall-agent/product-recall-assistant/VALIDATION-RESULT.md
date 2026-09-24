@@ -40,7 +40,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 2 sentence(s) exceed 20 words; tighten wording.
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### archive/legacy-workshop/Recall_Agent_HOL.md
+### archive/legacy-workshop/Recall\_Agent\_HOL.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -129,13 +129,13 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 2 instance(s).
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/@oxc-project/types/README.md
+### react-app/node\_modules/@oxc-project/types/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/@react-leaflet/core/LICENSE.md
+### react-app/node\_modules/@react-leaflet/core/LICENSE.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -144,26 +144,26 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 22 sentence(s) exceed 20 words; tighten wording.
   - Passive voice detected in 15 instance(s).
 
-### react-app/node_modules/@react-leaflet/core/README.md
+### react-app/node\_modules/@react-leaflet/core/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/@rolldown/binding-darwin-arm64/README.md
+### react-app/node\_modules/@rolldown/binding-darwin-arm64/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/@rolldown/pluginutils/README.md
+### react-app/node\_modules/@rolldown/pluginutils/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/@vitejs/plugin-react/README.md
+### react-app/node\_modules/@vitejs/plugin-react/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -173,7 +173,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Em dashes detected; swap for commas, colons, or periods.
 
-### react-app/node_modules/accepts/HISTORY.md
+### react-app/node\_modules/accepts/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -181,7 +181,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/accepts/README.md
+### react-app/node\_modules/accepts/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -189,7 +189,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 10 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/body-parser/README.md
+### react-app/node\_modules/body-parser/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -198,54 +198,54 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 70 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/body-parser/node_modules/content-type/README.md
+### react-app/node\_modules/body-parser/node\_modules/content-type/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - 1 sentence(s) exceed 20 words; tighten wording.
 
-### react-app/node_modules/bytes/History.md
+### react-app/node\_modules/bytes/History.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/bytes/Readme.md
+### react-app/node\_modules/bytes/Readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/call-bind-apply-helpers/CHANGELOG.md
+### react-app/node\_modules/call-bind-apply-helpers/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/call-bind-apply-helpers/README.md
+### react-app/node\_modules/call-bind-apply-helpers/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/call-bound/CHANGELOG.md
+### react-app/node\_modules/call-bound/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/call-bound/README.md
+### react-app/node\_modules/call-bound/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/content-disposition/README.md
+### react-app/node\_modules/content-disposition/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -253,27 +253,27 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 5 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/content-type/HISTORY.md
+### react-app/node\_modules/content-type/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/content-type/README.md
+### react-app/node\_modules/content-type/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/cookie/README.md
+### react-app/node\_modules/cookie/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 7 instance(s).
 
-### react-app/node_modules/cookie/SECURITY.md
+### react-app/node\_modules/cookie/SECURITY.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -281,20 +281,20 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 1 instance(s).
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/cookie-signature/History.md
+### react-app/node\_modules/cookie-signature/History.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/cookie-signature/Readme.md
+### react-app/node\_modules/cookie-signature/Readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/debug/README.md
+### react-app/node\_modules/debug/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - HTML <a> tags are not allowed; use Markdown links.
@@ -305,14 +305,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Em dashes detected; swap for commas, colons, or periods.
 
-### react-app/node_modules/depd/History.md
+### react-app/node\_modules/depd/History.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/depd/Readme.md
+### react-app/node\_modules/depd/Readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -320,14 +320,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 20 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/detect-libc/README.md
+### react-app/node\_modules/detect-libc/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 5 instance(s).
 
-### react-app/node_modules/dotenv/CHANGELOG.md
+### react-app/node\_modules/dotenv/CHANGELOG.md
 - ❌ Formatting issues:
   - Line 506: Only one H1 allowed per file.
   - Missing '## Acknowledgements' section.
@@ -337,7 +337,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 8 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/dotenv/README-es.md
+### react-app/node\_modules/dotenv/README-es.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -346,7 +346,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - 5 sentence(s) exceed 20 words; tighten wording.
 
-### react-app/node_modules/dotenv/README.md
+### react-app/node\_modules/dotenv/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -357,14 +357,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 23 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/dotenv/SECURITY.md
+### react-app/node\_modules/dotenv/SECURITY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/dotenv/skills/dotenv/SKILL.md
+### react-app/node\_modules/dotenv/skills/dotenv/SKILL.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -375,7 +375,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Em dashes detected; swap for commas, colons, or periods.
 
-### react-app/node_modules/dotenv/skills/dotenvx/SKILL.md
+### react-app/node\_modules/dotenv/skills/dotenvx/SKILL.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -386,27 +386,27 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/dunder-proto/CHANGELOG.md
+### react-app/node\_modules/dunder-proto/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/dunder-proto/README.md
+### react-app/node\_modules/dunder-proto/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/ee-first/README.md
+### react-app/node\_modules/ee-first/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 6 instance(s).
 
-### react-app/node_modules/encodeurl/README.md
+### react-app/node\_modules/encodeurl/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -415,66 +415,66 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 4 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/es-define-property/CHANGELOG.md
+### react-app/node\_modules/es-define-property/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/es-define-property/README.md
+### react-app/node\_modules/es-define-property/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/es-errors/CHANGELOG.md
+### react-app/node\_modules/es-errors/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/es-errors/README.md
+### react-app/node\_modules/es-errors/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/es-object-atoms/CHANGELOG.md
+### react-app/node\_modules/es-object-atoms/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/es-object-atoms/README.md
+### react-app/node\_modules/es-object-atoms/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/escape-html/Readme.md
+### react-app/node\_modules/escape-html/Readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/etag/HISTORY.md
+### react-app/node\_modules/etag/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/etag/README.md
+### react-app/node\_modules/etag/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/express/Readme.md
+### react-app/node\_modules/express/Readme.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -482,7 +482,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/fdir/README.md
+### react-app/node\_modules/fdir/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -492,7 +492,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 2 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/finalhandler/HISTORY.md
+### react-app/node\_modules/finalhandler/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -500,41 +500,41 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/finalhandler/README.md
+### react-app/node\_modules/finalhandler/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 8 instance(s).
 
-### react-app/node_modules/forwarded/HISTORY.md
+### react-app/node\_modules/forwarded/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/forwarded/README.md
+### react-app/node\_modules/forwarded/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/fresh/HISTORY.md
+### react-app/node\_modules/fresh/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/fresh/README.md
+### react-app/node\_modules/fresh/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 4 instance(s).
 
-### react-app/node_modules/fsevents/README.md
+### react-app/node\_modules/fsevents/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -544,13 +544,13 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Em dashes detected; swap for commas, colons, or periods.
 
-### react-app/node_modules/function-bind/.github/SECURITY.md
+### react-app/node\_modules/function-bind/.github/SECURITY.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/function-bind/CHANGELOG.md
+### react-app/node\_modules/function-bind/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -558,7 +558,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 4 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/function-bind/README.md
+### react-app/node\_modules/function-bind/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -566,72 +566,72 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/get-intrinsic/CHANGELOG.md
+### react-app/node\_modules/get-intrinsic/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/get-intrinsic/README.md
+### react-app/node\_modules/get-intrinsic/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/get-proto/CHANGELOG.md
+### react-app/node\_modules/get-proto/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/get-proto/README.md
+### react-app/node\_modules/get-proto/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/gopd/CHANGELOG.md
+### react-app/node\_modules/gopd/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/gopd/README.md
+### react-app/node\_modules/gopd/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/has-symbols/CHANGELOG.md
+### react-app/node\_modules/has-symbols/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/has-symbols/README.md
+### react-app/node\_modules/has-symbols/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/hasown/CHANGELOG.md
+### react-app/node\_modules/hasown/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/hasown/README.md
+### react-app/node\_modules/hasown/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/http-errors/HISTORY.md
+### react-app/node\_modules/http-errors/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -639,14 +639,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/http-errors/README.md
+### react-app/node\_modules/http-errors/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/iconv-lite/README.md
+### react-app/node\_modules/iconv-lite/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -655,7 +655,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 6 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/inherits/README.md
+### react-app/node\_modules/inherits/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -664,14 +664,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 1 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/ipaddr.js/README.md
+### react-app/node\_modules/ipaddr.js/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 12 instance(s).
 
-### react-app/node_modules/is-promise/readme.md
+### react-app/node\_modules/is-promise/readme.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -679,7 +679,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/leaflet/CHANGELOG.md
+### react-app/node\_modules/leaflet/CHANGELOG.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -689,7 +689,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 83 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/leaflet/README.md
+### react-app/node\_modules/leaflet/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -699,7 +699,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 4 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/lightningcss/README.md
+### react-app/node\_modules/lightningcss/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -707,14 +707,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 7 sentence(s) exceed 20 words; tighten wording.
   - Passive voice detected in 4 instance(s).
 
-### react-app/node_modules/lightningcss-darwin-arm64/README.md
+### react-app/node\_modules/lightningcss-darwin-arm64/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/lucide-react/README.md
+### react-app/node\_modules/lucide-react/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -723,20 +723,20 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/math-intrinsics/CHANGELOG.md
+### react-app/node\_modules/math-intrinsics/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/math-intrinsics/README.md
+### react-app/node\_modules/math-intrinsics/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/media-typer/HISTORY.md
+### react-app/node\_modules/media-typer/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -744,7 +744,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/media-typer/README.md
+### react-app/node\_modules/media-typer/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -752,20 +752,20 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 1 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/merge-descriptors/readme.md
+### react-app/node\_modules/merge-descriptors/readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/mime-db/HISTORY.md
+### react-app/node\_modules/mime-db/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/mime-db/README.md
+### react-app/node\_modules/mime-db/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -774,14 +774,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 9 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/mime-types/HISTORY.md
+### react-app/node\_modules/mime-types/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/mime-types/README.md
+### react-app/node\_modules/mime-types/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -790,7 +790,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 5 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/ms/license.md
+### react-app/node\_modules/ms/license.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -798,14 +798,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/ms/readme.md
+### react-app/node\_modules/ms/readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 4 instance(s).
 
-### react-app/node_modules/nanoid/README.md
+### react-app/node\_modules/nanoid/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - HTML <a> tags are not allowed; use Markdown links.
@@ -813,20 +813,20 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/negotiator/HISTORY.md
+### react-app/node\_modules/negotiator/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/negotiator/README.md
+### react-app/node\_modules/negotiator/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/object-inspect/CHANGELOG.md
+### react-app/node\_modules/object-inspect/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -834,7 +834,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 6 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/on-finished/HISTORY.md
+### react-app/node\_modules/on-finished/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -842,34 +842,34 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/on-finished/README.md
+### react-app/node\_modules/on-finished/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 17 instance(s).
 
-### react-app/node_modules/once/README.md
+### react-app/node\_modules/once/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 6 instance(s).
 
-### react-app/node_modules/oracledb/CHANGELOG.md
+### react-app/node\_modules/oracledb/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/oracledb/README.md
+### react-app/node\_modules/oracledb/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 5 instance(s).
 
-### react-app/node_modules/oracledb/SECURITY.md
+### react-app/node\_modules/oracledb/SECURITY.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -877,7 +877,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 2 instance(s).
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/oracledb/package/README.md
+### react-app/node\_modules/oracledb/package/README.md
 - ❌ Formatting issues:
   - Line 9: Only one H1 allowed per file.
   - Missing '## Acknowledgements' section.
@@ -886,20 +886,20 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 7 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/parseurl/HISTORY.md
+### react-app/node\_modules/parseurl/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/parseurl/README.md
+### react-app/node\_modules/parseurl/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/path-to-regexp/Readme.md
+### react-app/node\_modules/path-to-regexp/Readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -908,13 +908,13 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 11 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/picocolors/README.md
+### react-app/node\_modules/picocolors/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/picomatch/README.md
+### react-app/node\_modules/picomatch/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -925,7 +925,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 13 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/postcss/README.md
+### react-app/node\_modules/postcss/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - HTML <a> tags are not allowed; use Markdown links.
@@ -933,7 +933,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/proxy-addr/HISTORY.md
+### react-app/node\_modules/proxy-addr/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -941,7 +941,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/proxy-addr/README.md
+### react-app/node\_modules/proxy-addr/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -949,14 +949,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 6 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/qs/.github/SECURITY.md
+### react-app/node\_modules/qs/.github/SECURITY.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - 1 sentence(s) exceed 20 words; tighten wording.
 
-### react-app/node_modules/qs/.github/THREAT_MODEL.md
+### react-app/node\_modules/qs/.github/THREAT\_MODEL.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -965,7 +965,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 2 sentence(s) exceed 20 words; tighten wording.
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/qs/CHANGELOG.md
+### react-app/node\_modules/qs/CHANGELOG.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -974,7 +974,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 16 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/qs/LICENSE.md
+### react-app/node\_modules/qs/LICENSE.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -983,7 +983,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 4 instance(s).
   - Heavy nominalization usage exceeds 5% of prose; prefer vivid verbs.
 
-### react-app/node_modules/qs/README.md
+### react-app/node\_modules/qs/README.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing 'Estimated Time:' line.
@@ -992,28 +992,28 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 44 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/range-parser/HISTORY.md
+### react-app/node\_modules/range-parser/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/range-parser/README.md
+### react-app/node\_modules/range-parser/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 6 instance(s).
 
-### react-app/node_modules/raw-body/README.md
+### react-app/node\_modules/raw-body/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 12 instance(s).
 
-### react-app/node_modules/react/README.md
+### react-app/node\_modules/react/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1021,14 +1021,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 1 sentence(s) exceed 20 words; tighten wording.
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/react-dom/README.md
+### react-app/node\_modules/react-dom/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/react-leaflet/LICENSE.md
+### react-app/node\_modules/react-leaflet/LICENSE.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -1037,13 +1037,13 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 25 sentence(s) exceed 20 words; tighten wording.
   - Passive voice detected in 19 instance(s).
 
-### react-app/node_modules/react-leaflet/README.md
+### react-app/node\_modules/react-leaflet/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/rolldown/README.md
+### react-app/node\_modules/rolldown/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1051,7 +1051,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - 2 sentence(s) exceed 20 words; tighten wording.
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/router/HISTORY.md
+### react-app/node\_modules/router/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
@@ -1059,7 +1059,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 3 instance(s).
 
-### react-app/node_modules/router/README.md
+### react-app/node\_modules/router/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1067,7 +1067,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 21 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/safer-buffer/Porting-Buffer.md
+### react-app/node\_modules/safer-buffer/Porting-Buffer.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1077,7 +1077,7 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Em dashes detected; swap for commas, colons, or periods.
 
-### react-app/node_modules/safer-buffer/Readme.md
+### react-app/node\_modules/safer-buffer/Readme.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1087,13 +1087,13 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Contractions found; expand them per Lanham rules.
   - Em dashes detected; swap for commas, colons, or periods.
 
-### react-app/node_modules/scheduler/README.md
+### react-app/node\_modules/scheduler/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/send/README.md
+### react-app/node\_modules/send/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1101,72 +1101,72 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 10 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/serve-static/README.md
+### react-app/node\_modules/serve-static/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 14 instance(s).
 
-### react-app/node_modules/setprototypeof/README.md
+### react-app/node\_modules/setprototypeof/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/side-channel/CHANGELOG.md
+### react-app/node\_modules/side-channel/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/side-channel/README.md
+### react-app/node\_modules/side-channel/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/side-channel-list/CHANGELOG.md
+### react-app/node\_modules/side-channel-list/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/side-channel-list/README.md
+### react-app/node\_modules/side-channel-list/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/side-channel-map/CHANGELOG.md
+### react-app/node\_modules/side-channel-map/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/side-channel-map/README.md
+### react-app/node\_modules/side-channel-map/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/side-channel-weakmap/CHANGELOG.md
+### react-app/node\_modules/side-channel-weakmap/CHANGELOG.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/side-channel-weakmap/README.md
+### react-app/node\_modules/side-channel-weakmap/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/source-map-js/README.md
+### react-app/node\_modules/source-map-js/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
@@ -1175,88 +1175,88 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 27 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/statuses/HISTORY.md
+### react-app/node\_modules/statuses/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/statuses/README.md
+### react-app/node\_modules/statuses/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/tinyglobby/README.md
+### react-app/node\_modules/tinyglobby/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/toidentifier/HISTORY.md
+### react-app/node\_modules/toidentifier/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/toidentifier/README.md
+### react-app/node\_modules/toidentifier/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 2 instance(s).
 
-### react-app/node_modules/type-is/HISTORY.md
+### react-app/node\_modules/type-is/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/type-is/README.md
+### react-app/node\_modules/type-is/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 23 instance(s).
 
-### react-app/node_modules/type-is/node_modules/content-type/README.md
+### react-app/node\_modules/type-is/node\_modules/content-type/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - 1 sentence(s) exceed 20 words; tighten wording.
 
-### react-app/node_modules/unpipe/HISTORY.md
+### react-app/node\_modules/unpipe/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/unpipe/README.md
+### react-app/node\_modules/unpipe/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/vary/HISTORY.md
+### react-app/node\_modules/vary/HISTORY.md
 - ❌ Formatting issues:
   - First non-empty line must be an H1 (# Title).
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 5/5
 
-### react-app/node_modules/vary/README.md
+### react-app/node\_modules/vary/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - Passive voice detected in 1 instance(s).
 
-### react-app/node_modules/vite/LICENSE.md
+### react-app/node\_modules/vite/LICENSE.md
 - ❌ Formatting issues:
   - Line 26: Only one H1 allowed per file.
   - Missing '## Acknowledgements' section.
@@ -1266,14 +1266,14 @@ Generated on 2026-09-09T09:22:56.082823+00:00
   - Passive voice detected in 179 instance(s).
   - Contractions found; expand them per Lanham rules.
 
-### react-app/node_modules/vite/README.md
+### react-app/node\_modules/vite/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.
 - ✍️ Lanham score: 4/5
   - 1 sentence(s) exceed 20 words; tighten wording.
 
-### react-app/node_modules/wrappy/README.md
+### react-app/node\_modules/wrappy/README.md
 - ❌ Formatting issues:
   - Missing '## Acknowledgements' section.
   - Missing 'Estimated Time:' line.

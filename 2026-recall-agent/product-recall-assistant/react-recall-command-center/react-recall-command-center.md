@@ -10,7 +10,7 @@ Tim prepares the React and Node database bridge, configures the application, and
 
 By the end of the lab, Kevin can compare the Store 101, Northeast, and recall-lead views in one application. Each person receives a different authorized answer to the same B-482 question, based on JSON, Vector Search, Spatial, SQL Property Graph, and Select AI Agent results.
 
-Estimated Time: 22 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 
@@ -26,6 +26,7 @@ In this lab, you will:
 - Compare converged agent answers grounded in JSON, Vector, Spatial, and Graph evidence.
 - Explain how local database users map to a production IdM design.
 
+
 ### To run the application
 
 - Node.js 20 or later and npm are installed on the lab workstation.
@@ -33,7 +34,7 @@ In this lab, you will:
 
 ## Task 1: Prepare the Database Connection for the Application
 
-Kevin needs the application to call approved packages, not internal tables. David separates user-session retrieval from the owner-side assistant call; Tim prepares the bridge.
+Kevin needs the application to call approved packages, not internal tables. David separates user-session retrieval from the owner-side assistant call; Tim prepares the bridge. 
 
 1. Start with the prepared database bridge.
 

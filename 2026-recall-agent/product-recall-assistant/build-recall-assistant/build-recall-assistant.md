@@ -10,7 +10,7 @@ Tim implements this design with PL/SQL functions, Select AI Agent tools, an agen
 
 By the end of the lab, the returns desk can ask five B-482 questions in one conversation. The answers contain only the facts returned by the approved package functions, with no customer names or contact details.
 
-Estimated Time: 18 minutes
+Estimated Time: 20 minutes
 
 ### Objectives
 
@@ -406,7 +406,7 @@ David keeps the language model behind Oracle AI Database package functions. The 
 ## Learn More
 
 - [Examples of using Select AI Agent](https://docs.oracle.com/en/database/oracle/oracle-database/26/selai/examples-using-select-ai-agent1.html)
-- [DBMS_CLOUD_AI_AGENT package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-agent-package.html)
+- [DBMS\_CLOUD\_AI\_AGENT package](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/dbms-cloud-ai-agent-package.html)
 - [Enable a resource principal for a database user](https://docs.oracle.com/en-us/iaas/autonomous-database-shared/doc/resource-principal.html)
 
 ## Acknowledgements
