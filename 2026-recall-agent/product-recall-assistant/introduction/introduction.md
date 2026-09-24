@@ -45,7 +45,7 @@ Tim keeps the technical boundary explicit. `ADMIN` creates accounts and platform
 
 Kevin's question starts each lab. David explains the architectural choice. Tim then uses the SQL to implement and verify it. The workshop preserves the same B-482 scenario, data model, and checkpoints throughout.
 
-Estimated Workshop Time: 120 minutes
+Estimated Workshop Time: 140 minutes
 
 ### Objectives
 
@@ -66,12 +66,12 @@ By the end of this workshop, you can:
 | Lab 1: Decide whether to open the case with JSON | 10 minutes |
 | Lab 2: Put help where it is needed with Oracle Spatial | 10 minutes |
 | Lab 3: Find the source and the reach with SQL Property Graph | 10 minutes |
-| Lab 4: Hear the signal in the noise with AI Vector Search | 10 minutes |
-| Lab 5: Answer from approved data using Select AI Agent | 18 minutes |
+| Lab 4: Hear the signal in the noise with AI Vector Search | 15 minutes |
+| Lab 5: Answer from approved data using Select AI Agent | 20 minutes |
 | Lab 6: Put trusted facts in reach with ORDS | 10 minutes |
-| Lab 7: Show each role only what it needs with Deep Data Security | 12 minutes |
-| Lab 8: Turn recall data into coordinated action with the React command center | 22 minutes |
-| Discussion and questions | 14 minutes |
+| Lab 7: Show each role only what it needs with Deep Data Security | 15 minutes |
+| Lab 8: Turn recall data into coordinated action with the React command center | 25 minutes |
+| Discussion and questions | 15 minutes |
 
 ### Before You Start
 

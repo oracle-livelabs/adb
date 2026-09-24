@@ -258,7 +258,7 @@ David keeps complaint text, vectors, JSON observations, and recall records in Or
 ## Learn More
 
 - [Oracle AI Vector Search User Guide](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/)
-- [VECTOR_DISTANCE SQL function](https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/vector_distance.html)
+- [VECTOR\_DISTANCE SQL function](https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/vector_distance.html)
 
 ## Acknowledgements
 

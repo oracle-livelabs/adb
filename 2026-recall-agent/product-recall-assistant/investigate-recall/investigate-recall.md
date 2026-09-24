@@ -299,7 +299,7 @@ Oracle AI Database is the differentiator because it stores application JSON alon
 ## Learn More
 
 - [JSON in Oracle AI Database](https://docs.oracle.com/en/database/oracle/oracle-database/26/adjsn/overview-json-oracle-ai-database.html)
-- [JSON_TABLE SQL function](https://docs.oracle.com/en/database/oracle/oracle-database/26/adjsn/columns-clause-sql-json-function-json_table.html)
+- [JSON\_TABLE SQL function](https://docs.oracle.com/en/database/oracle/oracle-database/26/adjsn/columns-clause-sql-json-function-json_table.html)
 
 ## Acknowledgements
 

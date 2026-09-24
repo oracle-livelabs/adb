@@ -19,11 +19,11 @@ The completed workshop uses relational, JSON, spatial, graph, vector, agent, sec
 3. Lab 2: Map Recall Impact with Oracle Spatial, 10 minutes
 4. Lab 3: Trace Recall Paths with SQL Property Graph, 10 minutes
 5. Lab 4: Prioritize Complaint Evidence with AI Vector Search, 15 minutes
-6. Lab 5: Build the Recall Assistant, 18 minutes
+6. Lab 5: Build the Recall Assistant, 20 minutes
 7. Lab 6: Publish the Recall API with ORDS, 10 minutes
-8. Lab 7: Make the Recall Agent Role-Aware with Deep Data Security, 12 minutes
-9. Lab 8: Deploy the Role-Aware React Recall Command Center, 22 minutes
-10. Discussion and questions, 14 minutes
+8. Lab 7: Make the Recall Agent Role-Aware with Deep Data Security, 15 minutes
+9. Lab 8: Deploy the Role-Aware React Recall Command Center, 25 minutes
+10. Discussion and questions, 15 minutes
 
 ## Workshop Prerequisites
 

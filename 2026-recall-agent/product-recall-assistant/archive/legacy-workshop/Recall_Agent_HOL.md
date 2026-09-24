@@ -25,16 +25,16 @@ Technologies to feature
 1. Database roles, privileges, and secure views
 Use standard database access control to show least privilege.
 Attendees create or use roles such as:
-STORE_USER
- REGIONAL_MANAGER
- RECALL_LEAD
- AI_APP_USER
+STORE\_USER
+ REGIONAL\_MANAGER
+ RECALL\_LEAD
+ AI\_APP\_USER
 Then expose only the right data through views or APIs.
 Example:
-RECALL_EVENTS_VIEW
- AFFECTED_STORES_VIEW
- CUSTOMER_CONTACT_SAFE_VIEW
- AUTHORIZED_RECALL_CONTEXT_VIEW
+RECALL\_EVENTS\_VIEW
+ AFFECTED\_STORES\_VIEW
+ CUSTOMER\_CONTACT\_SAFE\_VIEW
+ AUTHORIZED\_RECALL\_CONTEXT\_VIEW
 
 ## Lab 5: Unified Oracle APEX Recall Command Center
 

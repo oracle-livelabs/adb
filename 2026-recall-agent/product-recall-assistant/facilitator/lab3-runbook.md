@@ -4,7 +4,7 @@
 
 This runbook prepares the authenticated ORDS routes used in Lab 6.
 
-Estimated Time: 12 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 

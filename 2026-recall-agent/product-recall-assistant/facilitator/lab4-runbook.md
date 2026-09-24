@@ -1,6 +1,6 @@
 # Lab 7 Facilitator Runbook
 
-Estimated Time: 12 minutes
+Estimated Time: 15 minutes
 
 ## Introduction
 
