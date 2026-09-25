@@ -25,9 +25,9 @@ In this lab, you will:
 
 ## Task 1: Set up LiveLab MCP
 
-1. Download the complete starter kit: <a href="https://github.com/filanovskiy/ai-over-lakehouse/raw/refs/heads/main/downloads/PeakGear-LiveLab-Starter-Kit.zip"><strong>Download Here — PeakGear LiveLab Starter Kit (.zip)</strong></a>.
+1. Download the complete starter kit: <a href="https://github.com/oracle-livelabs/adb/raw/refs/heads/main/ai-over-lakehouse/downloads/peakgear-livelab-starter-kit.zip"><strong>Download Here — PeakGear LiveLab Starter Kit (.zip)</strong></a>.
 
-   Unzip `PeakGear-LiveLab-Starter-Kit.zip`. Keep the extracted `starter-kit` folder intact.
+   Unzip `peakgear-livelab-starter-kit.zip`. Keep the extracted `starter-kit` folder intact.
 2. In the extracted `starter-kit` folder, double-click `01-setup-peakgear-mcp.command`.
 3. Paste the Lab Data Studio URL when asked.
 4. Enter the PEAKGEAR&#95;USER password at the hidden password prompt.
