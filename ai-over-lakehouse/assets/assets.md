@@ -2,7 +2,7 @@
 
 This folder holds approved, reusable workshop diagrams and screenshots. Each
 learner lab keeps its step-specific screenshots in its own `images/` folder.
-See [traceability.md](../traceability.md) for the capture queue and publication
+See [traceability.md](../documentation/traceability.md) for the capture queue and publication
 rules.
 
 ## Acknowledgements

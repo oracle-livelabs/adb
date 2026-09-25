@@ -3,16 +3,16 @@
 
 set -euo pipefail
 
-SCRIPT_DIR=${0:A:h}
+WORKSHOP_DIR=${0:A:h:h}
 PORT=${1:-8000}
 
 usage() {
   cat <<'EOF'
-Usage: ./preview-livelabs.command [port]
+Usage: ./scripts/preview-livelabs.command [port]
 
 Examples:
-  ./preview-livelabs.command
-  ./preview-livelabs.command 8001
+  ./scripts/preview-livelabs.command
+  ./scripts/preview-livelabs.command 8001
 EOF
 }
 
@@ -33,7 +33,7 @@ if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   exit 1
 fi
 
-cd "$SCRIPT_DIR"
+cd "$WORKSHOP_DIR"
 
 print -- "Preview server: http://localhost:$PORT/workshops/sandbox/index.html"
 print -- "Open or reload the required lab manually in Chrome."

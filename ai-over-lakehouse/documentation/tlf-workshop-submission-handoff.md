@@ -377,10 +377,10 @@ Still required before publication:
 
 | Purpose | Relative path |
 |---|---|
-| Workshop entry | readme.md |
-| Existing workshop metadata | workshop-details.md |
-| Release checklist | author-review.md |
-| Screenshot mapping | traceability.md |
+| Workshop entry | documentation/readme.md |
+| Existing workshop metadata | documentation/workshop-details.md |
+| Release checklist | documentation/author-review.md |
+| Screenshot mapping | documentation/traceability.md |
 | Sandbox manifest | workshops/sandbox/manifest.json |
 | ADMIN setup | scripts/00-admin-setup.sql |
 | Codex starter kit | starter-kit/ |
