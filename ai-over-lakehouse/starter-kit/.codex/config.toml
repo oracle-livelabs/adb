@@ -1,0 +1,14 @@
+# PeakGear LiveLab: this config is scoped to this starter folder only.
+# Run 01-setup-peakgear-mcp.command before opening this folder in Codex.
+# The setup installs the portable launcher at ~/.local/bin/peakgear-livelab-mcp.
+# URL and database credentials remain in the local credential store.
+# "admin" is the MCP tool profile required to build Analytic Views; it is not
+# a database username.
+
+[mcp_servers.LiveLab]
+command = "/bin/zsh"
+args = ["-lc", "exec \"$HOME/.local/bin/peakgear-livelab-mcp\" --transport stdio --profile admin"]
+enabled = true
+startup_timeout_sec = 60
+tool_timeout_sec = 180
+default_tools_approval_mode = "prompt"
