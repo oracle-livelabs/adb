@@ -2,101 +2,118 @@
 
 ## Introduction
 
-Publish native Oracle Gold data and document its business scope. The West filter determines which rows belong in Gold; annotations explain that scope to consumers. An annotation is not a filter or a security policy.
+Alex publishes a business-focused Gold table in the native Oracle `PG` schema. After loading it, the facilitator uses Catalog AI Enrichment to describe its West-region scope and columns.
 
-Estimated Time: 9 minutes, including the facilitator's metadata demonstration.
+The data-flow filter selects the rows. Metadata explains those rows to people and configured AI consumers; it does not filter data or enforce access controls.
+
+Estimated Time: 9 minutes, including the facilitator's enrichment demonstration.
 
 ### Objectives
 
-* Review the West-region aggregation and source lineage.
-* Add and review business metadata in Data Transforms.
-* Run `WF_03_SILVER_GOLD` and validate native `PG` Gold data.
+* Run the prepared Silver-to-Gold workflow.
+* Browse and query the native Gold table.
+* Review AI-generated table and column metadata.
 
 ### Prerequisites
 
-Complete Labs 1–3. Confirm access to the `peakgear` Gold workflow and the assigned native `PG` target.
+Complete Lab 2 successfully before this lab. The Silver workflow and final Iceberg load must be finished. Use `peakgear_medallion` in your assigned environment.
 
-## Task 1: Inspect the Gold flow in the new UI
+## Task 1: Run the Gold workflow
 
-1. Open **Transform → Projects → peakgear → Data Flows → DF_03_GOLD_WEST_PRODUCT_PERFORMANCE**.
+1. Open **Transform** → **Projects** → `peakgear_medallion` → **Workflows** → `wf_03_silver_to_gold`.
 
-2. Inspect the source. Identify whether the imported flow reads the mounted Silver table, a bridge view, or the native cleansed intermediate table. If it uses the intermediate table, explain that it shares Silver's curated data but does not prove an Iceberg read. Do not change its source during this timed exercise.
+2. Review its two prepared steps: the Silver-view registration step and `df_03_gold_west_product_performance`.
 
-3. Inspect the actual filter and confirm the condition selects `West` in `SALES_REGION`. A table name or annotation does not enforce this rule. If no effective West filter exists, stop and ask the facilitator to correct the prepared flow before execution.
+    ![Gold workflow with the Silver view-registration step and Gold data flow](../assets/images/review-gold-workflow.png)
 
-4. Review the grouping: sales month, product, category, state, channel, and region. Review the measures for quantity, sales, estimated cost, gross margin, and transaction count. Calculate aggregate margin percentage from aggregate margin divided by aggregate revenue, not by averaging transaction percentages.
+    The Gold flow uses the `ailh_enriched_sales_v` bridge view. The view provides a local SQL reference to the curated source used by the prepared flow. The facilitator verifies its definition points to the published Silver catalog table before the event.
 
-## Task 2: Watch and review metadata enrichment
+3. Click **Run** once. Retain the pre-provisioned variable defaults if prompted, then click **OK**. Do not run the master workflow or change the Gold flow.
 
-1. The facilitator selects the Gold target component in the data-flow canvas and opens its annotations controls. In builds exposing the documented controls, use **Properties → Annotations → Manage Annotations**. If absent in the new UI, use Appendix A; do not look for legacy controls in the new screen.
+4. Open **Jobs → Transforms** and select the new `wf_03_silver_to_gold` run. Click **Refresh** until both steps and the workflow finish successfully.
 
-2. Add or review these proposed business annotations using the supported names/values in the event build.
+    **Checkpoint:** Gold execution has completed. Do not query an incomplete target or start this workflow before Silver finishes.
 
-    | Metadata | Business meaning |
-    |---|---|
-    | Description | Product-performance metrics for the West sales region |
-    | Region | West |
-    | Grain | Sales month, product, category, state, channel, sales region |
-    | Estimated gross margin | Sales amount less quantity multiplied by the product cost used by this lab; not an audited profit measure |
+## Task 2: Inspect the native Gold table
 
-3. If the event supports AI metadata generation, the facilitator uses the configured OpenAI connection/profile to draft a description. Review its interpretation of the flow and filter before applying it. Use only approved lab metadata. Never enter an API key into a prompt.
+1. Open **Catalog**. Expand **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`. This is the native database branch, not **Locally Mounted Catalogs** → `PG_AICAT`.
 
-    AI generation is conditional on the deployed event feature. Manual annotation editing is the documented fallback, not a claim that AI generation occurred. Do not promise that a filter is automatically captured unless the generated metadata actually shows it.
+2. Open **Sample Data** and inspect the sales month, product, sales amount, and `SALES_REGION`. Return to **Overview** to inspect its columns.
 
-4. Save the flow and its annotations. The facilitator explains: “The filter controls membership. The metadata tells a consumer that this is West-only data. Select AI can use supported metadata when its profile includes it. Metadata does not replace access controls.”
+## Task 3: Watch the facilitator enrich Gold metadata
 
-## Task 3: Run the Gold workflow
+1. The facilitator returns to **Catalog** → **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance` and clicks **AI Enrichment** at the upper right.
 
-1. Open **Workflows → WF_03_SILVER_GOLD** in `peakgear`. Verify that it includes `DF_03_GOLD_WEST_PRODUCT_PERFORMANCE`.
+2. Wait for the generated descriptions and tags to appear. Review the table description and the proposed column descriptions before saving.
 
-2. Use **Run** when available in the new workflow designer. Submit once in your assigned environment and record its job ID. If the new UI cannot execute, use Appendix A.
+    ![Catalog AI Enrichment panel with generated descriptions and tags for the native Gold table](../assets/images/review-gold-enrichment.png)
 
-3. Open **Jobs** and inspect the run and child data flow. Confirm successful completion before querying Gold. Do not run the full master workflow for this step.
+3. Check that the description clearly states the business scope. The facilitator can refine the description to:
 
-## Task 4: Check the native Gold table
+    ```text
+    <copy>
+    West-region product sales performance by sales month, product, category,
+    state, and sales channel. Contains West-region data only, not company-wide
+    sales. TOTAL_SALE_AMOUNT is the sales amount; ESTIMATED_GROSS_MARGIN is an
+    estimated sales margin, not audited profit.
+    </copy>
+    ```
 
-1. Open **Catalog → your database (PG) → PG**. Gold belongs to the native schema, not the mounted `silver` namespace. Open **SQL Worksheet** and run:
+4. Review the descriptions for `SALE_MONTH`, `PRODUCT_NAME`, `TOTAL_SALE_AMOUNT`, and `SALES_REGION`. Correct unsupported statements. Do not accept generated descriptions solely because they sound plausible.
+
+5. Click **Save** at the bottom of the enrichment panel. Return to **Overview** and verify that the saved description and tags are visible.
+
+    ![Gold Overview after saving the generated description, tags, and column metadata](../assets/images/review-gold-metadata.png)
+
+6. Listen to the facilitator: “We added business context after loading Gold. The West filter controls which data is present; the description tells a consumer what it represents. This demonstration uses Catalog AI Enrichment, not a Data Transforms annotation editor.”
+
+    The facilitator performs enrichment; attendees do not create an AI connection or enter model credentials.
+
+## Task 4: Validate Gold with SQL
+
+1. Open a new SQL worksheet, name it **Lab 4 - Gold checks**, and run:
 
     ```sql
     <copy>
-    SELECT * FROM PG.GOLD_WEST_PRODUCT_PERFORMANCE
+    SELECT *
+    FROM "PG"."ailh_gold_west_product_performance"
     FETCH FIRST 10 ROWS ONLY;
     </copy>
     ```
 
-2. Verify data and region scope.
+2. Run the region check separately.
 
     ```sql
     <copy>
     SELECT SALES_REGION, COUNT(*) AS gold_rows
-    FROM PG.GOLD_WEST_PRODUCT_PERFORMANCE
+    FROM "PG"."ailh_gold_west_product_performance"
     GROUP BY SALES_REGION;
     </copy>
     ```
 
-    Expected: nonzero data and only the intended West region. Any other region or null requires investigation before Lab 5.
+    Expected: one row for `West` with a positive count. This confirms that the published product contains only West-region data. The reviewed sample has 199 Gold rows; the count can vary with the extract. Another region or a null value needs facilitator investigation.
 
-3. Reopen the target metadata and verify the West annotation persisted. A saved editor entry alone is not proof that metadata reached the database target. The facilitator verifies persisted annotations and the Select AI profile before the event.
+3. Save the worksheet.
 
-    **Checkpoint:** Gold contains data in `PG`, its rows are West-only, and metadata describes its scope. If enrichment is unavailable, state the limitation and use the approved manual metadata route.
+    **Checkpoint:** Gold is queryable, the region check returns only West, and the catalog metadata explains that scope.
 
-## Appendix A: Legacy Data Transforms annotations and execution
+## Appendix A: Legacy execution and SQL
 
-1. Open legacy **Projects → peakgear → Data Flows → DF_03_GOLD_WEST_PRODUCT_PERFORMANCE**.
+1. In legacy **Data Transforms** → **Projects** → `peakgear_medallion` → **Workflows** → `wf_03_silver_to_gold`, click **Start** and retain the assigned defaults.
 
-2. Select the target component. In its **Properties** panel, use **Annotations → Manage Annotations** to add or review the metadata. Alternatively, open the target under **Data Entities**, edit it, and use **Manage Annotations**. Exact availability depends on the event release.
+2. Open the execution job link or legacy **Jobs**. Wait for the workflow to finish.
 
-3. Save. Open **Workflows → WF_03_SILVER_GOLD**, select **Start**, and follow the job link or **Jobs** to check completion. Run only once.
+3. Open legacy **Database Actions → SQL** as `PG` and run Task 4's checks unchanged.
 
-4. If the new worksheet is unavailable, open legacy **Database Actions → SQL** and run Task 4's checks. Return to the new UI for Lab 5.
+4. Return to new Data Studio for the facilitator's **Catalog → AI Enrichment** demonstration. This guide does not assume that legacy Data Transforms exposes the same enrichment control.
 
 ## Learn More
 
-* [View and manage Data Transforms annotations](https://docs.oracle.com/en/database/data-integration/data-transforms/using/view-and-manage-annotations.html)
+* [Select AI concepts and metadata context](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/select-ai-concepts.html)
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
