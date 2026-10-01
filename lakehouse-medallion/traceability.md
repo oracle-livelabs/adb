@@ -2,43 +2,58 @@
 
 Estimated Time: 5 minutes to review.
 
-## Classification
+## Source classification
 
-Inputs are user-authored Oracle HOL plans, Oracle application screens, and public Oracle documentation. No third-party images, datasets, copied diagrams, or code are included. No external-source approval gate applies to the materials used. No source bundle's embedded assets were reused. The supplied recording/deck were not reprocessed for this build.
+The current sources are Oracle-authored internal peer feedback, user-supplied Oracle workshop SQL, an authorized Oracle application walkthrough with narration, and public Oracle documentation. Embedded assets were inspected separately: the review document contains Oracle application screenshots, including error states and visible credentials. Those review screenshots were not published.
 
-## Content sources
+No third-party artwork, copied dataset, or external adapted code is included. No external-source permission gate applies. Private source paths, credentials, raw recordings, review documents, and unredacted frame extracts remain outside the repository.
 
-| Source | Classification | Use and boundary |
+## Source precedence
+
+| Source | Use |
+|---|---|
+| Current narrated Oracle application walkthrough | Primary successful procedure, current UI labels, exact project/flow names, real screenshot frames |
+| Supplied working SQL | Bronze and Silver identifiers, inventory checks and analysis, Gold sample/scope checks |
+| Internal peer review | Navigation clarity, setup simplification, expected results, removed failed edit exercise, scope explanations |
+| Workshop owner's Gold decision | Mia remains on native Gold; the final recorded native-Silver query is adapted, not represented as a Gold success |
+| Prior workshop plan | Six persona-led labs, 90 minutes, main new UI and legacy appendices |
+| Public Oracle documentation | General catalog and Select AI behavior; not proof of event UI runtime success |
+
+## Public documentation reviewed
+
+* [Manage catalogs](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/manage-catalogs.html)
+* [Manage catalogs with DBMS_CATALOG](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/manage-catalogs-dbms-catalogs.html)
+* [Select AI concepts](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/select-ai-concepts.html)
+* [Data Transforms annotations](https://docs.oracle.com/en/database/data-integration/data-transforms/using/view-and-manage-annotations.html)
+
+Data Transforms annotation documentation is distinct from the Catalog AI Enrichment UI demonstrated here. The revision does not substitute one feature's documentation as proof of the other.
+
+## Published screenshot provenance
+
+Each PNG below is derived from the supplied October 1 Oracle UI recording. Cropping excludes browser chrome, login/reservation screens, private messages, and irrelevant windows. Where needed, neutral masks cover database identifiers. UI results were not fabricated or changed.
+
+| Image | Recording position | What it establishes |
 |---|---|---|
-| User's six-lab request and follow-up on peakgear and UI appendices | User-authored Oracle workshop requirements | Persona flow, lab count, scope, UI separation |
-| AI World HOL Run-of-Show - PeakGear Medallion Pipeline.md | Supplied Oracle internal source | Timing, tables, fulfillment query, workflows and West metadata; schema still needs final runtime check |
-| PeakGear Data Transforms Build Guide.md | Supplied Oracle internal source | Native staging, Silver load, workflow names, Gold dimensions; imported endpoint names are not reused as credentials |
-| Signed-in Firefox Data Studio and Data Transforms | Oracle internal event environment | Observed navigation, project and workflow names, existing job status, screenshots |
-| Public Oracle documentation linked in learner labs | Oracle-owned public | Product behavior and supported patterns |
+| review-projects.png | 05:00 | peakgear_medallion project |
+| review-column-mapping.png | 09:45 | Prepared expressions and Column Mapping tab |
+| review-silver-workflow.png | 10:15 | Four-step Silver workflow and Run |
+| review-silver-job.png | 13:00 | Child-job monitoring while still running, not final success |
+| review-catalog-tiers.png | 21:30 | Mounted Bronze and Silver tables |
+| review-inventory-result.png | 19:30 | Successful cross-tier inventory query result |
+| review-gold-workflow.png | 20:12 | Silver registration and Gold flow sequence |
+| review-gold-enrichment.png | 21:50 | Generated Gold descriptions and tags, before Save |
+| review-gold-metadata.png | 22:00 | Gold Overview with saved metadata |
+| review-query-with-ai.png | 25:15 | Gold detail pane and Query with AI control only; no successful NLQ result claimed |
 
-Private source URLs and local source paths are intentionally omitted from learner-facing materials and this distributable record. Latest dataset revision remains a deployment check, not a claim established by this build.
+The earlier screenshots are superseded by this set. The medallion SVG is original code-authored workshop artwork, revised to distinguish Data Transforms preparation from Catalog enrichment.
 
-## Public documentation
+## SQL and outcome boundaries
 
-* https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/manage-catalogs-dbms-catalogs.html — SQL catalog discovery and qualified queries.
-* https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/manage-catalogs.html — mounted catalog access.
-* https://docs.oracle.com/en/database/data-integration/data-transforms/using/view-and-manage-annotations.html — table/column annotation controls and propagation.
-* https://docs.oracle.com/en/database/data-integration/data-transforms/releasenotes/whats-new-oracle-data-transforms.html — annotation and connector release context.
-* https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/select-ai-concepts.html — metadata-assisted natural-language SQL.
-* https://docs.oracle.com/en/database/oracle/oracle-database/26/selai/oracle-database-select-ai-users-guide.pdf — profile annotation inclusion and Select AI actions.
+Labs 2–4 retain the supplied SQL, allowing only formatting changes. Lab 5 intentionally changes the native-Silver source to the exact native Gold table and removes redundant West predicates because the owner confirmed Gold contains only West. Its final runtime test remains open.
 
-## Images and derived content
-
-All PNG screenshots were captured directly from the user's authorized Oracle application session on 23 September 2026. They contain no intentionally exposed credentials. Existing job screenshots are labeled historical, not newly executed results. Tenant identifiers remain visible and need publication review.
-
-* New UI: `catalog.png`, `new-data-studio-home.png`, `new-transform.png`, `new-projects.png`, `new-workflows.png`, `new-silver-workflow.png`, `new-silver-job.png`.
-* Legacy UI, referenced only in appendices: `projects.png`, `bronze-silver-workflow.png`, `silver-job-details.png`.
-* `medallion-flow.svg`: original code-authored diagram for this workshop, based on the user-provided architecture. No third-party artwork.
-* SQL: adapted from the supplied Oracle run-of-show. Changes use the observed mount alias, explicitly verify identifier case, add grain/completeness checks, avoid interpreting null ATP as zero, and label the output as a demand-stock gap rather than proven unfulfilled demand.
-
-No private project ZIP, raw data files, access tokens, client secrets, or model credentials are included.
+Sample inventory and Gold counts are examples, not fixed guarantees for every extract. No latest-dataset certification, Spark execution, second-cloud execution, agent action, or measured improvement in NLQ accuracy is claimed.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

@@ -1,6 +1,6 @@
 # LiveLabs Workshop Validation – lakehouse-medallion
 
-Generated on 2026-09-23T11:17:29.598341+00:00
+Generated on 2026-10-01T11:59:10.543126+00:00
 
 ## Structure Check
 - ✅ Required folders and workshop variants present.
@@ -12,8 +12,9 @@ Generated on 2026-09-23T11:17:29.598341+00:00
 ## Markdown File Ratings
 ### ask-business/ask-business.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 2/5
-  - 9 sentence(s) exceed 20 words; tighten wording.
+- ✍️ Lanham score: 1/5
+  - 7 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 2 instance(s).
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage; prefer vivid verbs.
 
@@ -24,17 +25,17 @@ Generated on 2026-09-23T11:17:29.598341+00:00
 
 ### author-review.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 0/5
+- ✍️ Lanham score: 1/5
   - 15 sentence(s) exceed 20 words; tighten wording.
-  - Passive voice detected in 9 instance(s).
+  - Passive voice detected in 13 instance(s).
   - Contractions found; expand them per Lanham rules.
-  - Em dashes detected; swap for commas, colons, or periods.
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### bronze-to-silver/bronze-to-silver.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 2/5
-  - 7 sentence(s) exceed 20 words; tighten wording.
+- ✍️ Lanham score: 1/5
+  - 8 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 2 instance(s).
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage; prefer vivid verbs.
 
@@ -47,45 +48,47 @@ Generated on 2026-09-23T11:17:29.598341+00:00
 
 ### introduction/introduction.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 2/5
-  - 6 sentence(s) exceed 20 words; tighten wording.
+- ✍️ Lanham score: 1/5
+  - 7 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 4 instance(s).
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### inventory-analysis/inventory-analysis.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 3/5
-  - 6 sentence(s) exceed 20 words; tighten wording.
+- ✍️ Lanham score: 1/5
+  - 8 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 3 instance(s).
   - Contractions found; expand them per Lanham rules.
+  - Heavy nominalization usage; prefer vivid verbs.
 
 ### readme.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 1/5
+- ✍️ Lanham score: 2/5
   - 1 sentence(s) exceed 20 words; tighten wording.
   - Passive voice detected in 5 instance(s).
   - Em dashes detected; swap for commas, colons, or periods.
-  - Heavy nominalization usage; prefer vivid verbs.
 
 ### silver-to-gold/silver-to-gold.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 2/5
-  - 4 sentence(s) exceed 20 words; tighten wording.
+- ✍️ Lanham score: 1/5
+  - 7 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 1 instance(s).
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### traceability.md
 - ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 0/5
-  - 4 sentence(s) exceed 20 words; tighten wording.
-  - Passive voice detected in 5 instance(s).
+- ✍️ Lanham score: 1/5
+  - 5 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 6 instance(s).
   - Contractions found; expand them per Lanham rules.
-  - Em dashes detected; swap for commas, colons, or periods.
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### workshop-details.md
 - ✅ LiveLabs formatting checks passed.
 - ✍️ Lanham score: 1/5
   - 6 sentence(s) exceed 20 words; tighten wording.
-  - Passive voice detected in 2 instance(s).
+  - Passive voice detected in 3 instance(s).
   - Contractions found; expand them per Lanham rules.
   - Heavy nominalization usage; prefer vivid verbs.

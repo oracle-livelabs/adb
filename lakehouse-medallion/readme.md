@@ -2,16 +2,16 @@
 
 Estimated Time: 3 minutes to review this handoff.
 
-Six-lab Oracle LiveLabs workshop: **Build a Medallion Data Pipeline with Oracle AI Lakehouse**. WMS ID: **12202**. LiveLabs ID: **4526**. Event session: **HOL6091**.
+Six-lab Oracle LiveLabs workshop: **Build a Medallion Data Pipeline with Oracle AI Lakehouse**. WMS **12202** / LiveLabs **4526** / session **HOL6091**.
 
 ## Start here
 
 * Learner entry: `workshops/sandbox/index.html`.
-* Workshop metadata and 90-minute agenda: [workshop-details.md](workshop-details.md).
-* Release checks, limitations, and facilitator notes: [author-review.md](author-review.md).
-* Source and screenshot provenance: [traceability.md](traceability.md).
+* Descriptions and 90-minute agenda: [Workshop details](workshop-details.md).
+* Revision details, source review, facilitator script, and release gates: [Author review](author-review.md).
+* Source and screenshot provenance: [Traceability](traceability.md).
 
-The main path uses the **new Data Studio UI** and the **peakgear** project. Old/legacy UI instructions and screenshots are confined to appendices in the relevant labs. A known new-UI limitation prevents some mounted Bronze/Silver table listings; SQL discovery and legacy routes keep that limitation explicit.
+Use the **new Data Studio UI** and `peakgear_medallion` project. Legacy actions appear only in lab appendices. The October revision follows the narrated successful sequence and supplied working SQL. Mia remains on native Gold; the revised Gold NLQ still needs a live dry-run.
 
 ## Preview locally
 
@@ -21,19 +21,19 @@ From this folder, run:
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000/workshops/sandbox/`. Internet access is required for the standard Oracle LiveLabs loader. Stop the server with Control-C.
+Open `http://localhost:8000/workshops/sandbox/`. Internet access is required for the Oracle LiveLabs loader. Stop the server with Control-C.
 
 ## GitHub handoff
 
-This `lakehouse-medallion` directory is the GitHub submission copy of the local HOL6091 package. Filenames use lowercase to follow WMS guidance. The manifest title and help alias match WMS. Review the author checklist before requesting a production merge. The six-lab scope and new/legacy UI separation remain unchanged.
+The earlier submission was merged in PR 540. The October revision is prepared on `codex/hol6091-mike-review-20261001` for later approval. Review the runtime and contributor checks before requesting a merge.
 
-Do not commit credentials, project exports containing secrets, attendee handouts, or private dataset URLs. The project ZIP and raw data are provisioned separately and are not embedded in this package. Review tenant identifiers in screenshots before public publication.
+Do not commit private handouts, credentials, project exports containing secrets, raw recordings, or dataset access URLs. These materials are provisioned separately.
 
 ## Status
 
-Content and navigation are authored. Existing project/workflow names and an earlier successful Silver job were inspected live. End-to-end execution, cross-tier SQL, persisted Gold annotations, AI generation, and Select AI answers require the event dry-run listed in `author-review.md`.
+The procedures and screenshots are grounded in the supplied recording; SQL for Labs 2–4 follows the working-query source. No live workflows were rerun during authoring. Gold reference SQL and Gold NLQ require the event dry-run documented in the author checklist.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
