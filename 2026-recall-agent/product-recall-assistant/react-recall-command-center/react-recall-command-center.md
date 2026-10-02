@@ -29,8 +29,12 @@ In this lab, you will:
 
 ### To run the application
 
-- Node.js 20 or later and npm are installed on the lab workstation.
-- The workstation can connect to the Autonomous Database service.
+- Check that your workstation has Node.js 20 or later and npm.
+- Confirm that your workstation can connect to the Autonomous Database service.
+- Have your direct database connect string, any required wallet, and the three Lab 7 end-user credentials ready. A SQL Developer Web URL is not a direct connect string.
+- Use Task 1 to check the prepared bridge packages and complete any outstanding grants as `ADMIN`.
+
+Check these prerequisites before configuring the application. If a package or connection detail is missing, use **Need Help?** to resolve it before continuing.
 
 ## Task 1: Prepare the Database Connection for the Application
 
@@ -54,9 +58,9 @@ Kevin needs the application to call approved packages, not internal tables. Davi
     </copy>
     ```
 
-    Run these two grants as `ADMIN`. The schema-qualified package name is required because `RECALL_REACT_API` belongs to `RECALL_OWNER`. The local user therefore requests `RUN_TEAM` indirectly through `RECALL_REACT_API`; the user is never granted direct agent-framework access.
+    Connect as `ADMIN` and run these two grants if your environment does not already include them. Then switch back to `RECALL_OWNER` for the checks below. The schema-qualified package name is required because `RECALL_REACT_API` belongs to `RECALL_OWNER`. The local user therefore requests `RUN_TEAM` indirectly through `RECALL_REACT_API`; the user is never granted direct agent-framework access.
 
-2. Confirm that the bridge packages are valid.
+2. As `RECALL_OWNER`, confirm that all four bridge packages are present and valid.
 
     ```sql
     <copy>
@@ -74,7 +78,7 @@ Kevin needs the application to call approved packages, not internal tables. Davi
     </copy>
     ```
 
-    The package status must be `VALID`. The React application uses `RECALL_REACT_API` for identity, product metadata, secured store GeoJSON, the DDS-filtered downstream graph projection, free-text vector searches, and agent questions. It uses `RECALL_GRAPH_API` for the shared component and supplier trace from `RECALL_GRAPH`, `RECALL_VECTOR_BRIDGE` for owner-side embedding inference only, and `RECALL_SECURE_API.GET_SECURED_CONTEXT` for role-filtered JSON evidence.
+    Expect **eight rows**: a `PACKAGE` and `PACKAGE BODY` for each of the four names above, all `VALID`. A result containing only valid rows is insufficient if any package is missing. If fewer than eight rows appear, note the missing packages and use **Need Help?** to resolve the setup issue before configuring the application. The React application uses `RECALL_REACT_API` for identity, product metadata, secured store GeoJSON, the DDS-filtered downstream graph projection, free-text vector searches, and agent questions. It uses `RECALL_GRAPH_API` for the shared component and supplier trace from `RECALL_GRAPH`, `RECALL_VECTOR_BRIDGE` for owner-side embedding inference only, and `RECALL_SECURE_API.GET_SECURED_CONTEXT` for role-filtered JSON evidence.
 
 3. Confirm that the React package exposes the required functions.
 
@@ -87,7 +91,7 @@ Kevin needs the application to call approved packages, not internal tables. Davi
     </copy>
     ```
 
-    Confirm `ASK_AGENT`, `CURRENT_IDENTITY`, `PRODUCT_CONTEXT`, `SEARCH_VECTOR_EVIDENCE`, `SECURED_GRAPH`, and `SECURED_STORES`. The separate graph package exposes `CONTEXT` for the shared supplier trace.
+    An empty result means the React API is missing; do not continue to application configuration. Confirm `ASK_AGENT`, `CURRENT_IDENTITY`, `PRODUCT_CONTEXT`, `SEARCH_VECTOR_EVIDENCE`, `SECURED_GRAPH`, and `SECURED_STORES`. The separate graph package exposes `CONTEXT` for the shared supplier trace.
 
 ## Task 2: Configure the Application
 
@@ -146,7 +150,9 @@ Kevin needs a usable returns application. David keeps connection details outside
 
 Kevin needs a working command center that turns approved evidence into clear next actions. David defines that experience; Tim starts or deploys it.
 
-1. Start the API and React development server together.
+Choose one local mode: Step 1 for development or Step 2 for a production-style build. They are alternatives and use the same port.
+
+1. **Development mode:** start the API and React development server together.
 
     ```bash
     <copy>
@@ -156,7 +162,7 @@ Kevin needs a working command center that turns approved evidence into clear nex
 
     Open [http://localhost:3001](http://localhost:3001). The Node server and React development middleware share this single origin.
 
-2. For a production-style local run, build the React application and start the Node server as one process.
+2. **Alternative production-style local mode:** if your workshop development process from Step 1 is running, stop it with Ctrl+C in its terminal first. Then build the React application and start the Node server as one process.
 
     ```bash
     <copy>
@@ -167,15 +173,15 @@ Kevin needs a working command center that turns approved evidence into clear nex
 
     Open [http://localhost:3001](http://localhost:3001) after the production build. The Node server serves the generated `dist` folder and the API routes from the same origin.
 
-3. If port `3001` is already running from an earlier attempt, stop that workshop process and run `npm run dev:all` again. Changes to `.env` do not take effect until the server restarts.
+3. If port `3001` is already in use by your workshop process from an earlier attempt, stop that process in its terminal before restarting your chosen mode. Do not stop unrelated processes; record the port conflict if you cannot identify it as your workshop process. Changes to `.env` do not take effect until the server restarts.
 
-4. To deploy on an application host, copy the `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in its environment, run `npm ci`, `npm run build`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
+4. **Optional: deploy to an application host.** You can skip this step if you are running locally. If you have access to an application host, copy the `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in its environment, run `npm ci`, `npm run build`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
 
 ## Task 4: Compare the Three User Views
 
 Kevin checks whether the same application respects each job. David relies on the signed-in identity; Tim compares the three results.
 
-1. Sign in as `STORE_101_USER` with the shared Lab 7 password.
+1. Sign in as `STORE_101_USER` with the credentials you used in Lab 7.
 
     Confirm the header shows the store associate role. The expected result is:
 

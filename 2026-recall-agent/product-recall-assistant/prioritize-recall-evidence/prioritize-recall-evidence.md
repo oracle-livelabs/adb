@@ -10,6 +10,8 @@ Tim uses the loaded ONNX model to turn complaint text into vectors, which are nu
 
 By the end of the lab, the database returns complaints `9001`, `9002`, `9006`, `9003`, and `9007` first, while excluding unrelated batch B-900 complaints. Lab 5 uses this database result in the assistant.
 
+![grou](images/2026-10-02-005124.png)
+
 Estimated Time: 15 minutes
 
 ### Objectives
@@ -55,7 +57,7 @@ Kevin needs to find complaints that describe the same issue, even when they use 
     </copy>
     ```
 
-    We are using the `all_MiniLM_L12_v2` embeddingmodel. It produces 384-dimensional text embeddings. The query vector uses the same model so both sides share one semantic space.
+    We are using the `all_MiniLM_L12_v2` embedding model. It produces 384-dimensional text embeddings. The query vector uses the same model so both sides share one semantic space.
     
     ![2026-09-18-004999](images/2026-09-18-004999.png)
 

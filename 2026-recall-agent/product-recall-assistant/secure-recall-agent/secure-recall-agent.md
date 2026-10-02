@@ -8,6 +8,8 @@ David keeps those access rules in Oracle AI Database, alongside the records and 
 
 Tim has prepared the code that gathers recall facts and sends them to the assistant. You will build the access rules, assign them to three users, and compare their results. The assistant does not decide what a user may see; it receives only the evidence the database permits.
 
+![group](images/2026-10-02-005127.png)
+
 Estimated Time: 25 minutes
 
 ### Objectives
@@ -17,11 +19,17 @@ Estimated Time: 25 minutes
 - Run identical queries as three users and compare the results.
 - Give the assistant each user's permitted evidence and check its answer.
 
+### Access and Prerequisites
+
+Use `RECALL_OWNER` for Task 1 and Task 2 Steps 1–8. Then connect as `ADMIN` to assign and verify the roles in Task 2 Steps 9–10.
+
+For Tasks 3–4, connect separately as each end user through SQLcl or SQL Developer desktop. Have your database connect string, any required wallet, and each user's credentials ready. A SQL Developer Web URL is not a direct database connect string. If you cannot access an account or find its connection details, use **Need Help?** before testing its data scope.
+
 ## Task 1: Define Who Can See Which Stores
 
 Kevin describes three responsibilities. David turns them into three data roles. Tim starts with the stores each role may see.
 
-The workshop already includes local end users STORE\_101\_USER, REGION\_NE\_USER, and RECALL\_LEAD\_USER, using the workshop password. You will assign their data roles after defining the rules. They are database end users, not additional application schemas.
+Check that your workshop environment includes the local end users STORE\_101\_USER, REGION\_NE\_USER, and RECALL\_LEAD\_USER and that you have their credentials. You will assign their data roles after defining the rules. They are database end users, not additional application schemas.
 
 1. Connect as **RECALL\_OWNER**. Create the Store 101 data role.
 
@@ -249,7 +257,7 @@ Stay connected as **RECALL\_OWNER**. Run each block separately.
     </copy>
     ```
 
-10. Verify the assignments. Expect three rows, one matching role per user.
+10. Stay connected as **ADMIN** and verify the assignments. Expect three rows, one matching role per user.
 
     ```sql
     <copy>
@@ -268,9 +276,9 @@ Stay connected as **RECALL\_OWNER**. Run each block separately.
 
 Kevin wants proof that changing the signed-in user changes the result without changing the application query. Tim tests database results before asking the assistant anything.
 
-Use a direct database connection, such as SQLcl or SQL Developer desktop, for these local end users. Use the same database connection details as RECALL\_OWNER, with the end-user name and workshop password. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
+Open a direct database connection in SQLcl or SQL Developer desktop. Use your workshop database connect string and the credentials for the end user named in each step. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
 
-The examples below show captured output from real SQLcl sessions, displayed as labeled transcript views. Red outlines identify the counts and successful no-row security checks.
+The examples below and in Task 4 are SQLcl transcript reference output, not SQL Developer Web screenshots. They illustrate result content rather than the appearance of your worksheet. Red outlines identify the counts and successful no-row security checks.
 
 1. Connect as **STORE\_101\_USER** and confirm the end-user identity.
 
@@ -444,16 +452,18 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 6. Run Step 5 twice more, changing only STORE\_101\_USER to REGION\_NE\_USER, then RECALL\_LEAD\_USER. Compare the answers with these database checkpoints, not an exact sentence.
 
-    | End user           | Stores | Units  | Customers | Semantic complaint IDs       |
-    | --------------------| -------:| -------:| ----------:| ------------------------------|
-    | STORE\_101\_USER   | 1      | 12     | 5         | 9001                         |
-    | REGION\_NE\_USER   | 24     | 453    | 120       | 9001, 9002, 9006             |
-    | RECALL\_LEAD\_USER | 120    | 2,400 | 600       | 9001, 9002, 9006, 9003, 9007 |
+| End user           | Stores | Units  | Customers | Semantic complaint IDs       |
+| --------------------| -------:| -------:| ----------:| ------------------------------|
+| STORE\_101\_USER   | 1      | 12     | 5         | 9001                         |
+| REGION\_NE\_USER   | 24     | 453    | 120       | 9001, 9002, 9006             |
+| RECALL\_LEAD\_USER | 120    | 2,400 | 600       | 9001, 9002, 9006, 9003, 9007 |
     {: title="Expected results"}
 
     All roles share 25 component batches and 25 supplier sites. The first response remains quarantine and stop sales; customer contact is not yet authorized. Reject answers that invent facts or expand beyond the supplied evidence. Access filtering does not eliminate model errors.
 
-    ![Captured SQLcl output of three live assistant answers using the separately authorized snapshots](images/lab7-agent-answers.png)
+    The following image is a prior scripted transcript combining three answers. Its PL/SQL completion message does not represent the `SELECT` in Step 5. For the current steps, verify the `AGENT_ANSWER` CLOB returned separately for each user; use the image only as a reference for answer content.
+
+    ![Prior scripted SQLcl transcript illustrating three authorized assistant answers, not the current SELECT CLOB result interface](images/lab7-agent-answers.png)
 
 ## Conclusion
 
