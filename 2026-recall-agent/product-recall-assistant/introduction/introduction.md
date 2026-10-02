@@ -75,9 +75,22 @@ By the end of this workshop, you can:
 
 ### Before You Start
 
-The workshop environment is prepared before you begin. The B-482 data and the database capabilities used in the labs are available from the start. Use the identity named in each lab when you run its SQL or application step.
+Before you start, check that you have the accounts and connection details below. Use the account named in each task.
+
+- **Labs 1–5:** sign in to SQL Developer Web as `RECALL_OWNER` and use the prepared B-482 data and database services.
+- **Lab 6:** use `RECALL_OWNER` to build the map function, then `ADMIN` to publish and protect its ORDS route. Have the `RECALL_APP_USER` credentials and a terminal with `curl` and `jq` ready for the HTTP tests.
+- **Lab 7:** define data roles as `RECALL_OWNER`, assign them as `ADMIN`, and test them in separate end-user sessions. Have your database connect string, any required wallet, and the three end-user credentials ready. Use SQLcl or SQL Developer desktop for these direct connections.
+- **Lab 8:** check the prepared bridge packages and grants, then run the application on a Node.js/npm workstation that can reach your database. Reuse your Lab 7 end-user connection details.
+
+If an account or connection detail is missing, use **Need Help?** to resolve it before starting the tasks that depend on it. A SQL Developer Web URL is not a direct database connect string.
 
 Bring basic familiarity with SQL and REST concepts. Lab 8 also uses a React/Node application and a workstation that can connect to the database.
+
+### Support for this workshop
+
+When using **Need Help?**, include **Product Recall Assistant: Automate Secure Returns Decisions** in the email subject yourself if the generated subject shows `undefined`. Include the lab, task, step, expected result, actual error, and retry outcome. Exclude credentials and sensitive connection details from screenshots and messages.
+
+Use the database credentials provided with your workshop environment. If you cannot sign in, use **Need Help?** to describe the login error without including your password. The shared help page's password link currently describes Oracle Responsys and does not apply to this database.
 
 ## Acknowledgements
 

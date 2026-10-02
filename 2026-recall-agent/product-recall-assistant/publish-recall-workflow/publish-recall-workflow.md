@@ -8,6 +8,8 @@ David keeps the location and shipment data in Oracle AI Database and publishes a
 
 You will build `/ords/recall/map/v1/batches/B-482/stores`. This separate map endpoint leaves any existing `/api/v1/` routes unchanged. The supporting tables, views, API role, and runtime account are already available. Lab 2 supplies the location data; you create the function and route here.
 
+![group](images/2026-10-03-005126.png)
+
 Estimated Time: 20 minutes
 
 ### Objectives
@@ -19,6 +21,12 @@ In this lab, you will:
 - Define an ORDS module, URL template, and GET handler.
 - Require authentication before publishing the endpoint.
 - Verify 120 map features and confirm the runtime account cannot read the tables.
+
+### Access and Prerequisites
+
+Connect as `RECALL_OWNER` for Task 1, then use `ADMIN` for Tasks 2–3 to publish and protect the route. For Task 4, open a terminal with `curl` and `jq` and use your `RECALL_APP_USER` credentials to test the endpoint.
+
+Before starting, check that you can access both database accounts and have the runtime-account password. If anything is missing, use **Need Help?** before continuing with the tasks that require it.
 
 ## Task 1: Build the Store Map Response
 
@@ -59,6 +67,8 @@ Kevin needs store locations and affected units in one response. David chooses Ge
     ```
 
     Open the result cell to inspect the JSON. Expect a `FeatureCollection` with 120 features. Each point contains longitude followed by latitude; its properties supply the store label, region, and affected units. The query selects no customer details.
+
+    ![2026-10-02-005130](images/2026-10-02-005130.png)
 
 2. Turn the query into a function so an application can request a batch by its identifier.
 
@@ -106,6 +116,8 @@ Kevin needs store locations and affected units in one response. David chooses Ge
 
     This is the same query with a parameter instead of a fixed batch. `AUTHID DEFINER` lets the function read its owner’s data without giving the caller table access. The function contains only a SELECT; it cannot change recall records. A batch with no affected stores returns an empty feature collection.
 
+    ![2026-10-02-005131](images/2026-10-02-005131.png)
+
 3. Check that the function compiled.
 
     ```sql
@@ -120,6 +132,8 @@ Kevin needs store locations and affected units in one response. David chooses Ge
 
     Expect no rows. If errors appear, correct them before publishing the endpoint.
 
+    ![2026-10-02-005132](images/2026-10-02-005132.png)
+
 4. Call your new function.
 
     ```sql
@@ -129,6 +143,8 @@ Kevin needs store locations and affected units in one response. David chooses Ge
            ) as stores_geojson;
     </copy>
     ```
+
+    ![2026-10-02-005133](images/2026-10-02-005133.png) 
 
 5. Grant the API role permission to call only this function.
 
@@ -140,11 +156,21 @@ Kevin needs store locations and affected units in one response. David chooses Ge
 
     `RECALL_APP_USER` already has this role. You are granting execution of your function, not SELECT on the tables. The existing `RECALL_LAB_API` package stays unchanged.
 
+    ![2026-10-02-005134](images/2026-10-02-005134.png)
+
 ## Task 2: Connect the Function to a URL
 
 Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_USER` to run the HTTP handler. Tim defines the module, the batch parameter in the URL, and the SELECT that calls the function.
 
-1. Switch to an `ADMIN` SQL worksheet. Enable the runtime schema at the `recall` path.
+1. Switch to an `ADMIN` SQL worksheet. First, sign out from the `RECALL_OWNER` session.
+
+    ![2026-10-02-005135](images/2026-10-02-005135.png) 
+
+2. Login as `ADMIN` using the password from the ***View Login Info*** panel
+
+    ![2026-10-02-005136](images/2026-10-02-005136.png)
+
+3. When connected as `ADMIN`, enable the `recall` pattern:
 
     ```sql
     <copy>
@@ -164,7 +190,9 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
 
     Leave `RECALL_OWNER` enabled for SQL Developer Web. The setting above protects the metadata catalog; Task 3 adds protection for your custom endpoint.
 
-2. Create an unpublished module.
+    ![2026-10-02-005137](images/2026-10-02-005137.png)
+
+4. Create an unpublished module.
 
     ```sql
     <copy>
@@ -184,7 +212,9 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
 
     The module groups the routes under `/map/v1/`. It remains unavailable while you build and secure it. Rerunning this step replaces this exercise’s module and its handlers; continue through all remaining steps.
 
-3. Define the URL pattern.
+    ![2026-10-02-005138](images/2026-10-02-005138.png)
+
+5. Define the URL pattern.
 
     ```sql
     <copy>
@@ -202,7 +232,9 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
 
     ORDS passes the batch identifier in the URL to the handler as `:batch_id`.
 
-4. Add the GET handler.
+    ![2026-10-02-005139](images/2026-10-02-005139.png)
+
+6. Add the GET handler.
 
     ```sql
     <copy>
@@ -216,7 +248,6 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
             p_source      => q'~
                 select 'application/geo+json',
                        recall_owner.recall_store_geojson(:batch_id)
-                from dual
             ~'
         );
         commit;
@@ -227,11 +258,13 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
 
     The media handler sends the function’s CLOB as the response body, with the GeoJSON content type. It avoids wrapping the document in an ORDS row collection or truncating it through a text-print call. The bind variable passes the batch identifier without constructing SQL from user input.
 
+    ![2026-10-02-005140](images/2026-10-02-005140.png)
+
 ## Task 3: Protect and Publish the Endpoint
 
 Kevin wants trusted clients to see the map, not anonymous visitors. David requires authentication for the whole module. Tim adds that rule before publishing any route.
 
-1. Stay connected as `ADMIN`. Require authentication for the module.
+1. Stay connected as `ADMIN` for all three steps in this task. Require authentication for the module.
 
     ```sql
     <copy>
@@ -258,6 +291,8 @@ Kevin wants trusted clients to see the map, not anonymous visitors. David requir
 
     The empty ORDS role list requires an authenticated identity but no additional ORDS role. This is an authentication rule, not store-by-store authorization. Lab 7 introduces database-enforced user scopes.
 
+    ![2026-10-02-005141](images/2026-10-02-005141.png)
+
 2. Publish the protected module.
 
     ```sql
@@ -274,6 +309,8 @@ Kevin wants trusted clients to see the map, not anonymous visitors. David requir
     </copy>
     ```
 
+    ![2026-10-02-005142](images/2026-10-02-005142.png)
+
 3. Confirm the runtime account has no direct SELECT grants on the owner’s tables, including through its API role.
 
     ```sql
@@ -289,17 +326,21 @@ Kevin wants trusted clients to see the map, not anonymous visitors. David requir
 
     Expect no rows. The HTTP handler can execute the approved function, but cannot use these identities to select directly from the application tables.
 
+    ![2026-10-02-005143](images/2026-10-02-005143.png)
+
 ## Task 4: Test What an Application Receives
 
 Kevin needs proof that the URL works and blocks anonymous access. Tim tests it from a terminal, outside SQL Developer Web. These requests read data; they do not open a case or change the recall.
 
-1. Replace `<adb-ords-host>` with the hostname from your SQL Developer Web URL, then run:
+1. Replace `<adb-ords-host>` with the hostname from your SQL Developer Web URL, then create an variable like this:
 
     ```bash
     <copy>
     RECALL_MAP_URL="https://<adb-ords-host>/ords/recall/map/v1/batches/B-482/stores"
     </copy>
     ```
+
+    ![2026-10-02-005144](images/2026-10-02-005144.png)
 
 2. Request the map without credentials.
 
@@ -313,6 +354,8 @@ Kevin needs proof that the URL works and blocks anonymous access. Tim tests it f
 
     Expect `HTTP 401`. A `404` does not prove authentication is working; check that you published the module and used the exact URL.
 
+    ![2026-10-02-005145](images/2026-10-02-005145.png)
+
 3. Request it with the runtime account.
 
     ```bash
@@ -322,7 +365,9 @@ Kevin needs proof that the URL works and blocks anonymous access. Tim tests it f
     </copy>
     ```
 
-    Curl prompts for the workshop password without storing it in the command. Expect HTTP `200`, content type `application/geo+json`, and a `FeatureCollection`. Database credentials are used here only to test the service; do not embed them in browser application code. Production clients need an appropriate application authentication flow.
+    When curl prompts you, enter your `RECALL_APP_USER` password. This keeps the password out of the command. Expect HTTP `200`, content type `application/geo+json`, and a `FeatureCollection`. Database credentials are used here only to test the service; do not embed them in browser application code. Production clients need an appropriate application authentication flow.
+
+    ![2026-10-02-005146](images/2026-10-02-005146.png)
 
 4. Check the number of map features. This command requires `jq`.
 
@@ -335,6 +380,8 @@ Kevin needs proof that the URL works and blocks anonymous access. Tim tests it f
     ```
 
     Expect batch `B-482`, type `FeatureCollection`, **120 features**, and **2,400 units**. Check that the properties contain only store code, store name, region, and units sent.
+
+    ![2026-10-02-005147](images/2026-10-02-005147.png)
 
 ## Conclusion
 

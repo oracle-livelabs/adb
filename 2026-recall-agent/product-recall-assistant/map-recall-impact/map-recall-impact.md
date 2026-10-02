@@ -12,6 +12,8 @@ Tim turns the existing longitude and latitude values into Oracle Spatial `SDO_GE
 
 By the end of the lab, every affected store has a response-center assignment. The application can show store teams who should support them and where that support is located.
 
+![group](images/2026-10-02-005122.png)
+
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -285,15 +287,105 @@ Kevin needs one center accountable for each location. David chooses a repeatable
 
 Kevin needs store and supplier locations in the returns application. David uses GeoJSON, a common map-data format; Tim prepares the location results.
 
-1. Use the queries in this task to return:
+1. Review the results already produced in Task 2 Steps 1–2 for the 25-kilometer response radius and Task 3 Step 1 for nearest-center assignments. Expect 120 unique covered stores and 120 nearest-center assignments. Reuse completed results; these two queries do not need to be rerun for this task.
 
-    - stores within the 25-kilometer response radius,
-    - nearest-center assignments for all affected stores,
-    - component supplier and sub-vendor locations,
-    - a store GeoJSON `FeatureCollection` with 120 features,
-    - a supplier-site GeoJSON `FeatureCollection` with 25 features.
+2. Return component supplier and sub-vendor locations for B-482.
 
-2. Explain why spatial belongs in the database for this workflow:
+    ```sql
+    <copy>
+    select distinct
+           t.component_code,
+           t.component_batch_id,
+           t.supplier_name,
+           t.site_code,
+           t.city || ', ' || t.state_code as site_location,
+           t.quality_status,
+           t.produced_at,
+           t.received_at
+    from   recall_component_trace_v t
+    where  t.batch_id = 'B-482'
+    order  by t.produced_at;
+    </copy>
+    ```
+
+    Expect 25 component batches across 25 supplier/sub-vendor sites. Each row identifies the component lot, supplier, and city/state location.
+
+3. Produce the affected-store GeoJSON.
+
+    ```sql
+    <copy>
+    select json_serialize(
+               json_object(
+                   'type' value 'FeatureCollection',
+                   'features' value json_arrayagg(
+                       json_object(
+                           'type' value 'Feature',
+                           'id' value a.store_id,
+                           'geometry' value
+                               json(sdo_util.to_geojson(a.location)),
+                           'properties' value json_object(
+                               'storeCode' value a.store_code,
+                               'storeName' value a.store_name,
+                               'region' value a.region_code,
+                               'unitsSent' value a.units_sent
+                               returning json
+                           )
+                           returning json
+                       )
+                       order by a.store_code
+                       returning json
+                   )
+                   returning json
+               )
+               returning clob pretty
+           ) as affected_store_geojson
+    from   recall_affected_stores_v a
+    where  a.batch_id = 'B-482';
+    </copy>
+    ```
+
+    Open the `AFFECTED_STORE_GEOJSON` CLOB value. Expect one `FeatureCollection` with 120 entries in `features`. Each feature has a point geometry and store code, store name, region, and units sent in its properties. The query returns one JSON document, not 120 worksheet rows.
+
+4. Produce the supplier-site GeoJSON.
+
+    ```sql
+    <copy>
+    select json_serialize(
+               json_object(
+                   'type' value 'FeatureCollection',
+                   'features' value json_arrayagg(
+                       json_object(
+                           'type' value 'Feature',
+                           'id' value t.supplier_site_id,
+                           'geometry' value
+                               json(sdo_util.to_geojson(ss.location)),
+                           'properties' value json_object(
+                               'componentCode' value t.component_code,
+                               'componentBatchId' value t.component_batch_id,
+                               'supplier' value t.supplier_name,
+                               'siteCode' value t.site_code,
+                               'qualityStatus' value t.quality_status
+                               returning json
+                           )
+                           returning json
+                       )
+                       order by t.supplier_site_id
+                       returning json
+                   )
+                   returning json
+               )
+               returning clob pretty
+           ) as component_site_geojson
+    from   recall_component_trace_v t
+    join   supplier_sites ss
+           on ss.supplier_site_id = t.supplier_site_id
+    where  t.batch_id = 'B-482';
+    </copy>
+    ```
+
+    Open the `COMPONENT_SITE_GEOJSON` CLOB value. Expect one `FeatureCollection` with 25 entries in `features`, each with a point geometry and component, supplier, and site properties. The join reads the populated `SUPPLIER_SITES.LOCATION` column from Task 1; the initial component trace view can still contain a null geometry placeholder.
+
+5. Explain why spatial belongs in the database for this workflow:
 
     - Store and supplier-site locations join directly to recall facts.
     - Spatial operators can use spatial indexes.

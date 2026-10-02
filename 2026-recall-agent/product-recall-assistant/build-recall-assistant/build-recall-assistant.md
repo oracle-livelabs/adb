@@ -10,6 +10,8 @@ Tim implements this design with PL/SQL functions, Select AI Agent tools, an agen
 
 By the end of the lab, the returns desk can ask five B-482 questions in one conversation. The answers contain only the facts returned by the approved package functions, with no customer names or contact details.
 
+![group](images/2026-10-02-005125.png)
+
 Estimated Time: 20 minutes
 
 ### Objectives
@@ -53,8 +55,9 @@ Both functions accept a batch ID, such as `B-482`, and return JSON without custo
     order  by object_name, sequence;
     </copy>
     ```
-    && 
-
+    
+    ![2026-09-18-005006](images/2026-09-18-005006.png)
+    
     Each function accepts one `VARCHAR2` batch ID and returns its JSON response as a `CLOB`.
 
 3. Call both approved tool functions directly.
@@ -67,11 +70,12 @@ Both functions accept a batch ID, such as `B-482`, and return JSON without custo
     </copy>
     ```
 
+    ![2026-09-18-005007](images/2026-09-18-005007.png)
+
     The first JSON contains counts, component lots, supplier sites, complaint IDs, and approved actions. The second summarizes affected stores by region, response-radius coverage, and nearest response centers. Neither function returns customer names or email addresses, and neither provides unrestricted table access.
 
-    &&
 
-4. Confirm that the facilitator-prepared profile has status `ENABLED`.
+4. Confirm that your prepared AI profile has status `ENABLED`.
 
     ```sql
     <copy>
@@ -81,7 +85,7 @@ Both functions accept a batch ID, such as `B-482`, and return JSON without custo
     </copy>
     ```
     
-    &&
+    ![2026-09-18-005008](images/2026-09-18-005008.png)
 
 ## Task 2: Register the Assistant Tools
 
@@ -110,7 +114,7 @@ Kevin needs the assistant to follow the same limits for every question. David de
     </copy>
     ```
 
-    &&
+    ![2026-09-18-005009](images/2026-09-18-005009.png)
 
 2. Register the spatial impact function as a second tool.
 
@@ -134,7 +138,8 @@ Kevin needs the assistant to follow the same limits for every question. David de
     /
     </copy>
     ```
-    &&
+
+    ![2026-09-18-005010](images/2026-09-18-005010.png)
 
 3. Register the investigator agent. Its role requires approved tool use and prohibits invented customer details.
 
@@ -153,8 +158,8 @@ Kevin needs the assistant to follow the same limits for every question. David de
     /
     </copy>
     ```
-
-    &&
+    
+    ![2026-09-18-005011](images/2026-09-18-005011.png)
 
 4. Create the investigation task. It defines how to answer Kevin's questions and which two tools the agent may use. The framework replaces `{query}` with the question submitted to `RUN_TEAM`.
 
@@ -175,7 +180,9 @@ Kevin needs the assistant to follow the same limits for every question. David de
     /
     </copy>
     ```
-    &&
+
+    ![2026-10-02-005128.png](images/2026-10-02-005128.png)
+
 
 5. Create the team that connects the investigator agent to its task. Task 3 calls this team by name.
 
@@ -199,8 +206,9 @@ Kevin needs the assistant to follow the same limits for every question. David de
     /
     </copy>
     ```
-    &&
-    
+
+    ![2026-09-18-005018](images/2026-10-02-005129.png)
+
 6. Confirm that the task and team are enabled before continuing.
 
     ```sql
@@ -210,7 +218,11 @@ Kevin needs the assistant to follow the same limits for every question. David de
     where  task_name = 'INVESTIGATE_RECALL_TASK';
     </copy>
     ```
-    &&
+    
+    ![2026-09-18-005016](images/2026-09-18-005016.png)
+
+
+
 
 7. Check the status of `RECALL_ASSISTANT_TEAM`.
 
@@ -221,7 +233,7 @@ Kevin needs the assistant to follow the same limits for every question. David de
     where  agent_team_name = 'RECALL_ASSISTANT_TEAM';
     </copy>
     ```
-    && 
+
 
     Both queries should return one row with status `ENABLED`. The assistant now uses these five objects:
 
@@ -233,6 +245,8 @@ Kevin needs the assistant to follow the same limits for every question. David de
     | Task   | `INVESTIGATE_RECALL_TASK` |
     | Team   | `RECALL_ASSISTANT_TEAM`   |
     {: title="Objects used by assistant"}        
+    
+    ![SQL Developer Web showing the recall assistant team enabled](images/lab5-team-enabled.jpg)
     
 ## Task 3: Ask Recall Questions
 
@@ -251,7 +265,9 @@ Kevin now asks the investigation questions in plain language. David limits the c
     </copy>
     ```
 
-    &&
+    ![2026-09-18-005019](images/2026-09-18-005019.png)
+
+
 
 2. Create a conversation for the five questions. Run this query once and copy the returned conversation ID.
 
@@ -263,11 +279,13 @@ Kevin now asks the investigation questions in plain language. David limits the c
     </copy>
     ```
 
+    ![2026-09-18-005020](images/2026-09-18-005020.png)
+
     In each query below, replace `PASTE_CONVERSATION_ID_HERE` with that same ID, keeping the double quotes around it. The ID connects the five questions to one conversation. Run each query separately and read its answer before continuing.
 
-    &&
 
-
+    *If you receive `ORA-20053` / `ORA-20051` with an `ORA-20052` tool error, wait for the query to finish and retry the same question once.*
+    
 3. Ask for the recall scope.
 
     ```sql
@@ -281,7 +299,9 @@ Kevin now asks the investigation questions in plain language. David limits the c
            ) as agent_answer;
     </copy>
     ```
-    &&
+
+    ![2026-09-18-005022](images/2026-09-18-005022.png)
+
 
 4. Ask which stores have nearby help.
 
@@ -297,7 +317,9 @@ Kevin now asks the investigation questions in plain language. David limits the c
            ) as agent_answer;
     </copy>
     ```
-    &&
+    
+    ![2026-09-18-005023](images/2026-09-18-005023.png)
+
 
 5. Ask which component lots need attention.
 
@@ -314,7 +336,8 @@ Kevin now asks the investigation questions in plain language. David limits the c
     </copy>
     ```
     
-    &&
+    ![2026-09-18-005024](images/2026-09-18-005024.png)
+
 
 6. Ask which complaints support the investigation.
 
@@ -328,7 +351,8 @@ Kevin now asks the investigation questions in plain language. David limits the c
            ) as agent_answer;
     </copy>
     ```
-    &&
+    ![2026-09-18-005025](images/2026-09-18-005025.png)
+    
 
 7. Ask about the first response action and customer-contact authorization.
 
@@ -346,27 +370,27 @@ Kevin now asks the investigation questions in plain language. David limits the c
     </copy>
     ```
 
-    &&
+    ![2026-09-18-005026](images/2026-09-18-005026.png)
 
 8. Compare the answers with the checkpoint.
 
-| Grounded fact                              | Expected value                                |
-| --------------------------------------------| -----------------------------------------------|
-| Investigation case                         | `CASE-B482-2026`                              |
-| Status                                     | `INVESTIGATING`                               |
-| Affected stores                            | 120                                           |
-| Units sent                                 | 2,400                                        |
-| Potentially exposed customers              | 600                                           |
-| Stores within 25-kilometer response radius | 120                                           |
-| Component batches                          | 25                                            |
-| Supplier sites                             | 25                                            |
-| Related complaints                         | `9001`, `9002`, `9006`, `9003`, `9007`        |
-| First action                               | Quarantine remaining inventory and stop sales |
-| Customer contact authorized                | `false`                                       |
-{: title="Agent results"}
-
-The wording can vary because the model generates prose. The facts must match the database tool output.
-
+    | Grounded fact                              | Expected value                                |
+    | --------------------------------------------| -----------------------------------------------|
+    | Investigation case                         | `CASE-B482-2026`                              |
+    | Status                                     | `INVESTIGATING`                               |
+    | Affected stores                            | 120                                           |
+    | Units sent                                 | 2,400                                        |
+    | Potentially exposed customers              | 600                                           |
+    | Stores within 25-kilometer response radius | 120                                           |
+    | Component batches                          | 25                                            |
+    | Supplier sites                             | 25                                            |
+    | Related complaints                         | `9001`, `9002`, `9006`, `9003`, `9007`        |
+    | First action                               | Quarantine remaining inventory and stop sales |
+    | Customer contact authorized                | `false`                                       |
+      {: title="Agent results"}
+      
+      The wording can vary because the model generates prose. The facts must match the database tool output.
+  
 ## Task 4: Confirm the Assistant Limits
 
 Kevin needs to confirm that the assistant stayed within its limits. David makes the tool access visible; Tim verifies it.
@@ -382,8 +406,8 @@ Kevin needs to confirm that the assistant stayed within its limits. David makes 
     </copy>
     ```
     
-    && 
-    
+    ![2026-09-18-005027](images/2026-09-18-005027.png)
+
 2. Explain the current boundary:
 
     - The agent can call two definer-rights package functions.
@@ -395,7 +419,7 @@ Kevin needs to confirm that the assistant stayed within its limits. David makes 
 
     The important distinction is between **who can execute the agent framework** and **what evidence the agent receives**. The owner-owned bridge has the agent framework privilege. The approved package functions define the only evidence boundary. Lab 7 makes JSON and vector retrieval run under the requesting end-user context, and Lab 8 adds role-filtered spatial impact and graph relationship evidence before the combined document crosses the definer-rights bridge.
 
-You have completed Lab 5. Lab 6 publishes the package results through ORDS. Lab 7 applies Deep Data Security before retrieval, and Lab 8 brings the JSON, Vector Search, Spatial, and SQL Property Graph results into the secured application.
+Before moving on, check that all five answers match the checkpoint and that the tool attributes confirm the intended boundary. Lab 6 publishes the package results through ORDS. Lab 7 applies Deep Data Security before retrieval, and Lab 8 brings the JSON, Vector Search, Spatial, and SQL Property Graph results into the secured application.
 
 ## Conclusion
 
