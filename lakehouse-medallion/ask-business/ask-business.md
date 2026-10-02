@@ -2,51 +2,82 @@
 
 ## Introduction
 
-Mia wants to understand West-region sales without writing the first SQL statement herself. Use the event's Select AI-enabled experience against the native Gold table, then verify the generated query and scope.
+Mia wants to know which products lead West-region sales in the latest month available. Start from the native Gold table, generate SQL from a business question, and compare the answer with reference SQL.
 
 Estimated Time: 7 minutes.
 
 ### Objectives
 
-* Ask a natural-language question against curated Gold.
-* Inspect generated SQL and validate the answer's scope.
-* Understand the role and limits of enriched metadata.
+* Use **Query with AI** with the Gold table selected.
+* Review generated SQL before running it.
+* Validate the source, reporting month, and sales totals.
 
 ### Prerequisites
 
-Complete Lab 4. Gold must contain West-only data. The facilitator must provision and test the Gold Select AI profile.
+Complete Lab 4. Gold must contain West-only data. The facilitator must test the Gold-query AI configuration before the event; the revised Gold prompt still requires an end-to-end event dry-run.
 
-## Task 1: Open the configured AI experience in the new UI
+## Task 1: Select Gold as the AI query context
 
-1. Return to **Home → AI Assistant** or the **Open AI Assistant** header button. Confirm with the facilitator that the selected database and configured AI profile are the lab's Gold-query profile.
+1. Open **SQL Worksheet** and create a worksheet named **Lab 5 - West product sales**.
 
-2. Confirm that the profile exposes `PG.GOLD_WEST_PRODUCT_PERFORMANCE` and includes the supported comments/annotations. The facilitator provisions the profile, approved model connection, and required privileges; attendees do not create API credentials.
+2. In the worksheet's **Catalog** pane, expand **your connected database → PG → Tables** and select `ailh_gold_west_product_performance`.
 
-3. If the assistant is a general helper rather than the event's database-query experience, or cannot use the configured Gold profile, do not treat its answer as a Select AI result. Use the worksheet's configured Select AI capability or Appendix A.
+3. In the table detail pane, click **Query with AI**. Confirm that the **Using** selection identifies `ailh_gold_west_product_performance` and the worksheet shows **AI Profile ready**.
 
-## Task 2: Ask and inspect
+    ![Worksheet table detail pane with the Gold dataset and Query with AI control](../assets/images/review-query-with-ai.png)
 
-1. Submit this prompt in the configured natural-language query experience.
+4. Keep the scope on native Gold. Do not select `PG."ailh_enriched_sales"` or the mounted Silver table for Mia's question. The header's general **Assistant** is not the entry point for this exercise.
+
+## Task 2: Generate and review SQL
+
+1. Enter this single-line prompt, with the Gold table selected:
 
     ```text
     <copy>
-    Using GOLD_WEST_PRODUCT_PERFORMANCE, show the top 10 West-region products
-    by sales amount in the latest sales month in the data. Include product,
-    category, units sold, sales amount, and estimated gross margin.
+    Using only PG."ailh_gold_west_product_performance", show the top 10 product names by total sales amount for the latest SALE_MONTH available in this table. Sum TOTAL_SALE_AMOUNT by PRODUCT_NAME and sort from highest to lowest sales amount.
     </copy>
     ```
 
-2. Inspect the generated SQL when available. It should use the native Gold table, use the latest month in the dataset rather than today's calendar month, and aggregate at product level as requested. It must not infer company-wide performance from a West-only table.
+2. Click **Generate SQL**. Inspect the generated SQL before executing it.
 
-3. Compare at least one reported value with the SQL result. If the interface does not expose generated SQL, use Appendix A's `SHOWSQL` route to inspect it before relying on the response.
+3. Confirm these points:
 
-4. Ask a follow-up: “Does this dataset cover all regions? Explain its geographic scope.” Check that the explanation matches the West-only metadata and actual data. Do not assume every AI response is correct.
+    * The query and any latest-month subquery read `"PG"."ailh_gold_west_product_performance"`.
+    * The reporting month is the maximum `SALE_MONTH` in Gold, not the current calendar month.
+    * Sales amounts are summed by product name, ordered descending, and limited to 10 rows.
+    * The result describes West-region sales only. No additional region predicate is needed because this Gold table contains only West data.
 
-    **Checkpoint:** a database-grounded result from Gold answers the question, and you can explain its geographic scope. This is natural-language analytics, not a demonstration of an autonomous agent taking actions.
+4. Run the reviewed statement using **Run Statement**. Do not accept a result from another table simply because its totals look reasonable.
 
-## Appendix A: Legacy Select AI SQL fallback
+## Task 3: Validate the business answer
 
-1. Open **legacy Database Actions → SQL** as `PG`. Use the profile name supplied by the facilitator in place of `EVENT_GOLD_PROFILE`. This changes only the session's active profile.
+1. In a separate worksheet, run this reference query. It adapts the supplied sales query to the confirmed Gold table.
+
+    ```sql
+    <copy>
+    SELECT
+        a."PRODUCT_NAME" AS product_name,
+        SUM(a."TOTAL_SALE_AMOUNT") AS total_sales_amount
+    FROM "PG"."ailh_gold_west_product_performance" a
+    WHERE a."SALE_MONTH" = (
+        SELECT MAX(b."SALE_MONTH")
+        FROM "PG"."ailh_gold_west_product_performance" b
+    )
+    GROUP BY a."PRODUCT_NAME"
+    ORDER BY total_sales_amount DESC
+    FETCH FIRST 10 ROWS ONLY;
+    </copy>
+    ```
+
+2. Compare the leading product and its total sales amount with the generated query result. Both queries must use the same Gold dataset and period. Product names are the grouping key for this exercise.
+
+3. Save the worksheet. Explain the answer as: “These are the leading products by sales amount in the latest available month for the West region.” This is not a company-wide ranking.
+
+    **Checkpoint:** the AI-generated query uses Gold, its result agrees with the reference calculation, and you can explain its scope. A reference-SQL result alone does not demonstrate successful natural-language querying.
+
+## Appendix A: Legacy Select AI route
+
+1. Open **legacy Database Actions → SQL** as `PG`. Set the Gold profile supplied in the event handout. Replace `EVENT_GOLD_PROFILE` with that profile name.
 
     ```sql
     <copy>
@@ -57,23 +88,17 @@ Complete Lab 4. Gold must contain West-only data. The facilitator must provision
     </copy>
     ```
 
-2. Inspect the generated SQL first.
+2. Generate SQL for inspection.
 
     ```sql
     <copy>
-    SELECT AI SHOWSQL Using GOLD_WEST_PRODUCT_PERFORMANCE show the top 10 West region products by sales amount in the latest sales month in the data including product category units sold sales amount and estimated gross margin;
+    SELECT AI SHOWSQL Using only PG."ailh_gold_west_product_performance" show the top 10 product names by total sales amount for the latest SALE_MONTH available in this table. Sum TOTAL_SALE_AMOUNT by PRODUCT_NAME and sort from highest to lowest sales amount;
     </copy>
     ```
 
-3. After reviewing the source and calculation, run the natural-language query.
+3. Check the source and calculations against Task 3. Execute the reviewed generated SQL, then compare it with the reference query.
 
-    ```sql
-    <copy>
-    SELECT AI RUNSQL Using GOLD_WEST_PRODUCT_PERFORMANCE show the top 10 West region products by sales amount in the latest sales month in the data including product category units sold sales amount and estimated gross margin;
-    </copy>
-    ```
-
-4. Generated SQL may vary between requests. Inspect the executed statement where available and validate its result. If the model/profile is unavailable, report that blocker; a prepared SQL result is a fallback demonstration, not a successful NLQ run.
+4. If the AI configuration is unavailable, the facilitator can demonstrate the reference SQL and explain the intended NLQ step. Label that as a SQL demonstration, not a completed AI exercise.
 
 ## Learn More
 
@@ -85,4 +110,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

@@ -1,0 +1,53 @@
+{
+  "workshoptitle": "PeakGear: From Raw Sources to Governed Answers with Codex",
+  "help": "livelabs-help-adbs_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Lab 1: Prepare the PeakGear lab as ADMIN",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../admin-setup/admin-setup.md"
+    },
+    {
+      "title": "Lab 2: Sign in as PEAKGEAR_USER",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../connect-peakgear/connect-peakgear.md"
+    },
+    {
+      "title": "Lab 3: Connect real sources",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../connect-sources/connect-sources.md"
+    },
+    {
+      "title": "Lab 4: Connect Codex and ask the raw-data question",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../connect-codex/connect-codex.md"
+    },
+    {
+      "title": "Lab 5: Add business meaning with AI Enrichment",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../ai-enrichment/ai-enrichment.md"
+    },
+    {
+      "title": "Lab 6: Identify the governed-model gap",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../governed-question/governed-question.md"
+    },
+    {
+      "title": "Lab 7: Create Analytic Views with Codex",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../analytic-views/analytic-views.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Template to link to Need Help lab at the end of workshop.",
+      "filename": "https://raw.githubusercontent.com/oracle-livelabs/common/main/labs/need-help/need-help-freetier.md"
+    }
+  ]
+}
