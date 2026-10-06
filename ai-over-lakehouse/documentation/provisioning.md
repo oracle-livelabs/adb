@@ -1,0 +1,31 @@
+# Provider-only provisioning boundary
+
+The learner workshop starts at **Lab 2**. LiveLabs provisioning must complete
+before the reservation is ready. Participants do not connect as ADMIN.
+
+The environment provider prepares:
+
+* the assigned database and PEAKGEAR_USER account with its reservation-specific
+  Database Password and required object-creation privileges;
+* ORDS / Database Actions access for that user;
+* the required Databricks network ACL;
+* the public PEAKGEAR_OPERATIONS_LINK pointing to the event Operations source;
+* Resource Principal and IAM prerequisites; and
+* the Data Studio AI profile named in the reservation's Environment Details.
+
+LiveLabs exposes OCI Login Credentials and Tenancy Information separately from
+Environment Details. Those details must include Database Name, Database User,
+Database Password, AI Profile Name, and Operations Database Link. OCI and
+database passwords must not be confused or copied from illustrative screenshots.
+
+The preserved [legacy ADMIN SQL](../scripts/00-admin-setup.sql) is an operator
+reference only, not the automated reservation template and not a learner task.
+Its example password must not override the password supplied by reservation
+provisioning. Do not run it against an already prepared reservation just to
+follow the workshop. Provider templates and their secrets are maintained in the
+provisioning workflow, not supplied to participants as extra setup steps.
+
+If the participant checkpoint fails, repair the reservation rather than asking
+learners to grant privileges, create profiles, or use ADMIN. Verify the provider
+template with a new reservation before release; a static workshop review does
+not prove successful provisioning.

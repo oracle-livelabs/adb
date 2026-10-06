@@ -26,9 +26,9 @@ echo
 echo "This will install the local Data Studio MCP package."
 echo "No macOS administrator password is required."
 echo
-echo "Before running setup, obtain the Lab Data Studio URL using the SQL in Lab 4."
-echo "Run that read-only query in Data Studio SQL Worksheet as ADMIN, not in Terminal."
-echo "Keep the full ADP_URL result ready, then sign back in to Data Studio as PEAKGEAR_USER."
+echo "Before running setup, copy your assigned database's Database Actions URL in Lab 2."
+echo "Keep only its HTTPS origin ending in oraclecloudapps.com, without /ords/... ."
+echo "Keep LiveLabs Reservation Information -> Environment Details open for Database Password."
 echo "If you do not have the URL yet, press Control-C and complete that step first."
 echo
 
@@ -56,7 +56,7 @@ if [[ ! -x "$UV_BIN_DIR/oracle-data-studio-config" ]]; then
 fi
 
 echo
-echo "Paste the full ADP_URL obtained with the ADMIN SQL query in Lab 4, then press Return."
+echo "Paste the database-specific HTTPS origin copied in Lab 2, then press Return."
 echo "Example: https://example.adb.us-ashburn-1.oraclecloudapps.com"
 read "ADP_URL?Lab Data Studio URL: "
 
@@ -68,6 +68,8 @@ fi
 
 echo
 echo "Now enter the password for ${PEAKGEAR_USER} when prompted."
+echo "Copy Database Password from LiveLabs Reservation Information -> Environment Details."
+echo "Do not use OCI Login Credentials, a screenshot's example, or your Mac password."
 echo "The password is not echoed and is stored in the macOS Keychain."
 "$UV_BIN_DIR/oracle-data-studio-config" set adp --url "$ADP_URL" --user "$PEAKGEAR_USER"
 

@@ -1,6 +1,6 @@
 # Workshop Details
 
-Estimated Time: 75 minutes for hands-on work, plus a 15-minute recovery and
+Estimated Time: 60 minutes for hands-on work, plus a 15-minute recovery and
 discussion buffer.
 
 ## Short Description
@@ -26,22 +26,32 @@ make the final drill-down reproducible.
 
 | Lab | Focus | Minutes |
 |---|---|---:|
-| 1 | Prepare the PeakGear lab as `ADMIN` | 15 |
-| 2 | Sign in as `PEAKGEAR_USER` | 5 |
+| 2 | Connect to your LiveLabs database | 5 |
 | 3 | Connect real Databricks and Operations sources | 15 |
 | 4 | Connect Codex and ask the raw-data question | 8 |
 | 5 | Add business meaning with Data Studio AI Enrichment | 12 |
 | 6 | Identify the governed-model gap | 5 |
 | 7 | Create Analytic Views with Codex and answer the question | 15 |
 | Buffer | Troubleshooting and discussion | 15 |
-| Total | | 90 |
+| Total | | 75 |
+
+Start at Lab 2. Lab 1 is intentionally removed: the reservation provisions the
+database user, grants, ORDS access, Operations link, network ACL, and AI profile.
+
+AI Enrichment is performed only in Lab 5 for all three raw views: digital
+interactions, the product catalog, and operational returns. Lab 6 reuses the
+saved annotations to identify the governed-model gap, without repeating
+enrichment.
 
 ## Workshop Prerequisites
 
-* An assigned Autonomous AI Database environment with lab-only `ADMIN` access.
+* An active LiveLabs reservation with a ready Autonomous AI Database environment.
+* OCI Login Credentials, Tenancy Information, and Environment Details from
+  the learner's own Reservation Information. The database password and OCI
+  password are different; no participant ADMIN access is required.
 * The shared [Event lab values](../assets/event-lab-values.md), included directly
-  in the workshop with the event owner's approval. They contain the new-user
-  password, Operations connection, Azure storage password, Databricks OAuth
+  in the workshop with the event owner's approval. They contain the prepared
+  Operations link name, Azure storage password, Databricks OAuth
   values, and source endpoints; no separate handout is needed for those values.
 * An available Oracle Operations database that exposes
   `CUSTOMER_RETURN_EVENTS`.
@@ -49,13 +59,13 @@ make the final drill-down reproducible.
   `ICEBERG.DIGITAL_CLICKSTREAM_EVENTS`.
 * A default AI profile already configured for the assigned database. It must
   allow Data Studio AI Enrichment; participants do not create the profile.
-* Codex Desktop installed and signed in on the participant laptop.
+* A Mac with Terminal, and Codex Desktop installed and signed in.
 
 ## Learning Outcomes
 
 After completing this workshop, participants can:
 
-* configure the minimum admin and participant boundaries for the lab;
+* distinguish OCI sign-in from database sign-in and use a prepared participant session;
 * connect and inspect raw Iceberg and Oracle Operations sources;
 * distinguish raw technical data from reviewed business metadata;
 * use Data Studio AI Enrichment to save descriptions and tags;

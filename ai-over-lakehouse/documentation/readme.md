@@ -1,11 +1,13 @@
 # PeakGear: from raw sources to governed answers with Codex
 
-Estimated Time: 75 minutes, plus a 15-minute troubleshooting buffer.
+Estimated Time: 60 minutes, plus a 15-minute troubleshooting buffer.
 
-This is a seven-lab Oracle LiveLabs workshop package. Participants begin as
-`ADMIN`, prepare a safe PeakGear participant schema, connect real Iceberg and
-Operations data, and then use Codex with Oracle Data Studio MCP. The same
-business question becomes more useful as its governed context improves.
+This is a six-module Oracle LiveLabs workshop package, numbered **Labs 2–7**.
+Participants begin with an already provisioned reservation, use its OCI and
+database credentials to connect Data Studio, connect real Iceberg and Operations
+data, and then use Codex with Oracle Data Studio MCP. The same business question
+becomes more useful as its governed context improves. There is no participant
+ADMIN setup or Lab 1.
 
 ## Start here
 
@@ -14,22 +16,29 @@ business question becomes more useful as its governed context improves.
 * TLF submission metadata and agent handoff: [tlf-workshop-submission-handoff.md](tlf-workshop-submission-handoff.md).
 * Release checks and runtime gates: [author-review.md](author-review.md).
 * Screenshot capture and provenance: [traceability.md](traceability.md).
-* ADMIN SQL: [scripts/00-admin-setup.sql](../scripts/00-admin-setup.sql).
+* Provider-only provisioning boundary: [provisioning.md](provisioning.md).
 * Copy-ready event values: [event-lab-values.md](../assets/event-lab-values.md).
 * Optional source-connection SQL: [scripts/01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
 * Participant Codex package: [starter-kit](../starter-kit/).
 
 Lab 4 provides one Starter Kit download and an explicit Terminal sequence:
-download, open Terminal, extract the ZIP, prepare the project folder, obtain the
-Data Studio URL with the read-only ADMIN SQL query, sign back in as
-PEAKGEAR_USER, run setup, answer its prompts, open the project in Codex, and
-create a fresh task. The URL is obtained before running
+download, open Terminal, extract the ZIP, prepare the project folder, have the
+database-specific Database Actions origin from Lab 2 ready, run setup, answer
+its prompts with the reservation's Database Password, open the project in Codex,
+and create a fresh task. The URL is obtained before running
 01-setup-peakgear-mcp.command. The ZIP README follows the same sequence. No
 separate local-event kit is required.
 
-The participant performs the `ADMIN` setup in Lab 1. The default AI profile
-is preconfigured for the lab: participants do not create, change, or validate
-an AI profile.
+The reservation already provides the participant user and grants, ORDS access,
+network ACL, Operations database link, and AI profile. Participants do not
+create or change these. Lab 2 separates OCI Login Credentials from Environment
+Details and includes two illustrative reservation screenshots; the database
+password is redacted. Values from the learner's own reservation are authoritative.
+
+Lab 5 is the only learner module that runs AI Enrichment. It reviews and saves
+the descriptions and tags for digital interactions, the product catalog, and
+operational returns. Lab 6 reuses those annotations to ask the harder business
+question and identify the governed-model gap; it does not repeat enrichment.
 
 ## Local preview
 
@@ -70,18 +79,24 @@ the server was started from the wrong directory.
 
 The event owner explicitly approved including the supplied shared passwords,
 Azure storage password, Databricks client ID, client secret, and endpoints in
-this one-off workshop package. Lab 1 ADMIN SQL and Lab 3 UI steps are ready for
-copy/paste; no private handout is required for these values. The default password
-for a new PEAKGEAR_USER created in Lab 1 is Welcome123456. Existing accounts are
-not reset.
+this one-off workshop package. Lab 3 source-credential and mount steps are ready
+for copy/paste; no private handout is required for these shared values. The
+participant database password is instead assigned per reservation and must be
+copied from LiveLabs **Environment Details**; it is not published in this package.
 
-The participant Data Studio URL must still be generated for the assigned
-database by the ADMIN query in Lab 1. Do not substitute the Operations database
-listener or localhost preview URL. ADMIN login, personal credentials, and OCI
-API private keys are not part of the approved published values. Use these shared
-credentials only for the event and retire them when it ends.
+Lab 2 obtains the actual database-specific HTTPS origin from Database Actions,
+without an ADMIN login. Do not substitute the Operations database listener or
+localhost preview URL. ADMIN login, reservation passwords, personal credentials,
+and OCI API private keys are not part of the approved published values. Use the
+shared source credentials only for the event and retire them when it ends.
 
 ## Status
+
+Offline helper regression tests (no database connection):
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s documentation/tests -v
+```
 
 Workshop structure and learner flow are drafted. Runtime acceptance and the
 UI screenshot set remain release gates recorded in `author-review.md`.

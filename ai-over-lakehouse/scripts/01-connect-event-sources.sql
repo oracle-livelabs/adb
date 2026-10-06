@@ -1,10 +1,10 @@
 --------------------------------------------------------------------------------
 -- PeakGear event | SQL alternative to the Data Studio credential/mount UI.
--- Run in SQL Worksheet as PEAKGEAR_USER, after Lab 1 ADMIN setup.
+-- Run in SQL Worksheet as PEAKGEAR_USER in the prepared LiveLabs reservation.
 -- Event values and mount calls are from the owner's confirmed working script.
 -- This worksheet does not drop credentials, unmount catalogs, or change source data.
 -- Execute each CREATE block only when its inspection query shows no matching object.
--- The Databricks host:443 ACL belongs in 00-admin-setup.sql as ADMIN for PEAKGEAR_USER.
+-- The provider already prepares the Databricks host:443 ACL for PEAKGEAR_USER.
 --------------------------------------------------------------------------------
 
 SELECT USER AS database_user,

@@ -3,13 +3,7 @@
   "help": "livelabs-help-adbs_us@oracle.com",
   "tutorials": [
     {
-      "title": "Lab 1: Prepare the PeakGear lab as ADMIN",
-      "description": "",
-      "type": "livelabs",
-      "filename": "../../admin-setup/admin-setup.md"
-    },
-    {
-      "title": "Lab 2: Sign in as PEAKGEAR_USER",
+      "title": "Lab 2: Connect to your LiveLabs database",
       "description": "",
       "type": "livelabs",
       "filename": "../../connect-peakgear/connect-peakgear.md"

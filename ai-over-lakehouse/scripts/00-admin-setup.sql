@@ -1,5 +1,7 @@
--- PeakGear LiveLab: participant provisioning for the one-off event.
--- Run in SQL Worksheet as ADMIN before any ACL, credential, mount, or Data Studio step.
+-- PeakGear LiveLab: legacy provider/operator provisioning reference only.
+-- Not a learner step. LiveLabs reservations must already be provisioned.
+-- Reservation-specific passwords come from provisioning, not the example below.
+-- Do not rerun against a prepared reservation. See documentation/provisioning.md.
 -- Event-owner-approved shared values are included for copy/paste.
 -- Use only in the assigned event database. This script does not reset existing users.
 

@@ -4,7 +4,8 @@ Estimated Time: 5 minutes
 
 ## Introduction
 
-The first enrichment contract made one raw source answerable. The next question
+Lab 5 saved the reviewed descriptions and tags for all three raw views. Reuse
+those annotations here; do not run AI Enrichment again. The next question
 combines digital behavior, a product hierarchy, and operational returns. A
 one-off join would be technically possible but would not be a shared,
 reviewable, reusable business model.
@@ -13,37 +14,16 @@ reviewable, reusable business model.
 
 In this lab, you will:
 
-* add the remaining source contracts in Data Studio; and
+* ask a harder question using the source contracts already saved in Lab 5; and
 * see why a cross-source recommendation needs Analytic Views.
 
-## Task 1: Enrich the product catalog
+### Prerequisites
 
-In **Catalog**, open LAB&#95;PRODUCTS&#95;RAW&#95;V and run **AI Enrichment**. Review and
-save these business definitions:
+Complete Lab 5, including the saved descriptions and tags for
+LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V, LAB&#95;PRODUCTS&#95;RAW&#95;V, and LAB&#95;RETURNS&#95;RAW&#95;V.
+Keep the same Codex task and LiveLab MCP connection open.
 
-| Object | Description | Tags |
-|---|---|---|
-| View | One row per product. Conformed catalog shared by digital intent and returns. Category rolls up product. | product&#95;catalog, conformed&#95;dimension, category&#95;hierarchy |
-| PRODUCT&#95;ID | Shared product join key. | product&#95;key, join&#95;key |
-| PRODUCT&#95;NAME | Business-facing product name. | product&#95;name |
-| CATEGORY&#95;NAME | Category used to aggregate products. | category, hierarchy&#95;level |
-
-## Task 2: Enrich operational returns
-
-In **Catalog**, open LAB&#95;RETURNS&#95;RAW&#95;V and run **AI Enrichment**. Review and
-save these business definitions:
-
-| Object | Description | Tags |
-|---|---|---|
-| View | One operational return event by product, store and timestamp. Aggregate separately before comparing with digital popularity. Returns are a quality context, not a rate. | `returns`, quality&#95;signal, operational&#95;data, no&#95;return&#95;rate |
-| PRODUCT&#95;ID | Product join key. Join to LAB&#95;PRODUCTS&#95;RAW&#95;V.PRODUCT&#95;ID. | product&#95;key, join&#95;key |
-| STORE&#95;ID | Store identifier for returns analysis. | store&#95;key, join&#95;key |
-| RETURN&#95;QTY | Additive number of returned units. Default aggregation is `SUM`. | `measure`, `units`, `additive`, `sum` |
-| RETURN&#95;CREATED&#95;AT | Timestamp when the return was recorded. Derive calendar month from it. | event&#95;timestamp, time&#95;key |
-
-Save both objects.
-
-## Task 3: Ask the harder business question
+## Task 1: Ask the harder business question
 
 In Codex, ask:
 
@@ -53,6 +33,8 @@ Which product categories should we prioritize, balancing current customer
 interest with returns?
 </copy>
 ~~~
+
+## Task 2: Review the governed-model requirements
 
 Expected result: Codex should state that it needs a governed model before
 making the recommendation. It should identify all of these requirements:
@@ -72,8 +54,9 @@ instead of making an unreviewed recommendation from ad-hoc SQL.
 
 ### Checkpoint
 
-All three raw views have reviewed Data Studio metadata. Codex has identified
-the governed-model requirements and has not invented a recommendation.
+Codex has reused the Data Studio metadata saved in Lab 5, identified the
+governed-model requirements, and has not invented a recommendation. Continue
+to Lab 7 to create the Analytic Views with Codex.
 
 ## Learn More
 
@@ -82,4 +65,4 @@ the governed-model requirements and has not invented a recommendation.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

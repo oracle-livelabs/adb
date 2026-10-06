@@ -12,65 +12,26 @@ Username:
 PEAKGEAR_USER
 ```
 
-Password for a **new account created by Lab 1**:
+The authoritative **Database User** and **Database Password** are in your
+LiveLabs **Reservation Information → Environment Details**. The account is
+already provisioned. Do not use an example password or your OCI login password.
+If the assigned user is not PEAKGEAR_USER, ask the instructor before continuing.
 
-```text
-Welcome123456
-```
+Obtain the database-specific HTTPS origin from the reserved database's
+Database Actions URL, as described in Lab 2, Task 3. No ADMIN login or SQL lookup
+is required. Do not use localhost:8000, datastudio.oracle.com, or the Operations
+listener as the MCP connection URL.
 
-Lab 1 does not reset an existing account's password. If the account already
-exists, use its current password.
+## Prepared Operations database link
 
-The **Lab Data Studio URL** is the full ADP_URL result from the read-only
-ADMIN query in Lab 1. Lab 4 and the Starter Kit repeat that SQL before
-01-setup-peakgear-mcp.command. Run it in Data Studio SQL Worksheet on the
-assigned Autonomous AI Database, copy the HTTPS result, then sign back in as
-PEAKGEAR_USER. Do not use localhost:8000 or the Operations database listener
-as the MCP connection URL.
-
-## Operations database — ADMIN setup
-
-Credential name:
-
-```text
-PEAKGEAR_OPS_CREDENTIAL
-```
-
-Username:
-
-```text
-PEAKGEAR_OPS
-```
-
-Password:
-
-```text
-Welcome123456
-```
-
-Hostname:
-
-```text
-adb.us-ashburn-1.oraclecloud.com
-```
-
-Port:
-
-```text
-1522
-```
-
-Service name:
-
-```text
-mqssyowmqvgac1y_operationalstore_low.adb.oraclecloud.com
-```
-
-Public database link:
+Use **Operations Database Link** from your reservation. The expected value is:
 
 ```text
 PEAKGEAR_OPERATIONS_LINK
 ```
+
+The reservation provisions this link before the workshop starts. Participants
+read through it; they do not create a credential or database link.
 
 ## Azure storage credential — PEAKGEAR_USER
 
@@ -136,7 +97,8 @@ Token refresh rate in seconds:
 3600
 ```
 
-Databricks ACL host (port 443, principal PEAKGEAR_USER):
+Provider-provisioned Databricks ACL host (port 443, principal PEAKGEAR_USER).
+Participants do not create or change this ACL:
 
 ```text
 adb-2242907740736663.3.azuredatabricks.net

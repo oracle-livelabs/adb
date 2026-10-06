@@ -10,7 +10,7 @@ systems:
 * Databricks Unity Catalog supplies the Iceberg product catalog and digital
   clickstream events.
 * The existing Oracle Operations database supplies return events through the
-  public database link created in Lab 1.
+  public database link already provisioned for your LiveLabs reservation.
 
 You will connect Databricks through the Data Studio UI, add a Lake Cache policy
 immediately after the mount, and create three participant-owned raw views.
@@ -142,8 +142,9 @@ The UI is the normal workshop path. For a SQL-only dry run of Tasks 1 and 2,
 use [01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
 It uses the owner-confirmed working mount calls and event values. Run it as
 PEAKGEAR&#95;USER, only for missing credentials or a missing catalog; do not
-recreate a mount that already works. The host ACL is already granted in Lab 1
-by ADMIN for PEAKGEAR&#95;USER.
+recreate a mount that already works. The required host ACL is already
+provisioned for PEAKGEAR&#95;USER. If access is denied, ask the instructor;
+participants must not grant ACLs or switch to ADMIN.
 
 ## Task 3: Add the Lake Cache policy
 

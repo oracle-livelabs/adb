@@ -13,14 +13,14 @@ current decisions in this document override earlier versions.
 
 | Field | Copy-ready value |
 |---|---|
-| Workshop title | PeakGear: From Raw Data to Governed AI Answers with Codex |
+| Workshop title | PeakGear: From Raw Sources to Governed Answers with Codex |
 | Short title | PeakGear AI Lakehouse with Codex |
 | Subtitle | Connect live Oracle and Databricks data, add business meaning, and build governed Analytic Views |
 | Workshop slug | peakgear-codex-semantic-lakehouse |
 | Delivery type | Hands-on workshop |
 | Experience level | Intermediate |
-| Duration | 90 minutes |
-| Hands-on time | 75 minutes |
+| Duration | 75 minutes |
+| Hands-on time | 60 minutes |
 | Troubleshooting and discussion buffer | 15 minutes |
 | Content language | English |
 | Industry scenario | Retail and consumer products |
@@ -53,8 +53,9 @@ connected, but their raw fields do not define what customer interest means,
 which time period should be compared, or how digital behavior and returns
 should be aggregated.
 
-Participants first configure a bounded PEAKGEAR_USER environment and connect
-both live sources to Oracle AI Lakehouse. They then connect Codex through the
+Participants first open their prepared LiveLabs reservation, use its assigned
+database credentials, and connect both live sources to Oracle AI Lakehouse.
+They then connect Codex through the
 Oracle Data Studio MCP server and ask a simple business question. Codex
 correctly refuses to invent a ranking from raw objects. Participants use Data
 Studio AI Enrichment to review and save the business meaning of the data, then
@@ -132,8 +133,9 @@ The business question is:
 
 ### Not the primary audience
 
-This is not a no-code business-user workshop. Participants perform database
-administration, credential, catalog-mount, SQL, and MCP setup steps.
+This is not a no-code business-user workshop. Participants perform source
+credential, catalog-mount, SQL, and MCP setup steps. Database administration
+and reservation provisioning are not participant tasks.
 
 ## Recommended prior knowledge
 
@@ -154,47 +156,50 @@ manual MCP configuration is not required.
 * Codex Desktop installed and signed in.
 * A modern browser.
 * Internet access.
-* The assigned database's ADMIN sign-in and the PEAKGEAR_USER password.
-  Lab 1 assigns Welcome123456 only when creating a new participant account;
-  an existing account keeps its current password.
-* The Lab Data Studio URL produced in Lab 1.
+* An active, ready LiveLabs reservation with OCI Login Credentials, Tenancy
+  Information, and Environment Details. Database User and Database Password
+  come from Environment Details, not screenshots or OCI Login Credentials.
+* The database-specific HTTPS origin obtained from Database Actions in Lab 2.
 * The shared [Event lab values](../assets/event-lab-values.md). Source endpoints,
-  Azure storage password, Databricks client ID, client secret, and Operations
-  connection values are printed in the workshop for copy/paste.
+  Azure storage password, Databricks client ID, client secret, and the prepared
+  Operations link name are printed in the workshop for copy/paste.
 
 ## Environment prerequisites
 
 The workshop environment must provide:
 
-* an assigned Oracle AI Lakehouse database;
+* an assigned Oracle AI Lakehouse database with PEAKGEAR_USER, required grants,
+  and ORDS / Database Actions access already enabled;
 * an existing Oracle operations database exposing CUSTOMER_RETURN_EVENTS;
 * a Databricks Unity Catalog endpoint exposing ICEBERG.PRODUCTS and
   ICEBERG.DIGITAL_CLICKSTREAM_EVENTS;
 * network access from the lab database to the Databricks OAuth endpoint;
+* the public PEAKGEAR_OPERATIONS_LINK already provisioned;
 * OCI Resource Principal and required IAM policy;
 * a default NL2SQL AI profile that supports Data Studio AI Enrichment; and
 * the project-scoped PeakGear LiveLab MCP starter kit.
 
 The default AI profile is created before the workshop. Participants do not
-create, edit, select, or validate an AI profile.
+create or edit an AI profile. They may check that the profile named in their
+reservation is present; this is not a profile-configuration task.
 
 ## What participants do
 
 This is the current hands-on boundary:
 
-1. Sign in as ADMIN and create or verify PEAKGEAR_USER, minimum grants, ORDS
-   enablement, the Operations database link, the Data Studio URL, and the
-   Databricks host ACL.
-2. Sign out completely and sign back in as PEAKGEAR_USER.
+1. Start at Lab 2 and read their own LiveLabs Reservation Information,
+   distinguishing OCI login from database login.
+2. Connect Data Studio to the assigned database with Environment Details,
+   verify the participant identity, and copy its Database Actions HTTPS origin.
 3. Use Data Studio UI to create the Azure storage credential and Databricks
    OAuth credential.
 4. Use Data Studio UI to mount the Databricks Unity/Iceberg catalog.
 5. Add Lake Cache policies for both mounted Iceberg tables.
 6. Create three user-owned raw views over products, digital intent, and
    returns.
-7. In Lab 4, obtain the full Data Studio URL with the read-only ADMIN SQL
-   query, sign back in as PEAKGEAR_USER, then configure the project-scoped
-   LiveLab MCP connection with 01-setup-peakgear-mcp.command.
+7. In Lab 4, download the single Starter Kit and configure the project-scoped
+   LiveLab MCP connection using the URL from Lab 2 and the reservation's
+   Database Password with 01-setup-peakgear-mcp.command. No ADMIN login is needed.
 8. Ask a simple raw-data question and observe a controlled stop.
 9. Use Data Studio AI Enrichment to review and save descriptions and tags.
 10. Repeat the same question and observe the improved answer.
@@ -206,14 +211,18 @@ This is the current hands-on boundary:
 ## What is preconfigured
 
 * The Oracle AI Lakehouse database exists.
+* PEAKGEAR_USER, its reservation-specific password, required grants, ORDS
+  enablement, and the Databricks network ACL are provisioned.
 * The Oracle operations database exists and contains the lab data.
+* The public Operations database link is provisioned and accessible to the user.
 * The Databricks Unity Catalog and Iceberg tables exist.
 * OCI IAM and Resource Principal infrastructure are available.
 * The default Data Studio AI profile exists.
 * The source datasets are populated.
 
-Preconfigured does not mean hidden instructor setup: Lab 1 ADMIN actions are
-performed by the participant.
+These are provider responsibilities completed before the reservation is ready.
+There is no learner Lab 1 or ADMIN setup. Repair provisioning failures rather
+than asking participants to repeat administration steps.
 
 ## Learning objectives
 
@@ -237,15 +246,18 @@ After completing the workshop, participants can:
 
 | Lab | Title | Duration |
 |---:|---|---:|
-| 1 | Prepare the PeakGear lab as ADMIN | 15 minutes |
-| 2 | Sign in as PEAKGEAR_USER | 5 minutes |
+| 2 | Connect to your LiveLabs database | 5 minutes |
 | 3 | Connect real Oracle and Databricks sources | 15 minutes |
 | 4 | Connect Codex and ask the raw-data question | 8 minutes |
 | 5 | Add business meaning with Data Studio AI Enrichment | 12 minutes |
 | 6 | Identify the governed-model gap | 5 minutes |
 | 7 | Create Analytic Views with Codex and answer the question | 15 minutes |
 | Buffer | Troubleshooting and discussion | 15 minutes |
-| Total |  | 90 minutes |
+| Total |  | 75 minutes |
+
+AI Enrichment is performed only in Lab 5, where participants review and save
+the descriptions and tags for all three raw views. Lab 6 reuses those saved
+annotations for the harder question; it does not repeat enrichment.
 
 ## Business questions used in the workshop
 
@@ -315,7 +327,8 @@ The workshop is successful when:
 * AI Enrichment metadata is saved and visible in Data Studio;
 * the repeated simple question produces the defined latest-month ranking;
 * the harder question identifies the need for a governed model;
-* LAB_DIGITAL_POPULARITY_AV and LAB_RETURNS_AV are valid and queryable; and
+* the Codex-created digital-interest and returns Analytic Views are valid and
+  queryable, without requiring prescribed object names; and
 * the final answer uses the common period, digital-event count, and returned
   units without inventing revenue, sales, or return rate.
 
@@ -329,22 +342,28 @@ The workshop is successful when:
 * The lab does not teach manual TOML editing, Python setup, or direct MCP
   server administration.
 * The lab does not grant DBA or broad ANY privileges to PEAKGEAR_USER.
+* Participants do not provision users, grants, ORDS, ACLs, database links, or
+  AI profiles, and do not log in as ADMIN.
 * The lab does not claim Lake Cache speedup without plan and runtime evidence.
 
 ## Event values and publication notes
 
 * The event owner approved publishing the shared values in
-  `assets/event-lab-values.md` for this one-off event. ADMIN SQL and participant
+  `assets/event-lab-values.md` for this one-off event. Participant source
   credential/mount steps use concrete values, not private-handout placeholders.
 * The original Databricks screenshots show the approved endpoints and client
   ID. The UI still masks password fields; copy-ready secrets are in the text.
 * Do not add ADMIN login details, unrelated secrets, or OCI API private keys.
+* Do not publish reservation database or OCI passwords. The Lab 2 environment
+  screenshot is explicitly a password-redacted illustration; its other values
+  are examples, not credentials that all participants should use.
 * The MCP launcher does not require the Azure storage password or Databricks
   client secret; it uses PEAKGEAR_USER to access the prepared database objects.
 * Codex connects as PEAKGEAR_USER, not ADMIN.
-* The public Operations database link is created by ADMIN and consumed by the
-  participant through bounded user-owned views.
-* Generate the participant Data Studio URL in Lab 1 for the assigned database.
+* The public Operations database link is provisioned before the reservation is
+  ready and consumed by the participant through bounded user-owned views.
+* Copy the assigned database's Database Actions HTTPS origin in Lab 2, without
+  an ADMIN login or system-view query.
   Review unrelated database names, compartments, and tenant labels before
   external publication. Retire the shared event credentials after the event.
 
@@ -352,12 +371,12 @@ The workshop is successful when:
 
 Completed:
 
-* Seven-module LiveLabs folder structure and sandbox manifest.
-* Copy-ready ADMIN setup script with event-owner-approved shared values.
+* Six learner modules, numbered Labs 2–7, and a sandbox manifest starting at Lab 2.
+* Provider-only provisioning boundary; legacy operator SQL is not a learner task.
 * Event-values reference and SQL alternative to the Data Studio source mount.
 * Project-scoped Codex MCP starter kit.
-* Data Studio credential, Unity mount, catalog, default-profile, and AI
-  Enrichment screenshots.
+* LiveLabs reservation examples, with the database password redacted, and
+  Data Studio credential, Unity mount, catalog, and AI Enrichment screenshots.
 * Codex screenshots for raw stop, improved simple answer, and final governed
   answer.
 
@@ -394,9 +413,9 @@ Still required before publication:
 | Release checklist | documentation/author-review.md |
 | Screenshot mapping | documentation/traceability.md |
 | Sandbox manifest | workshops/sandbox/manifest.json |
-| ADMIN setup | scripts/00-admin-setup.sql |
+| Provider-only provisioning reference | documentation/provisioning.md; scripts/00-admin-setup.sql |
 | Codex starter kit | starter-kit/ |
-| Learner modules | admin-setup/, connect-peakgear/, connect-sources/, connect-codex/, ai-enrichment/, governed-question/, analytic-views/ |
+| Learner modules | connect-peakgear/, connect-sources/, connect-codex/, ai-enrichment/, governed-question/, analytic-views/ |
 
 ## Instructions for the next Codex agent
 
@@ -412,12 +431,15 @@ When using this document to populate TLF:
    governed Analytic Views, and Codex through MCP.
 4. Do not add AI Profile creation to the participant flow. The default profile
    is preconfigured.
-5. Keep Lab 1 ADMIN setup as participant hands-on work.
+5. Start at Lab 2 and preserve numbering 2–7. Never restore participant ADMIN
+   setup or use example screenshot passwords for a live reservation.
 6. Do not replace Codex-created Analytic Views with learner copy-and-paste DDL
    unless the user explicitly chooses the fallback path.
 7. Do not describe annotations as constraints or guaranteed joins.
 8. Do not claim sales, revenue, margin, return rate, or Lake Cache performance
    that the lab does not prove.
-9. Keep real credentials and tenant-specific values out of public output.
+9. Publish only the explicitly owner-approved shared source values; keep
+   reservation passwords, personal credentials, and unrelated secrets out of
+   public output. Label reservation screenshots as illustrative examples.
 10. Use the files listed above as the source of truth for final links and
     current readiness.

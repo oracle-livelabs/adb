@@ -8,8 +8,8 @@ The business question now has reviewed source semantics, but it needs a
 reusable governed model. Codex will use the LiveLab MCP server to create and
 validate two Analytic Views:
 
-* LAB&#95;DIGITAL&#95;POPULARITY&#95;AV for digital events by time, category, and product.
-* LAB&#95;RETURNS&#95;AV for returned units by time, category, product, and store.
+* a digital-interest Analytic View for events by time, category, and product;
+* a returns Analytic View for returned units by time, category, product, and store.
 
 The participant does not paste complex Analytic View DDL. Codex creates the
 model from the saved Data Studio definitions and validates it before answering.
@@ -24,19 +24,20 @@ In this lab, you will:
 
 ## Task 1: Ask Codex to build the model
 
-In the existing Codex task, paste:
+Complete Lab 6 first. All three view contracts must already be saved in Lab 5;
+this lab does not repeat AI Enrichment or create an AI profile.
+
+In the existing Codex task, click **Copy** in the upper-right corner of the
+following block, then paste the prompt into Codex. Let Codex choose the object
+names and model details from the saved source definitions.
 
 ~~~text
 <copy>
-Use the LiveLab MCP server to create and validate the governed model I need to
-answer this business question: Which product categories should we prioritize,
-balancing current customer interest with returns?
+Use LiveLab MCP and the saved Data Studio descriptions and tags to create
+and validate Analytic Views for customer interest and returns.
 
-Use the reviewed Data Studio descriptions and tags on the three PeakGear views.
-Create only objects owned by PEAKGEAR_USER. Build a common completed-month
-window, category-to-product hierarchy, and additive measures for digital events
-and returned units. Create and validate LAB_DIGITAL_POPULARITY_AV and
-LAB_RETURNS_AV. Do not invent sales, revenue, or a return rate.
+They should help answer: Which product categories should we prioritize,
+balancing current customer interest with returns?
 </copy>
 ~~~
 
@@ -44,6 +45,9 @@ Expected result: Codex reads the annotations, creates the supporting semantic
 objects that it needs, creates both Analytic Views, and validates that the
 views can be queried. It should stop and report a specific missing input if it
 cannot create a hierarchy or shared dimension.
+
+The PEAKGEAR&#95;USER-only boundary established in Lab 4 still applies. Use the
+object names reported by Codex; the participant does not have to prescribe them.
 
 If the MCP build capability cannot express a required shared dimension or
 custom hierarchy, stop and ask the instructor for the reviewed fallback DDL.
@@ -76,8 +80,8 @@ completed-month window and the measures used:
 
 ### Checkpoint
 
-LAB&#95;DIGITAL&#95;POPULARITY&#95;AV and LAB&#95;RETURNS&#95;AV are valid, and Codex can answer
-the final question through their governed hierarchy and measures.
+The Analytic Views created by Codex are valid and queryable, and Codex can
+answer the final question through their governed hierarchy and measures.
 
 ## Summary
 
@@ -86,7 +90,7 @@ The same customer-interest concept progressed through three stages:
 | Stage | What Codex can do | Why |
 |---|---|---|
 | Raw sources | Refuse to invent the answer | Fields do not define the business question. |
-| Data Studio annotation | Answer one clearly defined single-source question | The metric, grain, and time window are saved. |
+| Data Studio annotation | Answer a clearly defined event ranking with product labels | The metric, grain, time window, and product lookup are saved. |
 | Analytic Views | Make a governed cross-source recommendation with drill-down | Time, hierarchy, and aggregation semantics are reusable. |
 
 ## Learn More
@@ -96,4 +100,4 @@ The same customer-interest concept progressed through three stages:
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

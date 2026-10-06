@@ -5,7 +5,8 @@
 | Source | Use and boundary |
 |---|---|
 | PeakGear lab source files | Technical sequence, object names, SQL, MCP checkpoints, and runtime gates. |
-| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Azure storage password, Databricks OAuth values, catalog endpoint, and discovery/read calls. Adapted to keep the host ACL in ADMIN setup and the mount under PEAKGEAR_USER. |
+| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Azure storage password, Databricks OAuth values, catalog endpoint, and discovery/read calls. Host ACL belongs to provider provisioning; the learner mount stays under PEAKGEAR_USER. |
+| Owner-supplied LiveLabs Reservation Information screenshots, October 6, 2026 | OCI versus database credential fields and prepared environment details. Illustrative values only; the database password is redacted. |
 | Participant-authorized Data Studio and Codex sessions | UI screenshots captured during the working dry run. |
 | Official Oracle documentation | Public Learn More links and supported product behavior. |
 
@@ -27,7 +28,8 @@ is added to the package.
 | 2.2 | connect-sources/images/mount-iceberg-catalog.png | 3 | Unity mount form, approved workspace endpoint visible |
 | 2.3 | connect-sources/images/create-iceberg-catalog-credential.png | 3 | Iceberg OAuth credential, approved endpoint and client ID visible, UI password field masked |
 | 3 | connect-sources/images/connected-iceberg-tables.png | 3 | Mounted catalog exposes the two Iceberg tables |
-| 5 | connect-peakgear/images/default-ai-profile.png | 2 | Existing Data Studio NL2SQL profile with Resource Principal |
+| Reservation Information | connect-peakgear/images/livelabs-reservation-information.png | 2 | OCI Login Credentials with UI-masked password, Launch OCI, tenancy, region, and compartment; example reservation only |
+| Environment Details | connect-peakgear/images/livelabs-environment-details.png | 2 | Password-redacted illustration of assigned database user, name, profile, and Operations link |
 | 6.1 | ai-enrichment/images/ai-enrichment-entry.png | 5 | View Overview and AI Enrichment entry point |
 | 6.2 | ai-enrichment/images/ai-enrichment-review.png | 5 | AI Enrichment review form before Save |
 | 8 | connect-codex/images/raw-question.png | 4 | Controlled stop before the Digital Intent contract is saved |
@@ -45,14 +47,32 @@ is added to the package.
 
 ## Publication checks
 
-* Screenshots are authentic dry-run evidence; they are not fabricated.
+* The original Data Studio and Codex screenshots are retained dry-run evidence,
+  not proof of a new reservation's current state. Reservation screenshots are
+  explicitly examples. The Environment Details image was edited with Image
+  Generation solely to mask the database password and is labelled a redacted
+  illustration, not an unmodified execution capture.
 * One image explains one action and preserves a useful header or breadcrumb.
 * The source endpoints and client ID are owner-approved event values. Review
   unrelated database names, compartments, tenant labels, and browser identity
   before publishing externally.
 * Each Markdown image has descriptive alt text.
+* The old default-ai-profile.png remains a historical asset, not the current
+  learner reference: profile names must come from the reservation.
 * Do not claim Lake Cache acceleration without a verified plan and runtime
   comparison.
+
+## Reservation illustration edit provenance
+
+Tool mode: built-in Image Generation, precise-object-edit, opaque background.
+The original Environment Details upload is not distributed. The published
+file is `connect-peakgear/images/livelabs-environment-details.png`. Its masking
+and field labels were visually reviewed after generation.
+
+Prompt: Change only the Environment Details value labelled Database Password.
+Remove the original password pixels and replace them with twelve black mask
+bullets. Preserve all other fields, labels, values, Copy buttons, colors,
+borders, spacing, layout, and crop. No restyling or invented UI.
 
 ## Acknowledgements
 

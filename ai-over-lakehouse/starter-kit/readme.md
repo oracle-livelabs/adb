@@ -4,10 +4,10 @@
 
 * Codex Desktop installed and signed in.
 * Internet access for the one-time package installation.
-* Your assigned lab database and its ADMIN sign-in from Lab 1, for the
-  read-only Data Studio URL lookup below.
-* The PEAKGEAR_USER password. Lab 1 uses **Welcome123456** for a new account;
-  an existing account keeps its current password.
+* The actual database-specific HTTPS origin copied from Database Actions in
+  **Lab 2, Task 3**. No ADMIN sign-in or SQL lookup is required.
+* **Database User** and **Database Password** from LiveLabs **Reservation
+  Information → Environment Details**. This kit expects PEAKGEAR_USER.
 
 Use Terminal to run the copy-ready commands below. You do not need to install
 Python or uv manually, enter an MCP URL, or edit TOML.
@@ -39,34 +39,16 @@ The shared event values are intentionally included in the workshop and in
 
    This extracts a fresh copy without changing earlier downloads.
 
-4. **Obtain the Data Studio URL before running setup.** Keep Terminal open.
-   In your browser, sign out of Data Studio, then sign in to the **assigned
-   lab database as ADMIN**. Open **SQL Worksheet**, confirm that the header
-   shows **ADMIN**, and run this SQL with **Run Statement**:
+4. **Have the database-specific URL ready before running setup.** Use the
+   origin copied in **Lab 2, Task 3**. From your assigned database's Database
+   Actions URL, keep only `https://<actual-host>.oraclecloudapps.com`, without
+   `/ords/...`, a query, or a fragment. Use the actual reserved host, not this
+   example, `datastudio.oracle.com`, localhost:8000, the OCI Console URL, or the
+   Operations listener. Do not construct the host from the Database Name.
 
-   ```sql
-   SELECT 'https://' ||
-          LOWER(REPLACE(p.name, '_', '-')) || '.' ||
-          REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
-            AS adp_url
-   FROM v$pdbs p
-   CROSS JOIN JSON_TABLE(
-     p.cloud_identity,
-     '$' COLUMNS (
-       public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
-     )
-   ) j
-   WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
-   ```
-
-   Copy the full HTTPS value from **ADP_URL** and keep it ready for setup.
-   This is the same read-only query used in Lab 1. Run it in **Data Studio,
-   not Terminal**. Do not grant system-view access to PEAKGEAR_USER. If no URL
-   is returned, stop and ask the instructor.
-
-   **Sign out of ADMIN, then sign back in as PEAKGEAR_USER.** Never configure
-   MCP with ADMIN. Do not use localhost:8000, the Operations listener, or a
-   URL ending in /ords as the Lab Data Studio URL.
+   Keep LiveLabs **Reservation Information → Environment Details** open for
+   the database password. No ADMIN sign-in is needed. If you cannot obtain the
+   assigned database URL, ask the instructor before running setup.
 
 5. Return to the same Terminal, paste this command, and press **Return**:
 
@@ -81,10 +63,13 @@ The shared event values are intentionally included in the workshop and in
 
    | Prompt | Action |
    |---|---|
-   | Lab Data Studio URL | Paste the full ADP_URL obtained in step 4, then press Return. Never use localhost:8000. |
-   | PEAKGEAR_USER password | Enter Welcome123456 for a new Lab 1 account, or the current password of an existing account. Press Return. Nothing appears while typing or pasting. |
+   | Lab Data Studio URL | Paste the actual database-specific HTTPS origin copied in Lab 2, then press Return. Never use localhost:8000. |
+   | PEAKGEAR_USER password | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while typing or pasting. |
    | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. |
    | Success / Press Return to close this window | Check the displayed URL and PEAKGEAR_USER, then press Return. |
+
+   Use **Database Password**, not the OCI **Login Credentials** password,
+   a screenshot's example, or your Mac password.
 
 7. Open the project from Terminal:
 
@@ -109,6 +94,7 @@ Before asking a business question, tell Codex to call
 | Field | Required value |
 |---|---|
 | service | ADP |
+| adp_url | The actual database-specific URL configured for your current reservation |
 | adp_user | PEAKGEAR_USER |
 | session_ready | true |
 | query_result_adapter | peakgear-json-bound-rows-v1 |
@@ -133,6 +119,21 @@ interrupt other MCP-backed Codex tasks and require a typed confirmation.
 
 After either start action, create one new Codex task. Do not reuse a task that
 already had an MCP failure.
+
+## When your reservation or database changes
+
+You do not need to uninstall MCP. Before replacing its connection:
+
+1. Open the installed management script above and choose **3 — Stop PeakGear
+   LiveLab only**. Do not choose an ALL-MCP option.
+2. Obtain the new database-specific URL and Database Password from the new
+   reservation, following Lab 2.
+3. Download the current Starter Kit and run `01-setup-peakgear-mcp.command`
+   from its extracted folder. This replaces the local LiveLab connection and
+   refreshes the installed supporting files; it does not erase database objects.
+4. Open the selected project and create a new Codex task. Verify that
+   `adp_get_connection_info` reports the **new** URL, PEAKGEAR_USER, and a ready
+   session before asking any business question.
 
 ## If it does not work
 
