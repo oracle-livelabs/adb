@@ -28,32 +28,30 @@ In this lab, you will:
 ## Task 1: Find your reservation details
 
 1. In LiveLabs, open **Reservation Information**. Check **Reservation Time
-   Remaining** and extend the reservation if necessary.
-2. In **Login Credentials**, use **Copy** beside **Username** and **Password**
-   when signing in to OCI. **Launch OCI** opens the OCI Console. These are
-   your OCI credentials, not your database credentials.
+   Remaining** and extend the reservation if needed.
+2. Expand **Login Credentials**. Use **Copy** beside **Username** and
+   **Password** to sign in to OCI. **Launch OCI** opens the OCI Console. These
+   are OCI credentials; do not enter them as the database username or password.
+3. In **Tenancy Information**, note the **Tenancy Name**, **Region**, and
+   **Compartment**. Use **Region** to find your database, not **Generative AI
+   Endpoint Region**.
+4. In **Environment Details**, use **Copy** beside **Database Name**,
+   **Database User**, and **Database Password**. These identify and connect to
+   your assigned database in Data Studio. Keep **AI Profile Name** and
+   **Operations Database Link** handy for later labs. Leave Reservation
+   Information open while you work.
 
 ![Example LiveLabs Reservation Information showing the OCI login, Launch OCI, tenancy, region, and compartment. Use the values in your own reservation.](images/livelabs-reservation-information.png)
 
-3. Find **Tenancy Information** and **Environment Details**. Keep this panel
-   open throughout the workshop. The following screenshot is an illustrative
-   example with the database password redacted, not a set of credentials to use.
+The following image is an illustration, not a set of credentials to use. Its
+database password is redacted; always copy values from your own reservation.
 
 ![Redacted illustration of LiveLabs Tenancy Information and Environment Details, including the database name, database user, masked database password, AI profile name, and Operations database link.](images/livelabs-environment-details.png)
 
-   | LiveLabs field | Where you use it |
-   |---|---|
-   | Login Credentials: Username and Password | OCI Console and OCI sign-in to Data Studio. Do not use these for MCP database login. |
-   | Tenancy Name, Region, and Compartment | Find the assigned database in OCI or Data Studio. Use Region, not Generative AI Endpoint Region, to locate it. |
-   | Database Name | Select your reserved database, not another participant's database. |
-   | Database User and Database Password | Connect to the database in Data Studio and configure MCP. Copy both from Environment Details. |
-   | AI Profile Name | Identify the profile already prepared for AI Enrichment. Do not create another profile. |
-   | Operations Database Link | Identify the prepared link used to read operational returns in Lab 2. |
-
-   The current workshop expects Database User **PEAKGEAR&#95;USER** and
-   Operations Database Link **PEAKGEAR&#95;OPERATIONS&#95;LINK**. If your
-   reservation lists different values, ask the instructor before continuing;
-   do not substitute credentials from a screenshot.
+The current workshop expects Database User **PEAKGEAR&#95;USER** and Operations
+Database Link **PEAKGEAR&#95;OPERATIONS&#95;LINK**. If your reservation shows
+different values, ask the instructor before continuing; do not use values from
+the screenshots.
 
 ## Task 2: Connect Data Studio to the assigned database
 
