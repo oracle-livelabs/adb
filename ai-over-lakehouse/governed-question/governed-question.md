@@ -48,8 +48,10 @@ Save both objects.
 In Codex, ask:
 
 ~~~text
+<copy>
 Which product categories should we prioritize, balancing current customer
 interest with returns?
+</copy>
 ~~~
 
 Expected result: Codex should state that it needs a governed model before

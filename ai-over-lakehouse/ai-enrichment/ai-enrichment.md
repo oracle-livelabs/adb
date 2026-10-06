@@ -38,16 +38,20 @@ validate a profile.
 Replace the view-level description with this exact text:
 
 ~~~text
+<copy>
 Each row is one digital product interaction. In this lab, customer interest
 means the count of rows (digital events). "Right now" means the latest
 completed calendar month based on EVENT_TS. Report the result by PRODUCT_ID.
 This view has no product names, returns, revenue, or store.
+</copy>
 ~~~
 
 Set the view tags to:
 
 ~~~text
+<copy>
 digital_intent, event_data, product_popularity, no_store_attribution
+</copy>
 ~~~
 
 Set these column descriptions and tags:
@@ -69,12 +73,15 @@ Close the dialog and reopen the view in Catalog. The Overview description must
 begin with:
 
 ~~~text
+<copy>
 Each row is one digital product interaction
+</copy>
 ~~~
 
 Optionally verify the saved database metadata:
 
 ~~~sql
+<copy>
 SELECT object_type,
        object_name,
        column_name,
@@ -85,6 +92,7 @@ WHERE object_name = 'LAB_DIGITAL_INTENT_RAW_V'
   AND annotation_name IN ('DESCRIPTION', 'TAGS')
 ORDER BY column_name NULLS FIRST,
          annotation_name;
+</copy>
 ~~~
 
 <!-- Screenshot to insert after approved dry run: images/ai-enrichment-saved.png
@@ -96,7 +104,9 @@ ORDER BY column_name NULLS FIRST,
 In the same Codex task, ask exactly the same question from Lab 4:
 
 ~~~text
+<copy>
 Which products are customers interested in right now?
+</copy>
 ~~~
 
 Expected result: Codex uses the saved contract to calculate the latest-month

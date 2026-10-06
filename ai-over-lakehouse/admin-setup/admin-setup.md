@@ -67,8 +67,10 @@ Run the verification statements at the end of the script. The following query
 must return a non-zero count:
 
 ~~~sql
+<copy>
 SELECT COUNT(*) AS operational_return_events
 FROM customer_return_events@peakgear_operations_link;
+</copy>
 ~~~
 
 **Obtain the Data Studio URL (ADMIN).** Still as ADMIN, run this copy-ready

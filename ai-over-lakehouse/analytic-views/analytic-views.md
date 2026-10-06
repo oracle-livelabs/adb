@@ -27,6 +27,7 @@ In this lab, you will:
 In the existing Codex task, paste:
 
 ~~~text
+<copy>
 Use the LiveLab MCP server to create and validate the governed model I need to
 answer this business question: Which product categories should we prioritize,
 balancing current customer interest with returns?
@@ -36,6 +37,7 @@ Create only objects owned by PEAKGEAR_USER. Build a common completed-month
 window, category-to-product hierarchy, and additive measures for digital events
 and returned units. Create and validate LAB_DIGITAL_POPULARITY_AV and
 LAB_RETURNS_AV. Do not invent sales, revenue, or a return rate.
+</copy>
 ~~~
 
 Expected result: Codex reads the annotations, creates the supporting semantic
@@ -56,8 +58,10 @@ Do not replace the normal participant path with a paste of instructor SQL.
 Ask:
 
 ~~~text
+<copy>
 Which product categories should we prioritize, balancing current customer
 interest with returns?
+</copy>
 ~~~
 
 Expected result: Codex answers from the two Analytic Views and provides a

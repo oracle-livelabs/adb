@@ -22,9 +22,11 @@ In this lab, you will:
 2. Open the Lab Data Studio URL copied in Lab 1.
 3. Sign in as PEAKGEAR&#95;USER. For a new account created in Lab 1, use:
 
-   ~~~text
-   Welcome123456
-   ~~~
+~~~text
+<copy>
+Welcome123456
+</copy>
+~~~
 
    An existing account keeps its current password; Lab 1 does not reset it.
 4. Open **SQL Worksheet**.
@@ -32,9 +34,11 @@ In this lab, you will:
 Run:
 
 ~~~sql
+<copy>
 SELECT USER AS database_user,
        SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') AS current_schema
 FROM dual;
+</copy>
 ~~~
 
 Both values must be PEAKGEAR&#95;USER.

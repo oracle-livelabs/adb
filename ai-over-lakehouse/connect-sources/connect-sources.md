@@ -51,7 +51,9 @@ Click **Create credential** and enter:
 Copy this into **Password**:
 
 ~~~text
+<copy>
 tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q==
+</copy>
 ~~~
 
 Save the credential. Keep the name exactly. Both source credentials must be
@@ -62,7 +64,9 @@ owned by PEAKGEAR&#95;USER, not `ADMIN`. Create the OAuth credential in Task 2.
 Storage path for this event:
 
 ~~~text
+<copy>
 https://livelab.blob.core.windows.net/digital-demand/peakgear-managed/
+</copy>
 ~~~
 
 ## Task 2: Mount the Databricks Unity Catalog
@@ -84,7 +88,9 @@ Enter:
 Copy this into **Iceberg catalog endpoint**:
 
 ~~~text
+<copy>
 https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear
+</copy>
 ~~~
 
 ![Enter DBX&#95;UNITY&#95;PEAKGEAR, select Unity, paste the event endpoint, and select the Azure bucket credential.](images/mount-iceberg-catalog.png)
@@ -103,19 +109,25 @@ create the OAuth credential with these values:
 **Token endpoint**:
 
 ~~~text
+<copy>
 https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token
+</copy>
 ~~~
 
 **Client ID**:
 
 ~~~text
+<copy>
 5c47dc63-f693-4820-a40b-4b08c3709f34
+</copy>
 ~~~
 
 **Client secret**:
 
 ~~~text
+<copy>
 dose7b979ac313c1063af5d4cdf09b1ee8fb
+</copy>
 ~~~
 
 ![Create DBX&#95;PEAKGEAR&#95;OAUTH with the event token endpoint and client ID. The UI masks the client secret; its copy-ready value is above.](images/create-iceberg-catalog-credential.png)
@@ -140,6 +152,7 @@ mounted tables. Run the following in SQL Worksheet as PEAKGEAR&#95;USER. If the
 inspection query already shows a policy, verify it instead of recreating it.
 
 ~~~sql
+<copy>
 SELECT external_table_name,
        cached,
        cache_cur_size / 1024 / 1024 AS cache_size_mb,
@@ -182,6 +195,7 @@ BEGIN
   );
 END;
 /
+</copy>
 ~~~
 
 Run the inspection query again. CACHE&#95;CUR&#95;SIZE greater than zero proves that
@@ -199,6 +213,7 @@ verified query plan and runtime comparison.
 Open SQL Worksheet as PEAKGEAR&#95;USER and run:
 
 ~~~sql
+<copy>
 SELECT COUNT(*) AS products
 FROM iceberg.products@dbx_unity_peakgear;
 
@@ -207,12 +222,14 @@ FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
 
 SELECT COUNT(*) AS operational_return_events
 FROM customer_return_events@peakgear_operations_link;
+</copy>
 ~~~
 
 All three queries must return a count. Then create the raw, participant-owned
 views:
 
 ~~~sql
+<copy>
 CREATE OR REPLACE VIEW lab_products_raw_v AS
 SELECT product_id,
        product_name,
@@ -232,6 +249,7 @@ SELECT product_id,
        return_qty,
        CAST(return_created_at AS TIMESTAMP) AS return_created_at
 FROM customer_return_events@peakgear_operations_link;
+</copy>
 ~~~
 
 These views do not copy data and do not add business definitions. They give
