@@ -1,16 +1,9 @@
-whenever sqlerror exit sql.sqlcode rollback
-set define off
-set serveroutput on size unlimited
-set feedback on
-
-prompt ============================================================
-prompt Product Recall Assistant - Prepare React and Node Capstone
-prompt Connect as RECALL_OWNER.
-prompt ============================================================
+-- Product Recall Assistant - Lab 8 application and governed response setup v7
+-- Install through DBMS_CLOUD_REPO.INSTALL_SQL with CURRENT_SCHEMA=RECALL_OWNER.
 
 begin
-    if user != 'RECALL_OWNER' then
-        raise_application_error(-20070, 'Wrong user: connect as RECALL_OWNER.');
+    if sys_context('USERENV', 'CURRENT_SCHEMA') != 'RECALL_OWNER' then
+        raise_application_error(-20070, 'Set CURRENT_SCHEMA to RECALL_OWNER before installing this script.');
     end if;
 end;
 /
@@ -51,7 +44,8 @@ create or replace package body recall_agent_bridge as
         select json_object(
                    'conversation_id' value l_conversation_id returning clob
                )
-        into l_params;
+        into l_params
+        from dual;
 
         l_prompt :=
             to_clob('Answer the user question using only the four authorized evidence sections in this request: product JSON, DDS-filtered vector and relational evidence, DDS-filtered spatial evidence, and graph evidence. ') ||
@@ -88,8 +82,6 @@ create or replace package body recall_agent_bridge as
 end recall_agent_bridge;
 /
 
-show errors package body recall_agent_bridge
-
 -- Embedding is isolated behind a definer-rights bridge because the ONNX
 -- model is owned by RECALL_OWNER. It returns only the serialized vector;
 -- row filtering remains in the invoker-rights RECALL_REACT_API package.
@@ -109,14 +101,13 @@ create or replace package body recall_vector_bridge as
                    )
                    returning clob
                )
-        into   l_vector;
+        into   l_vector
+        from dual;
 
         return l_vector;
     end embed_query;
 end recall_vector_bridge;
 /
-
-show errors package body recall_vector_bridge
 
 -- Shared property-graph data is exposed through a narrow definer-rights package.
 -- The role-filtered downstream projection is added to RECALL_REACT_API below;
@@ -392,14 +383,13 @@ create or replace package body recall_graph_api as
                        returning json
                    ) returning clob
                )
-        into   l_result;
+        into   l_result
+        from dual;
 
         return l_result;
     end context;
 end recall_graph_api;
 /
-
-show errors package body recall_graph_api
 
 begin
     dbms_cloud_ai_agent.drop_team('RECALL_SECURED_TEAM', force => true);
@@ -459,7 +449,8 @@ create or replace package body recall_react_api as
                    ora_end_user_context,
                    '$.USERNAME' returning varchar2(128)
                )
-        into l_user;
+        into l_user
+        from dual;
 
         if l_user not in (
             'STORE_101_USER', 'REGION_NE_USER', 'RECALL_LEAD_USER'
@@ -480,7 +471,26 @@ create or replace package body recall_react_api as
                            when 'STORE_101_USER' then 'Store associate'
                            when 'REGION_NE_USER' then 'Northeast regional manager'
                            when 'RECALL_LEAD_USER' then 'Recall response lead'
-                       end
+                       end,
+                       'ddsPolicy' value json_object(
+                           'name' value case l_user
+                               when 'STORE_101_USER' then 'DG_STORE_101_STORES'
+                               when 'REGION_NE_USER' then 'DG_REGION_NE_STORES'
+                               when 'RECALL_LEAD_USER' then 'DG_LEAD_STORES'
+                           end,
+                           'dataRole' value l_role,
+                           'scope' value case l_user
+                               when 'STORE_101_USER' then 'Store 101 and its authorized downstream evidence'
+                               when 'REGION_NE_USER' then 'Northeast stores and their authorized downstream evidence'
+                               when 'RECALL_LEAD_USER' then 'All stores and company-wide authorized evidence'
+                           end,
+                           'rule' value case l_user
+                               when 'STORE_101_USER' then 'STORE_ID = 101'
+                               when 'REGION_NE_USER' then 'REGION_CODE = ''NORTHEAST'''
+                               when 'RECALL_LEAD_USER' then 'All stores'
+                           end
+                           returning json
+                       )
                        returning json
                    ) returning clob
                );
@@ -708,7 +718,8 @@ create or replace package body recall_react_api as
                        returning json
                    ) returning clob
                )
-        into   l_result;
+        into   l_result
+        from dual;
 
         return l_result;
     end secured_graph;
@@ -819,7 +830,8 @@ create or replace package body recall_react_api as
                        returning json
                    ) returning clob
                )
-        into   l_result;
+        into   l_result
+        from dual;
 
         return l_result;
     end secured_spatial;
@@ -936,7 +948,8 @@ create or replace package body recall_react_api as
                        returning json
                    ) returning clob
                )
-        into   l_result;
+        into   l_result
+        from dual;
 
         return l_result;
     end secured_graph_evidence;
@@ -1001,13 +1014,14 @@ create or replace package body recall_react_api as
                                    to_vector(l_vector),
                                    cosine
                                )
-                               fetch first 8 rows only
+                               fetch first 12 rows only
                            ) x
                        ) format json
                        returning json
                    ) returning clob
                )
-        into   l_result;
+        into   l_result
+        from dual;
 
         return l_result;
     end search_vector_evidence;
@@ -1043,40 +1057,966 @@ create or replace package body recall_react_api as
                        returning clob
                    ) returning clob
                )
-        into   l_authorized_context;
+        into   l_authorized_context
+        from dual;
 
         return recall_agent_bridge.ask_context(l_authorized_context, p_question);
     end ask_agent;
 end recall_react_api;
 /
 
-show errors package body recall_react_api
-
 declare
-    l_status user_objects.status%type;
+    l_status all_objects.status%type;
 begin
     select status
     into   l_status
-    from   user_objects
+    from   all_objects
     where  object_name = 'RECALL_REACT_API'
+    and    owner = 'RECALL_OWNER'
     and    object_type = 'PACKAGE BODY';
 
     if l_status <> 'VALID' then
         raise_application_error(
             -20072,
-            'RECALL_REACT_API package body is INVALID. Review SHOW ERRORS output.'
+            'RECALL_REACT_API package body is INVALID. Check ALL_ERRORS as ADMIN.'
         );
     end if;
 end;
 /
 
 grant execute on recall_react_api to recall_end_user_login;
+/
 grant execute on recall_graph_api to recall_end_user_login;
+/
 grant execute on recall_vector_bridge to recall_end_user_login;
+/
 
-select object_name, object_type, status
-from   user_objects
-where  object_name in ('RECALL_AGENT_BRIDGE', 'RECALL_GRAPH_API', 'RECALL_REACT_API', 'RECALL_VECTOR_BRIDGE')
-order  by object_name, object_type;
+declare
+    l_valid_count number;
+begin
+    select count(*)
+    into   l_valid_count
+    from   all_objects
+    where  owner = 'RECALL_OWNER'
+    and    object_name in ('RECALL_AGENT_BRIDGE', 'RECALL_GRAPH_API', 'RECALL_REACT_API', 'RECALL_VECTOR_BRIDGE')
+    and    object_type in ('PACKAGE', 'PACKAGE BODY')
+    and    status = 'VALID';
 
-prompt React and Node database bridge is ready.
+    if l_valid_count != 8 then
+        raise_application_error(-20073, 'Expected eight VALID Lab 8 bridge package objects under RECALL_OWNER; inspect ALL_ERRORS as ADMIN.');
+    end if;
+end;
+/
+
+-- Lab 8 governed response campaign: policy, agent team, audit/refund tables,
+-- owner-side bridge, and invoker-rights application API. This must follow
+-- RECALL_REACT_API so the approved Lab 7 identity and profile already exist.
+begin
+    if sys_context('USERENV', 'CURRENT_SCHEMA') != 'RECALL_OWNER' then
+        raise_application_error(-20100, 'Set CURRENT_SCHEMA to RECALL_OWNER before installing the Lab 8 response setup.');
+    end if;
+end;
+/
+
+-- The investigation remains read-only until the recall lead explicitly
+-- authorizes customer contact. The policy is separate from the initial case
+-- JSON so the workshop can demonstrate an approval transition.
+begin
+    execute immediate q'~
+        create table recall_campaign_policy (
+            batch_id             varchar2(20) primary key
+                                 references batches(batch_id),
+            unit_refund_amount   number(12,2) not null,
+            refund_steps         varchar2(2000) not null,
+            contact_authorized   char(1) default 'N' not null,
+            authorized_by        varchar2(128),
+            authorized_at        timestamp,
+            constraint recall_campaign_policy_auth_ck
+                check (contact_authorized in ('Y','N')),
+            constraint recall_campaign_policy_amount_ck
+                check (unit_refund_amount >= 0)
+        )~';
+exception
+    when others then
+        if sqlcode != -955 then raise; end if;
+end;
+/
+
+begin
+    execute immediate q'~
+        create table recall_campaigns (
+            campaign_id       number generated always as identity primary key,
+            batch_id          varchar2(20) not null
+                              references batches(batch_id),
+            end_user_name     varchar2(128) not null,
+            channel           varchar2(20) not null,
+            tone              varchar2(30) not null,
+            status            varchar2(30) default 'DRAFT' not null,
+            template_source   varchar2(30) default 'SELECT_AI_AGENT' not null,
+            template_text     clob not null,
+            product_name      varchar2(200) not null,
+            sku               varchar2(80) not null,
+            recipient_count   number default 0 not null,
+            total_refund      number(14,2) default 0 not null,
+            created_at        timestamp default systimestamp not null,
+            approved_by       varchar2(128),
+            approved_at       timestamp,
+            constraint recall_campaign_channel_ck
+                check (channel in ('EMAIL','SMS')),
+            constraint recall_campaign_tone_ck
+                check (tone in ('PROFESSIONAL','REASSURING','CONCISE')),
+            constraint recall_campaign_status_ck
+                check (status in ('DRAFT','APPROVED')),
+            constraint recall_campaign_source_ck
+                check (template_source in ('SELECT_AI_AGENT','SAFE_FALLBACK')),
+            constraint recall_campaign_total_ck
+                check (total_refund >= 0)
+        )~';
+exception
+    when others then
+        if sqlcode != -955 then raise; end if;
+end;
+/
+
+begin
+    execute immediate q'~
+        create table recall_campaign_recipients (
+            campaign_id       number not null
+                              references recall_campaigns(campaign_id),
+            purchase_id       number not null
+                              references purchases(purchase_id),
+            customer_id       number not null
+                              references customers(customer_id),
+            customer_name     varchar2(100) not null,
+            email             varchar2(200) not null,
+            batch_id          varchar2(20) not null,
+            product_name      varchar2(200) not null,
+            sku               varchar2(80) not null,
+            quantity          number not null,
+            refund_amount     number(12,2) not null,
+            notice_status     varchar2(30) default 'DRAFT' not null,
+            refund_status     varchar2(30) default 'NOT_CREATED' not null,
+            constraint recall_campaign_recipient_pk
+                primary key (campaign_id, purchase_id),
+            constraint recall_campaign_recipient_notice_ck
+                check (notice_status in ('DRAFT','APPROVED')),
+            constraint recall_campaign_recipient_refund_ck
+                check (refund_status in ('NOT_CREATED','READY_FOR_PROCESSING')),
+            constraint recall_campaign_recipient_qty_ck
+                check (quantity > 0),
+            constraint recall_campaign_recipient_amount_ck
+                check (refund_amount >= 0)
+        )~';
+exception
+    when others then
+        if sqlcode != -955 then raise; end if;
+end;
+/
+
+begin
+    execute immediate q'~
+        create table recall_refund_intents (
+            refund_intent_id  number generated always as identity primary key,
+            campaign_id       number not null
+                              references recall_campaigns(campaign_id),
+            purchase_id       number not null,
+            customer_id       number not null,
+            refund_amount     number(12,2) not null,
+            status            varchar2(30) default 'READY_FOR_PROCESSING' not null,
+            created_at        timestamp default systimestamp not null,
+            constraint recall_refund_intent_status_ck
+                check (status in ('READY_FOR_PROCESSING','SIMULATED_ISSUED')),
+            constraint recall_refund_intent_amount_ck
+                check (refund_amount >= 0),
+            constraint recall_refund_intent_uq
+                unique (campaign_id, purchase_id)
+        )~';
+exception
+    when others then
+        if sqlcode != -955 then raise; end if;
+end;
+/
+
+begin
+    execute immediate q'~
+        create table recall_campaign_audit (
+            audit_id       number generated always as identity primary key,
+            campaign_id    number,
+            batch_id       varchar2(20) not null,
+            actor_name     varchar2(128) not null,
+            action_name    varchar2(40) not null,
+            detail_text    varchar2(2000),
+            created_at     timestamp default systimestamp not null
+        )~';
+exception
+    when others then
+        if sqlcode != -955 then raise; end if;
+end;
+/
+
+merge into recall_campaign_policy p
+using (
+    select 'B-482' as batch_id,
+           129.99 as unit_refund_amount,
+           '1. Verify the purchase and affected batch. 2. Stop using the item. 3. Provide the approved refund through the service team. 4. Retain the campaign and refund decision for audit.' as refund_steps,
+           'N' as contact_authorized
+    from dual
+) s
+on (p.batch_id = s.batch_id)
+when not matched then
+    insert (
+        batch_id, unit_refund_amount, refund_steps, contact_authorized
+    ) values (
+        s.batch_id, s.unit_refund_amount, s.refund_steps, s.contact_authorized
+    );
+/
+
+-- The campaign writer is a separate Select AI Agent team. It drafts language
+-- only; it has no SQL, notification, payment, or human tool.
+begin
+    begin
+        dbms_cloud_ai_agent.drop_team('RECALL_CAMPAIGN_TEAM', force => true);
+    exception when others then null;
+    end;
+    begin
+        dbms_cloud_ai_agent.drop_task('DRAFT_RECALL_NOTICE_TASK', force => true);
+    exception when others then null;
+    end;
+    begin
+        dbms_cloud_ai_agent.drop_agent('RECALL_CAMPAIGN_WRITER', force => true);
+    exception when others then null;
+    end;
+
+    dbms_cloud_ai_agent.create_agent(
+        agent_name => 'RECALL_CAMPAIGN_WRITER',
+        attributes => q'~{
+          "profile_name":"RECALL_AGENT_PROFILE",
+          "role":"You draft a customer recall notice from the approved facts supplied in the request. Return only a JSON object with subject, body, and refundSteps. Use the supplied placeholders exactly. Never invent a product, batch, amount, eligibility rule, deadline, contact detail, or legal claim. Do not send a message and do not issue a refund.",
+          "enable_human_tool":false
+        }~'
+    );
+
+    dbms_cloud_ai_agent.create_task(
+        task_name  => 'DRAFT_RECALL_NOTICE_TASK',
+        attributes => q'~{
+          "instruction":"Create a concise, professional recall notice. For a generic request, use placeholders {{customer_name}}, {{product_name}}, {{sku}}, {{batch_id}}, {{refund_amount}}, and {{refund_steps}}. For a request with selected recipient facts, use only those supplied name and order facts; never include an email address. Return strict JSON with string properties subject, body, and refundSteps.",
+          "tools":[],
+          "enable_human_tool":false
+        }~'
+    );
+
+    dbms_cloud_ai_agent.create_team(
+        team_name => 'RECALL_CAMPAIGN_TEAM',
+        attributes => q'~{
+          "agents":[{"name":"RECALL_CAMPAIGN_WRITER","task":"DRAFT_RECALL_NOTICE_TASK"}],
+          "process":"sequential"
+        }~',
+        description => 'Human-approved recall notice drafting team.'
+    );
+end;
+/
+
+create or replace package recall_campaign_bridge authid definer as
+    function policy(p_batch_id in varchar2) return clob;
+    function generate_template(
+        p_batch_id       in varchar2,
+        p_product_name   in varchar2,
+        p_sku            in varchar2,
+        p_recipient_count in number,
+        p_refund_steps   in varchar2,
+        p_channel        in varchar2,
+        p_tone           in varchar2,
+        p_personalization in varchar2 default null
+    ) return clob;
+    function create_draft(
+        p_end_user       in varchar2,
+        p_batch_id       in varchar2,
+        p_channel        in varchar2,
+        p_tone           in varchar2,
+        p_context        in clob,
+        p_template       in clob
+    ) return number;
+    function personalize_notice(
+        p_end_user          in varchar2,
+        p_campaign_id       in number,
+        p_recipient_context in clob
+    ) return clob;
+    function campaign_batch(
+        p_campaign_id in number,
+        p_actor       in varchar2
+    ) return varchar2;
+    function authorize_contact(
+        p_batch_id in varchar2,
+        p_actor    in varchar2
+    ) return clob;
+    function approve_campaign(
+        p_campaign_id in number,
+        p_actor       in varchar2
+    ) return clob;
+    function status(
+        p_batch_id in varchar2,
+        p_actor    in varchar2
+    ) return clob;
+end recall_campaign_bridge;
+/
+
+create or replace package body recall_campaign_bridge as
+    function session_user return varchar2 is
+        l_user varchar2(128);
+    begin
+        select json_value(ora_end_user_context, '$.USERNAME' returning varchar2(128))
+        into l_user
+        from dual;
+        return upper(l_user);
+    end session_user;
+
+    function safe_template return clob is
+    begin
+        return json_serialize(
+                   json_object(
+                       'source' value 'SAFE_FALLBACK',
+                       'template' value q'~{"subject":"Important safety notice for {{product_name}}","body":"Hello {{customer_name}},\n\nWe are contacting you about {{product_name}} ({{sku}}), batch {{batch_id}}. Please stop using the item and follow these steps:\n{{refund_steps}}\n\nYour approved refund amount is {{refund_amount}}. Our recall response team will help complete the refund.","refundSteps":"{{refund_steps}}"}~'
+                       returning json
+                   ) returning clob
+               );
+    end safe_template;
+
+    function policy(p_batch_id in varchar2) return clob is
+        l_result clob;
+    begin
+        select json_serialize(
+                   json_object(
+                       'batchId' value p.batch_id,
+                       'unitRefundAmount' value p.unit_refund_amount,
+                       'refundSteps' value p.refund_steps,
+                       'contactAuthorized' value
+                           case when p.contact_authorized = 'Y'
+                                then 'true' else 'false' end format json,
+                       'authorizedBy' value p.authorized_by,
+                       'authorizedAt' value to_char(
+                           p.authorized_at, 'YYYY-MM-DD HH24:MI:SS'
+                       )
+                       returning json
+                   ) returning clob
+               )
+        into l_result
+        from recall_campaign_policy p
+        where p.batch_id = upper(trim(p_batch_id));
+        return l_result;
+    exception
+        when no_data_found then
+            return json_serialize(
+                       json_object(
+                           'error' value 'NO_CAMPAIGN_POLICY',
+                           'batchId' value upper(trim(p_batch_id))
+                           returning json
+                       ) returning clob
+                   );
+    end policy;
+
+    function generate_template(
+        p_batch_id        in varchar2,
+        p_product_name    in varchar2,
+        p_sku             in varchar2,
+        p_recipient_count in number,
+        p_refund_steps    in varchar2,
+        p_channel         in varchar2,
+        p_tone            in varchar2,
+        p_personalization in varchar2 default null
+    ) return clob is
+        l_prompt          clob;
+        l_params          clob;
+        l_answer          clob;
+        l_conversation_id varchar2(128);
+    begin
+        l_prompt :=
+            to_clob('Draft a customer recall notice template using only these approved facts. ') ||
+            to_clob('Return strict JSON with subject, body, and refundSteps. ') ||
+            to_clob(case when p_personalization is null
+                         then 'Do not include customer names, email addresses, or new facts. '
+                         else 'Use the selected customer and order facts exactly. Do not include an email address or new facts. '
+                    end) ||
+            to_clob('Batch: ' || p_batch_id ||
+                    '; product: ' || p_product_name ||
+                    '; SKU: ' || p_sku ||
+                    '; authorized recipient count: ' || to_char(p_recipient_count) ||
+                    '; channel: ' || p_channel ||
+                    '; tone: ' || p_tone ||
+                    '; approved refund steps: ' || p_refund_steps ||
+                    case when p_personalization is null then
+                         '. Required placeholders: {{customer_name}}, {{product_name}}, {{sku}}, {{batch_id}}, {{refund_amount}}, {{refund_steps}}.'
+                    else
+                         '; selected recipient facts: ' || p_personalization ||
+                         '. Return a personalized notice, including the purchase ID and quantity.'
+                    end);
+
+        l_conversation_id := dbms_cloud_ai.create_conversation(
+            attributes => q'~{
+              "title":"Recall Notice Template Draft",
+              "retention_days":1,
+              "conversation_length":2
+            }~'
+        );
+        select json_object(
+                   'conversation_id' value l_conversation_id returning clob
+               )
+        into l_params
+        from dual;
+
+        l_answer := dbms_cloud_ai_agent.run_team(
+            team_name   => 'RECALL_CAMPAIGN_TEAM',
+            user_prompt => l_prompt,
+            params      => l_params
+        );
+
+        if l_answer is null then
+            return safe_template;
+        end if;
+
+        return json_serialize(
+                   json_object(
+                       'source' value 'SELECT_AI_AGENT',
+                       'template' value l_answer
+                       returning json
+                   ) returning clob
+               );
+    exception
+        when others then
+            -- The workflow remains reviewable during a provider outage. The
+            -- UI labels this as a safe fallback instead of implying an LLM run.
+            return safe_template;
+    end generate_template;
+
+    function create_draft(
+        p_end_user in varchar2,
+        p_batch_id in varchar2,
+        p_channel  in varchar2,
+        p_tone     in varchar2,
+        p_context  in clob,
+        p_template in clob
+    ) return number is
+        l_campaign_id number;
+        l_product_name varchar2(200);
+        l_sku          varchar2(80);
+        l_template_text varchar2(32767);
+        l_source       varchar2(30);
+    begin
+        if session_user != upper(p_end_user) then
+            raise_application_error(-20101, 'Campaign actor does not match the active database identity.');
+        end if;
+
+        l_product_name := json_value(p_context, '$.productName' returning varchar2(200));
+        l_sku := json_value(p_context, '$.sku' returning varchar2(80));
+        l_template_text := json_value(p_template, '$.template' returning varchar2(32767));
+        l_source := json_value(p_template, '$.source' returning varchar2(30));
+
+        insert into recall_campaigns(
+            batch_id, end_user_name, channel, tone, status,
+            template_source, template_text, product_name, sku,
+            recipient_count, total_refund
+        ) values (
+            upper(trim(p_batch_id)), upper(p_end_user), upper(p_channel),
+            upper(p_tone), 'DRAFT', nvl(l_source, 'SAFE_FALLBACK'),
+            nvl(l_template_text, 'No template generated.'), l_product_name, l_sku,
+            0, 0
+        ) returning campaign_id into l_campaign_id;
+
+        insert into recall_campaign_audit(
+            campaign_id, batch_id, actor_name, action_name, detail_text
+        ) values (
+            l_campaign_id, upper(trim(p_batch_id)), upper(p_end_user),
+            'DRAFT_CREATED', 'Generic LLM notice template captured for review; no customer records were materialized.'
+        );
+
+        return l_campaign_id;
+    end create_draft;
+
+    function personalize_notice(
+        p_end_user          in varchar2,
+        p_campaign_id       in number,
+        p_recipient_context in clob
+    ) return clob is
+        l_batch_id      varchar2(20);
+        l_product_name  varchar2(200);
+        l_sku           varchar2(80);
+        l_channel       varchar2(20);
+        l_tone          varchar2(30);
+        l_template      clob;
+        l_customer_name varchar2(100);
+        l_purchase_id   number;
+        l_customer_id   number;
+        l_email         varchar2(200);
+        l_quantity      number;
+        l_refund_amount number;
+    begin
+        select batch_id, product_name, sku, channel, tone
+        into   l_batch_id, l_product_name, l_sku, l_channel, l_tone
+        from   recall_campaigns
+        where  campaign_id = p_campaign_id
+        and    end_user_name = upper(p_end_user)
+        for update;
+
+        l_purchase_id := json_value(p_recipient_context, '$.purchaseId' returning number);
+        l_customer_id := json_value(p_recipient_context, '$.customerId' returning number);
+        l_customer_name := json_value(p_recipient_context, '$.customerName' returning varchar2(100));
+        l_email := json_value(p_recipient_context, '$.email' returning varchar2(200));
+        l_quantity := json_value(p_recipient_context, '$.quantity' returning number);
+        l_refund_amount := json_value(p_recipient_context, '$.refundAmount' returning number);
+
+        l_template := generate_template(
+            l_batch_id, l_product_name, l_sku, 1,
+            json_value(policy(l_batch_id), '$.refundSteps' returning varchar2(2000)),
+            l_channel, l_tone,
+            'Customer name: ' || l_customer_name ||
+            '; order / purchase ID: ' || l_purchase_id ||
+            '; quantity: ' || l_quantity ||
+            '; approved refund amount: $' || to_char(l_refund_amount, 'FM999G999G990D00')
+        );
+
+        merge into recall_campaign_recipients r
+        using (select p_campaign_id as campaign_id, l_purchase_id as purchase_id from dual) s
+        on (r.campaign_id = s.campaign_id and r.purchase_id = s.purchase_id)
+        when not matched then insert (
+            campaign_id, purchase_id, customer_id, customer_name, email,
+            batch_id, product_name, sku, quantity, refund_amount
+        ) values (
+            p_campaign_id, l_purchase_id, l_customer_id, l_customer_name, l_email,
+            l_batch_id, l_product_name, l_sku, l_quantity, l_refund_amount
+        );
+
+        update recall_campaigns c
+        set (recipient_count, total_refund) = (
+            select count(*), coalesce(sum(refund_amount), 0)
+            from recall_campaign_recipients r
+            where r.campaign_id = c.campaign_id
+        )
+        where c.campaign_id = p_campaign_id;
+
+        insert into recall_campaign_audit(
+            campaign_id, batch_id, actor_name, action_name, detail_text
+        ) values (
+            p_campaign_id, l_batch_id, upper(p_end_user), 'RECIPIENT_PERSONALIZED',
+            'One DDS-authorized customer order was materialized and personalized for review.'
+        );
+        return l_template;
+    exception
+        when no_data_found then
+            raise_application_error(-20109, 'Campaign or selected customer record is not available to this persona.');
+    end personalize_notice;
+
+    function campaign_batch(
+        p_campaign_id in number,
+        p_actor       in varchar2
+    ) return varchar2 is
+        l_batch_id varchar2(20);
+    begin
+        select batch_id into l_batch_id
+        from recall_campaigns
+        where campaign_id = p_campaign_id
+        and end_user_name = upper(p_actor);
+        return l_batch_id;
+    exception
+        when no_data_found then
+            raise_application_error(-20112, 'Campaign is not available to this persona.');
+    end campaign_batch;
+
+    function authorize_contact(
+        p_batch_id in varchar2,
+        p_actor    in varchar2
+    ) return clob is
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
+    begin
+        if session_user != upper(p_actor) or upper(p_actor) != 'RECALL_LEAD_USER' then
+            raise_application_error(-20102, 'Only the recall response lead can authorize customer contact.');
+        end if;
+
+        update recall_campaign_policy
+        set    contact_authorized = 'Y',
+               authorized_by = upper(p_actor),
+               authorized_at = systimestamp
+        where  batch_id = l_batch_id;
+
+        if sql%rowcount = 0 then
+            raise_application_error(-20103, 'No campaign policy exists for batch ' || l_batch_id || '.');
+        end if;
+
+        insert into recall_campaign_audit(
+            batch_id, actor_name, action_name, detail_text
+        ) values (
+            l_batch_id, upper(p_actor), 'CONTACT_AUTHORIZED',
+            'Recall lead approved customer notice generation for this batch.'
+        );
+        commit;
+        return policy(l_batch_id);
+    end authorize_contact;
+
+    function approve_campaign(
+        p_campaign_id in number,
+        p_actor       in varchar2
+    ) return clob is
+        l_batch_id recall_campaigns.batch_id%type;
+        l_status   recall_campaigns.status%type;
+    begin
+        if session_user != upper(p_actor) or upper(p_actor) != 'RECALL_LEAD_USER' then
+            raise_application_error(-20104, 'Only the recall response lead can approve a campaign.');
+        end if;
+
+        select batch_id, status
+        into   l_batch_id, l_status
+        from   recall_campaigns
+        where  campaign_id = p_campaign_id
+        for update;
+
+        if l_status != 'DRAFT' then
+            raise_application_error(-20105, 'Only a DRAFT campaign can be approved.');
+        end if;
+
+        update recall_campaigns
+        set    status = 'APPROVED',
+               approved_by = upper(p_actor),
+               approved_at = systimestamp
+        where  campaign_id = p_campaign_id;
+
+        update recall_campaign_recipients
+        set    notice_status = 'APPROVED',
+               refund_status = 'READY_FOR_PROCESSING'
+        where  campaign_id = p_campaign_id;
+
+        insert into recall_refund_intents(
+            campaign_id, purchase_id, customer_id, refund_amount
+        )
+        select r.campaign_id, r.purchase_id, r.customer_id, r.refund_amount
+        from   recall_campaign_recipients r
+        where  r.campaign_id = p_campaign_id
+        and    not exists (
+                   select 1
+                   from recall_refund_intents i
+                   where i.campaign_id = r.campaign_id
+                   and   i.purchase_id = r.purchase_id
+               );
+
+        insert into recall_campaign_audit(
+            campaign_id, batch_id, actor_name, action_name, detail_text
+        ) values (
+            p_campaign_id, l_batch_id, upper(p_actor), 'CAMPAIGN_APPROVED',
+            'Notice delivery and refund intents are ready for an external review or provider.'
+        );
+        commit;
+        return status(l_batch_id, upper(p_actor));
+    exception
+        when no_data_found then
+            raise_application_error(-20106, 'Campaign not found.');
+    end approve_campaign;
+
+    function status(
+        p_batch_id in varchar2,
+        p_actor    in varchar2
+    ) return clob is
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
+        l_result clob;
+    begin
+        select json_serialize(
+                   json_object(
+                       'batchId' value l_batch_id,
+                       'policy' value json_query(policy(l_batch_id), '$' returning json) format json,
+                       'campaign' value (
+                           select json_object(
+                                      'campaignId' value c.campaign_id,
+                                      'status' value c.status,
+                                      'channel' value c.channel,
+                                      'tone' value c.tone,
+                                      'templateSource' value c.template_source,
+                                      'template' value c.template_text,
+                                      'productName' value c.product_name,
+                                      'sku' value c.sku,
+                                      'recipientCount' value c.recipient_count,
+                                      'totalRefund' value c.total_refund,
+                                      'createdAt' value to_char(c.created_at, 'YYYY-MM-DD HH24:MI:SS'),
+                                      'approvedBy' value c.approved_by,
+                                      'approvedAt' value to_char(c.approved_at, 'YYYY-MM-DD HH24:MI:SS'),
+                                      'recipients' value (
+                                          select coalesce(
+                                                     json_arrayagg(
+                                                         json_object(
+                                                             'purchaseId' value r.purchase_id,
+                                                             'customerId' value r.customer_id,
+                                                             'customerName' value r.customer_name,
+                                                             'email' value r.email,
+                                                             'batchId' value r.batch_id,
+                                                             'productName' value r.product_name,
+                                                             'sku' value r.sku,
+                                                             'quantity' value r.quantity,
+                                                             'refundAmount' value r.refund_amount,
+                                                             'noticeStatus' value r.notice_status,
+                                                             'refundStatus' value r.refund_status
+                                                             returning json
+                                                         ) order by r.purchase_id returning json
+                                                     ),
+                                                     json('[]')
+                                                 )
+                                          from recall_campaign_recipients r
+                                          where r.campaign_id = c.campaign_id
+                                      ) format json
+                                      returning json
+                                  )
+                           from recall_campaigns c
+                           where c.batch_id = l_batch_id
+                           and   (
+                                     upper(p_actor) = 'RECALL_LEAD_USER'
+                                     or c.end_user_name = upper(p_actor)
+                                 )
+                           order by c.created_at desc
+                           fetch first 1 row only
+                       ) format json
+                       returning json
+                   ) returning clob
+               )
+        into l_result
+        from dual;
+        return l_result;
+    end status;
+end recall_campaign_bridge;
+/
+
+
+create or replace package recall_campaign_api authid current_user as
+    function status(p_batch_id in varchar2 default 'B-482') return clob;
+    function authorize_contact(p_batch_id in varchar2 default 'B-482') return clob;
+    function draft_campaign(
+        p_batch_id in varchar2 default 'B-482',
+        p_channel  in varchar2 default 'EMAIL',
+        p_tone     in varchar2 default 'PROFESSIONAL'
+    ) return clob;
+    function customer_options(p_batch_id in varchar2 default 'B-482') return clob;
+    function personalize_campaign(
+        p_campaign_id in number,
+        p_purchase_id in number
+    ) return clob;
+    function approve_campaign(p_campaign_id in number) return clob;
+end recall_campaign_api;
+/
+
+create or replace package body recall_campaign_api as
+    function current_user return varchar2 is
+        l_user varchar2(128);
+    begin
+        select upper(json_value(ora_end_user_context, '$.USERNAME' returning varchar2(128)))
+        into l_user
+        from dual;
+        if l_user not in ('STORE_101_USER', 'REGION_NE_USER', 'RECALL_LEAD_USER') then
+            raise_application_error(-20107, 'No supported recall persona is active.');
+        end if;
+        return l_user;
+    end current_user;
+
+    function context(p_batch_id in varchar2) return clob is
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
+        l_user varchar2(128) := current_user;
+        l_policy clob;
+        l_result clob;
+    begin
+        l_policy := recall_campaign_bridge.policy(l_batch_id);
+        select json_serialize(
+                   json_object(
+                       'batchId' value b.batch_id,
+                       'productName' value p.product_name,
+                       'sku' value p.sku,
+                       'recipientCount' value (
+                           select count(*)
+                           from purchases pu
+                           join customers cu on cu.customer_id = pu.customer_id
+                           where pu.batch_id = l_batch_id
+                       ),
+                       'totalRefund' value (
+                           select coalesce(sum(pu.quantity), 0) *
+                                  json_value(l_policy, '$.unitRefundAmount' returning number)
+                           from purchases pu
+                           join customers cu on cu.customer_id = pu.customer_id
+                           where pu.batch_id = l_batch_id
+                       ),
+                       'policy' value json_query(l_policy, '$' returning json) format json,
+                       'activeUser' value l_user
+                       returning json
+                   ) returning clob
+               )
+        into l_result
+        from batches b
+        join products p on p.product_id = b.product_id
+        where b.batch_id = l_batch_id;
+        return l_result;
+    exception
+        when no_data_found then
+            return json_serialize(
+                       json_object(
+                           'error' value 'UNKNOWN_BATCH',
+                           'batchId' value l_batch_id
+                           returning json
+                       ) returning clob
+                   );
+    end context;
+
+    function status(p_batch_id in varchar2 default 'B-482') return clob is
+    begin
+        return recall_campaign_bridge.status(p_batch_id, current_user);
+    end status;
+
+    function authorize_contact(p_batch_id in varchar2 default 'B-482') return clob is
+    begin
+        return recall_campaign_bridge.authorize_contact(p_batch_id, current_user);
+    end authorize_contact;
+
+    function draft_campaign(
+        p_batch_id in varchar2 default 'B-482',
+        p_channel  in varchar2 default 'EMAIL',
+        p_tone     in varchar2 default 'PROFESSIONAL'
+    ) return clob is
+        l_user       varchar2(128) := current_user;
+        l_context    clob;
+        l_policy     clob;
+        l_template   clob;
+        l_campaign_id number;
+        l_authorized varchar2(5);
+        l_product    varchar2(200);
+        l_sku        varchar2(80);
+        l_count      number;
+        l_steps      varchar2(2000);
+    begin
+        l_context := context(p_batch_id);
+        l_authorized := json_value(l_context, '$.policy.contactAuthorized' returning varchar2(5));
+        if l_authorized != 'true' then
+            return json_serialize(
+                       json_object(
+                           'error' value 'CONTACT_NOT_AUTHORIZED',
+                           'message' value 'The recall response lead must authorize customer contact before drafting notices.',
+                           'context' value json_query(l_context, '$' returning json) format json
+                           returning json
+                       ) returning clob
+                   );
+        end if;
+
+        l_product := json_value(l_context, '$.productName' returning varchar2(200));
+        l_sku := json_value(l_context, '$.sku' returning varchar2(80));
+        l_count := json_value(l_context, '$.recipientCount' returning number);
+        l_steps := json_value(l_context, '$.policy.refundSteps' returning varchar2(2000));
+        l_template := recall_campaign_bridge.generate_template(
+            p_batch_id, l_product, l_sku, l_count, l_steps,
+            upper(p_channel), upper(p_tone)
+        );
+        l_campaign_id := recall_campaign_bridge.create_draft(
+            l_user, p_batch_id, p_channel, p_tone, l_context, l_template
+        );
+        return recall_campaign_bridge.status(p_batch_id, l_user);
+    end draft_campaign;
+
+    function customer_options(p_batch_id in varchar2 default 'B-482') return clob is
+        l_batch_id varchar2(20) := upper(trim(p_batch_id));
+        l_policy clob := recall_campaign_bridge.policy(l_batch_id);
+        l_unit_refund number := json_value(l_policy, '$.unitRefundAmount' returning number);
+        l_result clob;
+    begin
+        if json_value(l_policy, '$.contactAuthorized' returning varchar2(5)) != 'true' then
+            raise_application_error(-20110, 'Customer contact must be authorized before loading the customer list.');
+        end if;
+
+        select json_serialize(
+                   json_object(
+                       'batchId' value l_batch_id,
+                       'customers' value coalesce(
+                           json_arrayagg(
+                               json_object(
+                                   'purchaseId' value pu.purchase_id,
+                                   'customerId' value cu.customer_id,
+                                   'customerName' value cu.full_name,
+                                   'quantity' value pu.quantity,
+                                   'refundAmount' value pu.quantity * l_unit_refund,
+                                   'orderReference' value 'PUR-' || pu.purchase_id
+                                   returning json
+                               ) order by cu.full_name, pu.purchase_id returning json
+                           ), json('[]')
+                       ) format json
+                       returning json
+                   ) returning clob
+               )
+        into l_result
+        from purchases pu
+        join customers cu on cu.customer_id = pu.customer_id
+        where pu.batch_id = l_batch_id;
+        return l_result;
+    end customer_options;
+
+    function personalize_campaign(
+        p_campaign_id in number,
+        p_purchase_id in number
+    ) return clob is
+        l_user varchar2(128) := current_user;
+        l_batch_id varchar2(20);
+        l_policy clob;
+        l_unit_refund number;
+        l_recipient clob;
+        l_notice clob;
+    begin
+        l_batch_id := recall_campaign_bridge.campaign_batch(p_campaign_id, l_user);
+        l_policy := recall_campaign_bridge.policy(l_batch_id);
+        l_unit_refund := json_value(l_policy, '$.unitRefundAmount' returning number);
+        select json_serialize(
+                   json_object(
+                       'purchaseId' value pu.purchase_id,
+                       'customerId' value cu.customer_id,
+                       'customerName' value cu.full_name,
+                       'email' value cu.email,
+                       'quantity' value pu.quantity,
+                       'refundAmount' value pu.quantity * l_unit_refund
+                       returning json
+                   ) returning clob
+               )
+        into l_recipient
+        from purchases pu
+        join customers cu on cu.customer_id = pu.customer_id
+        where pu.purchase_id = p_purchase_id
+        and pu.batch_id = l_batch_id;
+
+        l_notice := recall_campaign_bridge.personalize_notice(
+            l_user, p_campaign_id, l_recipient
+        );
+        return json_serialize(
+                   json_object(
+                       'state' value json_query(recall_campaign_bridge.status(
+                           l_batch_id, l_user
+                       ), '$' returning json) format json,
+                       'personalizedNotice' value json_query(l_notice, '$' returning json) format json
+                       returning json
+                   ) returning clob
+               );
+    exception
+        when no_data_found then
+            raise_application_error(-20111, 'The selected customer order is not available to this DDS persona.');
+    end personalize_campaign;
+
+    function approve_campaign(p_campaign_id in number) return clob is
+    begin
+        return recall_campaign_bridge.approve_campaign(p_campaign_id, current_user);
+    end approve_campaign;
+end recall_campaign_api;
+/
+
+
+grant execute on recall_campaign_bridge to recall_end_user_login;
+/
+grant execute on recall_campaign_api to recall_end_user_login;
+/
+
+declare
+    l_valid_count number;
+begin
+    select count(*)
+    into l_valid_count
+    from all_objects
+    where owner = 'RECALL_OWNER'
+    and object_name in ('RECALL_CAMPAIGN_API', 'RECALL_CAMPAIGN_BRIDGE')
+    and object_type in ('PACKAGE', 'PACKAGE BODY')
+    and status = 'VALID';
+    if l_valid_count <> 4 then
+        raise_application_error(-20108, 'Expected four VALID campaign package objects under RECALL_OWNER. Review ALL_ERRORS as ADMIN.');
+    end if;
+end;
+/

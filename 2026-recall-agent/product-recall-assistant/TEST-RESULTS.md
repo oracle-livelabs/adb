@@ -4,7 +4,7 @@ Estimated Time: Not applicable
 
 ## Current Validation Status
 
-This record replaces the earlier five-lab baseline. The July 2026 workshop now contains eight focused labs:
+This record replaces the earlier five-lab baseline. The workshop now contains eight focused labs:
 
 1. JSON evidence
 2. Oracle Spatial
@@ -13,7 +13,7 @@ This record replaces the earlier five-lab baseline. The July 2026 workshop now c
 5. Select AI Agent
 6. ORDS API delivery
 7. Deep Data Security
-8. React/Node command center
+8. React/Node command center and governed recall-response campaign
 
 ## Generated Data Validation
 
@@ -59,6 +59,7 @@ This record replaces the earlier five-lab baseline. The July 2026 workshop now c
 - The Lab 8 bridge now assembles a combined product JSON, vector/relational, DDS-filtered Spatial, and compact Graph evidence document before `RUN_TEAM`. A fresh live check should confirm the three personas receive different converged answers while the shared component/supplier trace remains common.
 - On July 23, SQLcl reran the Lab 7 owner policy and Lab 8 bridge as `RECALL_OWNER`. All four bridge packages compiled `VALID`; `USER_DATA_GRANTS` returned 60 assignments, including `DG_RESPONSE_CENTERS_READ` for all three data roles.
 - The same-day read-only persona smoke test passed through the application packages: `STORE_101_USER` returned `1/5/1`, `REGION_NE_USER` returned `24/120/24`, and `RECALL_LEAD_USER` returned `120/600/120` for graph stores, graph customers, and map features. The corrected `SECURED_GRAPH` no longer depends on the owner-only `RECALL_AFFECTED_STORES_V` view.
+- The Lab 8 combined campaign SQL and workflow are present in the workshop source. They have not been live-tested against a fresh database in this checkout.
 
 ## Remaining Manual Check
 
@@ -66,6 +67,7 @@ This record replaces the earlier five-lab baseline. The July 2026 workshop now c
 - Ask the same Spatial/Graph questions as all three personas and confirm that response regions, centers, stores, customers, and complaint evidence remain role-specific while component and supplier trace stays shared.
 - Rehearse the clean Lab 1 through Lab 3 path. Confirm Lab 1 has no graph, then create `RECALL_GRAPH` and run all three graph traversals in Lab 3.
 - Run Lab 4 with the Object Storage URI for `all-MiniLM-L12-v2.onnx`, then confirm all complaint chunks and query rows contain 384-dimensional embeddings.
+- Run the combined Lab 8 setup through the documented `ADMIN` deployment block; confirm both campaign packages are valid and `RECALL_CAMPAIGN_API.STATUS` is exposed. Exercise authorization, drafting, approval, audit records, refund intents, and all three persona scopes without sending messages or issuing payments.
 
 ## Acknowledgements
 

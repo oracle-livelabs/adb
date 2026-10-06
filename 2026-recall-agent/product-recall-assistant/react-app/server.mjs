@@ -18,6 +18,7 @@ oracledb.fetchAsString = [oracledb.CLOB];
 
 const app = express();
 const port = Number(process.env.PORT || 3001);
+const host = process.env.HOST || '127.0.0.1';
 const useViteMiddleware = process.env.VITE_MIDDLEWARE === 'true';
 const connectString = process.env.ORACLE_CONNECT_STRING;
 const oracleConfigDir = process.env.ORACLE_CONFIG_DIR;
@@ -98,6 +99,13 @@ function explainConnectionError(error) {
   return error?.message || 'Database login failed.';
 }
 
+function explainCampaignError(error, fallback) {
+  if (error?.message?.includes('ORA-00904') && /RECALL_CAMPAIGN_API/i.test(error.message)) {
+    return 'The campaign package is missing or outdated. Connect as ADMIN and run the combined Lab 8 setup block, then reconnect the application users.';
+  }
+  return error?.message || fallback;
+}
+
 async function readJsonQuery(connection, sql, binds = {}) {
   const result = await connection.execute(sql, binds);
   const row = result.rows?.[0];
@@ -110,6 +118,14 @@ async function readJsonQuery(connection, sql, binds = {}) {
     return JSON.parse(Buffer.concat(chunks).toString('utf8'));
   }
   return value;
+}
+
+async function callJsonFunction(connection, sql, binds = {}) {
+  const result = await connection.execute(sql, {
+    ...binds,
+    payload: { dir: oracledb.BIND_OUT, type: oracledb.CLOB }
+  });
+  return readJsonValue(result.outBinds.payload);
 }
 
 async function readQueryText(connection, sql, binds = {}) {
@@ -165,27 +181,27 @@ async function getRecallBundle(connection, batchId) {
   const identity = await getIdentity(connection);
   const product = await readJsonQuery(
     connection,
-    `select recall_react_api.product_context(:batchId) as payload`,
+    `select recall_react_api.product_context(:batchId) as payload from dual`,
     binds
   );
   const context = await readJsonQuery(
     connection,
-    `select recall_secure_api.get_secured_context(:batchId) as payload`,
+    `select recall_secure_api.get_secured_context(:batchId) as payload from dual`,
     binds
   );
   const stores = await readJsonQuery(
     connection,
-    `select recall_react_api.secured_stores(:batchId) as payload`,
+    `select recall_react_api.secured_stores(:batchId) as payload from dual`,
     binds
   );
   const sharedGraph = await readJsonQuery(
     connection,
-    `select recall_graph_api.context(:batchId) as payload`,
+    `select recall_graph_api.context(:batchId) as payload from dual`,
     binds
   );
   const downstreamGraph = await readJsonQuery(
     connection,
-    `select recall_react_api.secured_graph(:batchId) as payload`,
+    `select recall_react_api.secured_graph(:batchId) as payload from dual`,
     binds
   );
   return { identity, product, context, stores, graph: mergeRecallGraphs(sharedGraph, downstreamGraph) };
@@ -248,7 +264,7 @@ app.post('/api/vector-search', requireSession, async (req, res) => {
   try {
     const payload = await readJsonQuery(
       req.recallSession.connection,
-      `select recall_react_api.search_vector_evidence(:batchId, :query) as payload`,
+      `select recall_react_api.search_vector_evidence(:batchId, :query) as payload from dual`,
       { batchId, query: query.slice(0, 1000) }
     );
     res.json(payload);
@@ -267,12 +283,108 @@ app.post('/api/agent', requireSession, async (req, res) => {
     // owner-owned definer-rights agent bridge.
     const answer = await readQueryText(
       req.recallSession.connection,
-      `select recall_react_api.ask_agent(:batchId, :question) as payload`,
+      `select recall_react_api.ask_agent(:batchId, :question) as payload from dual`,
       { batchId, question: question.slice(0, 1000) }
     );
     res.json({ answer });
   } catch (error) {
     res.status(500).json({ error: error.message || 'The secured agent call failed.' });
+  }
+});
+
+app.get('/api/campaign', requireSession, async (req, res) => {
+  const batchId = String(req.query?.batchId || 'B-482').toUpperCase();
+  try {
+    const payload = await readJsonQuery(
+      req.recallSession.connection,
+      `select recall_campaign_api.status(:batchId) as payload from dual`,
+      { batchId }
+    );
+    res.json(payload);
+  } catch (error) {
+    res.status(503).json({ error: explainCampaignError(error, 'The recall campaign package is not available. Run the combined Lab 8 setup as ADMIN.') });
+  }
+});
+
+app.post('/api/campaign/authorize', requireSession, async (req, res) => {
+  const batchId = String(req.body?.batchId || 'B-482').toUpperCase();
+  try {
+    const payload = await callJsonFunction(
+      req.recallSession.connection,
+      `begin :payload := recall_campaign_api.authorize_contact(:batchId); end;`,
+      { batchId }
+    );
+    res.json(payload);
+  } catch (error) {
+    res.status(403).json({ error: explainCampaignError(error, 'Customer contact could not be authorized.') });
+  }
+});
+
+app.post('/api/campaign/draft', requireSession, async (req, res) => {
+  const batchId = String(req.body?.batchId || 'B-482').toUpperCase();
+  const channel = String(req.body?.channel || 'EMAIL').toUpperCase();
+  const tone = String(req.body?.tone || 'PROFESSIONAL').toUpperCase();
+  if (!['EMAIL', 'SMS'].includes(channel) || !['PROFESSIONAL', 'REASSURING', 'CONCISE'].includes(tone)) {
+    return res.status(400).json({ error: 'Choose a supported notice channel and tone.' });
+  }
+  try {
+    const payload = await callJsonFunction(
+      req.recallSession.connection,
+      `begin :payload := recall_campaign_api.draft_campaign(:batchId, :channel, :tone); end;`,
+      { batchId, channel, tone }
+    );
+    res.json(payload);
+  } catch (error) {
+    res.status(503).json({ error: explainCampaignError(error, 'The recall notice draft could not be generated.') });
+  }
+});
+
+app.get('/api/campaign/customers', requireSession, async (req, res) => {
+  const batchId = String(req.query?.batchId || 'B-482').toUpperCase();
+  try {
+    const payload = await readJsonQuery(
+      req.recallSession.connection,
+      `select recall_campaign_api.customer_options(:batchId) as payload from dual`,
+      { batchId }
+    );
+    res.json(payload);
+  } catch (error) {
+    res.status(403).json({ error: explainCampaignError(error, 'Customer choices are not available for this persona.') });
+  }
+});
+
+app.post('/api/campaign/personalize', requireSession, async (req, res) => {
+  const campaignId = Number(req.body?.campaignId);
+  const purchaseId = Number(req.body?.purchaseId);
+  if (!Number.isInteger(campaignId) || campaignId < 1 || !Number.isInteger(purchaseId) || purchaseId < 1) {
+    return res.status(400).json({ error: 'A campaign and customer purchase are required.' });
+  }
+  try {
+    const payload = await callJsonFunction(
+      req.recallSession.connection,
+      `begin :payload := recall_campaign_api.personalize_campaign(:campaignId, :purchaseId); end;`,
+      { campaignId, purchaseId }
+    );
+    res.json(payload);
+  } catch (error) {
+    res.status(403).json({ error: explainCampaignError(error, 'The personalized notice could not be generated.') });
+  }
+});
+
+app.post('/api/campaign/approve', requireSession, async (req, res) => {
+  const campaignId = Number(req.body?.campaignId);
+  if (!Number.isInteger(campaignId) || campaignId < 1) {
+    return res.status(400).json({ error: 'A valid campaign ID is required.' });
+  }
+  try {
+    const payload = await callJsonFunction(
+      req.recallSession.connection,
+      `begin :payload := recall_campaign_api.approve_campaign(:campaignId); end;`,
+      { campaignId }
+    );
+    res.json(payload);
+  } catch (error) {
+    res.status(403).json({ error: explainCampaignError(error, 'The recall campaign could not be approved.') });
   }
 });
 
@@ -304,8 +416,8 @@ if (useViteMiddleware) {
   });
 }
 
-const httpServer = app.listen(port, () => {
-  console.log(`Recall Node API and React app listening on http://localhost:${port}`);
+const httpServer = app.listen(port, host, () => {
+  console.log(`Recall Node API and React app listening on http://${host}:${port}`);
 });
 
 async function shutdown() {

@@ -473,6 +473,63 @@ For Kevin, the application can answer local, regional, and company-wide question
 
 Lab 8 uses these packages and data roles in the Recall Command Center.
 
+## Next Steps
+
+Continue to Lab 8 to use the Recall Command Center with the three end-user accounts.
+
+### Shortcut
+
+If an earlier lab is incomplete, use this shortcut to apply the database changes from the SQL examples in Labs 1–7. It uses your existing workshop setup: RECALL\_OWNER, the other accounts and their passwords, the prepared packages, the embedding model, and the GenAI profile and credentials stay in place. You do not need to enter a GenAI region or compartment OCID.
+
+The shortcut reapplies the lab's named views, graph, assistant tools, team, map endpoint, and access rules. It also populates the lab's spatial and vector columns. It can replace changes you made to those lab objects, but it does not reload the sample data or rebuild the provisioned environment. Missing or incompatible prerequisites are reported as errors.
+
+1. Close any running workshop queries and the Recall Command Center. Open **SQL Developer Web** for your workshop database and sign in as **ADMIN**.
+
+2. Run the following block with **Run Script**. `DBMS_CLOUD.GET_OBJECT` downloads [shortcut.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/shortcut.sql) from Object Storage, and `DBMS_CLOUD_REPO.INSTALL_SQL` executes its contents. The version check prevents an older, incompatible shortcut from running.
+
+    ```sql
+    <copy>
+    declare
+        l_script clob;
+    begin
+        l_script := to_clob(dbms_cloud.get_object(
+            credential_name => null,
+            object_uri => 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/shortcut.sql'
+        ));
+
+        if dbms_lob.substr(l_script, 58, 1) !=
+           '-- Product Recall Assistant - Labs 1-7 learner shortcut v3' then
+            raise_application_error(-20001,
+                'The hosted shortcut is not the current Labs 1-7 version. Replace the hosted file before retrying.');
+        end if;
+
+        dbms_cloud_repo.install_sql(
+            content => l_script,
+            stop_on_error => true
+        );
+    end;
+    /
+    </copy>
+    ```
+
+3. The script submits the lab work to database Scheduler jobs. **Submission does not mean setup has finished.** Run this query as ADMIN to check its progress. Rerun only the query while it is running, not the installation block.
+
+    ```sql
+    <copy>
+    select run_id, state, phase, detail, submitted_at, updated_at, finished_at
+    from admin.recall_shortcut_status
+    where id = 1;
+    </copy>
+    ```
+
+    - **SUBMITTED** or **RUNNING**: the work has not finished. Check again later.
+    - **SUCCEEDED**: the lab changes and included database checks completed. Continue to Lab 8 with your existing account passwords.
+    - **FAILED**: read **PHASE** and **DETAIL**, correct the reported issue, and then rerun the installation block. Changes completed before an error may already be committed.
+
+    If the installation block reports an error before submission, correct that error first. A status row from a previous run does not confirm that a new submission succeeded.
+
+4. In Lab 8, check the results for all three end-user accounts. This shortcut applies the lab setup statements; it does not perform the interactive questions, real end-user login and data-filtering checks, or browser and HTTP authentication checks. It does not create captured evidence requests on behalf of users.
+
 ## Learn More
 
 - [Securing Vector Search with Deep Data Security in Oracle AI Database](https://medium.com/@thomas.minne/securing-vector-search-with-deep-data-security-in-oracle-ai-database-c2fe0c4dd736)
