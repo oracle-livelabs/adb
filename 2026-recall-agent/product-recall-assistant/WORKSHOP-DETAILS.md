@@ -10,7 +10,7 @@ Build a Product Recall Assistant that investigates a realistic component-level r
 
 A product quality incident can span component lots, sub-vendor locations, manufacturing batches, shipments, stores, customer purchases, and unstructured complaints. In this workshop, learners investigate batch `B-482` and turn those records into an evidence-grounded response.
 
-The completed workshop uses relational, JSON, spatial, graph, vector, agent, security, and application features in one database. Learners connect the investigation to Select AI Agent and ORDS, apply role-aware retrieval, then deploy a React/Node command center. The final application agent receives one pre-authorized document containing product JSON, vector evidence, Spatial impact, and Graph relationship summaries. Every seed table contains at least 100 rows. The focal recall includes 120 affected stores, 2,400 shipped units, 600 exposed customers, 25 component batches, and 25 supplier or sub-vendor sites.
+The completed workshop uses relational, JSON, spatial, graph, vector, agent, security, and application features in one database. Learners connect the investigation to Select AI Agent and ORDS, apply role-aware retrieval, deploy and explore a React/Node command center, and prepare a governed customer-response campaign from the same application. The application agent receives pre-authorized evidence; the campaign agent drafts a generic notice template, while the recall lead authorizes contact and approves refund intents. The workshop does not send messages or move money. Every seed table contains at least 100 rows. The focal recall includes 120 affected stores, 2,400 shipped units, 600 exposed customers, 25 component batches, and 25 supplier or sub-vendor sites.
 
 ## Workshop Outline
 
@@ -22,7 +22,7 @@ The completed workshop uses relational, JSON, spatial, graph, vector, agent, sec
 6. Lab 5: Build the Recall Assistant, 20 minutes
 7. Lab 6: Publish the Recall API with ORDS, 10 minutes
 8. Lab 7: Make the Recall Agent Role-Aware with Deep Data Security, 15 minutes
-9. Lab 8: Deploy the Role-Aware React Recall Command Center, 25 minutes
+9. Lab 8: Deploy and Explore the Secure Returns Command Center and Governed Response Campaign, 45 minutes
 10. Discussion and questions, 15 minutes
 
 ## Workshop Prerequisites
@@ -45,7 +45,8 @@ The completed workshop uses relational, JSON, spatial, graph, vector, agent, sec
 - `RECALL_OWNER` owns all workshop data, code, graph definitions, and security policies.
 - `RECALL_APP_USER` calls only approved packages through `RECALL_API_ROLE`.
 - Lab 7 adds local Deep Data Security end users and data roles for store, regional, and recall-lead access.
-- Lab 8 deploys the React/Node command center; its login uses the local database end-user identity for this workshop.
+- Lab 8 uses the Lab 7 configured Select AI Agent profile and three end-user accounts. Connect as `ADMIN` to install the combined application and campaign setup through the Lab 8 deployment block; the script creates its objects under `RECALL_OWNER`.
+- Lab 8 deploys and explores the React/Node command center. Its login uses the local database end-user identity for this workshop.
 
 ## Current Implementation Status
 
@@ -57,7 +58,7 @@ The completed workshop uses relational, JSON, spatial, graph, vector, agent, sec
 - Lab 5: Select AI Agent recall and spatial tool boundary
 - Lab 6: ORDS delivery boundary with store and component-site GeoJSON
 - Lab 7: Deep Data Security role-aware retrieval
-- Lab 8: React/Node capstone using live role-aware JSON, vector, Spatial, Graph, and agent calls
+- Lab 8: React/Node capstone using live role-aware JSON, vector, Spatial, Graph, and agent calls, with explicit campaign authorization, reusable notice drafting, approval, audit, and refund intents
 - Runtime note: static workshop QA is current; rerun live database tests after the expanded seed-data update
 
 ## Acknowledgements
