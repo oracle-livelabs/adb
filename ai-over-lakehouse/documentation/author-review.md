@@ -19,6 +19,9 @@ participant to create, edit, or validate an AI profile.
 - [ ] Operations credential and public database link read
   `CUSTOMER_RETURN_EVENTS`.
 - [ ] Generated Data Studio URL opens the assigned environment.
+- [ ] Lab 4 and the Starter Kit obtain the full ADP_URL with the read-only
+  ADMIN SQL query before 01-setup-peakgear-mcp.command; the participant signs
+  back in as PEAKGEAR_USER before MCP setup.
 - [ ] `PEAKGEAR_USER` can sign in after the required logout/login.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
 - [ ] `PRODUCTS` and `DIGITAL_CLICKSTREAM_EVENTS` return real rows.

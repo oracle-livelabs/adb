@@ -21,9 +21,12 @@ Welcome123456
 Lab 1 does not reset an existing account's password. If the account already
 exists, use its current password.
 
-The **Lab Data Studio URL** is the ADP_URL result from Lab 1, generated for the
-assigned Autonomous AI Database. Do not use localhost:8000 or the Operations
-database listener as the MCP connection URL.
+The **Lab Data Studio URL** is the full ADP_URL result from the read-only
+ADMIN query in Lab 1. Lab 4 and the Starter Kit repeat that SQL before
+01-setup-peakgear-mcp.command. Run it in Data Studio SQL Worksheet on the
+assigned Autonomous AI Database, copy the HTTPS result, then sign back in as
+PEAKGEAR_USER. Do not use localhost:8000 or the Operations database listener
+as the MCP connection URL.
 
 ## Operations database — ADMIN setup
 

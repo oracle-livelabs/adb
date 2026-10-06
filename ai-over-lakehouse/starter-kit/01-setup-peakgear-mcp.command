@@ -26,6 +26,11 @@ echo
 echo "This will install the local Data Studio MCP package."
 echo "No macOS administrator password is required."
 echo
+echo "Before running setup, obtain the Lab Data Studio URL using the SQL in Lab 4."
+echo "Run that read-only query in Data Studio SQL Worksheet as ADMIN, not in Terminal."
+echo "Keep the full ADP_URL result ready, then sign back in to Data Studio as PEAKGEAR_USER."
+echo "If you do not have the URL yet, press Control-C and complete that step first."
+echo
 
 if ! command -v uv >/dev/null 2>&1; then
   echo "Installing the user-scoped package runner…"
@@ -51,7 +56,7 @@ if [[ ! -x "$UV_BIN_DIR/oracle-data-studio-config" ]]; then
 fi
 
 echo
-echo "Paste the Lab Data Studio URL from the lab start page, then press Return."
+echo "Paste the full ADP_URL obtained with the ADMIN SQL query in Lab 4, then press Return."
 echo "Example: https://example.adb.us-ashburn-1.oraclecloudapps.com"
 read "ADP_URL?Lab Data Studio URL: "
 

@@ -19,6 +19,14 @@ business question becomes more useful as its governed context improves.
 * Optional source-connection SQL: [scripts/01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
 * Participant Codex package: [starter-kit](../starter-kit/).
 
+Lab 4 provides one Starter Kit download and an explicit Terminal sequence:
+download, open Terminal, extract the ZIP, prepare the project folder, obtain the
+Data Studio URL with the read-only ADMIN SQL query, sign back in as
+PEAKGEAR_USER, run setup, answer its prompts, open the project in Codex, and
+create a fresh task. The URL is obtained before running
+01-setup-peakgear-mcp.command. The ZIP README follows the same sequence. No
+separate local-event kit is required.
+
 The participant performs the `ADMIN` setup in Lab 1. The default AI profile
 is preconfigured for the lab: participants do not create, change, or validate
 an AI profile.

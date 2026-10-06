@@ -5,8 +5,9 @@ Estimated Time: 15 minutes
 ## Introduction
 
 You will prepare a small, bounded schema for the participant and create the
-shared read-only connection to the existing Oracle Operations database. This
-is the only lab performed as ADMIN.
+shared read-only connection to the existing Oracle Operations database. All
+database setup changes are performed here as ADMIN. Lab 4 repeats only the
+read-only ADMIN URL lookup before MCP setup.
 
 The Azure and Databricks credentials are deliberately not created here. They
 belong to PEAKGEAR&#95;USER and will be created through Data Studio in Lab 3.
@@ -70,9 +71,11 @@ SELECT COUNT(*) AS operational_return_events
 FROM customer_return_events@peakgear_operations_link;
 ~~~
 
-Still as ADMIN, run this copy-ready query:
+**Obtain the Data Studio URL (ADMIN).** Still as ADMIN, run this copy-ready
+query in **SQL Worksheet** using **Run Statement**:
 
 ~~~sql
+<copy>
 SELECT 'https://' ||
        LOWER(REPLACE(p.name, '_', '-')) || '.' ||
        REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
@@ -85,11 +88,15 @@ CROSS JOIN JSON_TABLE(
   )
 ) j
 WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
+</copy>
 ~~~
 
 Copy the ADP&#95;URL result. It is the **Lab Data Studio URL** used in Lab 2 and
-Lab 4. It is generated for your assigned database; localhost:8000 is only the
-workshop preview, not a database or MCP endpoint.
+Lab 4. Save the full HTTPS value before signing out. Lab 4 includes the same
+query directly before `01-setup-peakgear-mcp.command`, so you can obtain the
+URL again without repeating database setup. It is generated for your assigned
+database; localhost:8000 is only the workshop preview, not a database or MCP
+endpoint.
 
 ### Checkpoint
 

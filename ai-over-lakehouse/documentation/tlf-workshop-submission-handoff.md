@@ -192,8 +192,9 @@ This is the current hands-on boundary:
 5. Add Lake Cache policies for both mounted Iceberg tables.
 6. Create three user-owned raw views over products, digital intent, and
    returns.
-7. Configure the project-scoped LiveLab MCP connection with the supplied
-   starter script.
+7. In Lab 4, obtain the full Data Studio URL with the read-only ADMIN SQL
+   query, sign back in as PEAKGEAR_USER, then configure the project-scoped
+   LiveLab MCP connection with 01-setup-peakgear-mcp.command.
 8. Ask a simple raw-data question and observe a controlled stop.
 9. Use Data Studio AI Enrichment to review and save descriptions and tags.
 10. Repeat the same question and observe the improved answer.

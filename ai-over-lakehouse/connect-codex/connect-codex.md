@@ -22,43 +22,128 @@ In this lab, you will:
 
 * Labs 1 through 3 are complete.
 * Codex Desktop is installed and signed in.
-* You have the Lab Data Studio URL and the PEAKGEAR&#95;USER password.
+* You can sign in to the assigned Data Studio database as ADMIN and as
+  PEAKGEAR&#95;USER. You have both sign-ins from Lab 1.
 
 ## Task 1: Set up LiveLab MCP
 
-1. Download the complete starter kit: <a href="https://github.com/oracle-livelabs/adb/raw/refs/heads/main/ai-over-lakehouse/downloads/peakgear-livelab-starter-kit.zip"><strong>Download Here — PeakGear LiveLab Starter Kit (.zip)</strong></a>.
+1. **Download the Starter Kit.** Click
+   <a href="../downloads/peakgear-livelab-starter-kit.zip" download="peakgear-livelab-starter-kit.zip"><strong>Download Here — PeakGear LiveLab Starter Kit (.zip)</strong></a>.
+   Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP;
+   you will unpack it in Terminal. If the browser adds `(1)` or another suffix,
+   rename the downloaded file to the exact name above before continuing.
+   There is only one Starter Kit.
 
-   Unzip `peakgear-livelab-starter-kit.zip`. Keep the extracted `starter-kit` folder intact.
-2. In the extracted `starter-kit` folder, double-click `01-setup-peakgear-mcp.command`.
-3. Paste the Lab Data Studio URL when asked.
-4. Enter the PEAKGEAR&#95;USER password at the hidden password prompt. For a new
-   account created in Lab 1, copy:
+2. **Open Terminal.** Press **Command-Space**, type **Terminal**, and press
+   **Return**. Keep this Terminal window open for the following steps.
 
-   ~~~text
-   Welcome123456
-   ~~~
+3. **Unpack the ZIP and prepare the project folder.** Copy this entire block
+   into Terminal using **Copy**, then press **Return**:
+
+~~~sh
+<copy>
+cd "$HOME/Downloads"
+PEAKGEAR_KIT_DIR="$(mktemp -d "$HOME/Downloads/peakgear-starter.XXXXXX")"
+ditto -x -k "peakgear-livelab-starter-kit.zip" "$PEAKGEAR_KIT_DIR"
+mkdir -p "$HOME/Documents/peakgear-livelab"
+cd "$PEAKGEAR_KIT_DIR/starter-kit"
+</copy>
+~~~
+
+   You are now in the extracted `starter-kit` folder. A fresh extraction keeps
+   older downloaded copies unchanged.
+
+4. **Obtain the Data Studio URL before running setup.** Keep Terminal open.
+   In your browser, sign out of Data Studio and sign in to the **assigned lab
+   database as ADMIN**. Open **SQL Worksheet** and confirm that the header
+   shows **ADMIN**. Paste this SQL into the worksheet and click **Run Statement**:
+
+~~~sql
+<copy>
+SELECT 'https://' ||
+       LOWER(REPLACE(p.name, '_', '-')) || '.' ||
+       REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
+         AS adp_url
+FROM v$pdbs p
+CROSS JOIN JSON_TABLE(
+  p.cloud_identity,
+  '$' COLUMNS (
+    public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
+  )
+) j
+WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
+</copy>
+~~~
+
+   Copy the full HTTPS value from the **ADP&#95;URL** result and keep it ready.
+   This read-only query is the same URL lookup used in Lab 1. Run it in
+   **Data Studio, not Terminal**, and do not grant access to these system views
+   to PEAKGEAR&#95;USER. If the query does not return a URL, stop and ask the
+   instructor before running setup.
+
+   **Sign out of ADMIN, then sign back in as PEAKGEAR&#95;USER.** The MCP setup
+   uses PEAKGEAR&#95;USER, never the ADMIN account. Do not use localhost:8000,
+   the Operations listener, or a URL ending in /ords as the Lab Data Studio URL.
+
+5. **Run setup.** Return to the same Terminal window. Paste this command and
+   press **Return**:
+
+~~~sh
+<copy>
+zsh ./01-setup-peakgear-mcp.command
+</copy>
+~~~
+
+   Wait while setup installs the required packages. Do not run extra install
+   commands. Setup does not require your Mac administrator password.
+
+6. **Answer the setup prompts in order.**
+
+   | Prompt | What to do |
+   |---|---|
+   | Lab Data Studio URL | Paste the full ADP&#95;URL result obtained in step 4, then press Return. Do not use localhost:8000. |
+   | Password for PEAKGEAR&#95;USER | Paste the password below, then press Return. Nothing appears while you type or paste; this is normal. |
+   | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 3. |
+   | Success / Press Return to close this window | Confirm the displayed URL and PEAKGEAR&#95;USER, then press Return. |
+
+   For a new account created in Lab 1, the database password is:
+
+~~~text
+<copy>
+Welcome123456
+</copy>
+~~~
 
    If the account already existed, use its current password.
-5. Choose the current Codex project folder when Finder opens.
-6. When setup reports **Success**, open that project in Codex and click
-   **Trust** if prompted.
-7. Create one new Codex task. Do not edit a Codex configuration file or add an
-   MCP server manually.
+
+7. **Open the project in Codex.** After setup finishes, run this in Terminal:
+
+~~~sh
+<copy>
+open -a Codex "$HOME/Documents/peakgear-livelab"
+</copy>
+~~~
+
+   Click **Trust** if Codex asks whether you trust this project.
+
+8. **Create one new Codex task in that project.** LiveLab starts automatically
+   for the new task. Continue with Task 2 below. Do not reuse an older task or
+   add an MCP server manually.
 
 The setup stores the connection password in the local macOS Keychain. It does
 not write that password or source tokens into the generated project
 configuration. The event values are intentionally documented in the workshop.
 
-For this localhost preview, download the updated local package:
-<a href="http://localhost:8000/downloads/peakgear-livelab-starter-kit.zip" download="peakgear-livelab-starter-kit.zip"><strong>Download Here — local event starter kit (.zip)</strong></a>.
-
-> `01-setup-peakgear-mcp.command` and `02-peakgear-livelab-admin.command` must remain together with the other files in the unzipped `starter-kit` folder. Always download the complete ZIP above.
+> Keep the whole extracted `starter-kit` folder. Both numbered scripts and the
+> supporting files belong to the same kit. You do not need to edit TOML or
+> install Python or uv manually.
 
 ## Task 2: Establish the MCP boundary
 
 Paste this once into the new Codex task:
 
 ~~~text
+<copy>
 You are the PeakGear business analyst.
 
 For every business question, use only the MCP tools from the LiveLab server.
@@ -74,6 +159,7 @@ automation, or another MCP server.
 Read saved Data Studio descriptions and tags before answering a business
 question. If required business meaning is missing, state exactly what is
 missing instead of making an assumption.
+</copy>
 ~~~
 
 The first tool call must be **adp&#95;get&#95;connection&#95;info**. Continue only if its
@@ -86,16 +172,25 @@ non-secret response shows:
 | session&#95;ready | true |
 | query&#95;result&#95;adapter | peakgear-json-bound-rows-v1 |
 
-If the check fails, open the unzipped `starter-kit` folder and run
-`02-peakgear-livelab-admin.command`. Choose **Start LiveLab cleanly**, then
-create a new Codex task.
+If the check fails, open Terminal and run:
+
+~~~sh
+<copy>
+zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
+</copy>
+~~~
+
+Choose **1 — Start LiveLab cleanly — stop PeakGear LiveLab only**, then create a
+new Codex task in the same project. Do not choose the ALL-MCP cleanup options.
 
 ## Task 3: Ask the raw-data question
 
 Ask exactly this:
 
 ~~~text
+<copy>
 Which products are customers interested in right now?
+</copy>
 ~~~
 
 Expected result: Codex should explain why it cannot responsibly answer yet. In
@@ -119,6 +214,7 @@ for the raw question.
 ## Learn More
 
 * [Oracle Data Studio Guide](https://docs.oracle.com/en/cloud/paas/autonomous-database/data-studio-guide/)
+* [Codex project configuration and trust](https://learn.chatgpt.com/docs/config-file/config-basic)
 
 ## Acknowledgements
 
