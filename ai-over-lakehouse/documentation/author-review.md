@@ -15,7 +15,7 @@ participant to create, edit, or validate an AI profile.
 
 ## Mandatory dry-run checks
 
-- [ ] The default workshop page starts at Lab 2; no participant ADMIN setup is listed.
+- [ ] The default workshop page starts at Lab 1; no participant ADMIN setup is listed.
 - [ ] Reservation Information provides OCI Login Credentials separately from
   Database User and Database Password; the participant user is PEAKGEAR_USER.
 - [ ] Provider provisioning already enabled the required grants, ORDS, network
@@ -23,8 +23,9 @@ participant to create, edit, or validate an AI profile.
 - [ ] Operations credential and public database link read
   `CUSTOMER_RETURN_EVENTS`.
 - [ ] Data Studio Region, Compartment, and Database Name match the reservation.
-- [ ] Lab 2 obtains the actual Database Actions HTTPS origin without an ADMIN
-  login; Lab 4 and the Starter Kit reuse it before 01-setup-peakgear-mcp.command.
+- [ ] Before release, validate that PEAKGEAR_USER can run the read-only
+  V$PDBS cloud-identity lookup. Lab 3 Task 1 obtains ADP_URL before
+  01-setup-peakgear-mcp.command; participants do not switch to ADMIN.
 - [ ] `PEAKGEAR_USER` can sign in using Environment Details → Database Password,
   not the OCI Login Credentials password or a sample password.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
@@ -33,10 +34,10 @@ participant to create, edit, or validate an AI profile.
 - [ ] Codex `adp_get_connection_info` confirms the reserved database URL,
   `PEAKGEAR_USER`, a ready session, and the expected JSON response adapter.
 - [ ] The raw question receives an appropriately cautious answer.
-- [ ] Lab 5 saves reviewed descriptions and tags for all three raw views,
+- [ ] Lab 4 saves reviewed descriptions and tags for all three raw views,
   including the product-name and join-key column definitions; the metadata is
   visible in Catalog.
-- [ ] Lab 6 reuses the Lab 5 annotations without repeating AI Enrichment.
+- [ ] Lab 5 reuses the Lab 4 annotations without repeating AI Enrichment.
 - [ ] The enriched simple answer uses product names from the reviewed product
   catalog; aggregation precedes the label join and duplicate product keys stop it.
 - [ ] Codex identifies the cross-source governed-model gap.

@@ -17,10 +17,11 @@ LiveLabs **Reservation Information → Environment Details**. The account is
 already provisioned. Do not use an example password or your OCI login password.
 If the assigned user is not PEAKGEAR_USER, ask the instructor before continuing.
 
-Obtain the database-specific HTTPS origin from the reserved database's
-Database Actions URL, as described in Lab 2, Task 3. No ADMIN login or SQL lookup
-is required. Do not use localhost:8000, datastudio.oracle.com, or the Operations
-listener as the MCP connection URL.
+Obtain the database-specific HTTPS origin with the read-only SQL query in
+Lab 3, Task 1. Run it in Data Studio while connected to your assigned database
+as PEAKGEAR_USER. If access is denied or no URL is returned, ask the instructor;
+do not grant privileges or switch to ADMIN. Do not use localhost:8000,
+datastudio.oracle.com, or the Operations listener as the MCP connection URL.
 
 ## Prepared Operations database link
 

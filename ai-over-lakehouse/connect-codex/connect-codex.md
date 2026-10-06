@@ -1,4 +1,4 @@
-# Lab 4: Connect Codex and ask the raw-data question
+# Lab 3: Connect Codex and ask the raw-data question
 
 Estimated Time: 8 minutes
 
@@ -20,24 +20,52 @@ In this lab, you will:
 
 ### Prerequisites
 
-* Labs 2 and 3 are complete.
+* Labs 1 and 2 are complete.
 * Codex Desktop is installed and signed in.
-* You have the database-specific URL copied in Lab 2 and the **Database User**
-  and **Database Password** from your active LiveLabs **Environment Details**.
+* Data Studio SQL Worksheet is connected to your reservation as
+  PEAKGEAR&#95;USER. Keep LiveLabs **Environment Details** open for the Database
+  Password.
 
 ## Task 1: Set up LiveLab MCP
 
-1. **Download the Starter Kit.** Click
+1. **Obtain your AI Lakehouse URL.** In the connected Data Studio **SQL
+   Worksheet** as PEAKGEAR&#95;USER, run:
+
+~~~sql
+<copy>
+SELECT 'https://' ||
+       LOWER(REPLACE(p.name, '_', '-')) || '.' ||
+       REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
+         AS adp_url
+FROM v$pdbs p
+CROSS JOIN JSON_TABLE(
+  p.cloud_identity,
+  '$' COLUMNS (
+    public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
+  )
+) j
+WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
+</copy>
+~~~
+
+   Copy the HTTPS value returned as **ADP&#95;URL**. This is the base URL for
+   your assigned AI Lakehouse database. Run it in **Data Studio**, not Terminal,
+   and keep Data Studio connected to your reserved database. The reservation
+   must permit this read-only lookup for PEAKGEAR&#95;USER. If it reports an
+   access error or returns no URL, stop and contact the instructor; do not
+   grant privileges or switch to ADMIN.
+
+2. **Download the Starter Kit.** Click
    <a href="../downloads/peakgear-livelab-starter-kit.zip" download="peakgear-livelab-starter-kit.zip"><strong>Download Here — PeakGear LiveLab Starter Kit (.zip)</strong></a>.
    Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP;
    you will unpack it in Terminal. If the browser adds `(1)` or another suffix,
    rename the downloaded file to the exact name above before continuing.
    There is only one Starter Kit.
 
-2. **Open Terminal.** Press **Command-Space**, type **Terminal**, and press
+3. **Open Terminal.** Press **Command-Space**, type **Terminal**, and press
    **Return**. Keep this Terminal window open for the following steps.
 
-3. **Unpack the ZIP and prepare the project folder.** Copy this entire block
+4. **Unpack the ZIP and prepare the project folder.** Copy this entire block
    into Terminal using **Copy**, then press **Return**:
 
 ~~~sh
@@ -52,16 +80,6 @@ cd "$PEAKGEAR_KIT_DIR/starter-kit"
 
    You are now in the extracted `starter-kit` folder. A fresh extraction keeps
    older downloaded copies unchanged.
-
-4. **Have the database-specific URL ready before running setup.** Use the
-   HTTPS origin copied in **Lab 2, Task 3** from your assigned database's
-   Database Actions URL. It must end in **oraclecloudapps.com**, without an
-   `/ords/...` path. If you did not copy it yet, complete that task now.
-
-   Keep your LiveLabs **Reservation Information → Environment Details** open
-   for the **Database User** and **Database Password**. No ADMIN login or SQL
-   lookup is needed. Do not use the OCI login password, a URL from a screenshot,
-   datastudio.oracle.com, localhost:8000, or the Operations database listener.
 
 5. **Run setup.** Return to the same Terminal window. Paste this command and
    press **Return**:
@@ -79,7 +97,7 @@ zsh ./01-setup-peakgear-mcp.command
 
    | Prompt | What to do |
    |---|---|
-   | Lab Data Studio URL | Paste the actual database-specific HTTPS origin copied in Lab 2, then press Return. Do not use localhost:8000. |
+   | Lab Data Studio URL | Paste the ADP&#95;URL result copied in step 1, then press Return. Do not use localhost:8000. |
    | Password for PEAKGEAR&#95;USER | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while you type or paste; this is normal. |
    | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 3. |
    | Success / Press Return to close this window | Confirm the displayed URL and PEAKGEAR&#95;USER, then press Return. |

@@ -6,6 +6,6 @@ client ID, client secret, and passwords. A separate participant handout is not
 required for these values.
 
 Use Database User and Database Password from your own LiveLabs Reservation
-Information → Environment Details. Lab 2 explains how to copy the assigned
-database's Database Actions origin for MCP without an ADMIN login. This
-compatibility file keeps older links working.
+Information → Environment Details. Lab 3, Task 1 explains how to obtain the
+assigned database's MCP URL with a read-only SQL query. This compatibility
+file keeps older links working.

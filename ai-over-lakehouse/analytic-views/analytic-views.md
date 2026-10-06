@@ -1,4 +1,4 @@
-# Lab 7: Create Analytic Views with Codex
+# Lab 6: Create Analytic Views with Codex
 
 Estimated Time: 15 minutes
 
@@ -24,7 +24,7 @@ In this lab, you will:
 
 ## Task 1: Ask Codex to build the model
 
-Complete Lab 6 first. All three view contracts must already be saved in Lab 5;
+Complete Lab 5 first. All three view contracts must already be saved in Lab 4;
 this lab does not repeat AI Enrichment or create an AI profile.
 
 In the existing Codex task, click **Copy** in the upper-right corner of the
@@ -46,7 +46,7 @@ objects that it needs, creates both Analytic Views, and validates that the
 views can be queried. It should stop and report a specific missing input if it
 cannot create a hierarchy or shared dimension.
 
-The PEAKGEAR&#95;USER-only boundary established in Lab 4 still applies. Use the
+The PEAKGEAR&#95;USER-only boundary established in Lab 3 still applies. Use the
 object names reported by Codex; the participant does not have to prescribe them.
 
 If the MCP build capability cannot express a required shared dimension or

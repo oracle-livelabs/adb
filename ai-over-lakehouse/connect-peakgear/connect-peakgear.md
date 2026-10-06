@@ -1,4 +1,4 @@
-# Lab 2: Connect to your LiveLabs database
+# Lab 1: Sign in as PEAKGEAR&#95;USER
 
 Estimated Time: 5 minutes
 
@@ -6,7 +6,7 @@ Estimated Time: 5 minutes
 
 Your LiveLabs reservation already includes a prepared database, a participant
 account, an Operations database link, and an AI profile. Start here: there is
-no Lab 1 or participant ADMIN setup. Do not create a user, grant permissions,
+no participant ADMIN setup. Do not create a user, grant permissions,
 create a database link, or create an AI profile.
 
 Use the values from **your own active reservation**, not the example values
@@ -16,14 +16,13 @@ in the screenshots. OCI sign-in and database sign-in use different credentials.
 
 In this lab, you will:
 
-* find your assigned environment and credentials in LiveLabs;
-* connect Data Studio to your prepared database; and
-* obtain the database-specific URL for MCP setup in Lab 4.
+* find your assigned environment and credentials in LiveLabs; and
+* connect Data Studio to your prepared database as PEAKGEAR&#95;USER.
 
 ### Prerequisites
 
 * An active LiveLabs reservation with a ready environment.
-* Codex Desktop installed and signed in before starting Lab 4.
+* Codex Desktop installed and signed in before starting Lab 3.
 * A Mac with Terminal for the supplied Starter Kit.
 
 ## Task 1: Find your reservation details
@@ -49,7 +48,7 @@ In this lab, you will:
    | Database Name | Select your reserved database, not another participant's database. |
    | Database User and Database Password | Connect to the database in Data Studio and configure MCP. Copy both from Environment Details. |
    | AI Profile Name | Identify the profile already prepared for AI Enrichment. Do not create another profile. |
-   | Operations Database Link | Identify the prepared link used to read operational returns in Lab 3. |
+   | Operations Database Link | Identify the prepared link used to read operational returns in Lab 2. |
 
    The current workshop expects Database User **PEAKGEAR&#95;USER** and
    Operations Database Link **PEAKGEAR&#95;OPERATIONS&#95;LINK**. If your
@@ -88,35 +87,11 @@ FROM dual;
    reservation. The general **SETUP NEEDED** badge can refer to optional OCI
    workflows and is not a request to repeat provisioning.
 
-## Task 3: Copy the database-specific URL for MCP
-
-1. For the same assigned database, open **Database Actions** from its OCI
-   database details page. You can reach that page with **Open in OCI Console**
-   from the database's Actions menu in Data Studio, or use **Launch OCI** from
-   LiveLabs and locate the reserved database.
-2. Open its SQL workspace. If prompted for database sign-in, use the
-   **Database User** and **Database Password** from Environment Details.
-3. Copy the URL from the browser address bar. For MCP, keep only the HTTPS
-   origin ending in **oraclecloudapps.com**, without the path, query, or fragment.
-
-   For example, if the browser shows
-   **https&#58;//your-assigned-host.oraclecloudapps.com/ords/...**, the MCP URL is
-   **https&#58;//your-assigned-host.oraclecloudapps.com**. This is only an example:
-   copy the actual host for your reservation. Do not construct it from the
-   Database Name, and do not use **datastudio.oracle.com**, **localhost:8000**,
-   the OCI Console URL, or the Operations database listener.
-
-4. Keep that database-specific URL and your reservation's Database Password
-   ready for Lab 4. Return to Data Studio as the participant database user.
-
-   No ADMIN login or system-view SQL is required. If you cannot open Database
-   Actions or obtain the assigned URL, ask the instructor before running setup.
-
 ### Checkpoint
 
-Your connected database matches the reservation, the session is
-PEAKGEAR&#95;USER, and you have the actual database-specific URL for Lab 4.
-Keep Reservation Information open for its database password and profile name.
+Your connected database matches the reservation and the session is
+PEAKGEAR&#95;USER. Keep Reservation Information open for your database password
+and profile name.
 
 ## Learn More
 

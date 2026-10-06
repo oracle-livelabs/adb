@@ -22,28 +22,28 @@ is added to the package.
 
 | Source upload | Published file | Lab | Visible state |
 |---|---|---:|---|
-| 1.1 | connect-sources/images/azure-credential-start.png | 3 | Database Settings, Credentials, Create credential |
-| 1.2 | connect-sources/images/create-azure-storage-credential.png | 3 | Azure storage credential, password masked |
-| 2.1 | connect-sources/images/add-iceberg-catalog.png | 3 | Catalog Add menu and Iceberg catalog choice |
-| 2.2 | connect-sources/images/mount-iceberg-catalog.png | 3 | Unity mount form, approved workspace endpoint visible |
-| 2.3 | connect-sources/images/create-iceberg-catalog-credential.png | 3 | Iceberg OAuth credential, approved endpoint and client ID visible, UI password field masked |
-| 3 | connect-sources/images/connected-iceberg-tables.png | 3 | Mounted catalog exposes the two Iceberg tables |
-| Reservation Information | connect-peakgear/images/livelabs-reservation-information.png | 2 | OCI Login Credentials with UI-masked password, Launch OCI, tenancy, region, and compartment; example reservation only |
-| Environment Details | connect-peakgear/images/livelabs-environment-details.png | 2 | Password-redacted illustration of assigned database user, name, profile, and Operations link |
-| 6.1 | ai-enrichment/images/ai-enrichment-entry.png | 5 | View Overview and AI Enrichment entry point |
-| 6.2 | ai-enrichment/images/ai-enrichment-review.png | 5 | AI Enrichment review form before Save |
-| 8 | connect-codex/images/raw-question.png | 4 | Controlled stop before the Digital Intent contract is saved |
-| 9 | ai-enrichment/images/same-question-after-enrichment.png | 5 | Same question after the annotation-backed contract |
-| 11 | analytic-views/images/final-governed-answer.png | 7 | Governed category recommendation and drill-down |
+| 1.1 | connect-sources/images/azure-credential-start.png | 2 | Database Settings, Credentials, Create credential |
+| 1.2 | connect-sources/images/create-azure-storage-credential.png | 2 | Azure storage credential, password masked |
+| 2.1 | connect-sources/images/add-iceberg-catalog.png | 2 | Catalog Add menu and Iceberg catalog choice |
+| 2.2 | connect-sources/images/mount-iceberg-catalog.png | 2 | Unity mount form, approved workspace endpoint visible |
+| 2.3 | connect-sources/images/create-iceberg-catalog-credential.png | 2 | Iceberg OAuth credential, approved endpoint and client ID visible, UI password field masked |
+| 3 | connect-sources/images/connected-iceberg-tables.png | 2 | Mounted catalog exposes the two Iceberg tables |
+| Reservation Information | connect-peakgear/images/livelabs-reservation-information.png | 1 | OCI Login Credentials with UI-masked password, Launch OCI, tenancy, region, and compartment; example reservation only |
+| Environment Details | connect-peakgear/images/livelabs-environment-details.png | 1 | Password-redacted illustration of assigned database user, name, profile, and Operations link |
+| 6.1 | ai-enrichment/images/ai-enrichment-entry.png | 4 | View Overview and AI Enrichment entry point |
+| 6.2 | ai-enrichment/images/ai-enrichment-review.png | 4 | AI Enrichment review form before Save |
+| 8 | connect-codex/images/raw-question.png | 3 | Controlled stop before the Digital Intent contract is saved |
+| 9 | ai-enrichment/images/same-question-after-enrichment.png | 4 | Same question after the annotation-backed contract |
+| 11 | analytic-views/images/final-governed-answer.png | 6 | Governed category recommendation and drill-down |
 
 ## Still needed
 
 | File | Lab | Required visible state |
 |---|---:|---|
-| connect-sources/images/lake-cache-policy.png | 3 | SQL Worksheet cache inspection for both mounted Iceberg tables |
-| ai-enrichment/images/ai-enrichment-saved.png | 5 | Catalog Overview after the reviewed Description and Tags are saved |
-| governed-question/images/governed-model-gap.png | 6 | Codex names time, hierarchy, and aggregation requirements without recommending |
-| analytic-views/images/codex-builds-av.png | 7 | Codex creates and validates both Analytic Views |
+| connect-sources/images/lake-cache-policy.png | 2 | SQL Worksheet cache inspection for both mounted Iceberg tables |
+| ai-enrichment/images/ai-enrichment-saved.png | 4 | Catalog Overview after the reviewed Description and Tags are saved |
+| governed-question/images/governed-model-gap.png | 5 | Codex names time, hierarchy, and aggregation requirements without recommending |
+| analytic-views/images/codex-builds-av.png | 6 | Codex creates and validates both Analytic Views |
 
 ## Publication checks
 

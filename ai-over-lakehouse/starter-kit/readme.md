@@ -4,8 +4,9 @@
 
 * Codex Desktop installed and signed in.
 * Internet access for the one-time package installation.
-* The actual database-specific HTTPS origin copied from Database Actions in
-  **Lab 2, Task 3**. No ADMIN sign-in or SQL lookup is required.
+* The actual ADP_URL returned by the read-only SQL query in **Lab 3, Task 1**,
+  run as PEAKGEAR_USER in Data Studio. The reservation provider must validate
+  access before release; if it fails, stop and contact the instructor.
 * **Database User** and **Database Password** from LiveLabs **Reservation
   Information → Environment Details**. This kit expects PEAKGEAR_USER.
 
@@ -18,7 +19,7 @@ The shared event values are intentionally included in the workshop and in
 
 ## Do this once
 
-1. In **Lab 4**, click **Download Here — PeakGear LiveLab Starter Kit (.zip)**.
+1. In **Lab 3**, click **Download Here — PeakGear LiveLab Starter Kit (.zip)**.
    Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP.
    If the browser adds `(1)` or another suffix, rename the downloaded file to
    the exact name above before continuing.
@@ -40,11 +41,11 @@ The shared event values are intentionally included in the workshop and in
    This extracts a fresh copy without changing earlier downloads.
 
 4. **Have the database-specific URL ready before running setup.** Use the
-   origin copied in **Lab 2, Task 3**. From your assigned database's Database
-   Actions URL, keep only `https://<actual-host>.oraclecloudapps.com`, without
-   `/ords/...`, a query, or a fragment. Use the actual reserved host, not this
-   example, `datastudio.oracle.com`, localhost:8000, the OCI Console URL, or the
-   Operations listener. Do not construct the host from the Database Name.
+   ADP_URL result from the SQL query in **Lab 3, Task 1**. Run the query in
+   Data Studio as PEAKGEAR_USER and copy its HTTPS result exactly. Do not use
+   `datastudio.oracle.com`, localhost:8000, the OCI Console URL, or the
+   Operations listener. If the query reports an access error or returns no
+   URL, stop and contact the instructor; do not switch to ADMIN.
 
    Keep LiveLabs **Reservation Information → Environment Details** open for
    the database password. No ADMIN sign-in is needed. If you cannot obtain the
@@ -63,7 +64,7 @@ The shared event values are intentionally included in the workshop and in
 
    | Prompt | Action |
    |---|---|
-   | Lab Data Studio URL | Paste the actual database-specific HTTPS origin copied in Lab 2, then press Return. Never use localhost:8000. |
+   | Lab Data Studio URL | Paste the ADP_URL result from Lab 3, Task 1, then press Return. Never use localhost:8000. |
    | PEAKGEAR_USER password | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while typing or pasting. |
    | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. |
    | Success / Press Return to close this window | Check the displayed URL and PEAKGEAR_USER, then press Return. |
@@ -80,7 +81,7 @@ The shared event values are intentionally included in the workshop and in
    Click **Trust** if prompted.
 
 8. Create one new Codex task in that project. LiveLab starts automatically for
-   the new task. Continue with the Lab 4 connection checkpoint.
+   the new task. Continue with the Lab 3 connection checkpoint.
 
 LiveLab always connects as PEAKGEAR_USER. The word **admin** in the local MCP
 configuration identifies an MCP tool profile required to build Analytic Views;
@@ -126,8 +127,9 @@ You do not need to uninstall MCP. Before replacing its connection:
 
 1. Open the installed management script above and choose **3 — Stop PeakGear
    LiveLab only**. Do not choose an ALL-MCP option.
-2. Obtain the new database-specific URL and Database Password from the new
-   reservation, following Lab 2.
+2. Obtain the new database-specific ADP_URL by running the query in Lab 3,
+   Task 1 as PEAKGEAR_USER, and copy the Database Password from the new
+   reservation's Environment Details.
 3. Download the current Starter Kit and run `01-setup-peakgear-mcp.command`
    from its extracted folder. This replaces the local LiveLab connection and
    refreshes the installed supporting files; it does not erase database objects.

@@ -2,12 +2,12 @@
 
 Estimated Time: 60 minutes, plus a 15-minute troubleshooting buffer.
 
-This is a six-module Oracle LiveLabs workshop package, numbered **Labs 2–7**.
+This is a six-module Oracle LiveLabs workshop package, numbered **Labs 1–6**.
 Participants begin with an already provisioned reservation, use its OCI and
 database credentials to connect Data Studio, connect real Iceberg and Operations
 data, and then use Codex with Oracle Data Studio MCP. The same business question
 becomes more useful as its governed context improves. There is no participant
-ADMIN setup or Lab 1.
+ADMIN setup.
 
 ## Start here
 
@@ -21,23 +21,26 @@ ADMIN setup or Lab 1.
 * Optional source-connection SQL: [scripts/01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
 * Participant Codex package: [starter-kit](../starter-kit/).
 
-Lab 4 provides one Starter Kit download and an explicit Terminal sequence:
-download, open Terminal, extract the ZIP, prepare the project folder, have the
-database-specific Database Actions origin from Lab 2 ready, run setup, answer
-its prompts with the reservation's Database Password, open the project in Codex,
-and create a fresh task. The URL is obtained before running
+Lab 3 Task 1 provides the read-only SQL to obtain the database-specific ADP_URL
+as PEAKGEAR_USER in Data Studio. The reservation provider must validate access
+to this lookup before release; participants stop and contact the instructor if
+it fails. The lab then provides one Starter Kit download and an explicit
+Terminal sequence: download, open Terminal, extract the ZIP, prepare the project
+folder, run setup, answer its prompts with ADP_URL and the reservation's
+Database Password, open the project in Codex, and create a fresh task. The URL
+is obtained before running
 01-setup-peakgear-mcp.command. The ZIP README follows the same sequence. No
 separate local-event kit is required.
 
 The reservation already provides the participant user and grants, ORDS access,
 network ACL, Operations database link, and AI profile. Participants do not
-create or change these. Lab 2 separates OCI Login Credentials from Environment
+create or change these. Lab 1 separates OCI Login Credentials from Environment
 Details and includes two illustrative reservation screenshots; the database
 password is redacted. Values from the learner's own reservation are authoritative.
 
-Lab 5 is the only learner module that runs AI Enrichment. It reviews and saves
+Lab 4 is the only learner module that runs AI Enrichment. It reviews and saves
 the descriptions and tags for digital interactions, the product catalog, and
-operational returns. Lab 6 reuses those annotations to ask the harder business
+operational returns. Lab 5 reuses those annotations to ask the harder business
 question and identify the governed-model gap; it does not repeat enrichment.
 
 ## Local preview
@@ -79,16 +82,18 @@ the server was started from the wrong directory.
 
 The event owner explicitly approved including the supplied shared passwords,
 Azure storage password, Databricks client ID, client secret, and endpoints in
-this one-off workshop package. Lab 3 source-credential and mount steps are ready
+this one-off workshop package. Lab 2 source-credential and mount steps are ready
 for copy/paste; no private handout is required for these shared values. The
 participant database password is instead assigned per reservation and must be
 copied from LiveLabs **Environment Details**; it is not published in this package.
 
-Lab 2 obtains the actual database-specific HTTPS origin from Database Actions,
-without an ADMIN login. Do not substitute the Operations database listener or
-localhost preview URL. ADMIN login, reservation passwords, personal credentials,
-and OCI API private keys are not part of the approved published values. Use the
-shared source credentials only for the event and retire them when it ends.
+Lab 3 Task 1 obtains the actual database-specific HTTPS origin through the
+provided read-only SQL query, without an ADMIN login. The reservation provider
+must verify PEAKGEAR_USER can run it before release. Do not substitute the
+Operations database listener or localhost preview URL. ADMIN login, reservation
+passwords, personal credentials, and OCI API private keys are not part of the
+approved published values. Use the shared source credentials only for the event
+and retire them when it ends.
 
 ## Status
 

@@ -1,10 +1,10 @@
-# Lab 6: Identify the governed-model gap
+# Lab 5: Identify the governed-model gap
 
 Estimated Time: 5 minutes
 
 ## Introduction
 
-Lab 5 saved the reviewed descriptions and tags for all three raw views. Reuse
+Lab 4 saved the reviewed descriptions and tags for all three raw views. Reuse
 those annotations here; do not run AI Enrichment again. The next question
 combines digital behavior, a product hierarchy, and operational returns. A
 one-off join would be technically possible but would not be a shared,
@@ -14,12 +14,12 @@ reviewable, reusable business model.
 
 In this lab, you will:
 
-* ask a harder question using the source contracts already saved in Lab 5; and
+* ask a harder question using the source contracts already saved in Lab 4; and
 * see why a cross-source recommendation needs Analytic Views.
 
 ### Prerequisites
 
-Complete Lab 5, including the saved descriptions and tags for
+Complete Lab 4, including the saved descriptions and tags for
 LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V, LAB&#95;PRODUCTS&#95;RAW&#95;V, and LAB&#95;RETURNS&#95;RAW&#95;V.
 Keep the same Codex task and LiveLab MCP connection open.
 
@@ -54,9 +54,9 @@ instead of making an unreviewed recommendation from ad-hoc SQL.
 
 ### Checkpoint
 
-Codex has reused the Data Studio metadata saved in Lab 5, identified the
+Codex has reused the Data Studio metadata saved in Lab 4, identified the
 governed-model requirements, and has not invented a recommendation. Continue
-to Lab 7 to create the Analytic Views with Codex.
+to Lab 6 to create the Analytic Views with Codex.
 
 ## Learn More
 

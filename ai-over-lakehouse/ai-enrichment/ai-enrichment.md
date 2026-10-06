@@ -1,4 +1,4 @@
-# Lab 5: Add business meaning with AI Enrichment
+# Lab 4: Add business meaning with AI Enrichment
 
 Estimated Time: 12 minutes
 
@@ -9,8 +9,8 @@ and saves the business contract. Data Studio persists the reviewed text as
 native database annotations. In this lab, you enrich all three raw views in
 one place: digital interactions, the product catalog, and operational returns.
 The saved contracts give Codex a reliable definition for the same simple
-question from Lab 4 and prepare the source context for the harder question in
-Lab 6. You will not repeat AI Enrichment in Lab 6.
+question from Lab 3 and prepare the source context for the harder question in
+Lab 5. You will not repeat AI Enrichment in Lab 5.
 
 ### Objectives
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 ## Task 1: Open AI Enrichment
 
-Continue after Lab 4's connection checkpoint and raw-question stop. Keep the
+Continue after Lab 3's connection checkpoint and raw-question stop. Keep the
 same Codex task open while editing the metadata in Data Studio.
 
 The default AI profile is already prepared. Do **not** create, select, edit, or
@@ -157,7 +157,7 @@ Also check the product-name and join-key column descriptions before continuing.
 
 ## Task 4: Repeat the same question
 
-In the same Codex task, ask exactly the same question from Lab 4:
+In the same Codex task, ask exactly the same question from Lab 3:
 
 ~~~text
 <copy>
@@ -173,7 +173,7 @@ metric, time window, or result grain.
 The current Starter Kit includes that safe label lookup. If an older installed
 kit still returns only IDs, download the current kit, rerun its setup with this
 reservation's URL and Database Password, and create a fresh Codex task with the
-Lab 4 boundary. Do not create Analytic Views early just to display product names.
+Lab 3 boundary. Do not create Analytic Views early just to display product names.
 
 The words in the business question did not change. The answer improved because
 the definition, time period, and result grain are now saved in Data Studio.
@@ -184,7 +184,7 @@ the definition, time period, and result grain are now saved in Data Studio.
 
 All three raw views have reviewed, saved `DESCRIPTION` and `TAGS` annotations,
 and Codex has answered the same question with the defined metric, time window,
-and product grain. Lab 6 reuses these annotations; it does not run AI Enrichment
+and product grain. Lab 5 reuses these annotations; it does not run AI Enrichment
 again.
 
 ## Learn More

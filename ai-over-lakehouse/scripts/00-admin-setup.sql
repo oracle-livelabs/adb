@@ -116,10 +116,9 @@ END;
 SELECT COUNT(*) AS operational_return_events
 FROM customer_return_events@peakgear_operations_link;
 
--- 8. Produce the only non-secret connection artifact for the participant.
--- Run as ADMIN in Data Studio SQL Worksheet and save the full ADP_URL result.
--- Lab 4 repeats this read-only query before 01-setup-peakgear-mcp.command.
--- Obtain the URL before starting that script, then sign in as PEAKGEAR_USER.
+-- 8. Legacy provider-only URL lookup; not a learner task.
+-- Learners run this read-only URL query in Lab 3, Task 1 as PEAKGEAR_USER.
+-- The provider must verify that the prepared reservation permits this lookup.
 SELECT 'https://' ||
        LOWER(REPLACE(p.name, '_', '-')) || '.' ||
        REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)

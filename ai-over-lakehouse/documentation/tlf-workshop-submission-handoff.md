@@ -159,7 +159,9 @@ manual MCP configuration is not required.
 * An active, ready LiveLabs reservation with OCI Login Credentials, Tenancy
   Information, and Environment Details. Database User and Database Password
   come from Environment Details, not screenshots or OCI Login Credentials.
-* The database-specific HTTPS origin obtained from Database Actions in Lab 2.
+* The database-specific ADP_URL obtained by running the read-only query in
+  Lab 3, Task 1 as PEAKGEAR_USER in Data Studio. The provider validates access
+  before release.
 * The shared [Event lab values](../assets/event-lab-values.md). Source endpoints,
   Azure storage password, Databricks client ID, client secret, and the prepared
   Operations link name are printed in the workshop for copy/paste.
@@ -187,19 +189,20 @@ reservation is present; this is not a profile-configuration task.
 
 This is the current hands-on boundary:
 
-1. Start at Lab 2 and read their own LiveLabs Reservation Information,
+1. Start at Lab 1 and read their own LiveLabs Reservation Information,
    distinguishing OCI login from database login.
-2. Connect Data Studio to the assigned database with Environment Details,
-   verify the participant identity, and copy its Database Actions HTTPS origin.
+2. Connect Data Studio to the assigned database with Environment Details and
+   verify the participant identity.
 3. Use Data Studio UI to create the Azure storage credential and Databricks
    OAuth credential.
 4. Use Data Studio UI to mount the Databricks Unity/Iceberg catalog.
 5. Add Lake Cache policies for both mounted Iceberg tables.
 6. Create three user-owned raw views over products, digital intent, and
    returns.
-7. In Lab 4, download the single Starter Kit and configure the project-scoped
-   LiveLab MCP connection using the URL from Lab 2 and the reservation's
-   Database Password with 01-setup-peakgear-mcp.command. No ADMIN login is needed.
+7. In Lab 3, obtain ADP_URL with the provided SQL query, then download the
+   single Starter Kit and configure the project-scoped LiveLab MCP connection
+   using ADP_URL and the reservation's Database Password. No ADMIN login is
+   needed.
 8. Ask a simple raw-data question and observe a controlled stop.
 9. Use Data Studio AI Enrichment to review and save descriptions and tags.
 10. Repeat the same question and observe the improved answer.
@@ -221,7 +224,7 @@ This is the current hands-on boundary:
 * The source datasets are populated.
 
 These are provider responsibilities completed before the reservation is ready.
-There is no learner Lab 1 or ADMIN setup. Repair provisioning failures rather
+There is no learner ADMIN setup. Repair provisioning failures rather
 than asking participants to repeat administration steps.
 
 ## Learning objectives
@@ -246,17 +249,17 @@ After completing the workshop, participants can:
 
 | Lab | Title | Duration |
 |---:|---|---:|
-| 2 | Connect to your LiveLabs database | 5 minutes |
-| 3 | Connect real Oracle and Databricks sources | 15 minutes |
-| 4 | Connect Codex and ask the raw-data question | 8 minutes |
-| 5 | Add business meaning with Data Studio AI Enrichment | 12 minutes |
-| 6 | Identify the governed-model gap | 5 minutes |
-| 7 | Create Analytic Views with Codex and answer the question | 15 minutes |
+| 1 | Sign in as PEAKGEAR_USER | 5 minutes |
+| 2 | Connect real Oracle and Databricks sources | 15 minutes |
+| 3 | Connect Codex and ask the raw-data question | 8 minutes |
+| 4 | Add business meaning with Data Studio AI Enrichment | 12 minutes |
+| 5 | Identify the governed-model gap | 5 minutes |
+| 6 | Create Analytic Views with Codex and answer the question | 15 minutes |
 | Buffer | Troubleshooting and discussion | 15 minutes |
 | Total |  | 75 minutes |
 
-AI Enrichment is performed only in Lab 5, where participants review and save
-the descriptions and tags for all three raw views. Lab 6 reuses those saved
+AI Enrichment is performed only in Lab 4, where participants review and save
+the descriptions and tags for all three raw views. Lab 5 reuses those saved
 annotations for the harder question; it does not repeat enrichment.
 
 ## Business questions used in the workshop
@@ -354,7 +357,7 @@ The workshop is successful when:
 * The original Databricks screenshots show the approved endpoints and client
   ID. The UI still masks password fields; copy-ready secrets are in the text.
 * Do not add ADMIN login details, unrelated secrets, or OCI API private keys.
-* Do not publish reservation database or OCI passwords. The Lab 2 environment
+* Do not publish reservation database or OCI passwords. The Lab 1 environment
   screenshot is explicitly a password-redacted illustration; its other values
   are examples, not credentials that all participants should use.
 * The MCP launcher does not require the Azure storage password or Databricks
@@ -362,8 +365,9 @@ The workshop is successful when:
 * Codex connects as PEAKGEAR_USER, not ADMIN.
 * The public Operations database link is provisioned before the reservation is
   ready and consumed by the participant through bounded user-owned views.
-* Copy the assigned database's Database Actions HTTPS origin in Lab 2, without
-  an ADMIN login or system-view query.
+* Run the Lab 3 Task 1 ADP_URL lookup as PEAKGEAR_USER. Before release, the
+  provider validates that this read-only query succeeds; participants do not
+  switch to ADMIN if it fails.
   Review unrelated database names, compartments, and tenant labels before
   external publication. Retire the shared event credentials after the event.
 
@@ -371,7 +375,7 @@ The workshop is successful when:
 
 Completed:
 
-* Six learner modules, numbered Labs 2–7, and a sandbox manifest starting at Lab 2.
+* Six learner modules, numbered Labs 1–6, and a sandbox manifest starting at Lab 1.
 * Provider-only provisioning boundary; legacy operator SQL is not a learner task.
 * Event-values reference and SQL alternative to the Data Studio source mount.
 * Project-scoped Codex MCP starter kit.
@@ -431,7 +435,7 @@ When using this document to populate TLF:
    governed Analytic Views, and Codex through MCP.
 4. Do not add AI Profile creation to the participant flow. The default profile
    is preconfigured.
-5. Start at Lab 2 and preserve numbering 2–7. Never restore participant ADMIN
+5. Start at Lab 1 and preserve numbering 1–6. Never restore participant ADMIN
    setup or use example screenshot passwords for a live reservation.
 6. Do not replace Codex-created Analytic Views with learner copy-and-paste DDL
    unless the user explicitly chooses the fallback path.

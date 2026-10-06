@@ -26,7 +26,7 @@ echo
 echo "This will install the local Data Studio MCP package."
 echo "No macOS administrator password is required."
 echo
-echo "Before running setup, copy your assigned database's Database Actions URL in Lab 2."
+echo "Before running setup, obtain ADP_URL with the SQL in Lab 3, Task 1."
 echo "Keep only its HTTPS origin ending in oraclecloudapps.com, without /ords/... ."
 echo "Keep LiveLabs Reservation Information -> Environment Details open for Database Password."
 echo "If you do not have the URL yet, press Control-C and complete that step first."
@@ -56,7 +56,7 @@ if [[ ! -x "$UV_BIN_DIR/oracle-data-studio-config" ]]; then
 fi
 
 echo
-echo "Paste the database-specific HTTPS origin copied in Lab 2, then press Return."
+echo "Paste the ADP_URL result copied in Lab 3, Task 1, then press Return."
 echo "Example: https://example.adb.us-ashburn-1.oraclecloudapps.com"
 read "ADP_URL?Lab Data Studio URL: "
 

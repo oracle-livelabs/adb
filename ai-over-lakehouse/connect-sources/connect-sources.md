@@ -1,4 +1,4 @@
-# Lab 3: Connect real sources
+# Lab 2: Connect real sources
 
 Estimated Time: 15 minutes
 

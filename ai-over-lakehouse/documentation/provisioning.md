@@ -1,6 +1,6 @@
 # Provider-only provisioning boundary
 
-The learner workshop starts at **Lab 2**. LiveLabs provisioning must complete
+The learner workshop starts at **Lab 1**. LiveLabs provisioning must complete
 before the reservation is ready. Participants do not connect as ADMIN.
 
 The environment provider prepares:
@@ -12,6 +12,14 @@ The environment provider prepares:
 * the public PEAKGEAR_OPERATIONS_LINK pointing to the event Operations source;
 * Resource Principal and IAM prerequisites; and
 * the Data Studio AI profile named in the reservation's Environment Details.
+
+Before release, validate the read-only ADP_URL lookup from Lab 3, Task 1 in a
+Data Studio SQL Worksheet connected as PEAKGEAR_USER. It reads the current
+PDB's name and public domain from V$PDBS.CLOUD_IDENTITY. If the query fails or
+returns no URL, repair and retest the reservation before participants begin.
+Do not ask participants to switch to ADMIN. Do not add a broad catalog-view
+grant as a workaround without confirming the minimum required privilege for
+the target environment.
 
 LiveLabs exposes OCI Login Credentials and Tenancy Information separately from
 Environment Details. Those details must include Database Name, Database User,

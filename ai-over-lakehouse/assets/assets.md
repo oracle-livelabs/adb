@@ -5,7 +5,7 @@ learner lab keeps its step-specific screenshots in its own `images/` folder.
 See [traceability.md](../documentation/traceability.md) for the capture queue and publication
 rules.
 
-Lab 2 includes LiveLabs Reservation Information examples. Its Environment
+Lab 1 includes LiveLabs Reservation Information examples. Its Environment
 Details image is a password-redacted illustration, not a live credential source.
 Participants always use their own reservation's values.
 
