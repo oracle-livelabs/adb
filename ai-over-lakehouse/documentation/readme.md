@@ -14,7 +14,9 @@ business question becomes more useful as its governed context improves.
 * TLF submission metadata and agent handoff: [tlf-workshop-submission-handoff.md](tlf-workshop-submission-handoff.md).
 * Release checks and runtime gates: [author-review.md](author-review.md).
 * Screenshot capture and provenance: [traceability.md](traceability.md).
-* Instructor SQL: [scripts/00-admin-setup.sql](../scripts/00-admin-setup.sql).
+* ADMIN SQL: [scripts/00-admin-setup.sql](../scripts/00-admin-setup.sql).
+* Copy-ready event values: [event-lab-values.md](../assets/event-lab-values.md).
+* Optional source-connection SQL: [scripts/01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
 * Participant Codex package: [starter-kit](../starter-kit/).
 
 The participant performs the `ADMIN` setup in Lab 1. The default AI profile
@@ -56,12 +58,20 @@ choose another port:
 The standard LiveLabs loader requires internet access. A `404` normally means
 the server was started from the wrong directory.
 
-## Publication boundary
+## Event values
 
-Do not commit passwords, SAS tokens, OAuth client secrets, private URLs, or
-screenshots that expose tenant identifiers without review. The workshop needs
-a private participant handout for lab-only credentials and the assigned
-database URL.
+The event owner explicitly approved including the supplied shared passwords,
+Azure storage password, Databricks client ID, client secret, and endpoints in
+this one-off workshop package. Lab 1 ADMIN SQL and Lab 3 UI steps are ready for
+copy/paste; no private handout is required for these values. The default password
+for a new PEAKGEAR_USER created in Lab 1 is Welcome123456. Existing accounts are
+not reset.
+
+The participant Data Studio URL must still be generated for the assigned
+database by the ADMIN query in Lab 1. Do not substitute the Operations database
+listener or localhost preview URL. ADMIN login, personal credentials, and OCI
+API private keys are not part of the approved published values. Use these shared
+credentials only for the event and retire them when it ends.
 
 ## Status
 
@@ -71,4 +81,4 @@ UI screenshot set remain release gates recorded in `author-review.md`.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

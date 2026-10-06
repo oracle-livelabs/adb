@@ -1,6 +1,7 @@
--- PeakGear LiveLab: instructor-only participant provisioning.
+-- PeakGear LiveLab: participant provisioning for the one-off event.
 -- Run in SQL Worksheet as ADMIN before any ACL, credential, mount, or Data Studio step.
--- Do not paste passwords, SAS tokens, OAuth secrets, or OCI API keys into this file.
+-- Event-owner-approved shared values are included for copy/paste.
+-- Use only in the assigned event database. This script does not reset existing users.
 
 -- 1. Check whether the participant schema already exists.
 SELECT username,
@@ -10,7 +11,7 @@ WHERE username = 'PEAKGEAR_USER';
 
 -- 2. Run this statement only when the query above returned no row.
 CREATE USER PEAKGEAR_USER
-  IDENTIFIED BY "<STRONG_LAB_PASSWORD>"
+  IDENTIFIED BY "Welcome123456"
   DEFAULT TABLESPACE DATA
   TEMPORARY TABLESPACE TEMP
   QUOTA 2000M ON DATA
@@ -92,7 +93,7 @@ BEGIN
   DBMS_CLOUD.CREATE_CREDENTIAL(
     credential_name => 'PEAKGEAR_OPS_CREDENTIAL',
     username        => 'PEAKGEAR_OPS',
-    password        => '<PEAKGEAR_OPS_PASSWORD>'
+    password        => 'Welcome123456'
   );
 END;
 /
@@ -100,9 +101,9 @@ END;
 BEGIN
   DBMS_CLOUD_ADMIN.CREATE_DATABASE_LINK(
     db_link_name    => 'PEAKGEAR_OPERATIONS_LINK',
-    hostname        => '<OPERATIONS_ADB_HOST>',
+    hostname        => 'adb.us-ashburn-1.oraclecloud.com',
     port            => 1522,
-    service_name    => '<OPERATIONS_SERVICE_NAME>',
+    service_name    => 'mqssyowmqvgac1y_operationalstore_low.adb.oraclecloud.com',
     credential_name => 'PEAKGEAR_OPS_CREDENTIAL',
     directory_name  => NULL,
     public_link     => TRUE
@@ -133,7 +134,7 @@ WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
 -- Generative AI and must not be granted to ADMIN by using CURRENT_USER.
 BEGIN
   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-    host        => '<DATABRICKS_WORKSPACE_HOST>',
+    host        => 'adb-2242907740736663.3.azuredatabricks.net',
     lower_port  => 443,
     upper_port  => 443,
     ace         => XS$ACE_TYPE(

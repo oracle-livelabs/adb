@@ -39,8 +39,10 @@ make the final drill-down reproducible.
 ## Workshop Prerequisites
 
 * An assigned Autonomous AI Database environment with lab-only `ADMIN` access.
-* A private handout containing the new `PEAKGEAR_USER` password, Operations
-  database password, Azure read-only SAS token, and Databricks OAuth values.
+* The shared [Event lab values](../assets/event-lab-values.md), included directly
+  in the workshop with the event owner's approval. They contain the new-user
+  password, Operations connection, Azure storage password, Databricks OAuth
+  values, and source endpoints; no separate handout is needed for those values.
 * An available Oracle Operations database that exposes
   `CUSTOMER_RETURN_EVENTS`.
 * A Databricks Unity Catalog endpoint with `ICEBERG.PRODUCTS` and
@@ -65,4 +67,4 @@ After completing this workshop, participants can:
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

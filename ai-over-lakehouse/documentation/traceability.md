@@ -5,12 +5,17 @@
 | Source | Use and boundary |
 |---|---|
 | PeakGear lab source files | Technical sequence, object names, SQL, MCP checkpoints, and runtime gates. |
+| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Azure storage password, Databricks OAuth values, catalog endpoint, and discovery/read calls. Adapted to keep the host ACL in ADMIN setup and the mount under PEAKGEAR_USER. |
 | Participant-authorized Data Studio and Codex sessions | UI screenshots captured during the working dry run. |
 | Official Oracle documentation | Public Learn More links and supported product behavior. |
 
-No password, SAS token, OAuth client secret, or source-data export is included
-in this package. Databricks endpoint and client-ID values have been redacted
-from the two credential/mount screenshots.
+The event owner approved including the shared lab passwords, Azure storage
+password, Databricks client ID, client secret, and source endpoints for
+copy/paste. See `assets/event-lab-values.md`. The two Databricks screenshots
+use the original uploaded images with their endpoint and client ID visible.
+Password fields remain masked by the authentic UI; complete values are printed
+in the instructions. No source-data export, ADMIN login, or OCI API private key
+is added to the package.
 
 ## Captured screenshots
 
@@ -19,8 +24,8 @@ from the two credential/mount screenshots.
 | 1.1 | connect-sources/images/azure-credential-start.png | 3 | Database Settings, Credentials, Create credential |
 | 1.2 | connect-sources/images/create-azure-storage-credential.png | 3 | Azure storage credential, password masked |
 | 2.1 | connect-sources/images/add-iceberg-catalog.png | 3 | Catalog Add menu and Iceberg catalog choice |
-| 2.2 | connect-sources/images/mount-iceberg-catalog.png | 3 | Unity mount form, workspace endpoint redacted |
-| 2.3 | connect-sources/images/create-iceberg-catalog-credential.png | 3 | Iceberg OAuth credential, endpoint and client ID redacted |
+| 2.2 | connect-sources/images/mount-iceberg-catalog.png | 3 | Unity mount form, approved workspace endpoint visible |
+| 2.3 | connect-sources/images/create-iceberg-catalog-credential.png | 3 | Iceberg OAuth credential, approved endpoint and client ID visible, UI password field masked |
 | 3 | connect-sources/images/connected-iceberg-tables.png | 3 | Mounted catalog exposes the two Iceberg tables |
 | 5 | connect-peakgear/images/default-ai-profile.png | 2 | Existing Data Studio NL2SQL profile with Resource Principal |
 | 6.1 | ai-enrichment/images/ai-enrichment-entry.png | 5 | View Overview and AI Enrichment entry point |
@@ -42,8 +47,9 @@ from the two credential/mount screenshots.
 
 * Screenshots are authentic dry-run evidence; they are not fabricated.
 * One image explains one action and preserves a useful header or breadcrumb.
-* Review database names, regions, compartments, tenant labels, and browser
-  identity before publishing externally.
+* The source endpoints and client ID are owner-approved event values. Review
+  unrelated database names, compartments, tenant labels, and browser identity
+  before publishing externally.
 * Each Markdown image has descriptive alt text.
 * Do not claim Lake Cache acceleration without a verified plan and runtime
   comparison.
@@ -51,4 +57,4 @@ from the two credential/mount screenshots.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

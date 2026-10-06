@@ -20,7 +20,13 @@ In this lab, you will:
 
 1. Sign out of the ADMIN Data Studio session.
 2. Open the Lab Data Studio URL copied in Lab 1.
-3. Sign in as PEAKGEAR&#95;USER with the private lab password.
+3. Sign in as PEAKGEAR&#95;USER. For a new account created in Lab 1, use:
+
+   ~~~text
+   Welcome123456
+   ~~~
+
+   An existing account keeps its current password; Lab 1 does not reset it.
 4. Open **SQL Worksheet**.
 
 Run:
@@ -59,4 +65,4 @@ You are working as PEAKGEAR&#95;USER in a new database session and can see
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

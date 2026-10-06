@@ -5,8 +5,9 @@ Estimated Time: 8 minutes
 ## Introduction
 
 Codex is connected through the project-scoped LiveLab MCP server. It is not
-given a database administrator account, a source-system secret, or access to
-other schemas. The first question is intentionally simple. The correct answer
+given a database administrator account. The MCP launcher does not need the
+Azure or Databricks secret: those are stored in database-owned credentials.
+The first question is intentionally simple. The correct answer
 is not a ranking: raw fields alone do not define what customer interest means.
 
 ### Objectives
@@ -30,15 +31,26 @@ In this lab, you will:
    Unzip `peakgear-livelab-starter-kit.zip`. Keep the extracted `starter-kit` folder intact.
 2. In the extracted `starter-kit` folder, double-click `01-setup-peakgear-mcp.command`.
 3. Paste the Lab Data Studio URL when asked.
-4. Enter the PEAKGEAR&#95;USER password at the hidden password prompt.
+4. Enter the PEAKGEAR&#95;USER password at the hidden password prompt. For a new
+   account created in Lab 1, copy:
+
+   ~~~text
+   Welcome123456
+   ~~~
+
+   If the account already existed, use its current password.
 5. Choose the current Codex project folder when Finder opens.
 6. When setup reports **Success**, open that project in Codex and click
    **Trust** if prompted.
 7. Create one new Codex task. Do not edit a Codex configuration file or add an
    MCP server manually.
 
-The setup stores the password in the local macOS Keychain. It does not put the
-password, an OAuth token, or a credential in a project file.
+The setup stores the connection password in the local macOS Keychain. It does
+not write that password or source tokens into the generated project
+configuration. The event values are intentionally documented in the workshop.
+
+For this localhost preview, download the updated local package:
+<a href="http://localhost:8000/downloads/peakgear-livelab-starter-kit.zip" download="peakgear-livelab-starter-kit.zip"><strong>Download Here — local event starter kit (.zip)</strong></a>.
 
 > `01-setup-peakgear-mcp.command` and `02-peakgear-livelab-admin.command` must remain together with the other files in the unzipped `starter-kit` folder. Always download the complete ZIP above.
 
@@ -111,4 +123,4 @@ for the raw question.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

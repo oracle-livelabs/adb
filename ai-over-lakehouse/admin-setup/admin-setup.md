@@ -23,8 +23,9 @@ In this lab, you will:
 ### Prerequisites
 
 * You are signed in to Oracle Data Studio as ADMIN.
-* You have the private lab handout with the lab-only participant password and
-  Operations password.
+* You have the assigned event database and its ADMIN sign-in.
+* The shared event values are included below and in
+  [Event lab values](../assets/event-lab-values.md).
 * The default AI profile is already configured by the lab environment. Do not
   create, edit, or validate an AI profile in this workshop.
 
@@ -35,17 +36,26 @@ In this lab, you will:
 2. Open [00-admin-setup.sql](../scripts/00-admin-setup.sql).
 3. Read the verification query before every create block. Run a create block
    only when its check shows that the object is absent.
-4. Replace the five placeholders supplied in the private handout:
-   STRONG&#95;LAB&#95;PASSWORD, PEAKGEAR&#95;OPS&#95;PASSWORD, OPERATIONS&#95;ADB&#95;HOST,
-   OPERATIONS&#95;SERVICE&#95;NAME, and DATABRICKS&#95;WORKSPACE&#95;HOST.
-5. Run the script in order.
+4. The script already contains the event values. Do not replace any placeholders.
+5. Run the script in order. A new PEAKGEAR&#95;USER account gets the password
+   shown below; an existing account keeps its current password.
+
+| Field | Event value |
+|---|---|
+| New PEAKGEAR&#95;USER password | Welcome123456 |
+| Operations username | PEAKGEAR&#95;OPS |
+| Operations password | Welcome123456 |
+| Operations hostname | adb.us-ashburn-1.oraclecloud.com |
+| Operations port | 1522 |
+| Operations service name | mqssyowmqvgac1y&#95;operationalstore&#95;low.adb.oraclecloud.com |
+| Databricks ACL host | adb-2242907740736663.3.azuredatabricks.net |
 
 The script performs four business outcomes:
 
 * PEAKGEAR&#95;USER gets only the privileges needed to own views and Analytic
   Views in this lab.
 * The shared PEAKGEAR&#95;OPERATIONS&#95;LINK lets the participant read operational
-  return events without receiving the Operations password.
+  return events without creating another Operations connection.
 * The ADP&#95;URL query returns the single non-secret URL that Codex needs later.
 * The Databricks network ACL is granted to the literal database principal
   PEAKGEAR&#95;USER. Never replace it with CURRENT&#95;USER while signed in as `ADMIN`.
@@ -60,9 +70,26 @@ SELECT COUNT(*) AS operational_return_events
 FROM customer_return_events@peakgear_operations_link;
 ~~~
 
-Copy the ADP&#95;URL result. It is the **Lab Data Studio URL**. Keep it available
-for Lab 4; it is safe to share with the participant. Do not share the
-Operations password, Azure SAS token, or Databricks OAuth secret.
+Still as ADMIN, run this copy-ready query:
+
+~~~sql
+SELECT 'https://' ||
+       LOWER(REPLACE(p.name, '_', '-')) || '.' ||
+       REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
+         AS adp_url
+FROM v$pdbs p
+CROSS JOIN JSON_TABLE(
+  p.cloud_identity,
+  '$' COLUMNS (
+    public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
+  )
+) j
+WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
+~~~
+
+Copy the ADP&#95;URL result. It is the **Lab Data Studio URL** used in Lab 2 and
+Lab 4. It is generated for your assigned database; localhost:8000 is only the
+workshop preview, not a database or MCP endpoint.
 
 ### Checkpoint
 
@@ -81,7 +108,7 @@ its privileges.
 
 <!-- Screenshot to insert after approved dry run: images/admin-setup-complete.png
      Alt text: SQL Worksheet shows successful PeakGear user and Operations-link
-     validation. Do not expose passwords or an unapproved tenant URL. -->
+     validation. Event values are owner-approved; do not include unrelated credentials. -->
 
 ## Learn More
 
@@ -90,4 +117,4 @@ its privileges.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

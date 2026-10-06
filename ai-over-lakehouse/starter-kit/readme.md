@@ -5,11 +5,14 @@
 * Codex Desktop installed and signed in.
 * Internet access for the one-time package installation.
 * The **Lab Data Studio URL** from Lab 1.
-* The PEAKGEAR_USER password from the private lab handout.
+* The PEAKGEAR_USER password. Lab 1 uses **Welcome123456** for a new account;
+  an existing account keeps its current password.
 
 You do not need Python, uv, Terminal commands, an MCP URL, or a TOML editor.
-The setup saves the database password in the macOS Keychain; it does not print
-or put the password in a script or configuration file.
+The setup saves the connection password in the macOS Keychain; it does not
+print the entered password or write it into the generated MCP configuration.
+The shared event values are intentionally included in the workshop and in
+[event-lab-values.md](event-lab-values.md) inside this kit.
 
 ## Do this once
 
@@ -18,8 +21,9 @@ or put the password in a script or configuration file.
    whether to open the file, click **Open**. If Gatekeeper blocks it,
    Control-click the file, choose **Open**, then click **Open** again.
 3. Paste the **Lab Data Studio URL** from Lab 1 and press Return.
-4. Enter the PEAKGEAR_USER password and press Return. Nothing is shown while
-   you type; that is expected.
+4. Enter **Welcome123456** for a new Lab 1 account, or the current password of
+   an existing PEAKGEAR_USER, and press Return. Nothing is shown while you type;
+   that is expected.
 5. When Finder asks for a folder, choose the Codex project in which you will
    run the workshop. The script adds LiveLab only to that project. It does not
    create a new project.

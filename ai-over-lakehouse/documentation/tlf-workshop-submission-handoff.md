@@ -105,8 +105,9 @@ The business question is:
   business metadata.
 * Persists reviewed descriptions and tags as native database annotations.
 * Uses Analytic Views to govern measures, hierarchies, grain, and drill-down.
-* Gives Codex task-oriented MCP access without exposing source credentials or
-  an administrator database account.
+* Gives Codex task-oriented MCP access as PEAKGEAR_USER, not an administrator
+  database account. Source credentials are stored in the database, not passed
+  as MCP launcher arguments.
 * Keeps the final answer reproducible and explicit about its limitations.
 * Introduces Lake Cache directly after the Iceberg mount while keeping
   performance claims evidence-based.
@@ -153,9 +154,13 @@ manual MCP configuration is not required.
 * Codex Desktop installed and signed in.
 * A modern browser.
 * Internet access.
-* Lab-only ADMIN and PEAKGEAR_USER credentials from the private handout.
+* The assigned database's ADMIN sign-in and the PEAKGEAR_USER password.
+  Lab 1 assigns Welcome123456 only when creating a new participant account;
+  an existing account keeps its current password.
 * The Lab Data Studio URL produced in Lab 1.
-* Azure read-only SAS and Databricks OAuth values from the private handout.
+* The shared [Event lab values](../assets/event-lab-values.md). Source endpoints,
+  Azure storage password, Databricks client ID, client secret, and Operations
+  connection values are printed in the workshop for copy/paste.
 
 ## Environment prerequisites
 
@@ -325,24 +330,30 @@ The workshop is successful when:
 * The lab does not grant DBA or broad ANY privileges to PEAKGEAR_USER.
 * The lab does not claim Lake Cache speedup without plan and runtime evidence.
 
-## Security and publication notes
+## Event values and publication notes
 
-* Real passwords, SAS tokens, OAuth client secrets, client IDs, tenant URLs,
-  and private endpoints must remain outside the public repository.
-* The public SQL and screenshots use placeholders or masked values.
-* Source credentials are never given to Codex.
+* The event owner approved publishing the shared values in
+  `assets/event-lab-values.md` for this one-off event. ADMIN SQL and participant
+  credential/mount steps use concrete values, not private-handout placeholders.
+* The original Databricks screenshots show the approved endpoints and client
+  ID. The UI still masks password fields; copy-ready secrets are in the text.
+* Do not add ADMIN login details, unrelated secrets, or OCI API private keys.
+* The MCP launcher does not require the Azure storage password or Databricks
+  client secret; it uses PEAKGEAR_USER to access the prepared database objects.
 * Codex connects as PEAKGEAR_USER, not ADMIN.
 * The public Operations database link is created by ADMIN and consumed by the
   participant through bounded user-owned views.
-* Review database names, regions, compartments, and tenant labels before
-  external publication.
+* Generate the participant Data Studio URL in Lab 1 for the assigned database.
+  Review unrelated database names, compartments, and tenant labels before
+  external publication. Retire the shared event credentials after the event.
 
 ## Current content status
 
 Completed:
 
 * Seven-module LiveLabs folder structure and sandbox manifest.
-* ADMIN setup script with public placeholders.
+* Copy-ready ADMIN setup script with event-owner-approved shared values.
+* Event-values reference and SQL alternative to the Data Studio source mount.
 * Project-scoped Codex MCP starter kit.
 * Data Studio credential, Unity mount, catalog, default-profile, and AI
   Enrichment screenshots.

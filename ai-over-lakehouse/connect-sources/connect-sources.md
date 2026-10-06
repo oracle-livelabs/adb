@@ -25,23 +25,45 @@ In this lab, you will:
 * prove access to the two connected sources; and
 * create the three raw business objects used by Codex.
 
-## Task 1: Create the two Databricks credentials in Data Studio
+## Task 1: Create the Azure storage credential in Data Studio
 
-Use **Databases** in the Data Studio navigation to open the credential
-experience. Create the following credentials with the values from the private
-lab handout:
+Open the connected database's **Settings** (gear icon), then select
+**Credentials**. This one-off event includes the shared values for copy/paste;
+no separate handout is needed. The complete reference is
+[Event lab values](../assets/event-lab-values.md).
 
 ![In Database Settings, select Credentials and click Create credential.](images/azure-credential-start.png)
 
 | Credential | Purpose | Value type |
 |---|---|---|
-| ADLS&#95;PEAKGEAR&#95;DATA | Read Iceberg files in Azure Blob Storage | Read-only Azure SAS |
+| ADLS&#95;PEAKGEAR&#95;DATA | Read Iceberg files in Azure Blob Storage | Event Azure storage password |
 | DBX&#95;PEAKGEAR&#95;OAUTH | Obtain renewable Unity Catalog access tokens | Databricks OAuth client |
 
-Keep the supplied names exactly. Review the form, then save each credential.
-The credentials are owned by PEAKGEAR&#95;USER. Do not create them as `ADMIN`.
+Click **Create credential** and enter:
+
+| Field | Value |
+|---|---|
+| Credential Name | ADLS&#95;PEAKGEAR&#95;DATA |
+| Description | Credential to access data in Azure Storage |
+| Credential type | Azure |
+| Username | livelab |
+
+Copy this into **Password**:
+
+~~~text
+tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q==
+~~~
+
+Save the credential. Keep the name exactly. Both source credentials must be
+owned by PEAKGEAR&#95;USER, not `ADMIN`. Create the OAuth credential in Task 2.
 
 ![Create the ADLS&#95;PEAKGEAR&#95;DATA Azure credential. The password field is masked.](images/create-azure-storage-credential.png)
+
+Storage path for this event:
+
+~~~text
+https://livelab.blob.core.windows.net/digital-demand/peakgear-managed/
+~~~
 
 ## Task 2: Mount the Databricks Unity Catalog
 
@@ -53,24 +75,63 @@ Enter:
 
 | Field | Value |
 |---|---|
-| Local catalog name | DBX&#95;UNITY&#95;PEAKGEAR |
-| Catalog type | Databricks Unity / Iceberg REST |
-| Catalog credential | DBX&#95;PEAKGEAR&#95;OAUTH |
-| Data storage credential | ADLS&#95;PEAKGEAR&#95;DATA |
-| Catalog endpoint | The Unity Iceberg REST endpoint from the private handout |
+| Catalog name | DBX&#95;UNITY&#95;PEAKGEAR |
+| Iceberg catalog type | Unity |
+| Iceberg catalog credentials | DBX&#95;PEAKGEAR&#95;OAUTH |
+| Bucket credentials | ADLS&#95;PEAKGEAR&#95;DATA |
+| Catalog endpoint | Copy the endpoint below |
 
-![Enter the local catalog name, select Unity, enter the endpoint, and select the Azure bucket credential. The workspace endpoint is intentionally redacted.](images/mount-iceberg-catalog.png)
+Copy this into **Iceberg catalog endpoint**:
+
+~~~text
+https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear
+~~~
+
+![Enter DBX&#95;UNITY&#95;PEAKGEAR, select Unity, paste the event endpoint, and select the Azure bucket credential.](images/mount-iceberg-catalog.png)
 
 When **Iceberg catalog credentials** is required, click the plus sign and
-create the OAuth credential with the values from the private handout.
+create the OAuth credential with these values:
 
-![Create DBX&#95;PEAKGEAR&#95;OAUTH. The workspace endpoint and client ID are redacted; the client secret remains masked.](images/create-iceberg-catalog-credential.png)
+| Field | Value |
+|---|---|
+| Credential Name | DBX&#95;PEAKGEAR&#95;OAUTH |
+| Description | Credential to authenticate into Unity |
+| Credential type | Iceberg OAuth2 |
+| Token scope | all-apis |
+| Token refresh rate in seconds | 3600 |
+
+**Token endpoint**:
+
+~~~text
+https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token
+~~~
+
+**Client ID**:
+
+~~~text
+5c47dc63-f693-4820-a40b-4b08c3709f34
+~~~
+
+**Client secret**:
+
+~~~text
+dose7b979ac313c1063af5d4cdf09b1ee8fb
+~~~
+
+![Create DBX&#95;PEAKGEAR&#95;OAUTH with the event token endpoint and client ID. The UI masks the client secret; its copy-ready value is above.](images/create-iceberg-catalog-credential.png)
 
 Return to the catalog form, select DBX&#95;PEAKGEAR&#95;OAUTH, save the mount, and
 refresh its catalog metadata. The catalog must expose the `ICEBERG` schema with
 `PRODUCTS` and DIGITAL&#95;CLICKSTREAM&#95;EVENTS.
 
 ![The successful DBX&#95;UNITY&#95;PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
+
+The UI is the normal workshop path. For a SQL-only dry run of Tasks 1 and 2,
+use [01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
+It uses the owner-confirmed working mount calls and event values. Run it as
+PEAKGEAR&#95;USER, only for missing credentials or a missing catalog; do not
+recreate a mount that already works. The host ACL is already granted in Lab 1
+by ADMIN for PEAKGEAR&#95;USER.
 
 ## Task 3: Add the Lake Cache policy
 
@@ -180,7 +241,7 @@ server.
 ### Checkpoint
 
 You can read both Iceberg tables and the Operations return table. The three
-The raw lab views exist under PEAKGEAR&#95;USER.
+raw lab views exist under PEAKGEAR&#95;USER.
 
 ## Learn More
 
@@ -189,4 +250,4 @@ The raw lab views exist under PEAKGEAR&#95;USER.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

@@ -29,7 +29,7 @@ participant to create, edit, or validate an AI profile.
 - [ ] The enrichment checkpoint is saved and visible in Catalog.
 - [ ] Codex identifies the cross-source governed-model gap.
 - [ ] Codex creates, validates, and queries both Analytic Views.
-- [ ] Every screenshot in `traceability.md` is captured, redacted, and inserted
+- [ ] Every screenshot in `traceability.md` is captured, reviewed, and inserted
   with alt text.
 - [ ] All local image links and the sandbox manifest resolve in a local preview.
 
@@ -41,9 +41,14 @@ participant to create, edit, or validate an AI profile.
   require capture before those steps are published.
 * The currently available LiveLab MCP build tools must be verified in the
   target event release before promising autonomous Analytic View creation.
-* No secret from a chat transcript or local shell history may be committed.
+* Only the event-owner-approved shared values in `assets/event-lab-values.md`
+  are included. Do not add unrelated credentials, ADMIN passwords, or OCI API
+  private keys. The owner-confirmed mount script is the source for the Azure
+  and Databricks values; a new end-to-end dry run is still required.
+* The Lab 1 default password applies only to a newly created PEAKGEAR_USER.
+  Existing account passwords are not changed.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
