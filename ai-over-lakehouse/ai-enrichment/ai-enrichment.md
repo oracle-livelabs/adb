@@ -33,8 +33,15 @@ validate a profile.
 2. Open the PEAKGEAR&#95;USER schema, then **Views**.
 3. Select LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V.
 4. Click **AI Enrichment**.
-5. Wait briefly for editable fields. AI-generated text is a suggestion, not a
-   source of truth.
+5. Wait for generation to finish. Check that both the description and tags are
+   populated for the view and for **every column**. AI-generated text is a
+   suggestion, not a source of truth. An editable dialog alone does not prove
+   that generation succeeded.
+
+If Data Studio reports **invalid column tags** or **did not return column
+tags**, retain the error and ask the instructor to repair the prepared AI
+profile before continuing. Do not save an empty result, recreate the profile,
+or treat existing manually entered tags as proof of fresh generation.
 
 Task 2 provides the definitions for all three views. Save the digital view
 first, then repeat the same **Catalog > Views > AI Enrichment** flow for
@@ -56,7 +63,9 @@ Replace the view-level description with this exact text:
 <copy>
 Each row is one digital product interaction. In this lab, customer interest
 means the count of rows (digital events). "Right now" means the latest
-completed calendar month based on EVENT_TS. Aggregate events by PRODUCT_ID,
+completed calendar month present in EVENT_TS, excluding the database's current
+and future months. Use the month available in the data, not a guessed current
+month. Aggregate events by PRODUCT_ID,
 then join LAB_PRODUCTS_RAW_V on PRODUCT_ID to display PRODUCT_NAME. That
 catalog must contain one row per product; never multiply event counts in the
 label join. Keep unknown product names unknown. This event view has no product
@@ -79,7 +88,7 @@ Set these column descriptions and tags:
 | PRODUCT&#95;ID | Business product identifier. Join key to LAB&#95;PRODUCTS&#95;RAW&#95;V.PRODUCT&#95;ID; it is not a measure. | product&#95;key, join&#95;key |
 | SESSION&#95;ID | Browsing-session identifier. It is not a customer identifier or additive measure. | session&#95;identifier |
 | CUSTOMER&#95;ID | Customer identifier associated with the event. Row count is not a count of unique customers. | customer&#95;identifier |
-| EVENT&#95;TS | Timestamp of the interaction. Use it to derive the latest completed calendar month. | event&#95;timestamp, time&#95;key |
+| EVENT&#95;TS | Timestamp of the interaction. Derive the latest month present in the data that ended before the database's current calendar month. | event&#95;timestamp, time&#95;key |
 
 Turn on **Show code** only to review what Data Studio will save. The point is
 not to copy generated SQL: click **Save** only after the description and tags
@@ -148,8 +157,13 @@ ORDER BY object_name,
 </copy>
 ~~~
 
-Each view must have saved view-level `DESCRIPTION` and `TAGS` annotations.
-Also check the product-name and join-key column descriptions before continuing.
+Each view and **every column** must have non-empty `DESCRIPTION` and `TAGS`
+annotations. In this workshop that is 10 annotation rows for Digital Intent,
+8 for Products, and 10 for Returns: **28 rows in total**. A row count is only
+a completeness check; also review the values, including CATEGORY&#95;NAME's
+`category, hierarchy_level` tags and the product-name and join-key definitions.
+If one field is missing, reopen that view's reviewed metadata, correct it and
+save before continuing.
 
 <!-- Screenshot to insert after approved dry run: images/ai-enrichment-saved.png
      Alt text: Data Studio Catalog shows the saved description and tags for
@@ -177,6 +191,9 @@ Lab 3 boundary. Do not create Analytic Views early just to display product names
 
 The words in the business question did not change. The answer improved because
 the definition, time period, and result grain are now saved in Data Studio.
+State the actual month returned by MCP. The workshop uses historical data;
+the result need not be the month immediately before today's date. Do not
+relabel historical events as current live demand.
 
 ![The same question now returns a defined latest-month interest ranking after the Data Studio contract is saved.](images/same-question-after-enrichment.png)
 

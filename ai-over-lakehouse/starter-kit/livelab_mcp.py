@@ -24,15 +24,16 @@ _TOP_DIGITAL_INTEREST_TIMEOUT_SECONDS = 90
 _LIVELAB_QUERY_ADAPTER = "peakgear-json-bound-rows-v1"
 _TOP_DIGITAL_INTEREST_SQL = """
 WITH month_boundary AS (
-    SELECT TRUNC(MAX(event_ts), 'MM') AS current_month
+    SELECT TRUNC(MAX(event_ts), 'MM') AS analysis_month
     FROM peakgear_user.lab_digital_intent_raw_v
+    WHERE event_ts < TRUNC(CURRENT_DATE, 'MM')
 ), top_products AS (
     SELECT product_id,
            COUNT(*) AS digital_events
     FROM peakgear_user.lab_digital_intent_raw_v
     CROSS JOIN month_boundary
-    WHERE event_ts >= ADD_MONTHS(current_month, -1)
-      AND event_ts < current_month
+    WHERE event_ts >= analysis_month
+      AND event_ts < ADD_MONTHS(analysis_month, 1)
       AND product_id IS NOT NULL
     GROUP BY product_id
     ORDER BY digital_events DESC, product_id
@@ -40,8 +41,10 @@ WITH month_boundary AS (
 )
 SELECT t.product_id,
        p.product_name,
-       t.digital_events
+       t.digital_events,
+       TO_CHAR(b.analysis_month, 'YYYY-MM') AS analysis_month
 FROM top_products t
+CROSS JOIN month_boundary b
 LEFT JOIN peakgear_user.lab_products_raw_v p ON p.product_id = t.product_id
 ORDER BY t.digital_events DESC, t.product_id
 """
@@ -455,8 +458,9 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
     PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_V and LAB_PRODUCTS_RAW_V.
     The metric and period intentionally
     match the saved Data Studio description: each row is one digital event and
-    "right now" is the latest completed calendar month. Events are aggregated
-    before joining product labels. Both views require saved DESCRIPTION and
+    "right now" is the latest available month that ended before the database's
+    current calendar month. Events are aggregated before joining product
+    labels. Both views require saved DESCRIPTION and
     TAGS annotations; duplicate product keys stop the lookup. Unavailable
     product names remain null rather than being invented. This simple label
     lookup does not replace the governed cross-source Analytic Views.
@@ -508,7 +512,7 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
                 "product_labels": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_V",
                 "definition": {
                     "customer_interest": "COUNT(*) of digital events",
-                    "right_now": "latest completed calendar month based on EVENT_TS",
+                    "right_now": "latest completed calendar month present in EVENT_TS, excluding the database's current and future months",
                     "result_grain": "one row per PRODUCT_ID",
                 },
                 "rows": rows,

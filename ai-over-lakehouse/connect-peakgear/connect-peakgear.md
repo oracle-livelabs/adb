@@ -28,7 +28,10 @@ In this lab, you will:
 ## Task 1: Find your reservation details
 
 1. In LiveLabs, open **Reservation Information**. Check **Reservation Time
-   Remaining** and extend the reservation if needed.
+   Remaining** before starting **or resuming** the workshop. Allow at least
+   75 minutes for the full flow and extend the reservation while it is still
+   active if needed. An **EXPIRED** reservation cannot be restored by restarting
+   MCP; start a new reservation and use its newly assigned connection values.
 2. Expand **Login Credentials**. Use **Copy** beside **Username** and
    **Password** to sign in to OCI. **Launch OCI** opens the OCI Console. These
    are OCI credentials; do not enter them as the database username or password.

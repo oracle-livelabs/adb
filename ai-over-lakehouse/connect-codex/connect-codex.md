@@ -99,7 +99,7 @@ zsh ./01-setup-peakgear-mcp.command
    |---|---|
    | Lab Data Studio URL | Paste the ADP&#95;URL result copied in step 1, then press Return. Do not use localhost:8000. |
    | Password for PEAKGEAR&#95;USER | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while you type or paste; this is normal. |
-   | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 3. |
+   | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 4. |
    | Success / Press Return to close this window | Confirm the displayed URL and PEAKGEAR&#95;USER, then press Return. |
 
    Use your reservation's **Database Password**, not its OCI Login Credentials

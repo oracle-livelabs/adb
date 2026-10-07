@@ -49,9 +49,17 @@ cannot create a hierarchy or shared dimension.
 The PEAKGEAR&#95;USER-only boundary established in Lab 3 still applies. Use the
 object names reported by Codex; the participant does not have to prescribe them.
 
-If the MCP build capability cannot express a required shared dimension or
-custom hierarchy, stop and ask the instructor for the reviewed fallback DDL.
-Do not replace the normal participant path with a paste of instructor SQL.
+Codex may use LiveLab MCP's SQL tool to create the supporting dimensions,
+hierarchies and Analytic Views when the high-level auto-builder cannot express
+the reviewed model. This is still the MCP-driven workflow: the participant
+does not paste instructor DDL. Auto-creation alone is not validation; Codex
+must query the category roll-up and product drill-down, reconcile totals and
+report the common month. If a source definition or permission is missing,
+stop and report that specific issue rather than inventing a model.
+
+If Codex creates local supporting aggregate tables, they are workshop snapshots.
+It must state their source month and validate them against the connected sources.
+Do not imply continuous refresh unless the model actually implements it.
 
 <!-- Screenshot to insert after approved dry run: images/codex-builds-av.png
      Alt text: Codex uses LiveLab MCP to create and validate the two PeakGear

@@ -105,6 +105,19 @@ class InterestRankingTests(unittest.TestCase):
         self.assertEqual(result["status"], "needs_unique_product_keys")
         self.client.rest.post.assert_not_called()
 
+    def test_latest_historical_month_is_not_discarded(self):
+        self.run_helper([])
+        statement = self.client.rest.post.call_args.args[1]["statementText"]
+        self.assertIn("WHERE event_ts < TRUNC(CURRENT_DATE, 'MM')", statement)
+        self.assertIn("event_ts >= analysis_month", statement)
+        self.assertIn("event_ts < ADD_MONTHS(analysis_month, 1)", statement)
+        self.assertNotIn("ADD_MONTHS(current_month, -1)", statement)
+
+    def test_rank_reports_its_actual_source_month(self):
+        self.run_helper([])
+        statement = self.client.rest.post.call_args.args[1]["statementText"]
+        self.assertIn("TO_CHAR(b.analysis_month, 'YYYY-MM') AS analysis_month", statement)
+
     def test_empty_result_stays_empty(self):
         self.assertEqual(self.run_helper([])["rows"], [])
 

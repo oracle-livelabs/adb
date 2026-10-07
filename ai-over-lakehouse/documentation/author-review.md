@@ -18,6 +18,8 @@ participant to create, edit, or validate an AI profile.
 - [ ] The default workshop page starts at Lab 1; no participant ADMIN setup is listed.
 - [ ] Reservation Information provides OCI Login Credentials separately from
   Database User and Database Password; the participant user is PEAKGEAR_USER.
+- [ ] The reservation is active before starting or resuming; EXPIRED is not
+  treated as an MCP configuration error.
 - [ ] Provider provisioning already enabled the required grants, ORDS, network
   ACL, Operations link, and AI profile before the reservation is marked ready.
 - [ ] Operations credential and public database link read
@@ -30,7 +32,9 @@ participant to create, edit, or validate an AI profile.
   not the OCI Login Credentials password or a sample password.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
 - [ ] `PRODUCTS` and `DIGITAL_CLICKSTREAM_EVENTS` return real rows.
-- [ ] The default AI profile is ready and AI Enrichment exposes editable fields.
+- [ ] The default AI profile produces non-empty descriptions and tags for the
+  view and every column; an editable dialog or pre-existing tags alone are not
+  proof that fresh AI Enrichment succeeded.
 - [ ] Codex `adp_get_connection_info` confirms the reserved database URL,
   `PEAKGEAR_USER`, a ready session, and the expected JSON response adapter.
 - [ ] The raw question receives an appropriately cautious answer.
@@ -40,6 +44,9 @@ participant to create, edit, or validate an AI profile.
 - [ ] Lab 5 reuses the Lab 4 annotations without repeating AI Enrichment.
 - [ ] The enriched simple answer uses product names from the reviewed product
   catalog; aggregation precedes the label join and duplicate product keys stop it.
+- [ ] The answer states the actual latest completed month available in the
+  source, excluding the database's current and future months. Historical data
+  is not presented as current live demand.
 - [ ] Codex identifies the cross-source governed-model gap.
 - [ ] Codex creates, validates, and queries both Analytic Views.
 - [ ] Every screenshot in `traceability.md` is captured, reviewed, and inserted
@@ -54,6 +61,8 @@ participant to create, edit, or validate an AI profile.
 
 * The cache behavior must be rerun and described accurately. Do not present a
   cache policy as a successful acceleration proof without query-plan evidence.
+  The product-grain check must pass before joining labels or building a model;
+  resolving duplicate reads must not mean arbitrarily deduplicating source data.
 * The exact current Data Studio labels for Azure credential and Unity mount UI
   require capture before those steps are published.
 * The currently available LiveLab MCP build tools must be verified in the

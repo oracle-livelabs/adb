@@ -148,9 +148,8 @@ participants must not grant ACLs or switch to ADMIN.
 
 ## Task 3: Add the Lake Cache policy
 
-Immediately after the mount, create and populate a Lake Cache policy for both
-mounted tables. Run the following in SQL Worksheet as PEAKGEAR&#95;USER. If the
-inspection query already shows a policy, verify it instead of recreating it.
+Immediately after the mount, inspect the Lake Cache policies as
+PEAKGEAR&#95;USER. Copy and run this inspection query **by itself**:
 
 ~~~sql
 <copy>
@@ -160,42 +159,46 @@ SELECT external_table_name,
        disabled
 FROM user_external_tab_caches
 ORDER BY external_table_name;
+</copy>
+~~~
 
-BEGIN
-  DBMS_EXT_TABLE_CACHE.CREATE_CACHE(
-    owner          => 'PEAKGEAR_USER',
-    table_name     => 'ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR',
-    partition_type => 'FILE'
-  );
-END;
-/
+Then run the following **single PL/SQL block** by itself using **Run SQL**.
+It creates and populates only missing policies; it leaves an existing policy
+and its enabled/disabled state unchanged. Do not add a SQL*Plus `/` separator
+in Data Studio's Run SQL editor.
 
+~~~sql
+<copy>
+DECLARE
+  l_exists PLS_INTEGER;
 BEGIN
-  DBMS_EXT_TABLE_CACHE.CREATE_CACHE(
-    owner          => 'PEAKGEAR_USER',
-    table_name     => 'ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR',
-    partition_type => 'FILE'
-  );
-END;
-/
+  IF SYS_CONTEXT('USERENV', 'CURRENT_USER') <> 'PEAKGEAR_USER' THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Run as PEAKGEAR_USER, not ADMIN.');
+  END IF;
 
-BEGIN
-  DBMS_EXT_TABLE_CACHE.ADD_TABLE(
-    owner         => 'PEAKGEAR_USER',
-    table_name    => 'ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR',
-    percent_files => 100
-  );
-END;
-/
+  FOR r IN (
+    SELECT 'ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR' AS table_name FROM dual
+    UNION ALL
+    SELECT 'ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR' FROM dual
+  ) LOOP
+    SELECT COUNT(*) INTO l_exists
+    FROM user_external_tab_caches
+    WHERE UPPER(REPLACE(external_table_name, '"', '')) = r.table_name;
 
-BEGIN
-  DBMS_EXT_TABLE_CACHE.ADD_TABLE(
-    owner         => 'PEAKGEAR_USER',
-    table_name    => 'ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR',
-    percent_files => 100
-  );
+    IF l_exists = 0 THEN
+      DBMS_EXT_TABLE_CACHE.CREATE_CACHE(
+        owner          => 'PEAKGEAR_USER',
+        table_name     => r.table_name,
+        partition_type => 'FILE'
+      );
+      DBMS_EXT_TABLE_CACHE.ADD_TABLE(
+        owner         => 'PEAKGEAR_USER',
+        table_name    => r.table_name,
+        percent_files => 100
+      );
+    END IF;
+  END LOOP;
 END;
-/
 </copy>
 ~~~
 
@@ -205,46 +208,103 @@ faster. In the current lab environment, keep a disabled policy disabled if it
 reports the known duplicate-read behavior. Do not claim acceleration without a
 verified query plan and runtime comparison.
 
+Before continuing, check the product catalog's required one-row-per-product
+grain. Run this **single statement** in SQL Worksheet:
+
+~~~sql
+<copy>
+SELECT COUNT(*) AS product_rows,
+       COUNT(DISTINCT product_id) AS distinct_products
+FROM iceberg.products@dbx_unity_peakgear;
+</copy>
+~~~
+
+The two counts must match. If they do not, do not hide the problem with
+`DISTINCT` or continue with inflated event counts. The workshop QA has observed
+duplicate reads with enabled Lake Cache policies in a test reservation.
+For that case, run the following **single PL/SQL block** as PEAKGEAR&#95;USER,
+then rerun the count comparison:
+
+~~~sql
+<copy>
+BEGIN
+  DBMS_EXT_TABLE_CACHE.DISABLE(
+    owner      => 'PEAKGEAR_USER',
+    table_name => 'ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR'
+  );
+  DBMS_EXT_TABLE_CACHE.DISABLE(
+    owner      => 'PEAKGEAR_USER',
+    table_name => 'ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR'
+  );
+END;
+</copy>
+~~~
+
+Disabling these policies retains the cached files; it prevents cache rewrite.
+Leave them disabled for the rest of this workshop when that resolves the
+duplicate-read issue. If the counts still differ, stop and ask the instructor
+to investigate the source. Do not deduplicate or invent a product mapping.
+
 <!-- Screenshot to insert after approved dry run: images/lake-cache-policy.png
      Alt text: SQL Worksheet shows the PeakGear Lake Cache policy and its
      populated or disabled state for the two mounted Iceberg tables. -->
 
 ## Task 4: Prove the two live sources
 
-Open SQL Worksheet as PEAKGEAR&#95;USER and run:
+Open SQL Worksheet as PEAKGEAR&#95;USER. Copy and run **each block separately**;
+Run SQL executes the current statement, not every statement in a pasted script.
 
 ~~~sql
 <copy>
 SELECT COUNT(*) AS products
 FROM iceberg.products@dbx_unity_peakgear;
+</copy>
+~~~
 
+~~~sql
+<copy>
 SELECT COUNT(*) AS digital_clickstream_events
 FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
+</copy>
+~~~
 
+~~~sql
+<copy>
 SELECT COUNT(*) AS operational_return_events
 FROM customer_return_events@peakgear_operations_link;
 </copy>
 ~~~
 
-All three queries must return a count. Then create the raw, participant-owned
-views:
+All three queries must return a count. On a new reservation, create the three
+raw, participant-owned views by running **each block separately**. If you are
+resuming on the same database and the views already exist, verify them in
+Catalog instead of recreating them. Do not replace views after reviewing and
+saving their annotations in Lab 4.
 
 ~~~sql
 <copy>
-CREATE OR REPLACE VIEW lab_products_raw_v AS
+CREATE VIEW lab_products_raw_v AS
 SELECT product_id,
        product_name,
        category AS category_name
 FROM iceberg.products@dbx_unity_peakgear;
+</copy>
+~~~
 
-CREATE OR REPLACE VIEW lab_digital_intent_raw_v AS
+~~~sql
+<copy>
+CREATE VIEW lab_digital_intent_raw_v AS
 SELECT product_id,
        session_id,
        customer_id,
        CAST(event_ts AS TIMESTAMP) AS event_ts
 FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
+</copy>
+~~~
 
-CREATE OR REPLACE VIEW lab_returns_raw_v AS
+~~~sql
+<copy>
+CREATE VIEW lab_returns_raw_v AS
 SELECT product_id,
        store_id,
        return_qty,

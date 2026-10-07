@@ -68,6 +68,11 @@ sessions, history, or unrelated sites. To explicitly remove already cached
 files instead, keep DevTools open, hold the browser Reload button, and choose
 **Empty Cache and Hard Reload**.
 
+If old lab text still appears, compare with
+`http://127.0.0.1:8000/workshops/sandbox/index.html`. It uses the same server
+and files but a separate browser origin, useful for isolating stale browser
+state. This comparison does not clear the existing `localhost` cache.
+
 If port 8000 is already in use, stop its existing preview with Control-C, or
 choose another port:
 
@@ -97,11 +102,16 @@ and retire them when it ends.
 
 ## Status
 
-Offline helper regression tests (no database connection):
+Offline helper and package regression tests (no database connection):
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s documentation/tests -v
 ```
+
+These checks cover ranking safeguards, lab numbering, Copy markup, local links,
+image alt text, lowercase filenames, and exact ZIP/source-file agreement.
+They do not replace live Oracle execution, browser Copy testing, or a complete
+reservation dry run.
 
 Workshop structure and learner flow are drafted. Runtime acceptance and the
 UI screenshot set remain release gates recorded in `author-review.md`.
