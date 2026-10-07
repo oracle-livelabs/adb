@@ -33,8 +33,13 @@ In this lab, you will:
    active if needed. An **EXPIRED** reservation cannot be restored by restarting
    MCP; start a new reservation and use its newly assigned connection values.
 2. Expand **Login Credentials**. Use **Copy** beside **Username** and
-   **Password** to sign in to OCI. **Launch OCI** opens the OCI Console. These
-   are OCI credentials; do not enter them as the database username or password.
+   **Password** to sign in to OCI. On first sign-in, OCI may require you to
+   set a new password for this reservation account. If the **Reset your
+   password** screen appears, complete that reset yourself and use the new
+   password for later OCI sign-ins. It does not change the separate **Database
+   Password** in Environment Details, which you will use to connect Data Studio.
+   **Launch OCI** opens the OCI Console. These are OCI credentials; do not enter
+   them as the database username or password.
 3. In **Tenancy Information**, note the **Tenancy Name**, **Region**, and
    **Compartment**. Use **Region** to find your database, not **Generative AI
    Endpoint Region**.

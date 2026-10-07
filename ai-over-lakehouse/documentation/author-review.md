@@ -18,6 +18,8 @@ participant to create, edit, or validate an AI profile.
 - [ ] The default workshop page starts at Lab 1; no participant ADMIN setup is listed.
 - [ ] Reservation Information provides OCI Login Credentials separately from
   Database User and Database Password; the participant user is PEAKGEAR_USER.
+- [ ] On a fresh reservation, verify whether the OCI login forces a first-use
+  password change; keep it clearly separate from the database password.
 - [ ] The reservation is active before starting or resuming; EXPIRED is not
   treated as an MCP configuration error.
 - [ ] Provider provisioning already enabled the required grants, ORDS, network
