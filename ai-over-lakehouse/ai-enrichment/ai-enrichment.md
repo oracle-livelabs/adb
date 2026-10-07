@@ -61,15 +61,16 @@ Replace the view-level description with this exact text:
 
 ~~~text
 <copy>
-Each row is one digital product interaction. In this lab, customer interest
-means the count of rows (digital events). "Right now" means the latest
-completed calendar month present in EVENT_TS, excluding the database's current
-and future months. Use the month available in the data, not a guessed current
-month. Aggregate events by PRODUCT_ID,
-then join LAB_PRODUCTS_RAW_V on PRODUCT_ID to display PRODUCT_NAME. That
-catalog must contain one row per product; never multiply event counts in the
-label join. Keep unknown product names unknown. This event view has no product
-names, returns, revenue, or store.
+Each row is one digital interaction. In this lab, customer interest means
+the count of digital events with non-NULL PRODUCT_ID. Exclude events without
+PRODUCT_ID from product and category rankings and report their count separately
+for the same month. "Right now" means the latest completed calendar month
+present in EVENT_TS, excluding the database's current and future months. Use
+the month available in the data, not a guessed current month. Aggregate events
+by PRODUCT_ID, then join LAB_PRODUCTS_RAW_V on PRODUCT_ID to display
+PRODUCT_NAME. That catalog must contain one row per product; never multiply
+event counts in the label join. Keep unknown product names unknown. This event
+view has no product names, returns, revenue, or store.
 </copy>
 ~~~
 
@@ -90,9 +91,25 @@ Set these column descriptions and tags:
 | CUSTOMER&#95;ID | Customer identifier associated with the event. Row count is not a count of unique customers. | customer&#95;identifier |
 | EVENT&#95;TS | Timestamp of the interaction. Derive the latest month present in the data that ended before the database's current calendar month. | event&#95;timestamp, time&#95;key |
 
-Turn on **Show code** only to review what Data Studio will save. The point is
-not to copy generated SQL: click **Save** only after the description and tags
-are correct in the UI.
+Replace the AI-suggested tag chips with the tags listed in this task. Enter
+each tag separately and press **Enter** after each one; commas in the examples
+separate tags. Remove extra suggested tags rather than appending the reviewed
+tags to them. Click the dialog heading to close a tag dropdown before moving
+to another field, so a suggestion menu does not cover the next field.
+
+After editing a description, move focus to another field and confirm that the
+complete reviewed text remains visible. Before each view's **Save**, turn on
+**Show code** and check the view description, every column description, and
+all tag values against this task. If the code still contains an AI-suggested
+description or a partial edit, turn **Show code** off and correct the field
+before saving. Use the code for review; click **Save** in the dialog instead
+of copying and running the generated SQL. Wait for **Save** to finish and the
+dialog to close before opening the next view. Annotations may appear gradually
+while the operation is still running; verify the complete saved values in Task 3.
+If Save reports a connection error, refresh Catalog and use Task 3 to check
+the complete contract before retrying. An error can leave a partial set of
+annotations; a changed view description alone does not confirm that every
+column description and tag saved.
 
 ### Product catalog
 
@@ -131,7 +148,7 @@ digital view's Overview description must begin with:
 
 ~~~text
 <copy>
-Each row is one digital product interaction
+Each row is one digital interaction
 </copy>
 ~~~
 
@@ -191,6 +208,14 @@ Lab 3 boundary. Do not create Analytic Views early just to display product names
 
 The words in the business question did not change. The answer improved because
 the definition, time period, and result grain are now saved in Data Studio.
+
+If the ranking tool reaches its read timeout, Codex may use LiveLab MCP SQL
+after reading the saved contracts and checking product-key uniqueness. Derive
+the actual completed source month first, then run the ranking for that bounded
+month with the same metric and product-label rules. Report the count of events
+without PRODUCT&#95;ID separately. A timeout is not an empty ranking, and it does
+not require creating Analytic Views early or changing cache policies.
+
 State the actual month returned by MCP. The workshop uses historical data;
 the result need not be the month immediately before today's date. Do not
 relabel historical events as current live demand.

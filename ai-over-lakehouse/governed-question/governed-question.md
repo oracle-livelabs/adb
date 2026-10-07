@@ -41,7 +41,8 @@ making the recommendation. It should identify all of these requirements:
 
 * one common, completed-month time window;
 * a reusable category-to-product hierarchy;
-* digital events aggregated by product and month;
+* digital events with non-NULL product IDs aggregated by product and month,
+  with unattributed events counted and reported separately;
 * returned units aggregated by product, store, and month; and
 * governed drill-down rather than a one-off cross-source join.
 

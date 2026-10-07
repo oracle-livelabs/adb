@@ -57,6 +57,21 @@ must query the category roll-up and product drill-down, reconcile totals and
 report the common month. If a source definition or permission is missing,
 stop and report that specific issue rather than inventing a model.
 
+Before creating the product/category model, validate attribution against the
+shared catalog. Exclude digital events with NULL PRODUCT&#95;ID from those
+rankings and report their count for the same common month. Keep the raw source
+view intact; do not add a synthetic Unknown category. Every non-NULL product
+ID in both facts must map to exactly one catalog product and its category.
+Stop and report missing or ambiguous mappings rather than dropping them or
+inventing labels. Preserve existing source category labels such as `N/A` and
+the literal text `null`; call out those labels separately from named-category
+recommendations instead of assigning categories from product names.
+
+Each query must select the requested hierarchy levels for the common month.
+Use category rows and All Stores for the category comparison; use product and
+store detail for a store drill-down. Do not sum detail rows together with
+their All-level totals.
+
 If Codex creates local supporting aggregate tables, they are workshop snapshots.
 It must state their source month and validate them against the connected sources.
 Do not imply continuous refresh unless the model actually implements it.
@@ -80,7 +95,9 @@ Expected result: Codex answers from the two Analytic Views and provides a
 governed drill-down to the relevant categories and products. It states the
 completed-month window and the measures used:
 
-* customer interest = digital event count;
+* customer interest = digital event count for non-NULL product IDs;
+* digital events without product IDs are excluded from category ranking and
+  their count is reported separately for the common month;
 * returns = sum of returned units; and
 * returns are quality context, not a return rate.
 
