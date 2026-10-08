@@ -195,7 +195,7 @@ This is the current hands-on boundary:
    OAuth credential.
 4. Use Data Studio UI to mount the Databricks Unity/Iceberg catalog.
 5. Verify both live sources and unique product keys, then create three
-   user-owned raw views over products, digital intent, and
+   user-owned local raw snapshot tables for products, digital intent, and
    returns.
 6. In Lab 3, obtain ADP_URL with the provided SQL query, then download the
    single Starter Kit and configure the project-scoped LiveLab MCP connection
@@ -254,7 +254,7 @@ After completing the workshop, participants can:
 | Total |  | 75 minutes |
 
 AI Enrichment is performed only in Lab 4, where participants review and save
-the descriptions and tags for all three raw views. Lab 5 reuses those saved
+the descriptions and tags for all three raw tables. Lab 5 reuses those saved
 annotations for the harder question, identifies the model requirements, builds
 and validates the Analytic Views, and answers the final question in one module.
 It does not repeat enrichment.

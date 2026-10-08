@@ -67,6 +67,26 @@ class WorkshopPackageTests(unittest.TestCase):
         ])
         self.assertFalse((ROOT / "governed-question" / "governed-question.md").exists())
 
+    def test_local_table_contract_is_consistent_across_labs_and_runtime(self):
+        sources = (ROOT / "connect-sources" / "connect-sources.md").read_text()
+        enrichment = (ROOT / "ai-enrichment" / "ai-enrichment.md").read_text()
+        runtime = (ROOT / "starter-kit" / "livelab_mcp.py").read_text()
+        boundary = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        names = (
+            "lab_products_raw_t",
+            "lab_digital_intent_raw_t",
+            "lab_returns_raw_t",
+        )
+        for name in names:
+            with self.subTest(table=name):
+                self.assertIn(f"CREATE TABLE {name} AS", sources)
+                self.assertIn(name.upper(), enrichment)
+                self.assertIn(name.upper(), runtime)
+        self.assertNotRegex(runtime, r"LAB_(?:PRODUCTS|DIGITAL_INTENT|RETURNS)_RAW_V")
+        self.assertIn("ALTER TABLE", enrichment)
+        self.assertIn("Mandatory Analytic View gate", boundary)
+        self.assertIn("do not provide category rankings, figures", boundary)
+
     def test_every_learner_code_block_has_copy_markup(self):
         fence = re.compile(r"^(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=fence)[ \t]*$", re.M | re.S)
         for _, path in learner_pages():

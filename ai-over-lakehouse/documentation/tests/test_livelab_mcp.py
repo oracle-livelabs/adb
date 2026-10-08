@@ -48,15 +48,22 @@ runtime = load_runtime()
 def contract_rows():
     return [
         {"OBJECT_NAME": name, "ANNOTATION_NAME": annotation, "ANNOTATION_VALUE": "reviewed"}
-        for name in ("LAB_DIGITAL_INTENT_RAW_V", "LAB_PRODUCTS_RAW_V")
+        for name in ("LAB_DIGITAL_INTENT_RAW_T", "LAB_PRODUCTS_RAW_T")
         for annotation in ("DESCRIPTION", "TAGS")
+    ]
+
+
+def source_table_rows():
+    return [
+        {"OBJECT_NAME": name, "OBJECT_TYPE": "TABLE"}
+        for name in ("LAB_DIGITAL_INTENT_RAW_T", "LAB_PRODUCTS_RAW_T")
     ]
 
 
 class InterestRankingTests(unittest.TestCase):
     def setUp(self):
         self.client = types.SimpleNamespace(Misc=Mock(), rest=Mock())
-        self.client.Misc.run_query.side_effect = [contract_rows(), []]
+        self.client.Misc.run_query.side_effect = [source_table_rows(), contract_rows(), []]
         self.client.rest.get_prefix.return_value = "/test"
 
     def run_helper(self, rows=None):
@@ -68,23 +75,39 @@ class InterestRankingTests(unittest.TestCase):
             return json.loads(runtime.adp_get_top_digital_interest())
 
     def test_missing_contract_stops_without_ranking(self):
-        self.client.Misc.run_query.side_effect = [[]]
+        self.client.Misc.run_query.side_effect = [source_table_rows(), []]
         result = self.run_helper()
         self.assertEqual(result["status"], "needs_data_studio_contract")
         self.assertEqual(len(result["missing_contracts"]), 2)
         self.client.rest.post.assert_not_called()
+        self.assertEqual(self.client.Misc.run_query.call_count, 2)
+
+    def test_missing_table_is_not_reported_as_missing_annotations(self):
+        self.client.Misc.run_query.side_effect = [[source_table_rows()[0]]]
+        result = self.run_helper()
+        self.assertEqual(result["status"], "needs_source_tables")
+        self.assertEqual(result["missing_tables"], ["LAB_PRODUCTS_RAW_T"])
+        self.client.rest.post.assert_not_called()
         self.assertEqual(self.client.Misc.run_query.call_count, 1)
 
-    def test_product_contract_is_required(self):
-        self.client.Misc.run_query.side_effect = [contract_rows()[:2]]
+    def test_table_inventory_accepts_tuple_rows(self):
+        self.client.Misc.run_query.side_effect = [
+            [["LAB_DIGITAL_INTENT_RAW_T", "TABLE"], ["LAB_PRODUCTS_RAW_T", "TABLE"]],
+            [],
+        ]
         result = self.run_helper()
-        self.assertEqual(result["object"], "PEAKGEAR_USER.LAB_PRODUCTS_RAW_V")
+        self.assertEqual(result["status"], "needs_data_studio_contract")
+
+    def test_product_contract_is_required(self):
+        self.client.Misc.run_query.side_effect = [source_table_rows(), contract_rows()[:2]]
+        result = self.run_helper()
+        self.assertEqual(result["object"], "PEAKGEAR_USER.LAB_PRODUCTS_RAW_T")
         self.client.rest.post.assert_not_called()
 
     def test_blank_annotation_does_not_unlock_ranking(self):
         rows = contract_rows()
         rows[0]["ANNOTATION_VALUE"] = "   "
-        self.client.Misc.run_query.side_effect = [rows]
+        self.client.Misc.run_query.side_effect = [source_table_rows(), rows]
         result = self.run_helper()
         self.assertEqual(result["missing_annotations"], ["DESCRIPTION"])
         self.client.rest.post.assert_not_called()
@@ -93,14 +116,14 @@ class InterestRankingTests(unittest.TestCase):
         row = {"PRODUCT_ID": 1, "PRODUCT_NAME": "Reviewed product", "DIGITAL_EVENTS": 61564}
         result = self.run_helper([row])
         self.assertEqual(result["rows"], [row])
-        self.assertEqual(result["product_labels"], "PEAKGEAR_USER.LAB_PRODUCTS_RAW_V")
+        self.assertEqual(result["product_labels"], "PEAKGEAR_USER.LAB_PRODUCTS_RAW_T")
         statement = self.client.rest.post.call_args.args[1]["statementText"]
         self.assertLess(statement.index("GROUP BY product_id"), statement.index("LEFT JOIN"))
         self.assertIn("p.product_id = t.product_id", statement)
         self.assertEqual(self.client.rest.post.call_args.kwargs["timeout"], 90)
 
     def test_duplicate_product_keys_stop_before_label_join(self):
-        self.client.Misc.run_query.side_effect = [contract_rows(), [{"PRODUCT_ID": 1, "PRODUCT_ROWS": 2}]]
+        self.client.Misc.run_query.side_effect = [source_table_rows(), contract_rows(), [{"PRODUCT_ID": 1, "PRODUCT_ROWS": 2}]]
         result = self.run_helper()
         self.assertEqual(result["status"], "needs_unique_product_keys")
         self.client.rest.post.assert_not_called()
@@ -127,12 +150,12 @@ class InterestRankingTests(unittest.TestCase):
 
     def test_contract_parser_handles_tuple_and_lowercase_rows(self):
         self.client.Misc.run_query.side_effect = [json.dumps({"items": [
-            ["LAB_PRODUCTS_RAW_V", "DESCRIPTION", "Product catalog"],
-            {"object_name": "LAB_PRODUCTS_RAW_V", "annotation_name": "TAGS", "annotation_value": "product_catalog"},
+            ["LAB_PRODUCTS_RAW_T", "DESCRIPTION", "Product catalog"],
+            {"object_name": "LAB_PRODUCTS_RAW_T", "annotation_name": "TAGS", "annotation_value": "product_catalog"},
         ]})]
         contract = runtime._saved_interest_contracts(self.client)
-        self.assertEqual(contract["LAB_PRODUCTS_RAW_V"]["DESCRIPTION"], "Product catalog")
-        self.assertEqual(contract["LAB_PRODUCTS_RAW_V"]["TAGS"], "product_catalog")
+        self.assertEqual(contract["LAB_PRODUCTS_RAW_T"]["DESCRIPTION"], "Product catalog")
+        self.assertEqual(contract["LAB_PRODUCTS_RAW_T"]["TAGS"], "product_catalog")
 
     def test_no_connection_is_a_controlled_error(self):
         with patch.object(runtime, "get_adp", return_value=None):

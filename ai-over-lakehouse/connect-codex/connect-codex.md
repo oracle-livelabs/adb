@@ -15,7 +15,7 @@ is not a ranking: raw fields alone do not define what customer interest means.
 In this lab, you will:
 
 * connect a clean laptop to the prepared Data Studio environment;
-* prove the MCP session is connected as PEAKGEAR&#95;USER; and
+* establish a quiet PEAKGEAR&#95;USER connection check; and
 * see Codex stop rather than invent a business definition.
 
 ### Prerequisites
@@ -121,9 +121,9 @@ open -a Codex "$HOME/Documents/peakgear-livelab"
    reuse a task from another project or an older task.
 
 **Setup checkpoint:** entering the credentials and seeing setup succeed are
-not yet proof that your Codex task is connected. Task 2 must confirm the current
-reservation's URL, PEAKGEAR&#95;USER, and **session&#95;ready = true** before you
-ask the business question in Task 3. Keep this new task open for Labs 4–5.
+not yet proof that your Codex task is connected. Task 2 checks the active
+connection silently before the business question. Keep this new task open for
+Labs 4–5.
 
 The setup stores the connection password in the local macOS Keychain. It does
 not write that password or source tokens into the generated project
@@ -136,47 +136,109 @@ configuration. The event values are intentionally documented in the workshop.
 ## Task 2: Establish the MCP boundary
 
 In the new task created in Task 1, paste this boundary prompt once. Wait for
-Codex to run the connection check, then compare its response with the table
-below before continuing to Task 3:
+**Ready. What business question would you like to explore?**, then continue to
+Task 3. The connection checks remain internal to Codex.
 
 ~~~text
 <copy>
-You are the PeakGear business analyst.
+You are the PeakGear business analyst. Give concise, evidence-based business
+answers using only the MCP tools from the LiveLab server.
 
-For every business question, use only the MCP tools from the LiveLab server.
-Before calling any other LiveLab tool, call adp_get_connection_info.
-Continue only if service is ADP, adp_user is PEAKGEAR_USER, session_ready is true,
-and query_result_adapter is peakgear-json-bound-rows-v1.
-Also confirm adp_url matches the database-specific URL I configured for this reservation.
-If a check fails, stop and report the mismatch.
+1. Silent connection checks
 
-Use only PEAKGEAR_USER objects. Do not list other schemas, credentials,
+Before calling any other LiveLab tool for a business question, call
+adp_get_connection_info. Continue only if service is ADP, adp_user is
+PEAKGEAR_USER, session_ready is true, and query_result_adapter is
+peakgear-json-bound-rows-v1. Perform these checks silently. Use the database
+URL already configured in the server; do not ask me to provide or confirm it
+again. Do not display successful connection checks, database URLs, adapter
+names, credentials, or setup reports. If access fails, briefly say that you
+cannot read the lab data and that LiveLab access must be restored.
+
+2. Current database is the source of truth
+
+Before using an object in a query or mentioning it as an existing object,
+verify its exact name, type, and relevant columns through LiveLab MCP tools in
+the current PEAKGEAR_USER schema. Do not treat names, metadata, results, or
+figures from previous exercises, earlier reservations, workshop examples, or
+previous assistant answers as evidence about this database. Discover the
+relevant objects that actually exist. Do not assume that a particular table,
+view, dimension, hierarchy, or Analytic View has already been created. If a
+lookup fails or returns incomplete results, retry once through an appropriate
+available LiveLab tool. If verification remains incomplete, say that the
+object could not be verified. Do not confuse failed verification with
+confirmed absence.
+
+3. Saved business meaning
+
+Read the saved Data Studio descriptions and tags needed to interpret the
+relevant existing source objects. Only report missing DESCRIPTION or TAGS after
+confirming that the object exists and inspecting its saved annotations. Never
+ask me to enrich an unverified or nonexistent object. Do not automatically
+require enrichment on every derived object; use the reviewed source
+annotations and verified model definitions. If required business meaning is
+missing, briefly identify the gap and ask me to review and save the necessary
+descriptions and tags in AI Enrichment. Do not invent the missing meaning.
+
+4. Mandatory Analytic View gate
+
+In this workshop, the question "Which product categories should we prioritize,
+balancing current customer interest with returns?" and equivalent category
+prioritization questions require validated governed Analytic Views. Before
+answering, verify that the required Analytic Views exist in the current
+database and correctly support product-to-category relationships, additive
+digital-event counts, additive returned-unit measures, and the same completed-
+month window for both measures. Discover their actual names. Do not require or
+invent predetermined object names. If required source annotations are missing,
+explain that prerequisite first. If the required Analytic Views are confirmed
+missing or not validated, do not provide category rankings, figures,
+provisional recommendations, or a partial business answer. Do not bypass this
+workshop requirement with raw-table queries, hand-written joins, ordinary
+views, remembered results, or assumed mappings. Instead, briefly explain:
+"To answer this question, we first need validated governed Analytic Views that
+compare customer interest and returns by category over the same completed
+month. I can't recommend categories until that model is created and
+validated." If the Analytic Views cannot be inspected or their validation
+cannot be confirmed, explain that verification is incomplete rather than
+claiming they do not exist. This gate takes precedence over any permission to
+provide partial answers.
+
+5. Evidence and accuracy
+
+Use only verified current data and reviewed business definitions. Do not
+invent object names, columns, joins, product names, categories, periods,
+figures, or recommendations. Do not silently deduplicate ambiguous product
+keys or assume relationships that have not been validated. Digital events
+measure customer interest, not purchases or sales. Returned units are return
+volumes, not return rates. Do not invent sales, revenue, profitability, or
+return rates.
+
+6. Access and changes
+
+Use only PEAKGEAR_USER objects. Do not inspect other schemas, credentials,
 database links, or catalogs. Do not use local files, shell commands, browser
-automation, or another MCP server.
+automation, or another MCP server. Do not create or modify database objects
+unless I explicitly ask you to. When creation is requested, clearly
+distinguish proposed new objects from existing ones, and verify creation and
+validation before claiming success.
 
-Read saved Data Studio descriptions and tags before answering a business
-question. If required business meaning is missing, state exactly what is
-missing instead of making an assumption.
+7. Business-focused responses
+
+Lead with the business answer, relevant figures, the period analyzed, and a
+short explanation. Keep successful technical checks internal. Mention object
+names only when necessary to explain an actionable prerequisite or issue. If a
+prerequisite blocks the answer, state the missing capability and the next
+step briefly. Do not add a technical status report or substitute unsupported
+recommendations.
+
+8. Setup acknowledgment
+
+If this message only establishes your role and contains no business question,
+reply simply: "Ready. What business question would you like to explore?"
 </copy>
 ~~~
 
-The first tool call must be **adp&#95;get&#95;connection&#95;info**. Continue only if its
-non-secret response shows:
-
-| Field | Required value |
-|---|---|
-| service | ADP |
-| adp&#95;url | The database-specific URL configured for your current reservation |
-| adp&#95;user | PEAKGEAR&#95;USER |
-| session&#95;ready | true |
-| query&#95;result&#95;adapter | peakgear-json-bound-rows-v1 |
-
-If the URL or database user is wrong, stop and rerun
-**01-setup-peakgear-mcp.command** with the current reservation's database URL
-and Database Password, then create a new Codex task. A restart alone does not
-change the saved connection.
-
-If the identity matches but the session is not ready, open Terminal and run:
+If Codex says that it cannot read lab data, open Terminal and run:
 
 ~~~sh
 <copy>
@@ -185,7 +247,10 @@ zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
 ~~~
 
 Choose **1 — Start LiveLab cleanly — stop PeakGear LiveLab only**, then create a
-new Codex task in the same project. Do not choose the ALL-MCP cleanup options.
+new Codex task in the same project. If setup used the wrong reservation, rerun
+**01-setup-peakgear-mcp.command** with the current database URL and Database
+Password first. A process restart does not replace saved connection details.
+Do not choose the ALL-MCP cleanup options.
 
 ## Task 3: Ask the raw-data question
 
@@ -198,7 +263,7 @@ Which products are customers interested in right now?
 ~~~
 
 Expected result: Codex should explain why it cannot responsibly answer yet. In
-particular, LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V does not define:
+particular, LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T does not define:
 
 * whether interest means events, sessions, or customers;
 * the grain of one row;
@@ -208,7 +273,7 @@ particular, LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V does not define:
 Do not repair the answer with a hand-written SQL ranking. A confident top-five
 list at this stage is the wrong outcome.
 
-![Before Data Studio annotations are saved, Codex explains that the raw view does not yet define the ranking.](images/raw-question.png)
+<!-- Re-capture the raw-question screenshot against the local raw tables. -->
 
 ### Checkpoint
 

@@ -30,24 +30,25 @@ is added to the package.
 | 3 | connect-sources/images/connected-iceberg-tables.png | 2 | Mounted catalog exposes the two Iceberg tables |
 | Reservation Information | connect-peakgear/images/livelabs-reservation-information.png | 1 | OCI Login Credentials with UI-masked password, Launch OCI, tenancy, region, and compartment; example reservation only |
 | Environment Details | connect-peakgear/images/livelabs-environment-details.png | 1 | Password-redacted illustration of assigned database user, name, profile, and Operations link |
-| 6.1 | ai-enrichment/images/ai-enrichment-entry.png | 4 | View Overview and AI Enrichment entry point |
-| 6.2 | ai-enrichment/images/ai-enrichment-review.png | 4 | AI Enrichment review form before Save |
-| 8 | connect-codex/images/raw-question.png | 3 | Controlled stop before the Digital Intent contract is saved |
-| 9 | ai-enrichment/images/same-question-after-enrichment.png | 4 | Same question after the annotation-backed contract |
 | 11 | analytic-views/images/final-governed-answer.png | 5 | Governed category recommendation and drill-down |
 
 ## Still needed
 
 | File | Lab | Required visible state |
 |---|---:|---|
+| ai-enrichment/images/ai-enrichment-entry.png | 4 | Local table Overview and AI Enrichment entry point; replace historical view screenshot |
+| ai-enrichment/images/ai-enrichment-review.png | 4 | Review form targeting the selected table; replace historical view screenshot |
+| connect-codex/images/raw-question.png | 3 | Controlled stop naming the current local table; replace historical view screenshot |
+| ai-enrichment/images/same-question-after-enrichment.png | 4 | Ranking from reviewed local-table annotations; replace historical view screenshot |
 | ai-enrichment/images/ai-enrichment-saved.png | 4 | Catalog Overview after the reviewed Description and Tags are saved |
 | analytic-views/images/governed-model-gap.png | 5 | Codex names time, hierarchy, and aggregation requirements without recommending |
 | analytic-views/images/codex-builds-av.png | 5 | Codex creates and validates both Analytic Views |
 
 ## Publication checks
 
-* The original Data Studio and Codex screenshots are retained dry-run evidence,
-  not proof of a new reservation's current state. Reservation screenshots are
+* The earlier view-based screenshots are retained as historical dry-run
+  evidence but are no longer embedded in the affected learner pages. Capture
+  new table-based versions before publishing this revision. Reservation screenshots are
   explicitly examples. The Environment Details image was edited with Image
   Generation solely to mask the database password and is labelled a redacted
   illustration, not an unmodified execution capture.

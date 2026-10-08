@@ -4,8 +4,7 @@ Estimated Time: 15 minutes
 
 ## Introduction
 
-PeakGear does not copy source data into a staging table. It connects two live
-systems:
+PeakGear connects two live systems:
 
 * Databricks Unity Catalog supplies the Iceberg product catalog and digital
   clickstream events.
@@ -13,7 +12,8 @@ systems:
   public database link already provisioned for your LiveLabs reservation.
 
 You will connect Databricks through the Data Studio UI, verify both live
-sources, and create three participant-owned raw views.
+sources, and create three participant-owned local tables. The tables are
+workshop snapshots so later queries do not repeatedly scan remote sources.
 
 ### Objectives
 
@@ -178,15 +178,18 @@ If the counts differ, stop and ask the instructor to investigate the source.
 Do not hide duplicate reads with `DISTINCT` or continue with inflated event
 counts, and do not invent a product mapping.
 
-On a new reservation, create the three
-raw, participant-owned views by running **each block separately**. If you are
-resuming on the same database and the views already exist, verify them in
-Catalog instead of recreating them. Do not replace views after reviewing and
-saving their annotations in Lab 4.
+On a new reservation, create the three raw, participant-owned tables by running
+**each block separately**. Each `CREATE TABLE AS SELECT` can take time while it
+copies source rows. Wait for the worksheet to report completion before starting
+the next block. If you are resuming on the same database and a table already
+exists, verify it in Catalog instead of recreating it. Do not replace a table
+after saving its annotations in Lab 4. If an older run left `*_RAW_V` views in
+the schema, leave them alone; this version uses the new `*_RAW_T` tables and
+requires fresh table annotations in Lab 4.
 
 ~~~sql
 <copy>
-CREATE VIEW lab_products_raw_v AS
+CREATE TABLE lab_products_raw_t AS
 SELECT product_id,
        product_name,
        category AS category_name
@@ -196,7 +199,7 @@ FROM iceberg.products@dbx_unity_peakgear;
 
 ~~~sql
 <copy>
-CREATE VIEW lab_digital_intent_raw_v AS
+CREATE TABLE lab_digital_intent_raw_t AS
 SELECT product_id,
        session_id,
        customer_id,
@@ -207,7 +210,7 @@ FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
 
 ~~~sql
 <copy>
-CREATE VIEW lab_returns_raw_v AS
+CREATE TABLE lab_returns_raw_t AS
 SELECT product_id,
        store_id,
        return_qty,
@@ -216,14 +219,29 @@ FROM customer_return_events@peakgear_operations_link;
 </copy>
 ~~~
 
-These views do not copy data and do not add business definitions. They give
-PEAKGEAR&#95;USER a small, owned surface for Data Studio and the bounded MCP
-server.
+In Catalog, check **Tables** under PEAKGEAR&#95;USER for all three names. The
+tables are local copies at the time the statements ran; they do not refresh
+automatically. They do not yet add business definitions. The source counts
+above and the local counts below should match when the sources remain stable:
+
+~~~sql
+<copy>
+SELECT 'PRODUCTS' AS source_name, COUNT(*) AS local_rows FROM lab_products_raw_t
+UNION ALL
+SELECT 'DIGITAL EVENTS', COUNT(*) FROM lab_digital_intent_raw_t
+UNION ALL
+SELECT 'RETURNS', COUNT(*) FROM lab_returns_raw_t;
+</copy>
+~~~
+
+If a count differs, inspect the source and completed table creation before
+continuing. Do not silently remove or duplicate rows. Later labs use these
+local snapshots through Data Studio and the bounded MCP server.
 
 ### Checkpoint
 
 You can read both Iceberg tables and the Operations return table. The three
-raw lab views exist under PEAKGEAR&#95;USER.
+raw lab tables exist under PEAKGEAR&#95;USER.
 
 ## Learn More
 

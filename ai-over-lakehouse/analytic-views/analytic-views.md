@@ -4,9 +4,10 @@ Estimated Time: 20 minutes
 
 ## Introduction
 
-Lab 4 saved the reviewed descriptions and tags for all three raw views. Reuse
+Lab 4 saved the reviewed descriptions and tags for all three raw tables. Reuse
 those annotations here; do not run AI Enrichment again. The next question
-combines digital behavior, a product hierarchy, and operational returns. A
+combines digital behavior, a product hierarchy, and operational returns. The
+Lab 2 tables are local snapshots of the connected sources. A
 one-off join would be technically possible but would not be a shared,
 reviewable, reusable business model.
 
@@ -31,8 +32,8 @@ In this lab, you will:
 ### Prerequisites
 
 Complete Lab 4, including the saved descriptions and tags for
-LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V, LAB&#95;PRODUCTS&#95;RAW&#95;V, and
-LAB&#95;RETURNS&#95;RAW&#95;V. Keep the same Codex task and LiveLab MCP connection
+LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T, LAB&#95;PRODUCTS&#95;RAW&#95;T, and
+LAB&#95;RETURNS&#95;RAW&#95;T. Keep the same Codex task and LiveLab MCP connection
 open. This lab does not repeat AI Enrichment or create an AI profile.
 
 ## Task 1: Ask the harder business question
@@ -79,8 +80,10 @@ names and model details from the saved source definitions.
 
 ~~~text
 <copy>
-Use LiveLab MCP and the saved Data Studio descriptions and tags to create
-and validate Analytic Views for customer interest and returns.
+Use LiveLab MCP and the saved Data Studio descriptions and tags on the three
+local raw tables to create and validate Analytic Views for customer interest
+and returns. First verify which tables exist in this database; do not assume
+names from a previous reservation.
 
 They should help answer: Which product categories should we prioritize,
 balancing current customer interest with returns?
@@ -106,7 +109,7 @@ stop and report that specific issue rather than inventing a model.
 Before creating the product/category model, validate attribution against the
 shared catalog. Exclude digital events with NULL PRODUCT&#95;ID from those
 rankings and report their count for the same common month. Keep the raw source
-view intact; do not add a synthetic Unknown category. Every non-NULL product
+table intact; do not add a synthetic Unknown category. Every non-NULL product
 ID in both facts must map to exactly one catalog product and its category.
 Stop and report missing or ambiguous mappings rather than dropping them or
 inventing labels. Preserve existing source category labels such as `N/A` and
@@ -118,9 +121,9 @@ Use category rows and All Stores for the category comparison; use product and
 store detail for a store drill-down. Do not sum detail rows together with
 their All-level totals.
 
-If Codex creates local supporting aggregate tables, they are workshop snapshots.
-It must state their source month and validate them against the connected sources.
-Do not imply continuous refresh unless the model actually implements it.
+The Lab 2 raw tables and any supporting aggregate tables are workshop
+snapshots. Codex must state their source month and validate the model against
+those tables. Do not imply continuous refresh unless the model implements it.
 
 <!-- Screenshot to insert after approved dry run: images/codex-builds-av.png
      Alt text: Codex uses LiveLab MCP to create and validate the two PeakGear

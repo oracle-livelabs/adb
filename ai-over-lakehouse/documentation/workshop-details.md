@@ -18,7 +18,7 @@ answer: which product categories should be prioritized? Raw connectivity alone
 does not define what customer interest means or how it should be compared with
 returns. Participants first see Codex decline to make an unjustified
 recommendation. They use Data Studio AI Enrichment to review and save business
-metadata, then ask a harder question that requires governed time, product, and
+metadata on local snapshots of those sources, then ask a harder question that requires governed time, product, and
 aggregation semantics. Codex creates and validates the two Analytic Views that
 make the final drill-down reproducible.
 
@@ -37,7 +37,7 @@ make the final drill-down reproducible.
 Start with participant sign-in. ADMIN setup is not a learner task: the reservation provisions the
 database user, grants, ORDS access, Operations link, network ACL, and AI profile.
 
-AI Enrichment is performed only in Lab 4 for all three raw views: digital
+AI Enrichment is performed only in Lab 4 for all three raw tables: digital
 interactions, the product catalog, and operational returns. Lab 5 reuses the
 saved annotations to identify the governed-model gap, without repeating
 enrichment, then creates and validates the Analytic Views and answers the
@@ -67,6 +67,7 @@ After completing this workshop, participants can:
 
 * distinguish OCI sign-in from database sign-in and use a prepared participant session;
 * connect and inspect raw Iceberg and Oracle Operations sources;
+* create local snapshot tables so later analysis avoids repeated remote scans;
 * distinguish raw technical data from reviewed business metadata;
 * use Data Studio AI Enrichment to save descriptions and tags;
 * use Codex through MCP to identify missing semantic requirements;

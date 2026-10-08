@@ -20,9 +20,10 @@ CREATE USER PEAKGEAR_USER
   ACCOUNT UNLOCK;
 
 -- 3. Run these grants for a new or existing participant.
--- They allow only the objects built in this lab: views, attribute dimensions,
--- hierarchies, and analytic views.
+-- They allow only the objects built in this lab: local tables, views,
+-- attribute dimensions, hierarchies, and analytic views.
 GRANT CREATE SESSION,
+      CREATE TABLE,
       CREATE VIEW,
       CREATE ATTRIBUTE DIMENSION,
       CREATE HIERARCHY,

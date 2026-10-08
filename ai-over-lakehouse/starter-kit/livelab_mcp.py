@@ -25,12 +25,12 @@ _LIVELAB_QUERY_ADAPTER = "peakgear-json-bound-rows-v1"
 _TOP_DIGITAL_INTEREST_SQL = """
 WITH month_boundary AS (
     SELECT TRUNC(MAX(event_ts), 'MM') AS analysis_month
-    FROM peakgear_user.lab_digital_intent_raw_v
+    FROM peakgear_user.lab_digital_intent_raw_t
     WHERE event_ts < TRUNC(CURRENT_DATE, 'MM')
 ), top_products AS (
     SELECT product_id,
            COUNT(*) AS digital_events
-    FROM peakgear_user.lab_digital_intent_raw_v
+    FROM peakgear_user.lab_digital_intent_raw_t
     CROSS JOIN month_boundary
     WHERE event_ts >= analysis_month
       AND event_ts < ADD_MONTHS(analysis_month, 1)
@@ -45,7 +45,7 @@ SELECT t.product_id,
        TO_CHAR(b.analysis_month, 'YYYY-MM') AS analysis_month
 FROM top_products t
 CROSS JOIN month_boundary b
-LEFT JOIN peakgear_user.lab_products_raw_v p ON p.product_id = t.product_id
+LEFT JOIN peakgear_user.lab_products_raw_t p ON p.product_id = t.product_id
 ORDER BY t.digital_events DESC, t.product_id
 """
 _DIGITAL_CONTRACT_SQL = """
@@ -53,18 +53,25 @@ SELECT object_name,
        annotation_name,
        annotation_value
 FROM user_annotations_usage
-WHERE object_name IN ('LAB_DIGITAL_INTENT_RAW_V', 'LAB_PRODUCTS_RAW_V')
+WHERE object_name IN ('LAB_DIGITAL_INTENT_RAW_T', 'LAB_PRODUCTS_RAW_T')
   AND column_name IS NULL
   AND annotation_name IN ('DESCRIPTION', 'TAGS')
 ORDER BY object_name, annotation_name
 """
 _PRODUCT_KEY_CHECK_SQL = """
 SELECT product_id, COUNT(*) AS product_rows
-FROM peakgear_user.lab_products_raw_v
+FROM peakgear_user.lab_products_raw_t
 WHERE product_id IS NOT NULL
 GROUP BY product_id
 HAVING COUNT(*) > 1
 FETCH FIRST 1 ROW ONLY
+"""
+_RAW_SOURCE_OBJECTS_SQL = """
+SELECT object_name, object_type
+FROM user_objects
+WHERE object_name IN ('LAB_DIGITAL_INTENT_RAW_T', 'LAB_PRODUCTS_RAW_T')
+  AND object_type = 'TABLE'
+ORDER BY object_name
 """
 
 
@@ -97,9 +104,9 @@ if _upstream_browse_tool:
     mcp.remove_tool("adp_browse_catalog")
 
 _PEAKGEAR_AI_OBJECTS = frozenset({
-    "LAB_PRODUCTS_RAW_V",
-    "LAB_DIGITAL_INTENT_RAW_V",
-    "LAB_RETURNS_RAW_V",
+    "LAB_PRODUCTS_RAW_T",
+    "LAB_DIGITAL_INTENT_RAW_T",
+    "LAB_RETURNS_RAW_T",
     "LAB_PRODUCTS_SEMANTIC_T",
     "LAB_DIGITAL_POPULARITY_T",
     "LAB_RETURNS_T",
@@ -455,12 +462,12 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
     """Return the five products with the most digital interest right now.
 
     This is a narrow, read-only PeakGear lab tool. It reads only
-    PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_V and LAB_PRODUCTS_RAW_V.
+    PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_T and LAB_PRODUCTS_RAW_T.
     The metric and period intentionally
     match the saved Data Studio description: each row is one digital event and
     "right now" is the latest available month that ended before the database's
     current calendar month. Events are aggregated before joining product
-    labels. Both views require saved DESCRIPTION and
+    labels. Both tables require saved DESCRIPTION and
     TAGS annotations; duplicate product keys stop the lookup. Unavailable
     product names remain null rather than being invented. This simple label
     lookup does not replace the governed cross-source Analytic Views.
@@ -470,9 +477,29 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
         if client is None:
             return err("No ADP client is available.")
 
+        required_tables = {"LAB_DIGITAL_INTENT_RAW_T", "LAB_PRODUCTS_RAW_T"}
+        object_rows = _payload_items(client.Misc.run_query(_RAW_SOURCE_OBJECTS_SQL))
+        available_tables = set()
+        for row in object_rows:
+            if isinstance(row, dict):
+                name = row.get("OBJECT_NAME") or row.get("object_name")
+            elif isinstance(row, (list, tuple)) and row:
+                name = row[0]
+            else:
+                continue
+            if name is not None:
+                available_tables.add(str(name).upper())
+        missing_tables = sorted(required_tables - available_tables)
+        if missing_tables:
+            return json.dumps({
+                "status": "needs_source_tables",
+                "missing_tables": missing_tables,
+                "message": "Verify or create the local raw tables from Lab 2 before asking for this ranking.",
+            })
+
         contracts = _saved_interest_contracts(client)
         missing_contracts = {}
-        for object_name in ("LAB_DIGITAL_INTENT_RAW_V", "LAB_PRODUCTS_RAW_V"):
+        for object_name in ("LAB_DIGITAL_INTENT_RAW_T", "LAB_PRODUCTS_RAW_T"):
             contract = contracts.get(object_name, {})
             missing = [name for name in ("DESCRIPTION", "TAGS") if not contract.get(name)]
             if missing:
@@ -487,7 +514,7 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
                     "missing_contracts": missing_contracts,
                     "message": (
                         "Review and save Description and Tags for the digital "
-                        "and product views in Data Studio AI Enrichment before "
+                        "and product tables in Data Studio AI Enrichment before "
                         "asking for this ranking."
                     ),
                 }
@@ -497,7 +524,7 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
         if duplicates:
             return json.dumps({
                 "status": "needs_unique_product_keys",
-                "object": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_V",
+                "object": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_T",
                 "message": "Duplicate PRODUCT_ID values prevent a safe product-name join. Ask the instructor to inspect the source; do not deduplicate arbitrarily.",
             })
 
@@ -508,8 +535,8 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
         )
         return json.dumps(
             {
-                "object": "PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_V",
-                "product_labels": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_V",
+                "object": "PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_T",
+                "product_labels": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_T",
                 "definition": {
                     "customer_interest": "COUNT(*) of digital events",
                     "right_now": "latest completed calendar month present in EVENT_TS, excluding the database's current and future months",

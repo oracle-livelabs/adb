@@ -6,7 +6,8 @@ before the reservation is ready. Participants do not connect as ADMIN.
 The environment provider prepares:
 
 * the assigned database and PEAKGEAR_USER account with its reservation-specific
-  Database Password and required object-creation privileges;
+  Database Password, `CREATE TABLE`, enough table space quota for three local
+  raw snapshots, and the remaining object-creation privileges;
 * ORDS / Database Actions access for that user;
 * the required Databricks network ACL;
 * the public PEAKGEAR_OPERATIONS_LINK pointing to the event Operations source;

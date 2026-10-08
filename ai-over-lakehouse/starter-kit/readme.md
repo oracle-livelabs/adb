@@ -81,16 +81,17 @@ The shared event values are intentionally included in the workshop and in
    Click **Trust** if prompted.
 
 8. Create one new Codex task in that project. LiveLab starts automatically for
-   the new task. Continue with the Lab 3 connection checkpoint.
+   the new task. Paste the Lab 3 boundary prompt; it checks the connection
+   silently before each business question.
 
 LiveLab always connects as PEAKGEAR_USER. The word **admin** in the local MCP
 configuration identifies an MCP tool profile required to build Analytic Views;
 it is not a database username.
 
-## Required first checkpoint
+## Required connection check
 
-Before asking a business question, tell Codex to call
-**adp_get_connection_info**. Continue only if its non-secret response shows:
+The Lab 3 boundary tells Codex to call **adp_get_connection_info** before any
+other LiveLab tool for a business question. Codex checks these fields silently:
 
 | Field | Required value |
 |---|---|
@@ -100,7 +101,13 @@ Before asking a business question, tell Codex to call
 | session_ready | true |
 | query_result_adapter | peakgear-json-bound-rows-v1 |
 
-The checkpoint never returns a password or token.
+The check never returns a password or token. A successful check is not a
+business answer and need not be repeated in the chat.
+
+This Starter Kit queries the local snapshot tables created in Lab 2. An
+installed kit from an earlier version may still reference raw views; rerun
+setup from the current download and create a new Codex task before testing
+the local-table workflow.
 
 ## Start a clean retry
 

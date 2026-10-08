@@ -22,7 +22,8 @@ participant to create, edit, or validate an AI profile.
   password change; keep it clearly separate from the database password.
 - [ ] The reservation is active before starting or resuming; EXPIRED is not
   treated as an MCP configuration error.
-- [ ] Provider provisioning already enabled the required grants, ORDS, network
+- [ ] Provider provisioning already enabled `CREATE TABLE`, table space quota,
+  the remaining required grants, ORDS, network
   ACL, Operations link, and AI profile before the reservation is marked ready.
 - [ ] Operations credential and public database link read
   `CUSTOMER_RETURN_EVENTS`.
@@ -34,16 +35,17 @@ participant to create, edit, or validate an AI profile.
   not the OCI Login Credentials password or a sample password.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
 - [ ] `PRODUCTS` and `DIGITAL_CLICKSTREAM_EVENTS` return real rows.
-- [ ] Lab 2 goes from the mount to source validation and raw-view creation;
+- [ ] Lab 2 goes from the mount to source validation and local raw-table creation;
   no data-caching exercise is present. Product rows and distinct product IDs
-  match before creating the raw product view.
+  match before creating the raw product table. The three local row counts match
+  their source counts when the connected sources remain stable.
 - [ ] The default AI profile produces non-empty descriptions and tags for the
-  view and every column; an editable dialog or pre-existing tags alone are not
+  table and every column; an editable dialog or pre-existing tags alone are not
   proof that fresh AI Enrichment succeeded.
 - [ ] Codex `adp_get_connection_info` confirms the reserved database URL,
   `PEAKGEAR_USER`, a ready session, and the expected JSON response adapter.
 - [ ] The raw question receives an appropriately cautious answer.
-- [ ] Lab 4 saves reviewed descriptions and tags for all three raw views,
+- [ ] Lab 4 saves reviewed descriptions and tags for all three raw tables,
   including the product-name and join-key column definitions; the metadata is
   visible in Catalog.
 - [ ] Lab 5 reuses the Lab 4 annotations without repeating AI Enrichment.
@@ -55,6 +57,8 @@ participant to create, edit, or validate an AI profile.
   source, excluding the database's current and future months. Historical data
   is not presented as current live demand.
 - [ ] Codex identifies the cross-source governed-model gap.
+- [ ] Without validated Analytic Views, the harder question returns no ranking,
+  figures, or provisional recommendation.
 - [ ] Codex creates, validates, and queries both Analytic Views.
 - [ ] Every screenshot in `traceability.md` is captured, reviewed, and inserted
   with alt text.
@@ -68,6 +72,10 @@ participant to create, edit, or validate an AI profile.
 
 * The product-grain check must pass before joining labels or building a model;
   resolving duplicate reads must not mean arbitrarily deduplicating source data.
+* Confirm the Data Studio AI Enrichment dialog targets `ALTER TABLE` for each
+  local raw table, and re-capture the screenshots that previously showed views.
+* Local tables are snapshots; a new reservation dry run must validate the
+  one-time copy duration, quota, and source-to-table row counts.
 * The exact current Data Studio labels for Azure credential and Unity mount UI
   require capture before those steps are published.
 * The currently available LiveLab MCP build tools must be verified in the

@@ -46,9 +46,10 @@ and obtain the final governed answer in one module. It does not repeat enrichmen
 
 The data-caching exercise is temporarily excluded from this version. Lab 2
 goes directly from the catalog mount to source and product-key validation,
-then creates the three raw views. No learner step creates, populates, enables,
+then creates three local raw tables as snapshots for faster analysis. No learner
+step creates, populates, enables,
 or disables a data-cache policy. Existing database policies are not changed by
-this documentation update. Catalog metadata refresh and browser-preview cache
+this workshop update. Catalog metadata refresh and browser-preview cache
 instructions remain separate from data caching.
 
 ## Local preview
@@ -116,7 +117,7 @@ Offline helper and package regression tests (no database connection):
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s documentation/tests -v
 ```
 
-These checks cover ranking safeguards, lab numbering, Copy markup, local links,
+These checks cover local-table ranking safeguards, lab numbering, Copy markup, local links,
 image alt text, lowercase filenames, and exact ZIP/source-file agreement.
 They do not replace live Oracle execution, browser Copy testing, or a complete
 reservation dry run.
