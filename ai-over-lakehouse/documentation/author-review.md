@@ -72,7 +72,10 @@ participant to create, edit, or validate an AI profile.
 * The product-grain check must pass before joining labels or building a model;
   resolving duplicate reads must not mean arbitrarily deduplicating source data.
 * Confirm the Data Studio AI Enrichment dialog targets `ALTER TABLE` for each
-  local raw table, and re-capture the screenshots that previously showed views.
+  local raw table. Lab 4 now has table-based entry, review, and saved-state
+  screenshots; they illustrate the UI but do not prove the target check or
+  exact contract completeness. Replace the remaining historical raw-question
+  and enriched-answer captures.
 * Local tables are snapshots; a new reservation dry run must validate the
   one-time copy duration, quota, and product-key uniqueness before analytics.
 * The exact current Data Studio labels for Azure credential and Unity mount UI

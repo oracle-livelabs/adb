@@ -30,9 +30,18 @@ The default AI profile is already prepared. Do **not** create, select, edit, or
 validate a profile.
 
 1. Open **Catalog**.
-2. Open the PEAKGEAR&#95;USER schema, then **Tables**.
-3. Select LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T.
-4. Click **AI Enrichment**.
+2. Open the PEAKGEAR&#95;USER schema, then **Tables**. You should see the three
+   local tables created in Lab 2. The database label in the screenshots is an
+   example; use your reservation's database.
+
+   ![Data Studio Catalog lists the three PeakGear local raw tables under PEAKGEAR_USER > Tables](images/local-table-catalog.png)
+
+3. Select LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T. Its **Overview** shows the
+   description, tags, and columns. On a fresh table, these annotations are empty.
+4. Click **AI Enrichment** in the upper-right corner.
+
+   ![Digital Intent local table Overview with empty descriptions and tags and the AI Enrichment button in the upper-right corner](images/local-table-ai-enrichment-entry.png)
+
 5. Wait for generation to finish. Check that both the description and tags are
    populated for the table and for **every column**. AI-generated text is a
    suggestion, not a source of truth. An editable dialog alone does not prove
@@ -52,9 +61,16 @@ turn on **Show code** and confirm that its **ALTER TABLE** target is that same
 table under PEAKGEAR&#95;USER. If it targets a different table or object type,
 cancel and ask the instructor.
 
-<!-- Re-capture AI Enrichment entry and review screenshots for local tables. -->
-
 ## Task 2: Review the business contract
+
+The dialog has table-level fields at the top, followed by a description and
+tags for every column. **Show code** and **Save** are at the bottom.
+
+![AI Enrichment dialog for LAB_DIGITAL_INTENT_RAW_T with editable table and column descriptions and tags, Show code, and Save](images/local-table-ai-enrichment-review.png)
+
+This screenshot illustrates the fields, not the final business contract.
+Replace the suggested descriptions and tag chips with the reviewed values
+below; do not copy the example's AI-generated column text or tags.
 
 ### Digital interactions
 
@@ -196,9 +212,15 @@ If any field is missing or differs from the reviewed contract, reopen that
 table's metadata, correct it, save once, and repeat this verification before
 continuing to Task 4.
 
-<!-- Screenshot to insert after approved dry run: images/ai-enrichment-saved.png
-     Alt text: Data Studio Catalog shows the saved description and tags for
-     the Digital Intent table. -->
+After Save, the table's **Overview** displays its description and tag chips;
+the **Columns** section displays the column annotations.
+
+![Digital Intent table Overview after Save shows a table description and tags plus column annotations](images/local-table-annotations-saved.png)
+
+This example shows where saved values appear, not proof that every value
+matches Task 2. Your final description must begin with the text above, and
+your table and column tags must match the reviewed definitions. Verify all
+three tables, not only the visible fields in this screenshot.
 
 ## Task 4: Repeat the same question
 
