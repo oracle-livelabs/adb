@@ -13,12 +13,20 @@ ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "workshops" / "sandbox" / "manifest.json"
 
 
-def learner_labs():
+def learner_pages():
     manifest = json.loads(MANIFEST.read_text())
     return [
         (entry, (MANIFEST.parent / entry["filename"]).resolve())
         for entry in manifest["tutorials"]
         if not urlsplit(entry["filename"]).scheme
+    ]
+
+
+def learner_labs():
+    return [
+        (entry, path)
+        for entry, path in learner_pages()
+        if entry["title"].startswith("Lab ")
     ]
 
 
@@ -35,7 +43,7 @@ class WorkshopPackageTests(unittest.TestCase):
 
     def test_every_learner_code_block_has_copy_markup(self):
         fence = re.compile(r"^(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=fence)[ \t]*$", re.M | re.S)
-        for _, path in learner_labs():
+        for _, path in learner_pages():
             text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
             blocks = list(fence.finditer(text))
             markers = re.findall(r"^(?:~{3,}|`{3,})[^\n]*$", text, re.M)
@@ -50,7 +58,7 @@ class WorkshopPackageTests(unittest.TestCase):
 
     def test_local_links_resolve_and_images_have_alt_text(self):
         link = re.compile(r"(!?)\[([^\]]*)\]\(([^\s)]+)\)")
-        for _, path in learner_labs():
+        for _, path in learner_pages():
             text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
             for image, label, destination in link.findall(text):
                 with self.subTest(file=path.name, destination=destination):

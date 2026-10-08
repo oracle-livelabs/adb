@@ -115,9 +115,15 @@ open -a Codex "$HOME/Documents/peakgear-livelab"
 
    Click **Trust** if Codex asks whether you trust this project.
 
-8. **Create one new Codex task in that project.** LiveLab starts automatically
-   for the new task. Continue with Task 2 below. Do not reuse an older task or
-   add an MCP server manually.
+8. **Create a new Codex task in the peakgear-livelab project.** Select the
+   project opened in step 7, then create the task there. LiveLab starts
+   automatically for that new task. Continue with Task 2 in that task; do not
+   reuse a task from another project or an older task.
+
+**Setup checkpoint:** entering the credentials and seeing setup succeed are
+not yet proof that your Codex task is connected. Task 2 must confirm the current
+reservation's URL, PEAKGEAR&#95;USER, and **session&#95;ready = true** before you
+ask the business question in Task 3. Keep this new task open for Labs 4–6.
 
 The setup stores the connection password in the local macOS Keychain. It does
 not write that password or source tokens into the generated project
@@ -129,7 +135,9 @@ configuration. The event values are intentionally documented in the workshop.
 
 ## Task 2: Establish the MCP boundary
 
-Paste this once into the new Codex task:
+In the new task created in Task 1, paste this boundary prompt once. Wait for
+Codex to run the connection check, then compare its response with the table
+below before continuing to Task 3:
 
 ~~~text
 <copy>

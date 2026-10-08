@@ -47,6 +47,12 @@ Task 2 provides the definitions for all three views. Save the digital view
 first, then repeat the same **Catalog > Views > AI Enrichment** flow for
 LAB&#95;PRODUCTS&#95;RAW&#95;V and LAB&#95;RETURNS&#95;RAW&#95;V. Each view needs its own **Save**.
 
+**Temporary UI note:** when enriching Products or Returns, the inner heading
+may still show LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V. Check that the outer dialog
+title names the view you selected, then turn on **Show code** and confirm that
+the **ALTER VIEW** target is that same view under PEAKGEAR&#95;USER before
+saving. If the SQL targets a different view, cancel and ask the instructor.
+
 ![Open the LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;V overview and click AI Enrichment.](images/ai-enrichment-entry.png)
 
 ![AI Enrichment generates an initial description and tags. Review them; they are suggestions, not the final business contract.](images/ai-enrichment-review.png)
@@ -97,19 +103,26 @@ separate tags. Remove extra suggested tags rather than appending the reviewed
 tags to them. Click the dialog heading to close a tag dropdown before moving
 to another field, so a suggestion menu does not cover the next field.
 
-After editing a description, move focus to another field and confirm that the
-complete reviewed text remains visible. Before each view's **Save**, turn on
-**Show code** and check the view description, every column description, and
-all tag values against this task. If the code still contains an AI-suggested
-description or a partial edit, turn **Show code** off and correct the field
-before saving. Use the code for review; click **Save** in the dialog instead
-of copying and running the generated SQL. Wait for **Save** to finish and the
-dialog to close before opening the next view. Annotations may appear gradually
-while the operation is still running; verify the complete saved values in Task 3.
-If Save reports a connection error, refresh Catalog and use Task 3 to check
-the complete contract before retrying. An error can leave a partial set of
-annotations; a changed view description alone does not confirm that every
-column description and tag saved.
+For each view, follow this Save sequence:
+
+1. After editing a description, move focus to another field and confirm that
+   the complete reviewed text remains visible.
+2. Turn on **Show code**. Check the selected view's **ALTER VIEW** target,
+   view description, every column description, and all tags against this task.
+   If a value is missing, partial, or still AI-suggested, turn **Show code** off
+   and correct the field. Use the code for review; save through the dialog.
+3. Click **Save once**. Saving may take more than a minute. While **Save**,
+   **Cancel**, and **Close** are disabled, wait; do not click Save again or
+   refresh the page.
+4. Wait for the dialog to close before opening the next view. If it remains
+   disabled without a completion message after a reasonable wait, ask the
+   instructor to check the operation before retrying.
+
+Annotations may appear gradually while Save is running. After all three saves,
+use Task 3 to verify every description and tag. If Save reports a connection
+error, refresh Catalog and perform that same verification before retrying;
+the operation may have saved only part of the contract. A changed view
+description alone does not confirm a complete save.
 
 ### Product catalog
 
@@ -142,9 +155,10 @@ Click **Save**. All three views must be saved before Task 3.
 
 ## Task 3: Verify the saved annotations
 
-Close the dialog and reopen each view in Catalog. Confirm that its reviewed
-description and tags are visible, including the column definitions. The
-digital view's Overview description must begin with:
+After all three Save operations have finished, reopen each view in Catalog.
+Compare its view-level and every column's description and tags with Task 2.
+Check the full values, including the product-name and join-key definitions.
+The digital view's Overview description must begin with:
 
 ~~~text
 <copy>
@@ -179,8 +193,9 @@ annotations. In this workshop that is 10 annotation rows for Digital Intent,
 8 for Products, and 10 for Returns: **28 rows in total**. A row count is only
 a completeness check; also review the values, including CATEGORY&#95;NAME's
 `category, hierarchy_level` tags and the product-name and join-key definitions.
-If one field is missing, reopen that view's reviewed metadata, correct it and
-save before continuing.
+If any field is missing or differs from the reviewed contract, reopen that
+view's metadata, correct it, save once, and repeat this verification before
+continuing to Task 4.
 
 <!-- Screenshot to insert after approved dry run: images/ai-enrichment-saved.png
      Alt text: Data Studio Catalog shows the saved description and tags for
