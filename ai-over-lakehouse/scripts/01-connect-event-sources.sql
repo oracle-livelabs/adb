@@ -101,4 +101,5 @@ SELECT COUNT(*) AS products
 FROM ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR;
 
 -- Expected: ICEBERG schema, PRODUCTS and DIGITAL_CLICKSTREAM_EVENTS,
--- and a positive count for both tables. Continue with Lab 2 Task 3 (Lake Cache).
+-- and a positive count for both tables. Continue with Lab 2 Task 3
+-- (Prove the two live sources) to check product-key uniqueness and create views.

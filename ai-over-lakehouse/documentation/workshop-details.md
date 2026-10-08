@@ -30,8 +30,7 @@ make the final drill-down reproducible.
 | 2 | Connect real Databricks and Operations sources | 15 |
 | 3 | Connect Codex and ask the raw-data question | 8 |
 | 4 | Add business meaning with Data Studio AI Enrichment | 12 |
-| 5 | Identify the governed-model gap | 5 |
-| 6 | Create Analytic Views with Codex and answer the question | 15 |
+| 5 | Identify the model gap, create Analytic Views with Codex, and answer the question | 20 |
 | Buffer | Troubleshooting and discussion | 15 |
 | Total | | 75 |
 
@@ -41,7 +40,8 @@ database user, grants, ORDS access, Operations link, network ACL, and AI profile
 AI Enrichment is performed only in Lab 4 for all three raw views: digital
 interactions, the product catalog, and operational returns. Lab 5 reuses the
 saved annotations to identify the governed-model gap, without repeating
-enrichment.
+enrichment, then creates and validates the Analytic Views and answers the
+final question in the same lab.
 
 ## Workshop Prerequisites
 

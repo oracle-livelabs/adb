@@ -34,16 +34,15 @@ is added to the package.
 | 6.2 | ai-enrichment/images/ai-enrichment-review.png | 4 | AI Enrichment review form before Save |
 | 8 | connect-codex/images/raw-question.png | 3 | Controlled stop before the Digital Intent contract is saved |
 | 9 | ai-enrichment/images/same-question-after-enrichment.png | 4 | Same question after the annotation-backed contract |
-| 11 | analytic-views/images/final-governed-answer.png | 6 | Governed category recommendation and drill-down |
+| 11 | analytic-views/images/final-governed-answer.png | 5 | Governed category recommendation and drill-down |
 
 ## Still needed
 
 | File | Lab | Required visible state |
 |---|---:|---|
-| connect-sources/images/lake-cache-policy.png | 2 | SQL Worksheet cache inspection for both mounted Iceberg tables |
 | ai-enrichment/images/ai-enrichment-saved.png | 4 | Catalog Overview after the reviewed Description and Tags are saved |
-| governed-question/images/governed-model-gap.png | 5 | Codex names time, hierarchy, and aggregation requirements without recommending |
-| analytic-views/images/codex-builds-av.png | 6 | Codex creates and validates both Analytic Views |
+| analytic-views/images/governed-model-gap.png | 5 | Codex names time, hierarchy, and aggregation requirements without recommending |
+| analytic-views/images/codex-builds-av.png | 5 | Codex creates and validates both Analytic Views |
 
 ## Publication checks
 
@@ -59,8 +58,6 @@ is added to the package.
 * Each Markdown image has descriptive alt text.
 * The old default-ai-profile.png remains a historical asset, not the current
   learner reference: profile names must come from the reservation.
-* Do not claim Lake Cache acceleration without a verified plan and runtime
-  comparison.
 
 ## Reservation illustration edit provenance
 

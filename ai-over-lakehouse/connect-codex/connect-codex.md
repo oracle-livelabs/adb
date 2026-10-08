@@ -123,7 +123,7 @@ open -a Codex "$HOME/Documents/peakgear-livelab"
 **Setup checkpoint:** entering the credentials and seeing setup succeed are
 not yet proof that your Codex task is connected. Task 2 must confirm the current
 reservation's URL, PEAKGEAR&#95;USER, and **session&#95;ready = true** before you
-ask the business question in Task 3. Keep this new task open for Labs 4–6.
+ask the business question in Task 3. Keep this new task open for Labs 4–5.
 
 The setup stores the connection password in the local macOS Keychain. It does
 not write that password or source tokens into the generated project

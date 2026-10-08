@@ -229,7 +229,7 @@ after reading the saved contracts and checking product-key uniqueness. Derive
 the actual completed source month first, then run the ranking for that bounded
 month with the same metric and product-label rules. Report the count of events
 without PRODUCT&#95;ID separately. A timeout is not an empty ranking, and it does
-not require creating Analytic Views early or changing cache policies.
+not require creating Analytic Views early.
 
 State the actual month returned by MCP. The workshop uses historical data;
 the result need not be the month immediately before today's date. Do not

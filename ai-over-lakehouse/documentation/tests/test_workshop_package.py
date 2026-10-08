@@ -31,15 +31,41 @@ def learner_labs():
 
 
 class WorkshopPackageTests(unittest.TestCase):
-    def test_six_participant_labs_are_numbered_from_one(self):
+    def test_five_participant_labs_are_numbered_from_one(self):
         labs = learner_labs()
-        self.assertEqual(len(labs), 6)
+        self.assertEqual(len(labs), 5)
         for number, (entry, path) in enumerate(labs, 1):
             with self.subTest(lab=number):
                 self.assertTrue(entry["title"].startswith(f"Lab {number}: "))
                 self.assertNotIn("ADMIN", entry["title"])
                 self.assertEqual(unescape(path.read_text().splitlines()[0]), "# " + entry["title"])
         self.assertTrue((MANIFEST.parent / "index.html").is_file())
+
+    def test_task_numbers_are_contiguous_in_each_lab(self):
+        for _, path in learner_labs():
+            tasks = [int(number) for number in re.findall(r"^## Task (\d+):", path.read_text(), re.M)]
+            with self.subTest(file=path.name):
+                self.assertTrue(tasks)
+                self.assertEqual(tasks, list(range(1, len(tasks) + 1)))
+
+    def test_learner_pages_do_not_manage_data_cache(self):
+        for _, path in learner_pages():
+            text = unescape(path.read_text())
+            with self.subTest(file=path.name):
+                self.assertNotRegex(text, re.compile(r"\b(?:DBMS_EXT_TABLE_CACHE|USER_EXTERNAL_TAB_CACHES|Lake\s+Cache)\b", re.I))
+
+    def test_final_lab_combines_model_gap_build_and_answer(self):
+        entry, path = learner_labs()[-1]
+        text = path.read_text()
+        self.assertEqual(entry["title"], "Lab 5: Create Analytic Views with Codex")
+        headings = re.findall(r"^## Task \d+: (.+)$", text, re.M)
+        self.assertEqual(headings, [
+            "Ask the harder business question",
+            "Review the governed-model requirements",
+            "Ask Codex to build the model",
+            "Ask the final business question",
+        ])
+        self.assertFalse((ROOT / "governed-question" / "governed-question.md").exists())
 
     def test_every_learner_code_block_has_copy_markup(self):
         fence = re.compile(r"^(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=fence)[ \t]*$", re.M | re.S)

@@ -2,7 +2,7 @@
 
 Estimated Time: 60 minutes, plus a 15-minute troubleshooting buffer.
 
-This is a six-module Oracle LiveLabs workshop package, numbered **Labs 1–6**.
+This is a five-module Oracle LiveLabs workshop package, numbered **Labs 1–5**.
 Participants begin with an already provisioned reservation, use its OCI and
 database credentials to connect Data Studio, connect real Iceberg and Operations
 data, and then use Codex with Oracle Data Studio MCP. The same business question
@@ -41,7 +41,15 @@ password is redacted. Values from the learner's own reservation are authoritativ
 Lab 4 is the only learner module that runs AI Enrichment. It reviews and saves
 the descriptions and tags for digital interactions, the product catalog, and
 operational returns. Lab 5 reuses those annotations to ask the harder business
-question and identify the governed-model gap; it does not repeat enrichment.
+question, identify the governed-model gap, create and validate Analytic Views,
+and obtain the final governed answer in one module. It does not repeat enrichment.
+
+The data-caching exercise is temporarily excluded from this version. Lab 2
+goes directly from the catalog mount to source and product-key validation,
+then creates the three raw views. No learner step creates, populates, enables,
+or disables a data-cache policy. Existing database policies are not changed by
+this documentation update. Catalog metadata refresh and browser-preview cache
+instructions remain separate from data caching.
 
 ## Local preview
 

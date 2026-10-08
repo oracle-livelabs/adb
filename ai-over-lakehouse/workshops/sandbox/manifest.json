@@ -27,13 +27,7 @@
       "filename": "../../ai-enrichment/ai-enrichment.md"
     },
     {
-      "title": "Lab 5: Identify the governed-model gap",
-      "description": "",
-      "type": "livelabs",
-      "filename": "../../governed-question/governed-question.md"
-    },
-    {
-      "title": "Lab 6: Create Analytic Views with Codex",
+      "title": "Lab 5: Create Analytic Views with Codex",
       "description": "",
       "type": "livelabs",
       "filename": "../../analytic-views/analytic-views.md"

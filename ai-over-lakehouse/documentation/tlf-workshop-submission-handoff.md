@@ -110,8 +110,6 @@ The business question is:
   database account. Source credentials are stored in the database, not passed
   as MCP launcher arguments.
 * Keeps the final answer reproducible and explicit about its limitations.
-* Introduces Lake Cache directly after the Iceberg mount while keeping
-  performance claims evidence-based.
 
 ## Target audience
 
@@ -196,19 +194,19 @@ This is the current hands-on boundary:
 3. Use Data Studio UI to create the Azure storage credential and Databricks
    OAuth credential.
 4. Use Data Studio UI to mount the Databricks Unity/Iceberg catalog.
-5. Add Lake Cache policies for both mounted Iceberg tables.
-6. Create three user-owned raw views over products, digital intent, and
+5. Verify both live sources and unique product keys, then create three
+   user-owned raw views over products, digital intent, and
    returns.
-7. In Lab 3, obtain ADP_URL with the provided SQL query, then download the
+6. In Lab 3, obtain ADP_URL with the provided SQL query, then download the
    single Starter Kit and configure the project-scoped LiveLab MCP connection
    using ADP_URL and the reservation's Database Password. No ADMIN login is
    needed.
-8. Ask a simple raw-data question and observe a controlled stop.
-9. Use Data Studio AI Enrichment to review and save descriptions and tags.
-10. Repeat the same question and observe the improved answer.
-11. Ask a harder cross-source question and identify the governed-model gap.
-12. Ask Codex through MCP to create and validate the required Analytic Views.
-13. Ask the final question and review the governed category and product
+7. Ask a simple raw-data question and observe a controlled stop.
+8. Use Data Studio AI Enrichment to review and save descriptions and tags.
+9. Repeat the same question and observe the improved answer.
+10. In Lab 5, ask a harder cross-source question and identify the governed-model gap.
+11. In the same lab, ask Codex through MCP to create and validate the required Analytic Views.
+12. Ask the final question and review the governed category and product
     drill-down.
 
 ## What is preconfigured
@@ -242,8 +240,6 @@ After completing the workshop, participants can:
 6. Use a controlled AI stop to identify missing business definitions.
 7. Create and validate Analytic Views through Codex and MCP.
 8. Produce an explainable cross-source answer with a reusable drill-down.
-9. Explain the difference between a Lake Cache policy, populated cache files,
-   and verified query acceleration.
 
 ## Workshop outline
 
@@ -253,14 +249,15 @@ After completing the workshop, participants can:
 | 2 | Connect real Oracle and Databricks sources | 15 minutes |
 | 3 | Connect Codex and ask the raw-data question | 8 minutes |
 | 4 | Add business meaning with Data Studio AI Enrichment | 12 minutes |
-| 5 | Identify the governed-model gap | 5 minutes |
-| 6 | Create Analytic Views with Codex and answer the question | 15 minutes |
+| 5 | Identify the model gap, create Analytic Views with Codex, and answer the question | 20 minutes |
 | Buffer | Troubleshooting and discussion | 15 minutes |
 | Total |  | 75 minutes |
 
 AI Enrichment is performed only in Lab 4, where participants review and save
 the descriptions and tags for all three raw views. Lab 5 reuses those saved
-annotations for the harder question; it does not repeat enrichment.
+annotations for the harder question, identifies the model requirements, builds
+and validates the Analytic Views, and answers the final question in one module.
+It does not repeat enrichment.
 
 ## Business questions used in the workshop
 
@@ -297,7 +294,6 @@ The exact same question is asked twice:
 * Databricks Unity Catalog
 * Apache Iceberg
 * Azure Blob Storage
-* Lake Cache
 * Codex Desktop
 
 ## Suggested categories
@@ -316,7 +312,7 @@ Use the closest available TLF categories:
 ## Suggested keywords and tags
 
 Oracle AI Lakehouse, Data Studio, Databricks, Unity Catalog, Apache Iceberg,
-Lake Cache, database link, Analytic Views, semantic layer, annotations, Codex,
+database link, Analytic Views, semantic layer, annotations, Codex,
 MCP, governed AI, retail analytics, product popularity, digital intent,
 returns analysis, cross-source analytics.
 
@@ -347,7 +343,7 @@ The workshop is successful when:
 * The lab does not grant DBA or broad ANY privileges to PEAKGEAR_USER.
 * Participants do not provision users, grants, ORDS, ACLs, database links, or
   AI profiles, and do not log in as ADMIN.
-* The lab does not claim Lake Cache speedup without plan and runtime evidence.
+* Data caching is temporarily excluded from this version of the workshop.
 
 ## Event values and publication notes
 
@@ -375,7 +371,7 @@ The workshop is successful when:
 
 Completed:
 
-* Six learner modules, numbered Labs 1–6, and a sandbox manifest starting at Lab 1.
+* Five learner modules, numbered Labs 1–5, and a sandbox manifest starting at Lab 1.
 * Provider-only provisioning boundary; legacy operator SQL is not a learner task.
 * Event-values reference and SQL alternative to the Data Studio source mount.
 * Project-scoped Codex MCP starter kit.
@@ -386,14 +382,12 @@ Completed:
 
 Still required before publication:
 
-* Lake Cache inspection screenshot.
 * Data Studio Catalog screenshot after the reviewed annotations are saved.
 * Codex screenshot explaining the governed-model gap.
 * Codex screenshot creating and validating both Analytic Views.
 * Final end-to-end dry run in the target event environment.
 * Verification that the target Data Studio MCP release can perform the
   Analytic View build path used by the workshop.
-* Final Lake Cache behavior and query-plan evidence.
 
 ## Known evidence boundaries
 
@@ -403,8 +397,6 @@ Still required before publication:
   final stage.
 * A visible AI profile or AI Profile ready badge is not sufficient runtime
   proof; AI Enrichment and the actual Codex MCP path must work in the dry run.
-* A populated Lake Cache is not proof that a query used the cache or ran
-  faster.
 * Codex-generated Analytic View creation remains a publication gate until it
   succeeds with the target MCP release.
 
@@ -419,7 +411,7 @@ Still required before publication:
 | Sandbox manifest | workshops/sandbox/manifest.json |
 | Provider-only provisioning reference | documentation/provisioning.md; scripts/00-admin-setup.sql |
 | Codex starter kit | starter-kit/ |
-| Learner modules | connect-peakgear/, connect-sources/, connect-codex/, ai-enrichment/, governed-question/, analytic-views/ |
+| Learner modules | connect-peakgear/, connect-sources/, connect-codex/, ai-enrichment/, analytic-views/ |
 
 ## Instructions for the next Codex agent
 
@@ -435,12 +427,12 @@ When using this document to populate TLF:
    governed Analytic Views, and Codex through MCP.
 4. Do not add AI Profile creation to the participant flow. The default profile
    is preconfigured.
-5. Start at Lab 1 and preserve numbering 1–6. Never restore participant ADMIN
+5. Start at Lab 1 and preserve numbering 1–5. Never restore participant ADMIN
    setup or use example screenshot passwords for a live reservation.
 6. Do not replace Codex-created Analytic Views with learner copy-and-paste DDL
    unless the user explicitly chooses the fallback path.
 7. Do not describe annotations as constraints or guaranteed joins.
-8. Do not claim sales, revenue, margin, return rate, or Lake Cache performance
+8. Do not claim sales, revenue, margin, return rate, or data-caching performance
    that the lab does not prove.
 9. Publish only the explicitly owner-approved shared source values; keep
    reservation passwords, personal credentials, and unrelated secrets out of

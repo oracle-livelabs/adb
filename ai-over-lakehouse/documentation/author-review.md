@@ -34,6 +34,9 @@ participant to create, edit, or validate an AI profile.
   not the OCI Login Credentials password or a sample password.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
 - [ ] `PRODUCTS` and `DIGITAL_CLICKSTREAM_EVENTS` return real rows.
+- [ ] Lab 2 goes from the mount to source validation and raw-view creation;
+  no data-caching exercise is present. Product rows and distinct product IDs
+  match before creating the raw product view.
 - [ ] The default AI profile produces non-empty descriptions and tags for the
   view and every column; an editable dialog or pre-existing tags alone are not
   proof that fresh AI Enrichment succeeded.
@@ -44,6 +47,8 @@ participant to create, edit, or validate an AI profile.
   including the product-name and join-key column definitions; the metadata is
   visible in Catalog.
 - [ ] Lab 5 reuses the Lab 4 annotations without repeating AI Enrichment.
+- [ ] Lab 5 contains the harder question, model requirements, AV creation,
+  and final governed answer in order; there is no separate Lab 6.
 - [ ] The enriched simple answer uses product names from the reviewed product
   catalog; aggregation precedes the label join and duplicate product keys stop it.
 - [ ] The answer states the actual latest completed month available in the
@@ -61,9 +66,7 @@ participant to create, edit, or validate an AI profile.
 
 ## Known release gates
 
-* The cache behavior must be rerun and described accurately. Do not present a
-  cache policy as a successful acceleration proof without query-plan evidence.
-  The product-grain check must pass before joining labels or building a model;
+* The product-grain check must pass before joining labels or building a model;
   resolving duplicate reads must not mean arbitrarily deduplicating source data.
 * The exact current Data Studio labels for Azure credential and Unity mount UI
   require capture before those steps are published.
