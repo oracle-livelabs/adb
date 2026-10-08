@@ -114,8 +114,9 @@ BEGIN
 END;
 /
 
-SELECT COUNT(*) AS operational_return_events
-FROM customer_return_events@peakgear_operations_link;
+SELECT *
+FROM customer_return_events@peakgear_operations_link
+FETCH FIRST 5 ROWS ONLY;
 
 -- 8. Legacy provider-only URL lookup; not a learner task.
 -- Learners run this read-only URL query in Lab 3, Task 1 as PEAKGEAR_USER.

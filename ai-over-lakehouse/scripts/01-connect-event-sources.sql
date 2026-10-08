@@ -94,12 +94,15 @@ FROM all_tables@DBX_UNITY_PEAKGEAR
 WHERE UPPER(owner) = 'ICEBERG'
 ORDER BY owner, table_name;
 
-SELECT COUNT(*) AS digital_clickstream_events
-FROM ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR;
+SELECT *
+FROM ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR
+FETCH FIRST 5 ROWS ONLY;
 
-SELECT COUNT(*) AS products
-FROM ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR;
+SELECT *
+FROM ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR
+FETCH FIRST 5 ROWS ONLY;
 
 -- Expected: ICEBERG schema, PRODUCTS and DIGITAL_CLICKSTREAM_EVENTS,
--- and a positive count for both tables. Continue with Lab 2 Task 3
--- (Prove the two live sources) to check product-key uniqueness and create local tables.
+-- and sample rows from both tables. Continue with Lab 2 Task 3
+-- (Prove the two live sources) for five-row previews and local table creation.
+-- Product-key uniqueness is checked against the local table before analytics.

@@ -194,9 +194,9 @@ This is the current hands-on boundary:
 3. Use Data Studio UI to create the Azure storage credential and Databricks
    OAuth credential.
 4. Use Data Studio UI to mount the Databricks Unity/Iceberg catalog.
-5. Verify both live sources and unique product keys, then create three
+5. Preview five rows from each live source, then create three
    user-owned local raw snapshot tables for products, digital intent, and
-   returns.
+   returns. Validate product keys locally before analytics.
 6. In Lab 3, obtain ADP_URL with the provided SQL query, then download the
    single Starter Kit and configure the project-scoped LiveLab MCP connection
    using ADP_URL and the reservation's Database Password. No ADMIN login is

@@ -35,10 +35,9 @@ participant to create, edit, or validate an AI profile.
   not the OCI Login Credentials password or a sample password.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
 - [ ] `PRODUCTS` and `DIGITAL_CLICKSTREAM_EVENTS` return real rows.
-- [ ] Lab 2 goes from the mount to source validation and local raw-table creation;
-  no data-caching exercise is present. Product rows and distinct product IDs
-  match before creating the raw product table. The three local row counts match
-  their source counts when the connected sources remain stable.
+- [ ] Lab 2 reads up to five rows from each remote source before local raw-table
+  creation; no full source count or data-caching exercise is present. Table
+  creation completes and Sample Data shows rows for all three local tables.
 - [ ] The default AI profile produces non-empty descriptions and tags for the
   table and every column; an editable dialog or pre-existing tags alone are not
   proof that fresh AI Enrichment succeeded.
@@ -75,7 +74,7 @@ participant to create, edit, or validate an AI profile.
 * Confirm the Data Studio AI Enrichment dialog targets `ALTER TABLE` for each
   local raw table, and re-capture the screenshots that previously showed views.
 * Local tables are snapshots; a new reservation dry run must validate the
-  one-time copy duration, quota, and source-to-table row counts.
+  one-time copy duration, quota, and product-key uniqueness before analytics.
 * The exact current Data Studio labels for Azure credential and Unity mount UI
   require capture before those steps are published.
 * The currently available LiveLab MCP build tools must be verified in the

@@ -152,31 +152,33 @@ Run SQL executes the current statement, not every statement in a pasted script.
 
 ~~~sql
 <copy>
-SELECT COUNT(*) AS products,
-       COUNT(DISTINCT product_id) AS distinct_products
-FROM iceberg.products@dbx_unity_peakgear;
+SELECT *
+FROM iceberg.products@dbx_unity_peakgear
+FETCH FIRST 5 ROWS ONLY;
 </copy>
 ~~~
 
 ~~~sql
 <copy>
-SELECT COUNT(*) AS digital_clickstream_events
-FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
+SELECT *
+FROM iceberg.digital_clickstream_events@dbx_unity_peakgear
+FETCH FIRST 5 ROWS ONLY;
 </copy>
 ~~~
 
 ~~~sql
 <copy>
-SELECT COUNT(*) AS operational_return_events
-FROM customer_return_events@peakgear_operations_link;
+SELECT *
+FROM customer_return_events@peakgear_operations_link
+FETCH FIRST 5 ROWS ONLY;
 </copy>
 ~~~
 
-All three queries must return a count. The product count must equal the
-distinct-product count: the product catalog must contain one row per product.
-If the counts differ, stop and ask the instructor to investigate the source.
-Do not hide duplicate reads with `DISTINCT` or continue with inflated event
-counts, and do not invent a product mapping.
+Each query should return up to five sample rows. This confirms that you can
+read the source without running a full row count. The prepared lab sources
+should contain data; if a query returns no rows or an error, ask the instructor
+to check the source before continuing. A sample does not prove product-key
+uniqueness; that check runs against the local product table before analytics.
 
 On a new reservation, create the three raw, participant-owned tables by running
 **each block separately**. Each `CREATE TABLE AS SELECT` can take time while it
@@ -221,22 +223,12 @@ FROM customer_return_events@peakgear_operations_link;
 
 In Catalog, check **Tables** under PEAKGEAR&#95;USER for all three names. The
 tables are local copies at the time the statements ran; they do not refresh
-automatically. They do not yet add business definitions. The source counts
-above and the local counts below should match when the sources remain stable:
-
-~~~sql
-<copy>
-SELECT 'PRODUCTS' AS source_name, COUNT(*) AS local_rows FROM lab_products_raw_t
-UNION ALL
-SELECT 'DIGITAL EVENTS', COUNT(*) FROM lab_digital_intent_raw_t
-UNION ALL
-SELECT 'RETURNS', COUNT(*) FROM lab_returns_raw_t;
-</copy>
-~~~
-
-If a count differs, inspect the source and completed table creation before
-continuing. Do not silently remove or duplicate rows. Later labs use these
-local snapshots through Data Studio and the bounded MCP server.
+automatically. They do not yet add business definitions. Open **Sample Data**
+for each table and confirm that rows are present after creation completes.
+Later labs use these local snapshots through Data Studio and the bounded MCP
+server. Before joining product labels, MCP checks the local product table for
+duplicate product keys. If duplicates are reported, ask the instructor to
+investigate; do not deduplicate arbitrarily or invent a product mapping.
 
 ### Checkpoint
 

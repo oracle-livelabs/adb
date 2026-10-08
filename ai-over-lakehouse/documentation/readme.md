@@ -45,8 +45,9 @@ question, identify the governed-model gap, create and validate Analytic Views,
 and obtain the final governed answer in one module. It does not repeat enrichment.
 
 The data-caching exercise is temporarily excluded from this version. Lab 2
-goes directly from the catalog mount to source and product-key validation,
-then creates three local raw tables as snapshots for faster analysis. No learner
+goes directly from the catalog mount to five-row source previews,
+then creates three local raw tables as snapshots for faster analysis. Product
+keys are validated locally before analytics. No learner
 step creates, populates, enables,
 or disables a data-cache policy. Existing database policies are not changed by
 this workshop update. Catalog metadata refresh and browser-preview cache
