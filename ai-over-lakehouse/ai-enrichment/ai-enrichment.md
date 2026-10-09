@@ -31,21 +31,21 @@ validate a profile.
 
 1. Open **Catalog**.
 2. Open the PEAKGEAR&#95;USER schema, then **Tables**. You should see the three
-   local tables created in Lab 2. The database label in the screenshots is an
-   example; use your reservation's database.
+    local tables created in Lab 2. The database label in the screenshots is an
+    example; use your reservation's database.
 
-   ![Data Studio Catalog lists the three PeakGear local raw tables under PEAKGEAR_USER > Tables](images/local-table-catalog.png)
+    ![Data Studio Catalog lists the three PeakGear local raw tables under PEAKGEAR_USER > Tables](images/local-table-catalog.png)
 
 3. Select LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T. Its **Overview** shows the
-   description, tags, and columns. On a fresh table, these annotations are empty.
+    description, tags, and columns. On a fresh table, these annotations are empty.
 4. Click **AI Enrichment** in the upper-right corner.
 
-   ![Digital Intent local table Overview with empty descriptions and tags and the AI Enrichment button in the upper-right corner](images/local-table-ai-enrichment-entry.png)
+    ![Digital Intent local table Overview with empty descriptions and tags and the AI Enrichment button in the upper-right corner](images/local-table-ai-enrichment-entry.png)
 
 5. Wait for generation to finish. Check that both the description and tags are
-   populated for the table and for **every column**. AI-generated text is a
-   suggestion, not a source of truth. An editable dialog alone does not prove
-   that generation succeeded.
+    populated for the table and for **every column**. AI-generated text is a
+    suggestion, not a source of truth. An editable dialog alone does not prove
+    that generation succeeded.
 
 If Data Studio reports **invalid column tags** or **did not return column
 tags**, retain the error and ask the instructor to repair the prepared AI
@@ -121,17 +121,17 @@ to another field, so a suggestion menu does not cover the next field.
 For each table, follow this Save sequence:
 
 1. After editing a description, move focus to another field and confirm that
-   the complete reviewed text remains visible.
+    the complete reviewed text remains visible.
 2. Turn on **Show code**. Check the selected table's **ALTER TABLE** target,
-   table description, every column description, and all tags against this task.
-   If a value is missing, partial, or still AI-suggested, turn **Show code** off
-   and correct the field. Use the code for review; save through the dialog.
+    table description, every column description, and all tags against this task.
+    If a value is missing, partial, or still AI-suggested, turn **Show code** off
+    and correct the field. Use the code for review; save through the dialog.
 3. Click **Save once**. Saving may take more than a minute. While **Save**,
-   **Cancel**, and **Close** are disabled, wait; do not click Save again or
-   refresh the page.
+    **Cancel**, and **Close** are disabled, wait; do not click Save again or
+    refresh the page.
 4. Wait for the dialog to close before opening the next table. If it remains
-   disabled without a completion message after a reasonable wait, ask the
-   instructor to check the operation before retrying.
+    disabled without a completion message after a reasonable wait, ask the
+    instructor to check the operation before retrying.
 
 Annotations may appear gradually while Save is running. After all three saves,
 use Task 3 to verify every description and tag. If Save reports a connection

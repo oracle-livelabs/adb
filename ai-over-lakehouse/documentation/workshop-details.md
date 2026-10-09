@@ -1,5 +1,9 @@
 # Workshop Details
 
+### Objectives
+
+Describe the audience, learning objectives, prerequisites, and hands-on workshop plan.
+
 Estimated Time: 60 minutes for hands-on work, plus a 15-minute recovery and
 discussion buffer.
 

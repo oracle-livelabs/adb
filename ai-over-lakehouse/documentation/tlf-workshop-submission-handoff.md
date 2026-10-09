@@ -1,5 +1,11 @@
 # PeakGear Workshop — TLF Submission Handoff
 
+Estimated Time: Reference only; not a timed learner task.
+
+### Objectives
+
+Provide the workshop submission metadata, current learner path, and publication handoff.
+
 ## Purpose of this document
 
 Use this file as the canonical metadata and positioning source when entering
@@ -447,3 +453,8 @@ When using this document to populate TLF:
    public output. Label reservation screenshots as illustrative examples.
 10. Use the files listed above as the source of truth for final links and
     current readiness.
+
+## Acknowledgements
+
+* **Author** - Oracle AI Lakehouse workshop team
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

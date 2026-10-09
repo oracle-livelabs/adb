@@ -1,5 +1,11 @@
 # Shared workshop assets
 
+Estimated Time: Reference only; not a timed learner task.
+
+### Objectives
+
+Locate approved shared assets and their provenance for workshop reuse.
+
 This folder holds approved, reusable workshop diagrams and screenshots. Each
 learner lab keeps its step-specific screenshots in its own `images/` folder.
 See [traceability.md](../documentation/traceability.md) for the capture queue and publication

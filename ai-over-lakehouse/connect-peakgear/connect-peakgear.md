@@ -28,26 +28,26 @@ In this lab, you will:
 ## Task 1: Find your reservation details
 
 1. In LiveLabs, open **Reservation Information**. Check **Reservation Time
-   Remaining** before starting **or resuming** the workshop. Allow at least
-   75 minutes for the full flow and extend the reservation while it is still
-   active if needed. An **EXPIRED** reservation cannot be restored by restarting
-   MCP; start a new reservation and use its newly assigned connection values.
+    Remaining** before starting **or resuming** the workshop. Allow at least
+    75 minutes for the full flow and extend the reservation while it is still
+    active if needed. An **EXPIRED** reservation cannot be restored by restarting
+    MCP; start a new reservation and use its newly assigned connection values.
 2. Expand **Login Credentials**. Use **Copy** beside **Username** and
-   **Password** to sign in to OCI. On first sign-in, OCI may require you to
-   set a new password for this reservation account. If the **Reset your
-   password** screen appears, complete that reset yourself and use the new
-   password for later OCI sign-ins. It does not change the separate **Database
-   Password** in Environment Details, which you will use to connect Data Studio.
-   **Launch OCI** opens the OCI Console. These are OCI credentials; do not enter
-   them as the database username or password.
+    **Password** to sign in to OCI. On first sign-in, OCI may require you to
+    set a new password for this reservation account. If the **Reset your
+    password** screen appears, complete that reset yourself and use the new
+    password for later OCI sign-ins. It does not change the separate **Database
+    Password** in Environment Details, which you will use to connect Data Studio.
+    **Launch OCI** opens the OCI Console. These are OCI credentials; do not enter
+    them as the database username or password.
 3. In **Tenancy Information**, note the **Tenancy Name**, **Region**, and
-   **Compartment**. Use **Region** to find your database, not **Generative AI
-   Endpoint Region**.
+    **Compartment**. Use **Region** to find your database, not **Generative AI
+    Endpoint Region**.
 4. In **Environment Details**, use **Copy** beside **Database Name**,
-   **Database User**, and **Database Password**. These identify and connect to
-   your assigned database in Data Studio. Keep **AI Profile Name** and
-   **Operations Database Link** handy for later labs. Leave Reservation
-   Information open while you work.
+    **Database User**, and **Database Password**. These identify and connect to
+    your assigned database in Data Studio. Keep **AI Profile Name** and
+    **Operations Database Link** handy for later labs. Leave Reservation
+    Information open while you work.
 
 ![Example LiveLabs Reservation Information showing the OCI login, Launch OCI, tenancy, region, and compartment. Use the values in your own reservation.](images/livelabs-reservation-information.png)
 
@@ -65,33 +65,33 @@ the screenshots.
 
 1. Open [Oracle Data Studio](https://datastudio.oracle.com).
 2. Sign in with the **OCI Login Credentials** and **Tenancy Name** from your
-   LiveLabs reservation. If you are already signed in to another tenancy,
-   switch to the reserved environment.
+    LiveLabs reservation. If you are already signed in to another tenancy,
+    switch to the reserved environment.
 3. Select the **Region** and **Compartment** from **Tenancy Information**.
-   Open **Databases** and find the **Database Name** from **Environment Details**.
+    Open **Databases** and find the **Database Name** from **Environment Details**.
 4. Open that database's **Actions** menu and choose **Connect**.
 5. Enter the **Database User** and **Database Password** from **Environment
-   Details**, then click **Connect**. The OCI password is not the database password.
+    Details**, then click **Connect**. The OCI password is not the database password.
 6. Open **SQL Worksheet** and run:
 
-~~~sql
-<copy>
-SELECT USER AS database_user,
-       SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') AS current_schema
-FROM dual;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    SELECT USER AS database_user,
+           SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') AS current_schema
+    FROM dual;
+    </copy>
+    ~~~
 
-   Both values must be PEAKGEAR&#95;USER. Also check the connected database
-   name in the header against your reservation.
+    Both values must be PEAKGEAR&#95;USER. Also check the connected database
+    name in the header against your reservation.
 
-   The AI profile is already provisioned. If needed, review **Database Settings
-   → AI Profiles** to find the **AI Profile Name** from your reservation; an
-   example reservation uses PEAKGEAR&#95;LAB&#95;PROFILE. Do not create or edit
-   a profile or select **Create all user permissions**. If the profile is
-   missing or AI Enrichment is unavailable, ask the instructor to repair the
-   reservation. The general **SETUP NEEDED** badge can refer to optional OCI
-   workflows and is not a request to repeat provisioning.
+    The AI profile is already provisioned. If needed, review **Database Settings
+    → AI Profiles** to find the **AI Profile Name** from your reservation; an
+    example reservation uses PEAKGEAR&#95;LAB&#95;PROFILE. Do not create or edit
+    a profile or select **Create all user permissions**. If the profile is
+    missing or AI Enrichment is unavailable, ask the instructor to repair the
+    reservation. The general **SETUP NEEDED** badge can refer to optional OCI
+    workflows and is not a request to repeat provisioning.
 
 ### Checkpoint
 

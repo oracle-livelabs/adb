@@ -1,5 +1,11 @@
 # PeakGear event lab values
 
+Estimated Time: Reference only; not a timed learner task.
+
+### Objectives
+
+Find the approved event connection values without substituting reservation-specific passwords.
+
 These shared values are included with the event owner's approval for this
 one-off workshop. Use them only for this event, not for another environment.
 The source credentials below come from the owner-confirmed working mount script.
@@ -123,3 +129,8 @@ https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg
 Select **DBX_PEAKGEAR_OAUTH** for the catalog credential and
 **ADLS_PEAKGEAR_DATA** for the bucket credential. Expected remote schema:
 **ICEBERG**; expected tables: **PRODUCTS** and **DIGITAL_CLICKSTREAM_EVENTS**.
+
+## Acknowledgements
+
+* **Author** - Oracle AI Lakehouse workshop team
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

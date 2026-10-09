@@ -1,5 +1,9 @@
 # PeakGear author review and release checklist
 
+### Objectives
+
+Check the learner flow, package requirements, and target-environment release gates before publication.
+
 Estimated Time: 10 minutes to review; run a separate end-to-end dry run before
 publication.
 

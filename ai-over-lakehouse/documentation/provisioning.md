@@ -1,5 +1,11 @@
 # Provider-only provisioning boundary
 
+Estimated Time: Reference only; not a timed learner task.
+
+### Objectives
+
+Separate provider-owned setup from learner steps and identify the prerequisites for a ready reservation.
+
 The learner workshop starts at **Lab 1**. LiveLabs provisioning must complete
 before the reservation is ready. Participants do not connect as ADMIN.
 
@@ -41,3 +47,8 @@ template with a new reservation before release; a static workshop review does
 not prove successful provisioning. Verify that the participant can create the
 Lab 5 tables, dimensions, hierarchies, and AV through explicit SQL DDL in
 adp_run_query; the learner does not use adp_build_analytic_view or ADMIN access.
+
+## Acknowledgements
+
+* **Author** - Oracle AI Lakehouse workshop team
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

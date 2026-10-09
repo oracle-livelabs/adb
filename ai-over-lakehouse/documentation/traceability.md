@@ -1,5 +1,11 @@
 # Source and asset traceability
 
+Estimated Time: Reference only; not a timed learner task.
+
+### Objectives
+
+Trace workshop content and screenshots to retained sources and record outstanding capture checks.
+
 ## Content sources
 
 | Source | Use and boundary |

@@ -194,11 +194,11 @@ class WorkshopPackageTests(unittest.TestCase):
                 self.assertNotRegex(path.read_text(), re.compile(r"\b(?:both|two)\s+Analytic Views\b", re.I))
 
     def test_every_learner_code_block_has_copy_markup(self):
-        fence = re.compile(r"^(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=fence)[ \t]*$", re.M | re.S)
+        fence = re.compile(r"^(?P<indent> {0,4})(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=indent)(?P=fence)[ \t]*$", re.M | re.S)
         for _, path in learner_pages():
             text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
             blocks = list(fence.finditer(text))
-            markers = re.findall(r"^(?:~{3,}|`{3,})[^\n]*$", text, re.M)
+            markers = re.findall(r"^ {0,4}(?:~{3,}|`{3,})[^\n]*$", text, re.M)
             with self.subTest(file=path.name):
                 self.assertEqual(len(markers), 2 * len(blocks), "Unbalanced code fences")
                 for block in blocks:
@@ -207,6 +207,14 @@ class WorkshopPackageTests(unittest.TestCase):
                     self.assertTrue(body.endswith("</copy>"))
                     self.assertEqual(body.count("<copy>"), 1)
                     self.assertEqual(body.count("</copy>"), 1)
+
+    def test_starter_kit_link_uses_supported_markdown_not_html(self):
+        text = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        self.assertIn(
+            "[**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip)",
+            text,
+        )
+        self.assertNotRegex(text, r"<a\s+href=")
 
     def test_local_links_resolve_and_images_have_alt_text(self):
         link = re.compile(r"(!?)\[([^\]]*)\]\(([^\s)]+)\)")

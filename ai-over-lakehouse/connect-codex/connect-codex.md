@@ -29,96 +29,96 @@ In this lab, you will:
 ## Task 1: Set up LiveLab MCP
 
 1. **Obtain your AI Lakehouse URL.** In the connected Data Studio **SQL
-   Worksheet** as PEAKGEAR&#95;USER, run:
+    Worksheet** as PEAKGEAR&#95;USER, run:
 
-~~~sql
-<copy>
-SELECT 'https://' ||
-       LOWER(REPLACE(p.name, '_', '-')) || '.' ||
-       REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
-         AS adp_url
-FROM v$pdbs p
-CROSS JOIN JSON_TABLE(
-  p.cloud_identity,
-  '$' COLUMNS (
-    public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
-  )
-) j
-WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    SELECT 'https://' ||
+           LOWER(REPLACE(p.name, '_', '-')) || '.' ||
+           REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
+             AS adp_url
+    FROM v$pdbs p
+    CROSS JOIN JSON_TABLE(
+      p.cloud_identity,
+      '$' COLUMNS (
+        public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
+      )
+    ) j
+    WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
+    </copy>
+    ~~~
 
-   Copy the HTTPS value returned as **ADP&#95;URL**. This is the base URL for
-   your assigned AI Lakehouse database. Run it in **Data Studio**, not Terminal,
-   and keep Data Studio connected to your reserved database. The reservation
-   must permit this read-only lookup for PEAKGEAR&#95;USER. If it reports an
-   access error or returns no URL, stop and contact the instructor; do not
-   grant privileges or switch to ADMIN.
+    Copy the HTTPS value returned as **ADP&#95;URL**. This is the base URL for
+    your assigned AI Lakehouse database. Run it in **Data Studio**, not Terminal,
+    and keep Data Studio connected to your reserved database. The reservation
+    must permit this read-only lookup for PEAKGEAR&#95;USER. If it reports an
+    access error or returns no URL, stop and contact the instructor; do not
+    grant privileges or switch to ADMIN.
 
 2. **Download the Starter Kit.** Click
-   <a href="../downloads/peakgear-livelab-starter-kit.zip" download="peakgear-livelab-starter-kit.zip"><strong>Download Here — PeakGear LiveLab Starter Kit (.zip)</strong></a>.
-   Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP;
-   you will unpack it in Terminal. If the browser adds `(1)` or another suffix,
-   rename the downloaded file to the exact name above before continuing.
-   There is only one Starter Kit.
+    [**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip).
+    Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP;
+    you will unpack it in Terminal. If the browser adds `(1)` or another suffix,
+    rename the downloaded file to the exact name above before continuing.
+    There is only one Starter Kit.
 
 3. **Open Terminal.** Press **Command-Space**, type **Terminal**, and press
-   **Return**. Keep this Terminal window open for the following steps.
+    **Return**. Keep this Terminal window open for the following steps.
 
 4. **Unpack the ZIP and prepare the project folder.** Copy this entire block
-   into Terminal using **Copy**, then press **Return**:
+    into Terminal using **Copy**, then press **Return**:
 
-~~~sh
-<copy>
-cd "$HOME/Downloads"
-PEAKGEAR_KIT_DIR="$(mktemp -d "$HOME/Downloads/peakgear-starter.XXXXXX")"
-ditto -x -k "peakgear-livelab-starter-kit.zip" "$PEAKGEAR_KIT_DIR"
-mkdir -p "$HOME/Documents/peakgear-livelab"
-cd "$PEAKGEAR_KIT_DIR/starter-kit"
-</copy>
-~~~
+    ~~~sh
+    <copy>
+    cd "$HOME/Downloads"
+    PEAKGEAR_KIT_DIR="$(mktemp -d "$HOME/Downloads/peakgear-starter.XXXXXX")"
+    ditto -x -k "peakgear-livelab-starter-kit.zip" "$PEAKGEAR_KIT_DIR"
+    mkdir -p "$HOME/Documents/peakgear-livelab"
+    cd "$PEAKGEAR_KIT_DIR/starter-kit"
+    </copy>
+    ~~~
 
-   You are now in the extracted `starter-kit` folder. A fresh extraction keeps
-   older downloaded copies unchanged.
+    You are now in the extracted `starter-kit` folder. A fresh extraction keeps
+    older downloaded copies unchanged.
 
 5. **Run setup.** Return to the same Terminal window. Paste this command and
-   press **Return**:
+    press **Return**:
 
-~~~sh
-<copy>
-zsh ./01-setup-peakgear-mcp.command
-</copy>
-~~~
+    ~~~sh
+    <copy>
+    zsh ./01-setup-peakgear-mcp.command
+    </copy>
+    ~~~
 
-   Wait while setup installs the required packages. Do not run extra install
-   commands. Setup does not require your Mac administrator password.
+    Wait while setup installs the required packages. Do not run extra install
+    commands. Setup does not require your Mac administrator password.
 
 6. **Answer the setup prompts in order.**
 
-   | Prompt | What to do |
-   |---|---|
-   | Lab Data Studio URL | Paste the ADP&#95;URL result copied in step 1, then press Return. Do not use localhost:8000. |
-   | Password for PEAKGEAR&#95;USER | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while you type or paste; this is normal. |
-   | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 4. |
-   | Success / Press Return to close this window | Confirm the displayed URL and PEAKGEAR&#95;USER, then press Return. |
+    | Prompt | What to do |
+    |---|---|
+    | Lab Data Studio URL | Paste the ADP&#95;URL result copied in step 1, then press Return. Do not use localhost:8000. |
+    | Password for PEAKGEAR&#95;USER | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while you type or paste; this is normal. |
+    | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 4. |
+    | Success / Press Return to close this window | Confirm the displayed URL and PEAKGEAR&#95;USER, then press Return. |
 
-   Use your reservation's **Database Password**, not its OCI Login Credentials
-   password, a screenshot's example, or your Mac password.
+    Use your reservation's **Database Password**, not its OCI Login Credentials
+    password, a screenshot's example, or your Mac password.
 
 7. **Open the project in Codex.** After setup finishes, run this in Terminal:
 
-~~~sh
-<copy>
-open -a Codex "$HOME/Documents/peakgear-livelab"
-</copy>
-~~~
+    ~~~sh
+    <copy>
+    open -a Codex "$HOME/Documents/peakgear-livelab"
+    </copy>
+    ~~~
 
-   Click **Trust** if Codex asks whether you trust this project.
+    Click **Trust** if Codex asks whether you trust this project.
 
 8. **Create a new Codex task in the peakgear-livelab project.** Select the
-   project opened in step 7, then create the task there. LiveLab starts
-   automatically for that new task. Continue with Task 2 in that task; do not
-   reuse a task from another project or an older task.
+    project opened in step 7, then create the task there. LiveLab starts
+    automatically for that new task. Continue with Task 2 in that task; do not
+    reuse a task from another project or an older task.
 
 **Setup checkpoint:** entering the credentials and seeing setup succeed are
 not yet proof that your Codex task is connected. Task 2 checks the active

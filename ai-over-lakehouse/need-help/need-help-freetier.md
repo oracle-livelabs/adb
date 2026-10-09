@@ -1,5 +1,11 @@
 # Need Help?
 
+Estimated Time: As needed; troubleshooting only.
+
+### Objectives
+
+Distinguish reservation, login, and MCP issues and prepare an actionable support request.
+
 ## Introduction
 
 Use this page if you cannot sign in to your prepared LiveLabs reservation or
