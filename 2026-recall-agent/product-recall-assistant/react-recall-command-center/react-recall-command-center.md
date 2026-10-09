@@ -28,48 +28,7 @@ In this lab, you will:
 - Explore how the campaign API enforces contact authorization, role-filtered recipients, human approval, and refund-intent auditing.
 
 
-### To run the application
 
-- Install Node.js 20 or later and npm on your workstation. npm is included with Node.js.
-- Have the workshop's `product-recall-assistant/react-app` files available on your workstation and a current browser.
-- Confirm that your workstation can connect to the Autonomous Database service.
-- Have your direct database connect string, any required wallet, and the three Lab 7 end-user credentials ready. A SQL Developer Web URL is not a direct connect string.
-- Use Task 1 to prepare the bridge packages and grant the required access.
-
-Check these prerequisites before configuring the application. If a package or connection detail is missing, use **Need Help?** to resolve it before continuing.
-
-#### Install Node.js and npm
-
-Use the package manager for your operating system. These commands install Node.js and npm; you do not need to install Oracle Instant Client for this application.
-
-- **macOS:** In Terminal, install [Homebrew](https://brew.sh/) if it is not already installed, then run:
-
-    ```bash
-    <copy>
-    brew install node
-    node --version
-    npm --version
-    </copy>
-    ```
-
-- **Windows:** Open PowerShell or Windows Terminal and install the Node.js LTS package with [Windows Package Manager](https://learn.microsoft.com/windows/package-manager/winget/):
-
-    ```powershell
-    <copy>
-    winget install --id OpenJS.NodeJS.LTS --exact
-    </copy>
-    ```
-
-    Close and reopen the terminal, then verify the installation:
-
-    ```powershell
-    <copy>
-    node --version
-    npm --version
-    </copy>
-    ```
-
-Both checks should print version numbers. Confirm that Node.js is version 20 or later before continuing.
 
 ## Task 1: Prepare the Database Connection for the Application
 
@@ -83,31 +42,13 @@ Kevin needs the application to call approved packages, not internal tables. Davi
 
     declare
         l_script clob;
-        l_marker constant varchar2(100) := '-- Product Recall Assistant - Lab 8 application and governed response setup v7';
     begin
-        if sys_context('USERENV', 'SESSION_USER') != 'ADMIN' then
-            raise_application_error(-20002, 'Connect as ADMIN before running this setup.');
-        end if;
 
         l_script := to_clob(dbms_cloud.get_object(
             credential_name => null,
             object_uri => 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql'
         ));
 
-        if dbms_lob.substr(l_script, length(l_marker), 1) != l_marker then
-            raise_application_error(-20001,
-                'The hosted Lab 8 setup script is not the current version. Contact your workshop provider.');
-        end if;
-
-        execute immediate 'alter session set current_schema = RECALL_OWNER';
-        begin
-            dbms_cloud_repo.install_sql(content => l_script, stop_on_error => true);
-        exception
-            when others then
-                execute immediate 'alter session set current_schema = ADMIN';
-                raise;
-        end;
-        execute immediate 'alter session set current_schema = ADMIN';
     end;
     /
     </copy>
@@ -172,16 +113,31 @@ Kevin needs the application to call approved packages, not internal tables. Davi
 
     Confirm `STATUS`, `AUTHORIZE_CONTACT`, `DRAFT_CAMPAIGN`, `CUSTOMER_OPTIONS`, `PERSONALIZE_CAMPAIGN`, and `APPROVE_CAMPAIGN`. The application calls `STATUS` when you open **Recall Campaign**. If a name is missing, the hosted setup script may be an older version; resolve the deployment before continuing.
 
-## Task 2: Configure the Application
+## Task 2: Download the Application Package
 
-Kevin needs a usable returns application. David keeps connection details outside the code; Tim configures the runtime.
+Download the packaged React application from Object Storage and extract it on your workstation. The archive includes the production interface and the Node.js server.
 
-1. Open a terminal in the React application folder and install the dependencies.
+1. In a terminal, download and extract the application package.
 
     ```bash
     <copy>
-    cd product-recall-assistant/react-app
-    npm install
+    wget -O react-app-package.zip 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip'
+    unzip react-app-package.zip
+    </copy>
+    ```
+
+    The command creates a `react-app` folder containing the application files. Continue to Task 3 to install the dependencies and configure your database connection.
+
+## Task 3: Configure the Application
+
+Kevin needs a usable returns application. David keeps connection details outside the code; Tim configures the runtime.
+
+1. In the same terminal, enter the extracted application folder, install the dependencies, and create your local environment file.
+
+    ```bash
+    <copy>
+    cd react-app
+    npm ci
     cp .env.example .env
     </copy>
     ```
@@ -196,20 +152,21 @@ Kevin needs a usable returns application. David keeps connection details outside
 
     ```text
     <copy>
-    # Option A: TLS connection string for this workshop environment.
-    ORACLE_CONNECT_STRING=(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=dog47xjfczr2h91_atp238504_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
-    # Option B: use a TNS alias from an extracted ADB wallet.
-    # ORACLE_CONNECT_STRING=gendev_high
-    # ORACLE_CONFIG_DIR=/absolute/path/to/wallet
-    # ORACLE_WALLET_LOCATION=/absolute/path/to/wallet
-    # ORACLE_WALLET_PASSWORD=wallet-download-password
-    COOKIE_SECURE=false
+      # Option A: paste the complete TLS connection string copied from OCI.
+      ORACLE_CONNECT_STRING=(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.<region>.oraclecloud.com))(connect_data=(service_name=<DBNAME_WITH_UNDERSCORE_SEPERATOR>_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+      COOKIE_SECURE=false
     </copy>
     ```
 
-    This connection string is for the workshop environment used in this lab. For a different database environment, replace it with the TLS connection string shown in that database's OCI **Database connection** page. The Node API uses the database user selected in the browser form and the password submitted with that form; do not add a database password to `.env`.
+    >Note: You can construct the ORACLE\_CONNECT\_STRING using the URL from the View Login Info panel.
 
-    For a wallet/TNS alias connection, set `ORACLE_CONNECT_STRING` to the service alias from the wallet's `tnsnames.ora` file. Do not paste the ORDS HTTPS URL from Lab 6. The wallet directory must contain `tnsnames.ora` and `ewallet.pem`.
+    For example, if the URL for SQL Developer is: `https://DBNAME-ATP1234.adb.us-ashburn-1.oraclecloudapps.com/ords/sql-developer`, you know the DB name and the region.
+
+    That means your ORACLE\_CONNECT\_STRING in .env looks like this:
+
+    `ORACLE_CONNECT_STRING=(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=DBNAME_ATP1234_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))`
+
+    _Please note that you need to replace the '-' sperator with and '_' underscore!_
 
 4. Review the application flow:
 
@@ -231,38 +188,27 @@ Kevin needs a usable returns application. David keeps connection details outside
 
     **Read this as a security demonstration:** the user does not receive a copy of the owner’s privileges. The user calls the approved package, DDS applies the user’s data grants, and only the resulting combined document crosses the definer-rights boundary to `RUN_TEAM`. A store user and a recall lead execute the same application code and same agent team; their answers differ because the database supplied different authorized JSON, vector, Spatial, and downstream Graph evidence.
 
-## Task 3: Run the React Application
+## Task 4: Run the React Application
 
 Kevin needs a working command center that turns approved evidence into clear next actions. David defines that experience; Tim starts or deploys it.
 
-Choose one local mode: Step 1 for development or Step 2 for a production-style build. They are alternatives and use the same port.
+Start the packaged application. It serves the React interface and Node API from the same port.
 
-1. **Development mode:** start the API and React development server together.
-
-    ```bash
-    <copy>
-    npm run dev:all
-    </copy>
-    ```
-
-    Open [http://localhost:3001](http://localhost:3001). The Node server and React development middleware share this single origin.
-
-2. **Alternative production-style local mode:** if your workshop development process from Step 1 is running, stop it with Ctrl+C in its terminal first. Then build the React application and start the Node server as one process.
+1. In the `react-app` folder, start the application.
 
     ```bash
     <copy>
-    npm run build
     npm start
     </copy>
     ```
 
-    Open [http://localhost:3001](http://localhost:3001) after the production build. The Node server serves the generated `dist` folder and the API routes from the same origin.
+    Open [http://localhost:3001](http://localhost:3001). The Node server serves the packaged production interface and the API routes from this origin.
 
-3. If port `3001` is already in use by your workshop process from an earlier attempt, stop that process in its terminal before restarting your chosen mode. Do not stop unrelated processes; record the port conflict if you cannot identify it as your workshop process. Changes to `.env` do not take effect until the server restarts.
+2. If port `3001` is already in use by your workshop process from an earlier attempt, stop that process in its terminal before restarting. Do not stop unrelated processes; record the port conflict if you cannot identify it as your workshop process. Changes to `.env` do not take effect until the server restarts.
 
-4. **Optional: deploy to an application host.** You can skip this step if you are running locally. If you have access to an application host, copy the `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in its environment, run `npm ci`, `npm run build`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
+3. **Optional: deploy to an application host.** You can skip this step if you are running locally. If you have access to an application host, copy the extracted `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in `.env`, run `npm ci`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
 
-## Task 4: Compare the Three User Views
+## Task 5: Compare the Three User Views
 
 Kevin checks whether the same application respects each job. David relies on the signed-in identity; Tim compares the three results.
 
@@ -315,7 +261,7 @@ Kevin checks whether the same application respects each job. David relies on the
 
 4. Compare the experience with the database session, not the browser selection. The Node API reads the active end-user identity from `ORA_END_USER_CONTEXT` after login. The same application code and same SQL package calls produce different results because the database applies different data grants.
 
-## Task 5: Ask the Assistant
+## Task 6: Ask the Assistant
 
 Kevin asks the final business question. David assembles only the JSON, Vector Search, Spatial, and SQL Property Graph results that the user may see; Tim sends that document to the assistant.
 
@@ -346,7 +292,7 @@ Kevin asks the final business question. David assembles only the JSON, Vector Se
 
 5. Sign out at the end of the test. The Node server closes the held database session and removes the browser session cookie.
 
-## Task 6: Explore the Governed Recall Campaign
+## Task 7: Explore the Governed Recall Campaign
 
 Kevin needs the team to prepare a customer response without letting an AI model decide who qualifies or sending a message before a person reviews it. The campaign workspace uses the same database identity and application session as the rest of the command center, then adds explicit contact authorization, a reusable draft, a human approval, and an audit trail.
 
@@ -384,6 +330,50 @@ You have completed the workshop. The React and Node application brings together 
 Kevin's requirements now appear in one returns application. Each signed-in user can see the B-482 records that apply to their role, view the related locations and suppliers, ask the assistant a question without receiving broader access, and prepare only the response actions their role permits.
 
 David keeps the application rules in Oracle AI Database: packages provide the data, Deep Data Security applies the user scope, and the owner-side bridge calls the assistant only after that filtering. The application does not need to duplicate those rules or combine results from separate JSON, vector, Spatial, or graph databases. Tim brings the results together in React.
+
+
+## Install node
+
+- Install Node.js 20 or later and npm on your workstation. npm is included with Node.js.
+- Download and extract the application package from Task 2, and have a current browser available.
+- Confirm that your workstation can connect to the Autonomous Database service.
+- Have your direct database connect string, any required wallet, and the three Lab 7 end-user credentials ready. A SQL Developer Web URL is not a direct connect string.
+- Use Task 1 to prepare the bridge packages and grant the required access.
+
+Check these prerequisites before configuring the application. If a package or connection detail is missing, use **Need Help?** to resolve it before continuing.
+
+#### Install Node.js and npm
+
+Use the package manager for your operating system. These commands install Node.js and npm; you do not need to install Oracle Instant Client for this application.
+
+- **macOS:** In Terminal, install [Homebrew](https://brew.sh/) if it is not already installed, then run:
+
+    ```bash
+    <copy>
+    brew install node
+    node --version
+    npm --version
+    </copy>
+    ```
+
+- **Windows:** Open PowerShell or Windows Terminal and install the Node.js LTS package with [Windows Package Manager](https://learn.microsoft.com/windows/package-manager/winget/):
+
+    ```powershell
+    <copy>
+    winget install --id OpenJS.NodeJS.LTS --exact
+    </copy>
+    ```
+
+    Close and reopen the terminal, then verify the installation:
+
+    ```powershell
+    <copy>
+    node --version
+    npm --version
+    </copy>
+    ```
+
+Both checks should print version numbers. Confirm that Node.js is version 20 or later before continuing.
 
 ## Learn More
 
