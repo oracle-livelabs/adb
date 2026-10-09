@@ -23,7 +23,9 @@ Estimated Time: 25 minutes
 
 Use `RECALL_OWNER` for Task 1 and Task 2 Steps 1–8. Then connect as `ADMIN` to assign and verify the roles in Task 2 Steps 9–10.
 
-For Tasks 3–4, connect separately as each end user through SQLcl or SQL Developer desktop. Have your database connect string, any required wallet, and each user's credentials ready. A SQL Developer Web URL is not a direct database connect string. If you cannot access an account or find its connection details, use **Need Help?** before testing its data scope.
+Tasks 3–4 are optional exercises for learners with SQL Developer desktop, the Oracle SQL Developer extension for VS Code, or SQLcl. Connect separately as each end user using your database connect string, any required wallet, and each user's credentials. A SQL Developer Web URL is not a direct database connect string.
+
+If you do not have one of these clients or the required connection details, complete Tasks 1–2 and continue to Lab 8. You will sign in as the three end users and compare their permitted data and assistant answers in the Recall Command Center app.
 
 ## Task 1: Define Who Can See Which Stores
 
@@ -272,11 +274,13 @@ Stay connected as **RECALL\_OWNER**. Run each block separately.
 
     ![SQL Developer Web logged in as ADMIN showing the three verified end-user data role assignments](images/lab7-verify-role-assignments.png)
 
-## Task 3: Test the Same Queries as Three Users
+## Task 3: Test the Same Queries as Three Users (Optional)
+
+If you do not have SQL Developer desktop, the Oracle SQL Developer extension for VS Code, or SQLcl, skip Tasks 3–4 and continue to Lab 8 to test the user scopes in the app. The data roles and grants you completed in Tasks 1–2 are used by the app.
 
 Kevin wants proof that changing the signed-in user changes the result without changing the application query. Tim tests database results before asking the assistant anything.
 
-Open a direct database connection in SQLcl or SQL Developer desktop. Use your workshop database connect string and the credentials for the end user named in each step. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
+Open a direct database connection in SQL Developer desktop, the Oracle SQL Developer extension for VS Code, or SQLcl. Use your workshop database connect string and the credentials for the end user named in each step. Check Step 1 after every login. Do not use an ADMIN session or change only the current schema.
 
 The examples below and in Task 4 are SQLcl transcript reference output, not SQL Developer Web screenshots. They illustrate result content rather than the appearance of your worksheet. Red outlines identify the counts and successful no-row security checks.
 
@@ -375,7 +379,9 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
     ![Captured SQLcl output showing five recall lead vector matches and access to complaint 9003](images/lab7-recall-lead-vector.png)
 
-## Task 4: Give the Assistant Only Permitted Evidence
+## Task 4: Give the Assistant Only Permitted Evidence (Optional)
+
+This task is also optional and requires the same direct end-user connections as Task 3. If you skipped Task 3 because you do not have a supported client or connection details, continue to Lab 8 to test the assistant through the app.
 
 Kevin wants the assistant to explain those same results. The prepared RECALL\_SECURE\_API package gathers facts using the caller's data roles. Its capture function stores that filtered document for an owner-side service to summarize. The service does not repeat the queries with wider access.
 
@@ -467,7 +473,7 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 ## Conclusion
 
-You built the rules that let one returns application serve three responsibilities. The same SQL returned different store, unit, customer, and complaint results because the signed-in users had different data roles.
+You built the rules that let one returns application serve three responsibilities. If you completed the optional exercises, you verified that the same SQL returned different store, unit, customer, and complaint results because the signed-in users had different data roles. Otherwise, you will compare those scopes in the Lab 8 app.
 
 For Kevin, the application can answer local, regional, and company-wide questions without exposing every record to every user. For David, Oracle AI Database keeps access rules with both business records and complaint vectors. There is no separate vector store requiring another copy of those rules. Tim retrieves permitted evidence before passing it to the assistant; a prompt is not a substitute for database authorization.
 
