@@ -56,9 +56,18 @@ participant to create, edit, or validate an AI profile.
   source, excluding the database's current and future months. Historical data
   is not presented as current live demand.
 - [ ] Codex identifies the cross-source governed-model gap.
-- [ ] Without validated Analytic Views, the harder question returns no ranking,
+- [ ] Without a validated governed Analytic View, the harder question returns no ranking,
   figures, or provisional recommendation.
-- [ ] Codex creates, validates, and queries both Analytic Views.
+- [ ] Lab 3 establishes the boundary without authorizing an AV build; Lab 5
+  Task 3 contains the same boundary plus the explicit authorized build task.
+- [ ] Codex reuses a suitable existing AV and dependencies, or creates one AV
+  through explicit SQL DDL in `adp_run_query`; it does not use
+  `adp_build_analytic_view` or create exploratory AVs.
+- [ ] Digital events and returned quantities are aggregated independently by
+  product/month before combination. Both SUM measures reconcile for the latest
+  shared completed month, with one consolidated final health check.
+- [ ] After a timeout, Codex inspects existing objects before retrying and
+  repeats checks only after a failure or relevant change.
 - [ ] Every screenshot in `traceability.md` is captured, reviewed, and inserted
   with alt text.
 - [ ] All local image links and the sandbox manifest resolve in a local preview.
@@ -80,8 +89,9 @@ participant to create, edit, or validate an AI profile.
   one-time copy duration, quota, and product-key uniqueness before analytics.
 * The exact current Data Studio labels for Azure credential and Unity mount UI
   require capture before those steps are published.
-* The currently available LiveLab MCP build tools must be verified in the
-  target event release before promising autonomous Analytic View creation.
+* Verify that `adp_run_query` can execute the required explicit SQL DDL as
+  PEAKGEAR_USER in the target event release. The Lab 5 workflow does not use
+  the high-level Analytic View builder.
 * Only the event-owner-approved shared values in `assets/event-lab-values.md`
   are included. Do not add unrelated credentials, ADMIN passwords, or OCI API
   private keys. The owner-confirmed mount script is the source for the Azure

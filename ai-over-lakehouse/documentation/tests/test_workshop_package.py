@@ -57,7 +57,7 @@ class WorkshopPackageTests(unittest.TestCase):
     def test_final_lab_combines_model_gap_build_and_answer(self):
         entry, path = learner_labs()[-1]
         text = path.read_text()
-        self.assertEqual(entry["title"], "Lab 5: Create Analytic Views with Codex")
+        self.assertEqual(entry["title"], "Lab 5: Create an Analytic View with Codex")
         headings = re.findall(r"^## Task \d+: (.+)$", text, re.M)
         self.assertEqual(headings, [
             "Ask the harder business question",
@@ -85,7 +85,55 @@ class WorkshopPackageTests(unittest.TestCase):
         self.assertNotRegex(runtime, r"LAB_(?:PRODUCTS|DIGITAL_INTENT|RETURNS)_RAW_V")
         self.assertIn("ALTER TABLE", enrichment)
         self.assertIn("Mandatory Analytic View gate", boundary)
-        self.assertIn("do not provide category rankings, figures", boundary)
+        self.assertIn("do not provide category rankings, figures", " ".join(boundary.split()))
+
+    def test_setup_boundary_does_not_start_the_model_build(self):
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
+        prompt = re.search(r"<copy>\n(.*?)\n</copy>", section, re.S).group(1)
+        self.assertIn("SETUP ACKNOWLEDGMENT", prompt)
+        self.assertIn("It does not authorize object", prompt)
+        self.assertIn("Ready. What business question would you like to explore?", prompt)
+        self.assertNotIn("CURRENT AUTHORIZED TASK", prompt)
+        self.assertNotIn("I authorize creation", prompt)
+
+    def test_final_build_prompt_repeats_boundary_and_uses_one_sql_av(self):
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        setup_section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
+        setup_prompt = re.search(r"<copy>\n(.*?)\n</copy>", setup_section, re.S).group(1)
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        build_section = final.split("## Task 3: Ask Codex to build the model", 1)[1]
+        build_prompt = re.search(r"<copy>\n(.*?)\n</copy>", build_section, re.S).group(1)
+        boundary, task = build_prompt.split("\n\nCURRENT AUTHORIZED TASK\n", 1)
+        self.assertEqual(boundary, setup_prompt.split("\n\nSETUP ACKNOWLEDGMENT\n", 1)[0])
+        for requirement in (
+            "Create or reuse and validate one Analytic View",
+            "I authorize creation of the minimum necessary local supporting tables",
+            "Batch independent metadata reads",
+            "Reuse an existing suitable Analytic View and its dependencies",
+            "Use explicit SQL DDL through adp_run_query",
+            "Do not use adp_build_analytic_view",
+            "Do not create exploratory AVs",
+            "Aggregate digital events and returned quantities independently",
+            "Preserve product-month rows present in either source",
+            "two additive SUM measures: digital event count and returned units",
+            "latest shared completed calendar month",
+            "Perform one consolidated final health check",
+            "After a timeout or ambiguous error, inspect whether the affected object",
+            "Repeat checks only when a failure or change requires them",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, " ".join(task.split()))
+        self.assertNotIn("SETUP ACKNOWLEDGMENT", build_prompt)
+        self.assertNotIn("All Stores", final)
+        self.assertNotIn("store drill-down", final)
+
+    def test_current_workshop_does_not_require_two_analytic_views(self):
+        pages = [path for _, path in learner_pages()]
+        pages += list((ROOT / "documentation").glob("*.md"))
+        for path in pages:
+            with self.subTest(file=path.name):
+                self.assertNotRegex(path.read_text(), re.compile(r"\b(?:both|two)\s+Analytic Views\b", re.I))
 
     def test_every_learner_code_block_has_copy_markup(self):
         fence = re.compile(r"^(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=fence)[ \t]*$", re.M | re.S)

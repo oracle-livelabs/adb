@@ -41,8 +41,14 @@ password is redacted. Values from the learner's own reservation are authoritativ
 Lab 4 is the only learner module that runs AI Enrichment. It reviews and saves
 the descriptions and tags for digital interactions, the product catalog, and
 operational returns. Lab 5 reuses those annotations to ask the harder business
-question, identify the governed-model gap, create and validate Analytic Views,
+question, identify the governed-model gap, create or reuse and validate one Analytic View,
 and obtain the final governed answer in one module. It does not repeat enrichment.
+
+Lab 3 establishes the standing MCP boundary without requesting a model build.
+Lab 5 Task 3 provides one Copy block with the same boundary and the authorized
+build task: explicit SQL DDL through `adp_run_query`, no high-level builder or
+exploratory AVs, independent product/month aggregation, and one final health
+check with both measures reconciled for the latest shared completed month.
 
 The data-caching exercise is temporarily excluded from this version. Lab 2
 goes directly from the catalog mount to five-row source previews,

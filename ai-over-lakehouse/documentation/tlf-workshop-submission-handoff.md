@@ -15,7 +15,7 @@ current decisions in this document override earlier versions.
 |---|---|
 | Workshop title | PeakGear: From Raw Sources to Governed Answers with Codex |
 | Short title | PeakGear AI Lakehouse with Codex |
-| Subtitle | Connect live Oracle and Databricks data, add business meaning, and build governed Analytic Views |
+| Subtitle | Connect live Oracle and Databricks data, add business meaning, and build one governed Analytic View |
 | Workshop slug | peakgear-codex-semantic-lakehouse |
 | Delivery type | Hands-on workshop |
 | Experience level | Intermediate |
@@ -34,15 +34,15 @@ than inventing values.
 
 ## One-line value proposition
 
-Turn live Oracle operational data and Databricks Iceberg data into one
-governed business answer without copying the source data into a new staging
-pipeline.
+Turn connected Oracle operational data and Databricks Iceberg data into one
+governed business answer with reviewed local snapshots and a reusable semantic
+model.
 
 ## Short description
 
 Connect Databricks Unity/Iceberg and an existing Oracle operations database to
 Oracle AI Lakehouse. Use Data Studio AI Enrichment and Codex through MCP to
-turn a vague product-interest question into governed Analytic Views and an
+turn a vague product-interest question into one governed Analytic View and an
 explainable cross-source recommendation.
 
 ## Long description
@@ -63,8 +63,11 @@ repeat the same question and receive a better, annotation-backed answer.
 
 For the final cross-source question, Codex identifies that descriptions and
 tags alone are not a governed multidimensional model. Through MCP, Codex
-creates and validates Analytic Views with common time, product, category, and
-aggregation semantics. The final answer ranks product categories using current
+creates or reuses and validates one Analytic View with common time, product,
+category, and aggregation semantics through explicit SQL DDL in adp_run_query.
+The two facts are aggregated independently by product/month before combination,
+and both SUM measures are reconciled for the latest shared completed month.
+The final answer ranks product categories using source-period
 digital interest and returned units, with repeatable product-level drill-down
 and explicit limitations.
 
@@ -79,7 +82,7 @@ to several data systems? In this hands-on workshop, participants connect live
 Databricks Iceberg data and an existing Oracle operations database to Oracle
 AI Lakehouse. They observe the limits of raw-data reasoning, add reviewed
 business context with Data Studio AI Enrichment, and use Codex through MCP to
-create governed Analytic Views. The result is an explainable category
+create or reuse and validate one governed Analytic View. The result is an explainable category
 recommendation built on reusable time, hierarchy, and aggregation rules.
 
 ## Customer problem
@@ -205,7 +208,8 @@ This is the current hands-on boundary:
 8. Use Data Studio AI Enrichment to review and save descriptions and tags.
 9. Repeat the same question and observe the improved answer.
 10. In Lab 5, ask a harder cross-source question and identify the governed-model gap.
-11. In the same lab, ask Codex through MCP to create and validate the required Analytic Views.
+11. In the same lab, use one Copy block with the boundary and authorized task
+    to create or reuse and validate one AV through explicit MCP SQL DDL.
 12. Ask the final question and review the governed category and product
     drill-down.
 
@@ -238,7 +242,7 @@ After completing the workshop, participants can:
    aggregations.
 5. Connect Codex to Data Studio through a bounded MCP configuration.
 6. Use a controlled AI stop to identify missing business definitions.
-7. Create and validate Analytic Views through Codex and MCP.
+7. Create or reuse and validate one Analytic View through Codex and MCP SQL.
 8. Produce an explainable cross-source answer with a reusable drill-down.
 
 ## Workshop outline
@@ -249,14 +253,14 @@ After completing the workshop, participants can:
 | 2 | Connect real Oracle and Databricks sources | 15 minutes |
 | 3 | Connect Codex and ask the raw-data question | 8 minutes |
 | 4 | Add business meaning with Data Studio AI Enrichment | 12 minutes |
-| 5 | Identify the model gap, create Analytic Views with Codex, and answer the question | 20 minutes |
+| 5 | Identify the model gap, create an Analytic View with Codex, and answer the question | 20 minutes |
 | Buffer | Troubleshooting and discussion | 15 minutes |
 | Total |  | 75 minutes |
 
 AI Enrichment is performed only in Lab 4, where participants review and save
 the descriptions and tags for all three raw tables. Lab 5 reuses those saved
 annotations for the harder question, identifies the model requirements, builds
-and validates the Analytic Views, and answers the final question in one module.
+and validates one Analytic View, and answers the final question in one module.
 It does not repeat enrichment.
 
 ## Business questions used in the workshop
@@ -272,14 +276,14 @@ The exact same question is asked twice:
 * After enrichment, Codex returns the latest-completed-month product ranking
   using the reviewed digital-event definition.
 
-### Question 2 — before and after Analytic Views
+### Question 2 — before and after the Analytic View
 
 > Which product categories should we prioritize, balancing current customer
 > interest with returns?
 
-* Before Analytic Views, Codex identifies the missing common time window,
+* Before a validated Analytic View, Codex identifies the missing common time window,
   category hierarchy, additive measures, and governed drill-down.
-* After Analytic Views, Codex returns the category recommendation with product
+* After validation, Codex returns the category recommendation with product
   evidence and explicit return context.
 
 ## Products, features, and technologies
@@ -326,8 +330,9 @@ The workshop is successful when:
 * AI Enrichment metadata is saved and visible in Data Studio;
 * the repeated simple question produces the defined latest-month ranking;
 * the harder question identifies the need for a governed model;
-* the Codex-created digital-interest and returns Analytic Views are valid and
-  queryable, without requiring prescribed object names; and
+* one AV created or reused by Codex is valid and queryable, with both SUM
+  measures reconciled for the latest shared completed month and no prescribed
+  object names; and
 * the final answer uses the common period, digital-event count, and returned
   units without inventing revenue, sales, or return rate.
 
@@ -337,7 +342,8 @@ The workshop is successful when:
 * Digital interest means digital-event count, not orders or unique customers.
 * Returned units are quality context, not a rate, because shipped-unit volume
   is not present.
-* The lab does not copy source data into participant-built staging tables.
+* Local raw and supporting tables are workshop snapshots, not a continuously
+  refreshed production ingestion pipeline.
 * The lab does not teach manual TOML editing, Python setup, or direct MCP
   server administration.
 * The lab does not grant DBA or broad ANY privileges to PEAKGEAR_USER.
@@ -360,7 +366,7 @@ The workshop is successful when:
   client secret; it uses PEAKGEAR_USER to access the prepared database objects.
 * Codex connects as PEAKGEAR_USER, not ADMIN.
 * The public Operations database link is provisioned before the reservation is
-  ready and consumed by the participant through bounded user-owned views.
+  ready and copied into the participant-owned raw returns table in Lab 2.
 * Run the Lab 3 Task 1 ADP_URL lookup as PEAKGEAR_USER. Before release, the
   provider validates that this read-only query succeeds; participants do not
   switch to ADMIN if it fails.
@@ -384,10 +390,11 @@ Still required before publication:
 
 * Data Studio Catalog screenshot after the reviewed annotations are saved.
 * Codex screenshot explaining the governed-model gap.
-* Codex screenshot creating and validating both Analytic Views.
+* Codex screenshot creating or reusing and validating one AV with both SUM measures.
 * Final end-to-end dry run in the target event environment.
-* Verification that the target Data Studio MCP release can perform the
-  Analytic View build path used by the workshop.
+* Verification that adp_run_query in the target Data Studio MCP release can
+  execute the explicit SQL DDL required by the one-AV workflow. Do not use
+  adp_build_analytic_view or exploratory AVs as a fallback.
 
 ## Known evidence boundaries
 

@@ -44,7 +44,7 @@ is added to the package.
 | connect-codex/images/raw-question.png | 3 | Controlled stop naming the current local table; replace historical view screenshot |
 | ai-enrichment/images/same-question-after-enrichment.png | 4 | Ranking from reviewed local-table annotations; replace historical view screenshot |
 | analytic-views/images/governed-model-gap.png | 5 | Codex names time, hierarchy, and aggregation requirements without recommending |
-| analytic-views/images/codex-builds-av.png | 5 | Codex creates and validates both Analytic Views |
+| analytic-views/images/codex-builds-av.png | 5 | Codex creates or reuses and validates one AV with both SUM measures through explicit MCP SQL |
 
 ## Publication checks
 

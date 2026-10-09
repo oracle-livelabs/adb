@@ -7,7 +7,7 @@ discussion buffer.
 
 Connect Oracle Operations data and Databricks Unity/Iceberg data to Oracle AI
 Lakehouse. Use Data Studio to add reviewed business context, then use Codex
-through Oracle Data Studio MCP to create governed Analytic Views and answer a
+through Oracle Data Studio MCP to create a governed Analytic View and answer a
 cross-source business question.
 
 ## Long Description
@@ -19,8 +19,9 @@ does not define what customer interest means or how it should be compared with
 returns. Participants first see Codex decline to make an unjustified
 recommendation. They use Data Studio AI Enrichment to review and save business
 metadata on local snapshots of those sources, then ask a harder question that requires governed time, product, and
-aggregation semantics. Codex creates and validates the two Analytic Views that
-make the final drill-down reproducible.
+aggregation semantics. Codex creates or reuses and validates one Analytic View
+with two additive measures through explicit MCP SQL DDL, making the final
+drill-down reproducible.
 
 ## Workshop Outline
 
@@ -30,7 +31,7 @@ make the final drill-down reproducible.
 | 2 | Connect real Databricks and Operations sources | 15 |
 | 3 | Connect Codex and ask the raw-data question | 8 |
 | 4 | Add business meaning with Data Studio AI Enrichment | 12 |
-| 5 | Identify the model gap, create Analytic Views with Codex, and answer the question | 20 |
+| 5 | Identify the model gap, create an Analytic View with Codex, and answer the question | 20 |
 | Buffer | Troubleshooting and discussion | 15 |
 | Total | | 75 |
 
@@ -40,7 +41,7 @@ database user, grants, ORDS access, Operations link, network ACL, and AI profile
 AI Enrichment is performed only in Lab 4 for all three raw tables: digital
 interactions, the product catalog, and operational returns. Lab 5 reuses the
 saved annotations to identify the governed-model gap, without repeating
-enrichment, then creates and validates the Analytic Views and answers the
+enrichment, then creates or reuses and validates one Analytic View and answers the
 final question in the same lab.
 
 ## Workshop Prerequisites
@@ -71,7 +72,7 @@ After completing this workshop, participants can:
 * distinguish raw technical data from reviewed business metadata;
 * use Data Studio AI Enrichment to save descriptions and tags;
 * use Codex through MCP to identify missing semantic requirements;
-* create and validate governed Analytic Views through Codex; and
+* create or reuse and validate a governed Analytic View through Codex and MCP SQL; and
 * explain why the same business question yields a better answer after
   governance is added.
 

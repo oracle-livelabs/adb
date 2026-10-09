@@ -7,7 +7,8 @@ The environment provider prepares:
 
 * the assigned database and PEAKGEAR_USER account with its reservation-specific
   Database Password, `CREATE TABLE`, enough table space quota for three local
-  raw snapshots, and the remaining object-creation privileges;
+  raw snapshots and supporting aggregate/model tables, and the remaining
+  object-creation privileges;
 * ORDS / Database Actions access for that user;
 * the required Databricks network ACL;
 * the public PEAKGEAR_OPERATIONS_LINK pointing to the event Operations source;
@@ -37,4 +38,6 @@ provisioning workflow, not supplied to participants as extra setup steps.
 If the participant checkpoint fails, repair the reservation rather than asking
 learners to grant privileges, create profiles, or use ADMIN. Verify the provider
 template with a new reservation before release; a static workshop review does
-not prove successful provisioning.
+not prove successful provisioning. Verify that the participant can create the
+Lab 5 tables, dimensions, hierarchies, and AV through explicit SQL DDL in
+adp_run_query; the learner does not use adp_build_analytic_view or ADMIN access.
