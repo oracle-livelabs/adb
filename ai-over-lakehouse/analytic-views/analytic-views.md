@@ -84,18 +84,12 @@ from the saved source definitions; do not prescribe names from another run.
 
 ~~~text
 <copy>
-Using the boundary established in Lab 3, create or reuse and validate one
-Analytic View supporting this question:
-Which product categories should we prioritize, balancing current customer
-interest with returns?
+Go ahead: create or reuse and validate one Analytic View to answer:
+Which product categories should we prioritize, balancing current customer interest with returns?
 
-I authorize creation of the minimum necessary local supporting tables,
-attribute dimensions, hierarchies, and one Analytic View, all owned by
-PEAKGEAR_USER. This is not authorization to delete or overwrite existing
-objects or modify environment settings.
+Follow the established boundary. Use existing local tables and reviewed metadata. Reuse suitable dependencies and create only what is missing in PEAKGEAR_USER. Avoid repeated discovery and unnecessary rebuilds, but keep the required validation.
 
-Follow the model-building workflow already established in the boundary
-and return its short validation and reconciliation summary.
+Return a short summary of the AV and validation results.
 </copy>
 ~~~
 
@@ -105,8 +99,10 @@ dependencies. If none is suitable, it creates the minimum supporting local
 tables, dimensions, hierarchies, and one AV using explicit SQL DDL through
 adp_run_query. It performs one consolidated final health check and reconciles
 both measures for the latest shared completed month against the local sources.
-It stops and reports the specific missing metadata, mapping, or permission
-if the task cannot be completed.
+It stops and reports a missing essential metric definition, ambiguous product
+mapping, or required permission if the task cannot be completed. A missing
+unknown-category annotation alone is not a blocker: the Lab 3 boundary provides
+an explicit default, which Codex applies and discloses briefly.
 
 The PEAKGEAR&#95;USER-only boundary established in Lab 3 still applies. Use the
 object names reported by Codex; the participant does not have to prescribe them.
@@ -121,12 +117,17 @@ change. SQL creation is still MCP-driven: the learner does not paste DDL.
 Before creating the product/category model, validate attribution against the
 shared catalog. Exclude digital events with NULL PRODUCT&#95;ID from those
 rankings and report their count for the same common month. Keep the raw source
-table intact; do not add a synthetic Unknown category. Every non-NULL product
-ID in both facts must map to exactly one catalog product and its category.
-Stop and report missing or ambiguous mappings rather than dropping them or
-inventing labels. Preserve existing source category labels such as `N/A` and
-the literal text `null`; call out those labels separately from named-category
-recommendations instead of assigning categories from product names.
+table intact. Every non-NULL product ID in both facts must map to exactly one
+catalog product. Stop and report missing products or ambiguous product-key
+mappings rather than dropping them or inventing mappings. For products with
+NULL or blank categories, use the saved handling rule or the Lab 3 default:
+retain their measures in an `Unknown / Unspecified` technical bucket in the
+derived model, include it in reconciliation, and report its totals separately
+from named-category recommendations. Do not block the AV build just because
+there is no saved unknown-category rule. Preserve existing source labels such
+as `N/A` and the literal text `null`; call out those labels separately from
+named-category recommendations instead of assigning categories from product
+names.
 
 Aggregate each fact independently by product and month before combining it
 with the other fact, and preserve product-month rows present in either source.

@@ -58,6 +58,12 @@ participant to create, edit, or validate an AI profile.
 - [ ] Codex identifies the cross-source governed-model gap.
 - [ ] Without a validated governed Analytic View, the harder question returns no ranking,
   figures, or provisional recommendation.
+- [ ] A missing unknown-category annotation alone does not block the AV build.
+  Codex follows a saved handling rule when present; otherwise it applies the
+  explicit Lab 3 default, keeps missing-category measures in reconciliation,
+  reports them separately, and does not infer business categories or change
+  raw data. Missing essential metric definitions and ambiguous product keys
+  still block interpretation.
 - [ ] Lab 3 Task 2 establishes the complete boundary once, including the
   conditional AV workflow, without authorizing a build. Lab 5 Task 3 uses the
   same Codex task and contains only the short authorized build request, not

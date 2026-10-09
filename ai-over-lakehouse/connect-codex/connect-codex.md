@@ -182,10 +182,28 @@ MCP server.
 Read the saved Data Studio DESCRIPTION and TAGS for the relevant existing
 source tables and columns.
 
-If required metadata is missing, identify the verified object, column,
-and missing annotation or business definition precisely. Ask me to review
-and save it in AI Enrichment. Do not guess metric definitions or ask me
-to enrich nonexistent objects.
+If essential business meaning is missing, such as metric definitions, row
+grain, join keys, or the time window, identify the verified object, column,
+and missing definition precisely. Ask me to review and save it in AI
+Enrichment. Do not guess metric definitions or ask me to enrich nonexistent
+objects. Missing optional wording or an unknown-category rule alone is
+not a reason to stop; use the explicit default below and continue.
+
+Default for missing category handling
+If saved metadata defines how to handle missing categories, follow it.
+Otherwise, retain products with NULL or blank CATEGORY_NAME in a separate
+technical bucket labelled "Unknown / Unspecified". Keep their measures in
+the model and reconciliation, but exclude this bucket from named-category
+recommendations and report its totals separately. This is an explicit
+workshop default, not a guessed business category. Do not infer categories
+from product names or change raw data. If a non-null hierarchy key is needed,
+use a collision-free technical key only in the derived model.
+
+Preserve existing source labels such as N/A and the literal text null as
+separate source-labelled buckets; report them separately from recommendations.
+Do not require an extra annotation or confirmation just for these cases.
+When an AV build is explicitly requested, continue it and mention the default
+used in one short caveat. This default does not authorize object creation.
 
 Do not automatically require enrichment on every derived object.
 Use reviewed source annotations and verified model definitions.
@@ -201,7 +219,8 @@ Digital events represent customer interest, not purchases or sales.
 Returned units are return volumes, not return rates.
 Do not invent sales, revenue, profitability, or return rates.
 
-Follow the reviewed rules for unattributed events and unknown categories.
+Follow the reviewed rules for unattributed events. For unknown categories,
+use the saved rule or the explicit default in section 3.
 Report relevant exclusions separately; do not silently discard source data.
 
 5. Mandatory Analytic View gate
@@ -216,7 +235,9 @@ Until the model is verified and validated, do not provide category rankings,
 figures, provisional recommendations, or partial recommendations. Do not
 bypass this requirement with raw-table joins or remembered results.
 
-If required source metadata is missing, explain that prerequisite first.
+If essential source business meaning is missing, explain that prerequisite
+first. Missing category handling alone does not block model validation or an
+explicitly requested AV build: apply the default in section 3.
 Otherwise, briefly explain that the governed AV must be created and validated.
 Distinguish confirmed absence from incomplete verification.
 
@@ -283,10 +304,11 @@ h. After a timeout or ambiguous error, inspect whether the affected object
 
 For attribution, exclude digital events with NULL PRODUCT_ID from product
 and category rankings and report their count for the same shared month.
-Keep the raw tables intact; do not add a synthetic Unknown category.
-Every non-NULL product ID in either fact must map to exactly one catalog
-product and its category. Report missing or ambiguous mappings rather than
-dropping records or inventing labels.
+Keep the raw tables intact. Every non-NULL product ID in either fact must
+map to exactly one catalog product. Report missing products or ambiguous
+product-key mappings rather than dropping records or inventing mappings.
+A missing category on a uniquely mapped product is not an ambiguous product
+mapping; apply the explicit default in section 3 without blocking the build.
 
 Preserve source category labels such as N/A and the literal text null.
 Report those labels separately from named-category recommendations.

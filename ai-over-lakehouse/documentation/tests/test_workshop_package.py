@@ -119,7 +119,7 @@ class WorkshopPackageTests(unittest.TestCase):
             "After a timeout or ambiguous error, inspect whether the affected object",
             "Repeat checks only when a failure or change requires them",
             "exclude digital events with NULL PRODUCT_ID",
-            "do not add a synthetic Unknown category",
+            "Keep the raw tables intact",
             "Do not assign categories from product names",
             "Do not sum detail rows together with their All-level totals",
             "do not imply continuous refresh unless it is implemented",
@@ -127,6 +127,32 @@ class WorkshopPackageTests(unittest.TestCase):
         ):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, " ".join(workflow.split()))
+
+    def test_missing_category_rule_has_an_explicit_nonblocking_default(self):
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
+        prompt = re.search(r"<copy>\n(.*?)\n</copy>", section, re.S).group(1)
+        flat = " ".join(prompt.split())
+        for requirement in (
+            "If saved metadata defines how to handle missing categories, follow it",
+            'NULL or blank CATEGORY_NAME in a separate technical bucket labelled "Unknown / Unspecified"',
+            "Keep their measures in the model and reconciliation",
+            "exclude this bucket from named-category recommendations",
+            "not a guessed business category",
+            "Do not infer categories from product names or change raw data",
+            "collision-free technical key only in the derived model",
+            "Do not require an extra annotation or confirmation just for these cases",
+            "Missing category handling alone does not block model validation or an explicitly requested AV build",
+            "This default does not authorize object creation",
+            "A missing category on a uniquely mapped product is not an ambiguous product mapping",
+            "If essential business meaning is missing",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, flat)
+        self.assertNotIn("do not add a synthetic Unknown category", prompt)
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        self.assertIn("Do not block the AV build just because", final)
+        self.assertNotIn("do not add a synthetic Unknown category", final)
 
     def test_boundary_is_established_only_in_lab_three(self):
         boundary_locations = []
@@ -140,12 +166,15 @@ class WorkshopPackageTests(unittest.TestCase):
         final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
         build_section = final.split("## Task 3: Ask Codex to build the model", 1)[1]
         build_prompt = re.search(r"<copy>\n(.*?)\n</copy>", build_section, re.S).group(1)
-        self.assertIn("Using the boundary established in Lab 3", build_prompt)
-        self.assertIn("create or reuse and validate one", build_prompt)
-        self.assertIn("I authorize creation of the minimum necessary local supporting tables", build_prompt)
-        self.assertIn("PEAKGEAR_USER", build_prompt)
-        self.assertIn("This is not authorization to delete or overwrite existing", build_prompt)
-        self.assertIn("Follow the model-building workflow already established", build_prompt)
+        approved_prompt = (
+            "Go ahead: create or reuse and validate one Analytic View to answer:\n"
+            "Which product categories should we prioritize, balancing current customer interest with returns?\n\n"
+            "Follow the established boundary. Use existing local tables and reviewed metadata. "
+            "Reuse suitable dependencies and create only what is missing in PEAKGEAR_USER. "
+            "Avoid repeated discovery and unnecessary rebuilds, but keep the required validation.\n\n"
+            "Return a short summary of the AV and validation results."
+        )
+        self.assertEqual(build_prompt, approved_prompt)
         self.assertLess(len(build_prompt.split()), 120)
         self.assertNotIn("BOUNDARY", build_prompt)
         self.assertNotIn("You are the PeakGear business analyst", build_prompt)
