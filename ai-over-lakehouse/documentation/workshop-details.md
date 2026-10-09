@@ -1,13 +1,17 @@
 # Workshop Details
 
-Estimated Time: 75 minutes for hands-on work, plus a 15-minute recovery and
+### Objectives
+
+Describe the audience, learning objectives, prerequisites, and hands-on workshop plan.
+
+Estimated Time: 60 minutes for hands-on work, plus a 15-minute recovery and
 discussion buffer.
 
 ## Short Description
 
 Connect Oracle Operations data and Databricks Unity/Iceberg data to Oracle AI
 Lakehouse. Use Data Studio to add reviewed business context, then use Codex
-through Oracle Data Studio MCP to create governed Analytic Views and answer a
+through Oracle Data Studio MCP to create a governed Analytic View and answer a
 cross-source business question.
 
 ## Long Description
@@ -18,51 +22,65 @@ answer: which product categories should be prioritized? Raw connectivity alone
 does not define what customer interest means or how it should be compared with
 returns. Participants first see Codex decline to make an unjustified
 recommendation. They use Data Studio AI Enrichment to review and save business
-metadata, then ask a harder question that requires governed time, product, and
-aggregation semantics. Codex creates and validates the two Analytic Views that
-make the final drill-down reproducible.
+metadata on local snapshots of those sources, then ask a harder question that requires governed time, product, and
+aggregation semantics. Codex creates or reuses and validates one Analytic View
+with two additive measures through explicit MCP SQL DDL, making the final
+drill-down reproducible.
 
 ## Workshop Outline
 
 | Lab | Focus | Minutes |
 |---|---|---:|
-| 1 | Prepare the PeakGear lab as `ADMIN` | 15 |
-| 2 | Sign in as `PEAKGEAR_USER` | 5 |
-| 3 | Connect real Databricks and Operations sources | 15 |
-| 4 | Connect Codex and ask the raw-data question | 8 |
-| 5 | Add business meaning with Data Studio AI Enrichment | 12 |
-| 6 | Identify the governed-model gap | 5 |
-| 7 | Create Analytic Views with Codex and answer the question | 15 |
+| 1 | Sign in as PEAKGEAR_USER | 5 |
+| 2 | Connect real Databricks and Operations sources | 15 |
+| 3 | Connect Codex and ask the raw-data question | 8 |
+| 4 | Add business meaning with Data Studio AI Enrichment | 12 |
+| 5 | Identify the model gap, create an Analytic View with Codex, and answer the question | 20 |
 | Buffer | Troubleshooting and discussion | 15 |
-| Total | | 90 |
+| Total | | 75 |
+
+Start with participant sign-in. ADMIN setup is not a learner task: the reservation provisions the
+database user, grants, ORDS access, Operations link, network ACL, and AI profile.
+
+AI Enrichment is performed only in Lab 4 for all three raw tables: digital
+interactions, the product catalog, and operational returns. Lab 5 reuses the
+saved annotations to identify the governed-model gap, without repeating
+enrichment, then creates or reuses and validates one Analytic View and answers the
+final question in the same lab.
 
 ## Workshop Prerequisites
 
-* An assigned Autonomous AI Database environment with lab-only `ADMIN` access.
-* A private handout containing the new `PEAKGEAR_USER` password, Operations
-  database password, Azure read-only SAS token, and Databricks OAuth values.
+* An active LiveLabs reservation with a ready Autonomous AI Database environment.
+* OCI Login Credentials, Tenancy Information, and Environment Details from
+  the learner's own Reservation Information. The database password and OCI
+  password are different; no participant ADMIN access is required.
+* The shared [Event lab values](../assets/event-lab-values.md), included directly
+  in the workshop with the event owner's approval. They contain the prepared
+  Operations link name, Azure storage password, Databricks OAuth
+  values, and source endpoints; no separate handout is needed for those values.
 * An available Oracle Operations database that exposes
   `CUSTOMER_RETURN_EVENTS`.
 * A Databricks Unity Catalog endpoint with `ICEBERG.PRODUCTS` and
   `ICEBERG.DIGITAL_CLICKSTREAM_EVENTS`.
 * A default AI profile already configured for the assigned database. It must
   allow Data Studio AI Enrichment; participants do not create the profile.
-* Codex Desktop installed and signed in on the participant laptop.
+* A Mac with Terminal, and Codex Desktop installed and signed in.
 
 ## Learning Outcomes
 
 After completing this workshop, participants can:
 
-* configure the minimum admin and participant boundaries for the lab;
+* distinguish OCI sign-in from database sign-in and use a prepared participant session;
 * connect and inspect raw Iceberg and Oracle Operations sources;
+* create local snapshot tables so later analysis avoids repeated remote scans;
 * distinguish raw technical data from reviewed business metadata;
 * use Data Studio AI Enrichment to save descriptions and tags;
 * use Codex through MCP to identify missing semantic requirements;
-* create and validate governed Analytic Views through Codex; and
+* create or reuse and validate a governed Analytic View through Codex and MCP SQL; and
 * explain why the same business question yields a better answer after
   governance is added.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

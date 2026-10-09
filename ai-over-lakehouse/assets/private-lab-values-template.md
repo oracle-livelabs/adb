@@ -1,18 +1,22 @@
-# PeakGear private lab values
+# PeakGear event values — compatibility link
 
-This file is a checklist for the instructor's secure handout. Do not put real
-values into the public GitHub workshop.
+Estimated Time: Reference only; not a timed learner task.
 
-| Field | Given to | Used in |
-|---|---|---|
-| PEAKGEAR_USER password | Participant | Lab 2 and Lab 4 |
-| PEAKGEAR_OPS password | ADMIN only | Lab 1 |
-| Operations ADB host | ADMIN only | Lab 1 |
-| Operations service name | ADMIN only | Lab 1 |
-| Databricks workspace host | ADMIN only | Lab 1 ACL |
-| Azure read-only SAS | PEAKGEAR_USER | Lab 3 Data Studio UI |
-| Databricks OAuth client ID and secret | PEAKGEAR_USER | Lab 3 Data Studio UI |
-| Unity Iceberg REST endpoint | PEAKGEAR_USER | Lab 3 Data Studio UI |
+### Objectives
 
-The Lab Data Studio URL is non-secret and is copied from the ADMIN query in
-Lab 1. It may be shown on the workshop start page after tenant review.
+Locate the canonical event-values reference and distinguish shared values from reservation credentials.
+
+The event owner approved including the shared workshop values directly in the
+lab. Use [event-lab-values.md](event-lab-values.md) for the copy-ready endpoints,
+client ID, client secret, and passwords. A separate participant handout is not
+required for these values.
+
+Use Database User and Database Password from your own LiveLabs Reservation
+Information → Environment Details. Lab 3, Task 1 explains how to obtain the
+assigned database's MCP URL with a read-only SQL query. This compatibility
+file keeps older links working.
+
+## Acknowledgements
+
+* **Author** - Oracle AI Lakehouse workshop team
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
