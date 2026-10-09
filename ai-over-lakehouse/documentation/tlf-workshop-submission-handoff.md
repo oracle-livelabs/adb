@@ -208,8 +208,9 @@ This is the current hands-on boundary:
 8. Use Data Studio AI Enrichment to review and save descriptions and tags.
 9. Repeat the same question and observe the improved answer.
 10. In Lab 5, ask a harder cross-source question and identify the governed-model gap.
-11. In the same lab, use one Copy block with the boundary and authorized task
-    to create or reuse and validate one AV through explicit MCP SQL DDL.
+11. In the same lab and Codex task, paste the short authorized build request
+    to create or reuse and validate one AV through explicit MCP SQL DDL. All
+    standing rules are established once in Lab 3 Task 2, not repeated here.
 12. Ask the final question and review the governed category and product
     drill-down.
 

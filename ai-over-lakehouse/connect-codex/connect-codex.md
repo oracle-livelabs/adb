@@ -135,9 +135,12 @@ configuration. The event values are intentionally documented in the workshop.
 
 ## Task 2: Establish the MCP boundary
 
-In the new task created in Task 1, paste this boundary prompt once. Wait for
-**Ready. What business question would you like to explore?**, then continue to
-Task 3. The connection checks remain internal to Codex.
+In the new task created in Task 1, paste this complete boundary prompt once.
+It contains the standing rules for all business questions and the later
+Analytic View build. Keep this same Codex task open through Labs 4–5; do not
+paste the boundary again in Lab 5. Establishing it does not create any objects.
+Wait for **Ready. What business question would you like to explore?**, then
+continue to Task 3. The connection checks remain internal to Codex.
 
 ~~~text
 <copy>
@@ -227,6 +230,85 @@ and the actual period. Keep successful technical checks internal.
 Mention object names only when needed for the requested build or an
 actionable issue.
 
+7. Model-building workflow — only when explicitly requested
+These rules apply when I explicitly ask you to create or reuse and validate
+the governed model. They do not authorize creation during boundary setup
+or while answering a business question.
+
+After the required silent connection check:
+
+a. Discover the actual local tables, columns, saved DESCRIPTION/TAGS,
+   and relevant existing model objects. Batch independent metadata reads
+   where supported. Reuse verified results unless something changes.
+
+b. Reuse an existing suitable Analytic View and its dependencies.
+   If none is suitable, create one production-purpose AV with verified,
+   unused names. Do not create exploratory AVs or duplicate suitable models.
+
+c. Use explicit SQL DDL through adp_run_query.
+   Do not use adp_build_analytic_view.
+   Execute dependent DDL statements in order and inspect each result.
+   If the tool cannot execute the required DDL, report that limitation;
+   do not switch to another server or execution method.
+
+d. Validate product-key uniqueness and product-to-category mapping once.
+   Stop on ambiguous mappings rather than hiding them with DISTINCT
+   or choosing arbitrary rows.
+
+e. Aggregate digital events and returned quantities independently by
+   product and month before combining them, to prevent join fanout.
+   Preserve product-month rows present in either source.
+   Use local supporting tables for materialized intermediate results;
+   do not repeatedly query remote sources or recreate existing raw snapshots.
+
+f. Build one AV with product-to-category and month hierarchies and exactly
+   two additive SUM measures: digital event count and returned units.
+   Use the reviewed definitions and the latest shared completed calendar
+   month available in both sources. Exclude the database's current and
+   future months. Do not assume that historical data represents today's
+   customer activity.
+
+g. Perform one consolidated final health check:
+   verify object validity, hierarchy relationships, measure definitions,
+   and category rollup consistency. Reconcile both AV measure totals for
+   the latest shared completed month against the underlying local source
+   tables using the same filters and attribution rules.
+   Explain any excluded or unmatched records separately.
+   Claim success only after the validation results support it.
+
+h. After a timeout or ambiguous error, inspect whether the affected object
+   already exists and whether the operation completed before retrying.
+   Do not blindly rerun CREATE statements or rebuild existing objects.
+   Repeat checks only when a failure or change requires them.
+
+For attribution, exclude digital events with NULL PRODUCT_ID from product
+and category rankings and report their count for the same shared month.
+Keep the raw tables intact; do not add a synthetic Unknown category.
+Every non-NULL product ID in either fact must map to exactly one catalog
+product and its category. Report missing or ambiguous mappings rather than
+dropping records or inventing labels.
+
+Preserve source category labels such as N/A and the literal text null.
+Report those labels separately from named-category recommendations.
+Do not assign categories from product names.
+
+For category comparisons, query category rows for the shared month.
+Use product detail for drill-down. Do not sum detail rows together with
+their All-level totals. A store hierarchy is not required.
+The raw and supporting tables are snapshots; state their actual source
+month and do not imply continuous refresh unless it is implemented.
+
+8. Model-building response
+After an explicitly requested model-building task, finish with a short
+summary stating:
+- the actual AV name and whether it was created or reused;
+- whether validation and reconciliation passed;
+- the shared completed month and its two reconciled totals;
+- any remaining blocker.
+
+Do not include connection details or a long technical execution report.
+Do not make a category recommendation before validation succeeds.
+
 SETUP ACKNOWLEDGMENT
 
 This message establishes the boundary only. It does not authorize object
@@ -247,6 +329,7 @@ Choose **1 — Start LiveLab cleanly — stop PeakGear LiveLab only**, then crea
 new Codex task in the same project. If setup used the wrong reservation, rerun
 **01-setup-peakgear-mcp.command** with the current database URL and Database
 Password first. A process restart does not replace saved connection details.
+Establish the Task 2 boundary once in the new task before continuing.
 Do not choose the ALL-MCP cleanup options.
 
 ## Task 3: Ask the raw-data question

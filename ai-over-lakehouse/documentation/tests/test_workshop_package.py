@@ -97,18 +97,15 @@ class WorkshopPackageTests(unittest.TestCase):
         self.assertNotIn("CURRENT AUTHORIZED TASK", prompt)
         self.assertNotIn("I authorize creation", prompt)
 
-    def test_final_build_prompt_repeats_boundary_and_uses_one_sql_av(self):
+    def test_complete_boundary_contains_the_conditional_sql_av_workflow(self):
         setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
         setup_section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
         setup_prompt = re.search(r"<copy>\n(.*?)\n</copy>", setup_section, re.S).group(1)
-        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
-        build_section = final.split("## Task 3: Ask Codex to build the model", 1)[1]
-        build_prompt = re.search(r"<copy>\n(.*?)\n</copy>", build_section, re.S).group(1)
-        boundary, task = build_prompt.split("\n\nCURRENT AUTHORIZED TASK\n", 1)
-        self.assertEqual(boundary, setup_prompt.split("\n\nSETUP ACKNOWLEDGMENT\n", 1)[0])
+        workflow = setup_prompt.split("7. Model-building workflow", 1)[1]
+        workflow = workflow.split("\n\nSETUP ACKNOWLEDGMENT\n", 1)[0]
         for requirement in (
-            "Create or reuse and validate one Analytic View",
-            "I authorize creation of the minimum necessary local supporting tables",
+            "These rules apply when I explicitly ask you",
+            "They do not authorize creation during boundary setup",
             "Batch independent metadata reads",
             "Reuse an existing suitable Analytic View and its dependencies",
             "Use explicit SQL DDL through adp_run_query",
@@ -121,10 +118,42 @@ class WorkshopPackageTests(unittest.TestCase):
             "Perform one consolidated final health check",
             "After a timeout or ambiguous error, inspect whether the affected object",
             "Repeat checks only when a failure or change requires them",
+            "exclude digital events with NULL PRODUCT_ID",
+            "do not add a synthetic Unknown category",
+            "Do not assign categories from product names",
+            "Do not sum detail rows together with their All-level totals",
+            "do not imply continuous refresh unless it is implemented",
+            "the actual AV name and whether it was created or reused",
         ):
             with self.subTest(requirement=requirement):
-                self.assertIn(requirement, " ".join(task.split()))
+                self.assertIn(requirement, " ".join(workflow.split()))
+
+    def test_boundary_is_established_only_in_lab_three(self):
+        boundary_locations = []
+        for _, path in learner_pages():
+            for prompt in re.findall(r"<copy>\n(.*?)\n</copy>", path.read_text(), re.S):
+                if re.search(r"^BOUNDARY$", prompt, re.M):
+                    boundary_locations.append(path.relative_to(ROOT))
+        self.assertEqual(boundary_locations, [Path("connect-codex/connect-codex.md")])
+
+    def test_final_build_prompt_is_a_short_request_not_another_boundary(self):
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        build_section = final.split("## Task 3: Ask Codex to build the model", 1)[1]
+        build_prompt = re.search(r"<copy>\n(.*?)\n</copy>", build_section, re.S).group(1)
+        self.assertIn("Using the boundary established in Lab 3", build_prompt)
+        self.assertIn("create or reuse and validate one", build_prompt)
+        self.assertIn("I authorize creation of the minimum necessary local supporting tables", build_prompt)
+        self.assertIn("PEAKGEAR_USER", build_prompt)
+        self.assertIn("This is not authorization to delete or overwrite existing", build_prompt)
+        self.assertIn("Follow the model-building workflow already established", build_prompt)
+        self.assertLess(len(build_prompt.split()), 120)
+        self.assertNotIn("BOUNDARY", build_prompt)
+        self.assertNotIn("You are the PeakGear business analyst", build_prompt)
+        self.assertNotIn("adp_get_connection_info", build_prompt)
+        self.assertNotIn("adp_run_query", build_prompt)
+        self.assertNotIn("adp_build_analytic_view", build_prompt)
         self.assertNotIn("SETUP ACKNOWLEDGMENT", build_prompt)
+        self.assertNotRegex(build_prompt, r"(?m)^\d+\. ")
         self.assertNotIn("All Stores", final)
         self.assertNotIn("store drill-down", final)
 

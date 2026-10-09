@@ -44,11 +44,14 @@ operational returns. Lab 5 reuses those annotations to ask the harder business
 question, identify the governed-model gap, create or reuse and validate one Analytic View,
 and obtain the final governed answer in one module. It does not repeat enrichment.
 
-Lab 3 establishes the standing MCP boundary without requesting a model build.
-Lab 5 Task 3 provides one Copy block with the same boundary and the authorized
-build task: explicit SQL DDL through `adp_run_query`, no high-level builder or
-exploratory AVs, independent product/month aggregation, and one final health
-check with both measures reconciled for the latest shared completed month.
+Lab 3 Task 2 establishes the complete standing MCP boundary once, including
+the conditional model-building workflow: explicit SQL DDL through
+`adp_run_query`, no high-level builder or exploratory AVs, independent
+product/month aggregation, and one final health check with both measures
+reconciled for the latest shared completed month. Setup does not authorize a
+model build. Lab 5 Task 3 contains only a short build request and scoped
+creation authorization; it uses the same Codex task and does not repeat the
+boundary.
 
 The data-caching exercise is temporarily excluded from this version. Lab 2
 goes directly from the catalog mount to five-row source previews,

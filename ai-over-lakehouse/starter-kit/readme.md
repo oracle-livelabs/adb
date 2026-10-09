@@ -81,18 +81,21 @@ The shared event values are intentionally included in the workshop and in
    Click **Trust** if prompted.
 
 8. Create one new Codex task in that project. LiveLab starts automatically for
-   the new task. Paste the Lab 3 boundary prompt; it checks the connection
-   silently before each business question or model-building task.
+   the new task. Paste the complete Lab 3 Task 2 boundary prompt once, then
+   keep the same task for Labs 4–5. It checks the connection silently before
+   each business question or model-building task and contains the conditional
+   AV build workflow; setup itself does not authorize object creation.
 
 LiveLab always connects as PEAKGEAR_USER. The word **admin** in the local MCP
 configuration identifies an MCP tool profile required to build Analytic Views;
 it is not a database username.
 
-Lab 5 uses one Copy block containing the boundary and an explicit model-building
-task. Codex creates or reuses one AV with both measures through SQL DDL in
-`adp_run_query`; it does not use `adp_build_analytic_view`. Metadata reads are
-batched where possible, facts are aggregated independently by product/month,
-and one final health check reconciles the latest shared completed month.
+Lab 5 uses a short model-building request and scoped creation authorization;
+it does not repeat the boundary. Under the standing Lab 3 rules, Codex creates
+or reuses one AV with both measures through SQL DDL in `adp_run_query`; it does
+not use `adp_build_analytic_view`. Metadata reads are batched where possible,
+facts are aggregated independently by product/month, and one final health
+check reconciles the latest shared completed month.
 
 ## Required connection check
 

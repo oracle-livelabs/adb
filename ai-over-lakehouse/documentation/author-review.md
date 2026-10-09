@@ -58,8 +58,10 @@ participant to create, edit, or validate an AI profile.
 - [ ] Codex identifies the cross-source governed-model gap.
 - [ ] Without a validated governed Analytic View, the harder question returns no ranking,
   figures, or provisional recommendation.
-- [ ] Lab 3 establishes the boundary without authorizing an AV build; Lab 5
-  Task 3 contains the same boundary plus the explicit authorized build task.
+- [ ] Lab 3 Task 2 establishes the complete boundary once, including the
+  conditional AV workflow, without authorizing a build. Lab 5 Task 3 uses the
+  same Codex task and contains only the short authorized build request, not
+  another boundary prompt.
 - [ ] Codex reuses a suitable existing AV and dependencies, or creates one AV
   through explicit SQL DDL in `adp_run_query`; it does not use
   `adp_build_analytic_view` or create exploratory AVs.
