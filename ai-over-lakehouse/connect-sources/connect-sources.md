@@ -1,19 +1,19 @@
-# Lab 3: Connect real sources
+# Lab 2: Connect real sources
 
 Estimated Time: 15 minutes
 
 ## Introduction
 
-PeakGear does not copy source data into a staging table. It connects two live
-systems:
+PeakGear connects two live systems:
 
 * Databricks Unity Catalog supplies the Iceberg product catalog and digital
   clickstream events.
 * The existing Oracle Operations database supplies return events through the
-  public database link created in Lab 1.
+  public database link already provisioned for your LiveLabs reservation.
 
-You will connect Databricks through the Data Studio UI, add a Lake Cache policy
-immediately after the mount, and create three participant-owned raw views.
+You will connect Databricks through the Data Studio UI, verify both live
+sources, and create three participant-owned local tables. The tables are
+workshop snapshots so later queries do not repeatedly scan remote sources.
 
 ### Objectives
 
@@ -21,27 +21,52 @@ In this lab, you will:
 
 * create the Azure storage and Databricks OAuth credentials in Data Studio;
 * mount the Databricks Unity Iceberg catalog;
-* add, but not claim performance for, a Lake Cache policy;
 * prove access to the two connected sources; and
 * create the three raw business objects used by Codex.
 
-## Task 1: Create the two Databricks credentials in Data Studio
+## Task 1: Create the Azure storage credential in Data Studio
 
-Use **Databases** in the Data Studio navigation to open the credential
-experience. Create the following credentials with the values from the private
-lab handout:
+Open the connected database's **Settings** (gear icon), then select
+**Credentials**. This one-off event includes the shared values for copy/paste;
+no separate handout is needed. The complete reference is
+[Event lab values](../assets/event-lab-values.md).
 
 ![In Database Settings, select Credentials and click Create credential.](images/azure-credential-start.png)
 
 | Credential | Purpose | Value type |
 |---|---|---|
-| ADLS&#95;PEAKGEAR&#95;DATA | Read Iceberg files in Azure Blob Storage | Read-only Azure SAS |
+| ADLS&#95;PEAKGEAR&#95;DATA | Read Iceberg files in Azure Blob Storage | Event Azure storage password |
 | DBX&#95;PEAKGEAR&#95;OAUTH | Obtain renewable Unity Catalog access tokens | Databricks OAuth client |
 
-Keep the supplied names exactly. Review the form, then save each credential.
-The credentials are owned by PEAKGEAR&#95;USER. Do not create them as `ADMIN`.
+Click **Create credential** and enter:
+
+| Field | Value |
+|---|---|
+| Credential Name | ADLS&#95;PEAKGEAR&#95;DATA |
+| Description | Credential to access data in Azure Storage |
+| Credential type | Azure |
+| Username | livelab |
+
+Copy this into **Password**:
+
+~~~text
+<copy>
+tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q==
+</copy>
+~~~
+
+Save the credential. Keep the name exactly. Both source credentials must be
+owned by PEAKGEAR&#95;USER, not `ADMIN`. Create the OAuth credential in Task 2.
 
 ![Create the ADLS&#95;PEAKGEAR&#95;DATA Azure credential. The password field is masked.](images/create-azure-storage-credential.png)
+
+Storage path for this event:
+
+~~~text
+<copy>
+https://livelab.blob.core.windows.net/digital-demand/peakgear-managed/
+</copy>
+~~~
 
 ## Task 2: Mount the Databricks Unity Catalog
 
@@ -53,18 +78,58 @@ Enter:
 
 | Field | Value |
 |---|---|
-| Local catalog name | DBX&#95;UNITY&#95;PEAKGEAR |
-| Catalog type | Databricks Unity / Iceberg REST |
-| Catalog credential | DBX&#95;PEAKGEAR&#95;OAUTH |
-| Data storage credential | ADLS&#95;PEAKGEAR&#95;DATA |
-| Catalog endpoint | The Unity Iceberg REST endpoint from the private handout |
+| Catalog name | DBX&#95;UNITY&#95;PEAKGEAR |
+| Iceberg catalog type | Unity |
+| Iceberg catalog credentials | DBX&#95;PEAKGEAR&#95;OAUTH |
+| Bucket credentials | ADLS&#95;PEAKGEAR&#95;DATA |
+| Catalog endpoint | Copy the endpoint below |
 
-![Enter the local catalog name, select Unity, enter the endpoint, and select the Azure bucket credential. The workspace endpoint is intentionally redacted.](images/mount-iceberg-catalog.png)
+Copy this into **Iceberg catalog endpoint**:
+
+~~~text
+<copy>
+https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear
+</copy>
+~~~
+
+![Enter DBX&#95;UNITY&#95;PEAKGEAR, select Unity, paste the event endpoint, and select the Azure bucket credential.](images/mount-iceberg-catalog.png)
 
 When **Iceberg catalog credentials** is required, click the plus sign and
-create the OAuth credential with the values from the private handout.
+create the OAuth credential with these values:
 
-![Create DBX&#95;PEAKGEAR&#95;OAUTH. The workspace endpoint and client ID are redacted; the client secret remains masked.](images/create-iceberg-catalog-credential.png)
+| Field | Value |
+|---|---|
+| Credential Name | DBX&#95;PEAKGEAR&#95;OAUTH |
+| Description | Credential to authenticate into Unity |
+| Credential type | Iceberg OAuth2 |
+| Token scope | all-apis |
+| Token refresh rate in seconds | 3600 |
+
+**Token endpoint**:
+
+~~~text
+<copy>
+https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token
+</copy>
+~~~
+
+**Client ID**:
+
+~~~text
+<copy>
+5c47dc63-f693-4820-a40b-4b08c3709f34
+</copy>
+~~~
+
+**Client secret**:
+
+~~~text
+<copy>
+dose7b979ac313c1063af5d4cdf09b1ee8fb
+</copy>
+~~~
+
+![Create DBX&#95;PEAKGEAR&#95;OAUTH with the event token endpoint and client ID. The UI masks the client secret; its copy-ready value is above.](images/create-iceberg-catalog-credential.png)
 
 Return to the catalog form, select DBX&#95;PEAKGEAR&#95;OAUTH, save the mount, and
 refresh its catalog metadata. The catalog must expose the `ICEBERG` schema with
@@ -72,115 +137,103 @@ refresh its catalog metadata. The catalog must expose the `ICEBERG` schema with
 
 ![The successful DBX&#95;UNITY&#95;PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
 
-## Task 3: Add the Lake Cache policy
+The UI is the normal workshop path. For a SQL-only dry run of Tasks 1 and 2,
+use [01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
+It uses the owner-confirmed working mount calls and event values. Run it as
+PEAKGEAR&#95;USER, only for missing credentials or a missing catalog; do not
+recreate a mount that already works. The required host ACL is already
+provisioned for PEAKGEAR&#95;USER. If access is denied, ask the instructor;
+participants must not grant ACLs or switch to ADMIN.
 
-Immediately after the mount, create and populate a Lake Cache policy for both
-mounted tables. Run the following in SQL Worksheet as PEAKGEAR&#95;USER. If the
-inspection query already shows a policy, verify it instead of recreating it.
+## Task 3: Prove the two live sources
+
+Open SQL Worksheet as PEAKGEAR&#95;USER. Copy and run **each block separately**;
+Run SQL executes the current statement, not every statement in a pasted script.
 
 ~~~sql
-SELECT external_table_name,
-       cached,
-       cache_cur_size / 1024 / 1024 AS cache_size_mb,
-       disabled
-FROM user_external_tab_caches
-ORDER BY external_table_name;
-
-BEGIN
-  DBMS_EXT_TABLE_CACHE.CREATE_CACHE(
-    owner          => 'PEAKGEAR_USER',
-    table_name     => 'ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR',
-    partition_type => 'FILE'
-  );
-END;
-/
-
-BEGIN
-  DBMS_EXT_TABLE_CACHE.CREATE_CACHE(
-    owner          => 'PEAKGEAR_USER',
-    table_name     => 'ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR',
-    partition_type => 'FILE'
-  );
-END;
-/
-
-BEGIN
-  DBMS_EXT_TABLE_CACHE.ADD_TABLE(
-    owner         => 'PEAKGEAR_USER',
-    table_name    => 'ICEBERG.PRODUCTS@DBX_UNITY_PEAKGEAR',
-    percent_files => 100
-  );
-END;
-/
-
-BEGIN
-  DBMS_EXT_TABLE_CACHE.ADD_TABLE(
-    owner         => 'PEAKGEAR_USER',
-    table_name    => 'ICEBERG.DIGITAL_CLICKSTREAM_EVENTS@DBX_UNITY_PEAKGEAR',
-    percent_files => 100
-  );
-END;
-/
+<copy>
+SELECT *
+FROM iceberg.products@dbx_unity_peakgear
+FETCH FIRST 5 ROWS ONLY;
+</copy>
 ~~~
 
-Run the inspection query again. CACHE&#95;CUR&#95;SIZE greater than zero proves that
-files were populated. It does not prove that an enabled cache is correct or
-faster. In the current lab environment, keep a disabled policy disabled if it
-reports the known duplicate-read behavior. Do not claim acceleration without a
-verified query plan and runtime comparison.
-
-<!-- Screenshot to insert after approved dry run: images/lake-cache-policy.png
-     Alt text: SQL Worksheet shows the PeakGear Lake Cache policy and its
-     populated or disabled state for the two mounted Iceberg tables. -->
-
-## Task 4: Prove the two live sources
-
-Open SQL Worksheet as PEAKGEAR&#95;USER and run:
-
 ~~~sql
-SELECT COUNT(*) AS products
-FROM iceberg.products@dbx_unity_peakgear;
-
-SELECT COUNT(*) AS digital_clickstream_events
-FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
-
-SELECT COUNT(*) AS operational_return_events
-FROM customer_return_events@peakgear_operations_link;
+<copy>
+SELECT *
+FROM iceberg.digital_clickstream_events@dbx_unity_peakgear
+FETCH FIRST 5 ROWS ONLY;
+</copy>
 ~~~
 
-All three queries must return a count. Then create the raw, participant-owned
-views:
+~~~sql
+<copy>
+SELECT *
+FROM customer_return_events@peakgear_operations_link
+FETCH FIRST 5 ROWS ONLY;
+</copy>
+~~~
+
+Each query should return up to five sample rows. This confirms that you can
+read the source without running a full row count. The prepared lab sources
+should contain data; if a query returns no rows or an error, ask the instructor
+to check the source before continuing. A sample does not prove product-key
+uniqueness; that check runs against the local product table before analytics.
+
+On a new reservation, create the three raw, participant-owned tables by running
+**each block separately**. Each `CREATE TABLE AS SELECT` can take time while it
+copies source rows. Wait for the worksheet to report completion before starting
+the next block. If you are resuming on the same database and a table already
+exists, verify it in Catalog instead of recreating it. Do not replace a table
+after saving its annotations in Lab 4. If an older run left `*_RAW_V` views in
+the schema, leave them alone; this version uses the new `*_RAW_T` tables and
+requires fresh table annotations in Lab 4.
 
 ~~~sql
-CREATE OR REPLACE VIEW lab_products_raw_v AS
+<copy>
+CREATE TABLE lab_products_raw_t AS
 SELECT product_id,
        product_name,
        category AS category_name
 FROM iceberg.products@dbx_unity_peakgear;
+</copy>
+~~~
 
-CREATE OR REPLACE VIEW lab_digital_intent_raw_v AS
+~~~sql
+<copy>
+CREATE TABLE lab_digital_intent_raw_t AS
 SELECT product_id,
        session_id,
        customer_id,
        CAST(event_ts AS TIMESTAMP) AS event_ts
 FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
+</copy>
+~~~
 
-CREATE OR REPLACE VIEW lab_returns_raw_v AS
+~~~sql
+<copy>
+CREATE TABLE lab_returns_raw_t AS
 SELECT product_id,
        store_id,
        return_qty,
        CAST(return_created_at AS TIMESTAMP) AS return_created_at
 FROM customer_return_events@peakgear_operations_link;
+</copy>
 ~~~
 
-These views do not copy data and do not add business definitions. They give
-PEAKGEAR&#95;USER a small, owned surface for Data Studio and the bounded MCP
-server.
+In Catalog, check **Tables** under PEAKGEAR&#95;USER for all three names. The
+tables are local copies at the time the statements ran; they do not refresh
+automatically. They do not yet add business definitions. Open **Sample Data**
+for each table and confirm that rows are present after creation completes.
+Later labs use these local snapshots through Data Studio and the bounded MCP
+server. Before joining product labels, MCP checks the local product table for
+duplicate product keys. If duplicates are reported, ask the instructor to
+investigate; do not deduplicate arbitrarily or invent a product mapping.
 
 ### Checkpoint
 
 You can read both Iceberg tables and the Operations return table. The three
-The raw lab views exist under PEAKGEAR&#95;USER.
+raw lab tables exist under PEAKGEAR&#95;USER.
 
 ## Learn More
 
@@ -189,4 +242,4 @@ The raw lab views exist under PEAKGEAR&#95;USER.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

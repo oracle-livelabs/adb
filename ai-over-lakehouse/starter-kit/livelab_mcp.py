@@ -24,28 +24,54 @@ _TOP_DIGITAL_INTEREST_TIMEOUT_SECONDS = 90
 _LIVELAB_QUERY_ADAPTER = "peakgear-json-bound-rows-v1"
 _TOP_DIGITAL_INTEREST_SQL = """
 WITH month_boundary AS (
-    SELECT TRUNC(MAX(event_ts), 'MM') AS current_month
-    FROM peakgear_user.lab_digital_intent_raw_v
+    SELECT TRUNC(MAX(event_ts), 'MM') AS analysis_month
+    FROM peakgear_user.lab_digital_intent_raw_t
+    WHERE event_ts < TRUNC(CURRENT_DATE, 'MM')
+), top_products AS (
+    SELECT product_id,
+           COUNT(*) AS digital_events
+    FROM peakgear_user.lab_digital_intent_raw_t
+    CROSS JOIN month_boundary
+    WHERE event_ts >= analysis_month
+      AND event_ts < ADD_MONTHS(analysis_month, 1)
+      AND product_id IS NOT NULL
+    GROUP BY product_id
+    ORDER BY digital_events DESC, product_id
+    FETCH FIRST 5 ROWS ONLY
 )
-SELECT product_id,
-       COUNT(*) AS digital_events
-FROM peakgear_user.lab_digital_intent_raw_v
-CROSS JOIN month_boundary
-WHERE event_ts >= ADD_MONTHS(current_month, -1)
-  AND event_ts < current_month
-  AND product_id IS NOT NULL
-GROUP BY product_id
-ORDER BY digital_events DESC, product_id
-FETCH FIRST 5 ROWS ONLY
+SELECT t.product_id,
+       p.product_name,
+       t.digital_events,
+       TO_CHAR(b.analysis_month, 'YYYY-MM') AS analysis_month
+FROM top_products t
+CROSS JOIN month_boundary b
+LEFT JOIN peakgear_user.lab_products_raw_t p ON p.product_id = t.product_id
+ORDER BY t.digital_events DESC, t.product_id
 """
 _DIGITAL_CONTRACT_SQL = """
-SELECT annotation_name,
+SELECT object_name,
+       annotation_name,
        annotation_value
 FROM user_annotations_usage
-WHERE object_name = 'LAB_DIGITAL_INTENT_RAW_V'
+WHERE object_name IN ('LAB_DIGITAL_INTENT_RAW_T', 'LAB_PRODUCTS_RAW_T')
   AND column_name IS NULL
   AND annotation_name IN ('DESCRIPTION', 'TAGS')
-ORDER BY annotation_name
+ORDER BY object_name, annotation_name
+"""
+_PRODUCT_KEY_CHECK_SQL = """
+SELECT product_id, COUNT(*) AS product_rows
+FROM peakgear_user.lab_products_raw_t
+WHERE product_id IS NOT NULL
+GROUP BY product_id
+HAVING COUNT(*) > 1
+FETCH FIRST 1 ROW ONLY
+"""
+_RAW_SOURCE_OBJECTS_SQL = """
+SELECT object_name, object_type
+FROM user_objects
+WHERE object_name IN ('LAB_DIGITAL_INTENT_RAW_T', 'LAB_PRODUCTS_RAW_T')
+  AND object_type = 'TABLE'
+ORDER BY object_name
 """
 
 
@@ -78,9 +104,9 @@ if _upstream_browse_tool:
     mcp.remove_tool("adp_browse_catalog")
 
 _PEAKGEAR_AI_OBJECTS = frozenset({
-    "LAB_PRODUCTS_RAW_V",
-    "LAB_DIGITAL_INTENT_RAW_V",
-    "LAB_RETURNS_RAW_V",
+    "LAB_PRODUCTS_RAW_T",
+    "LAB_DIGITAL_INTENT_RAW_T",
+    "LAB_RETURNS_RAW_T",
     "LAB_PRODUCTS_SEMANTIC_T",
     "LAB_DIGITAL_POPULARITY_T",
     "LAB_RETURNS_T",
@@ -358,14 +384,12 @@ def _run_read_only_statement(client,
     first = statements[0]
     result_set = first.get("resultSet") if isinstance(first, dict) else None
     if isinstance(result_set, dict):
-        rows = result_set.get("items") or []
-        if rows:
-            return rows
+        return result_set.get("items") or []
     return statements
 
 
-def _saved_digital_contract(client) -> dict[str, str]:
-    """Read only the table-level Data Studio contract for the raw view."""
+def _saved_interest_contracts(client) -> dict[str, dict[str, str]]:
+    """Read table-level Data Studio contracts for events and product labels."""
     response = client.Misc.run_query(_DIGITAL_CONTRACT_SQL)
     payload = json.loads(response) if isinstance(response, str) else response
     if isinstance(payload, list):
@@ -374,18 +398,20 @@ def _saved_digital_contract(client) -> dict[str, str]:
         items = payload.get("rows") or payload.get("items") or []
     else:
         items = []
-    contract: dict[str, str] = {}
+    contracts: dict[str, dict[str, str]] = {}
     for item in items:
         if isinstance(item, dict):
+            object_name = item.get("OBJECT_NAME") or item.get("object_name")
             name = item.get("ANNOTATION_NAME") or item.get("annotation_name")
             value = item.get("ANNOTATION_VALUE") or item.get("annotation_value")
-        elif isinstance(item, (list, tuple)) and len(item) >= 2:
-            name, value = item[0], item[1]
+        elif isinstance(item, (list, tuple)) and len(item) >= 3:
+            object_name, name, value = item[0], item[1], item[2]
         else:
             continue
-        if name is not None:
-            contract[str(name).upper()] = "" if value is None else str(value)
-    return contract
+        if object_name is not None and name is not None:
+            contract = contracts.setdefault(str(object_name).upper(), {})
+            contract[str(name).upper()] = "" if value is None else str(value).strip()
+    return contracts
 
 
 @mcp.tool()
@@ -433,36 +459,74 @@ def adp_get_connection_info(ctx: Context = None) -> str:
 
 @mcp.tool()
 def adp_get_top_digital_interest(ctx: Context = None) -> str:
-    """Return the five product IDs with the most digital interest right now.
+    """Return the five products with the most digital interest right now.
 
     This is a narrow, read-only PeakGear lab tool. It reads only
-    PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_V. The metric and period intentionally
+    PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_T and LAB_PRODUCTS_RAW_T.
+    The metric and period intentionally
     match the saved Data Studio description: each row is one digital event and
-    "right now" is the latest completed calendar month. Product names are not
-    returned because this raw view does not contain them. The tool first
-    requires table-level DESCRIPTION and TAGS annotations saved in Data Studio
-    and returns a controlled stop when that contract is absent.
+    "right now" is the latest available month that ended before the database's
+    current calendar month. Events are aggregated before joining product
+    labels. Both tables require saved DESCRIPTION and
+    TAGS annotations; duplicate product keys stop the lookup. Unavailable
+    product names remain null rather than being invented. This simple label
+    lookup does not replace the governed cross-source Analytic Views.
     """
     try:
         client = get_adp(ctx)
         if client is None:
             return err("No ADP client is available.")
 
-        contract = _saved_digital_contract(client)
-        required = {"DESCRIPTION", "TAGS"}
-        missing = sorted(required.difference(contract))
-        if missing:
+        required_tables = {"LAB_DIGITAL_INTENT_RAW_T", "LAB_PRODUCTS_RAW_T"}
+        object_rows = _payload_items(client.Misc.run_query(_RAW_SOURCE_OBJECTS_SQL))
+        available_tables = set()
+        for row in object_rows:
+            if isinstance(row, dict):
+                name = row.get("OBJECT_NAME") or row.get("object_name")
+            elif isinstance(row, (list, tuple)) and row:
+                name = row[0]
+            else:
+                continue
+            if name is not None:
+                available_tables.add(str(name).upper())
+        missing_tables = sorted(required_tables - available_tables)
+        if missing_tables:
+            return json.dumps({
+                "status": "needs_source_tables",
+                "missing_tables": missing_tables,
+                "message": "Verify or create the local raw tables from Lab 2 before asking for this ranking.",
+            })
+
+        contracts = _saved_interest_contracts(client)
+        missing_contracts = {}
+        for object_name in ("LAB_DIGITAL_INTENT_RAW_T", "LAB_PRODUCTS_RAW_T"):
+            contract = contracts.get(object_name, {})
+            missing = [name for name in ("DESCRIPTION", "TAGS") if not contract.get(name)]
+            if missing:
+                missing_contracts[object_name] = missing
+        if missing_contracts:
+            first_object = next(iter(missing_contracts))
             return json.dumps(
                 {
                     "status": "needs_data_studio_contract",
-                    "object": "PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_V",
-                    "missing_annotations": missing,
+                    "object": f"PEAKGEAR_USER.{first_object}",
+                    "missing_annotations": missing_contracts[first_object],
+                    "missing_contracts": missing_contracts,
                     "message": (
-                        "Review and save the table Description and Tags in "
-                        "Data Studio AI Enrichment before asking for this ranking."
+                        "Review and save Description and Tags for the digital "
+                        "and product tables in Data Studio AI Enrichment before "
+                        "asking for this ranking."
                     ),
                 }
             )
+
+        duplicates = _payload_items(client.Misc.run_query(_PRODUCT_KEY_CHECK_SQL))
+        if duplicates:
+            return json.dumps({
+                "status": "needs_unique_product_keys",
+                "object": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_T",
+                "message": "Duplicate PRODUCT_ID values prevent a safe product-name join. Ask the instructor to inspect the source; do not deduplicate arbitrarily.",
+            })
 
         rows = _run_read_only_statement(
             client,
@@ -471,15 +535,16 @@ def adp_get_top_digital_interest(ctx: Context = None) -> str:
         )
         return json.dumps(
             {
-                "object": "PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_V",
+                "object": "PEAKGEAR_USER.LAB_DIGITAL_INTENT_RAW_T",
+                "product_labels": "PEAKGEAR_USER.LAB_PRODUCTS_RAW_T",
                 "definition": {
                     "customer_interest": "COUNT(*) of digital events",
-                    "right_now": "latest completed calendar month based on EVENT_TS",
+                    "right_now": "latest completed calendar month present in EVENT_TS, excluding the database's current and future months",
                     "result_grain": "one row per PRODUCT_ID",
                 },
                 "rows": rows,
                 "contract_source": "Data Studio native DESCRIPTION and TAGS annotations",
-                "note": "Product names and return risk require the governed Analytic View.",
+                "note": "Product names come from the reviewed product catalog. Null names are unknown; cross-source category and returns recommendations still require governed Analytic Views.",
             },
             default=str,
         )

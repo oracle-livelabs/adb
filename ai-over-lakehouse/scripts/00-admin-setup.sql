@@ -1,6 +1,9 @@
--- PeakGear LiveLab: instructor-only participant provisioning.
--- Run in SQL Worksheet as ADMIN before any ACL, credential, mount, or Data Studio step.
--- Do not paste passwords, SAS tokens, OAuth secrets, or OCI API keys into this file.
+-- PeakGear LiveLab: legacy provider/operator provisioning reference only.
+-- Not a learner step. LiveLabs reservations must already be provisioned.
+-- Reservation-specific passwords come from provisioning, not the example below.
+-- Do not rerun against a prepared reservation. See documentation/provisioning.md.
+-- Event-owner-approved shared values are included for copy/paste.
+-- Use only in the assigned event database. This script does not reset existing users.
 
 -- 1. Check whether the participant schema already exists.
 SELECT username,
@@ -10,16 +13,17 @@ WHERE username = 'PEAKGEAR_USER';
 
 -- 2. Run this statement only when the query above returned no row.
 CREATE USER PEAKGEAR_USER
-  IDENTIFIED BY "<STRONG_LAB_PASSWORD>"
+  IDENTIFIED BY "Welcome123456"
   DEFAULT TABLESPACE DATA
   TEMPORARY TABLESPACE TEMP
   QUOTA 2000M ON DATA
   ACCOUNT UNLOCK;
 
 -- 3. Run these grants for a new or existing participant.
--- They allow only the objects built in this lab: views, attribute dimensions,
--- hierarchies, and analytic views.
+-- They allow only the objects built in this lab: local tables, views,
+-- attribute dimensions, hierarchies, and analytic views.
 GRANT CREATE SESSION,
+      CREATE TABLE,
       CREATE VIEW,
       CREATE ATTRIBUTE DIMENSION,
       CREATE HIERARCHY,
@@ -92,7 +96,7 @@ BEGIN
   DBMS_CLOUD.CREATE_CREDENTIAL(
     credential_name => 'PEAKGEAR_OPS_CREDENTIAL',
     username        => 'PEAKGEAR_OPS',
-    password        => '<PEAKGEAR_OPS_PASSWORD>'
+    password        => 'Welcome123456'
   );
 END;
 /
@@ -100,9 +104,9 @@ END;
 BEGIN
   DBMS_CLOUD_ADMIN.CREATE_DATABASE_LINK(
     db_link_name    => 'PEAKGEAR_OPERATIONS_LINK',
-    hostname        => '<OPERATIONS_ADB_HOST>',
+    hostname        => 'adb.us-ashburn-1.oraclecloud.com',
     port            => 1522,
-    service_name    => '<OPERATIONS_SERVICE_NAME>',
+    service_name    => 'mqssyowmqvgac1y_operationalstore_low.adb.oraclecloud.com',
     credential_name => 'PEAKGEAR_OPS_CREDENTIAL',
     directory_name  => NULL,
     public_link     => TRUE
@@ -110,11 +114,13 @@ BEGIN
 END;
 /
 
-SELECT COUNT(*) AS operational_return_events
-FROM customer_return_events@peakgear_operations_link;
+SELECT *
+FROM customer_return_events@peakgear_operations_link
+FETCH FIRST 5 ROWS ONLY;
 
--- 8. Produce the only non-secret connection artifact for the participant.
--- Copy the result to the Lab start page before PEAKGEAR_USER signs in.
+-- 8. Legacy provider-only URL lookup; not a learner task.
+-- Learners run this read-only URL query in Lab 3, Task 1 as PEAKGEAR_USER.
+-- The provider must verify that the prepared reservation permits this lookup.
 SELECT 'https://' ||
        LOWER(REPLACE(p.name, '_', '-')) || '.' ||
        REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
@@ -133,7 +139,7 @@ WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
 -- Generative AI and must not be granted to ADMIN by using CURRENT_USER.
 BEGIN
   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-    host        => '<DATABRICKS_WORKSPACE_HOST>',
+    host        => 'adb-2242907740736663.3.azuredatabricks.net',
     lower_port  => 443,
     upper_port  => 443,
     ace         => XS$ACE_TYPE(

@@ -1,0 +1,254 @@
+"""Offline package checks; these do not prove live Oracle or browser behavior."""
+
+from html import unescape
+import json
+from pathlib import Path
+import re
+import unittest
+from urllib.parse import unquote, urlsplit
+from zipfile import ZipFile
+
+
+ROOT = Path(__file__).resolve().parents[2]
+MANIFEST = ROOT / "workshops" / "sandbox" / "manifest.json"
+
+
+def learner_pages():
+    manifest = json.loads(MANIFEST.read_text())
+    return [
+        (entry, (MANIFEST.parent / entry["filename"]).resolve())
+        for entry in manifest["tutorials"]
+        if not urlsplit(entry["filename"]).scheme
+    ]
+
+
+def learner_labs():
+    return [
+        (entry, path)
+        for entry, path in learner_pages()
+        if entry["title"].startswith("Lab ")
+    ]
+
+
+class WorkshopPackageTests(unittest.TestCase):
+    def test_five_participant_labs_are_numbered_from_one(self):
+        labs = learner_labs()
+        self.assertEqual(len(labs), 5)
+        for number, (entry, path) in enumerate(labs, 1):
+            with self.subTest(lab=number):
+                self.assertTrue(entry["title"].startswith(f"Lab {number}: "))
+                self.assertNotIn("ADMIN", entry["title"])
+                self.assertEqual(unescape(path.read_text().splitlines()[0]), "# " + entry["title"])
+        self.assertTrue((MANIFEST.parent / "index.html").is_file())
+
+    def test_task_numbers_are_contiguous_in_each_lab(self):
+        for _, path in learner_labs():
+            tasks = [int(number) for number in re.findall(r"^## Task (\d+):", path.read_text(), re.M)]
+            with self.subTest(file=path.name):
+                self.assertTrue(tasks)
+                self.assertEqual(tasks, list(range(1, len(tasks) + 1)))
+
+    def test_learner_pages_do_not_manage_data_cache(self):
+        for _, path in learner_pages():
+            text = unescape(path.read_text())
+            with self.subTest(file=path.name):
+                self.assertNotRegex(text, re.compile(r"\b(?:DBMS_EXT_TABLE_CACHE|USER_EXTERNAL_TAB_CACHES|Lake\s+Cache)\b", re.I))
+
+    def test_final_lab_combines_model_gap_build_and_answer(self):
+        entry, path = learner_labs()[-1]
+        text = path.read_text()
+        self.assertEqual(entry["title"], "Lab 5: Create an Analytic View with Codex")
+        headings = re.findall(r"^## Task \d+: (.+)$", text, re.M)
+        self.assertEqual(headings, [
+            "Ask the harder business question",
+            "Review the governed-model requirements",
+            "Ask Codex to build the model",
+            "Ask the final business question",
+        ])
+        self.assertFalse((ROOT / "governed-question" / "governed-question.md").exists())
+
+    def test_local_table_contract_is_consistent_across_labs_and_runtime(self):
+        sources = (ROOT / "connect-sources" / "connect-sources.md").read_text()
+        enrichment = (ROOT / "ai-enrichment" / "ai-enrichment.md").read_text()
+        runtime = (ROOT / "starter-kit" / "livelab_mcp.py").read_text()
+        boundary = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        names = (
+            "lab_products_raw_t",
+            "lab_digital_intent_raw_t",
+            "lab_returns_raw_t",
+        )
+        for name in names:
+            with self.subTest(table=name):
+                self.assertIn(f"CREATE TABLE {name} AS", sources)
+                self.assertIn(name.upper(), enrichment)
+                self.assertIn(name.upper(), runtime)
+        self.assertNotRegex(runtime, r"LAB_(?:PRODUCTS|DIGITAL_INTENT|RETURNS)_RAW_V")
+        self.assertIn("ALTER TABLE", enrichment)
+        self.assertIn("Mandatory Analytic View gate", boundary)
+        self.assertIn("do not provide category rankings, figures", " ".join(boundary.split()))
+
+    def test_setup_boundary_does_not_start_the_model_build(self):
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
+        prompt = re.search(r"<copy>\n(.*?)\n</copy>", section, re.S).group(1)
+        self.assertIn("SETUP ACKNOWLEDGMENT", prompt)
+        self.assertIn("It does not authorize object", prompt)
+        self.assertIn("Ready. What business question would you like to explore?", prompt)
+        self.assertNotIn("CURRENT AUTHORIZED TASK", prompt)
+        self.assertNotIn("I authorize creation", prompt)
+
+    def test_complete_boundary_contains_the_conditional_sql_av_workflow(self):
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        setup_section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
+        setup_prompt = re.search(r"<copy>\n(.*?)\n</copy>", setup_section, re.S).group(1)
+        workflow = setup_prompt.split("7. Model-building workflow", 1)[1]
+        workflow = workflow.split("\n\nSETUP ACKNOWLEDGMENT\n", 1)[0]
+        for requirement in (
+            "These rules apply when I explicitly ask you",
+            "They do not authorize creation during boundary setup",
+            "Batch independent metadata reads",
+            "Reuse an existing suitable Analytic View and its dependencies",
+            "Use explicit SQL DDL through adp_run_query",
+            "Do not use adp_build_analytic_view",
+            "Do not create exploratory AVs",
+            "Aggregate digital events and returned quantities independently",
+            "Preserve product-month rows present in either source",
+            "two additive SUM measures: digital event count and returned units",
+            "latest shared completed calendar month",
+            "Perform one consolidated final health check",
+            "After a timeout or ambiguous error, inspect whether the affected object",
+            "Repeat checks only when a failure or change requires them",
+            "exclude digital events with NULL PRODUCT_ID",
+            "Keep the raw tables intact",
+            "Do not assign categories from product names",
+            "Do not sum detail rows together with their All-level totals",
+            "do not imply continuous refresh unless it is implemented",
+            "the actual AV name and whether it was created or reused",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, " ".join(workflow.split()))
+
+    def test_missing_category_rule_has_an_explicit_nonblocking_default(self):
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
+        prompt = re.search(r"<copy>\n(.*?)\n</copy>", section, re.S).group(1)
+        flat = " ".join(prompt.split())
+        for requirement in (
+            "If saved metadata defines how to handle missing categories, follow it",
+            'NULL or blank CATEGORY_NAME in a separate technical bucket labelled "Unknown / Unspecified"',
+            "Keep their measures in the model and reconciliation",
+            "exclude this bucket from named-category recommendations",
+            "not a guessed business category",
+            "Do not infer categories from product names or change raw data",
+            "collision-free technical key only in the derived model",
+            "Do not require an extra annotation or confirmation just for these cases",
+            "Missing category handling alone does not block model validation or an explicitly requested AV build",
+            "This default does not authorize object creation",
+            "A missing category on a uniquely mapped product is not an ambiguous product mapping",
+            "If essential business meaning is missing",
+        ):
+            with self.subTest(requirement=requirement):
+                self.assertIn(requirement, flat)
+        self.assertNotIn("do not add a synthetic Unknown category", prompt)
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        self.assertIn("Do not block the AV build just because", final)
+        self.assertNotIn("do not add a synthetic Unknown category", final)
+
+    def test_boundary_is_established_only_in_lab_three(self):
+        boundary_locations = []
+        for _, path in learner_pages():
+            for prompt in re.findall(r"<copy>\n(.*?)\n</copy>", path.read_text(), re.S):
+                if re.search(r"^BOUNDARY$", prompt, re.M):
+                    boundary_locations.append(path.relative_to(ROOT))
+        self.assertEqual(boundary_locations, [Path("connect-codex/connect-codex.md")])
+
+    def test_final_build_prompt_is_a_short_request_not_another_boundary(self):
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        build_section = final.split("## Task 3: Ask Codex to build the model", 1)[1]
+        build_prompt = re.search(r"<copy>\n(.*?)\n</copy>", build_section, re.S).group(1)
+        approved_prompt = (
+            "Go ahead: create or reuse and validate one Analytic View to answer:\n"
+            "Which product categories should we prioritize, balancing current customer interest with returns?\n\n"
+            "Follow the established boundary. Use existing local tables and reviewed metadata. "
+            "Reuse suitable dependencies and create only what is missing in PEAKGEAR_USER. "
+            "Avoid repeated discovery and unnecessary rebuilds, but keep the required validation.\n\n"
+            "Return a short summary of the AV and validation results."
+        )
+        self.assertEqual(build_prompt, approved_prompt)
+        self.assertLess(len(build_prompt.split()), 120)
+        self.assertNotIn("BOUNDARY", build_prompt)
+        self.assertNotIn("You are the PeakGear business analyst", build_prompt)
+        self.assertNotIn("adp_get_connection_info", build_prompt)
+        self.assertNotIn("adp_run_query", build_prompt)
+        self.assertNotIn("adp_build_analytic_view", build_prompt)
+        self.assertNotIn("SETUP ACKNOWLEDGMENT", build_prompt)
+        self.assertNotRegex(build_prompt, r"(?m)^\d+\. ")
+        self.assertNotIn("All Stores", final)
+        self.assertNotIn("store drill-down", final)
+
+    def test_current_workshop_does_not_require_two_analytic_views(self):
+        pages = [path for _, path in learner_pages()]
+        pages += list((ROOT / "documentation").glob("*.md"))
+        for path in pages:
+            with self.subTest(file=path.name):
+                self.assertNotRegex(path.read_text(), re.compile(r"\b(?:both|two)\s+Analytic Views\b", re.I))
+
+    def test_every_learner_code_block_has_copy_markup(self):
+        fence = re.compile(r"^(?P<indent> {0,4})(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=indent)(?P=fence)[ \t]*$", re.M | re.S)
+        for _, path in learner_pages():
+            text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
+            blocks = list(fence.finditer(text))
+            markers = re.findall(r"^ {0,4}(?:~{3,}|`{3,})[^\n]*$", text, re.M)
+            with self.subTest(file=path.name):
+                self.assertEqual(len(markers), 2 * len(blocks), "Unbalanced code fences")
+                for block in blocks:
+                    body = block["body"].strip()
+                    self.assertTrue(body.startswith("<copy>"))
+                    self.assertTrue(body.endswith("</copy>"))
+                    self.assertEqual(body.count("<copy>"), 1)
+                    self.assertEqual(body.count("</copy>"), 1)
+
+    def test_starter_kit_link_uses_supported_markdown_not_html(self):
+        text = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        self.assertIn(
+            "[**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip)",
+            text,
+        )
+        self.assertNotRegex(text, r"<a\s+href=")
+
+    def test_local_links_resolve_and_images_have_alt_text(self):
+        link = re.compile(r"(!?)\[([^\]]*)\]\(([^\s)]+)\)")
+        for _, path in learner_pages():
+            text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
+            for image, label, destination in link.findall(text):
+                with self.subTest(file=path.name, destination=destination):
+                    if image:
+                        self.assertTrue(label.strip(), "Image must have alternate text")
+                    parsed = urlsplit(destination)
+                    if not parsed.scheme and parsed.path:
+                        self.assertTrue((path.parent / unquote(parsed.path)).is_file())
+
+    def test_filenames_are_lowercase(self):
+        for path in ROOT.rglob("*"):
+            if "__pycache__" in path.parts or path.name == ".DS_Store":
+                continue
+            with self.subTest(path=str(path.relative_to(ROOT))):
+                self.assertEqual(path.name, path.name.lower())
+
+    def test_starter_kit_zip_matches_all_source_files(self):
+        source = ROOT / "starter-kit"
+        expected = {
+            str(path.relative_to(ROOT))
+            for path in source.rglob("*")
+            if path.is_file() and "__pycache__" not in path.parts and path.name != ".DS_Store"
+        }
+        with ZipFile(ROOT / "downloads" / "peakgear-livelab-starter-kit.zip") as archive:
+            self.assertIsNone(archive.testzip())
+            self.assertEqual({name for name in archive.namelist() if not name.endswith("/")}, expected)
+            for name in expected:
+                with self.subTest(member=name):
+                    self.assertEqual(archive.read(name), (ROOT / name).read_bytes())
+
+
+if __name__ == "__main__":
+    unittest.main()
