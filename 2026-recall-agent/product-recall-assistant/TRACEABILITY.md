@@ -14,6 +14,7 @@ Estimated Time: Not applicable
 | Autonomous identity separation | Autonomous AI Database user-management guidance | `ADMIN`, `RECALL_OWNER`, `RECALL_APP_USER`, and standard database roles |
 | Security finale | Deep Data Security source article and Oracle guide | Lab 7 mirrors local end users, regional roles, parent-child grants, and secured vector search |
 | Unified capstone | React, Node.js, Leaflet, and Oracle Database documentation | React/Node command center, local-user sign-in, secured JSON/vector/Spatial/Graph evidence, live converged agent answers, and database-session authorization |
+| Governed campaign | Select AI Agent, Deep Data Security, and audit boundaries | Lab 8 uses role-filtered campaign audiences, generic notice generation, explicit contact authorization, human approval, audit records, and refund intents; it sends no messages or funds |
 
 ## Security Design Traceability
 
@@ -30,7 +31,7 @@ Estimated Time: Not applicable
 
 ## Runtime Validation Status
 
-The LiveLabs structure and markdown have local static validation. Earlier live SQLcl validation covered the smaller five-lab baseline. The July 2026 cleanup expands the seed data and splits the flow into eight focused labs. Run a fresh live database retest before treating the HOL as database-tested. See [Test Results](TEST-RESULTS.md).
+The LiveLabs structure and markdown have local static validation. Earlier live SQLcl validation covered the smaller five-lab baseline. The July 2026 cleanup expanded the seed data and split the flow into eight focused labs. The combined Lab 8 campaign setup has not been live-tested against a fresh database in this checkout; run a fresh database retest before treating the full workshop as database-tested. See [Test Results](TEST-RESULTS.md).
 
 ## Acknowledgements
 

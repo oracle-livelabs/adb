@@ -2,109 +2,107 @@
 
 ## Introduction
 
-PeakGear sells sporting goods. Its engineers need reusable sales data, analysts investigate inventory coverage, and business users need answers about West-region performance. Follow the data through Bronze, Silver, and Gold using Oracle Autonomous AI Lakehouse.
+PeakGear sells sporting goods. Alex needs to prepare reusable sales data, Sam needs to investigate inventory coverage, and Mia needs an answer about West-region sales. You will follow their work in Oracle Autonomous AI Lakehouse.
 
-### Prerequisites
-
-* An assigned event environment with the `PG` schema and preloaded Bronze data.
-* New Data Studio and legacy Database Actions URLs and credentials from the facilitator.
-* The supplied PeakGear project ZIP and connection handout for attendee setup.
-* Basic SQL familiarity; you do not need Spark programming experience.
-
-### Objectives
-
-* Explain each medallion tier and the three personas.
-* Locate Catalog, SQL Worksheet, Transform, Jobs, and AI Assistant.
-* Check your environment and the `peakgear` project.
+Medallion separates three responsibilities: retain source data in Bronze, refine it into reusable Silver, and publish purpose-built Gold. Consumers can use the appropriate tier without repeating every preparation step.
 
 Estimated Workshop Time: 90 minutes, including a 12-minute troubleshooting buffer.
 
 Estimated Lab Time: 22 minutes.
 
+### Objectives
+
+* Explain the three personas and the purpose of each tier.
+* Sign in to the reserved environment and connect Data Studio as `PG`.
+* Locate the catalog, SQL Worksheet, and prepared Data Transforms project.
+
+### Prerequisites
+
+* An active LiveLabs reservation with database and OCI login details.
+* The Data Studio URL supplied by the facilitator.
+* A pre-provisioned environment with Bronze data, a mounted catalog, and the imported project.
+* Basic SQL familiarity. No Spark programming experience is required.
+
 ## Task 1: Follow the three-persona journey
 
-1. Meet the team. You play these roles with the assigned account; they do not require three additional logins.
+1. Meet the team. You play all three roles using your assigned account; no additional persona logins are required.
 
-    | Persona | Responsibility | Tools and tier |
+    | Persona | Business need | Interaction |
     |---|---|---|
-    | Alex, Data Engineer | Build and monitor reusable pipelines | Data Transforms; Bronze → Silver → Gold |
-    | Sam, Data Analyst | Investigate inventory coverage | Catalog and SQL Worksheet; Bronze + Silver |
-    | Mia, Business User | Understand West-region performance | Natural-language questions; native Oracle Gold |
+    | Alex, Data Engineer | Prepare consistent sales data once | Data Transforms workflows across the tiers |
+    | Sam, Data Analyst | Compare recent sales with available inventory | Catalog discovery and SQL across Bronze and Silver |
+    | Mia, Business User | Find the best-selling West-region products | Natural-language queries against native Gold |
 
-2. Review the data movement.
+2. Review the architecture.
 
-    ![Medallion data movement and the three PeakGear personas](../assets/images/medallion-flow.svg)
+    ![Alex builds the pipeline, Sam queries Bronze and Silver, and Mia asks questions of Gold](../assets/images/medallion-flow.svg)
 
-    Bronze retains source-faithful Iceberg data. Silver joins and cleanses reusable sales data. Gold publishes a West-only native Oracle data product with business metadata. This project uses native `PG` staging tables before publishing Silver to Iceberg; staging is not the published Silver tier.
+    Bronze and Silver are Apache Iceberg tables with files in OCI Object Storage and metadata in Oracle AI Data Catalog. Gold is a native Oracle table in `PG`. Native intermediate tables support the transformations; they are not the published Silver Iceberg table.
 
-3. Review the data objects.
+3. Review the exact objects you will use. Quoted table names are case-sensitive.
 
     | Layer | Objects |
     |---|---|
-    | Raw | PeakGear files in OCI Object Storage |
-    | Bronze Iceberg | `PRODUCTS`, `STORE_SALES_TRANSACTIONS`, `STORE_LOCATIONS`, `STORE_INVENTORY` |
-    | Native intermediate tables | `PG.HOL2026_ENRICHED_SALES_STAGE`, `PG.HOL2026_ENRICHED_SALES` |
-    | Silver Iceberg | `silver.HOL2026_ENRICHED_SALES` in the mounted catalog |
-    | Gold native Oracle | `PG.GOLD_WEST_PRODUCT_PERFORMANCE` |
+    | Bronze, mounted through `PG_AICAT` | `"bronze"."products"`, `"bronze"."store_sales_transactions"`, `"bronze"."store_locations"`, `"bronze"."store_inventory"` |
+    | Native intermediate tables | `PG."ailh_enriched_sales_stage"`, `PG."ailh_enriched_sales"` |
+    | Published Silver, through `PG_AICAT` | `"silver"."AILH_ENRICHED_SALES"` |
+    | Native Gold | `PG."ailh_gold_west_product_performance"` |
 
-4. Listen to the facilitator: “Medallion gives each stage a contract: retain, refine, and publish. We use Iceberg for open data access and native Oracle for the curated business product. Today's deployment uses OCI; multi-cloud-ready describes the pattern, not a second cloud you will deploy today.”
+4. Listen to the facilitator: “Open tables let compatible engines share data. Today we use Oracle SQL and visual Data Transforms, not a separate Spark cluster. Lakehouse can support selected tiers or the entire medallion pattern. This workshop runs on OCI; multi-cloud-ready does not mean that we deploy a second cloud today.”
 
-## Task 2: Explore the new Data Studio UI
+## Task 2: Open your reservation and sign in
 
-1. Open the **new Data Studio URL from your event handout**. Sign in with your assigned credentials. Do not use the database identifiers shown in screenshots.
+1. In LiveLabs, open **My Reservations**, select your reservation, and click **Launch Workshop**.
 
-    ![New Data Studio home with SQL Worksheet, Data Transform, AI Assistant, and AI Data Catalog](../assets/images/new-data-studio-home.png)
+2. Open **Reservation Information**. Keep the OCI username, initial password, tenancy, assigned compartment, database region, and database login details available privately.
 
-2. Check the database and OCI scope. Open **SQL Worksheet** and confirm the session uses `PG` on your assigned database. If the header shows **SETUP NEEDED**, ask the facilitator to check configuration. The badge alone does not identify the missing setup.
+3. Click **Launch OCI** or open the supplied OCI console link. Use the identity domain and username from your reservation. On first sign-in, change the initial password when prompted. Store your new password securely.
 
-3. Locate **Catalog**, **SQL Worksheet**, **Transform**, and **Jobs** in the navigation. Locate **AI Assistant** on Home and in the header. Lab 5 checks the configured AI experience against Gold.
+4. Note the region where the lab database is provisioned. The region in the initial OCI sign-in URL may differ from the database region. Use your reservation values, not the identifiers in a screenshot.
 
-4. Open **Catalog → Locally Mounted Catalogs → PG_AICAT** and locate `bronze` and `silver`.
+5. Open the facilitator-provided **Data Studio** URL and choose **Sign in with your cloud account**. Use your assigned OCI account and the password you just set.
 
-    ![New UI catalog showing the PG_AICAT mount and Bronze and Silver namespaces](../assets/images/catalog.png)
+6. Click **Connect to database**. Select the assigned database region and compartment, choose your database, and connect with username `PG` and the database password from the reservation.
 
-    **Known new-UI limitation:** namespaces may appear without their tables. An empty branch does not prove that data is missing. Do not recreate the catalog or reload Bronze. Lab 2 provides SQL discovery and a separate legacy appendix.
+    The OCI account password and the `PG` database password are separate credentials. Do not paste either into worksheets, screenshots, or shared notes.
 
-## Task 3: Check the PeakGear project and connections
+## Task 3: Explore Data Studio and check the project
 
-1. Open **Transform → Projects → peakgear**. Do not use `peakgear_old`.
+1. Locate **Catalog**, **SQL Worksheet**, **Transform**, and **Jobs** in the left navigation.
 
-    ![New Data Studio Transform navigation](../assets/images/new-transform.png)
+2. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables**. Select `products` and open **Sample Data**. Bronze is already loaded. Silver may not appear until you complete Lab 2; you do not need to create it manually.
 
-    ![New UI project list containing peakgear](../assets/images/new-projects.png)
+3. Open **Transform** → **Projects** → `peakgear_medallion`. Use this project, not the separate `peakgear` project.
 
-2. If already provisioned, leave the project in place. Confirm **Workflows** contains `WF_01_RAW_TO_BRONZE`, `WF_02_BRONZE_TO_SILVER`, and `WF_03_SILVER_GOLD`. Do not import a duplicate.
+    ![Data Studio project list with the peakgear_medallion project](../assets/images/review-projects.png)
 
-3. For attendee setup, use the event handout to configure Object Storage credentials, the catalog credential/token, and the Oracle JDBC connection. Import the supplied project ZIP and map its connections to your assigned services. Use Appendix A when the new UI lacks an import or connection action.
+4. Open **Workflows** and confirm these prepared workflows are present:
 
-    Keep passwords and tokens out of screenshots, SQL files, source control, and chat. A catalog OAuth client secret is not an OCI Object Storage auth token.
+    * `wf_01_raw_to_bronze`
+    * `wf_02_bronze_to_silver`
+    * `wf_03_silver_to_gold`
 
-4. Test the mapped Oracle, Object Storage, and Iceberg connections. Imported connection names may contain old database numbers; verify the actual endpoint with the facilitator. Never target a production or another attendee's schema.
+5. The project, connections, catalog mount, and execution variables are pre-provisioned. Do not import another ZIP, replace credentials, or edit connection endpoints. Ask the facilitator if the project is missing.
 
-5. Confirm that Bronze already contains data. The facilitator demonstrates ingestion in Lab 2; you start from prepared Bronze data.
+    **Checkpoint:** Data Studio is connected as `PG`, Bronze is visible, and `peakgear_medallion` contains the workflows.
 
-## Appendix A: Legacy UI setup fallback
+## Appendix A: Legacy UI access
 
-Use this section only when directed. Return to the main new-UI path afterward.
+Use the legacy interface only when directed by the facilitator.
 
-1. Open the **legacy Database Actions / Data Transforms URL** from the event handout and sign in.
+1. Open the assigned **Database Actions** URL and sign in as `PG`. Use **SQL** for the same SQL blocks provided in later labs.
 
-2. In **Connections**, edit and test the imported connections using your assigned values. If the project is absent, use the project import action to import the supplied ZIP; otherwise skip import.
+2. Open legacy **Data Transforms** → **Projects** → `peakgear_medallion` to inspect the prepared project. Connection and import setup belong to the facilitator's preparation, not this attendee exercise.
 
-3. Select **Projects → peakgear** and verify the tier workflows.
-
-    ![Legacy Data Transforms project list; select peakgear](../assets/images/projects.png)
-
-4. Return to the new Data Studio tab. Secret-entry and package-import dialogs are environment-specific; follow the facilitator's setup demonstration.
+3. Return to the new Data Studio tab for the main lab sequence.
 
 ## Learn More
 
 * [Oracle Autonomous AI Lakehouse](https://www.oracle.com/autonomous-database/autonomous-ai-lakehouse/)
-* [Oracle AI Data Catalog](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/oracle-ai-data-catalog.html)
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

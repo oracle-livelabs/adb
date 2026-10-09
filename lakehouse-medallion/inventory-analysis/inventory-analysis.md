@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Sam asks: “Which store and product combinations sold more units in the latest two dataset months than their available-to-promise inventory?” Combine curated Silver sales with Bronze inventory without building another pipeline or copying inventory into Silver.
+Sam asks: “Which store and product combinations have recent sales that exceed their available-to-promise inventory?” Combine curated Silver sales with Bronze inventory without building another pipeline or copying inventory into Silver. Available to promise (ATP) is the inventory quantity available for new commitments.
 
 Estimated Time: 12 minutes, including a four-minute discovery demonstration.
 
@@ -18,9 +18,13 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
 
 ## Task 1: Find the inventory asset in the new UI
 
-1. As Sam, open **Catalog → Locally Mounted Catalogs → PG_AICAT**. Inspect `bronze` and `silver`. When table listing/search is available, find `STORE_INVENTORY` and `HOL2026_ENRICHED_SALES`. Do not use the header **Ask AI** field as a catalog-search substitute unless the facilitator demonstrates that behavior.
+1. As Sam, open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables** → `store_inventory`. Inspect the columns and **Sample Data**, especially `STORE_ID`, `PRODUCT_ID`, and `AVAILABLE_TO_PROMISE_QTY`.
 
-2. If the new UI cannot list tables, open **SQL Worksheet** and discover them directly.
+2. Expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. This is the curated sales table Alex published. Notice that inventory remains in Bronze; you can investigate it with Silver without creating a new pipeline.
+
+    ![Mounted catalog listing the Bronze inventory and published Silver sales tables](../assets/images/review-catalog-tiers.png)
+
+3. Open **SQL Worksheet → Worksheets → New**, name the worksheet **Lab 3 - Data checks**, and run this catalog query to confirm the objects you found.
 
     ```sql
     <copy>
@@ -32,7 +36,7 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-3. Confirm the namespace and table case returned by discovery. Use that exact spelling in the quoted identifiers below. If the new worksheet cannot execute, use Appendix A.
+4. Confirm `bronze.store_inventory` and `silver.AILH_ENRICHED_SALES` in the results. Preserve the quoted case in the following SQL.
 
     Facilitator: “Discovery lets Sam find another governed asset and query it with Silver. This exercise joins across tiers in place. It does not silently promote raw inventory into a curated Silver product.”
 
@@ -43,7 +47,7 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     ```sql
     <copy>
     SELECT "STORE_ID", "PRODUCT_ID", COUNT(*) AS row_count
-    FROM "bronze"."STORE_INVENTORY"@PG_AICAT
+    FROM "bronze"."store_inventory"@PG_AICAT
     GROUP BY "STORE_ID", "PRODUCT_ID"
     HAVING COUNT(*) > 1
     FETCH FIRST 20 ROWS ONLY;
@@ -57,7 +61,7 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     ```sql
     <copy>
     SELECT MIN("SALE_MONTH") AS first_month, MAX("SALE_MONTH") AS latest_month
-    FROM "silver"."HOL2026_ENRICHED_SALES"@PG_AICAT;
+    FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT;
     </copy>
     ```
 
@@ -66,27 +70,29 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     SELECT COUNT(*) AS inventory_rows,
            SUM(CASE WHEN "AVAILABLE_TO_PROMISE_QTY" IS NULL THEN 1 ELSE 0 END)
                AS missing_atp_rows
-    FROM "bronze"."STORE_INVENTORY"@PG_AICAT;
+    FROM "bronze"."store_inventory"@PG_AICAT;
     </copy>
     ```
 
-    Missing ATP is unknown, not zero. The analysis below excludes those rows. The facilitator must confirm that `SALE_MONTH` is a date representing the sales month.
+    The reviewed sample contains only January 2025, so equal first and latest months are expected. The analysis uses the latest month and the preceding month when available; it does not require two months of data.
+
+    The reviewed inventory sample has 1,200 rows and zero missing ATP values. A different approved extract can have a different row count. Missing ATP is unknown, not zero; the analysis excludes it. These checks explain whether the join can duplicate sales, which period is covered, and whether available inventory is known.
 
 ## Task 3: Answer the inventory question
 
-1. Execute this query in **SQL Worksheet**. It first aggregates sales, then joins inventory at store/product grain to avoid multiplying transaction-level sales.
+1. Save the data-check worksheet and create another worksheet. Execute this query. It aggregates sales first, then joins inventory at store/product grain to avoid multiplying transaction-level sales.
 
     ```sql
     <copy>
     WITH latest_month AS (
         SELECT MAX("SALE_MONTH") AS sale_month
-        FROM "silver"."HOL2026_ENRICHED_SALES"@PG_AICAT
+        FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT
     ), recent_demand AS (
         SELECT "STORE_ID", "PRODUCT_ID",
                MAX("PRODUCT_NAME") AS product_name,
                SUM("QTY_SOLD") AS units_sold_recently,
                SUM("TOTAL_SALE_AMOUNT") AS revenue_recently
-        FROM "silver"."HOL2026_ENRICHED_SALES"@PG_AICAT
+        FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT
         WHERE "SALE_MONTH" >= ADD_MONTHS(
             (SELECT sale_month FROM latest_month), -1)
         GROUP BY "STORE_ID", "PRODUCT_ID"
@@ -98,7 +104,7 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
            d.units_sold_recently - i."AVAILABLE_TO_PROMISE_QTY"
                AS demand_stock_gap
     FROM recent_demand d
-    JOIN "bronze"."STORE_INVENTORY"@PG_AICAT i
+    JOIN "bronze"."store_inventory"@PG_AICAT i
       ON i."STORE_ID" = d."STORE_ID"
      AND i."PRODUCT_ID" = d."PRODUCT_ID"
     WHERE i."AVAILABLE_TO_PROMISE_QTY" IS NOT NULL
@@ -108,11 +114,15 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-2. Read one result aloud: identify the store, product, recent units sold, ATP, and gap. If no rows appear, report that no matching rows satisfy this rule; do not invent a shortage.
+2. Inspect the result columns: store ID, product, recent units sold, available-to-promise quantity, and `DEMAND_STOCK_GAP`. A positive gap means recent units sold exceed the available inventory quantity.
 
-3. Explain the limits: past sales are a demand proxy, not a forecast or an unfulfilled-order count. Compare the inventory snapshot date with the sales period before making an operational decision. The inner join also excludes sales keys without a matching inventory row.
+    ![Inventory analysis results comparing recent units sold with available-to-promise inventory](../assets/images/review-inventory-result.png)
 
-4. Save the worksheet with a descriptive name, if supported. **Checkpoint:** you answered a question using both tiers without publishing another physical table.
+    In the recorded sample, store 5/product 1 has 4,986 recent units sold and ATP of 151, giving a gap of 4,835. Your values depend on the provisioned extract.
+
+3. Treat the output as a list for inventory review, not an automatic reorder recommendation. Past sales are a demand proxy, not a forecast or an unfulfilled-order count. The inner join excludes sales keys without matching inventory, and null ATP rows are excluded. No rows means no matched records satisfy this rule.
+
+4. Use **Save As** to save the worksheet as **Inventory gap analysis**. **Checkpoint:** you answered a business question using both tiers without publishing another physical table.
 
 ## Appendix A: Legacy SQL and discovery fallback
 
@@ -131,4 +141,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

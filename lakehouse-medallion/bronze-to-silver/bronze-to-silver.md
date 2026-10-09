@@ -2,35 +2,36 @@
 
 ## Introduction
 
-As Alex, inspect Bronze, improve a product-name expression, and run the workflow that publishes Silver. Use the existing `peakgear` project rather than rebuilding every component.
+Alex turns source sales, product, and store data into a reusable sales dataset. Inspect Bronze, review the prepared visual transformations, and run the workflow that publishes Silver Iceberg data.
 
-Estimated Time: 24 minutes, including a five-minute ingestion demonstration.
+Estimated Time: 24 minutes, including the ingestion demonstration.
 
 ### Objectives
 
-* Locate and query Bronze Iceberg tables.
-* Make one controlled cleansing change.
-* Run `WF_02_BRONZE_TO_SILVER` and inspect its job results.
+* Browse and query Bronze Iceberg tables.
+* Register the prepared Bronze bridge views.
+* Review joins and expressions without changing the prepared flow.
+* Run the Silver workflow and inspect its child jobs.
 
 ### Prerequisites
 
-Complete Lab 1. Confirm the assigned `PG` connection, catalog mount, preloaded Bronze data, and `peakgear` project.
+Complete Lab 1. Use your assigned environment and the `peakgear_medallion` project.
 
-## Task 1: Watch Raw-to-Bronze ingestion
+## Task 1: Watch the Raw-to-Bronze overview
 
-1. Follow the facilitator into **Transform → Projects → peakgear → Data Loads**. Inspect the prepared raw load. In the reviewed project its name is `dataLoad`; identify it by source and target, not its generic name alone.
+1. Follow the facilitator's explanation of the prepared ingestion: PeakGear source files are loaded into Bronze Iceberg tables through Data Transforms.
 
-2. Review the source files, Iceberg connection, and `bronze` namespace. The facilitator uses `PRODUCTS` to explain mapping and `WF_01_RAW_TO_BRONZE` to explain orchestration and bridge views.
+2. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables**. Select `products`, then **Sample Data**. Repeat for `store_inventory`.
 
-3. Do not run the raw or master workflow unless directed. Bronze already contains data; the master workflow can replace downstream data.
+3. Identify the other two Bronze tables: `store_sales_transactions` and `store_locations`. All four are preloaded. You will not reload raw files in this exercise.
 
-    Facilitator: “The catalog describes an Iceberg table; its files live in object storage. Bronze preserves source data that both engineers and analysts can query.”
+    Facilitator: “The catalog lets us find and query open tables. Their data files remain in object storage. The next workflow registers views so our prepared Data Transforms flows can refer to those tables.”
 
-## Task 2: Discover and query Bronze in the new UI
+## Task 2: Query Bronze in SQL Worksheet
 
-1. Open **Catalog → Locally Mounted Catalogs → PG_AICAT → bronze**. If tables appear, select `PRODUCTS` and inspect its available definition and data information.
+1. Open **SQL Worksheet → Worksheets → New**. Use the worksheet menu to rename it **Lab 2 - Bronze checks**, then save it.
 
-2. If the tree is empty, open **SQL Worksheet** and run this read-only listing. Use the facilitator's catalog alias if it differs from `PG_AICAT`.
+2. Paste and execute each statement separately with **Run Statement**. First, list the catalog tables.
 
     ```sql
     <copy>
@@ -40,115 +41,110 @@ Complete Lab 1. Confirm the assigned `PG` connection, catalog mount, preloaded B
     </copy>
     ```
 
-    Preserve the returned namespace/table case. Examples assume lowercase namespace names and uppercase table names. If SQL discovery also fails, use Appendix A or ask the facilitator to check the mount.
-
-3. Run one statement at a time using the worksheet's run-statement control.
+3. Query the products table. Keep the lowercase quoted table name.
 
     ```sql
     <copy>
-    SELECT * FROM "bronze"."PRODUCTS"@PG_AICAT
+    SELECT * FROM "bronze"."products"@PG_AICAT
     FETCH FIRST 10 ROWS ONLY;
     </copy>
     ```
 
-4. Inspect the inventory attributes Sam will use in Lab 3.
+4. Inspect the inventory fields that Sam will use.
 
     ```sql
     <copy>
     SELECT "STORE_ID", "PRODUCT_ID", "STOCK_ON_HAND",
            "AVAILABLE_TO_PROMISE_QTY", "REORDER_LEVEL", "INVENTORY_STATUS"
-    FROM "bronze"."STORE_INVENTORY"@PG_AICAT
+    FROM "bronze"."store_inventory"@PG_AICAT
     FETCH FIRST 10 ROWS ONLY;
     </copy>
     ```
 
-    **Checkpoint:** identify the four Bronze tables and query at least one. SQL discovery is independent of the new UI's table-list rendering.
+    **Checkpoint:** the catalog listing includes the four Bronze tables, and both sample queries return data.
 
-## Task 3: Improve one expression
+## Task 3: Register views and review the transformations
 
-1. Open **Transform → Projects → peakgear → Data Flows → DF_01_ENRICHED_SALES_EXPRESSIONS**.
+1. Open **Transform** → **Projects** → `peakgear_medallion` → **Workflows** → `wf_01_raw_to_bronze`.
 
-2. Locate the expression producing `PRODUCT_NAME`. Wrap its existing source reference in this expression. Preserve a source alias if the designer requires one.
+2. Review the prepared **Create Bronze** view-registration step. In this event project, Bronze data already exists; this workflow creates the database views used by the downstream data flows. It is not another raw-data load.
 
-    ```sql
-    <copy>
-    INITCAP(TRIM(REGEXP_REPLACE(PRODUCT_NAME, '[[:space:]]+', ' ')))
-    </copy>
-    ```
+3. Click **Run** at the upper right. Retain the pre-provisioned variable defaults if the **Variable values** dialog opens, then click **OK**. Do not expose or replace the variable values.
 
-3. Save and validate. This produces title case, not camelCase. Brand names and acronyms may require exception rules in production.
+4. Open **Jobs → Transforms**, select the `wf_01_raw_to_bronze` run, and click **Refresh** until it finishes successfully. Continue only after success.
 
-4. If editing is unavailable in the new designer, use Appendix B. Do not run the individual flow and workflow concurrently.
+5. Return to **Transform** → **Projects** → `peakgear_medallion` → **Data Flows** → `df_01_enriched_sales_expressions`.
 
-## Task 4: Execute and monitor the Silver workflow
+6. Select the **Expression** component, then the **Column Mapping** tab in the lower panel. Scroll the mapping rows to inspect `COUNTRY`, which is set to `'US'`, and the expressions for sales region, estimated cost, and margin.
 
-1. Open the project's **Workflows** tab and select `WF_02_BRONZE_TO_SILVER`.
+    ![Expression component with Column Mapping and the prepared country and sales expressions](../assets/images/review-column-mapping.png)
 
-    ![New UI Workflows tab in the peakgear project](../assets/images/new-workflows.png)
+7. Trace the joins from the Bronze sales, products, and store-location views into the expression and target. These views expose catalog data to the flow; they are not a second copy of the Bronze files.
+
+8. Review only. Do not edit expressions or run this individual flow. The workflow will execute the prepared expression and cleansing flows in order.
+
+    Facilitator: “The value is a reusable visual pipeline: joins, business rules, cleansing, and orchestration. We are inspecting its logic, not typing a new SQL pipeline during the lab.”
+
+## Task 4: Execute and monitor Silver
+
+1. Open **Workflows** → `wf_02_bronze_to_silver` in `peakgear_medallion`.
+
+    ![Prepared Silver workflow with its four ordered steps and Run button](../assets/images/review-silver-workflow.png)
 
 2. Review the sequence.
 
-    | Step | Purpose |
+    | Prepared step | Purpose |
     |---|---|
-    | `DF_01_ENRICHED_SALES_EXPRESSIONS` | Join Bronze bridge views and derive sales measures |
-    | `DF_02_ENRICHED_SALES_CLEANSE` | Cleanse native staging data |
-    | `Clear Silver table` | Reset the lab target before append loading |
-    | `DL_02_SILVER_ENRICHED_SALES` | Publish Silver Iceberg data |
+    | `df_01_enriched_sales_expressions` | Join Bronze views and derive sales fields |
+    | `df_02_enriched_sales_cleanse` | Cleanse the native intermediate data |
+    | `Clear Silver table` | Clear the disposable lab target before loading |
+    | `dl_silver_enriched_sales_stage` | Publish the curated data to Silver Iceberg |
 
-3. Confirm the assigned environment before starting. **This workflow clears its Silver target.** Use only disposable lab data. Do not bypass this step to resolve a credentials error.
+3. Confirm that you are in your assigned lab environment. This workflow clears its Silver target. Click **Run** once, retain the prepared variable defaults, and click **OK**.
 
-4. Click **Run** in the new workflow designer. If unavailable, use **Start** in Appendix B. Record the job ID and submission time.
+4. Open **Jobs → Transforms**, not **Data Loads**. Select the new `wf_02_bronze_to_silver` run by its start time. You can also follow the workflow's latest-execution job link.
 
-    ![New UI Silver workflow designer with Run and the last execution status](../assets/images/new-silver-workflow.png)
+5. Click **Refresh** while the job runs. Expand the child steps to inspect their status. Allow about two to three minutes; timings can vary. Wait for the workflow and all its children to finish successfully before starting Gold.
 
-5. Open the project's **Jobs** tab, refresh, and find your run by name and time. Inspect its status and child steps. Use Appendix B if new-UI job details are unavailable.
+    ![Silver job details showing the expression, cleansing, clear, and load steps](../assets/images/review-silver-job.png)
 
-    ![New UI details of a previously successful Silver workflow job](../assets/images/new-silver-job.png)
+    The screenshot illustrates monitoring an in-progress run. The workflow total can count the same rows at multiple stages; it is not the final Silver table count.
 
-    The screenshot shows an existing example run, not the run you just submitted.
+## Task 5: Check published Silver
 
-6. Return to **SQL Worksheet** and validate the published Silver table.
+1. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT`, click **Refresh**, and expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. Inspect **Sample Data**.
+
+2. Open a new worksheet named **Lab 2 - Silver checks**. Execute the two checks separately.
 
     ```sql
     <copy>
-    SELECT COUNT(*) AS silver_rows
-    FROM "silver"."HOL2026_ENRICHED_SALES"@PG_AICAT;
+    SELECT *
+    FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT
+    FETCH FIRST 10 ROWS ONLY;
     </copy>
     ```
 
     ```sql
     <copy>
     SELECT "PRODUCT_ID", "PRODUCT_NAME", "SALE_MONTH", "SALES_REGION"
-    FROM "silver"."HOL2026_ENRICHED_SALES"@PG_AICAT
+    FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT
     FETCH FIRST 10 ROWS ONLY;
     </copy>
     ```
 
-    **Checkpoint:** the workflow succeeds and Silver is queryable. A workflow total can sum rows processed by several steps; it is not necessarily the final table row count.
+3. Save the worksheet. The uppercase Silver identifier is intentional; it differs from the lowercase native intermediate table `PG."ailh_enriched_sales"`.
 
-## Appendix A: Legacy catalog and SQL fallback
+    **Checkpoint:** the Silver workflow succeeded and the published Iceberg table returns enriched sales data.
 
-1. Open **legacy Database Actions → Data Studio → Catalog** using the event URL. Locate the mount and Bronze namespace.
+## Appendix A: Legacy UI instructions
 
-2. If tables still do not appear, open **Database Actions → SQL** as `PG`. Run the same discovery and Bronze queries from Task 2. Preserve the exact identifier case returned by discovery.
+1. In legacy **Data Transforms** → **Projects** → `peakgear_medallion`, select the same workflow under **Workflows** and use **Start**. Retain the assigned defaults. Run `wf_01_raw_to_bronze` before `wf_02_bronze_to_silver`.
 
-3. Return to the new UI. Do not treat missing UI nodes as missing data when SQL succeeds.
+2. Follow the execution link or open legacy **Jobs** to inspect the run and its child steps.
 
-## Appendix B: Legacy Data Transforms edit, run, and monitor fallback
+3. For transformation review, open **Data Flows** → `df_01_enriched_sales_expressions` → **Expression** → **Column Mapping**. Do not edit the prepared mapping.
 
-1. In legacy Data Transforms, select **Projects → peakgear → Data Flows → DF_01_ENRICHED_SALES_EXPRESSIONS**. Select the expression component and update `PRODUCT_NAME`, retaining its source alias. Save and validate.
-
-2. Select **Workflows → WF_02_BRONZE_TO_SILVER** and click **Start** once. Use the execution settings supplied by the facilitator.
-
-    ![Legacy Silver workflow canvas with Start and its four prepared steps](../assets/images/bronze-silver-workflow.png)
-
-3. Follow the execution job link or open **Jobs**. Select your run, inspect status and child steps, and record the first failing child if it fails. Ask before rerunning.
-
-    ![Legacy details of a previously successful Silver job](../assets/images/silver-job-details.png)
-
-    This is a historical example, not your run. Its final load processed 80,001 rows; the workflow total includes multiple stages. Dataset versions may produce different counts.
-
-4. Return to Task 4 for SQL validation, using legacy SQL only if the new worksheet is unavailable.
+4. In legacy **Database Actions → SQL**, execute the same Bronze and Silver queries as `PG`. Return to the new UI for the next lab.
 
 ## Learn More
 
@@ -160,4 +156,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

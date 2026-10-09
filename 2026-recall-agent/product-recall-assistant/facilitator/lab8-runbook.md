@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This runbook prepares and rehearses the standalone React/Node command center used in Lab 8. Legacy application artifacts are archived and are not part of the learner workshop flow.
+This runbook prepares and rehearses the React/Node command center and governed campaign workflow used in Lab 8. Legacy application artifacts are archived and are not part of the learner workshop flow.
 
-Estimated Time: 25 minutes
+Estimated Time: 45 minutes
 
 ### Objectives
 
@@ -12,17 +12,18 @@ Estimated Time: 25 minutes
 - Start or deploy the React/Node application against the lab Autonomous Database.
 - Demonstrate all three Deep Data Security local-user experiences.
 - Demonstrate one secured agent team using JSON, Vector, Spatial, and Graph evidence.
+- Demonstrate role-filtered campaign audiences, explicit contact authorization, review, approval, and refund-intent auditing.
 - Explain how the local-user demonstration maps to an IdM or OCI IAM deployment.
 
 ## Task 1: Prepare the Database Bridge
 
-1. Connect as `RECALL_OWNER` and run `05-prepare-react-app.sql` from the Lab 8 directory.
+1. Sign in to SQL Developer Web as `ADMIN` and run the Lab 8 setup block. It fetches the current `05-prepare-react-app.sql` deployment from Object Storage and executes it with `RECALL_OWNER` as the current schema. The block installs both the React bridge and campaign schema.
 
-2. Confirm `RECALL_AGENT_BRIDGE` and `RECALL_REACT_API` are `VALID`.
+2. Confirm `RECALL_AGENT_BRIDGE`, `RECALL_REACT_API`, `RECALL_CAMPAIGN_BRIDGE`, and `RECALL_CAMPAIGN_API` are `VALID`.
 
 3. Confirm `RECALL_REACT_API` exposes `ASK_AGENT`, `CURRENT_IDENTITY`, `PRODUCT_CONTEXT`, and `SECURED_STORES`. `ASK_AGENT` internally assembles product JSON, vector/relational evidence, role-filtered Spatial impact, and compact Graph evidence; the helper functions are intentionally not granted as separate end-user retrieval endpoints.
 
-4. Verify that `RECALL_SECURED_TEAM` is enabled and that `RECALL_AGENT_PROFILE` is available before starting the application.
+4. Verify that `RECALL_SECURED_TEAM` and `RECALL_CAMPAIGN_TEAM` are enabled and that `RECALL_AGENT_PROFILE` is available before starting the application.
 
 ## Task 2: Start the Application
 
@@ -64,13 +65,24 @@ Estimated Time: 25 minutes
 
 6. Target five minutes for application startup, five minutes for persona switching, five minutes for converged agent questions and the identity explanation, and seven minutes for troubleshooting and discussion.
 
+## Task 5: Rehearse the Governed Campaign
+
+1. Sign in as `RECALL_LEAD_USER` and open **Recall Campaign**. Explain that the API uses the active local database identity and Deep Data Security to derive eligible purchases.
+2. Authorize contact and review the automatically generated generic template. Change its channel or tone and regenerate it if time allows. Emphasize that only generic recall facts and placeholders go to the campaign agent; customer details are merged after generation.
+3. Generate a personalized draft for one authorized purchase, review the refund calculation, then approve the campaign. Confirm approval creates audit rows and `READY_FOR_PROCESSING` refund intents only; there is no outbound message or payment integration.
+4. Sign out and repeat the audience check as `REGION_NE_USER` and `STORE_101_USER`. Confirm each audience remains within the active user's data grant.
+5. Target five minutes for application startup, five minutes for persona switching, five minutes for converged agent questions and the identity explanation, ten minutes for the campaign flow, and the remaining time for troubleshooting and discussion.
+
 ## Troubleshooting Notes
 
 - A blank browser page usually means the consolidated server is not running. Run `npm run dev:all` and open port `3001`.
 - A missing end-user context indicates the login is not using one of the Lab 7 local users or the database bridge is not using the selected user session.
-- A dashboard package error indicates `05-prepare-react-app.sql` must be rerun as `RECALL_OWNER`.
-- A failed agent call usually means `RECALL_AGENT_PROFILE` or `RECALL_SECURED_TEAM` is not enabled, or the old bridge still calls `DBMS_CLOUD_AI.SET_PROFILE` from a Deep Data Security end-user session. Rerun `05-prepare-react-app.sql` as `RECALL_OWNER`.
-- An agent answer that omits Spatial or Graph evidence usually means the pre-Lab 8 bridge is still installed. Rerun `05-prepare-react-app.sql` as `RECALL_OWNER`, reconnect the application users, and repeat the cross-feature questions.
+- A dashboard or campaign package error indicates that the hosted setup script is outdated or did not complete. Confirm its v7 marker matches the Lab 8 block and inspect `ALL_ERRORS` as `ADMIN` before rerunning the combined deployment.
+- `ORA-24344` means an object was created with compilation errors. Query `ALL_ERRORS` as `ADMIN` for `RECALL_OWNER` objects and fix the reported source line before rerunning the deployment; the package body may be `INVALID` even though installation completed.
+- `ORA-03405` from `DBMS_CLOUD_REPO.INSTALL_SQL` means the hosted script was not accepted as a sequence of complete install statements. Publish the current v7 source, ensure each SQL statement ends with `/` on its own line, and exclude SQL*Plus-only commands before rerunning the Lab 8 block.
+- A failed agent call usually means `RECALL_AGENT_PROFILE`, `RECALL_SECURED_TEAM`, or `RECALL_CAMPAIGN_TEAM` is not enabled, or an older bridge calls `DBMS_CLOUD_AI.SET_PROFILE` from a Deep Data Security end-user session. Verify the existing Lab 7 profile and teams before rerunning deployment.
+- An agent answer that omits Spatial or Graph evidence usually means an older Lab 8 bridge is installed. Confirm all bridge package bodies are `VALID`, reconnect the application users, and repeat the cross-feature questions.
+- `ORA-00904` for `RECALL_CAMPAIGN_API.STATUS` means the combined v7 deployment is missing or stale. Check `ALL_PROCEDURES` for `RECALL_CAMPAIGN_API.STATUS` and package validity under `RECALL_OWNER`.
 
 ## Acknowledgements
 

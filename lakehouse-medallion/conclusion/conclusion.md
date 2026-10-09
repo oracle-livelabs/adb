@@ -22,13 +22,13 @@ Work through Labs 1–5 and record any incomplete checkpoints.
 
 2. Describe Sam's work: discover Bronze inventory and join it with Silver sales to investigate inventory coverage. The query reads both tiers without creating another pipeline.
 
-3. Describe Mia's work: ask a question against native Gold with Select AI, then check the generated SQL and West-only scope. Annotations supply business context; filters and permissions enforce data scope and access.
+3. Describe Mia's work: select the native Gold table, use Query with AI, and check the generated SQL and West-only scope. Catalog AI Enrichment adds business context; filters and permissions enforce data scope and access.
 
 4. Listen to the facilitator: “Medallion separates raw retention, reusable refinement, and business delivery. An open table format allows compatible engines to work with shared data, while Oracle SQL supports the queries and transformations we used today. We have not run Spark or a second cloud in this lab. The Lakehouse can support selected tiers or the full pattern; not every tier needs the same physical storage.”
 
 ## Task 2: Check outcomes and finish
 
-1. Confirm which checkpoints you completed: Bronze query, Silver workflow, cross-tier SQL, Gold workflow and scope check, metadata review, and a verified natural-language answer. Record any UI or setup blocker rather than marking an incomplete exercise as passed.
+1. Confirm which checkpoints you completed: Bronze query and view registration, Silver workflow, cross-tier SQL, Gold workflow and scope check, Catalog metadata review, and a verified Gold natural-language answer. Record an incomplete checkpoint rather than treating reference SQL alone as a successful AI exercise.
 
 2. Sign out of shared browser sessions as instructed. Leave event-resource cleanup to the facilitator; do not drop shared catalogs or delete object-store data.
 
@@ -37,4 +37,4 @@ Work through Labs 1–5 and record any incomplete checkpoints.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, September 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026

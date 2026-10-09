@@ -49,6 +49,8 @@ Lab 7 uses two trusted stages. `RECALL_SECURE_API`, with invoker rights, materia
 
 Lab 8 deploys the React/Node application. It authenticates the local end user and keeps that database session active for role-filtered data, GeoJSON, and the downstream graph projection. The property graph panel combines the narrow definer-rights `RECALL_GRAPH_API` projection for shared component and supplier trace with `RECALL_REACT_API.SECURED_GRAPH`, which runs in the active end-user session and returns only DDS-authorized stores and customers. For an agent question, the invoker-rights `RECALL_REACT_API.ASK_AGENT` materializes product JSON, vector/relational evidence, role-filtered Spatial impact, and compact Graph evidence in that session, then calls the owner-owned definer-rights `RECALL_AGENT_BRIDGE` for Select AI Agent execution. The browser receives no owner password, OCI principal, or unrestricted table access.
 
+Lab 8 also adds `RECALL_CAMPAIGN_API` as the invoker-rights application boundary and `RECALL_CAMPAIGN_BRIDGE` as the owner-side definer-rights boundary. The end-user session determines which purchases can enter a campaign. A recall lead must explicitly authorize contact and approve the draft; the campaign agent receives generic facts and placeholders, while customer details are merged after drafting. Approval records the audit trail and creates refund intents for downstream processing. The workshop sends no messages and moves no funds.
+
 The workshop uses direct local database end-user login to make `ORA_END_USER_CONTEXT` visible. A production deployment can use IdM or OCI IAM with supported identity propagation; the database-side data-role behavior remains the same.
 
 ## Workshop Simplification
