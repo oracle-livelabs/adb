@@ -17,13 +17,13 @@ Estimated Time: 45 minutes
 
 ## Task 1: Prepare the Database Bridge
 
-1. Sign in to SQL Developer Web as `ADMIN` and run the Lab 8 setup block. It fetches the current `05-prepare-react-app.sql` deployment from Object Storage and executes it with `RECALL_OWNER` as the current schema. The block installs both the React bridge and campaign schema.
+1. Sign in to SQL Developer Web as `ADMIN` and grant `EXECUTE ON DBMS_CLOUD_AI_AGENT` to `RECALL_OWNER`. Then connect directly as `RECALL_OWNER` and run the Lab 8 installation block. It rejects a hosted script without the v8 marker and calls `DBMS_CLOUD_REPO.INSTALL_SQL` while the authenticated schema is `RECALL_OWNER`.
 
 2. Confirm `RECALL_AGENT_BRIDGE`, `RECALL_REACT_API`, `RECALL_CAMPAIGN_BRIDGE`, and `RECALL_CAMPAIGN_API` are `VALID`.
 
 3. Confirm `RECALL_REACT_API` exposes `ASK_AGENT`, `CURRENT_IDENTITY`, `PRODUCT_CONTEXT`, and `SECURED_STORES`. `ASK_AGENT` internally assembles product JSON, vector/relational evidence, role-filtered Spatial impact, and compact Graph evidence; the helper functions are intentionally not granted as separate end-user retrieval endpoints.
 
-4. Verify that `RECALL_SECURED_TEAM` and `RECALL_CAMPAIGN_TEAM` are enabled and that `RECALL_AGENT_PROFILE` is available before starting the application.
+4. As `RECALL_OWNER`, verify in `USER_AI_AGENT_TEAMS` that `RECALL_SECURED_TEAM` and `RECALL_CAMPAIGN_TEAM` are enabled. Valid package bodies alone do not prove the teams are registered for the correct owner. Confirm the existing `RECALL_AGENT_PROFILE` is available before starting the application.
 
 ## Task 2: Start the Application
 
@@ -77,12 +77,12 @@ Estimated Time: 45 minutes
 
 - A blank browser page usually means the consolidated server is not running. Run `npm run dev:all` and open port `3001`.
 - A missing end-user context indicates the login is not using one of the Lab 7 local users or the database bridge is not using the selected user session.
-- A dashboard or campaign package error indicates that the hosted setup script is outdated or did not complete. Confirm its v7 marker matches the Lab 8 block and inspect `ALL_ERRORS` as `ADMIN` before rerunning the combined deployment.
+- A dashboard or campaign package error indicates that the hosted setup script is outdated or did not complete. Confirm its v8 marker matches the Lab 8 block and inspect `ALL_ERRORS` as `ADMIN` before rerunning the combined deployment as `RECALL_OWNER`.
 - `ORA-24344` means an object was created with compilation errors. Query `ALL_ERRORS` as `ADMIN` for `RECALL_OWNER` objects and fix the reported source line before rerunning the deployment; the package body may be `INVALID` even though installation completed.
-- `ORA-03405` from `DBMS_CLOUD_REPO.INSTALL_SQL` means the hosted script was not accepted as a sequence of complete install statements. Publish the current v7 source, ensure each SQL statement ends with `/` on its own line, and exclude SQL*Plus-only commands before rerunning the Lab 8 block.
+- `ORA-03405` from `DBMS_CLOUD_REPO.INSTALL_SQL` means the hosted script was not accepted as a sequence of complete install statements. Publish the current v8 source, ensure each SQL statement ends with `/` on its own line, and exclude SQL*Plus-only commands before rerunning the Lab 8 block.
 - A failed agent call usually means `RECALL_AGENT_PROFILE`, `RECALL_SECURED_TEAM`, or `RECALL_CAMPAIGN_TEAM` is not enabled, or an older bridge calls `DBMS_CLOUD_AI.SET_PROFILE` from a Deep Data Security end-user session. Verify the existing Lab 7 profile and teams before rerunning deployment.
 - An agent answer that omits Spatial or Graph evidence usually means an older Lab 8 bridge is installed. Confirm all bridge package bodies are `VALID`, reconnect the application users, and repeat the cross-feature questions.
-- `ORA-00904` for `RECALL_CAMPAIGN_API.STATUS` means the combined v7 deployment is missing or stale. Check `ALL_PROCEDURES` for `RECALL_CAMPAIGN_API.STATUS` and package validity under `RECALL_OWNER`.
+- `ORA-00904` for `RECALL_CAMPAIGN_API.STATUS` means the combined v8 deployment is missing or stale. Check `ALL_PROCEDURES` for `RECALL_CAMPAIGN_API.STATUS` and package validity under `RECALL_OWNER`.
 
 ## Acknowledgements
 

@@ -80,22 +80,31 @@ By the end of this workshop, you can:
 
 ### Before You Start
 
-Before you start, check that you have the accounts and connection details below. Use the account named in each task.
+Use the account named in each task. The reservation's **View Login Info** panel provides the database password and browser links. In the tested workshop reservation, the database password from that panel authenticated all three Lab 7 end-user accounts; change the username to the exact persona named in the task.
 
-- **Labs 1–5:** sign in to SQL Developer Web as `RECALL_OWNER` and use the prepared B-482 data and database services.
-- **Lab 6:** use `RECALL_OWNER` to build the map function, then `ADMIN` to publish and protect its ORDS route. Have the `RECALL_APP_USER` credentials and a terminal with `curl` and `jq` ready for the HTTP tests.
-- **Lab 7:** define data roles as `RECALL_OWNER`, assign them as `ADMIN`, and test them in separate end-user sessions. Have your database connect string, any required wallet, and the three end-user credentials ready. Use SQLcl or SQL Developer desktop for these direct connections.
-- **Lab 8:** connect to the database as `ADMIN` to install the application and campaign packages through the provided setup block. Then run the application on a Node.js/npm workstation that can reach your database. Reuse your Lab 7 end-user connection details to compare role-filtered evidence and campaign audiences.
+| Account | Use it for | Sign in through |
+|---|---|---|
+| `ADMIN` | Account and platform grants, ORDS setup, and Lab 8 deployment checks | SQL Developer Web or a direct database connection |
+| `RECALL_OWNER` | Labs 1–5, Lab 6 package creation, and owner-side audits | SQL Developer Web or a direct database connection |
+| `STORE_101_USER`, `REGION_NE_USER`, `RECALL_LEAD_USER` | Real Deep Data Security checks in Lab 7 and application logins in Lab 8 | Direct SQLcl/SQL Developer desktop connection for Lab 7; the React login form for Lab 8 |
+| `RECALL_APP_USER` | Authenticated ORDS request in Lab 6 | `curl` using the runtime-account password assigned for Lab 6 |
 
-If an account or connection detail is missing, use **Need Help?** to resolve it before starting the tasks that depend on it. A SQL Developer Web URL is not a direct database connect string.
+Changing `CURRENT_SCHEMA` does not authenticate a different account or establish `ORA_END_USER_CONTEXT`. For Lab 7, connect directly as each named end user and confirm the identity query in the lab before comparing data. The Admin worksheet is useful for setup and audits, but its session cannot stand in for those logins.
+
+- **Labs 1–5:** use `RECALL_OWNER` and the prepared B-482 data.
+- **Lab 6:** use `RECALL_OWNER` to build the map function, then `ADMIN` to publish and protect its ORDS route. Have `RECALL_APP_USER` and a terminal with `curl` and `jq` ready.
+- **Lab 7:** define data roles as `RECALL_OWNER`, assign them as `ADMIN`, and test each end user through a direct database connection. Have the database TLS connection string or wallet ready.
+- **Lab 8:** grant the agent framework to `RECALL_OWNER` as `ADMIN`, then install the application and campaign packages while directly connected as `RECALL_OWNER`. Run the application on a Node.js/npm workstation that can reach the database.
+
+If an account or connection detail is missing, use **Need Help?** before starting the dependent task. A SQL Developer Web URL is not a direct database connect string.
+
+In SQL Developer Web, use **Run Statement** for one SQL statement and **Run Script** for PL/SQL blocks or multiple statements. A slash (`/`) on its own line terminates a PL/SQL block when running a script. For complete data checks, use `COUNT` and `SUM`; a visible or virtualized result grid may show only part of a large result.
 
 Bring basic familiarity with SQL and REST concepts. Lab 8 uses the React/Node application and a workstation that can connect to the database.
 
 ### Support for this workshop
 
-When using **Need Help?**, include **Product Recall Assistant: Automate Secure Returns Decisions** in the email subject yourself if the generated subject shows `undefined`. Include the lab, task, step, expected result, actual error, and retry outcome. Exclude credentials and sensitive connection details from screenshots and messages.
-
-Use the database credentials provided with your workshop environment. If you cannot sign in, use **Need Help?** to describe the login error without including your password. The shared help page's password link currently describes Oracle Responsys and does not apply to this database.
+When using **Need Help?**, include **Product Recall Assistant: Automate Secure Returns Decisions** in the email subject if the generated subject is blank. Include the lab, task, step, expected result, actual error, and retry outcome. For missing direct-connect details, specify whether you need the TLS connection string or wallet. Exclude passwords, wallet files, and sensitive connection details from screenshots and messages.
 
 ## Acknowledgements
 

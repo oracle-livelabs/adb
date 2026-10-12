@@ -44,8 +44,8 @@ The completed workshop uses relational, JSON, spatial, graph, vector, agent, sec
 - `ADMIN` creates database users and roles but owns no application objects.
 - `RECALL_OWNER` owns all workshop data, code, graph definitions, and security policies.
 - `RECALL_APP_USER` calls only approved packages through `RECALL_API_ROLE`.
-- Lab 7 adds local Deep Data Security end users and data roles for store, regional, and recall-lead access.
-- Lab 8 uses the Lab 7 configured Select AI Agent profile and three end-user accounts. Connect as `ADMIN` to install the combined application and campaign setup through the Lab 8 deployment block; the script creates its objects under `RECALL_OWNER`.
+- The Terraform baseline provisions the three local Deep Data Security end users; Lab 7 creates their data roles, grants, and assignments for store, regional, and recall-lead access.
+- Lab 8 uses the Lab 7 configured Select AI Agent profile and three end-user accounts. As `ADMIN`, grant `EXECUTE` on `DBMS_CLOUD_AI_AGENT` to `RECALL_OWNER`; then connect directly as `RECALL_OWNER` to install the combined application and campaign setup. The installer registers its AI teams to the authenticated owner.
 - Lab 8 deploys and explores the React/Node command center. Its login uses the local database end-user identity for this workshop.
 
 ## Current Implementation Status

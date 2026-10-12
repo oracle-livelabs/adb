@@ -67,7 +67,7 @@ This record replaces the earlier five-lab baseline. The workshop now contains ei
 - Ask the same Spatial/Graph questions as all three personas and confirm that response regions, centers, stores, customers, and complaint evidence remain role-specific while component and supplier trace stays shared.
 - Rehearse the clean Lab 1 through Lab 3 path. Confirm Lab 1 has no graph, then create `RECALL_GRAPH` and run all three graph traversals in Lab 3.
 - Run Lab 4 with the Object Storage URI for `all-MiniLM-L12-v2.onnx`, then confirm all complaint chunks and query rows contain 384-dimensional embeddings.
-- Run the combined Lab 8 setup through the documented `ADMIN` deployment block; confirm both campaign packages are valid and `RECALL_CAMPAIGN_API.STATUS` is exposed. Exercise authorization, drafting, approval, audit records, refund intents, and all three persona scopes without sending messages or issuing payments.
+- Run the combined Lab 8 setup as `RECALL_OWNER` using the documented installer block after the `ADMIN` grant; confirm both campaign packages are valid and `RECALL_CAMPAIGN_API.STATUS` is exposed. Exercise authorization, drafting, approval, audit records, refund intents, and all three persona scopes without sending messages or issuing payments.
 
 ## Acknowledgements
 

@@ -337,6 +337,7 @@ button { cursor: pointer; }
 .graph-controls { position: absolute; z-index: 3; top: 12px; right: 14px; display: flex; align-items: center; gap: 5px; padding: 5px; border: 1px solid #d9e2e2; border-radius: 7px; background: rgba(255,255,255,.96); box-shadow: 0 3px 12px rgba(26,50,58,.12); }
 .graph-controls button { display: grid; width: 30px; height: 30px; place-items: center; padding: 0; border: 0; border-radius: 5px; background: transparent; color: #31545c; cursor: pointer; }
 .graph-controls button:hover { background: #e9f4f1; color: #1d746c; }
+.graph-controls .graph-reset-control { width: auto; padding: 0 8px; font-size: 9px; font-weight: 800; white-space: nowrap; }
 .graph-controls span { min-width: 38px; color: #6e7d81; font-size: 10px; font-weight: 800; text-align: center; }
 .graph-search { position: absolute; z-index: 4; top: 12px; right: 0; left: 0; display: flex; width: min(440px, calc(100% - 28px)); height: 34px; align-items: center; gap: 7px; margin-right: auto; margin-left: auto; padding: 0 5px 0 10px; border: 1px solid #d9e2e2; border-radius: 7px; background: rgba(255,255,255,.97); box-shadow: 0 3px 12px rgba(26,50,58,.1); color: #6f858b; }
 .graph-search:focus-within { border-color: #68aaa2; box-shadow: 0 0 0 3px rgba(104,170,162,.12); }
@@ -412,6 +413,10 @@ button { cursor: pointer; }
 .campaign-intro strong { display: block; color: #6c4c1d; font-size: 12px; }
 .campaign-intro p { max-width: 920px; margin: 5px 0 0; color: #7f6a49; font-size: 10px; line-height: 1.5; }
 .campaign-error { display: flex; align-items: flex-start; gap: 8px; margin: 12px 20px 0; padding: 10px 12px; border: 1px solid #efc7c4; border-radius: 7px; background: #fff3f2; color: #a13e3b; font-size: 10px; line-height: 1.45; }
+.campaign-success { display: flex; align-items: flex-start; gap: 8px; margin: 12px 20px 0; padding: 10px 12px; border: 1px solid #b9dfd7; border-radius: 7px; background: #eff9f6; color: #26776e; font-size: 10px; line-height: 1.45; }
+.campaign-success svg { flex: 0 0 auto; }
+.campaign-template-warning { display: flex; align-items: flex-start; gap: 7px; margin: 12px 16px 0; padding: 9px 10px; border: 1px solid #efd5a4; border-radius: 7px; background: #fff8eb; color: #8b6528; font-size: 9px; line-height: 1.45; }
+.campaign-template-warning svg { flex: 0 0 auto; }
 .campaign-grid { display: grid; grid-template-columns: minmax(260px, .74fr) minmax(0, 1.26fr); gap: 15px; padding: 16px 20px 20px; }
 .campaign-control-column { display: grid; align-content: start; gap: 12px; }
 .campaign-policy-card, .campaign-form-card, .campaign-preview-card { border: 1px solid #dfe8e8; border-radius: 9px; background: #fbfdfd; }
@@ -459,6 +464,11 @@ button { cursor: pointer; }
 .campaign-notice-label svg { color: #2f897e; }
 .campaign-notice-preview h3 { margin: 10px 0 8px; color: #2c4f55; font-size: 13px; }
 .campaign-notice-preview p { max-height: 155px; overflow: auto; margin: 0; color: #526b70; font-size: 10px; line-height: 1.6; white-space: pre-wrap; }
+.campaign-refund-steps { display: grid; gap: 5px; margin-top: 12px; padding-top: 10px; border-top: 1px solid #d9e7e4; }
+.campaign-refund-steps strong { color: #315c61; font-size: 9px; }
+.campaign-refund-steps p { max-height: 100px; color: #526b70; }
+.campaign-approval-hint { display: flex; align-items: flex-start; gap: 6px; margin: 0 16px 15px; color: #8a652b; font-size: 9px; line-height: 1.45; }
+.campaign-approval-hint svg { flex: 0 0 auto; }
 .campaign-recipient-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 9px; margin: 15px 16px 7px; }
 .campaign-recipient-heading span { color: #31545c; font-size: 10px; font-weight: 900; }
 .campaign-recipient-heading small { color: #97a3a6; font-size: 8px; }
