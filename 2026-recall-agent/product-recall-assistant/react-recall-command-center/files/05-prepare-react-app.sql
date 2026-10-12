@@ -1,9 +1,10 @@
--- Product Recall Assistant - Lab 8 application and governed response setup v7
--- Install through DBMS_CLOUD_REPO.INSTALL_SQL with CURRENT_SCHEMA=RECALL_OWNER.
+-- Product Recall Assistant - Lab 8 application and governed response setup v8
+-- Install as RECALL_OWNER. ADMIN grants this schema EXECUTE on DBMS_CLOUD_AI_AGENT first.
 
 begin
-    if sys_context('USERENV', 'CURRENT_SCHEMA') != 'RECALL_OWNER' then
-        raise_application_error(-20070, 'Set CURRENT_SCHEMA to RECALL_OWNER before installing this script.');
+    if sys_context('USERENV', 'SESSION_USER') != 'RECALL_OWNER'
+       or sys_context('USERENV', 'CURRENT_SCHEMA') != 'RECALL_OWNER' then
+        raise_application_error(-20070, 'Connect as RECALL_OWNER before installing this script; changing CURRENT_SCHEMA is not sufficient.');
     end if;
 end;
 /
@@ -408,7 +409,7 @@ begin
     dbms_cloud_ai_agent.create_task(
         task_name  => 'SUMMARIZE_SECURED_RECALL_TASK',
         attributes => q'~{
-          "instruction":"Answer the user's question using only the four authorized evidence sections in this request: productJson, authorizedJsonVectorEvidence, spatialEvidence, and graphEvidence. Use the spatial section for regions, response-radius coverage, and response centers; use graphEvidence for component, supplier, store, and customer relationship patterns. State the active end user when relevant, cite only visible counts and complaint IDs, and never expand beyond the active role scope.",
+          "instruction":"Answer the user's question using only the four authorized evidence sections in this request: productJson, authorizedJsonVectorEvidence, spatialEvidence, and graphEvidence. For a recall-scope question, always report labeled values for investigation case ID, case status, affected stores, shipped units, exposed customers, component batches, supplier sites, and first response action when each is present. For other questions, include every requested factual field and do not omit numeric counts or identifiers supplied by the evidence. Use the spatial section for regions, response-radius coverage, and response centers; use graphEvidence for component, supplier, store, and customer relationship patterns. State the active end user when relevant, cite only visible counts and complaint IDs, and never expand beyond the active role scope.",
           "tools":[],
           "enable_human_tool":false
         }~'
@@ -1112,8 +1113,9 @@ end;
 -- owner-side bridge, and invoker-rights application API. This must follow
 -- RECALL_REACT_API so the approved Lab 7 identity and profile already exist.
 begin
-    if sys_context('USERENV', 'CURRENT_SCHEMA') != 'RECALL_OWNER' then
-        raise_application_error(-20100, 'Set CURRENT_SCHEMA to RECALL_OWNER before installing the Lab 8 response setup.');
+    if sys_context('USERENV', 'SESSION_USER') != 'RECALL_OWNER'
+       or sys_context('USERENV', 'CURRENT_SCHEMA') != 'RECALL_OWNER' then
+        raise_application_error(-20100, 'Connect as RECALL_OWNER before installing the Lab 8 response setup; changing CURRENT_SCHEMA is not sufficient.');
     end if;
 end;
 /
@@ -1153,6 +1155,7 @@ begin
             tone              varchar2(30) not null,
             status            varchar2(30) default 'DRAFT' not null,
             template_source   varchar2(30) default 'SELECT_AI_AGENT' not null,
+            template_diagnostic varchar2(1000),
             template_text     clob not null,
             product_name      varchar2(200) not null,
             sku               varchar2(80) not null,
@@ -1175,6 +1178,14 @@ begin
 exception
     when others then
         if sqlcode != -955 then raise; end if;
+end;
+/
+
+begin
+    execute immediate 'alter table recall_campaigns add (template_diagnostic varchar2(1000))';
+exception
+    when others then
+        if sqlcode != -1430 then raise; end if;
 end;
 /
 
@@ -1370,11 +1381,12 @@ create or replace package body recall_campaign_bridge as
         return upper(l_user);
     end session_user;
 
-    function safe_template return clob is
+    function safe_template(p_diagnostic in varchar2) return clob is
     begin
         return json_serialize(
                    json_object(
                        'source' value 'SAFE_FALLBACK',
+                       'diagnostic' value p_diagnostic,
                        'template' value q'~{"subject":"Important safety notice for {{product_name}}","body":"Hello {{customer_name}},\n\nWe are contacting you about {{product_name}} ({{sku}}), batch {{batch_id}}. Please stop using the item and follow these steps:\n{{refund_steps}}\n\nYour approved refund amount is {{refund_amount}}. Our recall response team will help complete the refund.","refundSteps":"{{refund_steps}}"}~'
                        returning json
                    ) returning clob
@@ -1470,7 +1482,7 @@ create or replace package body recall_campaign_bridge as
         );
 
         if l_answer is null then
-            return safe_template;
+            return safe_template('The campaign agent returned an empty response. Check that RECALL_CAMPAIGN_TEAM and its profile are enabled under RECALL_OWNER.');
         end if;
 
         return json_serialize(
@@ -1482,9 +1494,8 @@ create or replace package body recall_campaign_bridge as
                );
     exception
         when others then
-            -- The workflow remains reviewable during a provider outage. The
-            -- UI labels this as a safe fallback instead of implying an LLM run.
-            return safe_template;
+            -- Keep a reviewable fallback while exposing a safe diagnostic code.
+            return safe_template('The campaign agent call failed with SQL code ' || to_char(sqlcode) || '. Check RECALL_CAMPAIGN_TEAM and the owner-side agent profile.');
     end generate_template;
 
     function create_draft(
@@ -1500,6 +1511,7 @@ create or replace package body recall_campaign_bridge as
         l_sku          varchar2(80);
         l_template_text varchar2(32767);
         l_source       varchar2(30);
+        l_diagnostic   varchar2(1000);
     begin
         if session_user != upper(p_end_user) then
             raise_application_error(-20101, 'Campaign actor does not match the active database identity.');
@@ -1509,14 +1521,15 @@ create or replace package body recall_campaign_bridge as
         l_sku := json_value(p_context, '$.sku' returning varchar2(80));
         l_template_text := json_value(p_template, '$.template' returning varchar2(32767));
         l_source := json_value(p_template, '$.source' returning varchar2(30));
+        l_diagnostic := json_value(p_template, '$.diagnostic' returning varchar2(1000));
 
         insert into recall_campaigns(
             batch_id, end_user_name, channel, tone, status,
-            template_source, template_text, product_name, sku,
+            template_source, template_diagnostic, template_text, product_name, sku,
             recipient_count, total_refund
         ) values (
             upper(trim(p_batch_id)), upper(p_end_user), upper(p_channel),
-            upper(p_tone), 'DRAFT', nvl(l_source, 'SAFE_FALLBACK'),
+            upper(p_tone), 'DRAFT', nvl(l_source, 'SAFE_FALLBACK'), l_diagnostic,
             nvl(l_template_text, 'No template generated.'), l_product_name, l_sku,
             0, 0
         ) returning campaign_id into l_campaign_id;
@@ -1625,9 +1638,21 @@ create or replace package body recall_campaign_bridge as
         p_actor    in varchar2
     ) return clob is
         l_batch_id varchar2(20) := upper(trim(p_batch_id));
+        l_contact_authorized char(1);
     begin
         if session_user != upper(p_actor) or upper(p_actor) != 'RECALL_LEAD_USER' then
             raise_application_error(-20102, 'Only the recall response lead can authorize customer contact.');
+        end if;
+
+        select contact_authorized
+        into   l_contact_authorized
+        from   recall_campaign_policy
+        where  batch_id = l_batch_id
+        for update;
+
+        if l_contact_authorized = 'Y' then
+            commit;
+            return policy(l_batch_id);
         end if;
 
         update recall_campaign_policy
@@ -1656,6 +1681,8 @@ create or replace package body recall_campaign_bridge as
     ) return clob is
         l_batch_id recall_campaigns.batch_id%type;
         l_status   recall_campaigns.status%type;
+        l_contact_authorized char(1);
+        l_recipient_count number;
     begin
         if session_user != upper(p_actor) or upper(p_actor) != 'RECALL_LEAD_USER' then
             raise_application_error(-20104, 'Only the recall response lead can approve a campaign.');
@@ -1669,6 +1696,24 @@ create or replace package body recall_campaign_bridge as
 
         if l_status != 'DRAFT' then
             raise_application_error(-20105, 'Only a DRAFT campaign can be approved.');
+        end if;
+
+        select contact_authorized
+        into   l_contact_authorized
+        from   recall_campaign_policy
+        where  batch_id = l_batch_id;
+
+        if l_contact_authorized != 'Y' then
+            raise_application_error(-20113, 'Customer contact must be authorized before campaign approval.');
+        end if;
+
+        select count(*)
+        into   l_recipient_count
+        from   recall_campaign_recipients
+        where  campaign_id = p_campaign_id;
+
+        if l_recipient_count = 0 then
+            raise_application_error(-20114, 'Personalize at least one authorized customer order before campaign approval.');
         end if;
 
         update recall_campaigns
@@ -1726,6 +1771,7 @@ create or replace package body recall_campaign_bridge as
                                       'channel' value c.channel,
                                       'tone' value c.tone,
                                       'templateSource' value c.template_source,
+                                      'templateDiagnostic' value c.template_diagnostic,
                                       'template' value c.template_text,
                                       'productName' value c.product_name,
                                       'sku' value c.sku,
@@ -2007,6 +2053,7 @@ grant execute on recall_campaign_api to recall_end_user_login;
 
 declare
     l_valid_count number;
+    l_enabled_team_count number;
 begin
     select count(*)
     into l_valid_count
@@ -2017,6 +2064,16 @@ begin
     and status = 'VALID';
     if l_valid_count <> 4 then
         raise_application_error(-20108, 'Expected four VALID campaign package objects under RECALL_OWNER. Review ALL_ERRORS as ADMIN.');
+    end if;
+
+    select count(*)
+    into   l_enabled_team_count
+    from   user_ai_agent_teams
+    where  team_name in ('RECALL_SECURED_TEAM', 'RECALL_CAMPAIGN_TEAM')
+    and    status = 'ENABLED';
+
+    if l_enabled_team_count <> 2 then
+        raise_application_error(-20115, 'Both Lab 8 agent teams must be enabled and owned by RECALL_OWNER. Install this script while connected as RECALL_OWNER.');
     end if;
 end;
 /

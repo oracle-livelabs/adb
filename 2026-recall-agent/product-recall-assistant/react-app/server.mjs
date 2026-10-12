@@ -94,14 +94,14 @@ function explainConnectionError(error) {
     return 'The database host or service cannot be resolved. ORACLE_CONNECT_STRING must be an Oracle Net database connect string or wallet TNS alias, not an HTTPS ORDS URL. Check the ADB host, service name, wallet/config paths, and network access, then restart the Node API.';
   }
   if (error?.message?.includes('ORA-00904') && error.message.includes('RECALL_REACT_API')) {
-    return 'RECALL_REACT_API.CURRENT_IDENTITY is not available to this database session. Connect as RECALL_OWNER and run files/05-prepare-react-app.sql, confirm the package is VALID, then restart the React API.';
+    return 'RECALL_REACT_API.CURRENT_IDENTITY is not available. As ADMIN, grant DBMS_CLOUD_AI_AGENT access to RECALL_OWNER; then connect as RECALL_OWNER, run the current Lab 8 setup block, confirm the packages and owner AI teams are ready, and reconnect the application users.';
   }
   return error?.message || 'Database login failed.';
 }
 
 function explainCampaignError(error, fallback) {
   if (error?.message?.includes('ORA-00904') && /RECALL_CAMPAIGN_API/i.test(error.message)) {
-    return 'The campaign package is missing or outdated. Connect as ADMIN and run the combined Lab 8 setup block, then reconnect the application users.';
+    return 'The campaign package is missing or outdated. As ADMIN, grant DBMS_CLOUD_AI_AGENT access to RECALL_OWNER; then connect as RECALL_OWNER and run the current Lab 8 setup block. Reconnect the application users after the owner-side packages and AI teams are ready.';
   }
   return error?.message || fallback;
 }

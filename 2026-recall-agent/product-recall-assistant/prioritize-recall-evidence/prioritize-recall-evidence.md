@@ -162,7 +162,7 @@ Kevin needs to find the complaints most similar to the heat and odor issue. Davi
     </copy>
     ```
 
-    The top five should be the heat-and-odor complaints `9001`, `9002`, `9006`, `9003`, and `9007`; exact ordering can vary slightly by model revision. Lower cosine distance means stronger similarity.
+    The top five should be the heat-and-odor complaints `9001`, `9002`, `9006`, `9003`, and `9007`; exact ordering can vary with the stored query vector and model revision. Lower cosine distance means stronger semantic similarity. It does not measure complaint severity, exposure, or operational response priority.
 
     ![2026-09-18-005004](images/2026-09-18-005004.png)
 

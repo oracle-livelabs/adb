@@ -1,7 +1,8 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
-import GraphVisualization from './vendor/oracle-graph-visualization/runtime.js';
+import { buildGraphPages } from './graphPages.js';
+import { parseNoticeTemplate, validatePersonalizedNotice } from './noticeTemplate.js';
 import {
   Activity,
   ArrowUpRight,
@@ -337,12 +338,13 @@ function ProductPanel({ product, jsonOnly = false, selectedEvidence, onClearSele
   );
 }
 
-function ComplaintPanel({ batchId, onSelectEvidence }) {
+function ComplaintPanel({ batchId, defaultRows = [], onSelectEvidence }) {
   const [query, setQuery] = useState('');
   const [rows, setRows] = useState([]);
   const [searching, setSearching] = useState(false);
   const [searched, setSearched] = useState(false);
-  const hasSearchResults = searched && rows.length > 0;
+  const visibleRows = searched ? rows : defaultRows;
+  const hasSearchResults = visibleRows.length > 0;
 
   useEffect(() => {
     setRows([]);
@@ -387,16 +389,16 @@ function ComplaintPanel({ batchId, onSelectEvidence }) {
 
   return (
     <section className="panel complaint-panel">
-      <div className="panel-header compact"><div><p className="eyebrow">Vector evidence</p><h2>Priority complaints</h2></div><FileSearch size={17} className="panel-action" /></div>
+      <div className="panel-header compact"><div><p className="eyebrow">Vector evidence</p><h2>Closest complaint matches</h2></div><FileSearch size={17} className="panel-action" /></div>
       <form className="vector-search" onSubmit={searchEvidence}>
         <Search size={15} />
         <button type="button" className="vector-search-clear" onClick={clearSearch} disabled={!query && !searched && !rows.length} title="Clear vector search" aria-label="Clear vector search"><Trash2 size={15} /></button>
         <input value={query} onChange={changeQuery} placeholder="Search symptoms or complaint evidence" aria-label="Search symptoms or complaint evidence" />
         <button type="submit" disabled={!query.trim() || searching} title="Search authorized complaint vectors" aria-label="Search authorized complaint vectors"><Search size={15} /></button>
       </form>
-      <p className="vector-search-note">{searched ? 'Showing your authorized matches in ascending cosine distance (closest first).' : 'Enter symptoms or keywords, then run a vector search to see authorized evidence ranked by closest match.'}</p>
+      <p className="vector-search-note">{searched ? 'Showing your authorized matches in ascending cosine distance (closest first). Similarity is not severity or response priority.' : 'Stored HEAT_ODOR matches are shown first. Enter symptoms or keywords to run a new authorized search; similarity is not severity or response priority.'}</p>
       <div className="complaint-list">
-        {hasSearchResults ? rows.map((complaint) => <button className={`complaint-row${complaint.complaintId === 'ERR' ? ' error-row' : ''}`} type="button" onClick={() => onSelectEvidence?.(complaint)} disabled={complaint.complaintId === 'ERR'} key={`${complaint.complaintId}-${complaint.distance}`} aria-label={`Open complaint ${complaint.complaintId} in JSON Duality`}><div className="complaint-id">{complaint.complaintId}</div><div className="complaint-copy"><p>{complaint.text}</p><span>{complaint.distance === null ? 'Search unavailable' : `Cosine distance ${complaint.distance}`}</span></div><ChevronRight size={15} /></button>) : <div className="evidence-empty"><FileSearch size={18} /><span>{searched ? 'No authorized complaint vectors matched those terms.' : 'Search authorized complaint vectors to see ranked matches.'}</span></div>}
+        {hasSearchResults ? visibleRows.map((complaint) => <button className={`complaint-row${complaint.complaintId === 'ERR' ? ' error-row' : ''}`} type="button" onClick={() => onSelectEvidence?.(complaint)} disabled={complaint.complaintId === 'ERR'} key={`${complaint.complaintId}-${complaint.distance}`} aria-label={`Open complaint ${complaint.complaintId} in JSON Duality`}><div className="complaint-id">{complaint.complaintId}</div><div className="complaint-copy"><p>{complaint.text}</p><span>{complaint.distance === null ? 'Search unavailable' : `Cosine distance ${complaint.distance}`}</span></div><ChevronRight size={15} /></button>) : <div className="evidence-empty"><FileSearch size={18} /><span>{searched ? 'No authorized complaint vectors matched those terms.' : 'No stored HEAT_ODOR matches are available; run a free-text search to find authorized evidence.'}</span></div>}
       </div>
     </section>
   );
@@ -423,7 +425,7 @@ const graphFilterOptions = [
 
 const graphRowLimitOptions = [25, 50, 75, 100];
 
-function RecallGraphFallback({ vertices, edges, layoutType, onLayoutTypeChange, onDistanceChange }) {
+function RecallGraphFallback({ vertices, edges, searchVertices = vertices, searchEdges = edges, layoutType, onLayoutTypeChange, onDistanceChange, onSearchMatch }) {
   const [scale, setScale] = useState(0.72);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [maxHops, setMaxHops] = useState(1);
@@ -448,12 +450,14 @@ function RecallGraphFallback({ vertices, edges, layoutType, onLayoutTypeChange, 
   };
   const colorByLabel = { batch: '#b85d3b', component_batch: '#327c9a', component: '#3d8d72', supplier_site: '#8d6aa9', supplier: '#c18b2b', store: '#26828c', customer: '#ba6f8f' };
   const graphTraversal = useMemo(() => {
-    const batch = vertices.find((vertex) => vertex.labels?.includes('batch'));
+    const traversalVertices = searchVertices;
+    const traversalEdges = searchEdges;
+    const batch = traversalVertices.find((vertex) => vertex.labels?.includes('batch'));
     const distances = new Map();
     const parents = new Map();
-    const adjacency = new Map(vertices.map((vertex) => [String(vertex.id), []]));
+    const adjacency = new Map(traversalVertices.map((vertex) => [String(vertex.id), []]));
     if (!batch) return { distances, parents, adjacency };
-    edges.forEach((edge) => {
+    traversalEdges.forEach((edge) => {
       const source = String(edge.source);
       const target = String(edge.target);
       if (adjacency.has(source) && adjacency.has(target)) {
@@ -475,7 +479,7 @@ function RecallGraphFallback({ vertices, edges, layoutType, onLayoutTypeChange, 
       });
     }
     return { distances, parents, adjacency, batchId: String(batch.id) };
-  }, [vertices, edges]);
+  }, [searchVertices, searchEdges]);
   const hopDistances = graphTraversal.distances;
   const displayVertices = useMemo(
     () => {
@@ -721,12 +725,21 @@ function RecallGraphFallback({ vertices, edges, layoutType, onLayoutTypeChange, 
       return;
     }
     const searchableText = (vertex) => `${vertex.id} ${(vertex.labels || []).join(' ')} ${Object.values(vertex.properties || {}).map((value) => typeof value === 'object' ? JSON.stringify(value) : value).join(' ')}`.toLowerCase();
-    const matches = displayVertices.filter((vertex) => searchableText(vertex).includes(query));
+    const matches = searchVertices.filter((vertex) => searchableText(vertex).includes(query));
     setSearchQuery(query);
     setSearchMatchIds(new Set(matches.map((vertex) => String(vertex.id))));
     setFocusedId(null);
     setSelectedEdge(null);
-    setSearchTargetId(matches.length ? String(matches[0].id) : null);
+    const match = matches[0];
+    if (match) {
+      const id = String(match.id);
+      const distance = graphTraversal.distances.get(id) || 1;
+      if (distance > maxHops) setGraphDistance(Math.min(5, distance));
+      setSearchTargetId(id);
+      onSearchMatch?.(id);
+    } else {
+      setSearchTargetId(null);
+    }
   };
   const selectEdge = (edge) => {
     setSelectedNode(null);
@@ -814,7 +827,8 @@ function RecallGraphFallback({ vertices, edges, layoutType, onLayoutTypeChange, 
     <div className="graph-controls" aria-label="Graph controls">
       <button type="button" onClick={() => zoom(0.12)} title="Zoom in" aria-label="Zoom in"><ZoomIn size={16} /></button>
       <button type="button" onClick={() => zoom(-0.12)} title="Zoom out" aria-label="Zoom out"><ZoomOut size={16} /></button>
-      <button type="button" onClick={reset} title="Center graph" aria-label="Center graph"><Maximize2 size={16} /></button>
+      <button type="button" onClick={() => setOffset(layout.center)} title="Center graph without changing filters" aria-label="Center graph"><Maximize2 size={16} /></button>
+      <button className="graph-reset-control" type="button" onClick={reset} title="Reset graph exploration" aria-label="Reset graph exploration">Reset filters</button>
       <span>{Math.round(scale * 100)}%</span>
     </div>
     {selectedNode && <aside className="graph-node-detail" role="dialog" aria-label="Selected graph node data"><div className="graph-node-detail-title"><span>Node data</span><button type="button" onClick={() => setSelectedNode(null)} title="Close node data" aria-label="Close node data"><X size={13} /></button></div><strong>{selectedNode.properties?.name || selectedNode.id}</strong><div className="graph-node-detail-meta"><span>{selectedNode.labels?.join(' · ') || 'vertex'}</span><span>ID {selectedNode.id}</span></div><pre>{JSON.stringify(selectedNode, null, 2)}</pre></aside>}
@@ -865,6 +879,7 @@ function RecallGraphFallback({ vertices, edges, layoutType, onLayoutTypeChange, 
 
 function GraphPanel({ graph }) {
   const targetRef = useRef(null);
+  const [GraphVisualization, setGraphVisualization] = useState(null);
   const [renderError, setRenderError] = useState('');
   const [layoutType, setLayoutType] = useState('force');
   const [maxHops, setMaxHops] = useState(1);
@@ -874,31 +889,41 @@ function GraphPanel({ graph }) {
   const vertices = graph?.vertices || [];
   const edges = graph?.edges || [];
   const batchVertex = vertices.find((vertex) => vertex.labels?.includes('batch'));
-  const batchId = batchVertex ? String(batchVertex.id) : null;
-  const pageCapacity = Math.max(1, rowLimit - (batchVertex ? 1 : 0));
-  const graphPageCount = Math.max(1, Math.ceil((vertices.length - (batchVertex ? 1 : 0)) / pageCapacity));
-  const currentGraphPage = Math.min(graphPage, graphPageCount - 1);
-  const pageVertices = useMemo(() => {
-    const remainingVertices = batchId
-      ? vertices.filter((vertex) => String(vertex.id) !== batchId)
-      : vertices;
-    const start = currentGraphPage * pageCapacity;
-    const visibleVertices = remainingVertices.slice(start, start + pageCapacity);
-    return batchVertex ? [batchVertex, ...visibleVertices] : visibleVertices;
-  }, [batchId, batchVertex, currentGraphPage, pageCapacity, vertices]);
-  const pageVertexIds = useMemo(() => new Set(pageVertices.map((vertex) => String(vertex.id))), [pageVertices]);
-  const pageEdges = useMemo(
-    () => edges.filter((edge) => pageVertexIds.has(String(edge.source)) && pageVertexIds.has(String(edge.target))),
-    [edges, pageVertexIds]
+  const graphPages = useMemo(
+    () => buildGraphPages(vertices, edges, rowLimit, batchVertex),
+    [vertices, edges, rowLimit, batchVertex]
   );
+  const graphPageCount = graphPages.pageCount;
+  const currentGraphPage = Math.min(graphPage, graphPageCount - 1);
+  const currentPage = graphPages.pages[currentGraphPage] || graphPages.pages[0];
+  const pageVertices = currentPage?.vertices || [];
+  const focusVertices = currentPage?.focusVertices || [];
+  const pageEdges = currentPage?.edges || [];
   const pagedGraph = useMemo(
     () => graph ? { ...graph, vertices: pageVertices, edges: pageEdges } : graph,
     [graph, pageEdges, pageVertices]
   );
 
+  function showSearchMatch(id) {
+    const page = graphPages.pageIndexByVertexId.get(String(id));
+    if (page !== undefined) setGraphPage(page);
+  }
+
   useEffect(() => {
     setGraphPage(0);
   }, [graph]);
+
+  useEffect(() => {
+    let active = true;
+    import('./vendor/oracle-graph-visualization/runtime.js')
+      .then(({ default: GraphRenderer }) => {
+        if (active) setGraphVisualization(() => GraphRenderer);
+      })
+      .catch((error) => {
+        if (active) setRenderError(error.message || 'The Oracle graph visualization could not be loaded.');
+      });
+    return () => { active = false; };
+  }, []);
 
   const oracleLayout = layoutType === 'top-down'
     ? { type: 'hierarchical', rankDirection: 'TB', ranker: 'network-simplex', vertexSeparation: 58, edgeSeparation: 24, rankSeparation: 112 }
@@ -909,7 +934,7 @@ function GraphPanel({ graph }) {
         : { type: layoutType, spacing: 90 };
 
   useEffect(() => {
-    if (!targetRef.current || !pagedGraph || !pageVertices.length) return undefined;
+    if (!GraphVisualization || !targetRef.current || !pagedGraph || !pageVertices.length) return undefined;
     setRenderError('');
     let visualization;
     try {
@@ -962,7 +987,7 @@ function GraphPanel({ graph }) {
     return () => {
       visualization?.$destroy();
     };
-  }, [layoutType, pageVertices.length, pagedGraph]);
+  }, [GraphVisualization, layoutType, pageVertices.length, pagedGraph]);
 
   return (
     <section className="panel graph-panel" id="graph">
@@ -972,8 +997,8 @@ function GraphPanel({ graph }) {
       </div>
       <div className="graph-page-bar" aria-label="Graph pagination controls">
         <div className="graph-page-status">
-          <strong>Showing {pageVertices.length} of {vertices.length} vertices</strong>
-          <span>{pageEdges.length} connected edges on page {currentGraphPage + 1} of {graphPageCount} · The recall batch stays visible as the page anchor.</span>
+          <strong>Showing {focusVertices.length} of {Math.max(0, vertices.length - (batchVertex ? 1 : 0))} primary nodes</strong>
+          <span>{pageVertices.length} nodes including path context · {pageEdges.length} connected edges on page {currentGraphPage + 1} of {graphPageCount}. The recall batch and connecting ancestors stay visible.</span>
         </div>
         <div className="graph-page-actions">
           <label className="graph-page-limit">
@@ -989,7 +1014,7 @@ function GraphPanel({ graph }) {
       </div>
       <div className="graph-canvas">
         <div ref={targetRef} className="oracle-graph-root" />
-        {showFallback && <RecallGraphFallback vertices={pageVertices} edges={pageEdges} layoutType={layoutType} onLayoutTypeChange={setLayoutType} onDistanceChange={setMaxHops} />}
+        {showFallback && <RecallGraphFallback vertices={pageVertices} edges={pageEdges} searchVertices={vertices} searchEdges={edges} layoutType={layoutType} onLayoutTypeChange={setLayoutType} onDistanceChange={setMaxHops} onSearchMatch={showSearchMatch} />}
         {renderError && <div className="graph-error"><CircleAlert size={18} /><span>{renderError}</span></div>}
       </div>
     </section>
@@ -1028,18 +1053,6 @@ function ChatPanel({ batchId }) {
   );
 }
 
-function parseNoticeTemplate(template) {
-  if (!template) return {};
-  try {
-    const parsed = JSON.parse(template);
-    if (parsed && typeof parsed === 'object') return parsed;
-  } catch {
-    // The agent is asked for JSON, but the raw response remains reviewable if
-    // a provider returns a fenced or prose-wrapped answer.
-  }
-  return { body: template };
-}
-
 function mergeNoticeTemplate(template, recipient, product, batchId, refundSteps) {
   const customerName = recipient?.customerName || 'Customer';
   const values = {
@@ -1072,6 +1085,8 @@ function CampaignPanel({ batchId, identity, product }) {
   const [personalizedNotice, setPersonalizedNotice] = useState(null);
   const [busyAction, setBusyAction] = useState('');
   const [error, setError] = useState('');
+  const [actionMessage, setActionMessage] = useState('');
+  const pendingActionRef = useRef(false);
   const autoDraftKeyRef = useRef('');
 
   async function loadCampaign() {
@@ -1079,10 +1094,10 @@ function CampaignPanel({ batchId, identity, product }) {
     autoDraftKeyRef.current = '';
     try {
       const result = await api(`/api/campaign?batchId=${encodeURIComponent(batchId)}`);
-      // Keep the saved campaign in the database for audit, but start this
-      // workspace with a blank preview so Generate always means a new draft.
-      setCampaignState({ ...result, campaign: null });
-      setSelectedCustomerId('');
+      setCampaignState(result);
+      setChannel(result?.campaign?.channel || 'EMAIL');
+      setTone(result?.campaign?.tone || 'PROFESSIONAL');
+      setSelectedCustomerId(String(result?.campaign?.recipients?.[0]?.purchaseId || ''));
       setCustomerOptions([]);
       setPersonalizedNotice(null);
     } catch (requestError) {
@@ -1095,12 +1110,19 @@ function CampaignPanel({ batchId, identity, product }) {
   }, [batchId]);
 
   async function runAction(action, path, body) {
-    if (busyAction) return;
+    if (pendingActionRef.current) return;
+    pendingActionRef.current = true;
     setBusyAction(action);
     setError('');
     try {
       const result = await api(path, { method: 'POST', body: JSON.stringify(body || {}) });
-      setCampaignState(action === 'authorize' ? { ...result, campaign: null } : result);
+      if (action === 'authorize') {
+        const refreshed = await api(`/api/campaign?batchId=${encodeURIComponent(batchId)}`);
+        setCampaignState({ ...refreshed, campaign: null });
+        setActionMessage('Contact authorization was saved and confirmed by the database.');
+      } else {
+        setCampaignState(result);
+      }
       if (action === 'draft') {
         setCustomerOptions([]);
         setSelectedCustomerId('');
@@ -1109,6 +1131,7 @@ function CampaignPanel({ batchId, identity, product }) {
     } catch (requestError) {
       setError(requestError.message);
     } finally {
+      pendingActionRef.current = false;
       setBusyAction('');
     }
   }
@@ -1119,6 +1142,7 @@ function CampaignPanel({ batchId, identity, product }) {
     if (!Number.isInteger(purchaseId) || !Number.isInteger(campaignId) || busyAction) return;
     setBusyAction('personalize');
     setError('');
+    setActionMessage('');
     try {
       const result = await api('/api/campaign/personalize', { method: 'POST', body: JSON.stringify({ campaignId, purchaseId }) });
       setCampaignState(result.state);
@@ -1164,7 +1188,11 @@ function CampaignPanel({ batchId, identity, product }) {
       setSelectedCustomerId(String(customerOptions[0].purchaseId));
     }
   }, [campaign?.campaignId, customerOptions, selectedCustomerId]);
-  const parsedTemplate = parseNoticeTemplate(personalizedNotice?.template || campaign?.template);
+  const parsedTemplate = parseNoticeTemplate(personalizedNotice?.template || (campaign ? {
+    source: campaign.templateSource,
+    diagnostic: campaign.templateDiagnostic,
+    template: campaign.template
+  } : null));
   const previewRecipient = customerOptions.find((customer) => String(customer.purchaseId) === selectedCustomerId) || customerOptions[0];
   const previewSubject = personalizedNotice
     ? mergeNoticeTemplate(parsedTemplate.subject || 'Recall notice for {{product_name}}', previewRecipient, product, batchId, policy.refundSteps)
@@ -1176,9 +1204,31 @@ function CampaignPanel({ batchId, identity, product }) {
       campaign?.channel
     ) + `\n\nOrder / purchase ID: ${previewRecipient?.orderReference || `PUR-${previewRecipient?.purchaseId || ''}`} · Quantity: ${previewRecipient?.quantity ?? ''} · Approved refund: $${Number(previewRecipient?.refundAmount || 0).toFixed(2)}`
     : (parsedTemplate.body || campaign?.template || 'The notice template is ready for review.');
+  const previewRefundSteps = mergeNoticeTemplate(
+    parsedTemplate.refundSteps || policy.refundSteps || '',
+    previewRecipient,
+    product,
+    batchId,
+    policy.refundSteps
+  );
+  const personalizedValidation = personalizedNotice
+    ? validatePersonalizedNotice({
+      template: parsedTemplate,
+      subject: previewSubject,
+      body: previewBody,
+      refundSteps: previewRefundSteps,
+      recipient: previewRecipient,
+      product,
+      batchId,
+      approvedRefundSteps: policy.refundSteps
+    })
+    : { valid: false, errors: ['Generate and review a personalized notice for an authorized order before approval.'] };
   const totalRefund = Number(campaign?.totalRefund || 0);
   const canAuthorize = identity.username === 'RECALL_LEAD_USER' && !contactAuthorized;
-  const canApprove = identity.username === 'RECALL_LEAD_USER' && campaign?.status === 'DRAFT';
+  const canApprove = identity.username === 'RECALL_LEAD_USER'
+    && campaign?.status === 'DRAFT'
+    && Number(campaign?.recipientCount || 0) > 0
+    && personalizedValidation.valid;
 
   return (
     <section className="panel campaign-panel" id="campaign" role="tabpanel" aria-label="Recall response campaign">
@@ -1191,6 +1241,7 @@ function CampaignPanel({ batchId, identity, product }) {
         <div><strong>From evidence to an approved customer response</strong><p>The database determines the authorized audience, item, batch, quantity, and refund intent. Select AI Agent drafts the language; a recall lead approves the campaign before any notice or refund workflow can proceed.</p></div>
       </div>
       {error && <div className="campaign-error"><CircleAlert size={16} /><span>{error}</span></div>}
+      {actionMessage && <div className="campaign-success" role="status"><CheckCircle2 size={15} /><span>{actionMessage}</span></div>}
       <div className="campaign-grid">
         <div className="campaign-control-column">
           <div className="campaign-policy-card">
@@ -1215,10 +1266,13 @@ function CampaignPanel({ batchId, identity, product }) {
             {!campaign ? <div className="campaign-empty"><Mail size={22} /><span>{contactAuthorized ? 'Generating the generic notice draft, then loading the authorized customer orders…' : 'Authorize customer contact to generate the generic notice draft and load the authorized customer orders.'}</span></div> : <>
               <div className="campaign-metrics"><div><span>Eligible audience</span><strong>{customerOptions.length ? formatNumber(customerOptions.length) : '…'}</strong><small>DDS-authorized purchases</small></div><div><span>Personalized</span><strong>{formatNumber(campaign.recipientCount)}</strong><small>customer record{Number(campaign.recipientCount) === 1 ? '' : 's'} materialized</small></div><div><span>Generated by</span><strong>{campaign.templateSource === 'SELECT_AI_AGENT' ? 'Select AI' : 'Fallback'}</strong><small>human review required</small></div></div>
               <div className="campaign-customer-picker"><div><label htmlFor="campaign-customer">Customer and order</label><small>{formatNumber(customerOptions.length)} DDS-authorized order{customerOptions.length === 1 ? '' : 's'} available for a one-at-a-time personalized draft</small></div><select id="campaign-customer" value={selectedCustomerId} onChange={(event) => { setSelectedCustomerId(event.target.value); setPersonalizedNotice(null); }} disabled={!customerOptions.length || Boolean(busyAction)}><option value="" disabled>{customerOptions.length ? 'Select a customer order' : 'Loading authorized customer orders…'}</option>{customerOptions.map((customer) => <option key={String(customer.purchaseId)} value={String(customer.purchaseId)}>{customer.customerName || `Customer ${customer.customerId}`} · order {customer.orderReference || `PUR-${customer.purchaseId}`}</option>)}</select><button className="primary-button campaign-action-button" type="button" onClick={personalizeNotice} disabled={!selectedCustomerId || Boolean(busyAction)}>{busyAction === 'personalize' ? 'Generating personalized notice…' : 'Generate for selected customer'} <Mail size={15} /></button></div>
-              <div className="campaign-notice-preview"><div className="campaign-notice-label"><Mail size={13} /> {campaign.channel} · {campaign.tone} {personalizedNotice ? '· Personalized' : '· Generic template'}</div><h3>{previewSubject}</h3><p>{previewBody}</p></div>
+              {(parsedTemplate.usedFallback || !parsedTemplate.valid) && <div className="campaign-template-warning" role="alert"><CircleAlert size={14} /><span>{parsedTemplate.valid ? `The safe fallback template is shown. ${parsedTemplate.diagnostic || 'Review it and regenerate if needed.'}` : `The generated response did not contain valid subject, body, and refund steps. ${parsedTemplate.errors.join(' ')} ${parsedTemplate.diagnostic || ''} The safe template is shown; regenerate and review it before approval.`}</span></div>}
+              {personalizedNotice && !personalizedValidation.valid && <div className="campaign-template-warning" role="alert"><CircleAlert size={14} /><span>{personalizedValidation.errors.join(' ')}</span></div>}
+              <div className="campaign-notice-preview"><div className="campaign-notice-label"><Mail size={13} /> {campaign.channel} · {campaign.tone} {personalizedNotice ? '· Personalized' : '· Generic template'}</div><h3>{previewSubject}</h3><p>{previewBody}</p><div className="campaign-refund-steps"><strong>Refund steps for review</strong><p>{previewRefundSteps || 'The database campaign policy has no refund steps.'}</p></div></div>
               <div className="campaign-recipient-heading"><span>DDS-authorized customer order</span><small>{previewRecipient ? 'Selected record used for the personalized draft' : 'Choose an authorized customer order above'}</small></div>
               {previewRecipient && <div className="campaign-recipient-card"><div className="campaign-recipient-avatar"><Users size={15} /></div><div><strong>{previewRecipient.customerName}</strong><span>{product?.product || campaign.productName} · batch {batchId} · order {previewRecipient.orderReference || `PUR-${previewRecipient.purchaseId}`} · {previewRecipient.quantity} unit{Number(previewRecipient.quantity) === 1 ? '' : 's'}</span></div><b>{personalizedNotice ? 'Drafted' : 'Selected'}</b></div>}
               {canApprove && <button className="primary-button campaign-approve-button" type="button" onClick={() => runAction('approve', '/api/campaign/approve', { campaignId: campaign.campaignId })} disabled={Boolean(busyAction)}>{busyAction === 'approve' ? 'Approving campaign…' : 'Approve campaign and create refund intents'} <Banknote size={15} /></button>}
+              {identity.username === 'RECALL_LEAD_USER' && campaign.status === 'DRAFT' && !canApprove && <p className="campaign-approval-hint"><ShieldCheck size={13} /> {personalizedValidation.errors.join(' ')}</p>}
               {campaign.status === 'APPROVED' && <div className="campaign-approved-note"><CheckCircle2 size={16} /><span>Approved. {formatNumber(campaign.recipientCount)} selected-customer refund intent{Number(campaign.recipientCount) === 1 ? ' is' : 's are'} ready for a provider or manual review. No funds were moved.</span></div>}
             </>}
           </div>
@@ -1331,6 +1385,7 @@ function App() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const [activeWorkspaceTab, setActiveWorkspaceTab] = useState('overview');
+  const [visitedWorkspaceTabs, setVisitedWorkspaceTabs] = useState(() => new Set(['overview']));
   const [selectedVectorEvidence, setSelectedVectorEvidence] = useState(null);
 
   async function loadBundle() {
@@ -1361,6 +1416,7 @@ function App() {
   function openVectorEvidence(record) {
     setSelectedVectorEvidence(record);
     setActiveWorkspaceTab('product');
+    setVisitedWorkspaceTabs((current) => new Set([...current, 'product']));
   }
 
   if (!identity && !loading) return <Login onLogin={(nextIdentity) => { setIdentity(nextIdentity); loadBundle(); }} />;
@@ -1379,7 +1435,10 @@ function App() {
     { id: 'chat', label: 'Agent Chat', icon: MessageCircle },
     { id: 'campaign', label: 'Recall Campaign', icon: Megaphone }
   ];
-  const switchWorkspaceTab = (tab) => setActiveWorkspaceTab(tab);
+  const switchWorkspaceTab = (tab) => {
+    setActiveWorkspaceTab(tab);
+    setVisitedWorkspaceTabs((current) => new Set([...current, tab]));
+  };
   return (
     <main className="app-shell">
       <aside className="sidebar">
@@ -1395,18 +1454,18 @@ function App() {
         <header className="topbar"><div className="mobile-title"><span className="pulse-dot" /> Recall operations</div><div className="topbar-actions"><div className="batch-selector"><span>Active batch</span><b>{context.batchId || 'B-482'}</b><ChevronRight size={15} /></div><div className="identity-chip"><div className="identity-avatar">{identity.username?.slice(0, 2)}</div><div><b>{identity.roleLabel}</b><span>{identity.username}</span></div><button className="logout-button" type="button" onClick={logout} title="Sign out" aria-label="Sign out"><LogOut size={15} /><span>Sign out</span></button></div></div></header>
         <div className="content">
           <section className="page-heading"><div><p className="eyebrow">Live incident · {product.recallStatus || 'INVESTIGATING'}</p><h1>Recall command center</h1><p>Role-aware evidence for <b>{product.product || 'HeatPro Countertop Cooker'}</b> · {context.batchId || 'B-482'}</p></div><div className="heading-actions"><button className="icon-button" onClick={loadBundle} title="Refresh secured evidence" aria-label="Refresh secured evidence"><Activity size={17} /></button></div></section>
-          {activeWorkspaceTab === 'overview' && <><section className="stats-grid"><StatCard icon={Store} label="Visible stores" value={formatNumber(context.affectedStoreCount)} detail="within your role scope" tone="teal" /><StatCard icon={PackageSearch} label="Units in scope" value={formatNumber(context.unitsSent)} detail="shipped in batch B-482" tone="orange" /><StatCard icon={Users} label="Exposed customers" value={formatNumber(context.customerExposureCount)} detail="authorized count only" tone="blue" /><StatCard icon={FileSearch} label="Priority complaints" value={formatNumber(context.semanticComplaints?.length)} detail="vector-ranked evidence" tone="red" /></section><DdsPersonaPanel identity={identity} /></>}
+          {activeWorkspaceTab === 'overview' && <><section className="stats-grid"><StatCard icon={Store} label="Visible stores" value={formatNumber(context.affectedStoreCount)} detail="within your role scope" tone="teal" /><StatCard icon={PackageSearch} label="Units in scope" value={formatNumber(context.unitsSent)} detail="shipped in batch B-482" tone="orange" /><StatCard icon={Users} label="Exposed customers" value={formatNumber(context.customerExposureCount)} detail="authorized count only" tone="blue" /><StatCard icon={FileSearch} label="Closest complaint matches" value={formatNumber(context.semanticComplaints?.length)} detail="stored vector evidence, not severity" tone="red" /></section><DdsPersonaPanel identity={identity} /></>}
           <nav className="workspace-tabs" role="tablist" aria-label="Recall workspace pages">
             {workspaceTabs.map(({ id, label, icon: Icon }) => <button key={id} type="button" role="tab" aria-selected={activeWorkspaceTab === id} className={activeWorkspaceTab === id ? 'active' : ''} onClick={() => switchWorkspaceTab(id)}><Icon size={16} /> {label}</button>)}
           </nav>
           {activeWorkspaceTab === 'overview' && <SchemaDiagram />}
-          {activeWorkspaceTab === 'dds' && <section className="tab-page" role="tabpanel" aria-label="Deep Data Security"><DeepDataSecurityPanel identity={identity} /></section>}
-          {activeWorkspaceTab === 'map' && <section className="main-grid tab-page" role="tabpanel" aria-label="Store Map"><MapPanel stores={bundle.stores} /><RegionBars stores={bundle.stores} /><StoreDataTable stores={bundle.stores} /></section>}
-          {activeWorkspaceTab === 'product' && <section className="tab-page product-record-page" role="tabpanel" aria-label="Product Record JSON"><ProductPanel product={product} selectedEvidence={selectedVectorEvidence} onClearSelectedEvidence={() => setSelectedVectorEvidence(null)} /></section>}
-          {activeWorkspaceTab === 'evidence' && <section className="tab-page evidence-page" role="tabpanel" aria-label="Evidence Vectors"><ComplaintPanel batchId={context.batchId || 'B-482'} onSelectEvidence={openVectorEvidence} /></section>}
-          {activeWorkspaceTab === 'graph' && <section className="tab-page" role="tabpanel" aria-label="Property Graph"><GraphPanel graph={bundle.graph} /></section>}
-          {activeWorkspaceTab === 'campaign' && <section className="tab-page" role="tabpanel" aria-label="Recall Response Campaign"><CampaignPanel batchId={context.batchId || 'B-482'} identity={identity} product={product} /></section>}
-          {activeWorkspaceTab === 'chat' && <section className="tab-page" role="tabpanel" aria-label="Agent Chat"><ChatPanel batchId={context.batchId || 'B-482'} /></section>}
+          {visitedWorkspaceTabs.has('dds') && <section hidden={activeWorkspaceTab !== 'dds'} className="tab-page" role="tabpanel" aria-label="Deep Data Security"><DeepDataSecurityPanel identity={identity} /></section>}
+          {visitedWorkspaceTabs.has('map') && <section hidden={activeWorkspaceTab !== 'map'} className="main-grid tab-page" role="tabpanel" aria-label="Store Map"><MapPanel stores={bundle.stores} /><RegionBars stores={bundle.stores} /><StoreDataTable stores={bundle.stores} /></section>}
+          {visitedWorkspaceTabs.has('product') && <section hidden={activeWorkspaceTab !== 'product'} className="tab-page product-record-page" role="tabpanel" aria-label="Product Record JSON"><ProductPanel product={product} selectedEvidence={selectedVectorEvidence} onClearSelectedEvidence={() => setSelectedVectorEvidence(null)} /></section>}
+          {visitedWorkspaceTabs.has('evidence') && <section hidden={activeWorkspaceTab !== 'evidence'} className="tab-page evidence-page" role="tabpanel" aria-label="Evidence Vectors"><ComplaintPanel batchId={context.batchId || 'B-482'} defaultRows={context.semanticComplaints || []} onSelectEvidence={openVectorEvidence} /></section>}
+          {visitedWorkspaceTabs.has('graph') && <section hidden={activeWorkspaceTab !== 'graph'} className="tab-page" role="tabpanel" aria-label="Property Graph"><GraphPanel graph={bundle.graph} /></section>}
+          {visitedWorkspaceTabs.has('campaign') && <section hidden={activeWorkspaceTab !== 'campaign'} className="tab-page" role="tabpanel" aria-label="Recall Response Campaign"><CampaignPanel batchId={context.batchId || 'B-482'} identity={identity} product={product} /></section>}
+          {visitedWorkspaceTabs.has('chat') && <section hidden={activeWorkspaceTab !== 'chat'} className="tab-page" role="tabpanel" aria-label="Agent Chat"><ChatPanel batchId={context.batchId || 'B-482'} /></section>}
         </div>
       </section>
     </main>

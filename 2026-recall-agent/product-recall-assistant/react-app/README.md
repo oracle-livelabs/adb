@@ -13,7 +13,7 @@ Estimated Time: 45 minutes
 
 ## Prepare the database
 
-In SQL Developer Web, connect as `ADMIN` and run the setup block in the Lab 8 guide. It downloads the combined application and campaign script from Object Storage, then installs its database objects under `RECALL_OWNER`.
+As `ADMIN`, grant `EXECUTE ON DBMS_CLOUD_AI_AGENT` to `RECALL_OWNER`. Then connect directly as `RECALL_OWNER` and run the v8 setup block in the Lab 8 guide. It downloads the combined application and campaign script from Object Storage and installs objects and AI teams under the authenticated owner.
 
 The script creates the invoker-rights application and campaign APIs and the owner-owned definer-rights bridges used for approved graph, vector, Spatial, JSON, and Select AI Agent operations. `RECALL_REACT_API.ASK_AGENT` assembles one role-filtered evidence document before the agent runs. The campaign API uses the active database identity for its audience and requires a recall lead to authorize contact and approve the campaign.
 
@@ -38,7 +38,7 @@ ORACLE_WALLET_PASSWORD=wallet-download-password
 COOKIE_SECURE=false
 ```
 
-For a direct TLS connection, use the database connection string from the Autonomous Database **Database connection** dialog and leave the wallet directory values empty. `ORACLE_CONNECT_STRING` must be a database connect string or wallet alias, never an ORDS HTTPS URL.
+For a direct TLS connection, replace the empty `ORACLE_CONNECT_STRING` value with the complete database connection string from the Autonomous Database **Database connection** dialog and leave the wallet directory values empty. `ORACLE_CONNECT_STRING` must be a database connect string or wallet alias, never an ORDS HTTPS URL. Do not derive a fixed port or service from the SQL Developer Web URL.
 
 ## Run locally
 
@@ -65,7 +65,7 @@ The browser login is intentionally limited to these Lab 7 local Deep Data Securi
 - `REGION_NE_USER`
 - `RECALL_LEAD_USER`
 
-Enter the password assigned by the Lab 7 setup. Never use `RECALL_OWNER` or `ADMIN` as an application login. `ADMIN` runs the Lab 8 deployment block; `RECALL_OWNER` owns the application and campaign objects. The application stores the selected end-user database session and all secured routes execute in that session before invoking the approved definer-rights bridges.
+Enter the password assigned by the Lab 7 setup. Never use `RECALL_OWNER` or `ADMIN` as an application login. `ADMIN` grants the agent framework and runs the verification queries; `RECALL_OWNER` runs the Lab 8 installer and owns the application and campaign objects. The application stores the selected end-user database session and all secured routes execute in that session before invoking the approved definer-rights bridges.
 
 The workshop uses local database users so the database security behavior is visible. In production, an IdM or OCI IAM login can establish the trusted identity, but the database-side authorization result is the same.
 

@@ -8,7 +8,8 @@
     "dev": "vite --host 0.0.0.0",
     "dev:all": "node dev-all.mjs",
     "api": "node server.mjs",
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "test": "node --test"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
