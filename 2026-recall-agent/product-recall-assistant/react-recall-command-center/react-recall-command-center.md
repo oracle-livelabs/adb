@@ -170,7 +170,7 @@ Kevin checks whether the same application respects each job. David has designed 
 
     
     ![storeassoc](images/storeassoc.png)
-	
+
     The property graph shows the shared batch-to-component-batch-to-supplier-site trace and the downstream store/customer paths authorized for the signed-in user. Store 101 users see one store and five customer vertices; the Northeast user sees 24 stores and 120 customers; the recall lead sees 120 stores and 600 customers. The customer vertices contain only the authorized customer's name and identifier; email addresses are not returned.
     
     Use the graph **Distance** selector to control how much of the raw `RECALL_GRAPH` is visible at once. It starts at one hop from `B-482` and supports one through five hops. Use the **Filter** selector to show all vertices or focus on Components, Sub-components, Suppliers, Supplier sites, Stores, or Customers. Each page retains the shortest path back to `B-482`, including connecting stores and ancestors even when they fall on different pages. Search and hop distances use the full authorized graph. **Center graph** changes the viewport only; use **Reset filters** to clear the exploration.
@@ -209,7 +209,7 @@ Kevin checks whether the same application respects each job. David has designed 
 
     
     ![northeast](images/recalllead.png)
-	
+
 4. Compare the experience with the database session, not the browser selection. The Node API reads the active end-user identity from `ORA_END_USER_CONTEXT` after login. The same application code and same SQL package calls produce different results because the database applies different data grants.
 
 ## Task 6: Ask the Assistant
