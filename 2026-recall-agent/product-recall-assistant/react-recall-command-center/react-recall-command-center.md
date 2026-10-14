@@ -168,6 +168,7 @@ Kevin checks whether the same application respects each job. David has designed 
 
     The map shows only the authorized Store 101 location. The complaint list shows only complaint `9001`.
 
+    
     ![storeassoc](images/storeassoc.png)
 	
     The property graph shows the shared batch-to-component-batch-to-supplier-site trace and the downstream store/customer paths authorized for the signed-in user. Store 101 users see one store and five customer vertices; the Northeast user sees 24 stores and 120 customers; the recall lead sees 120 stores and 600 customers. The customer vertices contain only the authorized customer's name and identifier; email addresses are not returned.
@@ -206,6 +207,7 @@ Kevin checks whether the same application respects each job. David has designed 
 
     The map and graph show the full authorized continental U.S. footprint. Shared component and supplier-site facts remain available to every persona because they describe recall evidence, while downstream store and customer vertices are still produced from the active DDS-filtered session. The agent receives the same distinction: shared component/supplier trace plus role-specific spatial and exposure evidence.    
 
+    
     ![northeast](images/recalllead.png)
 	
 4. Compare the experience with the database session, not the browser selection. The Node API reads the active end-user identity from `ORA_END_USER_CONTEXT` after login. The same application code and same SQL package calls produce different results because the database applies different data grants.
