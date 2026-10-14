@@ -14,7 +14,7 @@ MANIFEST = ROOT / "workshops" / "sandbox" / "manifest.json"
 
 
 def learner_pages():
-    manifest = json.loads(MANIFEST.read_text())
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     return [
         (entry, (MANIFEST.parent / entry["filename"]).resolve())
         for entry in manifest["tutorials"]
@@ -38,25 +38,25 @@ class WorkshopPackageTests(unittest.TestCase):
             with self.subTest(lab=number):
                 self.assertTrue(entry["title"].startswith(f"Lab {number}: "))
                 self.assertNotIn("ADMIN", entry["title"])
-                self.assertEqual(unescape(path.read_text().splitlines()[0]), "# " + entry["title"])
+                self.assertEqual(unescape(path.read_text(encoding="utf-8").splitlines()[0]), "# " + entry["title"])
         self.assertTrue((MANIFEST.parent / "index.html").is_file())
 
     def test_task_numbers_are_contiguous_in_each_lab(self):
         for _, path in learner_labs():
-            tasks = [int(number) for number in re.findall(r"^## Task (\d+):", path.read_text(), re.M)]
+            tasks = [int(number) for number in re.findall(r"^## Task (\d+):", path.read_text(encoding="utf-8"), re.M)]
             with self.subTest(file=path.name):
                 self.assertTrue(tasks)
                 self.assertEqual(tasks, list(range(1, len(tasks) + 1)))
 
     def test_learner_pages_do_not_manage_data_cache(self):
         for _, path in learner_pages():
-            text = unescape(path.read_text())
+            text = unescape(path.read_text(encoding="utf-8"))
             with self.subTest(file=path.name):
                 self.assertNotRegex(text, re.compile(r"\b(?:DBMS_EXT_TABLE_CACHE|USER_EXTERNAL_TAB_CACHES|Lake\s+Cache)\b", re.I))
 
     def test_final_lab_combines_model_gap_build_and_answer(self):
         entry, path = learner_labs()[-1]
-        text = path.read_text()
+        text = path.read_text(encoding="utf-8")
         self.assertEqual(entry["title"], "Lab 5: Create an Analytic View with Codex")
         headings = re.findall(r"^## Task \d+: (.+)$", text, re.M)
         self.assertEqual(headings, [
@@ -68,10 +68,10 @@ class WorkshopPackageTests(unittest.TestCase):
         self.assertFalse((ROOT / "governed-question" / "governed-question.md").exists())
 
     def test_local_table_contract_is_consistent_across_labs_and_runtime(self):
-        sources = (ROOT / "connect-sources" / "connect-sources.md").read_text()
-        enrichment = (ROOT / "ai-enrichment" / "ai-enrichment.md").read_text()
-        runtime = (ROOT / "starter-kit" / "livelab_mcp.py").read_text()
-        boundary = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        sources = (ROOT / "connect-sources" / "connect-sources.md").read_text(encoding="utf-8")
+        enrichment = (ROOT / "ai-enrichment" / "ai-enrichment.md").read_text(encoding="utf-8")
+        runtime = (ROOT / "starter-kit" / "livelab_mcp.py").read_text(encoding="utf-8")
+        boundary = (ROOT / "connect-codex" / "connect-codex.md").read_text(encoding="utf-8")
         names = (
             "lab_products_raw_t",
             "lab_digital_intent_raw_t",
@@ -88,7 +88,7 @@ class WorkshopPackageTests(unittest.TestCase):
         self.assertIn("do not provide category rankings, figures", " ".join(boundary.split()))
 
     def test_setup_boundary_does_not_start_the_model_build(self):
-        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text(encoding="utf-8")
         section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
         prompt = re.search(r"<copy>\n(.*?)\n</copy>", section, re.S).group(1)
         self.assertIn("SETUP ACKNOWLEDGMENT", prompt)
@@ -98,7 +98,7 @@ class WorkshopPackageTests(unittest.TestCase):
         self.assertNotIn("I authorize creation", prompt)
 
     def test_complete_boundary_contains_the_conditional_sql_av_workflow(self):
-        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text(encoding="utf-8")
         setup_section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
         setup_prompt = re.search(r"<copy>\n(.*?)\n</copy>", setup_section, re.S).group(1)
         workflow = setup_prompt.split("7. Model-building workflow", 1)[1]
@@ -129,7 +129,7 @@ class WorkshopPackageTests(unittest.TestCase):
                 self.assertIn(requirement, " ".join(workflow.split()))
 
     def test_missing_category_rule_has_an_explicit_nonblocking_default(self):
-        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        setup = (ROOT / "connect-codex" / "connect-codex.md").read_text(encoding="utf-8")
         section = setup.split("## Task 2: Establish the MCP boundary", 1)[1]
         prompt = re.search(r"<copy>\n(.*?)\n</copy>", section, re.S).group(1)
         flat = " ".join(prompt.split())
@@ -150,20 +150,20 @@ class WorkshopPackageTests(unittest.TestCase):
             with self.subTest(requirement=requirement):
                 self.assertIn(requirement, flat)
         self.assertNotIn("do not add a synthetic Unknown category", prompt)
-        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text(encoding="utf-8")
         self.assertIn("Do not block the AV build just because", final)
         self.assertNotIn("do not add a synthetic Unknown category", final)
 
     def test_boundary_is_established_only_in_lab_three(self):
         boundary_locations = []
         for _, path in learner_pages():
-            for prompt in re.findall(r"<copy>\n(.*?)\n</copy>", path.read_text(), re.S):
+            for prompt in re.findall(r"<copy>\n(.*?)\n</copy>", path.read_text(encoding="utf-8"), re.S):
                 if re.search(r"^BOUNDARY$", prompt, re.M):
                     boundary_locations.append(path.relative_to(ROOT))
         self.assertEqual(boundary_locations, [Path("connect-codex/connect-codex.md")])
 
     def test_final_build_prompt_is_a_short_request_not_another_boundary(self):
-        final = (ROOT / "analytic-views" / "analytic-views.md").read_text()
+        final = (ROOT / "analytic-views" / "analytic-views.md").read_text(encoding="utf-8")
         build_section = final.split("## Task 3: Ask Codex to build the model", 1)[1]
         build_prompt = re.search(r"<copy>\n(.*?)\n</copy>", build_section, re.S).group(1)
         approved_prompt = (
@@ -191,12 +191,12 @@ class WorkshopPackageTests(unittest.TestCase):
         pages += list((ROOT / "documentation").glob("*.md"))
         for path in pages:
             with self.subTest(file=path.name):
-                self.assertNotRegex(path.read_text(), re.compile(r"\b(?:both|two)\s+Analytic Views\b", re.I))
+                self.assertNotRegex(path.read_text(encoding="utf-8"), re.compile(r"\b(?:both|two)\s+Analytic Views\b", re.I))
 
     def test_every_learner_code_block_has_copy_markup(self):
         fence = re.compile(r"^(?P<indent> {0,4})(?P<fence>~{3,}|`{3,})[^\n]*\n(?P<body>.*?)^(?P=indent)(?P=fence)[ \t]*$", re.M | re.S)
         for _, path in learner_pages():
-            text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
+            text = re.sub(r"<!--.*?-->", "", path.read_text(encoding="utf-8"), flags=re.S)
             blocks = list(fence.finditer(text))
             markers = re.findall(r"^ {0,4}(?:~{3,}|`{3,})[^\n]*$", text, re.M)
             with self.subTest(file=path.name):
@@ -209,17 +209,50 @@ class WorkshopPackageTests(unittest.TestCase):
                     self.assertEqual(body.count("</copy>"), 1)
 
     def test_starter_kit_link_uses_supported_markdown_not_html(self):
-        text = (ROOT / "connect-codex" / "connect-codex.md").read_text()
+        text = (ROOT / "connect-codex" / "connect-codex.md").read_text(encoding="utf-8")
         self.assertIn(
             "[**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip)",
             text,
         )
         self.assertNotRegex(text, r"<a\s+href=")
 
+    def test_mac_and_windows_setup_are_in_the_same_kit(self):
+        source = ROOT / 'starter-kit'
+        for name in ('01-setup-peakgear-mcp.command', '01-setup-peakgear-mcp.ps1',
+                     '02-peakgear-livelab-admin.command', '02-peakgear-livelab-admin.ps1',
+                     'livelab_setup.py', 'livelab_mcp.py'):
+            with self.subTest(file=name):
+                self.assertTrue((source / name).is_file())
+        instructions = (ROOT / 'connect-codex/connect-codex.md').read_text(encoding="utf-8")
+        self.assertIn('### macOS: Terminal', instructions)
+        self.assertIn('### Windows: Windows PowerShell', instructions)
+        self.assertIn('step 6 of your', instructions)
+        self.assertIn('Windows Credential Manager', instructions)
+        self.assertIn('01-setup-peakgear-mcp.ps1', instructions)
+        self.assertIn('Expand-Archive', instructions)
+
+    def test_enrichment_preserves_useful_generated_metadata(self):
+        text = (ROOT / 'ai-enrichment/ai-enrichment.md').read_text(encoding="utf-8")
+        self.assertIn('## Task 2: Add the business context', text)
+        self.assertIn('Keep descriptions and tags that correctly explain', text)
+        self.assertIn('Exact wording and exact tag names are not required', text)
+        self.assertNotIn('28 rows in total', text)
+        self.assertNotIn('Replace the AI-suggested tag chips', text)
+        self.assertNotIn('business contract', text)
+
+    def test_source_connection_finishes_with_both_credentials_and_add(self):
+        text = (ROOT / 'connect-sources/connect-sources.md').read_text(encoding="utf-8")
+        self.assertIn('## Task 2: Connect the Databricks Unity Catalog', text)
+        self.assertIn('**Bucket credentials**. Click **Add**', text)
+        self.assertIn('**PeakGear - Live source checks**', text)
+        self.assertIn('**PeakGear - Local snapshots**', text)
+        self.assertIn('query data live where it already resides', text)
+        self.assertNotIn('owner-confirmed working mount calls', text)
+
     def test_local_links_resolve_and_images_have_alt_text(self):
         link = re.compile(r"(!?)\[([^\]]*)\]\(([^\s)]+)\)")
         for _, path in learner_pages():
-            text = re.sub(r"<!--.*?-->", "", path.read_text(), flags=re.S)
+            text = re.sub(r"<!--.*?-->", "", path.read_text(encoding="utf-8"), flags=re.S)
             for image, label, destination in link.findall(text):
                 with self.subTest(file=path.name, destination=destination):
                     if image:
@@ -238,7 +271,7 @@ class WorkshopPackageTests(unittest.TestCase):
     def test_starter_kit_zip_matches_all_source_files(self):
         source = ROOT / "starter-kit"
         expected = {
-            str(path.relative_to(ROOT))
+            path.relative_to(ROOT).as_posix()
             for path in source.rglob("*")
             if path.is_file() and "__pycache__" not in path.parts and path.name != ".DS_Store"
         }

@@ -12,6 +12,7 @@ readonly LIVELAB_RUNTIME_DIR="$HOME/.local/share/peakgear-livelab"
 readonly LIVELAB_WRAPPER_SOURCE="$STARTER_DIR/livelab_mcp.py"
 readonly LIVELAB_LAUNCHER_SOURCE="$STARTER_DIR/livelab_mcp_launcher.command"
 readonly LIVELAB_ADMIN_SOURCE="$STARTER_DIR/02-peakgear-livelab-admin.command"
+readonly LIVELAB_SETUP_SOURCE="$STARTER_DIR/livelab_setup.py"
 readonly LIVELAB_WRAPPER="$LIVELAB_RUNTIME_DIR/livelab_mcp.py"
 readonly LIVELAB_LAUNCHER="$UV_BIN_DIR/peakgear-livelab-mcp"
 readonly LIVELAB_ADMIN="$LIVELAB_RUNTIME_DIR/peakgear-livelab-admin.command"
@@ -47,7 +48,8 @@ fi
 
 echo
 echo "Installing the Oracle Data Studio MCP package…"
-uv tool install --force "oracle-data-studio[mcp]"
+uv tool install --python 3.13 --force "oracle-data-studio[mcp]"
+readonly MCP_PYTHON="$(uv tool dir)/oracle-data-studio/bin/python"
 
 if [[ ! -x "$UV_BIN_DIR/oracle-data-studio-config" ]]; then
   echo
@@ -72,8 +74,9 @@ echo "Copy Database Password from LiveLabs Reservation Information -> Environmen
 echo "Do not use OCI Login Credentials, a screenshot's example, or your Mac password."
 echo "The password is not echoed and is stored in the macOS Keychain."
 "$UV_BIN_DIR/oracle-data-studio-config" set adp --url "$ADP_URL" --user "$PEAKGEAR_USER"
+"$MCP_PYTHON" "$LIVELAB_SETUP_SOURCE" verify-credentials
 
-if [[ ! -f "$LIVELAB_WRAPPER_SOURCE" || ! -f "$LIVELAB_LAUNCHER_SOURCE" || ! -f "$LIVELAB_ADMIN_SOURCE" ]]; then
+if [[ ! -f "$LIVELAB_WRAPPER_SOURCE" || ! -f "$LIVELAB_LAUNCHER_SOURCE" || ! -f "$LIVELAB_ADMIN_SOURCE" || ! -f "$LIVELAB_SETUP_SOURCE" ]]; then
   echo
   echo "The PeakGear LiveLab diagnostic files are missing. Download a new starter kit and run setup again."
   exit 1
@@ -83,6 +86,7 @@ mkdir -p "$LIVELAB_RUNTIME_DIR"
 install -m 700 "$LIVELAB_WRAPPER_SOURCE" "$LIVELAB_WRAPPER"
 install -m 700 "$LIVELAB_LAUNCHER_SOURCE" "$LIVELAB_LAUNCHER"
 install -m 700 "$LIVELAB_ADMIN_SOURCE" "$LIVELAB_ADMIN"
+install -m 700 "$LIVELAB_SETUP_SOURCE" "$LIVELAB_RUNTIME_DIR/livelab_setup.py"
 
 echo
 echo "Select your existing Codex project folder in Finder."
@@ -99,33 +103,11 @@ readonly PROJECT_MCP_CONFIG="${PROJECT_MCP_DIR}/config.toml"
 
 mkdir -p "$PROJECT_MCP_DIR"
 
-# Remove an earlier LiveLab section, while preserving every other project setting.
-readonly TEMP_CONFIG="$(mktemp "${PROJECT_MCP_CONFIG}.XXXXXX")"
-if [[ -f "$PROJECT_MCP_CONFIG" ]]; then
-  awk '
-    /^\[mcp_servers\.LiveLab\][[:space:]]*$/ { skip = 1; next }
-    skip && /^\[/ { skip = 0 }
-    !skip { print }
-  ' "$PROJECT_MCP_CONFIG" > "$TEMP_CONFIG"
-fi
-
-cat >> "$TEMP_CONFIG" <<'EOF'
-
-# PeakGear LiveLab: project-scoped Oracle Data Studio MCP.
-# The server reads the URL and PEAKGEAR_USER password from the macOS Keychain.
-# "admin" is the MCP tool profile required to build Analytic Views; it is not a database user.
-[mcp_servers.LiveLab]
-command = "/bin/zsh"
-args = ["-lc", "exec \"$HOME/.local/bin/peakgear-livelab-mcp\" --transport stdio --profile admin"]
-enabled = true
-startup_timeout_sec = 60
-tool_timeout_sec = 180
-default_tools_approval_mode = "prompt"
-EOF
-
-mv "$TEMP_CONFIG" "$PROJECT_MCP_CONFIG"
+"$MCP_PYTHON" "$LIVELAB_SETUP_SOURCE" configure \
+  --project "${CODEX_PROJECT_DIR%/}" --runtime "$LIVELAB_RUNTIME_DIR" --python "$MCP_PYTHON"
 print -r -- "${CODEX_PROJECT_DIR%/}" > "$PROJECT_PATH_FILE"
 print -r -- "$STARTER_DIR" > "$STARTER_PATH_FILE"
+print -r -- "$MCP_PYTHON" > "$LIVELAB_RUNTIME_DIR/python-path"
 
 echo
 echo "Success. LiveLab MCP was added to:"

@@ -3,7 +3,9 @@
 Estimated Time: 60 minutes, plus a 15-minute troubleshooting buffer.
 
 This is a five-module Oracle LiveLabs workshop package, numbered **Labs 1–5**.
-Participants begin with an already provisioned reservation, use its OCI and
+PeakGear is a fictional sporting goods retailer. Participants use AI Lakehouse
+as an AI-powered query hub across enterprise sources. They begin with an
+already provisioned reservation, use its OCI and
 database credentials to connect Data Studio, connect real Iceberg and Operations
 data, and then use Codex with Oracle Data Studio MCP. The same business question
 becomes more useful as its governed context improves. There is no participant
@@ -25,11 +27,12 @@ Lab 3 Task 1 provides the read-only SQL to obtain the database-specific ADP_URL
 as PEAKGEAR_USER in Data Studio. The reservation provider must validate access
 to this lookup before release; participants stop and contact the instructor if
 it fails. The lab then provides one Starter Kit download and an explicit
-Terminal sequence: download, open Terminal, extract the ZIP, prepare the project
+macOS Terminal or native Windows PowerShell sequence: download, open the local
+shell, extract the ZIP, prepare the project
 folder, run setup, answer its prompts with ADP_URL and the reservation's
 Database Password, open the project in Codex, and create a fresh task. The URL
 is obtained before running
-01-setup-peakgear-mcp.command. The ZIP README follows the same sequence. No
+the platform's 01 setup script. The ZIP README follows the same sequence. No
 separate local-event kit is required.
 
 The reservation already provides the participant user and grants, ORDS access,
@@ -43,6 +46,11 @@ the descriptions and tags for digital interactions, the product catalog, and
 operational returns. Lab 5 reuses those annotations to ask the harder business
 question, identify the governed-model gap, create or reuse and validate one Analytic View,
 and obtain the final governed answer in one module. It does not repeat enrichment.
+
+Lab 4 retains useful AI-generated descriptions and tags. Learners correct only
+inaccurate or missing business rules, rather than replacing every field with
+prescribed wording. Verification checks saved meaning, not exact tag names or
+an exact annotation-row count.
 
 Lab 3 Task 2 establishes the complete standing MCP boundary once, including
 the conditional model-building workflow: explicit SQL DDL through

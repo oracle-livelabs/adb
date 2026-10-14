@@ -77,8 +77,9 @@ The final answer ranks product categories using source-period
 digital interest and returned units, with repeatable product-level drill-down
 and explicit limitations.
 
-The workshop demonstrates Oracle AI Lakehouse as the governed decision layer
-across existing Oracle and Databricks data, with Data Studio as the primary
+PeakGear is a fictional sporting goods retailer. The workshop demonstrates
+Oracle AI Lakehouse as an AI-powered query hub across existing Oracle and
+Databricks data, with Data Studio as the primary
 user experience and Codex as the AI client.
 
 ## Catalog abstract
@@ -154,13 +155,16 @@ Participants should be comfortable with:
 * the purpose of OAuth credentials; and
 * basic use of a desktop AI assistant.
 
-Prior experience with Oracle Analytic Views, Iceberg internals, Python, uv, or
+Prior experience with Oracle Analytic Views, Iceberg internals, Python, or
 manual MCP configuration is not required.
 
 ## Participant prerequisites
 
-* A macOS laptop for the current starter-kit implementation.
-* Codex Desktop installed and signed in.
+* A macOS laptop with Terminal or a Windows laptop with Windows PowerShell
+  5.1 or later. Separate setup and maintenance scripts are included.
+* Codex installed, signed in, and able to create a local task. The event
+  organizer arranges supported client installation and account access before
+  the workshop; the reservation does not include a Codex account.
 * A modern browser.
 * Internet access.
 * An active, ready LiveLabs reservation with OCI Login Credentials, Tenancy

@@ -1,0 +1,6 @@
+# Keep the checked-out Starter Kit identical to its downloadable ZIP on Windows.
+starter-kit/*.py text eol=lf
+starter-kit/*.ps1 text eol=lf
+starter-kit/*.command text eol=lf
+starter-kit/*.md text eol=lf
+starter-kit/.codex/*.toml text eol=lf
