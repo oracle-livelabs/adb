@@ -20,6 +20,15 @@ participant to create, edit, or validate an AI profile.
 ## Mandatory dry-run checks
 
 - [ ] The default workshop page starts at Lab 1; no participant ADMIN setup is listed.
+- [ ] PeakGear is introduced as fictional, and the cross-source query-hub
+  business benefit is explained before setup.
+- [ ] Before the event, every participant has a supported installed Codex
+  client, account access, and permission to use local project-scoped MCP.
+- [ ] Run the downloaded Starter Kit on a clean macOS laptop and a clean native
+  Windows laptop: install packages, enter URL/password, save to the OS credential
+  store, trust the local project, and obtain a ready MCP connection. Exercise
+  Restart/Stop/Status on each OS and preserve unrelated project configuration.
+  Offline tests do not replace these two target-machine dry runs.
 - [ ] Reservation Information provides OCI Login Credentials separately from
   Database User and Database Password; the participant user is PEAKGEAR_USER.
 - [ ] On a fresh reservation, verify whether the OCI login forces a first-use
@@ -34,10 +43,14 @@ participant to create, edit, or validate an AI profile.
 - [ ] Data Studio Region, Compartment, and Database Name match the reservation.
 - [ ] Before release, validate that PEAKGEAR_USER can run the read-only
   V$PDBS cloud-identity lookup. Lab 3 Task 1 obtains ADP_URL before
-  01-setup-peakgear-mcp.command; participants do not switch to ADMIN.
+  the OS-specific 01 setup script; participants do not switch to ADMIN.
 - [ ] `PEAKGEAR_USER` can sign in using Environment Details → Database Password,
   not the OCI Login Credentials password or a sample password.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
+- [ ] The catalog form explicitly selects both credentials before Add; expanding
+  the connected catalog exposes tables without a mandatory extra refresh.
+- [ ] Save separate, named live-source-check and local-snapshot worksheets.
+  Explain live federation versus optional local copies for performance/enrichment.
 - [ ] `PRODUCTS` and `DIGITAL_CLICKSTREAM_EVENTS` return real rows.
 - [ ] Lab 2 reads up to five rows from each remote source before local raw-table
   creation; no full source count or data-caching exercise is present. Table
@@ -51,6 +64,10 @@ participant to create, edit, or validate an AI profile.
 - [ ] Lab 4 saves reviewed descriptions and tags for all three raw tables,
   including the product-name and join-key column definitions; the metadata is
   visible in Catalog.
+- [ ] Useful generated descriptions/tags remain. Only incorrect or missing
+  business rules are edited; arbitrary tag-name equality or 28 annotation rows
+  are not pass criteria. Verify the simple ranking and AV workflow with these
+  minimally edited annotations, including repeated event PRODUCT_ID values.
 - [ ] Lab 5 reuses the Lab 4 annotations without repeating AI Enrichment.
 - [ ] Lab 5 contains the harder question, model requirements, AV creation,
   and final governed answer in order; there is no separate Lab 6.

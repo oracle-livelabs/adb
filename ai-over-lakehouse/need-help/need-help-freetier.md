@@ -22,16 +22,16 @@ current reservation:
 |---|---|---|
 | OCI Console, using Launch OCI | Username and Password | Login Credentials |
 | Data Studio database connection | Database User and Database Password | Environment Details |
-| Starter Kit setup in Terminal | Database Password for PEAKGEAR&#95;USER | Environment Details |
+| Starter Kit setup in Terminal or PowerShell | Database Password for PEAKGEAR&#95;USER | Environment Details |
 
 For the Starter Kit's **Lab Data Studio URL** prompt, use the **ADP&#95;URL**
 returned by the SQL in **Lab 3 → Task 1 → step 1**.
 
 The reservation supplies the database account and password. Copy its
 **Database Password** for Data Studio and MCP setup; the OCI Login Credentials
-password, your Mac password, and passwords shown in example screenshots are
+password, your laptop password, and passwords shown in example screenshots are
 for different purposes. Nothing appears when you paste the database password
-into the Terminal prompt; press **Return** after pasting it.
+into the local shell prompt; press **Return** on Mac or **Enter** on Windows.
 
 If the supplied database credentials are rejected, check that you selected
 the current reservation's database and copied **Database Password**. Retain
@@ -45,7 +45,46 @@ that the Codex task is connected. Open the configured **peakgear-livelab**
 project, create a new task there, and complete **Lab 3 → Task 2**. Continue
 only when the connection check reports the current reservation's URL,
 PEAKGEAR&#95;USER, and **session&#95;ready = true**. Use the recovery instructions
-in that task if the check fails.
+below if the check fails.
+
+### Restart the local MCP process
+
+On macOS, open Terminal on your laptop and run:
+
+~~~sh
+<copy>
+zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
+</copy>
+~~~
+
+Choose **1 — Start LiveLab cleanly — stop PeakGear LiveLab only**.
+
+On Windows, open Windows PowerShell on your laptop and run:
+
+~~~powershell
+<copy>
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\peakgear-livelab\02-peakgear-livelab-admin.ps1" -Action Restart
+</copy>
+~~~
+
+Open the configured local project and create a new Codex task. The restart
+refreshes PeakGear MCP only; it does not remove database tables, annotations,
+or other MCP servers. For Windows status or stop, use **-Action Status** or
+**-Action Stop** in the same command.
+
+If setup reports that password storage failed, retain the error and ask the
+instructor to check the OS credential store. If Windows reports that scripts
+are blocked by organizational policy, ask the organizer to provide an approved
+installation path rather than disabling that policy.
+
+### AI Enrichment errors
+
+If AI Enrichment reports invalid or missing column tags, retain the exact
+message and selected table name for the instructor. The instructor verifies
+the provisioned AI profile; restarting local MCP does not repair enrichment.
+Keep the dialog's existing data until the error is understood. After a save
+timeout or connection error, check Catalog for your edits before retrying:
+some annotations may already have been saved.
 
 ## How to Format Your Support Email Request
 

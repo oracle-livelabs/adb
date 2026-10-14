@@ -12,15 +12,18 @@ PeakGear connects two live systems:
   public database link already provisioned for your LiveLabs reservation.
 
 You will connect Databricks through the Data Studio UI, verify both live
-sources, and create three participant-owned local tables. The tables are
-workshop snapshots so later queries do not repeatedly scan remote sources.
+sources, and create three participant-owned local tables. The first SQL checks
+query data live where it already resides. You can continue querying those
+connected sources without copying them. For the remaining exercises, we take
+local snapshots so analysis is faster and Data Studio can enrich metadata on
+the local tables. These copies do not refresh automatically.
 
 ### Objectives
 
 In this lab, you will:
 
 * create the Azure storage and Databricks OAuth credentials in Data Studio;
-* mount the Databricks Unity Iceberg catalog;
+* connect the Databricks Unity Iceberg catalog;
 * prove access to the two connected sources; and
 * create the three raw business objects used by Codex.
 
@@ -33,12 +36,8 @@ no separate handout is needed. The complete reference is
 
 ![In Database Settings, select Credentials and click Create credential.](images/azure-credential-start.png)
 
-| Credential | Purpose | Value type |
-|---|---|---|
-| ADLS&#95;PEAKGEAR&#95;DATA | Read Iceberg files in Azure Blob Storage | Event Azure storage password |
-| DBX&#95;PEAKGEAR&#95;OAUTH | Obtain renewable Unity Catalog access tokens | Databricks OAuth client |
-
-Click **Create credential** and enter:
+Click **Create credential**. This credential lets AI Lakehouse read the
+Iceberg files in Azure Blob Storage. Enter the values below in field order:
 
 | Field | Value |
 |---|---|
@@ -46,29 +45,14 @@ Click **Create credential** and enter:
 | Description | Credential to access data in Azure Storage |
 | Credential type | Azure |
 | Username | livelab |
+| Password | tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q== |
 
-Copy this into **Password**:
-
-~~~text
-<copy>
-tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q==
-</copy>
-~~~
-
-Save the credential. Keep the name exactly. Both source credentials must be
-owned by PEAKGEAR&#95;USER, not `ADMIN`. Create the OAuth credential in Task 2.
+Save the credential. Confirm that ADLS&#95;PEAKGEAR&#95;DATA appears in
+**Credentials** for the connected participant database. Task 1 is complete.
 
 ![Create the ADLS&#95;PEAKGEAR&#95;DATA Azure credential. The password field is masked.](images/create-azure-storage-credential.png)
 
-Storage path for this event:
-
-~~~text
-<copy>
-https://livelab.blob.core.windows.net/digital-demand/peakgear-managed/
-</copy>
-~~~
-
-## Task 2: Mount the Databricks Unity Catalog
+## Task 2: Connect the Databricks Unity Catalog
 
 In **Catalog**, click **Add**, then choose **Iceberg catalog**.
 
@@ -80,17 +64,9 @@ Enter:
 |---|---|
 | Catalog name | DBX&#95;UNITY&#95;PEAKGEAR |
 | Iceberg catalog type | Unity |
-| Iceberg catalog credentials | DBX&#95;PEAKGEAR&#95;OAUTH |
+| Iceberg catalog endpoint | https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear |
+| Iceberg catalog credentials | Create/select DBX&#95;PEAKGEAR&#95;OAUTH as described below |
 | Bucket credentials | ADLS&#95;PEAKGEAR&#95;DATA |
-| Catalog endpoint | Copy the endpoint below |
-
-Copy this into **Iceberg catalog endpoint**:
-
-~~~text
-<copy>
-https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear
-</copy>
-~~~
 
 ![Enter DBX&#95;UNITY&#95;PEAKGEAR, select Unity, paste the event endpoint, and select the Azure bucket credential.](images/mount-iceberg-catalog.png)
 
@@ -102,52 +78,32 @@ create the OAuth credential with these values:
 | Credential Name | DBX&#95;PEAKGEAR&#95;OAUTH |
 | Description | Credential to authenticate into Unity |
 | Credential type | Iceberg OAuth2 |
+| Token endpoint | https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token |
+| Client ID | 5c47dc63-f693-4820-a40b-4b08c3709f34 |
+| Client secret | dose7b979ac313c1063af5d4cdf09b1ee8fb |
 | Token scope | all-apis |
 | Token refresh rate in seconds | 3600 |
 
-**Token endpoint**:
-
-~~~text
-<copy>
-https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token
-</copy>
-~~~
-
-**Client ID**:
-
-~~~text
-<copy>
-5c47dc63-f693-4820-a40b-4b08c3709f34
-</copy>
-~~~
-
-**Client secret**:
-
-~~~text
-<copy>
-dose7b979ac313c1063af5d4cdf09b1ee8fb
-</copy>
-~~~
-
 ![Create DBX&#95;PEAKGEAR&#95;OAUTH with the event token endpoint and client ID. The UI masks the client secret; its copy-ready value is above.](images/create-iceberg-catalog-credential.png)
 
-Return to the catalog form, select DBX&#95;PEAKGEAR&#95;OAUTH, save the mount, and
-refresh its catalog metadata. The catalog must expose the `ICEBERG` schema with
-`PRODUCTS` and DIGITAL&#95;CLICKSTREAM&#95;EVENTS.
+After saving the credential, return to the catalog form. Select
+DBX&#95;PEAKGEAR&#95;OAUTH in **Iceberg catalog credentials**, then select
+ADLS&#95;PEAKGEAR&#95;DATA in **Bucket credentials**. Click **Add**.
+Expand **Locally Mounted Catalogs > DBX&#95;UNITY&#95;PEAKGEAR > ICEBERG > Tables**.
+You should see **PRODUCTS** and **DIGITAL&#95;CLICKSTREAM&#95;EVENTS**. Use the
+catalog's **Refresh** button only if the new connection or tables are not yet visible.
 
 ![The successful DBX&#95;UNITY&#95;PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
 
-The UI is the normal workshop path. For a SQL-only dry run of Tasks 1 and 2,
-use [01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
-It uses the owner-confirmed working mount calls and event values. Run it as
-PEAKGEAR&#95;USER, only for missing credentials or a missing catalog; do not
-recreate a mount that already works. The required host ACL is already
-provisioned for PEAKGEAR&#95;USER. If access is denied, ask the instructor;
-participants must not grant ACLs or switch to ADMIN.
+Optional SQL alternative: if you have not completed Tasks 1 and 2 in the UI,
+open **SQL Worksheet** in the participant database and run the blocks in
+[01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql) separately,
+in order. Use either the UI or SQL path for these objects, not both.
 
 ## Task 3: Prove the two live sources
 
-Open SQL Worksheet as PEAKGEAR&#95;USER. Copy and run **each block separately**;
+Open SQL Worksheet as PEAKGEAR&#95;USER and save a worksheet named
+**PeakGear - Live source checks**. Copy and run **each block separately**;
 Run SQL executes the current statement, not every statement in a pasted script.
 
 ~~~sql
@@ -180,7 +136,8 @@ should contain data; if a query returns no rows or an error, ask the instructor
 to check the source before continuing. A sample does not prove product-key
 uniqueness; that check runs against the local product table before analytics.
 
-On a new reservation, create the three raw, participant-owned tables by running
+Create and save a second worksheet named **PeakGear - Local snapshots**.
+Create the three raw, participant-owned tables by running
 **each block separately**. Each `CREATE TABLE AS SELECT` can take time while it
 copies source rows. Wait for the worksheet to report completion before starting
 the next block. If you are resuming on the same database and a table already

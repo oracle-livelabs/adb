@@ -21,7 +21,10 @@ In this lab, you will:
 ### Prerequisites
 
 * Labs 1 and 2 are complete.
-* Codex Desktop is installed and signed in.
+* Codex is installed, signed in, and can create a local task. Complete the
+  installation and account check with the event organizer before the workshop.
+* Use your own laptop: macOS with Terminal or Windows with Windows PowerShell.
+  The Starter Kit configures a local MCP process; no cloud Linux terminal is needed.
 * Data Studio SQL Worksheet is connected to your reservation as
   PEAKGEAR&#95;USER. Keep LiveLabs **Environment Details** open for the Database
   Password.
@@ -48,7 +51,10 @@ In this lab, you will:
     </copy>
     ~~~
 
-    Copy the HTTPS value returned as **ADP&#95;URL**. This is the base URL for
+    Copy the HTTPS value returned as **ADP&#95;URL** and keep it ready: paste it
+    into **Lab Data Studio URL** when the setup script asks in step 6 of your
+    operating-system path below. You do not need to open this URL in a browser.
+    This is the base URL for
     your assigned AI Lakehouse database. Run it in **Data Studio**, not Terminal,
     and keep Data Studio connected to your reserved database. The reservation
     must permit this read-only lookup for PEAKGEAR&#95;USER. If it reports an
@@ -58,12 +64,18 @@ In this lab, you will:
 2. **Download the Starter Kit.** Click
     [**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip).
     Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP;
-    you will unpack it in Terminal. If the browser adds `(1)` or another suffix,
+    you will unpack it on your laptop. If the browser adds `(1)` or another suffix,
     rename the downloaded file to the exact name above before continuing.
-    There is only one Starter Kit.
+    There is only one Starter Kit, containing macOS and Windows versions.
 
-3. **Open Terminal.** Press **Command-Space**, type **Terminal**, and press
-    **Return**. Keep this Terminal window open for the following steps.
+    Continue with **one** of the two paths below, using your laptop's operating
+    system. Both paths configure the same LiveLab Python server and database user.
+
+### macOS: Terminal
+
+3. **Open Terminal on your Mac.** In Finder, choose **Applications > Utilities
+    > Terminal**. Alternatively, hold Command and press Space to open Spotlight,
+    type **Terminal**, then press Return. Keep this local window open.
 
 4. **Unpack the ZIP and prepare the project folder.** Copy this entire block
     into Terminal using **Copy**, then press **Return**:
@@ -91,7 +103,7 @@ In this lab, you will:
     ~~~
 
     Wait while setup installs the required packages. Do not run extra install
-    commands. Setup does not require your Mac administrator password.
+    commands. The package installation is user-scoped.
 
 6. **Answer the setup prompts in order.**
 
@@ -120,18 +132,75 @@ In this lab, you will:
     automatically for that new task. Continue with Task 2 in that task; do not
     reuse a task from another project or an older task.
 
+### Windows: Windows PowerShell
+
+3. **Open Windows PowerShell on your laptop.** Open the Windows **Start** menu,
+    type **Windows PowerShell**, and open it normally, not **Run as administrator**.
+    Windows Terminal is also suitable if its selected tab is PowerShell, not
+    Command Prompt. Keep this local window open; WSL is not needed.
+
+4. **Unpack the ZIP.** Copy this entire block into PowerShell and press Enter:
+
+    ~~~powershell
+    <copy>
+    Set-Location (Join-Path $env:USERPROFILE 'Downloads')
+    $PeakGearKitDir = Join-Path ([IO.Path]::GetTempPath()) ('peakgear-starter-' + [guid]::NewGuid())
+    Expand-Archive -LiteralPath '.\peakgear-livelab-starter-kit.zip' -DestinationPath $PeakGearKitDir
+    Set-Location (Join-Path $PeakGearKitDir 'starter-kit')
+    </copy>
+    ~~~
+
+    This creates a fresh extraction without changing previous downloads. If
+    your Downloads folder is redirected, first open the folder containing the
+    ZIP in File Explorer and select **Open in Terminal** with a PowerShell tab,
+    then run the last three lines of the block.
+
+5. **Run the Windows setup script** in the same PowerShell window:
+
+    ~~~powershell
+    <copy>
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\01-setup-peakgear-mcp.ps1
+    </copy>
+    ~~~
+
+    Wait for package installation to finish. This command applies the script
+    policy only to this child process; it does not change machine or user policy.
+    If your organization blocks script execution or downloads, contact the
+    instructor rather than changing organizational security settings.
+
+6. **Answer the prompts in order.**
+
+    | Prompt | What to do |
+    |---|---|
+    | Lab Data Studio URL | Paste the ADP&#95;URL result from step 1, then press Enter. |
+    | Password for PEAKGEAR&#95;USER | Paste Database Password from your reservation's Environment Details. Input is hidden; press Enter. |
+    | Codex project folder | Press Enter to create/use peakgear-livelab in your Windows Documents folder, or enter an existing local project folder. |
+    | Success | Note the complete project path printed by setup. |
+
+7. **Open that project in Codex.** Open the installed desktop client from the
+    Start menu. Add/open the local project folder printed by setup, select it,
+    and accept the project trust prompt if shown. Use a local project, not a
+    cloud task; local MCP starts from that project's configuration.
+
+8. **Create a new task in that project.** Continue with Task 2 below in this
+    task and keep it open through Labs 4–5.
+
 **Setup checkpoint:** entering the credentials and seeing setup succeed are
 not yet proof that your Codex task is connected. Task 2 checks the active
 connection silently before the business question. Keep this new task open for
 Labs 4–5.
 
-The setup stores the connection password in the local macOS Keychain. It does
+The setup verifies that the connection password was saved in macOS Keychain
+or Windows Credential Manager before reporting Success. It does
 not write that password or source tokens into the generated project
 configuration. The event values are intentionally documented in the workshop.
 
 > Keep the whole extracted `starter-kit` folder. Both numbered scripts and the
 > supporting files belong to the same kit. You do not need to edit TOML or
-> install Python or uv manually.
+> install Python or the package runner manually.
+
+For restart instructions and setup errors, see **Need Help?**. A restart
+refreshes the local MCP process; it does not reset database tables or annotations.
 
 ## Task 2: Establish the MCP boundary
 

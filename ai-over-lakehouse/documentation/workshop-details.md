@@ -9,14 +9,13 @@ discussion buffer.
 
 ## Short Description
 
-Connect Oracle Operations data and Databricks Unity/Iceberg data to Oracle AI
-Lakehouse. Use Data Studio to add reviewed business context, then use Codex
-through Oracle Data Studio MCP to create a governed Analytic View and answer a
-cross-source business question.
+Use Oracle Autonomous AI Lakehouse as an AI-powered query hub for enterprise
+data across Databricks and Oracle. Add business context with Data Studio, then
+use Codex through MCP to answer a cross-source business question reliably.
 
 ## Long Description
 
-PeakGear has product and digital interaction data in Databricks, operational
+PeakGear is a fictional sporting goods retailer with product and digital interaction data in Databricks, operational
 returns in an existing Oracle database, and business users who want a simple
 answer: which product categories should be prioritized? Raw connectivity alone
 does not define what customer interest means or how it should be compared with
@@ -64,7 +63,17 @@ final question in the same lab.
   `ICEBERG.DIGITAL_CLICKSTREAM_EVENTS`.
 * A default AI profile already configured for the assigned database. It must
   allow Data Studio AI Enrichment; participants do not create the profile.
-* A Mac with Terminal, and Codex Desktop installed and signed in.
+* A macOS laptop with Terminal or a Windows laptop with Windows PowerShell
+  5.1 or later. Lab 3 includes separate setup instructions for both platforms.
+* Codex installed, signed in, and able to create a local task. Event organizers
+  must arrange a supported desktop client and account access before the event;
+  a LiveLabs reservation does not supply a Codex account. Confirm that managed
+  laptops permit the user-scoped package installation and project-scoped MCP.
+  See the [official desktop setup](https://learn.chatgpt.com/docs/app) and
+  [Windows guidance](https://learn.chatgpt.com/docs/windows/windows-sandbox).
+* No prior experience with Analytic Views, Iceberg, Python, or manual MCP
+  configuration is required. The Starter Kit installs its own package runner
+  and Python runtime; learners do not install these tools manually.
 
 ## Learning Outcomes
 

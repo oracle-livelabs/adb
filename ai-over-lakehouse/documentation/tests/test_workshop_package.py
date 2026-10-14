@@ -216,6 +216,39 @@ class WorkshopPackageTests(unittest.TestCase):
         )
         self.assertNotRegex(text, r"<a\s+href=")
 
+    def test_mac_and_windows_setup_are_in_the_same_kit(self):
+        source = ROOT / 'starter-kit'
+        for name in ('01-setup-peakgear-mcp.command', '01-setup-peakgear-mcp.ps1',
+                     '02-peakgear-livelab-admin.command', '02-peakgear-livelab-admin.ps1',
+                     'livelab_setup.py', 'livelab_mcp.py'):
+            with self.subTest(file=name):
+                self.assertTrue((source / name).is_file())
+        instructions = (ROOT / 'connect-codex/connect-codex.md').read_text()
+        self.assertIn('### macOS: Terminal', instructions)
+        self.assertIn('### Windows: Windows PowerShell', instructions)
+        self.assertIn('step 6 of your', instructions)
+        self.assertIn('Windows Credential Manager', instructions)
+        self.assertIn('01-setup-peakgear-mcp.ps1', instructions)
+        self.assertIn('Expand-Archive', instructions)
+
+    def test_enrichment_preserves_useful_generated_metadata(self):
+        text = (ROOT / 'ai-enrichment/ai-enrichment.md').read_text()
+        self.assertIn('## Task 2: Add the business context', text)
+        self.assertIn('Keep descriptions and tags that correctly explain', text)
+        self.assertIn('Exact wording and exact tag names are not required', text)
+        self.assertNotIn('28 rows in total', text)
+        self.assertNotIn('Replace the AI-suggested tag chips', text)
+        self.assertNotIn('business contract', text)
+
+    def test_source_connection_finishes_with_both_credentials_and_add(self):
+        text = (ROOT / 'connect-sources/connect-sources.md').read_text()
+        self.assertIn('## Task 2: Connect the Databricks Unity Catalog', text)
+        self.assertIn('**Bucket credentials**. Click **Add**', text)
+        self.assertIn('**PeakGear - Live source checks**', text)
+        self.assertIn('**PeakGear - Local snapshots**', text)
+        self.assertIn('query data live where it already resides', text)
+        self.assertNotIn('owner-confirmed working mount calls', text)
+
     def test_local_links_resolve_and_images_have_alt_text(self):
         link = re.compile(r"(!?)\[([^\]]*)\]\(([^\s)]+)\)")
         for _, path in learner_pages():
