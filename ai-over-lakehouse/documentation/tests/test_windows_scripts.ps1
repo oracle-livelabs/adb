@@ -46,3 +46,6 @@ Invoke-LiveLabAction 'Status'
 if ($script:Stopped -ne 2 -or $script:Refreshed -ne 2 -or $script:Shown -ne 1) { throw 'Management actions routed incorrectly.' }
 Write-Output 'PASS restart, stop, refresh, and status route correctly'
 Write-Output 'No setup scripts, OS credential operations, or process cleanup were executed.'
+# The deliberately failed native command above is an assertion, not the test
+# result. Do not let its LASTEXITCODE make the GitHub PowerShell step fail.
+exit 0
