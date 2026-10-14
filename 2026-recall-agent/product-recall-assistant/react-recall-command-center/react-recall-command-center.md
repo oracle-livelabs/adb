@@ -56,11 +56,9 @@ Kevin needs the application to call approved packages, not internal tables. Davi
 
 ## Task 2: Download the Application Package
 
-Download the packaged React application and extract it on your workstation. 
+    Download the packaged React application and extract it on your workstation. 
 
-  **macOS/Linux:**
-
-1. Download and extract the application package. Use the commands for your operating system.
+    **macOS/Linux:**
 
     ```bash
     <copy>
