@@ -45,6 +45,27 @@ Invoke-LiveLabAction 'Refresh'
 Invoke-LiveLabAction 'Status'
 if ($script:Stopped -ne 2 -or $script:Refreshed -ne 2 -or $script:Shown -ne 1) { throw 'Management actions routed incorrectly.' }
 Write-Output 'PASS restart, stop, refresh, and status route correctly'
+
+# Exercise the real cleanup function with mocked process operations only.
+$StopFunction = $Parsed['02-peakgear-livelab-admin.ps1'].Find({ param($Node) $Node -is [Management.Automation.Language.FunctionDefinitionAst] -and $Node.Name -eq 'Stop-LiveLab' }, $true)
+. ([scriptblock]::Create($StopFunction.Extent.Text))
+function Get-LiveLabProcesses { @([pscustomobject]@{ ProcessId = 111 }, [pscustomobject]@{ ProcessId = 222 }) }
+function Stop-Process {
+    param([int]$Id, [string]$ErrorAction)
+    if ($Id -eq 111) { throw 'synthetic process already exited or access denied' }
+}
+function Get-Process {
+    param([int]$Id, [string]$ErrorAction)
+    if ($script:StillAlive) { [pscustomobject]@{ Id = $Id } }
+}
+$script:StillAlive = $false
+Stop-LiveLab
+Write-Output 'PASS already-exited launcher PID does not abort cleanup'
+$script:StillAlive = $true
+$DeniedAsExpected = $false
+try { Stop-LiveLab } catch { $DeniedAsExpected = $true }
+if (-not $DeniedAsExpected) { throw 'Cleanup must not hide an error when the target PID is still alive.' }
+Write-Output 'PASS cleanup propagates failures for still-running processes'
 Write-Output 'No setup scripts, OS credential operations, or process cleanup were executed.'
 # The deliberately failed native command above is an assertion, not the test
 # result. Do not let its LASTEXITCODE make the GitHub PowerShell step fail.
