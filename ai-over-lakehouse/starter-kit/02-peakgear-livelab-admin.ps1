@@ -18,13 +18,19 @@ function Get-LiveLabProcesses {
 
 function Stop-LiveLab {
     $Sessions = @(Get-LiveLabProcesses)
-    foreach ($Session in $Sessions) { Stop-Process -Id $Session.ProcessId -ErrorAction Stop }
-    Write-Host "Stopped $($Sessions.Count) PeakGear LiveLab session(s). Other MCP servers and database data are unchanged."
+    foreach ($Session in $Sessions) {
+        # A Windows venv has a launcher and child Python process. One may exit
+        # while the other is being stopped; an already-exited PID is success.
+        try { Stop-Process -Id $Session.ProcessId -ErrorAction Stop } catch {
+            if (Get-Process -Id $Session.ProcessId -ErrorAction SilentlyContinue) { throw }
+        }
+    }
+    Write-Host "PeakGear cleanup complete ($($Sessions.Count) matched process(es)). Other MCP servers and database data are unchanged."
 }
 
 function Show-LiveLabStatus {
     Write-Host "Configured project: $ProjectPath"
-    Write-Host "PeakGear LiveLab sessions: $(@(Get-LiveLabProcesses).Count)"
+    Write-Host "PeakGear LiveLab processes: $(@(Get-LiveLabProcesses).Count)"
     Write-Host 'A new Codex task starts the configured stdio server automatically.'
 }
 
