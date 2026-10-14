@@ -13,7 +13,7 @@ Estimated Time: 45 minutes
 
 ## Prepare the database
 
-As `ADMIN`, grant `EXECUTE ON DBMS_CLOUD_AI_AGENT` to `RECALL_OWNER`. Then connect directly as `RECALL_OWNER` and run the v8 setup block in the Lab 8 guide. It downloads the combined application and campaign script from Object Storage and installs objects and AI teams under the authenticated owner.
+The Terraform SQL loader grants `EXECUTE` on `DBMS_CLOUD_AI_AGENT` and `DBMS_CLOUD_REPO` to `RECALL_OWNER`. Connect directly as `RECALL_OWNER` and run the v8 setup block in the Lab 8 guide. It downloads the combined application and campaign script from Object Storage and installs objects and AI teams under the authenticated owner.
 
 The script creates the invoker-rights application and campaign APIs and the owner-owned definer-rights bridges used for approved graph, vector, Spatial, JSON, and Select AI Agent operations. `RECALL_REACT_API.ASK_AGENT` assembles one role-filtered evidence document before the agent runs. The campaign API uses the active database identity for its audience and requires a recall lead to authorize contact and approve the campaign.
 

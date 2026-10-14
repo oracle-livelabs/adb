@@ -1,5 +1,6 @@
 -- Product Recall Assistant - Lab 8 application and governed response setup v8
--- Install as RECALL_OWNER. ADMIN grants this schema EXECUTE on DBMS_CLOUD_AI_AGENT first.
+-- Install as RECALL_OWNER. The Terraform baseline grants EXECUTE on DBMS_CLOUD_AI_AGENT
+-- and DBMS_CLOUD_REPO to this schema before the Lab 8 installation.
 
 begin
     if sys_context('USERENV', 'SESSION_USER') != 'RECALL_OWNER'
@@ -2069,7 +2070,7 @@ begin
     select count(*)
     into   l_enabled_team_count
     from   user_ai_agent_teams
-    where  team_name in ('RECALL_SECURED_TEAM', 'RECALL_CAMPAIGN_TEAM')
+    where  agent_team_name in ('RECALL_SECURED_TEAM', 'RECALL_CAMPAIGN_TEAM')
     and    status = 'ENABLED';
 
     if l_enabled_team_count <> 2 then

@@ -17,7 +17,7 @@ Estimated Time: 45 minutes
 
 ## Task 1: Prepare the Database Bridge
 
-1. Sign in to SQL Developer Web as `ADMIN` and grant `EXECUTE ON DBMS_CLOUD_AI_AGENT` to `RECALL_OWNER`. Then connect directly as `RECALL_OWNER` and run the Lab 8 installation block. It rejects a hosted script without the v8 marker and calls `DBMS_CLOUD_REPO.INSTALL_SQL` while the authenticated schema is `RECALL_OWNER`.
+1. The Terraform SQL loader grants `EXECUTE` on `DBMS_CLOUD_AI_AGENT` and `DBMS_CLOUD_REPO` to `RECALL_OWNER`. Connect directly as `RECALL_OWNER` and run the Lab 8 installation block. It rejects a hosted script without the v8 marker and calls `DBMS_CLOUD_REPO.INSTALL_SQL` while the authenticated schema is `RECALL_OWNER`.
 
 2. Confirm `RECALL_AGENT_BRIDGE`, `RECALL_REACT_API`, `RECALL_CAMPAIGN_BRIDGE`, and `RECALL_CAMPAIGN_API` are `VALID`.
 

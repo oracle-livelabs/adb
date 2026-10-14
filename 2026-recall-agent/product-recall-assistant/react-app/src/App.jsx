@@ -179,7 +179,7 @@ function Login({ onLogin }) {
               {personas.map((persona) => <option key={persona.value} value={persona.value}>{persona.label} · {persona.hint}</option>)}
             </select>
             <label htmlFor="password">Lab password</label>
-            <input id="password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter the shared Lab 7 password" autoComplete="current-password" />
+            <input id="password" type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter password" autoComplete="current-password" />
             {error && <div className="error-message"><CircleAlert size={16} /> {error}</div>}
             <button className="primary-button full-width" type="submit" disabled={busy}>
               {busy ? 'Opening secure session...' : 'Open command center'} <ArrowUpRight size={17} />

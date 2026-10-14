@@ -99,6 +99,7 @@ begin
                    'DBMS_CLOUD_ADMIN',
                    'DBMS_CLOUD_AI',
                    'DBMS_CLOUD_AI_AGENT',
+                   'DBMS_CLOUD_REPO',
                    'DBMS_VECTOR',
                    'ORDS_ADMIN'
                ))
@@ -397,6 +398,7 @@ grant administer any data grant to recall_owner;
 grant update any end user context to recall_owner;
 grant execute on dbms_cloud_ai to recall_owner;
 grant execute on dbms_cloud_ai_agent to recall_owner;
+grant execute on dbms_cloud_repo to recall_owner;
 grant execute on dbms_vector to recall_owner;
 grant execute on dbms_cloud to recall_owner;
 grant create credential to recall_owner;

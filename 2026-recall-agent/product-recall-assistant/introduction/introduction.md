@@ -41,7 +41,7 @@ David maps Kevin's questions to one connected design:
 | One usable experience | Assemble authorized evidence in an application | React/Node and database-session security |
 | A governed customer response | Draft a reusable notice, then require explicit approval | Select AI Agent, approved packages, and audit records |
 
-![Product Recall Assistant architecture showing Oracle AI Database 26ai with relational, JSON, Spatial, SQL Property Graph, AI Vector Search, PL/SQL, Deep Data Security, Select AI Agent, ORDS, and a React/Node command center](images/product-recall-assistant-architecture.svg)
+![Product Recall Assistant architecture showing Oracle AI Database 26ai with relational, JSON, Spatial, SQL Property Graph, AI Vector Search, PL/SQL, Deep Data Security, Select AI Agent, ORDS, and a React/Node command center](images/2026-10-14-005223.png)
 
 Tim keeps the technical boundary explicit. `ADMIN` creates accounts and platform grants. `RECALL_OWNER` owns application objects. `RECALL_APP_USER` calls approved interfaces instead of tables. Deep Data Security later limits store, regional, and recall-lead sessions. The final agent receives only the already-authorized JSON, vector, spatial, and graph evidence.
 
@@ -109,5 +109,5 @@ When using **Need Help?**, include **Product Recall Assistant: Automate Secure R
 ## Acknowledgements
 
 - **Author:** Tim Cline, Product Management Architect
-- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Contributors**: David Start, Director and Kevin Lazarz, Senior Manager
 - **Last updated:** October 2026

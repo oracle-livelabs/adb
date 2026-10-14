@@ -26,5 +26,5 @@ Database Actions (SQL Developer Web) is suitable for individual lab SQL, but thi
 ## Acknowledgements
 
 - **Author:** Tim Cline, Product Management Architect
-- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Contributors**: David Start, Director and Kevin Lazarz, Senior Manager
 - **Last updated:** October 2026
