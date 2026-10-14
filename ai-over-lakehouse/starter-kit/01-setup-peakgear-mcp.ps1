@@ -54,7 +54,8 @@ try {
         if (-not (Test-Path -LiteralPath (Join-Path $PSScriptRoot $Name))) { throw "Starter Kit file missing: $Name. Download the current ZIP." }
     }
     $DatabaseUrl = (Read-Host 'Lab Data Studio URL (ADP_URL from Lab 3)').Trim()
-    if ($DatabaseUrl -notmatch '^https://[^/\s]+\.oraclecloudapps\.com/?$') {
+    $DatabaseUrlPattern = '^https://' + '[^/\s]+\.oraclecloudapps\.com/?$'
+    if ($DatabaseUrl -notmatch $DatabaseUrlPattern) {
         throw 'Use the HTTPS database-specific ADP_URL, not the browser preview or Data Studio home page.'
     }
     Write-Host 'Paste Database Password from LiveLabs Environment Details when prompted.'

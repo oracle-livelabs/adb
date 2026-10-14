@@ -74,7 +74,8 @@ def verify_credentials() -> None:
     settings = load_config_file().get('adp', {})
     if settings.get('user') != 'PEAKGEAR_USER':
         raise ValueError('The configured database user is not PEAKGEAR_USER. Run setup again.')
-    if not re.fullmatch(r'https://[^/\s]+\.oraclecloudapps\.com/?', settings.get('url', '')):
+    database_url_pattern = r'https://' + r'[^/\s]+\.oraclecloudapps\.com/?'
+    if not re.fullmatch(database_url_pattern, settings.get('url', '')):
         raise ValueError('The configured database URL is invalid. Use the ADP_URL from Lab 3.')
     if not get_keyring_password('adp', 'PEAKGEAR_USER'):
         raise ValueError('The password was not saved in the OS credential store. Ask the instructor before continuing.')
