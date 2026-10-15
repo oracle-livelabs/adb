@@ -6,17 +6,20 @@ Kevin now sees the application he asked for: one place for the returns team to r
 
 David combines the earlier database components without weakening their limits. The signed-in database user drives Deep Data Security filtering. The application receives product JSON, similar complaints, location impact, and graph results already limited to that user. An owner-side bridge calls the assistant only after the authorized document is built.
 
-Tim prepares the React and Node database bridge and the governed response workflow, configures the application, and explores how the three roles use it. The application requests product details, authorized stores, graph paths, similar complaints, and assistant answers through approved packages. Its campaign workspace also lets a recall lead authorize contact, draft a reusable notice, and prepare auditable refund intents. Kevin gets one returns workflow rather than eight disconnected demonstrations.
+This lab installs mostly the application integration logic, connecting the React app to that foundation through approved packages and bridges; it also adds an governed campaign workflow. To keep this lab focused on configuring and using the app, it runs the prepared SQL instead of explaining every implementation statement. [Download and inspect `prepare-react-app.sql`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql) if you want the details; reading the script is optional.
+
+Tim then configures the application and explores how the three roles use it. The application requests product details, authorized stores, graph paths, similar complaints, and assistant answers through approved packages. Its campaign workspace also lets a recall lead authorize contact, draft a reusable notice, and prepare auditable refund intents. Kevin gets one returns workflow rather than eight disconnected demonstrations.
 
 By the end of the lab, Kevin can compare the Store 101, Northeast, and recall-lead views in one application. Each person receives a different authorized answer to the same B-482 question, based on JSON, Vector Search, Spatial, SQL Property Graph, and Select AI Agent results. The recall lead can also authorize a campaign, review a generic notice template, and approve refund intents for downstream processing. The application sends no messages and transfers no money.
 
-Estimated Time: 45 minutes
+![group](images/group.png)
 
+Estimated Time: 45 minutes
 ### Objectives
 
 In this lab, you will:
 
-- Prepare the database bridge for the React/Node application.
+- Prepare application integration for the React/Node application.
 - Configure and run the application against your Autonomous Database.
 - Sign in as all three Deep Data Security local users.
 - Compare role-filtered counts, maps, product evidence, and complaints.
@@ -24,29 +27,11 @@ In this lab, you will:
 - Explore the `RECALL_GRAPH` component and supplier trace plus DDS-filtered store and customer exposure paths in the Oracle Graph Visualization Library.
 - Ask the Select AI Agent questions through the secured database session.
 - Compare converged agent answers grounded in JSON, Vector, Spatial, and Graph evidence.
-- Explain how local database users map to a production IdM design.
-- Explore how the campaign API enforces contact authorization, role-filtered recipients, human approval, and refund-intent auditing.
-
-
-
-
 ## Task 1: Prepare the Database Connection for the Application
 
-Kevin needs the application to call approved packages, not internal tables. David separates user-session retrieval from the owner-side assistant call; Tim prepares the bridge.
+Kevin needs the application to call approved packages, not internal tables. David separates user-session retrieval from the owner-side assistant call; Tim prepares the application integration.
 
-The Terraform deployment prepares the workshop baseline, including `RECALL_OWNER`, the end-user accounts, the initial data, the Select AI profile, and Lab 7 support. Labs 1–7 add and verify the learner-facing spatial, graph, vector, and security work. The script in this task installs only the Lab 8 application and campaign objects; it does not seed or reset the workshop data. Do not rerun the full Terraform deployment to repair a Lab 8 install, because it resets the workshop database objects and data.
-
-1. As `ADMIN`, grant the agent framework to `RECALL_OWNER`.
-
-    ```sql
-    <copy>
-    grant execute on dbms_cloud_ai_agent to recall_owner;
-    </copy>
-    ```
-
-    Then connect directly as `RECALL_OWNER`. Do not change `CURRENT_SCHEMA` while connected as `ADMIN`: agent teams are registered to the authenticated owner, and changing the schema does not change the session user.
-
-2. As `RECALL_OWNER`, download and install the Lab 8 setup script. **Run Script** executes this PL/SQL block; the installer rejects an older hosted file before it creates any Lab 8 objects.
+1. As `RECALL_OWNER`, download and install the Lab 8 setup script. **Run Script** executes this PL/SQL block; the installer rejects an older hosted file before it creates any Lab 8 objects.
 
     ```sql
     <copy>
@@ -58,9 +43,6 @@ The Terraform deployment prepares the workshop baseline, including `RECALL_OWNER
             credential_name => null,
             object_uri => 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql'
         ));
-        if dbms_lob.instr(l_script, '-- Product Recall Assistant - Lab 8 application and governed response setup v8') != 1 then
-            raise_application_error(-20071, 'The hosted Lab 8 setup script is missing or outdated. Ask the workshop provider to publish v8.');
-        end if;
         dbms_cloud_repo.install_sql(
             content      => l_script,
             stop_on_error => true
@@ -70,83 +52,13 @@ The Terraform deployment prepares the workshop baseline, including `RECALL_OWNER
     </copy>
     ```
 
-    The script creates the application bridge and the governed response campaign in one install. For the command center, it creates `RECALL_REACT_API`, the shared `RECALL_GRAPH_API` property-graph boundary, the DDS-filtered downstream graph projection and secured store GeoJSON function, role-filtered Spatial impact and compact Graph evidence for the agent, and the owner-side question-answering bridge. It also creates `RECALL_SECURED_TEAM` with its converged question-answering instruction and grants the application role access to the approved packages.
-
-    For the campaign workspace, it creates a separate campaign policy, campaign/recipient/audit/refund-intent tables, `RECALL_CAMPAIGN_TEAM`, and the `RECALL_CAMPAIGN_API` and `RECALL_CAMPAIGN_BRIDGE` packages. Contact starts disabled. The API uses the signed-in database identity and Deep Data Security to determine which purchases can enter the audience. A recall lead must authorize contact and approve the draft. The campaign agent receives generic recall facts and placeholders; the application merges customer details only after the reusable template is returned. Approval records audit events and creates refund intents marked for downstream processing. No email or SMS is sent and no payment is made.
-
-    The bridge is intentionally split. The local user has `EXECUTE` on the approved `RECALL_REACT_API` package, not unrestricted access to `DBMS_CLOUD_AI_AGENT`. The package call runs as the local user long enough for DDS to materialize the authorized JSON, vector, Spatial, and Graph sections, then the definer-rights bridge calls `DBMS_CLOUD_AI_AGENT.RUN_TEAM` with that combined document. The registered responder agent carries the `RECALL_AGENT_PROFILE` binding, so the runtime does not call `DBMS_CLOUD_AI.SET_PROFILE` in the local user session.
-
-    The setup script grants `EXECUTE` on `RECALL_REACT_API` to `RECALL_END_USER_LOGIN`; do not run a separate grant for that package. The local user requests `RUN_TEAM` indirectly through `RECALL_REACT_API` and is never granted direct agent-framework access.
-
-3. As `ADMIN`, confirm that the application and campaign packages and bodies are present and valid under `RECALL_OWNER`.
-
-    ```sql
-    <copy>
-    select object_name,
-           object_type,
-           status
-    from   all_objects
-    where  owner = 'RECALL_OWNER'
-    and    object_name in (
-               'RECALL_AGENT_BRIDGE',
-               'RECALL_GRAPH_API',
-               'RECALL_REACT_API',
-               'RECALL_CAMPAIGN_API',
-               'RECALL_CAMPAIGN_BRIDGE',
-               'RECALL_VECTOR_BRIDGE'
-           )
-    order  by object_name, object_type;
-    </copy>
-    ```
-
-    Expect **12 rows**: a `PACKAGE` and `PACKAGE BODY` for each of the six names above, all `VALID`. A result containing only valid rows is insufficient if any package is missing. If fewer than 12 rows appear, note the missing packages and use **Need Help?** to resolve the setup issue before configuring the application. The React application uses `RECALL_REACT_API` for identity, product metadata, secured store GeoJSON, the DDS-filtered downstream graph projection, free-text vector searches, and agent questions. It uses `RECALL_GRAPH_API` for the shared component and supplier trace from `RECALL_GRAPH`, `RECALL_VECTOR_BRIDGE` for owner-side embedding inference only, and `RECALL_SECURE_API.GET_SECURED_CONTEXT` for role-filtered JSON evidence. The campaign uses `RECALL_CAMPAIGN_API` for persona-scoped status, authorization, drafting, personalization, and approval; `RECALL_CAMPAIGN_BRIDGE` owns the protected campaign operations.
-
-4. As `ADMIN`, confirm that the React package exposes the required functions under `RECALL_OWNER`. `USER_PROCEDURES` shows only the connected user's own packages, so use `ALL_PROCEDURES` here.
-
-    ```sql
-    <copy>
-    select procedure_name
-    from   all_procedures
-    where  owner = 'RECALL_OWNER'
-    and    object_name = 'RECALL_REACT_API'
-    order  by procedure_name;
-    </copy>
-    ```
-
-    Confirm `ASK_AGENT`, `CURRENT_IDENTITY`, `PRODUCT_CONTEXT`, `SEARCH_VECTOR_EVIDENCE`, `SECURED_GRAPH`, and `SECURED_STORES`. The separate graph package exposes `CONTEXT` for the shared supplier trace. If these are missing from `ALL_PROCEDURES`, recheck that `RECALL_REACT_API` and its package body are `VALID` in `ALL_OBJECTS` for `RECALL_OWNER`; do not continue to application configuration until the package is present and valid.
-
-5. As `ADMIN`, confirm that the campaign package exposes the functions the application calls.
-
-    ```sql
-    <copy>
-    select procedure_name
-    from   all_procedures
-    where  owner = 'RECALL_OWNER'
-    and    object_name = 'RECALL_CAMPAIGN_API'
-    order  by procedure_name;
-    </copy>
-    ```
-
-    Confirm `STATUS`, `AUTHORIZE_CONTACT`, `DRAFT_CAMPAIGN`, `CUSTOMER_OPTIONS`, `PERSONALIZE_CAMPAIGN`, and `APPROVE_CAMPAIGN`. The application calls `STATUS` when you open **Recall Campaign**. If a name is missing, the hosted setup script may be an older version; resolve the deployment before continuing.
-
-6. Reconnect as `RECALL_OWNER` and confirm both AI teams are registered and enabled for that owner.
-
-    ```sql
-    <copy>
-    select team_name, status
-    from   user_ai_agent_teams
-    where  team_name in ('RECALL_SECURED_TEAM', 'RECALL_CAMPAIGN_TEAM')
-    order  by team_name;
-    </copy>
-    ```
-
-    Expect two rows with status `ENABLED`. A valid package does not prove that its AI team is registered under the correct owner.
+    The script creates the application integration and the governed response campaign in one install. 
 
 ## Task 2: Download the Application Package
 
-Download the packaged React application from Object Storage and extract it on your workstation. The archive includes the production interface and the Node.js server.
+    Download the packaged React application and extract it on your workstation. 
 
-1. Download and extract the application package. Use the commands for your operating system.
+    **macOS/Linux:**
 
     ```bash
     <copy>
@@ -170,6 +82,8 @@ Download the packaged React application from Object Storage and extract it on yo
 
 Kevin needs a usable returns application. David keeps connection details outside the code; Tim configures the runtime.
 
+Use Node.js 20 or later. If `node --version` reports an older release, install a supported Node.js version before continuing. If you do not have Node.js installed, please check the  **Prerequisites: Install node** lab. 
+
 1. In the same terminal, enter the extracted application folder, install the dependencies, and create your local environment file.
 
     ```bash
@@ -181,8 +95,6 @@ Kevin needs a usable returns application. David keeps connection details outside
     </copy>
     ```
 
-    Use Node.js 20 or later. If `node --version` reports an older release, install a supported Node.js version before continuing.
-
     **Windows (PowerShell):**
 
     ```powershell
@@ -193,45 +105,35 @@ Kevin needs a usable returns application. David keeps connection details outside
     </copy>
     ```
 
-2. Get the database TLS connect string. The SQL Developer Web link opens a browser-based SQL tool; it is not the database connect string that the Node.js application needs.
+2. Use the SQL Developer Web URL in the **View Login Info** panel to derive the database TLS connect string. The URL has this form:
 
-    If you can open the OCI Console, go to **Oracle AI Database**, open the matching Autonomous Database, select **Database connection**, choose **TLS** under **TLS Authentication**, and copy the complete connection string for the service you will use. See Oracle's [instructions for obtaining a TLS connection string](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/connect-jdbc-thin-tls.html). A wallet is needed only if you choose a wallet-based connection or your reservation requires it.
+    `https://<DATABASE-ID>.adb.<REGION>.oraclecloudapps.com/ords/sql-developer`
 
-    If you only have the SQL Developer Web link and cannot access the OCI Console, ask your workshop provider for the complete database TLS connection string or wallet. In SQL Developer Web, an `ADMIN` can inspect the service used by that worksheet session with `select sys_context('USERENV', 'SERVICE_NAME') from dual;`; this confirms the service name but does not provide the TLS listener port. Do not guess the port or substitute the ORDS URL. TLS descriptors use the port configured for that database; Oracle examples may use 1521 or 1522.
+    Take the database ID from the part before `.adb.`. In the service name, replace the dash (`-`) that separates the ID prefix and database name with an underscore (`_`). Take the region from the part after `.adb.` and before `.oraclecloudapps.com`; keep the region's hyphens unchanged.
+
+    For example, from `https://G48D25C36182A4C-ATP240882.adb.eu-amsterdam-1.oraclecloudapps.com/ords/sql-developer`, use database ID `G48D25C36182A4C-ATP240882`, service-name ID `G48D25C36182A4C_ATP240882`, and region `eu-amsterdam-1`.
+
+    Replace `<REGION>` and `<DATABASE_ID_WITH_UNDERSCORE>` in this TLS connect descriptor. The database host is `adb.<REGION>.oraclecloud.com`; the SQL Developer Web hostname is only for browser access. Do not add quotes around the replacement values.
+
+    ```text
+    <copy>
+    (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.<REGION>.oraclecloud.com))(connect_data=(service_name=<DATABASE_ID_WITH_UNDERSCORE>_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+    </copy>
+    ```
 
 3. Edit `.env` and set the Autonomous Database connect string. Do not put a database password in `.env`; the password is entered into the sign-in form.
 
     ```text
     <copy>
-      # Paste the complete TLS connection string copied for this database and service.
+      # Paste the complete TLS connect descriptor you built in Task 3, Step 2.
       ORACLE_CONNECT_STRING=<paste-the-complete-TLS-connect-string-here>
       COOKIE_SECURE=false
     </copy>
     ```
 
-4. Review the application flow:
-
-    ```text
-    Browser persona login
-        -> Node opens a database session as the selected local end user
-        -> Oracle establishes ORA_END_USER_CONTEXT and the assigned data role
-        -> RECALL_REACT_API returns role-filtered product and map data
-        -> RECALL_GRAPH_API returns shared `RECALL_GRAPH` component/vendor trace
-        -> RECALL_REACT_API returns DDS-filtered store/customer graph paths
-        -> RECALL_SECURE_API returns role-filtered JSON and default vector evidence
-        -> RECALL_REACT_API computes role-filtered spatial impact and graph evidence
-        -> RECALL_REACT_API embeds free-text searches and ranks only visible complaint vectors
-        -> RECALL_REACT_API.ASK_AGENT calls the owner-owned definer-rights bridge
-        -> RECALL_AGENT_BRIDGE calls Select AI Agent with one combined JSON document
-    ```
-
-    The Node server uses the selected local user for all secured retrieval, including agent questions. `RECALL_REACT_API` runs as invoker rights in the held DDS session, materializes the authorized JSON, vector, Spatial, and Graph evidence, and then calls the owner-owned definer-rights `RECALL_AGENT_BRIDGE` for Select AI Agent execution. The browser receives no owner password, OCI resource principal, or unrestricted SQL.
-
-    **Read this as a security demonstration:** the user does not receive a copy of the owner’s privileges. The user calls the approved package, DDS applies the user’s data grants, and only the resulting combined document crosses the definer-rights boundary to `RUN_TEAM`. A store user and a recall lead execute the same application code and same agent team; their answers differ because the database supplied different authorized JSON, vector, Spatial, and downstream Graph evidence.
-
 ## Task 4: Run the React Application
 
-Kevin needs a working command center that turns approved evidence into clear next actions. David defines that experience; Tim starts or deploys it.
+Kevin needs a working command center that turns approved evidence into clear next actions. David defines that experience; Tim deploys the new application.
 
 Start the packaged application. It serves the React interface and Node API from the same port.
 
@@ -245,15 +147,15 @@ Start the packaged application. It serves the React interface and Node API from 
 
     Open [http://localhost:3001](http://localhost:3001). The Node server serves the packaged production interface and the API routes from this origin.
 
-2. If port `3001` is already in use by your workshop process from an earlier attempt, stop that process in its terminal before restarting. Do not stop unrelated processes; record the port conflict if you cannot identify it as your workshop process. Changes to `.env` do not take effect until the server restarts.
+    ![signin](images/signin.png)
 
-3. **Optional: deploy to an application host.** You can skip this step if you are running locally. If you have access to an application host, copy the extracted `react-app` directory to that host, set `ORACLE_CONNECT_STRING`, `PORT`, and `COOKIE_SECURE=true` in `.env`, run `npm ci`, and start it with `npm start` behind the host's HTTPS reverse proxy. Allow the host to reach the Autonomous Database service and keep the database password out of source files and environment templates.
+
 
 ## Task 5: Compare the Three User Views
 
-Kevin checks whether the same application respects each job. David relies on the signed-in identity; Tim compares the three results.
+Kevin checks whether the same application respects each job. David has designed the applicable identities. Tim compares the three results.
 
-1. Sign in as `STORE_101_USER` with the credentials you used in Lab 7.
+1. Sign in as 'store associate' (`STORE_101_USER`). Use the password from the 'View Login Info' panel.
 
     Confirm the header shows the store associate role. The expected result is:
 
@@ -266,26 +168,31 @@ Kevin checks whether the same application respects each job. David relies on the
 
     The map shows only the authorized Store 101 location. The complaint list shows only complaint `9001`.
 
+    
+    ![storeassoc](images/storeassoc.png)
+
     The property graph shows the shared batch-to-component-batch-to-supplier-site trace and the downstream store/customer paths authorized for the signed-in user. Store 101 users see one store and five customer vertices; the Northeast user sees 24 stores and 120 customers; the recall lead sees 120 stores and 600 customers. The customer vertices contain only the authorized customer's name and identifier; email addresses are not returned.
-
+    
     Use the graph **Distance** selector to control how much of the raw `RECALL_GRAPH` is visible at once. It starts at one hop from `B-482` and supports one through five hops. Use the **Filter** selector to show all vertices or focus on Components, Sub-components, Suppliers, Supplier sites, Stores, or Customers. Each page retains the shortest path back to `B-482`, including connecting stores and ancestors even when they fall on different pages. Search and hop distances use the full authorized graph. **Center graph** changes the viewport only; use **Reset filters** to clear the exploration.
-
+    
     The agent receives a compact form of the same graph evidence: the batch-to-component-to-supplier path pattern, shared component and supplier counts, and the active role's authorized store/customer relationship counts. This keeps graph reasoning useful without sending the entire visualization payload to the model.
-
+    
     In **Vector evidence**, the initial rows are ranked with the stored `HEAT_ODOR` query vector. Enter a phrase such as `burning smell and early shutoff` to run a new local-model embedding search. The embedding is generated by the owner-side model bridge, but complaint rows are ranked in the active end-user session, so DDS still limits the results. The order can vary with the stored query/model; semantic similarity is not severity or operational response priority. Use the complaint details and other authorized evidence to decide what needs attention.
-
+    
 2. Sign out and sign in as `REGION_NE_USER`.
 
     Confirm the header changes to Northeast regional manager. The expected result is:
 
-    | Evidence | Northeast user |
-    |---|---:|
-    | Visible stores | 24 |
-    | Units | 453 |
-    | Customers | 120 |
+    | Evidence                 | Northeast user         |
+    | --------------------------| -----------------------:|
+    | Visible stores           | 24                     |
+    | Units                    | 453                    |
+    | Customers                | 120                    |
     | Stored HEAT_ODOR matches | `9001`, `9002`, `9006` |
-
+    
     The map and graph show the authorized Northeast footprint. Complaint `9003` remains hidden because its customer is outside the regional grant. The graph likewise excludes stores and customers outside the active DDS role.
+
+    ![northeast](images/northeastmgnr.png)
 
 3. Sign out and sign in as `RECALL_LEAD_USER`.
 
@@ -298,13 +205,16 @@ Kevin checks whether the same application respects each job. David relies on the
     | Customers | 600 |
     | Stored HEAT_ODOR matches | `9001`, `9002`, `9006`, `9003`, `9007` |
 
-    The map and graph show the full authorized continental U.S. footprint. Shared component and supplier-site facts remain available to every persona because they describe recall evidence, while downstream store and customer vertices are still produced from the active DDS-filtered session. The agent receives the same distinction: shared component/supplier trace plus role-specific spatial and exposure evidence.
+    The map and graph show the full authorized continental U.S. footprint. Shared component and supplier-site facts remain available to every persona because they describe recall evidence, while downstream store and customer vertices are still produced from the active DDS-filtered session. The agent receives the same distinction: shared component/supplier trace plus role-specific spatial and exposure evidence.    
+
+    
+    ![northeast](images/recalllead.png)
 
 4. Compare the experience with the database session, not the browser selection. The Node API reads the active end-user identity from `ORA_END_USER_CONTEXT` after login. The same application code and same SQL package calls produce different results because the database applies different data grants.
 
 ## Task 6: Ask the Assistant
 
-Kevin asks the final business question. David assembles only the JSON, Vector Search, Spatial, and SQL Property Graph results that the user may see; Tim sends that document to the assistant.
+Kevin asks the final business question. 
 
 1. While signed in as each persona, ask a question from the chat panel:
 
@@ -312,9 +222,7 @@ Kevin asks the final business question. David assembles only the JSON, Vector Se
     - `Which complaint evidence should I review first?`
     - `What action should this team take next?`
 
-2. Confirm that each answer stays inside the active persona scope. The agent can summarize only the four sections assembled by `RECALL_REACT_API`: product JSON, authorized vector/relational evidence, authorized Spatial impact, and Graph evidence. It cannot query tables, retrieve hidden complaints, or expand a store user into company totals.
-
-    The call chain is: `local user -> RECALL_REACT_API (invoker rights) -> DDS data grants -> JSON + vector + Spatial + Graph evidence -> RECALL_AGENT_BRIDGE (definer rights) -> DBMS_CLOUD_AI_AGENT.RUN_TEAM`. The local user needs only the approved package grant. `RECALL_OWNER` retains the direct agent-framework grant and the configured profile/resource-principal access.
+2. Confirm that each answer stays inside the active persona scope. The agent can summarize only the four sections assembled by `RECALL_REACT_API`: product JSON, authorized vector/relational data, authorized Spatial impact, and Graph data. It cannot query tables, retrieve hidden complaints, or expand a store user into company totals.
 
 3. Ask converged questions that require more than one feature:
 
@@ -324,27 +232,18 @@ Kevin asks the final business question. David assembles only the JSON, Vector Se
 
     The answer should combine only the sections relevant to the question. A store user receives Store 101 spatial and exposure evidence; a regional manager receives the Northeast footprint; the recall lead receives the full authorized footprint.
 
-4. Explain the IdM equivalence:
-
-    - **Workshop login:** the React form receives a local database username and password.
-    - **Production login:** an IdM or OCI IAM flow authenticates the person and passes the trusted identity to the application tier.
-    - **Database result:** both paths establish an end-user context and data role before secured SQL runs.
-    - **Visible behavior:** the map, counts, complaints, and agent answer remain role-specific in both designs.
-
-5. Sign out at the end of the test. The Node server closes the held database session and removes the browser session cookie.
-
 ## Task 7: Explore the Governed Recall Campaign
 
-Kevin needs the team to prepare a customer response without letting an AI model decide who qualifies or sending a message before a person reviews it. The campaign workspace uses the same database identity and application session as the rest of the command center, then adds explicit contact authorization, a reusable draft, a human approval, and an audit trail.
-
-1. Sign in as `RECALL_LEAD_USER` and open **Recall Campaign**. Review the policy state before acting. Contact is disabled until the recall lead authorizes it.
-2. Select **Authorize customer contact**. The authorized workspace creates a generic notice draft using the default `EMAIL` channel and `PROFESSIONAL` tone. Change the channel or tone and select **Regenerate generic draft** to explore the options.
-3. Review the generic template. It contains campaign facts and placeholders, not customer names or email addresses. The campaign package obtains eligible purchases in the active Deep Data Security session; customer details are merged only after the agent returns the generic template.
-4. Select one authorized customer order and choose **Generate for selected customer**. Review the personalized preview, deterministic refund amount, and approved refund steps. Selecting a customer creates a draft record for that one authorized purchase; it does not send a notice.
-5. Select **Approve campaign and create refund intents** after reviewing the personalized notice. The database records the lead's approval, updates the campaign and selected recipient statuses, and creates one `READY_FOR_PROCESSING` refund intent for each purchase personalized in that campaign. Approval does not apply to the full eligible audience. This prepares records for a later payment integration; it does not transfer funds.
-6. Sign out and repeat the campaign view as `REGION_NE_USER` and `STORE_101_USER`. Compare the eligible audience with the recall lead's. Each audience follows the active database identity and its Lab 7 data grant.
-
-As `RECALL_OWNER`, inspect the audit trail and refund intents after approval:
+    Kevin needs the team to prepare a customer response without letting an AI model decide who qualifies or sending a message before a person reviews it. The campaign workspace uses the same database identity and application session as the rest of the command center, then adds explicit contact authorization, a reusable draft, a human approval, and an audit trail.
+    
+    1. Sign in as `RECALL_LEAD_USER` and open **Recall Campaign**. Review the policy state before acting. Contact is disabled until the recall lead authorizes it.
+    2. Select **Authorize customer contact**. The authorized workspace creates a generic notice draft using the default `EMAIL` channel and `PROFESSIONAL` tone. Change the channel or tone and select **Regenerate generic draft** to explore the options.
+    3. Review the generic template. It contains campaign facts and placeholders, not customer names or email addresses. The campaign package obtains eligible purchases in the active Deep Data Security session; customer details are merged only after the agent returns the generic template.
+    4. Select one authorized customer order and choose **Generate for selected customer**. Review the personalized preview, deterministic refund amount, and approved refund steps. Selecting a customer creates a draft record for that one authorized purchase; it does not send a notice.
+    5. Select **Approve campaign and create refund intents** after reviewing the personalized notice. The database records the lead's approval, updates the campaign and selected recipient statuses, and creates one `READY_FOR_PROCESSING` refund intent for each purchase personalized in that campaign. Approval does not apply to the full eligible audience. This prepares records for a later payment integration; it does not transfer funds.
+    6. Sign out and repeat the campaign view as `REGION_NE_USER` and `STORE_101_USER`. Compare the eligible audience with the recall lead's. Each audience follows the active database identity and its Lab 7 data grant.
+    
+    As `RECALL_OWNER`, inspect the audit trail and refund intents after approval:
 
     ```sql
     select campaign_id, batch_id, status, recipient_count, total_refund,
@@ -362,27 +261,17 @@ As `RECALL_OWNER`, inspect the audit trail and refund intents after approval:
     fetch first 10 rows only;
     ```
 
-The campaign boundary is: database policy and Deep Data Security determine the audience; Select AI Agent drafts generic language; the application merges authorized customer facts; the recall lead reviews and approves; database packages record the decision and create refund intents. The workshop does not send customer messages or move money.
-
-You have completed the workshop. The React and Node application brings together database-enforced access, live evidence and agent answers, and a human-governed response workflow in one place.
+    The campaign boundary is: database policy and Deep Data Security determine the audience; Select AI Agent drafts generic language; the application merges authorized customer facts; the recall lead reviews and approves; database packages record the decision and create refund intents. The workshop does not send customer messages or move money.
+    
+    You have completed the workshop. The React and Node application brings together database-enforced access, live evidence and agent answers, and a human-governed response workflow in one place.
 
 ## Conclusion
 
-Kevin's requirements now appear in one returns application. Each signed-in user can see the B-482 records that apply to their role, view the related locations and suppliers, ask the assistant a question without receiving broader access, and prepare only the response actions their role permits.
+    Kevin's requirements now appear in one returns application. Each signed-in user can see the B-482 records that apply to their role, view the related locations and suppliers, ask the assistant a question without receiving broader access, and prepare only the response actions their role permits.
+    
+    David keeps the application rules in Oracle AI Database: packages provide the data, Deep Data Security applies the user scope, and the owner-side bridge calls the assistant only after that filtering. The application does not need to duplicate those rules or combine results from separate JSON, vector, Spatial, or graph databases. Tim brings the results together in React.
 
-David keeps the application rules in Oracle AI Database: packages provide the data, Deep Data Security applies the user scope, and the owner-side bridge calls the assistant only after that filtering. The application does not need to duplicate those rules or combine results from separate JSON, vector, Spatial, or graph databases. Tim brings the results together in React.
-
-
-## Install node
-
-- Install Node.js 20 or later and npm on your workstation. npm is included with Node.js.
-- Download and extract the application package from Task 2, and have a current browser available.
-- Confirm that your workstation can connect to the Autonomous Database service.
-- Have your direct database connect string, any required wallet, and the three Lab 7 end-user credentials ready. A SQL Developer Web URL is not a direct connect string.
-- Use Task 1 to prepare the bridge packages and grant the required access.
-
-Check these prerequisites before configuring the application. If a package or connection detail is missing, use **Need Help?** to resolve it before continuing.
-
+## Appendix: Install Node.js
 #### Install Node.js and npm
 
 Use the package manager for your operating system. These commands install Node.js and npm; you do not need to install Oracle Instant Client for this application.
@@ -426,5 +315,5 @@ Both checks should print version numbers. Confirm that Node.js is version 20 or 
 ## Acknowledgements
 
 - **Author:** Tim Cline, Product Management Architect
-- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+- **Contributors**: David Start, Director and Kevin Lazarz, Senior Manager
 - **Last updated:** October 2026

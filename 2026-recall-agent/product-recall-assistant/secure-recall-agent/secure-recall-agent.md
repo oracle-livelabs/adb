@@ -458,17 +458,18 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 6. Run Step 5 twice more, changing only STORE\_101\_USER to REGION\_NE\_USER, then RECALL\_LEAD\_USER. Compare the answers with these database checkpoints, not an exact sentence.
 
-| End user           | Stores | Units  | Customers | Semantic complaint IDs       |
-| --------------------| -------:| -------:| ----------:| ------------------------------|
-| STORE\_101\_USER   | 1      | 12     | 5         | 9001                         |
-| REGION\_NE\_USER   | 24     | 453    | 120       | 9001, 9002, 9006             |
-| RECALL\_LEAD\_USER | 120    | 2,400 | 600       | 9001, 9002, 9006, 9003, 9007 |
+    | End user           | Stores | Units  | Customers | Semantic complaint IDs       |
+    | --------------------| -------:| -------:| ----------:| ------------------------------|
+    | STORE\_101\_USER   | 1      | 12     | 5         | 9001                         |
+    | REGION\_NE\_USER   | 24     | 453    | 120       | 9001, 9002, 9006             |
+    | RECALL\_LEAD\_USER | 120    | 2,400 | 600       | 9001, 9002, 9006, 9003, 9007 |
     {: title="Expected results"}
-
+    
+    
     All roles share 25 component batches and 25 supplier sites. The first response remains quarantine and stop sales; customer contact is not yet authorized. Complaint ranking is semantic similarity, not severity or operational urgency. Compare the authorized complaint IDs and evidence, but do not grade the exact ordering as a priority list. Reject answers that invent facts or expand beyond the supplied evidence. Access filtering does not eliminate model errors.
-
+    
     The following image is a prior scripted transcript combining three answers. Its PL/SQL completion message does not represent the `SELECT` in Step 5. For the current steps, verify the `AGENT_ANSWER` CLOB returned separately for each user; use the image only as a reference for answer content.
-
+    
     ![Prior scripted SQLcl transcript illustrating three authorized assistant answers, not the current SELECT CLOB result interface](images/lab7-agent-answers.png)
 
 ## Conclusion

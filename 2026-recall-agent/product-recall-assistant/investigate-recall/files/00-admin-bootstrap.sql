@@ -43,6 +43,7 @@ prompt --- Select AI and Select AI Agent privileges for Lab 2 ---
 
 grant execute on dbms_cloud_ai to recall_owner;
 grant execute on dbms_cloud_ai_agent to recall_owner;
+grant execute on dbms_cloud_repo to recall_owner;
 grant execute on dbms_vector to recall_owner;
 grant execute on dbms_cloud to recall_owner;
 grant create credential to recall_owner;
