@@ -4,7 +4,7 @@
 
 This lab focuses on generating a consistent email form letter. In this lab, you’ll add a standardized email function so the agent can present a consistent confirmation message after a return is recorded.
 
-Estimated Time: 20 minutes
+Estimated Time: 25 minutes
 
 ### Objectives
 
@@ -88,6 +88,7 @@ You'll create a function to return a confirmation email as a `CLOB` and test the
     END;
     </copy>
     ```
+
 2. Test the `build_return_email` function and verify the output.
 
     ```
@@ -108,7 +109,7 @@ You'll create a function to return a confirmation email as a `CLOB` and test the
     ```
 
 
-    **Result:**
+    **Typical result expected:**
 
     ```
 
@@ -126,19 +127,25 @@ Create a build\_email\_tool that specifies the build\_return\_email function.
 
 ```
 <copy>
- 
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('build_email_tool');
-EXCEPTION WHEN OTHERS THEN NULL; END;
+BEGIN DBMS_CLOUD_AI_AGENT.drop_tool(tool_name => 'build_email_tool', force => TRUE); END;
 /
 BEGIN
     DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
         tool_name => 'build_email_tool',
-        attributes => '{"instruction": "This tool constructs an email string using as input details from the customer interaction as to the product they want to return or get a refund.",
+        attributes => '{"instruction": "This tool builds an email to the customer about their return request, using the order number, item name, customer name, reason for return, and whether they will receive a refund or replacement.",
                         "function" : "build_return_email",
-                        "tool_inputs" : [{"name":"p_email_type",
-                                        "description" : "Only supported value is ''refund'' and ''replacement'' "}]}',
-        description => 'Tool for updating customer order status in database table.'
+                        "tool_inputs" : [{"name":"p_order_number",
+                                        "description" : "The order number for the item being returned."},
+                                        {"name":"p_item_name",
+                                        "description" : "The name of the item being returned."},
+                                        {"name":"p_customer_name",
+                                        "description" : "The customer's name for the greeting."},
+                                        {"name":"p_reason_for_return",
+                                        "description" : "The customer's reason for returning the item."},
+                                        {"name":"p_email_type",
+                                        "description" : "The resolution for the return. Supported values are ''refund'' or ''replacement''."}]}',
+        description => 'Builds a customer email for a refund or replacement request.'                        
     );
 END;</copy>
 ```
@@ -151,8 +158,7 @@ Update the Handle\_Product\_Return\_Task.
 
 ```
 <copy> 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
-EXCEPTION WHEN OTHERS THEN NULL; END;
+BEGIN DBMS_CLOUD_AI_AGENT.drop_task(task_name => 'Handle_Product_Return_Task', force => TRUE); END;
 /
 BEGIN
 DBMS_CLOUD_AI_AGENT.create_task(
@@ -189,14 +195,13 @@ BEGIN DBMS_CLOUD_AI_AGENT.clear_team();
 EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_team('Return_Agency_Team');
-EXCEPTION WHEN OTHERS THEN NULL; END;
+BEGIN DBMS_CLOUD_AI_AGENT.drop_team(team_name => 'Return_Agency_Team', force => TRUE); END;
 /
 BEGIN                                                                 
   DBMS_CLOUD_AI_AGENT.create_team(  
     team_name  => 'Return_Agency_Team',                                                            
     attributes => '{"agents": [{"name" : "Customer_Return_Agent", "task" : "Handle_Product_Return_Task"}],
-                    "process": "sequential"}');                                                                 
+                    "process": "sequential", "long_term_memory_length": 3}');                                                                 
 END;</copy>
 ```
 
@@ -219,7 +224,7 @@ You can start interacting with the refined Select AI agent team by using natural
     <copy>select ai agent I want to return a smartphone backup storage</copy>
     ```
 
-    **Result:**
+    **Typical result expected:**
 
     ```
     RESPONSE
@@ -229,7 +234,9 @@ You can start interacting with the refined Select AI agent team by using natural
     ```
     <copy>select ai agent It arrived too late</copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+
     ```
     RESPONSE
     I'm sorry to hear that the smartphone backup storage arrived too late. Would you like a refund for this item?
@@ -238,7 +245,9 @@ You can start interacting with the refined Select AI agent team by using natural
     ```
     <copy>select ai agent Yes;</copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+
     ```
     RESPONSE
     Could you please provide me with your full name and the order number for the smartphone backup storage so I can process the refund?
@@ -247,7 +256,9 @@ You can start interacting with the refined Select AI agent team by using natural
     ```
     <copy>select ai agent Carol Chen order number 7635;</copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+
     ```
     RESPONSE                                                                                                                               
     Here is the confirmation email for your refund request:
@@ -276,7 +287,9 @@ You can start interacting with the refined Select AI agent team by using natural
     ```
     <copy>select ai agent yes it is correct</copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+
     ```
     RESPONSE
     I'm glad everything looks good with the email confirmation. Is there anything else I can help you with today?
@@ -285,7 +298,8 @@ You can start interacting with the refined Select AI agent team by using natural
     ```
     <copy>select ai agent No, thank you, nothing else;</copy>
     ```
-**Result:**
+    **Typical result expected:**
+
     ```
     RESPONSE
     I'm happy to have assisted you with the return process, Carol. If you think of anything else in the future, don't hesitate to reach out. Have a wonderful day! Goodbye!
@@ -295,17 +309,17 @@ You may now proceed to the next lab.
 
 ## Learn More
 
-* [Select AI Agent](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html)
-* [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
+* [Select AI Agent Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html)
+* [Select AI Agent Framework Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
 
 ## Acknowledgements
 
-* **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
-* **Last Updated By/Date:** Sarika Surampudi, February 2026
+* **Author:** Sarika Surampudi, Principal User Assistance Developer; Marcos Arancibia, Lead Principal Product Manager
+* **Contributors:** Sherry LaMonica, Lead Principal Product Manager; Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 
 

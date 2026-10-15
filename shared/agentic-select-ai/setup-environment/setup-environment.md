@@ -119,10 +119,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** 
-* Marcos Arancibia, Product Manager
-* Mark Hornick, Product Manager
-* **Last Updated By/Date:** Marcos Arancibia, August 2026
+* **Contributors:** Mark Hornick, Senior Dir of ML and AI Product Management ; Sherry LaMonica, Lead Principal Product Manager ; Marcos Arancibia, Product Mgt
+* **Last Updated By/Date:** Marcos Arancibia, September 2026
 
 
 

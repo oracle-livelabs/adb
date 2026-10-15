@@ -2,7 +2,9 @@
 
 ## Introduction
 
-In this lab you’ll enrich the return flow with RAG (Retrieval Augmented Generation). We’ll use a couple of documents that provide product summary information: descriptions, pros, and cons, that can be used to offer alternative product recommendations. After recording a return, the agent can recommend alternative products based on your prompts from content indexed in Object Storage and present a standard confirmation email. You’ll set up an AI Profile for RAG, use content Object Storage, create a vector index, and insert a RAG-related task into your agent team.
+In this lab you’ll enrich the return flow with RAG (Retrieval Augmented Generation). We’ll use a couple of documents that provide product summary information: descriptions, pros, and cons, that can be used to offer alternative product recommendations. After recording a return, the agent can recommend alternative products based on your prompts from content indexed in Object Storage. You’ll set up an AI Profile for RAG, use content Object Storage, create a vector index, and insert a RAG-related task into your agent team.
+
+Estimated Time: 30 minutes
 
 ### Overview of Important Concepts
 Let's review some of the important concepts that you should know.
@@ -40,7 +42,7 @@ In this lab, you will:
 * Set the RAG profile for the session.
 * Use natural-language prompts to get product suggestions (RAG in action).
 * Create a RAG tool the agent can call for recommendations.
-* Update the return task to include suggestions + email preview.
+* Update the return task to include suggestions.
 * Update the team and interact with the refined agent.
 
 ### Prerequisites
@@ -52,76 +54,55 @@ This lab requires completion of the previous labs in the **Contents** menu on th
 ## Task 1: Create a profile for RAG
 Define an AI Profile that has your LLM and database objects and is ready to use RAG once a vector index exists.
 
-
-1. First create credentials to access Object Storage. If you haven't already created your credential, see **Lab 2** -> **Task 6** for instructions on how to create your OCI credential.
-
-```
-<copy>
- 
-
-begin
-DBMS_CLOUD.drop_credential(credential_name => 'AI_CREDENTIAL');
-EXCEPTION WHEN OTHERS THEN NULL; END;
-/
-BEGIN
-DBMS_CLOUD.create_credential(
-  credential_name => 'AI_CREDENTIAL',
-  user_ocid       => '<ocid>',
-  tenancy_ocid    => '<tenancy ocid>',
-  private_key     => '<private key>',
-  fingerprint     => '<fingerprint>'
-);
-END;
-</copy>
-```
-2. Create an AI profile for RAG usage.
+1. Define AI profile for RAG using the previously created OCI Credential. Create an AI profile for RAG usage. If you have any problems, make sure to review the OCI Credentials you created in Lab 1, Task 6: Check OCI Credentials. 
 ```
     <copy>
     BEGIN  
       DBMS_CLOUD_AI.drop_profile(profile_name => 'SALES_AGENT_RAG_PROFILE');
-    
-      -- default LLM: meta.llama-3.1-70b-instruct
+    EXCEPTION WHEN OTHERS THEN NULL; END;
+    /
+      -- default LLM: meta.llama-3.3-70b-instruct
       -- default transformer: cohere.embed-english-v3.0
     BEGIN
       DBMS_CLOUD_AI.create_profile(                                              
           profile_name => 'SALES_AGENT_RAG_PROFILE',                                                                 
           attributes   => '{"provider": "oci",   
                             "credential_name": "AI_CREDENTIAL",          
-                            "vector_index_name": "SALES_AGENT_VECTOR_INDEX2"}');  
+                            "vector_index_name": "SALES_AGENT_VECTOR_INDEX"}');  
     END;
       </copy>
 ```
 > Note: The default values are listed as comments.
 
 
-3. List the document stored in the Object Storage.
+2. List the document stored in the Object Storage. We are again using the same credentials defined in Lab 1, Task 6: Check OCI Credentials.
 
 ```
 <copy>
 select * from
   DBMS_CLOUD.LIST_OBJECTS(
     credential_name => 'AI_CREDENTIAL',
-    location_uri    => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/OSllhv6ZOGUkG1pR7MIqUZqhJ0cwBxz0B6vzSbtHhQq7MqqbyU9Jn1iX2mtHrVTV/n/c4u04/b/sales-agent-rag-documents/o/')
+    location_uri    => 'https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/')
 </copy>
 ```
 
-4. Build a vector index over product docs stored in Object Storage. The index is used by RAG.
+3. Build a vector index over product docs stored in Object Storage. The index is used by RAG.
 ```
 <copy>
  
 
 BEGIN
   DBMS_CLOUD_AI.DROP_VECTOR_INDEX(
-  index_name  => 'SALES_AGENT_VECTOR_INDEX2',
+  index_name  => 'SALES_AGENT_VECTOR_INDEX',
   include_data => TRUE);
   EXCEPTION WHEN OTHERS THEN NULL;
 END;
 /
 BEGIN
   DBMS_CLOUD_AI.CREATE_VECTOR_INDEX(
-    index_name  => 'SALES_AGENT_VECTOR_INDEX2',
+    index_name  => 'SALES_AGENT_VECTOR_INDEX',
     attributes  => '{"vector_db_provider": "oracle",
-                    "location": "https://objectstorage.us-ashburn-1.oraclecloud.com/p/OSllhv6ZOGUkG1pR7MIqUZqhJ0cwBxz0B6vzSbtHhQq7MqqbyU9Jn1iX2mtHrVTV/n/c4u04/b/sales-agent-rag-documents/o/",
+                    "location": "https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/",
                     "object_storage_credential_name": "AI_CREDENTIAL",
                     "profile_name": "SALES_AGENT_RAG_PROFILE", 
                     "vector_distance_metric": "cosine",
@@ -132,30 +113,33 @@ BEGIN
 END;
   </copy>
 ```
-5. Set the AI profile in the current session.
+4. Set the AI profile in the current session.
   ```
   <copy>
    
   EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
   </copy>
   ```
-6. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
+5. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
   ```
   <copy>
   select ai narrate what are alternatives for the smartphone case
     </copy>
   ```
-  **Result:**
+
+  **Typical result expected:**
+
   ```
 RESPONSE
 Alternatives for smartphone cases include TitanGuard Pro, ClearEdge Ultra, and ArmorFlex Shield. TitanGuard Pro is a military-grade case with reinforced corners and dust-proof port covers, designed for rugged outdoor use. ClearEdge Ultra is a crystal-clear slim case made with hybrid polymer to resist scratches and yellowing, showcasing the phone's design while offering light protection. ArmorFlex Shield is built with a shock-absorbing TPU frame and scratch-resistant polycarbonate back, designed for maximum impact protection without adding unnecessary bulk.
 
 Sources:
-  - Smartphone-R-US_Catalog.pdf (https://objectstorage.us-ashburn-1.oraclecloud.com/p/OSllhv6ZOGUkG1pR7MIqUZqhJ0cwBxz0B6vzSbtHhQq7MqqbyU9Jn1iX2mtHrVTV/n/c4u04/b/sales-agent-rag-documents/o/Smartphone-R-US_Catalog.pdf)
-  - ABC_Smartphone_Supply_Catalog.pdf (https://objectstorage.us-ashburn-1.oraclecloud.com/p/OSllhv6ZOGUkG1pR7MIqUZqhJ0cwBxz0B6vzSbtHhQq7MqqbyU9Jn1iX2mtHrVTV/n/c4u04/b/sales-agent-rag-documents/o/ABC_Smartphone_Supply_Catalog.pdf)
+  - Smartphone-R-US_Catalog.pdf (https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/Smartphone-R-US_Catalog.pdf)
+  - ABC_Smartphone_Supply_Catalog.pdf (https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/ABC_Smartphone_Supply_Catalog.pdf)
 ```
 
 ## Task 2: Create a RAG Tool
+
 Define a RAG tool that the AI agent team can call to provide alternate product recommendations based on your prompt.
 
 Create the sales\_rag\_tool.
@@ -208,7 +192,7 @@ BEGIN
                     '   c. If a refund, inform customer to print out the return shipping label for the defective product, return the product, and update the order status to refund' ||
                     '   d. If consider alternative recommendations, use the RAG tool to present 2 alternatives to the customer and let them decide if they want this product or the original one' || 
                     '5. After the completion of a return or refund, ask if you can help with anything else.' ||
-                    '   End the task and generate a a final answer only if user does not need help on anything else",
+                    '   End the task and generate a final answer only if user does not need help on anything else",
                     "tools": ["Update_Order_Status_Tool","sales_rag_tool"]}'
   );
 END;
@@ -218,7 +202,7 @@ END;
 ## Task 4: Update the Agent Team
 You'll update the agent team with the revised Product Return task.
 
-Update the `Return_Agent_Team`.
+Update the `Return_Agency_Team`.
 ```
 <copy>
  
@@ -238,9 +222,10 @@ BEGIN
 END;
 	</copy>
 ```
+
 ## Task 5: Interact with your Updated RAG Agent
 Start interacting with the updated RAG agent with natural language prompts.
-1. Set the AI profile for RAG in the session.
+1. Set the Agent Team for RAG in the session.
 ```
 <copy>
  
@@ -263,13 +248,13 @@ Can you please tell me the reason for returning the smartphone case? Is it no lo
 
 You may continue with the following prompts as per the below sequence:
 
-_select ai agent Hi, unforunately, it is defective_
+_select ai agent Hi, unfortunately, it is defective_
 
 _select ai agent Sure, what are some alternatives you could recommend_
 
 _select ai agent A refund please_
 
-_select ai agent Carol Chen order number 7635_
+_select ai agent Carol Chen order number 1649_
 
 _select ai agent no, thank you_
 

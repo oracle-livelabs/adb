@@ -4,7 +4,7 @@
 
 In this lab, you’ll turn a common customer service workflow - returning a purchased item - into an agentic workflow using Oracle Autonomous AI Database Select AI. The agent will converse with you the customer, collect the reason for return, and run an update to the order record.
 
-Estimated Time: X
+Estimated Time: 45 minutes
 
 ### Objectives
 
@@ -38,20 +38,17 @@ Replace _`ADB_USER`_ with your user name.
 
 - You will need to download an OML notebook to a local folder.  Click the button below, and follow the instructions in the Task 1 below to import it:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
-<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 </if>
+
 <if type="sandbox">
 - Access to the LiveLabs reservation login information for this Workshop.
 - You will need to download an OML notebook to a local folder.  Click the button below, and follow the instructions in the Task 1 below to import it:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
-<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 </if>
-
-
 
 ## Task 1: Download and Import the Provided Notebook into OML
 
@@ -62,8 +59,7 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 
 1. Click the button below to download the notebook to a local folder:
 
-    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/1C_VWEcNHyMoV10mPLbRvJmxDOyCR0ogX4LijMCidf5MxL5xuhnnMvwuQ5tll4uR/n/adwc4pm/b/oaiw25-select-ai-agent-notebook/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
-<!-- https://github.com/oracle-devrel/oracle-autonomous-database-samples/blob/main/select-ai-agent/notebooks/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb-->
+    <a href="https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/n/adwc4pm/b/oaiw26-select-ai-agent/o/SelectAI4SQL%20-%20AI%20Agents%20-%20Sales%20Return%20Agent.dsnb" class="tryit-button">Download Notebook</a>
 
 <if type="tenancy">
 2. To access the URL for the Oracle Machine Learning sign in page, go to your Autonomous AI Database details page and click **Tool configuration**.
@@ -74,7 +70,6 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 3. To sign in, write the ADB username and password.  Click **Sign In**.
 
    ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
-   
 
 </if>
 
@@ -83,7 +78,7 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 
    ![Click on View Login Info at the top left](../build-sales-return-agent/images/sandbox-view-login-info.png)
 
-   Scroll down in the list of optins on the right. Make sure to click on Button (1) to copy the ADB User password, and then click on Button (2) to go to the Oracle Machine Learning UI.
+   Scroll down in the list of options on the right. Make sure to click on Button (1) to copy the ADB User password, and then click on Button (2) to go to the Oracle Machine Learning UI.
    ![Click on ADB User password and Login to OML UI](../build-sales-return-agent/images/sandbox-copy-pass-and-click-url.png)
 
 3. To sign in, write the username **SELECT\_AI\_USER** and paste the copied password.  Click **Sign In**.
@@ -122,13 +117,12 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 
   ![The notebook is opened and the editor shown.](../build-sales-return-agent/images/sandbox-notebook-open.png " ")
 
-     >**Note:** If a **User Action Required** message is displayed when you open the notebook, click **Allow Run**.
-
-## Task 2: Review the Customer Table
+## Task 2: Create and Review Customer and Order Tables
 
 You'll view the sample table for the scenario.
 
 1. Run the paragraph that creates `customers` table. 
+
     ```
     <copy>
   
@@ -136,20 +130,20 @@ You'll view the sample table for the scenario.
     EXCEPTION WHEN OTHERS THEN NULL; END;
     /
     CREATE TABLE customers (
-        customer_id  NUMBER(10) PRIMARY KEY,
-        name         VARCHAR2(100),
-        email        VARCHAR2(100),
-        phone        VARCHAR2(20),
-        state        VARCHAR2(2),
-        zip          VARCHAR2(10)
+       customer_id  NUMBER(10) PRIMARY KEY,
+       name         VARCHAR2(100),
+       email        VARCHAR2(100),
+       phone        VARCHAR2(20),
+       state        VARCHAR2(2),
+       zip          VARCHAR2(10)
     );
 
     INSERT INTO customers (customer_id, name, email, phone, state, zip) VALUES
-    (1, 'Alice Thompson', 'alice.thompson@example.com', '555-1234', 'NY', '10001'),
-    (2, 'Bob Martinez', 'bob.martinez@example.com', '555-2345', 'CA', '94105'),
+    (1, 'Alice Thompson', 'alice.thompson@example.com', '555-1234', 'NY', '12210'),
+    (2, 'Bob Martinez', 'bob.martinez@example.com', '555-2345', 'CA', '95842'),
     (3, 'Carol Chen', 'carol.chen@example.com', '555-3456', 'TX', '73301'),
-    (4, 'David Johnson', 'david.johnson@example.com', '555-4567', 'IL', '60601'),
-    (5, 'Eva Green', 'eva.green@example.com', '555-5678', 'FL', '33101');
+    (4, 'David Johnson', 'david.johnson@example.com', '555-4567', 'IL', '61605'),
+    (5, 'Eva Green', 'eva.green@example.com', '555-5678', 'FL', '32164');
     </copy>
     ```
 
@@ -178,12 +172,12 @@ You'll view the sample table for the scenario.
     );
 
     INSERT INTO customer_order_status (customer_id, order_number, status, product_name) VALUES
-    (2, '7734', 'delivered', 'smartphone charging cord'),
+    (2, '7734', 'delivered', 'smartphone stand (metal)'),
     (1, '4381', 'pending_delivery', 'smartphone protective case'),
-    (2, '7820', 'delivered', 'smartphone charging cord'),
+    (2, '7820', 'delivered', 'smartphone protective case'),
     (3, '1293', 'pending_return', 'smartphone stand (metal)'),
     (4, '9842', 'returned', 'smartphone backup storage'),
-    (5, '5019', 'delivered', 'smartphone protective case'),
+    (5, '5019', 'delivered', 'smartphone charging cord'),
     (2, '6674', 'pending_delivery', 'smartphone charging cord'),
     (1, '3087', 'returned', 'smartphone stand (metal)'),
     (3, '7635', 'pending_return', 'smartphone backup storage'),
@@ -198,10 +192,11 @@ You'll view the sample table for the scenario.
     (2, '3910', 'returned', 'smartphone protective case'),
     (3, '2187', 'delivered', 'smartphone charging cord'),
     (4, '8023', 'pending_return', 'smartphone stand (metal)'),
-    (5, '5176', 'delivered', 'smartphone backup storage');
+    (5, '5176', 'delivered', 'smartphone backup storage'); 
     </copy>
     ```
-2. View the order status table.
+
+4. View the order status table.
 
     ```
     <copy>
@@ -250,6 +245,7 @@ You will create a SQL function to update a customer’s order status and return 
     END;
     </copy>
     ```
+
 2. Test this function by updating an order for a specific customer and return a message on completion.
 
     ```
@@ -264,6 +260,7 @@ You will create a SQL function to update a customer’s order status and return 
     END;
     </copy>
     ```
+
 3. Verify the change by viewing the customer order update status table for that customer. 
 
     ```
@@ -282,13 +279,13 @@ Tools are what allow agents to perform tasks in the "real" world. You'll create 
     ```
     <copy>
     
-    BEGIN DBMS_CLOUD_AI_AGENT.drop_tool('Update_Order_Status_Tool');
-    EXCEPTION WHEN OTHERS THEN NULL; END;
+    BEGIN DBMS_CLOUD_AI_AGENT.drop_tool(tool_name => 'Update_Order_Status_Tool', force => TRUE); END;
     /
+    
     BEGIN
         DBMS_CLOUD_AI_AGENT.CREATE_TOOL(
             tool_name => 'Update_Order_Status_Tool',
-            attributes => '{"instruction": "This tool updates the database to reflect return status change. Always confirm user name and order number with user before update status",
+            attributes => '{"instruction": "This tool updates the database to reflect return status change. Use the customer name and order number the customer already stated in this conversation. Only ask the customer if either one is missing or ambiguous. Never use a name or order number the customer did not provide",
                             "function" : "update_customer_order_status"}',
             description => 'Tool for updating customer order status in database table.'
         );
@@ -313,8 +310,7 @@ Create Handle\_Product\_Return\_Task.
   ```
   <copy>
   
-  BEGIN DBMS_CLOUD_AI_AGENT.drop_task('Handle_Product_Return_Task');
-  EXCEPTION WHEN OTHERS THEN NULL; END;
+  BEGIN DBMS_CLOUD_AI_AGENT.drop_task(task_name => 'Handle_Product_Return_Task', force => TRUE); END;
   /
   BEGIN
     DBMS_CLOUD_AI_AGENT.create_task(
@@ -344,7 +340,6 @@ Create Handle\_Product\_Return\_Task.
 ## Task 6: Check OCI Credentials
 Because you are using an Oracle LiveLabs-provided sandbox environment, a credential named **AI_CREDENTIAL** is already defined for you.
 </if>
-
 
 <if type="tenancy">
 ## Task 6: Create OCI Credentials
@@ -403,6 +398,7 @@ Follow these steps to create your OCI credentials:
      ...key content...
      -----END PRIVATE KEY-----
      ```
+
 5. Create an OCI Gen AI credential.
 
     ```
@@ -438,24 +434,21 @@ Follow these steps to create your OCI credentials:
     </copy>
     ```
 
-
-
 ## Task 7: Create an AI Profile
-You'll create an AI profile with LLM of your choice, to use in the next step to create an agent. In this task, you are using xAi's GROK Reasoning model with the OCI Gen AI credential.
+You'll create an AI profile with LLM and a transformer of your choice, to use in the next step to create an agent. In this task, you are using xAI's GROK Reasoning model release 4.3 with the OCI Gen AI credential, as well as Select AI's default embedding model from Cohere.  Please always check the [Select AI User's Guide](https://docs.oracle.com/en/database/oracle/oracle-database/26/selai/select-your-ai-provider-and-ai-models.html) for an updated list of supported AI Providers and LLms.
 
 ```
 <copy>
 
 BEGIN
-  BEGIN DBMS_CLOUD_AI.drop_profile(profile_name => 'OCI_GENAI_GROK'); 
-  EXCEPTION WHEN OTHERS THEN NULL; END;
+  BEGIN DBMS_CLOUD_AI.drop_profile(profile_name => 'OCI_GENAI_AGENT', force => TRUE); END;
 
   DBMS_CLOUD_AI.create_profile(
-      profile_name => 'OCI_GENAI_GROK',
+      profile_name => 'OCI_GENAI_AGENT',
       attributes   => '{
           "provider": "oci",
           "credential_name": "AI_CREDENTIAL",
-          "model": "xai.grok-4.20-reasoning",
+          "model": "xai.grok-4.3",
           "embedding_model": "cohere.embed-v4.0"
       }',
       description  => 'Supports the Select AI Sales Return Agent scenario.'
@@ -473,13 +466,12 @@ Create the Customer\_Return\_Agent.
 ```
 <copy>
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_agent('Customer_Return_Agent');
-EXCEPTION WHEN OTHERS THEN NULL; END;
+BEGIN DBMS_CLOUD_AI_AGENT.drop_agent(agent_name => 'Customer_Return_Agent', force => TRUE); END;
 /
 BEGIN
   DBMS_CLOUD_AI_AGENT.create_agent(
     agent_name => 'Customer_Return_Agent',
-    attributes => '{"profile_name": "OCI_GENAI_GROK",
+    attributes => '{"profile_name": "OCI_GENAI_AGENT",
                     "role": "You are an experienced customer return agent who deals with customers return requests."}');
 END;
 </copy>
@@ -494,23 +486,25 @@ Create the Return\_Agency\_Team.
 ```
 <copy>
 
-BEGIN DBMS_CLOUD_AI_AGENT.drop_team('Return_Agency_Team');
-EXCEPTION WHEN OTHERS THEN NULL; END;
+BEGIN DBMS_CLOUD_AI_AGENT.drop_team(team_name => 'Return_Agency_Team', force => TRUE); END;
 /
 BEGIN                                                                 
   DBMS_CLOUD_AI_AGENT.create_team(  
     team_name  => 'Return_Agency_Team',                                                            
     attributes => '{"agents": [{"name" : "Customer_Return_Agent", 
                                 "task" : "Handle_Product_Return_Task"}],
-                    "process": "sequential"}');                                                                 
+                    "process": "sequential", "long_term_memory_length": 3}');                                                                 
 END;
 
 </copy>
 ```
 
-## Task 10: Interact with the Return Agency Agent
+## Task 10: Interact with the Return Agency Agent Team
 
-You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current stateful session. Then, prefix your prompt with `select ai agent`. You'll interact with the agent team using natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
+You can start interacting with the Select AI agent team by using natural language prompt on the SQL command line. To do so, you must set the agent team for the current stateful session. Then, prefix your prompt with `select ai agent`. You'll interact with the agent team using natural language. Behind the scenes, the ReAct agent pattern is used by Select AI Agent Framework to get needed information from you, the customer, engage the LLM, call the needed tools, and respond.
+
+> IMPORTANT: The results will differ for each LLM brand, and even within the LLMs for different releases, so the result is shown here just as a reference
+
 Let's test it:
 
 1. Set the agent team in the current session.
@@ -532,7 +526,9 @@ Let's test it:
     select ai agent I want to return a smartphone case;
     </copy>
     ```
-**Result:**
+   
+    **Typical result expected:**
+
     ```
     RESPONSE
     Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
@@ -543,7 +539,8 @@ Let's test it:
     select ai agent the item is defective
     </copy>
     ```
-**Result:**
+    **Typical result expected:**
+
     ```
     RESPONSE
     I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
@@ -554,7 +551,9 @@ Let's test it:
     select ai agent I will need a replacement
     </copy>
     ```
-**Result:**
+    
+    **Typical result expected:**
+
     ```
     RESPONSE
     Could you please confirm your name and order number so I can update the status and process the replacement?
@@ -565,7 +564,11 @@ Let's test it:
     select ai agent I''m Bob Martinez and my order number is 7820
     </copy>
     ```
-**Result:**
+
+    > Note: SQL requires escaping single quotes with ''.
+
+    **Typical result expected:**
+
     ```
     RESPONSE
     Thank you, Bob. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Is there anything else I can help you with?
@@ -573,18 +576,18 @@ Let's test it:
 
 To continue, you may try these prompts in the given sequence:
 
-a. _select ai agent Yes, I''d like to return a smartphone stand;_
+    a. _select ai agent Yes, I''d like to return a smartphone stand;_
 
-b. _select ai agent I no longer need it_
+    b. _select ai agent I no longer need it_
 
-c. _select ai agent I''m Bob Martinez with order number is 7820_
+    c. _select ai agent I''m Bob Martinez with order number is 7820_
 
-d. _select ai agent No, I''m all set. Thanks_
+    d. _select ai agent No, I''m all set. Thanks_
 
 
 ## Task 11: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
 
-The RUN_TEAM procedure enables you to use your agent team from PL/SQL - as opposed to the SQL command line. This procedure is mainly to enable you to build your own agentic applications where you may need greater control over individual conversations. First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. Creating a conversation helps the agent team to keep track of the customer conversation context and history.
+The RUN_TEAM function enables you to use your agent team from PL/SQL - as opposed to the SQL command line. This function is mainly to enable you to build your own agentic applications where you may need greater control over individual conversations. First, you'll create Select AI conversation and then use the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function to run the agent team and interact with the Return Agency team. Creating a conversation helps the agent team to keep track of the customer conversation context and history.
 
 1. Create Select AI conversation.
 
@@ -592,36 +595,40 @@ The RUN_TEAM procedure enables you to use your agent team from PL/SQL - as oppos
     <copy>
     
     CREATE OR REPLACE PACKAGE my_globals IS
-      l_team_cov_id varchar2(4000);
+      l_team_conv_id varchar2(4000);
     END my_globals;
     /
     -- Create conversation
     DECLARE
-      l_team_cov_id varchar2(4000);
+      l_team_conv_id varchar2(4000);
     BEGIN
-      l_team_cov_id := DBMS_CLOUD_AI.create_conversation();
-      my_globals.l_team_cov_id := l_team_cov_id;
-      DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_cov_id);
+      l_team_conv_id := DBMS_CLOUD_AI.create_conversation();
+      my_globals.l_team_conv_id := l_team_conv_id;
+      DBMS_OUTPUT.PUT_LINE('Created conversation with ID: ' || my_globals.l_team_conv_id);
     END;
     </copy>
     ```
+
 2. Call the `DBMS_CLOUD_AI_AGENT.RUN_TEAM` function. Interact with the Return Agency team in a series of prompts provided within the function. This function holds your conversation ID so that Select AI does not lose the context and prompt history.
+
     ```
     <copy>
     
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name   => 'Return_Agency_Team',
         user_prompt => 'I want to return a smartphone case',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+        params      => '{"conversation_id": "' || my_globals.l_team_conv_id || '"}'
       );
       DBMS_OUTPUT.PUT_LINE(v_response);
     END;
     </copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+
     ```
     Could you please tell me the reason for returning the smartphone case? Is it no longer needed, arrived too late, box broken, or defective?
     ```
@@ -630,39 +637,42 @@ The RUN_TEAM procedure enables you to use your agent team from PL/SQL - as oppos
     <copy>
     
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name   => 'Return_Agency_Team',
         user_prompt => 'the item is defective',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+        params      => '{"conversation_id": "' || my_globals.l_team_conv_id || '"}'
       );
       DBMS_OUTPUT.PUT_LINE(v_response);
     END;
     </copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+
     ```
     I'm sorry to hear that the smartphone case is defective. Would you like a replacement or a refund?
     ```
 
     ```
     <copy>
-    %script
 
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name   => 'Return_Agency_Team',
         user_prompt => 'I''d like a replacement',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+        params      => '{"conversation_id": "' || my_globals.l_team_conv_id || '"}'
       );
       DBMS_OUTPUT.PUT_LINE(v_response);
     END;
     </copy>
     ```
-**Result:**
+
+   **Typical result expected:**
+
     ```
     Thank you for your response. The replacement smartphone case is on its way, and you will receive a return shipping label for the defective product. Could you please confirm your name and order number so I can update the order status?
     ```
@@ -671,18 +681,20 @@ The RUN_TEAM procedure enables you to use your agent team from PL/SQL - as oppos
     <copy>
     
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name    => 'Return_Agency_Team',
         user_prompt => 'I''m Bob Martinez and my order number is 7820',
-        params      => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+        params      => '{"conversation_id": "' || my_globals.l_team_conv_id || '"}'
       );
       DBMS_OUTPUT.PUT_LINE(v_response);
     END;
     </copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+ 
     ```
     Is there anything else I can help you with?
     ```
@@ -691,18 +703,20 @@ The RUN_TEAM procedure enables you to use your agent team from PL/SQL - as oppos
     <copy>
     
     DECLARE
-      v_response VARCHAR2(4000);
+      v_response CLOB;
     BEGIN
       v_response :=  DBMS_CLOUD_AI_AGENT.RUN_TEAM(
         team_name => 'Return_Agency_Team',
         user_prompt => 'No, thank you',
-        params => '{"conversation_id": "' || my_globals.l_team_cov_id || '"}'
+        params => '{"conversation_id": "' || my_globals.l_team_conv_id || '"}'
       );
       DBMS_OUTPUT.PUT_LINE(v_response);
     END;
     </copy>
     ```
-**Result:**
+
+    **Typical result expected:**
+ 
     ```
     Thank you, Bob. I'm glad we could assist with the replacement of your smartphone case. If you have any other concerns in the future, feel free to reach out. Have a great day!
     ```
@@ -715,14 +729,16 @@ You may now proceed to the next lab.
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 * [Example of creating an OCI Gen AI Select AI Profile](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-examples.html#GUID-BD10A668-42A6-4B44-BC77-FE5E5592DE27)
 * [How to help AI models generate better natural language queries](https://blogs.oracle.com/datawarehousing/post/how-to-help-ai-models-generate-better-natural-language-queries-in-autonomous-database)
+* [Select AI Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai.html)
+* [`DBMS_CLOUD_AI_AGENT` Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
+* [`DBMS_CLOUD_AI` Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-package.html)
+
 
 ## Acknowledgements
 
-* **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributor:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
-<!--* **Last Updated By/Date:** Sarika Surampudi, August 2025
--->
-
+* **Author:** Sarika Surampudi, Principal User Assistance Developer; Marcos Arancibia, Lead Principal Product Mgr
+* **Contributor:** Sherry LaMonica, Lead Principal Product Manager; Mark Hornick, Senior Dir. of ML and AI Product Management;  Laura Zhao, Member of Technical Staff
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 Copyright (c) 2026 Oracle Corporation.
 
