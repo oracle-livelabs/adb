@@ -109,102 +109,104 @@ You can start interacting with the refined Select AI agent team by using natural
 
 1. Set the agent team in the current session.
 
-```
-<copy>
-EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
-</copy>
-```
+    ```
+    <copy>
+    EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
+    </copy>
+    ```
 
 2. Interact with the Return Agency Team in a series of natural language prompts.
 
-**Prompt:**
+    **Prompt:**
 
-```
-<copy>
-select ai agent Hello Sales Return Agent;
-</copy>
+    ```
+    <copy>
+    select ai agent Hello Sales Return Agent;
+    </copy>
+    ```
 
-```
-**Typical result expected:**
+    **Typical result expected:**
 
-```
-RESPONSE
-Hello there! Welcome to our returns team—I'm your friendly customer return agent, ready to help make this process as smooth as possible. How can I assist you with your return today? 😊
+    ```
+    RESPONSE
+    Hello there! Welcome to our returns team—I'm your friendly customer return agent, ready to help make this process as smooth as possible. How can I assist you with your return today? 😊
+    ```
 
-```
-**Prompt:**
+    **Prompt:**
 
-```
-<copy>
-select ai agent I want to return a smartphone cord;
-</copy>
-```
-**Typical result expected:**
+    ```
+    <copy>
+    select ai agent I want to return a smartphone cord;
+    </copy>
+    ```
 
-```
-RESPONSE
-Please provide your full name, order number, the exact item (smartphone cord details if any), and reason for return so I can prepare the return email.
+    **Typical result expected:**
 
-```
-**Prompt:**
+    ```
+    RESPONSE
+    Please provide your full name, order number, the exact item (smartphone cord details if any), and reason for return so I can prepare the return email.
+    ```
 
-```
-<copy>
-select ai agent The box was broken;
-</copy>
-```
-**Typical result expected:**
+    **Prompt:**
 
-```
-RESPONSE
-Thanks for the reason (box was broken). To complete the return email, please also share your full name and order number.
-```
+    ```
+    <copy>
+    select ai agent The box was broken;
+    </copy>
+    ```
 
-**Prompt:**
+    **Typical result expected:**
 
-```
-<copy>
-select ai agent I''ll take a refund; 
-</copy>
-```
-> Note: SQL requires escaping single quotes with ''.
+    ```
+    RESPONSE
+    Thanks for the reason (box was broken). To complete the return email, please also share your full name and order number.
+    ```
 
-**Typical result expected:**
+    **Prompt:**
 
-```
-RESPONSE
-Got it—refund for the smartphone cord due to broken box. Please provide your full name and order number to finalize the email.
+    ```
+    <copy>
+    select ai agent I''ll take a refund; 
+    </copy>
+    ```
 
-```
+    > Note: SQL requires escaping single quotes with '' (double single quotes).
 
-**Prompt:**
+    **Typical result expected:**
 
-```
-<copy>
-select ai agent I''m Eva Green with order number 5019
-</copy>
+    ```
+    RESPONSE
+    Got it—refund for the smartphone cord due to broken box. Please provide your full name and order number to finalize the email.
+    ```
 
-```
+    **Prompt:**
 
-**Typical result expected:**
+    ```
+    <copy>
+    select ai agent I''m Eva Green with order number 5019
+    </copy>
 
-```
-RESPONSE
-Subject: Return Confirmation for Order $5019
+    ```
 
-Dear Eva Green,
+    **Typical result expected:**
 
-Thank you for reaching out regarding your return request. We're sorry to hear about the issue with your order.
+    ```
+    RESPONSE
+    Subject: Return Confirmation for Order $5019
 
-This email confirms that we have processed your return for the smartphone cord from order number 5019. The reason for the return is that the box was broken.
+    Dear Eva Green,
 
-As requested, a refund will be issued to the credit card on record. Please allow 5-7 business days for the refund to appear on your statement.
+    Thank you for reaching out regarding your return request. We're sorry to hear about the issue with your order.
 
-If you have any further questions, feel free to reply to this email. We're here to help!
+    This email confirms that we have processed your return for the smartphone cord from order number 5019. The reason for the return is that the box was broken.
 
-Best regards,  
-Your Customer Return Agent    
-```
+    As requested, a refund will be issued to the credit card on record. Please allow 5-7 business days for the refund to appear on your statement.
+
+    If you have any further questions, feel free to reply to this email. We're here to help!
+  
+    Best regards,  
+    Your Customer Return Agent    
+    ```
 
 This result relied on the LLM to generate a form letter using its own *creativity*. The specific content may differ from customer to customer as is typical for LLMs. To ensure we have a consistent form letter response, you will define a function that generates exactly the text you want in Lab 4 "Define a function to populate a standard form email".
 

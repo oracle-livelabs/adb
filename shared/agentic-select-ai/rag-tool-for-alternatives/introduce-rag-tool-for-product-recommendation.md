@@ -55,7 +55,7 @@ This lab requires completion of the previous labs in the **Contents** menu on th
 Define an AI Profile that has your LLM and database objects and is ready to use RAG once a vector index exists.
 
 1. Define AI profile for RAG using the previously created OCI Credential. Create an AI profile for RAG usage. If you have any problems, make sure to review the OCI Credentials you created in Lab 1, Task 6: Check OCI Credentials. 
-```
+    ```
     <copy>
     BEGIN  
       DBMS_CLOUD_AI.drop_profile(profile_name => 'SALES_AGENT_RAG_PROFILE');
@@ -71,65 +71,66 @@ Define an AI Profile that has your LLM and database objects and is ready to use 
                             "vector_index_name": "SALES_AGENT_VECTOR_INDEX"}');  
     END;
       </copy>
-```
+    ```
 > Note: The default values are listed as comments.
 
 
 2. List the document stored in the Object Storage. We are again using the same credentials defined in Lab 1, Task 6: Check OCI Credentials.
 
-```
-<copy>
-select * from
-  DBMS_CLOUD.LIST_OBJECTS(
-    credential_name => 'AI_CREDENTIAL',
-    location_uri    => 'https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/')
-</copy>
-```
+    ```
+    <copy>
+    select * from
+      DBMS_CLOUD.LIST_OBJECTS(
+        credential_name => 'AI_CREDENTIAL',
+        location_uri    => 'https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/')
+    </copy>
+    ```
 
 3. Build a vector index over product docs stored in Object Storage. The index is used by RAG.
-```
-<copy>
+    ```
+    <copy>
  
 
-BEGIN
-  DBMS_CLOUD_AI.DROP_VECTOR_INDEX(
-  index_name  => 'SALES_AGENT_VECTOR_INDEX',
-  include_data => TRUE);
-  EXCEPTION WHEN OTHERS THEN NULL;
-END;
-/
-BEGIN
-  DBMS_CLOUD_AI.CREATE_VECTOR_INDEX(
-    index_name  => 'SALES_AGENT_VECTOR_INDEX',
-    attributes  => '{"vector_db_provider": "oracle",
-                    "location": "https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/",
-                    "object_storage_credential_name": "AI_CREDENTIAL",
-                    "profile_name": "SALES_AGENT_RAG_PROFILE", 
-                    "vector_distance_metric": "cosine",
-                    "chunk_overlap":50,
-                    "chunk_size":450,
-                    "match_limit": 2}',
-      description => 'Vector index for sales return agent scenario');
-END;
-  </copy>
-```
-4. Set the AI profile in the current session.
-  ```
-  <copy>
-   
-  EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
-  </copy>
-  ```
-5. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
-  ```
-  <copy>
-  select ai narrate what are alternatives for the smartphone case
+    BEGIN
+      DBMS_CLOUD_AI.DROP_VECTOR_INDEX(
+      index_name  => 'SALES_AGENT_VECTOR_INDEX',
+      include_data => TRUE);
+      EXCEPTION WHEN OTHERS THEN NULL;
+    END;
+    /
+    BEGIN
+      DBMS_CLOUD_AI.CREATE_VECTOR_INDEX(
+        index_name  => 'SALES_AGENT_VECTOR_INDEX',
+        attributes  => '{"vector_db_provider": "oracle",
+                        "location": "https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Ded5xi3epojX1pUbgOSPOQzGVWmaX6606CP8L4dhIdbjTOobdpEC4y0FRSdXvi5C/n/adwc4pm/b/sales-return-agent-rag-docs/o/",
+                        "object_storage_credential_name": "AI_CREDENTIAL",
+                        "profile_name": "SALES_AGENT_RAG_PROFILE", 
+                        "vector_distance_metric": "cosine",
+                        "chunk_overlap":50,
+                        "chunk_size":450,
+                        "match_limit": 2}',
+          description => 'Vector index for sales return agent scenario');
+    END;
     </copy>
-  ```
+    ```
+
+4. Set the AI profile in the current session.
+    ```
+    <copy>
+   
+    EXEC DBMS_CLOUD_AI.SET_PROFILE(profile_name => 'SALES_AGENT_RAG_PROFILE');
+    </copy>
+    ```
+5. Use natural language prompts to run a test using our LLM and specific content. Ask for alternate product recommendations.
+    ```
+    <copy>
+    select ai narrate what are alternatives for the smartphone case
+    </copy>
+    ```
 
   **Typical result expected:**
 
-  ```
+```
 RESPONSE
 Alternatives for smartphone cases include TitanGuard Pro, ClearEdge Ultra, and ArmorFlex Shield. TitanGuard Pro is a military-grade case with reinforced corners and dust-proof port covers, designed for rugged outdoor use. ClearEdge Ultra is a crystal-clear slim case made with hybrid polymer to resist scratches and yellowing, showcasing the phone's design while offering light protection. ArmorFlex Shield is built with a shock-absorbing TPU frame and scratch-resistant polycarbonate back, designed for maximum impact protection without adding unnecessary bulk.
 
@@ -226,25 +227,24 @@ END;
 ## Task 5: Interact with your Updated RAG Agent
 Start interacting with the updated RAG agent with natural language prompts.
 1. Set the Agent Team for RAG in the session.
-```
-<copy>
- 
+    ```
+    <copy>
 
-EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
-	</copy>
-```
+    EXEC DBMS_CLOUD_AI_AGENT.set_team(team_name  => 'Return_Agency_Team');
+    </copy>
+    ```
 
 2. Interact with the new RAG agent.
-```
-<copy>
-select ai agent I want to return a smartphone case just received
-</copy>
-```
-**RESULT**
-```
-RESPONSE
-Can you please tell me the reason for returning the smartphone case? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective?
-```
+    ```
+    <copy>
+    select ai agent I want to return a smartphone case just received
+    </copy>
+    ```
+    **RESULT**
+    ```
+    RESPONSE
+    Can you please tell me the reason for returning the smartphone case? Is it no longer needed, did it arrive too late, is the box broken, or is the product defective?
+    ```
 
 You may continue with the following prompts as per the below sequence:
 
@@ -271,8 +271,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
-* **Last Updated By/Date:** Sarika Surampudi, February 2026
+* **Contributors:** Marcos Arancibia, Lead Principal Product Mgr; Sherry LaMonica, Lead Principal Product Mgr; Mark Hornick, Senior Dir. of ML and AI Product Management; Laura Zhao, Member of Technical Staff
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 
 Copyright (c) 2026 Oracle Corporation.

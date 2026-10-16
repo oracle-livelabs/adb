@@ -25,36 +25,36 @@ In this lab, you will:
 
 1. We will launch the **Ask Oracle Select AI Application**. 
 <if type="tenancy">
-   The application and its URL were created during the installation of the Ask Oracle Select AI Chatbot Application in **Lab 1** -> **Task 4**.
-   Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. 
+    The application and its URL were created during the installation of the Ask Oracle Select AI Chatbot Application in **Lab 1** -> **Task 4**.
+    Paste the URL in a new tab in your Web browser, and then click **[ENTER]**. 
 </if>
 <if type="sandbox">
-   The URL for the Ask Oracle Sekect AI Chatbot is available in your LiveLabs reservation information.  
-   You can check the section Get Started with LiveLabs as a reminder on how to find your reservation information.
+    The URL for the Ask Oracle Sekect AI Chatbot is available in your LiveLabs reservation information.  
+    You can check the section Get Started with LiveLabs as a reminder on how to find your reservation information.
 
-   ![Open Ask Oracle Select AI Chatbot link](./images/sandbox-open-ask-oracle.png =70%x*)
+    ![Open Ask Oracle Select AI Chatbot link](./images/sandbox-open-ask-oracle.png =70%x*)
 </if>
 
-In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. 
+    In the **Ask Oracle** page, enter the username and password, and then click **Sign In**. 
 
-  ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
+    ![Enter Ask Oracle Chatbot credentials](./images/ask-oracle-login.png =70%x*)
 
 2. Since it's the first time you sign in, the **Set Admin Users** window in the **Ask Oracle Select AI** application is displayed. You can click __SKIP__ and the current signed-in username will be stored as an **Admin Users**. Otherwise you can enter the desired username as ADMIN and click **Save Admin Users**.
 
 <if type="sandbox">
-   ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users.png =70%x*)
+    ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users.png =70%x*)
 </if>
 <if type="tenancy">
-   ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users-adbuser.png =70%x*)
+    ![Enter comma separated usernames as Admin users](./images/ask-oracle-set-admin-users-adbuser.png =70%x*)
 </if>
 
 3. The **Ask Oracle Select AI Chatbot** application is displayed.
     
 4. In the **Ask Question** prompt field, click the **+** menu and select **Agent Team**.  Notice that the bottom right indicates that agent team is `RETURN_AGENCY_TEAM`. You will see a section on the right of the conversation prompt that allows you to switch the Agent Team Profile. If you have configured other agent profiles using Select AI Agent framework, click the pull-down menu and select `RETURN_AGENCY_TEAM` profile. <if type="tenancy">  This profile was created in **Task 9 of Lab 2**. </if><if type="sandbox"> This profile was created in **Task 9 of Lab 1**. </if>
 
-   ![Select OCI_GENAI profile](./images/ask-oracle-enter-prompt-agents.png =70%x*)
+    ![Select OCI_GENAI profile](./images/ask-oracle-enter-prompt-agents.png =70%x*)
 
-You are now ready to ask questions at the prompt area!
+    You are now ready to ask questions at the prompt area!
 
 
 ## Task 2: Interact with the Sales Return Agent
@@ -70,30 +70,30 @@ For example, follow this script:
 ## Task 3 (optional): Create NL2SQL Profile
 To create NL2SQL profile:
 1. Add a paragraph in your OML Notebook by clicking the **+** symbol.
-![Add a paragraph](./images/add-paragraph.png)
+    ![Add a paragraph](./images/add-paragraph.png)
 
 2. Create a NL2SQL Profile by pasting the following code.
-  ```
-  <copy>
+    ```
+    <copy>
 
     
-  BEGIN
-    DBMS_CLOUD_AI.CREATE_PROFILE(
-        profile_name =>'OCI_GENAI',
-        attributes   =>'{"provider": "oci",
-        "credential_name": "AI_CREDENTIAL",
-        "conversation": "true",
-        "object_list": [{"owner": "SH", "name": "customers"},
-                        {"owner": "SH", "name": "countries"},
-                        {"owner": "SH", "name": "supplementary_demographics"},
-                        {"owner": "SH", "name": "profits"},
-                        {"owner": "SH", "name": "promotions"},
-                        {"owner": "SH", "name": "products"}]
-          }');
-  END;
-  /
-  </copy>
-  ```
+    BEGIN
+      DBMS_CLOUD_AI.CREATE_PROFILE(
+          profile_name =>'OCI_GENAI',
+          attributes   =>'{"provider": "oci",
+          "credential_name": "AI_CREDENTIAL",
+          "conversation": "true",
+          "object_list": [{"owner": "SH", "name": "customers"},
+                          {"owner": "SH", "name": "countries"},
+                          {"owner": "SH", "name": "supplementary_demographics"},
+                          {"owner": "SH", "name": "profits"},
+                          {"owner": "SH", "name": "promotions"},
+                          {"owner": "SH", "name": "products"}]
+            }');
+    END;
+    /
+    </copy>
+    ```
 
 
 ## Task 4: (Optional) Ask Natural Language and Database Questions Using the Application
@@ -121,98 +121,43 @@ Let's experiment a bit with both general data from the _internet_ and also from 
    
     > You can type your own natural language question. You don't have to use the exact question that we show in our examples.
   
-  ![Ask the LLM](./images/ask-oracle-french-toast-recipe.png =70%x*)
+    ![Ask the LLM](./images/ask-oracle-french-toast-recipe.png =70%x*)
 
-  A French toast recipe is displayed.
+    A French toast recipe is displayed.
 
-  ![LLM's response](./images/ask-oracle-french-toast-recipe-display.png =70%x*)
+    ![LLM's response](./images/ask-oracle-french-toast-recipe-display.png =70%x*)
 
-1. Let's find out _How many customers do I have in each country?_ Enter your question using a free form format in the **Ask Question** text box, and select the **Database** checkbox since this is a question about the tables present in the OCI_GENAI profile. Next, press **[ENTER]**. 
+2. Let's find out _How many customers do I have in each country?_ Enter your question using a free form format in the **Ask Question** text box, and select the **Database** checkbox since this is a question about the tables present in the OCI_GENAI profile. Next, press **[ENTER]**. 
    The number of customers along with the countries are displayed.
   ![Select Database and ask database tables related question](./images/ask-oracle-database.png =70%x*)
   
-2. Check the **Database** and **Narrate** checkbox to ask questions about your database data based on the user and tables in the database specified in the AI profile such as:
+3. Check the **Database** and **Narrate** checkbox to ask questions about your database data based on the user and tables in the database specified in the AI profile such as:
 
   _How many customers are females?_
 
     ![Select Database and Narrate checkboxes](./images/ask-oracle-narrate.png =80%x*)
 
-3. Now run Step 1 again and click **Explain** to view and explain the SQL query behind this natural language question.
+4. Now run Step 1 again and click **Explain** to view and explain the SQL query behind this natural language question.
    ![Click Explain to view the explanation of the generated SQL](./images/ask-oracle-explain.png =80%x*)
-4. When you finish reviewing, click the Back icon (left arrow) to return to the conversation on Home page.
+5. When you finish reviewing, click the Back icon (left arrow) to return to the conversation on Home page.
    ![Click Explain to view the generated SQL](./images/ask-oracle-explain-sql.png =80%x*)
-5. Now, click **Explore**.
+6. Now, click **Explore**.
    ![Select Explore](./images/ask-oracle-explore.png =80%x*)
    The **Explore** page is displayed.
    ![Select Explore](./images/ask-oracle-explore-display.png =80%x*)
-6. Click the **Actions** drop-down list to perform several tasks on the generated data such as sorting, downloading, formatting, charting and much more. 
+7. Click the **Actions** drop-down list to perform several tasks on the generated data such as sorting, downloading, formatting, charting and much more. 
   ![Select Actions and explore various options](./images/ask-oracle-explore-actions.png =80%x*)
-7. When you finish exploring, click the **Back** icon (left arrow) to return to the conversation on Home page. Now, click **Show SQL**.
+8. When you finish exploring, click the **Back** icon (left arrow) to return to the conversation on Home page. Now, click **Show SQL**.
   ![Select Show SQL](./images/ask-oracle-showsql.png =80%x*)
-8. You can now see the SQL code generated by Select AI.
+9. You can now see the SQL code generated by Select AI.
    ![View generated SQL](./images/ask-oracle-showsql-display.png =80%x*)
-9. Finally, there is also a button to **Show Charts** that enables you to play interactively with the data.
+10. Finally, there is also a button to **Show Charts** that enables you to play interactively with the data.
     ![Select Show Charts](./images/ask-oracle-show-charts.png =80%x*)
    
-   The chart is displayed:
-   ![Displays a bar chart of the data](./images/ask-oracle-show-charts-display.png =70%x*)
+    The chart is displayed:
+    ![Displays a bar chart of the data](./images/ask-oracle-show-charts-display.png =70%x*)
 
-  > LLMs are remarkable at inferring intent from the human language and they are getting better all the time; however, they are not perfect! It is very important to verify the results.
-   
-  <!--  Uncheck **Narrate**. Use the following prompt:
-  
-    _How many customers do I have in each country?_
-  
-    Ask another follow up question such as:
-  
-    _Break that out by gender_
-  
-      ![Uncheck Narrate and have conversation](./images/ask-oracle-uncheck-narrate.png =70%x*)
-  
-  3. Click **Explain**. 
-  
-      ![Click Explain](./images/ask-oracle-explain.png =70%x*)
-  
-    The following screen displays:
-  
-      ![Explains the SQL](./images/ask-oracle-explain-sql.png)
-  
-    When finished viewing, click the back arrow and continue with the following script:
-  
-    _Can you change that to have the country in one column and other columns such as male, female and total?_
-  
-    _Display this result in a bar chart_
-  
-    _Put the results in descending_
-  
-    _How many customers do I have in each country?_
-  
-  
-  - **Use RAG:**
-  Click **+** and select **RAG** to ask questions using retrieval augmented generation (RAG). Before you submit the prompt, ensure that the RAG profile `SALES_AGENT_RAG_PROFILE` created earlier in **Lab 5** is selected. Ask questions relative to the corresponding vector index content for Select AI to augment your prompt with relevant content for the LLM. We have created a vector index in **Lab 5** -> **Task 1**.
-  
-  1. First, we’ll just ask our LLM without RAG, so select the **Chat** checkbox. The LLM returns a general response describing Select AI RAG capabilities based on its training, without using any content from your vector index.
-  
-    _What are the benefits of Select AI for retrieval augmented generation (RAG)?_
-  
-      ![Select Chat](./images/ask-oracle-rag-chat.png =70%x*)
-  
-  2. Uncheck **Chat** and then ask:
-  
-    _what are alternatives for the smartphone case_
-  
-    > **Tip**: Ask a question based on the RAG profile you selected, which references the documents stored in your vector database. 
-    
-    Select AI now uses retrieval augmented generation to ground the response in your vector index. The LLM returns recommendations based on the content of your documents, not general model knowledge.
-  
-  3. Let’s see the specific chunks provided to the LLM, so select the **Show chunk details** checkbox.
-  
-    _What do I need to specify in my AI profile to enable RAG?_
-  
-    ![Show chunk details](./images/ask-oracle-show-chunk-details.png =70%x*)
-  
-    Select AI splits source documents into smaller units called chunks and stores them in the vector index. During a RAG query, Select AI retrieves the most relevant chunks using semantic search and adds them to the prompt sent to the LLM. This process gives the model focused context from your documents and helps reduce hallucinations.
-   -->
+    > LLMs are remarkable at inferring intent from the human language and they are getting better all the time; however, they are not perfect! It is very important to verify the results.
 
 You may now proceed to the next lab.
 

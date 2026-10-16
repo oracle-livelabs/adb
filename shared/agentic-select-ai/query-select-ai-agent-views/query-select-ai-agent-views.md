@@ -90,30 +90,30 @@ See each tool call the agent made. Which tool, with what inputs, and what came b
 
 1. Query `USER_AI_AGENT_TOOL_HISTORY`.
 
-```
-<copy>
-select * from USER_AI_AGENT_TOOL_HISTORY
-order by START_DATE desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TOOL_HISTORY
+    order by START_DATE desc
+    </copy>
+    ```
 
 2. Query `USER_AI_AGENT_TASK_HISTORY`.
 
-```
-<copy>
-select * from USER_AI_AGENT_TASK_HISTORY
- order by START_DATE desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TASK_HISTORY
+    order by START_DATE desc
+    </copy>
+    ```
 
 3. Query `USER_AI_AGENT_TEAM_HISTORY`.
 
-```
-<copy>
-select * from USER_AI_AGENT_TEAM_HISTORY
-order by START_DATE desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TEAM_HISTORY
+    order by START_DATE desc
+    </copy>
+    ```
 
 You may now proceed to the next lab.
 
@@ -128,8 +128,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
-* **Last Updated By/Date:** Sarika Surampudi, February 2026
+* **Contributors:** Marcos Arancibia, Lead Principal Product Mgr; Mark Hornick, Senior Dir. of ML and AI Product Mgt; Laura Zhao, Member of Technical Staff
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 
 Copyright (c) 2026 Oracle Corporation.

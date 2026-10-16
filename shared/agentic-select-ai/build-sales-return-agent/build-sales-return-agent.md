@@ -65,7 +65,7 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 2. To access the URL for the Oracle Machine Learning sign in page, go to your Autonomous AI Database details page and click **Tool configuration**.
 
    Go to the **Oracle Machine Learning user interface** section and click **Copy**. Paste the URL on the browser to sign into Oracle Machine Learning user interface.
-  ![Access OML User Interface URL](../build-sales-return-agent/images/oml-notebook-url.png)
+   ![Access OML User Interface URL](../build-sales-return-agent/images/oml-notebook-url.png)
 
 3. To sign in, write the ADB username and password.  Click **Sign In**.
 
@@ -76,46 +76,46 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 <if type="sandbox">
 2. To access the URL for the Oracle Machine Learning UI, click on the *View Login Info* on your LiveLabs reservation.
 
-   ![Click on View Login Info at the top left](../build-sales-return-agent/images/sandbox-view-login-info.png)
+    ![Click on View Login Info at the top left](../build-sales-return-agent/images/sandbox-view-login-info.png)
 
-   Scroll down in the list of options on the right. Make sure to click on Button (1) to copy the ADB User password, and then click on Button (2) to go to the Oracle Machine Learning UI.
-   ![Click on ADB User password and Login to OML UI](../build-sales-return-agent/images/sandbox-copy-pass-and-click-url.png)
+    Scroll down in the list of options on the right. Make sure to click on Button (1) to copy the ADB User password, and then click on Button (2) to go to the Oracle Machine Learning UI.
+    ![Click on ADB User password and Login to OML UI](../build-sales-return-agent/images/sandbox-copy-pass-and-click-url.png)
 
 3. To sign in, write the username **SELECT\_AI\_USER** and paste the copied password.  Click **Sign In**.
 
-   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
+    ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
 
 </if>
 
 4. From the OML UI Home page, click on **Notebooks**
-   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-oml-home.png) 
+    ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-oml-home.png) 
 
 5. From the Notebooks listing page, click on **Import** => **File**
-   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-notebooks-import.png) 
+    ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-notebooks-import.png) 
 
 <if type="tenancy">
-6. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
+6. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales  Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
-  ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
+    ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
 
-  If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
+    If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
 
-  ![The newly imported notebook is displayed.](../build-sales-return-agent/images/notebook-imported.png " ")
+    ![The newly imported notebook is displayed.](../build-sales-return-agent/images/notebook-imported.png " ")
 </if>
 
 <if type="sandbox">
 6. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
-  ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
+   ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
 
-  If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
+   If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
 
-  ![The newly imported notebook is displayed.](../build-sales-return-agent/images/sandbox-notebook-imported.png " ")
+   ![The newly imported notebook is displayed.](../build-sales-return-agent/images/sandbox-notebook-imported.png " ")
 </if>
 
 7. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
 
-  ![The notebook is opened and the editor shown.](../build-sales-return-agent/images/sandbox-notebook-open.png " ")
+   ![The notebook is opened and the editor shown.](../build-sales-return-agent/images/sandbox-notebook-open.png " ")
 
 ## Task 2: Create and Review Customer and Order Tables
 
@@ -348,20 +348,20 @@ Before you create and use an AI profile, you must create your OCI credential. In
 Follow these steps to create your OCI credentials:
 1. User OCID
 
-   a. Go to the OCI Console.
+    a. Go to the OCI Console.
 
-   b. Open the profile menu (top right, click your profile icon) -> **User Settings**.
+    b. Open the profile menu (top right, click your profile icon) -> **User Settings**.
 
-   c. Copy the OCID shown there.
-   ![Copy your user OCID](./images/copy-your-ocid.png =70%x*)
+    c. Copy the OCID shown there.
+    ![Copy your user OCID](./images/copy-your-ocid.png =70%x*)
 
 2. Tenancy OCID
 
-   a. From the same user menu -> go to **Tenancy**.
-   ![Click Tenancy from profile menu](./images/click-tenancy.png =70%x*)
+    a. From the same user menu -> go to **Tenancy**.
+    ![Click Tenancy from profile menu](./images/click-tenancy.png =70%x*)
 
-   b. Copy the **OCID** shown there.
-   ![Copy the tenancy OCID](./images/copy-tenancy-ocid.png =70%x*)
+    b. Copy the **OCID** shown there.
+    ![Copy the tenancy OCID](./images/copy-tenancy-ocid.png =70%x*)
 
 3. Fingerprint
 
@@ -388,11 +388,11 @@ Follow these steps to create your OCI credentials:
 
 4. Private Key
 
-   This is the private key file you generated locally (when you created the API key pair).
+    This is the private key file you generated locally (when you created the API key pair).
 
-   Usually named `oci_api_key.pem`.
+    Usually named `oci_api_key.pem`.
 
-   Open it in a text editor and copy the entire contents, including:
+    Open it in a text editor and copy the entire contents, including:
      ```
      -----BEGIN PRIVATE KEY-----
      ...key content...
@@ -437,25 +437,25 @@ Follow these steps to create your OCI credentials:
 ## Task 7: Create an AI Profile
 You'll create an AI profile with LLM and a transformer of your choice, to use in the next step to create an agent. In this task, you are using xAI's GROK Reasoning model release 4.3 with the OCI Gen AI credential, as well as Select AI's default embedding model from Cohere.  Please always check the [Select AI User's Guide](https://docs.oracle.com/en/database/oracle/oracle-database/26/selai/select-your-ai-provider-and-ai-models.html) for an updated list of supported AI Providers and LLms.
 
-```
-<copy>
+    ```
+    <copy>
 
-BEGIN
-  BEGIN DBMS_CLOUD_AI.drop_profile(profile_name => 'OCI_GENAI_AGENT', force => TRUE); END;
+    BEGIN
+      BEGIN DBMS_CLOUD_AI.drop_profile(profile_name => 'OCI_GENAI_AGENT', force => TRUE); END;
 
-  DBMS_CLOUD_AI.create_profile(
-      profile_name => 'OCI_GENAI_AGENT',
-      attributes   => '{
-          "provider": "oci",
-          "credential_name": "AI_CREDENTIAL",
-          "model": "xai.grok-4.3",
-          "embedding_model": "cohere.embed-v4.0"
-      }',
-      description  => 'Supports the Select AI Sales Return Agent scenario.'
-  ); 
-END;
-</copy>
-```
+      DBMS_CLOUD_AI.create_profile(
+          profile_name => 'OCI_GENAI_AGENT',
+          attributes   => '{
+              "provider": "oci",
+              "credential_name": "AI_CREDENTIAL",
+              "model": "xai.grok-4.3",
+              "embedding_model": "cohere.embed-v4.0"
+          }',
+          description  => 'Supports the Select AI Sales Return Agent scenario.'
+      ); 
+    END;
+    </copy>
+    ```
 
 ## Task 8: Define Customer Agent
 
@@ -576,13 +576,13 @@ Let's test it:
 
 To continue, you may try these prompts in the given sequence:
 
-    a. _select ai agent Yes, I''d like to return a smartphone stand;_
+    a. select ai agent Yes, I''d like to return a smartphone stand
 
-    b. _select ai agent I no longer need it_
+    b. select ai agent I no longer need it
 
-    c. _select ai agent I''m Bob Martinez with order number is 7820_
+    c. select ai agent I''m Bob Martinez with order number is 7820
 
-    d. _select ai agent No, I''m all set. Thanks_
+    d. select ai agent No, I''m all set. Thanks
 
 
 ## Task 11: Use `DBMS_CLOUD_AI_AGENT.RUN_TEAM`
@@ -737,7 +737,7 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer; Marcos Arancibia, Lead Principal Product Mgr
-* **Contributor:** Sherry LaMonica, Lead Principal Product Manager; Mark Hornick, Senior Dir. of ML and AI Product Management;  Laura Zhao, Member of Technical Staff
+* **Contributor:** Sherry LaMonica, Lead Principal Product Manager; Mark Hornick, Senior Dir. of ML and AI Product Mgt;  Laura Zhao, Member of Technical Staff
 * **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 Copyright (c) 2026 Oracle Corporation.

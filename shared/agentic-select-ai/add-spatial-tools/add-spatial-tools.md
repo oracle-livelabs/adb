@@ -116,22 +116,22 @@ You will create a SQL function a function that finds the closest store for local
 
 1. Create a function that finds the closest store for local pickup. The function works in three steps:
 
-   * It builds a drive-time polygon around the customer's address with `SDO_GCDR.ELOC_DRIVE_TIME_POLYGON`. The polygon covers the area reachable within 45 minutes by car.
-   * It counts the stores that fall inside that polygon.
-   * It ranks those stores by route drive time with `SDO_GCDR.ELOC_ROUTE_TIME`, and returns the closest store and its drive time.
+    * It builds a drive-time polygon around the customer's address with `SDO_GCDR.ELOC_DRIVE_TIME_POLYGON`. The polygon covers the area reachable within 45 minutes by car.
+    * It counts the stores that fall inside that polygon.
+    * It ranks those stores by route drive time with `SDO_GCDR.ELOC_ROUTE_TIME`, and returns the closest store and its drive time.
 
-    ```
+     ```
     <copy>
     
     CREATE OR REPLACE FUNCTION find_local_pickup (
-      p_customer_name IN VARCHAR2,
-      p_order_number  IN VARCHAR2
-    ) RETURN CLOB IS
-      isochrone       SDO_GEOMETRY;
-      out_store_name  stores.store_name%TYPE;
-      out_drive_time  NUMBER;
-      out_nstores     NUMBER;
-    BEGIN
+       p_customer_name IN VARCHAR2,
+       p_order_number  IN VARCHAR2
+      ) RETURN CLOB IS
+       isochrone       SDO_GEOMETRY;
+       out_store_name  stores.store_name%TYPE;
+       out_drive_time  NUMBER;
+       out_nstores     NUMBER;
+      BEGIN
       -- Step 1: Build a drive-time polygon around the customer's address.
       -- This polygon represents the geographic area reachable within 45 minutes by car.
       SELECT SDO_GCDR.ELOC_DRIVE_TIME_POLYGON(c.address, 'US', 45, 'minute', 'auto')
