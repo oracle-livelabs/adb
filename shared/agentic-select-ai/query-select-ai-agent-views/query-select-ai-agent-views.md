@@ -1,17 +1,17 @@
-# Query Select AI Agent Views
+# Query Select AI Agent Framework Views
 
 ## Introduction
 
-In this lab, you’ll inspect what happened during an agent run. You will read Select AI Agent history views to see team, task, and tool. You’ll also add a small helper procedure that prints the task, agent, prompt and prompt response for any conversation.
+In this lab, you’ll inspect what happened during an agent run. You will read Select AI Agent Framework history views to see team, task, and tool operations. You’ll also run a short query that prints the task, agent, prompt and prompt response for any conversation.
 
-Estimated Time: x
+Estimated Time: 10 minutes
 
 ### Objectives
 
 In this lab, you will:
 
 * Create a helper procedure that prints team processing (task → agent → prompt → response).
-* Explore the schemas of the Select AI Agent history views.
+* Explore the schemas of the Select AI Agent Framework history views.
 * Run focused queries on:
     * `USER_AI_AGENT_TOOL_HISTORY`
     * `USER_AI_AGENT_TASK_HISTORY`
@@ -34,7 +34,7 @@ Replace _`USER`_ with your user name.
 
 ## Task 1: Query the Latest Team Processing Details
 
-You are building a quick debugging query that shows a readable timeline of a conversation: team, agent, task, prompt, and final response.
+You are building a quick debugging query that shows the task, agent, prompts, and responses from the most recent agent run.
 
 Run the following query:
 ```
@@ -68,7 +68,7 @@ ORDER BY task.start_date DESC NULLS LAST,
 </copy>
 ```
 
-## Task 2: View the Schema of Select AI Agent Views
+## Task 2: View the Schema of Select AI Agent Framework Views
 
 You'll inspect columns and data types so you know what you can filter and display.
 
@@ -86,41 +86,41 @@ describe USER_AI_AGENT_TEAM_HISTORY;
 
 ## Task 3: Query the `USER_AI_AGENT_` Views
 
-See each tool call the agent made which tool, with what inputs, and what came back. Review task-level flow: which tasks ran, their order, what inputs were used, what were the results, were there any error messages, and what parameters were used. Summarize each end-to-end run: when it started, their status, and conversation context used.
+See each tool call the agent made. Which tool, with what inputs, and what came back. Review task-level flow: which tasks ran, their order, what inputs were used, what were the results, were there any error messages, and what parameters were used. Summarize each end-to-end run: when it started, its status, and conversation context used.
 
 1. Query `USER_AI_AGENT_TOOL_HISTORY`.
 
-```
-<copy>
-select * from USER_AI_AGENT_TOOL_HISTORY
-order by START_DATE desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TOOL_HISTORY
+    order by START_DATE desc
+    </copy>
+    ```
 
 2. Query `USER_AI_AGENT_TASK_HISTORY`.
 
-```
-<copy>
-select * from USER_AI_AGENT_TASK_HISTORY
- order by START_DATE desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TASK_HISTORY
+    order by START_DATE desc
+    </copy>
+    ```
 
-3. Query `USER_AI_AGENT_TEAM_HISTORY`
+3. Query `USER_AI_AGENT_TEAM_HISTORY`.
 
-```
-<copy>
-select * from USER_AI_AGENT_TEAM_HISTORY
-order by START_DATE desc
-</copy>
-```
+    ```
+    <copy>
+    select * from USER_AI_AGENT_TEAM_HISTORY
+    order by START_DATE desc
+    </copy>
+    ```
 
 You may now proceed to the next lab.
 
 ## Learn More
 
-* [Select AI Agent](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html)
-* [Select AI Agent Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
+* [Select AI Agent Framework](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/select-ai-agent1.html)
+* [Select AI Agent Framework Package](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/dbms-cloud-ai-agent-package.html)
 * [OML Notebooks](https://docs.oracle.com/en/database/oracle/machine-learning/oml-notebooks/index.html)
 * [Using Oracle Autonomous AI Database Serverless](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/index.html)
 
@@ -128,8 +128,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** Mark Hornick, Product Manager; Laura Zhao, Member of Technical Staff
-* **Last Updated By/Date:** Sarika Surampudi, February 2026
+* **Contributors:** Marcos Arancibia, Lead Principal Product Mgr; Mark Hornick, Senior Dir. of ML and AI Product Mgt; Laura Zhao, Member of Technical Staff
+* **Last Updated By/Date:** Marcos Arancibia, October 2026
 
 
 Copyright (c) 2026 Oracle Corporation.
