@@ -72,7 +72,7 @@ Define an AI Profile that has your LLM and database objects and is ready to use 
     END;
       </copy>
     ```
-> Note: The default values are listed as comments.
+    > Note: The default values are listed as comments.
 
 
 2. List the document stored in the Object Storage. We are again using the same credentials defined in Lab 1, Task 6: Check OCI Credentials.

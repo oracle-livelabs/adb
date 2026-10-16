@@ -64,12 +64,12 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 <if type="tenancy">
 2. To access the URL for the Oracle Machine Learning sign in page, go to your Autonomous AI Database details page and click **Tool configuration**.
 
-   Go to the **Oracle Machine Learning user interface** section and click **Copy**. Paste the URL on the browser to sign into Oracle Machine Learning user interface.
-   ![Access OML User Interface URL](../build-sales-return-agent/images/oml-notebook-url.png)
+    Go to the **Oracle Machine Learning user interface** section and click **Copy**. Paste the URL on the browser to sign into Oracle Machine Learning user interface.
+    ![Access OML User Interface URL](../build-sales-return-agent/images/oml-notebook-url.png)
 
 3. To sign in, write the ADB username and password.  Click **Sign In**.
 
-   ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
+    ![Sign in with SELECT_AI_USER and paste the password](../build-sales-return-agent/images/sandbox-login-to-oml-ui.png)
 
 </if>
 
@@ -106,11 +106,11 @@ In this task, you will first download the **`SelectAI4SQL - AI Agents - Sales Re
 <if type="sandbox">
 6. The **Open** dialog box is displayed. Navigate to your local folder where you downloaded the OML notebook, and select the **`SelectAI4SQL - AI Agents - Sales Return Agent.dsnb`** notebook file. The file is displayed in the **File Name** field. Make sure that the **Custom Files (*.dsnb;\*.ipynb;\*.json;\*.zpln)** type is selected in the second drop-down field, and then click **Open**.
 
-   ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
+    ![The Open dialog box is displayed](../build-sales-return-agent/images/notebook-open-dialog.png " ")
 
-   If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
+    If the import is successful, a notification is displayed and the **`SelectAI4SQL - AI Agents - Sales Return Agent`** notebook is displayed in the list of available notebooks.
 
-   ![The newly imported notebook is displayed.](../build-sales-return-agent/images/sandbox-notebook-imported.png " ")
+    ![The newly imported notebook is displayed.](../build-sales-return-agent/images/sandbox-notebook-imported.png " ")
 </if>
 
 7. Open the imported notebook. Click the notebook's name link. The notebook is displayed in the Notebook **Editor**. Read the paragraphs in this notebook.
@@ -365,25 +365,25 @@ Follow these steps to create your OCI credentials:
 
 3. Fingerprint
 
-   This comes from the public key you upload when you create an API key.
+    This comes from the public key you upload when you create an API key.
 
-   a. Navigate to **User Settings** -> **Tokens and Keys** -> click **Add API key**.
+    a. Navigate to **User Settings** -> **Tokens and Keys** -> click **Add API key**.
 
-   ![Click User settings in your profile](./images/profile-user-settings.png =70%x*)
-   ![Navigate to Tokens and Keys tab](./images/tokens-and-keys-tab.png)
+    ![Click User settings in your profile](./images/profile-user-settings.png =70%x*)
+    ![Navigate to Tokens and Keys tab](./images/tokens-and-keys-tab.png)
    
-   b. After creating and uploading a public key, OCI generates a fingerprint for it. Copy that value. 
-   If you already have a public key on your system, skip the first step below:
+    b. After creating and uploading a public key, OCI generates a fingerprint for it. Copy that value.
+    If you already have a public key on your system, skip the first step below:
 
-   b1. If you are creating a new API key, select **Generate API key pair** and click **Download public key** and **Download private key** to download both public and private keys to your local system.
-   ![Create your API key pair](./images/gen-api-key-pair.png)
+    b1. If you are creating a new API key, select **Generate API key pair** and click **Download public key** and **Download private key** to download both public and private keys to your local system.
+    ![Create your API key pair](./images/gen-api-key-pair.png)
   
-   b2. Come back to the Add API key screen and select **Choose public key file** and upload the file from your system or drag and drop the file. Once your file is uploaded, the **Add** button is enabled. Click **Add**.
-   ![Choose public key file](./images/upload-public-key.png)
+    b2. Come back to the Add API key screen and select **Choose public key file** and upload the file from your system or drag and drop the file. Once your file is uploaded, the **Add** button is enabled. Click **Add**.
+    ![Choose public key file](./images/upload-public-key.png)
 
-   b3. OCI generates a fingerprint and a Configuration file preview is displayed. Copy the fingerprint value and click **Close**.
+    b3. OCI generates a fingerprint and a Configuration file preview is displayed. Copy the fingerprint value and click **Close**.
 
-   You can also copy the fingerprint value after closing the Configuration file preview screen under the API Keys section in the console.
+    You can also copy the fingerprint value after closing the Configuration file preview screen under the API Keys section in the console.
 
 
 4. Private Key
