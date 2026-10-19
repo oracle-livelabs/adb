@@ -114,7 +114,7 @@ Kevin needs store locations and affected units in one response. David chooses Ge
     </copy>
     ```
 
-    This is the same query with a parameter instead of a fixed batch. `AUTHID DEFINER` lets the function read its owner’s data without giving the caller table access. The function contains only a SELECT; it cannot change recall records. A batch with no affected stores returns an empty feature collection.
+    This is the same query with a parameter instead of a fixed batch. The function contains only a SELECT; it cannot change recall records. A batch with no affected stores returns an empty feature collection.
 
     ![2026-10-02-005131](images/2026-10-02-005131.png)
 
@@ -188,8 +188,6 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
     </copy>
     ```
 
-    Leave `RECALL_OWNER` enabled for SQL Developer Web. The setting above protects the metadata catalog; Task 3 adds protection for your custom endpoint.
-
     ![2026-10-02-005137](images/2026-10-02-005137.png)
 
 4. Create an unpublished module.
@@ -210,7 +208,7 @@ Kevin’s application needs a URL, not a SQL connection. David uses `RECALL_APP_
     </copy>
     ```
 
-    The module groups the routes under `/map/v1/`. It remains unavailable while you build and secure it. Rerunning this step replaces this exercise’s module and its handlers; continue through all remaining steps.
+    The module groups the routes under `/map/v1/`.
 
     ![2026-10-02-005138](images/2026-10-02-005138.png)
 
@@ -369,7 +367,7 @@ Kevin needs proof that the URL works and blocks anonymous access. Tim tests it f
 
     ![2026-10-02-005146](images/2026-10-02-005146.png)
 
-4. Check the number of map features. This command requires `jq`.
+4. Check the number of map features. This command requires `jq` (Check the install instructions at the end of this lab).
 
     ```bash
     <copy>
@@ -388,6 +386,34 @@ Kevin needs proof that the URL works and blocks anonymous access. Tim tests it f
 You built the SQL response, saved it as a function, connected it to a GET route, and protected that route before publishing it. Kevin’s returns application can now request the affected-store map without being allowed to query the source tables.
 
 For David, the Oracle AI Database advantage is that the API reads the same shipment records and spatial data used in the earlier labs. There is no separate spatial database or synchronization job. Tim selects the fields in SQL, while the database controls execution privileges and ORDS controls access to the web endpoint.
+
+## Install jq
+
+Task 4, step 4 uses `jq` to read the JSON response from the map endpoint. Install it for your operating system, then open a new terminal and check that it is available.
+
+### macOS
+
+In Terminal, install `jq` with [Homebrew](https://brew.sh):
+
+```bash
+brew install jq
+```
+
+### Windows
+
+In PowerShell or Windows Terminal, install `jq` with [Windows Package Manager (`winget`)](https://learn.microsoft.com/en-us/windows/package-manager/winget/):
+
+```powershell
+winget install --id jqlang.jq --exact
+```
+
+If `winget` is not recognized, install or update App Installer by following Microsoft's [WinGet installation guide](https://learn.microsoft.com/en-us/windows/package-manager/winget/).
+
+Open a new terminal and verify the installation:
+
+```text
+jq --version
+```
 
 ## Learn More
 

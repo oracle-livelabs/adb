@@ -56,27 +56,27 @@ Kevin needs the application to call approved packages, not internal tables. Davi
 
 ## Task 2: Download the Application Package
 
-    Download the packaged React application and extract it on your workstation. 
-
-    **macOS/Linux:**
-
-    ```bash
-    <copy>
-    wget -O react-app-package.zip 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip'
-    unzip react-app-package.zip
-    </copy>
-    ```
-
-    **Windows (PowerShell):**
-
-    ```powershell
-    <copy>
-    Invoke-WebRequest -Uri 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip' -OutFile react-app-package.zip
-    Expand-Archive react-app-package.zip -DestinationPath .
-    </copy>
-    ```
-
-    The command creates a `react-app` folder containing the application files. Continue to Task 3 to install the dependencies and configure your database connection.
+  Download the packaged React application and extract it on your workstation. 
+  
+  **macOS/Linux:**
+  
+  ```bash
+  <copy>
+  wget -O react-app-package.zip 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip'
+  unzip react-app-package.zip
+  </copy>
+  ```
+  
+  **Windows (PowerShell):**
+  
+  ```powershell
+  <copy>
+  Invoke-WebRequest -Uri 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip' -OutFile react-app-package.zip
+  Expand-Archive react-app-package.zip -DestinationPath .
+  </copy>
+  ```
+  
+  The command creates a `react-app` folder containing the application files. Continue to Task 3 to install the dependencies and configure your database connection.
 
 ## Task 3: Configure the Application
 

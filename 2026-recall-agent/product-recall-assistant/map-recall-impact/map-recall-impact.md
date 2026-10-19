@@ -62,15 +62,21 @@ Kevin needs a field plan, not raw coordinates. David adds locations to the datab
 
 2. Ensure and populate the `SDO_GEOMETRY` columns, then create the V2 spatial indexes.
 
+	First, we add new columns with the data type `SDP_GEOMETRY`.
+
     ```sql
     <copy>
- 
     alter table stores add (location mdsys.sdo_geometry);
     
     alter table response_centers add (location mdsys.sdo_geometry);
     
     alter table supplier_sites add (location mdsys.sdo_geometry);
-    
+	</copy>
+    ```
+
+	Then we use the function with the parameters of longitude and latitude to convert each pair of coordinates into a geographic point. Oracle AI Database can use this to calculate distances and find nearby locations.
+	```sql
+	<copy>
     update stores
     set location = mdsys.sdo_geometry(longitude, latitude);
     
@@ -79,13 +85,24 @@ Kevin needs a field plan, not raw coordinates. David adds locations to the datab
     
     update supplier_sites
     set location = mdsys.sdo_geometry(longitude, latitude);
-    
+	</copy>
+    ```
+
+	Now, we make sure that going forward data for `location` must always be provided.
+	```sql
+    <copy>
     alter table stores modify (location not null);
     
     alter table response_centers modify (location not null);
     
     alter table supplier_sites modify (location not null);
-    
+  </copy>
+    ```
+
+	Each `SPATIAL_INDEX_V2` index automatically creates the spatial metadata needed to describe its location column.
+
+	```sql
+    <copy>
     create index if not EXISTS stores_spatial_ix on stores(location) indextype is mdsys.spatial_index_v2;
     
     create index if not EXISTS response_centers_spatial_ix on response_centers(location) indextype is mdsys.spatial_index_v2;
@@ -98,8 +115,6 @@ Kevin needs a field plan, not raw coordinates. David adds locations to the datab
     ```
 
     
-
-    In the updates above, `MDSYS.SDO_GEOMETRY(longitude, latitude)` converts each pair of coordinates into a geographic point that Oracle AI Database can use to calculate distances and find nearby locations. This function is called a constructor because it creates an `SDO_GEOMETRY` value. It uses WGS84 (World Geodetic System 1984), the coordinate system used by GPS, with longitude first and latitude second. Each `SPATIAL_INDEX_V2` index automatically creates the spatial metadata needed to describe its location column.
 
 3. Update the affected-store view to use the store locations you just populated. The initial view contains a null placeholder because the spatial columns do not exist until this lab. Run this replacement before Task 2 so the distance queries receive the actual store locations.
 
@@ -145,7 +160,7 @@ Kevin needs a field plan, not raw coordinates. David adds locations to the datab
     </copy>
     ```
 
-    Each row is a two-dimensional point with geometry type `2001` and SRID `4326`.
+    Each row is a two-dimensional point with geometry type `2001` and SRID `4326`. Also, note that longitude and latitude is derived from the new location column (and not from the existing columns longitude and latitude).
 
     ![2026-09-18-004986](images/2026-09-18-004986.png)
 
@@ -285,7 +300,7 @@ Kevin needs one center accountable for each location. David chooses a repeatable
 
 ## Task 4: Map Stores and Supplier Sites
 
-Kevin needs store and supplier locations in the returns application. David uses GeoJSON, a common map-data format; Tim prepares the location results.
+Kevin needs store and supplier locations in a format the returns application can map. Oracle Spatial converts each `SDO_GEOMETRY` value to GeoJSON with `SDO_UTIL.TO_GEOJSON`. The SQL/JSON functions below add each geometry to a GeoJSON Feature, include the recall-specific properties, and collect the features into one FeatureCollection.
 
 1. Review the results already produced in Task 2 Steps 1–2 for the 25-kilometer response radius and Task 3 Step 1 for nearest-center assignments. Expect 120 unique covered stores and 120 nearest-center assignments. Reuse completed results; these two queries do not need to be rerun for this task.
 
@@ -310,7 +325,7 @@ Kevin needs store and supplier locations in the returns application. David uses 
 
     Expect 25 component batches across 25 supplier/sub-vendor sites. Each row identifies the component lot, supplier, and city/state location.
 
-3. Produce the affected-store GeoJSON.
+3. Build the affected-store FeatureCollection.
 
     ```sql
     <copy>
@@ -346,7 +361,7 @@ Kevin needs store and supplier locations in the returns application. David uses 
 
     Open the `AFFECTED_STORE_GEOJSON` CLOB value. Expect one `FeatureCollection` with 120 entries in `features`. Each feature has a point geometry and store code, store name, region, and units sent in its properties. The query returns one JSON document, not 120 worksheet rows.
 
-4. Produce the supplier-site GeoJSON.
+4. Build the supplier-site FeatureCollection.
 
     ```sql
     <copy>
