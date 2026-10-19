@@ -4,12 +4,13 @@ Estimated Time: 12 minutes
 
 ## Introduction
 
-AI Enrichment can suggest descriptions and tags, but the participant reviews
-and saves the business contract. Data Studio persists the reviewed text as
-native database annotations. In this lab, you enrich all three local raw tables in
-one place: digital interactions, the product catalog, and operational returns.
-The saved contracts give Codex a reliable definition for the same simple
-question from Lab 3 and prepare the source context for the harder question in
+AI Enrichment suggests descriptions and tags so Codex can understand your
+data and generate better queries. Keep useful AI-generated text and add the
+business rules that cannot be inferred from column names alone. Data Studio
+saves this context as native database annotations. In this lab, you enrich
+the three local tables: digital interactions, products, and returns.
+The saved business context gives Codex a reliable definition for the same simple
+question from Lab 3 and prepares the source context for the harder question in
 Lab 5. You will not repeat AI Enrichment in Lab 5.
 
 ### Objectives
@@ -26,8 +27,7 @@ In this lab, you will:
 Continue after Lab 3's connection checkpoint and raw-question stop. Keep the
 same Codex task open while editing the metadata in Data Studio.
 
-The default AI profile is already prepared. Do **not** create, select, edit, or
-validate a profile.
+The default AI profile is already prepared for this exercise.
 
 1. Open **Catalog**.
 2. Open the PEAKGEAR&#95;USER schema, then **Tables**. You should see the three
@@ -49,8 +49,8 @@ validate a profile.
 
 If Data Studio reports **invalid column tags** or **did not return column
 tags**, retain the error and ask the instructor to repair the prepared AI
-profile before continuing. Do not save an empty result, recreate the profile,
-or treat existing manually entered tags as proof of fresh generation.
+profile before continuing. See **Need Help?** for the information to include
+in your support request.
 
 Task 2 provides the definitions for all three tables. Save the digital table
 first, then repeat the same **Catalog > Tables > AI Enrichment** flow for
@@ -61,22 +61,25 @@ turn on **Show code** and confirm that its **ALTER TABLE** target is that same
 table under PEAKGEAR&#95;USER. If it targets a different table or object type,
 cancel and ask the instructor.
 
-## Task 2: Review the business contract
+## Task 2: Add the business context
 
 The dialog has table-level fields at the top, followed by a description and
 tags for every column. **Show code** and **Save** are at the bottom.
 
 ![AI Enrichment dialog for LAB_DIGITAL_INTENT_RAW_T with editable table and column descriptions and tags, Show code, and Save](images/local-table-ai-enrichment-review.png)
 
-This screenshot illustrates the fields, not the final business contract.
-Replace the suggested descriptions and tag chips with the reviewed values
-below; do not copy the example's AI-generated column text or tags.
+Review the generated text. Keep descriptions and tags that correctly explain
+the data, and correct only missing or misleading information using the checks
+below. Exact wording and exact tag names are not required. The important part
+is that the saved metadata accurately defines the metrics, keys, and period.
 
 ### Digital interactions
 
 For LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T, use the following definitions.
 
-Replace the table-level description with this exact text:
+Check the table description for the following rules. If they are missing, add
+this paragraph to the useful generated description, replacing any conflicting
+claims. This is the main business context Codex needs for the first question:
 
 ~~~text
 <copy>
@@ -95,7 +98,7 @@ refresh automatically.
 </copy>
 ~~~
 
-Set the table tags to:
+Keep relevant generated table tags. These are examples, not a replacement list:
 
 ~~~text
 <copy>
@@ -103,7 +106,9 @@ digital_intent, event_data, product_popularity, no_store_attribution
 </copy>
 ~~~
 
-Set these column descriptions and tags:
+Check these column meanings and correct only inaccurate or missing
+definitions. The tags below are examples; equivalent useful generated tags
+can remain:
 
 | Column | Description | Tags |
 |---|---|---|
@@ -112,20 +117,21 @@ Set these column descriptions and tags:
 | CUSTOMER&#95;ID | Customer identifier associated with the event. Row count is not a count of unique customers. | customer&#95;identifier |
 | EVENT&#95;TS | Timestamp of the interaction. Derive the latest month present in the data that ended before the database's current calendar month. | event&#95;timestamp, time&#95;key |
 
-Replace the AI-suggested tag chips with the tags listed in this task. Enter
-each tag separately and press **Enter** after each one; commas in the examples
-separate tags. Remove extra suggested tags rather than appending the reviewed
-tags to them. Click the dialog heading to close a tag dropdown before moving
-to another field, so a suggestion menu does not cover the next field.
+Only edit tags that are missing or misleading. If adding several tags, paste
+a comma-separated list into the tag field and check that separate tags appear.
+If your UI keeps them as one tag, add them individually with Enter.
+For example, PRODUCT&#95;ID repeats across events; remove a tag or description
+that incorrectly calls it a unique row identifier. You do not need to replace
+all tags just to use the example names above.
 
 For each table, follow this Save sequence:
 
 1. After editing a description, move focus to another field and confirm that
     the complete reviewed text remains visible.
-2. Turn on **Show code**. Check the selected table's **ALTER TABLE** target,
-    table description, every column description, and all tags against this task.
-    If a value is missing, partial, or still AI-suggested, turn **Show code** off
-    and correct the field. Use the code for review; save through the dialog.
+2. Turn on **Show code**. Check the selected table's **ALTER TABLE** target
+    and the business rules you reviewed. Confirm that your edits are present;
+    correct generated descriptions and tags can remain. Use the code for review;
+    save through the dialog.
 3. Click **Save once**. Saving may take more than a minute. While **Save**,
     **Cancel**, and **Close** are disabled, wait; do not click Save again or
     refresh the page.
@@ -134,15 +140,16 @@ For each table, follow this Save sequence:
     instructor to check the operation before retrying.
 
 Annotations may appear gradually while Save is running. After all three saves,
-use Task 3 to verify every description and tag. If Save reports a connection
+use Task 3 to verify the saved business context. If Save reports a connection
 error, refresh Catalog and perform that same verification before retrying;
-the operation may have saved only part of the contract. A changed table
+the operation may have saved only part of the metadata. A changed table
 description alone does not confirm a complete save.
 
 ### Product catalog
 
 In **Catalog**, open LAB&#95;PRODUCTS&#95;RAW&#95;T and click **AI Enrichment**. Review
-and save these business definitions:
+and check these business definitions. Keep accurate generated content; add or
+correct only what is missing. Example tags are optional:
 
 | Object | Description | Tags |
 |---|---|---|
@@ -156,7 +163,8 @@ Click **Save** before moving to the next table.
 ### Operational returns
 
 In **Catalog**, open LAB&#95;RETURNS&#95;RAW&#95;T and click **AI Enrichment**. Review
-and save these business definitions:
+and check these business definitions. Keep accurate generated content; add or
+correct only what is missing. Example tags are optional:
 
 | Object | Description | Tags |
 |---|---|---|
@@ -171,15 +179,22 @@ Click **Save**. All three tables must be saved before Task 3.
 ## Task 3: Verify the saved annotations
 
 After all three Save operations have finished, reopen each table in Catalog.
-Compare its table-level and every column's description and tags with Task 2.
-Check the full values, including the product-name and join-key definitions.
-The digital table's Overview description must begin with:
+Confirm that the edits you made are present in Catalog. Check the meanings,
+not an exact match to the example wording or tag names:
 
-~~~text
-<copy>
-Each row is one digital interaction
-</copy>
-~~~
+* Digital interest counts product-linked events, not sales or unique customers.
+  Events without a product are reported separately. The period is the latest
+  completed month available in the data, not an assumed current month.
+* Product names come from the product table through the shared product key;
+  products roll up to categories. One product maps to one product-catalog row.
+* Returned units use SUM of RETURN&#95;QTY, not return-event counts or return rates.
+  Each source is aggregated separately before combining measures.
+* The tables are local snapshots and do not refresh automatically.
+
+Check that table descriptions and tags are saved for all three tables, and
+that relevant column descriptions correctly explain the join keys, product
+labels, category, timestamps, and returned quantity. Retain useful generated
+annotations on the other columns.
 
 Optionally verify the saved database metadata:
 
@@ -203,24 +218,18 @@ ORDER BY object_name,
 </copy>
 ~~~
 
-Each table and **every column** must have non-empty `DESCRIPTION` and `TAGS`
-annotations. In this workshop that is 10 annotation rows for Digital Intent,
-8 for Products, and 10 for Returns: **28 rows in total**. A row count is only
-a completeness check; also review the values, including CATEGORY&#95;NAME's
-`category, hierarchy_level` tags and the product-name and join-key definitions.
-If any field is missing or differs from the reviewed contract, reopen that
-table's metadata, correct it, save once, and repeat this verification before
-continuing to Task 4.
+This optional query shows what was actually saved. A fixed row count or an
+exact set of tag names is not a pass criterion. If an essential rule is missing
+or inaccurate, reopen that table's enrichment dialog, correct it, save once,
+and verify that correction before continuing to Task 4.
 
-After Save, the table's **Overview** displays its description and tag chips;
+After Save, the table's **Overview** displays its description and tags;
 the **Columns** section displays the column annotations.
 
 ![Digital Intent table Overview after Save shows a table description and tags plus column annotations](images/local-table-annotations-saved.png)
 
-This example shows where saved values appear, not proof that every value
-matches Task 2. Your final description must begin with the text above, and
-your table and column tags must match the reviewed definitions. Verify all
-three tables, not only the visible fields in this screenshot.
+The example shows where saved values appear. Your generated wording may
+differ; verify the business meanings above for all three tables.
 
 ## Task 4: Repeat the same question
 
@@ -232,7 +241,7 @@ Which products are customers interested in right now?
 </copy>
 ~~~
 
-Expected result: Codex uses the saved contract to calculate the latest-month
+Expected result: Codex uses the saved business context to calculate the latest-month
 digital-event ranking. It can join to LAB&#95;PRODUCTS&#95;RAW&#95;T only to present the
 corresponding business-facing product names; that lookup does not change the
 metric, time window, or result grain.
@@ -247,7 +256,7 @@ The words in the business question did not change. The answer improved because
 the definition, time period, and result grain are now saved in Data Studio.
 
 If the ranking tool reaches its read timeout, Codex may use LiveLab MCP SQL
-after reading the saved contracts and checking product-key uniqueness. Derive
+after reading the saved metadata and checking product-key uniqueness. Derive
 the actual completed snapshot month first, then run the ranking for that bounded
 month with the same metric and product-label rules. Report the count of events
 without PRODUCT&#95;ID separately. A timeout is not an empty ranking, and it does

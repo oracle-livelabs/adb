@@ -48,37 +48,12 @@ project_dir() {
 }
 
 write_project_config() {
-  local configured_project project_mcp_dir project_config temp_config
+  local configured_project mcp_python
   configured_project="$(project_dir)"
-  project_mcp_dir="$configured_project/.codex"
-  project_config="$project_mcp_dir/config.toml"
-  mkdir -p "$project_mcp_dir"
-  temp_config="$(mktemp "${project_config}.XXXXXX")"
-
-  if [[ -f "$project_config" ]]; then
-    awk '
-      /^\[mcp_servers\.LiveLab\][[:space:]]*$/ { skip = 1; next }
-      skip && /^\[/ { skip = 0 }
-      !skip { print }
-    ' "$project_config" > "$temp_config"
-  fi
-
-  cat >> "$temp_config" <<'EOF'
-
-# PeakGear LiveLab: project-scoped Oracle Data Studio MCP.
-# The server reads the URL and PEAKGEAR_USER password from the macOS Keychain.
-# "admin" is the MCP tool profile required to build Analytic Views; it is not a database user.
-[mcp_servers.LiveLab]
-command = "/bin/zsh"
-args = ["-lc", "exec \"$HOME/.local/bin/peakgear-livelab-mcp\" --transport stdio --profile admin"]
-enabled = true
-startup_timeout_sec = 60
-tool_timeout_sec = 180
-default_tools_approval_mode = "prompt"
-EOF
-
-  mv "$temp_config" "$project_config"
-  echo "Updated project configuration: $project_config"
+  [[ -f "$RUNTIME_DIR/python-path" ]] || die "Run the current 01 setup once before using management."
+  mcp_python="$(< "$RUNTIME_DIR/python-path")"
+  "$mcp_python" "$RUNTIME_DIR/livelab_setup.py" configure \
+    --project "$configured_project" --runtime "$RUNTIME_DIR" --python "$mcp_python"
 }
 
 show_status() {
@@ -130,6 +105,7 @@ refresh_livelab() {
   mkdir -p "$RUNTIME_DIR"
   install -m 700 "$source_dir/livelab_mcp.py" "$RUNTIME_WRAPPER"
   install -m 700 "$source_dir/livelab_mcp_launcher.command" "$RUNTIME_LAUNCHER"
+  install -m 700 "$source_dir/livelab_setup.py" "$RUNTIME_DIR/livelab_setup.py"
   print -r -- "$source_dir" > "$STARTER_PATH_FILE"
   write_project_config
   echo
