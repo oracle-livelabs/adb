@@ -28,12 +28,14 @@ In this lab, you will:
 
 Kevin needs the returns desk to answer two practical questions: “Which products, component lots, and customers could be affected?” and “Which stores need help, and where is their nearest response center?”
 
-The workshop deployment has already created `RECALL_LAB_API` in the `RECALL_OWNER` schema. This PL/SQL package groups two functions that prepare the database answers for the assistant:
+The workshop deployment has already created `RECALL_LAB_API` in the `RECALL_OWNER` schema. This PL/SQL package provides four controlled functions for recall data:
 
 - `GET_RECALL_CONTEXT` returns the affected scope, component and supplier details, related complaint IDs, and approved actions for a batch.
 - `GET_SPATIAL_IMPACT` returns affected stores and units by region, coverage within the response radius, and nearest response-center assignments.
+- `GET_AFFECTED_STORES` returns a GeoJSON FeatureCollection of affected store locations and their map properties.
+- `GET_COMPONENT_SITES` returns a GeoJSON FeatureCollection of component supplier locations and their map properties.
 
-Both functions accept a batch ID, such as `B-482`, and return JSON without customer names or email addresses. For Kevin, this means the returns desk can get consistent counts and location details without manually combining reports. David keeps those calculations in Oracle AI Database, alongside the records they use. Tim first inspects and tests the existing functions, then registers them as tools the assistant can call in Task 2.
+All four functions accept a batch ID, such as `B-482`, and return JSON as a `CLOB` without customer names or email addresses. The first two provide the summary context and spatial impact that the assistant will use. The last two provide map-ready GeoJSON for applications and APIs; they are not registered as agent tools in this lab. For Kevin, this means the returns desk can get consistent counts and location details without manually combining reports. David keeps those calculations in Oracle AI Database, alongside the records they use. Tim reviews the four package functions, tests the two assistant functions, then registers those two as tools in Task 2.
 
 1. Review the Select AI Agent framework.
 
@@ -41,7 +43,7 @@ Both functions accept a batch ID, such as `B-482`, and return JSON without custo
 
     This framework separates the approved database functions into governed tools that an agent can call as part of a task and team.
 
-2. Inspect the inputs and return types of the existing package functions.
+2. Inspect the inputs and return types of the two functions the assistant will use.
 
     ```sql
     <copy>
@@ -52,15 +54,16 @@ Both functions accept a batch ID, such as `B-482`, and return JSON without custo
            data_type
     from   user_arguments
     where  package_name = 'RECALL_LAB_API'
+    and    object_name in ('GET_RECALL_CONTEXT', 'GET_SPATIAL_IMPACT')
     order  by object_name, sequence;
     </copy>
     ```
     
     ![2026-09-18-005006](images/2026-09-18-005006.png)
     
-    Each function accepts one `VARCHAR2` batch ID and returns its JSON response as a `CLOB`.
+    Each of these two functions accepts one `VARCHAR2` batch ID and returns its JSON response as a `CLOB`.
 
-3. Call both approved tool functions directly.
+3. Call the two approved agent-tool functions directly.
 
     ```sql
     <copy>
@@ -269,7 +272,11 @@ Kevin now asks the investigation questions in plain language. David limits the c
 
 
 
-2. Create a conversation for the five questions. Run this query once and copy the returned conversation ID.
+2. Create a conversation for the five questions.
+
+    A Select AI conversation stores related prompts and responses together. Reusing its ID lets follow-up questions use recent turns as context, while separate IDs keep unrelated topics from mixing. In this lab, the shared ID associates the five B-482 agent calls with one investigation. `conversation_length: 5` includes up to five recent prompts and their responses as context; `retention_days: 1` keeps the conversation history for one day. See Oracle's [Select AI Conversations guide](https://docs.oracle.com/en/database/oracle/oracle-database/26/selai/select-ai-enable-conversations.html) and [Select AI Agent example](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/examples-using-select-ai-agent.html).
+
+    Run this query once. The questions below look up the most recently created conversation with this title, so you do not need to copy the returned ID.
 
     ```sql
     <copy>
@@ -281,25 +288,37 @@ Kevin now asks the investigation questions in plain language. David limits the c
 
     ![2026-09-18-005020](images/2026-09-18-005020.png)
 
-    In each query below, replace `PASTE_CONVERSATION_ID_HERE` with that same ID, keeping the double quotes around it. The ID connects the five questions to one conversation. Run each query separately and read its answer before continuing.
+    The five questions use this conversation ID to keep their context together. 
 
+	You can also view the conversation ID using this query:
 
-    *If you receive `ORA-20053` / `ORA-20051` with an `ORA-20052` tool error, wait for the query to finish and retry the same question once.*
-    
+	```sql
+	<copy>
+	SELECT conversation_id, conversation_title, description FROM user_cloud_ai_conversations;
+	</copy>
+	```
+
 3. Ask for the recall scope.
 
     ```sql
     <copy>
-    select dbms_cloud_ai_agent.run_team(
-               team_name   => 'RECALL_ASSISTANT_TEAM',
-               user_prompt => 'What is the current approved recall scope for batch B-482? ' ||
-               'State the case, status, affected stores, shipped units, exposed ' ||
-               'customers, component batches, supplier sites, and first action.',
-               params      => '{"conversation_id":"PASTE_CONVERSATION_ID_HERE"}'
-           ) as agent_answer;
+    SELECT DBMS_CLOUD_AI_AGENT.RUN_TEAM(
+         team_name   => 'RECALL_ASSISTANT_TEAM',
+         user_prompt => 'Use RECALL_CONTEXT_TOOL once for batch B-482.' ||
+		 'Return the case ID, status, affected stores, shipped units, ' ||
+		 'exposed customers, component batches, supplier sites, and first action.',
+         params      => '{"conversation_id":"' ||
+                        (SELECT conversation_id
+                           FROM user_cloud_ai_conversations
+                          WHERE conversation_title = 'AI World 2026 Product Recall Lab'
+                          ORDER BY created DESC
+                          FETCH FIRST 1 ROW ONLY) ||
+                        '"}'
+       ) AS agent_answer;
     </copy>
     ```
 
+   *If you receive `ORA-20053` / `ORA-20051` with an `ORA-20052` tool error, wait for the query to finish and retry the same question once.*
     ![2026-09-18-005022](images/2026-09-18-005022.png)
 
 
@@ -313,7 +332,13 @@ Kevin now asks the investigation questions in plain language. David limits the c
                'affected stores and units by region, state whether all affected stores ' ||
                'are within the 25 kilometer response radius, and name the nearest ' ||
                'response-center assignments.',
-               params      => '{"conversation_id":"PASTE_CONVERSATION_ID_HERE"}'
+               params      => '{"conversation_id":"' ||
+                              (SELECT conversation_id
+                                 FROM user_cloud_ai_conversations
+                                WHERE conversation_title = 'AI World 2026 Product Recall Lab'
+                                ORDER BY created DESC
+                                FETCH FIRST 1 ROW ONLY) ||
+                              '"}'
            ) as agent_answer;
     </copy>
     ```
@@ -331,7 +356,13 @@ Kevin now asks the investigation questions in plain language. David limits the c
                'SUSPECT lots and up to three WATCH lots. Name their supplier or ' ||
                'sub-vendor sites and summarize the relevant production, receipt, and ' ||
                'installation timing in no more than ten lines.',
-               params      => '{"conversation_id":"PASTE_CONVERSATION_ID_HERE"}'
+               params      => '{"conversation_id":"' ||
+                              (SELECT conversation_id
+                                 FROM user_cloud_ai_conversations
+                                WHERE conversation_title = 'AI World 2026 Product Recall Lab'
+                                ORDER BY created DESC
+                                FETCH FIRST 1 ROW ONLY) ||
+                              '"}'
            ) as agent_answer;
     </copy>
     ```
@@ -347,7 +378,13 @@ Kevin now asks the investigation questions in plain language. David limits the c
                team_name   => 'RECALL_ASSISTANT_TEAM',
                user_prompt => 'Which complaint IDs provide the strongest evidence of an overheating ' ||
                'or electrical-odor pattern for B-482? Use only the approved context.',
-               params      => '{"conversation_id":"PASTE_CONVERSATION_ID_HERE"}'
+               params      => '{"conversation_id":"' ||
+                              (SELECT conversation_id
+                                 FROM user_cloud_ai_conversations
+                                WHERE conversation_title = 'AI World 2026 Product Recall Lab'
+                                ORDER BY created DESC
+                                FETCH FIRST 1 ROW ONLY) ||
+                              '"}'
            ) as agent_answer;
     </copy>
     ```
@@ -365,7 +402,13 @@ Kevin now asks the investigation questions in plain language. David limits the c
                'customer contact authorized yet, and what spatial coverage should the ' ||
                'field team know? Summarize only facts established in this conversation ' ||
                'and the database tool output.',
-               params      => '{"conversation_id":"PASTE_CONVERSATION_ID_HERE"}'
+               params      => '{"conversation_id":"' ||
+                              (SELECT conversation_id
+                                 FROM user_cloud_ai_conversations
+                                WHERE conversation_title = 'AI World 2026 Product Recall Lab'
+                                ORDER BY created DESC
+                                FETCH FIRST 1 ROW ONLY) ||
+                              '"}'
            ) as agent_answer;
     </copy>
     ```

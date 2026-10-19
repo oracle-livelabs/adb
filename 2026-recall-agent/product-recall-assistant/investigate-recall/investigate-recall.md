@@ -283,7 +283,7 @@ Kevin needs the supporting details beside the scope. David links JSON details to
     </copy>
     ```
 
-    Complaint `9005` is absent because it belongs to batch `B-900`. Complaints `9002` and `9007` came from customers who bought `B-482`. Those complaints did not name the batch.
+    Complaints `9001` through `9010` came from customers who bought `B-482`. Those complaints did not name the batch. Complaint `9005` is absent because it belongs to batch `B-900`. 
 
     ![2026-09-18-004983](images/2026-09-18-004983.png)
 

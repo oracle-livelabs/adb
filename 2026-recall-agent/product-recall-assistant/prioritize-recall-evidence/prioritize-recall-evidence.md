@@ -219,9 +219,11 @@ Kevin needs the details that explain why a complaint ranked highly. David joins 
 
 ## Task 4: Produce Recall Context for the Assistant
 
-Kevin needs one database response for the recall desk. David defines the fields the assistant may use; Tim produces that response.
+The workshop setup has already installed `RECALL_LAB_API` in the `RECALL_OWNER` schema. This custom PL/SQL package is part of the workshop, not an Oracle built-in. Its `GET_RECALL_CONTEXT` function accepts a batch ID and returns a JSON document as a CLOB. The document combines recall counts, component and supplier details, the approved first action, and related complaint IDs. For B-482, it includes the top related complaints found using the vector data you prepared in this lab. It contains no customer names or contact details.
 
-1. Call the package that gathers the recall details for the assistant.
+The package is installed before this lab so later labs can reuse a stable, approved interface as the workshop adds capabilities. Here, call the existing function and inspect its result. In Lab 5, you’ll register this same function as a Select AI Agent tool, so the assistant receives prepared recall context rather than direct table access.
+
+1. Call the existing function to generate the recall context for B-482.
 
     ```sql
     <copy>
@@ -246,8 +248,6 @@ Kevin needs one database response for the recall desk. David defines the fields 
       "firstAction": "Quarantine remaining B-482 inventory and stop sales at affected stores."
     }
     ```
-
-3. This query returns the recall details that the assistant will use.
 
 You have completed Lab 4. Lab 5 registers the approved context function as a Select AI Agent tool.
 

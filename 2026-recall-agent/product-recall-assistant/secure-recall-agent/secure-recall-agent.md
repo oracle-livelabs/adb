@@ -286,10 +286,9 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
 1. Connect as **STORE\_101\_USER** and confirm the end-user identity.
 
-    ```sql
+    ```pl/sql
     <copy>
-    select json_value(ora_end_user_context, '$.USERNAME'
-                      returning varchar2(128)) as end_user;
+    select json_value(ora_end_user_context, '$.USERNAME' returning varchar2(128)) as end_user;
     </copy>
     ```
 
@@ -297,7 +296,7 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
 2. Check the active data role.
 
-    ```sql
+    ```pl/sql
     <copy>
     select role_name
     from   v$end_user_data_role
@@ -309,7 +308,7 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
 3. Count the affected stores and units visible to this user.
 
-    ```sql
+    ```pl/sql
     <copy>
     select count(distinct si.store_id) as affected_stores,
            coalesce(sum(si.units_sent), 0) as units_sent
@@ -323,7 +322,7 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
 4. Count the potentially exposed customers visible to this user.
 
-    ```sql
+    ```pl/sql
     <copy>
     select count(distinct customer_id) as customers
     from   purchases
@@ -337,7 +336,7 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
 5. Search for the strongest permitted complaint matches. The search uses the vector from Lab 4; access rules determine which complaint chunks are available to search.
 
-    ```sql
+    ```pl/sql
     <copy>
     select cc.complaint_id,
            round(vector_distance(cc.embedding, q.query_vector, cosine), 4) as distance,
@@ -355,7 +354,7 @@ The examples below and in Task 4 are SQLcl transcript reference output, not SQL 
 
 6. Test a specific complaint outside Store 101's scope.
 
-    ```sql
+    ```pl/sql
     <copy>
     select complaint_id, chunk_text
     from   complaint_chunks
@@ -389,7 +388,7 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 1. Connect as **STORE\_101\_USER**. Preview the document the assistant will receive.
 
-    ```sql
+    ```pl/sql
     <copy>
     select json_serialize(
                recall_secure_api.get_secured_context('B-482')
@@ -404,7 +403,7 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 2. Capture this user's evidence. Run this block as a script. Enable DBMS Output for the connection to see the request ID.
 
-    ```sql
+    ```pl/sql
     <copy>
     declare
         l_request_id number;
@@ -422,7 +421,7 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 4. Reconnect as **RECALL\_OWNER** and confirm that all three users captured evidence.
 
-    ```sql
+    ```pl/sql
     <copy>
     select end_user_name, max(request_id) as latest_request_id
     from   recall_authorized_requests
@@ -439,7 +438,7 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 5. Ask the assistant to summarize the latest Store 101 snapshot.
 
-    ```sql
+    ```pl/sql
     <copy>
     select recall_agent_bridge.summarize_context(
                json_serialize(context_json returning clob)
@@ -479,6 +478,50 @@ You built the rules that let one returns application serve three responsibilitie
 For Kevin, the application can answer local, regional, and company-wide questions without exposing every record to every user. For David, Oracle AI Database keeps access rules with both business records and complaint vectors. There is no separate vector store requiring another copy of those rules. Tim retrieves permitted evidence before passing it to the assistant; a prompt is not a substitute for database authorization.
 
 Lab 8 uses these packages and data roles in the Recall Command Center.
+
+## Connect Using SQLcl
+
+SQLcl can connect directly to Autonomous Database. This is useful for the optional Tasks 3–4, where you connect as each end user. Note: The provided ADB does not require a wallet to simplify the connection steps in this lab. [Downloading and installing SQLcl](https://docs.oracle.com/en/database/oracle/apex/24.2/aeadm/downloading-and-installing-sqlcl.html).
+
+The SQL Developer Web URL opens a browser-based worksheet; it is not itself a SQLcl connection string. 
+From the View Login Info scree you can find retrieve the SQL Dev Web URL, for example:
+`https://DOG47XJFCZR2H91-ATP242077.adb.us-ashburn-1.oraclecloudapps.com/ords/sql-developer`
+
+You can identift the database ID. In the above example it is: `DOG47XJFCZR2H91-ATP242077`
+Also, note down the region, inour example: `us-ashburn-1`
+
+To use it in SQLcl replace the `-` (dash) with an `_` (underscore). Your new database ID looks like this:
+`DOG47XJFCZR2H91_ATP242077`
+
+For this database, the full descriptor is:
+
+```text
+<copy>
+(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.REGION.oraclecloud.com))(connect_data=(service_name=DATABASE_ID_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+</copy>
+```
+Replace REGION and DATABASE_ID in the above template with your values.
+In our example, the resulting descriptor would look like this:
+
+```text
+(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name=DOG47XJFCZR2H91_ATP242077_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+```
+
+
+On macOS or Linux, start SQLcl with the user name and descriptor. The terminal prompts for the password:
+
+```shell
+sql STORE_101_USER@'(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.REGION.oraclecloud.com))(connect_data=(service_name=DATABASE_ID_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))'
+```
+
+On Windows, start SQLcl without logging in, then connect from its prompt:
+
+```text
+sql /nolog
+SQL> CONNECT STORE_101_USER@(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.REGION.oraclecloud.com))(connect_data=(service_name=DATABASE_ID_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+```
+
+Enter the password assigned to that database user when prompted. Replace `STORE_101_USER` with `REGION_NE_USER` or `RECALL_LEAD_USER` to verify the other Lab 7 accounts. Do not add the password to the command. See Oracle's [SQLcl wallet-free TLS connection instructions](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/connect-sqlcl-tls.html) for details.
 
 ## Next Steps
 
