@@ -14,7 +14,7 @@
         {
             "title": "Get Started",
             "description": "Get started using Oracle Cloud Infrastructure",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+            "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/cloud-login.md"
         },
         {
             "title": "Lab 1: Set up Your Workshop Environment",
@@ -53,9 +53,14 @@
             "filename": "../../use-ask-oracle-demo-app/use-ask-oracle-demo-app.md"
         },
         {
+            "title": "Lab 8: Interactive Travel Agency with a Supervisor Agent",
+            "type": "tenancy",
+            "filename": "../../supervisor-agent-travel-agency/supervisor-agent-travel-agency.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+            "filename":"https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-freetier.md"
         }
     ]
 }

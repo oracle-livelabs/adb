@@ -105,7 +105,7 @@ Perform the following steps to install the Ask Oracle Chatbot app. The applicati
 
 8. Review the supporting objects and click **Install Supporting Objects**.
 
-9.  Next screen shows a confirmation screen with the supporting objects installed, click **Run Application**.
+9. Next screen shows a confirmation screen with the supporting objects installed, click **Run Application**.
 
 10. You'll be prompted with a login screen. Enter the APEX username and password. You are ready with a prompt screen.
 
@@ -119,10 +119,8 @@ You may now proceed to the next lab.
 ## Acknowledgements
 
 * **Author:** Sarika Surampudi, Principal User Assistance Developer
-* **Contributors:** 
-* Marcos Arancibia, Product Manager
-* Mark Hornick, Product Manager
-* **Last Updated By/Date:** Marcos Arancibia, August 2026
+* **Contributors:** Mark Hornick, Senior Dir of ML and AI Product Management ; Sherry LaMonica, Lead Principal Product Manager ; Marcos Arancibia, Product Mgt
+* **Last Updated By/Date:** Marcos Arancibia, September 2026
 
 
 

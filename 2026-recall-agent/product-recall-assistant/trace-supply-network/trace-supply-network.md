@@ -10,6 +10,8 @@ Tim creates `RECALL_GRAPH` and uses `GRAPH_TABLE` to query those routes. The gra
 
 By the end of the lab, the database can show the 25 component lots used in B-482, their suppliers, and the 600 customer records connected to 120 affected stores. David can use those results in the returns workflow.
 
+![group](images/2026-10-02-005123.png)
+
 Estimated Time: 10 minutes
 
 ### Objectives
@@ -145,7 +147,7 @@ Kevin needs to follow one connected route, rather than compare separate lists of
     </copy>
     ```
 
-    The graph includes batches, shipments, stores, customers, components, component batches, supplier sites, and suppliers. The relational tables and their graph-supporting indexes were prepared during Lab 1. The existing `BATCH_COMPONENTS_UQ` key supports the batch-component edge.
+    The graph includes batches, shipments, stores, customers, components, component batches, supplier sites, and suppliers. You build the graph on the relational tables and supporting indexes included in your workshop environment. You inspected the prepared data in Lab 1. The existing `BATCH_COMPONENTS_UQ` key supports the batch-component edge.
 
     ![2026-09-18-004994](images/2026-09-18-004994.png)
 

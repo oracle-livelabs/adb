@@ -51,8 +51,8 @@
       "filename": "../../secure-recall-agent/secure-recall-agent.md"
     },
     {
-      "title": "Lab 8: Run Secure Returns from One React Application",
-      "description": "Kevin needs one returns application; David keeps the database rules in place, and Tim brings each user's authorized results into React.",
+      "title": "Lab 8: Deploy and Explore the Secure Returns Command Center",
+      "description": "Kevin needs one returns application and an approved customer response; David keeps access and approval in the database, and Tim brings the workflow together in React.",
       "type": "livelabs",
       "filename": "../../react-recall-command-center/react-recall-command-center.md"
     },

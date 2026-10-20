@@ -10,6 +10,8 @@ JSON also handles details that vary from one report or complaint to the next. On
 
 This is why the lab starts with JSON. Tim shows Kevin how Oracle AI Database stores application JSON, queries it with SQL, and updates only the workflow fields that change. He uses `JSON_VALUE` and `JSON_TABLE` to read the report, and `JSON_TRANSFORM` to open the case without rebuilding the document. The tasks then check the scope in the same database.
 
+![group](images/2026-10-02-005121.png)
+
 By the end of the lab, Kevin has an open case record for `B-482` with:
 
 - 120 affected stores
@@ -281,7 +283,7 @@ Kevin needs the supporting details beside the scope. David links JSON details to
     </copy>
     ```
 
-    Complaint `9005` is absent because it belongs to batch `B-900`. Complaints `9002` and `9007` came from customers who bought `B-482`. Those complaints did not name the batch.
+    Complaints `9001` through `9010` came from customers who bought `B-482`. Those complaints did not name the batch. Complaint `9005` is absent because it belongs to batch `B-900`. 
 
     ![2026-09-18-004983](images/2026-09-18-004983.png)
 

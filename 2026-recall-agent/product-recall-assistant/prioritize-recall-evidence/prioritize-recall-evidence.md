@@ -10,6 +10,8 @@ Tim uses the loaded ONNX model to turn complaint text into vectors, which are nu
 
 By the end of the lab, the database returns complaints `9001`, `9002`, `9006`, `9003`, and `9007` first, while excluding unrelated batch B-900 complaints. Lab 5 uses this database result in the assistant.
 
+![grou](images/2026-10-02-005124.png)
+
 Estimated Time: 15 minutes
 
 ### Objectives
@@ -55,7 +57,7 @@ Kevin needs to find complaints that describe the same issue, even when they use 
     </copy>
     ```
 
-    We are using the `all_MiniLM_L12_v2` embeddingmodel. It produces 384-dimensional text embeddings. The query vector uses the same model so both sides share one semantic space.
+    We are using the `all_MiniLM_L12_v2` embedding model. It produces 384-dimensional text embeddings. The query vector uses the same model so both sides share one semantic space.
     
     ![2026-09-18-004999](images/2026-09-18-004999.png)
 
@@ -160,7 +162,7 @@ Kevin needs to find the complaints most similar to the heat and odor issue. Davi
     </copy>
     ```
 
-    The top five should be the heat-and-odor complaints `9001`, `9002`, `9006`, `9003`, and `9007`; exact ordering can vary slightly by model revision. Lower cosine distance means stronger similarity.
+    The top five should be the heat-and-odor complaints `9001`, `9002`, `9006`, `9003`, and `9007`; exact ordering can vary with the stored query vector and model revision. Lower cosine distance means stronger semantic similarity. It does not measure complaint severity, exposure, or operational response priority.
 
     ![2026-09-18-005004](images/2026-09-18-005004.png)
 
@@ -217,9 +219,11 @@ Kevin needs the details that explain why a complaint ranked highly. David joins 
 
 ## Task 4: Produce Recall Context for the Assistant
 
-Kevin needs one database response for the recall desk. David defines the fields the assistant may use; Tim produces that response.
+The workshop setup has already installed `RECALL_LAB_API` in the `RECALL_OWNER` schema. This custom PL/SQL package is part of the workshop, not an Oracle built-in. Its `GET_RECALL_CONTEXT` function accepts a batch ID and returns a JSON document as a CLOB. The document combines recall counts, component and supplier details, the approved first action, and related complaint IDs. For B-482, it includes the top related complaints found using the vector data you prepared in this lab. It contains no customer names or contact details.
 
-1. Call the package that gathers the recall details for the assistant.
+The package is installed before this lab so later labs can reuse a stable, approved interface as the workshop adds capabilities. Here, call the existing function and inspect its result. In Lab 5, you’ll register this same function as a Select AI Agent tool, so the assistant receives prepared recall context rather than direct table access.
+
+1. Call the existing function to generate the recall context for B-482.
 
     ```sql
     <copy>
@@ -244,8 +248,6 @@ Kevin needs one database response for the recall desk. David defines the fields 
       "firstAction": "Quarantine remaining B-482 inventory and stop sales at affected stores."
     }
     ```
-
-3. This query returns the recall details that the assistant will use.
 
 You have completed Lab 4. Lab 5 registers the approved context function as a Select AI Agent tool.
 

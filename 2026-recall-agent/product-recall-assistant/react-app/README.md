@@ -2,22 +2,20 @@
 
 This folder is a standalone React and Node.js application for Lab 8. It serves the React interface and the database API from one port.
 
+Estimated Time: 45 minutes
+
 ## Prerequisites
 
 - Node.js 20 or later and npm.
 - Network access to the Autonomous Database service.
-- Labs 1 through 7 completed, including the three Deep Data Security users.
+- Labs 1 through 7 completed, including the three Deep Data Security users and the configured agent profile.
 - The wallet files and wallet download password, when using a wallet TNS alias.
 
 ## Prepare the database
 
-As `RECALL_OWNER`, run the Lab 8 bridge script before starting the application:
+The Terraform SQL loader grants `EXECUTE` on `DBMS_CLOUD_AI_AGENT` and `DBMS_CLOUD_REPO` to `RECALL_OWNER`. Connect directly as `RECALL_OWNER` and run the v8 setup block in the Lab 8 guide. It downloads the combined application and campaign script from Object Storage and installs objects and AI teams under the authenticated owner.
 
-```sql
-@product-recall-assistant/react-recall-command-center/files/05-prepare-react-app.sql
-```
-
-The script creates the invoker-rights application API and the owner-owned definer-rights bridges used for approved graph, vector, Spatial, JSON, and Select AI Agent operations. `RECALL_REACT_API.ASK_AGENT` assembles one role-filtered evidence document before the agent runs.
+The script creates the invoker-rights application and campaign APIs and the owner-owned definer-rights bridges used for approved graph, vector, Spatial, JSON, and Select AI Agent operations. `RECALL_REACT_API.ASK_AGENT` assembles one role-filtered evidence document before the agent runs. The campaign API uses the active database identity for its audience and requires a recall lead to authorize contact and approve the campaign.
 
 ## Install and configure
 
@@ -40,7 +38,7 @@ ORACLE_WALLET_PASSWORD=wallet-download-password
 COOKIE_SECURE=false
 ```
 
-For a direct TLS connection, use the database connection string from the Autonomous Database **Database connection** dialog and leave the wallet directory values empty. `ORACLE_CONNECT_STRING` must be a database connect string or wallet alias, never an ORDS HTTPS URL.
+For a direct TLS connection, replace the empty `ORACLE_CONNECT_STRING` value with the complete database connection string from the Autonomous Database **Database connection** dialog and leave the wallet directory values empty. `ORACLE_CONNECT_STRING` must be a database connect string or wallet alias, never an ORDS HTTPS URL. Do not derive a fixed port or service from the SQL Developer Web URL.
 
 ## Run locally
 
@@ -67,11 +65,18 @@ The browser login is intentionally limited to these Lab 7 local Deep Data Securi
 - `REGION_NE_USER`
 - `RECALL_LEAD_USER`
 
-Enter the password assigned by the Lab 7 setup. Never use `RECALL_OWNER` or `ADMIN` as an application login. `RECALL_OWNER` is only used to run the database setup scripts; `ADMIN` is only used for database bootstrap and grants. The application stores the selected end-user database session and all secured routes execute in that session before invoking the approved definer-rights bridges.
+Enter the password assigned by the Lab 7 setup. Never use `RECALL_OWNER` or `ADMIN` as an application login. `ADMIN` grants the agent framework and runs the verification queries; `RECALL_OWNER` runs the Lab 8 installer and owns the application and campaign objects. The application stores the selected end-user database session and all secured routes execute in that session before invoking the approved definer-rights bridges.
 
 The workshop uses local database users so the database security behavior is visible. In production, an IdM or OCI IAM login can establish the trusted identity, but the database-side authorization result is the same.
 
 The secured agent receives four sections assembled in the active end-user session: product JSON, vector and relational complaint evidence, Spatial impact and response-center summaries, and a compact Graph component/supplier trace with role-specific store/customer counts. The same agent team therefore produces different answers for the three logins without granting the agent SQL access.
+
+Lab 8 also includes a **Recall Campaign** workspace. The combined Lab 8 setup script installs its packages, policy, and tables. The recall lead explicitly authorizes customer contact, Select AI Agent drafts a reusable notice template without customer email addresses, and approval creates auditable refund intents. The application does not send notices or move money.
+
+## Acknowledgements
+
+- **Author:** Oracle AI World 2026 Product Recall Assistant workshop team
+- **Last updated:** September 2026
 
 ## Troubleshooting
 
