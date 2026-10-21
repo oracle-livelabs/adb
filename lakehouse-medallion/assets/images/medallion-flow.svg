@@ -13,11 +13,11 @@
 <rect x="708" y="230" width="288" height="175" rx="12" fill="#e7ecef"/>
 <rect x="1046" y="230" width="342" height="175" rx="12" fill="#f7e9b5"/>
 </g>
-<g font-size="23" font-weight="bold"><text x="76" y="269">RAW SOURCES</text><text x="394" y="269">BRONZE · ICEBERG</text><text x="732" y="269">SILVER · ICEBERG</text><text x="1070" y="269">GOLD · ORACLE PG</text></g>
+<g font-size="23" font-weight="bold"><text x="76" y="269">RAW SOURCES</text><text x="394" y="269">BRONZE · ICEBERG</text><text x="732" y="269">SILVER · ICEBERG</text><text x="1070" y="269">GOLD · NATIVE ORACLE</text></g>
 <g font-size="18"><text x="76" y="309">PeakGear files</text><text x="76" y="339">OCI Object Storage</text><text x="76" y="369">Sales · Products · Stores</text>
 <text x="394" y="309">Source-faithful tables</text><text x="394" y="339">Sales · Products · Stores</text><text x="394" y="369">Inventory for investigation</text>
 <text x="732" y="309">Enriched sales</text><text x="732" y="339">Standardized names</text><text x="732" y="369">Reusable sales measures</text>
-<text x="1070" y="309">West product performance</text><text x="1070" y="339">Catalog AI Enrichment</text><text x="1070" y="369">Select AI consumption</text></g>
+<text x="1070" y="309">PG · West performance</text><text x="1070" y="339">Catalog AI Enrichment</text><text x="1070" y="369">Select AI consumption</text></g>
 <g stroke="#425563" stroke-width="3" fill="none" marker-end="url(#arrow)"><path d="M322 309H358"/><path d="M660 309H696"/><path d="M998 309H1034"/></g>
 <text x="378" y="434" font-size="17">AI Catalog-managed tables · Data files in object storage</text>
 <rect x="52" y="468" width="944" height="114" rx="12" fill="#dfeaf3"/>
