@@ -2,7 +2,7 @@
 
 Estimated Time: 1 minute to review.
 
-Generated on 2026-10-21T13:03:56.415066+00:00
+Generated on 2026-10-21T13:52:50.073294+00:00
 
 ## Structure Check
 - ✅ Required folders and workshop variants present.
@@ -44,8 +44,8 @@ Generated on 2026-10-21T13:03:56.415066+00:00
 ### conclusion/conclusion.md
 - ✅ LiveLabs formatting checks passed.
 - ✍️ Lanham score: 2/5
-  - 7 sentence(s) exceed 20 words; tighten wording.
-  - Contractions found; expand them per Lanham rules.
+  - 4 sentence(s) exceed 20 words; tighten wording.
+  - Passive voice detected in 1 instance(s).
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### introduction/introduction.md
@@ -86,9 +86,8 @@ Generated on 2026-10-21T13:03:56.415066+00:00
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### validation-result.md
-- ✅ LiveLabs formatting checks passed.
-- ✍️ Lanham score: 3/5
-  - 1 sentence(s) exceed 20 words; tighten wording.
+- ✅ Final report formatting completed after generation.
+- ✍️ Lanham score: 4/5
   - Heavy nominalization usage; prefer vivid verbs.
 
 ### workshop-details.md
