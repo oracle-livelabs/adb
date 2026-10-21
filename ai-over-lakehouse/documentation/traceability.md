@@ -11,18 +11,17 @@ Trace workshop content and screenshots to retained sources and record outstandin
 | Source | Use and boundary |
 |---|---|
 | PeakGear lab source files | Technical sequence, object names, SQL, MCP checkpoints, and runtime gates. |
-| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Azure storage password, Databricks OAuth values, catalog endpoint, and discovery/read calls. Host ACL belongs to provider provisioning; the learner mount stays under PEAKGEAR_USER. |
+| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Validated credential/mount sequence, public catalog endpoint, and discovery/read calls. Protected values are excluded; obtain them privately from LiveLabs. Host ACL belongs to provider provisioning; the learner mount stays under PEAKGEAR_USER. |
 | Owner-supplied LiveLabs Reservation Information screenshots, October 6, 2026 | OCI versus database credential fields and prepared environment details. Illustrative values only; the database password is redacted. |
 | Owner-supplied Data Studio screenshots, October 8, 2026 | Lab 4 local-table Catalog, AI Enrichment entry and review, and saved annotations. Unmodified UI examples; Task 2 defines the reviewed contract, not the example's AI suggestions. |
 | Participant-authorized Data Studio and Codex sessions | UI screenshots captured during the working dry run. |
 | Official Oracle documentation | Public Learn More links and supported product behavior. |
 
-The event owner approved including the shared lab passwords, Azure storage
-password, Databricks client ID, client secret, and source endpoints for
-copy/paste. See `assets/event-lab-values.md`. The two Databricks screenshots
-use the original uploaded images with their endpoint and client ID visible.
-Password fields remain masked by the authentic UI; complete values are printed
-in the instructions. No source-data export, ADMIN login, or OCI API private key
+Public endpoints and credential aliases remain in the field reference.
+Protected values come only from LiveLabs View Login Info, not this package.
+The OAuth credential screenshot was withdrawn because it displayed a concrete
+client ID. The remaining mount screenshot shows only the public endpoint and
+credential aliases. No source-data export, ADMIN login, or OCI API private key
 is added to the package.
 
 ## Captured screenshots
@@ -33,7 +32,6 @@ is added to the package.
 | 1.2 | connect-sources/images/create-azure-storage-credential.png | 2 | Azure storage credential, password masked |
 | 2.1 | connect-sources/images/add-iceberg-catalog.png | 2 | Catalog Add menu and Iceberg catalog choice |
 | 2.2 | connect-sources/images/mount-iceberg-catalog.png | 2 | Unity mount form, approved workspace endpoint visible |
-| 2.3 | connect-sources/images/create-iceberg-catalog-credential.png | 2 | Iceberg OAuth credential, approved endpoint and client ID visible, UI password field masked |
 | 3 | connect-sources/images/connected-iceberg-tables.png | 2 | Mounted catalog exposes the two Iceberg tables |
 | Reservation Information | connect-peakgear/images/livelabs-reservation-information.png | 1 | OCI Login Credentials with UI-masked password, Launch OCI, tenancy, region, and compartment; example reservation only |
 | Environment Details | connect-peakgear/images/livelabs-environment-details.png | 1 | Password-redacted illustration of assigned database user, name, profile, and Operations link |
@@ -62,9 +60,10 @@ is added to the package.
   Generation solely to mask the database password and is labelled a redacted
   illustration, not an unmodified execution capture.
 * One image explains one action and preserves a useful header or breadcrumb.
-* The source endpoints and client ID are owner-approved event values. Review
-  unrelated database names, compartments, tenant labels, and browser identity
-  before publishing externally.
+* Public source endpoints may be shown; concrete client IDs, client secrets,
+  SAS tokens, and passwords must not appear in text, SQL, images, or ZIPs.
+  Review unrelated database names, compartments, tenant labels, and browser
+  identity before publishing externally.
 * Each Markdown image has descriptive alt text.
 * Lab 4 screenshots are unmodified and contain no visible passwords or tokens.
   Their database labels are examples. The review and saved screenshots do not

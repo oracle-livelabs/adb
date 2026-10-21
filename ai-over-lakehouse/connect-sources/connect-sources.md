@@ -29,10 +29,17 @@ In this lab, you will:
 
 ## Task 1: Create the Azure storage credential in Data Studio
 
-Open the connected database's **Settings** (gear icon), then select
-**Credentials**. This one-off event includes the shared values for copy/paste;
-no separate handout is needed. The complete reference is
-[Event lab values](../assets/event-lab-values.md).
+Open LiveLabs **View Login Info** (**Reservation Information**) and expand
+**Environment Details**. You will need **Azure Storage Password**,
+**Databricks Client ID**, and **Databricks Client Secret**. If any field is
+missing or empty, stop and ask the instructor; do not look up old credentials
+in GitHub, screenshots, or a previous reservation.
+
+Keep this panel open. In Data Studio, open the connected database's
+**Settings** (gear icon), then select **Credentials**. Public settings and
+the private-field mapping are in the
+[Connection field reference](../assets/event-lab-values.md). Do not paste
+credentials into chat, source control, or screenshots.
 
 ![In Database Settings, select Credentials and click Create credential.](images/azure-credential-start.png)
 
@@ -45,7 +52,7 @@ Iceberg files in Azure Blob Storage. Enter the values below in field order:
 | Description | Credential to access data in Azure Storage |
 | Credential type | Azure |
 | Username | livelab |
-| Password | tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q== |
+| Password | Copy **Azure Storage Password** from **View Login Info → Environment Details** |
 
 Save the credential. Confirm that ADLS&#95;PEAKGEAR&#95;DATA appears in
 **Credentials** for the connected participant database. Task 1 is complete.
@@ -79,12 +86,13 @@ create the OAuth credential with these values:
 | Description | Credential to authenticate into Unity |
 | Credential type | Iceberg OAuth2 |
 | Token endpoint | https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token |
-| Client ID | 5c47dc63-f693-4820-a40b-4b08c3709f34 |
-| Client secret | dose7b979ac313c1063af5d4cdf09b1ee8fb |
+| Client ID | Copy **Databricks Client ID** from **View Login Info → Environment Details** |
+| Client secret | Copy **Databricks Client Secret** from **View Login Info → Environment Details** |
 | Token scope | all-apis |
 | Token refresh rate in seconds | 3600 |
 
-![Create DBX&#95;PEAKGEAR&#95;OAUTH with the event token endpoint and client ID. The UI masks the client secret; its copy-ready value is above.](images/create-iceberg-catalog-credential.png)
+Copy the two OAuth values directly from your reservation into this form.
+Do not use Database Password as the client secret.
 
 After saving the credential, return to the catalog form. Select
 DBX&#95;PEAKGEAR&#95;OAUTH in **Iceberg catalog credentials**, then select
@@ -98,7 +106,10 @@ catalog's **Refresh** button only if the new connection or tables are not yet vi
 Optional SQL alternative: if you have not completed Tasks 1 and 2 in the UI,
 open **SQL Worksheet** in the participant database and run the blocks in
 [01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql) separately,
-in order. Use either the UI or SQL path for these objects, not both.
+in order. It is a template: replace each protected-value placeholder in your
+private worksheet with its **View Login Info** value before running that block.
+Unfilled credential blocks stop with an explicit error. Never commit or share
+a filled-in worksheet. Use either the UI or SQL path for these objects, not both.
 
 ## Task 3: Prove the two live sources
 
