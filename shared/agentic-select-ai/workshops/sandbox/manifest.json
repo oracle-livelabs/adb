@@ -16,7 +16,7 @@
         {
             "title": "Get Started with LiveLabs",
             "description": "Prerequisites for LiveLabs (Oracle-owned tenancies). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
-            "filename": "http://livelabs.oracle.com/cdn/common/labs/cloud-login/cloud-login-livelabs-nooci.md"
+            "filename": "https://livelabs.oracle.com/cdn/common/labs/cloud-login/cloud-login-livelabs-nooci.md"
         },
         {
             "title": "Lab 1: Build a Sales Return Agent",
