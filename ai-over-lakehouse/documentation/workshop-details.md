@@ -53,10 +53,11 @@ final question in the same lab.
 * OCI Login Credentials, Tenancy Information, and Environment Details from
   the learner's own Reservation Information. The database password and OCI
   password are different; no participant ADMIN access is required.
-* The shared [Event lab values](../assets/event-lab-values.md), included directly
-  in the workshop with the event owner's approval. They contain the prepared
-  Operations link name, Azure storage password, Databricks OAuth
-  values, and source endpoints; no separate handout is needed for those values.
+* **Azure Storage Password**, **Databricks Client ID**, and **Databricks Client
+  Secret** available privately in **View Login Info → Environment Details**.
+  The public [Connection field reference](../assets/event-lab-values.md)
+  contains only endpoints, aliases, and the field mapping. If private fields
+  are missing or empty, ask the instructor before starting Lab 2.
 * An available Oracle Operations database that exposes
   `CUSTOMER_RETURN_EVENTS`.
 * A Databricks Unity Catalog endpoint with `ICEBERG.PRODUCTS` and

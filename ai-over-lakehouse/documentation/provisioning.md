@@ -34,10 +34,58 @@ Environment Details. Those details must include Database Name, Database User,
 Database Password, AI Profile Name, and Operations Database Link. OCI and
 database passwords must not be confused or copied from illustrative screenshots.
 
+## Private source-credential fields — backend release prerequisite
+
+Coordinate these exact field labels with the LiveLabs backend owner before
+releasing the updated learner flow. The PR changes documentation and packages;
+it does not add backend fields or rotate remote credentials.
+
+| View Login Info → Environment Details field | Learner use in Lab 2 |
+|---|---|
+| Azure Storage Password | Azure credential Password |
+| Databricks Client ID | Iceberg OAuth2 credential Client ID |
+| Databricks Client Secret | Iceberg OAuth2 credential Client secret |
+
+Populate the fields only through the private provisioning/backend workflow.
+Never place their values in GitHub, a public PR, screenshots, or a Starter Kit.
+The public endpoint and storage username in the field reference remain
+non-secret connection settings. Do not change their meaning or the learner's
+object aliases when supplying replacement credentials.
+
+The previous values were public. Their service owners must revoke/rotate them
+and audit Azure Storage and Databricks access. Do not reuse exposed values
+merely because the current files no longer contain them. This PR does not
+rewrite repository history, remove previously downloaded ZIPs, or invalidate
+cached copies.
+
+Before marking the reservation ready:
+
+1. Confirm all three private fields are present and non-empty for a fresh
+   reservation and visible only through the intended reservation access.
+   Verify the backend field limits and Copy buttons preserve each complete
+   value, including long storage passwords, without truncation, inserted
+   whitespace, or an ellipsis being copied as part of the value.
+2. Complete Lab 2 as PEAKGEAR_USER using only those fields and the documented
+   public settings. Both Iceberg tables and the Operations returns table must
+   return sample rows; all three local snapshots must be created successfully.
+3. Verify that an unfilled optional SQL credential block fails before a
+   credential-creation call. Test the filled alternative in a separate fresh
+   reservation, not on top of the UI-created credentials.
+4. Rebuild the ZIP and run the offline package/security tests. Inspect
+   credential screenshots before publishing.
+5. Obtain service-owner confirmation that exposed values are revoked and
+   replacement values work. Record access-audit follow-up privately.
+
+If a protected field is absent, learners stop and ask the instructor. They
+must not search Git history or use another reservation's credentials.
+
+## Provider-only SQL reference
+
 The preserved [legacy ADMIN SQL](../scripts/00-admin-setup.sql) is an operator
 reference only, not the automated reservation template and not a learner task.
-Its example password must not override the password supplied by reservation
-provisioning. Do not run it against an already prepared reservation just to
+Its protected-value placeholders must be filled only in a private operator
+worksheet; unfilled password blocks fail before creating an account or credential.
+The reservation's provisioned password remains authoritative. Do not run it against an already prepared reservation just to
 follow the workshop. Provider templates and their secrets are maintained in the
 provisioning workflow, not supplied to participants as extra setup steps.
 
