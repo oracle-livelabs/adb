@@ -117,7 +117,7 @@ Do this only if your facilitator confirms there is extra time and each attendee 
     | `df_01_enriched_sales_expressions` | Join Bronze views and derive sales fields |
     | `df_02_enriched_sales_cleanse` | Cleanse the native intermediate data |
     | `Clear Silver table` | Clear the disposable lab target before loading |
-| Final Silver Data Load, such as `dl_silver_enriched_sales` | Publish the curated data to Silver Iceberg; an optional replacement uses your practice load |
+    | Final Silver Data Load, such as `dl_silver_enriched_sales` | Publish the curated data to Silver Iceberg; an optional replacement uses your practice load |
 
 3. Confirm that you are in your assigned lab environment. This workflow clears its Silver target. Click **Run** once, retain the prepared variable defaults, and click **OK**.
 

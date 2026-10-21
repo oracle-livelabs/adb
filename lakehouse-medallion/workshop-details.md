@@ -2,6 +2,10 @@
 
 Estimated Time: 90 minutes for the workshop.
 
+### Objectives
+
+Capture the workshop scope, schedule, prerequisites, and learner outcomes for WMS 12202.
+
 ## Short Description
 
 Build a PeakGear medallion pipeline with Iceberg Bronze and Silver, native Oracle Gold, visual Data Transforms, cross-tier SQL, and natural-language analytics in Oracle Autonomous AI Lakehouse.

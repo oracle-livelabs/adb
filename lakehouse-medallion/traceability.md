@@ -2,6 +2,10 @@
 
 Estimated Time: 5 minutes to review.
 
+### Objectives
+
+Record the sources and screenshot provenance for the HOL6091 revision.
+
 This author-only file records the sources used for the October 21 HOL6091 revision. It is not a learner lab.
 
 ## Source precedence

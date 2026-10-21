@@ -2,6 +2,10 @@
 
 Estimated Time: 1 minute to review.
 
+### Objectives
+
+Summarize the bundled local validator results; GitHub Actions applies additional repository checks.
+
 Generated on 2026-10-21T13:56:33.989964+00:00
 
 ## Structure Check

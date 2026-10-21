@@ -2,7 +2,11 @@
 
 Estimated Time: 10 minutes to review; allow a separate full dry-run.
 
-This is an internal author checklist for WMS 12202 / HOL6091. The October 21 revision is local on `codex/hol6091-video-mike-20261021`. It is not an approval, GitHub push, PR, or production acceptance.
+### Objectives
+
+Confirm the event dry-run gates and release boundaries before requesting production approval.
+
+This is an internal author checklist for WMS 12202 / HOL6091. The October 21 revision is under review on draft PR #557. It is not an approval or production acceptance.
 
 ## Applied revision
 
