@@ -21,7 +21,7 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
 
 1. Follow the facilitator's explanation of the prepared ingestion: PeakGear source files are loaded into Bronze Iceberg tables through Data Transforms.
 
-2. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables**. Select any table and open **Sample Data**. If you already sampled `products` in Lab 1, choose `store_inventory` here.
+2. Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables**. Select any table and open **Sample Data**. If you already sampled `products` in Lab 1, choose `store_inventory` here.
 
 3. Identify the other two Bronze tables: `store_sales_transactions` and `store_locations`. All four are preloaded. You will not reload raw files in this exercise.
 
@@ -131,7 +131,7 @@ Do this only if your facilitator confirms there is extra time and each attendee 
 
 ## Task 5: Check published Silver
 
-1. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT`, click **Refresh**, and expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. Inspect **Sample Data**.
+1. Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT`, click **Refresh**, and expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. Inspect **Sample Data**.
 
 2. Open a new worksheet named **Lab 2 - Silver checks**. Execute the checks separately. The first shows the published rows; the second makes the cleansed names and derived measures easier to compare.
 

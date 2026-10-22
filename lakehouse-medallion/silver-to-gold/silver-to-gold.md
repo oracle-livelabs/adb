@@ -36,13 +36,13 @@ Complete Lab 2 successfully before this lab. The Silver workflow and final Icebe
 
 ## Task 2: Inspect the native Gold table
 
-1. Open **Catalog**. Expand **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`. This is the native database branch, not **Locally Mounted Catalogs** → `PG_AICAT`.
+1. Open **Data** → **Database**. Expand **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`. This is the native database branch, not **Locally Mounted Catalogs** → `PG_AICAT`.
 
 2. Open **Sample Data** and inspect the sales month, product, sales amount, and `SALES_REGION`. Open **Statistics** to inspect available profiling information, then return to **Overview** to inspect columns and descriptions.
 
 ## Task 3: Enrich Gold metadata
 
-1. In **Catalog** → **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`, click **AI Enrichment** at the upper right. Wait for generation to finish.
+1. In **Data** → **Database** → **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`, click **AI Enrichment** at the upper right. Wait for generation to finish.
 
 2. Review the generated table description, column descriptions, and tags. They may need editing for accuracy and usefulness.
 
