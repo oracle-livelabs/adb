@@ -118,11 +118,15 @@ Secret** from **View Login Info → Environment Details**. If either field is
 missing or empty, ask the instructor. Never use an old screenshot or commit a
 filled-in worksheet.
 
-This block replaces **only DBX&#95;PEAKGEAR&#95;OAUTH**, if it exists, before
-mounting the catalog. It stops without changing anything if the user,
+Run **each block separately, in order**, and wait for the worksheet's
+completion message before starting the next block. Stop if either reports
+an error.
+
+The first block replaces **only DBX&#95;PEAKGEAR&#95;OAUTH**, if it exists.
+It stops without changing anything if the user,
 placeholders, or Azure credential are not ready, or if the catalog already
-exists. It does not delete the Azure credential, unmount a catalog, or change
-source data.
+exists. The second block mounts the catalog. Neither block deletes the Azure
+credential, unmounts a catalog, or changes source data.
 
 ~~~sql
 <copy>
@@ -182,7 +186,16 @@ BEGIN
     client_secret   => l_client_secret,
     token_scope     => 'all-apis'
   );
+END;
+/
+</copy>
+~~~
 
+After the credential block completes successfully, run the mount block:
+
+~~~sql
+<copy>
+BEGIN
   DBMS_CATALOG.MOUNT_ICEBERG(
     catalog_name            => 'DBX_UNITY_PEAKGEAR',
     endpoint                =>
@@ -198,8 +211,8 @@ END;
 </copy>
 ~~~
 
-Run the entire block once and wait for the worksheet's completion message.
-In **Catalog**, refresh **Locally Mounted Catalogs** if needed and confirm
+After both blocks complete, refresh **Locally Mounted Catalogs** in
+**Catalog** if needed and confirm
 DBX&#95;UNITY&#95;PEAKGEAR contains **ICEBERG → Tables → PRODUCTS** and
 **DIGITAL&#95;CLICKSTREAM&#95;EVENTS**. The sample queries in Task 3 confirm
 read access; this reference does not replace those checks. Do not repeat the

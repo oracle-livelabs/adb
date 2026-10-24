@@ -54,7 +54,10 @@ BEGIN
     client_secret   => l_client_secret,
     token_scope     => 'all-apis'
   );
+END;
+/
 
+BEGIN
   DBMS_CATALOG.MOUNT_ICEBERG(
     catalog_name            => 'DBX_UNITY_PEAKGEAR',
     endpoint                =>

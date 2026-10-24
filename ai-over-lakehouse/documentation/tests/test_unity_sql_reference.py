@@ -23,8 +23,12 @@ class UnitySqlReferenceTests(unittest.TestCase):
         self.assertIn("UI workflow above remains the main path", self.flat)
         self.assertIn("skip this reference", self.flat)
         self.assertIn("../scripts/02-unity-sql-reference.sql", self.reference)
-        code = re.search(r"<copy>\n(.*?)\n</copy>", self.reference, re.S).group(1)
-        self.assertEqual(code, self.sql.rstrip())
+        blocks = re.findall(r"<copy>\n(.*?)\n</copy>", self.reference, re.S)
+        self.assertEqual(len(blocks), 2)
+        self.assertTrue(blocks[0].rstrip().endswith("END;\n/"))
+        self.assertTrue(blocks[1].startswith("BEGIN\n"))
+        self.assertNotIn("DBMS_CATALOG.MOUNT_ICEBERG(", blocks[0])
+        self.assertEqual("\n\n".join(blocks), self.sql.rstrip())
 
     def test_credentials_are_copied_from_the_reservation_not_published(self):
         self.assertIn("**View Login Info → Environment Details**", self.reference)
@@ -64,8 +68,8 @@ class UnitySqlReferenceTests(unittest.TestCase):
 
     def test_partial_success_errors_and_retry_are_explained(self):
         for phrase in (
-            "Run the entire block once",
-            "wait for the worksheet's completion message",
+            "Run **each block separately, in order**",
+            "wait for the worksheet's completion message before starting the next block",
             "Task 1",
             "sample queries in Task 3 confirm read access",
             "an error does not guarantee that nothing was created",
