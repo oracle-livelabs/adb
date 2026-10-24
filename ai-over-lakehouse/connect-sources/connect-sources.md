@@ -103,13 +103,113 @@ catalog's **Refresh** button only if the new connection or tables are not yet vi
 
 ![The successful DBX&#95;UNITY&#95;PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
 
-Optional SQL alternative: if you have not completed Tasks 1 and 2 in the UI,
-open **SQL Worksheet** in the participant database and run the blocks in
-[01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql) separately,
-in order. It is a template: replace each protected-value placeholder in your
-private worksheet with its **View Login Info** value before running that block.
-Unfilled credential blocks stop with an explicit error. Never commit or share
-a filled-in worksheet. Use either the UI or SQL path for these objects, not both.
+### SQL reference (not part of the lab)
+
+> **For reference only:** The same Databricks Unity connection can also be
+> configured in **SQL Worksheet**. This is not a required lab step; the UI
+> workflow above remains the main path. If the catalog is already connected,
+> skip this reference.
+
+The [SQL reference](../scripts/02-unity-sql-reference.sql) below assumes
+ADLS&#95;PEAKGEAR&#95;DATA was created in **Task 1**. Open **SQL Worksheet** in
+your assigned database as PEAKGEAR&#95;USER. Before running it, replace only
+the two placeholders with **Databricks Client ID** and **Databricks Client
+Secret** from **View Login Info → Environment Details**. If either field is
+missing or empty, ask the instructor. Never use an old screenshot or commit a
+filled-in worksheet.
+
+This block replaces **only DBX&#95;PEAKGEAR&#95;OAUTH**, if it exists, before
+mounting the catalog. It stops without changing anything if the user,
+placeholders, or Azure credential are not ready, or if the catalog already
+exists. It does not delete the Azure credential, unmount a catalog, or change
+source data.
+
+~~~sql
+<copy>
+-- SQL reference only; not part of the required Lab 2 workflow.
+-- Run in SQL Worksheet as PEAKGEAR_USER after creating ADLS_PEAKGEAR_DATA.
+-- Fill both placeholders from your active reservation's View Login Info.
+-- This replaces only DBX_PEAKGEAR_OAUTH, and only when the catalog is absent.
+-- Do not share or commit a filled-in worksheet.
+DECLARE
+  l_client_id CONSTANT VARCHAR2(4000) := '<DATABRICKS_CLIENT_ID_FROM_VIEW_LOGIN_INFO>';
+  l_client_secret CONSTANT VARCHAR2(4000) := '<DATABRICKS_CLIENT_SECRET_FROM_VIEW_LOGIN_INFO>';
+  l_exists PLS_INTEGER;
+BEGIN
+  IF USER <> 'PEAKGEAR_USER'
+     OR SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') <> 'PEAKGEAR_USER' THEN
+    RAISE_APPLICATION_ERROR(-20011,
+      'Use SQL Worksheet connected as PEAKGEAR_USER in your assigned database.');
+  END IF;
+
+  IF l_client_id IS NULL OR SUBSTR(l_client_id, 1, 1) = '<'
+     OR l_client_secret IS NULL OR SUBSTR(l_client_secret, 1, 1) = '<' THEN
+    RAISE_APPLICATION_ERROR(-20012,
+      'Copy Databricks Client ID and Databricks Client Secret from LiveLabs View Login Info.');
+  END IF;
+
+  SELECT COUNT(*) INTO l_exists
+  FROM user_mounted_catalogs
+  WHERE catalog_name = 'DBX_UNITY_PEAKGEAR';
+
+  IF l_exists > 0 THEN
+    RAISE_APPLICATION_ERROR(-20013,
+      'DBX_UNITY_PEAKGEAR already exists. Inspect it in Catalog; do not rerun connection setup.');
+  END IF;
+
+  SELECT COUNT(*) INTO l_exists
+  FROM user_credentials
+  WHERE credential_name = 'ADLS_PEAKGEAR_DATA';
+
+  IF l_exists = 0 THEN
+    RAISE_APPLICATION_ERROR(-20014,
+      'Complete Lab 2 Task 1 first: ADLS_PEAKGEAR_DATA is required.');
+  END IF;
+
+  SELECT COUNT(*) INTO l_exists
+  FROM user_credentials
+  WHERE credential_name = 'DBX_PEAKGEAR_OAUTH';
+
+  IF l_exists > 0 THEN
+    DBMS_CLOUD.DROP_CREDENTIAL('DBX_PEAKGEAR_OAUTH');
+  END IF;
+
+  DBMS_SHARE.CREATE_BEARER_TOKEN_CREDENTIAL(
+    credential_name => 'DBX_PEAKGEAR_OAUTH',
+    token_endpoint  =>
+      'https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token',
+    client_id       => l_client_id,
+    client_secret   => l_client_secret,
+    token_scope     => 'all-apis'
+  );
+
+  DBMS_CATALOG.MOUNT_ICEBERG(
+    catalog_name            => 'DBX_UNITY_PEAKGEAR',
+    endpoint                =>
+      'https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/' ||
+      'unity-catalog/iceberg-rest/v1/catalogs/peakgear',
+    catalog_credential      => 'DBX_PEAKGEAR_OAUTH',
+    data_storage_credential => 'ADLS_PEAKGEAR_DATA',
+    enabled                 => TRUE,
+    catalog_type            => 'ICEBERG_UNITY'
+  );
+END;
+/
+</copy>
+~~~
+
+Run the entire block once and wait for the worksheet's completion message.
+In **Catalog**, refresh **Locally Mounted Catalogs** if needed and confirm
+DBX&#95;UNITY&#95;PEAKGEAR contains **ICEBERG → Tables → PRODUCTS** and
+**DIGITAL&#95;CLICKSTREAM&#95;EVENTS**. The sample queries in Task 3 confirm
+read access; this reference does not replace those checks. Do not repeat the
+UI connection setup after a successful SQL mount.
+
+If SQL reports an error, keep its exact message and ask the instructor.
+Credential creation and catalog mounting are separate operations: an error
+does not guarantee that nothing was created. After a timeout, inspect
+**Credentials** and **Catalog** before trying again; do not drop or unmount
+objects to force a retry.
 
 ## Task 3: Prove the two live sources
 

@@ -50,6 +50,13 @@ participant to create, edit, or validate an AI profile.
   Databricks Client ID, and Databricks Client Secret. A learner can copy the
   current replacement values without GitHub or a separate credential message.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
+- [ ] Lab 2's SQL note is explicitly reference-only, not a required learner
+  step. In a separate test reservation, validate the reference with private
+  View Login Info values and the Task 1 Azure credential. Confirm the same
+  two Iceberg tables and Task 3 sample reads. Test missing placeholders, a
+  missing Azure credential, and an existing mount: each must stop before any
+  credential replacement. Preserve the exact error if mounting fails after
+  credential creation; inspect existing objects before retrying.
 - [ ] The catalog form explicitly selects both credentials before Add; expanding
   the connected catalog exposes tables without a mandatory extra refresh.
 - [ ] Save separate, named live-source-check and local-snapshot worksheets.
