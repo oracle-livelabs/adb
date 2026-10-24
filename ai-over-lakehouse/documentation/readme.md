@@ -21,6 +21,7 @@ ADMIN setup.
 * Provider-only provisioning boundary: [provisioning.md](provisioning.md).
 * Connection field reference: [event-lab-values.md](../assets/event-lab-values.md).
 * Optional source-connection SQL: [scripts/01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
+* Lab 2 Unity connection reference (not a required step): [scripts/02-unity-sql-reference.sql](../scripts/02-unity-sql-reference.sql).
 * Participant Codex package: [starter-kit](../starter-kit/).
 
 Lab 3 Task 1 provides the read-only SQL to obtain the database-specific ADP_URL
