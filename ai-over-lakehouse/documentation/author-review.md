@@ -46,7 +46,17 @@ participant to create, edit, or validate an AI profile.
   the OS-specific 01 setup script; participants do not switch to ADMIN.
 - [ ] `PEAKGEAR_USER` can sign in using Environment Details → Database Password,
   not the OCI Login Credentials password or a sample password.
+- [ ] View Login Info → Environment Details contains Azure Storage Password,
+  Databricks Client ID, and Databricks Client Secret. A learner can copy the
+  current replacement values without GitHub or a separate credential message.
 - [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
+- [ ] Lab 2's SQL note is explicitly reference-only, not a required learner
+  step. In a separate test reservation, validate the reference with private
+  View Login Info values and the Task 1 Azure credential. Confirm the same
+  two Iceberg tables and Task 3 sample reads. Test missing placeholders, a
+  missing Azure credential, and an existing mount: each must stop before any
+  credential replacement. Preserve the exact error if mounting fails after
+  credential creation; inspect existing objects before retrying.
 - [ ] The catalog form explicitly selects both credentials before Add; expanding
   the connected catalog exposes tables without a mandatory extra refresh.
 - [ ] Save separate, named live-source-check and local-snapshot worksheets.
@@ -121,10 +131,13 @@ participant to create, edit, or validate an AI profile.
 * Verify that `adp_run_query` can execute the required explicit SQL DDL as
   PEAKGEAR_USER in the target event release. The Lab 5 workflow does not use
   the high-level Analytic View builder.
-* Only the event-owner-approved shared values in `assets/event-lab-values.md`
-  are included. Do not add unrelated credentials, ADMIN passwords, or OCI API
-  private keys. The owner-confirmed mount script is the source for the Azure
-  and Databricks values; a new end-to-end dry run is still required.
+* Do not publish passwords, SAS tokens, concrete Databricks client IDs, client
+  secrets, or private keys in text, SQL, screenshots, or the Starter Kit ZIP.
+  Run the offline credential regression checks before publishing.
+* Verify View Login Info exposes all three Lab 2 protected fields. The backend
+  update is external to this PR. Service owners must revoke/rotate previously
+  exposed credentials and audit access; a new reservation must then complete
+  Lab 2 with the replacement values. Removing files does not purge Git history.
 * Participant database passwords come only from the active LiveLabs reservation.
   The legacy provider SQL is not a learner step or a source of the live password.
 

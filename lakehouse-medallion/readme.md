@@ -8,10 +8,10 @@ Six-lab Oracle LiveLabs workshop: **Build a Medallion Data Pipeline with Oracle 
 
 * Learner entry: `workshops/sandbox/index.html`.
 * Descriptions and 90-minute agenda: [Workshop details](workshop-details.md).
-* Revision details, source review, facilitator script, and release gates: [Author review](author-review.md).
+* Revision details and release gates: [Author review](author-review.md).
 * Source and screenshot provenance: [Traceability](traceability.md).
 
-Use the **new Data Studio UI** and `peakgear_medallion` project. Legacy actions appear only in lab appendices. The October revision follows the narrated successful sequence and supplied working SQL. Mia remains on native Gold; the revised Gold NLQ still needs a live dry-run.
+Use Data Studio and the `peakgear_medallion` project. The October 21 revision follows the narrated successful sequence, Mike's feedback, and the working SQL. Legacy UI appendices were removed. Mia asks two Gold questions through worksheet AI; the current event build still needs a live dry-run.
 
 ## Preview locally
 
@@ -25,7 +25,7 @@ Open `http://localhost:8000/workshops/sandbox/`. Internet access is required for
 
 ## GitHub handoff
 
-The earlier submission was merged in PR 540. The October revision is prepared on `codex/hol6091-mike-review-20261001` for later approval. Review the runtime and contributor checks before requesting a merge.
+The earlier submission was merged in PR 540. This revision is prepared locally on `codex/hol6091-video-mike-20261021` for later review. Review runtime and contributor checks before requesting a merge.
 
 Do not commit private handouts, credentials, project exports containing secrets, raw recordings, or dataset access URLs. These materials are provisioned separately.
 

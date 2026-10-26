@@ -1,18 +1,18 @@
-# Lab 4: Alex publishes an AI-ready West-region Gold product
+# Lab 4: Publish an AI-ready West-region Gold product
 
 ## Introduction
 
-Alex publishes a business-focused Gold table in the native Oracle `PG` schema. After loading it, the facilitator uses Catalog AI Enrichment to describe its West-region scope and columns.
+Alex publishes a business-focused Gold table in the native Oracle `PG` schema. After loading it, you use Catalog AI Enrichment to describe its West-region scope and columns.
 
 The data-flow filter selects the rows. Metadata explains those rows to people and configured AI consumers; it does not filter data or enforce access controls.
 
-Estimated Time: 9 minutes, including the facilitator's enrichment demonstration.
+Estimated Time: 12 minutes.
 
 ### Objectives
 
 * Run the prepared Silver-to-Gold workflow.
 * Browse and query the native Gold table.
-* Review AI-generated table and column metadata.
+* Review and refine AI-generated table and column metadata.
 
 ### Prerequisites
 
@@ -36,38 +36,31 @@ Complete Lab 2 successfully before this lab. The Silver workflow and final Icebe
 
 ## Task 2: Inspect the native Gold table
 
-1. Open **Catalog**. Expand **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`. This is the native database branch, not **Locally Mounted Catalogs** → `PG_AICAT`.
+1. Open **Data** → **Database**. Expand **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`. This is the native database branch, not **Locally Mounted Catalogs** → `PG_AICAT`.
 
-2. Open **Sample Data** and inspect the sales month, product, sales amount, and `SALES_REGION`. Return to **Overview** to inspect its columns.
+2. Open **Sample Data** and inspect the sales month, product, sales amount, and `SALES_REGION`. Open **Statistics** to inspect available profiling information, then return to **Overview** to inspect columns and descriptions.
 
-## Task 3: Watch the facilitator enrich Gold metadata
+## Task 3: Enrich Gold metadata
 
-1. The facilitator returns to **Catalog** → **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance` and clicks **AI Enrichment** at the upper right.
+1. In **Data** → **Database** → **your connected database** → **PG** → **Tables** → `ailh_gold_west_product_performance`, click **AI Enrichment** at the upper right. Wait for generation to finish.
 
-2. Wait for the generated descriptions and tags to appear. Review the table description and the proposed column descriptions before saving.
+2. Review the generated table description, column descriptions, and tags. They may need editing for accuracy and usefulness.
 
     ![Catalog AI Enrichment panel with generated descriptions and tags for the native Gold table](../assets/images/review-gold-enrichment.png)
 
-3. Check that the description clearly states the business scope. The facilitator can refine the description to:
+3. Add this sentence to the table description: **This data is for the West Region only.** Keep the useful generated description around it. The filter in the Gold data flow selects the West rows; the description explains that scope.
 
-    ```text
-    <copy>
-    West-region product sales performance by sales month, product, category,
-    state, and sales channel. Contains West-region data only, not company-wide
-    sales. TOTAL_SALE_AMOUNT is the sales amount; ESTIMATED_GROSS_MARGIN is an
-    estimated sales margin, not audited profit.
-    </copy>
-    ```
+    ![AI Enrichment panel with the West-only table description and a west column tag](../assets/images/lab4-ai-enrichment-west.png)
 
-4. Review the descriptions for `SALE_MONTH`, `PRODUCT_NAME`, `TOTAL_SALE_AMOUNT`, and `SALES_REGION`. Correct unsupported statements. Do not accept generated descriptions solely because they sound plausible.
+4. Review the descriptions for `SALE_MONTH`, `PRODUCT_NAME`, `TOTAL_SALE_AMOUNT`, and `SALES_REGION`. In the `SALES_REGION` row, add the tag `west`. Remove or correct any unsupported description.
 
 5. Click **Save** at the bottom of the enrichment panel. Return to **Overview** and verify that the saved description and tags are visible.
 
     ![Gold Overview after saving the generated description, tags, and column metadata](../assets/images/review-gold-metadata.png)
 
-6. Listen to the facilitator: “We added business context after loading Gold. The West filter controls which data is present; the description tells a consumer what it represents. This demonstration uses Catalog AI Enrichment, not a Data Transforms annotation editor.”
+6. Explain the distinction: the data-flow filter determines which rows Gold contains. Catalog metadata improves human discovery and gives configured AI analysis a clearer description; it does not enforce row security or guarantee that generated SQL will use the correct table.
 
-    The facilitator performs enrichment; attendees do not create an AI connection or enter model credentials.
+    The AI connection is pre-configured. Do not enter model credentials.
 
 ## Task 4: Validate Gold with SQL
 
@@ -96,16 +89,6 @@ Complete Lab 2 successfully before this lab. The Silver workflow and final Icebe
 3. Save the worksheet.
 
     **Checkpoint:** Gold is queryable, the region check returns only West, and the catalog metadata explains that scope.
-
-## Appendix A: Legacy execution and SQL
-
-1. In legacy **Data Transforms** → **Projects** → `peakgear_medallion` → **Workflows** → `wf_03_silver_to_gold`, click **Start** and retain the assigned defaults.
-
-2. Open the execution job link or legacy **Jobs**. Wait for the workflow to finish.
-
-3. Open legacy **Database Actions → SQL** as `PG` and run Task 4's checks unchanged.
-
-4. Return to new Data Studio for the facilitator's **Catalog → AI Enrichment** demonstration. This guide does not assume that legacy Data Transforms exposes the same enrichment control.
 
 ## Learn More
 

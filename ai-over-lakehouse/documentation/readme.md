@@ -19,8 +19,9 @@ ADMIN setup.
 * Release checks and runtime gates: [author-review.md](author-review.md).
 * Screenshot capture and provenance: [traceability.md](traceability.md).
 * Provider-only provisioning boundary: [provisioning.md](provisioning.md).
-* Copy-ready event values: [event-lab-values.md](../assets/event-lab-values.md).
+* Connection field reference: [event-lab-values.md](../assets/event-lab-values.md).
 * Optional source-connection SQL: [scripts/01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql).
+* Lab 2 Unity connection reference (not a required step): [scripts/02-unity-sql-reference.sql](../scripts/02-unity-sql-reference.sql).
 * Participant Codex package: [starter-kit](../starter-kit/).
 
 Lab 3 Task 1 provides the read-only SQL to obtain the database-specific ADP_URL
@@ -112,20 +113,26 @@ the server was started from the wrong directory.
 
 ## Event values
 
-The event owner explicitly approved including the supplied shared passwords,
-Azure storage password, Databricks client ID, client secret, and endpoints in
-this one-off workshop package. Lab 2 source-credential and mount steps are ready
-for copy/paste; no private handout is required for these shared values. The
-participant database password is instead assigned per reservation and must be
-copied from LiveLabs **Environment Details**; it is not published in this package.
+Only public endpoints and credential aliases are included in this package.
+Lab 2 obtains **Azure Storage Password**, **Databricks Client ID**, and
+**Databricks Client Secret** from LiveLabs **View Login Info → Environment
+Details**. The optional SQL path has guarded placeholders; the Starter Kit
+contains the same secret-free field reference. If the private fields are not
+available, the learner must stop and ask the instructor. Backend publication
+of these fields is a release prerequisite, not something this repository can
+configure; see [provisioning.md](provisioning.md).
+
+The participant Database Password also comes only from the active reservation.
+Never publish a filled SQL worksheet, credential screenshot, or protected value.
+Previously exposed credentials must be revoked/rotated by their service owners;
+removing them from the current files does not purge public Git history.
 
 Lab 3 Task 1 obtains the actual database-specific HTTPS origin through the
 provided read-only SQL query, without an ADMIN login. The reservation provider
 must verify PEAKGEAR_USER can run it before release. Do not substitute the
 Operations database listener or localhost preview URL. ADMIN login, reservation
 passwords, personal credentials, and OCI API private keys are not part of the
-approved published values. Use the shared source credentials only for the event
-and retire them when it ends.
+public package. Use source credentials only for the assigned reservation.
 
 ## Status
 

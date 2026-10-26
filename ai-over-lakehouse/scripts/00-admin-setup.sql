@@ -1,8 +1,9 @@
 -- PeakGear LiveLab: legacy provider/operator provisioning reference only.
 -- Not a learner step. LiveLabs reservations must already be provisioned.
--- Reservation-specific passwords come from provisioning, not the example below.
+-- Fill password placeholders only in a private operator worksheet.
+-- Unfilled password blocks fail before creating an account or credential.
 -- Do not rerun against a prepared reservation. See documentation/provisioning.md.
--- Event-owner-approved shared values are included for copy/paste.
+-- No source credentials or default passwords are distributed in this reference.
 -- Use only in the assigned event database. This script does not reset existing users.
 
 -- 1. Check whether the participant schema already exists.
@@ -11,13 +12,21 @@ SELECT username,
 FROM dba_users
 WHERE username = 'PEAKGEAR_USER';
 
--- 2. Run this statement only when the query above returned no row.
-CREATE USER PEAKGEAR_USER
-  IDENTIFIED BY "Welcome123456"
-  DEFAULT TABLESPACE DATA
-  TEMPORARY TABLESPACE TEMP
-  QUOTA 2000M ON DATA
-  ACCOUNT UNLOCK;
+-- 2. Run this block only when the query above returned no row.
+-- Obtain the participant password from private reservation provisioning.
+DECLARE
+  l_database_password CONSTANT VARCHAR2(128) := '<PROVIDER_DATABASE_PASSWORD>';
+BEGIN
+  IF l_database_password IS NULL OR SUBSTR(l_database_password, 1, 1) = '<' THEN
+    RAISE_APPLICATION_ERROR(-20003,
+      'Supply the private reservation Database Password before running this block.');
+  END IF;
+  EXECUTE IMMEDIATE 'CREATE USER PEAKGEAR_USER IDENTIFIED BY "' ||
+    REPLACE(l_database_password, '"', '""') || '" ' ||
+    'DEFAULT TABLESPACE DATA TEMPORARY TABLESPACE TEMP ' ||
+    'QUOTA 2000M ON DATA ACCOUNT UNLOCK';
+END;
+/
 
 -- 3. Run these grants for a new or existing participant.
 -- They allow only the objects built in this lab: local tables, views,
@@ -92,11 +101,17 @@ SELECT owner,
 FROM dba_db_links
 WHERE db_link = 'PEAKGEAR_OPERATIONS_LINK';
 
+DECLARE
+  l_operations_password CONSTANT VARCHAR2(4000) := '<PROVIDER_OPERATIONS_PASSWORD>';
 BEGIN
+  IF l_operations_password IS NULL OR SUBSTR(l_operations_password, 1, 1) = '<' THEN
+    RAISE_APPLICATION_ERROR(-20004,
+      'Supply the private Operations source password before running this block.');
+  END IF;
   DBMS_CLOUD.CREATE_CREDENTIAL(
     credential_name => 'PEAKGEAR_OPS_CREDENTIAL',
     username        => 'PEAKGEAR_OPS',
-    password        => 'Welcome123456'
+    password        => l_operations_password
   );
 END;
 /

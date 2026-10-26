@@ -1,7 +1,9 @@
 --------------------------------------------------------------------------------
 -- PeakGear event | SQL alternative to the Data Studio credential/mount UI.
 -- Run in SQL Worksheet as PEAKGEAR_USER in the prepared LiveLabs reservation.
--- Event values and mount calls are from the owner's confirmed working script.
+-- Template only: obtain protected values from LiveLabs View Login Info.
+-- Replace the three placeholders in your private worksheet before execution.
+-- Never commit or share a completed worksheet. Public endpoints remain below.
 -- This worksheet does not drop credentials, unmount catalogs, or change source data.
 -- Execute each CREATE block only when its inspection query shows no matching object.
 -- The provider already prepares the Databricks host:443 ACL for PEAKGEAR_USER.
@@ -19,23 +21,39 @@ WHERE credential_name IN ('ADLS_PEAKGEAR_DATA', 'DBX_PEAKGEAR_OAUTH')
 ORDER BY credential_name;
 
 -- Run only if ADLS_PEAKGEAR_DATA is absent.
+-- Copy Azure Storage Password from View Login Info > Environment Details.
+DECLARE
+  l_storage_password CONSTANT VARCHAR2(32767) := '<AZURE_STORAGE_PASSWORD_FROM_VIEW_LOGIN_INFO>';
 BEGIN
+  IF l_storage_password IS NULL OR SUBSTR(l_storage_password, 1, 1) = '<' THEN
+    RAISE_APPLICATION_ERROR(-20001,
+      'Copy Azure Storage Password from LiveLabs View Login Info before running this block.');
+  END IF;
   DBMS_CLOUD.CREATE_CREDENTIAL(
     credential_name => 'ADLS_PEAKGEAR_DATA',
     username        => 'livelab',
-    password        => 'tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q==',
+    password        => l_storage_password,
     comments        => 'Event storage credential for PeakGear Unity managed Iceberg'
   );
 END;
 /
 
 -- Run only if DBX_PEAKGEAR_OAUTH is absent.
+-- Copy both Databricks fields from View Login Info > Environment Details.
+DECLARE
+  l_client_id CONSTANT VARCHAR2(4000) := '<DATABRICKS_CLIENT_ID_FROM_VIEW_LOGIN_INFO>';
+  l_client_secret CONSTANT VARCHAR2(4000) := '<DATABRICKS_CLIENT_SECRET_FROM_VIEW_LOGIN_INFO>';
 BEGIN
+  IF l_client_id IS NULL OR SUBSTR(l_client_id, 1, 1) = '<'
+     OR l_client_secret IS NULL OR SUBSTR(l_client_secret, 1, 1) = '<' THEN
+    RAISE_APPLICATION_ERROR(-20002,
+      'Copy Databricks Client ID and Databricks Client Secret from LiveLabs View Login Info before running this block.');
+  END IF;
   DBMS_SHARE.CREATE_BEARER_TOKEN_CREDENTIAL(
     credential_name => 'DBX_PEAKGEAR_OAUTH',
     token_endpoint  => 'https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token',
-    client_id       => '5c47dc63-f693-4820-a40b-4b08c3709f34',
-    client_secret   => 'dose7b979ac313c1063af5d4cdf09b1ee8fb',
+    client_id       => l_client_id,
+    client_secret   => l_client_secret,
     token_scope     => 'all-apis'
   );
 END;

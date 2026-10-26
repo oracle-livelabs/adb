@@ -1,40 +1,35 @@
-# Lab 6: Connect the medallion journey to business value
+# Lab 6: What the PeakGear pipeline delivered
 
 ## Introduction
 
-You have followed PeakGear data from source-faithful Bronze through reusable Silver to a curated Gold business product. Each layer serves a different consumer without requiring every consumer to rebuild the pipeline.
+Raw PeakGear retail data became a West-region sales answer. Each medallion tier served a different purpose. Oracle Autonomous AI Lakehouse and Data Studio connected the work.
 
-Estimated Time: 4 minutes. Reserve the remaining 12 minutes of the 90-minute session for troubleshooting and discussion.
+Estimated Time: 4 minutes.
 
 ### Objectives
 
-* Explain the value of medallion and the three personas.
-* Distinguish open-table storage, catalog discovery, processing, and AI consumption.
-* Identify what you demonstrated and what remains an architectural extension.
+* Summarize the PeakGear business questions and the data used to answer them.
+* Explain how medallion tiers, AI Data Catalog, Data Transforms, and SQL worked together.
+* Distinguish the lab exercises from possible architectural extensions.
 
-### Prerequisites
+## PeakGear use case summary
 
-Work through Labs 1–5 and record any incomplete checkpoints.
+Alex, the data engineer, started with PeakGear sales, product, store, and inventory data. Bronze kept source-faithful Apache Iceberg tables in OCI Object Storage. Data Transforms then joined sales with product and store data. It changed product names to Title case and derived sales, cost, and margin measures. Alex published the curated Silver result as another Iceberg table.
 
-## Task 1: Review the completed journey
+Sam, the data analyst, found Bronze inventory through the catalog and queried it alongside Silver sales. He looked for store and product pairs with recent sales above available-to-promise inventory. A positive gap flags a candidate for replenishment review. It reflects past sales, not a forecast or automatic reorder decision.
 
-1. Describe Alex's work: visual Data Transforms joins and cleanses data, workflows orchestrate it, and Jobs provides execution evidence. Bronze and published Silver use Iceberg; native `PG` tables support intermediate processing and Gold.
+Alex published West-region product performance to a native Oracle Gold table in `PG`. Catalog AI Enrichment added a West-only description and tag. Mia, the business user, asked for the top ten products by sales amount in the latest available month. She checked that the generated SQL read Gold, then compared its answer with a reference query.
 
-2. Describe Sam's work: discover Bronze inventory and join it with Silver sales to investigate inventory coverage. The query reads both tiers without creating another pipeline.
+## What you learned
 
-3. Describe Mia's work: select the native Gold table, use Query with AI, and check the generated SQL and West-only scope. Catalog AI Enrichment adds business context; filters and permissions enforce data scope and access.
+* **Medallion separates responsibilities.** Bronze retains source data. Silver makes it reusable. Gold presents a focused business product.
+* **Open and native tables work together.** Bronze and Silver used cataloged Iceberg tables. Gold used native Oracle tables.
+* **Discovery supports analysis.** Sam used the catalog and SQL Worksheet to query across tiers without another data copy.
+* **AI answers need verification.** Gold metadata explained its West-only scope. Mia checked generated SQL before trusting the result.
 
-4. Listen to the facilitator: “Medallion separates raw retention, reusable refinement, and business delivery. An open table format allows compatible engines to work with shared data, while Oracle SQL supports the queries and transformations we used today. We have not run Spark or a second cloud in this lab. The Lakehouse can support selected tiers or the full pattern; not every tier needs the same physical storage.”
-
-## Task 2: Check outcomes and finish
-
-1. Confirm which checkpoints you completed: Bronze query and view registration, Silver workflow, cross-tier SQL, Gold workflow and scope check, Catalog metadata review, and a verified Gold natural-language answer. Record an incomplete checkpoint rather than treating reference SQL alone as a successful AI exercise.
-
-2. Sign out of shared browser sessions as instructed. Leave event-resource cleanup to the facilitator; do not drop shared catalogs or delete object-store data.
-
-3. Discuss an extension: add another compatible cloud/catalog, add a Spark workload, or build an agent that consumes the same curated Gold product. These are next steps, not capabilities exercised in this session.
+This lab ran entirely on OCI with Oracle SQL. A second cloud, Spark workload, or autonomous agent could extend the architecture. The PeakGear use case needed none of them.
 
 ## Acknowledgements
 
-* **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Author** - Oracle AI Lakehouse workshop team.
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026.

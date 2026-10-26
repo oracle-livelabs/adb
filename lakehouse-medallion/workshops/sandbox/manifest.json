@@ -9,31 +9,31 @@
             "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Lab 2: Alex builds reusable Silver sales data",
+            "title": "Lab 2: Build reusable Silver sales data",
             "description": "",
             "type": "livelabs",
             "filename": "../../bronze-to-silver/bronze-to-silver.md"
         },
         {
-            "title": "Lab 3: Sam investigates inventory coverage across tiers",
+            "title": "Lab 3: Investigate inventory coverage across tiers",
             "description": "",
             "type": "livelabs",
             "filename": "../../inventory-analysis/inventory-analysis.md"
         },
         {
-            "title": "Lab 4: Alex publishes an AI-ready West-region Gold product",
+            "title": "Lab 4: Publish an AI-ready West-region Gold product",
             "description": "",
             "type": "livelabs",
             "filename": "../../silver-to-gold/silver-to-gold.md"
         },
         {
-            "title": "Lab 5: Mia asks business questions in natural language",
+            "title": "Lab 5: Ask business questions of Gold with AI",
             "description": "",
             "type": "livelabs",
             "filename": "../../ask-business/ask-business.md"
         },
         {
-            "title": "Lab 6: Connect the medallion journey to business value",
+            "title": "Lab 6: What the PeakGear pipeline delivered",
             "description": "",
             "type": "livelabs",
             "filename": "../../conclusion/conclusion.md"

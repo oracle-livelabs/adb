@@ -17,8 +17,11 @@ Python or uv manually, enter an MCP URL, or edit TOML.
 The setup verifies password storage in macOS Keychain or Windows Credential
 Manager before reporting Success; it does not
 print the entered password or write it into the generated MCP configuration.
-The shared event values are intentionally included in the workshop and in
-[event-lab-values.md](event-lab-values.md) inside this kit.
+This kit contains no source credentials. The
+[connection field reference](event-lab-values.md) maps Lab 2's protected fields
+to LiveLabs **View Login Info → Environment Details**. The MCP launcher needs
+only the assigned database password, not the Azure storage password or Databricks
+OAuth values.
 
 ## macOS: do this once in Terminal
 

@@ -29,10 +29,17 @@ In this lab, you will:
 
 ## Task 1: Create the Azure storage credential in Data Studio
 
-Open the connected database's **Settings** (gear icon), then select
-**Credentials**. This one-off event includes the shared values for copy/paste;
-no separate handout is needed. The complete reference is
-[Event lab values](../assets/event-lab-values.md).
+Open LiveLabs **View Login Info** (**Reservation Information**) and expand
+**Environment Details**. You will need **Azure Storage Password**,
+**Databricks Client ID**, and **Databricks Client Secret**. If any field is
+missing or empty, stop and ask the instructor; do not look up old credentials
+in GitHub, screenshots, or a previous reservation.
+
+Keep this panel open. In Data Studio, open the connected database's
+**Settings** (gear icon), then select **Credentials**. Public settings and
+the private-field mapping are in the
+[Connection field reference](../assets/event-lab-values.md). Do not paste
+credentials into chat, source control, or screenshots.
 
 ![In Database Settings, select Credentials and click Create credential.](images/azure-credential-start.png)
 
@@ -45,7 +52,7 @@ Iceberg files in Azure Blob Storage. Enter the values below in field order:
 | Description | Credential to access data in Azure Storage |
 | Credential type | Azure |
 | Username | livelab |
-| Password | tFODcOQJpwaApm/p3wEqAdYIbvq9/N/jlMsbd2EMz6KwAyXps2+7D1TWLOvBQ8fCPOxaCXznM/YD+AStYElH9Q== |
+| Password | Copy **Azure Storage Password** from **View Login Info → Environment Details** |
 
 Save the credential. Confirm that ADLS&#95;PEAKGEAR&#95;DATA appears in
 **Credentials** for the connected participant database. Task 1 is complete.
@@ -79,12 +86,13 @@ create the OAuth credential with these values:
 | Description | Credential to authenticate into Unity |
 | Credential type | Iceberg OAuth2 |
 | Token endpoint | https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token |
-| Client ID | 5c47dc63-f693-4820-a40b-4b08c3709f34 |
-| Client secret | dose7b979ac313c1063af5d4cdf09b1ee8fb |
+| Client ID | Copy **Databricks Client ID** from **View Login Info → Environment Details** |
+| Client secret | Copy **Databricks Client Secret** from **View Login Info → Environment Details** |
 | Token scope | all-apis |
 | Token refresh rate in seconds | 3600 |
 
-![Create DBX&#95;PEAKGEAR&#95;OAUTH with the event token endpoint and client ID. The UI masks the client secret; its copy-ready value is above.](images/create-iceberg-catalog-credential.png)
+Copy the two OAuth values directly from your reservation into this form.
+Do not use Database Password as the client secret.
 
 After saving the credential, return to the catalog form. Select
 DBX&#95;PEAKGEAR&#95;OAUTH in **Iceberg catalog credentials**, then select
@@ -95,10 +103,126 @@ catalog's **Refresh** button only if the new connection or tables are not yet vi
 
 ![The successful DBX&#95;UNITY&#95;PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
 
-Optional SQL alternative: if you have not completed Tasks 1 and 2 in the UI,
-open **SQL Worksheet** in the participant database and run the blocks in
-[01-connect-event-sources.sql](../scripts/01-connect-event-sources.sql) separately,
-in order. Use either the UI or SQL path for these objects, not both.
+### SQL reference (not part of the lab)
+
+> **For reference only:** The same Databricks Unity connection can also be
+> configured in **SQL Worksheet**. This is not a required lab step; the UI
+> workflow above remains the main path. If the catalog is already connected,
+> skip this reference.
+
+The [SQL reference](../scripts/02-unity-sql-reference.sql) below assumes
+ADLS&#95;PEAKGEAR&#95;DATA was created in **Task 1**. Open **SQL Worksheet** in
+your assigned database as PEAKGEAR&#95;USER. Before running it, replace only
+the two placeholders with **Databricks Client ID** and **Databricks Client
+Secret** from **View Login Info → Environment Details**. If either field is
+missing or empty, ask the instructor. Never use an old screenshot or commit a
+filled-in worksheet.
+
+Run **each block separately, in order**, and wait for the worksheet's
+completion message before starting the next block. Stop if either reports
+an error.
+
+The first block replaces **only DBX&#95;PEAKGEAR&#95;OAUTH**, if it exists.
+It stops without changing anything if the user,
+placeholders, or Azure credential are not ready, or if the catalog already
+exists. The second block mounts the catalog. Neither block deletes the Azure
+credential, unmounts a catalog, or changes source data.
+
+~~~sql
+<copy>
+-- SQL reference only; not part of the required Lab 2 workflow.
+-- Run in SQL Worksheet as PEAKGEAR_USER after creating ADLS_PEAKGEAR_DATA.
+-- Fill both placeholders from your active reservation's View Login Info.
+-- This replaces only DBX_PEAKGEAR_OAUTH, and only when the catalog is absent.
+-- Do not share or commit a filled-in worksheet.
+DECLARE
+  l_client_id CONSTANT VARCHAR2(4000) := '<DATABRICKS_CLIENT_ID_FROM_VIEW_LOGIN_INFO>';
+  l_client_secret CONSTANT VARCHAR2(4000) := '<DATABRICKS_CLIENT_SECRET_FROM_VIEW_LOGIN_INFO>';
+  l_exists PLS_INTEGER;
+BEGIN
+  IF USER <> 'PEAKGEAR_USER'
+     OR SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') <> 'PEAKGEAR_USER' THEN
+    RAISE_APPLICATION_ERROR(-20011,
+      'Use SQL Worksheet connected as PEAKGEAR_USER in your assigned database.');
+  END IF;
+
+  IF l_client_id IS NULL OR SUBSTR(l_client_id, 1, 1) = '<'
+     OR l_client_secret IS NULL OR SUBSTR(l_client_secret, 1, 1) = '<' THEN
+    RAISE_APPLICATION_ERROR(-20012,
+      'Copy Databricks Client ID and Databricks Client Secret from LiveLabs View Login Info.');
+  END IF;
+
+  SELECT COUNT(*) INTO l_exists
+  FROM user_mounted_catalogs
+  WHERE catalog_name = 'DBX_UNITY_PEAKGEAR';
+
+  IF l_exists > 0 THEN
+    RAISE_APPLICATION_ERROR(-20013,
+      'DBX_UNITY_PEAKGEAR already exists. Inspect it in Catalog; do not rerun connection setup.');
+  END IF;
+
+  SELECT COUNT(*) INTO l_exists
+  FROM user_credentials
+  WHERE credential_name = 'ADLS_PEAKGEAR_DATA';
+
+  IF l_exists = 0 THEN
+    RAISE_APPLICATION_ERROR(-20014,
+      'Complete Lab 2 Task 1 first: ADLS_PEAKGEAR_DATA is required.');
+  END IF;
+
+  SELECT COUNT(*) INTO l_exists
+  FROM user_credentials
+  WHERE credential_name = 'DBX_PEAKGEAR_OAUTH';
+
+  IF l_exists > 0 THEN
+    DBMS_CLOUD.DROP_CREDENTIAL('DBX_PEAKGEAR_OAUTH');
+  END IF;
+
+  DBMS_SHARE.CREATE_BEARER_TOKEN_CREDENTIAL(
+    credential_name => 'DBX_PEAKGEAR_OAUTH',
+    token_endpoint  =>
+      'https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token',
+    client_id       => l_client_id,
+    client_secret   => l_client_secret,
+    token_scope     => 'all-apis'
+  );
+END;
+/
+</copy>
+~~~
+
+After the credential block completes successfully, run the mount block:
+
+~~~sql
+<copy>
+BEGIN
+  DBMS_CATALOG.MOUNT_ICEBERG(
+    catalog_name            => 'DBX_UNITY_PEAKGEAR',
+    endpoint                =>
+      'https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/' ||
+      'unity-catalog/iceberg-rest/v1/catalogs/peakgear',
+    catalog_credential      => 'DBX_PEAKGEAR_OAUTH',
+    data_storage_credential => 'ADLS_PEAKGEAR_DATA',
+    enabled                 => TRUE,
+    catalog_type            => 'ICEBERG_UNITY'
+  );
+END;
+/
+</copy>
+~~~
+
+After both blocks complete, refresh **Locally Mounted Catalogs** in
+**Catalog** if needed and confirm
+DBX&#95;UNITY&#95;PEAKGEAR contains **ICEBERG → Tables → PRODUCTS** and
+**DIGITAL&#95;CLICKSTREAM&#95;EVENTS**. The sample queries in Task 3 confirm
+read access; this reference does not replace those checks. Do not repeat the
+UI connection setup after a successful SQL mount.
+
+If SQL reports an error, keep its exact message and ask the instructor.
+Credential creation and catalog mounting are separate operations: an error
+does not guarantee that nothing was created. After a timeout, inspect
+**Credentials** and **Catalog** before trying again; do not drop or unmount
+objects to force a retry.
 
 ## Task 3: Prove the two live sources
 

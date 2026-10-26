@@ -1,10 +1,10 @@
-# Lab 3: Sam investigates inventory coverage across tiers
+# Lab 3: Investigate inventory coverage across tiers
 
 ## Introduction
 
 Sam asks: “Which store and product combinations have recent sales that exceed their available-to-promise inventory?” Combine curated Silver sales with Bronze inventory without building another pipeline or copying inventory into Silver. Available to promise (ATP) is the inventory quantity available for new commitments.
 
-Estimated Time: 12 minutes, including a four-minute discovery demonstration.
+Estimated Time: 12 minutes.
 
 ### Objectives
 
@@ -16,15 +16,15 @@ Estimated Time: 12 minutes, including a four-minute discovery demonstration.
 
 Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must contain the assigned inventory extract.
 
-## Task 1: Find the inventory asset in the new UI
+## Task 1: Find the inventory asset
 
-1. As Sam, open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables** → `store_inventory`. Inspect the columns and **Sample Data**, especially `STORE_ID`, `PRODUCT_ID`, and `AVAILABLE_TO_PROMISE_QTY`.
+1. Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables** → `store_inventory`. Inspect the columns and **Sample Data**, especially `STORE_ID`, `PRODUCT_ID`, and `AVAILABLE_TO_PROMISE_QTY`.
 
 2. Expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. This is the curated sales table Alex published. Notice that inventory remains in Bronze; you can investigate it with Silver without creating a new pipeline.
 
     ![Mounted catalog listing the Bronze inventory and published Silver sales tables](../assets/images/review-catalog-tiers.png)
 
-3. Open **SQL Worksheet → Worksheets → New**, name the worksheet **Lab 3 - Data checks**, and run this catalog query to confirm the objects you found.
+3. Open **SQL Worksheet**. Create a worksheet, or rename a blank one, to **Lab 3 - Data checks**. Run this catalog query to confirm the objects you found.
 
     ```sql
     <copy>
@@ -74,7 +74,7 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-    The reviewed sample contains only January 2025, so equal first and latest months are expected. The analysis uses the latest month and the preceding month when available; it does not require two months of data.
+    The reviewed sample contains only January 2025, so equal first and latest months are possible. The analysis uses the latest month and the preceding month when available; it does not require two months of data.
 
     The reviewed inventory sample has 1,200 rows and zero missing ATP values. A different approved extract can have a different row count. Missing ATP is unknown, not zero; the analysis excludes it. These checks explain whether the join can duplicate sales, which period is covered, and whether available inventory is known.
 
@@ -123,14 +123,6 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
 3. Treat the output as a list for inventory review, not an automatic reorder recommendation. Past sales are a demand proxy, not a forecast or an unfulfilled-order count. The inner join excludes sales keys without matching inventory, and null ATP rows are excluded. No rows means no matched records satisfy this rule.
 
 4. Use **Save As** to save the worksheet as **Inventory gap analysis**. **Checkpoint:** you answered a business question using both tiers without publishing another physical table.
-
-## Appendix A: Legacy SQL and discovery fallback
-
-1. Open the assigned **legacy Database Actions → SQL** session as `PG`. Use legacy **Data Studio → Catalog** for browsing if available.
-
-2. Run Task 1's catalog query, Task 2's checks, and Task 3's analysis unchanged after confirming identifier case and mount alias.
-
-3. Record the result and return to the new Data Studio tab for Lab 4. Do not create or reload catalog tables to work around a UI listing problem.
 
 ## Learn More
 

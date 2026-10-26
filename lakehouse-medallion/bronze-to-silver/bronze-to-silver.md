@@ -1,16 +1,16 @@
-# Lab 2: Alex builds reusable Silver sales data
+# Lab 2: Build reusable Silver sales data
 
 ## Introduction
 
 Alex turns source sales, product, and store data into a reusable sales dataset. Inspect Bronze, review the prepared visual transformations, and run the workflow that publishes Silver Iceberg data.
 
-Estimated Time: 24 minutes, including the ingestion demonstration.
+Estimated Time: 27 minutes for the core path. The optional Data Load exercise is outside the 90-minute agenda.
 
 ### Objectives
 
 * Browse and query Bronze Iceberg tables.
 * Register the prepared Bronze bridge views.
-* Review joins and expressions without changing the prepared flow.
+* Review derived sales measures and set the product-name cleansing rule.
 * Run the Silver workflow and inspect its child jobs.
 
 ### Prerequisites
@@ -21,7 +21,7 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
 
 1. Follow the facilitator's explanation of the prepared ingestion: PeakGear source files are loaded into Bronze Iceberg tables through Data Transforms.
 
-2. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables**. Select `products`, then **Sample Data**. Repeat for `store_inventory`.
+2. Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables**. Select any table and open **Sample Data**. If you already sampled `products` in Lab 1, choose `store_inventory` here.
 
 3. Identify the other two Bronze tables: `store_sales_transactions` and `store_locations`. All four are preloaded. You will not reload raw files in this exercise.
 
@@ -29,9 +29,9 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
 
 ## Task 2: Query Bronze in SQL Worksheet
 
-1. Open **SQL Worksheet → Worksheets → New**. Use the worksheet menu to rename it **Lab 2 - Bronze checks**, then save it.
+1. Open **SQL Worksheet**. If a blank **Worksheet 1** is open, rename it **Lab 2 - Bronze checks** from its three-dot menu. Otherwise click **New** and name the worksheet. Save it.
 
-2. Paste and execute each statement separately with **Run Statement**. First, list the catalog tables.
+2. Paste and execute each statement separately. Put the cursor in the statement, then click the arrow beside **Run Statement** or use the worksheet's **Run Statement** control. First, list the catalog tables.
 
     ```sql
     <copy>
@@ -75,15 +75,34 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
 
 5. Return to **Transform** → **Projects** → `peakgear_medallion` → **Data Flows** → `df_01_enriched_sales_expressions`.
 
-6. Select the **Expression** component, then the **Column Mapping** tab in the lower panel. Scroll the mapping rows to inspect `COUNTRY`, which is set to `'US'`, and the expressions for sales region, estimated cost, and margin.
+6. Select the **Expression** step, then the **Column Mapping** tab in the lower panel. Scroll the mapping rows to inspect `COUNTRY`, which is set to `'US'`, and the expressions for sales region, estimated cost, and margin.
 
     ![Expression component with Column Mapping and the prepared country and sales expressions](../assets/images/review-column-mapping.png)
 
 7. Trace the joins from the Bronze sales, products, and store-location views into the expression and target. These views expose catalog data to the flow; they are not a second copy of the Bronze files.
 
-8. Review only. Do not edit expressions or run this individual flow. The workflow will execute the prepared expression and cleansing flows in order.
+8. Leave the prepared expression mapping unchanged. Open **Data Flows** → `df_02_enriched_sales_cleanse`. Select the **Data Cleanse** step, then **Attributes**. Select `PRODUCT_NAME` and set **Modify Case** to **Title case**. Click **Save**. This standardizes inconsistent Bronze product names before publication.
 
-    Facilitator: “The value is a reusable visual pipeline: joins, business rules, cleansing, and orchestration. We are inspecting its logic, not typing a new SQL pipeline during the lab.”
+    ![Data Cleanse Attributes showing PRODUCT_NAME with Modify Case set to Title case](../assets/images/lab2-title-case.png)
+
+9. Do not run the individual flows. The workflow executes expression, cleansing, and publication steps in order. The visual step names may still be generic in the imported project; identify each by its position and selected detail panel.
+
+    Facilitator: “The visual flow joins source data and derives sales measures. You changed one cleansing rule; the workflow will apply it and publish reusable Silver Iceberg data.”
+
+## Optional: Build the Silver Iceberg Data Load
+
+Do this only if your facilitator confirms there is extra time and each attendee has an isolated project. The core workflow already has a prepared Data Load; do not alter a shared or running workflow. Otherwise, go directly to Task 4.
+
+1. In `peakgear_medallion`, open **Data Loads** and create a new Data Load named `dl_silver_enriched_sales_practice`.
+2. For **Source Connection**, choose **Oracle**, your assigned database connection, and schema `PG`. For **Target Connection**, choose **Apache Iceberg**, the prepared `pg-aicat` connection, and the existing `silver` namespace. This connection is the Data Transforms target; `PG_AICAT` is the SQL mount.
+
+    ![Data Load wizard selecting the Apache Iceberg catalog and existing namespace](../assets/images/lab2-iceberg-target.png)
+
+3. In **Data Entities**, search `enriched`, select `ailh_enriched_sales` (not the stage table or view), and set **Target Action** to **Append**. Validate and save the Data Load.
+
+    ![Data Load detail selecting the enriched sales source and Append target action](../assets/images/lab2-data-load-append.png)
+
+4. Before running `wf_02_bronze_to_silver`, replace only its final prepared Data Load step with your new one, connect **Clear Silver table** to it using an **ok** transition, then validate and save the workflow. The clear step must remain in place so reruns do not append duplicates. If your project does not allow this safely, keep the prepared load and continue with Task 4.
 
 ## Task 4: Execute and monitor Silver
 
@@ -98,13 +117,13 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
     | `df_01_enriched_sales_expressions` | Join Bronze views and derive sales fields |
     | `df_02_enriched_sales_cleanse` | Cleanse the native intermediate data |
     | `Clear Silver table` | Clear the disposable lab target before loading |
-    | `dl_silver_enriched_sales_stage` | Publish the curated data to Silver Iceberg |
+    | Final Silver Data Load, such as `dl_silver_enriched_sales` | Publish the curated data to Silver Iceberg; an optional replacement uses your practice load |
 
 3. Confirm that you are in your assigned lab environment. This workflow clears its Silver target. Click **Run** once, retain the prepared variable defaults, and click **OK**.
 
-4. Open **Jobs → Transforms**, not **Data Loads**. Select the new `wf_02_bronze_to_silver` run by its start time. You can also follow the workflow's latest-execution job link.
+4. Open **Jobs → Transforms**. Select the new `wf_02_bronze_to_silver` run by its start time. You can also follow the workflow's latest-execution job link.
 
-5. Click **Refresh** while the job runs. Expand the child steps to inspect their status. Allow about two to three minutes; timings can vary. Wait for the workflow and all its children to finish successfully before starting Gold.
+5. Click **Refresh** while the job runs. Expand the child steps to inspect their status. Allow about two to three minutes; timings can vary. Wait for the workflow and all its children to finish successfully before moving on.
 
     ![Silver job details showing the expression, cleansing, clear, and load steps](../assets/images/review-silver-job.png)
 
@@ -112,9 +131,9 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
 
 ## Task 5: Check published Silver
 
-1. Open **Catalog** → **Locally Mounted Catalogs** → `PG_AICAT`, click **Refresh**, and expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. Inspect **Sample Data**.
+1. Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT`, click **Refresh**, and expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. Inspect **Sample Data**.
 
-2. Open a new worksheet named **Lab 2 - Silver checks**. Execute the two checks separately.
+2. Open a new worksheet named **Lab 2 - Silver checks**. Execute the checks separately. The first shows the published rows; the second makes the cleansed names and derived measures easier to compare.
 
     ```sql
     <copy>
@@ -126,30 +145,24 @@ Complete Lab 1. Use your assigned environment and the `peakgear_medallion` proje
 
     ```sql
     <copy>
-    SELECT "PRODUCT_ID", "PRODUCT_NAME", "SALE_MONTH", "SALES_REGION"
+    SELECT "PRODUCT_ID", "PRODUCT_NAME", "SALE_MONTH", "SALES_REGION",
+           "QTY_SOLD", "TOTAL_SALE_AMOUNT", "ESTIMATED_COST",
+           "ESTIMATED_GROSS_MARGIN"
     FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT
     FETCH FIRST 10 ROWS ONLY;
     </copy>
     ```
 
-3. Save the worksheet. The uppercase Silver identifier is intentional; it differs from the lowercase native intermediate table `PG."ailh_enriched_sales"`.
+3. Compare `PRODUCT_NAME` with the raw Bronze sample: names are now title-cased. `TOTAL_SALE_AMOUNT`, `ESTIMATED_COST`, and `ESTIMATED_GROSS_MARGIN` are reusable sales measures derived during preparation. Save the worksheet.
+
+    ![Silver query result with standardized product names and sales fields](../assets/images/lab2-silver-sample.png)
 
     **Checkpoint:** the Silver workflow succeeded and the published Iceberg table returns enriched sales data.
-
-## Appendix A: Legacy UI instructions
-
-1. In legacy **Data Transforms** → **Projects** → `peakgear_medallion`, select the same workflow under **Workflows** and use **Start**. Retain the assigned defaults. Run `wf_01_raw_to_bronze` before `wf_02_bronze_to_silver`.
-
-2. Follow the execution link or open legacy **Jobs** to inspect the run and its child steps.
-
-3. For transformation review, open **Data Flows** → `df_01_enriched_sales_expressions` → **Expression** → **Column Mapping**. Do not edit the prepared mapping.
-
-4. In legacy **Database Actions → SQL**, execute the same Bronze and Silver queries as `PG`. Return to the new UI for the next lab.
 
 ## Learn More
 
 * [Manage catalogs with DBMS_CATALOG](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/manage-catalogs-dbms-catalogs.html)
-* [Oracle Data Transforms](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/data-transforms.html)
+* [Create a Data Load in Data Transforms](https://docs.oracle.com/en/database/data-integration/data-transforms/using/create-data-load.html)
 
 You may now **proceed to the next lab**.
 

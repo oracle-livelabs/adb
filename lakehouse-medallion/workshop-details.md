@@ -2,27 +2,31 @@
 
 Estimated Time: 90 minutes for the workshop.
 
+### Objectives
+
+Capture the workshop scope, schedule, prerequisites, and learner outcomes for WMS 12202.
+
 ## Short Description
 
 Build a PeakGear medallion pipeline with Iceberg Bronze and Silver, native Oracle Gold, visual Data Transforms, cross-tier SQL, and natural-language analytics in Oracle Autonomous AI Lakehouse.
 
 ## Long Description
 
-Follow three personas through a retail analytics scenario. As Alex, the data engineer, inspect preloaded Bronze data and run prepared Data Transforms workflows to cleanse Silver and publish a West-region Gold product. As Sam, the analyst, discover inventory data and join it with Silver sales to investigate inventory coverage. As Mia, the business user, use a configured Select AI experience to ask questions of Gold and validate the resulting answer.
+Follow three personas through a retail analytics scenario. As Alex, the data engineer, inspect preloaded Bronze data, set a Title case cleansing rule for product names, and run Data Transforms workflows to publish enriched Silver sales and a West-region Gold product. As Sam, the analyst, discover Bronze inventory and join it with Silver sales to investigate inventory coverage. As Mia, the business user, ask two natural-language sales questions, inspect the generated SQL, and validate both Gold answers.
 
-The workshop uses OCI Object Storage, Apache Iceberg, Oracle AI Data Catalog, and native Oracle data products. It illustrates a multi-cloud-ready pattern without requiring a second cloud or a Spark deployment. The facilitator demonstrates Catalog AI Enrichment after Gold is loaded, reviewing descriptions and tags that explain its West-only scope. New Data Studio instructions form the main path; legacy UI alternatives are isolated in each affected lab's appendix.
+The workshop uses OCI Object Storage, Apache Iceberg, Oracle AI Data Catalog, and native Oracle data products. It illustrates a multi-cloud-ready pattern without requiring a second cloud or a Spark deployment. Attendees use Catalog AI Enrichment after Gold is loaded, reviewing and refining descriptions and tags that explain its West-only scope. A Data Load rebuild is an optional extension outside the core agenda.
 
 ## Workshop Outline
 
 | Lab | Focus | Minutes |
 |---|---|---:|
 | 1 | Architecture, personas, environment and setup | 22 |
-| 2 | Ingestion overview; query Bronze; register views; review and run Silver | 24 |
+| 2 | Ingestion overview; query Bronze; register views; cleanse names and run Silver | 27 |
 | 3 | Discover inventory and answer a cross-tier business question | 12 |
-| 4 | Publish native Gold, demonstrate Catalog AI Enrichment, and validate West scope | 9 |
-| 5 | Ask and validate a natural-language business question | 7 |
+| 4 | Publish native Gold, enrich metadata, and validate West scope | 12 |
+| 5 | Ask and validate two natural-language Gold questions | 8 |
 | 6 | Conclusion and learning outcomes | 4 |
-| Buffer | Troubleshooting and discussion | 12 |
+| Buffer | Troubleshooting and discussion | 5 |
 | Total | | 90 |
 
 ## Workshop Prerequisites
@@ -32,7 +36,7 @@ The workshop uses OCI Object Storage, Apache Iceberg, Oracle AI Data Catalog, an
 * Working connections and event credentials delivered separately from public artifacts.
 * Tested, approved model configuration for Catalog AI Enrichment; model credentials remain outside the learner material.
 * Select AI profile scoped to the Gold object, with required metadata inclusion and database privileges.
-* New UI and legacy URLs, with fallbacks rehearsed by the facilitator.
+* Current Data Studio UI and the SQL-generation configuration, rehearsed by the facilitator.
 
 ## Notes
 
