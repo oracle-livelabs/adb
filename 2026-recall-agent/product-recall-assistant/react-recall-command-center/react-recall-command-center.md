@@ -84,7 +84,11 @@ Kevin needs a usable returns application. David keeps connection details outside
 
 Use Node.js 20 or later. If `node --version` reports an older release, install a supported Node.js version before continuing. If you do not have Node.js installed, please check the  **Prerequisites: Install node** lab. 
 
+
+
 1. In the same terminal, enter the extracted application folder, install the dependencies, and create your local environment file.
+
+    **macOS/Linux:**
 
     ```bash
     <copy>
