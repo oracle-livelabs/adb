@@ -246,15 +246,15 @@ Kevin asks the final business question.
 
 ## Task 7: Explore the Governed Recall Campaign
 
-    Kevin needs the team to prepare a customer response without letting an AI model decide who qualifies or sending a message before a person reviews it. The campaign workspace uses the same database identity and application session as the rest of the command center, then adds explicit contact authorization, a reusable draft, a human approval, and an audit trail.
-    
-    1. Sign in as `RECALL_LEAD_USER` and open **Recall Campaign**. Review the policy state before acting. Contact is disabled until the recall lead authorizes it.
-    2. Select **Authorize customer contact**. The authorized workspace creates a generic notice draft using the default `EMAIL` channel and `PROFESSIONAL` tone. Change the channel or tone and select **Regenerate generic draft** to explore the options.
-    3. Review the generic template. It contains campaign facts and placeholders, not customer names or email addresses. The campaign package obtains eligible purchases in the active Deep Data Security session; customer details are merged only after the agent returns the generic template.
-    4. Select one authorized customer order and choose **Generate for selected customer**. Review the personalized preview, deterministic refund amount, and approved refund steps. Selecting a customer creates a draft record for that one authorized purchase; it does not send a notice.
-    5. Select **Approve campaign and create refund intents** after reviewing the personalized notice. The database records the lead's approval, updates the campaign and selected recipient statuses, and creates one `READY_FOR_PROCESSING` refund intent for each purchase personalized in that campaign. Approval does not apply to the full eligible audience. This prepares records for a later payment integration; it does not transfer funds.
-    6. Sign out and repeat the campaign view as `REGION_NE_USER` and `STORE_101_USER`. Compare the eligible audience with the recall lead's. Each audience follows the active database identity and its Lab 7 data grant.
-    
+  Kevin needs the team to prepare a customer response without letting an AI model decide who qualifies or sending a message before a person reviews it. The campaign workspace uses the same database identity and application session as the rest of the command center, then adds explicit contact authorization, a reusable draft, a human approval, and an audit trail.
+  
+   1. Sign in as `RECALL_LEAD_USER` and open **Recall Campaign**. Review the policy state before acting. Contact is disabled until the recall lead authorizes it.
+   2. Select **Authorize customer contact**. The authorized workspace creates a generic notice draft using the default `EMAIL` channel and `PROFESSIONAL` tone. Change the channel or tone and select **Regenerate generic draft** to explore the options.
+   3. Review the generic template. It contains campaign facts and placeholders, not customer names or email addresses. The campaign package obtains eligible purchases in the active Deep Data Security session; customer details are merged only after the agent returns the generic template.
+   4. Select one authorized customer order and choose **Generate for selected customer**. Review the personalized preview, deterministic refund amount, and approved refund steps. Selecting a customer creates a draft record for that one authorized purchase; it does not send a notice.
+   5. Select **Approve campaign and create refund intents** after reviewing the personalized notice. The database records the lead's approval, updates the campaign and selected recipient statuses, and creates one `READY_FOR_PROCESSING` refund intent for each purchase personalized in that campaign. Approval does not apply to the full eligible audience. This prepares records for a later payment integration; it does not transfer funds.
+   6. Sign out and repeat the campaign view as `REGION_NE_USER` and `STORE_101_USER`. Compare the eligible audience with the recall lead's. Each audience follows the active database identity and its Lab 7 data grant.
+
     As `RECALL_OWNER`, inspect the audit trail and refund intents after approval:
 
     ```sql
@@ -278,10 +278,10 @@ Kevin asks the final business question.
     You have completed the workshop. The React and Node application brings together database-enforced access, live evidence and agent answers, and a human-governed response workflow in one place.
 
 ## Conclusion
-
-    Kevin's requirements now appear in one returns application. Each signed-in user can see the B-482 records that apply to their role, view the related locations and suppliers, ask the assistant a question without receiving broader access, and prepare only the response actions their role permits.
-    
-    David keeps the application rules in Oracle AI Database: packages provide the data, Deep Data Security applies the user scope, and the owner-side bridge calls the assistant only after that filtering. The application does not need to duplicate those rules or combine results from separate JSON, vector, Spatial, or graph databases. Tim brings the results together in React.
+  
+  Kevin's requirements now appear in one returns application. Each signed-in user can see the B-482 records that apply to their role, view the related locations and suppliers, ask the assistant a question without receiving broader access, and prepare only the response actions their role permits.
+  
+  David keeps the application rules in Oracle AI Database: packages provide the data, Deep Data Security applies the user scope, and the owner-side bridge calls the assistant only after that filtering. The application does not need to duplicate those rules or combine results from separate JSON, vector, Spatial, or graph databases. Tim brings the results together in React.
 
 ## Appendix: Install Node.js
 #### Install Node.js and npm
