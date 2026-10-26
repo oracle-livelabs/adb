@@ -97,6 +97,14 @@ Use Node.js 20 or later. If `node --version` reports an older release, install a
 
     **Windows (PowerShell):**
 
+    In case you execute this on an Oracle-provided laptop run this:
+
+    ```powershell
+    <copy>
+    set-executionpolicy bypass
+    </copy>
+    ```
+
     ```powershell
     <copy>
     cd react-app
