@@ -141,9 +141,9 @@ The business question is:
 
 ### Not the primary audience
 
-This is not a no-code business-user workshop. Participants perform source
-credential, catalog-mount, SQL, and MCP setup steps. Database administration
-and reservation provisioning are not participant tasks.
+This is not a no-code business-user workshop. Participants select provisioned
+source credentials and perform catalog-mount, SQL, and MCP setup steps. Database
+administration and credential provisioning are provider tasks.
 
 ## Recommended prior knowledge
 
@@ -173,10 +173,10 @@ manual MCP configuration is not required.
 * The database-specific ADP_URL obtained by running the read-only query in
   Lab 3, Task 1 as PEAKGEAR_USER in Data Studio. The provider validates access
   before release.
-* **Azure Storage Password**, **Databricks Client ID**, and **Databricks Client
-  Secret** supplied privately in **View Login Info → Environment Details**.
-  The public [Connection field reference](../assets/event-lab-values.md)
-  contains endpoints, aliases, and the mapping, not protected values.
+* DBX_PEAKGEAR_OAUTH and ADLS_PEAKGEAR_DATA already provisioned for
+  PEAKGEAR_USER. The public
+  [Connection field reference](../assets/event-lab-values.md) lists the saved
+  credential names and endpoint. Learners do not enter source secrets.
 
 ## Environment prerequisites
 
@@ -205,8 +205,7 @@ This is the current hands-on boundary:
    distinguishing OCI login from database login.
 2. Connect Data Studio to the assigned database with Environment Details and
    verify the participant identity.
-3. Use Data Studio UI to create the Azure storage credential and Databricks
-   OAuth credential.
+3. Confirm the two provisioned source credentials in Data Studio.
 4. Use Data Studio UI to mount the Databricks Unity/Iceberg catalog.
 5. Preview five rows from each live source, then create three
    user-owned local raw snapshot tables for products, digital intent, and
@@ -369,9 +368,9 @@ The workshop is successful when:
   concrete Databricks client IDs, client secrets, and passwords must not appear
   in text, SQL, screenshots, or ZIPs. The OAuth credential screenshot that
   displayed a client ID has been withdrawn.
-* Backend release prerequisite: View Login Info must expose Azure Storage
-  Password, Databricks Client ID, and Databricks Client Secret. See
-  [provisioning.md](provisioning.md) for the field contract and validation.
+* Provisioning prerequisite: create DBX_PEAKGEAR_OAUTH and ADLS_PEAKGEAR_DATA
+  for PEAKGEAR_USER before the reservation is ready. Source secrets remain in
+  the private provider workflow. See [provisioning.md](provisioning.md).
 * Do not add ADMIN login details, unrelated secrets, or OCI API private keys.
 * Do not publish reservation database or OCI passwords. The Lab 1 environment
   screenshot is explicitly a password-redacted illustration; its other values
@@ -466,4 +465,4 @@ When using this document to populate TLF:
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

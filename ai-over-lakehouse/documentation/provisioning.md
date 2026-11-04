@@ -15,6 +15,8 @@ The environment provider prepares:
   Database Password, `CREATE TABLE`, enough table space quota for three local
   raw snapshots and supporting aggregate/model tables, and the remaining
   object-creation privileges;
+* ADLS_PEAKGEAR_DATA and DBX_PEAKGEAR_OAUTH source credentials owned by
+  PEAKGEAR_USER, ready for catalog mounting;
 * ORDS / Database Actions access for that user;
 * the required Databricks network ACL;
 * the public PEAKGEAR_OPERATIONS_LINK pointing to the event Operations source;
@@ -34,50 +36,44 @@ Environment Details. Those details must include Database Name, Database User,
 Database Password, AI Profile Name, and Operations Database Link. OCI and
 database passwords must not be confused or copied from illustrative screenshots.
 
-## Private source-credential fields — backend release prerequisite
+## Provisioned source credentials
 
-Coordinate these exact field labels with the LiveLabs backend owner before
-releasing the updated learner flow. The PR changes documentation and packages;
-it does not add backend fields or rotate remote credentials.
+Provision both credentials before marking the reservation ready:
 
-| View Login Info → Environment Details field | Learner use in Lab 2 |
+| Credential owned by PEAKGEAR_USER | Purpose |
 |---|---|
-| Azure Storage Password | Azure credential Password |
-| Databricks Client ID | Iceberg OAuth2 credential Client ID |
-| Databricks Client Secret | Iceberg OAuth2 credential Client secret |
+| ADLS_PEAKGEAR_DATA | Read the prepared Iceberg files in Azure Blob Storage |
+| DBX_PEAKGEAR_OAUTH | Authenticate to the prepared Databricks Unity Catalog |
 
-Populate the fields only through the private provisioning/backend workflow.
-Never place their values in GitHub, a public PR, screenshots, or a Starter Kit.
-The public endpoint and storage username in the field reference remain
-non-secret connection settings. Do not change their meaning or the learner's
-object aliases when supplying replacement credentials.
+Create and maintain their protected values only in the private provisioning
+workflow. Learners select the saved credentials in Data Studio. They do not
+create, replace, refresh, or delete them, and do not need Azure Storage Password,
+Databricks Client ID, or Databricks Client Secret in View Login Info. The
+reservation's Database Password is still required for Data Studio and MCP.
 
-The previous values were public. Their service owners must revoke/rotate them
-and audit Azure Storage and Databricks access. Do not reuse exposed values
-merely because the current files no longer contain them. This PR does not
-rewrite repository history, remove previously downloaded ZIPs, or invalidate
-cached copies.
+Before marking a fresh reservation ready:
 
-Before marking the reservation ready:
+1. Sign in to the assigned database as PEAKGEAR_USER. Verify that both names
+   are visible in USER_CREDENTIALS and selectable in Data Studio. Credentials
+   available only to ADMIN do not satisfy this participant check.
+2. Complete the Lab 2 UI mount using the existing credentials and public
+   settings. Both Iceberg tables and the Operations returns table must return
+   sample rows; all three local snapshots must be created successfully.
+3. In a separate fresh reservation, validate the optional SQL mount. A wrong
+   participant identity or either missing credential must stop before mounting.
+   An existing catalog must be left intact. Confirm that neither SQL reference
+   creates, replaces, refreshes, or deletes credentials, including on retry.
+4. Run the offline package/security tests and verify the regenerated ZIP.
+   Inspect screenshots before publishing. Static checks do not establish that
+   provisioning or the live mount succeeds.
 
-1. Confirm all three private fields are present and non-empty for a fresh
-   reservation and visible only through the intended reservation access.
-   Verify the backend field limits and Copy buttons preserve each complete
-   value, including long storage passwords, without truncation, inserted
-   whitespace, or an ellipsis being copied as part of the value.
-2. Complete Lab 2 as PEAKGEAR_USER using only those fields and the documented
-   public settings. Both Iceberg tables and the Operations returns table must
-   return sample rows; all three local snapshots must be created successfully.
-3. Verify that an unfilled optional SQL credential block fails before a
-   credential-creation call. Test the filled alternative in a separate fresh
-   reservation, not on top of the UI-created credentials.
-4. Rebuild the ZIP and run the offline package/security tests. Inspect
-   credential screenshots before publishing.
-5. Obtain service-owner confirmation that exposed values are revoked and
-   replacement values work. Record access-audit follow-up privately.
+If a credential is missing or invalid, repair the private provisioning and
+retest the reservation. Do not ask learners to enter source secrets or switch
+to ADMIN. Keep the documented credential names stable when rotating values.
 
-If a protected field is absent, learners stop and ask the instructor. They
-must not search Git history or use another reservation's credentials.
+Previously published values must remain revoked/rotated by their service
+owners, with access-audit follow-up tracked privately. Updating the learner
+flow does not purge Git history or revoke older downloaded copies.
 
 ## Provider-only SQL reference
 
@@ -99,4 +95,4 @@ adp_run_query; the learner does not use adp_build_analytic_view or ADMIN access.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

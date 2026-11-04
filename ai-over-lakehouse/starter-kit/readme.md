@@ -18,10 +18,10 @@ The setup verifies password storage in macOS Keychain or Windows Credential
 Manager before reporting Success; it does not
 print the entered password or write it into the generated MCP configuration.
 This kit contains no source credentials. The
-[connection field reference](event-lab-values.md) maps Lab 2's protected fields
-to LiveLabs **View Login Info → Environment Details**. The MCP launcher needs
-only the assigned database password, not the Azure storage password or Databricks
-OAuth values.
+[connection field reference](event-lab-values.md) lists the existing credentials
+created during LiveLabs provisioning. Lab 2 selects those credentials. The MCP
+launcher needs only the assigned Database Password from LiveLabs
+**View Login Info → Environment Details**.
 
 ## macOS: do this once in Terminal
 
