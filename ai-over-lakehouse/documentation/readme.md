@@ -37,7 +37,9 @@ the platform's 01 setup script. The ZIP README follows the same sequence. No
 separate local-event kit is required.
 
 The reservation already provides the participant user and grants, ORDS access,
-network ACL, Operations database link, and AI profile. Participants do not
+network ACL, Operations database link, AI profile, and the source credentials
+DBX_PEAKGEAR_OAUTH and ADLS_PEAKGEAR_DATA. Lab 2 verifies and selects these
+existing credentials for the catalog connection. Participants do not
 create or change these. Lab 1 separates OCI Login Credentials from Environment
 Details and includes two illustrative reservation screenshots; the database
 password is redacted. Values from the learner's own reservation are authoritative.
@@ -114,13 +116,12 @@ the server was started from the wrong directory.
 ## Event values
 
 Only public endpoints and credential aliases are included in this package.
-Lab 2 obtains **Azure Storage Password**, **Databricks Client ID**, and
-**Databricks Client Secret** from LiveLabs **View Login Info → Environment
-Details**. The optional SQL path has guarded placeholders; the Starter Kit
-contains the same secret-free field reference. If the private fields are not
-available, the learner must stop and ask the instructor. Backend publication
-of these fields is a release prerequisite, not something this repository can
-configure; see [provisioning.md](provisioning.md).
+LiveLabs provisioning creates DBX_PEAKGEAR_OAUTH and ADLS_PEAKGEAR_DATA for
+PEAKGEAR_USER. Learners verify and select those existing credentials in Lab 2.
+The optional SQL reference also reuses them and mounts only a missing catalog;
+it does not create, replace, or delete credentials. The Starter Kit contains
+the same connection reference. Missing source credentials are repaired by the
+provider; see [provisioning.md](provisioning.md).
 
 The participant Database Password also comes only from the active reservation.
 Never publish a filled SQL worksheet, credential screenshot, or protected value.
@@ -153,4 +154,4 @@ UI screenshot set remain release gates recorded in `author-review.md`.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

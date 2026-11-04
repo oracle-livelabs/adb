@@ -46,17 +46,16 @@ participant to create, edit, or validate an AI profile.
   the OS-specific 01 setup script; participants do not switch to ADMIN.
 - [ ] `PEAKGEAR_USER` can sign in using Environment Details → Database Password,
   not the OCI Login Credentials password or a sample password.
-- [ ] View Login Info → Environment Details contains Azure Storage Password,
-  Databricks Client ID, and Databricks Client Secret. A learner can copy the
-  current replacement values without GitHub or a separate credential message.
-- [ ] Data Studio UI creates the Azure credential and Unity/Iceberg mount.
-- [ ] Lab 2's SQL note is explicitly reference-only, not a required learner
-  step. In a separate test reservation, validate the reference with private
-  View Login Info values and the Task 1 Azure credential. Confirm the same
-  two Iceberg tables and Task 3 sample reads. Test missing placeholders, a
-  missing Azure credential, and an existing mount: each must stop before any
-  credential replacement. Preserve the exact error if mounting fails after
-  credential creation; inspect existing objects before retrying.
+- [ ] Both source credentials are already provisioned for PEAKGEAR_USER:
+  DBX_PEAKGEAR_OAUTH and ADLS_PEAKGEAR_DATA. They appear in Credentials and in
+  the catalog form. Learners do not create them or enter source secrets.
+- [ ] Data Studio UI mounts Unity/Iceberg using the saved credentials.
+- [ ] Lab 2's SQL note remains reference-only. In a separate test reservation,
+  validate a successful mount and both Iceberg sample reads. Test a wrong user,
+  each missing credential, and an existing mount. Credential checks must run
+  before mounting; an existing mount remains intact. Neither SQL reference
+  creates, replaces, refreshes, or deletes credentials. After a timeout,
+  inspect Catalog before retrying.
 - [ ] The catalog form explicitly selects both credentials before Add; expanding
   the connected catalog exposes tables without a mandatory extra refresh.
 - [ ] Save separate, named live-source-check and local-snapshot worksheets.
@@ -126,8 +125,8 @@ participant to create, edit, or validate an AI profile.
   and enriched-answer captures.
 * Local tables are snapshots; a new reservation dry run must validate the
   one-time copy duration, quota, and product-key uniqueness before analytics.
-* The exact current Data Studio labels for Azure credential and Unity mount UI
-  require capture before those steps are published.
+* The current Data Studio labels for selecting provisioned credentials and
+  mounting Unity must match the learner instructions.
 * Verify that `adp_run_query` can execute the required explicit SQL DDL as
   PEAKGEAR_USER in the target event release. The Lab 5 workflow does not use
   the high-level Analytic View builder.
@@ -144,4 +143,4 @@ participant to create, edit, or validate an AI profile.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

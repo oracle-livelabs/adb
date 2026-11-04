@@ -7,11 +7,7 @@ from zipfile import ZipFile
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PRIVATE_FIELDS = (
-    "Azure Storage Password",
-    "Databricks Client ID",
-    "Databricks Client Secret",
-)
+SOURCE_CREDENTIALS = ("DBX_PEAKGEAR_OAUTH", "ADLS_PEAKGEAR_DATA")
 TEXT_SUFFIXES = {".md", ".sql", ".py", ".ps1", ".command", ".json", ".html"}
 SECRET_PATTERNS = (
     # Azure storage account key (64 bytes, encoded as 88 base64 characters).
@@ -23,18 +19,20 @@ SECRET_PATTERNS = (
 
 
 class CredentialDistributionTests(unittest.TestCase):
-    def test_public_references_use_private_reservation_fields(self):
+    def test_public_references_use_provisioned_source_credentials(self):
         for relative in (
             "connect-sources/connect-sources.md",
             "assets/event-lab-values.md",
             "starter-kit/event-lab-values.md",
         ):
             text = " ".join((ROOT / relative).read_text(encoding="utf-8").split())
+            text = text.replace("&#95;", "_")
             with self.subTest(file=relative):
-                self.assertIn("View Login Info", text)
-                for field in PRIVATE_FIELDS:
-                    self.assertIn(field, text)
-                self.assertRegex(text, r"missing or empty.*?stop and ask the instructor")
+                for credential in SOURCE_CREDENTIALS:
+                    self.assertIn(credential, text)
+                self.assertIn("provision", text)
+                self.assertRegex(text, r"missing.*?stop and ask the instructor")
+                self.assertNotRegex(text, r"(?i)copy.{0,40}(?:Azure Storage Password|Databricks Client ID|Databricks Client Secret)")
         self.assertEqual(
             (ROOT / "assets/event-lab-values.md").read_bytes(),
             (ROOT / "starter-kit/event-lab-values.md").read_bytes(),
@@ -47,14 +45,20 @@ class CredentialDistributionTests(unittest.TestCase):
                     path.read_text(encoding="utf-8"),
                     r"(?i)\b(?:password|client_id|client_secret)\s*=>\s*'",
                 )
-        sql = (ROOT / "scripts/01-connect-event-sources.sql").read_text(encoding="utf-8")
-        for name in ("AZURE_STORAGE_PASSWORD", "DATABRICKS_CLIENT_ID", "DATABRICKS_CLIENT_SECRET"):
-            placeholder = "<" + name + "_FROM_VIEW_LOGIN_INFO>"
-            self.assertEqual(sql.count(placeholder), 1, "Replace only a declaration, never a guard literal")
-        for variable in ("l_storage_password", "l_client_id", "l_client_secret"):
-            self.assertIn(f"{variable} IS NULL OR SUBSTR({variable}, 1, 1) = '<'", sql)
-        self.assertLess(sql.index("RAISE_APPLICATION_ERROR(-20001"), sql.index("DBMS_CLOUD.CREATE_CREDENTIAL("))
-        self.assertLess(sql.index("RAISE_APPLICATION_ERROR(-20002"), sql.index("DBMS_SHARE.CREATE_BEARER_TOKEN_CREDENTIAL("))
+
+    def test_participant_source_setup_never_changes_credentials(self):
+        for relative in (
+            "connect-sources/connect-sources.md",
+            "scripts/01-connect-event-sources.sql",
+            "scripts/02-unity-sql-reference.sql",
+        ):
+            text = (ROOT / relative).read_text(encoding="utf-8")
+            with self.subTest(file=relative):
+                self.assertNotRegex(
+                    text,
+                    r"(?i)\bDBMS_(?:CLOUD|SHARE)\.(?:CREATE|DROP|UPDATE|REFRESH)(?:_BEARER_TOKEN)?_CREDENTIAL\s*\(",
+                )
+                self.assertNotRegex(text, r"<(?:AZURE_STORAGE_PASSWORD|DATABRICKS_CLIENT_ID|DATABRICKS_CLIENT_SECRET)_FROM_VIEW_LOGIN_INFO>")
 
     def test_oauth_credential_screenshot_is_not_distributed(self):
         removed = "create-iceberg-catalog-credential.png"

@@ -39,7 +39,7 @@ drill-down reproducible.
 | Total | | 75 |
 
 Start with participant sign-in. ADMIN setup is not a learner task: the reservation provisions the
-database user, grants, ORDS access, Operations link, network ACL, and AI profile.
+database user, grants, source credentials, ORDS access, Operations link, network ACL, and AI profile.
 
 AI Enrichment is performed only in Lab 4 for all three raw tables: digital
 interactions, the product catalog, and operational returns. Lab 5 reuses the
@@ -53,11 +53,11 @@ final question in the same lab.
 * OCI Login Credentials, Tenancy Information, and Environment Details from
   the learner's own Reservation Information. The database password and OCI
   password are different; no participant ADMIN access is required.
-* **Azure Storage Password**, **Databricks Client ID**, and **Databricks Client
-  Secret** available privately in **View Login Info → Environment Details**.
-  The public [Connection field reference](../assets/event-lab-values.md)
-  contains only endpoints, aliases, and the field mapping. If private fields
-  are missing or empty, ask the instructor before starting Lab 2.
+* DBX_PEAKGEAR_OAUTH and ADLS_PEAKGEAR_DATA already provisioned for
+  PEAKGEAR_USER and selectable in Data Studio. Learners do not create them
+  or enter source passwords or OAuth values. The public
+  [Connection field reference](../assets/event-lab-values.md) lists the prepared
+  names and endpoint. Ask the instructor if either credential is missing.
 * An available Oracle Operations database that exposes
   `CUSTOMER_RETURN_EVENTS`.
 * A Databricks Unity Catalog endpoint with `ICEBERG.PRODUCTS` and
@@ -93,4 +93,4 @@ After completing this workshop, participants can:
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

@@ -11,14 +11,17 @@ Trace workshop content and screenshots to retained sources and record outstandin
 | Source | Use and boundary |
 |---|---|
 | PeakGear lab source files | Technical sequence, object names, SQL, MCP checkpoints, and runtime gates. |
-| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Validated credential/mount sequence, public catalog endpoint, and discovery/read calls. Protected values are excluded; obtain them privately from LiveLabs. Host ACL belongs to provider provisioning; the learner mount stays under PEAKGEAR_USER. |
+| Owner-confirmed working Unity mount SQL, supplied October 5, 2026 | Original source for the public catalog endpoint and mount/read calls. The current learner flow reuses provisioned credentials. Protected values and the host ACL belong to provider provisioning; the learner mount stays under PEAKGEAR_USER. |
+| Owner-confirmed default provisioning, November 4, 2026 | Source credentials are prepared before the learner starts; Lab 2 selects existing names. Fresh-reservation validation remains a provider release check. |
 | Owner-supplied LiveLabs Reservation Information screenshots, October 6, 2026 | OCI versus database credential fields and prepared environment details. Illustrative values only; the database password is redacted. |
 | Owner-supplied Data Studio screenshots, October 8, 2026 | Lab 4 local-table Catalog, AI Enrichment entry and review, and saved annotations. Unmodified UI examples; Task 2 defines the reviewed contract, not the example's AI suggestions. |
 | Participant-authorized Data Studio and Codex sessions | UI screenshots captured during the working dry run. |
 | Official Oracle documentation | Public Learn More links and supported product behavior. |
 
 Public endpoints and credential aliases remain in the field reference.
-Protected values come only from LiveLabs View Login Info, not this package.
+Source credentials are now created during private provisioning; learners
+select their saved names. Only the participant database login values come
+from LiveLabs View Login Info.
 The OAuth credential screenshot was withdrawn because it displayed a concrete
 client ID. The remaining mount screenshot shows only the public endpoint and
 credential aliases. No source-data export, ADMIN login, or OCI API private key
@@ -28,8 +31,8 @@ is added to the package.
 
 | Source upload | Published file | Lab | Visible state |
 |---|---|---:|---|
-| 1.1 | connect-sources/images/azure-credential-start.png | 2 | Database Settings, Credentials, Create credential |
-| 1.2 | connect-sources/images/create-azure-storage-credential.png | 2 | Azure storage credential, password masked |
+| 1.1 | connect-sources/images/azure-credential-start.png | 2, historical | Credential creation; retained for provenance, no longer embedded in the learner flow |
+| 1.2 | connect-sources/images/create-azure-storage-credential.png | 2, historical | Azure credential creation; retained for provenance, no longer embedded in the learner flow |
 | 2.1 | connect-sources/images/add-iceberg-catalog.png | 2 | Catalog Add menu and Iceberg catalog choice |
 | 2.2 | connect-sources/images/mount-iceberg-catalog.png | 2 | Unity mount form, approved workspace endpoint visible |
 | 3 | connect-sources/images/connected-iceberg-tables.png | 2 | Mounted catalog exposes the two Iceberg tables |
@@ -87,4 +90,4 @@ borders, spacing, layout, and crop. No restyling or invented UI.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

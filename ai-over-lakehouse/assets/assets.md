@@ -16,12 +16,12 @@ Details image is a password-redacted illustration, not a live credential source.
 Participants always use their own reservation's values.
 
 [event-lab-values.md](event-lab-values.md) contains public endpoints and the
-field mapping to LiveLabs **View Login Info → Environment Details**. Actual
-passwords, SAS tokens, and Databricks OAuth values belong only in the private
-reservation panel, never this repository or Starter Kit. The older
+names of the source credentials already created during provisioning. Actual
+source passwords, SAS tokens, and Databricks OAuth values stay in the private
+provisioning workflow, never this repository or Starter Kit. The older
 private-values template redirects readers to this reference.
 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

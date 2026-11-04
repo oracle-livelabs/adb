@@ -48,11 +48,10 @@ In this lab, you will:
 4. In **Environment Details**, use **Copy** beside **Database Name**,
     **Database User**, and **Database Password**. These identify and connect to
     your assigned database in Data Studio. Keep **AI Profile Name** and
-    **Operations Database Link** handy for later labs. For Lab 2, the same
-    panel, also called **View Login Info**, must provide **Azure Storage
-    Password**, **Databricks Client ID**, and **Databricks Client Secret**. If these
-    fields are missing or empty, ask the instructor before starting Lab 2.
-    Leave Reservation Information open while you work.
+    **Operations Database Link** handy for later labs. Lab 2 uses
+    DBX&#95;PEAKGEAR&#95;OAUTH and ADLS&#95;PEAKGEAR&#95;DATA, already created
+    during provisioning; you do not collect or enter their passwords or OAuth
+    values. Leave Reservation Information open while you work.
 
 ![Example LiveLabs Reservation Information showing the OCI login, Launch OCI, tenancy, region, and compartment. Use the values in your own reservation.](images/livelabs-reservation-information.png)
 
@@ -112,4 +111,4 @@ and profile name.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

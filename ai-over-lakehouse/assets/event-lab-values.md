@@ -4,23 +4,22 @@ Estimated Time: Reference only; not a timed learner task.
 
 ### Objectives
 
-Find public connection settings and obtain protected credentials from your active LiveLabs reservation.
+Find the provisioned credential names and public connection settings.
 
-Passwords, SAS tokens, and Databricks OAuth values are not distributed in this
-repository or the downloadable Starter Kit. Open LiveLabs **View Login Info**
-(**Reservation Information**), then expand **Environment Details**. Copy the
-protected values from your own active reservation:
+LiveLabs provisioning creates both source credentials for PEAKGEAR_USER in
+the assigned database before the workshop starts:
 
-| LiveLabs field | Data Studio field |
-|---|---|
-| Azure Storage Password | Azure credential: Password |
-| Databricks Client ID | Iceberg OAuth2 credential: Client ID |
-| Databricks Client Secret | Iceberg OAuth2 credential: Client secret |
+| Existing credential | Select in Data Studio | Purpose |
+|---|---|---|
+| DBX_PEAKGEAR_OAUTH | Iceberg catalog credentials | Authenticate to Databricks Unity Catalog |
+| ADLS_PEAKGEAR_DATA | Bucket credentials | Read Iceberg data in Azure Blob Storage |
 
-If any field is missing or empty, stop and ask the instructor to have the
-reservation details completed. Do not use values from screenshots, GitHub
-history, another learner, or a previous reservation. Do not paste credentials
-into chat, source control, or support screenshots.
+Learners select these existing credentials in Lab 2. They do not create,
+replace, or enter source credentials. If either name is missing, stop and ask
+the instructor to repair the reservation.
+
+Protected source values stay in the private provisioning workflow. They are
+not distributed in this repository or the downloadable Starter Kit.
 
 ## Participant account
 
@@ -30,16 +29,15 @@ Username:
 PEAKGEAR_USER
 ```
 
-The authoritative **Database User** and **Database Password** are in your
-LiveLabs **Reservation Information → Environment Details**. The account is
-already provisioned. Do not use an example password or your OCI login password.
-If the assigned user is not PEAKGEAR_USER, ask the instructor before continuing.
+Use **Database User** and **Database Password** from your active LiveLabs
+**View Login Info → Environment Details** for Data Studio sign-in and MCP
+setup. The database password remains a learner input; it is separate from
+the preconfigured source credentials and the OCI login password.
 
 Obtain the database-specific HTTPS origin with the read-only SQL query in
-Lab 3, Task 1. Run it in Data Studio while connected to your assigned database
-as PEAKGEAR_USER. If access is denied or no URL is returned, ask the instructor;
-do not grant privileges or switch to ADMIN. Do not use localhost:8000,
-datastudio.oracle.com, or the Operations listener as the MCP connection URL.
+Lab 3, Task 1 as PEAKGEAR_USER. If access fails or no URL is returned, ask the
+instructor. Use the returned origin for MCP, not localhost or the Operations
+database listener.
 
 ## Prepared Operations database link
 
@@ -52,68 +50,7 @@ PEAKGEAR_OPERATIONS_LINK
 The reservation provisions this link before the workshop starts. Participants
 read through it; they do not create a credential or database link.
 
-## Azure storage credential — PEAKGEAR_USER
-
-Credential name:
-
-```text
-ADLS_PEAKGEAR_DATA
-```
-
-Credential type: **Azure**. Username:
-
-```text
-livelab
-```
-
-**Password:** copy **Azure Storage Password** from **View Login Info →
-Environment Details**, not Database Password or OCI Password.
-
-Storage path:
-
-```text
-https://livelab.blob.core.windows.net/digital-demand/peakgear-managed/
-```
-
-## Databricks Unity OAuth credential — PEAKGEAR_USER
-
-Credential name:
-
-```text
-DBX_PEAKGEAR_OAUTH
-```
-
-Credential type: **Iceberg OAuth2**. Token endpoint:
-
-```text
-https://adb-2242907740736663.3.azuredatabricks.net/oidc/v1/token
-```
-
-**Client ID:** copy **Databricks Client ID** from **View Login Info →
-Environment Details**.
-
-**Client secret:** copy **Databricks Client Secret** from the same panel.
-
-Token scope:
-
-```text
-all-apis
-```
-
-Token refresh rate in seconds:
-
-```text
-3600
-```
-
-Provider-provisioned Databricks ACL host (port 443, principal PEAKGEAR_USER).
-Participants do not create or change this ACL:
-
-```text
-adb-2242907740736663.3.azuredatabricks.net
-```
-
-## Unity Iceberg catalog — PEAKGEAR_USER
+## Unity Iceberg catalog
 
 Local catalog name:
 
@@ -121,7 +58,7 @@ Local catalog name:
 DBX_UNITY_PEAKGEAR
 ```
 
-Catalog type: **Unity** in Data Studio, **ICEBERG_UNITY** in SQL. Endpoint:
+Catalog type: **Unity** in Data Studio, **ICEBERG_UNITY** in SQL. Public endpoint:
 
 ```text
 https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear
@@ -131,7 +68,10 @@ Select **DBX_PEAKGEAR_OAUTH** for the catalog credential and
 **ADLS_PEAKGEAR_DATA** for the bucket credential. Expected remote schema:
 **ICEBERG**; expected tables: **PRODUCTS** and **DIGITAL_CLICKSTREAM_EVENTS**.
 
+The provider validates the saved credentials before releasing the reservation.
+Contact the instructor if a credential is unavailable.
+
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026
