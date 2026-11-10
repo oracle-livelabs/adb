@@ -29,10 +29,11 @@ same Codex task open while editing the metadata in Data Studio.
 
 The default AI profile is already prepared for this exercise.
 
-1. Open **Catalog**.
-2. Open the PEAKGEAR&#95;USER schema, then **Tables**. You should see the three
+1. In the left navigation, expand **Data** and open **Database**.
+2. Expand your connected database and the PEAKGEAR&#95;USER schema, then **Tables**. You should see the three
     local tables created in Lab 2. The database label in the screenshots is an
-    example; use your reservation's database.
+    example; use your reservation's database. The older screenshots label this
+    browser **Catalog**; in the current navigation, it is **Data > Database**.
 
     ![Data Studio Catalog lists the three PeakGear local raw tables under PEAKGEAR_USER > Tables](images/local-table-catalog.png)
 
@@ -53,7 +54,7 @@ profile before continuing. See **Need Help?** for the information to include
 in your support request.
 
 Task 2 provides the definitions for all three tables. Save the digital table
-first, then repeat the same **Catalog > Tables > AI Enrichment** flow for
+first, then repeat the same **Data > Database > PEAKGEAR&#95;USER > Tables > AI Enrichment** flow for
 LAB&#95;PRODUCTS&#95;RAW&#95;T and LAB&#95;RETURNS&#95;RAW&#95;T. Each table needs its own **Save**.
 
 Check that the enrichment dialog names the table you selected. Before saving,
@@ -141,13 +142,13 @@ For each table, follow this Save sequence:
 
 Annotations may appear gradually while Save is running. After all three saves,
 use Task 3 to verify the saved business context. If Save reports a connection
-error, refresh Catalog and perform that same verification before retrying;
+error, refresh **Data > Database** and perform that same verification before retrying;
 the operation may have saved only part of the metadata. A changed table
 description alone does not confirm a complete save.
 
 ### Product catalog
 
-In **Catalog**, open LAB&#95;PRODUCTS&#95;RAW&#95;T and click **AI Enrichment**. Review
+In **Data > Database**, open LAB&#95;PRODUCTS&#95;RAW&#95;T and click **AI Enrichment**. Review
 and check these business definitions. Keep accurate generated content; add or
 correct only what is missing. Example tags are optional:
 
@@ -162,7 +163,7 @@ Click **Save** before moving to the next table.
 
 ### Operational returns
 
-In **Catalog**, open LAB&#95;RETURNS&#95;RAW&#95;T and click **AI Enrichment**. Review
+In **Data > Database**, open LAB&#95;RETURNS&#95;RAW&#95;T and click **AI Enrichment**. Review
 and check these business definitions. Keep accurate generated content; add or
 correct only what is missing. Example tags are optional:
 
@@ -178,8 +179,8 @@ Click **Save**. All three tables must be saved before Task 3.
 
 ## Task 3: Verify the saved annotations
 
-After all three Save operations have finished, reopen each table in Catalog.
-Confirm that the edits you made are present in Catalog. Check the meanings,
+After all three Save operations have finished, reopen each table in **Data > Database**.
+Confirm that the edits you made are present in **Overview**. Check the meanings,
 not an exact match to the example wording or tag names:
 
 * Digital interest counts product-linked events, not sales or unique customers.
@@ -283,4 +284,4 @@ again.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

@@ -50,11 +50,14 @@ lists the prepared names and public connection settings.
 
 ## Task 2: Connect the Databricks Unity Catalog
 
-In **Catalog**, click **Add**, then choose **Iceberg catalog**.
+In the left navigation, expand **Data**, select **Database**, then click
+**Add > Iceberg Catalog**. **Database** is the connected database's data
+browser; **Databases** is the separate page used to manage connections in Lab 1.
 
-![In Catalog, click Add and choose Iceberg catalog.](images/add-iceberg-catalog.png)
+![Data Studio Data > Database navigation with Add > Iceberg Catalog selected.](images/add-iceberg-catalog.png)
 
-Enter the public catalog settings and select the existing credentials:
+The form opens with defaults. Replace the example catalog name and type with
+the values below, enter the public endpoint, and select the existing credentials:
 
 | Field | Value |
 |---|---|
@@ -64,15 +67,32 @@ Enter the public catalog settings and select the existing credentials:
 | Iceberg catalog credentials | Select DBX&#95;PEAKGEAR&#95;OAUTH |
 | Bucket credentials | Select ADLS&#95;PEAKGEAR&#95;DATA |
 
-![Enter DBX&#95;UNITY&#95;PEAKGEAR, select Unity, paste the public endpoint, and select the provisioned catalog and bucket credentials.](images/mount-iceberg-catalog.png)
+![Add Iceberg Catalog form before configuration, showing the default name ICEBERG_CATALOG and type Oracle; replace these using the field table above.](images/mount-iceberg-catalog.png)
+
+The screenshot shows the form **before configuration**. For this workshop,
+use **DBX&#95;UNITY&#95;PEAKGEAR** and **Unity**, not the displayed defaults.
 
 Select DBX&#95;PEAKGEAR&#95;OAUTH in **Iceberg catalog credentials**, then select
-ADLS&#95;PEAKGEAR&#95;DATA in **Bucket credentials**. Click **Add**.
+ADLS&#95;PEAKGEAR&#95;DATA in **Bucket credentials**. Click **Test** and wait
+for the result before clicking **Add**.
+
+![Successful catalog metadata test with the notice that Object storage data access was not tested.](images/test-iceberg-catalog.png)
+
+The expected message is **Catalog metadata access test passed. Object storage
+data access was not tested.** This confirms access to catalog metadata, not
+to the underlying Iceberg files. Task 3's sample queries verify data access.
+If Test fails, keep the exact error and ask the instructor before adding the catalog.
+
+After a successful test, click **Add** and wait for the catalog to appear in
+**Data > Database**.
 Expand **Locally Mounted Catalogs > DBX&#95;UNITY&#95;PEAKGEAR > ICEBERG > Tables**.
 You should see **PRODUCTS** and **DIGITAL&#95;CLICKSTREAM&#95;EVENTS**. Use the
 catalog's **Refresh** button only if the new connection or tables are not yet visible.
 
-![The successful DBX&#95;UNITY&#95;PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
+![Data > Database shows a mounted catalog and the ICEBERG > Tables section containing two tables; the screenshot uses the example name ICEBERG_CATALOG.](images/connected-iceberg-tables.png)
+
+The screenshot's **ICEBERG&#95;CATALOG** is an example name. Your mount must be
+**DBX&#95;UNITY&#95;PEAKGEAR**, as entered above, so the SQL in Task 3 can find it.
 
 ### SQL reference (not part of the lab)
 
@@ -138,22 +158,33 @@ END;
 </copy>
 ~~~
 
-After the block completes, refresh **Locally Mounted Catalogs** in **Catalog**
+After the block completes, refresh **Locally Mounted Catalogs** in **Data > Database**
 if needed and confirm DBX&#95;UNITY&#95;PEAKGEAR contains
 **ICEBERG → Tables → PRODUCTS** and **DIGITAL&#95;CLICKSTREAM&#95;EVENTS**.
 The sample queries in Task 3 confirm read access. Continue there after a
 successful mount or an already-existing-catalog message.
 
 If a provisioned credential is missing or SQL reports an error, keep the exact
-message and ask the instructor. After a timeout, inspect **Catalog** before
+message and ask the instructor. After a timeout, inspect **Data > Database** before
 trying again: the mount may already have completed. Do not drop or unmount
 objects to force a retry.
 
 ## Task 3: Prove the two live sources
 
-Open SQL Worksheet as PEAKGEAR&#95;USER and save a worksheet named
-**PeakGear - Live source checks**. Copy and run **each block separately**;
-Run SQL executes the current statement, not every statement in a pasted script.
+Open **SQL Worksheet** as PEAKGEAR&#95;USER. In the **Worksheets** tab, click
+**New** if needed. Open the worksheet's three-dot menu, select **Rename**, enter
+**PeakGear - Live source checks**, then click the **Save** (disk) icon in the
+editor toolbar. Save again after adding your SQL.
+
+![Worksheet three-dot menu with Rename selected and the Save disk icon in the editor toolbar.](images/rename-worksheet.png)
+
+Copy and run **each block separately**. The editor detects separate SQL
+statements and shows a triangular **Run SQL** button in the left gutter beside
+each one. Click the triangle beside the statement you want to execute, then
+wait for its **Query Result** before running the next. Multiple statements in
+the editor are not all executed by one statement's Run SQL button.
+
+![SQL Worksheet shows a separate Run SQL triangle beside each independent SQL statement.](images/run-sql-statement.png)
 
 ~~~sql
 <copy>
@@ -185,12 +216,13 @@ should contain data; if a query returns no rows or an error, ask the instructor
 to check the source before continuing. A sample does not prove product-key
 uniqueness; that check runs against the local product table before analytics.
 
-Create and save a second worksheet named **PeakGear - Local snapshots**.
+In **Worksheets**, click **New** and use the same **Rename** and **Save** steps
+to create a second worksheet named **PeakGear - Local snapshots**.
 Create the three raw, participant-owned tables by running
 **each block separately**. Each `CREATE TABLE AS SELECT` can take time while it
 copies source rows. Wait for the worksheet to report completion before starting
 the next block. If you are resuming on the same database and a table already
-exists, verify it in Catalog instead of recreating it. Do not replace a table
+exists, verify it in **Data Explorer** instead of recreating it. Do not replace a table
 after saving its annotations in Lab 4. If an older run left `*_RAW_V` views in
 the schema, leave them alone; this version uses the new `*_RAW_T` tables and
 requires fresh table annotations in Lab 4.
@@ -227,10 +259,17 @@ FROM customer_return_events@peakgear_operations_link;
 </copy>
 ~~~
 
-In Catalog, check **Tables** under PEAKGEAR&#95;USER for all three names. The
-tables are local copies at the time the statements ran; they do not refresh
-automatically. They do not yet add business definitions. Open **Sample Data**
-for each table and confirm that rows are present after creation completes.
+In SQL Worksheet, open the **Data Explorer** tab beside **Worksheets**. Set
+**Source** to **Database**, expand your connected database, then expand
+**PEAKGEAR&#95;USER > Tables**. Confirm that all three table names appear; use
+the **Refresh** icon if the list has not updated after creation.
+
+![SQL Worksheet Data Explorer with Source set to Database and all three local raw tables under PEAKGEAR_USER > Tables.](images/local-snapshot-tables.png)
+
+The tables are local copies at the time the statements ran; they do not refresh
+automatically. They do not yet add business definitions. In **Data > Database**,
+expand your database and **PEAKGEAR&#95;USER > Tables**, open each table's
+**Sample Data**, and confirm that rows are present after creation completes.
 Later labs use these local snapshots through Data Studio and the bounded MCP
 server. Before joining product labels, MCP checks the local product table for
 duplicate product keys. If duplicates are reported, ask the instructor to

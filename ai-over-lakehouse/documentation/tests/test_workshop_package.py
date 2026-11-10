@@ -243,7 +243,14 @@ class WorkshopPackageTests(unittest.TestCase):
     def test_source_connection_finishes_with_both_credentials_and_add(self):
         text = (ROOT / 'connect-sources/connect-sources.md').read_text(encoding="utf-8")
         self.assertIn('## Task 2: Connect the Databricks Unity Catalog', text)
-        self.assertIn('**Bucket credentials**. Click **Add**', text)
+        task = text.split('## Task 2: Connect the Databricks Unity Catalog', 1)[1]
+        task = task.split('### SQL reference', 1)[0]
+        self.assertIn('**Data**', task)
+        self.assertIn('**Add > Iceberg Catalog**', task)
+        self.assertIn('**Bucket credentials**. Click **Test**', task)
+        self.assertIn('before clicking **Add**', task)
+        self.assertIn('Object storage\ndata access was not tested', task)
+        self.assertIn("Task 3's sample queries verify data access", task)
         self.assertIn('**PeakGear - Live source checks**', text)
         self.assertIn('**PeakGear - Local snapshots**', text)
         self.assertIn('query data live where it already resides', text)
