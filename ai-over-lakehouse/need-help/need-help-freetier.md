@@ -83,7 +83,8 @@ If AI Enrichment reports invalid or missing column tags, retain the exact
 message and selected table name for the instructor. The instructor verifies
 the provisioned AI profile; restarting local MCP does not repair enrichment.
 Keep the dialog's existing data until the error is understood. After a save
-timeout or connection error, check Catalog for your edits before retrying:
+timeout or connection error, reopen the table in **Data > Database** and check
+its **Overview** for your edits before retrying:
 some annotations may already have been saved.
 
 ## How to Format Your Support Email Request
@@ -114,4 +115,4 @@ the steps you tried and whether the error occurred again on retry.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

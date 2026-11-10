@@ -86,8 +86,9 @@ the screenshots.
     </copy>
     ~~~
 
-    Both values must be PEAKGEAR&#95;USER. Also check the connected database
-    name in the header against your reservation.
+    Both values **in the execution result** must be PEAKGEAR&#95;USER. Check
+    the **Query Result** tab, not just the username shown above the editor.
+    Also check the connected database name in the header against your reservation.
 
     The AI profile is already provisioned. If needed, review **Database Settings
     → AI Profiles** to find the **AI Profile Name** from your reservation; an
