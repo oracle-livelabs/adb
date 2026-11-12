@@ -2,9 +2,11 @@
 
 ## Introduction
 
-Sam asks: “Which store and product combinations have recent sales that exceed their available-to-promise inventory?” Combine curated Silver sales with Bronze inventory without building another pipeline or copying inventory into Silver. Available to promise (ATP) is the inventory quantity available for new commitments.
+**Sam** needs to find store and product pairs where recent sales exceed the inventory available for new commitments.
 
-Estimated Time: 12 minutes.
+In this lab, you will check the join grain and ATP values, then query Silver sales alongside Bronze inventory. You will get a review list for replenishment, without building another pipeline or copying inventory into Silver. Available to promise (ATP) is the quantity available for new commitments.
+
+**Estimated Time:** 12 minutes.
 
 ### Objectives
 
@@ -14,17 +16,31 @@ Estimated Time: 12 minutes.
 
 ### Prerequisites
 
-Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must contain the assigned inventory extract.
+* Complete **Lab 2**.
+* Silver must contain queryable enriched sales.
+* Bronze must contain the assigned inventory extract.
 
 ## Task 1: Find the inventory asset
 
-1. Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables** → `store_inventory`. Inspect the columns and **Sample Data**, especially `STORE_ID`, `PRODUCT_ID`, and `AVAILABLE_TO_PROMISE_QTY`.
+1. Inspect the Bronze inventory fields.
+  <details>
+    <summary><strong>Expand to locate Bronze inventory</strong></summary>
 
-2. Expand **silver** → **Tables** → `AILH_ENRICHED_SALES`. This is the curated sales table Alex published. Notice that inventory remains in Bronze; you can investigate it with Silver without creating a new pipeline.
+      > - Open **Data** → **Database** → **Locally Mounted Catalogs** → `PG_AICAT` → **bronze** → **Tables** and select `store_inventory`.
+      > - Check its columns and sample rows, especially `STORE_ID`, `PRODUCT_ID`, and `AVAILABLE_TO_PROMISE_QTY`.
+  </details>
+
+2. Confirm the curated Silver sales table is available.
+  <details>
+    <summary><strong>Expand to locate Silver sales</strong></summary>
+
+      > - Expand **silver** → **Tables** → `AILH_ENRICHED_SALES`.
+      > - Alex published this curated sales table. Inventory remains in Bronze, but you can query it with Silver without creating another pipeline.
+  </details>
 
     ![Mounted catalog listing the Bronze inventory and published Silver sales tables](../assets/images/review-catalog-tiers.png)
 
-3. Open **SQL Worksheet**. Create a worksheet, or rename a blank one, to **Lab 3 - Data checks**. Run this catalog query to confirm the objects you found.
+3. Open **SQL Worksheet** and create **Lab 3 - Data checks**, or rename a blank worksheet. Run a catalog query to confirm both objects are available.
 
     ```sql
     <copy>
@@ -36,13 +52,15 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-4. Confirm `bronze.store_inventory` and `silver.AILH_ENRICHED_SALES` in the results. Preserve the quoted case in the following SQL.
+4. Confirm the results include `bronze.store_inventory` and `silver.AILH_ENRICHED_SALES`. Keep the quoted case in the SQL that follows.
 
+    ```text
     Facilitator: “Discovery lets Sam find another governed asset and query it with Silver. This exercise joins across tiers in place. It does not silently promote raw inventory into a curated Silver product.”
+    ```
 
 ## Task 2: Check the join grain
 
-1. Run this check. The prepared inventory extract must have at most one row per store and product for this exercise.
+1. Check that inventory has no more than one row per store and product.
 
     ```sql
     <copy>
@@ -54,9 +72,15 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-    Expected: no rows. If rows appear, stop and ask the facilitator to select the appropriate inventory snapshot or complete join key. Do not remove duplicates arbitrarily or sum repeated inventory snapshots.
+  <details>
+    <summary><strong>Expand for duplicate-key guidance</strong></summary>
 
-2. Check the sales period and inventory completeness.
+      > - Expected result: no rows.
+      > - If rows appear, stop and ask the facilitator to confirm the inventory snapshot or complete join key.
+      > - Do not remove duplicates arbitrarily or sum repeated inventory snapshots.
+  </details>
+
+2. Check which sales months are available.
 
     ```sql
     <copy>
@@ -64,6 +88,15 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     FROM "silver"."AILH_ENRICHED_SALES"@PG_AICAT;
     </copy>
     ```
+
+  <details>
+    <summary><strong>Expand for sample month context</strong></summary>
+
+      > - The reviewed sample contains only January 2025, so the first and latest months can match.
+      > - The analysis uses the latest month and the preceding month when available; it does not require two months of data.
+  </details>
+
+3. Check the inventory row count and look for missing ATP values.
 
     ```sql
     <copy>
@@ -74,13 +107,17 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-    The reviewed sample contains only January 2025, so equal first and latest months are possible. The analysis uses the latest month and the preceding month when available; it does not require two months of data.
+  <details>
+    <summary><strong>Expand for ATP data notes</strong></summary>
 
-    The reviewed inventory sample has 1,200 rows and zero missing ATP values. A different approved extract can have a different row count. Missing ATP is unknown, not zero; the analysis excludes it. These checks explain whether the join can duplicate sales, which period is covered, and whether available inventory is known.
+      > - The reviewed inventory sample has 1,200 rows and no missing ATP values. Another approved extract may have a different row count.
+      > - Missing ATP means unknown, not zero, and the analysis excludes those rows.
+      > - Together with the grain and month checks, this shows whether the join can duplicate sales, which period is covered, and whether inventory is known.
+  </details>
 
 ## Task 3: Answer the inventory question
 
-1. Save the data-check worksheet and create another worksheet. Execute this query. It aggregates sales first, then joins inventory at store/product grain to avoid multiplying transaction-level sales.
+1. Save the data-check worksheet, open another worksheet, and run the query below. It aggregates sales at store/product grain before joining inventory, which prevents transaction-level sales from being multiplied.
 
     ```sql
     <copy>
@@ -114,15 +151,26 @@ Complete Lab 2. Silver must contain queryable enriched sales, and Bronze must co
     </copy>
     ```
 
-2. Inspect the result columns: store ID, product, recent units sold, available-to-promise quantity, and `DEMAND_STOCK_GAP`. A positive gap means recent units sold exceed the available inventory quantity.
+2. Review the store, product, recent units sold, available-to-promise quantity, and `DEMAND_STOCK_GAP`. A positive gap means recent sales exceed available inventory. In the recorded sample, store 5/product 1 has 4,986 recent units sold and ATP of 151, for a gap of 4,835; your result depends on the provisioned extract.
 
     ![Inventory analysis results comparing recent units sold with available-to-promise inventory](../assets/images/review-inventory-result.png)
 
-    In the recorded sample, store 5/product 1 has 4,986 recent units sold and ATP of 151, giving a gap of 4,835. Your values depend on the provisioned extract.
+3. Use the results as a list for inventory review, not as an automatic reorder recommendation.
+  <details>
+    <summary><strong>Expand to interpret the results</strong></summary>
 
-3. Treat the output as a list for inventory review, not an automatic reorder recommendation. Past sales are a demand proxy, not a forecast or an unfulfilled-order count. The inner join excludes sales keys without matching inventory, and null ATP rows are excluded. No rows means no matched records satisfy this rule.
+      > - Past sales are a demand proxy, not a forecast or an unfulfilled-order count.
+      > - The inner join excludes sales keys with no matching inventory, and the query excludes rows with null ATP.
+      > - No rows means no matched records satisfy this rule.
+  </details>
 
-4. Use **Save As** to save the worksheet as **Inventory gap analysis**. **Checkpoint:** you answered a business question using both tiers without publishing another physical table.
+4. Save the worksheet as **Inventory gap analysis**.
+  <details>
+    <summary><strong>Expand for saving and the checkpoint</strong></summary>
+
+      > - Use **Save As** to name the worksheet.
+      > - **Checkpoint:** you answered a business question using both tiers without publishing another physical table.
+  </details>
 
 ## Learn More
 
@@ -132,5 +180,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Authors** - Ashish Jain, Sofia Arceo
+* **Contributors** - Teodor C. Nechita
+* **Last Updated By/Date** - Teodor C. Nechita, November 2026
