@@ -26,8 +26,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 ## Task 1: Create Blockchain table
 
 
-1. Before start the exercise you need to **Download the Data**. Download the **CSV dataset** from the following [LINK] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/revenue.csv "download csv dataset"). 
-
+1. Before start the exercise you need to **Download the Data**. Download the **CSV dataset** from the following [revenue CSV dataset](<https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/revenue.csv> "download csv dataset").
 
 
 2. Let's create the **Blockchain table**. We need to go back to **SQL** menu on the **Database Actions** section. If you are still connected as CNVG user, you can go to step number 9 from this lab and step. Otherwise, you can follow the following steps.
@@ -55,12 +54,14 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 8. Connect with the **CNVG** user we created before.
 
-    - **User Name:** CNVG
+    * **User Name:** CNVG
+
         ```
         <copy>CNVG</copy>
         ```
 
-    - **Password:** Password123##
+    * **Password:** Password123##
+
         ```
         <copy>Password123##</copy>
         ```
@@ -71,7 +72,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
     ![Select SQL](./images/select-sql.png)
 
-3. Copy the following **create table statement**, which contains the blockchain table:
+10. Copy the following **create table statement**, which contains the blockchain table:
 
     ```
         <copy> CREATE BLOCKCHAIN TABLE REVENUE
@@ -108,7 +109,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
         </copy>
     ```
 
-4. **Paste** it over SQL, and click on **Run**.
+11. **Paste** it over SQL, and click on **Run**.
 
     Check that the **statement has being completed successfully**.
 
@@ -134,9 +135,9 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 5. **Modify the table insert**. Once it is modified, you can click **Close**.
 
-    - **Option:** Insert into table
-    
-    - **Name:** REVENUE
+    * **Option:** Insert into table
+
+    * **Name:** REVENUE
 
     ![Set Definition](./images/set-definition.png)
 
@@ -173,7 +174,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
             select count(*)  from revenue
         </copy>
     ```
-        
+
     ![Count Revenue](./images/count-revenue.png)
 
 4. We can easily **identify how many Blockchain tables** we have in our schema. **Run** the following statement:
@@ -183,7 +184,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
             select * from user_blockchain_tables
         </copy>
     ```
-        
+
     ![List Tables](./images/list-tables.png)
 
 5. **Blockchain tables has some hidden columns**. They are used to implement sequencing of rows and verify that data is tamper-resistant. Hidden columns can only be displayed by explicitly including the column names in the query. **Run** the following statement:
@@ -196,7 +197,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
             ORDER BY internal_column_id;
         </copy>
     ```
-        
+
     ![Hidden Columns](./images/hidden-columns.png)
 
 6. Let's query that **hidden columns**. **Run** the following statement:
@@ -220,7 +221,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
            update revenue set order_key=1 where order_key=2;
         </copy>
     ```
-    
+
     ![Update Table](./images/update-table.png)
 
     We have the following message: **ORA-05715: operation not allowed on the blockchain or immutable table**.
@@ -232,7 +233,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
            drop table revenue;
         </copy>
     ```
-    
+
     ![Drop Table](./images/drop-table.png)
 
     We have the following message: **ORA-05723: drop blockchain or immutable table REVENUE not allowed**.
@@ -261,6 +262,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 You can **proceed to the next lab.**
 
 ## Acknowledgements
+
 * **Author** - Javier de la Torre, Principal Data Management Specialist
 * **Contributors** - Priscila Iruela, Technology Product Strategy Director
 * **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist

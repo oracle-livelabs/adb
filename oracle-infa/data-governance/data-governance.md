@@ -1,4 +1,4 @@
-# Cloud Data Catalog and Governance 
+# Cloud Data Catalog and Governance
 
 ## Introduction
 
@@ -11,21 +11,25 @@ Estimated Time: 15 minutes
 ### Objectives
 
 In this lab, you will:
+
 * Learn how to navigate through the IDMC Cloud Data Governance and Cloud Catalog UI
 * Learn to understand the lineage and technical assets in the catalog IDMC Cloud Catalog
 
 ### **Assets**
 
 PDF
-* [Lab 5: Cloud Data Governance and Catalog](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2005%20-%20Cloud%20Data%20Catalog-OCI.pdf) 
+
+* [Lab 5: Cloud Data Governance and Catalog](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2005%20-%20Cloud%20Data%20Catalog-OCI.pdf)
 
 
 ## Learn More
 
-Resource Links for Reference 
+Resource Links for Reference
+
 * [IDMC Cloud Data Governance and Catalog](https://www.informatica.com/products/data-governance/cloud-data-governance-and-catalog.html): Enable predictive data intelligence for data and analytics governance
 
 
 ## Acknowledgements
+
 * **Authors** - Eddy Widjaja, Solutions Director, Informatica; Larry Fumagalli, Director, Vertical Solutions, Oracle; Rudra Ray, Director, Technical Marketing, Informatics
 * **Last Updated By/Date** - Larry Fumagalli, August 2023

@@ -1,4 +1,4 @@
-#  Using Oracle Cloud Infrastructure Data Science Platform for Fraud Prediction
+# Using Oracle Cloud Infrastructure Data Science Platform for Fraud Prediction
 
 ## Introduction
 
@@ -8,34 +8,34 @@ Estimated Lab Time: 20 minutes.
 
 ### Objectives
 
--   Learn how to set-up an Oracle Cloud Infrastructure (OCI) Data Science platform instance and associated network resources
--   Learn how to use notebooks for machine learning purposes such as fraud detection and prediction
--   Learn the differences between data science open source libraries and Oracle Accelerated Data Science (ADS) AutoML
--   Learn about how to use the Model Catalog as a place to store your models and utilize them
--   Learn how to call a OCI Data Science model through Oracle Functions
+* Learn how to set-up an Oracle Cloud Infrastructure (OCI) Data Science platform instance and associated network resources
+* Learn how to use notebooks for machine learning purposes such as fraud detection and prediction
+* Learn the differences between data science open source libraries and Oracle Accelerated Data Science (ADS) AutoML
+* Learn about how to use the Model Catalog as a place to store your models and utilize them
+* Learn how to call a OCI Data Science model through Oracle Functions
 
 ### Prerequisites
 
--   The following lab requires an Oracle Public Cloud account. You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
--   A tenancy with user privilege role access to OCI Data Science and associated resources such as VCNs (Virtual Cloud Networks) and Compute instances.
+* The following lab requires an Oracle Public Cloud account. You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
+* A tenancy with user privilege role access to OCI Data Science and associated resources such as VCNs (Virtual Cloud Networks) and Compute instances.
 
 ## Task 1: Create the necessary networking components
 
 1. Click the **Navigation Menu** in the upper left, navigate to **Networking**, and select **Virtual Cloud Networks**.
 
-	![](https://oracle-livelabs.github.io/common/images/console/networking-vcn.png " ")
+    ![Virtual Cloud Networks navigation](https://oracle-livelabs.github.io/common/images/console/networking-vcn.png " ")
 
 2. Make sure you are in the desired compartment of choice to create resources (such as **CloudDataWorkshop**) and proceed by selecting the **Start VCN Wizard** option.
 
-    ![](./images/2.png " ")
+    ![Start VCN Wizard](./images/2.png " ")
 
 3. Then, choose the **VCN with Internet Connectivity** selection in the wizard and then click on **Start VCN Wizard**.
 
-    ![](./images/3.png " ")
+    ![VCN with Internet Connectivity](./images/3.png " ")
 
 4. Name your **VCN Name** with something like **YourInitials_vnc** and keep all the default settings intact. Then, click on **Next**.
 
-    ![](./images/4.png " ")
+    ![VCN name and settings](./images/4.png " ")
 
 5. The next screen shows a summary of what will be done. Click the **Create** button, and all of these networking components will be created. In just a few moments, an entire Cloud networking infrastructure will be setup for use. Now you are done with creating the necessary networking components.
 
@@ -43,27 +43,27 @@ Estimated Lab Time: 20 minutes.
 
 1. Inside of the OCI Console, click on the top left menu **hamburger icon**. Then, in the side menu, navigate to **Data Science**, then select **Projects**.  
 
-    ![](./images/5.png " ")
+    ![Data Science Projects navigation](./images/5.png " ")
 
 2. Let's create a project by clicking on **Create Project**.
 
-    ![](./images/6.png " ")
+    ![Create Project](./images/6.png " ")
 
 3. Confirm that the compartment is the one you would like to use and input a name for your project such as **YourInitials_project**. Then click on **Create**.
 
-    ![](./images/7.png " ")
+    ![Project compartment and name](./images/7.png " ")
 
 4. Your project is now created! Now, we have a space for any Data Science platform related work. Let's create a notebook session by clicking on **Create Notebook Session**.
 
-    ![](./images/8.png " ")
+    ![Create Notebook Session](./images/8.png " ")
 
 5. Name the notebook session **YourInitials_ns**. Keep the **Compute Instance Shape** as the default, **VM.Standard.E2.2**. For **Block Storage Size (in GB)**, input **50** for a size of 50 GB. For the **VCN**, select the one created in the previous step and keep the default private subnet (it should include your newly created VCN name in it's name).
 
-    ![](./images/9.png " ")
+    ![Notebook session configuration](./images/9.png " ")
 
 6. Finalize by scrolling down and clicking on **Create**.
 
-    ![](./images/10.png " ")
+    ![Create notebook session confirmation](./images/10.png " ")
 
 7. Now you have successfully created a Data Science platform project and notebook session, which is integrated with your VCN and Compute instance for all the networking and computation needs of your data science work.
 
@@ -71,11 +71,11 @@ Estimated Lab Time: 20 minutes.
 
 1. After a few moments, the **notebook session** should be created. You may have to wait a few minutes and refresh the page to see it. To access it, click on **Open**.
 
-    ![](./images/11.png " ")
+    ![Open notebook session](./images/11.png " ")
 
 2. You are now inside the notebook session and can see a file directory hierarchy on the left with some pre-included notebooks that you can explore. On the right window, you can select different options to start up in your notebook session such as a terminal or a python notebook.
 
-    ![](./images/12.png " ")
+    ![Notebook session file browser and launcher](./images/12.png " ")
 
 3. Let's import a notebook to see the capabilities of the platform. Download the sample notebook by clicking on this link: [sampleNotebook]( https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/austindatamanagement/sampleNotebook.ipynb)
 
@@ -83,21 +83,21 @@ Estimated Lab Time: 20 minutes.
 
 5. Then, start by clicking on the **^ icon** to **Upload Files** in the OCI Data Science notebook session interface. Then, select the datasets from the previous step to import it. It may take a minute for them to completely upload the dataset, but it will continue the upload process in the background. You may still continue to the next step.
 
-    ![](./images/12b.png " ")
+    ![Upload datasets](./images/12b.png " ")
 
 6. Then, click on the **^ icon** again to **Upload Files** in the OCI Data Science notebook session interface. Then, select the notebook downloaded from the previous step to import.
 
 7. Open the notebook by double clicking on its name in the left pane.
 
-    ![](./images/13.png " ")
+    ![Open the notebook](./images/13.png " ")
 
 8. Take a moment to look through the different sections of the notebook. You will find all the typical steps of a machine learning pipeline in place. Additionally note that there are multiple approaches showcased in the notebook. For one, you can see a standard open source data science approach and how that can be done in the platform. Additionally, in OCI DataScience, you have access to Oracle's Accelerated Data Science (ADS) library, giving you access to AutoML capabilities to help greatly accelerate your machine learning and data science work. With ADS, you can use a few lines of code to create multiple models from many different algorithms, parameters, and data set slices. This would typically require extensive programming knowledge and many more lines of code with standard open source libraries. Feel free to take a look at the differences between the open source approach in the sample notebook and the Oracle ADS AutoML approach.
 
-    ![](./images/14.png " ")
+    ![Machine learning notebook sections](./images/14.png " ")
 
 9. Feel free to run the notebook and see the machine learning algorithms run right before your eyes. To do that, navigate to the top menu bar, click on **Run** and then click on **Run All Cells**. Again, note the runtime for the open source libraries approach and for the Oracle ADS AutoML library approach.
 
-    ![](./images/15.png " ")
+    ![Run All Cells](./images/15.png " ")
 
 10. Congratulations, you have now ran a notebook which leverages data science and machine learning capabilities to help detect and predict fraud in data that you have now as well as data that you may get in the future!
 
@@ -107,15 +107,15 @@ Estimated Lab Time: 20 minutes.
 
 1. With the model that you created in the previous step inside of the notebook, they can also stored in OCI's Model Catalog. This is a repository for your models which can be accessed in a variety of ways. Let's look at how we can do that by exploring an OCI DS included example notebook. Learn more by clicking on **File** and then on **New Launcher**. Then, click on **Notebook Examples**.
 
-    ![](./images/17.png " ")
+    ![Notebook Examples launcher](./images/17.png " ")
 
 1. Scroll down to then click on **model_catalog.ipynb** and click on **Load Example**.
 
-    ![](./images/18.png " ")
+    ![Load model catalog example](./images/18.png " ")
 
-2. In this notebook, you can learn about how to save your models in model catalog for further use. The models that you ran earlier could be stored in a model catalog repository to be available for further use, sharing, or exploring. There are a variety of metrics and metadata that can be seen from a quick glance.
+1. In this notebook, you can learn about how to save your models in model catalog for further use. The models that you ran earlier could be stored in a model catalog repository to be available for further use, sharing, or exploring. There are a variety of metrics and metadata that can be seen from a quick glance.
 
-    ![](./images/19.png " ")
+    ![Model catalog example notebook](./images/19.png " ")
 
 ## Task 5: (Bonus) Set up Oracle Cloud Shell and Oracle Functions
 
@@ -123,11 +123,11 @@ Estimated Lab Time: 20 minutes.
 
 2. Download the ADS-Model-Deployment notebook by clicking on this link: [ADS-Model_Deployment.ipynb](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/austindatamanagement/ADS-Model-Deployment.ipynb). Then, similarly to how you uploaded a file before, begin by clicking on the **^ icon** to **Upload Files** in the OCI Data Science notebook session interface. Then, select the ADS notebook from the previous step to import it.
 
-    ![](./images/12b.png " ")
+    ![Upload model deployment notebook](./images/12b.png " ")
 
 3. Follow the steps outlined to deploy your models through functions.
 
-    ![](./images/20.png " ")
+    ![Model deployment notebook](./images/20.png " ")
 
 
 You may proceed to the next lab.
@@ -145,7 +145,6 @@ To learn more about OCI Data Science, feel free to explore the capabilities by c
 
 ## Acknowledgements
 
-- **Author** - NATD Cloud Engineering - Austin (Khader Mohiuddin, Philip Pavlov, Patrick Guha)
-- **Last Updated By/Date** - Jess Rein, Cloud Engineer, September 2020
-
+* **Author** - NATD Cloud Engineering - Austin (Khader Mohiuddin, Philip Pavlov, Patrick Guha)
+* **Last Updated By/Date** - Jess Rein, Cloud Engineer, September 2020
 

@@ -15,23 +15,25 @@ Watch the video below for a quick walk-through of the lab.
 ### Objectives
 
 In this workshop, you will learn:
--	How to transform and prepare your data for analysis
+
+*	How to transform and prepare your data for analysis
 
 ### Prerequisites
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous AI Database instance
-- Created a new QTEAM user with appropriate roles
-- Loaded the demo data 
-- Loaded Age group data into AGE\_GROUP 
+* Created an Autonomous AI Database instance
+* Created a new QTEAM user with appropriate roles
+* Loaded the demo data
+* Loaded Age group data into AGE\_GROUP
 
 ### Demo data for this lab
+>
 >**NOTE:** Skip this section if you have demo data loaded and completed previous labs.
 
 If you have not completed the previous labs you can run the following script in SQL Worksheet to load all necessary objects.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
+*For copy/pasting, be sure to click the convenient **Copy** button in the upper right corner of the following code snippet.*:
 
 ```
 <copy>
@@ -214,7 +216,7 @@ end;
 
 Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
-While the script is running, you will see the message "Executing code" at the bottom of the window. 
+While the script is running, you will see the message "Executing code" at the bottom of the window.
 The message will change to "SQL executed by QTEAM" when in finishes. There should not be any errors.
 
 >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
@@ -239,7 +241,7 @@ sales data by data analysis.
 
 The **Data Transforms** tool makes such data preparation tasks easy.
 
-1.  Click on the **Data Transforms** card to launch the tool.
+1. Click on the **Data Transforms** card to launch the tool.
 
     >**NOTE:** If you don't see the **Data Transforms** card then it means you are
     missing the **DATA\_TRANSFORM\_USER** role for your user. Login as ADMIN and
@@ -247,18 +249,18 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
     ![screenshot of the data transform card](images/image13_transform_card.png)
 
-2.  Provide QTEAM for username and the password for the database user QTEAM.
+2. Provide QTEAM for username and the password for the database user QTEAM.
 
     ![screenshot of data transform login](images/image14_transform_login.png)
 
-3.  You will see a provisioning screen like below.
+3. You will see a provisioning screen like below.
 
     ![screenshot of data transform service start](images/image15_transform_start.png)
 
-4.  It will take up to 3-5 minutes for the service to be started for the first time. Once
+4. It will take up to 3-5 minutes for the service to be started for the first time. Once
     provisioned you will see the following home screen.
 
-    >**Note:** The Data Transforms tool is provisioned on demand. After 10 minutes of 
+    >**Note:** The Data Transforms tool is provisioned on demand. After 10 minutes of
     inactivity, it will go into sleep mode and needs to
     be started again. The maximum timeout can be configured in the tools configuration menu from the Autonomous AI Database OCI console. Subsequent start time will be much smaller than the first time.  Clicking on any part of the UI will start the service again if it has gone into sleep mode. If you get any error, then
     refresh your browser.
@@ -267,29 +269,29 @@ The **Data Transforms** tool makes such data preparation tasks easy.
 
 ## Task 2: Set up a connection
 
-1.  Click on **Connections** on the left side to look at available
+1. Click on **Connections** on the left side to look at available
     connections.
 
     ![screenshot of the connection menu](images/image17_transform_conn.png)
 
-2.  You will notice that there is one connection already defined. This connection 
-    is to your Autonomous AI Database. Click on the connection to complete its configuration. 
+2. You will notice that there is one connection already defined. This connection
+    is to your Autonomous AI Database. Click on the connection to complete its configuration.
     This is a one-time activity.
 
     ![screenshot of connection configuration](images/image18_transform_adb_conn.png)
 
-3.  Enter QTEAM for user name and the password and click on Test Connection. After
+3. Enter QTEAM for user name and the password and click on Test Connection. After
     a successful connection a notification message will appear on the top
     right.
 
     ![screenshot of the connection for the user and password](images/image19_transform_conn_usrpwd.png)
 
-4.  If the notification message disappears then you can get it back by
+4. If the notification message disappears then you can get it back by
     clicking on the bell icon on the top right. Throughout this tool, you
     will have notification messages available by clicking on the bell
     icon.
 
-    After successful test, click on the **Update** to save the connection configuration. 
+    After successful test, click on the **Update** to save the connection configuration.
 
     ![screenshot of the connection test](images/image20_transform_conn_test.png)
 
@@ -303,7 +305,7 @@ Now we are ready to prepare the data.
 
 ## Task 3: Create a data flow to load a new table to analyze customer sales
 
-1.  Click on the **Home** button on the left side to go back to the home
+1. Click on the **Home** button on the left side to go back to the home
     screen. You have wizards to load data from other sources (as defined
     in connections) and transform data. Since our data is already
     loaded in our Autonomous AI Database in the previous lab, we will click
@@ -311,81 +313,81 @@ Now we are ready to prepare the data.
 
     ![screenshot of transforms wizard](images/image21_transform_home_wiz.png)
 
-2.  Enter the name and description of the data flow.
+2. Enter the name and description of the data flow.
 
     Name: **load_customer\_sales\_analysis**
-    
+
     Description: **Load customer sales table with quintiles and other
     attributes**
-    
+
     A good description helps you understand the objective of the data
     flow.
-    
+
     Since we are working on this tool for the first time, we don't have a
     project. Click on + to create a project. Type in **SalesData** for
     the project name.
-    
+
     Click **Next**.
 
     ![screenshot of data flow name](images/image22_transform_name.png)
 
-3.  Select the only connection from the dropdown list and pick **QTEAM**
+3. Select the only connection from the dropdown list and pick **QTEAM**
     from the schema drop-down list.
-    
+
     Click on **Save**.
 
     ![screenshot of data flow source connection](images/image23_transform_source.png)
 
-4.  This will bring up the data flow editing screen. On the left side, you
+4. This will bring up the data flow editing screen. On the left side, you
     will see the message "Importing Data Entities" next to the **QTEAM**
     user. It will take approximately 4-5 minutes to import all data
     entity definitions and then the message will disappear.
 
-    >**Note:** Import of data entities takes place automatically as part of data flow creation only for 
-    the first time you are using the connection. Other times you need to 
-    explicitly import the data entity definitions from your connection before 
-    creating the data flow. You can also import the QTEAM entities manually by right click and import 
-    entities menu. 
+    >**Note:** Import of data entities takes place automatically as part of data flow creation only for
+    the first time you are using the connection. Other times you need to
+    explicitly import the data entity definitions from your connection before
+    creating the data flow. You can also import the QTEAM entities manually by right click and import
+    entities menu.
 
-    While the import is taking place, you can go to the next step to learn 
+    While the import is taking place, you can go to the next step to learn
     navigation on the data flow editor page.
 
     When the import is finished, you can expand QTEAM to see all the tables in the schema. You can also refresh the data entities at any time with the refresh icon.
 
     ![screenshot of data flow edit page](images/image24_transform_entity.png)
 
-5.  Now let us learn how to navigate in the data flow editing screen.
+5. Now let us learn how to navigate in the data flow editing screen.
     Refer to the numbered zones in the screenshot below.
 
     1: Main editing canvas to create data flows by combining various
     transforms
-    
+
     2: Data Entity browser. Data Entities can be used as a source or
     target for the data flow. You can add more connections by clicking on
     the + icon (we don't need to) and filter entities by name or tag if
     the list is big. Entities are dragged into the main canvas to build a
     data flow.
-    
+
     3: Transformations are grouped under various categories. Click on
     different groups to see what kinds of transforms are available. Basic
     transforms are under the **Data Transform** and **Data Preparation**
     groups. These transforms are dragged into the main canvas to build a
     data flow.
-    
+
     4: Properties: By clicking on any source/target entity or on a
     transform step, you can view and edit various properties.
-    
+
     5: Save, execute, and validate.
-    
+
     6: When you click on the empty part of the main canvas then it gives
     you the execution status of the data flow.
 
     ![screenshot of data flow edit page zones](images/image25_transform_zones.png)
 
-6.  Wait for the entity import to complete. After that, you will see all the tables in your 
+6. Wait for the entity import to complete. After that, you will see all the tables in your
     schema listed on the left side. Refresh it anytime to see the latest entity list.
-    Now we are ready to build the data flow. 
-    
+    Now we are ready to build the data flow.
+
     We want to aggregate the
     sales per customer to create 5 quintile buckets to determine
     customer value.
@@ -394,33 +396,33 @@ Now we are ready to prepare the data.
     the **Aggregate** transform from above under the **Data Transform** group.
     Next, drag the **Quantile Binning** transform into the canvas. This
     transform is in the **Data Preparation** group above.
-    
+
     There are many transforms available under different groups to build
     the desired data flow. For this workshop, we will use a few of them.
-    
+
     This should look like the below screenshot.
 
     ![screenshot of bring source table and transforms](images/image26_transform_drag_source.png)
 
-7.  Click on **MOVIESALES\_CA,** and Link it to the **Aggregate**
+7. Click on **MOVIESALES\_CA,** and Link it to the **Aggregate**
     transform by dragging the little arrow on top of the **Aggregate**
     transforms. Follow this process to link transform steps in the rest
     of the workshop.
 
     ![screenshot of linking transform steps](images/image27_transform_link.png)
 
-8.  Now let's edit the properties of the Aggregate transform. Click on
+8. Now let's edit the properties of the Aggregate transform. Click on
     the Aggregate transform and then click on the attribute icon on the
     right-side properties panel. You should also expand the properties
     panel by clicking on the top right corner icon.
 
     ![screenshot of aggregate attributes](images/image28_agg_attr.png)
 
-9.  Click on Attributes on the left side. You can edit this attribute
-    list. By default all the columns from previous step have been brought in. 
-    Since we need to aggregate total sales values by customer id, we will remove everything 
-    except **CUST\_ID** and **TOTAL\_SALES**. 
-    
+9. Click on Attributes on the left side. You can edit this attribute
+    list. By default all the columns from previous step have been brought in.
+    Since we need to aggregate total sales values by customer id, we will remove everything
+    except **CUST\_ID** and **TOTAL\_SALES**.
+
     Click on the checkboxes against the attributes to be removed (as shown in the screenshot below)
     and click the delete icon on the right side to remove them.
 
@@ -476,7 +478,7 @@ Now we are ready to prepare the data.
 
     Change the name **Return** to **CUST\_VALUE**. Quantile Binning output
     will go into the **CUST\_VALUE** attribute.
-    
+
     ![screenshot of binning output name change](images/image36_binning_output.png)
 
 17. Click on the Column Mapping and enter 5 for the **number of
@@ -492,14 +494,14 @@ Now we are ready to prepare the data.
     the main canvas.
 
     Now you have the basic skills to add data sources and transforms, and edit their properties.
-    
+
     Next, bring the **Join** transform from "DATA TRANSFORMS" grouping into the canvas,
     drag the **CUSTOMER\_CA** table and join it with the previous flow as below.
-    
+
     Click on the Attribute property of the Join and notice that it has
     populated the join automatically. You can also edit it manually if it
     is not what you expect.
-    
+
     Make sure the join is: **Aggregate.CUST\_ID=CUSTOMER\_CA.CUST\_ID**
 
     ![screenshot of joining with customer](images/image38_cust_join.png)
@@ -516,11 +518,11 @@ Now we are ready to prepare the data.
     Should be the lookup source. Check the property panel on the right. If it is not correct
     then remove the links by hovering and hitting the red X and link it again.
 
-    The default lookup condition is blank. Copy the following expression into the lookup condition window.: 
+    The default lookup condition is blank. Copy the following expression into the lookup condition window.:
     **CUSTOMER\_CA.AGE between AGE\_GROUP.MIN\_AGE and AGE\_GROUP.MAX_AGE**
-    
+
     Note that you can also optionally use the expression editor.
-    
+
     >**Note:** Take a moment to notice that we are building the data flow step by
     step and this way it is easy to understand. This is an advantage of
     using UI to define a complete data preparation task which could be
@@ -536,23 +538,23 @@ Now we are ready to prepare the data.
     flow. First for calculating the quintile and the second time to bring
     individual sales transaction data.
 
-    Join this table with the output of lookup using the join transform. The join expression should be populated 
+    Join this table with the output of lookup using the join transform. The join expression should be populated
     automatically Look at the screenshot for how they need to be linked. Click on the join transform.
 
     Make sure the join is: **Aggregate.CUST\_ID=MOVIESALES\_CA1.CUST\_ID**
-        
-    >**NOTE:** Join conditions are automatically populated if a matching column name is found. 
-    If there are multiple tables with the same column name then it guesses which table need 
-    to be in the join. If you notice that your join condition is different 
+
+    >**NOTE:** Join conditions are automatically populated if a matching column name is found.
+    If there are multiple tables with the same column name then it guesses which table need
+    to be in the join. If you notice that your join condition is different
     than above then replace it by copy and paste form here.
-    
+
     Next, bring in the movie GENRE table and join it. The join expression should be populated automatically.
     Look at the screenshot.
-    
+
     Click on the join and make sure the join is: **MOVIESALES\_CA1.GENRE_ID=GENRE.GENRE\_ID**
-    
+
     It should look like the below screenshot.
-    
+
     It is good practice to keep saving it by clicking on the **Save** icon
     on the top left.
 
@@ -565,7 +567,7 @@ Now we are ready to prepare the data.
     Drag this table from the entity browser on the left side into the canvas.
 
     >**Note:** It is possible to create a brand new target table in the data flow as well. However for simplicity we are using a pre-created table definition in this workshop.
-    
+
     ![screenshot of creating target table entity](images/image45_target_drag_add.png)
 
 22. Now we need to make sure the target load properties are correct. Click on
@@ -580,7 +582,7 @@ Now we are ready to prepare the data.
     can also use auto-mapping functionality if you create new
     attributes or if some expressions are blank.
 
-    These mapping expressions are the key to populating the target columns 
+    These mapping expressions are the key to populating the target columns
     from the right source and with the right expression.
 
     ![screenshot of target mapping](images/image46_target_mapping.png)
@@ -588,9 +590,9 @@ Now we are ready to prepare the data.
 24. Now to the final step. Click on **Options**.
 
     Make sure the property **Drop and create target table** is **true**.
-    
+
     This makes sure that you always have the correct definition.
-    
+
     You can also choose to load data into an existing table with or without
     truncating. Data can also be loaded incrementally. These are advanced
     modes. For now, we will simply drop and create the table in every
@@ -602,14 +604,14 @@ Now we are ready to prepare the data.
     and validate it by clicking on the validate icon (looks like a small
     check mark).
 
-    It should show no errors. If you do get an error then go back to your data 
-    flow steps and fix it. Most probably errors are due to unmapped attributes 
+    It should show no errors. If you do get an error then go back to your data
+    flow steps and fix it. Most probably errors are due to unmapped attributes
     or incorrect expressions.
 
     ![screenshot of validating data flow](images/image48_transform_validate.png)
 
 26. Now execute it by clicking on the small green triangle in the circle.
-    Confirm **Start**. 
+    Confirm **Start**.
 
     ![screenshot of executing data flow](images/image49_transform_start.png)
 
@@ -636,27 +638,27 @@ Now we are ready to prepare the data.
 
     ![screenshot of data statistics](images/image53_transform_stats.png)
 
-For now, it is just a cursory data glance. We will need to use the **Data Analysis** 
+For now, it is just a cursory data glance. We will need to use the **Data Analysis**
 tool to analyze this data and find many interesting patterns.
 
 ## Task 4: How to debug
 
->**Note:** This is for advanced users. Skip if you don't have any errors and you want 
+>**Note:** This is for advanced users. Skip if you don't have any errors and you want
 to straight go to the next lab.
 
-1.  Go back to the data flow canvas and click on the empty space in the
+1. Go back to the data flow canvas and click on the empty space in the
     canvas. On the top, there is a Code Simulation icon. Click on it. This
     will show you the code to be generated.
 
     ![screenshot of data flow simulation](images/image54_transform_simul.png)
 
-2.  Look at the generated SQL. Imagine writing this SQL without the
+2. Look at the generated SQL. Imagine writing this SQL without the
     graphical interface. It would not be so easy!
     Advanced users will find this useful for debugging purposes.
 
-![data flow simulation SQL](images/image55_transform_simul_code.png)
+    ![data flow simulation SQL](images/image55_transform_simul_code.png)
 
-3.  Next, look at the **Data Flow Status** on the right side. If there are
+3. Next, look at the **Data Flow Status** on the right side. If there are
     any errors, then you can click on the **Execution Job** in the
     **Data Flow Status** panel to debug. It will take you to the jobs
     screen where you can look at the executed steps, processed row
@@ -664,12 +666,12 @@ to straight go to the next lab.
 
     ![screenshot of data flow execution job log](images/image56_transform_log.png)
 
-4.  Notice different steps in the execution. You can also get the
+4. Notice different steps in the execution. You can also get the
     executed SQL (same as the simulated SQL seen earlier) by clicking
     on the step.
-    
+
     To go back to your data flow, click on the **Design Object** link.
-    
+
     From anywhere in the UI, you can go back to the Home screen by clicking on
     the top left link.
 
@@ -678,30 +680,30 @@ to straight go to the next lab.
 ## RECAP
 
 In this lab, we used the Data Transforms tool to calculate customer value from sales data, and combine it
-with the customer, age group and movie genre information to load into a target table to be 
-used for data analysis. 
+with the customer, age group and movie genre information to load into a target table to be
+used for data analysis.
 
 Note that we only covered a brief overview of Data Transforms capabilities. Other features include:
 
--   **Variety of data sources**: Databases, Object Store, REST API and Fusion
+* **Variety of data sources**: Databases, Object Store, REST API and Fusion
     Application
 
--   **Load Data:** Load multiple tables in a schema from another data
+* **Load Data:** Load multiple tables in a schema from another data
     source. Data Transforms can also integrate with Oracle Golden Gate Cloud Service for advanced
     replication. This complements the Data Load tool explored in the earlier
     lab.
 
--   **Workflow:** Combine several data flows to run sequentially or in parallel.
+* **Workflow:** Combine several data flows to run sequentially or in parallel.
 
--   **Schedule:** In-built scheduler for periodic execution.
+* **Schedule:** In-built scheduler for periodic execution.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
-- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, September 2025
+* Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
+* Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
+* Last Updated By - Jayant Mahto, September 2025
 
 
 Copyright (C)  Oracle Corporation.

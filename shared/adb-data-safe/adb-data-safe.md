@@ -21,32 +21,32 @@ Watch a preview of "*Introduction to Oracle Data Safe (June 2022)*" [](youtube:U
 
 In this lab, you will:
 
-- Create a user group and add an Oracle Cloud account to the group
-- Create an IAM policy for the user group
-- (If using LiveLabs Sandbox reservation only) View your LiveLabs reservation information and sign in
-- Access Oracle Database Actions
-- Load sample data into your database
-- Register your database with Oracle Data Safe
-- Access Oracle Data Safe and view your list of registered target databases
-- Discover sensitive data in your target database using Data Discovery
-- Analyze the sensitive data model
+* Create a user group and add an Oracle Cloud account to the group
+* Create an IAM policy for the user group
+* (If using LiveLabs Sandbox reservation only) View your LiveLabs reservation information and sign in
+* Access Oracle Database Actions
+* Load sample data into your database
+* Register your database with Oracle Data Safe
+* Access Oracle Data Safe and view your list of registered target databases
+* Discover sensitive data in your target database using Data Discovery
+* Analyze the sensitive data model
 
 ### Prerequisites
 
 This lab assumes you have:
 
-- Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
-- Performed the previous lab on provisioning an Oracle Autonomous AI Database
+* Obtained an Oracle Cloud account and signed in to the Oracle Cloud Infrastructure Console at `https://cloud.oracle.com`
+* Performed the previous lab on provisioning an Oracle Autonomous AI Database
 
 ## Task 1: Create a user group and add an Oracle Cloud account to the group
 
-> _**Note:** If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment._
+> ***Note:** If you are running this workshop in an Oracle LiveLabs sandbox hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.*
 
 As a tenancy administrator, create a user group and add an Oracle Cloud account to the group.
 
 1. From the navigation menu, select **Identity & Security**. Under **Identity**, click **Domains**. The **Domains** page is displayed. Click the domain where you want to create the group such as the **Default** domain in our example. The Domain's page is displayed.
 
-2. Click the **User management** tab. 
+2. Click the **User management** tab.
 
 3. Scroll-down to the **Groups** section.
 
@@ -57,7 +57,7 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
     * **Name:** Enter a name for the group such as **`dsg01`** (short for Data Safe group 1).
     * **Description:** Enter a description for the group such as **`User group for data safe user 1`**. A description is required.
     * **Users:** Select the checkbox next to the user that you'd like to add to the group.
-    * **Tags:** You can optionally create a tag. Drill-down on **Tags**, and then click **Add tag**. 
+    * **Tags:** You can optionally create a tag. Drill-down on **Tags**, and then click **Add tag**.
 
         ![Create group page](images/create-group-page.png " ")
 
@@ -66,8 +66,8 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
     The new **dsg01** group details page is displayed.
 
     ![Group created](images/group-created.png " ")
-    
-7. Click the **Users** tab. Make sure the user is added to the group. 
+
+7. Click the **Users** tab. Make sure the user is added to the group.
 
     ![Users tab](images/users-tab.png " ")
 
@@ -75,7 +75,7 @@ As a tenancy administrator, create a user group and add an Oracle Cloud account 
 
 ## Task 2: Create an IAM policy for the user group
 
-> **Note**: _If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment._
+> **Note**: *If you are running this workshop in an **Oracle LiveLabs sandbox** hosted environment, please skip Tasks 1 and 2, as their steps have already been performed for you in the hosted environment.*
 
 As a tenancy administrator, create an IAM policy that grants the user permission to create and manage all Oracle Data Safe resources and an Autonomous AI Database in the user's compartment.
 
@@ -85,7 +85,7 @@ As a tenancy administrator, create an IAM policy that grants the user permission
 
 3. Click **Create Policy**. The **Create Policy** page is displayed.
 
-4. Provide the following information: 
+4. Provide the following information:
     * **Name:** Enter a name for the policy. It is helpful to name the policy after a group name such as **`dsg01`**.
     * **Description:** Enter a description for the policy such as **`Policy for Data Safe group 1`**.
     * **COMPARTMENT:** Select the **root** compartment from the drop-down list, if not already selected.
@@ -94,7 +94,7 @@ As a tenancy administrator, create an IAM policy that grants the user permission
 
     ![Click show manual editor](images/click-show-manual-editor.png " ")
 
-8. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
+6. In the policy field, enter the following policy statements. Substitute `{group name}` and `{compartment name}` with the appropriate values.
 
     ```
     <copy>
@@ -107,7 +107,7 @@ As a tenancy administrator, create an IAM policy that grants the user permission
 
     ![Create policy](images/create-policy.png " ")
 
-9. Click **Create**. The new **dsg01** policy details page is displayed.
+7. Click **Create**. The new **dsg01** policy details page is displayed.
 
     ![Policy created](images/policy-created.png " ")
 
@@ -134,26 +134,26 @@ As the **`ADMIN`** user on the database, download and run the **`load-data-safe-
 
     ![Run Script button](images/run-script.png " ")
 
-    - The script takes a few minutes to run.
-    - In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
-    - Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
-    - The script ends with the message **END OF SCRIPT**.
+    * The script takes a few minutes to run.
+    * In the bottom-left corner, the cog wheel may remain still for about a minute, and then it turns as the script is processed. The script output is displayed after the script is finished running.
+    * Don't worry if you see some error messages on the **Script Output** tab. These are expected the first time you run the script.
+    * The script ends with the message **END OF SCRIPT**.
 
 5. To ensure the sample data is loaded successfully, at the end of the script output, review the row count for each table in the `HCM1` schema. The counts should be as follows:
 
-    - `COUNTRIES` - 25 rows
-    - `DEPARTMENTS` - 27 rows
-    - `EMPLOYEES` - 107 rows
-    - `EMP_EXTENDED` - 107 rows
-    - `JOBS` - 19 rows
-    - `JOB_HISTORY` - 10 rows
-    - `LOCATIONS` - 23 rows
-    - `REGIONS` - 4 rows
-    - `SUPPLEMENTAL_DATA` - 149 rows
+    * `COUNTRIES` - 25 rows
+    * `DEPARTMENTS` - 27 rows
+    * `EMPLOYEES` - 107 rows
+    * `EMP_EXTENDED` - 107 rows
+    * `JOBS` - 19 rows
+    * `JOB_HISTORY` - 10 rows
+    * `LOCATIONS` - 23 rows
+    * `REGIONS` - 4 rows
+    * `SUPPLEMENTAL_DATA` - 149 rows
 
     If your results are different than what is specified above, rerun the [load-data-safe-sample-data_admin.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/data-management-library-files/load-data-safe-sample-data_admin.sql) script.
 
-6. Refresh Database Actions. Refresh your _Web browser's_ page, and then verify that the **`HCM1`** schema is listed in the first drop-down list on the **Navigator** pane.
+6. Refresh Database Actions. Refresh your *Web browser's* page, and then verify that the **`HCM1`** schema is listed in the first drop-down list on the **Navigator** pane.
 
     ![Refresh your browser](images/refresh-browser.png " ")
 
@@ -163,14 +163,15 @@ As the **`ADMIN`** user on the database, download and run the **`load-data-safe-
 
 ## Task 4: Register Your Autonomous AI Database With Oracle Data Safe
 
-To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a _target database_ in Oracle Data Safe.
+To use a database with Oracle Data Safe, you first need to register it with Oracle Data Safe. A registered database is referred to as a *target database* in Oracle Data Safe.
 
 After registering an Autonomous AI Database, you can grant and revoke roles from the Oracle Data Safe service account on your Autonomous AI Database to control which Oracle Data Safe features you can use with the database. You need to register your Autonomous AI Database before granting roles because registration unlocks the Oracle Data Safe pre-seeded service account on your target database. Keep in mind that the roles for Autonomous Databases are different than those for non-Autonomous Databases. For non-Autonomous Databases, you can grant roles before or after registering your database.
-- For an **Oracle Autonomous AI Database Serverless**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
+
+* For an **Oracle Autonomous AI Database Serverless**, which is what we are using in this workshop, all Oracle Data Safe roles are granted by default during registration, except for the Data Masking role (`DS$DATA_MASKING_ROLE`).
 
 **Assumption**: Your data values are most likely different than those shown in the screenshots.
 
-If you plan to use a database other than an Oracle Autonomous AI Database for this workshop, please follow the registration instructions specific for your database type in the _Administering Oracle Data Safe_ guide. See the **Learn More** section at the bottom of this page.
+If you plan to use a database other than an Oracle Autonomous AI Database for this workshop, please follow the registration instructions specific for your database type in the *Administering Oracle Data Safe* guide. See the **Learn More** section at the bottom of this page.
 
 1. Return to the **Autonomous AI Database | Oracle Cloud Infrastructure** browser tab. You last left off on the **Autonomous AI Database details** page.
 
@@ -198,16 +199,16 @@ If you plan to use a database other than an Oracle Autonomous AI Database for th
 
 4. From the **Compartment** drop-down list under **List Scope**, select your compartment, if it's not already selected. Optionally, deselect **Include child compartments**. Your registered target database is listed on the right.
 
-    - A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
-    - A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed after 45 days.
+    * A target database with an **ACTIVE** status means that it is currently registered with Oracle Data Safe.
+    * A target database with a **DELETED** status means that it is no longer registered with Oracle Data Safe. The listing is removed after 45 days.
 
         ![Target Databases page in OCI](images/target-databases-page.png " ")
 
 5. Click the name of your target database to view its registration details. The **Target Database Details** page is displayed.
 
-    - You can view/edit the target database name and description.
-    - You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous AI Database), and the connection protocol (TLS). The information varies depending on the target database type.
-    - You have options to edit connection details (change the connection protocol), move the target database registration to another compartment, deregister the target database, and add tags.
+    * You can view/edit the target database name and description.
+    * You can view the Oracle Cloud Identifier (OCID), when the target database was registered, the compartment name to where the target database was registered, the database type (Autonomous AI Database), and the connection protocol (TLS). The information varies depending on the target database type.
+    * You have options to edit connection details (change the connection protocol), move the target database registration to another compartment, deregister the target database, and add tags.
 
     ![Target Database Details page](images/target-database-details-page.png " ")
 
@@ -235,10 +236,10 @@ Start by examining sensitive data in one of the tables on your target database b
 
 6. On the **Provide Basic Information** page, specify the following, and then click **Next**.
 
-    - **Name:** Enter **SDM1**.
-    - **Compartment:** Leave the compartment set to your compartment.
-    - **Description:** Enter **Sensitive Data Model 1**.
-    - **Target database:** Select your target database.
+    * **Name:** Enter **SDM1**.
+    * **Compartment:** Leave the compartment set to your compartment.
+    * **Description:** Enter **Sensitive Data Model 1**.
+    * **Target database:** Select your target database.
 
     ![Provide Basic Information page](images/provide-basic-information-page.png =65%x* " ")
 
@@ -266,10 +267,10 @@ Start by examining sensitive data in one of the tables on your target database b
 
 1. Review the information on the **Sensitive data model details** page.
 
-    - The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
-    - You can click the **View details** link to view the work request information.
-    - The bar chart compares the number of sensitive values per sensitive category and sensitive type.
-    - The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
+    * The **Sensitive Data Model Information** tab lists information about your sensitive data model, including its name and Oracle Cloud Identifier (OCID), the compartment to which you saved it, the date and time when it was created and last updated, the target database associated with it, and totals for discovered sensitive schemas, sensitive tables, sensitive columns, sensitive types, and sensitive values.
+    * You can click the **View details** link to view the work request information.
+    * The bar chart compares the number of sensitive values per sensitive category and sensitive type.
+    * The **Sensitive columns** table lists the discovered sensitive columns. By default, the table is displayed in **Flat View** format. For each sensitive column, you can view its schema name, table name, column name, sensitive type, parent column, data type, estimated row count, and sample data (if you chose to retrieve sample data and if it exists). Review the sample data to get an idea of what it looks like.
 
     ![Sensitive Data Model Details page top](images/sensitive-data-model-details-page-1.png " ")
 
@@ -279,7 +280,7 @@ Start by examining sensitive data in one of the tables on your target database b
 
 3. From the same drop-down list, select **Schema view** to sort the sensitive columns by schema and table name.
 
-    - If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the Parent column. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
+    * If a sensitive column was discovered because it has a relationship to another sensitive column as defined in the database's data dictionary, the other sensitive column is displayed in the Parent column. For example, `EMPLOYEE_ID` in the `EMP_EXTENDED` table has a relationship to `EMPLOYEE_ID` in the `EMPLOYEES` table.
 
         ![Schema View](images/schema-view.png " ")
 
@@ -287,11 +288,11 @@ Start by examining sensitive data in one of the tables on your target database b
 
 The following links provide more information about Oracle Data Safe:
 
-- [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
+* [Data Discovery](https://docs.oracle.com/en-us/iaas/data-safe/doc/data-discovery.html)
 
 ## Acknowledgements
 
-- **Authors:** 
+* **Authors:**
     * Jody Glover, Consulting User Assistance Developer, Database Development
     * Lauran K. Serhal, Consulting User Assistance Developer
-- **Last Updated By/Date:** Lauran K. Serhal, October 2025
+* **Last Updated By/Date:** Lauran K. Serhal, October 2025

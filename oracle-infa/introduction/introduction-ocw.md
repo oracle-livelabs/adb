@@ -9,6 +9,7 @@ Estimated Workshop Time: -- 90 minutes
 ### Objectives
 
 In this workshop, you will learn how to:
+
 * Navigate the IDMC services platform
 * Mass ingest data from a MySQL database to an OCI Object Storage bucket
 * Profile data to discover data inconsistencies
@@ -20,17 +21,21 @@ In this workshop, you will learn how to:
 ### Prerequisites
 
 This lab assumes you have:
+
 * Your own laptop
 
 * A student id and password will be provided at the start of the workshop
 
 * The URL to access your environment is:
-  ```
-    <copy>
-    https://dm-us.informaticacloud.com/identity-service/home
-    </copy>
-  ```
+
+```
+  <copy>
+  https://dm-us.informaticacloud.com/identity-service/home
+  </copy>
+```
+
 * Download the workshop overview here: [Workshop Overview](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/oci-library/2023-Oracle-CDWL_LearningLab-Presentation.pdf)
+
 ## Learn More
 
 * [Informatica Trials](https://www.informatica.com/trials.html)
@@ -39,5 +44,6 @@ This lab assumes you have:
 * [Oracle and Informatica Partnership Site](https://www.oracle.com/partner/informatica/)
 
 ## Acknowledgements
+
 * **Authors** - Eddy Widjaja, Solutions Director, Informatica; Larry Fumagalli, Director, Vertical Solutions, Oracle; Rudra Ray, Director, Technical Marketing, Informatics
 * **Last Updated By/Date** - Larry Fumagalli, August 2023

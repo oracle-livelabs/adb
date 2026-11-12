@@ -8,14 +8,14 @@ Estimated Time: 30 - 45 minutes
 
 ### Objectives
 
-- Enable a user for REST access
-- Publish a RESTful service for a database table
-- Secure the REST service
+* Enable a user for REST access
+* Publish a RESTful service for a database table
+* Secure the REST service
 
 ### Prerequisites
 
-- The following lab requires an [Oracle Cloud account](https://www.oracle.com/cloud/free/). You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
-- This lab assumes you have successfully provisioned Oracle Autonomous Database and have connected to ADB with SQL Developer web.
+* The following lab requires an [Oracle Cloud account](https://www.oracle.com/cloud/free/). You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
+* This lab assumes you have successfully provisioned Oracle Autonomous Database and have connected to ADB with SQL Developer web.
 
 ## Task 1: Create a User for Application Development
 
@@ -44,9 +44,11 @@ Estimated Time: 30 - 45 minutes
     ![Database Actions Menu, Development then SQL](./images/navigate-sql.png)
 
 6. On the SQL Canvas, copy and paste the following statement:
+
     ````
     <copy>alter user gary quota unlimited on data;</copy>
     ````
+
     Once copied on the canvas, click the run button on the worksheet toolbar.
 
     ![Click RUN on the SQL Worksheet Toolbar](./images/run-query.png)
@@ -81,17 +83,17 @@ We need to load some data into the database so that we can create some REST serv
 
     ![Database Actions Home Page](./images/gary-logged-in.png " ")
 
-**User Changing Method 2:**
+    **User Changing Method 2:**
 
-1. As the Admin user, in the upper left of the page, click the Database Actions Menu. In the Administration List, select **Database Users**, just as we did previously when creating Gary.
+5. As the Admin user, in the upper left of the page, click the Database Actions Menu. In the Administration List, select **Database Users**, just as we did previously when creating Gary.
 
     ![Database Actions Menu, Administration then Users](./images/navigate-database-users.png " ")
 
-2. Find Gary's user title and click the open-in-new-tab icon ![open-in-new-tab icon](./images/open-in-new-tab.png) on the lower right to open a new browser tab/window with a login box.
+6. Find Gary's user title and click the open-in-new-tab icon ![open-in-new-tab icon](./images/open-in-new-tab.png) on the lower right to open a new browser tab/window with a login box.
 
     ![GARY the user's Details Tile, click the open-in-new-tab icon](./images/open-new-tab.png " ")
 
-3. Enter **Gary** as the Username and then his password in the password field. Then click **Sign in**.
+7. Enter **Gary** as the Username and then his password in the password field. Then click **Sign in**.
 
     ![Sign In Page, enter Username and Password](./images/sign-in-password.png " ")
 
@@ -101,7 +103,7 @@ We need to load some data into the database so that we can create some REST serv
 
     ![Database Actions Home Page, Click SQL tile](./images/sql-tile.png " ")
 
->**Note:** If this is your first time accessing the SQL Worksheet, you will be presented with a guided tour. Complete the tour or click the X in any tour popup window to quit the tour. You may need to refresh the page to exit the tour.
+    >**Note:** If this is your first time accessing the SQL Worksheet, you will be presented with a guided tour. Complete the tour or click the X in any tour popup window to quit the tour. You may need to refresh the page to exit the tour.
 
 2. We are now ready to load data into the database. For this task, we will use the **Data Loading** tab in the SQL Worksheet.
 
@@ -336,5 +338,5 @@ In this lab, you had an opportunity to get an introduction to REST services usin
 
 ## Acknowledgements
 
-- **Author** - Jeff Smith, Distinguished Product Manager and Brian Spendolini, Trainee Product Manager
-- **Last Updated By/Date** - Arabella Yao, Product Manager, Database Product Management, April 2022
+* **Author** - Jeff Smith, Distinguished Product Manager and Brian Spendolini, Trainee Product Manager
+* **Last Updated By/Date** - Arabella Yao, Product Manager, Database Product Management, April 2022

@@ -12,15 +12,15 @@ Simple Oracle Document Access (SODA) is a set of NoSQL-style APIs that let you c
 
 ### Objectives
 
-- Load JSON data into relational tables
-- Understand how Oracle stores JSON data in relational tables
-- Work with the JSON data with SQL
+* Load JSON data into relational tables
+* Understand how Oracle stores JSON data in relational tables
+* Work with the JSON data with SQL
 
 ### Prerequisites
 
-- The following lab requires an [Oracle Cloud account](https://www.oracle.com/cloud/free/). You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
-- This lab assumes you have successfully provisioned Oracle Autonomous database an connected to ADB with SQL Developer web.
-- You have completed the user setups steps.
+* The following lab requires an [Oracle Cloud account](https://www.oracle.com/cloud/free/). You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
+* This lab assumes you have successfully provisioned Oracle Autonomous database an connected to ADB with SQL Developer web.
+* You have completed the user setups steps.
 
 ## Task 1: Creating a Collection
 
@@ -245,7 +245,7 @@ A filter specification is also called a query-by-example (QBE), or simply a filt
 
     You can see that all the results on the bottom on the page have the Airport Code of `SFO`. At any point, you can double click a result on the bottom of the page to bring up the **JSON Document Content** slider. Here you can see the full JSON document.
 
-   ![JSON Document Content slider](./images/collection-navigator-slider.png " ")
+    ![JSON Document Content slider](./images/collection-navigator-slider.png " ")
 
 3. We can add to the QBE like we did with the SQL and further filter the results down to all documents who also have the month name of June and the Year of 2010. Copy and paste this QBE into the worksheet and run the query
 
@@ -475,7 +475,7 @@ $startsWith — whether a string field value starts with a given substring
 
 2. Updating this JSON is as easy as clicking into this slider and changing a value. Find the **Names** node under **Statistics** then **Carriers**. Just left click the beginning of the value and add **Oracle Airlines,** (remember the comma). When done, click the **save** button on the bottom of the slider. Thats it, the JSON document has been updated.
 
-   ![Updated Collection Navigator](./images/collection%20navigator-updated.png " ")
+    ![Updated Collection Navigator](./images/collection%20navigator-updated.png " ")
 
 3. We can also update one or multiple documents via the SODA-for-REST APIs. For this, we use the **$patch** operator when writing the JSON to update the document. For this example, we will be using a method that could update one or multiple documents; its dependent on the query we include. The JSON we will use is as follows:
 
@@ -573,23 +573,23 @@ $startsWith — whether a string field value starts with a given substring
 
 1. We can index all the text in our JSON collection/documents by adding an index. Adding this index is as simple as a single click of the mouse. To start, in the JSON worksheet, navigate to the **Collection Navigator** on the left of the page.
 
-   ![Collection Navigator on left](./images/collection-navigator-on-left.png " ")
+    ![Collection Navigator on left](./images/collection-navigator-on-left.png " ")
 
 2. Find the airportdelayscollection collection and right click on it. This will bring up a menu where we can select **Search Index** and then left click **Create**.
 
-   ![JSON Document Content slider](./images/json-document-content-slider.png " ")
+    ![JSON Document Content slider](./images/json-document-content-slider.png " ")
 
     This will bring up the **Create Search Index** modal.
 
-   ![Create Search Index modal](./images/create-search-index.png " ")
+    ![Create Search Index modal](./images/create-search-index.png " ")
 
 3. Using the **Create Search Index** find the **Index Name** field. Enter **jsonindex** into this field.
 
-   ![Index Name field](./images/index-name-field.png " ")
+    ![Index Name field](./images/index-name-field.png " ")
 
 4. Once your **Create Search Index** looks like the below image, left click the **OK** button.
 
-   ![Click OK Search Index modal](./images/click-ok-search-index-modal.png " ")
+    ![Click OK Search Index modal](./images/click-ok-search-index-modal.png " ")
 
 5. We can now use the **$contains** operator in our QBEs. Lets try something. In the updating section of this lab, we added Oracle Airlines to a document. We can now directly find this record by just using the contains operator on the Statistics.Carriers.Names node. Copy and paste it into your JSON worksheet and run the QBE.
 
@@ -611,11 +611,11 @@ $startsWith — whether a string field value starts with a given substring
 
 2. Use the **Add Clause** dropdown and select **$orderby**
 
-   ![Add Clause dropdown and select $orderby](./images/add-clause-dropdown.png " ")
+    ![Add Clause dropdown and select $orderby](./images/add-clause-dropdown.png " ")
 
 3. Our QBE is reformatted and the **$orderby** clause is added
 
-   ![reformatted QBE](./images/reformatted-qbe.png " ")
+    ![reformatted QBE](./images/reformatted-qbe.png " ")
 
 4. In the **$orderby** JSON
 
@@ -649,7 +649,7 @@ $startsWith — whether a string field value starts with a given substring
         }
     ```
 
-   ![updated path](./images/updated-path.png " ")
+    ![updated path](./images/updated-path.png " ")
 
 5. Run the QBE and you will see the results have been ordered by Airport Code.
 
@@ -661,7 +661,7 @@ This concludes this lab. You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
-- **Contributor** - Brian Spendolini
-- **Last Updated By/Date** - Chris Hoina/March 2023
+* **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
+* **Contributor** - Brian Spendolini
+* **Last Updated By/Date** - Chris Hoina/March 2023
 

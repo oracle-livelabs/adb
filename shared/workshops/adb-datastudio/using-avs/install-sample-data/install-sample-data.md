@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab uses sample data that is loaded into the Autonomous AI Database from Oracle Cloud Infrastructure Object Storage. You will create four tables and load data from Object Storage using the DBMS\_CLOUD.COPY\_DATA procedure. 
+This lab uses sample data that is loaded into the Autonomous AI Database from Oracle Cloud Infrastructure Object Storage. You will create four tables and load data from Object Storage using the DBMS\_CLOUD.COPY\_DATA procedure.
 
 Estimated Time: 10 minutes with 2 ecpus.
 
@@ -10,13 +10,13 @@ Estimated Time: 10 minutes with 2 ecpus.
 
 In this lab you will:
 
-- Install sample data.
+* Install sample data.
 
-### Prerequisites:
+### Prerequisites
 
-- Complete the previous lab.
+* Complete the previous lab.
 
-## Task 1 - Load Sample Data
+## Task 1: Load Sample Data
 
 To load sample data in this lab.
 
@@ -24,101 +24,101 @@ To load sample data in this lab.
 2. Run the following commands in SQL Worksheet.  They can be run all at once as a script or individually, as you prefer.
 
 
-~~~SQL
-<copy>
- -- -------------------------------------------------------------------------------
- -- Table:  TIME_DIM
- -- -------------------------------------------------------------------------------
+    ```SQL
+    <copy>
+     -- -------------------------------------------------------------------------------
+     -- Table:  TIME_DIM
+     -- -------------------------------------------------------------------------------
+    
+    CREATE TABLE time_dim (
+        "DAY_ID"          DATE,
+        "MONTH"           VARCHAR2(7),
+        "MONTH_OF_YEAR"   VARCHAR2(36),
+        "QUARTER"         VARCHAR2(7),
+        "YEAR"            VARCHAR2(4)
+    );
+    
+    BEGIN
+      DBMS_CLOUD.COPY_DATA (
+      table_name => 'TIME_DIM',
+        file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=TIME_DIM/*.csv',
+      format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
+      );
+    END;
+    /
+    
+     -- -------------------------------------------------------------------------------
+     -- Table:  CUSTOMER_DIM
+     -- -------------------------------------------------------------------------------
+    
+    CREATE TABLE customer_dim (
+        "CUSTOMER_ID"      NUMBER,
+        "CITY"             VARCHAR2(202),
+        "STATE_PROVINCE"   VARCHAR2(104),
+        "COUNTRY"          VARCHAR2(400),
+        "CONTINENT"        VARCHAR2(400)
+    );
+    
+    
+    BEGIN
+      DBMS_CLOUD.COPY_DATA (
+      table_name => 'CUSTOMER_DIM',
+        file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=CUSTOMER_DIM/*.csv',
+      format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
+      );
+    END;
+    /
+    
+     -- -------------------------------------------------------------------------------
+     -- Table:  SEARCH_GENRE_DIM
+     -- -------------------------------------------------------------------------------
+    
+    CREATE TABLE search_genre_dim (
+        "GENRE_ID"     NUMBER,
+        "GENRE_NAME"   VARCHAR2(30)
+    );
+    
+    
+    BEGIN
+      DBMS_CLOUD.COPY_DATA (
+      table_name => 'SEARCH_GENRE_DIM',
+        file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=SEARCH_GENRE_DIM/*.csv',
+      format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
+      );
+    END;
+    /
+    
+     -- -------------------------------------------------------------------------------
+     -- Table:  MOVIE_SALES_FACT
+     -- -------------------------------------------------------------------------------
+    
+    CREATE TABLE movie_sales_fact (
+        "DAY_ID"             DATE,
+        "CUST_ID"            NUMBER,
+        "GENRE_ID"           NUMBER,
+        "LIST_PRICE"         NUMBER,
+        "DISCOUNT_PERCENT"   NUMBER,
+        "SALES"              NUMBER,
+        "QUANTITY"           NUMBER
+    );
+    
+    BEGIN
+      DBMS_CLOUD.COPY_DATA (
+      table_name => 'MOVIE_SALES_FACT',
+        file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=MOVIE_SALES_FACT/*.csv',
+      format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
+      );
+    END;
+    /
+    </copy>
+    ```
 
-CREATE TABLE time_dim (
-    "DAY_ID"          DATE,
-    "MONTH"           VARCHAR2(7),
-    "MONTH_OF_YEAR"   VARCHAR2(36),
-    "QUARTER"         VARCHAR2(7),
-    "YEAR"            VARCHAR2(4)
-);
 
-BEGIN
-  DBMS_CLOUD.COPY_DATA (
-  table_name => 'TIME_DIM',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=TIME_DIM/*.csv',
-  format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
-  );
-END;
-/
-
- -- -------------------------------------------------------------------------------
- -- Table:  CUSTOMER_DIM
- -- -------------------------------------------------------------------------------
-
-CREATE TABLE customer_dim (
-    "CUSTOMER_ID"      NUMBER,
-    "CITY"             VARCHAR2(202),
-    "STATE_PROVINCE"   VARCHAR2(104),
-    "COUNTRY"          VARCHAR2(400),
-    "CONTINENT"        VARCHAR2(400)
-);
-
-
-BEGIN
-  DBMS_CLOUD.COPY_DATA (
-  table_name => 'CUSTOMER_DIM',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=CUSTOMER_DIM/*.csv',
-  format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
-  );
-END;
-/
-
- -- -------------------------------------------------------------------------------
- -- Table:  SEARCH_GENRE_DIM
- -- -------------------------------------------------------------------------------
-
-CREATE TABLE search_genre_dim (
-    "GENRE_ID"     NUMBER,
-    "GENRE_NAME"   VARCHAR2(30)
-);
-
-
-BEGIN
-  DBMS_CLOUD.COPY_DATA (
-  table_name => 'SEARCH_GENRE_DIM',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=SEARCH_GENRE_DIM/*.csv',
-  format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
-  );
-END;
-/
-
- -- -------------------------------------------------------------------------------
- -- Table:  MOVIE_SALES_FACT
- -- -------------------------------------------------------------------------------
-
-CREATE TABLE movie_sales_fact (
-    "DAY_ID"             DATE,
-    "CUST_ID"            NUMBER,
-    "GENRE_ID"           NUMBER,
-    "LIST_PRICE"         NUMBER,
-    "DISCOUNT_PERCENT"   NUMBER,
-    "SALES"              NUMBER,
-    "QUANTITY"           NUMBER
-);
-
-BEGIN
-  DBMS_CLOUD.COPY_DATA (
-  table_name => 'MOVIE_SALES_FACT',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=MOVIE_SALES_FACT/*.csv',
-  format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
-  );
-END;
-/
-</copy>
-~~~
-
-
-## Task 2 - Confirm That Data is Loaded
+## Task 2: Confirm That Data is Loaded
 
 You can view using in the tables you just created using the following commands in SQL Worksheet.
 
-~~~SQL
+```SQL
 <copy>
 SELECT * FROM time_dim;
 
@@ -128,14 +128,14 @@ SELECT * FROM customer_dim;
 
 SELECT * FROM movie_sales_fact;
 </copy>
-~~~
+```
 
 You may now **proceed to the next lab**
 
 ## Acknowledgements
 
-- Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, February 2023
-- Last Updated By - Mike Matthews, November 2025
+* Created By/Date - William (Bud) Endress, Product Manager, Autonomous AI Database, February 2023
+* Last Updated By - Mike Matthews, November 2025
 
 Data about movies in this workshop were sourced from **Wikipedia**.
 
