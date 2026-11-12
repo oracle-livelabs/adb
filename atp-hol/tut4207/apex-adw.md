@@ -111,7 +111,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     ![Object Browser](./images/task-5/object-browser.png " ")
 
 
-4. Upload the script [found here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
+4. Upload the script [found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql).
 
     ![Navigate to SQL Scripts](./images/task-5/sql-scripts.png " ")
     ![Upload the SQL Script](./images/task-5/upload-sql-script.png " ")
@@ -130,7 +130,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Tables have been created](./images/task-5/tables-created.png " ")
 
-8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). 
+8. Select HEALTHCARE\_FACILITY table  from the left pane. Click **Load Data** and upload the respective .csv file for HEALTHCARE\_FACILITY. The full data set [can be found here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip). 
  After each load, verify that all columns were mapped correctly, and  click "View Table" once complete to return to object browser.
 
      >***Note:*** Do not create application - return to object browser
@@ -256,7 +256,7 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
     
     ![Run the application to view changes](./images/task-6/view-application-changes.png " ")
 
-12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip).
+12. Sign into the application, if prompted, and click **Create** to inset new record into Patient\_Documents Table. All sample documents can be found [here] (https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip).
 
     
     ![Test Document Upload](./images/task-6/test-pdf-upload.png " ")
