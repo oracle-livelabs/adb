@@ -535,7 +535,7 @@ The shortcut reapplies the lab's named views, graph, assistant tools, team, map 
 
 1. Close any running workshop queries and the Recall Command Center. Open **SQL Developer Web** for your workshop database and sign in as **ADMIN**.
 
-2. Run the following block with **Run Script**. `DBMS_CLOUD.GET_OBJECT` downloads [shortcut.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/shortcut.sql) from Object Storage, and `DBMS_CLOUD_REPO.INSTALL_SQL` executes its contents. The version check prevents an older, incompatible shortcut from running.
+2. Run the following block with **Run Script**. `DBMS_CLOUD.GET_OBJECT` downloads [shortcut.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/shortcut.sql) from Object Storage, and `DBMS_CLOUD_REPO.INSTALL_SQL` executes its contents. The version check prevents an older, incompatible shortcut from running.
 
     ```sql
     <copy>
@@ -544,7 +544,7 @@ The shortcut reapplies the lab's named views, graph, assistant tools, team, map 
     begin
         l_script := to_clob(dbms_cloud.get_object(
             credential_name => null,
-            object_uri => 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/shortcut.sql'
+            object_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/shortcut.sql'
         ));
 
         if dbms_lob.substr(l_script, 58, 1) !=

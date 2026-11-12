@@ -6,7 +6,7 @@ Kevin now sees the application he asked for: one place for the returns team to r
 
 David combines the earlier database components without weakening their limits. The signed-in database user drives Deep Data Security filtering. The application receives product JSON, similar complaints, location impact, and graph results already limited to that user. An owner-side bridge calls the assistant only after the authorized document is built.
 
-This lab installs mostly the application integration logic, connecting the React app to that foundation through approved packages and bridges; it also adds an governed campaign workflow. To keep this lab focused on configuring and using the app, it runs the prepared SQL instead of explaining every implementation statement. [Download and inspect `prepare-react-app.sql`](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql) if you want the details; reading the script is optional.
+This lab installs mostly the application integration logic, connecting the React app to that foundation through approved packages and bridges; it also adds an governed campaign workflow. To keep this lab focused on configuring and using the app, it runs the prepared SQL instead of explaining every implementation statement. [Download and inspect `prepare-react-app.sql`](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql) if you want the details; reading the script is optional.
 
 Tim then configures the application and explores how the three roles use it. The application requests product details, authorized stores, graph paths, similar complaints, and assistant answers through approved packages. Its campaign workspace also lets a recall lead authorize contact, draft a reusable notice, and prepare auditable refund intents. Kevin gets one returns workflow rather than eight disconnected demonstrations.
 
@@ -41,7 +41,7 @@ Kevin needs the application to call approved packages, not internal tables. Davi
     begin
         l_script := to_clob(dbms_cloud.get_object(
             credential_name => null,
-            object_uri => 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql'
+            object_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/05-prepare-react-app.sql'
         ));
         dbms_cloud_repo.install_sql(
             content      => l_script,
@@ -62,7 +62,7 @@ Kevin needs the application to call approved packages, not internal tables. Davi
   
   ```bash
   <copy>
-  wget -O react-app-package.zip 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip'
+  wget -O react-app-package.zip 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip'
   unzip react-app-package.zip
   </copy>
   ```
@@ -71,7 +71,7 @@ Kevin needs the application to call approved packages, not internal tables. Davi
   
   ```powershell
   <copy>
-  Invoke-WebRequest -Uri 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip' -OutFile react-app-package.zip
+  Invoke-WebRequest -Uri 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/react-app-package.zip' -OutFile react-app-package.zip
   Expand-Archive react-app-package.zip -DestinationPath .
   </copy>
   ```

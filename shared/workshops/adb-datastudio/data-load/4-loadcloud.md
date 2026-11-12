@@ -104,7 +104,7 @@ Where you want to download and load data from a file from a cloud location that 
 2. This time, rather than using any of the saved cloud storage locations, we are going to paste the following URI into the **Select Cloud Store Location or enter public URL** bar. To do this, select the default contents of the bar and delete them to clear the bar. Then copy and paste the below URI:
 
  ```
-    $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/datastudio/o/</copy>
+    $ <copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/</copy>
  ```
 
   ![Load from Cloud Location directly from URI](images/load-from-uri.png)

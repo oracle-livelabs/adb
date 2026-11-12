@@ -44,7 +44,7 @@ CREATE TABLE time_dim (
 BEGIN
   DBMS_CLOUD.COPY_DATA (
   table_name => 'TIME_DIM',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=TIME_DIM/*.csv',
+    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=TIME_DIM/*.csv',
   format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
   );
 END;
@@ -69,7 +69,7 @@ CREATE TABLE customer_dim (
 BEGIN
   DBMS_CLOUD.COPY_DATA (
   table_name => 'CUSTOMER_DIM',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=CUSTOMER_DIM/*.csv',
+    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=CUSTOMER_DIM/*.csv',
   format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
   );
 END;
@@ -88,7 +88,7 @@ CREATE TABLE search_genre_dim (
 BEGIN
   DBMS_CLOUD.COPY_DATA (
   table_name => 'SEARCH_GENRE_DIM',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=SEARCH_GENRE_DIM/*.csv',
+    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=SEARCH_GENRE_DIM/*.csv',
   format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
   );
 END;
@@ -111,7 +111,7 @@ CREATE TABLE movie_sales_fact (
 BEGIN
   DBMS_CLOUD.COPY_DATA (
   table_name => 'MOVIE_SALES_FACT',
-    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/zL6bsboZrSxJP-0ilfUpROTwwyhzvkUrZu9OEwcU5_B_NAGzHKBG_WqW2OnNYxKk/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=MOVIE_SALES_FACT/*.csv',
+    file_uri_list => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/av-getting-started-data-studio-11349/table=MOVIE_SALES_FACT/*.csv',
   format => '{"delimiter":",","recorddelimiter":"newline","skipheaders":"1","quote":"\\\"","rejectlimit":"1000","trimspaces":"rtrim","ignoreblanklines":"false","ignoremissingcolumns":"true","dateformat":"DD-MON-YYYY HH24:MI:SS"}'
   );
 END;
