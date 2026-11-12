@@ -2,9 +2,11 @@
 
 ## Introduction
 
-Mia first asks which products lead sales overall in the latest available month. She then narrows the question to the West region. You will generate SQL for both questions in Data Studio and check which native table in the PG Gold schema answers each one. Because the questions have different scopes, their rankings may differ.
+**Mia** wants two answers: which products led sales overall in the latest available month, and which led in the West.
 
-Estimated Time: 8 minutes.
+You will use SQL Worksheet's AI to generate both queries, check their sources and latest-month logic, then compare the West result with reference SQL. The questions cover different scopes, so their rankings can differ.
+
+**Estimated Time:** 8 minutes.
 
 ### Objectives
 
@@ -14,15 +16,29 @@ Estimated Time: 8 minutes.
 
 ### Prerequisites
 
-Complete Lab 4. Both `PG."ailh_enriched_sales"` and the West-only `PG."ailh_gold_west_product_performance"` must be queryable. The event's SQL-generation configuration is pre-provisioned.
+* Complete **Lab 4**. 
+  * Both `PG."ailh_enriched_sales"` and the West-only `PG."ailh_gold_west_product_performance"` must be queryable.
+  * The event's SQL-generation configuration is pre-provisioned.
 
 ## Task 1: Open the worksheet AI prompt
 
-1. Open **SQL Worksheet**. Create a worksheet, or rename a blank one, to **Lab 5 - West product sales**.
+1. Open **SQL Worksheet**. Rename a blank worksheet, or create one named **Lab 5 - West product sales**.
 
-2. In the worksheet's **Data Explorer** pane, choose **Source** → **Database**, then expand **your connected database** → **PG** → **Tables**. Locate `ailh_enriched_sales` and `ailh_gold_west_product_performance`. Both are native PG tables, distinct from the mounted Silver Iceberg table.
+2. In **Data Explorer**, choose **Source** → **Database** and expand **your connected database** → **PG** → **Tables**.
+  <details>
+    <summary><strong>Expand to see the tables to query</strong></summary>
 
-3. Click the sparkle **Generate SQL with AI** control in the worksheet toolbar. Enter your question in the prompt bar that opens above the SQL editor—not in the SQL editor itself—then click **Generate SQL**.
+      > - Locate `ailh_enriched_sales` and `ailh_gold_west_product_performance`.
+      > - Both are native `PG` tables, separate from the mounted Silver Iceberg table.
+  </details>
+
+3. Open the AI prompt and submit the question from there.
+  <details>
+    <summary><strong>Expand to submit a question</strong></summary>
+
+      > - Click **Generate SQL with AI** in the worksheet toolbar.
+      > - Enter the question in the prompt bar above the SQL editor, not in the editor, then click **Generate SQL**.
+  </details>
 
     ![SQL Worksheet toolbar and separate Generate SQL with AI prompt bar](../assets/images/lab5-worksheet-ai-prompt.png)
 
@@ -36,7 +52,14 @@ Complete Lab 4. Both `PG."ailh_enriched_sales"` and the West-only `PG."ailh_gold
     </copy>
     ```
 
-2. Before running it, inspect **every** `FROM` clause, including any latest-month subquery. Confirm that the general sales question uses `"PG"."ailh_enriched_sales"`. The query must use `MAX(SALE_MONTH)`, sum `TOTAL_SALE_AMOUNT` by `PRODUCT_NAME`, sort descending, and return ten rows. Repair the generated SQL if its source or calculation is wrong, then run it.
+2. Review the generated SQL before running it.
+  <details>
+    <summary><strong>Expand to review the generated SQL</strong></summary>
+
+      > - Check every `FROM` clause, including any latest-month subquery. The general-sales query currently targets `PG."ailh_enriched_sales"`.
+      > - Confirm it uses `MAX(SALE_MONTH)`, sums `TOTAL_SALE_AMOUNT` by `PRODUCT_NAME`, sorts from highest to lowest, and returns ten rows.
+      > - Repair an incorrect source or calculation, then run the query.
+  </details>
 
 3. Use **Generate SQL with AI** again for the second question:
 
@@ -46,13 +69,20 @@ Complete Lab 4. Both `PG."ailh_enriched_sales"` and the West-only `PG."ailh_gold
     </copy>
     ```
 
-4. Apply the same source and calculation checks before running it. Confirm that the West question uses `"PG"."ailh_gold_west_product_performance"` in both the main query and any latest-month subquery. Repair the SQL if needed, then run it. This table already contains only West-region rows, so an additional West filter is optional.
+4. Review the second query before running it.
+  <details>
+    <summary><strong>Expand to review the West query</strong></summary>
+
+      > - Check every `FROM` clause, including any latest-month subquery, for `PG."ailh_gold_west_product_performance"`.
+      > - Confirm the same latest-month, sum, sort, and ten-row requirements as for the first query.
+      > - Repair the SQL if needed, then run it. The table already contains only West-region rows, so an additional West filter is optional.
+  </details>
 
     ![Reviewed SQL reading native Gold in both the main query and latest-month subquery, with top-ten results](../assets/images/lab5-gold-sql-result.png)
 
 ## Task 3: Validate the answer
 
-1. In a separate worksheet, run the reference calculation for the West-region answer:
+1. In a separate worksheet, run this reference calculation for the West-region answer so you can compare it with the AI-generated result.
 
     ```sql
     <copy>
@@ -70,9 +100,21 @@ Complete Lab 4. Both `PG."ailh_enriched_sales"` and the West-only `PG."ailh_gold
     </copy>
     ```
 
-2. Compare the leading product and sales amount with the West-region AI result. Do not compare the overall result with this West-only reference. If the worksheet offers a visualization action, use it to chart the top products. Save your worksheets.
+2. Compare the leading product and sales amount with the West-region AI result. Do not compare the overall-sales result with this West-only reference.
+  <details>
+    <summary><strong>Expand for result follow-up</strong></summary>
 
-3. Explain the two answers separately: the first ranks products across the data in `PG."ailh_enriched_sales"`; the second ranks products for the West region only. Catalog descriptions and tags provide useful context, but check the generated SQL to confirm each answer's scope.
+      > - If the worksheet offers a visualization action, use it to chart the top products.
+      > - Save your worksheets.
+  </details>
+
+3. Explain why the two answers may differ.
+  <details>
+    <summary><strong>Expand to compare query scopes</strong></summary>
+
+      > - The first query ranks products across `PG."ailh_enriched_sales"`; the second covers the West region only.
+      > - Catalog descriptions and tags add context. The generated SQL determines each query's scope.
+  </details>
 
     **Checkpoint:** both natural-language prompts lead to reviewed, executable SQL against native PG tables. The West-region result agrees with the reference calculation. Running the reference query alone does not complete the AI exercise.
 
@@ -85,5 +127,6 @@ You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-* **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Authors** - Ashish Jain, Sofia Arceo
+* **Contributors** - Teodor C. Nechita
+* **Last Updated By/Date** - Teodor C. Nechita, November 2026

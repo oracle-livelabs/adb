@@ -2,9 +2,15 @@
 
 ## Introduction
 
-Raw PeakGear retail data became a West-region sales answer. Each medallion tier served a different purpose. Oracle Autonomous AI Lakehouse and Data Studio connected the work.
+The **PeakGear** team took retail source data from Bronze to reusable Silver and a focused Gold product:
 
-Estimated Time: 4 minutes.
+1. Alex prepared the pipeline.
+2. Sam compared recent sales with Bronze inventory.
+3. Mia reviewed the SQL behind two sales answers.
+
+This final lab brings their work together and separates what the workshop demonstrated from possible architectural extensions.
+
+**Estimated Time:** 4 minutes.
 
 ### Objectives
 
@@ -14,11 +20,11 @@ Estimated Time: 4 minutes.
 
 ## PeakGear use case summary
 
-Alex, the data engineer, started with PeakGear sales, product, store, and inventory data. Bronze kept source-faithful Apache Iceberg tables in OCI Object Storage. Data Transforms then joined sales with product and store data. It changed product names to Title case and derived sales, cost, and margin measures. Alex published the curated Silver result as another Iceberg table.
+**Alex, the data engineer**, started with PeakGear sales, product, store, and inventory data. Bronze kept source-faithful Apache Iceberg tables in OCI Object Storage. Data Transforms joined sales with product and store data, changed product names to Title case, and derived sales, cost, and margin measures. Alex then published the curated Silver result as another Iceberg table.
 
-Sam, the data analyst, found Bronze inventory through the catalog and queried it alongside Silver sales. He looked for store and product pairs with recent sales above available-to-promise inventory. A positive gap flags a candidate for replenishment review. It reflects past sales, not a forecast or automatic reorder decision.
+**Sam, the data analyst**, found Bronze inventory through the catalog and queried it alongside Silver sales. He looked for store and product pairs where recent sales exceeded available-to-promise inventory. A positive gap flags a candidate for replenishment review. It reflects past sales, not a forecast or an automatic reorder decision.
 
-Alex published West-region product performance to a native Oracle Gold table in `PG`. Catalog AI Enrichment added a West-only description and tag. Mia, the business user, asked for the top ten products by sales amount in the latest available month. She checked that the generated SQL read Gold, then compared its answer with a reference query.
+**Alex** published West-region product performance to a native Oracle Gold table in `PG`. Catalog AI Enrichment added a West-only description and tag. Mia, the business user, asked for the top ten products by sales amount in the latest available month. She reviewed the generated SQL and compared the West answer with a reference query.
 
 ## What you learned
 
@@ -27,9 +33,10 @@ Alex published West-region product performance to a native Oracle Gold table in 
 * **Discovery supports analysis.** Sam used the catalog and SQL Worksheet to query across tiers without another data copy.
 * **AI answers need verification.** Gold metadata explained its West-only scope. Mia checked generated SQL before trusting the result.
 
-This lab ran entirely on OCI with Oracle SQL. A second cloud, Spark workload, or autonomous agent could extend the architecture. The PeakGear use case needed none of them.
+**Note:** This lab ran entirely on OCI with Oracle SQL. A second cloud, Spark workload, or autonomous agent could extend the architecture. The PeakGear use case needed none of them.
 
 ## Acknowledgements
 
-* **Author** - Oracle AI Lakehouse workshop team.
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026.
+* **Authors** - Ashish Jain, Sofia Arceo
+* **Contributors** - Teodor C. Nechita
+* **Last Updated By/Date** - Teodor C. Nechita, November 2026
