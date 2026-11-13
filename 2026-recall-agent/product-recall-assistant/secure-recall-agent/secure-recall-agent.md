@@ -14,10 +14,10 @@ Estimated Time: 25 minutes
 
 ### Objectives
 
-- Define store, regional, and company-wide access with data roles.
-- Apply those rules to related customers, shipments, complaints, and vectors.
-- Run identical queries as three users and compare the results.
-- Give the assistant each user's permitted evidence and check its answer.
+* Define store, regional, and company-wide access with data roles.
+* Apply those rules to related customers, shipments, complaints, and vectors.
+* Run identical queries as three users and compare the results.
+* Give the assistant each user's permitted evidence and check its answer.
 
 ### Access and Prerequisites
 
@@ -457,18 +457,19 @@ RECALL\_AGENT\_BRIDGE and RECALL\_SECURED\_TEAM already exist. The team has no r
 
 6. Run Step 5 twice more, changing only STORE\_101\_USER to REGION\_NE\_USER, then RECALL\_LEAD\_USER. Compare the answers with these database checkpoints, not an exact sentence.
 
-    | End user           | Stores | Units  | Customers | Semantic complaint IDs       |
-    | --------------------| -------:| -------:| ----------:| ------------------------------|
-    | STORE\_101\_USER   | 1      | 12     | 5         | 9001                         |
-    | REGION\_NE\_USER   | 24     | 453    | 120       | 9001, 9002, 9006             |
-    | RECALL\_LEAD\_USER | 120    | 2,400 | 600       | 9001, 9002, 9006, 9003, 9007 |
-    {: title="Expected results"}
-    
-    
+    | End user             | Stores   | Units    | Customers   | Semantic complaint IDs         |
+    | -------------------- | -------: | -------: | ----------: | ------------------------------ |
+    | STORE\_101\_USER     | 1        | 12       | 5           | 9001                           |
+    | REGION\_NE\_USER     | 24       | 453      | 120         | 9001, 9002, 9006               |
+    | RECALL\_LEAD\_USER   | 120      | 2,400    | 600         | 9001, 9002, 9006, 9003, 9007   |
+
+    *Expected results*
+
+
     All roles share 25 component batches and 25 supplier sites. The first response remains quarantine and stop sales; customer contact is not yet authorized. Complaint ranking is semantic similarity, not severity or operational urgency. Compare the authorized complaint IDs and evidence, but do not grade the exact ordering as a priority list. Reject answers that invent facts or expand beyond the supplied evidence. Access filtering does not eliminate model errors.
-    
+
     The following image is a prior scripted transcript combining three answers. Its PL/SQL completion message does not represent the `SELECT` in Step 5. For the current steps, verify the `AGENT_ANSWER` CLOB returned separately for each user; use the image only as a reference for answer content.
-    
+
     ![Prior scripted SQLcl transcript illustrating three authorized assistant answers, not the current SELECT CLOB result interface](images/lab7-agent-answers.png)
 
 ## Conclusion
@@ -483,7 +484,7 @@ Lab 8 uses these packages and data roles in the Recall Command Center.
 
 SQLcl can connect directly to Autonomous Database. This is useful for the optional Tasks 3–4, where you connect as each end user. Note: The provided ADB does not require a wallet to simplify the connection steps in this lab. [Downloading and installing SQLcl](https://docs.oracle.com/en/database/oracle/apex/24.2/aeadm/downloading-and-installing-sqlcl.html).
 
-The SQL Developer Web URL opens a browser-based worksheet; it is not itself a SQLcl connection string. 
+The SQL Developer Web URL opens a browser-based worksheet; it is not itself a SQLcl connection string.
 From the View Login Info scree you can find retrieve the SQL Dev Web URL, for example:
 `https://DOG47XJFCZR2H91-ATP242077.adb.us-ashburn-1.oraclecloudapps.com/ords/sql-developer`
 
@@ -500,6 +501,7 @@ For this database, the full descriptor is:
 (description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.REGION.oraclecloud.com))(connect_data=(service_name=DATABASE_ID_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
 </copy>
 ```
+
 Replace REGION and DATABASE_ID in the above template with your values.
 In our example, the resulting descriptor would look like this:
 
@@ -535,7 +537,7 @@ The shortcut reapplies the lab's named views, graph, assistant tools, team, map 
 
 1. Close any running workshop queries and the Recall Command Center. Open **SQL Developer Web** for your workshop database and sign in as **ADMIN**.
 
-2. Run the following block with **Run Script**. `DBMS_CLOUD.GET_OBJECT` downloads [shortcut.sql](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/shortcut.sql) from Object Storage, and `DBMS_CLOUD_REPO.INSTALL_SQL` executes its contents. The version check prevents an older, incompatible shortcut from running.
+2. Run the following block with **Run Script**. `DBMS_CLOUD.GET_OBJECT` downloads [shortcut.sql](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/shortcut.sql) from Object Storage, and `DBMS_CLOUD_REPO.INSTALL_SQL` executes its contents. The version check prevents an older, incompatible shortcut from running.
 
     ```sql
     <copy>
@@ -544,7 +546,7 @@ The shortcut reapplies the lab's named views, graph, assistant tools, team, map 
     begin
         l_script := to_clob(dbms_cloud.get_object(
             credential_name => null,
-            object_uri => 'https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/database/shortcut.sql'
+            object_uri => 'https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/database/shortcut.sql'
         ));
 
         if dbms_lob.substr(l_script, 58, 1) !=
@@ -572,9 +574,9 @@ The shortcut reapplies the lab's named views, graph, assistant tools, team, map 
     </copy>
     ```
 
-    - **SUBMITTED** or **RUNNING**: the work has not finished. Check again later.
-    - **SUCCEEDED**: the lab changes and included database checks completed. Continue to Lab 8 with your existing account passwords.
-    - **FAILED**: read **PHASE** and **DETAIL**, correct the reported issue, and then rerun the installation block. Changes completed before an error may already be committed.
+    * **SUBMITTED** or **RUNNING**: the work has not finished. Check again later.
+    * **SUCCEEDED**: the lab changes and included database checks completed. Continue to Lab 8 with your existing account passwords.
+    * **FAILED**: read **PHASE** and **DETAIL**, correct the reported issue, and then rerun the installation block. Changes completed before an error may already be committed.
 
     If the installation block reports an error before submission, correct that error first. A status row from a previous run does not confirm that a new submission succeeded.
 
@@ -582,13 +584,13 @@ The shortcut reapplies the lab's named views, graph, assistant tools, team, map 
 
 ## Learn More
 
-- [Securing Vector Search with Deep Data Security in Oracle AI Database](https://medium.com/@thomas.minne/securing-vector-search-with-deep-data-security-in-oracle-ai-database-c2fe0c4dd736)
-- [Configure direct logon with local end users](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/configure-oracle-deep-data-security-direct-logon-local-end-users.html)
-- [Create Deep Data Security data grants](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/create-data-grants.html)
-- [End-user security context](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/end-user-security-context.html)
+* [Securing Vector Search with Deep Data Security in Oracle AI Database](https://medium.com/@thomas.minne/securing-vector-search-with-deep-data-security-in-oracle-ai-database-c2fe0c4dd736)
+* [Configure direct logon with local end users](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/configure-oracle-deep-data-security-direct-logon-local-end-users.html)
+* [Create Deep Data Security data grants](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/create-data-grants.html)
+* [End-user security context](https://docs.oracle.com/en/database/oracle/oracle-database/26/ddscg/end-user-security-context.html)
 
 ## Acknowledgements
 
-- **Author:** Tim Cline, Product Management Architect
-- Contributors: David Start, Director and Kevin Lazarz, Senior Manager
-- **Last updated:** October 2026
+* **Author:** Tim Cline, Product Management Architect
+* Contributors: David Start, Director and Kevin Lazarz, Senior Manager
+* **Last updated:** October 2026

@@ -26,10 +26,11 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 ## Task 1: Upload JSON tweets into Object Storage
 
 
-1. Before start the exercise you need to download the data that we will use. **Click** on the following [LINK](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/JSON_Full_tweets.jsonn "open the json file") to see the JSON dataset and **Save it** using **Control S** or different method to save files. We recommend you to call the file **JSON\_Full\_tweets.json**.
+1. Before start the exercise you need to download the data that we will use. **Click** on the following [JSON dataset](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/JSON_Full_tweets.jsonn "open the json file") to see the JSON dataset and **Save it** using **Control S** or different method to save files. We recommend you to call the file **JSON\_Full\_tweets.json**.
 
-    
-    - **File name:** JSON\_Full\_tweets.json
+
+    * **File name:** JSON\_Full\_tweets.json
+
         ```
         <copy>JSON_Full_tweets.json</copy>
         ```
@@ -44,7 +45,8 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 4. Set the name for the bucket. We are going to call it **json_data**. Then click the **create** button.
 
-    - **Bucket name:** json_data
+    * **Bucket name:** json_data
+
         ```
         <copy>json_data</copy>
         ```
@@ -66,7 +68,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 8. We should see the JSON file there on the Objects part of this bucket.
 
     ![Select Bucket](./images/file-uploaded.png)
-    
+
 
 ## Task 2: Create credential for Autonomous Database
 
@@ -88,11 +90,12 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 4. Provide a **token name**, for instance, **token\_modern\_data\_warehouse**, and click **Generate token**.
 
-    - **Description:** token\_modern\_data\_warehouse
+    * **Description:** token\_modern\_data\_warehouse
+
         ```
         <copy>token_modern_data_warehouse</copy>
         ```
-    
+
     ![Show token name](./images/show-token-name.png)
 
 5. It will show a popup like this. **This token will be shown only once**. Click **Show** to show the token.
@@ -116,7 +119,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
     ![View Details](./images/get-json-details.png)
 
 10. You will find the url with the JSON file location. **Save this url** as we are going to need it for loading it later on. Then click **Cancel** to exit.
- 
+
     ![Save URL](./images/get-url-json.png)
 
 11. As we have the credential created and we know the url where we store our JSON data, now we can proceed to authorize Autonomous with this credential. Let's go to our Autonomous Data Warehouse.
@@ -141,25 +144,27 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 16. Connect with the **CNVG** user we created before.
 
-    - **User Name:** CNVG
+    * **User Name:** CNVG
+
         ```
         <copy>CNVG</copy>
         ```
 
-    - **Password:** Password123##
+    * **Password:** Password123##
+
         ```
         <copy>Password123##</copy>
         ```
 
     ![Use cnvg](./images/actions-cnvg.png)
 
-17. Select the **SQL** to access to the **SQL Web** from the **Development** section. 
+17. Select the **SQL** to access to the **SQL Web** from the **Development** section.
 
     ![Select sql](./images/select-sql.png)
 
 18. Run the following **SQL** for creating the credential, replacing username and password for the information that we already copied before.
-    - **username**, it is your **Oracle Cloud user name** that we copied on step number 1 of this task. It should be your your email address.
-    - **password**, it is the **Auth token** that we copied on step number 6 of this task.
+    * **username**, it is your **Oracle Cloud user name** that we copied on step number 1 of this task. It should be your your email address.
+    * **password**, it is the **Auth token** that we copied on step number 6 of this task.
 
     ```
         <copy> 
@@ -190,7 +195,8 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 3. Name our new collection as **sample_tweets** and click **create**.
 
-    - **Collection Name:** sample_tweets
+    * **Collection Name:** sample_tweets
+
         ```
         <copy>sample_tweets</copy>
         ```
@@ -202,7 +208,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
     ![Create Document](./images/create-document.png)
 
 5. Copy and paste the following tweet. Then click on the **Create** button.
-    
+
     ```
         <copy>
         {
@@ -267,7 +273,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 ## Task 4: Run queries over JSON
 
 1. With all the tweets loaded, let's run some SQL queries over our JSON. In our first query, let's see how many tweets do we have. We must see 20 rows.
-    
+
     ```
         <copy> 
             select count(*) from sample_tweets;
@@ -278,7 +284,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 
 2. Now let's visualize the content of the JSON tweets. For that we are going to use the **json\_serialize**.
 
-    ```    
+    ```
         <copy> 
             select json_serialize(json_document) from sample_tweets;
         </copy>
@@ -336,6 +342,7 @@ This lab assumes you have created the Autonomous Data Warehouse database in the 
 You can **proceed to the next lab.**
 
 ## Acknowledgements
+
 * **Author** - Javier de la Torre, Principal Data Management Specialist
 * **Contributors** - Priscila Iruela, Technology Product Strategy Director
 * **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist

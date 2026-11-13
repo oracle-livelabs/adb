@@ -1,6 +1,12 @@
 # Tables in LiveLabs
 
-## Tables are cool!
+## Objectives
+
+* Define a Markdown table and customize its caption.
+
+Estimated Time: Varies by environment and experience.
+
+## Tables are cool
 
 You can define a table in Markdown just like so:
 
@@ -11,13 +17,14 @@ You can define a table in Markdown just like so:
 | col 2 is      |  *centered*   |   $12 |
 | zebra stripes | ~~are neat~~  |    $1 |
 ```
+
 The result looks like this:
 
-| Tables        |      Are      |  Cool |
+| Tables        | Are           | Cool  |
 | ------------- | :-----------: | ----: |
 | **col 3 is**  | right-aligned | $1600 |
-| col 2 is      |  *centered*   |   $12 |
-| zebra stripes | ~~are neat~~  |    $1 |
+| col 2 is      | *centered*    | $12   |
+| zebra stripes | ~~are neat~~  | $1    |
 
 You can see that there is a default table caption provided which is by default a concatenation of the workshop title and the lab title.
 
@@ -40,15 +47,20 @@ The complete markdown looks like this:
 
 Now our table looks like this:
 
-| Tables        |      Are      |  Cool |
+| Tables        | Are           | Cool  |
 | ------------- | :-----------: | ----: |
 | **col 3 is**  | right-aligned | $1600 |
-| col 2 is      |  *centered*   |   $12 |
-| zebra stripes | ~~are neat~~  |    $1 |
-{: title="My table title"}
+| col 2 is      | *centered*    | $12   |
+| zebra stripes | ~~are neat~~  | $1    |
+
+*My table title*
 
 As you can see, the numbering is added automatically.
 
 Isn't that cool?
 
-You can also refer to the [LiveLabs Markdown Cheatsheet](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/LiveLabs_MD_Cheat_Sheet.pdf)
+You can also refer to the [LiveLabs Markdown Cheatsheet](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/LiveLabs_MD_Cheat_Sheet.pdf)
+
+## Acknowledgements
+
+See the [sample workshop acknowledgement fields](../introduction/introduction.md#acknowledgements).

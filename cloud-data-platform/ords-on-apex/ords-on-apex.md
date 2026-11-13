@@ -11,64 +11,67 @@ Estimated Lab Time: 30 minutes
 
 
 ### Objectives
--   Learn how to enable Oracle Restful Data Services (ORDS) with APEX
--   Learn how to import SQL queries as APIs in APEX
--   Learn how to create a REST API using APEX
+
+* Learn how to enable Oracle Restful Data Services (ORDS) with APEX
+* Learn how to import SQL queries as APIs in APEX
+* Learn how to create a REST API using APEX
 
 ### Prerequisites
--   The following lab requires an Oracle Public Cloud account. You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
+
+* The following lab requires an Oracle Public Cloud account. You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
 
 ### Extra Resources
--   To learn more about Oracle REST Data Services (ORDS), feel free to explore the capabilities by clicking on this link: [ORDS Documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/19.4/index.html)
+
+* To learn more about Oracle REST Data Services (ORDS), feel free to explore the capabilities by clicking on this link: [ORDS Documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/19.4/index.html)
 
 
 ## Task 1: Access Your APEX App
 
 1. Navigate to and click on **Oracle APEX** from the development page of your ADW instance service console.
 
-    ![](./images/3.png " ")
+    ![Oracle APEX in Development tools](./images/3.png " ")
 
 2. Sign in as **developer** to the **developer** workspace with the appropriate browser.
 
-    ![](./images/4.png " ")
+    ![Developer workspace sign in](./images/4.png " ")
 
 ## Task 1: Enable Oracle Restful Data Services (ORDS)
 
 1. Click on **SQL Workshop** and then on **RESTful Services**.
 
-    ![](./images/5.png " ")
+    ![RESTful Services in SQL Workshop](./images/5.png " ")
 
 2. Then, click on **Register Schema with ORDS**.
 
-    ![](./images/6.png " ")
+    ![Register Schema with ORDS](./images/6.png " ")
 
 3. A Schema attributes window will pop up. Click **Save Schema Attributes** to continue.
 
-    ![](./images/7.png " ")
+    ![Save Schema Attributes](./images/7.png " ")
 
 ## Task 1: Import APIs
 
 1. Click on **Import**.
 
-    ![](./images/8.png " ")
+    ![Import RESTful Services](./images/8.png " ")
 
-2. You will download a data file from this workshop for your APIs. You can download it by clicking on the following text link: [Download ORDS-REST-DEMO.sql here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/solutions-library/ORDS-REST-DEMO.sql). Then, return back to your browser window.
+2. You will download a data file from this workshop for your APIs. You can download it by clicking on the following text link: [Download ORDS-REST-DEMO.sql here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/solutions-library/ORDS-REST-DEMO.sql). Then, return back to your browser window.
 
 3. Click on **Choose File** and select **ORDS-REST-DEMO.sql**, the file you just downloaded for this workshop.
 
-    ![](./images/25.png " ")
+    ![Choose ORDS REST demo file](./images/25.png " ")
 
 4. Finish by clicking on **Import**.
 
-    ![](./images/9new.png " ")
+    ![Import confirmation](./images/9new.png " ")
 
->    *Note: If you encounter the error **"Unable to Import. Insufficient Privileges"** when importing your .sql file, this means that there is a problem with your schema defined in the .sql file.  To solve this issue, you can go into the .sql file and alter the schema names to reflect whatever you named your workspace/username as in Lab 100.  In your .sql file, simply change 'DEVELOPER' to your workspace/username in the lines denoted by the arrows below. Once you have executed this change, save the file, and try again to import.*
+    > *Note: If you encounter the error **"Unable to Import. Insufficient Privileges"** when importing your .sql file, this means that there is a problem with your schema defined in the .sql file.  To solve this issue, you can go into the .sql file and alter the schema names to reflect whatever you named your workspace/username as in Lab 100.  In your .sql file, simply change 'DEVELOPER' to your workspace/username in the lines denoted by the arrows below. Once you have executed this change, save the file, and try again to import.*
 
->   ![](./images/9b.png " ")
+    > ![Schema names to update for import](./images/9b.png " ")
 
 5. The APIs have now been imported. You can view them by clicking the arrow button to expand **Modules** and then **warehouseAPI**. The APIs interface with the data that is on the Autonomous Data Warehouse that you have provisioned and APEX serves as the front end.
 
-    ![](./images/10new.png " ")
+    ![Imported warehouseAPI modules](./images/10new.png " ")
 
 
 ## Task 1: Create APIs
@@ -77,17 +80,17 @@ Estimated Lab Time: 30 minutes
 
 2. Then click on **Create Template** to construct your own custom API.
 
-    ![](./images/11new.png " ")
+    ![Create Template](./images/11new.png " ")
 
 3. We will construct a regions API that showcases all the store regions. Enter **regions** into the URI Template input field.
 
 4. Finish by clicking on **Create Template**.
 
-    ![](./images/12new.png " ")
+    ![Template creation confirmation](./images/12new.png " ")
 
 5. We will now need to create a resource handler in order for the API to run a script. Click **Create Handler** to get started.
 
-    ![](./images/13new.png " ")
+    ![Create Handler](./images/13new.png " ")
 
 6. The API will make a GET REST call to query the data from the ADW.
 
@@ -101,7 +104,7 @@ Estimated Lab Time: 30 minutes
 
 9. Finish by clicking on **Create Handler**.
 
-    ![](./images/14new.png " ")
+    ![Handler creation confirmation](./images/14new.png " ")
 
 ## Task 1: Check and Test APIS
 
@@ -109,45 +112,47 @@ Estimated Lab Time: 30 minutes
 
 2. Grab the **Full URL** of the regions API you just created and paste it into your browser and press the enter button.
 
-    ![](./images/15new.png " ")
+    ![Regions API Full URL](./images/15new.png " ")
 
 3. You will see all the different regions from the data in your ADW. You can now utilize this data however you want.
 
-    ![](./images/16.png " ")
+    ![Regions API browser response](./images/16.png " ")
 
 4. Navigate to the **stores** API and copy and paste the Full URL into your browser (or another tool such as Postman) to see the different stores.
 
-    ![](./images/17new.png " ")
+    ![Stores API Full URL](./images/17new.png " ")
 
 5. Here is what your browser should look like if you copy the Full URL of the API and paste the link into your browser.
 
-    ![](./images/18.png " ")
+    ![Stores API browser response](./images/18.png " ")
 
 ## Task 1: Copy API URLs
 
 1. Under **warehouseAPI**, click on the **stores** API and copy the **Full URL** and paste it into a separate notes file (i.e. Notepad, Microsoft Word, Apple Notes, etc.) to be used later.
 
-    ![](./images/17new.png " ")
+    ![Stores API URL for the application](./images/17new.png " ")
 
 2. Next, do the same with the following 2 APIs, copying each **Full URL** and pasting each into that same separate notes file.  Be sure to label which URL is which so that you do not confuse them later.
+
     ```
     <copy>
     product/inventoryForecastingAPI/{store_add}
     </copy>
     ```
+
     ```
     <copy>
     product/trendingProductAPI/{store_add}
     </copy>
     ```
 
-   ![](./images/17v2.png " ")
+    ![Trending Product API URL in JavaScript](./images/17v2.png " ")
 
-   ![](./images/17v3.png " ")
+    ![Trending Product API JavaScript continuation](./images/17v3.png " ")
 
 ## Task 1: Add API URLs to Web Page Code
 
-1. You will download a data file from this workshop for your web page. You can download it by clicking on the following text link: [Download WebPage.zip here](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/solutions-library/WebPage.zip).
+1. You will download a data file from this workshop for your web page. You can download it by clicking on the following text link: [Download WebPage.zip here](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/solutions-library/WebPage.zip).
 
 2. Then, go to your Downloads folder and unzip the .zip file.
 
@@ -159,7 +164,7 @@ Estimated Lab Time: 30 minutes
 
     **NOTE: When pasting the Inventory Forecasting API URL, erase everything after inventoryForecastingAPI/ . Make sure to keep the / character at the end**. Here is how your .js file should look:
 
-    ![](./images/21version2.png " ")
+    ![Inventory Forecasting API URL in JavaScript](./images/21version2.png " ")
 
 6. Once you have replaced the two URLs, you must resave the file. (Note: Make sure that you keep the .js file type when you save the file in your text editor. Also, be sure that when you are saving the updated file, you are replacing the original file in the **WebPage** folder.)
 
@@ -173,11 +178,11 @@ Estimated Lab Time: 30 minutes
 
 4. When the web page opens up, you can navigate to the **Select Store:** dropdown.  When you click on the dropdown, the list of stores is populated by the response data of your ‘stores’ REST API call using the URL you provided in the code from APEX.
 
-    ![](./images/22new.png " ")
+    ![Store selector in the web application](./images/22new.png " ")
 
 5. Once you select a store from the dropdown, you can click the **View Store Details** button to see the product details for the selected store.
 
-    ![](./images/23new.png " ")
+    ![Product details for the selected store](./images/23new.png " ")
 
 6. The store details table is populated with the response data from the ‘Inventory Forecast’ REST API call using the URL you provided in the code from APEX.
 
@@ -185,10 +190,10 @@ Estimated Lab Time: 30 minutes
 
 ## Summary
 
--   In this lab, you enabled Oracle Restful Data Services (ORDS) with APEX, imported SQL queries as APIs in APEX, and created a REST API using APEX.
+* In this lab, you enabled Oracle Restful Data Services (ORDS) with APEX, imported SQL queries as APIs in APEX, and created a REST API using APEX.
 
 ## Acknowledgements
 
-- **Author** - NATD Cloud Engineering - Austin Hub (Khader Mohiuddin, Jess Rein, Philip Pavlov, Naresh Sanodariya, Parshwa Shah)
-- **Contributor** - Jeffrey Malcolm, QA Specialist, Arabella Yao, Product Manager Intern, DB Product Management
-- **Last Updated By/Date** - Kamryn Vinson, June 2021
+* **Author** - NATD Cloud Engineering - Austin Hub (Khader Mohiuddin, Jess Rein, Philip Pavlov, Naresh Sanodariya, Parshwa Shah)
+* **Contributor** - Jeffrey Malcolm, QA Specialist, Arabella Yao, Product Manager Intern, DB Product Management
+* **Last Updated By/Date** - Kamryn Vinson, June 2021
