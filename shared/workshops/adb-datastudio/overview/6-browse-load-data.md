@@ -139,7 +139,7 @@ We are told that this data set is available in a file on OCI Cloud Object Storag
     
     Public Bucket: Check
     
-    Bucket URI: https://objectstorage.us-ashburn-1.oraclecloud.com/p/wkmu99jyphd7ggsgSgnpjA4wOj_ViUV7M-tTOjeUkzwsnVWC40xgXxIE-hbSUJhH/n/c4u04/b/datastudio/o/
+    Bucket URI: https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/datastudio/o/
 
     Click **Create**
 
