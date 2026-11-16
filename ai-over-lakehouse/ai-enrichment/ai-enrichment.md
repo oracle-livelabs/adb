@@ -28,18 +28,13 @@ Continue in the Codex task from Lab 3. Keep it open while you edit metadata in D
 1. Open Catalog in Data Studio, then open the PEAKGEAR\_USER schema and select **Tables**.
 
     - Confirm that the three local tables from Lab 2 appear.
-
-
     - The database shown in the screenshots is an example. Use your reservation's database.
-
 
     ![Data Studio Catalog lists the three PeakGear local raw tables under PEAKGEAR\_USER > Tables](images/local-table-catalog.png)
 
 2. Select LAB\_DIGITAL\_INTENT\_RAW\_T and open **Overview**.
 
     - On a fresh table, its description and tags are empty.
-
-
     - Overview also lists the table's columns.
 
 
@@ -50,16 +45,12 @@ Continue in the Codex task from Lab 3. Keep it open while you edit metadata in D
 4. Wait for generation to finish and check the annotations.
 
     - The table and **every column** should have a description and tags.
-
-
     - AI-generated text is a suggestion. An editable dialog alone does not confirm that generation succeeded.
 
 
 5. Confirm the dialog targets the selected table before saving.
 
     - Turn on **Show code** and check that **ALTER TABLE** names this table under PEAKGEAR\_USER.
-
-
     - If the target table or object type differs, cancel and ask the instructor.
 
 
@@ -116,27 +107,15 @@ In each dialog, table-level fields appear first, followed by descriptions and ta
 4. Edit only tags that are missing or misleading.
 
     - If you add several, paste a comma-separated list and check that they appear as separate tags. If the UI keeps them together, add each tag and press Enter.
-
-
     - PRODUCT\_ID repeats across events. Remove any tag or description that incorrectly calls it a unique row identifier.
-
-
     - Keep other useful tags; you do not need to replace them with the examples.
-
 
 5. Save the reviewed table before moving to the next one. Use this sequence for all three tables:
 
     - After editing a description, move to another field and confirm the full text remains visible.
-
-
     - Turn on **Show code**. Confirm the **ALTER TABLE** target and your reviewed business rules. Use the code to review; save through the dialog.
-
-
     - Click **Save once**. Saving may take more than a minute. If **Save**, **Cancel**, and **Close** are disabled, wait. Do not click Save again or refresh the page.
-
-
     - Wait for the dialog to close before opening another table. If it remains disabled without a completion message after a reasonable wait, ask the instructor to check before retrying.
-
 
     Annotations may appear gradually while Save is running. If Save reports a connection error, refresh Catalog and verify the table before retrying; only some metadata may have been saved. A changed table description alone does not confirm a complete save. After all three saves, verify them in Task 3.
 
@@ -174,14 +153,8 @@ After reviewing the table, follow Step 5 to save it. Save all three tables befor
 2. Check that the saved annotations preserve these meanings. Exact wording and tag names do not need to match the examples.
 
     - Digital interest counts product-linked events, not sales or unique customers. Report events without a product separately. Use the latest completed month available in the data, not an assumed current month.
-
-
     - Product names come from the product table through the shared product key. Products roll up to categories, and one product maps to one catalog row.
-
-
     - Returned units use SUM of RETURN\_QTY, not return-event counts or rates. Aggregate each source separately before combining measures.
-
-
     - The tables are local snapshots and do not refresh automatically.
 
 
@@ -218,8 +191,6 @@ After reviewing the table, follow Step 5 to save it. Save all three tables befor
 5. Review the optional query results.
 
     - A fixed row count or exact tag list is not a pass criterion.
-
-
     - If an essential rule is missing or inaccurate, reopen that table's enrichment dialog, correct it, save once, and verify the change before continuing to Task 4.
 
 
@@ -240,29 +211,15 @@ After reviewing the table, follow Step 5 to save it. Save all three tables befor
 2. If an older Starter Kit still refers to raw views or returns only IDs:
 
     - Download the current kit and rerun setup with this reservation's URL and Database Password.
-
-
     - Create a fresh Codex task and establish the Lab 3 boundary in it.
-
-
     - Do not create an Analytic View early just to display product names.
-
 
 3. If the ranking tool times out:
 
     - Codex may use LiveLab MCP SQL after reading the saved metadata and checking product-key uniqueness.
-
-
     - Derive the actual completed snapshot month, then run the ranking for that month with the same metric and product-label rules.
-
-
     - Report the count of events without PRODUCT\_ID separately. A timeout is not an empty ranking and does not require creating an Analytic View.
-
-
     - State the actual month returned by MCP. The local tables contain historical snapshots from Lab 2, so the result may not be from the month immediately before today. Do not describe historical data as current live demand.
-
-
-<!-- Re-capture the enriched-answer screenshot against the local raw tables. -->
 
 ### Checkpoint
 

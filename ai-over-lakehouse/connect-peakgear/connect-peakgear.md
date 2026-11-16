@@ -37,8 +37,6 @@ In this lab, you will:
 1. Open **Reservation Information** in LiveLabs and check **Reservation Time Remaining**.
 
     - Allow at least **75 minutes** to complete the workshop. Extend the reservation while it is active if you need more time.
-
-
     - An **EXPIRED** reservation cannot be restored by restarting MCP. Start a new reservation and use its new connection values.
 
     ![Example LiveLabs Reservation Information](images/reservation-time-remaining.png)
@@ -46,14 +44,8 @@ In this lab, you will:
 2. Sign in to OCI.
 
     - Expand **Login Credentials** and copy **Username** and **Password**.
-
-
     - On first sign-in, OCI may ask you to set a new password. If the **Reset your password** screen appears, complete the reset and use the new password for later OCI sign-ins.
-
-
     - Resetting the OCI password does not change the separate **Database Password** in Environment Details.
-
-
     - Use **Database Password** for Data Studio. **Launch OCI** opens the OCI Console.
 
     ![Example LiveLabs Reservation Information](images/oci-reset-password.png)
@@ -61,8 +53,6 @@ In this lab, you will:
 3. Record the tenancy details.
 
     - In **Tenancy Information**, note **Tenancy Name**, **Region**, and **Compartment**.
-
-
     - Use **Region** to find your database. Do not use **Generative AI Endpoint Region**.
 
     ![Example LiveLabs Reservation Information](images/tenancy-information.png)
@@ -70,14 +60,8 @@ In this lab, you will:
 4. Copy your database details from **Environment Details**.
 
     - Copy **Database Name**, **Database User**, and **Database Password** for the Data Studio connection.
-
-
     - Keep **AI Profile Name** and **Operations Database Link** handy for later labs.
-
-
     - Lab 2 uses DBX\_PEAKGEAR\_OAUTH and ADLS\_PEAKGEAR\_DATA, which provisioning already created. You do not need their passwords or OAuth values.
-
-
     - Leave Reservation Information open while you work.
 
     ![Example LiveLabs Reservation Information](images/environment-details-database-credentials.png)
@@ -94,7 +78,6 @@ The current workshop expects Database User **PEAKGEAR\_USER** and Operations Dat
     ![Example LiveLabs Reservation Information](images/data-studio-login.png)
 
     - Use the **OCI Login Credentials** and **Tenancy Name** from your reservation.
-
     - If Data Studio opens another tenancy, switch to the reserved one.
 
 
@@ -136,8 +119,6 @@ The current workshop expects Database User **PEAKGEAR\_USER** and Operations Dat
     ![Example LiveLabs Reservation Information](images/data-studio-sql-worksheet-result.png)
 
     - Both values must be PEAKGEAR\_USER.
-
-
     - Check that the database name in the header matches your reservation.
 
 
@@ -146,13 +127,8 @@ The current workshop expects Database User **PEAKGEAR\_USER** and Operations Dat
 
     ![Example LiveLabs Reservation Information](images/data-studio-ai-profiles.png)
 
-
     - The profile is already provisioned. If needed, open **Database Settings → AI Profiles** and check the **AI Profile Name** from your reservation. An example reservation uses PEAKGEAR\_LAB\_PROFILE.
-
-
     - Do not create or edit a profile or select **Create all user permissions**.
-
-
     - If the profile is missing or AI Enrichment is unavailable, ask the instructor to repair the reservation. **SETUP NEEDED** can refer to optional OCI workflows; it does not mean that you should repeat provisioning.
 
 

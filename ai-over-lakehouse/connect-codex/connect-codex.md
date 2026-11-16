@@ -49,46 +49,26 @@ In this lab, you will:
     ~~~
 
     - Copy the returned HTTPS value, **ADP\_URL**. You will paste it at the **Lab Data Studio URL** prompt in step 6 of your operating-system path.
-
-
     - This is the base URL for your assigned database. Run the query in Data Studio, not Terminal. You do not need to open the URL in a browser.
-
-
     - The reservation must permit this read-only lookup for PEAKGEAR\_USER.
-
-
     - If the query returns an access error or no URL, stop and contact the instructor. Do not grant privileges or switch to ADMIN.
-
 
 2. Download the Starter Kit. Click
     [**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip).
 
     - _**Important:** This kit does not contain the Codex installer. Codex must already be installed and set up on your PC._
-
-
     - Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`.
-
-
     - If the browser adds a suffix such as `(1)`, rename the file to the exact name above.
-
-
     - Keep the ZIP. You will unpack it on your laptop. It contains setup files for macOS and Windows.
-
 
     Continue with the path for your laptop's operating system. Both paths configure the same LiveLab Python server and database user.
 
 ### macOS: Terminal
 
 3. Open Terminal on your Mac.
-
     - In Finder, choose **Applications > Utilities > Terminal**; or
-
-
     - Open Spotlight with Command + Space, type **Terminal**, and press Return.
-
-
     - Keep this local window open.
-
 
 4. Unpack the ZIP and prepare the project folder. Copy and run this block in Terminal:
 
@@ -103,8 +83,6 @@ In this lab, you will:
     ~~~
 
     - The commands create a fresh extraction, leaving older downloads unchanged.
-
-
     - They leave Terminal in the extracted `starter-kit` folder.
 
 
@@ -117,22 +95,14 @@ In this lab, you will:
     ~~~
 
     - Wait for package installation to finish.
-
-
     - Do not run extra install commands. Installation is user-scoped.
 
 
 6. Answer the setup prompts in order.
 
     - **Lab Data Studio URL:** Paste the **ADP\_URL** from step 1. Do not use `localhost:8000`.
-
-
     - **Password for PEAKGEAR\_USER:** Paste **Database Password** from Reservation Information > Environment Details. Nothing appears while you type or paste; this is normal. Do not use the OCI, example, or Mac password.
-
-
     - **Finder folder picker:** Open Documents, select `peakgear-livelab`, and click **Choose**. This is the folder created in step 4.
-
-
     - **Success:** Confirm the displayed URL and PEAKGEAR\_USER, then press Return to close the window.
 
 
@@ -146,12 +116,9 @@ In this lab, you will:
 
     - Click **Trust** if Codex asks whether you trust this project.
 
-
 8. Create a new Codex task in the `peakgear-livelab` project.
 
     - Select the project opened in step 7, then create a task there.
-
-
     - LiveLab starts automatically for the new task. Continue with Task 2 in that task; do not reuse an older task or one from another project.
 
 
@@ -160,8 +127,6 @@ In this lab, you will:
 3. Open Windows PowerShell on your laptop.
 
     - Open the Windows **Start** menu, type **Windows PowerShell**, and open it normally, not **Run as administrator**.
-
-
     - Windows Terminal also works if the selected tab is PowerShell, not Command Prompt. Keep the local window open. WSL is not needed.
 
 
@@ -177,8 +142,6 @@ In this lab, you will:
     ~~~
 
     - This creates a fresh extraction without changing previous downloads.
-
-
     - If Downloads is redirected, open the folder containing the ZIP in File Explorer, choose **Open in Terminal** with a PowerShell tab, then run the last three commands in the block.
 
 
@@ -191,33 +154,21 @@ In this lab, you will:
     ~~~
 
     - Wait for package installation to finish. The command applies the script policy only to this child process; it does not change machine or user policy.
-
-
     - If your organization blocks scripts or downloads, contact the instructor. Do not change organizational security settings.
 
 
 6. Answer the setup prompts in order.
 
     - **Lab Data Studio URL:** Paste the **ADP\_URL** from step 1, then press Enter.
-
-
     - **Password for PEAKGEAR\_USER:** Paste **Database Password** from Environment Details, not the OCI Login Credentials password. Input is hidden; press Enter.
-
-
     - **Codex project folder:** Press Enter to create or use `peakgear-livelab` in Documents, or enter an existing local project folder.
-
-
     - **Success:** Note the full project path printed by setup.
 
 
 7. Open the project in Codex.
 
     - Open the desktop client from the Start menu.
-
-
     - Add or open the local project folder printed by setup, select it, and accept the trust prompt if shown.
-
-
     - Use a local project, not a cloud task. Local MCP starts from the project's configuration.
 
 
@@ -235,11 +186,7 @@ In this lab, you will:
 1. Paste the complete boundary prompt below once into the new task from Task 1. It sets the rules for business questions and the later Analytic View build.
 
     - Keep this same task open through Labs 4 and 5. You will not paste the prompt again in Lab 5.
-
-
     - Setting the boundary does not create objects.
-
-
     - Wait for **Ready. What business question would you like to explore?**, then continue to Task 3. Codex keeps its connection checks internal.
 
 
@@ -387,16 +334,9 @@ In this lab, you will:
                 </copy>
 
 - Choose option **1** to stop and restart only PeakGear LiveLab.
-
-
 - Create a new Codex task in the same project. If setup used the wrong reservation, first rerun **01-setup-peakgear-mcp.command** with the current database URL and Database Password. Restarting MCP does not replace saved connection details.
-
-
 - Establish the Task 2 boundary once in the new task before continuing.
-
-
 - Do not choose the ALL-MCP cleanup options.
-
 
 ## Task 3: Ask the raw-data question
 
