@@ -75,7 +75,7 @@ class UnitySqlReferenceTests(unittest.TestCase):
             "wait for the worksheet's completion message",
             "Task 1",
             "sample queries in Task 3 confirm read access",
-            "After a timeout, inspect **Catalog**",
+            "After a timeout, inspect **Data > Database**",
             "Do not drop or unmount objects to force a retry",
         ):
             with self.subTest(phrase=phrase):

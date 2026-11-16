@@ -7,41 +7,44 @@ You can analyze, query, and visualize the RDF graph built from the Moviestream R
 Estimated Time: 10 minutes
 
 ### Objectives
-- Create a Notebook in Graph Studio
-- Import a Notebook in Graph Studio
-- Use RDF Interpreter in Notebook paragraph
-- Query and Analyze the RDF Graph
+
+* Create a Notebook in Graph Studio
+* Import a Notebook in Graph Studio
+* Use RDF Interpreter in Notebook paragraph
+* Query and Analyze the RDF Graph
 
 ### Prerequisites
+
   This lab assumes you have:
-  - Oracle Cloud Account
-  - Provisioned Autonomous Database-Shared instance
-  - A database user with the correct roles and privileges for working with Graph Studio, which can be achieved with successfully completing Lab 2
+
+* Oracle Cloud Account
+* Provisioned Autonomous Database-Shared instance
+* A database user with the correct roles and privileges for working with Graph Studio, which can be achieved with successfully completing Lab 2
 
 ## **Task 1:** Import the notebook
 
 The instructions below show you how to create each notebook paragraph, execute it, and change default visualization settings as needed.  
-First **import** the sample notebook and then execute the relevant paragraph for each step in task 2.   
+First **import** the sample notebook and then execute the relevant paragraph for each step in task 2.
 
 1. Download the exported notebook from the Object Store.
-   Use the following Pre-authenticated Request, or PAR, to download the exported notebook onto your machine.   
+   Use the following Pre-authenticated Request, or PAR, to download the exported notebook onto your machine.
    Copy the URL below and paste it into your browser's address bar.  
   Note the location of the downloaded file.
 
     ```
-  	<copy>https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/data-management-library-files/INTRO_SPARQL.dsnb</copy>
+  	<copy>https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/data-management-library-files/INTRO_SPARQL.dsnb</copy>
   	```
 
-  2. Click the **Notebooks** menu icon and then on the **Import Notebook** icon on the top right.  
+2. Click the **Notebooks** menu icon and then on the **Import Notebook** icon on the top right.  
 
   ![Import button to import the notebook](images/import-notebook.png " ")  
 
-  3. Drag the downloaded file or navigate to the correct folder and select it for upload.  
+1. Drag the downloaded file or navigate to the correct folder and select it for upload.  
   ![ALT text is not available for this image](images/choose-exported-file.png " ")  
 
-  4. Click **Import**.
+2. Click **Import**.
   ![Import notebook selected and clicking import](images/import-notebook-selected.png " ")  
-  5. Once imported it should open in Graph Studio.  
+3. Once imported it should open in Graph Studio.  
 
   ![The imported notebook will open](images/open-notebook.png " ")  
 
@@ -55,11 +58,11 @@ You can perform the following steps to create a notebook in Graph Studio.
 
   ![This screen prompts for log-in credentials](./images/login-credential.png)
 
-2. Go to the Notebooks page and click the Create button.
+1. Go to the Notebooks page and click the Create button.
 
   ![Shows navigation to create notebook](./images/create-notebook.png)
 
-3. Enter the notebook Name. Optionally, you can enter Description and Tags. Click Create.
+1. Enter the notebook Name. Optionally, you can enter Description and Tags. Click Create.
 
   ![Demonstrates how to create a new name for a notebook](./images/name-notebook.png)
 
@@ -67,11 +70,11 @@ You can perform the following steps to create a notebook in Graph Studio.
 
 For a newly created notebook, the notebook page is displayed with an empty paragraph. You can run a notebook paragraph using one of the following supported interpreters:
 
-- Markdown
-- Java
-- Python
-- PGQL
-- SPARQL
+* Markdown
+* Java
+* Python
+* PGQL
+* SPARQL
 
 A Markdown paragraph begins with %md and an RDF paragraph begins with %sparql-rdf. See [Available Notebook Interpreters](https://docs.oracle.com/en/cloud/paas/autonomous-database/csgru/inspect-environment.html) for more information on the other Graph Studio Interpreters.
 You can execute a paragraph by clicking the Run Paragraph icon, which is shown highlighted in the preceding figure. Graph Studio will start to build the interpreter environment in the background if there is not one created. Paragraphs will run after the environment creation. See Inspect the Environment for more information to view the interpreter memory configuration.
@@ -244,7 +247,7 @@ Query 6 builds a co-star graph using an ms:coStar relationship. In this case, ea
 
 SPARQL `CONSTRUCT` queries return an RDF graph built by inserting variable bindings into a construct template.
 
-  1. Execute the following in a SPARQL paragraph.
+1. Execute the following in a SPARQL paragraph.
 
     ```
     <copy>%sparql-rdf
@@ -274,12 +277,13 @@ SPARQL `CONSTRUCT` queries return an RDF graph built by inserting variable bindi
 Query 7 finds the number of actors connected to Kevin Bacon within 4 co-star relations.
 
 SPARQL property paths allow you to match aribtrary length paths when searching for connected resources in an RDF graph. The start and destination positions in a property path may be query variables or constant RDF terms, but only constant URIs are allowed in the path expression iself. Property paths use a regular expression style syntax to express path patterns. Some highlights of the syntax are shown below (see Section 9.1 of the SPARQL 1.1 specification for details of the syntax):
-- `elt*` - zero or more repetitions of `elt`
-- `elt+` - one or more repetitions of `elt`
-- `elt1/elt2` - elt1 followed by `elt2`
-- `elt1|elt2` - an alternate path of `elt1` or `elt2`
-- `^elt` - inverse path (object to subject)
-- `elt{m,n}` - between `m` and `n` repetitions of `elt`
+
+* `elt*` - zero or more repetitions of `elt`
+* `elt+` - one or more repetitions of `elt`
+* `elt1/elt2` - elt1 followed by `elt2`
+* `elt1|elt2` - an alternate path of `elt1` or `elt2`
+* `^elt` - inverse path (object to subject)
+* `elt{m,n}` - between `m` and `n` repetitions of `elt`
 
 1. Execute the following in a SPARQL paragraph.
 
@@ -582,6 +586,6 @@ This concludes this lab. Thank you!
 
 ## Acknowledgements
 
-- **Author**- Bronze Martin Solution Engineer, Ethan Shmargad, Matthew McDaniel Solution Engineers, Ramu Murakami Gutierrez Product Manager
-- **Technical Contributor** -  Melliyal Annamalai Distinguished Product Manager, Joao Paiva Consulting Member of Technical Staff, Lavanya Jayapalan Principal User Assistance Developer
-- **Last Updated By/Date** - Ramu Murakami Gutierrez Product Manager, April 14th 2022
+* **Author**- Bronze Martin Solution Engineer, Ethan Shmargad, Matthew McDaniel Solution Engineers, Ramu Murakami Gutierrez Product Manager
+* **Technical Contributor** -  Melliyal Annamalai Distinguished Product Manager, Joao Paiva Consulting Member of Technical Staff, Lavanya Jayapalan Principal User Assistance Developer
+* **Last Updated By/Date** - Ramu Murakami Gutierrez Product Manager, April 14th 2022

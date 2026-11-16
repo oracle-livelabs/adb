@@ -4,11 +4,11 @@ This lab walks you through the steps to quickly provision an Autonomous Transact
 
 Estimated time: 90 minutes
 
-### Objectives
+## Objectives
 
-- Create a new APEX workspace 
-- Build a web application
-- Explore and implement Oracle Text 
+* Create a new APEX workspace
+* Build a web application
+* Explore and implement Oracle Text
 
 
 ## Oracle APEX
@@ -17,14 +17,15 @@ Oracle APEX is a low-code development platform that enables you to build scalabl
 
 Using APEX, developers can quickly develop and deploy compelling apps that solve real problems and provide immediate value. You won't need to be an expert in a vast array of technologies to deliver sophisticated solutions. Focus on solving the problem and let APEX take care of the rest.
 
-## Prerequisites 
+## Prerequisites
+
 Download the three files needed to complete this lab
 
-[Create Tables SQL](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql)
+[Create Tables SQL](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/Create_Tables.sql)
 
-[CareClinic Data Zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
+[CareClinic Data Zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/CareClinicData.zip)
 
-[Sample Patient Documents Zip](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip)
+[Sample Patient Documents Zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/Patient_Documents.zip)
 
 
 ## Additional Recommended Resources

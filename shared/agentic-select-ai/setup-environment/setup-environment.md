@@ -88,7 +88,7 @@ Perform the following steps to install the Ask Oracle Chatbot app. The applicati
 
 1. Download the `f101.sql` file by clicking on the button below, and store it in your local directory.
 
-    <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/IFwRcEf0ubWd_o9zahkuHKJc_nUqx3jfGTqCz8VkSOR45exYOyouFgSnFyo4SX_R/n/c4u02/b/hosted_workshops/o/f101.sql" download="f101.sql" class="tryit-button">Download AskOracle</a>
+    <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/JsqfrhyU1XL4XO9bVtcIwGUSyFvXdh-C3bAQlm8tBCjCubXXjibfvAWeJkHFOmbj/n/c4u02/b/hosted_workshops/o/f101.sql" download="f101.sql" class="tryit-button">Download AskOracle</a>
 
 2. From your Autonomous AI Database console, navigate to **Tool configuration** and copy the APEX URL.
 

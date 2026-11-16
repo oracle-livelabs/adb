@@ -275,4 +275,4 @@ All three raw tables have reviewed, saved `DESCRIPTION` and `TAGS` annotations, 
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, November 2026

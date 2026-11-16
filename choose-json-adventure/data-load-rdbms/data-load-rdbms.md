@@ -8,15 +8,15 @@ Estimated Lab Time: 30-45 minutes
 
 ### Objectives
 
-- Load JSON data into relational tables
-- Understand how Oracle stores JSON data in relations tables
-- Work with the JSON data with SQL
+* Load JSON data into relational tables
+* Understand how Oracle stores JSON data in relations tables
+* Work with the JSON data with SQL
 
 ### Prerequisites
 
-- The following lab requires an [Oracle Cloud account](https://www.oracle.com/cloud/free/). You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
-- This lab assumes you have successfully provisioned Oracle Autonomous database an connected to ADB with SQL Developer web.
-- You have completed the user setups steps.
+* The following lab requires an [Oracle Cloud account](https://www.oracle.com/cloud/free/). You may use your own cloud account, a cloud account that you obtained through a trial, or a training account whose details were given to you by an Oracle instructor.
+* This lab assumes you have successfully provisioned Oracle Autonomous database an connected to ADB with SQL Developer web.
+* You have completed the user setups steps.
 
 ## Task 1: Loading Data in a Relational Table
 
@@ -42,7 +42,7 @@ Estimated Lab Time: 30-45 minutes
 
     **(right-click and download the file with the following link)**
 
-    [Airport Delays 2003-2016](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/developer-library/airportDelays.json)
+    [Airport Delays 2003-2016](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/developer-library/airportDelays.json)
 
 6. Once on your desktop, drag the file into the Upload Data into New Table model. You can also click the `Select Files` button and find where you downloaded it via your operating system's file browser.
 
@@ -105,7 +105,7 @@ Dot notation is designed for easy, general use and common use cases of querying 
     </copy>
     ```
 
-   and the result will be similar to the following (formatted for readability):
+    and the result will be similar to the following (formatted for readability):
 
     ```json
     {
@@ -176,11 +176,11 @@ Dot notation is designed for easy, general use and common use cases of querying 
 
 2. Now what if we wanted to filter this based on the month and year(which is in the **time** column which contains JSON)? We want to filter by:
 
-   - Airport code = SFO
-   - Month = June
-   - Year = 2010
+    * Airport code = SFO
+    * Month = June
+    * Year = 2010
 
-   The JSON we are looking for in the time column would look like this:
+    The JSON we are looking for in the time column would look like this:
 
     ```json
     {"Label":"2010/06","Month":6,"Month Name":"June","Year":2010}
@@ -222,9 +222,9 @@ Dot notation is designed for easy, general use and common use cases of querying 
 
 ### **Part 2 - SQL/JSON Path Expressions**
 
-Oracle also has many built in JSON functions for working with document data which elevates the functionality found with Dot-Notation. 
+Oracle also has many built in JSON functions for working with document data which elevates the functionality found with Dot-Notation.
 
-1. **json_value** - The SQL/JSON function JSON\_VALUE finds a specified scalar JSON value in JSON data and returns it as a defined SQL value (date, number, timestamp, sdo\_geometry, etc). 
+1. **json_value** - The SQL/JSON function JSON\_VALUE finds a specified scalar JSON value in JSON data and returns it as a defined SQL value (date, number, timestamp, sdo\_geometry, etc).
 
 
     We can start easy by just getting the **Label** item in the time JSON block:
@@ -693,7 +693,7 @@ This concludes this lab. You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
-- **Contributor** - Brian Spendolini
-- **Last Updated By/Date** - Chris Hoina/March 2023
+* **Authors** - Jeff Smith, Beda Hammerschmidt and Chris Hoina
+* **Contributor** - Brian Spendolini
+* **Last Updated By/Date** - Chris Hoina/March 2023
 

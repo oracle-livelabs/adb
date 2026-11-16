@@ -1,4 +1,4 @@
-# Perform Cloud Data Profiling 
+# Perform Cloud Data Profiling
 
 ## Introduction
 
@@ -11,22 +11,26 @@ Estimated Time: 15 minutes
 ### Objectives
 
 In this lab, you will:
+
 * Learn how to use the cloud data profiling service to profile the source data and find out the data inconsistencies
 * Learn to identify the outliers, different inconsistent patterns, duplicate values, null values, etc
 
 ### **Assets**
 
 PDF
-* [Lab 1: Cloud Data Profiling](https://c4u04.objectstorage.us-ashburn-1.oci.customer-oci.com/p/EcTjWk2IuZPZeNnD_fYMcgUhdNDIDA6rt9gaFj_WZMiL7VvxPBNMY60837hu5hga/n/c4u04/b/livelabsfiles/o/oci-library/LAB%2001%20-%20Cloud%20Data%20Profiling%20-%20OCI.pdf) 
+
+* [Lab 1: Cloud Data Profiling](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/oci-library/LAB%2001%20-%20Cloud%20Data%20Profiling%20-%20OCI.pdf)
 
 
 ## Learn More
 
-Resource Links for Reference 
+Resource Links for Reference
+
 * [IDMC Cloud Data Profiling](https://docs.informatica.com/data-governance-and-quality-cloud/data-profiling/current-version/introduction/introduction-to-informatica-cloud-data-profiling.html): Quickly profile your data using a number of statistics like number of distinct values, number of patterns, value frequencies and outliers
 * [Oracle Autonomous Database](https://www.oracle.com/autonomous-database/): A fully automated database cloud service that makes it easy for all organizations to develop and deploy application and analytic workloads, regardless of complexity, scale, or criticality
 
 
 ## Acknowledgements
+
 * **Authors** - Eddy Widjaja, Solutions Director, Informatica; Larry Fumagalli, Director, Vertical Solutions, Oracle; Rudra Ray, Director, Technical Marketing, Informatics
 * **Last Updated By/Date** - Larry Fumagalli, August 2023
