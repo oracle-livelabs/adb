@@ -382,11 +382,9 @@ In this lab, you will:
 
 2. If Codex cannot read lab data, restart the local LiveLab process. In macOS Terminal, run:
 
-~~~sh
-<copy>
-zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
-</copy>
-~~~
+                <copy>
+                zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
+                </copy>
 
 - Choose option **1** to stop and restart only PeakGear LiveLab.
 

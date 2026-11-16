@@ -66,22 +66,22 @@ Codex has reused the Data Studio metadata saved in Lab 4 and identified the gove
 
 1. **Submit the build request** in the same Codex task you have used since Lab 3.
 
-    - Click **Copy** in the upper-right corner of the block below, then paste it into Codex.
+    - Click **Copy** in the upper-right corner of the block below, then paste it into Codex.
 
-    - The Lab 3 boundary already applies. Do not paste it again.
 
-    - Codex checks for suitable existing objects and chooses any needed names from the saved source definitions. Do not prescribe names from another run.
+    - The Lab 3 boundary already applies. Do not paste it again.
 
-~~~text
-<copy>
-Go ahead: create or reuse and validate one Analytic View to answer:
-Which product categories should we prioritize, balancing current customer interest with returns?
 
-Follow the established boundary. Use existing local tables and reviewed metadata. Reuse suitable dependencies and create only what is missing in PEAKGEAR_USER. Avoid repeated discovery and unnecessary rebuilds, but keep the required validation.
+    - Codex checks for suitable existing objects and chooses any needed names from the saved source definitions. Do not prescribe names from another run.
 
-Return a short summary of the AV and validation results.
-</copy>
-~~~
+                    <copy>
+                    Go ahead: create or reuse and validate one Analytic View to answer:
+                    Which product categories should we prioritize, balancing current customer interest with returns?
+                    Follow the established boundary. Use existing local tables and reviewed metadata.
+                    Reuse suitable dependencies and create only what is missing in PEAKGEAR_USER.
+                    Avoid repeated discovery and unnecessary rebuilds, but keep the required validation.
+                    Return a short summary of the AV and validation results.
+                    </copy>
 
 **Expected result:** Codex should:
 
