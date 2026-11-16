@@ -24,9 +24,10 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 ## Task 1: Load friends JSON data
 
 
-1. Before start the exercise you need to download the data that we will use. **Click** on the following [LINK](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/friend_of.json "open the json file") to see the JSON dataset and **Save it** using **Control S** or different method to save files. We recommend you to call the file **friend\_of.json**.
+1. Before start the exercise you need to download the data that we will use. **Click** on the following [JSON dataset](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/labfiles/friend_of.json "open the json file") to see the JSON dataset and **Save it** using **Control S** or different method to save files. We recommend you to call the file **friend\_of.json**.
 
-    - **File name:** friend\_of.json
+    * **File name:** friend\_of.json
+
     ```
         <copy>friend_of.json</copy>
      ```
@@ -83,12 +84,14 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 15. Connect with the **CNVG** user we created before.
 
-    - **User Name:** CNVG
+    * **User Name:** CNVG
+
         ```
         <copy>CNVG</copy>
         ```
 
-    - **Password:** Password123##
+    * **Password:** Password123##
+
         ```
         <copy>Password123##</copy>
         ```
@@ -106,7 +109,8 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 18. Set the new name for the collection as **friend_of** and click **Create**.
 
-    - **Collection name:** friend\_of
+    * **Collection name:** friend\_of
+
     ```
         <copy>friend_of</copy>
     ```
@@ -153,7 +157,8 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 4. Define the VCN Name as **vcn_graph**. Then click on **Next**.
 
-    - **VCN Name:** vcn_graph
+    * **VCN Name:** vcn_graph
+
         ```
         <copy>vcn_graph</copy>
         ```
@@ -186,41 +191,44 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 10. Click on **Add Ingress Rule**.
 
-    ![Select VCN](./images/add-ingress.png) 
+    ![Select VCN](./images/add-ingress.png)
 
-11. Set the following rule for opening the port 7007, then click on **Add Ingress Rules**: 
+11. Set the following rule for opening the port 7007, then click on **Add Ingress Rules**:
 
-    - **Source CIDR:** 0.0.0.0/0
+    * **Source CIDR:** 0.0.0.0/0
+
         ```
         <copy>0.0.0.0/0</copy>
         ```
-    
-    - **IP Protocol:** select **TCP**
 
-    - **Destination Port Range:** 7007
+    * **IP Protocol:** select **TCP**
+
+    * **Destination Port Range:** 7007
+
         ```
         <copy>7007</copy>
         ```
 
-    - **Description:** Graph Server
+    * **Description:** Graph Server
+
         ```
         <copy>Graph Server</copy>
         ```
 
-    ![Select VCN](./images/define-ingress.png) 
+    ![Select VCN](./images/define-ingress.png)
 
 12. After a few second the new Ingress Rule will be created and included on your **Ingress Rule list**.
 
-    ![Ingress Rule Added](./images/ingress-rule-added.png) 
+    ![Ingress Rule Added](./images/ingress-rule-added.png)
 
 
 ## Task 3: Create Oracle Graph server
 
 1. Before we create the Graph Server, we need to generate a **ssh key**. For that we are going to use the **cloud shell**. You will get announcements and messages in green when you open cloud shell, spend a few minutes reading them, then can be useful for you!.
 
-    ![Open Shell](./images/open-cloud-shell.png) 
+    ![Open Shell](./images/open-cloud-shell.png)
 
-    ![Shell](./images/shell-open.png) 
+    ![Shell](./images/shell-open.png)
 
 2. Once the cloud shell has started, **run** the following commands to generate a **ssh key**.
 
@@ -238,7 +246,7 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
     **Press Enter twice for no passphrase**.
 
-    ![Shell](./images/key-generated.png) 
+    ![Shell](./images/key-generated.png)
 
 3. We will need the **public key** when creating the Graph Server. In order to get the public key, you can **run** the following command:
 
@@ -247,11 +255,11 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
     ```
 
-    ![Shell](./images/public-key-content.png) 
+    ![Shell](./images/public-key-content.png)
 
 4. Now we are ready to provision the **Graph Server**. We can find it in the **marketplace**. Go from the **Oracle Cloud Console Burger Menu**, after **Marketplace** section and finally **All Applications**. If you see an error collecting all applications, please try again.
 
-    ![Shell](./images/go-to-marketplace.png) 
+    ![Shell](./images/go-to-marketplace.png)
 
 5. In the marketplace, search **Graph**. There you can select **Oracle Graph Server and Client**.
 
@@ -266,14 +274,14 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
     ![Shell](./images/next-launch1.png)
 
 8. Now configure the Graph Server:
-    
-    - **Compartment:** Be sure you have selected your compartment
-    
-    - **Availability Domain:** Choose any available
 
-    - **Shape:** VM.Standard.E2.1 or VM.Standard.E2.1.Micro shapes
+    * **Compartment:** Be sure you have selected your compartment
 
-    - **SSH Public Key:** Copy from the cloud shell. **Be sure you don't miss any character at the very beginning and at the end.**
+    * **Availability Domain:** Choose any available
+
+    * **Shape:** VM.Standard.E2.1 or VM.Standard.E2.1.Micro shapes
+
+    * **SSH Public Key:** Copy from the cloud shell. **Be sure you don't miss any character at the very beginning and at the end.**
 
     ![Shell](./images/graph-config1.png)
 
@@ -307,7 +315,7 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
     ![Shell](./images/job-finish.png)
 
-15. The Graph connect needs the **Autonomous Wallet** to connect. We need to **download it** and **upload it** into the Graph Server. Go to the **Autonomous Database** once more and click on **DB Connection** section. 
+15. The Graph connect needs the **Autonomous Wallet** to connect. We need to **download it** and **upload it** into the Graph Server. Go to the **Autonomous Database** once more and click on **DB Connection** section.
 
     ![Shell](./images/db-connection.png)
 
@@ -317,7 +325,8 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 17. Set the same password: **Password123##** and click download.
 
-    - **Passwords:** Password123##
+    * **Passwords:** Password123##
+
         ```
         <copy>Password123##</copy>
         ```
@@ -351,23 +360,25 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
     ![Shell](./images/wallet-uploaded.png)
 
 23. Now we just need to **unzip** the wallet on the Graph Server. We need to connect via ssh and unzip it running the following commands. **Remember to use YOUR IP that we copied in  previous step**.
-        
+
     ```
         <copy> ssh -i .ssh/graphkey opc@YOUR_IP </copy>
     ```
 
     ![Shell](./images/ssh-connection.png)  
 
-    ``` 
+    ```
         <copy>
             cd /etc/oracle/graph/wallets/
         </copy>
     ```
+
     ```
         <copy>
             unzip Wallet_MODERNDW.zip
         </copy>
     ```
+
     ```
         <copy>
             chgrp oraclegraph *
@@ -402,12 +413,14 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 7. Connect with the **CNVG** user we created before.
 
-    - **User Name:** CNVG
+    * **User Name:** CNVG
+
         ```
         <copy>CNVG</copy>
         ```
 
-    - **Password:** Password123##
+    * **Password:** Password123##
+
         ```
         <copy>Password123##</copy>
         ```
@@ -457,6 +470,7 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
     ```
 
 15. Let's connect with the **opg4py** utility. We are going to use the **cnvg** user and the password **Password123##**. **Be sure you type the password correctly, otherwise, you can't connect to the Oracle Graph Server**.
+
     ```
         <copy> 
             opg4py -b https://localhost:7007 -u cnvg
@@ -489,7 +503,7 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 
 17. Let's **execute** the definition.
 
-    ```   
+    ```
         <copy> 
             session.prepare_pgql(statement).execute()
         </copy>
@@ -584,6 +598,7 @@ This lab assumes you have created the Autonomous Data Warehouse database and you
 You can **proceed to the next lab.**
 
 ## Acknowledgements
+
 * **Author** - Javier de la Torre, Principal Data Management Specialist
 * **Contributors** - Priscila Iruela, Technology Product Strategy Director
 * **Last Updated By/Date** - Javier de la Torre, Principal Data Management Specialist, November 2024

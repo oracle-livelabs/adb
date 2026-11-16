@@ -20,14 +20,14 @@ In this workshop, you will learn how to analyze the data using the Data Studio A
 
 To complete this lab, you need to have completed the previous labs, so that you have:
 
-- Created an Autonomous AI Database instance
-- Created a new QTEAM user with appropriate roles
+* Created an Autonomous AI Database instance
+* Created a new QTEAM user with appropriate roles
 
 ### Demo data for this lab
 
 Run the following script in SQL Worksheet to load all necessary objects.
 
-*For copy/pasting, be sure to click the convenient __Copy__ button in the upper right corner of the following code snippet.*: 
+*For copy/pasting, be sure to click the convenient **Copy** button in the upper right corner of the following code snippet.*:
 
 ```
 <copy>
@@ -90,7 +90,7 @@ FROM CUSTOMER_SALES_ANALYSIS;
 
 Paste the SQL statements in the worksheet. Click on the **Run Script** icon.
 
-While the script is running, you will see the message "Executing code" at the bottom of the window. 
+While the script is running, you will see the message "Executing code" at the bottom of the window.
 The message will change to "SQL executed by QTEAM" when in finishes. There should not be any errors.
 
 >**Note:** Expect to receive "ORA-00942 table or view does not exist" errors during the DROP TABLE command for the first execution of the script, but you should not see any other errors.
@@ -101,38 +101,39 @@ Now you are ready to go through the rest of the labs in this workshop.
 
 
 ## Task 1: Analyze data
-We have movie sales, movie genre and age group data. We also have customer value information. We will analyze this data set. 
+
+We have movie sales, movie genre and age group data. We also have customer value information. We will analyze this data set.
 
 We will go through a few examples such as movie genre preference based on age groups and marital status and whether these preferences are different across high-value and low-value customers.
 
-1.  From the Data Studio Overview page launch the **Analysis** tool.
+1. From the Data Studio Overview page launch the **Analysis** tool.
 
     ![screenshot of data analysis card](images/image58_analysis_card.png)
 
-2.  When you access the Analysis tool for the first time, you are presented with a set of 
-    tool tips that explain how to use various features of the tool. You may wish to step through 
-    this brief tutorial, or press X in the top right of any highlighted box to exit at any time. 
+2. When you access the Analysis tool for the first time, you are presented with a set of
+    tool tips that explain how to use various features of the tool. You may wish to step through
+    this brief tutorial, or press X in the top right of any highlighted box to exit at any time.
 
     You can relaunch the tutorial by pressing the binoculars icon in the upper-right corner.
 
     ![screenshot of data analysis home page](images/image59_analysis_home.png)
 
-3. In previous labs we had loaded CUSTOMER\_SALES\_ANALYSIS\_FULL table by joining sales transaction data with the customer master data and added customer value information using quantile transformation by Data Transforms tool. We picked this table Since it has all the attributes we need for analysis. 
+3. In previous labs we had loaded CUSTOMER\_SALES\_ANALYSIS\_FULL table by joining sales transaction data with the customer master data and added customer value information using quantile transformation by Data Transforms tool. We picked this table Since it has all the attributes we need for analysis.
 
-    Note that It is important to prepare the data appropriately for analysis purposes. Click on the CUSTOMER\_SALES\_ANALYSIS\_FULL table. 
+    Note that It is important to prepare the data appropriately for analysis purposes. Click on the CUSTOMER\_SALES\_ANALYSIS\_FULL table.
 
     ![screenshot of data analysis on a table](images/image59_t_analysis_table.png)
 
-4.  Next, let's learn how to navigate the analysis tool.
+4. Next, let's learn how to navigate the analysis tool.
 
     The Analysis UI is divided into multiple zones. These zones are:
-    
+
     1: Main select query
-    
+
     2: Results from the query
-    
+
     3: Table/Pivot/Chart report format
-    
+
     4: Filtering by columns
 
     ![screenshot of the analysis home page](images/image69_t_analyze_home.png)
@@ -145,10 +146,10 @@ We will go through a few examples such as movie genre preference based on age gr
 
     ![screenshot of the analysis chart](images/image69_t_analyze_chart.png)
 
-6.  Now we can start doing our first analysis. Expand the bar chart area by dragging the middle bar above to reduce the query area.
+6. Now we can start doing our first analysis. Expand the bar chart area by dragging the middle bar above to reduce the query area.
 
     Analysis: show me the sales amount by age group
-    
+
     Drag AGE\_GROUP into X-Axis and TOTAL\_SALES into Y_Axis area.
 
     This chart is showing total sales across age groups. We can
@@ -156,29 +157,29 @@ We will go through a few examples such as movie genre preference based on age gr
 
     ![screenshot of sales analysis by age group](images/image70_t_sales_agegroup.png)
 
-7.  Next, let us analyze sales by marital status.
+7. Next, let us analyze sales by marital status.
 
     Clear X-Axis and drag MARITAL\_STATUS.
-    
+
     We can see that singles are watching more movies than married people.
 
     ![screenshot of sales analysis by marital status](images/image71_t_sales_maritalstatus.png)
 
-8.  Now we can mix two hierarchies. Drag AGE\_GROUP above MARITAL\_STATUS in the X-Axis. 
+8. Now we can mix two hierarchies. Drag AGE\_GROUP above MARITAL\_STATUS in the X-Axis.
 
     Make sure the AGE\_GROUP is on top of MARITAL\_STATUS.
 
     We notice that although singles watch overall more movies, married
     people watch more than singles in millennial age group.
-    
+
     This was not obvious before.
 
     ![screenshot of sales analysis by marital status and age group](images/image72_t_sales_maritalstatus_age.png)
 
-9.  Now we are curious to know which genre sells most.
+9. Now we are curious to know which genre sells most.
 
     Clear X-Axis and drag GENRE.
-    
+
     Drama Sells! Followed by Action.
 
     ![screenshot of sales analysis by movie genre](images/image73_t_sales_genre.png)
@@ -188,7 +189,7 @@ We will go through a few examples such as movie genre preference based on age gr
     Drag CUST\_VALUE to the X-Axis. Make sure the CUST\_VALUE is on the top of GENRE.
 
     Filter for CUST\_VALUE=1 in the right side filter area. You can see that Action is a very popular genre with low value customers.
-    
+
     ![screenshot of sales analysis by movie genre and customer value](images/image74_t_sales_genre_custvalue.png)
 
 11. Now lets filter for high value customers. You will need to remove the previous filter and use a new one for CUST\_VALUE=5.
@@ -197,14 +198,14 @@ We will go through a few examples such as movie genre preference based on age gr
 
     ![screenshot of sales analysis by movie genre and customer value high](images/image74_t_sales_genre_custvalue_high.png)
 
-    Go ahead and see if you can find any other interesting patterns. 
+    Go ahead and see if you can find any other interesting patterns.
 
     What movie genres are popular in different age groups?
 
     We can spend lots of time in the analysis tool visualizing the data with
     different combinations of attributes.
 
-    >**Note:** So far, we are looking at only the charts, but this data can be displayed in tabular format or as a pivot table as well. 
+    >**Note:** So far, we are looking at only the charts, but this data can be displayed in tabular format or as a pivot table as well.
 
 12. After you have completed the report, you can rename the report by clicking on the three dots on top right side. Rename it as "Sales by genre for high value customers".
 
@@ -212,7 +213,7 @@ We will go through a few examples such as movie genre preference based on age gr
 
     ![screenshot of sales analysis for customer value high report](images/image74_t_sales_genre_custvalue_high_rep.png)
 
-13. It is also possible to use Microsoft Excel or Google Sheets to access and analyze the data in Autonomous AI Database, with the provided plug-ins. This is not covered in this workshop. 
+13. It is also possible to use Microsoft Excel or Google Sheets to access and analyze the data in Autonomous AI Database, with the provided plug-ins. This is not covered in this workshop.
 
     ![screenshot of sales analysis plugin](images/image74_t_analysis_plugin.png)
 
@@ -230,21 +231,21 @@ We will go through a few examples such as movie genre preference based on age gr
 
 This lab provides a brief overview of how to analyze data using Data Studio. Other features include:
 
--   **Plug-ins for Microsoft Excel and Google Sheets**: Query data using your favorite desktop tool
--   **Analytic Views**: Create dimensional models from tables. Analytic Views provide a business model using dimensional hierarchies and complex measures. External query tools can query the Analytic View leveraging the business model in the Autonomous AI Database and optimizing queries.
+* **Plug-ins for Microsoft Excel and Google Sheets**: Query data using your favorite desktop tool
+* **Analytic Views**: Create dimensional models from tables. Analytic Views provide a business model using dimensional hierarchies and complex measures. External query tools can query the Analytic View leveraging the business model in the Autonomous AI Database and optimizing queries.
 
 ## RECAP
 
-In this lab, we used the Analysis tool to analyze movie sales data across various dimensions such as age group, 
-marital status and movie genre. We found many interesting patterns in customer purchasing behavior. 
+In this lab, we used the Analysis tool to analyze movie sales data across various dimensions such as age group,
+marital status and movie genre. We found many interesting patterns in customer purchasing behavior.
 
 You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
-- Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
-- Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
-- Last Updated By - Jayant Mahto, September 2025
+* Created By/Date - Jayant Mahto, Product Manager, Autonomous AI Database, January 2023
+* Contributors - Mike Matthews, Bud Endress, Ashish Jain, Marty Gubar, Rick Green
+* Last Updated By - Jayant Mahto, September 2025
 
 
 Copyright (C)  Oracle Corporation.

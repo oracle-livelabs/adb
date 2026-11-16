@@ -1,4 +1,4 @@
-# Pushdown Optimization With Cloud Data Integration 
+# Pushdown Optimization With Cloud Data Integration
 
 ## Introduction
 
@@ -9,21 +9,25 @@ Estimated Time: 25 minutes
 ### Objectives
 
 In this lab, you will:
+
 * Learn how to use pushdown optimization or ELT with Cloud Data Integration
 * Learn to set up mapping tasks for the mappings built in IDMC Cloud Data Integration service
 
 ### **Assets**
 
 PDF
-* [Lab 4: Pushdown Optimization](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2004%20-%20Cloud%20DI%20using%20OCI%20ELT%20(PDO).pdf) 
+
+* [Lab 4: Pushdown Optimization](https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/oci-library/Lab%2004%20-%20Cloud%20DI%20using%20OCI%20ELT%20(PDO).pdf)
 
 
 ## Learn More
 
-Resource Links for Reference 
+Resource Links for Reference
+
 * [Why Advanced Pushdown Optimization](https://www.informatica.com/blogs/why-advanced-pushdown-optimization-is-a-must-have-capability-for-your-cloud-analytics-journey.html): Use the performance capabilities of the cloud without incurring configuration and management burdens
 
 
 ## Acknowledgements
+
 * **Authors** - Eddy Widjaja, Solutions Director, Informatica; Larry Fumagalli, Director, Vertical Solutions, Oracle; Rudra Ray, Director, Technical Marketing, Informatics
 * **Last Updated By/Date** - Larry Fumagalli, August 2023
