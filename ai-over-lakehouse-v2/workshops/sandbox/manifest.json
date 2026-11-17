@@ -1,0 +1,42 @@
+{
+  "workshoptitle": "PeakGear: From Raw Sources to Governed Answers with Codex",
+  "help": "livelabs-help-adbs_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Lab 1: Sign in as PEAKGEAR_USER",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../connect-peakgear/connect-peakgear.md"
+    },
+    {
+      "title": "Lab 2: Connect real sources",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../connect-sources/connect-sources.md"
+    },
+    {
+      "title": "Lab 3: Connect Codex and ask the raw-data question",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../connect-codex/connect-codex.md"
+    },
+    {
+      "title": "Lab 4: Add business meaning with AI Enrichment",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../ai-enrichment/ai-enrichment.md"
+    },
+    {
+      "title": "Lab 5: Create an Analytic View with Codex",
+      "description": "",
+      "type": "livelabs",
+      "filename": "../../analytic-views/analytic-views.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Reservation sign-in help and a workshop-specific support request template.",
+      "type": "livelabs",
+      "filename": "../../need-help/need-help-freetier.md"
+    }
+  ]
+}
