@@ -41,13 +41,13 @@ LiveLabs provisioning has already created both credentials for PEAKGEAR\_USER in
 
 2. Enter the public catalog settings from the table.
 
-| Field | Value |
-|---|---|
-| Catalog name | DBX\_UNITY\_PEAKGEAR |
-| Iceberg catalog type | Unity |
-| Iceberg catalog endpoint | https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear |
-| Iceberg catalog credentials | Select DBX\_PEAKGEAR\_OAUTH |
-| Bucket credentials | Select ADLS\_PEAKGEAR\_DATA |
+    | Field | Value |
+    |---|---|
+    | Catalog name | DBX\_UNITY\_PEAKGEAR |
+    | Iceberg catalog type | Unity |
+    | Iceberg catalog endpoint | https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/unity-catalog/iceberg-rest/v1/catalogs/peakgear |
+    | Iceberg catalog credentials | Select DBX\_PEAKGEAR\_OAUTH |
+    | Bucket credentials | Select ADLS\_PEAKGEAR\_DATA |
 
     ![Enter DBX\_UNITY\_PEAKGEAR, select Unity, paste the public endpoint, and select the provisioned catalog and bucket credentials.](images/mount-iceberg-catalog.png)
 
