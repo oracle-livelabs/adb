@@ -4,97 +4,87 @@ Estimated Time: 8 minutes
 
 ## Introduction
 
-Codex is connected through the project-scoped LiveLab MCP server. It is not
-given a database administrator account. The MCP launcher does not need the
-Azure or Databricks secret: those are stored in database-owned credentials.
-The first question is intentionally simple. The correct answer
-is not a ranking: raw fields alone do not define what customer interest means.
+PeakGear's source tables are ready, so the next step is to ask the business question:
+
+**Which products are customers interested in right now?**
+
+Codex can reach the reserved database through the project-scoped LiveLab MCP server as PEAKGEAR\_USER, not as an administrator. **Azure** and **Databricks** secrets remain in database credentials; the local server does not need them.
+
+In this lab, you set up and check that connection, then ask the question. Codex should stop before ranking products because the raw columns do not say whether interest means events, sessions, or customers, or which period “right now” refers to. That deliberate stop sets up **Lab 4**, where you will save the missing definitions and ask the same question again.
 
 ### Objectives
 
 In this lab, you will:
 
-* connect a clean laptop to the prepared Data Studio environment;
-* establish a quiet PEAKGEAR&#95;USER connection check; and
-* see Codex stop rather than invent a business definition.
+* Connect your laptop to the prepared Data Studio environment;
+* Confirm that the active Codex task can reach PEAKGEAR\_USER; and
+* See why Codex should stop before the source data has a business definition.
 
 ### Prerequisites
 
-* Labs 1 and 2 are complete.
-* Codex is installed, signed in, and can create a local task. Complete the
-  installation and account check with the event organizer before the workshop.
-* Use your own laptop: macOS with Terminal or Windows with Windows PowerShell.
-  The Starter Kit configures a local MCP process; no cloud Linux terminal is needed.
-* Data Studio SQL Worksheet is connected to your reservation as
-  PEAKGEAR&#95;USER. Keep LiveLabs **Environment Details** open for the Database
-  Password.
+* **Lab 1** and **Lab 2** are complete.
+* **_Codex is already installed on your PC_**, signed in, and can create a local task. Complete the installation and account check with the event organizer before the workshop.
+* Use your own laptop: macOS with Terminal or Windows with Windows PowerShell. The Starter Kit configures a local MCP process; no cloud Linux terminal is needed.
+* Data Studio SQL Worksheet is connected to your reservation as PEAKGEAR\_USER. Keep LiveLabs **Environment Details** open for the Database Password.
 
 ## Task 1: Set up LiveLab MCP
 
-1. **Obtain your AI Lakehouse URL.** In the connected Data Studio **SQL
-    Worksheet** as PEAKGEAR&#95;USER, run:
+1. Get your AI Lakehouse URL. In Data Studio, open **SQL Worksheet** connected as PEAKGEAR\_USER and run:
 
     ~~~sql
     <copy>
     SELECT 'https://' ||
            LOWER(REPLACE(p.name, '_', '-')) || '.' ||
-           REGEXP_REPLACE(j.public_domain_name, '[^.]+', 'oraclecloudapps', 1, 3)
-             AS adp_url
+           REGEXP\_REPLACE(j.public\_domain\_name, '[^.]+', 'oraclecloudapps', 1, 3)
+             AS adp\_url
     FROM v$pdbs p
-    CROSS JOIN JSON_TABLE(
-      p.cloud_identity,
+    CROSS JOIN JSON\_TABLE(
+      p.cloud\_identity,
       '$' COLUMNS (
-        public_domain_name VARCHAR2(512) PATH '$.PUBLIC_DOMAIN_NAME'
+        public\_domain\_name VARCHAR2(512) PATH '$.PUBLIC\_DOMAIN\_NAME'
       )
     ) j
-    WHERE p.con_id = SYS_CONTEXT('USERENV', 'CON_ID');
+    WHERE p.con\_id = SYS\_CONTEXT('USERENV', 'CON\_ID');
     </copy>
     ~~~
 
-    Copy the HTTPS value returned as **ADP&#95;URL** and keep it ready: paste it
-    into **Lab Data Studio URL** when the setup script asks in step 6 of your
-    operating-system path below. You do not need to open this URL in a browser.
-    This is the base URL for
-    your assigned AI Lakehouse database. Run it in **Data Studio**, not Terminal,
-    and keep Data Studio connected to your reserved database. The reservation
-    must permit this read-only lookup for PEAKGEAR&#95;USER. If it reports an
-    access error or returns no URL, stop and contact the instructor; do not
-    grant privileges or switch to ADMIN.
+    - Copy the returned HTTPS value, **ADP\_URL**. You will paste it at the **Lab Data Studio URL** prompt in step 6 of your operating-system path.
+    - This is the base URL for your assigned database. Run the query in Data Studio, not Terminal. You do not need to open the URL in a browser.
+    - The reservation must permit this read-only lookup for PEAKGEAR\_USER.
+    - If the query returns an access error or no URL, stop and contact the instructor. Do not grant privileges or switch to ADMIN.
 
-2. **Download the Starter Kit.** Click
+2. Download the Starter Kit. Click
     [**Download Here — PeakGear LiveLab Starter Kit (.zip)**](../downloads/peakgear-livelab-starter-kit.zip).
-    Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`. Keep the ZIP;
-    you will unpack it on your laptop. If the browser adds `(1)` or another suffix,
-    rename the downloaded file to the exact name above before continuing.
-    There is only one Starter Kit, containing macOS and Windows versions.
+    - _**Important:** This kit does not contain the Codex installer. Codex must already be installed and set up on your PC._
+    - Save it in **Downloads** as `peakgear-livelab-starter-kit.zip`.
+    - If the browser adds a suffix such as `(1)`, rename the file to the exact name above.
+    - Keep the ZIP. You will unpack it on your laptop. It contains setup files for macOS and Windows.
 
-    Continue with **one** of the two paths below, using your laptop's operating
-    system. Both paths configure the same LiveLab Python server and database user.
+    Continue with the path for your laptop's operating system. Both paths configure the same LiveLab Python server and database user.
 
 ### macOS: Terminal
 
-3. **Open Terminal on your Mac.** In Finder, choose **Applications > Utilities
-    > Terminal**. Alternatively, hold Command and press Space to open Spotlight,
-    type **Terminal**, then press Return. Keep this local window open.
+3. Open Terminal on your Mac.
+    - In Finder, choose **Applications > Utilities > Terminal**; or
+    - Open Spotlight with Command + Space, type **Terminal**, and press Return.
+    - Keep this local window open.
 
-4. **Unpack the ZIP and prepare the project folder.** Copy this entire block
-    into Terminal using **Copy**, then press **Return**:
+4. Unpack the ZIP and prepare the project folder. Copy and run this block in Terminal:
 
     ~~~sh
     <copy>
     cd "$HOME/Downloads"
-    PEAKGEAR_KIT_DIR="$(mktemp -d "$HOME/Downloads/peakgear-starter.XXXXXX")"
-    ditto -x -k "peakgear-livelab-starter-kit.zip" "$PEAKGEAR_KIT_DIR"
+    PEAKGEAR\_KIT\_DIR="$(mktemp -d "$HOME/Downloads/peakgear-starter.XXXXXX")"
+    ditto -x -k "peakgear-livelab-starter-kit.zip" "$PEAKGEAR\_KIT\_DIR"
     mkdir -p "$HOME/Documents/peakgear-livelab"
-    cd "$PEAKGEAR_KIT_DIR/starter-kit"
+    cd "$PEAKGEAR\_KIT\_DIR/starter-kit"
     </copy>
     ~~~
 
-    You are now in the extracted `starter-kit` folder. A fresh extraction keeps
-    older downloaded copies unchanged.
+    - The commands create a fresh extraction, leaving older downloads unchanged.
+    - They leave Terminal in the extracted `starter-kit` folder.
 
-5. **Run setup.** Return to the same Terminal window. Paste this command and
-    press **Return**:
+5. Run setup in the same Terminal window:
 
     ~~~sh
     <copy>
@@ -102,22 +92,18 @@ In this lab, you will:
     </copy>
     ~~~
 
-    Wait while setup installs the required packages. Do not run extra install
-    commands. The package installation is user-scoped.
+    - Wait for package installation to finish.
+    - Do not run extra install commands. Installation is user-scoped.
 
-6. **Answer the setup prompts in order.**
+6. Answer the setup prompts in order.
 
-    | Prompt | What to do |
-    |---|---|
-    | Lab Data Studio URL | Paste the ADP&#95;URL result copied in step 1, then press Return. Do not use localhost:8000. |
-    | Password for PEAKGEAR&#95;USER | Copy Database Password from LiveLabs Reservation Information → Environment Details. Paste it into Terminal, then press Return. Nothing appears while you type or paste; this is normal. |
-    | Finder folder picker | Open Documents, select peakgear-livelab, then click Choose. This is the folder created in step 4. |
-    | Success / Press Return to close this window | Confirm the displayed URL and PEAKGEAR&#95;USER, then press Return. |
+    - **Lab Data Studio URL:** Paste the **ADP\_URL** from step 1. Do not use `localhost:8000`.
+    - **Password for PEAKGEAR\_USER:** Paste **Database Password** from Reservation Information > Environment Details. Nothing appears while you type or paste; this is normal. Do not use the OCI, example, or Mac password.
+    - **Finder folder picker:** Open Documents, select `peakgear-livelab`, and click **Choose**. This is the folder created in step 4.
+    - **Success:** Confirm the displayed URL and PEAKGEAR\_USER, then press Return to close the window.
 
-    Use your reservation's **Database Password**, not its OCI Login Credentials
-    password, a screenshot's example, or your Mac password.
 
-7. **Open the project in Codex.** After setup finishes, run this in Terminal:
+7. Open the project in Codex. After setup finishes, run this in Terminal:
 
     ~~~sh
     <copy>
@@ -125,21 +111,20 @@ In this lab, you will:
     </copy>
     ~~~
 
-    Click **Trust** if Codex asks whether you trust this project.
+    - Click **Trust** if Codex asks whether you trust this project.
 
-8. **Create a new Codex task in the peakgear-livelab project.** Select the
-    project opened in step 7, then create the task there. LiveLab starts
-    automatically for that new task. Continue with Task 2 in that task; do not
-    reuse a task from another project or an older task.
+8. Create a new Codex task in the `peakgear-livelab` project.
+    - Select the project opened in step 7, then create a task there.
+    - LiveLab starts automatically for the new task. Continue with Task 2 in that task; do not reuse an older task or one from another project.
+
 
 ### Windows: Windows PowerShell
 
-3. **Open Windows PowerShell on your laptop.** Open the Windows **Start** menu,
-    type **Windows PowerShell**, and open it normally, not **Run as administrator**.
-    Windows Terminal is also suitable if its selected tab is PowerShell, not
-    Command Prompt. Keep this local window open; WSL is not needed.
+3. Open Windows PowerShell on your laptop.
+    - Open the Windows **Start** menu, type **Windows PowerShell**, and open it normally, not **Run as administrator**.
+    - Windows Terminal also works if the selected tab is PowerShell, not Command Prompt. Keep the local window open. WSL is not needed.
 
-4. **Unpack the ZIP.** Copy this entire block into PowerShell and press Enter:
+4. Unpack the ZIP. Copy and run this block in PowerShell:
 
     ~~~powershell
     <copy>
@@ -150,12 +135,10 @@ In this lab, you will:
     </copy>
     ~~~
 
-    This creates a fresh extraction without changing previous downloads. If
-    your Downloads folder is redirected, first open the folder containing the
-    ZIP in File Explorer and select **Open in Terminal** with a PowerShell tab,
-    then run the last three lines of the block.
+    - This creates a fresh extraction without changing previous downloads.
+    - If Downloads is redirected, open the folder containing the ZIP in File Explorer, choose **Open in Terminal** with a PowerShell tab, then run the last three commands in the block.
 
-5. **Run the Windows setup script** in the same PowerShell window:
+5. Run the Windows setup script in the same PowerShell window:
 
     ~~~powershell
     <copy>
@@ -163,293 +146,213 @@ In this lab, you will:
     </copy>
     ~~~
 
-    Wait for package installation to finish. This command applies the script
-    policy only to this child process; it does not change machine or user policy.
-    If your organization blocks script execution or downloads, contact the
-    instructor rather than changing organizational security settings.
+    - Wait for package installation to finish. The command applies the script policy only to this child process; it does not change machine or user policy.
+    - If your organization blocks scripts or downloads, contact the instructor. Do not change organizational security settings.
 
-6. **Answer the prompts in order.**
+6. Answer the setup prompts in order.
+    - **Lab Data Studio URL:** Paste the **ADP\_URL** from step 1, then press Enter.
+    - **Password for PEAKGEAR\_USER:** Paste **Database Password** from Environment Details, not the OCI Login Credentials password. Input is hidden; press Enter.
+    - **Codex project folder:** Press Enter to create or use `peakgear-livelab` in Documents, or enter an existing local project folder.
+    - **Success:** Note the full project path printed by setup.
 
-    | Prompt | What to do |
-    |---|---|
-    | Lab Data Studio URL | Paste the ADP&#95;URL result from step 1, then press Enter. |
-    | Password for PEAKGEAR&#95;USER | Paste Database Password from your reservation's Environment Details. Input is hidden; press Enter. |
-    | Codex project folder | Press Enter to create/use peakgear-livelab in your Windows Documents folder, or enter an existing local project folder. |
-    | Success | Note the complete project path printed by setup. |
 
-7. **Open that project in Codex.** Open the installed desktop client from the
-    Start menu. Add/open the local project folder printed by setup, select it,
-    and accept the project trust prompt if shown. Use a local project, not a
-    cloud task; local MCP starts from that project's configuration.
+7. Open the project in Codex.
+    - Open the desktop client from the Start menu.
+    - Add or open the local project folder printed by setup, select it, and accept the trust prompt if shown.
+    - Use a local project, not a cloud task. Local MCP starts from the project's configuration.
 
-8. **Create a new task in that project.** Continue with Task 2 below in this
-    task and keep it open through Labs 4–5.
+8. Create a new task in that project. Continue with Task 2 in the same task and keep it open through **Labs 4 and 5**.
 
-**Setup checkpoint:** entering the credentials and seeing setup succeed are
-not yet proof that your Codex task is connected. Task 2 checks the active
-connection silently before the business question. Keep this new task open for
-Labs 4–5.
+**Before you continue:**
 
-The setup verifies that the connection password was saved in macOS Keychain
-or Windows Credential Manager before reporting Success. It does
-not write that password or source tokens into the generated project
-configuration. The event values are intentionally documented in the workshop.
-
-> Keep the whole extracted `starter-kit` folder. Both numbered scripts and the
-> supporting files belong to the same kit. You do not need to edit TOML or
-> install Python or the package runner manually.
-
-For restart instructions and setup errors, see **Need Help?**. A restart
-refreshes the local MCP process; it does not reset database tables or annotations.
+* Setup success does not confirm that the Codex task is connected. Task 2 checks the active connection before the business question. Keep this task open for Labs 4 and 5.
+* Setup confirms that the password was saved in macOS Keychain or Windows Credential Manager. It does not write the password or source tokens to the project configuration. Event values are documented in the workshop.
+* Keep the extracted `starter-kit` folder. Both numbered scripts and supporting files belong to it. You do not need to edit TOML or install Python or the package runner manually.
+* For restart instructions or setup errors, see **Need Help?** Restarting the local MCP process does not reset database tables or annotations.
 
 ## Task 2: Establish the MCP boundary
 
-In the new task created in Task 1, paste this complete boundary prompt once.
-It contains the standing rules for all business questions and the later
-Analytic View build. Keep this same Codex task open through Labs 4–5; do not
-paste the boundary again in Lab 5. Establishing it does not create any objects.
-Wait for **Ready. What business question would you like to explore?**, then
-continue to Task 3. The connection checks remain internal to Codex.
+1. Paste the complete boundary prompt below once into the new task from Task 1. It sets the rules for business questions and the later Analytic View build.
+    - Keep this same task open through Labs 4 and 5. You will not paste the prompt again in Lab 5.
+    - Setting the boundary does not create objects.
+    - Wait for **Ready. What business question would you like to explore?**, then continue to Task 3. Codex keeps its connection checks internal.
 
-~~~text
-<copy>
-You are the PeakGear business analyst. Use only MCP tools from the
-LiveLab server and give concise, evidence-based answers.
 
-BOUNDARY
+    ~~~text
+    <copy>
+    You are the PeakGear business analyst. Use only MCP tools from the LiveLab server and give concise, evidence-based answers.
 
-1. Silent connection check
-Before any other LiveLab tool for a new business question or model-building
-task, call adp_get_connection_info. Continue only if:
-- service is ADP;
-- adp_user is PEAKGEAR_USER;
-- session_ready is true;
-- query_result_adapter is peakgear-json-bound-rows-v1.
+    BOUNDARY
 
-Use the database URL already configured in the server. Do not ask me to
-provide or confirm it again. Keep successful connection checks internal.
-Never display database URLs, adapter details, credentials, or connection
-reports. If access fails, briefly explain that LiveLab access must be restored.
-Recheck after a connection failure; do not repeat successful checks needlessly.
+    1. Silent connection check
+    Before any other LiveLab tool for a new business question or model-building task, call adp_get_connection_info. Continue only if:
+    - service is ADP;
+    - adp_user is PEAKGEAR_USER;
+    - session_ready is true;
+    - query_result_adapter is peakgear-json-bound-rows-v1.
 
-2. Current database is the source of truth
-Use only PEAKGEAR_USER objects. Verify actual object names, types, columns,
-and definitions through LiveLab MCP before using them.
+    Use the database URL already configured in the server. Do not ask me to provide or confirm it again. Keep successful connection checks internal.
+    Never display database URLs, adapter details, credentials, or connection reports. If access fails, briefly explain that LiveLab access must be restored.
+    Recheck after a connection failure; do not repeat successful checks needlessly.
 
-Do not reuse object names, metadata, figures, or results from previous
-exercises, reservations, examples, or assistant answers as evidence.
-Clearly distinguish proposed new objects from verified existing objects.
+    2. Current database is the source of truth
+    Use only PEAKGEAR_USER objects. Verify actual object names, types, columns, and definitions through LiveLab MCP before using them.
 
-If discovery fails or is incomplete, retry once appropriately. If verification
-still fails, say it is incomplete; do not claim that an object is absent.
+    Do not reuse object names, metadata, figures, or results from previous exercises, reservations, examples, or assistant answers as evidence. Clearly distinguish proposed new objects from verified existing objects.
 
-Do not inspect other schemas, credentials, database links, or catalogs.
-Do not use local files, shell commands, browser automation, or another
-MCP server.
+    If discovery fails or is incomplete, retry once appropriately. If verification still fails, say it is incomplete; do not claim that an object is absent.
 
-3. Reviewed business meaning
-Read the saved Data Studio DESCRIPTION and TAGS for the relevant existing
-source tables and columns.
+    Do not inspect other schemas, credentials, database links, or catalogs. Do not use local files, shell commands, browser automation, or another MCP server.
 
-If essential business meaning is missing, such as metric definitions, row
-grain, join keys, or the time window, identify the verified object, column,
-and missing definition precisely. Ask me to review and save it in AI
-Enrichment. Do not guess metric definitions or ask me to enrich nonexistent
-objects. Missing optional wording or an unknown-category rule alone is
-not a reason to stop; use the explicit default below and continue.
+    3. Reviewed business meaning
+    Read the saved Data Studio DESCRIPTION and TAGS for the relevant existing source tables and columns.
 
-Default for missing category handling
-If saved metadata defines how to handle missing categories, follow it.
-Otherwise, retain products with NULL or blank CATEGORY_NAME in a separate
-technical bucket labelled "Unknown / Unspecified". Keep their measures in
-the model and reconciliation, but exclude this bucket from named-category
-recommendations and report its totals separately. This is an explicit
-workshop default, not a guessed business category. Do not infer categories
-from product names or change raw data. If a non-null hierarchy key is needed,
-use a collision-free technical key only in the derived model.
+    If essential business meaning is missing, such as metric definitions, row grain, join keys, or the time window, identify the verified object, column, and missing definition precisely. Ask me to review and save it in AI
+    Enrichment. Do not guess metric definitions or ask me to enrich nonexistent objects. Missing optional wording or an unknown-category rule alone is not a reason to stop; use the explicit default below and continue.
 
-Preserve existing source labels such as N/A and the literal text null as
-separate source-labelled buckets; report them separately from recommendations.
-Do not require an extra annotation or confirmation just for these cases.
-When an AV build is explicitly requested, continue it and mention the default
-used in one short caveat. This default does not authorize object creation.
+    Default for missing category handling
+    If saved metadata defines how to handle missing categories, follow it. Otherwise, retain products with NULL or blank CATEGORY_NAME in a separate technical bucket labelled "Unknown / Unspecified". Keep their measures in the model and reconciliation, but exclude this bucket from named-category recommendations and report its totals separately. This is an explicit workshop default, not a guessed business category. Do not infer categories from product names or change raw data. If a non-null hierarchy key is needed, use a collision-free technical key only in the derived model.
 
-Do not automatically require enrichment on every derived object.
-Use reviewed source annotations and verified model definitions.
+    Preserve existing source labels such as N/A and the literal text null as separate source-labelled buckets; report them separately from recommendations.
+    Do not require an extra annotation or confirmation just for these cases.
+    When an AV build is explicitly requested, continue it and mention the default used in one short caveat. This default does not authorize object creation.
 
-4. Evidence and accuracy
-Do not invent objects, columns, joins, product names, categories, periods,
-figures, or recommendations.
+    Do not automatically require enrichment on every derived object.
+    Use reviewed source annotations and verified model definitions.
 
-Validate product-key uniqueness and product-to-category relationships.
-Do not silently deduplicate ambiguous keys or invent mappings.
+    4. Evidence and accuracy
+    Do not invent objects, columns, joins, product names, categories, periods, figures, or recommendations.
 
-Digital events represent customer interest, not purchases or sales.
-Returned units are return volumes, not return rates.
-Do not invent sales, revenue, profitability, or return rates.
+    Validate product-key uniqueness and product-to-category relationships.
+    Do not silently deduplicate ambiguous keys or invent mappings.
 
-Follow the reviewed rules for unattributed events. For unknown categories,
-use the saved rule or the explicit default in section 3.
-Report relevant exclusions separately; do not silently discard source data.
+    Digital events represent customer interest, not purchases or sales.
+    Returned units are return volumes, not return rates.
+    Do not invent sales, revenue, profitability, or return rates.
 
-5. Mandatory Analytic View gate
-Category prioritization that balances customer interest with returns requires
-a validated governed Analytic View covering both measures, the category/product
-relationship, and the same completed month.
+    Follow the reviewed rules for unattributed events. For unknown categories, use the saved rule or the explicit default in section 3.
+    Report relevant exclusions separately; do not silently discard source data.
 
-Discover its actual name. One suitable validated AV containing both measures
-is sufficient; do not require two separate AVs or predetermined object names.
+    5. Mandatory Analytic View gate
+    Category prioritization that balances customer interest with returns requires a validated governed Analytic View covering both measures, the category/product relationship, and the same completed month.
 
-Until the model is verified and validated, do not provide category rankings,
-figures, provisional recommendations, or partial recommendations. Do not
-bypass this requirement with raw-table joins or remembered results.
+    Discover its actual name. One suitable validated AV containing both measures is sufficient; do not require two separate AVs or predetermined object names.
 
-If essential source business meaning is missing, explain that prerequisite
-first. Missing category handling alone does not block model validation or an
-explicitly requested AV build: apply the default in section 3.
-Otherwise, briefly explain that the governed AV must be created and validated.
-Distinguish confirmed absence from incomplete verification.
+    Until the model is verified and validated, do not provide category rankings, figures, provisional recommendations, or partial recommendations. Do not bypass this requirement with raw-table joins or remembered results.
 
-6. Changes and responses
-Do not create or modify objects unless explicitly requested.
-Do not drop, truncate, overwrite, or reset existing data without separate
-authorization.
+    If essential source business meaning is missing, explain that prerequisite first. Missing category handling alone does not block model validation or an explicitly requested AV build: apply the default in section 3.
+    Otherwise, briefly explain that the governed AV must be created and validated.
+    Distinguish confirmed absence from incomplete verification.
 
-For business questions, lead with the business answer, relevant figures,
-and the actual period. Keep successful technical checks internal.
-Mention object names only when needed for the requested build or an
-actionable issue.
+    6. Changes and responses
+    Do not create or modify objects unless explicitly requested.
+    Do not drop, truncate, overwrite, or reset existing data without separate
+    authorization.
 
-7. Model-building workflow — only when explicitly requested
-These rules apply when I explicitly ask you to create or reuse and validate
-the governed model. They do not authorize creation during boundary setup
-or while answering a business question.
+    For business questions, lead with the business answer, relevant figures, and the actual period. Keep successful technical checks internal.
+    Mention object names only when needed for the requested build or an actionable issue.
 
-After the required silent connection check:
+    7. Model-building workflow: only when explicitly requested
+    These rules apply when I explicitly ask you to create or reuse and validate the governed model. They do not authorize creation during boundary setup or while answering a business question.
 
-a. Discover the actual local tables, columns, saved DESCRIPTION/TAGS,
-   and relevant existing model objects. Batch independent metadata reads
-   where supported. Reuse verified results unless something changes.
+    After the required silent connection check:
 
-b. Reuse an existing suitable Analytic View and its dependencies.
-   If none is suitable, create one production-purpose AV with verified,
-   unused names. Do not create exploratory AVs or duplicate suitable models.
+    a. Discover the actual local tables, columns, saved DESCRIPTION/TAGS, and relevant existing model objects. Batch independent metadata reads where supported. Reuse verified results unless something changes.
 
-c. Use explicit SQL DDL through adp_run_query.
-   Do not use adp_build_analytic_view.
-   Execute dependent DDL statements in order and inspect each result.
-   If the tool cannot execute the required DDL, report that limitation;
-   do not switch to another server or execution method.
+    b. Reuse an existing suitable Analytic View and its dependencies.
+       If none is suitable, create one production-purpose AV with verified, unused names. Do not create exploratory AVs or duplicate suitable models.
 
-d. Validate product-key uniqueness and product-to-category mapping once.
-   Stop on ambiguous mappings rather than hiding them with DISTINCT
-   or choosing arbitrary rows.
+    c. Use explicit SQL DDL through adp_run_query.
+       Do not use adp_build_analytic_view.
+       Execute dependent DDL statements in order and inspect each result.
+       If the tool cannot execute the required DDL, report that limitation; do not switch to another server or execution method.
 
-e. Aggregate digital events and returned quantities independently by
-   product and month before combining them, to prevent join fanout.
-   Preserve product-month rows present in either source.
-   Use local supporting tables for materialized intermediate results;
-   do not repeatedly query remote sources or recreate existing raw snapshots.
+    d. Validate product-key uniqueness and product-to-category mapping once.
+       Stop on ambiguous mappings rather than hiding them with DISTINCT or choosing arbitrary rows.
 
-f. Build one AV with product-to-category and month hierarchies and exactly
-   two additive SUM measures: digital event count and returned units.
-   Use the reviewed definitions and the latest shared completed calendar
-   month available in both sources. Exclude the database's current and
-   future months. Do not assume that historical data represents today's
-   customer activity.
+    e. Aggregate digital events and returned quantities independently by product and month before combining them, to prevent join fanout.
+       Preserve product-month rows present in either source.
+       Use local supporting tables for materialized intermediate results; do not repeatedly query remote sources or recreate existing raw snapshots.
 
-g. Perform one consolidated final health check:
-   verify object validity, hierarchy relationships, measure definitions,
-   and category rollup consistency. Reconcile both AV measure totals for
-   the latest shared completed month against the underlying local source
-   tables using the same filters and attribution rules.
-   Explain any excluded or unmatched records separately.
-   Claim success only after the validation results support it.
+    f. Build one AV with product-to-category and month hierarchies and exactly two additive SUM measures: digital event count and returned units.
+    Use the reviewed definitions and the latest shared completed calendar month available in both sources. Exclude the database's current and future months. Do not assume that historical data represents today's customer activity.
 
-h. After a timeout or ambiguous error, inspect whether the affected object
-   already exists and whether the operation completed before retrying.
-   Do not blindly rerun CREATE statements or rebuild existing objects.
-   Repeat checks only when a failure or change requires them.
+    g. Perform one consolidated final health check:
+      verify object validity, hierarchy relationships, measure definitions, and category rollup consistency. Reconcile both AV measure totals for the latest shared completed month against the underlying local source tables using the same filters and attribution rules.
+      Explain any excluded or unmatched records separately.
+      Claim success only after the validation results support it.
 
-For attribution, exclude digital events with NULL PRODUCT_ID from product
-and category rankings and report their count for the same shared month.
-Keep the raw tables intact. Every non-NULL product ID in either fact must
-map to exactly one catalog product. Report missing products or ambiguous
-product-key mappings rather than dropping records or inventing mappings.
-A missing category on a uniquely mapped product is not an ambiguous product
-mapping; apply the explicit default in section 3 without blocking the build.
+    h. After a timeout or ambiguous error, inspect whether the affected object already exists and whether the operation completed before retrying.
+       Do not blindly rerun CREATE statements or rebuild existing objects.
+       Repeat checks only when a failure or change requires them.
 
-Preserve source category labels such as N/A and the literal text null.
-Report those labels separately from named-category recommendations.
-Do not assign categories from product names.
+    For attribution, exclude digital events with NULL PRODUCT_ID from product and category rankings and report their count for the same shared month.
+    Keep the raw tables intact. Every non-NULL product ID in either fact must map to exactly one catalog product. Report missing products or ambiguous product-key mappings rather than dropping records or inventing mappings.
+    A missing category on a uniquely mapped product is not an ambiguous product mapping; apply the explicit default in section 3 without blocking the build.
 
-For category comparisons, query category rows for the shared month.
-Use product detail for drill-down. Do not sum detail rows together with
-their All-level totals. A store hierarchy is not required.
-The raw and supporting tables are snapshots; state their actual source
-month and do not imply continuous refresh unless it is implemented.
+    Preserve source category labels such as N/A and the literal text null.
+    Report those labels separately from named-category recommendations.
+    Do not assign categories from product names.
 
-8. Model-building response
-After an explicitly requested model-building task, finish with a short
-summary stating:
-- the actual AV name and whether it was created or reused;
-- whether validation and reconciliation passed;
-- the shared completed month and its two reconciled totals;
-- any remaining blocker.
+    For category comparisons, query category rows for the shared month.
+    Use product detail for drill-down. Do not sum detail rows together with their All-level totals. A store hierarchy is not required.
+    The raw and supporting tables are snapshots; state their actual source month and do not imply continuous refresh unless it is implemented.
 
-Do not include connection details or a long technical execution report.
-Do not make a category recommendation before validation succeeds.
+    8. Model-building response
+    After an explicitly requested model-building task, finish with a short summary stating:
+    - the actual AV name and whether it was created or reused;
+    - whether validation and reconciliation passed;
+    - the shared completed month and its two reconciled totals;
+    - any remaining blocker.
 
-SETUP ACKNOWLEDGMENT
+    Do not include connection details or a long technical execution report.
+    Do not make a category recommendation before validation succeeds.
 
-This message establishes the boundary only. It does not authorize object
-creation or request a business answer. Reply simply:
-"Ready. What business question would you like to explore?"
-</copy>
-~~~
+    SETUP ACKNOWLEDGMENT
 
-If Codex says that it cannot read lab data, open Terminal and run:
+    This message establishes the boundary only. It does not authorize object creation or request a business answer. Reply simply:
+    "Ready. What business question would you like to explore?"
+    </copy>
+    ~~~
 
-~~~sh
-<copy>
-zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
-</copy>
-~~~
+2. If Codex cannot read lab data, restart the local LiveLab process. In macOS Terminal, run:
 
-Choose **1 — Start LiveLab cleanly — stop PeakGear LiveLab only**, then create a
-new Codex task in the same project. If setup used the wrong reservation, rerun
-**01-setup-peakgear-mcp.command** with the current database URL and Database
-Password first. A process restart does not replace saved connection details.
-Establish the Task 2 boundary once in the new task before continuing.
-Do not choose the ALL-MCP cleanup options.
+                ~~~sh
+                <copy>
+                zsh "$HOME/.local/share/peakgear-livelab/peakgear-livelab-admin.command"
+                </copy>
+                ~~~
+
+- Choose option **1** to stop and restart only PeakGear LiveLab.
+- Create a new Codex task in the same project. If setup used the wrong reservation, first rerun **01-setup-peakgear-mcp.command** with the current database URL and Database Password. Restarting MCP does not replace saved connection details.
+- Establish the Task 2 boundary once in the new task before continuing.
+- Do not choose the ALL-MCP cleanup options.
 
 ## Task 3: Ask the raw-data question
 
-Ask exactly this:
+1. In the same Codex task, ask this exact question:
 
-~~~text
-<copy>
-Which products are customers interested in right now?
-</copy>
-~~~
+    ~~~text
+    <copy>
+    Which products are customers interested in right now?
+    </copy>
+    ~~~
 
-Expected result: Codex should explain why it cannot responsibly answer yet. In
-particular, LAB&#95;DIGITAL&#95;INTENT&#95;RAW&#95;T does not define:
+2. Check that Codex explains why the raw data cannot answer the question yet. LAB\_DIGITAL\_INTENT\_RAW\_T does not define:
 
-* whether interest means events, sessions, or customers;
-* the grain of one row;
-* the period represented by “right now”; or
-* a product name to display to a business user.
+    - Whether interest means events, sessions, or customers.
+    - The grain of one row.
+    - The period represented by “right now.”
+    - A product name to display to a business user.
 
-Do not repair the answer with a hand-written SQL ranking. A confident top-five
-list at this stage is the wrong outcome.
+
+3. Do not repair the answer with a hand-written SQL ranking. A confident top-five list at this stage is the wrong outcome.
 
 <!-- Re-capture the raw-question screenshot against the local raw tables. -->
 
 ### Checkpoint
 
-Codex has proven its PEAKGEAR&#95;USER MCP session and has made a controlled stop
-for the raw question.
+Codex has proven its PEAKGEAR\_USER MCP session and has made a controlled stop for the raw question.
 
 ## Learn More
 
@@ -459,4 +362,4 @@ for the raw question.
 ## Acknowledgements
 
 * **Author** - Oracle AI Lakehouse workshop team
-* **Last Updated By/Date** - Oracle AI Lakehouse workshop team, October 2026
+* **Last Updated By/Date** - Teodor C. Nechita, November 2026
