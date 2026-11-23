@@ -63,41 +63,41 @@ In each dialog, table-level fields appear first, followed by descriptions and ta
 
 1. Review the business meaning for LAB\_DIGITAL\_INTENT\_RAW\_T.
 
-Check the table description for the following rules. If any are missing, add this paragraph to the useful generated description and replace conflicting claims. Codex uses this context to answer the first question:
+    Check the table description for the following rules. If any are missing, add this paragraph to the useful generated description and replace conflicting claims. Codex uses this context to answer the first question:
 
-~~~text
-<copy>
-Each row is one digital interaction. In this lab, customer interest means
-the count of digital events with non-NULL PRODUCT_ID. Exclude events without
-PRODUCT_ID from product and category rankings and report their count separately
-for the same month. "Right now" means the latest completed calendar month
-present in EVENT_TS, excluding the database's current and future months. Use
-the month available in the data, not a guessed current month. Aggregate events
-by PRODUCT_ID, then join LAB_PRODUCTS_RAW_T on PRODUCT_ID to display
-PRODUCT_NAME. That catalog must contain one row per product; never multiply
-event counts in the label join. Keep unknown product names unknown. This event
-table has no product names, returns, revenue, or store. This table is a local
-snapshot of the connected source at the time it was created; it does not
-refresh automatically.
-</copy>
-~~~
+    ~~~text
+    <copy>
+    Each row is one digital interaction. In this lab, customer interest means
+    the count of digital events with non-NULL PRODUCT_ID. Exclude events without
+    PRODUCT_ID from product and category rankings and report their count separately
+    for the same month. "Right now" means the latest completed calendar month
+    present in EVENT_TS, excluding the database's current and future months. Use
+    the month available in the data, not a guessed current month. Aggregate events
+    by PRODUCT_ID, then join LAB_PRODUCTS_RAW_T on PRODUCT_ID to display
+    PRODUCT_NAME. That catalog must contain one row per product; never multiply
+    event counts in the label join. Keep unknown product names unknown. This event
+    table has no product names, returns, revenue, or store. This table is a local
+    snapshot of the connected source at the time it was created; it does not
+    refresh automatically.
+    </copy>
+    ~~~
 
 2. Keep useful generated table tags. These are examples, not a required replacement list:
 
-~~~text
-<copy>
-digital_intent, event_data, product_popularity, no_store_attribution
-</copy>
-~~~
+    ~~~text
+    <copy>
+    digital_intent, event_data, product_popularity, no_store_attribution
+    </copy>
+    ~~~
 
 3. Check the column meanings below. Correct only inaccurate or missing definitions. Equivalent useful generated tags can remain.
 
-| Column | Description | Tags |
-|---|---|---|
-| PRODUCT\_ID | Business product identifier. Join key to LAB\_PRODUCTS\_RAW\_T.PRODUCT\_ID; it is not a measure. | product\_key, join\_key |
-| SESSION\_ID | Browsing-session identifier. It is not a customer identifier or additive measure. | session\_identifier |
-| CUSTOMER\_ID | Customer identifier associated with the event. Row count is not a count of unique customers. | customer\_identifier |
-| EVENT\_TS | Timestamp of the interaction. Derive the latest month present in the data that ended before the database's current calendar month. | event\_timestamp, time\_key |
+    | Column | Description | Tags |
+    |---|---|---|
+    | PRODUCT\_ID | Business product identifier. Join key to LAB\_PRODUCTS\_RAW\_T.PRODUCT\_ID; it is not a measure. | product\_key, join\_key |
+    | SESSION\_ID | Browsing-session identifier. It is not a customer identifier or additive measure. | session\_identifier |
+    | CUSTOMER\_ID | Customer identifier associated with the event. Row count is not a count of unique customers. | customer\_identifier |
+    | EVENT\_TS | Timestamp of the interaction. Derive the latest month present in the data that ended before the database's current calendar month. | event\_timestamp, time\_key |
 
 4. Edit only tags that are missing or misleading.
 
@@ -111,34 +111,34 @@ digital_intent, event_data, product_popularity, no_store_attribution
     - Click **Save once**. Saving may take more than a minute. If **Save**, **Cancel**, and **Close** are disabled, wait. Do not click Save again or refresh the page.
     - Wait for the dialog to close before opening another table. If it remains disabled without a completion message after a reasonable wait, ask the instructor to check before retrying.
 
-Annotations may appear gradually while Save is running. If Save reports a connection error, refresh Catalog and verify the table before retrying; only some metadata may have been saved. A changed table description alone does not confirm a complete save. After all three saves, verify them in Task 3.
+    Annotations may appear gradually while Save is running. If Save reports a connection error, refresh Catalog and verify the table before retrying; only some metadata may have been saved. A changed table description alone does not confirm a complete save. After all three saves, verify them in Task 3.
 
 ### Product catalog
 
 6. Review the product catalog. In **Catalog**, open LAB\_PRODUCTS\_RAW\_T and click **AI Enrichment**. Keep accurate generated content; add or correct only what is missing. Example tags are optional.
 
-| Object | Description | Tags |
-|---|---|---|
-| Table | One row per product. Conformed catalog shared by digital intent and returns. <br><br> Category rolls up product. Local snapshot of the connected source. | product\_catalog, conformed\_dimension, category\_hierarchy |
-| PRODUCT\_ID | Shared product join key. | product\_key, join\_key |
-| PRODUCT\_NAME | Business-facing product name. | product\_name |
-| CATEGORY\_NAME | Category used to aggregate products. | category, hierarchy\_level |
+    | Object | Description | Tags |
+    |---|---|---|
+    | Table | One row per product. Conformed catalog shared by digital intent and returns. <br><br> Category rolls up product. Local snapshot of the connected source. | product\_catalog, conformed\_dimension, category\_hierarchy |
+    | PRODUCT\_ID | Shared product join key. | product\_key, join\_key |
+    | PRODUCT\_NAME | Business-facing product name. | product\_name |
+    | CATEGORY\_NAME | Category used to aggregate products. | category, hierarchy\_level |
 
-After reviewing the table, follow Step 5 to save it before moving to the next one.
+    After reviewing the table, follow Step 5 to save it before moving to the next one.
 
 ### Operational returns
 
 7. Review operational returns. In **Catalog**, open LAB\_RETURNS\_RAW\_T and click **AI Enrichment**. Keep accurate generated content; add or correct only what is missing. Example tags are optional.
 
-| Object | Description | Tags |
-|---|---|---|
-| Table | One operational return event by product, store and timestamp. <br><br> Aggregate separately before comparing with digital popularity. <br><br> Returns are a quality context, not a rate. Local snapshot of the connected source. | `returns`, quality\_signal, operational\_data, no\_return\_rate |
-| PRODUCT\_ID | Product join key. Join to LAB\_PRODUCTS\_RAW\_T.PRODUCT\_ID. | product\_key, join\_key |
-| STORE\_ID | Store identifier for returns analysis. | store\_key, join\_key |
-| RETURN\_QTY | Additive number of returned units. Default aggregation is `SUM`. | `measure`, `units`, `additive`, `sum` |
-| RETURN\_CREATED\_AT | Timestamp when the return was recorded. Derive calendar month from it. | event\_timestamp, time\_key |
+    | Object | Description | Tags |
+    |---|---|---|
+    | Table | One operational return event by product, store and timestamp. <br><br> Aggregate separately before comparing with digital popularity. <br><br> Returns are a quality context, not a rate. Local snapshot of the connected source. | `returns`, quality\_signal, operational\_data, no\_return\_rate |
+    | PRODUCT\_ID | Product join key. Join to LAB\_PRODUCTS\_RAW\_T.PRODUCT\_ID. | product\_key, join\_key |
+    | STORE\_ID | Store identifier for returns analysis. | store\_key, join\_key |
+    | RETURN\_QTY | Additive number of returned units. Default aggregation is `SUM`. | `measure`, `units`, `additive`, `sum` |
+    | RETURN\_CREATED\_AT | Timestamp when the return was recorded. Derive calendar month from it. | event\_timestamp, time\_key |
 
-After reviewing the table, follow Step 5 to save it. Save all three tables before Task 3.
+    After reviewing the table, follow Step 5 to save it. Save all three tables before Task 3.
 
 ## Task 3: Verify the saved annotations
 
@@ -154,31 +154,31 @@ After reviewing the table, follow Step 5 to save it. Save all three tables befor
 
 4. Check the annotations in Catalog. In **Overview**, check the table description and tags. In **Columns**, check the column annotations.
 
-![Digital Intent table Overview after Save shows a table description and tags plus column annotations](images/local-table-annotations-saved.png)
+    ![Digital Intent table Overview after Save shows a table description and tags plus column annotations](images/local-table-annotations-saved.png)
 
-The screenshot shows where saved values appear. Wording may differ; verify the business meanings above for all three tables.
+    The screenshot shows where saved values appear. Wording may differ; verify the business meanings above for all three tables.
 
-**Optional database check:** Run this query to inspect the saved metadata.
+    **Optional database check:** Run this query to inspect the saved metadata.
 
-~~~sql
-<copy>
-SELECT object_type,
-       object_name,
-       column_name,
-       annotation_name,
-       annotation_value
-FROM user_annotations_usage
-WHERE object_name IN (
-        'LAB_DIGITAL_INTENT_RAW_T',
-        'LAB_PRODUCTS_RAW_T',
-        'LAB_RETURNS_RAW_T'
-      )
-  AND annotation_name IN ('DESCRIPTION', 'TAGS')
-ORDER BY object_name,
-         column_name NULLS FIRST,
-         annotation_name;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    SELECT object_type,
+           object_name,
+           column_name,
+           annotation_name,
+           annotation_value
+    FROM user_annotations_usage
+    WHERE object_name IN (
+            'LAB_DIGITAL_INTENT_RAW_T',
+            'LAB_PRODUCTS_RAW_T',
+            'LAB_RETURNS_RAW_T'
+          )
+      AND annotation_name IN ('DESCRIPTION', 'TAGS')
+    ORDER BY object_name,
+             column_name NULLS FIRST,
+             annotation_name;
+    </copy>
+    ~~~
 
 5. Review the optional query results.
     - A fixed row count or exact tag list is not a pass criterion.
@@ -189,15 +189,15 @@ ORDER BY object_name,
 
 1. Ask the same question from Lab 3 in the same Codex task:
 
-~~~text
-<copy>
-Which products are customers interested in right now?
-</copy>
-~~~
+    ~~~text
+    <copy>
+    Which products are customers interested in right now?
+    </copy>
+    ~~~
 
-**Expected result:** Codex ranks products by the defined digital-event count for the latest completed month in the snapshot data. It can use LAB\_PRODUCTS\_RAW\_T to display product names; that lookup does not change the metric, time window, or result grain.
+    **Expected result:** Codex ranks products by the defined digital-event count for the latest completed month in the snapshot data. It can use LAB\_PRODUCTS\_RAW\_T to display product names; that lookup does not change the metric, time window, or result grain.
 
-The current Starter Kit includes the safe label lookup against the new local tables. The question has not changed; the saved definition, period, and result grain give Codex the context to answer it.
+    The current Starter Kit includes the safe label lookup against the new local tables. The question has not changed; the saved definition, period, and result grain give Codex the context to answer it.
 
 2. If an older Starter Kit still refers to raw views or returns only IDs:
     - Download the current kit and rerun setup with this reservation's URL and Database Password.

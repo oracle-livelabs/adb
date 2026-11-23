@@ -37,7 +37,7 @@ LiveLabs provisioning has already created both credentials for PEAKGEAR\_USER in
 
 1. Open the catalog form. In **Catalog**, click **Add**, then choose **Iceberg catalog**.
 
-![In Catalog, click Add and choose Iceberg catalog.](images/add-iceberg-catalog.png)
+    ![In Catalog, click Add and choose Iceberg catalog.](images/add-iceberg-catalog.png)
 
 2. Enter the public catalog settings from the table.
 
@@ -49,7 +49,7 @@ LiveLabs provisioning has already created both credentials for PEAKGEAR\_USER in
 | Iceberg catalog credentials | Select DBX\_PEAKGEAR\_OAUTH |
 | Bucket credentials | Select ADLS\_PEAKGEAR\_DATA |
 
-![Enter DBX\_UNITY\_PEAKGEAR, select Unity, paste the public endpoint, and select the provisioned catalog and bucket credentials.](images/mount-iceberg-catalog.png)
+    ![Enter DBX\_UNITY\_PEAKGEAR, select Unity, paste the public endpoint, and select the provisioned catalog and bucket credentials.](images/mount-iceberg-catalog.png)
 
 3. Select credentials and add the catalog.
     - Choose DBX\_PEAKGEAR\_OAUTH for **Iceberg catalog credentials**.
@@ -63,7 +63,7 @@ LiveLabs provisioning has already created both credentials for PEAKGEAR\_USER in
     - Use **Refresh** only if the catalog or tables are not visible yet.
 
 
-![The successful DBX\_UNITY\_PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
+    ![The successful DBX\_UNITY\_PEAKGEAR mount exposes the two PeakGear Iceberg tables.](images/connected-iceberg-tables.png)
 
 ### SQL reference (not part of the lab)
 
@@ -79,53 +79,53 @@ For this optional path:
     - It does not create, replace, refresh, or delete credentials.
 
 
-~~~sql
-<copy>
--- SQL reference only; not part of the required Lab 2 workflow.
--- Run as PEAKGEAR_USER with both source credentials already provisioned.
--- This block reuses credentials and mounts only when the catalog is absent.
-DECLARE
-  l_credential_count PLS_INTEGER;
-  l_catalog_count PLS_INTEGER;
-BEGIN
-  IF USER <> 'PEAKGEAR_USER'
-     OR SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') <> 'PEAKGEAR_USER' THEN
-    RAISE_APPLICATION_ERROR(-20011,
-      'Use SQL Worksheet connected as PEAKGEAR_USER in your assigned database.');
-  END IF;
+    ~~~sql
+    <copy>
+    -- SQL reference only; not part of the required Lab 2 workflow.
+    -- Run as PEAKGEAR_USER with both source credentials already provisioned.
+    -- This block reuses credentials and mounts only when the catalog is absent.
+    DECLARE
+      l_credential_count PLS_INTEGER;
+      l_catalog_count PLS_INTEGER;
+    BEGIN
+      IF USER <> 'PEAKGEAR_USER'
+         OR SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') <> 'PEAKGEAR_USER' THEN
+        RAISE_APPLICATION_ERROR(-20011,
+          'Use SQL Worksheet connected as PEAKGEAR_USER in your assigned database.');
+      END IF;
 
-  SELECT COUNT(*) INTO l_credential_count
-  FROM user_credentials
-  WHERE credential_name IN ('ADLS_PEAKGEAR_DATA', 'DBX_PEAKGEAR_OAUTH');
+      SELECT COUNT(*) INTO l_credential_count
+      FROM user_credentials
+      WHERE credential_name IN ('ADLS_PEAKGEAR_DATA', 'DBX_PEAKGEAR_OAUTH');
 
-  IF l_credential_count <> 2 THEN
-    RAISE_APPLICATION_ERROR(-20014,
-      'Provisioned source credentials are missing. Ask the instructor to repair this reservation.');
-  END IF;
+      IF l_credential_count <> 2 THEN
+        RAISE_APPLICATION_ERROR(-20014,
+          'Provisioned source credentials are missing. Ask the instructor to repair this reservation.');
+      END IF;
 
-  SELECT COUNT(*) INTO l_catalog_count
-  FROM user_mounted_catalogs
-  WHERE catalog_name = 'DBX_UNITY_PEAKGEAR';
+      SELECT COUNT(*) INTO l_catalog_count
+      FROM user_mounted_catalogs
+      WHERE catalog_name = 'DBX_UNITY_PEAKGEAR';
 
-  IF l_catalog_count = 0 THEN
-    DBMS_CATALOG.MOUNT_ICEBERG(
-      catalog_name            => 'DBX_UNITY_PEAKGEAR',
-      endpoint                =>
-        'https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/' ||
-        'unity-catalog/iceberg-rest/v1/catalogs/peakgear',
-      catalog_credential      => 'DBX_PEAKGEAR_OAUTH',
-      data_storage_credential => 'ADLS_PEAKGEAR_DATA',
-      enabled                 => TRUE,
-      catalog_type            => 'ICEBERG_UNITY'
-    );
-  ELSE
-    DBMS_OUTPUT.PUT_LINE(
-      'DBX_UNITY_PEAKGEAR already exists. Continue with the sample reads in Lab 2 Task 3.');
-  END IF;
-END;
-/
-</copy>
-~~~
+      IF l_catalog_count = 0 THEN
+        DBMS_CATALOG.MOUNT_ICEBERG(
+          catalog_name            => 'DBX_UNITY_PEAKGEAR',
+          endpoint                =>
+            'https://adb-2242907740736663.3.azuredatabricks.net/api/2.1/' ||
+            'unity-catalog/iceberg-rest/v1/catalogs/peakgear',
+          catalog_credential      => 'DBX_PEAKGEAR_OAUTH',
+          data_storage_credential => 'ADLS_PEAKGEAR_DATA',
+          enabled                 => TRUE,
+          catalog_type            => 'ICEBERG_UNITY'
+        );
+      ELSE
+        DBMS_OUTPUT.PUT_LINE(
+          'DBX_UNITY_PEAKGEAR already exists. Continue with the sample reads in Lab 2 Task 3.');
+      END IF;
+    END;
+    /
+    </copy>
+    ~~~
 
 3. Confirm the catalog in Catalog.
     - Refresh **Locally Mounted Catalogs** if needed.
@@ -140,29 +140,29 @@ If a credential is missing or SQL reports an error, keep the exact message and a
 
 2. Run each query below separately. **Run SQL** executes the current statement, not every statement in a pasted script.
 
-~~~sql
-<copy>
-SELECT *
-FROM iceberg.products@dbx_unity_peakgear
-FETCH FIRST 5 ROWS ONLY;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    SELECT *
+    FROM iceberg.products@dbx_unity_peakgear
+    FETCH FIRST 5 ROWS ONLY;
+    </copy>
+    ~~~
 
-~~~sql
-<copy>
-SELECT *
-FROM iceberg.digital_clickstream_events@dbx_unity_peakgear
-FETCH FIRST 5 ROWS ONLY;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    SELECT *
+    FROM iceberg.digital_clickstream_events@dbx_unity_peakgear
+    FETCH FIRST 5 ROWS ONLY;
+    </copy>
+    ~~~
 
-~~~sql
-<copy>
-SELECT *
-FROM customer_return_events@peakgear_operations_link
-FETCH FIRST 5 ROWS ONLY;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    SELECT *
+    FROM customer_return_events@peakgear_operations_link
+    FETCH FIRST 5 ROWS ONLY;
+    </copy>
+    ~~~
 
 3. Check the query results.
     - Each query should return up to five sample rows. This confirms read access without a full row count.
@@ -178,37 +178,37 @@ FETCH FIRST 5 ROWS ONLY;
     - If an older run left `*_RAW_V` views in the schema, leave them alone. This version uses the new `*_RAW_T` tables and requires fresh annotations in Lab 4.
 
 
-~~~sql
-<copy>
-CREATE TABLE lab_products_raw_t AS
-SELECT product_id,
-       product_name,
-       category AS category_name
-FROM iceberg.products@dbx_unity_peakgear;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    CREATE TABLE lab_products_raw_t AS
+    SELECT product_id,
+           product_name,
+           category AS category_name
+    FROM iceberg.products@dbx_unity_peakgear;
+    </copy>
+    ~~~
 
-~~~sql
-<copy>
-CREATE TABLE lab_digital_intent_raw_t AS
-SELECT product_id,
-       session_id,
-       customer_id,
-       CAST(event_ts AS TIMESTAMP) AS event_ts
-FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    CREATE TABLE lab_digital_intent_raw_t AS
+    SELECT product_id,
+           session_id,
+           customer_id,
+           CAST(event_ts AS TIMESTAMP) AS event_ts
+    FROM iceberg.digital_clickstream_events@dbx_unity_peakgear;
+    </copy>
+    ~~~
 
-~~~sql
-<copy>
-CREATE TABLE lab_returns_raw_t AS
-SELECT product_id,
-       store_id,
-       return_qty,
-       CAST(return_created_at AS TIMESTAMP) AS return_created_at
-FROM customer_return_events@peakgear_operations_link;
-</copy>
-~~~
+    ~~~sql
+    <copy>
+    CREATE TABLE lab_returns_raw_t AS
+    SELECT product_id,
+           store_id,
+           return_qty,
+           CAST(return_created_at AS TIMESTAMP) AS return_created_at
+    FROM customer_return_events@peakgear_operations_link;
+    </copy>
+    ~~~
 
 6. Verify the local tables in Catalog.
     - Under PEAKGEAR\_USER, confirm that all three tables exist.

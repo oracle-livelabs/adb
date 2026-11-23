@@ -63,7 +63,7 @@ In this lab, you will:
     ![Example LiveLabs Reservation Information](images/environment-details-database-credentials.png)
 
 
-The current workshop expects Database User **PEAKGEAR\_USER** and Operations Database Link **PEAKGEAR\_OPERATIONS\_LINK**. If your reservation shows different values, ask the instructor before continuing; do not use values from the screenshots.
+    The current workshop expects Database User **PEAKGEAR\_USER** and Operations Database Link **PEAKGEAR\_OPERATIONS\_LINK**. If your reservation shows different values, ask the instructor before continuing; do not use values from the screenshots.
 
 :::image-right
 1. Open the LiveLabs home page.
