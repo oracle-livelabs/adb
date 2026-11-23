@@ -85,13 +85,6 @@ In this lab, you will:
 
 The current workshop expects Database User **PEAKGEAR\_USER** and Operations Database Link **PEAKGEAR\_OPERATIONS\_LINK**. If your reservation shows different values, ask the instructor before continuing; do not use values from the screenshots.
 
-:::image-right
-1. Open the LiveLabs home page.
-2. Use the search field to find a workshop.
-:::image
-![Example LiveLabs Reservation Information](images/environment-details-database-credentials.png)
-:::
-
 ## Task 2: Connect Data Studio to the assigned database
 
 1. Open **[Oracle Data Studio](https://datastudio.oracle.com).**
