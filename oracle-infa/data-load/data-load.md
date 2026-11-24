@@ -22,88 +22,64 @@ In this lab, we will learn more about the autonomous database's built-in Data Lo
 
 ### Objectives
 
-+ Learn how to define object storage credentials for your autonomous database
++ Access sample files in Object Storage using pre-authenticated request (PAR) URLs
 + Learn how to load data from object storage using Data Tools
 
 ### Prerequisites
 
 + This lab requires you to have access to an autonomous database instance; either Oracle Autonomous Data Warehouse (ADW) or Oracle Autonomous Transaction Processing (ATP).
 
-## Task 1: Configure the Object Storage connections
+## Task 1: Open the Data Load tool
 
-In this step, you will set up access to the a bucket on Oracle Cloud Infrastructure Object Storage that contain data that we want to load - order file and line item file.
+The sample files are in the `informatica/` folder of the `livelabsfiles` bucket. The pre-authenticated request (PAR) URLs below provide file access without a separate Object Storage credential. Use the file URLs directly; bucket listing is not required.
 
-1. In your database's details page, click the **Database Actions** button.
+1. On the database details page, click **Database Actions**.
 
-     ![Click Database Actions](images/launchdbactions.png)
+    ![Click Database Actions](images/launchdbactions.png)
 
-2. Database Actions should automatically open up with you logged in as Admin user.
+2. Database Actions opens with you logged in as the Admin user.
 
-3. On the Database Actions Launchpad page, under **Data Studio**, click **DATA LOAD**
+3. On the Database Actions Launchpad page, under **Data Studio**, click **DATA LOAD**.
 
     ![Click DATA LOAD](images/dataload.png)
 
-4. In the **Menu** section, click **Cloud Store** to set up the connection from your autonomous database to object storage.
-
-    ![Click CLOUD LOCATIONS](images/cloudstore.png)
-
-5. To add access to the files, click **+Create Cloud Store Loacation** in the top right of your screen.
-
--   In the **Name** field, enter 'INFASampleData'
-
-> **Note:** Take care not to use spaces in the name.
-
--   Select **Public Bucket** as this is a public bucket
--   Select **Bucket URI** 
--   Copy and paste the following URI into the URI + Bucket field:
-    ```
-    <copy>
-    https://objectstorage.us-ashburn-1.oraclecloud.com/n/c4u04/b/informatica/o
-    </copy>
-    ```
--   Then click **Create**.
-
-7. The page now invites us to load data from this area. 
-
+4. Choose **Load Data**, then **Cloud Store**. Continue to **Load Cloud Object**. Do not create a Cloud Store Location for this lab.
 
 ## Task 2: Load data from files in Object Storage using Data Tools
 
-In this step we will perform some simple data loading tasks, to load in CSV files from object storage into tables in our autonomous database.
+Load the two files in separate jobs to create the `ORDERS` and `LINEITEM` tables.
 
-1. To load or link data from our newly configured cloud storage, stay in the Data Load Cloud Store page.
+1. Paste the following **orders.txt** URL into **Select Cloud Store Location or enter public URL**. Press Enter.
 
-    ![Click Data Load](images/backtodataload.png)
+    ```
+    <copy>
+    https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/informatica/orders.txt
+    </copy>
+    ```
 
-    
+2. Drag the displayed **orders.txt** file into the cart in the right-hand pane.
 
-3. Click on the down arrow and select INFASAMPLEDATA location, then drag the **orders.txt** file over to the right hand pane.
+3. Click the pencil icon for the load task. Confirm the target table is **ORDERS**. Review the columns and data types, then click **Close**.
 
-4. Next, drag the **lineitem.txt** folder over to the right hand pane. Again, click **OK** to load all files into a single table.
+4. Click the Play or **Start** button to run the load job. Confirm **Run** if prompted, and wait for the load card to show a green tick.
 
+5. Return to **Data Load** and start another **Load Data** job using **Cloud Store**. Check that the cart is empty. If the completed **ORDERS** item remains, click its **Remove** icon. Remove only the cart item, not the database table. Paste the following **lineitem.txt** URL into **Select Cloud Store Location or enter public URL**. Press Enter.
 
-5. Click the pencil icon for the **LINEITEM** task to view the settings for this load task.
+    ```
+    <copy>
+    https://objectstorage.us-ashburn-1.oraclecloud.com/p/4Au3jJ-t8Wtw3LWyYsDMqQk2FdlXDvXCb1MYRS0J6P4QS-GCrv2YNOolWdtFMLZq/n/c4u04/b/livelabsfiles/o/informatica/lineitem.txt
+    </copy>
+    ```
+
+6. Drag the displayed **lineitem.txt** file into the cart in the right-hand pane.
+
+7. Click the pencil icon for the load task. Confirm the target table is **LINEITEM**. Review the columns and data types, then click **Close**.
 
     ![View settings for LINEITEM load task](images/cc_viewsettings.png)
 
-    
+8. Click the Play or **Start** button to run the second load job. Confirm **Run** if prompted, and wait for the load card to show a green tick.
 
-    
-
-6. Here we can see the list of columns and data types that will be created from the txt file. They all look correct, so click **Close** to close the settings viewer.
-
-7. Click the pencil icon for the **ORDERS** task to view its settings. 
-
-8. Here we can see the list of columns and data types that will be created from the txt file. They all look correct, so click **Close** to close the settings viewer.
-
-9. Now click the Play button to run the data load job.
-
-    ![Run the data load job](images/rundataload.png)
-
-    The job should take about 20 seconds to run.
-
-10. Check that both data load cards have green tick marks in them, indicating that the data load tasks have completed successfully.
-
-    ![Check the job is completed](images/loadcompleted.png)
+9. Confirm that the **ORDERS** and **LINEITEM** load jobs both completed successfully before continuing to the next lab.
 
 This completes the Data Load lab. We now have two tables loaded into the Autonomous Database from the Object Storage. We will be working with these tables in later labs.
 
